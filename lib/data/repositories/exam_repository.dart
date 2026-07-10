@@ -18,19 +18,17 @@ class ExamRepository {
   static const questionsPerExam = 10;
   static const _newOrLearningWeight = 0.7;
 
-  final KanaRepository _kanaRepository;
-  final ProgressRepository _progressRepository;
+  final KanaRepository kanaRepository;
+  final ProgressRepository progressRepository;
   final FirebaseFirestore _firestore;
   final Random _random;
 
   ExamRepository({
-    required KanaRepository kanaRepository,
-    required ProgressRepository progressRepository,
+    required this.kanaRepository,
+    required this.progressRepository,
     FirebaseFirestore? firestore,
     Random? random,
-  })  : _kanaRepository = kanaRepository,
-        _progressRepository = progressRepository,
-        _firestore = firestore ?? FirebaseFirestore.instance,
+  })  : _firestore = firestore ?? FirebaseFirestore.instance,
         _random = random ?? Random();
 
   /// Builds a 10-question session for [mode], weighting kana that are
@@ -42,7 +40,7 @@ class ExamRepository {
 
     final progressByType = <KanaType, Map<String, KanaProgress>>{};
     for (final type in pools.keys) {
-      final typeProgress = await _progressRepository.getTypeProgress(
+      final typeProgress = await progressRepository.getTypeProgress(
         uid,
         type,
       );
@@ -116,22 +114,22 @@ class ExamRepository {
     switch (mode) {
       case ExamMode.hiragana:
         return {
-          KanaType.hiragana: await _kanaRepository.getByType(
+          KanaType.hiragana: await kanaRepository.getByType(
             KanaType.hiragana,
           ),
         };
       case ExamMode.katakana:
         return {
-          KanaType.katakana: await _kanaRepository.getByType(
+          KanaType.katakana: await kanaRepository.getByType(
             KanaType.katakana,
           ),
         };
       case ExamMode.mixed:
         return {
-          KanaType.hiragana: await _kanaRepository.getByType(
+          KanaType.hiragana: await kanaRepository.getByType(
             KanaType.hiragana,
           ),
-          KanaType.katakana: await _kanaRepository.getByType(
+          KanaType.katakana: await kanaRepository.getByType(
             KanaType.katakana,
           ),
         };
@@ -147,7 +145,7 @@ class ExamRepository {
   }) async {
     final progressCache = <KanaType, Map<String, KanaProgress>>{};
     for (final type in answers.map((a) => a.question.kana.type).toSet()) {
-      final typeProgress = await _progressRepository.getTypeProgress(
+      final typeProgress = await progressRepository.getTypeProgress(
         uid,
         type,
       );

@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.teisou.kana_master"
+    namespace = "com.teisou.kanamaster"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.teisou.kana_master"
+        applicationId = "com.teisou.kanamaster"
         // Firebase Auth / Firestore require minSdk 23+.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion

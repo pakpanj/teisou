@@ -2,9 +2,9 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-/// PLACEHOLDER — regenerate this file by running `flutterfire configure`
-/// against a real Firebase project before shipping. Values below are not
-/// valid credentials; Firebase calls will fail until this is replaced.
+/// Generated from `android/app/google-services.json` (project
+/// teisou-kana-master). Regenerate via `flutterfire configure` if the
+/// Firebase project changes.
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -25,10 +25,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_YOUR_API_KEY',
-    appId: 'REPLACE_WITH_YOUR_APP_ID',
-    messagingSenderId: 'REPLACE_WITH_YOUR_SENDER_ID',
-    projectId: 'REPLACE_WITH_YOUR_PROJECT_ID',
-    storageBucket: 'REPLACE_WITH_YOUR_PROJECT_ID.firebasestorage.app',
+    apiKey: 'AIzaSyB_oIrI5pP0_0ik2bDAwONqr2g1QhMsGH4',
+    appId: '1:329692614759:android:cbca9fc670f162d60e44c2',
+    messagingSenderId: '329692614759',
+    projectId: 'teisou-kana-master',
+    storageBucket: 'teisou-kana-master.firebasestorage.app',
   );
 }

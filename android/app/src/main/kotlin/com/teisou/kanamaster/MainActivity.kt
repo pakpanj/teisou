@@ -1,4 +1,4 @@
-package com.teisou.kana_master
+package com.teisou.kanamaster
 
 import io.flutter.embedding.android.FlutterActivity
 
