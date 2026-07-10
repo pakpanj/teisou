@@ -1,0 +1,43 @@
+name: kana_master
+description: "Teisou: Kana Master - belajar Hiragana & Katakana untuk pemula."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State management
+  flutter_riverpod: ^2.6.1
+
+  # Firebase
+  firebase_core: ^3.8.0
+  firebase_auth: ^5.3.3
+  cloud_firestore: ^5.5.0
+  google_sign_in: ^6.2.2
+
+  # Text-to-speech untuk pengucapan kana & contoh kata
+  flutter_tts: ^4.2.0
+
+  # Render aset karakter kana berbentuk SVG
+  flutter_svg: ^2.0.16
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/data/kana_data.json
+    - assets/svg/hiragana/
+    - assets/svg/katakana/
