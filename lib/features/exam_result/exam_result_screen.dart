@@ -1,3 +1,6 @@
+import 'dart:math' as math;
+
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -33,9 +36,16 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
     return MascotMood.sad;
   }
 
+  late final ConfettiController _confettiController = ConfettiController(
+    duration: const Duration(seconds: 2),
+  );
+
   @override
   void initState() {
     super.initState();
+    if (result.newlyMasteredCount > 0) {
+      _confettiController.play();
+    }
     // Free users only — premium's whole pitch includes "Tanpa iklan".
     final isPremium = ref.read(subscriptionProvider).valueOrNull?.isPremium ?? false;
     if (!isPremium) {
@@ -44,10 +54,18 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
   }
 
   @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: SafeArea(
+      body: Stack(
+        children: [
+          SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Column(
@@ -158,6 +176,25 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
             ],
           ),
         ),
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: ConfettiWidget(
+              confettiController: _confettiController,
+              blastDirection: math.pi / 2,
+              maxBlastForce: 20,
+              minBlastForce: 8,
+              emissionFrequency: 0.05,
+              numberOfParticles: 24,
+              gravity: 0.3,
+              colors: const [
+                AppColors.primaryCoral,
+                AppColors.secondaryBlue,
+                AppColors.tertiaryAmber,
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

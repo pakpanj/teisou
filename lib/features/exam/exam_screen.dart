@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/exam_mode.dart';
@@ -76,9 +77,7 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
         );
 
     if (!mounted) return;
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => ExamResultScreen(result: result)),
-    );
+    AppNavigator.replaceFadeScale(context, ExamResultScreen(result: result));
   }
 
   @override

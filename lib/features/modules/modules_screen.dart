@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/kana_type.dart';
 import '../../data/models/module_info.dart';
@@ -28,10 +29,9 @@ class ModulesScreen extends StatelessWidget {
             iconColor: AppColors.primaryCoral,
             title: 'Belajar Hiragana',
             subtitle: '46 karakter dasar',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => const FlashcardScreen(type: KanaType.hiragana),
-              ),
+            onTap: () => AppNavigator.slideFromRight(
+              context,
+              const FlashcardScreen(type: KanaType.hiragana),
             ),
           ),
           const SizedBox(height: 12),
@@ -41,10 +41,9 @@ class ModulesScreen extends StatelessWidget {
             iconColor: AppColors.secondaryBlue,
             title: 'Belajar Katakana',
             subtitle: '46 karakter dasar',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => const FlashcardScreen(type: KanaType.katakana),
-              ),
+            onTap: () => AppNavigator.slideFromRight(
+              context,
+              const FlashcardScreen(type: KanaType.katakana),
             ),
           ),
           const SizedBox(height: 28),

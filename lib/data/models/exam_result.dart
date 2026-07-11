@@ -34,12 +34,18 @@ class ExamResult {
   final List<WrongAnswerEntry> wrongAnswers;
   final DateTime completedAt;
 
+  /// How many kana transitioned into `mastered` status during this exam —
+  /// a transient, submission-time-only signal (not persisted) used to
+  /// decide whether to celebrate with confetti on ExamResultScreen.
+  final int newlyMasteredCount;
+
   ExamResult({
     required this.mode,
     required this.score,
     required this.total,
     required this.wrongAnswers,
     required this.completedAt,
+    this.newlyMasteredCount = 0,
   });
 
   int get correctCount => score;

@@ -182,6 +182,7 @@ class ExamRepository {
     final wrongAnswers = <WrongAnswerEntry>[];
     final progressUpdates = <String, dynamic>{};
     var score = 0;
+    var newlyMasteredCount = 0;
 
     for (final answered in answers) {
       final kana = answered.question.kana;
@@ -197,6 +198,10 @@ class ExamRepository {
             : (current.status == KanaStatus.newKana
                 ? KanaStatus.learning
                 : current.status);
+        if (current.status != KanaStatus.mastered &&
+            newStatus == KanaStatus.mastered) {
+          newlyMasteredCount++;
+        }
         updated = current.copyWith(
           correctStreak: newStreak,
           status: newStatus,
@@ -231,6 +236,7 @@ class ExamRepository {
       total: answers.length,
       wrongAnswers: wrongAnswers,
       completedAt: now,
+      newlyMasteredCount: newlyMasteredCount,
     );
 
     final userDoc = _firestore.collection(FirestorePaths.users).doc(uid);

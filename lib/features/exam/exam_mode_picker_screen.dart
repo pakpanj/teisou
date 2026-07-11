@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/exam_mode.dart';
 import 'exam_screen.dart';
@@ -47,9 +48,7 @@ class ExamModePickerScreen extends StatelessWidget {
   }
 
   void _startExam(BuildContext context, ExamMode mode) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => ExamScreen(mode: mode)),
-    );
+    AppNavigator.slideFromBottom(context, ExamScreen(mode: mode));
   }
 }
 

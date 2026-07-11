@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/mountain_scenery.dart';
 import '../../core/widgets/sakura_decoration.dart';
+import '../../core/widgets/sakura_fall_widget.dart';
 import '../../data/models/kana_type.dart';
 import '../exam/exam_mode_picker_screen.dart';
 import '../flashcard/flashcard_screen.dart';
@@ -49,7 +51,10 @@ class _HomeTabBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: SafeArea(
+      body: Stack(
+        children: [
+          const Positioned.fill(child: SakuraFallWidget()),
+          SafeArea(
         child: Column(
           children: [
             Expanded(
@@ -120,11 +125,9 @@ class _HomeTabBody extends StatelessWidget {
                       iconLabel: 'あ',
                       title: 'Belajar Hiragana',
                       subtitle: '46 karakter dasar',
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) =>
-                              const FlashcardScreen(type: KanaType.hiragana),
-                        ),
+                      onTap: () => AppNavigator.slideFromRight(
+                        context,
+                        const FlashcardScreen(type: KanaType.hiragana),
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -134,11 +137,9 @@ class _HomeTabBody extends StatelessWidget {
                       iconLabel: 'ア',
                       title: 'Belajar Katakana',
                       subtitle: '46 karakter dasar',
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) =>
-                              const FlashcardScreen(type: KanaType.katakana),
-                        ),
+                      onTap: () => AppNavigator.slideFromRight(
+                        context,
+                        const FlashcardScreen(type: KanaType.katakana),
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -148,10 +149,9 @@ class _HomeTabBody extends StatelessWidget {
                       icon: Icons.assignment_outlined,
                       title: 'Ujian',
                       subtitle: 'Uji kemampuanmu!',
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => const ExamModePickerScreen(),
-                        ),
+                      onTap: () => AppNavigator.slideFromBottom(
+                        context,
+                        const ExamModePickerScreen(),
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -162,6 +162,8 @@ class _HomeTabBody extends StatelessWidget {
             const FreeTierBannerAd(),
           ],
         ),
+          ),
+        ],
       ),
     );
   }
