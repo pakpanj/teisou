@@ -56,4 +56,15 @@ class ExamResult {
         'wrongAnswers': wrongAnswers.map((e) => e.toMap()).toList(),
         'completedAt': Timestamp.fromDate(completedAt),
       };
+
+  factory ExamResult.fromMap(Map<String, dynamic> map) => ExamResult(
+        mode: ExamModeX.fromKey(map['type'] as String?),
+        score: (map['score'] as num?)?.toInt() ?? 0,
+        total: (map['total'] as num?)?.toInt() ?? 0,
+        wrongAnswers: (map['wrongAnswers'] as List<dynamic>? ?? [])
+            .map((e) => WrongAnswerEntry.fromMap(e as Map<String, dynamic>))
+            .toList(),
+        completedAt: (map['completedAt'] as Timestamp?)?.toDate() ??
+            DateTime.now(),
+      );
 }

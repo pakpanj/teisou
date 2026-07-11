@@ -4,8 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/models/kana_character.dart';
 import '../data/models/kana_type.dart';
 import '../data/models/kana_type_progress.dart';
+import '../data/models/subscription.dart';
+import '../data/models/user_profile.dart';
 import '../data/repositories/exam_repository.dart';
 import '../data/repositories/kana_repository.dart';
+import '../data/repositories/leaderboard_repository.dart';
 import '../data/repositories/progress_repository.dart';
 import 'services/auth_service.dart';
 import 'services/tts_service.dart';
@@ -18,25 +21,28 @@ final kanaRepositoryProvider = Provider<KanaRepository>(
 final progressRepositoryProvider = Provider<ProgressRepository>(
   (ref) => ProgressRepository(),
 );
+final leaderboardRepositoryProvider = Provider<LeaderboardRepository>(
+  (ref) => LeaderboardRepository(),
+);
 final examRepositoryProvider = Provider<ExamRepository>(
   (ref) => ExamRepository(
     kanaRepository: ref.watch(kanaRepositoryProvider),
     progressRepository: ref.watch(progressRepositoryProvider),
+    leaderboardRepository: ref.watch(leaderboardRepositoryProvider),
   ),
 );
-
 /// Ensures anonymous sign-in and the user profile doc exist. Screens should
 /// gate progress reads/writes on this resolving.
 final appStartupProvider = FutureProvider<User>((ref) async {
   final auth = ref.watch(authServiceProvider);
   final user = await auth.ensureSignedIn();
-  await ref
-      .watch(progressRepositoryProvider)
-      .ensureUserProfile(
-        user.uid,
-        isAnonymous: user.isAnonymous,
-        displayName: user.displayName,
-      );
+  final progressRepository = ref.watch(progressRepositoryProvider);
+  await progressRepository.ensureUserProfile(
+    user.uid,
+    isAnonymous: user.isAnonymous,
+    displayName: user.displayName,
+  );
+  await progressRepository.recordDailyActivity(user.uid);
   return user;
 });
 
@@ -56,3 +62,16 @@ final typeProgressProvider =
           .watch(progressRepositoryProvider)
           .watchTypeProgress(user.uid, type);
     });
+
+final userProfileProvider = StreamProvider<UserProfile>((ref) async* {
+  final user = await ref.watch(appStartupProvider.future);
+  yield* ref
+      .watch(progressRepositoryProvider)
+      .watchProfile(user.uid)
+      .map(UserProfile.fromMap);
+});
+
+final subscriptionProvider = StreamProvider<Subscription>((ref) async* {
+  final user = await ref.watch(appStartupProvider.future);
+  yield* ref.watch(progressRepositoryProvider).watchSubscription(user.uid);
+});

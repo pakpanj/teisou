@@ -11,6 +11,7 @@ import '../models/kana_progress.dart';
 import '../models/kana_status.dart';
 import '../models/kana_type.dart';
 import 'kana_repository.dart';
+import 'leaderboard_repository.dart';
 import 'progress_repository.dart';
 
 /// Generates weighted exam sessions and persists results atomically.
@@ -20,16 +21,34 @@ class ExamRepository {
 
   final KanaRepository kanaRepository;
   final ProgressRepository progressRepository;
+  final LeaderboardRepository leaderboardRepository;
   final FirebaseFirestore _firestore;
   final Random _random;
 
   ExamRepository({
     required this.kanaRepository,
     required this.progressRepository,
+    required this.leaderboardRepository,
     FirebaseFirestore? firestore,
     Random? random,
   })  : _firestore = firestore ?? FirebaseFirestore.instance,
         _random = random ?? Random();
+
+  /// Most recent exam attempts, newest first — used for the "3 terakhir"
+  /// preview on ProfileScreen.
+  Stream<List<ExamResult>> watchRecentHistory(String uid, {int limit = 3}) {
+    return _firestore
+        .collection(FirestorePaths.users)
+        .doc(uid)
+        .collection(FirestorePaths.examHistory)
+        .orderBy('completedAt', descending: true)
+        .limit(limit)
+        .snapshots()
+        .map(
+          (snapshot) =>
+              snapshot.docs.map((doc) => ExamResult.fromMap(doc.data())).toList(),
+        );
+  }
 
   /// Builds a 10-question session for [mode], weighting kana that are
   /// `new`/`learning` (~70% chance) over `mastered` (~30%) so exams
@@ -137,14 +156,21 @@ class ExamRepository {
   }
 
   /// Persists the exam attempt and every touched kana's progress update in
-  /// a single atomic batch: either both writes land, or neither does.
+  /// a single atomic batch: either both writes land, or neither does. Also
+  /// refreshes the user's `leaderboard` entry (total mastered + exam high
+  /// score) afterwards — best-effort, not part of the atomic write.
   Future<ExamResult> submitExam({
     required String uid,
     required ExamMode mode,
     required List<AnsweredQuestion> answers,
+    required String displayName,
+    String? photoUrl,
   }) async {
+    // Load progress for both kana types (not just the ones covered by this
+    // exam) so the post-submit total-mastered count is accurate even for a
+    // hiragana-only or katakana-only session.
     final progressCache = <KanaType, Map<String, KanaProgress>>{};
-    for (final type in answers.map((a) => a.question.kana.type).toSet()) {
+    for (final type in KanaType.values) {
       final typeProgress = await progressRepository.getTypeProgress(
         uid,
         type,
@@ -196,6 +222,7 @@ class ExamRepository {
 
       progressUpdates['progress.${kana.type.key}.items.${kana.id}'] =
           updated.toMap();
+      progressCache[kana.type]![kana.id] = updated;
     }
 
     final result = ExamResult(
@@ -219,6 +246,24 @@ class ExamRepository {
       SetOptions(merge: true),
     );
     await batch.commit();
+
+    final totalMastered = progressCache.values
+        .expand((items) => items.values)
+        .where((p) => p.status == KanaStatus.mastered)
+        .length;
+
+    await leaderboardRepository.updateTotalMastered(
+      uid: uid,
+      displayName: displayName,
+      photoUrl: photoUrl,
+      totalMastered: totalMastered,
+    );
+    await leaderboardRepository.updateExamHighScoreIfHigher(
+      uid: uid,
+      displayName: displayName,
+      photoUrl: photoUrl,
+      score: score,
+    );
 
     return result;
   }

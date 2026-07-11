@@ -12,6 +12,17 @@ extension ExamModeX on ExamMode {
     }
   }
 
+  static ExamMode fromKey(String? key) {
+    switch (key) {
+      case 'katakana':
+        return ExamMode.katakana;
+      case 'mixed':
+        return ExamMode.mixed;
+      default:
+        return ExamMode.hiragana;
+    }
+  }
+
   String get title {
     switch (this) {
       case ExamMode.hiragana:

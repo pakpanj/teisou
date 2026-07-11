@@ -48,8 +48,8 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
     }
 
     setState(() => _submitting = true);
-    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    if (uid == null) {
+    final user = ref.read(appStartupProvider).valueOrNull;
+    if (user == null) {
       setState(() => _submitting = false);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Gagal menyimpan hasil ujian, coba lagi.')),
@@ -59,7 +59,13 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
 
     final result = await ref
         .read(examRepositoryProvider)
-        .submitExam(uid: uid, mode: widget.mode, answers: _answers);
+        .submitExam(
+          uid: user.uid,
+          mode: widget.mode,
+          answers: _answers,
+          displayName: user.displayName ?? 'Pelajar Kana',
+          photoUrl: user.photoURL,
+        );
 
     if (!mounted) return;
     Navigator.of(context).pushReplacement(

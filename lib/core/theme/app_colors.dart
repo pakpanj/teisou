@@ -19,4 +19,11 @@ class AppColors {
 
   /// Pale blue background used behind the "Belajar Katakana" menu card.
   static const katakanaCardBg = Color(0xFFE8F0FE);
+
+  /// Gold gradient for the PREMIUM tier badge.
+  static const premiumGoldStart = Color(0xFFF6D365);
+  static const premiumGoldEnd = Color(0xFFC9A227);
+
+  /// Grey used for the FREE tier badge and "Segera Hadir" chips.
+  static const freeBadgeGrey = Color(0xFF9AA3AF);
 }

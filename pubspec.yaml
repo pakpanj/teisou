@@ -27,6 +27,9 @@ dependencies:
 
   # Render aset karakter kana berbentuk SVG
   flutter_svg: ^2.0.16
+  google_mobile_ads: ^9.0.0
+  in_app_purchase: ^3.3.0
+  confetti: ^0.8.0
 
 dev_dependencies:
   flutter_test:

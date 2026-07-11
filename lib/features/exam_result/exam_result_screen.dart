@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/mascot_widget.dart';
 import '../../core/widgets/sakura_decoration.dart';
 import '../../data/models/exam_result.dart';
 import '../exam/exam_screen.dart';
 import '../home/home_screen.dart';
-import 'widgets/maneki_neko_mascot.dart';
 
 class ExamResultScreen extends StatelessWidget {
   final ExamResult result;
@@ -16,6 +16,12 @@ class ExamResultScreen extends StatelessWidget {
     if (result.percentage >= 80) return 'Hebat! Ujian Selesai 🎉';
     if (result.percentage >= 60) return 'Bagus! Terus Berlatih 👍';
     return 'Jangan Menyerah, Ayo Coba Lagi! 💪';
+  }
+
+  MascotMood get _mood {
+    if (result.percentage >= 80) return MascotMood.happy;
+    if (result.percentage >= 60) return MascotMood.cheering;
+    return MascotMood.sad;
   }
 
   @override
@@ -43,7 +49,7 @@ class ExamResultScreen extends StatelessWidget {
                       child: const SakuraDecoration(size: 40),
                     ),
                   ),
-                  const ManekiNekoMascot(size: 180),
+                  MascotWidget(mood: _mood, size: 180),
                 ],
               ),
               const SizedBox(height: 24),
