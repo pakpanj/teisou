@@ -7,9 +7,6 @@ class BunpouScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ComingSoonScreen(
-      moduleId: 'bunpou',
-      title: 'Bunpou (Tata Bahasa)',
-    );
+    return const ComingSoonScreen(moduleId: 'bunpou');
   }
 }

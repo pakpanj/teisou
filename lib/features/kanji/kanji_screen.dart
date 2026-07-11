@@ -7,6 +7,6 @@ class KanjiScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ComingSoonScreen(moduleId: 'kanji', title: 'Kanji N5');
+    return const ComingSoonScreen(moduleId: 'kanji');
   }
 }

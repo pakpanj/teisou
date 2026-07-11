@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/mascot_widget.dart';
+import '../../../data/models/module_info.dart';
+import '../../paywall/paywall_screen.dart';
 
 /// Shared "this module isn't built yet" body, used both as a bottom sheet
 /// (tapping a coming-soon card on [ModulesScreen]) and as the entire body
@@ -13,6 +15,9 @@ class ComingSoonContent extends ConsumerWidget {
   final VoidCallback? onClose;
 
   const ComingSoonContent({super.key, required this.moduleId, this.onClose});
+
+  ModuleInfo get _module =>
+      kComingSoonModules.firstWhere((m) => m.id == moduleId);
 
   Future<void> _remindMe(BuildContext context, WidgetRef ref) async {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
@@ -28,6 +33,8 @@ class ComingSoonContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final module = _module;
+
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -52,6 +59,23 @@ class ComingSoonContent extends ConsumerWidget {
               child: const Text('Ingatkan Saya'),
             ),
           ),
+          if (module.requiresPremium) ...[
+            const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => PaywallScreen(
+                      moduleId: module.id,
+                      moduleTitle: module.title,
+                    ),
+                  ),
+                ),
+                child: const Text('Lihat Opsi Premium'),
+              ),
+            ),
+          ],
           if (onClose != null) ...[
             const SizedBox(height: 12),
             SizedBox(

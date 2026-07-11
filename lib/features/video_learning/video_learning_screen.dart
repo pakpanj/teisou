@@ -7,9 +7,6 @@ class VideoLearningScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ComingSoonScreen(
-      moduleId: 'video_learning',
-      title: 'Belajar dari Video',
-    );
+    return const ComingSoonScreen(moduleId: 'video_learning');
   }
 }

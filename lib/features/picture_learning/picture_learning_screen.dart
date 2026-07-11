@@ -7,9 +7,6 @@ class PictureLearningScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ComingSoonScreen(
-      moduleId: 'picture_learning',
-      title: 'Belajar dari Gambar',
-    );
+    return const ComingSoonScreen(moduleId: 'picture_learning');
   }
 }

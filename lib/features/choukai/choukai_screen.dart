@@ -7,9 +7,6 @@ class ChoukaiScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ComingSoonScreen(
-      moduleId: 'choukai',
-      title: 'Choukai (Listening)',
-    );
+    return const ComingSoonScreen(moduleId: 'choukai');
   }
 }

@@ -7,6 +7,6 @@ class ParticleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ComingSoonScreen(moduleId: 'particle', title: 'Partikel');
+    return const ComingSoonScreen(moduleId: 'particle');
   }
 }
