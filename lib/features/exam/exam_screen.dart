@@ -23,6 +23,14 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
   final List<AnsweredQuestion> _answers = [];
   bool _submitting = false;
 
+  @override
+  void initState() {
+    super.initState();
+    // Preload in the background so it's ready by the time ExamResultScreen
+    // wants to show it — no visible loading delay, no ad shown here.
+    ref.read(adServiceProvider).preloadInterstitial();
+  }
+
   void _selectAnswer(String answer) {
     if (_selectedAnswer != null) return;
     setState(() => _selectedAnswer = answer);

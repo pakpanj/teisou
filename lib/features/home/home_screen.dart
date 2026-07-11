@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/mountain_scenery.dart';
 import '../../core/widgets/sakura_decoration.dart';
 import '../../data/models/kana_type.dart';
 import '../exam/exam_mode_picker_screen.dart';
 import '../flashcard/flashcard_screen.dart';
+import '../leaderboard/leaderboard_screen.dart';
+import '../modules/modules_screen.dart';
+import '../profile/profile_screen.dart';
 
+/// Root tab shell: Home / Belajar / Ujian / Profil share one bottom nav bar
+/// via an [IndexedStack] so each tab keeps its scroll/state when switching.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -17,21 +23,27 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _navIndex = 0;
 
-  void _onNavTap(int index) {
-    if (index == 0) {
-      setState(() => _navIndex = index);
-      return;
-    }
-    if (index == 2) {
-      Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => const ExamModePickerScreen()),
-      );
-      return;
-    }
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Segera hadir')),
+  static const _tabs = [
+    _HomeTabBody(),
+    ModulesScreen(),
+    ExamModePickerScreen(),
+    ProfileScreen(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: IndexedStack(index: _navIndex, children: _tabs),
+      bottomNavigationBar: _BottomNavBar(
+        currentIndex: _navIndex,
+        onTap: (index) => setState(() => _navIndex = index),
+      ),
     );
   }
+}
+
+class _HomeTabBody extends StatelessWidget {
+  const _HomeTabBody();
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +80,24 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
-                        const SakuraDecoration(size: 56),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            IconButton(
+                              tooltip: 'Papan Peringkat',
+                              onPressed: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => const LeaderboardScreen(),
+                                ),
+                              ),
+                              icon: const Text(
+                                '🏆',
+                                style: TextStyle(fontSize: 22),
+                              ),
+                            ),
+                            const SakuraDecoration(size: 48),
+                          ],
+                        ),
                       ],
                     ),
                     const SizedBox(height: 8),
@@ -130,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            _BottomNavBar(currentIndex: _navIndex, onTap: _onNavTap),
+            const FreeTierBannerAd(),
           ],
         ),
       ),

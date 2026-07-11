@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/kana_glyph.dart';
 import '../../core/widgets/mountain_scenery.dart';
 import '../../data/models/kana_character.dart';
@@ -159,6 +160,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
           skyColor: accent,
           mountainColor: AppColors.textNavy,
         ),
+        const FreeTierBannerAd(),
       ],
     );
   }

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'core/theme/app_theme.dart';
 import 'features/home/home_screen.dart';
@@ -14,6 +15,11 @@ Future<void> main() async {
     );
   } catch (e) {
     debugPrint('Firebase.initializeApp failed: $e');
+  }
+  try {
+    await MobileAds.instance.initialize();
+  } catch (e) {
+    debugPrint('MobileAds.initialize failed: $e');
   }
   runApp(const ProviderScope(child: KanaMasterApp()));
 }

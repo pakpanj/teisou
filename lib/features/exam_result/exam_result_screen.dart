@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/mascot_widget.dart';
 import '../../core/widgets/sakura_decoration.dart';
@@ -7,10 +9,17 @@ import '../../data/models/exam_result.dart';
 import '../exam/exam_screen.dart';
 import '../home/home_screen.dart';
 
-class ExamResultScreen extends StatelessWidget {
+class ExamResultScreen extends ConsumerStatefulWidget {
   final ExamResult result;
 
   const ExamResultScreen({super.key, required this.result});
+
+  @override
+  ConsumerState<ExamResultScreen> createState() => _ExamResultScreenState();
+}
+
+class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
+  ExamResult get result => widget.result;
 
   String get _title {
     if (result.percentage >= 80) return 'Hebat! Ujian Selesai 🎉';
@@ -22,6 +31,16 @@ class ExamResultScreen extends StatelessWidget {
     if (result.percentage >= 80) return MascotMood.happy;
     if (result.percentage >= 60) return MascotMood.cheering;
     return MascotMood.sad;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Free users only — premium's whole pitch includes "Tanpa iklan".
+    final isPremium = ref.read(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    if (!isPremium) {
+      ref.read(adServiceProvider).maybeShowInterstitialAfterExam();
+    }
   }
 
   @override
