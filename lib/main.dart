@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,12 +18,20 @@ Future<void> main() async {
   } catch (e) {
     debugPrint('Firebase.initializeApp failed: $e');
   }
+  // Deliberately not awaited: this hits the network (ad config, consent),
+  // which can stall for seconds on a flaky connection. Nothing at startup
+  // depends on it — ads are loaded lazily wherever they're shown — so it
+  // must not block the first frame.
+  unawaited(_initializeMobileAds());
+  runApp(const ProviderScope(child: KanaMasterApp()));
+}
+
+Future<void> _initializeMobileAds() async {
   try {
     await MobileAds.instance.initialize();
   } catch (e) {
     debugPrint('MobileAds.initialize failed: $e');
   }
-  runApp(const ProviderScope(child: KanaMasterApp()));
 }
 
 class KanaMasterApp extends StatelessWidget {
