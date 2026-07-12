@@ -12,6 +12,15 @@ void main() {
     'FlashcardScreen renders first hiragana card and flips to show '
     'romaji + example, without crashing even without Firebase available',
     (WidgetTester tester) async {
+      // The card face is a fixed 700dp tall by design, so the default test
+      // surface (800x600) isn't tall enough to lay it out without
+      // overflowing. Use a taller surface matching a real device instead of
+      // shrinking the card.
+      tester.view.physicalSize = const Size(800, 1400);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+
       await tester.pumpWidget(
         const ProviderScope(
           child: MaterialApp(

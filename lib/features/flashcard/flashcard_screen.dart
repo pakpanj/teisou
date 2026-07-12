@@ -1,11 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/kana_glyph.dart';
-import '../../core/widgets/mountain_scenery.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kana_progress.dart';
 import '../../data/models/kana_type.dart';
@@ -65,7 +63,10 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
     final progressAsync = ref.watch(typeProgressProvider(widget.type));
 
     return Scaffold(
+      backgroundColor: Colors.white,
+
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text(_isHiragana ? 'Belajar Hiragana' : 'Belajar Katakana'),
       ),
       body: kanaListAsync.when(
@@ -94,9 +95,13 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
         ? AppColors.primaryCoral
         : AppColors.secondaryBlue;
 
+    final cardBackground = _isHiragana
+        ? 'assets/images/hiragana_card_bg.png'
+        : 'assets/images/katakana_card_bg.png';
+
     return Column(
       children: [
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(
@@ -109,19 +114,28 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
             style: TextStyle(fontWeight: FontWeight.bold, color: accent),
           ),
         ),
-        Expanded(
+        SizedBox(
+          height: 800,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
             child: Center(
-              child: FlipCard(
-                key: ValueKey(kana.id),
-                onFlipped: (isFront) =>
-                    _handleFlip(isFront, kana, currentProgress),
-                front: _CardFace(
-                  child: _FrontContent(kana: kana, accent: accent),
-                ),
-                back: _CardFace(
-                  child: _BackContent(kana: kana, accent: accent),
+              child: SizedBox(
+                width: 400,
+                height: 700,
+                child: FlipCard(
+                  key: ValueKey(kana.id),
+                  onFlipped: (isFront) =>
+                      _handleFlip(isFront, kana, currentProgress),
+
+                  front: _CardFace(
+                    background: cardBackground,
+                    child: _FrontContent(kana: kana, accent: accent),
+                  ),
+
+                  back: _CardFace(
+                    background: cardBackground,
+                    child: _BackContent(kana: kana, accent: accent),
+                  ),
                 ),
               ),
             ),
@@ -154,12 +168,6 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
             ],
           ),
         ),
-        const SizedBox(height: 16),
-        MountainScenery(
-          height: 140,
-          skyColor: accent,
-          mountainColor: AppColors.textNavy,
-        ),
         const FreeTierBannerAd(),
       ],
     );
@@ -168,8 +176,9 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
 
 class _CardFace extends StatelessWidget {
   final Widget child;
+  final String background;
 
-  const _CardFace({required this.child});
+  const _CardFace({required this.child, required this.background});
 
   @override
   Widget build(BuildContext context) {
@@ -177,8 +186,11 @@ class _CardFace extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
         borderRadius: BorderRadius.circular(28),
+        image: DecorationImage(
+          image: AssetImage(background),
+          fit: BoxFit.cover,
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.08),

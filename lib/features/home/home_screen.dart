@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/banner_ad_widget.dart';
-import '../../core/widgets/mountain_scenery.dart';
 import '../../core/widgets/sakura_decoration.dart';
 import '../../core/widgets/sakura_fall_widget.dart';
 import '../../data/models/kana_type.dart';
@@ -50,118 +49,145 @@ class _HomeTabBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: Stack(
         children: [
           const Positioned.fill(child: SakuraFallWidget()),
           SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        RichText(
-                          text: const TextSpan(
-                            style: TextStyle(
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
-                              height: 1.1,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: 'Kana\n',
-                                style: TextStyle(color: AppColors.textNavy),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            RichText(
+                              text: const TextSpan(
+                                style: TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                  height: 1.1,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: 'Kana\n',
+                                    style: TextStyle(color: AppColors.textNavy),
+                                  ),
+                                  TextSpan(
+                                    text: 'Master',
+                                    style: TextStyle(
+                                      color: AppColors.primaryCoral,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              TextSpan(
-                                text: 'Master',
-                                style: TextStyle(color: AppColors.primaryCoral),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                IconButton(
+                                  tooltip: 'Papan Peringkat',
+                                  onPressed: () => Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (_) => const LeaderboardScreen(),
+                                    ),
+                                  ),
+                                  icon: const Text(
+                                    '🏆',
+                                    style: TextStyle(fontSize: 22),
+                                  ),
+                                ),
+                                const SakuraDecoration(size: 48),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        const Text(
+                          'Belajar Kana, Langkah Pertama Menuju Jepang!',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.textNavy,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Stack(
+                            children: [
+                              SizedBox(
+                                height: 120,
+                                width: double.infinity,
+                                child: Image.asset(
+                                  'assets/images/japan_station.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+
+                              Container(
+                                height: 120,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      const Color.fromARGB(0, 155, 68, 138),
+                                      const Color.fromARGB(53, 248, 90, 248),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            IconButton(
-                              tooltip: 'Papan Peringkat',
-                              onPressed: () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (_) => const LeaderboardScreen(),
-                                ),
-                              ),
-                              icon: const Text(
-                                '🏆',
-                                style: TextStyle(fontSize: 22),
-                              ),
-                            ),
-                            const SakuraDecoration(size: 48),
-                          ],
+                        const SizedBox(height: 24),
+                        _MenuCard(
+                          backgroundColor: AppColors.hiraganaCardBg,
+                          iconBackgroundColor: const Color.fromARGB(255, 254, 129, 146),
+                          iconLabel: 'あ',
+                          title: 'Belajar Hiragana',
+                          subtitle: '46 karakter dasar',
+                          onTap: () => AppNavigator.slideFromRight(
+                            context,
+                            const FlashcardScreen(type: KanaType.hiragana),
+                          ),
                         ),
+                        const SizedBox(height: 16),
+                        _MenuCard(
+                          backgroundColor: AppColors.katakanaCardBg,
+                          iconBackgroundColor: const Color.fromARGB(255, 112, 174, 255),
+                          iconLabel: 'ア',
+                          title: 'Belajar Katakana',
+                          subtitle: '46 karakter dasar',
+                          onTap: () => AppNavigator.slideFromRight(
+                            context,
+                            const FlashcardScreen(type: KanaType.katakana),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        _MenuCard(
+                          backgroundColor: AppColors.tertiaryAmberCardBg,
+                          iconBackgroundColor: AppColors.tertiaryAmber,
+                          icon: Icons.assignment_outlined,
+                          title: 'Ujian',
+                          subtitle: 'Uji kemampuanmu!',
+                          onTap: () => AppNavigator.slideFromBottom(
+                            context,
+                            const ExamModePickerScreen(),
+                          ),
+                        ),
+                        const SizedBox(height: 24),
                       ],
                     ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Belajar Kana, Langkah Pertama Menuju Jepang!',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: AppColors.textNavy,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: const MountainScenery(height: 120),
-                    ),
-                    const SizedBox(height: 24),
-                    _MenuCard(
-                      backgroundColor: AppColors.hiraganaCardBg,
-                      iconBackgroundColor: AppColors.primaryCoral,
-                      iconLabel: 'あ',
-                      title: 'Belajar Hiragana',
-                      subtitle: '46 karakter dasar',
-                      onTap: () => AppNavigator.slideFromRight(
-                        context,
-                        const FlashcardScreen(type: KanaType.hiragana),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    _MenuCard(
-                      backgroundColor: AppColors.katakanaCardBg,
-                      iconBackgroundColor: AppColors.secondaryBlue,
-                      iconLabel: 'ア',
-                      title: 'Belajar Katakana',
-                      subtitle: '46 karakter dasar',
-                      onTap: () => AppNavigator.slideFromRight(
-                        context,
-                        const FlashcardScreen(type: KanaType.katakana),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    _MenuCard(
-                      backgroundColor: AppColors.tertiaryAmberCardBg,
-                      iconBackgroundColor: AppColors.tertiaryAmber,
-                      icon: Icons.assignment_outlined,
-                      title: 'Ujian',
-                      subtitle: 'Uji kemampuanmu!',
-                      onTap: () => AppNavigator.slideFromBottom(
-                        context,
-                        const ExamModePickerScreen(),
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                  ],
+                  ),
                 ),
-              ),
+                const FreeTierBannerAd(),
+              ],
             ),
-            const FreeTierBannerAd(),
-          ],
-        ),
           ),
         ],
       ),
