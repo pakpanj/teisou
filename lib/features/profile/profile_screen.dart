@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
-import '../../core/widgets/mascot_widget.dart';
+import '../../core/widgets/user_avatar.dart';
 import '../../data/models/exam_mode.dart';
 import '../../data/models/exam_result.dart';
 import '../../data/models/kana_status.dart';
@@ -16,6 +16,7 @@ import 'exam_history_screen.dart';
 import 'language_screen.dart';
 import 'notification_screen.dart';
 import 'profile_providers.dart';
+import 'widgets/edit_name_dialog.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -120,13 +121,20 @@ class _HeaderCard extends ConsumerWidget {
     return 'Gagal masuk dengan Google. Periksa koneksi internet kamu dan coba lagi.';
   }
 
+  void _editName(BuildContext context, String currentName) {
+    showDialog<void>(
+      context: context,
+      builder: (_) => EditNameDialog(currentName: currentName),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final subscription = ref.watch(subscriptionProvider).valueOrNull;
     final isPremium = subscription?.isPremium ?? false;
     final isAnonymous = user.isAnonymous;
-    final photoUrl = user.photoURL;
-    final displayName = user.displayName ?? 'Pelajar Kana';
+    final profile = ref.watch(userProfileProvider).valueOrNull;
+    final displayName = profile?.resolveDisplayName(user) ?? (user.displayName ?? 'Pelajar Kana');
 
     return Container(
       width: double.infinity,
@@ -137,20 +145,27 @@ class _HeaderCard extends ConsumerWidget {
       ),
       child: Column(
         children: [
-          if (!isAnonymous && photoUrl != null)
-            CircleAvatar(radius: 40, backgroundImage: NetworkImage(photoUrl))
-          else
-            const MascotWidget(mood: MascotMood.excited, size: 80),
+          UserAvatar(profile: profile, user: user, radius: 40),
           const SizedBox(height: 12),
-          Text(
-            displayName,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.textNavy,
-            ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                displayName,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textNavy,
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.edit, size: 18, color: AppColors.textNavy),
+                tooltip: 'Ganti Nama',
+                onPressed: () => _editName(context, displayName),
+                visualDensity: VisualDensity.compact,
+              ),
+            ],
           ),
-          const SizedBox(height: 8),
           _TierBadge(isPremium: isPremium),
           if (isAnonymous) ...[
             const SizedBox(height: 16),
