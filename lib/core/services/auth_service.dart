@@ -9,8 +9,14 @@ class AuthService {
   final GoogleSignIn _googleSignIn;
 
   AuthService({FirebaseAuth? auth, GoogleSignIn? googleSignIn})
-      : _auth = auth ?? FirebaseAuth.instance,
-        _googleSignIn = googleSignIn ?? GoogleSignIn();
+    : _auth = auth ?? FirebaseAuth.instance,
+      _googleSignIn =
+          googleSignIn ??
+          GoogleSignIn(
+            serverClientId:
+                '329692614759-n4fn14l7ba87g2odmea5hl2svreve0hp.apps.googleusercontent.com',
+            scopes: const ['email'],
+          );
 
   User? get currentUser => _auth.currentUser;
 
