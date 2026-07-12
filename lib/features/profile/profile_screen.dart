@@ -99,14 +99,25 @@ class _HeaderCard extends ConsumerWidget {
   Future<void> _linkGoogle(BuildContext context, WidgetRef ref) async {
     try {
       final result = await ref.read(authServiceProvider).linkWithGoogle();
-      if (result == null) return;
+      if (result == null) return; // user cancelled the account picker
       ref.invalidate(appStartupProvider);
     } catch (e) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Gagal masuk dengan Google: $e')),
+        SnackBar(content: Text(_friendlyGoogleSignInError(e))),
       );
     }
+  }
+
+  /// Google Sign-In failures are usually device/OAuth-config issues (bad
+  /// network, Play Services hiccup, misconfigured OAuth consent screen)
+  /// rather than something the user can fix by retrying differently, so we
+  /// keep the message generic instead of surfacing the raw exception.
+  String _friendlyGoogleSignInError(Object e) {
+    if (e is FirebaseAuthException && e.code == 'credential-already-in-use') {
+      return 'Akun Google ini sudah terhubung ke akun lain.';
+    }
+    return 'Gagal masuk dengan Google. Periksa koneksi internet kamu dan coba lagi.';
   }
 
   @override

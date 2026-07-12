@@ -12,7 +12,20 @@
           "package_name": "com.teisou.kanamaster"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "329692614759-fh5nhmaufs4cutfa0bphure6pei2hhnt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teisou.kanamaster",
+            "certificate_hash": "b4f26381dd99ca53d59643d2d0d03db3d6699a0e"
+          }
+        },
+        {
+          "client_id": "329692614759-n4fn14l7ba87g2odmea5hl2svreve0hp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB_oIrI5pP0_0ik2bDAwONqr2g1QhMsGH4"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329692614759-n4fn14l7ba87g2odmea5hl2svreve0hp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
