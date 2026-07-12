@@ -1,0 +1,15 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Avatar upload — hanya pemilik akun yang bisa baca/tulis avatarnya
+    // sendiri. Publicly readable download URLs are handed out by Firebase
+    // once uploaded; this rule only governs direct Storage access.
+    match /avatars/{uid}.jpg {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == uid
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+  }
+}

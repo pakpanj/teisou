@@ -7,6 +7,7 @@ import '../models/kana_status.dart';
 import '../models/kana_type.dart';
 import '../models/kana_type_progress.dart';
 import '../models/subscription.dart';
+import '../models/user_profile.dart';
 
 /// Reads and writes per-user progress (profile + per-kana learning state)
 /// stored on the `users/{uid}` document.
@@ -39,6 +40,10 @@ class ProgressRepository {
           'lastLoginAt': FieldValue.serverTimestamp(),
           'currentStreak': 0,
           'lastActiveDate': null,
+          'customDisplayName': null,
+          'avatarType': AvatarType.google.key,
+          'avatarValue': null,
+          'lastNameChangeAt': null,
         },
         'subscription': Subscription.free().toMap(),
       });
@@ -81,6 +86,29 @@ class ProgressRepository {
 
   String _dateKey(DateTime date) =>
       '${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+
+  /// Sets the custom display name shown in place of the Firebase Auth
+  /// displayName. Also stamps `lastNameChangeAt`.
+  Future<void> updateCustomDisplayName(String uid, String name) {
+    return _userDoc(uid).set({
+      'profile': {
+        'customDisplayName': name,
+        'lastNameChangeAt': FieldValue.serverTimestamp(),
+      },
+    }, SetOptions(merge: true));
+  }
+
+  /// Sets which avatar the user has selected: [type] is the resolution kind
+  /// (`google`/`preset_free`/`preset_premium`/`custom_upload`) and [value]
+  /// is the preset id or Storage download URL, as applicable.
+  Future<void> updateAvatar(String uid, AvatarType type, String? value) {
+    return _userDoc(uid).set({
+      'profile': {
+        'avatarType': type.key,
+        'avatarValue': value,
+      },
+    }, SetOptions(merge: true));
+  }
 
   /// Raw `profile` map — displayName/isAnonymous/currentStreak/etc.
   Stream<Map<String, dynamic>> watchProfile(String uid) {
