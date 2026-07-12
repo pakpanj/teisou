@@ -16,6 +16,7 @@ import 'exam_history_screen.dart';
 import 'language_screen.dart';
 import 'notification_screen.dart';
 import 'profile_providers.dart';
+import 'widgets/avatar_picker_sheet.dart';
 import 'widgets/edit_name_dialog.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -128,6 +129,15 @@ class _HeaderCard extends ConsumerWidget {
     );
   }
 
+  void _pickAvatar(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => const AvatarPickerSheet(),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final subscription = ref.watch(subscriptionProvider).valueOrNull;
@@ -145,7 +155,26 @@ class _HeaderCard extends ConsumerWidget {
       ),
       child: Column(
         children: [
-          UserAvatar(profile: profile, user: user, radius: 40),
+          GestureDetector(
+            onTap: () => _pickAvatar(context),
+            child: Stack(
+              children: [
+                UserAvatar(profile: profile, user: user, radius: 40),
+                Positioned(
+                  right: 0,
+                  bottom: 0,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
+                      color: AppColors.primaryCoral,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.camera_alt, size: 14, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
           const SizedBox(height: 12),
           Row(
             mainAxisSize: MainAxisSize.min,

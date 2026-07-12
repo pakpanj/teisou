@@ -6,6 +6,7 @@ import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/exam_mode.dart';
 import '../../data/models/exam_question.dart';
+import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam_result/exam_result_screen.dart';
 import 'exam_providers.dart';
 
@@ -66,14 +67,17 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
       return;
     }
 
+    final profile = ref.read(userProfileProvider).valueOrNull;
     final result = await ref
         .read(examRepositoryProvider)
         .submitExam(
           uid: user.uid,
           mode: widget.mode,
           answers: _answers,
-          displayName: user.displayName ?? 'Pelajar Kana',
+          displayName: profile?.resolveDisplayName(user) ?? (user.displayName ?? 'Pelajar Kana'),
           photoUrl: user.photoURL,
+          avatarType: profile?.avatarType ?? AvatarType.google,
+          avatarValue: profile?.avatarValue,
         );
 
     if (!mounted) return;

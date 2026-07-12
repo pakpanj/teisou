@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../core/firebase/firestore_paths.dart';
 import '../models/leaderboard_entry.dart';
+import '../models/user_profile.dart' show AvatarType, AvatarTypeX;
 
 enum LeaderboardMetric { totalMastered, examHighScore }
 
@@ -61,6 +62,8 @@ class LeaderboardRepository {
     required String uid,
     required String displayName,
     String? photoUrl,
+    AvatarType avatarType = AvatarType.google,
+    String? avatarValue,
     required int totalMastered,
   }) async {
     final existing = await getSelf(uid);
@@ -70,6 +73,8 @@ class LeaderboardRepository {
     await _collection.doc(uid).set({
       'displayName': displayName,
       'photoUrl': photoUrl,
+      'avatarType': avatarType.key,
+      'avatarValue': avatarValue,
       'totalMastered': totalMastered,
       'examHighScore': existing?.examHighScore ?? 0,
       'updatedAt': FieldValue.serverTimestamp(),
@@ -82,6 +87,8 @@ class LeaderboardRepository {
     required String uid,
     required String displayName,
     String? photoUrl,
+    AvatarType avatarType = AvatarType.google,
+    String? avatarValue,
     required int score,
   }) async {
     final existing = await getSelf(uid);
@@ -91,8 +98,30 @@ class LeaderboardRepository {
     await _collection.doc(uid).set({
       'displayName': displayName,
       'photoUrl': photoUrl,
+      'avatarType': avatarType.key,
+      'avatarValue': avatarValue,
       'totalMastered': existing?.totalMastered ?? 0,
       'examHighScore': score,
+      'updatedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+  }
+
+  /// Refreshes just the display metadata (name + avatar) for [uid] without
+  /// touching `totalMastered`/`examHighScore` — used when the user changes
+  /// their name or avatar in ProfileScreen, independent of exam/mastery
+  /// events.
+  Future<void> syncProfileInfo({
+    required String uid,
+    required String displayName,
+    String? photoUrl,
+    required AvatarType avatarType,
+    String? avatarValue,
+  }) {
+    return _collection.doc(uid).set({
+      'displayName': displayName,
+      'photoUrl': photoUrl,
+      'avatarType': avatarType.key,
+      'avatarValue': avatarValue,
       'updatedAt': FieldValue.serverTimestamp(),
     }, SetOptions(merge: true));
   }

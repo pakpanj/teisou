@@ -10,6 +10,7 @@ import '../models/kana_character.dart';
 import '../models/kana_progress.dart';
 import '../models/kana_status.dart';
 import '../models/kana_type.dart';
+import '../models/user_profile.dart' show AvatarType;
 import 'kana_repository.dart';
 import 'leaderboard_repository.dart';
 import 'progress_repository.dart';
@@ -165,6 +166,8 @@ class ExamRepository {
     required List<AnsweredQuestion> answers,
     required String displayName,
     String? photoUrl,
+    AvatarType avatarType = AvatarType.google,
+    String? avatarValue,
   }) async {
     // Load progress for both kana types (not just the ones covered by this
     // exam) so the post-submit total-mastered count is accurate even for a
@@ -262,12 +265,16 @@ class ExamRepository {
       uid: uid,
       displayName: displayName,
       photoUrl: photoUrl,
+      avatarType: avatarType,
+      avatarValue: avatarValue,
       totalMastered: totalMastered,
     );
     await leaderboardRepository.updateExamHighScoreIfHigher(
       uid: uid,
       displayName: displayName,
       photoUrl: photoUrl,
+      avatarType: avatarType,
+      avatarValue: avatarValue,
       score: score,
     );
 

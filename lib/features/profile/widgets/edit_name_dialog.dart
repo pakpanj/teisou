@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/providers.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../data/models/user_profile.dart';
 
 /// Dialog for changing `customDisplayName`. Premium users save instantly;
 /// free users must watch a rewarded ad first (gated via [AdService]).
@@ -31,8 +32,21 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
     return trimmed;
   }
 
+  Future<void> _syncLeaderboard(String uid, String name) {
+    final profile = ref.read(userProfileProvider).valueOrNull;
+    final user = ref.read(appStartupProvider).valueOrNull;
+    return ref.read(leaderboardRepositoryProvider).syncProfileInfo(
+          uid: uid,
+          displayName: name,
+          photoUrl: user?.photoURL,
+          avatarType: profile?.avatarType ?? AvatarType.google,
+          avatarValue: profile?.avatarValue,
+        );
+  }
+
   Future<void> _saveDirectly(String uid, String name) async {
     await ref.read(progressRepositoryProvider).updateCustomDisplayName(uid, name);
+    await _syncLeaderboard(uid, name);
     if (!mounted) return;
     Navigator.of(context).pop();
   }
@@ -42,6 +56,7 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
     ref.read(adServiceProvider).loadAndShowRewarded(
       onRewardEarned: () async {
         await ref.read(progressRepositoryProvider).updateCustomDisplayName(uid, name);
+        await _syncLeaderboard(uid, name);
         if (!mounted) return;
         setState(() => _watchingAd = false);
         Navigator.of(context).pop();

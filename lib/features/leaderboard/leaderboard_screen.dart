@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/constants/avatars.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/leaderboard_entry.dart';
+import '../../data/models/user_profile.dart' show AvatarType;
 import '../../data/repositories/leaderboard_repository.dart';
 import 'leaderboard_providers.dart';
 
@@ -131,7 +133,7 @@ class _SelfHeader extends StatelessWidget {
           const SizedBox(width: 8),
           const Text('•', style: TextStyle(color: AppColors.textNavy)),
           const SizedBox(width: 8),
-          _Avatar(photoUrl: entry!.photoUrl, size: 28),
+          _Avatar(entry: entry!, size: 28),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
@@ -203,7 +205,7 @@ class _LeaderboardTile extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          _Avatar(photoUrl: entry.photoUrl, size: 36),
+          _Avatar(entry: entry, size: 36),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -241,16 +243,32 @@ class _LeaderboardTile extends StatelessWidget {
   }
 }
 
+/// Renders a leaderboard row's avatar. Presets are looked up locally (not
+/// via [UserAvatar], which needs a live Firebase [User]) since leaderboard
+/// entries only carry the resolved avatarType/avatarValue/photoUrl.
 class _Avatar extends StatelessWidget {
-  final String? photoUrl;
+  final LeaderboardEntry entry;
   final double size;
 
-  const _Avatar({required this.photoUrl, required this.size});
+  const _Avatar({required this.entry, required this.size});
 
   @override
   Widget build(BuildContext context) {
-    if (photoUrl != null) {
-      return CircleAvatar(radius: size / 2, backgroundImage: NetworkImage(photoUrl!));
+    if (entry.avatarType == AvatarType.presetFree ||
+        entry.avatarType == AvatarType.presetPremium) {
+      final preset = AvatarPresets.byId(entry.avatarValue);
+      if (preset != null) {
+        return CircleAvatar(
+          radius: size / 2,
+          backgroundColor: preset.background,
+          child: Text(preset.emoji, style: TextStyle(fontSize: size * 0.4)),
+        );
+      }
+    }
+
+    final photoUrl = entry.photoUrl;
+    if (photoUrl != null && photoUrl.isNotEmpty) {
+      return CircleAvatar(radius: size / 2, backgroundImage: NetworkImage(photoUrl));
     }
     return CircleAvatar(
       radius: size / 2,
