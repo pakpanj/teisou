@@ -12,11 +12,14 @@ import '../data/repositories/leaderboard_repository.dart';
 import '../data/repositories/progress_repository.dart';
 import 'services/ad_service.dart';
 import 'services/auth_service.dart';
+import 'services/avatar_upload_service.dart';
 import 'services/tts_service.dart';
 
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
 final ttsServiceProvider = Provider<TtsService>((ref) => TtsService());
 final adServiceProvider = Provider<AdService>((ref) => AdService());
+final avatarUploadServiceProvider =
+    Provider<AvatarUploadService>((ref) => AvatarUploadService());
 final kanaRepositoryProvider = Provider<KanaRepository>(
   (ref) => KanaRepository(),
 );

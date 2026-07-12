@@ -9,14 +9,51 @@ import '../../paywall/paywall_screen.dart';
 
 /// Bottom sheet for picking a profile avatar: Google photo, free presets,
 /// premium presets (locked behind [PaywallScreen] for free users), and a
-/// gallery upload entry point (wired up fully once Firebase Storage upload
-/// lands).
-class AvatarPickerSheet extends ConsumerWidget {
+/// gallery upload entry (premium only).
+class AvatarPickerSheet extends ConsumerStatefulWidget {
   const AvatarPickerSheet({super.key});
 
+  @override
+  ConsumerState<AvatarPickerSheet> createState() => _AvatarPickerSheetState();
+}
+
+class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
+  bool _uploading = false;
+
+  Future<void> _uploadFromGallery(
+    String uid, {
+    required String displayName,
+    String? photoUrl,
+  }) async {
+    setState(() => _uploading = true);
+    try {
+      final url = await ref.read(avatarUploadServiceProvider).pickAndUpload(uid);
+      if (url == null) {
+        if (mounted) setState(() => _uploading = false);
+        return; // user cancelled the gallery picker
+      }
+      await ref
+          .read(progressRepositoryProvider)
+          .updateAvatar(uid, AvatarType.customUpload, url);
+      await ref.read(leaderboardRepositoryProvider).syncProfileInfo(
+            uid: uid,
+            displayName: displayName,
+            photoUrl: photoUrl,
+            avatarType: AvatarType.customUpload,
+            avatarValue: url,
+          );
+      if (!mounted) return;
+      Navigator.of(context).pop();
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _uploading = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Gagal mengunggah avatar, coba lagi.')),
+      );
+    }
+  }
+
   Future<void> _select(
-    BuildContext context,
-    WidgetRef ref,
     String uid,
     AvatarType type,
     String? value, {
@@ -31,7 +68,7 @@ class AvatarPickerSheet extends ConsumerWidget {
           avatarType: type,
           avatarValue: value,
         );
-    if (!context.mounted) return;
+    if (!mounted) return;
     Navigator.of(context).pop();
   }
 
@@ -47,7 +84,7 @@ class AvatarPickerSheet extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final user = ref.watch(appStartupProvider).valueOrNull;
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
@@ -96,8 +133,6 @@ class AvatarPickerSheet extends ConsumerWidget {
                   onTap: uid == null
                       ? null
                       : () => _select(
-                            context,
-                            ref,
                             uid,
                             AvatarType.google,
                             null,
@@ -116,8 +151,6 @@ class AvatarPickerSheet extends ConsumerWidget {
                 onTap: (preset) {
                   if (uid == null) return;
                   _select(
-                    context,
-                    ref,
                     uid,
                     AvatarType.presetFree,
                     preset.id,
@@ -140,8 +173,6 @@ class AvatarPickerSheet extends ConsumerWidget {
                   }
                   if (uid == null) return;
                   _select(
-                    context,
-                    ref,
                     uid,
                     AvatarType.presetPremium,
                     preset.id,
@@ -153,15 +184,17 @@ class AvatarPickerSheet extends ConsumerWidget {
               const _SectionTitle('Upload dari Galeri'),
               _UploadTile(
                 isPremium: isPremium,
+                uploading: _uploading,
                 onTap: () {
                   if (!isPremium) {
                     _openPaywall(context);
                     return;
                   }
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Upload avatar akan segera hadir.'),
-                    ),
+                  if (uid == null || _uploading) return;
+                  _uploadFromGallery(
+                    uid,
+                    displayName: displayName,
+                    photoUrl: user?.photoURL,
                   );
                 },
               ),
@@ -329,14 +362,19 @@ class _PresetTile extends StatelessWidget {
 
 class _UploadTile extends StatelessWidget {
   final bool isPremium;
+  final bool uploading;
   final VoidCallback onTap;
 
-  const _UploadTile({required this.isPremium, required this.onTap});
+  const _UploadTile({
+    required this.isPremium,
+    required this.uploading,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: uploading ? null : onTap,
       borderRadius: BorderRadius.circular(16),
       child: Container(
         width: double.infinity,
@@ -348,15 +386,23 @@ class _UploadTile extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('📷', style: TextStyle(fontSize: 20)),
-            const SizedBox(width: 10),
-            const Text(
-              'Upload dari Galeri',
-              style: TextStyle(color: AppColors.textNavy, fontWeight: FontWeight.w600),
-            ),
-            if (!isPremium) ...[
-              const SizedBox(width: 8),
-              const Icon(Icons.lock, size: 16, color: AppColors.freeBadgeGrey),
+            if (uploading)
+              const SizedBox(
+                width: 18,
+                height: 18,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              )
+            else ...[
+              const Text('📷', style: TextStyle(fontSize: 20)),
+              const SizedBox(width: 10),
+              const Text(
+                'Upload dari Galeri',
+                style: TextStyle(color: AppColors.textNavy, fontWeight: FontWeight.w600),
+              ),
+              if (!isPremium) ...[
+                const SizedBox(width: 8),
+                const Icon(Icons.lock, size: 16, color: AppColors.freeBadgeGrey),
+              ],
             ],
           ],
         ),

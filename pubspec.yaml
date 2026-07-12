@@ -20,7 +20,12 @@ dependencies:
   firebase_core: ^3.8.0
   firebase_auth: ^5.3.3
   cloud_firestore: ^5.5.0
+  firebase_storage: ^12.3.5
   google_sign_in: ^6.2.2
+
+  # Avatar upload: pick from gallery (built-in resize/compress via
+  # maxWidth/maxHeight/imageQuality — no separate compression package)
+  image_picker: ^1.1.2
 
   # Text-to-speech untuk pengucapan kana & contoh kata
   flutter_tts: ^4.2.0
