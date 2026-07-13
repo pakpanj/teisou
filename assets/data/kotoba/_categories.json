@@ -324,34 +324,39 @@
     "name": "Hari & Bulan",
     "group": "Waktu & Angka",
     "icon": "📅",
-    "available": false
+    "available": true,
+    "wordCount": 22
   },
   {
     "id": "musim",
     "name": "Musim",
     "group": "Waktu & Angka",
     "icon": "🍂",
-    "available": false
+    "available": true,
+    "wordCount": 5
   },
   {
     "id": "angka_satuan",
     "name": "Angka & Satuan",
     "group": "Waktu & Angka",
     "icon": "🔢",
-    "available": false
+    "available": true,
+    "wordCount": 13
   },
   {
     "id": "warna",
     "name": "Warna",
     "group": "Waktu & Angka",
     "icon": "🌈",
-    "available": false
+    "available": true,
+    "wordCount": 11
   },
   {
     "id": "bentuk",
     "name": "Bentuk",
     "group": "Waktu & Angka",
     "icon": "🔷",
-    "available": false
+    "available": true,
+    "wordCount": 7
   }
 ]

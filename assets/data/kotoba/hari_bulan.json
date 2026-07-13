@@ -1,0 +1,530 @@
+[
+  {
+    "id": "kotoba_hari_bulan_getsuyoubi",
+    "word": "げつようび",
+    "kanji": "月曜日",
+    "reading": "げつようび",
+    "romaji": "getsuyoubi",
+    "meaning": "hari Senin",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "月曜日 (getsuyoubi)",
+      "formal": "月曜日 (getsuyoubi)",
+      "keigo": "月曜日 (getsuyoubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "月曜日に学校があります。",
+        "romaji": "Getsuyoubi ni gakkou ga arimasu.",
+        "translation": "Hari Senin ada sekolah."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_getsuyoubi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kayoubi",
+    "word": "かようび",
+    "kanji": "火曜日",
+    "reading": "かようび",
+    "romaji": "kayoubi",
+    "meaning": "hari Selasa",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "火曜日 (kayoubi)",
+      "formal": "火曜日 (kayoubi)",
+      "keigo": "火曜日 (kayoubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "火曜日に会議があります。",
+        "romaji": "Kayoubi ni kaigi ga arimasu.",
+        "translation": "Hari Selasa ada rapat."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kayoubi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_suiyoubi",
+    "word": "すいようび",
+    "kanji": "水曜日",
+    "reading": "すいようび",
+    "romaji": "suiyoubi",
+    "meaning": "hari Rabu",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "水曜日 (suiyoubi)",
+      "formal": "水曜日 (suiyoubi)",
+      "keigo": "水曜日 (suiyoubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "水曜日は休みです。",
+        "romaji": "Suiyoubi wa yasumi desu.",
+        "translation": "Hari Rabu libur."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_suiyoubi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_mokuyoubi",
+    "word": "もくようび",
+    "kanji": "木曜日",
+    "reading": "もくようび",
+    "romaji": "mokuyoubi",
+    "meaning": "hari Kamis",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "木曜日 (mokuyoubi)",
+      "formal": "木曜日 (mokuyoubi)",
+      "keigo": "木曜日 (mokuyoubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "木曜日に映画を見ます。",
+        "romaji": "Mokuyoubi ni eiga o mimasu.",
+        "translation": "Hari Kamis saya menonton film."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_mokuyoubi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kinyoubi",
+    "word": "きんようび",
+    "kanji": "金曜日",
+    "reading": "きんようび",
+    "romaji": "kinyoubi",
+    "meaning": "hari Jumat",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "金曜日 (kinyoubi)",
+      "formal": "金曜日 (kinyoubi)",
+      "keigo": "金曜日 (kinyoubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "金曜日が好きです。",
+        "romaji": "Kinyoubi ga suki desu.",
+        "translation": "Saya suka hari Jumat."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kinyoubi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_doyoubi",
+    "word": "どようび",
+    "kanji": "土曜日",
+    "reading": "どようび",
+    "romaji": "doyoubi",
+    "meaning": "hari Sabtu",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "土曜日 (doyoubi)",
+      "formal": "土曜日 (doyoubi)",
+      "keigo": "土曜日 (doyoubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "土曜日に買い物します。",
+        "romaji": "Doyoubi ni kaimono shimasu.",
+        "translation": "Hari Sabtu saya berbelanja."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_doyoubi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_nichiyoubi",
+    "word": "にちようび",
+    "kanji": "日曜日",
+    "reading": "にちようび",
+    "romaji": "nichiyoubi",
+    "meaning": "hari Minggu",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "日曜日 (nichiyoubi)",
+      "formal": "日曜日 (nichiyoubi)",
+      "keigo": "日曜日 (nichiyoubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日曜日は家族と過ごします。",
+        "romaji": "Nichiyoubi wa kazoku to sugoshimasu.",
+        "translation": "Hari Minggu saya menghabiskan waktu dengan keluarga."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_nichiyoubi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kyou",
+    "word": "きょう",
+    "kanji": "今日",
+    "reading": "きょう",
+    "romaji": "kyou",
+    "meaning": "hari ini",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "今日 (kyou)",
+      "formal": "今日 (kyou)",
+      "keigo": "今日 (kyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今日は暑いです。",
+        "romaji": "Kyou wa atsui desu.",
+        "translation": "Hari ini panas."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kyou.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_ashita",
+    "word": "あした",
+    "kanji": "明日",
+    "reading": "あした",
+    "romaji": "ashita",
+    "meaning": "besok",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "明日 (ashita)",
+      "formal": "明日 (ashita)",
+      "keigo": "明日 (ashita) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "明日テストがあります。",
+        "romaji": "Ashita tesuto ga arimasu.",
+        "translation": "Besok ada tes."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ashita.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kinou",
+    "word": "きのう",
+    "kanji": "昨日",
+    "reading": "きのう",
+    "romaji": "kinou",
+    "meaning": "kemarin",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "昨日 (kinou)",
+      "formal": "昨日 (kinou)",
+      "keigo": "昨日 (kinou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "昨日雨でした。",
+        "romaji": "Kinou ame deshita.",
+        "translation": "Kemarin hujan."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kinou.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_ichigatsu",
+    "word": "いちがつ",
+    "kanji": "一月",
+    "reading": "いちがつ",
+    "romaji": "ichigatsu",
+    "meaning": "bulan Januari",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "一月 (ichigatsu)",
+      "formal": "一月 (ichigatsu)",
+      "keigo": "一月 (ichigatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "一月は寒いです。",
+        "romaji": "Ichigatsu wa samui desu.",
+        "translation": "Bulan Januari dingin."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ichigatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_nigatsu",
+    "word": "にがつ",
+    "kanji": "二月",
+    "reading": "にがつ",
+    "romaji": "nigatsu",
+    "meaning": "bulan Februari",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "二月 (nigatsu)",
+      "formal": "二月 (nigatsu)",
+      "keigo": "二月 (nigatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "二月は短いです。",
+        "romaji": "Nigatsu wa mijikai desu.",
+        "translation": "Bulan Februari pendek."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_nigatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_sangatsu",
+    "word": "さんがつ",
+    "kanji": "三月",
+    "reading": "さんがつ",
+    "romaji": "sangatsu",
+    "meaning": "bulan Maret",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "三月 (sangatsu)",
+      "formal": "三月 (sangatsu)",
+      "keigo": "三月 (sangatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "三月に卒業します。",
+        "romaji": "Sangatsu ni sotsugyou shimasu.",
+        "translation": "Saya lulus di bulan Maret."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_sangatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_shigatsu",
+    "word": "しがつ",
+    "kanji": "四月",
+    "reading": "しがつ",
+    "romaji": "shigatsu",
+    "meaning": "bulan April",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "四月 (shigatsu)",
+      "formal": "四月 (shigatsu)",
+      "keigo": "四月 (shigatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "四月に学校が始まります。",
+        "romaji": "Shigatsu ni gakkou ga hajimarimasu.",
+        "translation": "Sekolah dimulai bulan April."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_shigatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_gogatsu",
+    "word": "ごがつ",
+    "kanji": "五月",
+    "reading": "ごがつ",
+    "romaji": "gogatsu",
+    "meaning": "bulan Mei",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "五月 (gogatsu)",
+      "formal": "五月 (gogatsu)",
+      "keigo": "五月 (gogatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "五月は過ごしやすいです。",
+        "romaji": "Gogatsu wa sugoshiyasui desu.",
+        "translation": "Bulan Mei nyaman (cuacanya)."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_gogatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_rokugatsu",
+    "word": "ろくがつ",
+    "kanji": "六月",
+    "reading": "ろくがつ",
+    "romaji": "rokugatsu",
+    "meaning": "bulan Juni",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "六月 (rokugatsu)",
+      "formal": "六月 (rokugatsu)",
+      "keigo": "六月 (rokugatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "六月によく雨が降ります。",
+        "romaji": "Rokugatsu ni yoku ame ga furimasu.",
+        "translation": "Bulan Juni sering hujan."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_rokugatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_shichigatsu",
+    "word": "しちがつ",
+    "kanji": "七月",
+    "reading": "しちがつ",
+    "romaji": "shichigatsu",
+    "meaning": "bulan Juli",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "七月 (shichigatsu)",
+      "formal": "七月 (shichigatsu)",
+      "keigo": "七月 (shichigatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "七月は暑いです。",
+        "romaji": "Shichigatsu wa atsui desu.",
+        "translation": "Bulan Juli panas."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_shichigatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_hachigatsu",
+    "word": "はちがつ",
+    "kanji": "八月",
+    "reading": "はちがつ",
+    "romaji": "hachigatsu",
+    "meaning": "bulan Agustus",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "八月 (hachigatsu)",
+      "formal": "八月 (hachigatsu)",
+      "keigo": "八月 (hachigatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "八月に花火大会があります。",
+        "romaji": "Hachigatsu ni hanabi taikai ga arimasu.",
+        "translation": "Bulan Agustus ada festival kembang api."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_hachigatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kugatsu",
+    "word": "くがつ",
+    "kanji": "九月",
+    "reading": "くがつ",
+    "romaji": "kugatsu",
+    "meaning": "bulan September",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "九月 (kugatsu)",
+      "formal": "九月 (kugatsu)",
+      "keigo": "九月 (kugatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "九月に新学期が始まります。",
+        "romaji": "Kugatsu ni shingakki ga hajimarimasu.",
+        "translation": "Semester baru dimulai bulan September."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kugatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_juugatsu",
+    "word": "じゅうがつ",
+    "kanji": "十月",
+    "reading": "じゅうがつ",
+    "romaji": "juugatsu",
+    "meaning": "bulan Oktober",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "十月 (juugatsu)",
+      "formal": "十月 (juugatsu)",
+      "keigo": "十月 (juugatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "十月は涼しいです。",
+        "romaji": "Juugatsu wa suzushii desu.",
+        "translation": "Bulan Oktober sejuk."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_juugatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_juuichigatsu",
+    "word": "じゅういちがつ",
+    "kanji": "十一月",
+    "reading": "じゅういちがつ",
+    "romaji": "juuichigatsu",
+    "meaning": "bulan November",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "十一月 (juuichigatsu)",
+      "formal": "十一月 (juuichigatsu)",
+      "keigo": "十一月 (juuichigatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "十一月に紅葉が綺麗です。",
+        "romaji": "Juuichigatsu ni kouyou ga kirei desu.",
+        "translation": "Bulan November daun-daun indah warnanya."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_juuichigatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_juunigatsu",
+    "word": "じゅうにがつ",
+    "kanji": "十二月",
+    "reading": "じゅうにがつ",
+    "romaji": "juunigatsu",
+    "meaning": "bulan Desember",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "十二月 (juunigatsu)",
+      "formal": "十二月 (juunigatsu)",
+      "keigo": "十二月 (juunigatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "十二月にクリスマスがあります。",
+        "romaji": "Juunigatsu ni kurisumasu ga arimasu.",
+        "translation": "Ada Natal di bulan Desember."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_juunigatsu.png"
+  }
+]

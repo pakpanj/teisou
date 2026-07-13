@@ -66,11 +66,11 @@ GROUPS = {
         ("media_hiburan", "Media & Hiburan", "📺", True, 10),
     ],
     "Waktu & Angka": [
-        ("hari_bulan", "Hari & Bulan", "📅", False, None),
-        ("musim", "Musim", "🍂", False, None),
-        ("angka_satuan", "Angka & Satuan", "🔢", False, None),
-        ("warna", "Warna", "🌈", False, None),
-        ("bentuk", "Bentuk", "🔷", False, None),
+        ("hari_bulan", "Hari & Bulan", "📅", True, 22),
+        ("musim", "Musim", "🍂", True, 5),
+        ("angka_satuan", "Angka & Satuan", "🔢", True, 13),
+        ("warna", "Warna", "🌈", True, 11),
+        ("bentuk", "Bentuk", "🔷", True, 7),
     ],
 }
 

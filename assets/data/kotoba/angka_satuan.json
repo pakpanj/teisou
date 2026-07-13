@@ -1,0 +1,314 @@
+[
+  {
+    "id": "kotoba_angka_satuan_ichi",
+    "word": "いち",
+    "kanji": "一",
+    "reading": "いち",
+    "romaji": "ichi",
+    "meaning": "satu (1)",
+    "jlptLevel": "N5",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "一 (ichi)",
+      "formal": "一 (ichi)",
+      "keigo": "一 (ichi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは一です。",
+        "romaji": "Kotae wa ichi desu.",
+        "translation": "Jawabannya adalah satu."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ichi.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_ni",
+    "word": "に",
+    "kanji": "二",
+    "reading": "に",
+    "romaji": "ni",
+    "meaning": "dua (2)",
+    "jlptLevel": "N5",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "二 (ni)",
+      "formal": "二 (ni)",
+      "keigo": "二 (ni) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは二です。",
+        "romaji": "Kotae wa ni desu.",
+        "translation": "Jawabannya adalah dua."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ni.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_san",
+    "word": "さん",
+    "kanji": "三",
+    "reading": "さん",
+    "romaji": "san",
+    "meaning": "tiga (3)",
+    "jlptLevel": "N5",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "三 (san)",
+      "formal": "三 (san)",
+      "keigo": "三 (san) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは三です。",
+        "romaji": "Kotae wa san desu.",
+        "translation": "Jawabannya adalah tiga."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_san.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_yon",
+    "word": "よん",
+    "kanji": "四",
+    "reading": "よん",
+    "romaji": "yon",
+    "meaning": "empat (4)",
+    "jlptLevel": "N5",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "四 (yon)",
+      "formal": "四 (yon)",
+      "keigo": "四 (yon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは四です。",
+        "romaji": "Kotae wa yon desu.",
+        "translation": "Jawabannya adalah empat."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_yon.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_go",
+    "word": "ご",
+    "kanji": "五",
+    "reading": "ご",
+    "romaji": "go",
+    "meaning": "lima (5)",
+    "jlptLevel": "N5",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "五 (go)",
+      "formal": "五 (go)",
+      "keigo": "五 (go) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは五です。",
+        "romaji": "Kotae wa go desu.",
+        "translation": "Jawabannya adalah lima."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_go.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_roku",
+    "word": "ろく",
+    "kanji": "六",
+    "reading": "ろく",
+    "romaji": "roku",
+    "meaning": "enam (6)",
+    "jlptLevel": "N5",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "六 (roku)",
+      "formal": "六 (roku)",
+      "keigo": "六 (roku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは六です。",
+        "romaji": "Kotae wa roku desu.",
+        "translation": "Jawabannya adalah enam."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_roku.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_nana",
+    "word": "なな",
+    "kanji": "七",
+    "reading": "なな",
+    "romaji": "nana",
+    "meaning": "tujuh (7)",
+    "jlptLevel": "N5",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "七 (nana)",
+      "formal": "七 (nana)",
+      "keigo": "七 (nana) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは七です。",
+        "romaji": "Kotae wa nana desu.",
+        "translation": "Jawabannya adalah tujuh."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_nana.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_hachi",
+    "word": "はち",
+    "kanji": "八",
+    "reading": "はち",
+    "romaji": "hachi",
+    "meaning": "delapan (8)",
+    "jlptLevel": "N5",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "八 (hachi)",
+      "formal": "八 (hachi)",
+      "keigo": "八 (hachi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは八です。",
+        "romaji": "Kotae wa hachi desu.",
+        "translation": "Jawabannya adalah delapan."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_hachi.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_kyuu",
+    "word": "きゅう",
+    "kanji": "九",
+    "reading": "きゅう",
+    "romaji": "kyuu",
+    "meaning": "sembilan (9)",
+    "jlptLevel": "N5",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "九 (kyuu)",
+      "formal": "九 (kyuu)",
+      "keigo": "九 (kyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは九です。",
+        "romaji": "Kotae wa kyuu desu.",
+        "translation": "Jawabannya adalah sembilan."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_kyuu.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_juu",
+    "word": "じゅう",
+    "kanji": "十",
+    "reading": "じゅう",
+    "romaji": "juu",
+    "meaning": "sepuluh (10)",
+    "jlptLevel": "N5",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "十 (juu)",
+      "formal": "十 (juu)",
+      "keigo": "十 (juu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは十です。",
+        "romaji": "Kotae wa juu desu.",
+        "translation": "Jawabannya adalah sepuluh."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_juu.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_hyaku",
+    "word": "ひゃく",
+    "kanji": "百",
+    "reading": "ひゃく",
+    "romaji": "hyaku",
+    "meaning": "seratus (100)",
+    "jlptLevel": "N4",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "百 (hyaku)",
+      "formal": "百 (hyaku)",
+      "keigo": "百 (hyaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは百です。",
+        "romaji": "Kotae wa hyaku desu.",
+        "translation": "Jawabannya adalah seratus."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_hyaku.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_sen",
+    "word": "せん",
+    "kanji": "千",
+    "reading": "せん",
+    "romaji": "sen",
+    "meaning": "seribu (1000)",
+    "jlptLevel": "N4",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "千 (sen)",
+      "formal": "千 (sen)",
+      "keigo": "千 (sen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは千です。",
+        "romaji": "Kotae wa sen desu.",
+        "translation": "Jawabannya adalah seribu."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_sen.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_ichiman",
+    "word": "いちまん",
+    "kanji": "一万",
+    "reading": "いちまん",
+    "romaji": "ichiman",
+    "meaning": "sepuluh ribu (10.000)",
+    "jlptLevel": "N3",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "一万 (ichiman)",
+      "formal": "一万 (ichiman)",
+      "keigo": "一万 (ichiman) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "答えは一万です。",
+        "romaji": "Kotae wa ichiman desu.",
+        "translation": "Jawabannya adalah sepuluh ribu."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ichiman.png"
+  }
+]

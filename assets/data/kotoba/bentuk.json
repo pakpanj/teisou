@@ -1,0 +1,170 @@
+[
+  {
+    "id": "kotoba_bentuk_maru",
+    "word": "まる",
+    "kanji": "丸",
+    "reading": "まる",
+    "romaji": "maru",
+    "meaning": "lingkaran/bulat",
+    "jlptLevel": "N4",
+    "category": "bentuk",
+    "wordType": "noun",
+    "registers": {
+      "casual": "丸 (maru)",
+      "formal": "丸 (maru)",
+      "keigo": "丸 (maru) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "丸を描きます。",
+        "romaji": "Maru o kakimasu.",
+        "translation": "Saya menggambar lingkaran."
+      }
+    ],
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_maru.png"
+  },
+  {
+    "id": "kotoba_bentuk_shikaku",
+    "word": "しかく",
+    "kanji": "四角",
+    "reading": "しかく",
+    "romaji": "shikaku",
+    "meaning": "persegi/kotak",
+    "jlptLevel": "N4",
+    "category": "bentuk",
+    "wordType": "noun",
+    "registers": {
+      "casual": "四角 (shikaku)",
+      "formal": "四角 (shikaku)",
+      "keigo": "四角 (shikaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "四角を描きます。",
+        "romaji": "Shikaku o kakimasu.",
+        "translation": "Saya menggambar persegi."
+      }
+    ],
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_shikaku.png"
+  },
+  {
+    "id": "kotoba_bentuk_sankaku",
+    "word": "さんかく",
+    "kanji": "三角",
+    "reading": "さんかく",
+    "romaji": "sankaku",
+    "meaning": "segitiga",
+    "jlptLevel": "N4",
+    "category": "bentuk",
+    "wordType": "noun",
+    "registers": {
+      "casual": "三角 (sankaku)",
+      "formal": "三角 (sankaku)",
+      "keigo": "三角 (sankaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "三角を描きます。",
+        "romaji": "Sankaku o kakimasu.",
+        "translation": "Saya menggambar segitiga."
+      }
+    ],
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_sankaku.png"
+  },
+  {
+    "id": "kotoba_bentuk_hoshi",
+    "word": "ほし",
+    "kanji": "星",
+    "reading": "ほし",
+    "romaji": "hoshi",
+    "meaning": "bintang (bentuk)",
+    "jlptLevel": "N4",
+    "category": "bentuk",
+    "wordType": "noun",
+    "registers": {
+      "casual": "星 (hoshi)",
+      "formal": "星 (hoshi)",
+      "keigo": "星 (hoshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "星の形です。",
+        "romaji": "Hoshi no katachi desu.",
+        "translation": "Ini bentuk bintang."
+      }
+    ],
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_hoshi.png"
+  },
+  {
+    "id": "kotoba_bentuk_haato",
+    "word": "ハート",
+    "kanji": null,
+    "reading": "ハート",
+    "romaji": "haato",
+    "meaning": "hati (bentuk)",
+    "jlptLevel": "N3",
+    "category": "bentuk",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ハート (haato)",
+      "formal": "ハート (haato)",
+      "keigo": "ハート (haato) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ハートの形です。",
+        "romaji": "Haato no katachi desu.",
+        "translation": "Ini bentuk hati."
+      }
+    ],
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_haato.png"
+  },
+  {
+    "id": "kotoba_bentuk_katachi",
+    "word": "かたち",
+    "kanji": "形",
+    "reading": "かたち",
+    "romaji": "katachi",
+    "meaning": "bentuk (kata umum)",
+    "jlptLevel": "N3",
+    "category": "bentuk",
+    "wordType": "noun",
+    "registers": {
+      "casual": "形 (katachi)",
+      "formal": "形 (katachi)",
+      "keigo": "形 (katachi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この形は何ですか。",
+        "romaji": "Kono katachi wa nan desu ka.",
+        "translation": "Bentuk apa ini?"
+      }
+    ],
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_katachi.png"
+  },
+  {
+    "id": "kotoba_bentuk_chouhoukei",
+    "word": "ちょうほうけい",
+    "kanji": "長方形",
+    "reading": "ちょうほうけい",
+    "romaji": "chouhoukei",
+    "meaning": "persegi panjang",
+    "jlptLevel": "N2",
+    "category": "bentuk",
+    "wordType": "noun",
+    "registers": {
+      "casual": "長方形 (chouhoukei)",
+      "formal": "長方形 (chouhoukei)",
+      "keigo": "長方形 (chouhoukei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "長方形の紙です。",
+        "romaji": "Chouhoukei no kami desu.",
+        "translation": "Ini kertas persegi panjang."
+      }
+    ],
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_chouhoukei.png"
+  }
+]

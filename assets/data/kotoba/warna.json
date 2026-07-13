@@ -1,0 +1,266 @@
+[
+  {
+    "id": "kotoba_warna_akai",
+    "word": "あかい",
+    "kanji": "赤い",
+    "reading": "あかい",
+    "romaji": "akai",
+    "meaning": "merah",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "赤い (akai)",
+      "formal": "赤いです (akai desu)",
+      "keigo": "赤い (akai) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "赤いりんごです。",
+        "romaji": "Akai ringo desu.",
+        "translation": "Ini apel merah."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_akai.png"
+  },
+  {
+    "id": "kotoba_warna_aoi",
+    "word": "あおい",
+    "kanji": "青い",
+    "reading": "あおい",
+    "romaji": "aoi",
+    "meaning": "biru",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "青い (aoi)",
+      "formal": "青いです (aoi desu)",
+      "keigo": "青い (aoi) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "空は青いです。",
+        "romaji": "Sora wa aoi desu.",
+        "translation": "Langit itu biru."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_aoi.png"
+  },
+  {
+    "id": "kotoba_warna_kiiroi",
+    "word": "きいろい",
+    "kanji": "黄色い",
+    "reading": "きいろい",
+    "romaji": "kiiroi",
+    "meaning": "kuning",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "黄色い (kiiroi)",
+      "formal": "黄色いです (kiiroi desu)",
+      "keigo": "黄色い (kiiroi) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バナナは黄色いです。",
+        "romaji": "Banana wa kiiroi desu.",
+        "translation": "Pisang itu kuning."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_kiiroi.png"
+  },
+  {
+    "id": "kotoba_warna_midori",
+    "word": "みどり",
+    "kanji": "緑",
+    "reading": "みどり",
+    "romaji": "midori",
+    "meaning": "hijau",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "緑 (midori)",
+      "formal": "緑です (midori desu)",
+      "keigo": "緑 (midori) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "木の葉は緑です。",
+        "romaji": "Ki no ha wa midori desu.",
+        "translation": "Daun pohon berwarna hijau."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_midori.png"
+  },
+  {
+    "id": "kotoba_warna_shiroi",
+    "word": "しろい",
+    "kanji": "白い",
+    "reading": "しろい",
+    "romaji": "shiroi",
+    "meaning": "putih",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "白い (shiroi)",
+      "formal": "白いです (shiroi desu)",
+      "keigo": "白い (shiroi) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "雪は白いです。",
+        "romaji": "Yuki wa shiroi desu.",
+        "translation": "Salju berwarna putih."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_shiroi.png"
+  },
+  {
+    "id": "kotoba_warna_kuroi",
+    "word": "くろい",
+    "kanji": "黒い",
+    "reading": "くろい",
+    "romaji": "kuroi",
+    "meaning": "hitam",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "黒い (kuroi)",
+      "formal": "黒いです (kuroi desu)",
+      "keigo": "黒い (kuroi) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "猫は黒いです。",
+        "romaji": "Neko wa kuroi desu.",
+        "translation": "Kucing itu hitam."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_kuroi.png"
+  },
+  {
+    "id": "kotoba_warna_chairo",
+    "word": "ちゃいろ",
+    "kanji": "茶色",
+    "reading": "ちゃいろ",
+    "romaji": "chairo",
+    "meaning": "coklat (warna)",
+    "jlptLevel": "N4",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "茶色 (chairo)",
+      "formal": "茶色です (chairo desu)",
+      "keigo": "茶色 (chairo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "犬は茶色です。",
+        "romaji": "Inu wa chairo desu.",
+        "translation": "Anjing itu berwarna coklat."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_chairo.png"
+  },
+  {
+    "id": "kotoba_warna_murasaki",
+    "word": "むらさき",
+    "kanji": "紫",
+    "reading": "むらさき",
+    "romaji": "murasaki",
+    "meaning": "ungu",
+    "jlptLevel": "N3",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "紫 (murasaki)",
+      "formal": "紫です (murasaki desu)",
+      "keigo": "紫 (murasaki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ぶどうは紫です。",
+        "romaji": "Budou wa murasaki desu.",
+        "translation": "Anggur berwarna ungu."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_murasaki.png"
+  },
+  {
+    "id": "kotoba_warna_pinku",
+    "word": "ピンク",
+    "kanji": null,
+    "reading": "ピンク",
+    "romaji": "pinku",
+    "meaning": "merah muda (pink)",
+    "jlptLevel": "N4",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ピンク (pinku)",
+      "formal": "ピンクです (pinku desu)",
+      "keigo": "ピンク (pinku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "桜はピンクです。",
+        "romaji": "Sakura wa pinku desu.",
+        "translation": "Sakura berwarna pink."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_pinku.png"
+  },
+  {
+    "id": "kotoba_warna_orenji",
+    "word": "オレンジ",
+    "kanji": null,
+    "reading": "オレンジ",
+    "romaji": "orenji",
+    "meaning": "oranye",
+    "jlptLevel": "N4",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "オレンジ (orenji)",
+      "formal": "オレンジです (orenji desu)",
+      "keigo": "オレンジ (orenji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "オレンジ色が好きです。",
+        "romaji": "Orenji-iro ga suki desu.",
+        "translation": "Saya suka warna oranye."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_orenji.png"
+  },
+  {
+    "id": "kotoba_warna_haiiro",
+    "word": "はいいろ",
+    "kanji": "灰色",
+    "reading": "はいいろ",
+    "romaji": "haiiro",
+    "meaning": "abu-abu",
+    "jlptLevel": "N3",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "灰色 (haiiro)",
+      "formal": "灰色です (haiiro desu)",
+      "keigo": "灰色 (haiiro) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "空は灰色です。",
+        "romaji": "Sora wa haiiro desu.",
+        "translation": "Langit berwarna abu-abu."
+      }
+    ],
+    "imagePath": "kotoba_images/warna/kotoba_warna_haiiro.png"
+  }
+]
