@@ -17,8 +17,9 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.teisou.kanamaster"
-        // Firebase Auth / Firestore require minSdk 23+.
-        minSdk = flutter.minSdkVersion
+        // Firebase Auth / Firestore require minSdk 23+; the `camera` plugin
+        // (Cam Detector, Batch 5) requires minSdk 24+.
+        minSdk = 24
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName

@@ -36,6 +36,14 @@ dependencies:
   in_app_purchase: ^3.3.0
   confetti: ^0.8.0
 
+  # Cam Detector: live camera preview + offline Japanese OCR
+  camera: ^0.12.0+1
+  google_mlkit_text_recognition: ^0.16.0
+  permission_handler: ^12.0.3
+
+  # Local storage untuk Daftar Belajar (saved words) sebelum sync ke Firestore
+  shared_preferences: ^2.5.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
