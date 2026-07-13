@@ -5,79 +5,70 @@
     "group": "Alam & Lingkungan",
     "icon": "🐟",
     "available": true,
-    "wordCount": 20
+    "wordCount": 8
   },
   {
     "id": "hewan_darat",
     "name": "Hewan Darat",
     "group": "Alam & Lingkungan",
     "icon": "🐾",
-    "available": true,
-    "wordCount": 25
+    "available": false
   },
   {
     "id": "burung",
     "name": "Burung",
     "group": "Alam & Lingkungan",
     "icon": "🐦",
-    "available": true,
-    "wordCount": 15
+    "available": false
   },
   {
     "id": "serangga",
     "name": "Serangga",
     "group": "Alam & Lingkungan",
     "icon": "🐛",
-    "available": true,
-    "wordCount": 12
+    "available": false
   },
   {
     "id": "pohon",
     "name": "Pohon",
     "group": "Alam & Lingkungan",
     "icon": "🌳",
-    "available": true,
-    "wordCount": 12
+    "available": false
   },
   {
     "id": "bunga_tanaman",
     "name": "Bunga & Tanaman",
     "group": "Alam & Lingkungan",
     "icon": "🌸",
-    "available": true,
-    "wordCount": 15
+    "available": false
   },
   {
     "id": "buah",
     "name": "Buah",
     "group": "Alam & Lingkungan",
     "icon": "🍎",
-    "available": true,
-    "wordCount": 20
+    "available": false
   },
   {
     "id": "sayuran",
     "name": "Sayuran",
     "group": "Alam & Lingkungan",
     "icon": "🥬",
-    "available": true,
-    "wordCount": 20
+    "available": false
   },
   {
     "id": "cuaca",
     "name": "Cuaca",
     "group": "Alam & Lingkungan",
     "icon": "⛅",
-    "available": true,
-    "wordCount": 20
+    "available": false
   },
   {
     "id": "bencana_alam",
     "name": "Bencana Alam",
     "group": "Alam & Lingkungan",
     "icon": "🌪️",
-    "available": true,
-    "wordCount": 12
+    "available": false
   },
   {
     "id": "makanan_jepang",

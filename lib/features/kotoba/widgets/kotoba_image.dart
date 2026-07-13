@@ -50,7 +50,9 @@ class _KotobaImageState extends State<KotobaImage> {
   void didUpdateWidget(covariant KotobaImage oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.imagePath != widget.imagePath) {
-      setState(() => _urlFuture = _resolveUrl());
+      setState(() {
+        _urlFuture = _resolveUrl();
+      });
     }
   }
 
