@@ -11,6 +11,7 @@ import '../flashcard/flashcard_screen.dart';
 import '../leaderboard/leaderboard_screen.dart';
 import '../modules/modules_screen.dart';
 import '../profile/profile_screen.dart';
+import '../search/search_screen.dart';
 
 /// Root tab shell: Home / Belajar / Ujian / Profil share one bottom nav bar
 /// via an [IndexedStack] so each tab keeps its scroll/state when switching.
@@ -89,17 +90,32 @@ class _HomeTabBody extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                IconButton(
-                                  tooltip: 'Papan Peringkat',
-                                  onPressed: () => Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (_) => const LeaderboardScreen(),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      tooltip: 'Cari Kanji & Kotoba',
+                                      onPressed: () => AppNavigator.slideFromRight(
+                                        context,
+                                        const SearchScreen(),
+                                      ),
+                                      icon: const Icon(
+                                        Icons.search,
+                                        color: AppColors.textNavy,
+                                      ),
                                     ),
-                                  ),
-                                  icon: const Text(
-                                    '🏆',
-                                    style: TextStyle(fontSize: 22),
-                                  ),
+                                    IconButton(
+                                      tooltip: 'Papan Peringkat',
+                                      onPressed: () => Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (_) => const LeaderboardScreen(),
+                                        ),
+                                      ),
+                                      icon: const Text(
+                                        '🏆',
+                                        style: TextStyle(fontSize: 22),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                                 const SakuraDecoration(size: 48),
                               ],
