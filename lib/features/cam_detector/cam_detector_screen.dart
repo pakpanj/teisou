@@ -131,7 +131,10 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
     final generation = ++_requestGeneration;
     final controller = CameraController(
       description,
-      ResolutionPreset.medium,
+      // .medium (720x480) was noticeably too low-res for OCR to read small
+      // text accurately; .high trades a bit of throughput for much better
+      // recognition quality, still comfortably inside the 700ms throttle.
+      ResolutionPreset.high,
       enableAudio: false,
       imageFormatGroup: Platform.isAndroid ? ImageFormatGroup.nv21 : ImageFormatGroup.bgra8888,
     );
