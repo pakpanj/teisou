@@ -11,6 +11,7 @@ import '../../data/models/kana_status.dart';
 import '../../data/models/kana_type.dart';
 import '../home/home_screen.dart';
 import '../leaderboard/leaderboard_screen.dart';
+import '../saved_words/saved_words_screen.dart';
 import 'about_screen.dart';
 import 'exam_history_screen.dart';
 import 'language_screen.dart';
@@ -531,6 +532,14 @@ class _SettingsMenu extends ConsumerWidget {
       ),
       child: Column(
         children: [
+          _MenuTile(
+            emoji: '📖',
+            title: 'Daftar Belajar',
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const SavedWordsScreen()),
+            ),
+          ),
+          const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
             emoji: '🌐',
             title: 'Bahasa App',
