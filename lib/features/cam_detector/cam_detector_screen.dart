@@ -54,6 +54,12 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
 
   FlashMode _flashMode = FlashMode.off;
 
+  /// Bumped every time a controller is started or disposed, so an in-flight
+  /// [_startController] call that gets superseded by a newer dispose/start
+  /// (e.g. rapid background/foreground toggling) can tell it's stale and
+  /// avoid resurrecting a disposed controller or clobbering a newer one.
+  int _requestGeneration = 0;
+
   @override
   void initState() {
     super.initState();
@@ -73,13 +79,20 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    final controller = _controller;
-    if (controller == null || !controller.value.isInitialized) return;
-
     if (state == AppLifecycleState.inactive || state == AppLifecycleState.paused) {
+      if (_controller == null) return;
       _disposeController();
+      // The widget tree may still hold a CameraPreview built with the
+      // controller we just disposed — rebuild now so it's dropped before
+      // Flutter tries to reattach/repaint that stale surface on resume.
+      if (mounted) setState(() {});
     } else if (state == AppLifecycleState.resumed) {
-      _startController(_cameras[_cameraIndex]);
+      // Only reconnect if we actually own a camera session that got
+      // released while backgrounded — not during initial permission/
+      // camera setup, and not if the user is looking at an error state.
+      if (_controller == null && _state == _CamState.ready && _cameras.isNotEmpty) {
+        _startController(_cameras[_cameraIndex]);
+      }
     }
   }
 
@@ -115,6 +128,7 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
   }
 
   Future<void> _startController(CameraDescription description) async {
+    final generation = ++_requestGeneration;
     final controller = CameraController(
       description,
       ResolutionPreset.medium,
@@ -125,7 +139,10 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
     try {
       await controller.initialize();
     } catch (_) {
-      if (!mounted) return;
+      if (!mounted || generation != _requestGeneration) {
+        controller.dispose();
+        return;
+      }
       setState(() {
         _state = _CamState.error;
         _errorMessage = 'Gagal membuka kamera. Coba lagi.';
@@ -133,7 +150,10 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
       return;
     }
 
-    if (!mounted) {
+    // Superseded by a newer start/dispose (e.g. rapid background/foreground
+    // toggling) while initialize() was in flight — discard this one instead
+    // of resurrecting it into `_controller`.
+    if (!mounted || generation != _requestGeneration) {
       controller.dispose();
       return;
     }
@@ -149,6 +169,7 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
   }
 
   Future<void> _disposeController() async {
+    _requestGeneration++;
     final controller = _controller;
     _controller = null;
     if (controller == null) return;

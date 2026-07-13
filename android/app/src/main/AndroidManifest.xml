@@ -26,6 +26,17 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+            <!-- Impeller's camera-texture fence handling is broken on
+                 Android API < 33 (confirmed on a physical Android 12
+                 device): CameraController initializes and streams frames
+                 fine, but CameraPreview renders solid black. Falls back to
+                 Skia, which doesn't have this bug. Re-test with Impeller
+                 enabled next time minSdk moves past 33, in case upstream
+                 fixes it — no other part of the app depends on Impeller. -->
+            <meta-data
+              android:name="io.flutter.embedding.android.EnableImpeller"
+              android:value="false"
+              />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

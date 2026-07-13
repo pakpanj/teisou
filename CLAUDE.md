@@ -88,13 +88,28 @@ going forward, confirm which one is meant.
   already (fixed by adding the line above). There's still a
   five-consecutive-failures warning banner in `CamDetectorScreen` for
   genuine recognition failures unrelated to this.
+- Cam Detector's camera lifecycle uses a `_requestGeneration` token
+  (`cam_detector_screen.dart`) so an in-flight `_startController` that
+  gets superseded by a newer dispose/start — e.g. rapid background/
+  foreground toggling — recognizes it's stale and discards its result
+  instead of resurrecting a disposed controller. `didChangeAppLifecycleState`
+  only reconnects on `resumed` when `_controller == null && _state ==
+  ready` (not unconditionally) — the previous unconditional-guard version
+  crashed with `CameraException(Disposed CameraController, buildPreview()
+  was called on a disposed CameraController.)` when switching to another
+  camera app and back, confirmed via physical-device logcat.
+- Impeller is disabled for Android (`AndroidManifest.xml` meta-data
+  `EnableImpeller=false`) because it renders `CameraPreview` solid black
+  on API < 33 — confirmed on a physical Android 12 device: the camera
+  session opens and streams frames to ML Kit fine (OCR pipeline logs
+  "succeeded"), only the on-screen texture is broken. Falls back to Skia.
 - Cam Detector's bounding-box overlay math (`scaleDetections` in
-  `detection_overlay.dart`) assumes a portrait-locked back camera.
-  Verified on a physical device (Moto G52J 5G, Android 12) that the
-  camera preview + OCR pipeline run without crashing and detect text
-  end-to-end, but exact box-to-text pixel alignment wasn't visually
-  re-checked after the last change — worth a glance next time someone's
-  on-device with real Japanese text in frame.
+  `detection_overlay.dart`) assumes a portrait-locked back camera —
+  verified end-to-end on a physical device (Moto G52J 5G, Android 12):
+  live preview renders correctly, survives backgrounding/resuming, and
+  the OCR pipeline detects text. Exact box-to-text pixel alignment
+  wasn't visually re-checked against real Japanese text in this pass —
+  worth a glance next time someone's on-device with real text in frame.
 - `SavedWordsScreen` reads only the local SharedPreferences copy, not
   merged with Firestore — a word saved on one device won't show on
   another. Fine for now; revisit if multi-device sync matters later.
