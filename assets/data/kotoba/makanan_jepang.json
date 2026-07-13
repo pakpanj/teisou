@@ -1,0 +1,362 @@
+[
+  {
+    "id": "kotoba_makanan_jepang_sushi",
+    "word": "すし",
+    "kanji": "寿司",
+    "reading": "すし",
+    "romaji": "sushi",
+    "meaning": "sushi",
+    "jlptLevel": "N4",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "すし (sushi)",
+      "formal": "すし (sushi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "すし (sushi) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "寿司が好きです。",
+        "romaji": "Sushi ga suki desu.",
+        "translation": "Saya suka sushi."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_sushi.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_ramen",
+    "word": "ラーメン",
+    "kanji": null,
+    "reading": "ラーメン",
+    "romaji": "ramen",
+    "meaning": "ramen (mi kuah)",
+    "jlptLevel": "N5",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ラーメン (ramen)",
+      "formal": "ラーメン (ramen) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ラーメン (ramen) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ラーメンを食べます。",
+        "romaji": "Ramen o tabemasu.",
+        "translation": "Saya makan ramen."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_ramen.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_udon",
+    "word": "うどん",
+    "kanji": null,
+    "reading": "うどん",
+    "romaji": "udon",
+    "meaning": "udon (mi tebal)",
+    "jlptLevel": "N4",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "うどん (udon)",
+      "formal": "うどん (udon) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "うどん (udon) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "うどんは太いです。",
+        "romaji": "Udon wa futoi desu.",
+        "translation": "Udon itu tebal (mi-nya)."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_udon.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_soba",
+    "word": "そば",
+    "kanji": "蕎麦",
+    "reading": "そば",
+    "romaji": "soba",
+    "meaning": "soba (mi soba)",
+    "jlptLevel": "N4",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "そば (soba)",
+      "formal": "そば (soba) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "そば (soba) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "そばを食べました。",
+        "romaji": "Soba o tabemashita.",
+        "translation": "Saya sudah makan soba."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_soba.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_tenpura",
+    "word": "てんぷら",
+    "kanji": "天ぷら",
+    "reading": "てんぷら",
+    "romaji": "tenpura",
+    "meaning": "tempura (gorengan)",
+    "jlptLevel": "N4",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "てんぷら (tenpura)",
+      "formal": "てんぷら (tenpura) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "てんぷら (tenpura) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "天ぷらはサクサクです。",
+        "romaji": "Tenpura wa sakusaku desu.",
+        "translation": "Tempura itu renyah."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_tenpura.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_sashimi",
+    "word": "さしみ",
+    "kanji": "刺身",
+    "reading": "さしみ",
+    "romaji": "sashimi",
+    "meaning": "sashimi (ikan mentah)",
+    "jlptLevel": "N3",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "さしみ (sashimi)",
+      "formal": "さしみ (sashimi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "さしみ (sashimi) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "刺身は新鮮です。",
+        "romaji": "Sashimi wa shinsen desu.",
+        "translation": "Sashimi itu segar."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_sashimi.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_onigiri",
+    "word": "おにぎり",
+    "kanji": null,
+    "reading": "おにぎり",
+    "romaji": "onigiri",
+    "meaning": "onigiri (nasi kepal)",
+    "jlptLevel": "N4",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "おにぎり (onigiri)",
+      "formal": "おにぎり (onigiri) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "おにぎり (onigiri) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "おにぎりを作ります。",
+        "romaji": "Onigiri o tsukurimasu.",
+        "translation": "Saya membuat onigiri."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_onigiri.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_misoshiru",
+    "word": "みそしる",
+    "kanji": "味噌汁",
+    "reading": "みそしる",
+    "romaji": "misoshiru",
+    "meaning": "sup miso",
+    "jlptLevel": "N4",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "みそしる (misoshiru)",
+      "formal": "みそしる (misoshiru) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "みそしる (misoshiru) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "朝、味噌汁を飲みます。",
+        "romaji": "Asa, misoshiru o nomimasu.",
+        "translation": "Pagi hari, saya minum sup miso."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_misoshiru.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_gyouza",
+    "word": "ぎょうざ",
+    "kanji": "餃子",
+    "reading": "ぎょうざ",
+    "romaji": "gyouza",
+    "meaning": "pangsit goreng (gyoza)",
+    "jlptLevel": "N3",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ぎょうざ (gyouza)",
+      "formal": "ぎょうざ (gyouza) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ぎょうざ (gyouza) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "餃子は美味しいです。",
+        "romaji": "Gyouza wa oishii desu.",
+        "translation": "Gyoza itu enak."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_gyouza.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_okonomiyaki",
+    "word": "おこのみやき",
+    "kanji": null,
+    "reading": "おこのみやき",
+    "romaji": "okonomiyaki",
+    "meaning": "okonomiyaki (pancake gurih)",
+    "jlptLevel": "N2",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "おこのみやき (okonomiyaki)",
+      "formal": "おこのみやき (okonomiyaki) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "おこのみやき (okonomiyaki) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お好み焼きは大阪の名物です。",
+        "romaji": "Okonomiyaki wa Oosaka no meibutsu desu.",
+        "translation": "Okonomiyaki adalah makanan khas Osaka."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_okonomiyaki.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_karaage",
+    "word": "からあげ",
+    "kanji": "唐揚げ",
+    "reading": "からあげ",
+    "romaji": "karaage",
+    "meaning": "ayam goreng ala Jepang",
+    "jlptLevel": "N3",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "からあげ (karaage)",
+      "formal": "からあげ (karaage) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "からあげ (karaage) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "唐揚げが大好きです。",
+        "romaji": "Karaage ga daisuki desu.",
+        "translation": "Saya sangat suka karaage."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_karaage.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_katsudon",
+    "word": "かつどん",
+    "kanji": null,
+    "reading": "かつどん",
+    "romaji": "katsudon",
+    "meaning": "nasi dengan katsu (daging goreng tepung)",
+    "jlptLevel": "N3",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かつどん (katsudon)",
+      "formal": "かつどん (katsudon) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "かつどん (katsudon) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "かつ丼を注文しました。",
+        "romaji": "Katsudon o chuumon shimashita.",
+        "translation": "Saya memesan katsudon."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_katsudon.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_nattou",
+    "word": "なっとう",
+    "kanji": "納豆",
+    "reading": "なっとう",
+    "romaji": "nattou",
+    "meaning": "natto (kedelai fermentasi)",
+    "jlptLevel": "N3",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "なっとう (nattou)",
+      "formal": "なっとう (nattou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "なっとう (nattou) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "納豆は匂いが強いです。",
+        "romaji": "Nattou wa nioi ga tsuyoi desu.",
+        "translation": "Natto baunya kuat."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_nattou.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_takoyaki",
+    "word": "たこやき",
+    "kanji": null,
+    "reading": "たこやき",
+    "romaji": "takoyaki",
+    "meaning": "takoyaki (bola gurita)",
+    "jlptLevel": "N3",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "たこやき (takoyaki)",
+      "formal": "たこやき (takoyaki) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "たこやき (takoyaki) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "たこ焼きを食べたいです。",
+        "romaji": "Takoyaki o tabetai desu.",
+        "translation": "Saya ingin makan takoyaki."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_takoyaki.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_yakitori",
+    "word": "やきとり",
+    "kanji": "焼き鳥",
+    "reading": "やきとり",
+    "romaji": "yakitori",
+    "meaning": "sate ayam Jepang",
+    "jlptLevel": "N3",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "やきとり (yakitori)",
+      "formal": "やきとり (yakitori) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "やきとり (yakitori) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "焼き鳥屋に行きます。",
+        "romaji": "Yakitoriya ni ikimasu.",
+        "translation": "Saya pergi ke kedai yakitori."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_yakitori.png"
+  }
+]

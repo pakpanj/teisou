@@ -1,0 +1,338 @@
+[
+  {
+    "id": "kotoba_makanan_barat_pan",
+    "word": "パン",
+    "kanji": null,
+    "reading": "パン",
+    "romaji": "pan",
+    "meaning": "roti",
+    "jlptLevel": "N5",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "パン (pan)",
+      "formal": "パン (pan) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "パン (pan) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "パンを食べます。",
+        "romaji": "Pan o tabemasu.",
+        "translation": "Saya makan roti."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_pan.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_hanbaagaa",
+    "word": "ハンバーガー",
+    "kanji": null,
+    "reading": "ハンバーガー",
+    "romaji": "hanbaagaa",
+    "meaning": "hamburger",
+    "jlptLevel": "N5",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ハンバーガー (hanbaagaa)",
+      "formal": "ハンバーガー (hanbaagaa) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ハンバーガー (hanbaagaa) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ハンバーガーを買いました。",
+        "romaji": "Hanbaagaa o kaimashita.",
+        "translation": "Saya membeli hamburger."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_hanbaagaa.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_piza",
+    "word": "ピザ",
+    "kanji": null,
+    "reading": "ピザ",
+    "romaji": "piza",
+    "meaning": "pizza",
+    "jlptLevel": "N5",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ピザ (piza)",
+      "formal": "ピザ (piza) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ピザ (piza) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ピザが好きです。",
+        "romaji": "Piza ga suki desu.",
+        "translation": "Saya suka pizza."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_piza.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_pasuta",
+    "word": "パスタ",
+    "kanji": null,
+    "reading": "パスタ",
+    "romaji": "pasuta",
+    "meaning": "pasta",
+    "jlptLevel": "N4",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "パスタ (pasuta)",
+      "formal": "パスタ (pasuta) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "パスタ (pasuta) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "パスタを作ります。",
+        "romaji": "Pasuta o tsukurimasu.",
+        "translation": "Saya membuat pasta."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_pasuta.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_sarada",
+    "word": "サラダ",
+    "kanji": null,
+    "reading": "サラダ",
+    "romaji": "sarada",
+    "meaning": "salad",
+    "jlptLevel": "N5",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "サラダ (sarada)",
+      "formal": "サラダ (sarada) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "サラダ (sarada) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "サラダを食べましょう。",
+        "romaji": "Sarada o tabemashou.",
+        "translation": "Ayo makan salad."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_sarada.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_suteeki",
+    "word": "ステーキ",
+    "kanji": null,
+    "reading": "ステーキ",
+    "romaji": "suteeki",
+    "meaning": "steak",
+    "jlptLevel": "N4",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ステーキ (suteeki)",
+      "formal": "ステーキ (suteeki) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ステーキ (suteeki) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ステーキを注文しました。",
+        "romaji": "Suteeki o chuumon shimashita.",
+        "translation": "Saya memesan steak."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_suteeki.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_suupu",
+    "word": "スープ",
+    "kanji": null,
+    "reading": "スープ",
+    "romaji": "suupu",
+    "meaning": "sup",
+    "jlptLevel": "N5",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "スープ (suupu)",
+      "formal": "スープ (suupu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "スープ (suupu) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "スープは温かいです。",
+        "romaji": "Suupu wa atatakai desu.",
+        "translation": "Sup itu hangat."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_suupu.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_sandoicchi",
+    "word": "サンドイッチ",
+    "kanji": null,
+    "reading": "サンドイッチ",
+    "romaji": "sandoicchi",
+    "meaning": "sandwich",
+    "jlptLevel": "N4",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "サンドイッチ (sandoicchi)",
+      "formal": "サンドイッチ (sandoicchi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "サンドイッチ (sandoicchi) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "サンドイッチを作ります。",
+        "romaji": "Sandoicchi o tsukurimasu.",
+        "translation": "Saya membuat sandwich."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_sandoicchi.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_omuretsu",
+    "word": "オムレツ",
+    "kanji": null,
+    "reading": "オムレツ",
+    "romaji": "omuretsu",
+    "meaning": "omelet",
+    "jlptLevel": "N4",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "オムレツ (omuretsu)",
+      "formal": "オムレツ (omuretsu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "オムレツ (omuretsu) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "朝食にオムレツを食べます。",
+        "romaji": "Choushoku ni omuretsu o tabemasu.",
+        "translation": "Saya makan omelet untuk sarapan."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_omuretsu.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_furaidopoteto",
+    "word": "フライドポテト",
+    "kanji": null,
+    "reading": "フライドポテト",
+    "romaji": "furaido poteto",
+    "meaning": "kentang goreng",
+    "jlptLevel": "N4",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "フライドポテト (furaido poteto)",
+      "formal": "フライドポテト (furaido poteto) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "フライドポテト (furaido poteto) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "フライドポテトが好きです。",
+        "romaji": "Furaido poteto ga suki desu.",
+        "translation": "Saya suka kentang goreng."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_furaidopoteto.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_chiizu",
+    "word": "チーズ",
+    "kanji": null,
+    "reading": "チーズ",
+    "romaji": "chiizu",
+    "meaning": "keju",
+    "jlptLevel": "N4",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "チーズ (chiizu)",
+      "formal": "チーズ (chiizu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "チーズ (chiizu) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "チーズはミルクから作ります。",
+        "romaji": "Chiizu wa miruku kara tsukurimasu.",
+        "translation": "Keju dibuat dari susu."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_chiizu.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_dezaato",
+    "word": "デザート",
+    "kanji": null,
+    "reading": "デザート",
+    "romaji": "dezaato",
+    "meaning": "hidangan penutup (dessert)",
+    "jlptLevel": "N4",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "デザート (dezaato)",
+      "formal": "デザート (dezaato) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "デザート (dezaato) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "デザートを食べましょう。",
+        "romaji": "Dezaato o tabemashou.",
+        "translation": "Ayo makan dessert."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_dezaato.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_keeki",
+    "word": "ケーキ",
+    "kanji": null,
+    "reading": "ケーキ",
+    "romaji": "keeki",
+    "meaning": "kue (cake)",
+    "jlptLevel": "N5",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ケーキ (keeki)",
+      "formal": "ケーキ (keeki) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ケーキ (keeki) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "誕生日にケーキを食べます。",
+        "romaji": "Tanjoubi ni keeki o tabemasu.",
+        "translation": "Saya makan kue di hari ulang tahun."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_keeki.png"
+  },
+  {
+    "id": "kotoba_makanan_barat_supagetti",
+    "word": "スパゲッティ",
+    "kanji": null,
+    "reading": "スパゲッティ",
+    "romaji": "supagetti",
+    "meaning": "spageti",
+    "jlptLevel": "N4",
+    "category": "makanan_barat",
+    "wordType": "noun",
+    "registers": {
+      "casual": "スパゲッティ (supagetti)",
+      "formal": "スパゲッティ (supagetti) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "スパゲッティ (supagetti) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "スパゲッティを茹でます。",
+        "romaji": "Supagetti o yudemasu.",
+        "translation": "Saya merebus spageti."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_barat/kotoba_makanan_barat_supagetti.png"
+  }
+]

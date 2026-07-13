@@ -84,49 +84,56 @@
     "name": "Makanan Jepang",
     "group": "Makanan & Minuman",
     "icon": "🍱",
-    "available": false
+    "available": true,
+    "wordCount": 15
   },
   {
     "id": "makanan_indonesia",
     "name": "Makanan Indonesia",
     "group": "Makanan & Minuman",
     "icon": "🍛",
-    "available": false
+    "available": true,
+    "wordCount": 7
   },
   {
     "id": "makanan_barat",
     "name": "Makanan Barat",
     "group": "Makanan & Minuman",
     "icon": "🍔",
-    "available": false
+    "available": true,
+    "wordCount": 14
   },
   {
     "id": "minuman",
     "name": "Minuman",
     "group": "Makanan & Minuman",
     "icon": "🥤",
-    "available": false
+    "available": true,
+    "wordCount": 12
   },
   {
     "id": "bumbu_rempah",
     "name": "Bumbu & Rempah",
     "group": "Makanan & Minuman",
     "icon": "🧂",
-    "available": false
+    "available": true,
+    "wordCount": 12
   },
   {
     "id": "peralatan_masak",
     "name": "Peralatan Masak",
     "group": "Makanan & Minuman",
     "icon": "🍳",
-    "available": false
+    "available": true,
+    "wordCount": 12
   },
   {
     "id": "cara_memasak",
     "name": "Cara Memasak",
     "group": "Makanan & Minuman",
     "icon": "🔥",
-    "available": false
+    "available": true,
+    "wordCount": 10
   },
   {
     "id": "anggota_tubuh",

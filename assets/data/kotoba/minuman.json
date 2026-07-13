@@ -1,0 +1,290 @@
+[
+  {
+    "id": "kotoba_minuman_mizu",
+    "word": "みず",
+    "kanji": "水",
+    "reading": "みず",
+    "romaji": "mizu",
+    "meaning": "air",
+    "jlptLevel": "N5",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "みず (mizu)",
+      "formal": "みず (mizu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "みず (mizu) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "水を飲みます。",
+        "romaji": "Mizu o nomimasu.",
+        "translation": "Saya minum air."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_mizu.png"
+  },
+  {
+    "id": "kotoba_minuman_ocha",
+    "word": "おちゃ",
+    "kanji": "お茶",
+    "reading": "おちゃ",
+    "romaji": "ocha",
+    "meaning": "teh (Jepang)",
+    "jlptLevel": "N5",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "おちゃ (ocha)",
+      "formal": "おちゃ (ocha) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "おちゃ (ocha) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お茶をどうぞ。",
+        "romaji": "Ocha o douzo.",
+        "translation": "Silakan minum teh."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_ocha.png"
+  },
+  {
+    "id": "kotoba_minuman_koucha",
+    "word": "こうちゃ",
+    "kanji": "紅茶",
+    "reading": "こうちゃ",
+    "romaji": "koucha",
+    "meaning": "teh hitam",
+    "jlptLevel": "N4",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "こうちゃ (koucha)",
+      "formal": "こうちゃ (koucha) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "こうちゃ (koucha) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "紅茶に砂糖を入れます。",
+        "romaji": "Koucha ni satou o iremasu.",
+        "translation": "Saya memasukkan gula ke teh hitam."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_koucha.png"
+  },
+  {
+    "id": "kotoba_minuman_koohii",
+    "word": "コーヒー",
+    "kanji": null,
+    "reading": "コーヒー",
+    "romaji": "koohii",
+    "meaning": "kopi",
+    "jlptLevel": "N5",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "コーヒー (koohii)",
+      "formal": "コーヒー (koohii) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "コーヒー (koohii) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎朝コーヒーを飲みます。",
+        "romaji": "Maiasa koohii o nomimasu.",
+        "translation": "Saya minum kopi setiap pagi."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_koohii.png"
+  },
+  {
+    "id": "kotoba_minuman_gyuunyuu",
+    "word": "ぎゅうにゅう",
+    "kanji": "牛乳",
+    "reading": "ぎゅうにゅう",
+    "romaji": "gyuunyuu",
+    "meaning": "susu sapi",
+    "jlptLevel": "N4",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ぎゅうにゅう (gyuunyuu)",
+      "formal": "ぎゅうにゅう (gyuunyuu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ぎゅうにゅう (gyuunyuu) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "牛乳を買いました。",
+        "romaji": "Gyuunyuu o kaimashita.",
+        "translation": "Saya membeli susu."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_gyuunyuu.png"
+  },
+  {
+    "id": "kotoba_minuman_juusu",
+    "word": "ジュース",
+    "kanji": null,
+    "reading": "ジュース",
+    "romaji": "juusu",
+    "meaning": "jus",
+    "jlptLevel": "N5",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ジュース (juusu)",
+      "formal": "ジュース (juusu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ジュース (juusu) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ジュースを飲みます。",
+        "romaji": "Juusu o nomimasu.",
+        "translation": "Saya minum jus."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_juusu.png"
+  },
+  {
+    "id": "kotoba_minuman_koora",
+    "word": "コーラ",
+    "kanji": null,
+    "reading": "コーラ",
+    "romaji": "koora",
+    "meaning": "cola",
+    "jlptLevel": "N4",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "コーラ (koora)",
+      "formal": "コーラ (koora) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "コーラ (koora) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "コーラは甘いです。",
+        "romaji": "Koora wa amai desu.",
+        "translation": "Cola itu manis."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_koora.png"
+  },
+  {
+    "id": "kotoba_minuman_biiru",
+    "word": "ビール",
+    "kanji": null,
+    "reading": "ビール",
+    "romaji": "biiru",
+    "meaning": "bir",
+    "jlptLevel": "N4",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ビール (biiru)",
+      "formal": "ビール (biiru) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ビール (biiru) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ビールを飲みます。",
+        "romaji": "Biiru o nomimasu.",
+        "translation": "Saya minum bir."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_biiru.png"
+  },
+  {
+    "id": "kotoba_minuman_nihonshu",
+    "word": "にほんしゅ",
+    "kanji": "日本酒",
+    "reading": "にほんしゅ",
+    "romaji": "nihonshu",
+    "meaning": "sake (arak beras Jepang)",
+    "jlptLevel": "N3",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "にほんしゅ (nihonshu)",
+      "formal": "にほんしゅ (nihonshu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "にほんしゅ (nihonshu) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本酒は米から作ります。",
+        "romaji": "Nihonshu wa kome kara tsukurimasu.",
+        "translation": "Sake dibuat dari beras."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_nihonshu.png"
+  },
+  {
+    "id": "kotoba_minuman_wain",
+    "word": "ワイン",
+    "kanji": null,
+    "reading": "ワイン",
+    "romaji": "wain",
+    "meaning": "anggur (wine)",
+    "jlptLevel": "N4",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ワイン (wain)",
+      "formal": "ワイン (wain) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ワイン (wain) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "赤ワインが好きです。",
+        "romaji": "Aka wain ga suki desu.",
+        "translation": "Saya suka anggur merah."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_wain.png"
+  },
+  {
+    "id": "kotoba_minuman_tansan",
+    "word": "たんさん",
+    "kanji": "炭酸",
+    "reading": "たんさん",
+    "romaji": "tansan",
+    "meaning": "minuman soda/berkarbonasi",
+    "jlptLevel": "N3",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "たんさん (tansan)",
+      "formal": "たんさん (tansan) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "たんさん (tansan) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "炭酸が好きです。",
+        "romaji": "Tansan ga suki desu.",
+        "translation": "Saya suka minuman soda."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_tansan.png"
+  },
+  {
+    "id": "kotoba_minuman_mirukutii",
+    "word": "ミルクティー",
+    "kanji": null,
+    "reading": "ミルクティー",
+    "romaji": "mirukutii",
+    "meaning": "teh susu",
+    "jlptLevel": "N3",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ミルクティー (mirukutii)",
+      "formal": "ミルクティー (mirukutii) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ミルクティー (mirukutii) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ミルクティーを飲みます。",
+        "romaji": "Mirukutii o nomimasu.",
+        "translation": "Saya minum teh susu."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_mirukutii.png"
+  }
+]

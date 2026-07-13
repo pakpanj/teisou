@@ -1,0 +1,290 @@
+[
+  {
+    "id": "kotoba_peralatan_masak_nabe",
+    "word": "なべ",
+    "kanji": "鍋",
+    "reading": "なべ",
+    "romaji": "nabe",
+    "meaning": "panci",
+    "jlptLevel": "N4",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "なべ (nabe)",
+      "formal": "なべ (nabe) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "なべ (nabe) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "鍋でスープを作ります。",
+        "romaji": "Nabe de suupu o tsukurimasu.",
+        "translation": "Saya membuat sup dengan panci."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_nabe.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_furaipan",
+    "word": "フライパン",
+    "kanji": null,
+    "reading": "フライパン",
+    "romaji": "furaipan",
+    "meaning": "wajan (frying pan)",
+    "jlptLevel": "N4",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "フライパン (furaipan)",
+      "formal": "フライパン (furaipan) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "フライパン (furaipan) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "フライパンで焼きます。",
+        "romaji": "Furaipan de yakimasu.",
+        "translation": "Saya memasak dengan wajan."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_furaipan.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_houchou",
+    "word": "ほうちょう",
+    "kanji": "包丁",
+    "reading": "ほうちょう",
+    "romaji": "houchou",
+    "meaning": "pisau dapur",
+    "jlptLevel": "N3",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ほうちょう (houchou)",
+      "formal": "ほうちょう (houchou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ほうちょう (houchou) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "包丁で切ります。",
+        "romaji": "Houchou de kirimasu.",
+        "translation": "Saya memotong dengan pisau dapur."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_houchou.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_manaita",
+    "word": "まないた",
+    "kanji": "まな板",
+    "reading": "まないた",
+    "romaji": "manaita",
+    "meaning": "talenan",
+    "jlptLevel": "N3",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "まないた (manaita)",
+      "formal": "まないた (manaita) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "まないた (manaita) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "まな板の上で切ります。",
+        "romaji": "Manaita no ue de kirimasu.",
+        "translation": "Saya memotong di atas talenan."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_manaita.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_oobun",
+    "word": "オーブン",
+    "kanji": null,
+    "reading": "オーブン",
+    "romaji": "oobun",
+    "meaning": "oven",
+    "jlptLevel": "N4",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "オーブン (oobun)",
+      "formal": "オーブン (oobun) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "オーブン (oobun) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "オーブンで焼きます。",
+        "romaji": "Oobun de yakimasu.",
+        "translation": "Saya memanggang dengan oven."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_oobun.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_denshirenji",
+    "word": "でんしレンジ",
+    "kanji": "電子レンジ",
+    "reading": "でんしレンジ",
+    "romaji": "denshi renji",
+    "meaning": "microwave",
+    "jlptLevel": "N4",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "でんしレンジ (denshi renji)",
+      "formal": "でんしレンジ (denshi renji) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "でんしレンジ (denshi renji) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電子レンジで温めます。",
+        "romaji": "Denshi renji de atatamemasu.",
+        "translation": "Saya menghangatkan dengan microwave."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_denshirenji.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_suihanki",
+    "word": "すいはんき",
+    "kanji": "炊飯器",
+    "reading": "すいはんき",
+    "romaji": "suihanki",
+    "meaning": "rice cooker",
+    "jlptLevel": "N3",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "すいはんき (suihanki)",
+      "formal": "すいはんき (suihanki) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "すいはんき (suihanki) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "炊飯器でご飯を炊きます。",
+        "romaji": "Suihanki de gohan o takimasu.",
+        "translation": "Saya memasak nasi dengan rice cooker."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_suihanki.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_oosaji",
+    "word": "おおさじ",
+    "kanji": "大さじ",
+    "reading": "おおさじ",
+    "romaji": "oosaji",
+    "meaning": "sendok makan (takaran)",
+    "jlptLevel": "N3",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "おおさじ (oosaji)",
+      "formal": "おおさじ (oosaji) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "おおさじ (oosaji) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大さじ一杯の砂糖。",
+        "romaji": "Oosaji ippai no satou.",
+        "translation": "Satu sendok makan gula."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_oosaji.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_kosaji",
+    "word": "こさじ",
+    "kanji": "小さじ",
+    "reading": "こさじ",
+    "romaji": "kosaji",
+    "meaning": "sendok teh (takaran)",
+    "jlptLevel": "N3",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "こさじ (kosaji)",
+      "formal": "こさじ (kosaji) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "こさじ (kosaji) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "小さじ半分の塩。",
+        "romaji": "Kosaji hanbun no shio.",
+        "translation": "Setengah sendok teh garam."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_kosaji.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_zaru",
+    "word": "ざる",
+    "kanji": null,
+    "reading": "ざる",
+    "romaji": "zaru",
+    "meaning": "saringan (anyaman)",
+    "jlptLevel": "N2",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ざる (zaru)",
+      "formal": "ざる (zaru) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ざる (zaru) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ざるで水を切ります。",
+        "romaji": "Zaru de mizu o kirimasu.",
+        "translation": "Saya meniriskan air dengan saringan."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_zaru.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_yakan",
+    "word": "やかん",
+    "kanji": null,
+    "reading": "やかん",
+    "romaji": "yakan",
+    "meaning": "ketel/teko",
+    "jlptLevel": "N3",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "やかん (yakan)",
+      "formal": "やかん (yakan) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "やかん (yakan) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "やかんでお湯を沸かします。",
+        "romaji": "Yakan de oyu o wakashimasu.",
+        "translation": "Saya merebus air dengan ketel."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_yakan.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_sara",
+    "word": "さら",
+    "kanji": "皿",
+    "reading": "さら",
+    "romaji": "sara",
+    "meaning": "piring",
+    "jlptLevel": "N4",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "さら (sara)",
+      "formal": "さら (sara) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "さら (sara) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "皿を洗います。",
+        "romaji": "Sara o araimasu.",
+        "translation": "Saya mencuci piring."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_sara.png"
+  }
+]

@@ -1,0 +1,290 @@
+[
+  {
+    "id": "kotoba_bumbu_rempah_shio",
+    "word": "しお",
+    "kanji": "塩",
+    "reading": "しお",
+    "romaji": "shio",
+    "meaning": "garam",
+    "jlptLevel": "N5",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "しお (shio)",
+      "formal": "しお (shio) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "しお (shio) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "塩を入れます。",
+        "romaji": "Shio o iremasu.",
+        "translation": "Saya memasukkan garam."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_shio.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_satou",
+    "word": "さとう",
+    "kanji": "砂糖",
+    "reading": "さとう",
+    "romaji": "satou",
+    "meaning": "gula",
+    "jlptLevel": "N5",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "さとう (satou)",
+      "formal": "さとう (satou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "さとう (satou) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "砂糖は甘いです。",
+        "romaji": "Satou wa amai desu.",
+        "translation": "Gula itu manis."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_satou.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_shouyu",
+    "word": "しょうゆ",
+    "kanji": "醤油",
+    "reading": "しょうゆ",
+    "romaji": "shouyu",
+    "meaning": "kecap asin (soy sauce)",
+    "jlptLevel": "N4",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "しょうゆ (shouyu)",
+      "formal": "しょうゆ (shouyu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "しょうゆ (shouyu) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "醤油をかけます。",
+        "romaji": "Shouyu o kakemasu.",
+        "translation": "Saya menuangkan kecap asin."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_shouyu.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_miso",
+    "word": "みそ",
+    "kanji": "味噌",
+    "reading": "みそ",
+    "romaji": "miso",
+    "meaning": "pasta miso (fermentasi kedelai)",
+    "jlptLevel": "N4",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "みそ (miso)",
+      "formal": "みそ (miso) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "みそ (miso) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "味噌は大豆から作ります。",
+        "romaji": "Miso wa daizu kara tsukurimasu.",
+        "translation": "Miso dibuat dari kedelai."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_miso.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_su",
+    "word": "す",
+    "kanji": "酢",
+    "reading": "す",
+    "romaji": "su",
+    "meaning": "cuka",
+    "jlptLevel": "N3",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "す (su)",
+      "formal": "す (su) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "す (su) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "酢を少し入れます。",
+        "romaji": "Su o sukoshi iremasu.",
+        "translation": "Saya memasukkan sedikit cuka."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_su.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_koshou",
+    "word": "こしょう",
+    "kanji": "胡椒",
+    "reading": "こしょう",
+    "romaji": "koshou",
+    "meaning": "merica",
+    "jlptLevel": "N3",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "こしょう (koshou)",
+      "formal": "こしょう (koshou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "こしょう (koshou) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "胡椒を振ります。",
+        "romaji": "Koshou o furimasu.",
+        "translation": "Saya menaburkan merica."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_koshou.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_abura",
+    "word": "あぶら",
+    "kanji": "油",
+    "reading": "あぶら",
+    "romaji": "abura",
+    "meaning": "minyak",
+    "jlptLevel": "N4",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あぶら (abura)",
+      "formal": "あぶら (abura) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "あぶら (abura) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "油で揚げます。",
+        "romaji": "Abura de agemasu.",
+        "translation": "Saya menggoreng dengan minyak."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_abura.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_shouga",
+    "word": "しょうが",
+    "kanji": "生姜",
+    "reading": "しょうが",
+    "romaji": "shouga",
+    "meaning": "jahe",
+    "jlptLevel": "N3",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "しょうが (shouga)",
+      "formal": "しょうが (shouga) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "しょうが (shouga) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "生姜は体を温めます。",
+        "romaji": "Shouga wa karada o atatamemasu.",
+        "translation": "Jahe menghangatkan tubuh."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_shouga.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_karashi",
+    "word": "からし",
+    "kanji": "辛子",
+    "reading": "からし",
+    "romaji": "karashi",
+    "meaning": "mustard Jepang (karashi)",
+    "jlptLevel": "N2",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "からし (karashi)",
+      "formal": "からし (karashi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "からし (karashi) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "からしは辛いです。",
+        "romaji": "Karashi wa karai desu.",
+        "translation": "Karashi itu pedas."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_karashi.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_wasabi",
+    "word": "わさび",
+    "kanji": null,
+    "reading": "わさび",
+    "romaji": "wasabi",
+    "meaning": "wasabi",
+    "jlptLevel": "N3",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "わさび (wasabi)",
+      "formal": "わさび (wasabi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "わさび (wasabi) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お寿司にわさびをつけます。",
+        "romaji": "Osushi ni wasabi o tsukemasu.",
+        "translation": "Saya mengoleskan wasabi ke sushi."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_wasabi.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_katsuobushi",
+    "word": "かつおぶし",
+    "kanji": "鰹節",
+    "reading": "かつおぶし",
+    "romaji": "katsuobushi",
+    "meaning": "serutan ikan cakalang kering",
+    "jlptLevel": "N2",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かつおぶし (katsuobushi)",
+      "formal": "かつおぶし (katsuobushi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "かつおぶし (katsuobushi) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "かつおぶしをかけます。",
+        "romaji": "Katsuobushi o kakemasu.",
+        "translation": "Saya menaburkan katsuobushi."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_katsuobushi.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_mirin",
+    "word": "みりん",
+    "kanji": null,
+    "reading": "みりん",
+    "romaji": "mirin",
+    "meaning": "mirin (arak masak manis)",
+    "jlptLevel": "N2",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "みりん (mirin)",
+      "formal": "みりん (mirin) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "みりん (mirin) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "料理にみりんを使います。",
+        "romaji": "Ryouri ni mirin o tsukaimasu.",
+        "translation": "Saya menggunakan mirin dalam masakan."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_mirin.png"
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "kotoba_cara_memasak_yaku",
+    "word": "やく",
+    "kanji": "焼く",
+    "reading": "やく",
+    "romaji": "yaku",
+    "meaning": "memanggang/menggoreng (sedikit minyak)",
+    "jlptLevel": "N4",
+    "category": "cara_memasak",
+    "wordType": "verb",
+    "registers": {
+      "casual": "焼く (yaku)",
+      "formal": "焼きます (yakimasu)",
+      "keigo": "焼く (yaku) — tidak ada bentuk keigo khusus untuk kata kerja memasak ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "魚を焼きます。",
+        "romaji": "Sakana o yakimasu.",
+        "translation": "Saya memanggang ikan."
+      }
+    ],
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_yaku.png"
+  },
+  {
+    "id": "kotoba_cara_memasak_niru",
+    "word": "にる",
+    "kanji": "煮る",
+    "reading": "にる",
+    "romaji": "niru",
+    "meaning": "merebus/memasak dengan kuah",
+    "jlptLevel": "N4",
+    "category": "cara_memasak",
+    "wordType": "verb",
+    "registers": {
+      "casual": "煮る (niru)",
+      "formal": "煮ます (nimasu)",
+      "keigo": "煮る (niru) — tidak ada bentuk keigo khusus untuk kata kerja memasak ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "野菜を煮ます。",
+        "romaji": "Yasai o nimasu.",
+        "translation": "Saya merebus sayuran."
+      }
+    ],
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_niru.png"
+  },
+  {
+    "id": "kotoba_cara_memasak_ageru",
+    "word": "あげる",
+    "kanji": "揚げる",
+    "reading": "あげる",
+    "romaji": "ageru",
+    "meaning": "menggoreng (deep fry)",
+    "jlptLevel": "N4",
+    "category": "cara_memasak",
+    "wordType": "verb",
+    "registers": {
+      "casual": "揚げる (ageru)",
+      "formal": "揚げます (agemasu)",
+      "keigo": "揚げる (ageru) — tidak ada bentuk keigo khusus untuk kata kerja memasak ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "天ぷらを揚げます。",
+        "romaji": "Tenpura o agemasu.",
+        "translation": "Saya menggoreng tempura."
+      }
+    ],
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_ageru.png"
+  },
+  {
+    "id": "kotoba_cara_memasak_musu",
+    "word": "むす",
+    "kanji": "蒸す",
+    "reading": "むす",
+    "romaji": "musu",
+    "meaning": "mengukus",
+    "jlptLevel": "N3",
+    "category": "cara_memasak",
+    "wordType": "verb",
+    "registers": {
+      "casual": "蒸す (musu)",
+      "formal": "蒸します (mushimasu)",
+      "keigo": "蒸す (musu) — tidak ada bentuk keigo khusus untuk kata kerja memasak ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "野菜を蒸します。",
+        "romaji": "Yasai o mushimasu.",
+        "translation": "Saya mengukus sayuran."
+      }
+    ],
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_musu.png"
+  },
+  {
+    "id": "kotoba_cara_memasak_itameru",
+    "word": "いためる",
+    "kanji": "炒める",
+    "reading": "いためる",
+    "romaji": "itameru",
+    "meaning": "menumis",
+    "jlptLevel": "N3",
+    "category": "cara_memasak",
+    "wordType": "verb",
+    "registers": {
+      "casual": "炒める (itameru)",
+      "formal": "炒めます (itamemasu)",
+      "keigo": "炒める (itameru) — tidak ada bentuk keigo khusus untuk kata kerja memasak ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "野菜を炒めます。",
+        "romaji": "Yasai o itamemasu.",
+        "translation": "Saya menumis sayuran."
+      }
+    ],
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_itameru.png"
+  },
+  {
+    "id": "kotoba_cara_memasak_yuderu",
+    "word": "ゆでる",
+    "kanji": "茹でる",
+    "reading": "ゆでる",
+    "romaji": "yuderu",
+    "meaning": "merebus (dalam air mendidih)",
+    "jlptLevel": "N3",
+    "category": "cara_memasak",
+    "wordType": "verb",
+    "registers": {
+      "casual": "茹でる (yuderu)",
+      "formal": "茹でます (yudemasu)",
+      "keigo": "茹でる (yuderu) — tidak ada bentuk keigo khusus untuk kata kerja memasak ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "卵を茹でます。",
+        "romaji": "Tamago o yudemasu.",
+        "translation": "Saya merebus telur."
+      }
+    ],
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_yuderu.png"
+  },
+  {
+    "id": "kotoba_cara_memasak_kiru",
+    "word": "きる",
+    "kanji": "切る",
+    "reading": "きる",
+    "romaji": "kiru",
+    "meaning": "memotong",
+    "jlptLevel": "N5",
+    "category": "cara_memasak",
+    "wordType": "verb",
+    "registers": {
+      "casual": "切る (kiru)",
+      "formal": "切ります (kirimasu)",
+      "keigo": "切る (kiru) — tidak ada bentuk keigo khusus untuk kata kerja memasak ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "野菜を切ります。",
+        "romaji": "Yasai o kirimasu.",
+        "translation": "Saya memotong sayuran."
+      }
+    ],
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_kiru.png"
+  },
+  {
+    "id": "kotoba_cara_memasak_mazeru",
+    "word": "まぜる",
+    "kanji": "混ぜる",
+    "reading": "まぜる",
+    "romaji": "mazeru",
+    "meaning": "mencampur",
+    "jlptLevel": "N4",
+    "category": "cara_memasak",
+    "wordType": "verb",
+    "registers": {
+      "casual": "混ぜる (mazeru)",
+      "formal": "混ぜます (mazemasu)",
+      "keigo": "混ぜる (mazeru) — tidak ada bentuk keigo khusus untuk kata kerja memasak ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "材料を混ぜます。",
+        "romaji": "Zairyou o mazemasu.",
+        "translation": "Saya mencampur bahan-bahan."
+      }
+    ],
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_mazeru.png"
+  },
+  {
+    "id": "kotoba_cara_memasak_tsukuru",
+    "word": "つくる",
+    "kanji": "作る",
+    "reading": "つくる",
+    "romaji": "tsukuru",
+    "meaning": "membuat (memasak)",
+    "jlptLevel": "N5",
+    "category": "cara_memasak",
+    "wordType": "verb",
+    "registers": {
+      "casual": "作る (tsukuru)",
+      "formal": "作ります (tsukurimasu)",
+      "keigo": "作る (tsukuru) — tidak ada bentuk keigo khusus untuk kata kerja memasak ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "料理を作ります。",
+        "romaji": "Ryouri o tsukurimasu.",
+        "translation": "Saya membuat masakan."
+      }
+    ],
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_tsukuru.png"
+  },
+  {
+    "id": "kotoba_cara_memasak_taku",
+    "word": "たく",
+    "kanji": "炊く",
+    "reading": "たく",
+    "romaji": "taku",
+    "meaning": "menanak (nasi)",
+    "jlptLevel": "N3",
+    "category": "cara_memasak",
+    "wordType": "verb",
+    "registers": {
+      "casual": "炊く (taku)",
+      "formal": "炊きます (takimasu)",
+      "keigo": "炊く (taku) — tidak ada bentuk keigo khusus untuk kata kerja memasak ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ご飯を炊きます。",
+        "romaji": "Gohan o takimasu.",
+        "translation": "Saya menanak nasi."
+      }
+    ],
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_taku.png"
+  }
+]
