@@ -1,0 +1,632 @@
+[
+  {
+    "id": "kotoba_ohayou",
+    "word": "おはよう",
+    "kanji": null,
+    "reading": "ohayou",
+    "romaji": "ohayou",
+    "meaning": "selamat pagi",
+    "jlptLevel": "N5",
+    "category": "salam",
+    "wordType": "expression",
+    "registers": {
+      "casual": "おはよう (ohayou)",
+      "formal": "おはようございます (ohayou gozaimasu)",
+      "keigo": "おはようございます (ohayou gozaimasu)"
+    },
+    "sentenceExample": {
+      "japanese": "おはよう、げんきですか？",
+      "translation": "Selamat pagi, apa kabar?"
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_konnichiwa",
+    "word": "こんにちは",
+    "kanji": null,
+    "reading": "konnichiwa",
+    "romaji": "konnichiwa",
+    "meaning": "selamat siang",
+    "jlptLevel": "N5",
+    "category": "salam",
+    "wordType": "expression",
+    "registers": {
+      "casual": "こんにちは (konnichiwa)",
+      "formal": "こんにちは (konnichiwa)",
+      "keigo": "こんにちは (konnichiwa)"
+    },
+    "sentenceExample": {
+      "japanese": "こんにちは、はじめまして。",
+      "translation": "Selamat siang, senang berkenalan."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_konbanwa",
+    "word": "こんばんは",
+    "kanji": null,
+    "reading": "konbanwa",
+    "romaji": "konbanwa",
+    "meaning": "selamat malam",
+    "jlptLevel": "N5",
+    "category": "salam",
+    "wordType": "expression",
+    "registers": {
+      "casual": "こんばんは (konbanwa)",
+      "formal": "こんばんは (konbanwa)",
+      "keigo": "こんばんは (konbanwa)"
+    },
+    "sentenceExample": {
+      "japanese": "こんばんは、お疲れさまです。",
+      "translation": "Selamat malam, terima kasih atas kerja kerasnya."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_sayounara",
+    "word": "さようなら",
+    "kanji": null,
+    "reading": "sayounara",
+    "romaji": "sayounara",
+    "meaning": "selamat tinggal",
+    "jlptLevel": "N5",
+    "category": "salam",
+    "wordType": "expression",
+    "registers": {
+      "casual": "またね (matane)",
+      "formal": "さようなら (sayounara)",
+      "keigo": "失礼します (shitsurei shimasu)"
+    },
+    "sentenceExample": {
+      "japanese": "さようなら、また明日。",
+      "translation": "Selamat tinggal, sampai besok."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_arigatou",
+    "word": "ありがとう",
+    "kanji": null,
+    "reading": "arigatou",
+    "romaji": "arigatou",
+    "meaning": "terima kasih",
+    "jlptLevel": "N5",
+    "category": "salam",
+    "wordType": "expression",
+    "registers": {
+      "casual": "ありがとう (arigatou)",
+      "formal": "ありがとうございます (arigatou gozaimasu)",
+      "keigo": "誠にありがとうございます (makoto ni arigatou gozaimasu)"
+    },
+    "sentenceExample": {
+      "japanese": "手伝ってくれてありがとう。",
+      "translation": "Terima kasih sudah membantu."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_ichi",
+    "word": "いち",
+    "kanji": "一",
+    "reading": "ichi",
+    "romaji": "ichi",
+    "meaning": "satu",
+    "jlptLevel": "N5",
+    "category": "angka",
+    "wordType": "noun",
+    "registers": {
+      "casual": "いち (ichi)",
+      "formal": "いち (ichi)",
+      "keigo": "いち (ichi)"
+    },
+    "sentenceExample": {
+      "japanese": "いちばんが好きです。",
+      "translation": "Saya suka yang nomor satu."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_ni",
+    "word": "に",
+    "kanji": "二",
+    "reading": "ni",
+    "romaji": "ni",
+    "meaning": "dua",
+    "jlptLevel": "N5",
+    "category": "angka",
+    "wordType": "noun",
+    "registers": {
+      "casual": "に (ni)",
+      "formal": "に (ni)",
+      "keigo": "に (ni)"
+    },
+    "sentenceExample": {
+      "japanese": "にかいに行きます。",
+      "translation": "Saya pergi ke lantai dua."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_san",
+    "word": "さん",
+    "kanji": "三",
+    "reading": "san",
+    "romaji": "san",
+    "meaning": "tiga",
+    "jlptLevel": "N5",
+    "category": "angka",
+    "wordType": "noun",
+    "registers": {
+      "casual": "さん (san)",
+      "formal": "さん (san)",
+      "keigo": "さん (san)"
+    },
+    "sentenceExample": {
+      "japanese": "さんじに会いましょう。",
+      "translation": "Ayo bertemu jam tiga."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_yon",
+    "word": "よん",
+    "kanji": "四",
+    "reading": "yon",
+    "romaji": "yon",
+    "meaning": "empat",
+    "jlptLevel": "N5",
+    "category": "angka",
+    "wordType": "noun",
+    "registers": {
+      "casual": "よん (yon)",
+      "formal": "よん (yon)",
+      "keigo": "よん (yon)"
+    },
+    "sentenceExample": {
+      "japanese": "よんにんかぞくです。",
+      "translation": "Keluarga kami berempat."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_go",
+    "word": "ご",
+    "kanji": "五",
+    "reading": "go",
+    "romaji": "go",
+    "meaning": "lima",
+    "jlptLevel": "N5",
+    "category": "angka",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ご (go)",
+      "formal": "ご (go)",
+      "keigo": "ご (go)"
+    },
+    "sentenceExample": {
+      "japanese": "ごふんまってください。",
+      "translation": "Tolong tunggu lima menit."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_roku",
+    "word": "ろく",
+    "kanji": "六",
+    "reading": "roku",
+    "romaji": "roku",
+    "meaning": "enam",
+    "jlptLevel": "N5",
+    "category": "angka",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ろく (roku)",
+      "formal": "ろく (roku)",
+      "keigo": "ろく (roku)"
+    },
+    "sentenceExample": {
+      "japanese": "ろくじに起きます。",
+      "translation": "Saya bangun jam enam."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_nana",
+    "word": "なな",
+    "kanji": "七",
+    "reading": "nana",
+    "romaji": "nana",
+    "meaning": "tujuh",
+    "jlptLevel": "N5",
+    "category": "angka",
+    "wordType": "noun",
+    "registers": {
+      "casual": "なな (nana)",
+      "formal": "なな (nana)",
+      "keigo": "なな (nana)"
+    },
+    "sentenceExample": {
+      "japanese": "ななつ星があります。",
+      "translation": "Ada tujuh bintang."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_hachi",
+    "word": "はち",
+    "kanji": "八",
+    "reading": "hachi",
+    "romaji": "hachi",
+    "meaning": "delapan",
+    "jlptLevel": "N5",
+    "category": "angka",
+    "wordType": "noun",
+    "registers": {
+      "casual": "はち (hachi)",
+      "formal": "はち (hachi)",
+      "keigo": "はち (hachi)"
+    },
+    "sentenceExample": {
+      "japanese": "はちじに寝ます。",
+      "translation": "Saya tidur jam delapan."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_kyuu",
+    "word": "きゅう",
+    "kanji": "九",
+    "reading": "kyuu",
+    "romaji": "kyuu",
+    "meaning": "sembilan",
+    "jlptLevel": "N5",
+    "category": "angka",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きゅう (kyuu)",
+      "formal": "きゅう (kyuu)",
+      "keigo": "きゅう (kyuu)"
+    },
+    "sentenceExample": {
+      "japanese": "きゅうさいです。",
+      "translation": "Umur saya sembilan tahun."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_juu",
+    "word": "じゅう",
+    "kanji": "十",
+    "reading": "juu",
+    "romaji": "juu",
+    "meaning": "sepuluh",
+    "jlptLevel": "N5",
+    "category": "angka",
+    "wordType": "noun",
+    "registers": {
+      "casual": "じゅう (juu)",
+      "formal": "じゅう (juu)",
+      "keigo": "じゅう (juu)"
+    },
+    "sentenceExample": {
+      "japanese": "じゅっぷんかかります。",
+      "translation": "Butuh waktu sepuluh menit."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_aka",
+    "word": "あか",
+    "kanji": "赤",
+    "reading": "aka",
+    "romaji": "aka",
+    "meaning": "merah",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あか (aka)",
+      "formal": "あか (aka)",
+      "keigo": "あか (aka)"
+    },
+    "sentenceExample": {
+      "japanese": "赤いりんごが好きです。",
+      "translation": "Saya suka apel merah."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_ao",
+    "word": "あお",
+    "kanji": "青",
+    "reading": "ao",
+    "romaji": "ao",
+    "meaning": "biru",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あお (ao)",
+      "formal": "あお (ao)",
+      "keigo": "あお (ao)"
+    },
+    "sentenceExample": {
+      "japanese": "空は青いです。",
+      "translation": "Langit berwarna biru."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_kiiro",
+    "word": "きいろ",
+    "kanji": "黄色",
+    "reading": "kiiro",
+    "romaji": "kiiro",
+    "meaning": "kuning",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きいろ (kiiro)",
+      "formal": "きいろ (kiiro)",
+      "keigo": "きいろ (kiiro)"
+    },
+    "sentenceExample": {
+      "japanese": "黄色い花です。",
+      "translation": "Bunga berwarna kuning."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_shiro",
+    "word": "しろ",
+    "kanji": "白",
+    "reading": "shiro",
+    "romaji": "shiro",
+    "meaning": "putih",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "しろ (shiro)",
+      "formal": "しろ (shiro)",
+      "keigo": "しろ (shiro)"
+    },
+    "sentenceExample": {
+      "japanese": "白い猫がいます。",
+      "translation": "Ada kucing putih."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_kuro",
+    "word": "くろ",
+    "kanji": "黒",
+    "reading": "kuro",
+    "romaji": "kuro",
+    "meaning": "hitam",
+    "jlptLevel": "N5",
+    "category": "warna",
+    "wordType": "noun",
+    "registers": {
+      "casual": "くろ (kuro)",
+      "formal": "くろ (kuro)",
+      "keigo": "くろ (kuro)"
+    },
+    "sentenceExample": {
+      "japanese": "黒いかばんを買いました。",
+      "translation": "Saya membeli tas hitam."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_kazoku",
+    "word": "かぞく",
+    "kanji": "家族",
+    "reading": "kazoku",
+    "romaji": "kazoku",
+    "meaning": "keluarga",
+    "jlptLevel": "N5",
+    "category": "keluarga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かぞく (kazoku)",
+      "formal": "ごかぞく (go-kazoku)",
+      "keigo": "ごかぞく (go-kazoku)"
+    },
+    "sentenceExample": {
+      "japanese": "家族は四人です。",
+      "translation": "Keluarga saya berempat."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_okaasan",
+    "word": "おかあさん",
+    "kanji": "お母さん",
+    "reading": "okaasan",
+    "romaji": "okaasan",
+    "meaning": "ibu",
+    "jlptLevel": "N5",
+    "category": "keluarga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ママ (mama)",
+      "formal": "お母さん (okaasan)",
+      "keigo": "お母様 (okaasama)"
+    },
+    "sentenceExample": {
+      "japanese": "お母さんは料理が上手です。",
+      "translation": "Ibu pandai memasak."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_otousan",
+    "word": "おとうさん",
+    "kanji": "お父さん",
+    "reading": "otousan",
+    "romaji": "otousan",
+    "meaning": "ayah",
+    "jlptLevel": "N5",
+    "category": "keluarga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "パパ (papa)",
+      "formal": "お父さん (otousan)",
+      "keigo": "お父様 (otousama)"
+    },
+    "sentenceExample": {
+      "japanese": "お父さんは会社員です。",
+      "translation": "Ayah bekerja sebagai karyawan kantor."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_kyoudai",
+    "word": "きょうだい",
+    "kanji": "兄弟",
+    "reading": "kyoudai",
+    "romaji": "kyoudai",
+    "meaning": "saudara kandung",
+    "jlptLevel": "N5",
+    "category": "keluarga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きょうだい (kyoudai)",
+      "formal": "ごきょうだい (go-kyoudai)",
+      "keigo": "ごきょうだい (go-kyoudai)"
+    },
+    "sentenceExample": {
+      "japanese": "兄弟は三人います。",
+      "translation": "Saya punya tiga saudara kandung."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_kodomo",
+    "word": "こども",
+    "kanji": "子供",
+    "reading": "kodomo",
+    "romaji": "kodomo",
+    "meaning": "anak",
+    "jlptLevel": "N5",
+    "category": "keluarga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "こども (kodomo)",
+      "formal": "お子さん (okosan)",
+      "keigo": "お子様 (okosama)"
+    },
+    "sentenceExample": {
+      "japanese": "子供が公園で遊んでいます。",
+      "translation": "Anak-anak bermain di taman."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_kyou",
+    "word": "きょう",
+    "kanji": "今日",
+    "reading": "kyou",
+    "romaji": "kyou",
+    "meaning": "hari ini",
+    "jlptLevel": "N5",
+    "category": "waktu",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きょう (kyou)",
+      "formal": "きょう (kyou)",
+      "keigo": "ほんじつ (honjitsu)"
+    },
+    "sentenceExample": {
+      "japanese": "今日は暑いです。",
+      "translation": "Hari ini panas."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_ashita",
+    "word": "あした",
+    "kanji": "明日",
+    "reading": "ashita",
+    "romaji": "ashita",
+    "meaning": "besok",
+    "jlptLevel": "N5",
+    "category": "waktu",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あした (ashita)",
+      "formal": "あす (asu)",
+      "keigo": "みょうにち (myounichi)"
+    },
+    "sentenceExample": {
+      "japanese": "明日は休みです。",
+      "translation": "Besok libur."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_kinou",
+    "word": "きのう",
+    "kanji": "昨日",
+    "reading": "kinou",
+    "romaji": "kinou",
+    "meaning": "kemarin",
+    "jlptLevel": "N5",
+    "category": "waktu",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きのう (kinou)",
+      "formal": "きのう (kinou)",
+      "keigo": "さくじつ (sakujitsu)"
+    },
+    "sentenceExample": {
+      "japanese": "昨日は雨でした。",
+      "translation": "Kemarin hujan."
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_ima",
+    "word": "いま",
+    "kanji": "今",
+    "reading": "ima",
+    "romaji": "ima",
+    "meaning": "sekarang",
+    "jlptLevel": "N5",
+    "category": "waktu",
+    "wordType": "noun",
+    "registers": {
+      "casual": "いま (ima)",
+      "formal": "いま (ima)",
+      "keigo": "ただいま (tadaima)"
+    },
+    "sentenceExample": {
+      "japanese": "今、何時ですか。",
+      "translation": "Sekarang jam berapa?"
+    },
+    "imageAsset": null
+  },
+  {
+    "id": "kotoba_jikan",
+    "word": "じかん",
+    "kanji": "時間",
+    "reading": "jikan",
+    "romaji": "jikan",
+    "meaning": "waktu",
+    "jlptLevel": "N5",
+    "category": "waktu",
+    "wordType": "noun",
+    "registers": {
+      "casual": "じかん (jikan)",
+      "formal": "おじかん (o-jikan)",
+      "keigo": "おじかん (o-jikan)"
+    },
+    "sentenceExample": {
+      "japanese": "時間がありません。",
+      "translation": "Tidak ada waktu."
+    },
+    "imageAsset": null
+  }
+]

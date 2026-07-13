@@ -47,6 +47,8 @@ flutter:
 
   assets:
     - assets/data/kana_data.json
+    - assets/data/kanji_data.json
+    - assets/data/kotoba_data.json
     - assets/svg/hiragana/
     - assets/svg/katakana/
     - assets/images/

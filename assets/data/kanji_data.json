@@ -1,0 +1,684 @@
+[
+  {
+    "id": "kanji_ichi",
+    "character": "一",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "イチ",
+      "イツ"
+    ],
+    "kunyomi": [
+      "ひと",
+      "ひと-つ"
+    ],
+    "meanings": [
+      "satu",
+      "one"
+    ],
+    "strokeCount": 1,
+    "svgAsset": "assets/svg/kanji/ichi.svg",
+    "examples": [
+      {
+        "word": "一つ",
+        "reading": "hitotsu",
+        "meaning": "satu (unit)",
+        "sentence": "りんごを一つください。",
+        "sentenceTranslation": "Tolong satu apel."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_ni",
+    "character": "二",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "ニ"
+    ],
+    "kunyomi": [
+      "ふた",
+      "ふた-つ"
+    ],
+    "meanings": [
+      "dua",
+      "two"
+    ],
+    "strokeCount": 2,
+    "svgAsset": "assets/svg/kanji/ni.svg",
+    "examples": [
+      {
+        "word": "二つ",
+        "reading": "futatsu",
+        "meaning": "dua (unit)",
+        "sentence": "みかんを二つ買いました。",
+        "sentenceTranslation": "Saya membeli dua jeruk."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_san",
+    "character": "三",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "サン"
+    ],
+    "kunyomi": [
+      "み",
+      "み-つ"
+    ],
+    "meanings": [
+      "tiga",
+      "three"
+    ],
+    "strokeCount": 3,
+    "svgAsset": "assets/svg/kanji/san.svg",
+    "examples": [
+      {
+        "word": "三つ",
+        "reading": "mittsu",
+        "meaning": "tiga (unit)",
+        "sentence": "卵を三つ使います。",
+        "sentenceTranslation": "Saya memakai tiga telur."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_yon",
+    "character": "四",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "シ"
+    ],
+    "kunyomi": [
+      "よ",
+      "よん",
+      "よ-つ"
+    ],
+    "meanings": [
+      "empat",
+      "four"
+    ],
+    "strokeCount": 5,
+    "svgAsset": "assets/svg/kanji/yon.svg",
+    "examples": [
+      {
+        "word": "四月",
+        "reading": "shigatsu",
+        "meaning": "bulan April",
+        "sentence": "四月に日本へ行きます。",
+        "sentenceTranslation": "Saya pergi ke Jepang bulan April."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_go",
+    "character": "五",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "ゴ"
+    ],
+    "kunyomi": [
+      "いつ",
+      "いつ-つ"
+    ],
+    "meanings": [
+      "lima",
+      "five"
+    ],
+    "strokeCount": 4,
+    "svgAsset": "assets/svg/kanji/go.svg",
+    "examples": [
+      {
+        "word": "五つ",
+        "reading": "itsutsu",
+        "meaning": "lima (unit)",
+        "sentence": "五つの部屋があります。",
+        "sentenceTranslation": "Ada lima kamar."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_roku",
+    "character": "六",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "ロク"
+    ],
+    "kunyomi": [
+      "む",
+      "む-つ"
+    ],
+    "meanings": [
+      "enam",
+      "six"
+    ],
+    "strokeCount": 4,
+    "svgAsset": "assets/svg/kanji/roku.svg",
+    "examples": [
+      {
+        "word": "六月",
+        "reading": "rokugatsu",
+        "meaning": "bulan Juni",
+        "sentence": "六月は雨が多いです。",
+        "sentenceTranslation": "Bulan Juni banyak hujan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_shichi",
+    "character": "七",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "シチ"
+    ],
+    "kunyomi": [
+      "なな",
+      "なな-つ"
+    ],
+    "meanings": [
+      "tujuh",
+      "seven"
+    ],
+    "strokeCount": 2,
+    "svgAsset": "assets/svg/kanji/shichi.svg",
+    "examples": [
+      {
+        "word": "七つ",
+        "reading": "nanatsu",
+        "meaning": "tujuh (unit)",
+        "sentence": "七つの星が見えます。",
+        "sentenceTranslation": "Terlihat tujuh bintang."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_hachi",
+    "character": "八",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "ハチ"
+    ],
+    "kunyomi": [
+      "や",
+      "や-つ"
+    ],
+    "meanings": [
+      "delapan",
+      "eight"
+    ],
+    "strokeCount": 2,
+    "svgAsset": "assets/svg/kanji/hachi.svg",
+    "examples": [
+      {
+        "word": "八月",
+        "reading": "hachigatsu",
+        "meaning": "bulan Agustus",
+        "sentence": "八月はとても暑いです。",
+        "sentenceTranslation": "Bulan Agustus sangat panas."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kyuu",
+    "character": "九",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "キュウ",
+      "ク"
+    ],
+    "kunyomi": [
+      "ここの",
+      "ここの-つ"
+    ],
+    "meanings": [
+      "sembilan",
+      "nine"
+    ],
+    "strokeCount": 2,
+    "svgAsset": "assets/svg/kanji/kyuu.svg",
+    "examples": [
+      {
+        "word": "九つ",
+        "reading": "kokonotsu",
+        "meaning": "sembilan (unit)",
+        "sentence": "九つの箱があります。",
+        "sentenceTranslation": "Ada sembilan kotak."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_juu",
+    "character": "十",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "ジュウ"
+    ],
+    "kunyomi": [
+      "とお"
+    ],
+    "meanings": [
+      "sepuluh",
+      "ten"
+    ],
+    "strokeCount": 2,
+    "svgAsset": "assets/svg/kanji/juu.svg",
+    "examples": [
+      {
+        "word": "十日",
+        "reading": "tooka",
+        "meaning": "tanggal sepuluh / sepuluh hari",
+        "sentence": "十日に会いましょう。",
+        "sentenceTranslation": "Ayo bertemu tanggal sepuluh."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_hito",
+    "character": "人",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "ジン",
+      "ニン"
+    ],
+    "kunyomi": [
+      "ひと"
+    ],
+    "meanings": [
+      "orang",
+      "person"
+    ],
+    "strokeCount": 2,
+    "svgAsset": "assets/svg/kanji/hito.svg",
+    "examples": [
+      {
+        "word": "日本人",
+        "reading": "nihonjin",
+        "meaning": "orang Jepang",
+        "sentence": "彼は日本人です。",
+        "sentenceTranslation": "Dia orang Jepang."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_hi",
+    "character": "日",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "ニチ",
+      "ジツ"
+    ],
+    "kunyomi": [
+      "ひ",
+      "か"
+    ],
+    "meanings": [
+      "hari",
+      "matahari",
+      "sun/day"
+    ],
+    "strokeCount": 4,
+    "svgAsset": "assets/svg/kanji/hi.svg",
+    "examples": [
+      {
+        "word": "日曜日",
+        "reading": "nichiyoubi",
+        "meaning": "hari Minggu",
+        "sentence": "日曜日は休みです。",
+        "sentenceTranslation": "Hari Minggu libur."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_tsuki",
+    "character": "月",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "ゲツ",
+      "ガツ"
+    ],
+    "kunyomi": [
+      "つき"
+    ],
+    "meanings": [
+      "bulan",
+      "moon/month"
+    ],
+    "strokeCount": 4,
+    "svgAsset": "assets/svg/kanji/tsuki.svg",
+    "examples": [
+      {
+        "word": "月曜日",
+        "reading": "getsuyoubi",
+        "meaning": "hari Senin",
+        "sentence": "月曜日から学校です。",
+        "sentenceTranslation": "Sekolah mulai hari Senin."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_yama",
+    "character": "山",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "サン"
+    ],
+    "kunyomi": [
+      "やま"
+    ],
+    "meanings": [
+      "gunung",
+      "mountain"
+    ],
+    "strokeCount": 3,
+    "svgAsset": "assets/svg/kanji/yama.svg",
+    "examples": [
+      {
+        "word": "富士山",
+        "reading": "fujisan",
+        "meaning": "Gunung Fuji",
+        "sentence": "富士山はきれいです。",
+        "sentenceTranslation": "Gunung Fuji indah."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kawa",
+    "character": "川",
+    "jlptLevel": "N5",
+    "onyomi": [
+      "セン"
+    ],
+    "kunyomi": [
+      "かわ"
+    ],
+    "meanings": [
+      "sungai",
+      "river"
+    ],
+    "strokeCount": 3,
+    "svgAsset": "assets/svg/kanji/kawa.svg",
+    "examples": [
+      {
+        "word": "川",
+        "reading": "kawa",
+        "meaning": "sungai",
+        "sentence": "川で泳ぎました。",
+        "sentenceTranslation": "Saya berenang di sungai."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_n4_placeholder_1",
+    "character": "",
+    "jlptLevel": "N4",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n4_placeholder_2",
+    "character": "",
+    "jlptLevel": "N4",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n4_placeholder_3",
+    "character": "",
+    "jlptLevel": "N4",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n4_placeholder_4",
+    "character": "",
+    "jlptLevel": "N4",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n4_placeholder_5",
+    "character": "",
+    "jlptLevel": "N4",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n3_placeholder_1",
+    "character": "",
+    "jlptLevel": "N3",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n3_placeholder_2",
+    "character": "",
+    "jlptLevel": "N3",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n3_placeholder_3",
+    "character": "",
+    "jlptLevel": "N3",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n3_placeholder_4",
+    "character": "",
+    "jlptLevel": "N3",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n3_placeholder_5",
+    "character": "",
+    "jlptLevel": "N3",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n2_placeholder_1",
+    "character": "",
+    "jlptLevel": "N2",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n2_placeholder_2",
+    "character": "",
+    "jlptLevel": "N2",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n2_placeholder_3",
+    "character": "",
+    "jlptLevel": "N2",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n2_placeholder_4",
+    "character": "",
+    "jlptLevel": "N2",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n2_placeholder_5",
+    "character": "",
+    "jlptLevel": "N2",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n1_placeholder_1",
+    "character": "",
+    "jlptLevel": "N1",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n1_placeholder_2",
+    "character": "",
+    "jlptLevel": "N1",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n1_placeholder_3",
+    "character": "",
+    "jlptLevel": "N1",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n1_placeholder_4",
+    "character": "",
+    "jlptLevel": "N1",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  },
+  {
+    "id": "kanji_n1_placeholder_5",
+    "character": "",
+    "jlptLevel": "N1",
+    "onyomi": [],
+    "kunyomi": [],
+    "meanings": [],
+    "strokeCount": 0,
+    "svgAsset": null,
+    "examples": [],
+    "relatedBunpou": [],
+    "placeholder": true
+  }
+]
