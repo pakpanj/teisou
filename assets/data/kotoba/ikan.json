@@ -1,0 +1,194 @@
+[
+  {
+    "id": "kotoba_ikan_maguro",
+    "word": "まぐろ",
+    "kanji": "鮪",
+    "reading": "まぐろ",
+    "romaji": "maguro",
+    "meaning": "tuna",
+    "jlptLevel": "N4",
+    "category": "ikan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "まぐろ (maguro)",
+      "formal": "まぐろ (maguro) — kesopanan ada di kalimat, mis. '~を食べます'",
+      "keigo": "まぐろ (maguro) — tidak ada bentuk keigo khusus untuk nama ikan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "まぐろを食べます。",
+        "romaji": "Maguro o tabemasu.",
+        "translation": "Saya makan tuna."
+      }
+    ],
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_maguro.png"
+  },
+  {
+    "id": "kotoba_ikan_sake",
+    "word": "さけ",
+    "kanji": "鮭",
+    "reading": "さけ",
+    "romaji": "sake",
+    "meaning": "salmon",
+    "jlptLevel": "N4",
+    "category": "ikan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "さけ (sake)",
+      "formal": "さけ (sake) — kesopanan ada di kalimat, mis. '~を食べます'",
+      "keigo": "さけ (sake) — tidak ada bentuk keigo khusus untuk nama ikan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "鮭は魚です。",
+        "romaji": "Sake wa sakana desu.",
+        "translation": "Salmon adalah ikan."
+      }
+    ],
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_sake.png"
+  },
+  {
+    "id": "kotoba_ikan_tai",
+    "word": "たい",
+    "kanji": "鯛",
+    "reading": "たい",
+    "romaji": "tai",
+    "meaning": "ikan kakap merah (sea bream)",
+    "jlptLevel": "N4",
+    "category": "ikan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "たい (tai)",
+      "formal": "たい (tai) — kesopanan ada di kalimat, mis. '~を食べます'",
+      "keigo": "たい (tai) — tidak ada bentuk keigo khusus untuk nama ikan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "鯛はお祝いの魚です。",
+        "romaji": "Tai wa oiwai no sakana desu.",
+        "translation": "Kakap merah adalah ikan untuk perayaan."
+      }
+    ],
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_tai.png"
+  },
+  {
+    "id": "kotoba_ikan_unagi",
+    "word": "うなぎ",
+    "kanji": "鰻",
+    "reading": "うなぎ",
+    "romaji": "unagi",
+    "meaning": "belut",
+    "jlptLevel": "N4",
+    "category": "ikan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "うなぎ (unagi)",
+      "formal": "うなぎ (unagi) — kesopanan ada di kalimat, mis. '~を食べます'",
+      "keigo": "うなぎ (unagi) — tidak ada bentuk keigo khusus untuk nama ikan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夏はうなぎを食べます。",
+        "romaji": "Natsu wa unagi o tabemasu.",
+        "translation": "Di musim panas, orang makan belut."
+      }
+    ],
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_unagi.png"
+  },
+  {
+    "id": "kotoba_ikan_iwashi",
+    "word": "いわし",
+    "kanji": "鰯",
+    "reading": "いわし",
+    "romaji": "iwashi",
+    "meaning": "ikan sarden",
+    "jlptLevel": "N3",
+    "category": "ikan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "いわし (iwashi)",
+      "formal": "いわし (iwashi) — kesopanan ada di kalimat, mis. '~を食べます'",
+      "keigo": "いわし (iwashi) — tidak ada bentuk keigo khusus untuk nama ikan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "いわしは安いです。",
+        "romaji": "Iwashi wa yasui desu.",
+        "translation": "Ikan sarden itu murah."
+      }
+    ],
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_iwashi.png"
+  },
+  {
+    "id": "kotoba_ikan_saba",
+    "word": "さば",
+    "kanji": "鯖",
+    "reading": "さば",
+    "romaji": "saba",
+    "meaning": "ikan makarel",
+    "jlptLevel": "N3",
+    "category": "ikan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "さば (saba)",
+      "formal": "さば (saba) — kesopanan ada di kalimat, mis. '~を食べます'",
+      "keigo": "さば (saba) — tidak ada bentuk keigo khusus untuk nama ikan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "さばを焼きました。",
+        "romaji": "Saba o yakimashita.",
+        "translation": "Saya memanggang ikan makarel."
+      }
+    ],
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_saba.png"
+  },
+  {
+    "id": "kotoba_ikan_katsuo",
+    "word": "かつお",
+    "kanji": "鰹",
+    "reading": "かつお",
+    "romaji": "katsuo",
+    "meaning": "ikan cakalang (bonito)",
+    "jlptLevel": "N3",
+    "category": "ikan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かつお (katsuo)",
+      "formal": "かつお (katsuo) — kesopanan ada di kalimat, mis. '~を食べます'",
+      "keigo": "かつお (katsuo) — tidak ada bentuk keigo khusus untuk nama ikan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "かつおのお刺身が好きです。",
+        "romaji": "Katsuo no osashimi ga suki desu.",
+        "translation": "Saya suka sashimi cakalang."
+      }
+    ],
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_katsuo.png"
+  },
+  {
+    "id": "kotoba_ikan_fugu",
+    "word": "ふぐ",
+    "kanji": "河豚",
+    "reading": "ふぐ",
+    "romaji": "fugu",
+    "meaning": "ikan buntal (fugu)",
+    "jlptLevel": "N3",
+    "category": "ikan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ふぐ (fugu)",
+      "formal": "ふぐ (fugu) — kesopanan ada di kalimat, mis. '~を食べます'",
+      "keigo": "ふぐ (fugu) — tidak ada bentuk keigo khusus untuk nama ikan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ふぐは高いですが、おいしいです。",
+        "romaji": "Fugu wa takai desu ga, oishii desu.",
+        "translation": "Ikan buntal mahal, tapi enak."
+      }
+    ],
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_fugu.png"
+  }
+]

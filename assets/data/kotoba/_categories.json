@@ -1,0 +1,327 @@
+[
+  {
+    "id": "ikan",
+    "name": "Ikan",
+    "group": "Alam & Lingkungan",
+    "icon": "🐟",
+    "available": true,
+    "wordCount": 20
+  },
+  {
+    "id": "hewan_darat",
+    "name": "Hewan Darat",
+    "group": "Alam & Lingkungan",
+    "icon": "🐾",
+    "available": true,
+    "wordCount": 25
+  },
+  {
+    "id": "burung",
+    "name": "Burung",
+    "group": "Alam & Lingkungan",
+    "icon": "🐦",
+    "available": true,
+    "wordCount": 15
+  },
+  {
+    "id": "serangga",
+    "name": "Serangga",
+    "group": "Alam & Lingkungan",
+    "icon": "🐛",
+    "available": true,
+    "wordCount": 12
+  },
+  {
+    "id": "pohon",
+    "name": "Pohon",
+    "group": "Alam & Lingkungan",
+    "icon": "🌳",
+    "available": true,
+    "wordCount": 12
+  },
+  {
+    "id": "bunga_tanaman",
+    "name": "Bunga & Tanaman",
+    "group": "Alam & Lingkungan",
+    "icon": "🌸",
+    "available": true,
+    "wordCount": 15
+  },
+  {
+    "id": "buah",
+    "name": "Buah",
+    "group": "Alam & Lingkungan",
+    "icon": "🍎",
+    "available": true,
+    "wordCount": 20
+  },
+  {
+    "id": "sayuran",
+    "name": "Sayuran",
+    "group": "Alam & Lingkungan",
+    "icon": "🥬",
+    "available": true,
+    "wordCount": 20
+  },
+  {
+    "id": "cuaca",
+    "name": "Cuaca",
+    "group": "Alam & Lingkungan",
+    "icon": "⛅",
+    "available": true,
+    "wordCount": 20
+  },
+  {
+    "id": "bencana_alam",
+    "name": "Bencana Alam",
+    "group": "Alam & Lingkungan",
+    "icon": "🌪️",
+    "available": true,
+    "wordCount": 12
+  },
+  {
+    "id": "makanan_jepang",
+    "name": "Makanan Jepang",
+    "group": "Makanan & Minuman",
+    "icon": "🍱",
+    "available": false
+  },
+  {
+    "id": "makanan_indonesia",
+    "name": "Makanan Indonesia",
+    "group": "Makanan & Minuman",
+    "icon": "🍛",
+    "available": false
+  },
+  {
+    "id": "makanan_barat",
+    "name": "Makanan Barat",
+    "group": "Makanan & Minuman",
+    "icon": "🍔",
+    "available": false
+  },
+  {
+    "id": "minuman",
+    "name": "Minuman",
+    "group": "Makanan & Minuman",
+    "icon": "🥤",
+    "available": false
+  },
+  {
+    "id": "bumbu_rempah",
+    "name": "Bumbu & Rempah",
+    "group": "Makanan & Minuman",
+    "icon": "🧂",
+    "available": false
+  },
+  {
+    "id": "peralatan_masak",
+    "name": "Peralatan Masak",
+    "group": "Makanan & Minuman",
+    "icon": "🍳",
+    "available": false
+  },
+  {
+    "id": "cara_memasak",
+    "name": "Cara Memasak",
+    "group": "Makanan & Minuman",
+    "icon": "🔥",
+    "available": false
+  },
+  {
+    "id": "anggota_tubuh",
+    "name": "Anggota Tubuh",
+    "group": "Tubuh & Kesehatan",
+    "icon": "🖐️",
+    "available": false
+  },
+  {
+    "id": "penyakit_gejala",
+    "name": "Penyakit & Gejala",
+    "group": "Tubuh & Kesehatan",
+    "icon": "🤒",
+    "available": false
+  },
+  {
+    "id": "obat_obatan",
+    "name": "Obat-obatan",
+    "group": "Tubuh & Kesehatan",
+    "icon": "💊",
+    "available": false
+  },
+  {
+    "id": "olahraga",
+    "name": "Olahraga",
+    "group": "Tubuh & Kesehatan",
+    "icon": "⚽",
+    "available": false
+  },
+  {
+    "id": "perasaan_emosi",
+    "name": "Perasaan & Emosi",
+    "group": "Tubuh & Kesehatan",
+    "icon": "😊",
+    "available": false
+  },
+  {
+    "id": "ekspresi_wajah",
+    "name": "Ekspresi Wajah",
+    "group": "Tubuh & Kesehatan",
+    "icon": "😮",
+    "available": false
+  },
+  {
+    "id": "ruangan_rumah",
+    "name": "Ruangan di Rumah",
+    "group": "Tempat & Transportasi",
+    "icon": "🚪",
+    "available": false
+  },
+  {
+    "id": "perabot_rumah",
+    "name": "Perabot Rumah",
+    "group": "Tempat & Transportasi",
+    "icon": "🛋️",
+    "available": false
+  },
+  {
+    "id": "bangunan_fasilitas",
+    "name": "Bangunan & Fasilitas",
+    "group": "Tempat & Transportasi",
+    "icon": "🏢",
+    "available": false
+  },
+  {
+    "id": "kendaraan",
+    "name": "Kendaraan",
+    "group": "Tempat & Transportasi",
+    "icon": "🚗",
+    "available": false
+  },
+  {
+    "id": "arah_lokasi",
+    "name": "Arah & Lokasi",
+    "group": "Tempat & Transportasi",
+    "icon": "🧭",
+    "available": false
+  },
+  {
+    "id": "negara_kota",
+    "name": "Negara & Kota",
+    "group": "Tempat & Transportasi",
+    "icon": "🗺️",
+    "available": false
+  },
+  {
+    "id": "profesi",
+    "name": "Profesi",
+    "group": "Manusia & Sosial",
+    "icon": "👨‍⚕️",
+    "available": false
+  },
+  {
+    "id": "keluarga_hubungan",
+    "name": "Keluarga & Hubungan",
+    "group": "Manusia & Sosial",
+    "icon": "👪",
+    "available": false
+  },
+  {
+    "id": "pakaian_aksesori",
+    "name": "Pakaian & Aksesori",
+    "group": "Manusia & Sosial",
+    "icon": "👕",
+    "available": false
+  },
+  {
+    "id": "hobi_aktivitas",
+    "name": "Hobi & Aktivitas",
+    "group": "Manusia & Sosial",
+    "icon": "🎨",
+    "available": false
+  },
+  {
+    "id": "agama_budaya",
+    "name": "Agama & Budaya",
+    "group": "Manusia & Sosial",
+    "icon": "⛩️",
+    "available": false
+  },
+  {
+    "id": "perayaan_haribesar",
+    "name": "Perayaan & Hari Besar",
+    "group": "Manusia & Sosial",
+    "icon": "🎉",
+    "available": false
+  },
+  {
+    "id": "alat_tulis_sekolah",
+    "name": "Alat Tulis & Perlengkapan Sekolah",
+    "group": "Pendidikan & Pekerjaan",
+    "icon": "✏️",
+    "available": false
+  },
+  {
+    "id": "mata_pelajaran",
+    "name": "Mata Pelajaran",
+    "group": "Pendidikan & Pekerjaan",
+    "icon": "📖",
+    "available": false
+  },
+  {
+    "id": "pekerjaan_kantor",
+    "name": "Pekerjaan & Kantor",
+    "group": "Pendidikan & Pekerjaan",
+    "icon": "💼",
+    "available": false
+  },
+  {
+    "id": "teknologi_gadget",
+    "name": "Teknologi & Gadget",
+    "group": "Pendidikan & Pekerjaan",
+    "icon": "💻",
+    "available": false
+  },
+  {
+    "id": "media_hiburan",
+    "name": "Media & Hiburan",
+    "group": "Pendidikan & Pekerjaan",
+    "icon": "📺",
+    "available": false
+  },
+  {
+    "id": "hari_bulan",
+    "name": "Hari & Bulan",
+    "group": "Waktu & Angka",
+    "icon": "📅",
+    "available": false
+  },
+  {
+    "id": "musim",
+    "name": "Musim",
+    "group": "Waktu & Angka",
+    "icon": "🍂",
+    "available": false
+  },
+  {
+    "id": "angka_satuan",
+    "name": "Angka & Satuan",
+    "group": "Waktu & Angka",
+    "icon": "🔢",
+    "available": false
+  },
+  {
+    "id": "warna",
+    "name": "Warna",
+    "group": "Waktu & Angka",
+    "icon": "🌈",
+    "available": false
+  },
+  {
+    "id": "bentuk",
+    "name": "Bentuk",
+    "group": "Waktu & Angka",
+    "icon": "🔷",
+    "available": false
+  }
+]

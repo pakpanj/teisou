@@ -13,8 +13,14 @@ class KotobaEntry {
   final String category;
   final String wordType;
   final Map<SpeechRegister, String> registers;
-  final KotobaSentenceExample? sentenceExample;
+  final List<KotobaSentenceExample> sentenceExamples;
   final String? imageAsset;
+
+  /// Firebase Storage path for the on-demand vocab illustration (Batch 6),
+  /// e.g. `kotoba_images/ikan/kotoba_ikan_maguro.png`. Distinct from
+  /// [imageAsset], which is reserved for a possible bundled-in-APK image —
+  /// this one is always fetched over the network and cached locally.
+  final String? imagePath;
 
   /// True for N4-N1 marker rows that only reserve a level's slot in the
   /// dataset — content isn't authored yet.
@@ -31,13 +37,35 @@ class KotobaEntry {
     required this.category,
     required this.wordType,
     required this.registers,
-    this.sentenceExample,
+    this.sentenceExamples = const [],
     this.imageAsset,
+    this.imagePath,
     this.placeholder = false,
   });
 
+  /// Convenience accessor for callers that only ever want one example.
+  KotobaSentenceExample? get sentenceExample =>
+      sentenceExamples.isEmpty ? null : sentenceExamples.first;
+
   factory KotobaEntry.fromJson(Map<String, dynamic> json) {
     final rawRegisters = json['registers'] as Map<String, dynamic>? ?? {};
+
+    // Batch 6 datasets write a `sentenceExamples` list; Batch 4's
+    // kotoba_data.json predates that and only has a single `sentenceExample`
+    // object. Support both without needing to regenerate the older file.
+    final examples = <KotobaSentenceExample>[];
+    final rawList = json['sentenceExamples'] as List?;
+    if (rawList != null) {
+      examples.addAll(
+        rawList.map((e) => KotobaSentenceExample.fromJson(e as Map<String, dynamic>)),
+      );
+    } else {
+      final rawSingle = json['sentenceExample'] as Map<String, dynamic>?;
+      if (rawSingle != null) {
+        examples.add(KotobaSentenceExample.fromJson(rawSingle));
+      }
+    }
+
     return KotobaEntry(
       id: json['id'] as String,
       word: json['word'] as String,
@@ -57,11 +85,9 @@ class KotobaEntry {
           else if (entry.key == 'keigo')
             SpeechRegister.keigo: entry.value as String,
       },
-      sentenceExample: json['sentenceExample'] != null
-          ? KotobaSentenceExample.fromJson(
-              json['sentenceExample'] as Map<String, dynamic>)
-          : null,
+      sentenceExamples: examples,
       imageAsset: json['imageAsset'] as String?,
+      imagePath: json['imagePath'] as String?,
       placeholder: json['placeholder'] as bool? ?? false,
     );
   }

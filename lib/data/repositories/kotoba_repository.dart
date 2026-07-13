@@ -12,6 +12,13 @@ class KotobaRepository {
 
   List<KotobaEntry>? _cache;
 
+  /// Batch 6 vocab categories, keyed by category id, loaded lazily one
+  /// file at a time from `assets/data/kotoba/{categoryId}.json` — unlike
+  /// [_cache], which eagerly loads the single Batch 4 [_assetPath] file.
+  /// Both populate the same [KotobaEntry] model from bundled JSON; this is
+  /// just a second, per-category loading strategy for the same repository.
+  final Map<String, List<KotobaEntry>> _vocabCategoryCache = {};
+
   Future<List<KotobaEntry>> _loadAll() async {
     if (_cache != null) return _cache!;
     final raw = await rootBundle.loadString(_assetPath);
@@ -69,5 +76,25 @@ class KotobaRepository {
       if (entry.word == text || entry.kanji == text) return entry;
     }
     return null;
+  }
+
+  /// Batch 6: loads one vocab category's word list from its own bundled
+  /// file. Returns an empty list (not an error) if the file doesn't exist
+  /// yet — expected for categories still marked `available: false` in
+  /// `_categories.json`.
+  Future<List<KotobaEntry>> getVocabCategory(String categoryId) async {
+    final cached = _vocabCategoryCache[categoryId];
+    if (cached != null) return cached;
+    try {
+      final raw = await rootBundle.loadString('assets/data/kotoba/$categoryId.json');
+      final decoded = json.decode(raw) as List;
+      final entries = decoded
+          .map((e) => KotobaEntry.fromJson(e as Map<String, dynamic>))
+          .toList();
+      _vocabCategoryCache[categoryId] = entries;
+      return entries;
+    } catch (_) {
+      return const [];
+    }
   }
 }
