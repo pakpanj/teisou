@@ -59,11 +59,11 @@ GROUPS = {
         ("perayaan_haribesar", "Perayaan & Hari Besar", "🎉", True, 11),
     ],
     "Pendidikan & Pekerjaan": [
-        ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", False, None),
-        ("mata_pelajaran", "Mata Pelajaran", "📖", False, None),
-        ("pekerjaan_kantor", "Pekerjaan & Kantor", "💼", False, None),
-        ("teknologi_gadget", "Teknologi & Gadget", "💻", False, None),
-        ("media_hiburan", "Media & Hiburan", "📺", False, None),
+        ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", True, 11),
+        ("mata_pelajaran", "Mata Pelajaran", "📖", True, 10),
+        ("pekerjaan_kantor", "Pekerjaan & Kantor", "💼", True, 10),
+        ("teknologi_gadget", "Teknologi & Gadget", "💻", True, 10),
+        ("media_hiburan", "Media & Hiburan", "📺", True, 10),
     ],
     "Waktu & Angka": [
         ("hari_bulan", "Hari & Bulan", "📅", False, None),

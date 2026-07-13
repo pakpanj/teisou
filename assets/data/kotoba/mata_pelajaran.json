@@ -1,0 +1,242 @@
+[
+  {
+    "id": "kotoba_mata_pelajaran_kokugo",
+    "word": "こくご",
+    "kanji": "国語",
+    "reading": "こくご",
+    "romaji": "kokugo",
+    "meaning": "bahasa nasional (mapel Jepang)",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "国語 (kokugo)",
+      "formal": "国語 (kokugo)",
+      "keigo": "国語 (kokugo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国語のテストがあります。",
+        "romaji": "Kokugo no tesuto ga arimasu.",
+        "translation": "Ada tes bahasa Jepang."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kokugo.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_suugaku",
+    "word": "すうがく",
+    "kanji": "数学",
+    "reading": "すうがく",
+    "romaji": "suugaku",
+    "meaning": "matematika",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "数学 (suugaku)",
+      "formal": "数学 (suugaku)",
+      "keigo": "数学 (suugaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "数学は難しいです。",
+        "romaji": "Suugaku wa muzukashii desu.",
+        "translation": "Matematika itu sulit."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_suugaku.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_rika",
+    "word": "りか",
+    "kanji": "理科",
+    "reading": "りか",
+    "romaji": "rika",
+    "meaning": "IPA (sains)",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "理科 (rika)",
+      "formal": "理科 (rika)",
+      "keigo": "理科 (rika) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "理科の実験をします。",
+        "romaji": "Rika no jikken o shimasu.",
+        "translation": "Saya melakukan eksperimen IPA."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rika.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_shakai",
+    "word": "しゃかい",
+    "kanji": "社会",
+    "reading": "しゃかい",
+    "romaji": "shakai",
+    "meaning": "IPS (sosial)",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "社会 (shakai)",
+      "formal": "社会 (shakai)",
+      "keigo": "社会 (shakai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "社会の授業があります。",
+        "romaji": "Shakai no jugyou ga arimasu.",
+        "translation": "Ada pelajaran IPS."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shakai.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_eigo",
+    "word": "えいご",
+    "kanji": "英語",
+    "reading": "えいご",
+    "romaji": "eigo",
+    "meaning": "bahasa Inggris",
+    "jlptLevel": "N5",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "英語 (eigo)",
+      "formal": "英語 (eigo)",
+      "keigo": "英語 (eigo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "英語を勉強します。",
+        "romaji": "Eigo o benkyou shimasu.",
+        "translation": "Saya belajar bahasa Inggris."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_eigo.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_nihongo",
+    "word": "にほんご",
+    "kanji": "日本語",
+    "reading": "にほんご",
+    "romaji": "nihongo",
+    "meaning": "bahasa Jepang",
+    "jlptLevel": "N5",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "日本語 (nihongo)",
+      "formal": "日本語 (nihongo)",
+      "keigo": "日本語 (nihongo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本語が好きです。",
+        "romaji": "Nihongo ga suki desu.",
+        "translation": "Saya suka bahasa Jepang."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_nihongo.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_taiiku",
+    "word": "たいいく",
+    "kanji": "体育",
+    "reading": "たいいく",
+    "romaji": "taiiku",
+    "meaning": "olahraga (mapel PE)",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "体育 (taiiku)",
+      "formal": "体育 (taiiku)",
+      "keigo": "体育 (taiiku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "体育で走ります。",
+        "romaji": "Taiiku de hashirimasu.",
+        "translation": "Saya lari saat pelajaran olahraga."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_taiiku.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_bijutsu",
+    "word": "びじゅつ",
+    "kanji": "美術",
+    "reading": "びじゅつ",
+    "romaji": "bijutsu",
+    "meaning": "seni rupa",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "美術 (bijutsu)",
+      "formal": "美術 (bijutsu)",
+      "keigo": "美術 (bijutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "美術の授業で絵を描きます。",
+        "romaji": "Bijutsu no jugyou de e o kakimasu.",
+        "translation": "Saya menggambar di pelajaran seni."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_bijutsu.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_rekishi",
+    "word": "れきし",
+    "kanji": "歴史",
+    "reading": "れきし",
+    "romaji": "rekishi",
+    "meaning": "sejarah",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "歴史 (rekishi)",
+      "formal": "歴史 (rekishi)",
+      "keigo": "歴史 (rekishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "歴史を勉強します。",
+        "romaji": "Rekishi o benkyou shimasu.",
+        "translation": "Saya belajar sejarah."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rekishi.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kagaku",
+    "word": "かがく",
+    "kanji": "化学",
+    "reading": "かがく",
+    "romaji": "kagaku",
+    "meaning": "kimia",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "化学 (kagaku)",
+      "formal": "化学 (kagaku)",
+      "keigo": "化学 (kagaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "化学は面白いです。",
+        "romaji": "Kagaku wa omoshiroi desu.",
+        "translation": "Kimia itu menarik."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kagaku.png"
+  }
+]

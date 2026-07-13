@@ -1,0 +1,266 @@
+[
+  {
+    "id": "kotoba_alat_tulis_sekolah_enpitsu",
+    "word": "えんぴつ",
+    "kanji": "鉛筆",
+    "reading": "えんぴつ",
+    "romaji": "enpitsu",
+    "meaning": "pensil",
+    "jlptLevel": "N5",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "鉛筆 (enpitsu)",
+      "formal": "鉛筆 (enpitsu)",
+      "keigo": "鉛筆 (enpitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "鉛筆で書きます。",
+        "romaji": "Enpitsu de kakimasu.",
+        "translation": "Saya menulis dengan pensil."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_enpitsu.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_keshigomu",
+    "word": "けしゴム",
+    "kanji": null,
+    "reading": "けしゴム",
+    "romaji": "keshigomu",
+    "meaning": "penghapus",
+    "jlptLevel": "N4",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "けしゴム (keshigomu)",
+      "formal": "けしゴム (keshigomu)",
+      "keigo": "けしゴム (keshigomu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "消しゴムで消します。",
+        "romaji": "Keshigomu de keshimasu.",
+        "translation": "Saya menghapus dengan penghapus."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_keshigomu.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_nooto",
+    "word": "ノート",
+    "kanji": null,
+    "reading": "ノート",
+    "romaji": "nooto",
+    "meaning": "buku catatan",
+    "jlptLevel": "N5",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ノート (nooto)",
+      "formal": "ノート (nooto)",
+      "keigo": "ノート (nooto) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ノートに書きます。",
+        "romaji": "Nooto ni kakimasu.",
+        "translation": "Saya menulis di buku catatan."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_nooto.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_hon",
+    "word": "ほん",
+    "kanji": "本",
+    "reading": "ほん",
+    "romaji": "hon",
+    "meaning": "buku",
+    "jlptLevel": "N5",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "本 (hon)",
+      "formal": "本 (hon)",
+      "keigo": "本 (hon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "本を読みます。",
+        "romaji": "Hon o yomimasu.",
+        "translation": "Saya membaca buku."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_hon.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_kaban",
+    "word": "かばん",
+    "kanji": "鞄",
+    "reading": "かばん",
+    "romaji": "kaban",
+    "meaning": "tas sekolah",
+    "jlptLevel": "N4",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "鞄 (kaban)",
+      "formal": "鞄 (kaban)",
+      "keigo": "鞄 (kaban) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "鞄に本を入れます。",
+        "romaji": "Kaban ni hon o iremasu.",
+        "translation": "Saya memasukkan buku ke tas."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_kaban.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_hasami",
+    "word": "はさみ",
+    "kanji": null,
+    "reading": "はさみ",
+    "romaji": "hasami",
+    "meaning": "gunting",
+    "jlptLevel": "N4",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "はさみ (hasami)",
+      "formal": "はさみ (hasami)",
+      "keigo": "はさみ (hasami) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "はさみで切ります。",
+        "romaji": "Hasami de kirimasu.",
+        "translation": "Saya memotong dengan gunting."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_hasami.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_nori",
+    "word": "のり",
+    "kanji": null,
+    "reading": "のり",
+    "romaji": "nori",
+    "meaning": "lem",
+    "jlptLevel": "N3",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "のり (nori)",
+      "formal": "のり (nori)",
+      "keigo": "のり (nori) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "のりで貼ります。",
+        "romaji": "Nori de harimasu.",
+        "translation": "Saya menempel dengan lem."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_nori.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_jougi",
+    "word": "じょうぎ",
+    "kanji": "定規",
+    "reading": "じょうぎ",
+    "romaji": "jougi",
+    "meaning": "penggaris",
+    "jlptLevel": "N3",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "定規 (jougi)",
+      "formal": "定規 (jougi)",
+      "keigo": "定規 (jougi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "定規で線を引きます。",
+        "romaji": "Jougi de sen o hikimasu.",
+        "translation": "Saya menggaris dengan penggaris."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_jougi.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_pen",
+    "word": "ペン",
+    "kanji": null,
+    "reading": "ペン",
+    "romaji": "pen",
+    "meaning": "pena/pulpen",
+    "jlptLevel": "N5",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ペン (pen)",
+      "formal": "ペン (pen)",
+      "keigo": "ペン (pen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ペンで書きます。",
+        "romaji": "Pen de kakimasu.",
+        "translation": "Saya menulis dengan pena."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_pen.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_fude",
+    "word": "ふで",
+    "kanji": "筆",
+    "reading": "ふで",
+    "romaji": "fude",
+    "meaning": "kuas (kaligrafi)",
+    "jlptLevel": "N3",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "筆 (fude)",
+      "formal": "筆 (fude)",
+      "keigo": "筆 (fude) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "筆で書きます。",
+        "romaji": "Fude de kakimasu.",
+        "translation": "Saya menulis dengan kuas."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_fude.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_kokuban",
+    "word": "こくばん",
+    "kanji": "黒板",
+    "reading": "こくばん",
+    "romaji": "kokuban",
+    "meaning": "papan tulis",
+    "jlptLevel": "N4",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "黒板 (kokuban)",
+      "formal": "黒板 (kokuban)",
+      "keigo": "黒板 (kokuban) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "黒板に書きます。",
+        "romaji": "Kokuban ni kakimasu.",
+        "translation": "Saya menulis di papan tulis."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_kokuban.png"
+  }
+]

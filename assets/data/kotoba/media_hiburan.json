@@ -1,0 +1,242 @@
+[
+  {
+    "id": "kotoba_media_hiburan_terebi",
+    "word": "テレビ",
+    "kanji": null,
+    "reading": "テレビ",
+    "romaji": "terebi",
+    "meaning": "televisi",
+    "jlptLevel": "N5",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "テレビ (terebi)",
+      "formal": "テレビ (terebi)",
+      "keigo": "テレビ (terebi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "テレビを見ます。",
+        "romaji": "Terebi o mimasu.",
+        "translation": "Saya menonton televisi."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_terebi.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_manga",
+    "word": "まんが",
+    "kanji": "漫画",
+    "reading": "まんが",
+    "romaji": "manga",
+    "meaning": "komik (manga)",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "漫画 (manga)",
+      "formal": "漫画 (manga)",
+      "keigo": "漫画 (manga) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "漫画を読みます。",
+        "romaji": "Manga o yomimasu.",
+        "translation": "Saya membaca komik."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_manga.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_anime",
+    "word": "アニメ",
+    "kanji": null,
+    "reading": "アニメ",
+    "romaji": "anime",
+    "meaning": "animasi (anime)",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "アニメ (anime)",
+      "formal": "アニメ (anime)",
+      "keigo": "アニメ (anime) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "アニメが好きです。",
+        "romaji": "Anime ga suki desu.",
+        "translation": "Saya suka anime."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_anime.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_shinbun",
+    "word": "しんぶん",
+    "kanji": "新聞",
+    "reading": "しんぶん",
+    "romaji": "shinbun",
+    "meaning": "koran",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "新聞 (shinbun)",
+      "formal": "新聞 (shinbun)",
+      "keigo": "新聞 (shinbun) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新聞を読みます。",
+        "romaji": "Shinbun o yomimasu.",
+        "translation": "Saya membaca koran."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shinbun.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_zasshi",
+    "word": "ざっし",
+    "kanji": "雑誌",
+    "reading": "ざっし",
+    "romaji": "zasshi",
+    "meaning": "majalah",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "雑誌 (zasshi)",
+      "formal": "雑誌 (zasshi)",
+      "keigo": "雑誌 (zasshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "雑誌を買いました。",
+        "romaji": "Zasshi o kaimashita.",
+        "translation": "Saya membeli majalah."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_zasshi.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_rajio",
+    "word": "ラジオ",
+    "kanji": null,
+    "reading": "ラジオ",
+    "romaji": "rajio",
+    "meaning": "radio",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ラジオ (rajio)",
+      "formal": "ラジオ (rajio)",
+      "keigo": "ラジオ (rajio) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ラジオを聴きます。",
+        "romaji": "Rajio o kikimasu.",
+        "translation": "Saya mendengarkan radio."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rajio.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_nyuusu",
+    "word": "ニュース",
+    "kanji": null,
+    "reading": "ニュース",
+    "romaji": "nyuusu",
+    "meaning": "berita",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ニュース (nyuusu)",
+      "formal": "ニュース (nyuusu)",
+      "keigo": "ニュース (nyuusu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ニュースを見ます。",
+        "romaji": "Nyuusu o mimasu.",
+        "translation": "Saya menonton berita."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_nyuusu.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_dorama",
+    "word": "ドラマ",
+    "kanji": null,
+    "reading": "ドラマ",
+    "romaji": "dorama",
+    "meaning": "drama (serial TV)",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ドラマ (dorama)",
+      "formal": "ドラマ (dorama)",
+      "keigo": "ドラマ (dorama) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ドラマを見ます。",
+        "romaji": "Dorama o mimasu.",
+        "translation": "Saya menonton drama."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_dorama.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_yuuchuubu",
+    "word": "ユーチューブ",
+    "kanji": null,
+    "reading": "ユーチューブ",
+    "romaji": "yuuchuubu",
+    "meaning": "YouTube",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ユーチューブ (yuuchuubu)",
+      "formal": "ユーチューブ (yuuchuubu)",
+      "keigo": "ユーチューブ (yuuchuubu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ユーチューブで動画を見ます。",
+        "romaji": "Yuuchuubu de douga o mimasu.",
+        "translation": "Saya menonton video di YouTube."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_yuuchuubu.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_sns",
+    "word": "SNS",
+    "kanji": null,
+    "reading": "SNS",
+    "romaji": "esu-enu-esu",
+    "meaning": "media sosial",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "SNS (esu-enu-esu)",
+      "formal": "SNS (esu-enu-esu)",
+      "keigo": "SNS (esu-enu-esu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "SNSを使います。",
+        "romaji": "SNS o tsukaimasu.",
+        "translation": "Saya menggunakan media sosial."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_sns.png"
+  }
+]

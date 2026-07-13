@@ -1,0 +1,242 @@
+[
+  {
+    "id": "kotoba_pekerjaan_kantor_kaisha",
+    "word": "かいしゃ",
+    "kanji": "会社",
+    "reading": "かいしゃ",
+    "romaji": "kaisha",
+    "meaning": "perusahaan/kantor",
+    "jlptLevel": "N5",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会社 (kaisha)",
+      "formal": "会社 (kaisha)",
+      "keigo": "会社 (kaisha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会社で働きます。",
+        "romaji": "Kaisha de hatarakimasu.",
+        "translation": "Saya bekerja di kantor."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaisha.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_shigoto",
+    "word": "しごと",
+    "kanji": "仕事",
+    "reading": "しごと",
+    "romaji": "shigoto",
+    "meaning": "pekerjaan",
+    "jlptLevel": "N5",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "仕事 (shigoto)",
+      "formal": "仕事 (shigoto)",
+      "keigo": "仕事 (shigoto) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "仕事が忙しいです。",
+        "romaji": "Shigoto ga isogashii desu.",
+        "translation": "Pekerjaan saya sibuk."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shigoto.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_kaigi",
+    "word": "かいぎ",
+    "kanji": "会議",
+    "reading": "かいぎ",
+    "romaji": "kaigi",
+    "meaning": "rapat",
+    "jlptLevel": "N4",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会議 (kaigi)",
+      "formal": "会議 (kaigi)",
+      "keigo": "会議 (kaigi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会議があります。",
+        "romaji": "Kaigi ga arimasu.",
+        "translation": "Ada rapat."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaigi.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_meishi",
+    "word": "めいし",
+    "kanji": "名刺",
+    "reading": "めいし",
+    "romaji": "meishi",
+    "meaning": "kartu nama",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "名刺 (meishi)",
+      "formal": "名刺 (meishi)",
+      "keigo": "名刺 (meishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "名刺を交換します。",
+        "romaji": "Meishi o koukan shimasu.",
+        "translation": "Saya bertukar kartu nama."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_meishi.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_joushi",
+    "word": "じょうし",
+    "kanji": "上司",
+    "reading": "じょうし",
+    "romaji": "joushi",
+    "meaning": "atasan/bos",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "上司 (joushi)",
+      "formal": "上司 (joushi)",
+      "keigo": "上司 (joushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "上司に相談します。",
+        "romaji": "Joushi ni soudan shimasu.",
+        "translation": "Saya berkonsultasi dengan atasan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_joushi.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_buka",
+    "word": "ぶか",
+    "kanji": "部下",
+    "reading": "ぶか",
+    "romaji": "buka",
+    "meaning": "bawahan",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "部下 (buka)",
+      "formal": "部下 (buka)",
+      "keigo": "部下 (buka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "部下に指示します。",
+        "romaji": "Buka ni shiji shimasu.",
+        "translation": "Saya memberi instruksi kepada bawahan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_buka.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_douryou",
+    "word": "どうりょう",
+    "kanji": "同僚",
+    "reading": "どうりょう",
+    "romaji": "douryou",
+    "meaning": "rekan kerja",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "同僚 (douryou)",
+      "formal": "同僚 (douryou)",
+      "keigo": "同僚 (douryou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "同僚と話します。",
+        "romaji": "Douryou to hanashimasu.",
+        "translation": "Saya berbicara dengan rekan kerja."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_douryou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_kyuuryou",
+    "word": "きゅうりょう",
+    "kanji": "給料",
+    "reading": "きゅうりょう",
+    "romaji": "kyuuryou",
+    "meaning": "gaji",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "給料 (kyuuryou)",
+      "formal": "給料 (kyuuryou)",
+      "keigo": "給料 (kyuuryou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "給料をもらいます。",
+        "romaji": "Kyuuryou o moraimasu.",
+        "translation": "Saya menerima gaji."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kyuuryou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_zangyou",
+    "word": "ざんぎょう",
+    "kanji": "残業",
+    "reading": "ざんぎょう",
+    "romaji": "zangyou",
+    "meaning": "lembur",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "残業 (zangyou)",
+      "formal": "残業 (zangyou)",
+      "keigo": "残業 (zangyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今日は残業します。",
+        "romaji": "Kyou wa zangyou shimasu.",
+        "translation": "Hari ini saya lembur."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_zangyou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_kyuujitsu",
+    "word": "きゅうじつ",
+    "kanji": "休日",
+    "reading": "きゅうじつ",
+    "romaji": "kyuujitsu",
+    "meaning": "hari libur",
+    "jlptLevel": "N4",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "休日 (kyuujitsu)",
+      "formal": "休日 (kyuujitsu)",
+      "keigo": "休日 (kyuujitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "休日は家にいます。",
+        "romaji": "Kyuujitsu wa ie ni imasu.",
+        "translation": "Saat hari libur, saya di rumah."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kyuujitsu.png"
+  }
+]
