@@ -8,6 +8,8 @@ import '../data/models/subscription.dart';
 import '../data/models/user_profile.dart';
 import '../data/repositories/exam_repository.dart';
 import '../data/repositories/kana_repository.dart';
+import '../data/repositories/kanji_repository.dart';
+import '../data/repositories/kotoba_repository.dart';
 import '../data/repositories/leaderboard_repository.dart';
 import '../data/repositories/progress_repository.dart';
 import 'services/ad_service.dart';
@@ -22,6 +24,12 @@ final avatarUploadServiceProvider =
     Provider<AvatarUploadService>((ref) => AvatarUploadService());
 final kanaRepositoryProvider = Provider<KanaRepository>(
   (ref) => KanaRepository(),
+);
+final kanjiRepositoryProvider = Provider<KanjiRepository>(
+  (ref) => KanjiRepository(),
+);
+final kotobaRepositoryProvider = Provider<KotobaRepository>(
+  (ref) => KotobaRepository(),
 );
 final progressRepositoryProvider = Provider<ProgressRepository>(
   (ref) => ProgressRepository(),
