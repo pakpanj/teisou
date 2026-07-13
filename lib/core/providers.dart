@@ -12,9 +12,11 @@ import '../data/repositories/kanji_repository.dart';
 import '../data/repositories/kotoba_repository.dart';
 import '../data/repositories/leaderboard_repository.dart';
 import '../data/repositories/progress_repository.dart';
+import '../data/repositories/saved_words_repository.dart';
 import 'services/ad_service.dart';
 import 'services/auth_service.dart';
 import 'services/avatar_upload_service.dart';
+import 'services/romaji_converter.dart';
 import 'services/tts_service.dart';
 
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
@@ -30,6 +32,12 @@ final kanjiRepositoryProvider = Provider<KanjiRepository>(
 );
 final kotobaRepositoryProvider = Provider<KotobaRepository>(
   (ref) => KotobaRepository(),
+);
+final savedWordsRepositoryProvider = Provider<SavedWordsRepository>(
+  (ref) => SavedWordsRepository(),
+);
+final romajiConverterProvider = Provider<RomajiConverter>(
+  (ref) => RomajiConverter(ref.watch(kanaRepositoryProvider)),
 );
 final progressRepositoryProvider = Provider<ProgressRepository>(
   (ref) => ProgressRepository(),

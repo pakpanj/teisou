@@ -8,6 +8,7 @@ class FirestorePaths {
   static const moduleInterest = 'moduleInterest';
   static const leaderboard = 'leaderboard';
   static const savedItems = 'savedItems';
+  static const savedWords = 'savedWords';
 
   static const fieldProfile = 'profile';
   static const fieldProgress = 'progress';
@@ -20,4 +21,5 @@ class FirestorePaths {
   static String moduleInterestCollection(String uid) =>
       '$users/$uid/$moduleInterest';
   static String savedItemsCollection(String uid) => '$users/$uid/$savedItems';
+  static String savedWordsCollection(String uid) => '$users/$uid/$savedWords';
 }

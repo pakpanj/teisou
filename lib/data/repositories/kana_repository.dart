@@ -24,6 +24,8 @@ class KanaRepository {
     return all;
   }
 
+  Future<List<KanaCharacter>> getAll() => _loadAll();
+
   /// Returns all kana of [type], sorted by gojuon row then column so
   /// flashcard order and "X/46" progress stay consistent.
   Future<List<KanaCharacter>> getByType(KanaType type) async {

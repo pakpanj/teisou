@@ -9,6 +9,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../core/theme/app_colors.dart';
 import 'widgets/detection_overlay.dart';
+import 'widgets/detection_result_sheet.dart';
 
 enum _CamState {
   initializing,
@@ -22,8 +23,7 @@ enum _CamState {
 /// Live camera preview that scans for Japanese text (hiragana/katakana/
 /// kanji) using on-device ML Kit OCR, throttled to roughly one frame a
 /// second. Tapping a detected block (or the auto-highlighted "most
-/// prominent" one) is meant to open a lookup panel — wired up in the next
-/// batch step; for now it surfaces the raw recognized text.
+/// prominent" one) opens [DetectionResultSheet] with a dictionary lookup.
 class CamDetectorScreen extends StatefulWidget {
   const CamDetectorScreen({super.key});
 
@@ -237,30 +237,21 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
     await _startController(_cameras[_cameraIndex]);
   }
 
-  void _showRawResult(String text) {
+  void _showResult(String text) {
+    setState(() {
+      _isPaused = true;
+      _lastRecognizedText = null;
+      _lastImageSize = null;
+    });
     showModalBottomSheet<void>(
       context: context,
-      backgroundColor: AppColors.background,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (_) => Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              text,
-              style: const TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: AppColors.textNavy,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => DetectionResultSheet(text: text),
+    ).whenComplete(() {
+      if (!mounted) return;
+      setState(() => _isPaused = false);
+    });
   }
 
   @override
@@ -354,7 +345,7 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
             DetectionOverlay(
               detections: detections,
               prominent: prominent,
-              onTapBlock: (block) => _showRawResult(block.text),
+              onTapBlock: (block) => _showResult(block.text),
             ),
             const _ScanFrameGuide(),
             Positioned(
@@ -384,7 +375,7 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
                 bottom: 96,
                 child: _ProminentResultChip(
                   text: prominent.block.text,
-                  onTap: () => _showRawResult(prominent.block.text),
+                  onTap: () => _showResult(prominent.block.text),
                 ),
               ),
             Positioned(
