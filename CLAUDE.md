@@ -14,7 +14,8 @@ through dictionary lookup and camera-based scanning. State management is
 | — | Profile Enhancement (custom name + avatar picker/upload, gated by rewarded ads/premium) | ✅ |
 | 4 | Search & Dictionary (Kanji/Kotoba lookup) | ✅ |
 | 5 | Cam Detector (offline Japanese OCR scanning) | ✅ |
-| 6+ | Kotoba vocab modules, full Kanji/Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | ⬜ not started |
+| 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz), Fase 1 dataset (10/45 categories) | ✅ |
+| 7+ | Remaining 35 Kotoba categories, full Kanji/Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | ⬜ not started |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -54,6 +55,51 @@ going forward, confirm which one is meant.
   default emoji. 16 presets (6 free, 10 premium) are emoji + color
   placeholders defined in `lib/core/constants/avatars.dart` — swap for real
   SVG art there without touching callers.
+- **Kotoba vocab module** (Batch 6) extends Batch 4's `KotobaEntry` rather
+  than duplicating it: added `imagePath`, and `sentenceExample` (singular)
+  became `sentenceExamples` (list) with a backward-compat getter + dual
+  `fromJson` support (old singular key still works, so `kotoba_data.json`
+  from Batch 4 didn't need regenerating). Per-category datasets live at
+  `assets/data/kotoba/{category_id}.json` (bundled in the APK, loaded
+  lazily and cached by `KotobaRepository.getVocabCategory`), distinct from
+  Batch 4's single `kotoba_data.json`. `assets/data/kotoba/_categories.json`
+  is metadata-only (id/name/group/icon/available/wordCount) for all 45
+  planned categories across 7 groups — see `KotobaCategoryRepository` and
+  `scripts/generate_kotoba_categories.py`'s `GROUPS` dict for the full
+  roadmap and which are real vs. `available: false` placeholders. Regenerate
+  a category's word list via its `scripts/generate_kotoba_<id>.py` (or add
+  a new category tuple to `generate_kotoba_alam.py`'s `CATEGORIES` dict if
+  it belongs to a group that already has a generator script), then re-run
+  `generate_kotoba_categories.py` to refresh `_categories.json`'s
+  `available`/`wordCount` — **don't hand-edit `_categories.json` and forget
+  to re-run the word-list script, or vice versa; a stale mismatch between
+  the two shipped once** (all 10 Alam & Lingkungan categories showed as
+  available with placeholder counts before any dataset existed for 9 of
+  them — caught via device screenshot, fixed by re-running the generator).
+- **Kotoba images** are on-demand from Firebase Storage
+  (`kotoba_images/{category}/{entry_id}.png`), never bundled — `KotobaImage`
+  widget resolves the download URL, caches it permanently via a dedicated
+  `CacheManager` (`KotobaImageCache`, 365-day stale period), and falls back
+  to a pastel-and-category-emoji placeholder on any failure (404 because the
+  image hasn't been uploaded yet, network error, etc.) — this widget is
+  designed to never crash or show Flutter's broken-image icon. **Gotcha**:
+  don't write `setState(() => someFuture = asyncCall())` — the assignment
+  expression's value (the Future) becomes the closure's own return value,
+  which trips Flutter's "setState callback returned a Future" debug
+  assertion. Wrap in a block body (`setState(() { someFuture = asyncCall();
+  });`) instead. This crashed word-to-word navigation in
+  `KotobaWordDetailScreen` (via `KotobaImage.didUpdateWidget`) until fixed.
+- **Kotoba progress** (`KotobaProgressRepository`) mirrors
+  `SavedWordsRepository`'s shape exactly — SharedPreferences
+  (`kotoba_learned_words`) is the source of truth,
+  `users/{uid}/kotobaProgress/{wordId}` is a best-effort Firestore mirror.
+  `kotobaLearnedIdsProvider` (FutureProvider) is the single source Home/
+  Category/Detail screens watch; call `ref.invalidate(kotobaLearnedIdsProvider)`
+  after `markLearned`/`unmarkLearned` rather than threading local state
+  through three screens. The multiple-choice quiz (`KotobaQuizScreen`,
+  reached from the category screen's app bar) is a standalone practice
+  tool — answering questions doesn't touch progress; marking "Sudah
+  Dipelajari" stays a deliberate action on the detail screen.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
@@ -67,10 +113,22 @@ going forward, confirm which one is meant.
   3), but AdMob uses Google's public **test** ad unit IDs
   (`lib/core/services/ad_service.dart`, `AndroidManifest.xml`) — swap for
   production IDs before release (Batch 12+).
-- Avatar art, kanji stroke-order SVGs (`assets/svg/kanji/` doesn't exist
-  yet — `KanjiGlyph` falls back to `Text`), and kotoba illustration PNGs
-  are all unbuilt; every place that renders them already has a graceful
-  text/emoji fallback.
+- Avatar art and kanji stroke-order SVGs (`assets/svg/kanji/` doesn't exist
+  yet — `KanjiGlyph` falls back to `Text`) are unbuilt; every place that
+  renders them already has a graceful text/emoji fallback.
+- **No Kotoba vocab images have been uploaded to Firebase Storage yet** —
+  all 124 Fase 1 words have a real `imagePath` (see `KotobaImage`'s
+  gracefully-handled 404 fallback above), but the actual PNGs at
+  `kotoba_images/{category}/{entry_id}.png` don't exist in the bucket.
+  Every category/word tile currently shows its pastel emoji placeholder.
+  Uploading real illustrations is a separate task from dataset authoring —
+  see the id list in the Batch 6 completion summary (or re-derive via
+  `python -c "import json,glob; [print(e['imagePath']) for f in
+  glob.glob('assets/data/kotoba/*.json') if '_categories' not in f for e
+  in json.load(open(f, encoding='utf-8'))]"`) for exactly which paths are
+  expected.
+- 35 of 45 planned Kotoba categories (7 groups) are still `available:
+  false` placeholders with no dataset — see the batch status table.
 - Kanji dataset: only N5 has real entries (15). N4-N1 are `placeholder:
   true` marker rows (5 each) so level filters aren't empty — see
   `scripts/generate_kanji_seed.py` to add real ones.
