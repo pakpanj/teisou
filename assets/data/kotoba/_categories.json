@@ -12,63 +12,72 @@
     "name": "Hewan Darat",
     "group": "Alam & Lingkungan",
     "icon": "🐾",
-    "available": false
+    "available": true,
+    "wordCount": 22
   },
   {
     "id": "burung",
     "name": "Burung",
     "group": "Alam & Lingkungan",
     "icon": "🐦",
-    "available": false
+    "available": true,
+    "wordCount": 13
   },
   {
     "id": "serangga",
     "name": "Serangga",
     "group": "Alam & Lingkungan",
     "icon": "🐛",
-    "available": false
+    "available": true,
+    "wordCount": 13
   },
   {
     "id": "pohon",
     "name": "Pohon",
     "group": "Alam & Lingkungan",
     "icon": "🌳",
-    "available": false
+    "available": true,
+    "wordCount": 8
   },
   {
     "id": "bunga_tanaman",
     "name": "Bunga & Tanaman",
     "group": "Alam & Lingkungan",
     "icon": "🌸",
-    "available": false
+    "available": true,
+    "wordCount": 9
   },
   {
     "id": "buah",
     "name": "Buah",
     "group": "Alam & Lingkungan",
     "icon": "🍎",
-    "available": false
+    "available": true,
+    "wordCount": 14
   },
   {
     "id": "sayuran",
     "name": "Sayuran",
     "group": "Alam & Lingkungan",
     "icon": "🥬",
-    "available": false
+    "available": true,
+    "wordCount": 14
   },
   {
     "id": "cuaca",
     "name": "Cuaca",
     "group": "Alam & Lingkungan",
     "icon": "⛅",
-    "available": false
+    "available": true,
+    "wordCount": 12
   },
   {
     "id": "bencana_alam",
     "name": "Bencana Alam",
     "group": "Alam & Lingkungan",
     "icon": "🌪️",
-    "available": false
+    "available": true,
+    "wordCount": 11
   },
   {
     "id": "makanan_jepang",

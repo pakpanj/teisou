@@ -1,0 +1,266 @@
+[
+  {
+    "id": "kotoba_bencana_alam_jishin",
+    "word": "じしん",
+    "kanji": "地震",
+    "reading": "じしん",
+    "romaji": "jishin",
+    "meaning": "gempa bumi",
+    "jlptLevel": "N4",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "じしん (jishin)",
+      "formal": "じしん (jishin) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "じしん (jishin) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "昨日地震がありました。",
+        "romaji": "Kinou jishin ga arimashita.",
+        "translation": "Kemarin ada gempa bumi."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_jishin.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_tsunami",
+    "word": "つなみ",
+    "kanji": "津波",
+    "reading": "つなみ",
+    "romaji": "tsunami",
+    "meaning": "tsunami",
+    "jlptLevel": "N3",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "つなみ (tsunami)",
+      "formal": "つなみ (tsunami) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "つなみ (tsunami) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "地震の後、津波が来ました。",
+        "romaji": "Jishin no ato, tsunami ga kimashita.",
+        "translation": "Setelah gempa, tsunami datang."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_tsunami.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_kouzui",
+    "word": "こうずい",
+    "kanji": "洪水",
+    "reading": "こうずい",
+    "romaji": "kouzui",
+    "meaning": "banjir",
+    "jlptLevel": "N3",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "こうずい (kouzui)",
+      "formal": "こうずい (kouzui) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "こうずい (kouzui) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大雨で洪水になりました。",
+        "romaji": "Ooame de kouzui ni narimashita.",
+        "translation": "Karena hujan deras, terjadi banjir."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kouzui.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_kaji",
+    "word": "かじ",
+    "kanji": "火事",
+    "reading": "かじ",
+    "romaji": "kaji",
+    "meaning": "kebakaran",
+    "jlptLevel": "N3",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かじ (kaji)",
+      "formal": "かじ (kaji) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "かじ (kaji) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "近くで火事がありました。",
+        "romaji": "Chikaku de kaji ga arimashita.",
+        "translation": "Ada kebakaran di dekat sini."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kaji.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_funka",
+    "word": "ふんか",
+    "kanji": "噴火",
+    "reading": "ふんか",
+    "romaji": "funka",
+    "meaning": "letusan gunung berapi",
+    "jlptLevel": "N2",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ふんか (funka)",
+      "formal": "ふんか (funka) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ふんか (funka) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "火山が噴火しました。",
+        "romaji": "Kazan ga funka shimashita.",
+        "translation": "Gunung berapi meletus."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_funka.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_teiden",
+    "word": "ていでん",
+    "kanji": "停電",
+    "reading": "ていでん",
+    "romaji": "teiden",
+    "meaning": "pemadaman listrik",
+    "jlptLevel": "N2",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ていでん (teiden)",
+      "formal": "ていでん (teiden) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ていでん (teiden) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "台風で停電しました。",
+        "romaji": "Taifuu de teiden shimashita.",
+        "translation": "Karena topan, listrik padam."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_teiden.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_kazan",
+    "word": "かざん",
+    "kanji": "火山",
+    "reading": "かざん",
+    "romaji": "kazan",
+    "meaning": "gunung berapi",
+    "jlptLevel": "N3",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かざん (kazan)",
+      "formal": "かざん (kazan) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "かざん (kazan) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本には火山が多いです。",
+        "romaji": "Nihon ni wa kazan ga ooi desu.",
+        "translation": "Di Jepang ada banyak gunung berapi."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kazan.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_hinan",
+    "word": "ひなん",
+    "kanji": "避難",
+    "reading": "ひなん",
+    "romaji": "hinan",
+    "meaning": "evakuasi/mengungsi",
+    "jlptLevel": "N2",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ひなん (hinan)",
+      "formal": "ひなん (hinan) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ひなん (hinan) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "地震の時は避難してください。",
+        "romaji": "Jishin no toki wa hinan shite kudasai.",
+        "translation": "Saat gempa, tolong mengungsi."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hinan.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_arashi",
+    "word": "あらし",
+    "kanji": "嵐",
+    "reading": "あらし",
+    "romaji": "arashi",
+    "meaning": "badai",
+    "jlptLevel": "N3",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あらし (arashi)",
+      "formal": "あらし (arashi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "あらし (arashi) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今夜は嵐になります。",
+        "romaji": "Kon'ya wa arashi ni narimasu.",
+        "translation": "Malam ini akan ada badai."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_arashi.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_bousai",
+    "word": "ぼうさい",
+    "kanji": "防災",
+    "reading": "ぼうさい",
+    "romaji": "bousai",
+    "meaning": "mitigasi bencana",
+    "jlptLevel": "N2",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ぼうさい (bousai)",
+      "formal": "ぼうさい (bousai) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ぼうさい (bousai) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学校で防災訓練をします。",
+        "romaji": "Gakkou de bousai kunren o shimasu.",
+        "translation": "Di sekolah kami melakukan latihan mitigasi bencana."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_bousai.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_hinanjo",
+    "word": "ひなんじょ",
+    "kanji": "避難所",
+    "reading": "ひなんじょ",
+    "romaji": "hinanjo",
+    "meaning": "tempat pengungsian",
+    "jlptLevel": "N2",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ひなんじょ (hinanjo)",
+      "formal": "ひなんじょ (hinanjo) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ひなんじょ (hinanjo) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "避難所に行きます。",
+        "romaji": "Hinanjo ni ikimasu.",
+        "translation": "Saya pergi ke tempat pengungsian."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hinanjo.png"
+  }
+]

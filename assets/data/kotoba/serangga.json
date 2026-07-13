@@ -1,0 +1,314 @@
+[
+  {
+    "id": "kotoba_serangga_mushi",
+    "word": "むし",
+    "kanji": "虫",
+    "reading": "むし",
+    "romaji": "mushi",
+    "meaning": "serangga",
+    "jlptLevel": "N5",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "むし (mushi)",
+      "formal": "むし (mushi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "むし (mushi) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "虫が好きではありません。",
+        "romaji": "Mushi ga suki de wa arimasen.",
+        "translation": "Saya tidak suka serangga."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_mushi.png"
+  },
+  {
+    "id": "kotoba_serangga_chou",
+    "word": "ちょう",
+    "kanji": "蝶",
+    "reading": "ちょう",
+    "romaji": "chou",
+    "meaning": "kupu-kupu",
+    "jlptLevel": "N3",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ちょう (chou)",
+      "formal": "ちょう (chou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ちょう (chou) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "花に蝶がいます。",
+        "romaji": "Hana ni chou ga imasu.",
+        "translation": "Ada kupu-kupu di bunga."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_chou.png"
+  },
+  {
+    "id": "kotoba_serangga_hachi",
+    "word": "はち",
+    "kanji": "蜂",
+    "reading": "はち",
+    "romaji": "hachi",
+    "meaning": "lebah",
+    "jlptLevel": "N3",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "はち (hachi)",
+      "formal": "はち (hachi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "はち (hachi) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "蜂に刺されました。",
+        "romaji": "Hachi ni sasaremashita.",
+        "translation": "Saya disengat lebah."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_hachi.png"
+  },
+  {
+    "id": "kotoba_serangga_ari",
+    "word": "あり",
+    "kanji": null,
+    "reading": "あり",
+    "romaji": "ari",
+    "meaning": "semut",
+    "jlptLevel": "N3",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あり (ari)",
+      "formal": "あり (ari) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "あり (ari) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ありは小さいです。",
+        "romaji": "Ari wa chiisai desu.",
+        "translation": "Semut itu kecil."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_ari.png"
+  },
+  {
+    "id": "kotoba_serangga_ka",
+    "word": "か",
+    "kanji": "蚊",
+    "reading": "か",
+    "romaji": "ka",
+    "meaning": "nyamuk",
+    "jlptLevel": "N3",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "か (ka)",
+      "formal": "か (ka) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "か (ka) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "蚊に刺されました。",
+        "romaji": "Ka ni sasaremashita.",
+        "translation": "Saya digigit nyamuk."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_ka.png"
+  },
+  {
+    "id": "kotoba_serangga_hae",
+    "word": "はえ",
+    "kanji": null,
+    "reading": "はえ",
+    "romaji": "hae",
+    "meaning": "lalat",
+    "jlptLevel": "N3",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "はえ (hae)",
+      "formal": "はえ (hae) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "はえ (hae) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "はえがうるさいです。",
+        "romaji": "Hae ga urusai desu.",
+        "translation": "Lalat itu berisik."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_hae.png"
+  },
+  {
+    "id": "kotoba_serangga_kumo",
+    "word": "くも",
+    "kanji": null,
+    "reading": "くも",
+    "romaji": "kumo",
+    "meaning": "laba-laba",
+    "jlptLevel": "N3",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "くも (kumo)",
+      "formal": "くも (kumo) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "くも (kumo) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "部屋にくもがいます。",
+        "romaji": "Heya ni kumo ga imasu.",
+        "translation": "Ada laba-laba di kamar."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_kumo.png"
+  },
+  {
+    "id": "kotoba_serangga_tonbo",
+    "word": "とんぼ",
+    "kanji": null,
+    "reading": "とんぼ",
+    "romaji": "tonbo",
+    "meaning": "capung",
+    "jlptLevel": "N2",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "とんぼ (tonbo)",
+      "formal": "とんぼ (tonbo) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "とんぼ (tonbo) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "とんぼが飛んでいます。",
+        "romaji": "Tonbo ga tonde imasu.",
+        "translation": "Capung sedang terbang."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_tonbo.png"
+  },
+  {
+    "id": "kotoba_serangga_semi",
+    "word": "せみ",
+    "kanji": "蝉",
+    "reading": "せみ",
+    "romaji": "semi",
+    "meaning": "tonggeret (cicada)",
+    "jlptLevel": "N2",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "せみ (semi)",
+      "formal": "せみ (semi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "せみ (semi) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夏になるとせみが鳴きます。",
+        "romaji": "Natsu ni naru to semi ga nakimasu.",
+        "translation": "Saat musim panas tiba, tonggeret bersuara."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_semi.png"
+  },
+  {
+    "id": "kotoba_serangga_kabutomushi",
+    "word": "かぶとむし",
+    "kanji": null,
+    "reading": "かぶとむし",
+    "romaji": "kabutomushi",
+    "meaning": "kumbang badak",
+    "jlptLevel": "N3",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かぶとむし (kabutomushi)",
+      "formal": "かぶとむし (kabutomushi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "かぶとむし (kabutomushi) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "男の子はかぶとむしが好きです。",
+        "romaji": "Otoko no ko wa kabutomushi ga suki desu.",
+        "translation": "Anak laki-laki suka kumbang badak."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_kabutomushi.png"
+  },
+  {
+    "id": "kotoba_serangga_tentoumushi",
+    "word": "てんとうむし",
+    "kanji": null,
+    "reading": "てんとうむし",
+    "romaji": "tentoumushi",
+    "meaning": "kepik (ladybug)",
+    "jlptLevel": "N3",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "てんとうむし (tentoumushi)",
+      "formal": "てんとうむし (tentoumushi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "てんとうむし (tentoumushi) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "てんとうむしは赤いです。",
+        "romaji": "Tentoumushi wa akai desu.",
+        "translation": "Kepik itu berwarna merah."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_tentoumushi.png"
+  },
+  {
+    "id": "kotoba_serangga_batta",
+    "word": "ばった",
+    "kanji": null,
+    "reading": "ばった",
+    "romaji": "batta",
+    "meaning": "belalang",
+    "jlptLevel": "N3",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ばった (batta)",
+      "formal": "ばった (batta) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ばった (batta) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バッタが跳びます。",
+        "romaji": "Batta ga tobimasu.",
+        "translation": "Belalang melompat."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_batta.png"
+  },
+  {
+    "id": "kotoba_serangga_kuwagata",
+    "word": "くわがた",
+    "kanji": null,
+    "reading": "くわがた",
+    "romaji": "kuwagata",
+    "meaning": "kumbang tanduk rusa (stag beetle)",
+    "jlptLevel": "N3",
+    "category": "serangga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "くわがた (kuwagata)",
+      "formal": "くわがた (kuwagata) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "くわがた (kuwagata) — tidak ada bentuk keigo khusus untuk nama serangga"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "クワガタを捕まえました。",
+        "romaji": "Kuwagata o tsukamaemashita.",
+        "translation": "Saya menangkap kumbang tanduk rusa."
+      }
+    ],
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_kuwagata.png"
+  }
+]

@@ -1,0 +1,290 @@
+[
+  {
+    "id": "kotoba_cuaca_tenki",
+    "word": "てんき",
+    "kanji": "天気",
+    "reading": "てんき",
+    "romaji": "tenki",
+    "meaning": "cuaca",
+    "jlptLevel": "N5",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "てんき (tenki)",
+      "formal": "てんき (tenki) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "てんき (tenki) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今日は天気がいいです。",
+        "romaji": "Kyou wa tenki ga ii desu.",
+        "translation": "Hari ini cuacanya bagus."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_tenki.png"
+  },
+  {
+    "id": "kotoba_cuaca_hare",
+    "word": "はれ",
+    "kanji": "晴れ",
+    "reading": "はれ",
+    "romaji": "hare",
+    "meaning": "cerah",
+    "jlptLevel": "N4",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "はれ (hare)",
+      "formal": "はれ (hare) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "はれ (hare) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "明日は晴れです。",
+        "romaji": "Ashita wa hare desu.",
+        "translation": "Besok cuacanya cerah."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_hare.png"
+  },
+  {
+    "id": "kotoba_cuaca_ame",
+    "word": "あめ",
+    "kanji": "雨",
+    "reading": "あめ",
+    "romaji": "ame",
+    "meaning": "hujan",
+    "jlptLevel": "N5",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あめ (ame)",
+      "formal": "あめ (ame) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "あめ (ame) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "雨が降っています。",
+        "romaji": "Ame ga futte imasu.",
+        "translation": "Sedang turun hujan."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_ame.png"
+  },
+  {
+    "id": "kotoba_cuaca_kumori",
+    "word": "くもり",
+    "kanji": "曇り",
+    "reading": "くもり",
+    "romaji": "kumori",
+    "meaning": "mendung/berawan",
+    "jlptLevel": "N4",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "くもり (kumori)",
+      "formal": "くもり (kumori) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "くもり (kumori) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今日は曇りです。",
+        "romaji": "Kyou wa kumori desu.",
+        "translation": "Hari ini mendung."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kumori.png"
+  },
+  {
+    "id": "kotoba_cuaca_yuki",
+    "word": "ゆき",
+    "kanji": "雪",
+    "reading": "ゆき",
+    "romaji": "yuki",
+    "meaning": "salju",
+    "jlptLevel": "N4",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ゆき (yuki)",
+      "formal": "ゆき (yuki) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ゆき (yuki) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "冬に雪が降ります。",
+        "romaji": "Fuyu ni yuki ga furimasu.",
+        "translation": "Di musim dingin, salju turun."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_yuki.png"
+  },
+  {
+    "id": "kotoba_cuaca_kaze",
+    "word": "かぜ",
+    "kanji": "風",
+    "reading": "かぜ",
+    "romaji": "kaze",
+    "meaning": "angin",
+    "jlptLevel": "N5",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かぜ (kaze)",
+      "formal": "かぜ (kaze) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "かぜ (kaze) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "強い風が吹いています。",
+        "romaji": "Tsuyoi kaze ga fuite imasu.",
+        "translation": "Angin kencang sedang bertiup."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kaze.png"
+  },
+  {
+    "id": "kotoba_cuaca_kaminari",
+    "word": "かみなり",
+    "kanji": "雷",
+    "reading": "かみなり",
+    "romaji": "kaminari",
+    "meaning": "petir/guntur",
+    "jlptLevel": "N3",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かみなり (kaminari)",
+      "formal": "かみなり (kaminari) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "かみなり (kaminari) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "雷が鳴っています。",
+        "romaji": "Kaminari ga natte imasu.",
+        "translation": "Petir sedang menggelegar."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kaminari.png"
+  },
+  {
+    "id": "kotoba_cuaca_kiri",
+    "word": "きり",
+    "kanji": "霧",
+    "reading": "きり",
+    "romaji": "kiri",
+    "meaning": "kabut",
+    "jlptLevel": "N3",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きり (kiri)",
+      "formal": "きり (kiri) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "きり (kiri) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今朝は霧が深いです。",
+        "romaji": "Kesa wa kiri ga fukai desu.",
+        "translation": "Pagi ini kabutnya tebal."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kiri.png"
+  },
+  {
+    "id": "kotoba_cuaca_taifuu",
+    "word": "たいふう",
+    "kanji": "台風",
+    "reading": "たいふう",
+    "romaji": "taifuu",
+    "meaning": "topan/badai",
+    "jlptLevel": "N3",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "たいふう (taifuu)",
+      "formal": "たいふう (taifuu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "たいふう (taifuu) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "台風が来ています。",
+        "romaji": "Taifuu ga kite imasu.",
+        "translation": "Topan sedang datang."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_taifuu.png"
+  },
+  {
+    "id": "kotoba_cuaca_niji",
+    "word": "にじ",
+    "kanji": "虹",
+    "reading": "にじ",
+    "romaji": "niji",
+    "meaning": "pelangi",
+    "jlptLevel": "N3",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "にじ (niji)",
+      "formal": "にじ (niji) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "にじ (niji) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "空に虹が出ました。",
+        "romaji": "Sora ni niji ga demashita.",
+        "translation": "Pelangi muncul di langit."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_niji.png"
+  },
+  {
+    "id": "kotoba_cuaca_tsuyu",
+    "word": "つゆ",
+    "kanji": "梅雨",
+    "reading": "つゆ",
+    "romaji": "tsuyu",
+    "meaning": "musim hujan (Jepang)",
+    "jlptLevel": "N3",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "つゆ (tsuyu)",
+      "formal": "つゆ (tsuyu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "つゆ (tsuyu) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "六月はつゆです。",
+        "romaji": "Rokugatsu wa tsuyu desu.",
+        "translation": "Bulan Juni adalah musim hujan."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_tsuyu.png"
+  },
+  {
+    "id": "kotoba_cuaca_hyou",
+    "word": "ひょう",
+    "kanji": "雹",
+    "reading": "ひょう",
+    "romaji": "hyou",
+    "meaning": "hujan es (hail)",
+    "jlptLevel": "N2",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ひょう (hyou)",
+      "formal": "ひょう (hyou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ひょう (hyou) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "雹が降りました。",
+        "romaji": "Hyou ga furimashita.",
+        "translation": "Hujan es turun."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_hyou.png"
+  }
+]

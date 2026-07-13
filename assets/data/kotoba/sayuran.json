@@ -1,0 +1,338 @@
+[
+  {
+    "id": "kotoba_sayuran_yasai",
+    "word": "やさい",
+    "kanji": "野菜",
+    "reading": "やさい",
+    "romaji": "yasai",
+    "meaning": "sayuran (umum)",
+    "jlptLevel": "N5",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "やさい (yasai)",
+      "formal": "やさい (yasai) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "やさい (yasai) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "野菜を食べましょう。",
+        "romaji": "Yasai o tabemashou.",
+        "translation": "Ayo makan sayur."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_yasai.png"
+  },
+  {
+    "id": "kotoba_sayuran_ninjin",
+    "word": "にんじん",
+    "kanji": "人参",
+    "reading": "にんじん",
+    "romaji": "ninjin",
+    "meaning": "wortel",
+    "jlptLevel": "N4",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "にんじん (ninjin)",
+      "formal": "にんじん (ninjin) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "にんじん (ninjin) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "にんじんは体にいいです。",
+        "romaji": "Ninjin wa karada ni ii desu.",
+        "translation": "Wortel baik untuk tubuh."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_ninjin.png"
+  },
+  {
+    "id": "kotoba_sayuran_jagaimo",
+    "word": "じゃがいも",
+    "kanji": null,
+    "reading": "じゃがいも",
+    "romaji": "jagaimo",
+    "meaning": "kentang",
+    "jlptLevel": "N4",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "じゃがいも (jagaimo)",
+      "formal": "じゃがいも (jagaimo) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "じゃがいも (jagaimo) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "じゃがいもを買いました。",
+        "romaji": "Jagaimo o kaimashita.",
+        "translation": "Saya membeli kentang."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_jagaimo.png"
+  },
+  {
+    "id": "kotoba_sayuran_tamanegi",
+    "word": "たまねぎ",
+    "kanji": null,
+    "reading": "たまねぎ",
+    "romaji": "tamanegi",
+    "meaning": "bawang bombai",
+    "jlptLevel": "N3",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "たまねぎ (tamanegi)",
+      "formal": "たまねぎ (tamanegi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "たまねぎ (tamanegi) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "たまねぎを切ります。",
+        "romaji": "Tamanegi o kirimasu.",
+        "translation": "Saya memotong bawang bombai."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_tamanegi.png"
+  },
+  {
+    "id": "kotoba_sayuran_kyabetsu",
+    "word": "キャベツ",
+    "kanji": null,
+    "reading": "キャベツ",
+    "romaji": "kyabetsu",
+    "meaning": "kubis",
+    "jlptLevel": "N4",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "キャベツ (kyabetsu)",
+      "formal": "キャベツ (kyabetsu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "キャベツ (kyabetsu) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "キャベツはサラダに入れます。",
+        "romaji": "Kyabetsu wa sarada ni iremasu.",
+        "translation": "Kubis dimasukkan ke dalam salad."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_kyabetsu.png"
+  },
+  {
+    "id": "kotoba_sayuran_tomato",
+    "word": "トマト",
+    "kanji": null,
+    "reading": "トマト",
+    "romaji": "tomato",
+    "meaning": "tomat",
+    "jlptLevel": "N5",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "トマト (tomato)",
+      "formal": "トマト (tomato) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "トマト (tomato) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "トマトは赤いです。",
+        "romaji": "Tomato wa akai desu.",
+        "translation": "Tomat berwarna merah."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_tomato.png"
+  },
+  {
+    "id": "kotoba_sayuran_kyuuri",
+    "word": "きゅうり",
+    "kanji": null,
+    "reading": "きゅうり",
+    "romaji": "kyuuri",
+    "meaning": "timun",
+    "jlptLevel": "N3",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きゅうり (kyuuri)",
+      "formal": "きゅうり (kyuuri) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "きゅうり (kyuuri) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "きゅうりのサラダを作ります。",
+        "romaji": "Kyuuri no sarada o tsukurimasu.",
+        "translation": "Saya membuat salad timun."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_kyuuri.png"
+  },
+  {
+    "id": "kotoba_sayuran_nasu",
+    "word": "なす",
+    "kanji": null,
+    "reading": "なす",
+    "romaji": "nasu",
+    "meaning": "terong",
+    "jlptLevel": "N3",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "なす (nasu)",
+      "formal": "なす (nasu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "なす (nasu) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "なすを焼きます。",
+        "romaji": "Nasu o yakimasu.",
+        "translation": "Saya memanggang terong."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_nasu.png"
+  },
+  {
+    "id": "kotoba_sayuran_daikon",
+    "word": "だいこん",
+    "kanji": "大根",
+    "reading": "だいこん",
+    "romaji": "daikon",
+    "meaning": "lobak putih",
+    "jlptLevel": "N3",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "だいこん (daikon)",
+      "formal": "だいこん (daikon) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "だいこん (daikon) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大根のスープを作ります。",
+        "romaji": "Daikon no suupu o tsukurimasu.",
+        "translation": "Saya membuat sup lobak."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_daikon.png"
+  },
+  {
+    "id": "kotoba_sayuran_hourensou",
+    "word": "ほうれんそう",
+    "kanji": null,
+    "reading": "ほうれんそう",
+    "romaji": "hourensou",
+    "meaning": "bayam",
+    "jlptLevel": "N3",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ほうれんそう (hourensou)",
+      "formal": "ほうれんそう (hourensou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ほうれんそう (hourensou) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ほうれんそうは鉄分が多いです。",
+        "romaji": "Hourensou wa tetsubun ga ooi desu.",
+        "translation": "Bayam banyak mengandung zat besi."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_hourensou.png"
+  },
+  {
+    "id": "kotoba_sayuran_piiman",
+    "word": "ピーマン",
+    "kanji": null,
+    "reading": "ピーマン",
+    "romaji": "piiman",
+    "meaning": "paprika hijau",
+    "jlptLevel": "N4",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ピーマン (piiman)",
+      "formal": "ピーマン (piiman) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ピーマン (piiman) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ピーマンは苦いです。",
+        "romaji": "Piiman wa nigai desu.",
+        "translation": "Paprika hijau itu pahit."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_piiman.png"
+  },
+  {
+    "id": "kotoba_sayuran_renkon",
+    "word": "れんこん",
+    "kanji": null,
+    "reading": "れんこん",
+    "romaji": "renkon",
+    "meaning": "akar teratai",
+    "jlptLevel": "N2",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "れんこん (renkon)",
+      "formal": "れんこん (renkon) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "れんこん (renkon) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "れんこんを食べます。",
+        "romaji": "Renkon o tabemasu.",
+        "translation": "Saya makan akar teratai."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_renkon.png"
+  },
+  {
+    "id": "kotoba_sayuran_negi",
+    "word": "ねぎ",
+    "kanji": null,
+    "reading": "ねぎ",
+    "romaji": "negi",
+    "meaning": "daun bawang",
+    "jlptLevel": "N3",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ねぎ (negi)",
+      "formal": "ねぎ (negi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ねぎ (negi) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ねぎを切ります。",
+        "romaji": "Negi o kirimasu.",
+        "translation": "Saya memotong daun bawang."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_negi.png"
+  },
+  {
+    "id": "kotoba_sayuran_ninniku",
+    "word": "にんにく",
+    "kanji": null,
+    "reading": "にんにく",
+    "romaji": "ninniku",
+    "meaning": "bawang putih",
+    "jlptLevel": "N3",
+    "category": "sayuran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "にんにく (ninniku)",
+      "formal": "にんにく (ninniku) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "にんにく (ninniku) — tidak ada bentuk keigo khusus untuk nama sayuran"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "料理ににんにくを入れます。",
+        "romaji": "Ryouri ni ninniku o iremasu.",
+        "translation": "Saya memasukkan bawang putih ke masakan."
+      }
+    ],
+    "imagePath": "kotoba_images/sayuran/kotoba_sayuran_ninniku.png"
+  }
+]

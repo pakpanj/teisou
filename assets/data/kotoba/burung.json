@@ -1,0 +1,314 @@
+[
+  {
+    "id": "kotoba_burung_tori",
+    "word": "とり",
+    "kanji": "鳥",
+    "reading": "とり",
+    "romaji": "tori",
+    "meaning": "burung",
+    "jlptLevel": "N5",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "とり (tori)",
+      "formal": "とり (tori) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "とり (tori) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "鳥が空を飛びます。",
+        "romaji": "Tori ga sora o tobimasu.",
+        "translation": "Burung terbang di langit."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_tori.png"
+  },
+  {
+    "id": "kotoba_burung_niwatori",
+    "word": "にわとり",
+    "kanji": "鶏",
+    "reading": "にわとり",
+    "romaji": "niwatori",
+    "meaning": "ayam",
+    "jlptLevel": "N4",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "にわとり (niwatori)",
+      "formal": "にわとり (niwatori) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "にわとり (niwatori) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "庭に鶏がいます。",
+        "romaji": "Niwa ni niwatori ga imasu.",
+        "translation": "Ada ayam di halaman."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_niwatori.png"
+  },
+  {
+    "id": "kotoba_burung_ahiru",
+    "word": "アヒル",
+    "kanji": null,
+    "reading": "アヒル",
+    "romaji": "ahiru",
+    "meaning": "bebek",
+    "jlptLevel": "N4",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "アヒル (ahiru)",
+      "formal": "アヒル (ahiru) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "アヒル (ahiru) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "池にアヒルがいます。",
+        "romaji": "Ike ni ahiru ga imasu.",
+        "translation": "Ada bebek di kolam."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_ahiru.png"
+  },
+  {
+    "id": "kotoba_burung_suzume",
+    "word": "すずめ",
+    "kanji": "雀",
+    "reading": "すずめ",
+    "romaji": "suzume",
+    "meaning": "burung pipit",
+    "jlptLevel": "N3",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "すずめ (suzume)",
+      "formal": "すずめ (suzume) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "すずめ (suzume) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "雀が木にいます。",
+        "romaji": "Suzume ga ki ni imasu.",
+        "translation": "Ada burung pipit di pohon."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_suzume.png"
+  },
+  {
+    "id": "kotoba_burung_karasu",
+    "word": "からす",
+    "kanji": null,
+    "reading": "からす",
+    "romaji": "karasu",
+    "meaning": "burung gagak",
+    "jlptLevel": "N3",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "からす (karasu)",
+      "formal": "からす (karasu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "からす (karasu) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "カラスは黒いです。",
+        "romaji": "Karasu wa kuroi desu.",
+        "translation": "Burung gagak berwarna hitam."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_karasu.png"
+  },
+  {
+    "id": "kotoba_burung_hato",
+    "word": "はと",
+    "kanji": "鳩",
+    "reading": "はと",
+    "romaji": "hato",
+    "meaning": "burung merpati",
+    "jlptLevel": "N3",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "はと (hato)",
+      "formal": "はと (hato) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "はと (hato) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "公園に鳩がいます。",
+        "romaji": "Kouen ni hato ga imasu.",
+        "translation": "Ada burung merpati di taman."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_hato.png"
+  },
+  {
+    "id": "kotoba_burung_tsuru",
+    "word": "つる",
+    "kanji": "鶴",
+    "reading": "つる",
+    "romaji": "tsuru",
+    "meaning": "burung bangau",
+    "jlptLevel": "N3",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "つる (tsuru)",
+      "formal": "つる (tsuru) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "つる (tsuru) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "折り紙で鶴を作ります。",
+        "romaji": "Origami de tsuru o tsukurimasu.",
+        "translation": "Saya membuat burung bangau dari origami."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_tsuru.png"
+  },
+  {
+    "id": "kotoba_burung_fukurou",
+    "word": "ふくろう",
+    "kanji": null,
+    "reading": "ふくろう",
+    "romaji": "fukurou",
+    "meaning": "burung hantu",
+    "jlptLevel": "N3",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ふくろう (fukurou)",
+      "formal": "ふくろう (fukurou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ふくろう (fukurou) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ふくろうは夜に活動します。",
+        "romaji": "Fukurou wa yoru ni katsudou shimasu.",
+        "translation": "Burung hantu aktif di malam hari."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_fukurou.png"
+  },
+  {
+    "id": "kotoba_burung_taka",
+    "word": "たか",
+    "kanji": "鷹",
+    "reading": "たか",
+    "romaji": "taka",
+    "meaning": "burung elang",
+    "jlptLevel": "N3",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "たか (taka)",
+      "formal": "たか (taka) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "たか (taka) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "鷹は空を飛びます。",
+        "romaji": "Taka wa sora o tobimasu.",
+        "translation": "Elang terbang di langit."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_taka.png"
+  },
+  {
+    "id": "kotoba_burung_pengin",
+    "word": "ペンギン",
+    "kanji": null,
+    "reading": "ペンギン",
+    "romaji": "pengin",
+    "meaning": "penguin",
+    "jlptLevel": "N5",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ペンギン (pengin)",
+      "formal": "ペンギン (pengin) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ペンギン (pengin) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ペンギンは飛べません。",
+        "romaji": "Pengin wa tobemasen.",
+        "translation": "Penguin tidak bisa terbang."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_pengin.png"
+  },
+  {
+    "id": "kotoba_burung_hakuchou",
+    "word": "はくちょう",
+    "kanji": "白鳥",
+    "reading": "はくちょう",
+    "romaji": "hakuchou",
+    "meaning": "burung angsa",
+    "jlptLevel": "N3",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "はくちょう (hakuchou)",
+      "formal": "はくちょう (hakuchou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "はくちょう (hakuchou) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "白鳥は白いです。",
+        "romaji": "Hakuchou wa shiroi desu.",
+        "translation": "Burung angsa berwarna putih."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_hakuchou.png"
+  },
+  {
+    "id": "kotoba_burung_kiji",
+    "word": "きじ",
+    "kanji": "雉",
+    "reading": "きじ",
+    "romaji": "kiji",
+    "meaning": "burung pegar (burung nasional Jepang)",
+    "jlptLevel": "N2",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きじ (kiji)",
+      "formal": "きじ (kiji) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "きじ (kiji) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "雉は日本の国鳥です。",
+        "romaji": "Kiji wa Nihon no kokuchou desu.",
+        "translation": "Burung pegar adalah burung nasional Jepang."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_kiji.png"
+  },
+  {
+    "id": "kotoba_burung_inko",
+    "word": "インコ",
+    "kanji": null,
+    "reading": "インコ",
+    "romaji": "inko",
+    "meaning": "burung parkit",
+    "jlptLevel": "N3",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "インコ (inko)",
+      "formal": "インコ (inko) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "インコ (inko) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "インコを飼っています。",
+        "romaji": "Inko o katte imasu.",
+        "translation": "Saya memelihara burung parkit."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_inko.png"
+  }
+]

@@ -11,22 +11,19 @@ import json
 # Each tuple: (id, name, icon, available, wordCount)
 GROUPS = {
     "Alam & Lingkungan": [
-        # NOTE: only "ikan" is flagged available for the first commit of
-        # this phase, to prove the screens/image-cache/quiz/progress
-        # pipeline end-to-end with a small real dataset before authoring
-        # the other 9 categories' word lists. Flip the rest to True (and
-        # set a real wordCount) once their generate_kotoba_<id>.py scripts
-        # exist and have been run.
+        # Fase 1 (Batch 6): all 10 kategori grup ini punya dataset nyata di
+        # assets/data/kotoba/{id}.json — lihat generate_kotoba_ikan.py dan
+        # generate_kotoba_alam.py.
         ("ikan", "Ikan", "🐟", True, 8),
-        ("hewan_darat", "Hewan Darat", "🐾", False, None),
-        ("burung", "Burung", "🐦", False, None),
-        ("serangga", "Serangga", "🐛", False, None),
-        ("pohon", "Pohon", "🌳", False, None),
-        ("bunga_tanaman", "Bunga & Tanaman", "🌸", False, None),
-        ("buah", "Buah", "🍎", False, None),
-        ("sayuran", "Sayuran", "🥬", False, None),
-        ("cuaca", "Cuaca", "⛅", False, None),
-        ("bencana_alam", "Bencana Alam", "🌪️", False, None),
+        ("hewan_darat", "Hewan Darat", "🐾", True, 22),
+        ("burung", "Burung", "🐦", True, 13),
+        ("serangga", "Serangga", "🐛", True, 13),
+        ("pohon", "Pohon", "🌳", True, 8),
+        ("bunga_tanaman", "Bunga & Tanaman", "🌸", True, 9),
+        ("buah", "Buah", "🍎", True, 14),
+        ("sayuran", "Sayuran", "🥬", True, 14),
+        ("cuaca", "Cuaca", "⛅", True, 12),
+        ("bencana_alam", "Bencana Alam", "🌪️", True, 11),
     ],
     "Makanan & Minuman": [
         ("makanan_jepang", "Makanan Jepang", "🍱", False, None),

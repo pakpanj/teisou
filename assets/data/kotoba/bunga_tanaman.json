@@ -1,0 +1,218 @@
+[
+  {
+    "id": "kotoba_bunga_tanaman_hana",
+    "word": "はな",
+    "kanji": "花",
+    "reading": "はな",
+    "romaji": "hana",
+    "meaning": "bunga",
+    "jlptLevel": "N5",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "はな (hana)",
+      "formal": "はな (hana) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "はな (hana) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "花が咲きます。",
+        "romaji": "Hana ga sakimasu.",
+        "translation": "Bunga mekar."
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_hana.png"
+  },
+  {
+    "id": "kotoba_bunga_tanaman_bara",
+    "word": "バラ",
+    "kanji": null,
+    "reading": "バラ",
+    "romaji": "bara",
+    "meaning": "bunga mawar",
+    "jlptLevel": "N3",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "バラ (bara)",
+      "formal": "バラ (bara) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "バラ (bara) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "庭にバラがあります。",
+        "romaji": "Niwa ni bara ga arimasu.",
+        "translation": "Ada bunga mawar di halaman."
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_bara.png"
+  },
+  {
+    "id": "kotoba_bunga_tanaman_yuri",
+    "word": "ゆり",
+    "kanji": null,
+    "reading": "ゆり",
+    "romaji": "yuri",
+    "meaning": "bunga lili",
+    "jlptLevel": "N2",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ゆり (yuri)",
+      "formal": "ゆり (yuri) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ゆり (yuri) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ゆりはいい香りです。",
+        "romaji": "Yuri wa ii kaori desu.",
+        "translation": "Bunga lili baunya harum."
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_yuri.png"
+  },
+  {
+    "id": "kotoba_bunga_tanaman_himawari",
+    "word": "ひまわり",
+    "kanji": null,
+    "reading": "ひまわり",
+    "romaji": "himawari",
+    "meaning": "bunga matahari",
+    "jlptLevel": "N3",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ひまわり (himawari)",
+      "formal": "ひまわり (himawari) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ひまわり (himawari) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夏にひまわりが咲きます。",
+        "romaji": "Natsu ni himawari ga sakimasu.",
+        "translation": "Bunga matahari mekar di musim panas."
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_himawari.png"
+  },
+  {
+    "id": "kotoba_bunga_tanaman_tanpopo",
+    "word": "たんぽぽ",
+    "kanji": null,
+    "reading": "たんぽぽ",
+    "romaji": "tanpopo",
+    "meaning": "bunga dandelion",
+    "jlptLevel": "N2",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "たんぽぽ (tanpopo)",
+      "formal": "たんぽぽ (tanpopo) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "たんぽぽ (tanpopo) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "たんぽぽは黄色いです。",
+        "romaji": "Tanpopo wa kiiroi desu.",
+        "translation": "Bunga dandelion berwarna kuning."
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_tanpopo.png"
+  },
+  {
+    "id": "kotoba_bunga_tanaman_ajisai",
+    "word": "あじさい",
+    "kanji": null,
+    "reading": "あじさい",
+    "romaji": "ajisai",
+    "meaning": "bunga hydrangea",
+    "jlptLevel": "N2",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あじさい (ajisai)",
+      "formal": "あじさい (ajisai) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "あじさい (ajisai) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "梅雨にあじさいが咲きます。",
+        "romaji": "Tsuyu ni ajisai ga sakimasu.",
+        "translation": "Bunga hydrangea mekar di musim hujan."
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_ajisai.png"
+  },
+  {
+    "id": "kotoba_bunga_tanaman_sumire",
+    "word": "すみれ",
+    "kanji": null,
+    "reading": "すみれ",
+    "romaji": "sumire",
+    "meaning": "bunga violet",
+    "jlptLevel": "N2",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "すみれ (sumire)",
+      "formal": "すみれ (sumire) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "すみれ (sumire) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "すみれは紫色です。",
+        "romaji": "Sumire wa murasakiiro desu.",
+        "translation": "Bunga violet berwarna ungu."
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_sumire.png"
+  },
+  {
+    "id": "kotoba_bunga_tanaman_ume",
+    "word": "うめ",
+    "kanji": "梅",
+    "reading": "うめ",
+    "romaji": "ume",
+    "meaning": "bunga/pohon plum (ume)",
+    "jlptLevel": "N3",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "うめ (ume)",
+      "formal": "うめ (ume) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "うめ (ume) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "梅の花が咲きました。",
+        "romaji": "Ume no hana ga sakimashita.",
+        "translation": "Bunga plum sudah mekar."
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_ume.png"
+  },
+  {
+    "id": "kotoba_bunga_tanaman_shokubutsu",
+    "word": "しょくぶつ",
+    "kanji": "植物",
+    "reading": "しょくぶつ",
+    "romaji": "shokubutsu",
+    "meaning": "tanaman/tumbuhan",
+    "jlptLevel": "N4",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "しょくぶつ (shokubutsu)",
+      "formal": "しょくぶつ (shokubutsu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "しょくぶつ (shokubutsu) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "植物を育てます。",
+        "romaji": "Shokubutsu o sodatemasu.",
+        "translation": "Saya merawat tanaman."
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_shokubutsu.png"
+  }
+]

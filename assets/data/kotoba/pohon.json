@@ -1,0 +1,194 @@
+[
+  {
+    "id": "kotoba_pohon_ki",
+    "word": "き",
+    "kanji": "木",
+    "reading": "き",
+    "romaji": "ki",
+    "meaning": "pohon",
+    "jlptLevel": "N5",
+    "category": "pohon",
+    "wordType": "noun",
+    "registers": {
+      "casual": "き (ki)",
+      "formal": "き (ki) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "き (ki) — tidak ada bentuk keigo khusus untuk nama pohon"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "木の下で休みます。",
+        "romaji": "Ki no shita de yasumimasu.",
+        "translation": "Saya beristirahat di bawah pohon."
+      }
+    ],
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_ki.png"
+  },
+  {
+    "id": "kotoba_pohon_sakura",
+    "word": "さくら",
+    "kanji": "桜",
+    "reading": "さくら",
+    "romaji": "sakura",
+    "meaning": "pohon sakura",
+    "jlptLevel": "N4",
+    "category": "pohon",
+    "wordType": "noun",
+    "registers": {
+      "casual": "さくら (sakura)",
+      "formal": "さくら (sakura) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "さくら (sakura) — tidak ada bentuk keigo khusus untuk nama pohon"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "桜がきれいです。",
+        "romaji": "Sakura ga kirei desu.",
+        "translation": "Bunga sakura itu indah."
+      }
+    ],
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_sakura.png"
+  },
+  {
+    "id": "kotoba_pohon_matsu",
+    "word": "まつ",
+    "kanji": "松",
+    "reading": "まつ",
+    "romaji": "matsu",
+    "meaning": "pohon pinus",
+    "jlptLevel": "N3",
+    "category": "pohon",
+    "wordType": "noun",
+    "registers": {
+      "casual": "まつ (matsu)",
+      "formal": "まつ (matsu) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "まつ (matsu) — tidak ada bentuk keigo khusus untuk nama pohon"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "庭に松があります。",
+        "romaji": "Niwa ni matsu ga arimasu.",
+        "translation": "Ada pohon pinus di halaman."
+      }
+    ],
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_matsu.png"
+  },
+  {
+    "id": "kotoba_pohon_take",
+    "word": "たけ",
+    "kanji": "竹",
+    "reading": "たけ",
+    "romaji": "take",
+    "meaning": "bambu",
+    "jlptLevel": "N3",
+    "category": "pohon",
+    "wordType": "noun",
+    "registers": {
+      "casual": "たけ (take)",
+      "formal": "たけ (take) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "たけ (take) — tidak ada bentuk keigo khusus untuk nama pohon"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "竹はまっすぐです。",
+        "romaji": "Take wa massugu desu.",
+        "translation": "Bambu itu lurus."
+      }
+    ],
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_take.png"
+  },
+  {
+    "id": "kotoba_pohon_momiji",
+    "word": "もみじ",
+    "kanji": "紅葉",
+    "reading": "もみじ",
+    "romaji": "momiji",
+    "meaning": "pohon maple (momiji)",
+    "jlptLevel": "N3",
+    "category": "pohon",
+    "wordType": "noun",
+    "registers": {
+      "casual": "もみじ (momiji)",
+      "formal": "もみじ (momiji) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "もみじ (momiji) — tidak ada bentuk keigo khusus untuk nama pohon"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "秋にもみじが赤くなります。",
+        "romaji": "Aki ni momiji ga akaku narimasu.",
+        "translation": "Di musim gugur, daun momiji menjadi merah."
+      }
+    ],
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_momiji.png"
+  },
+  {
+    "id": "kotoba_pohon_yashi",
+    "word": "やし",
+    "kanji": "椰子",
+    "reading": "やし",
+    "romaji": "yashi",
+    "meaning": "pohon kelapa/palem",
+    "jlptLevel": "N2",
+    "category": "pohon",
+    "wordType": "noun",
+    "registers": {
+      "casual": "やし (yashi)",
+      "formal": "やし (yashi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "やし (yashi) — tidak ada bentuk keigo khusus untuk nama pohon"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "海に椰子の木があります。",
+        "romaji": "Umi ni yashi no ki ga arimasu.",
+        "translation": "Ada pohon kelapa di pantai."
+      }
+    ],
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_yashi.png"
+  },
+  {
+    "id": "kotoba_pohon_ichou",
+    "word": "いちょう",
+    "kanji": "銀杏",
+    "reading": "いちょう",
+    "romaji": "ichou",
+    "meaning": "pohon ginkgo",
+    "jlptLevel": "N2",
+    "category": "pohon",
+    "wordType": "noun",
+    "registers": {
+      "casual": "いちょう (ichou)",
+      "formal": "いちょう (ichou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "いちょう (ichou) — tidak ada bentuk keigo khusus untuk nama pohon"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "いちょうの葉は黄色いです。",
+        "romaji": "Ichou no ha wa kiiroi desu.",
+        "translation": "Daun ginkgo berwarna kuning."
+      }
+    ],
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_ichou.png"
+  },
+  {
+    "id": "kotoba_pohon_sugi",
+    "word": "すぎ",
+    "kanji": "杉",
+    "reading": "すぎ",
+    "romaji": "sugi",
+    "meaning": "pohon cemara Jepang (cedar)",
+    "jlptLevel": "N2",
+    "category": "pohon",
+    "wordType": "noun",
+    "registers": {
+      "casual": "すぎ (sugi)",
+      "formal": "すぎ (sugi) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "すぎ (sugi) — tidak ada bentuk keigo khusus untuk nama pohon"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "山に杉がたくさんあります。",
+        "romaji": "Yama ni sugi ga takusan arimasu.",
+        "translation": "Ada banyak pohon cemara Jepang di gunung."
+      }
+    ],
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_sugi.png"
+  }
+]
