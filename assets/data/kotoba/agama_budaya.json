@@ -1,0 +1,242 @@
+[
+  {
+    "id": "kotoba_agama_budaya_shuukyou",
+    "word": "しゅうきょう",
+    "kanji": "宗教",
+    "reading": "しゅうきょう",
+    "romaji": "shuukyou",
+    "meaning": "agama",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "宗教 (shuukyou)",
+      "formal": "宗教 (shuukyou)",
+      "keigo": "宗教 (shuukyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "宗教について話します。",
+        "romaji": "Shuukyou ni tsuite hanashimasu.",
+        "translation": "Saya berbicara tentang agama."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shuukyou.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_bukkyou",
+    "word": "ぶっきょう",
+    "kanji": "仏教",
+    "reading": "ぶっきょう",
+    "romaji": "bukkyou",
+    "meaning": "agama Buddha",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "仏教 (bukkyou)",
+      "formal": "仏教 (bukkyou)",
+      "keigo": "仏教 (bukkyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "私は仏教です。",
+        "romaji": "Watashi wa bukkyou desu.",
+        "translation": "Saya beragama Buddha."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_bukkyou.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_shintou",
+    "word": "しんとう",
+    "kanji": "神道",
+    "reading": "しんとう",
+    "romaji": "shintou",
+    "meaning": "Shinto (agama asli Jepang)",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "神道 (shintou)",
+      "formal": "神道 (shintou)",
+      "keigo": "神道 (shintou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "神道は日本の伝統的な宗教です。",
+        "romaji": "Shintou wa Nihon no dentouteki na shuukyou desu.",
+        "translation": "Shinto adalah agama tradisional Jepang."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shintou.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_isuramukyou",
+    "word": "いすらむきょう",
+    "kanji": "イスラム教",
+    "reading": "いすらむきょう",
+    "romaji": "isuramukyou",
+    "meaning": "agama Islam",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "イスラム教 (isuramukyou)",
+      "formal": "イスラム教 (isuramukyou)",
+      "keigo": "イスラム教 (isuramukyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "私はイスラム教です。",
+        "romaji": "Watashi wa isuramukyou desu.",
+        "translation": "Saya beragama Islam."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_isuramukyou.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_kirisutokyou",
+    "word": "きりすときょう",
+    "kanji": "キリスト教",
+    "reading": "きりすときょう",
+    "romaji": "kirisutokyou",
+    "meaning": "agama Kristen",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "キリスト教 (kirisutokyou)",
+      "formal": "キリスト教 (kirisutokyou)",
+      "keigo": "キリスト教 (kirisutokyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "私はキリスト教です。",
+        "romaji": "Watashi wa kirisutokyou desu.",
+        "translation": "Saya beragama Kristen."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_kirisutokyou.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_hinduukyou",
+    "word": "ひんどぅーきょう",
+    "kanji": "ヒンドゥー教",
+    "reading": "ひんどぅーきょう",
+    "romaji": "hinduukyou",
+    "meaning": "agama Hindu",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ヒンドゥー教 (hinduukyou)",
+      "formal": "ヒンドゥー教 (hinduukyou)",
+      "keigo": "ヒンドゥー教 (hinduukyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バリではヒンドゥー教が多いです。",
+        "romaji": "Bari de wa hinduukyou ga ooi desu.",
+        "translation": "Di Bali, agama Hindu banyak dianut."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_hinduukyou.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_matsuri",
+    "word": "まつり",
+    "kanji": "祭り",
+    "reading": "まつり",
+    "romaji": "matsuri",
+    "meaning": "festival/perayaan tradisional",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "祭り (matsuri)",
+      "formal": "祭り (matsuri)",
+      "keigo": "祭り (matsuri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夏に祭りがあります。",
+        "romaji": "Natsu ni matsuri ga arimasu.",
+        "translation": "Ada festival di musim panas."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_matsuri.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_dentou",
+    "word": "でんとう",
+    "kanji": "伝統",
+    "reading": "でんとう",
+    "romaji": "dentou",
+    "meaning": "tradisi",
+    "jlptLevel": "N3",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "伝統 (dentou)",
+      "formal": "伝統 (dentou)",
+      "keigo": "伝統 (dentou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本の伝統を学びます。",
+        "romaji": "Nihon no dentou o manabimasu.",
+        "translation": "Saya belajar tradisi Jepang."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_dentou.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_bunka",
+    "word": "ぶんか",
+    "kanji": "文化",
+    "reading": "ぶんか",
+    "romaji": "bunka",
+    "meaning": "budaya",
+    "jlptLevel": "N4",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "文化 (bunka)",
+      "formal": "文化 (bunka)",
+      "keigo": "文化 (bunka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本の文化に興味があります。",
+        "romaji": "Nihon no bunka ni kyoumi ga arimasu.",
+        "translation": "Saya tertarik pada budaya Jepang."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_bunka.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_reihai",
+    "word": "れいはい",
+    "kanji": "礼拝",
+    "reading": "れいはい",
+    "romaji": "reihai",
+    "meaning": "ibadah/sembahyang",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "礼拝 (reihai)",
+      "formal": "礼拝 (reihai)",
+      "keigo": "礼拝 (reihai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "礼拝に行きます。",
+        "romaji": "Reihai ni ikimasu.",
+        "translation": "Saya pergi beribadah."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_reihai.png"
+  }
+]

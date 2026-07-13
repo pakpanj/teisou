@@ -1,0 +1,290 @@
+[
+  {
+    "id": "kotoba_profesi_sensei",
+    "word": "せんせい",
+    "kanji": "先生",
+    "reading": "せんせい",
+    "romaji": "sensei",
+    "meaning": "guru/dosen",
+    "jlptLevel": "N5",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "先生 (sensei)",
+      "formal": "先生 (sensei)",
+      "keigo": "先生 (sensei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "先生に質問します。",
+        "romaji": "Sensei ni shitsumon shimasu.",
+        "translation": "Saya bertanya kepada guru."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_sensei.png"
+  },
+  {
+    "id": "kotoba_profesi_gakusei",
+    "word": "がくせい",
+    "kanji": "学生",
+    "reading": "がくせい",
+    "romaji": "gakusei",
+    "meaning": "siswa/mahasiswa",
+    "jlptLevel": "N5",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学生 (gakusei)",
+      "formal": "学生 (gakusei)",
+      "keigo": "学生 (gakusei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "私は学生です。",
+        "romaji": "Watashi wa gakusei desu.",
+        "translation": "Saya seorang siswa."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusei.png"
+  },
+  {
+    "id": "kotoba_profesi_kaishain",
+    "word": "かいしゃいん",
+    "kanji": "会社員",
+    "reading": "かいしゃいん",
+    "romaji": "kaishain",
+    "meaning": "karyawan perusahaan",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会社員 (kaishain)",
+      "formal": "会社員 (kaishain)",
+      "keigo": "会社員 (kaishain) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "父は会社員です。",
+        "romaji": "Chichi wa kaishain desu.",
+        "translation": "Ayah saya karyawan perusahaan."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kaishain.png"
+  },
+  {
+    "id": "kotoba_profesi_keisatsukan",
+    "word": "けいさつかん",
+    "kanji": "警察官",
+    "reading": "けいさつかん",
+    "romaji": "keisatsukan",
+    "meaning": "polisi",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "警察官 (keisatsukan)",
+      "formal": "警察官 (keisatsukan)",
+      "keigo": "警察官 (keisatsukan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "警察官が交通整理をします。",
+        "romaji": "Keisatsukan ga koutsuu seiri o shimasu.",
+        "translation": "Polisi mengatur lalu lintas."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_keisatsukan.png"
+  },
+  {
+    "id": "kotoba_profesi_shouboushi",
+    "word": "しょうぼうし",
+    "kanji": "消防士",
+    "reading": "しょうぼうし",
+    "romaji": "shouboushi",
+    "meaning": "pemadam kebakaran",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "消防士 (shouboushi)",
+      "formal": "消防士 (shouboushi)",
+      "keigo": "消防士 (shouboushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "消防士は勇敢です。",
+        "romaji": "Shouboushi wa yuukan desu.",
+        "translation": "Pemadam kebakaran itu berani."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shouboushi.png"
+  },
+  {
+    "id": "kotoba_profesi_ryourinin",
+    "word": "りょうりにん",
+    "kanji": "料理人",
+    "reading": "りょうりにん",
+    "romaji": "ryourinin",
+    "meaning": "koki/juru masak",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "料理人 (ryourinin)",
+      "formal": "料理人 (ryourinin)",
+      "keigo": "料理人 (ryourinin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "料理人は料理を作ります。",
+        "romaji": "Ryourinin wa ryouri o tsukurimasu.",
+        "translation": "Koki membuat masakan."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_ryourinin.png"
+  },
+  {
+    "id": "kotoba_profesi_bengoshi",
+    "word": "べんごし",
+    "kanji": "弁護士",
+    "reading": "べんごし",
+    "romaji": "bengoshi",
+    "meaning": "pengacara",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "弁護士 (bengoshi)",
+      "formal": "弁護士 (bengoshi)",
+      "keigo": "弁護士 (bengoshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "弁護士に相談します。",
+        "romaji": "Bengoshi ni soudan shimasu.",
+        "translation": "Saya berkonsultasi dengan pengacara."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_bengoshi.png"
+  },
+  {
+    "id": "kotoba_profesi_enjinia",
+    "word": "エンジニア",
+    "kanji": null,
+    "reading": "エンジニア",
+    "romaji": "enjinia",
+    "meaning": "insinyur/engineer",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "エンジニア (enjinia)",
+      "formal": "エンジニア (enjinia)",
+      "keigo": "エンジニア (enjinia) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼はエンジニアです。",
+        "romaji": "Kare wa enjinia desu.",
+        "translation": "Dia seorang insinyur."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_enjinia.png"
+  },
+  {
+    "id": "kotoba_profesi_nouka",
+    "word": "のうか",
+    "kanji": "農家",
+    "reading": "のうか",
+    "romaji": "nouka",
+    "meaning": "petani",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "農家 (nouka)",
+      "formal": "農家 (nouka)",
+      "keigo": "農家 (nouka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "農家は野菜を育てます。",
+        "romaji": "Nouka wa yasai o sodatemasu.",
+        "translation": "Petani menanam sayuran."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_nouka.png"
+  },
+  {
+    "id": "kotoba_profesi_untenshu",
+    "word": "うんてんしゅ",
+    "kanji": "運転手",
+    "reading": "うんてんしゅ",
+    "romaji": "untenshu",
+    "meaning": "supir",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "運転手 (untenshu)",
+      "formal": "運転手 (untenshu)",
+      "keigo": "運転手 (untenshu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バスの運転手です。",
+        "romaji": "Basu no untenshu desu.",
+        "translation": "Dia supir bus."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_untenshu.png"
+  },
+  {
+    "id": "kotoba_profesi_shufu",
+    "word": "しゅふ",
+    "kanji": "主婦",
+    "reading": "しゅふ",
+    "romaji": "shufu",
+    "meaning": "ibu rumah tangga",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "主婦 (shufu)",
+      "formal": "主婦 (shufu)",
+      "keigo": "主婦 (shufu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "母は主婦です。",
+        "romaji": "Haha wa shufu desu.",
+        "translation": "Ibu saya adalah ibu rumah tangga."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shufu.png"
+  },
+  {
+    "id": "kotoba_profesi_kashu",
+    "word": "かしゅ",
+    "kanji": "歌手",
+    "reading": "かしゅ",
+    "romaji": "kashu",
+    "meaning": "penyanyi",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "歌手 (kashu)",
+      "formal": "歌手 (kashu)",
+      "keigo": "歌手 (kashu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼女は有名な歌手です。",
+        "romaji": "Kanojo wa yuumei na kashu desu.",
+        "translation": "Dia penyanyi terkenal."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kashu.png"
+  }
+]

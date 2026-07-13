@@ -1,0 +1,266 @@
+[
+  {
+    "id": "kotoba_perayaan_haribesar_oshougatsu",
+    "word": "おしょうがつ",
+    "kanji": "お正月",
+    "reading": "おしょうがつ",
+    "romaji": "oshougatsu",
+    "meaning": "Tahun Baru (Jepang)",
+    "jlptLevel": "N4",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "お正月 (oshougatsu)",
+      "formal": "お正月 (oshougatsu)",
+      "keigo": "お正月 (oshougatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お正月に家族と過ごします。",
+        "romaji": "Oshougatsu ni kazoku to sugoshimasu.",
+        "translation": "Saya menghabiskan Tahun Baru dengan keluarga."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_oshougatsu.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_tanjoubi",
+    "word": "たんじょうび",
+    "kanji": "誕生日",
+    "reading": "たんじょうび",
+    "romaji": "tanjoubi",
+    "meaning": "ulang tahun",
+    "jlptLevel": "N5",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "誕生日 (tanjoubi)",
+      "formal": "誕生日 (tanjoubi)",
+      "keigo": "誕生日 (tanjoubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "誕生日おめでとう。",
+        "romaji": "Tanjoubi omedetou.",
+        "translation": "Selamat ulang tahun."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_tanjoubi.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_kurisumasu",
+    "word": "クリスマス",
+    "kanji": null,
+    "reading": "クリスマス",
+    "romaji": "kurisumasu",
+    "meaning": "Natal",
+    "jlptLevel": "N4",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "クリスマス (kurisumasu)",
+      "formal": "クリスマス (kurisumasu)",
+      "keigo": "クリスマス (kurisumasu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "クリスマスを祝います。",
+        "romaji": "Kurisumasu o iwaimasu.",
+        "translation": "Saya merayakan Natal."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kurisumasu.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_hinamatsuri",
+    "word": "ひなまつり",
+    "kanji": "雛祭り",
+    "reading": "ひなまつり",
+    "romaji": "hinamatsuri",
+    "meaning": "Hina Matsuri (festival boneka, 3 Maret)",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "雛祭り (hinamatsuri)",
+      "formal": "雛祭り (hinamatsuri)",
+      "keigo": "雛祭り (hinamatsuri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "3月3日はひな祭りです。",
+        "romaji": "Sangatsu mikka wa hinamatsuri desu.",
+        "translation": "3 Maret adalah Hina Matsuri."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_hinamatsuri.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_tanabata",
+    "word": "たなばた",
+    "kanji": "七夕",
+    "reading": "たなばた",
+    "romaji": "tanabata",
+    "meaning": "Tanabata (festival bintang, 7 Juli)",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "七夕 (tanabata)",
+      "formal": "七夕 (tanabata)",
+      "keigo": "七夕 (tanabata) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "七夕に願い事をします。",
+        "romaji": "Tanabata ni negaigoto o shimasu.",
+        "translation": "Saat Tanabata, saya membuat permohonan."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_tanabata.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_obon",
+    "word": "おぼん",
+    "kanji": "お盆",
+    "reading": "おぼん",
+    "romaji": "obon",
+    "meaning": "Obon (festival arwah leluhur)",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "お盆 (obon)",
+      "formal": "お盆 (obon)",
+      "keigo": "お盆 (obon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お盆に田舎に帰ります。",
+        "romaji": "Obon ni inaka ni kaerimasu.",
+        "translation": "Saat Obon, saya pulang kampung."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_obon.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_kekkonshiki",
+    "word": "けっこんしき",
+    "kanji": "結婚式",
+    "reading": "けっこんしき",
+    "romaji": "kekkonshiki",
+    "meaning": "pernikahan/pesta pernikahan",
+    "jlptLevel": "N3",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "結婚式 (kekkonshiki)",
+      "formal": "結婚式 (kekkonshiki)",
+      "keigo": "結婚式 (kekkonshiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "結婚式に招待されました。",
+        "romaji": "Kekkonshiki ni shoutai saremashita.",
+        "translation": "Saya diundang ke pernikahan."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kekkonshiki.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_oiwai",
+    "word": "おいわい",
+    "kanji": "お祝い",
+    "reading": "おいわい",
+    "romaji": "oiwai",
+    "meaning": "perayaan/selamat",
+    "jlptLevel": "N3",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "お祝い (oiwai)",
+      "formal": "お祝い (oiwai)",
+      "keigo": "お祝い (oiwai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お祝いのプレゼントを買います。",
+        "romaji": "Oiwai no purezento o kaimasu.",
+        "translation": "Saya membeli hadiah perayaan."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_oiwai.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_hanabi",
+    "word": "はなび",
+    "kanji": "花火",
+    "reading": "はなび",
+    "romaji": "hanabi",
+    "meaning": "kembang api",
+    "jlptLevel": "N3",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "花火 (hanabi)",
+      "formal": "花火 (hanabi)",
+      "keigo": "花火 (hanabi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夏に花火を見ます。",
+        "romaji": "Natsu ni hanabi o mimasu.",
+        "translation": "Saya menonton kembang api di musim panas."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_hanabi.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_ramadan",
+    "word": "ラマダン",
+    "kanji": null,
+    "reading": "ラマダン",
+    "romaji": "ramadan",
+    "meaning": "Ramadan (bulan puasa)",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ラマダン (ramadan)",
+      "formal": "ラマダン (ramadan)",
+      "keigo": "ラマダン (ramadan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ラマダン中は断食します。",
+        "romaji": "Ramadan-chuu wa danjiki shimasu.",
+        "translation": "Selama Ramadan, orang berpuasa."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_ramadan.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_barentaindee",
+    "word": "バレンタインデー",
+    "kanji": null,
+    "reading": "バレンタインデー",
+    "romaji": "barentaindee",
+    "meaning": "Hari Valentine",
+    "jlptLevel": "N3",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "バレンタインデー (barentaindee)",
+      "formal": "バレンタインデー (barentaindee)",
+      "keigo": "バレンタインデー (barentaindee) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バレンタインデーにチョコレートをあげます。",
+        "romaji": "Barentaindee ni chokoreeto o agemasu.",
+        "translation": "Saat Hari Valentine, saya memberi cokelat."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_barentaindee.png"
+  }
+]

@@ -1,0 +1,290 @@
+[
+  {
+    "id": "kotoba_hobi_aktivitas_shumi",
+    "word": "しゅみ",
+    "kanji": "趣味",
+    "reading": "しゅみ",
+    "romaji": "shumi",
+    "meaning": "hobi",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "趣味 (shumi)",
+      "formal": "趣味 (shumi)",
+      "keigo": "趣味 (shumi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "趣味は何ですか。",
+        "romaji": "Shumi wa nan desu ka.",
+        "translation": "Apa hobimu?"
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shumi.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_dokusho",
+    "word": "どくしょ",
+    "kanji": "読書",
+    "reading": "どくしょ",
+    "romaji": "dokusho",
+    "meaning": "membaca buku",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "読書 (dokusho)",
+      "formal": "読書 (dokusho)",
+      "keigo": "読書 (dokusho) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "読書が好きです。",
+        "romaji": "Dokusho ga suki desu.",
+        "translation": "Saya suka membaca buku."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_dokusho.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_ongaku",
+    "word": "おんがく",
+    "kanji": "音楽",
+    "reading": "おんがく",
+    "romaji": "ongaku",
+    "meaning": "musik",
+    "jlptLevel": "N5",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "音楽 (ongaku)",
+      "formal": "音楽 (ongaku)",
+      "keigo": "音楽 (ongaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "音楽を聴きます。",
+        "romaji": "Ongaku o kikimasu.",
+        "translation": "Saya mendengarkan musik."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ongaku.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_eiga",
+    "word": "えいが",
+    "kanji": "映画",
+    "reading": "えいが",
+    "romaji": "eiga",
+    "meaning": "film",
+    "jlptLevel": "N5",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "映画 (eiga)",
+      "formal": "映画 (eiga)",
+      "keigo": "映画 (eiga) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "映画を見ます。",
+        "romaji": "Eiga o mimasu.",
+        "translation": "Saya menonton film."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_eiga.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_ryokou",
+    "word": "りょこう",
+    "kanji": "旅行",
+    "reading": "りょこう",
+    "romaji": "ryokou",
+    "meaning": "bepergian/traveling",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "旅行 (ryokou)",
+      "formal": "旅行 (ryokou)",
+      "keigo": "旅行 (ryokou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "旅行が好きです。",
+        "romaji": "Ryokou ga suki desu.",
+        "translation": "Saya suka bepergian."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryokou.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_shashin",
+    "word": "しゃしん",
+    "kanji": "写真",
+    "reading": "しゃしん",
+    "romaji": "shashin",
+    "meaning": "foto/fotografi",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "写真 (shashin)",
+      "formal": "写真 (shashin)",
+      "keigo": "写真 (shashin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "写真を撮ります。",
+        "romaji": "Shashin o torimasu.",
+        "translation": "Saya memotret."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shashin.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_e",
+    "word": "え",
+    "kanji": "絵",
+    "reading": "え",
+    "romaji": "e",
+    "meaning": "gambar/lukisan",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "絵 (e)",
+      "formal": "絵 (e)",
+      "keigo": "絵 (e) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "絵を描きます。",
+        "romaji": "E o kakimasu.",
+        "translation": "Saya menggambar."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_e.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_gaadeningu",
+    "word": "ガーデニング",
+    "kanji": null,
+    "reading": "ガーデニング",
+    "romaji": "gaadeningu",
+    "meaning": "berkebun",
+    "jlptLevel": "N3",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ガーデニング (gaadeningu)",
+      "formal": "ガーデニング (gaadeningu)",
+      "keigo": "ガーデニング (gaadeningu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ガーデニングが趣味です。",
+        "romaji": "Gaadeningu ga shumi desu.",
+        "translation": "Berkebun adalah hobi saya."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gaadeningu.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_ryouri",
+    "word": "りょうり",
+    "kanji": "料理",
+    "reading": "りょうり",
+    "romaji": "ryouri",
+    "meaning": "memasak (sebagai hobi)",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "料理 (ryouri)",
+      "formal": "料理 (ryouri)",
+      "keigo": "料理 (ryouri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "料理をするのが好きです。",
+        "romaji": "Ryouri o suru no ga suki desu.",
+        "translation": "Saya suka memasak."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryouri.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_geemu",
+    "word": "ゲーム",
+    "kanji": null,
+    "reading": "ゲーム",
+    "romaji": "geemu",
+    "meaning": "permainan/game",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ゲーム (geemu)",
+      "formal": "ゲーム (geemu)",
+      "keigo": "ゲーム (geemu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ゲームをします。",
+        "romaji": "Geemu o shimasu.",
+        "translation": "Saya bermain game."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_geemu.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_dansu",
+    "word": "ダンス",
+    "kanji": null,
+    "reading": "ダンス",
+    "romaji": "dansu",
+    "meaning": "menari/dance",
+    "jlptLevel": "N3",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ダンス (dansu)",
+      "formal": "ダンス (dansu)",
+      "keigo": "ダンス (dansu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ダンスを習っています。",
+        "romaji": "Dansu o naratte imasu.",
+        "translation": "Saya sedang belajar menari."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_dansu.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_kyanpu",
+    "word": "キャンプ",
+    "kanji": null,
+    "reading": "キャンプ",
+    "romaji": "kyanpu",
+    "meaning": "berkemah/camping",
+    "jlptLevel": "N3",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "キャンプ (kyanpu)",
+      "formal": "キャンプ (kyanpu)",
+      "keigo": "キャンプ (kyanpu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "キャンプに行きます。",
+        "romaji": "Kyanpu ni ikimasu.",
+        "translation": "Saya pergi berkemah."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kyanpu.png"
+  }
+]

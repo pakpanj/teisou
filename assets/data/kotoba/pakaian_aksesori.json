@@ -1,0 +1,290 @@
+[
+  {
+    "id": "kotoba_pakaian_aksesori_fuku",
+    "word": "ふく",
+    "kanji": "服",
+    "reading": "ふく",
+    "romaji": "fuku",
+    "meaning": "baju/pakaian",
+    "jlptLevel": "N5",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "服 (fuku)",
+      "formal": "服 (fuku)",
+      "keigo": "服 (fuku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "服を着ます。",
+        "romaji": "Fuku o kimasu.",
+        "translation": "Saya memakai baju."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_fuku.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_shatsu",
+    "word": "シャツ",
+    "kanji": null,
+    "reading": "シャツ",
+    "romaji": "shatsu",
+    "meaning": "kemeja/shirt",
+    "jlptLevel": "N4",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "シャツ (shatsu)",
+      "formal": "シャツ (shatsu)",
+      "keigo": "シャツ (shatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "シャツを着ます。",
+        "romaji": "Shatsu o kimasu.",
+        "translation": "Saya memakai kemeja."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_shatsu.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_zubon",
+    "word": "ズボン",
+    "kanji": null,
+    "reading": "ズボン",
+    "romaji": "zubon",
+    "meaning": "celana panjang",
+    "jlptLevel": "N4",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ズボン (zubon)",
+      "formal": "ズボン (zubon)",
+      "keigo": "ズボン (zubon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ズボンを履きます。",
+        "romaji": "Zubon o hakimasu.",
+        "translation": "Saya memakai celana panjang."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_zubon.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_sukaato",
+    "word": "スカート",
+    "kanji": null,
+    "reading": "スカート",
+    "romaji": "sukaato",
+    "meaning": "rok",
+    "jlptLevel": "N4",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "スカート (sukaato)",
+      "formal": "スカート (sukaato)",
+      "keigo": "スカート (sukaato) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "スカートを履きます。",
+        "romaji": "Sukaato o hakimasu.",
+        "translation": "Saya memakai rok."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_sukaato.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_kutsu",
+    "word": "くつ",
+    "kanji": "靴",
+    "reading": "くつ",
+    "romaji": "kutsu",
+    "meaning": "sepatu",
+    "jlptLevel": "N5",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "靴 (kutsu)",
+      "formal": "靴 (kutsu)",
+      "keigo": "靴 (kutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "靴を履きます。",
+        "romaji": "Kutsu o hakimasu.",
+        "translation": "Saya memakai sepatu."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kutsu.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_boushi",
+    "word": "ぼうし",
+    "kanji": "帽子",
+    "reading": "ぼうし",
+    "romaji": "boushi",
+    "meaning": "topi",
+    "jlptLevel": "N4",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "帽子 (boushi)",
+      "formal": "帽子 (boushi)",
+      "keigo": "帽子 (boushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "帽子をかぶります。",
+        "romaji": "Boushi o kaburimasu.",
+        "translation": "Saya memakai topi."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_boushi.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_megane",
+    "word": "めがね",
+    "kanji": "眼鏡",
+    "reading": "めがね",
+    "romaji": "megane",
+    "meaning": "kacamata",
+    "jlptLevel": "N4",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "眼鏡 (megane)",
+      "formal": "眼鏡 (megane)",
+      "keigo": "眼鏡 (megane) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "眼鏡をかけます。",
+        "romaji": "Megane o kakemasu.",
+        "translation": "Saya memakai kacamata."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_megane.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_tokei",
+    "word": "とけい",
+    "kanji": "時計",
+    "reading": "とけい",
+    "romaji": "tokei",
+    "meaning": "jam (tangan)",
+    "jlptLevel": "N5",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "時計 (tokei)",
+      "formal": "時計 (tokei)",
+      "keigo": "時計 (tokei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "時計をつけます。",
+        "romaji": "Tokei o tsukemasu.",
+        "translation": "Saya memakai jam tangan."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_tokei.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_baggu",
+    "word": "バッグ",
+    "kanji": null,
+    "reading": "バッグ",
+    "romaji": "baggu",
+    "meaning": "tas",
+    "jlptLevel": "N4",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "バッグ (baggu)",
+      "formal": "バッグ (baggu)",
+      "keigo": "バッグ (baggu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バッグを持ちます。",
+        "romaji": "Baggu o mochimasu.",
+        "translation": "Saya membawa tas."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_baggu.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_yubiwa",
+    "word": "ゆびわ",
+    "kanji": "指輪",
+    "reading": "ゆびわ",
+    "romaji": "yubiwa",
+    "meaning": "cincin",
+    "jlptLevel": "N3",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "指輪 (yubiwa)",
+      "formal": "指輪 (yubiwa)",
+      "keigo": "指輪 (yubiwa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "指輪をつけます。",
+        "romaji": "Yubiwa o tsukemasu.",
+        "translation": "Saya memakai cincin."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_yubiwa.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_nekutai",
+    "word": "ネクタイ",
+    "kanji": null,
+    "reading": "ネクタイ",
+    "romaji": "nekutai",
+    "meaning": "dasi",
+    "jlptLevel": "N3",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ネクタイ (nekutai)",
+      "formal": "ネクタイ (nekutai)",
+      "keigo": "ネクタイ (nekutai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ネクタイを締めます。",
+        "romaji": "Nekutai o shimemasu.",
+        "translation": "Saya memakai dasi."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_nekutai.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_kimono",
+    "word": "きもの",
+    "kanji": "着物",
+    "reading": "きもの",
+    "romaji": "kimono",
+    "meaning": "kimono (pakaian tradisional Jepang)",
+    "jlptLevel": "N3",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "着物 (kimono)",
+      "formal": "着物 (kimono)",
+      "keigo": "着物 (kimono) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "着物を着ます。",
+        "romaji": "Kimono o kimasu.",
+        "translation": "Saya memakai kimono."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kimono.png"
+  }
+]

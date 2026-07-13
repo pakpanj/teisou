@@ -236,42 +236,48 @@
     "name": "Profesi",
     "group": "Manusia & Sosial",
     "icon": "👨‍⚕️",
-    "available": false
+    "available": true,
+    "wordCount": 12
   },
   {
     "id": "keluarga_hubungan",
     "name": "Keluarga & Hubungan",
     "group": "Manusia & Sosial",
     "icon": "👪",
-    "available": false
+    "available": true,
+    "wordCount": 14
   },
   {
     "id": "pakaian_aksesori",
     "name": "Pakaian & Aksesori",
     "group": "Manusia & Sosial",
     "icon": "👕",
-    "available": false
+    "available": true,
+    "wordCount": 12
   },
   {
     "id": "hobi_aktivitas",
     "name": "Hobi & Aktivitas",
     "group": "Manusia & Sosial",
     "icon": "🎨",
-    "available": false
+    "available": true,
+    "wordCount": 12
   },
   {
     "id": "agama_budaya",
     "name": "Agama & Budaya",
     "group": "Manusia & Sosial",
     "icon": "⛩️",
-    "available": false
+    "available": true,
+    "wordCount": 10
   },
   {
     "id": "perayaan_haribesar",
     "name": "Perayaan & Hari Besar",
     "group": "Manusia & Sosial",
     "icon": "🎉",
-    "available": false
+    "available": true,
+    "wordCount": 11
   },
   {
     "id": "alat_tulis_sekolah",

@@ -1,0 +1,338 @@
+[
+  {
+    "id": "kotoba_keluarga_hubungan_kazoku",
+    "word": "かぞく",
+    "kanji": "家族",
+    "reading": "かぞく",
+    "romaji": "kazoku",
+    "meaning": "keluarga",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "家族 (kazoku)",
+      "formal": "家族 (kazoku)",
+      "keigo": "家族 (kazoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "家族と住んでいます。",
+        "romaji": "Kazoku to sunde imasu.",
+        "translation": "Saya tinggal dengan keluarga."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kazoku.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_chichi",
+    "word": "ちち",
+    "kanji": "父",
+    "reading": "ちち",
+    "romaji": "chichi",
+    "meaning": "ayah (kata sendiri)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "父 (chichi)",
+      "formal": "父 (chichi)",
+      "keigo": "父 (chichi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "父は医者です。",
+        "romaji": "Chichi wa isha desu.",
+        "translation": "Ayah saya seorang dokter."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chichi.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_haha",
+    "word": "はは",
+    "kanji": "母",
+    "reading": "はは",
+    "romaji": "haha",
+    "meaning": "ibu (kata sendiri)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "母 (haha)",
+      "formal": "母 (haha)",
+      "keigo": "母 (haha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "母は料理が上手です。",
+        "romaji": "Haha wa ryouri ga jouzu desu.",
+        "translation": "Ibu saya jago memasak."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_haha.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ani",
+    "word": "あに",
+    "kanji": "兄",
+    "reading": "あに",
+    "romaji": "ani",
+    "meaning": "kakak laki-laki (kata sendiri)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "兄 (ani)",
+      "formal": "兄 (ani)",
+      "keigo": "兄 (ani) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "兄は大学生です。",
+        "romaji": "Ani wa daigakusei desu.",
+        "translation": "Kakak laki-laki saya mahasiswa."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ani.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ane",
+    "word": "あね",
+    "kanji": "姉",
+    "reading": "あね",
+    "romaji": "ane",
+    "meaning": "kakak perempuan (kata sendiri)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "姉 (ane)",
+      "formal": "姉 (ane)",
+      "keigo": "姉 (ane) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "姉は看護師です。",
+        "romaji": "Ane wa kangoshi desu.",
+        "translation": "Kakak perempuan saya perawat."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ane.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_otouto",
+    "word": "おとうと",
+    "kanji": "弟",
+    "reading": "おとうと",
+    "romaji": "otouto",
+    "meaning": "adik laki-laki",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "弟 (otouto)",
+      "formal": "弟 (otouto)",
+      "keigo": "弟 (otouto) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "弟は高校生です。",
+        "romaji": "Otouto wa koukousei desu.",
+        "translation": "Adik laki-laki saya siswa SMA."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_otouto.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_imouto",
+    "word": "いもうと",
+    "kanji": "妹",
+    "reading": "いもうと",
+    "romaji": "imouto",
+    "meaning": "adik perempuan",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "妹 (imouto)",
+      "formal": "妹 (imouto)",
+      "keigo": "妹 (imouto) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "妹は中学生です。",
+        "romaji": "Imouto wa chuugakusei desu.",
+        "translation": "Adik perempuan saya siswa SMP."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_imouto.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_sofu",
+    "word": "そふ",
+    "kanji": "祖父",
+    "reading": "そふ",
+    "romaji": "sofu",
+    "meaning": "kakek (kata sendiri)",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "祖父 (sofu)",
+      "formal": "祖父 (sofu)",
+      "keigo": "祖父 (sofu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "祖父は元気です。",
+        "romaji": "Sofu wa genki desu.",
+        "translation": "Kakek saya sehat."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_sofu.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_sobo",
+    "word": "そぼ",
+    "kanji": "祖母",
+    "reading": "そぼ",
+    "romaji": "sobo",
+    "meaning": "nenek (kata sendiri)",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "祖母 (sobo)",
+      "formal": "祖母 (sobo)",
+      "keigo": "祖母 (sobo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "祖母は優しいです。",
+        "romaji": "Sobo wa yasashii desu.",
+        "translation": "Nenek saya baik hati."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_sobo.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_musuko",
+    "word": "むすこ",
+    "kanji": "息子",
+    "reading": "むすこ",
+    "romaji": "musuko",
+    "meaning": "anak laki-laki (kata sendiri)",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "息子 (musuko)",
+      "formal": "息子 (musuko)",
+      "keigo": "息子 (musuko) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "息子は五歳です。",
+        "romaji": "Musuko wa gosai desu.",
+        "translation": "Anak laki-laki saya berusia 5 tahun."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_musuko.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_musume",
+    "word": "むすめ",
+    "kanji": "娘",
+    "reading": "むすめ",
+    "romaji": "musume",
+    "meaning": "anak perempuan (kata sendiri)",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "娘 (musume)",
+      "formal": "娘 (musume)",
+      "keigo": "娘 (musume) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "娘は学生です。",
+        "romaji": "Musume wa gakusei desu.",
+        "translation": "Anak perempuan saya seorang pelajar."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_musume.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_tomodachi",
+    "word": "ともだち",
+    "kanji": "友達",
+    "reading": "ともだち",
+    "romaji": "tomodachi",
+    "meaning": "teman",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "友達 (tomodachi)",
+      "formal": "友達 (tomodachi)",
+      "keigo": "友達 (tomodachi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "友達と遊びます。",
+        "romaji": "Tomodachi to asobimasu.",
+        "translation": "Saya bermain dengan teman."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_tomodachi.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_koibito",
+    "word": "こいびと",
+    "kanji": "恋人",
+    "reading": "こいびと",
+    "romaji": "koibito",
+    "meaning": "kekasih/pacar",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "恋人 (koibito)",
+      "formal": "恋人 (koibito)",
+      "keigo": "恋人 (koibito) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "恋人にプレゼントをあげます。",
+        "romaji": "Koibito ni purezento o agemasu.",
+        "translation": "Saya memberi hadiah untuk kekasih."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_koibito.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_fuufu",
+    "word": "ふうふ",
+    "kanji": "夫婦",
+    "reading": "ふうふ",
+    "romaji": "fuufu",
+    "meaning": "pasangan suami istri",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "夫婦 (fuufu)",
+      "formal": "夫婦 (fuufu)",
+      "keigo": "夫婦 (fuufu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "二人は夫婦です。",
+        "romaji": "Futari wa fuufu desu.",
+        "translation": "Mereka berdua adalah pasangan suami istri."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_fuufu.png"
+  }
+]

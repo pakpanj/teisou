@@ -51,12 +51,12 @@ GROUPS = {
         ("negara_kota", "Negara & Kota", "🗺️", True, 11),
     ],
     "Manusia & Sosial": [
-        ("profesi", "Profesi", "👨‍⚕️", False, None),
-        ("keluarga_hubungan", "Keluarga & Hubungan", "👪", False, None),
-        ("pakaian_aksesori", "Pakaian & Aksesori", "👕", False, None),
-        ("hobi_aktivitas", "Hobi & Aktivitas", "🎨", False, None),
-        ("agama_budaya", "Agama & Budaya", "⛩️", False, None),
-        ("perayaan_haribesar", "Perayaan & Hari Besar", "🎉", False, None),
+        ("profesi", "Profesi", "👨‍⚕️", True, 12),
+        ("keluarga_hubungan", "Keluarga & Hubungan", "👪", True, 14),
+        ("pakaian_aksesori", "Pakaian & Aksesori", "👕", True, 12),
+        ("hobi_aktivitas", "Hobi & Aktivitas", "🎨", True, 12),
+        ("agama_budaya", "Agama & Budaya", "⛩️", True, 10),
+        ("perayaan_haribesar", "Perayaan & Hari Besar", "🎉", True, 11),
     ],
     "Pendidikan & Pekerjaan": [
         ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", False, None),
