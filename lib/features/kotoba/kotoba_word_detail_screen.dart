@@ -6,6 +6,7 @@ import '../../core/theme/app_colors.dart';
 import '../../data/models/kotoba_entry.dart';
 import '../../data/models/kotoba_sentence_example.dart';
 import '../../data/models/speech_register.dart';
+import 'kotoba_providers.dart';
 import 'widgets/kotoba_image.dart';
 
 /// Full detail view for one Kotoba word, with next/prev navigation across
@@ -29,6 +30,7 @@ class KotobaWordDetailScreen extends ConsumerStatefulWidget {
 
 class _KotobaWordDetailScreenState extends ConsumerState<KotobaWordDetailScreen> {
   late int _index = widget.initialIndex;
+  bool _togglingLearned = false;
 
   KotobaEntry get _entry => widget.entries[_index];
 
@@ -42,9 +44,25 @@ class _KotobaWordDetailScreenState extends ConsumerState<KotobaWordDetailScreen>
     setState(() => _index = _index - 1);
   }
 
+  Future<void> _toggleLearned(bool currentlyLearned) async {
+    setState(() => _togglingLearned = true);
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    final repo = ref.read(kotobaProgressRepositoryProvider);
+    if (currentlyLearned) {
+      await repo.unmarkLearned(_entry.id, uid: uid);
+    } else {
+      await repo.markLearned(_entry.id, _entry.category, uid: uid);
+    }
+    ref.invalidate(kotobaLearnedIdsProvider);
+    if (!mounted) return;
+    setState(() => _togglingLearned = false);
+  }
+
   @override
   Widget build(BuildContext context) {
     final entry = _entry;
+    final learnedIds = ref.watch(kotobaLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final isLearned = learnedIds.contains(entry.id);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -85,6 +103,12 @@ class _KotobaWordDetailScreenState extends ConsumerState<KotobaWordDetailScreen>
                         fontWeight: FontWeight.w600,
                         color: AppColors.textNavy,
                       ),
+                    ),
+                    const SizedBox(height: 16),
+                    _LearnedButton(
+                      learned: isLearned,
+                      busy: _togglingLearned,
+                      onTap: _togglingLearned ? null : () => _toggleLearned(isLearned),
                     ),
                     if (entry.registers.isNotEmpty) ...[
                       const SizedBox(height: 24),
@@ -204,6 +228,59 @@ class _AudioButton extends StatelessWidget {
         child: const Padding(
           padding: EdgeInsets.all(14),
           child: Icon(Icons.volume_up, color: Colors.white, size: 24),
+        ),
+      ),
+    );
+  }
+}
+
+class _LearnedButton extends StatelessWidget {
+  final bool learned;
+  final bool busy;
+  final VoidCallback? onTap;
+
+  const _LearnedButton({required this.learned, required this.busy, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: learned ? AppColors.secondaryBlue : Colors.transparent,
+      borderRadius: BorderRadius.circular(24),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(24),
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24),
+            border: learned ? null : Border.all(color: AppColors.secondaryBlue),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (busy)
+                const SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                )
+              else
+                Icon(
+                  learned ? Icons.check_circle : Icons.check_circle_outline,
+                  size: 18,
+                  color: learned ? Colors.white : AppColors.secondaryBlue,
+                ),
+              const SizedBox(width: 8),
+              Text(
+                learned ? 'Sudah Dipelajari' : 'Tandai Sudah Dipelajari',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                  color: learned ? Colors.white : AppColors.secondaryBlue,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -10,6 +10,7 @@ import '../data/repositories/exam_repository.dart';
 import '../data/repositories/kana_repository.dart';
 import '../data/repositories/kanji_repository.dart';
 import '../data/repositories/kotoba_category_repository.dart';
+import '../data/repositories/kotoba_progress_repository.dart';
 import '../data/repositories/kotoba_repository.dart';
 import '../data/repositories/leaderboard_repository.dart';
 import '../data/repositories/progress_repository.dart';
@@ -39,6 +40,9 @@ final kotobaCategoryRepositoryProvider = Provider<KotobaCategoryRepository>(
 );
 final savedWordsRepositoryProvider = Provider<SavedWordsRepository>(
   (ref) => SavedWordsRepository(),
+);
+final kotobaProgressRepositoryProvider = Provider<KotobaProgressRepository>(
+  (ref) => KotobaProgressRepository(),
 );
 final romajiConverterProvider = Provider<RomajiConverter>(
   (ref) => RomajiConverter(ref.watch(kanaRepositoryProvider)),

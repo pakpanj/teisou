@@ -6,6 +6,7 @@ import '../../core/theme/app_colors.dart';
 import '../../data/models/kotoba_category.dart';
 import '../../data/models/kotoba_entry.dart';
 import 'kotoba_providers.dart';
+import 'kotoba_quiz_screen.dart';
 import 'kotoba_word_detail_screen.dart';
 import 'widgets/kotoba_image.dart';
 
@@ -20,6 +21,7 @@ class KotobaCategoryScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final wordsAsync = ref.watch(kotobaVocabCategoryProvider(category.id));
+    final learnedIds = ref.watch(kotobaLearnedIdsProvider).valueOrNull ?? const <String>{};
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -32,6 +34,21 @@ class KotobaCategoryScreen extends ConsumerWidget {
             Text(category.name),
           ],
         ),
+        actions: [
+          wordsAsync.maybeWhen(
+            data: (words) => words.length < 4
+                ? const SizedBox.shrink()
+                : IconButton(
+                    tooltip: 'Mulai Kuis',
+                    icon: const Icon(Icons.quiz_outlined),
+                    onPressed: () => AppNavigator.slideFromRight(
+                      context,
+                      KotobaQuizScreen(category: category, words: words),
+                    ),
+                  ),
+            orElse: () => const SizedBox.shrink(),
+          ),
+        ],
       ),
       body: wordsAsync.when(
         data: (words) {
@@ -47,22 +64,31 @@ class KotobaCategoryScreen extends ConsumerWidget {
               ),
             );
           }
-          return ListView.separated(
-            padding: const EdgeInsets.all(16),
-            itemCount: words.length,
-            separatorBuilder: (_, _) => const SizedBox(height: 8),
-            itemBuilder: (context, index) => _WordTile(
-              entry: words[index],
-              categoryIcon: category.icon,
-              onTap: () => AppNavigator.slideFromRight(
-                context,
-                KotobaWordDetailScreen(
-                  entries: words,
-                  initialIndex: index,
-                  categoryIcon: category.icon,
+          final learnedCount = words.where((w) => learnedIds.contains(w.id)).length;
+          return Column(
+            children: [
+              _ProgressBar(learned: learnedCount, total: words.length),
+              Expanded(
+                child: ListView.separated(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: words.length,
+                  separatorBuilder: (_, _) => const SizedBox(height: 8),
+                  itemBuilder: (context, index) => _WordTile(
+                    entry: words[index],
+                    categoryIcon: category.icon,
+                    learned: learnedIds.contains(words[index].id),
+                    onTap: () => AppNavigator.slideFromRight(
+                      context,
+                      KotobaWordDetailScreen(
+                        entries: words,
+                        initialIndex: index,
+                        categoryIcon: category.icon,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
@@ -72,12 +98,56 @@ class KotobaCategoryScreen extends ConsumerWidget {
   }
 }
 
+class _ProgressBar extends StatelessWidget {
+  final int learned;
+  final int total;
+
+  const _ProgressBar({required this.learned, required this.total});
+
+  @override
+  Widget build(BuildContext context) {
+    final ratio = total == 0 ? 0.0 : learned / total;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '$learned/$total dipelajari',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textNavy.withValues(alpha: 0.6),
+            ),
+          ),
+          const SizedBox(height: 6),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: LinearProgressIndicator(
+              value: ratio,
+              minHeight: 6,
+              backgroundColor: Colors.grey.shade200,
+              valueColor: const AlwaysStoppedAnimation(AppColors.secondaryBlue),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _WordTile extends StatelessWidget {
   final KotobaEntry entry;
   final String categoryIcon;
+  final bool learned;
   final VoidCallback onTap;
 
-  const _WordTile({required this.entry, required this.categoryIcon, required this.onTap});
+  const _WordTile({
+    required this.entry,
+    required this.categoryIcon,
+    required this.learned,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -127,6 +197,10 @@ class _WordTile extends StatelessWidget {
                   ],
                 ),
               ),
+              if (learned) ...[
+                const Icon(Icons.check_circle, color: AppColors.secondaryBlue, size: 20),
+                const SizedBox(width: 4),
+              ],
               const Icon(Icons.chevron_right, color: AppColors.freeBadgeGrey),
             ],
           ),

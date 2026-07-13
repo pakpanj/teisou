@@ -79,7 +79,7 @@ class _CategoryGrid extends StatelessWidget {
   }
 }
 
-class _CategoryCard extends StatelessWidget {
+class _CategoryCard extends ConsumerWidget {
   final KotobaCategory category;
 
   const _CategoryCard({required this.category});
@@ -95,8 +95,11 @@ class _CategoryCard extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final available = category.available;
+    final progress = available
+        ? ref.watch(kotobaCategoryProgressProvider(category.id)).valueOrNull
+        : null;
     return Material(
       color: available ? AppColors.cardWhite : Colors.grey.shade100,
       borderRadius: BorderRadius.circular(16),
@@ -137,7 +140,9 @@ class _CategoryCard extends StatelessWidget {
                     const SizedBox(height: 2),
                     if (available)
                       Text(
-                        '${category.wordCount ?? 0} kata',
+                        progress != null && progress.$1 > 0
+                            ? '${progress.$1}/${progress.$2} dipelajari'
+                            : '${category.wordCount ?? 0} kata',
                         style: TextStyle(
                           fontSize: 11,
                           color: AppColors.textNavy.withValues(alpha: 0.6),
