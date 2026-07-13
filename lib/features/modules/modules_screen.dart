@@ -4,6 +4,7 @@ import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/kana_type.dart';
 import '../../data/models/module_info.dart';
+import '../cam_detector/cam_detector_screen.dart';
 import '../flashcard/flashcard_screen.dart';
 import 'widgets/coming_soon_content.dart';
 
@@ -44,6 +45,18 @@ class ModulesScreen extends StatelessWidget {
             onTap: () => AppNavigator.slideFromRight(
               context,
               const FlashcardScreen(type: KanaType.katakana),
+            ),
+          ),
+          const SizedBox(height: 12),
+          _AvailableModuleCard(
+            emoji: '📷',
+            backgroundColor: AppColors.tertiaryAmberCardBg,
+            iconColor: AppColors.tertiaryAmber,
+            title: 'Cam Detector',
+            subtitle: 'Scan karakter Jepang lewat kamera',
+            onTap: () => AppNavigator.slideFromBottom(
+              context,
+              const CamDetectorScreen(),
             ),
           ),
           const SizedBox(height: 28),
