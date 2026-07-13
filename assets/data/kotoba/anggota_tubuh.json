@@ -1,0 +1,410 @@
+[
+  {
+    "id": "kotoba_anggota_tubuh_atama",
+    "word": "あたま",
+    "kanji": "頭",
+    "reading": "あたま",
+    "romaji": "atama",
+    "meaning": "kepala",
+    "jlptLevel": "N5",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "頭 (atama)",
+      "formal": "頭 (atama)",
+      "keigo": "頭 (atama) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "頭が痛いです。",
+        "romaji": "Atama ga itai desu.",
+        "translation": "Kepala saya sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_atama.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_kao",
+    "word": "かお",
+    "kanji": "顔",
+    "reading": "かお",
+    "romaji": "kao",
+    "meaning": "wajah",
+    "jlptLevel": "N5",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "顔 (kao)",
+      "formal": "顔 (kao)",
+      "keigo": "顔 (kao) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "顔を洗います。",
+        "romaji": "Kao o araimasu.",
+        "translation": "Saya mencuci wajah."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kao.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_me",
+    "word": "め",
+    "kanji": "目",
+    "reading": "め",
+    "romaji": "me",
+    "meaning": "mata",
+    "jlptLevel": "N5",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "目 (me)",
+      "formal": "目 (me)",
+      "keigo": "目 (me) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "目が大きいです。",
+        "romaji": "Me ga ookii desu.",
+        "translation": "Matanya besar."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_me.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_hana",
+    "word": "はな",
+    "kanji": "鼻",
+    "reading": "はな",
+    "romaji": "hana",
+    "meaning": "hidung",
+    "jlptLevel": "N5",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "鼻 (hana)",
+      "formal": "鼻 (hana)",
+      "keigo": "鼻 (hana) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "鼻が高いです。",
+        "romaji": "Hana ga takai desu.",
+        "translation": "Hidungnya mancung."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_hana.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_mimi",
+    "word": "みみ",
+    "kanji": "耳",
+    "reading": "みみ",
+    "romaji": "mimi",
+    "meaning": "telinga",
+    "jlptLevel": "N5",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "耳 (mimi)",
+      "formal": "耳 (mimi)",
+      "keigo": "耳 (mimi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "耳が痛いです。",
+        "romaji": "Mimi ga itai desu.",
+        "translation": "Telinga saya sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_mimi.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_kuchi",
+    "word": "くち",
+    "kanji": "口",
+    "reading": "くち",
+    "romaji": "kuchi",
+    "meaning": "mulut",
+    "jlptLevel": "N5",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "口 (kuchi)",
+      "formal": "口 (kuchi)",
+      "keigo": "口 (kuchi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "口を開けます。",
+        "romaji": "Kuchi o akemasu.",
+        "translation": "Saya membuka mulut."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kuchi.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_ha",
+    "word": "は",
+    "kanji": "歯",
+    "reading": "は",
+    "romaji": "ha",
+    "meaning": "gigi",
+    "jlptLevel": "N4",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "歯 (ha)",
+      "formal": "歯 (ha)",
+      "keigo": "歯 (ha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "歯を磨きます。",
+        "romaji": "Ha o migakimasu.",
+        "translation": "Saya menyikat gigi."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ha.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_te",
+    "word": "て",
+    "kanji": "手",
+    "reading": "て",
+    "romaji": "te",
+    "meaning": "tangan",
+    "jlptLevel": "N5",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "手 (te)",
+      "formal": "手 (te)",
+      "keigo": "手 (te) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "手を洗います。",
+        "romaji": "Te o araimasu.",
+        "translation": "Saya mencuci tangan."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_te.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_ashi",
+    "word": "あし",
+    "kanji": "足",
+    "reading": "あし",
+    "romaji": "ashi",
+    "meaning": "kaki",
+    "jlptLevel": "N5",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "足 (ashi)",
+      "formal": "足 (ashi)",
+      "keigo": "足 (ashi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "足が痛いです。",
+        "romaji": "Ashi ga itai desu.",
+        "translation": "Kaki saya sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ashi.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_kubi",
+    "word": "くび",
+    "kanji": "首",
+    "reading": "くび",
+    "romaji": "kubi",
+    "meaning": "leher",
+    "jlptLevel": "N3",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "首 (kubi)",
+      "formal": "首 (kubi)",
+      "keigo": "首 (kubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "首が痛いです。",
+        "romaji": "Kubi ga itai desu.",
+        "translation": "Leher saya sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kubi.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_kata",
+    "word": "かた",
+    "kanji": "肩",
+    "reading": "かた",
+    "romaji": "kata",
+    "meaning": "bahu/pundak",
+    "jlptLevel": "N3",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "肩 (kata)",
+      "formal": "肩 (kata)",
+      "keigo": "肩 (kata) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "肩が凝ります。",
+        "romaji": "Kata ga korimasu.",
+        "translation": "Bahu saya pegal."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kata.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_onaka",
+    "word": "おなか",
+    "kanji": "お腹",
+    "reading": "おなか",
+    "romaji": "onaka",
+    "meaning": "perut",
+    "jlptLevel": "N4",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "お腹 (onaka)",
+      "formal": "お腹 (onaka)",
+      "keigo": "お腹 (onaka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お腹が痛いです。",
+        "romaji": "Onaka ga itai desu.",
+        "translation": "Perut saya sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_onaka.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_senaka",
+    "word": "せなか",
+    "kanji": "背中",
+    "reading": "せなか",
+    "romaji": "senaka",
+    "meaning": "punggung",
+    "jlptLevel": "N3",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "背中 (senaka)",
+      "formal": "背中 (senaka)",
+      "keigo": "背中 (senaka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "背中が痛いです。",
+        "romaji": "Senaka ga itai desu.",
+        "translation": "Punggung saya sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_senaka.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_yubi",
+    "word": "ゆび",
+    "kanji": "指",
+    "reading": "ゆび",
+    "romaji": "yubi",
+    "meaning": "jari",
+    "jlptLevel": "N4",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "指 (yubi)",
+      "formal": "指 (yubi)",
+      "keigo": "指 (yubi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "指で指します。",
+        "romaji": "Yubi de sashimasu.",
+        "translation": "Saya menunjuk dengan jari."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_yubi.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_kami",
+    "word": "かみ",
+    "kanji": "髪",
+    "reading": "かみ",
+    "romaji": "kami",
+    "meaning": "rambut",
+    "jlptLevel": "N4",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "髪 (kami)",
+      "formal": "髪 (kami)",
+      "keigo": "髪 (kami) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "髪が長いです。",
+        "romaji": "Kami ga nagai desu.",
+        "translation": "Rambutnya panjang."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kami.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_mune",
+    "word": "むね",
+    "kanji": "胸",
+    "reading": "むね",
+    "romaji": "mune",
+    "meaning": "dada",
+    "jlptLevel": "N3",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "胸 (mune)",
+      "formal": "胸 (mune)",
+      "keigo": "胸 (mune) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "胸が痛いです。",
+        "romaji": "Mune ga itai desu.",
+        "translation": "Dada saya sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_mune.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_hiza",
+    "word": "ひざ",
+    "kanji": "膝",
+    "reading": "ひざ",
+    "romaji": "hiza",
+    "meaning": "lutut",
+    "jlptLevel": "N3",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "膝 (hiza)",
+      "formal": "膝 (hiza)",
+      "keigo": "膝 (hiza) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "膝が痛いです。",
+        "romaji": "Hiza ga itai desu.",
+        "translation": "Lutut saya sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_hiza.png"
+  }
+]

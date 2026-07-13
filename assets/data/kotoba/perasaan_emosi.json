@@ -1,0 +1,242 @@
+[
+  {
+    "id": "kotoba_perasaan_emosi_ureshii",
+    "word": "うれしい",
+    "kanji": "嬉しい",
+    "reading": "うれしい",
+    "romaji": "ureshii",
+    "meaning": "senang/gembira",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "嬉しい (ureshii)",
+      "formal": "嬉しいです (ureshii desu)",
+      "keigo": "嬉しい (ureshii) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "嬉しいです。",
+        "romaji": "Ureshii desu.",
+        "translation": "Saya senang."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_ureshii.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kanashii",
+    "word": "かなしい",
+    "kanji": "悲しい",
+    "reading": "かなしい",
+    "romaji": "kanashii",
+    "meaning": "sedih",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "悲しい (kanashii)",
+      "formal": "悲しいです (kanashii desu)",
+      "keigo": "悲しい (kanashii) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "悲しいです。",
+        "romaji": "Kanashii desu.",
+        "translation": "Saya sedih."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kanashii.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_tanoshii",
+    "word": "たのしい",
+    "kanji": "楽しい",
+    "reading": "たのしい",
+    "romaji": "tanoshii",
+    "meaning": "menyenangkan/seru",
+    "jlptLevel": "N5",
+    "category": "perasaan_emosi",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "楽しい (tanoshii)",
+      "formal": "楽しいです (tanoshii desu)",
+      "keigo": "楽しい (tanoshii) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "楽しいです。",
+        "romaji": "Tanoshii desu.",
+        "translation": "Ini menyenangkan."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_tanoshii.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_okoru",
+    "word": "おこる",
+    "kanji": "怒る",
+    "reading": "おこる",
+    "romaji": "okoru",
+    "meaning": "marah",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "verb",
+    "registers": {
+      "casual": "怒る (okoru)",
+      "formal": "怒ります (okorimasu)",
+      "keigo": "怒る (okoru) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "怒りました。",
+        "romaji": "Okorimashita.",
+        "translation": "Saya marah."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_okoru.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kowai",
+    "word": "こわい",
+    "kanji": "怖い",
+    "reading": "こわい",
+    "romaji": "kowai",
+    "meaning": "takut/menakutkan",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "怖い (kowai)",
+      "formal": "怖いです (kowai desu)",
+      "keigo": "怖い (kowai) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "怖いです。",
+        "romaji": "Kowai desu.",
+        "translation": "Saya takut."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kowai.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_shinpai",
+    "word": "しんぱい",
+    "kanji": "心配",
+    "reading": "しんぱい",
+    "romaji": "shinpai",
+    "meaning": "khawatir/cemas",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "心配 (shinpai)",
+      "formal": "心配です (shinpai desu)",
+      "keigo": "心配 (shinpai) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "心配です。",
+        "romaji": "Shinpai desu.",
+        "translation": "Saya khawatir."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_shinpai.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_bikkuri",
+    "word": "びっくり",
+    "kanji": null,
+    "reading": "びっくり",
+    "romaji": "bikkuri",
+    "meaning": "terkejut",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "verb",
+    "registers": {
+      "casual": "びっくりする (bikkuri suru)",
+      "formal": "びっくりします (bikkuri shimasu)",
+      "keigo": "びっくりする (bikkuri suru) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "びっくりしました。",
+        "romaji": "Bikkuri shimashita.",
+        "translation": "Saya terkejut."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_bikkuri.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_sabishii",
+    "word": "さびしい",
+    "kanji": "寂しい",
+    "reading": "さびしい",
+    "romaji": "sabishii",
+    "meaning": "kesepian",
+    "jlptLevel": "N3",
+    "category": "perasaan_emosi",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "寂しい (sabishii)",
+      "formal": "寂しいです (sabishii desu)",
+      "keigo": "寂しい (sabishii) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "寂しいです。",
+        "romaji": "Sabishii desu.",
+        "translation": "Saya kesepian."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_sabishii.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_hazukashii",
+    "word": "はずかしい",
+    "kanji": "恥ずかしい",
+    "reading": "はずかしい",
+    "romaji": "hazukashii",
+    "meaning": "malu",
+    "jlptLevel": "N3",
+    "category": "perasaan_emosi",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "恥ずかしい (hazukashii)",
+      "formal": "恥ずかしいです (hazukashii desu)",
+      "keigo": "恥ずかしい (hazukashii) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "恥ずかしいです。",
+        "romaji": "Hazukashii desu.",
+        "translation": "Saya malu."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_hazukashii.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_anshin",
+    "word": "あんしん",
+    "kanji": "安心",
+    "reading": "あんしん",
+    "romaji": "anshin",
+    "meaning": "lega/tenang",
+    "jlptLevel": "N3",
+    "category": "perasaan_emosi",
+    "wordType": "verb",
+    "registers": {
+      "casual": "安心する (anshin suru)",
+      "formal": "安心します (anshin shimasu)",
+      "keigo": "安心する (anshin suru) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "安心しました。",
+        "romaji": "Anshin shimashita.",
+        "translation": "Saya merasa lega."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_anshin.png"
+  }
+]

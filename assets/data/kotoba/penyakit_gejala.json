@@ -1,0 +1,266 @@
+[
+  {
+    "id": "kotoba_penyakit_gejala_kaze",
+    "word": "かぜ",
+    "kanji": "風邪",
+    "reading": "かぜ",
+    "romaji": "kaze",
+    "meaning": "flu/masuk angin (common cold)",
+    "jlptLevel": "N4",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "風邪 (kaze)",
+      "formal": "風邪 (kaze)",
+      "keigo": "風邪 (kaze) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "風邪を引きました。",
+        "romaji": "Kaze o hikimashita.",
+        "translation": "Saya terkena flu."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kaze.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_netsu",
+    "word": "ねつ",
+    "kanji": "熱",
+    "reading": "ねつ",
+    "romaji": "netsu",
+    "meaning": "demam",
+    "jlptLevel": "N4",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "熱 (netsu)",
+      "formal": "熱 (netsu)",
+      "keigo": "熱 (netsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "熱があります。",
+        "romaji": "Netsu ga arimasu.",
+        "translation": "Saya demam."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_netsu.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_seki",
+    "word": "せき",
+    "kanji": "咳",
+    "reading": "せき",
+    "romaji": "seki",
+    "meaning": "batuk",
+    "jlptLevel": "N3",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "咳 (seki)",
+      "formal": "咳 (seki)",
+      "keigo": "咳 (seki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "咳が出ます。",
+        "romaji": "Seki ga demasu.",
+        "translation": "Saya batuk."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_seki.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_hanamizu",
+    "word": "はなみず",
+    "kanji": "鼻水",
+    "reading": "はなみず",
+    "romaji": "hanamizu",
+    "meaning": "ingus/pilek",
+    "jlptLevel": "N3",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "鼻水 (hanamizu)",
+      "formal": "鼻水 (hanamizu)",
+      "keigo": "鼻水 (hanamizu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "鼻水が出ます。",
+        "romaji": "Hanamizu ga demasu.",
+        "translation": "Saya pilek."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hanamizu.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_itai",
+    "word": "いたい",
+    "kanji": "痛い",
+    "reading": "いたい",
+    "romaji": "itai",
+    "meaning": "sakit (nyeri)",
+    "jlptLevel": "N5",
+    "category": "penyakit_gejala",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "痛い (itai)",
+      "formal": "痛いです (itai desu)",
+      "keigo": "痛い (itai) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お腹が痛いです。",
+        "romaji": "Onaka ga itai desu.",
+        "translation": "Perut saya sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_itai.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_kega",
+    "word": "けが",
+    "kanji": "怪我",
+    "reading": "けが",
+    "romaji": "kega",
+    "meaning": "luka/cedera",
+    "jlptLevel": "N3",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "怪我 (kega)",
+      "formal": "怪我 (kega)",
+      "keigo": "怪我 (kega) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "怪我をしました。",
+        "romaji": "Kega o shimashita.",
+        "translation": "Saya terluka."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kega.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_arerugii",
+    "word": "アレルギー",
+    "kanji": null,
+    "reading": "アレルギー",
+    "romaji": "arerugii",
+    "meaning": "alergi",
+    "jlptLevel": "N3",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "アレルギー (arerugii)",
+      "formal": "アレルギー (arerugii)",
+      "keigo": "アレルギー (arerugii) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "アレルギーがあります。",
+        "romaji": "Arerugii ga arimasu.",
+        "translation": "Saya punya alergi."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_arerugii.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_kafunshou",
+    "word": "かふんしょう",
+    "kanji": "花粉症",
+    "reading": "かふんしょう",
+    "romaji": "kafunshou",
+    "meaning": "alergi serbuk sari (hay fever)",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "花粉症 (kafunshou)",
+      "formal": "花粉症 (kafunshou)",
+      "keigo": "花粉症 (kafunshou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "春は花粉症がつらいです。",
+        "romaji": "Haru wa kafunshou ga tsurai desu.",
+        "translation": "Musim semi, alergi serbuk sari itu berat."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kafunshou.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_geri",
+    "word": "げり",
+    "kanji": "下痢",
+    "reading": "げり",
+    "romaji": "geri",
+    "meaning": "diare",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "下痢 (geri)",
+      "formal": "下痢 (geri)",
+      "keigo": "下痢 (geri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "下痢になりました。",
+        "romaji": "Geri ni narimashita.",
+        "translation": "Saya terkena diare."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_geri.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_memai",
+    "word": "めまい",
+    "kanji": null,
+    "reading": "めまい",
+    "romaji": "memai",
+    "meaning": "pusing (vertigo)",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "めまい (memai)",
+      "formal": "めまい (memai)",
+      "keigo": "めまい (memai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "めまいがします。",
+        "romaji": "Memai ga shimasu.",
+        "translation": "Saya merasa pusing."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_memai.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_tsukare",
+    "word": "つかれ",
+    "kanji": "疲れ",
+    "reading": "つかれ",
+    "romaji": "tsukare",
+    "meaning": "kelelahan",
+    "jlptLevel": "N3",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "疲れ (tsukare)",
+      "formal": "疲れ (tsukare)",
+      "keigo": "疲れ (tsukare) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "疲れを感じます。",
+        "romaji": "Tsukare o kanjimasu.",
+        "translation": "Saya merasa lelah."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_tsukare.png"
+  }
+]

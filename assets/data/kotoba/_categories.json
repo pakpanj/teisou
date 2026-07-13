@@ -140,42 +140,48 @@
     "name": "Anggota Tubuh",
     "group": "Tubuh & Kesehatan",
     "icon": "🖐️",
-    "available": false
+    "available": true,
+    "wordCount": 17
   },
   {
     "id": "penyakit_gejala",
     "name": "Penyakit & Gejala",
     "group": "Tubuh & Kesehatan",
     "icon": "🤒",
-    "available": false
+    "available": true,
+    "wordCount": 11
   },
   {
     "id": "obat_obatan",
     "name": "Obat-obatan",
     "group": "Tubuh & Kesehatan",
     "icon": "💊",
-    "available": false
+    "available": true,
+    "wordCount": 10
   },
   {
     "id": "olahraga",
     "name": "Olahraga",
     "group": "Tubuh & Kesehatan",
     "icon": "⚽",
-    "available": false
+    "available": true,
+    "wordCount": 12
   },
   {
     "id": "perasaan_emosi",
     "name": "Perasaan & Emosi",
     "group": "Tubuh & Kesehatan",
     "icon": "😊",
-    "available": false
+    "available": true,
+    "wordCount": 10
   },
   {
     "id": "ekspresi_wajah",
     "name": "Ekspresi Wajah",
     "group": "Tubuh & Kesehatan",
     "icon": "😮",
-    "available": false
+    "available": true,
+    "wordCount": 8
   },
   {
     "id": "ruangan_rumah",

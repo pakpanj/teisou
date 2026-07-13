@@ -1,0 +1,194 @@
+[
+  {
+    "id": "kotoba_ekspresi_wajah_warau",
+    "word": "わらう",
+    "kanji": "笑う",
+    "reading": "わらう",
+    "romaji": "warau",
+    "meaning": "tertawa/tersenyum",
+    "jlptLevel": "N4",
+    "category": "ekspresi_wajah",
+    "wordType": "verb",
+    "registers": {
+      "casual": "笑う (warau)",
+      "formal": "笑います (waraimasu)",
+      "keigo": "笑う (warau) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "笑います。",
+        "romaji": "Waraimasu.",
+        "translation": "Saya tertawa."
+      }
+    ],
+    "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_warau.png"
+  },
+  {
+    "id": "kotoba_ekspresi_wajah_naku",
+    "word": "なく",
+    "kanji": "泣く",
+    "reading": "なく",
+    "romaji": "naku",
+    "meaning": "menangis",
+    "jlptLevel": "N4",
+    "category": "ekspresi_wajah",
+    "wordType": "verb",
+    "registers": {
+      "casual": "泣く (naku)",
+      "formal": "泣きます (nakimasu)",
+      "keigo": "泣く (naku) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "泣きます。",
+        "romaji": "Nakimasu.",
+        "translation": "Saya menangis."
+      }
+    ],
+    "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_naku.png"
+  },
+  {
+    "id": "kotoba_ekspresi_wajah_hohoemu",
+    "word": "ほほえむ",
+    "kanji": "微笑む",
+    "reading": "ほほえむ",
+    "romaji": "hohoemu",
+    "meaning": "tersenyum (lembut)",
+    "jlptLevel": "N2",
+    "category": "ekspresi_wajah",
+    "wordType": "verb",
+    "registers": {
+      "casual": "微笑む (hohoemu)",
+      "formal": "微笑みます (hohoemimasu)",
+      "keigo": "微笑む (hohoemu) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "微笑みます。",
+        "romaji": "Hohoemimasu.",
+        "translation": "Saya tersenyum."
+      }
+    ],
+    "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_hohoemu.png"
+  },
+  {
+    "id": "kotoba_ekspresi_wajah_odoroku",
+    "word": "おどろく",
+    "kanji": "驚く",
+    "reading": "おどろく",
+    "romaji": "odoroku",
+    "meaning": "terkejut (raut wajah)",
+    "jlptLevel": "N3",
+    "category": "ekspresi_wajah",
+    "wordType": "verb",
+    "registers": {
+      "casual": "驚く (odoroku)",
+      "formal": "驚きます (odorokimasu)",
+      "keigo": "驚く (odoroku) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "驚きました。",
+        "romaji": "Odorokimashita.",
+        "translation": "Saya terkejut."
+      }
+    ],
+    "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_odoroku.png"
+  },
+  {
+    "id": "kotoba_ekspresi_wajah_mabataki",
+    "word": "まばたき",
+    "kanji": "瞬き",
+    "reading": "まばたき",
+    "romaji": "mabataki",
+    "meaning": "kedipan mata",
+    "jlptLevel": "N2",
+    "category": "ekspresi_wajah",
+    "wordType": "verb",
+    "registers": {
+      "casual": "瞬きする (mabataki suru)",
+      "formal": "瞬きします (mabataki shimasu)",
+      "keigo": "瞬きする (mabataki suru) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "瞬きをします。",
+        "romaji": "Mabataki o shimasu.",
+        "translation": "Saya berkedip."
+      }
+    ],
+    "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_mabataki.png"
+  },
+  {
+    "id": "kotoba_ekspresi_wajah_akubi",
+    "word": "あくび",
+    "kanji": null,
+    "reading": "あくび",
+    "romaji": "akubi",
+    "meaning": "menguap",
+    "jlptLevel": "N2",
+    "category": "ekspresi_wajah",
+    "wordType": "verb",
+    "registers": {
+      "casual": "あくびする (akubi suru)",
+      "formal": "あくびします (akubi shimasu)",
+      "keigo": "あくびする (akubi suru) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "あくびをします。",
+        "romaji": "Akubi o shimasu.",
+        "translation": "Saya menguap."
+      }
+    ],
+    "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_akubi.png"
+  },
+  {
+    "id": "kotoba_ekspresi_wajah_shikameru",
+    "word": "しかめる",
+    "kanji": null,
+    "reading": "しかめる",
+    "romaji": "shikameru",
+    "meaning": "mengerutkan wajah (meringis/cemberut)",
+    "jlptLevel": "N1",
+    "category": "ekspresi_wajah",
+    "wordType": "verb",
+    "registers": {
+      "casual": "しかめる (shikameru)",
+      "formal": "しかめます (shikamemasu)",
+      "keigo": "しかめる (shikameru) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "顔をしかめました。",
+        "romaji": "Kao o shikamemashita.",
+        "translation": "Saya mengerutkan wajah."
+      }
+    ],
+    "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_shikameru.png"
+  },
+  {
+    "id": "kotoba_ekspresi_wajah_mitsumeru",
+    "word": "みつめる",
+    "kanji": "見つめる",
+    "reading": "みつめる",
+    "romaji": "mitsumeru",
+    "meaning": "menatap",
+    "jlptLevel": "N3",
+    "category": "ekspresi_wajah",
+    "wordType": "verb",
+    "registers": {
+      "casual": "見つめる (mitsumeru)",
+      "formal": "見つめます (mitsumemasu)",
+      "keigo": "見つめる (mitsumeru) — tidak ada bentuk keigo khusus untuk kata kerja ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼を見つめました。",
+        "romaji": "Kare o mitsumemashita.",
+        "translation": "Saya menatapnya."
+      }
+    ],
+    "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_mitsumeru.png"
+  }
+]

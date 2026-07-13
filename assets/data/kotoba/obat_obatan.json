@@ -1,0 +1,242 @@
+[
+  {
+    "id": "kotoba_obat_obatan_kusuri",
+    "word": "くすり",
+    "kanji": "薬",
+    "reading": "くすり",
+    "romaji": "kusuri",
+    "meaning": "obat",
+    "jlptLevel": "N4",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "薬 (kusuri)",
+      "formal": "薬 (kusuri)",
+      "keigo": "薬 (kusuri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "薬を飲みます。",
+        "romaji": "Kusuri o nomimasu.",
+        "translation": "Saya minum obat."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kusuri.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_byouin",
+    "word": "びょういん",
+    "kanji": "病院",
+    "reading": "びょういん",
+    "romaji": "byouin",
+    "meaning": "rumah sakit",
+    "jlptLevel": "N5",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "病院 (byouin)",
+      "formal": "病院 (byouin)",
+      "keigo": "病院 (byouin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "病院に行きます。",
+        "romaji": "Byouin ni ikimasu.",
+        "translation": "Saya pergi ke rumah sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_byouin.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_isha",
+    "word": "いしゃ",
+    "kanji": "医者",
+    "reading": "いしゃ",
+    "romaji": "isha",
+    "meaning": "dokter",
+    "jlptLevel": "N5",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "医者 (isha)",
+      "formal": "医者 (isha)",
+      "keigo": "医者 (isha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "医者に診てもらいます。",
+        "romaji": "Isha ni mite moraimasu.",
+        "translation": "Saya diperiksa oleh dokter."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_isha.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_kangoshi",
+    "word": "かんごし",
+    "kanji": "看護師",
+    "reading": "かんごし",
+    "romaji": "kangoshi",
+    "meaning": "perawat",
+    "jlptLevel": "N4",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "看護師 (kangoshi)",
+      "formal": "看護師 (kangoshi)",
+      "keigo": "看護師 (kangoshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "看護師さんが優しいです。",
+        "romaji": "Kangoshi-san ga yasashii desu.",
+        "translation": "Perawatnya baik hati."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kangoshi.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_yakkyoku",
+    "word": "やっきょく",
+    "kanji": "薬局",
+    "reading": "やっきょく",
+    "romaji": "yakkyoku",
+    "meaning": "apotek",
+    "jlptLevel": "N4",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "薬局 (yakkyoku)",
+      "formal": "薬局 (yakkyoku)",
+      "keigo": "薬局 (yakkyoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "薬局で薬を買います。",
+        "romaji": "Yakkyoku de kusuri o kaimasu.",
+        "translation": "Saya membeli obat di apotek."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_yakkyoku.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_chuusha",
+    "word": "ちゅうしゃ",
+    "kanji": "注射",
+    "reading": "ちゅうしゃ",
+    "romaji": "chuusha",
+    "meaning": "suntikan",
+    "jlptLevel": "N3",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "注射 (chuusha)",
+      "formal": "注射 (chuusha)",
+      "keigo": "注射 (chuusha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "注射をします。",
+        "romaji": "Chuusha o shimasu.",
+        "translation": "Saya disuntik."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_chuusha.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_bansoukou",
+    "word": "ばんそうこう",
+    "kanji": "絆創膏",
+    "reading": "ばんそうこう",
+    "romaji": "bansoukou",
+    "meaning": "plester luka (band-aid)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "絆創膏 (bansoukou)",
+      "formal": "絆創膏 (bansoukou)",
+      "keigo": "絆創膏 (bansoukou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "絆創膏を貼ります。",
+        "romaji": "Bansoukou o harimasu.",
+        "translation": "Saya menempelkan plester."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_bansoukou.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_taionkei",
+    "word": "たいおんけい",
+    "kanji": "体温計",
+    "reading": "たいおんけい",
+    "romaji": "taionkei",
+    "meaning": "termometer",
+    "jlptLevel": "N3",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "体温計 (taionkei)",
+      "formal": "体温計 (taionkei)",
+      "keigo": "体温計 (taionkei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "体温計で熱を測ります。",
+        "romaji": "Taionkei de netsu o hakarimasu.",
+        "translation": "Saya mengukur demam dengan termometer."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_taionkei.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_masuku",
+    "word": "マスク",
+    "kanji": null,
+    "reading": "マスク",
+    "romaji": "masuku",
+    "meaning": "masker",
+    "jlptLevel": "N4",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "マスク (masuku)",
+      "formal": "マスク (masuku)",
+      "keigo": "マスク (masuku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "マスクをつけます。",
+        "romaji": "Masuku o tsukemasu.",
+        "translation": "Saya memakai masker."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masuku.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_kenshin",
+    "word": "けんしん",
+    "kanji": "検診",
+    "reading": "けんしん",
+    "romaji": "kenshin",
+    "meaning": "pemeriksaan kesehatan",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "検診 (kenshin)",
+      "formal": "検診 (kenshin)",
+      "keigo": "検診 (kenshin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎年検診を受けます。",
+        "romaji": "Maitoshi kenshin o ukemasu.",
+        "translation": "Saya menjalani pemeriksaan kesehatan setiap tahun."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenshin.png"
+  }
+]

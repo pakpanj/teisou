@@ -35,12 +35,12 @@ GROUPS = {
         ("cara_memasak", "Cara Memasak", "🔥", True, 10),
     ],
     "Tubuh & Kesehatan": [
-        ("anggota_tubuh", "Anggota Tubuh", "🖐️", False, None),
-        ("penyakit_gejala", "Penyakit & Gejala", "🤒", False, None),
-        ("obat_obatan", "Obat-obatan", "💊", False, None),
-        ("olahraga", "Olahraga", "⚽", False, None),
-        ("perasaan_emosi", "Perasaan & Emosi", "😊", False, None),
-        ("ekspresi_wajah", "Ekspresi Wajah", "😮", False, None),
+        ("anggota_tubuh", "Anggota Tubuh", "🖐️", True, 17),
+        ("penyakit_gejala", "Penyakit & Gejala", "🤒", True, 11),
+        ("obat_obatan", "Obat-obatan", "💊", True, 10),
+        ("olahraga", "Olahraga", "⚽", True, 12),
+        ("perasaan_emosi", "Perasaan & Emosi", "😊", True, 10),
+        ("ekspresi_wajah", "Ekspresi Wajah", "😮", True, 8),
     ],
     "Tempat & Transportasi": [
         ("ruangan_rumah", "Ruangan di Rumah", "🚪", False, None),
