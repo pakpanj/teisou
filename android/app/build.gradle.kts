@@ -40,6 +40,17 @@ kotlin {
     }
 }
 
+dependencies {
+    // google_mlkit_text_recognition only `compileOnly`-references the
+    // per-script native recognizers (see its android/build.gradle) — the
+    // app must add whichever ones it actually uses as a real
+    // `implementation` dependency, or TextRecognizer(script: japanese)
+    // crashes at runtime with NoClassDefFoundError on first use. This is
+    // the bundled variant (~4MB, fully offline from install), matching
+    // the exact artifact the plugin was compiled against.
+    implementation("com.google.mlkit:text-recognition-japanese:16.0.1")
+}
+
 flutter {
     source = "../.."
 }

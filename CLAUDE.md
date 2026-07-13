@@ -74,21 +74,27 @@ going forward, confirm which one is meant.
 - Kanji dataset: only N5 has real entries (15). N4-N1 are `placeholder:
   true` marker rows (5 each) so level filters aren't empty — see
   `scripts/generate_kanji_seed.py` to add real ones.
-- Cam Detector's Japanese OCR model uses ML Kit's **unbundled** (Play
-  Services-downloaded, ~260KB) variant, not the ~4MB bundled-in-APK one —
-  see the AndroidManifest comment next to
-  `com.google.mlkit.vision.DEPENDENCIES`. First scan after install may
-  need one background download before it works; there's a
+- Cam Detector's Japanese OCR uses ML Kit's **bundled** model
+  (`com.google.mlkit:text-recognition-japanese:16.0.1`, ~4MB, added as an
+  explicit `implementation` dependency in `android/app/build.gradle.kts`)
+  — fully offline from install, no Play Services download needed.
+  Important gotcha if you add another script (Chinese/Korean/Devanagari)
+  or another ML Kit feature later: `google_mlkit_*` plugins only
+  `compileOnly`-reference their native per-feature dependencies (see the
+  plugin's own `android/build.gradle`), so the *app* must add a real
+  `implementation` dependency for whatever it actually uses, or it
+  compiles fine but crashes at runtime with `NoClassDefFoundError` the
+  first time that feature is invoked — this bit Cam Detector once
+  already (fixed by adding the line above). There's still a
   five-consecutive-failures warning banner in `CamDetectorScreen` for
-  that case. Switching to the fully-offline bundled variant needs a manual
-  Gradle dependency exclude/override that risks a duplicate-class build
-  failure — not done because it wasn't verified safe on Codemagic.
+  genuine recognition failures unrelated to this.
 - Cam Detector's bounding-box overlay math (`scaleDetections` in
-  `detection_overlay.dart`) assumes a portrait-locked back camera and
-  hasn't been calibrated on a physical device (no camera in the dev
-  environment this was built in) — verify alignment on-device before
-  shipping; the detection *logic* (recognition, throttling, dictionary
-  lookup) doesn't depend on the overlay being pixel-perfect.
+  `detection_overlay.dart`) assumes a portrait-locked back camera.
+  Verified on a physical device (Moto G52J 5G, Android 12) that the
+  camera preview + OCR pipeline run without crashing and detect text
+  end-to-end, but exact box-to-text pixel alignment wasn't visually
+  re-checked after the last change — worth a glance next time someone's
+  on-device with real Japanese text in frame.
 - `SavedWordsScreen` reads only the local SharedPreferences copy, not
   merged with Firestore — a word saved on one device won't show on
   another. Fine for now; revisit if multi-device sync matters later.
