@@ -165,6 +165,23 @@ class ProgressRepository {
         .set({'interestedAt': FieldValue.serverTimestamp()});
   }
 
+  /// Saves a kanji/kotoba dictionary entry to the user's learning list.
+  /// [type] is `'kanji'` or `'kotoba'`; [itemId] is the entry's id.
+  Future<void> saveDictionaryItem(
+    String uid, {
+    required String itemId,
+    required String type,
+  }) {
+    return _userDoc(uid)
+        .collection(FirestorePaths.savedItems)
+        .doc(itemId)
+        .set({
+      'type': type,
+      'itemId': itemId,
+      'savedAt': FieldValue.serverTimestamp(),
+    });
+  }
+
   /// Wipes all hiragana/katakana learning progress back to a blank slate.
   /// Uses `update()` (not merge-`set`) so each type's map is replaced
   /// wholesale instead of merging old `items` back in.
