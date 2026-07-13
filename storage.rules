@@ -11,5 +11,14 @@ service firebase.storage {
         && request.resource.size < 5 * 1024 * 1024
         && request.resource.contentType.matches('image/.*');
     }
+
+    // Kotoba vocab illustrations — any signed-in user (anonymous counts,
+    // per this app's auth pattern) can read; uploads only via the Firebase
+    // Console/Admin SDK, which bypasses these rules entirely, so write is
+    // always denied here.
+    match /kotoba_images/{category}/{imageId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
   }
 }

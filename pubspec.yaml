@@ -44,6 +44,12 @@ dependencies:
   # Local storage untuk Daftar Belajar (saved words) sebelum sync ke Firestore
   shared_preferences: ^2.5.5
 
+  # Modul Kotoba: gambar ilustrasi on-demand dari Firebase Storage, cache
+  # lokal permanen (flutter_cache_manager custom Config) supaya cuma
+  # download sekali per kata
+  cached_network_image: ^3.4.1
+  flutter_cache_manager: ^3.4.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
