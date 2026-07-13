@@ -1,0 +1,266 @@
+[
+  {
+    "id": "kotoba_ruangan_rumah_heya",
+    "word": "へや",
+    "kanji": "部屋",
+    "reading": "へや",
+    "romaji": "heya",
+    "meaning": "kamar/ruangan",
+    "jlptLevel": "N5",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "部屋 (heya)",
+      "formal": "部屋 (heya)",
+      "keigo": "部屋 (heya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "部屋を掃除します。",
+        "romaji": "Heya o souji shimasu.",
+        "translation": "Saya membersihkan kamar."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_heya.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_genkan",
+    "word": "げんかん",
+    "kanji": "玄関",
+    "reading": "げんかん",
+    "romaji": "genkan",
+    "meaning": "pintu masuk (area lepas sepatu)",
+    "jlptLevel": "N4",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "玄関 (genkan)",
+      "formal": "玄関 (genkan)",
+      "keigo": "玄関 (genkan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "玄関で靴を脱ぎます。",
+        "romaji": "Genkan de kutsu o nugimasu.",
+        "translation": "Saya melepas sepatu di genkan."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_genkan.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_daidokoro",
+    "word": "だいどころ",
+    "kanji": "台所",
+    "reading": "だいどころ",
+    "romaji": "daidokoro",
+    "meaning": "dapur",
+    "jlptLevel": "N4",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "台所 (daidokoro)",
+      "formal": "台所 (daidokoro)",
+      "keigo": "台所 (daidokoro) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "台所で料理します。",
+        "romaji": "Daidokoro de ryouri shimasu.",
+        "translation": "Saya memasak di dapur."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_daidokoro.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_ima",
+    "word": "いま",
+    "kanji": "居間",
+    "reading": "いま",
+    "romaji": "ima",
+    "meaning": "ruang keluarga (living room)",
+    "jlptLevel": "N3",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "居間 (ima)",
+      "formal": "居間 (ima)",
+      "keigo": "居間 (ima) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "居間でテレビを見ます。",
+        "romaji": "Ima de terebi o mimasu.",
+        "translation": "Saya menonton TV di ruang keluarga."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_ima.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_shinshitsu",
+    "word": "しんしつ",
+    "kanji": "寝室",
+    "reading": "しんしつ",
+    "romaji": "shinshitsu",
+    "meaning": "kamar tidur",
+    "jlptLevel": "N3",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "寝室 (shinshitsu)",
+      "formal": "寝室 (shinshitsu)",
+      "keigo": "寝室 (shinshitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "寝室で寝ます。",
+        "romaji": "Shinshitsu de nemasu.",
+        "translation": "Saya tidur di kamar tidur."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shinshitsu.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_toire",
+    "word": "トイレ",
+    "kanji": null,
+    "reading": "トイレ",
+    "romaji": "toire",
+    "meaning": "toilet",
+    "jlptLevel": "N5",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "トイレ (toire)",
+      "formal": "トイレ (toire)",
+      "keigo": "トイレ (toire) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "トイレはどこですか。",
+        "romaji": "Toire wa doko desu ka.",
+        "translation": "Di mana toilet?"
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_toire.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_ofuro",
+    "word": "おふろ",
+    "kanji": "お風呂",
+    "reading": "おふろ",
+    "romaji": "ofuro",
+    "meaning": "kamar mandi (bak mandi)",
+    "jlptLevel": "N4",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "お風呂 (ofuro)",
+      "formal": "お風呂 (ofuro)",
+      "keigo": "お風呂 (ofuro) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お風呂に入ります。",
+        "romaji": "Ofuro ni hairimasu.",
+        "translation": "Saya mandi."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_ofuro.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_yokushitsu",
+    "word": "よくしつ",
+    "kanji": "浴室",
+    "reading": "よくしつ",
+    "romaji": "yokushitsu",
+    "meaning": "kamar mandi (formal)",
+    "jlptLevel": "N3",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "浴室 (yokushitsu)",
+      "formal": "浴室 (yokushitsu)",
+      "keigo": "浴室 (yokushitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "浴室を掃除します。",
+        "romaji": "Yokushitsu o souji shimasu.",
+        "translation": "Saya membersihkan kamar mandi."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_yokushitsu.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_beranda",
+    "word": "ベランダ",
+    "kanji": null,
+    "reading": "ベランダ",
+    "romaji": "beranda",
+    "meaning": "balkon/beranda",
+    "jlptLevel": "N3",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ベランダ (beranda)",
+      "formal": "ベランダ (beranda)",
+      "keigo": "ベランダ (beranda) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ベランダで洗濯物を干します。",
+        "romaji": "Beranda de sentakumono o hoshimasu.",
+        "translation": "Saya menjemur pakaian di balkon."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_beranda.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_kaidan",
+    "word": "かいだん",
+    "kanji": "階段",
+    "reading": "かいだん",
+    "romaji": "kaidan",
+    "meaning": "tangga",
+    "jlptLevel": "N4",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "階段 (kaidan)",
+      "formal": "階段 (kaidan)",
+      "keigo": "階段 (kaidan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "階段を上ります。",
+        "romaji": "Kaidan o noborimasu.",
+        "translation": "Saya menaiki tangga."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_kaidan.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_niwa",
+    "word": "にわ",
+    "kanji": "庭",
+    "reading": "にわ",
+    "romaji": "niwa",
+    "meaning": "halaman/taman rumah",
+    "jlptLevel": "N4",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "庭 (niwa)",
+      "formal": "庭 (niwa)",
+      "keigo": "庭 (niwa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "庭に花があります。",
+        "romaji": "Niwa ni hana ga arimasu.",
+        "translation": "Ada bunga di halaman."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_niwa.png"
+  }
+]

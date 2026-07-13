@@ -188,42 +188,48 @@
     "name": "Ruangan di Rumah",
     "group": "Tempat & Transportasi",
     "icon": "🚪",
-    "available": false
+    "available": true,
+    "wordCount": 11
   },
   {
     "id": "perabot_rumah",
     "name": "Perabot Rumah",
     "group": "Tempat & Transportasi",
     "icon": "🛋️",
-    "available": false
+    "available": true,
+    "wordCount": 11
   },
   {
     "id": "bangunan_fasilitas",
     "name": "Bangunan & Fasilitas",
     "group": "Tempat & Transportasi",
     "icon": "🏢",
-    "available": false
+    "available": true,
+    "wordCount": 11
   },
   {
     "id": "kendaraan",
     "name": "Kendaraan",
     "group": "Tempat & Transportasi",
     "icon": "🚗",
-    "available": false
+    "available": true,
+    "wordCount": 10
   },
   {
     "id": "arah_lokasi",
     "name": "Arah & Lokasi",
     "group": "Tempat & Transportasi",
     "icon": "🧭",
-    "available": false
+    "available": true,
+    "wordCount": 11
   },
   {
     "id": "negara_kota",
     "name": "Negara & Kota",
     "group": "Tempat & Transportasi",
     "icon": "🗺️",
-    "available": false
+    "available": true,
+    "wordCount": 11
   },
   {
     "id": "profesi",

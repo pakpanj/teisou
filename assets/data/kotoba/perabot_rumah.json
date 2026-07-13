@@ -1,0 +1,266 @@
+[
+  {
+    "id": "kotoba_perabot_rumah_isu",
+    "word": "いす",
+    "kanji": "椅子",
+    "reading": "いす",
+    "romaji": "isu",
+    "meaning": "kursi",
+    "jlptLevel": "N5",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "椅子 (isu)",
+      "formal": "椅子 (isu)",
+      "keigo": "椅子 (isu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "椅子に座ります。",
+        "romaji": "Isu ni suwarimasu.",
+        "translation": "Saya duduk di kursi."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_isu.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_tsukue",
+    "word": "つくえ",
+    "kanji": "机",
+    "reading": "つくえ",
+    "romaji": "tsukue",
+    "meaning": "meja (belajar/kerja)",
+    "jlptLevel": "N5",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "机 (tsukue)",
+      "formal": "机 (tsukue)",
+      "keigo": "机 (tsukue) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "机で勉強します。",
+        "romaji": "Tsukue de benkyou shimasu.",
+        "translation": "Saya belajar di meja."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tsukue.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_teeburu",
+    "word": "テーブル",
+    "kanji": null,
+    "reading": "テーブル",
+    "romaji": "teeburu",
+    "meaning": "meja (makan)",
+    "jlptLevel": "N5",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "テーブル (teeburu)",
+      "formal": "テーブル (teeburu)",
+      "keigo": "テーブル (teeburu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "テーブルの上に本があります。",
+        "romaji": "Teeburu no ue ni hon ga arimasu.",
+        "translation": "Ada buku di atas meja."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_teeburu.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_beddo",
+    "word": "ベッド",
+    "kanji": null,
+    "reading": "ベッド",
+    "romaji": "beddo",
+    "meaning": "tempat tidur",
+    "jlptLevel": "N5",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ベッド (beddo)",
+      "formal": "ベッド (beddo)",
+      "keigo": "ベッド (beddo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ベッドで寝ます。",
+        "romaji": "Beddo de nemasu.",
+        "translation": "Saya tidur di tempat tidur."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_beddo.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_sofaa",
+    "word": "ソファー",
+    "kanji": null,
+    "reading": "ソファー",
+    "romaji": "sofaa",
+    "meaning": "sofa",
+    "jlptLevel": "N4",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ソファー (sofaa)",
+      "formal": "ソファー (sofaa)",
+      "keigo": "ソファー (sofaa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ソファーに座ります。",
+        "romaji": "Sofaa ni suwarimasu.",
+        "translation": "Saya duduk di sofa."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_sofaa.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_tana",
+    "word": "たな",
+    "kanji": "棚",
+    "reading": "たな",
+    "romaji": "tana",
+    "meaning": "rak",
+    "jlptLevel": "N4",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "棚 (tana)",
+      "formal": "棚 (tana)",
+      "keigo": "棚 (tana) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "棚に本を置きます。",
+        "romaji": "Tana ni hon o okimasu.",
+        "translation": "Saya meletakkan buku di rak."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tana.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_reizouko",
+    "word": "れいぞうこ",
+    "kanji": "冷蔵庫",
+    "reading": "れいぞうこ",
+    "romaji": "reizouko",
+    "meaning": "kulkas",
+    "jlptLevel": "N4",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "冷蔵庫 (reizouko)",
+      "formal": "冷蔵庫 (reizouko)",
+      "keigo": "冷蔵庫 (reizouko) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "冷蔵庫に牛乳があります。",
+        "romaji": "Reizouko ni gyuunyuu ga arimasu.",
+        "translation": "Ada susu di kulkas."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_reizouko.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_kagami",
+    "word": "かがみ",
+    "kanji": "鏡",
+    "reading": "かがみ",
+    "romaji": "kagami",
+    "meaning": "cermin",
+    "jlptLevel": "N4",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "鏡 (kagami)",
+      "formal": "鏡 (kagami)",
+      "keigo": "鏡 (kagami) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "鏡を見ます。",
+        "romaji": "Kagami o mimasu.",
+        "translation": "Saya bercermin."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kagami.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_kaaten",
+    "word": "カーテン",
+    "kanji": null,
+    "reading": "カーテン",
+    "romaji": "kaaten",
+    "meaning": "tirai/gorden",
+    "jlptLevel": "N3",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "カーテン (kaaten)",
+      "formal": "カーテン (kaaten)",
+      "keigo": "カーテン (kaaten) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "カーテンを閉めます。",
+        "romaji": "Kaaten o shimemasu.",
+        "translation": "Saya menutup tirai."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kaaten.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_tansu",
+    "word": "たんす",
+    "kanji": null,
+    "reading": "たんす",
+    "romaji": "tansu",
+    "meaning": "lemari pakaian",
+    "jlptLevel": "N3",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "たんす (tansu)",
+      "formal": "たんす (tansu)",
+      "keigo": "たんす (tansu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "たんすに服をしまいます。",
+        "romaji": "Tansu ni fuku o shimaimasu.",
+        "translation": "Saya menyimpan baju di lemari."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tansu.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_denki",
+    "word": "でんき",
+    "kanji": "電気",
+    "reading": "でんき",
+    "romaji": "denki",
+    "meaning": "lampu/listrik",
+    "jlptLevel": "N4",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "電気 (denki)",
+      "formal": "電気 (denki)",
+      "keigo": "電気 (denki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電気をつけます。",
+        "romaji": "Denki o tsukemasu.",
+        "translation": "Saya menyalakan lampu."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_denki.png"
+  }
+]

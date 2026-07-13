@@ -1,0 +1,242 @@
+[
+  {
+    "id": "kotoba_kendaraan_kuruma",
+    "word": "くるま",
+    "kanji": "車",
+    "reading": "くるま",
+    "romaji": "kuruma",
+    "meaning": "mobil",
+    "jlptLevel": "N5",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "車 (kuruma)",
+      "formal": "車 (kuruma)",
+      "keigo": "車 (kuruma) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "車で行きます。",
+        "romaji": "Kuruma de ikimasu.",
+        "translation": "Saya pergi dengan mobil."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kuruma.png"
+  },
+  {
+    "id": "kotoba_kendaraan_densha",
+    "word": "でんしゃ",
+    "kanji": "電車",
+    "reading": "でんしゃ",
+    "romaji": "densha",
+    "meaning": "kereta listrik",
+    "jlptLevel": "N5",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "電車 (densha)",
+      "formal": "電車 (densha)",
+      "keigo": "電車 (densha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電車に乗ります。",
+        "romaji": "Densha ni norimasu.",
+        "translation": "Saya naik kereta."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_densha.png"
+  },
+  {
+    "id": "kotoba_kendaraan_basu",
+    "word": "バス",
+    "kanji": null,
+    "reading": "バス",
+    "romaji": "basu",
+    "meaning": "bus",
+    "jlptLevel": "N5",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "バス (basu)",
+      "formal": "バス (basu)",
+      "keigo": "バス (basu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バスを待ちます。",
+        "romaji": "Basu o machimasu.",
+        "translation": "Saya menunggu bus."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_basu.png"
+  },
+  {
+    "id": "kotoba_kendaraan_jitensha",
+    "word": "じてんしゃ",
+    "kanji": "自転車",
+    "reading": "じてんしゃ",
+    "romaji": "jitensha",
+    "meaning": "sepeda",
+    "jlptLevel": "N5",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "自転車 (jitensha)",
+      "formal": "自転車 (jitensha)",
+      "keigo": "自転車 (jitensha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "自転車に乗ります。",
+        "romaji": "Jitensha ni norimasu.",
+        "translation": "Saya naik sepeda."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jitensha.png"
+  },
+  {
+    "id": "kotoba_kendaraan_hikouki",
+    "word": "ひこうき",
+    "kanji": "飛行機",
+    "reading": "ひこうき",
+    "romaji": "hikouki",
+    "meaning": "pesawat terbang",
+    "jlptLevel": "N5",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "飛行機 (hikouki)",
+      "formal": "飛行機 (hikouki)",
+      "keigo": "飛行機 (hikouki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "飛行機で旅行します。",
+        "romaji": "Hikouki de ryokou shimasu.",
+        "translation": "Saya bepergian dengan pesawat."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_hikouki.png"
+  },
+  {
+    "id": "kotoba_kendaraan_fune",
+    "word": "ふね",
+    "kanji": "船",
+    "reading": "ふね",
+    "romaji": "fune",
+    "meaning": "kapal",
+    "jlptLevel": "N4",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "船 (fune)",
+      "formal": "船 (fune)",
+      "keigo": "船 (fune) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "船で島に行きます。",
+        "romaji": "Fune de shima ni ikimasu.",
+        "translation": "Saya pergi ke pulau dengan kapal."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_fune.png"
+  },
+  {
+    "id": "kotoba_kendaraan_takushii",
+    "word": "タクシー",
+    "kanji": null,
+    "reading": "タクシー",
+    "romaji": "takushii",
+    "meaning": "taksi",
+    "jlptLevel": "N4",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "タクシー (takushii)",
+      "formal": "タクシー (takushii)",
+      "keigo": "タクシー (takushii) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "タクシーを呼びます。",
+        "romaji": "Takushii o yobimasu.",
+        "translation": "Saya memanggil taksi."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_takushii.png"
+  },
+  {
+    "id": "kotoba_kendaraan_baiku",
+    "word": "バイク",
+    "kanji": null,
+    "reading": "バイク",
+    "romaji": "baiku",
+    "meaning": "motor (sepeda motor)",
+    "jlptLevel": "N4",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "バイク (baiku)",
+      "formal": "バイク (baiku)",
+      "keigo": "バイク (baiku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "バイクで通勤します。",
+        "romaji": "Baiku de tsuukin shimasu.",
+        "translation": "Saya berangkat kerja dengan motor."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_baiku.png"
+  },
+  {
+    "id": "kotoba_kendaraan_shinkansen",
+    "word": "しんかんせん",
+    "kanji": "新幹線",
+    "reading": "しんかんせん",
+    "romaji": "shinkansen",
+    "meaning": "shinkansen (kereta peluru)",
+    "jlptLevel": "N3",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "新幹線 (shinkansen)",
+      "formal": "新幹線 (shinkansen)",
+      "keigo": "新幹線 (shinkansen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新幹線は速いです。",
+        "romaji": "Shinkansen wa hayai desu.",
+        "translation": "Shinkansen itu cepat."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shinkansen.png"
+  },
+  {
+    "id": "kotoba_kendaraan_torakku",
+    "word": "トラック",
+    "kanji": null,
+    "reading": "トラック",
+    "romaji": "torakku",
+    "meaning": "truk",
+    "jlptLevel": "N3",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "トラック (torakku)",
+      "formal": "トラック (torakku)",
+      "keigo": "トラック (torakku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "トラックが荷物を運びます。",
+        "romaji": "Torakku ga nimotsu o hakobimasu.",
+        "translation": "Truk mengangkut barang."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_torakku.png"
+  }
+]

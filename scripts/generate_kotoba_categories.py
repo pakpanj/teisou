@@ -43,12 +43,12 @@ GROUPS = {
         ("ekspresi_wajah", "Ekspresi Wajah", "😮", True, 8),
     ],
     "Tempat & Transportasi": [
-        ("ruangan_rumah", "Ruangan di Rumah", "🚪", False, None),
-        ("perabot_rumah", "Perabot Rumah", "🛋️", False, None),
-        ("bangunan_fasilitas", "Bangunan & Fasilitas", "🏢", False, None),
-        ("kendaraan", "Kendaraan", "🚗", False, None),
-        ("arah_lokasi", "Arah & Lokasi", "🧭", False, None),
-        ("negara_kota", "Negara & Kota", "🗺️", False, None),
+        ("ruangan_rumah", "Ruangan di Rumah", "🚪", True, 11),
+        ("perabot_rumah", "Perabot Rumah", "🛋️", True, 11),
+        ("bangunan_fasilitas", "Bangunan & Fasilitas", "🏢", True, 11),
+        ("kendaraan", "Kendaraan", "🚗", True, 10),
+        ("arah_lokasi", "Arah & Lokasi", "🧭", True, 11),
+        ("negara_kota", "Negara & Kota", "🗺️", True, 11),
     ],
     "Manusia & Sosial": [
         ("profesi", "Profesi", "👨‍⚕️", False, None),

@@ -1,0 +1,266 @@
+[
+  {
+    "id": "kotoba_bangunan_fasilitas_gakkou",
+    "word": "がっこう",
+    "kanji": "学校",
+    "reading": "がっこう",
+    "romaji": "gakkou",
+    "meaning": "sekolah",
+    "jlptLevel": "N5",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学校 (gakkou)",
+      "formal": "学校 (gakkou)",
+      "keigo": "学校 (gakkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学校に行きます。",
+        "romaji": "Gakkou ni ikimasu.",
+        "translation": "Saya pergi ke sekolah."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_gakkou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_ginkou",
+    "word": "ぎんこう",
+    "kanji": "銀行",
+    "reading": "ぎんこう",
+    "romaji": "ginkou",
+    "meaning": "bank",
+    "jlptLevel": "N5",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "銀行 (ginkou)",
+      "formal": "銀行 (ginkou)",
+      "keigo": "銀行 (ginkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "銀行でお金を下ろします。",
+        "romaji": "Ginkou de okane o oroshimasu.",
+        "translation": "Saya mengambil uang di bank."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ginkou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_yuubinkyoku",
+    "word": "ゆうびんきょく",
+    "kanji": "郵便局",
+    "reading": "ゆうびんきょく",
+    "romaji": "yuubinkyoku",
+    "meaning": "kantor pos",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "郵便局 (yuubinkyoku)",
+      "formal": "郵便局 (yuubinkyoku)",
+      "keigo": "郵便局 (yuubinkyoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "郵便局で手紙を出します。",
+        "romaji": "Yuubinkyoku de tegami o dashimasu.",
+        "translation": "Saya mengirim surat di kantor pos."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yuubinkyoku.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_toshokan",
+    "word": "としょかん",
+    "kanji": "図書館",
+    "reading": "としょかん",
+    "romaji": "toshokan",
+    "meaning": "perpustakaan",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "図書館 (toshokan)",
+      "formal": "図書館 (toshokan)",
+      "keigo": "図書館 (toshokan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "図書館で本を借ります。",
+        "romaji": "Toshokan de hon o karimasu.",
+        "translation": "Saya meminjam buku di perpustakaan."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_toshokan.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kouen",
+    "word": "こうえん",
+    "kanji": "公園",
+    "reading": "こうえん",
+    "romaji": "kouen",
+    "meaning": "taman (publik)",
+    "jlptLevel": "N5",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "公園 (kouen)",
+      "formal": "公園 (kouen)",
+      "keigo": "公園 (kouen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "公園で遊びます。",
+        "romaji": "Kouen de asobimasu.",
+        "translation": "Saya bermain di taman."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouen.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_suupaa",
+    "word": "スーパー",
+    "kanji": null,
+    "reading": "スーパー",
+    "romaji": "suupaa",
+    "meaning": "supermarket",
+    "jlptLevel": "N5",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "スーパー (suupaa)",
+      "formal": "スーパー (suupaa)",
+      "keigo": "スーパー (suupaa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "スーパーで買い物します。",
+        "romaji": "Suupaa de kaimono shimasu.",
+        "translation": "Saya berbelanja di supermarket."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_suupaa.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_depaato",
+    "word": "デパート",
+    "kanji": null,
+    "reading": "デパート",
+    "romaji": "depaato",
+    "meaning": "department store/mal",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "デパート (depaato)",
+      "formal": "デパート (depaato)",
+      "keigo": "デパート (depaato) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "デパートに行きます。",
+        "romaji": "Depaato ni ikimasu.",
+        "translation": "Saya pergi ke department store."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_depaato.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_eki",
+    "word": "えき",
+    "kanji": "駅",
+    "reading": "えき",
+    "romaji": "eki",
+    "meaning": "stasiun",
+    "jlptLevel": "N5",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "駅 (eki)",
+      "formal": "駅 (eki)",
+      "keigo": "駅 (eki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "駅まで歩きます。",
+        "romaji": "Eki made arukimasu.",
+        "translation": "Saya berjalan sampai stasiun."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_eki.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kuukou",
+    "word": "くうこう",
+    "kanji": "空港",
+    "reading": "くうこう",
+    "romaji": "kuukou",
+    "meaning": "bandara",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "空港 (kuukou)",
+      "formal": "空港 (kuukou)",
+      "keigo": "空港 (kuukou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "空港に着きました。",
+        "romaji": "Kuukou ni tsukimashita.",
+        "translation": "Saya sampai di bandara."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kuukou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_jinja",
+    "word": "じんじゃ",
+    "kanji": "神社",
+    "reading": "じんじゃ",
+    "romaji": "jinja",
+    "meaning": "kuil Shinto",
+    "jlptLevel": "N3",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "神社 (jinja)",
+      "formal": "神社 (jinja)",
+      "keigo": "神社 (jinja) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "神社にお参りします。",
+        "romaji": "Jinja ni omairi shimasu.",
+        "translation": "Saya berdoa di kuil Shinto."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jinja.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_otera",
+    "word": "おてら",
+    "kanji": "お寺",
+    "reading": "おてら",
+    "romaji": "otera",
+    "meaning": "kuil Buddha",
+    "jlptLevel": "N3",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "お寺 (otera)",
+      "formal": "お寺 (otera)",
+      "keigo": "お寺 (otera) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お寺を訪れます。",
+        "romaji": "Otera o otozuremasu.",
+        "translation": "Saya mengunjungi kuil Buddha."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_otera.png"
+  }
+]

@@ -1,0 +1,266 @@
+[
+  {
+    "id": "kotoba_arah_lokasi_migi",
+    "word": "みぎ",
+    "kanji": "右",
+    "reading": "みぎ",
+    "romaji": "migi",
+    "meaning": "kanan",
+    "jlptLevel": "N5",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "右 (migi)",
+      "formal": "右 (migi)",
+      "keigo": "右 (migi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "右に曲がります。",
+        "romaji": "Migi ni magarimasu.",
+        "translation": "Saya belok kanan."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_migi.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_hidari",
+    "word": "ひだり",
+    "kanji": "左",
+    "reading": "ひだり",
+    "romaji": "hidari",
+    "meaning": "kiri",
+    "jlptLevel": "N5",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "左 (hidari)",
+      "formal": "左 (hidari)",
+      "keigo": "左 (hidari) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "左に曲がります。",
+        "romaji": "Hidari ni magarimasu.",
+        "translation": "Saya belok kiri."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hidari.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_mae",
+    "word": "まえ",
+    "kanji": "前",
+    "reading": "まえ",
+    "romaji": "mae",
+    "meaning": "depan",
+    "jlptLevel": "N5",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "前 (mae)",
+      "formal": "前 (mae)",
+      "keigo": "前 (mae) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "駅の前にあります。",
+        "romaji": "Eki no mae ni arimasu.",
+        "translation": "Ada di depan stasiun."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_mae.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_ushiro",
+    "word": "うしろ",
+    "kanji": "後ろ",
+    "reading": "うしろ",
+    "romaji": "ushiro",
+    "meaning": "belakang",
+    "jlptLevel": "N5",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "後ろ (ushiro)",
+      "formal": "後ろ (ushiro)",
+      "keigo": "後ろ (ushiro) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "家の後ろに公園があります。",
+        "romaji": "Ie no ushiro ni kouen ga arimasu.",
+        "translation": "Ada taman di belakang rumah."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ushiro.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_ue",
+    "word": "うえ",
+    "kanji": "上",
+    "reading": "うえ",
+    "romaji": "ue",
+    "meaning": "atas",
+    "jlptLevel": "N5",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "上 (ue)",
+      "formal": "上 (ue)",
+      "keigo": "上 (ue) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "机の上に本があります。",
+        "romaji": "Tsukue no ue ni hon ga arimasu.",
+        "translation": "Ada buku di atas meja."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ue.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_shita",
+    "word": "した",
+    "kanji": "下",
+    "reading": "した",
+    "romaji": "shita",
+    "meaning": "bawah",
+    "jlptLevel": "N5",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "下 (shita)",
+      "formal": "下 (shita)",
+      "keigo": "下 (shita) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "机の下に猫がいます。",
+        "romaji": "Tsukue no shita ni neko ga imasu.",
+        "translation": "Ada kucing di bawah meja."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shita.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_naka",
+    "word": "なか",
+    "kanji": "中",
+    "reading": "なか",
+    "romaji": "naka",
+    "meaning": "dalam",
+    "jlptLevel": "N5",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "中 (naka)",
+      "formal": "中 (naka)",
+      "keigo": "中 (naka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "箱の中に何がありますか。",
+        "romaji": "Hako no naka ni nani ga arimasu ka.",
+        "translation": "Apa yang ada di dalam kotak?"
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_naka.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_soto",
+    "word": "そと",
+    "kanji": "外",
+    "reading": "そと",
+    "romaji": "soto",
+    "meaning": "luar",
+    "jlptLevel": "N5",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "外 (soto)",
+      "formal": "外 (soto)",
+      "keigo": "外 (soto) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "外は寒いです。",
+        "romaji": "Soto wa samui desu.",
+        "translation": "Di luar dingin."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_soto.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_tonari",
+    "word": "となり",
+    "kanji": "隣",
+    "reading": "となり",
+    "romaji": "tonari",
+    "meaning": "sebelah",
+    "jlptLevel": "N4",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "隣 (tonari)",
+      "formal": "隣 (tonari)",
+      "keigo": "隣 (tonari) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "隣に座ります。",
+        "romaji": "Tonari ni suwarimasu.",
+        "translation": "Saya duduk di sebelah."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tonari.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_chikaku",
+    "word": "ちかく",
+    "kanji": "近く",
+    "reading": "ちかく",
+    "romaji": "chikaku",
+    "meaning": "dekat",
+    "jlptLevel": "N4",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "近く (chikaku)",
+      "formal": "近く (chikaku)",
+      "keigo": "近く (chikaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "駅の近くに住んでいます。",
+        "romaji": "Eki no chikaku ni sunde imasu.",
+        "translation": "Saya tinggal dekat stasiun."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chikaku.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_tooi",
+    "word": "とおい",
+    "kanji": "遠い",
+    "reading": "とおい",
+    "romaji": "tooi",
+    "meaning": "jauh",
+    "jlptLevel": "N4",
+    "category": "arah_lokasi",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "遠い (tooi)",
+      "formal": "遠いです (tooi desu)",
+      "keigo": "遠い (tooi) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学校は遠いです。",
+        "romaji": "Gakkou wa tooi desu.",
+        "translation": "Sekolah itu jauh."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tooi.png"
+  }
+]
