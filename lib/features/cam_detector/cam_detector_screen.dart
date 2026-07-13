@@ -49,6 +49,8 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
   DateTime? _lastProcessedAt;
   RecognizedText? _lastRecognizedText;
   Size? _lastImageSize;
+  int _recognitionFailureStreak = 0;
+  bool _showRecognitionWarning = false;
 
   FlashMode _flashMode = FlashMode.off;
 
@@ -138,7 +140,11 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
 
     _controller = controller;
     _flashMode = FlashMode.off;
-    setState(() => _state = _CamState.ready);
+    _recognitionFailureStreak = 0;
+    setState(() {
+      _state = _CamState.ready;
+      _showRecognitionWarning = false;
+    });
     await controller.startImageStream(_processCameraImage);
   }
 
@@ -176,9 +182,20 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
       setState(() {
         _lastRecognizedText = recognizedText;
         _lastImageSize = Size(image.width.toDouble(), image.height.toDouble());
+        _recognitionFailureStreak = 0;
+        _showRecognitionWarning = false;
       });
     }).catchError((_) {
       _isProcessingFrame = false;
+      if (!mounted) return;
+      _recognitionFailureStreak++;
+      // A handful of consecutive failures usually means the on-device
+      // Japanese OCR model hasn't finished its (one-time, Play Services)
+      // background download yet — surface a hint instead of silently
+      // never showing any detections.
+      if (_recognitionFailureStreak >= 5 && !_showRecognitionWarning) {
+        setState(() => _showRecognitionWarning = true);
+      }
     });
   }
 
@@ -233,6 +250,8 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
     setState(() {
       _lastRecognizedText = null;
       _lastImageSize = null;
+      _recognitionFailureStreak = 0;
+      _showRecognitionWarning = false;
     });
     await _startController(_cameras[_cameraIndex]);
   }
@@ -348,6 +367,15 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
               onTapBlock: (block) => _showResult(block.text),
             ),
             const _ScanFrameGuide(),
+            if (_showRecognitionWarning)
+              Positioned(
+                top: 12,
+                left: 12,
+                right: 72,
+                child: _RecognitionWarningBanner(
+                  onDismiss: () => setState(() => _showRecognitionWarning = false),
+                ),
+              ),
             Positioned(
               top: 12,
               right: 12,
@@ -394,6 +422,40 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
           ],
         );
       },
+    );
+  }
+}
+
+class _RecognitionWarningBanner extends StatelessWidget {
+  final VoidCallback onDismiss;
+
+  const _RecognitionWarningBanner({required this.onDismiss});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.black.withValues(alpha: 0.75),
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        child: Row(
+          children: [
+            const Icon(Icons.info_outline, color: Colors.white, size: 18),
+            const SizedBox(width: 8),
+            const Expanded(
+              child: Text(
+                'Model pengenalan teks belum siap. Pastikan koneksi '
+                'internet aktif untuk pemakaian pertama, lalu coba lagi.',
+                style: TextStyle(color: Colors.white, fontSize: 12),
+              ),
+            ),
+            InkWell(
+              onTap: onDismiss,
+              child: const Icon(Icons.close, color: Colors.white70, size: 16),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
