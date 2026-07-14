@@ -8636,6 +8636,1106 @@
     "relatedBunpou": []
   },
   {
+    "id": "kanji_suki2",
+    "character": "好",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "コウ"
+    ],
+    "kunyomi": [
+      "す-く",
+      "この-む"
+    ],
+    "meanings": [
+      "suka",
+      "like"
+    ],
+    "strokeCount": 6,
+    "svgAsset": "assets/kanjivg/0597d.svg",
+    "radical": "女",
+    "wordExamples": [
+      {
+        "word": "好き",
+        "reading": "suki",
+        "meaning": "suka"
+      },
+      {
+        "word": "好物",
+        "reading": "koubutsu",
+        "meaning": "makanan favorit"
+      },
+      {
+        "word": "大好き",
+        "reading": "daisuki",
+        "meaning": "sangat suka"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "音楽が好きです。",
+        "romaji": "Ongaku ga suki desu.",
+        "translation": "Saya suka musik."
+      },
+      {
+        "japanese": "これは私の大好物です。",
+        "romaji": "Kore wa watashi no daikoubutsu desu.",
+        "translation": "Ini makanan favorit saya."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kirai",
+    "character": "嫌",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ケン",
+      "ゲン"
+    ],
+    "kunyomi": [
+      "きら-う",
+      "いや"
+    ],
+    "meanings": [
+      "benci",
+      "tidak suka",
+      "dislike",
+      "hate"
+    ],
+    "strokeCount": 13,
+    "svgAsset": "assets/kanjivg/05acc.svg",
+    "radical": "女",
+    "wordExamples": [
+      {
+        "word": "嫌い",
+        "reading": "kirai",
+        "meaning": "tidak suka/benci"
+      },
+      {
+        "word": "嫌がる",
+        "reading": "iyagaru",
+        "meaning": "enggan"
+      },
+      {
+        "word": "機嫌",
+        "reading": "kigen",
+        "meaning": "suasana hati"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "野菜が嫌いです。",
+        "romaji": "Yasai ga kirai desu.",
+        "translation": "Saya tidak suka sayur."
+      },
+      {
+        "japanese": "今日は機嫌がいいです。",
+        "romaji": "Kyou wa kigen ga ii desu.",
+        "translation": "Hari ini suasana hatinya bagus."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_tanoshii",
+    "character": "楽",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ラク",
+      "ガク"
+    ],
+    "kunyomi": [
+      "たの-しい",
+      "たの-しむ"
+    ],
+    "meanings": [
+      "menyenangkan",
+      "mudah",
+      "musik",
+      "fun",
+      "easy"
+    ],
+    "strokeCount": 13,
+    "svgAsset": "assets/kanjivg/0697d.svg",
+    "radical": "木",
+    "wordExamples": [
+      {
+        "word": "楽しい",
+        "reading": "tanoshii",
+        "meaning": "menyenangkan"
+      },
+      {
+        "word": "音楽",
+        "reading": "ongaku",
+        "meaning": "musik"
+      },
+      {
+        "word": "楽",
+        "reading": "raku",
+        "meaning": "mudah/nyaman"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "旅行は楽しかったです。",
+        "romaji": "Ryokou wa tanoshikatta desu.",
+        "translation": "Perjalanannya menyenangkan."
+      },
+      {
+        "japanese": "この仕事は楽です。",
+        "romaji": "Kono shigoto wa raku desu.",
+        "translation": "Pekerjaan ini mudah."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_aka2",
+    "character": "赤",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "セキ",
+      "シャク"
+    ],
+    "kunyomi": [
+      "あか",
+      "あか-い"
+    ],
+    "meanings": [
+      "merah",
+      "red"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/08d64.svg",
+    "radical": "赤",
+    "wordExamples": [
+      {
+        "word": "赤い",
+        "reading": "akai",
+        "meaning": "merah"
+      },
+      {
+        "word": "赤",
+        "reading": "aka",
+        "meaning": "warna merah"
+      },
+      {
+        "word": "赤ちゃん",
+        "reading": "akachan",
+        "meaning": "bayi"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "このりんごは赤いです。",
+        "romaji": "Kono ringo wa akai desu.",
+        "translation": "Apel ini merah."
+      },
+      {
+        "japanese": "赤ちゃんがかわいいです。",
+        "romaji": "Akachan ga kawaii desu.",
+        "translation": "Bayinya lucu."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_ao",
+    "character": "青",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "セイ",
+      "ショウ"
+    ],
+    "kunyomi": [
+      "あお",
+      "あお-い"
+    ],
+    "meanings": [
+      "biru",
+      "hijau",
+      "blue",
+      "green"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/09752.svg",
+    "radical": "青",
+    "wordExamples": [
+      {
+        "word": "青い",
+        "reading": "aoi",
+        "meaning": "biru"
+      },
+      {
+        "word": "青空",
+        "reading": "aozora",
+        "meaning": "langit biru"
+      },
+      {
+        "word": "青年",
+        "reading": "seinen",
+        "meaning": "pemuda"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "空が青いです。",
+        "romaji": "Sora ga aoi desu.",
+        "translation": "Langit biru."
+      },
+      {
+        "japanese": "青空が気持ちいいです。",
+        "romaji": "Aozora ga kimochi ii desu.",
+        "translation": "Langit biru terasa menyenangkan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kuro",
+    "character": "黒",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "コク"
+    ],
+    "kunyomi": [
+      "くろ",
+      "くろ-い"
+    ],
+    "meanings": [
+      "hitam",
+      "black"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/09ed2.svg",
+    "radical": "黒",
+    "wordExamples": [
+      {
+        "word": "黒い",
+        "reading": "kuroi",
+        "meaning": "hitam"
+      },
+      {
+        "word": "黒板",
+        "reading": "kokuban",
+        "meaning": "papan tulis"
+      },
+      {
+        "word": "黒字",
+        "reading": "kuroji",
+        "meaning": "untung/surplus"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "髪が黒いです。",
+        "romaji": "Kami ga kuroi desu.",
+        "translation": "Rambutnya hitam."
+      },
+      {
+        "japanese": "黒板を見てください。",
+        "romaji": "Kokuban o mite kudasai.",
+        "translation": "Tolong lihat papan tulis."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_mukashi",
+    "character": "昔",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "セキ",
+      "シャク"
+    ],
+    "kunyomi": [
+      "むかし"
+    ],
+    "meanings": [
+      "dahulu",
+      "zaman dulu",
+      "long ago"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/06614.svg",
+    "radical": "日",
+    "wordExamples": [
+      {
+        "word": "昔",
+        "reading": "mukashi",
+        "meaning": "dahulu"
+      },
+      {
+        "word": "昔話",
+        "reading": "mukashibanashi",
+        "meaning": "cerita rakyat"
+      },
+      {
+        "word": "大昔",
+        "reading": "oomukashi",
+        "meaning": "zaman purba"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "昔、ここに川がありました。",
+        "romaji": "Mukashi, koko ni kawa ga arimashita.",
+        "translation": "Dulu, di sini ada sungai."
+      },
+      {
+        "japanese": "昔話を読みました。",
+        "romaji": "Mukashibanashi o yomimashita.",
+        "translation": "Saya membaca cerita rakyat."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_toku",
+    "character": "特",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "トク"
+    ],
+    "kunyomi": [],
+    "meanings": [
+      "khusus",
+      "istimewa",
+      "special"
+    ],
+    "strokeCount": 10,
+    "svgAsset": "assets/kanjivg/07279.svg",
+    "radical": "牛",
+    "wordExamples": [
+      {
+        "word": "特に",
+        "reading": "tokuni",
+        "meaning": "khususnya"
+      },
+      {
+        "word": "特別",
+        "reading": "tokubetsu",
+        "meaning": "istimewa"
+      },
+      {
+        "word": "特急",
+        "reading": "tokkyuu",
+        "meaning": "kereta ekspres"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "特に問題ありません。",
+        "romaji": "Tokuni mondai arimasen.",
+        "translation": "Tidak ada masalah khususnya."
+      },
+      {
+        "japanese": "特急に乗りました。",
+        "romaji": "Tokkyuu ni norimashita.",
+        "translation": "Saya naik kereta ekspres."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_isogu",
+    "character": "急",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "キュウ"
+    ],
+    "kunyomi": [
+      "いそ-ぐ"
+    ],
+    "meanings": [
+      "mendadak",
+      "buru-buru",
+      "urgent",
+      "hurry"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/06025.svg",
+    "radical": "心",
+    "wordExamples": [
+      {
+        "word": "急ぐ",
+        "reading": "isogu",
+        "meaning": "buru-buru"
+      },
+      {
+        "word": "急に",
+        "reading": "kyuuni",
+        "meaning": "mendadak"
+      },
+      {
+        "word": "特急",
+        "reading": "tokkyuu",
+        "meaning": "kereta ekspres"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "急いでください。",
+        "romaji": "Isoide kudasai.",
+        "translation": "Tolong buru-buru."
+      },
+      {
+        "japanese": "急に雨が降ってきました。",
+        "romaji": "Kyuuni ame ga futte kimashita.",
+        "translation": "Tiba-tiba turun hujan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_aru",
+    "character": "有",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ユウ",
+      "ウ"
+    ],
+    "kunyomi": [
+      "あ-る"
+    ],
+    "meanings": [
+      "ada",
+      "memiliki",
+      "exist",
+      "have"
+    ],
+    "strokeCount": 6,
+    "svgAsset": "assets/kanjivg/06709.svg",
+    "radical": "月",
+    "wordExamples": [
+      {
+        "word": "有名",
+        "reading": "yuumei",
+        "meaning": "terkenal"
+      },
+      {
+        "word": "有る",
+        "reading": "aru",
+        "meaning": "ada/memiliki"
+      },
+      {
+        "word": "有名人",
+        "reading": "yuumeijin",
+        "meaning": "orang terkenal"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "彼は有名な作家です。",
+        "romaji": "Kare wa yuumei na sakka desu.",
+        "translation": "Dia penulis terkenal."
+      },
+      {
+        "japanese": "このホテルはプールが有ります。",
+        "romaji": "Kono hoteru wa puuru ga arimasu.",
+        "translation": "Hotel ini ada kolam renangnya."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_nai2",
+    "character": "無",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ム",
+      "ブ"
+    ],
+    "kunyomi": [
+      "な-い"
+    ],
+    "meanings": [
+      "tidak ada",
+      "tanpa",
+      "none",
+      "without"
+    ],
+    "strokeCount": 12,
+    "svgAsset": "assets/kanjivg/07121.svg",
+    "radical": "火",
+    "wordExamples": [
+      {
+        "word": "無い",
+        "reading": "nai",
+        "meaning": "tidak ada"
+      },
+      {
+        "word": "無料",
+        "reading": "muryou",
+        "meaning": "gratis"
+      },
+      {
+        "word": "無理",
+        "reading": "muri",
+        "meaning": "tidak mungkin/memaksakan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "お金が無いです。",
+        "romaji": "Okane ga nai desu.",
+        "translation": "Tidak ada uang."
+      },
+      {
+        "japanese": "このイベントは無料です。",
+        "romaji": "Kono ibento wa muryou desu.",
+        "translation": "Acara ini gratis."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_zen2",
+    "character": "全",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ゼン"
+    ],
+    "kunyomi": [
+      "まった-く",
+      "すべ-て"
+    ],
+    "meanings": [
+      "seluruh",
+      "semua",
+      "all",
+      "whole"
+    ],
+    "strokeCount": 6,
+    "svgAsset": "assets/kanjivg/05168.svg",
+    "radical": "入",
+    "wordExamples": [
+      {
+        "word": "全部",
+        "reading": "zenbu",
+        "meaning": "semuanya"
+      },
+      {
+        "word": "全然",
+        "reading": "zenzen",
+        "meaning": "sama sekali"
+      },
+      {
+        "word": "全国",
+        "reading": "zenkoku",
+        "meaning": "seluruh negeri"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "全部食べました。",
+        "romaji": "Zenbu tabemashita.",
+        "translation": "Saya makan semuanya."
+      },
+      {
+        "japanese": "全然分かりません。",
+        "romaji": "Zenzen wakarimasen.",
+        "translation": "Sama sekali tidak mengerti."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_bu",
+    "character": "部",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ブ"
+    ],
+    "kunyomi": [],
+    "meanings": [
+      "bagian",
+      "departemen",
+      "part",
+      "section"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/090e8.svg",
+    "radical": "阝",
+    "wordExamples": [
+      {
+        "word": "部屋",
+        "reading": "heya",
+        "meaning": "kamar"
+      },
+      {
+        "word": "全部",
+        "reading": "zenbu",
+        "meaning": "semuanya"
+      },
+      {
+        "word": "部長",
+        "reading": "buchou",
+        "meaning": "kepala departemen"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "部屋を掃除します。",
+        "romaji": "Heya o souji shimasu.",
+        "translation": "Saya membersihkan kamar."
+      },
+      {
+        "japanese": "彼は営業部の部長です。",
+        "romaji": "Kare wa eigyoubu no buchou desu.",
+        "translation": "Dia kepala departemen penjualan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_chikai",
+    "character": "近",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "キン"
+    ],
+    "kunyomi": [
+      "ちか-い"
+    ],
+    "meanings": [
+      "dekat",
+      "near",
+      "close"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/08fd1.svg",
+    "radical": "辶",
+    "wordExamples": [
+      {
+        "word": "近い",
+        "reading": "chikai",
+        "meaning": "dekat"
+      },
+      {
+        "word": "近く",
+        "reading": "chikaku",
+        "meaning": "di dekat"
+      },
+      {
+        "word": "最近",
+        "reading": "saikin",
+        "meaning": "akhir-akhir ini"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "駅は近いです。",
+        "romaji": "Eki wa chikai desu.",
+        "translation": "Stasiunnya dekat."
+      },
+      {
+        "japanese": "最近忙しいです。",
+        "romaji": "Saikin isogashii desu.",
+        "translation": "Akhir-akhir ini sibuk."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_tooi",
+    "character": "遠",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "エン",
+      "オン"
+    ],
+    "kunyomi": [
+      "とお-い"
+    ],
+    "meanings": [
+      "jauh",
+      "far"
+    ],
+    "strokeCount": 13,
+    "svgAsset": "assets/kanjivg/09060.svg",
+    "radical": "辶",
+    "wordExamples": [
+      {
+        "word": "遠い",
+        "reading": "tooi",
+        "meaning": "jauh"
+      },
+      {
+        "word": "遠足",
+        "reading": "ensoku",
+        "meaning": "tamasya/darmawisata"
+      },
+      {
+        "word": "遠慮",
+        "reading": "enryo",
+        "meaning": "sungkan/segan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "学校は遠いです。",
+        "romaji": "Gakkou wa tooi desu.",
+        "translation": "Sekolahnya jauh."
+      },
+      {
+        "japanese": "明日、遠足があります。",
+        "romaji": "Ashita, ensoku ga arimasu.",
+        "translation": "Besok ada tamasya."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_mi2",
+    "character": "実",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ジツ"
+    ],
+    "kunyomi": [
+      "み",
+      "みの-る"
+    ],
+    "meanings": [
+      "nyata",
+      "buah",
+      "kenyataan",
+      "reality",
+      "fruit"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/05b9f.svg",
+    "radical": "宀",
+    "wordExamples": [
+      {
+        "word": "実は",
+        "reading": "jitsuwa",
+        "meaning": "sebenarnya"
+      },
+      {
+        "word": "実際",
+        "reading": "jissai",
+        "meaning": "kenyataan"
+      },
+      {
+        "word": "事実",
+        "reading": "jijitsu",
+        "meaning": "fakta"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "実は、明日休みます。",
+        "romaji": "Jitsuwa, ashita yasumimasu.",
+        "translation": "Sebenarnya, besok saya libur."
+      },
+      {
+        "japanese": "それは事実です。",
+        "romaji": "Sore wa jijitsu desu.",
+        "translation": "Itu fakta."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_zen3",
+    "character": "然",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ゼン",
+      "ネン"
+    ],
+    "kunyomi": [],
+    "meanings": [
+      "begitu",
+      "demikian",
+      "so",
+      "thus"
+    ],
+    "strokeCount": 12,
+    "svgAsset": "assets/kanjivg/07136.svg",
+    "radical": "火",
+    "wordExamples": [
+      {
+        "word": "全然",
+        "reading": "zenzen",
+        "meaning": "sama sekali"
+      },
+      {
+        "word": "自然",
+        "reading": "shizen",
+        "meaning": "alam"
+      },
+      {
+        "word": "当然",
+        "reading": "touzen",
+        "meaning": "tentu saja"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "自然が好きです。",
+        "romaji": "Shizen ga suki desu.",
+        "translation": "Saya suka alam."
+      },
+      {
+        "japanese": "それは当然です。",
+        "romaji": "Sore wa touzen desu.",
+        "translation": "Itu sudah tentu."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kyuu2",
+    "character": "究",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "キュウ"
+    ],
+    "kunyomi": [
+      "きわ-める"
+    ],
+    "meanings": [
+      "meneliti",
+      "menyelidiki",
+      "research",
+      "investigate"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/07a76.svg",
+    "radical": "穴",
+    "wordExamples": [
+      {
+        "word": "研究",
+        "reading": "kenkyuu",
+        "meaning": "penelitian"
+      },
+      {
+        "word": "研究者",
+        "reading": "kenkyuusha",
+        "meaning": "peneliti"
+      },
+      {
+        "word": "追究",
+        "reading": "tsuikyuu",
+        "meaning": "penyelidikan mendalam"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "大学で研究しています。",
+        "romaji": "Daigaku de kenkyuu shite imasu.",
+        "translation": "Saya melakukan penelitian di universitas."
+      },
+      {
+        "japanese": "彼は有名な研究者です。",
+        "romaji": "Kare wa yuumei na kenkyuusha desu.",
+        "translation": "Dia peneliti terkenal."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_ken2",
+    "character": "研",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ケン"
+    ],
+    "kunyomi": [
+      "と-ぐ"
+    ],
+    "meanings": [
+      "mengasah",
+      "meneliti",
+      "sharpen",
+      "study"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/07814.svg",
+    "radical": "石",
+    "wordExamples": [
+      {
+        "word": "研究",
+        "reading": "kenkyuu",
+        "meaning": "penelitian"
+      },
+      {
+        "word": "研修",
+        "reading": "kenshuu",
+        "meaning": "pelatihan"
+      },
+      {
+        "word": "研究室",
+        "reading": "kenkyuushitsu",
+        "meaning": "laboratorium/ruang riset"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "新入社員は研修を受けます。",
+        "romaji": "Shinnyuu shain wa kenshuu o ukemasu.",
+        "translation": "Karyawan baru mengikuti pelatihan."
+      },
+      {
+        "japanese": "研究室で実験します。",
+        "romaji": "Kenkyuushitsu de jikken shimasu.",
+        "translation": "Saya melakukan eksperimen di laboratorium."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_ri2",
+    "character": "理",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "リ"
+    ],
+    "kunyomi": [],
+    "meanings": [
+      "alasan",
+      "logika",
+      "reason",
+      "logic",
+      "principle"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/07406.svg",
+    "radical": "玉",
+    "wordExamples": [
+      {
+        "word": "料理",
+        "reading": "ryouri",
+        "meaning": "masakan"
+      },
+      {
+        "word": "理由",
+        "reading": "riyuu",
+        "meaning": "alasan"
+      },
+      {
+        "word": "理解",
+        "reading": "rikai",
+        "meaning": "pemahaman"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "理由を教えてください。",
+        "romaji": "Riyuu o oshiete kudasai.",
+        "translation": "Tolong beritahu alasannya."
+      },
+      {
+        "japanese": "よく理解できました。",
+        "romaji": "Yoku rikai dekimashita.",
+        "translation": "Saya bisa memahami dengan baik."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_ka2",
+    "character": "科",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "カ"
+    ],
+    "kunyomi": [],
+    "meanings": [
+      "jurusan",
+      "mata pelajaran",
+      "department",
+      "subject"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/079d1.svg",
+    "radical": "禾",
+    "wordExamples": [
+      {
+        "word": "教科書",
+        "reading": "kyoukasho",
+        "meaning": "buku pelajaran"
+      },
+      {
+        "word": "科学",
+        "reading": "kagaku",
+        "meaning": "ilmu pengetahuan"
+      },
+      {
+        "word": "内科",
+        "reading": "naika",
+        "meaning": "penyakit dalam"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "科学が好きです。",
+        "romaji": "Kagaku ga suki desu.",
+        "translation": "Saya suka ilmu pengetahuan."
+      },
+      {
+        "japanese": "教科書を忘れました。",
+        "romaji": "Kyoukasho o wasuremashita.",
+        "translation": "Saya lupa membawa buku pelajaran."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_ya2",
+    "character": "屋",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "オク"
+    ],
+    "kunyomi": [
+      "や"
+    ],
+    "meanings": [
+      "toko",
+      "atap",
+      "rumah",
+      "shop",
+      "roof"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/05c4b.svg",
+    "radical": "尸",
+    "wordExamples": [
+      {
+        "word": "屋根",
+        "reading": "yane",
+        "meaning": "atap"
+      },
+      {
+        "word": "八百屋",
+        "reading": "yaoya",
+        "meaning": "toko sayur"
+      },
+      {
+        "word": "部屋",
+        "reading": "heya",
+        "meaning": "kamar"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "屋根の上に猫がいます。",
+        "romaji": "Yane no ue ni neko ga imasu.",
+        "translation": "Ada kucing di atas atap."
+      },
+      {
+        "japanese": "八百屋で野菜を買いました。",
+        "romaji": "Yaoya de yasai o kaimashita.",
+        "translation": "Saya membeli sayur di toko sayur."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
     "id": "kanji_n3_placeholder_1",
     "character": "",
     "jlptLevel": "N3",

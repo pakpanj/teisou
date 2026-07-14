@@ -1433,6 +1433,183 @@ N4_KANJI = [
         ("この道を通ります。", "Kono michi o toorimasu.", "Saya melewati jalan ini."),
         ("交通が便利です。", "Koutsuu ga benri desu.", "Transportasinya praktis."),
     ]),
+    # --- Batch D: 好嫌楽赤青黒昔特急有無全部近遠実然究研理科屋 (22) ---
+    ("suki2", "好", ["コウ"], ["す-く", "この-む"], ["suka", "like"], 6, "女", [
+        ("好き", "suki", "suka"),
+        ("好物", "koubutsu", "makanan favorit"),
+        ("大好き", "daisuki", "sangat suka"),
+    ], [
+        ("音楽が好きです。", "Ongaku ga suki desu.", "Saya suka musik."),
+        ("これは私の大好物です。", "Kore wa watashi no daikoubutsu desu.", "Ini makanan favorit saya."),
+    ]),
+    ("kirai", "嫌", ["ケン", "ゲン"], ["きら-う", "いや"], ["benci", "tidak suka", "dislike", "hate"], 13, "女", [
+        ("嫌い", "kirai", "tidak suka/benci"),
+        ("嫌がる", "iyagaru", "enggan"),
+        ("機嫌", "kigen", "suasana hati"),
+    ], [
+        ("野菜が嫌いです。", "Yasai ga kirai desu.", "Saya tidak suka sayur."),
+        ("今日は機嫌がいいです。", "Kyou wa kigen ga ii desu.", "Hari ini suasana hatinya bagus."),
+    ]),
+    ("tanoshii", "楽", ["ラク", "ガク"], ["たの-しい", "たの-しむ"], ["menyenangkan", "mudah", "musik", "fun", "easy"], 13, "木", [
+        ("楽しい", "tanoshii", "menyenangkan"),
+        ("音楽", "ongaku", "musik"),
+        ("楽", "raku", "mudah/nyaman"),
+    ], [
+        ("旅行は楽しかったです。", "Ryokou wa tanoshikatta desu.", "Perjalanannya menyenangkan."),
+        ("この仕事は楽です。", "Kono shigoto wa raku desu.", "Pekerjaan ini mudah."),
+    ]),
+    ("aka2", "赤", ["セキ", "シャク"], ["あか", "あか-い"], ["merah", "red"], 7, "赤", [
+        ("赤い", "akai", "merah"),
+        ("赤", "aka", "warna merah"),
+        ("赤ちゃん", "akachan", "bayi"),
+    ], [
+        ("このりんごは赤いです。", "Kono ringo wa akai desu.", "Apel ini merah."),
+        ("赤ちゃんがかわいいです。", "Akachan ga kawaii desu.", "Bayinya lucu."),
+    ]),
+    ("ao", "青", ["セイ", "ショウ"], ["あお", "あお-い"], ["biru", "hijau", "blue", "green"], 8, "青", [
+        ("青い", "aoi", "biru"),
+        ("青空", "aozora", "langit biru"),
+        ("青年", "seinen", "pemuda"),
+    ], [
+        ("空が青いです。", "Sora ga aoi desu.", "Langit biru."),
+        ("青空が気持ちいいです。", "Aozora ga kimochi ii desu.", "Langit biru terasa menyenangkan."),
+    ]),
+    ("kuro", "黒", ["コク"], ["くろ", "くろ-い"], ["hitam", "black"], 11, "黒", [
+        ("黒い", "kuroi", "hitam"),
+        ("黒板", "kokuban", "papan tulis"),
+        ("黒字", "kuroji", "untung/surplus"),
+    ], [
+        ("髪が黒いです。", "Kami ga kuroi desu.", "Rambutnya hitam."),
+        ("黒板を見てください。", "Kokuban o mite kudasai.", "Tolong lihat papan tulis."),
+    ]),
+    ("mukashi", "昔", ["セキ", "シャク"], ["むかし"], ["dahulu", "zaman dulu", "long ago"], 8, "日", [
+        ("昔", "mukashi", "dahulu"),
+        ("昔話", "mukashibanashi", "cerita rakyat"),
+        ("大昔", "oomukashi", "zaman purba"),
+    ], [
+        ("昔、ここに川がありました。", "Mukashi, koko ni kawa ga arimashita.", "Dulu, di sini ada sungai."),
+        ("昔話を読みました。", "Mukashibanashi o yomimashita.", "Saya membaca cerita rakyat."),
+    ]),
+    ("toku", "特", ["トク"], [], ["khusus", "istimewa", "special"], 10, "牛", [
+        ("特に", "tokuni", "khususnya"),
+        ("特別", "tokubetsu", "istimewa"),
+        ("特急", "tokkyuu", "kereta ekspres"),
+    ], [
+        ("特に問題ありません。", "Tokuni mondai arimasen.", "Tidak ada masalah khususnya."),
+        ("特急に乗りました。", "Tokkyuu ni norimashita.", "Saya naik kereta ekspres."),
+    ]),
+    ("isogu", "急", ["キュウ"], ["いそ-ぐ"], ["mendadak", "buru-buru", "urgent", "hurry"], 9, "心", [
+        ("急ぐ", "isogu", "buru-buru"),
+        ("急に", "kyuuni", "mendadak"),
+        ("特急", "tokkyuu", "kereta ekspres"),
+    ], [
+        ("急いでください。", "Isoide kudasai.", "Tolong buru-buru."),
+        ("急に雨が降ってきました。", "Kyuuni ame ga futte kimashita.", "Tiba-tiba turun hujan."),
+    ]),
+    ("aru", "有", ["ユウ", "ウ"], ["あ-る"], ["ada", "memiliki", "exist", "have"], 6, "月", [
+        ("有名", "yuumei", "terkenal"),
+        ("有る", "aru", "ada/memiliki"),
+        ("有名人", "yuumeijin", "orang terkenal"),
+    ], [
+        ("彼は有名な作家です。", "Kare wa yuumei na sakka desu.", "Dia penulis terkenal."),
+        ("このホテルはプールが有ります。", "Kono hoteru wa puuru ga arimasu.", "Hotel ini ada kolam renangnya."),
+    ]),
+    ("nai2", "無", ["ム", "ブ"], ["な-い"], ["tidak ada", "tanpa", "none", "without"], 12, "火", [
+        ("無い", "nai", "tidak ada"),
+        ("無料", "muryou", "gratis"),
+        ("無理", "muri", "tidak mungkin/memaksakan"),
+    ], [
+        ("お金が無いです。", "Okane ga nai desu.", "Tidak ada uang."),
+        ("このイベントは無料です。", "Kono ibento wa muryou desu.", "Acara ini gratis."),
+    ]),
+    ("zen2", "全", ["ゼン"], ["まった-く", "すべ-て"], ["seluruh", "semua", "all", "whole"], 6, "入", [
+        ("全部", "zenbu", "semuanya"),
+        ("全然", "zenzen", "sama sekali"),
+        ("全国", "zenkoku", "seluruh negeri"),
+    ], [
+        ("全部食べました。", "Zenbu tabemashita.", "Saya makan semuanya."),
+        ("全然分かりません。", "Zenzen wakarimasen.", "Sama sekali tidak mengerti."),
+    ]),
+    ("bu", "部", ["ブ"], [], ["bagian", "departemen", "part", "section"], 11, "阝", [
+        ("部屋", "heya", "kamar"),
+        ("全部", "zenbu", "semuanya"),
+        ("部長", "buchou", "kepala departemen"),
+    ], [
+        ("部屋を掃除します。", "Heya o souji shimasu.", "Saya membersihkan kamar."),
+        ("彼は営業部の部長です。", "Kare wa eigyoubu no buchou desu.", "Dia kepala departemen penjualan."),
+    ]),
+    ("chikai", "近", ["キン"], ["ちか-い"], ["dekat", "near", "close"], 7, "辶", [
+        ("近い", "chikai", "dekat"),
+        ("近く", "chikaku", "di dekat"),
+        ("最近", "saikin", "akhir-akhir ini"),
+    ], [
+        ("駅は近いです。", "Eki wa chikai desu.", "Stasiunnya dekat."),
+        ("最近忙しいです。", "Saikin isogashii desu.", "Akhir-akhir ini sibuk."),
+    ]),
+    ("tooi", "遠", ["エン", "オン"], ["とお-い"], ["jauh", "far"], 13, "辶", [
+        ("遠い", "tooi", "jauh"),
+        ("遠足", "ensoku", "tamasya/darmawisata"),
+        ("遠慮", "enryo", "sungkan/segan"),
+    ], [
+        ("学校は遠いです。", "Gakkou wa tooi desu.", "Sekolahnya jauh."),
+        ("明日、遠足があります。", "Ashita, ensoku ga arimasu.", "Besok ada tamasya."),
+    ]),
+    ("mi2", "実", ["ジツ"], ["み", "みの-る"], ["nyata", "buah", "kenyataan", "reality", "fruit"], 8, "宀", [
+        ("実は", "jitsuwa", "sebenarnya"),
+        ("実際", "jissai", "kenyataan"),
+        ("事実", "jijitsu", "fakta"),
+    ], [
+        ("実は、明日休みます。", "Jitsuwa, ashita yasumimasu.", "Sebenarnya, besok saya libur."),
+        ("それは事実です。", "Sore wa jijitsu desu.", "Itu fakta."),
+    ]),
+    ("zen3", "然", ["ゼン", "ネン"], [], ["begitu", "demikian", "so", "thus"], 12, "火", [
+        ("全然", "zenzen", "sama sekali"),
+        ("自然", "shizen", "alam"),
+        ("当然", "touzen", "tentu saja"),
+    ], [
+        ("自然が好きです。", "Shizen ga suki desu.", "Saya suka alam."),
+        ("それは当然です。", "Sore wa touzen desu.", "Itu sudah tentu."),
+    ]),
+    ("kyuu2", "究", ["キュウ"], ["きわ-める"], ["meneliti", "menyelidiki", "research", "investigate"], 7, "穴", [
+        ("研究", "kenkyuu", "penelitian"),
+        ("研究者", "kenkyuusha", "peneliti"),
+        ("追究", "tsuikyuu", "penyelidikan mendalam"),
+    ], [
+        ("大学で研究しています。", "Daigaku de kenkyuu shite imasu.", "Saya melakukan penelitian di universitas."),
+        ("彼は有名な研究者です。", "Kare wa yuumei na kenkyuusha desu.", "Dia peneliti terkenal."),
+    ]),
+    ("ken2", "研", ["ケン"], ["と-ぐ"], ["mengasah", "meneliti", "sharpen", "study"], 9, "石", [
+        ("研究", "kenkyuu", "penelitian"),
+        ("研修", "kenshuu", "pelatihan"),
+        ("研究室", "kenkyuushitsu", "laboratorium/ruang riset"),
+    ], [
+        ("新入社員は研修を受けます。", "Shinnyuu shain wa kenshuu o ukemasu.", "Karyawan baru mengikuti pelatihan."),
+        ("研究室で実験します。", "Kenkyuushitsu de jikken shimasu.", "Saya melakukan eksperimen di laboratorium."),
+    ]),
+    ("ri2", "理", ["リ"], [], ["alasan", "logika", "reason", "logic", "principle"], 11, "玉", [
+        ("料理", "ryouri", "masakan"),
+        ("理由", "riyuu", "alasan"),
+        ("理解", "rikai", "pemahaman"),
+    ], [
+        ("理由を教えてください。", "Riyuu o oshiete kudasai.", "Tolong beritahu alasannya."),
+        ("よく理解できました。", "Yoku rikai dekimashita.", "Saya bisa memahami dengan baik."),
+    ]),
+    ("ka2", "科", ["カ"], [], ["jurusan", "mata pelajaran", "department", "subject"], 9, "禾", [
+        ("教科書", "kyoukasho", "buku pelajaran"),
+        ("科学", "kagaku", "ilmu pengetahuan"),
+        ("内科", "naika", "penyakit dalam"),
+    ], [
+        ("科学が好きです。", "Kagaku ga suki desu.", "Saya suka ilmu pengetahuan."),
+        ("教科書を忘れました。", "Kyoukasho o wasuremashita.", "Saya lupa membawa buku pelajaran."),
+    ]),
+    ("ya2", "屋", ["オク"], ["や"], ["toko", "atap", "rumah", "shop", "roof"], 9, "尸", [
+        ("屋根", "yane", "atap"),
+        ("八百屋", "yaoya", "toko sayur"),
+        ("部屋", "heya", "kamar"),
+    ], [
+        ("屋根の上に猫がいます。", "Yane no ue ni neko ga imasu.", "Ada kucing di atas atap."),
+        ("八百屋で野菜を買いました。", "Yaoya de yasai o kaimashita.", "Saya membeli sayur di toko sayur."),
+    ]),
 ]
 
 PLACEHOLDER_COUNTS = {"N3": 5, "N2": 5, "N1": 5}
