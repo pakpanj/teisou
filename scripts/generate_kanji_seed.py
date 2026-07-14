@@ -1610,6 +1610,183 @@ N4_KANJI = [
         ("屋根の上に猫がいます。", "Yane no ue ni neko ga imasu.", "Ada kucing di atas atap."),
         ("八百屋で野菜を買いました。", "Yaoya de yasai o kaimashita.", "Saya membeli sayur di toko sayur."),
     ]),
+    # --- Batch E: 台所業界計画品建起寝着洗続若忙漢進戻育服由自 (22) ---
+    ("dai2", "台", ["ダイ", "タイ"], [], ["dudukan", "platform", "alas"], 5, "口", [
+        ("台所", "daidokoro", "dapur"),
+        ("一台", "ichidai", "satu unit (mesin)"),
+        ("台風", "taifuu", "topan"),
+    ], [
+        ("台所で料理をします。", "Daidokoro de ryouri o shimasu.", "Saya memasak di dapur."),
+        ("車が一台あります。", "Kuruma ga ichidai arimasu.", "Ada satu mobil."),
+    ]),
+    ("tokoro", "所", ["ショ"], ["ところ"], ["tempat", "place"], 8, "戸", [
+        ("所", "tokoro", "tempat"),
+        ("場所", "basho", "lokasi"),
+        ("台所", "daidokoro", "dapur"),
+    ], [
+        ("ここはいい所です。", "Koko wa ii tokoro desu.", "Di sini tempat yang bagus."),
+        ("集合場所はどこですか。", "Shuugou basho wa doko desu ka.", "Di mana tempat berkumpul?"),
+    ]),
+    ("gyou", "業", ["ギョウ", "ゴウ"], ["わざ"], ["usaha", "pekerjaan", "business", "work", "industry"], 13, "木", [
+        ("授業", "jugyou", "pelajaran"),
+        ("卒業", "sotsugyou", "kelulusan"),
+        ("職業", "shokugyou", "pekerjaan/profesi"),
+    ], [
+        ("授業に遅れました。", "Jugyou ni okuremashita.", "Saya terlambat pelajaran."),
+        ("来年卒業します。", "Rainen sotsugyou shimasu.", "Tahun depan saya lulus."),
+    ]),
+    ("kai2", "界", ["カイ"], [], ["dunia", "batas", "world", "boundary"], 9, "田", [
+        ("世界", "sekai", "dunia"),
+        ("業界", "gyoukai", "industri/dunia usaha"),
+        ("限界", "genkai", "batas"),
+    ], [
+        ("世界を旅行したいです。", "Sekai o ryokou shitai desu.", "Saya ingin bepergian ke seluruh dunia."),
+        ("私の忍耐は限界です。", "Watashi no nintai wa genkai desu.", "Kesabaran saya sudah mencapai batas."),
+    ]),
+    ("kei2", "計", ["ケイ"], ["はか-る"], ["mengukur", "merencanakan", "measure", "plan"], 9, "言", [
+        ("時計", "tokei", "jam"),
+        ("計画", "keikaku", "rencana"),
+        ("合計", "goukei", "jumlah total"),
+    ], [
+        ("時計を見てください。", "Tokei o mite kudasai.", "Tolong lihat jam."),
+        ("旅行の計画を立てます。", "Ryokou no keikaku o tatemasu.", "Saya membuat rencana perjalanan."),
+    ]),
+    ("ga2", "画", ["ガ", "カク"], [], ["gambar", "lukisan", "rencana", "picture", "plan"], 8, "田", [
+        ("映画", "eiga", "film"),
+        ("計画", "keikaku", "rencana"),
+        ("絵画", "kaiga", "lukisan"),
+    ], [
+        ("映画を見ましょう。", "Eiga o mimashou.", "Ayo menonton film."),
+        ("この絵画は美しいです。", "Kono kaiga wa utsukushii desu.", "Lukisan ini indah."),
+    ]),
+    ("hin", "品", ["ヒン"], ["しな"], ["barang", "produk", "goods", "item", "product"], 9, "口", [
+        ("品物", "shinamono", "barang"),
+        ("作品", "sakuhin", "karya"),
+        ("商品", "shouhin", "produk"),
+    ], [
+        ("この品物はいくらですか。", "Kono shinamono wa ikura desu ka.", "Berapa harga barang ini?"),
+        ("新しい商品が出ました。", "Atarashii shouhin ga demashita.", "Produk baru sudah keluar."),
+    ]),
+    ("tateru", "建", ["ケン", "コン"], ["た-てる", "た-つ"], ["membangun", "build", "construct"], 9, "廴", [
+        ("建てる", "tateru", "membangun"),
+        ("建物", "tatemono", "bangunan"),
+        ("建設", "kensetsu", "konstruksi"),
+    ], [
+        ("新しい家を建てます。", "Atarashii ie o tatemasu.", "Saya membangun rumah baru."),
+        ("あの建物は高いです。", "Ano tatemono wa takai desu.", "Bangunan itu tinggi."),
+    ]),
+    ("okiru", "起", ["キ"], ["お-きる", "お-こる"], ["bangun", "terjadi", "rise", "get up", "occur"], 10, "走", [
+        ("起きる", "okiru", "bangun"),
+        ("起こる", "okoru", "terjadi"),
+        ("早起き", "hayaoki", "bangun pagi"),
+    ], [
+        ("六時に起きます。", "Rokuji ni okimasu.", "Saya bangun jam enam."),
+        ("事故が起こりました。", "Jiko ga okorimashita.", "Kecelakaan terjadi."),
+    ]),
+    ("neru", "寝", ["シン"], ["ね-る"], ["tidur", "sleep"], 13, "宀", [
+        ("寝る", "neru", "tidur"),
+        ("寝室", "shinshitsu", "kamar tidur"),
+        ("昼寝", "hirune", "tidur siang"),
+    ], [
+        ("十時に寝ます。", "Juuji ni nemasu.", "Saya tidur jam sepuluh."),
+        ("昼寝をしました。", "Hirune o shimashita.", "Saya tidur siang."),
+    ]),
+    ("kiru2", "着", ["チャク", "ジャク"], ["き-る", "つ-く"], ["memakai", "tiba", "wear", "arrive"], 12, "目", [
+        ("着る", "kiru", "memakai (baju)"),
+        ("到着", "touchaku", "kedatangan"),
+        ("着く", "tsuku", "tiba"),
+    ], [
+        ("コートを着ます。", "Kooto o kimasu.", "Saya memakai mantel."),
+        ("駅に着きました。", "Eki ni tsukimashita.", "Saya sudah tiba di stasiun."),
+    ]),
+    ("arau", "洗", ["セン"], ["あら-う"], ["mencuci", "wash"], 9, "水", [
+        ("洗う", "arau", "mencuci"),
+        ("洗濯", "sentaku", "cucian"),
+        ("洗面所", "senmenjo", "tempat cuci muka/toilet"),
+    ], [
+        ("手を洗います。", "Te o araimasu.", "Saya mencuci tangan."),
+        ("毎日洗濯をします。", "Mainichi sentaku o shimasu.", "Setiap hari saya mencuci baju."),
+    ]),
+    ("tsuzuku", "続", ["ゾク"], ["つづ-く", "つづ-ける"], ["berlanjut", "melanjutkan", "continue"], 13, "糸", [
+        ("続く", "tsuzuku", "berlanjut"),
+        ("続ける", "tsuzukeru", "melanjutkan"),
+        ("継続", "keizoku", "kelanjutan"),
+    ], [
+        ("雨が続いています。", "Ame ga tsuzuite imasu.", "Hujan masih berlanjut."),
+        ("勉強を続けます。", "Benkyou o tsuzukemasu.", "Saya akan melanjutkan belajar."),
+    ]),
+    ("wakai", "若", ["ジャク", "ニャク"], ["わか-い"], ["muda", "young"], 8, "艹", [
+        ("若い", "wakai", "muda"),
+        ("若者", "wakamono", "anak muda"),
+        ("若干", "jakkan", "sedikit/agak"),
+    ], [
+        ("彼女は若いです。", "Kanojo wa wakai desu.", "Dia masih muda."),
+        ("若者に人気の店です。", "Wakamono ni ninki no mise desu.", "Toko yang populer di kalangan anak muda."),
+    ]),
+    ("isogashii2", "忙", ["ボウ"], ["いそが-しい"], ["sibuk", "busy"], 6, "心", [
+        ("忙しい", "isogashii", "sibuk"),
+        ("大忙し", "ooisogashi", "sangat sibuk"),
+        ("忙しさ", "isogashisa", "kesibukan"),
+    ], [
+        ("今週は忙しいです。", "Konshuu wa isogashii desu.", "Minggu ini sibuk."),
+        ("最近大忙しです。", "Saikin ooisogashi desu.", "Akhir-akhir ini sangat sibuk."),
+    ]),
+    ("kan2", "漢", ["カン"], [], ["Tiongkok (kuno)", "Han", "China (ancient)"], 13, "水", [
+        ("漢字", "kanji", "kanji"),
+        ("漢方", "kanpou", "pengobatan tradisional Tiongkok"),
+        ("漢語", "kango", "kata serapan Tiongkok"),
+    ], [
+        ("漢字を勉強します。", "Kanji o benkyou shimasu.", "Saya belajar kanji."),
+        ("漢方薬を飲みました。", "Kanpouyaku o nomimashita.", "Saya minum obat tradisional Tiongkok."),
+    ]),
+    ("susumu", "進", ["シン"], ["すす-む", "すす-める"], ["maju", "advance", "proceed"], 11, "辶", [
+        ("進む", "susumu", "maju"),
+        ("進歩", "shinpo", "kemajuan"),
+        ("前進", "zenshin", "maju ke depan"),
+    ], [
+        ("前に進んでください。", "Mae ni susunde kudasai.", "Tolong maju ke depan."),
+        ("技術が進歩しました。", "Gijutsu ga shinpo shimashita.", "Teknologi mengalami kemajuan."),
+    ]),
+    ("modoru", "戻", ["レイ"], ["もど-る", "もど-す"], ["kembali", "return"], 7, "戸", [
+        ("戻る", "modoru", "kembali"),
+        ("戻す", "modosu", "mengembalikan"),
+        ("払い戻し", "haraimodoshi", "pengembalian uang"),
+    ], [
+        ("家に戻ります。", "Ie ni modorimasu.", "Saya kembali ke rumah."),
+        ("本を棚に戻してください。", "Hon o tana ni modoshite kudasai.", "Tolong kembalikan buku ke rak."),
+    ]),
+    ("sodatsu", "育", ["イク"], ["そだ-つ", "そだ-てる"], ["membesarkan", "tumbuh", "raise", "grow"], 8, "月", [
+        ("育てる", "sodateru", "membesarkan"),
+        ("教育", "kyouiku", "pendidikan"),
+        ("体育", "taiiku", "olahraga"),
+    ], [
+        ("子供を育てています。", "Kodomo o sodatete imasu.", "Saya membesarkan anak."),
+        ("教育は大切です。", "Kyouiku wa taisetsu desu.", "Pendidikan itu penting."),
+    ]),
+    ("fuku2", "服", ["フク"], [], ["pakaian", "clothes"], 8, "月", [
+        ("服", "fuku", "pakaian"),
+        ("洋服", "youfuku", "pakaian barat"),
+        ("制服", "seifuku", "seragam"),
+    ], [
+        ("新しい服を買いました。", "Atarashii fuku o kaimashita.", "Saya membeli baju baru."),
+        ("学校の制服を着ます。", "Gakkou no seifuku o kimasu.", "Saya memakai seragam sekolah."),
+    ]),
+    ("yu2", "由", ["ユ", "ユウ", "ユイ"], ["よし"], ["alasan", "sebab", "reason", "cause"], 5, "田", [
+        ("理由", "riyuu", "alasan"),
+        ("自由", "jiyuu", "kebebasan"),
+        ("由来", "yurai", "asal-usul"),
+    ], [
+        ("理由を説明してください。", "Riyuu o setsumei shite kudasai.", "Tolong jelaskan alasannya."),
+        ("自由な時間が欲しいです。", "Jiyuu na jikan ga hoshii desu.", "Saya ingin waktu bebas."),
+    ]),
+    ("jibun", "自", ["ジ", "シ"], ["みずか-ら"], ["diri sendiri", "self"], 6, "自", [
+        ("自分", "jibun", "diri sendiri"),
+        ("自由", "jiyuu", "kebebasan"),
+        ("自動車", "jidousha", "mobil"),
+    ], [
+        ("自分で作りました。", "Jibun de tsukurimashita.", "Saya membuatnya sendiri."),
+        ("自動車を運転します。", "Jidousha o unten shimasu.", "Saya mengemudikan mobil."),
+    ]),
 ]
 
 PLACEHOLDER_COUNTS = {"N3": 5, "N2": 5, "N1": 5}
