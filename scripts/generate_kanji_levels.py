@@ -9,7 +9,7 @@ import json
 # Each tuple: (id, name, available, kanjiCount)
 LEVELS = [
     ("N5", "N5", True, 107),
-    ("N4", "N4", True, 22),
+    ("N4", "N4", True, 46),
     ("N3", "N3", False, None),
     ("N2", "N2", False, None),
     ("N1", "N1", False, None),

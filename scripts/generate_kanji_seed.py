@@ -1063,6 +1063,199 @@ N4_KANJI = [
         ("父は会社員です。", "Chichi wa kaishain desu.", "Ayah saya karyawan."),
         ("このクラブの会員です。", "Kono kurabu no kaiin desu.", "Saya anggota klub ini."),
     ]),
+    # --- Batch B: 使作思知持遊働走泳飛送教習覚忘決別変始終開閉集動 (24) ---
+    ("tsukau", "使", ["シ"], ["つか-う"], ["menggunakan", "use"], 8, "人", [
+        ("使う", "tsukau", "menggunakan"),
+        ("使用", "shiyou", "penggunaan"),
+        ("大使", "taishi", "duta besar"),
+    ], [
+        ("辞書を使います。", "Jisho o tsukaimasu.", "Saya menggunakan kamus."),
+        ("このパソコンは使用禁止です。", "Kono pasokon wa shiyou kinshi desu.", "Komputer ini dilarang digunakan."),
+    ]),
+    ("tsukuru", "作", ["サク", "サ"], ["つく-る"], ["membuat", "make"], 7, "人", [
+        ("作る", "tsukuru", "membuat"),
+        ("作文", "sakubun", "karangan"),
+        ("作品", "sakuhin", "karya"),
+    ], [
+        ("料理を作ります。", "Ryouri o tsukurimasu.", "Saya membuat masakan."),
+        ("この作品は美しいです。", "Kono sakuhin wa utsukushii desu.", "Karya ini indah."),
+    ]),
+    ("omou", "思", ["シ"], ["おも-う"], ["berpikir", "think"], 9, "心", [
+        ("思う", "omou", "berpikir"),
+        ("思い出", "omoide", "kenangan"),
+        ("意思", "ishi", "maksud/kehendak"),
+    ], [
+        ("そう思います。", "Sou omoimasu.", "Saya pikir begitu."),
+        ("いい思い出になりました。", "Ii omoide ni narimashita.", "Menjadi kenangan yang indah."),
+    ]),
+    ("shiru", "知", ["チ"], ["し-る"], ["tahu", "mengetahui", "know"], 8, "矢", [
+        ("知る", "shiru", "mengetahui"),
+        ("知識", "chishiki", "pengetahuan"),
+        ("知らせる", "shiraseru", "memberitahu"),
+    ], [
+        ("その話は知っています。", "Sono hanashi wa shitte imasu.", "Saya tahu cerita itu."),
+        ("結果を知らせてください。", "Kekka o shirasete kudasai.", "Tolong beritahu hasilnya."),
+    ]),
+    ("motsu", "持", ["ジ"], ["も-つ"], ["memegang", "membawa", "hold", "have"], 9, "手", [
+        ("持つ", "motsu", "memegang/membawa"),
+        ("気持ち", "kimochi", "perasaan"),
+        ("持ち物", "mochimono", "barang bawaan"),
+    ], [
+        ("かばんを持っています。", "Kaban o motte imasu.", "Saya membawa tas."),
+        ("今日の気持ちはどうですか。", "Kyou no kimochi wa dou desu ka.", "Bagaimana perasaan Anda hari ini?"),
+    ]),
+    ("asobu", "遊", ["ユウ"], ["あそ-ぶ"], ["bermain", "play"], 12, "辶", [
+        ("遊ぶ", "asobu", "bermain"),
+        ("遊園地", "yuuenchi", "taman hiburan"),
+        ("遊び", "asobi", "permainan"),
+    ], [
+        ("公園で遊びます。", "Kouen de asobimasu.", "Saya bermain di taman."),
+        ("遊園地に行きたいです。", "Yuuenchi ni ikitai desu.", "Saya ingin pergi ke taman hiburan."),
+    ]),
+    ("hataraku", "働", ["ドウ"], ["はたら-く"], ["bekerja", "work"], 13, "人", [
+        ("働く", "hataraku", "bekerja"),
+        ("労働", "roudou", "tenaga kerja"),
+        ("共働き", "tomobataraki", "suami istri sama-sama bekerja"),
+    ], [
+        ("銀行で働いています。", "Ginkou de hataraite imasu.", "Saya bekerja di bank."),
+        ("両親は共働きです。", "Ryoushin wa tomobataraki desu.", "Orang tua saya sama-sama bekerja."),
+    ]),
+    ("hashiru", "走", ["ソウ"], ["はし-る"], ["berlari", "run"], 7, "走", [
+        ("走る", "hashiru", "berlari"),
+        ("競走", "kyousou", "lomba lari"),
+        ("走者", "sousha", "pelari"),
+    ], [
+        ("毎朝走ります。", "Maiasa hashirimasu.", "Setiap pagi saya berlari."),
+        ("彼は速く走ります。", "Kare wa hayaku hashirimasu.", "Dia berlari cepat."),
+    ]),
+    ("oyogu", "泳", ["エイ"], ["およ-ぐ"], ["berenang", "swim"], 8, "水", [
+        ("泳ぐ", "oyogu", "berenang"),
+        ("水泳", "suiei", "renang"),
+        ("平泳ぎ", "hiraoyogi", "gaya dada"),
+    ], [
+        ("海で泳ぎます。", "Umi de oyogimasu.", "Saya berenang di laut."),
+        ("水泳が得意です。", "Suiei ga tokui desu.", "Saya jago berenang."),
+    ]),
+    ("tobu", "飛", ["ヒ"], ["と-ぶ"], ["terbang", "fly"], 9, "飛", [
+        ("飛ぶ", "tobu", "terbang"),
+        ("飛行機", "hikouki", "pesawat terbang"),
+        ("飛行場", "hikoujou", "lapangan terbang"),
+    ], [
+        ("鳥が空を飛んでいます。", "Tori ga sora o tonde imasu.", "Burung terbang di langit."),
+        ("飛行機でアメリカへ行きます。", "Hikouki de Amerika e ikimasu.", "Saya pergi ke Amerika naik pesawat."),
+    ]),
+    ("okuru", "送", ["ソウ"], ["おく-る"], ["mengirim", "mengantar", "send"], 9, "辶", [
+        ("送る", "okuru", "mengirim/mengantar"),
+        ("送料", "souryou", "biaya kirim"),
+        ("見送る", "miokuru", "mengantar kepergian"),
+    ], [
+        ("手紙を送ります。", "Tegami o okurimasu.", "Saya mengirim surat."),
+        ("駅まで送ります。", "Eki made okurimasu.", "Saya akan mengantar Anda sampai stasiun."),
+    ]),
+    ("oshieru", "教", ["キョウ"], ["おし-える", "おそ-わる"], ["mengajar", "teach"], 11, "攵", [
+        ("教える", "oshieru", "mengajar"),
+        ("教室", "kyoushitsu", "ruang kelas"),
+        ("教育", "kyouiku", "pendidikan"),
+    ], [
+        ("日本語を教えています。", "Nihongo o oshiete imasu.", "Saya mengajar bahasa Jepang."),
+        ("教室はどこですか。", "Kyoushitsu wa doko desu ka.", "Di mana ruang kelas?"),
+    ]),
+    ("narau", "習", ["シュウ"], ["なら-う"], ["berlatih", "belajar", "practice", "learn"], 11, "羽", [
+        ("習う", "narau", "belajar/berlatih"),
+        ("練習", "renshuu", "latihan"),
+        ("予習", "yoshuu", "belajar sebelum kelas"),
+    ], [
+        ("ピアノを習っています。", "Piano o naratte imasu.", "Saya belajar piano."),
+        ("毎日漢字を練習します。", "Mainichi kanji o renshuu shimasu.", "Setiap hari saya berlatih kanji."),
+    ]),
+    ("oboeru", "覚", ["カク"], ["おぼ-える", "さ-める"], ["mengingat", "remember"], 12, "見", [
+        ("覚える", "oboeru", "mengingat/menghafal"),
+        ("覚えている", "oboeteiru", "ingat"),
+        ("目覚める", "mezameru", "terbangun"),
+    ], [
+        ("単語を覚えます。", "Tango o oboemasu.", "Saya menghafal kosakata."),
+        ("その日のことをよく覚えています。", "Sono hi no koto o yoku oboete imasu.", "Saya masih ingat betul hari itu."),
+    ]),
+    ("wasureru", "忘", ["ボウ"], ["わす-れる"], ["melupakan", "forget"], 7, "心", [
+        ("忘れる", "wasureru", "melupakan"),
+        ("忘れ物", "wasuremono", "barang tertinggal"),
+        ("物忘れ", "monowasure", "pelupa"),
+    ], [
+        ("名前を忘れました。", "Namae o wasuremashita.", "Saya lupa namanya."),
+        ("傘を忘れ物しました。", "Kasa o wasuremono shimashita.", "Saya meninggalkan payung."),
+    ]),
+    ("kimeru", "決", ["ケツ"], ["き-める", "き-まる"], ["memutuskan", "decide"], 7, "水", [
+        ("決める", "kimeru", "memutuskan"),
+        ("決定", "kettei", "keputusan"),
+        ("決して", "kesshite", "sama sekali (tidak)"),
+    ], [
+        ("行き先を決めました。", "Ikisaki o kimemashita.", "Saya sudah memutuskan tujuan perjalanan."),
+        ("決して諦めません。", "Kesshite akiramemasen.", "Saya tidak akan pernah menyerah."),
+    ]),
+    ("wakareru", "別", ["ベツ"], ["わか-れる"], ["berpisah", "terpisah", "separate"], 7, "刂", [
+        ("別れる", "wakareru", "berpisah"),
+        ("別に", "betsuni", "tidak terlalu/khususnya tidak"),
+        ("特別", "tokubetsu", "istimewa"),
+    ], [
+        ("駅で友達と別れました。", "Eki de tomodachi to wakaremashita.", "Saya berpisah dengan teman di stasiun."),
+        ("これは特別なプレゼントです。", "Kore wa tokubetsu na purezento desu.", "Ini hadiah yang istimewa."),
+    ]),
+    ("kawaru", "変", ["ヘン"], ["か-わる", "か-える"], ["berubah", "aneh", "change", "strange"], 9, "夂", [
+        ("変わる", "kawaru", "berubah"),
+        ("変える", "kaeru", "mengubah"),
+        ("大変", "taihen", "berat/sangat"),
+    ], [
+        ("天気が変わりました。", "Tenki ga kawarimashita.", "Cuaca berubah."),
+        ("今日は大変でした。", "Kyou wa taihen deshita.", "Hari ini berat/melelahkan."),
+    ]),
+    ("hajimeru", "始", ["シ"], ["はじ-める", "はじ-まる"], ["memulai", "begin", "start"], 8, "女", [
+        ("始める", "hajimeru", "memulai"),
+        ("始まる", "hajimaru", "dimulai"),
+        ("開始", "kaishi", "permulaan"),
+    ], [
+        ("授業を始めます。", "Jugyou o hajimemasu.", "Saya memulai pelajaran."),
+        ("映画は七時に始まります。", "Eiga wa shichiji ni hajimarimasu.", "Film dimulai jam tujuh."),
+    ]),
+    ("owaru", "終", ["シュウ"], ["お-わる", "お-える"], ["berakhir", "end", "finish"], 11, "糸", [
+        ("終わる", "owaru", "berakhir"),
+        ("終電", "shuuden", "kereta terakhir"),
+        ("最終", "saishuu", "terakhir"),
+    ], [
+        ("仕事が終わりました。", "Shigoto ga owarimashita.", "Pekerjaan sudah selesai."),
+        ("終電に乗り遅れました。", "Shuuden ni noriokuremashita.", "Saya ketinggalan kereta terakhir."),
+    ]),
+    ("hiraku", "開", ["カイ"], ["ひら-く", "あ-ける"], ["membuka", "open"], 12, "門", [
+        ("開く", "hiraku", "membuka"),
+        ("開ける", "akeru", "membuka"),
+        ("開店", "kaiten", "buka toko"),
+    ], [
+        ("窓を開けてください。", "Mado o akete kudasai.", "Tolong buka jendela."),
+        ("店は十時に開店します。", "Mise wa juuji ni kaiten shimasu.", "Toko buka jam sepuluh."),
+    ]),
+    ("shimeru", "閉", ["ヘイ"], ["と-じる", "し-める"], ["menutup", "close"], 11, "門", [
+        ("閉じる", "tojiru", "menutup"),
+        ("閉める", "shimeru", "menutup"),
+        ("閉店", "heiten", "tutup toko"),
+    ], [
+        ("本を閉じてください。", "Hon o tojite kudasai.", "Tolong tutup buku."),
+        ("店は九時に閉店します。", "Mise wa kuji ni heiten shimasu.", "Toko tutup jam sembilan."),
+    ]),
+    ("atsumaru", "集", ["シュウ"], ["あつ-まる", "あつ-める"], ["berkumpul", "mengumpulkan", "gather"], 12, "隹", [
+        ("集まる", "atsumaru", "berkumpul"),
+        ("集める", "atsumeru", "mengumpulkan"),
+        ("集合", "shuugou", "berkumpul/pertemuan"),
+    ], [
+        ("公園に集まりましょう。", "Kouen ni atsumarimashou.", "Ayo berkumpul di taman."),
+        ("切手を集めています。", "Kitte o atsumete imasu.", "Saya mengumpulkan perangko."),
+    ]),
+    ("ugoku", "動", ["ドウ"], ["うご-く"], ["bergerak", "move"], 11, "力", [
+        ("動く", "ugoku", "bergerak"),
+        ("運動", "undou", "olahraga"),
+        ("自動", "jidou", "otomatis"),
+    ], [
+        ("車が動きません。", "Kuruma ga ugokimasen.", "Mobilnya tidak bisa bergerak."),
+        ("毎日運動します。", "Mainichi undou shimasu.", "Setiap hari saya berolahraga."),
+    ]),
 ]
 
 PLACEHOLDER_COUNTS = {"N3": 5, "N2": 5, "N1": 5}

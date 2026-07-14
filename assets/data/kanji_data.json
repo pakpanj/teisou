@@ -6369,6 +6369,1180 @@
     "relatedBunpou": []
   },
   {
+    "id": "kanji_tsukau",
+    "character": "使",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シ"
+    ],
+    "kunyomi": [
+      "つか-う"
+    ],
+    "meanings": [
+      "menggunakan",
+      "use"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/04f7f.svg",
+    "radical": "人",
+    "wordExamples": [
+      {
+        "word": "使う",
+        "reading": "tsukau",
+        "meaning": "menggunakan"
+      },
+      {
+        "word": "使用",
+        "reading": "shiyou",
+        "meaning": "penggunaan"
+      },
+      {
+        "word": "大使",
+        "reading": "taishi",
+        "meaning": "duta besar"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "辞書を使います。",
+        "romaji": "Jisho o tsukaimasu.",
+        "translation": "Saya menggunakan kamus."
+      },
+      {
+        "japanese": "このパソコンは使用禁止です。",
+        "romaji": "Kono pasokon wa shiyou kinshi desu.",
+        "translation": "Komputer ini dilarang digunakan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_tsukuru",
+    "character": "作",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "サク",
+      "サ"
+    ],
+    "kunyomi": [
+      "つく-る"
+    ],
+    "meanings": [
+      "membuat",
+      "make"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/04f5c.svg",
+    "radical": "人",
+    "wordExamples": [
+      {
+        "word": "作る",
+        "reading": "tsukuru",
+        "meaning": "membuat"
+      },
+      {
+        "word": "作文",
+        "reading": "sakubun",
+        "meaning": "karangan"
+      },
+      {
+        "word": "作品",
+        "reading": "sakuhin",
+        "meaning": "karya"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "料理を作ります。",
+        "romaji": "Ryouri o tsukurimasu.",
+        "translation": "Saya membuat masakan."
+      },
+      {
+        "japanese": "この作品は美しいです。",
+        "romaji": "Kono sakuhin wa utsukushii desu.",
+        "translation": "Karya ini indah."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_omou",
+    "character": "思",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シ"
+    ],
+    "kunyomi": [
+      "おも-う"
+    ],
+    "meanings": [
+      "berpikir",
+      "think"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/0601d.svg",
+    "radical": "心",
+    "wordExamples": [
+      {
+        "word": "思う",
+        "reading": "omou",
+        "meaning": "berpikir"
+      },
+      {
+        "word": "思い出",
+        "reading": "omoide",
+        "meaning": "kenangan"
+      },
+      {
+        "word": "意思",
+        "reading": "ishi",
+        "meaning": "maksud/kehendak"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "そう思います。",
+        "romaji": "Sou omoimasu.",
+        "translation": "Saya pikir begitu."
+      },
+      {
+        "japanese": "いい思い出になりました。",
+        "romaji": "Ii omoide ni narimashita.",
+        "translation": "Menjadi kenangan yang indah."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_shiru",
+    "character": "知",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "チ"
+    ],
+    "kunyomi": [
+      "し-る"
+    ],
+    "meanings": [
+      "tahu",
+      "mengetahui",
+      "know"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/077e5.svg",
+    "radical": "矢",
+    "wordExamples": [
+      {
+        "word": "知る",
+        "reading": "shiru",
+        "meaning": "mengetahui"
+      },
+      {
+        "word": "知識",
+        "reading": "chishiki",
+        "meaning": "pengetahuan"
+      },
+      {
+        "word": "知らせる",
+        "reading": "shiraseru",
+        "meaning": "memberitahu"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "その話は知っています。",
+        "romaji": "Sono hanashi wa shitte imasu.",
+        "translation": "Saya tahu cerita itu."
+      },
+      {
+        "japanese": "結果を知らせてください。",
+        "romaji": "Kekka o shirasete kudasai.",
+        "translation": "Tolong beritahu hasilnya."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_motsu",
+    "character": "持",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ジ"
+    ],
+    "kunyomi": [
+      "も-つ"
+    ],
+    "meanings": [
+      "memegang",
+      "membawa",
+      "hold",
+      "have"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/06301.svg",
+    "radical": "手",
+    "wordExamples": [
+      {
+        "word": "持つ",
+        "reading": "motsu",
+        "meaning": "memegang/membawa"
+      },
+      {
+        "word": "気持ち",
+        "reading": "kimochi",
+        "meaning": "perasaan"
+      },
+      {
+        "word": "持ち物",
+        "reading": "mochimono",
+        "meaning": "barang bawaan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "かばんを持っています。",
+        "romaji": "Kaban o motte imasu.",
+        "translation": "Saya membawa tas."
+      },
+      {
+        "japanese": "今日の気持ちはどうですか。",
+        "romaji": "Kyou no kimochi wa dou desu ka.",
+        "translation": "Bagaimana perasaan Anda hari ini?"
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_asobu",
+    "character": "遊",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ユウ"
+    ],
+    "kunyomi": [
+      "あそ-ぶ"
+    ],
+    "meanings": [
+      "bermain",
+      "play"
+    ],
+    "strokeCount": 12,
+    "svgAsset": "assets/kanjivg/0904a.svg",
+    "radical": "辶",
+    "wordExamples": [
+      {
+        "word": "遊ぶ",
+        "reading": "asobu",
+        "meaning": "bermain"
+      },
+      {
+        "word": "遊園地",
+        "reading": "yuuenchi",
+        "meaning": "taman hiburan"
+      },
+      {
+        "word": "遊び",
+        "reading": "asobi",
+        "meaning": "permainan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "公園で遊びます。",
+        "romaji": "Kouen de asobimasu.",
+        "translation": "Saya bermain di taman."
+      },
+      {
+        "japanese": "遊園地に行きたいです。",
+        "romaji": "Yuuenchi ni ikitai desu.",
+        "translation": "Saya ingin pergi ke taman hiburan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_hataraku",
+    "character": "働",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ドウ"
+    ],
+    "kunyomi": [
+      "はたら-く"
+    ],
+    "meanings": [
+      "bekerja",
+      "work"
+    ],
+    "strokeCount": 13,
+    "svgAsset": "assets/kanjivg/050cd.svg",
+    "radical": "人",
+    "wordExamples": [
+      {
+        "word": "働く",
+        "reading": "hataraku",
+        "meaning": "bekerja"
+      },
+      {
+        "word": "労働",
+        "reading": "roudou",
+        "meaning": "tenaga kerja"
+      },
+      {
+        "word": "共働き",
+        "reading": "tomobataraki",
+        "meaning": "suami istri sama-sama bekerja"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "銀行で働いています。",
+        "romaji": "Ginkou de hataraite imasu.",
+        "translation": "Saya bekerja di bank."
+      },
+      {
+        "japanese": "両親は共働きです。",
+        "romaji": "Ryoushin wa tomobataraki desu.",
+        "translation": "Orang tua saya sama-sama bekerja."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_hashiru",
+    "character": "走",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ソウ"
+    ],
+    "kunyomi": [
+      "はし-る"
+    ],
+    "meanings": [
+      "berlari",
+      "run"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/08d70.svg",
+    "radical": "走",
+    "wordExamples": [
+      {
+        "word": "走る",
+        "reading": "hashiru",
+        "meaning": "berlari"
+      },
+      {
+        "word": "競走",
+        "reading": "kyousou",
+        "meaning": "lomba lari"
+      },
+      {
+        "word": "走者",
+        "reading": "sousha",
+        "meaning": "pelari"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "毎朝走ります。",
+        "romaji": "Maiasa hashirimasu.",
+        "translation": "Setiap pagi saya berlari."
+      },
+      {
+        "japanese": "彼は速く走ります。",
+        "romaji": "Kare wa hayaku hashirimasu.",
+        "translation": "Dia berlari cepat."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_oyogu",
+    "character": "泳",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "エイ"
+    ],
+    "kunyomi": [
+      "およ-ぐ"
+    ],
+    "meanings": [
+      "berenang",
+      "swim"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/06cf3.svg",
+    "radical": "水",
+    "wordExamples": [
+      {
+        "word": "泳ぐ",
+        "reading": "oyogu",
+        "meaning": "berenang"
+      },
+      {
+        "word": "水泳",
+        "reading": "suiei",
+        "meaning": "renang"
+      },
+      {
+        "word": "平泳ぎ",
+        "reading": "hiraoyogi",
+        "meaning": "gaya dada"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "海で泳ぎます。",
+        "romaji": "Umi de oyogimasu.",
+        "translation": "Saya berenang di laut."
+      },
+      {
+        "japanese": "水泳が得意です。",
+        "romaji": "Suiei ga tokui desu.",
+        "translation": "Saya jago berenang."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_tobu",
+    "character": "飛",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ヒ"
+    ],
+    "kunyomi": [
+      "と-ぶ"
+    ],
+    "meanings": [
+      "terbang",
+      "fly"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/098db.svg",
+    "radical": "飛",
+    "wordExamples": [
+      {
+        "word": "飛ぶ",
+        "reading": "tobu",
+        "meaning": "terbang"
+      },
+      {
+        "word": "飛行機",
+        "reading": "hikouki",
+        "meaning": "pesawat terbang"
+      },
+      {
+        "word": "飛行場",
+        "reading": "hikoujou",
+        "meaning": "lapangan terbang"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "鳥が空を飛んでいます。",
+        "romaji": "Tori ga sora o tonde imasu.",
+        "translation": "Burung terbang di langit."
+      },
+      {
+        "japanese": "飛行機でアメリカへ行きます。",
+        "romaji": "Hikouki de Amerika e ikimasu.",
+        "translation": "Saya pergi ke Amerika naik pesawat."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_okuru",
+    "character": "送",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ソウ"
+    ],
+    "kunyomi": [
+      "おく-る"
+    ],
+    "meanings": [
+      "mengirim",
+      "mengantar",
+      "send"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/09001.svg",
+    "radical": "辶",
+    "wordExamples": [
+      {
+        "word": "送る",
+        "reading": "okuru",
+        "meaning": "mengirim/mengantar"
+      },
+      {
+        "word": "送料",
+        "reading": "souryou",
+        "meaning": "biaya kirim"
+      },
+      {
+        "word": "見送る",
+        "reading": "miokuru",
+        "meaning": "mengantar kepergian"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "手紙を送ります。",
+        "romaji": "Tegami o okurimasu.",
+        "translation": "Saya mengirim surat."
+      },
+      {
+        "japanese": "駅まで送ります。",
+        "romaji": "Eki made okurimasu.",
+        "translation": "Saya akan mengantar Anda sampai stasiun."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_oshieru",
+    "character": "教",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "キョウ"
+    ],
+    "kunyomi": [
+      "おし-える",
+      "おそ-わる"
+    ],
+    "meanings": [
+      "mengajar",
+      "teach"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/06559.svg",
+    "radical": "攵",
+    "wordExamples": [
+      {
+        "word": "教える",
+        "reading": "oshieru",
+        "meaning": "mengajar"
+      },
+      {
+        "word": "教室",
+        "reading": "kyoushitsu",
+        "meaning": "ruang kelas"
+      },
+      {
+        "word": "教育",
+        "reading": "kyouiku",
+        "meaning": "pendidikan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "日本語を教えています。",
+        "romaji": "Nihongo o oshiete imasu.",
+        "translation": "Saya mengajar bahasa Jepang."
+      },
+      {
+        "japanese": "教室はどこですか。",
+        "romaji": "Kyoushitsu wa doko desu ka.",
+        "translation": "Di mana ruang kelas?"
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_narau",
+    "character": "習",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シュウ"
+    ],
+    "kunyomi": [
+      "なら-う"
+    ],
+    "meanings": [
+      "berlatih",
+      "belajar",
+      "practice",
+      "learn"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/07fd2.svg",
+    "radical": "羽",
+    "wordExamples": [
+      {
+        "word": "習う",
+        "reading": "narau",
+        "meaning": "belajar/berlatih"
+      },
+      {
+        "word": "練習",
+        "reading": "renshuu",
+        "meaning": "latihan"
+      },
+      {
+        "word": "予習",
+        "reading": "yoshuu",
+        "meaning": "belajar sebelum kelas"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "ピアノを習っています。",
+        "romaji": "Piano o naratte imasu.",
+        "translation": "Saya belajar piano."
+      },
+      {
+        "japanese": "毎日漢字を練習します。",
+        "romaji": "Mainichi kanji o renshuu shimasu.",
+        "translation": "Setiap hari saya berlatih kanji."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_oboeru",
+    "character": "覚",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "カク"
+    ],
+    "kunyomi": [
+      "おぼ-える",
+      "さ-める"
+    ],
+    "meanings": [
+      "mengingat",
+      "remember"
+    ],
+    "strokeCount": 12,
+    "svgAsset": "assets/kanjivg/0899a.svg",
+    "radical": "見",
+    "wordExamples": [
+      {
+        "word": "覚える",
+        "reading": "oboeru",
+        "meaning": "mengingat/menghafal"
+      },
+      {
+        "word": "覚えている",
+        "reading": "oboeteiru",
+        "meaning": "ingat"
+      },
+      {
+        "word": "目覚める",
+        "reading": "mezameru",
+        "meaning": "terbangun"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "単語を覚えます。",
+        "romaji": "Tango o oboemasu.",
+        "translation": "Saya menghafal kosakata."
+      },
+      {
+        "japanese": "その日のことをよく覚えています。",
+        "romaji": "Sono hi no koto o yoku oboete imasu.",
+        "translation": "Saya masih ingat betul hari itu."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_wasureru",
+    "character": "忘",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ボウ"
+    ],
+    "kunyomi": [
+      "わす-れる"
+    ],
+    "meanings": [
+      "melupakan",
+      "forget"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/05fd8.svg",
+    "radical": "心",
+    "wordExamples": [
+      {
+        "word": "忘れる",
+        "reading": "wasureru",
+        "meaning": "melupakan"
+      },
+      {
+        "word": "忘れ物",
+        "reading": "wasuremono",
+        "meaning": "barang tertinggal"
+      },
+      {
+        "word": "物忘れ",
+        "reading": "monowasure",
+        "meaning": "pelupa"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "名前を忘れました。",
+        "romaji": "Namae o wasuremashita.",
+        "translation": "Saya lupa namanya."
+      },
+      {
+        "japanese": "傘を忘れ物しました。",
+        "romaji": "Kasa o wasuremono shimashita.",
+        "translation": "Saya meninggalkan payung."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kimeru",
+    "character": "決",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ケツ"
+    ],
+    "kunyomi": [
+      "き-める",
+      "き-まる"
+    ],
+    "meanings": [
+      "memutuskan",
+      "decide"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/06c7a.svg",
+    "radical": "水",
+    "wordExamples": [
+      {
+        "word": "決める",
+        "reading": "kimeru",
+        "meaning": "memutuskan"
+      },
+      {
+        "word": "決定",
+        "reading": "kettei",
+        "meaning": "keputusan"
+      },
+      {
+        "word": "決して",
+        "reading": "kesshite",
+        "meaning": "sama sekali (tidak)"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "行き先を決めました。",
+        "romaji": "Ikisaki o kimemashita.",
+        "translation": "Saya sudah memutuskan tujuan perjalanan."
+      },
+      {
+        "japanese": "決して諦めません。",
+        "romaji": "Kesshite akiramemasen.",
+        "translation": "Saya tidak akan pernah menyerah."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_wakareru",
+    "character": "別",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ベツ"
+    ],
+    "kunyomi": [
+      "わか-れる"
+    ],
+    "meanings": [
+      "berpisah",
+      "terpisah",
+      "separate"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/05225.svg",
+    "radical": "刂",
+    "wordExamples": [
+      {
+        "word": "別れる",
+        "reading": "wakareru",
+        "meaning": "berpisah"
+      },
+      {
+        "word": "別に",
+        "reading": "betsuni",
+        "meaning": "tidak terlalu/khususnya tidak"
+      },
+      {
+        "word": "特別",
+        "reading": "tokubetsu",
+        "meaning": "istimewa"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "駅で友達と別れました。",
+        "romaji": "Eki de tomodachi to wakaremashita.",
+        "translation": "Saya berpisah dengan teman di stasiun."
+      },
+      {
+        "japanese": "これは特別なプレゼントです。",
+        "romaji": "Kore wa tokubetsu na purezento desu.",
+        "translation": "Ini hadiah yang istimewa."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kawaru",
+    "character": "変",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ヘン"
+    ],
+    "kunyomi": [
+      "か-わる",
+      "か-える"
+    ],
+    "meanings": [
+      "berubah",
+      "aneh",
+      "change",
+      "strange"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/05909.svg",
+    "radical": "夂",
+    "wordExamples": [
+      {
+        "word": "変わる",
+        "reading": "kawaru",
+        "meaning": "berubah"
+      },
+      {
+        "word": "変える",
+        "reading": "kaeru",
+        "meaning": "mengubah"
+      },
+      {
+        "word": "大変",
+        "reading": "taihen",
+        "meaning": "berat/sangat"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "天気が変わりました。",
+        "romaji": "Tenki ga kawarimashita.",
+        "translation": "Cuaca berubah."
+      },
+      {
+        "japanese": "今日は大変でした。",
+        "romaji": "Kyou wa taihen deshita.",
+        "translation": "Hari ini berat/melelahkan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_hajimeru",
+    "character": "始",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シ"
+    ],
+    "kunyomi": [
+      "はじ-める",
+      "はじ-まる"
+    ],
+    "meanings": [
+      "memulai",
+      "begin",
+      "start"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/059cb.svg",
+    "radical": "女",
+    "wordExamples": [
+      {
+        "word": "始める",
+        "reading": "hajimeru",
+        "meaning": "memulai"
+      },
+      {
+        "word": "始まる",
+        "reading": "hajimaru",
+        "meaning": "dimulai"
+      },
+      {
+        "word": "開始",
+        "reading": "kaishi",
+        "meaning": "permulaan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "授業を始めます。",
+        "romaji": "Jugyou o hajimemasu.",
+        "translation": "Saya memulai pelajaran."
+      },
+      {
+        "japanese": "映画は七時に始まります。",
+        "romaji": "Eiga wa shichiji ni hajimarimasu.",
+        "translation": "Film dimulai jam tujuh."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_owaru",
+    "character": "終",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シュウ"
+    ],
+    "kunyomi": [
+      "お-わる",
+      "お-える"
+    ],
+    "meanings": [
+      "berakhir",
+      "end",
+      "finish"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/07d42.svg",
+    "radical": "糸",
+    "wordExamples": [
+      {
+        "word": "終わる",
+        "reading": "owaru",
+        "meaning": "berakhir"
+      },
+      {
+        "word": "終電",
+        "reading": "shuuden",
+        "meaning": "kereta terakhir"
+      },
+      {
+        "word": "最終",
+        "reading": "saishuu",
+        "meaning": "terakhir"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "仕事が終わりました。",
+        "romaji": "Shigoto ga owarimashita.",
+        "translation": "Pekerjaan sudah selesai."
+      },
+      {
+        "japanese": "終電に乗り遅れました。",
+        "romaji": "Shuuden ni noriokuremashita.",
+        "translation": "Saya ketinggalan kereta terakhir."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_hiraku",
+    "character": "開",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "カイ"
+    ],
+    "kunyomi": [
+      "ひら-く",
+      "あ-ける"
+    ],
+    "meanings": [
+      "membuka",
+      "open"
+    ],
+    "strokeCount": 12,
+    "svgAsset": "assets/kanjivg/0958b.svg",
+    "radical": "門",
+    "wordExamples": [
+      {
+        "word": "開く",
+        "reading": "hiraku",
+        "meaning": "membuka"
+      },
+      {
+        "word": "開ける",
+        "reading": "akeru",
+        "meaning": "membuka"
+      },
+      {
+        "word": "開店",
+        "reading": "kaiten",
+        "meaning": "buka toko"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "窓を開けてください。",
+        "romaji": "Mado o akete kudasai.",
+        "translation": "Tolong buka jendela."
+      },
+      {
+        "japanese": "店は十時に開店します。",
+        "romaji": "Mise wa juuji ni kaiten shimasu.",
+        "translation": "Toko buka jam sepuluh."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_shimeru",
+    "character": "閉",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ヘイ"
+    ],
+    "kunyomi": [
+      "と-じる",
+      "し-める"
+    ],
+    "meanings": [
+      "menutup",
+      "close"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/09589.svg",
+    "radical": "門",
+    "wordExamples": [
+      {
+        "word": "閉じる",
+        "reading": "tojiru",
+        "meaning": "menutup"
+      },
+      {
+        "word": "閉める",
+        "reading": "shimeru",
+        "meaning": "menutup"
+      },
+      {
+        "word": "閉店",
+        "reading": "heiten",
+        "meaning": "tutup toko"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "本を閉じてください。",
+        "romaji": "Hon o tojite kudasai.",
+        "translation": "Tolong tutup buku."
+      },
+      {
+        "japanese": "店は九時に閉店します。",
+        "romaji": "Mise wa kuji ni heiten shimasu.",
+        "translation": "Toko tutup jam sembilan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_atsumaru",
+    "character": "集",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シュウ"
+    ],
+    "kunyomi": [
+      "あつ-まる",
+      "あつ-める"
+    ],
+    "meanings": [
+      "berkumpul",
+      "mengumpulkan",
+      "gather"
+    ],
+    "strokeCount": 12,
+    "svgAsset": "assets/kanjivg/096c6.svg",
+    "radical": "隹",
+    "wordExamples": [
+      {
+        "word": "集まる",
+        "reading": "atsumaru",
+        "meaning": "berkumpul"
+      },
+      {
+        "word": "集める",
+        "reading": "atsumeru",
+        "meaning": "mengumpulkan"
+      },
+      {
+        "word": "集合",
+        "reading": "shuugou",
+        "meaning": "berkumpul/pertemuan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "公園に集まりましょう。",
+        "romaji": "Kouen ni atsumarimashou.",
+        "translation": "Ayo berkumpul di taman."
+      },
+      {
+        "japanese": "切手を集めています。",
+        "romaji": "Kitte o atsumete imasu.",
+        "translation": "Saya mengumpulkan perangko."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_ugoku",
+    "character": "動",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ドウ"
+    ],
+    "kunyomi": [
+      "うご-く"
+    ],
+    "meanings": [
+      "bergerak",
+      "move"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/052d5.svg",
+    "radical": "力",
+    "wordExamples": [
+      {
+        "word": "動く",
+        "reading": "ugoku",
+        "meaning": "bergerak"
+      },
+      {
+        "word": "運動",
+        "reading": "undou",
+        "meaning": "olahraga"
+      },
+      {
+        "word": "自動",
+        "reading": "jidou",
+        "meaning": "otomatis"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "車が動きません。",
+        "romaji": "Kuruma ga ugokimasen.",
+        "translation": "Mobilnya tidak bisa bergerak."
+      },
+      {
+        "japanese": "毎日運動します。",
+        "romaji": "Mainichi undou shimasu.",
+        "translation": "Setiap hari saya berolahraga."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
     "id": "kanji_n3_placeholder_1",
     "character": "",
     "jlptLevel": "N3",
