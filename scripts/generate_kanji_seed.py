@@ -679,6 +679,207 @@ N5_KANJI = [
         ("友達に会います。", "Tomodachi ni aimasu.", "Saya bertemu teman."),
         ("父は会社で働いています。", "Chichi wa kaisha de hataraite imasu.", "Ayah saya bekerja di perusahaan."),
     ]),
+    # --- Batch C: 校語文字本 + 国町村駅店家 + 大小多少高安新古長白 + 何車電道 (25) ---
+    ("kou", "校", ["コウ"], [], ["sekolah", "school"], 10, "木", [
+        ("学校", "gakkou", "sekolah"),
+        ("校長", "kouchou", "kepala sekolah"),
+        ("高校", "koukou", "SMA"),
+    ], [
+        ("学校は九時に始まります。", "Gakkou wa kuji ni hajimarimasu.", "Sekolah mulai jam sembilan."),
+        ("高校で英語を勉強しました。", "Koukou de eigo o benkyou shimashita.", "Saya belajar bahasa Inggris di SMA."),
+    ]),
+    ("go2", "語", ["ゴ"], ["かた-る"], ["bahasa", "berbicara", "language"], 14, "言", [
+        ("日本語", "nihongo", "bahasa Jepang"),
+        ("英語", "eigo", "bahasa Inggris"),
+        ("単語", "tango", "kosakata"),
+    ], [
+        ("日本語を勉強しています。", "Nihongo o benkyou shite imasu.", "Saya sedang belajar bahasa Jepang."),
+        ("毎日単語を覚えます。", "Mainichi tango o oboemasu.", "Setiap hari saya menghafal kosakata."),
+    ]),
+    ("bun", "文", ["ブン", "モン"], ["ふみ"], ["kalimat", "tulisan", "sentence", "writing"], 4, "文", [
+        ("文章", "bunshou", "tulisan/karangan"),
+        ("文法", "bunpou", "tata bahasa"),
+        ("作文", "sakubun", "karangan/esai"),
+    ], [
+        ("文法を勉強します。", "Bunpou o benkyou shimasu.", "Saya belajar tata bahasa."),
+        ("作文を書きました。", "Sakubun o kakimashita.", "Saya menulis karangan."),
+    ]),
+    ("ji2", "字", ["ジ"], ["あざ"], ["huruf", "karakter", "character", "letter"], 6, "子", [
+        ("漢字", "kanji", "kanji/karakter Han"),
+        ("文字", "moji", "huruf/karakter"),
+        ("字", "ji", "huruf"),
+    ], [
+        ("漢字を勉強しています。", "Kanji o benkyou shite imasu.", "Saya sedang belajar kanji."),
+        ("この字は難しいです。", "Kono ji wa muzukashii desu.", "Huruf ini sulit."),
+    ]),
+    ("hon", "本", ["ホン"], ["もと"], ["buku", "asal", "pokok", "book", "origin"], 5, "木", [
+        ("本", "hon", "buku"),
+        ("日本", "nihon", "Jepang"),
+        ("本当", "hontou", "benar/sungguh"),
+    ], [
+        ("図書館で本を借りました。", "Toshokan de hon o karimashita.", "Saya meminjam buku di perpustakaan."),
+        ("それは本当ですか。", "Sore wa hontou desu ka.", "Apakah itu benar?"),
+    ]),
+    ("kuni", "国", ["コク"], ["くに"], ["negara", "country"], 8, "囗", [
+        ("国", "kuni", "negara"),
+        ("外国", "gaikoku", "luar negeri"),
+        ("中国", "chuugoku", "Tiongkok"),
+    ], [
+        ("私の国はインドネシアです。", "Watashi no kuni wa Indoneshia desu.", "Negara saya adalah Indonesia."),
+        ("外国へ旅行したいです。", "Gaikoku e ryokou shitai desu.", "Saya ingin bepergian ke luar negeri."),
+    ]),
+    ("machi", "町", ["チョウ"], ["まち"], ["kota kecil", "town"], 7, "田", [
+        ("町", "machi", "kota kecil"),
+        ("下町", "shitamachi", "kota bawah/kota tua"),
+        ("町長", "chouchou", "kepala kota kecil"),
+    ], [
+        ("この町は静かです。", "Kono machi wa shizuka desu.", "Kota kecil ini tenang."),
+        ("下町を散歩しました。", "Shitamachi o sanpo shimashita.", "Saya berjalan-jalan di kota tua."),
+    ]),
+    ("mura", "村", ["ソン"], ["むら"], ["desa", "village"], 7, "木", [
+        ("村", "mura", "desa"),
+        ("農村", "nouson", "desa pertanian"),
+        ("村人", "murabito", "penduduk desa"),
+    ], [
+        ("祖父母は村に住んでいます。", "Sofubo wa mura ni sunde imasu.", "Kakek-nenek saya tinggal di desa."),
+        ("この村はとても美しいです。", "Kono mura wa totemo utsukushii desu.", "Desa ini sangat indah."),
+    ]),
+    ("eki", "駅", ["エキ"], [], ["stasiun", "station"], 14, "馬", [
+        ("駅", "eki", "stasiun"),
+        ("駅員", "ekiin", "petugas stasiun"),
+        ("駅前", "ekimae", "depan stasiun"),
+    ], [
+        ("駅まで歩きます。", "Eki made arukimasu.", "Saya berjalan kaki sampai stasiun."),
+        ("駅前で待ち合わせましょう。", "Ekimae de machiawasemashou.", "Ayo bertemu di depan stasiun."),
+    ]),
+    ("mise", "店", ["テン"], ["みせ"], ["toko", "shop", "store"], 8, "广", [
+        ("店", "mise", "toko"),
+        ("店員", "ten'in", "pegawai toko"),
+        ("喫茶店", "kissaten", "kedai kopi"),
+    ], [
+        ("あの店でパンを買いました。", "Ano mise de pan o kaimashita.", "Saya membeli roti di toko itu."),
+        ("喫茶店でコーヒーを飲みました。", "Kissaten de koohii o nomimashita.", "Saya minum kopi di kedai kopi."),
+    ]),
+    ("ie", "家", ["カ", "ケ"], ["いえ", "うち"], ["rumah", "keluarga", "house", "family"], 10, "宀", [
+        ("家", "ie", "rumah"),
+        ("家族", "kazoku", "keluarga"),
+        ("家庭", "katei", "rumah tangga"),
+    ], [
+        ("家で勉強します。", "Ie de benkyou shimasu.", "Saya belajar di rumah."),
+        ("家族と一緒に住んでいます。", "Kazoku to issho ni sunde imasu.", "Saya tinggal bersama keluarga."),
+    ]),
+    ("ookii", "大", ["ダイ", "タイ"], ["おお", "おお-きい"], ["besar", "big", "large"], 3, "大", [
+        ("大きい", "ookii", "besar"),
+        ("大学", "daigaku", "universitas"),
+        ("大切", "taisetsu", "penting"),
+    ], [
+        ("この犬は大きいです。", "Kono inu wa ookii desu.", "Anjing ini besar."),
+        ("家族は私にとって大切です。", "Kazoku wa watashi ni totte taisetsu desu.", "Keluarga penting bagi saya."),
+    ]),
+    ("chiisai", "小", ["ショウ"], ["ちい-さい", "こ", "お"], ["kecil", "small"], 3, "小", [
+        ("小さい", "chiisai", "kecil"),
+        ("小学校", "shougakkou", "SD"),
+        ("小説", "shousetsu", "novel"),
+    ], [
+        ("この部屋は小さいです。", "Kono heya wa chiisai desu.", "Kamar ini kecil."),
+        ("小説を読むのが好きです。", "Shousetsu o yomu no ga suki desu.", "Saya suka membaca novel."),
+    ]),
+    ("ooi", "多", ["タ"], ["おお-い"], ["banyak", "many"], 6, "夕", [
+        ("多い", "ooi", "banyak"),
+        ("多分", "tabun", "mungkin"),
+        ("多数", "tasuu", "banyak jumlah"),
+    ], [
+        ("この町は人が多いです。", "Kono machi wa hito ga ooi desu.", "Kota ini banyak orangnya."),
+        ("多分、明日雨が降ります。", "Tabun, ashita ame ga furimasu.", "Mungkin besok akan hujan."),
+    ]),
+    ("sukunai", "少", ["ショウ"], ["すく-ない", "すこ-し"], ["sedikit", "few", "little"], 4, "小", [
+        ("少ない", "sukunai", "sedikit"),
+        ("少し", "sukoshi", "sedikit/agak"),
+        ("少年", "shounen", "anak laki-laki/bocah"),
+    ], [
+        ("お金が少ないです。", "Okane ga sukunai desu.", "Uangnya sedikit."),
+        ("少し待ってください。", "Sukoshi matte kudasai.", "Tolong tunggu sebentar."),
+    ]),
+    ("takai", "高", ["コウ"], ["たか-い"], ["tinggi", "mahal", "tall", "expensive"], 10, "高", [
+        ("高い", "takai", "tinggi/mahal"),
+        ("高校", "koukou", "SMA"),
+        ("高速", "kousoku", "kecepatan tinggi"),
+    ], [
+        ("この時計は高いです。", "Kono tokei wa takai desu.", "Jam ini mahal."),
+        ("高校生です。", "Koukousei desu.", "Saya siswa SMA."),
+    ]),
+    ("yasui", "安", ["アン"], ["やす-い"], ["murah", "aman", "cheap", "safe"], 6, "宀", [
+        ("安い", "yasui", "murah"),
+        ("安全", "anzen", "aman"),
+        ("不安", "fuan", "khawatir/cemas"),
+    ], [
+        ("このレストランは安いです。", "Kono resutoran wa yasui desu.", "Restoran ini murah."),
+        ("安全運転をしてください。", "Anzen unten o shite kudasai.", "Tolong berkendara dengan aman."),
+    ]),
+    ("atarashii", "新", ["シン"], ["あたら-しい", "あら-た"], ["baru", "new"], 13, "斤", [
+        ("新しい", "atarashii", "baru"),
+        ("新聞", "shinbun", "koran"),
+        ("新年", "shinnen", "tahun baru"),
+    ], [
+        ("新しいかばんを買いました。", "Atarashii kaban o kaimashita.", "Saya membeli tas baru."),
+        ("新年おめでとうございます。", "Shinnen omedetou gozaimasu.", "Selamat tahun baru."),
+    ]),
+    ("furui", "古", ["コ"], ["ふる-い"], ["tua", "lama", "old"], 5, "口", [
+        ("古い", "furui", "tua/lama"),
+        ("中古", "chuuko", "bekas"),
+        ("古本", "furuhon", "buku bekas"),
+    ], [
+        ("これは古い家です。", "Kore wa furui ie desu.", "Ini adalah rumah tua."),
+        ("中古の車を買いました。", "Chuuko no kuruma o kaimashita.", "Saya membeli mobil bekas."),
+    ]),
+    ("nagai", "長", ["チョウ"], ["なが-い"], ["panjang", "kepala/pemimpin", "long", "chief"], 8, "長", [
+        ("長い", "nagai", "panjang"),
+        ("社長", "shachou", "presiden direktur"),
+        ("校長", "kouchou", "kepala sekolah"),
+    ], [
+        ("髪が長いです。", "Kami ga nagai desu.", "Rambutnya panjang."),
+        ("彼は会社の社長です。", "Kare wa kaisha no shachou desu.", "Dia presiden direktur perusahaan."),
+    ]),
+    ("shiro", "白", ["ハク", "ビャク"], ["しろ", "しろ-い"], ["putih", "white"], 5, "白", [
+        ("白い", "shiroi", "putih"),
+        ("白", "shiro", "warna putih"),
+        ("面白い", "omoshiroi", "menarik/lucu"),
+    ], [
+        ("雪は白いです。", "Yuki wa shiroi desu.", "Salju berwarna putih."),
+        ("この映画は面白いです。", "Kono eiga wa omoshiroi desu.", "Film ini menarik."),
+    ]),
+    ("nani", "何", ["カ"], ["なに", "なん"], ["apa", "what"], 7, "人", [
+        ("何", "nani", "apa"),
+        ("何時", "nanji", "jam berapa"),
+        ("何人", "nannin", "berapa orang"),
+    ], [
+        ("これは何ですか。", "Kore wa nan desu ka.", "Ini apa?"),
+        ("何時に会いましょうか。", "Nanji ni aimashou ka.", "Jam berapa kita bertemu?"),
+    ]),
+    ("kuruma", "車", ["シャ"], ["くるま"], ["mobil", "kendaraan", "car", "vehicle"], 7, "車", [
+        ("車", "kuruma", "mobil"),
+        ("電車", "densha", "kereta listrik"),
+        ("自動車", "jidousha", "mobil/kendaraan bermotor"),
+    ], [
+        ("車で会社に行きます。", "Kuruma de kaisha ni ikimasu.", "Saya pergi ke kantor naik mobil."),
+        ("毎日電車に乗ります。", "Mainichi densha ni norimasu.", "Setiap hari saya naik kereta."),
+    ]),
+    ("den", "電", ["デン"], [], ["listrik", "electricity"], 13, "雨", [
+        ("電車", "densha", "kereta listrik"),
+        ("電話", "denwa", "telepon"),
+        ("電気", "denki", "listrik/lampu"),
+    ], [
+        ("電気を消してください。", "Denki o keshite kudasai.", "Tolong matikan lampu."),
+        ("電話番号を教えてください。", "Denwa bangou o oshiete kudasai.", "Tolong beritahu nomor telepon Anda."),
+    ]),
+    ("michi", "道", ["ドウ"], ["みち"], ["jalan", "road", "way"], 12, "辶", [
+        ("道", "michi", "jalan"),
+        ("道路", "douro", "jalan raya"),
+        ("北海道", "hokkaidou", "Hokkaido"),
+    ], [
+        ("この道をまっすぐ行ってください。", "Kono michi o massugu itte kudasai.", "Tolong jalan lurus di jalan ini."),
+        ("道路が混んでいます。", "Douro ga konde imasu.", "Jalan raya sedang macet."),
+    ]),
 ]
 
 PLACEHOLDER_COUNTS = {"N4": 5, "N3": 5, "N2": 5, "N1": 5}
