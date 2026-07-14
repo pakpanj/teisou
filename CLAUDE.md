@@ -16,12 +16,17 @@ through dictionary lookup and camera-based scanning. State management is
 | 5 | Cam Detector (offline Japanese OCR scanning) | ✅ |
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
-| 8+ | Full Kanji/Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | ⬜ not started |
+| 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | ⬜ not started |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
 Dictionary) but is a separate concern. If you're told to work on "Batch 4"
-going forward, confirm which one is meant.
+going forward, confirm which one is meant. Similarly, the Kanji module
+above was requested mid-session as "Batch 7" — by that point Batch 7 was
+already taken (full Kotoba dataset, previous row), so it's recorded here
+as Batch 8. If told to work on "Batch 7" going forward, confirm which is
+meant.
 
 ## Architecture
 
@@ -131,6 +136,74 @@ going forward, confirm which one is meant.
   reached from the category screen's app bar) is a standalone practice
   tool — answering questions doesn't touch progress; marking "Sudah
   Dipelajari" stays a deliberate action on the detail screen.
+- **Kanji module** (Batch 8) extends Batch 4's `KanjiEntry` the same way
+  Kotoba extended `KotobaEntry` — added `svgAsset`, `radical`,
+  `wordExamples`/`sentenceExamples` (reusing the same `SentenceExample`
+  class Kotoba uses, promoted from `KotobaSentenceExample` to be
+  module-neutral), and `examples` became a *computed* getter (pairs
+  `wordExamples[i]` with `sentenceExamples[i]`) so
+  `search/kanji_detail_screen.dart` — Batch 4's original search-flow
+  detail screen — kept working unchanged. There are deliberately **two**
+  Kanji detail screens: that search-flow one (static `KanjiGlyph`, no
+  next/prev, reached from `SearchScreen`) and
+  `kanji/kanji_word_detail_screen.dart` (animated `StrokeOrderAnimator`,
+  next/prev across a level's kanji list, reached from
+  `KanjiLevelScreen`'s grid) — don't conflate them.
+  - **Stroke order**: `assets/kanjivg/{unicode_hex}.svg` (240 files, N5+N4
+    only, fetched via `scripts/fetch_kanjivg.py` from the upstream
+    KanjiVG repo — CC BY-SA, attributed in `AboutScreen`) are parsed by
+    `KanjiVgParser` (`core/services/kanjivg_parser.dart`) into `Path`
+    objects — a small hand-written parser, not `flutter_svg`, because
+    KanjiVG's generated paths only ever use `M`/`c` commands (confirmed
+    by inspecting real files) and `flutter_svg` has no public
+    string-to-`Path` API. `StrokeOrderAnimator`
+    (`core/widgets/stroke_order_animator.dart`) drives a **single**
+    continuous `AnimationController` (not one per stroke) and computes
+    `completeStrokes`/`partialStroke` from its 0-1 value each frame; it
+    also has a static "show all strokes numbered" mode reusing KanjiVG's
+    own pre-computed `StrokeNumbers` label positions. `KanjiGlyph` (the
+    plain static glyph used by the search-flow detail screen and
+    anywhere else a non-animated character is needed) also goes through
+    `KanjiVgParser` rather than `SvgPicture.asset` — the raw KanjiVG SVG
+    file bundles that same `StrokeNumbers` text layer, so a naive
+    `SvgPicture.asset(svgAsset)` draws stroke-count digits on top of the
+    glyph everywhere it's used. This actually shipped that way through
+    Batches 8's early sections and only got caught by chance while
+    eyeballing search results during Fase 1's final verification pass —
+    look for it if `KanjiGlyph` output ever looks numbered/cluttered
+    again.
+  - **Content scope**: `scripts/kanji_char_lists.py` is the single locked
+    source of truth for which 107 N5 + 133 N4 characters are in scope —
+    both `fetch_kanjivg.py` (which SVGs to download) and
+    `generate_kanji_seed.py` (which kanji to write full content for)
+    import it, so the two can't silently drift apart. Every content batch
+    committed during dataset authoring was cross-checked against this
+    list (`set(dataset_characters) == set(locked_characters)`) before
+    committing — do the same for N3-N1 later rather than trusting a
+    manual re-read of the character strings; a mid-session miscount
+    (said 22, was actually 24) is exactly the failure mode this guards
+    against.
+  - **Progress**: `KanjiProgressRepository` mirrors
+    `KotobaProgressRepository`/`SavedWordsRepository` exactly —
+    SharedPreferences (`kanji_learned_ids`) is the source of truth,
+    `users/{uid}/kanjiProgress/{kanjiId}` is a best-effort Firestore
+    mirror, `kanjiLearnedIdsProvider` is the single thing screens watch
+    and `ref.invalidate()` after marking/unmarking. **Known gap shared
+    with Kotoba's identical pattern**: `_toggleLearned` in both
+    `KanjiWordDetailScreen` and `KotobaWordDetailScreen` `await`s the
+    repository call with no try/catch — if the Firestore mirror write
+    throws (e.g. offline), the local write already succeeded but the
+    button's spinner never clears until the screen is revisited, since
+    the `setState(() => _togglingLearned = false)` after it never runs.
+    Not fixed as part of Batch 8 since it's pre-existing in already-
+    shipped Kotoba code too and touching both isn't this batch's scope —
+    worth a dedicated pass later.
+  - **Quiz** (`kanji_quiz_screen.dart`) has two modes picked from a
+    bottom sheet (`KanjiLevelScreen`'s quiz icon) — kanji→arti (mirrors
+    `KotobaQuizScreen` almost exactly) and arti→kanji (same question/
+    scoring logic, just swaps which field is the prompt vs. the options
+    and renders kanji options in a large centered style instead of small
+    left-aligned text).
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
@@ -144,9 +217,9 @@ going forward, confirm which one is meant.
   3), but AdMob uses Google's public **test** ad unit IDs
   (`lib/core/services/ad_service.dart`, `AndroidManifest.xml`) — swap for
   production IDs before release (Batch 12+).
-- Avatar art and kanji stroke-order SVGs (`assets/svg/kanji/` doesn't exist
-  yet — `KanjiGlyph` falls back to `Text`) are unbuilt; every place that
-  renders them already has a graceful text/emoji fallback.
+- Avatar art is unbuilt; every place that renders it already has a
+  graceful emoji fallback. (Kanji stroke-order art *is* built now, as of
+  Batch 8 — see the Kanji module note above; don't confuse the two.)
 - **No Kotoba vocab images have been uploaded to Firebase Storage yet** —
   all 519 words across all 45 categories have a real `imagePath` (see
   `KotobaImage`'s gracefully-handled 404 fallback above), but the actual
@@ -167,9 +240,19 @@ going forward, confirm which one is meant.
   `makanan_indonesia`'s Japanese transliterations of Indonesian dishes
   carry more uncertainty than native-word categories, so it stayed at 7
   entries rather than reaching for shakier ones).
-- Kanji dataset: only N5 has real entries (15). N4-N1 are `placeholder:
-  true` marker rows (5 each) so level filters aren't empty — see
-  `scripts/generate_kanji_seed.py` to add real ones.
+- Kanji dataset: N5 (107) and N4 (133) are fully real as of Batch 8 — see
+  the Kanji module note above. N3-N1 are still `placeholder: true` marker
+  rows (5 each) so level filters aren't empty — see
+  `scripts/generate_kanji_seed.py` (add an `N3_KANJI` list + a
+  `build_n3_entries()` mirroring the existing N4 ones, drop "N3" from
+  `PLACEHOLDER_COUNTS`, flip its `_levels.json` entry to `available`) and
+  `scripts/kanji_char_lists.py` (add the locked `N3_CHARACTERS` list
+  first, before writing any content against it).
+- Every `KanjiEntry.relatedBunpou` is currently an empty list — there's
+  no Bunpou module yet to link a kanji to specific grammar points. The
+  field and its UI section (`KanjiWordDetailScreen`, conditionally
+  hidden when empty) are already wired for whenever Bunpou content
+  exists; nothing else needs to change to start populating it.
 - Cam Detector's Japanese OCR uses ML Kit's **bundled** model
   (`com.google.mlkit:text-recognition-japanese:16.0.1`, ~4MB, added as an
   explicit `implementation` dependency in `android/app/build.gradle.kts`)
@@ -221,3 +304,17 @@ going forward, confirm which one is meant.
 the cheapest way to catch native Android build breaks (Gradle dependency
 conflicts, manifest merge failures) before Codemagic does. minSdk is 24
 (bumped from Flutter's default for the `camera` plugin).
+
+**`flutter build apk --release` currently fails** at `:app:minifyReleaseWithR8`
+with missing-class errors for `com.google.mlkit.vision.text.{devanagari,korean}`
+— R8 tries to fully resolve every language-variant class the
+`google_mlkit_text_recognition` plugin's bridge references, but the app
+only bundles the Japanese-specific native package (see the Cam Detector
+OCR note above). Debug builds don't hit this since R8 doesn't run, which
+is presumably why it's gone unnoticed — nothing in the existing verify
+workflow tries a release build. Not fixed yet; needs ProGuard keep rules
+(or `-dontwarn`) for the unused language variants in
+`android/app/proguard-rules.pro`. Until this is fixed, there is no way
+to produce a real release APK size number — don't quote debug APK size
+(it's 200MB+, inflated by debug symbols and unshrunk resources) as if it
+were representative of what would ship.
