@@ -23,14 +23,6 @@ class ModuleInfo {
 /// screen is built out.
 const kComingSoonModules = <ModuleInfo>[
   ModuleInfo(
-    id: 'kanji',
-    title: 'Kanji N5',
-    description: 'Belajar karakter Kanji dasar level N5',
-    iconAsset: '',
-    status: ModuleStatus.comingSoon,
-    requiresPremium: true,
-  ),
-  ModuleInfo(
     id: 'particle',
     title: 'Partikel',
     description: 'Memahami partikel は, が, を, に, dan lainnya',

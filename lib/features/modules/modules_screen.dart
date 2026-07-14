@@ -6,6 +6,7 @@ import '../../data/models/kana_type.dart';
 import '../../data/models/module_info.dart';
 import '../cam_detector/cam_detector_screen.dart';
 import '../flashcard/flashcard_screen.dart';
+import '../kanji/kanji_home_screen.dart';
 import '../kotoba/kotoba_home_screen.dart';
 import 'widgets/coming_soon_content.dart';
 
@@ -70,6 +71,18 @@ class ModulesScreen extends StatelessWidget {
             onTap: () => AppNavigator.slideFromRight(
               context,
               const KotobaHomeScreen(),
+            ),
+          ),
+          const SizedBox(height: 12),
+          _AvailableModuleCard(
+            emoji: '字',
+            backgroundColor: AppColors.tertiaryAmberCardBg,
+            iconColor: AppColors.tertiaryAmber,
+            title: 'Kanji',
+            subtitle: 'Belajar Kanji per level JLPT',
+            onTap: () => AppNavigator.slideFromRight(
+              context,
+              const KanjiHomeScreen(),
             ),
           ),
           const SizedBox(height: 28),
@@ -187,7 +200,6 @@ class _ComingSoonCard extends StatelessWidget {
   const _ComingSoonCard({required this.module});
 
   static const _icons = {
-    'kanji': '字',
     'particle': 'を',
     'bunpou': '文',
     'choukai': '🎧',
