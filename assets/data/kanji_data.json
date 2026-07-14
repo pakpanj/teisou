@@ -7543,6 +7543,1099 @@
     "relatedBunpou": []
   },
   {
+    "id": "kanji_hayai",
+    "character": "早",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ソウ",
+      "サッ"
+    ],
+    "kunyomi": [
+      "はや-い"
+    ],
+    "meanings": [
+      "awal",
+      "cepat",
+      "early",
+      "fast"
+    ],
+    "strokeCount": 6,
+    "svgAsset": "assets/kanjivg/065e9.svg",
+    "radical": "日",
+    "wordExamples": [
+      {
+        "word": "早い",
+        "reading": "hayai",
+        "meaning": "awal/cepat"
+      },
+      {
+        "word": "早朝",
+        "reading": "souchou",
+        "meaning": "pagi-pagi buta"
+      },
+      {
+        "word": "早く",
+        "reading": "hayaku",
+        "meaning": "cepat/segera"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "今日は早く起きました。",
+        "romaji": "Kyou wa hayaku okimashita.",
+        "translation": "Hari ini saya bangun pagi-pagi."
+      },
+      {
+        "japanese": "早朝に散歩します。",
+        "romaji": "Souchou ni sanpo shimasu.",
+        "translation": "Saya berjalan-jalan pagi-pagi buta."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_osoi",
+    "character": "遅",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "チ"
+    ],
+    "kunyomi": [
+      "おそ-い",
+      "おく-れる"
+    ],
+    "meanings": [
+      "lambat",
+      "terlambat",
+      "late",
+      "slow"
+    ],
+    "strokeCount": 12,
+    "svgAsset": "assets/kanjivg/09045.svg",
+    "radical": "辶",
+    "wordExamples": [
+      {
+        "word": "遅い",
+        "reading": "osoi",
+        "meaning": "lambat/terlambat"
+      },
+      {
+        "word": "遅れる",
+        "reading": "okureru",
+        "meaning": "terlambat"
+      },
+      {
+        "word": "遅刻",
+        "reading": "chikoku",
+        "meaning": "keterlambatan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "バスが遅れています。",
+        "romaji": "Basu ga okurete imasu.",
+        "translation": "Bisnya terlambat."
+      },
+      {
+        "japanese": "学校に遅刻しました。",
+        "romaji": "Gakkou ni chikoku shimashita.",
+        "translation": "Saya terlambat ke sekolah."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_tsuyoi",
+    "character": "強",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "キョウ",
+      "ゴウ"
+    ],
+    "kunyomi": [
+      "つよ-い",
+      "し-いる"
+    ],
+    "meanings": [
+      "kuat",
+      "strong"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/05f37.svg",
+    "radical": "弓",
+    "wordExamples": [
+      {
+        "word": "強い",
+        "reading": "tsuyoi",
+        "meaning": "kuat"
+      },
+      {
+        "word": "勉強",
+        "reading": "benkyou",
+        "meaning": "belajar"
+      },
+      {
+        "word": "強調",
+        "reading": "kyouchou",
+        "meaning": "penekanan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "彼は強いです。",
+        "romaji": "Kare wa tsuyoi desu.",
+        "translation": "Dia kuat."
+      },
+      {
+        "japanese": "毎日日本語を勉強します。",
+        "romaji": "Mainichi nihongo o benkyou shimasu.",
+        "translation": "Setiap hari saya belajar bahasa Jepang."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_yowai",
+    "character": "弱",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ジャク"
+    ],
+    "kunyomi": [
+      "よわ-い"
+    ],
+    "meanings": [
+      "lemah",
+      "weak"
+    ],
+    "strokeCount": 10,
+    "svgAsset": "assets/kanjivg/05f31.svg",
+    "radical": "弓",
+    "wordExamples": [
+      {
+        "word": "弱い",
+        "reading": "yowai",
+        "meaning": "lemah"
+      },
+      {
+        "word": "弱点",
+        "reading": "jakuten",
+        "meaning": "kelemahan"
+      },
+      {
+        "word": "弱虫",
+        "reading": "yowamushi",
+        "meaning": "pengecut"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "体が弱いです。",
+        "romaji": "Karada ga yowai desu.",
+        "translation": "Badannya lemah."
+      },
+      {
+        "japanese": "彼の弱点は何ですか。",
+        "romaji": "Kare no jakuten wa nan desu ka.",
+        "translation": "Apa kelemahannya?"
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_omoi",
+    "character": "重",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ジュウ",
+      "チョウ"
+    ],
+    "kunyomi": [
+      "おも-い",
+      "かさ-なる"
+    ],
+    "meanings": [
+      "berat",
+      "heavy"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/091cd.svg",
+    "radical": "里",
+    "wordExamples": [
+      {
+        "word": "重い",
+        "reading": "omoi",
+        "meaning": "berat"
+      },
+      {
+        "word": "重要",
+        "reading": "juuyou",
+        "meaning": "penting"
+      },
+      {
+        "word": "体重",
+        "reading": "taijuu",
+        "meaning": "berat badan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "このかばんは重いです。",
+        "romaji": "Kono kaban wa omoi desu.",
+        "translation": "Tas ini berat."
+      },
+      {
+        "japanese": "これは重要な問題です。",
+        "romaji": "Kore wa juuyou na mondai desu.",
+        "translation": "Ini masalah penting."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_karui",
+    "character": "軽",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ケイ"
+    ],
+    "kunyomi": [
+      "かる-い"
+    ],
+    "meanings": [
+      "ringan",
+      "light"
+    ],
+    "strokeCount": 12,
+    "svgAsset": "assets/kanjivg/08efd.svg",
+    "radical": "車",
+    "wordExamples": [
+      {
+        "word": "軽い",
+        "reading": "karui",
+        "meaning": "ringan"
+      },
+      {
+        "word": "軽食",
+        "reading": "keishoku",
+        "meaning": "makanan ringan"
+      },
+      {
+        "word": "気軽",
+        "reading": "kigaru",
+        "meaning": "santai/tanpa beban"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "このかばんは軽いです。",
+        "romaji": "Kono kaban wa karui desu.",
+        "translation": "Tas ini ringan."
+      },
+      {
+        "japanese": "軽食を食べましょう。",
+        "romaji": "Keishoku o tabemashou.",
+        "translation": "Ayo makan makanan ringan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kurai",
+    "character": "暗",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "アン"
+    ],
+    "kunyomi": [
+      "くら-い"
+    ],
+    "meanings": [
+      "gelap",
+      "dark"
+    ],
+    "strokeCount": 13,
+    "svgAsset": "assets/kanjivg/06697.svg",
+    "radical": "日",
+    "wordExamples": [
+      {
+        "word": "暗い",
+        "reading": "kurai",
+        "meaning": "gelap"
+      },
+      {
+        "word": "暗記",
+        "reading": "anki",
+        "meaning": "menghafal"
+      },
+      {
+        "word": "真っ暗",
+        "reading": "makkura",
+        "meaning": "gelap gulita"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "部屋が暗いです。",
+        "romaji": "Heya ga kurai desu.",
+        "translation": "Kamarnya gelap."
+      },
+      {
+        "japanese": "単語を暗記します。",
+        "romaji": "Tango o anki shimasu.",
+        "translation": "Saya menghafal kosakata."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_akarui",
+    "character": "明",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "メイ",
+      "ミョウ"
+    ],
+    "kunyomi": [
+      "あか-るい",
+      "あ-ける"
+    ],
+    "meanings": [
+      "terang",
+      "bright",
+      "clear"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/0660e.svg",
+    "radical": "日",
+    "wordExamples": [
+      {
+        "word": "明るい",
+        "reading": "akarui",
+        "meaning": "terang/ceria"
+      },
+      {
+        "word": "説明",
+        "reading": "setsumei",
+        "meaning": "penjelasan"
+      },
+      {
+        "word": "明日",
+        "reading": "ashita",
+        "meaning": "besok"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "この部屋は明るいです。",
+        "romaji": "Kono heya wa akarui desu.",
+        "translation": "Kamar ini terang."
+      },
+      {
+        "japanese": "もう一度説明してください。",
+        "romaji": "Mou ichido setsumei shite kudasai.",
+        "translation": "Tolong jelaskan sekali lagi."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_fukai",
+    "character": "深",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シン"
+    ],
+    "kunyomi": [
+      "ふか-い"
+    ],
+    "meanings": [
+      "dalam",
+      "deep"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/06df1.svg",
+    "radical": "水",
+    "wordExamples": [
+      {
+        "word": "深い",
+        "reading": "fukai",
+        "meaning": "dalam"
+      },
+      {
+        "word": "深夜",
+        "reading": "shin'ya",
+        "meaning": "tengah malam"
+      },
+      {
+        "word": "深呼吸",
+        "reading": "shinkokyuu",
+        "meaning": "napas dalam"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "この川は深いです。",
+        "romaji": "Kono kawa wa fukai desu.",
+        "translation": "Sungai ini dalam."
+      },
+      {
+        "japanese": "深夜まで働きました。",
+        "romaji": "Shin'ya made hatarakimashita.",
+        "translation": "Saya bekerja sampai tengah malam."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_asai",
+    "character": "浅",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "セン"
+    ],
+    "kunyomi": [
+      "あさ-い"
+    ],
+    "meanings": [
+      "dangkal",
+      "shallow"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/06d45.svg",
+    "radical": "水",
+    "wordExamples": [
+      {
+        "word": "浅い",
+        "reading": "asai",
+        "meaning": "dangkal"
+      },
+      {
+        "word": "浅瀬",
+        "reading": "asase",
+        "meaning": "perairan dangkal"
+      },
+      {
+        "word": "経験が浅い",
+        "reading": "keiken ga asai",
+        "meaning": "pengalaman minim"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "この川は浅いです。",
+        "romaji": "Kono kawa wa asai desu.",
+        "translation": "Sungai ini dangkal."
+      },
+      {
+        "japanese": "彼はまだ経験が浅いです。",
+        "romaji": "Kare wa mada keiken ga asai desu.",
+        "translation": "Pengalamannya masih minim."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_futoi",
+    "character": "太",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "タイ",
+      "タ"
+    ],
+    "kunyomi": [
+      "ふと-い",
+      "ふと-る"
+    ],
+    "meanings": [
+      "gemuk",
+      "tebal",
+      "fat",
+      "thick"
+    ],
+    "strokeCount": 4,
+    "svgAsset": "assets/kanjivg/0592a.svg",
+    "radical": "大",
+    "wordExamples": [
+      {
+        "word": "太い",
+        "reading": "futoi",
+        "meaning": "tebal/gemuk"
+      },
+      {
+        "word": "太る",
+        "reading": "futoru",
+        "meaning": "menjadi gemuk"
+      },
+      {
+        "word": "丸太",
+        "reading": "maruta",
+        "meaning": "batang kayu"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "この木は太いです。",
+        "romaji": "Kono ki wa futoi desu.",
+        "translation": "Pohon ini besar/tebal."
+      },
+      {
+        "japanese": "最近太りました。",
+        "romaji": "Saikin futorimashita.",
+        "translation": "Akhir-akhir ini saya menjadi gemuk."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_hosoi",
+    "character": "細",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "サイ"
+    ],
+    "kunyomi": [
+      "ほそ-い",
+      "こま-かい"
+    ],
+    "meanings": [
+      "kurus",
+      "tipis",
+      "rinci",
+      "thin",
+      "detailed"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/07d30.svg",
+    "radical": "糸",
+    "wordExamples": [
+      {
+        "word": "細い",
+        "reading": "hosoi",
+        "meaning": "kurus/tipis"
+      },
+      {
+        "word": "細かい",
+        "reading": "komakai",
+        "meaning": "rinci/kecil-kecil"
+      },
+      {
+        "word": "詳細",
+        "reading": "shousai",
+        "meaning": "rincian"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "この道は細いです。",
+        "romaji": "Kono michi wa hosoi desu.",
+        "translation": "Jalan ini sempit."
+      },
+      {
+        "japanese": "細かく説明してください。",
+        "romaji": "Komakaku setsumei shite kudasai.",
+        "translation": "Tolong jelaskan secara rinci."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_zu",
+    "character": "図",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ズ",
+      "ト"
+    ],
+    "kunyomi": [
+      "はか-る"
+    ],
+    "meanings": [
+      "gambar",
+      "diagram",
+      "map"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/056f3.svg",
+    "radical": "囗",
+    "wordExamples": [
+      {
+        "word": "図書館",
+        "reading": "toshokan",
+        "meaning": "perpustakaan"
+      },
+      {
+        "word": "地図",
+        "reading": "chizu",
+        "meaning": "peta"
+      },
+      {
+        "word": "図",
+        "reading": "zu",
+        "meaning": "gambar/diagram"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "図書館で勉強します。",
+        "romaji": "Toshokan de benkyou shimasu.",
+        "translation": "Saya belajar di perpustakaan."
+      },
+      {
+        "japanese": "地図を見てください。",
+        "romaji": "Chizu o mite kudasai.",
+        "translation": "Tolong lihat peta."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_i2",
+    "character": "意",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "イ"
+    ],
+    "kunyomi": [],
+    "meanings": [
+      "maksud",
+      "pikiran",
+      "meaning",
+      "intention"
+    ],
+    "strokeCount": 13,
+    "svgAsset": "assets/kanjivg/0610f.svg",
+    "radical": "心",
+    "wordExamples": [
+      {
+        "word": "意味",
+        "reading": "imi",
+        "meaning": "arti/makna"
+      },
+      {
+        "word": "意見",
+        "reading": "iken",
+        "meaning": "pendapat"
+      },
+      {
+        "word": "注意",
+        "reading": "chuui",
+        "meaning": "perhatian"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "この言葉の意味は何ですか。",
+        "romaji": "Kono kotoba no imi wa nan desu ka.",
+        "translation": "Apa arti kata ini?"
+      },
+      {
+        "japanese": "注意してください。",
+        "romaji": "Chuui shite kudasai.",
+        "translation": "Tolong berhati-hati."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_aji",
+    "character": "味",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ミ"
+    ],
+    "kunyomi": [
+      "あじ",
+      "あじ-わう"
+    ],
+    "meanings": [
+      "rasa",
+      "taste",
+      "flavor"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/05473.svg",
+    "radical": "口",
+    "wordExamples": [
+      {
+        "word": "味",
+        "reading": "aji",
+        "meaning": "rasa"
+      },
+      {
+        "word": "意味",
+        "reading": "imi",
+        "meaning": "arti"
+      },
+      {
+        "word": "趣味",
+        "reading": "shumi",
+        "meaning": "hobi"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "この料理は味がいいです。",
+        "romaji": "Kono ryouri wa aji ga ii desu.",
+        "translation": "Masakan ini rasanya enak."
+      },
+      {
+        "japanese": "趣味は何ですか。",
+        "romaji": "Shumi wa nan desu ka.",
+        "translation": "Apa hobi Anda?"
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kubaru",
+    "character": "配",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ハイ"
+    ],
+    "kunyomi": [
+      "くば-る"
+    ],
+    "meanings": [
+      "membagikan",
+      "distribute"
+    ],
+    "strokeCount": 10,
+    "svgAsset": "assets/kanjivg/0914d.svg",
+    "radical": "酉",
+    "wordExamples": [
+      {
+        "word": "配る",
+        "reading": "kubaru",
+        "meaning": "membagikan"
+      },
+      {
+        "word": "心配",
+        "reading": "shinpai",
+        "meaning": "khawatir"
+      },
+      {
+        "word": "宅配",
+        "reading": "takuhai",
+        "meaning": "pengiriman ke rumah"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "プリントを配ります。",
+        "romaji": "Purinto o kubarimasu.",
+        "translation": "Saya membagikan lembar cetak."
+      },
+      {
+        "japanese": "心配しないでください。",
+        "romaji": "Shinpai shinaide kudasai.",
+        "translation": "Tolong jangan khawatir."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kata2",
+    "character": "方",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ホウ"
+    ],
+    "kunyomi": [
+      "かた"
+    ],
+    "meanings": [
+      "arah",
+      "cara",
+      "orang (sopan)",
+      "direction",
+      "method"
+    ],
+    "strokeCount": 4,
+    "svgAsset": "assets/kanjivg/065b9.svg",
+    "radical": "方",
+    "wordExamples": [
+      {
+        "word": "方法",
+        "reading": "houhou",
+        "meaning": "metode/cara"
+      },
+      {
+        "word": "使い方",
+        "reading": "tsukaikata",
+        "meaning": "cara pakai"
+      },
+      {
+        "word": "あの方",
+        "reading": "ano kata",
+        "meaning": "orang itu (sopan)"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "使い方を教えてください。",
+        "romaji": "Tsukaikata o oshiete kudasai.",
+        "translation": "Tolong ajarkan cara pakainya."
+      },
+      {
+        "japanese": "この方法は簡単です。",
+        "romaji": "Kono houhou wa kantan desu.",
+        "translation": "Metode ini mudah."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_shi2",
+    "character": "仕",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シ"
+    ],
+    "kunyomi": [
+      "つか-える"
+    ],
+    "meanings": [
+      "melayani",
+      "bekerja",
+      "serve",
+      "work"
+    ],
+    "strokeCount": 5,
+    "svgAsset": "assets/kanjivg/04ed5.svg",
+    "radical": "人",
+    "wordExamples": [
+      {
+        "word": "仕事",
+        "reading": "shigoto",
+        "meaning": "pekerjaan"
+      },
+      {
+        "word": "仕方",
+        "reading": "shikata",
+        "meaning": "cara"
+      },
+      {
+        "word": "仕える",
+        "reading": "tsukaeru",
+        "meaning": "mengabdi"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "仕事は楽しいです。",
+        "romaji": "Shigoto wa tanoshii desu.",
+        "translation": "Pekerjaan itu menyenangkan."
+      },
+      {
+        "japanese": "仕方がありません。",
+        "romaji": "Shikata ga arimasen.",
+        "translation": "Tidak ada cara lain."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_shitsu",
+    "character": "室",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シツ"
+    ],
+    "kunyomi": [
+      "むろ"
+    ],
+    "meanings": [
+      "kamar",
+      "ruangan",
+      "room"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/05ba4.svg",
+    "radical": "宀",
+    "wordExamples": [
+      {
+        "word": "教室",
+        "reading": "kyoushitsu",
+        "meaning": "ruang kelas"
+      },
+      {
+        "word": "図書室",
+        "reading": "toshoshitsu",
+        "meaning": "ruang perpustakaan"
+      },
+      {
+        "word": "室内",
+        "reading": "shitsunai",
+        "meaning": "dalam ruangan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "教室で勉強します。",
+        "romaji": "Kyoushitsu de benkyou shimasu.",
+        "translation": "Saya belajar di ruang kelas."
+      },
+      {
+        "japanese": "室内は暖かいです。",
+        "romaji": "Shitsunai wa atatakai desu.",
+        "translation": "Di dalam ruangan hangat."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_noru",
+    "character": "乗",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ジョウ"
+    ],
+    "kunyomi": [
+      "の-る"
+    ],
+    "meanings": [
+      "menaiki",
+      "ride"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/04e57.svg",
+    "radical": "ノ",
+    "wordExamples": [
+      {
+        "word": "乗る",
+        "reading": "noru",
+        "meaning": "menaiki"
+      },
+      {
+        "word": "乗客",
+        "reading": "joukyaku",
+        "meaning": "penumpang"
+      },
+      {
+        "word": "乗り物",
+        "reading": "norimono",
+        "meaning": "kendaraan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "バスに乗ります。",
+        "romaji": "Basu ni norimasu.",
+        "translation": "Saya naik bis."
+      },
+      {
+        "japanese": "乗り物が好きです。",
+        "romaji": "Norimono ga suki desu.",
+        "translation": "Saya suka kendaraan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_oriru",
+    "character": "降",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "コウ"
+    ],
+    "kunyomi": [
+      "お-りる",
+      "ふ-る"
+    ],
+    "meanings": [
+      "turun",
+      "hujan turun",
+      "descend",
+      "fall"
+    ],
+    "strokeCount": 10,
+    "svgAsset": "assets/kanjivg/0964d.svg",
+    "radical": "阝",
+    "wordExamples": [
+      {
+        "word": "降りる",
+        "reading": "oriru",
+        "meaning": "turun"
+      },
+      {
+        "word": "降る",
+        "reading": "furu",
+        "meaning": "turun (hujan/salju)"
+      },
+      {
+        "word": "乗降",
+        "reading": "joukou",
+        "meaning": "naik-turun"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "次の駅で降ります。",
+        "romaji": "Tsugi no eki de orimasu.",
+        "translation": "Saya turun di stasiun berikutnya."
+      },
+      {
+        "japanese": "雨が降っています。",
+        "romaji": "Ame ga futte imasu.",
+        "translation": "Sedang turun hujan."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_tooru",
+    "character": "通",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ツウ"
+    ],
+    "kunyomi": [
+      "とお-る",
+      "かよ-う"
+    ],
+    "meanings": [
+      "melewati",
+      "berlalu-lalang",
+      "pass",
+      "commute"
+    ],
+    "strokeCount": 10,
+    "svgAsset": "assets/kanjivg/0901a.svg",
+    "radical": "辶",
+    "wordExamples": [
+      {
+        "word": "通る",
+        "reading": "tooru",
+        "meaning": "melewati"
+      },
+      {
+        "word": "通学",
+        "reading": "tsuugaku",
+        "meaning": "pergi-pulang sekolah"
+      },
+      {
+        "word": "交通",
+        "reading": "koutsuu",
+        "meaning": "lalu lintas/transportasi"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "この道を通ります。",
+        "romaji": "Kono michi o toorimasu.",
+        "translation": "Saya melewati jalan ini."
+      },
+      {
+        "japanese": "交通が便利です。",
+        "romaji": "Koutsuu ga benri desu.",
+        "translation": "Transportasinya praktis."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
     "id": "kanji_n3_placeholder_1",
     "character": "",
     "jlptLevel": "N3",

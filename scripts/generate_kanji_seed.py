@@ -1256,6 +1256,183 @@ N4_KANJI = [
         ("車が動きません。", "Kuruma ga ugokimasen.", "Mobilnya tidak bisa bergerak."),
         ("毎日運動します。", "Mainichi undou shimasu.", "Setiap hari saya berolahraga."),
     ]),
+    # --- Batch C: 早遅強弱重軽暗明深浅太細図意味配方仕室乗降通 (22) ---
+    ("hayai", "早", ["ソウ", "サッ"], ["はや-い"], ["awal", "cepat", "early", "fast"], 6, "日", [
+        ("早い", "hayai", "awal/cepat"),
+        ("早朝", "souchou", "pagi-pagi buta"),
+        ("早く", "hayaku", "cepat/segera"),
+    ], [
+        ("今日は早く起きました。", "Kyou wa hayaku okimashita.", "Hari ini saya bangun pagi-pagi."),
+        ("早朝に散歩します。", "Souchou ni sanpo shimasu.", "Saya berjalan-jalan pagi-pagi buta."),
+    ]),
+    ("osoi", "遅", ["チ"], ["おそ-い", "おく-れる"], ["lambat", "terlambat", "late", "slow"], 12, "辶", [
+        ("遅い", "osoi", "lambat/terlambat"),
+        ("遅れる", "okureru", "terlambat"),
+        ("遅刻", "chikoku", "keterlambatan"),
+    ], [
+        ("バスが遅れています。", "Basu ga okurete imasu.", "Bisnya terlambat."),
+        ("学校に遅刻しました。", "Gakkou ni chikoku shimashita.", "Saya terlambat ke sekolah."),
+    ]),
+    ("tsuyoi", "強", ["キョウ", "ゴウ"], ["つよ-い", "し-いる"], ["kuat", "strong"], 11, "弓", [
+        ("強い", "tsuyoi", "kuat"),
+        ("勉強", "benkyou", "belajar"),
+        ("強調", "kyouchou", "penekanan"),
+    ], [
+        ("彼は強いです。", "Kare wa tsuyoi desu.", "Dia kuat."),
+        ("毎日日本語を勉強します。", "Mainichi nihongo o benkyou shimasu.", "Setiap hari saya belajar bahasa Jepang."),
+    ]),
+    ("yowai", "弱", ["ジャク"], ["よわ-い"], ["lemah", "weak"], 10, "弓", [
+        ("弱い", "yowai", "lemah"),
+        ("弱点", "jakuten", "kelemahan"),
+        ("弱虫", "yowamushi", "pengecut"),
+    ], [
+        ("体が弱いです。", "Karada ga yowai desu.", "Badannya lemah."),
+        ("彼の弱点は何ですか。", "Kare no jakuten wa nan desu ka.", "Apa kelemahannya?"),
+    ]),
+    ("omoi", "重", ["ジュウ", "チョウ"], ["おも-い", "かさ-なる"], ["berat", "heavy"], 9, "里", [
+        ("重い", "omoi", "berat"),
+        ("重要", "juuyou", "penting"),
+        ("体重", "taijuu", "berat badan"),
+    ], [
+        ("このかばんは重いです。", "Kono kaban wa omoi desu.", "Tas ini berat."),
+        ("これは重要な問題です。", "Kore wa juuyou na mondai desu.", "Ini masalah penting."),
+    ]),
+    ("karui", "軽", ["ケイ"], ["かる-い"], ["ringan", "light"], 12, "車", [
+        ("軽い", "karui", "ringan"),
+        ("軽食", "keishoku", "makanan ringan"),
+        ("気軽", "kigaru", "santai/tanpa beban"),
+    ], [
+        ("このかばんは軽いです。", "Kono kaban wa karui desu.", "Tas ini ringan."),
+        ("軽食を食べましょう。", "Keishoku o tabemashou.", "Ayo makan makanan ringan."),
+    ]),
+    ("kurai", "暗", ["アン"], ["くら-い"], ["gelap", "dark"], 13, "日", [
+        ("暗い", "kurai", "gelap"),
+        ("暗記", "anki", "menghafal"),
+        ("真っ暗", "makkura", "gelap gulita"),
+    ], [
+        ("部屋が暗いです。", "Heya ga kurai desu.", "Kamarnya gelap."),
+        ("単語を暗記します。", "Tango o anki shimasu.", "Saya menghafal kosakata."),
+    ]),
+    ("akarui", "明", ["メイ", "ミョウ"], ["あか-るい", "あ-ける"], ["terang", "bright", "clear"], 8, "日", [
+        ("明るい", "akarui", "terang/ceria"),
+        ("説明", "setsumei", "penjelasan"),
+        ("明日", "ashita", "besok"),
+    ], [
+        ("この部屋は明るいです。", "Kono heya wa akarui desu.", "Kamar ini terang."),
+        ("もう一度説明してください。", "Mou ichido setsumei shite kudasai.", "Tolong jelaskan sekali lagi."),
+    ]),
+    ("fukai", "深", ["シン"], ["ふか-い"], ["dalam", "deep"], 11, "水", [
+        ("深い", "fukai", "dalam"),
+        ("深夜", "shin'ya", "tengah malam"),
+        ("深呼吸", "shinkokyuu", "napas dalam"),
+    ], [
+        ("この川は深いです。", "Kono kawa wa fukai desu.", "Sungai ini dalam."),
+        ("深夜まで働きました。", "Shin'ya made hatarakimashita.", "Saya bekerja sampai tengah malam."),
+    ]),
+    ("asai", "浅", ["セン"], ["あさ-い"], ["dangkal", "shallow"], 9, "水", [
+        ("浅い", "asai", "dangkal"),
+        ("浅瀬", "asase", "perairan dangkal"),
+        ("経験が浅い", "keiken ga asai", "pengalaman minim"),
+    ], [
+        ("この川は浅いです。", "Kono kawa wa asai desu.", "Sungai ini dangkal."),
+        ("彼はまだ経験が浅いです。", "Kare wa mada keiken ga asai desu.", "Pengalamannya masih minim."),
+    ]),
+    ("futoi", "太", ["タイ", "タ"], ["ふと-い", "ふと-る"], ["gemuk", "tebal", "fat", "thick"], 4, "大", [
+        ("太い", "futoi", "tebal/gemuk"),
+        ("太る", "futoru", "menjadi gemuk"),
+        ("丸太", "maruta", "batang kayu"),
+    ], [
+        ("この木は太いです。", "Kono ki wa futoi desu.", "Pohon ini besar/tebal."),
+        ("最近太りました。", "Saikin futorimashita.", "Akhir-akhir ini saya menjadi gemuk."),
+    ]),
+    ("hosoi", "細", ["サイ"], ["ほそ-い", "こま-かい"], ["kurus", "tipis", "rinci", "thin", "detailed"], 11, "糸", [
+        ("細い", "hosoi", "kurus/tipis"),
+        ("細かい", "komakai", "rinci/kecil-kecil"),
+        ("詳細", "shousai", "rincian"),
+    ], [
+        ("この道は細いです。", "Kono michi wa hosoi desu.", "Jalan ini sempit."),
+        ("細かく説明してください。", "Komakaku setsumei shite kudasai.", "Tolong jelaskan secara rinci."),
+    ]),
+    ("zu", "図", ["ズ", "ト"], ["はか-る"], ["gambar", "diagram", "map"], 7, "囗", [
+        ("図書館", "toshokan", "perpustakaan"),
+        ("地図", "chizu", "peta"),
+        ("図", "zu", "gambar/diagram"),
+    ], [
+        ("図書館で勉強します。", "Toshokan de benkyou shimasu.", "Saya belajar di perpustakaan."),
+        ("地図を見てください。", "Chizu o mite kudasai.", "Tolong lihat peta."),
+    ]),
+    ("i2", "意", ["イ"], [], ["maksud", "pikiran", "meaning", "intention"], 13, "心", [
+        ("意味", "imi", "arti/makna"),
+        ("意見", "iken", "pendapat"),
+        ("注意", "chuui", "perhatian"),
+    ], [
+        ("この言葉の意味は何ですか。", "Kono kotoba no imi wa nan desu ka.", "Apa arti kata ini?"),
+        ("注意してください。", "Chuui shite kudasai.", "Tolong berhati-hati."),
+    ]),
+    ("aji", "味", ["ミ"], ["あじ", "あじ-わう"], ["rasa", "taste", "flavor"], 8, "口", [
+        ("味", "aji", "rasa"),
+        ("意味", "imi", "arti"),
+        ("趣味", "shumi", "hobi"),
+    ], [
+        ("この料理は味がいいです。", "Kono ryouri wa aji ga ii desu.", "Masakan ini rasanya enak."),
+        ("趣味は何ですか。", "Shumi wa nan desu ka.", "Apa hobi Anda?"),
+    ]),
+    ("kubaru", "配", ["ハイ"], ["くば-る"], ["membagikan", "distribute"], 10, "酉", [
+        ("配る", "kubaru", "membagikan"),
+        ("心配", "shinpai", "khawatir"),
+        ("宅配", "takuhai", "pengiriman ke rumah"),
+    ], [
+        ("プリントを配ります。", "Purinto o kubarimasu.", "Saya membagikan lembar cetak."),
+        ("心配しないでください。", "Shinpai shinaide kudasai.", "Tolong jangan khawatir."),
+    ]),
+    ("kata2", "方", ["ホウ"], ["かた"], ["arah", "cara", "orang (sopan)", "direction", "method"], 4, "方", [
+        ("方法", "houhou", "metode/cara"),
+        ("使い方", "tsukaikata", "cara pakai"),
+        ("あの方", "ano kata", "orang itu (sopan)"),
+    ], [
+        ("使い方を教えてください。", "Tsukaikata o oshiete kudasai.", "Tolong ajarkan cara pakainya."),
+        ("この方法は簡単です。", "Kono houhou wa kantan desu.", "Metode ini mudah."),
+    ]),
+    ("shi2", "仕", ["シ"], ["つか-える"], ["melayani", "bekerja", "serve", "work"], 5, "人", [
+        ("仕事", "shigoto", "pekerjaan"),
+        ("仕方", "shikata", "cara"),
+        ("仕える", "tsukaeru", "mengabdi"),
+    ], [
+        ("仕事は楽しいです。", "Shigoto wa tanoshii desu.", "Pekerjaan itu menyenangkan."),
+        ("仕方がありません。", "Shikata ga arimasen.", "Tidak ada cara lain."),
+    ]),
+    ("shitsu", "室", ["シツ"], ["むろ"], ["kamar", "ruangan", "room"], 9, "宀", [
+        ("教室", "kyoushitsu", "ruang kelas"),
+        ("図書室", "toshoshitsu", "ruang perpustakaan"),
+        ("室内", "shitsunai", "dalam ruangan"),
+    ], [
+        ("教室で勉強します。", "Kyoushitsu de benkyou shimasu.", "Saya belajar di ruang kelas."),
+        ("室内は暖かいです。", "Shitsunai wa atatakai desu.", "Di dalam ruangan hangat."),
+    ]),
+    ("noru", "乗", ["ジョウ"], ["の-る"], ["menaiki", "ride"], 9, "ノ", [
+        ("乗る", "noru", "menaiki"),
+        ("乗客", "joukyaku", "penumpang"),
+        ("乗り物", "norimono", "kendaraan"),
+    ], [
+        ("バスに乗ります。", "Basu ni norimasu.", "Saya naik bis."),
+        ("乗り物が好きです。", "Norimono ga suki desu.", "Saya suka kendaraan."),
+    ]),
+    ("oriru", "降", ["コウ"], ["お-りる", "ふ-る"], ["turun", "hujan turun", "descend", "fall"], 10, "阝", [
+        ("降りる", "oriru", "turun"),
+        ("降る", "furu", "turun (hujan/salju)"),
+        ("乗降", "joukou", "naik-turun"),
+    ], [
+        ("次の駅で降ります。", "Tsugi no eki de orimasu.", "Saya turun di stasiun berikutnya."),
+        ("雨が降っています。", "Ame ga futte imasu.", "Sedang turun hujan."),
+    ]),
+    ("tooru", "通", ["ツウ"], ["とお-る", "かよ-う"], ["melewati", "berlalu-lalang", "pass", "commute"], 10, "辶", [
+        ("通る", "tooru", "melewati"),
+        ("通学", "tsuugaku", "pergi-pulang sekolah"),
+        ("交通", "koutsuu", "lalu lintas/transportasi"),
+    ], [
+        ("この道を通ります。", "Kono michi o toorimasu.", "Saya melewati jalan ini."),
+        ("交通が便利です。", "Koutsuu ga benri desu.", "Transportasinya praktis."),
+    ]),
 ]
 
 PLACEHOLDER_COUNTS = {"N3": 5, "N2": 5, "N1": 5}
