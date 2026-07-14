@@ -1787,6 +1787,175 @@ N4_KANJI = [
         ("自分で作りました。", "Jibun de tsukurimashita.", "Saya membuatnya sendiri."),
         ("自動車を運転します。", "Jidousha o unten shimasu.", "Saya mengemudikan mobil."),
     ]),
+    # --- Batch F: 利用悲族的表現在合悪苦感質問題例返答正様困 (21) ---
+    ("ri3", "利", ["リ"], ["き-く"], ["untung", "manfaat", "profit", "advantage", "benefit"], 7, "刂", [
+        ("便利", "benri", "praktis"),
+        ("利用", "riyou", "pemanfaatan"),
+        ("利益", "rieki", "keuntungan"),
+    ], [
+        ("この道具は便利です。", "Kono dougu wa benri desu.", "Alat ini praktis."),
+        ("図書館を利用します。", "Toshokan o riyou shimasu.", "Saya memanfaatkan perpustakaan."),
+    ]),
+    ("you3", "用", ["ヨウ"], ["もち-いる"], ["menggunakan", "urusan", "use", "business", "task"], 5, "用", [
+        ("使用", "shiyou", "penggunaan"),
+        ("利用", "riyou", "pemanfaatan"),
+        ("用事", "youji", "urusan"),
+    ], [
+        ("このパソコンを使用します。", "Kono pasokon o shiyou shimasu.", "Saya menggunakan komputer ini."),
+        ("今日は用事があります。", "Kyou wa youji ga arimasu.", "Hari ini saya ada urusan."),
+    ]),
+    ("kanashii", "悲", ["ヒ"], ["かな-しい"], ["sedih", "sad"], 12, "心", [
+        ("悲しい", "kanashii", "sedih"),
+        ("悲しみ", "kanashimi", "kesedihan"),
+        ("悲劇", "higeki", "tragedi"),
+    ], [
+        ("そのニュースを聞いて悲しいです。", "Sono nyuusu o kiite kanashii desu.", "Saya sedih mendengar berita itu."),
+        ("これは悲しい映画です。", "Kore wa kanashii eiga desu.", "Ini film yang sedih."),
+    ]),
+    ("zoku2", "族", ["ゾク"], [], ["keluarga", "suku", "clan", "family", "tribe"], 11, "方", [
+        ("家族", "kazoku", "keluarga"),
+        ("民族", "minzoku", "suku bangsa"),
+        ("親族", "shinzoku", "kerabat"),
+    ], [
+        ("家族と旅行しました。", "Kazoku to ryokou shimashita.", "Saya bepergian bersama keluarga."),
+        ("多くの民族がいます。", "Ooku no minzoku ga imasu.", "Ada banyak suku bangsa."),
+    ]),
+    ("teki", "的", ["テキ"], ["まと"], ["sasaran", "-seperti", "target", "-like"], 8, "白", [
+        ("目的", "mokuteki", "tujuan"),
+        ("一般的", "ippanteki", "umum"),
+        ("的", "mato", "sasaran"),
+    ], [
+        ("旅行の目的は何ですか。", "Ryokou no mokuteki wa nan desu ka.", "Apa tujuan perjalanan Anda?"),
+        ("それは一般的な考え方です。", "Sore wa ippanteki na kangaekata desu.", "Itu cara berpikir yang umum."),
+    ]),
+    ("arawasu", "表", ["ヒョウ"], ["おもて", "あらわ-す"], ["permukaan", "tabel", "menyatakan", "surface", "table"], 8, "衣", [
+        ("表す", "arawasu", "menyatakan"),
+        ("表", "hyou", "tabel"),
+        ("発表", "happyou", "presentasi"),
+    ], [
+        ("気持ちを表します。", "Kimochi o arawashimasu.", "Saya menyatakan perasaan."),
+        ("明日、発表があります。", "Ashita, happyou ga arimasu.", "Besok ada presentasi."),
+    ]),
+    ("arawareru", "現", ["ゲン"], ["あらわ-れる", "あらわ-す"], ["muncul", "sekarang", "appear", "present", "current"], 11, "玉", [
+        ("現れる", "arawareru", "muncul"),
+        ("現在", "genzai", "saat ini"),
+        ("表現", "hyougen", "ekspresi"),
+    ], [
+        ("突然、猫が現れました。", "Totsuzen, neko ga arawaremashita.", "Tiba-tiba, seekor kucing muncul."),
+        ("現在、東京に住んでいます。", "Genzai, Toukyou ni sunde imasu.", "Saat ini, saya tinggal di Tokyo."),
+    ]),
+    ("zai", "在", ["ザイ"], ["あ-る"], ["berada", "ada", "exist", "be present"], 6, "土", [
+        ("現在", "genzai", "saat ini"),
+        ("存在", "sonzai", "keberadaan"),
+        ("在学", "zaigaku", "sedang bersekolah"),
+    ], [
+        ("現在、大学生です。", "Genzai, daigakusei desu.", "Saat ini, saya mahasiswa."),
+        ("彼の存在を知りませんでした。", "Kare no sonzai o shirimasen deshita.", "Saya tidak tahu keberadaannya."),
+    ]),
+    ("au2", "合", ["ゴウ", "ガッ"], ["あ-う", "あ-わせる"], ["cocok", "menggabungkan", "fit", "match", "combine"], 6, "口", [
+        ("合う", "au", "cocok"),
+        ("合わせる", "awaseru", "menggabungkan"),
+        ("都合", "tsugou", "kondisi/kesempatan"),
+    ], [
+        ("このサイズは合いません。", "Kono saizu wa aimasen.", "Ukuran ini tidak cocok."),
+        ("ご都合はいかがですか。", "Gotsugou wa ikaga desu ka.", "Bagaimana kondisi/kesempatan Anda?"),
+    ]),
+    ("warui", "悪", ["アク", "オ"], ["わる-い"], ["buruk", "jahat", "bad", "evil"], 11, "心", [
+        ("悪い", "warui", "buruk/jahat"),
+        ("悪天候", "akutenkou", "cuaca buruk"),
+        ("意地悪", "ijiwaru", "jahil/jahat"),
+    ], [
+        ("天気が悪いです。", "Tenki ga warui desu.", "Cuacanya buruk."),
+        ("それは意地悪です。", "Sore wa ijiwaru desu.", "Itu jahil."),
+    ]),
+    ("kurushii", "苦", ["ク"], ["くる-しい", "にが-い"], ["pahit", "menderita", "susah", "bitter", "suffer"], 8, "艹", [
+        ("苦しい", "kurushii", "menderita/sulit"),
+        ("苦い", "nigai", "pahit"),
+        ("苦手", "nigate", "tidak jago/kurang suka"),
+    ], [
+        ("数学が苦手です。", "Suugaku ga nigate desu.", "Saya tidak jago matematika."),
+        ("この薬は苦いです。", "Kono kusuri wa nigai desu.", "Obat ini pahit."),
+    ]),
+    ("kan3", "感", ["カン"], [], ["merasa", "perasaan", "feel", "feeling", "sense"], 13, "心", [
+        ("感じる", "kanjiru", "merasakan"),
+        ("感動", "kandou", "terharu/tersentuh"),
+        ("感謝", "kansha", "rasa terima kasih"),
+    ], [
+        ("寒さを感じます。", "Samusa o kanjimasu.", "Saya merasa dingin."),
+        ("その映画に感動しました。", "Sono eiga ni kandou shimashita.", "Saya terharu dengan film itu."),
+    ]),
+    ("shitsu2", "質", ["シツ", "シチ", "チ"], [], ["kualitas", "sifat", "quality", "nature", "substance"], 15, "貝", [
+        ("質問", "shitsumon", "pertanyaan"),
+        ("品質", "hinshitsu", "kualitas"),
+        ("性質", "seishitsu", "sifat"),
+    ], [
+        ("質問があります。", "Shitsumon ga arimasu.", "Saya ada pertanyaan."),
+        ("この製品は品質がいいです。", "Kono seihin wa hinshitsu ga ii desu.", "Produk ini kualitasnya bagus."),
+    ]),
+    ("mon2", "問", ["モン"], ["と-う"], ["bertanya", "ask", "question"], 11, "口", [
+        ("質問", "shitsumon", "pertanyaan"),
+        ("問題", "mondai", "masalah/soal"),
+        ("問う", "tou", "bertanya"),
+    ], [
+        ("質問してもいいですか。", "Shitsumon shite mo ii desu ka.", "Boleh saya bertanya?"),
+        ("この問題は難しいです。", "Kono mondai wa muzukashii desu.", "Soal ini sulit."),
+    ]),
+    ("dai3", "題", ["ダイ"], [], ["judul", "topik", "title", "topic", "subject"], 18, "頁", [
+        ("問題", "mondai", "masalah/soal"),
+        ("宿題", "shukudai", "pekerjaan rumah"),
+        ("話題", "wadai", "topik pembicaraan"),
+    ], [
+        ("宿題を忘れました。", "Shukudai o wasuremashita.", "Saya lupa mengerjakan PR."),
+        ("面白い話題ですね。", "Omoshiroi wadai desu ne.", "Topik yang menarik ya."),
+    ]),
+    ("rei2", "例", ["レイ"], ["たと-える"], ["contoh", "example"], 8, "人", [
+        ("例えば", "tatoeba", "misalnya"),
+        ("例", "rei", "contoh"),
+        ("実例", "jitsurei", "contoh nyata"),
+    ], [
+        ("例えば、りんごやみかんが好きです。", "Tatoeba, ringo ya mikan ga suki desu.", "Misalnya, saya suka apel dan jeruk."),
+        ("具体的な例を教えてください。", "Gutaiteki na rei o oshiete kudasai.", "Tolong beri contoh konkret."),
+    ]),
+    ("kaesu", "返", ["ヘン"], ["かえ-す", "かえ-る"], ["mengembalikan", "return", "give back"], 7, "辶", [
+        ("返す", "kaesu", "mengembalikan"),
+        ("返事", "henji", "balasan"),
+        ("返答", "hentou", "jawaban"),
+    ], [
+        ("本を返します。", "Hon o kaeshimasu.", "Saya mengembalikan buku."),
+        ("まだ返事がありません。", "Mada henji ga arimasen.", "Belum ada balasan."),
+    ]),
+    ("kotaeru", "答", ["トウ"], ["こた-える"], ["menjawab", "jawaban", "answer"], 12, "竹", [
+        ("答える", "kotaeru", "menjawab"),
+        ("答え", "kotae", "jawaban"),
+        ("返答", "hentou", "jawaban"),
+    ], [
+        ("質問に答えます。", "Shitsumon ni kotaemasu.", "Saya menjawab pertanyaan."),
+        ("答えが分かりません。", "Kotae ga wakarimasen.", "Saya tidak tahu jawabannya."),
+    ]),
+    ("tadashii", "正", ["セイ", "ショウ"], ["ただ-しい", "まさ"], ["benar", "correct", "right"], 5, "止", [
+        ("正しい", "tadashii", "benar"),
+        ("正月", "shougatsu", "tahun baru"),
+        ("正直", "shoujiki", "jujur"),
+    ], [
+        ("あなたの答えは正しいです。", "Anata no kotae wa tadashii desu.", "Jawaban Anda benar."),
+        ("正直に話してください。", "Shoujiki ni hanashite kudasai.", "Tolong bicara dengan jujur."),
+    ]),
+    ("sama", "様", ["ヨウ"], ["さま"], ["cara", "rupa", "Tuan/Nyonya (sopan)", "manner", "way"], 14, "木", [
+        ("皆様", "minasama", "semua (sopan)"),
+        ("様子", "yousu", "keadaan"),
+        ("同様", "douyou", "sama saja"),
+    ], [
+        ("皆様、こんにちは。", "Minasama, konnichiwa.", "Semuanya, halo."),
+        ("彼の様子がおかしいです。", "Kare no yousu ga okashii desu.", "Keadaan dia aneh."),
+    ]),
+    ("komaru", "困", ["コン"], ["こま-る"], ["kesulitan", "bingung", "troubled", "in difficulty"], 7, "囗", [
+        ("困る", "komaru", "kesulitan/bingung"),
+        ("困難", "konnan", "kesulitan"),
+        ("貧困", "hinkon", "kemiskinan"),
+    ], [
+        ("お金がなくて困っています。", "Okane ga nakute komatte imasu.", "Saya kesulitan karena tidak punya uang."),
+        ("これは困難な問題です。", "Kore wa konnan na mondai desu.", "Ini masalah yang sulit."),
+    ]),
 ]
 
 PLACEHOLDER_COUNTS = {"N3": 5, "N2": 5, "N1": 5}
