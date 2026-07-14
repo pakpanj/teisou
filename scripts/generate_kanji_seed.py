@@ -882,7 +882,190 @@ N5_KANJI = [
     ]),
 ]
 
-PLACEHOLDER_COUNTS = {"N4": 5, "N3": 5, "N2": 5, "N1": 5}
+# N4 kanji (Batch 7 Fase 1 continued). Same tuple shape as N5_KANJI, filled
+# incrementally across several commits (see kanji_char_lists.N4_CHARACTERS
+# for the full locked 133-character scope this is working through).
+N4_KANJI = [
+    # --- Batch A: 朝昼夜度 + 雪風音光 + 体心頭病死顔声 + 妹弟兄姉主者員 (22) ---
+    ("asa", "朝", ["チョウ"], ["あさ"], ["pagi", "morning"], 12, "月", [
+        ("朝", "asa", "pagi"),
+        ("朝食", "choushoku", "sarapan"),
+        ("毎朝", "maiasa", "setiap pagi"),
+    ], [
+        ("朝六時に起きます。", "Asa rokuji ni okimasu.", "Saya bangun jam enam pagi."),
+        ("毎朝コーヒーを飲みます。", "Maiasa koohii o nomimasu.", "Setiap pagi saya minum kopi."),
+    ]),
+    ("hiru", "昼", ["チュウ"], ["ひる"], ["siang", "tengah hari", "noon", "daytime"], 9, "日", [
+        ("昼", "hiru", "siang"),
+        ("昼食", "chuushoku", "makan siang"),
+        ("昼休み", "hiruyasumi", "jam istirahat siang"),
+    ], [
+        ("昼ごはんを食べましょう。", "Hirugohan o tabemashou.", "Ayo makan siang."),
+        ("昼休みは十二時からです。", "Hiruyasumi wa juuniji kara desu.", "Istirahat siang mulai jam dua belas."),
+    ]),
+    ("yoru", "夜", ["ヤ"], ["よる", "よ"], ["malam", "night"], 8, "夕", [
+        ("夜", "yoru", "malam"),
+        ("今夜", "kon'ya", "malam ini"),
+        ("夜中", "yonaka", "tengah malam"),
+    ], [
+        ("夜は静かです。", "Yoru wa shizuka desu.", "Malam hari sunyi."),
+        ("今夜、映画を見ます。", "Kon'ya, eiga o mimasu.", "Malam ini, saya akan menonton film."),
+    ]),
+    ("do", "度", ["ド", "ト"], ["たび"], ["derajat", "kali (frekuensi)", "degree", "times"], 9, "广", [
+        ("今度", "kondo", "kali ini/lain kali"),
+        ("一度", "ichido", "satu kali"),
+        ("温度", "ondo", "suhu"),
+    ], [
+        ("今度、一緒に行きましょう。", "Kondo, issho ni ikimashou.", "Lain kali, ayo pergi bersama."),
+        ("今日の温度は三十度です。", "Kyou no ondo wa sanjuudo desu.", "Suhu hari ini tiga puluh derajat."),
+    ]),
+    ("yuki", "雪", ["セツ"], ["ゆき"], ["salju", "snow"], 11, "雨", [
+        ("雪", "yuki", "salju"),
+        ("大雪", "ooyuki", "salju lebat"),
+        ("雪国", "yukiguni", "negeri bersalju"),
+    ], [
+        ("冬に雪が降ります。", "Fuyu ni yuki ga furimasu.", "Musim dingin turun salju."),
+        ("雪国に旅行したいです。", "Yukiguni ni ryokou shitai desu.", "Saya ingin bepergian ke negeri bersalju."),
+    ]),
+    ("kaze", "風", ["フウ", "フ"], ["かぜ"], ["angin", "wind"], 9, "風", [
+        ("風", "kaze", "angin"),
+        ("台風", "taifuu", "topan"),
+        ("風邪", "kaze", "pilek/masuk angin"),
+    ], [
+        ("今日は風が強いです。", "Kyou wa kaze ga tsuyoi desu.", "Hari ini anginnya kencang."),
+        ("風邪をひきました。", "Kaze o hikimashita.", "Saya masuk angin."),
+    ]),
+    ("oto", "音", ["オン", "イン"], ["おと", "ね"], ["suara", "bunyi", "sound"], 9, "音", [
+        ("音", "oto", "suara/bunyi"),
+        ("音楽", "ongaku", "musik"),
+        ("発音", "hatsuon", "pengucapan"),
+    ], [
+        ("変な音が聞こえます。", "Hen na oto ga kikoemasu.", "Terdengar suara aneh."),
+        ("音楽を聞くのが好きです。", "Ongaku o kiku no ga suki desu.", "Saya suka mendengarkan musik."),
+    ]),
+    ("hikari", "光", ["コウ"], ["ひかり", "ひか-る"], ["cahaya", "light"], 6, "儿", [
+        ("光", "hikari", "cahaya"),
+        ("日光", "nikkou", "sinar matahari"),
+        ("光る", "hikaru", "bersinar"),
+    ], [
+        ("星が光っています。", "Hoshi ga hikatte imasu.", "Bintang-bintang bersinar."),
+        ("日光を浴びましょう。", "Nikkou o abimashou.", "Ayo berjemur sinar matahari."),
+    ]),
+    ("karada", "体", ["タイ"], ["からだ"], ["badan", "tubuh", "body"], 7, "人", [
+        ("体", "karada", "tubuh"),
+        ("体育", "taiiku", "olahraga/pendidikan jasmani"),
+        ("体重", "taijuu", "berat badan"),
+    ], [
+        ("体に気をつけてください。", "Karada ni ki o tsukete kudasai.", "Tolong jaga kesehatan Anda."),
+        ("体育の授業が好きです。", "Taiiku no jugyou ga suki desu.", "Saya suka pelajaran olahraga."),
+    ]),
+    ("kokoro", "心", ["シン"], ["こころ"], ["hati", "jiwa", "heart", "mind"], 4, "心", [
+        ("心", "kokoro", "hati/jiwa"),
+        ("心配", "shinpai", "khawatir"),
+        ("安心", "anshin", "lega/tenang"),
+    ], [
+        ("心配しないでください。", "Shinpai shinaide kudasai.", "Tolong jangan khawatir."),
+        ("それを聞いて安心しました。", "Sore o kiite anshin shimashita.", "Saya lega mendengarnya."),
+    ]),
+    ("atama", "頭", ["トウ", "ズ"], ["あたま"], ["kepala", "head"], 16, "頁", [
+        ("頭", "atama", "kepala"),
+        ("頭痛", "zutsuu", "sakit kepala"),
+        ("石頭", "ishiatama", "keras kepala"),
+    ], [
+        ("頭が痛いです。", "Atama ga itai desu.", "Kepala saya sakit."),
+        ("彼は頭がいいです。", "Kare wa atama ga ii desu.", "Dia pintar."),
+    ]),
+    ("yamai", "病", ["ビョウ"], ["やまい", "や-む"], ["sakit", "penyakit", "illness", "sickness"], 10, "疒", [
+        ("病気", "byouki", "sakit/penyakit"),
+        ("病院", "byouin", "rumah sakit"),
+        ("病人", "byounin", "orang sakit"),
+    ], [
+        ("病気で学校を休みました。", "Byouki de gakkou o yasumimashita.", "Saya bolos sekolah karena sakit."),
+        ("病院へ行きました。", "Byouin e ikimashita.", "Saya pergi ke rumah sakit."),
+    ]),
+    ("shinu", "死", ["シ"], ["し-ぬ"], ["mati", "meninggal", "death", "die"], 6, "歹", [
+        ("死ぬ", "shinu", "mati"),
+        ("死", "shi", "kematian"),
+        ("必死", "hisshi", "mati-matian/sekuat tenaga"),
+    ], [
+        ("祖父は去年死にました。", "Sofu wa kyonen shinimashita.", "Kakek saya meninggal tahun lalu."),
+        ("必死に勉強しました。", "Hisshi ni benkyou shimashita.", "Saya belajar mati-matian."),
+    ]),
+    ("kao", "顔", ["ガン"], ["かお"], ["wajah", "muka", "face"], 18, "頁", [
+        ("顔", "kao", "wajah"),
+        ("笑顔", "egao", "wajah tersenyum"),
+        ("顔色", "kaoiro", "raut wajah"),
+    ], [
+        ("彼女は笑顔がかわいいです。", "Kanojo wa egao ga kawaii desu.", "Senyumnya manis."),
+        ("顔を洗ってください。", "Kao o aratte kudasai.", "Tolong cuci muka."),
+    ]),
+    ("koe", "声", ["セイ"], ["こえ"], ["suara (manusia)", "voice"], 7, "士", [
+        ("声", "koe", "suara"),
+        ("大声", "oogoe", "suara keras"),
+        ("声優", "seiyuu", "pengisi suara"),
+    ], [
+        ("大きい声で話してください。", "Ookii koe de hanashite kudasai.", "Tolong bicara dengan suara keras."),
+        ("いい声ですね。", "Ii koe desu ne.", "Suaranya bagus ya."),
+    ]),
+    ("imouto", "妹", ["マイ"], ["いもうと"], ["adik perempuan", "younger sister"], 8, "女", [
+        ("妹", "imouto", "adik perempuan"),
+        ("妹さん", "imoutosan", "adik perempuan (orang lain)"),
+        ("姉妹", "shimai", "kakak-adik perempuan"),
+    ], [
+        ("私には妹がいます。", "Watashi ni wa imouto ga imasu.", "Saya punya adik perempuan."),
+        ("姉妹で旅行しました。", "Shimai de ryokou shimashita.", "Kami (kakak-adik perempuan) bepergian bersama."),
+    ]),
+    ("otouto", "弟", ["テイ", "ダイ"], ["おとうと"], ["adik laki-laki", "younger brother"], 7, "弓", [
+        ("弟", "otouto", "adik laki-laki"),
+        ("弟さん", "otoutosan", "adik laki-laki (orang lain)"),
+        ("兄弟", "kyoudai", "saudara kandung"),
+    ], [
+        ("弟は高校生です。", "Otouto wa koukousei desu.", "Adik laki-laki saya siswa SMA."),
+        ("兄弟は何人いますか。", "Kyoudai wa nannin imasu ka.", "Ada berapa saudara kandung Anda?"),
+    ]),
+    ("ani", "兄", ["キョウ", "ケイ"], ["あに"], ["kakak laki-laki", "older brother"], 5, "儿", [
+        ("兄", "ani", "kakak laki-laki"),
+        ("お兄さん", "oniisan", "kakak laki-laki (umum)"),
+        ("兄弟", "kyoudai", "saudara kandung"),
+    ], [
+        ("兄は医者です。", "Ani wa isha desu.", "Kakak laki-laki saya dokter."),
+        ("お兄さんは優しいですか。", "Oniisan wa yasashii desu ka.", "Apakah kakak laki-laki Anda baik hati?"),
+    ]),
+    ("ane", "姉", ["シ"], ["あね"], ["kakak perempuan", "older sister"], 8, "女", [
+        ("姉", "ane", "kakak perempuan"),
+        ("お姉さん", "oneesan", "kakak perempuan (umum)"),
+        ("姉妹", "shimai", "kakak-adik perempuan"),
+    ], [
+        ("姉は先生です。", "Ane wa sensei desu.", "Kakak perempuan saya guru."),
+        ("お姉さんに会いたいです。", "Oneesan ni aitai desu.", "Saya ingin bertemu kakak perempuan Anda."),
+    ]),
+    ("nushi", "主", ["シュ", "ス"], ["ぬし", "おも"], ["utama", "tuan/pemilik", "main", "master"], 5, "丶", [
+        ("主人", "shujin", "suami/tuan rumah"),
+        ("主な", "omona", "utama"),
+        ("持ち主", "mochinushi", "pemilik"),
+    ], [
+        ("主な理由は何ですか。", "Omona riyuu wa nan desu ka.", "Apa alasan utamanya?"),
+        ("この犬の持ち主は誰ですか。", "Kono inu no mochinushi wa dare desu ka.", "Siapa pemilik anjing ini?"),
+    ]),
+    ("mono", "者", ["シャ"], ["もの"], ["orang", "person"], 8, "老", [
+        ("医者", "isha", "dokter"),
+        ("若者", "wakamono", "anak muda"),
+        ("学者", "gakusha", "ilmuwan"),
+    ], [
+        ("彼は有名な学者です。", "Kare wa yuumei na gakusha desu.", "Dia ilmuwan terkenal."),
+        ("若者に人気があります。", "Wakamono ni ninki ga arimasu.", "Populer di kalangan anak muda."),
+    ]),
+    ("in", "員", ["イン"], [], ["anggota", "pegawai", "member", "staff"], 10, "口", [
+        ("会社員", "kaishain", "karyawan"),
+        ("店員", "ten'in", "pegawai toko"),
+        ("会員", "kaiin", "anggota"),
+    ], [
+        ("父は会社員です。", "Chichi wa kaishain desu.", "Ayah saya karyawan."),
+        ("このクラブの会員です。", "Kono kurabu no kaiin desu.", "Saya anggota klub ini."),
+    ]),
+]
+
+PLACEHOLDER_COUNTS = {"N3": 5, "N2": 5, "N1": 5}
 
 
 def build_n5_entries():
@@ -892,6 +1075,32 @@ def build_n5_entries():
             "id": f"kanji_{suffix}",
             "character": char,
             "jlptLevel": "N5",
+            "onyomi": on,
+            "kunyomi": kun,
+            "meanings": meanings,
+            "strokeCount": strokes,
+            "svgAsset": f"assets/kanjivg/{ord(char):05x}.svg",
+            "radical": radical,
+            "wordExamples": [
+                {"word": word, "reading": reading, "meaning": meaning}
+                for word, reading, meaning in word_examples
+            ],
+            "sentenceExamples": [
+                {"japanese": jp, "romaji": ro, "translation": tr}
+                for jp, ro, tr in sentence_examples
+            ],
+            "relatedBunpou": [],
+        })
+    return entries
+
+
+def build_n4_entries():
+    entries = []
+    for suffix, char, on, kun, meanings, strokes, radical, word_examples, sentence_examples in N4_KANJI:
+        entries.append({
+            "id": f"kanji_{suffix}",
+            "character": char,
+            "jlptLevel": "N4",
             "onyomi": on,
             "kunyomi": kun,
             "meanings": meanings,
@@ -934,11 +1143,11 @@ def build_placeholder_entries():
 
 
 def main():
-    data = build_n5_entries() + build_placeholder_entries()
+    data = build_n5_entries() + build_n4_entries() + build_placeholder_entries()
     with open("assets/data/kanji_data.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"Wrote {len(data)} kanji entries ({len(N5_KANJI)} real N5 + "
-          f"{sum(PLACEHOLDER_COUNTS.values())} placeholders).")
+          f"{len(N4_KANJI)} real N4 + {sum(PLACEHOLDER_COUNTS.values())} placeholders).")
 
 
 if __name__ == "__main__":

@@ -5286,79 +5286,1087 @@
     "relatedBunpou": []
   },
   {
-    "id": "kanji_n4_placeholder_1",
-    "character": "",
+    "id": "kanji_asa",
+    "character": "朝",
     "jlptLevel": "N4",
-    "onyomi": [],
-    "kunyomi": [],
-    "meanings": [],
-    "strokeCount": 0,
-    "svgAsset": null,
-    "radical": null,
-    "wordExamples": [],
-    "sentenceExamples": [],
-    "relatedBunpou": [],
-    "placeholder": true
+    "onyomi": [
+      "チョウ"
+    ],
+    "kunyomi": [
+      "あさ"
+    ],
+    "meanings": [
+      "pagi",
+      "morning"
+    ],
+    "strokeCount": 12,
+    "svgAsset": "assets/kanjivg/0671d.svg",
+    "radical": "月",
+    "wordExamples": [
+      {
+        "word": "朝",
+        "reading": "asa",
+        "meaning": "pagi"
+      },
+      {
+        "word": "朝食",
+        "reading": "choushoku",
+        "meaning": "sarapan"
+      },
+      {
+        "word": "毎朝",
+        "reading": "maiasa",
+        "meaning": "setiap pagi"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "朝六時に起きます。",
+        "romaji": "Asa rokuji ni okimasu.",
+        "translation": "Saya bangun jam enam pagi."
+      },
+      {
+        "japanese": "毎朝コーヒーを飲みます。",
+        "romaji": "Maiasa koohii o nomimasu.",
+        "translation": "Setiap pagi saya minum kopi."
+      }
+    ],
+    "relatedBunpou": []
   },
   {
-    "id": "kanji_n4_placeholder_2",
-    "character": "",
+    "id": "kanji_hiru",
+    "character": "昼",
     "jlptLevel": "N4",
-    "onyomi": [],
-    "kunyomi": [],
-    "meanings": [],
-    "strokeCount": 0,
-    "svgAsset": null,
-    "radical": null,
-    "wordExamples": [],
-    "sentenceExamples": [],
-    "relatedBunpou": [],
-    "placeholder": true
+    "onyomi": [
+      "チュウ"
+    ],
+    "kunyomi": [
+      "ひる"
+    ],
+    "meanings": [
+      "siang",
+      "tengah hari",
+      "noon",
+      "daytime"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/0663c.svg",
+    "radical": "日",
+    "wordExamples": [
+      {
+        "word": "昼",
+        "reading": "hiru",
+        "meaning": "siang"
+      },
+      {
+        "word": "昼食",
+        "reading": "chuushoku",
+        "meaning": "makan siang"
+      },
+      {
+        "word": "昼休み",
+        "reading": "hiruyasumi",
+        "meaning": "jam istirahat siang"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "昼ごはんを食べましょう。",
+        "romaji": "Hirugohan o tabemashou.",
+        "translation": "Ayo makan siang."
+      },
+      {
+        "japanese": "昼休みは十二時からです。",
+        "romaji": "Hiruyasumi wa juuniji kara desu.",
+        "translation": "Istirahat siang mulai jam dua belas."
+      }
+    ],
+    "relatedBunpou": []
   },
   {
-    "id": "kanji_n4_placeholder_3",
-    "character": "",
+    "id": "kanji_yoru",
+    "character": "夜",
     "jlptLevel": "N4",
-    "onyomi": [],
-    "kunyomi": [],
-    "meanings": [],
-    "strokeCount": 0,
-    "svgAsset": null,
-    "radical": null,
-    "wordExamples": [],
-    "sentenceExamples": [],
-    "relatedBunpou": [],
-    "placeholder": true
+    "onyomi": [
+      "ヤ"
+    ],
+    "kunyomi": [
+      "よる",
+      "よ"
+    ],
+    "meanings": [
+      "malam",
+      "night"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/0591c.svg",
+    "radical": "夕",
+    "wordExamples": [
+      {
+        "word": "夜",
+        "reading": "yoru",
+        "meaning": "malam"
+      },
+      {
+        "word": "今夜",
+        "reading": "kon'ya",
+        "meaning": "malam ini"
+      },
+      {
+        "word": "夜中",
+        "reading": "yonaka",
+        "meaning": "tengah malam"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "夜は静かです。",
+        "romaji": "Yoru wa shizuka desu.",
+        "translation": "Malam hari sunyi."
+      },
+      {
+        "japanese": "今夜、映画を見ます。",
+        "romaji": "Kon'ya, eiga o mimasu.",
+        "translation": "Malam ini, saya akan menonton film."
+      }
+    ],
+    "relatedBunpou": []
   },
   {
-    "id": "kanji_n4_placeholder_4",
-    "character": "",
+    "id": "kanji_do",
+    "character": "度",
     "jlptLevel": "N4",
-    "onyomi": [],
-    "kunyomi": [],
-    "meanings": [],
-    "strokeCount": 0,
-    "svgAsset": null,
-    "radical": null,
-    "wordExamples": [],
-    "sentenceExamples": [],
-    "relatedBunpou": [],
-    "placeholder": true
+    "onyomi": [
+      "ド",
+      "ト"
+    ],
+    "kunyomi": [
+      "たび"
+    ],
+    "meanings": [
+      "derajat",
+      "kali (frekuensi)",
+      "degree",
+      "times"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/05ea6.svg",
+    "radical": "广",
+    "wordExamples": [
+      {
+        "word": "今度",
+        "reading": "kondo",
+        "meaning": "kali ini/lain kali"
+      },
+      {
+        "word": "一度",
+        "reading": "ichido",
+        "meaning": "satu kali"
+      },
+      {
+        "word": "温度",
+        "reading": "ondo",
+        "meaning": "suhu"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "今度、一緒に行きましょう。",
+        "romaji": "Kondo, issho ni ikimashou.",
+        "translation": "Lain kali, ayo pergi bersama."
+      },
+      {
+        "japanese": "今日の温度は三十度です。",
+        "romaji": "Kyou no ondo wa sanjuudo desu.",
+        "translation": "Suhu hari ini tiga puluh derajat."
+      }
+    ],
+    "relatedBunpou": []
   },
   {
-    "id": "kanji_n4_placeholder_5",
-    "character": "",
+    "id": "kanji_yuki",
+    "character": "雪",
     "jlptLevel": "N4",
-    "onyomi": [],
+    "onyomi": [
+      "セツ"
+    ],
+    "kunyomi": [
+      "ゆき"
+    ],
+    "meanings": [
+      "salju",
+      "snow"
+    ],
+    "strokeCount": 11,
+    "svgAsset": "assets/kanjivg/096ea.svg",
+    "radical": "雨",
+    "wordExamples": [
+      {
+        "word": "雪",
+        "reading": "yuki",
+        "meaning": "salju"
+      },
+      {
+        "word": "大雪",
+        "reading": "ooyuki",
+        "meaning": "salju lebat"
+      },
+      {
+        "word": "雪国",
+        "reading": "yukiguni",
+        "meaning": "negeri bersalju"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "冬に雪が降ります。",
+        "romaji": "Fuyu ni yuki ga furimasu.",
+        "translation": "Musim dingin turun salju."
+      },
+      {
+        "japanese": "雪国に旅行したいです。",
+        "romaji": "Yukiguni ni ryokou shitai desu.",
+        "translation": "Saya ingin bepergian ke negeri bersalju."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kaze",
+    "character": "風",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "フウ",
+      "フ"
+    ],
+    "kunyomi": [
+      "かぜ"
+    ],
+    "meanings": [
+      "angin",
+      "wind"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/098a8.svg",
+    "radical": "風",
+    "wordExamples": [
+      {
+        "word": "風",
+        "reading": "kaze",
+        "meaning": "angin"
+      },
+      {
+        "word": "台風",
+        "reading": "taifuu",
+        "meaning": "topan"
+      },
+      {
+        "word": "風邪",
+        "reading": "kaze",
+        "meaning": "pilek/masuk angin"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "今日は風が強いです。",
+        "romaji": "Kyou wa kaze ga tsuyoi desu.",
+        "translation": "Hari ini anginnya kencang."
+      },
+      {
+        "japanese": "風邪をひきました。",
+        "romaji": "Kaze o hikimashita.",
+        "translation": "Saya masuk angin."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_oto",
+    "character": "音",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "オン",
+      "イン"
+    ],
+    "kunyomi": [
+      "おと",
+      "ね"
+    ],
+    "meanings": [
+      "suara",
+      "bunyi",
+      "sound"
+    ],
+    "strokeCount": 9,
+    "svgAsset": "assets/kanjivg/097f3.svg",
+    "radical": "音",
+    "wordExamples": [
+      {
+        "word": "音",
+        "reading": "oto",
+        "meaning": "suara/bunyi"
+      },
+      {
+        "word": "音楽",
+        "reading": "ongaku",
+        "meaning": "musik"
+      },
+      {
+        "word": "発音",
+        "reading": "hatsuon",
+        "meaning": "pengucapan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "変な音が聞こえます。",
+        "romaji": "Hen na oto ga kikoemasu.",
+        "translation": "Terdengar suara aneh."
+      },
+      {
+        "japanese": "音楽を聞くのが好きです。",
+        "romaji": "Ongaku o kiku no ga suki desu.",
+        "translation": "Saya suka mendengarkan musik."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_hikari",
+    "character": "光",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "コウ"
+    ],
+    "kunyomi": [
+      "ひかり",
+      "ひか-る"
+    ],
+    "meanings": [
+      "cahaya",
+      "light"
+    ],
+    "strokeCount": 6,
+    "svgAsset": "assets/kanjivg/05149.svg",
+    "radical": "儿",
+    "wordExamples": [
+      {
+        "word": "光",
+        "reading": "hikari",
+        "meaning": "cahaya"
+      },
+      {
+        "word": "日光",
+        "reading": "nikkou",
+        "meaning": "sinar matahari"
+      },
+      {
+        "word": "光る",
+        "reading": "hikaru",
+        "meaning": "bersinar"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "星が光っています。",
+        "romaji": "Hoshi ga hikatte imasu.",
+        "translation": "Bintang-bintang bersinar."
+      },
+      {
+        "japanese": "日光を浴びましょう。",
+        "romaji": "Nikkou o abimashou.",
+        "translation": "Ayo berjemur sinar matahari."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_karada",
+    "character": "体",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "タイ"
+    ],
+    "kunyomi": [
+      "からだ"
+    ],
+    "meanings": [
+      "badan",
+      "tubuh",
+      "body"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/04f53.svg",
+    "radical": "人",
+    "wordExamples": [
+      {
+        "word": "体",
+        "reading": "karada",
+        "meaning": "tubuh"
+      },
+      {
+        "word": "体育",
+        "reading": "taiiku",
+        "meaning": "olahraga/pendidikan jasmani"
+      },
+      {
+        "word": "体重",
+        "reading": "taijuu",
+        "meaning": "berat badan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "体に気をつけてください。",
+        "romaji": "Karada ni ki o tsukete kudasai.",
+        "translation": "Tolong jaga kesehatan Anda."
+      },
+      {
+        "japanese": "体育の授業が好きです。",
+        "romaji": "Taiiku no jugyou ga suki desu.",
+        "translation": "Saya suka pelajaran olahraga."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kokoro",
+    "character": "心",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シン"
+    ],
+    "kunyomi": [
+      "こころ"
+    ],
+    "meanings": [
+      "hati",
+      "jiwa",
+      "heart",
+      "mind"
+    ],
+    "strokeCount": 4,
+    "svgAsset": "assets/kanjivg/05fc3.svg",
+    "radical": "心",
+    "wordExamples": [
+      {
+        "word": "心",
+        "reading": "kokoro",
+        "meaning": "hati/jiwa"
+      },
+      {
+        "word": "心配",
+        "reading": "shinpai",
+        "meaning": "khawatir"
+      },
+      {
+        "word": "安心",
+        "reading": "anshin",
+        "meaning": "lega/tenang"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "心配しないでください。",
+        "romaji": "Shinpai shinaide kudasai.",
+        "translation": "Tolong jangan khawatir."
+      },
+      {
+        "japanese": "それを聞いて安心しました。",
+        "romaji": "Sore o kiite anshin shimashita.",
+        "translation": "Saya lega mendengarnya."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_atama",
+    "character": "頭",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "トウ",
+      "ズ"
+    ],
+    "kunyomi": [
+      "あたま"
+    ],
+    "meanings": [
+      "kepala",
+      "head"
+    ],
+    "strokeCount": 16,
+    "svgAsset": "assets/kanjivg/0982d.svg",
+    "radical": "頁",
+    "wordExamples": [
+      {
+        "word": "頭",
+        "reading": "atama",
+        "meaning": "kepala"
+      },
+      {
+        "word": "頭痛",
+        "reading": "zutsuu",
+        "meaning": "sakit kepala"
+      },
+      {
+        "word": "石頭",
+        "reading": "ishiatama",
+        "meaning": "keras kepala"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "頭が痛いです。",
+        "romaji": "Atama ga itai desu.",
+        "translation": "Kepala saya sakit."
+      },
+      {
+        "japanese": "彼は頭がいいです。",
+        "romaji": "Kare wa atama ga ii desu.",
+        "translation": "Dia pintar."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_yamai",
+    "character": "病",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ビョウ"
+    ],
+    "kunyomi": [
+      "やまい",
+      "や-む"
+    ],
+    "meanings": [
+      "sakit",
+      "penyakit",
+      "illness",
+      "sickness"
+    ],
+    "strokeCount": 10,
+    "svgAsset": "assets/kanjivg/075c5.svg",
+    "radical": "疒",
+    "wordExamples": [
+      {
+        "word": "病気",
+        "reading": "byouki",
+        "meaning": "sakit/penyakit"
+      },
+      {
+        "word": "病院",
+        "reading": "byouin",
+        "meaning": "rumah sakit"
+      },
+      {
+        "word": "病人",
+        "reading": "byounin",
+        "meaning": "orang sakit"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "病気で学校を休みました。",
+        "romaji": "Byouki de gakkou o yasumimashita.",
+        "translation": "Saya bolos sekolah karena sakit."
+      },
+      {
+        "japanese": "病院へ行きました。",
+        "romaji": "Byouin e ikimashita.",
+        "translation": "Saya pergi ke rumah sakit."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_shinu",
+    "character": "死",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シ"
+    ],
+    "kunyomi": [
+      "し-ぬ"
+    ],
+    "meanings": [
+      "mati",
+      "meninggal",
+      "death",
+      "die"
+    ],
+    "strokeCount": 6,
+    "svgAsset": "assets/kanjivg/06b7b.svg",
+    "radical": "歹",
+    "wordExamples": [
+      {
+        "word": "死ぬ",
+        "reading": "shinu",
+        "meaning": "mati"
+      },
+      {
+        "word": "死",
+        "reading": "shi",
+        "meaning": "kematian"
+      },
+      {
+        "word": "必死",
+        "reading": "hisshi",
+        "meaning": "mati-matian/sekuat tenaga"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "祖父は去年死にました。",
+        "romaji": "Sofu wa kyonen shinimashita.",
+        "translation": "Kakek saya meninggal tahun lalu."
+      },
+      {
+        "japanese": "必死に勉強しました。",
+        "romaji": "Hisshi ni benkyou shimashita.",
+        "translation": "Saya belajar mati-matian."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_kao",
+    "character": "顔",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "ガン"
+    ],
+    "kunyomi": [
+      "かお"
+    ],
+    "meanings": [
+      "wajah",
+      "muka",
+      "face"
+    ],
+    "strokeCount": 18,
+    "svgAsset": "assets/kanjivg/09854.svg",
+    "radical": "頁",
+    "wordExamples": [
+      {
+        "word": "顔",
+        "reading": "kao",
+        "meaning": "wajah"
+      },
+      {
+        "word": "笑顔",
+        "reading": "egao",
+        "meaning": "wajah tersenyum"
+      },
+      {
+        "word": "顔色",
+        "reading": "kaoiro",
+        "meaning": "raut wajah"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "彼女は笑顔がかわいいです。",
+        "romaji": "Kanojo wa egao ga kawaii desu.",
+        "translation": "Senyumnya manis."
+      },
+      {
+        "japanese": "顔を洗ってください。",
+        "romaji": "Kao o aratte kudasai.",
+        "translation": "Tolong cuci muka."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_koe",
+    "character": "声",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "セイ"
+    ],
+    "kunyomi": [
+      "こえ"
+    ],
+    "meanings": [
+      "suara (manusia)",
+      "voice"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/058f0.svg",
+    "radical": "士",
+    "wordExamples": [
+      {
+        "word": "声",
+        "reading": "koe",
+        "meaning": "suara"
+      },
+      {
+        "word": "大声",
+        "reading": "oogoe",
+        "meaning": "suara keras"
+      },
+      {
+        "word": "声優",
+        "reading": "seiyuu",
+        "meaning": "pengisi suara"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "大きい声で話してください。",
+        "romaji": "Ookii koe de hanashite kudasai.",
+        "translation": "Tolong bicara dengan suara keras."
+      },
+      {
+        "japanese": "いい声ですね。",
+        "romaji": "Ii koe desu ne.",
+        "translation": "Suaranya bagus ya."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_imouto",
+    "character": "妹",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "マイ"
+    ],
+    "kunyomi": [
+      "いもうと"
+    ],
+    "meanings": [
+      "adik perempuan",
+      "younger sister"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/059b9.svg",
+    "radical": "女",
+    "wordExamples": [
+      {
+        "word": "妹",
+        "reading": "imouto",
+        "meaning": "adik perempuan"
+      },
+      {
+        "word": "妹さん",
+        "reading": "imoutosan",
+        "meaning": "adik perempuan (orang lain)"
+      },
+      {
+        "word": "姉妹",
+        "reading": "shimai",
+        "meaning": "kakak-adik perempuan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "私には妹がいます。",
+        "romaji": "Watashi ni wa imouto ga imasu.",
+        "translation": "Saya punya adik perempuan."
+      },
+      {
+        "japanese": "姉妹で旅行しました。",
+        "romaji": "Shimai de ryokou shimashita.",
+        "translation": "Kami (kakak-adik perempuan) bepergian bersama."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_otouto",
+    "character": "弟",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "テイ",
+      "ダイ"
+    ],
+    "kunyomi": [
+      "おとうと"
+    ],
+    "meanings": [
+      "adik laki-laki",
+      "younger brother"
+    ],
+    "strokeCount": 7,
+    "svgAsset": "assets/kanjivg/05f1f.svg",
+    "radical": "弓",
+    "wordExamples": [
+      {
+        "word": "弟",
+        "reading": "otouto",
+        "meaning": "adik laki-laki"
+      },
+      {
+        "word": "弟さん",
+        "reading": "otoutosan",
+        "meaning": "adik laki-laki (orang lain)"
+      },
+      {
+        "word": "兄弟",
+        "reading": "kyoudai",
+        "meaning": "saudara kandung"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "弟は高校生です。",
+        "romaji": "Otouto wa koukousei desu.",
+        "translation": "Adik laki-laki saya siswa SMA."
+      },
+      {
+        "japanese": "兄弟は何人いますか。",
+        "romaji": "Kyoudai wa nannin imasu ka.",
+        "translation": "Ada berapa saudara kandung Anda?"
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_ani",
+    "character": "兄",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "キョウ",
+      "ケイ"
+    ],
+    "kunyomi": [
+      "あに"
+    ],
+    "meanings": [
+      "kakak laki-laki",
+      "older brother"
+    ],
+    "strokeCount": 5,
+    "svgAsset": "assets/kanjivg/05144.svg",
+    "radical": "儿",
+    "wordExamples": [
+      {
+        "word": "兄",
+        "reading": "ani",
+        "meaning": "kakak laki-laki"
+      },
+      {
+        "word": "お兄さん",
+        "reading": "oniisan",
+        "meaning": "kakak laki-laki (umum)"
+      },
+      {
+        "word": "兄弟",
+        "reading": "kyoudai",
+        "meaning": "saudara kandung"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "兄は医者です。",
+        "romaji": "Ani wa isha desu.",
+        "translation": "Kakak laki-laki saya dokter."
+      },
+      {
+        "japanese": "お兄さんは優しいですか。",
+        "romaji": "Oniisan wa yasashii desu ka.",
+        "translation": "Apakah kakak laki-laki Anda baik hati?"
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_ane",
+    "character": "姉",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シ"
+    ],
+    "kunyomi": [
+      "あね"
+    ],
+    "meanings": [
+      "kakak perempuan",
+      "older sister"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/059c9.svg",
+    "radical": "女",
+    "wordExamples": [
+      {
+        "word": "姉",
+        "reading": "ane",
+        "meaning": "kakak perempuan"
+      },
+      {
+        "word": "お姉さん",
+        "reading": "oneesan",
+        "meaning": "kakak perempuan (umum)"
+      },
+      {
+        "word": "姉妹",
+        "reading": "shimai",
+        "meaning": "kakak-adik perempuan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "姉は先生です。",
+        "romaji": "Ane wa sensei desu.",
+        "translation": "Kakak perempuan saya guru."
+      },
+      {
+        "japanese": "お姉さんに会いたいです。",
+        "romaji": "Oneesan ni aitai desu.",
+        "translation": "Saya ingin bertemu kakak perempuan Anda."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_nushi",
+    "character": "主",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シュ",
+      "ス"
+    ],
+    "kunyomi": [
+      "ぬし",
+      "おも"
+    ],
+    "meanings": [
+      "utama",
+      "tuan/pemilik",
+      "main",
+      "master"
+    ],
+    "strokeCount": 5,
+    "svgAsset": "assets/kanjivg/04e3b.svg",
+    "radical": "丶",
+    "wordExamples": [
+      {
+        "word": "主人",
+        "reading": "shujin",
+        "meaning": "suami/tuan rumah"
+      },
+      {
+        "word": "主な",
+        "reading": "omona",
+        "meaning": "utama"
+      },
+      {
+        "word": "持ち主",
+        "reading": "mochinushi",
+        "meaning": "pemilik"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "主な理由は何ですか。",
+        "romaji": "Omona riyuu wa nan desu ka.",
+        "translation": "Apa alasan utamanya?"
+      },
+      {
+        "japanese": "この犬の持ち主は誰ですか。",
+        "romaji": "Kono inu no mochinushi wa dare desu ka.",
+        "translation": "Siapa pemilik anjing ini?"
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_mono",
+    "character": "者",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "シャ"
+    ],
+    "kunyomi": [
+      "もの"
+    ],
+    "meanings": [
+      "orang",
+      "person"
+    ],
+    "strokeCount": 8,
+    "svgAsset": "assets/kanjivg/08005.svg",
+    "radical": "老",
+    "wordExamples": [
+      {
+        "word": "医者",
+        "reading": "isha",
+        "meaning": "dokter"
+      },
+      {
+        "word": "若者",
+        "reading": "wakamono",
+        "meaning": "anak muda"
+      },
+      {
+        "word": "学者",
+        "reading": "gakusha",
+        "meaning": "ilmuwan"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "彼は有名な学者です。",
+        "romaji": "Kare wa yuumei na gakusha desu.",
+        "translation": "Dia ilmuwan terkenal."
+      },
+      {
+        "japanese": "若者に人気があります。",
+        "romaji": "Wakamono ni ninki ga arimasu.",
+        "translation": "Populer di kalangan anak muda."
+      }
+    ],
+    "relatedBunpou": []
+  },
+  {
+    "id": "kanji_in",
+    "character": "員",
+    "jlptLevel": "N4",
+    "onyomi": [
+      "イン"
+    ],
     "kunyomi": [],
-    "meanings": [],
-    "strokeCount": 0,
-    "svgAsset": null,
-    "radical": null,
-    "wordExamples": [],
-    "sentenceExamples": [],
-    "relatedBunpou": [],
-    "placeholder": true
+    "meanings": [
+      "anggota",
+      "pegawai",
+      "member",
+      "staff"
+    ],
+    "strokeCount": 10,
+    "svgAsset": "assets/kanjivg/054e1.svg",
+    "radical": "口",
+    "wordExamples": [
+      {
+        "word": "会社員",
+        "reading": "kaishain",
+        "meaning": "karyawan"
+      },
+      {
+        "word": "店員",
+        "reading": "ten'in",
+        "meaning": "pegawai toko"
+      },
+      {
+        "word": "会員",
+        "reading": "kaiin",
+        "meaning": "anggota"
+      }
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "父は会社員です。",
+        "romaji": "Chichi wa kaishain desu.",
+        "translation": "Ayah saya karyawan."
+      },
+      {
+        "japanese": "このクラブの会員です。",
+        "romaji": "Kono kurabu no kaiin desu.",
+        "translation": "Saya anggota klub ini."
+      }
+    ],
+    "relatedBunpou": []
   },
   {
     "id": "kanji_n3_placeholder_1",
