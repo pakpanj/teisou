@@ -50,6 +50,11 @@ dependencies:
   cached_network_image: ^3.4.1
   flutter_cache_manager: ^3.4.1
 
+  # StrokeOrderAnimator (Batch 7): parses KanjiVG SVG stroke paths — was
+  # already a transitive dep via flutter_svg's vector_graphics pipeline,
+  # promoted to direct since we call its API ourselves now.
+  xml: ^7.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
