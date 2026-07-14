@@ -8,6 +8,8 @@ import '../data/models/subscription.dart';
 import '../data/models/user_profile.dart';
 import '../data/repositories/exam_repository.dart';
 import '../data/repositories/kana_repository.dart';
+import '../data/repositories/kanji_level_repository.dart';
+import '../data/repositories/kanji_progress_repository.dart';
 import '../data/repositories/kanji_repository.dart';
 import '../data/repositories/kotoba_category_repository.dart';
 import '../data/repositories/kotoba_progress_repository.dart';
@@ -31,6 +33,12 @@ final kanaRepositoryProvider = Provider<KanaRepository>(
 );
 final kanjiRepositoryProvider = Provider<KanjiRepository>(
   (ref) => KanjiRepository(),
+);
+final kanjiLevelRepositoryProvider = Provider<KanjiLevelRepository>(
+  (ref) => KanjiLevelRepository(),
+);
+final kanjiProgressRepositoryProvider = Provider<KanjiProgressRepository>(
+  (ref) => KanjiProgressRepository(),
 );
 final kotobaRepositoryProvider = Provider<KotobaRepository>(
   (ref) => KotobaRepository(),

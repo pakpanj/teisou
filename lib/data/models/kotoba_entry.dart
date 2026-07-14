@@ -1,5 +1,5 @@
 import 'jlpt_level.dart';
-import 'kotoba_sentence_example.dart';
+import 'sentence_example.dart';
 import 'speech_register.dart';
 
 class KotobaEntry {
@@ -13,7 +13,7 @@ class KotobaEntry {
   final String category;
   final String wordType;
   final Map<SpeechRegister, String> registers;
-  final List<KotobaSentenceExample> sentenceExamples;
+  final List<SentenceExample> sentenceExamples;
   final String? imageAsset;
 
   /// Firebase Storage path for the on-demand vocab illustration (Batch 6),
@@ -44,7 +44,7 @@ class KotobaEntry {
   });
 
   /// Convenience accessor for callers that only ever want one example.
-  KotobaSentenceExample? get sentenceExample =>
+  SentenceExample? get sentenceExample =>
       sentenceExamples.isEmpty ? null : sentenceExamples.first;
 
   factory KotobaEntry.fromJson(Map<String, dynamic> json) {
@@ -53,16 +53,16 @@ class KotobaEntry {
     // Batch 6 datasets write a `sentenceExamples` list; Batch 4's
     // kotoba_data.json predates that and only has a single `sentenceExample`
     // object. Support both without needing to regenerate the older file.
-    final examples = <KotobaSentenceExample>[];
+    final examples = <SentenceExample>[];
     final rawList = json['sentenceExamples'] as List?;
     if (rawList != null) {
       examples.addAll(
-        rawList.map((e) => KotobaSentenceExample.fromJson(e as Map<String, dynamic>)),
+        rawList.map((e) => SentenceExample.fromJson(e as Map<String, dynamic>)),
       );
     } else {
       final rawSingle = json['sentenceExample'] as Map<String, dynamic>?;
       if (rawSingle != null) {
-        examples.add(KotobaSentenceExample.fromJson(rawSingle));
+        examples.add(SentenceExample.fromJson(rawSingle));
       }
     }
 

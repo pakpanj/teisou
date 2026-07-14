@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/kotoba_entry.dart';
-import '../../data/models/kotoba_sentence_example.dart';
+import '../../data/models/sentence_example.dart';
 import '../../data/models/speech_register.dart';
 import 'kotoba_providers.dart';
 import 'widgets/kotoba_image.dart';
@@ -336,7 +336,7 @@ class _RegisterRow extends StatelessWidget {
 }
 
 class _ExampleCard extends StatelessWidget {
-  final KotobaSentenceExample example;
+  final SentenceExample example;
   final VoidCallback onSpeak;
 
   const _ExampleCard({required this.example, required this.onSpeak});
