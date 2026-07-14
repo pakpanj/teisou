@@ -333,6 +333,352 @@ N5_KANJI = [
         ("花がきれいです。", "Hana ga kirei desu.", "Bunganya indah."),
         ("春に花見をします。", "Haru ni hanami o shimasu.", "Musim semi kami melihat bunga sakura."),
     ]),
+    # --- Batch B: 子女男名前学生先友私父母 + 目口手足 + 上下中外左右後東西南北
+    #     + 行来食飲見聞読書話買売立休入出会 (43) ---
+    ("ko", "子", ["シ", "ス"], ["こ"], ["anak", "child"], 3, "子", [
+        ("子供", "kodomo", "anak"),
+        ("女の子", "onnanoko", "anak perempuan"),
+        ("男の子", "otokonoko", "anak laki-laki"),
+    ], [
+        ("子供が公園で遊んでいます。", "Kodomo ga kouen de asonde imasu.", "Anak-anak bermain di taman."),
+        ("この子は私の娘です。", "Kono ko wa watashi no musume desu.", "Anak ini adalah putri saya."),
+    ]),
+    ("onna", "女", ["ジョ", "ニョ"], ["おんな"], ["perempuan", "wanita", "woman"], 3, "女", [
+        ("女性", "josei", "wanita"),
+        ("女の子", "onnanoko", "anak perempuan"),
+        ("彼女", "kanojo", "dia (perempuan)/pacar"),
+    ], [
+        ("あの女性は先生です。", "Ano josei wa sensei desu.", "Wanita itu adalah guru."),
+        ("彼女はとても優しいです。", "Kanojo wa totemo yasashii desu.", "Dia (perempuan) sangat baik."),
+    ]),
+    ("otoko", "男", ["ダン", "ナン"], ["おとこ"], ["laki-laki", "pria", "man"], 7, "田", [
+        ("男性", "dansei", "pria"),
+        ("男の子", "otokonoko", "anak laki-laki"),
+        ("長男", "chounan", "anak laki-laki tertua"),
+    ], [
+        ("あの男性は医者です。", "Ano dansei wa isha desu.", "Pria itu adalah dokter."),
+        ("彼は長男です。", "Kare wa chounan desu.", "Dia adalah anak laki-laki tertua."),
+    ]),
+    ("na", "名", ["メイ", "ミョウ"], ["な"], ["nama", "name"], 6, "口", [
+        ("名前", "namae", "nama"),
+        ("有名", "yuumei", "terkenal"),
+        ("名字", "myouji", "nama keluarga"),
+    ], [
+        ("お名前は何ですか。", "Onamae wa nan desu ka.", "Siapa nama Anda?"),
+        ("彼は有名な歌手です。", "Kare wa yuumei na kashu desu.", "Dia penyanyi terkenal."),
+    ]),
+    ("mae", "前", ["ゼン"], ["まえ"], ["depan", "sebelum", "front", "before"], 9, "刂", [
+        ("名前", "namae", "nama"),
+        ("前", "mae", "depan/sebelum"),
+        ("午前", "gozen", "pagi/AM"),
+    ], [
+        ("駅の前で待っています。", "Eki no mae de matte imasu.", "Saya menunggu di depan stasiun."),
+        ("午前中に電話します。", "Gozenchuu ni denwa shimasu.", "Saya akan menelepon pada pagi hari."),
+    ]),
+    ("gaku", "学", ["ガク"], ["まな-ぶ"], ["belajar", "ilmu", "study", "learning"], 8, "子", [
+        ("学校", "gakkou", "sekolah"),
+        ("学生", "gakusei", "siswa/mahasiswa"),
+        ("大学", "daigaku", "universitas"),
+    ], [
+        ("大学で経済を学んでいます。", "Daigaku de keizai o manande imasu.", "Saya belajar ekonomi di universitas."),
+        ("毎日学校へ行きます。", "Mainichi gakkou e ikimasu.", "Setiap hari saya pergi ke sekolah."),
+    ]),
+    ("sei", "生", ["セイ", "ショウ"], ["い-きる", "う-まれる", "なま"], ["hidup", "lahir", "murni", "life", "birth", "raw"], 5, "生", [
+        ("学生", "gakusei", "siswa/mahasiswa"),
+        ("先生", "sensei", "guru"),
+        ("生まれる", "umareru", "lahir"),
+    ], [
+        ("私は大学生です。", "Watashi wa daigakusei desu.", "Saya mahasiswa."),
+        ("東京で生まれました。", "Toukyou de umaremashita.", "Saya lahir di Tokyo."),
+    ]),
+    ("saki", "先", ["セン"], ["さき"], ["sebelumnya", "ujung", "terlebih dahulu", "ahead", "previous"], 6, "儿", [
+        ("先生", "sensei", "guru"),
+        ("先週", "senshuu", "minggu lalu"),
+        ("先に", "sakini", "lebih dahulu"),
+    ], [
+        ("先週、京都へ行きました。", "Senshuu, Kyouto e ikimashita.", "Minggu lalu, saya pergi ke Kyoto."),
+        ("お先にどうぞ。", "Osaki ni douzo.", "Silakan duluan."),
+    ]),
+    ("tomo", "友", ["ユウ"], ["とも"], ["teman", "friend"], 4, "又", [
+        ("友達", "tomodachi", "teman"),
+        ("親友", "shinyuu", "sahabat"),
+        ("友人", "yuujin", "teman (formal)"),
+    ], [
+        ("友達と映画を見ました。", "Tomodachi to eiga o mimashita.", "Saya menonton film dengan teman."),
+        ("彼女は私の親友です。", "Kanojo wa watashi no shinyuu desu.", "Dia adalah sahabat saya."),
+    ]),
+    ("watashi", "私", ["シ"], ["わたし", "わたくし"], ["saya", "pribadi", "I", "private"], 7, "禾", [
+        ("私", "watashi", "saya"),
+        ("私立", "shiritsu", "swasta"),
+        ("私達", "watashitachi", "kami/kita"),
+    ], [
+        ("私は学生です。", "Watashi wa gakusei desu.", "Saya adalah siswa."),
+        ("私達は友達です。", "Watashitachi wa tomodachi desu.", "Kami adalah teman."),
+    ]),
+    ("chichi", "父", ["フ"], ["ちち"], ["ayah", "father"], 4, "父", [
+        ("父", "chichi", "ayah (saya)"),
+        ("お父さん", "otousan", "ayah (umum/panggilan)"),
+        ("父親", "chichioya", "ayah"),
+    ], [
+        ("私の父は医者です。", "Watashi no chichi wa isha desu.", "Ayah saya adalah dokter."),
+        ("お父さんは元気ですか。", "Otousan wa genki desu ka.", "Apakah ayah (Anda) sehat?"),
+    ]),
+    ("haha", "母", ["ボ"], ["はは"], ["ibu", "mother"], 5, "母", [
+        ("母", "haha", "ibu (saya)"),
+        ("お母さん", "okaasan", "ibu (umum/panggilan)"),
+        ("母国", "bokoku", "tanah air"),
+    ], [
+        ("私の母は料理が上手です。", "Watashi no haha wa ryouri ga jouzu desu.", "Ibu saya pandai memasak."),
+        ("お母さんによろしく。", "Okaasan ni yoroshiku.", "Salam untuk ibu (Anda)."),
+    ]),
+    ("me", "目", ["モク", "ボク"], ["め"], ["mata", "eye"], 5, "目", [
+        ("目", "me", "mata"),
+        ("目的", "mokuteki", "tujuan"),
+        ("一つ目", "hitotsume", "yang pertama"),
+    ], [
+        ("目が痛いです。", "Me ga itai desu.", "Mata saya sakit."),
+        ("旅行の目的は何ですか。", "Ryokou no mokuteki wa nan desu ka.", "Apa tujuan perjalanan Anda?"),
+    ]),
+    ("kuchi", "口", ["コウ", "ク"], ["くち"], ["mulut", "mouth"], 3, "口", [
+        ("口", "kuchi", "mulut"),
+        ("入り口", "iriguchi", "pintu masuk"),
+        ("人口", "jinkou", "populasi"),
+    ], [
+        ("口を開けてください。", "Kuchi o akete kudasai.", "Tolong buka mulut Anda."),
+        ("この町の人口は多いです。", "Kono machi no jinkou wa ooi desu.", "Populasi kota ini banyak."),
+    ]),
+    ("te", "手", ["シュ"], ["て"], ["tangan", "hand"], 4, "手", [
+        ("手", "te", "tangan"),
+        ("上手", "jouzu", "pandai/mahir"),
+        ("手紙", "tegami", "surat"),
+    ], [
+        ("手を洗ってください。", "Te o aratte kudasai.", "Tolong cuci tangan."),
+        ("友達に手紙を書きました。", "Tomodachi ni tegami o kakimashita.", "Saya menulis surat untuk teman."),
+    ]),
+    ("ashi", "足", ["ソク"], ["あし", "た-りる"], ["kaki", "cukup", "foot", "leg", "sufficient"], 7, "足", [
+        ("足", "ashi", "kaki"),
+        ("足りる", "tariru", "cukup"),
+        ("一足", "issoku", "satu pasang (sepatu)"),
+    ], [
+        ("足が痛いです。", "Ashi ga itai desu.", "Kaki saya sakit."),
+        ("お金が足りません。", "Okane ga tarimasen.", "Uangnya tidak cukup."),
+    ]),
+    ("ue", "上", ["ジョウ"], ["うえ", "あ-げる", "のぼ-る"], ["atas", "naik", "up", "above"], 3, "一", [
+        ("上", "ue", "atas"),
+        ("上手", "jouzu", "pandai"),
+        ("屋上", "okujou", "atap gedung"),
+    ], [
+        ("机の上に本があります。", "Tsukue no ue ni hon ga arimasu.", "Ada buku di atas meja."),
+        ("エレベーターで屋上に行きます。", "Erebeetaa de okujou ni ikimasu.", "Saya pergi ke atap gedung naik lift."),
+    ]),
+    ("shita", "下", ["カ", "ゲ"], ["した", "さ-げる", "くだ-さる"], ["bawah", "turun", "down", "below"], 3, "一", [
+        ("下", "shita", "bawah"),
+        ("下手", "heta", "tidak pandai"),
+        ("地下", "chika", "bawah tanah"),
+    ], [
+        ("椅子の下に猫がいます。", "Isu no shita ni neko ga imasu.", "Ada kucing di bawah kursi."),
+        ("地下にレストランがあります。", "Chika ni resutoran ga arimasu.", "Ada restoran di bawah tanah."),
+    ]),
+    ("naka", "中", ["チュウ"], ["なか"], ["tengah", "dalam", "middle", "inside"], 4, "丨", [
+        ("中", "naka", "dalam/tengah"),
+        ("中国", "chuugoku", "Tiongkok"),
+        ("一日中", "ichinichijuu", "sepanjang hari"),
+    ], [
+        ("かばんの中に本があります。", "Kaban no naka ni hon ga arimasu.", "Ada buku di dalam tas."),
+        ("彼は中国語を話します。", "Kare wa chuugokugo o hanashimasu.", "Dia berbicara bahasa Mandarin."),
+    ]),
+    ("soto", "外", ["ガイ", "ゲ"], ["そと", "ほか"], ["luar", "outside"], 5, "夕", [
+        ("外", "soto", "luar"),
+        ("外国", "gaikoku", "luar negeri"),
+        ("外国人", "gaikokujin", "orang asing"),
+    ], [
+        ("外は寒いです。", "Soto wa samui desu.", "Di luar dingin."),
+        ("彼女は外国人です。", "Kanojo wa gaikokujin desu.", "Dia orang asing."),
+    ]),
+    ("hidari", "左", ["サ"], ["ひだり"], ["kiri", "left"], 5, "工", [
+        ("左", "hidari", "kiri"),
+        ("左手", "hidarite", "tangan kiri"),
+        ("左側", "hidarigawa", "sisi kiri"),
+    ], [
+        ("左に曲がってください。", "Hidari ni magatte kudasai.", "Tolong belok kiri."),
+        ("銀行は左側にあります。", "Ginkou wa hidarigawa ni arimasu.", "Bank ada di sisi kiri."),
+    ]),
+    ("migi", "右", ["ウ", "ユウ"], ["みぎ"], ["kanan", "right"], 5, "口", [
+        ("右", "migi", "kanan"),
+        ("右手", "migite", "tangan kanan"),
+        ("右側", "migigawa", "sisi kanan"),
+    ], [
+        ("右に曲がってください。", "Migi ni magatte kudasai.", "Tolong belok kanan."),
+        ("郵便局は右側にあります。", "Yuubinkyoku wa migigawa ni arimasu.", "Kantor pos ada di sisi kanan."),
+    ]),
+    ("ato", "後", ["ゴ", "コウ"], ["あと", "うし-ろ", "のち"], ["setelah", "belakang", "after", "behind"], 9, "彳", [
+        ("後で", "atode", "nanti"),
+        ("午後", "gogo", "siang/PM"),
+        ("後ろ", "ushiro", "belakang"),
+    ], [
+        ("後で電話します。", "Atode denwa shimasu.", "Saya akan menelepon nanti."),
+        ("午後、会議があります。", "Gogo, kaigi ga arimasu.", "Siang ini ada rapat."),
+    ]),
+    ("higashi", "東", ["トウ"], ["ひがし"], ["timur", "east"], 8, "木", [
+        ("東", "higashi", "timur"),
+        ("東京", "toukyou", "Tokyo"),
+        ("東口", "higashiguchi", "pintu keluar timur"),
+    ], [
+        ("太陽は東から昇ります。", "Taiyou wa higashi kara noborimasu.", "Matahari terbit dari timur."),
+        ("東京に住んでいます。", "Toukyou ni sunde imasu.", "Saya tinggal di Tokyo."),
+    ]),
+    ("nishi", "西", ["セイ", "サイ"], ["にし"], ["barat", "west"], 6, "西", [
+        ("西", "nishi", "barat"),
+        ("西口", "nishiguchi", "pintu keluar barat"),
+        ("関西", "kansai", "wilayah Kansai"),
+    ], [
+        ("太陽は西に沈みます。", "Taiyou wa nishi ni shizumimasu.", "Matahari terbenam ke arah barat."),
+        ("関西に旅行しました。", "Kansai ni ryokou shimashita.", "Saya bepergian ke Kansai."),
+    ]),
+    ("minami", "南", ["ナン"], ["みなみ"], ["selatan", "south"], 9, "十", [
+        ("南", "minami", "selatan"),
+        ("南口", "minamiguchi", "pintu keluar selatan"),
+        ("南国", "nangoku", "negeri tropis"),
+    ], [
+        ("南へ旅行します。", "Minami e ryokou shimasu.", "Saya bepergian ke selatan."),
+        ("南口で待っています。", "Minamiguchi de matte imasu.", "Saya menunggu di pintu keluar selatan."),
+    ]),
+    ("kita", "北", ["ホク"], ["きた"], ["utara", "north"], 5, "匕", [
+        ("北", "kita", "utara"),
+        ("北海道", "hokkaidou", "Hokkaido"),
+        ("北口", "kitaguchi", "pintu keluar utara"),
+    ], [
+        ("北海道は寒いです。", "Hokkaidou wa samui desu.", "Hokkaido dingin."),
+        ("北口で会いましょう。", "Kitaguchi de aimashou.", "Ayo bertemu di pintu keluar utara."),
+    ]),
+    ("iku", "行", ["コウ", "ギョウ"], ["い-く", "おこな-う"], ["pergi", "melaksanakan", "go", "carry out"], 6, "行", [
+        ("行く", "iku", "pergi"),
+        ("銀行", "ginkou", "bank"),
+        ("旅行", "ryokou", "perjalanan"),
+    ], [
+        ("学校へ行きます。", "Gakkou e ikimasu.", "Saya pergi ke sekolah."),
+        ("銀行でお金をおろします。", "Ginkou de okane o oroshimasu.", "Saya mengambil uang di bank."),
+    ]),
+    ("kuru", "来", ["ライ"], ["く-る", "きた-る"], ["datang", "come"], 7, "木", [
+        ("来る", "kuru", "datang"),
+        ("来年", "rainen", "tahun depan"),
+        ("来週", "raishuu", "minggu depan"),
+    ], [
+        ("友達が家に来ます。", "Tomodachi ga ie ni kimasu.", "Teman saya akan datang ke rumah."),
+        ("来週、テストがあります。", "Raishuu, tesuto ga arimasu.", "Minggu depan ada tes."),
+    ]),
+    ("taberu", "食", ["ショク"], ["た-べる", "く-う"], ["makan", "makanan", "eat", "food"], 9, "食", [
+        ("食べる", "taberu", "makan"),
+        ("食事", "shokuji", "makan/santap"),
+        ("朝食", "choushoku", "sarapan"),
+    ], [
+        ("朝ごはんを食べました。", "Asagohan o tabemashita.", "Saya sudah makan sarapan."),
+        ("家族と食事します。", "Kazoku to shokuji shimasu.", "Saya makan bersama keluarga."),
+    ]),
+    ("nomu", "飲", ["イン"], ["の-む"], ["minum", "drink"], 12, "食", [
+        ("飲む", "nomu", "minum"),
+        ("飲み物", "nomimono", "minuman"),
+        ("飲食店", "inshokuten", "restoran/kedai makan"),
+    ], [
+        ("水を飲みます。", "Mizu o nomimasu.", "Saya minum air."),
+        ("何か飲み物はいかがですか。", "Nanika nomimono wa ikaga desu ka.", "Mau minum sesuatu?"),
+    ]),
+    ("miru", "見", ["ケン"], ["み-る", "み-える"], ["melihat", "see", "look"], 7, "見", [
+        ("見る", "miru", "melihat"),
+        ("見学", "kengaku", "kunjungan belajar"),
+        ("意見", "iken", "pendapat"),
+    ], [
+        ("映画を見ます。", "Eiga o mimasu.", "Saya menonton film."),
+        ("あなたの意見を聞きたいです。", "Anata no iken o kikitai desu.", "Saya ingin mendengar pendapat Anda."),
+    ]),
+    ("kiku", "聞", ["ブン", "モン"], ["き-く", "き-こえる"], ["mendengar", "bertanya", "hear", "ask"], 14, "耳", [
+        ("聞く", "kiku", "mendengar/bertanya"),
+        ("新聞", "shinbun", "koran"),
+        ("聞こえる", "kikoeru", "terdengar"),
+    ], [
+        ("音楽を聞きます。", "Ongaku o kikimasu.", "Saya mendengarkan musik."),
+        ("毎朝新聞を読みます。", "Maiasa shinbun o yomimasu.", "Setiap pagi saya membaca koran."),
+    ]),
+    ("yomu", "読", ["ドク", "トウ"], ["よ-む"], ["membaca", "read"], 14, "言", [
+        ("読む", "yomu", "membaca"),
+        ("読書", "dokusho", "membaca buku"),
+        ("音読", "ondoku", "membaca nyaring"),
+    ], [
+        ("本を読みます。", "Hon o yomimasu.", "Saya membaca buku."),
+        ("読書が好きです。", "Dokusho ga suki desu.", "Saya suka membaca."),
+    ]),
+    ("kaku", "書", ["ショ"], ["か-く"], ["menulis", "tulisan", "write", "book"], 10, "曰", [
+        ("書く", "kaku", "menulis"),
+        ("辞書", "jisho", "kamus"),
+        ("図書館", "toshokan", "perpustakaan"),
+    ], [
+        ("手紙を書きます。", "Tegami o kakimasu.", "Saya menulis surat."),
+        ("図書館で勉強します。", "Toshokan de benkyou shimasu.", "Saya belajar di perpustakaan."),
+    ]),
+    ("hanasu", "話", ["ワ"], ["はな-す", "はなし"], ["berbicara", "cerita", "talk", "story"], 13, "言", [
+        ("話す", "hanasu", "berbicara"),
+        ("電話", "denwa", "telepon"),
+        ("会話", "kaiwa", "percakapan"),
+    ], [
+        ("日本語を話します。", "Nihongo o hanashimasu.", "Saya berbicara bahasa Jepang."),
+        ("友達と電話しました。", "Tomodachi to denwa shimashita.", "Saya menelepon dengan teman."),
+    ]),
+    ("kau", "買", ["バイ"], ["か-う"], ["membeli", "buy"], 12, "貝", [
+        ("買う", "kau", "membeli"),
+        ("買い物", "kaimono", "belanja"),
+        ("購買", "koubai", "pembelian"),
+    ], [
+        ("果物を買います。", "Kudamono o kaimasu.", "Saya membeli buah."),
+        ("週末に買い物をします。", "Shuumatsu ni kaimono o shimasu.", "Akhir pekan saya berbelanja."),
+    ]),
+    ("uru", "売", ["バイ"], ["う-る"], ["menjual", "sell"], 7, "士", [
+        ("売る", "uru", "menjual"),
+        ("発売", "hatsubai", "peluncuran penjualan"),
+        ("売店", "baiten", "kios"),
+    ], [
+        ("この店で野菜を売っています。", "Kono mise de yasai o utte imasu.", "Toko ini menjual sayuran."),
+        ("新しい本が発売されました。", "Atarashii hon ga hatsubai saremashita.", "Buku baru sudah dirilis."),
+    ]),
+    ("tatsu", "立", ["リツ"], ["た-つ", "た-てる"], ["berdiri", "mendirikan", "stand", "establish"], 5, "立", [
+        ("立つ", "tatsu", "berdiri"),
+        ("国立", "kokuritsu", "negeri"),
+        ("立派", "rippa", "megah/hebat"),
+    ], [
+        ("電車の中で立っています。", "Densha no naka de tatte imasu.", "Saya berdiri di dalam kereta."),
+        ("これは国立大学です。", "Kore wa kokuritsu daigaku desu.", "Ini adalah universitas negeri."),
+    ]),
+    ("yasumu", "休", ["キュウ"], ["やす-む"], ["istirahat", "libur", "rest", "holiday"], 6, "人", [
+        ("休む", "yasumu", "beristirahat"),
+        ("休み", "yasumi", "libur"),
+        ("休日", "kyuujitsu", "hari libur"),
+    ], [
+        ("今日は家で休みます。", "Kyou wa ie de yasumimasu.", "Hari ini saya beristirahat di rumah."),
+        ("夏休みはいつですか。", "Natsuyasumi wa itsu desu ka.", "Kapan libur musim panas?"),
+    ]),
+    ("hairu", "入", ["ニュウ"], ["い-る", "はい-る"], ["masuk", "enter"], 2, "入", [
+        ("入る", "hairu", "masuk"),
+        ("入学", "nyuugaku", "masuk sekolah"),
+        ("入り口", "iriguchi", "pintu masuk"),
+    ], [
+        ("部屋に入ります。", "Heya ni hairimasu.", "Saya masuk ke kamar."),
+        ("来月、大学に入学します。", "Raigetsu, daigaku ni nyuugaku shimasu.", "Bulan depan, saya masuk universitas."),
+    ]),
+    ("deru", "出", ["シュツ", "スイ"], ["で-る", "だ-す"], ["keluar", "mengeluarkan", "exit", "go out"], 5, "凵", [
+        ("出る", "deru", "keluar"),
+        ("出口", "deguchi", "pintu keluar"),
+        ("出発", "shuppatsu", "keberangkatan"),
+    ], [
+        ("七時に家を出ます。", "Shichiji ni ie o demasu.", "Saya keluar rumah jam tujuh."),
+        ("出口はどこですか。", "Deguchi wa doko desu ka.", "Di mana pintu keluar?"),
+    ]),
+    ("au", "会", ["カイ", "エ"], ["あ-う"], ["bertemu", "pertemuan", "meet", "meeting"], 6, "人", [
+        ("会う", "au", "bertemu"),
+        ("会議", "kaigi", "rapat"),
+        ("会社", "kaisha", "perusahaan"),
+    ], [
+        ("友達に会います。", "Tomodachi ni aimasu.", "Saya bertemu teman."),
+        ("父は会社で働いています。", "Chichi wa kaisha de hataraite imasu.", "Ayah saya bekerja di perusahaan."),
+    ]),
 ]
 
 PLACEHOLDER_COUNTS = {"N4": 5, "N3": 5, "N2": 5, "N1": 5}
