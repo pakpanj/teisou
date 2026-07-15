@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | ⬜ not started |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — N3 done (315/315), N2 done (367/367), N1 in progress (748/1503) |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -154,9 +154,34 @@ meant.
     KanjiVG repo — CC BY-SA, attributed in `AboutScreen`) are parsed by
     `KanjiVgParser` (`core/services/kanjivg_parser.dart`) into `Path`
     objects — a small hand-written parser, not `flutter_svg`, because
-    KanjiVG's generated paths only ever use `M`/`c` commands (confirmed
-    by inspecting real files) and `flutter_svg` has no public
-    string-to-`Path` API. `StrokeOrderAnimator`
+    `flutter_svg` has no public string-to-`Path` API.
+    **Correction to a previous claim here**: this used to say KanjiVG's
+    generated paths "only ever use M/c commands" — that was wrong, and
+    the bug it caused shipped for the entirety of Batch 8. A proper scan
+    of all 240 files' stroke `d` attributes (case-sensitive; an earlier,
+    wrong scan used PowerShell's default case-*insensitive* string
+    comparison and missed this) found 291 strokes using absolute `C` and
+    32 using smooth-continuation `s`/`S`, across **177 of the 240
+    characters (74%) — 77/107 N5 and 100/133 N4, almost the same rate for
+    both levels**. The old M/c-only regex (`([Mc])([^Mc]*)`) swallowed
+    any `C`/`s`/`S` letter into the *preceding* `c` command's captured
+    argument text (since it only stopped at the next M or c), so that
+    command's numbers got merged with the next one and re-sliced into
+    groups of 6 — corrupting the curve from that point on, typically as a
+    wild loop/spike rather than a missing or truncated stroke. Fixed by
+    recognizing `C`/`s`/`S` as their own commands and tracking
+    `currentX/Y` plus the last cubic's second control point, so smooth
+    continuations can compute their implied first control point (the
+    reflection of the previous curve's second control point through the
+    current point) per the SVG spec. `test/kanjivg_parser_test.dart` has
+    a regression test asserting exact hand-computed endpoints for one
+    stroke of each affected command type (all three appear in 近/U+8FD1's
+    strokes). If you ever touch this parser again: re-run the
+    case-sensitive stroke-command scan across all 240 files before
+    trusting any claim about which SVG commands appear — don't rely on
+    eyeballing a handful of files, that's exactly how this shipped
+    unnoticed for a full batch.
+    `StrokeOrderAnimator`
     (`core/widgets/stroke_order_animator.dart`) drives a **single**
     continuous `AnimationController` (not one per stroke) and computes
     `completeStrokes`/`partialStroke` from its 0-1 value each frame; it
@@ -240,14 +265,73 @@ meant.
   `makanan_indonesia`'s Japanese transliterations of Indonesian dishes
   carry more uncertainty than native-word categories, so it stayed at 7
   entries rather than reaching for shakier ones).
-- Kanji dataset: N5 (107) and N4 (133) are fully real as of Batch 8 — see
-  the Kanji module note above. N3-N1 are still `placeholder: true` marker
-  rows (5 each) so level filters aren't empty — see
-  `scripts/generate_kanji_seed.py` (add an `N3_KANJI` list + a
-  `build_n3_entries()` mirroring the existing N4 ones, drop "N3" from
-  `PLACEHOLDER_COUNTS`, flip its `_levels.json` entry to `available`) and
-  `scripts/kanji_char_lists.py` (add the locked `N3_CHARACTERS` list
-  first, before writing any content against it).
+- Kanji dataset: N5 (107), N4 (133), N3 (315), and now **N2 (367) are all
+  fully real** as of Batch 9 — `scripts/kanji_char_lists.py` locks each
+  level's character list (`N3_CHARACTERS` sourced from the Tanos JLPT
+  list; `N2_CHARACTERS` sourced from jlptsensei.com's N2 list instead —
+  Tanos' own N2 page returned HTTP 500 during that session — 374
+  characters across 4 pages, 7 already in N5/N4 removed, 367 remain), and
+  `scripts/generate_kanji_seed.py` has real content for all of them:
+  `N3_KANJI` in fifteen batches (A-O, 22 each except the final batch O of
+  7), `N2_KANJI` in seventeen batches (A-P 22 each, final batch Q of 15) —
+  `build_n3_entries()`/`build_n2_entries()` both mirror
+  `build_n4_entries()`. Every batch was cross-checked against its locked
+  list before committing (authored count == locked count, no
+  missing/duplicate characters or ids, order matches the locked list
+  exactly) — `_levels.json`'s N3/N2 `kanjiCount` are `315`/`367`. A
+  **full-dataset schema check** (all 927 entries, not just the batch just
+  authored) is worth re-running after any future batch: assert no
+  duplicate ids/characters across the *whole* file, every non-placeholder
+  entry has ≥3 word examples / ≥2 sentence examples / a non-empty
+  radical/strokeCount, and every `svgAsset` path actually exists on disk
+  — this caught a real gap once (N3's 努 had only 2 word examples,
+  probably a leftover from early in N3's authoring, invisible to any
+  single-batch check since batch-level verification only checks the
+  *newly added* entries, not the accumulated whole).
+  N1 is the last remaining step of this same pipeline and is now
+  **in progress, roughly halfway done (748/1503)**: `N1_CHARACTERS` is
+  locked in `kanji_char_lists.py` (1503 characters, sourced from
+  jlptsensei.com — Tanos' N1 page also returned HTTP 500 that session,
+  same as N2's), all 2425 N5+N4+N3+N2+N1 SVGs are fetched, and
+  `PLACEHOLDER_COUNTS` no longer includes N1. `N1_KANJI` is being built
+  batch-by-batch (22 kanji each, lettered A-Z then AA/BB/CC/... once the
+  single-letter alphabet ran out at Z) via `build_n1_entries()` mirroring
+  `build_n2_entries()`. Same per-batch verification as N3/N2 (authored
+  count, no duplicate ids/chars, matches locked-list prefix exactly) plus
+  periodic full-dataset checks every ~5 batches. **Id-collision gotcha
+  specific to N1's scale**: with ~750+ kanji sharing a small pool of
+  common on'yomi/kun'yomi readings, several batches (W, X, CC, EE, HH)
+  each produced one fresh `_n1` suffix that collided with a suffix
+  already used many batches earlier for a *different* kanji with the
+  same reading (e.g. 舗's `ho_n1` collided with 浦's from batch F; 虚's
+  `kyo4_n1` collided with 距's from batch P; 把's `ha_n1` collided with
+  覇's from batch P; 憂's `yuu4_n1` collided with 裕's from batch L;
+  磐's `ban_n1` collided with 盤's from an earlier batch) — the
+  per-batch cross-check script's duplicate-id assertion caught every one
+  of these before they shipped, by design. This is expected to keep
+  happening as N1 grows; don't skip the duplicate-id check on any future
+  batch even though it's "just" run 8+ times successfully in a row.
+  Keep going the same way for the remaining ~755 kanji (~34 more
+  batches at 22/batch) until N1 reaches 100%, then update this table row
+  and `_levels.json` accordingly.
+  **Gotcha found while fetching N3's SVGs**: two of KanjiVG's stroke paths
+  open with a lowercase `m` instead of `M` — `KanjiVgParser` didn't handle
+  it and would have dropped that stroke's numbers the same way it dropped
+  C/s/S before the fix earlier in this batch. Fixed by treating opening
+  `m` as equivalent to `M` (spec-correct: a path's first moveto has no
+  current point to be relative to, so relative-vs-absolute is moot
+  there), with a regression test in `kanjivg_parser_test.dart`. Re-ran the
+  case-sensitive stroke-command scan across the *entire* `assets/kanjivg/`
+  directory (all 922 now-bundled N5+N4+N3+N2 kanji, properly scoping the
+  regex to each `<path d="...">` attribute and using a case-sensitive/
+  ordinal comparer — a plain PowerShell hashtable silently merges `C`≡`c`
+  by default, the same footgun documented in the "Verifying changes"
+  section below) after N2 landed: **M/m/c/C/s/S is still the complete
+  vocabulary** (8695/2/19489/1153/86/16 occurrences respectively, nothing
+  else). N2 didn't introduce anything new. If N1's SVG fetch turns up yet
+  another command letter, re-run this same scan before assuming the
+  vocabulary is still complete — it wasn't, the first two times this was
+  checked.
 - Every `KanjiEntry.relatedBunpou` is currently an empty list — there's
   no Bunpou module yet to link a kanji to specific grammar points. The
   field and its UI section (`KanjiWordDetailScreen`, conditionally
@@ -255,8 +339,26 @@ meant.
   exists; nothing else needs to change to start populating it.
 - Cam Detector's Japanese OCR uses ML Kit's **bundled** model
   (`com.google.mlkit:text-recognition-japanese:16.0.1`, ~4MB, added as an
-  explicit `implementation` dependency in `android/app/build.gradle.kts`)
-  — fully offline from install, no Play Services download needed.
+  explicit `implementation` dependency in `android/app/build.gradle.kts`).
+  **Correction to a previous claim here**: this used to say "fully
+  offline, no Play Services download needed" — that's unverified and
+  may be wrong. The resolved dependency graph also pulls in
+  `com.google.android.gms:play-services-mlkit-text-recognition-japanese`
+  transitively, and `CamDetectorScreen`'s five-consecutive-failures
+  comment assumes a one-time Play Services background download on first
+  use. But every time that warning banner was actually reproduced on a
+  physical device (release build, see "Verifying changes" below), the
+  real cause was a ProGuard/R8 gap — ML Kit's component registrars losing
+  their no-arg constructors — not a Play Services download. So the
+  download theory in that code comment has never actually been confirmed
+  true or false; don't assume either way until someone tests on a device
+  with Play Services freshly reset. Relatedly, `CamDetectorScreen`'s
+  `.catchError((_) { ... })` around `_recognizer.processImage(...)`
+  silently discards the real exception — it only counts failures. That
+  swallowing is exactly what made this ProGuard bug so slow to diagnose
+  (nothing in Dart-visible logs pointed at it; had to go via physical
+  logcat down to the native `TextRecognizer.kt` call). Worth logging the
+  actual error there before the next time this needs debugging.
   Important gotcha if you add another script (Chinese/Korean/Devanagari)
   or another ML Kit feature later: `google_mlkit_*` plugins only
   `compileOnly`-reference their native per-feature dependencies (see the
@@ -264,9 +366,7 @@ meant.
   `implementation` dependency for whatever it actually uses, or it
   compiles fine but crashes at runtime with `NoClassDefFoundError` the
   first time that feature is invoked — this bit Cam Detector once
-  already (fixed by adding the line above). There's still a
-  five-consecutive-failures warning banner in `CamDetectorScreen` for
-  genuine recognition failures unrelated to this.
+  already (fixed by adding the line above).
 - Cam Detector's camera lifecycle uses a `_requestGeneration` token
   (`cam_detector_screen.dart`) so an in-flight `_startController` that
   gets superseded by a newer dispose/start — e.g. rapid background/
@@ -305,16 +405,63 @@ the cheapest way to catch native Android build breaks (Gradle dependency
 conflicts, manifest merge failures) before Codemagic does. minSdk is 24
 (bumped from Flutter's default for the `camera` plugin).
 
-**`flutter build apk --release` currently fails** at `:app:minifyReleaseWithR8`
-with missing-class errors for `com.google.mlkit.vision.text.{devanagari,korean}`
-— R8 tries to fully resolve every language-variant class the
-`google_mlkit_text_recognition` plugin's bridge references, but the app
-only bundles the Japanese-specific native package (see the Cam Detector
-OCR note above). Debug builds don't hit this since R8 doesn't run, which
-is presumably why it's gone unnoticed — nothing in the existing verify
-workflow tries a release build. Not fixed yet; needs ProGuard keep rules
-(or `-dontwarn`) for the unused language variants in
-`android/app/proguard-rules.pro`. Until this is fixed, there is no way
-to produce a real release APK size number — don't quote debug APK size
-(it's 200MB+, inflated by debug symbols and unshrunk resources) as if it
-were representative of what would ship.
+**Gotcha**: bare `flutter test` (default concurrency) silently drops
+`test/kanjivg_parser_test.dart` from the report on this machine — it
+doesn't even print a "loading" line for it, and the pass count comes out
+9 instead of the real 13, with no error or warning either way. Confirmed
+it isn't actually broken by re-running with `flutter test
+--concurrency=1`, which loads, runs, and passes all 4 of its tests.
+Root cause not diagnosed (possibly an isolate-scheduling race specific to
+this file, this test package version, or this machine); `flutter clean`
+didn't change anything. If a change to `kanjivg_parser.dart` or its test
+needs verifying, run `flutter test test/kanjivg_parser_test.dart`
+directly (or the whole suite with `--concurrency=1`) rather than trusting
+bare `flutter test`'s pass count.
+
+`flutter build apk --release` now succeeds — real release APK is
+**~97.7MB** (102,435,658 bytes, `android/app/proguard-rules.pro` +
+`isMinifyEnabled = true` in `build.gradle.kts`'s release buildType), a
+number worth quoting instead of the debug APK's 200MB+ (inflated by debug
+symbols and unshrunk resources). It wasn't a one-shot fix — three
+rounds of R8 failures surfaced one after another, each only reachable
+once the previous one stopped blocking the build, and **none of them are
+caught by `flutter build apk --debug`** since R8 doesn't run in debug.
+Do a release build at least once after touching any native Android
+dependency, not just the debug build above:
+1. **Missing classes**: `google_mlkit_text_recognition`'s native bridge
+   (`TextRecognizer.kt`) references Chinese/Devanagari/Korean recognizer
+   classes unconditionally in a `when` block, but the app only bundles
+   Japanese (see the Cam Detector OCR note above) — R8 refused to build
+   at all. Fixed with `-dontwarn` for the three unused
+   `com.google.mlkit.vision.text.*` packages, since those branches are
+   genuinely unreachable (Cam Detector only ever requests
+   `TextRecognitionScript.japanese`).
+2. **WorkManager/Room crash on every launch**: with (1) fixed, R8
+   minification completed for the first time ever and the resulting APK
+   crashed on *every* launch — `Failed to create an instance of
+   androidx.work.impl.WorkDatabase`, `NoSuchMethodException` on Room's
+   generated `WorkDatabase_Impl` constructor (confirmed via
+   `build/app/outputs/mapping/release/configuration.txt`, R8's fully
+   merged rule set: WorkManager's own consumer rules keep the Room
+   database's class shell via `-keep class * extends
+   androidx.room.RoomDatabase`, bare, but that doesn't protect the
+   generated subclass's constructor from being stripped as apparently
+   unused). Fixed with `-keep class **_Impl { *; }` / `**_Impl$*`.
+3. **ML Kit/Firebase ComponentRegistrar**: with the app launching, Cam
+   Detector's Japanese recognizer still failed on *every single frame*
+   (see the corrected Cam Detector OCR note above) — confirmed via
+   physical-device logcat: `NoSuchMethodException` on `<init>` for
+   `CommonComponentRegistrar`/`TextRegistrar`/`VisionCommonRegistrar`,
+   plus Firebase App Check's two registrars, all discovered reflectively
+   via Firebase's `ComponentDiscoveryService` and all confirmed (via
+   `javap` on the actual AARs) to `implements
+   com.google.firebase.components.ComponentRegistrar`. Fixed with a keep
+   rule for that interface's implementors' no-arg constructors.
+
+If you add another native Android dependency that does anything
+reflection-based (component discovery, Room, or similar), expect the
+same category of failure and check `configuration.txt` plus a
+physical-device logcat capture before assuming a keep rule is
+unnecessary — a clean `flutter build apk --release` is not sufficient
+proof by itself; (3) above built and installed fine and only showed up
+as a runtime failure.

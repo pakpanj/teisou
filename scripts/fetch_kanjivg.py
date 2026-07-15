@@ -1,4 +1,4 @@
-"""Fetch KanjiVG stroke-order SVGs for the Batch 7 N5+N4 character set.
+"""Fetch KanjiVG stroke-order SVGs for the N5+N4+N3+N2+N1 character set.
 
 KanjiVG (https://github.com/KanjiVG/kanjivg) is CC BY-SA licensed — see the
 attribution note added to the app's About/Settings screen alongside this.
@@ -9,7 +9,8 @@ app actually needs into assets/kanjivg/{unicode_hex}.svg, named to match
 KanjiVG's own convention so KanjiEntry.svgAsset paths need no translation
 layer.
 
-Re-run any time kanji_char_lists.py's N5_CHARACTERS/N4_CHARACTERS grows.
+Re-run any time kanji_char_lists.py's
+N5_CHARACTERS/N4_CHARACTERS/N3_CHARACTERS/N2_CHARACTERS/N1_CHARACTERS grows.
 """
 
 import io
@@ -19,7 +20,13 @@ import urllib.request
 import zipfile
 from pathlib import Path
 
-from kanji_char_lists import N4_CHARACTERS, N5_CHARACTERS
+from kanji_char_lists import (
+    N1_CHARACTERS,
+    N2_CHARACTERS,
+    N3_CHARACTERS,
+    N4_CHARACTERS,
+    N5_CHARACTERS,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DEST_DIR = ROOT / "assets" / "kanjivg"
@@ -74,8 +81,14 @@ def extract_needed(zip_bytes: bytes, characters: list[str]) -> tuple[int, list[s
 
 
 def main():
-    characters = sorted(set(N5_CHARACTERS) | set(N4_CHARACTERS))
-    print(f"Fetching SVGs for {len(characters)} unique kanji (N5+N4)...")
+    characters = sorted(
+        set(N5_CHARACTERS)
+        | set(N4_CHARACTERS)
+        | set(N3_CHARACTERS)
+        | set(N2_CHARACTERS)
+        | set(N1_CHARACTERS)
+    )
+    print(f"Fetching SVGs for {len(characters)} unique kanji (N5+N4+N3+N2+N1)...")
 
     zip_bytes = download_zip()
     copied, missing = extract_needed(zip_bytes, characters)

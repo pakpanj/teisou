@@ -24,17 +24,25 @@ class KanjiStrokeData {
 /// Parses a KanjiVG SVG asset into drawable strokes for
 /// `StrokeOrderAnimator`.
 ///
-/// KanjiVG's own SVG generator only ever emits two path commands per
-/// stroke — one absolute `M` (moveto) followed by one or more relative `c`
-/// (cubic Bezier) — confirmed by inspecting the fetched files directly
-/// rather than assuming general SVG path-data support. That constrained
-/// vocabulary is what makes a small hand-written parser safe here; this is
-/// not a general SVG path parser and will silently produce an empty path
-/// for any command outside M/c.
+/// KanjiVG's own SVG generator opens each stroke with a moveto — usually
+/// absolute `M`, occasionally lowercase `m` (only ever as the very first
+/// command, where the SVG spec says relative-vs-absolute is moot: a
+/// path's opening moveto has no preceding current point, so `m` there
+/// means the same thing `M` would) — followed by cubic-Bezier commands:
+/// relative `c` most often, but also absolute `C` and smooth continuations
+/// `s`/`S` (reflecting the previous curve's second control point instead
+/// of specifying its own first control point) — confirmed by scanning
+/// every bundled file's stroke paths rather than assuming general SVG
+/// path-data support (M/m/c/C/s/S is the complete command vocabulary
+/// actually used; nothing else appears, and every stroke is a single
+/// continuous subpath — `m`/`M` never recurs mid-stroke). That constrained
+/// vocabulary is what makes a small hand-written parser safe here; this
+/// is not a general SVG path parser and will silently produce an empty
+/// path for any command outside M/m/c/C/s/S.
 class KanjiVgParser {
   static final _strokeNumberPattern = RegExp(r'-s(\d+)$');
   static final _matrixPattern = RegExp(r'matrix\(([^)]+)\)');
-  static final _commandPattern = RegExp(r'([Mc])([^Mc]*)');
+  static final _commandPattern = RegExp(r'([McsSCm])([^McsSCm]*)');
   static final _numberPattern = RegExp(r'-?\d+\.?\d*');
 
   static Future<KanjiStrokeData?> parse(String assetPath) async {
@@ -103,10 +111,24 @@ class KanjiVgParser {
     return Offset(numbers[4]!, numbers[5]!);
   }
 
-  /// Converts one stroke's `d` attribute (always "M x,y" followed by one or
-  /// more "c x1,y1 x2,y2 x,y" relative-cubic groups) into a [Path].
+  /// Converts one stroke's `d` attribute into a [Path]. Handles "M x,y",
+  /// relative "c" and absolute "C" cubics, and smooth-continuation "s"/"S"
+  /// cubics — the latter omit their own first control point, instead
+  /// implying it as the reflection of the previous cubic's second control
+  /// point through the current point (or the current point itself if the
+  /// previous command wasn't a cubic). Tracking `currentX/Y` and the last
+  /// cubic's second control point (updated after c *and* C, since either
+  /// can precede a smooth continuation) is what makes that reflection
+  /// possible; without it, C/s/S's argument numbers would have to be
+  /// either dropped or (as the original M/c-only parser did) misread as
+  /// more args of the preceding c command, corrupting the curve from that
+  /// point on.
   static Path _parsePathData(String d) {
     final path = Path();
+    var currentX = 0.0, currentY = 0.0;
+    var lastControl2X = 0.0, lastControl2Y = 0.0;
+    var lastWasCubic = false;
+
     for (final match in _commandPattern.allMatches(d)) {
       final command = match.group(1)!;
       final numbers = _numberPattern
@@ -114,18 +136,60 @@ class KanjiVgParser {
           .map((m) => double.parse(m.group(0)!))
           .toList();
 
-      if (command == 'M' && numbers.length >= 2) {
-        path.moveTo(numbers[0], numbers[1]);
+      if ((command == 'M' || command == 'm') && numbers.length >= 2) {
+        // A path's opening moveto is absolute regardless of case (there's
+        // no current point yet to be relative to) — see class doc.
+        currentX = numbers[0];
+        currentY = numbers[1];
+        path.moveTo(currentX, currentY);
+        lastWasCubic = false;
       } else if (command == 'c') {
         for (var i = 0; i + 5 < numbers.length; i += 6) {
-          path.relativeCubicTo(
-            numbers[i],
-            numbers[i + 1],
-            numbers[i + 2],
-            numbers[i + 3],
-            numbers[i + 4],
-            numbers[i + 5],
-          );
+          final x2 = numbers[i + 2], y2 = numbers[i + 3];
+          final x = numbers[i + 4], y = numbers[i + 5];
+          path.relativeCubicTo(numbers[i], numbers[i + 1], x2, y2, x, y);
+          lastControl2X = currentX + x2;
+          lastControl2Y = currentY + y2;
+          currentX += x;
+          currentY += y;
+          lastWasCubic = true;
+        }
+      } else if (command == 's') {
+        for (var i = 0; i + 3 < numbers.length; i += 4) {
+          final x2 = numbers[i], y2 = numbers[i + 1];
+          final x = numbers[i + 2], y = numbers[i + 3];
+          final cp1X = lastWasCubic ? currentX - lastControl2X : 0.0;
+          final cp1Y = lastWasCubic ? currentY - lastControl2Y : 0.0;
+          path.relativeCubicTo(cp1X, cp1Y, x2, y2, x, y);
+          lastControl2X = currentX + x2;
+          lastControl2Y = currentY + y2;
+          currentX += x;
+          currentY += y;
+          lastWasCubic = true;
+        }
+      } else if (command == 'C') {
+        for (var i = 0; i + 5 < numbers.length; i += 6) {
+          final x2 = numbers[i + 2], y2 = numbers[i + 3];
+          final x = numbers[i + 4], y = numbers[i + 5];
+          path.cubicTo(numbers[i], numbers[i + 1], x2, y2, x, y);
+          lastControl2X = x2;
+          lastControl2Y = y2;
+          currentX = x;
+          currentY = y;
+          lastWasCubic = true;
+        }
+      } else if (command == 'S') {
+        for (var i = 0; i + 3 < numbers.length; i += 4) {
+          final x2 = numbers[i], y2 = numbers[i + 1];
+          final x = numbers[i + 2], y = numbers[i + 3];
+          final cp1X = lastWasCubic ? 2 * currentX - lastControl2X : currentX;
+          final cp1Y = lastWasCubic ? 2 * currentY - lastControl2Y : currentY;
+          path.cubicTo(cp1X, cp1Y, x2, y2, x, y);
+          lastControl2X = x2;
+          lastControl2Y = y2;
+          currentX = x;
+          currentY = y;
+          lastWasCubic = true;
         }
       }
     }
