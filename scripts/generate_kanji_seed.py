@@ -13610,6 +13610,5870 @@ N1_KANJI = [
         ("弊害があります。", "Heigai ga arimasu.", "Ada dampak buruk."),
         ("弊社にお越しください。", "Heisha ni okoshi kudasai.", "Silakan datang ke perusahaan kami."),
     ]),
+    ("kushiro_n1", "釧", [], ["くしろ"], ["gelang tangan (nama tempat)", "bracelet"], 11, "金", [
+        ("釧路", "Kushiro", "nama kota"),
+        ("釧", "kushiro", "gelang tangan kuno"),
+        ("釧路湿原", "Kushiro shitsugen", "rawa Kushiro"),
+    ], [
+        ("釧路市に住んでいます。", "Kushiro-shi ni sunde imasu.", "Tinggal di kota Kushiro."),
+        ("釧路湿原を訪れました。", "Kushiro shitsugen o otozuremashita.", "Mengunjungi rawa Kushiro."),
+    ]),
+    ("hi6_n1", "妃", ["ヒ"], [], ["permaisuri", "istri pangeran", "princess", "consort"], 6, "女", [
+        ("妃殿下", "hidenka", "Yang Mulia Putri"),
+        ("王妃", "ouhi", "permaisuri raja"),
+        ("皇太子妃", "koutaishihi", "istri putra mahkota"),
+    ], [
+        ("妃殿下がいらっしゃいました。", "Hidenka ga irasshaimashita.", "Yang Mulia Putri datang."),
+        ("王妃の物語です。", "Ouhi no monogatari desu.", "Ini kisah permaisuri."),
+    ]),
+    ("haku6_n1", "舶", ["ハク"], [], ["kapal laut", "ocean-going ship"], 11, "舟", [
+        ("船舶", "senpaku", "kapal laut"),
+        ("舶来品", "hakuraihin", "barang impor"),
+        ("舶載", "hakusai", "dimuat kapal"),
+    ], [
+        ("船舶が入港しました。", "Senpaku ga nyuukou shimashita.", "Kapal laut memasuki pelabuhan."),
+        ("舶来品を買いました。", "Hakuraihin o kaimashita.", "Membeli barang impor."),
+    ]),
+    ("ga5_n1", "餓", ["ガ"], [], ["kelaparan", "starve"], 15, "食", [
+        ("餓死", "gashi", "mati kelaparan"),
+        ("餓鬼", "gaki", "hantu kelaparan/anak nakal"),
+        ("飢餓", "kiga", "kelaparan"),
+    ], [
+        ("餓死しました。", "Gashi shimashita.", "Mati kelaparan."),
+        ("餓鬼のような子供です。", "Gaki no you na kodomo desu.", "Anak yang seperti hantu kelaparan/nakal."),
+    ]),
+    ("jin5_n1", "腎", ["ジン"], [], ["ginjal", "kidney"], 13, "肉", [
+        ("腎臓", "jinzou", "ginjal"),
+        ("腎不全", "jinfuzen", "gagal ginjal"),
+        ("副腎", "fukujin", "kelenjar adrenal"),
+    ], [
+        ("腎臓が悪いです。", "Jinzou ga warui desu.", "Ginjalnya bermasalah."),
+        ("腎不全と診断されました。", "Jinfuzen to shindan saremashita.", "Didiagnosis gagal ginjal."),
+    ]),
+    ("kyuu8_n1", "窮", ["キュウ"], ["きわ-める", "きわ-まる"], ["kesulitan", "distress", "exhaust"], 15, "穴", [
+        ("窮地", "kyuuchi", "situasi terjepit"),
+        ("困窮", "konkyuu", "kemiskinan/kesulitan"),
+        ("窮屈", "kyuukutsu", "sempit/kaku"),
+    ], [
+        ("窮地に立たされました。", "Kyuuchi ni tatasaremashita.", "Terjebak dalam situasi sulit."),
+        ("困窮しています。", "Konkyuu shite imasu.", "Mengalami kesulitan."),
+    ]),
+    ("shou26_n1", "掌", ["ショウ"], ["たなごころ"], ["telapak tangan", "mengelola", "palm", "manage"], 12, "手", [
+        ("掌握", "shouaku", "penguasaan"),
+        ("車掌", "shashou", "kondektur"),
+        ("合掌", "gasshou", "tangan tercakup untuk berdoa"),
+    ], [
+        ("車掌さんに聞きました。", "Shashou-san ni kikimashita.", "Bertanya kepada kondektur."),
+        ("合掌しました。", "Gasshou shimashita.", "Menangkupkan tangan untuk berdoa."),
+    ]),
+    ("rei4_n1", "麗", ["レイ"], ["うるわ-しい"], ["indah", "beautiful"], 19, "鹿", [
+        ("美麗", "birei", "sangat indah"),
+        ("華麗", "karei", "gemerlap/anggun"),
+        ("麗しい", "uruwashii", "indah/mengagumkan"),
+    ], [
+        ("華麗な演技でした。", "Karei na engi deshita.", "Ini penampilan yang gemerlap."),
+        ("麗しい景色です。", "Uruwashii keshiki desu.", "Ini pemandangan yang indah."),
+    ]),
+    ("ryou6_n1", "綾", ["リョウ"], ["あや"], ["kain bermotif", "pola", "twill weave", "pattern"], 14, "糸", [
+        ("綾", "aya", "pola/motif"),
+        ("綾織り", "ayaori", "tenunan kepar"),
+        ("綾子", "Ayako", "contoh nama wanita"),
+    ], [
+        ("綾織りの生地です。", "Ayaori no kiji desu.", "Ini kain tenunan kepar."),
+        ("綾子さんに会いました。", "Ayako-san ni aimashita.", "Bertemu dengan Ayako."),
+    ]),
+    ("shuu9_n1", "臭", ["シュウ"], ["くさ-い", "にお-う"], ["berbau", "smell", "stink"], 9, "自", [
+        ("臭い", "kusai", "bau"),
+        ("臭う", "niou", "berbau"),
+        ("悪臭", "akushuu", "bau busuk"),
+    ], [
+        ("臭いにおいがします。", "Kusai nioi ga shimasu.", "Ada bau yang busuk."),
+        ("悪臭がひどいです。", "Akushuu ga hidoi desu.", "Bau busuknya parah."),
+    ]),
+    ("fu5_n1", "釜", [], ["かま"], ["kuali", "panci besar", "cauldron", "pot"], 10, "金", [
+        ("釜", "kama", "kuali/panci nasi"),
+        ("釜飯", "kamameshi", "nasi kuali"),
+        ("茶釜", "chagama", "ketel teh"),
+    ], [
+        ("釜飯を食べました。", "Kamameshi o tabemashita.", "Makan nasi kuali."),
+        ("茶釜でお湯を沸かしました。", "Chagama de oyu o wakashimashita.", "Merebus air dengan ketel teh."),
+    ]),
+    ("etsu_n1", "悦", ["エツ"], [], ["kegembiraan", "joy"], 10, "心", [
+        ("悦楽", "etsuraku", "kesenangan"),
+        ("満悦", "man-etsu", "sangat puas"),
+        ("喜悦", "kietsu", "kegembiraan besar"),
+    ], [
+        ("満悦の表情です。", "Man-etsu no hyoujou desu.", "Ini ekspresi yang sangat puas."),
+        ("喜悦に浸りました。", "Kietsu ni hitarimashita.", "Larut dalam kegembiraan."),
+    ]),
+    ("ha3_n1", "刃", ["ジン"], ["は"], ["mata pisau", "blade"], 3, "刀", [
+        ("刃", "ha", "mata pisau"),
+        ("刃物", "hamono", "alat tajam/pisau"),
+        ("両刃", "ryouba", "bermata dua"),
+    ], [
+        ("刃物を扱う時は注意してください。", "Hamono o atsukau toki wa chuui shite kudasai.", "Hati-hati saat menggunakan benda tajam."),
+        ("両刃の剣です。", "Ryouba no ken desu.", "Ini pedang bermata dua."),
+    ]),
+    ("baku2_n1", "縛", ["バク"], ["しば-る"], ["mengikat", "bind", "tie"], 16, "糸", [
+        ("縛る", "shibaru", "mengikat"),
+        ("束縛", "sokubaku", "pengekangan"),
+        ("呪縛", "jubaku", "mantra/keterikatan psikologis"),
+    ], [
+        ("紐で縛りました。", "Himo de shibarimashita.", "Mengikat dengan tali."),
+        ("束縛されたくないです。", "Sokubaku saretakunai desu.", "Tidak ingin dikekang."),
+    ]),
+    ("reki_n1", "暦", ["レキ"], ["こよみ"], ["kalender", "calendar"], 14, "日", [
+        ("暦", "koyomi", "kalender"),
+        ("西暦", "seireki", "kalender Masehi"),
+        ("旧暦", "kyuureki", "kalender lunar lama"),
+    ], [
+        ("暦を見ました。", "Koyomi o mimashita.", "Melihat kalender."),
+        ("西暦2024年です。", "Seireki nisen nijuuyon-nen desu.", "Ini tahun 2024 Masehi."),
+    ]),
+    ("gi6_n1", "宜", ["ギ"], [], ["sesuai", "appropriate", "suitable"], 8, "宀", [
+        ("宜しく", "yoroshiku", "mohon bantuannya"),
+        ("便宜", "bengi", "kenyamanan/kemudahan"),
+        ("適宜", "tekigi", "sesuai kebutuhan"),
+    ], [
+        ("どうぞ宜しくお願いします。", "Douzo yoroshiku onegaishimasu.", "Mohon bantuannya."),
+        ("便宜を図りました。", "Bengi o hakarimashita.", "Memberikan kemudahan."),
+    ]),
+    ("mou3_n1", "盲", ["モウ"], [], ["buta", "blind"], 8, "目", [
+        ("盲目", "moumoku", "buta"),
+        ("盲点", "mouten", "titik buta"),
+        ("色盲", "shikimou", "buta warna"),
+    ], [
+        ("盲目の音楽家です。", "Moumoku no ongakuka desu.", "Ini musisi yang buta."),
+        ("盲点を突かれました。", "Mouten o tsukaremashita.", "Titik butanya tersentuh."),
+    ]),
+    ("sui8_n1", "粋", ["スイ"], ["いき"], ["keren", "inti", "stylish", "essence"], 10, "米", [
+        ("粋な", "iki na", "keren/bergaya"),
+        ("純粋", "junsui", "murni"),
+        ("抜粋", "bassui", "kutipan"),
+    ], [
+        ("粋な計らいです。", "Iki na hakarai desu.", "Ini tindakan yang keren."),
+        ("純粋な気持ちです。", "Junsui na kimochi desu.", "Ini perasaan yang murni."),
+    ]),
+    ("joku_n1", "辱", ["ジョク"], ["はずかし-める"], ["mempermalukan", "disgrace"], 10, "辰", [
+        ("屈辱", "kutsujoku", "penghinaan"),
+        ("侮辱", "bujoku", "hinaan"),
+        ("恥辱", "chijoku", "aib/rasa malu"),
+    ], [
+        ("屈辱を受けました。", "Kutsujoku o ukemashita.", "Menerima penghinaan."),
+        ("侮辱されました。", "Bujoku saremashita.", "Dihina."),
+    ]),
+    ("ki20_n1", "毅", ["キ"], [], ["teguh (nama)", "resolute"], 15, "殳", [
+        ("毅然", "kizen", "tegas/teguh"),
+        ("剛毅", "gouki", "teguh dan berani"),
+        ("毅一", "Kiichi", "contoh nama pria"),
+    ], [
+        ("毅然とした態度です。", "Kizen to shita taido desu.", "Ini sikap yang tegas."),
+        ("剛毅な性格です。", "Gouki na seikaku desu.", "Kepribadian yang teguh dan berani."),
+    ]),
+    ("katsu4_n1", "轄", ["カツ"], [], ["yurisdiksi", "control", "jurisdiction"], 17, "車", [
+        ("管轄", "kankatsu", "yurisdiksi"),
+        ("直轄", "chokkatsu", "di bawah kendali langsung"),
+        ("統轄", "toukatsu", "pengawasan menyeluruh"),
+    ], [
+        ("管轄区域です。", "Kankatsu kuiki desu.", "Ini wilayah yurisdiksi."),
+        ("直轄地です。", "Chokkatsuchi desu.", "Ini wilayah di bawah kendali langsung."),
+    ]),
+    ("en8_n1", "猿", ["エン"], ["さる"], ["monyet", "monkey"], 13, "犬", [
+        ("猿", "saru", "monyet"),
+        ("猿真似", "sarumane", "tiru membabi buta"),
+        ("類人猿", "ruijin-en", "kera besar"),
+    ], [
+        ("猿を見ました。", "Saru o mimashita.", "Melihat monyet."),
+        ("猿真似はやめてください。", "Sarumane wa yamete kudasai.", "Jangan meniru membabi buta."),
+    ]),
+    ("gen5_n1", "弦", ["ゲン"], ["つる"], ["senar", "tali busur", "string", "chord"], 8, "弓", [
+        ("弦楽器", "gengakki", "alat musik gesek"),
+        ("上弦", "jougen", "bulan sabit awal"),
+        ("弦", "tsuru", "tali busur"),
+    ], [
+        ("弦楽器を演奏しました。", "Gengakki o ensou shimashita.", "Memainkan alat musik gesek."),
+        ("上弦の月です。", "Jougen no tsuki desu.", "Ini bulan sabit awal."),
+    ]),
+    ("shima2_n1", "嶌", [], ["しま"], ["pulau (variant langka)", "island"], 14, "山", [
+        ("嶌", "shima", "pulau (variant langka dari 島/嶋)"),
+        ("嶌田", "Shimada", "contoh nama keluarga"),
+        ("異体字", "itaiji", "karakter varian"),
+    ], [
+        ("嶌田さんという名字は珍しいです。", "Shimada-san to iu myouji wa mezurashii desu.", "Nama keluarga \"Shimada\" (dengan kanji ini) jarang ditemui."),
+        ("これは島の異体字です。", "Kore wa shima no itaiji desu.", "Ini adalah varian karakter dari \"shima\"."),
+    ]),
+    ("jin6_n1", "稔", ["ジン"], ["みの-る"], ["berbuah (nama)", "ripen"], 13, "禾", [
+        ("稔る", "minoru", "berbuah/matang"),
+        ("稔", "Minoru", "contoh nama pria"),
+        ("豊稔", "hounen", "panen melimpah"),
+    ], [
+        ("稲が稔りました。", "Ine ga minorimashita.", "Padi berbuah."),
+        ("稔さんに会いました。", "Minoru-san ni aimashita.", "Bertemu dengan Minoru."),
+    ]),
+    ("chitsu2_n1", "窒", ["チツ"], [], ["mati lemas", "nitrogen", "suffocate"], 11, "穴", [
+        ("窒息", "chissoku", "mati lemas"),
+        ("窒素", "chisso", "nitrogen"),
+        ("窒塞", "chissoku", "penyumbatan"),
+    ], [
+        ("窒息しそうでした。", "Chissoku shisou deshita.", "Hampir mati lemas."),
+        ("窒素ガスです。", "Chisso gasu desu.", "Ini gas nitrogen."),
+    ]),
+    ("sui9_n1", "炊", ["スイ"], ["た-く"], ["menanak nasi", "cook rice"], 8, "火", [
+        ("炊く", "taku", "menanak nasi"),
+        ("炊飯器", "suihanki", "rice cooker"),
+        ("自炊", "jisui", "memasak sendiri"),
+    ], [
+        ("ご飯を炊きました。", "Gohan o takimashita.", "Menanak nasi."),
+        ("炊飯器を使っています。", "Suihanki o tsukatte imasu.", "Menggunakan rice cooker."),
+    ]),
+    ("kou29_n1", "洪", ["コウ"], [], ["banjir besar", "flood", "vast"], 9, "水", [
+        ("洪水", "kouzui", "banjir"),
+        ("洪積世", "koushakusei", "zaman Pleistosen"),
+        ("洪範", "kouhan", "aturan besar"),
+    ], [
+        ("洪水が発生しました。", "Kouzui ga hassei shimashita.", "Banjir terjadi."),
+        ("洪積世の地層です。", "Koushakusei no chisou desu.", "Ini lapisan tanah zaman Pleistosen."),
+    ]),
+    ("setsu2_n1", "摂", ["セツ"], [], ["menyerap", "mewakili", "absorb", "act for"], 13, "手", [
+        ("摂取", "sesshu", "penyerapan/konsumsi"),
+        ("摂政", "sesshou", "wali/bupati"),
+        ("摂氏", "sesshi", "Celsius"),
+    ], [
+        ("栄養を摂取しました。", "Eiyou o sesshu shimashita.", "Mengonsumsi nutrisi."),
+        ("摂氏30度です。", "Sesshi sanjuu-do desu.", "Ini 30 derajat Celsius."),
+    ]),
+    ("hou9_n1", "飽", ["ホウ"], ["あ-きる", "あ-かす"], ["bosan", "satiate", "tired of"], 13, "食", [
+        ("飽きる", "akiru", "bosan"),
+        ("飽和", "houwa", "kejenuhan"),
+        ("食べ飽きる", "tabeakiru", "bosan makan"),
+    ], [
+        ("もう飽きました。", "Mou akimashita.", "Sudah bosan."),
+        ("飽和状態です。", "Houwa joutai desu.", "Ini keadaan jenuh."),
+    ]),
+    ("kan26_n1", "函", ["カン"], [], ["kotak", "box", "case"], 8, "凵", [
+        ("函館", "Hakodate", "nama kota"),
+        ("投函", "toukan", "memasukkan surat ke kotak pos"),
+        ("石函", "sekikan", "kotak batu"),
+    ], [
+        ("函館に旅行しました。", "Hakodate ni ryokou shimashita.", "Berlibur ke Hakodate."),
+        ("手紙を投函しました。", "Tegami o toukan shimashita.", "Memasukkan surat ke kotak pos."),
+    ]),
+    ("jou8_n1", "冗", ["ジョウ"], [], ["berlebihan", "redundant"], 4, "冖", [
+        ("冗談", "joudan", "lelucon"),
+        ("冗長", "jouchou", "bertele-tele"),
+        ("冗費", "jouhi", "pengeluaran sia-sia"),
+    ], [
+        ("冗談を言いました。", "Joudan o iimashita.", "Membuat lelucon."),
+        ("冗長な説明です。", "Jouchou na setsumei desu.", "Ini penjelasan yang bertele-tele."),
+    ]),
+    ("tou17_n1", "桃", ["トウ"], ["もも"], ["buah persik", "peach"], 10, "木", [
+        ("桃", "momo", "buah persik"),
+        ("桃色", "momoiro", "warna merah muda"),
+        ("桃太郎", "Momotarou", "tokoh cerita rakyat"),
+    ], [
+        ("桃を食べました。", "Momo o tabemashita.", "Makan buah persik."),
+        ("桃太郎の話です。", "Momotarou no hanashi desu.", "Ini cerita Momotaro."),
+    ]),
+    ("shu4_n1", "狩", ["シュ"], ["か-る", "かり"], ["berburu", "hunt"], 9, "犬", [
+        ("狩る", "karu", "berburu"),
+        ("狩猟", "shuryou", "perburuan"),
+        ("紅葉狩り", "momijigari", "melihat dedaunan musim gugur"),
+    ], [
+        ("鹿を狩りました。", "Shika o karimashita.", "Berburu rusa."),
+        ("紅葉狩りに行きました。", "Momijigari ni ikimashita.", "Pergi melihat dedaunan musim gugur."),
+    ]),
+    ("shu5_n1", "朱", ["シュ"], [], ["merah tua", "vermilion"], 6, "木", [
+        ("朱色", "shuiro", "warna merah tua"),
+        ("朱肉", "shuniku", "tinta stempel merah"),
+        ("朱印", "shuin", "cap merah/stempel kuil"),
+    ], [
+        ("朱色の鳥居です。", "Shuiro no torii desu.", "Ini gerbang torii berwarna merah tua."),
+        ("朱印をいただきました。", "Shuin o itadakimashita.", "Mendapat cap merah."),
+    ]),
+    ("ka13_n1", "渦", ["カ"], ["うず"], ["pusaran air", "whirlpool"], 12, "水", [
+        ("渦", "uzu", "pusaran"),
+        ("渦巻き", "uzumaki", "pusaran/spiral"),
+        ("戦渦", "senka", "kekacauan perang"),
+    ], [
+        ("渦ができました。", "Uzu ga dekimashita.", "Terbentuk pusaran."),
+        ("渦巻き模様です。", "Uzumaki moyou desu.", "Ini pola spiral."),
+    ]),
+    ("shin11_n1", "紳", ["シン"], [], ["pria terhormat", "gentleman"], 11, "糸", [
+        ("紳士", "shinshi", "pria terhormat/gentleman"),
+        ("紳士的", "shinshiteki", "seperti gentleman"),
+        ("紳士服", "shinshifuku", "pakaian pria"),
+    ], [
+        ("紳士的な人です。", "Shinshiteki na hito desu.", "Dia orang yang seperti gentleman."),
+        ("紳士服売り場です。", "Shinshifuku uriba desu.", "Ini bagian pakaian pria."),
+    ]),
+    ("suu_n1", "枢", ["スウ"], [], ["pusat", "poros", "pivot", "center"], 8, "木", [
+        ("中枢", "chuusuu", "pusat"),
+        ("枢軸", "suujiku", "poros"),
+        ("枢要", "suuyou", "sangat penting"),
+    ], [
+        ("中枢神経です。", "Chuusuu shinkei desu.", "Ini sistem saraf pusat."),
+        ("枢軸国です。", "Suujikukoku desu.", "Ini negara poros."),
+    ]),
+    ("hi7_n1", "碑", ["ヒ"], [], ["batu prasasti", "monument", "stele"], 14, "石", [
+        ("石碑", "sekihi", "batu prasasti"),
+        ("記念碑", "kinenhi", "monumen peringatan"),
+        ("歌碑", "kahi", "prasasti puisi"),
+    ], [
+        ("石碑が建てられました。", "Sekihi ga tateraremashita.", "Batu prasasti didirikan."),
+        ("記念碑を訪れました。", "Kinenhi o otozuremashita.", "Mengunjungi monumen peringatan."),
+    ]),
+    ("tan7_n1", "鍛", ["タン"], ["きた-える"], ["menempa", "melatih", "forge", "train"], 17, "金", [
+        ("鍛える", "kitaeru", "menempa/melatih"),
+        ("鍛冶", "kaji", "pandai besi"),
+        ("鍛錬", "tanren", "latihan keras"),
+    ], [
+        ("体を鍛えました。", "Karada o kitaemashita.", "Melatih tubuh."),
+        ("鍛冶屋で働いています。", "Kajiya de hataraite imasu.", "Bekerja di bengkel pandai besi."),
+    ]),
+    ("tou18_n1", "刀", ["トウ"], ["かたな"], ["pedang Jepang", "sword"], 2, "刀", [
+        ("刀", "katana", "pedang Jepang"),
+        ("日本刀", "nihontou", "pedang Jepang tradisional"),
+        ("短刀", "tantou", "pisau pendek"),
+    ], [
+        ("刀を持っています。", "Katana o motte imasu.", "Membawa pedang."),
+        ("日本刀は美しいです。", "Nihontou wa utsukushii desu.", "Pedang Jepang itu indah."),
+    ]),
+    ("ko6_n1", "鼓", ["コ"], ["つづみ"], ["gendang", "drum"], 13, "鼓", [
+        ("太鼓", "taiko", "gendang besar"),
+        ("鼓舞", "kobu", "membangkitkan semangat"),
+        ("鼓動", "kodou", "detak jantung"),
+    ], [
+        ("太鼓を叩きました。", "Taiko o tatakimashita.", "Memukul gendang."),
+        ("鼓動が速くなりました。", "Kodou ga hayaku narimashita.", "Detak jantung menjadi cepat."),
+    ]),
+    ("ra_n1", "裸", ["ラ"], ["はだか"], ["telanjang", "naked"], 13, "衣", [
+        ("裸", "hadaka", "telanjang"),
+        ("裸足", "hadashi", "kaki telanjang"),
+        ("全裸", "zenra", "telanjang bulat"),
+    ], [
+        ("裸足で歩きました。", "Hadashi de arukimashita.", "Berjalan tanpa alas kaki."),
+        ("裸で生まれました。", "Hadaka de umaremashita.", "Lahir tanpa busana."),
+    ]),
+    ("ou5_n1", "鴨", ["オウ"], ["かも"], ["itik liar", "duck"], 16, "鳥", [
+        ("鴨", "kamo", "itik liar"),
+        ("鴨南蛮", "kamonanban", "mi soba dengan bebek"),
+        ("鴨居", "kamoi", "ambang pintu geser"),
+    ], [
+        ("鴨が泳いでいます。", "Kamo ga oyoide imasu.", "Itik liar sedang berenang."),
+        ("鴨南蛮を食べました。", "Kamonanban o tabemashita.", "Makan soba bebek."),
+    ]),
+    ("yuu7_n1", "猶", ["ユウ"], ["なお"], ["masih", "seperti", "still", "like"], 12, "犬", [
+        ("猶予", "yuuyo", "penundaan/grace period"),
+        ("猶太", "Yudaya", "transliterasi Yudea"),
+        ("過猶不及", "kayuufukyuu", "terlalu banyak sama buruknya dengan kurang"),
+    ], [
+        ("猶予期間です。", "Yuuyo kikan desu.", "Ini masa tenggang."),
+        ("支払いを猶予してもらいました。", "Shiharai o yuuyo shite moraimashita.", "Diberikan penundaan pembayaran."),
+    ]),
+    ("kai7_n1", "塊", ["カイ"], ["かたまり"], ["gumpalan", "lump", "mass"], 13, "土", [
+        ("塊", "katamari", "gumpalan"),
+        ("金塊", "kinkai", "batangan emas"),
+        ("血塊", "kekkai", "gumpalan darah"),
+    ], [
+        ("肉の塊です。", "Niku no katamari desu.", "Ini gumpalan daging."),
+        ("金塊を発見しました。", "Kinkai o hakken shimashita.", "Menemukan batangan emas."),
+    ]),
+    ("sen10_n1", "旋", ["セン"], [], ["berputar", "revolve", "turn"], 11, "方", [
+        ("旋回", "senkai", "berputar"),
+        ("旋律", "senritsu", "melodi"),
+        ("凱旋", "gaisen", "kemenangan pulang"),
+    ], [
+        ("飛行機が旋回しました。", "Hikouki ga senkai shimashita.", "Pesawat berputar."),
+        ("美しい旋律です。", "Utsukushii senritsu desu.", "Ini melodi yang indah."),
+    ]),
+    ("kyuu9_n1", "弓", ["キュウ"], ["ゆみ"], ["busur panah", "bow"], 3, "弓", [
+        ("弓", "yumi", "busur"),
+        ("弓道", "kyuudou", "seni panahan Jepang"),
+        ("弓矢", "yumiya", "busur dan anak panah"),
+    ], [
+        ("弓道を習っています。", "Kyuudou o naratte imasu.", "Belajar kyudo."),
+        ("弓矢で射ました。", "Yumiya de imashita.", "Memanah dengan busur dan anak panah."),
+    ]),
+    ("hei4_n1", "幣", ["ヘイ"], [], ["mata uang", "persembahan", "currency", "offering"], 15, "巾", [
+        ("貨幣", "kahei", "mata uang"),
+        ("紙幣", "shihei", "uang kertas"),
+        ("御幣", "gohei", "persembahan kertas Shinto"),
+    ], [
+        ("貨幣制度です。", "Kahei seido desu.", "Ini sistem mata uang."),
+        ("紙幣を数えました。", "Shihei o kazoemashita.", "Menghitung uang kertas."),
+    ]),
+    ("maku2_n1", "膜", ["マク"], [], ["selaput", "membrane"], 14, "肉", [
+        ("膜", "maku", "selaput"),
+        ("粘膜", "nenmaku", "selaput lendir"),
+        ("網膜", "moumaku", "retina"),
+    ], [
+        ("膜で覆われています。", "Maku de oowarete imasu.", "Ditutupi oleh selaput."),
+        ("網膜剥離です。", "Moumaku hakuri desu.", "Ini ablasi retina."),
+    ]),
+    ("sen11_n1", "扇", ["セン"], ["おうぎ"], ["kipas", "fan"], 10, "戸", [
+        ("扇風機", "senpuuki", "kipas angin"),
+        ("扇子", "sensu", "kipas lipat"),
+        ("扇", "ougi", "kipas"),
+    ], [
+        ("扇風機をつけました。", "Senpuuki o tsukemashita.", "Menyalakan kipas angin."),
+        ("扇子で扇ぎました。", "Sensu de aogimashita.", "Mengipas dengan kipas lipat."),
+    ]),
+    ("waki_n1", "脇", [], ["わき"], ["samping", "ketiak", "side", "armpit"], 10, "肉", [
+        ("脇", "waki", "samping/ketiak"),
+        ("脇役", "wakiyaku", "peran pembantu"),
+        ("脇道", "wakimichi", "jalan samping"),
+    ], [
+        ("脇に置きました。", "Waki ni okimashita.", "Meletakkan di samping."),
+        ("脇役として出演しました。", "Wakiyaku toshite shutsuen shimashita.", "Berperan sebagai pemeran pembantu."),
+    ]),
+    ("chou19_n1", "腸", ["チョウ"], [], ["usus", "intestine"], 13, "肉", [
+        ("腸", "chou", "usus"),
+        ("大腸", "daichou", "usus besar"),
+        ("胃腸", "ichou", "lambung dan usus"),
+    ], [
+        ("腸の調子が悪いです。", "Chou no choushi ga warui desu.", "Kondisi ususnya buruk."),
+        ("胃腸薬を飲みました。", "Ichouyaku o nomimashita.", "Minum obat lambung dan usus."),
+    ]),
+    ("sou16_n1", "槽", ["ソウ"], [], ["bak", "tangki", "tank", "tub"], 15, "木", [
+        ("浴槽", "yokusou", "bak mandi"),
+        ("水槽", "suisou", "akuarium"),
+        ("貯水槽", "chosuisou", "tangki penampung air"),
+    ], [
+        ("浴槽にお湯を入れました。", "Yokusou ni oyu o iremashita.", "Mengisi bak mandi dengan air panas."),
+        ("水槽で魚を飼っています。", "Suisou de sakana o katte imasu.", "Memelihara ikan di akuarium."),
+    ]),
+    ("nabe_n1", "鍋", [], ["なべ"], ["panci", "hotpot", "pot"], 17, "金", [
+        ("鍋", "nabe", "panci/hidangan hotpot"),
+        ("鍋料理", "naberyouri", "masakan hotpot"),
+        ("土鍋", "donabe", "panci tanah liat"),
+    ], [
+        ("鍋を食べました。", "Nabe o tabemashita.", "Makan hotpot."),
+        ("土鍋で炊きました。", "Donabe de takimashita.", "Memasak dengan panci tanah liat."),
+    ]),
+    ("ji3_n1", "慈", ["ジ"], ["いつく-しむ"], ["kasih sayang", "mercy", "compassion"], 13, "心", [
+        ("慈悲", "jihi", "belas kasihan"),
+        ("慈善", "jizen", "amal"),
+        ("慈しむ", "itsukushimu", "menyayangi"),
+    ], [
+        ("慈悲深い人です。", "Jihibukai hito desu.", "Dia orang yang penuh belas kasihan."),
+        ("慈善活動をしています。", "Jizen katsudou o shite imasu.", "Melakukan kegiatan amal."),
+    ]),
+    ("toi_n1", "樋", [], ["とい", "ひ"], ["talang air", "gutter", "pipe"], 15, "木", [
+        ("樋", "toi", "talang air"),
+        ("雨樋", "amadoi", "talang air hujan"),
+        ("樋口", "Higuchi", "contoh nama keluarga"),
+    ], [
+        ("雨樋が壊れました。", "Amadoi ga kowaremashita.", "Talang air hujan rusak."),
+        ("樋口さんに会いました。", "Higuchi-san ni aimashita.", "Bertemu dengan Higuchi."),
+    ]),
+    ("you7_n1", "楊", ["ヨウ"], [], ["pohon willow (nama)", "willow"], 13, "木", [
+        ("楊枝", "youji", "tusuk gigi"),
+        ("楊貴妃", "Youkihi", "Yang Guifei, selir terkenal Tiongkok"),
+        ("楊", "You", "marga Yang"),
+    ], [
+        ("楊枝を使いました。", "Youji o tsukaimashita.", "Menggunakan tusuk gigi."),
+        ("楊貴妃は美人として有名です。", "Youkihi wa bijin toshite yuumei desu.", "Yang Guifei terkenal karena kecantikannya."),
+    ]),
+    ("batsu3_n1", "伐", ["バツ"], [], ["menebang", "menyerang", "cut down", "attack"], 6, "人", [
+        ("伐採", "bassai", "penebangan"),
+        ("討伐", "toubatsu", "penumpasan"),
+        ("征伐", "seibatsu", "penaklukan"),
+    ], [
+        ("森林伐採です。", "Shinrin bassai desu.", "Ini penebangan hutan."),
+        ("討伐隊が出発しました。", "Toubatsutai ga shuppatsu shimashita.", "Pasukan penumpasan berangkat."),
+    ]),
+    ("shun3_n1", "駿", ["シュン"], [], ["kuda cepat", "swift horse"], 17, "馬", [
+        ("駿馬", "shunme", "kuda unggul"),
+        ("駿河", "Suruga", "nama daerah lama"),
+        ("駿足", "shunsoku", "kaki cepat"),
+    ], [
+        ("駿馬に乗りました。", "Shunme ni norimashita.", "Menunggangi kuda unggul."),
+        ("駿河の国です。", "Suruga no kuni desu.", "Ini negeri Suruga."),
+    ]),
+    ("tsuke_n1", "漬", [], ["つ-ける", "つ-かる"], ["mengasinkan", "merendam", "pickle", "soak"], 14, "水", [
+        ("漬ける", "tsukeru", "merendam/mengasinkan"),
+        ("漬物", "tsukemono", "acar Jepang"),
+        ("塩漬け", "shiozuke", "diasinkan dengan garam"),
+    ], [
+        ("野菜を漬けました。", "Yasai o tsukemashita.", "Merendam sayuran."),
+        ("漬物を食べました。", "Tsukemono o tabemashita.", "Makan acar Jepang."),
+    ]),
+    ("kyuu10_n1", "糾", ["キュウ"], [], ["menyelidiki", "investigate", "twist"], 9, "糸", [
+        ("糾弾", "kyuudan", "kecaman"),
+        ("紛糾", "funkyuu", "kekacauan"),
+        ("糾明", "kyuumei", "penyelidikan"),
+    ], [
+        ("糾弾されました。", "Kyuudan saremashita.", "Dikecam."),
+        ("議論が紛糾しました。", "Giron ga funkyuu shimashita.", "Diskusi menjadi kacau."),
+    ]),
+    ("ryou7_n1", "亮", ["リョウ"], [], ["jernih (nama)", "clear", "bright"], 9, "亠", [
+        ("亮", "Ryou", "contoh nama pria"),
+        ("亮太", "Ryouta", "contoh nama pria"),
+        ("明亮", "meiryou", "terang benderang"),
+    ], [
+        ("亮さんに会いました。", "Ryou-san ni aimashita.", "Bertemu dengan Ryou."),
+        ("亮太という名前です。", "Ryouta to iu namae desu.", "Ini nama Ryouta."),
+    ]),
+    ("fun5_n1", "墳", ["フン"], [], ["makam gundukan", "tomb", "mound"], 15, "土", [
+        ("古墳", "kofun", "makam kuno gundukan"),
+        ("墳墓", "funbo", "makam"),
+        ("墳丘", "funkyuu", "gundukan makam"),
+    ], [
+        ("古墳を発掘しました。", "Kofun o hakkutsu shimashita.", "Menggali makam kuno."),
+        ("墳墓の地です。", "Funbo no chi desu.", "Ini tanah pemakaman."),
+    ]),
+    ("hyou6_n1", "坪", ["ヒョウ"], ["つぼ"], ["satuan luas Jepang", "unit of area"], 8, "土", [
+        ("坪", "tsubo", "satuan luas ~3.3m²"),
+        ("建坪", "tatetsubo", "luas bangunan"),
+        ("坪数", "tsubosuu", "jumlah tsubo"),
+    ], [
+        ("100坪の土地です。", "Hyaku-tsubo no tochi desu.", "Ini tanah seluas 100 tsubo."),
+        ("建坪を計算しました。", "Tatetsubo o keisan shimashita.", "Menghitung luas bangunan."),
+    ]),
+    ("kon4_n1", "紺", ["コン"], [], ["biru tua", "dark blue"], 11, "糸", [
+        ("紺色", "kon-iro", "warna biru tua"),
+        ("紺碧", "konpeki", "biru laut yang dalam"),
+        ("濃紺", "noukon", "biru tua pekat"),
+    ], [
+        ("紺色のスーツです。", "Kon-iro no suutsu desu.", "Ini setelan berwarna biru tua."),
+        ("紺碧の海です。", "Konpeki no umi desu.", "Ini laut biru yang dalam."),
+    ]),
+    ("kou30_n1", "慌", ["コウ"], ["あわ-てる", "あわ-ただしい"], ["panik", "flustered"], 12, "心", [
+        ("慌てる", "awateru", "panik"),
+        ("慌ただしい", "awatadashii", "terburu-buru"),
+        ("恐慌", "kyoukou", "kepanikan besar/depresi ekonomi"),
+    ], [
+        ("慌てて逃げました。", "Awatete nigemashita.", "Panik dan melarikan diri."),
+        ("慌ただしい一日でした。", "Awatadashii ichinichi deshita.", "Ini hari yang terburu-buru."),
+    ]),
+    ("go5_n1", "娯", ["ゴ"], [], ["hiburan", "amusement", "pleasure"], 10, "女", [
+        ("娯楽", "goraku", "hiburan"),
+        ("娯楽室", "gorakushitsu", "ruang hiburan"),
+        ("娯楽施設", "goraku shisetsu", "fasilitas hiburan"),
+    ], [
+        ("娯楽施設です。", "Goraku shisetsu desu.", "Ini fasilitas hiburan."),
+        ("娯楽が少ないです。", "Goraku ga sukunai desu.", "Hiburannya sedikit."),
+    ]),
+    ("go6_n1", "吾", ["ゴ"], ["われ", "わ"], ["saya (klasik)", "I", "me"], 7, "口", [
+        ("吾輩", "wagahai", "saya (arkais, terkenal dari novel)"),
+        ("吾々", "wareware", "kami/kita"),
+        ("吾妻", "Azuma", "nama tempat"),
+    ], [
+        ("吾輩は猫である。", "Wagahai wa neko de aru.", "Aku adalah kucing (judul novel terkenal)."),
+        ("吾々の使命です。", "Wareware no shimei desu.", "Ini misi kami."),
+    ]),
+    ("chin4_n1", "椿", ["チン"], ["つばき"], ["bunga kamelia", "camellia"], 13, "木", [
+        ("椿", "tsubaki", "bunga kamelia"),
+        ("椿油", "tsubakiabura", "minyak kamelia"),
+        ("冬椿", "fuyutsubaki", "kamelia musim dingin"),
+    ], [
+        ("椿の花が咲きました。", "Tsubaki no hana ga sakimashita.", "Bunga kamelia mekar."),
+        ("椿油を使っています。", "Tsubakiabura o tsukatte imasu.", "Menggunakan minyak kamelia."),
+    ]),
+    ("zetsu_n1", "舌", ["ゼツ"], ["した"], ["lidah", "tongue"], 6, "舌", [
+        ("舌", "shita", "lidah"),
+        ("舌打ち", "shitauchi", "berdecak"),
+        ("毒舌", "dokuzetsu", "lidah beracun/perkataan pedas"),
+    ], [
+        ("舌を出しました。", "Shita o dashimashita.", "Menjulurkan lidah."),
+        ("毒舌家です。", "Dokuzetsuka desu.", "Dia orang yang perkataannya pedas."),
+    ]),
+    ("ra2_n1", "羅", ["ラ"], [], ["kain tipis", "jaring", "gauze", "net"], 19, "网", [
+        ("網羅", "moura", "mencakup semua"),
+        ("羅列", "raretsu", "daftar berurutan"),
+        ("新羅", "Shiragi", "nama kerajaan kuno Korea"),
+    ], [
+        ("全項目を網羅しました。", "Zenkoumoku o moura shimashita.", "Mencakup semua item."),
+        ("羅列しただけです。", "Raretsu shita dake desu.", "Hanya mendaftarkan saja."),
+    ]),
+    ("kyou10_n1", "峡", ["キョウ"], [], ["ngarai", "selat", "gorge", "strait"], 9, "山", [
+        ("海峡", "kaikyou", "selat"),
+        ("峡谷", "kyoukoku", "ngarai"),
+        ("地峡", "chikyou", "tanah genting"),
+    ], [
+        ("海峡を渡りました。", "Kaikyou o watarimashita.", "Menyeberangi selat."),
+        ("峡谷を探検しました。", "Kyoukoku o tanken shimashita.", "Menjelajahi ngarai."),
+    ]),
+    ("hou10_n1", "俸", ["ホウ"], [], ["gaji", "salary"], 10, "人", [
+        ("俸給", "houkyuu", "gaji"),
+        ("年俸", "nenpou", "gaji tahunan"),
+        ("減俸", "genpou", "potongan gaji"),
+    ], [
+        ("俸給をもらいました。", "Houkyuu o moraimashita.", "Menerima gaji."),
+        ("年俸制です。", "Nenpousei desu.", "Ini sistem gaji tahunan."),
+    ]),
+    ("rin4_n1", "厘", ["リン"], [], ["satuan mata uang lama", "rin"], 9, "厂", [
+        ("一分一厘", "ichibu ichirin", "sedikit pun/persis"),
+        ("九分九厘", "kubu kurin", "hampir pasti"),
+        ("厘毛", "rinmou", "sangat kecil"),
+    ], [
+        ("九分九厘成功するでしょう。", "Kubu kurin seikou suru deshou.", "Hampir pasti akan berhasil."),
+        ("一分一厘違いません。", "Ichibu ichirin chigaimasen.", "Tidak berbeda sedikit pun."),
+    ]),
+    ("hou11_n1", "峰", ["ホウ"], ["みね"], ["puncak gunung", "peak"], 10, "山", [
+        ("峰", "mine", "puncak"),
+        ("高峰", "kouhou", "puncak tinggi"),
+        ("連峰", "renpou", "rangkaian puncak gunung"),
+    ], [
+        ("山の峰に登りました。", "Yama no mine ni noborimashita.", "Mendaki puncak gunung."),
+        ("連峰が美しいです。", "Renpou ga utsukushii desu.", "Rangkaian puncak gunungnya indah."),
+    ]),
+    ("kei13_n1", "圭", ["ケイ"], [], ["lempengan giok (nama)", "jade tablet"], 6, "土", [
+        ("圭", "Kei", "contoh nama"),
+        ("圭角", "keikaku", "sudut tajam (kepribadian keras)"),
+        ("圭一", "Keiichi", "contoh nama pria"),
+    ], [
+        ("圭さんに会いました。", "Kei-san ni aimashita.", "Bertemu dengan Kei."),
+        ("圭一という名前です。", "Keiichi to iu namae desu.", "Ini nama Keiichi."),
+    ]),
+    ("jou9_n1", "醸", ["ジョウ"], ["かも-す"], ["memfermentasi", "brew"], 18, "酉", [
+        ("醸造", "jouzou", "fermentasi"),
+        ("醸す", "kamosu", "memfermentasi/menimbulkan"),
+        ("吟醸酒", "ginjoushu", "sake premium"),
+    ], [
+        ("醸造所を見学しました。", "Jouzousho o kengaku shimashita.", "Mengunjungi pabrik fermentasi."),
+        ("緊張感を醸し出しています。", "Kinchoukan o kamoshidashite imasu.", "Menimbulkan rasa tegang."),
+    ]),
+    ("ren_n1", "蓮", ["レン"], ["はす"], ["bunga teratai", "lotus"], 13, "艸", [
+        ("蓮", "hasu", "bunga teratai"),
+        ("蓮の花", "hasu no hana", "bunga teratai"),
+        ("蓮根", "renkon", "akar teratai"),
+    ], [
+        ("蓮の花が咲きました。", "Hasu no hana ga sakimashita.", "Bunga teratai mekar."),
+        ("蓮根を食べました。", "Renkon o tabemashita.", "Makan akar teratai."),
+    ]),
+    ("chou20_n1", "弔", ["チョウ"], ["とむら-う"], ["belasungkawa", "condolence"], 4, "弓", [
+        ("弔問", "choumon", "kunjungan belasungkawa"),
+        ("弔電", "chouden", "telegram belasungkawa"),
+        ("弔辞", "choji", "pidato duka"),
+    ], [
+        ("弔問に行きました。", "Choumon ni ikimashita.", "Pergi memberikan belasungkawa."),
+        ("弔辞を読みました。", "Choji o yomimashita.", "Membacakan pidato duka."),
+    ]),
+    ("otsu_n1", "乙", ["オツ"], [], ["kedua", "unik", "second", "humorous"], 1, "乙", [
+        ("乙", "otsu", "kedua dalam urutan"),
+        ("甲乙", "kouotsu", "urutan pertama-kedua"),
+        ("乙女", "otome", "gadis muda"),
+    ], [
+        ("甲乙つけがたいです。", "Kouotsu tsukegatai desu.", "Sulit dibedakan mana yang lebih baik."),
+        ("乙女心です。", "Otome gokoro desu.", "Ini perasaan gadis muda."),
+    ]),
+    ("gu2_n1", "倶", ["グ"], [], ["bersama", "together"], 10, "人", [
+        ("倶に", "tomo ni", "bersama"),
+        ("倶楽部", "kurabu", "klub"),
+        ("不倶戴天", "fugutaiten", "musuh bebuyutan"),
+    ], [
+        ("倶楽部に入りました。", "Kurabu ni hairimashita.", "Bergabung dengan klub."),
+        ("不倶戴天の敵です。", "Fugutaiten no teki desu.", "Ini musuh bebuyutan."),
+    ]),
+    ("juu7_n1", "汁", ["ジュウ"], ["しる"], ["kuah", "jus", "juice", "soup"], 5, "水", [
+        ("汁", "shiru", "kuah"),
+        ("味噌汁", "misoshiru", "sup miso"),
+        ("果汁", "kajuu", "jus buah"),
+    ], [
+        ("味噌汁を飲みました。", "Misoshiru o nomimashita.", "Minum sup miso."),
+        ("果汁100%です。", "Kajuu hyaku paasento desu.", "Ini jus 100%."),
+    ]),
+    ("ni2_n1", "尼", ["ニ"], ["あま"], ["biarawati", "nun"], 5, "尸", [
+        ("尼", "ama", "biarawati"),
+        ("尼僧", "nisou", "biarawati Buddha"),
+        ("修道尼", "shuudouni", "biarawati Kristen"),
+    ], [
+        ("尼になりました。", "Ama ni narimashita.", "Menjadi biarawati."),
+        ("尼僧が祈っています。", "Nisou ga inotte imasu.", "Biarawati sedang berdoa."),
+    ]),
+    ("hen2_n1", "遍", ["ヘン"], [], ["di mana-mana", "kali", "everywhere", "times"], 12, "辵", [
+        ("普遍", "fuhen", "universal"),
+        ("一遍", "ippen", "satu kali"),
+        ("遍歴", "henreki", "pengembaraan"),
+    ], [
+        ("普遍的な真理です。", "Fuhenteki na shinri desu.", "Ini kebenaran universal."),
+        ("遍歴を重ねました。", "Henreki o kasanemashita.", "Menjalani banyak pengembaraan."),
+    ]),
+    ("sakai_n1", "堺", [], ["さかい"], ["batas (nama kota)", "boundary"], 12, "土", [
+        ("堺", "Sakai", "nama kota di Osaka"),
+        ("堺市", "Sakai-shi", "Kota Sakai"),
+        ("堺筋", "Sakaisuji", "nama jalan di Osaka"),
+    ], [
+        ("堺市に住んでいます。", "Sakai-shi ni sunde imasu.", "Tinggal di Kota Sakai."),
+        ("堺筋を歩きました。", "Sakaisuji o arukimashita.", "Berjalan di jalan Sakaisuji."),
+    ]),
+    ("kou31_n1", "衡", ["コウ"], [], ["keseimbangan", "balance", "measure"], 16, "行", [
+        ("均衡", "kinkou", "keseimbangan"),
+        ("平衡", "heikou", "keseimbangan/ekuilibrium"),
+        ("度量衡", "doryoukou", "sistem ukuran"),
+    ], [
+        ("均衡を保っています。", "Kinkou o tamotte imasu.", "Menjaga keseimbangan."),
+        ("平衡感覚があります。", "Heikou kankaku ga arimasu.", "Memiliki indera keseimbangan."),
+    ]),
+    ("hou12_n1", "呆", ["ホウ"], ["あき-れる", "ぼ-ける"], ["tercengang", "pikun", "dumbfounded", "senile"], 7, "口", [
+        ("呆れる", "akireru", "tercengang"),
+        ("呆然", "bouzen", "terpaku/terkejut"),
+        ("阿呆", "ahou", "bodoh"),
+    ], [
+        ("呆れました。", "Akiremashita.", "Tercengang."),
+        ("呆然としています。", "Bouzen to shite imasu.", "Terpaku kaget."),
+    ]),
+    ("kun2_n1", "薫", ["クン"], ["かお-る"], ["harum", "fragrant"], 16, "艸", [
+        ("薫る", "kaoru", "tercium harum"),
+        ("薫陶", "kunto", "bimbingan/didikan"),
+        ("薫風", "kunpuu", "angin harum musim panas"),
+    ], [
+        ("花の香りが薫っています。", "Hana no kaori ga kaotte imasu.", "Tercium harum bunga."),
+        ("薫陶を受けました。", "Kunto o ukemashita.", "Menerima bimbingan."),
+    ]),
+    ("ga6_n1", "瓦", ["ガ"], ["かわら"], ["genteng", "roof tile"], 5, "瓦", [
+        ("瓦", "kawara", "genteng"),
+        ("瓦礫", "gareki", "puing-puing"),
+        ("煉瓦", "renga", "batu bata"),
+    ], [
+        ("瓦屋根です。", "Kawara yane desu.", "Ini atap genteng."),
+        ("瓦礫の中から救出されました。", "Gareki no naka kara kyuushutsu saremashita.", "Diselamatkan dari puing-puing."),
+    ]),
+    ("ryou8_n1", "猟", ["リョウ"], [], ["berburu", "hunting"], 11, "犬", [
+        ("狩猟", "shuryou", "perburuan"),
+        ("猟師", "ryoushi", "pemburu"),
+        ("密猟", "mitsuryou", "perburuan liar"),
+    ], [
+        ("猟師になりました。", "Ryoushi ni narimashita.", "Menjadi pemburu."),
+        ("密猟は禁止されています。", "Mitsuryou wa kinshi sarete imasu.", "Perburuan liar dilarang."),
+    ]),
+    ("you8_n1", "羊", ["ヨウ"], ["ひつじ"], ["domba", "sheep"], 6, "羊", [
+        ("羊", "hitsuji", "domba"),
+        ("羊毛", "youmou", "wol"),
+        ("山羊", "yagi", "kambing"),
+    ], [
+        ("羊を育てています。", "Hitsuji o sodatete imasu.", "Memelihara domba."),
+        ("羊毛のセーターです。", "Youmou no seetaa desu.", "Ini sweater wol."),
+    ]),
+    ("kubo_n1", "窪", [], ["くぼ"], ["cekungan", "hollow", "depression"], 11, "穴", [
+        ("窪む", "kubomu", "cekung/berlekuk"),
+        ("窪地", "kubochi", "tanah cekungan"),
+        ("窪み", "kubomi", "lekukan"),
+    ], [
+        ("地面が窪んでいます。", "Jimen ga kubonde imasu.", "Tanahnya cekung."),
+        ("窪地に水が溜まりました。", "Kubochi ni mizu ga tamarimashita.", "Air menggenang di tanah cekungan."),
+    ]),
+    ("kan27_n1", "款", ["カン"], [], ["pasal", "ketentuan", "article", "section"], 12, "欠", [
+        ("定款", "teikan", "anggaran dasar"),
+        ("約款", "yakkan", "ketentuan kontrak"),
+        ("借款", "shakkan", "pinjaman antarnegara"),
+    ], [
+        ("定款を作成しました。", "Teikan o sakusei shimashita.", "Membuat anggaran dasar."),
+        ("約款を確認してください。", "Yakkan o kakunin shite kudasai.", "Silakan periksa ketentuan kontrak."),
+    ]),
+    ("etsu2_n1", "閲", ["エツ"], [], ["memeriksa", "inspect", "read"], 15, "門", [
+        ("閲覧", "etsuran", "penelusuran/pembacaan"),
+        ("検閲", "ken-etsu", "sensor"),
+        ("校閲", "kouetsu", "penyuntingan naskah"),
+    ], [
+        ("検閲されました。", "Ken-etsu saremashita.", "Disensor."),
+        ("校閲を担当しています。", "Kouetsu o tantou shite imasu.", "Bertanggung jawab atas penyuntingan naskah."),
+    ]),
+    ("jaku2_n1", "雀", ["ジャク"], ["すずめ"], ["burung pipit", "sparrow"], 11, "隹", [
+        ("雀", "suzume", "burung pipit"),
+        ("雀荘", "jansou", "tempat bermain mahjong"),
+        ("麻雀", "maajan", "mahjong"),
+    ], [
+        ("雀が飛んでいます。", "Suzume ga tonde imasu.", "Burung pipit sedang terbang."),
+        ("麻雀をしました。", "Maajan o shimashita.", "Bermain mahjong."),
+    ]),
+    ("tei14_n1", "偵", ["テイ"], [], ["mata-mata", "spy", "detect"], 11, "人", [
+        ("偵察", "teisatsu", "pengintaian"),
+        ("探偵", "tantei", "detektif"),
+        ("密偵", "mittei", "mata-mata rahasia"),
+    ], [
+        ("偵察に行きました。", "Teisatsu ni ikimashita.", "Pergi mengintai."),
+        ("探偵になりたいです。", "Tantei ni naritai desu.", "Ingin menjadi detektif."),
+    ]),
+    ("katsu5_n1", "喝", ["カツ"], [], ["membentak", "shout", "scold"], 11, "口", [
+        ("恐喝", "kyoukatsu", "pemerasan"),
+        ("一喝", "ikkatsu", "bentakan keras"),
+        ("喝采", "kassai", "tepuk tangan meriah"),
+    ], [
+        ("恐喝されました。", "Kyoukatsu saremashita.", "Diperas."),
+        ("喝采を浴びました。", "Kassai o abimashita.", "Mendapat tepuk tangan meriah."),
+    ]),
+    ("kan28_n1", "敢", ["カン"], [], ["berani", "dare", "bold"], 12, "攴", [
+        ("敢えて", "aete", "dengan sengaja/berani"),
+        ("勇敢", "yuukan", "berani"),
+        ("果敢", "kakan", "tegas dan berani"),
+    ], [
+        ("敢えて言います。", "Aete iimasu.", "Dengan sengaja saya katakan."),
+        ("勇敢な行動です。", "Yuukan na koudou desu.", "Ini tindakan yang berani."),
+    ]),
+    ("hatake2_n1", "畠", [], ["はたけ"], ["ladang (variant 畑)", "field"], 11, "田", [
+        ("畠", "hatake", "ladang (variant dari 畑)"),
+        ("畠山", "Hatakeyama", "contoh nama keluarga"),
+        ("畠中", "Hatakenaka", "contoh nama keluarga"),
+    ], [
+        ("畠山さんに会いました。", "Hatakeyama-san ni aimashita.", "Bertemu dengan Hatakeyama."),
+        ("これは畑の異体字です。", "Kore wa hatake no itaiji desu.", "Ini adalah varian karakter dari \"hatake\"."),
+    ]),
+    ("tai8_n1", "胎", ["タイ"], [], ["kandungan", "womb", "fetus"], 9, "肉", [
+        ("胎児", "taiji", "janin"),
+        ("母胎", "botai", "rahim ibu"),
+        ("胎動", "taidou", "gerakan janin/tanda awal"),
+    ], [
+        ("胎児が育っています。", "Taiji ga sodatte imasu.", "Janin sedang berkembang."),
+        ("変化の胎動を感じます。", "Henka no taidou o kanjimasu.", "Merasakan tanda awal perubahan."),
+    ]),
+    ("kou32_n1", "酵", ["コウ"], [], ["fermentasi", "enzim", "ferment", "enzyme"], 14, "酉", [
+        ("酵素", "kouso", "enzim"),
+        ("発酵", "hakkou", "fermentasi"),
+        ("酵母", "koubo", "ragi"),
+    ], [
+        ("酵素を摂取しています。", "Kouso o sesshu shite imasu.", "Mengonsumsi enzim."),
+        ("発酵食品です。", "Hakkou shokuhin desu.", "Ini makanan fermentasi."),
+    ]),
+    ("fun6_n1", "憤", ["フン"], ["いきどお-る"], ["kemarahan", "indignation"], 15, "心", [
+        ("憤慨", "fungai", "kemarahan besar"),
+        ("憤る", "ikidoru", "marah/geram"),
+        ("義憤", "gifun", "kemarahan atas ketidakadilan"),
+    ], [
+        ("憤慨しています。", "Fungai shite imasu.", "Sangat marah."),
+        ("義憤を感じました。", "Gifun o kanjimashita.", "Merasakan kemarahan atas ketidakadilan."),
+    ]),
+    ("ton2_n1", "豚", ["トン"], ["ぶた"], ["babi", "pig"], 11, "豕", [
+        ("豚", "buta", "babi"),
+        ("豚肉", "butaniku", "daging babi"),
+        ("養豚", "youton", "peternakan babi"),
+    ], [
+        ("豚肉を食べました。", "Butaniku o tabemashita.", "Makan daging babi."),
+        ("養豚場です。", "Youtonjou desu.", "Ini peternakan babi."),
+    ]),
+    ("sha5_n1", "遮", ["シャ"], ["さえぎ-る"], ["menghalangi", "block", "shield"], 14, "辵", [
+        ("遮る", "saegiru", "menghalangi"),
+        ("遮断", "shadan", "pemutusan"),
+        ("遮光", "shakou", "menghalangi cahaya"),
+    ], [
+        ("話を遮りました。", "Hanashi o saegirimashita.", "Memotong pembicaraan."),
+        ("遮断機が下りました。", "Shadanki ga orimashita.", "Palang perlintasan turun."),
+    ]),
+    ("hi8_n1", "扉", ["ヒ"], ["とびら"], ["pintu", "door"], 12, "戸", [
+        ("扉", "tobira", "pintu"),
+        ("門扉", "monpi", "pintu gerbang"),
+        ("扉絵", "tobirae", "gambar sampul"),
+    ], [
+        ("扉を開けました。", "Tobira o akemashita.", "Membuka pintu."),
+        ("門扉が閉まっています。", "Monpi ga shimatte imasu.", "Pintu gerbang tertutup."),
+    ]),
+    ("ryuu5_n1", "硫", ["リュウ"], [], ["belerang", "sulfur"], 12, "石", [
+        ("硫黄", "iou", "belerang"),
+        ("硫酸", "ryuusan", "asam sulfat"),
+        ("硫化水素", "ryuuka suiso", "hidrogen sulfida"),
+    ], [
+        ("硫黄の匂いがします。", "Iou no nioi ga shimasu.", "Tercium bau belerang."),
+        ("硫酸は危険です。", "Ryuusan wa kiken desu.", "Asam sulfat berbahaya."),
+    ]),
+    ("sha6_n1", "赦", ["シャ"], [], ["pengampunan", "pardon"], 11, "赤", [
+        ("容赦", "yousha", "ampun/toleransi"),
+        ("恩赦", "onsha", "amnesti"),
+        ("赦免", "shamen", "pengampunan"),
+    ], [
+        ("容赦なく叱られました。", "Yousha naku shikararemashita.", "Dimarahi tanpa ampun."),
+        ("恩赦が下されました。", "Onsha ga kudasaremashita.", "Amnesti diberikan."),
+    ]),
+    ("za_n1", "挫", ["ザ"], [], ["terkilir", "gagal", "sprain", "setback"], 10, "手", [
+        ("挫折", "zasetsu", "kegagalan"),
+        ("捻挫", "nenza", "keseleo"),
+        ("挫傷", "zashou", "memar/luka"),
+    ], [
+        ("挫折を経験しました。", "Zasetsu o keiken shimashita.", "Mengalami kegagalan."),
+        ("足を捻挫しました。", "Ashi o nenza shimashita.", "Kaki terkilir."),
+    ]),
+    ("setsu3_n1", "窃", ["セツ"], [], ["mencuri", "steal"], 9, "穴", [
+        ("窃盗", "settou", "pencurian"),
+        ("窃取", "sesshu", "mencuri"),
+        ("窃視", "sesshi", "mengintip"),
+    ], [
+        ("窃盗事件です。", "Settou jiken desu.", "Ini kasus pencurian."),
+        ("情報を窃取しました。", "Jouhou o sesshu shimashita.", "Mencuri informasi."),
+    ]),
+    ("hou13_n1", "泡", ["ホウ"], ["あわ"], ["gelembung", "bubble", "foam"], 8, "水", [
+        ("泡", "awa", "busa/gelembung"),
+        ("気泡", "kihou", "gelembung udara"),
+        ("発泡", "happou", "berbusa/berbuih"),
+    ], [
+        ("泡が立ちました。", "Awa ga tachimashita.", "Busa terbentuk."),
+        ("気泡が入っています。", "Kihou ga haitte imasu.", "Ada gelembung udara di dalamnya."),
+    ]),
+    ("zui3_n1", "瑞", ["ズイ"], [], ["pertanda baik", "auspicious"], 13, "玉", [
+        ("瑞祥", "zuishou", "pertanda baik"),
+        ("瑞々しい", "mizumizushii", "segar"),
+        ("瑞穂", "Mizuho", "nama tempat/negeri padi"),
+    ], [
+        ("瑞祥を感じます。", "Zuishou o kanjimasu.", "Merasakan pertanda baik."),
+        ("瑞々しい果物です。", "Mizumizushii kudamono desu.", "Ini buah yang segar."),
+    ]),
+    ("yuu8_n1", "又", ["ユウ"], ["また"], ["lagi", "juga", "again", "also"], 2, "又", [
+        ("又は", "mata wa", "atau"),
+        ("又聞き", "matagiki", "mendengar dari orang lain"),
+        ("又従兄弟", "mataitoko", "sepupu kedua"),
+    ], [
+        ("電話又はメールで連絡してください。", "Denwa mata wa meeru de renraku shite kudasai.", "Hubungi lewat telepon atau email."),
+        ("又聞きの情報です。", "Matagiki no jouhou desu.", "Ini informasi dari orang lain."),
+    ]),
+    ("gai5_n1", "慨", ["ガイ"], [], ["mengeluh", "lament", "sigh"], 13, "心", [
+        ("感慨", "kangai", "perasaan mendalam"),
+        ("憤慨", "fungai", "kemarahan besar"),
+        ("慨嘆", "gaitan", "keluhan mendalam"),
+    ], [
+        ("感慨深いです。", "Kangai fukai desu.", "Ini perasaan yang mendalam."),
+        ("慨嘆しました。", "Gaitan shimashita.", "Mengeluh dengan mendalam."),
+    ]),
+    ("bou8_n1", "紡", ["ボウ"], ["つむ-ぐ"], ["memintal", "spin (thread)"], 10, "糸", [
+        ("紡ぐ", "tsumugu", "memintal"),
+        ("紡績", "bouseki", "pemintalan"),
+        ("混紡", "konbou", "campuran serat"),
+    ], [
+        ("糸を紡ぎました。", "Ito o tsumugimashita.", "Memintal benang."),
+        ("紡績工場です。", "Bouseki koujou desu.", "Ini pabrik pemintalan."),
+    ]),
+    ("kon5_n1", "恨", ["コン"], ["うら-む", "うら-めしい"], ["dendam", "resent", "grudge"], 9, "心", [
+        ("恨む", "uramu", "mendendam"),
+        ("恨み", "urami", "dendam"),
+        ("遺恨", "ikon", "dendam lama"),
+    ], [
+        ("恨んでいます。", "Urande imasu.", "Mendendam."),
+        ("遺恨を残しました。", "Ikon o nokoshimashita.", "Meninggalkan dendam lama."),
+    ]),
+    ("bou9_n1", "肪", ["ボウ"], [], ["lemak", "fat"], 8, "肉", [
+        ("脂肪", "shibou", "lemak"),
+        ("脂肪分", "shiboubun", "kadar lemak"),
+        ("皮下脂肪", "hika shibou", "lemak di bawah kulit"),
+    ], [
+        ("脂肪が多いです。", "Shibou ga ooi desu.", "Kadar lemaknya tinggi."),
+        ("皮下脂肪を減らしたいです。", "Hika shibou o herashitai desu.", "Ingin mengurangi lemak di bawah kulit."),
+    ]),
+    ("fu6_n1", "扶", ["フ"], [], ["membantu", "support", "help"], 7, "手", [
+        ("扶養", "fuyou", "tanggungan"),
+        ("扶助", "fujo", "bantuan"),
+        ("扶育", "fuiku", "mengasuh"),
+    ], [
+        ("扶養家族です。", "Fuyou kazoku desu.", "Ini keluarga yang ditanggung."),
+        ("相互扶助です。", "Sougo fujo desu.", "Ini saling membantu."),
+    ]),
+    ("gi7_n1", "戯", ["ギ"], ["たわむ-れる"], ["bermain-main", "play", "joke"], 15, "戈", [
+        ("戯れる", "tawamureru", "bermain-main"),
+        ("遊戯", "yuugi", "permainan"),
+        ("戯曲", "gikyoku", "naskah drama"),
+    ], [
+        ("戯れに言いました。", "Tawamure ni iimashita.", "Mengatakannya sebagai gurauan."),
+        ("戯曲を書きました。", "Gikyoku o kakimashita.", "Menulis naskah drama."),
+    ]),
+    ("go7_n1", "伍", ["ゴ"], [], ["kelompok lima", "rank of five", "comrades"], 6, "人", [
+        ("落伍", "rakugo", "tertinggal dari kelompok"),
+        ("伍長", "gochou", "kopral"),
+        ("隊伍", "taigo", "barisan"),
+    ], [
+        ("落伍しました。", "Rakugo shimashita.", "Tertinggal dari kelompok."),
+        ("伍長になりました。", "Gochou ni narimashita.", "Menjadi kopral."),
+    ]),
+    ("ki21_n1", "忌", ["キ"], ["い-む", "い-まわしい"], ["berkabung", "pantang", "mourning", "taboo"], 7, "心", [
+        ("忌み嫌う", "imikirau", "sangat membenci"),
+        ("一周忌", "isshuuki", "peringatan setahun kematian"),
+        ("禁忌", "kinki", "pantangan"),
+    ], [
+        ("忌み嫌われています。", "Imikirawarete imasu.", "Sangat dibenci."),
+        ("一周忌の法要です。", "Isshuuki no houyou desu.", "Ini upacara peringatan setahun kematian."),
+    ]),
+    ("daku2_n1", "濁", ["ダク"], ["にご-る", "にご-す"], ["keruh", "muddy", "impure"], 16, "水", [
+        ("濁る", "nigoru", "menjadi keruh"),
+        ("濁流", "dakuryuu", "arus keruh"),
+        ("汚濁", "odaku", "pencemaran"),
+    ], [
+        ("水が濁っています。", "Mizu ga nigotte imasu.", "Airnya keruh."),
+        ("濁流に流されました。", "Dakuryuu ni nagasaremashita.", "Hanyut oleh arus keruh."),
+    ]),
+    ("hon2_n1", "奔", ["ホン"], [], ["berlari kencang", "run", "rush"], 8, "大", [
+        ("奔走", "honsou", "berusaha keras/berlari kesana-kemari"),
+        ("出奔", "shuppon", "kabur"),
+        ("狂奔", "kyouhon", "berlari dengan panik"),
+    ], [
+        ("奔走しています。", "Honsou shite imasu.", "Berusaha keras kesana-kemari."),
+        ("出奔しました。", "Shuppon shimashita.", "Kabur."),
+    ]),
+    ("to2_n1", "斗", ["ト"], [], ["gayung", "satuan ukur", "dipper", "measure"], 4, "斗", [
+        ("北斗七星", "Hokuto Shichisei", "Rasi Bintang Beruang Besar"),
+        ("斗酒", "toshu", "banyak sake"),
+        ("漏斗", "routo", "corong"),
+    ], [
+        ("北斗七星が見えます。", "Hokuto Shichisei ga miemasu.", "Terlihat Rasi Bintang Beruang Besar."),
+        ("漏斗を使いました。", "Routo o tsukaimashita.", "Menggunakan corong."),
+    ]),
+    ("ran3_n1", "蘭", ["ラン"], [], ["anggrek", "orchid"], 19, "艸", [
+        ("蘭", "ran", "anggrek"),
+        ("蘭学", "rangaku", "ilmu Belanda zaman Edo"),
+        ("和蘭", "Oranda", "penulisan kanji Belanda"),
+    ], [
+        ("蘭の花を育てています。", "Ran no hana o sodatete imasu.", "Memelihara bunga anggrek."),
+        ("蘭学を学びました。", "Rangaku o manabimashita.", "Mempelajari ilmu Belanda."),
+    ]),
+    ("fu7_n1", "蒲", ["フ"], ["がま", "かば"], ["tanaman cattail", "cattail plant"], 13, "艸", [
+        ("蒲団", "futon", "kasur futon"),
+        ("蒲焼", "kabayaki", "ikan panggang saus (unagi)"),
+        ("蒲", "gama", "tanaman cattail"),
+    ], [
+        ("蒲団で寝ました。", "Futon de nemashita.", "Tidur di futon."),
+        ("鰻の蒲焼を食べました。", "Unagi no kabayaki o tabemashita.", "Makan unagi kabayaki."),
+    ]),
+    ("jin7_n1", "迅", ["ジン"], [], ["cepat", "swift"], 6, "辵", [
+        ("迅速", "jinsoku", "cepat"),
+        ("疾風迅雷", "shippuu jinrai", "secepat kilat"),
+        ("奮迅", "funjin", "bergerak cepat dan gigih"),
+    ], [
+        ("迅速に対応しました。", "Jinsoku ni taiou shimashita.", "Merespons dengan cepat."),
+        ("疾風迅雷の勢いです。", "Shippuu jinrai no ikioi desu.", "Ini momentum secepat kilat."),
+    ]),
+    ("shou27_n1", "肖", ["ショウ"], [], ["menyerupai", "resemble", "portrait"], 7, "肉", [
+        ("肖像", "shouzou", "potret"),
+        ("肖像画", "shouzouga", "lukisan potret"),
+        ("不肖", "fushou", "tidak layak"),
+    ], [
+        ("肖像画を描きました。", "Shouzouga o kakimashita.", "Melukis potret."),
+        ("不肖の息子です。", "Fushou no musuko desu.", "Saya anak yang tidak layak."),
+    ]),
+    ("hachi_n1", "鉢", ["ハチ"], [], ["mangkuk", "bowl", "pot"], 13, "金", [
+        ("鉢", "hachi", "mangkuk/pot"),
+        ("植木鉢", "uekibachi", "pot tanaman"),
+        ("鉢巻き", "hachimaki", "ikat kepala"),
+    ], [
+        ("植木鉢に花を植えました。", "Uekibachi ni hana o uemashita.", "Menanam bunga di pot."),
+        ("鉢巻きをしました。", "Hachimaki o shimashita.", "Memakai ikat kepala."),
+    ]),
+    ("kyuu11_n1", "朽", ["キュウ"], ["く-ちる"], ["lapuk", "decay", "rot"], 6, "木", [
+        ("朽ちる", "kuchiru", "lapuk"),
+        ("老朽化", "roukyuuka", "penuaan/kerusakan"),
+        ("不朽", "fukyuu", "abadi/tidak lapuk"),
+    ], [
+        ("木が朽ちています。", "Ki ga kuchite imasu.", "Kayu itu lapuk."),
+        ("老朽化した建物です。", "Roukyuuka shita tatemono desu.", "Ini bangunan yang sudah tua dan rusak."),
+    ]),
+    ("kaku9_n1", "殻", ["カク"], ["から"], ["cangkang", "shell"], 11, "殳", [
+        ("殻", "kara", "cangkang/kulit"),
+        ("地殻", "chikaku", "kerak bumi"),
+        ("貝殻", "kaigara", "cangkang kerang"),
+    ], [
+        ("卵の殻です。", "Tamago no kara desu.", "Ini cangkang telur."),
+        ("地殻変動です。", "Chikaku hendou desu.", "Ini pergerakan kerak bumi."),
+    ]),
+    ("kyou11_n1", "享", ["キョウ"], [], ["menerima", "menikmati", "receive", "enjoy"], 8, "亠", [
+        ("享受", "kyouju", "menikmati"),
+        ("享楽", "kyouraku", "kesenangan"),
+        ("享年", "kyounen", "usia saat meninggal"),
+    ], [
+        ("自由を享受しています。", "Jiyuu o kyouju shite imasu.", "Menikmati kebebasan."),
+        ("享年80歳でした。", "Kyounen hachijussai deshita.", "Meninggal pada usia 80 tahun."),
+    ]),
+    ("shin12_n1", "秦", ["シン"], ["はた"], ["Dinasti Qin", "Qin (ancient China)"], 10, "禾", [
+        ("秦", "Shin", "Dinasti Qin Tiongkok kuno"),
+        ("秦始皇帝", "Shin no Shikoutei", "Kaisar Pertama Qin"),
+        ("秦氏", "Hata-uji", "klan Hata di Jepang kuno"),
+    ], [
+        ("秦の始皇帝です。", "Shin no Shikoutei desu.", "Ini Kaisar Pertama Dinasti Qin."),
+        ("秦氏という一族がいました。", "Hata-uji to iu ichizoku ga imashita.", "Ada klan bernama Hata."),
+    ]),
+    ("bou10_n1", "茅", ["ボウ"], ["かや", "ち"], ["rumput alang-alang untuk atap", "cogon grass", "thatch"], 8, "艸", [
+        ("茅", "kaya", "rumput untuk atap"),
+        ("茅葺き", "kayabuki", "atap jerami"),
+        ("茅ヶ崎", "Chigasaki", "nama kota"),
+    ], [
+        ("茅葺き屋根です。", "Kayabuki yane desu.", "Ini atap jerami."),
+        ("茅ヶ崎に住んでいます。", "Chigasaki ni sunde imasu.", "Tinggal di Chigasaki."),
+    ]),
+    ("han6_n1", "藩", ["ハン"], [], ["wilayah feodal", "feudal domain"], 18, "艸", [
+        ("藩", "han", "wilayah feodal"),
+        ("藩主", "hanshu", "penguasa domain"),
+        ("廃藩置県", "haihan chiken", "penghapusan domain feodal"),
+    ], [
+        ("藩主になりました。", "Hanshu ni narimashita.", "Menjadi penguasa domain."),
+        ("廃藩置県が行われました。", "Haihan chiken ga okonawaremashita.", "Penghapusan domain feodal dilaksanakan."),
+    ]),
+    ("sha7_n1", "沙", ["サ", "シャ"], [], ["pasir (variant 砂)", "sand"], 7, "水", [
+        ("沙漠", "sabaku", "gurun"),
+        ("沙汰", "sata", "kabar/berita"),
+        ("御無沙汰", "gobusata", "lama tidak berkabar"),
+    ], [
+        ("御無沙汰しております。", "Gobusata shite orimasu.", "Maaf lama tidak berkabar."),
+        ("何の沙汰もありません。", "Nan no sata mo arimasen.", "Tidak ada kabar apapun."),
+    ]),
+    ("ho3_n1", "輔", ["ホ"], [], ["membantu (nama)", "assist"], 14, "車", [
+        ("輔佐", "hosa", "bantuan/pendampingan"),
+        ("輔導", "hodou", "bimbingan"),
+        ("大輔", "Daisuke", "contoh nama pria"),
+    ], [
+        ("輔佐を務めました。", "Hosa o tsutomemashita.", "Bertugas sebagai pendamping."),
+        ("大輔さんに会いました。", "Daisuke-san ni aimashita.", "Bertemu dengan Daisuke."),
+    ]),
+    ("bai4_n1", "媒", ["バイ"], [], ["perantara", "mediate", "medium"], 12, "女", [
+        ("媒体", "baitai", "media"),
+        ("媒介", "baikai", "perantara"),
+        ("触媒", "shokubai", "katalis"),
+    ], [
+        ("媒体を通じて広まりました。", "Baitai o tsuujite hiromarimashita.", "Menyebar melalui media."),
+        ("触媒として働きます。", "Shokubai toshite hatarakimasu.", "Bekerja sebagai katalis."),
+    ]),
+    ("kei14_n1", "鶏", ["ケイ"], ["にわとり"], ["ayam", "chicken"], 19, "鳥", [
+        ("鶏", "niwatori", "ayam"),
+        ("鶏肉", "keiniku", "daging ayam"),
+        ("養鶏", "youkei", "peternakan ayam"),
+    ], [
+        ("鶏を飼っています。", "Niwatori o katte imasu.", "Memelihara ayam."),
+        ("鶏肉を食べました。", "Keiniku o tabemashita.", "Makan daging ayam."),
+    ]),
+    ("zen2_n1", "禅", ["ゼン"], [], ["Zen", "meditasi"], 13, "示", [
+        ("禅", "zen", "Zen"),
+        ("座禅", "zazen", "meditasi duduk"),
+        ("禅寺", "zendera", "kuil Zen"),
+    ], [
+        ("座禅を組みました。", "Zazen o kumimashita.", "Melakukan meditasi duduk."),
+        ("禅寺を訪れました。", "Zendera o otozuremashita.", "Mengunjungi kuil Zen."),
+    ]),
+    ("shoku4_n1", "嘱", ["ショク"], [], ["mempercayakan", "entrust"], 15, "口", [
+        ("嘱託", "shokutaku", "pegawai kontrak"),
+        ("委嘱", "ishoku", "penugasan"),
+        ("嘱望", "shokubou", "harapan besar"),
+    ], [
+        ("嘱託社員です。", "Shokutaku shain desu.", "Ini pegawai kontrak."),
+        ("将来を嘱望されています。", "Shourai o shokubou sarete imasu.", "Diharapkan besar untuk masa depannya."),
+    ]),
+    ("dou3_n1", "胴", ["ドウ"], [], ["badan", "torso"], 10, "肉", [
+        ("胴体", "doutai", "badan/torso"),
+        ("胴上げ", "douage", "melempar ke udara sebagai perayaan"),
+        ("胴回り", "dou mawari", "lingkar pinggang"),
+    ], [
+        ("胴体着陸をしました。", "Doutai chakuriku o shimashita.", "Mendarat darurat tanpa roda."),
+        ("胴上げされました。", "Douage saremashita.", "Dilempar ke udara sebagai perayaan."),
+    ]),
+    ("haku7_n1", "粕", ["ハク"], ["かす"], ["ampas", "sake lees", "dregs"], 11, "米", [
+        ("粕", "kasu", "ampas"),
+        ("酒粕", "sakekasu", "ampas sake"),
+        ("糟粕", "soukasu", "ampas/sisa"),
+    ], [
+        ("酒粕を使いました。", "Sakekasu o tsukaimashita.", "Menggunakan ampas sake."),
+        ("粕漬けです。", "Kasuzuke desu.", "Ini acar ampas sake."),
+    ]),
+    ("fu8_n1", "冨", ["フ"], ["とみ"], ["kekayaan (variant 富)", "wealth"], 12, "宀", [
+        ("冨", "tomi", "kekayaan"),
+        ("冨田", "Tomita", "contoh nama keluarga"),
+        ("冨士", "Fuji", "variant penulisan gunung Fuji"),
+    ], [
+        ("冨田さんに会いました。", "Tomita-san ni aimashita.", "Bertemu dengan Tomita."),
+        ("これは富の異体字です。", "Kore wa tomi no itaiji desu.", "Ini adalah varian karakter dari \"tomi\"."),
+    ]),
+    ("tetsu4_n1", "迭", ["テツ"], [], ["bergantian", "alternate", "replace"], 8, "辵", [
+        ("更迭", "koutetsu", "pergantian jabatan"),
+        ("迭に", "kawarugawaru", "bergantian"),
+        ("迭立", "tetsuritsu", "berdiri bergantian"),
+    ], [
+        ("大臣が更迭されました。", "Daijin ga koutetsu saremashita.", "Menteri diganti."),
+        ("更迭人事です。", "Koutetsu jinji desu.", "Ini pergantian jabatan."),
+    ]),
+    ("sou17_n1", "挿", ["ソウ"], ["さ-す"], ["menyisipkan", "insert"], 10, "手", [
+        ("挿す", "sasu", "menyisipkan/menancapkan"),
+        ("挿入", "sounyuu", "penyisipan"),
+        ("挿絵", "sashie", "ilustrasi"),
+    ], [
+        ("花を挿しました。", "Hana o sashimashita.", "Menancapkan bunga."),
+        ("挿絵が美しいです。", "Sashie ga utsukushii desu.", "Ilustrasinya indah."),
+    ]),
+    ("shou28_n1", "湘", ["ショウ"], [], ["nama sungai/tempat", "river name"], 12, "水", [
+        ("湘南", "Shounan", "wilayah pesisir Kanagawa"),
+        ("湘江", "Shoukou", "nama sungai di Tiongkok"),
+        ("湘南海岸", "Shounan kaigan", "pantai Shonan"),
+    ], [
+        ("湘南に旅行しました。", "Shounan ni ryokou shimashita.", "Berlibur ke Shonan."),
+        ("湘南海岸で遊びました。", "Shounan kaigan de asobimashita.", "Bermain di pantai Shonan."),
+    ]),
+    ("ran4_n1", "嵐", ["ラン"], ["あらし"], ["badai", "storm"], 12, "山", [
+        ("嵐", "arashi", "badai"),
+        ("砂嵐", "sunaarashi", "badai pasir"),
+        ("嵐山", "Arashiyama", "nama tempat wisata di Kyoto"),
+    ], [
+        ("嵐が来ています。", "Arashi ga kite imasu.", "Badai sedang datang."),
+        ("嵐山に行きました。", "Arashiyama ni ikimashita.", "Pergi ke Arashiyama."),
+    ]),
+    ("tsui2_n1", "椎", ["ツイ"], [], ["ruas tulang belakang", "vertebra", "spine"], 12, "木", [
+        ("椎間板", "tsuikanban", "cakram tulang belakang"),
+        ("脊椎", "sekitsui", "tulang belakang"),
+        ("頸椎", "keitsui", "tulang leher"),
+    ], [
+        ("椎間板ヘルニアです。", "Tsuikanban herunia desu.", "Ini hernia cakram tulang belakang."),
+        ("頸椎を痛めました。", "Keitsui o itamemashita.", "Melukai tulang leher."),
+    ]),
+    ("nada_n1", "灘", [], ["なだ"], ["laut berombak (nama tempat)", "rough sea", "rapids"], 22, "水", [
+        ("灘", "nada", "laut berombak"),
+        ("玄界灘", "Genkainada", "nama laut"),
+        ("灘区", "Nada-ku", "distrik di Kobe"),
+    ], [
+        ("玄界灘を渡りました。", "Genkainada o watarimashita.", "Menyeberangi Laut Genkai."),
+        ("灘区に住んでいます。", "Nada-ku ni sunde imasu.", "Tinggal di distrik Nada."),
+    ]),
+    ("en9_n1", "堰", ["エン"], ["せき"], ["bendungan kecil", "weir", "dam"], 12, "土", [
+        ("堰", "seki", "bendungan kecil"),
+        ("堰き止める", "sekitomeru", "membendung"),
+        ("堰堤", "entei", "bendungan"),
+    ], [
+        ("川に堰を作りました。", "Kawa ni seki o tsukurimashita.", "Membuat bendungan di sungai."),
+        ("堰き止められました。", "Sekitomeraremashita.", "Dibendung."),
+    ]),
+    ("shi19_n1", "獅", ["シ"], [], ["singa", "lion"], 13, "犬", [
+        ("獅子", "shishi", "singa"),
+        ("獅子座", "shishiza", "rasi bintang Leo"),
+        ("獅子舞", "shishimai", "tarian singa"),
+    ], [
+        ("獅子座生まれです。", "Shishiza umare desu.", "Lahir di bawah rasi Leo."),
+        ("獅子舞を見ました。", "Shishimai o mimashita.", "Menonton tarian singa."),
+    ]),
+    ("kyou12_n1", "姜", ["キョウ"], [], ["jahe (marga)", "ginger (surname)"], 9, "女", [
+        ("生姜", "shouga", "jahe"),
+        ("姜維", "Kyoui", "nama tokoh sejarah Tiongkok"),
+        ("姜", "Kyou", "marga Jiang"),
+    ], [
+        ("生姜を使いました。", "Shouga o tsukaimashita.", "Menggunakan jahe."),
+        ("姜維は三国時代の武将です。", "Kyoui wa Sangoku jidai no bushou desu.", "Jiang Wei adalah jenderal zaman Tiga Negara."),
+    ]),
+    ("ken13_n1", "絹", ["ケン"], ["きぬ"], ["sutra", "silk"], 13, "糸", [
+        ("絹", "kinu", "sutra"),
+        ("絹糸", "kenshi", "benang sutra"),
+        ("絹織物", "kinuorimono", "kain tenun sutra"),
+    ], [
+        ("絹の着物です。", "Kinu no kimono desu.", "Ini kimono sutra."),
+        ("絹織物を作っています。", "Kinuorimono o tsukutte imasu.", "Membuat kain tenun sutra."),
+    ]),
+    ("bai5_n1", "陪", ["バイ"], [], ["mendampingi", "accompany", "attend"], 11, "阜", [
+        ("陪審員", "baishin-in", "juri"),
+        ("陪席", "baiseki", "duduk mendampingi"),
+        ("陪同", "baidou", "mendampingi"),
+    ], [
+        ("陪審員に選ばれました。", "Baishin-in ni erabaremashita.", "Terpilih menjadi juri."),
+        ("陪席しました。", "Baiseki shimashita.", "Duduk mendampingi."),
+    ]),
+    ("bou11_n1", "剖", ["ボウ"], [], ["membedah", "dissect"], 10, "刀", [
+        ("解剖", "kaibou", "pembedahan/otopsi"),
+        ("解剖学", "kaibougaku", "ilmu anatomi"),
+        ("剖検", "boken", "otopsi"),
+    ], [
+        ("解剖しました。", "Kaibou shimashita.", "Melakukan pembedahan."),
+        ("解剖学を学んでいます。", "Kaibougaku o manande imasu.", "Mempelajari ilmu anatomi."),
+    ]),
+    ("fu9_n1", "譜", ["フ"], [], ["partitur musik", "silsilah", "musical score", "genealogy"], 19, "言", [
+        ("楽譜", "gakufu", "partitur musik"),
+        ("系譜", "keifu", "silsilah"),
+        ("年譜", "nenpu", "kronologi tahunan"),
+    ], [
+        ("楽譜を読みました。", "Gakufu o yomimashita.", "Membaca partitur musik."),
+        ("系譜をたどりました。", "Keifu o tadorimashita.", "Menelusuri silsilah."),
+    ]),
+    ("iku_n1", "郁", ["イク"], [], ["harum", "berbudaya (nama)", "fragrant", "cultured"], 9, "邑", [
+        ("郁郁", "ikuiku", "harum semerbak"),
+        ("郁子", "Ikuko", "contoh nama wanita"),
+        ("郁夫", "Ikuo", "contoh nama pria"),
+    ], [
+        ("郁子さんに会いました。", "Ikuko-san ni aimashita.", "Bertemu dengan Ikuko."),
+        ("郁夫という名前です。", "Ikuo to iu namae desu.", "Ini nama Ikuo."),
+    ]),
+    ("yuu9_n1", "悠", ["ユウ"], [], ["santai", "jauh", "leisurely", "distant"], 11, "心", [
+        ("悠々", "yuuyuu", "santai/tenang"),
+        ("悠久", "yuukyuu", "abadi"),
+        ("悠長", "yuuchou", "lamban/santai"),
+    ], [
+        ("悠々と歩きました。", "Yuuyuu to arukimashita.", "Berjalan dengan santai."),
+        ("悠久の歴史です。", "Yuukyuu no rekishi desu.", "Ini sejarah yang abadi."),
+    ]),
+    ("shuku3_n1", "淑", ["シュク"], [], ["anggun", "virtuous", "graceful"], 11, "水", [
+        ("淑女", "shukujo", "wanita anggun"),
+        ("貞淑", "teishuku", "kesetiaan istri"),
+        ("私淑", "shishuku", "belajar diam-diam dari seseorang"),
+    ], [
+        ("淑女のようです。", "Shukujo no you desu.", "Seperti wanita anggun."),
+        ("私淑している作家です。", "Shishuku shite iru sakka desu.", "Ini penulis yang saya kagumi diam-diam."),
+    ]),
+    ("han7_n1", "帆", ["ハン"], ["ほ"], ["layar kapal", "sail"], 6, "巾", [
+        ("帆", "ho", "layar kapal"),
+        ("帆船", "hansen", "kapal layar"),
+        ("出帆", "shuppan", "berlayar"),
+    ], [
+        ("帆を張りました。", "Ho o harimashita.", "Membentangkan layar."),
+        ("帆船に乗りました。", "Hansen ni norimashita.", "Naik kapal layar."),
+    ]),
+    ("gyou3_n1", "暁", ["ギョウ"], ["あかつき"], ["fajar", "dawn"], 12, "日", [
+        ("暁", "akatsuki", "fajar"),
+        ("暁光", "gyoukou", "cahaya fajar"),
+        ("通暁", "tsuugyou", "memahami secara mendalam"),
+    ], [
+        ("暁に出発しました。", "Akatsuki ni shuppatsu shimashita.", "Berangkat saat fajar."),
+        ("その分野に通暁しています。", "Sono bun-ya ni tsuugyou shite imasu.", "Memahami bidang itu secara mendalam."),
+    ]),
+    ("shuu10_n1", "鷲", ["シュウ"], ["わし"], ["elang besar", "eagle"], 23, "鳥", [
+        ("鷲", "washi", "elang besar"),
+        ("鷲掴み", "washizukami", "mencengkeram"),
+        ("白頭鷲", "hakutouwashi", "elang botak"),
+    ], [
+        ("鷲が空を飛んでいます。", "Washi ga sora o tonde imasu.", "Elang terbang di langit."),
+        ("鷲掴みにしました。", "Washizukami ni shimashita.", "Mencengkeram."),
+    ]),
+    ("ketsu3_n1", "傑", ["ケツ"], [], ["unggul", "outstanding"], 13, "人", [
+        ("傑作", "kessaku", "karya masterpiece"),
+        ("傑出", "kesshutsu", "menonjol"),
+        ("豪傑", "gouketsu", "pahlawan gagah"),
+    ], [
+        ("傑作を作りました。", "Kessaku o tsukurimashita.", "Membuat karya masterpiece."),
+        ("傑出した才能です。", "Kesshutsu shita sainou desu.", "Ini bakat yang menonjol."),
+    ]),
+    ("nan_n1", "楠", ["ナン"], ["くすのき"], ["pohon kamper", "camphor tree"], 13, "木", [
+        ("楠", "kusunoki", "pohon kamper"),
+        ("楠木正成", "Kusunoki Masashige", "tokoh sejarah samurai"),
+        ("楠若葉", "kusuwakaba", "daun muda kamper"),
+    ], [
+        ("楠の木があります。", "Kusunoki no ki ga arimasu.", "Ada pohon kamper."),
+        ("楠木正成は有名な武将です。", "Kusunoki Masashige wa yuumei na bushou desu.", "Kusunoki Masashige adalah jenderal terkenal."),
+    ]),
+    ("teki3_n1", "笛", ["テキ"], ["ふえ"], ["seruling", "flute"], 11, "竹", [
+        ("笛", "fue", "seruling"),
+        ("口笛", "kuchibue", "siulan"),
+        ("汽笛", "kiteki", "sirene kapal/kereta"),
+    ], [
+        ("笛を吹きました。", "Fue o fukimashita.", "Meniup seruling."),
+        ("口笛を吹きました。", "Kuchibue o fukimashita.", "Bersiul."),
+    ]),
+    ("kai8_n1", "芥", ["カイ"], ["からし"], ["sawi", "mustar", "mustard"], 7, "艸", [
+        ("芥子", "karashi", "mustar"),
+        ("芥川", "Akutagawa", "contoh nama keluarga"),
+        ("塵芥", "jinkai", "sampah/debu"),
+    ], [
+        ("芥子を塗りました。", "Karashi o nurimashita.", "Mengoleskan mustar."),
+        ("芥川龍之介は有名な作家です。", "Akutagawa Ryuunosuke wa yuumei na sakka desu.", "Akutagawa Ryunosuke adalah penulis terkenal."),
+    ]),
+    ("ki22_n1", "其", ["キ"], ["それ"], ["itu (klasik)", "that"], 8, "八", [
+        ("其の", "sono", "itu (klasik)"),
+        ("其れ", "sore", "itu (klasik)"),
+        ("其の他", "sonota", "lain-lain (formal)"),
+    ], [
+        ("其の他の項目です。", "Sonota no koumoku desu.", "Ini item lain-lain."),
+        ("其れは正しいです。", "Sore wa tadashii desu.", "Itu benar."),
+    ]),
+    ("rei5_n1", "玲", ["レイ"], [], ["suara jernih (nama)", "clear sound"], 9, "玉", [
+        ("玲玲", "reirei", "suara jernih berdenting"),
+        ("玲子", "Reiko", "contoh nama wanita"),
+        ("玲奈", "Reina", "contoh nama wanita"),
+    ], [
+        ("玲子さんに会いました。", "Reiko-san ni aimashita.", "Bertemu dengan Reiko."),
+        ("玲奈という名前です。", "Reina to iu namae desu.", "Ini nama Reina."),
+    ]),
+    ("do_n1", "奴", ["ド"], ["やつ"], ["pelayan", "orang (kasar)", "servant"], 5, "女", [
+        ("奴隷", "dorei", "budak"),
+        ("奴", "yatsu", "orang itu (kasar)"),
+        ("守銭奴", "shusendo", "orang pelit"),
+    ], [
+        ("奴隷制度でした。", "Dorei seido deshita.", "Ini adalah sistem perbudakan."),
+        ("あの奴は嘘つきです。", "Ano yatsu wa usotsuki desu.", "Orang itu pembohong."),
+    ]),
+    ("jou10_n1", "錠", ["ジョウ"], [], ["gembok", "tablet obat", "lock"], 16, "金", [
+        ("錠前", "joumae", "gembok"),
+        ("手錠", "tejou", "borgol"),
+        ("錠剤", "jouzai", "tablet obat"),
+    ], [
+        ("錠前をかけました。", "Joumae o kakemashita.", "Mengunci gembok."),
+        ("手錠をかけられました。", "Tejou o kakeraremashita.", "Diborgol."),
+    ]),
+    ("ken14_n1", "拳", ["ケン"], ["こぶし"], ["kepalan tangan", "fist"], 10, "手", [
+        ("拳", "kobushi", "kepalan tangan"),
+        ("拳法", "kenpou", "ilmu bela diri kung fu"),
+        ("拳銃", "kenjuu", "pistol"),
+    ], [
+        ("拳を握りました。", "Kobushi o nigirimashita.", "Mengepalkan tangan."),
+        ("拳法を習っています。", "Kenpou o naratte imasu.", "Belajar kung fu."),
+    ]),
+    ("shou29_n1", "翔", ["ショウ"], ["かけ-る", "と-ぶ"], ["terbang tinggi", "soar", "fly"], 12, "羽", [
+        ("飛翔", "hishou", "terbang"),
+        ("翔る", "kakeru", "terbang tinggi"),
+        ("翔太", "Shouta", "contoh nama pria"),
+    ], [
+        ("大空を飛翔しました。", "Oozora o hishou shimashita.", "Terbang di langit luas."),
+        ("翔太という名前です。", "Shouta to iu namae desu.", "Ini nama Shouta."),
+    ]),
+    ("sen12_n1", "遷", ["セン"], [], ["berpindah", "move", "transition"], 15, "辵", [
+        ("遷都", "sento", "pemindahan ibu kota"),
+        ("変遷", "hensen", "perubahan seiring waktu"),
+        ("左遷", "sasen", "demosi"),
+    ], [
+        ("遷都しました。", "Sento shimashita.", "Memindahkan ibu kota."),
+        ("時代の変遷です。", "Jidai no hensen desu.", "Ini perubahan zaman."),
+    ]),
+    ("setsu4_n1", "拙", ["セツ"], ["つたな-い"], ["canggung (merendah)", "clumsy", "humble"], 8, "手", [
+        ("拙い", "tsutanai", "canggung/kurang mahir"),
+        ("拙者", "sessha", "saya (samurai, merendah)"),
+        ("稚拙", "chisetsu", "kekanak-kanakan dan kurang terampil"),
+    ], [
+        ("拙い文章です。", "Tsutanai bunshou desu.", "Ini tulisan yang canggung."),
+        ("稚拙な作品です。", "Chisetsu na sakuhin desu.", "Ini karya yang kurang matang."),
+    ]),
+    ("ji4_n1", "侍", ["ジ"], ["さむらい"], ["samurai", "serve"], 8, "人", [
+        ("侍", "samurai", "samurai"),
+        ("侍女", "jijo", "dayang"),
+        ("侍従", "jijuu", "pelayan istana"),
+    ], [
+        ("侍になりました。", "Samurai ni narimashita.", "Menjadi samurai."),
+        ("侍女が仕えています。", "Jijo ga tsukaete imasu.", "Dayang melayani."),
+    ]),
+    ("shaku2_n1", "尺", ["シャク"], [], ["satuan panjang Jepang", "ruler"], 4, "尸", [
+        ("尺度", "shakudo", "skala/ukuran"),
+        ("尺八", "shakuhachi", "seruling bambu Jepang"),
+        ("縮尺", "shukushaku", "skala peta"),
+    ], [
+        ("尺度が違います。", "Shakudo ga chigaimasu.", "Skalanya berbeda."),
+        ("尺八を吹きました。", "Shakuhachi o fukimashita.", "Meniup shakuhachi."),
+    ]),
+    ("touge_n1", "峠", [], ["とうげ"], ["puncak pendakian gunung", "mountain pass"], 9, "山", [
+        ("峠", "touge", "puncak pendakian"),
+        ("峠道", "togemichi", "jalan gunung"),
+        ("峠を越える", "touge o koeru", "melewati masa sulit"),
+    ], [
+        ("峠を越えました。", "Touge o koemashita.", "Melewati puncak gunung/masa sulit."),
+        ("峠道を歩きました。", "Togemichi o arukimashita.", "Berjalan di jalan gunung."),
+    ]),
+    ("toku3_n1", "篤", ["トク"], [], ["tulus", "parah (sakit)", "sincere"], 16, "竹", [
+        ("篤い", "atsui", "tulus"),
+        ("危篤", "kitoku", "kritis (sakit parah)"),
+        ("篤志家", "tokushika", "dermawan"),
+    ], [
+        ("危篤状態です。", "Kitoku joutai desu.", "Ini dalam keadaan kritis."),
+        ("篤志家です。", "Tokushika desu.", "Dia seorang dermawan."),
+    ]),
+    ("chou21_n1", "肇", ["チョウ"], ["はじ-める"], ["memulai (nama)", "begin"], 14, "聿", [
+        ("肇", "Hajime", "contoh nama pria"),
+        ("肇国", "choukoku", "pendirian negara"),
+        ("肇造", "chouzou", "memulai membangun"),
+    ], [
+        ("肇さんに会いました。", "Hajime-san ni aimashita.", "Bertemu dengan Hajime."),
+        ("肇国の精神です。", "Choukoku no seishin desu.", "Ini semangat pendirian negara."),
+    ]),
+    ("katsu6_n1", "渇", ["カツ"], ["かわ-く"], ["haus", "thirst"], 11, "水", [
+        ("渇く", "kawaku", "haus"),
+        ("渇望", "katsubou", "kerinduan mendalam"),
+        ("枯渇", "kokatsu", "kekeringan/habis"),
+    ], [
+        ("喉が渇きました。", "Nodo ga kawakimashita.", "Tenggorokan haus."),
+        ("平和を渇望しています。", "Heiwa o katsubou shite imasu.", "Sangat merindukan perdamaian."),
+    ]),
+    ("enoki_n1", "榎", [], ["えのき"], ["pohon enoki", "hackberry tree"], 14, "木", [
+        ("榎", "enoki", "pohon enoki"),
+        ("榎本", "Enomoto", "contoh nama keluarga"),
+        ("榎木", "Enoki", "contoh nama keluarga"),
+    ], [
+        ("榎の木があります。", "Enoki no ki ga arimasu.", "Ada pohon enoki."),
+        ("榎本さんに会いました。", "Enomoto-san ni aimashita.", "Bertemu dengan Enomoto."),
+    ]),
+    ("ryuu6_n1", "劉", ["リュウ"], [], ["marga Liu", "Liu (Chinese surname)"], 15, "刀", [
+        ("劉備", "Ryuubi", "Liu Bei, tokoh Tiga Negara"),
+        ("劉邦", "Ryuuhou", "Liu Bang, pendiri Dinasti Han"),
+        ("劉", "Ryuu", "marga Liu"),
+    ], [
+        ("劉備は蜀の皇帝です。", "Ryuubi wa Shoku no koutei desu.", "Liu Bei adalah kaisar Shu."),
+        ("劉邦が漢を建国しました。", "Ryuuhou ga Kan o kenkoku shimashita.", "Liu Bang mendirikan Dinasti Han."),
+    ]),
+    ("han8_n1", "幡", ["ハン"], ["はた"], ["bendera panjang", "banner"], 15, "巾", [
+        ("幡", "hata", "bendera panjang"),
+        ("八幡", "Hachiman", "dewa perang Shinto/nama tempat"),
+        ("幡随院", "Banzuiin", "nama kuil"),
+    ], [
+        ("八幡神社です。", "Hachiman jinja desu.", "Ini kuil Hachiman."),
+        ("幡を立てました。", "Hata o tatemashita.", "Mendirikan bendera panjang."),
+    ]),
+    ("shu6_n1", "諏", ["シュ"], [], ["berkonsultasi (nama tempat)", "consult"], 15, "言", [
+        ("諏訪", "Suwa", "nama kota di Nagano"),
+        ("諏訪湖", "Suwa-ko", "Danau Suwa"),
+        ("諏訪大社", "Suwa Taisha", "kuil besar Suwa"),
+    ], [
+        ("諏訪湖に行きました。", "Suwa-ko ni ikimashita.", "Pergi ke Danau Suwa."),
+        ("諏訪大社を訪れました。", "Suwa Taisha o otozuremashita.", "Mengunjungi Kuil Suwa."),
+    ]),
+    ("shuku4_n1", "叔", ["シュク"], [], ["paman/bibi muda", "uncle (younger)", "aunt"], 8, "又", [
+        ("叔父", "oji", "paman (adik ayah/ibu)"),
+        ("叔母", "oba", "bibi (adik ayah/ibu)"),
+        ("叔父さん", "ojisan", "paman (panggilan)"),
+    ], [
+        ("叔父に会いました。", "Oji ni aimashita.", "Bertemu paman."),
+        ("叔母が来ました。", "Oba ga kimashita.", "Bibi datang."),
+    ]),
+    ("shi20_n1", "雌", ["シ"], ["めす"], ["betina", "female (animal)"], 14, "隹", [
+        ("雌", "mesu", "betina"),
+        ("雌雄", "shiyuu", "jantan-betina/menang-kalah"),
+        ("雌花", "mesubana", "bunga betina"),
+    ], [
+        ("雌の猫です。", "Mesu no neko desu.", "Ini kucing betina."),
+        ("雌雄を決しましょう。", "Shiyuu o kesshimashou.", "Mari kita tentukan menang-kalahnya."),
+    ]),
+    ("kyou13_n1", "亨", ["キョウ"], ["とお-る"], ["keberhasilan (nama)", "success", "pass through"], 7, "亠", [
+        ("亨", "Tooru", "contoh nama pria"),
+        ("亨保", "Kyouhou", "era zaman Edo"),
+        ("元亨利貞", "genkouritei", "empat kebajikan dalam I Ching"),
+    ], [
+        ("亨さんに会いました。", "Tooru-san ni aimashita.", "Bertemu dengan Tooru."),
+        ("元亨利貞という言葉です。", "Genkouritei to iu kotoba desu.", "Ini istilah dari I Ching."),
+    ]),
+    ("kan29_n1", "堪", ["カン"], ["た-える"], ["tahan", "mampu", "endure"], 12, "土", [
+        ("堪える", "taeru", "menahan/tahan"),
+        ("堪能", "tannou", "mahir/puas"),
+        ("堪忍", "kannin", "kesabaran/pengampunan"),
+    ], [
+        ("堪能な英語です。", "Tannou na eigo desu.", "Bahasa Inggris yang mahir."),
+        ("堪忍してください。", "Kannin shite kudasai.", "Mohon maafkan."),
+    ]),
+    ("jo4_n1", "叙", ["ジョ"], [], ["menceritakan", "menganugerahkan", "narrate", "confer"], 9, "又", [
+        ("叙述", "jojutsu", "penuturan"),
+        ("叙情", "jojou", "lirisisme"),
+        ("叙勲", "jokun", "penganugerahan medali"),
+    ], [
+        ("叙述トリックです。", "Jojutsu torikku desu.", "Ini trik naratif."),
+        ("叙情的な詩です。", "Jojouteki na shi desu.", "Ini puisi yang liris."),
+    ]),
+    ("saku4_n1", "酢", ["サク"], ["す"], ["cuka", "vinegar"], 12, "酉", [
+        ("酢", "su", "cuka"),
+        ("酢豚", "subuta", "babi asam manis"),
+        ("酢の物", "sunomono", "salad cuka Jepang"),
+    ], [
+        ("酢を入れました。", "Su o iremashita.", "Menambahkan cuka."),
+        ("酢豚を作りました。", "Subuta o tsukurimashita.", "Membuat babi asam manis."),
+    ]),
+    ("gin_n1", "吟", ["ギン"], [], ["mendendangkan", "recite", "chant"], 7, "口", [
+        ("吟味", "ginmi", "pemeriksaan seksama"),
+        ("吟詠", "gin-ei", "mendeklamasikan puisi"),
+        ("詩吟", "shigin", "deklamasi puisi Tiongkok"),
+    ], [
+        ("吟味しました。", "Ginmi shimashita.", "Memeriksa dengan seksama."),
+        ("詩吟を習っています。", "Shigin o naratte imasu.", "Belajar deklamasi puisi."),
+    ]),
+    ("tei15_n1", "逓", ["テイ"], [], ["bergiliran", "in turn", "relay"], 10, "辵", [
+        ("逓信", "teishin", "komunikasi (istilah lama)"),
+        ("逓減", "teigen", "berkurang bertahap"),
+        ("逓増", "teizou", "bertambah bertahap"),
+    ], [
+        ("逓信省という機関がありました。", "Teishinshou to iu kikan ga arimashita.", "Ada lembaga bernama Kementerian Komunikasi."),
+        ("逓減しています。", "Teigen shite imasu.", "Berkurang secara bertahap."),
+    ]),
+    ("kon6_n1", "痕", ["コン"], ["あと"], ["bekas", "trace", "mark"], 11, "疒", [
+        ("痕跡", "konseki", "jejak/bekas"),
+        ("傷痕", "kizuato", "bekas luka"),
+        ("血痕", "kekkon", "bekas darah"),
+    ], [
+        ("痕跡が残っています。", "Konseki ga nokotte imasu.", "Jejaknya masih ada."),
+        ("傷痕があります。", "Kizuato ga arimasu.", "Ada bekas luka."),
+    ]),
+    ("rei6_n1", "嶺", ["レイ"], ["みね"], ["puncak gunung", "peak", "summit"], 17, "山", [
+        ("嶺", "mine", "puncak"),
+        ("分水嶺", "bunsuirei", "batas pemisah air/titik balik"),
+        ("山嶺", "sanrei", "puncak gunung"),
+    ], [
+        ("分水嶺です。", "Bunsuirei desu.", "Ini titik balik penting."),
+        ("山嶺が連なっています。", "Sanrei ga tsuranatte imasu.", "Puncak gunung berjejer."),
+    ]),
+    ("shuu11_n1", "袖", ["シュウ"], ["そで"], ["lengan baju", "sleeve"], 10, "衣", [
+        ("袖", "sode", "lengan baju"),
+        ("半袖", "hansode", "lengan pendek"),
+        ("振袖", "furisode", "kimono lengan panjang"),
+    ], [
+        ("袖をまくりました。", "Sode o makurimashita.", "Menggulung lengan baju."),
+        ("振袖を着ました。", "Furisode o kimashita.", "Memakai kimono lengan panjang."),
+    ]),
+    ("jin8_n1", "甚", ["ジン"], ["はなは-だ", "はなは-だしい"], ["sangat", "extremely"], 9, "甘", [
+        ("甚だ", "hanahada", "sangat"),
+        ("甚だしい", "hanahadashii", "sangat/berlebihan"),
+        ("幸甚", "koujin", "sangat beruntung"),
+    ], [
+        ("甚だ残念です。", "Hanahada zannen desu.", "Sangat disayangkan."),
+        ("甚だしい誤解です。", "Hanahadashii gokai desu.", "Ini kesalahpahaman yang berlebihan."),
+    ]),
+    ("kyou14_n1", "喬", ["キョウ"], ["たかし"], ["tinggi (nama)", "tall"], 12, "口", [
+        ("喬木", "kyouboku", "pohon tinggi"),
+        ("喬太郎", "Kyoutarou", "contoh nama pria"),
+        ("喬", "Takashi", "contoh nama pria"),
+    ], [
+        ("喬木が生えています。", "Kyouboku ga haete imasu.", "Pohon tinggi tumbuh."),
+        ("喬太郎という名前です。", "Kyoutarou to iu namae desu.", "Ini nama Kyoutaro."),
+    ]),
+    ("sai11_n1", "崔", ["サイ"], [], ["marga Choi/Cui", "Choi (surname)"], 11, "山", [
+        ("崔", "Sai", "marga Choi/Cui"),
+        ("崔氏", "Saishi", "marga Choi/Cui"),
+        ("崔さん", "Sai-san", "panggilan untuk marga Choi"),
+    ], [
+        ("崔さんという韓国人です。", "Sai-san to iu kankokujin desu.", "Ini orang Korea bermarga Choi."),
+        ("崔氏は中国や韓国に多い姓です。", "Saishi wa Chuugoku ya Kankoku ni ooi sei desu.", "Choi/Cui adalah marga yang umum di Tiongkok dan Korea."),
+    ]),
+    ("you9_n1", "妖", ["ヨウ"], ["あや-しい"], ["menggoda", "gaib", "bewitching", "mysterious"], 7, "女", [
+        ("妖精", "yousei", "peri"),
+        ("妖怪", "youkai", "monster/hantu Jepang"),
+        ("妖艶", "youen", "memesona secara seksi"),
+    ], [
+        ("妖精のようです。", "Yousei no you desu.", "Seperti peri."),
+        ("妖怪が出ました。", "Youkai ga demashita.", "Monster muncul."),
+    ]),
+    ("bi3_n1", "琵", ["ビ"], [], ["biwa (instrumen)"], 12, "玉", [
+        ("琵琶", "biwa", "alat musik biwa"),
+        ("琵琶湖", "Biwako", "Danau Biwa"),
+        ("琵琶法師", "biwa houshi", "pendongeng biwa buta"),
+    ], [
+        ("琵琶を弾きました。", "Biwa o hikimashita.", "Memainkan biwa."),
+        ("琵琶湖に行きました。", "Biwako ni ikimashita.", "Pergi ke Danau Biwa."),
+    ]),
+    ("wa_n1", "琶", ["ワ"], [], ["biwa (instrumen)"], 12, "玉", [
+        ("琵琶", "biwa", "alat musik tradisional Jepang"),
+        ("琵琶湖", "Biwako", "Danau Biwa terbesar di Jepang"),
+        ("薩摩琵琶", "Satsuma biwa", "jenis biwa dari Satsuma"),
+    ], [
+        ("琵琶湖は日本最大の湖です。", "Biwako wa Nihon saidai no mizuumi desu.", "Danau Biwa adalah danau terbesar di Jepang."),
+        ("薩摩琵琶を演奏しました。", "Satsuma biwa o ensou shimashita.", "Memainkan biwa Satsuma."),
+    ]),
+    ("ren2_n1", "聯", ["レン"], [], ["menghubungkan (variant 連)", "connect", "associate"], 17, "耳", [
+        ("聯合", "rengou", "gabungan"),
+        ("聯盟", "renmei", "liga/aliansi"),
+        ("対聯", "tairen", "pasangan kaligrafi Tiongkok"),
+    ], [
+        ("国際聯盟という組織がありました。", "Kokusai Renmei to iu soshiki ga arimashita.", "Ada organisasi bernama Liga Bangsa-Bangsa."),
+        ("対聯を飾りました。", "Tairen o kazarimashita.", "Menghias dengan pasangan kaligrafi."),
+    ]),
+    ("so8_n1", "蘇", ["ソ"], ["よみがえ-る"], ["bangkit kembali", "revive"], 19, "艸", [
+        ("蘇る", "yomigaeru", "bangkit kembali"),
+        ("蘇生", "sosei", "kebangkitan/resusitasi"),
+        ("耶蘇", "Yaso", "Yesus (ateji lama)"),
+    ], [
+        ("記憶が蘇りました。", "Kioku ga yomigaerimashita.", "Ingatan bangkit kembali."),
+        ("蘇生術を行いました。", "Soseijutsu o okonaimashita.", "Melakukan resusitasi."),
+    ]),
+    ("an_n1", "闇", ["アン"], ["やみ"], ["kegelapan", "darkness"], 17, "門", [
+        ("闇", "yami", "kegelapan"),
+        ("闇市", "yamiichi", "pasar gelap"),
+        ("暗闇", "kurayami", "kegelapan pekat"),
+    ], [
+        ("闇に包まれています。", "Yami ni tsutsumarete imasu.", "Diselimuti kegelapan."),
+        ("暗闇が怖いです。", "Kurayami ga kowai desu.", "Takut pada kegelapan pekat."),
+    ]),
+    ("suu2_n1", "崇", ["スウ"], [], ["memuja", "worship", "revere"], 11, "山", [
+        ("崇拝", "suuhai", "pemujaan"),
+        ("崇高", "suukou", "luhur"),
+        ("崇敬", "suukei", "rasa hormat mendalam"),
+    ], [
+        ("崇拝しています。", "Suuhai shite imasu.", "Memuja."),
+        ("崇高な理想です。", "Suukou na risou desu.", "Ini cita-cita yang luhur."),
+    ]),
+    ("shitsu3_n1", "漆", ["シツ"], ["うるし"], ["pernis Jepang", "lacquer"], 14, "水", [
+        ("漆", "urushi", "pernis Jepang"),
+        ("漆器", "shikki", "kerajinan pernis"),
+        ("漆黒", "shikkoku", "hitam pekat"),
+    ], [
+        ("漆を塗りました。", "Urushi o nurimashita.", "Mengoleskan pernis."),
+        ("漆黒の闇です。", "Shikkoku no yami desu.", "Ini kegelapan hitam pekat."),
+    ]),
+    ("misaki_n1", "岬", [], ["みさき"], ["tanjung", "cape"], 8, "山", [
+        ("岬", "misaki", "tanjung"),
+        ("石廊岬", "Irouzaki", "nama tanjung"),
+        ("岬巡り", "misakimeguri", "menjelajahi tanjung"),
+    ], [
+        ("岬に立ちました。", "Misaki ni tachimashita.", "Berdiri di tanjung."),
+        ("石廊岬を訪れました。", "Irouzaki o otozuremashita.", "Mengunjungi Tanjung Irou."),
+    ]),
+    ("heki2_n1", "癖", ["ヘキ"], ["くせ"], ["kebiasaan", "keanehan", "habit", "quirk"], 18, "疒", [
+        ("癖", "kuse", "kebiasaan/keanehan"),
+        ("口癖", "kuchiguse", "kata-kata favorit"),
+        ("潔癖", "keppeki", "sangat bersih/perfeksionis"),
+    ], [
+        ("癖があります。", "Kuse ga arimasu.", "Punya kebiasaan aneh."),
+        ("潔癖症です。", "Keppekishou desu.", "Ini gangguan sangat perfeksionis soal kebersihan."),
+    ]),
+    ("yu4_n1", "愉", ["ユ"], [], ["menyenangkan", "pleasant"], 12, "心", [
+        ("愉快", "yukai", "menyenangkan"),
+        ("愉しい", "tanoshii", "senang"),
+        ("愉悦", "yuetsu", "kegembiraan"),
+    ], [
+        ("愉快な人です。", "Yukai na hito desu.", "Dia orang yang menyenangkan."),
+        ("愉悦を感じました。", "Yuetsu o kanjimashita.", "Merasakan kegembiraan."),
+    ]),
+    ("in3_n1", "寅", ["イン"], ["とら"], ["shio macan", "tiger zodiac"], 11, "宀", [
+        ("寅", "tora", "tahun macan dalam zodiak"),
+        ("寅年", "toradoshi", "tahun macan"),
+        ("寅の刻", "tora no koku", "jam macan (waktu kuno)"),
+    ], [
+        ("寅年生まれです。", "Toradoshi umare desu.", "Lahir di tahun macan."),
+        ("寅の刻に起きました。", "Tora no koku ni okimashita.", "Bangun pada jam macan."),
+    ]),
+    ("soku3_n1", "捉", ["ソク"], ["とら-える"], ["menangkap", "catch", "grasp"], 10, "手", [
+        ("捉える", "toraeru", "menangkap/memahami"),
+        ("捕捉", "hosoku", "penangkapan/pemahaman"),
+        ("把捉", "hasoku", "menggenggam/memahami"),
+    ], [
+        ("本質を捉えました。", "Honshitsu o toraemashita.", "Menangkap esensinya."),
+        ("捕捉しました。", "Hosoku shimashita.", "Menangkap/memahami."),
+    ]),
+    ("shou30_n1", "礁", ["ショウ"], [], ["karang", "reef"], 17, "石", [
+        ("岩礁", "ganshou", "karang batu"),
+        ("暗礁", "anshou", "karang tersembunyi"),
+        ("サンゴ礁", "sango-shou", "terumbu karang"),
+    ], [
+        ("岩礁に注意してください。", "Ganshou ni chuui shite kudasai.", "Waspadalah terhadap karang batu."),
+        ("サンゴ礁が美しいです。", "Sango-shou ga utsukushii desu.", "Terumbu karangnya indah."),
+    ]),
+    ("no_n1", "乃", ["ダイ", "ノ"], ["の"], ["partikel klasik dari", "thus", "possessive"], 2, "丿", [
+        ("乃ち", "sunawachi", "yaitu/dengan demikian"),
+        ("乃至", "naishi", "atau/sampai dengan"),
+        ("乃木", "Nogi", "contoh nama keluarga"),
+    ], [
+        ("乃至10人です。", "Naishi juu-nin desu.", "Sampai dengan 10 orang."),
+        ("乃木大将は有名な軍人です。", "Nogi taishou wa yuumei na gunjin desu.", "Jenderal Nogi adalah tentara terkenal."),
+    ]),
+    ("shuu12_n1", "洲", ["シュウ"], ["す"], ["delta pasir", "benua (variant 州)", "sandbar", "continent"], 9, "水", [
+        ("洲", "su", "delta pasir"),
+        ("満洲", "Manshuu", "Manchuria"),
+        ("欧州", "Oushuu", "Eropa"),
+    ], [
+        ("満洲という地域がありました。", "Manshuu to iu chiiki ga arimashita.", "Ada wilayah bernama Manchuria."),
+        ("欧州を旅行しました。", "Oushuu o ryokou shimashita.", "Berlibur ke Eropa."),
+    ]),
+    ("ton3_n1", "屯", ["トン"], [], ["berkumpul", "garnisun", "garrison", "gather"], 4, "屮", [
+        ("駐屯", "chuuton", "penempatan garnisun"),
+        ("屯田兵", "tondenhei", "tentara petani kolonis"),
+        ("屯所", "tonsho", "pos jaga"),
+    ], [
+        ("駐屯地です。", "Chuutonchi desu.", "Ini area garnisun."),
+        ("屯田兵として働きました。", "Tondenhei toshite hatarakimashita.", "Bekerja sebagai tentara petani kolonis."),
+    ]),
+    ("son_n1", "樽", ["ソン"], ["たる"], ["tong kayu", "barrel", "cask"], 16, "木", [
+        ("樽", "taru", "tong kayu"),
+        ("樽酒", "tarusake", "sake dalam tong"),
+        ("一樽", "hitotaru", "satu tong"),
+    ], [
+        ("樽に入れました。", "Taru ni iremashita.", "Dimasukkan ke dalam tong."),
+        ("樽酒を飲みました。", "Tarusake o nomimashita.", "Minum sake dari tong."),
+    ]),
+    ("ka14_n1", "樺", ["カ"], ["かば"], ["pohon birch", "birch tree"], 14, "木", [
+        ("樺", "kaba", "pohon birch"),
+        ("白樺", "shirakaba", "birch putih"),
+        ("樺太", "Karafuto", "nama pulau Sakhalin"),
+    ], [
+        ("白樺の木があります。", "Shirakaba no ki ga arimasu.", "Ada pohon birch putih."),
+        ("樺太に行きました。", "Karafuto ni ikimashita.", "Pergi ke Sakhalin."),
+    ]),
+    ("shin13_n1", "槙", [], ["まき"], ["pohon podocarpus (nama)", "podocarpus tree"], 14, "木", [
+        ("槙", "maki", "pohon podocarpus"),
+        ("槙原", "Makihara", "contoh nama keluarga"),
+        ("槙島", "Makishima", "contoh nama keluarga"),
+    ], [
+        ("槙の木を植えました。", "Maki no ki o uemashita.", "Menanam pohon maki."),
+        ("槙原さんに会いました。", "Makihara-san ni aimashita.", "Bertemu dengan Makihara."),
+    ]),
+    ("satsu3_n1", "薩", ["サツ"], [], ["nama daerah Satsuma", "Satsuma"], 17, "艸", [
+        ("薩摩", "Satsuma", "nama daerah lama di Kyushu"),
+        ("薩摩藩", "Satsuma-han", "domain feodal Satsuma"),
+        ("菩薩", "bosatsu", "bodhisattva"),
+    ], [
+        ("薩摩藩の出身です。", "Satsuma-han no shusshin desu.", "Berasal dari domain Satsuma."),
+        ("菩薩像を見ました。", "Bosatsuzou o mimashita.", "Melihat patung bodhisattva."),
+    ]),
+    ("in4_n1", "姻", ["イン"], [], ["pernikahan", "marriage"], 9, "女", [
+        ("婚姻", "kon-in", "pernikahan"),
+        ("姻戚", "inseki", "kerabat melalui pernikahan"),
+        ("姻族", "inzoku", "keluarga besan"),
+    ], [
+        ("婚姻届を出しました。", "Kon-in todoke o dashimashita.", "Mengajukan surat nikah."),
+        ("姻戚関係です。", "Inseki kankei desu.", "Ini hubungan kerabat melalui pernikahan."),
+    ]),
+    ("gan3_n1", "巌", ["ガン"], ["いわお"], ["batu besar (variant 岩)", "large rock"], 20, "山", [
+        ("巌", "iwao", "batu besar"),
+        ("巌流島", "Ganryuujima", "nama pulau terkenal duel samurai"),
+        ("巌窟", "gankutsu", "gua batu"),
+    ], [
+        ("巌流島で決闘しました。", "Ganryuujima de kettou shimashita.", "Berduel di Pulau Ganryu."),
+        ("巌窟王という小説です。", "Gankutsuou to iu shousetsu desu.", "Ini novel \"Count of Monte Cristo\"."),
+    ]),
+    ("yodo_n1", "淀", [], ["よど"], ["air tergenang", "stagnant water"], 11, "水", [
+        ("淀む", "yodomu", "tergenang/macet"),
+        ("淀川", "Yodogawa", "nama sungai di Osaka"),
+        ("淀み", "yodomi", "genangan"),
+    ], [
+        ("川が淀んでいます。", "Kawa ga yodonde imasu.", "Sungai tergenang."),
+        ("淀川を渡りました。", "Yodogawa o watarimashita.", "Menyeberangi Sungai Yodo."),
+    ]),
+    ("kouji_n1", "麹", [], ["こうじ"], ["ragi koji", "koji mold"], 16, "麦", [
+        ("麹", "kouji", "ragi koji"),
+        ("麹町", "Koujimachi", "nama daerah di Tokyo"),
+        ("塩麹", "shiokouji", "koji garam"),
+    ], [
+        ("麹を使いました。", "Kouji o tsukaimashita.", "Menggunakan ragi koji."),
+        ("塩麹で漬けました。", "Shiokouji de tsukemashita.", "Merendam dengan koji garam."),
+    ]),
+    ("kake_n1", "賭", [], ["か-ける"], ["bertaruh", "bet", "gamble"], 16, "貝", [
+        ("賭ける", "kakeru", "bertaruh"),
+        ("賭博", "tobaku", "perjudian"),
+        ("賭け事", "kakegoto", "perjudian"),
+    ], [
+        ("お金を賭けました。", "Okane o kakemashita.", "Bertaruh uang."),
+        ("賭博は違法です。", "Tobaku wa ihou desu.", "Perjudian itu ilegal."),
+    ]),
+    ("gi8_n1", "擬", ["ギ"], [], ["meniru", "imitate", "quasi"], 17, "手", [
+        ("擬態", "gitai", "mimikri"),
+        ("模擬", "mogi", "simulasi/tiruan"),
+        ("擬人化", "gijinka", "personifikasi"),
+    ], [
+        ("擬態しています。", "Gitai shite imasu.", "Melakukan mimikri."),
+        ("模擬試験を受けました。", "Mogi shiken o ukemashita.", "Mengikuti ujian simulasi."),
+    ]),
+    ("hei5_n1", "塀", ["ヘイ"], [], ["tembok pembatas", "wall", "fence"], 12, "土", [
+        ("塀", "hei", "tembok pembatas"),
+        ("板塀", "itabei", "pagar kayu"),
+        ("土塀", "dobei", "tembok tanah"),
+    ], [
+        ("塀を作りました。", "Hei o tsukurimashita.", "Membuat tembok pembatas."),
+        ("板塀が壊れました。", "Itabei ga kowaremashita.", "Pagar kayu rusak."),
+    ]),
+    ("shin14_n1", "唇", ["シン"], ["くちびる"], ["bibir", "lips"], 10, "口", [
+        ("唇", "kuchibiru", "bibir"),
+        ("上唇", "uwakuchibiru", "bibir atas"),
+        ("唇を噛む", "kuchibiru o kamu", "menggigit bibir"),
+    ], [
+        ("唇が乾いています。", "Kuchibiru ga kawaite imasu.", "Bibirnya kering."),
+        ("唇を噛みました。", "Kuchibiru o kamimashita.", "Menggigit bibir."),
+    ]),
+    ("boku6_n1", "睦", ["ボク"], ["むつ-まじい"], ["akrab", "harmonious"], 13, "目", [
+        ("親睦", "shinboku", "keakraban"),
+        ("睦まじい", "mutsumajii", "akrab/mesra"),
+        ("和睦", "waboku", "perdamaian"),
+    ], [
+        ("親睦会がありました。", "Shinbokukai ga arimashita.", "Ada acara keakraban."),
+        ("睦まじい夫婦です。", "Mutsumajii fuufu desu.", "Ini pasangan yang mesra."),
+    ]),
+    ("kan30_n1", "閑", ["カン"], [], ["tenang", "senggang", "quiet", "leisure"], 12, "門", [
+        ("閑静", "kansei", "tenang"),
+        ("閑散", "kansan", "sepi"),
+        ("忙中閑", "bouchuukan", "kesibukan di tengah kesibukan"),
+    ], [
+        ("閑静な住宅街です。", "Kansei na juutakugai desu.", "Ini kawasan perumahan yang tenang."),
+        ("閑散としています。", "Kansan to shite imasu.", "Sepi."),
+    ]),
+    ("ko7_n1", "胡", ["コ"], [], ["bangsa asing kuno", "lada", "barbarian", "pepper"], 9, "肉", [
+        ("胡椒", "koshou", "lada"),
+        ("胡瓜", "kyuuri", "mentimun"),
+        ("胡麻", "goma", "wijen"),
+    ], [
+        ("胡椒をかけました。", "Koshou o kakemashita.", "Menaburkan lada."),
+        ("胡麻油を使いました。", "Goma abura o tsukaimashita.", "Menggunakan minyak wijen."),
+    ]),
+    ("yuu10_n1", "幽", ["ユウ"], [], ["samar", "hantu", "faint", "ghost"], 9, "幺", [
+        ("幽霊", "yuurei", "hantu"),
+        ("幽閉", "yuuhei", "pengurungan"),
+        ("幽玄", "yuugen", "keindahan misterius"),
+    ], [
+        ("幽閉されました。", "Yuuhei saremashita.", "Dikurung."),
+        ("幽玄な美しさです。", "Yuugen na utsukushisa desu.", "Ini keindahan yang misterius."),
+    ]),
+    ("shun4_n1", "峻", ["シュン"], [], ["curam", "keras", "steep", "severe"], 10, "山", [
+        ("峻厳", "shungen", "keras dan tegas"),
+        ("険峻", "kenshun", "curam"),
+        ("峻烈", "shunretsu", "sangat keras"),
+    ], [
+        ("峻厳な態度です。", "Shungen na taido desu.", "Ini sikap yang keras dan tegas."),
+        ("険峻な山です。", "Kenshun na yama desu.", "Ini gunung yang curam."),
+    ]),
+    ("sou18_n1", "曹", ["ソウ"], [], ["sersan", "kelompok", "sergeant", "companion"], 11, "曰", [
+        ("曹長", "souchou", "sersan mayor"),
+        ("法曹", "housou", "dunia hukum"),
+        ("重曹", "juusou", "soda kue"),
+    ], [
+        ("曹長になりました。", "Souchou ni narimashita.", "Menjadi sersan mayor."),
+        ("法曹界で働いています。", "Housoukai de hataraite imasu.", "Bekerja di dunia hukum."),
+    ]),
+    ("shou31_n1", "哨", ["ショウ"], [], ["penjaga", "sentinel", "whistle"], 10, "口", [
+        ("哨戒", "shoukai", "patroli pengawasan"),
+        ("歩哨", "hoshou", "penjaga berjalan"),
+        ("前哨戦", "zenshousen", "pertempuran pendahuluan"),
+    ], [
+        ("哨戒任務です。", "Shoukai ninmu desu.", "Ini tugas patroli pengawasan."),
+        ("前哨戦が始まりました。", "Zenshousen ga hajimarimashita.", "Pertempuran pendahuluan dimulai."),
+    ]),
+    ("ei3_n1", "詠", ["エイ"], ["よ-む"], ["mendendangkan puisi", "recite"], 12, "言", [
+        ("詠む", "yomu", "mendendangkan puisi"),
+        ("詠嘆", "eitan", "kekaguman/keharuan"),
+        ("朗詠", "rouei", "mendeklamasikan puisi dengan lantang"),
+    ], [
+        ("和歌を詠みました。", "Waka o yomimashita.", "Mendendangkan waka."),
+        ("詠嘆の声を上げました。", "Eitan no koe o agemashita.", "Mengeluarkan suara kekaguman."),
+    ]),
+    ("shou32_n1", "炒", ["ショウ"], ["いた-める"], ["menumis", "stir-fry"], 8, "火", [
+        ("炒める", "itameru", "menumis"),
+        ("炒飯", "chaahan", "nasi goreng"),
+        ("炒め物", "itamemono", "masakan tumis"),
+    ], [
+        ("野菜を炒めました。", "Yasai o itamemashita.", "Menumis sayuran."),
+        ("炒飯を作りました。", "Chaahan o tsukurimashita.", "Membuat nasi goreng."),
+    ]),
+    ("hei6_n1", "屏", ["ヘイ"], [], ["sekat lipat", "screen"], 9, "尸", [
+        ("屏風", "byoubu", "sekat lipat Jepang"),
+        ("屏障", "heishou", "penghalang"),
+        ("屏居", "heikyo", "mengasingkan diri"),
+    ], [
+        ("屏風を飾りました。", "Byoubu o kazarimashita.", "Menghias dengan sekat lipat."),
+        ("美しい屏風です。", "Utsukushii byoubu desu.", "Ini sekat lipat yang indah."),
+    ]),
+    ("hi9_n1", "卑", ["ヒ"], ["いや-しい"], ["rendah", "hina", "lowly", "vulgar"], 9, "十", [
+        ("卑怯", "hikyou", "pengecut"),
+        ("卑劣", "hiretsu", "licik"),
+        ("卑しい", "iyashii", "hina/rendah"),
+    ], [
+        ("卑怯な行為です。", "Hikyou na koui desu.", "Ini tindakan pengecut."),
+        ("卑劣な手段です。", "Hiretsu na shudan desu.", "Ini cara yang licik."),
+    ]),
+    ("bu2_n1", "侮", ["ブ"], ["あなど-る"], ["meremehkan", "insult", "despise"], 8, "人", [
+        ("侮辱", "bujoku", "hinaan"),
+        ("侮る", "anadoru", "meremehkan"),
+        ("侮蔑", "bubetsu", "penghinaan"),
+    ], [
+        ("相手を侮ってはいけません。", "Aite o anadotte wa ikemasen.", "Jangan meremehkan lawan."),
+        ("侮蔑的な態度です。", "Bubetsuteki na taido desu.", "Ini sikap yang menghina."),
+    ]),
+    ("chuu4_n1", "鋳", ["チュウ"], ["い-る"], ["mencor logam", "cast (metal)"], 15, "金", [
+        ("鋳造", "chuuzou", "pengecoran"),
+        ("鋳物", "imono", "barang cor"),
+        ("鋳型", "igata", "cetakan cor"),
+    ], [
+        ("鋳造技術です。", "Chuuzou gijutsu desu.", "Ini teknik pengecoran."),
+        ("鋳物を作りました。", "Imono o tsukurimashita.", "Membuat barang cor."),
+    ]),
+    ("matsu_n1", "抹", ["マツ"], [], ["menghapus", "bubuk", "wipe", "powder"], 8, "手", [
+        ("抹茶", "maccha", "teh matcha"),
+        ("抹殺", "massatsu", "penghapusan/pembasmian"),
+        ("一抹", "ichimatsu", "secercah"),
+    ], [
+        ("抹茶を飲みました。", "Maccha o nomimashita.", "Minum teh matcha."),
+        ("一抹の不安があります。", "Ichimatsu no fuan ga arimasu.", "Ada secercah kecemasan."),
+    ]),
+    ("i9_n1", "尉", ["イ"], [], ["perwira militer", "military officer"], 9, "寸", [
+        ("大尉", "taii", "kapten (militer)"),
+        ("尉官", "ikan", "perwira pertama"),
+        ("中尉", "chuui", "letnan"),
+    ], [
+        ("大尉になりました。", "Taii ni narimashita.", "Menjadi kapten."),
+        ("中尉として働いています。", "Chuui toshite hataraite imasu.", "Bekerja sebagai letnan."),
+    ]),
+    ("ki23_n1", "槻", [], ["つき"], ["pohon zelkova (nama)", "zelkova tree"], 15, "木", [
+        ("槻", "tsuki", "pohon zelkova"),
+        ("槻の木", "tsuki no ki", "pohon zelkova"),
+        ("高槻", "Takatsuki", "nama kota di Osaka"),
+    ], [
+        ("槻の木があります。", "Tsuki no ki ga arimasu.", "Ada pohon zelkova."),
+        ("高槻市に住んでいます。", "Takatsuki-shi ni sunde imasu.", "Tinggal di kota Takatsuki."),
+    ]),
+    ("rei7_n1", "隷", ["レイ"], [], ["budak", "servant", "slave"], 16, "隶", [
+        ("奴隷", "dorei", "budak"),
+        ("隷属", "reizoku", "subordinasi"),
+        ("隷書", "reisho", "gaya tulisan kaligrafi Tiongkok"),
+    ], [
+        ("隷属しています。", "Reizoku shite imasu.", "Berada dalam subordinasi."),
+        ("隷書で書きました。", "Reisho de kakimashita.", "Menulis dengan gaya kaligrafi reisho."),
+    ]),
+    ("ka15_n1", "禍", ["カ"], [], ["bencana", "misfortune", "disaster"], 13, "示", [
+        ("災禍", "saika", "bencana"),
+        ("禍根", "kakon", "akar masalah"),
+        ("戦禍", "senka", "bencana perang"),
+    ], [
+        ("災禍に見舞われました。", "Saika ni mimawaremashita.", "Tertimpa bencana."),
+        ("禍根を残しました。", "Kakon o nokoshimashita.", "Meninggalkan akar masalah."),
+    ]),
+    ("chou22_n1", "蝶", ["チョウ"], [], ["kupu-kupu", "butterfly"], 15, "虫", [
+        ("蝶", "chou", "kupu-kupu"),
+        ("蝶々", "choucho", "kupu-kupu (informal)"),
+        ("蝶ネクタイ", "chou nekutai", "dasi kupu-kupu"),
+    ], [
+        ("蝶が飛んでいます。", "Chou ga tonde imasu.", "Kupu-kupu sedang terbang."),
+        ("蝶ネクタイをつけました。", "Chou nekutai o tsukemashita.", "Memakai dasi kupu-kupu."),
+    ]),
+    ("raku_n1", "酪", ["ラク"], [], ["produk susu", "dairy"], 13, "酉", [
+        ("酪農", "rakunou", "peternakan sapi perah"),
+        ("酪農家", "rakunouka", "peternak sapi perah"),
+        ("乾酪", "kanraku", "keju"),
+    ], [
+        ("酪農業をしています。", "Rakunougyou o shite imasu.", "Bekerja di bidang peternakan sapi perah."),
+        ("酪農家になりました。", "Rakunouka ni narimashita.", "Menjadi peternak sapi perah."),
+    ]),
+    ("kei15_n1", "茎", ["ケイ"], ["くき"], ["batang tumbuhan", "stem"], 8, "艸", [
+        ("茎", "kuki", "batang"),
+        ("地下茎", "chikakei", "rimpang"),
+        ("歯茎", "haguki", "gusi"),
+    ], [
+        ("茎を切りました。", "Kuki o kirimashita.", "Memotong batang."),
+        ("歯茎が腫れています。", "Haguki ga harete imasu.", "Gusinya bengkak."),
+    ]),
+    ("han9_n1", "汎", ["ハン"], [], ["menyeluruh", "pan-", "general"], 6, "水", [
+        ("汎用", "han-you", "serba guna"),
+        ("汎神論", "hanshinron", "panteisme"),
+        ("汎太平洋", "han-taiheiyou", "Pan-Pasifik"),
+    ], [
+        ("汎用性があります。", "Han-yousei ga arimasu.", "Memiliki keserbagunaan."),
+        ("汎太平洋地域です。", "Han-taiheiyou chiiki desu.", "Ini wilayah Pan-Pasifik."),
+    ]),
+    ("kei16_n1", "頃", ["ケイ"], ["ころ"], ["sekitar waktu", "time", "around"], 11, "頁", [
+        ("頃", "koro", "sekitar waktu"),
+        ("頃合い", "koroai", "waktu yang tepat"),
+        ("日頃", "higoro", "sehari-hari"),
+    ], [
+        ("三時頃に来ます。", "Sanji-koro ni kimasu.", "Datang sekitar jam tiga."),
+        ("日頃から練習しています。", "Higoro kara renshuu shite imasu.", "Berlatih sehari-hari."),
+    ]),
+    ("sui10_n1", "帥", ["スイ"], [], ["panglima", "commander"], 9, "巾", [
+        ("元帥", "gensui", "marsekal/jenderal besar"),
+        ("統帥", "tousui", "komando tertinggi"),
+        ("総帥", "sousui", "panglima tertinggi"),
+    ], [
+        ("元帥になりました。", "Gensui ni narimashita.", "Menjadi marsekal."),
+        ("統帥権です。", "Tousuiken desu.", "Ini hak komando tertinggi."),
+    ]),
+    ("ryou9_n1", "梁", ["リョウ"], ["はり"], ["balok penyangga", "beam", "bridge"], 11, "木", [
+        ("梁", "hari", "balok penyangga"),
+        ("橋梁", "kyouryou", "jembatan"),
+        ("上梁", "jouryou", "pemasangan balok atap"),
+    ], [
+        ("梁が支えています。", "Hari ga sasaete imasu.", "Balok menopang."),
+        ("橋梁工事です。", "Kyouryou kouji desu.", "Ini konstruksi jembatan."),
+    ]),
+    ("sei13_n1", "逝", ["セイ"], ["ゆ-く"], ["meninggal", "pass away"], 10, "辵", [
+        ("逝去", "seikyo", "wafat"),
+        ("急逝", "kyuusei", "meninggal mendadak"),
+        ("長逝", "chousei", "meninggal (formal)"),
+    ], [
+        ("逝去されました。", "Seikyo saremashita.", "Beliau telah wafat."),
+        ("急逝しました。", "Kyuusei shimashita.", "Meninggal mendadak."),
+    ]),
+    ("ki24_n1", "汽", ["キ"], [], ["uap", "steam"], 6, "水", [
+        ("汽車", "kisha", "kereta uap"),
+        ("汽船", "kisen", "kapal uap"),
+        ("汽笛", "kiteki", "sirene kapal/kereta"),
+    ], [
+        ("汽車に乗りました。", "Kisha ni norimashita.", "Naik kereta uap."),
+        ("汽船で渡りました。", "Kisen de watarimashita.", "Menyeberang dengan kapal uap."),
+    ]),
+    ("mei2_n1", "謎", ["メイ"], ["なぞ"], ["teka-teki", "mystery", "riddle"], 17, "言", [
+        ("謎", "nazo", "teka-teki/misteri"),
+        ("謎解き", "nazotoki", "pemecahan teka-teki"),
+        ("謎めいた", "nazomeita", "misterius"),
+    ], [
+        ("謎が解けました。", "Nazo ga tokemashita.", "Teka-teki terpecahkan."),
+        ("謎めいた人物です。", "Nazomeita jinbutsu desu.", "Ini sosok yang misterius."),
+    ]),
+    ("taku6_n1", "琢", ["タク"], [], ["mengasah (nama)", "polish (gem)"], 11, "玉", [
+        ("切磋琢磨", "sessa takuma", "saling mengasah diri"),
+        ("琢磨", "takuma", "pengasahan/latihan keras"),
+        ("琢也", "Takuya", "contoh nama pria"),
+    ], [
+        ("切磋琢磨しています。", "Sessa takuma shite imasu.", "Saling mengasah diri."),
+        ("琢也さんに会いました。", "Takuya-san ni aimashita.", "Bertemu dengan Takuya."),
+    ]),
+    ("ki25_n1", "箕", ["キ"], ["み"], ["nyiru", "winnowing basket"], 14, "竹", [
+        ("箕", "mi", "nyiru"),
+        ("箕面", "Minoo", "nama kota di Osaka"),
+        ("箕作り", "mizukuri", "pembuatan nyiru"),
+    ], [
+        ("箕で選別しました。", "Mi de senbetsu shimashita.", "Menyortir dengan nyiru."),
+        ("箕面市に行きました。", "Minoo-shi ni ikimashita.", "Pergi ke kota Minoo."),
+    ]),
+    ("toku4_n1", "匿", ["トク"], [], ["menyembunyikan", "hide", "conceal"], 10, "匚", [
+        ("匿名", "tokumei", "anonim"),
+        ("隠匿", "intoku", "penyembunyian"),
+        ("蔵匿", "zoutoku", "menyembunyikan (istilah hukum)"),
+    ], [
+        ("匿名で投稿しました。", "Tokumei de toukou shimashita.", "Memposting secara anonim."),
+        ("隠匿していました。", "Intoku shite imashita.", "Menyembunyikan."),
+    ]),
+    ("sou19_n1", "爪", ["ソウ"], ["つめ"], ["kuku", "cakar", "nail", "claw"], 4, "爪", [
+        ("爪", "tsume", "kuku"),
+        ("爪切り", "tsumekiri", "gunting kuku"),
+        ("生爪", "namazume", "kuku hidup"),
+    ], [
+        ("爪を切りました。", "Tsume o kirimashita.", "Memotong kuku."),
+        ("爪切りを使いました。", "Tsumekiri o tsukaimashita.", "Menggunakan gunting kuku."),
+    ]),
+    ("ha4_n1", "芭", ["ハ"], [], ["pohon pisang (dalam kata majemuk)", "banana plant"], 7, "艸", [
+        ("芭蕉", "bashou", "pohon pisang/nama pujangga"),
+        ("松尾芭蕉", "Matsuo Bashou", "penyair haiku terkenal"),
+        ("芭蕉布", "bashoufu", "kain serat pisang Okinawa"),
+    ], [
+        ("松尾芭蕉は有名な俳人です。", "Matsuo Bashou wa yuumei na haijin desu.", "Matsuo Basho adalah penyair haiku terkenal."),
+        ("芭蕉布で作られています。", "Bashoufu de tsukurarete imasu.", "Dibuat dari kain serat pisang."),
+    ]),
+    ("tou19_n1", "逗", ["トウ"], [], ["singgah", "stay", "stop over"], 10, "辵", [
+        ("逗留", "touryuu", "tinggal sementara"),
+        ("逗子", "Zushi", "nama kota di Kanagawa"),
+        ("逗子市", "Zushi-shi", "Kota Zushi"),
+    ], [
+        ("逗留しています。", "Touryuu shite imasu.", "Sedang tinggal sementara."),
+        ("逗子市に行きました。", "Zushi-shi ni ikimashita.", "Pergi ke Kota Zushi."),
+    ]),
+    ("toma_n1", "苫", [], ["とま"], ["tikar jerami", "straw mat"], 8, "艸", [
+        ("苫", "toma", "tikar jerami"),
+        ("苫小牧", "Tomakomai", "nama kota di Hokkaido"),
+        ("苫屋", "tomaya", "gubuk beratap jerami"),
+    ], [
+        ("苫小牧に住んでいます。", "Tomakomai ni sunde imasu.", "Tinggal di Tomakomai."),
+        ("苫で覆いました。", "Toma de ooimashita.", "Menutupi dengan tikar jerami."),
+    ]),
+    ("ken15_n1", "鍵", ["ケン"], ["かぎ"], ["kunci", "key"], 17, "金", [
+        ("鍵", "kagi", "kunci"),
+        ("鍵盤", "kenban", "keyboard/tuts"),
+        ("合鍵", "aikagi", "kunci duplikat"),
+    ], [
+        ("鍵をかけました。", "Kagi o kakemashita.", "Mengunci."),
+        ("鍵盤楽器です。", "Kenban gakki desu.", "Ini alat musik keyboard."),
+    ]),
+    ("kin5_n1", "襟", ["キン"], ["えり"], ["kerah baju", "collar"], 18, "衣", [
+        ("襟", "eri", "kerah"),
+        ("襟元", "erimoto", "area kerah"),
+        ("開襟", "kaikin", "kerah terbuka"),
+    ], [
+        ("襟を正しました。", "Eri o tadashimashita.", "Merapikan kerah/membenahi sikap."),
+        ("開襟シャツです。", "Kaikin shatsu desu.", "Ini kemeja berkerah terbuka."),
+    ]),
+    ("kei17_n1", "蛍", ["ケイ"], ["ほたる"], ["kunang-kunang", "firefly"], 11, "虫", [
+        ("蛍", "hotaru", "kunang-kunang"),
+        ("蛍光灯", "keikoutou", "lampu neon"),
+        ("蛍雪", "keisetsu", "kerja keras belajar"),
+    ], [
+        ("蛍を見ました。", "Hotaru o mimashita.", "Melihat kunang-kunang."),
+        ("蛍光灯をつけました。", "Keikoutou o tsukemashita.", "Menyalakan lampu neon."),
+    ]),
+    ("yuu11_n1", "楢", [], ["なら"], ["pohon ek Jepang (nama)", "Japanese oak"], 13, "木", [
+        ("楢", "nara", "pohon ek Jepang"),
+        ("楢山", "Narayama", "nama gunung"),
+        ("楢崎", "Narasaki", "contoh nama keluarga"),
+    ], [
+        ("楢の木があります。", "Nara no ki ga arimasu.", "Ada pohon ek."),
+        ("楢山節考という映画です。", "Narayama Bushikou to iu eiga desu.", "Ini film \"Ballad of Narayama\"."),
+    ]),
+    ("shou33_n1", "蕉", ["ショウ"], [], ["pohon pisang (dalam kata majemuk)", "banana plant"], 15, "艸", [
+        ("芭蕉", "bashou", "pohon pisang/nama pujangga"),
+        ("蕉風", "shoufuu", "gaya haiku Basho"),
+        ("蕉葉", "shouyou", "daun pisang"),
+    ], [
+        ("蕉風俳句です。", "Shoufuu haiku desu.", "Ini haiku bergaya Basho."),
+        ("蕉葉に包みました。", "Shouyou ni tsutsumimashita.", "Dibungkus daun pisang."),
+    ]),
+    ("kabuto_n1", "兜", [], ["かぶと"], ["helm samurai", "samurai helmet"], 11, "儿", [
+        ("兜", "kabuto", "helm samurai"),
+        ("兜虫", "kabutomushi", "kumbang badak"),
+        ("兜町", "Kabutochou", "distrik keuangan Tokyo"),
+    ], [
+        ("兜をかぶりました。", "Kabuto o kaburimashita.", "Memakai helm samurai."),
+        ("兜虫を捕まえました。", "Kabutomushi o tsukamaemashita.", "Menangkap kumbang badak."),
+    ]),
+    ("ka16_n1", "寡", ["カ"], [], ["sedikit", "janda", "few", "widow"], 14, "宀", [
+        ("寡黙", "kamoku", "pendiam"),
+        ("寡婦", "kafu", "janda"),
+        ("多寡", "taka", "banyak sedikitnya"),
+    ], [
+        ("寡黙な人です。", "Kamoku na hito desu.", "Dia orang yang pendiam."),
+        ("寡婦になりました。", "Kafu ni narimashita.", "Menjadi janda."),
+    ]),
+    ("ryuu7_n1", "琉", ["リュウ"], [], ["nama Kepulauan Ryukyu", "Ryukyu"], 11, "玉", [
+        ("琉球", "Ryuukyuu", "Kepulauan Ryukyu/Okinawa"),
+        ("琉球王国", "Ryuukyuu Oukoku", "Kerajaan Ryukyu"),
+        ("琉璃", "ruri", "lapis lazuli"),
+    ], [
+        ("琉球王国の歴史です。", "Ryuukyuu Oukoku no rekishi desu.", "Ini sejarah Kerajaan Ryukyu."),
+        ("琉球料理を食べました。", "Ryuukyuu ryouri o tabemashita.", "Makan masakan Ryukyu."),
+    ]),
+    ("ri6_n1", "痢", ["リ"], [], ["diare", "diarrhea"], 12, "疒", [
+        ("下痢", "geri", "diare"),
+        ("赤痢", "sekiri", "disentri"),
+        ("疫痢", "ekiri", "disentri epidemi anak"),
+    ], [
+        ("下痢をしています。", "Geri o shite imasu.", "Sedang diare."),
+        ("赤痢にかかりました。", "Sekiri ni kakarimashita.", "Terkena disentri."),
+    ]),
+    ("you10_n1", "庸", ["ヨウ"], [], ["biasa-biasa saja", "mediocre", "ordinary"], 11, "广", [
+        ("中庸", "chuuyou", "jalan tengah"),
+        ("凡庸", "bon-you", "biasa-biasa saja"),
+        ("庸人", "youjin", "orang biasa"),
+    ], [
+        ("中庸を保っています。", "Chuuyou o tamotte imasu.", "Menjaga jalan tengah."),
+        ("凡庸な作品です。", "Bon-you na sakuhin desu.", "Ini karya yang biasa-biasa saja."),
+    ]),
+    ("hou14_n1", "朋", ["ホウ"], ["とも"], ["teman", "friend", "companion"], 8, "月", [
+        ("朋友", "houyuu", "sahabat"),
+        ("朋輩", "houbai", "rekan seangkatan"),
+        ("一朋", "ippou", "sesama teman"),
+    ], [
+        ("朋友との友情です。", "Houyuu to no yuujou desu.", "Ini persahabatan dengan sahabat."),
+        ("朋輩と再会しました。", "Houbai to saikai shimashita.", "Bertemu kembali dengan rekan seangkatan."),
+    ]),
+    ("kou33_n1", "坑", ["コウ"], [], ["lubang tambang", "pit", "mine shaft"], 7, "土", [
+        ("炭坑", "tankou", "tambang batu bara"),
+        ("坑道", "koudou", "terowongan tambang"),
+        ("坑夫", "kouhu", "penambang"),
+    ], [
+        ("炭坑で働いていました。", "Tankou de hataraite imashita.", "Bekerja di tambang batu bara."),
+        ("坑道を歩きました。", "Koudou o arukimashita.", "Berjalan di terowongan tambang."),
+    ]),
+    ("ko8_n1", "姑", ["コ"], ["しゅうとめ"], ["ibu mertua", "mother-in-law"], 8, "女", [
+        ("姑", "shuutome", "ibu mertua"),
+        ("姑息", "kosoku", "cara sementara/licik"),
+        ("舅姑", "kyuuko", "mertua laki-laki dan perempuan"),
+    ], [
+        ("姑と同居しています。", "Shuutome to doukyo shite imasu.", "Tinggal bersama ibu mertua."),
+        ("姑息な手段です。", "Kosoku na shudan desu.", "Ini cara yang licik."),
+    ]),
+    ("u_n1", "烏", ["ウ"], ["からす"], ["burung gagak", "crow"], 10, "火", [
+        ("烏", "karasu", "burung gagak"),
+        ("烏合の衆", "ugou no shuu", "kerumunan tak terorganisir"),
+        ("烏龍茶", "uuroncha", "teh oolong"),
+    ], [
+        ("烏が鳴いています。", "Karasu ga naite imasu.", "Burung gagak berkicau."),
+        ("烏龍茶を飲みました。", "Uuroncha o nomimashita.", "Minum teh oolong."),
+    ]),
+    ("ran5_n1", "藍", ["ラン"], ["あい"], ["nila", "warna indigo", "indigo"], 18, "艸", [
+        ("藍", "ai", "warna indigo"),
+        ("藍染め", "aizome", "pewarnaan indigo"),
+        ("出藍", "shutsuran", "murid melampaui guru"),
+    ], [
+        ("藍染めの着物です。", "Aizome no kimono desu.", "Ini kimono celup indigo."),
+        ("出藍の誉れです。", "Shutsuran no homare desu.", "Ini kebanggaan murid yang melampaui gurunya."),
+    ]),
+    ("kyou15_n1", "僑", ["キョウ"], [], ["perantau (dalam kata majemuk)", "sojourner"], 14, "人", [
+        ("華僑", "kakyou", "diaspora Tionghoa"),
+        ("僑胞", "kyouhou", "sesama perantau"),
+        ("老華僑", "rou kakyou", "diaspora Tionghoa generasi tua"),
+    ], [
+        ("華僑の商人です。", "Kakyou no shounin desu.", "Ini pedagang diaspora Tionghoa."),
+        ("華僑社会があります。", "Kakyou shakai ga arimasu.", "Ada komunitas diaspora Tionghoa."),
+    ]),
+    ("zoku3_n1", "賊", ["ゾク"], [], ["pencuri", "pemberontak", "thief", "rebel"], 13, "貝", [
+        ("盗賊", "touzoku", "perampok"),
+        ("海賊", "kaizoku", "bajak laut"),
+        ("賊軍", "zokugun", "pasukan pemberontak"),
+    ], [
+        ("盗賊に襲われました。", "Touzoku ni osowaremashita.", "Diserang perampok."),
+        ("海賊船です。", "Kaizokusen desu.", "Ini kapal bajak laut."),
+    ]),
+    ("saku5_n1", "搾", ["サク"], ["しぼ-る"], ["memeras", "squeeze"], 13, "手", [
+        ("搾る", "shiboru", "memeras"),
+        ("搾取", "sakushu", "eksploitasi"),
+        ("搾乳", "sakunyuu", "memerah susu"),
+    ], [
+        ("牛乳を搾りました。", "Gyuunyuu o shiborimashita.", "Memerah susu sapi."),
+        ("搾取されています。", "Sakushu sarete imasu.", "Sedang dieksploitasi."),
+    ]),
+    ("en10_n1", "奄", ["エン"], [], ["tiba-tiba", "menutupi (nama)", "suddenly", "cover"], 8, "大", [
+        ("奄美大島", "Amami Oushima", "nama pulau"),
+        ("奄然", "enzen", "tiba-tiba"),
+        ("奄有", "en-yuu", "menguasai seluruhnya"),
+    ], [
+        ("奄美大島に旅行しました。", "Amami Oushima ni ryokou shimashita.", "Berlibur ke Pulau Amami Oshima."),
+        ("奄美群島です。", "Amami guntou desu.", "Ini Kepulauan Amami."),
+    ]),
+    ("kyuu12_n1", "臼", ["キュウ"], ["うす"], ["lesung", "mortar"], 6, "臼", [
+        ("臼", "usu", "lesung"),
+        ("石臼", "ishiusu", "lesung batu"),
+        ("脱臼", "dakkyuu", "dislokasi sendi"),
+    ], [
+        ("臼で挽きました。", "Usu de hikimashita.", "Menggiling dengan lesung."),
+        ("肩を脱臼しました。", "Kata o dakkyuu shimashita.", "Bahunya terkilir/dislokasi."),
+    ]),
+    ("han10_n1", "畔", ["ハン"], [], ["tepi sawah", "tepi danau", "edge of field", "shore"], 10, "田", [
+        ("湖畔", "kohan", "tepi danau"),
+        ("田畔", "denpan", "pematang sawah"),
+        ("河畔", "kahan", "tepi sungai"),
+    ], [
+        ("湖畔を散歩しました。", "Kohan o sanpo shimashita.", "Berjalan-jalan di tepi danau."),
+        ("河畔に座りました。", "Kahan ni suwarimashita.", "Duduk di tepi sungai."),
+    ]),
+    ("ryou10_n1", "遼", ["リョウ"], [], ["jauh", "Dinasti Liao", "distant"], 15, "辵", [
+        ("遼遠", "ryouen", "sangat jauh"),
+        ("遼寧", "Ryounei", "Provinsi Liaoning Tiongkok"),
+        ("遼", "Ryou", "Dinasti Liao"),
+    ], [
+        ("遼遠な未来です。", "Ryouen na mirai desu.", "Ini masa depan yang sangat jauh."),
+        ("遼寧省に行きました。", "Ryounei-shou ni ikimashita.", "Pergi ke Provinsi Liaoning."),
+    ]),
+    ("bai6_n1", "唄", ["バイ"], ["うた"], ["lagu tradisional", "song"], 10, "口", [
+        ("唄", "uta", "lagu tradisional"),
+        ("小唄", "kouta", "lagu pendek tradisional"),
+        ("長唄", "nagauta", "lagu panjang tradisional"),
+    ], [
+        ("唄を歌いました。", "Uta o utaimashita.", "Menyanyikan lagu."),
+        ("小唄を習っています。", "Kouta o naratte imasu.", "Belajar lagu pendek tradisional."),
+    ]),
+    ("kou34_n1", "孔", ["コウ"], [], ["lubang", "Confucius", "hole"], 4, "子", [
+        ("孔子", "Koushi", "Confucius"),
+        ("気孔", "kikou", "stomata/pori"),
+        ("瞳孔", "doukou", "pupil mata"),
+    ], [
+        ("孔子の教えです。", "Koushi no oshie desu.", "Ini ajaran Konfusius."),
+        ("瞳孔が開きました。", "Doukou ga hirakimashita.", "Pupil mata melebar."),
+    ]),
+    ("kitsu_n1", "橘", ["キツ"], ["たちばな"], ["jeruk mandarin liar (nama)", "mandarin orange"], 16, "木", [
+        ("橘", "tachibana", "jeruk mandarin liar"),
+        ("橘色", "tachibanairo", "warna oranye jeruk"),
+        ("橘さん", "Tachibana-san", "contoh nama keluarga"),
+    ], [
+        ("橘の実がなりました。", "Tachibana no mi ga narimashita.", "Buah jeruk tachibana berbuah."),
+        ("橘さんに会いました。", "Tachibana-san ni aimashita.", "Bertemu dengan Tachibana."),
+    ]),
+    ("sou20_n1", "漱", ["ソウ"], ["くちすす-ぐ", "うが-い"], ["berkumur", "gargle", "rinse"], 14, "水", [
+        ("夏目漱石", "Natsume Souseki", "penulis terkenal"),
+        ("漱石", "Souseki", "nama pena"),
+        ("漱ぐ", "susugu", "berkumur"),
+    ], [
+        ("夏目漱石は有名な作家です。", "Natsume Souseki wa yuumei na sakka desu.", "Natsume Soseki adalah penulis terkenal."),
+        ("口を漱ぎました。", "Kuchi o susugimashita.", "Berkumur."),
+    ]),
+    ("ro5_n1", "呂", ["ロ"], [], ["tulang punggung", "bak mandi", "spine"], 7, "口", [
+        ("風呂", "furo", "bak mandi/pemandian"),
+        ("風呂敷", "furoshiki", "kain pembungkus Jepang"),
+        ("語呂合わせ", "goroawase", "permainan kata"),
+    ], [
+        ("風呂に入りました。", "Furo ni hairimashita.", "Mandi."),
+        ("風呂敷で包みました。", "Furoshiki de tsutsumimashita.", "Membungkus dengan furoshiki."),
+    ]),
+    ("hinoki_n1", "桧", [], ["ひのき"], ["pohon cemara Jepang (variant 檜)", "Japanese cypress"], 11, "木", [
+        ("桧", "hinoki", "pohon cemara Jepang"),
+        ("桧風呂", "hinokiburo", "bak mandi kayu cemara"),
+        ("桧舞台", "hinoki butai", "panggung kehormatan"),
+    ], [
+        ("桧風呂に入りました。", "Hinokiburo ni hairimashita.", "Mandi di bak kayu cemara."),
+        ("桧舞台に立ちました。", "Hinoki butai ni tachimashita.", "Berdiri di panggung kehormatan."),
+    ]),
+    ("gou3_n1", "拷", ["ゴウ"], [], ["penyiksaan (dalam kata majemuk)", "torture"], 9, "手", [
+        ("拷問", "goumon", "penyiksaan"),
+        ("拷問室", "goumonshitsu", "ruang penyiksaan"),
+        ("拷問具", "goumongu", "alat penyiksaan"),
+    ], [
+        ("拷問を受けました。", "Goumon o ukemashita.", "Menerima penyiksaan."),
+        ("拷問室に入れられました。", "Goumonshitsu ni ireraremashita.", "Dimasukkan ke ruang penyiksaan."),
+    ]),
+    ("sou21_n1", "宋", ["ソウ"], [], ["Dinasti Song", "Song (Chinese dynasty)"], 7, "宀", [
+        ("宋", "Sou", "Dinasti Song"),
+        ("北宋", "Hokusou", "Dinasti Song Utara"),
+        ("南宋", "Nansou", "Dinasti Song Selatan"),
+    ], [
+        ("宋の時代です。", "Sou no jidai desu.", "Ini era Dinasti Song."),
+        ("北宋の絵画です。", "Hokusou no kaiga desu.", "Ini lukisan Dinasti Song Utara."),
+    ]),
+    ("jou11_n1", "嬢", ["ジョウ"], [], ["nona", "young lady"], 16, "女", [
+        ("お嬢さん", "ojousan", "nona/anak perempuan orang"),
+        ("令嬢", "reijou", "putri bangsawan"),
+        ("嬢", "jou", "sebutan nona"),
+    ], [
+        ("お嬢さんですか。", "Ojousan desu ka.", "Apakah ini putri Anda."),
+        ("令嬢のようです。", "Reijou no you desu.", "Seperti putri bangsawan."),
+    ]),
+    ("en11_n1", "苑", ["エン"], ["その"], ["taman", "garden"], 8, "艸", [
+        ("苑", "sono", "taman (arkais)"),
+        ("学苑", "gakuen", "taman pendidikan"),
+        ("御苑", "gyoen", "taman kekaisaran"),
+    ], [
+        ("新宿御苑を訪れました。", "Shinjuku Gyoen o otozuremashita.", "Mengunjungi Taman Shinjuku Gyoen."),
+        ("学苑の一部です。", "Gakuen no ichibu desu.", "Ini bagian dari kampus."),
+    ]),
+    ("son2_n1", "巽", ["ソン"], ["たつみ"], ["arah tenggara (I Ching, nama)", "southeast"], 12, "己", [
+        ("巽", "tatsumi", "arah tenggara"),
+        ("巽の方角", "tatsumi no hougaku", "arah tenggara"),
+        ("巽風", "sonpuu", "angin dari tenggara"),
+    ], [
+        ("巽の方角に進みました。", "Tatsumi no hougaku ni susumimashita.", "Bergerak ke arah tenggara."),
+        ("巽という地名です。", "Tatsumi to iu chimei desu.", "Ini nama tempat \"Tatsumi\"."),
+    ]),
+    ("to3_n1", "杜", ["ト"], ["もり"], ["hutan kuil", "grove", "forest"], 7, "木", [
+        ("杜", "mori", "hutan kuil"),
+        ("杜氏", "touji", "pembuat sake ahli"),
+        ("杜の都", "mori no miyako", "kota hutan (julukan Sendai)"),
+    ], [
+        ("杜の都と呼ばれています。", "Mori no miyako to yobarete imasu.", "Disebut sebagai kota hutan."),
+        ("杜氏として働いています。", "Touji toshite hataraite imasu.", "Bekerja sebagai pembuat sake ahli."),
+    ]),
+    ("kei18_n1", "渓", ["ケイ"], [], ["lembah sungai", "valley stream"], 11, "水", [
+        ("渓谷", "keikoku", "ngarai/lembah"),
+        ("渓流", "keiryuu", "aliran sungai pegunungan"),
+        ("雪渓", "sekkei", "salju abadi di lembah gunung"),
+    ], [
+        ("渓谷を訪れました。", "Keikoku o otozuremashita.", "Mengunjungi ngarai."),
+        ("渓流釣りをしました。", "Keiryuu tsuri o shimashita.", "Memancing di aliran sungai pegunungan."),
+    ]),
+    ("ou6_n1", "翁", ["オウ"], ["おきな"], ["kakek tua", "old man"], 10, "羽", [
+        ("翁", "okina", "kakek tua (kehormatan)"),
+        ("老翁", "rouou", "pria tua"),
+        ("翁草", "okinagusa", "nama bunga pasque"),
+    ], [
+        ("翁の教えです。", "Okina no oshie desu.", "Ini ajaran orang tua bijak."),
+        ("老翁が座っています。", "Rouou ga suwatte imasu.", "Pria tua sedang duduk."),
+    ]),
+    ("gei2_n1", "藝", ["ゲイ"], [], ["seni (bentuk tradisional 芸)", "art"], 18, "艸", [
+        ("藝術", "geijutsu", "seni (variant tradisional)"),
+        ("文藝", "bungei", "sastra"),
+        ("演藝", "engei", "pertunjukan seni"),
+    ], [
+        ("藝術作品です。", "Geijutsu sakuhin desu.", "Ini karya seni."),
+        ("文藝雑誌です。", "Bungei zasshi desu.", "Ini majalah sastra."),
+    ]),
+    ("ren3_n1", "廉", ["レン"], [], ["murah", "jujur", "cheap", "honest"], 13, "广", [
+        ("廉価", "renka", "harga murah"),
+        ("清廉", "seiren", "jujur dan bersih"),
+        ("廉潔", "renketsu", "integritas"),
+    ], [
+        ("廉価版です。", "Renkaban desu.", "Ini edisi murah."),
+        ("清廉な政治家です。", "Seiren na seijika desu.", "Ini politisi yang jujur dan bersih."),
+    ]),
+    ("ga7_n1", "牙", ["ガ"], ["きば"], ["taring", "fang"], 4, "牙", [
+        ("牙", "kiba", "taring"),
+        ("象牙", "zouge", "gading gajah"),
+        ("牙城", "gajou", "benteng utama"),
+    ], [
+        ("牙をむきました。", "Kiba o mukimashita.", "Menunjukkan taring."),
+        ("象牙の彫刻です。", "Zouge no choukoku desu.", "Ini ukiran gading gajah."),
+    ]),
+    ("kin6_n1", "謹", ["キン"], ["つつし-む"], ["hormat", "respectful", "discreet"], 17, "言", [
+        ("謹んで", "tsutsushinde", "dengan hormat"),
+        ("謹賀新年", "kinga shinnen", "selamat tahun baru (formal)"),
+        ("謹慎", "kinshin", "penahanan diri/skorsing"),
+    ], [
+        ("謹んでお祝い申し上げます。", "Tsutsushinde oiwai moushiagemasu.", "Dengan hormat saya ucapkan selamat."),
+        ("謹慎処分です。", "Kinshin shobun desu.", "Ini hukuman skorsing."),
+    ]),
+    ("dou4_n1", "瞳", ["ドウ"], ["ひとみ"], ["manik mata", "pupil"], 17, "目", [
+        ("瞳", "hitomi", "manik mata"),
+        ("瞳孔", "doukou", "pupil mata"),
+        ("黒瞳", "kurohitomi", "mata hitam"),
+    ], [
+        ("瞳が美しいです。", "Hitomi ga utsukushii desu.", "Manik matanya indah."),
+        ("瞳孔が開きました。", "Doukou ga hirakimashita.", "Pupil mata melebar."),
+    ]),
+    ("yuu12_n1", "湧", ["ユウ"], ["わ-く"], ["memancar", "gush", "well up"], 12, "水", [
+        ("湧く", "waku", "memancar/muncul"),
+        ("湧水", "yuusui", "mata air"),
+        ("湧出", "yuushutsu", "pancaran"),
+    ], [
+        ("温泉が湧いています。", "Onsen ga waite imasu.", "Air panas memancar."),
+        ("湧水を飲みました。", "Yuusui o nomimashita.", "Minum air dari mata air."),
+    ]),
+    ("kin7_n1", "欣", ["キン"], [], ["gembira (nama)", "joyful"], 8, "欠", [
+        ("欣喜雀躍", "kinkijakuyaku", "sangat gembira"),
+        ("欣然", "kinzen", "dengan senang hati"),
+        ("欣也", "Yoshiya", "contoh nama pria"),
+    ], [
+        ("欣喜雀躍しました。", "Kinkijakuyaku shimashita.", "Sangat bergembira."),
+        ("欣然として応じました。", "Kinzen to shite oujimashita.", "Menerima dengan senang hati."),
+    ]),
+    ("you11_n1", "窯", ["ヨウ"], ["かま"], ["tungku pembakaran", "kiln"], 15, "穴", [
+        ("窯", "kama", "tungku"),
+        ("窯元", "kamamoto", "pusat pembuatan keramik"),
+        ("窯業", "yougyou", "industri keramik"),
+    ], [
+        ("窯で焼きました。", "Kama de yakimashita.", "Dibakar di tungku."),
+        ("窯元を訪れました。", "Kamamoto o otozuremashita.", "Mengunjungi pusat pembuatan keramik."),
+    ]),
+    ("hou15_n1", "褒", ["ホウ"], ["ほ-める"], ["memuji", "praise"], 15, "衣", [
+        ("褒める", "homeru", "memuji"),
+        ("褒美", "houbi", "hadiah"),
+        ("褒章", "houshou", "medali penghargaan"),
+    ], [
+        ("褒められました。", "Homeraremashita.", "Dipuji."),
+        ("褒美をもらいました。", "Houbi o moraimashita.", "Mendapat hadiah."),
+    ]),
+    ("shuu13_n1", "醜", ["シュウ"], ["みにく-い"], ["buruk rupa", "ugly"], 17, "酉", [
+        ("醜い", "minikui", "buruk rupa/jelek"),
+        ("醜聞", "shuubun", "skandal"),
+        ("醜態", "shuutai", "tingkah laku memalukan"),
+    ], [
+        ("醜い争いです。", "Minikui arasoi desu.", "Ini pertengkaran yang memalukan."),
+        ("醜聞が広まりました。", "Shuubun ga hiromarimashita.", "Skandal menyebar."),
+    ]),
+    ("gi9_n1", "魏", ["ギ"], [], ["Dinasti Wei", "Wei (Chinese dynasty)"], 18, "鬼", [
+        ("魏", "Gi", "Negara Wei zaman Tiga Negara"),
+        ("魏志倭人伝", "Gishi Wajinden", "catatan tentang Jepang dalam sejarah Wei"),
+        ("曹魏", "Sougi", "Wei Cao"),
+    ], [
+        ("魏志倭人伝という史料です。", "Gishi Wajinden to iu shiryou desu.", "Ini sumber sejarah \"Catatan Wei tentang Wa\"."),
+        ("魏の国です。", "Gi no kuni desu.", "Ini Negara Wei."),
+    ]),
+    ("hen3_n1", "篇", ["ヘン"], [], ["bab", "penghitung buku", "chapter"], 15, "竹", [
+        ("一篇", "ippen", "satu karya/bab"),
+        ("詩篇", "shihen", "kumpulan puisi/Kitab Mazmur"),
+        ("前篇", "zenpen", "bagian pertama"),
+    ], [
+        ("詩篇を読みました。", "Shihen o yomimashita.", "Membaca Kitab Mazmur."),
+        ("前篇と後篇があります。", "Zenpen to kouhen ga arimasu.", "Ada bagian pertama dan kedua."),
+    ]),
+    ("shou34_n1", "升", ["ショウ"], ["ます"], ["kotak takar", "measuring box"], 4, "十", [
+        ("升", "masu", "kotak takar"),
+        ("一升瓶", "isshoubin", "botol satu shou"),
+        ("升目", "masume", "ukuran/kotak takar"),
+    ], [
+        ("升で量りました。", "Masu de hakarimashita.", "Mengukur dengan kotak takar."),
+        ("一升瓶を買いました。", "Isshoubin o kaimashita.", "Membeli botol satu shou."),
+    ]),
+    ("shi21_n1", "此", ["シ"], ["これ"], ["ini (klasik)", "this"], 6, "止", [
+        ("此の", "kono", "ini (klasik)"),
+        ("此処", "koko", "di sini (klasik)"),
+        ("此度", "konotabi", "kali ini (formal)"),
+    ], [
+        ("此度はありがとうございます。", "Konotabi wa arigatou gozaimasu.", "Terima kasih kali ini."),
+        ("此の事です。", "Kono koto desu.", "Ini soal ini."),
+    ]),
+    ("hou16_n1", "峯", ["ホウ"], ["みね"], ["puncak gunung (variant 峰)", "peak"], 10, "山", [
+        ("峯", "mine", "puncak"),
+        ("峯山", "Mineyama", "nama tempat"),
+        ("峯岸", "Minegishi", "contoh nama keluarga"),
+    ], [
+        ("峯に登りました。", "Mine ni noborimashita.", "Mendaki puncak."),
+        ("峯岸さんに会いました。", "Minegishi-san ni aimashita.", "Bertemu dengan Minegishi."),
+    ]),
+    ("jun8_n1", "殉", ["ジュン"], [], ["mengorbankan nyawa", "die for a cause"], 10, "歹", [
+        ("殉職", "junshoku", "gugur dalam tugas"),
+        ("殉教", "junkyou", "mati syahid"),
+        ("殉死", "junshi", "mati mengikuti tuan"),
+    ], [
+        ("殉職しました。", "Junshoku shimashita.", "Gugur dalam tugas."),
+        ("殉教者です。", "Junkyousha desu.", "Ini martir."),
+    ]),
+    ("han11_n1", "煩", ["ハン"], ["わずら-う", "わずら-わしい"], ["mengganggu", "annoying", "worry"], 13, "火", [
+        ("煩わしい", "wazurawashii", "merepotkan"),
+        ("煩悩", "bonnou", "hawa nafsu/keinginan duniawi"),
+        ("煩雑", "hanzatsu", "rumit"),
+    ], [
+        ("煩わしい手続きです。", "Wazurawashii tetsuzuki desu.", "Ini prosedur yang merepotkan."),
+        ("煩悩を捨てましょう。", "Bonnou o sutemashou.", "Mari buang hawa nafsu duniawi."),
+    ]),
+    ("ha5_n1", "巴", ["ハ"], ["ともえ"], ["pola pusaran heraldik", "comma-shaped swirl"], 4, "己", [
+        ("巴", "tomoe", "pola pusaran"),
+        ("巴投げ", "tomoenage", "teknik judo"),
+        ("三つ巴", "mitsudomoe", "tiga pihak bersaing"),
+    ], [
+        ("巴投げをかけました。", "Tomoenage o kakemashita.", "Melakukan teknik tomoenage."),
+        ("三つ巴の戦いです。", "Mitsudomoe no tatakai desu.", "Ini pertarungan tiga pihak."),
+    ]),
+    ("tei16_n1", "禎", ["テイ"], [], ["keberuntungan (nama)", "good fortune"], 13, "示", [
+        ("禎祥", "teishou", "pertanda baik"),
+        ("禎子", "Sachiko", "contoh nama wanita"),
+        ("禎一", "Teiichi", "contoh nama pria"),
+    ], [
+        ("禎子さんに会いました。", "Sachiko-san ni aimashita.", "Bertemu dengan Sachiko."),
+        ("禎一という名前です。", "Teiichi to iu namae desu.", "Ini nama Teiichi."),
+    ]),
+    ("chin5_n1", "枕", ["チン"], ["まくら"], ["bantal", "pillow"], 8, "木", [
+        ("枕", "makura", "bantal"),
+        ("枕元", "makuramoto", "sisi tempat tidur"),
+        ("石枕", "ishimakura", "bantal batu"),
+    ], [
+        ("枕を使いました。", "Makura o tsukaimashita.", "Menggunakan bantal."),
+        ("枕元に置きました。", "Makuramoto ni okimashita.", "Meletakkan di sisi tempat tidur."),
+    ]),
+    ("gai6_n1", "劾", ["ガイ"], [], ["memakzulkan (dalam kata majemuk)", "impeach"], 8, "力", [
+        ("弾劾", "dangai", "pemakzulan"),
+        ("弾劾裁判", "dangai saiban", "sidang pemakzulan"),
+        ("弾劾訴追", "dangai soitsui", "penuntutan pemakzulan"),
+    ], [
+        ("弾劾されました。", "Dangai saremashita.", "Dimakzulkan."),
+        ("弾劾裁判が行われました。", "Dangai saiban ga okonawaremashita.", "Sidang pemakzulan dilaksanakan."),
+    ]),
+    ("bo3_n1", "菩", ["ボ"], [], ["bodhi (dalam kata majemuk)", "bodhi"], 11, "艸", [
+        ("菩薩", "bosatsu", "bodhisattva"),
+        ("菩提", "bodai", "pencerahan Buddha"),
+        ("菩提樹", "bodaiju", "pohon bodhi"),
+    ], [
+        ("菩提を弔いました。", "Bodai o tomuraimashita.", "Mendoakan arwah."),
+        ("菩提樹の下で瞑想しました。", "Bodaiju no shita de meisou shimashita.", "Bermeditasi di bawah pohon bodhi."),
+    ]),
+    ("da3_n1", "堕", ["ダ"], [], ["jatuh", "merosot", "fall", "degenerate"], 12, "土", [
+        ("堕落", "daraku", "kemerosotan moral"),
+        ("堕胎", "datai", "aborsi"),
+        ("堕天使", "datenshi", "malaikat jatuh"),
+    ], [
+        ("堕落した生活です。", "Daraku shita seikatsu desu.", "Ini kehidupan yang merosot."),
+        ("堕天使のようです。", "Datenshi no you desu.", "Seperti malaikat jatuh."),
+    ]),
+    ("don_n1", "丼", [], ["どん"], ["mangkuk nasi berlauk", "rice bowl dish"], 5, "丶", [
+        ("丼", "don", "mangkuk nasi berlauk"),
+        ("牛丼", "gyuudon", "nasi daging sapi"),
+        ("天丼", "tendon", "nasi tempura"),
+    ], [
+        ("牛丼を食べました。", "Gyuudon o tabemashita.", "Makan gyudon."),
+        ("天丼が好きです。", "Tendon ga suki desu.", "Suka tendon."),
+    ]),
+    ("so9_n1", "租", ["ソ"], [], ["pajak", "tax", "rent"], 10, "禾", [
+        ("租税", "sozei", "pajak"),
+        ("租借", "soshaku", "konsesi sewa wilayah"),
+        ("地租", "chiso", "pajak tanah"),
+    ], [
+        ("租税を納めました。", "Sozei o osamemashita.", "Membayar pajak."),
+        ("租借地でした。", "Soshakuchi deshita.", "Ini adalah wilayah konsesi sewa."),
+    ]),
+    ("hinoki2_n1", "檜", [], ["ひのき"], ["pohon cemara Jepang", "Japanese cypress"], 17, "木", [
+        ("檜", "hinoki", "pohon cemara Jepang"),
+        ("檜舞台", "hinoki butai", "panggung kehormatan"),
+        ("檜造り", "hinokizukuri", "konstruksi kayu cemara"),
+    ], [
+        ("檜の香りです。", "Hinoki no kaori desu.", "Ini aroma kayu cemara."),
+        ("檜造りの家です。", "Hinokizukuri no ie desu.", "Ini rumah berkonstruksi kayu cemara."),
+    ]),
+    ("ryou11_n1", "稜", ["リョウ"], [], ["punggungan", "tepi", "ridge", "edge"], 13, "禾", [
+        ("稜線", "ryousen", "garis punggungan gunung"),
+        ("稜角", "ryoukaku", "sudut tajam"),
+        ("丘稜", "kyuuryou", "perbukitan"),
+    ], [
+        ("稜線を歩きました。", "Ryousen o arukimashita.", "Berjalan di garis punggungan gunung."),
+        ("稜角がはっきりしています。", "Ryoukaku ga hakkiri shite imasu.", "Sudutnya jelas."),
+    ]),
+    ("bou12_n1", "牟", ["ボウ"], [], ["mencari (nama)", "seek"], 6, "牛", [
+        ("牟田", "Muta", "contoh nama keluarga"),
+        ("釈迦牟尼", "Shakamuni", "Buddha Shakyamuni"),
+        ("牟婁", "Muro", "nama daerah lama"),
+    ], [
+        ("牟田さんに会いました。", "Muta-san ni aimashita.", "Bertemu dengan Muta."),
+        ("釈迦牟尼仏です。", "Shakamuni Butsu desu.", "Ini Buddha Shakyamuni."),
+    ]),
+    ("san4_n1", "桟", ["サン"], [], ["perancah", "dermaga", "scaffold", "pier"], 10, "木", [
+        ("桟橋", "sanbashi", "dermaga"),
+        ("桟敷", "sajiki", "tempat duduk bertingkat"),
+        ("桟道", "sandou", "jalan setapak di tebing"),
+    ], [
+        ("桟橋に船が着きました。", "Sanbashi ni fune ga tsukimashita.", "Kapal tiba di dermaga."),
+        ("桟敷席で見ました。", "Sajikiseki de mimashita.", "Menonton dari tempat duduk bertingkat."),
+    ]),
+    ("sakaki_n1", "榊", [], ["さかき"], ["pohon suci Shinto", "sacred tree"], 14, "木", [
+        ("榊", "sakaki", "pohon suci Shinto"),
+        ("榊原", "Sakakibara", "contoh nama keluarga"),
+        ("榊立て", "sakakitate", "wadah untuk sakaki"),
+    ], [
+        ("榊を供えました。", "Sakaki o sonaemashita.", "Mempersembahkan ranting sakaki."),
+        ("榊原さんに会いました。", "Sakakibara-san ni aimashita.", "Bertemu dengan Sakakibara."),
+    ]),
+    ("seki3_n1", "錫", ["セキ"], ["すず"], ["timah", "tin"], 16, "金", [
+        ("錫", "suzu", "timah"),
+        ("錫杖", "shakujou", "tongkat biksu Buddha"),
+        ("錫箔", "sekihaku", "kertas timah"),
+    ], [
+        ("錫の器です。", "Suzu no utsuwa desu.", "Ini wadah timah."),
+        ("錫杖を持っています。", "Shakujou o motte imasu.", "Membawa tongkat biksu."),
+    ]),
+    ("jin9_n1", "荏", ["ジン"], [], ["tanaman wijen liar (nama tempat)", "sesame plant"], 9, "艸", [
+        ("荏苒", "jinzen", "berlalu perlahan"),
+        ("荏原", "Ebara", "nama daerah di Tokyo"),
+        ("荏胡麻", "egoma", "wijen perilla"),
+    ], [
+        ("荏原地区に住んでいます。", "Ebara chiku ni sunde imasu.", "Tinggal di daerah Ebara."),
+        ("荏胡麻油を使いました。", "Egoma abura o tsukaimashita.", "Menggunakan minyak perilla."),
+    ]),
+    ("gu3_n1", "惧", ["グ"], [], ["khawatir (dalam kata majemuk)", "fear", "worry"], 11, "心", [
+        ("危惧", "kigu", "kekhawatiran"),
+        ("危惧種", "kigushu", "spesies terancam"),
+        ("惧れ", "osore", "ketakutan"),
+    ], [
+        ("絶滅危惧種です。", "Zetsumetsu kigushu desu.", "Ini spesies terancam punah."),
+        ("危惧しています。", "Kigu shite imasu.", "Mengkhawatirkan."),
+    ]),
+    ("wa2_n1", "倭", ["ワ"], [], ["sebutan Jepang kuno", "ancient Japan"], 10, "人", [
+        ("倭", "Wa", "sebutan Jepang kuno"),
+        ("倭国", "Wakoku", "Negeri Wa"),
+        ("魏志倭人伝", "Gishi Wajinden", "catatan tentang Jepang dalam sejarah Wei"),
+    ], [
+        ("倭国という呼び名でした。", "Wakoku to iu yobina deshita.", "Ini disebut sebagai Negeri Wa."),
+        ("古代の倭人です。", "Kodai no Wajin desu.", "Ini orang Wa kuno."),
+    ]),
+    ("sei14_n1", "婿", ["セイ"], ["むこ"], ["menantu laki-laki", "son-in-law", "groom"], 12, "女", [
+        ("婿", "muko", "menantu laki-laki"),
+        ("花婿", "hanamuko", "pengantin pria"),
+        ("婿養子", "mukoyoushi", "menantu yang diadopsi"),
+    ], [
+        ("婿になりました。", "Muko ni narimashita.", "Menjadi menantu."),
+        ("花婿が緊張しています。", "Hanamuko ga kinchou shite imasu.", "Pengantin pria gugup."),
+    ]),
+    ("bo4_n1", "慕", ["ボ"], ["した-う"], ["merindukan", "yearn for", "adore"], 14, "心", [
+        ("慕う", "shitau", "merindukan/mengagumi"),
+        ("敬慕", "keibo", "rasa hormat dan kagum"),
+        ("追慕", "tsuibo", "mengenang dengan rindu"),
+    ], [
+        ("先生を慕っています。", "Sensei o shitatte imasu.", "Mengagumi guru."),
+        ("敬慕の念です。", "Keibo no nen desu.", "Ini perasaan hormat dan kagum."),
+    ]),
+    ("byou3_n1", "廟", ["ビョウ"], [], ["kuil leluhur", "shrine", "temple"], 15, "广", [
+        ("廟", "byou", "kuil leluhur"),
+        ("孔子廟", "Koushibyou", "Kuil Konfusius"),
+        ("宗廟", "soubyou", "kuil leluhur kerajaan"),
+    ], [
+        ("孔子廟を訪れました。", "Koushibyou o otozuremashita.", "Mengunjungi Kuil Konfusius."),
+        ("宗廟に参りました。", "Soubyou ni mairimashita.", "Berziarah ke kuil leluhur kerajaan."),
+    ]),
+    ("chou23_n1", "銚", ["チョウ"], [], ["teko sake (dalam kata majemuk)", "sake pot"], 14, "金", [
+        ("銚子", "choushi", "teko sake/nama kota di Chiba"),
+        ("銚子市", "Choushi-shi", "Kota Choshi"),
+        ("片口銚子", "katakuchi choushi", "teko sake bermoncong"),
+    ], [
+        ("銚子でお酒を注ぎました。", "Choushi de osake o sosogimashita.", "Menuang sake dengan teko."),
+        ("銚子市に行きました。", "Choushi-shi ni ikimashita.", "Pergi ke Kota Choshi."),
+    ]),
+    ("hi10_n1", "斐", ["ヒ"], [], ["anggun (nama)", "elegant"], 12, "文", [
+        ("斐然", "hizen", "cemerlang"),
+        ("甲斐", "Kai", "nama daerah lama/berharga"),
+        ("斐子", "Ayako", "contoh nama wanita"),
+    ], [
+        ("甲斐がありました。", "Kai ga arimashita.", "Ada gunanya/berharga."),
+        ("甲斐の国です。", "Kai no kuni desu.", "Ini negeri Kai."),
+    ]),
+    ("hi11_n1", "罷", ["ヒ"], [], ["memberhentikan", "dismiss", "stop"], 15, "网", [
+        ("罷免", "himen", "pemecatan"),
+        ("罷業", "higyou", "pemogokan kerja"),
+        ("罷免権", "himenken", "hak pemecatan"),
+    ], [
+        ("罷免されました。", "Himen saremashita.", "Dipecat."),
+        ("罷業を行いました。", "Higyou o okonaimashita.", "Melakukan pemogokan."),
+    ]),
+    ("kyou16_n1", "矯", ["キョウ"], ["た-める"], ["meluruskan", "correct", "straighten"], 17, "矢", [
+        ("矯正", "kyousei", "koreksi/pelurusan"),
+        ("矯める", "tameru", "meluruskan"),
+        ("奇矯", "kikyou", "eksentrik"),
+    ], [
+        ("歯列矯正をしています。", "Shiretsu kyousei o shite imasu.", "Menjalani perawatan kawat gigi."),
+        ("性格を矯めました。", "Seikaku o tamemashita.", "Meluruskan karakter."),
+    ]),
+    ("bou13_n1", "某", ["ボウ"], ["それがし"], ["seseorang (tidak disebutkan)", "certain", "unnamed"], 9, "木", [
+        ("某", "bou", "seseorang/tertentu"),
+        ("某氏", "boushi", "orang tertentu"),
+        ("某日", "boujitsu", "suatu hari"),
+    ], [
+        ("某氏からの手紙です。", "Boushi kara no tegami desu.", "Ini surat dari seseorang."),
+        ("某日のことです。", "Boujitsu no koto desu.", "Ini kejadian pada suatu hari."),
+    ]),
+    ("shuu14_n1", "囚", ["シュウ"], [], ["tahanan", "prisoner"], 5, "囗", [
+        ("囚人", "shuujin", "narapidana"),
+        ("死刑囚", "shikeishuu", "terpidana mati"),
+        ("囚われる", "torawareru", "tertawan"),
+    ], [
+        ("囚人になりました。", "Shuujin ni narimashita.", "Menjadi narapidana."),
+        ("死刑囚です。", "Shikeishuu desu.", "Ini terpidana mati."),
+    ]),
+    ("kai9_n1", "魁", ["カイ"], ["さきがけ"], ["perintis", "leader", "pioneer"], 14, "鬼", [
+        ("魁", "sakigake", "perintis"),
+        ("巨魁", "kyokai", "pemimpin kejahatan besar"),
+        ("首魁", "shukai", "pemimpin (kejahatan)"),
+    ], [
+        ("時代の魁です。", "Jidai no sakigake desu.", "Ini pelopor zaman."),
+        ("首魁が逮捕されました。", "Shukai ga taiho saremashita.", "Pemimpin ditangkap."),
+    ]),
+    ("yabu_n1", "薮", [], ["やぶ"], ["semak belukar (variant 藪)", "thicket", "bush"], 16, "艸", [
+        ("薮", "yabu", "semak belukar"),
+        ("薮医者", "yabuisha", "dokter tidak becus"),
+        ("薮蛇", "yabuhebi", "membuka masalah baru"),
+    ], [
+        ("薮の中に隠れました。", "Yabu no naka ni kakuremashita.", "Bersembunyi di dalam semak."),
+        ("薮蛇になりました。", "Yabuhebi ni narimashita.", "Malah menimbulkan masalah baru."),
+    ]),
+    ("kou35_n1", "虹", ["コウ"], ["にじ"], ["pelangi", "rainbow"], 9, "虫", [
+        ("虹", "niji", "pelangi"),
+        ("虹色", "nijiiro", "warna-warni pelangi"),
+        ("虹彩", "kousai", "iris mata"),
+    ], [
+        ("虹が出ました。", "Niji ga demashita.", "Pelangi muncul."),
+        ("虹彩認証です。", "Kousai ninshou desu.", "Ini autentikasi iris mata."),
+    ]),
+    ("kou36_n1", "鴻", ["コウ"], [], ["burung besar (nama)", "large bird", "great"], 17, "鳥", [
+        ("鴻毛", "koumou", "bulu angsa/hal remeh"),
+        ("鴻恩", "kouon", "budi besar"),
+        ("鴻池", "Kounoike", "contoh nama keluarga sejarah"),
+    ], [
+        ("鴻毛より軽いです。", "Koumou yori karui desu.", "Lebih ringan dari bulu angsa."),
+        ("鴻池家という名門です。", "Kounoike-ke to iu meimon desu.", "Ini keluarga terpandang Konoike."),
+    ]),
+    ("hitsu_n1", "泌", ["ヒツ"], [], ["mengeluarkan cairan", "secrete"], 8, "水", [
+        ("分泌", "bunpitsu", "sekresi"),
+        ("泌尿器", "hinyouki", "organ urologi"),
+        ("分泌物", "bunpitsubutsu", "hasil sekresi"),
+    ], [
+        ("ホルモンが分泌されました。", "Horumon ga bunpitsu saremashita.", "Hormon disekresikan."),
+        ("泌尿器科に行きました。", "Hinyoukika ni ikimashita.", "Pergi ke bagian urologi."),
+    ]),
+    ("o_n1", "於", ["オ"], ["おい-て"], ["partikel klasik di/pada", "at", "in"], 8, "方", [
+        ("於いて", "oite", "di/pada (klasik formal)"),
+        ("於是", "oze", "maka (klasik)"),
+        ("於ける", "okeru", "di dalam (klasik formal)"),
+    ], [
+        ("会議に於いて発表しました。", "Kaigi ni oite happyou shimashita.", "Mempresentasikan pada rapat."),
+        ("日本に於ける文化です。", "Nihon ni okeru bunka desu.", "Ini budaya di Jepang."),
+    ]),
+    ("kyuu13_n1", "赳", ["キュウ"], [], ["gagah berani (nama)", "brave"], 9, "走", [
+        ("赳々", "kyuukyuu", "gagah perkasa"),
+        ("赳夫", "Takeo", "contoh nama pria"),
+        ("赳", "Takeshi", "contoh nama pria"),
+    ], [
+        ("赳々たる武人です。", "Kyuukyuu taru bujin desu.", "Ini prajurit yang gagah perkasa."),
+        ("福田赳夫は元首相です。", "Fukuda Takeo wa moto shushou desu.", "Fukuda Takeo adalah mantan perdana menteri."),
+    ]),
+    ("zen3_n1", "漸", ["ゼン"], ["ようや-く"], ["berangsur-angsur", "gradually"], 14, "水", [
+        ("漸く", "youyaku", "akhirnya/berangsur"),
+        ("漸進", "zenshin", "kemajuan bertahap"),
+        ("漸増", "zenzou", "peningkatan bertahap"),
+    ], [
+        ("漸く完成しました。", "Youyaku kansei shimashita.", "Akhirnya selesai."),
+        ("漸進的な改革です。", "Zenshinteki na kaikaku desu.", "Ini reformasi bertahap."),
+    ]),
+    ("hou17_n1", "逢", ["ホウ"], ["あ-う"], ["bertemu (variant 会う)", "meet"], 10, "辵", [
+        ("逢う", "au", "bertemu"),
+        ("逢瀬", "ouse", "pertemuan rahasia kekasih"),
+        ("逢引き", "aibiki", "kencan rahasia"),
+    ], [
+        ("運命的に逢いました。", "Unmeiteki ni aimashita.", "Bertemu secara takdir."),
+        ("逢瀬を重ねました。", "Ouse o kasanemashita.", "Berkali-kali bertemu diam-diam."),
+    ]),
+    ("tako_n1", "凧", [], ["たこ"], ["layang-layang", "kite"], 5, "几", [
+        ("凧", "tako", "layang-layang"),
+        ("凧揚げ", "takoage", "menerbangkan layang-layang"),
+        ("凧糸", "takoito", "benang layang-layang"),
+    ], [
+        ("凧を揚げました。", "Tako o agemashita.", "Menerbangkan layang-layang."),
+        ("凧揚げをしました。", "Takoage o shimashita.", "Bermain layang-layang."),
+    ]),
+    ("u2_n1", "鵜", [], ["う"], ["burung kormoran", "cormorant"], 18, "鳥", [
+        ("鵜", "u", "burung kormoran"),
+        ("鵜飼い", "ukai", "memancing dengan kormoran"),
+        ("鵜呑み", "unomi", "menelan bulat-bulat/percaya tanpa mikir"),
+    ], [
+        ("鵜飼いを見ました。", "Ukai o mimashita.", "Menonton pemancingan kormoran."),
+        ("鵜呑みにしないでください。", "Unomi ni shinaide kudasai.", "Jangan langsung percaya begitu saja."),
+    ]),
+    ("an2_n1", "庵", ["アン"], ["いおり"], ["pondok pertapa", "hermitage", "hut"], 11, "广", [
+        ("庵", "iori", "pondok"),
+        ("芭蕉庵", "Bashouan", "nama pondok Matsuo Basho"),
+        ("草庵", "souan", "gubuk sederhana"),
+    ], [
+        ("庵に住んでいます。", "Iori ni sunde imasu.", "Tinggal di pondok."),
+        ("草庵で暮らしています。", "Souan de kurashite imasu.", "Hidup di gubuk sederhana."),
+    ]),
+    ("zen4_n1", "膳", ["ゼン"], [], ["nampan makan", "meal tray"], 16, "肉", [
+        ("膳", "zen", "nampan makan"),
+        ("食膳", "shokuzen", "meja makan"),
+        ("配膳", "haizen", "penyajian makanan"),
+    ], [
+        ("膳を用意しました。", "Zen o youi shimashita.", "Menyiapkan nampan makan."),
+        ("配膳しました。", "Haizen shimashita.", "Menyajikan makanan."),
+    ]),
+    ("ka17_n1", "蚊", ["ブン"], ["か"], ["nyamuk", "mosquito"], 10, "虫", [
+        ("蚊", "ka", "nyamuk"),
+        ("蚊帳", "kaya", "kelambu"),
+        ("蚊取り線香", "katorisenkou", "obat nyamuk bakar"),
+    ], [
+        ("蚊に刺されました。", "Ka ni sasaremashita.", "Digigit nyamuk."),
+        ("蚊取り線香を焚きました。", "Katorisenkou o takimashita.", "Membakar obat nyamuk."),
+    ]),
+    ("ki26_n1", "葵", ["キ"], ["あおい"], ["bunga hollyhock", "hollyhock"], 12, "艸", [
+        ("葵", "aoi", "bunga hollyhock"),
+        ("葵祭", "Aoi Matsuri", "festival Aoi di Kyoto"),
+        ("徳川葵", "Tokugawa Aoi", "lambang keluarga Tokugawa"),
+    ], [
+        ("葵祭を見ました。", "Aoi Matsuri o mimashita.", "Menonton Festival Aoi."),
+        ("徳川葵の紋章です。", "Tokugawa Aoi no monshou desu.", "Ini lambang keluarga Tokugawa."),
+    ]),
+    ("yaku3_n1", "厄", ["ヤク"], [], ["sial", "misfortune", "calamity"], 4, "厂", [
+        ("厄年", "yakudoshi", "tahun sial"),
+        ("厄介", "yakkai", "merepotkan"),
+        ("災厄", "saiyaku", "malapetaka"),
+    ], [
+        ("今年は厄年です。", "Kotoshi wa yakudoshi desu.", "Tahun ini adalah tahun sial."),
+        ("厄介な問題です。", "Yakkai na mondai desu.", "Ini masalah yang merepotkan."),
+    ]),
+    ("sou22_n1", "藻", ["ソウ"], ["も"], ["alga", "seaweed"], 19, "艸", [
+        ("藻", "mo", "alga"),
+        ("海藻", "kaisou", "rumput laut"),
+        ("藻類", "souirui", "kelompok alga"),
+    ], [
+        ("藻が生えています。", "Mo ga haete imasu.", "Alga tumbuh."),
+        ("海藻を食べました。", "Kaisou o tabemashita.", "Makan rumput laut."),
+    ]),
+    ("man3_n1", "萬", ["マン", "バン"], [], ["sepuluh ribu (bentuk tradisional 万)", "ten thousand"], 12, "艸", [
+        ("萬歳", "banzai", "hidup!/sepuluh ribu tahun"),
+        ("萬葉集", "Man-youshuu", "koleksi puisi Jepang kuno"),
+        ("萬年筆", "mannenhitsu", "pena bulu"),
+    ], [
+        ("萬葉集を学んでいます。", "Man-youshuu o manande imasu.", "Mempelajari Man'yoshu."),
+        ("萬歳三唱をしました。", "Banzai sanshou o shimashita.", "Meneriakkan banzai tiga kali."),
+    ]),
+    ("roku_n1", "禄", ["ロク"], [], ["gaji", "rezeki", "stipend", "fortune"], 12, "示", [
+        ("禄高", "rokudaka", "jumlah gaji feodal"),
+        ("俸禄", "houroku", "gaji pejabat"),
+        ("福禄寿", "Fukurokuju", "dewa keberuntungan Jepang"),
+    ], [
+        ("禄高が決まりました。", "Rokudaka ga kimarimashita.", "Jumlah gaji feodal ditentukan."),
+        ("福禄寿という神様です。", "Fukurokuju to iu kamisama desu.", "Ini dewa Fukurokuju."),
+    ]),
+    ("mou4_n1", "孟", ["モウ"], [], ["sulung", "Mencius (nama)", "eldest"], 8, "子", [
+        ("孟子", "Moushi", "Mencius"),
+        ("孟春", "moushun", "awal musim semi"),
+        ("孟母三遷", "moubosansen", "tiga kali pindah ibu Mencius"),
+    ], [
+        ("孟子の教えです。", "Moushi no oshie desu.", "Ini ajaran Mencius."),
+        ("孟母三遷という故事です。", "Moubosansen to iu koji desu.", "Ini kisah \"tiga kali pindah ibu Mencius\"."),
+    ]),
+    ("gan4_n1", "鴈", ["ガン"], ["かり"], ["angsa liar (variant 雁)", "wild goose"], 15, "鳥", [
+        ("鴈", "kari", "angsa liar"),
+        ("鴈金", "Karigane", "contoh nama"),
+        ("鴈治郎", "Ganjirou", "nama panggung aktor kabuki"),
+    ], [
+        ("鴈が飛んでいます。", "Kari ga tonde imasu.", "Angsa liar sedang terbang."),
+        ("鴈治郎という名前の役者です。", "Ganjirou to iu namae no yakusha desu.", "Ini aktor bernama Ganjiro."),
+    ]),
+    ("rou6_n1", "狼", ["ロウ"], ["おおかみ"], ["serigala", "wolf"], 10, "犬", [
+        ("狼", "ookami", "serigala"),
+        ("狼狽", "roubai", "kebingungan panik"),
+        ("一匹狼", "ippiki ookami", "penyendiri"),
+    ], [
+        ("狼に注意してください。", "Ookami ni chuui shite kudasai.", "Waspadalah terhadap serigala."),
+        ("狼狽しました。", "Roubai shimashita.", "Menjadi bingung panik."),
+    ]),
+    ("teki4_n1", "嫡", ["テキ"], [], ["pewaris sah", "legitimate heir"], 14, "女", [
+        ("嫡子", "chakushi", "anak sulung sah"),
+        ("嫡出", "chakushutsu", "kelahiran sah"),
+        ("廃嫡", "haichaku", "pencabutan hak waris"),
+    ], [
+        ("嫡子として生まれました。", "Chakushi toshite umaremashita.", "Lahir sebagai anak sulung sah."),
+        ("廃嫡されました。", "Haichaku saremashita.", "Dicabut hak warisnya."),
+    ]),
+    ("ju5_n1", "呪", ["ジュ"], ["のろ-う", "まじな-う"], ["kutukan", "curse", "spell"], 8, "口", [
+        ("呪う", "norou", "mengutuk"),
+        ("呪文", "jumon", "mantra"),
+        ("呪縛", "jubaku", "mantra/keterikatan psikologis"),
+    ], [
+        ("呪いをかけました。", "Noroi o kakemashita.", "Memberikan kutukan."),
+        ("呪文を唱えました。", "Jumon o tonaemashita.", "Merapal mantra."),
+    ]),
+    ("zan2_n1", "斬", ["ザン"], ["き-る"], ["membacok", "slash", "cut"], 11, "斤", [
+        ("斬る", "kiru", "membacok"),
+        ("斬新", "zanshin", "sangat baru/segar"),
+        ("斬首", "zanshu", "pemenggalan"),
+    ], [
+        ("刀で斬りました。", "Katana de kirimashita.", "Membacok dengan pedang."),
+        ("斬新なアイデアです。", "Zanshin na aidea desu.", "Ini ide yang sangat segar."),
+    ]),
+    ("sen13_n1", "尖", ["セン"], ["とが-る"], ["runcing", "sharp", "pointed"], 6, "小", [
+        ("尖る", "togaru", "runcing"),
+        ("尖端", "sentan", "ujung tajam/mutakhir"),
+        ("尖塔", "sentou", "menara runcing"),
+    ], [
+        ("鉛筆が尖っています。", "Enpitsu ga togatte imasu.", "Pensilnya runcing."),
+        ("尖端技術です。", "Sentan gijutsu desu.", "Ini teknologi mutakhir."),
+    ]),
+    ("gan5_n1", "翫", ["ガン"], [], ["menikmati (kata majemuk)", "enjoy", "toy with"], 13, "羽", [
+        ("翫弄", "ganrou", "mempermainkan"),
+        ("愛翫", "aigan", "kesayangan"),
+        ("翫味", "ganmi", "menikmati rasa"),
+    ], [
+        ("愛翫動物です。", "Aigan doubutsu desu.", "Ini hewan peliharaan kesayangan."),
+        ("翫味しました。", "Ganmi shimashita.", "Menikmati rasanya."),
+    ]),
+    ("gaku2_n1", "嶽", ["ガク"], ["たけ"], ["puncak gunung (bentuk tradisional 岳)", "mountain peak"], 17, "山", [
+        ("嶽", "take", "puncak gunung"),
+        ("山嶽", "sangaku", "pegunungan"),
+        ("御嶽山", "Ontakesan", "nama gunung"),
+    ], [
+        ("御嶽山に登りました。", "Ontakesan ni noborimashita.", "Mendaki Gunung Ontake."),
+        ("山嶽地帯です。", "Sangaku chitai desu.", "Ini wilayah pegunungan."),
+    ]),
+    ("gyou4_n1", "尭", ["ギョウ"], [], ["tinggi", "Kaisar Yao (nama)", "high"], 8, "儿", [
+        ("尭舜", "Gyoushun", "Kaisar Yao dan Shun, tokoh legendaris Tiongkok"),
+        ("尭", "Takashi", "contoh nama pria"),
+        ("尭王", "Gyouou", "Raja Yao"),
+    ], [
+        ("尭舜の時代です。", "Gyoushun no jidai desu.", "Ini era Yao dan Shun."),
+        ("尭という名前です。", "Takashi to iu namae desu.", "Ini nama Takashi."),
+    ]),
+    ("en12_n1", "怨", ["エン"], ["うら-む"], ["dendam", "grudge", "resentment"], 9, "心", [
+        ("怨む", "uramu", "mendendam"),
+        ("怨恨", "enkon", "dendam"),
+        ("怨霊", "onryou", "roh pendendam"),
+    ], [
+        ("怨恨による犯行です。", "Enkon ni yoru hankou desu.", "Ini kejahatan karena dendam."),
+        ("怨霊が出るという噂です。", "Onryou ga deru to iu uwasa desu.", "Ada rumor roh pendendam muncul."),
+    ]),
+    ("kei19_n1", "卿", ["ケイ"], [], ["gelar bangsawan", "lord", "minister"], 12, "卩", [
+        ("卿", "kei", "gelar bangsawan"),
+        ("枢機卿", "suukikei", "kardinal"),
+        ("公卿", "kugyou", "bangsawan istana"),
+    ], [
+        ("卿という称号です。", "Kei to iu shougou desu.", "Ini gelar \"kei\"."),
+        ("枢機卿になりました。", "Suukikei ni narimashita.", "Menjadi kardinal."),
+    ]),
+    ("kan31_n1", "串", ["カン"], ["くし"], ["tusuk sate", "skewer"], 7, "丨", [
+        ("串", "kushi", "tusuk sate"),
+        ("串焼き", "kushiyaki", "sate panggang"),
+        ("串カツ", "kushikatsu", "sate goreng tepung"),
+    ], [
+        ("串焼きを食べました。", "Kushiyaki o tabemashita.", "Makan sate panggang."),
+        ("串カツが好きです。", "Kushikatsu ga suki desu.", "Suka kushikatsu."),
+    ]),
+    ("i10_n1", "已", ["イ"], ["すで-に"], ["sudah (klasik)", "already", "stop"], 3, "己", [
+        ("已に", "sude ni", "sudah (classical variant)"),
+        ("已む", "yamu", "berhenti (classical variant)"),
+        ("已然形", "izenkei", "bentuk perfektif (istilah gramatikal klasik)"),
+    ], [
+        ("已然形という文法用語です。", "Izenkei to iu bunpou yougo desu.", "Ini istilah gramatikal \"izenkei\"."),
+        ("已にやりました。", "Sude ni yarimashita.", "Sudah dilakukan."),
+    ]),
+    ("kaku10_n1", "嚇", ["カク"], [], ["mengancam (dalam kata majemuk)", "threaten"], 17, "口", [
+        ("威嚇", "ikaku", "ancaman/intimidasi"),
+        ("嚇怒", "kakudo", "kemarahan besar"),
+        ("威嚇射撃", "ikaku shageki", "tembakan peringatan"),
+    ], [
+        ("威嚇射撃をしました。", "Ikaku shageki o shimashita.", "Melakukan tembakan peringatan."),
+        ("威嚇的な態度です。", "Ikakuteki na taido desu.", "Ini sikap yang mengancam."),
+    ]),
+    ("shi22_n1", "巳", ["シ"], ["み"], ["shio ular", "snake zodiac"], 3, "己", [
+        ("巳", "mi", "tahun ular dalam zodiak"),
+        ("巳年", "midoshi", "tahun ular"),
+        ("上巳", "joushi", "festival Hinamatsuri kuno"),
+    ], [
+        ("巳年生まれです。", "Midoshi umare desu.", "Lahir di tahun ular."),
+        ("上巳の節句です。", "Joushi no sekku desu.", "Ini festival Joshi."),
+    ]),
+    ("totsu_n1", "凸", ["トツ"], [], ["cembung", "convex", "protruding"], 5, "凵", [
+        ("凸レンズ", "totsu renzu", "lensa cembung"),
+        ("凹凸", "outotsu", "tidak rata"),
+        ("凸版印刷", "toppan insatsu", "cetak relief"),
+    ], [
+        ("凸レンズを使いました。", "Totsu renzu o tsukaimashita.", "Menggunakan lensa cembung."),
+        ("道が凹凸しています。", "Michi ga outotsu shite imasu.", "Jalannya tidak rata."),
+    ]),
+    ("chou24_n1", "暢", ["チョウ"], [], ["lancar", "smooth", "expressive"], 14, "日", [
+        ("流暢", "ryuuchou", "fasih"),
+        ("暢気", "nonki", "santai"),
+        ("暢達", "choutatsu", "kelancaran"),
+    ], [
+        ("流暢な英語です。", "Ryuuchou na eigo desu.", "Ini bahasa Inggris yang fasih."),
+        ("暢気な性格です。", "Nonki na seikaku desu.", "Kepribadian yang santai."),
+    ]),
+    ("shu7_n1", "腫", ["シュ"], ["は-れる", "は-らす"], ["bengkak", "swell", "tumor"], 13, "肉", [
+        ("腫れる", "hareru", "bengkak"),
+        ("腫瘍", "shuyou", "tumor"),
+        ("水腫", "suishu", "edema"),
+    ], [
+        ("足が腫れています。", "Ashi ga harete imasu.", "Kakinya bengkak."),
+        ("腫瘍が見つかりました。", "Shuyou ga mitsukarimashita.", "Ditemukan tumor."),
+    ]),
+    ("zoku4_n1", "粟", ["ゾク"], ["あわ"], ["jewawut", "millet"], 12, "米", [
+        ("粟", "awa", "jewawut"),
+        ("粟粒", "awatsubu", "butir jewawut/jerawat kecil"),
+        ("粟餅", "awamochi", "kue mochi jewawut"),
+    ], [
+        ("粟を栽培しています。", "Awa o saibai shite imasu.", "Membudidayakan jewawut."),
+        ("粟餅を食べました。", "Awamochi o tabemashita.", "Makan kue mochi jewawut."),
+    ]),
+    ("en13_n1", "燕", ["エン"], ["つばめ"], ["burung layang-layang", "swallow"], 16, "火", [
+        ("燕", "tsubame", "burung layang-layang"),
+        ("燕尾服", "enbifuku", "jas ekor walet"),
+        ("燕京", "Enkyou", "nama lama Beijing"),
+    ], [
+        ("燕が飛んでいます。", "Tsubame ga tonde imasu.", "Burung layang-layang terbang."),
+        ("燕尾服を着ました。", "Enbifuku o kimashita.", "Memakai jas ekor walet."),
+    ]),
+    ("in5_n1", "韻", ["イン"], [], ["rima", "rhyme", "sound"], 19, "音", [
+        ("韻", "in", "rima"),
+        ("押韻", "ouin", "berima"),
+        ("余韻", "yoin", "gema/kesan yang tersisa"),
+    ], [
+        ("韻を踏みました。", "In o fumimashita.", "Membuat rima."),
+        ("余韻が残りました。", "Yoin ga nokorimashita.", "Kesan masih tersisa."),
+    ]),
+    ("tei17_n1", "綴", ["テイ"], ["つづ-る", "と-じる"], ["menjilid", "mengeja", "bind", "spell"], 14, "糸", [
+        ("綴る", "tsuzuru", "mengeja/merangkai kata"),
+        ("綴じる", "tojiru", "menjilid"),
+        ("綴り", "tsuzuri", "ejaan"),
+    ], [
+        ("言葉を綴りました。", "Kotoba o tsuzurimashita.", "Merangkai kata-kata."),
+        ("書類を綴じました。", "Shorui o tojimashita.", "Menjilid dokumen."),
+    ]),
+    ("shoku5_n1", "埴", ["ショク"], ["はに"], ["tanah liat (nama tempat)", "clay"], 10, "土", [
+        ("埴輪", "haniwa", "patung tanah liat kuno Jepang"),
+        ("埴生", "Hanyuu", "nama tempat"),
+        ("埴土", "shokudo", "tanah liat (istilah geologi)"),
+    ], [
+        ("埴輪を発掘しました。", "Haniwa o hakkutsu shimashita.", "Menggali patung tanah liat haniwa."),
+        ("埴生の宿です。", "Hanyuu no yado desu.", "Ini rumah sederhana (dari lagu terkenal)."),
+    ]),
+    ("sou23_n1", "霜", ["ソウ"], ["しも"], ["embun beku", "frost"], 17, "雨", [
+        ("霜", "shimo", "embun beku"),
+        ("霜降り", "shimofuri", "marbling daging/embun beku turun"),
+        ("初霜", "hatsujimo", "embun beku pertama"),
+    ], [
+        ("霜が降りました。", "Shimo ga furimashita.", "Embun beku turun."),
+        ("霜降り肉です。", "Shimofuri niku desu.", "Ini daging marbling."),
+    ]),
+    ("hei7_n1", "餅", ["ヘイ"], ["もち"], ["kue beras ketan", "rice cake"], 15, "食", [
+        ("餅", "mochi", "kue beras ketan"),
+        ("餅つき", "mochitsuki", "menumbuk mochi"),
+        ("尻餅", "shirimochi", "jatuh terduduk"),
+    ], [
+        ("餅を食べました。", "Mochi o tabemashita.", "Makan mochi."),
+        ("餅つきをしました。", "Mochitsuki o shimashita.", "Menumbuk mochi."),
+    ]),
+    ("ro6_n1", "魯", ["ロ"], [], ["Negara Lu", "bodoh", "Lu (ancient Chinese state)"], 15, "魚", [
+        ("魯", "Ro", "Negara Lu tempat kelahiran Konfusius"),
+        ("魯鈍", "rodon", "tumpul/bodoh"),
+        ("魯迅", "Rojin", "Lu Xun, penulis Tiongkok terkenal"),
+    ], [
+        ("魯という国の出身です。", "Ro to iu kuni no shusshin desu.", "Berasal dari Negara Lu."),
+        ("魯迅は有名な作家です。", "Rojin wa yuumei na sakka desu.", "Lu Xun adalah penulis terkenal."),
+    ]),
+    ("shou35_n1", "硝", ["ショウ"], [], ["nitrat", "kaca (dalam kata majemuk)", "nitrate", "glass"], 12, "石", [
+        ("硝酸", "shousan", "asam nitrat"),
+        ("硝石", "shouseki", "sendawa"),
+        ("硝子", "garasu", "kaca"),
+    ], [
+        ("硝酸は危険です。", "Shousan wa kiken desu.", "Asam nitrat berbahaya."),
+        ("硝子の器です。", "Garasu no utsuwa desu.", "Ini wadah kaca."),
+    ]),
+    ("bo5_n1", "牡", ["ボ"], ["おす"], ["jantan", "male (animal)"], 7, "牛", [
+        ("牡", "osu", "jantan"),
+        ("牡丹", "botan", "bunga peony"),
+        ("牡蠣", "kaki", "tiram"),
+    ], [
+        ("牡の猫です。", "Osu no neko desu.", "Ini kucing jantan."),
+        ("牡丹の花が咲きました。", "Botan no hana ga sakimashita.", "Bunga peony mekar."),
+    ]),
+    ("cho2_n1", "箸", ["チョ"], ["はし"], ["sumpit", "chopsticks"], 15, "竹", [
+        ("箸", "hashi", "sumpit"),
+        ("割り箸", "waribashi", "sumpit sekali pakai"),
+        ("箸置き", "hashioki", "sandaran sumpit"),
+    ], [
+        ("箸を使いました。", "Hashi o tsukaimashita.", "Menggunakan sumpit."),
+        ("割り箸をもらいました。", "Waribashi o moraimashita.", "Mendapat sumpit sekali pakai."),
+    ]),
+    ("choku_n1", "勅", ["チョク"], [], ["dekrit kaisar", "imperial edict"], 9, "力", [
+        ("勅令", "chokurei", "dekrit kekaisaran"),
+        ("勅使", "chokushi", "utusan kaisar"),
+        ("詔勅", "shouchoku", "dekrit kekaisaran resmi"),
+    ], [
+        ("勅令が出されました。", "Chokurei ga dasaremashita.", "Dekrit kekaisaran dikeluarkan."),
+        ("勅使が到着しました。", "Chokushi ga touchaku shimashita.", "Utusan kaisar tiba."),
+    ]),
+    ("kin8_n1", "芹", ["キン"], ["せり"], ["peterseli Jepang", "Japanese parsley"], 7, "艸", [
+        ("芹", "seri", "peterseli Jepang"),
+        ("芹摘み", "serizumi", "memetik seri"),
+        ("芹沢", "Serizawa", "contoh nama keluarga"),
+    ], [
+        ("芹を摘みました。", "Seri o tsumimashita.", "Memetik seri."),
+        ("芹沢さんに会いました。", "Serizawa-san ni aimashita.", "Bertemu dengan Serizawa."),
+    ]),
+    ("kyou17_n1", "杏", ["キョウ"], ["あんず"], ["buah aprikot", "apricot"], 7, "木", [
+        ("杏", "anzu", "buah aprikot"),
+        ("杏仁豆腐", "annindoufu", "puding almond"),
+        ("杏林", "kyourin", "dunia kedokteran"),
+    ], [
+        ("杏を食べました。", "Anzu o tabemashita.", "Makan aprikot."),
+        ("杏仁豆腐が好きです。", "Annindoufu ga suki desu.", "Suka puding almond."),
+    ]),
+    ("ka18_n1", "迦", ["カ"], [], ["istilah Buddhis (dalam kata majemuk)"], 8, "辵", [
+        ("釈迦", "Shaka", "Buddha Shakyamuni"),
+        ("釈迦牟尼", "Shakamuni", "Buddha Shakyamuni"),
+        ("迦葉", "Kashou", "murid Buddha Kashyapa"),
+    ], [
+        ("釈迦の教えです。", "Shaka no oshie desu.", "Ini ajaran Buddha."),
+        ("迦葉尊者です。", "Kashou sonja desu.", "Ini Yang Mulia Kashyapa."),
+    ]),
+    ("kan32_n1", "棺", ["カン"], [], ["peti mati", "coffin"], 12, "木", [
+        ("棺", "kan", "peti mati"),
+        ("棺桶", "kan-oke", "peti mati"),
+        ("石棺", "sekkan", "sarkofagus batu"),
+    ], [
+        ("棺に納めました。", "Kan ni osamemashita.", "Dimasukkan ke peti mati."),
+        ("石棺が発見されました。", "Sekkan ga hakken saremashita.", "Sarkofagus batu ditemukan."),
+    ]),
+    ("ju6_n1", "儒", ["ジュ"], [], ["sarjana Konfusius", "Confucian scholar"], 16, "人", [
+        ("儒教", "jukyou", "Konfusianisme"),
+        ("儒学", "jugaku", "ilmu Konfusius"),
+        ("儒者", "jusha", "sarjana Konfusius"),
+    ], [
+        ("儒教の教えです。", "Jukyou no oshie desu.", "Ini ajaran Konfusianisme."),
+        ("儒学を学んでいます。", "Jugaku o manande imasu.", "Mempelajari ilmu Konfusius."),
+    ]),
+    ("hou18_n1", "鳳", ["ホウ"], [], ["burung phoenix (nama)", "phoenix"], 14, "鳥", [
+        ("鳳凰", "houou", "burung phoenix"),
+        ("鳳仙花", "housenka", "bunga pacar air"),
+        ("鳳来", "Hourai", "nama tempat"),
+    ], [
+        ("鳳凰が描かれています。", "Houou ga egakarete imasu.", "Burung phoenix digambarkan."),
+        ("鳳仙花が咲きました。", "Housenka ga sakimashita.", "Bunga pacar air mekar."),
+    ]),
+    ("kei20_n1", "馨", ["ケイ"], ["かお-る"], ["harum (nama)", "fragrant"], 20, "香", [
+        ("馨しい", "kagubashii", "harum"),
+        ("馨", "Kaoru", "contoh nama"),
+        ("芳馨", "houkei", "keharuman"),
+    ], [
+        ("馨さんに会いました。", "Kaoru-san ni aimashita.", "Bertemu dengan Kaoru."),
+        ("芳馨が漂っています。", "Houkei ga tadayotte imasu.", "Keharuman menyebar."),
+    ]),
+    ("han12_n1", "斑", ["ハン"], ["まだら"], ["bercak", "spot", "patch"], 12, "文", [
+        ("斑", "madara", "bercak"),
+        ("斑点", "hanten", "titik bercak"),
+        ("斑猫", "hanmyou", "kumbang tiger"),
+    ], [
+        ("斑模様です。", "Madara moyou desu.", "Ini pola bercak."),
+        ("斑点があります。", "Hanten ga arimasu.", "Ada titik bercak."),
+    ]),
+    ("in6_n1", "蔭", ["イン"], ["かげ"], ["bayangan (variant 陰)", "shade"], 14, "艸", [
+        ("蔭", "kage", "bayangan"),
+        ("お蔭様で", "okagesama de", "berkat bantuan Anda"),
+        ("木蔭", "kokage", "naungan pohon"),
+    ], [
+        ("お蔭様で元気です。", "Okagesama de genki desu.", "Berkat bantuan Anda, saya sehat."),
+        ("木蔭で休みました。", "Kokage de yasumimashita.", "Beristirahat di naungan pohon."),
+    ]),
+    ("en14_n1", "焉", ["エン"], [], ["partikel klasik", "how", "thereupon"], 11, "火", [
+        ("終焉", "shuuen", "akhir hayat"),
+        ("焉んぞ", "izukunzo", "bagaimana mungkin (klasik)"),
+        ("於焉", "oen", "klasik"),
+    ], [
+        ("終焉を迎えました。", "Shuuen o mukaemashita.", "Menyambut akhir hayat."),
+        ("焉んぞ知らんや。", "Izukunzo shiran ya.", "Bagaimana mungkin tahu (ungkapan klasik)."),
+    ]),
+    ("kei21_n1", "慧", ["ケイ", "エ"], [], ["bijaksana", "wise"], 15, "心", [
+        ("知慧", "chie", "kebijaksanaan"),
+        ("慧眼", "keigan", "mata yang tajam/bijaksana"),
+        ("智慧", "chie", "kebijaksanaan Buddhis"),
+    ], [
+        ("慧眼の持ち主です。", "Keigan no mochinushi desu.", "Dia memiliki mata yang tajam."),
+        ("智慧を授かりました。", "Chie o sazukarimashita.", "Diberkati dengan kebijaksanaan."),
+    ]),
+    ("gi10_n1", "祇", ["ギ"], [], ["dewa bumi (dalam kata majemuk)", "earth deity"], 8, "示", [
+        ("神祇", "jingi", "dewa langit dan bumi"),
+        ("祇園", "Gion", "distrik terkenal di Kyoto"),
+        ("天神地祇", "tenjin chigi", "semua dewa langit dan bumi"),
+    ], [
+        ("祇園を訪れました。", "Gion o otozuremashita.", "Mengunjungi Gion."),
+        ("神祇を祀っています。", "Jingi o matsutte imasu.", "Memuja dewa langit dan bumi."),
+    ]),
+    ("shi23_n1", "摯", ["シ"], [], ["tulus (dalam kata majemuk)", "sincere"], 15, "手", [
+        ("真摯", "shinshi", "tulus dan serius"),
+        ("摯実", "shijitsu", "tulus"),
+        ("懇摯", "konshi", "sungguh-sungguh"),
+    ], [
+        ("真摯な態度です。", "Shinshi na taido desu.", "Ini sikap yang tulus dan serius."),
+        ("真摯に受け止めました。", "Shinshi ni uketomemashita.", "Menerima dengan sungguh-sungguh."),
+    ]),
+    ("shuu15_n1", "愁", ["シュウ"], ["うれ-える"], ["kesedihan", "sorrow", "melancholy"], 13, "心", [
+        ("哀愁", "aishuu", "kesedihan/melankolis"),
+        ("愁い", "urei", "kesedihan"),
+        ("郷愁", "kyoushuu", "nostalgia/rindu kampung halaman"),
+    ], [
+        ("愁いを帯びています。", "Urei o obite imasu.", "Membawa kesedihan."),
+        ("郷愁を感じました。", "Kyoushuu o kanjimashita.", "Merasakan nostalgia."),
+    ]),
+    ("ro7_n1", "鷺", ["ロ"], ["さぎ"], ["burung bangau kuntul", "heron"], 24, "鳥", [
+        ("鷺", "sagi", "burung bangau kuntul"),
+        ("白鷺", "shirasagi", "bangau putih"),
+        ("鷺草", "sagisou", "bunga anggrek bangau"),
+    ], [
+        ("鷺が飛んでいます。", "Sagi ga tonde imasu.", "Burung bangau kuntul terbang."),
+        ("白鷺城です。", "Shirasagijou desu.", "Ini Kastil Bangau Putih (Himeji)."),
+    ]),
+    ("rou7_n1", "楼", ["ロウ"], [], ["menara", "tower", "turret"], 13, "木", [
+        ("楼閣", "roukaku", "menara/istana megah"),
+        ("摩天楼", "matenrou", "pencakar langit"),
+        ("望楼", "bourou", "menara pengawas"),
+    ], [
+        ("楼閣が建っています。", "Roukaku ga tatte imasu.", "Menara megah berdiri."),
+        ("望楼から眺めました。", "Bourou kara nagamemashita.", "Memandang dari menara pengawas."),
+    ]),
+    ("hin4_n1", "彬", ["ヒン"], [], ["halus (nama)", "refined"], 11, "彡", [
+        ("彬彬", "hinpin", "seimbang antara bentuk dan isi"),
+        ("彬", "Akira", "contoh nama pria"),
+        ("彬子", "Akiko", "contoh nama wanita"),
+    ], [
+        ("彬さんに会いました。", "Akira-san ni aimashita.", "Bertemu dengan Akira."),
+        ("文質彬彬という言葉です。", "Bunshitsu hinpin to iu kotoba desu.", "Ini istilah \"bunshitsu hinpin\"."),
+    ]),
+    ("ko9_n1", "袴", ["コ"], ["はかま"], ["celana tradisional Jepang", "hakama"], 11, "衣", [
+        ("袴", "hakama", "celana tradisional"),
+        ("袴姿", "hakamasugata", "penampilan berpakaian hakama"),
+        ("袴田", "Hakamada", "contoh nama keluarga"),
+    ], [
+        ("袴を着ました。", "Hakama o kimashita.", "Memakai hakama."),
+        ("袴姿が凛々しいです。", "Hakamasugata ga ririshii desu.", "Penampilan berhakamanya gagah."),
+    ]),
+    ("kyou18_n1", "匡", ["キョウ"], [], ["meluruskan (nama)", "correct", "rectify"], 6, "匚", [
+        ("匡正", "kyousei", "koreksi"),
+        ("匡輔", "kyouho", "membantu meluruskan"),
+        ("匡", "Tadasu", "contoh nama pria"),
+    ], [
+        ("匡正措置です。", "Kyousei sochi desu.", "Ini tindakan korektif."),
+        ("匡さんという名前です。", "Tadasu-san to iu namae desu.", "Ini nama Tadasu."),
+    ]),
+    ("bi4_n1", "眉", ["ビ"], ["まゆ"], ["alis", "eyebrow"], 9, "目", [
+        ("眉", "mayu", "alis"),
+        ("眉毛", "mayuge", "bulu alis"),
+        ("眉間", "miken", "antara alis"),
+    ], [
+        ("眉をひそめました。", "Mayu o hisomemashita.", "Mengernyitkan alis."),
+        ("眉間にしわを寄せました。", "Miken ni shiwa o yosemashita.", "Mengerutkan dahi di antara alis."),
+    ]),
+    ("kari_n1", "苅", [], ["かり", "か-る"], ["memotong (variant 刈)", "mow"], 8, "艸", [
+        ("苅る", "karu", "memotong"),
+        ("苅田", "Karita", "contoh nama keluarga"),
+        ("苅安", "Kariyasu", "contoh nama tempat"),
+    ], [
+        ("苅田さんに会いました。", "Karita-san ni aimashita.", "Bertemu dengan Karita."),
+        ("稲を苅りました。", "Ine o karimashita.", "Memanen padi."),
+    ]),
+    ("san5_n1", "讃", ["サン"], [], ["memuji (variant 賛)", "praise"], 22, "言", [
+        ("讃岐", "Sanuki", "nama daerah lama di Shikoku"),
+        ("讃美歌", "sanbika", "lagu pujian"),
+        ("大讃", "daisan", "pujian besar"),
+    ], [
+        ("讃岐うどんです。", "Sanuki udon desu.", "Ini udon Sanuki."),
+        ("讃美歌を歌いました。", "Sanbika o utaimashita.", "Menyanyikan lagu pujian."),
+    ]),
+    ("in7_n1", "尹", ["イン"], [], ["pejabat pemerintah kuno (nama)", "government official"], 4, "尸", [
+        ("尹", "In", "gelar pejabat kuno"),
+        ("令尹", "reiin", "perdana menteri kuno Tiongkok"),
+        ("京兆尹", "keichouin", "gubernur ibu kota kuno"),
+    ], [
+        ("尹という官職でした。", "In to iu kanshoku deshita.", "Ini jabatan pemerintahan bernama \"in\"."),
+        ("令尹に任命されました。", "Reiin ni ninmei saremashita.", "Diangkat menjadi perdana menteri."),
+    ]),
+    ("kin9_n1", "欽", ["キン"], [], ["hormat (kekaisaran)", "respectful", "imperial"], 12, "欠", [
+        ("欽定", "kintei", "ditetapkan kaisar"),
+        ("欽慕", "kinbo", "kekaguman mendalam"),
+        ("欽一", "Kin-ichi", "contoh nama pria"),
+    ], [
+        ("欽定憲法です。", "Kintei kenpou desu.", "Ini konstitusi yang ditetapkan kaisar."),
+        ("欽慕の念を抱いています。", "Kinbo no nen o idaite imasu.", "Memiliki kekaguman mendalam."),
+    ]),
+    ("shin15_n1", "薪", ["シン"], ["たきぎ"], ["kayu bakar", "firewood"], 16, "艸", [
+        ("薪", "takigi", "kayu bakar"),
+        ("薪割り", "makiwari", "membelah kayu bakar"),
+        ("臥薪嘗胆", "gashinshoutan", "menahan kesulitan demi tujuan"),
+    ], [
+        ("薪を集めました。", "Takigi o atsumemashita.", "Mengumpulkan kayu bakar."),
+        ("薪割りをしました。", "Makiwari o shimashita.", "Membelah kayu bakar."),
+    ]),
+    ("tan8_n1", "湛", ["タン"], ["たた-える"], ["penuh (air)", "full", "calm"], 12, "水", [
+        ("湛える", "tataeru", "memenuhi/menampilkan ekspresi"),
+        ("湛然", "tanzen", "tenang"),
+        ("満々と湛える", "manman to tataeru", "terisi penuh"),
+    ], [
+        ("水を湛えています。", "Mizu o tataete imasu.", "Terisi penuh air."),
+        ("笑みを湛えています。", "Emi o tataete imasu.", "Menampilkan senyuman."),
+    ]),
+    ("tsui3_n1", "堆", ["タイ"], [], ["menumpuk", "pile up", "heap"], 11, "土", [
+        ("堆積", "taiseki", "endapan/akumulasi"),
+        ("堆肥", "taihi", "kompos"),
+        ("砂堆", "satai", "gundukan pasir"),
+    ], [
+        ("堆積物です。", "Taisekibutsu desu.", "Ini endapan."),
+        ("堆肥を作りました。", "Taihi o tsukurimashita.", "Membuat kompos."),
+    ]),
+    ("ko10_n1", "狐", ["コ"], ["きつね"], ["rubah", "fox"], 8, "犬", [
+        ("狐", "kitsune", "rubah"),
+        ("狐火", "kitsunebi", "api rubah (fenomena mistis)"),
+        ("狐色", "kitsuneiro", "warna coklat keemasan"),
+    ], [
+        ("狐を見ました。", "Kitsune o mimashita.", "Melihat rubah."),
+        ("狐色に揚げました。", "Kitsuneiro ni agemashita.", "Digoreng hingga coklat keemasan."),
+    ]),
+    ("katsu7_n1", "褐", ["カツ"], [], ["coklat (dalam kata majemuk)", "brown"], 13, "衣", [
+        ("褐色", "kasshoku", "warna coklat"),
+        ("褐炭", "kattan", "batu bara coklat/lignit"),
+        ("茶褐色", "chakasshoku", "coklat kemerahan"),
+    ], [
+        ("褐色の肌です。", "Kasshoku no hada desu.", "Ini kulit berwarna coklat."),
+        ("褐炭を採掘しています。", "Kattan o saikutsu shite imasu.", "Menambang lignit."),
+    ]),
+    ("ou7_n1", "鴎", ["オウ"], ["かもめ"], ["burung camar", "seagull"], 15, "鳥", [
+        ("鴎", "kamome", "burung camar"),
+        ("鴎外", "Ougai", "nama pena penulis Mori Ogai"),
+        ("白鴎", "hakuou", "camar putih"),
+    ], [
+        ("鴎が飛んでいます。", "Kamome ga tonde imasu.", "Burung camar terbang."),
+        ("森鴎外は有名な作家です。", "Mori Ougai wa yuumei na sakka desu.", "Mori Ogai adalah penulis terkenal."),
+    ]),
+    ("shin16_n1", "瀋", ["シン"], [], ["Kota Shenyang", "sari (klasik)"], 18, "水", [
+        ("瀋陽", "Shin-you", "Kota Shenyang Tiongkok"),
+        ("瀋", "shin", "sari (klasik)"),
+        ("瀋水", "shinsui", "cairan sari"),
+    ], [
+        ("瀋陽に行きました。", "Shin-you ni ikimashita.", "Pergi ke Shenyang."),
+        ("瀋陽は中国の都市です。", "Shin-you wa Chuugoku no toshi desu.", "Shenyang adalah kota di Tiongkok."),
+    ]),
+    ("tei18_n1", "挺", ["テイ"], [], ["penghitung senjata", "mencabut", "counter for guns"], 10, "手", [
+        ("一挺", "icchou", "satu pucuk (senjata)"),
+        ("挺身", "teishin", "mengorbankan diri"),
+        ("抜挺", "bassei", "mencabut"),
+    ], [
+        ("銃一挺です。", "Juu icchou desu.", "Ini satu pucuk senjata."),
+        ("挺身隊でした。", "Teishintai deshita.", "Ini adalah korps pengorbanan diri."),
+    ]),
+    ("shi24_n1", "賜", ["シ"], ["たまわ-る"], ["menganugerahkan", "grant", "bestow"], 15, "貝", [
+        ("賜る", "tamawaru", "dianugerahkan"),
+        ("恩賜", "onshi", "anugerah kekaisaran"),
+        ("下賜", "kashi", "pemberian dari atasan/kaisar"),
+    ], [
+        ("賜りました。", "Tamawarimashita.", "Dianugerahkan."),
+        ("恩賜の品です。", "Onshi no shina desu.", "Ini barang anugerah kekaisaran."),
+    ]),
+    ("sa5_n1", "嵯", ["サ"], [], ["gunung terjal (nama tempat)", "rugged mountain"], 13, "山", [
+        ("嵯峨", "Saga", "distrik terkenal di Kyoto"),
+        ("嵯峨野", "Sagano", "area wisata di Kyoto"),
+        ("嵯峨天皇", "Saga Tennou", "Kaisar Saga"),
+    ], [
+        ("嵯峨野を散策しました。", "Sagano o sansaku shimashita.", "Berjalan-jalan di Sagano."),
+        ("嵯峨天皇の時代です。", "Saga Tennou no jidai desu.", "Ini era Kaisar Saga."),
+    ]),
+    ("gan6_n1", "雁", ["ガン"], ["かり"], ["angsa liar", "wild goose"], 12, "隹", [
+        ("雁", "kari", "angsa liar"),
+        ("雁行", "gankou", "formasi angsa terbang"),
+        ("雁書", "ganshou", "surat (dari legenda angsa pembawa surat)"),
+    ], [
+        ("雁が飛んでいます。", "Kari ga tonde imasu.", "Angsa liar terbang."),
+        ("雁行してきました。", "Gankou shite kimashita.", "Datang dalam formasi angsa."),
+    ]),
+    ("den_n1", "佃", ["デン"], ["つくだ"], ["sawah garapan (nama tempat)", "cultivated field"], 7, "人", [
+        ("佃", "Tsukuda", "nama tempat di Tokyo"),
+        ("佃煮", "tsukudani", "makanan awetan rebus kecap"),
+        ("佃島", "Tsukudajima", "nama pulau di Tokyo"),
+    ], [
+        ("佃煮を食べました。", "Tsukudani o tabemashita.", "Makan tsukudani."),
+        ("佃島に行きました。", "Tsukudajima ni ikimashita.", "Pergi ke Pulau Tsukuda."),
+    ]),
+    ("sou24_n1", "綜", ["ソウ"], [], ["menyeluruh (variant 総)", "comprehensive"], 14, "糸", [
+        ("綜合", "sougou", "komprehensif"),
+        ("綜理", "souri", "pengelolaan menyeluruh"),
+        ("綜覧", "souran", "tinjauan menyeluruh"),
+    ], [
+        ("綜合的な判断です。", "Sougouteki na handan desu.", "Ini keputusan yang komprehensif."),
+        ("綜理を担当しています。", "Souri o tantou shite imasu.", "Bertanggung jawab atas pengelolaan menyeluruh."),
+    ]),
+    ("zen5_n1", "繕", ["ゼン"], ["つくろ-う"], ["memperbaiki", "mend", "repair"], 18, "糸", [
+        ("繕う", "tsukurou", "memperbaiki/menambal"),
+        ("修繕", "shuuzen", "perbaikan"),
+        ("営繕", "eizen", "pemeliharaan bangunan"),
+    ], [
+        ("服を繕いました。", "Fuku o tsukuroimashita.", "Menambal baju."),
+        ("修繕工事です。", "Shuuzen kouji desu.", "Ini pekerjaan perbaikan."),
+    ]),
+    ("koma2_n1", "狛", [], ["こま"], ["patung anjing singa penjaga kuil", "guardian lion-dog"], 8, "犬", [
+        ("狛犬", "komainu", "patung anjing singa penjaga kuil"),
+        ("狛江", "Komae", "nama kota di Tokyo"),
+        ("狛江市", "Komae-shi", "Kota Komae"),
+    ], [
+        ("狛犬が守っています。", "Komainu ga mamotte imasu.", "Patung komainu menjaga."),
+        ("狛江市に住んでいます。", "Komae-shi ni sunde imasu.", "Tinggal di kota Komae."),
+    ]),
+    ("ko11_n1", "壷", ["コ"], ["つぼ"], ["guci (variant 壺)", "pot", "jar"], 11, "士", [
+        ("壷", "tsubo", "guci"),
+        ("骨壷", "kotsutsubo", "guci abu jenazah"),
+        ("茶壷", "chatsubo", "guci teh"),
+    ], [
+        ("壷に入れました。", "Tsubo ni iremashita.", "Dimasukkan ke dalam guci."),
+        ("骨壷を持ってきました。", "Kotsutsubo o motte kimashita.", "Membawa guci abu jenazah."),
+    ]),
+    ("kashi_n1", "橿", [], ["かし"], ["pohon ek (nama tempat)", "oak"], 17, "木", [
+        ("橿原", "Kashihara", "nama kota di Nara"),
+        ("橿原神宮", "Kashihara Jinguu", "Kuil Kashihara"),
+        ("橿の木", "kashi no ki", "pohon ek"),
+    ], [
+        ("橿原市に行きました。", "Kashihara-shi ni ikimashita.", "Pergi ke kota Kashihara."),
+        ("橿原神宮を訪れました。", "Kashihara Jinguu o otozuremashita.", "Mengunjungi Kuil Kashihara."),
+    ]),
+    ("sen14_n1", "栓", ["セン"], [], ["sumbat", "stopper", "plug"], 10, "木", [
+        ("栓", "sen", "sumbat"),
+        ("栓抜き", "sennuki", "pembuka botol"),
+        ("消火栓", "shoukasen", "hidran kebakaran"),
+    ], [
+        ("栓を抜きました。", "Sen o nukimashita.", "Mencabut sumbat."),
+        ("消火栓があります。", "Shoukasen ga arimasu.", "Ada hidran kebakaran."),
+    ]),
+    ("sui11_n1", "翠", ["スイ"], [], ["hijau zamrud", "emerald green"], 14, "羽", [
+        ("翠玉", "suigyoku", "batu zamrud"),
+        ("翠色", "suishoku", "warna hijau zamrud"),
+        ("翠緑", "suiryoku", "hijau zamrud tua"),
+    ], [
+        ("翠玉のネックレスです。", "Suigyoku no nekkuresu desu.", "Ini kalung batu zamrud."),
+        ("翠色の湖です。", "Suishoku no mizuumi desu.", "Ini danau berwarna hijau zamrud."),
+    ]),
+    ("ayu_n1", "鮎", [], ["あゆ"], ["ikan ayu", "sweetfish"], 16, "魚", [
+        ("鮎", "ayu", "ikan ayu"),
+        ("鮎釣り", "ayuzuri", "memancing ikan ayu"),
+        ("若鮎", "wakaayu", "ikan ayu muda"),
+    ], [
+        ("鮎を釣りました。", "Ayu o tsurimashita.", "Memancing ikan ayu."),
+        ("鮎釣りが趣味です。", "Ayuzuri ga shumi desu.", "Hobi memancing ayu."),
+    ]),
+    ("shin17_n1", "芯", ["シン"], [], ["inti", "core", "wick"], 7, "艸", [
+        ("芯", "shin", "inti"),
+        ("鉛筆の芯", "enpitsu no shin", "isi pensil"),
+        ("芯まで", "shin made", "sampai ke inti"),
+    ], [
+        ("鉛筆の芯が折れました。", "Enpitsu no shin ga oremashita.", "Isi pensilnya patah."),
+        ("芯まで冷えました。", "Shin made hiemashita.", "Dingin sampai ke tulang."),
+    ]),
+    ("mitsu2_n1", "蜜", ["ミツ"], [], ["madu", "honey", "nectar"], 14, "虫", [
+        ("蜜", "mitsu", "madu"),
+        ("蜂蜜", "hachimitsu", "madu lebah"),
+        ("蜜月", "mitsugetsu", "bulan madu"),
+    ], [
+        ("蜂蜜を食べました。", "Hachimitsu o tabemashita.", "Makan madu."),
+        ("蜜月旅行です。", "Mitsugetsu ryokou desu.", "Ini perjalanan bulan madu."),
+    ]),
+    ("ha6_n1", "播", ["ハ", "バン"], ["ま-く"], ["menabur", "sow", "spread"], 15, "手", [
+        ("播く", "maku", "menabur"),
+        ("伝播", "denpa", "penyebaran"),
+        ("播種", "hashu", "penyemaian benih"),
+    ], [
+        ("種を播きました。", "Tane o makimashita.", "Menabur benih."),
+        ("情報が伝播しました。", "Jouhou ga denpa shimashita.", "Informasi menyebar."),
+    ]),
+    ("shin18_n1", "榛", ["シン"], ["はしばみ"], ["pohon hazel (nama)", "hazel tree"], 14, "木", [
+        ("榛", "hashibami", "pohon hazel"),
+        ("榛名", "Haruna", "nama gunung di Gunma"),
+        ("榛原", "Haibara", "nama tempat"),
+    ], [
+        ("榛名山に登りました。", "Haruna-san ni noborimashita.", "Mendaki Gunung Haruna."),
+        ("榛の木があります。", "Hashibami no ki ga arimasu.", "Ada pohon hazel."),
+    ]),
+    ("ou8_n1", "凹", ["オウ"], ["へこ-む", "くぼ-む"], ["cekung", "concave", "hollow"], 5, "凵", [
+        ("凹む", "hekomu", "penyok/cekung"),
+        ("凹凸", "outotsu", "tidak rata"),
+        ("凹レンズ", "ou renzu", "lensa cekung"),
+    ], [
+        ("車が凹みました。", "Kuruma ga hekomimashita.", "Mobil penyok."),
+        ("凹レンズを使いました。", "Ou renzu o tsukaimashita.", "Menggunakan lensa cekung."),
+    ]),
+    ("en15_n1", "艶", ["エン"], ["つや"], ["kilau", "romantis", "glossy", "romance"], 19, "色", [
+        ("艶", "tsuya", "kilau"),
+        ("艶やか", "tsuyayaka", "berkilau/anggun"),
+        ("色艶", "irotsuya", "warna dan kilau"),
+    ], [
+        ("艶のある髪です。", "Tsuya no aru kami desu.", "Ini rambut yang berkilau."),
+        ("艶やかな着物です。", "Tsuyayaka na kimono desu.", "Ini kimono yang anggun."),
+    ]),
+    ("chou25_n1", "帖", ["チョウ", "ジョウ"], [], ["buku catatan (penghitung)", "notebook"], 8, "巾", [
+        ("手帖", "techou", "buku catatan"),
+        ("一帖", "ichijou", "satu unit tatami/kertas"),
+        ("画帖", "gachou", "buku sketsa"),
+    ], [
+        ("手帖に書きました。", "Techou ni kakimashita.", "Menulis di buku catatan."),
+        ("画帖を持っています。", "Gachou o motte imasu.", "Membawa buku sketsa."),
+    ]),
+    ("tou20_n1", "桶", ["トウ"], ["おけ"], ["ember kayu", "bucket", "tub"], 11, "木", [
+        ("桶", "oke", "ember kayu"),
+        ("風呂桶", "furooke", "bak mandi kayu"),
+        ("棺桶", "kan-oke", "peti mati"),
+    ], [
+        ("桶に水を入れました。", "Oke ni mizu o iremashita.", "Mengisi air ke ember kayu."),
+        ("風呂桶を洗いました。", "Furooke o araimashita.", "Mencuci bak mandi kayu."),
+    ]),
+    ("sou25_n1", "惣", ["ソウ"], [], ["semua (dalam kata majemuk)", "all", "general"], 12, "心", [
+        ("惣菜", "souzai", "lauk siap saji"),
+        ("惣領", "souryou", "anak sulung pewaris"),
+        ("御惣菜", "osouzai", "lauk siap saji (sopan)"),
+    ], [
+        ("惣菜を買いました。", "Souzai o kaimashita.", "Membeli lauk siap saji."),
+        ("惣領息子です。", "Souryou musuko desu.", "Ini anak sulung pewaris."),
+    ]),
+    ("ko12_n1", "股", ["コ"], ["また"], ["paha", "selangkangan", "thigh", "crotch"], 8, "肉", [
+        ("股", "mata", "selangkangan"),
+        ("股関節", "kokansetsu", "sendi panggul"),
+        ("内股", "uchimata", "paha dalam"),
+    ], [
+        ("股関節が痛いです。", "Kokansetsu ga itai desu.", "Sendi panggul sakit."),
+        ("内股で歩いています。", "Uchimata de aruite imasu.", "Berjalan dengan gaya paha dalam."),
+    ]),
+    ("nioi_n1", "匂", [], ["にお-う"], ["bau", "smell"], 4, "勹", [
+        ("匂い", "nioi", "bau/aroma"),
+        ("匂う", "niou", "berbau"),
+        ("匂い袋", "nioibukuro", "kantong wangi"),
+    ], [
+        ("いい匂いがします。", "Ii nioi ga shimasu.", "Ada aroma yang enak."),
+        ("匂い袋を作りました。", "Nioibukuro o tsukurimashita.", "Membuat kantong wangi."),
+    ]),
+    ("an3_n1", "鞍", ["アン"], ["くら"], ["pelana", "saddle"], 15, "革", [
+        ("鞍", "kura", "pelana"),
+        ("鞍馬", "Anba", "kuda pelana/nama gunung Kyoto"),
+        ("鞍替え", "kuragae", "berganti profesi/pindah haluan"),
+    ], [
+        ("鞍をつけました。", "Kura o tsukemashita.", "Memasang pelana."),
+        ("鞍替えしました。", "Kuragae shimashita.", "Berganti profesi."),
+    ]),
+    ("chou26_n1", "蔦", ["チョウ"], ["つた"], ["tanaman ivy", "ivy"], 13, "艸", [
+        ("蔦", "tsuta", "tanaman ivy"),
+        ("蔦の絡まる建物", "tsuta no karamaru tatemono", "bangunan berselimut ivy"),
+        ("蔦屋", "Tsutaya", "nama toko/perusahaan terkenal"),
+    ], [
+        ("蔦が絡んでいます。", "Tsuta ga karande imasu.", "Ivy melilit."),
+        ("蔦屋書店に行きました。", "Tsutaya shoten ni ikimashita.", "Pergi ke toko buku Tsutaya."),
+    ]),
+    ("gan7_n1", "玩", ["ガン"], [], ["mainan", "toy", "play with"], 8, "玉", [
+        ("玩具", "gangu", "mainan"),
+        ("愛玩", "aigan", "kesayangan"),
+        ("玩弄", "ganrou", "mempermainkan"),
+    ], [
+        ("玩具を買いました。", "Gangu o kaimashita.", "Membeli mainan."),
+        ("愛玩動物です。", "Aigan doubutsu desu.", "Ini hewan peliharaan kesayangan."),
+    ]),
+    ("kaya2_n1", "萱", [], ["かや"], ["alang-alang untuk atap (nama)", "reed", "thatch"], 12, "艸", [
+        ("萱", "kaya", "rumput untuk atap"),
+        ("萱葺き", "kayabuki", "atap jerami"),
+        ("萱野", "Kayano", "contoh nama keluarga"),
+    ], [
+        ("萱葺き屋根です。", "Kayabuki yane desu.", "Ini atap jerami."),
+        ("萱野さんに会いました。", "Kayano-san ni aimashita.", "Bertemu dengan Kayano."),
+    ]),
+    ("tei19_n1", "梯", ["テイ"], ["はしご"], ["tangga", "ladder"], 11, "木", [
+        ("梯子", "hashigo", "tangga"),
+        ("階梯", "kaitei", "tahapan/tangga langkah"),
+        ("雲梯", "untei", "tangga monyet/alat gantung"),
+    ], [
+        ("梯子を登りました。", "Hashigo o noborimashita.", "Menaiki tangga."),
+        ("階梯を踏みました。", "Kaitei o fumimashita.", "Melalui tahapan."),
+    ]),
+    ("shizuku_n1", "雫", [], ["しずく"], ["tetesan", "drop"], 11, "雨", [
+        ("雫", "shizuku", "tetesan"),
+        ("水雫", "mizushizuku", "tetesan air"),
+        ("涙の雫", "namida no shizuku", "tetesan air mata"),
+    ], [
+        ("雫が落ちました。", "Shizuku ga ochimashita.", "Tetesan jatuh."),
+        ("涙の雫です。", "Namida no shizuku desu.", "Ini tetesan air mata."),
+    ]),
+    ("han13_n1", "絆", ["ハン"], ["きずな"], ["ikatan", "bond", "tie"], 11, "糸", [
+        ("絆", "kizuna", "ikatan"),
+        ("絆創膏", "bansoukou", "plester luka"),
+        ("家族の絆", "kazoku no kizuna", "ikatan keluarga"),
+    ], [
+        ("絆を大切にしています。", "Kizuna o taisetsu ni shite imasu.", "Menghargai ikatan."),
+        ("絆創膏を貼りました。", "Bansoukou o harimashita.", "Menempelkan plester."),
+    ]),
+    ("ren4_n1", "錬", ["レン"], [], ["menempa", "refine", "forge"], 16, "金", [
+        ("錬金術", "renkinjutsu", "alkimia"),
+        ("鍛錬", "tanren", "latihan keras"),
+        ("精錬", "seiren", "pemurnian logam"),
+    ], [
+        ("錬金術師です。", "Renkinjutsushi desu.", "Ini ahli alkimia."),
+        ("精錬所です。", "Seirenjo desu.", "Ini pabrik pemurnian logam."),
+    ]),
+    ("sou26_n1", "湊", ["ソウ"], ["みなと"], ["pelabuhan (variant 港)", "harbor"], 12, "水", [
+        ("湊", "minato", "pelabuhan"),
+        ("湊川", "Minatogawa", "nama sungai di Kobe"),
+        ("湊町", "Minatomachi", "nama daerah pelabuhan"),
+    ], [
+        ("湊に船が着きました。", "Minato ni fune ga tsukimashita.", "Kapal tiba di pelabuhan."),
+        ("湊川の戦いです。", "Minatogawa no tatakai desu.", "Ini Pertempuran Sungai Minato."),
+    ]),
+    ("hou19_n1", "蜂", ["ホウ"], ["はち"], ["lebah", "tawon", "bee", "wasp"], 13, "虫", [
+        ("蜂", "hachi", "lebah"),
+        ("蜂蜜", "hachimitsu", "madu lebah"),
+        ("蜂起", "houki", "pemberontakan"),
+    ], [
+        ("蜂に刺されました。", "Hachi ni sasaremashita.", "Disengat lebah."),
+        ("民衆が蜂起しました。", "Minshuu ga houki shimashita.", "Rakyat memberontak."),
+    ]),
+    ("jun9_n1", "隼", ["ジュン"], ["はやぶさ"], ["elang alap-alap", "falcon"], 10, "隹", [
+        ("隼", "hayabusa", "elang alap-alap"),
+        ("隼人", "Hayato", "contoh nama pria/nama kuno Kyushu"),
+        ("隼型", "hayabusagata", "jenis pesawat tempur"),
+    ], [
+        ("隼が飛んでいます。", "Hayabusa ga tonde imasu.", "Elang alap-alap terbang."),
+        ("隼人さんに会いました。", "Hayato-san ni aimashita.", "Bertemu dengan Hayato."),
+    ]),
+    ("da4_n1", "舵", ["ダ"], ["かじ"], ["kemudi kapal", "rudder"], 11, "舟", [
+        ("舵", "kaji", "kemudi"),
+        ("舵取り", "kajitori", "mengemudikan"),
+        ("面舵", "omokaji", "kemudi ke kanan"),
+    ], [
+        ("舵を取りました。", "Kaji o torimashita.", "Mengemudikan kapal."),
+        ("舵取りが上手です。", "Kajitori ga jouzu desu.", "Pandai mengemudikan."),
+    ]),
+    ("sho4_n1", "渚", ["ショ"], ["なぎさ"], ["pantai", "shore", "beach"], 11, "水", [
+        ("渚", "nagisa", "pantai"),
+        ("渚にて", "nagisa nite", "di pantai (judul karya)"),
+        ("遠浅の渚", "toasa no nagisa", "pantai landai"),
+    ], [
+        ("渚を歩きました。", "Nagisa o arukimashita.", "Berjalan di pantai."),
+        ("遠浅の渚です。", "Toasa no nagisa desu.", "Ini pantai landai."),
+    ]),
+    ("ka19_n1", "珂", ["カ"], [], ["hiasan giok (arkais, nama)", "agate", "jade ornament"], 9, "玉", [
+        ("珂", "ka", "hiasan giok (arkais)"),
+        ("白珂", "hakka", "giok putih"),
+        ("珂玉", "kagyoku", "batu giok hias"),
+    ], [
+        ("珂という字はまれです。", "Ka to iu ji wa mare desu.", "Karakter \"ka\" ini jarang."),
+        ("白珂の飾りです。", "Hakka no kazari desu.", "Ini hiasan giok putih."),
+    ]),
+    ("kan33_n1", "煥", ["カン"], [], ["berseri (nama)", "brilliant", "radiant"], 13, "火", [
+        ("煥発", "kanpatsu", "berseri-seri"),
+        ("煥然", "kanzen", "cerah berseri"),
+        ("煥乎", "kanko", "cerah gemilang"),
+    ], [
+        ("才気煥発です。", "Saiki kanpatsu desu.", "Ini bakat yang berseri-seri/menonjol."),
+        ("煥然として明るいです。", "Kanzen to shite akarui desu.", "Cerah berseri-seri."),
+    ]),
+    ("chuu5_n1", "衷", ["チュウ"], [], ["hati nurani", "inner heart", "moderate"], 10, "衣", [
+        ("衷心", "chuushin", "hati yang tulus"),
+        ("折衷", "setchuu", "kompromi/eklektik"),
+        ("苦衷", "kuchuu", "kesulitan batin"),
+    ], [
+        ("衷心より感謝します。", "Chuushin yori kansha shimasu.", "Berterima kasih dari lubuk hati."),
+        ("折衷案です。", "Setchuuan desu.", "Ini rencana kompromi."),
+    ]),
+    ("chiku3_n1", "逐", ["チク"], [], ["mengejar", "chase", "pursue"], 10, "辵", [
+        ("逐一", "chikuichi", "satu per satu"),
+        ("逐次", "chikuji", "berurutan"),
+        ("駆逐", "kuchiku", "pengusiran/perusak"),
+    ], [
+        ("逐一報告してください。", "Chikuichi houkoku shite kudasai.", "Tolong laporkan satu per satu."),
+        ("駆逐艦です。", "Kuchikukan desu.", "Ini kapal perusak."),
+    ]),
+    ("seki4_n1", "斥", ["セキ"], [], ["menolak", "reject", "repel"], 5, "斤", [
+        ("排斥", "haiseki", "penolakan/boikot"),
+        ("斥候", "sekkou", "pengintai"),
+        ("斥力", "sekiryoku", "gaya tolak"),
+    ], [
+        ("排斥運動です。", "Haiseki undou desu.", "Ini gerakan penolakan."),
+        ("斥候を送りました。", "Sekkou o okurimashita.", "Mengirim pengintai."),
+    ]),
+    ("ki27_n1", "稀", ["キ"], ["まれ"], ["langka", "rare"], 12, "禾", [
+        ("稀", "mare", "langka"),
+        ("稀少", "kishou", "langka/jarang"),
+        ("古稀", "koki", "usia 70 tahun"),
+    ], [
+        ("稀な現象です。", "Mare na genshou desu.", "Ini fenomena yang langka."),
+        ("稀少価値があります。", "Kishou kachi ga arimasu.", "Memiliki nilai kelangkaan."),
+    ]),
+    ("gan8_n1", "癌", ["ガン"], [], ["kanker", "cancer"], 17, "疒", [
+        ("癌", "gan", "kanker"),
+        ("胃癌", "igan", "kanker lambung"),
+        ("癌細胞", "gansaibou", "sel kanker"),
+    ], [
+        ("癌と診断されました。", "Gan to shindan saremashita.", "Didiagnosis kanker."),
+        ("胃癌の手術です。", "Igan no shujutsu desu.", "Ini operasi kanker lambung."),
+    ]),
+    ("ga8_n1", "峨", ["ガ"], [], ["gunung tinggi (dalam kata majemuk)", "lofty mountain"], 10, "山", [
+        ("峨々", "gaga", "terjal berbukit-bukit"),
+        ("嵯峨", "Saga", "distrik terkenal di Kyoto"),
+        ("峨眉山", "Gabizan", "Gunung Emei Tiongkok"),
+    ], [
+        ("峨眉山は中国の名山です。", "Gabizan wa Chuugoku no meizan desu.", "Gunung Emei adalah gunung terkenal Tiongkok."),
+        ("峨々たる山です。", "Gaga taru yama desu.", "Ini gunung yang terjal."),
+    ]),
+    ("kyo7_n1", "嘘", ["キョ"], ["うそ"], ["bohong", "lie", "falsehood"], 14, "口", [
+        ("嘘", "uso", "kebohongan"),
+        ("嘘つき", "usotsuki", "pembohong"),
+        ("真っ赤な嘘", "makka na uso", "kebohongan besar"),
+    ], [
+        ("嘘をつきました。", "Uso o tsukimashita.", "Berbohong."),
+        ("嘘つきです。", "Usotsuki desu.", "Dia pembohong."),
+    ]),
+    ("han14_n1", "旛", ["ハン"], [], ["bendera panjang (nama tempat)", "banner"], 19, "方", [
+        ("印旛", "Inba", "nama daerah di Chiba"),
+        ("印旛沼", "Inbanuma", "Danau Inba"),
+        ("旛", "han", "bendera panjang"),
+    ], [
+        ("印旛沼に行きました。", "Inbanuma ni ikimashita.", "Pergi ke Danau Inba."),
+        ("印旛という地名です。", "Inba to iu chimei desu.", "Ini nama tempat Inba."),
+    ]),
+    ("rou8_n1", "篭", ["ロウ"], ["かご", "こ-もる"], ["keranjang (variant 籠)", "basket", "cage"], 16, "竹", [
+        ("篭", "kago", "keranjang"),
+        ("篭もる", "komoru", "mengurung diri"),
+        ("灯篭", "tourou", "lentera batu"),
+    ], [
+        ("篭に入れました。", "Kago ni iremashita.", "Dimasukkan ke keranjang."),
+        ("灯篭を灯しました。", "Tourou o tomoshimashita.", "Menyalakan lentera batu."),
+    ]),
+    ("fu10_n1", "芙", ["フ"], [], ["lotus/hibiscus (dalam kata majemuk)"], 7, "艸", [
+        ("芙蓉", "fuyou", "bunga hibiscus"),
+        ("芙蓉峰", "fuyouhou", "sebutan puitis Gunung Fuji"),
+        ("木芙蓉", "mokufuyou", "hibiscus pohon"),
+    ], [
+        ("芙蓉の花が咲きました。", "Fuyou no hana ga sakimashita.", "Bunga hibiscus mekar."),
+        ("芙蓉峰と呼ばれています。", "Fuyouhou to yobarete imasu.", "Disebut sebagai puncak Fuyo (Gunung Fuji)."),
+    ]),
+    ("shou36_n1", "詔", ["ショウ"], ["みことのり"], ["dekrit kaisar", "imperial edict"], 12, "言", [
+        ("詔書", "shousho", "dekrit tertulis kaisar"),
+        ("詔勅", "shouchoku", "dekrit kekaisaran resmi"),
+        ("大詔", "taishou", "dekrit agung"),
+    ], [
+        ("詔書が発布されました。", "Shousho ga happu saremashita.", "Dekrit kaisar diumumkan."),
+        ("大詔を賜りました。", "Taishou o tamawarimashita.", "Dianugerahi dekrit agung."),
+    ]),
+    ("kou37_n1", "皐", ["コウ"], ["さつき"], ["tepi sungai", "bulan Mei (nama)", "riverside"], 11, "白", [
+        ("皐月", "satsuki", "bulan Mei (nama klasik)"),
+        ("皐", "kou", "tepi sungai (arkais)"),
+        ("皐比", "kouhi", "kulit harimau (klasik)"),
+    ], [
+        ("皐月という月の名前です。", "Satsuki to iu tsuki no namae desu.", "Ini nama bulan \"Satsuki\"."),
+        ("皐月賞という競馬レースです。", "Satsuki Shou to iu keiba reesu desu.", "Ini balapan kuda \"Satsuki Sho\"."),
+    ]),
+    ("suu3_n1", "雛", ["スウ"], ["ひな"], ["anak ayam", "boneka", "chick", "doll"], 18, "隹", [
+        ("雛", "hina", "anak ayam/boneka hina"),
+        ("雛人形", "hina ningyou", "boneka hina Matsuri"),
+        ("雛祭り", "hinamatsuri", "festival boneka Hina"),
+    ], [
+        ("雛人形を飾りました。", "Hina ningyou o kazarimashita.", "Menghias boneka hina."),
+        ("雛祭りを祝いました。", "Hinamatsuri o iwaimashita.", "Merayakan Festival Hina."),
+    ]),
+    ("shou37_n1", "娼", ["ショウ"], [], ["pelacur (dalam kata majemuk)", "prostitute"], 11, "女", [
+        ("娼婦", "shoufu", "pelacur"),
+        ("娼館", "shoukan", "rumah bordil"),
+        ("私娼", "shishou", "pelacur ilegal"),
+    ], [
+        ("娼婦を描いた小説です。", "Shoufu o egaita shousetsu desu.", "Ini novel yang menggambarkan pelacur."),
+        ("娼館があった地域です。", "Shoukan ga atta chiiki desu.", "Ini daerah yang dulunya ada rumah bordil."),
+    ]),
+    ("ten4_n1", "篆", ["テン"], [], ["gaya kaligrafi kuno", "seal script"], 15, "竹", [
+        ("篆刻", "tenkoku", "ukiran stempel"),
+        ("篆書", "tensho", "gaya tulisan segel"),
+        ("小篆", "shouten", "gaya segel kecil"),
+    ], [
+        ("篆刻を習っています。", "Tenkoku o naratte imasu.", "Belajar ukiran stempel."),
+        ("篆書で書きました。", "Tensho de kakimashita.", "Menulis dengan gaya segel."),
+    ]),
+    ("same_n1", "鮫", [], ["さめ"], ["hiu", "shark"], 17, "魚", [
+        ("鮫", "same", "hiu"),
+        ("鮫肌", "samehada", "kulit kasar seperti kulit hiu"),
+        ("人食い鮫", "hitokuizame", "hiu pemakan manusia"),
+    ], [
+        ("鮫を見ました。", "Same o mimashita.", "Melihat hiu."),
+        ("鮫肌になっています。", "Samehada ni natte imasu.", "Kulitnya menjadi kasar."),
+    ]),
+    ("i11_n1", "椅", ["イ"], [], ["kursi (dalam kata majemuk)", "chair"], 12, "木", [
+        ("椅子", "isu", "kursi"),
+        ("車椅子", "kurumaisu", "kursi roda"),
+        ("椅子取りゲーム", "isutori geemu", "permainan kursi musik"),
+    ], [
+        ("椅子に座りました。", "Isu ni suwarimashita.", "Duduk di kursi."),
+        ("車椅子を使っています。", "Kurumaisu o tsukatte imasu.", "Menggunakan kursi roda."),
+    ]),
+    ("i12_n1", "惟", ["イ"], ["これ"], ["berpikir (klasik)", "think", "consider"], 11, "心", [
+        ("思惟", "shii", "pemikiran/perenungan"),
+        ("惟うに", "omouni", "dipikir-pikir (classical)"),
+        ("惟一", "Yuiichi", "contoh nama pria"),
+    ], [
+        ("思惟にふけりました。", "Shii ni fukerimashita.", "Larut dalam perenungan."),
+        ("惟一さんに会いました。", "Yuiichi-san ni aimashita.", "Bertemu dengan Yuiichi."),
+    ]),
+    ("hai6_n1", "牌", ["ハイ"], [], ["keping", "lempengan", "tile", "plate"], 12, "片", [
+        ("位牌", "ihai", "tablet arwah leluhur"),
+        ("麻雀牌", "maajanpai", "kartu mahjong"),
+        ("銘牌", "meihai", "plakat nama"),
+    ], [
+        ("位牌を祀っています。", "Ihai o matsutte imasu.", "Memuja tablet arwah leluhur."),
+        ("麻雀牌で遊びました。", "Maajanpai de asobimashita.", "Bermain dengan kartu mahjong."),
+    ]),
+    ("tou21_n1", "宕", ["トウ"], [], ["bebas (dalam kata majemuk, nama tempat)", "carefree"], 8, "宀", [
+        ("愛宕", "Atago", "nama gunung/distrik terkenal"),
+        ("愛宕山", "Atagoyama", "Gunung Atago"),
+        ("放宕", "houtou", "bebas tanpa aturan"),
+    ], [
+        ("愛宕山に登りました。", "Atagoyama ni noborimashita.", "Mendaki Gunung Atago."),
+        ("愛宕神社を訪れました。", "Atago Jinja o otozuremashita.", "Mengunjungi Kuil Atago."),
+    ]),
+    ("ken16_n1", "喧", ["ケン"], [], ["ribut", "noisy", "quarrel"], 12, "口", [
+        ("喧嘩", "kenka", "pertengkaran"),
+        ("喧噪", "kensou", "kebisingan"),
+        ("喧伝", "kenden", "tersebar luas"),
+    ], [
+        ("喧嘩をしました。", "Kenka o shimashita.", "Bertengkar."),
+        ("喧噪から離れました。", "Kensou kara hanaremashita.", "Menjauh dari kebisingan."),
+    ]),
+    ("yuu13_n1", "佑", ["ユウ"], [], ["membantu (nama)", "help"], 7, "人", [
+        ("天佑", "tenyuu", "berkat surga"),
+        ("佑筆", "yuuhitsu", "sekretaris"),
+        ("佑一", "Yuuichi", "contoh nama pria"),
+    ], [
+        ("天佑に恵まれました。", "Tenyuu ni megumaremashita.", "Diberkati oleh surga."),
+        ("佑一さんに会いました。", "Yuuichi-san ni aimashita.", "Bertemu dengan Yuuichi."),
+    ]),
+    ("shou38_n1", "蒋", ["ショウ"], [], ["marga Jiang/Chiang", "Chiang (surname)"], 13, "艸", [
+        ("蒋介石", "Shou Kaiseki", "Chiang Kai-shek"),
+        ("蒋", "Shou", "marga Jiang"),
+        ("蒋経国", "Shou Keikoku", "Chiang Ching-kuo"),
+    ], [
+        ("蒋介石は台湾の指導者でした。", "Shou Kaiseki wa Taiwan no shidousha deshita.", "Chiang Kai-shek adalah pemimpin Taiwan."),
+        ("蒋経国はその息子です。", "Shou Keikoku wa sono musuko desu.", "Chiang Ching-kuo adalah putranya."),
+    ]),
+    ("shou39_n1", "樟", ["ショウ"], ["くす"], ["pohon kamper", "camphor tree"], 15, "木", [
+        ("樟脳", "shounou", "kapur barus"),
+        ("樟", "kusu", "pohon kamper"),
+        ("樟葉", "Kuzuha", "nama tempat"),
+    ], [
+        ("樟脳を使いました。", "Shounou o tsukaimashita.", "Menggunakan kapur barus."),
+        ("樟の木があります。", "Kusu no ki ga arimasu.", "Ada pohon kamper."),
+    ]),
+    ("you12_n1", "耀", ["ヨウ"], ["かがや-く"], ["bersinar (nama)", "shine"], 20, "羽", [
+        ("耀く", "kagayaku", "bersinar"),
+        ("光耀", "kouyou", "kecemerlangan"),
+        ("耀司", "Youji", "contoh nama pria"),
+    ], [
+        ("耀司さんに会いました。", "Youji-san ni aimashita.", "Bertemu dengan Youji."),
+        ("光耀を放っています。", "Kouyou o hanatte imasu.", "Memancarkan kecemerlangan."),
+    ]),
+    ("tai9_n1", "黛", ["タイ"], ["まゆずみ"], ["pensil alis (nama)", "eyebrow pencil"], 16, "黒", [
+        ("黛", "mayuzumi", "pensil alis tradisional"),
+        ("眉黛", "bitai", "alis yang dilukis"),
+        ("黛ジュン", "Mayuzumi Jun", "nama penyanyi"),
+    ], [
+        ("黛を使いました。", "Mayuzumi o tsukaimashita.", "Menggunakan pensil alis tradisional."),
+        ("眉黛が美しいです。", "Bitai ga utsukushii desu.", "Alisnya yang terlukis indah."),
+    ]),
+    ("shitsu4_n1", "叱", ["シツ"], ["しか-る"], ["memarahi", "scold"], 5, "口", [
+        ("叱る", "shikaru", "memarahi"),
+        ("叱責", "shisseki", "teguran keras"),
+        ("叱咤", "shitta", "bentakan/dorongan semangat"),
+    ], [
+        ("子供を叱りました。", "Kodomo o shikarimashita.", "Memarahi anak."),
+        ("叱責されました。", "Shisseki saremashita.", "Ditegur keras."),
+    ]),
+    ("shitsu5_n1", "櫛", ["シツ"], ["くし"], ["sisir", "comb"], 17, "木", [
+        ("櫛", "kushi", "sisir"),
+        ("櫛形", "kushigata", "bentuk sisir"),
+        ("梳き櫛", "sukigushi", "sisir penata rambut"),
+    ], [
+        ("櫛で髪をとかしました。", "Kushi de kami o tokashimashita.", "Menyisir rambut dengan sisir."),
+        ("櫛形の窓です。", "Kushigata no mado desu.", "Ini jendela berbentuk sisir."),
+    ]),
+    ("aku2_n1", "渥", ["アク"], [], ["lembab", "murah hati (nama)", "moist", "generous"], 12, "水", [
+        ("渥美", "Atsumi", "nama tempat/nama keluarga"),
+        ("渥然", "akuzen", "subur"),
+        ("優渥", "yuuaku", "murah hati"),
+    ], [
+        ("渥美半島に行きました。", "Atsumi hantou ni ikimashita.", "Pergi ke Semenanjung Atsumi."),
+        ("優渥な待遇です。", "Yuuaku na taiguu desu.", "Ini perlakuan yang murah hati."),
+    ]),
+    ("ai2_n1", "挨", ["アイ"], [], ["mendekati (dalam kata majemuk)", "approach"], 10, "手", [
+        ("挨拶", "aisatsu", "salam/sapaan"),
+        ("挨拶状", "aisatsujou", "surat salam"),
+        ("御挨拶", "goaisatsu", "salam (sopan)"),
+    ], [
+        ("挨拶をしました。", "Aisatsu o shimashita.", "Memberi salam."),
+        ("挨拶状を送りました。", "Aisatsujou o okurimashita.", "Mengirim surat salam."),
+    ]),
+    ("shou40_n1", "憧", ["ショウ"], ["あこが-れる"], ["mendambakan", "yearn", "admire"], 15, "心", [
+        ("憧れる", "akogareru", "mendambakan"),
+        ("憧憬", "doukei", "kekaguman mendalam"),
+        ("憧れの的", "akogare no mato", "idola"),
+    ], [
+        ("憧れています。", "Akogarete imasu.", "Mendambakan."),
+        ("憧れの的です。", "Akogare no mato desu.", "Ini idola."),
+    ]),
+    ("nureru_n1", "濡", ["ジュ"], ["ぬ-れる", "ぬ-らす"], ["basah", "wet"], 17, "水", [
+        ("濡れる", "nureru", "basah"),
+        ("濡れ衣", "nureginu", "tuduhan palsu"),
+        ("濡れ手で粟", "nureteoawa", "untung tanpa usaha"),
+    ], [
+        ("雨で濡れました。", "Ame de nuremashita.", "Basah karena hujan."),
+        ("濡れ衣を着せられました。", "Nureginu o kiseraremashita.", "Dituduh palsu."),
+    ]),
+    ("sou27_n1", "槍", ["ソウ"], ["やり"], ["tombak", "spear"], 14, "木", [
+        ("槍", "yari", "tombak"),
+        ("槍投げ", "yarinage", "lempar lembing"),
+        ("一本槍", "ipponyari", "mengandalkan satu cara"),
+    ], [
+        ("槍を持っています。", "Yari o motte imasu.", "Membawa tombak."),
+        ("槍投げの選手です。", "Yarinage no senshu desu.", "Ini atlet lempar lembing."),
+    ]),
+    ("shou41_n1", "宵", ["ショウ"], ["よい"], ["malam awal", "evening"], 10, "宀", [
+        ("宵", "yoi", "malam awal"),
+        ("宵っ張り", "yoippari", "begadang"),
+        ("徹宵", "tesshou", "semalam suntuk"),
+    ], [
+        ("宵の口です。", "Yoi no kuchi desu.", "Ini masih awal malam."),
+        ("宵っ張りです。", "Yoippari desu.", "Suka begadang."),
+    ]),
+    ("jou12_n1", "襄", ["ジョウ"], [], ["membantu (nama)", "assist", "rise"], 17, "衣", [
+        ("襄公", "Jou Kou", "Duke Xiang, tokoh sejarah Tiongkok"),
+        ("襄理", "jouri", "asisten manajer"),
+        ("新島襄", "Niijima Jou", "pendiri universitas Doshisha"),
+    ], [
+        ("新島襄は同志社の創立者です。", "Niijima Jou wa Doushisha no souritsusha desu.", "Niijima Jo adalah pendiri Doshisha."),
+        ("襄公の時代です。", "Jou Kou no jidai desu.", "Ini era Duke Xiang."),
+    ]),
+    ("mou5_n1", "妄", ["モウ", "ボウ"], [], ["sembrono", "reckless", "false"], 6, "女", [
+        ("妄想", "mousou", "delusi"),
+        ("妄言", "bougen", "ucapan sembrono"),
+        ("迷妄", "meimou", "kebutaan/delusi"),
+    ], [
+        ("妄想しています。", "Mousou shite imasu.", "Berdelusi."),
+        ("妄言を吐きました。", "Bougen o hakimashita.", "Mengucapkan kata-kata sembrono."),
+    ]),
+    ("jun10_n1", "惇", ["ジュン"], [], ["tulus (nama)", "sincere"], 11, "心", [
+        ("惇", "Atsushi", "contoh nama pria"),
+        ("惇朴", "junboku", "tulus dan sederhana"),
+        ("惇一", "Jun-ichi", "contoh nama pria"),
+    ], [
+        ("惇さんに会いました。", "Atsushi-san ni aimashita.", "Bertemu dengan Atsushi."),
+        ("惇朴な人柄です。", "Junboku na hitogara desu.", "Kepribadian yang tulus dan sederhana."),
+    ]),
+    ("tan9_n1", "蛋", ["タン"], [], ["telur (dalam kata majemuk)", "egg"], 11, "虫", [
+        ("蛋白質", "tanpakushitsu", "protein"),
+        ("蛋白", "tanpaku", "putih telur/protein"),
+        ("鶏蛋", "keidan", "telur ayam"),
+    ], [
+        ("蛋白質を摂取しました。", "Tanpakushitsu o sesshu shimashita.", "Mengonsumsi protein."),
+        ("蛋白質が豊富です。", "Tanpakushitsu ga houfu desu.", "Kaya akan protein."),
+    ]),
+    ("shuu16_n1", "脩", ["シュウ"], [], ["daging kering", "membina diri (nama)", "dried meat"], 11, "肉", [
+        ("束脩", "sokushuu", "uang sekolah/hadiah untuk guru"),
+        ("脩", "Osamu", "contoh nama pria"),
+        ("脩める", "osameru", "membina diri"),
+    ], [
+        ("束脩を納めました。", "Sokushuu o osamemashita.", "Membayar uang sekolah."),
+        ("脩さんに会いました。", "Osamu-san ni aimashita.", "Bertemu dengan Osamu."),
+    ]),
+    ("toma2_n1", "笘", [], ["とま"], ["nama keluarga langka (variant 苫)"], 11, "竹", [
+        ("笘篠", "Tomashino", "contoh nama keluarga langka"),
+        ("笘", "toma", "variant tikar jerami (sangat jarang)"),
+        ("笘井", "Tomai", "contoh nama keluarga"),
+    ], [
+        ("笘篠という名字は珍しいです。", "Tomashino to iu myouji wa mezurashii desu.", "Nama keluarga \"Tomashino\" jarang."),
+        ("笘という字は稀にしか使われません。", "Toma to iu ji wa mare ni shika tsukawaremasen.", "Karakter \"toma\" ini jarang digunakan."),
+    ]),
+    ("shishi_n1", "宍", [], ["しし"], ["daging (nama tempat)", "meat"], 8, "宀", [
+        ("宍道湖", "Shinjiko", "Danau Shinji di Shimane"),
+        ("宍粟", "Shisou", "nama kota di Hyogo"),
+        ("宍戸", "Shishido", "contoh nama keluarga"),
+    ], [
+        ("宍道湖に行きました。", "Shinjiko ni ikimashita.", "Pergi ke Danau Shinji."),
+        ("宍戸さんに会いました。", "Shishido-san ni aimashita.", "Bertemu dengan Shishido."),
+    ]),
+    ("ho4_n1", "甫", ["ホ"], [], ["awal", "agung (nama)", "beginning", "great"], 7, "田", [
+        ("甫", "Hajime", "contoh nama pria"),
+        ("甫生", "hosei", "istilah klasik"),
+        ("台甫", "taiho", "gelar hormat klasik"),
+    ], [
+        ("甫さんに会いました。", "Hajime-san ni aimashita.", "Bertemu dengan Hajime."),
+        ("甫という字は名前によく使われます。", "Ho to iu ji wa namae ni yoku tsukawaremasu.", "Karakter \"ho\" ini sering dipakai dalam nama."),
+    ]),
+    ("shaku3_n1", "酌", ["シャク"], ["く-む"], ["menuang", "mempertimbangkan", "pour", "consider"], 10, "酉", [
+        ("酌む", "kumu", "menuang/mempertimbangkan"),
+        ("晩酌", "banshaku", "minum sake malam hari"),
+        ("酌量", "shakuryou", "pertimbangan/keringanan"),
+    ], [
+        ("お酌をしました。", "Oshaku o shimashita.", "Menuangkan minuman."),
+        ("情状酌量が認められました。", "Joujou shakuryou ga mitomeraremashita.", "Keringanan hukuman dikabulkan."),
+    ]),
+    ("san6_n1", "蚕", ["サン"], ["かいこ"], ["ulat sutra", "silkworm"], 10, "虫", [
+        ("蚕", "kaiko", "ulat sutra"),
+        ("養蚕", "yousan", "budidaya ulat sutra"),
+        ("蚕食", "sanshoku", "mencaplok sedikit demi sedikit"),
+    ], [
+        ("蚕を育てています。", "Kaiko o sodatete imasu.", "Memelihara ulat sutra."),
+        ("養蚕業です。", "Yousangyou desu.", "Ini industri budidaya ulat sutra."),
+    ]),
+    ("gou4_n1", "壕", ["ゴウ"], [], ["parit pertahanan", "trench", "moat"], 17, "土", [
+        ("壕", "gou", "parit"),
+        ("防空壕", "boukuugou", "bunker perlindungan udara"),
+        ("塹壕", "zangou", "parit perang"),
+    ], [
+        ("壕を掘りました。", "Gou o horimashita.", "Menggali parit."),
+        ("防空壕に避難しました。", "Boukuugou ni hinan shimashita.", "Berlindung di bunker."),
+    ]),
+    ("ki28_n1", "嬉", ["キ"], ["うれ-しい"], ["senang", "happy"], 15, "女", [
+        ("嬉しい", "ureshii", "senang"),
+        ("嬉々として", "kiki to shite", "dengan gembira"),
+        ("嬉遊曲", "kiyuukyoku", "divertimento (istilah musik)"),
+    ], [
+        ("とても嬉しいです。", "Totemo ureshii desu.", "Sangat senang."),
+        ("嬉々として働いています。", "Kiki to shite hataraite imasu.", "Bekerja dengan gembira."),
+    ]),
+    ("hayasu_n1", "囃", [], ["はや-す"], ["musik pengiring (dalam kata majemuk)", "accompaniment music"], 15, "口", [
+        ("囃子", "hayashi", "musik pengiring festival"),
+        ("お囃子", "ohayashi", "musik pengiring (sopan)"),
+        ("囃し立てる", "hayashitateru", "menyoraki"),
+    ], [
+        ("祭りの囃子です。", "Matsuri no hayashi desu.", "Ini musik pengiring festival."),
+        ("囃し立てました。", "Hayashitatemashita.", "Menyoraki."),
+    ]),
+    ("sou28_n1", "蒼", ["ソウ"], ["あお-い"], ["biru pucat", "pale blue", "green"], 13, "艸", [
+        ("蒼い", "aoi", "pucat kebiruan"),
+        ("蒼白", "souhaku", "pucat"),
+        ("蒼天", "souten", "langit biru"),
+    ], [
+        ("顔が蒼白です。", "Kao ga souhaku desu.", "Wajahnya pucat."),
+        ("蒼天が広がっています。", "Souten ga hirogatte imasu.", "Langit biru membentang."),
+    ]),
+    ("ji5_n1", "餌", ["ジ"], ["えさ", "え"], ["umpan", "pakan", "bait", "feed"], 14, "食", [
+        ("餌", "esa", "pakan/umpan"),
+        ("餌食", "ejiki", "mangsa"),
+        ("撒き餌", "makie", "umpan tebar"),
+    ], [
+        ("餌をあげました。", "Esa o agemashita.", "Memberi pakan."),
+        ("餌食になりました。", "Ejiki ni narimashita.", "Menjadi mangsa."),
+    ]),
+    ("yana_n1", "簗", [], ["やな"], ["bendungan penangkap ikan (nama tempat)", "fish weir"], 17, "竹", [
+        ("簗", "yana", "bendungan penangkap ikan"),
+        ("簗瀬", "Yanase", "contoh nama keluarga"),
+        ("簗場", "yanaba", "tempat bendungan ikan"),
+    ], [
+        ("簗で魚を捕りました。", "Yana de sakana o torimashita.", "Menangkap ikan dengan bendungan."),
+        ("簗瀬さんに会いました。", "Yanase-san ni aimashita.", "Bertemu dengan Yanase."),
+    ]),
+    ("ji6_n1", "峙", ["ジ"], [], ["berdiri tinggi (dalam kata majemuk)", "stand tall"], 9, "山", [
+        ("対峙", "taiji", "berhadapan/konfrontasi"),
+        ("峙つ", "sobadatsu", "berdiri menjulang"),
+        ("対峙状態", "taiji joutai", "keadaan berhadapan"),
+    ], [
+        ("対峙しています。", "Taiji shite imasu.", "Sedang berhadapan."),
+        ("両軍が対峙しました。", "Ryougun ga taiji shimashita.", "Kedua pasukan berhadapan."),
+    ]),
+    ("shuku5_n1", "粥", ["シュク"], ["かゆ"], ["bubur nasi", "rice porridge"], 12, "米", [
+        ("粥", "kayu", "bubur nasi"),
+        ("お粥", "okayu", "bubur nasi (sopan)"),
+        ("七草粥", "nanakusagayu", "bubur tujuh rempah"),
+    ], [
+        ("粥を食べました。", "Kayu o tabemashita.", "Makan bubur."),
+        ("七草粥を作りました。", "Nanakusagayu o tsukurimashita.", "Membuat bubur tujuh rempah."),
+    ]),
+    ("kan34_n1", "舘", ["カン"], ["たて"], ["gedung (variant 館)", "building"], 16, "舎", [
+        ("舘", "tate", "gedung"),
+        ("舘ひろし", "Tate Hiroshi", "nama aktor"),
+        ("舘野", "Tateno", "contoh nama keluarga"),
+    ], [
+        ("舘ひろしという俳優です。", "Tate Hiroshi to iu haiyuu desu.", "Ini aktor bernama Tate Hiroshi."),
+        ("舘という字を使う名字です。", "Tate to iu ji o tsukau myouji desu.", "Ini nama keluarga yang menggunakan karakter \"tate\"."),
+    ]),
+    ("tetsu5_n1", "銕", ["テツ"], [], ["besi (variant langka 鉄)", "iron"], 14, "金", [
+        ("銕", "tetsu", "besi (variant langka)"),
+        ("銕野", "Tetsuno", "contoh nama keluarga langka"),
+        ("銕造", "Tetsuzou", "contoh nama pria"),
+    ], [
+        ("銕という字は鉄の異体字です。", "Tetsu to iu ji wa tetsu no itaiji desu.", "Karakter \"tetsu\" ini adalah varian dari \"besi\"."),
+        ("銕野さんという名字は珍しいです。", "Tetsuno-san to iu myouji wa mezurashii desu.", "Nama keluarga \"Tetsuno\" jarang."),
+    ]),
+    ("suu4_n1", "鄒", ["スウ"], [], ["Negara Zou kuno (nama)", "Zou (ancient Chinese state)"], 13, "邑", [
+        ("鄒", "Suu", "marga Zou/Negara Zou kuno"),
+        ("鄒衍", "Suuen", "filsuf Tiongkok kuno"),
+        ("鄒国", "Suukoku", "Negara Zou"),
+    ], [
+        ("鄒は孟子の故郷です。", "Suu wa Moushi no kokyou desu.", "Zou adalah kampung halaman Mencius."),
+        ("鄒衍という思想家です。", "Suuen to iu shisouka desu.", "Ini pemikir bernama Zou Yan."),
+    ]),
+    ("nina_n1", "蜷", [], ["にな"], ["siput sungai", "river snail"], 13, "虫", [
+        ("蜷局", "todoguro", "melingkar seperti ular"),
+        ("蜷川", "Ninagawa", "contoh nama keluarga terkenal"),
+        ("蜷", "nina", "siput sungai"),
+    ], [
+        ("蜷川さんという有名な演出家です。", "Ninagawa-san to iu yuumei na enshutsuka desu.", "Ini sutradara terkenal bernama Ninagawa."),
+        ("蜷が川にいます。", "Nina ga kawa ni imasu.", "Ada siput sungai di sungai."),
+    ]),
+    ("ki29_n1", "暉", ["キ"], ["てる"], ["sinar matahari (nama)", "sunlight", "shine"], 13, "日", [
+        ("暉", "Teru", "contoh nama pria"),
+        ("光暉", "koki", "cahaya terang"),
+        ("暉一", "Kiichi", "contoh nama pria"),
+    ], [
+        ("暉さんに会いました。", "Teru-san ni aimashita.", "Bertemu dengan Teru."),
+        ("暉一という名前です。", "Kiichi to iu namae desu.", "Ini nama Kiichi."),
+    ]),
+    ("hou20_n1", "捧", ["ホウ"], ["ささ-げる"], ["mempersembahkan", "offer", "dedicate"], 11, "手", [
+        ("捧げる", "sasageru", "mempersembahkan"),
+        ("捧呈", "houtei", "penyerahan hormat"),
+        ("両手で捧げる", "ryoute de sasageru", "mempersembahkan dengan kedua tangan"),
+    ], [
+        ("命を捧げました。", "Inochi o sasagemashita.", "Mengorbankan nyawa."),
+        ("花束を捧げました。", "Hanataba o sasagemashita.", "Mempersembahkan buket bunga."),
+    ]),
+    ("han15_n1", "頒", ["ハン"], [], ["mendistribusikan", "distribute"], 13, "頁", [
+        ("頒布", "hanpu", "distribusi"),
+        ("頒価", "hanka", "harga distribusi"),
+        ("頒賜", "hanshi", "pemberian"),
+    ], [
+        ("頒布会です。", "Hanpukai desu.", "Ini acara distribusi."),
+        ("頒価500円です。", "Hanka gohyaku-en desu.", "Harga distribusinya 500 yen."),
+    ]),
+    ("shi25_n1", "只", ["シ"], ["ただ"], ["hanya", "gratis", "only", "free"], 5, "口", [
+        ("只", "tada", "hanya/gratis"),
+        ("只今", "tadaima", "sekarang juga/aku pulang"),
+        ("只管", "hitasura", "semata-mata"),
+    ], [
+        ("只今戻りました。", "Tadaima modorimashita.", "Aku pulang."),
+        ("只管努力しました。", "Hitasura doryoku shimashita.", "Berusaha semata-mata."),
+    ]),
+    ("shi26_n1", "肢", ["シ"], [], ["anggota tubuh", "limb"], 8, "肉", [
+        ("四肢", "shishi", "keempat anggota tubuh"),
+        ("肢体", "shitai", "tubuh dan anggota badan"),
+        ("選択肢", "sentakushi", "pilihan"),
+    ], [
+        ("四肢を動かしました。", "Shishi o ugokashimashita.", "Menggerakkan keempat anggota tubuh."),
+        ("選択肢がたくさんあります。", "Sentakushi ga takusan arimasu.", "Ada banyak pilihan."),
+    ]),
+    ("sou29_n1", "箏", ["ソウ"], [], ["alat musik koto (variant)", "koto"], 12, "竹", [
+        ("箏曲", "soukyoku", "musik koto"),
+        ("箏", "sou", "koto"),
+        ("箏演奏", "sou ensou", "permainan koto"),
+    ], [
+        ("箏曲を習っています。", "Soukyoku o naratte imasu.", "Belajar musik koto."),
+        ("箏を演奏しました。", "Sou o ensou shimashita.", "Memainkan koto."),
+    ]),
+    ("dan4_n1", "檀", ["ダン"], [], ["kayu cendana", "altar", "sandalwood"], 17, "木", [
+        ("檀家", "danka", "keluarga anggota kuil"),
+        ("檀那", "danna", "suami/tuan"),
+        ("白檀", "byakudan", "cendana putih"),
+    ], [
+        ("檀家になりました。", "Danka ni narimashita.", "Menjadi anggota keluarga kuil."),
+        ("白檀の香りです。", "Byakudan no kaori desu.", "Ini aroma cendana putih."),
+    ]),
+    ("koku4_n1", "鵠", ["コク"], ["くぐい"], ["angsa", "sasaran", "swan", "target"], 18, "鳥", [
+        ("正鵠", "seikoku", "sasaran tepat/inti masalah"),
+        ("鵠", "kugui", "angsa (arkais)"),
+        ("鴻鵠", "koukoku", "angsa besar (klasik)"),
+    ], [
+        ("正鵠を射ています。", "Seikoku o ite imasu.", "Tepat sasaran/mengenai inti."),
+        ("鴻鵠の志です。", "Koukoku no kokorozashi desu.", "Ini cita-cita besar."),
+    ]),
+    ("gai7_n1", "凱", ["ガイ"], [], ["kemenangan", "triumphant"], 12, "几", [
+        ("凱旋", "gaisen", "kemenangan pulang"),
+        ("凱歌", "gaika", "lagu kemenangan"),
+        ("凱風", "gaifuu", "angin selatan musim panas"),
+    ], [
+        ("凱旋しました。", "Gaisen shimashita.", "Pulang dengan kemenangan."),
+        ("凱歌を上げました。", "Gaika o agemashita.", "Menyanyikan lagu kemenangan."),
+    ]),
+    ("sui12_n1", "彗", ["スイ"], [], ["komet (dalam kata majemuk)", "comet"], 11, "彐", [
+        ("彗星", "suisei", "komet"),
+        ("彗星のごとく", "suisei no gotoku", "seperti komet/muncul tiba-tiba"),
+        ("彗掃", "suisou", "menyapu bersih (klasik)"),
+    ], [
+        ("彗星が現れました。", "Suisei ga arawaremashita.", "Komet muncul."),
+        ("彗星のごとく現れました。", "Suisei no gotoku arawaremashita.", "Muncul seperti komet."),
+    ]),
+    ("tou22_n1", "謄", ["トウ"], [], ["menyalin", "copy", "transcribe"], 17, "言", [
+        ("謄本", "touhon", "salinan resmi"),
+        ("謄写", "tousha", "penyalinan"),
+        ("戸籍謄本", "koseki touhon", "salinan akta keluarga"),
+    ], [
+        ("謄本を取りました。", "Touhon o torimashita.", "Mengambil salinan resmi."),
+        ("戸籍謄本が必要です。", "Koseki touhon ga hitsuyou desu.", "Diperlukan salinan akta keluarga."),
+    ]),
+    ("kan35_n1", "諌", ["カン"], ["いさ-める"], ["menasihati (variant 諫)", "admonish"], 15, "言", [
+        ("諌める", "isameru", "menasihati"),
+        ("諌言", "kangen", "nasihat jujur"),
+        ("直諌", "chokkan", "nasihat terus terang"),
+    ], [
+        ("主君を諌めました。", "Shukun o isamemashita.", "Menasihati tuan."),
+        ("諌言を受け入れました。", "Kangen o ukeiremashita.", "Menerima nasihat jujur."),
+    ]),
+    ("kashi2_n1", "樫", [], ["かし"], ["pohon ek", "oak"], 16, "木", [
+        ("樫", "kashi", "pohon ek"),
+        ("樫の木", "kashi no ki", "pohon ek"),
+        ("樫鳥", "kashidori", "burung jay Eurasia"),
+    ], [
+        ("樫の木があります。", "Kashi no ki ga arimasu.", "Ada pohon ek."),
+        ("樫の家具です。", "Kashi no kagu desu.", "Ini furnitur kayu ek."),
+    ]),
+    ("uwasa_n1", "噂", [], ["うわさ"], ["gosip", "rumor"], 15, "口", [
+        ("噂", "uwasa", "gosip/rumor"),
+        ("噂話", "uwasabanashi", "obrolan gosip"),
+        ("悪い噂", "warui uwasa", "gosip buruk"),
+    ], [
+        ("噂を聞きました。", "Uwasa o kikimashita.", "Mendengar gosip."),
+        ("噂話が広まりました。", "Uwasabanashi ga hiromarimashita.", "Obrolan gosip menyebar."),
+    ]),
+    ("seki5_n1", "脊", ["セキ"], [], ["tulang belakang", "spine"], 10, "肉", [
+        ("脊椎", "sekitsui", "tulang belakang"),
+        ("脊髄", "sekizui", "sumsum tulang belakang"),
+        ("脊柱", "sekichuu", "kolom tulang belakang"),
+    ], [
+        ("脊柱側弯症です。", "Sekichuu sokuwanshou desu.", "Ini skoliosis."),
+        ("脊椎を痛めました。", "Sekitsui o itamemashita.", "Melukai tulang belakang."),
+    ]),
+    ("hin5_n1", "牝", ["ヒン"], ["めす"], ["betina (variant 雌)", "female (animal)"], 6, "牛", [
+        ("牝", "mesu", "betina"),
+        ("牝馬", "bin-ba", "kuda betina"),
+        ("牝牛", "mesushi", "sapi betina"),
+    ], [
+        ("牝馬レースです。", "Bin-ba reesu desu.", "Ini balapan kuda betina."),
+        ("牝牛を飼っています。", "Mesushi o katte imasu.", "Memelihara sapi betina."),
+    ]),
+    ("shi27_n1", "梓", ["シ"], ["あずさ"], ["pohon catalpa", "menerbitkan (nama)", "catalpa tree"], 11, "木", [
+        ("梓", "azusa", "pohon catalpa"),
+        ("上梓", "joushi", "penerbitan buku"),
+        ("梓弓", "azusayumi", "busur kayu catalpa"),
+    ], [
+        ("上梓しました。", "Joushi shimashita.", "Menerbitkan buku."),
+        ("梓の木があります。", "Azusa no ki ga arimasu.", "Ada pohon catalpa."),
+    ]),
+    ("raku2_n1", "洛", ["ラク"], [], ["ibu kota (dalam kata majemuk, Kyoto)", "capital city"], 9, "水", [
+        ("上洛", "jouraku", "pergi ke ibu kota/Kyoto"),
+        ("洛中", "rakuchuu", "dalam kota Kyoto"),
+        ("洛陽", "Rakuyou", "Kota Luoyang Tiongkok"),
+    ], [
+        ("上洛しました。", "Jouraku shimashita.", "Pergi ke Kyoto."),
+        ("洛中に住んでいます。", "Rakuchuu ni sunde imasu.", "Tinggal di dalam kota Kyoto."),
+    ]),
+    ("dai_n1", "醍", ["ダイ", "タイ"], [], ["mentega murni (dalam kata majemuk)", "refined butter"], 16, "酉", [
+        ("醍醐味", "daigomi", "kenikmatan sejati"),
+        ("醍醐", "Daigo", "distrik di Kyoto/produk susu kuno"),
+        ("醍醐天皇", "Daigo Tennou", "Kaisar Daigo"),
+    ], [
+        ("醍醐味を味わいました。", "Daigomi o ajiwaimashita.", "Merasakan kenikmatan sejati."),
+        ("醍醐寺を訪れました。", "Daigoji o otozuremashita.", "Mengunjungi Kuil Daigo."),
+    ]),
+    ("sai12_n1", "砦", ["サイ"], ["とりで"], ["benteng", "fort"], 11, "石", [
+        ("砦", "toride", "benteng"),
+        ("山砦", "sansai", "benteng gunung"),
+        ("最後の砦", "saigo no toride", "benteng terakhir"),
+    ], [
+        ("砦を築きました。", "Toride o kizukimashita.", "Membangun benteng."),
+        ("最後の砦です。", "Saigo no toride desu.", "Ini benteng terakhir."),
+    ]),
+    ("chuu6_n1", "丑", ["チュウ"], ["うし"], ["shio kerbau", "ox zodiac"], 4, "一", [
+        ("丑", "ushi", "tahun kerbau dalam zodiak"),
+        ("丑年", "ushidoshi", "tahun kerbau"),
+        ("丑三つ時", "ushimitsudoki", "tengah malam (istilah kuno)"),
+    ], [
+        ("丑年生まれです。", "Ushidoshi umare desu.", "Lahir di tahun kerbau."),
+        ("丑三つ時に起きました。", "Ushimitsudoki ni okimashita.", "Bangun tengah malam."),
+    ]),
+    ("kotsu_n1", "笏", ["コツ"], ["しゃく"], ["tongkat upacara", "ceremonial baton"], 10, "竹", [
+        ("笏", "shaku", "tongkat upacara"),
+        ("笏を持つ", "shaku o motsu", "memegang tongkat upacara"),
+        ("木笏", "mokushaku", "tongkat kayu"),
+    ], [
+        ("笏を持っています。", "Shaku o motte imasu.", "Memegang tongkat upacara."),
+        ("神主が笏を持ちました。", "Kannushi ga shaku o mochimashita.", "Pendeta Shinto memegang tongkat upacara."),
+    ]),
+    ("ketsu4_n1", "蕨", ["ケツ"], ["わらび"], ["pakis", "bracken fern"], 15, "艸", [
+        ("蕨", "warabi", "pakis"),
+        ("蕨餅", "warabimochi", "kue mochi pakis"),
+        ("蕨市", "Warabi-shi", "nama kota di Saitama"),
+    ], [
+        ("蕨餅を食べました。", "Warabimochi o tabemashita.", "Makan kue mochi pakis."),
+        ("蕨市に住んでいます。", "Warabi-shi ni sunde imasu.", "Tinggal di kota Warabi."),
+    ]),
+    ("hanashi_n1", "噺", [], ["はなし"], ["cerita (rakugo)", "story"], 16, "口", [
+        ("噺家", "hanashika", "pencerita rakugo"),
+        ("人情噺", "ninjoubanashi", "cerita rakugo penuh emosi"),
+        ("噺", "hanashi", "cerita"),
+    ], [
+        ("噺家になりました。", "Hanashika ni narimashita.", "Menjadi pencerita rakugo."),
+        ("人情噺を聞きました。", "Ninjoubanashi o kikimashita.", "Mendengarkan cerita rakugo penuh emosi."),
+    ]),
+    ("jo5_n1", "抒", ["ジョ"], [], ["mengungkapkan (dalam kata majemuk)", "express"], 7, "手", [
+        ("抒情", "jojou", "lirisisme"),
+        ("抒情詩", "jojoushi", "puisi liris"),
+        ("抒情的", "jojouteki", "liris"),
+    ], [
+        ("抒情詩を書きました。", "Jojoushi o kakimashita.", "Menulis puisi liris."),
+        ("抒情的な曲です。", "Jojouteki na kyoku desu.", "Ini lagu yang liris."),
+    ]),
+    ("shi28_n1", "嗣", ["シ"], [], ["pewaris", "heir", "successor"], 13, "口", [
+        ("嗣子", "shishi", "anak pewaris"),
+        ("継嗣", "keishi", "penerus"),
+        ("皇嗣", "koushi", "pewaris takhta"),
+    ], [
+        ("嗣子として生まれました。", "Shishi toshite umaremashita.", "Lahir sebagai anak pewaris."),
+        ("皇嗣殿下です。", "Koushi denka desu.", "Ini Yang Mulia Putra Mahkota."),
+    ]),
+    ("wai2_n1", "隈", ["ワイ"], ["くま"], ["bayangan", "sudut tersembunyi", "shade", "nook"], 12, "阜", [
+        ("隈", "kuma", "bayangan/kantong mata"),
+        ("隈取り", "kumadori", "riasan kabuki"),
+        ("隈なく", "kumanaku", "di setiap sudut"),
+    ], [
+        ("目の下に隈があります。", "Me no shita ni kuma ga arimasu.", "Ada kantong mata."),
+        ("隈取りをしました。", "Kumadori o shimashita.", "Menerapkan riasan kabuki."),
+    ]),
+    ("kyou19_n1", "叶", ["キョウ"], ["かな-う"], ["terkabul", "grant", "fulfill"], 5, "口", [
+        ("叶う", "kanau", "terkabul/tercapai"),
+        ("叶える", "kanaeru", "mengabulkan"),
+        ("願いが叶う", "negai ga kanau", "permohonan terkabul"),
+    ], [
+        ("夢が叶いました。", "Yume ga kanaimashita.", "Mimpi menjadi kenyataan."),
+        ("願いを叶えました。", "Negai o kanaemashita.", "Mengabulkan permohonan."),
+    ]),
+    ("sei15_n1", "凄", ["セイ"], ["すご-い"], ["hebat", "mengerikan", "terrific", "dreadful"], 10, "冫", [
+        ("凄い", "sugoi", "hebat/luar biasa"),
+        ("凄惨", "seisan", "mengerikan"),
+        ("凄腕", "sugoude", "ahli/jago"),
+    ], [
+        ("凄い記録です。", "Sugoi kiroku desu.", "Ini rekor yang hebat."),
+        ("凄惨な事件でした。", "Seisan na jiken deshita.", "Ini kasus yang mengerikan."),
+    ]),
+    ("shio_n1", "汐", [], ["しお"], ["air pasang malam (variant 潮)", "evening tide"], 6, "水", [
+        ("汐", "shio", "air pasang"),
+        ("汐留", "Shiodome", "nama daerah di Tokyo"),
+        ("汐風", "shiokaze", "angin laut"),
+    ], [
+        ("汐留に行きました。", "Shiodome ni ikimashita.", "Pergi ke Shiodome."),
+        ("汐風が心地よいです。", "Shiokaze ga kokochiyoi desu.", "Angin lautnya menyenangkan."),
+    ]),
+    ("ken17_n1", "絢", ["ケン"], ["あや"], ["pola warna-warni (dalam kata majemuk)", "colorful pattern"], 12, "糸", [
+        ("絢爛", "kenran", "gemerlap"),
+        ("絢子", "Ayako", "contoh nama wanita"),
+        ("絢辻", "Ayatsuji", "contoh nama"),
+    ], [
+        ("絢爛豪華です。", "Kenran gouka desu.", "Ini gemerlap dan mewah."),
+        ("絢子さんに会いました。", "Ayako-san ni aimashita.", "Bertemu dengan Ayako."),
+    ]),
+    ("kou38_n1", "叩", ["コウ"], ["たた-く"], ["memukul", "hit", "strike"], 5, "口", [
+        ("叩く", "tataku", "memukul/mengetuk"),
+        ("叩き台", "tatakidai", "draf awal"),
+        ("叩き売り", "tatakiuri", "jual obral"),
+    ], [
+        ("ドアを叩きました。", "Doa o tatakimashita.", "Mengetuk pintu."),
+        ("叩き台を作りました。", "Tatakidai o tsukurimashita.", "Membuat draf awal."),
+    ]),
+    ("shitsu6_n1", "嫉", ["シツ"], ["ねた-む"], ["cemburu", "jealous"], 13, "女", [
+        ("嫉妬", "shitto", "kecemburuan"),
+        ("嫉む", "netamu", "iri hati"),
+        ("嫉視", "shisshi", "memandang dengan iri"),
+    ], [
+        ("嫉妬しています。", "Shitto shite imasu.", "Sedang cemburu."),
+        ("嫉んでいます。", "Netande imasu.", "Iri hati."),
+    ]),
+    ("saku6_n1", "朔", ["サク"], [], ["bulan baru", "utara", "new moon", "north"], 10, "月", [
+        ("朔日", "tsuitachi", "tanggal 1"),
+        ("朔風", "sakufuu", "angin utara"),
+        ("朔望", "sakubou", "siklus bulan baru-purnama"),
+    ], [
+        ("朔日です。", "Tsuitachi desu.", "Ini tanggal 1."),
+        ("朔風が吹いています。", "Sakufuu ga fuite imasu.", "Angin utara bertiup."),
+    ]),
+    ("sai13_n1", "蔡", ["サイ"], [], ["marga Cai", "Cai (surname)"], 14, "艸", [
+        ("蔡", "Sai", "marga Cai"),
+        ("蔡倫", "Sairin", "Cai Lun, penemu kertas"),
+        ("蔡国", "Saikoku", "Negara Cai kuno"),
+    ], [
+        ("蔡倫は紙を発明しました。", "Sairin wa kami o hatsumei shimashita.", "Cai Lun menemukan kertas."),
+        ("蔡という姓です。", "Sai to iu sei desu.", "Ini marga Cai."),
+    ]),
+    ("shitsu7_n1", "膝", ["シツ"], ["ひざ"], ["lutut", "knee"], 15, "肉", [
+        ("膝", "hiza", "lutut"),
+        ("膝小僧", "hizakozou", "lutut (informal)"),
+        ("膝枕", "hizamakura", "bantal paha"),
+    ], [
+        ("膝が痛いです。", "Hiza ga itai desu.", "Lutut sakit."),
+        ("膝枕をしました。", "Hizamakura o shimashita.", "Memberikan bantal paha."),
+    ]),
+    ("shou42_n1", "鍾", ["ショウ"], [], ["berkumpul", "lonceng (nama)", "gather", "bell"], 17, "金", [
+        ("鍾乳洞", "shounyoudou", "gua stalaktit"),
+        ("鍾愛", "shouai", "kasih sayang mendalam"),
+        ("鍾馗", "Shouki", "dewa pengusir setan"),
+    ], [
+        ("鍾乳洞を探検しました。", "Shounyoudou o tanken shimashita.", "Menjelajahi gua stalaktit."),
+        ("鍾馗様です。", "Shouki-sama desu.", "Ini Dewa Shouki."),
+    ]),
+    ("kyuu14_n1", "仇", ["キュウ"], ["あだ"], ["musuh", "dendam", "enemy", "grudge"], 4, "人", [
+        ("仇", "ada", "musuh/dendam"),
+        ("仇討ち", "adauchi", "balas dendam"),
+        ("仇敵", "kyuuteki", "musuh bebuyutan"),
+    ], [
+        ("仇を討ちました。", "Ada o uchimashita.", "Membalas dendam."),
+        ("仇敵として知られています。", "Kyuuteki toshite shirarete imasu.", "Dikenal sebagai musuh bebuyutan."),
+    ]),
+    ("ka20_n1", "伽", ["カ"], [], ["menemani (dalam kata majemuk)", "companion", "entertain"], 7, "人", [
+        ("御伽話", "otogibanashi", "dongeng"),
+        ("伽藍", "garan", "kompleks kuil Buddha"),
+        ("夜伽", "yotogi", "menemani malam hari"),
+    ], [
+        ("御伽話を読みました。", "Otogibanashi o yomimashita.", "Membaca dongeng."),
+        ("伽藍を見学しました。", "Garan o kengaku shimashita.", "Mengunjungi kompleks kuil."),
+    ]),
+    ("i13_n1", "夷", ["イ"], [], ["orang barbar", "barbarian"], 6, "大", [
+        ("夷狄", "iteki", "orang barbar"),
+        ("蝦夷", "Ezo", "sebutan lama untuk Hokkaido/suku Ainu"),
+        ("攘夷", "jouI", "mengusir orang asing"),
+    ], [
+        ("蝦夷地でした。", "Ezochi deshita.", "Ini adalah tanah Ezo."),
+        ("尊皇攘夷という思想です。", "Sonnou jouI to iu shisou desu.", "Ini adalah paham \"hormati kaisar, usir orang asing\"."),
+    ]),
+    ("shi29_n1", "恣", ["シ"], [], ["sewenang-wenang (dalam kata majemuk)", "self-indulgent"], 10, "心", [
+        ("恣意的", "shiiteki", "sewenang-wenang"),
+        ("放恣", "houshi", "tidak terkendali"),
+        ("恣行", "shikou", "bertindak sewenang-wenang"),
+    ], [
+        ("恣意的な判断です。", "Shiiteki na handan desu.", "Ini penilaian yang sewenang-wenang."),
+        ("恣意的に決めないでください。", "Shiiteki ni kimenaide kudasai.", "Jangan memutuskan secara sewenang-wenang."),
+    ]),
+    ("mei3_n1", "瞑", ["メイ"], ["つぶ-る"], ["memejamkan mata (dalam kata majemuk)", "close eyes"], 15, "目", [
+        ("瞑想", "meisou", "meditasi"),
+        ("瞑目", "meimoku", "memejamkan mata/meninggal dengan tenang"),
+        ("瞑る", "tsuburu", "memejamkan mata"),
+    ], [
+        ("瞑想をしています。", "Meisou o shite imasu.", "Sedang bermeditasi."),
+        ("瞑目しました。", "Meimoku shimashita.", "Memejamkan mata (meninggal dengan tenang)."),
+    ]),
+    ("bo6_n1", "畝", ["ボ"], ["うね"], ["bedengan", "satuan luas", "ridge", "are"], 10, "田", [
+        ("畝", "une", "bedengan"),
+        ("畝織り", "uneori", "tenunan bergaris"),
+        ("一畝", "ippo", "satu are (satuan luas)"),
+    ], [
+        ("畝を作りました。", "Une o tsukurimashita.", "Membuat bedengan."),
+        ("畝織りの生地です。", "Uneori no kiji desu.", "Ini kain tenunan bergaris."),
+    ]),
+    ("shou43_n1", "抄", ["ショウ"], [], ["kutipan", "excerpt", "summary"], 7, "手", [
+        ("抄録", "shouroku", "ringkasan"),
+        ("抄本", "shouhon", "salinan sebagian"),
+        ("抜抄", "basshou", "kutipan terpilih"),
+    ], [
+        ("抄録を書きました。", "Shouroku o kakimashita.", "Menulis ringkasan."),
+        ("戸籍抄本です。", "Koseki shouhon desu.", "Ini salinan sebagian akta keluarga."),
+    ]),
+    ("kou39_n1", "杭", ["コウ"], ["くい"], ["pancang", "stake", "pile"], 8, "木", [
+        ("杭", "kui", "pancang"),
+        ("杭打ち", "kuiuchi", "pemancangan"),
+        ("橋杭", "hashigui", "tiang pancang jembatan"),
+    ], [
+        ("杭を打ちました。", "Kui o uchimashita.", "Memancangkan tiang."),
+        ("杭打ち工事です。", "Kuiuchi kouji desu.", "Ini pekerjaan pemancangan."),
+    ]),
+    ("guu2_n1", "寓", ["グウ"], [], ["alegori", "tempat tinggal", "allegory", "dwelling"], 12, "宀", [
+        ("寓話", "guuwa", "fabel/alegori"),
+        ("寓意", "guui", "makna tersirat"),
+        ("寄寓", "kiguu", "menumpang tinggal"),
+    ], [
+        ("寓話を読みました。", "Guuwa o yomimashita.", "Membaca fabel."),
+        ("寓意が込められています。", "Guui ga komerarete imasu.", "Mengandung makna tersirat."),
+    ]),
+    ("men2_n1", "麺", ["メン"], [], ["mi", "noodle"], 16, "麦", [
+        ("麺", "men", "mi"),
+        ("麺類", "menrui", "jenis mi"),
+        ("麺棒", "menbou", "penggilas adonan"),
+    ], [
+        ("麺を食べました。", "Men o tabemashita.", "Makan mi."),
+        ("麺類が好きです。", "Menrui ga suki desu.", "Suka jenis mi."),
+    ]),
+    ("tai10_n1", "戴", ["タイ"], [], ["menerima dengan hormat (dalam kata majemuk)", "receive with respect"], 17, "戈", [
+        ("戴く", "itadaku", "menerima dengan hormat"),
+        ("推戴", "suitai", "mengangkat sebagai pemimpin"),
+        ("戴冠式", "taikanshiki", "upacara penobatan"),
+    ], [
+        ("戴冠式が行われました。", "Taikanshiki ga okonawaremashita.", "Upacara penobatan dilaksanakan."),
+        ("推戴されました。", "Suitai saremashita.", "Diangkat sebagai pemimpin."),
+    ]),
+    ("sou30_n1", "爽", ["ソウ"], ["さわ-やか"], ["segar", "refreshing"], 11, "大", [
+        ("爽やか", "sawayaka", "segar/menyegarkan"),
+        ("爽快", "soukai", "menyegarkan"),
+        ("颯爽", "sassou", "gagah dan segar"),
+    ], [
+        ("爽やかな朝です。", "Sawayaka na asa desu.", "Ini pagi yang segar."),
+        ("爽快な気分です。", "Soukai na kibun desu.", "Ini perasaan yang menyegarkan."),
+    ]),
+    ("suso_n1", "裾", [], ["すそ"], ["kelim", "hem"], 13, "衣", [
+        ("裾", "suso", "kelim"),
+        ("裾野", "susono", "kaki gunung/lereng"),
+        ("山裾", "yamasuso", "kaki gunung"),
+    ], [
+        ("裾が長いです。", "Suso ga nagai desu.", "Kelimnya panjang."),
+        ("裾野が広がっています。", "Susono ga hirogatte imasu.", "Kaki gunungnya membentang."),
+    ]),
+    ("rei8_n1", "黎", ["レイ"], [], ["fajar", "banyak (dalam kata majemuk)", "dawn", "multitude"], 15, "黍", [
+        ("黎明", "reimei", "fajar"),
+        ("黎明期", "reimeiki", "masa awal"),
+        ("黎民", "reimin", "rakyat jelata"),
+    ], [
+        ("黎明期でした。", "Reimeiki deshita.", "Ini adalah masa awal."),
+        ("黎明を迎えました。", "Reimei o mukaemashita.", "Menyambut fajar."),
+    ]),
+    ("da5_n1", "惰", ["ダ"], [], ["malas", "lazy", "inertia"], 12, "心", [
+        ("惰性", "dasei", "inersia/kebiasaan"),
+        ("怠惰", "taida", "kemalasan"),
+        ("惰眠", "damin", "tidur malas-malasan"),
+    ], [
+        ("惰性で続けています。", "Dasei de tsuzukete imasu.", "Melanjutkan karena kebiasaan/inersia."),
+        ("怠惰な生活です。", "Taida na seikatsu desu.", "Ini kehidupan yang malas."),
+    ]),
+    ("za2_n1", "坐", ["ザ"], ["すわ-る"], ["duduk (variant 座)", "sit"], 7, "土", [
+        ("坐る", "suwaru", "duduk"),
+        ("坐禅", "zazen", "meditasi duduk"),
+        ("正坐", "seiza", "duduk formal"),
+    ], [
+        ("坐禅を組みました。", "Zazen o kumimashita.", "Melakukan meditasi duduk."),
+        ("正坐しました。", "Seiza shimashita.", "Duduk dengan formal."),
+    ]),
+    ("shin19_n1", "鍼", ["シン"], ["はり"], ["jarum akupuntur", "acupuncture needle"], 17, "金", [
+        ("鍼", "hari", "jarum akupuntur"),
+        ("鍼灸", "shinkyuu", "akupuntur dan moksibusi"),
+        ("鍼治療", "harichiryou", "terapi akupuntur"),
+    ], [
+        ("鍼を受けました。", "Hari o ukemashita.", "Menjalani akupuntur."),
+        ("鍼灸院に行きました。", "Shinkyuuin ni ikimashita.", "Pergi ke klinik akupuntur."),
+    ]),
+    ("ban3_n1", "蛮", ["バン"], [], ["barbar", "barbarian"], 12, "虫", [
+        ("野蛮", "yaban", "biadab"),
+        ("蛮行", "bankou", "tindakan biadab"),
+        ("南蛮", "nanban", "orang selatan/Eropa"),
+    ], [
+        ("野蛮な行為です。", "Yaban na koui desu.", "Ini tindakan biadab."),
+        ("南蛮貿易でした。", "Nanban boueki deshita.", "Ini perdagangan dengan orang Eropa."),
+    ]),
+    ("hanawa_n1", "塙", [], ["はなわ"], ["tanah keras (nama keluarga)", "hard ground"], 13, "土", [
+        ("塙", "Hanawa", "contoh nama keluarga terkenal"),
+        ("塙保己一", "Hanawa Hokiichi", "tokoh sejarah"),
+        ("塙田", "Hanawada", "contoh nama tempat"),
+    ], [
+        ("塙保己一は有名な学者です。", "Hanawa Hokiichi wa yuumei na gakusha desu.", "Hanawa Hokiichi adalah cendekiawan terkenal."),
+        ("塙さんに会いました。", "Hanawa-san ni aimashita.", "Bertemu dengan Hanawa."),
+    ]),
+    ("sae_n1", "冴", [], ["さ-える"], ["jernih", "mahir", "clear", "skillful"], 7, "冫", [
+        ("冴える", "saeru", "jernih/tajam pikiran"),
+        ("冴え渡る", "saewataru", "sangat jernih"),
+        ("冴えない", "saenai", "kurang bersinar/membosankan"),
+    ], [
+        ("頭が冴えています。", "Atama ga saete imasu.", "Pikirannya jernih."),
+        ("冴えない毎日です。", "Saenai mainichi desu.", "Ini hari-hari yang membosankan."),
+    ]),
+    ("ou9_n1", "旺", ["オウ"], [], ["makmur", "terang", "prosperous", "bright"], 8, "日", [
+        ("旺盛", "ousei", "penuh semangat/subur"),
+        ("旺文社", "Oubunsha", "nama penerbit"),
+        ("旺然", "ouzen", "cemerlang"),
+    ], [
+        ("食欲が旺盛です。", "Shokuyoku ga ousei desu.", "Nafsu makannya besar."),
+        ("旺文社の辞書です。", "Oubunsha no jisho desu.", "Ini kamus terbitan Obunsha."),
+    ]),
+    ("i14_n1", "葦", ["イ"], ["あし"], ["alang-alang", "reed"], 12, "艸", [
+        ("葦", "ashi", "alang-alang"),
+        ("葦原", "ashihara", "ladang alang-alang"),
+        ("葦笛", "ashibue", "seruling alang-alang"),
+    ], [
+        ("葦が生えています。", "Ashi ga haete imasu.", "Alang-alang tumbuh."),
+        ("葦原が広がっています。", "Ashihara ga hirogatte imasu.", "Ladang alang-alang membentang."),
+    ]),
+    ("iso2_n1", "礒", [], ["いそ"], ["pantai berbatu (variant 磯, nama keluarga)", "rocky shore"], 18, "石", [
+        ("礒", "iso", "pantai berbatu"),
+        ("礒野", "Isono", "contoh nama keluarga"),
+        ("礒部", "Isobe", "contoh nama keluarga"),
+    ], [
+        ("礒野さんという名前です。", "Isono-san to iu namae desu.", "Ini nama Isono."),
+        ("礒部さんに会いました。", "Isobe-san ni aimashita.", "Bertemu dengan Isobe."),
+    ]),
+    ("kan36_n1", "咸", ["カン"], [], ["semua (arkais, nama)", "all", "complete"], 9, "口", [
+        ("咸鏡道", "Kankyoudou", "provinsi Korea Utara"),
+        ("咸陽", "Kan-you", "ibu kota Dinasti Qin kuno"),
+        ("咸和", "Kanwa", "nama era historis"),
+    ], [
+        ("咸陽は秦の都でした。", "Kan-you wa Shin no miyako deshita.", "Xianyang adalah ibu kota Dinasti Qin."),
+        ("咸鏡道という地名です。", "Kankyoudou to iu chimei desu.", "Ini nama tempat Hamgyong."),
+    ]),
+    ("hou21_n1", "萌", ["ホウ"], ["きざ-す", "も-える"], ["bertunas", "sprout", "budding"], 11, "艸", [
+        ("萌え", "moe", "bertunas"),
+        ("萌芽", "houga", "tunas/awal mula"),
+        ("萌黄色", "moegiiro", "warna hijau muda"),
+    ], [
+        ("萌芽が見られます。", "Houga ga miraremasu.", "Terlihat tunas."),
+        ("萌黄色の葉です。", "Moegiiro no ha desu.", "Ini daun berwarna hijau muda."),
+    ]),
+    ("kyou20_n1", "饗", ["キョウ"], ["あえ"], ["menjamu", "feast", "entertain"], 22, "食", [
+        ("饗宴", "kyouen", "jamuan/perjamuan"),
+        ("饗応", "kyouou", "menjamu"),
+        ("供饗", "kugyou", "sesajen"),
+    ], [
+        ("饗宴が開かれました。", "Kyouen ga hirakaremashita.", "Jamuan diadakan."),
+        ("饗応を受けました。", "Kyouou o ukemashita.", "Dijamu."),
+    ]),
+    ("wai3_n1", "歪", ["ワイ"], ["ゆが-む", "いびつ"], ["bengkok", "terdistorsi", "distorted"], 9, "一", [
+        ("歪む", "yugamu", "bengkok/terdistorsi"),
+        ("歪曲", "waikyoku", "distorsi"),
+        ("歪み", "yugami", "penyimpangan/distorsi"),
+    ], [
+        ("顔が歪みました。", "Kao ga yugamimashita.", "Wajahnya berkerut."),
+        ("事実を歪曲しました。", "Jijitsu o waikyoku shimashita.", "Mendistorsi fakta."),
+    ]),
+    ("mei4_n1", "冥", ["メイ", "ミョウ"], [], ["gelap", "alam baka", "dark", "underworld"], 10, "冖", [
+        ("冥土", "meido", "alam baka"),
+        ("冥福", "meifuku", "kebahagiaan di akhirat"),
+        ("冥利", "myouri", "berkah tersembunyi"),
+    ], [
+        ("冥福を祈ります。", "Meifuku o inorimasu.", "Mendoakan kebahagiaan di akhirat."),
+        ("冥利に尽きます。", "Myouri ni tsukimasu.", "Ini berkah yang luar biasa."),
+    ]),
+    ("shi30_n1", "偲", ["シ"], ["しの-ぶ"], ["mengenang (nama)", "reminisce"], 11, "人", [
+        ("偲ぶ", "shinobu", "mengenang"),
+        ("偲び会", "shinobikai", "acara mengenang almarhum"),
+        ("偲", "Shinobu", "contoh nama"),
+    ], [
+        ("故人を偲びました。", "Kojin o shinobimashita.", "Mengenang almarhum."),
+        ("偲び会を開きました。", "Shinobikai o hirakimashita.", "Mengadakan acara mengenang."),
+    ]),
+    ("ichi_n1", "壱", ["イチ"], [], ["satu (formal, dokumen)", "one"], 7, "士", [
+        ("壱万円", "ichiman-en", "sepuluh ribu yen (formal)"),
+        ("壱岐", "Iki", "nama pulau"),
+        ("第壱", "dai-ichi", "nomor satu (formal)"),
+    ], [
+        ("金壱万円也。", "Kin ichiman-en nari.", "Uang sejumlah sepuluh ribu yen (formal)."),
+        ("壱岐島に行きました。", "Iki-jima ni ikimashita.", "Pergi ke Pulau Iki."),
+    ]),
+    ("ru_n1", "瑠", ["ル"], [], ["lapis lazuli (dalam kata majemuk)"], 14, "玉", [
+        ("瑠璃", "ruri", "lapis lazuli"),
+        ("瑠璃色", "ruriiro", "warna biru lapis lazuli"),
+        ("浄瑠璃", "joururi", "teater boneka tradisional Jepang"),
+    ], [
+        ("瑠璃色の海です。", "Ruriiro no umi desu.", "Ini laut berwarna biru lapis lazuli."),
+        ("浄瑠璃を見ました。", "Joururi o mimashita.", "Menonton teater boneka joururi."),
+    ]),
+    ("kyuu15_n1", "韮", [], ["にら"], ["bawang kucai", "garlic chives"], 17, "韭", [
+        ("韮", "nira", "bawang kucai"),
+        ("韮山", "Nirayama", "nama tempat di Shizuoka"),
+        ("韮崎", "Nirasaki", "nama kota di Yamanashi"),
+    ], [
+        ("韮を炒めました。", "Nira o itamemashita.", "Menumis bawang kucai."),
+        ("韮崎市に行きました。", "Nirasaki-shi ni ikimashita.", "Pergi ke kota Nirasaki."),
+    ]),
+    ("sou31_n1", "漕", ["ソウ"], ["こ-ぐ"], ["mendayung", "row (boat)"], 14, "水", [
+        ("漕ぐ", "kogu", "mendayung"),
+        ("競漕", "kyousou", "lomba dayung"),
+        ("漕艇", "soutei", "olahraga dayung"),
+    ], [
+        ("ボートを漕ぎました。", "Booto o kogimashita.", "Mendayung perahu."),
+        ("競漕大会です。", "Kyousou taikai desu.", "Ini kompetisi lomba dayung."),
+    ]),
+    ("sho5_n1", "杵", ["ショ"], ["きね"], ["alu", "pestle"], 8, "木", [
+        ("杵", "kine", "alu"),
+        ("杵つき", "kinetsuki", "menumbuk dengan alu"),
+        ("石杵", "ishikine", "alu batu"),
+    ], [
+        ("杵で餅をつきました。", "Kine de mochi o tsukimashita.", "Menumbuk mochi dengan alu."),
+        ("杵つきの餅です。", "Kinetsuki no mochi desu.", "Ini mochi tumbukan alu."),
+    ]),
+    ("shou44_n1", "薔", ["ショウ", "シ"], [], ["mawar (dalam kata majemuk)", "rose"], 15, "艸", [
+        ("薔薇", "bara", "bunga mawar"),
+        ("薔薇色", "barairo", "warna mawar/merah muda"),
+        ("野薔薇", "nobara", "mawar liar"),
+    ], [
+        ("薔薇の花束です。", "Bara no hanataba desu.", "Ini buket bunga mawar."),
+        ("薔薇色の人生です。", "Barairo no jinsei desu.", "Ini kehidupan yang cerah."),
+    ]),
+    ("kou40_n1", "膠", ["コウ"], ["にかわ"], ["lem hewani", "glue"], 15, "肉", [
+        ("膠", "nikawa", "lem hewani"),
+        ("膠着", "kouchaku", "kebuntuan/kemandekan"),
+        ("膠質", "koushitsu", "koloid"),
+    ], [
+        ("膠着状態です。", "Kouchaku joutai desu.", "Ini keadaan buntu."),
+        ("膠で接着しました。", "Nikawa de setchaku shimashita.", "Direkatkan dengan lem hewani."),
+    ]),
+    ("in8_n1", "允", ["イン"], [], ["menyetujui", "tulus (nama)", "consent", "sincere"], 4, "儿", [
+        ("允許", "inkyo", "persetujuan"),
+        ("允", "Makoto", "contoh nama pria"),
+        ("允恭天皇", "Ingyou Tennou", "Kaisar Ingyo"),
+    ], [
+        ("允許されました。", "Inkyo saremashita.", "Disetujui."),
+        ("允恭天皇の時代です。", "Ingyou Tennou no jidai desu.", "Ini era Kaisar Ingyo."),
+    ]),
+    ("shin20_n1", "眞", ["シン"], ["まこと"], ["benar (bentuk tradisional 真)", "true"], 10, "目", [
+        ("眞", "Makoto", "contoh nama (variant tradisional dari 真)"),
+        ("眞紀子", "Makiko", "contoh nama wanita"),
+        ("写眞", "shashin", "foto (variant tradisional)"),
+    ], [
+        ("眞という字は真の異体字です。", "Shin to iu ji wa shin no itaiji desu.", "Karakter ini adalah varian dari \"shin/benar\"."),
+        ("眞紀子さんに会いました。", "Makiko-san ni aimashita.", "Bertemu dengan Makiko."),
+    ]),
+    ("mou6_n1", "蒙", ["モウ"], [], ["bodoh", "Mongolia", "ignorant"], 13, "艸", [
+        ("蒙古", "Mouko", "Mongolia"),
+        ("啓蒙", "keimou", "pencerahan"),
+        ("無知蒙昧", "muchi moumai", "sangat bodoh"),
+    ], [
+        ("蒙古襲来です。", "Mouko shuurai desu.", "Ini invasi Mongol."),
+        ("啓蒙思想です。", "Keimou shisou desu.", "Ini pemikiran pencerahan."),
+    ]),
+    ("ban4_n1", "蕃", ["バン"], [], ["subur", "asing", "flourish", "foreign"], 15, "艸", [
+        ("蕃殖", "hanshoku", "berkembang biak"),
+        ("蕃族", "banzoku", "suku asing (istilah lama)"),
+        ("蕃社", "bansha", "desa suku asli Taiwan"),
+    ], [
+        ("蕃殖しました。", "Hanshoku shimashita.", "Berkembang biak."),
+        ("蕃族という呼称でした。", "Banzoku to iu koshou deshita.", "Ini sebutan \"suku asing\"."),
+    ]),
+    ("ton4_n1", "呑", ["ドン"], ["の-む"], ["menelan (variant 飲む)", "swallow"], 7, "口", [
+        ("呑む", "nomu", "menelan/minum"),
+        ("鵜呑み", "unomi", "menelan bulat-bulat"),
+        ("呑気", "nonki", "santai"),
+    ], [
+        ("呑気な性格です。", "Nonki na seikaku desu.", "Kepribadian yang santai."),
+        ("一気に呑みました。", "Ikki ni nomimashita.", "Menenggak sekaligus."),
+    ]),
+    ("kou41_n1", "侯", ["コウ"], [], ["bangsawan", "marquis", "lord"], 9, "人", [
+        ("諸侯", "shokou", "para bangsawan feodal"),
+        ("侯爵", "koushaku", "marquis"),
+        ("王侯", "ouko", "raja dan bangsawan"),
+    ], [
+        ("諸侯が集まりました。", "Shokou ga atsumarimashita.", "Para bangsawan berkumpul."),
+        ("侯爵になりました。", "Koushaku ni narimashita.", "Menjadi marquis."),
+    ]),
+    ("tai11_n1", "碓", ["タイ"], ["うす"], ["lesung batu (nama tempat)", "mortar (stone)"], 13, "石", [
+        ("碓氷峠", "Usui Touge", "nama tempat terkenal di Nagano"),
+        ("碓", "usu", "lesung batu"),
+        ("碓井", "Usui", "contoh nama keluarga"),
+    ], [
+        ("碓氷峠を越えました。", "Usui Touge o koemashita.", "Melewati Pass Usui."),
+        ("碓氷峠は有名な峠です。", "Usui Touge wa yuumei na touge desu.", "Pass Usui adalah jalur gunung terkenal."),
+    ]),
+    ("mei5_n1", "茗", ["メイ"], [], ["teh (dalam kata majemuk, nama)", "tea"], 9, "艸", [
+        ("茗荷", "myouga", "jahe mioga"),
+        ("茗渓", "Meikei", "nama tempat"),
+        ("茗園", "meien", "kebun teh"),
+    ], [
+        ("茗荷を食べました。", "Myouga o tabemashita.", "Makan mioga."),
+        ("茗荷を薬味にしました。", "Myouga o yakumi ni shimashita.", "Menjadikan mioga sebagai bumbu pelengkap."),
+    ]),
+    ("roku2_n1", "麓", ["ロク"], ["ふもと"], ["kaki gunung", "foot of mountain"], 19, "木", [
+        ("麓", "fumoto", "kaki gunung"),
+        ("山麓", "sanroku", "kaki gunung (formal)"),
+        ("麓村", "fumotomura", "desa kaki gunung"),
+    ], [
+        ("山の麓に住んでいます。", "Yama no fumoto ni sunde imasu.", "Tinggal di kaki gunung."),
+        ("山麓地帯です。", "Sanroku chitai desu.", "Ini wilayah kaki gunung."),
+    ]),
+    ("hin6_n1", "瀕", ["ヒン"], [], ["di ambang (dalam kata majemuk)", "verge", "brink"], 19, "水", [
+        ("瀕死", "hinshi", "sekarat/di ambang kematian"),
+        ("瀕する", "hinsuru", "mendekati/berada di ambang"),
+        ("瀕海", "hinkai", "dekat laut"),
+    ], [
+        ("瀕死の重傷でした。", "Hinshi no juushou deshita.", "Ini adalah luka parah yang mengancam jiwa."),
+        ("危機に瀕しています。", "Kiki ni hinshite imasu.", "Berada di ambang krisis."),
+    ]),
+    ("ji7_n1", "蒔", ["ジ"], ["ま-く"], ["menanam", "sow", "plant"], 13, "艸", [
+        ("蒔く", "maku", "menanam/menabur"),
+        ("蒔絵", "makie", "kerajinan lukis emas Jepang"),
+        ("種蒔き", "tanemaki", "menabur benih"),
+    ], [
+        ("種を蒔きました。", "Tane o makimashita.", "Menabur benih."),
+        ("蒔絵の器です。", "Makie no utsuwa desu.", "Ini wadah kerajinan makie."),
+    ]),
+    ("ri7_n1", "鯉", ["リ"], ["こい"], ["ikan koi", "carp"], 18, "魚", [
+        ("鯉", "koi", "ikan koi"),
+        ("鯉のぼり", "koinobori", "bendera ikan koi"),
+        ("錦鯉", "nishikigoi", "ikan koi"),
+    ], [
+        ("鯉が泳いでいます。", "Koi ga oyoide imasu.", "Ikan koi berenang."),
+        ("鯉のぼりを揚げました。", "Koinobori o agemashita.", "Mengibarkan bendera ikan koi."),
+    ]),
+    ("ju7_n1", "竪", ["ジュ"], ["たて"], ["vertikal (variant 縦)", "vertical"], 13, "立", [
+        ("竪琴", "tategoto", "harpa"),
+        ("竪穴", "tateana", "lubang vertikal"),
+        ("竪坑", "juukou", "poros tambang vertikal"),
+    ], [
+        ("竪琴を演奏しました。", "Tategoto o ensou shimashita.", "Memainkan harpa."),
+        ("竪穴住居です。", "Tateana juukyo desu.", "Ini rumah lubang vertikal."),
+    ]),
+    ("ko13_n1", "弧", ["コ"], [], ["busur", "lengkungan", "arc"], 9, "弓", [
+        ("弧", "ko", "lengkungan/busur"),
+        ("括弧", "kakko", "tanda kurung"),
+        ("弧状", "kojou", "berbentuk busur"),
+    ], [
+        ("弧を描きました。", "Ko o egakimashita.", "Menggambar lengkungan."),
+        ("弧状に並んでいます。", "Kojou ni narande imasu.", "Tersusun berbentuk busur."),
+    ]),
+    ("kei22_n1", "稽", ["ケイ"], [], ["berlatih (dalam kata majemuk)", "consider", "practice"], 15, "禾", [
+        ("稽古", "keiko", "latihan (seni tradisional)"),
+        ("滑稽", "kokkei", "lucu/komikal"),
+        ("稽首", "keishu", "sujud hormat"),
+    ], [
+        ("稽古をしました。", "Keiko o shimashita.", "Berlatih."),
+        ("滑稽な話です。", "Kokkei na hanashi desu.", "Ini cerita yang lucu."),
+    ]),
+    ("ryuu8_n1", "瘤", ["リュウ"], ["こぶ"], ["benjolan", "lump", "bump"], 15, "疒", [
+        ("瘤", "kobu", "benjolan"),
+        ("目の上の瘤", "me no ue no kobu", "duri dalam daging"),
+        ("木の瘤", "ki no kobu", "benjolan di pohon"),
+    ], [
+        ("頭に瘤ができました。", "Atama ni kobu ga dekimashita.", "Muncul benjolan di kepala."),
+        ("目の上の瘤です。", "Me no ue no kobu desu.", "Ini seperti duri dalam daging."),
+    ]),
+    ("taku7_n1", "澤", ["タク"], ["さわ"], ["rawa (bentuk tradisional 沢)", "swamp"], 16, "水", [
+        ("澤", "sawa", "rawa"),
+        ("澤田", "Sawada", "contoh nama keluarga"),
+        ("恩澤", "ontaku", "budi baik"),
+    ], [
+        ("澤田さんに会いました。", "Sawada-san ni aimashita.", "Bertemu dengan Sawada."),
+        ("澤という字は沢の異体字です。", "Sawa to iu ji wa sawa no itaiji desu.", "Karakter ini adalah varian dari \"sawa\"."),
+    ]),
+    ("fu11_n1", "溥", ["フ", "ハク"], [], ["luas (nama)", "wide"], 13, "水", [
+        ("溥儀", "Fugi", "Puyi, kaisar terakhir Tiongkok"),
+        ("溥", "Hiroshi", "contoh nama pria"),
+        ("溥仁", "Fujin", "contoh nama"),
+    ], [
+        ("溥儀は清朝最後の皇帝です。", "Fugi wa Shinchou saigo no koutei desu.", "Puyi adalah kaisar terakhir Dinasti Qing."),
+        ("溥さんという名前です。", "Hiroshi-san to iu namae desu.", "Ini nama Hiroshi."),
+    ]),
+    ("you13_n1", "遥", ["ヨウ"], ["はる-か"], ["jauh (variant 遙)", "distant"], 12, "辵", [
+        ("遥か", "haruka", "jauh"),
+        ("遥拝", "youhai", "penghormatan jarak jauh"),
+        ("逍遥", "shouyou", "berjalan santai"),
+    ], [
+        ("遥かな昔です。", "Haruka na mukashi desu.", "Ini masa lampau yang jauh."),
+        ("遥拝しました。", "Youhai shimashita.", "Melakukan penghormatan jarak jauh."),
+    ]),
+    ("shuu17_n1", "蹴", ["シュウ"], ["け-る"], ["menendang", "kick"], 19, "足", [
+        ("蹴る", "keru", "menendang"),
+        ("蹴飛ばす", "kettobasu", "menendang jauh"),
+        ("一蹴", "isshuu", "menolak mentah-mentah"),
+    ], [
+        ("ボールを蹴りました。", "Booru o kerimashita.", "Menendang bola."),
+        ("一蹴されました。", "Isshuu saremashita.", "Ditolak mentah-mentah."),
+    ]),
+    ("waku3_n1", "或", ["ワク"], ["あ-る"], ["beberapa", "tertentu", "some", "certain"], 8, "戈", [
+        ("或る", "aru", "suatu/tertentu"),
+        ("或いは", "arui wa", "atau"),
+        ("或問", "wakumon", "tanya jawab"),
+    ], [
+        ("或る日のことでした。", "Aru hi no koto deshita.", "Ini kejadian pada suatu hari."),
+        ("或いは正しいかもしれません。", "Arui wa tadashii kamoshiremasen.", "Atau mungkin ini benar."),
+    ]),
+    ("fu12_n1", "訃", ["フ"], [], ["berita duka (dalam kata majemuk)", "obituary"], 9, "言", [
+        ("訃報", "fuhou", "berita duka"),
+        ("訃音", "fuin", "kabar duka"),
+        ("訃告", "fukoku", "pemberitahuan duka"),
+    ], [
+        ("訃報が届きました。", "Fuhou ga todokimashita.", "Berita duka diterima."),
+        ("訃報を聞いて驚きました。", "Fuhou o kiite odorokimashita.", "Terkejut mendengar berita duka."),
+    ]),
+    ("ku3_n1", "矩", ["ク"], ["かね"], ["penggaris siku", "carpenter's square", "rule"], 10, "矢", [
+        ("矩形", "kukei", "persegi panjang"),
+        ("規矩", "kiku", "kaidah/aturan"),
+        ("矩尺", "kanejaku", "penggaris siku tukang kayu"),
+    ], [
+        ("矩形の部屋です。", "Kukei no heya desu.", "Ini kamar berbentuk persegi panjang."),
+        ("規矩に従いました。", "Kiku ni shitagaimashita.", "Mengikuti kaidah."),
+    ]),
+    ("ka21_n1", "厦", ["カ", "ゲ"], [], ["gedung besar (dalam kata majemuk, nama tempat)", "large building"], 12, "厂", [
+        ("厦門", "Amoi", "Kota Xiamen Tiongkok"),
+        ("大厦", "taika", "gedung besar"),
+        ("厦門島", "Amoi-tou", "Pulau Xiamen"),
+    ], [
+        ("厦門に行きました。", "Amoi ni ikimashita.", "Pergi ke Xiamen."),
+        ("厦門は中国の都市です。", "Amoi wa Chuugoku no toshi desu.", "Xiamen adalah kota di Tiongkok."),
+    ]),
+    ("en16_n1", "冤", ["エン"], [], ["tuduhan palsu (dalam kata majemuk)", "false accusation"], 10, "冖", [
+        ("冤罪", "enzai", "tuduhan palsu/kesalahan penuntutan"),
+        ("冤枉", "enou", "ketidakadilan"),
+        ("雪冤", "setsuen", "membersihkan nama dari tuduhan palsu"),
+    ], [
+        ("冤罪でした。", "Enzai deshita.", "Ini adalah tuduhan palsu."),
+        ("冤罪事件です。", "Enzai jiken desu.", "Ini kasus tuduhan palsu."),
+    ]),
+    ("haku8_n1", "剥", ["ハク"], ["は-ぐ", "む-く", "は-がれる"], ["mengupas", "peel", "strip"], 10, "刀", [
+        ("剥がす", "hagasu", "mengupas/melepas"),
+        ("剥製", "hakusei", "taksidermi"),
+        ("剥奪", "hakudatsu", "pencabutan hak"),
+    ], [
+        ("皮を剥きました。", "Kawa o mukimashita.", "Mengupas kulit."),
+        ("資格を剥奪されました。", "Shikaku o hakudatsu saremashita.", "Haknya dicabut."),
+    ]),
+    ("shun5_n1", "舜", ["シュン"], [], ["Kaisar legendaris Shun (nama)", "legendary emperor Shun"], 13, "舛", [
+        ("尭舜", "Gyoushun", "Kaisar Yao dan Shun"),
+        ("舜", "Shun", "kaisar legendaris Tiongkok"),
+        ("舜天", "Shunten", "raja legendaris Okinawa"),
+    ], [
+        ("舜という聖王がいました。", "Shun to iu seiou ga imashita.", "Ada raja bijak bernama Shun."),
+        ("舜天王の伝説です。", "Shunten-ou no densetsu desu.", "Ini legenda Raja Shunten."),
+    ]),
+    ("kyou21_n1", "侠", ["キョウ"], [], ["kesatria (variant 俠)", "chivalrous"], 8, "人", [
+        ("侠客", "kyoukaku", "ksatria pengembara"),
+        ("任侠", "ninkyou", "semangat kesatria/yakuza"),
+        ("義侠心", "gikyoushin", "jiwa kesatria"),
+    ], [
+        ("侠客の物語です。", "Kyoukaku no monogatari desu.", "Ini kisah ksatria pengembara."),
+        ("義侠心があります。", "Gikyoushin ga arimasu.", "Memiliki jiwa kesatria."),
+    ]),
+    ("zei_n1", "贅", ["ゼイ"], [], ["mewah (dalam kata majemuk)", "extravagant"], 18, "貝", [
+        ("贅沢", "zeitaku", "mewah/boros"),
+        ("贅肉", "zeiniku", "lemak berlebih"),
+        ("贅言", "zeigen", "kata-kata berlebihan"),
+    ], [
+        ("贅沢な生活です。", "Zeitaku na seikatsu desu.", "Ini kehidupan yang mewah."),
+        ("贅肉がつきました。", "Zeiniku ga tsukimashita.", "Muncul lemak berlebih."),
+    ]),
+    ("jou13_n1", "杖", ["ジョウ"], ["つえ"], ["tongkat", "cane", "staff"], 7, "木", [
+        ("杖", "tsue", "tongkat"),
+        ("松葉杖", "matsubazue", "tongkat ketiak/kruk"),
+        ("杖術", "joujutsu", "seni bela diri tongkat"),
+    ], [
+        ("杖をついています。", "Tsue o tsuite imasu.", "Berjalan dengan tongkat."),
+        ("松葉杖を使っています。", "Matsubazue o tsukatte imasu.", "Menggunakan kruk."),
+    ]),
+    ("gai8_n1", "蓋", ["ガイ"], ["ふた"], ["tutup", "lid", "cover"], 13, "艸", [
+        ("蓋", "futa", "tutup"),
+        ("頭蓋骨", "zugaikotsu", "tengkorak"),
+        ("蓋然性", "gaizensei", "probabilitas"),
+    ], [
+        ("蓋を開けました。", "Futa o akemashita.", "Membuka tutup."),
+        ("頭蓋骨を検査しました。", "Zugaikotsu o kensa shimashita.", "Memeriksa tengkorak."),
+    ]),
+    ("i15_n1", "畏", ["イ"], ["おそ-れる", "かしこ-まる"], ["takut", "hormat", "fear", "awe"], 9, "田", [
+        ("畏れる", "osoreru", "takut dengan hormat"),
+        ("畏敬", "ikei", "rasa hormat mendalam"),
+        ("畏怖", "ifu", "ketakutan penuh hormat"),
+    ], [
+        ("畏れ多いことです。", "Osoreooi koto desu.", "Ini sesuatu yang membuat segan."),
+        ("畏敬の念を抱いています。", "Ikei no nen o idaite imasu.", "Memiliki rasa hormat mendalam."),
+    ]),
+    ("kou42_n1", "喉", ["コウ"], ["のど"], ["tenggorokan", "throat"], 12, "口", [
+        ("喉", "nodo", "tenggorokan"),
+        ("喉仏", "nodobotoke", "jakun"),
+        ("喉元", "nodomoto", "pangkal tenggorokan"),
+    ], [
+        ("喉が痛いです。", "Nodo ga itai desu.", "Tenggorokan sakit."),
+        ("喉仏が動きました。", "Nodobotoke ga ugokimashita.", "Jakunnya bergerak."),
+    ]),
+    ("ou10_n1", "汪", ["オウ"], [], ["luas (air, nama)", "vast (water)"], 7, "水", [
+        ("汪然", "ouzen", "berlinang air mata"),
+        ("汪", "Wang", "marga Tiongkok"),
+        ("汪洋", "ouyou", "luas seperti lautan"),
+    ], [
+        ("汪兆銘という政治家です。", "Ou Choumei to iu seijika desu.", "Ini politisi bernama Wang Jingwei."),
+        ("汪洋たる大海です。", "Ouyou taru taikai desu.", "Ini lautan yang luas."),
+    ]),
+    ("yuu14_n1", "猷", ["ユウ"], [], ["rencana (nama, klasik)", "plan", "way"], 13, "犬", [
+        ("猷", "Michi", "contoh nama"),
+        ("鴻猷", "kouyuu", "rencana besar"),
+        ("遠猷", "enyuu", "rencana jauh"),
+    ], [
+        ("猷という字は稀に使われます。", "Yuu to iu ji wa mare ni tsukawaremasu.", "Karakter \"yuu\" ini jarang digunakan."),
+        ("鴻猷を立てました。", "Kouyuu o tatemashita.", "Menyusun rencana besar."),
+    ]),
+    ("ei4_n1", "瑛", ["エイ"], [], ["kilau giok (nama)", "luster of jade"], 12, "玉", [
+        ("瑛", "Akira", "contoh nama"),
+        ("瑛子", "Eiko", "contoh nama wanita"),
+        ("瑛太", "Eita", "contoh nama pria"),
+    ], [
+        ("瑛太という俳優です。", "Eita to iu haiyuu desu.", "Ini aktor bernama Eita."),
+        ("瑛子さんに会いました。", "Eiko-san ni aimashita.", "Bertemu dengan Eiko."),
+    ]),
+    ("sou32_n1", "搜", ["ソウ"], ["さが-す"], ["mencari (bentuk tradisional 捜)", "search"], 12, "手", [
+        ("搜査", "sousa", "penyelidikan"),
+        ("搜索", "sousaku", "pencarian"),
+        ("搜す", "sagasu", "mencari"),
+    ], [
+        ("搜査を開始しました。", "Sousa o kaishi shimashita.", "Memulai penyelidikan."),
+        ("搜索隊が出動しました。", "Sousakutai ga shutsudou shimashita.", "Tim pencari dikerahkan."),
+    ]),
+    ("man4_n1", "曼", ["マン"], [], ["anggun", "mandala (dalam kata majemuk)", "graceful"], 11, "日", [
+        ("曼荼羅", "mandara", "mandala"),
+        ("曼珠沙華", "manjushage", "bunga lycoris merah"),
+        ("曼陀羅", "mandara", "variant penulisan mandala"),
+    ], [
+        ("曼荼羅を見ました。", "Mandara o mimashita.", "Melihat mandala."),
+        ("曼珠沙華が咲きました。", "Manjushage ga sakimashita.", "Bunga lycoris merah mekar."),
+    ]),
+    ("fu13_n1", "附", ["フ"], ["つ-く"], ["melampirkan (variant 付)", "attach"], 8, "阜", [
+        ("附属", "fuzoku", "afiliasi"),
+        ("附録", "furoku", "lampiran"),
+        ("寄附", "kifu", "sumbangan"),
+    ], [
+        ("附属病院です。", "Fuzoku byouin desu.", "Ini rumah sakit afiliasi."),
+        ("寄附をしました。", "Kifu o shimashita.", "Menyumbang."),
+    ]),
+    ("hyou7_n1", "彪", ["ヒョウ"], [], ["corak harimau (nama)", "tiger stripes", "brilliant"], 11, "虍", [
+        ("彪", "Takeshi", "contoh nama"),
+        ("彪炳", "hyouhei", "bersinar terang"),
+        ("彪雄", "Hyouyuu", "contoh nama pria"),
+    ], [
+        ("彪という名前です。", "Takeshi to iu namae desu.", "Ini nama Takeshi."),
+        ("彪炳たる功績です。", "Hyouhei taru kouseki desu.", "Ini prestasi yang bersinar terang."),
+    ]),
+    ("nen2_n1", "撚", ["ネン"], ["よ-る"], ["memilin", "twist (thread)"], 15, "手", [
+        ("撚る", "yoru", "memilin"),
+        ("撚糸", "nenshi", "benang pintal"),
+        ("縒り", "yori", "pilinan"),
+    ], [
+        ("糸を撚りました。", "Ito o yorimashita.", "Memilin benang."),
+        ("撚糸工場です。", "Nenshi koujou desu.", "Ini pabrik benang pintal."),
+    ]),
+    ("kamu_n1", "噛", [], ["か-む"], ["menggigit (variant 嚙)", "bite"], 15, "口", [
+        ("噛む", "kamu", "menggigit/mengunyah"),
+        ("噛み合う", "kamiau", "saling cocok/beradu"),
+        ("噛み砕く", "kamikudaku", "mengunyah hancur/menyederhanakan"),
+    ], [
+        ("よく噛んで食べました。", "Yoku kande tabemashita.", "Makan dengan mengunyah baik-baik."),
+        ("意見が噛み合いません。", "Iken ga kamiaimasen.", "Pendapatnya tidak cocok."),
+    ]),
+    ("bou14_n1", "卯", ["ボウ"], ["う"], ["shio kelinci", "rabbit zodiac"], 5, "卩", [
+        ("卯", "u", "tahun kelinci dalam zodiak"),
+        ("卯年", "udoshi", "tahun kelinci"),
+        ("卯月", "uzuki", "bulan keempat kalender lunar"),
+    ], [
+        ("卯年生まれです。", "Udoshi umare desu.", "Lahir di tahun kelinci."),
+        ("卯月に生まれました。", "Uzuki ni umaremashita.", "Lahir di bulan Uzuki."),
+    ]),
+    ("masu_n1", "桝", [], ["ます"], ["kotak takar (variant 升)", "measuring box"], 10, "木", [
+        ("桝", "masu", "kotak takar"),
+        ("桝席", "masuseki", "tempat duduk kotak di sumo"),
+        ("桝田", "Masuda", "contoh nama keluarga"),
+    ], [
+        ("桝席で観戦しました。", "Masuseki de kansen shimashita.", "Menonton dari tempat duduk kotak."),
+        ("桝田さんに会いました。", "Masuda-san ni aimashita.", "Bertemu dengan Masuda."),
+    ]),
+    ("bu3_n1", "撫", ["ブ"], ["な-でる"], ["mengelus", "stroke", "pet"], 15, "手", [
+        ("撫でる", "naderu", "mengelus"),
+        ("愛撫", "aibu", "belaian"),
+        ("撫子", "nadeshiko", "bunga dianthus/wanita Jepang ideal"),
+    ], [
+        ("頭を撫でました。", "Atama o nademashita.", "Mengelus kepala."),
+        ("大和撫子です。", "Yamato nadeshiko desu.", "Ini wanita Jepang ideal."),
+    ]),
+    ("chou27_n1", "喋", ["チョウ"], ["しゃべ-る"], ["mengobrol", "chat", "talk"], 12, "口", [
+        ("喋る", "shaberu", "mengobrol/bicara"),
+        ("喋々", "choucho", "banyak bicara"),
+        ("お喋り", "oshaberi", "obrolan"),
+    ], [
+        ("たくさん喋りました。", "Takusan shaberimashita.", "Banyak mengobrol."),
+        ("お喋りが好きです。", "Oshaberi ga suki desu.", "Suka mengobrol."),
+    ]),
+    ("tan10_n1", "但", ["タン"], ["ただ-し"], ["namun", "however", "provided that"], 7, "人", [
+        ("但し", "tadashi", "namun/asalkan"),
+        ("但し書き", "tadashigaki", "catatan pengecualian"),
+        ("但馬", "Tajima", "nama daerah lama di Hyogo"),
+    ], [
+        ("但し、条件があります。", "Tadashi, jouken ga arimasu.", "Namun, ada syaratnya."),
+        ("但し書きを読みました。", "Tadashigaki o yomimashita.", "Membaca catatan pengecualian."),
+    ]),
+    ("itsu2_n1", "溢", ["イツ"], ["あふ-れる"], ["meluap", "overflow"], 13, "水", [
+        ("溢れる", "afureru", "meluap"),
+        ("充溢", "juuitsu", "dipenuhi/melimpah"),
+        ("溢れ出す", "afuredasu", "mulai meluap"),
+    ], [
+        ("川が溢れました。", "Kawa ga afuremashita.", "Sungai meluap."),
+        ("才能に溢れています。", "Sainou ni afurete imasu.", "Dipenuhi bakat."),
+    ]),
+    ("katsu8_n1", "闊", ["カツ"], [], ["luas", "wide", "spacious"], 17, "門", [
+        ("闊達", "kattatsu", "riang/lapang dada"),
+        ("闊歩", "kappo", "berjalan lebar/angkuh"),
+        ("迂闊", "ukatsu", "ceroboh"),
+    ], [
+        ("明朗闊達な性格です。", "Meirou kattatsu na seikaku desu.", "Kepribadian ceria dan lapang dada."),
+        ("迂闊なミスでした。", "Ukatsu na misu deshita.", "Itu kesalahan ceroboh."),
+    ]),
+    ("zou_n1", "藏", ["ゾウ"], ["くら"], ["gudang (bentuk tradisional 蔵)", "storage"], 17, "艸", [
+        ("藏書", "zousho", "koleksi buku"),
+        ("秘藏", "hizou", "simpanan rahasia"),
+        ("貯藏", "chozou", "penyimpanan"),
+    ], [
+        ("藏書が多いです。", "Zousho ga ooi desu.", "Koleksi bukunya banyak."),
+        ("秘藏の品です。", "Hizou no shina desu.", "Ini barang simpanan rahasia."),
+    ]),
+    ("setsu5_n1", "浙", ["セツ"], [], ["Zhejiang (nama tempat)", "Zhejiang, China"], 10, "水", [
+        ("浙江", "Sekkou", "provinsi Zhejiang"),
+        ("浙江省", "Sekkou-shou", "Provinsi Zhejiang"),
+        ("浙菜", "Sessai", "masakan Zhejiang"),
+    ], [
+        ("浙江省は中国にあります。", "Sekkou-shou wa Chuugoku ni arimasu.", "Provinsi Zhejiang ada di Tiongkok."),
+        ("浙菜が有名です。", "Sessai ga yuumei desu.", "Masakan Zhejiang terkenal."),
+    ]),
+    ("hou22_n1", "彭", ["ホウ"], [], ["marga Peng (nama)", "surname Peng"], 12, "彡", [
+        ("彭", "Hou", "marga Tiongkok (Peng)"),
+        ("彭湃", "Houhai", "nama tokoh (Peng Pai)"),
+        ("彭城", "Houjou", "nama kota kuno Tiongkok"),
+    ], [
+        ("彭さんは中国人です。", "Hou-san wa Chuugokujin desu.", "Pak Peng orang Tiongkok."),
+        ("彭城という古い都市です。", "Houjou to iu furui toshi desu.", "Ini kota kuno bernama Pengcheng."),
+    ]),
+    ("tou23_n1", "淘", ["トウ"], [], ["menyaring", "wash", "select"], 11, "水", [
+        ("淘汰", "touta", "seleksi alam/eliminasi"),
+        ("自然淘汰", "shizen touta", "seleksi alam"),
+        ("淘汰される", "touta sareru", "tereliminasi"),
+    ], [
+        ("自然淘汰が起こりました。", "Shizen touta ga okorimashita.", "Seleksi alam terjadi."),
+        ("弱者が淘汰されました。", "Jakusha ga touta saremashita.", "Yang lemah tereliminasi."),
+    ]),
+    ("tei20_n1", "剃", ["テイ"], ["そ-る"], ["mencukur", "shave"], 9, "刀", [
+        ("剃る", "soru", "mencukur"),
+        ("剃刀", "kamisori", "pisau cukur"),
+        ("剃髪", "teihatsu", "mencukur rambut/menjadi biksu"),
+    ], [
+        ("ひげを剃りました。", "Hige o sorimashita.", "Mencukur jenggot."),
+        ("剃刀で剃りました。", "Kamisori de sorimashita.", "Mencukur dengan pisau cukur."),
+    ]),
+    ("soroeru_n1", "揃", [], ["そろ-える", "そろ-う"], ["menyelaraskan", "lengkap", "align"], 12, "手", [
+        ("揃える", "soroeru", "menyelaraskan/melengkapi"),
+        ("揃う", "sorou", "lengkap/seragam"),
+        ("3人揃って", "sannin sorotte", "bertiga bersama-sama"),
+    ], [
+        ("靴を揃えました。", "Kutsu o soroemashita.", "Merapikan sepatu."),
+        ("全員揃いました。", "Zen'in soroimashita.", "Semua sudah lengkap."),
+    ]),
+    ("ki30_n1", "綺", ["キ"], [], ["indah", "beautiful"], 14, "糸", [
+        ("綺麗", "kirei", "cantik/bersih"),
+        ("綺羅", "kira", "pakaian mewah"),
+        ("綺想", "kisou", "ide fantastis"),
+    ], [
+        ("綺麗な花です。", "Kirei na hana desu.", "Ini bunga yang cantik."),
+        ("部屋が綺麗になりました。", "Heya ga kirei ni narimashita.", "Kamarnya jadi bersih."),
+    ]),
+    ("hai7_n1", "徘", ["ハイ"], [], ["mengembara (dalam 徘徊)", "wander"], 11, "彳", [
+        ("徘徊", "haikai", "berkeliaran/mengembara"),
+        ("徘徊老人", "haikai roujin", "lansia yang berkeliaran"),
+        ("徘徊症", "haikaishou", "gejala berkeliaran"),
+    ], [
+        ("街を徘徊しています。", "Machi o haikai shite imasu.", "Berkeliaran di kota."),
+        ("夜に徘徊する症状です。", "Yoru ni haikai suru shoujou desu.", "Ini gejala berkeliaran di malam hari."),
+    ]),
+    ("kou43_n1", "巷", ["コウ"], ["ちまた"], ["gang/jalanan", "street", "alley"], 9, "己", [
+        ("巷", "chimata", "gang/dunia ramai"),
+        ("巷間", "koukan", "di kalangan masyarakat"),
+        ("巷説", "kousetsu", "gosip/kabar burung"),
+    ], [
+        ("巷で噂になっています。", "Chimata de uwasa ni natte imasu.", "Menjadi gosip di kalangan masyarakat."),
+        ("巷間の説です。", "Koukan no setsu desu.", "Ini pendapat umum di masyarakat."),
+    ]),
+    ("kan37_n1", "竿", ["カン"], ["さお"], ["galah", "pole", "rod"], 9, "竹", [
+        ("竿", "sao", "galah/tongkat"),
+        ("物干し竿", "monohoshizao", "tiang jemuran"),
+        ("釣り竿", "tsurizao", "joran pancing"),
+    ], [
+        ("釣り竿を買いました。", "Tsurizao o kaimashita.", "Membeli joran pancing."),
+        ("物干し竿に干しました。", "Monohoshizao ni hoshimashita.", "Menjemur di tiang jemuran."),
+    ]),
+    ("kai10_n1", "蟹", ["カイ"], ["かに"], ["kepiting", "crab"], 19, "虫", [
+        ("蟹", "kani", "kepiting"),
+        ("蟹座", "kaniza", "rasi bintang Cancer"),
+        ("毛蟹", "kegani", "kepiting berbulu"),
+    ], [
+        ("蟹を食べました。", "Kani o tabemashita.", "Makan kepiting."),
+        ("蟹座生まれです。", "Kaniza umare desu.", "Lahir di rasi Cancer."),
+    ]),
+    ("u3_n1", "芋", ["ウ"], ["いも"], ["umbi/kentang", "potato", "tuber"], 6, "艸", [
+        ("芋", "imo", "umbi-umbian"),
+        ("さつま芋", "satsumaimo", "ubi jalar"),
+        ("里芋", "satoimo", "talas"),
+    ], [
+        ("芋を掘りました。", "Imo o horimashita.", "Menggali umbi."),
+        ("さつま芋が甘いです。", "Satsumaimo ga amai desu.", "Ubi jalarnya manis."),
+    ]),
+    ("en17_n1", "袁", ["エン"], [], ["marga Yuan (nama)", "surname Yuan"], 10, "衣", [
+        ("袁", "En", "marga Tiongkok (Yuan)"),
+        ("袁世凱", "En Seigai", "nama tokoh (Yuan Shikai)"),
+        ("袁氏", "Enshi", "klan Yuan"),
+    ], [
+        ("袁世凱という人物です。", "En Seigai to iu jinbutsu desu.", "Ini tokoh bernama Yuan Shikai."),
+        ("袁さんに会いました。", "En-san ni aimashita.", "Bertemu dengan Yuan."),
+    ]),
+    ("sen15_n1", "舩", ["セン"], ["ふね"], ["kapal (variant 船)", "ship"], 11, "舟", [
+        ("舩", "fune", "kapal"),
+        ("御舩", "Mifune", "contoh nama keluarga"),
+        ("舩橋", "Funabashi", "contoh nama"),
+    ], [
+        ("舩橋さんに会いました。", "Funabashi-san ni aimashita.", "Bertemu dengan Funabashi."),
+        ("三舩敏郎という俳優です。", "Mifune Toshirou to iu haiyuu desu.", "Ini aktor bernama Mifune Toshiro."),
+    ]),
+    ("shoku6_n1", "拭", ["ショク"], ["ふ-く", "ぬぐ-う"], ["mengelap", "wipe"], 9, "手", [
+        ("拭く", "fuku", "mengelap"),
+        ("拭う", "nuguu", "mengusap/menghapus"),
+        ("払拭", "fusshoku", "menghapus sepenuhnya"),
+    ], [
+        ("窓を拭きました。", "Mado o fukimashita.", "Mengelap jendela."),
+        ("不安を払拭しました。", "Fuan o fusshoku shimashita.", "Menghapus kecemasan sepenuhnya."),
+    ]),
+    ("sen16_n1", "茜", ["セン"], ["あかね"], ["merah tua", "madder red"], 9, "艸", [
+        ("茜色", "akaneiro", "warna merah tua"),
+        ("茜", "Akane", "contoh nama wanita"),
+        ("茜草", "akanegusa", "tanaman pewarna merah"),
+    ], [
+        ("茜色の空です。", "Akaneiro no sora desu.", "Ini langit berwarna merah tua."),
+        ("茜さんに会いました。", "Akane-san ni aimashita.", "Bertemu dengan Akane."),
+    ]),
+    ("ryou12_n1", "凌", ["リョウ"], ["しの-ぐ"], ["bertahan/mengatasi", "endure", "surpass"], 10, "冫", [
+        ("凌ぐ", "shinogu", "bertahan/mengatasi"),
+        ("凌駕", "ryouga", "melampaui"),
+        ("凌辱", "ryoujoku", "penghinaan"),
+    ], [
+        ("苦難を凌ぎました。", "Kunan o shinogimashita.", "Bertahan dari kesulitan."),
+        ("先輩を凌駕しました。", "Senpai o ryouga shimashita.", "Melampaui senior."),
+    ]),
+    ("kyou22_n1", "頬", ["キョウ"], ["ほお", "ほほ"], ["pipi", "cheek"], 16, "頁", [
+        ("頬", "hoo", "pipi"),
+        ("頬杖", "hoozue", "menopang dagu"),
+        ("頬骨", "hoobone", "tulang pipi"),
+    ], [
+        ("頬が赤くなりました。", "Hoo ga akaku narimashita.", "Pipinya memerah."),
+        ("頬杖をついています。", "Hoozue o tsuite imasu.", "Menopang dagu."),
+    ]),
+    ("chuu7_n1", "厨", ["チュウ"], ["くりや"], ["dapur", "kitchen"], 12, "厂", [
+        ("厨房", "chuubou", "dapur restoran"),
+        ("厨子", "zushi", "lemari altar Buddha"),
+        ("厨芥", "chuukai", "sampah dapur"),
+    ], [
+        ("厨房で働いています。", "Chuubou de hataraite imasu.", "Bekerja di dapur restoran."),
+        ("厨子に仏像があります。", "Zushi ni butsuzou ga arimasu.", "Ada patung Buddha di lemari altar."),
+    ]),
+    ("sai14_n1", "犀", ["サイ"], [], ["badak", "rhinoceros"], 12, "牛", [
+        ("犀", "sai", "badak"),
+        ("犀角", "saikaku", "cula badak"),
+        ("犀利", "sairi", "tajam/cerdas"),
+    ], [
+        ("犀を見ました。", "Sai o mimashita.", "Melihat badak."),
+        ("犀角は薬用とされました。", "Saikaku wa yakuyou to saremashita.", "Cula badak dianggap sebagai obat."),
+    ]),
+    ("mino_n1", "簑", [], ["みの"], ["jas hujan jerami (variant 蓑)", "straw raincoat"], 16, "竹", [
+        ("簑", "mino", "jas hujan jerami"),
+        ("簑虫", "minomushi", "ulat kantong"),
+        ("簑笠", "minokasa", "jas hujan jerami dan topi caping"),
+    ], [
+        ("簑を着ています。", "Mino o kite imasu.", "Mengenakan jas hujan jerami."),
+        ("簑虫が木にぶら下がっています。", "Minomushi ga ki ni burasagatte imasu.", "Ulat kantong bergelantungan di pohon."),
+    ]),
+    ("kou44_n1", "皓", ["コウ"], [], ["putih terang (nama)", "bright white"], 12, "白", [
+        ("皓歯", "koushi", "gigi putih"),
+        ("皓皓", "koukou", "bersinar terang"),
+        ("皓", "Akira", "contoh nama"),
+    ], [
+        ("皓歯の美人です。", "Koushi no bijin desu.", "Ini wanita cantik bergigi putih."),
+        ("皓という名前です。", "Akira to iu namae desu.", "Ini nama Akira."),
+    ]),
+    ("so10_n1", "甦", ["ソ"], ["よみがえ-る"], ["bangkit kembali (variant 蘇)", "revive"], 12, "生", [
+        ("甦る", "yomigaeru", "bangkit kembali/hidup lagi"),
+        ("甦生", "kousei", "kebangkitan kembali"),
+        ("甦り", "yomigaeri", "kebangkitan"),
+    ], [
+        ("記憶が甦りました。", "Kioku ga yomigaerimashita.", "Ingatan bangkit kembali."),
+        ("街が甦生しました。", "Machi ga kousei shimashita.", "Kota bangkit kembali."),
+    ]),
+    ("kou45_n1", "洸", ["コウ"], [], ["air berkilau (nama)", "water shimmering"], 9, "水", [
+        ("洸", "Hikaru", "contoh nama pria"),
+        ("洸洸", "koukou", "gagah berani"),
+        ("洸太", "Kouta", "contoh nama pria"),
+    ], [
+        ("洸太という名前です。", "Kouta to iu namae desu.", "Ini nama Kouta."),
+        ("洸という漢字は名前によく使われます。", "Hikaru to iu kanji wa namae ni yoku tsukawaremasu.", "Kanji \"Hikaru\" ini sering dipakai untuk nama."),
+    ]),
+    ("kyuu16_n1", "毬", ["キュウ"], ["まり"], ["bola (tradisional)", "ball"], 11, "毛", [
+        ("毬", "mari", "bola tradisional"),
+        ("毬藻", "marimo", "alga bola/marimo"),
+        ("毬栗", "igaguri", "kulit berduri buah berangan"),
+    ], [
+        ("毬で遊びました。", "Mari de asobimashita.", "Bermain dengan bola."),
+        ("毬藻を育てています。", "Marimo o sodatete imasu.", "Memelihara marimo."),
+    ]),
+    ("geki3_n1", "檄", ["ゲキ"], [], ["seruan/manifesto", "call to arms"], 17, "木", [
+        ("檄文", "gekibun", "surat seruan"),
+        ("檄を飛ばす", "geki o tobasu", "mengeluarkan seruan/menyemangati"),
+        ("檄する", "gekisuru", "menyerukan"),
+    ], [
+        ("檄文を書きました。", "Gekibun o kakimashita.", "Menulis surat seruan."),
+        ("選手に檄を飛ばしました。", "Senshu ni geki o tobashimashita.", "Menyemangati para atlet."),
+    ]),
+    ("you14_n1", "姚", ["ヨウ"], [], ["marga Yao (nama)", "surname Yao"], 9, "女", [
+        ("姚", "Yō", "marga Tiongkok (Yao)"),
+        ("姚明", "Yō Mei", "nama tokoh (Yao Ming)"),
+        ("姚氏", "Youshi", "klan Yao"),
+    ], [
+        ("姚明という選手です。", "Yō Mei to iu senshu desu.", "Ini atlet bernama Yao Ming."),
+        ("姚さんに会いました。", "Yō-san ni aimashita.", "Bertemu dengan Yao."),
+    ]),
+    ("shitsu8_n1", "蛭", ["シツ"], ["ひる"], ["lintah", "leech"], 11, "虫", [
+        ("蛭", "hiru", "lintah"),
+        ("蛭子", "Hiruko", "dewa dalam mitologi Jepang"),
+        ("山蛭", "yamabiru", "pacet"),
+    ], [
+        ("蛭に噛まれました。", "Hiru ni kamaremashita.", "Digigit lintah."),
+        ("山蛭がいます。", "Yamabiru ga imasu.", "Ada pacet."),
+    ]),
+    ("ba_n1", "婆", ["バ"], ["ばば", "ばばあ"], ["nenek/wanita tua", "old woman"], 11, "女", [
+        ("婆", "baba", "nenek/wanita tua"),
+        ("お婆さん", "obaasan", "nenek"),
+        ("産婆", "sanba", "bidan tradisional"),
+    ], [
+        ("お婆さんに会いました。", "Obaasan ni aimashita.", "Bertemu dengan nenek."),
+        ("産婆を呼びました。", "Sanba o yobimashita.", "Memanggil bidan."),
+    ]),
+    ("sou33_n1", "叢", ["ソウ"], ["むら", "くさむら"], ["semak/rumpun", "thicket", "cluster"], 18, "又", [
+        ("叢", "kusamura", "semak belukar"),
+        ("叢書", "sousho", "seri buku"),
+        ("叢生", "sousei", "tumbuh berumpun"),
+    ], [
+        ("叢の中に隠れました。", "Kusamura no naka ni kakuremashita.", "Bersembunyi di dalam semak."),
+        ("叢書が出版されました。", "Sousho ga shuppan saremashita.", "Seri buku diterbitkan."),
+    ]),
+    ("sugi2_n1", "椙", [], ["すぎ"], ["cemara (kokuji, nama keluarga)", "cedar surname kanji"], 13, "木", [
+        ("椙山", "Sugiyama", "contoh nama keluarga"),
+        ("椙原", "Sugihara", "contoh nama keluarga"),
+        ("椙", "sugi", "cemara"),
+    ], [
+        ("椙山さんに会いました。", "Sugiyama-san ni aimashita.", "Bertemu dengan Sugiyama."),
+        ("椙原さんの家です。", "Sugihara-san no ie desu.", "Ini rumah keluarga Sugihara."),
+    ]),
+    ("gou5_n1", "轟", ["ゴウ"], ["とどろ-く"], ["bergemuruh", "roar", "rumble"], 21, "車", [
+        ("轟く", "todoroku", "bergemuruh/menggema"),
+        ("轟音", "gouon", "suara gemuruh"),
+        ("轟沈", "gouchin", "tenggelam seketika"),
+    ], [
+        ("雷が轟きました。", "Kaminari ga todorokimashita.", "Petir bergemuruh."),
+        ("轟音が聞こえました。", "Gouon ga kikoemashita.", "Terdengar suara gemuruh."),
+    ]),
+    ("gan9_n1", "贋", ["ガン"], ["にせ"], ["palsu", "fake", "counterfeit"], 19, "貝", [
+        ("贋作", "gansaku", "karya palsu"),
+        ("贋物", "nisemono", "barang palsu"),
+        ("贋金", "nisegane", "uang palsu"),
+    ], [
+        ("贋作が発見されました。", "Gansaku ga hakken saremashita.", "Karya palsu ditemukan."),
+        ("贋物を買ってしまいました。", "Nisemono o katte shimaimashita.", "Terlanjur membeli barang palsu."),
+    ]),
+    ("sha8_n1", "洒", ["シャ"], [], ["bersih/lucu (dalam 洒落)", "clean", "witty"], 9, "水", [
+        ("洒落", "share", "lelucon/bergaya"),
+        ("洒落る", "shareru", "bergaya/berdandan"),
+        ("瀟洒", "shousha", "elegan/rapi"),
+    ], [
+        ("洒落を言いました。", "Share o iimashita.", "Melontarkan lelucon."),
+        ("瀟洒な建物です。", "Shousha na tatemono desu.", "Ini bangunan yang elegan."),
+    ]),
+    ("sei16_n1", "貰", ["セイ"], ["もら-う"], ["menerima", "receive"], 12, "貝", [
+        ("貰う", "morau", "menerima"),
+        ("貰い物", "moraimono", "barang pemberian"),
+        ("貰い泣き", "morainaki", "ikut menangis"),
+    ], [
+        ("プレゼントを貰いました。", "Purezento o moraimashita.", "Menerima hadiah."),
+        ("貰い泣きしてしまいました。", "Morainaki shite shimaimashita.", "Jadi ikut menangis."),
+    ]),
+    ("cho3_n1", "儲", ["チョ"], ["もう-ける"], ["keuntungan", "profit", "gain"], 18, "人", [
+        ("儲ける", "moukeru", "mendapat untung"),
+        ("儲かる", "moukaru", "menguntungkan"),
+        ("儲け", "mouke", "keuntungan"),
+    ], [
+        ("商売で儲けました。", "Shoubai de moukemashita.", "Mendapat untung dari bisnis."),
+        ("この仕事は儲かります。", "Kono shigoto wa moukarimasu.", "Pekerjaan ini menguntungkan."),
+    ]),
+    ("hi12_n1", "緋", ["ヒ"], ["あけ"], ["merah tua/merah menyala", "scarlet"], 14, "糸", [
+        ("緋色", "hiiro", "warna merah menyala"),
+        ("緋鯉", "higoi", "ikan koi merah"),
+        ("緋文字", "himonji", "huruf merah"),
+    ], [
+        ("緋色の着物です。", "Hiiro no kimono desu.", "Ini kimono berwarna merah menyala."),
+        ("緋鯉が泳いでいます。", "Higoi ga oyoide imasu.", "Ikan koi merah berenang."),
+    ]),
+    ("chou28_n1", "諜", ["チョウ"], [], ["mata-mata", "spy", "espionage"], 15, "言", [
+        ("諜報", "chouhou", "intelijen/mata-mata"),
+        ("諜報員", "chouhouin", "agen intelijen"),
+        ("防諜", "bouchou", "kontra-intelijen"),
+    ], [
+        ("諜報活動をしています。", "Chouhou katsudou o shite imasu.", "Melakukan kegiatan intelijen."),
+        ("諜報員として働いています。", "Chouhouin toshite hataraite imasu.", "Bekerja sebagai agen intelijen."),
+    ]),
+    ("chou29_n1", "鯛", ["チョウ"], ["たい"], ["ikan kakap merah", "sea bream"], 19, "魚", [
+        ("鯛", "tai", "ikan kakap merah"),
+        ("鯛焼き", "taiyaki", "kue ikan kakap"),
+        ("真鯛", "madai", "kakap merah asli"),
+    ], [
+        ("鯛を食べました。", "Tai o tabemashita.", "Makan ikan kakap merah."),
+        ("鯛焼きを買いました。", "Taiyaki o kaimashita.", "Membeli kue ikan."),
+    ]),
+    ("ryou13_n1", "蓼", ["リョウ"], ["たで"], ["tanaman tade", "smartweed", "knotweed"], 15, "艸", [
+        ("蓼", "tade", "tanaman tade"),
+        ("蓼食う虫も好き好き", "tade kuu mushi mo sukizuki", "peribahasa: selera berbeda-beda"),
+        ("蓼酢", "tadezu", "saus cuka tade"),
+    ], [
+        ("蓼を育てています。", "Tade o sodatete imasu.", "Menanam tanaman tade."),
+        ("蓼酢をつけて食べました。", "Tadezu o tsukete tabemashita.", "Makan dengan saus cuka tade."),
+    ]),
+    ("ou11_n1", "甕", ["オウ"], ["かめ"], ["tempayan besar", "large jar", "urn"], 18, "瓦", [
+        ("甕", "kame", "tempayan besar"),
+        ("甕棺", "oukan", "peti mati tempayan"),
+        ("甕覗き", "kamenozoki", "warna biru pucat"),
+    ], [
+        ("甕に水を貯めました。", "Kame ni mizu o tamemashita.", "Menyimpan air di tempayan."),
+        ("甕棺が発掘されました。", "Oukan ga hakkutsu saremashita.", "Peti mati tempayan digali."),
+    ]),
+    ("zen6_n1", "喘", ["ゼン"], ["あえ-ぐ"], ["terengah-engah", "gasp", "pant"], 12, "口", [
+        ("喘ぐ", "aegu", "terengah-engah"),
+        ("喘息", "zensoku", "asma"),
+        ("喘鳴", "zenmei", "suara mengi"),
+    ], [
+        ("息が喘ぎました。", "Iki ga aegimashita.", "Napas terengah-engah."),
+        ("喘息の発作です。", "Zensoku no hossa desu.", "Ini serangan asma."),
+    ]),
+    ("rei9_n1", "怜", ["レイ"], [], ["cerdas (nama)", "clever", "wise"], 8, "心", [
+        ("怜悧", "reiri", "cerdas/pintar"),
+        ("怜子", "Reiko", "contoh nama wanita"),
+        ("怜", "Rei", "contoh nama"),
+    ], [
+        ("怜悧な子供です。", "Reiri na kodomo desu.", "Ini anak yang cerdas."),
+        ("怜子さんに会いました。", "Reiko-san ni aimashita.", "Bertemu dengan Reiko."),
+    ]),
+    ("ryuu9_n1", "溜", ["リュウ"], ["た-める", "た-まる"], ["menumpuk", "accumulate", "pool"], 13, "水", [
+        ("溜める", "tameru", "mengumpulkan/menabung"),
+        ("溜まる", "tamaru", "menumpuk"),
+        ("溜息", "tameiki", "helaan nafas"),
+    ], [
+        ("お金を溜めました。", "Okane o tamemashita.", "Mengumpulkan uang."),
+        ("溜息をつきました。", "Tameiki o tsukimashita.", "Menghela nafas."),
+    ]),
+    ("yuu15_n1", "邑", ["ユウ"], ["むら"], ["desa (klasik)", "town", "village"], 7, "邑", [
+        ("邑", "mura", "desa"),
+        ("都邑", "toyuu", "kota dan desa"),
+        ("邑落", "yuuraku", "permukiman"),
+    ], [
+        ("邑という古い言葉です。", "Mura to iu furui kotoba desu.", "\"Mura\" ini kata kuno."),
+        ("都邑が栄えました。", "Toyuu ga sakaemashita.", "Kota dan desa berkembang."),
+    ]),
+    ("bou15_n1", "鉾", ["ボウ"], ["ほこ"], ["tombak (variant 矛)", "halberd"], 13, "金", [
+        ("鉾", "hoko", "tombak/kereta festival"),
+        ("山鉾", "yamahoko", "kereta hias festival Gion"),
+        ("鉾先", "hokosaki", "ujung tombak/sasaran kritik"),
+    ], [
+        ("山鉾が街を巡りました。", "Yamahoko ga machi o megurimashita.", "Kereta hias berkeliling kota."),
+        ("鉾先を向けられました。", "Hokosaki o mukeraremashita.", "Menjadi sasaran kritik."),
+    ]),
+    ("hou23_n1", "倣", ["ホウ"], ["なら-う"], ["meniru", "imitate", "follow example"], 10, "人", [
+        ("倣う", "narau", "meniru/mengikuti contoh"),
+        ("模倣", "mohou", "imitasi/tiruan"),
+        ("前例に倣う", "zenrei ni narau", "mengikuti contoh sebelumnya"),
+    ], [
+        ("先例に倣いました。", "Zenrei ni naraimashita.", "Mengikuti contoh sebelumnya."),
+        ("模倣品を買いました。", "Mohouhin o kaimashita.", "Membeli barang tiruan."),
+    ]),
+    ("heki3_n1", "碧", ["ヘキ"], ["みどり"], ["hijau giok", "jade green", "blue-green"], 14, "石", [
+        ("碧眼", "hekigan", "mata biru"),
+        ("碧空", "hekikuu", "langit biru jernih"),
+        ("紺碧", "konpeki", "biru tua"),
+    ], [
+        ("碧眼の外国人です。", "Hekigan no gaikokujin desu.", "Ini orang asing bermata biru."),
+        ("紺碧の海です。", "Konpeki no umi desu.", "Ini laut biru tua."),
+    ]),
+    ("tou24_n1", "燈", ["トウ"], ["ひ"], ["lampu (bentuk tradisional 灯)", "lamp", "light"], 16, "火", [
+        ("燈籠", "tourou", "lentera"),
+        ("燈台", "toudai", "mercusuar"),
+        ("提燈", "chouchin", "lampion"),
+    ], [
+        ("燈籠が並んでいます。", "Tourou ga narande imasu.", "Lentera berjejer."),
+        ("燈台の光が見えます。", "Toudai no hikari ga miemasu.", "Cahaya mercusuar terlihat."),
+    ]),
+    ("tei21_n1", "諦", ["テイ"], ["あきら-める"], ["menyerah/pasrah", "give up", "resign"], 16, "言", [
+        ("諦める", "akirameru", "menyerah"),
+        ("諦め", "akirame", "sikap pasrah"),
+        ("諦観", "teikan", "pandangan pasrah/menerima kenyataan"),
+    ], [
+        ("夢を諦めませんでした。", "Yume o akiramemasen deshita.", "Tidak menyerah pada mimpi."),
+        ("諦観の境地です。", "Teikan no kyouchi desu.", "Ini keadaan batin yang pasrah."),
+    ]),
+    ("sen17_n1", "煎", ["セン"], ["い-る"], ["menyangrai", "roast", "fry (dry)"], 13, "火", [
+        ("煎る", "iru", "menyangrai"),
+        ("煎茶", "sencha", "teh hijau seduh"),
+        ("煎餅", "senbei", "kerupuk beras"),
+    ], [
+        ("豆を煎りました。", "Mame o irimashita.", "Menyangrai kacang."),
+        ("煎餅を食べました。", "Senbei o tabemashita.", "Makan kerupuk beras."),
+    ]),
+    ("ka22_n1", "瓜", ["カ"], ["うり"], ["melon/labu", "melon", "gourd"], 5, "瓜", [
+        ("瓜", "uri", "melon/labu"),
+        ("西瓜", "suika", "semangka"),
+        ("瓜二つ", "uri futatsu", "sangat mirip"),
+    ], [
+        ("瓜を食べました。", "Uri o tabemashita.", "Makan melon."),
+        ("瓜二つの兄弟です。", "Uri futatsu no kyoudai desu.", "Ini saudara yang sangat mirip."),
+    ]),
+    ("chi5_n1", "緻", ["チ"], [], ["rinci", "fine", "detailed"], 16, "糸", [
+        ("緻密", "chimitsu", "rinci/teliti"),
+        ("精緻", "seichi", "sangat teliti"),
+        ("巧緻", "kouchi", "cerdik dan rinci"),
+    ], [
+        ("緻密な計画です。", "Chimitsu na keikaku desu.", "Ini rencana yang rinci."),
+        ("精緻な作品です。", "Seichi na sakuhin desu.", "Ini karya yang sangat teliti."),
+    ]),
+    ("ho5_n1", "哺", ["ホ"], [], ["menyusui", "feed", "nurture"], 10, "口", [
+        ("哺乳", "honyuu", "menyusui"),
+        ("哺乳類", "honyuurui", "mamalia"),
+        ("哺育", "hoiku", "membesarkan/menyusui"),
+    ], [
+        ("哺乳類を研究しています。", "Honyuurui o kenkyuu shite imasu.", "Meneliti mamalia."),
+        ("哺乳瓶を買いました。", "Honyuubin o kaimashita.", "Membeli botol susu."),
+    ]),
+    ("tsuchi_n1", "槌", [], ["つち"], ["palu", "hammer", "mallet"], 14, "木", [
+        ("槌", "tsuchi", "palu"),
+        ("相槌", "aizuchi", "respon menyetujui dalam percakapan"),
+        ("鉄槌", "tettsui", "palu besi/hukuman keras"),
+    ], [
+        ("槌で叩きました。", "Tsuchi de tatakimashita.", "Memukul dengan palu."),
+        ("相槌を打ちました。", "Aizuchi o uchimashita.", "Memberikan respon menyetujui."),
+    ]),
+    ("taku8_n1", "啄", ["タク"], ["ついば-む"], ["mematuk", "peck"], 10, "口", [
+        ("啄む", "tsuibamu", "mematuk"),
+        ("啄木鳥", "kitsutsuki", "burung pelatuk"),
+        ("一啄", "ittaku", "satu patukan"),
+    ], [
+        ("鳥が餌を啄みました。", "Tori ga esa o tsuibamimashita.", "Burung mematuk makanan."),
+        ("啄木鳥が木を叩いています。", "Kitsutsuki ga ki o tataite imasu.", "Burung pelatuk mematuk pohon."),
+    ]),
+    ("jou14_n1", "穣", ["ジョウ"], [], ["panen berlimpah (variant 穰)", "abundant harvest"], 18, "禾", [
+        ("豊穣", "houjou", "kesuburan/panen melimpah"),
+        ("穣", "Minoru", "contoh nama"),
+        ("五穀豊穣", "gokoku houjou", "panen lima biji-bijian melimpah"),
+    ], [
+        ("豊穣な大地です。", "Houjou na daichi desu.", "Ini tanah yang subur."),
+        ("五穀豊穣を祈りました。", "Gokoku houjou o inorimashita.", "Berdoa untuk panen melimpah."),
+    ]),
+    ("shi31_n1", "嗜", ["シ"], ["たしな-む"], ["menikmati/gemar", "have a taste for", "enjoy"], 13, "口", [
+        ("嗜む", "tashinamu", "menikmati/gemar"),
+        ("嗜好", "shikou", "selera/kegemaran"),
+        ("嗜好品", "shikouhin", "barang kesukaan/kegemaran"),
+    ], [
+        ("酒を嗜みます。", "Sake o tashinamimasu.", "Menikmati sake."),
+        ("嗜好品を買いました。", "Shikouhin o kaimashita.", "Membeli barang kesukaan."),
+    ]),
+    ("kai11_n1", "偕", ["カイ"], [], ["bersama (klasik)", "together"], 11, "人", [
+        ("偕老同穴", "kairou douketsu", "hidup bersama sampai tua"),
+        ("偕行", "kaikou", "berjalan bersama"),
+        ("偕楽", "kairaku", "bersenang-senang bersama"),
+    ], [
+        ("偕老同穴を誓いました。", "Kairou douketsu o chikaimashita.", "Bersumpah hidup bersama sampai tua."),
+        ("偕楽園を訪れました。", "Kairakuen o otozuremashita.", "Mengunjungi Taman Kairakuen."),
+    ]),
+    ("ba2_n1", "罵", ["バ"], ["ののし-る"], ["memaki", "curse", "abuse"], 15, "网", [
+        ("罵る", "nonoshiru", "memaki"),
+        ("罵倒", "batou", "makian"),
+        ("罵声", "basei", "suara makian"),
+    ], [
+        ("罵声を浴びせました。", "Basei o abisemashita.", "Melontarkan makian."),
+        ("罵倒されました。", "Batou saremashita.", "Dimaki-maki."),
+    ]),
+    ("yuu16_n1", "酉", ["ユウ"], ["とり"], ["shio ayam", "rooster zodiac"], 7, "酉", [
+        ("酉", "tori", "tahun ayam dalam zodiak"),
+        ("酉年", "toridoshi", "tahun ayam"),
+        ("酉の市", "tori no ichi", "festival pasar ayam"),
+    ], [
+        ("酉年生まれです。", "Toridoshi umare desu.", "Lahir di tahun ayam."),
+        ("酉の市に行きました。", "Tori no ichi ni ikimashita.", "Pergi ke festival pasar ayam."),
+    ]),
+    ("tei22_n1", "蹄", ["テイ"], ["ひづめ"], ["kuku kaki hewan", "hoof"], 16, "足", [
+        ("蹄", "hizume", "kuku kaki hewan"),
+        ("馬蹄", "batei", "tapal kuda"),
+        ("蹄鉄", "teitetsu", "sepatu kuda/ladam"),
+    ], [
+        ("馬の蹄を見ました。", "Uma no hizume o mimashita.", "Melihat kuku kaki kuda."),
+        ("蹄鉄を打ちました。", "Teitetsu o uchimashita.", "Memasang ladam."),
+    ]),
+    ("kei23_n1", "頚", ["ケイ"], ["くび"], ["leher (variant 頸)", "neck"], 11, "頁", [
+        ("頚椎", "keitsui", "tulang leher"),
+        ("頚部", "keibu", "bagian leher"),
+        ("頚動脈", "keidoumyaku", "arteri leher/karotis"),
+    ], [
+        ("頚椎を痛めました。", "Keitsui o itamemashita.", "Cedera tulang leher."),
+        ("頚動脈を測りました。", "Keidoumyaku o hakarimashita.", "Mengukur arteri karotis."),
+    ]),
+    ("hai8_n1", "胚", ["ハイ"], [], ["embrio", "embryo"], 9, "肉", [
+        ("胚", "hai", "embrio"),
+        ("胚芽", "haiga", "kecambah/lembaga biji"),
+        ("胚珠", "haishu", "bakal biji"),
+    ], [
+        ("胚の研究をしています。", "Hai no kenkyuu o shite imasu.", "Meneliti embrio."),
+        ("胚芽米を食べています。", "Haigamai o tabete imasu.", "Makan beras berkecambah."),
+    ]),
+    ("rou9_n1", "牢", ["ロウ"], [], ["penjara", "prison", "jail"], 7, "牛", [
+        ("牢屋", "rouya", "penjara"),
+        ("牢獄", "rougoku", "penjara"),
+        ("牢固", "rouko", "kokoh/kuat"),
+    ], [
+        ("牢屋に入れられました。", "Rouya ni ireraremashita.", "Dimasukkan ke penjara."),
+        ("牢固たる信念です。", "Rouko taru shinnen desu.", "Ini keyakinan yang kokoh."),
+    ]),
+    ("fun7_n1", "糞", ["フン"], ["くそ"], ["kotoran/tinja", "excrement", "dung"], 17, "米", [
+        ("糞", "kuso", "kotoran/tinja"),
+        ("糞尿", "funnyou", "kotoran dan urin"),
+        ("牛糞", "gyuufun", "kotoran sapi"),
+    ], [
+        ("糞尿処理施設です。", "Funnyou shori shisetsu desu.", "Ini fasilitas pengolahan limbah."),
+        ("牛糞を肥料にしました。", "Gyuufun o hiryou ni shimashita.", "Menjadikan kotoran sapi sebagai pupuk."),
+    ]),
+    ("tei23_n1", "悌", ["テイ"], [], ["kasih sayang persaudaraan", "brotherly love", "respect for elders"], 10, "心", [
+        ("悌", "tei", "sikap hormat pada yang lebih tua"),
+        ("孝悌", "koutei", "bakti dan hormat pada saudara tua"),
+        ("悌順", "teijun", "patuh dan penuh hormat"),
+    ], [
+        ("孝悌の心を大切にします。", "Koutei no kokoro o taisetsu ni shimasu.", "Menghargai sikap bakti dan hormat."),
+        ("悌という徳目です。", "Tei to iu tokumoku desu.", "Ini adalah nilai kebajikan \"tei\"."),
+    ]),
+    ("chou30_n1", "吊", ["チョウ"], ["つ-る"], ["menggantung", "hang", "suspend"], 6, "口", [
+        ("吊る", "tsuru", "menggantung"),
+        ("吊り橋", "tsuribashi", "jembatan gantung"),
+        ("吊革", "tsurikawa", "pegangan gantung di kereta"),
+    ], [
+        ("吊り橋を渡りました。", "Tsuribashi o watarimashita.", "Menyeberangi jembatan gantung."),
+        ("吊革につかまりました。", "Tsurikawa ni tsukamarimashita.", "Berpegangan pada pegangan gantung."),
+    ]),
+    ("da6_n1", "楕", ["ダ"], [], ["elips", "oval", "ellipse"], 13, "木", [
+        ("楕円", "daen", "elips/oval"),
+        ("楕円形", "daenkei", "bentuk oval"),
+        ("楕円軌道", "daen kidou", "orbit elips"),
+    ], [
+        ("楕円を描きました。", "Daen o egakimashita.", "Menggambar elips."),
+        ("楕円軌道を回っています。", "Daen kidou o mawatte imasu.", "Mengorbit dalam lintasan elips."),
+    ]),
+    ("kai12_n1", "鮭", ["カイ"], ["さけ", "しゃけ"], ["ikan salmon", "salmon"], 17, "魚", [
+        ("鮭", "sake", "ikan salmon"),
+        ("鮭の切り身", "sake no kirimi", "potongan salmon"),
+        ("塩鮭", "shiojake", "salmon asin"),
+    ], [
+        ("鮭を焼きました。", "Sake o yakimashita.", "Memanggang salmon."),
+        ("塩鮭が好きです。", "Shiojake ga suki desu.", "Suka salmon asin."),
+    ]),
+    ("kotsu2_n1", "乞", ["コツ"], ["こ-う"], ["memohon/mengemis", "beg"], 3, "乙", [
+        ("乞う", "kou", "memohon"),
+        ("乞食", "kojiki", "pengemis"),
+        ("命乞い", "inochigoi", "memohon nyawa"),
+    ], [
+        ("許しを乞いました。", "Yurushi o koimashita.", "Memohon maaf."),
+        ("命乞いをしました。", "Inochigoi o shimashita.", "Memohon nyawa."),
+    ]),
+    ("ken18_n1", "倹", ["ケン"], [], ["hemat", "frugal", "thrifty"], 10, "人", [
+        ("倹約", "ken'yaku", "penghematan"),
+        ("勤倹", "kinken", "rajin dan hemat"),
+        ("倹しい", "tsumashii", "sederhana/hemat"),
+    ], [
+        ("倹約に努めています。", "Ken'yaku ni tsutomete imasu.", "Berusaha berhemat."),
+        ("勤倹貯蓄が大切です。", "Kinken chochiku ga taisetsu desu.", "Rajin, hemat, dan menabung itu penting."),
+    ]),
+    ("kyuu17_n1", "嗅", ["キュウ"], ["か-ぐ"], ["mencium (bau)", "smell"], 13, "口", [
+        ("嗅ぐ", "kagu", "mencium bau"),
+        ("嗅覚", "kyuukaku", "indra penciuman"),
+        ("嗅細胞", "kyuusaibou", "sel penciuman"),
+    ], [
+        ("匂いを嗅ぎました。", "Nioi o kagimashita.", "Mencium bau."),
+        ("嗅覚が鋭いです。", "Kyuukaku ga surudoi desu.", "Indra penciumannya tajam."),
+    ]),
+    ("wabiru_n1", "詫", [], ["わ-びる"], ["minta maaf (variant 侘)", "apologize"], 13, "言", [
+        ("詫びる", "wabiru", "minta maaf"),
+        ("お詫び", "owabi", "permintaan maaf"),
+        ("詫び状", "wabijou", "surat permintaan maaf"),
+    ], [
+        ("心から詫びました。", "Kokoro kara wabimashita.", "Minta maaf dengan tulus."),
+        ("お詫びを申し上げます。", "Owabi o moushiagemasu.", "Menyampaikan permintaan maaf."),
+    ]),
+    ("son3_n1", "鱒", ["ソン"], ["ます"], ["ikan trout", "trout"], 23, "魚", [
+        ("鱒", "masu", "ikan trout"),
+        ("虹鱒", "nijimasu", "ikan trout pelangi"),
+        ("鱒寿司", "masuzushi", "sushi trout"),
+    ], [
+        ("鱒を釣りました。", "Masu o tsurimashita.", "Memancing ikan trout."),
+        ("鱒寿司が名物です。", "Masuzushi ga meibutsu desu.", "Sushi trout adalah makanan khas."),
+    ]),
+    ("betsu_n1", "蔑", ["ベツ"], ["さげす-む"], ["menghina", "despise", "scorn"], 14, "艸", [
+        ("蔑む", "sagesumu", "menghina/meremehkan"),
+        ("軽蔑", "keibetsu", "penghinaan"),
+        ("蔑視", "besshi", "memandang rendah"),
+    ], [
+        ("人を蔑んではいけません。", "Hito o sagesunde wa ikemasen.", "Jangan menghina orang."),
+        ("軽蔑の目で見られました。", "Keibetsu no me de miraremashita.", "Dipandang dengan penghinaan."),
+    ]),
+    ("tetsu6_n1", "轍", ["テツ"], ["わだち"], ["bekas roda", "wheel track", "rut"], 19, "車", [
+        ("轍", "wadachi", "bekas roda"),
+        ("前轍を踏む", "zentetsu o fumu", "mengulangi kesalahan sebelumnya"),
+        ("轍鮒の急", "tetsubu no kyuu", "keadaan darurat"),
+    ], [
+        ("轍が残っています。", "Wadachi ga nokotte imasu.", "Bekas roda masih tersisa."),
+        ("前轍を踏まないようにします。", "Zentetsu o fumanai you ni shimasu.", "Berusaha tidak mengulangi kesalahan yang sama."),
+    ]),
+    ("shou45_n1", "醤", ["ショウ"], [], ["kecap/pasta fermentasi", "soy sauce"], 17, "酉", [
+        ("醤油", "shouyu", "kecap asin"),
+        ("味噌醤油", "miso shouyu", "miso dan kecap"),
+        ("醤", "hishio", "pasta fermentasi kuno"),
+    ], [
+        ("醤油をかけました。", "Shouyu o kakemashita.", "Menuangkan kecap."),
+        ("醤油の香りがします。", "Shouyu no kaori ga shimasu.", "Tercium aroma kecap."),
+    ]),
+    ("horeru_n1", "惚", [], ["ほ-れる", "ぼ-ける"], ["terpesona/tergila-gila", "infatuated", "enchanted"], 11, "心", [
+        ("惚れる", "horeru", "jatuh cinta/terpesona"),
+        ("惚気る", "norokeru", "membanggakan pasangan"),
+        ("惚ける", "bokeru", "pikun/linglung"),
+    ], [
+        ("一目惚れしました。", "Hitomebore shimashita.", "Jatuh cinta pada pandangan pertama."),
+        ("惚けてしまいました。", "Bokete shimaimashita.", "Jadi pikun."),
+    ]),
+    ("kou46_n1", "廣", ["コウ"], ["ひろ-い"], ["luas (bentuk tradisional 広)", "wide", "vast"], 15, "广", [
+        ("廣島", "Hiroshima", "nama kota"),
+        ("廣告", "koukoku", "iklan"),
+        ("廣場", "koujou", "alun-alun"),
+    ], [
+        ("廣島に行きました。", "Hiroshima ni ikimashita.", "Pergi ke Hiroshima."),
+        ("廣告を出しました。", "Koukoku o dashimashita.", "Memasang iklan."),
+    ]),
+    ("kou47_n1", "藁", ["コウ"], ["わら"], ["jerami", "straw"], 17, "艸", [
+        ("藁", "wara", "jerami"),
+        ("藁人形", "waraningyou", "boneka jerami"),
+        ("藁にもすがる", "wara ni mo sugaru", "berpegang pada apa saja"),
+    ], [
+        ("藁で屋根を葺きました。", "Wara de yane o fukimashita.", "Menutup atap dengan jerami."),
+        ("溺れる者は藁をもつかむ。", "Oboreru mono wa wara o mo tsukamu.", "Peribahasa: orang yang tenggelam akan meraih jerami sekalipun."),
+    ]),
+    ("yu5_n1", "柚", ["ユ"], ["ゆず"], ["buah yuzu", "yuzu citrus"], 9, "木", [
+        ("柚子", "yuzu", "buah yuzu"),
+        ("柚子湯", "yuzuyu", "mandi yuzu"),
+        ("柚子胡椒", "yuzukoshou", "sambal yuzu"),
+    ], [
+        ("柚子湯に入りました。", "Yuzuyu ni hairimashita.", "Berendam air yuzu."),
+        ("柚子胡椒をつけました。", "Yuzukoshou o tsukemashita.", "Menambahkan sambal yuzu."),
+    ]),
+    ("sen18_n1", "舛", ["セン"], [], ["bertentangan (jarang, nama)", "oppose", "differ"], 6, "舛", [
+        ("舛添", "Masuzoe", "contoh nama keluarga"),
+        ("舛", "masu", "nama karakter"),
+        ("舛田", "Masuda", "contoh nama keluarga"),
+    ], [
+        ("舛添さんという政治家です。", "Masuzoe-san to iu seijika desu.", "Ini politisi bernama Masuzoe."),
+        ("舛田さんに会いました。", "Masuda-san ni aimashita.", "Bertemu dengan Masuda."),
+    ]),
+    ("kou48_n1", "縞", ["コウ"], ["しま"], ["garis-garis/corak belang", "stripe"], 16, "糸", [
+        ("縞", "shima", "garis-garis/belang"),
+        ("縞模様", "shimamoyou", "motif garis-garis"),
+        ("縞馬", "shimauma", "zebra"),
+    ], [
+        ("縞模様のシャツです。", "Shimamoyou no shatsu desu.", "Ini kemeja bermotif garis-garis."),
+        ("縞馬を見ました。", "Shimauma o mimashita.", "Melihat zebra."),
+    ]),
+    ("ou12_n1", "謳", ["オウ"], ["うた-う"], ["memuji/menyanjung", "sing praises", "extol"], 18, "言", [
+        ("謳う", "utau", "memuji/menyanjung dengan kata-kata"),
+        ("謳歌", "ouka", "memuji-muji/menikmati sepenuhnya"),
+        ("謳い文句", "utaimonku", "slogan/kata-kata promosi"),
+    ], [
+        ("青春を謳歌しました。", "Seishun o ouka shimashita.", "Menikmati masa muda sepenuhnya."),
+        ("謳い文句に惹かれました。", "Utaimonku ni hikaremashita.", "Tertarik oleh slogan."),
+    ]),
+    ("ki31_n1", "杞", ["キ"], [], ["dahan willow, negara Qi kuno (klasik)", "willow", "state of Qi"], 7, "木", [
+        ("杞憂", "kiyuu", "kekhawatiran berlebihan"),
+        ("杞", "Ki", "nama negara kuno Tiongkok"),
+        ("杞柳", "kiryuu", "pohon willow jenis tertentu"),
+    ], [
+        ("それは杞憂に過ぎません。", "Sore wa kiyuu ni suginasen.", "Itu hanya kekhawatiran berlebihan."),
+        ("杞憂に終わりました。", "Kiyuu ni owarimashita.", "Berakhir hanya sebagai kekhawatiran yang tidak perlu."),
+    ]),
+    ("rin5_n1", "鱗", ["リン"], ["うろこ"], ["sisik", "scale (fish/reptile)"], 24, "魚", [
+        ("鱗", "uroko", "sisik"),
+        ("逆鱗", "gekirin", "kemarahan besar"),
+        ("片鱗", "henrin", "secuil/sekelumit"),
+    ], [
+        ("魚の鱗を取りました。", "Sakana no uroko o torimashita.", "Membersihkan sisik ikan."),
+        ("逆鱗に触れました。", "Gekirin ni furemashita.", "Membuat marah besar."),
+    ]),
+    ("ken19_n1", "繭", ["ケン"], ["まゆ"], ["kepompong", "cocoon"], 18, "糸", [
+        ("繭", "mayu", "kepompong"),
+        ("繭玉", "mayudama", "hiasan kepompong tahun baru"),
+        ("繭価", "kenka", "harga kepompong"),
+    ], [
+        ("蚕が繭を作りました。", "Kaiko ga mayu o tsukurimashita.", "Ulat sutra membuat kepompong."),
+        ("繭から絹糸を取ります。", "Mayu kara kinshi o torimasu.", "Mengambil benang sutra dari kepompong."),
+    ]),
+    ("tei24_n1", "釘", ["テイ"], ["くぎ"], ["paku", "nail"], 10, "金", [
+        ("釘", "kugi", "paku"),
+        ("釘付け", "kugizuke", "terpaku"),
+        ("釘を刺す", "kugi o sasu", "memberi peringatan tegas"),
+    ], [
+        ("釘を打ちました。", "Kugi o uchimashita.", "Memaku."),
+        ("釘を刺しておきました。", "Kugi o sashite okimashita.", "Memberi peringatan tegas terlebih dahulu."),
+    ]),
+    ("chi6_n1", "弛", ["チ"], ["たる-む", "ゆる-む"], ["kendur/longgar", "slack", "loosen"], 6, "弓", [
+        ("弛む", "tarumu", "mengendur"),
+        ("弛緩", "shikan", "relaksasi/kendur"),
+        ("弛み", "tarumi", "kekendoran"),
+    ], [
+        ("気が弛んでいます。", "Ki ga tarunde imasu.", "Perhatiannya kendur."),
+        ("筋肉が弛緩しました。", "Kinniku ga shikan shimashita.", "Ototnya relaksasi."),
+    ]),
+    ("ri8_n1", "狸", ["リ"], ["たぬき"], ["tanuki (anjing rakun Jepang)", "raccoon dog"], 10, "犬", [
+        ("狸", "tanuki", "tanuki"),
+        ("狸寝入り", "tanuki neiri", "pura-pura tidur"),
+        ("狸親父", "tanuki oyaji", "orang licik"),
+    ], [
+        ("狸を見ました。", "Tanuki o mimashita.", "Melihat tanuki."),
+        ("狸寝入りをしていました。", "Tanuki neiri o shite imashita.", "Pura-pura tidur."),
+    ]),
+    ("jin10_n1", "壬", ["ジン"], ["みずのえ"], ["unsur kalender kuno (air)", "9th calendar sign"], 4, "士", [
+        ("壬申", "jinshin", "tahun air-monyet"),
+        ("壬生", "Mibu", "nama tempat"),
+        ("壬年", "jinnen", "tahun bertanda jin"),
+    ], [
+        ("壬申の乱という戦です。", "Jinshin no ran to iu ikusa desu.", "Ini perang bernama Pemberontakan Jinshin."),
+        ("壬生という地名です。", "Mibu to iu chimei desu.", "Ini nama tempat Mibu."),
+    ]),
+    ("ken20_n1", "硯", ["ケン"], ["すずり"], ["batu tinta", "inkstone"], 12, "石", [
+        ("硯", "suzuri", "batu tinta"),
+        ("硯箱", "suzuribako", "kotak batu tinta"),
+        ("筆硯", "hikken", "kuas dan batu tinta"),
+    ], [
+        ("硯で墨を磨りました。", "Suzuri de sumi o surimashita.", "Menggosok tinta di batu tinta."),
+        ("硯箱を買いました。", "Suzuribako o kaimashita.", "Membeli kotak batu tinta."),
+    ]),
 ]
 
 PLACEHOLDER_COUNTS = {}

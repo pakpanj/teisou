@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — N3 done (315/315), N2 done (367/367), N1 in progress (748/1503) |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — N3 done (315/315), N2 done (367/367), N1 done (1503/1503) — kanji dataset fully real, no placeholders left |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -288,32 +288,36 @@ meant.
   probably a leftover from early in N3's authoring, invisible to any
   single-batch check since batch-level verification only checks the
   *newly added* entries, not the accumulated whole).
-  N1 is the last remaining step of this same pipeline and is now
-  **in progress, roughly halfway done (748/1503)**: `N1_CHARACTERS` is
-  locked in `kanji_char_lists.py` (1503 characters, sourced from
-  jlptsensei.com — Tanos' N1 page also returned HTTP 500 that session,
-  same as N2's), all 2425 N5+N4+N3+N2+N1 SVGs are fetched, and
-  `PLACEHOLDER_COUNTS` no longer includes N1. `N1_KANJI` is being built
-  batch-by-batch (22 kanji each, lettered A-Z then AA/BB/CC/... once the
-  single-letter alphabet ran out at Z) via `build_n1_entries()` mirroring
-  `build_n2_entries()`. Same per-batch verification as N3/N2 (authored
-  count, no duplicate ids/chars, matches locked-list prefix exactly) plus
-  periodic full-dataset checks every ~5 batches. **Id-collision gotcha
-  specific to N1's scale**: with ~750+ kanji sharing a small pool of
-  common on'yomi/kun'yomi readings, several batches (W, X, CC, EE, HH)
-  each produced one fresh `_n1` suffix that collided with a suffix
-  already used many batches earlier for a *different* kanji with the
-  same reading (e.g. 舗's `ho_n1` collided with 浦's from batch F; 虚's
-  `kyo4_n1` collided with 距's from batch P; 把's `ha_n1` collided with
-  覇's from batch P; 憂's `yuu4_n1` collided with 裕's from batch L;
-  磐's `ban_n1` collided with 盤's from an earlier batch) — the
-  per-batch cross-check script's duplicate-id assertion caught every one
-  of these before they shipped, by design. This is expected to keep
-  happening as N1 grows; don't skip the duplicate-id check on any future
-  batch even though it's "just" run 8+ times successfully in a row.
-  Keep going the same way for the remaining ~755 kanji (~34 more
-  batches at 22/batch) until N1 reaches 100%, then update this table row
-  and `_levels.json` accordingly.
+  N1, the last remaining step of this same pipeline, is now **complete
+  (1503/1503)**: `N1_CHARACTERS` is locked in `kanji_char_lists.py` (1503
+  characters, sourced from jlptsensei.com — Tanos' N1 page also returned
+  HTTP 500 that session, same as N2's), all 2425 N5+N4+N3+N2+N1 SVGs are
+  fetched, and `PLACEHOLDER_COUNTS` no longer includes N1. `N1_KANJI` was
+  built batch-by-batch (22 kanji per batch, lettered A-Z, then AA/BB/CC/...
+  once the single-letter alphabet ran out at Z, then AAA/BBB/CCC/... once
+  the double-letter alphabet ran out at ZZ, finishing at batch QQQ — a
+  final batch of 7 to close out exactly at 1503) via `build_n1_entries()`
+  mirroring `build_n2_entries()`. `_levels.json`'s N1 `kanjiCount` is
+  `1503`, and `kanji_data.json` now has **2425 real entries, 0
+  placeholders** across all five levels. **Id-collision gotcha specific
+  to N1's scale**: with 1500+ kanji sharing a small pool of common
+  on'yomi/kun'yomi readings, collisions became frequent starting around
+  batch W and only got more common as the dataset filled in — dozens of
+  batches each produced at least one fresh `_n1` suffix that collided
+  with a suffix already used many batches earlier for a *different*
+  kanji with the same reading (e.g. 舗's `ho_n1` vs 浦's from batch F;
+  虚's `kyo4_n1` vs 距's from batch P; 憂's `yuu4_n1` vs 裕's from batch
+  L; late-stage batches like JJJ needed 3-4 rename rounds on a single
+  character before landing on a free suffix). The per-batch cross-check
+  script's duplicate-id assertion caught every single one before it
+  shipped, by design — always by querying the actual current `N1_KANJI`
+  ids via Python and incrementing the suffix number, never by guessing.
+  A second permanent check — `assert t[2] or t[3]` (onyomi-or-kunyomi
+  presence) — was added mid-pipeline after it caught a real bug (婦/
+  `fu5_n3` was missing its onyomi); every batch since has been verified
+  against both checks. If N1 content is ever revisited (corrections,
+  re-authoring), keep using the same cross-check pattern — it's cheap
+  and it has caught a real bug every time it's been exercised in anger.
   **Gotcha found while fetching N3's SVGs**: two of KanjiVG's stroke paths
   open with a lowercase `m` instead of `M` — `KanjiVgParser` didn't handle
   it and would have dropped that stroke's numbers the same way it dropped
