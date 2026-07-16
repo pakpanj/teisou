@@ -31,14 +31,6 @@ const kComingSoonModules = <ModuleInfo>[
     requiresPremium: true,
   ),
   ModuleInfo(
-    id: 'bunpou',
-    title: 'Bunpou (Tata Bahasa)',
-    description: 'Pola kalimat dan struktur tata bahasa Jepang',
-    iconAsset: '',
-    status: ModuleStatus.comingSoon,
-    requiresPremium: true,
-  ),
-  ModuleInfo(
     id: 'choukai',
     title: 'Choukai (Listening)',
     description: 'Latihan mendengar percakapan sehari-hari',

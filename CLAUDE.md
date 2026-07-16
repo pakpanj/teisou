@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — N3 done (315/315), N2 done (367/367), N1 done (1503/1503) — kanji dataset fully real, no placeholders left |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou N5+N4+N3 all done (84/84, 132/132, 182/182 grammar points); Bunpou N2/N1 and Kaiwa/Choukai still untouched |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -229,6 +229,95 @@ meant.
     scoring logic, just swaps which field is the prompt vs. the options
     and renders kanji options in a large centered style instead of small
     left-aligned text).
+- **Bunpou module** (Batch 9+, Fase 1) is a brand-new module built by
+  mirroring Kanji's architecture field-for-field rather than inventing a
+  new pattern: `BunpouEntry` (`lib/data/models/bunpou_entry.dart`) has
+  `pattern`/`patternRomaji`/`meaning`/`formation`/`usageNotes`/
+  `similarPatterns`/`sentenceExamples`/`placeholder`, reusing the same
+  `JlptLevel` enum and the same module-neutral `SentenceExample` class
+  Kanji/Kotoba already share — no new example type was created. Repository
+  (`BunpouRepository`), level metadata (`BunpouLevel`/
+  `BunpouLevelRepository`, `assets/data/bunpou/_levels.json`), and progress
+  tracking (`BunpouProgressRepository`/`BunpouProgressEntry`,
+  SharedPreferences key `bunpou_learned_ids`, Firestore mirror at
+  `users/{uid}/bunpouProgress` via `FirestorePaths.bunpouProgressCollection`)
+  all mirror their Kanji counterparts exactly, including the same
+  known try/catch gap around the Firestore mirror write (see the Kanji
+  progress note above — not fixed here either, same reasoning). Screens
+  (`lib/features/bunpou/`: `bunpou_home_screen.dart`,
+  `bunpou_level_screen.dart`, `bunpou_detail_screen.dart`,
+  `bunpou_quiz_screen.dart`) mirror Kanji's Home/Level/Detail/Quiz
+  structure, with two deliberate differences: the level screen is a
+  **list** (pattern + short meaning per row), not a grid, since grammar
+  patterns read better as text than as a glyph grid; and the detail
+  screen has no stroke animator/radical pill (not applicable to grammar)
+  — the pattern is shown large with its romaji underneath instead, plus
+  Arti/Pembentukan/Catatan Pemakaian sections and a TTS speak button
+  (reuses `ttsServiceProvider`, no new service). `ModulesScreen` now pushes
+  `BunpouHomeScreen` directly for the Bunpou card under "Tersedia"
+  (`_AvailableModuleCard`, same as Kanji/Kotoba), same as how the
+  previously-available modules work — the `bunpou` entry was removed
+  from `kComingSoonModules` and its now-dead 12-line `ComingSoonScreen`
+  stub (`lib/features/bunpou/bunpou_screen.dart`, which nothing actually
+  referenced even before this) was deleted outright rather than kept
+  around. Content pipeline (`scripts/bunpou_grammar_lists.py` locking
+  `N5_GRAMMAR`, `scripts/generate_bunpou_seed.py` building
+  `assets/data/bunpou_data.json`) mirrors the Kanji pipeline too, with an
+  8-field tuple per entry (one fewer than Kanji's 9 — there's no separate
+  "word examples" layer since a grammar pattern doesn't have a standalone
+  vocabulary-word form the way a kanji does; sentence examples alone
+  carry the teaching content). **Content scope**: N5 (84 patterns), N4
+  (132 patterns), and N3 (182 patterns) are all fully real now, sourced
+  from jlptsensei.com's grammar lists — same source already established
+  for N2/N1 kanji — fetched across N5's 3, N4's 4, and N3's 5 paginated
+  pages respectively, each verified against the page's own stated total
+  ("84"/"132"/"182") before locking. N2/N1 are deliberately out of scope
+  for now — `assets/data/bunpou/_levels.json` marks them `available:
+  false` with no `bunpouCount`, and `BunpouHomeScreen` shows them as
+  "Segera" exactly like Kanji's not-yet-authored levels did before
+  N3-N1 landed. Don't forget to add new asset paths to `pubspec.yaml`'s
+  `flutter: assets:` list when adding a new bundled-JSON module like
+  this — `bunpou_data.json` and `assets/data/bunpou/` were initially
+  missing from there and the app would have shipped with 404s on every
+  Bunpou screen despite `flutter analyze`/`flutter test` both passing
+  clean, since neither catches a missing asset declaration.
+  **jlptsensei sometimes lists two distinct grammar points under
+  identical surface text** — N4's raw source list has のに and そうだ
+  each appearing twice (contrastive "even though" vs. purpose-marking
+  "for ~ing" for のに; hearsay vs. appearance for そうだ) — these are
+  disambiguated directly in the locked list text itself with a
+  parenthetical qualifier (のに（逆接）/のに（目的）, そうだ（伝聞）/
+  そうだ（様態）) rather than kept as bare duplicate strings, both so the
+  list's own uniqueness assertion holds and so the two entries are
+  distinguishable in the UI. Separately, six grammar points reuse
+  identical pattern text **across** levels on purpose (でも, にする, も,
+  と — N5 vs N4; だけ, こと — N5/N4 vs N3) — each higher-level entry
+  covers a genuinely different nuance than its lower-level counterpart
+  (documented in that entry's own `usageNotes`, and cross-linked via
+  `similarPatterns`) and gets an incremented id suffix (`demo2`,
+  `ni_suru2`, `mo2`, `to2`, `dake2`, `koto2`) — the full-dataset check
+  tolerates duplicate `pattern` text as long as `id` stays unique, and
+  specifically confirms every remaining duplicate is one of these six
+  intentional pairs before treating the dataset as clean.
+  **Bug found and fixed during N4's on-device verification**:
+  `BunpouDetailScreen`'s "Pola Serupa" section originally rendered each
+  `similarPatterns` entry as a pill showing the raw id string (e.g.
+  `bunpou_aida_ni`) instead of that entry's actual pattern text — harmless
+  for Kanji's equivalent `relatedBunpou` section since every kanji's list
+  there is still empty, but immediately visible once Bunpou's
+  `similarPatterns` started actually being populated. Fixed by adding
+  `bunpouAllProvider` (`FutureProvider<List<BunpouEntry>>` wrapping
+  `BunpouRepository.getAll()`, in `bunpou_providers.dart`) and a
+  `_SimilarPatternsRow` widget that resolves each id to its `pattern` via
+  that full list before rendering — needed because a similar pattern can
+  point at an entry from a *different* JLPT level than the one currently
+  being viewed (e.g. N4's `ato_de` cross-references N5's `te_kara`), so
+  the level-scoped `entries` list the detail screen already holds isn't
+  enough on its own. Verified end-to-end on a physical device (Moto G52J
+  5G): Home→Level→Detail→mark-learned→Quiz (both modes) all work for both
+  N5 and N4, progress badge/checkmark update live via the same
+  invalidate-on-mutate pattern as Kanji/Kotoba, and "Pola Serupa" now
+  shows readable pattern text after the fix above.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
@@ -336,11 +425,15 @@ meant.
   another command letter, re-run this same scan before assuming the
   vocabulary is still complete — it wasn't, the first two times this was
   checked.
-- Every `KanjiEntry.relatedBunpou` is currently an empty list — there's
-  no Bunpou module yet to link a kanji to specific grammar points. The
-  field and its UI section (`KanjiWordDetailScreen`, conditionally
-  hidden when empty) are already wired for whenever Bunpou content
-  exists; nothing else needs to change to start populating it.
+- Every `KanjiEntry.relatedBunpou` is still currently an empty list, even
+  though the Bunpou module now exists (Fase 1, N5) — the two datasets
+  simply haven't been cross-linked yet (that's a manual curation pass:
+  deciding *which* N5 grammar points relate to *which* kanji, across
+  2425 kanji and 84 grammar points, not a schema change). The field and
+  its UI section (`KanjiWordDetailScreen`, conditionally hidden when
+  empty) were already wired for this before Bunpou existed; nothing else
+  needs to change to start populating it whenever that curation pass
+  happens.
 - Cam Detector's Japanese OCR uses ML Kit's **bundled** model
   (`com.google.mlkit:text-recognition-japanese:16.0.1`, ~4MB, added as an
   explicit `implementation` dependency in `android/app/build.gradle.kts`).

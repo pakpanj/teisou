@@ -11,6 +11,7 @@ class FirestorePaths {
   static const savedWords = 'savedWords';
   static const kotobaProgress = 'kotobaProgress';
   static const kanjiProgress = 'kanjiProgress';
+  static const bunpouProgress = 'bunpouProgress';
 
   static const fieldProfile = 'profile';
   static const fieldProgress = 'progress';
@@ -28,4 +29,6 @@ class FirestorePaths {
       '$users/$uid/$kotobaProgress';
   static String kanjiProgressCollection(String uid) =>
       '$users/$uid/$kanjiProgress';
+  static String bunpouProgressCollection(String uid) =>
+      '$users/$uid/$bunpouProgress';
 }

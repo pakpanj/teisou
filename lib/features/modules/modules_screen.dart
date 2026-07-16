@@ -4,6 +4,7 @@ import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/kana_type.dart';
 import '../../data/models/module_info.dart';
+import '../bunpou/bunpou_home_screen.dart';
 import '../cam_detector/cam_detector_screen.dart';
 import '../flashcard/flashcard_screen.dart';
 import '../kanji/kanji_home_screen.dart';
@@ -83,6 +84,18 @@ class ModulesScreen extends StatelessWidget {
             onTap: () => AppNavigator.slideFromRight(
               context,
               const KanjiHomeScreen(),
+            ),
+          ),
+          const SizedBox(height: 12),
+          _AvailableModuleCard(
+            emoji: '文',
+            backgroundColor: AppColors.hiraganaCardBg,
+            iconColor: AppColors.primaryCoral,
+            title: 'Bunpou',
+            subtitle: 'Belajar pola tata bahasa per level JLPT',
+            onTap: () => AppNavigator.slideFromRight(
+              context,
+              const BunpouHomeScreen(),
             ),
           ),
           const SizedBox(height: 28),
@@ -201,7 +214,6 @@ class _ComingSoonCard extends StatelessWidget {
 
   static const _icons = {
     'particle': 'を',
-    'bunpou': '文',
     'choukai': '🎧',
     'kaiwa': '💬',
     'picture_learning': '🖼️',

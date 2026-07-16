@@ -6,6 +6,9 @@ import '../data/models/kana_type.dart';
 import '../data/models/kana_type_progress.dart';
 import '../data/models/subscription.dart';
 import '../data/models/user_profile.dart';
+import '../data/repositories/bunpou_level_repository.dart';
+import '../data/repositories/bunpou_progress_repository.dart';
+import '../data/repositories/bunpou_repository.dart';
 import '../data/repositories/exam_repository.dart';
 import '../data/repositories/kana_repository.dart';
 import '../data/repositories/kanji_level_repository.dart';
@@ -39,6 +42,15 @@ final kanjiLevelRepositoryProvider = Provider<KanjiLevelRepository>(
 );
 final kanjiProgressRepositoryProvider = Provider<KanjiProgressRepository>(
   (ref) => KanjiProgressRepository(),
+);
+final bunpouRepositoryProvider = Provider<BunpouRepository>(
+  (ref) => BunpouRepository(),
+);
+final bunpouLevelRepositoryProvider = Provider<BunpouLevelRepository>(
+  (ref) => BunpouLevelRepository(),
+);
+final bunpouProgressRepositoryProvider = Provider<BunpouProgressRepository>(
+  (ref) => BunpouProgressRepository(),
 );
 final kotobaRepositoryProvider = Provider<KotobaRepository>(
   (ref) => KotobaRepository(),
