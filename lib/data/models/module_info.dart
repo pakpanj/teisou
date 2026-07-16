@@ -31,14 +31,6 @@ const kComingSoonModules = <ModuleInfo>[
     requiresPremium: true,
   ),
   ModuleInfo(
-    id: 'kaiwa',
-    title: 'Kaiwa (Percakapan)',
-    description: 'Latihan percakapan dasar untuk situasi nyata',
-    iconAsset: '',
-    status: ModuleStatus.comingSoon,
-    requiresPremium: true,
-  ),
-  ModuleInfo(
     id: 'picture_learning',
     title: 'Belajar dari Gambar',
     description: 'Perkaya kosakata lewat asosiasi gambar',

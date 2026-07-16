@@ -1,0 +1,515 @@
+[
+  {
+    "id": "kaiwa_kenalan_teman_baru",
+    "title": "Berkenalan dengan Teman Baru",
+    "category": "perkenalan",
+    "description": "Yuki menyapa dan berkenalan denganmu untuk pertama kalinya.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Yuki",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "はじめまして。ゆきです。",
+          "romaji": "Hajimemashite. Yuki desu.",
+          "translation": "Salam kenal. Saya Yuki."
+        },
+        "note": "はじめまして dipakai khusus saat bertemu seseorang untuk pertama kali."
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Balas salam ini dan sebutkan namamu (Budi)",
+        "acceptedAnswers": [
+          {
+            "japanese": "はじめまして。ブディです。よろしくお願いします。",
+            "romaji": "Hajimemashite. Budi desu. Yoroshiku onegaishimasu.",
+            "translation": "Salam kenal. Saya Budi. Mohon bantuannya.",
+            "variants": [
+              "はじめまして、ブディです。よろしくお願いします。"
+            ],
+            "expressionTag": "sopan"
+          },
+          {
+            "japanese": "はじめまして。ブディです。",
+            "romaji": "Hajimemashite. Budi desu.",
+            "translation": "Salam kenal. Saya Budi.",
+            "variants": [
+              "はじめまして、ブディです。"
+            ],
+            "expressionTag": null
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "3",
+        "speaker": "Yuki",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "よろしくお願いします！ブディさんは学生ですか。",
+          "romaji": "Yoroshiku onegaishimasu! Budi-san wa gakusei desu ka.",
+          "translation": "Senang berkenalan! Budi apakah kamu pelajar?"
+        },
+        "note": null
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Jawab bahwa kamu pelajar (gakusei)",
+        "acceptedAnswers": [
+          {
+            "japanese": "はい、学生です。",
+            "romaji": "Hai, gakusei desu.",
+            "translation": "Ya, saya pelajar.",
+            "variants": [
+              "学生です。",
+              "はい学生です。"
+            ],
+            "expressionTag": null
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "5",
+        "speaker": "Yuki",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そうですか！日本語の勉強、頑張ってくださいね。",
+          "romaji": "Sou desu ka! Nihongo no benkyou, ganbatte kudasai ne.",
+          "translation": "Begitu ya! Semangat belajar bahasa Jepangnya ya."
+        },
+        "note": null
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Balas dengan semangat bahwa kamu akan berusaha",
+        "acceptedAnswers": [
+          {
+            "japanese": "頑張ります！",
+            "romaji": "Ganbarimasu!",
+            "translation": "Saya akan berusaha!",
+            "variants": [
+              "頑張ります。",
+              "はい、頑張ります。"
+            ],
+            "expressionTag": "semangat"
+          }
+        ],
+        "note": "頑張ります adalah ungkapan umum untuk menunjukkan semangat/tekad, sering dipakai saat menerima dukungan atau memulai sesuatu."
+      },
+      {
+        "id": "7",
+        "speaker": "Yuki",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでは、また今度ね！",
+          "romaji": "Sore dewa, mata kondo ne!",
+          "translation": "Kalau begitu, sampai jumpa lagi ya!"
+        },
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_sapa_pagi_hari",
+    "title": "Menyapa di Pagi Hari",
+    "category": "perkenalan",
+    "description": "Pak Tanaka, tetanggamu, menyapamu di pagi hari sebelum berangkat sekolah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Pak Tanaka",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "おはようございます。今日もいい天気ですね。",
+          "romaji": "Ohayou gozaimasu. Kyou mo ii tenki desu ne.",
+          "translation": "Selamat pagi. Hari ini cuacanya bagus juga ya."
+        },
+        "note": null
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Balas salam pagi ini",
+        "acceptedAnswers": [
+          {
+            "japanese": "おはようございます。",
+            "romaji": "Ohayou gozaimasu.",
+            "translation": "Selamat pagi.",
+            "variants": [
+              "おはようございます!"
+            ],
+            "expressionTag": null
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "3",
+        "speaker": "Pak Tanaka",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "これから学校ですか。",
+          "romaji": "Kore kara gakkou desu ka.",
+          "translation": "Mau berangkat sekolah sekarang?"
+        },
+        "note": null
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Jawab iya, benar",
+        "acceptedAnswers": [
+          {
+            "japanese": "はい、そうです。",
+            "romaji": "Hai, sou desu.",
+            "translation": "Ya, benar.",
+            "variants": [
+              "はい。",
+              "そうです。"
+            ],
+            "expressionTag": null
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "5",
+        "speaker": "Pak Tanaka",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "気をつけて行ってらっしゃい。",
+          "romaji": "Ki wo tsukete itterasshai.",
+          "translation": "Hati-hati, selamat berangkat."
+        },
+        "note": null
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Balas dengan ungkapan saat berangkat dari rumah",
+        "acceptedAnswers": [
+          {
+            "japanese": "行ってきます。",
+            "romaji": "Itte kimasu.",
+            "translation": "Saya berangkat (akan kembali).",
+            "variants": [],
+            "expressionTag": null
+          }
+        ],
+        "note": "行ってきます diucapkan orang yang akan keluar rumah; dijawab lawan bicara dengan 行ってらっしゃい."
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tanya_asal_negara",
+    "title": "Menanyakan Asal Negara",
+    "category": "perkenalan",
+    "description": "Sari bertanya tentang asal negaramu dan makanan favorit di sana.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Sari",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ブディさんはどこの国から来ましたか。",
+          "romaji": "Budi-san wa doko no kuni kara kimashita ka.",
+          "translation": "Budi berasal dari negara mana?"
+        },
+        "note": null
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Jawab bahwa kamu datang dari Indonesia",
+        "acceptedAnswers": [
+          {
+            "japanese": "インドネシアから来ました。",
+            "romaji": "Indonesia kara kimashita.",
+            "translation": "Saya datang dari Indonesia.",
+            "variants": [
+              "インドネシアです。",
+              "インドネシア出身です。"
+            ],
+            "expressionTag": null
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "3",
+        "speaker": "Sari",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そうなんですね！インドネシア料理は好きですか。",
+          "romaji": "Sou nan desu ne! Indonesia ryouri wa suki desu ka.",
+          "translation": "Oh begitu! Apakah kamu suka masakan Indonesia?"
+        },
+        "note": null
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Jawab bahwa kamu suka",
+        "acceptedAnswers": [
+          {
+            "japanese": "はい、好きです。",
+            "romaji": "Hai, suki desu.",
+            "translation": "Ya, saya suka.",
+            "variants": [
+              "好きです。"
+            ],
+            "expressionTag": "senang"
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "5",
+        "speaker": "Sari",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "私も食べてみたいです！",
+          "romaji": "Watashi mo tabete mitai desu!",
+          "translation": "Saya juga ingin coba makan itu!"
+        },
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pesan_makanan",
+    "title": "Memesan Makanan di Restoran",
+    "category": "restoran",
+    "description": "Kamu memesan makanan dan minuman ke pelayan restoran.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いらっしゃいませ！ご注文はお決まりですか。",
+          "romaji": "Irasshaimase! Gochuumon wa okimari desu ka.",
+          "translation": "Selamat datang! Sudah menentukan pesanan?"
+        },
+        "note": null
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Pesan ramen",
+        "acceptedAnswers": [
+          {
+            "japanese": "ラーメンをお願いします。",
+            "romaji": "Raamen wo onegaishimasu.",
+            "translation": "Tolong pesanan ramen.",
+            "variants": [
+              "ラーメンをください。",
+              "ラーメンお願いします。"
+            ],
+            "expressionTag": "sopan"
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "3",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "かしこまりました。お飲み物はいかがですか。",
+          "romaji": "Kashikomarimashita. Onomimono wa ikaga desu ka.",
+          "translation": "Baik. Bagaimana dengan minumannya?"
+        },
+        "note": null
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Jawab air putih saja, tidak apa-apa",
+        "acceptedAnswers": [
+          {
+            "japanese": "お水で大丈夫です。",
+            "romaji": "Omizu de daijoubu desu.",
+            "translation": "Air putih saja, tidak apa-apa.",
+            "variants": [
+              "水で大丈夫です。",
+              "お水をお願いします。"
+            ],
+            "expressionTag": null
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "5",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "少々お待ちください。",
+          "romaji": "Shoushou omachi kudasai.",
+          "translation": "Mohon tunggu sebentar."
+        },
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_minta_bill",
+    "title": "Meminta Bill / Membayar",
+    "category": "restoran",
+    "description": "Kamu selesai makan dan ingin membayar.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Panggil pelayan dan minta bill",
+        "acceptedAnswers": [
+          {
+            "japanese": "すみません、お会計をお願いします。",
+            "romaji": "Sumimasen, okaikei wo onegaishimasu.",
+            "translation": "Permisi, tolong bill-nya.",
+            "variants": [
+              "お会計お願いします。",
+              "すみません、会計お願いします。"
+            ],
+            "expressionTag": "sopan"
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "2",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "はい、少々お待ちください。",
+          "romaji": "Hai, shoushou omachi kudasai.",
+          "translation": "Baik, mohon tunggu sebentar."
+        },
+        "note": null
+      },
+      {
+        "id": "3",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お待たせしました。1,200円になります。",
+          "romaji": "Omataseshimashita. Sen nihyaku en ni narimasu.",
+          "translation": "Maaf menunggu. Totalnya 1.200 yen."
+        },
+        "note": null
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Bilang kamu akan bayar dengan kartu",
+        "acceptedAnswers": [
+          {
+            "japanese": "カードでお願いします。",
+            "romaji": "Kaado de onegaishimasu.",
+            "translation": "Tolong dengan kartu.",
+            "variants": [
+              "カードで払います。"
+            ],
+            "expressionTag": null
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "5",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "かしこまりました。ありがとうございました。",
+          "romaji": "Kashikomarimashita. Arigatou gozaimashita.",
+          "translation": "Baik. Terima kasih banyak."
+        },
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_menu_rekomendasi",
+    "title": "Menanyakan Menu Rekomendasi",
+    "category": "restoran",
+    "description": "Kamu bingung mau pesan apa dan bertanya rekomendasi ke pelayan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Tanyakan apa yang direkomendasikan",
+        "acceptedAnswers": [
+          {
+            "japanese": "おすすめは何ですか。",
+            "romaji": "Osusume wa nan desu ka.",
+            "translation": "Apa yang direkomendasikan?",
+            "variants": [
+              "おすすめは何ですか?",
+              "何がおすすめですか。"
+            ],
+            "expressionTag": null
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "2",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "カレーが人気です。",
+          "romaji": "Kare ga ninki desu.",
+          "translation": "Kari sedang populer."
+        },
+        "note": null
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "promptHint": "Bilang kalau begitu kamu mau pesan itu",
+        "acceptedAnswers": [
+          {
+            "japanese": "それにします。",
+            "romaji": "Sore ni shimasu.",
+            "translation": "Kalau begitu saya pesan itu.",
+            "variants": [
+              "それをお願いします。"
+            ],
+            "expressionTag": null
+          }
+        ],
+        "note": null
+      },
+      {
+        "id": "4",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "かしこまりました！",
+          "romaji": "Kashikomarimashita!",
+          "translation": "Baik!"
+        },
+        "note": null
+      }
+    ]
+  }
+]

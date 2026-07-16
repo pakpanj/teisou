@@ -10,6 +10,9 @@ import '../data/repositories/bunpou_level_repository.dart';
 import '../data/repositories/bunpou_progress_repository.dart';
 import '../data/repositories/bunpou_repository.dart';
 import '../data/repositories/exam_repository.dart';
+import '../data/repositories/kaiwa_category_repository.dart';
+import '../data/repositories/kaiwa_progress_repository.dart';
+import '../data/repositories/kaiwa_repository.dart';
 import '../data/repositories/kana_repository.dart';
 import '../data/repositories/kanji_level_repository.dart';
 import '../data/repositories/kanji_progress_repository.dart';
@@ -27,10 +30,13 @@ import 'services/ad_service.dart';
 import 'services/auth_service.dart';
 import 'services/avatar_upload_service.dart';
 import 'services/romaji_converter.dart';
+import 'services/speech_to_text_service.dart';
 import 'services/tts_service.dart';
 
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
 final ttsServiceProvider = Provider<TtsService>((ref) => TtsService());
+final speechToTextServiceProvider =
+    Provider<SpeechToTextService>((ref) => SpeechToTextService());
 final adServiceProvider = Provider<AdService>((ref) => AdService());
 final avatarUploadServiceProvider =
     Provider<AvatarUploadService>((ref) => AvatarUploadService());
@@ -63,6 +69,15 @@ final particleCategoryRepositoryProvider = Provider<ParticleCategoryRepository>(
 );
 final particleProgressRepositoryProvider = Provider<ParticleProgressRepository>(
   (ref) => ParticleProgressRepository(),
+);
+final kaiwaRepositoryProvider = Provider<KaiwaRepository>(
+  (ref) => KaiwaRepository(),
+);
+final kaiwaCategoryRepositoryProvider = Provider<KaiwaCategoryRepository>(
+  (ref) => KaiwaCategoryRepository(),
+);
+final kaiwaProgressRepositoryProvider = Provider<KaiwaProgressRepository>(
+  (ref) => KaiwaProgressRepository(),
 );
 final kotobaRepositoryProvider = Provider<KotobaRepository>(
   (ref) => KotobaRepository(),
