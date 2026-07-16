@@ -60,12 +60,26 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
 
   @override
   void dispose() {
+    // Stop any in-flight recognition session so it doesn't keep the mic
+    // open (and later call back into a disposed widget's closures) after
+    // the user has already navigated away.
+    if (ref.read(speechToTextServiceProvider).isListening) {
+      ref.read(speechToTextServiceProvider).stop();
+    }
     _inputController.dispose();
     _scrollController.dispose();
     super.dispose();
   }
 
   void _resetForEntry() {
+    // Same reasoning as dispose(): without this, listening while paging
+    // to the next/prev dialogue left the old session's onResult/onDone
+    // closures pointing at a line index that no longer means the same
+    // thing, so a late recognition result could land on the wrong turn.
+    if (ref.read(speechToTextServiceProvider).isListening) {
+      ref.read(speechToTextServiceProvider).stop();
+    }
+    _listening = false;
     _revealedCount = 0;
     _answered.clear();
     _wrongAttempts = 0;
@@ -137,10 +151,16 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
     final started = await ref.read(speechToTextServiceProvider).listen(
       onResult: (text) {
         if (!mounted) return;
-        setState(() {
-          _inputController.text = text;
-          _listening = false;
-        });
+        setState(() => _inputController.text = text);
+      },
+      // Fires on a final result, a recognition error (no speech heard,
+      // timeout, ...), or an explicit stop — resetting `_listening` here
+      // rather than only inside `onResult` is the fix for the mic button
+      // getting stuck disabled forever after a failed/silent attempt,
+      // since recognition errors never reach `onResult` at all.
+      onDone: () {
+        if (!mounted) return;
+        setState(() => _listening = false);
       },
     );
     if (!started && mounted) {
@@ -151,6 +171,10 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
         ),
       );
     }
+  }
+
+  void _stopListening() {
+    ref.read(speechToTextServiceProvider).stop();
   }
 
   Future<void> _toggleLearned() async {
@@ -230,6 +254,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
               controller: _inputController,
               listening: _listening,
               onMic: _listen,
+              onStopListening: _stopListening,
               onSubmit: _submit,
             )
           else if (dialogueComplete)
@@ -499,12 +524,14 @@ class _AnswerInput extends StatelessWidget {
   final TextEditingController controller;
   final bool listening;
   final VoidCallback onMic;
+  final VoidCallback onStopListening;
   final ValueChanged<String> onSubmit;
 
   const _AnswerInput({
     required this.controller,
     required this.listening,
     required this.onMic,
+    required this.onStopListening,
     required this.onSubmit,
   });
 
@@ -525,11 +552,15 @@ class _AnswerInput extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
+            tooltip: listening ? 'Berhenti mendengarkan' : 'Jawab dengan suara',
             icon: Icon(
               listening ? Icons.mic : Icons.mic_none,
               color: listening ? AppColors.primaryCoral : AppColors.secondaryBlue,
             ),
-            onPressed: listening ? null : onMic,
+            // Tapping while listening stops the session instead of being
+            // disabled — otherwise a stuck/slow recognizer left the
+            // learner with no way to cancel and retry.
+            onPressed: listening ? onStopListening : onMic,
           ),
           Expanded(
             child: TextField(
