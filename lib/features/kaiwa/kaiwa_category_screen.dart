@@ -1,0 +1,260 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../core/navigation/app_navigator.dart';
+import '../../core/theme/app_colors.dart';
+import '../../data/models/kaiwa_entry.dart';
+import 'kaiwa_dialogue_screen.dart';
+import 'kaiwa_providers.dart';
+
+enum _LearnFilter { semua, belum, sudah }
+
+/// List of dialogues for one Kaiwa category, with a learned-status filter —
+/// no sort-mode toggle, dataset order is the only order (mirrors
+/// ParticleCategoryScreen). Tapping a tile opens KaiwaDialogueScreen with
+/// the *filtered* list + tapped index, so next/prev there follows whatever
+/// is currently on screen.
+class KaiwaCategoryScreen extends ConsumerStatefulWidget {
+  final String category;
+  final String categoryName;
+
+  const KaiwaCategoryScreen({
+    super.key,
+    required this.category,
+    required this.categoryName,
+  });
+
+  @override
+  ConsumerState<KaiwaCategoryScreen> createState() => _KaiwaCategoryScreenState();
+}
+
+class _KaiwaCategoryScreenState extends ConsumerState<KaiwaCategoryScreen> {
+  _LearnFilter _filter = _LearnFilter.semua;
+
+  List<KaiwaEntry> _applyFilters(List<KaiwaEntry> all, Set<String> learnedIds) {
+    var result = all.where((e) => !e.placeholder).toList();
+    switch (_filter) {
+      case _LearnFilter.belum:
+        result = result.where((e) => !learnedIds.contains(e.id)).toList();
+      case _LearnFilter.sudah:
+        result = result.where((e) => learnedIds.contains(e.id)).toList();
+      case _LearnFilter.semua:
+        break;
+    }
+    return result;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final kaiwaAsync = ref.watch(kaiwaByCategoryProvider(widget.category));
+    final learnedIds = ref.watch(kaiwaLearnedIdsProvider).valueOrNull ?? const <String>{};
+
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: AppBar(title: Text(widget.categoryName)),
+      body: kaiwaAsync.when(
+        data: (all) {
+          final realTotal = all.where((e) => !e.placeholder).length;
+          if (realTotal == 0) {
+            return const Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 32),
+                child: Text(
+                  'Dialog untuk kategori ini belum tersedia.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: AppColors.textNavy),
+                ),
+              ),
+            );
+          }
+          final filtered = _applyFilters(all, learnedIds);
+          final learnedCount =
+              all.where((e) => !e.placeholder && learnedIds.contains(e.id)).length;
+          return Column(
+            children: [
+              _ProgressBar(learned: learnedCount, total: realTotal),
+              _FilterRow(
+                filter: _filter,
+                onFilterChanged: (v) => setState(() => _filter = v),
+              ),
+              Expanded(
+                child: filtered.isEmpty
+                    ? Center(
+                        child: Text(
+                          'Tidak ada dialog yang cocok dengan filter.',
+                          style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
+                        ),
+                      )
+                    : ListView.separated(
+                        padding: const EdgeInsets.all(16),
+                        itemCount: filtered.length,
+                        separatorBuilder: (_, _) => const SizedBox(height: 10),
+                        itemBuilder: (context, index) => _DialogueTile(
+                          entry: filtered[index],
+                          learned: learnedIds.contains(filtered[index].id),
+                          onTap: () => AppNavigator.slideFromRight(
+                            context,
+                            KaiwaDialogueScreen(
+                              entries: filtered,
+                              initialIndex: index,
+                              categoryName: widget.categoryName,
+                            ),
+                          ),
+                        ),
+                      ),
+              ),
+            ],
+          );
+        },
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (e, _) => Center(child: Text('Gagal memuat dialog: $e')),
+      ),
+    );
+  }
+}
+
+class _ProgressBar extends StatelessWidget {
+  final int learned;
+  final int total;
+
+  const _ProgressBar({required this.learned, required this.total});
+
+  @override
+  Widget build(BuildContext context) {
+    final ratio = total == 0 ? 0.0 : learned / total;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '$learned/$total dipelajari',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textNavy.withValues(alpha: 0.6),
+            ),
+          ),
+          const SizedBox(height: 6),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: LinearProgressIndicator(
+              value: ratio,
+              minHeight: 6,
+              backgroundColor: Colors.grey.shade200,
+              valueColor: const AlwaysStoppedAnimation(AppColors.secondaryBlue),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _FilterRow extends StatelessWidget {
+  final _LearnFilter filter;
+  final ValueChanged<_LearnFilter> onFilterChanged;
+
+  const _FilterRow({required this.filter, required this.onFilterChanged});
+
+  static const _labels = {
+    _LearnFilter.semua: 'Semua',
+    _LearnFilter.belum: 'Belum Dipelajari',
+    _LearnFilter.sudah: 'Sudah Dipelajari',
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: _LearnFilter.values.map((f) {
+            final isSelected = f == filter;
+            return Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: ChoiceChip(
+                label: Text(_labels[f]!),
+                selected: isSelected,
+                selectedColor: AppColors.primaryCoral.withValues(alpha: 0.2),
+                labelStyle: TextStyle(
+                  fontSize: 12,
+                  color: isSelected ? AppColors.primaryCoral : AppColors.textNavy,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                ),
+                onSelected: (_) => onFilterChanged(f),
+              ),
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+
+class _DialogueTile extends StatelessWidget {
+  final KaiwaEntry entry;
+  final bool learned;
+  final VoidCallback onTap;
+
+  const _DialogueTile({required this.entry, required this.learned, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: AppColors.cardWhite,
+      borderRadius: BorderRadius.circular(14),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(14),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Row(
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: AppColors.primaryCoral.withValues(alpha: 0.15),
+                  shape: BoxShape.circle,
+                ),
+                alignment: Alignment.center,
+                child: const Icon(Icons.chat_bubble_outline, size: 18, color: AppColors.primaryCoral),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      entry.title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textNavy,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      entry.description,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 12, color: AppColors.textNavy.withValues(alpha: 0.6)),
+                    ),
+                  ],
+                ),
+              ),
+              if (learned)
+                const Padding(
+                  padding: EdgeInsets.only(left: 8),
+                  child: Icon(Icons.check_circle, size: 18, color: AppColors.secondaryBlue),
+                ),
+              const Icon(Icons.chevron_right, color: AppColors.freeBadgeGrey),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

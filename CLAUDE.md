@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders) and premium-gated — Bunpou and Partikel are done; Kaiwa/Choukai still untouched |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module Fase 1 built (interactive dialogue practice, 2/7 scenario categories authored, 6 dialogues) and free — Bunpou/Partikel/Kaiwa are done for their current scope; Choukai still untouched. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -511,6 +511,117 @@ meant.
     premium gate actually opens `PaywallScreen` for a non-premium user, and
     that ExpansionTile/scroll-reset behave as designed on the Detail
     screen — is still worth doing since it hasn't actually happened yet.
+  **Update (2026-07-17)**: the premium gate described above has been
+  temporarily removed — `ModulesScreen` now renders Partikel as a plain
+  `_AvailableModuleCard` (no `isPremium` check, no `PaywallScreen` branch)
+  so the user could test its features directly. This was an explicit,
+  deliberate request, not a regression — see the monetization-roadmap
+  memory (`project_monetization_roadmap.md`, outside this repo) for the
+  intended final split (Partikel goes premium again eventually, alongside
+  Kanji N3-N1, Bunpou N4-N1, Choukai, Kaiwa, and two still-unbuilt modules).
+  Restore `_PremiumModuleCard` + the `PaywallScreen` branch (both deleted,
+  not just disabled — see git history for the removed code) before release.
+- **Kaiwa module** (Batch 9+, Fase 1) is a conversation-practice module
+  scoped around **interactive** dialogues rather than a static browse/quiz
+  pair like the other modules — the user explicitly asked for mic/typed
+  input with input-dependent responses, not just readable content. Model
+  layer (`lib/data/models/kaiwa_entry.dart`, `kaiwa_line.dart`,
+  `kaiwa_accepted_answer.dart`, `kaiwa_category_info.dart`,
+  `kaiwa_progress_entry.dart`) mirrors Partikel's nested shape: a
+  `KaiwaEntry` (one dialogue/scenario, e.g. "Memesan Makanan di Restoran")
+  holds an ordered `List<KaiwaLine>`, each either a scripted NPC turn
+  (`npcLine`, a `SentenceExample`, reused module-neutral same as
+  Kanji/Kotoba/Bunpou/Partikel) or a learner turn (`isUserTurn: true`,
+  `acceptedAnswers: List<KaiwaAcceptedAnswer>`). `category` is a scenario
+  id ("perkenalan", "restoran", ...) grouping dialogues thematically —
+  deliberately **not** JLPT-level-based like Kanji/Bunpou, since a real
+  conversation doesn't sort itself by grammar difficulty (explicit product
+  decision, not an oversight). Repository/progress/provider layer
+  (`KaiwaRepository`/`KaiwaCategoryRepository`/`KaiwaProgressRepository`,
+  `kaiwa_providers.dart`, `FirestorePaths.kaiwaProgressCollection`) mirrors
+  Partikel's exactly, including the same known unguarded-Firestore-write
+  gap carried a fourth time now (Kanji → Kotoba → Bunpou → Partikel →
+  Kaiwa) — still not fixed, still out of scope for whichever batch
+  eventually addresses it.
+  - **No LLM/cloud AI conversation partner** — an explicit scope decision,
+    not a limitation discovered later. The learner's input (typed or
+    spoken) is checked **offline** by `KaiwaAnswerMatcher`
+    (`lib/features/kaiwa/services/kaiwa_answer_matcher.dart`, unit-tested
+    in `test/kaiwa_answer_matcher_test.dart`) against a hand-authored list
+    of accepted phrasings per turn (`KaiwaAcceptedAnswer.japanese` +
+    `.romaji` + `.variants`) — normalized (trim, lowercase, strip
+    whitespace/punctuation) exact-string matching, no fuzzy/Levenshtein
+    scoring and no network call. NPC responses are always the same
+    pre-written script regardless of *which* accepted variant matched —
+    the conversation tree doesn't branch — since every accepted answer for
+    a turn is semantically equivalent, just phrased differently.
+  - **Expression reactions**: `KaiwaAcceptedAnswer.expressionTag` (e.g.
+    `'semangat'` for 頑張ります) resolves to an emoji via
+    `kaiwaExpressionEmoji` (`lib/core/constants/kaiwa_expressions.dart`) —
+    shown next to the learner's bubble once matched. This was the specific
+    feature the user asked for by name when scoping this module (頑張ります
+    → "ekspresi semangat") — most answers have no tag (`null`) and get no
+    reaction, which is the expected common case, not a gap.
+  - **Speech-to-text**: `SpeechToTextService`
+    (`lib/core/services/speech_to_text_service.dart`) wraps the
+    `speech_to_text` package (on-device OS recognizer, `ja_JP` locale via
+    `SpeechListenOptions` — the plugin's older positional `localeId` param
+    is deprecated as of 7.x), mirroring `TtsService`'s lazy-init shape but
+    for input instead of output. `permission_handler` (already a
+    dependency, used by Cam Detector for camera) is reused for the
+    `RECORD_AUDIO` runtime permission request rather than adding a second
+    permission plugin. Recognized text populates the answer text field
+    for the learner to review/edit before submitting — it does not
+    auto-submit — so a misrecognition doesn't silently fail a turn.
+  - **Screens** (`lib/features/kaiwa/`): `KaiwaHomeScreen`/
+    `KaiwaCategoryScreen` mirror Partikel's Home/Category screens exactly
+    (progress bar, Semua/Belum/Sudah filter chips, "Segera" badge for
+    unavailable categories). `KaiwaDialogueScreen` is the new pattern this
+    module introduces — a chat-bubble UI that reveals lines progressively
+    (NPC lines auto-appear; a user turn pauses the reveal until answered
+    correctly, with a hint card offering the first accepted answer after 2
+    wrong attempts) rather than showing a whole entry's content at once
+    like every other module's detail screen. Its outer
+    `SingleChildScrollView` is keyed on `ValueKey(entry.id)` **from the
+    start** — this is the exact scroll-reset bug that shipped in
+    `BunpouDetailScreen` and was only fixed for `ParticleDetailScreen`
+    afterward (see the Partikel section above); Kaiwa is the first module
+    built *after* that fix was documented, so it went in from day one
+    instead of being a third repeat. Next/prev pages between dialogues in
+    the current category, same convention as every other detail screen.
+  - **Content scope (Fase 1)**: 2 of the planned 7 scenario categories are
+    authored — Perkenalan (3 dialogues) and Di Restoran (3 dialogues), 6
+    dialogues total, locked in `scripts/kaiwa_lists.py` and generated by
+    `scripts/generate_kaiwa_seed.py` into `assets/data/kaiwa_data.json` +
+    `assets/data/kaiwa/_categories.json` (mirrors the Partikel/Kotoba
+    Python-locked-list + generator-script pattern). The remaining 5
+    categories (Di Stasiun, Belanja, Menanyakan Arah, Di Sekolah, Cuaca &
+    Basa-basi) are registered as `available: false` placeholders with no
+    dialogue list yet, same convention as Kotoba's category-availability
+    pattern — extending them later is a content-authoring pass, not a
+    schema change.
+  - **Premium**: free, per explicit product decision when this module was
+    scoped (2026-07-17) — see the monetization-roadmap memory for the
+    intended eventual gating.
+  - **Verification gap, honestly not closed**: `flutter analyze` (clean),
+    `flutter test --concurrency=1` (all 16 tests pass, including the new
+    `kaiwa_answer_matcher_test.dart`), `flutter build apk --debug`, and a
+    Python cross-check of the generated dataset (no duplicate entry/line
+    ids, every user turn has ≥1 accepted answer, every NPC turn has a
+    populated `npcLine`, every entry's category is registered in
+    `_categories.json`) all passed clean. **What did NOT get verified**:
+    the actual interactive flow on a running app — typing/speaking an
+    answer, seeing the match succeed/fail, the expression-reaction emoji
+    appearing, the mic permission prompt, and STT actually recognizing
+    Japanese speech. This needs a physical device or a working emulator
+    with mic input, neither of which was available in this session (same
+    standing constraint as the Partikel/Bunpou N3-N2 verification gaps
+    above — a locked physical device is never bypassed regardless of
+    urgency). If you're touching any Kaiwa screen next, a fresh
+    interactive on-device pass — particularly the mic permission flow and
+    whether `speech_to_text`'s on-device recognizer actually understands
+    Japanese on a real device — is still worth doing since it hasn't
+    actually happened yet.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
@@ -520,6 +631,16 @@ meant.
 
 ## Known placeholders / deferred work
 
+- **Monetization is mid-transition, not final** (as of 2026-07-17): the
+  eventual plan is Kanji N3-N1, Bunpou N4-N1, Partikel, Choukai, Kaiwa,
+  Belajar dari Gambar, and Belajar dari Video all premium; everything else
+  free. Right now, almost none of that gating actually exists — Kanji and
+  Bunpou have no premium-gating code at all (every level open), Partikel's
+  gate was explicitly removed for dev testing (see the Partikel section
+  above), and Kaiwa was built free from the start. Don't assume the
+  current free/premium split reflects the final product; a dedicated
+  pre-release pass needs to add JLPT-level-scoped gating to Kanji/Bunpou
+  (new work) and restore gating on Partikel/Kaiwa/Choukai.
 - **Cam Detector is deliberately locked from navigation** (not deleted —
   every file under `lib/features/cam_detector/` is untouched and still
   compiles/tests clean). `ModulesScreen` renders it as a grey

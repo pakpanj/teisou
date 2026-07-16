@@ -1,0 +1,51 @@
+[
+  {
+    "id": "perkenalan",
+    "name": "Perkenalan",
+    "icon": "👋",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "restoran",
+    "name": "Di Restoran",
+    "icon": "🍽️",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "stasiun",
+    "name": "Di Stasiun",
+    "icon": "🚉",
+    "available": false,
+    "dialogueCount": null
+  },
+  {
+    "id": "belanja",
+    "name": "Belanja",
+    "icon": "🛍️",
+    "available": false,
+    "dialogueCount": null
+  },
+  {
+    "id": "arah_jalan",
+    "name": "Menanyakan Arah",
+    "icon": "🧭",
+    "available": false,
+    "dialogueCount": null
+  },
+  {
+    "id": "sekolah",
+    "name": "Di Sekolah",
+    "icon": "🏫",
+    "available": false,
+    "dialogueCount": null
+  },
+  {
+    "id": "cuaca_basa_basi",
+    "name": "Cuaca & Basa-basi",
+    "icon": "☁️",
+    "available": false,
+    "dialogueCount": null
+  }
+]
