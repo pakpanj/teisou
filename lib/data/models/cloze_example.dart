@@ -1,0 +1,29 @@
+/// A Japanese sentence with one particle blanked out, used by the Partikel
+/// mini-game. Deliberately authored explicitly (before/after split at
+/// content-authoring time) rather than derived at runtime by searching a
+/// [SentenceExample] for the particle substring — a 1-2 character hiragana
+/// particle can coincidentally appear inside an unrelated word or verb
+/// conjugation, so a runtime search-and-replace would be fragile.
+class ClozeExample {
+  final String sentenceBefore;
+  final String sentenceAfter;
+  final String answer;
+  final String translation;
+  final String? romaji;
+
+  ClozeExample({
+    required this.sentenceBefore,
+    required this.sentenceAfter,
+    required this.answer,
+    required this.translation,
+    this.romaji,
+  });
+
+  factory ClozeExample.fromJson(Map<String, dynamic> json) => ClozeExample(
+        sentenceBefore: json['sentenceBefore'] as String,
+        sentenceAfter: json['sentenceAfter'] as String,
+        answer: json['answer'] as String,
+        translation: json['translation'] as String,
+        romaji: json['romaji'] as String?,
+      );
+}

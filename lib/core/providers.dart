@@ -18,6 +18,9 @@ import '../data/repositories/kotoba_category_repository.dart';
 import '../data/repositories/kotoba_progress_repository.dart';
 import '../data/repositories/kotoba_repository.dart';
 import '../data/repositories/leaderboard_repository.dart';
+import '../data/repositories/particle_category_repository.dart';
+import '../data/repositories/particle_progress_repository.dart';
+import '../data/repositories/particle_repository.dart';
 import '../data/repositories/progress_repository.dart';
 import '../data/repositories/saved_words_repository.dart';
 import 'services/ad_service.dart';
@@ -51,6 +54,15 @@ final bunpouLevelRepositoryProvider = Provider<BunpouLevelRepository>(
 );
 final bunpouProgressRepositoryProvider = Provider<BunpouProgressRepository>(
   (ref) => BunpouProgressRepository(),
+);
+final particleRepositoryProvider = Provider<ParticleRepository>(
+  (ref) => ParticleRepository(),
+);
+final particleCategoryRepositoryProvider = Provider<ParticleCategoryRepository>(
+  (ref) => ParticleCategoryRepository(),
+);
+final particleProgressRepositoryProvider = Provider<ParticleProgressRepository>(
+  (ref) => ParticleProgressRepository(),
 );
 final kotobaRepositoryProvider = Provider<KotobaRepository>(
   (ref) => KotobaRepository(),

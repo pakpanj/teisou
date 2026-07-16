@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/kana_type.dart';
 import '../../data/models/module_info.dart';
@@ -8,13 +10,17 @@ import '../bunpou/bunpou_home_screen.dart';
 import '../flashcard/flashcard_screen.dart';
 import '../kanji/kanji_home_screen.dart';
 import '../kotoba/kotoba_home_screen.dart';
+import '../particle/particle_home_screen.dart';
+import '../paywall/paywall_screen.dart';
 import 'widgets/coming_soon_content.dart';
 
-class ModulesScreen extends StatelessWidget {
+class ModulesScreen extends ConsumerWidget {
   const ModulesScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -92,6 +98,28 @@ class ModulesScreen extends StatelessWidget {
               context,
               const BunpouHomeScreen(),
             ),
+          ),
+          const SizedBox(height: 12),
+          _PremiumModuleCard(
+            emoji: 'を',
+            backgroundColor: AppColors.tertiaryAmberCardBg,
+            iconColor: AppColors.tertiaryAmber,
+            title: 'Partikel',
+            subtitle: 'Catatan fungsi partikel + mini-game latihan',
+            onTap: () {
+              if (!isPremium) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const PaywallScreen(
+                      moduleId: 'particle',
+                      moduleTitle: 'Partikel',
+                    ),
+                  ),
+                );
+                return;
+              }
+              AppNavigator.slideFromRight(context, const ParticleHomeScreen());
+            },
           ),
           const SizedBox(height: 28),
           const _SectionHeader('Segera Hadir'),
@@ -304,13 +332,130 @@ class _LockedModuleCard extends StatelessWidget {
   }
 }
 
+/// A module that's fully built and real, but premium-exclusive — distinct
+/// from [_LockedModuleCard] (real module, kept unreachable for bugs) and
+/// [_ComingSoonCard] (module that doesn't exist yet). Shown in "Tersedia"
+/// since it genuinely works, with a small gold badge (mirrors
+/// `profile_screen.dart`'s `_TierBadge` gradient) signaling the gate rather
+/// than hiding the card away. [onTap] is expected to branch on premium
+/// status itself and push [PaywallScreen] for free users — the card has no
+/// gating logic of its own, mirroring how `avatar_picker_sheet.dart` checks
+/// `subscriptionProvider` at the tap site rather than inside the
+/// destination screen.
+class _PremiumModuleCard extends StatelessWidget {
+  final String emoji;
+  final Color backgroundColor;
+  final Color iconColor;
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+
+  const _PremiumModuleCard({
+    required this.emoji,
+    required this.backgroundColor,
+    required this.iconColor,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: backgroundColor,
+      borderRadius: BorderRadius.circular(20),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(color: iconColor, shape: BoxShape.circle),
+                alignment: Alignment.center,
+                child: Text(
+                  emoji,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            title,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textNavy,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [AppColors.premiumGoldStart, AppColors.premiumGoldEnd],
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.star, size: 10, color: Colors.white),
+                              SizedBox(width: 2),
+                              Text(
+                                'PREMIUM',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.chevron_right, color: iconColor),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _ComingSoonCard extends StatelessWidget {
   final ModuleInfo module;
 
   const _ComingSoonCard({required this.module});
 
   static const _icons = {
-    'particle': 'を',
     'choukai': '🎧',
     'kaiwa': '💬',
     'picture_learning': '🖼️',

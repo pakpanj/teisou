@@ -1,0 +1,23 @@
+[
+  {
+    "id": "kasus",
+    "name": "Partikel Kasus",
+    "icon": "格",
+    "available": true,
+    "particleCount": 9
+  },
+  {
+    "id": "keterangan",
+    "name": "Partikel Keterangan",
+    "icon": "副",
+    "available": true,
+    "particleCount": 8
+  },
+  {
+    "id": "akhir_kalimat",
+    "name": "Partikel Akhir Kalimat",
+    "icon": "終",
+    "available": true,
+    "particleCount": 8
+  }
+]

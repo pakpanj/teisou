@@ -1,0 +1,1807 @@
+[
+  {
+    "id": "particle_ga",
+    "particle": "が",
+    "particleRomaji": "ga",
+    "category": "kasus",
+    "overview": "Partikel yang menandai subjek kalimat, baik untuk memperkenalkan informasi baru maupun sebagai objek kata kerja perasaan/kemampuan tertentu.",
+    "similarParticles": [
+      "particle_wa"
+    ],
+    "functions": [
+      {
+        "id": "ga_subject",
+        "title": "Menandai subjek kalimat (terutama informasi baru)",
+        "explanation": "が menandai subjek kalimat, terutama saat subjek itu adalah informasi baru yang belum disebutkan sebelumnya, atau saat secara spesifik mengidentifikasi SIAPA/APA yang melakukan sesuatu (menjawab pertanyaan seperti 'siapa yang ~?'). Berbeda dengan は yang menandai topik yang sudah diketahui/dibicarakan, が menyoroti subjek itu sendiri.",
+        "formation": "Kata benda + が + kata kerja/kata sifat",
+        "sentenceExamples": [
+          {
+            "japanese": "猫が窓の外にいます。",
+            "romaji": "Neko ga mado no soto ni imasu.",
+            "translation": "Ada kucing di luar jendela."
+          },
+          {
+            "japanese": "だれが来ましたか。",
+            "romaji": "Dare ga kimashita ka.",
+            "translation": "Siapa yang datang?"
+          },
+          {
+            "japanese": "雨が降っています。",
+            "romaji": "Ame ga futte imasu.",
+            "translation": "Hujan sedang turun."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "猫",
+            "sentenceAfter": "窓の外にいます。",
+            "answer": "が",
+            "romaji": "Neko ga mado no soto ni imasu.",
+            "translation": "Ada kucing di luar jendela."
+          }
+        ]
+      },
+      {
+        "id": "ga_feeling_ability",
+        "title": "Objek kata kerja/kata sifat perasaan, kemampuan, dan keinginan",
+        "explanation": "が juga menandai objek pada kata kerja/kata sifat tertentu yang mengekspresikan perasaan, kemampuan, atau keinginan, seperti わかる (mengerti), できる (bisa), ほしい (ingin benda), 好き/嫌い (suka/tidak suka), dan 上手/下手 (pandai/tidak pandai) — meskipun secara makna terasa seperti 'objek', partikel yang dipakai tetap が, bukan を.",
+        "formation": "Kata benda + が + わかる/できる/ほしい/好き/嫌い/上手/下手",
+        "sentenceExamples": [
+          {
+            "japanese": "日本語が分かります。",
+            "romaji": "Nihongo ga wakarimasu.",
+            "translation": "Saya mengerti bahasa Jepang."
+          },
+          {
+            "japanese": "水がほしいです。",
+            "romaji": "Mizu ga hoshii desu.",
+            "translation": "Saya ingin air."
+          },
+          {
+            "japanese": "彼女は歌が上手です。",
+            "romaji": "Kanojo wa uta ga jouzu desu.",
+            "translation": "Dia pandai menyanyi."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "日本語",
+            "sentenceAfter": "分かります。",
+            "answer": "が",
+            "romaji": "Nihongo ga wakarimasu.",
+            "translation": "Saya mengerti bahasa Jepang."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_o",
+    "particle": "を",
+    "particleRomaji": "o",
+    "category": "kasus",
+    "overview": "Partikel yang menandai objek langsung dari kata kerja transitif, dan juga tempat yang dilalui atau ditinggalkan dalam gerakan.",
+    "similarParticles": [],
+    "functions": [
+      {
+        "id": "o_direct_object",
+        "title": "Menandai objek langsung",
+        "explanation": "を menandai objek langsung dari kata kerja transitif — benda yang menerima aksi kata kerja secara langsung.",
+        "formation": "Kata benda + を + kata kerja transitif",
+        "sentenceExamples": [
+          {
+            "japanese": "本を読みます。",
+            "romaji": "Hon o yomimasu.",
+            "translation": "Saya membaca buku."
+          },
+          {
+            "japanese": "コーヒーを飲みます。",
+            "romaji": "Koohii o nomimasu.",
+            "translation": "Saya minum kopi."
+          },
+          {
+            "japanese": "宿題をします。",
+            "romaji": "Shukudai o shimasu.",
+            "translation": "Saya mengerjakan PR."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "本",
+            "sentenceAfter": "読みます。",
+            "answer": "を",
+            "romaji": "Hon o yomimasu.",
+            "translation": "Saya membaca buku."
+          }
+        ]
+      },
+      {
+        "id": "o_path",
+        "title": "Tempat yang dilalui atau ditinggalkan (gerakan)",
+        "explanation": "を juga menandai tempat yang dilalui atau ditinggalkan saat bergerak — dipakai dengan kata kerja seperti 出る (keluar), 降りる (turun), 歩く (berjalan), 渡る (menyeberang), dan 通る (melewati).",
+        "formation": "Kata benda (tempat) + を + 出る/降りる/歩く/渡る/通る",
+        "sentenceExamples": [
+          {
+            "japanese": "家を出ます。",
+            "romaji": "Ie o demasu.",
+            "translation": "Saya keluar dari rumah."
+          },
+          {
+            "japanese": "橋を渡ります。",
+            "romaji": "Hashi o watarimasu.",
+            "translation": "Saya menyeberangi jembatan."
+          },
+          {
+            "japanese": "バスを降ります。",
+            "romaji": "Basu o orimasu.",
+            "translation": "Saya turun dari bus."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "橋",
+            "sentenceAfter": "渡ります。",
+            "answer": "を",
+            "romaji": "Hashi o watarimasu.",
+            "translation": "Saya menyeberangi jembatan."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_ni",
+    "particle": "に",
+    "particleRomaji": "ni",
+    "category": "kasus",
+    "overview": "Salah satu partikel paling serbaguna dalam bahasa Jepang — menandai lokasi keberadaan, arah tujuan, waktu spesifik, penerima, dan agen dalam kalimat pasif, tergantung konteks kata kerjanya.",
+    "similarParticles": [
+      "particle_de",
+      "particle_e"
+    ],
+    "functions": [
+      {
+        "id": "ni_location",
+        "title": "Lokasi keberadaan",
+        "explanation": "に menandai lokasi tempat sesuatu/seseorang berada, dipakai bersama kata kerja keberadaan seperti いる (untuk makhluk hidup) dan ある (untuk benda mati), serta 住む (tinggal).",
+        "formation": "Kata benda (tempat) + に + いる/ある/住む",
+        "sentenceExamples": [
+          {
+            "japanese": "東京に住んでいます。",
+            "romaji": "Tokyo ni sunde imasu.",
+            "translation": "Saya tinggal di Tokyo."
+          },
+          {
+            "japanese": "机の上に本があります。",
+            "romaji": "Tsukue no ue ni hon ga arimasu.",
+            "translation": "Ada buku di atas meja."
+          },
+          {
+            "japanese": "公園に猫がいます。",
+            "romaji": "Kouen ni neko ga imasu.",
+            "translation": "Ada kucing di taman."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "東京",
+            "sentenceAfter": "住んでいます。",
+            "answer": "に",
+            "romaji": "Tokyo ni sunde imasu.",
+            "translation": "Saya tinggal di Tokyo."
+          }
+        ]
+      },
+      {
+        "id": "ni_direction",
+        "title": "Arah/tujuan gerakan",
+        "explanation": "に menandai tujuan gerakan, dipakai dengan kata kerja gerak seperti 行く (pergi), 来る (datang), dan 帰る (pulang). へ sering bisa dipakai secara bergantian di sini dengan arti yang sama persis, terutama untuk menekankan arah perjalanan.",
+        "formation": "Kata benda (tempat) + に + 行く/来る/帰る",
+        "sentenceExamples": [
+          {
+            "japanese": "学校に行きます。",
+            "romaji": "Gakkou ni ikimasu.",
+            "translation": "Saya pergi ke sekolah."
+          },
+          {
+            "japanese": "友達が家に来ます。",
+            "romaji": "Tomodachi ga ie ni kimasu.",
+            "translation": "Teman saya datang ke rumah."
+          },
+          {
+            "japanese": "7時に家に帰ります。",
+            "romaji": "Shichi-ji ni ie ni kaerimasu.",
+            "translation": "Saya pulang ke rumah jam 7."
+          }
+        ],
+        "clozeExamples": []
+      },
+      {
+        "id": "ni_time",
+        "title": "Waktu spesifik",
+        "explanation": "に menandai titik waktu yang spesifik — jam, hari, tanggal, tahun. Tidak dipakai untuk kata keterangan waktu relatif seperti 今日 (hari ini), 明日 (besok), atau きのう (kemarin), yang berdiri sendiri tanpa partikel.",
+        "formation": "Waktu (jam/hari/tanggal) + に + kata kerja",
+        "sentenceExamples": [
+          {
+            "japanese": "7時に起きます。",
+            "romaji": "Shichi-ji ni okimasu.",
+            "translation": "Saya bangun jam 7."
+          },
+          {
+            "japanese": "月曜日に試験があります。",
+            "romaji": "Getsuyoubi ni shiken ga arimasu.",
+            "translation": "Ada ujian hari Senin."
+          },
+          {
+            "japanese": "2010年に生まれました。",
+            "romaji": "Nisen-juu-nen ni umaremashita.",
+            "translation": "Saya lahir tahun 2010."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "7時",
+            "sentenceAfter": "起きます。",
+            "answer": "に",
+            "romaji": "Shichi-ji ni okimasu.",
+            "translation": "Saya bangun jam 7."
+          }
+        ]
+      },
+      {
+        "id": "ni_recipient",
+        "title": "Penerima / objek tidak langsung",
+        "explanation": "に menandai penerima suatu aksi — orang yang dituju oleh kata kerja seperti あげる (memberi), もらう (menerima dari), 言う (berkata kepada), dan 送る (mengirim).",
+        "formation": "Kata benda (orang) + に + あげる/もらう/言う/送る",
+        "sentenceExamples": [
+          {
+            "japanese": "友達に手紙を書きます。",
+            "romaji": "Tomodachi ni tegami o kakimasu.",
+            "translation": "Saya menulis surat untuk teman."
+          },
+          {
+            "japanese": "先生にプレゼントをあげました。",
+            "romaji": "Sensei ni purezento o agemashita.",
+            "translation": "Saya memberi hadiah kepada guru."
+          },
+          {
+            "japanese": "母に電話します。",
+            "romaji": "Haha ni denwa shimasu.",
+            "translation": "Saya menelepon ibu."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "母",
+            "sentenceAfter": "電話します。",
+            "answer": "に",
+            "romaji": "Haha ni denwa shimasu.",
+            "translation": "Saya menelepon ibu."
+          }
+        ]
+      },
+      {
+        "id": "ni_passive_agent",
+        "title": "Agen dalam kalimat pasif",
+        "explanation": "に menandai pelaku/agen dalam kalimat pasif — siapa yang melakukan aksi terhadap subjek kalimat.",
+        "formation": "Kata benda (pelaku) + に + kata kerja bentuk pasif (~られる/~れる)",
+        "sentenceExamples": [
+          {
+            "japanese": "先生に褒められました。",
+            "romaji": "Sensei ni homeraremashita.",
+            "translation": "Saya dipuji oleh guru."
+          },
+          {
+            "japanese": "犬に噛まれました。",
+            "romaji": "Inu ni kamaremashita.",
+            "translation": "Saya digigit anjing."
+          },
+          {
+            "japanese": "兄に本を取られました。",
+            "romaji": "Ani ni toraremashita.",
+            "translation": "Buku saya diambil oleh kakak laki-laki."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "先生",
+            "sentenceAfter": "褒められました。",
+            "answer": "に",
+            "romaji": "Sensei ni homeraremashita.",
+            "translation": "Saya dipuji oleh guru."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_de",
+    "particle": "で",
+    "particleRomaji": "de",
+    "category": "kasus",
+    "overview": "Partikel yang menandai lokasi terjadinya suatu aksi, alat/cara melakukan sesuatu, sebab, atau batas cakupan/jumlah total — berbeda dari に yang menandai lokasi keberadaan (bukan aksi).",
+    "similarParticles": [
+      "particle_ni"
+    ],
+    "functions": [
+      {
+        "id": "de_location_action",
+        "title": "Lokasi terjadinya aksi",
+        "explanation": "で menandai tempat berlangsungnya suatu aksi/kegiatan — berbeda dengan に yang menandai lokasi keberadaan pasif (dengan いる/ ある), で dipakai dengan kata kerja aksi seperti 勉強する (belajar), 働く (bekerja), dan 遊ぶ (bermain).",
+        "formation": "Kata benda (tempat) + で + kata kerja aksi",
+        "sentenceExamples": [
+          {
+            "japanese": "図書館で勉強します。",
+            "romaji": "Toshokan de benkyou shimasu.",
+            "translation": "Saya belajar di perpustakaan."
+          },
+          {
+            "japanese": "公園で遊びます。",
+            "romaji": "Kouen de asobimasu.",
+            "translation": "Saya bermain di taman."
+          },
+          {
+            "japanese": "会社で働いています。",
+            "romaji": "Kaisha de hataraite imasu.",
+            "translation": "Saya bekerja di kantor."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "図書館",
+            "sentenceAfter": "勉強します。",
+            "answer": "で",
+            "romaji": "Toshokan de benkyou shimasu.",
+            "translation": "Saya belajar di perpustakaan."
+          }
+        ]
+      },
+      {
+        "id": "de_means",
+        "title": "Alat/cara/metode",
+        "explanation": "で menandai alat, cara, atau metode melakukan sesuatu.",
+        "formation": "Kata benda (alat) + で + kata kerja",
+        "sentenceExamples": [
+          {
+            "japanese": "バスで行きます。",
+            "romaji": "Basu de ikimasu.",
+            "translation": "Saya pergi naik bus."
+          },
+          {
+            "japanese": "ペンで書きます。",
+            "romaji": "Pen de kakimasu.",
+            "translation": "Saya menulis dengan pena."
+          },
+          {
+            "japanese": "箸で食べます。",
+            "romaji": "Hashi de tabemasu.",
+            "translation": "Saya makan dengan sumpit."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "ペン",
+            "sentenceAfter": "書きます。",
+            "answer": "で",
+            "romaji": "Pen de kakimasu.",
+            "translation": "Saya menulis dengan pena."
+          }
+        ]
+      },
+      {
+        "id": "de_cause",
+        "title": "Sebab/alasan",
+        "explanation": "で menandai sebab atau alasan suatu kejadian, terutama untuk sebab yang berupa kata benda tunggal (bukan kalimat penuh — untuk itu dipakai から/ので).",
+        "formation": "Kata benda (sebab) + で + kata kerja/kata sifat",
+        "sentenceExamples": [
+          {
+            "japanese": "病気で休みました。",
+            "romaji": "Byouki de yasumimashita.",
+            "translation": "Saya libur karena sakit."
+          },
+          {
+            "japanese": "台風で電車が止まりました。",
+            "romaji": "Taifuu de densha ga tomarimashita.",
+            "translation": "Kereta berhenti karena topan."
+          },
+          {
+            "japanese": "事故で道が込んでいます。",
+            "romaji": "Jiko de michi ga konde imasu.",
+            "translation": "Jalan macet karena kecelakaan."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "病気",
+            "sentenceAfter": "休みました。",
+            "answer": "で",
+            "romaji": "Byouki de yasumimashita.",
+            "translation": "Saya libur karena sakit."
+          }
+        ]
+      },
+      {
+        "id": "de_scope_total",
+        "title": "Batas cakupan atau jumlah total",
+        "explanation": "で juga menandai batas cakupan (dalam kurun waktu tertentu) atau jumlah total keseluruhan — pola tetap seperti 全部で (semuanya berjumlah), 一人で (sendirian), dan N日で (dalam N hari).",
+        "formation": "Kata benda (jumlah/durasi) + で + kata kerja/kata sifat",
+        "sentenceExamples": [
+          {
+            "japanese": "全部で1000円です。",
+            "romaji": "Zenbu de sen-en desu.",
+            "translation": "Semuanya berjumlah 1000 yen."
+          },
+          {
+            "japanese": "3日で終わります。",
+            "romaji": "Mikka de owarimasu.",
+            "translation": "Selesai dalam 3 hari."
+          },
+          {
+            "japanese": "一人で行きます。",
+            "romaji": "Hitori de ikimasu.",
+            "translation": "Saya pergi sendirian."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "全部",
+            "sentenceAfter": "1000円です。",
+            "answer": "で",
+            "romaji": "Zenbu de sen-en desu.",
+            "translation": "Semuanya berjumlah 1000 yen."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_to",
+    "particle": "と",
+    "particleRomaji": "to",
+    "category": "kasus",
+    "overview": "Partikel yang menandai orang yang menyertai suatu aksi ('bersama'), kutipan langsung/tidak langsung, penghubung kata benda ('dan', daftar lengkap), dan syarat otomatis.",
+    "similarParticles": [
+      "particle_ya"
+    ],
+    "functions": [
+      {
+        "id": "to_with",
+        "title": "'Bersama' (partikel komitatif)",
+        "explanation": "と menandai orang yang menyertai/melakukan sesuatu bersama subjek.",
+        "formation": "Kata benda (orang) + と + kata kerja",
+        "sentenceExamples": [
+          {
+            "japanese": "友達と映画を見ます。",
+            "romaji": "Tomodachi to eiga o mimasu.",
+            "translation": "Saya menonton film dengan teman."
+          },
+          {
+            "japanese": "家族と旅行します。",
+            "romaji": "Kazoku to ryokou shimasu.",
+            "translation": "Saya bepergian bersama keluarga."
+          },
+          {
+            "japanese": "彼と話しました。",
+            "romaji": "Kare to hanashimashita.",
+            "translation": "Saya berbicara dengannya."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "友達",
+            "sentenceAfter": "映画を見ます。",
+            "answer": "と",
+            "romaji": "Tomodachi to eiga o mimasu.",
+            "translation": "Saya menonton film dengan teman."
+          }
+        ]
+      },
+      {
+        "id": "to_quotative",
+        "title": "Penanda kutipan ('bahwa ~')",
+        "explanation": "と menandai isi kutipan langsung atau tidak langsung, dipakai sebelum kata kerja seperti 言う (berkata), 思う (berpikir), dan 聞く (mendengar).",
+        "formation": "Kalimat + と + 言う/思う/聞く",
+        "sentenceExamples": [
+          {
+            "japanese": "明日雨が降ると思います。",
+            "romaji": "Ashita ame ga furu to omoimasu.",
+            "translation": "Saya pikir besok akan hujan."
+          },
+          {
+            "japanese": "彼は「行く」と言いました。",
+            "romaji": "Kare wa “iku” to iimashita.",
+            "translation": "Dia berkata, “Saya akan pergi.”"
+          },
+          {
+            "japanese": "パーティーがあると聞きました。",
+            "romaji": "Paatii ga aru to kikimashita.",
+            "translation": "Saya dengar ada pesta."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "明日雨が降る",
+            "sentenceAfter": "思います。",
+            "answer": "と",
+            "romaji": "Ashita ame ga furu to omoimasu.",
+            "translation": "Saya pikir besok akan hujan."
+          }
+        ]
+      },
+      {
+        "id": "to_listing",
+        "title": "Menghubungkan kata benda ('dan', daftar lengkap)",
+        "explanation": "と menghubungkan dua kata benda atau lebih sebagai daftar LENGKAP (semua item disebutkan) — berbeda dengan や yang menyiratkan daftar SEBAGIAN (masih ada item lain yang tidak disebutkan).",
+        "formation": "Kata benda A + と + Kata benda B",
+        "sentenceExamples": [
+          {
+            "japanese": "りんごとバナナを買いました。",
+            "romaji": "Ringo to banana o kaimashita.",
+            "translation": "Saya membeli apel dan pisang."
+          },
+          {
+            "japanese": "父と母がいます。",
+            "romaji": "Chichi to haha ga imasu.",
+            "translation": "Ada ayah dan ibu saya."
+          },
+          {
+            "japanese": "犬と猫を飼っています。",
+            "romaji": "Inu to neko o katte imasu.",
+            "translation": "Saya memelihara anjing dan kucing."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "りんご",
+            "sentenceAfter": "バナナを買いました。",
+            "answer": "と",
+            "romaji": "Ringo to banana o kaimashita.",
+            "translation": "Saya membeli apel dan pisang."
+          }
+        ]
+      },
+      {
+        "id": "to_conditional",
+        "title": "Syarat otomatis ('kalau...maka pasti')",
+        "explanation": "と menyatakan syarat yang hasilnya otomatis/pasti terjadi — cocok untuk hukum alam, kebiasaan, atau petunjuk arah, tapi TIDAK bisa dipakai untuk ajakan, perintah, atau permintaan di bagian akibatnya.",
+        "formation": "Kata kerja/kata sifat bentuk kamus + と + akibat",
+        "sentenceExamples": [
+          {
+            "japanese": "春になると桜が咲きます。",
+            "romaji": "Haru ni naru to sakura ga sakimasu.",
+            "translation": "Kalau musim semi tiba, sakura mekar."
+          },
+          {
+            "japanese": "このボタンを押すとドアが開きます。",
+            "romaji": "Kono botan o osu to doa ga akimasu.",
+            "translation": "Kalau tombol ini ditekan, pintu terbuka."
+          },
+          {
+            "japanese": "右に曲がると駅があります。",
+            "romaji": "Migi ni magaru to eki ga arimasu.",
+            "translation": "Kalau belok kanan, ada stasiun."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "春になる",
+            "sentenceAfter": "桜が咲きます。",
+            "answer": "と",
+            "romaji": "Haru ni naru to sakura ga sakimasu.",
+            "translation": "Kalau musim semi tiba, sakura mekar."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_e",
+    "particle": "へ",
+    "particleRomaji": "e",
+    "category": "kasus",
+    "overview": "Partikel arah yang menekankan arah perjalanan menuju suatu tempat — mirip dengan fungsi arah に, tapi へ terasa lebih menekankan ARAH perjalanan daripada TITIK TUJUAN spesifik, dan umum dipakai di alamat surat.",
+    "similarParticles": [
+      "particle_ni"
+    ],
+    "functions": [
+      {
+        "id": "e_direction",
+        "title": "Arah tujuan (menekankan arah perjalanan)",
+        "explanation": "へ menandai arah tujuan gerakan, dengan penekanan pada ARAH perjalanan itu sendiri, bukan titik tujuan yang spesifik. Dalam banyak kalimat sehari-hari へ bisa saling menggantikan dengan fungsi arah に dengan arti yang identik — perbedaannya jauh lebih terasa dalam gaya bahasa formal/tulisan (mis. alamat surat, 'Kepada Yth ~へ') daripada dalam percakapan biasa.",
+        "formation": "Kata benda (tempat) + へ + kata kerja gerak",
+        "sentenceExamples": [
+          {
+            "japanese": "東京へ行きます。",
+            "romaji": "Tokyo e ikimasu.",
+            "translation": "Saya pergi ke arah Tokyo."
+          },
+          {
+            "japanese": "田中さんへ",
+            "romaji": "Tanaka-san e",
+            "translation": "Kepada Yth. Tanaka (pembukaan surat)"
+          },
+          {
+            "japanese": "南へ進みます。",
+            "romaji": "Minami e susumimasu.",
+            "translation": "Saya maju ke arah selatan."
+          }
+        ],
+        "clozeExamples": []
+      }
+    ]
+  },
+  {
+    "id": "particle_kara",
+    "particle": "から",
+    "particleRomaji": "kara",
+    "category": "kasus",
+    "overview": "Partikel yang menandai titik awal (tempat atau waktu), sebab/alasan, atau bahan asal saat wujud aslinya berubah total.",
+    "similarParticles": [
+      "particle_made"
+    ],
+    "functions": [
+      {
+        "id": "kara_starting_point",
+        "title": "Titik awal (tempat/waktu)",
+        "explanation": "から menandai titik awal — bisa berupa tempat (dari mana perjalanan dimulai) atau waktu (kapan sesuatu mulai berlangsung). Sering berpasangan dengan まで untuk menandai titik akhir.",
+        "formation": "Kata benda (tempat/waktu) + から (+ まで)",
+        "sentenceExamples": [
+          {
+            "japanese": "家から駅まで歩きます。",
+            "romaji": "Ie kara eki made arukimasu.",
+            "translation": "Saya berjalan dari rumah ke stasiun."
+          },
+          {
+            "japanese": "9時から始まります。",
+            "romaji": "Ku-ji kara hajimarimasu.",
+            "translation": "Dimulai dari jam 9."
+          },
+          {
+            "japanese": "来週から仕事です。",
+            "romaji": "Raishuu kara shigoto desu.",
+            "translation": "Mulai minggu depan saya bekerja."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "9時",
+            "sentenceAfter": "始まります。",
+            "answer": "から",
+            "romaji": "Ku-ji kara hajimarimasu.",
+            "translation": "Dimulai dari jam 9."
+          }
+        ]
+      },
+      {
+        "id": "kara_reason",
+        "title": "Sebab/alasan (setelah klausa)",
+        "explanation": "から menandai sebab/alasan, dipakai setelah klausa lengkap (kata kerja/kata sifat bentuk biasa atau sopan) — berbeda dengan で yang hanya bisa dipakai setelah kata benda tunggal sebagai sebab.",
+        "formation": "Klausa (bentuk biasa/sopan) + から + akibat",
+        "sentenceExamples": [
+          {
+            "japanese": "疲れたから、休みます。",
+            "romaji": "Tsukareta kara, yasumimasu.",
+            "translation": "Karena lelah, saya istirahat."
+          },
+          {
+            "japanese": "時間がないから、急ぎましょう。",
+            "romaji": "Jikan ga nai kara, isogimashou.",
+            "translation": "Karena tidak ada waktu, ayo bergegas."
+          },
+          {
+            "japanese": "危ないから、気をつけてください。",
+            "romaji": "Abunai kara, ki o tsukete kudasai.",
+            "translation": "Karena berbahaya, tolong hati-hati."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "疲れた",
+            "sentenceAfter": "、休みます。",
+            "answer": "から",
+            "romaji": "Tsukareta kara, yasumimasu.",
+            "translation": "Karena lelah, saya istirahat."
+          }
+        ]
+      },
+      {
+        "id": "kara_material_source",
+        "title": "Bahan asal (berubah wujud)",
+        "explanation": "から menandai bahan asal ketika wujud aslinya berubah total menjadi sesuatu yang berbeda — berbeda dengan で yang dipakai untuk bahan yang wujud aslinya masih terlihat/dikenali.",
+        "formation": "Kata benda (bahan) + から + kata kerja (membuat)",
+        "sentenceExamples": [
+          {
+            "japanese": "米から酒を作ります。",
+            "romaji": "Kome kara sake o tsukurimasu.",
+            "translation": "Sake dibuat dari beras."
+          },
+          {
+            "japanese": "ぶどうからワインができます。",
+            "romaji": "Budou kara wain ga dekimasu.",
+            "translation": "Anggur menjadi wine."
+          },
+          {
+            "japanese": "牛乳からチーズを作ります。",
+            "romaji": "Gyuunyuu kara chiizu o tsukurimasu.",
+            "translation": "Keju dibuat dari susu."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "米",
+            "sentenceAfter": "酒を作ります。",
+            "answer": "から",
+            "romaji": "Kome kara sake o tsukurimasu.",
+            "translation": "Sake dibuat dari beras."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_made",
+    "particle": "まで",
+    "particleRomaji": "made",
+    "category": "kasus",
+    "overview": "Partikel yang menandai titik akhir (tempat atau waktu) — pasangan alami dari から.",
+    "similarParticles": [
+      "particle_kara"
+    ],
+    "functions": [
+      {
+        "id": "made_ending_point",
+        "title": "Titik akhir (tempat/waktu)",
+        "explanation": "まで menandai titik akhir — tempat tujuan akhir perjalanan, atau waktu berakhirnya sesuatu. Sering berpasangan dengan から.",
+        "formation": "Kata benda (tempat/waktu) + まで",
+        "sentenceExamples": [
+          {
+            "japanese": "駅まで歩きます。",
+            "romaji": "Eki made arukimasu.",
+            "translation": "Saya berjalan sampai stasiun."
+          },
+          {
+            "japanese": "5時まで働きます。",
+            "romaji": "Go-ji made hatarakimasu.",
+            "translation": "Saya bekerja sampai jam 5."
+          },
+          {
+            "japanese": "夏休みまであと1週間です。",
+            "romaji": "Natsuyasumi made ato isshuukan desu.",
+            "translation": "Tinggal 1 minggu lagi sampai libur musim panas."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "5時",
+            "sentenceAfter": "働きます。",
+            "answer": "まで",
+            "romaji": "Go-ji made hatarakimasu.",
+            "translation": "Saya bekerja sampai jam 5."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_no",
+    "particle": "の",
+    "particleRomaji": "no",
+    "category": "kasus",
+    "overview": "Partikel serbaguna yang menghubungkan dua kata benda (kepemilikan/deskripsi), menggantikan kata benda yang sudah jelas dari konteks, dan berfungsi sebagai partikel tanya kasual di akhir kalimat.",
+    "similarParticles": [],
+    "functions": [
+      {
+        "id": "no_possessive",
+        "title": "Kepemilikan / menghubungkan kata benda",
+        "explanation": "の menghubungkan dua kata benda, biasanya menyatakan kepemilikan (kata benda A milik/terkait kata benda B) atau deskripsi (kata benda A adalah jenis/kategori dari kata benda B).",
+        "formation": "Kata benda A + の + Kata benda B",
+        "sentenceExamples": [
+          {
+            "japanese": "これは私の本です。",
+            "romaji": "Kore wa watashi no hon desu.",
+            "translation": "Ini buku saya."
+          },
+          {
+            "japanese": "日本語の先生です。",
+            "romaji": "Nihongo no sensei desu.",
+            "translation": "Saya guru bahasa Jepang."
+          },
+          {
+            "japanese": "大学の図書館は大きいです。",
+            "romaji": "Daigaku no toshokan wa ookii desu.",
+            "translation": "Perpustakaan universitas itu besar."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "これは私",
+            "sentenceAfter": "本です。",
+            "answer": "の",
+            "romaji": "Kore wa watashi no hon desu.",
+            "translation": "Ini buku saya."
+          }
+        ]
+      },
+      {
+        "id": "no_nominalizer",
+        "title": "Menggantikan kata benda ('yang ~')",
+        "explanation": "の menggantikan kata benda yang sudah jelas dari konteks, mirip 'yang ~' dalam Bahasa Indonesia — dipakai setelah kata sifat atau frasa deskriptif untuk menghindari pengulangan kata benda.",
+        "formation": "Kata sifat/frasa + の",
+        "sentenceExamples": [
+          {
+            "japanese": "赤いのをください。",
+            "romaji": "Akai no o kudasai.",
+            "translation": "Tolong berikan yang merah."
+          },
+          {
+            "japanese": "これは私のです。",
+            "romaji": "Kore wa watashi no desu.",
+            "translation": "Ini milik saya."
+          },
+          {
+            "japanese": "大きいのが好きです。",
+            "romaji": "Ookii no ga suki desu.",
+            "translation": "Saya suka yang besar."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "赤い",
+            "sentenceAfter": "をください。",
+            "answer": "の",
+            "romaji": "Akai no o kudasai.",
+            "translation": "Tolong berikan yang merah."
+          }
+        ]
+      },
+      {
+        "id": "no_casual_question",
+        "title": "Partikel tanya kasual di akhir kalimat",
+        "explanation": "の di akhir kalimat (dengan intonasi naik) berfungsi sebagai partikel tanya kasual, mirip fungsi か tapi lebih santai dan sering dipakai dalam percakapan sehari-hari, terutama oleh perempuan atau dalam suasana akrab.",
+        "formation": "Kata kerja/kata sifat bentuk biasa + の？",
+        "sentenceExamples": [
+          {
+            "japanese": "どこ行くの？",
+            "romaji": "Doko iku no?",
+            "translation": "Mau pergi ke mana?"
+          },
+          {
+            "japanese": "何を食べているの？",
+            "romaji": "Nani o tabete iru no?",
+            "translation": "Sedang makan apa?"
+          },
+          {
+            "japanese": "元気なの？",
+            "romaji": "Genki na no?",
+            "translation": "Kamu baik-baik saja?"
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "どこ行く",
+            "sentenceAfter": "？",
+            "answer": "の",
+            "romaji": "Doko iku no?",
+            "translation": "Mau pergi ke mana?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_wa",
+    "particle": "は",
+    "particleRomaji": "wa",
+    "category": "keterangan",
+    "overview": "Partikel yang menandai topik kalimat (apa yang sedang dibicarakan), dan juga dipakai untuk menyatakan kontras antara dua hal.",
+    "similarParticles": [
+      "particle_ga"
+    ],
+    "functions": [
+      {
+        "id": "wa_topic",
+        "title": "Menandai topik kalimat",
+        "explanation": "は menandai topik kalimat — hal yang sedang dibicarakan, biasanya informasi yang sudah diketahui/disebutkan sebelumnya. Berbeda dengan が yang menyoroti SUBJEK (sering info baru), は menyoroti APA yang sedang dibahas.",
+        "formation": "Kata benda + は + predikat",
+        "sentenceExamples": [
+          {
+            "japanese": "私は学生です。",
+            "romaji": "Watashi wa gakusei desu.",
+            "translation": "Saya adalah mahasiswa."
+          },
+          {
+            "japanese": "これは本です。",
+            "romaji": "Kore wa hon desu.",
+            "translation": "Ini adalah buku."
+          },
+          {
+            "japanese": "東京は大きい都市です。",
+            "romaji": "Tokyo wa ookii toshi desu.",
+            "translation": "Tokyo adalah kota besar."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "私",
+            "sentenceAfter": "学生です。",
+            "answer": "は",
+            "romaji": "Watashi wa gakusei desu.",
+            "translation": "Saya adalah mahasiswa."
+          }
+        ]
+      },
+      {
+        "id": "wa_contrast",
+        "title": "Menyatakan kontras",
+        "explanation": "は juga dipakai untuk menekankan kontras antara dua hal, biasanya dengan menyebutkan kedua sisinya dalam satu kalimat atau kalimat berurutan.",
+        "formation": "Kata benda A + は + ..., kata benda B + は + ... (berlawanan)",
+        "sentenceExamples": [
+          {
+            "japanese": "魚は好きですが、肉は嫌いです。",
+            "romaji": "Sakana wa suki desu ga, niku wa kirai desu.",
+            "translation": "Saya suka ikan, tapi tidak suka daging."
+          },
+          {
+            "japanese": "英語は話せますが、フランス語は話せません。",
+            "romaji": "Eigo wa hanasemasu ga, furansugo wa hanasemasen.",
+            "translation": "Saya bisa bicara bahasa Inggris, tapi tidak bisa bahasa Prancis."
+          },
+          {
+            "japanese": "今日は寒いですが、明日は暖かいでしょう。",
+            "romaji": "Kyou wa samui desu ga, ashita wa atatakai deshou.",
+            "translation": "Hari ini dingin, tapi besok mungkin hangat."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "魚",
+            "sentenceAfter": "好きですが、肉は嫌いです。",
+            "answer": "は",
+            "romaji": "Sakana wa suki desu ga, niku wa kirai desu.",
+            "translation": "Saya suka ikan, tapi tidak suka daging."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_mo",
+    "particle": "も",
+    "particleRomaji": "mo",
+    "category": "keterangan",
+    "overview": "Partikel yang berarti 'juga', menekankan jumlah yang mengejutkan banyak, atau (dengan kata tanya + bentuk negatif) menyatakan 'tidak satupun'.",
+    "similarParticles": [],
+    "functions": [
+      {
+        "id": "mo_also",
+        "title": "'Juga' (menambahkan hal yang sama)",
+        "explanation": "も menggantikan は/が/を untuk menyatakan 'juga' — subjek/topik ini pun sama seperti yang disebutkan sebelumnya.",
+        "formation": "Kata benda + も + predikat (menggantikan は/が/を)",
+        "sentenceExamples": [
+          {
+            "japanese": "私も学生です。",
+            "romaji": "Watashi mo gakusei desu.",
+            "translation": "Saya juga mahasiswa."
+          },
+          {
+            "japanese": "彼も来ます。",
+            "romaji": "Kare mo kimasu.",
+            "translation": "Dia juga akan datang."
+          },
+          {
+            "japanese": "これもおいしいです。",
+            "romaji": "Kore mo oishii desu.",
+            "translation": "Ini juga enak."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "私",
+            "sentenceAfter": "学生です。",
+            "answer": "も",
+            "romaji": "Watashi mo gakusei desu.",
+            "translation": "Saya juga mahasiswa."
+          }
+        ]
+      },
+      {
+        "id": "mo_emphasis_quantity",
+        "title": "Menekankan jumlah/derajat yang mengejutkan",
+        "explanation": "も setelah angka/jumlah menekankan bahwa jumlah itu terasa besar/mengejutkan bagi pembicara — mirip 'sampai' atau 'lho' dalam Bahasa Indonesia.",
+        "formation": "Angka/jumlah + も + predikat",
+        "sentenceExamples": [
+          {
+            "japanese": "3時間も待ちました。",
+            "romaji": "San-jikan mo machimashita.",
+            "translation": "Saya menunggu sampai 3 jam lho."
+          },
+          {
+            "japanese": "10個も食べました。",
+            "romaji": "Jukko mo tabemashita.",
+            "translation": "Saya makan sampai 10 buah lho."
+          },
+          {
+            "japanese": "1万円もしました。",
+            "romaji": "Ichiman-en mo shimashita.",
+            "translation": "Harganya sampai 10 ribu yen lho."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "3時間",
+            "sentenceAfter": "待ちました。",
+            "answer": "も",
+            "romaji": "San-jikan mo machimashita.",
+            "translation": "Saya menunggu sampai 3 jam lho."
+          }
+        ]
+      },
+      {
+        "id": "mo_double_negative",
+        "title": "'Tidak satupun' (kata tanya + も + negatif)",
+        "explanation": "Kata tanya (だれ/なに/どこ) + も, diikuti bentuk negatif, menyatakan peniadaan total — 'tidak satupun/tidak sama sekali'.",
+        "formation": "Kata tanya + も + kata kerja bentuk negatif",
+        "sentenceExamples": [
+          {
+            "japanese": "誰も来ませんでした。",
+            "romaji": "Dare mo kimasen deshita.",
+            "translation": "Tidak ada satupun yang datang."
+          },
+          {
+            "japanese": "何も食べませんでした。",
+            "romaji": "Nani mo tabemasen deshita.",
+            "translation": "Saya tidak makan apa-apa."
+          },
+          {
+            "japanese": "どこも行きませんでした。",
+            "romaji": "Doko mo ikimasen deshita.",
+            "translation": "Saya tidak pergi ke mana-mana."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "誰",
+            "sentenceAfter": "来ませんでした。",
+            "answer": "も",
+            "romaji": "Dare mo kimasen deshita.",
+            "translation": "Tidak ada satupun yang datang."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_shika",
+    "particle": "しか",
+    "particleRomaji": "shika",
+    "category": "keterangan",
+    "overview": "Partikel 'hanya' yang wajib diikuti bentuk negatif, memberi kesan 'hanya ~ (dan itu kurang/tidak cukup)'.",
+    "similarParticles": [
+      "particle_dake"
+    ],
+    "functions": [
+      {
+        "id": "shika_only_negative",
+        "title": "'Hanya' (wajib bentuk negatif)",
+        "explanation": "しか selalu diikuti predikat bentuk negatif, memberi nuansa bahwa jumlah/pilihan itu terasa kurang atau tidak memadai — berbeda dengan だけ yang netral dan bisa dipakai di kalimat positif maupun negatif.",
+        "formation": "Kata benda + しか + kata kerja/kata sifat bentuk negatif",
+        "sentenceExamples": [
+          {
+            "japanese": "1000円しかありません。",
+            "romaji": "Sen-en shika arimasen.",
+            "translation": "Saya hanya punya 1000 yen (dan itu kurang)."
+          },
+          {
+            "japanese": "これしか分かりません。",
+            "romaji": "Kore shika wakarimasen.",
+            "translation": "Saya hanya mengerti ini (yang lain tidak)."
+          },
+          {
+            "japanese": "野菜しか食べません。",
+            "romaji": "Yasai shika tabemasen.",
+            "translation": "Saya hanya makan sayur (tidak yang lain)."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "1000円",
+            "sentenceAfter": "ありません。",
+            "answer": "しか",
+            "romaji": "Sen-en shika arimasen.",
+            "translation": "Saya hanya punya 1000 yen (dan itu kurang)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_dake",
+    "particle": "だけ",
+    "particleRomaji": "dake",
+    "category": "keterangan",
+    "overview": "Partikel 'hanya' yang netral — bisa dipakai di kalimat positif maupun negatif, tanpa kesan kurang seperti しか.",
+    "similarParticles": [
+      "particle_shika"
+    ],
+    "functions": [
+      {
+        "id": "dake_only_neutral",
+        "title": "'Hanya' (netral)",
+        "explanation": "だけ menyatakan 'hanya/cuma' secara netral, tanpa nuansa kekurangan seperti しか — bisa dipakai bebas di kalimat positif maupun negatif.",
+        "formation": "Kata benda + だけ + predikat",
+        "sentenceExamples": [
+          {
+            "japanese": "これだけでいいです。",
+            "romaji": "Kore dake de ii desu.",
+            "translation": "Cukup hanya ini saja."
+          },
+          {
+            "japanese": "土曜日だけ休みです。",
+            "romaji": "Doyoubi dake yasumi desu.",
+            "translation": "Hanya hari Sabtu saya libur."
+          },
+          {
+            "japanese": "少しだけ食べました。",
+            "romaji": "Sukoshi dake tabemashita.",
+            "translation": "Saya makan sedikit saja."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "土曜日",
+            "sentenceAfter": "休みです。",
+            "answer": "だけ",
+            "romaji": "Doyoubi dake yasumi desu.",
+            "translation": "Hanya hari Sabtu saya libur."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_kurai",
+    "particle": "くらい",
+    "particleRomaji": "kurai",
+    "category": "keterangan",
+    "overview": "Partikel yang menandai perkiraan jumlah atau derajat ('kira-kira') — juga sering diucapkan/ditulis ぐらい, terutama setelah kata berakhiran bunyi bersuara.",
+    "similarParticles": [],
+    "functions": [
+      {
+        "id": "kurai_approximation",
+        "title": "Perkiraan jumlah/derajat",
+        "explanation": "くらい (atau ぐらい) menandai bahwa jumlah/waktu yang disebutkan adalah perkiraan, bukan angka pasti.",
+        "formation": "Jumlah/waktu + くらい",
+        "sentenceExamples": [
+          {
+            "japanese": "10分くらい待ちました。",
+            "romaji": "Juppun kurai machimashita.",
+            "translation": "Saya menunggu sekitar 10 menit."
+          },
+          {
+            "japanese": "1時間くらいかかります。",
+            "romaji": "Ichi-jikan kurai kakarimasu.",
+            "translation": "Kira-kira memakan waktu 1 jam."
+          },
+          {
+            "japanese": "100人くらい来ました。",
+            "romaji": "Hyaku-nin kurai kimashita.",
+            "translation": "Sekitar 100 orang datang."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "10分",
+            "sentenceAfter": "待ちました。",
+            "answer": "くらい",
+            "romaji": "Juppun kurai machimashita.",
+            "translation": "Saya menunggu sekitar 10 menit."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_bakari",
+    "particle": "ばかり",
+    "particleRomaji": "bakari",
+    "category": "keterangan",
+    "overview": "Partikel yang menekankan proporsi berlebihan ('melulu, hanya itu saja') dengan nuansa agak negatif, atau (setelah kata kerja bentuk ~た) menyatakan aksi yang baru saja selesai.",
+    "similarParticles": [],
+    "functions": [
+      {
+        "id": "bakari_excessive_proportion",
+        "title": "'Melulu' (proporsi berlebihan)",
+        "explanation": "ばかり menekankan bahwa seseorang melakukan/memakai sesuatu secara berlebihan atau terus-menerus, biasanya dengan nuansa agak mengkritik.",
+        "formation": "Kata benda + ばかり + kata kerja",
+        "sentenceExamples": [
+          {
+            "japanese": "彼はゲームばかりしています。",
+            "romaji": "Kare wa geemu bakari shite imasu.",
+            "translation": "Dia melulu main game saja."
+          },
+          {
+            "japanese": "お菓子ばかり食べないでください。",
+            "romaji": "Okashi bakari tabenaide kudasai.",
+            "translation": "Tolong jangan makan camilan melulu."
+          },
+          {
+            "japanese": "文句ばかり言っています。",
+            "romaji": "Monku bakari itte imasu.",
+            "translation": "Dia melulu mengeluh saja."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "彼はゲーム",
+            "sentenceAfter": "しています。",
+            "answer": "ばかり",
+            "romaji": "Kare wa geemu bakari shite imasu.",
+            "translation": "Dia melulu main game saja."
+          }
+        ]
+      },
+      {
+        "id": "bakari_just_happened",
+        "title": "'Baru saja' (V-た + ばかり)",
+        "explanation": "Kata kerja bentuk ~た + ばかり menyatakan bahwa suatu aksi baru saja selesai dilakukan.",
+        "formation": "Kata kerja bentuk ~た + ばかり",
+        "sentenceExamples": [
+          {
+            "japanese": "今来たばかりです。",
+            "romaji": "Ima kita bakari desu.",
+            "translation": "Saya baru saja datang."
+          },
+          {
+            "japanese": "さっき起きたばかりです。",
+            "romaji": "Sakki okita bakari desu.",
+            "translation": "Saya baru saja bangun tidur."
+          },
+          {
+            "japanese": "この本は買ったばかりです。",
+            "romaji": "Kono hon wa katta bakari desu.",
+            "translation": "Buku ini baru saja saya beli."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "今来た",
+            "sentenceAfter": "です。",
+            "answer": "ばかり",
+            "romaji": "Ima kita bakari desu.",
+            "translation": "Saya baru saja datang."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_demo",
+    "particle": "でも",
+    "particleRomaji": "demo",
+    "category": "keterangan",
+    "overview": "Partikel yang menekankan contoh ekstrem ('bahkan') atau menawarkan salah satu dari beberapa pilihan yang tidak disebutkan secara spesifik ('~atau semacamnya'). Berbeda dari kata sambung でも ('tetapi') yang berdiri sendiri di awal kalimat — itu bukan partikel, jadi tidak dibahas di sini.",
+    "similarParticles": [],
+    "functions": [
+      {
+        "id": "demo_even",
+        "title": "'Bahkan' (menekankan contoh ekstrem)",
+        "explanation": "Kata benda + でも menekankan bahwa contoh yang disebutkan adalah kasus ekstrem — kalau itu saja berlaku, hal lain pasti juga berlaku.",
+        "formation": "Kata benda + でも + predikat",
+        "sentenceExamples": [
+          {
+            "japanese": "子供でもできます。",
+            "romaji": "Kodomo demo dekimasu.",
+            "translation": "Bahkan anak kecil pun bisa."
+          },
+          {
+            "japanese": "先生でも分からないことがあります。",
+            "romaji": "Sensei demo wakaranai koto ga arimasu.",
+            "translation": "Bahkan guru pun ada yang tidak dimengerti."
+          },
+          {
+            "japanese": "私でも間違えることがあります。",
+            "romaji": "Watashi demo machigaeru koto ga arimasu.",
+            "translation": "Bahkan saya pun kadang salah."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "子供",
+            "sentenceAfter": "できます。",
+            "answer": "でも",
+            "romaji": "Kodomo demo dekimasu.",
+            "translation": "Bahkan anak kecil pun bisa."
+          }
+        ]
+      },
+      {
+        "id": "demo_or_something",
+        "title": "'~atau semacamnya' (menawarkan salah satu pilihan)",
+        "explanation": "Kata benda + でも menawarkan satu contoh sebagai salah satu dari beberapa pilihan yang tidak disebutkan secara spesifik, sering dipakai untuk mengajak dengan santai.",
+        "formation": "Kata benda + でも + ajakan",
+        "sentenceExamples": [
+          {
+            "japanese": "お茶でも飲みませんか。",
+            "romaji": "Ocha demo nomimasen ka.",
+            "translation": "Mau minum teh atau semacamnya?"
+          },
+          {
+            "japanese": "映画でも見に行きましょう。",
+            "romaji": "Eiga demo mi ni ikimashou.",
+            "translation": "Ayo nonton film atau semacamnya."
+          },
+          {
+            "japanese": "音楽でも聞きながら休みます。",
+            "romaji": "Ongaku demo kikinagara yasumimasu.",
+            "translation": "Saya istirahat sambil dengar musik atau semacamnya."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "お茶",
+            "sentenceAfter": "飲みませんか。",
+            "answer": "でも",
+            "romaji": "Ocha demo nomimasen ka.",
+            "translation": "Mau minum teh atau semacamnya?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_ya",
+    "particle": "や",
+    "particleRomaji": "ya",
+    "category": "keterangan",
+    "overview": "Partikel yang menghubungkan kata benda sebagai daftar SEBAGIAN (tidak lengkap, mengisyaratkan masih ada item lain) — pasangan kontras dari と yang menyiratkan daftar lengkap.",
+    "similarParticles": [
+      "particle_to"
+    ],
+    "functions": [
+      {
+        "id": "ya_partial_listing",
+        "title": "'Dan' (daftar sebagian, tidak lengkap)",
+        "explanation": "や menghubungkan kata benda sebagai contoh yang mewakili — menyiratkan masih ada item lain yang tidak disebutkan, berbeda dengan と yang menyiratkan semua item sudah disebutkan.",
+        "formation": "Kata benda A + や + Kata benda B (+ など)",
+        "sentenceExamples": [
+          {
+            "japanese": "机の上に本やノートがあります。",
+            "romaji": "Tsukue no ue ni hon ya nooto ga arimasu.",
+            "translation": "Di atas meja ada buku, buku catatan, dan lain-lain."
+          },
+          {
+            "japanese": "りんごやバナナが好きです。",
+            "romaji": "Ringo ya banana ga suki desu.",
+            "translation": "Saya suka apel, pisang, dan sejenisnya."
+          },
+          {
+            "japanese": "犬や猫が公園にいます。",
+            "romaji": "Inu ya neko ga kouen ni imasu.",
+            "translation": "Ada anjing, kucing, dan lain-lain di taman."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "机の上に本",
+            "sentenceAfter": "ノートがあります。",
+            "answer": "や",
+            "romaji": "Tsukue no ue ni hon ya nooto ga arimasu.",
+            "translation": "Di atas meja ada buku, buku catatan, dan lain-lain."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_ka",
+    "particle": "か",
+    "particleRomaji": "ka",
+    "category": "akhir_kalimat",
+    "overview": "Partikel tanya di akhir kalimat (register netral/formal), dan juga partikel 'atau' saat menyebutkan pilihan.",
+    "similarParticles": [
+      "particle_to",
+      "particle_ya"
+    ],
+    "functions": [
+      {
+        "id": "ka_question",
+        "title": "Partikel tanya formal di akhir kalimat",
+        "explanation": "か di akhir kalimat menandai kalimat tanya, baik pertanyaan ya/tidak maupun pertanyaan dengan kata tanya — register netral, cocok dipakai ke siapa saja.",
+        "formation": "Kata kerja/kata sifat bentuk sopan + か",
+        "sentenceExamples": [
+          {
+            "japanese": "元気ですか。",
+            "romaji": "Genki desu ka.",
+            "translation": "Apa kabar?"
+          },
+          {
+            "japanese": "これは何ですか。",
+            "romaji": "Kore wa nan desu ka.",
+            "translation": "Ini apa?"
+          },
+          {
+            "japanese": "明日来ますか。",
+            "romaji": "Ashita kimasu ka.",
+            "translation": "Apakah besok kamu datang?"
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "元気です",
+            "sentenceAfter": "。",
+            "answer": "か",
+            "romaji": "Genki desu ka.",
+            "translation": "Apa kabar?"
+          },
+          {
+            "sentenceBefore": "これは何です",
+            "sentenceAfter": "。",
+            "answer": "か",
+            "romaji": "Kore wa nan desu ka.",
+            "translation": "Ini apa?"
+          }
+        ]
+      },
+      {
+        "id": "ka_or",
+        "title": "'~atau ~' (menyebutkan pilihan)",
+        "explanation": "か di antara dua kata benda/klausa menyatakan pilihan 'atau'.",
+        "formation": "Kata benda A + か + Kata benda B",
+        "sentenceExamples": [
+          {
+            "japanese": "犬か猫を飼いたいです。",
+            "romaji": "Inu ka neko o kaitai desu.",
+            "translation": "Saya ingin memelihara anjing atau kucing."
+          },
+          {
+            "japanese": "コーヒーか紅茶をください。",
+            "romaji": "Koohii ka koucha o kudasai.",
+            "translation": "Tolong berikan kopi atau teh."
+          },
+          {
+            "japanese": "土曜日か日曜日に行きます。",
+            "romaji": "Doyoubi ka nichiyoubi ni ikimasu.",
+            "translation": "Saya akan pergi hari Sabtu atau Minggu."
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "犬",
+            "sentenceAfter": "猫を飼いたいです。",
+            "answer": "か",
+            "romaji": "Inu ka neko o kaitai desu.",
+            "translation": "Saya ingin memelihara anjing atau kucing."
+          },
+          {
+            "sentenceBefore": "コーヒー",
+            "sentenceAfter": "紅茶をください。",
+            "answer": "か",
+            "romaji": "Koohii ka koucha o kudasai.",
+            "translation": "Tolong berikan kopi atau teh."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_ne",
+    "particle": "ね",
+    "particleRomaji": "ne",
+    "category": "akhir_kalimat",
+    "overview": "Partikel yang meminta persetujuan atau konfirmasi dari lawan bicara — mirip 'ya, kan?' dalam Bahasa Indonesia.",
+    "similarParticles": [
+      "particle_yo"
+    ],
+    "functions": [
+      {
+        "id": "ne_agreement",
+        "title": "Meminta persetujuan/konfirmasi",
+        "explanation": "ね di akhir kalimat mengundang lawan bicara untuk setuju atau mengonfirmasi, sering dipakai saat berbagi perasaan/pengamatan yang sama.",
+        "formation": "Kata kerja/kata sifat + ね",
+        "sentenceExamples": [
+          {
+            "japanese": "いい天気ですね。",
+            "romaji": "Ii tenki desu ne.",
+            "translation": "Cuacanya bagus, ya kan?"
+          },
+          {
+            "japanese": "この曲、いいですね。",
+            "romaji": "Kono kyoku, ii desu ne.",
+            "translation": "Lagu ini bagus, ya kan?"
+          },
+          {
+            "japanese": "疲れましたね。",
+            "romaji": "Tsukaremashita ne.",
+            "translation": "Capek ya, kan?"
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "いい天気です",
+            "sentenceAfter": "。",
+            "answer": "ね",
+            "romaji": "Ii tenki desu ne.",
+            "translation": "Cuacanya bagus, ya kan?"
+          },
+          {
+            "sentenceBefore": "疲れました",
+            "sentenceAfter": "。",
+            "answer": "ね",
+            "romaji": "Tsukaremashita ne.",
+            "translation": "Capek ya, kan?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_yo",
+    "particle": "よ",
+    "particleRomaji": "yo",
+    "category": "akhir_kalimat",
+    "overview": "Partikel yang menegaskan atau memberi tahu informasi, terutama hal yang mungkin belum diketahui lawan bicara — mirip '...lho!' dalam Bahasa Indonesia.",
+    "similarParticles": [
+      "particle_ne"
+    ],
+    "functions": [
+      {
+        "id": "yo_informing",
+        "title": "Menegaskan/memberi tahu informasi baru",
+        "explanation": "よ di akhir kalimat menekankan bahwa pembicara memberi tahu sesuatu yang mungkin belum diketahui lawan bicara — berbeda dengan ね yang mengundang persetujuan atas hal yang SUDAH sama-sama diketahui.",
+        "formation": "Kata kerja/kata sifat + よ",
+        "sentenceExamples": [
+          {
+            "japanese": "もう7時ですよ。",
+            "romaji": "Mou shichi-ji desu yo.",
+            "translation": "Sudah jam 7, lho!"
+          },
+          {
+            "japanese": "このお店、おいしいですよ。",
+            "romaji": "Kono omise, oishii desu yo.",
+            "translation": "Restoran ini enak, lho!"
+          },
+          {
+            "japanese": "危ないですよ。",
+            "romaji": "Abunai desu yo.",
+            "translation": "Itu berbahaya, lho!"
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "もう7時です",
+            "sentenceAfter": "。",
+            "answer": "よ",
+            "romaji": "Mou shichi-ji desu yo.",
+            "translation": "Sudah jam 7, lho!"
+          },
+          {
+            "sentenceBefore": "危ないです",
+            "sentenceAfter": "。",
+            "answer": "よ",
+            "romaji": "Abunai desu yo.",
+            "translation": "Itu berbahaya, lho!"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "particle_na",
+    "particle": "な",
+    "particleRomaji": "na",
+    "category": "akhir_kalimat",
+    "overview": "Partikel larangan kasual/blak-blakan (kata kerja bentuk kamus + な), dan juga penegasan kasual bernuansa maskulin mirip ね/よ tapi lebih blak-blakan.",
+    "similarParticles": [
+      "particle_zo",
+      "particle_ze"
+    ],
+    "functions": [
+      {
+        "id": "na_prohibition",
+        "title": "Larangan kasual ('jangan ~!')",
+        "explanation": "Kata kerja bentuk kamus + な adalah larangan langsung dan blak-blakan — jauh lebih kasar daripada ~ないでください, cocok dipakai ke teman akrab atau situasi mendesak, bukan ke orang yang dihormati.",
+        "formation": "Kata kerja bentuk kamus + な",
+        "sentenceExamples": [
+          {
+            "japanese": "心配するな。",
+            "romaji": "Shinpai suru na.",
+            "translation": "Jangan khawatir!"
+          },
+          {
+            "japanese": "行くな。",
+            "romaji": "Iku na.",
+            "translation": "Jangan pergi!"
+          },
+          {
+            "japanese": "触るな。",
+            "romaji": "Sawaru na.",
+            "translation": "Jangan sentuh!"
+          }
+        ],
+        "clozeExamples": [
+          {
+            "sentenceBefore": "心配する",
+            "sentenceAfter": "。",
+            "answer": "な",
+            "romaji": "Shinpai suru na.",
+            "translation": "Jangan khawatir!"
+          },
+          {
+            "sentenceBefore": "触る",
+            "sentenceAfter": "。",
+            "answer": "な",
+            "romaji": "Sawaru na.",
+            "translation": "Jangan sentuh!"
+          }
+        ]
+      },
+      {
+        "id": "na_casual_emphasis",
+        "title": "Penegasan kasual bernuansa maskulin",
+        "explanation": "な juga bisa menegaskan perasaan pembicara sendiri, mirip fungsi ね tapi terasa lebih blak-blakan/maskulin — pemilihan な di sini murni soal register bicara (bukan perbedaan makna yang bisa diterjemahkan), jadi fungsi ini tidak dipakai untuk soal kuis.",
+        "formation": "Kata kerja/kata sifat bentuk biasa + な",
+        "sentenceExamples": [
+          {
+            "japanese": "疲れたな。",
+            "romaji": "Tsukareta na.",
+            "translation": "Capek juga ya."
+          },
+          {
+            "japanese": "よく降るな。",
+            "romaji": "Yoku furu na.",
+            "translation": "Hujan deras juga ya."
+          },
+          {
+            "japanese": "懐かしいな。",
+            "romaji": "Natsukashii na.",
+            "translation": "Bikin kangen juga ya."
+          }
+        ],
+        "clozeExamples": []
+      }
+    ]
+  },
+  {
+    "id": "particle_wa2",
+    "particle": "わ",
+    "particleRomaji": "wa",
+    "category": "akhir_kalimat",
+    "overview": "Partikel penegasan lembut yang secara tradisional diasosiasikan dengan gaya bicara feminin.",
+    "similarParticles": [],
+    "functions": [
+      {
+        "id": "wa2_feminine_emphasis",
+        "title": "Penegasan lembut, gaya bicara feminin",
+        "explanation": "わ di akhir kalimat memberi kesan penegasan yang lembut, secara tradisional diasosiasikan dengan gaya bicara perempuan. Karena yang membedakannya murni register/gender pembicara (bukan makna kalimat), fungsi ini tidak dipakai untuk soal kuis — tidak ada cara menerjemahkannya secara berbeda dari padanan netral seperti よ/ね.",
+        "formation": "Kata kerja/kata sifat + わ",
+        "sentenceExamples": [
+          {
+            "japanese": "素敵だわ。",
+            "romaji": "Suteki da wa.",
+            "translation": "Bagus banget deh."
+          },
+          {
+            "japanese": "もう帰るわ。",
+            "romaji": "Mou kaeru wa.",
+            "translation": "Aku pulang duluan deh."
+          },
+          {
+            "japanese": "私もそう思うわ。",
+            "romaji": "Watashi mo sou omou wa.",
+            "translation": "Aku juga berpikir begitu deh."
+          }
+        ],
+        "clozeExamples": []
+      }
+    ]
+  },
+  {
+    "id": "particle_zo",
+    "particle": "ぞ",
+    "particleRomaji": "zo",
+    "category": "akhir_kalimat",
+    "overview": "Partikel penegasan kuat bernuansa maskulin dan kasar, sering dipakai untuk diri sendiri atau ke teman akrab.",
+    "similarParticles": [
+      "particle_ze"
+    ],
+    "functions": [
+      {
+        "id": "zo_masculine_emphasis",
+        "title": "Penegasan kuat, gaya bicara maskulin",
+        "explanation": "ぞ di akhir kalimat menegaskan sesuatu dengan kuat, bernuansa kasar/maskulin — umum dipakai saat berbicara pada diri sendiri (mis. menyemangati diri) atau ke teman sangat akrab. Sama seperti わ, pembedanya murni register pembicara, jadi fungsi ini tidak dipakai untuk soal kuis.",
+        "formation": "Kata kerja bentuk biasa + ぞ",
+        "sentenceExamples": [
+          {
+            "japanese": "行くぞ！",
+            "romaji": "Iku zo!",
+            "translation": "Ayo pergi!"
+          },
+          {
+            "japanese": "よし、やるぞ！",
+            "romaji": "Yoshi, yaru zo!",
+            "translation": "Baik, ayo kita kerjakan!"
+          },
+          {
+            "japanese": "負けないぞ。",
+            "romaji": "Makenai zo.",
+            "translation": "Aku tidak akan kalah!"
+          }
+        ],
+        "clozeExamples": []
+      }
+    ]
+  },
+  {
+    "id": "particle_ze",
+    "particle": "ぜ",
+    "particleRomaji": "ze",
+    "category": "akhir_kalimat",
+    "overview": "Partikel penegasan santai bernuansa maskulin, mirip ぞ tapi terasa sedikit lebih santai/ramah, umum dipakai ke teman akrab.",
+    "similarParticles": [
+      "particle_zo"
+    ],
+    "functions": [
+      {
+        "id": "ze_casual_masculine_emphasis",
+        "title": "Penegasan santai, gaya bicara maskulin kasual",
+        "explanation": "ぜ menegaskan sesuatu dengan nada santai dan akrab, bernuansa maskulin tapi lebih ramah/kurang kasar dibanding ぞ — umum dipakai saat mengajak teman dekat. Pembedanya murni register pembicara, jadi fungsi ini tidak dipakai untuk soal kuis.",
+        "formation": "Kata kerja bentuk biasa + ぜ",
+        "sentenceExamples": [
+          {
+            "japanese": "頑張ろうぜ！",
+            "romaji": "Ganbarou ze!",
+            "translation": "Ayo semangat!"
+          },
+          {
+            "japanese": "行こうぜ。",
+            "romaji": "Ikou ze.",
+            "translation": "Ayo kita pergi."
+          },
+          {
+            "japanese": "楽しもうぜ！",
+            "romaji": "Tanoshimou ze!",
+            "translation": "Ayo kita nikmati!"
+          }
+        ],
+        "clozeExamples": []
+      }
+    ]
+  },
+  {
+    "id": "particle_sa",
+    "particle": "さ",
+    "particleRomaji": "sa",
+    "category": "akhir_kalimat",
+    "overview": "Partikel penegasan santai/kasual, sering bernuansa maskulin, menegaskan sesuatu seolah sudah jelas/wajar.",
+    "similarParticles": [
+      "particle_zo",
+      "particle_ze"
+    ],
+    "functions": [
+      {
+        "id": "sa_casual_assertion",
+        "title": "Penegasan santai, menegaskan hal yang sudah jelas",
+        "explanation": "さ di akhir kalimat menegaskan sesuatu dengan nada santai, seolah hal itu sudah jelas/wajar dan tidak perlu dipikirkan berlebihan. Pembedanya murni register pembicara, jadi fungsi ini tidak dipakai untuk soal kuis.",
+        "formation": "Kata kerja/kata sifat bentuk biasa + さ",
+        "sentenceExamples": [
+          {
+            "japanese": "大丈夫さ。",
+            "romaji": "Daijoubu sa.",
+            "translation": "Tenang aja, gak apa-apa kok."
+          },
+          {
+            "japanese": "簡単さ。",
+            "romaji": "Kantan sa.",
+            "translation": "Gampang kok."
+          },
+          {
+            "japanese": "そんなものさ。",
+            "romaji": "Sonna mono sa.",
+            "translation": "Begitulah adanya."
+          }
+        ],
+        "clozeExamples": []
+      }
+    ]
+  }
+]

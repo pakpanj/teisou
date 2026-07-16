@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders) — Bunpou is done; Kaiwa/Choukai still untouched |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders) and premium-gated — Bunpou and Partikel are done; Kaiwa/Choukai still untouched |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -346,6 +346,171 @@ meant.
   but if you're touching `BunpouDetailScreen` or related screens next, a
   fresh on-device pass covering N3/N2 specifically is still worth doing
   since it hasn't actually happened yet.
+- **Partikel module** (Batch 9+) mirrors Bunpou's architecture pattern
+  (model → repository → progress → screens → content pipeline), but with
+  one deliberate structural difference: a Bunpou grammar pattern is ~one
+  meaning per entry, while a real Japanese particle genuinely has multiple
+  distinct grammatical functions (に alone covers location/direction/time/
+  recipient/passive-agent). So `ParticleEntry`
+  (`lib/data/models/particle_entry.dart`) nests
+  `functions: List<ParticleFunction>` rather than being flat — each
+  `ParticleFunction` (`particle_function.dart`) has its own
+  title/explanation/formation, `sentenceExamples` (reuses the shared
+  module-neutral `SentenceExample` class, same as Kanji/Kotoba/Bunpou —
+  no new example type there) and `clozeExamples`
+  (`List<ClozeExample>`, `cloze_example.dart` — a new, Partikel-only type,
+  deliberately kept separate from `SentenceExample` rather than bolting
+  quiz-only fields onto a class the other three modules share).
+  `ParticleEntry.category` is a plain validated `String`
+  ("kasus"/"keterangan"/"akhir_kalimat"), not a new Dart enum — unlike
+  `JlptLevel` (reused app-wide: exams, profile, Bunpou), a category enum
+  here would be a second source of truth for just 3 fixed values, the
+  exact `_categories.json`/word-list drift risk already documented above
+  for Kotoba. `ParticleCategoryInfo` (`particle_category_info.dart`,
+  mirrors `BunpouLevel` + `KotobaCategory.icon`) is the only
+  category-related model, loaded from `assets/data/particle/_categories.json`.
+  Repository/progress layer (`ParticleRepository`/
+  `ParticleCategoryRepository`/`ParticleProgressRepository`,
+  SharedPreferences key `particle_learned_ids`, Firestore mirror at
+  `users/{uid}/particleProgress` via
+  `FirestorePaths.particleProgressCollection`) mirrors Bunpou's exactly,
+  including the same known unguarded-Firestore-write gap carried a third
+  time now (Kanji → Kotoba → Bunpou → Partikel) — still not fixed, still
+  out of scope for whichever batch touches it, but three repetitions in
+  is probably worth a dedicated fix pass rather than a fourth copy-paste
+  later. `particleAllProvider` (resolves `similarParticles` ids to display
+  text) was built in from day one rather than retrofitted — this is
+  exactly the fix Bunpou needed only *after* its "Pola Serupa shows raw
+  ids" bug shipped (see the Bunpou note above), done right the first time
+  here.
+  - **Screens** (`lib/features/particle/`) mirror Bunpou's Home→Category
+    (renamed from "Level")→Detail/Quiz shape, with two adjustments for the
+    nested model: `ParticleDetailScreen` pages next/prev **between
+    particles** (same as Bunpou/Kanji), but renders each particle's
+    `functions` as `ExpansionTile`s (first expanded, rest collapsed)
+    instead of one flat meaning section — a に/で-style particle can have
+    5 functions × 2-3 examples each, which would make an unconditionally-
+    stacked column the longest page in the app. Its outer
+    `SingleChildScrollView` is keyed on `ValueKey(entry.id)` — **fixing a
+    real bug found in `BunpouDetailScreen` while building this**: Bunpou
+    only keys the inner `_PatternDisplay`, not the scrollable itself, so
+    paging next/prev carries over the previous entry's scroll offset.
+    Barely visible in Bunpou (every pattern's content is similar length);
+    would be very visible here (function-count varies 1-6 per particle).
+    Worth the same fix in `BunpouDetailScreen` if it's touched again.
+    `ParticleCategoryScreen`'s quiz icon pushes `ParticleQuizScreen`
+    directly with no mode-picker sheet (unlike Bunpou's two-mode quiz) —
+    the cloze mini-game only has one mode.
+  - **Mini-game** (`ParticleQuizScreen`): fill-in-the-blank ("cloze") over
+    one category's particles — pool every `ClozeExample` across the
+    category's `ParticleFunction`s, pick 10 at random, 4-option multiple
+    choice (correct answer + 3 distractor particle strings from elsewhere
+    in the same category), score + restart, mirrors `BunpouQuizScreen`'s
+    mechanics. `ClozeExample.sentenceBefore`/`sentenceAfter` are
+    hand-split at authoring time rather than derived by searching a
+    sentence for the particle substring at runtime, because a 1-2
+    character hiragana particle can coincidentally appear inside an
+    unrelated word/conjugation.
+  - **Cloze-authoring discipline — some functions deliberately have zero
+    `clozeExamples`**: に's "direction" function and へ's only function
+    both mean "toward a destination" with *identical* Indonesian
+    translations (学校に行きます = 学校へ行きます) — に and へ are
+    genuinely, not just superficially, interchangeable there, so any
+    multiple-choice question built from either would have two equally-
+    correct answers whenever the other happened to land as a distractor.
+    Rather than ship a coin-flip question, both functions carry full
+    `sentenceExamples` for the notes screen but no `clozeExamples` — cloze
+    coverage for に comes from its other 4 functions instead. The same
+    reasoning drops cloze coverage from Akhir Kalimat's register-only
+    particles (わ/ぞ/ぜ/さ, and な's second "casual emphasis" function):
+    they differ from ね/よ/な's prohibition sense purely by *speaker
+    register* (feminine/masculine/casual), which Indonesian has no
+    gendered-particle equivalent for, so no translation wording can anchor
+    a single correct answer. If you add more particles later, apply the
+    same test before authoring a cloze: would *every* other particle in
+    the category produce a sentence with a genuinely different shown
+    translation? If not, leave `clozeExamples` empty for that function and
+    say why inline, the same way the entries in
+    `scripts/generate_particle_seed.py` do.
+  - **Content scope**: 25 particles across 3 categories — Kasus (格助詞:
+    が/を/に/で/と/へ/から/まで/の, 9), Keterangan (副助詞: は/も/しか/だけ/
+    くらい/ばかり/でも/や, 8), Akhir Kalimat (終助詞: か/ね/よ/な/わ/ぞ/ぜ/
+    さ, 8), locked in `scripts/particle_lists.py` — sourced from Tae Kim's
+    Guide to Japanese Grammar + jlptsensei.com's particle-tagged entries,
+    the same "well-established community source, not a nonexistent
+    authority" approach already used for Kanji/Bunpou (there's no official
+    JLPT particle list, official or otherwise). か lives *only* under
+    Akhir Kalimat (its primary classification, sentence-final question
+    marker) even though it also means "or" between nouns — that secondary
+    sense is a nested `ParticleFunction` under the same entry rather than
+    a second top-level list membership, since `category` is single-valued;
+    の's casual sentence-final question use (どこ行くの？) is nested the
+    same way under its Kasus entry. `particle_lists.py` asserts the three
+    category lists are pairwise disjoint specifically so a repeat of this
+    か-in-two-categories mistake — an early draft of this scope genuinely
+    had it wrong — fails loudly instead of silently.
+    **Overlap with Bunpou is intentional, not redundant scope**: nearly
+    every particle here already has its own standalone Bunpou entry
+    (が/を/で/から/まで/の/は/か/や/ね/よ/な as single N5 entries; に/と/も/
+    だけ/でも/ばかり as one-of-two id-suffix pairs already documented
+    above). An early draft of this module's plan assumed the two
+    modules' scopes should avoid touching the same particles — that was
+    wrong. Bunpou gives one terse JLPT-tagged meaning per pattern (its N5
+    `に` entry is locative/time only); Partikel catalogs a particle's
+    *entire* set of functions side by side in one place (5 に senses at
+    once). Both modules deliberately cover the same core particles at
+    different depths — that's the reason this module exists at all, not
+    an oversight to fix later.
+  - **Premium gate**: unlike Kanji/Kotoba/Bunpou (all shipped free),
+    Partikel is deliberately premium-gated per an explicit product
+    decision (confirmed, not assumed from precedent). Gating follows the
+    established pattern already used by
+    `lib/features/profile/widgets/avatar_picker_sheet.dart` for premium
+    avatar presets/gallery upload — `ref.watch(subscriptionProvider)
+    .valueOrNull?.isPremium ?? false` checked at the **tap site**
+    (`ModulesScreen`'s new `_PremiumModuleCard`, not inside
+    `ParticleHomeScreen`'s `build()`), branching to
+    `AppNavigator.slideFromRight(context, const ParticleHomeScreen())` if
+    premium or `PaywallScreen(moduleId: 'particle', moduleTitle:
+    'Partikel')` if not. This required converting `ModulesScreen` from
+    `StatelessWidget` to `ConsumerWidget`. `ModuleStatus.previewUnlocked`
+    (an existing enum value) and the ad-reward 24h-preview read path
+    (`ProgressRepository.getAdRewards`) were both confirmed **dead/never
+    consulted anywhere** before this — deliberately not built on top of
+    either, since the user asked for a plain premium gate, not an
+    ad-preview option. `particle` was removed from `kComingSoonModules`
+    (the module is real now, "sedang dalam pengembangan" messaging would
+    be dishonest — same reasoning as Cam Detector's `_LockedModuleCard`
+    above) and the dead 12-line `lib/features/particle/particle_screen.dart`
+    stub was deleted, mirroring exactly how `bunpou_screen.dart` was
+    handled. `pubspec.yaml` got `assets/data/particle_data.json` +
+    `assets/data/particle/` added up front, precisely to avoid repeating
+    the missing-asset gotcha documented in the Bunpou note above.
+  - **Verification gap, honestly not closed**: `flutter analyze` (clean)
+    and `flutter test --concurrency=1` (all 10 pre-existing tests still
+    pass) both ran clean, and the full-dataset Python cross-check (no
+    duplicate particle/function ids, all three category lists match
+    `particle_lists.py` exactly in order and content, every
+    `similarParticles` id resolves, 46 total `clozeExamples` across the
+    dataset) passed clean too. The app was also confirmed to build,
+    install, and launch correctly on a freshly-booted Pixel 8 emulator
+    (Android 15) — Home screen renders with correct Japanese glyph display
+    (confirmed via `uiautomator dump`, e.g. "あ Belajar Hiragana" renders
+    as real kana, not tofu boxes). **What did NOT get verified**: tapping
+    through the actual Partikel flow (premium gate → Home → Category →
+    Detail's `ExpansionTile`/scroll-reset behavior → Quiz). The physical
+    test device was locked behind a real credential when this was due
+    (same standing rule as the Bunpou N3/N2 gap above: bypassing a device
+    lock is out of bounds regardless of urgency), and on the fresh
+    emulator, `adb shell input tap` reported success (exit 0) but produced
+    no observable change in repeated `uiautomator dump`s despite confirmed
+    correct app focus, no keyguard, and an awake screen — root cause not
+    diagnosed (Android 15 ATD-image touch-injection restriction is the
+    leading guess, unconfirmed). If you're touching any Partikel screen
+    next, a fresh interactive on-device pass — particularly confirming the
+    premium gate actually opens `PaywallScreen` for a non-premium user, and
+    that ExpansionTile/scroll-reset behave as designed on the Detail
+    screen — is still worth doing since it hasn't actually happened yet.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
