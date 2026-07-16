@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou N5+N4+N3+N2 all done (84/84, 132/132, 182/182, 197/197 grammar points); Bunpou N1 and Kaiwa/Choukai still untouched |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders) — Bunpou is done; Kaiwa/Choukai still untouched |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -266,20 +266,19 @@ meant.
   8-field tuple per entry (one fewer than Kanji's 9 — there's no separate
   "word examples" layer since a grammar pattern doesn't have a standalone
   vocabulary-word form the way a kanji does; sentence examples alone
-  carry the teaching content). **Content scope**: N5 (84 patterns), N4
-  (132 patterns), N3 (182 patterns), and N2 (197 patterns) are all fully
-  real now, sourced from jlptsensei.com's grammar lists — same source
-  already established for N2/N1 kanji — fetched across N5's 3, N4's 4,
-  N3's 5, and N2's 5 paginated pages respectively, each verified against
-  the page's own stated total ("84"/"132"/"182"/"197") before locking.
-  N1 is deliberately out of scope for now —
-  `assets/data/bunpou/_levels.json` marks it `available: false` with no
-  `bunpouCount`, and `BunpouHomeScreen` shows it as "Segera" exactly
-  like Kanji's not-yet-authored levels did before N3-N1 landed. Don't
-  forget to add new asset paths to `pubspec.yaml`'s `flutter: assets:`
-  list when adding a new bundled-JSON module like this — `bunpou_data.json`
-  and `assets/data/bunpou/` were initially missing from there and the
-  app would have shipped with 404s on every Bunpou screen despite
+  carry the teaching content). **Content scope**: all five JLPT levels
+  are fully real — N5 (84 patterns), N4 (132), N3 (182), N2 (197), and
+  N1 (253), totaling **848/848, zero placeholders**. All sourced from
+  jlptsensei.com's grammar lists — same source already established for
+  N2/N1 kanji — fetched across N5's 3, N4's 4, N3's 5, N2's 5, and N1's
+  7 paginated pages respectively, each verified against the page's own
+  stated total ("84"/"132"/"182"/"197"/"253") before locking. The
+  Bunpou module itself is now feature-complete; only Kaiwa/Choukai
+  remain unbuilt for the wider Batch 9+ scope. Don't forget to add new
+  asset paths to `pubspec.yaml`'s `flutter: assets:` list when adding a
+  new bundled-JSON module like this — `bunpou_data.json` and
+  `assets/data/bunpou/` were initially missing from there and the app
+  would have shipped with 404s on every Bunpou screen despite
   `flutter analyze`/`flutter test` both passing clean, since neither
   catches a missing asset declaration.
   **jlptsensei sometimes lists two distinct grammar points under
@@ -290,23 +289,30 @@ meant.
   parenthetical qualifier (のに（逆接）/のに（目的）, そうだ（伝聞）/
   そうだ（様態）) rather than kept as bare duplicate strings, both so the
   list's own uniqueness assertion holds and so the two entries are
-  distinguishable in the UI. Separately, eight grammar points reuse
+  distinguishable in the UI. Separately, eleven grammar points reuse
   identical pattern text **across** levels on purpose (でも, にする, も,
-  と — N5 vs N4; だけ, こと — N5/N4 vs N3; ばかり, より — N4 vs N2) —
-  each higher-level entry covers a genuinely different nuance than its
-  lower-level counterpart (documented in that entry's own `usageNotes`,
-  and cross-linked via `similarPatterns`) and gets an incremented id
-  suffix (`demo2`, `ni_suru2`, `mo2`, `to2`, `dake2`, `koto2`, `bakari2`,
-  `yori2`) — the full-dataset check tolerates duplicate `pattern` text
-  as long as `id` stays unique, and specifically confirms every
-  remaining duplicate is one of these eight intentional pairs before
-  treating the dataset as clean. N2's `より` is a good example of why
-  the nuance actually differs: N4's is the comparison particle
-  ("daripada"), while N2's is the formal written register that replaces
-  から in announcements/letters/speeches ("mulai hari ini...") — jlptsensei's
+  と — N5 vs N4; だけ, こと — N5/N4 vs N3; ばかり, より — N4 vs N2; に,
+  という, さ — N5/N4 vs N1) — each higher-level entry covers a genuinely
+  different nuance than its lower-level counterpart (documented in that
+  entry's own `usageNotes`, and cross-linked via `similarPatterns`) and
+  gets an incremented id suffix (`demo2`, `ni_suru2`, `mo2`, `to2`,
+  `dake2`, `koto2`, `bakari2`, `yori2`, `ni2`, `to_iu2`, `sa2`) — the
+  full-dataset check tolerates duplicate `pattern` text as long as `id`
+  stays unique, and specifically confirms every remaining duplicate is
+  one of these eleven intentional pairs before treating the dataset as
+  clean. N2's `より` is a good example of why the nuance actually
+  differs: N4's is the comparison particle ("daripada"), while N2's is
+  the formal written register that replaces から in
+  announcements/letters/speeches ("mulai hari ini...") — jlptsensei's
   own N2 page even flags this row with a footnote-style bracket
   (`より [2]`), which is site UI, not part of the pattern text, and was
-  dropped when locking `N2_GRAMMAR`.
+  dropped when locking `N2_GRAMMAR`. N1's three reuses follow the same
+  logic: N5's bare `に` (locative/time particle) vs. N1's `に` (the
+  V-masu+に+same-V repetition intensifier, e.g. 困りに困る); N4's `という`
+  (simple naming, "a person called X") vs. N1's `という` (an entire
+  descriptive clause attached to a noun, journalistic/narrative
+  register); N4's `さ` (i-adjective→noun nominalizer, e.g. 高さ) vs.
+  N1's `さ` (a colloquial masculine sentence-final assertion particle).
   **Bug found and fixed during N4's on-device verification**:
   `BunpouDetailScreen`'s "Pola Serupa" section originally rendered each
   `similarPatterns` entry as a pill showing the raw id string (e.g.
@@ -319,26 +325,27 @@ meant.
   `_SimilarPatternsRow` widget that resolves each id to its `pattern` via
   that full list before rendering — needed because a similar pattern can
   point at an entry from a *different* JLPT level than the one currently
-  being viewed (e.g. N4's `ato_de` cross-references N5's `te_kara`), so
-  the level-scoped `entries` list the detail screen already holds isn't
-  enough on its own. Verified end-to-end on a physical device (Moto G52J
-  5G): Home→Level→Detail→mark-learned→Quiz (both modes) all work for
-  N5 and N4, progress badge/checkmark update live via the same
-  invalidate-on-mutate pattern as Kanji/Kotoba, and "Pola Serupa" now
-  shows readable pattern text after the fix above. **N3 and N2 did not
-  get the same live on-device re-check** — both times, the physical test
-  device was found locked behind a real PIN/pattern credential
-  (confirmed via `adb shell locksettings get-disabled` erroring with
-  "Credential can't be null or empty", not just a swipeable keyguard)
-  right when verification was due, and bypassing/guessing a device
-  credential is treated as out of bounds regardless of task urgency. For
-  both levels, the full-dataset Python cross-check (duplicate ids,
-  locked-list match, schema completeness, `similarPatterns` resolution)
-  passed clean and the UI code path is identical to the one already
-  proven for N5/N4 — but if you're touching `BunpouDetailScreen` or
-  related screens next, a fresh on-device pass covering N3/N2
-  specifically (once the device is unlocked) is still worth doing since
-  it hasn't actually happened yet.
+  being viewed (e.g. N4's `ato_de` cross-references N5's `te_kara`, or
+  N1's `ba_koso` cross-references N3's `kara_koso`), so the level-scoped
+  `entries` list the detail screen already holds isn't enough on its
+  own. Verified end-to-end on a physical device (Moto G52J 5G):
+  Home→Level→Detail→mark-learned all work for N5, N4, and N1 (progress
+  badge/checkmark update live via the same invalidate-on-mutate pattern
+  as Kanji/Kotoba, and "Pola Serupa" resolves cross-level ids to
+  readable pattern text, confirmed again on an N1→N3 reference
+  specifically). **N3 and N2 did not get the same live on-device
+  re-check** — the physical test device was found locked behind a real
+  PIN/pattern credential (confirmed via `adb shell locksettings
+  get-disabled` erroring with "Credential can't be null or empty", not
+  just a swipeable keyguard) both times verification was due for those
+  two levels, and bypassing/guessing a device credential is treated as
+  out of bounds regardless of task urgency. For both, the full-dataset
+  Python cross-check (duplicate ids, locked-list match, schema
+  completeness, `similarPatterns` resolution) passed clean and the UI
+  code path is identical to the one now proven on-device for N5/N4/N1 —
+  but if you're touching `BunpouDetailScreen` or related screens next, a
+  fresh on-device pass covering N3/N2 specifically is still worth doing
+  since it hasn't actually happened yet.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
