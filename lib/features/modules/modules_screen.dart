@@ -5,7 +5,6 @@ import '../../core/theme/app_colors.dart';
 import '../../data/models/kana_type.dart';
 import '../../data/models/module_info.dart';
 import '../bunpou/bunpou_home_screen.dart';
-import '../cam_detector/cam_detector_screen.dart';
 import '../flashcard/flashcard_screen.dart';
 import '../kanji/kanji_home_screen.dart';
 import '../kotoba/kotoba_home_screen.dart';
@@ -51,16 +50,12 @@ class ModulesScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          _AvailableModuleCard(
+          const _LockedModuleCard(
             emoji: '📷',
-            backgroundColor: AppColors.tertiaryAmberCardBg,
-            iconColor: AppColors.tertiaryAmber,
             title: 'Cam Detector',
             subtitle: 'Scan karakter Jepang lewat kamera',
-            onTap: () => AppNavigator.slideFromBottom(
-              context,
-              const CamDetectorScreen(),
-            ),
+            reason: 'Sedang diperbaiki karena masih ada beberapa bug. '
+                'Modul ini akan diaktifkan kembali setelah perbaikan selesai.',
           ),
           const SizedBox(height: 12),
           _AvailableModuleCard(
@@ -199,6 +194,108 @@ class _AvailableModuleCard extends StatelessWidget {
                 ),
               ),
               Icon(Icons.chevron_right, color: iconColor),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A module that already has real code/screens behind it, but is
+/// deliberately kept unreachable from navigation because of known bugs —
+/// distinct from [_ComingSoonCard] (which is for modules that don't exist
+/// yet). Tapping shows why, via a [SnackBar], instead of the "under
+/// development / remind me / premium" [ComingSoonContent] sheet, since that
+/// messaging would be misleading for a feature that already exists.
+class _LockedModuleCard extends StatelessWidget {
+  final String emoji;
+  final String title;
+  final String subtitle;
+  final String reason;
+
+  const _LockedModuleCard({
+    required this.emoji,
+    required this.title,
+    required this.subtitle,
+    required this.reason,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.grey.shade100,
+      borderRadius: BorderRadius.circular(20),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(reason)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
+                  shape: BoxShape.circle,
+                ),
+                alignment: Alignment.center,
+                child: Text(emoji, style: const TextStyle(fontSize: 20)),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            title,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textNavy,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Text(
+                            'Diperbaiki',
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.freeBadgeGrey,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Icon(Icons.lock, color: AppColors.freeBadgeGrey, size: 20),
             ],
           ),
         ),

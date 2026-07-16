@@ -13,7 +13,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 3 | Firebase Live & Auth (anonymous + Google Sign-In, real `firebase_options.dart`) | ✅ |
 | — | Profile Enhancement (custom name + avatar picker/upload, gated by rewarded ads/premium) | ✅ |
 | 4 | Search & Dictionary (Kanji/Kotoba lookup) | ✅ |
-| 5 | Cam Detector (offline Japanese OCR scanning) | ✅ |
+| 5 | Cam Detector (offline Japanese OCR scanning) | ✅ built, but 🔒 locked from navigation since — real bugs, not gone; see "Known placeholders" below |
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
@@ -355,6 +355,19 @@ meant.
 
 ## Known placeholders / deferred work
 
+- **Cam Detector is deliberately locked from navigation** (not deleted —
+  every file under `lib/features/cam_detector/` is untouched and still
+  compiles/tests clean). `ModulesScreen` renders it as a grey
+  `_LockedModuleCard` with a "Diperbaiki" badge instead of the
+  `_AvailableModuleCard` it used to be; tapping shows a `SnackBar`
+  explaining it's under repair, instead of the generic
+  `ComingSoonContent` sheet (that sheet says "sedang dalam pengembangan"
+  — appropriate for a module that was *never built*, misleading for one
+  that already exists and just has open bugs). Re-enable by swapping the
+  `_LockedModuleCard` call back to `_AvailableModuleCard(... onTap: () =>
+  AppNavigator.slideFromBottom(context, const CamDetectorScreen()))` once
+  the known issues are actually fixed — see the OCR/camera-lifecycle
+  notes below for what's already been chased down vs. still unverified.
 - `lib/firebase_options.dart` has real Firebase project values now (Batch
   3), but AdMob uses Google's public **test** ad unit IDs
   (`lib/core/services/ad_service.dart`, `AndroidManifest.xml`) — swap for
@@ -435,6 +448,19 @@ meant.
   against both checks. If N1 content is ever revisited (corrections,
   re-authoring), keep using the same cross-check pattern — it's cheap
   and it has caught a real bug every time it's been exercised in anger.
+  **jlptsensei's own N1 page total has since drifted to 1504** (their
+  site explicitly says it's a "work in progress, new lessons being added
+  regularly") — re-verified by fetching all 16 of their current pages
+  and diffing against the locked 1503-character `N1_CHARACTERS`. The
+  single extra character on their page is 嫌 (kirai/ken/gen, "benci/
+  tidak suka"), which is already correctly authored under **N4**
+  (`kanji_kirai`) in this dataset — the same "remove characters already
+  covered at an earlier level" rule already documented for N2 (374 raw
+  → 367 after removing 7 N5/N4 overlaps) applies here too, just
+  undocumented for N1 until this check. **1503 is correct, not a gap.**
+  If you ever re-fetch jlptsensei's N1 list and the total doesn't match
+  1503 again, check for overlap with N5-N4-N3-N2 first before assuming
+  a kanji is missing — don't just add whatever's new on their page.
   **Gotcha found while fetching N3's SVGs**: two of KanjiVG's stroke paths
   open with a lowercase `m` instead of `M` — `KanjiVgParser` didn't handle
   it and would have dropped that stroke's numbers the same way it dropped
