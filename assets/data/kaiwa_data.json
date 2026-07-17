@@ -89085,6 +89085,3286 @@
     ]
   },
   {
+    "id": "kaiwa_buka_rekening_anak",
+    "title": "Membuka Rekening Tabungan Anak",
+    "category": "bank",
+    "description": "Kamu membuka rekening tabungan khusus untuk anakmu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお手伝いしましょうか。",
+          "romaji": "Nanika otetsudai shimashou ka.",
+          "translation": "Ada yang bisa saya bantu?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_buka_rekening_anak_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "子供の口座を作りたいです。",
+            "romaji": "Kodomo no kouza wo tsukuritai desu.",
+            "translation": "Saya ingin membuat rekening untuk anak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "会社の口座を作りたいです。",
+            "romaji": "Kaisha no kouza wo tsukuritai desu.",
+            "translation": "Saya ingin membuat rekening perusahaan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お子さんは何歳ですか。",
+          "romaji": "Okosan wa nansai desu ka.",
+          "translation": "Anaknya umur berapa?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_buka_rekening_anak_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "8歳です。",
+            "romaji": "Hassai desu.",
+            "translation": "8 tahun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "8時です。",
+            "romaji": "Hachiji desu.",
+            "translation": "Jam 8.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "保護者の同意書が必要です。",
+          "romaji": "Hogosha no douisho ga hitsuyou desu.",
+          "translation": "Perlu surat persetujuan orang tua."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_buka_rekening_anak_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、書きます。",
+            "romaji": "Wakarimashita, kakimasu.",
+            "translation": "Baik, akan saya tulis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "要りません。",
+            "romaji": "Irimasen.",
+            "translation": "Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "口座開設が完了しました。",
+          "romaji": "Kouza kaisetsu ga kanryou shimashita.",
+          "translation": "Pembukaan rekening sudah selesai."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_buka_rekening_anak_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ終わっていません。",
+            "romaji": "Mada owatte imasen.",
+            "translation": "Belum selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_biaya_transfer_antar_bank",
+    "title": "Menanyakan Biaya Transfer Antar Bank",
+    "category": "bank",
+    "description": "Kamu menanyakan biaya transfer ke rekening bank lain.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお困りですか。",
+          "romaji": "Nanika okomari desu ka.",
+          "translation": "Ada kesulitan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_biaya_transfer_antar_bank_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "他行への振込手数料を知りたいです。",
+            "romaji": "Takou e no furikomi tesuuryou wo shiritai desu.",
+            "translation": "Saya ingin tahu biaya transfer ke bank lain.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "預金の利息を知りたいです。",
+            "romaji": "Yokin no risoku wo shiritai desu.",
+            "translation": "Saya ingin tahu bunga tabungan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "220円かかります。",
+          "romaji": "Nihyaku nijuu en kakarimasu.",
+          "translation": "Butuh 220 yen."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_biaya_transfer_antar_bank_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、大丈夫です。",
+            "romaji": "Wakarimashita, daijoubu desu.",
+            "translation": "Baik, tidak apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "220時間ですね。",
+            "romaji": "Nihyaku nijuu jikan desu ne.",
+            "translation": "220 jam ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "アプリからだと少し安くなりますよ。",
+          "romaji": "Apuri kara da to sukoshi yasuku narimasu yo.",
+          "translation": "Kalau lewat aplikasi jadi sedikit lebih murah lho."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_biaya_transfer_antar_bank_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "それはいいですね。",
+            "romaji": "Sore wa ii desu ne.",
+            "translation": "Bagus itu ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アプリは使いたくないです。",
+            "romaji": "Apuri wa tsukaitakunai desu.",
+            "translation": "Saya tidak mau pakai aplikasi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "他にご質問はありますか。",
+          "romaji": "Hoka ni goshitsumon wa arimasu ka.",
+          "translation": "Ada pertanyaan lain?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_biaya_transfer_antar_bank_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいえ、大丈夫です。",
+            "romaji": "Iie, daijoubu desu.",
+            "translation": "Tidak, tidak apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "はい、たくさんあります。",
+            "romaji": "Hai, takusan arimasu.",
+            "translation": "Ya, banyak sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_aktifkan_kartu_debit",
+    "title": "Mengaktifkan Kartu Debit Baru",
+    "category": "bank",
+    "description": "Kamu mengaktifkan kartu debit yang baru diterima.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新しいカードが届きましたか。",
+          "romaji": "Atarashii kaado ga todokimashita ka.",
+          "translation": "Kartu barunya sudah sampai?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_aktifkan_kartu_debit_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、届きました。",
+            "romaji": "Hai, todokimashita.",
+            "translation": "Ya, sudah sampai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだです。",
+            "romaji": "Iie, mada desu.",
+            "translation": "Belum.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ATMで有効化してください。",
+          "romaji": "ATM de yuukouka shite kudasai.",
+          "translation": "Tolong aktifkan di ATM."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_aktifkan_kartu_debit_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、やってみます。",
+            "romaji": "Wakarimashita, yatte mimasu.",
+            "translation": "Baik, akan saya coba.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "したくないです。",
+            "romaji": "Shitakunai desu.",
+            "translation": "Saya tidak mau lakukan itu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "暗証番号を設定してください。",
+          "romaji": "Anshou bangou wo settei shite kudasai.",
+          "translation": "Tolong atur PIN-nya."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_aktifkan_kartu_debit_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました。",
+            "romaji": "Wakarimashita.",
+            "translation": "Baik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "要りません。",
+            "romaji": "Irimasen.",
+            "translation": "Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "有効化が完了しました。",
+          "romaji": "Yuukouka ga kanryou shimashita.",
+          "translation": "Aktivasi sudah selesai."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_aktifkan_kartu_debit_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ終わっていません。",
+            "romaji": "Mada owatte imasen.",
+            "translation": "Belum selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_limit_transfer_harian",
+    "title": "Menanyakan Limit Transfer Harian",
+    "category": "bank",
+    "description": "Kamu menanyakan batas maksimal transfer harian dari rekeningmu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお困りですか。",
+          "romaji": "Nanika okomari desu ka.",
+          "translation": "Ada kesulitan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_limit_transfer_harian_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "1日の振込限度額を知りたいです。",
+            "romaji": "Ichinichi no furikomi gendogaku wo shiritai desu.",
+            "translation": "Saya ingin tahu batas transfer harian.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "1日の労働時間を知りたいです。",
+            "romaji": "Ichinichi no roudou jikan wo shiritai desu.",
+            "translation": "Saya ingin tahu jam kerja harian.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "100万円までです。",
+          "romaji": "Hyakuman en made desu.",
+          "translation": "Sampai 1.000.000 yen."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_limit_transfer_harian_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、十分です。",
+            "romaji": "Wakarimashita, juubun desu.",
+            "translation": "Baik, cukup.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "100円ですね。",
+            "romaji": "Hyaku en desu ne.",
+            "translation": "100 yen ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "限度額を上げることもできますよ。",
+          "romaji": "Gendogaku wo ageru koto mo dekimasu yo.",
+          "translation": "Bisa juga menaikkan batasnya lho."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_limit_transfer_harian_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうなんですね、どうすればいいですか。",
+            "romaji": "Sou nan desu ne, dou sureba ii desu ka.",
+            "translation": "Oh begitu ya, bagaimana caranya?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "要りません。",
+            "romaji": "Irimasen.",
+            "translation": "Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "申請書をお渡ししますね。",
+          "romaji": "Shinseisho wo owatashi shimasu ne.",
+          "translation": "Saya berikan formulir permohonannya ya."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_limit_transfer_harian_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "要りません。",
+            "romaji": "Irimasen.",
+            "translation": "Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_lapor_transaksi_mencurigakan",
+    "title": "Melaporkan Transaksi Mencurigakan",
+    "category": "bank",
+    "description": "Kamu melaporkan transaksi mencurigakan di rekeningmu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお困りですか。",
+          "romaji": "Nanika okomari desu ka.",
+          "translation": "Ada kesulitan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_lapor_transaksi_mencurigakan_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "覚えのない取引があります。",
+            "romaji": "Oboe no nai torihiki ga arimasu.",
+            "translation": "Ada transaksi yang tidak saya kenal.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "問題ありません。",
+            "romaji": "Mondai arimasen.",
+            "translation": "Tidak ada masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いつの取引ですか。",
+          "romaji": "Itsu no torihiki desu ka.",
+          "translation": "Transaksi kapan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_lapor_transaksi_mencurigakan_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "昨日の夜です。",
+            "romaji": "Kinou no yoru desu.",
+            "translation": "Kemarin malam.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "来月です。",
+            "romaji": "Raigetsu desu.",
+            "translation": "Bulan depan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "すぐにカードを止めますね。",
+          "romaji": "Sugu ni kaado wo tomemasu ne.",
+          "translation": "Saya segera blokir kartunya ya."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_lapor_transaksi_mencurigakan_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お願いします。",
+            "romaji": "Onegaishimasu.",
+            "translation": "Tolong ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "止めないでください。",
+            "romaji": "Tomenaide kudasai.",
+            "translation": "Tolong jangan diblokir.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "調査して連絡しますね。",
+          "romaji": "Chousa shite renraku shimasu ne.",
+          "translation": "Kami akan selidiki dan hubungi Anda ya."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_lapor_transaksi_mencurigakan_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、お願いします。",
+            "romaji": "Arigatou gozaimasu, onegaishimasu.",
+            "translation": "Terima kasih, tolong ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "要りません。",
+            "romaji": "Irimasen.",
+            "translation": "Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_ambil_antrean_bank",
+    "title": "Mengambil Nomor Antrean Bank",
+    "category": "bank",
+    "description": "Kamu mengambil nomor antrean sebelum dilayani di bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Satpam",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "こちらで番号札をお取りください。",
+          "romaji": "Kochira de bangoufuda wo otori kudasai.",
+          "translation": "Silakan ambil nomor antrean di sini."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ambil_antrean_bank_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、ありがとうございます。",
+            "romaji": "Wakarimashita, arigatou gozaimasu.",
+            "translation": "Baik, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "要りません。",
+            "romaji": "Irimasen.",
+            "translation": "Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Satpam",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何のご用件ですか。",
+          "romaji": "Nan no goyouken desu ka.",
+          "translation": "Ada keperluan apa?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ambil_antrean_bank_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "口座を開きたいです。",
+            "romaji": "Kouza wo hirakitai desu.",
+            "translation": "Saya ingin membuka rekening.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "休憩したいです。",
+            "romaji": "Kyuukei shitai desu.",
+            "translation": "Saya ingin istirahat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Satpam",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あと4人ほどお待ちいただきます。",
+          "romaji": "Ato yonin hodo omachi itadakimasu.",
+          "translation": "Masih perlu menunggu sekitar 4 orang lagi."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ambil_antrean_bank_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、待ちます。",
+            "romaji": "Wakarimashita, machimasu.",
+            "translation": "Baik, saya tunggu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "待てません、帰ります。",
+            "romaji": "Matemasen, kaerimasu.",
+            "translation": "Tidak bisa tunggu, saya pulang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teller",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "8番の方、どうぞ。",
+          "romaji": "Hachiban no kata, douzo.",
+          "translation": "Nomor 8, silakan."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ambil_antrean_bank_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、私です。",
+            "romaji": "Hai, watashi desu.",
+            "translation": "Ya, itu saya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、違います。",
+            "romaji": "Iie, chigaimasu.",
+            "translation": "Bukan, itu salah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_topup_ewallet_bank",
+    "title": "Menanyakan Cara Top Up E-Wallet Lewat Bank",
+    "category": "bank",
+    "description": "Kamu menanyakan cara mengisi ulang e-wallet lewat rekening bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお困りですか。",
+          "romaji": "Nanika okomari desu ka.",
+          "translation": "Ada kesulitan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_topup_ewallet_bank_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "電子マネーにチャージしたいです。",
+            "romaji": "Denshi manee ni chaaji shitai desu.",
+            "translation": "Saya ingin isi ulang e-wallet.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "現金を引き出したいです。",
+            "romaji": "Genkin wo hikidashitai desu.",
+            "translation": "Saya ingin tarik tunai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "アプリで連携してください。",
+          "romaji": "Apuri de renkei shite kudasai.",
+          "translation": "Tolong hubungkan lewat aplikasi."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_topup_ewallet_bank_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、やってみます。",
+            "romaji": "Wakarimashita, yatte mimasu.",
+            "translation": "Baik, akan saya coba.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アプリは使いたくないです。",
+            "romaji": "Apuri wa tsukaitakunai desu.",
+            "translation": "Saya tidak mau pakai aplikasi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "できましたか。",
+          "romaji": "Dekimashita ka.",
+          "translation": "Sudah berhasil?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_topup_ewallet_bank_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、できました。",
+            "romaji": "Hai, dekimashita.",
+            "translation": "Ya, berhasil.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、できません。",
+            "romaji": "Iie, dekimasen.",
+            "translation": "Tidak, tidak berhasil.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "とても便利ですね。",
+          "romaji": "Totemo benri desu ne.",
+          "translation": "Sangat praktis ya."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_topup_ewallet_bank_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、本当に便利です。",
+            "romaji": "Hai, hontou ni benri desu.",
+            "translation": "Ya, benar-benar praktis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、不便です。",
+            "romaji": "Iie, fuben desu.",
+            "translation": "Tidak, tidak praktis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kartu_kredit_tambahan",
+    "title": "Mengajukan Kartu Kredit Tambahan",
+    "category": "bank",
+    "description": "Kamu mengajukan kartu kredit tambahan untuk anggota keluarga.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお手伝いしましょうか。",
+          "romaji": "Nanika otetsudai shimashou ka.",
+          "translation": "Ada yang bisa saya bantu?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_kartu_kredit_tambahan_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "家族カードを作りたいです。",
+            "romaji": "Kazoku kaado wo tsukuritai desu.",
+            "translation": "Saya ingin buat kartu keluarga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "カードを解約したいです。",
+            "romaji": "Kaado wo kaiyaku shitai desu.",
+            "translation": "Saya ingin membatalkan kartu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どなたのカードですか。",
+          "romaji": "Donata no kaado desu ka.",
+          "translation": "Kartu untuk siapa?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_kartu_kredit_tambahan_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "妻のカードです。",
+            "romaji": "Tsuma no kaado desu.",
+            "translation": "Kartu untuk istri saya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "私のペットのカードです。",
+            "romaji": "Watashi no petto no kaado desu.",
+            "translation": "Kartu untuk hewan peliharaan saya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "審査に少し時間がかかります。",
+          "romaji": "Shinsa ni sukoshi jikan ga kakarimasu.",
+          "translation": "Prosesnya akan butuh sedikit waktu."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_kartu_kredit_tambahan_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、待ちます。",
+            "romaji": "Wakarimashita, machimasu.",
+            "translation": "Baik, saya tunggu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "待てません。",
+            "romaji": "Matemasen.",
+            "translation": "Saya tidak bisa tunggu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "審査に通りました、おめでとうございます。",
+          "romaji": "Shinsa ni toorimashita, omedetou gozaimasu.",
+          "translation": "Pengajuannya disetujui, selamat."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_kartu_kredit_tambahan_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "残念です。",
+            "romaji": "Zannen desu.",
+            "translation": "Sayang sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_cicilan_kpr",
+    "title": "Menanyakan Cicilan KPR",
+    "category": "bank",
+    "description": "Kamu menanyakan simulasi cicilan kredit rumah kepada petugas bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお困りですか。",
+          "romaji": "Nanika okomari desu ka.",
+          "translation": "Ada kesulitan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_cicilan_kpr_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "住宅ローンの返済額を知りたいです。",
+            "romaji": "Juutaku roon no hensaigaku wo shiritai desu.",
+            "translation": "Saya ingin tahu jumlah cicilan KPR.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "車のローンを知りたいです。",
+            "romaji": "Kuruma no roon wo shiritai desu.",
+            "translation": "Saya ingin tahu cicilan mobil.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何年で返済しますか。",
+          "romaji": "Nannen de hensai shimasu ka.",
+          "translation": "Mau dicicil berapa tahun?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_cicilan_kpr_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "20年でお願いします。",
+            "romaji": "Nijuu nen de onegaishimasu.",
+            "translation": "Tolong 20 tahun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "20分でお願いします。",
+            "romaji": "Nijuppun de onegaishimasu.",
+            "translation": "Tolong 20 menit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "月々8万円くらいです。",
+          "romaji": "Tsukizuki hachiman en kurai desu.",
+          "translation": "Sekitar 80.000 yen per bulan."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_cicilan_kpr_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、大丈夫です。",
+            "romaji": "Wakarimashita, daijoubu desu.",
+            "translation": "Baik, tidak apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高すぎます。",
+            "romaji": "Takasugimasu.",
+            "translation": "Terlalu mahal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "審査を始めましょうか。",
+          "romaji": "Shinsa wo hajimemashou ka.",
+          "translation": "Mau mulai proses pengajuan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_cicilan_kpr_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お願いします。",
+            "romaji": "Hai, onegaishimasu.",
+            "translation": "Ya, tolong ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだ考えます。",
+            "romaji": "Iie, mada kangaemasu.",
+            "translation": "Tidak, saya masih pikirkan dulu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_rekening_valas",
+    "title": "Membuka Rekening Valuta Asing",
+    "category": "bank",
+    "description": "Kamu membuka rekening dalam mata uang asing untuk keperluan liburan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお手伝いしましょうか。",
+          "romaji": "Nanika otetsudai shimashou ka.",
+          "translation": "Ada yang bisa saya bantu?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_rekening_valas_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "外貨口座を作りたいです。",
+            "romaji": "Gaika kouza wo tsukuritai desu.",
+            "translation": "Saya ingin buat rekening valuta asing.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "普通口座を閉じたいです。",
+            "romaji": "Futsuu kouza wo tojitai desu.",
+            "translation": "Saya ingin tutup rekening biasa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どの通貨にしますか。",
+          "romaji": "Dono tsuuka ni shimasu ka.",
+          "translation": "Mau mata uang apa?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_rekening_valas_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "米ドルにします。",
+            "romaji": "Beidoru ni shimasu.",
+            "translation": "Dolar AS.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "日本語にします。",
+            "romaji": "Nihongo ni shimasu.",
+            "translation": "Bahasa Jepang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "為替手数料がかかります。",
+          "romaji": "Kawase tesuuryou ga kakarimasu.",
+          "translation": "Ada biaya penukaran mata uang."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_rekening_valas_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、大丈夫です。",
+            "romaji": "Wakarimashita, daijoubu desu.",
+            "translation": "Baik, tidak apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは嫌です。",
+            "romaji": "Sore wa iya desu.",
+            "translation": "Itu tidak mau.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "口座開設が完了しました。",
+          "romaji": "Kouza kaisetsu ga kanryou shimashita.",
+          "translation": "Pembukaan rekening sudah selesai."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_rekening_valas_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ終わっていません。",
+            "romaji": "Mada owatte imasen.",
+            "translation": "Belum selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_ubah_data_diri_bank",
+    "title": "Mengubah Data Diri di Bank",
+    "category": "bank",
+    "description": "Kamu mengubah alamat dan nomor telepon yang terdaftar di bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお手伝いしましょうか。",
+          "romaji": "Nanika otetsudai shimashou ka.",
+          "translation": "Ada yang bisa saya bantu?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ubah_data_diri_bank_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "住所を変更したいです。",
+            "romaji": "Juusho wo henkou shitai desu.",
+            "translation": "Saya ingin ganti alamat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "口座を作りたいです。",
+            "romaji": "Kouza wo tsukuritai desu.",
+            "translation": "Saya ingin membuat rekening.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新しい住所を教えてください。",
+          "romaji": "Atarashii juusho wo oshiete kudasai.",
+          "translation": "Tolong beri tahu alamat barunya."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ubah_data_diri_bank_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "東京都新宿区です。",
+            "romaji": "Toukyou-to Shinjuku-ku desu.",
+            "translation": "Shinjuku, Tokyo.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "元気です。",
+            "romaji": "Genki desu.",
+            "translation": "Saya baik-baik saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "身分証明書を確認させてください。",
+          "romaji": "Mibun shoumeisho wo kakunin sasete kudasai.",
+          "translation": "Tolong biarkan saya cek kartu identitasnya."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ubah_data_diri_bank_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、どうぞ。",
+            "romaji": "Hai, douzo.",
+            "translation": "Ya, silakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "持っていません。",
+            "romaji": "Motte imasen.",
+            "translation": "Saya tidak punya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "変更が完了しました。",
+          "romaji": "Henkou ga kanryou shimashita.",
+          "translation": "Perubahan sudah selesai."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ubah_data_diri_bank_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ終わっていません。",
+            "romaji": "Mada owatte imasen.",
+            "translation": "Belum selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_mesin_setor_tunai",
+    "title": "Menanyakan Cara Menggunakan Mesin Setor Tunai",
+    "category": "bank",
+    "description": "Kamu menanyakan cara menggunakan mesin setor tunai otomatis.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Kamu",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "この機械の使い方を教えてください。",
+          "romaji": "Kono kikai no tsukaikata wo oshiete kudasai.",
+          "translation": "Tolong ajari cara pakai mesin ini."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_mesin_setor_tunai_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お手伝いします。",
+            "romaji": "Hai, otetsudai shimasu.",
+            "translation": "Ya, saya bantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、分かりません。",
+            "romaji": "Iie, wakarimasen.",
+            "translation": "Tidak, saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "まずカードを入れてください。",
+          "romaji": "Mazu kaado wo irete kudasai.",
+          "translation": "Pertama, tolong masukkan kartu."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_mesin_setor_tunai_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました。",
+            "romaji": "Wakarimashita.",
+            "translation": "Baik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "入れたくないです。",
+            "romaji": "Iretakunai desu.",
+            "translation": "Saya tidak mau masukkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "次にお金を入れてください。",
+          "romaji": "Tsugi ni okane wo irete kudasai.",
+          "translation": "Selanjutnya, tolong masukkan uangnya."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_mesin_setor_tunai_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、入れます。",
+            "romaji": "Wakarimashita, iremasu.",
+            "translation": "Baik, akan saya masukkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "お金は要りません。",
+            "romaji": "Okane wa irimasen.",
+            "translation": "Uang tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "完了しましたね、簡単でしょう。",
+          "romaji": "Kanryou shimashita ne, kantan deshou.",
+          "translation": "Sudah selesai ya, mudah kan."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_mesin_setor_tunai_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、簡単でした。",
+            "romaji": "Hai, kantan deshita.",
+            "translation": "Ya, mudah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、難しかったです。",
+            "romaji": "Iie, muzukashikatta desu.",
+            "translation": "Tidak, sulit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_lunasi_pinjaman",
+    "title": "Melunasi Pinjaman Lebih Awal",
+    "category": "bank",
+    "description": "Kamu ingin melunasi pinjaman bank lebih cepat dari jadwal.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお手伝いしましょうか。",
+          "romaji": "Nanika otetsudai shimashou ka.",
+          "translation": "Ada yang bisa saya bantu?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_lunasi_pinjaman_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ローンを早く返したいです。",
+            "romaji": "Roon wo hayaku kaeshitai desu.",
+            "translation": "Saya ingin melunasi pinjaman lebih cepat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "新しいローンが欲しいです。",
+            "romaji": "Atarashii roon ga hoshii desu.",
+            "translation": "Saya ingin pinjaman baru.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "早期返済手数料がかかります。",
+          "romaji": "Souki hensai tesuuryou ga kakarimasu.",
+          "translation": "Ada biaya pelunasan lebih awal."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_lunasi_pinjaman_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、大丈夫です。",
+            "romaji": "Wakarimashita, daijoubu desu.",
+            "translation": "Baik, tidak apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは嫌です。",
+            "romaji": "Sore wa iya desu.",
+            "translation": "Itu tidak mau.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "残額は50万円です。",
+          "romaji": "Zangaku wa gojuuman en desu.",
+          "translation": "Sisa saldonya 500.000 yen."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_lunasi_pinjaman_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、払います。",
+            "romaji": "Wakarimashita, haraimasu.",
+            "translation": "Baik, akan saya bayar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "50円ですね。",
+            "romaji": "Gojuu en desu ne.",
+            "translation": "50 yen ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "完済しました、おめでとうございます。",
+          "romaji": "Kansai shimashita, omedetou gozaimasu.",
+          "translation": "Sudah lunas, selamat."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_lunasi_pinjaman_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、嬉しいです。",
+            "romaji": "Arigatou gozaimasu, ureshii desu.",
+            "translation": "Terima kasih, senang sekali.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "残念です。",
+            "romaji": "Zannen desu.",
+            "translation": "Sayang sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tabungan_berjangka",
+    "title": "Menanyakan Program Tabungan Berjangka",
+    "category": "bank",
+    "description": "Kamu menanyakan program tabungan berjangka untuk masa depan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお困りですか。",
+          "romaji": "Nanika okomari desu ka.",
+          "translation": "Ada kesulitan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_tabungan_berjangka_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "定期積立の商品を知りたいです。",
+            "romaji": "Teiki tsumitate no shouhin wo shiritai desu.",
+            "translation": "Saya ingin tahu produk tabungan berjangka.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "借金をしたいです。",
+            "romaji": "Shakkin wo shitai desu.",
+            "translation": "Saya ingin berutang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "毎月いくら積み立てますか。",
+          "romaji": "Maitsuki ikura tsumitatemasu ka.",
+          "translation": "Setiap bulan mau menabung berapa?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_tabungan_berjangka_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "1万円ずつです。",
+            "romaji": "Ichiman en zutsu desu.",
+            "translation": "10.000 yen setiap bulan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "1時間ずつです。",
+            "romaji": "Ichi jikan zutsu desu.",
+            "translation": "1 jam setiap kali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "5年後には60万円になりますよ。",
+          "romaji": "Gonen go ni wa rokujuuman en ni narimasu yo.",
+          "translation": "5 tahun lagi akan jadi 600.000 yen lho."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_tabungan_berjangka_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "それはいいですね、始めます。",
+            "romaji": "Sore wa ii desu ne, hajimemasu.",
+            "translation": "Bagus itu ya, saya mulai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは少ないですね。",
+            "romaji": "Sore wa sukunai desu ne.",
+            "translation": "Itu sedikit ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手続きが完了しました。",
+          "romaji": "Tetsuzuki ga kanryou shimashita.",
+          "translation": "Prosesnya sudah selesai."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_tabungan_berjangka_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ終わっていません。",
+            "romaji": "Mada owatte imasen.",
+            "translation": "Belum selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_ajukan_kartu_pengganti",
+    "title": "Mengajukan Kartu ATM Pengganti",
+    "category": "bank",
+    "description": "Kartu ATM-mu rusak dan kamu mengajukan penggantinya.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお困りですか。",
+          "romaji": "Nanika okomari desu ka.",
+          "translation": "Ada kesulitan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ajukan_kartu_pengganti_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "カードが壊れました。",
+            "romaji": "Kaado ga kowaremashita.",
+            "translation": "Kartu saya rusak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "カードは新品です。",
+            "romaji": "Kaado wa shinpin desu.",
+            "translation": "Kartu saya masih baru.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのように壊れましたか。",
+          "romaji": "Dono you ni kowaremashita ka.",
+          "translation": "Rusaknya bagaimana?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ajukan_kartu_pengganti_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "曲がってしまいました。",
+            "romaji": "Magatte shimaimashita.",
+            "translation": "Kartunya jadi bengkok.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "新しくなりました。",
+            "romaji": "Atarashiku narimashita.",
+            "translation": "Jadi baru.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "再発行の手数料がかかります。",
+          "romaji": "Saihakkou no tesuuryou ga kakarimasu.",
+          "translation": "Ada biaya penerbitan ulang."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ajukan_kartu_pengganti_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、大丈夫です。",
+            "romaji": "Wakarimashita, daijoubu desu.",
+            "translation": "Baik, tidak apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは嫌です。",
+            "romaji": "Sore wa iya desu.",
+            "translation": "Itu tidak mau.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "1週間ほどで届きます。",
+          "romaji": "Isshuukan hodo de todokimasu.",
+          "translation": "Akan sampai sekitar 1 minggu."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_ajukan_kartu_pengganti_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、待ちます。",
+            "romaji": "Wakarimashita, machimasu.",
+            "translation": "Baik, saya tunggu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "1時間で届きますね。",
+            "romaji": "Ichi jikan de todokimasu ne.",
+            "translation": "Sampai dalam 1 jam ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_asuransi_bank",
+    "title": "Menanyakan Asuransi dari Bank",
+    "category": "bank",
+    "description": "Kamu menanyakan produk asuransi yang ditawarkan bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお困りですか。",
+          "romaji": "Nanika okomari desu ka.",
+          "translation": "Ada kesulitan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_asuransi_bank_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "保険商品について知りたいです。",
+            "romaji": "Hoken shouhin ni tsuite shiritai desu.",
+            "translation": "Saya ingin tahu tentang produk asuransi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "株について知りたいです。",
+            "romaji": "Kabu ni tsuite shiritai desu.",
+            "translation": "Saya ingin tahu tentang saham.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな保険にご興味がありますか。",
+          "romaji": "Donna hoken ni gokyoumi ga arimasu ka.",
+          "translation": "Tertarik dengan asuransi jenis apa?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_asuransi_bank_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "医療保険です。",
+            "romaji": "Iryou hoken desu.",
+            "translation": "Asuransi kesehatan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "自動車です。",
+            "romaji": "Jidousha desu.",
+            "translation": "Mobil.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "月々の保険料は3000円です。",
+          "romaji": "Tsukizuki no hokenryou wa sanzen en desu.",
+          "translation": "Premi bulanannya 3000 yen."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_asuransi_bank_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、加入します。",
+            "romaji": "Wakarimashita, kanyuu shimasu.",
+            "translation": "Baik, saya ikut.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高すぎます。",
+            "romaji": "Takasugimasu.",
+            "translation": "Terlalu mahal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手続きが完了しました。",
+          "romaji": "Tetsuzuki ga kanryou shimashita.",
+          "translation": "Prosesnya sudah selesai."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_asuransi_bank_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ終わっていません。",
+            "romaji": "Mada owatte imasen.",
+            "translation": "Belum selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_transfer_uang_kuliah",
+    "title": "Transfer Uang untuk Kuliah Anak",
+    "category": "bank",
+    "description": "Kamu mentransfer uang kuliah untuk anakmu yang sedang kuliah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお手伝いしましょうか。",
+          "romaji": "Nanika otetsudai shimashou ka.",
+          "translation": "Ada yang bisa saya bantu?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_transfer_uang_kuliah_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "学費を振り込みたいです。",
+            "romaji": "Gakuhi wo furikomitai desu.",
+            "translation": "Saya ingin transfer biaya kuliah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "学費を受け取りたいです。",
+            "romaji": "Gakuhi wo uketoritai desu.",
+            "translation": "Saya ingin menerima biaya kuliah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いくら振り込みますか。",
+          "romaji": "Ikura furikomimasu ka.",
+          "translation": "Mau transfer berapa?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_transfer_uang_kuliah_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "30万円です。",
+            "romaji": "Sanjuuman en desu.",
+            "translation": "300.000 yen.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "30分です。",
+            "romaji": "Sanjuppun desu.",
+            "translation": "30 menit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "振込先を確認しますね。",
+          "romaji": "Furikomisaki wo kakunin shimasu ne.",
+          "translation": "Saya cek rekening tujuannya ya."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_transfer_uang_kuliah_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お願いします。",
+            "romaji": "Onegaishimasu.",
+            "translation": "Tolong ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "結構です。",
+            "romaji": "Kekkou desu.",
+            "translation": "Tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "振込が完了しました。",
+          "romaji": "Furikomi ga kanryou shimashita.",
+          "translation": "Transfer sudah selesai."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_transfer_uang_kuliah_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ終わっていません。",
+            "romaji": "Mada owatte imasen.",
+            "translation": "Belum selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jam_operasional_bank",
+    "title": "Menanyakan Jam Operasional Bank",
+    "category": "bank",
+    "description": "Kamu menanyakan jam buka dan tutup bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Kamu",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "銀行の営業時間を教えてください。",
+          "romaji": "Ginkou no eigyou jikan wo oshiete kudasai.",
+          "translation": "Tolong beri tahu jam operasional bank."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_jam_operasional_bank_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "9時から15時までです。",
+            "romaji": "Kuji kara juugoji made desu.",
+            "translation": "Dari jam 9 sampai jam 15.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "9時から15分までです。",
+            "romaji": "Kuji kara juugofun made desu.",
+            "translation": "Dari jam 9 sampai 15 menit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Kamu",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "土曜日も開いていますか。",
+          "romaji": "Doyoubi mo aite imasu ka.",
+          "translation": "Sabtu juga buka?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_jam_operasional_bank_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいえ、平日だけです。",
+            "romaji": "Iie, heijitsu dake desu.",
+            "translation": "Tidak, hanya hari kerja.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "はい、土日も開いています。",
+            "romaji": "Hai, dojitsu mo aite imasu.",
+            "translation": "Ya, Sabtu Minggu juga buka.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Kamu",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ATMは24時間ですか。",
+          "romaji": "ATM wa nijuuyo jikan desu ka.",
+          "translation": "ATM buka 24 jam?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_jam_operasional_bank_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、24時間ご利用いただけます。",
+            "romaji": "Hai, nijuuyo jikan goriyou itadakemasu.",
+            "translation": "Ya, bisa dipakai 24 jam.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、夜は閉まります。",
+            "romaji": "Iie, yoru wa shimarimasu.",
+            "translation": "Tidak, malam tutup.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Kamu",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "分かりました、ありがとうございます。",
+          "romaji": "Wakarimashita, arigatou gozaimasu.",
+          "translation": "Baik, terima kasih."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_jam_operasional_bank_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "どういたしまして。",
+            "romaji": "Dou itashimashite.",
+            "translation": "Sama-sama.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "さようなら。",
+            "romaji": "Sayounara.",
+            "translation": "Selamat tinggal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_komplain_transaksi_gagal",
+    "title": "Komplain Transaksi Gagal",
+    "category": "bank",
+    "description": "Transaksimu gagal tapi uangnya sudah terpotong, kamu komplain ke bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお困りですか。",
+          "romaji": "Nanika okomari desu ka.",
+          "translation": "Ada kesulitan?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_komplain_transaksi_gagal_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "取引が失敗したのにお金が引かれました。",
+            "romaji": "Torihiki ga shippai shita noni okane ga hikaremashita.",
+            "translation": "Transaksi gagal tapi uangnya terpotong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "取引は成功しました。",
+            "romaji": "Torihiki wa seikou shimashita.",
+            "translation": "Transaksinya berhasil.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "取引番号を教えてください。",
+          "romaji": "Torihiki bangou wo oshiete kudasai.",
+          "translation": "Tolong beri tahu nomor transaksinya."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_komplain_transaksi_gagal_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "こちらです。",
+            "romaji": "Kochira desu.",
+            "translation": "Ini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "結構です。",
+            "romaji": "Kekkou desu.",
+            "translation": "Tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "確認しますので少々お待ちください。",
+          "romaji": "Kakunin shimasu node shoushou omachi kudasai.",
+          "translation": "Saya cek, mohon tunggu sebentar."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_komplain_transaksi_gagal_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お願いします。",
+            "romaji": "Hai, onegaishimasu.",
+            "translation": "Ya, tolong ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "3日以内に返金いたします。",
+          "romaji": "Mikkanai ni henkin itashimasu.",
+          "translation": "Akan kami kembalikan dalam 3 hari."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_komplain_transaksi_gagal_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、ありがとうございます。",
+            "romaji": "Wakarimashita, arigatou gozaimasu.",
+            "translation": "Baik, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "今すぐ返金してください。",
+            "romaji": "Ima sugu henkin shite kudasai.",
+            "translation": "Tolong kembalikan sekarang juga.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tutup_kartu_kredit",
+    "title": "Menutup Kartu Kredit",
+    "category": "bank",
+    "description": "Kamu ingin menutup kartu kredit yang sudah tidak dipakai.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かお手伝いしましょうか。",
+          "romaji": "Nanika otetsudai shimashou ka.",
+          "translation": "Ada yang bisa saya bantu?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_tutup_kartu_kredit_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "クレジットカードを解約したいです。",
+            "romaji": "Kurejitto kaado wo kaiyaku shitai desu.",
+            "translation": "Saya ingin menutup kartu kredit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "クレジットカードを作りたいです。",
+            "romaji": "Kurejitto kaado wo tsukuritai desu.",
+            "translation": "Saya ingin buat kartu kredit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "未払いはありませんか。",
+          "romaji": "Miharai wa arimasen ka.",
+          "translation": "Tidak ada tagihan yang belum dibayar?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_tutup_kartu_kredit_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、全部払っています。",
+            "romaji": "Hai, zenbu haratte imasu.",
+            "translation": "Ya, semua sudah dibayar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだあります。",
+            "romaji": "Iie, mada arimasu.",
+            "translation": "Tidak, masih ada.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "理由を教えていただけますか。",
+          "romaji": "Riyuu wo oshiete itadakemasu ka.",
+          "translation": "Boleh tahu alasannya?"
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_tutup_kartu_kredit_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "あまり使わないからです。",
+            "romaji": "Amari tsukawanai kara desu.",
+            "translation": "Karena jarang saya pakai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "よく使うからです。",
+            "romaji": "Yoku tsukau kara desu.",
+            "translation": "Karena sering saya pakai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "解約手続きが完了しました。",
+          "romaji": "Kaiyaku tetsuzuki ga kanryou shimashita.",
+          "translation": "Proses pembatalan sudah selesai."
+        },
+        "imagePath": "kaiwa_images/bank/kaiwa_tutup_kartu_kredit_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ終わっていません。",
+            "romaji": "Mada owatte imasen.",
+            "translation": "Belum selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "kaiwa_ajak_olahraga",
     "title": "Mengajak Olahraga Bersama",
     "category": "olahraga",
