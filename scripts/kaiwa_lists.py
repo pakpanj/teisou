@@ -260,6 +260,16 @@ TRANSPORTASI_TITLES = [
     "Menanyakan Jam Terakhir Transportasi",
     "Naik Ojek/Ride Sharing",
     "Menanyakan Rute Terbaik",
+    "Naik Kapal Feri",
+    "Menyewa Mobil",
+    "Naik Bus Malam Antar Kota",
+    "Menanyakan Tempat Parkir",
+    "Naik Becak/Delman",
+    "Terjebak Macet",
+    "Menanyakan Kursi Prioritas",
+    "Naik Trem/Monorel",
+    "Membawa Barang Besar di Transportasi Umum",
+    "Turun di Halte yang Salah",
 ]
 
 KANTOR_POS_TITLES = [
