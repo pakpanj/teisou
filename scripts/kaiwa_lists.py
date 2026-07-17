@@ -88,6 +88,13 @@ SEKOLAH_TITLES = [
     "Menyapa Guru di Kelas",
     "Menanyakan Pekerjaan Rumah (PR)",
     "Meminjam Alat Tulis",
+    "Bertanya Jadwal Pelajaran",
+    "Meminta Izin ke Toilet",
+    "Terlambat Masuk Kelas",
+    "Mengajak Belajar Kelompok",
+    "Menanyakan Nilai Ujian",
+    "Membolos Karena Sakit",
+    "Berpisah di Akhir Semester",
 ]
 
 CUACA_BASA_BASI_TITLES = [
