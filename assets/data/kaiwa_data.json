@@ -19050,6 +19050,1646 @@
     ]
   },
   {
+    "id": "kaiwa_bicara_hujan_deras",
+    "title": "Membicarakan Hujan Deras",
+    "category": "cuaca_basa_basi",
+    "description": "Kamu berbincang dengan tetangga soal hujan deras hari ini.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "すごい雨ですね。",
+          "romaji": "Sugoi ame desu ne.",
+          "translation": "Hujannya deras ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_bicara_hujan_deras_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本当に、すごい雨ですね。",
+            "romaji": "Hontou ni, sugoi ame desu ne.",
+            "translation": "Iya, deras banget ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、晴れています。",
+            "romaji": "Iie, harete imasu.",
+            "translation": "Tidak, cerah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "傘を持っていますか。",
+          "romaji": "Kasa wo motte imasu ka.",
+          "translation": "Ada payung?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_bicara_hujan_deras_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、持っています。",
+            "romaji": "Hai, motte imasu.",
+            "translation": "Ya, saya bawa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、傘が嫌いです。",
+            "romaji": "Iie, kasa ga kirai desu.",
+            "translation": "Tidak, saya tidak suka payung.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "良かったです、気をつけてくださいね。",
+          "romaji": "Yokatta desu, ki wo tsukete kudasai ne.",
+          "translation": "Syukurlah, hati-hati ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_bicara_hujan_deras_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、ありがとうございます。",
+            "romaji": "Hai, arigatou gozaimasu.",
+            "translation": "Ya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "早く家に着くといいですね。",
+          "romaji": "Hayaku ie ni tsuku to ii desu ne.",
+          "translation": "Semoga cepat sampai rumah ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_bicara_hujan_deras_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、急いで帰ります。",
+            "romaji": "Hai, isoide kaerimasu.",
+            "translation": "Ya, saya akan buru-buru pulang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、ゆっくり帰ります。",
+            "romaji": "Iie, yukkuri kaerimasu.",
+            "translation": "Tidak, saya akan pulang santai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_basa_basi_hobi_baru",
+    "title": "Basa-basi soal Hobi Baru",
+    "category": "cuaca_basa_basi",
+    "description": "Temanmu bertanya tentang hobi baru yang kamu mulai.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近何か新しいことを始めましたか。",
+          "romaji": "Saikin nanika atarashii koto wo hajimemashita ka.",
+          "translation": "Belakangan mulai sesuatu yang baru?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_hobi_baru_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、料理を始めました。",
+            "romaji": "Hai, ryouri wo hajimemashita.",
+            "translation": "Ya, saya mulai memasak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、何もしていません。",
+            "romaji": "Iie, nanimo shite imasen.",
+            "translation": "Tidak, saya tidak melakukan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いいですね！楽しいですか。",
+          "romaji": "Ii desu ne! Tanoshii desu ka.",
+          "translation": "Bagus! Seru tidak?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_hobi_baru_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、とても楽しいです。",
+            "romaji": "Hai, totemo tanoshii desu.",
+            "translation": "Ya, sangat seru.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、つまらないです。",
+            "romaji": "Iie, tsumaranai desu.",
+            "translation": "Tidak, membosankan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度作ってもらえますか。",
+          "romaji": "Kondo tsukutte moraemasu ka.",
+          "translation": "Lain kali boleh dibuatkan?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_hobi_baru_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、もちろんです。",
+            "romaji": "Hai, mochiron desu.",
+            "translation": "Ya, tentu saja.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、無理です。",
+            "romaji": "Iie, muri desu.",
+            "translation": "Tidak, tidak bisa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみにしていますね。",
+          "romaji": "Tanoshimi ni shite imasu ne.",
+          "translation": "Saya menantikannya ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_hobi_baru_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、頑張って作ります。",
+            "romaji": "Hai, ganbatte tsukurimasu.",
+            "translation": "Ya, saya akan berusaha membuatnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、作りません。",
+            "romaji": "Iie, tsukurimasen.",
+            "translation": "Tidak, saya tidak akan membuatnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_komentar_angin_kencang",
+    "title": "Mengomentari Angin Kencang",
+    "category": "cuaca_basa_basi",
+    "description": "Kamu berbincang dengan orang di jalan soal angin kencang.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Orang di Jalan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今日は風が強いですね。",
+          "romaji": "Kyou wa kaze ga tsuyoi desu ne.",
+          "translation": "Hari ini anginnya kencang ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_komentar_angin_kencang_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうですね、帽子が飛びそうです。",
+            "romaji": "Sou desu ne, boushi ga tobisou desu.",
+            "translation": "Iya ya, topinya kayak mau terbang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、風はありません。",
+            "romaji": "Iie, kaze wa arimasen.",
+            "translation": "Tidak, tidak ada angin.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Orang di Jalan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "台風が近づいているらしいですよ。",
+          "romaji": "Taifuu ga chikazuite iru rashii desu yo.",
+          "translation": "Katanya topan sedang mendekat lho."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_komentar_angin_kencang_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本当ですか、気をつけないと。",
+            "romaji": "Hontou desu ka, ki wo tsukenai to.",
+            "translation": "Benarkah, harus hati-hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいですね、楽しみです。",
+            "romaji": "Ii desu ne, tanoshimi desu.",
+            "translation": "Bagus, tidak sabar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Orang di Jalan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "早く帰った方がいいですね。",
+          "romaji": "Hayaku kaetta hou ga ii desu ne.",
+          "translation": "Sebaiknya cepat pulang ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_komentar_angin_kencang_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうですね、そうします。",
+            "romaji": "Sou desu ne, sou shimasu.",
+            "translation": "Iya ya, akan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだ遊びます。",
+            "romaji": "Iie, mada asobimasu.",
+            "translation": "Tidak, saya masih akan bermain.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Orang di Jalan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "気をつけて帰ってくださいね。",
+          "romaji": "Ki wo tsukete kaette kudasai ne.",
+          "translation": "Hati-hati pulangnya ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_komentar_angin_kencang_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、ありがとうございます。",
+            "romaji": "Hai, arigatou gozaimasu.",
+            "translation": "Ya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_basa_basi_lift",
+    "title": "Basa-basi di Lift",
+    "category": "cuaca_basa_basi",
+    "description": "Kamu naik lift bersama tetangga dan mengobrol ringan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何階に行きますか。",
+          "romaji": "Nankai ni ikimasu ka.",
+          "translation": "Ke lantai berapa?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_lift_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "5階です。",
+            "romaji": "Gokai desu.",
+            "translation": "Lantai 5.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "5時です。",
+            "romaji": "Goji desu.",
+            "translation": "Jam 5.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今日は暑いですね。",
+          "romaji": "Kyou wa atsui desu ne.",
+          "translation": "Hari ini panas ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_lift_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本当に暑いですね。",
+            "romaji": "Hontou ni atsui desu ne.",
+            "translation": "Benar-benar panas ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、寒いです。",
+            "romaji": "Iie, samui desu.",
+            "translation": "Tidak, dingin.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "良い一日を。",
+          "romaji": "Ii ichinichi wo.",
+          "translation": "Semoga harimu menyenangkan."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_lift_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "あなたも！",
+            "romaji": "Anata mo!",
+            "translation": "Kamu juga!",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "さようなら、二度と会いません。",
+            "romaji": "Sayounara, nidoto aimasen.",
+            "translation": "Selamat tinggal, tidak akan bertemu lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "着きましたね、お先に失礼します。",
+          "romaji": "Tsukimashita ne, osaki ni shitsurei shimasu.",
+          "translation": "Sudah sampai ya, saya duluan."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_lift_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お疲れ様でした。",
+            "romaji": "Hai, otsukaresama deshita.",
+            "translation": "Ya, sampai jumpa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_bicara_suhu_dingin",
+    "title": "Membicarakan Suhu Dingin",
+    "category": "cuaca_basa_basi",
+    "description": "Kamu berbincang dengan tetangga soal cuaca dingin hari ini.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今日はとても寒いですね。",
+          "romaji": "Kyou wa totemo samui desu ne.",
+          "translation": "Hari ini dingin sekali ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_bicara_suhu_dingin_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本当に寒いですね。",
+            "romaji": "Hontou ni samui desu ne.",
+            "translation": "Benar-benar dingin ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、暑いです。",
+            "romaji": "Iie, atsui desu.",
+            "translation": "Tidak, panas.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "温かい格好をしてくださいね。",
+          "romaji": "Atatakai kakkou wo shite kudasai ne.",
+          "translation": "Pakai baju yang hangat ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_bicara_suhu_dingin_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、そうします。",
+            "romaji": "Hai, sou shimasu.",
+            "translation": "Ya, akan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、薄着でいいです。",
+            "romaji": "Iie, usugi de ii desu.",
+            "translation": "Tidak, pakai baju tipis saja tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "風邪をひかないように。",
+          "romaji": "Kaze wo hikanai you ni.",
+          "translation": "Jangan sampai masuk angin ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_bicara_suhu_dingin_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、気をつけます。",
+            "romaji": "Hai, ki wo tsukemasu.",
+            "translation": "Ya, saya akan hati-hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、気をつけません。",
+            "romaji": "Iie, ki wo tsukemasen.",
+            "translation": "Tidak, saya tidak akan hati-hati.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お互い気をつけましょう。",
+          "romaji": "Otagai ki wo tsukemashou.",
+          "translation": "Ayo kita sama-sama hati-hati."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_bicara_suhu_dingin_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、そうしましょう。",
+            "romaji": "Hai, sou shimashou.",
+            "translation": "Ya, ayo begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、大丈夫です。",
+            "romaji": "Iie, daijoubu desu.",
+            "translation": "Tidak, tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tunggu_hujan_reda",
+    "title": "Basa-basi Menunggu Hujan Reda",
+    "category": "cuaca_basa_basi",
+    "description": "Kamu mengobrol dengan orang lain sambil menunggu hujan reda di halte.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Orang di Halte",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "雨、なかなか止みませんね。",
+          "romaji": "Ame, nakanaka yamimasen ne.",
+          "translation": "Hujannya tidak berhenti-berhenti ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_tunggu_hujan_reda_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうですね、困りますね。",
+            "romaji": "Sou desu ne, komarimasu ne.",
+            "translation": "Iya ya, bikin repot ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、もう止みました。",
+            "romaji": "Iie, mou yamimashita.",
+            "translation": "Tidak, sudah berhenti.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Orang di Halte",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "傘を持っていないんです。",
+          "romaji": "Kasa wo motte inai ndesu.",
+          "translation": "Saya tidak bawa payung."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_tunggu_hujan_reda_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "それは大変ですね。",
+            "romaji": "Sore wa taihen desu ne.",
+            "translation": "Itu berat ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "良かったですね。",
+            "romaji": "Yokatta desu ne.",
+            "translation": "Syukurlah ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Orang di Halte",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あ、少し弱くなりましたね。",
+          "romaji": "A, sukoshi yowaku narimashita ne.",
+          "translation": "Ah, jadi agak lemah ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_tunggu_hujan_reda_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本当ですね、良かったです。",
+            "romaji": "Hontou desu ne, yokatta desu.",
+            "translation": "Benar ya, syukurlah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、強くなりました。",
+            "romaji": "Iie, tsuyoku narimashita.",
+            "translation": "Tidak, jadi lebih kencang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Orang di Halte",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もう少し待ちましょうか。",
+          "romaji": "Mou sukoshi machimashou ka.",
+          "translation": "Tunggu sebentar lagi ya?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_tunggu_hujan_reda_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、そうしましょう。",
+            "romaji": "Hai, sou shimashou.",
+            "translation": "Ya, ayo begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、帰ります。",
+            "romaji": "Iie, kaerimasu.",
+            "translation": "Tidak, saya pulang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_rencana_liburan_musim_panas",
+    "title": "Membicarakan Rencana Liburan Musim Panas",
+    "category": "cuaca_basa_basi",
+    "description": "Temanmu bertanya rencana liburan musim panasmu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "夏休みはどこか行きますか。",
+          "romaji": "Natsuyasumi wa dokoka ikimasu ka.",
+          "translation": "Liburan musim panas mau ke mana?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_rencana_liburan_musim_panas_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "海に行きたいです。",
+            "romaji": "Umi ni ikitai desu.",
+            "translation": "Saya mau ke pantai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "海が嫌いです。",
+            "romaji": "Umi ga kirai desu.",
+            "translation": "Saya tidak suka pantai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いいですね！誰と行きますか。",
+          "romaji": "Ii desu ne! Dare to ikimasu ka.",
+          "translation": "Bagus! Sama siapa?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_rencana_liburan_musim_panas_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "家族と行きます。",
+            "romaji": "Kazoku to ikimasu.",
+            "translation": "Sama keluarga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一人で行きたくないです。",
+            "romaji": "Hitori de ikitakunai desu.",
+            "translation": "Saya tidak mau pergi sendirian.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しんできてくださいね。",
+          "romaji": "Tanoshinde kite kudasai ne.",
+          "translation": "Semoga senang ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_rencana_liburan_musim_panas_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます！",
+            "romaji": "Arigatou gozaimasu!",
+            "translation": "Terima kasih!",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "写真をたくさん撮ってきてくださいね。",
+          "romaji": "Shashin wo takusan totte kite kudasai ne.",
+          "translation": "Tolong foto banyak-banyak ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_rencana_liburan_musim_panas_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、そうします。",
+            "romaji": "Hai, sou shimasu.",
+            "translation": "Ya, akan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、撮りません。",
+            "romaji": "Iie, torimasen.",
+            "translation": "Tidak, saya tidak akan foto.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_basa_basi_kesehatan",
+    "title": "Basa-basi tentang Kesehatan",
+    "category": "cuaca_basa_basi",
+    "description": "Tetanggamu menanyakan kondisi kesehatanmu belakangan ini.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近体調はどうですか。",
+          "romaji": "Saikin taichou wa dou desu ka.",
+          "translation": "Belakangan kondisi badan gimana?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_kesehatan_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、元気です。",
+            "romaji": "Hai, genki desu.",
+            "translation": "Ya, sehat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、忙しいです。",
+            "romaji": "Iie, isogashii desu.",
+            "translation": "Tidak, saya sibuk.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それは良かったです。",
+          "romaji": "Sore wa yokatta desu.",
+          "translation": "Syukurlah."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_kesehatan_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "季節の変わり目ですから、気をつけてくださいね。",
+          "romaji": "Kisetsu no kawarime desu kara, ki wo tsukete kudasai ne.",
+          "translation": "Karena pergantian musim, hati-hati ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_kesehatan_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、気をつけます。",
+            "romaji": "Hai, ki wo tsukemasu.",
+            "translation": "Ya, saya akan hati-hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、気をつけません。",
+            "romaji": "Iie, ki wo tsukemasen.",
+            "translation": "Tidak, saya tidak akan hati-hati.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かあったら、いつでも言ってくださいね。",
+          "romaji": "Nanika attara, itsudemo itte kudasai ne.",
+          "translation": "Kalau ada apa-apa, bilang saja kapan pun ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_kesehatan_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_komentar_bunga_mekar",
+    "title": "Mengomentari Bunga Bermekaran",
+    "category": "cuaca_basa_basi",
+    "description": "Kamu berbincang dengan tetangga tentang bunga sakura yang mekar.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "桜が咲きましたね。",
+          "romaji": "Sakura ga sakimashita ne.",
+          "translation": "Bunga sakuranya sudah mekar ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_komentar_bunga_mekar_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本当ですね、きれいですね。",
+            "romaji": "Hontou desu ne, kirei desu ne.",
+            "translation": "Benar ya, indah ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだです。",
+            "romaji": "Iie, mada desu.",
+            "translation": "Tidak, belum.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お花見に行きましたか。",
+          "romaji": "Ohanami ni ikimashita ka.",
+          "translation": "Sudah pergi lihat bunga sakura?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_komentar_bunga_mekar_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいえ、まだです。今度行きます。",
+            "romaji": "Iie, mada desu. Kondo ikimasu.",
+            "translation": "Belum. Lain kali saya pergi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "はい、公園です。",
+            "romaji": "Hai, kouen desu.",
+            "translation": "Ya, taman.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一緒に行きましょうか。",
+          "romaji": "Issho ni ikimashou ka.",
+          "translation": "Mau pergi bareng?"
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_komentar_bunga_mekar_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいですね、ぜひ！",
+            "romaji": "Ii desu ne, zehi!",
+            "translation": "Boleh, ayo!",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Tetangga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみですね。",
+          "romaji": "Tanoshimi desu ne.",
+          "translation": "Tidak sabar ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_komentar_bunga_mekar_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、とても楽しみです。",
+            "romaji": "Hai, totemo tanoshimi desu.",
+            "translation": "Ya, sangat tidak sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、楽しみじゃないです。",
+            "romaji": "Iie, tanoshimi janai desu.",
+            "translation": "Tidak, saya tidak menantikannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_basa_basi_antrean",
+    "title": "Basa-basi di Antrean",
+    "category": "cuaca_basa_basi",
+    "description": "Kamu mengobrol ringan dengan orang lain sambil antre.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Orang di Antrean",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今日は人が多いですね。",
+          "romaji": "Kyou wa hito ga ooi desu ne.",
+          "translation": "Hari ini orangnya banyak ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_antrean_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうですね、すごい列ですね。",
+            "romaji": "Sou desu ne, sugoi retsu desu ne.",
+            "translation": "Iya ya, antreannya panjang banget ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、少ないです。",
+            "romaji": "Iie, sukunai desu.",
+            "translation": "Tidak, sedikit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Orang di Antrean",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのくらい待ちますかね。",
+          "romaji": "Dono kurai machimasu ka ne.",
+          "translation": "Kira-kira nunggu berapa lama ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_antrean_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "30分くらいだと思います。",
+            "romaji": "Sanjuppun kurai da to omoimasu.",
+            "translation": "Kira-kira 30 menit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "30年くらいだと思います。",
+            "romaji": "Sanjuunen kurai da to omoimasu.",
+            "translation": "Kira-kira 30 tahun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Orang di Antrean",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "気長に待ちましょう。",
+          "romaji": "Kinagani machimashou.",
+          "translation": "Ayo sabar menunggu."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_antrean_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうですね。",
+            "romaji": "Sou desu ne.",
+            "translation": "Iya ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、帰ります。",
+            "romaji": "Iie, kaerimasu.",
+            "translation": "Tidak, saya pulang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Orang di Antrean",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もうすぐ順番ですね。",
+          "romaji": "Mou sugu junban desu ne.",
+          "translation": "Sebentar lagi giliran kita ya."
+        },
+        "imagePath": "kaiwa_images/cuaca_basa_basi/kaiwa_basa_basi_antrean_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、良かったです。",
+            "romaji": "Hai, yokatta desu.",
+            "translation": "Ya, syukurlah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだまだです。",
+            "romaji": "Iie, madamada desu.",
+            "translation": "Tidak, masih lama.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "kaiwa_jelaskan_sakit",
     "title": "Menjelaskan Sakit ke Dokter",
     "category": "rumah_sakit",

@@ -168,6 +168,16 @@ CUACA_BASA_BASI_TITLES = [
     "Basa-basi Tentang Pekerjaan Rumah Tangga",
     "Membicarakan Berita Terkini",
     "Menyapa Tetangga Baru",
+    "Membicarakan Hujan Deras",
+    "Basa-basi soal Hobi Baru",
+    "Mengomentari Angin Kencang",
+    "Basa-basi di Lift",
+    "Membicarakan Suhu Dingin",
+    "Basa-basi Menunggu Hujan Reda",
+    "Membicarakan Rencana Liburan Musim Panas",
+    "Basa-basi tentang Kesehatan",
+    "Mengomentari Bunga Bermekaran",
+    "Basa-basi di Antrean",
 ]
 
 RUMAH_SAKIT_TITLES = [
