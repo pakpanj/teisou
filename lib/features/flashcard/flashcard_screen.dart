@@ -114,27 +114,31 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
             style: TextStyle(fontWeight: FontWeight.bold, color: accent),
           ),
         ),
-        SizedBox(
-          height: 800,
+        Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
             child: Center(
-              child: SizedBox(
-                width: 400,
-                height: 700,
-                child: FlipCard(
-                  key: ValueKey(kana.id),
-                  onFlipped: (isFront) =>
-                      _handleFlip(isFront, kana, currentProgress),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 400,
+                  maxHeight: 700,
+                ),
+                child: AspectRatio(
+                  aspectRatio: 400 / 700,
+                  child: FlipCard(
+                    key: ValueKey(kana.id),
+                    onFlipped: (isFront) =>
+                        _handleFlip(isFront, kana, currentProgress),
 
-                  front: _CardFace(
-                    background: cardBackground,
-                    child: _FrontContent(kana: kana, accent: accent),
-                  ),
+                    front: _CardFace(
+                      background: cardBackground,
+                      child: _FrontContent(kana: kana, accent: accent),
+                    ),
 
-                  back: _CardFace(
-                    background: cardBackground,
-                    child: _BackContent(kana: kana, accent: accent),
+                    back: _CardFace(
+                      background: cardBackground,
+                      child: _BackContent(kana: kana, accent: accent),
+                    ),
                   ),
                 ),
               ),
