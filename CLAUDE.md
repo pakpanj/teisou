@@ -521,107 +521,134 @@ meant.
   Kanji N3-N1, Bunpou N4-N1, Choukai, Kaiwa, and two still-unbuilt modules).
   Restore `_PremiumModuleCard` + the `PaywallScreen` branch (both deleted,
   not just disabled — see git history for the removed code) before release.
-- **Kaiwa module** (Batch 9+, Fase 1) is a conversation-practice module
-  scoped around **interactive** dialogues rather than a static browse/quiz
-  pair like the other modules — the user explicitly asked for mic/typed
-  input with input-dependent responses, not just readable content. Model
-  layer (`lib/data/models/kaiwa_entry.dart`, `kaiwa_line.dart`,
-  `kaiwa_accepted_answer.dart`, `kaiwa_category_info.dart`,
+- **Kaiwa module** (Batch 9+) is a conversation-practice module scoped
+  around **interactive** dialogues rather than a static browse/quiz pair
+  like the other modules. **It went through two designs**: Fase 1
+  (2026-07-17) used mic/typed free-text input matched offline by a
+  `KaiwaAnswerMatcher`; this was replaced the same day (2026-07-17, second
+  session) after it turned out to be the app's main source of bugs/crashes
+  — `SpeechToTextService` had no `onError`/`onStatus` wiring so recognition
+  errors left the mic button stuck forever, among other issues (see git
+  history on `speech_to_text_service.dart`/`kaiwa_dialogue_screen.dart` for
+  the blow-by-blow). **Fase 2 (current) replaces all typing/speech input
+  with image + multiple-choice**, per explicit user request — the
+  `speech_to_text` dependency, `SpeechToTextService`, `KaiwaAnswerMatcher`,
+  and the `RECORD_AUDIO`/microphone manifest entries were all deleted
+  outright rather than kept dormant, since dead permission/native-plugin
+  code carries real risk (see the "Verifying changes" section's native-
+  dependency gotchas) for no benefit once nothing calls it.
+  Model layer (`lib/data/models/kaiwa_entry.dart`, `kaiwa_line.dart`,
+  `kaiwa_answer_option.dart`, `kaiwa_category_info.dart`,
   `kaiwa_progress_entry.dart`) mirrors Partikel's nested shape: a
   `KaiwaEntry` (one dialogue/scenario, e.g. "Memesan Makanan di Restoran")
-  holds an ordered `List<KaiwaLine>`, each either a scripted NPC turn
-  (`npcLine`, a `SentenceExample`, reused module-neutral same as
-  Kanji/Kotoba/Bunpou/Partikel) or a learner turn (`isUserTurn: true`,
-  `acceptedAnswers: List<KaiwaAcceptedAnswer>`). `category` is a scenario
-  id ("perkenalan", "restoran", ...) grouping dialogues thematically —
-  deliberately **not** JLPT-level-based like Kanji/Bunpou, since a real
-  conversation doesn't sort itself by grammar difficulty (explicit product
-  decision, not an oversight). Repository/progress/provider layer
-  (`KaiwaRepository`/`KaiwaCategoryRepository`/`KaiwaProgressRepository`,
-  `kaiwa_providers.dart`, `FirestorePaths.kaiwaProgressCollection`) mirrors
-  Partikel's exactly, including the same known unguarded-Firestore-write
-  gap carried a fourth time now (Kanji → Kotoba → Bunpou → Partikel →
-  Kaiwa) — still not fixed, still out of scope for whichever batch
-  eventually addresses it.
-  - **No LLM/cloud AI conversation partner** — an explicit scope decision,
-    not a limitation discovered later. The learner's input (typed or
-    spoken) is checked **offline** by `KaiwaAnswerMatcher`
-    (`lib/features/kaiwa/services/kaiwa_answer_matcher.dart`, unit-tested
-    in `test/kaiwa_answer_matcher_test.dart`) against a hand-authored list
-    of accepted phrasings per turn (`KaiwaAcceptedAnswer.japanese` +
-    `.romaji` + `.variants`) — normalized (trim, lowercase, strip
-    whitespace/punctuation) exact-string matching, no fuzzy/Levenshtein
-    scoring and no network call. NPC responses are always the same
-    pre-written script regardless of *which* accepted variant matched —
-    the conversation tree doesn't branch — since every accepted answer for
-    a turn is semantically equivalent, just phrased differently.
-  - **Expression reactions**: `KaiwaAcceptedAnswer.expressionTag` (e.g.
+  holds an ordered `List<KaiwaLine>`, each either an **NPC turn**
+  (`npcLine` a `SentenceExample` — reused module-neutral same as
+  Kanji/Kotoba/Bunpou/Partikel, but only `.japanese` is actually used, for
+  TTS — plus `imagePath`, `isUserTurn: false`) or a **user turn**
+  (`options: List<KaiwaAnswerOption>`, `isUserTurn: true`). `category` is a
+  scenario id ("perkenalan", "restoran", ...) grouping dialogues
+  thematically — deliberately **not** JLPT-level-based like Kanji/Bunpou,
+  since a real conversation doesn't sort itself by grammar difficulty
+  (explicit product decision, not an oversight). Repository/progress/
+  provider layer (`KaiwaRepository`/`KaiwaCategoryRepository`/
+  `KaiwaProgressRepository`, `kaiwa_providers.dart`,
+  `FirestorePaths.kaiwaProgressCollection`) mirrors Partikel's exactly,
+  including the same known unguarded-Firestore-write gap carried a fourth
+  time now (Kanji → Kotoba → Bunpou → Partikel → Kaiwa) — still not fixed,
+  still out of scope for whichever batch eventually addresses it.
+  - **No LLM/cloud AI conversation partner** — an explicit scope decision
+    both designs shared, not a limitation discovered later. There is also,
+    as of Fase 2, no free-text matching of any kind: correctness is just
+    "did the learner tap the `KaiwaAnswerOption` with `isCorrect: true`" —
+    no normalization, no fuzzy matching, nothing that can silently
+    misgrade an answer or hang waiting for input that never resolves.
+  - **NPC turns show only an image + a speak button, no visible text** —
+    an explicit, literal product requirement (not a simplification of
+    convenience): `KaiwaLine.npcLine.japanese`/`.translation` are still on
+    the model (translation is unused for now, japanese feeds
+    `ttsServiceProvider.speak()`) but `KaiwaDialogueScreen`'s `_LineBubble`
+    never renders them as on-screen text. `KaiwaImage`
+    (`lib/features/kaiwa/widgets/kaiwa_image.dart`) + `KaiwaImageCache`
+    (`lib/core/services/kaiwa_image_cache.dart`) mirror
+    `KotobaImage`/`KotobaImageCache` exactly: on-demand Firebase Storage
+    download, permanent 365-day disk cache, graceful pastel-placeholder
+    fallback on 404/null/error — same "never crash, never show Flutter's
+    broken-image icon" contract. **No images have actually been uploaded
+    to Storage yet** — every NPC line's `imagePath` (generated as
+    `kaiwa_images/{category}/{entry_id}_{line_suffix}.png`) is a real path
+    with no object behind it, so every NPC turn currently shows the 💬
+    placeholder. This is the same kind of gap already documented below for
+    Kotoba's 519 words — uploading illustrations is a separate task from
+    building the module.
+  - **User turns are pure multiple choice, in Japanese** — 2-3
+    hand-authored `KaiwaAnswerOption`s per turn (one `isCorrect: true`,
+    the rest plausible-but-wrong distractors — same "author explicitly,
+    don't derive" reasoning as `ClozeExample`'s before/after split),
+    **shuffled once per turn** (`KaiwaDialogueScreen._optionOrder`, computed
+    when the turn is revealed, not recomputed every rebuild — recomputing
+    on every `setState` would make the buttons visibly jump position after
+    every tap). Tapping the correct option reveals it as an answered bubble
+    (japanese + romaji + translation + expression-reaction emoji, mirroring
+    the Fase 1 design's reveal). Tapping a wrong option gives a brief
+    (600ms) red-flash on that specific button and nothing else — **no
+    score penalty, no attempt limit, all options stay tappable** — per an
+    explicit product decision for the app's child audience: keep trying
+    until correct, never punish a wrong guess.
+  - **Expression reactions**: `KaiwaAnswerOption.expressionTag` (e.g.
     `'semangat'` for 頑張ります) resolves to an emoji via
     `kaiwaExpressionEmoji` (`lib/core/constants/kaiwa_expressions.dart`) —
-    shown next to the learner's bubble once matched. This was the specific
-    feature the user asked for by name when scoping this module (頑張ります
-    → "ekspresi semangat") — most answers have no tag (`null`) and get no
-    reaction, which is the expected common case, not a gap.
-  - **Speech-to-text**: `SpeechToTextService`
-    (`lib/core/services/speech_to_text_service.dart`) wraps the
-    `speech_to_text` package (on-device OS recognizer, `ja_JP` locale via
-    `SpeechListenOptions` — the plugin's older positional `localeId` param
-    is deprecated as of 7.x), mirroring `TtsService`'s lazy-init shape but
-    for input instead of output. `permission_handler` (already a
-    dependency, used by Cam Detector for camera) is reused for the
-    `RECORD_AUDIO` runtime permission request rather than adding a second
-    permission plugin. Recognized text populates the answer text field
-    for the learner to review/edit before submitting — it does not
-    auto-submit — so a misrecognition doesn't silently fail a turn.
+    shown next to the learner's bubble once the correct option is tapped.
+    This was the specific feature the user asked for by name when scoping
+    this module (頑張ります → "ekspresi semangat") — most options have no
+    tag (`null`) and get no reaction, which is the expected common case,
+    not a gap.
   - **Screens** (`lib/features/kaiwa/`): `KaiwaHomeScreen`/
     `KaiwaCategoryScreen` mirror Partikel's Home/Category screens exactly
     (progress bar, Semua/Belum/Sudah filter chips, "Segera" badge for
-    unavailable categories). `KaiwaDialogueScreen` is the new pattern this
-    module introduces — a chat-bubble UI that reveals lines progressively
-    (NPC lines auto-appear; a user turn pauses the reveal until answered
-    correctly, with a hint card offering the first accepted answer after 2
-    wrong attempts) rather than showing a whole entry's content at once
-    like every other module's detail screen. Its outer
-    `SingleChildScrollView` is keyed on `ValueKey(entry.id)` **from the
-    start** — this is the exact scroll-reset bug that shipped in
-    `BunpouDetailScreen` and was only fixed for `ParticleDetailScreen`
-    afterward (see the Partikel section above); Kaiwa is the first module
-    built *after* that fix was documented, so it went in from day one
-    instead of being a third repeat. Next/prev pages between dialogues in
-    the current category, same convention as every other detail screen.
-  - **Content scope (Fase 1)**: 2 of the planned 7 scenario categories are
+    unavailable categories) and were untouched by the Fase 1→2 rewrite,
+    since neither one touches `KaiwaLine` internals directly.
+    `KaiwaDialogueScreen` is the chat-bubble UI both designs share (reveals
+    lines progressively, pauses at each user turn) — only the "how does
+    the learner answer" part changed. Its outer `SingleChildScrollView` is
+    keyed on `ValueKey(entry.id)` **from the start** — this is the exact
+    scroll-reset bug that shipped in `BunpouDetailScreen` and was only
+    fixed for `ParticleDetailScreen` afterward (see the Partikel section
+    above); Kaiwa is the first module built *after* that fix was
+    documented, so it went in from day one instead of being a third
+    repeat. Next/prev pages between dialogues in the current category,
+    same convention as every other detail screen; paging (and disposing
+    the screen) resets all per-dialogue state, including the shuffled
+    option-order cache.
+  - **Content scope**: 2 of the planned 7 scenario categories are
     authored — Perkenalan (3 dialogues) and Di Restoran (3 dialogues), 6
     dialogues total, locked in `scripts/kaiwa_lists.py` and generated by
     `scripts/generate_kaiwa_seed.py` into `assets/data/kaiwa_data.json` +
     `assets/data/kaiwa/_categories.json` (mirrors the Partikel/Kotoba
-    Python-locked-list + generator-script pattern). The remaining 5
-    categories (Di Stasiun, Belanja, Menanyakan Arah, Di Sekolah, Cuaca &
-    Basa-basi) are registered as `available: false` placeholders with no
-    dialogue list yet, same convention as Kotoba's category-availability
-    pattern — extending them later is a content-authoring pass, not a
-    schema change.
+    Python-locked-list + generator-script pattern; the generator asserts
+    every user turn has ≥2 options and exactly 1 marked correct). The
+    remaining 5 categories (Di Stasiun, Belanja, Menanyakan Arah, Di
+    Sekolah, Cuaca & Basa-basi) are registered as `available: false`
+    placeholders with no dialogue list yet, same convention as Kotoba's
+    category-availability pattern — extending them later is a content-
+    authoring pass, not a schema change.
   - **Premium**: free, per explicit product decision when this module was
     scoped (2026-07-17) — see the monetization-roadmap memory for the
     intended eventual gating.
   - **Verification gap, honestly not closed**: `flutter analyze` (clean),
-    `flutter test --concurrency=1` (all 16 tests pass, including the new
-    `kaiwa_answer_matcher_test.dart`), `flutter build apk --debug`, and a
+    `flutter test --concurrency=1`, `flutter build apk --debug`, and a
     Python cross-check of the generated dataset (no duplicate entry/line
-    ids, every user turn has ≥1 accepted answer, every NPC turn has a
-    populated `npcLine`, every entry's category is registered in
-    `_categories.json`) all passed clean. **What did NOT get verified**:
-    the actual interactive flow on a running app — typing/speaking an
-    answer, seeing the match succeed/fail, the expression-reaction emoji
-    appearing, the mic permission prompt, and STT actually recognizing
-    Japanese speech. This needs a physical device or a working emulator
-    with mic input, neither of which was available in this session (same
-    standing constraint as the Partikel/Bunpou N3-N2 verification gaps
-    above — a locked physical device is never bypassed regardless of
-    urgency). If you're touching any Kaiwa screen next, a fresh
-    interactive on-device pass — particularly the mic permission flow and
-    whether `speech_to_text`'s on-device recognizer actually understands
-    Japanese on a real device — is still worth doing since it hasn't
-    actually happened yet.
+    ids, every user turn has ≥2 options with exactly 1 correct, every NPC
+    turn has both a populated `npcLine` and `imagePath`, every entry's
+    category is registered in `_categories.json`) all passed clean. **What
+    did NOT get verified**: the actual interactive flow on a running app —
+    tapping through a dialogue, seeing the wrong-answer red flash and the
+    expression-reaction emoji, confirming the image placeholder renders
+    correctly. No physical device or working emulator was available in
+    this session (same standing constraint as the Partikel/Bunpou N3-N2
+    verification gaps above — a locked physical device is never bypassed
+    regardless of urgency). If you're touching `KaiwaDialogueScreen` next,
+    a fresh interactive on-device pass is still worth doing since it
+    hasn't actually happened yet.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
@@ -671,6 +698,16 @@ meant.
   "import json,glob; [print(e['imagePath']) for f in
   glob.glob('assets/data/kotoba/*.json') if '_categories' not in f for e
   in json.load(open(f, encoding='utf-8'))]"` (519 lines).
+- **No Kaiwa dialogue images have been uploaded to Firebase Storage
+  either** — same gap as Kotoba's, just younger. Every NPC line across all
+  6 dialogues has a real `imagePath` (`kaiwa_images/{category}/
+  {entry_id}_{line_suffix}.png`), but none of those objects exist in the
+  bucket yet, so every NPC turn currently shows `KaiwaImage`'s 💬
+  placeholder. Since Fase 2's redesign made images the *only* thing an NPC
+  turn shows (no text fallback), this gap is more visible in Kaiwa than in
+  Kotoba right now — worth prioritizing the upload for Kaiwa's 2 built
+  categories before Kotoba's larger 45-category backlog if only one can be
+  done soon.
 - Word counts per category are curated, not padded to a target — they
   range from 5 (`musim`, a genuinely small closed set) to 22
   (`hari_bulan`, which deliberately includes all 7 days + all 12 months

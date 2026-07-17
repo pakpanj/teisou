@@ -55,11 +55,6 @@ dependencies:
   # promoted to direct since we call its API ourselves now.
   xml: ^7.0.1
 
-  # Kaiwa: on-device speech-to-text for spoken dialogue answers. Uses the
-  # OS's built-in speech recognizer via platform channels, no separate
-  # native per-language artifact needed the way ML Kit's OCR does.
-  speech_to_text: ^7.0.0
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

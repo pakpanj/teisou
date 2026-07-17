@@ -30,13 +30,10 @@ import 'services/ad_service.dart';
 import 'services/auth_service.dart';
 import 'services/avatar_upload_service.dart';
 import 'services/romaji_converter.dart';
-import 'services/speech_to_text_service.dart';
 import 'services/tts_service.dart';
 
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
 final ttsServiceProvider = Provider<TtsService>((ref) => TtsService());
-final speechToTextServiceProvider =
-    Provider<SpeechToTextService>((ref) => SpeechToTextService());
 final adServiceProvider = Provider<AdService>((ref) => AdService());
 final avatarUploadServiceProvider =
     Provider<AvatarUploadService>((ref) => AvatarUploadService());

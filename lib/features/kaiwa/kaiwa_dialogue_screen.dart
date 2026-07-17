@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import '../../core/constants/kaiwa_expressions.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
-import '../../data/models/kaiwa_accepted_answer.dart';
+import '../../data/models/kaiwa_answer_option.dart';
 import '../../data/models/kaiwa_entry.dart';
 import '../../data/models/kaiwa_line.dart';
 import 'kaiwa_providers.dart';
-import 'services/kaiwa_answer_matcher.dart';
+import 'widgets/kaiwa_image.dart';
 
 /// Interactive practice screen for one Kaiwa dialogue — reveals NPC lines
-/// automatically and pauses at each user turn until the learner types or
-/// speaks a matching answer, checked offline by [KaiwaAnswerMatcher] (no
-/// network/LLM call). Next/prev pages between dialogues in [entries], same
-/// convention as `ParticleDetailScreen`; the outer [SingleChildScrollView]
-/// is keyed on the dialogue id from the start so paging resets scroll
-/// position — a real bug found in `BunpouDetailScreen` (fixed for Partikel
-/// afterward), applied here from day one instead of repeating it.
+/// (image + speak button only, no visible text) automatically and pauses
+/// at each user turn until the learner **taps** the correct multiple-choice
+/// option (no typing or speech input — that was the source of the crashes
+/// this screen used to have; see CLAUDE.md). Next/prev pages between
+/// dialogues in [entries], same convention as `ParticleDetailScreen`; the
+/// outer [SingleChildScrollView] is keyed on the dialogue id from the start
+/// so paging resets scroll position — a real bug found in
+/// `BunpouDetailScreen` (fixed for Partikel afterward), applied here from
+/// day one instead of repeating it.
 class KaiwaDialogueScreen extends ConsumerStatefulWidget {
   final List<KaiwaEntry> entries;
   final int initialIndex;
@@ -37,17 +38,22 @@ class KaiwaDialogueScreen extends ConsumerStatefulWidget {
 }
 
 class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
-  static const _matcher = KaiwaAnswerMatcher();
-
   late int _index = widget.initialIndex;
   late int _revealedCount;
-  final Map<int, KaiwaAcceptedAnswer> _answered = {};
-  int _wrongAttempts = 0;
-  bool _showHint = false;
-  bool _togglingLearned = false;
-  bool _listening = false;
+  final Map<int, KaiwaAnswerOption> _answered = {};
 
-  final _inputController = TextEditingController();
+  /// Shuffled display order (indices into that line's `options` list) per
+  /// user-turn line index — computed once when the turn is revealed, not
+  /// on every rebuild, so option positions don't jitter after a wrong tap.
+  final Map<int, List<int>> _optionOrder = {};
+
+  /// Original-list index of the option most recently tapped incorrectly,
+  /// for a brief red-flash; cleared automatically, no attempt limit and no
+  /// score penalty — the learner can keep trying any option.
+  int? _wrongOptionIndex;
+
+  bool _togglingLearned = false;
+
   final _scrollController = ScrollController();
 
   KaiwaEntry get _entry => widget.entries[_index];
@@ -60,40 +66,29 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
 
   @override
   void dispose() {
-    // Stop any in-flight recognition session so it doesn't keep the mic
-    // open (and later call back into a disposed widget's closures) after
-    // the user has already navigated away.
-    if (ref.read(speechToTextServiceProvider).isListening) {
-      ref.read(speechToTextServiceProvider).stop();
-    }
-    _inputController.dispose();
     _scrollController.dispose();
     super.dispose();
   }
 
   void _resetForEntry() {
-    // Same reasoning as dispose(): without this, listening while paging
-    // to the next/prev dialogue left the old session's onResult/onDone
-    // closures pointing at a line index that no longer means the same
-    // thing, so a late recognition result could land on the wrong turn.
-    if (ref.read(speechToTextServiceProvider).isListening) {
-      ref.read(speechToTextServiceProvider).stop();
-    }
-    _listening = false;
     _revealedCount = 0;
     _answered.clear();
-    _wrongAttempts = 0;
-    _showHint = false;
-    _inputController.clear();
+    _optionOrder.clear();
+    _wrongOptionIndex = null;
     _revealNext();
   }
 
   void _revealNext() {
     final lines = _entry.lines;
     while (_revealedCount < lines.length) {
-      final line = lines[_revealedCount];
+      final lineIndex = _revealedCount;
+      final line = lines[lineIndex];
       _revealedCount++;
-      if (line.isUserTurn) break;
+      if (line.isUserTurn) {
+        _optionOrder[lineIndex] = List.generate(line.options.length, (i) => i)
+          ..shuffle();
+        break;
+      }
     }
     _scrollToBottomSoon();
   }
@@ -109,72 +104,20 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
     });
   }
 
-  void _submit(String rawInput) {
-    if (rawInput.trim().isEmpty) return;
-    final lineIndex = _revealedCount - 1;
-    final line = _entry.lines[lineIndex];
-    final result = _matcher.check(rawInput, line.acceptedAnswers);
-    if (result.isCorrect) {
+  void _selectOption(int lineIndex, int originalIndex, KaiwaAnswerOption option) {
+    if (option.isCorrect) {
       setState(() {
-        _answered[lineIndex] = result.matchedAnswer!;
-        _wrongAttempts = 0;
-        _showHint = false;
-        _inputController.clear();
+        _answered[lineIndex] = option;
+        _wrongOptionIndex = null;
         _revealNext();
       });
-    } else {
-      setState(() {
-        _wrongAttempts++;
-        if (_wrongAttempts >= 2) _showHint = true;
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Belum tepat, coba lagi.'),
-          duration: Duration(seconds: 1),
-        ),
-      );
-    }
-  }
-
-  Future<void> _listen() async {
-    final status = await Permission.microphone.request();
-    if (!mounted) return;
-    if (!status.isGranted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Izin mikrofon dibutuhkan untuk menjawab dengan suara.'),
-        ),
-      );
       return;
     }
-    setState(() => _listening = true);
-    final started = await ref.read(speechToTextServiceProvider).listen(
-      onResult: (text) {
-        if (!mounted) return;
-        setState(() => _inputController.text = text);
-      },
-      // Fires on a final result, a recognition error (no speech heard,
-      // timeout, ...), or an explicit stop — resetting `_listening` here
-      // rather than only inside `onResult` is the fix for the mic button
-      // getting stuck disabled forever after a failed/silent attempt,
-      // since recognition errors never reach `onResult` at all.
-      onDone: () {
-        if (!mounted) return;
-        setState(() => _listening = false);
-      },
-    );
-    if (!started && mounted) {
-      setState(() => _listening = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Speech-to-text tidak tersedia di perangkat ini.'),
-        ),
-      );
-    }
-  }
-
-  void _stopListening() {
-    ref.read(speechToTextServiceProvider).stop();
+    setState(() => _wrongOptionIndex = originalIndex);
+    Future.delayed(const Duration(milliseconds: 600), () {
+      if (!mounted) return;
+      setState(() => _wrongOptionIndex = null);
+    });
   }
 
   Future<void> _toggleLearned() async {
@@ -242,20 +185,21 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
                   ),
                   const SizedBox(height: 16),
                   for (var i = 0; i < _revealedCount; i++)
-                    _LineBubble(line: lines[i], matchedAnswer: _answered[i]),
-                  if (lastIsUnansweredUserTurn && _showHint)
-                    _HintCard(answer: lines[_revealedCount - 1].acceptedAnswers.first),
+                    _LineBubble(line: lines[i], answer: _answered[i]),
                 ],
               ),
             ),
           ),
           if (lastIsUnansweredUserTurn)
-            _AnswerInput(
-              controller: _inputController,
-              listening: _listening,
-              onMic: _listen,
-              onStopListening: _stopListening,
-              onSubmit: _submit,
+            _AnswerOptions(
+              options: lines[_revealedCount - 1].options,
+              order: _optionOrder[_revealedCount - 1] ?? const [],
+              wrongOptionIndex: _wrongOptionIndex,
+              onSelect: (originalIndex, option) => _selectOption(
+                _revealedCount - 1,
+                originalIndex,
+                option,
+              ),
             )
           else if (dialogueComplete)
             _CompletionBar(
@@ -275,92 +219,48 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
 
 class _LineBubble extends StatelessWidget {
   final KaiwaLine line;
-  final KaiwaAcceptedAnswer? matchedAnswer;
+  final KaiwaAnswerOption? answer;
 
-  const _LineBubble({required this.line, this.matchedAnswer});
+  const _LineBubble({required this.line, this.answer});
 
   @override
   Widget build(BuildContext context) {
     if (!line.isUserTurn) return _npcBubble();
-    if (matchedAnswer != null) return _answeredBubble(matchedAnswer!);
+    if (answer != null) return _answeredBubble(answer!);
     return _promptBubble();
   }
 
   Widget _npcBubble() {
     final npc = line.npcLine;
-    if (npc == null) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: AppColors.cardWhite,
-                borderRadius: BorderRadius.circular(14),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                line.speaker,
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textNavy.withValues(alpha: 0.5),
+                ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              const SizedBox(height: 4),
+              Stack(
+                alignment: Alignment.bottomRight,
                 children: [
-                  Text(
-                    line.speaker,
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textNavy.withValues(alpha: 0.5),
+                  KaiwaImage(imagePath: line.imagePath),
+                  if (npc != null)
+                    Padding(
+                      padding: const EdgeInsets.all(6),
+                      child: _SpeakButton(text: npc.japanese),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          npc.japanese,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.textNavy,
-                          ),
-                        ),
-                      ),
-                      _SpeakButton(text: npc.japanese),
-                    ],
-                  ),
-                  if (npc.romaji != null) ...[
-                    const SizedBox(height: 2),
-                    Text(
-                      npc.romaji!,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic,
-                        color: AppColors.textNavy.withValues(alpha: 0.5),
-                      ),
-                    ),
-                  ],
-                  const SizedBox(height: 4),
-                  Text(
-                    npc.translation,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: AppColors.textNavy.withValues(alpha: 0.7),
-                    ),
-                  ),
-                  if (line.note != null) ...[
-                    const SizedBox(height: 6),
-                    Text(
-                      line.note!,
-                      style: const TextStyle(
-                        fontSize: 11,
-                        color: AppColors.secondaryBlue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ],
                 ],
               ),
-            ),
+            ],
           ),
           const SizedBox(width: 48),
         ],
@@ -368,8 +268,8 @@ class _LineBubble extends StatelessWidget {
     );
   }
 
-  Widget _answeredBubble(KaiwaAcceptedAnswer answer) {
-    final emoji = kaiwaExpressionEmoji[answer.expressionTag];
+  Widget _answeredBubble(KaiwaAnswerOption chosen) {
+    final emoji = kaiwaExpressionEmoji[chosen.expressionTag];
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Row(
@@ -395,7 +295,7 @@ class _LineBubble extends StatelessWidget {
                         const SizedBox(width: 4),
                       ],
                       Text(
-                        answer.japanese,
+                        chosen.japanese,
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -404,10 +304,10 @@ class _LineBubble extends StatelessWidget {
                       ),
                     ],
                   ),
-                  if (answer.romaji != null) ...[
+                  if (chosen.romaji != null) ...[
                     const SizedBox(height: 2),
                     Text(
-                      answer.romaji!,
+                      chosen.romaji!,
                       style: TextStyle(
                         fontSize: 12,
                         fontStyle: FontStyle.italic,
@@ -417,17 +317,17 @@ class _LineBubble extends StatelessWidget {
                   ],
                   const SizedBox(height: 4),
                   Text(
-                    answer.translation,
+                    chosen.translation,
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       fontSize: 13,
                       color: AppColors.textNavy.withValues(alpha: 0.7),
                     ),
                   ),
-                  if (line.note != null) ...[
+                  if (chosen.note != null) ...[
                     const SizedBox(height: 6),
                     Text(
-                      line.note!,
+                      chosen.note!,
                       textAlign: TextAlign.right,
                       style: const TextStyle(
                         fontSize: 11,
@@ -458,7 +358,7 @@ class _LineBubble extends StatelessWidget {
               borderRadius: BorderRadius.circular(14),
             ),
             child: Text(
-              line.promptHint ?? 'Giliranmu menjawab',
+              'Giliranmu — pilih jawaban di bawah',
               style: TextStyle(
                 fontSize: 13,
                 fontStyle: FontStyle.italic,
@@ -479,66 +379,44 @@ class _SpeakButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return IconButton(
-      icon: const Icon(Icons.volume_up, size: 18, color: AppColors.secondaryBlue),
-      onPressed: () => ref.read(ttsServiceProvider).speak(text),
-      padding: EdgeInsets.zero,
-      constraints: const BoxConstraints(),
-    );
-  }
-}
-
-class _HintCard extends StatelessWidget {
-  final KaiwaAcceptedAnswer answer;
-
-  const _HintCard({required this.answer});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 4, bottom: 8),
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: AppColors.tertiaryAmberCardBg,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.lightbulb_outline, size: 16, color: AppColors.tertiaryAmber),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              'Contoh jawaban: ${answer.japanese}'
-              '${answer.romaji != null ? ' (${answer.romaji})' : ''} '
-              '— ${answer.translation}',
-              style: const TextStyle(fontSize: 12, color: AppColors.textNavy),
-            ),
-          ),
-        ],
+    return Material(
+      color: Colors.white,
+      shape: const CircleBorder(),
+      elevation: 2,
+      child: InkWell(
+        customBorder: const CircleBorder(),
+        onTap: () => ref.read(ttsServiceProvider).speak(text),
+        child: const Padding(
+          padding: EdgeInsets.all(8),
+          child: Icon(Icons.volume_up, size: 20, color: AppColors.secondaryBlue),
+        ),
       ),
     );
   }
 }
 
-class _AnswerInput extends StatelessWidget {
-  final TextEditingController controller;
-  final bool listening;
-  final VoidCallback onMic;
-  final VoidCallback onStopListening;
-  final ValueChanged<String> onSubmit;
+class _AnswerOptions extends StatelessWidget {
+  final List<KaiwaAnswerOption> options;
+  final List<int> order;
+  final int? wrongOptionIndex;
+  final void Function(int originalIndex, KaiwaAnswerOption option) onSelect;
 
-  const _AnswerInput({
-    required this.controller,
-    required this.listening,
-    required this.onMic,
-    required this.onStopListening,
-    required this.onSubmit,
+  const _AnswerOptions({
+    required this.options,
+    required this.order,
+    required this.wrongOptionIndex,
+    required this.onSelect,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(12, 8, 12, MediaQuery.of(context).padding.bottom + 8),
+      padding: EdgeInsets.fromLTRB(
+        16,
+        12,
+        16,
+        MediaQuery.of(context).padding.bottom + 12,
+      ),
       decoration: BoxDecoration(
         color: AppColors.cardWhite,
         boxShadow: [
@@ -549,36 +427,80 @@ class _AnswerInput extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          IconButton(
-            tooltip: listening ? 'Berhenti mendengarkan' : 'Jawab dengan suara',
-            icon: Icon(
-              listening ? Icons.mic : Icons.mic_none,
-              color: listening ? AppColors.primaryCoral : AppColors.secondaryBlue,
-            ),
-            // Tapping while listening stops the session instead of being
-            // disabled — otherwise a stuck/slow recognizer left the
-            // learner with no way to cancel and retry.
-            onPressed: listening ? onStopListening : onMic,
-          ),
-          Expanded(
-            child: TextField(
-              controller: controller,
-              decoration: const InputDecoration(
-                hintText: 'Ketik jawabanmu di sini...',
-                border: OutlineInputBorder(),
-                isDense: true,
-              ),
-              onSubmitted: onSubmit,
+          Text(
+            'Pilih jawaban yang tepat:',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textNavy.withValues(alpha: 0.6),
             ),
           ),
-          const SizedBox(width: 8),
-          IconButton(
-            icon: const Icon(Icons.send, color: AppColors.primaryCoral),
-            onPressed: () => onSubmit(controller.text),
-          ),
+          const SizedBox(height: 10),
+          for (final originalIndex in order) ...[
+            _OptionButton(
+              option: options[originalIndex],
+              isWrongFlash: wrongOptionIndex == originalIndex,
+              onTap: () => onSelect(originalIndex, options[originalIndex]),
+            ),
+            const SizedBox(height: 8),
+          ],
         ],
+      ),
+    );
+  }
+}
+
+class _OptionButton extends StatelessWidget {
+  final KaiwaAnswerOption option;
+  final bool isWrongFlash;
+  final VoidCallback onTap;
+
+  const _OptionButton({
+    required this.option,
+    required this.isWrongFlash,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        decoration: BoxDecoration(
+          color: isWrongFlash
+              ? AppColors.errorRed.withValues(alpha: 0.15)
+              : AppColors.background,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: isWrongFlash
+                ? AppColors.errorRed
+                : AppColors.secondaryBlue.withValues(alpha: 0.3),
+            width: isWrongFlash ? 2 : 1,
+          ),
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: onTap,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+              child: Text(
+                option.japanese,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textNavy,
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
