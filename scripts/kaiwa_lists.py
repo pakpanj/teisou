@@ -192,6 +192,13 @@ KELUARGA_TITLES = [
     "Memperkenalkan Anggota Keluarga",
     "Menanyakan Jumlah Saudara",
     "Membicarakan Pekerjaan Orang Tua",
+    "Menceritakan Kebiasaan Keluarga",
+    "Membicarakan Anggota Keluarga yang Jauh",
+    "Merayakan Ulang Tahun Keluarga",
+    "Membicarakan Hewan Peliharaan Keluarga",
+    "Menjenguk Kakek Nenek",
+    "Membicarakan Rumah Keluarga",
+    "Cerita Masa Kecil",
 ]
 
 BANK_TITLES = [
