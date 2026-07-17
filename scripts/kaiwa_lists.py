@@ -145,6 +145,16 @@ SEKOLAH_TITLES = [
     "Menanyakan Nilai Ujian",
     "Membolos Karena Sakit",
     "Berpisah di Akhir Semester",
+    "Mengikuti Ekstrakurikuler",
+    "Bertanya Tugas Kelompok",
+    "Meminta Izin Pulang Cepat",
+    "Bertanya Ruang Kelas",
+    "Makan Siang di Kantin Sekolah",
+    "Mempersiapkan Ujian Akhir",
+    "Bertanya Guru Pengganti",
+    "Ikut Study Tour / Karyawisata",
+    "Mengembalikan Buku Perpustakaan Sekolah",
+    "Bertanya Tugas Piket Kelas",
 ]
 
 CUACA_BASA_BASI_TITLES = [
