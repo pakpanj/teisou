@@ -641,7 +641,7 @@ meant.
     added, then 10 new N5 themes were authored alongside them in the same
     pass: Di Rumah Sakit, Hobi, Telepon, Transportasi, Di Kantor Pos,
     Rencana Liburan, Keluarga, Di Bank, Olahraga, Di Bioskop (3 dialogues
-    each, 30 new dialogues). **N4-N1 are registered in
+    each, 30 new dialogues at the time). **N4-N1 are registered in
     `assets/data/kaiwa/_levels.json` as `available: false` placeholders
     with zero themes** — the level layer exists in the schema and UI from
     day one, but only N5 has content; extending N4-N1 is a pure
@@ -653,35 +653,57 @@ meant.
     `assets/data/kaiwa/_levels.json` (mirrors the Partikel/Kotoba
     Python-locked-list + generator-script pattern; the generator asserts
     every user turn has ≥2 options and exactly 1 marked correct, every
-    theme's title list is exactly 3 entries with no duplicates, and
-    `CATEGORY_META`/`AVAILABLE_CATEGORIES` cover exactly the same theme
-    ids). `PLANNED_CATEGORIES` in `kaiwa_lists.py` stays an empty list
-    (not deleted) as the obvious place to register a future theme as
+    theme's title list has no duplicates, and `CATEGORY_META`/
+    `AVAILABLE_CATEGORIES` cover exactly the same theme ids).
+    `PLANNED_CATEGORIES` in `kaiwa_lists.py` stays an empty list (not
+    deleted) as the obvious place to register a future theme as
     `available: false` before its dialogues are ready — same convention
     already established, now joined by `LEVEL_META`'s N4-N1 entries doing
     the analogous job one layer up.
+  - **Dialogue expansion, phase 1 (2026-07-17, later the same day)**: the
+    user's ultimate target for N5 is 30-50 dialogues *per theme*, with
+    each dialogue noticeably longer than the original 2-exchange/4-6-line
+    ones. Given the true scale of that ask (17 themes × 30-50 = 510-850
+    dialogues), phase 1 scoped down to bringing every theme from 3 to 10
+    dialogues (7 new per theme, 119 new dialogues total), each new one
+    running 4 exchanges / 7-8 lines instead of 2/4-6 — **done, all 17
+    themes, 170 dialogues total** (up from 51). The per-theme assertion in
+    `kaiwa_lists.py` was relaxed from `== 3` to `>= 3` to allow themes to
+    grow independently during this transition; it's intentionally not
+    pinned to `== 10` either, since more dialogues are still coming in
+    later sessions toward the 30-50 target. **N4-N1 remain untouched** —
+    this phase was N5-only, matching the user's request. Distractor design
+    across all ~490 new user-turn options follows one rule: every wrong
+    option is grammatically valid Japanese that's contextually wrong
+    (wrong topic, contradicts a fact just stated, wrong unit — e.g.
+    answering a quantity question with a time, or vice versa — or the
+    wrong response type, like a question where an answer was expected) —
+    never broken/nonsensical Japanese. If you continue this expansion
+    (phase 2 toward 30-50/theme), keep both the exchange-count bump and
+    this distractor-design rule; don't regress to the original terser
+    style just because it's faster to author.
   - **Premium**: free, per explicit product decision when this module was
     scoped (2026-07-17) — see the monetization-roadmap memory for the
     intended eventual gating.
   - **Verification gap, honestly not closed**: `flutter analyze` (clean),
-    `flutter test --concurrency=1`, `flutter build apk --debug`, and a
-    Python cross-check of the generated dataset (no duplicate entry/line
-    ids, every user turn has ≥2 options with exactly 1 correct, every NPC
-    turn has both a populated `npcLine` and `imagePath`, every theme's
-    `level` is a real JLPT level, `_levels.json`'s N5 `themeCount` matches
-    the actual count and N4-N1 are correctly unavailable) all passed
-    clean. Earlier interactive gaps for this module (image placeholder
+    `flutter test --concurrency=1` (all 10 tests clean), `flutter build
+    apk --debug` (clean) all passed again after phase 1's expansion, and
+    the generator's own assertions (every user turn has ≥2 options with
+    exactly 1 correct, no duplicate entry ids) held for all 170 dialogues.
+    Earlier interactive gaps for this module (image placeholder
     rendering, wrong-answer red flash, expression-reaction emoji) **were**
     verified on a physical device (Moto G52J 5G) during the sessions that
     chased the "empty theme list" and "missing NPC image" reports — both
     turned out not to be bugs (a stale build, and a theme's dialogues
     intentionally starting with the user speaking first, respectively).
-    **What's still unverified**: the brand-new level picker screen
-    (`KaiwaHomeScreen`) and the N5 theme list under it specifically — this
-    exact restructure hasn't had an interactive on-device pass yet. If
-    you're touching Kaiwa next, tapping through Home→N5→a few of the 10
-    new themes on a real device is worth doing since it hasn't actually
-    happened yet.
+    **What's still unverified**: the level picker screen (`KaiwaHomeScreen`)
+    and N5 theme list, and phase 1's 119 newly-added dialogues
+    specifically, have not had an interactive on-device pass — the Moto
+    G52J wasn't connected (`adb devices` returned empty) when phase 1
+    wrapped up. If you're touching Kaiwa next, tapping through Home→N5→a
+    handful of the newly-expanded themes (Bank/Olahraga/Bioskop are the
+    most recently authored) on a real device is worth doing since it
+    hasn't actually happened yet.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
