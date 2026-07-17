@@ -36544,6 +36544,1580 @@
     ]
   },
   {
+    "id": "kaiwa_liburan_pantai",
+    "title": "Liburan ke Pantai",
+    "category": "liburan",
+    "description": "Kamu dan teman merencanakan liburan ke pantai.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "海で何をしたいですか。",
+          "romaji": "Umi de nani wo shitai desu ka.",
+          "translation": "Di pantai mau ngapain?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_pantai_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "泳ぎたいです。",
+            "romaji": "Oyogitai desu.",
+            "translation": "Saya mau berenang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "泳ぐのが嫌いです。",
+            "romaji": "Oyogu no ga kirai desu.",
+            "translation": "Saya tidak suka berenang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "日焼け止めを持っていますか。",
+          "romaji": "Hiyakedome wo motte imasu ka.",
+          "translation": "Bawa tabir surya?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_pantai_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、持っています。",
+            "romaji": "Hai, motte imasu.",
+            "translation": "Ya, saya bawa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "日焼け止めは要りません。",
+            "romaji": "Hiyakedome wa irimasen.",
+            "translation": "Saya tidak butuh tabir surya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "夕日を見に行きましょう。",
+          "romaji": "Yuuhi wo mi ni ikimashou.",
+          "translation": "Ayo lihat matahari terbenam."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_pantai_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいですね、行きましょう。",
+            "romaji": "Ii desu ne, ikimashou.",
+            "translation": "Bagus, ayo.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、行きません。",
+            "romaji": "Iie, ikimasen.",
+            "translation": "Tidak, saya tidak akan pergi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "きれいでしたね！",
+          "romaji": "Kirei deshita ne!",
+          "translation": "Indah ya tadi!"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_pantai_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、とてもきれいでした。",
+            "romaji": "Hai, totemo kirei deshita.",
+            "translation": "Ya, sangat indah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、汚かったです。",
+            "romaji": "Iie, kitanakatta desu.",
+            "translation": "Tidak, kotor.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_liburan_backpacker",
+    "title": "Liburan Hemat / Backpacker",
+    "category": "liburan",
+    "description": "Temanmu memberi tips liburan hemat ala backpacker.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "安く旅行したいです。",
+            "romaji": "Yasuku ryokou shitai desu.",
+            "translation": "Saya mau liburan hemat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高く旅行したいです。",
+            "romaji": "Takaku ryokou shitai desu.",
+            "translation": "Saya mau liburan mahal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ゲストハウスに泊まるといいですよ。",
+          "romaji": "Gesuto hausu ni tomaru to ii desu yo.",
+          "translation": "Sebaiknya menginap di guest house lho."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_backpacker_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいアイデアですね。",
+            "romaji": "Ii aidea desu ne.",
+            "translation": "Ide yang bagus ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "悪いアイデアですね。",
+            "romaji": "Warui aidea desu ne.",
+            "translation": "Ide yang buruk ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電車より夜行バスの方が安いですよ。",
+          "romaji": "Densha yori yakou basu no hou ga yasui desu yo.",
+          "translation": "Bus malam lebih murah daripada kereta lho."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_backpacker_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、バスにします。",
+            "romaji": "Wakarimashita, basu ni shimasu.",
+            "translation": "Baik, saya naik bus.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "電車にします。",
+            "romaji": "Densha ni shimasu.",
+            "translation": "Saya naik kereta.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "食事も屋台で食べれば安いですよ。",
+          "romaji": "Shokuji mo yatai de tabereba yasui desu yo.",
+          "translation": "Makan di kaki lima juga murah lho."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_backpacker_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、そうします。",
+            "romaji": "Wakarimashita, sou shimasu.",
+            "translation": "Baik, akan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "レストランだけで食べます。",
+            "romaji": "Resutoran dake de tabemasu.",
+            "translation": "Saya hanya akan makan di restoran.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_ikut_tur_wisata",
+    "title": "Ikut Tur Wisata",
+    "category": "liburan",
+    "description": "Kamu mendaftar tur wisata keliling kota.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "市内観光ツアーに参加したいです。",
+            "romaji": "Shinai kankou tsuaa ni sanka shitai desu.",
+            "translation": "Saya mau ikut tur wisata kota.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ツアーは要りません。",
+            "romaji": "Tsuaa wa irimasen.",
+            "translation": "Saya tidak butuh tur.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Tur",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "9時に出発します。",
+          "romaji": "Kuji ni shuppatsu shimasu.",
+          "translation": "Berangkat jam 9."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_ikut_tur_wisata_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、ありがとうございます。",
+            "romaji": "Wakarimashita, arigatou gozaimasu.",
+            "translation": "Baik, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "9時間ですね。",
+            "romaji": "Kujikan desu ne.",
+            "translation": "9 jam ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Tur",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お寺と神社を回りますよ。",
+          "romaji": "Otera to jinja wo mawarimasu yo.",
+          "translation": "Akan mengunjungi kuil dan shrine lho."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_ikut_tur_wisata_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "楽しみです！",
+            "romaji": "Tanoshimi desu!",
+            "translation": "Tidak sabar!",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "行きたくないです。",
+            "romaji": "Ikitakunai desu.",
+            "translation": "Saya tidak mau pergi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Tur",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "昼食もツアーに含まれていますよ。",
+          "romaji": "Chuushoku mo tsuaa ni fukumarete imasu yo.",
+          "translation": "Makan siang juga termasuk dalam tur lho."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_ikut_tur_wisata_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "それはいいですね。",
+            "romaji": "Sore wa ii desu ne.",
+            "translation": "Bagus itu ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは残念です。",
+            "romaji": "Sore wa zannen desu.",
+            "translation": "Sayang sekali itu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_cari_penginapan_murah",
+    "title": "Mencari Penginapan Murah",
+    "category": "liburan",
+    "description": "Kamu bertanya penginapan murah ke petugas informasi wisata.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "安い宿を探しています。",
+            "romaji": "Yasui yado wo sagashite imasu.",
+            "translation": "Saya sedang cari penginapan murah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高い宿を探しています。",
+            "romaji": "Takai yado wo sagashite imasu.",
+            "translation": "Saya sedang cari penginapan mahal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "宿は要りません。",
+            "romaji": "Yado wa irimasen.",
+            "translation": "Saya tidak butuh penginapan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Informasi",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "このゲストハウスはいかがですか。",
+          "romaji": "Kono gesuto hausu wa ikaga desu ka.",
+          "translation": "Bagaimana dengan guest house ini?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_cari_penginapan_murah_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "一泊いくらですか。",
+            "romaji": "Ippaku ikura desu ka.",
+            "translation": "Satu malam berapa?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Informasi",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "2,000円です。",
+          "romaji": "Nisen en desu.",
+          "translation": "2.000 yen."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_cari_penginapan_murah_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "それにします。",
+            "romaji": "Sore ni shimasu.",
+            "translation": "Saya ambil itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高すぎます。要りません。",
+            "romaji": "Takasugimasu. Irimasen.",
+            "translation": "Terlalu mahal. Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Informasi",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "こちらで予約できますよ。",
+          "romaji": "Kochira de yoyaku dekimasu yo.",
+          "translation": "Bisa reservasi di sini lho."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_cari_penginapan_murah_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お願いします。",
+            "romaji": "Onegaishimasu.",
+            "translation": "Tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_liburan_solo",
+    "title": "Liburan Solo (Sendirian)",
+    "category": "liburan",
+    "description": "Kamu bersiap liburan sendirian untuk pertama kalinya.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一人旅は初めてですか。",
+          "romaji": "Hitoritabi wa hajimete desu ka.",
+          "translation": "Ini pertama kali liburan sendirian?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_solo_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、初めてです。",
+            "romaji": "Hai, hajimete desu.",
+            "translation": "Ya, pertama kali.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、何度もあります。",
+            "romaji": "Iie, nando mo arimasu.",
+            "translation": "Tidak, sudah sering.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "怖くないですか。",
+          "romaji": "Kowakunai desu ka.",
+          "translation": "Tidak takut?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_solo_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "少し不安ですが、楽しみです。",
+            "romaji": "Sukoshi fuan desu ga, tanoshimi desu.",
+            "translation": "Agak cemas, tapi tidak sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然楽しみじゃないです。",
+            "romaji": "Zenzen tanoshimi janai desu.",
+            "translation": "Sama sekali tidak menantikannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "気をつけて行ってきてくださいね。",
+          "romaji": "Ki wo tsukete itte kite kudasai ne.",
+          "translation": "Hati-hati ya perginya."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_solo_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、ありがとうございます。",
+            "romaji": "Hai, arigatou gozaimasu.",
+            "translation": "Ya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "帰ったら話を聞かせてくださいね。",
+          "romaji": "Kaettara hanashi wo kikasete kudasai ne.",
+          "translation": "Kalau sudah pulang, ceritakan ya."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_solo_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、必ず。",
+            "romaji": "Hai, kanarazu.",
+            "translation": "Ya, pasti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、話しません。",
+            "romaji": "Iie, hanashimasen.",
+            "translation": "Tidak, saya tidak akan cerita.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tukar_uang_liburan",
+    "title": "Menukar Uang untuk Liburan",
+    "category": "liburan",
+    "description": "Kamu menukar uang ke yen sebelum liburan ke Jepang.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "円に両替したいです。",
+            "romaji": "En ni ryougae shitai desu.",
+            "translation": "Saya mau tukar ke yen.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "両替は要りません。",
+            "romaji": "Ryougae wa irimasen.",
+            "translation": "Saya tidak butuh tukar uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いくら両替しますか。",
+          "romaji": "Ikura ryougae shimasu ka.",
+          "translation": "Mau tukar berapa?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_tukar_uang_liburan_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "10万円お願いします。",
+            "romaji": "Juuman en onegaishimasu.",
+            "translation": "100.000 yen, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "10時にお願いします。",
+            "romaji": "Juuji ni onegaishimasu.",
+            "translation": "Jam 10, tolong.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "パスポートを見せてください。",
+          "romaji": "Pasupooto wo misete kudasai.",
+          "translation": "Tolong tunjukkan paspor."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_tukar_uang_liburan_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、どうぞ。",
+            "romaji": "Hai, douzo.",
+            "translation": "Ya, silakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "パスポートはありません。",
+            "romaji": "Pasupooto wa arimasen.",
+            "translation": "Saya tidak punya paspor.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "かしこまりました。少々お待ちください。",
+          "romaji": "Kashikomarimashita. Shoushou omachi kudasai.",
+          "translation": "Baik. Mohon tunggu sebentar."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_tukar_uang_liburan_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お願いします。",
+            "romaji": "Hai, onegaishimasu.",
+            "translation": "Ya, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高いですね。",
+            "romaji": "Takai desu ne.",
+            "translation": "Mahal ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_liburan_diperpanjang",
+    "title": "Liburan yang Diperpanjang",
+    "category": "liburan",
+    "description": "Kamu memutuskan memperpanjang masa menginap di hotel.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "もう少し滞在を延ばしたいです。",
+            "romaji": "Mou sukoshi taizai wo nobashitai desu.",
+            "translation": "Saya mau perpanjang masa tinggal sedikit lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう帰りたいです。",
+            "romaji": "Mou kaeritai desu.",
+            "translation": "Saya sudah mau pulang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Hotel",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何日延ばしますか。",
+          "romaji": "Nannichi nobashimasu ka.",
+          "translation": "Diperpanjang berapa hari?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_diperpanjang_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "2日お願いします。",
+            "romaji": "Futsuka onegaishimasu.",
+            "translation": "2 hari, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "2時にお願いします。",
+            "romaji": "Niji ni onegaishimasu.",
+            "translation": "Jam 2, tolong.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Hotel",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "空いていますので、大丈夫です。",
+          "romaji": "Aite imasu node, daijoubu desu.",
+          "translation": "Karena kosong, tidak masalah."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_diperpanjang_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "良かったです、ありがとうございます。",
+            "romaji": "Yokatta desu, arigatou gozaimasu.",
+            "translation": "Syukurlah, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "残念です。",
+            "romaji": "Zannen desu.",
+            "translation": "Sayang sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Hotel",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "こちらが新しい料金です。",
+          "romaji": "Kochira ga atarashii ryoukin desu.",
+          "translation": "Ini biaya barunya."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_diperpanjang_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、お願いします。",
+            "romaji": "Wakarimashita, onegaishimasu.",
+            "translation": "Baik, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高すぎます。要りません。",
+            "romaji": "Takasugimasu. Irimasen.",
+            "translation": "Terlalu mahal. Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kembali_dari_liburan",
+    "title": "Kembali dari Liburan",
+    "category": "liburan",
+    "description": "Temanmu menyambutmu yang baru pulang dari liburan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "旅行から帰ってきたんですね！",
+          "romaji": "Ryokou kara kaette kita ndesu ne!",
+          "translation": "Sudah pulang dari liburan ya!"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_kembali_dari_liburan_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、たった今帰りました。",
+            "romaji": "Hai, tatta ima kaerimashita.",
+            "translation": "Ya, baru saja pulang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだ旅行中です。",
+            "romaji": "Iie, mada ryokou-chuu desu.",
+            "translation": "Tidak, masih dalam perjalanan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうでしたか。",
+          "romaji": "Dou deshita ka.",
+          "translation": "Gimana kabarnya?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_kembali_dari_liburan_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "とても楽しかったです。",
+            "romaji": "Totemo tanoshikatta desu.",
+            "translation": "Sangat menyenangkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "つまらなかったです。",
+            "romaji": "Tsumaranakatta desu.",
+            "translation": "Membosankan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お土産はありますか。",
+          "romaji": "Omiyage wa arimasu ka.",
+          "translation": "Ada oleh-oleh?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_kembali_dari_liburan_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、あります。どうぞ。",
+            "romaji": "Hai, arimasu. Douzo.",
+            "translation": "Ya, ada. Ini silakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "お土産は買いませんでした。",
+            "romaji": "Omiyage wa kaimasendeshita.",
+            "translation": "Saya tidak beli oleh-oleh.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ありがとうございます！嬉しいです。",
+          "romaji": "Arigatou gozaimasu! Ureshii desu.",
+          "translation": "Terima kasih! Senang deh."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_kembali_dari_liburan_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "どういたしまして。",
+            "romaji": "Dou itashimashite.",
+            "translation": "Sama-sama.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "はじめまして。",
+            "romaji": "Hajimemashite.",
+            "translation": "Salam kenal.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_camping_liburan",
+    "title": "Camping saat Liburan",
+    "category": "liburan",
+    "description": "Kamu mengajak teman camping saat liburan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "今度キャンプに行きたいです。",
+            "romaji": "Kondo kyanpu ni ikitai desu.",
+            "translation": "Lain kali saya mau pergi camping.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "キャンプは嫌いです。",
+            "romaji": "Kyanpu wa kirai desu.",
+            "translation": "Saya tidak suka camping.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "テントは持っていますか。",
+          "romaji": "Tento wa motte imasu ka.",
+          "translation": "Punya tenda?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_camping_liburan_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいえ、借りようと思います。",
+            "romaji": "Iie, kariyou to omoimasu.",
+            "translation": "Tidak, saya mau sewa saja.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "テントは要りません。",
+            "romaji": "Tento wa irimasen.",
+            "translation": "Saya tidak butuh tenda.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "焚き火もしましょう。",
+          "romaji": "Takibi mo shimashou.",
+          "translation": "Ayo nyalakan api unggun juga."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_camping_liburan_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいですね、楽しみです。",
+            "romaji": "Ii desu ne, tanoshimi desu.",
+            "translation": "Bagus, tidak sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "焚き火は危ないです。しません。",
+            "romaji": "Takibi wa abunai desu. Shimasen.",
+            "translation": "Api unggun berbahaya. Tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "星がきれいに見えますよ。",
+          "romaji": "Hoshi ga kirei ni miemasu yo.",
+          "translation": "Bintangnya kelihatan indah lho."
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_camping_liburan_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "楽しみです！",
+            "romaji": "Tanoshimi desu!",
+            "translation": "Tidak sabar!",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "星は嫌いです。",
+            "romaji": "Hoshi wa kirai desu.",
+            "translation": "Saya tidak suka bintang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_liburan_sahabat",
+    "title": "Liburan Bersama Sahabat",
+    "category": "liburan",
+    "description": "Sahabatmu mengajak liburan bareng dan merencanakan detailnya.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Sahabat",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度の休み、一緒に旅行しない？",
+          "romaji": "Kondo no yasumi, issho ni ryokou shinai?",
+          "translation": "Liburan berikutnya, mau liburan bareng?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_sahabat_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、いいね！どこに行く？",
+            "romaji": "Un, ii ne! Doko ni iku?",
+            "translation": "Iya, boleh! Mau ke mana?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、旅行は嫌いだよ。",
+            "romaji": "Iie, ryokou wa kirai da yo.",
+            "translation": "Tidak, aku tidak suka liburan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Sahabat",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "温泉はどう？",
+          "romaji": "Onsen wa dou?",
+          "translation": "Gimana kalau ke onsen?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_sahabat_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいね、賛成！",
+            "romaji": "Ii ne, sansei!",
+            "translation": "Bagus, setuju!",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "温泉は嫌いだよ。",
+            "romaji": "Onsen wa kirai da yo.",
+            "translation": "Aku tidak suka onsen.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Sahabat",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "予算はどのくらいにする？",
+          "romaji": "Yosan wa dono kurai ni suru?",
+          "translation": "Budgetnya berapa?"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_sahabat_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "3万円くらいでどう？",
+            "romaji": "Sanman en kurai de dou?",
+            "translation": "Sekitar 30.000 yen gimana?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "3時くらいでどう？",
+            "romaji": "Sanji kurai de dou?",
+            "translation": "Sekitar jam 3 gimana?",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Sahabat",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみだね！",
+          "romaji": "Tanoshimi da ne!",
+          "translation": "Tidak sabar ya!"
+        },
+        "imagePath": "kaiwa_images/liburan/kaiwa_liburan_sahabat_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、すごく楽しみ！",
+            "romaji": "Un, sugoku tanoshimi!",
+            "translation": "Iya, sangat tidak sabar!",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、楽しくないよ。",
+            "romaji": "Iie, tanoshikunai yo.",
+            "translation": "Tidak, tidak menyenangkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "kaiwa_kenalkan_keluarga",
     "title": "Memperkenalkan Anggota Keluarga",
     "category": "keluarga",

@@ -306,6 +306,16 @@ LIBURAN_TITLES = [
     "Liburan yang Dibatalkan",
     "Membeli Oleh-oleh Liburan",
     "Rencana Liburan Akhir Tahun",
+    "Liburan ke Pantai",
+    "Liburan Hemat / Backpacker",
+    "Ikut Tur Wisata",
+    "Mencari Penginapan Murah",
+    "Liburan Solo (Sendirian)",
+    "Menukar Uang untuk Liburan",
+    "Liburan yang Diperpanjang",
+    "Kembali dari Liburan",
+    "Camping saat Liburan",
+    "Liburan Bersama Sahabat",
 ]
 
 KELUARGA_TITLES = [
