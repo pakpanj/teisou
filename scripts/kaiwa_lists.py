@@ -237,6 +237,16 @@ TELEPON_TITLES = [
     "Menutup Telepon dengan Sopan",
     "Telepon Terputus",
     "Menelepon untuk Mengucapkan Selamat",
+    "Menelepon untuk Memesan Makanan",
+    "Meminta Bantuan Lewat Telepon",
+    "Menelepon Dokter untuk Konsultasi",
+    "Baterai HP Hampir Habis",
+    "Mengingatkan Adik Lewat Telepon",
+    "Video Call dengan Teman Lama",
+    "Menelepon Bengkel Motor",
+    "Menghubungi Kantor untuk Izin Sakit",
+    "Menelepon untuk Konfirmasi Reservasi",
+    "Menerima Telepon Spam/Promosi",
 ]
 
 TRANSPORTASI_TITLES = [
