@@ -191,6 +191,16 @@ RUMAH_SAKIT_TITLES = [
     "Menanyakan Biaya Berobat",
     "Cedera Ringan Saat Olahraga",
     "Memeriksa Kesehatan Rutin",
+    "Mendaftar sebagai Pasien Baru",
+    "Menjelaskan Alergi Obat",
+    "Memeriksa Gigi ke Dokter Gigi",
+    "Menjenguk Teman di Rumah Sakit",
+    "Meminta Surat Keterangan Sakit",
+    "Bertanya Jadwal Praktik Dokter",
+    "Cek Mata di Dokter Spesialis Mata",
+    "Vaksinasi di Rumah Sakit",
+    "Menanyakan Ruang Rawat Inap",
+    "Konsultasi Sakit Perut",
 ]
 
 HOBI_TITLES = [
