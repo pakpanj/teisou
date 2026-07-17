@@ -329,6 +329,16 @@ KELUARGA_TITLES = [
     "Menjenguk Kakek Nenek",
     "Membicarakan Rumah Keluarga",
     "Cerita Masa Kecil",
+    "Membantu Pekerjaan Rumah Bersama Keluarga",
+    "Merencanakan Makan Malam Keluarga",
+    "Menjadi Anak Sulung/Bungsu",
+    "Membicarakan Kemiripan dengan Orang Tua",
+    "Membantu Adik Belajar",
+    "Video Call dengan Keluarga di Kampung",
+    "Membicarakan Aturan di Rumah",
+    "Merencanakan Reuni Keluarga Besar",
+    "Menceritakan Tradisi Keluarga",
+    "Membicarakan Sepupu",
 ]
 
 BANK_TITLES = [
