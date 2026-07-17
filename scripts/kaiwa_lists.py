@@ -218,6 +218,13 @@ OLAHRAGA_TITLES = [
     "Mengajak Olahraga Bersama",
     "Menanyakan Olahraga Favorit",
     "Menonton Pertandingan",
+    "Mengajak Lari Pagi",
+    "Bergabung dengan Klub Olahraga",
+    "Membeli Perlengkapan Olahraga",
+    "Menonton Latihan Tim",
+    "Mengikuti Kelas Yoga",
+    "Menanyakan Aturan Kolam Renang",
+    "Mendaftar Lomba Lari",
 ]
 
 BIOSKOP_TITLES = [
