@@ -750,6 +750,30 @@ BIOSKOP_TITLES = [
     "Diskon Tiket Bioskop Hari Selasa",
 ]
 
+# ===== N4 dialogues =====
+# Same 17 thematic categories as N5, but with distinct category ids
+# (suffixed _n4) and noticeably more advanced grammar (causative/passive,
+# ~たら/~ば conditionals, ~のに, ~ようになる, ~てしまう, ~ておく, ~はず,
+# ~ことにする/~ことになる, ~という, keigo where contextually appropriate).
+
+PERKENALAN_N4_TITLES = [
+    "Berkenalan Sambil Membicarakan Alasan Belajar Bahasa Jepang",
+    "Berkenalan dengan Senior di Tempat Kerja Baru",
+    "Menjelaskan Kenapa Pindah ke Kota Ini",
+    "Berkenalan Sambil Membahas Rencana Masa Depan",
+    "Bertemu Teman Lama yang Sudah Berubah",
+    "Berkenalan dengan Tetangga yang Baru Pindah",
+    "Menjelaskan Latar Belakang Keluarga Saat Berkenalan",
+    "Berkenalan di Acara Reuni Alumni",
+    "Menceritakan Pengalaman Tinggal di Luar Negeri",
+    "Berkenalan dengan Calon Pasangan Bisnis",
+    "Menjelaskan Kenapa Berhenti dari Pekerjaan Lama",
+    "Berkenalan Sambil Membahas Impian Masa Kecil",
+    "Bertemu Mentor Baru di Kampus",
+    "Berkenalan dengan Teman Sekelas yang Pindahan dari Luar Kota",
+    "Menjelaskan Rencana Setelah Menikah Saat Berkenalan",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -769,6 +793,7 @@ CATEGORY_META = {
     "bank": ("Di Bank", "🏦", "N5"),
     "olahraga": ("Olahraga", "⚽", "N5"),
     "bioskop": ("Di Bioskop", "🎬", "N5"),
+    "perkenalan_n4": ("Perkenalan", "👋", "N4"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -790,6 +815,7 @@ AVAILABLE_CATEGORIES = {
     "bank": BANK_TITLES,
     "olahraga": OLAHRAGA_TITLES,
     "bioskop": BIOSKOP_TITLES,
+    "perkenalan_n4": PERKENALAN_N4_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -799,7 +825,7 @@ PLANNED_CATEGORIES = []
 # level_id -> (display name, available)
 LEVEL_META = {
     "N5": ("N5", True),
-    "N4": ("N4", False),
+    "N4": ("N4", True),
     "N3": ("N3", False),
     "N2": ("N2", False),
     "N1": ("N1", False),
@@ -823,6 +849,7 @@ _ALL_TITLE_LISTS = {
     "BANK_TITLES": BANK_TITLES,
     "OLAHRAGA_TITLES": OLAHRAGA_TITLES,
     "BIOSKOP_TITLES": BIOSKOP_TITLES,
+    "PERKENALAN_N4_TITLES": PERKENALAN_N4_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
