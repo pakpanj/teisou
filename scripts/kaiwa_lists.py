@@ -75,6 +75,13 @@ ARAH_JALAN_TITLES = [
     "Menanyakan Jalan ke Stasiun",
     "Menanyakan Jalan ke Toilet Umum",
     "Menanyakan Jarak Tempuh",
+    "Menanyakan Jalan ke Rumah Sakit",
+    "Tersesat di Kota Baru",
+    "Menanyakan Arah dengan Peta",
+    "Menanyakan Jalan ke Supermarket",
+    "Menanyakan Naik Kendaraan Apa",
+    "Menanyakan Jalan Pintas",
+    "Berterima Kasih Setelah Diberi Arah",
 ]
 
 SEKOLAH_TITLES = [
