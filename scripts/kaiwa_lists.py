@@ -127,6 +127,13 @@ HOBI_TITLES = [
     "Menanyakan Hobi Teman",
     "Mengajak Bermain Bersama",
     "Membicarakan Musik Favorit",
+    "Membicarakan Film Favorit",
+    "Belajar Hobi Baru",
+    "Mengoleksi Sesuatu",
+    "Membicarakan Buku yang Sedang Dibaca",
+    "Ikut Klub Hobi",
+    "Berbagi Foto Hasil Hobi",
+    "Mengajak Ikut Komunitas Hobi",
 ]
 
 TELEPON_TITLES = [
