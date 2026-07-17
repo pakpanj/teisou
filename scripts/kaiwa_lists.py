@@ -231,6 +231,13 @@ BIOSKOP_TITLES = [
     "Membeli Tiket Bioskop",
     "Memilih Kursi",
     "Membicarakan Film Setelah Nonton",
+    "Memesan Tiket Online",
+    "Membeli Popcorn dan Minuman",
+    "Terlambat Datang ke Bioskop",
+    "Memilih Jenis Film",
+    "Menonton Film 3D",
+    "Mencari Toilet di Bioskop",
+    "Mengembalikan Tiket",
 ]
 
 # category_id -> (display name, icon emoji, JLPT level key)
