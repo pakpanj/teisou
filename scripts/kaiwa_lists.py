@@ -166,6 +166,13 @@ KANTOR_POS_TITLES = [
     "Mengirim Surat",
     "Mengirim Paket",
     "Membeli Perangko",
+    "Mengambil Paket yang Tertahan",
+    "Menanyakan Lama Pengiriman",
+    "Mengirim Uang Lewat Pos",
+    "Membuka Kotak Pos",
+    "Komplain Paket Rusak",
+    "Mengirim Barang Internasional",
+    "Menanyakan Asuransi Pengiriman",
 ]
 
 LIBURAN_TITLES = [

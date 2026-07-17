@@ -15494,6 +15494,1077 @@
     ]
   },
   {
+    "id": "kaiwa_ambil_paket_tertahan",
+    "title": "Mengambil Paket yang Tertahan",
+    "category": "kantor_pos",
+    "description": "Kamu mengambil paket yang tertahan di kantor pos.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "荷物を受け取りに来ました。",
+            "romaji": "Nimotsu wo uketori ni kimashita.",
+            "translation": "Saya datang untuk mengambil paket.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "荷物は要りません。",
+            "romaji": "Nimotsu wa irimasen.",
+            "translation": "Saya tidak butuh paket.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "荷物が好きです。",
+            "romaji": "Nimotsu ga suki desu.",
+            "translation": "Saya suka paket.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お名前を教えてください。",
+          "romaji": "Onamae wo oshiete kudasai.",
+          "translation": "Nama Anda?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_ambil_paket_tertahan_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ブディです。",
+            "romaji": "Budi desu.",
+            "translation": "Budi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "荷物です。",
+            "romaji": "Nimotsu desu.",
+            "translation": "Paket.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "身分証明書はありますか。",
+          "romaji": "Mibun shoumeisho wa arimasu ka.",
+          "translation": "Ada kartu identitas?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_ambil_paket_tertahan_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、あります。",
+            "romaji": "Hai, arimasu.",
+            "translation": "Ya, ada.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、ありません。",
+            "romaji": "Iie, arimasen.",
+            "translation": "Tidak, tidak ada.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "確認しました。こちらです。",
+          "romaji": "Kakunin shimashita. Kochira desu.",
+          "translation": "Sudah dikonfirmasi. Ini dia."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_ambil_paket_tertahan_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_lama_pengiriman",
+    "title": "Menanyakan Lama Pengiriman",
+    "category": "kantor_pos",
+    "description": "Kamu bertanya lama pengiriman dan memilih kirim kilat.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "インドネシアまでどのくらいかかりますか。",
+            "romaji": "Indonesia made dono kurai kakarimasu ka.",
+            "translation": "Sampai Indonesia berapa lama?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "インドネシアはいくらですか。",
+            "romaji": "Indonesia wa ikura desu ka.",
+            "translation": "Indonesia berapa harganya?",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "インドネシアが好きです。",
+            "romaji": "Indonesia ga suki desu.",
+            "translation": "Saya suka Indonesia.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一週間くらいです。",
+          "romaji": "Isshuukan kurai desu.",
+          "translation": "Sekitar satu minggu."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_lama_pengiriman_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、ありがとうございます。",
+            "romaji": "Wakarimashita, arigatou gozaimasu.",
+            "translation": "Baik, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、違います。",
+            "romaji": "Iie, chigaimasu.",
+            "translation": "Bukan, itu salah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もっと早く届けたいですか。",
+          "romaji": "Motto hayaku todoketai desu ka.",
+          "translation": "Mau lebih cepat sampainya?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_lama_pengiriman_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お願いします。",
+            "romaji": "Hai, onegaishimasu.",
+            "translation": "Ya, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、大丈夫です。",
+            "romaji": "Iie, daijoubu desu.",
+            "translation": "Tidak, tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "では、速達にしますね。追加で500円です。",
+          "romaji": "Dewa, sokutatsu ni shimasu ne. Tsuika de gohyaku en desu.",
+          "translation": "Kalau begitu, jadi kilat ya. Tambah 500 yen."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_lama_pengiriman_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、お願いします。",
+            "romaji": "Wakarimashita, onegaishimasu.",
+            "translation": "Baik, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、要りません。",
+            "romaji": "Iie, irimasen.",
+            "translation": "Tidak, tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高いですね。",
+            "romaji": "Takai desu ne.",
+            "translation": "Mahal ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kirim_uang_pos",
+    "title": "Mengirim Uang Lewat Pos",
+    "category": "kantor_pos",
+    "description": "Kamu mengirim uang ke keluarga lewat kantor pos.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "家族にお金を送りたいです。",
+            "romaji": "Kazoku ni okane wo okuritai desu.",
+            "translation": "Saya mau kirim uang ke keluarga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "お金は要りません。",
+            "romaji": "Okane wa irimasen.",
+            "translation": "Saya tidak butuh uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "お金が好きです。",
+            "romaji": "Okane ga suki desu.",
+            "translation": "Saya suka uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いくら送りますか。",
+          "romaji": "Ikura okurimasu ka.",
+          "translation": "Mau kirim berapa?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_kirim_uang_pos_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "5万円お願いします。",
+            "romaji": "Goman en onegaishimasu.",
+            "translation": "50.000 yen, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "5時です。",
+            "romaji": "Goji desu.",
+            "translation": "Jam lima.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "この用紙に記入してください。",
+          "romaji": "Kono youshi ni kinyuu shite kudasai.",
+          "translation": "Isi formulir ini ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_kirim_uang_pos_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました。",
+            "romaji": "Wakarimashita.",
+            "translation": "Baik, mengerti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、書きません。",
+            "romaji": "Iie, kakimasen.",
+            "translation": "Tidak, saya tidak akan menulis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ありがとうございます。手続きします。",
+          "romaji": "Arigatou gozaimasu. Tetsuzuki shimasu.",
+          "translation": "Terima kasih. Saya proses ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_kirim_uang_pos_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お願いします。",
+            "romaji": "Onegaishimasu.",
+            "translation": "Tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_buka_kotak_pos",
+    "title": "Membuka Kotak Pos",
+    "category": "kantor_pos",
+    "description": "Kamu mendaftar untuk membuka kotak pos.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "私書箱を開きたいです。",
+            "romaji": "Shishobako wo hirakitai desu.",
+            "translation": "Saya mau membuka kotak pos.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "私書箱は要りません。",
+            "romaji": "Shishobako wa irimasen.",
+            "translation": "Saya tidak butuh kotak pos.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "かしこまりました。こちらの用紙にご記入ください。",
+          "romaji": "Kashikomarimashita. Kochira no youshi ni gokinyuu kudasai.",
+          "translation": "Baik. Silakan isi formulir ini."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_buka_kotak_pos_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました。",
+            "romaji": "Wakarimashita.",
+            "translation": "Baik, mengerti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、書きません。",
+            "romaji": "Iie, kakimasen.",
+            "translation": "Tidak, saya tidak akan menulis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "月々の料金は500円です。",
+          "romaji": "Tsukizuki no ryoukin wa gohyaku en desu.",
+          "translation": "Biaya bulanannya 500 yen."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_buka_kotak_pos_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、大丈夫です。",
+            "romaji": "Wakarimashita, daijoubu desu.",
+            "translation": "Baik, tidak apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高すぎます。要りません。",
+            "romaji": "Takasugimasu. Irimasen.",
+            "translation": "Terlalu mahal. Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ありがとうございます。手続きします。",
+          "romaji": "Arigatou gozaimasu. Tetsuzuki shimasu.",
+          "translation": "Terima kasih. Saya proses ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_buka_kotak_pos_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お願いします。",
+            "romaji": "Onegaishimasu.",
+            "translation": "Tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_komplain_paket_rusak",
+    "title": "Komplain Paket Rusak",
+    "category": "kantor_pos",
+    "description": "Paket yang kamu terima ternyata rusak.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "届いた荷物が壊れていました。",
+            "romaji": "Todoita nimotsu ga kowarete imashita.",
+            "translation": "Paket yang sampai rusak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "荷物は無事でした。",
+            "romaji": "Nimotsu wa buji deshita.",
+            "translation": "Paketnya selamat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "荷物が好きです。",
+            "romaji": "Nimotsu ga suki desu.",
+            "translation": "Saya suka paket.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "申し訳ございません。写真はありますか。",
+          "romaji": "Moushiwake gozaimasen. Shashin wa arimasu ka.",
+          "translation": "Mohon maaf. Ada fotonya?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_komplain_paket_rusak_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、あります。",
+            "romaji": "Hai, arimasu.",
+            "translation": "Ya, ada.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、ありません。",
+            "romaji": "Iie, arimasen.",
+            "translation": "Tidak, tidak ada.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "見せていただけますか。",
+          "romaji": "Misete itadakemasu ka.",
+          "translation": "Boleh diperlihatkan?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_komplain_paket_rusak_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、どうぞ。",
+            "romaji": "Hai, douzo.",
+            "translation": "Ya, ini silakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、見せません。",
+            "romaji": "Iie, misemasen.",
+            "translation": "Tidak, tidak saya perlihatkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "確認しました。返金します。",
+          "romaji": "Kakunin shimashita. Henkin shimasu.",
+          "translation": "Sudah dikonfirmasi. Kami kembalikan uangnya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_komplain_paket_rusak_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kirim_barang_internasional",
+    "title": "Mengirim Barang Internasional",
+    "category": "kantor_pos",
+    "description": "Kamu mengirim baju ke Amerika lewat kantor pos.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "これをアメリカに送りたいです。",
+            "romaji": "Kore wo Amerika ni okuritai desu.",
+            "translation": "Saya mau kirim ini ke Amerika.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "これは要りません。",
+            "romaji": "Kore wa irimasen.",
+            "translation": "Saya tidak butuh ini.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アメリカが好きです。",
+            "romaji": "Amerika ga suki desu.",
+            "translation": "Saya suka Amerika.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "中身は何ですか。",
+          "romaji": "Nakami wa nan desu ka.",
+          "translation": "Isinya apa?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_kirim_barang_internasional_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "服です。",
+            "romaji": "Fuku desu.",
+            "translation": "Baju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "郵便局です。",
+            "romaji": "Yuubinkyoku desu.",
+            "translation": "Kantor pos.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "重さを測ります。",
+          "romaji": "Omosa wo hakarimasu.",
+          "translation": "Saya timbang beratnya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_kirim_barang_internasional_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お願いします。",
+            "romaji": "Onegaishimasu.",
+            "translation": "Tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "要りません。",
+            "romaji": "Irimasen.",
+            "translation": "Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "2キロですね。2,000円になります。",
+          "romaji": "Nikiro desu ne. Nisen en ni narimasu.",
+          "translation": "2 kilo ya. Jadi 2.000 yen."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_kirim_barang_internasional_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、お願いします。",
+            "romaji": "Wakarimashita, onegaishimasu.",
+            "translation": "Baik, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高すぎます。要りません。",
+            "romaji": "Takasugimasu. Irimasen.",
+            "translation": "Terlalu mahal. Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_asuransi_pengiriman",
+    "title": "Menanyakan Asuransi Pengiriman",
+    "category": "kantor_pos",
+    "description": "Kamu menanyakan asuransi untuk paketmu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "この荷物に保険をかけられますか。",
+            "romaji": "Kono nimotsu ni hoken wo kakeraremasu ka.",
+            "translation": "Bisa diasuransikan paket ini?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "保険は要りません。",
+            "romaji": "Hoken wa irimasen.",
+            "translation": "Saya tidak butuh asuransi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "保険が好きです。",
+            "romaji": "Hoken ga suki desu.",
+            "translation": "Saya suka asuransi.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "はい、できます。いくらの荷物ですか。",
+          "romaji": "Hai, dekimasu. Ikura no nimotsu desu ka.",
+          "translation": "Ya, bisa. Nilainya berapa paketnya?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_asuransi_pengiriman_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "1万円くらいです。",
+            "romaji": "Ichiman en kurai desu.",
+            "translation": "Sekitar 10.000 yen.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "1時です。",
+            "romaji": "Ichiji desu.",
+            "translation": "Jam satu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "保険料は100円です。",
+          "romaji": "Hokenryou wa hyakuen desu.",
+          "translation": "Biaya asuransinya 100 yen."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_asuransi_pengiriman_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お願いします。",
+            "romaji": "Onegaishimasu.",
+            "translation": "Tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "要りません。",
+            "romaji": "Irimasen.",
+            "translation": "Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Pos",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "かしこまりました。手続きします。",
+          "romaji": "Kashikomarimashita. Tetsuzuki shimasu.",
+          "translation": "Baik. Saya proses ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos/kaiwa_asuransi_pengiriman_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "kaiwa_rencana_liburan",
     "title": "Membicarakan Rencana Liburan",
     "category": "liburan",
