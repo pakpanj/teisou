@@ -122,6 +122,16 @@ ARAH_JALAN_TITLES = [
     "Menanyakan Naik Kendaraan Apa",
     "Menanyakan Jalan Pintas",
     "Berterima Kasih Setelah Diberi Arah",
+    "Menanyakan Jalan ke Bank",
+    "Menanyakan Jalan ke Taman Kota",
+    "Menanyakan Arah dengan Landmark",
+    "Menanyakan Jalan ke Kantor Polisi",
+    "Bertanya Arah Malam Hari",
+    "Menanyakan Jalan Memutar Karena Ditutup",
+    "Menunjukkan Arah ke Turis Lain",
+    "Menanyakan Jalan ke Perpustakaan",
+    "Bertanya Arah dengan Aplikasi Peta HP",
+    "Menanyakan Jalan Naik Sepeda",
 ]
 
 SEKOLAH_TITLES = [
