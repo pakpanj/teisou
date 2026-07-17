@@ -53,6 +53,16 @@ RESTORAN_TITLES = [
     "Meminta Kotak untuk Dibawa Pulang",
     "Memuji Masakan ke Pelayan",
     "Reservasi Meja Lewat Telepon",
+    "Memesan Makanan Vegetarian",
+    "Duduk di Konter Sushi",
+    "Memesan Paket Set Menu",
+    "Mengganti Pesanan",
+    "Menanyakan Jam Buka Restoran",
+    "Memesan Antar / Delivery",
+    "Komplain Pesanan yang Salah",
+    "Merayakan Ulang Tahun di Restoran",
+    "Makan di Restoran Keluarga dengan Anak",
+    "Membayar Terpisah (Split Bill)",
 ]
 
 STASIUN_TITLES = [
