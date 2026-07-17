@@ -214,6 +214,16 @@ HOBI_TITLES = [
     "Ikut Klub Hobi",
     "Berbagi Foto Hasil Hobi",
     "Mengajak Ikut Komunitas Hobi",
+    "Bermain Alat Musik",
+    "Menanam Tanaman Hias",
+    "Memasak sebagai Hobi",
+    "Mendaki Gunung",
+    "Bermain Board Game",
+    "Menulis Diary/Jurnal",
+    "Merajut/Menyulam",
+    "Bermain Game Online",
+    "Berkebun di Akhir Pekan",
+    "Fotografi Alam",
 ]
 
 TELEPON_TITLES = [
