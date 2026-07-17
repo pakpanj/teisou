@@ -682,28 +682,41 @@ meant.
     (phase 2 toward 30-50/theme), keep both the exchange-count bump and
     this distractor-design rule; don't regress to the original terser
     style just because it's faster to author.
+  - **Dialogue expansion, phase 2 (2026-07-17, later the same day again)**:
+    continued straight on from phase 1 toward the same 30-50/theme target
+    — brought every theme from 10 to 20 dialogues (10 new per theme, 170
+    new dialogues total), same 4-exchange/7-8-line style and same
+    distractor-design rule as phase 1. **Done, all 17 themes, 340
+    dialogues total** (up from 170 at the end of phase 1, up from 51
+    originally). Still N5-only; N4-N1 untouched. 340/850 is roughly 40%
+    of the eventual full-scope target (17 themes × avg. 40 = ~680-850) —
+    phases 3+ would need to continue the identical per-theme workflow
+    (draft 10 more → insert into `generate_kaiwa_seed.py` → append titles
+    to the matching `*_TITLES` list in `kaiwa_lists.py` → syntax-check →
+    regenerate → commit) to close the remaining gap. The per-theme
+    assertion stays `>= 3` (not pinned to `== 20`) for the same reason as
+    phase 1 — themes keep growing across sessions.
   - **Premium**: free, per explicit product decision when this module was
     scoped (2026-07-17) — see the monetization-roadmap memory for the
     intended eventual gating.
   - **Verification gap, honestly not closed**: `flutter analyze` (clean),
     `flutter test --concurrency=1` (all 10 tests clean), `flutter build
-    apk --debug` (clean) all passed again after phase 1's expansion, and
+    apk --debug` (clean) all passed again after phase 2's expansion, and
     the generator's own assertions (every user turn has ≥2 options with
-    exactly 1 correct, no duplicate entry ids) held for all 170 dialogues.
-    Earlier interactive gaps for this module (image placeholder
-    rendering, wrong-answer red flash, expression-reaction emoji) **were**
-    verified on a physical device (Moto G52J 5G) during the sessions that
-    chased the "empty theme list" and "missing NPC image" reports — both
-    turned out not to be bugs (a stale build, and a theme's dialogues
-    intentionally starting with the user speaking first, respectively).
-    **What's still unverified**: the level picker screen (`KaiwaHomeScreen`)
-    and N5 theme list, and phase 1's 119 newly-added dialogues
-    specifically, have not had an interactive on-device pass — the Moto
-    G52J wasn't connected (`adb devices` returned empty) when phase 1
-    wrapped up. If you're touching Kaiwa next, tapping through Home→N5→a
-    handful of the newly-expanded themes (Bank/Olahraga/Bioskop are the
-    most recently authored) on a real device is worth doing since it
-    hasn't actually happened yet.
+    exactly 1 correct, no duplicate entry ids) held for all 340
+    dialogues. Earlier interactive gaps for this module (image
+    placeholder rendering, wrong-answer red flash, expression-reaction
+    emoji) **were** verified on a physical device (Moto G52J 5G) during
+    the sessions that chased the "empty theme list" and "missing NPC
+    image" reports — both turned out not to be bugs (a stale build, and a
+    theme's dialogues intentionally starting with the user speaking
+    first, respectively). **What's still unverified**: the level picker
+    screen (`KaiwaHomeScreen`) and N5 theme list, and both phase 1's and
+    phase 2's newly-added dialogues (289 of the 340 total), have not had
+    an interactive on-device pass — the Moto G52J wasn't connected (`adb
+    devices` returned empty) when either phase wrapped up. If you're
+    touching Kaiwa next, tapping through Home→N5→a handful of themes on a
+    real device is worth doing since it hasn't actually happened yet.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
