@@ -352,6 +352,16 @@ BANK_TITLES = [
     "Membuat Kartu Kredit",
     "Menyetor Uang Tunai",
     "Menanyakan Suku Bunga",
+    "Mengganti PIN Kartu ATM",
+    "Membuka Rekening Deposito",
+    "Mengaktifkan Mobile Banking",
+    "Menutup Rekening Bank",
+    "Menanyakan Biaya Administrasi Bulanan",
+    "Mengambil Cek/Giro",
+    "Membuka Rekening Bersama (Joint Account)",
+    "Menukar Uang Rusak/Robek",
+    "Mentransfer Uang ke Luar Negeri",
+    "Konsultasi Investasi ke Bank",
 ]
 
 OLAHRAGA_TITLES = [
