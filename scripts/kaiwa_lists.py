@@ -205,6 +205,13 @@ BANK_TITLES = [
     "Membuka Rekening",
     "Menukar Uang",
     "Menarik Uang di ATM",
+    "Mengecek Saldo Rekening",
+    "Mengajukan Pinjaman",
+    "Mentransfer Uang",
+    "Melaporkan Kartu Hilang",
+    "Membuat Kartu Kredit",
+    "Menyetor Uang Tunai",
+    "Menanyakan Suku Bunga",
 ]
 
 OLAHRAGA_TITLES = [
