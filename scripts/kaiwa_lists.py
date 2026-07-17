@@ -398,6 +398,16 @@ BIOSKOP_TITLES = [
     "Menonton Film 3D",
     "Mencari Toilet di Bioskop",
     "Mengembalikan Tiket",
+    "Menonton Midnight Premiere",
+    "Duduk di Bioskop VIP",
+    "Membawa Anak Nonton Bioskop",
+    "Mengajak Nonton Bareng",
+    "Bertanya Rating Umur Film",
+    "Kehilangan Tiket Bioskop",
+    "Menonton Film Subtitle vs Dubbing",
+    "Bioskop Penuh, Menunggu Jadwal Berikutnya",
+    "Menonton Marathon Film",
+    "Bertanya Diskon Tiket Pelajar",
 ]
 
 # category_id -> (display name, icon emoji, JLPT level key)
