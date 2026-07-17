@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy, N5 fully authored: 17 themes/51 dialogues, N4-N1 placeholders) and free — Bunpou/Partikel/Kaiwa are done for their current scope; Choukai still untouched. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy, N5 fully authored: 17 themes/680 dialogues, N4-N1 placeholders) and free — Bunpou/Partikel/Kaiwa are done for their current scope; Choukai still untouched. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -213,16 +213,26 @@ meant.
     SharedPreferences (`kanji_learned_ids`) is the source of truth,
     `users/{uid}/kanjiProgress/{kanjiId}` is a best-effort Firestore
     mirror, `kanjiLearnedIdsProvider` is the single thing screens watch
-    and `ref.invalidate()` after marking/unmarking. **Known gap shared
+    and `ref.invalidate()` after marking/unmarking. **Fixed gap, shared
     with Kotoba's identical pattern**: `_toggleLearned` in both
     `KanjiWordDetailScreen` and `KotobaWordDetailScreen` `await`s the
-    repository call with no try/catch — if the Firestore mirror write
-    throws (e.g. offline), the local write already succeeded but the
-    button's spinner never clears until the screen is revisited, since
-    the `setState(() => _togglingLearned = false)` after it never runs.
-    Not fixed as part of Batch 8 since it's pre-existing in already-
-    shipped Kotoba code too and touching both isn't this batch's scope —
-    worth a dedicated pass later.
+    repository call with no try/catch of its own — if the Firestore mirror
+    write threw (e.g. offline), the local write had already succeeded but
+    the button's spinner never cleared until the screen was revisited,
+    since the `setState(() => _togglingLearned = false)` after it never
+    ran. Left unfixed through Batch 8 (out of scope then) and repeated
+    unfixed in Kotoba/Bunpou/Partikel/Kaiwa's identical pattern for
+    several batches after — finally fixed across all five progress
+    repositories (`KanjiProgressRepository`, `KotobaProgressRepository`,
+    `BunpouProgressRepository`, `ParticleProgressRepository`,
+    `KaiwaProgressRepository`) in one pass during Kaiwa's dialogue-expansion
+    phase 3 session: each repository's `markLearned`/`unmarkLearned` now
+    wraps only the Firestore call in try/catch, since the local
+    SharedPreferences write is the source of truth and already succeeded
+    by that point — a network/Firestore failure there must not propagate
+    up into the screen's `setState`. Fixed at the repository layer, not
+    the five screens, so the fix applies uniformly without touching
+    `KanjiWordDetailScreen`/`KotobaWordDetailScreen`/etc. individually.
   - **Quiz** (`kanji_quiz_screen.dart`) has two modes picked from a
     bottom sheet (`KanjiLevelScreen`'s quiz icon) — kanji→arti (mirrors
     `KotobaQuizScreen` almost exactly) and arti→kanji (same question/
@@ -242,8 +252,8 @@ meant.
   SharedPreferences key `bunpou_learned_ids`, Firestore mirror at
   `users/{uid}/bunpouProgress` via `FirestorePaths.bunpouProgressCollection`)
   all mirror their Kanji counterparts exactly, including the same
-  known try/catch gap around the Firestore mirror write (see the Kanji
-  progress note above — not fixed here either, same reasoning). Screens
+  Firestore-mirror-write gap (see the Kanji progress note above) — since
+  fixed there along with the other four repositories. Screens
   (`lib/features/bunpou/`: `bunpou_home_screen.dart`,
   `bunpou_level_screen.dart`, `bunpou_detail_screen.dart`,
   `bunpou_quiz_screen.dart`) mirror Kanji's Home/Level/Detail/Quiz
@@ -374,11 +384,10 @@ meant.
   SharedPreferences key `particle_learned_ids`, Firestore mirror at
   `users/{uid}/particleProgress` via
   `FirestorePaths.particleProgressCollection`) mirrors Bunpou's exactly,
-  including the same known unguarded-Firestore-write gap carried a third
-  time now (Kanji → Kotoba → Bunpou → Partikel) — still not fixed, still
-  out of scope for whichever batch touches it, but three repetitions in
-  is probably worth a dedicated fix pass rather than a fourth copy-paste
-  later. `particleAllProvider` (resolves `similarParticles` ids to display
+  including the same unguarded-Firestore-write gap carried a third time
+  (Kanji → Kotoba → Bunpou → Partikel) — since fixed there along with the
+  other four repositories, see the Kanji progress note above.
+  `particleAllProvider` (resolves `similarParticles` ids to display
   text) was built in from day one rather than retrofitted — this is
   exactly the fix Bunpou needed only *after* its "Pola Serupa shows raw
   ids" bug shipped (see the Bunpou note above), done right the first time
@@ -564,10 +573,10 @@ meant.
   `KaiwaProgressRepository`, `kaiwa_providers.dart`,
   `FirestorePaths.kaiwaProgressCollection`) mirrors Partikel's exactly for
   the theme/dialogue layers and Bunpou's `BunpouLevelRepository` for the
-  new level layer, including the same known unguarded-Firestore-write gap
-  carried a fourth time now (Kanji → Kotoba → Bunpou → Partikel → Kaiwa)
-  — still not fixed, still out of scope for whichever batch eventually
-  addresses it.
+  new level layer, including the same unguarded-Firestore-write gap carried
+  a fourth time (Kanji → Kotoba → Bunpou → Partikel → Kaiwa) — since fixed
+  there along with the other four repositories, see the Kanji progress
+  note above.
   - **No LLM/cloud AI conversation partner** — an explicit scope decision
     both designs shared, not a limitation discovered later. There is also,
     as of Fase 2, no free-text matching of any kind: correctness is just
@@ -696,27 +705,60 @@ meant.
     regenerate → commit) to close the remaining gap. The per-theme
     assertion stays `>= 3` (not pinned to `== 20`) for the same reason as
     phase 1 — themes keep growing across sessions.
+  - **Dialogue expansion, phase 3 (2026-07-18)**: brought every theme from
+    20 to 40 dialogues (20 new per theme, 340 new dialogues total), same
+    4-exchange/7-8-line style and same distractor-design rule as phases 1
+    and 2. **Done, all 17 themes, 680 dialogues total** (up from 340 at
+    the end of phase 2, up from 51 originally). Still N5-only; N4-N1
+    untouched. 680 sits at the low end of the 680-850 full-scope target
+    (17 themes × 40-50 avg.) — the per-theme assertion in `kaiwa_lists.py`
+    stays `>= 3` rather than being pinned to `== 40`, on the chance a
+    future session pushes any individual theme past 40 rather than
+    lock-stepping all 17 at once. The user's original ask for this phase
+    was 20-30 new dialogues per theme; 20 (the low end) was chosen
+    deliberately to keep quality/distractor-design consistent across the
+    full 340-dialogue scope rather than stretch to 30 and risk rushed
+    content.
+  - **Bug fix, same session as phase 3**: before merging phase 3, a
+    codebase-wide bug audit (requested alongside the content-expansion
+    ask) confirmed the long-standing "Firestore mirror write has no
+    try/catch" gap — documented but left unfixed across Kanji → Kotoba →
+    Bunpou → Partikel → Kaiwa's identical progress-repository pattern
+    (see the Kanji progress note above for the full mechanism) — as a
+    real, reproducible bug: a failed `markLearned`/`unmarkLearned`
+    Firestore write (e.g. offline) left the "Tandai Sudah Dipelajari"
+    button's spinner stuck forever, since the exception skipped the
+    caller's `setState(() => _togglingLearned = false)`. Fixed by
+    wrapping only the Firestore call (not the local SharedPreferences
+    write, which is the source of truth and by that point has already
+    succeeded) in try/catch, in all five progress repositories in one
+    pass — the first time this five-times-repeated gap was actually
+    closed rather than carried forward to the next module.
   - **Premium**: free, per explicit product decision when this module was
     scoped (2026-07-17) — see the monetization-roadmap memory for the
     intended eventual gating.
   - **Verification gap, honestly not closed**: `flutter analyze` (clean),
     `flutter test --concurrency=1` (all 10 tests clean), `flutter build
-    apk --debug` (clean) all passed again after phase 2's expansion, and
-    the generator's own assertions (every user turn has ≥2 options with
-    exactly 1 correct, no duplicate entry ids) held for all 340
-    dialogues. Earlier interactive gaps for this module (image
-    placeholder rendering, wrong-answer red flash, expression-reaction
-    emoji) **were** verified on a physical device (Moto G52J 5G) during
-    the sessions that chased the "empty theme list" and "missing NPC
-    image" reports — both turned out not to be bugs (a stale build, and a
-    theme's dialogues intentionally starting with the user speaking
-    first, respectively). **What's still unverified**: the level picker
-    screen (`KaiwaHomeScreen`) and N5 theme list, and both phase 1's and
-    phase 2's newly-added dialogues (289 of the 340 total), have not had
-    an interactive on-device pass — the Moto G52J wasn't connected (`adb
-    devices` returned empty) when either phase wrapped up. If you're
-    touching Kaiwa next, tapping through Home→N5→a handful of themes on a
-    real device is worth doing since it hasn't actually happened yet.
+    apk --debug` (clean) all passed again after phase 3's expansion and
+    the progress-repository bug fix, and the generator's own assertions
+    (every user turn has ≥2 options with exactly 1 correct, no duplicate
+    entry ids) held for all 680 dialogues. Earlier interactive gaps for
+    this module (image placeholder rendering, wrong-answer red flash,
+    expression-reaction emoji) **were** verified on a physical device
+    (Moto G52J 5G) during the sessions that chased the "empty theme list"
+    and "missing NPC image" reports — both turned out not to be bugs (a
+    stale build, and a theme's dialogues intentionally starting with the
+    user speaking first, respectively). **What's still unverified**: the
+    level picker screen (`KaiwaHomeScreen`) and N5 theme list, and
+    phases 1-3's combined 629 newly-added dialogues (out of 680 total),
+    have not had an interactive on-device pass, nor has the progress-
+    repository bug fix been confirmed to actually clear a stuck spinner
+    on a real device — the Moto G52J wasn't connected (`adb devices`
+    returned empty) at any point during this session either. If you're
+    touching Kaiwa (or any of the other four modules sharing this fix)
+    next, tapping through Home→N5→a handful of themes, and specifically
+    forcing an offline Firestore write to confirm the spinner now clears,
+    is still worth doing since neither has actually happened yet.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
