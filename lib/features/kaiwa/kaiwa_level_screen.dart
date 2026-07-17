@@ -4,68 +4,83 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/jlpt_level.dart';
-import '../../data/models/kaiwa_jlpt_level_info.dart';
-import 'kaiwa_level_screen.dart';
+import '../../data/models/kaiwa_category_info.dart';
+import 'kaiwa_category_screen.dart';
 import 'kaiwa_providers.dart';
 
-/// Entry point for the Kaiwa module: JLPT level picker (N5-N1), mirroring
-/// `BunpouHomeScreen`. Only levels with a real dataset are tappable; the
-/// rest show a "Segera" badge. Tapping a level opens `KaiwaLevelScreen`,
-/// which is what this screen used to be before the level layer was added
-/// on top of the original flat scenario-category picker.
-class KaiwaHomeScreen extends ConsumerWidget {
-  const KaiwaHomeScreen({super.key});
+/// Theme picker for one Kaiwa JLPT level (Perkenalan / Di Restoran / ...).
+/// Only themes with a real dataset are tappable; the rest show a "Segera"
+/// badge, same convention as `ParticleHomeScreen`'s category picker — this
+/// screen is what `KaiwaHomeScreen` used to be before the level layer was
+/// added on top.
+class KaiwaLevelScreen extends ConsumerWidget {
+  final JlptLevel level;
+  final String levelName;
+
+  const KaiwaLevelScreen({
+    super.key,
+    required this.level,
+    required this.levelName,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final levelsAsync = ref.watch(kaiwaLevelsProvider);
+    final categoriesAsync = ref.watch(kaiwaCategoriesByLevelProvider(level));
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(title: const Text('Kaiwa')),
-      body: levelsAsync.when(
-        data: (levels) => ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            for (final level in levels) ...[
-              _LevelCard(level: level),
-              const SizedBox(height: 12),
-            ],
-          ],
-        ),
+      appBar: AppBar(title: Text('Kaiwa $levelName')),
+      body: categoriesAsync.when(
+        data: (categories) => categories.isEmpty
+            ? const Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 32),
+                  child: Text(
+                    'Tema untuk level ini belum tersedia.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: AppColors.textNavy),
+                  ),
+                ),
+              )
+            : ListView(
+                padding: const EdgeInsets.all(20),
+                children: [
+                  for (final category in categories) ...[
+                    _ThemeCard(category: category),
+                    const SizedBox(height: 12),
+                  ],
+                ],
+              ),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat level: $e')),
+        error: (e, _) => Center(child: Text('Gagal memuat tema: $e')),
       ),
     );
   }
 }
 
-class _LevelCard extends ConsumerWidget {
-  final KaiwaJlptLevelInfo level;
+class _ThemeCard extends ConsumerWidget {
+  final KaiwaCategoryInfo category;
 
-  const _LevelCard({required this.level});
+  const _ThemeCard({required this.category});
 
   void _open(BuildContext context) {
-    if (!level.available) {
+    if (!category.available) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Kaiwa ${level.name} segera hadir!')),
+        SnackBar(content: Text('${category.name} segera hadir!')),
       );
       return;
     }
     AppNavigator.slideFromRight(
       context,
-      KaiwaLevelScreen(
-        level: JlptLevelX.fromKey(level.id),
-        levelName: level.name,
-      ),
+      KaiwaCategoryScreen(category: category.id, categoryName: category.name),
     );
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final available = level.available;
+    final available = category.available;
     final progress = available
-        ? ref.watch(kaiwaLevelProgressProvider(JlptLevelX.fromKey(level.id))).valueOrNull
+        ? ref.watch(kaiwaCategoryProgressProvider(category.id)).valueOrNull
         : null;
 
     return Material(
@@ -87,13 +102,7 @@ class _LevelCard extends ConsumerWidget {
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
-                child: Text(
-                  level.name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: available ? AppColors.primaryCoral : AppColors.freeBadgeGrey,
-                  ),
-                ),
+                child: Text(category.icon, style: const TextStyle(fontSize: 22)),
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -101,7 +110,7 @@ class _LevelCard extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Kaiwa ${level.name}',
+                      category.name,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -113,7 +122,7 @@ class _LevelCard extends ConsumerWidget {
                       Text(
                         progress != null && progress.$1 > 0
                             ? '${progress.$1}/${progress.$2} dipelajari'
-                            : '${level.themeCount ?? 0} tema',
+                            : '${category.dialogueCount ?? 0} dialog',
                         style: TextStyle(
                           fontSize: 12,
                           color: AppColors.textNavy.withValues(alpha: 0.6),

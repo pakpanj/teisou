@@ -3,6 +3,7 @@
     "id": "perkenalan",
     "name": "Perkenalan",
     "icon": "👋",
+    "level": "N5",
     "available": true,
     "dialogueCount": 3
   },
@@ -10,6 +11,7 @@
     "id": "restoran",
     "name": "Di Restoran",
     "icon": "🍽️",
+    "level": "N5",
     "available": true,
     "dialogueCount": 3
   },
@@ -17,6 +19,7 @@
     "id": "stasiun",
     "name": "Di Stasiun",
     "icon": "🚉",
+    "level": "N5",
     "available": true,
     "dialogueCount": 3
   },
@@ -24,6 +27,7 @@
     "id": "belanja",
     "name": "Belanja",
     "icon": "🛍️",
+    "level": "N5",
     "available": true,
     "dialogueCount": 3
   },
@@ -31,6 +35,7 @@
     "id": "arah_jalan",
     "name": "Menanyakan Arah",
     "icon": "🧭",
+    "level": "N5",
     "available": true,
     "dialogueCount": 3
   },
@@ -38,6 +43,7 @@
     "id": "sekolah",
     "name": "Di Sekolah",
     "icon": "🏫",
+    "level": "N5",
     "available": true,
     "dialogueCount": 3
   },
@@ -45,6 +51,87 @@
     "id": "cuaca_basa_basi",
     "name": "Cuaca & Basa-basi",
     "icon": "☁️",
+    "level": "N5",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "rumah_sakit",
+    "name": "Di Rumah Sakit",
+    "icon": "🏥",
+    "level": "N5",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "hobi",
+    "name": "Hobi",
+    "icon": "🎨",
+    "level": "N5",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "telepon",
+    "name": "Telepon",
+    "icon": "☎️",
+    "level": "N5",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "transportasi",
+    "name": "Transportasi",
+    "icon": "🚌",
+    "level": "N5",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "kantor_pos",
+    "name": "Di Kantor Pos",
+    "icon": "📮",
+    "level": "N5",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "liburan",
+    "name": "Rencana Liburan",
+    "icon": "🏖️",
+    "level": "N5",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "keluarga",
+    "name": "Keluarga",
+    "icon": "👨‍👩‍👧",
+    "level": "N5",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "bank",
+    "name": "Di Bank",
+    "icon": "🏦",
+    "level": "N5",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "olahraga",
+    "name": "Olahraga",
+    "icon": "⚽",
+    "level": "N5",
+    "available": true,
+    "dialogueCount": 3
+  },
+  {
+    "id": "bioskop",
+    "name": "Di Bioskop",
+    "icon": "🎬",
+    "level": "N5",
     "available": true,
     "dialogueCount": 3
   }

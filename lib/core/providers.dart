@@ -11,6 +11,7 @@ import '../data/repositories/bunpou_progress_repository.dart';
 import '../data/repositories/bunpou_repository.dart';
 import '../data/repositories/exam_repository.dart';
 import '../data/repositories/kaiwa_category_repository.dart';
+import '../data/repositories/kaiwa_level_repository.dart';
 import '../data/repositories/kaiwa_progress_repository.dart';
 import '../data/repositories/kaiwa_repository.dart';
 import '../data/repositories/kana_repository.dart';
@@ -72,6 +73,9 @@ final kaiwaRepositoryProvider = Provider<KaiwaRepository>(
 );
 final kaiwaCategoryRepositoryProvider = Provider<KaiwaCategoryRepository>(
   (ref) => KaiwaCategoryRepository(),
+);
+final kaiwaLevelRepositoryProvider = Provider<KaiwaLevelRepository>(
+  (ref) => KaiwaLevelRepository(),
 );
 final kaiwaProgressRepositoryProvider = Provider<KaiwaProgressRepository>(
   (ref) => KaiwaProgressRepository(),

@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, all 7/7 scenario categories authored, 21 dialogues, no placeholders) and free — Bunpou/Partikel/Kaiwa are done for their current scope; Choukai still untouched. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy, N5 fully authored: 17 themes/51 dialogues, N4-N1 placeholders) and free — Bunpou/Partikel/Kaiwa are done for their current scope; Choukai still untouched. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -539,23 +539,35 @@ meant.
   dependency gotchas) for no benefit once nothing calls it.
   Model layer (`lib/data/models/kaiwa_entry.dart`, `kaiwa_line.dart`,
   `kaiwa_answer_option.dart`, `kaiwa_category_info.dart`,
-  `kaiwa_progress_entry.dart`) mirrors Partikel's nested shape: a
-  `KaiwaEntry` (one dialogue/scenario, e.g. "Memesan Makanan di Restoran")
-  holds an ordered `List<KaiwaLine>`, each either an **NPC turn**
-  (`npcLine` a `SentenceExample` — reused module-neutral same as
-  Kanji/Kotoba/Bunpou/Partikel, but only `.japanese` is actually used, for
-  TTS — plus `imagePath`, `isUserTurn: false`) or a **user turn**
-  (`options: List<KaiwaAnswerOption>`, `isUserTurn: true`). `category` is a
-  scenario id ("perkenalan", "restoran", ...) grouping dialogues
-  thematically — deliberately **not** JLPT-level-based like Kanji/Bunpou,
-  since a real conversation doesn't sort itself by grammar difficulty
-  (explicit product decision, not an oversight). Repository/progress/
-  provider layer (`KaiwaRepository`/`KaiwaCategoryRepository`/
+  `kaiwa_jlpt_level_info.dart`, `kaiwa_progress_entry.dart`) mirrors
+  Partikel's nested shape: a `KaiwaEntry` (one dialogue/scenario, e.g.
+  "Memesan Makanan di Restoran") holds an ordered `List<KaiwaLine>`, each
+  either an **NPC turn** (`npcLine` a `SentenceExample` — reused
+  module-neutral same as Kanji/Kotoba/Bunpou/Partikel, but only
+  `.japanese` is actually used, for TTS — plus `imagePath`,
+  `isUserTurn: false`) or a **user turn** (`options:
+  List<KaiwaAnswerOption>`, `isUserTurn: true`). `category` is a scenario
+  id ("perkenalan", "restoran", ...) grouping dialogues thematically.
+  **Correction to a previous claim here**: this used to say themes were
+  deliberately not JLPT-level-based, "since a real conversation doesn't
+  sort itself by grammar difficulty" — that reasoning held for the
+  original 2-category Fase 1/2 scope, but the user explicitly asked
+  (2026-07-19) for a third layer on top: **JLPT level (N5-N1) → theme →
+  dialogue**, matching Kanji/Bunpou's Home→Level→Detail shape one level
+  deeper. `KaiwaCategoryInfo` gained a `level: JlptLevel` field; a theme's
+  level determines the vocabulary/grammar ceiling of its dialogues, not
+  the theme's subject matter itself (a theme like "Di Restoran" could in
+  principle exist at multiple levels with different language complexity —
+  currently only N5 versions exist, so that distinction is theoretical
+  for now). Repository/progress/provider layer
+  (`KaiwaRepository`/`KaiwaCategoryRepository`/`KaiwaLevelRepository`/
   `KaiwaProgressRepository`, `kaiwa_providers.dart`,
-  `FirestorePaths.kaiwaProgressCollection`) mirrors Partikel's exactly,
-  including the same known unguarded-Firestore-write gap carried a fourth
-  time now (Kanji → Kotoba → Bunpou → Partikel → Kaiwa) — still not fixed,
-  still out of scope for whichever batch eventually addresses it.
+  `FirestorePaths.kaiwaProgressCollection`) mirrors Partikel's exactly for
+  the theme/dialogue layers and Bunpou's `BunpouLevelRepository` for the
+  new level layer, including the same known unguarded-Firestore-write gap
+  carried a fourth time now (Kanji → Kotoba → Bunpou → Partikel → Kaiwa)
+  — still not fixed, still out of scope for whichever batch eventually
+  addresses it.
   - **No LLM/cloud AI conversation partner** — an explicit scope decision
     both designs shared, not a limitation discovered later. There is also,
     as of Fase 2, no free-text matching of any kind: correctness is just
@@ -602,36 +614,52 @@ meant.
     this module (頑張ります → "ekspresi semangat") — most options have no
     tag (`null`) and get no reaction, which is the expected common case,
     not a gap.
-  - **Screens** (`lib/features/kaiwa/`): `KaiwaHomeScreen`/
-    `KaiwaCategoryScreen` mirror Partikel's Home/Category screens exactly
-    (progress bar, Semua/Belum/Sudah filter chips, "Segera" badge for
-    unavailable categories) and were untouched by the Fase 1→2 rewrite,
-    since neither one touches `KaiwaLine` internals directly.
-    `KaiwaDialogueScreen` is the chat-bubble UI both designs share (reveals
-    lines progressively, pauses at each user turn) — only the "how does
-    the learner answer" part changed. Its outer `SingleChildScrollView` is
-    keyed on `ValueKey(entry.id)` **from the start** — this is the exact
-    scroll-reset bug that shipped in `BunpouDetailScreen` and was only
-    fixed for `ParticleDetailScreen` afterward (see the Partikel section
-    above); Kaiwa is the first module built *after* that fix was
-    documented, so it went in from day one instead of being a third
-    repeat. Next/prev pages between dialogues in the current category,
-    same convention as every other detail screen; paging (and disposing
-    the screen) resets all per-dialogue state, including the shuffled
-    option-order cache.
-  - **Content scope**: all 7 planned scenario categories are now
-    authored — Perkenalan, Di Restoran, Di Stasiun, Belanja, Menanyakan
-    Arah, Di Sekolah, and Cuaca & Basa-basi, 3 dialogues each, **21
-    dialogues total, 0 placeholders**, locked in `scripts/kaiwa_lists.py`
-    and generated by `scripts/generate_kaiwa_seed.py` into
-    `assets/data/kaiwa_data.json` + `assets/data/kaiwa/_categories.json`
-    (mirrors the Partikel/Kotoba Python-locked-list + generator-script
-    pattern; the generator asserts every user turn has ≥2 options and
-    exactly 1 marked correct, and `kaiwa_lists.py` asserts every category's
-    title list is exactly 3 entries with no duplicates).
-    `PLANNED_CATEGORIES` in `kaiwa_lists.py` is now an empty list rather
-    than being deleted — kept as the obvious place to register a future
-    new category as `available: false` before its dialogues are ready.
+  - **Screens** (`lib/features/kaiwa/`): navigation is now
+    `KaiwaHomeScreen` (level picker, mirrors `BunpouHomeScreen`) →
+    `KaiwaLevelScreen` (theme picker for one level — this is what
+    `KaiwaHomeScreen` used to be before the level layer was added, moved
+    almost verbatim) → `KaiwaCategoryScreen` (dialogue list for one theme,
+    unchanged) → `KaiwaDialogueScreen` (unchanged). `KaiwaCategoryScreen`
+    and `KaiwaDialogueScreen` needed **no changes at all** for the level
+    restructure, since neither ever touched the level concept directly —
+    only the two entry-point screens above them did.
+    `KaiwaDialogueScreen` is the chat-bubble UI (reveals lines
+    progressively, pauses at each user turn). Its outer
+    `SingleChildScrollView` is keyed on `ValueKey(entry.id)` **from the
+    start** — this is the exact scroll-reset bug that shipped in
+    `BunpouDetailScreen` and was only fixed for `ParticleDetailScreen`
+    afterward (see the Partikel section above); Kaiwa is the first module
+    built *after* that fix was documented, so it went in from day one
+    instead of being a third repeat. Next/prev pages between dialogues in
+    the current theme, same convention as every other detail screen;
+    paging (and disposing the screen) resets all per-dialogue state,
+    including the shuffled option-order cache.
+  - **Content scope**: **N5 is fully built out — 17 themes, 51 dialogues,
+    0 placeholders.** The original 7 themes (Perkenalan, Di Restoran, Di
+    Stasiun, Belanja, Menanyakan Arah, Di Sekolah, Cuaca & Basa-basi, 21
+    dialogues) were all tagged `level: "N5"` when the level layer was
+    added, then 10 new N5 themes were authored alongside them in the same
+    pass: Di Rumah Sakit, Hobi, Telepon, Transportasi, Di Kantor Pos,
+    Rencana Liburan, Keluarga, Di Bank, Olahraga, Di Bioskop (3 dialogues
+    each, 30 new dialogues). **N4-N1 are registered in
+    `assets/data/kaiwa/_levels.json` as `available: false` placeholders
+    with zero themes** — the level layer exists in the schema and UI from
+    day one, but only N5 has content; extending N4-N1 is a pure
+    content-authoring pass later, no schema change needed. Locked in
+    `scripts/kaiwa_lists.py` (`LEVEL_META` for the 5 levels,
+    `CATEGORY_META` now a 3-tuple of name/icon/level per theme) and
+    generated by `scripts/generate_kaiwa_seed.py` into
+    `assets/data/kaiwa_data.json` + `assets/data/kaiwa/_categories.json` +
+    `assets/data/kaiwa/_levels.json` (mirrors the Partikel/Kotoba
+    Python-locked-list + generator-script pattern; the generator asserts
+    every user turn has ≥2 options and exactly 1 marked correct, every
+    theme's title list is exactly 3 entries with no duplicates, and
+    `CATEGORY_META`/`AVAILABLE_CATEGORIES` cover exactly the same theme
+    ids). `PLANNED_CATEGORIES` in `kaiwa_lists.py` stays an empty list
+    (not deleted) as the obvious place to register a future theme as
+    `available: false` before its dialogues are ready — same convention
+    already established, now joined by `LEVEL_META`'s N4-N1 entries doing
+    the analogous job one layer up.
   - **Premium**: free, per explicit product decision when this module was
     scoped (2026-07-17) — see the monetization-roadmap memory for the
     intended eventual gating.
@@ -639,17 +667,21 @@ meant.
     `flutter test --concurrency=1`, `flutter build apk --debug`, and a
     Python cross-check of the generated dataset (no duplicate entry/line
     ids, every user turn has ≥2 options with exactly 1 correct, every NPC
-    turn has both a populated `npcLine` and `imagePath`, every entry's
-    category is registered in `_categories.json`) all passed clean. **What
-    did NOT get verified**: the actual interactive flow on a running app —
-    tapping through a dialogue, seeing the wrong-answer red flash and the
-    expression-reaction emoji, confirming the image placeholder renders
-    correctly. No physical device or working emulator was available in
-    this session (same standing constraint as the Partikel/Bunpou N3-N2
-    verification gaps above — a locked physical device is never bypassed
-    regardless of urgency). If you're touching `KaiwaDialogueScreen` next,
-    a fresh interactive on-device pass is still worth doing since it
-    hasn't actually happened yet.
+    turn has both a populated `npcLine` and `imagePath`, every theme's
+    `level` is a real JLPT level, `_levels.json`'s N5 `themeCount` matches
+    the actual count and N4-N1 are correctly unavailable) all passed
+    clean. Earlier interactive gaps for this module (image placeholder
+    rendering, wrong-answer red flash, expression-reaction emoji) **were**
+    verified on a physical device (Moto G52J 5G) during the sessions that
+    chased the "empty theme list" and "missing NPC image" reports — both
+    turned out not to be bugs (a stale build, and a theme's dialogues
+    intentionally starting with the user speaking first, respectively).
+    **What's still unverified**: the brand-new level picker screen
+    (`KaiwaHomeScreen`) and the N5 theme list under it specifically — this
+    exact restructure hasn't had an interactive on-device pass yet. If
+    you're touching Kaiwa next, tapping through Home→N5→a few of the 10
+    new themes on a real device is worth doing since it hasn't actually
+    happened yet.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).

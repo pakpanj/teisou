@@ -1,20 +1,23 @@
 # Canonical Kaiwa scenario/dialogue scope — the single source of truth
-# generate_kaiwa_seed.py imports to know which dialogues to write full
-# content for, mirroring how particle_lists.py / bunpou_grammar_lists.py /
-# kanji_char_lists.py lock their own module's scope.
+# generate_kaiwa_seed.py imports to know which themes/dialogues to write
+# full content for, mirroring how particle_lists.py / bunpou_grammar_lists.py
+# / kanji_char_lists.py lock their own module's scope.
 #
-# Categories are situational/thematic (a conversation textbook's chapter
-# list: Perkenalan, Di Restoran, ...), not JLPT-level-based like Kanji/
-# Bunpou — a real conversation doesn't sort itself by grammar difficulty,
-# per the explicit product decision recorded when this module was scoped.
+# Kaiwa is organized in two layers: JLPT level (N5-N1, LEVEL_META below) ->
+# scenario theme (Perkenalan, Di Restoran, ...) -> dialogue. Themes are
+# still situational/thematic, not graded by grammar difficulty on their
+# own — the level is what determines the vocabulary/grammar ceiling used
+# within a theme's dialogues, not the theme's subject matter itself (e.g.
+# "Di Restoran" could exist at N5 with simple ordering phrases, or in
+# principle at a higher level with more nuanced language — this dataset
+# currently only has N5 content, so that distinction is theoretical for
+# now, not yet exercised).
 #
-# All 7 originally-planned categories are now authored (as of the content
-# completion pass). PLANNED_CATEGORIES stays as an empty list rather than
-# being deleted, so a future new category still has an obvious place to
-# register as `available: False` before its dialogue list is ready,
-# without a separate manual list that could drift out of sync (the same
-# "don't hand-edit _categories.json and forget the word-list script"
-# gotcha already documented for Kotoba applies here).
+# All content authored so far is N5. N4-N1 are locked in LEVEL_META as
+# not-yet-authored levels — the level layer exists in the schema from day
+# one, but there is deliberately no separate "PLANNED_LEVELS" list the way
+# PLANNED_CATEGORIES works for themes, since a level with zero themes is
+# already unambiguous (LEVEL_META entry present, available=False).
 
 PERKENALAN_TITLES = [
     "Berkenalan dengan Teman Baru",
@@ -58,19 +61,88 @@ CUACA_BASA_BASI_TITLES = [
     "Berpamitan",
 ]
 
-# category_id -> (display name, icon emoji)
+RUMAH_SAKIT_TITLES = [
+    "Menjelaskan Sakit ke Dokter",
+    "Membuat Janji Temu",
+    "Membeli Obat di Apotek",
+]
+
+HOBI_TITLES = [
+    "Menanyakan Hobi Teman",
+    "Mengajak Bermain Bersama",
+    "Membicarakan Musik Favorit",
+]
+
+TELEPON_TITLES = [
+    "Menerima Telepon",
+    "Menelepon Teman",
+    "Meninggalkan Pesan",
+]
+
+TRANSPORTASI_TITLES = [
+    "Naik Bus",
+    "Memanggil Taksi",
+    "Menanyakan Ongkos",
+]
+
+KANTOR_POS_TITLES = [
+    "Mengirim Surat",
+    "Mengirim Paket",
+    "Membeli Perangko",
+]
+
+LIBURAN_TITLES = [
+    "Membicarakan Rencana Liburan",
+    "Mengajak Berlibur Bersama",
+    "Cerita Setelah Liburan",
+]
+
+KELUARGA_TITLES = [
+    "Memperkenalkan Anggota Keluarga",
+    "Menanyakan Jumlah Saudara",
+    "Membicarakan Pekerjaan Orang Tua",
+]
+
+BANK_TITLES = [
+    "Membuka Rekening",
+    "Menukar Uang",
+    "Menarik Uang di ATM",
+]
+
+OLAHRAGA_TITLES = [
+    "Mengajak Olahraga Bersama",
+    "Menanyakan Olahraga Favorit",
+    "Menonton Pertandingan",
+]
+
+BIOSKOP_TITLES = [
+    "Membeli Tiket Bioskop",
+    "Memilih Kursi",
+    "Membicarakan Film Setelah Nonton",
+]
+
+# category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
-    "perkenalan": ("Perkenalan", "👋"),
-    "restoran": ("Di Restoran", "🍽️"),
-    "stasiun": ("Di Stasiun", "🚉"),
-    "belanja": ("Belanja", "🛍️"),
-    "arah_jalan": ("Menanyakan Arah", "🧭"),
-    "sekolah": ("Di Sekolah", "🏫"),
-    "cuaca_basa_basi": ("Cuaca & Basa-basi", "☁️"),
+    "perkenalan": ("Perkenalan", "👋", "N5"),
+    "restoran": ("Di Restoran", "🍽️", "N5"),
+    "stasiun": ("Di Stasiun", "🚉", "N5"),
+    "belanja": ("Belanja", "🛍️", "N5"),
+    "arah_jalan": ("Menanyakan Arah", "🧭", "N5"),
+    "sekolah": ("Di Sekolah", "🏫", "N5"),
+    "cuaca_basa_basi": ("Cuaca & Basa-basi", "☁️", "N5"),
+    "rumah_sakit": ("Di Rumah Sakit", "🏥", "N5"),
+    "hobi": ("Hobi", "🎨", "N5"),
+    "telepon": ("Telepon", "☎️", "N5"),
+    "transportasi": ("Transportasi", "🚌", "N5"),
+    "kantor_pos": ("Di Kantor Pos", "📮", "N5"),
+    "liburan": ("Rencana Liburan", "🏖️", "N5"),
+    "keluarga": ("Keluarga", "👨‍👩‍👧", "N5"),
+    "bank": ("Di Bank", "🏦", "N5"),
+    "olahraga": ("Olahraga", "⚽", "N5"),
+    "bioskop": ("Di Bioskop", "🎬", "N5"),
 }
 
-# category_id -> locked dialogue title list, for categories with real
-# content.
+# category_id -> locked dialogue title list, for themes with real content.
 AVAILABLE_CATEGORIES = {
     "perkenalan": PERKENALAN_TITLES,
     "restoran": RESTORAN_TITLES,
@@ -79,13 +151,30 @@ AVAILABLE_CATEGORIES = {
     "arah_jalan": ARAH_JALAN_TITLES,
     "sekolah": SEKOLAH_TITLES,
     "cuaca_basa_basi": CUACA_BASA_BASI_TITLES,
+    "rumah_sakit": RUMAH_SAKIT_TITLES,
+    "hobi": HOBI_TITLES,
+    "telepon": TELEPON_TITLES,
+    "transportasi": TRANSPORTASI_TITLES,
+    "kantor_pos": KANTOR_POS_TITLES,
+    "liburan": LIBURAN_TITLES,
+    "keluarga": KELUARGA_TITLES,
+    "bank": BANK_TITLES,
+    "olahraga": OLAHRAGA_TITLES,
+    "bioskop": BIOSKOP_TITLES,
 }
 
-# (id, display name, icon emoji) for categories with no dataset yet —
-# registered in _categories.json as available: False. Empty for now; see
-# the module docstring above for why this stays as a list rather than
-# being removed.
+# (id, display name, icon emoji) for themes with no dataset yet —
+# registered in _categories.json as available: False. Empty for now.
 PLANNED_CATEGORIES = []
+
+# level_id -> (display name, available)
+LEVEL_META = {
+    "N5": ("N5", True),
+    "N4": ("N4", False),
+    "N3": ("N3", False),
+    "N2": ("N2", False),
+    "N1": ("N1", False),
+}
 
 _ALL_TITLE_LISTS = {
     "PERKENALAN_TITLES": PERKENALAN_TITLES,
@@ -95,13 +184,31 @@ _ALL_TITLE_LISTS = {
     "ARAH_JALAN_TITLES": ARAH_JALAN_TITLES,
     "SEKOLAH_TITLES": SEKOLAH_TITLES,
     "CUACA_BASA_BASI_TITLES": CUACA_BASA_BASI_TITLES,
+    "RUMAH_SAKIT_TITLES": RUMAH_SAKIT_TITLES,
+    "HOBI_TITLES": HOBI_TITLES,
+    "TELEPON_TITLES": TELEPON_TITLES,
+    "TRANSPORTASI_TITLES": TRANSPORTASI_TITLES,
+    "KANTOR_POS_TITLES": KANTOR_POS_TITLES,
+    "LIBURAN_TITLES": LIBURAN_TITLES,
+    "KELUARGA_TITLES": KELUARGA_TITLES,
+    "BANK_TITLES": BANK_TITLES,
+    "OLAHRAGA_TITLES": OLAHRAGA_TITLES,
+    "BIOSKOP_TITLES": BIOSKOP_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) == 3, f"{_name} should have exactly 3 dialogues, has {len(_titles)}"
     assert len(_titles) == len(set(_titles)), f"duplicate title in {_name}"
+
+assert set(CATEGORY_META.keys()) == set(AVAILABLE_CATEGORIES.keys()), (
+    "CATEGORY_META and AVAILABLE_CATEGORIES must cover exactly the same theme ids"
+)
 
 _planned_ids = [c[0] for c in PLANNED_CATEGORIES]
 assert len(_planned_ids) == len(set(_planned_ids)), "duplicate id in PLANNED_CATEGORIES"
 assert set(_planned_ids).isdisjoint(AVAILABLE_CATEGORIES.keys()), (
     "a planned category id collides with an available one"
 )
+
+assert set(LEVEL_META.keys()) == {"N5", "N4", "N3", "N2", "N1"}, "LEVEL_META must cover all 5 JLPT levels"
+_used_levels = {level for _, _, level in CATEGORY_META.values()}
+assert _used_levels.issubset(LEVEL_META.keys()), "a theme references an unknown level"

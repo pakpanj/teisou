@@ -1,10 +1,13 @@
-/// One Kaiwa scenario category (e.g. Perkenalan / Di Restoran). Metadata
-/// only — the actual dialogue list lives in `assets/data/kaiwa_data.json`,
-/// filtered by `category`.
+import 'jlpt_level.dart';
+
+/// One Kaiwa scenario theme (e.g. Perkenalan / Di Restoran), nested under a
+/// [level]. Metadata only — the actual dialogue list lives in
+/// `assets/data/kaiwa_data.json`, filtered by `category`.
 class KaiwaCategoryInfo {
   final String id;
   final String name;
   final String icon;
+  final JlptLevel level;
   final bool available;
 
   /// Real dialogue count for available categories; null for not-yet-
@@ -15,6 +18,7 @@ class KaiwaCategoryInfo {
     required this.id,
     required this.name,
     required this.icon,
+    required this.level,
     required this.available,
     this.dialogueCount,
   });
@@ -24,6 +28,7 @@ class KaiwaCategoryInfo {
         id: json['id'] as String,
         name: json['name'] as String,
         icon: json['icon'] as String,
+        level: JlptLevelX.fromKey(json['level'] as String?),
         available: json['available'] as bool? ?? false,
         dialogueCount: (json['dialogueCount'] as num?)?.toInt(),
       );
