@@ -23,24 +23,52 @@ PERKENALAN_TITLES = [
     "Berkenalan dengan Teman Baru",
     "Menyapa di Pagi Hari",
     "Menanyakan Asal Negara",
+    "Bertukar Nomor Telepon",
+    "Menanyakan Umur",
+    "Memperkenalkan Diri di Kelas Baru",
+    "Menanyakan Pekerjaan",
+    "Berkenalan di Pesta",
+    "Menanyakan Alamat Rumah",
+    "Berpisah Setelah Kenalan",
 ]
 
 RESTORAN_TITLES = [
     "Memesan Makanan di Restoran",
     "Meminta Bill / Membayar",
     "Menanyakan Menu Rekomendasi",
+    "Memesan Minuman Tambahan",
+    "Meminta Meja untuk Empat Orang",
+    "Menanyakan Alergi Makanan",
+    "Memesan Makanan Pedas",
+    "Meminta Kotak untuk Dibawa Pulang",
+    "Memuji Masakan ke Pelayan",
+    "Reservasi Meja Lewat Telepon",
 ]
 
 STASIUN_TITLES = [
     "Membeli Tiket Kereta",
     "Menanyakan Peron/Jalur",
     "Menanyakan Jadwal Kereta",
+    "Naik Kereta yang Salah",
+    "Menanyakan Kereta Ekspres",
+    "Kehilangan Barang di Kereta",
+    "Membeli Kartu Kereta Isi Ulang",
+    "Menanyakan Pintu Keluar Stasiun",
+    "Naik Kereta Saat Jam Sibuk",
+    "Bertanya Stasiun Transit",
 ]
 
 BELANJA_TITLES = [
     "Menanyakan Harga Barang",
     "Mencoba Baju di Toko",
     "Membayar di Kasir",
+    "Meminta Diskon",
+    "Menukar Barang yang Rusak",
+    "Mencari Ukuran yang Pas",
+    "Membandingkan Dua Barang",
+    "Bertanya Jam Buka Toko",
+    "Membeli Oleh-oleh",
+    "Membeli Barang Elektronik",
 ]
 
 ARAH_JALAN_TITLES = [
@@ -196,7 +224,7 @@ _ALL_TITLE_LISTS = {
     "BIOSKOP_TITLES": BIOSKOP_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
-    assert len(_titles) == 3, f"{_name} should have exactly 3 dialogues, has {len(_titles)}"
+    assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
     assert len(_titles) == len(set(_titles)), f"duplicate title in {_name}"
 
 assert set(CATEGORY_META.keys()) == set(AVAILABLE_CATEGORIES.keys()), (
