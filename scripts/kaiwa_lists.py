@@ -375,6 +375,16 @@ OLAHRAGA_TITLES = [
     "Mengikuti Kelas Yoga",
     "Menanyakan Aturan Kolam Renang",
     "Mendaftar Lomba Lari",
+    "Bermain Bulu Tangkis",
+    "Ikut Kelas Renang",
+    "Menonton Olimpiade di TV",
+    "Membicarakan Cedera Ringan",
+    "Ikut Turnamen Sekolah",
+    "Bersepeda Santai Akhir Pekan",
+    "Latihan Beban di Gym",
+    "Menjadi Suporter Tim Favorit",
+    "Mengikuti Kelas Bela Diri",
+    "Bermain Tenis Meja",
 ]
 
 BIOSKOP_TITLES = [
