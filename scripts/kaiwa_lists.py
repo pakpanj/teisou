@@ -30,6 +30,16 @@ PERKENALAN_TITLES = [
     "Berkenalan di Pesta",
     "Menanyakan Alamat Rumah",
     "Berpisah Setelah Kenalan",
+    "Menanyakan Bahasa yang Dikuasai",
+    "Memperkenalkan Anggota Keluarga",
+    "Menanyakan Kota Asal",
+    "Bertemu Tetangga Baru",
+    "Berkenalan di Acara Kampus",
+    "Menanyakan Golongan Darah",
+    "Memperkenalkan Diri Lewat Video Call",
+    "Menanyakan Warna Favorit",
+    "Berkenalan dengan Teman Sekamar Asrama",
+    "Menanyakan Rencana Setelah Lulus",
 ]
 
 RESTORAN_TITLES = [
