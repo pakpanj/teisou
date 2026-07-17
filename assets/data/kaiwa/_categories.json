@@ -17,35 +17,35 @@
     "id": "stasiun",
     "name": "Di Stasiun",
     "icon": "🚉",
-    "available": false,
-    "dialogueCount": null
+    "available": true,
+    "dialogueCount": 3
   },
   {
     "id": "belanja",
     "name": "Belanja",
     "icon": "🛍️",
-    "available": false,
-    "dialogueCount": null
+    "available": true,
+    "dialogueCount": 3
   },
   {
     "id": "arah_jalan",
     "name": "Menanyakan Arah",
     "icon": "🧭",
-    "available": false,
-    "dialogueCount": null
+    "available": true,
+    "dialogueCount": 3
   },
   {
     "id": "sekolah",
     "name": "Di Sekolah",
     "icon": "🏫",
-    "available": false,
-    "dialogueCount": null
+    "available": true,
+    "dialogueCount": 3
   },
   {
     "id": "cuaca_basa_basi",
     "name": "Cuaca & Basa-basi",
     "icon": "☁️",
-    "available": false,
-    "dialogueCount": null
+    "available": true,
+    "dialogueCount": 3
   }
 ]
