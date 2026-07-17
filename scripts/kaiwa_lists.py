@@ -140,6 +140,13 @@ TELEPON_TITLES = [
     "Menerima Telepon",
     "Menelepon Teman",
     "Meninggalkan Pesan",
+    "Menelepon Layanan Pelanggan",
+    "Salah Sambung Telepon",
+    "Menelepon untuk Membatalkan Janji",
+    "Menelepon Orang Tua",
+    "Menutup Telepon dengan Sopan",
+    "Telepon Terputus",
+    "Menelepon untuk Mengucapkan Selamat",
 ]
 
 TRANSPORTASI_TITLES = [
