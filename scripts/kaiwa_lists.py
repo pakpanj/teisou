@@ -114,6 +114,13 @@ RUMAH_SAKIT_TITLES = [
     "Menjelaskan Sakit ke Dokter",
     "Membuat Janji Temu",
     "Membeli Obat di Apotek",
+    "Menjelaskan Gejala Flu",
+    "Menanyakan Efek Samping Obat",
+    "Kontrol Setelah Sakit",
+    "Mengantar Keluarga Berobat",
+    "Menanyakan Biaya Berobat",
+    "Cedera Ringan Saat Olahraga",
+    "Memeriksa Kesehatan Rutin",
 ]
 
 HOBI_TITLES = [

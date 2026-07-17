@@ -10046,6 +10046,1121 @@
     ]
   },
   {
+    "id": "kaiwa_gejala_flu",
+    "title": "Menjelaskan Gejala Flu",
+    "category": "rumah_sakit",
+    "description": "Kamu menjelaskan gejala flu ke dokter.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "症状を教えてください。",
+          "romaji": "Shoujou wo oshiete kudasai.",
+          "translation": "Tolong ceritakan gejalanya."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_gejala_flu_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "熱と咳があります。",
+            "romaji": "Netsu to seki ga arimasu.",
+            "translation": "Saya demam dan batuk.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "元気です。",
+            "romaji": "Genki desu.",
+            "translation": "Saya baik-baik saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "お腹が空きました。",
+            "romaji": "Onaka ga sukimashita.",
+            "translation": "Saya lapar.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いつからですか。",
+          "romaji": "Itsu kara desu ka.",
+          "translation": "Sejak kapan?"
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_gejala_flu_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "三日前からです。",
+            "romaji": "Mikka mae kara desu.",
+            "translation": "Sejak 3 hari lalu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "三時からです。",
+            "romaji": "Sanji kara desu.",
+            "translation": "Sejak jam 3.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "風邪ですね。薬を出します。",
+          "romaji": "Kaze desu ne. Kusuri wo dashimasu.",
+          "translation": "Ini flu ya. Saya kasih obat."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_gejala_flu_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ゆっくり休んでください。",
+          "romaji": "Yukkuri yasunde kudasai.",
+          "translation": "Istirahat yang cukup ya."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_gejala_flu_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、そうします。",
+            "romaji": "Hai, sou shimasu.",
+            "translation": "Ya, akan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、休みません。",
+            "romaji": "Iie, yasumimasen.",
+            "translation": "Tidak, saya tidak akan istirahat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_efek_samping_obat",
+    "title": "Menanyakan Efek Samping Obat",
+    "category": "rumah_sakit",
+    "description": "Kamu bertanya efek samping obat ke apoteker.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "この薬に副作用はありますか。",
+            "romaji": "Kono kusuri ni fukusayou wa arimasu ka.",
+            "translation": "Obat ini ada efek sampingnya?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "この薬は要りません。",
+            "romaji": "Kono kusuri wa irimasen.",
+            "translation": "Saya tidak butuh obat ini.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "この薬はおいしいですか。",
+            "romaji": "Kono kusuri wa oishii desu ka.",
+            "translation": "Obat ini enak?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Apoteker",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "少し眠くなるかもしれません。",
+          "romaji": "Sukoshi nemuku naru kamoshiremasen.",
+          "translation": "Mungkin agak mengantuk."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_efek_samping_obat_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、気をつけます。",
+            "romaji": "Wakarimashita, ki wo tsukemasu.",
+            "translation": "Baik, saya akan hati-hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、大丈夫です。",
+            "romaji": "Iie, daijoubu desu.",
+            "translation": "Tidak, tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Apoteker",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "運転はしない方がいいですよ。",
+          "romaji": "Unten wa shinai hou ga ii desu yo.",
+          "translation": "Sebaiknya jangan menyetir ya."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_efek_samping_obat_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、ありがとうございます。",
+            "romaji": "Wakarimashita, arigatou gozaimasu.",
+            "translation": "Baik, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、運転します。",
+            "romaji": "Iie, unten shimasu.",
+            "translation": "Tidak, saya akan menyetir.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Apoteker",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何か質問はありますか。",
+          "romaji": "Nanika shitsumon wa arimasu ka.",
+          "translation": "Ada pertanyaan lain?"
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_efek_samping_obat_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいえ、大丈夫です。",
+            "romaji": "Iie, daijoubu desu.",
+            "translation": "Tidak, cukup.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "はい、薬局です。",
+            "romaji": "Hai, yakkyoku desu.",
+            "translation": "Ya, apotek.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "8",
+        "speaker": "Apoteker",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お大事に。",
+          "romaji": "Odaiji ni.",
+          "translation": "Semoga cepat sembuh."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_efek_samping_obat_8.png"
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kontrol_setelah_sakit",
+    "title": "Kontrol Setelah Sakit",
+    "category": "rumah_sakit",
+    "description": "Kamu kontrol ke dokter setelah sebelumnya sakit.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "調子はどうですか。",
+          "romaji": "Choushi wa dou desu ka.",
+          "translation": "Bagaimana keadaannya?"
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_kontrol_setelah_sakit_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "だいぶ良くなりました。",
+            "romaji": "Daibu yoku narimashita.",
+            "translation": "Sudah jauh lebih baik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もっと悪くなりました。",
+            "romaji": "Motto waruku narimashita.",
+            "translation": "Malah tambah buruk.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "良かったです！まだ薬は飲んでいますか。",
+          "romaji": "Yokatta desu! Mada kusuri wa nonde imasu ka.",
+          "translation": "Syukurlah! Masih minum obat?"
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_kontrol_setelah_sakit_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、まだ飲んでいます。",
+            "romaji": "Hai, mada nonde imasu.",
+            "translation": "Ya, masih minum.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、もう飲みません。",
+            "romaji": "Iie, mou nomimasen.",
+            "translation": "Tidak, sudah tidak minum lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あと3日飲んでくださいね。",
+          "romaji": "Ato mikka nonde kudasai ne.",
+          "translation": "Minum 3 hari lagi ya."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_kontrol_setelah_sakit_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました。",
+            "romaji": "Wakarimashita.",
+            "translation": "Baik, mengerti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、飲みません。",
+            "romaji": "Iie, nomimasen.",
+            "translation": "Tidak, saya tidak akan minum.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もう大丈夫そうですね。",
+          "romaji": "Mou daijoubu sou desu ne.",
+          "translation": "Sepertinya sudah baik-baik saja."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_kontrol_setelah_sakit_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、ありがとうございました。",
+            "romaji": "Hai, arigatou gozaimashita.",
+            "translation": "Ya, terima kasih banyak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだ痛いです。",
+            "romaji": "Iie, mada itai desu.",
+            "translation": "Tidak, masih sakit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いただきます。",
+            "romaji": "Itadakimasu.",
+            "translation": "Selamat makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_antar_keluarga_berobat",
+    "title": "Mengantar Keluarga Berobat",
+    "category": "rumah_sakit",
+    "description": "Kamu mengantar adikmu yang demam ke rumah sakit.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "弟が熱を出したので、連れてきました。",
+            "romaji": "Otouto ga netsu wo dashita node, tsurete kimashita.",
+            "translation": "Adik saya demam, jadi saya bawa ke sini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "弟は元気です。",
+            "romaji": "Otouto wa genki desu.",
+            "translation": "Adik saya sehat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "弟が好きです。",
+            "romaji": "Otouto ga suki desu.",
+            "translation": "Saya suka adik saya.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Perawat",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お名前と年齢を教えてください。",
+          "romaji": "Onamae to nenrei wo oshiete kudasai.",
+          "translation": "Tolong beri tahu nama dan usianya."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_antar_keluarga_berobat_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "アリです、8歳です。",
+            "romaji": "Ari desu, hassai desu.",
+            "translation": "Namanya Ari, 8 tahun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Perawat",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "分かりました。少々お待ちください。",
+          "romaji": "Wakarimashita. Shoushou omachi kudasai.",
+          "translation": "Baik. Mohon tunggu sebentar."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_antar_keluarga_berobat_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お願いします。",
+            "romaji": "Hai, onegaishimasu.",
+            "translation": "Ya, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高いですか。",
+            "romaji": "Takai desu ka.",
+            "translation": "Mahal?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Perawat",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お名前をお呼びします。",
+          "romaji": "Onamae wo oyobi shimasu.",
+          "translation": "Nanti kami panggil namanya."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_antar_keluarga_berobat_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、ありがとうございます。",
+            "romaji": "Wakarimashita, arigatou gozaimasu.",
+            "translation": "Baik, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、分かりません。",
+            "romaji": "Iie, wakarimasen.",
+            "translation": "Tidak, saya tidak mengerti.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_biaya_berobat",
+    "title": "Menanyakan Biaya Berobat",
+    "category": "rumah_sakit",
+    "description": "Kamu bertanya dan membayar biaya periksa.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "今日の診察はいくらですか。",
+            "romaji": "Kyou no shinsatsu wa ikura desu ka.",
+            "translation": "Periksa hari ini berapa biayanya?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "診察は要りません。",
+            "romaji": "Shinsatsu wa irimasen.",
+            "translation": "Saya tidak butuh periksa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "病院が好きです。",
+            "romaji": "Byouin ga suki desu.",
+            "translation": "Saya suka rumah sakit.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Petugas Kasir",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "3,000円です。",
+          "romaji": "Sanzen en desu.",
+          "translation": "3.000 yen."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_biaya_berobat_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "カードで払えますか。",
+            "romaji": "Kaado de haraemasu ka.",
+            "translation": "Bisa bayar pakai kartu?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "カードは要りません。",
+            "romaji": "Kaado wa irimasen.",
+            "translation": "Saya tidak butuh kartu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Petugas Kasir",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "はい、大丈夫です。",
+          "romaji": "Hai, daijoubu desu.",
+          "translation": "Ya, bisa."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_biaya_berobat_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "これでお願いします。",
+            "romaji": "Kore de onegaishimasu.",
+            "translation": "Ini, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "現金で払います。",
+            "romaji": "Genkin de haraimasu.",
+            "translation": "Saya bayar tunai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Petugas Kasir",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ありがとうございました。お大事に。",
+          "romaji": "Arigatou gozaimashita. Odaiji ni.",
+          "translation": "Terima kasih. Semoga cepat sembuh."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_biaya_berobat_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "さようなら、二度と来ません。",
+            "romaji": "Sayounara, nidoto kimasen.",
+            "translation": "Selamat tinggal, tidak akan datang lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_cedera_olahraga",
+    "title": "Cedera Ringan Saat Olahraga",
+    "category": "rumah_sakit",
+    "description": "Kakimu cedera saat olahraga dan kamu periksa ke dokter.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "運動中に足を怪我しました。",
+            "romaji": "Undouchuu ni ashi wo kega shimashita.",
+            "translation": "Kaki saya cedera saat olahraga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "足は元気です。",
+            "romaji": "Ashi wa genki desu.",
+            "translation": "Kaki saya sehat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "運動が好きです。",
+            "romaji": "Undou ga suki desu.",
+            "translation": "Saya suka olahraga.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どこが痛いですか。",
+          "romaji": "Doko ga itai desu ka.",
+          "translation": "Yang sakit di mana?"
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_cedera_olahraga_2.png"
+      },
+      {
+        "id": "3",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "足首が痛いです。",
+            "romaji": "Ashikubi ga itai desu.",
+            "translation": "Pergelangan kaki sakit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "頭が痛いです。",
+            "romaji": "Atama ga itai desu.",
+            "translation": "Kepala sakit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "レントゲンを撮りましょう。",
+          "romaji": "Rentogen wo torimashou.",
+          "translation": "Ayo kita rontgen."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_cedera_olahraga_4.png"
+      },
+      {
+        "id": "5",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました。",
+            "romaji": "Wakarimashita.",
+            "translation": "Baik, mengerti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、要りません。",
+            "romaji": "Iie, irimasen.",
+            "translation": "Tidak, tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "骨は大丈夫です。少し休んでください。",
+          "romaji": "Hone wa daijoubu desu. Sukoshi yasunde kudasai.",
+          "translation": "Tulangnya tidak apa-apa. Istirahat sedikit ya."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_cedera_olahraga_6.png"
+      },
+      {
+        "id": "7",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "良かったです、ありがとうございます。",
+            "romaji": "Yokatta desu, arigatou gozaimasu.",
+            "translation": "Syukurlah, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": "senang"
+          },
+          {
+            "japanese": "残念です。",
+            "romaji": "Zannen desu.",
+            "translation": "Sayang sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_periksa_kesehatan_rutin",
+    "title": "Memeriksa Kesehatan Rutin",
+    "category": "rumah_sakit",
+    "description": "Kamu melakukan pemeriksaan kesehatan rutin tahunan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今日は健康診断ですね。",
+          "romaji": "Kyou wa kenkou shindan desu ne.",
+          "translation": "Hari ini pemeriksaan kesehatan rutin ya."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_periksa_kesehatan_rutin_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、よろしくお願いします。",
+            "romaji": "Hai, yoroshiku onegaishimasu.",
+            "translation": "Ya, mohon bantuannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "体重を測りましょう。",
+          "romaji": "Taijuu wo hakarimashou.",
+          "translation": "Ayo timbang berat badan."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_periksa_kesehatan_rutin_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、分かりました。",
+            "romaji": "Hai, wakarimashita.",
+            "translation": "Ya, baik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、嫌です。",
+            "romaji": "Iie, iya desu.",
+            "translation": "Tidak, saya tidak mau.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "血圧も測ります。",
+          "romaji": "Ketsuatsu mo hakarimasu.",
+          "translation": "Tekanan darah juga kita ukur."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_periksa_kesehatan_rutin_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました。",
+            "romaji": "Wakarimashita.",
+            "translation": "Baik, mengerti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、痛いです。",
+            "romaji": "Iie, itai desu.",
+            "translation": "Tidak, sakit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Dokter",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "全部正常です。健康ですね。",
+          "romaji": "Zenbu seijou desu. Kenkou desu ne.",
+          "translation": "Semua normal. Sehat ya."
+        },
+        "imagePath": "kaiwa_images/rumah_sakit/kaiwa_periksa_kesehatan_rutin_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "よかったです！ありがとうございます。",
+            "romaji": "Yokatta desu! Arigatou gozaimasu.",
+            "translation": "Syukurlah! Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": "senang"
+          },
+          {
+            "japanese": "残念です。",
+            "romaji": "Zannen desu.",
+            "translation": "Sayang sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "kaiwa_tanya_hobi",
     "title": "Menanyakan Hobi Teman",
     "category": "hobi",
