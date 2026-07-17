@@ -76,6 +76,16 @@ STASIUN_TITLES = [
     "Menanyakan Pintu Keluar Stasiun",
     "Naik Kereta Saat Jam Sibuk",
     "Bertanya Stasiun Transit",
+    "Membeli Tiket Shinkansen",
+    "Menanyakan Loker Penitipan Barang",
+    "Terlambat Ketinggalan Kereta",
+    "Menanyakan Gerbong Khusus Wanita",
+    "Meminta Bantuan Membawa Koper",
+    "Menanyakan Reservasi Kursi Kereta",
+    "Bertanya Kereta Malam Terakhir",
+    "Mengembalikan Tiket yang Salah Beli",
+    "Menanyakan Akses untuk Kursi Roda",
+    "Menanyakan Rute Tercepat",
 ]
 
 BELANJA_TITLES = [
