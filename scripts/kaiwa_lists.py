@@ -99,6 +99,16 @@ BELANJA_TITLES = [
     "Bertanya Jam Buka Toko",
     "Membeli Oleh-oleh",
     "Membeli Barang Elektronik",
+    "Mencari Barang di Rak",
+    "Membeli Baju Musim Dingin",
+    "Menanyakan Metode Pembayaran",
+    "Membeli Sepatu Baru",
+    "Membeli Hadiah untuk Teman",
+    "Bertanya Barang Stok Habis",
+    "Menggunakan Poin Member",
+    "Membeli Buah di Pasar",
+    "Menanyakan Garansi Barang",
+    "Belanja Online, Ambil di Toko",
 ]
 
 ARAH_JALAN_TITLES = [
