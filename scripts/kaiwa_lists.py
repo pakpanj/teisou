@@ -153,6 +153,13 @@ TRANSPORTASI_TITLES = [
     "Naik Bus",
     "Memanggil Taksi",
     "Menanyakan Ongkos",
+    "Naik Kereta Bawah Tanah",
+    "Menyewa Sepeda",
+    "Naik Pesawat",
+    "Ketinggalan Bus",
+    "Menanyakan Jam Terakhir Transportasi",
+    "Naik Ojek/Ride Sharing",
+    "Menanyakan Rute Terbaik",
 ]
 
 KANTOR_POS_TITLES = [
