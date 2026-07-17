@@ -283,6 +283,16 @@ KANTOR_POS_TITLES = [
     "Komplain Paket Rusak",
     "Mengirim Barang Internasional",
     "Menanyakan Asuransi Pengiriman",
+    "Mengecek Nomor Resi",
+    "Mengirim Kartu Pos",
+    "Menanyakan Jam Buka Kantor Pos",
+    "Mengubah Alamat Pengiriman",
+    "Mengirim Dokumen Penting",
+    "Membungkus Paket di Kantor Pos",
+    "Menerima Paket COD",
+    "Kehilangan Bukti Pengiriman",
+    "Mengirim Paket Barang Pecah Belah",
+    "Membuat Akun Pengiriman Online",
 ]
 
 LIBURAN_TITLES = [
