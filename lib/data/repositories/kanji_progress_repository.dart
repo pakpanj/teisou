@@ -50,10 +50,16 @@ class KanjiProgressRepository {
     await _saveLocalList(current);
 
     if (uid != null) {
-      await _firestore
-          .collection(FirestorePaths.kanjiProgressCollection(uid))
-          .doc(kanjiId)
-          .set(entry.toFirestoreMap());
+      try {
+        await _firestore
+            .collection(FirestorePaths.kanjiProgressCollection(uid))
+            .doc(kanjiId)
+            .set(entry.toFirestoreMap());
+      } catch (_) {
+        // Best-effort mirror only — the local write above is the source of
+        // truth and already succeeded, so a network/Firestore failure here
+        // must not propagate and get the caller's UI state stuck.
+      }
     }
   }
 
@@ -63,10 +69,14 @@ class KanjiProgressRepository {
     await _saveLocalList(current);
 
     if (uid != null) {
-      await _firestore
-          .collection(FirestorePaths.kanjiProgressCollection(uid))
-          .doc(kanjiId)
-          .delete();
+      try {
+        await _firestore
+            .collection(FirestorePaths.kanjiProgressCollection(uid))
+            .doc(kanjiId)
+            .delete();
+      } catch (_) {
+        // Best-effort mirror only — see markLearned above.
+      }
     }
   }
 }

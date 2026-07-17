@@ -51,10 +51,16 @@ class BunpouProgressRepository {
     await _saveLocalList(current);
 
     if (uid != null) {
-      await _firestore
-          .collection(FirestorePaths.bunpouProgressCollection(uid))
-          .doc(bunpouId)
-          .set(entry.toFirestoreMap());
+      try {
+        await _firestore
+            .collection(FirestorePaths.bunpouProgressCollection(uid))
+            .doc(bunpouId)
+            .set(entry.toFirestoreMap());
+      } catch (_) {
+        // Best-effort mirror only — the local write above is the source of
+        // truth and already succeeded, so a network/Firestore failure here
+        // must not propagate and get the caller's UI state stuck.
+      }
     }
   }
 
@@ -64,10 +70,14 @@ class BunpouProgressRepository {
     await _saveLocalList(current);
 
     if (uid != null) {
-      await _firestore
-          .collection(FirestorePaths.bunpouProgressCollection(uid))
-          .doc(bunpouId)
-          .delete();
+      try {
+        await _firestore
+            .collection(FirestorePaths.bunpouProgressCollection(uid))
+            .doc(bunpouId)
+            .delete();
+      } catch (_) {
+        // Best-effort mirror only — see markLearned above.
+      }
     }
   }
 }
