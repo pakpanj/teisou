@@ -185,7 +185,11 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
                   ),
                   const SizedBox(height: 16),
                   for (var i = 0; i < _revealedCount; i++)
-                    _LineBubble(line: lines[i], answer: _answered[i]),
+                    _LineBubble(
+                      key: ValueKey(lines[i].id),
+                      line: lines[i],
+                      answer: _answered[i],
+                    ),
                 ],
               ),
             ),
@@ -217,11 +221,21 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
   }
 }
 
+/// Keyed on `line.id` (not just positional) — a real bug found on-device:
+/// when a dialogue starts with a user turn, answering it correctly can
+/// reveal *two* new bubbles at once (the npc line plus the next user
+/// prompt, since `_revealNext` only pauses at user turns). Without an
+/// explicit key, Flutter's default position-based element reuse could
+/// leave the freshly-inserted npc bubble's `KaiwaImage` state confused
+/// with whatever widget previously occupied that Column slot, so its
+/// image never rendered — visible only on the *first* such multi-bubble
+/// reveal in a dialogue, which is why some dialogues looked fine while
+/// others (the ones starting with a user turn) didn't.
 class _LineBubble extends StatelessWidget {
   final KaiwaLine line;
   final KaiwaAnswerOption? answer;
 
-  const _LineBubble({required this.line, this.answer});
+  const _LineBubble({super.key, required this.line, this.answer});
 
   @override
   Widget build(BuildContext context) {

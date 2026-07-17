@@ -20,5 +20,17 @@ service firebase.storage {
       allow read: if request.auth != null;
       allow write: if false;
     }
+
+    // Kaiwa dialogue illustrations — same read-only-for-signed-in-users
+    // shape as kotoba_images above. This was missing when the Kaiwa
+    // image+multiple-choice redesign shipped (no images had been uploaded
+    // yet, so the gap was invisible until upload time); added so real
+    // images work under the default-deny rule as soon as they're uploaded,
+    // instead of every KaiwaImage silently falling back to its placeholder
+    // forever.
+    match /kaiwa_images/{category}/{imageId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
   }
 }
