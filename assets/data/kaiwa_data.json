@@ -58115,6 +58115,3286 @@
     ]
   },
   {
+    "id": "kaiwa_telepon_reservasi_restoran",
+    "title": "Menelepon Reservasi Restoran",
+    "category": "telepon",
+    "description": "Kamu menelepon restoran untuk memesan meja.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Staf Restoran",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "はい、レストランです。",
+          "romaji": "Hai, resutoran desu.",
+          "translation": "Halo, ini restoran."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_reservasi_restoran_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "今晩7時に予約したいです。",
+            "romaji": "Konban shichiji ni yoyaku shitai desu.",
+            "translation": "Saya mau reservasi jam 7 malam ini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "今晩7時に閉店します。",
+            "romaji": "Konban shichiji ni heiten shimasu.",
+            "translation": "Malam ini tutup jam 7.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Staf Restoran",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何名様ですか。",
+          "romaji": "Nanmeisama desu ka.",
+          "translation": "Berapa orang?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_reservasi_restoran_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "4人です。",
+            "romaji": "Yonin desu.",
+            "translation": "4 orang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "4時です。",
+            "romaji": "Yoji desu.",
+            "translation": "Jam 4.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Staf Restoran",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お名前をお願いします。",
+          "romaji": "Onamae wo onegaishimasu.",
+          "translation": "Boleh nama Anda?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_reservasi_restoran_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "田中です。",
+            "romaji": "Tanaka desu.",
+            "translation": "Saya Tanaka.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "元気です。",
+            "romaji": "Genki desu.",
+            "translation": "Saya baik-baik saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "結構です。",
+            "romaji": "Kekkou desu.",
+            "translation": "Tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Staf Restoran",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ご予約承りました。",
+          "romaji": "Goyoyaku uketamawarimashita.",
+          "translation": "Reservasi sudah kami terima."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_reservasi_restoran_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_minta_maaf_terlambat",
+    "title": "Menelepon Minta Maaf Terlambat",
+    "category": "telepon",
+    "description": "Kamu menelepon temanmu untuk minta maaf karena akan terlambat.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、今どこ？",
+          "romaji": "Moshi moshi, ima doko?",
+          "translation": "Halo, sekarang di mana?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_minta_maaf_terlambat_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ごめん、少し遅れます。",
+            "romaji": "Gomen, sukoshi okuremasu.",
+            "translation": "Maaf, saya agak telat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう着きました。",
+            "romaji": "Mou tsukimashita.",
+            "translation": "Saya sudah sampai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのくらい遅れますか。",
+          "romaji": "Dono kurai okuremasu ka.",
+          "translation": "Telatnya berapa lama?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_minta_maaf_terlambat_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "15分くらいです。",
+            "romaji": "Juugofun kurai desu.",
+            "translation": "Sekitar 15 menit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "15時間くらいです。",
+            "romaji": "Juugo jikan kurai desu.",
+            "translation": "Sekitar 15 jam.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大丈夫、待っているね。",
+          "romaji": "Daijoubu, matte iru ne.",
+          "translation": "Tidak apa-apa, saya tunggu ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_minta_maaf_terlambat_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、ごめんね。",
+            "romaji": "Arigatou, gomen ne.",
+            "translation": "Terima kasih, maaf ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "待たなくていいよ。",
+            "romaji": "Matanakute ii yo.",
+            "translation": "Tidak usah tunggu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "気をつけて来てね。",
+          "romaji": "Ki wo tsukete kite ne.",
+          "translation": "Hati-hati di jalan ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_minta_maaf_terlambat_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、すぐ行くね。",
+            "romaji": "Un, sugu iku ne.",
+            "translation": "Iya, saya segera ke sana.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、行きません。",
+            "romaji": "Iie, ikimasen.",
+            "translation": "Tidak, saya tidak akan pergi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_curhat_teman",
+    "title": "Menelepon Teman Curhat",
+    "category": "telepon",
+    "description": "Kamu menelepon teman dekat untuk bercerita tentang masalahmu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、どうしたの？",
+          "romaji": "Moshi moshi, dou shita no?",
+          "translation": "Halo, ada apa?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_curhat_teman_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ちょっと話したいことがあるの。",
+            "romaji": "Chotto hanashitai koto ga aru no.",
+            "translation": "Ada yang mau saya ceritakan sedikit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何もありません。",
+            "romaji": "Nanimo arimasen.",
+            "translation": "Tidak ada apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "うん、聞いているよ。",
+          "romaji": "Un, kiite iru yo.",
+          "translation": "Iya, saya dengarkan."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_curhat_teman_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "最近仕事が大変で。",
+            "romaji": "Saikin shigoto ga taihen de.",
+            "translation": "Belakangan kerjaan berat banget.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "最近とても暇で。",
+            "romaji": "Saikin totemo hima de.",
+            "translation": "Belakangan saya sangat luang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大変だったね、頑張ってるね。",
+          "romaji": "Taihen datta ne, ganbatteru ne.",
+          "translation": "Berat ya, kamu sudah berusaha keras ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_curhat_teman_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、頑張っていません。",
+            "romaji": "Iie, ganbatte imasen.",
+            "translation": "Tidak, saya tidak berusaha.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "話してくれてありがとう。",
+          "romaji": "Hanashite kurete arigatou.",
+          "translation": "Terima kasih sudah cerita."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_curhat_teman_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "こちらこそありがとう。",
+            "romaji": "Kochira koso arigatou.",
+            "translation": "Sama-sama, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_salah_nomor_telepon",
+    "title": "Salah Nomor Telepon",
+    "category": "telepon",
+    "description": "Kamu menerima telepon dari nomor yang salah sambung.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Penelepon",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、鈴木さんのお宅ですか。",
+          "romaji": "Moshi moshi, Suzuki-san no otaku desu ka.",
+          "translation": "Halo, ini kediaman Suzuki?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_salah_nomor_telepon_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいえ、番号をお間違えだと思います。",
+            "romaji": "Iie, bangou wo omachigae da to omoimasu.",
+            "translation": "Tidak, sepertinya salah nomor.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "はい、鈴木です。",
+            "romaji": "Hai, Suzuki desu.",
+            "translation": "Ya, ini Suzuki.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Penelepon",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あ、すみません。",
+          "romaji": "A, sumimasen.",
+          "translation": "Ah, maaf."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_salah_nomor_telepon_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいえ、大丈夫です。",
+            "romaji": "Iie, daijoubu desu.",
+            "translation": "Tidak apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは困ります。",
+            "romaji": "Sore wa komarimasu.",
+            "translation": "Itu bikin repot.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Penelepon",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "番号を確認しますね。",
+          "romaji": "Bangou wo kakunin shimasu ne.",
+          "translation": "Saya cek nomornya ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_salah_nomor_telepon_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、どうぞ。",
+            "romaji": "Hai, douzo.",
+            "translation": "Ya, silakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Penelepon",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "失礼しました。",
+          "romaji": "Shitsurei shimashita.",
+          "translation": "Maaf mengganggu."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_salah_nomor_telepon_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいえ、大丈夫ですよ。",
+            "romaji": "Iie, daijoubu desu yo.",
+            "translation": "Tidak apa-apa kok.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう電話しないでください。",
+            "romaji": "Mou denwa shinaide kudasai.",
+            "translation": "Jangan telepon lagi ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_provider_internet",
+    "title": "Menelepon Provider Internet",
+    "category": "telepon",
+    "description": "Kamu menelepon provider internet karena koneksi bermasalah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "CS",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "はい、インターネット会社です。",
+          "romaji": "Hai, intaanetto kaisha desu.",
+          "translation": "Halo, ini perusahaan internet."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_provider_internet_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "インターネットが繋がりません。",
+            "romaji": "Intaanetto ga tsunagarimasen.",
+            "translation": "Internetnya tidak bisa tersambung.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "インターネットは速いです。",
+            "romaji": "Intaanetto wa hayai desu.",
+            "translation": "Internetnya cepat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "CS",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いつから繋がりませんか。",
+          "romaji": "Itsu kara tsunagarimasen ka.",
+          "translation": "Sejak kapan tidak tersambung?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_provider_internet_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "今朝からです。",
+            "romaji": "Kesa kara desu.",
+            "translation": "Sejak pagi ini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "来月からです。",
+            "romaji": "Raigetsu kara desu.",
+            "translation": "Mulai bulan depan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "CS",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ルーターを再起動してみてください。",
+          "romaji": "Ruutaa wo saikidou shite mite kudasai.",
+          "translation": "Coba restart routernya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_provider_internet_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、やってみます。",
+            "romaji": "Wakarimashita, yatte mimasu.",
+            "translation": "Baik, akan saya coba.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "したくないです。",
+            "romaji": "Shitakunai desu.",
+            "translation": "Saya tidak mau lakukan itu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "CS",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "直りましたか。",
+          "romaji": "Naorimashita ka.",
+          "translation": "Sudah membaik?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_provider_internet_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、直りました。",
+            "romaji": "Hai, naorimashita.",
+            "translation": "Ya, sudah membaik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだです。",
+            "romaji": "Iie, mada desu.",
+            "translation": "Tidak, belum.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_pacar_malam",
+    "title": "Menelepon Pacar Malam Hari",
+    "category": "telepon",
+    "description": "Kamu menelepon pacarmu sebelum tidur untuk mengucapkan selamat malam.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Pacar",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、もう寝た？",
+          "romaji": "Moshi moshi, mou neta?",
+          "translation": "Halo, sudah tidur?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_pacar_malam_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ううん、まだ起きてるよ。",
+            "romaji": "Uun, mada okiteru yo.",
+            "translation": "Belum, masih bangun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、もう寝てるよ。",
+            "romaji": "Un, mou neteru yo.",
+            "translation": "Iya, sudah tidur.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Pacar",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今日はどうだった？",
+          "romaji": "Kyou wa dou datta?",
+          "translation": "Hari ini bagaimana?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_pacar_malam_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "楽しかったよ。",
+            "romaji": "Tanoshikatta yo.",
+            "translation": "Menyenangkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "楽しかったです？",
+            "romaji": "Tanoshikatta desu?",
+            "translation": "Apakah menyenangkan?",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Pacar",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "会いたいな。",
+          "romaji": "Aitai na.",
+          "translation": "Kangen ingin ketemu."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_pacar_malam_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "私も会いたいよ。",
+            "romaji": "Watashi mo aitai yo.",
+            "translation": "Aku juga kangen.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "会いたくないよ。",
+            "romaji": "Aitakunai yo.",
+            "translation": "Aku tidak mau ketemu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Pacar",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "おやすみ、いい夢見てね。",
+          "romaji": "Oyasumi, ii yume mite ne.",
+          "translation": "Selamat malam, mimpi indah ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_pacar_malam_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "おやすみ、また明日ね。",
+            "romaji": "Oyasumi, mata ashita ne.",
+            "translation": "Selamat malam, sampai besok ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "おはよう。",
+            "romaji": "Ohayou.",
+            "translation": "Selamat pagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_kurir_alamat",
+    "title": "Menelepon Kurir Konfirmasi Alamat",
+    "category": "telepon",
+    "description": "Kurir menelepon untuk memastikan alamat pengirimanmu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Kurir",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、配達員です。",
+          "romaji": "Moshi moshi, haitatsuin desu.",
+          "translation": "Halo, ini kurir."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_kurir_alamat_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お疲れ様です。",
+            "romaji": "Hai, otsukaresama desu.",
+            "translation": "Ya, terima kasih untuk kerjanya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Kurir",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今住所を確認してもいいですか。",
+          "romaji": "Ima juusho wo kakunin shite mo ii desu ka.",
+          "translation": "Boleh saya konfirmasi alamatnya sekarang?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_kurir_alamat_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、どうぞ。",
+            "romaji": "Hai, douzo.",
+            "translation": "Ya, silakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、駄目です。",
+            "romaji": "Iie, dame desu.",
+            "translation": "Tidak, tidak boleh.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Kurir",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "10分後に着きます。",
+          "romaji": "Juppun go ni tsukimasu.",
+          "translation": "Akan sampai 10 menit lagi."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_kurir_alamat_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、待っています。",
+            "romaji": "Wakarimashita, matte imasu.",
+            "translation": "Baik, saya tunggu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "10時間後ですね。",
+            "romaji": "Juu jikan go desu ne.",
+            "translation": "10 jam lagi ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Kurir",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ありがとうございました。",
+          "romaji": "Arigatou gozaimashita.",
+          "translation": "Terima kasih."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_kurir_alamat_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "こちらこそありがとうございます。",
+            "romaji": "Kochira koso arigatou gozaimasu.",
+            "translation": "Sama-sama, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_sinyal_telepon_buruk",
+    "title": "Sinyal Telepon Buruk",
+    "category": "telepon",
+    "description": "Kamu menelepon teman tapi sinyalnya buruk dan suara terputus-putus.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、聞こえる？",
+          "romaji": "Moshi moshi, kikoeru?",
+          "translation": "Halo, kedengaran?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_sinyal_telepon_buruk_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "あまりよく聞こえないよ。",
+            "romaji": "Amari yoku kikoenai yo.",
+            "translation": "Kurang begitu kedengaran.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、よく聞こえるよ。",
+            "romaji": "Un, yoku kikoeru yo.",
+            "translation": "Iya, kedengaran jelas.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電波が悪いみたい。",
+          "romaji": "Denpa ga warui mitai.",
+          "translation": "Sepertinya sinyalnya buruk."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_sinyal_telepon_buruk_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、後でかけ直すね。",
+            "romaji": "Un, atode kakenaosu ne.",
+            "translation": "Iya, nanti saya telepon lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "電波はいいよ。",
+            "romaji": "Denpa wa ii yo.",
+            "translation": "Sinyalnya bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "うん、待ってるね。",
+          "romaji": "Un, matteru ne.",
+          "translation": "Iya, saya tunggu ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_sinyal_telepon_buruk_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、少し待ってね。",
+            "romaji": "Un, sukoshi matte ne.",
+            "translation": "Iya, tunggu sebentar ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "待たなくていいよ。",
+            "romaji": "Matanakute ii yo.",
+            "translation": "Tidak usah tunggu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あ、聞こえるようになったね。",
+          "romaji": "A, kikoeru you ni natta ne.",
+          "translation": "Ah, sekarang sudah kedengaran ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_sinyal_telepon_buruk_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、よかった。",
+            "romaji": "Un, yokatta.",
+            "translation": "Iya, syukurlah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ聞こえないよ。",
+            "romaji": "Mada kikoenai yo.",
+            "translation": "Masih belum kedengaran.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_sekolah_anak",
+    "title": "Menelepon Sekolah Anak",
+    "category": "telepon",
+    "description": "Kamu menelepon sekolah anakmu untuk menanyakan sesuatu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Staf Sekolah",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "はい、〇〇小学校です。",
+          "romaji": "Hai, maru-maru shougakkou desu.",
+          "translation": "Halo, ini SD Anu."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_sekolah_anak_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "息子の担任の先生とお話ししたいです。",
+            "romaji": "Musuko no tannin no sensei to ohanashi shitai desu.",
+            "translation": "Saya ingin bicara dengan wali kelas anak saya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "先生は要りません。",
+            "romaji": "Sensei wa irimasen.",
+            "translation": "Guru tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Staf Sekolah",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お名前をお願いします。",
+          "romaji": "Onamae wo onegaishimasu.",
+          "translation": "Boleh nama Anda?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_sekolah_anak_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "田中と申します。",
+            "romaji": "Tanaka to moushimasu.",
+            "translation": "Saya Tanaka.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "元気です。",
+            "romaji": "Genki desu.",
+            "translation": "Saya baik-baik saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "結構です。",
+            "romaji": "Kekkou desu.",
+            "translation": "Tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Staf Sekolah",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "少々お待ちください。",
+          "romaji": "Shoushou omachi kudasai.",
+          "translation": "Mohon tunggu sebentar."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_sekolah_anak_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お願いします。",
+            "romaji": "Hai, onegaishimasu.",
+            "translation": "Ya, tolong ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お電話代わりました、先生です。",
+          "romaji": "Odenwa kawarimashita, sensei desu.",
+          "translation": "Saya gantikan teleponnya, ini gurunya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_sekolah_anak_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お世話になっております。",
+            "romaji": "Osewa ni natte orimasu.",
+            "translation": "Terima kasih atas bantuannya selama ini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "初めまして。",
+            "romaji": "Hajimemashite.",
+            "translation": "Salam kenal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_batalkan_langganan",
+    "title": "Menelepon untuk Batalkan Langganan",
+    "category": "telepon",
+    "description": "Kamu menelepon layanan untuk membatalkan langganan bulanan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "CS",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "はい、カスタマーサービスです。",
+          "romaji": "Hai, kasutamaa saabisu desu.",
+          "translation": "Halo, ini layanan pelanggan."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_batalkan_langganan_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "サブスクリプションを解約したいです。",
+            "romaji": "Sabusukuripushon wo kaiyaku shitai desu.",
+            "translation": "Saya ingin membatalkan langganan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "サブスクリプションを申し込みたいです。",
+            "romaji": "Sabusukuripushon wo moushikomitai desu.",
+            "translation": "Saya ingin mendaftar langganan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "CS",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "理由を教えていただけますか。",
+          "romaji": "Riyuu wo oshiete itadakemasu ka.",
+          "translation": "Boleh tahu alasannya?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_batalkan_langganan_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "あまり使わなくなりました。",
+            "romaji": "Amari tsukawanaku narimashita.",
+            "translation": "Saya jadi jarang pakai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "とても使利です。",
+            "romaji": "Totemo benri desu.",
+            "translation": "Sangat berguna.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "CS",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今月末で解約できます。",
+          "romaji": "Kongetsu matsu de kaiyaku dekimasu.",
+          "translation": "Bisa dibatalkan akhir bulan ini."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_batalkan_langganan_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、お願いします。",
+            "romaji": "Wakarimashita, onegaishimasu.",
+            "translation": "Baik, tolong ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "来年でお願いします。",
+            "romaji": "Rainen de onegaishimasu.",
+            "translation": "Tolong tahun depan saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "CS",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手続きが完了しました。",
+          "romaji": "Tetsuzuki ga kanryou shimashita.",
+          "translation": "Proses sudah selesai."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_batalkan_langganan_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ終わっていません。",
+            "romaji": "Mada owatte imasen.",
+            "translation": "Belum selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_bank_blokir_kartu",
+    "title": "Menelepon Bank untuk Blokir Kartu",
+    "category": "telepon",
+    "description": "Kartumu hilang dan kamu menelepon bank untuk memblokirnya.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "CS Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "はい、銀行のカスタマーサービスです。",
+          "romaji": "Hai, ginkou no kasutamaa saabisu desu.",
+          "translation": "Halo, ini layanan pelanggan bank."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_bank_blokir_kartu_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "カードをなくしたので止めたいです。",
+            "romaji": "Kaado wo nakushita node tometai desu.",
+            "translation": "Kartu saya hilang, saya ingin memblokirnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "カードを作りたいです。",
+            "romaji": "Kaado wo tsukuritai desu.",
+            "translation": "Saya ingin membuat kartu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "CS Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お名前と生年月日をお願いします。",
+          "romaji": "Onamae to seinengappi wo onegaishimasu.",
+          "translation": "Boleh nama dan tanggal lahir Anda?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_bank_blokir_kartu_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "田中太郎、1990年5月です。",
+            "romaji": "Tanaka Tarou, sen kyuuhyaku kyuujuu nen gogatsu desu.",
+            "translation": "Tanaka Tarou, Mei 1990.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "元気です。",
+            "romaji": "Genki desu.",
+            "translation": "Saya baik-baik saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "CS Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "カードを止めました、ご安心ください。",
+          "romaji": "Kaado wo tomemashita, goanshin kudasai.",
+          "translation": "Kartu sudah diblokir, tenang saja."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_bank_blokir_kartu_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、安心しました。",
+            "romaji": "Arigatou gozaimasu, anshin shimashita.",
+            "translation": "Terima kasih, jadi lega.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ心配です。",
+            "romaji": "Mada shinpai desu.",
+            "translation": "Masih khawatir.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "CS Bank",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新しいカードを郵送しますね。",
+          "romaji": "Atarashii kaado wo yuusou shimasu ne.",
+          "translation": "Kami akan kirimkan kartu baru ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_bank_blokir_kartu_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "よろしくお願いします。",
+            "romaji": "Yoroshiku onegaishimasu.",
+            "translation": "Mohon bantuannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "要りません。",
+            "romaji": "Irimasen.",
+            "translation": "Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_ajak_nonton",
+    "title": "Menelepon Teman Ajak Nonton",
+    "category": "telepon",
+    "description": "Kamu menelepon teman untuk mengajaknya menonton film bersama.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、どうしたの？",
+          "romaji": "Moshi moshi, dou shita no?",
+          "translation": "Halo, ada apa?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_ajak_nonton_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "週末映画を見に行かない？",
+            "romaji": "Shuumatsu eiga wo mi ni ikanai?",
+            "translation": "Akhir pekan nonton film yuk?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "週末寝ない？",
+            "romaji": "Shuumatsu nenai?",
+            "translation": "Akhir pekan tidur yuk?",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いいね、何を見る？",
+          "romaji": "Ii ne, nani wo miru?",
+          "translation": "Boleh, mau nonton apa?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_ajak_nonton_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "新しいアクション映画だよ。",
+            "romaji": "Atarashii akushon eiga da yo.",
+            "translation": "Film aksi baru.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "古い映画だよ。",
+            "romaji": "Furui eiga da yo.",
+            "translation": "Film lama.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何時に会う？",
+          "romaji": "Nanji ni au?",
+          "translation": "Ketemu jam berapa?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_ajak_nonton_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "2時に駅で会おう。",
+            "romaji": "Niji ni eki de aou.",
+            "translation": "Ketemu jam 2 di stasiun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "2円で会おう。",
+            "romaji": "Nien de aou.",
+            "translation": "Ketemu 2 yen.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみにしてるね！",
+          "romaji": "Tanoshimi ni shiteru ne!",
+          "translation": "Aku tidak sabar!"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_ajak_nonton_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "私も楽しみ！",
+            "romaji": "Watashi mo tanoshimi!",
+            "translation": "Aku juga tidak sabar!",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "楽しみじゃないよ。",
+            "romaji": "Tanoshimi janai yo.",
+            "translation": "Aku tidak menantikannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_ucapkan_ultah",
+    "title": "Menelepon Ucapkan Selamat Ulang Tahun",
+    "category": "telepon",
+    "description": "Kamu menelepon teman untuk mengucapkan selamat ulang tahun.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし？",
+          "romaji": "Moshi moshi?",
+          "translation": "Halo?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_ucapkan_ultah_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お誕生日おめでとう！",
+            "romaji": "Otanjoubi omedetou!",
+            "translation": "Selamat ulang tahun!",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "お疲れ様でした。",
+            "romaji": "Otsukaresama deshita.",
+            "translation": "Terima kasih atas kerja kerasnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ありがとう！覚えていてくれたんだね。",
+          "romaji": "Arigatou! Oboete ite kureta n da ne.",
+          "translation": "Terima kasih! Kamu ingat ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_ucapkan_ultah_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "もちろん、忘れないよ。",
+            "romaji": "Mochiron, wasurenai yo.",
+            "translation": "Tentu saja, tidak akan lupa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "忘れていました。",
+            "romaji": "Wasurete imashita.",
+            "translation": "Saya lupa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今年は何をする予定？",
+          "romaji": "Kotoshi wa nani wo suru yotei?",
+          "translation": "Tahun ini ada rencana apa?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_ucapkan_ultah_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "家族と祝うよ。",
+            "romaji": "Kazoku to iwau yo.",
+            "translation": "Merayakan bersama keluarga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何もしないよ。",
+            "romaji": "Nanimo shinai yo.",
+            "translation": "Tidak akan melakukan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電話ありがとう、嬉しいよ。",
+          "romaji": "Denwa arigatou, ureshii yo.",
+          "translation": "Terima kasih sudah telepon, senang sekali."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_ucapkan_ultah_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "良い一年になりますように。",
+            "romaji": "Yoi ichinen ni narimasu you ni.",
+            "translation": "Semoga tahun ini menyenangkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "良くない一年になりますように。",
+            "romaji": "Yokunai ichinen ni narimasu you ni.",
+            "translation": "Semoga tahun ini tidak menyenangkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_tanya_alamat",
+    "title": "Menelepon untuk Menanyakan Alamat",
+    "category": "telepon",
+    "description": "Kamu menelepon temanmu untuk menanyakan alamat rumahnya.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし？",
+          "romaji": "Moshi moshi?",
+          "translation": "Halo?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_tanya_alamat_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "家の住所を教えてくれる？",
+            "romaji": "Ie no juusho wo oshiete kureru?",
+            "translation": "Boleh kasih tahu alamat rumahmu?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "家の住所は要らないよ。",
+            "romaji": "Ie no juusho wa iranai yo.",
+            "translation": "Alamat rumah tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いいよ、メモできる？",
+          "romaji": "Ii yo, memo dekiru?",
+          "translation": "Boleh, bisa dicatat?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_tanya_alamat_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、できるよ。",
+            "romaji": "Un, dekiru yo.",
+            "translation": "Iya, bisa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、できないよ。",
+            "romaji": "Iie, dekinai yo.",
+            "translation": "Tidak, tidak bisa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "駅から歩いて5分だよ。",
+          "romaji": "Eki kara aruite gofun da yo.",
+          "translation": "5 menit jalan kaki dari stasiun."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_tanya_alamat_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かった、ありがとう。",
+            "romaji": "Wakatta, arigatou.",
+            "translation": "Baik, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "遠いね。",
+            "romaji": "Tooi ne.",
+            "translation": "Jauh ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "気をつけて来てね。",
+          "romaji": "Ki wo tsukete kite ne.",
+          "translation": "Hati-hati di jalan ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_tanya_alamat_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、また後でね。",
+            "romaji": "Un, mata ato de ne.",
+            "translation": "Iya, sampai nanti ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、行きません。",
+            "romaji": "Iie, ikimasen.",
+            "translation": "Tidak, saya tidak akan pergi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_panggilan_tidak_terjawab",
+    "title": "Panggilan Tidak Terjawab",
+    "category": "telepon",
+    "description": "Kamu menelepon balik teman setelah melihat panggilan tak terjawab.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Kamu",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "さっき電話くれた？",
+          "romaji": "Sakki denwa kureta?",
+          "translation": "Tadi telepon aku ya?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_panggilan_tidak_terjawab_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、電話したよ。",
+            "romaji": "Un, denwa shita yo.",
+            "translation": "Iya, saya telepon.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、電話していないよ。",
+            "romaji": "Iie, denwa shite inai yo.",
+            "translation": "Tidak, saya tidak telepon.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Kamu",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ごめん、気づかなかった。",
+          "romaji": "Gomen, kizukanakatta.",
+          "translation": "Maaf, tidak sadar."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_panggilan_tidak_terjawab_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "大丈夫だよ、気にしないで。",
+            "romaji": "Daijoubu da yo, ki ni shinaide.",
+            "translation": "Tidak apa-apa, jangan dipikirkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは駄目だよ。",
+            "romaji": "Sore wa dame da yo.",
+            "translation": "Itu tidak boleh.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Kamu",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何か用事があったの？",
+          "romaji": "Nanika youji ga atta no?",
+          "translation": "Ada keperluan apa?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_panggilan_tidak_terjawab_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ちょっと聞きたいことがあって。",
+            "romaji": "Un, chotto kikitai koto ga atte.",
+            "translation": "Iya, ada yang mau saya tanyakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何もないよ。",
+            "romaji": "Toku ni nanimo nai yo.",
+            "translation": "Tidak ada apa-apa khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Kamu",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "分かった、話そう。",
+          "romaji": "Wakatta, hanasou.",
+          "translation": "Baik, ayo ngobrol."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_panggilan_tidak_terjawab_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_izin_pulang_malam",
+    "title": "Menelepon Minta Izin Pulang Malam",
+    "category": "telepon",
+    "description": "Kamu menelepon orang tua untuk minta izin pulang larut malam.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Orang Tua",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、どうしたの？",
+          "romaji": "Moshi moshi, dou shita no?",
+          "translation": "Halo, ada apa?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_izin_pulang_malam_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "今日は少し遅くなりそう。",
+            "romaji": "Kyou wa sukoshi osoku narisou.",
+            "translation": "Hari ini kelihatannya akan agak larut.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "今日は早く帰ります。",
+            "romaji": "Kyou wa hayaku kaerimasu.",
+            "translation": "Hari ini saya pulang cepat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Orang Tua",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何時頃になりそう？",
+          "romaji": "Nanji goro ni narisou?",
+          "translation": "Kira-kira jam berapa?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_izin_pulang_malam_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "10時頃になると思う。",
+            "romaji": "Juuji goro ni naru to omou.",
+            "translation": "Kurasa sekitar jam 10.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "10分後には終わるよ。",
+            "romaji": "Juppun go ni wa owaru yo.",
+            "translation": "Akan selesai 10 menit lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Orang Tua",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "気をつけて帰ってきてね。",
+          "romaji": "Ki wo tsukete kaette kite ne.",
+          "translation": "Hati-hati pulangnya ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_izin_pulang_malam_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、分かった。",
+            "romaji": "Un, wakatta.",
+            "translation": "Iya, mengerti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、気をつけないよ。",
+            "romaji": "Iie, ki wo tsukenai yo.",
+            "translation": "Tidak, saya tidak akan hati-hati.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Orang Tua",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "着いたら連絡してね。",
+          "romaji": "Tsuitara renraku shite ne.",
+          "translation": "Kalau sudah sampai kabari ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_izin_pulang_malam_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、連絡するね。",
+            "romaji": "Un, renraku suru ne.",
+            "translation": "Iya, akan saya kabari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、連絡しないよ。",
+            "romaji": "Iie, renraku shinai yo.",
+            "translation": "Tidak, saya tidak akan kabari.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_dukung_teman_sedih",
+    "title": "Menelepon Dukung Teman Sedih",
+    "category": "telepon",
+    "description": "Temanmu sedang sedih dan kamu meneleponnya untuk memberi dukungan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし。",
+          "romaji": "Moshi moshi.",
+          "translation": "Halo."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_dukung_teman_sedih_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "大丈夫？元気ない声だね。",
+            "romaji": "Daijoubu? Genki nai koe da ne.",
+            "translation": "Kamu baik-baik saja? Suaramu tidak semangat ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "元気そうだね！",
+            "romaji": "Genkisou da ne!",
+            "translation": "Kelihatannya semangat ya!",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ちょっと辛いことがあって。",
+          "romaji": "Chotto tsurai koto ga atte.",
+          "translation": "Ada hal yang agak berat."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_dukung_teman_sedih_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうなんだ、話を聞くよ。",
+            "romaji": "Sou nan da, hanashi wo kiku yo.",
+            "translation": "Oh begitu, saya dengarkan ceritamu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "興味ないよ。",
+            "romaji": "Kyoumi nai yo.",
+            "translation": "Saya tidak tertarik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ありがとう、少し楽になった。",
+          "romaji": "Arigatou, sukoshi raku ni natta.",
+          "translation": "Terima kasih, jadi agak lega."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_dukung_teman_sedih_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いつでも話してね。",
+            "romaji": "Itsudemo hanashite ne.",
+            "translation": "Cerita saja kapan pun ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう話さないでね。",
+            "romaji": "Mou hanasanaide ne.",
+            "translation": "Jangan cerita lagi ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "本当にありがとう。",
+          "romaji": "Hontou ni arigatou.",
+          "translation": "Benar-benar terima kasih."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_dukung_teman_sedih_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いつでも力になるよ。",
+            "romaji": "Itsudemo chikara ni naru yo.",
+            "translation": "Kapan pun saya siap membantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう助けないよ。",
+            "romaji": "Mou tasukenai yo.",
+            "translation": "Saya tidak akan bantu lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_konfirmasi_kedatangan",
+    "title": "Menelepon Konfirmasi Kedatangan",
+    "category": "telepon",
+    "description": "Kamu menelepon tuan rumah untuk mengonfirmasi kedatanganmu ke acara.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Tuan Rumah",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし。",
+          "romaji": "Moshi moshi.",
+          "translation": "Halo."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_konfirmasi_kedatangan_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "明日のパーティーに行きます。",
+            "romaji": "Ashita no paatii ni ikimasu.",
+            "translation": "Saya akan datang ke pesta besok.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "明日のパーティーには行きません。",
+            "romaji": "Ashita no paatii ni wa ikimasen.",
+            "translation": "Saya tidak akan datang ke pesta besok.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Tuan Rumah",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ありがとう、何時に来られますか。",
+          "romaji": "Arigatou, nanji ni koraremasu ka.",
+          "translation": "Terima kasih, jam berapa bisa datang?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_konfirmasi_kedatangan_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "6時に行きます。",
+            "romaji": "Rokuji ni ikimasu.",
+            "translation": "Saya akan datang jam 6.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "6分で行きます。",
+            "romaji": "Roppun de ikimasu.",
+            "translation": "Saya akan sampai dalam 6 menit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Tuan Rumah",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何か持ってきてほしいものはないよ。",
+          "romaji": "Nanika motte kite hoshii mono wa nai yo.",
+          "translation": "Tidak perlu bawa apa-apa kok."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_konfirmasi_kedatangan_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、手ぶらで行きます。",
+            "romaji": "Wakarimashita, tebura de ikimasu.",
+            "translation": "Baik, saya datang tanpa membawa apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何か持っていきます。",
+            "romaji": "Nanika motte ikimasu.",
+            "translation": "Saya akan bawa sesuatu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Tuan Rumah",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみにしています。",
+          "romaji": "Tanoshimi ni shite imasu.",
+          "translation": "Saya tidak sabar."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_konfirmasi_kedatangan_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "私も楽しみです。",
+            "romaji": "Watashi mo tanoshimi desu.",
+            "translation": "Saya juga tidak sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "楽しみではありません。",
+            "romaji": "Tanoshimi de wa arimasen.",
+            "translation": "Saya tidak menantikannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_minta_jemput",
+    "title": "Menelepon Minta Tolong Jemput",
+    "category": "telepon",
+    "description": "Kamu menelepon keluarga untuk minta dijemput karena hujan deras.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Keluarga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、どうしたの？",
+          "romaji": "Moshi moshi, dou shita no?",
+          "translation": "Halo, ada apa?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_minta_jemput_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "雨が強いから迎えに来てくれる？",
+            "romaji": "Ame ga tsuyoi kara mukae ni kite kureru?",
+            "translation": "Karena hujan deras, bisa jemput aku?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "天気がいいから歩いて帰るね。",
+            "romaji": "Tenki ga ii kara aruite kaeru ne.",
+            "translation": "Karena cuacanya bagus, saya jalan kaki pulang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Keluarga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いいよ、どこにいるの？",
+          "romaji": "Ii yo, doko ni iru no?",
+          "translation": "Boleh, ada di mana sekarang?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_minta_jemput_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "駅の前にいるよ。",
+            "romaji": "Eki no mae ni iru yo.",
+            "translation": "Ada di depan stasiun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "家にいるよ。",
+            "romaji": "Ie ni iru yo.",
+            "translation": "Ada di rumah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Keluarga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "10分で着くよ。",
+          "romaji": "Juppun de tsuku yo.",
+          "translation": "Akan sampai 10 menit lagi."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_minta_jemput_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、待ってるね。",
+            "romaji": "Arigatou, matteru ne.",
+            "translation": "Terima kasih, saya tunggu ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "待たなくていいよ。",
+            "romaji": "Matanakute ii yo.",
+            "translation": "Tidak usah tunggu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Keluarga",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "着いたよ、外にいるね。",
+          "romaji": "Tsuita yo, soto ni iru ne.",
+          "translation": "Sudah sampai, saya di luar ya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_telepon_minta_jemput_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "すぐ行くね、ありがとう。",
+            "romaji": "Sugu iku ne, arigatou.",
+            "translation": "Segera ke sana, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "行かないよ。",
+            "romaji": "Ikanai yo.",
+            "translation": "Saya tidak akan ke sana.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_video_call_rapat_kerja",
+    "title": "Video Call Rapat Kerja",
+    "category": "telepon",
+    "description": "Kamu mengikuti rapat kerja lewat video call dari rumah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Rekan Kerja",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、聞こえますか。",
+          "romaji": "Moshi moshi, kikoemasu ka.",
+          "translation": "Halo, kedengaran?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_video_call_rapat_kerja_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、よく聞こえます。",
+            "romaji": "Hai, yoku kikoemasu.",
+            "translation": "Ya, kedengaran jelas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、何も聞こえません。",
+            "romaji": "Iie, nanimo kikoemasen.",
+            "translation": "Tidak, tidak kedengaran sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Rekan Kerja",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "画面は見えますか。",
+          "romaji": "Gamen wa miemasu ka.",
+          "translation": "Layarnya kelihatan?"
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_video_call_rapat_kerja_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、見えます。",
+            "romaji": "Hai, miemasu.",
+            "translation": "Ya, kelihatan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、見えません。",
+            "romaji": "Iie, miemasen.",
+            "translation": "Tidak, tidak kelihatan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Rekan Kerja",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでは会議を始めましょう。",
+          "romaji": "Soredewa kaigi wo hajimemashou.",
+          "translation": "Kalau begitu, ayo mulai rapatnya."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_video_call_rapat_kerja_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お願いします。",
+            "romaji": "Hai, onegaishimasu.",
+            "translation": "Ya, silakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだです。",
+            "romaji": "Iie, mada desu.",
+            "translation": "Tidak, belum.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Rekan Kerja",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お疲れ様でした、これで終わります。",
+          "romaji": "Otsukaresama deshita, kore de owarimasu.",
+          "translation": "Terima kasih atas kerjanya, kita akhiri di sini."
+        },
+        "imagePath": "kaiwa_images/telepon/kaiwa_video_call_rapat_kerja_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お疲れ様でした。",
+            "romaji": "Otsukaresama deshita.",
+            "translation": "Terima kasih atas kerjanya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ終わりたくないです。",
+            "romaji": "Mada owaritakunai desu.",
+            "translation": "Saya belum mau selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "kaiwa_naik_bus",
     "title": "Naik Bus",
     "category": "transportasi",
