@@ -179,6 +179,13 @@ LIBURAN_TITLES = [
     "Membicarakan Rencana Liburan",
     "Mengajak Berlibur Bersama",
     "Cerita Setelah Liburan",
+    "Memesan Hotel untuk Liburan",
+    "Membicarakan Tempat Wisata",
+    "Packing untuk Liburan",
+    "Liburan Bersama Keluarga",
+    "Liburan yang Dibatalkan",
+    "Membeli Oleh-oleh Liburan",
+    "Rencana Liburan Akhir Tahun",
 ]
 
 KELUARGA_TITLES = [
