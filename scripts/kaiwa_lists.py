@@ -101,6 +101,13 @@ CUACA_BASA_BASI_TITLES = [
     "Membicarakan Cuaca",
     "Menanyakan Kegiatan Akhir Pekan",
     "Berpamitan",
+    "Membicarakan Musim Favorit",
+    "Basa-basi Menunggu Bus",
+    "Menanyakan Kabar Setelah Lama Tidak Bertemu",
+    "Membicarakan Rencana Malam Ini",
+    "Basa-basi Tentang Pekerjaan Rumah Tangga",
+    "Membicarakan Berita Terkini",
+    "Menyapa Tetangga Baru",
 ]
 
 RUMAH_SAKIT_TITLES = [
