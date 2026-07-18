@@ -1548,6 +1548,24 @@ TELEPON_N2_TITLES = [
     "Menceritakan Pengalaman Menerima Kabar Penting Lewat Telepon",
 ]
 
+TRANSPORTASI_N2_TITLES = [
+    "Mendiskusikan Dampak Kendaraan Listrik terhadap Lingkungan",
+    "Menceritakan Pengalaman Naik Transportasi Umum Saat Bencana",
+    "Menjelaskan Alasan Memilih Sepeda sebagai Transportasi Utama",
+    "Membicarakan Fenomena Ride-hailing dan Dampaknya ke Transportasi Umum",
+    "Mendiskusikan Kemacetan Kronis di Kota Besar",
+    "Menceritakan Pengalaman Mengemudi Jarak Jauh Sendirian",
+    "Menjelaskan Dilema Memiliki Mobil Pribadi di Kota Besar",
+    "Membicarakan Masa Depan Mobil Otonom",
+    "Mendiskusikan Aksesibilitas Transportasi bagi Penyandang Disabilitas",
+    "Menceritakan Pengalaman Mengalami Kecelakaan Lalu Lintas Kecil",
+    "Menjelaskan Alasan Berhenti Mengemudi di Usia Tertentu",
+    "Membicarakan Dampak Transportasi terhadap Kualitas Udara",
+    "Mendiskusikan Etika Berkendara yang Baik",
+    "Menceritakan Pengalaman Menggunakan Transportasi di Negara Asing",
+    "Menjelaskan Pentingnya Keselamatan Berkendara",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1611,6 +1629,7 @@ CATEGORY_META = {
     "rumah_sakit_n2": ("Di Rumah Sakit", "🏥", "N2"),
     "hobi_n2": ("Hobi", "🎨", "N2"),
     "telepon_n2": ("Telepon", "☎️", "N2"),
+    "transportasi_n2": ("Transportasi", "🚌", "N2"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1676,6 +1695,7 @@ AVAILABLE_CATEGORIES = {
     "rumah_sakit_n2": RUMAH_SAKIT_N2_TITLES,
     "hobi_n2": HOBI_N2_TITLES,
     "telepon_n2": TELEPON_N2_TITLES,
+    "transportasi_n2": TRANSPORTASI_N2_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1753,6 +1773,7 @@ _ALL_TITLE_LISTS = {
     "RUMAH_SAKIT_N2_TITLES": RUMAH_SAKIT_N2_TITLES,
     "HOBI_N2_TITLES": HOBI_N2_TITLES,
     "TELEPON_N2_TITLES": TELEPON_N2_TITLES,
+    "TRANSPORTASI_N2_TITLES": TRANSPORTASI_N2_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
