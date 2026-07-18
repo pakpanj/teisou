@@ -936,6 +936,24 @@ TELEPON_N4_TITLES = [
     "Menelepon untuk Menyampaikan Keputusan Penting",
 ]
 
+TRANSPORTASI_N4_TITLES = [
+    "Mendiskusikan Pilihan Transportasi Paling Efisien",
+    "Menjelaskan Masalah Kendaraan yang Kompleks",
+    "Merencanakan Perjalanan Jauh dengan Berbagai Moda",
+    "Menjelaskan Alasan Beralih ke Transportasi Umum",
+    "Berdiskusi Tentang Biaya Perawatan Kendaraan",
+    "Menjelaskan Kenapa Terlambat karena Macet Parah",
+    "Mendiskusikan Rute Terbaik untuk Perjalanan Bisnis",
+    "Menjelaskan Kekhawatiran Naik Pesawat Pertama Kali",
+    "Berdiskusi Tentang Transportasi Ramah Lingkungan",
+    "Menjelaskan Kenapa Memilih Membeli Mobil Bekas",
+    "Menceritakan Pengalaman Buruk dengan Sopir Taksi",
+    "Mendiskusikan Rencana Membeli Kendaraan Listrik",
+    "Menjelaskan Prosedur Klaim Asuransi Kendaraan",
+    "Berdiskusi Tentang Etika Berkendara",
+    "Menceritakan Pengalaman Naik Transportasi di Negara Lain",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -965,6 +983,7 @@ CATEGORY_META = {
     "rumah_sakit_n4": ("Di Rumah Sakit", "🏥", "N4"),
     "hobi_n4": ("Hobi", "🎨", "N4"),
     "telepon_n4": ("Telepon", "☎️", "N4"),
+    "transportasi_n4": ("Transportasi", "🚌", "N4"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -996,6 +1015,7 @@ AVAILABLE_CATEGORIES = {
     "rumah_sakit_n4": RUMAH_SAKIT_N4_TITLES,
     "hobi_n4": HOBI_N4_TITLES,
     "telepon_n4": TELEPON_N4_TITLES,
+    "transportasi_n4": TRANSPORTASI_N4_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1039,6 +1059,7 @@ _ALL_TITLE_LISTS = {
     "RUMAH_SAKIT_N4_TITLES": RUMAH_SAKIT_N4_TITLES,
     "HOBI_N4_TITLES": HOBI_N4_TITLES,
     "TELEPON_N4_TITLES": TELEPON_N4_TITLES,
+    "TRANSPORTASI_N4_TITLES": TRANSPORTASI_N4_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
