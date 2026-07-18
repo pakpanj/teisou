@@ -900,6 +900,24 @@ RUMAH_SAKIT_N4_TITLES = [
     "Menceritakan Pengalaman Dirawat Inap",
 ]
 
+HOBI_N4_TITLES = [
+    "Menjelaskan Kenapa Berhenti dari Hobi Lama",
+    "Mengajak Teman Mencoba Hobi yang Menantang",
+    "Membicarakan Rencana Ikut Kompetisi Hobi",
+    "Menjelaskan Kenapa Hobi Ini Menenangkan",
+    "Berdiskusi Investasi Peralatan Hobi yang Mahal",
+    "Menceritakan Kegagalan Pertama Kali Mencoba Hobi",
+    "Menjelaskan Kenapa Hobi Berubah Jadi Pekerjaan Sampingan",
+    "Membicarakan Komunitas Hobi Online",
+    "Menjelaskan Kenapa Sulit Meluangkan Waktu untuk Hobi",
+    "Berdiskusi Tentang Hobi yang Sedang Tren",
+    "Menceritakan Prestasi dari Hobi",
+    "Menjelaskan Alasan Ingin Belajar Hobi Baru di Usia Dewasa",
+    "Membicarakan Hobi yang Diwariskan dari Keluarga",
+    "Menjelaskan Kenapa Berhenti Sejenak dari Hobi karena Sibuk",
+    "Mendiskusikan Rencana Membuka Kelas untuk Hobi Sendiri",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -927,6 +945,7 @@ CATEGORY_META = {
     "sekolah_n4": ("Di Sekolah", "🏫", "N4"),
     "cuaca_basa_basi_n4": ("Cuaca & Basa-basi", "☁️", "N4"),
     "rumah_sakit_n4": ("Di Rumah Sakit", "🏥", "N4"),
+    "hobi_n4": ("Hobi", "🎨", "N4"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -956,6 +975,7 @@ AVAILABLE_CATEGORIES = {
     "sekolah_n4": SEKOLAH_N4_TITLES,
     "cuaca_basa_basi_n4": CUACA_BASA_BASI_N4_TITLES,
     "rumah_sakit_n4": RUMAH_SAKIT_N4_TITLES,
+    "hobi_n4": HOBI_N4_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -997,6 +1017,7 @@ _ALL_TITLE_LISTS = {
     "SEKOLAH_N4_TITLES": SEKOLAH_N4_TITLES,
     "CUACA_BASA_BASI_N4_TITLES": CUACA_BASA_BASI_N4_TITLES,
     "RUMAH_SAKIT_N4_TITLES": RUMAH_SAKIT_N4_TITLES,
+    "HOBI_N4_TITLES": HOBI_N4_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
