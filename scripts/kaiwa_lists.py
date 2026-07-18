@@ -1566,6 +1566,24 @@ TRANSPORTASI_N2_TITLES = [
     "Menjelaskan Pentingnya Keselamatan Berkendara",
 ]
 
+KANTOR_POS_N2_TITLES = [
+    "Mendiskusikan Masa Depan Layanan Pos di Era Digital",
+    "Menceritakan Pengalaman Mengirim Paket yang Hilang",
+    "Menjelaskan Alasan Masih Suka Menulis Surat Fisik",
+    "Membicarakan Dampak E-commerce terhadap Volume Pengiriman",
+    "Mendiskusikan Sistem Pengiriman Kilat Antar Negara",
+    "Menceritakan Pengalaman Menjadi Kurir Paruh Waktu",
+    "Menjelaskan Pentingnya Asuransi Pengiriman Barang Berharga",
+    "Membicarakan Fenomena Penipuan Modus Paket",
+    "Mendiskusikan Etika Menitipkan Paket ke Tetangga",
+    "Menceritakan Pengalaman Mengirim Hadiah ke Luar Negeri",
+    "Menjelaskan Cara Kerja Sistem Pelacakan Paket",
+    "Membicarakan Dampak Lingkungan dari Kemasan Pengiriman",
+    "Mendiskusikan Beban Kerja Kurir Menjelang Hari Besar",
+    "Menceritakan Pengalaman Menerima Surat dari Masa Lalu",
+    "Menjelaskan Pentingnya Alamat yang Jelas dan Akurat",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1630,6 +1648,7 @@ CATEGORY_META = {
     "hobi_n2": ("Hobi", "🎨", "N2"),
     "telepon_n2": ("Telepon", "☎️", "N2"),
     "transportasi_n2": ("Transportasi", "🚌", "N2"),
+    "kantor_pos_n2": ("Di Kantor Pos", "📮", "N2"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1696,6 +1715,7 @@ AVAILABLE_CATEGORIES = {
     "hobi_n2": HOBI_N2_TITLES,
     "telepon_n2": TELEPON_N2_TITLES,
     "transportasi_n2": TRANSPORTASI_N2_TITLES,
+    "kantor_pos_n2": KANTOR_POS_N2_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1774,6 +1794,7 @@ _ALL_TITLE_LISTS = {
     "HOBI_N2_TITLES": HOBI_N2_TITLES,
     "TELEPON_N2_TITLES": TELEPON_N2_TITLES,
     "TRANSPORTASI_N2_TITLES": TRANSPORTASI_N2_TITLES,
+    "KANTOR_POS_N2_TITLES": KANTOR_POS_N2_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
