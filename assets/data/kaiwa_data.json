@@ -205247,5 +205247,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_nonton_sendirian_n3",
+    "title": "Menjelaskan Alasan Lebih Suka Menonton Film Sendirian",
+    "category": "bioskop_n3",
+    "description": "Kamu menjelaskan ke teman alasan lebih suka menonton film sendirian.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "映画、いつも一人で見に行ってるよね。",
+          "romaji": "Eiga, itsumo hitori de mi ni itteru yo ne.",
+          "translation": "Film, kamu selalu nonton sendirian ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_nonton_sendirian_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、誰にも気を遣わずに集中できるから、一人がいいんだ。",
+            "romaji": "Un, dare ni mo ki wo tsukawazu ni shuuchuu dekiru kara, hitori ga ii n da.",
+            "translation": "Iya, karena bisa fokus tanpa perlu memperhatikan siapa pun, sendirian lebih baik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰かと一緒じゃないと絶対に見ないよ。",
+            "romaji": "Dareka to issho janai to zettai ni minai yo.",
+            "translation": "Tidak pernah nonton kalau tidak bersama orang lain.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "誰かと感想を共有したくならない？",
+          "romaji": "Dareka to kansou wo kyouyuu shitakunaranai?",
+          "translation": "Tidak ingin berbagi kesan dengan seseorang?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_nonton_sendirian_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "見終わった後、自分の中でじっくり考える時間も好きなんだ。",
+            "romaji": "Miowatta ato, jibun no naka de jikkuri kangaeru jikan mo suki nan da.",
+            "translation": "Aku juga suka waktu untuk merenung sendiri setelah selesai nonton.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "感想なんて一切気にしたことないよ。",
+            "romaji": "Kansou nante issai ki ni shita koto nai yo.",
+            "translation": "Tidak pernah peduli kesan sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "周りの反応を気にせず泣けるのもいいよね。",
+          "romaji": "Mawari no hannou wo ki ni sezu nakeru no mo ii yo ne.",
+          "translation": "Bisa menangis tanpa memedulikan reaksi orang sekitar juga bagus ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_nonton_sendirian_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうなんだ、感動的なシーンで思い切り泣けるのが最高なんだ。",
+            "romaji": "Sou nan da, kandouteki na shiin de omoikiri nakeru no ga saikou nan da.",
+            "translation": "Benar, bisa menangis sepuasnya di adegan mengharukan itu yang terbaik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "泣くことは絶対にないよ。",
+            "romaji": "Naku koto wa zettai ni nai yo.",
+            "translation": "Sama sekali tidak pernah menangis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "混んでる時間は避けてる？",
+          "romaji": "Konderu jikan wa saketeru?",
+          "translation": "Menghindari jam ramai?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_nonton_sendirian_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、なるべく空いている平日の昼間を選ぶようにしているよ。",
+            "romaji": "Un, narubeku suite iru heijitsu no hiruma wo erabu you ni shite iru yo.",
+            "translation": "Iya, aku berusaha memilih siang hari kerja yang biasanya lebih sepi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "混んでいる時間を選んで行っているよ。",
+            "romaji": "Konde iru jikan wo erande itte iru yo.",
+            "translation": "Malah memilih jam ramai untuk pergi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一人の時間、大事だね。",
+          "romaji": "Hitori no jikan, daiji da ne.",
+          "translation": "Waktu sendirian itu penting ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_nonton_sendirian_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_dampak_streaming_bioskop_n3",
+    "title": "Mendiskusikan Dampak Streaming terhadap Bisnis Bioskop",
+    "category": "bioskop_n3",
+    "description": "Kamu dan teman mendiskusikan dampak layanan streaming terhadap bisnis bioskop.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、映画館に行く人が減ってるらしいね。",
+          "romaji": "Saikin, eigakan ni iku hito ga hetteru rashii ne.",
+          "translation": "Katanya belakangan orang yang pergi ke bioskop berkurang ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_dampak_streaming_bioskop_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、配信サービスの普及が、大きく影響していると思う。",
+            "romaji": "Un, haishin saabisu no fukyuu ga, ookiku eikyou shite iru to omou.",
+            "translation": "Iya, kurasa penyebaran layanan streaming berpengaruh besar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "映画館の観客はむしろ増えているらしいよ。",
+            "romaji": "Eigakan no kankyaku wa mushiro fuete iru rashii yo.",
+            "translation": "Katanya penonton bioskop malah bertambah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "映画館ならではの魅力って何だと思う？",
+          "romaji": "Eigakan naradewa no miryoku tte nan da to omou?",
+          "translation": "Menurutmu daya tarik khas bioskop itu apa?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_dampak_streaming_bioskop_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "大画面と音響で味わう没入感は、家では再現できないと思う。",
+            "romaji": "Ooogamen to onkyou de ajiwau botsunyuukan wa, ie dewa saigen dekinai to omou.",
+            "translation": "Kurasa sensasi imersif dari layar besar dan suara tidak bisa direproduksi di rumah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "家で見るのと全く変わらないと思うよ。",
+            "romaji": "Ie de miru no to mattaku kawaranai to omou yo.",
+            "translation": "Kupikir sama sekali tidak beda dengan nonton di rumah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "映画館側も対策をしてるの？",
+          "romaji": "Eigakan gawa mo taisaku wo shiteru no?",
+          "translation": "Pihak bioskop juga melakukan tindakan?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_dampak_streaming_bioskop_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、座席のグレードアップとか、色々工夫しているみたいだよ。",
+            "romaji": "Un, zaseki no gureedoappu toka, iroiro kufuu shite iru mitai da yo.",
+            "translation": "Iya, sepertinya mereka berusaha macam-macam, seperti upgrade kursi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "映画館は何も対策をしていないみたいだよ。",
+            "romaji": "Eigakan wa nanimo taisaku wo shite inai mitai da yo.",
+            "translation": "Sepertinya bioskop sama sekali tidak melakukan tindakan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでも配信には勝てないのかな。",
+          "romaji": "Sore demo haishin ni wa katenai no ka na.",
+          "translation": "Meski begitu tetap tidak bisa mengalahkan streaming ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_dampak_streaming_bioskop_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "価格と手軽さの面では、配信に軍配が上がると思う。",
+            "romaji": "Kakaku to tegarusa no men dewa, haishin ni gunbai ga agaru to omou.",
+            "translation": "Dari segi harga dan kepraktisan, kurasa streaming yang unggul.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "価格の面では映画館のほうが安いと思うよ。",
+            "romaji": "Kakaku no men dewa eigakan no hou ga yasui to omou yo.",
+            "translation": "Kupikir dari segi harga bioskop lebih murah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "難しい時代だね。",
+          "romaji": "Muzukashii jidai da ne.",
+          "translation": "Zaman yang sulit ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_dampak_streaming_bioskop_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に難しくないと思うよ。",
+            "romaji": "Betsu ni muzukashikunai to omou yo.",
+            "translation": "Kupikir sama sekali tidak sulit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_menangis_saat_nonton_n3",
+    "title": "Menceritakan Pengalaman Menangis Saat Menonton Film",
+    "category": "bioskop_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman menangis saat menonton film.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "この前の映画、すごく泣いたって言ってたよね。",
+          "romaji": "Kono mae no eiga, sugoku naita tte itteta yo ne.",
+          "translation": "Katanya film kemarin bikin nangis banget ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_menangis_saat_nonton_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、恥ずかしいくらい大泣きしてしまったよ。",
+            "romaji": "Un, hazukashii kurai ounaki shite shimatta yo.",
+            "translation": "Iya, sampai malu-maluin nangis kejer.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く泣かなかったよ。",
+            "romaji": "Mattaku nakanakatta yo.",
+            "translation": "Sama sekali tidak menangis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのシーンが一番心に響いた？",
+          "romaji": "Dono shiin ga ichiban kokoro ni hibiita?",
+          "translation": "Adegan mana yang paling menyentuh hati?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_menangis_saat_nonton_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "主人公が最後に家族と再会する場面に、涙が止まらなかったよ。",
+            "romaji": "Shujinkou ga saigo ni kazoku to saikai suru bamen ni, namida ga tomaranakatta yo.",
+            "translation": "Di adegan tokoh utama akhirnya bertemu kembali dengan keluarganya, air mataku tidak berhenti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にどのシーンも印象に残らなかったよ。",
+            "romaji": "Toku ni dono shiin mo inshou ni nokoranakatta yo.",
+            "translation": "Tidak ada adegan yang berkesan khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "周りの目、気にならなかった？",
+          "romaji": "Mawari no me, ki ni naranakatta?",
+          "translation": "Tidak khawatir dilihat orang sekitar?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_menangis_saat_nonton_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "暗闇の中だったから、あまり気にせずに泣けたよ。",
+            "romaji": "Kurayami no naka datta kara, amari ki ni sezu ni naketa yo.",
+            "translation": "Karena dalam kegelapan, jadi bisa menangis tanpa terlalu khawatir.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "明るい場所だったから、すごく恥ずかしかったよ。",
+            "romaji": "Akarui basho datta kara, sugoku hazukashikatta yo.",
+            "translation": "Karena tempat terang, jadi sangat malu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "映画で泣くのって、いいストレス発散になるよね。",
+          "romaji": "Eiga de naku no tte, ii sutoresu hassan ni naru yo ne.",
+          "translation": "Menangis karena film itu, jadi pelepas stres yang baik ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_menangis_saat_nonton_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、心が洗われるような感覚があるよ。",
+            "romaji": "Un, kokoro ga arawareru you na kankaku ga aru yo.",
+            "translation": "Iya, ada rasa seperti hati dibersihkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "逆にストレスが溜まる感じがするよ。",
+            "romaji": "Gyaku ni sutoresu ga tamaru kanji ga suru yo.",
+            "translation": "Malah terasa menumpuk stres.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "また泣ける映画、探そうね。",
+          "romaji": "Mata nakeru eiga, sagasou ne.",
+          "translation": "Cari lagi film yang bikin nangis yuk."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_menangis_saat_nonton_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、楽しみにしてる。",
+            "romaji": "Un, tanoshimi ni shiteru.",
+            "translation": "Iya, aku menantikannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に見たいとは思わないよ。",
+            "romaji": "Betsu ni mitai to wa omowanai yo.",
+            "translation": "Tidak berpikir ingin nonton sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_film_kontroversial_n3",
+    "title": "Membicarakan Film yang Kontroversial",
+    "category": "bioskop_n3",
+    "description": "Kamu dan teman membicarakan sebuah film yang menimbulkan kontroversi.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あの映画、公開当時かなり物議を醸したらしいね。",
+          "romaji": "Ano eiga, koukai touji kanari butsugi wo kamoshita rashii ne.",
+          "translation": "Film itu, katanya waktu rilis sempat menimbulkan kontroversi besar ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_film_kontroversial_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、テーマがテーマだけに、賛否が分かれたみたいだよ。",
+            "romaji": "Un, teema ga teema dake ni, sanpi ga wakareta mitai da yo.",
+            "translation": "Iya, karena temanya memang berat, sepertinya pendapatnya terbelah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く話題にならなかった映画らしいよ。",
+            "romaji": "Mattaku wadai ni naranakatta eiga rashii yo.",
+            "translation": "Katanya film yang sama sekali tidak jadi topik pembicaraan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな点が批判されたの？",
+          "romaji": "Donna ten ga hihan sareta no?",
+          "translation": "Bagian mana yang dikritik?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_film_kontroversial_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "歴史的な事実を、都合よく歪めているという指摘があったんだ。",
+            "romaji": "Rekishiteki na jijitsu wo, tsugou yoku yugamete iru to iu shiteki ga atta n da.",
+            "translation": "Ada kritik bahwa fakta sejarah diputarbalikkan seenaknya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "批判された点は特になかったよ。",
+            "romaji": "Hihan sareta ten wa toku ni nakatta yo.",
+            "translation": "Tidak ada bagian yang dikritik khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "監督はどう反応したの？",
+          "romaji": "Kantoku wa dou hannou shita no?",
+          "translation": "Sutradaranya bereaksi bagaimana?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_film_kontroversial_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "あくまでフィクションだと、繰り返し説明していたよ。",
+            "romaji": "Akumade fikushon da to, kurikaeshi setsumei shite ita yo.",
+            "translation": "Dia berulang kali menjelaskan bahwa itu murni fiksi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一切コメントを出さなかったよ。",
+            "romaji": "Issai komento wo dasanakatta yo.",
+            "translation": "Sama sekali tidak mengeluarkan komentar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでも見る価値はあると思う？",
+          "romaji": "Sore demo miru kachi wa aru to omou?",
+          "translation": "Meski begitu menurutmu masih layak ditonton?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_film_kontroversial_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "賛否はあるにしても、考えさせられる作品だとは思うよ。",
+            "romaji": "Sanpi wa aru ni shite mo, kangaesaserareru sakuhin da to wa omou yo.",
+            "translation": "Terlepas ada pro dan kontra, kurasa itu karya yang membuat berpikir.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "見る価値は全くないと思うよ。",
+            "romaji": "Miru kachi wa mattaku nai to omou yo.",
+            "translation": "Kupikir sama sekali tidak layak ditonton.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一度見てみようかな。",
+          "romaji": "Ichido mite miyou ka na.",
+          "translation": "Coba nonton sekali deh kayaknya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_film_kontroversial_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、おすすめするよ。",
+            "romaji": "Un, osusume suru yo.",
+            "translation": "Iya, aku merekomendasikannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別におすすめはしないよ。",
+            "romaji": "Betsu ni osusume wa shinai yo.",
+            "translation": "Sama sekali tidak merekomendasikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_preferensi_genre_film_n3",
+    "title": "Menjelaskan Preferensi terhadap Genre Film Tertentu",
+    "category": "bioskop_n3",
+    "description": "Kamu menjelaskan ke teman preferensimu terhadap genre film tertentu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ホラー映画って、全然見ないよね。",
+          "romaji": "Horaa eiga tte, zenzen minai yo ne.",
+          "translation": "Film horor, sama sekali tidak pernah nonton ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_preferensi_genre_film_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、怖がりなだけに、どうしても避けてしまうんだ。",
+            "romaji": "Un, kowagari na dake ni, dou shitemo sakete shimau n da.",
+            "translation": "Iya, karena penakut, jadi mau tidak mau selalu menghindarinya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ホラー映画が一番好きなジャンルだよ。",
+            "romaji": "Horaa eiga ga ichiban suki na janru da yo.",
+            "translation": "Genre horor justru genre favoritku.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "じゃあ、どんなジャンルが好きなの？",
+          "romaji": "Jaa, donna janru ga suki na no?",
+          "translation": "Kalau begitu, genre apa yang disukai?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_preferensi_genre_film_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "心温まるヒューマンドラマを、よく選んで見ているよ。",
+            "romaji": "Kokoro atatamaru hyuuman dorama wo, yoku erande mite iru yo.",
+            "translation": "Aku sering memilih menonton drama manusia yang menghangatkan hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に好きなジャンルはないよ。",
+            "romaji": "Toku ni suki na janru wa nai yo.",
+            "translation": "Tidak ada genre favorit khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "アクション映画はどう？",
+          "romaji": "Akushon eiga wa dou?",
+          "translation": "Kalau film aksi gimana?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_preferensi_genre_film_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "派手すぎる演出は、逆に疲れてしまうんだよね。",
+            "romaji": "Hadesugiru enshutsu wa, gyaku ni tsukarete shimau n da yo ne.",
+            "translation": "Sebaliknya aku malah capek dengan sajian yang terlalu berlebihan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アクション映画は何時間でも見ていられるよ。",
+            "romaji": "Akushon eiga wa nanjikan demo mite irareru yo.",
+            "translation": "Bisa nonton film aksi berjam-jam.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "好みがはっきりしてるね。",
+          "romaji": "Konomi ga hakkiri shiteru ne.",
+          "translation": "Preferensinya jelas ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_preferensi_genre_film_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、自分でもそう思うよ。",
+            "romaji": "Un, jibun demo sou omou yo.",
+            "translation": "Iya, aku sendiri juga berpikir begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "実は自分でもよく分からないんだ。",
+            "romaji": "Jitsu wa jibun demo yoku wakaranai n da.",
+            "translation": "Sebenarnya aku sendiri juga tidak begitu paham.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いいと思うよ、好みがあって。",
+          "romaji": "Ii to omou yo, konomi ga atte.",
+          "translation": "Bagus menurutku, punya preferensi sendiri."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_preferensi_genre_film_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。",
+            "romaji": "Arigatou.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に良くないと思うよ。",
+            "romaji": "Betsu ni yokunai to omou yo.",
+            "translation": "Kupikir sama sekali tidak bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_remake_film_klasik_n3",
+    "title": "Mendiskusikan Remake Film Klasik",
+    "category": "bioskop_n3",
+    "description": "Kamu dan teman mendiskusikan rencana remake sebuah film klasik.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あの名作、リメイクされるんだって。",
+          "romaji": "Ano meisaku, rimeiku sareru n datte.",
+          "translation": "Katanya film klasik terkenal itu akan dibuat ulang."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_remake_film_klasik_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "え、また？最近リメイクブームが続いてるよね。",
+            "romaji": "E, mata? Saikin rimeiku buumu ga tsuzuiteru yo ne.",
+            "translation": "Eh, lagi? Belakangan tren remake terus berlanjut ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "リメイクなんて聞いたことないよ。",
+            "romaji": "Rimeiku nante kiita koto nai yo.",
+            "translation": "Belum pernah dengar remake.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "リメイクについてどう思う？",
+          "romaji": "Rimeiku ni tsuite dou omou?",
+          "translation": "Bagaimana pendapatmu soal remake?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_remake_film_klasik_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "オリジナルを尊重しつつ、新しい解釈を加えてほしいな。",
+            "romaji": "Orijinaru wo sonchou shitsutsu, atarashii kaishaku wo kuwaete hoshii na.",
+            "translation": "Aku ingin mereka menghormati versi asli sambil menambahkan interpretasi baru.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "オリジナルを完全に無視してほしいな。",
+            "romaji": "Orijinaru wo kanzen ni mushi shite hoshii na.",
+            "translation": "Aku ingin mereka mengabaikan versi asli sepenuhnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "原作ファンの反応は複雑そうだね。",
+          "romaji": "Gensaku fan no hannou wa fukuzatsu sou da ne.",
+          "translation": "Reaksi penggemar versi asli sepertinya rumit ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_remake_film_klasik_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、期待と不安が入り混じっているみたいだよ。",
+            "romaji": "Un, kitai to fuan ga irimajitte iru mitai da yo.",
+            "translation": "Iya, sepertinya harapan dan kecemasan bercampur aduk.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "原作ファンは全く興味を示していないみたいだよ。",
+            "romaji": "Gensaku fan wa mattaku kyoumi wo shimeshite inai mitai da yo.",
+            "translation": "Sepertinya penggemar versi asli sama sekali tidak menunjukkan minat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "キャストは発表された？",
+          "romaji": "Kyasuto wa happyou sareta?",
+          "translation": "Pemerannya sudah diumumkan?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_remake_film_klasik_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、意外な人選に、ネットがざわついているよ。",
+            "romaji": "Un, igai na jinsen ni, netto ga zawatsuite iru yo.",
+            "translation": "Iya, karena pemilihan pemeran yang tak terduga, internet jadi ramai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ何も発表されていないよ。",
+            "romaji": "Mada nanimo happyou sarete inai yo.",
+            "translation": "Belum ada yang diumumkan sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "公開が楽しみだね。",
+          "romaji": "Koukai ga tanoshimi da ne.",
+          "translation": "Menantikan rilisnya ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_remake_film_klasik_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に楽しみじゃないよ。",
+            "romaji": "Betsu ni tanoshimi janai yo.",
+            "translation": "Sama sekali tidak dinantikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pengalaman_buruk_bioskop_n3",
+    "title": "Menceritakan Pengalaman Buruk di Bioskop",
+    "category": "bioskop_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman buruk di bioskop.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "映画館で嫌な思いをしたことがあるって聞いたよ。",
+          "romaji": "Eigakan de iya na omoi wo shita koto ga aru tte kiita yo.",
+          "translation": "Kudengar pernah punya pengalaman buruk di bioskop ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_pengalaman_buruk_bioskop_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、後ろの席の人に、ずっと椅子を蹴られ続けたことがあるんだ。",
+            "romaji": "Un, ushiro no seki no hito ni, zutto isu wo kerare tsuzuketa koto ga aru n da.",
+            "translation": "Iya, pernah kursi ditendang terus-menerus oleh orang di kursi belakang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "嫌な思いなんて一度もしたことないよ。",
+            "romaji": "Iya na omoi nante ichido mo shita koto nai yo.",
+            "translation": "Belum pernah punya pengalaman buruk sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "注意はしなかったの？",
+          "romaji": "Chuui wa shinakatta no?",
+          "translation": "Tidak menegur?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_pengalaman_buruk_bioskop_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "一度注意したけど、余計に気まずくなってしまったよ。",
+            "romaji": "Ichido chuui shita kedo, yokei ni kimazuku natte shimatta yo.",
+            "translation": "Sekali menegur, tapi malah jadi lebih canggung.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何度も注意して、すぐに解決したよ。",
+            "romaji": "Nando mo chuui shite, sugu ni kaiketsu shita yo.",
+            "translation": "Menegur berkali-kali dan langsung terselesaikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "他にも困ったことあった？",
+          "romaji": "Hoka ni mo komatta koto atta?",
+          "translation": "Ada hal lain yang bikin repot?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_pengalaman_buruk_bioskop_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "スマホの光が眩しくて、集中できなかったこともあったよ。",
+            "romaji": "Sumaho no hikari ga mabushikute, shuuchuu dekinakatta koto mo atta yo.",
+            "translation": "Pernah juga tidak bisa fokus karena silau cahaya HP.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "他には全く困ったことがなかったよ。",
+            "romaji": "Hoka ni wa mattaku komatta koto ga nakatta yo.",
+            "translation": "Sama sekali tidak ada hal lain yang bikin repot.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それは大変だったね。",
+          "romaji": "Sore wa taihen datta ne.",
+          "translation": "Itu berat ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_pengalaman_buruk_bioskop_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、映画に集中できなくて、本当に残念だったよ。",
+            "romaji": "Un, eiga ni shuuchuu dekinakute, hontou ni zannen datta yo.",
+            "translation": "Iya, tidak bisa fokus ke film, benar-benar disayangkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も感じなかったよ。",
+            "romaji": "Toku ni nanimo kanjinakatta yo.",
+            "translation": "Tidak merasakan apa-apa khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度からは気をつけてね。",
+          "romaji": "Kondo kara wa ki wo tsukete ne.",
+          "translation": "Mulai sekarang hati-hati ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_pengalaman_buruk_bioskop_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、次は席をよく選ぶようにするよ。",
+            "romaji": "Un, tsugi wa seki wo yoku erabu you ni suru yo.",
+            "translation": "Iya, lain kali aku akan berusaha memilih kursi dengan baik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に気をつけるつもりはないよ。",
+            "romaji": "Betsu ni ki wo tsukeru tsumori wa nai yo.",
+            "translation": "Sama sekali tidak berniat hati-hati.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tidak_suka_spoiler_n3",
+    "title": "Menjelaskan Alasan Tidak Suka Terkena Spoiler",
+    "category": "bioskop_n3",
+    "description": "Kamu menjelaskan ke teman alasan tidak suka terkena spoiler film.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "昨日の映画のラスト、教えてあげようか？",
+          "romaji": "Kinou no eiga no rasuto, oshiete ageyou ka?",
+          "translation": "Mau kuberi tahu ending film kemarin?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_tidak_suka_spoiler_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "やめて！ネタバレされると、見る楽しみが半減しちゃうんだ。",
+            "romaji": "Yamete! Netabare sareru to, miru tanoshimi ga hangen shichau n da.",
+            "translation": "Jangan! Kalau kena spoiler, kesenangan menontonnya jadi berkurang setengah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に構わないよ、教えて。",
+            "romaji": "Betsu ni kamawanai yo, oshiete.",
+            "translation": "Tidak apa-apa, kasih tahu saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そんなに気にするものなの？",
+          "romaji": "Sonna ni ki ni suru mono na no?",
+          "translation": "Sebegitunya dipedulikan?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_tidak_suka_spoiler_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、展開を知らずに驚きたい派なんだ。",
+            "romaji": "Un, tenkai wo shirazu ni odorokitai ha nan da.",
+            "translation": "Iya, aku tipe yang ingin terkejut tanpa tahu alurnya dulu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く気にしないタイプだよ。",
+            "romaji": "Mattaku ki ni shinai taipu da yo.",
+            "translation": "Tipe yang sama sekali tidak peduli.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "SNSでも気をつけてるの？",
+          "romaji": "Esunuesu demo ki wo tsuketeru no?",
+          "translation": "Berhati-hati juga di media sosial?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_tidak_suka_spoiler_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、感想ツイートは公開後しばらく見ないようにしているよ。",
+            "romaji": "Un, kansou tsuiito wa koukaigo shibaraku minai you ni shite iru yo.",
+            "translation": "Iya, aku berusaha tidak melihat cuitan kesan orang untuk sementara setelah rilis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "SNSは気にせず全部見ているよ。",
+            "romaji": "Esunuesu wa ki ni sezu zenbu mite iru yo.",
+            "translation": "Melihat semuanya di media sosial tanpa peduli.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "徹底してるね。",
+          "romaji": "Tettei shiteru ne.",
+          "translation": "Konsisten sekali ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_tidak_suka_spoiler_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、それくらい映画を大事にしてるんだ。",
+            "romaji": "Un, sore kurai eiga wo daiji ni shiteru n da.",
+            "translation": "Iya, sebegitunya aku menghargai film.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "実はそこまで徹底してないよ。",
+            "romaji": "Jitsu wa soko made tettei shitenai yo.",
+            "translation": "Sebenarnya tidak sekonsisten itu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "これからは気をつけるね。",
+          "romaji": "Kore kara wa ki wo tsukeru ne.",
+          "translation": "Mulai sekarang aku akan hati-hati."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_tidak_suka_spoiler_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、助かるよ。",
+            "romaji": "Arigatou, tasukaru yo.",
+            "translation": "Terima kasih, sangat membantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に助からないよ。",
+            "romaji": "Betsu ni tasukaranai yo.",
+            "translation": "Sama sekali tidak membantu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_aktor_favorit_n3",
+    "title": "Membicarakan Aktor atau Aktris Favorit",
+    "category": "bioskop_n3",
+    "description": "Kamu membicarakan aktor atau aktris favoritmu dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お気に入りの俳優さんっているの？",
+          "romaji": "Okiniiri no haiyuu-san tte iru no?",
+          "translation": "Ada aktor favorit?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_aktor_favorit_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの人の演技には、いつも引き込まれるんだ。",
+            "romaji": "Un, ano hito no engi ni wa, itsumo hikikomareru n da.",
+            "translation": "Iya, akting orang itu selalu bikin aku terhanyut.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にお気に入りの俳優はいないよ。",
+            "romaji": "Toku ni okiniiri no haiyuu wa inai yo.",
+            "translation": "Tidak ada aktor favorit khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんなところに魅力を感じるの？",
+          "romaji": "Donna tokoro ni miryoku wo kanjiru no?",
+          "translation": "Bagian mana yang terasa menarik?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_aktor_favorit_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "セリフがない場面でも、表情だけで感情を伝えられるところかな。",
+            "romaji": "Serifu ga nai bamen demo, hyoujou dake de kanjou wo tsutaerareru tokoro ka na.",
+            "translation": "Mungkin bagian di mana dia bisa menyampaikan emosi hanya lewat ekspresi meski tanpa dialog.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に魅力を感じたことはないよ。",
+            "romaji": "Toku ni miryoku wo kanjita koto wa nai yo.",
+            "translation": "Belum pernah merasakan daya tarik khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "出演作は全部見てるの？",
+          "romaji": "Shutsuensaku wa zenbu miteru no?",
+          "translation": "Semua film yang dibintanginya ditonton?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_aktor_favorit_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、公開されるたびに、必ず見に行っているよ。",
+            "romaji": "Un, koukai sareru tabi ni, kanarazu mi ni itte iru yo.",
+            "translation": "Iya, tiap kali rilis, aku selalu pasti pergi menonton.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "出演作は一本も見たことないよ。",
+            "romaji": "Shutsuensaku wa ippon mo mita koto nai yo.",
+            "translation": "Belum pernah nonton satu pun filmnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いつか会えるといいね。",
+          "romaji": "Itsuka aeru to ii ne.",
+          "translation": "Semoga suatu hari bisa bertemu ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_aktor_favorit_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、それが今の一番の夢なんだ。",
+            "romaji": "Un, sore ga ima no ichiban no yume nan da.",
+            "translation": "Iya, itu impian terbesarku sekarang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に会いたいとは思わないよ。",
+            "romaji": "Betsu ni aitai to wa omowanai yo.",
+            "translation": "Tidak berpikir ingin bertemu sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "夢が叶うといいね。",
+          "romaji": "Yume ga kanau to ii ne.",
+          "translation": "Semoga impianmu terwujud ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_aktor_favorit_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。",
+            "romaji": "Arigatou.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に叶わなくていいよ。",
+            "romaji": "Betsu ni kanawanakute ii yo.",
+            "translation": "Tidak usah terwujud juga tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_sensor_film_bioskop_n3",
+    "title": "Mendiskusikan Sensor Film di Bioskop",
+    "category": "bioskop_n3",
+    "description": "Kamu dan teman mendiskusikan sensor film di bioskop.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あの映画、一部のシーンがカットされて公開されたらしいね。",
+          "romaji": "Ano eiga, ichibu no shiin ga katto sarete koukai sareta rashii ne.",
+          "translation": "Katanya film itu dirilis dengan sebagian adegan dipotong ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_sensor_film_bioskop_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、暴力的な描写が、規制に引っかかったみたいだよ。",
+            "romaji": "Un, bouryokuteki na byousha ga, kisei ni hikkakatta mitai da yo.",
+            "translation": "Iya, sepertinya penggambaran kekerasannya kena regulasi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一切カットされずに公開されたらしいよ。",
+            "romaji": "Issai katto sarezu ni koukai sareta rashii yo.",
+            "translation": "Katanya dirilis tanpa dipotong sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "検閲について、どう思う？",
+          "romaji": "Ken'etsu ni tsuite, dou omou?",
+          "translation": "Bagaimana pendapatmu soal sensor?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_sensor_film_bioskop_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "必要な場合もあるとは思うけど、行き過ぎには反対だな。",
+            "romaji": "Hitsuyou na baai mo aru to wa omou kedo, ikisugi ni wa hantai da na.",
+            "translation": "Kurasa ada kalanya diperlukan, tapi aku menentang kalau berlebihan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "検閲には全面的に賛成だよ。",
+            "romaji": "Ken'etsu ni wa zenmenteki ni sansei da yo.",
+            "translation": "Sepenuhnya setuju dengan sensor.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "国によって基準が全然違うよね。",
+          "romaji": "Kuni ni yotte kijun ga zenzen chigau yo ne.",
+          "translation": "Standarnya beda banget tergantung negara ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_sensor_film_bioskop_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、文化的な背景の違いが、大きく関係していると思う。",
+            "romaji": "Un, bunkateki na haikei no chigai ga, ookiku kankei shite iru to omou.",
+            "translation": "Iya, kurasa perbedaan latar belakang budaya sangat berkaitan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どの国でも基準は全く同じだと思うよ。",
+            "romaji": "Dono kuni demo kijun wa mattaku onaji da to omou yo.",
+            "translation": "Kupikir standarnya sama persis di negara mana pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "完全版はどこかで見られるのかな。",
+          "romaji": "Kanzenban wa dokoka de mirareru no ka na.",
+          "translation": "Versi lengkapnya bisa ditonton di mana ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_sensor_film_bioskop_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "配信サービスなら、見られる可能性が高いと思うよ。",
+            "romaji": "Haishin saabisu nara, mirareru kanousei ga takai to omou yo.",
+            "translation": "Kalau layanan streaming, kurasa kemungkinan besar bisa ditonton.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どこを探しても絶対に見られないと思うよ。",
+            "romaji": "Doko wo sagashite mo zettai ni mirarenai to omou yo.",
+            "translation": "Kupikir sama sekali tidak bisa ditonton di mana pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "探してみようかな。",
+          "romaji": "Sagashite miyou ka na.",
+          "translation": "Coba dicari deh kayaknya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_sensor_film_bioskop_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、見つかるといいね。",
+            "romaji": "Un, mitsukaru to ii ne.",
+            "translation": "Iya, semoga ketemu ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に見つからなくていいよ。",
+            "romaji": "Betsu ni mitsukaranakute ii yo.",
+            "translation": "Tidak usah ketemu juga tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_maraton_film_n3",
+    "title": "Menceritakan Pengalaman Menonton Maraton Film",
+    "category": "bioskop_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman menonton maraton film akhir pekan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "週末、映画を一気見してたって聞いたよ。",
+          "romaji": "Shuumatsu, eiga wo ikkimi shiteta tte kiita yo.",
+          "translation": "Kudengar akhir pekan nonton film maraton ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_maraton_film_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、シリーズ全作を、一日で見終えてしまったんだ。",
+            "romaji": "Un, shiriizu zensaku wo, ichinichi de miowete shimatta n da.",
+            "translation": "Iya, aku sampai selesai nonton seluruh serinya dalam satu hari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一本しか見なかったよ。",
+            "romaji": "Ippon shika minakatta yo.",
+            "translation": "Hanya nonton satu film saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "体は大丈夫だった？",
+          "romaji": "Karada wa daijoubu datta?",
+          "translation": "Tubuhnya baik-baik saja?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_maraton_film_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、目が痛くなるくらい画面を見続けたよ。",
+            "romaji": "Shoujiki, me ga itaku naru kurai gamen wo mitsuzuketa yo.",
+            "translation": "Jujur, terus menatap layar sampai mataku sakit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く疲れを感じなかったよ。",
+            "romaji": "Mattaku tsukare wo kanjinakatta yo.",
+            "translation": "Sama sekali tidak merasa lelah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何本くらい見たの？",
+          "romaji": "Nanbon kurai mita no?",
+          "translation": "Nonton berapa film kira-kira?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_maraton_film_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "前作から最新作まで、全部で八本見たよ。",
+            "romaji": "Zensaku kara saishinsaku made, zenbu de hachihon mita yo.",
+            "translation": "Dari film pertama sampai yang terbaru, total menonton delapan film.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一本も見終わらなかったよ。",
+            "romaji": "Ippon mo miowaranakatta yo.",
+            "translation": "Tidak ada satu pun yang selesai ditonton.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "見終わってどう感じた？",
+          "romaji": "Miowatte dou kanjita?",
+          "translation": "Setelah selesai nonton bagaimana perasaannya?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_maraton_film_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "達成感はあったけど、少し放心状態になったよ。",
+            "romaji": "Tasseikan wa atta kedo, sukoshi houshin joutai ni natta yo.",
+            "translation": "Ada rasa pencapaian, tapi sedikit jadi linglung.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も感じることはなかったよ。",
+            "romaji": "Nanimo kanjiru koto wa nakatta yo.",
+            "translation": "Sama sekali tidak merasakan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "すごい集中力だね。",
+          "romaji": "Sugoi shuuchuuryoku da ne.",
+          "translation": "Daya konsentrasinya luar biasa ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_maraton_film_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。",
+            "romaji": "Arigatou.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にすごくないと思うよ。",
+            "romaji": "Betsu ni sugokunai to omou yo.",
+            "translation": "Kupikir sama sekali tidak luar biasa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_adaptasi_novel_ke_film_n3",
+    "title": "Menjelaskan Pendapat tentang Adaptasi Novel ke Film",
+    "category": "bioskop_n3",
+    "description": "Kamu menjelaskan ke teman pendapatmu tentang rencana adaptasi novel favoritmu ke film.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あの小説、映画化されるんだって。",
+          "romaji": "Ano shousetsu, eigaka sareru n datte.",
+          "translation": "Katanya novel itu akan diadaptasi jadi film."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_adaptasi_novel_ke_film_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "へえ、原作のファンとしては、期待と不安が半々かな。",
+            "romaji": "Hee, gensaku no fan to shite wa, kitai to fuan ga hanhan ka na.",
+            "translation": "Wah, sebagai penggemar versi aslinya, mungkin harapan dan kecemasannya seimbang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く興味がないよ。",
+            "romaji": "Mattaku kyoumi ga nai yo.",
+            "translation": "Sama sekali tidak tertarik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何が不安なの？",
+          "romaji": "Nani ga fuan na no?",
+          "translation": "Apa yang membuat cemas?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_adaptasi_novel_ke_film_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "原作の繊細な心理描写を、映像でどう表現するかが気になるんだ。",
+            "romaji": "Gensaku no sensai na shinri byousha wo, eizou de dou hyougen suru ka ga ki ni naru n da.",
+            "translation": "Aku penasaran bagaimana penggambaran psikologis yang halus di versi asli akan diungkapkan lewat visual.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "不安なことは特にないよ。",
+            "romaji": "Fuan na koto wa toku ni nai yo.",
+            "translation": "Tidak ada yang dicemaskan khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "原作通りに作られるとは限らないよね。",
+          "romaji": "Gensaku doori ni tsukurareru to wa kagiranai yo ne.",
+          "translation": "Tidak selalu dibuat persis sesuai versi asli kan."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_adaptasi_novel_ke_film_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、映画ならではの改変が加えられることも多いと思う。",
+            "romaji": "Un, eiga naradewa no kaihen ga kuwaerareru koto mo ooi to omou.",
+            "translation": "Iya, kurasa sering juga ditambahkan perubahan yang khas untuk versi film.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "映画は必ず原作通りに作られると思うよ。",
+            "romaji": "Eiga wa kanarazu gensaku doori ni tsukurareru to omou yo.",
+            "translation": "Kupikir film pasti dibuat persis sesuai versi asli.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "公開されたら一緒に見に行こうよ。",
+          "romaji": "Koukai saretara issho ni mi ni ikou yo.",
+          "translation": "Kalau sudah rilis nonton bareng yuk."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_adaptasi_novel_ke_film_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ぜひ一緒に見よう。",
+            "romaji": "Un, zehi issho ni miyou.",
+            "translation": "Iya, ayo tonton bareng.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一人で見に行くからいいよ。",
+            "romaji": "Hitori de mi ni iku kara ii yo.",
+            "translation": "Tidak usah, aku akan nonton sendirian.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみだね。",
+          "romaji": "Tanoshimi da ne.",
+          "translation": "Menantikan ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_adaptasi_novel_ke_film_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当に楽しみ。",
+            "romaji": "Un, hontou ni tanoshimi.",
+            "translation": "Iya, benar-benar menantikan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に楽しみじゃないよ。",
+            "romaji": "Betsu ni tanoshimi janai yo.",
+            "translation": "Sama sekali tidak dinantikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_festival_film_internasional_n3",
+    "title": "Membicarakan Festival Film Internasional",
+    "category": "bioskop_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman menghadiri festival film internasional.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "国際映画祭に行ったことがあるって本当？",
+          "romaji": "Kokusai eigasai ni itta koto ga aru tte hontou?",
+          "translation": "Benar pernah pergi ke festival film internasional?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_festival_film_internasional_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、去年、思い切って参加してみたんだ。",
+            "romaji": "Un, kyonen, omoikitte sanka shite mita n da.",
+            "translation": "Iya, tahun lalu aku memberanikan diri untuk ikut.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "映画祭なんて一度も興味を持ったことないよ。",
+            "romaji": "Eigasai nante ichido mo kyoumi wo motta koto nai yo.",
+            "translation": "Belum pernah tertarik dengan festival film sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな作品に出会えた？",
+          "romaji": "Donna sakuhin ni deaeta?",
+          "translation": "Karya seperti apa yang bisa ditemui?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_festival_film_internasional_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "普段の生活では出会えないような、独特な作品ばかりだったよ。",
+            "romaji": "Fudan no seikatsu dewa deaenai you na, dokutoku na sakuhin bakari datta yo.",
+            "translation": "Semuanya karya unik yang tidak bisa ditemui dalam kehidupan sehari-hari biasa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "普通の映画館と全く同じ作品ばかりだったよ。",
+            "romaji": "Futsuu no eigakan to mattaku onaji sakuhin bakari datta yo.",
+            "translation": "Semuanya karya yang sama persis dengan bioskop biasa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "監督と話す機会もあったの？",
+          "romaji": "Kantoku to hanasu kikai mo atta no?",
+          "translation": "Ada kesempatan bicara dengan sutradara juga?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_festival_film_internasional_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、上映後の質疑応答で、直接質問できたよ。",
+            "romaji": "Un, jouei go no shitsugi outou de, chokusetsu shitsumon dekita yo.",
+            "translation": "Iya, di sesi tanya jawab setelah pemutaran, aku bisa bertanya langsung.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "監督とは一切接点がなかったよ。",
+            "romaji": "Kantoku to wa issai setten ga nakatta yo.",
+            "translation": "Sama sekali tidak ada kontak dengan sutradara.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "刺激的な経験だったね。",
+          "romaji": "Shigekiteki na keiken datta ne.",
+          "translation": "Pengalaman yang menantang ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_festival_film_internasional_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、映画への見方が変わるくらいの経験だったよ。",
+            "romaji": "Un, eiga e no mikata ga kawaru kurai no keiken datta yo.",
+            "translation": "Iya, pengalaman yang sampai mengubah cara pandangku terhadap film.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も変わらなかったよ。",
+            "romaji": "Toku ni nanimo kawaranakatta yo.",
+            "translation": "Sama sekali tidak ada yang berubah khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "また行きたいね。",
+          "romaji": "Mata ikitai ne.",
+          "translation": "Ingin pergi lagi ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_festival_film_internasional_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、また絶対に行きたい。",
+            "romaji": "Un, mata zettai ni ikitai.",
+            "translation": "Iya, pasti ingin pergi lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう二度と行きたくないよ。",
+            "romaji": "Mou nidoto ikitakunai yo.",
+            "translation": "Sudah tidak ingin pergi lagi sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_cgi_berlebihan_n3",
+    "title": "Mendiskusikan Efek CGI Berlebihan dalam Film",
+    "category": "bioskop_n3",
+    "description": "Kamu dan teman mendiskusikan penggunaan efek CGI yang berlebihan dalam film-film belakangan ini.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近の映画、CGIを使いすぎな気がしない？",
+          "romaji": "Saikin no eiga, shii-jii-ai wo tsukaisugi na ki ga shinai?",
+          "translation": "Film belakangan ini, tidak merasa terlalu banyak pakai CGI?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_cgi_berlebihan_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、逆にリアリティが失われている作品も多いと思う。",
+            "romaji": "Un, gyaku ni riariti ga ushinawarete iru sakuhin mo ooi to omou.",
+            "translation": "Iya, kurasa malah banyak juga karya yang jadi kehilangan realitas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "CGIはまだまだ使い足りないと思うよ。",
+            "romaji": "Shii-jii-ai wa mada mada tsukai tarinai to omou yo.",
+            "translation": "Kupikir CGI masih kurang banyak dipakai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "アナログな撮影技術も見直されてるらしいね。",
+          "romaji": "Anarogu na satsuei gijutsu mo minaosarete iru rashii ne.",
+          "translation": "Katanya teknik pengambilan gambar analog juga mulai ditinjau ulang ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_cgi_berlebihan_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あえて実物のセットにこだわる監督も増えてきているよ。",
+            "romaji": "Un, aete jitsubutsu no setto ni kodawaru kantoku mo fuete kite iru yo.",
+            "translation": "Iya, sutradara yang sengaja mempertahankan set fisik asli juga makin bertambah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アナログ技術に興味を持つ人は全くいないよ。",
+            "romaji": "Anarogu gijutsu ni kyoumi wo motsu hito wa mattaku inai yo.",
+            "translation": "Tidak ada satu pun yang tertarik dengan teknik analog.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "CGIにも良い面はあるよね。",
+          "romaji": "Shii-jii-ai ni mo yoi men wa aru yo ne.",
+          "translation": "CGI juga ada sisi baiknya kan."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_cgi_berlebihan_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "もちろん、不可能を可能にするという点では、欠かせない技術だと思う。",
+            "romaji": "Mochiron, fukanou wo kanou ni suru to iu ten dewa, kakasenai gijutsu da to omou.",
+            "translation": "Tentu, dalam hal mewujudkan yang tidak mungkin, kurasa itu teknologi yang tidak bisa dilepaskan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "CGIには良い面が一つもないと思うよ。",
+            "romaji": "Shii-jii-ai ni wa yoi men ga hitotsu mo nai to omou yo.",
+            "translation": "Kupikir CGI tidak punya satu pun sisi baik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "バランスが大事ってことだね。",
+          "romaji": "Baransu ga daiji tte koto da ne.",
+          "translation": "Berarti keseimbangan itu yang penting ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_cgi_berlebihan_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、まさにその通りだと思う。",
+            "romaji": "Un, masani sono toori da to omou.",
+            "translation": "Iya, kurasa persis seperti itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、バランスなんて関係ないと思うよ。",
+            "romaji": "Iya, baransu nante kankei nai to omou yo.",
+            "translation": "Tidak, kupikir keseimbangan sama sekali tidak ada hubungannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "面白い視点だね。",
+          "romaji": "Omoshiroi shiten da ne.",
+          "translation": "Sudut pandang yang menarik ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_cgi_berlebihan_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。",
+            "romaji": "Arigatou.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に面白くないと思うよ。",
+            "romaji": "Betsu ni omoshirokunai to omou yo.",
+            "translation": "Kupikir sama sekali tidak menarik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jadi_figuran_film_n3",
+    "title": "Menceritakan Pengalaman Menjadi Figuran dalam Film",
+    "category": "bioskop_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman menjadi figuran dalam sebuah film.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "映画のエキストラをしたことがあるって聞いたよ。",
+          "romaji": "Eiga no ekisutora wo shita koto ga aru tte kiita yo.",
+          "translation": "Kudengar pernah jadi figuran film ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_jadi_figuran_film_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、友達に誘われて、軽い気持ちで応募してみたんだ。",
+            "romaji": "Un, tomodachi ni sasowarete, karui kimochi de oubo shite mita n da.",
+            "translation": "Iya, diajak teman, aku coba mendaftar dengan ringan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "エキストラなんて一度も考えたことないよ。",
+            "romaji": "Ekisutora nante ichido mo kangaeta koto nai yo.",
+            "translation": "Belum pernah kepikiran jadi figuran sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "撮影現場はどんな感じだった？",
+          "romaji": "Satsuei genba wa donna kanji datta?",
+          "translation": "Lokasi syuting seperti apa suasananya?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_jadi_figuran_film_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "想像していたよりも、待ち時間がとても長かったよ。",
+            "romaji": "Souzou shite ita yori mo, machijikan ga totemo nagakatta yo.",
+            "translation": "Waktu menunggunya jauh lebih lama dari yang dibayangkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "想像通り、あっという間に終わったよ。",
+            "romaji": "Souzou doori, atto iu ma ni owatta yo.",
+            "translation": "Seperti yang dibayangkan, selesai dalam sekejap.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "有名な俳優さんにも会えた？",
+          "romaji": "Yuumei na haiyuu-san ni mo aeta?",
+          "translation": "Bisa bertemu aktor terkenal juga?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_jadi_figuran_film_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、遠くからだったけど、主演の俳優を見ることができたよ。",
+            "romaji": "Un, tooku kara datta kedo, shuen no haiyuu wo miru koto ga dekita yo.",
+            "translation": "Iya, meski dari jauh, aku bisa melihat aktor utamanya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰にも会えないまま終わったよ。",
+            "romaji": "Dare ni mo aenai mama owatta yo.",
+            "translation": "Berakhir tanpa bisa bertemu siapa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "映画は完成したら見に行くの？",
+          "romaji": "Eiga wa kansei shitara mi ni iku no?",
+          "translation": "Kalau filmnya sudah jadi mau nonton?"
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_jadi_figuran_film_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、自分が映ってるかどうか、確認しに行くつもりだよ。",
+            "romaji": "Un, jibun ga utteru ka dou ka, kakunin shi ni iku tsumori da yo.",
+            "translation": "Iya, aku berniat pergi menonton untuk memastikan apakah aku muncul di layar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "自分が出ていないなら見に行かないよ。",
+            "romaji": "Jibun ga dete inai nara mi ni ikanai yo.",
+            "translation": "Kalau aku tidak muncul aku tidak akan pergi nonton.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "見つけられるといいね。",
+          "romaji": "Mitsukerareru to ii ne.",
+          "translation": "Semoga bisa menemukan dirimu ya."
+        },
+        "imagePath": "kaiwa_images/bioskop_n3/kaiwa_jadi_figuran_film_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、見つかったら教えるよ。",
+            "romaji": "Un, mitsukattara oshieru yo.",
+            "translation": "Iya, kalau ketemu akan kukabari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に教えるつもりはないよ。",
+            "romaji": "Betsu ni oshieru tsumori wa nai yo.",
+            "translation": "Sama sekali tidak berniat memberi tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]
