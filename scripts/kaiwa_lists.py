@@ -1188,6 +1188,24 @@ CUACA_BASA_BASI_N3_TITLES = [
     "Mendiskusikan Kepercayaan Tradisional Seputar Cuaca",
 ]
 
+RUMAH_SAKIT_N3_TITLES = [
+    "Menjelaskan Gejala yang Sulit Dijelaskan ke Dokter",
+    "Menegosiasikan Jadwal Kontrol yang Bentrok",
+    "Menanyakan Efek Samping Obat secara Detail",
+    "Menjelaskan Riwayat Penyakit Keluarga",
+    "Mendiskusikan Pilihan Pengobatan Alternatif",
+    "Menceritakan Pengalaman Operasi",
+    "Menjelaskan Kekhawatiran Sebelum Menjalani Tes Medis",
+    "Mendiskusikan Pentingnya General Check-up Rutin",
+    "Menjelaskan Alasan Ingin Second Opinion",
+    "Menceritakan Pengalaman Merawat Anggota Keluarga yang Sakit",
+    "Mendiskusikan Biaya Pengobatan yang Mahal",
+    "Menjelaskan Cara Mengatasi Fobia terhadap Jarum Suntik",
+    "Membicarakan Pentingnya Kesehatan Mental",
+    "Menceritakan Pengalaman Pulih dari Penyakit Serius",
+    "Mendiskusikan Pola Hidup Sehat untuk Mencegah Penyakit",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1231,6 +1249,7 @@ CATEGORY_META = {
     "arah_jalan_n3": ("Menanyakan Arah", "🧭", "N3"),
     "sekolah_n3": ("Di Sekolah", "🏫", "N3"),
     "cuaca_basa_basi_n3": ("Cuaca & Basa-basi", "☁️", "N3"),
+    "rumah_sakit_n3": ("Di Rumah Sakit", "🏥", "N3"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1276,6 +1295,7 @@ AVAILABLE_CATEGORIES = {
     "arah_jalan_n3": ARAH_JALAN_N3_TITLES,
     "sekolah_n3": SEKOLAH_N3_TITLES,
     "cuaca_basa_basi_n3": CUACA_BASA_BASI_N3_TITLES,
+    "rumah_sakit_n3": RUMAH_SAKIT_N3_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1333,6 +1353,7 @@ _ALL_TITLE_LISTS = {
     "ARAH_JALAN_N3_TITLES": ARAH_JALAN_N3_TITLES,
     "SEKOLAH_N3_TITLES": SEKOLAH_N3_TITLES,
     "CUACA_BASA_BASI_N3_TITLES": CUACA_BASA_BASI_N3_TITLES,
+    "RUMAH_SAKIT_N3_TITLES": RUMAH_SAKIT_N3_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
