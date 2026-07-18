@@ -990,6 +990,24 @@ LIBURAN_N4_TITLES = [
     "Menceritakan Pengalaman Liburan yang Mengubah Pandangan Hidup",
 ]
 
+KELUARGA_N4_TITLES = [
+    "Mendiskusikan Konflik Kecil dalam Keluarga",
+    "Menjelaskan Keputusan Besar ke Orang Tua",
+    "Membicarakan Harapan untuk Masa Depan Keluarga",
+    "Menjelaskan Kenapa Jarang Pulang Kampung",
+    "Berdiskusi Tentang Perbedaan Cara Mendidik Anak",
+    "Menjelaskan Kekhawatiran Tentang Kesehatan Orang Tua",
+    "Membicarakan Warisan Nilai dari Kakek Nenek",
+    "Menjelaskan Kenapa Ingin Tinggal Terpisah dari Orang Tua",
+    "Berdiskusi Rencana Merawat Orang Tua di Masa Tua",
+    "Menjelaskan Alasan Menikah di Usia Tertentu",
+    "Membicarakan Perubahan Hubungan Setelah Menikah",
+    "Menjelaskan Kenapa Memilih Tidak Punya Anak",
+    "Berdiskusi Tentang Peran Masing-masing dalam Keluarga",
+    "Menceritakan Momen yang Mempererat Keluarga",
+    "Menjelaskan Cara Menyelesaikan Konflik dengan Saudara",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1022,6 +1040,7 @@ CATEGORY_META = {
     "transportasi_n4": ("Transportasi", "🚌", "N4"),
     "kantor_pos_n4": ("Di Kantor Pos", "📮", "N4"),
     "liburan_n4": ("Rencana Liburan", "🏖️", "N4"),
+    "keluarga_n4": ("Keluarga", "👨‍👩‍👧", "N4"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1056,6 +1075,7 @@ AVAILABLE_CATEGORIES = {
     "transportasi_n4": TRANSPORTASI_N4_TITLES,
     "kantor_pos_n4": KANTOR_POS_N4_TITLES,
     "liburan_n4": LIBURAN_N4_TITLES,
+    "keluarga_n4": KELUARGA_N4_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1102,6 +1122,7 @@ _ALL_TITLE_LISTS = {
     "TRANSPORTASI_N4_TITLES": TRANSPORTASI_N4_TITLES,
     "KANTOR_POS_N4_TITLES": KANTOR_POS_N4_TITLES,
     "LIBURAN_N4_TITLES": LIBURAN_N4_TITLES,
+    "KELUARGA_N4_TITLES": KELUARGA_N4_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
