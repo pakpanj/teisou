@@ -162617,5 +162617,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_keterlambatan_kereta_atasan_n3",
+    "title": "Menjelaskan Keterlambatan Kereta ke Atasan",
+    "category": "stasiun_n3",
+    "description": "Kamu menelepon atasan untuk menjelaskan keterlambatan karena kereta.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Atasan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もしもし、まだ着かないの？",
+          "romaji": "Moshimoshi, mada tsukanai no?",
+          "translation": "Halo, belum sampai?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_keterlambatan_kereta_atasan_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "申し訳ございません、電車が遅延しておりまして。",
+            "romaji": "Moushiwake gozaimasen, densha ga chien shite orimashite.",
+            "translation": "Mohon maaf, keretanya sedang terlambat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう着いています。",
+            "romaji": "Mou tsuite imasu.",
+            "translation": "Sudah sampai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Atasan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのくらい遅れそうですか。",
+          "romaji": "Dono kurai okuresou desu ka.",
+          "translation": "Kira-kira terlambat berapa lama?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_keterlambatan_kereta_atasan_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "状況からして、二十分ほど遅れると思われます。",
+            "romaji": "Joukyou kara shite, nijuppun hodo okureru to omowaremasu.",
+            "translation": "Dari situasinya, sepertinya akan terlambat sekitar dua puluh menit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く遅れないと思います。",
+            "romaji": "Mattaku okurenai to omoimasu.",
+            "translation": "Kupikir sama sekali tidak akan terlambat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Atasan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "分かりました、会議の開始を少し遅らせておきますね。",
+          "romaji": "Wakarimashita, kaigi no kaishi wo sukoshi okurasete okimasu ne.",
+          "translation": "Mengerti, akan saya undur sedikit mulainya rapat."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_keterlambatan_kereta_atasan_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お手数をおかけして申し訳ございません。",
+            "romaji": "Otesuu wo okake shite moushiwake gozaimasen.",
+            "translation": "Maaf merepotkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "遅らせなくて大丈夫です。",
+            "romaji": "Okurasenakute daijoubu desu.",
+            "translation": "Tidak usah diundur juga tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Atasan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いえ、こういう時もありますよ。気をつけて来てくださいね。",
+          "romaji": "Ie, kou iu toki mo arimasu yo. Ki wo tsukete kite kudasai ne.",
+          "translation": "Tidak, kadang begini juga terjadi. Hati-hati dalam perjalanan ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_keterlambatan_kereta_atasan_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、急いで向かいます。",
+            "romaji": "Arigatou gozaimasu, isoide mukaimasu.",
+            "translation": "Terima kasih, saya akan segera menuju ke sana.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ゆっくり行きます。",
+            "romaji": "Yukkuri ikimasu.",
+            "translation": "Akan pergi santai-santai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Atasan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "無理しないでくださいね。",
+          "romaji": "Muri shinaide kudasai ne.",
+          "translation": "Jangan memaksakan diri ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_keterlambatan_kereta_atasan_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、気をつけます。",
+            "romaji": "Hai, ki wo tsukemasu.",
+            "translation": "Baik, saya akan hati-hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "無理して急ぎます。",
+            "romaji": "Muri shite isogimasu.",
+            "translation": "Akan tetap memaksakan diri buru-buru.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_negosiasi_pengembalian_tiket_n3",
+    "title": "Menegosiasikan Pengembalian Tiket yang Salah Beli",
+    "category": "stasiun_n3",
+    "description": "Kamu meminta petugas mengganti tiket kereta yang salah beli.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "本日はどのようなご用件でしょうか。",
+          "romaji": "Honjitsu wa dono you na goyouken deshou ka.",
+          "translation": "Hari ini ada keperluan apa?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_negosiasi_pengembalian_tiket_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "すみません、間違えて違う日のチケットを買ってしまったんです。",
+            "romaji": "Sumimasen, machigaete chigau hi no chiketto wo katte shimatta n desu.",
+            "translation": "Maaf, saya salah beli tiket untuk hari yang berbeda.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "チケットを買いに来ました。",
+            "romaji": "Chiketto wo kai ni kimashita.",
+            "translation": "Datang untuk beli tiket.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "未使用であれば、手数料はかかりますが、変更可能です。",
+          "romaji": "Mishiyou de areba, tesuuryou wa kakarimasu ga, henkou kanou desu.",
+          "translation": "Kalau belum dipakai, bisa diganti meski dikenakan biaya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_negosiasi_pengembalian_tiket_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "それでも構いませんので、変更をお願いします。",
+            "romaji": "Sore demo kamaimasen node, henkou wo onegaishimasu.",
+            "translation": "Itu tidak masalah, tolong diganti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "手数料がかかるならやめておきます。",
+            "romaji": "Tesuuryou ga kakaru nara yamete okimasu.",
+            "translation": "Kalau ada biaya batal saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "では、正しい日付を教えていただけますか。",
+          "romaji": "Dewa, tadashii hizuke wo oshiete itadakemasu ka.",
+          "translation": "Kalau begitu, bisakah beri tahu tanggal yang benar?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_negosiasi_pengembalian_tiket_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "来週の土曜日にしていただきたいんです。",
+            "romaji": "Raishuu no doyoubi ni shite itadakitai n desu.",
+            "translation": "Saya ingin diubah menjadi Sabtu depan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "日付はどうでもいいです。",
+            "romaji": "Hizuke wa dou demo ii desu.",
+            "translation": "Tanggalnya terserah saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "かしこまりました、差額をお支払いいただきます。",
+          "romaji": "Kashikomarimashita, sagaku wo oshiharai itadakimasu.",
+          "translation": "Baik, mohon bayar selisihnya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_negosiasi_pengembalian_tiket_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、いくらになりますか。",
+            "romaji": "Hai, ikura ni narimasu ka.",
+            "translation": "Baik, jadi berapa?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "差額は払いたくありません。",
+            "romaji": "Sagaku wa haraitakunai desu.",
+            "translation": "Tidak mau bayar selisihnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "五百円になります。",
+          "romaji": "Gohyakuen ni narimasu.",
+          "translation": "Jadi 500 yen."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_negosiasi_pengembalian_tiket_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、支払います。",
+            "romaji": "Wakarimashita, shiharaimasu.",
+            "translation": "Mengerti, akan saya bayar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは高すぎます。",
+            "romaji": "Sore wa takasugimasu.",
+            "translation": "Itu terlalu mahal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_rute_alternatif_gangguan_n3",
+    "title": "Menjelaskan Rute Alternatif Saat Ada Gangguan",
+    "category": "stasiun_n3",
+    "description": "Kamu dan teman mencari rute alternatif karena ada gangguan di jalur kereta.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "事故の影響で、この路線は止まっているみたいだよ。",
+          "romaji": "Jiko no eikyou de, kono rosen wa tomatte iru mitai da yo.",
+          "translation": "Katanya karena kecelakaan, jalur ini sepertinya berhenti."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_rute_alternatif_gangguan_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本当だ、代わりのルートを探さないといけないね。",
+            "romaji": "Hontou da, kawari no ruuto wo sagasanai to ikenai ne.",
+            "translation": "Benar juga, harus cari rute alternatif ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "このまま待っていれば大丈夫だよ。",
+            "romaji": "Kono mama matte ireba daijoubu da yo.",
+            "translation": "Kalau tunggu saja tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "バスに乗り換えるのはどう？",
+          "romaji": "Basu ni norikaeru no wa dou?",
+          "translation": "Gimana kalau ganti naik bus?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_rute_alternatif_gangguan_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "それもいいけど、時間がかかりそうだね。",
+            "romaji": "Sore mo ii kedo, jikan ga kakarisou da ne.",
+            "translation": "Itu juga bagus, tapi sepertinya butuh waktu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "バスは絶対使いたくないよ。",
+            "romaji": "Basu wa zettai tsukaitakunai yo.",
+            "translation": "Sama sekali tidak mau pakai bus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "別の路線に乗り換えたほうが早いかもしれない。",
+          "romaji": "Betsu no rosen ni norikaeta hou ga hayai kamoshirenai.",
+          "translation": "Mungkin lebih cepat kalau ganti ke jalur lain."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_rute_alternatif_gangguan_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、そっちのルートを試してみよう。",
+            "romaji": "Sou da ne, socchi no ruuto wo tameshite miyou.",
+            "translation": "Betul juga, ayo coba rute itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別の路線には乗り換えられないよ。",
+            "romaji": "Betsu no rosen ni wa norikaerarenai yo.",
+            "translation": "Tidak bisa ganti ke jalur lain.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "アプリで調べれば、詳しいルートが分かるはずだよ。",
+          "romaji": "Apuri de shirabereba, kuwashii ruuto ga wakaru hazu da yo.",
+          "translation": "Kalau dicek lewat aplikasi, seharusnya bisa tahu rute detailnya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_rute_alternatif_gangguan_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいアイデアだね、調べてみる。",
+            "romaji": "Ii aidea da ne, shirabete miru.",
+            "translation": "Ide bagus, aku coba cari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アプリなんて信じないよ。",
+            "romaji": "Apuri nante shinjinai yo.",
+            "translation": "Aplikasi begituan tidak dipercaya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "遅れそうなら、先に連絡しておいたほうがいいよ。",
+          "romaji": "Okuresou nara, saki ni renraku shite oita hou ga ii yo.",
+          "translation": "Kalau kelihatannya akan terlambat, sebaiknya kabari duluan."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_rute_alternatif_gangguan_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、今のうちに連絡しておく。",
+            "romaji": "Sou da ne, ima no uchi ni renraku shite oku.",
+            "translation": "Betul juga, akan aku kabari sekarang selagi sempat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "連絡しなくていいよ。",
+            "romaji": "Renraku shinakute ii yo.",
+            "translation": "Tidak usah dikabari.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_lapor_barang_tertinggal_kereta_n3",
+    "title": "Melaporkan Barang Tertinggal di Kereta",
+    "category": "stasiun_n3",
+    "description": "Kamu melaporkan payung yang tertinggal di kereta ke petugas stasiun.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "本日はどうされましたか。",
+          "romaji": "Honjitsu wa dou saremashita ka.",
+          "translation": "Hari ini ada apa?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_lapor_barang_tertinggal_kereta_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "さっき乗っていた電車に、傘を置き忘れてしまったんです。",
+            "romaji": "Sakki notte ita densha ni, kasa wo okiwasurete shimatta n desu.",
+            "translation": "Saya lupa meninggalkan payung di kereta yang tadi saya naiki.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "傘を探しに来ました。",
+            "romaji": "Kasa wo sagashi ni kimashita.",
+            "translation": "Datang untuk mencari payung.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何時頃の電車か覚えていますか。",
+          "romaji": "Nanjigoro no densha ka oboete imasu ka.",
+          "translation": "Ingat kereta jam berapa?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_lapor_barang_tertinggal_kereta_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "十時発の電車だったと思います。",
+            "romaji": "Juuji hatsu no densha datta to omoimasu.",
+            "translation": "Kurasa kereta yang berangkat jam 10.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時の電車か全く覚えていません。",
+            "romaji": "Nanji no densha ka mattaku oboete imasen.",
+            "translation": "Sama sekali tidak ingat jam berapa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "傘の特徴を教えていただけますか。",
+          "romaji": "Kasa no tokuchou wo oshiete itadakemasu ka.",
+          "translation": "Bisakah beri tahu ciri-ciri payungnya?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_lapor_barang_tertinggal_kereta_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "黒くて、持ち手が木でできているものです。",
+            "romaji": "Kurokute, mochite ga ki de dekite iru mono desu.",
+            "translation": "Warnanya hitam, pegangannya terbuat dari kayu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特徴は特にありません。",
+            "romaji": "Tokuchou wa toku ni arimasen.",
+            "translation": "Tidak ada ciri khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "確認いたしますので、少々お待ちください。",
+          "romaji": "Kakunin itashimasu node, shoushou omachi kudasai.",
+          "translation": "Akan kami periksa, mohon tunggu sebentar."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_lapor_barang_tertinggal_kereta_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、お願いします。",
+            "romaji": "Hai, onegaishimasu.",
+            "translation": "Baik, tolong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう結構です。",
+            "romaji": "Mou kekkou desu.",
+            "translation": "Sudah tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "見つかりましたら、こちらにご連絡いたします。",
+          "romaji": "Mitsukarimashitara, kochira ni gorenraku itashimasu.",
+          "translation": "Kalau ketemu, akan kami hubungi ke sini."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_lapor_barang_tertinggal_kereta_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "よろしくお願いします、ありがとうございます。",
+            "romaji": "Yoroshiku onegaishimasu, arigatou gozaimasu.",
+            "translation": "Mohon bantuannya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう連絡しなくていいです。",
+            "romaji": "Mou renraku shinakute ii desu.",
+            "translation": "Tidak usah dihubungi lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pengalaman_kereta_peluru_n3",
+    "title": "Membicarakan Pengalaman Naik Kereta Peluru Pertama Kali",
+    "category": "stasiun_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman naik shinkansen untuk pertama kalinya.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新幹線に乗るの、今回が初めてなんだって？",
+          "romaji": "Shinkansen ni noru no, konkai ga hajimete nan datte?",
+          "translation": "Katanya ini pertama kalinya naik shinkansen ya?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_pengalaman_kereta_peluru_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、想像していた以上のスピードで驚いたよ。",
+            "romaji": "Un, souzou shite ita ijou no supiido de odoroita yo.",
+            "translation": "Iya, kecepatannya melebihi bayangan, sampai kaget.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "思っていたより遅くてがっかりしたよ。",
+            "romaji": "Omotte ita yori osokute gakkari shita yo.",
+            "translation": "Ternyata lebih lambat dari dugaan, jadi kecewa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "揺れとかは気にならなかった？",
+          "romaji": "Yure toka wa ki ni naranakatta?",
+          "translation": "Goncangannya tidak mengganggu?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_pengalaman_kereta_peluru_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ほとんど揺れを感じないくらい快適だったよ。",
+            "romaji": "Hotondo yure wo kanjinai kurai kaiteki datta yo.",
+            "translation": "Nyaman sekali sampai hampir tidak merasakan goncangan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "すごく揺れて、酔ってしまったよ。",
+            "romaji": "Sugoku yurete, yotte shimatta yo.",
+            "translation": "Sangat bergoyang, sampai mabuk.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "車内のサービスはどうだった？",
+          "romaji": "Shanai no saabisu wa dou datta?",
+          "translation": "Layanan di dalamnya gimana?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_pengalaman_kereta_peluru_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "思っていたより快適で、静かだったよ。",
+            "romaji": "Omotte ita yori kaiteki de, shizuka datta yo.",
+            "translation": "Ternyata lebih nyaman dan tenang dari yang kukira.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然快適じゃなかったよ。",
+            "romaji": "Zenzen kaiteki janakatta yo.",
+            "translation": "Sama sekali tidak nyaman.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "また乗りたいと思う？",
+          "romaji": "Mata noritai to omou?",
+          "translation": "Ingin naik lagi?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_pengalaman_kereta_peluru_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、機会があればまた乗りたいな。",
+            "romaji": "Un, kikai ga areba mata noritai na.",
+            "translation": "Iya, kalau ada kesempatan ingin naik lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう二度と乗りたくないな。",
+            "romaji": "Mou nidoto noritakunai na.",
+            "translation": "Tidak mau naik lagi selamanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "良い経験になったね。",
+          "romaji": "Ii keiken ni natta ne.",
+          "translation": "Jadi pengalaman yang bagus ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_pengalaman_kereta_peluru_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当に良い経験だった。",
+            "romaji": "Un, hontou ni ii keiken datta.",
+            "translation": "Iya, benar-benar pengalaman yang bagus.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "あまり良い経験じゃなかったな。",
+            "romaji": "Amari ii keiken janakatta na.",
+            "translation": "Bukan pengalaman yang begitu bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jenis_tiket_kereta_n3",
+    "title": "Menjelaskan Perbedaan Jenis Tiket Kereta",
+    "category": "stasiun_n3",
+    "description": "Kamu menjelaskan ke teman perbedaan kursi terjadwal dan kursi bebas.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "指定席と自由席、どう違うの？",
+          "romaji": "Shiteiseki to jiyuuseki, dou chigau no?",
+          "translation": "Kursi terjadwal dan kursi bebas, bedanya apa?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_jenis_tiket_kereta_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "指定席は席が決まっている分、確実に座れるんだ。",
+            "romaji": "Shiteiseki wa seki ga kimatte iru bun, kakujitsu ni suwareru n da.",
+            "translation": "Karena kursi terjadwal sudah ditentukan, jadi pasti bisa duduk.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どちらも全く同じ仕組みだよ。",
+            "romaji": "Dochira mo mattaku onaji shikumi da yo.",
+            "translation": "Keduanya mekanismenya sama persis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "値段はどのくらい違うの？",
+          "romaji": "Nedan wa dono kurai chigau no?",
+          "translation": "Harganya beda berapa banyak?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_jenis_tiket_kereta_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "指定席のほうが、五百円ほど高くなる場合が多いよ。",
+            "romaji": "Shiteiseki no hou ga, gohyakuen hodo takaku naru baai ga ooi yo.",
+            "translation": "Kursi terjadwal biasanya lebih mahal sekitar 500 yen.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "値段は全く変わらないよ。",
+            "romaji": "Nedan wa mattaku kawaranai yo.",
+            "translation": "Harganya sama sekali tidak berubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "混雑する時期は、指定席にしたほうがいいのかな。",
+          "romaji": "Konzatsu suru jiki wa, shiteiseki ni shita hou ga ii no ka na.",
+          "translation": "Waktu musim ramai, mungkin lebih baik pilih kursi terjadwal ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_jenis_tiket_kereta_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、混雑期は自由席だと座れないこともあるからね。",
+            "romaji": "Un, konzatsuki wa jiyuuseki da to suwarenai koto mo aru kara ne.",
+            "translation": "Iya, karena waktu musim ramai kursi bebas kadang tidak kebagian duduk.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "混雑期でも自由席で十分だよ。",
+            "romaji": "Konzatsuki demo jiyuuseki de juubun da yo.",
+            "translation": "Waktu musim ramai pun kursi bebas cukup.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "グリーン車っていうのもあるよね。",
+          "romaji": "Guriinsha tte iu no mo aru yo ne.",
+          "translation": "Ada juga yang namanya gerbong Green ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_jenis_tiket_kereta_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あれは指定席よりさらに快適な席なんだ。",
+            "romaji": "Un, are wa shiteiseki yori sara ni kaiteki na seki nan da.",
+            "translation": "Iya, itu kursi yang lebih nyaman lagi dari kursi terjadwal.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "グリーン車は自由席と同じだよ。",
+            "romaji": "Guriinsha wa jiyuuseki to onaji da yo.",
+            "translation": "Gerbong Green sama dengan kursi bebas.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度使ってみようかな。",
+          "romaji": "Kondo tsukatte miyou ka na.",
+          "translation": "Mungkin lain kali coba pakai ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_jenis_tiket_kereta_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、一度試してみるといいよ。",
+            "romaji": "Un, ichido tameshite miru to ii yo.",
+            "translation": "Iya, coba sekali, bagus lho.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "使わないほうがいいよ。",
+            "romaji": "Tsukawanai hou ga ii yo.",
+            "translation": "Lebih baik tidak dipakai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_etika_kereta_padat_n3",
+    "title": "Mendiskusikan Etika Naik Kereta yang Padat",
+    "category": "stasiun_n3",
+    "description": "Kamu dan teman mendiskusikan etika yang benar saat naik kereta yang padat.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "満員電車でのマナーって、意外と難しいよね。",
+          "romaji": "Man'in densha de no manaa tte, igai to muzukashii yo ne.",
+          "translation": "Etika di kereta yang penuh sesak itu, ternyata cukup sulit ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_etika_kereta_padat_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、リュックを前に抱えるだけでも、だいぶ違うらしいよ。",
+            "romaji": "Un, ryukku wo mae ni kakaeru dake demo, daibu chigau rashii yo.",
+            "translation": "Iya, katanya cukup dengan memeluk ransel di depan saja, sudah cukup berbeda.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "リュックの持ち方なんて誰も気にしないよ。",
+            "romaji": "Ryukku no mochikata nante dare mo ki ni shinai yo.",
+            "translation": "Cara bawa ransel tidak dipedulikan siapa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "イヤホンの音漏れも気をつけないとね。",
+          "romaji": "Iyahon no otomore mo ki wo tsukenai to ne.",
+          "translation": "Kebocoran suara earphone juga harus diperhatikan ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_etika_kereta_padat_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、音量には特に気をつけるようにしているよ。",
+            "romaji": "Sou da ne, onryou ni wa toku ni ki wo tsukeru you ni shite iru yo.",
+            "translation": "Betul juga, aku usahakan sangat memperhatikan volumenya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "音漏れなんて誰も気にしていないと思うよ。",
+            "romaji": "Otomore nante dare mo ki ni shite inai to omou yo.",
+            "translation": "Kupikir tidak ada yang peduli kebocoran suara.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "優先席の扱いについてはどう思う？",
+          "romaji": "Yuuseiseki no atsukai ni tsuite wa dou omou?",
+          "translation": "Bagaimana pendapatmu soal perlakuan kursi prioritas?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_etika_kereta_padat_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "必要な人には、迷わず譲るべきだと思うよ。",
+            "romaji": "Hitsuyou na hito ni wa, mayowazu yuzuru beki da to omou yo.",
+            "translation": "Kurasa harus tanpa ragu memberikan ke orang yang membutuhkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "優先席は誰が座ってもいいと思うよ。",
+            "romaji": "Yuuseiseki wa dare ga suwattemo ii to omou yo.",
+            "translation": "Kupikir kursi prioritas boleh diduduki siapa saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "荷物を座席に置くのも良くないよね。",
+          "romaji": "Nimotsu wo zaseki ni oku no mo yokunai yo ne.",
+          "translation": "Meletakkan barang di kursi juga tidak baik ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_etika_kereta_padat_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、他の人が座れなくなってしまうからね。",
+            "romaji": "Un, hoka no hito ga suwarenaku natte shimau kara ne.",
+            "translation": "Iya, karena jadi membuat orang lain tidak bisa duduk.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "荷物ぐらい置いても問題ないと思うよ。",
+            "romaji": "Nimotsu gurai oitemo mondai nai to omou yo.",
+            "translation": "Kupikir taruh barang sedikit tidak masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "マナーを守れば、みんな気持ちよく乗れるね。",
+          "romaji": "Manaa wo mamoreba, minna kimochiyoku noreru ne.",
+          "translation": "Kalau menjaga etika, semua bisa naik dengan nyaman ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_etika_kereta_padat_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どうでもいいと思う。",
+            "romaji": "Dou demo ii to omou.",
+            "translation": "Kupikir terserah saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tersesat_stasiun_besar_n3",
+    "title": "Menceritakan Pengalaman Tersesat di Stasiun Besar",
+    "category": "stasiun_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman tersesat di stasiun Shinjuku.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新宿駅で迷ったことがあるって言ってたよね。",
+          "romaji": "Shinjuku eki de mayotta koto ga aru tte itteta yo ne.",
+          "translation": "Katanya pernah tersesat di stasiun Shinjuku ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_tersesat_stasiun_besar_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、出口の多さに圧倒されて、迷子になってしまったんだ。",
+            "romaji": "Un, deguchi no oosa ni attousarete, maigo ni natte shimatta n da.",
+            "translation": "Iya, karena kewalahan dengan banyaknya pintu keluar, aku jadi tersesat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一度も迷ったことないよ。",
+            "romaji": "Ichido mo mayotta koto nai yo.",
+            "translation": "Belum pernah tersesat sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのくらい迷ったの？",
+          "romaji": "Dono kurai mayotta no?",
+          "translation": "Berapa lama tersesat?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_tersesat_stasiun_besar_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "三十分ぐらい、同じところをぐるぐる回っていたと思う。",
+            "romaji": "Sanjuppun gurai, onaji tokoro wo guruguru mawatte ita to omou.",
+            "translation": "Kurasa sekitar tiga puluh menit muter-muter di tempat yang sama.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "すぐに出口が見つかったよ。",
+            "romaji": "Sugu ni deguchi ga mitsukatta yo.",
+            "translation": "Langsung ketemu pintu keluarnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうやって解決したの？",
+          "romaji": "Dou yatte kaiketsu shita no?",
+          "translation": "Bagaimana bisa terselesaikan?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_tersesat_stasiun_besar_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "駅員さんに聞いたところ、すぐに教えてもらえたんだ。",
+            "romaji": "Ekiin san ni kiita tokoro, sugu ni oshiete moraeta n da.",
+            "translation": "Setelah tanya petugas stasiun, langsung diberi tahu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰にも聞かずに自力で解決したよ。",
+            "romaji": "Dare ni mo kikazu ni jiriki de kaiketsu shita yo.",
+            "translation": "Menyelesaikan sendiri tanpa tanya siapa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それ以来、大きい駅では気をつけるようになった？",
+          "romaji": "Sore irai, ookii eki dewa ki wo tsukeru you ni natta?",
+          "translation": "Sejak itu, jadi lebih hati-hati di stasiun besar?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_tersesat_stasiun_besar_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、事前に地図を確認するようになったよ。",
+            "romaji": "Un, jizen ni chizu wo kakunin suru you ni natta yo.",
+            "translation": "Iya, jadi terbiasa mengecek peta terlebih dahulu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く気をつけなくなったよ。",
+            "romaji": "Mattaku ki wo tsukenaku natta yo.",
+            "translation": "Jadi sama sekali tidak berhati-hati.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いい教訓になったね。",
+          "romaji": "Ii kyoukun ni natta ne.",
+          "translation": "Jadi pelajaran yang bagus ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_tersesat_stasiun_besar_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に教訓にはならなかったよ。",
+            "romaji": "Betsu ni kyoukun ni wa naranakatta yo.",
+            "translation": "Bukannya jadi pelajaran.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_sistem_transfer_kereta_n3",
+    "title": "Menjelaskan Cara Kerja Sistem Transfer Kereta",
+    "category": "stasiun_n3",
+    "description": "Kamu menjelaskan cara kerja sistem transfer kereta ke teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "乗り換えの仕組みが、いまいちよく分からないんだけど。",
+          "romaji": "Norikae no shikumi ga, imaichi yoku wakaranai n da kedo.",
+          "translation": "Aku tidak begitu paham sistem transfernya nih."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_sistem_transfer_kereta_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "改札を出ずに乗り換えられる駅もあれば、出る必要がある駅もあるんだ。",
+            "romaji": "Kaisatsu wo dezu ni norikaerareru eki mo areba, deru hitsuyou ga aru eki mo aru n da.",
+            "translation": "Ada stasiun yang bisa transfer tanpa keluar gerbang tiket, ada juga yang harus keluar dulu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どの駅でも同じ方法で乗り換えられるよ。",
+            "romaji": "Dono eki demo onaji houhou de norikaerareru yo.",
+            "translation": "Di stasiun mana pun cara transfernya sama.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうやって見分ければいいの？",
+          "romaji": "Dou yatte miwakereba ii no?",
+          "translation": "Cara membedakannya gimana?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_sistem_transfer_kereta_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "アプリの案内に従えば、迷わず乗り換えられるはずだよ。",
+            "romaji": "Apuri no annai ni shitagaeba, mayowazu norikaerareru hazu da yo.",
+            "translation": "Kalau ikuti petunjuk aplikasi, seharusnya bisa transfer tanpa tersesat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アプリなんて見なくても大丈夫だよ。",
+            "romaji": "Apuri nante minakutemo daijoubu da yo.",
+            "translation": "Tanpa lihat aplikasi pun tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ICカードを使えば、料金も自動で調整されるんだよね。",
+          "romaji": "Aishii kaado wo tsukaeba, ryoukin mo jidou de chousei sareru n da yo ne.",
+          "translation": "Kalau pakai kartu IC, biayanya juga otomatis disesuaikan ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_sistem_transfer_kereta_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうそう、その点はとても便利だと思うよ。",
+            "romaji": "Sou sou, sono ten wa totemo benri da to omou yo.",
+            "translation": "Betul, kurasa itu bagian yang sangat praktis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは全く便利じゃないと思うよ。",
+            "romaji": "Sore wa mattaku benri janai to omou yo.",
+            "translation": "Kupikir itu sama sekali tidak praktis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "乗り換え時間が短いと焦るよね。",
+          "romaji": "Norikae jikan ga mijikai to aseru yo ne.",
+          "translation": "Kalau waktu transfernya singkat jadi panik ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_sistem_transfer_kereta_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、走らないと間に合わないこともあるからね。",
+            "romaji": "Un, hashiranai to maniawanai koto mo aru kara ne.",
+            "translation": "Iya, karena kadang kalau tidak lari tidak akan sempat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いつも時間に余裕があるよ。",
+            "romaji": "Itsumo jikan ni yoyuu ga aru yo.",
+            "translation": "Selalu ada banyak waktu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "慣れれば、そんなに難しくないはずだよ。",
+          "romaji": "Narereba, sonna ni muzukashikunai hazu da yo.",
+          "translation": "Kalau sudah terbiasa, seharusnya tidak terlalu sulit."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_sistem_transfer_kereta_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだといいな。",
+            "romaji": "Sou da to ii na.",
+            "translation": "Semoga begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "絶対に無理だと思うよ。",
+            "romaji": "Zettai ni muri da to omou yo.",
+            "translation": "Kupikir pasti tidak mungkin.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kenangan_kereta_jarak_jauh_n3",
+    "title": "Membicarakan Kenangan Perjalanan Kereta Jarak Jauh",
+    "category": "stasiun_n3",
+    "description": "Kamu bercerita ke teman tentang kenangan naik kereta jarak jauh.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "長距離列車に乗った時の思い出とかある？",
+          "romaji": "Choukyori ressha ni notta toki no omoide toka aru?",
+          "translation": "Ada kenangan waktu naik kereta jarak jauh?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_kenangan_kereta_jarak_jauh_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、車窓の景色に、ずっと見とれていたのを覚えているよ。",
+            "romaji": "Un, shasou no keshiki ni, zutto mitorete ita no wo oboete iru yo.",
+            "translation": "Iya, aku ingat terus terpukau melihat pemandangan dari jendela kereta.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に思い出はないよ。",
+            "romaji": "Toku ni omoide wa nai yo.",
+            "translation": "Tidak ada kenangan khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのくらいの時間乗っていたの？",
+          "romaji": "Dono kurai no jikan notte ita no?",
+          "translation": "Naik berapa lama?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_kenangan_kereta_jarak_jauh_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "八時間ほど乗っていたと思う。",
+            "romaji": "Hachijikan hodo notte ita to omou.",
+            "translation": "Kurasa naik sekitar delapan jam.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "十分ほどしか乗っていなかったよ。",
+            "romaji": "Juppun hodo shika notte inakatta yo.",
+            "translation": "Hanya naik sekitar sepuluh menit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "長時間、退屈しなかった？",
+          "romaji": "Choujikan, taikutsu shinakatta?",
+          "translation": "Waktu lama begitu, tidak bosan?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_kenangan_kereta_jarak_jauh_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本を読みつつ、景色も楽しんでいたから平気だったよ。",
+            "romaji": "Hon wo yominitsutsu, keshiki mo tanoshinde ita kara heiki datta yo.",
+            "translation": "Aku sambil baca buku, juga menikmati pemandangan, jadi tidak apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "すごく退屈で、何もできなかったよ。",
+            "romaji": "Sugoku taikutsu de, nanimo dekinakatta yo.",
+            "translation": "Sangat bosan, tidak bisa apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "途中で降りて観光したりした？",
+          "romaji": "Tochuu de orite kankou shitari shita?",
+          "translation": "Sempat turun di tengah jalan untuk wisata?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_kenangan_kereta_jarak_jauh_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、一度だけ途中下車して、名物を食べたよ。",
+            "romaji": "Un, ichido dake tochuu gesha shite, meibutsu wo tabeta yo.",
+            "translation": "Iya, sekali turun di tengah jalan, makan makanan khas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一度も降りなかったよ。",
+            "romaji": "Ichido mo orinakatta yo.",
+            "translation": "Tidak pernah turun sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いい旅だったんだね。",
+          "romaji": "Ii tabi datta n da ne.",
+          "translation": "Perjalanan yang bagus ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_kenangan_kereta_jarak_jauh_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、忘れられない思い出になったよ。",
+            "romaji": "Un, wasurerarenai omoide ni natta yo.",
+            "translation": "Iya, jadi kenangan yang tidak terlupakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "あまりいい旅じゃなかったよ。",
+            "romaji": "Amari ii tabi janakatta yo.",
+            "translation": "Bukan perjalanan yang begitu bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_alasan_pilih_kereta_daripada_pesawat_n3",
+    "title": "Menjelaskan Alasan Memilih Kereta daripada Pesawat",
+    "category": "stasiun_n3",
+    "description": "Kamu menjelaskan ke teman kenapa memilih naik shinkansen daripada pesawat.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "なんで飛行機じゃなくて、新幹線にしたの？",
+          "romaji": "Nande hikouki janakute, shinkansen ni shita no?",
+          "translation": "Kenapa pilih shinkansen bukan pesawat?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_alasan_pilih_kereta_daripada_pesawat_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "空港までの移動を考えると、かえって時間がかからないんだ。",
+            "romaji": "Kuukou made no idou wo kangaeru to, kaette jikan ga kakaranai n da.",
+            "translation": "Kalau memperhitungkan perjalanan ke bandara, malah tidak makan waktu lebih lama.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "飛行機のほうが絶対早いと思うよ。",
+            "romaji": "Hikouki no hou ga zettai hayai to omou yo.",
+            "translation": "Kupikir pesawat pasti lebih cepat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "値段の違いもあるんじゃない？",
+          "romaji": "Nedan no chigai mo aru n janai?",
+          "translation": "Ada juga perbedaan harga kan?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_alasan_pilih_kereta_daripada_pesawat_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "値段はそこまで変わらないから、快適さで選んだんだ。",
+            "romaji": "Nedan wa soko made kawaranai kara, kaitekisa de eranda n da.",
+            "translation": "Karena harganya tidak terlalu beda, aku memilih berdasarkan kenyamanan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "値段は全く関係ないよ。",
+            "romaji": "Nedan wa mattaku kankei nai yo.",
+            "translation": "Harga sama sekali tidak ada hubungannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新幹線のほうが快適だと感じるの？",
+          "romaji": "Shinkansen no hou ga kaiteki da to kanjiru no?",
+          "translation": "Merasa shinkansen lebih nyaman?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_alasan_pilih_kereta_daripada_pesawat_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、席も広いし、自由に立ち歩けるところがいいんだ。",
+            "romaji": "Un, seki mo hiroi shi, jiyuu ni tachiarukeru tokoro ga ii n da.",
+            "translation": "Iya, kursinya juga luas, dan bagusnya bisa bebas berdiri berjalan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "飛行機のほうがずっと快適だと思うよ。",
+            "romaji": "Hikouki no hou ga zutto kaiteki da to omou yo.",
+            "translation": "Kupikir pesawat jauh lebih nyaman.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "荷物の持ち運びも楽なんじゃない？",
+          "romaji": "Nimotsu no mochihakobi mo raku nan janai?",
+          "translation": "Bawa barang juga lebih gampang kan?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_alasan_pilih_kereta_daripada_pesawat_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうなんだよ、預ける手続きがない分、楽なんだ。",
+            "romaji": "Sou nan da yo, azukeru tetsuzuki ga nai bun, raku nan da.",
+            "translation": "Betul, karena tidak ada proses check-in bagasi, jadi lebih mudah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "荷物の持ち運びは同じぐらい大変だよ。",
+            "romaji": "Nimotsu no mochihakobi wa onaji gurai taihen da yo.",
+            "translation": "Bawa barang sama-sama repotnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "なるほど、それなら新幹線もいいね。",
+          "romaji": "Naruhodo, sore nara shinkansen mo ii ne.",
+          "translation": "Begitu ya, kalau begitu shinkansen juga bagus ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_alasan_pilih_kereta_daripada_pesawat_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、次もきっと新幹線を選ぶと思う。",
+            "romaji": "Un, tsugi mo kitto shinkansen wo erabu to omou.",
+            "translation": "Iya, kurasa lain kali juga pasti akan pilih shinkansen.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "次は絶対飛行機にするよ。",
+            "romaji": "Tsugi wa zettai hikouki ni suru yo.",
+            "translation": "Lain kali pasti akan pilih pesawat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kepadatan_kereta_jam_sibuk_n3",
+    "title": "Mendiskusikan Kepadatan Kereta di Jam Sibuk",
+    "category": "stasiun_n3",
+    "description": "Kamu dan teman mendiskusikan kepadatan kereta di jam sibuk pagi.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "朝のラッシュ、本当にすごいよね。",
+          "romaji": "Asa no rasshu, hontou ni sugoi yo ne.",
+          "translation": "Rush hour pagi, benar-benar luar biasa ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_kepadatan_kereta_jam_sibuk_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、息もできないくらい混んでいる時があるよ。",
+            "romaji": "Un, iki mo dekinai kurai konde iru toki ga aru yo.",
+            "translation": "Iya, kadang penuh sampai susah bernapas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然混んでいないと思うよ。",
+            "romaji": "Zenzen konde inai to omou yo.",
+            "translation": "Kupikir sama sekali tidak padat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "時間をずらして乗ったりはしないの？",
+          "romaji": "Jikan wo zurashite nottari wa shinai no?",
+          "translation": "Tidak coba geser waktu naik?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_kepadatan_kereta_jam_sibuk_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "会社の始業時間があるから、ずらすわけにはいかないんだ。",
+            "romaji": "Kaisha no shigyou jikan ga aru kara, zurasu wake ni wa ikanai n da.",
+            "translation": "Karena ada jam masuk kantor, tidak bisa menggesernya begitu saja.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いつでも自由に時間を変えられるよ。",
+            "romaji": "Itsudemo jiyuu ni jikan wo kaerareru yo.",
+            "translation": "Kapan pun bisa bebas ganti waktu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ストレスにならない？",
+          "romaji": "Sutoresu ni naranai?",
+          "translation": "Tidak jadi stres?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_kepadatan_kereta_jam_sibuk_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、慣れたとはいえ、多少のストレスは感じるよ。",
+            "romaji": "Shoujiki, nareta to wa ie, tashou no sutoresu wa kanjiru yo.",
+            "translation": "Jujur, meski sudah terbiasa, tetap merasakan sedikit stres.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全くストレスにならないよ。",
+            "romaji": "Mattaku sutoresu ni naranai yo.",
+            "translation": "Sama sekali tidak jadi stres.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何か対策はしているの？",
+          "romaji": "Nanika taisaku wa shite iru no?",
+          "translation": "Ada tindakan tertentu yang diambil?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_kepadatan_kereta_jam_sibuk_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "音楽を聴きながら気を紛らわせるようにしているよ。",
+            "romaji": "Ongaku wo kikinagara ki wo magirawaseru you ni shite iru yo.",
+            "translation": "Aku usahakan mengalihkan perhatian sambil dengar musik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も対策していないよ。",
+            "romaji": "Toku ni nanimo taisaku shite inai yo.",
+            "translation": "Tidak melakukan tindakan apa pun khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "在宅勤務が増えるといいね。",
+          "romaji": "Zaitaku kinmu ga fueru to ii ne.",
+          "translation": "Semoga kerja dari rumah makin banyak ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_kepadatan_kereta_jam_sibuk_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思うよ。",
+            "romaji": "Un, hontou ni sou omou yo.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に増えなくていいよ。",
+            "romaji": "Betsu ni fuenakute ii yo.",
+            "translation": "Tidak perlu bertambah juga tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_bantu_orang_stasiun_n3",
+    "title": "Menceritakan Pengalaman Membantu Orang di Stasiun",
+    "category": "stasiun_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman menolong orang di stasiun.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "駅で誰かを助けたことがあるって聞いたよ。",
+          "romaji": "Eki de dareka wo tasuketa koto ga aru tte kiita yo.",
+          "translation": "Kudengar pernah menolong seseorang di stasiun."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_bantu_orang_stasiun_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、階段でベビーカーを運ぶのに苦労している人を見かけて、手伝ったんだ。",
+            "romaji": "Un, kaidan de bebiikaa wo hakobu no ni kurou shite iru hito wo mikakete, tetsudatta n da.",
+            "translation": "Iya, aku melihat orang yang kesulitan membawa kereta bayi di tangga, jadi aku bantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に誰も助けたことないよ。",
+            "romaji": "Toku ni dare mo tasuketa koto nai yo.",
+            "translation": "Belum pernah menolong siapa pun khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "声をかけるのに勇気がいらなかった？",
+          "romaji": "Koe wo kakeru no ni yuuki ga iranakatta?",
+          "translation": "Tidak butuh keberanian untuk menyapa?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_bantu_orang_stasiun_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "少し緊張したけど、見て見ぬふりはできなかったんだ。",
+            "romaji": "Sukoshi kinchou shita kedo, mite minu furi wa dekinakatta n da.",
+            "translation": "Agak gugup, tapi tidak bisa pura-pura tidak melihat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然緊張しなかったよ。",
+            "romaji": "Zenzen kinchou shinakatta yo.",
+            "translation": "Sama sekali tidak gugup.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その人はどんな反応だった？",
+          "romaji": "Sono hito wa donna hannou datta?",
+          "translation": "Orang itu reaksinya bagaimana?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_bantu_orang_stasiun_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "すごく感謝されて、こちらまで嬉しくなったよ。",
+            "romaji": "Sugoku kansha sarete, kochira made ureshiku natta yo.",
+            "translation": "Sangat diucapkan terima kasih, sampai aku ikut senang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も言われなかったよ。",
+            "romaji": "Toku ni nanimo iwarenakatta yo.",
+            "translation": "Tidak dikatakan apa-apa khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そういう経験があると、また助けたいと思うよね。",
+          "romaji": "Sou iu keiken ga aru to, mata tasuketai to omou yo ne.",
+          "translation": "Kalau ada pengalaman begitu, jadi ingin menolong lagi ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_bantu_orang_stasiun_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、今度も困っている人がいたら声をかけようと思う。",
+            "romaji": "Un, kondo mo komatte iru hito ga itara koe wo kakeyou to omou.",
+            "translation": "Iya, lain kali kalau ada orang kesulitan aku berniat menyapa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう二度と助けないと思う。",
+            "romaji": "Mou nidoto tasukenai to omou.",
+            "translation": "Tidak akan menolong lagi selamanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "素敵な心がけだね。",
+          "romaji": "Suteki na kokorogake da ne.",
+          "translation": "Sikap yang indah ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_bantu_orang_stasiun_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そう言ってもらえると嬉しいな。",
+            "romaji": "Sou itte moraeru to ureshii na.",
+            "translation": "Kalau dikatakan begitu, aku senang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそんなことないよ。",
+            "romaji": "Betsu ni sonna koto nai yo.",
+            "translation": "Tidak seperti itu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_loker_penitipan_barang_n3",
+    "title": "Menjelaskan Cara Menggunakan Loker Penitipan Barang di Stasiun",
+    "category": "stasiun_n3",
+    "description": "Kamu menjelaskan ke teman cara memakai loker koin di stasiun.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "コインロッカーって、初めて使うんだけど、使い方分かる？",
+          "romaji": "Koin rokkaa tte, hajimete tsukau n da kedo, tsukaikata wakaru?",
+          "translation": "Loker koin, ini pertama kali pakai, tahu caranya?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_loker_penitipan_barang_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、荷物を入れてから、料金を払う仕組みになっているはずだよ。",
+            "romaji": "Un, nimotsu wo irete kara, ryoukin wo harau shikumi ni natte iru hazu da yo.",
+            "translation": "Iya, seharusnya sistemnya masukkan barang dulu, lalu bayar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "先にお金を払わないと開かないと思うよ。",
+            "romaji": "Saki ni okane wo harawanai to hirakanai to omou yo.",
+            "translation": "Kupikir kalau tidak bayar dulu tidak akan terbuka.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "支払い方法は現金だけなのかな。",
+          "romaji": "Shiharai houhou wa genkin dake na no ka na.",
+          "translation": "Cara bayarnya cuma tunai saja ya kali."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_loker_penitipan_barang_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ううん、最近はICカードにも対応しているみたいだよ。",
+            "romaji": "Uun, saikin wa aishii kaado ni mo taiou shite iru mitai da yo.",
+            "translation": "Tidak, belakangan sepertinya juga mendukung kartu IC.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "現金しか使えないと思うよ。",
+            "romaji": "Genkin shika tsukaenai to omou yo.",
+            "translation": "Kupikir hanya bisa pakai tunai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "鍵をなくしたらどうすればいいんだろう。",
+          "romaji": "Kagi wo nakushitara dou sureba ii n darou.",
+          "translation": "Kalau kunci hilang harus bagaimana ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_loker_penitipan_barang_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "その場合は、駅員さんに相談すればいいはずだよ。",
+            "romaji": "Sono baai wa, ekiin san ni soudan sureba ii hazu da yo.",
+            "translation": "Kalau begitu, seharusnya cukup konsultasi ke petugas stasiun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "荷物は諦めるしかないと思うよ。",
+            "romaji": "Nimotsu wa akirameru shika nai to omou yo.",
+            "translation": "Kupikir cuma bisa merelakan barangnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "使用期限とかあるの？",
+          "romaji": "Shiyou kigen toka aru no?",
+          "translation": "Ada batas waktu pemakaian?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_loker_penitipan_barang_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "あるらしいよ、期限を過ぎると追加料金がかかるみたい。",
+            "romaji": "Aru rashii yo, kigen wo sugiru to tsuika ryoukin ga kakaru mitai.",
+            "translation": "Sepertinya ada, kalau melewati batas kena biaya tambahan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "期限は特にないと思うよ。",
+            "romaji": "Kigen wa toku ni nai to omou yo.",
+            "translation": "Kupikir tidak ada batas waktu khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "なるほど、気をつけないとね。",
+          "romaji": "Naruhodo, ki wo tsukenai to ne.",
+          "translation": "Begitu ya, harus hati-hati ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_loker_penitipan_barang_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、時間内に取りに来るようにしよう。",
+            "romaji": "Un, jikannai ni tori ni kuru you ni shiyou.",
+            "translation": "Iya, ayo usahakan ambil dalam waktu yang ditentukan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に気にしなくていいよ。",
+            "romaji": "Betsu ni ki ni shinakute ii yo.",
+            "translation": "Tidak usah dipedulikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_rencana_jr_pass_n3",
+    "title": "Membicarakan Rencana Perjalanan dengan JR Pass",
+    "category": "stasiun_n3",
+    "description": "Kamu membicarakan rencana perjalanan pakai JR Pass dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "JRパスを使って旅行しようと思ってるんだけど、どう思う？",
+          "romaji": "JR pasu wo tsukatte ryokou shiyou to omotteru n da kedo, dou omou?",
+          "translation": "Aku berpikir mau jalan-jalan pakai JR Pass, menurutmu gimana?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_rencana_jr_pass_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいと思うよ、たくさん移動するならお得なはずだよ。",
+            "romaji": "Ii to omou yo, takusan idou suru nara otoku na hazu da yo.",
+            "translation": "Kurasa bagus lho, kalau banyak berpindah tempat pasti hemat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "あまりお得じゃないと思うよ。",
+            "romaji": "Amari otoku janai to omou yo.",
+            "translation": "Kupikir tidak begitu hemat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのくらいの期間、使えるものなの？",
+          "romaji": "Dono kurai no kikan, tsukaeru mono na no?",
+          "translation": "Bisa dipakai berapa lama?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_rencana_jr_pass_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "種類によるけど、七日間から使えるものが多いよ。",
+            "romaji": "Shurui ni yoru kedo, nanokakan kara tsukaeru mono ga ooi yo.",
+            "translation": "Tergantung jenisnya, tapi banyak yang bisa dipakai mulai tujuh hari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一日しか使えないよ。",
+            "romaji": "Ichinichi shika tsukaenai yo.",
+            "translation": "Hanya bisa dipakai satu hari.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新幹線にも乗れるの？",
+          "romaji": "Shinkansen ni mo noreru no?",
+          "translation": "Bisa naik shinkansen juga?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_rencana_jr_pass_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "一部の新幹線を除いて、ほとんど乗り放題らしいよ。",
+            "romaji": "Ichibu no shinkansen wo nozoite, hotondo norihoudai rashii yo.",
+            "translation": "Katanya hampir semua bisa naik sepuasnya kecuali sebagian shinkansen.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "新幹線には全く乗れないよ。",
+            "romaji": "Shinkansen ni wa mattaku norenai yo.",
+            "translation": "Sama sekali tidak bisa naik shinkansen.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どこを回る予定なの？",
+          "romaji": "Doko wo mawaru yotei na no?",
+          "translation": "Berencana keliling ke mana saja?"
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_rencana_jr_pass_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "京都と大阪を中心に回ろうと思っているんだ。",
+            "romaji": "Kyouto to Oosaka wo chuushin ni mawarou to omotte iru n da.",
+            "translation": "Aku berpikir mau keliling terutama Kyoto dan Osaka.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にどこも回るつもりはないよ。",
+            "romaji": "Toku ni doko mo mawaru tsumori wa nai yo.",
+            "translation": "Tidak berniat keliling ke mana pun khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しい旅になるといいね。",
+          "romaji": "Tanoshii tabi ni naru to ii ne.",
+          "translation": "Semoga jadi perjalanan yang menyenangkan ya."
+        },
+        "imagePath": "kaiwa_images/stasiun_n3/kaiwa_rencana_jr_pass_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、今からすごく楽しみにしてる。",
+            "romaji": "Un, ima kara sugoku tanoshimi ni shiteru.",
+            "translation": "Iya, dari sekarang sudah sangat tidak sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に楽しみじゃないよ。",
+            "romaji": "Betsu ni tanoshimi janai yo.",
+            "translation": "Tidak begitu tidak sabar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]

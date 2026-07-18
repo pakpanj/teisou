@@ -1098,6 +1098,24 @@ RESTORAN_N3_TITLES = [
     "Menceritakan Kenangan Makan Bersama Keluarga",
 ]
 
+STASIUN_N3_TITLES = [
+    "Menjelaskan Keterlambatan Kereta ke Atasan",
+    "Menegosiasikan Pengembalian Tiket yang Salah Beli",
+    "Menjelaskan Rute Alternatif Saat Ada Gangguan",
+    "Melaporkan Barang Tertinggal di Kereta",
+    "Membicarakan Pengalaman Naik Kereta Peluru Pertama Kali",
+    "Menjelaskan Perbedaan Jenis Tiket Kereta",
+    "Mendiskusikan Etika Naik Kereta yang Padat",
+    "Menceritakan Pengalaman Tersesat di Stasiun Besar",
+    "Menjelaskan Cara Kerja Sistem Transfer Kereta",
+    "Membicarakan Kenangan Perjalanan Kereta Jarak Jauh",
+    "Menjelaskan Alasan Memilih Kereta daripada Pesawat",
+    "Mendiskusikan Kepadatan Kereta di Jam Sibuk",
+    "Menceritakan Pengalaman Membantu Orang di Stasiun",
+    "Menjelaskan Cara Menggunakan Loker Penitipan Barang di Stasiun",
+    "Membicarakan Rencana Perjalanan dengan JR Pass",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1136,6 +1154,7 @@ CATEGORY_META = {
     "bioskop_n4": ("Di Bioskop", "🎬", "N4"),
     "perkenalan_n3": ("Perkenalan", "👋", "N3"),
     "restoran_n3": ("Di Restoran", "🍽️", "N3"),
+    "stasiun_n3": ("Di Stasiun", "🚉", "N3"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1176,6 +1195,7 @@ AVAILABLE_CATEGORIES = {
     "bioskop_n4": BIOSKOP_N4_TITLES,
     "perkenalan_n3": PERKENALAN_N3_TITLES,
     "restoran_n3": RESTORAN_N3_TITLES,
+    "stasiun_n3": STASIUN_N3_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1228,6 +1248,7 @@ _ALL_TITLE_LISTS = {
     "BIOSKOP_N4_TITLES": BIOSKOP_N4_TITLES,
     "PERKENALAN_N3_TITLES": PERKENALAN_N3_TITLES,
     "RESTORAN_N3_TITLES": RESTORAN_N3_TITLES,
+    "STASIUN_N3_TITLES": STASIUN_N3_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
