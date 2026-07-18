@@ -150437,5 +150437,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_ajak_olahraga_bersama_n4",
+    "title": "Mengajak Teman Berolahraga Bersama",
+    "category": "olahraga_n4",
+    "description": "Kamu mengajak teman untuk berolahraga bersama akhir pekan ini.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度の週末、一緒に運動しない？",
+          "romaji": "Kondo no shuumatsu, issho ni undou shinai?",
+          "translation": "Akhir pekan nanti, mau olahraga bareng tidak?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_ajak_olahraga_bersama_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいね、何をするつもり？",
+            "romaji": "Ii ne, nani wo suru tsumori?",
+            "translation": "Boleh, mau ngapain?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "運動はしたくないな。",
+            "romaji": "Undou wa shitakunai na.",
+            "translation": "Aku tidak mau olahraga.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ジョギングでもどうかなと思って。",
+          "romaji": "Jogingu demo dou ka na to omotte.",
+          "translation": "Aku pikir jogging gimana ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_ajak_olahraga_bersama_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいよ、朝早く起きるようにするね。",
+            "romaji": "Ii yo, asa hayaku okiru you ni suru ne.",
+            "translation": "Oke, aku usahakan bangun pagi-pagi ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "朝は絶対起きられないよ。",
+            "romaji": "Asa wa zettai okirarenai yo.",
+            "translation": "Pagi pasti tidak bisa bangun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "走った後に、一緒に朝ご飯食べようよ。",
+          "romaji": "Hashitta ato ni, issho ni asagohan tabeyou yo.",
+          "translation": "Habis lari, ayo makan sarapan bareng."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_ajak_olahraga_bersama_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいアイデアだね、楽しみにしてる。",
+            "romaji": "Ii aidea da ne, tanoshimi ni shiteru.",
+            "translation": "Ide bagus, aku tunggu-tunggu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "朝ご飯は要らないよ。",
+            "romaji": "Asagohan wa iranai yo.",
+            "translation": "Sarapan tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どこを走るのがいいと思う？",
+          "romaji": "Doko wo hashiru no ga ii to omou?",
+          "translation": "Menurutmu lari di mana yang bagus?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_ajak_olahraga_bersama_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "近くの公園がいいんじゃないかな。",
+            "romaji": "Chikaku no kouen ga ii n janai ka na.",
+            "translation": "Mungkin taman dekat sini bagus kali ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どこでも悪いと思う。",
+            "romaji": "Doko demo warui to omou.",
+            "translation": "Menurutku di mana saja buruk.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみだね、頑張ろう。",
+          "romaji": "Tanoshimi da ne, ganbarou.",
+          "translation": "Tidak sabar ya, ayo semangat."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_ajak_olahraga_bersama_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、頑張ろうね。",
+            "romaji": "Un, ganbarou ne.",
+            "translation": "Iya, ayo semangat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もうやめようかな。",
+            "romaji": "Mou yameyou ka na.",
+            "translation": "Mungkin batal saja ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_berhenti_tim_olahraga_n4",
+    "title": "Menjelaskan Kenapa Berhenti dari Tim Olahraga",
+    "category": "olahraga_n4",
+    "description": "Kamu menjelaskan ke teman kenapa berhenti dari tim basket sekolah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "バスケ部、辞めちゃったんだって？",
+          "romaji": "Basuke bu, yamechatta n datte?",
+          "translation": "Katanya kamu berhenti dari klub basket ya?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_berhenti_tim_olahraga_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、勉強との両立が難しくなってしまって。",
+            "romaji": "Un, benkyou to no ryouritsu ga muzukashiku natte shimatte.",
+            "translation": "Iya, jadi susah menyeimbangkan dengan belajar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ううん、まだ続けているよ。",
+            "romaji": "Uun, mada tsuzukete iru yo.",
+            "translation": "Tidak, masih lanjut.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そうだったんだ、寂しいね。",
+          "romaji": "Sou datta n da, sabishii ne.",
+          "translation": "Begitu ya, sedih ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_berhenti_tim_olahraga_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、みんなと離れるのは寂しいけど、仕方ないんだ。",
+            "romaji": "Un, minna to hanareru no wa sabishii kedo, shikatanai n da.",
+            "translation": "Iya, berpisah dari semua sedih, tapi tidak bisa dihindari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然寂しくないよ。",
+            "romaji": "Zenzen sabishikunai yo.",
+            "translation": "Sama sekali tidak sedih.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "完全にバスケをやめるわけじゃないんでしょう？",
+          "romaji": "Kanzen ni basuke wo yameru wake janai n deshou?",
+          "translation": "Bukan berarti benar-benar berhenti basket kan?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_berhenti_tim_olahraga_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、時間がある時は趣味程度に続けるつもりだよ。",
+            "romaji": "Un, jikan ga aru toki wa shumi teido ni tsuzukeru tsumori da yo.",
+            "translation": "Iya, kalau ada waktu aku berniat lanjut sekadar hobi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、二度とやらないつもりだよ。",
+            "romaji": "Un, nidoto yaranai tsumori da yo.",
+            "translation": "Iya, berniat tidak akan lakukan lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新しい目標とか決まってるの？",
+          "romaji": "Atarashii mokuhyou toka kimatteru no?",
+          "translation": "Sudah ada target baru?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_berhenti_tim_olahraga_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "勉強を頑張ろうと思っているよ。",
+            "romaji": "Benkyou wo ganbarou to omotte iru yo.",
+            "translation": "Aku berpikir mau berjuang di pelajaran.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も考えていないよ。",
+            "romaji": "Nanimo kangaete inai yo.",
+            "translation": "Tidak dipikirkan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "応援してるよ、頑張ってね。",
+          "romaji": "Ouen shiteru yo, ganbatte ne.",
+          "translation": "Aku dukung, semangat ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_berhenti_tim_olahraga_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、頑張るよ。",
+            "romaji": "Arigatou, ganbaru yo.",
+            "translation": "Terima kasih, akan aku usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "応援しなくていいよ。",
+            "romaji": "Ouen shinakute ii yo.",
+            "translation": "Tidak usah didukung.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_persiapan_pertandingan_n4",
+    "title": "Membicarakan Persiapan untuk Pertandingan",
+    "category": "olahraga_n4",
+    "description": "Kamu membicarakan persiapan untuk pertandingan minggu depan dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "来週の試合、準備はできてる？",
+          "romaji": "Raishuu no shiai, junbi wa dekiteru?",
+          "translation": "Pertandingan minggu depan, persiapannya sudah siap?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_persiapan_pertandingan_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、毎日練習するようにしているよ。",
+            "romaji": "Un, mainichi renshuu suru you ni shite iru yo.",
+            "translation": "Iya, aku usahakan latihan tiap hari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然練習していないよ。",
+            "romaji": "Zenzen renshuu shite inai yo.",
+            "translation": "Sama sekali tidak latihan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "緊張してる？",
+          "romaji": "Kinchou shiteru?",
+          "translation": "Gugup tidak?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_persiapan_pertandingan_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、少し緊張しているかもしれない。",
+            "romaji": "Shoujiki, sukoshi kinchou shite iru kamoshirenai.",
+            "translation": "Jujur, mungkin agak gugup.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然緊張していないよ。",
+            "romaji": "Zenzen kinchou shite inai yo.",
+            "translation": "Sama sekali tidak gugup.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "緊張するのは、頑張ろうとしている証拠だよ。",
+          "romaji": "Kinchou suru no wa, ganbarou to shite iru shouko da yo.",
+          "translation": "Gugup itu bukti kamu sedang berusaha keras."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_persiapan_pertandingan_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そう言われると、少し安心する。",
+            "romaji": "Sou iwareru to, sukoshi anshin suru.",
+            "translation": "Kalau dibilang begitu, jadi agak lega.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "そう言われても安心しないよ。",
+            "romaji": "Sou iwaretemo anshin shinai yo.",
+            "translation": "Meski dibilang begitu tidak lega.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "前日はしっかり休んだほうがいいよ。",
+          "romaji": "Zenjitsu wa shikkari yasunda hou ga ii yo.",
+          "translation": "Hari sebelumnya sebaiknya istirahat yang cukup."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_persiapan_pertandingan_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、早く寝るようにするよ。",
+            "romaji": "Un, hayaku neru you ni suru yo.",
+            "translation": "Iya, aku usahakan tidur cepat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "前日も練習し続けるよ。",
+            "romaji": "Zenjitsu mo renshuu shitsuzukeru yo.",
+            "translation": "Hari sebelumnya tetap lanjut latihan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "きっとうまくいくよ、応援してる。",
+          "romaji": "Kitto umaku iku yo, ouen shiteru.",
+          "translation": "Pasti akan berjalan lancar, aku dukung."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_persiapan_pertandingan_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、頑張ってくる。",
+            "romaji": "Arigatou, ganbatte kuru.",
+            "translation": "Terima kasih, aku akan berjuang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "頑張らなくていいよ。",
+            "romaji": "Ganbaranakute ii yo.",
+            "translation": "Tidak usah berjuang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_cedera_olahraga_n4",
+    "title": "Menjelaskan Cedera Saat Berolahraga",
+    "category": "olahraga_n4",
+    "description": "Kamu menjelaskan ke teman soal cedera kaki saat latihan sepak bola.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "足、どうしたの？痛そうだけど。",
+          "romaji": "Ashi, dou shita no? Itasou da kedo.",
+          "translation": "Kaki kenapa? Kelihatan sakit."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_cedera_olahraga_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "サッカーの練習中に足首をひねってしまったんだ。",
+            "romaji": "Sakkaa no renshuu chuu ni ashikubi wo hinette shimatta n da.",
+            "translation": "Waktu latihan sepak bola aku keseleo pergelangan kaki.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に何でもないよ。",
+            "romaji": "Betsu ni nan demo nai yo.",
+            "translation": "Bukan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "病院には行ったの？",
+          "romaji": "Byouin ni wa itta no?",
+          "translation": "Sudah ke rumah sakit?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_cedera_olahraga_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、行ったら、しばらく安静にするように言われたよ。",
+            "romaji": "Un, ittara, shibaraku ansei ni suru you ni iwareta yo.",
+            "translation": "Iya, waktu ke sana, disuruh istirahat total sementara.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "病院には行かなくていいと思ったよ。",
+            "romaji": "Byouin ni wa ikanakute ii to omotta yo.",
+            "translation": "Kupikir tidak perlu ke rumah sakit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "練習、しばらく休まないといけないね。",
+          "romaji": "Renshuu, shibaraku yasumanai to ikenai ne.",
+          "translation": "Latihannya harus istirahat sementara ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_cedera_olahraga_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、悔しいけど仕方ないよ。",
+            "romaji": "Un, kuyashii kedo shikatanai yo.",
+            "translation": "Iya, kesal tapi tidak bisa dihindari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "練習は休まなくていいよ。",
+            "romaji": "Renshuu wa yasumanakute ii yo.",
+            "translation": "Tidak perlu istirahat latihan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "治るまで、無理しないでね。",
+          "romaji": "Naoru made, muri shinaide ne.",
+          "translation": "Sampai sembuh, jangan memaksakan diri ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_cedera_olahraga_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ゆっくり治すようにするよ。",
+            "romaji": "Un, yukkuri naosu you ni suru yo.",
+            "translation": "Iya, aku usahakan sembuh pelan-pelan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "無理して練習するよ。",
+            "romaji": "Muri shite renshuu suru yo.",
+            "translation": "Akan tetap memaksakan latihan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "早く良くなるといいね。",
+          "romaji": "Hayaku yoku naru to ii ne.",
+          "translation": "Semoga cepat membaik ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_cedera_olahraga_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、頑張って治すよ。",
+            "romaji": "Arigatou, ganbatte naosu yo.",
+            "translation": "Terima kasih, aku akan usahakan sembuh.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう治らないと思うよ。",
+            "romaji": "Mou naoranai to omou yo.",
+            "translation": "Kupikir tidak akan sembuh lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_rencana_latihan_rutin_n4",
+    "title": "Mendiskusikan Rencana Latihan Rutin",
+    "category": "olahraga_n4",
+    "description": "Kamu dan teman mendiskusikan rencana untuk mulai latihan rutin.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、運動不足だと思わない？",
+          "romaji": "Saikin, undou busoku da to omowanai?",
+          "translation": "Belakangan, tidak merasa kurang gerak?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_rencana_latihan_rutin_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そろそろ何か始めようと思っていたんだ。",
+            "romaji": "Un, sorosoro nanika hajimeyou to omotte ita n da.",
+            "translation": "Iya, aku sudah mikir mau mulai sesuatu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然運動不足じゃないよ。",
+            "romaji": "Zenzen undou busoku janai yo.",
+            "translation": "Sama sekali tidak kurang gerak.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな運動をするつもり？",
+          "romaji": "Donna undou wo suru tsumori?",
+          "translation": "Mau olahraga apa?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_rencana_latihan_rutin_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "週に三回、ジムに通うことにしたんだ。",
+            "romaji": "Shuu ni sankai, jimu ni kayou koto ni shita n da.",
+            "translation": "Aku memutuskan pergi gym tiga kali seminggu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も決めていないよ。",
+            "romaji": "Nanimo kimete inai yo.",
+            "translation": "Belum menentukan apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一人で続けられそう？",
+          "romaji": "Hitori de tsuzukeraresou?",
+          "translation": "Kelihatannya bisa lanjut sendirian?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_rencana_latihan_rutin_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "一人だと続かなさそうだから、友達も誘ってみる。",
+            "romaji": "Hitori da to tsuzukanasasou dakara, tomodachi mo sasotte miru.",
+            "translation": "Kalau sendiri sepertinya tidak akan lanjut, jadi aku coba ajak teman juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一人のほうが集中できるからいいよ。",
+            "romaji": "Hitori no hou ga shuuchuu dekiru kara ii yo.",
+            "translation": "Sendirian lebih fokus jadi bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "無理のない範囲で続けたほうがいいよ。",
+          "romaji": "Muri no nai han'i de tsuzuketa hou ga ii yo.",
+          "translation": "Sebaiknya dilanjutkan sebatas yang tidak memaksakan diri."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_rencana_latihan_rutin_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、少しずつ増やしていくよ。",
+            "romaji": "Sou da ne, sukoshi zutsu fuyashite iku yo.",
+            "translation": "Betul juga, akan kutambah sedikit-sedikit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "最初から全力でやるよ。",
+            "romaji": "Saisho kara zenryoku de yaru yo.",
+            "translation": "Dari awal akan lakukan sekuat tenaga.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "応援してるから、頑張ってね。",
+          "romaji": "Ouen shiteru kara, ganbatte ne.",
+          "translation": "Aku dukung, semangat ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_rencana_latihan_rutin_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、頑張ってみる。",
+            "romaji": "Arigatou, ganbatte miru.",
+            "translation": "Terima kasih, aku akan coba usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "応援は要らないよ。",
+            "romaji": "Ouen wa iranai yo.",
+            "translation": "Dukungan tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tonton_pertandingan_langsung_n4",
+    "title": "Menceritakan Pengalaman Menonton Pertandingan Langsung",
+    "category": "olahraga_n4",
+    "description": "Kamu bercerita ke teman tentang pengalaman menonton pertandingan langsung.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "昨日の試合、見に行ったんでしょう？どうだった？",
+          "romaji": "Kinou no shiai, mi ni itta n deshou? Dou datta?",
+          "translation": "Kemarin pergi nonton pertandingan kan? Gimana?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_tonton_pertandingan_langsung_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、すごく盛り上がって、感動しちゃった。",
+            "romaji": "Un, sugoku moriagatte, kandou shichatta.",
+            "translation": "Iya, sangat ramai, sampai terharu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に何も感じなかったよ。",
+            "romaji": "Betsu ni nanimo kanjinakatta yo.",
+            "translation": "Tidak merasakan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "会場の雰囲気はどうだった？",
+          "romaji": "Kaijou no fun'iki wa dou datta?",
+          "translation": "Suasana venue-nya gimana?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_tonton_pertandingan_langsung_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "みんなが応援していて、鳥肌が立つほどだったよ。",
+            "romaji": "Minna ga ouen shite ite, torihada ga tatsu hodo datta yo.",
+            "translation": "Semua orang bersorak, sampai merinding.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "とても静かで、誰もいなかったよ。",
+            "romaji": "Totemo shizuka de, dare mo inakatta yo.",
+            "translation": "Sangat sepi, tidak ada siapa-siapa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "テレビで見るのとは違った？",
+          "romaji": "Terebi de miru no to wa chigatta?",
+          "translation": "Berbeda dari nonton di TV?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_tonton_pertandingan_langsung_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、テレビで見るより、ずっと迫力があったよ。",
+            "romaji": "Un, terebi de miru yori, zutto hakuryoku ga atta yo.",
+            "translation": "Iya, jauh lebih seru dibandingkan nonton di TV.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "テレビで見るのと全く同じだったよ。",
+            "romaji": "Terebi de miru no to mattaku onaji datta yo.",
+            "translation": "Sama persis dengan nonton di TV.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "また今度、一緒に見に行かない？",
+          "romaji": "Mata kondo, issho ni mi ni ikanai?",
+          "translation": "Lain kali, mau pergi nonton bareng tidak?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_tonton_pertandingan_langsung_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいね、絶対行こう。",
+            "romaji": "Ii ne, zettai ikou.",
+            "translation": "Boleh, ayo pasti pergi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう二度と行かないよ。",
+            "romaji": "Mou nidoto ikanai yo.",
+            "translation": "Tidak akan pergi lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみだね。",
+          "romaji": "Tanoshimi da ne.",
+          "translation": "Tidak sabar ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_tonton_pertandingan_langsung_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、次の試合が待ち遠しいよ。",
+            "romaji": "Un, tsugi no shiai ga machidooshii yo.",
+            "translation": "Iya, tidak sabar menunggu pertandingan berikutnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に楽しみじゃないよ。",
+            "romaji": "Betsu ni tanoshimi janai yo.",
+            "translation": "Tidak begitu tidak sabar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_suka_olahraga_tertentu_n4",
+    "title": "Menjelaskan Kenapa Menyukai Olahraga Tertentu",
+    "category": "olahraga_n4",
+    "description": "Kamu menjelaskan ke teman kenapa kamu sangat menyukai badminton.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうしてそんなにバドミントンが好きなの？",
+          "romaji": "Doushite sonna ni badominton ga suki na no?",
+          "translation": "Kenapa suka sekali badminton?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_suka_olahraga_tertentu_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "体を動かすと、ストレスが発散できるようになるんだ。",
+            "romaji": "Karada wo ugokasu to, sutoresu ga hassan dekiru you ni naru n da.",
+            "translation": "Kalau gerak badan, jadi bisa melepas stres.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に好きじゃないよ。",
+            "romaji": "Betsu ni suki janai yo.",
+            "translation": "Sebenarnya tidak suka.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いつから始めたの？",
+          "romaji": "Itsu kara hajimeta no?",
+          "translation": "Sejak kapan mulai?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_suka_olahraga_tertentu_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "中学生の時に始めてから、ずっと続けているよ。",
+            "romaji": "Chuugakusei no toki ni hajimete kara, zutto tsuzukete iru yo.",
+            "translation": "Sejak mulai waktu SMP, terus dilanjutkan sampai sekarang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "昨日始めたばかりだよ。",
+            "romaji": "Kinou hajimeta bakari da yo.",
+            "translation": "Baru mulai kemarin.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何が一番の魅力だと思う？",
+          "romaji": "Nani ga ichiban no miryoku da to omou?",
+          "translation": "Menurutmu apa daya tarik terbesarnya?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_suka_olahraga_tertentu_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "相手と駆け引きするところが面白いと思うよ。",
+            "romaji": "Aite to kakehiki suru tokoro ga omoshiroi to omou yo.",
+            "translation": "Menurutku bagian tarik-menarik strategi dengan lawan itu seru.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然面白くないと思うよ。",
+            "romaji": "Zenzen omoshirokunai to omou yo.",
+            "translation": "Kupikir sama sekali tidak seru.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大会に出たりもするの？",
+          "romaji": "Taikai ni detari mo suru no?",
+          "translation": "Pernah ikut turnamen juga?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_suka_olahraga_tertentu_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、年に一度は出るようにしているよ。",
+            "romaji": "Un, nen ni ichido wa deru you ni shite iru yo.",
+            "translation": "Iya, aku usahakan ikut setahun sekali.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "大会には出たことないよ。",
+            "romaji": "Taikai ni wa deta koto nai yo.",
+            "translation": "Belum pernah ikut turnamen.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "すごいね、これからも頑張って。",
+          "romaji": "Sugoi ne, kore kara mo ganbatte.",
+          "translation": "Hebat ya, semangat terus ke depannya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_suka_olahraga_tertentu_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう頑張らないよ。",
+            "romaji": "Mou ganbaranai yo.",
+            "translation": "Tidak akan berjuang lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_target_kebugaran_pribadi_n4",
+    "title": "Membicarakan Target Kebugaran Pribadi",
+    "category": "olahraga_n4",
+    "description": "Kamu membicarakan target kebugaran pribadi tahun ini dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今年の目標とか決めた？",
+          "romaji": "Kotoshi no mokuhyou toka kimeta?",
+          "translation": "Sudah tentukan target tahun ini?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_target_kebugaran_pribadi_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、体重を五キロ減らそうと思っているんだ。",
+            "romaji": "Un, taijuu wo gokiro herasou to omotte iru n da.",
+            "translation": "Iya, aku berpikir mau turunkan berat badan lima kilo.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も決めていないよ。",
+            "romaji": "Toku ni nanimo kimete inai yo.",
+            "translation": "Belum menentukan apa pun khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうやって減らすつもり？",
+          "romaji": "Dou yatte herasu tsumori?",
+          "translation": "Mau turunkan dengan cara apa?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_target_kebugaran_pribadi_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "食事に気をつけながら、運動も増やしていくつもりだよ。",
+            "romaji": "Shokuji ni ki wo tsukenagara, undou mo fuyashite iku tsumori da yo.",
+            "translation": "Berniat sambil menjaga makanan, juga menambah olahraga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何もしないで減らすつもりだよ。",
+            "romaji": "Nanimo shinaide herasu tsumori da yo.",
+            "translation": "Berniat turun tanpa melakukan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "無理なダイエットはしないようにね。",
+          "romaji": "Muri na daietto wa shinai you ni ne.",
+          "translation": "Jangan sampai diet yang tidak wajar ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_target_kebugaran_pribadi_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、健康的に減らしていきたいな。",
+            "romaji": "Un, kenkouteki ni herashite ikitai na.",
+            "translation": "Iya, aku ingin turun dengan cara yang sehat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一週間で全部減らすつもりだよ。",
+            "romaji": "Isshuukan de zenbu herasu tsumori da yo.",
+            "translation": "Berniat turun semua dalam seminggu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "記録をつけると、続けやすくなるらしいよ。",
+          "romaji": "Kiroku wo tsukeru to, tsuzukeyasuku naru rashii yo.",
+          "translation": "Katanya kalau dicatat, jadi lebih mudah dilanjutkan."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_target_kebugaran_pribadi_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "それはいいアイデアだね、やってみる。",
+            "romaji": "Sore wa ii aidea da ne, yatte miru.",
+            "translation": "Itu ide bagus ya, aku akan coba.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "記録は面倒だからしないよ。",
+            "romaji": "Kiroku wa mendou dakara shinai yo.",
+            "translation": "Mencatat merepotkan jadi tidak mau.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "達成できるように応援してるよ。",
+          "romaji": "Tassei dekiru you ni ouen shiteru yo.",
+          "translation": "Aku dukung supaya bisa tercapai."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_target_kebugaran_pribadi_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、頑張るよ。",
+            "romaji": "Arigatou, ganbaru yo.",
+            "translation": "Terima kasih, akan aku usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "応援は要らないよ。",
+            "romaji": "Ouen wa iranai yo.",
+            "translation": "Dukungan tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_gabung_klub_olahraga_n4",
+    "title": "Menjelaskan Cara Bergabung dengan Klub Olahraga",
+    "category": "olahraga_n4",
+    "description": "Kamu dan teman membahas cara bergabung dengan gym di dekat rumah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "このジム、どうやって入会するの？",
+          "romaji": "Kono jimu, dou yatte nyuukai suru no?",
+          "translation": "Gym ini, cara daftarnya gimana?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_gabung_klub_olahraga_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "受付で申込書を書けばいいらしいよ。",
+            "romaji": "Uketsuke de moushikomisho wo kakeba ii rashii yo.",
+            "translation": "Katanya cukup mengisi formulir pendaftaran di resepsionis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう入会できないらしいよ。",
+            "romaji": "Mou nyuukai dekinai rashii yo.",
+            "translation": "Katanya sudah tidak bisa daftar lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何か必要な物はある？",
+          "romaji": "Nanika hitsuyou na mono wa aru?",
+          "translation": "Ada yang perlu dibawa?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_gabung_klub_olahraga_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "身分証明書を持っていく必要があるみたいだよ。",
+            "romaji": "Mibun shoumeisho wo motte iku hitsuyou ga aru mitai da yo.",
+            "translation": "Sepertinya perlu membawa kartu identitas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も要らないみたいだよ。",
+            "romaji": "Nanimo iranai mitai da yo.",
+            "translation": "Sepertinya tidak perlu apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "体験レッスンとかもあるのかな。",
+          "romaji": "Taiken ressun toka mo aru no ka na.",
+          "translation": "Ada juga kelas percobaan kali ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_gabung_klub_olahraga_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "あるはずだよ、無料で試せるって聞いたよ。",
+            "romaji": "Aru hazu da yo, muryou de taseru tte kiita yo.",
+            "translation": "Seharusnya ada, kudengar bisa dicoba gratis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ないと思うよ。",
+            "romaji": "Nai to omou yo.",
+            "translation": "Kupikir tidak ada.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一緒に体験レッスン受けてみない？",
+          "romaji": "Issho ni taiken ressun ukete minai?",
+          "translation": "Mau coba ambil kelas percobaan bareng tidak?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_gabung_klub_olahraga_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいね、今度の日曜日に行ってみようよ。",
+            "romaji": "Ii ne, kondo no nichiyoubi ni itte miyou yo.",
+            "translation": "Boleh, ayo coba pergi Minggu depan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一人で行くつもりだよ。",
+            "romaji": "Hitori de iku tsumori da yo.",
+            "translation": "Berniat pergi sendiri.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみだね。",
+          "romaji": "Tanoshimi da ne.",
+          "translation": "Tidak sabar ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_gabung_klub_olahraga_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、楽しみにしてる。",
+            "romaji": "Un, tanoshimi ni shiteru.",
+            "translation": "Iya, aku tunggu-tunggu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に楽しみじゃないよ。",
+            "romaji": "Betsu ni tanoshimi janai yo.",
+            "translation": "Tidak begitu tidak sabar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_strategi_tim_sebelum_bertanding_n4",
+    "title": "Mendiskusikan Strategi Tim Sebelum Bertanding",
+    "category": "olahraga_n4",
+    "description": "Kamu dan rekan satu tim mendiskusikan strategi sebelum pertandingan besok.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Rekan Tim",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "明日の試合、どう戦うか考えた？",
+          "romaji": "Ashita no shiai, dou tatakau ka kangaeta?",
+          "translation": "Besok pertandingan, sudah pikirkan cara bertandingnya?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_strategi_tim_sebelum_bertanding_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、相手の弱点を突く作戦を考えてみたよ。",
+            "romaji": "Un, aite no jakuten wo tsuku sakusen wo kangaete mita yo.",
+            "translation": "Iya, aku coba pikirkan strategi menyerang kelemahan lawan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も考えていないよ。",
+            "romaji": "Nanimo kangaete inai yo.",
+            "translation": "Belum dipikirkan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Rekan Tim",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな作戦なの？",
+          "romaji": "Donna sakusen na no?",
+          "translation": "Strategi seperti apa?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_strategi_tim_sebelum_bertanding_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "序盤は守りを固めて、後半に攻めることにしたよ。",
+            "romaji": "Joban wa mamori wo katamete, kouhan ni semeru koto ni shita yo.",
+            "translation": "Aku putuskan awal bertahan kuat, lalu paruh kedua menyerang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "最初から最後まで攻め続けることにしたよ。",
+            "romaji": "Saisho kara saigo made semetsuzukeru koto ni shita yo.",
+            "translation": "Memutuskan menyerang terus dari awal sampai akhir.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Rekan Tim",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "みんなに伝えたほうがいいんじゃない？",
+          "romaji": "Minna ni tsutaeta hou ga ii n janai?",
+          "translation": "Bukankah lebih baik disampaikan ke semua orang?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_strategi_tim_sebelum_bertanding_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、後で全員に説明するよ。",
+            "romaji": "Sou da ne, ato de zen'in ni setsumei suru yo.",
+            "translation": "Betul juga, nanti aku jelaskan ke semua orang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰にも言わないでおくよ。",
+            "romaji": "Dare ni mo iwanaide oku yo.",
+            "translation": "Aku tidak akan bilang siapa-siapa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Rekan Tim",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "練習通りにできれば、勝てると思うよ。",
+          "romaji": "Renshuu doori ni dekireba, kateru to omou yo.",
+          "translation": "Kalau bisa sesuai latihan, kurasa bisa menang."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_strategi_tim_sebelum_bertanding_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、練習の成果を出せるように頑張ろう。",
+            "romaji": "Un, renshuu no seika wo daseru you ni ganbarou.",
+            "translation": "Iya, ayo berjuang supaya bisa menunjukkan hasil latihan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "練習なんて意味なかったと思うよ。",
+            "romaji": "Renshuu nante imi nakatta to omou yo.",
+            "translation": "Kupikir latihan tidak ada artinya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Rekan Tim",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "明日、全力を出し切ろうね。",
+          "romaji": "Ashita, zenryoku wo dashikirou ne.",
+          "translation": "Besok, ayo keluarkan seluruh tenaga ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_strategi_tim_sebelum_bertanding_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、頑張ろう。",
+            "romaji": "Un, ganbarou.",
+            "translation": "Iya, ayo semangat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "手を抜こうかな。",
+            "romaji": "Te wo nukou ka na.",
+            "translation": "Mungkin kurangi usaha ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kekalahan_mengecewakan_n4",
+    "title": "Menceritakan Kekalahan yang Mengecewakan",
+    "category": "olahraga_n4",
+    "description": "Kamu bercerita ke teman tentang kekalahan yang mengecewakan di pertandingan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "試合、負けちゃったんだって？大丈夫？",
+          "romaji": "Shiai, makechatta n datte? Daijoubu?",
+          "translation": "Katanya kalah pertandingan ya? Tidak apa-apa?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_kekalahan_mengecewakan_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、すごく悔しくて、まだ立ち直れていないんだ。",
+            "romaji": "Un, sugoku kuyashikute, mada tachinaorete inai n da.",
+            "translation": "Iya, sangat kesal, sampai sekarang belum bisa bangkit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然悔しくないよ。",
+            "romaji": "Zenzen kuyashikunai yo.",
+            "translation": "Sama sekali tidak kesal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何が原因だったと思う？",
+          "romaji": "Nani ga gen'in datta to omou?",
+          "translation": "Menurutmu apa penyebabnya?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_kekalahan_mengecewakan_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "集中力が最後まで続かなかったからだと思う。",
+            "romaji": "Shuuchuuryoku ga saigo made tsuzukanakatta kara da to omou.",
+            "translation": "Kurasa karena konsentrasi tidak bertahan sampai akhir.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "完璧にプレーできたからだと思う。",
+            "romaji": "Kanpeki ni puree dekita kara da to omou.",
+            "translation": "Kurasa karena bermain sempurna.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "次はきっと勝てるよ。",
+          "romaji": "Tsugi wa kitto kateru yo.",
+          "translation": "Lain kali pasti bisa menang."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_kekalahan_mengecewakan_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そう言ってもらえると、少し元気が出るよ。",
+            "romaji": "Sou itte moraeru to, sukoshi genki ga deru yo.",
+            "translation": "Kalau dibilang begitu, jadi agak semangat lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "そう言われても意味ないよ。",
+            "romaji": "Sou iwaretemo imi nai yo.",
+            "translation": "Meski dibilang begitu tidak ada gunanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "この経験を次に活かせばいいと思うよ。",
+          "romaji": "Kono keiken wo tsugi ni ikaseba ii to omou yo.",
+          "translation": "Kurasa bagus kalau pengalaman ini dimanfaatkan untuk selanjutnya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_kekalahan_mengecewakan_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、この悔しさを忘れずに頑張るよ。",
+            "romaji": "Un, kono kuyashisa wo wasurezu ni ganbaru yo.",
+            "translation": "Iya, aku akan berjuang tanpa lupa rasa kesal ini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう二度と挑戦しないよ。",
+            "romaji": "Mou nidoto chousen shinai yo.",
+            "translation": "Tidak akan mencoba lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一緒に次の練習も頑張ろうね。",
+          "romaji": "Issho ni tsugi no renshuu mo ganbarou ne.",
+          "translation": "Ayo sama-sama berjuang di latihan berikutnya juga ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_kekalahan_mengecewakan_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう練習には行かないよ。",
+            "romaji": "Mou renshuu ni wa ikanai yo.",
+            "translation": "Tidak akan pergi latihan lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kemenangan_membanggakan_n4",
+    "title": "Membicarakan Kemenangan yang Membanggakan",
+    "category": "olahraga_n4",
+    "description": "Kamu bercerita ke teman tentang kemenangan juara yang membanggakan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "優勝したんだって？おめでとう！",
+          "romaji": "Yuushou shita n datte? Omedetou!",
+          "translation": "Katanya juara ya? Selamat!"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_kemenangan_membanggakan_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、まだ信じられない気持ちだよ。",
+            "romaji": "Arigatou, mada shinjirarenai kimochi da yo.",
+            "translation": "Terima kasih, masih rasanya tidak percaya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に嬉しくないよ。",
+            "romaji": "Betsu ni ureshikunai yo.",
+            "translation": "Tidak begitu senang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな気持ちだった、優勝が決まった瞬間。",
+          "romaji": "Donna kimochi datta, yuushou ga kimatta shunkan.",
+          "translation": "Perasaannya seperti apa waktu kemenangan dipastikan."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_kemenangan_membanggakan_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "涙が出そうになるほど嬉しかったよ。",
+            "romaji": "Namida ga desou ni naru hodo ureshikatta yo.",
+            "translation": "Senangnya sampai hampir menangis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も感じなかったよ。",
+            "romaji": "Toku ni nanimo kanjinakatta yo.",
+            "translation": "Tidak merasakan apa-apa khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今までの努力が報われたんだね。",
+          "romaji": "Ima made no doryoku ga mukuwareta n da ne.",
+          "translation": "Usaha selama ini terbayar ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_kemenangan_membanggakan_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、諦めないで続けてきて本当に良かった。",
+            "romaji": "Un, akiramenaide tsuzukete kite hontou ni yokatta.",
+            "translation": "Iya, benar-benar bagus karena terus lanjut tanpa menyerah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "努力なんてしていないよ。",
+            "romaji": "Doryoku nante shite inai yo.",
+            "translation": "Tidak melakukan usaha apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "これからの目標はもうあるの？",
+          "romaji": "Kore kara no mokuhyou wa mou aru no?",
+          "translation": "Sudah ada target selanjutnya?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_kemenangan_membanggakan_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、次はもっと大きい大会に挑戦したいな。",
+            "romaji": "Un, tsugi wa motto ookii taikai ni chousen shitai na.",
+            "translation": "Iya, selanjutnya aku ingin coba turnamen yang lebih besar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう何もしないつもりだよ。",
+            "romaji": "Mou nanimo shinai tsumori da yo.",
+            "translation": "Berniat tidak melakukan apa-apa lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "応援してるよ、頑張ってね。",
+          "romaji": "Ouen shiteru yo, ganbatte ne.",
+          "translation": "Aku dukung, semangat ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_kemenangan_membanggakan_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、頑張るよ。",
+            "romaji": "Arigatou, ganbaru yo.",
+            "translation": "Terima kasih, akan aku usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう頑張らなくていいよ。",
+            "romaji": "Mou ganbaranakute ii yo.",
+            "translation": "Tidak usah berjuang lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pentingnya_pemanasan_n4",
+    "title": "Menjelaskan Pentingnya Pemanasan Sebelum Olahraga",
+    "category": "olahraga_n4",
+    "description": "Kamu dan teman membahas pentingnya pemanasan sebelum lari.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "準備運動なしで走り始めたの？",
+          "romaji": "Junbi undou nashi de hashiri hajimeta no?",
+          "translation": "Mulai lari tanpa pemanasan?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_pentingnya_pemanasan_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、時間がなくて、そのまま走ってしまったんだ。",
+            "romaji": "Un, jikan ga nakute, sono mama hashitte shimatta n da.",
+            "translation": "Iya, karena tidak ada waktu, jadi langsung lari saja.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いつもしっかり準備運動しているよ。",
+            "romaji": "Itsumo shikkari junbi undou shite iru yo.",
+            "translation": "Selalu pemanasan dengan baik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それは危ないよ、怪我しやすくなるからね。",
+          "romaji": "Sore wa abunai yo, kega shiyasuku naru kara ne.",
+          "translation": "Itu berbahaya lho, karena jadi lebih mudah cedera."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_pentingnya_pemanasan_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだよね、今度から気をつけるようにするよ。",
+            "romaji": "Sou da yo ne, kondo kara ki wo tsukeru you ni suru yo.",
+            "translation": "Betul juga, mulai sekarang aku akan usahakan hati-hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に危なくないと思うよ。",
+            "romaji": "Betsu ni abunakunai to omou yo.",
+            "translation": "Kupikir tidak berbahaya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "準備運動をすれば、体が温まって動きやすくなるんだよ。",
+          "romaji": "Junbi undou wo sureba, karada ga atatamatte ugokiyasuku naru n da yo.",
+          "translation": "Kalau pemanasan, badan jadi hangat dan lebih mudah bergerak."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_pentingnya_pemanasan_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "なるほど、それなら毎回やることにするよ。",
+            "romaji": "Naruhodo, sore nara maikai yaru koto ni suru yo.",
+            "translation": "Begitu ya, kalau begitu aku akan lakukan setiap kali.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それでもやらないつもりだよ。",
+            "romaji": "Sore demo yaranai tsumori da yo.",
+            "translation": "Meski begitu berniat tidak lakukan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのくらいの時間やればいいと思う？",
+          "romaji": "Dono kurai no jikan yareba ii to omou?",
+          "translation": "Kira-kira berapa lama sebaiknya dilakukan?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_pentingnya_pemanasan_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "十分ぐらいでいいんじゃないかな。",
+            "romaji": "Juppun gurai de ii n janai ka na.",
+            "translation": "Mungkin sekitar sepuluh menit sudah cukup ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一時間ぐらい必要だと思うよ。",
+            "romaji": "Ichijikan gurai hitsuyou da to omou yo.",
+            "translation": "Kupikir perlu sekitar satu jam.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "怪我しないように、一緒に気をつけようね。",
+          "romaji": "Kega shinai you ni, issho ni ki wo tsukeyou ne.",
+          "translation": "Supaya tidak cedera, ayo sama-sama hati-hati ya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_pentingnya_pemanasan_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、気をつけよう。",
+            "romaji": "Un, ki wo tsukeyou.",
+            "translation": "Iya, ayo hati-hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "気にしなくていいよ。",
+            "romaji": "Ki ni shinakute ii yo.",
+            "translation": "Tidak usah dipedulikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pola_makan_atlet_n4",
+    "title": "Mendiskusikan Pola Makan untuk Atlet",
+    "category": "olahraga_n4",
+    "description": "Kamu dan teman mendiskusikan pola makan yang biasa dijalani atlet.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "アスリートって、食事にも気をつけているんでしょう？",
+          "romaji": "Asuriito tte, shokuji ni mo ki wo tsukete iru n deshou?",
+          "translation": "Atlet itu, memperhatikan makanan juga ya?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_pola_makan_atlet_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、栄養バランスを考えて食べるようにしているよ。",
+            "romaji": "Un, eiyou baransu wo kangaete taberu you ni shite iru yo.",
+            "translation": "Iya, aku usahakan makan dengan mempertimbangkan keseimbangan gizi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何でも好きなものを食べているよ。",
+            "romaji": "Nan demo suki na mono wo tabete iru yo.",
+            "translation": "Makan apa saja yang disukai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にはどんな物を食べているの？",
+          "romaji": "Gutaiteki ni wa donna mono wo tabete iru no?",
+          "translation": "Secara konkret makan apa saja?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_pola_makan_atlet_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "たんぱく質を多く摂るようにしているんだ。",
+            "romaji": "Tanpakushitsu wo ooku toru you ni shite iru n da.",
+            "translation": "Aku usahakan banyak mengonsumsi protein.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "甘い物ばかり食べているんだ。",
+            "romaji": "Amai mono bakari tabete iru n da.",
+            "translation": "Makan yang manis-manis saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "練習前と後で、食べる物は変えているの？",
+          "romaji": "Renshuu mae to ato de, taberu mono wa kaete iru no?",
+          "translation": "Sebelum dan sesudah latihan, makanannya diubah?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_pola_makan_atlet_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、練習後はしっかりたんぱく質を摂るようにしているよ。",
+            "romaji": "Un, renshuu go wa shikkari tanpakushitsu wo toru you ni shite iru yo.",
+            "translation": "Iya, setelah latihan aku usahakan konsumsi protein dengan cukup.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いつも同じ物しか食べないよ。",
+            "romaji": "Itsumo onaji mono shika tabenai yo.",
+            "translation": "Selalu makan yang sama saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "甘い物を我慢するのは辛くない？",
+          "romaji": "Amai mono wo gaman suru no wa tsurakunai?",
+          "translation": "Menahan diri dari yang manis-manis tidak berat?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_pola_makan_atlet_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、辛い時もあるけど、頑張っているよ。",
+            "romaji": "Shoujiki, tsurai toki mo aru kedo, ganbatte iru yo.",
+            "translation": "Jujur, kadang berat, tapi aku usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然辛くないよ。",
+            "romaji": "Zenzen tsurakunai yo.",
+            "translation": "Sama sekali tidak berat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "体のために頑張ってるんだね、すごいよ。",
+          "romaji": "Karada no tame ni ganbatteru n da ne, sugoi yo.",
+          "translation": "Berjuang demi tubuh ya, hebat."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_pola_makan_atlet_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、これからも続けるよ。",
+            "romaji": "Arigatou, kore kara mo tsuzukeru yo.",
+            "translation": "Terima kasih, akan terus dilanjutkan ke depannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もうやめようと思っているよ。",
+            "romaji": "Mou yameyou to omotte iru yo.",
+            "translation": "Berpikir mau berhenti.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_olahraga_gaya_hidup_sehat_n4",
+    "title": "Membicarakan Olahraga sebagai Gaya Hidup Sehat",
+    "category": "olahraga_n4",
+    "description": "Kamu bercerita ke teman tentang olahraga yang sudah jadi gaya hidup sehat.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、運動を生活の一部にしているって聞いたよ。",
+          "romaji": "Saikin, undou wo seikatsu no ichibu ni shite iru tte kiita yo.",
+          "translation": "Kudengar belakangan kamu jadikan olahraga bagian dari hidup."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_olahraga_gaya_hidup_sehat_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、健康のために欠かせないものになったんだ。",
+            "romaji": "Un, kenkou no tame ni kakasenai mono ni natta n da.",
+            "translation": "Iya, jadi hal yang tidak bisa dilewatkan demi kesehatan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそんなことないよ。",
+            "romaji": "Betsu ni sonna koto nai yo.",
+            "translation": "Tidak seperti itu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かきっかけがあったの？",
+          "romaji": "Nanika kikkake ga atta no?",
+          "translation": "Ada pemicu tertentu?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_olahraga_gaya_hidup_sehat_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "体調を崩したことがきっかけで、始めるようになったんだ。",
+            "romaji": "Taichou wo kuzushita koto ga kikkake de, hajimeru you ni natta n da.",
+            "translation": "Karena pernah sakit, jadi mulai melakukannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にきっかけはないよ。",
+            "romaji": "Toku ni kikkake wa nai yo.",
+            "translation": "Tidak ada pemicu khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "続けてみて、何か変わったことある？",
+          "romaji": "Tsuzukete mite, nanika kawatta koto aru?",
+          "translation": "Setelah dilanjutkan, ada yang berubah?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_olahraga_gaya_hidup_sehat_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、前より体が軽くなった気がするよ。",
+            "romaji": "Un, mae yori karada ga karuku natta ki ga suru yo.",
+            "translation": "Iya, rasanya badan jadi lebih ringan dari sebelumnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も変わっていないよ。",
+            "romaji": "Nanimo kawatte inai yo.",
+            "translation": "Tidak ada yang berubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "これからも続けていくつもり？",
+          "romaji": "Kore kara mo tsuzukete iku tsumori?",
+          "translation": "Berniat terus dilanjutkan ke depannya?"
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_olahraga_gaya_hidup_sehat_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、無理のない範囲でずっと続けたいな。",
+            "romaji": "Un, muri no nai han'i de zutto tsuzuketai na.",
+            "translation": "Iya, aku ingin terus lanjutkan sebatas yang tidak memaksakan diri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もうやめようと思っているよ。",
+            "romaji": "Mou yameyou to omotte iru yo.",
+            "translation": "Berpikir mau berhenti.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いい習慣だね、これからも頑張って。",
+          "romaji": "Ii shuukan da ne, kore kara mo ganbatte.",
+          "translation": "Kebiasaan yang bagus ya, semangat terus ke depannya."
+        },
+        "imagePath": "kaiwa_images/olahraga_n4/kaiwa_olahraga_gaya_hidup_sehat_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どうでもいいよ。",
+            "romaji": "Dou demo ii yo.",
+            "translation": "Terserah saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]
