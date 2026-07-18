@@ -1386,6 +1386,24 @@ PERKENALAN_N2_TITLES = [
     "Menceritakan Pengalaman yang Mengubah Cara Pandang Hidup",
 ]
 
+RESTORAN_N2_TITLES = [
+    "Mengeluhkan Pelayanan Restoran Secara Sopan",
+    "Mendiskusikan Tren Restoran Vegan dan Vegetarian",
+    "Menceritakan Pengalaman Keracunan Makanan di Restoran",
+    "Menjelaskan Alasan Menjadi Kritikus Kuliner Amatir",
+    "Membicarakan Etika Memberi Tip di Restoran",
+    "Mendiskusikan Dampak Ulasan Online terhadap Bisnis Restoran",
+    "Menceritakan Pengalaman Bekerja Paruh Waktu di Restoran",
+    "Menjelaskan Alasan Restoran Favorit Tutup Permanen",
+    "Membicarakan Fenomena Restoran Mewah yang Overpriced",
+    "Mendiskusikan Sistem Reservasi yang Sulit di Restoran Populer",
+    "Menceritakan Pengalaman Makan Malam Bisnis yang Canggung",
+    "Menjelaskan Preferensi terhadap Masakan Autentik vs Fusion",
+    "Membicarakan Dampak Pandemi terhadap Industri Restoran",
+    "Mendiskusikan Restoran dengan Konsep Unik",
+    "Menceritakan Pengalaman Merayakan Momen Spesial di Restoran",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1440,6 +1458,7 @@ CATEGORY_META = {
     "olahraga_n3": ("Olahraga", "⚽", "N3"),
     "bioskop_n3": ("Di Bioskop", "🎬", "N3"),
     "perkenalan_n2": ("Perkenalan", "👋", "N2"),
+    "restoran_n2": ("Di Restoran", "🍽️", "N2"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1496,6 +1515,7 @@ AVAILABLE_CATEGORIES = {
     "olahraga_n3": OLAHRAGA_N3_TITLES,
     "bioskop_n3": BIOSKOP_N3_TITLES,
     "perkenalan_n2": PERKENALAN_N2_TITLES,
+    "restoran_n2": RESTORAN_N2_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1564,6 +1584,7 @@ _ALL_TITLE_LISTS = {
     "OLAHRAGA_N3_TITLES": OLAHRAGA_N3_TITLES,
     "BIOSKOP_N3_TITLES": BIOSKOP_N3_TITLES,
     "PERKENALAN_N2_TITLES": PERKENALAN_N2_TITLES,
+    "RESTORAN_N2_TITLES": RESTORAN_N2_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
