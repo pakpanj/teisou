@@ -864,6 +864,24 @@ SEKOLAH_N4_TITLES = [
     "Menceritakan Pengalaman Menjadi Ketua Kelas",
 ]
 
+CUACA_BASA_BASI_N4_TITLES = [
+    "Membicarakan Dampak Perubahan Iklim",
+    "Basa-basi Sambil Membicarakan Berita Terkini",
+    "Mengeluh Tentang Cuaca yang Tidak Menentu",
+    "Membicarakan Persiapan Menghadapi Musim Dingin",
+    "Basa-basi Setelah Lama Tidak Bertemu",
+    "Menjelaskan Kenapa Menyukai Musim Tertentu",
+    "Membicarakan Ramalan Cuaca Minggu Ini",
+    "Basa-basi Tentang Kenaikan Suhu Global",
+    "Menjelaskan Kekhawatiran Tentang Bencana Alam",
+    "Membicarakan Kebiasaan Menghadapi Musim Hujan",
+    "Basa-basi Sambil Menunggu Hujan Reda di Halte",
+    "Menjelaskan Alasan Pindah karena Cuaca",
+    "Membicarakan Tradisi Musiman yang Mulai Hilang",
+    "Basa-basi Tentang Polusi Udara di Kota",
+    "Menceritakan Pengalaman Terjebak Badai",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -889,6 +907,7 @@ CATEGORY_META = {
     "belanja_n4": ("Belanja", "🛍️", "N4"),
     "arah_jalan_n4": ("Menanyakan Arah", "🧭", "N4"),
     "sekolah_n4": ("Di Sekolah", "🏫", "N4"),
+    "cuaca_basa_basi_n4": ("Cuaca & Basa-basi", "☁️", "N4"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -916,6 +935,7 @@ AVAILABLE_CATEGORIES = {
     "belanja_n4": BELANJA_N4_TITLES,
     "arah_jalan_n4": ARAH_JALAN_N4_TITLES,
     "sekolah_n4": SEKOLAH_N4_TITLES,
+    "cuaca_basa_basi_n4": CUACA_BASA_BASI_N4_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -955,6 +975,7 @@ _ALL_TITLE_LISTS = {
     "BELANJA_N4_TITLES": BELANJA_N4_TITLES,
     "ARAH_JALAN_N4_TITLES": ARAH_JALAN_N4_TITLES,
     "SEKOLAH_N4_TITLES": SEKOLAH_N4_TITLES,
+    "CUACA_BASA_BASI_N4_TITLES": CUACA_BASA_BASI_N4_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
