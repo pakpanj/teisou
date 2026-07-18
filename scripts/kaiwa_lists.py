@@ -1512,6 +1512,24 @@ RUMAH_SAKIT_N2_TITLES = [
     "Menjelaskan Pentingnya Pemeriksaan Kesehatan Rutin",
 ]
 
+HOBI_N2_TITLES = [
+    "Menjelaskan Alasan Menekuni Hobi yang Mahal",
+    "Mendiskusikan Fenomena Otaku Culture di Jepang",
+    "Menceritakan Pengalaman Menemukan Hobi Baru di Usia Dewasa",
+    "Membicarakan Dilema Antara Hobi dan Tanggung Jawab",
+    "Mendiskusikan Fenomena Micro-hobbies di Kalangan Pekerja Sibuk",
+    "Menceritakan Pengalaman Menjadikan Hobi sebagai Sumber Penghasilan",
+    "Menjelaskan Alasan Berhenti dari Hobi yang Dulu Disukai",
+    "Membicarakan Manfaat Psikologis Memiliki Hobi",
+    "Mendiskusikan Komunitas Online untuk Penggemar Hobi Tertentu",
+    "Menceritakan Pengalaman Mengikuti Kompetisi Hobi",
+    "Menjelaskan Alasan Memilih Hobi yang Menyendiri",
+    "Membicarakan Dampak Media Sosial terhadap Cara Menikmati Hobi",
+    "Mendiskusikan Investasi Waktu dan Uang dalam Sebuah Hobi",
+    "Menceritakan Pengalaman Berbagi Hobi dengan Generasi Berbeda",
+    "Menjelaskan Pentingnya Memiliki Me-time Lewat Hobi",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1573,6 +1591,7 @@ CATEGORY_META = {
     "sekolah_n2": ("Di Sekolah", "🏫", "N2"),
     "cuaca_basa_basi_n2": ("Cuaca & Basa-basi", "☁️", "N2"),
     "rumah_sakit_n2": ("Di Rumah Sakit", "🏥", "N2"),
+    "hobi_n2": ("Hobi", "🎨", "N2"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1636,6 +1655,7 @@ AVAILABLE_CATEGORIES = {
     "sekolah_n2": SEKOLAH_N2_TITLES,
     "cuaca_basa_basi_n2": CUACA_BASA_BASI_N2_TITLES,
     "rumah_sakit_n2": RUMAH_SAKIT_N2_TITLES,
+    "hobi_n2": HOBI_N2_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1711,6 +1731,7 @@ _ALL_TITLE_LISTS = {
     "SEKOLAH_N2_TITLES": SEKOLAH_N2_TITLES,
     "CUACA_BASA_BASI_N2_TITLES": CUACA_BASA_BASI_N2_TITLES,
     "RUMAH_SAKIT_N2_TITLES": RUMAH_SAKIT_N2_TITLES,
+    "HOBI_N2_TITLES": HOBI_N2_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
