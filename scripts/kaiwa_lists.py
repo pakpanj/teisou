@@ -1422,6 +1422,24 @@ STASIUN_N2_TITLES = [
     "Menceritakan Pengalaman Naik Kereta Peluru Pertama Kali",
 ]
 
+BELANJA_N2_TITLES = [
+    "Mendiskusikan Dampak E-commerce terhadap Toko Fisik",
+    "Menceritakan Pengalaman Kecanduan Belanja Online",
+    "Menjelaskan Alasan Lebih Suka Barang Second-hand",
+    "Membicarakan Fenomena Diskon Besar-besaran",
+    "Mendiskusikan Etika Konsumen terhadap Fast Fashion",
+    "Menceritakan Pengalaman Tertipu Saat Belanja Online",
+    "Menjelaskan Alasan Menerapkan Gaya Hidup Minimalis",
+    "Membicarakan Dampak Iklan terhadap Kebiasaan Konsumsi",
+    "Mendiskusikan Tren Belanja Barang Mewah di Kalangan Muda",
+    "Menceritakan Pengalaman Mengembalikan Barang yang Cacat",
+    "Menjelaskan Cara Mengelola Keuangan agar Tidak Boros",
+    "Membicarakan Perbandingan Belanja di Pasar Tradisional dan Mal",
+    "Mendiskusikan Dampak Kemasan Plastik terhadap Lingkungan",
+    "Menceritakan Pengalaman Menjadi Korban Strategi Pemasaran",
+    "Menjelaskan Pentingnya Riset Sebelum Membeli Barang Mahal",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1478,6 +1496,7 @@ CATEGORY_META = {
     "perkenalan_n2": ("Perkenalan", "👋", "N2"),
     "restoran_n2": ("Di Restoran", "🍽️", "N2"),
     "stasiun_n2": ("Di Stasiun", "🚉", "N2"),
+    "belanja_n2": ("Belanja", "🛍️", "N2"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1536,6 +1555,7 @@ AVAILABLE_CATEGORIES = {
     "perkenalan_n2": PERKENALAN_N2_TITLES,
     "restoran_n2": RESTORAN_N2_TITLES,
     "stasiun_n2": STASIUN_N2_TITLES,
+    "belanja_n2": BELANJA_N2_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1606,6 +1626,7 @@ _ALL_TITLE_LISTS = {
     "PERKENALAN_N2_TITLES": PERKENALAN_N2_TITLES,
     "RESTORAN_N2_TITLES": RESTORAN_N2_TITLES,
     "STASIUN_N2_TITLES": STASIUN_N2_TITLES,
+    "BELANJA_N2_TITLES": BELANJA_N2_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
