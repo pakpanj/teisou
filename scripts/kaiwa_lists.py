@@ -954,6 +954,24 @@ TRANSPORTASI_N4_TITLES = [
     "Menceritakan Pengalaman Naik Transportasi di Negara Lain",
 ]
 
+KANTOR_POS_N4_TITLES = [
+    "Mengklaim Asuransi Paket yang Rusak",
+    "Menjelaskan Isi Paket untuk Bea Cukai",
+    "Menegosiasikan Kompensasi Paket Hilang",
+    "Menjelaskan Kenapa Alamat Pengiriman Salah",
+    "Berdiskusi Tentang Opsi Pengiriman Tercepat",
+    "Menjelaskan Kerugian Akibat Paket Terlambat",
+    "Meminta Penjelasan Kenaikan Tarif Pengiriman",
+    "Menjelaskan Kenapa Perlu Mengirim Dokumen Rahasia",
+    "Berdiskusi Prosedur Pengiriman Barang Berharga",
+    "Menjelaskan Kenapa Membuka Bisnis Pengiriman Online",
+    "Menceritakan Pengalaman Buruk dengan Kurir",
+    "Meminta Penjelasan Tentang Asuransi Pengiriman Internasional",
+    "Menjelaskan Kenapa Memilih Jasa Ekspedisi Tertentu",
+    "Berdiskusi Solusi untuk Paket yang Salah Kirim",
+    "Menceritakan Pengalaman Menunggu Paket Penting",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -984,6 +1002,7 @@ CATEGORY_META = {
     "hobi_n4": ("Hobi", "🎨", "N4"),
     "telepon_n4": ("Telepon", "☎️", "N4"),
     "transportasi_n4": ("Transportasi", "🚌", "N4"),
+    "kantor_pos_n4": ("Di Kantor Pos", "📮", "N4"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1016,6 +1035,7 @@ AVAILABLE_CATEGORIES = {
     "hobi_n4": HOBI_N4_TITLES,
     "telepon_n4": TELEPON_N4_TITLES,
     "transportasi_n4": TRANSPORTASI_N4_TITLES,
+    "kantor_pos_n4": KANTOR_POS_N4_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1060,6 +1080,7 @@ _ALL_TITLE_LISTS = {
     "HOBI_N4_TITLES": HOBI_N4_TITLES,
     "TELEPON_N4_TITLES": TELEPON_N4_TITLES,
     "TRANSPORTASI_N4_TITLES": TRANSPORTASI_N4_TITLES,
+    "KANTOR_POS_N4_TITLES": KANTOR_POS_N4_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
