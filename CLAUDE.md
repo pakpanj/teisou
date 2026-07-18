@@ -759,6 +759,89 @@ meant.
     next, tapping through Home→N5→a handful of themes, and specifically
     forcing an offline Firestore write to confirm the spinner now clears,
     is still worth doing since neither has actually happened yet.
+  - **N4-N1 rollout, session handoff (2026-07-19)**: this is a
+    continuation of the phase 1-3 work above, extending Kaiwa beyond N5
+    per explicit user request ("OKE UNTUK LANJUTKAN GENERATE KAIWA
+    SAMPAI N1" — continue generating Kaiwa until N1). Locked scope from
+    the user: **15 dialogues per theme for N4-N1** (not N5's 40), each
+    still 5 exchanges/10 lines (5 npc + 5 user turns), same
+    distractor-design rule as phases 1-3 (every wrong option is
+    grammatically valid Japanese that's contextually wrong, third
+    option a generic filler like 何時ですか/何ですか/分からないよ).
+    **Status at handoff**: N4 complete (17/17 themes, 255/255
+    dialogues, N4-appropriate grammar). N3 complete (17/17 themes,
+    255/255 dialogues, N3-appropriate grammar: ~ものの, ~ざるを得ない,
+    ~とは言えない, ~かねない, etc. — see individual theme commits for
+    the exact grammar list per theme). N2 **in progress, 12/17 themes
+    done** (180/255 dialogues): Perkenalan, Restoran, Stasiun, Belanja,
+    Arah Jalan, Sekolah, Cuaca & Basa-basi, Rumah Sakit, Hobi, Telepon,
+    Transportasi, Kantor Pos are done; **Liburan, Keluarga, Bank,
+    Olahraga, Bioskop remain** for N2 (in that order, matching the
+    theme order already established for N5/N4/N3). N1 is **completely
+    untouched** — `LEVEL_META["N1"]` is still `False`/unavailable, no
+    N1 theme has been registered or authored. Grand total at handoff:
+    **1370/1700 dialogues** (N5 680 + N4 255 + N3 255 + N2 180 + N1 0).
+    Root master (`/c/Users/LENOVO/teisou`, branch `master`) is clean at
+    commit `ace2b45` ("feat(kaiwa): add N2 Kantor Pos theme (12/17 N2
+    themes)") — `python scripts/generate_kaiwa_seed.py` reproduces this
+    exact state with no uncommitted diff.
+    **The repeatable per-theme workflow** (used identically ~50 times
+    across N4/N3/N2 so far, safe to trust): (1) draft 15 dialogue
+    titles for the theme, appropriate to the target JLPT level's
+    vocabulary/grammar ceiling and distinct in *depth* from the same
+    theme at lower levels (see the N2 Perkenalan note a few paragraphs
+    up for why N2 skews abstract/introspective vs. N3's concrete
+    scenarios — apply the same level-appropriate escalation to
+    whichever theme comes next); (2) add a `{THEME}_{LEVEL}_TITLES`
+    list plus 3 registration lines (`CATEGORY_META`,
+    `AVAILABLE_CATEGORIES`, `_ALL_TITLE_LISTS`) to
+    `scripts/kaiwa_lists.py`, anchored via Edit on the immediately
+    preceding theme's equivalent lines; (3) draft the matching 15 full
+    dialogue tuples (10-line schema: `("npc", suffix, speaker,
+    japanese, romaji, translation)` / `("user", suffix, [(japanese,
+    romaji, translation, is_correct, expression_tag_or_None), ...])`)
+    using level-appropriate grammar woven naturally into the scenario
+    implied by each title; (4) add a `{THEME}_{LEVEL}_ENTRIES` list to
+    `scripts/generate_kaiwa_seed.py` (insert immediately before the
+    `ENTRIES_BY_CATEGORY = {` declaration) plus one registration line
+    inside that dict; (5) syntax-check both files with `python -c
+    "import ast; ast.parse(open(path, encoding='utf-8').read())"`; (6)
+    regenerate via `python scripts/generate_kaiwa_seed.py` from
+    `/c/Users/LENOVO/teisou` and confirm the printed per-category count
+    and running grand total match expectations exactly (they have,
+    every single time, since the two self-caught bugs documented
+    below); (7) `git add assets/data/kaiwa_data.json
+    assets/data/kaiwa/_categories.json assets/data/kaiwa/_levels.json
+    scripts/generate_kaiwa_seed.py scripts/kaiwa_lists.py && git commit`
+    directly on root master's `master` branch (per this project's
+    standing "local merge, not PR" preference — never worktree
+    branches, never a PR flow for this kind of work), with a message
+    documenting theme content, the specific grammar points used, and
+    the running per-level/grand totals; (8) move to the next theme.
+    **Two authoring bugs were self-caught and fixed before ever
+    reaching a commit** during N4/N3 (worth knowing the failure mode,
+    not worth re-reading the diffs): a stray `.replace(...)` expression
+    left in a string-literal position in one N4 entry, and a malformed
+    6-element user-turn tuple (should always be exactly 5:
+    `(japanese, romaji, translation, is_correct, expression_tag)`) in
+    one N3 entry — both caught by the syntax-check/regenerate step
+    before any bad data shipped, which is exactly why steps 5-6 are
+    never skipped. **After Liburan/Keluarga/Bank/Olahraga/Bioskop
+    close out N2 (17/17, 255/255)**, N1 needs its `LEVEL_META` entry
+    flipped to `available=True` on the first N1 theme's commit (mirror
+    exactly how N2's flip happened on Perkenalan N2's commit), then all
+    17 themes authored the same way with N1-appropriate grammar
+    (literary/formal register: ~にたえない, ~を余儀なくされる,
+    ~ずにはいられない, ~にもまして, heavy keigo, etc. — see the
+    CLAUDE.md Bunpou section's N1 grammar list for reference, though
+    Kaiwa's N1 dialogues should stay conversational rather than
+    written-register despite using N1 grammar points). Once N1 hits
+    17/17 (255/255, grand total 1700/1700 across all five levels), the
+    remaining task is final verification (`flutter analyze`, `flutter
+    test --concurrency=1`, `flutter build apk --debug`) and a CLAUDE.md
+    update documenting the completed N4-N1 rollout's full scope,
+    design, and verification gaps — mirroring exactly how N5's
+    completion was documented above.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
