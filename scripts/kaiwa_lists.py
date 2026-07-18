@@ -1332,6 +1332,24 @@ BANK_N3_TITLES = [
     "Mendiskusikan Masa Depan Uang Tunai di Era Digital",
 ]
 
+OLAHRAGA_N3_TITLES = [
+    "Menjelaskan Alasan Berhenti Menjadi Atlet Profesional",
+    "Mendiskusikan Doping dalam Dunia Olahraga",
+    "Menceritakan Pengalaman Cedera Parah dalam Olahraga",
+    "Menjelaskan Tekanan Mental sebagai Atlet Kompetitif",
+    "Membicarakan Kesenjangan Gaji Antar Cabang Olahraga",
+    "Menceritakan Pengalaman Menjadi Pelatih Tim Junior",
+    "Mendiskusikan Kesetaraan Gender dalam Olahraga",
+    "Menjelaskan Alasan Memilih Olahraga Ekstrem",
+    "Membicarakan Dampak Media Sosial terhadap Atlet",
+    "Menceritakan Pengalaman Pensiun Dini dari Olahraga",
+    "Menjelaskan Pentingnya Nutrisi bagi Performa Atlet",
+    "Mendiskusikan Fanatisme Suporter yang Berlebihan",
+    "Menceritakan Pengalaman Menjadi Wasit dalam Pertandingan",
+    "Menjelaskan Cara Bangkit dari Kekalahan Beruntun",
+    "Membicarakan Masa Depan E-sports sebagai Olahraga",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1383,6 +1401,7 @@ CATEGORY_META = {
     "liburan_n3": ("Rencana Liburan", "🏖️", "N3"),
     "keluarga_n3": ("Keluarga", "👨‍👩‍👧", "N3"),
     "bank_n3": ("Di Bank", "🏦", "N3"),
+    "olahraga_n3": ("Olahraga", "⚽", "N3"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1436,6 +1455,7 @@ AVAILABLE_CATEGORIES = {
     "liburan_n3": LIBURAN_N3_TITLES,
     "keluarga_n3": KELUARGA_N3_TITLES,
     "bank_n3": BANK_N3_TITLES,
+    "olahraga_n3": OLAHRAGA_N3_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1501,6 +1521,7 @@ _ALL_TITLE_LISTS = {
     "LIBURAN_N3_TITLES": LIBURAN_N3_TITLES,
     "KELUARGA_N3_TITLES": KELUARGA_N3_TITLES,
     "BANK_N3_TITLES": BANK_N3_TITLES,
+    "OLAHRAGA_N3_TITLES": OLAHRAGA_N3_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
