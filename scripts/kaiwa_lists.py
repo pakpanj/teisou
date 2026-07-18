@@ -1314,6 +1314,24 @@ KELUARGA_N3_TITLES = [
     "Membicarakan Definisi Keluarga yang Berubah di Masyarakat Modern",
 ]
 
+BANK_N3_TITLES = [
+    "Menegosiasikan Suku Bunga Pinjaman",
+    "Menjelaskan Alasan Ditolak Pengajuan Kartu Kredit",
+    "Mendiskusikan Investasi Jangka Panjang di Bank",
+    "Menceritakan Pengalaman Terkena Penipuan Perbankan",
+    "Menjelaskan Cara Mengelola Utang yang Menumpuk",
+    "Membicarakan Perbedaan Bank Konvensional dan Bank Digital",
+    "Menceritakan Pengalaman Membuka Usaha dengan Modal Pinjaman",
+    "Menjelaskan Prosedur Mengajukan KPR",
+    "Mendiskusikan Dampak Suku Bunga terhadap Ekonomi Rumah Tangga",
+    "Menceritakan Pengalaman Menjadi Korban Peretasan Rekening",
+    "Menjelaskan Cara Merencanakan Dana Pensiun",
+    "Membicarakan Literasi Keuangan yang Kurang di Masyarakat",
+    "Menceritakan Pengalaman Menjadi Penjamin Pinjaman",
+    "Menjelaskan Alasan Memilih Bank Syariah",
+    "Mendiskusikan Masa Depan Uang Tunai di Era Digital",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1364,6 +1382,7 @@ CATEGORY_META = {
     "kantor_pos_n3": ("Di Kantor Pos", "📮", "N3"),
     "liburan_n3": ("Rencana Liburan", "🏖️", "N3"),
     "keluarga_n3": ("Keluarga", "👨‍👩‍👧", "N3"),
+    "bank_n3": ("Di Bank", "🏦", "N3"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1416,6 +1435,7 @@ AVAILABLE_CATEGORIES = {
     "kantor_pos_n3": KANTOR_POS_N3_TITLES,
     "liburan_n3": LIBURAN_N3_TITLES,
     "keluarga_n3": KELUARGA_N3_TITLES,
+    "bank_n3": BANK_N3_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1480,6 +1500,7 @@ _ALL_TITLE_LISTS = {
     "KANTOR_POS_N3_TITLES": KANTOR_POS_N3_TITLES,
     "LIBURAN_N3_TITLES": LIBURAN_N3_TITLES,
     "KELUARGA_N3_TITLES": KELUARGA_N3_TITLES,
+    "BANK_N3_TITLES": BANK_N3_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"

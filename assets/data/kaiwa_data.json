@@ -199157,5 +199157,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_negosiasi_suku_bunga_pinjaman_n3",
+    "title": "Menegosiasikan Suku Bunga Pinjaman",
+    "category": "bank_n3",
+    "description": "Kamu menegosiasikan suku bunga pinjaman dengan petugas bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ローンの金利について、ご相談ですね。",
+          "romaji": "Roon no kinri ni tsuite, gosoudan desu ne.",
+          "translation": "Konsultasi soal suku bunga pinjaman ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_negosiasi_suku_bunga_pinjaman_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、もう少し低くしていただくことは可能でしょうか。",
+            "romaji": "Hai, mou sukoshi hikuku shite itadaku koto wa kanou deshou ka.",
+            "translation": "Iya, apakah memungkinkan untuk sedikit lebih diturunkan?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "金利はどうでもいいです。",
+            "romaji": "Kinri wa dou demo ii desu.",
+            "translation": "Suku bunganya terserah saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お客様の返済実績を確認させていただきますね。",
+          "romaji": "Okyakusama no hensai jisseki wo kakunin sasete itadakimasu ne.",
+          "translation": "Kami akan periksa dulu riwayat pembayaran Anda."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_negosiasi_suku_bunga_pinjaman_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、よろしくお願いします。",
+            "romaji": "Hai, yoroshiku onegaishimasu.",
+            "translation": "Baik, mohon bantuannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "確認しなくて結構です。",
+            "romaji": "Kakunin shinakute kekkou desu.",
+            "translation": "Tidak usah diperiksa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "実績を拝見する限り、多少の優遇は可能かと思います。",
+          "romaji": "Jisseki wo haiken suru kagiri, tashou no yuuguu wa kanou ka to omoimasu.",
+          "translation": "Sejauh yang kami lihat, mungkin bisa diberikan sedikit keringanan."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_negosiasi_suku_bunga_pinjaman_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、助かります。",
+            "romaji": "Arigatou gozaimasu, tasukarimasu.",
+            "translation": "Terima kasih, sangat membantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それでも高すぎます。",
+            "romaji": "Sore demo takasugimasu.",
+            "translation": "Meski begitu tetap terlalu tinggi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでは、新しい条件でご案内いたします。",
+          "romaji": "Soredewa, atarashii jouken de goannai itashimasu.",
+          "translation": "Kalau begitu, akan kami sampaikan dengan ketentuan baru."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_negosiasi_suku_bunga_pinjaman_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "よろしくお願いします。",
+            "romaji": "Yoroshiku onegaishimasu.",
+            "translation": "Mohon bantuannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "やっぱり結構です。",
+            "romaji": "Yappari kekkou desu.",
+            "translation": "Sudah tidak usah saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ご検討いただき、ありがとうございます。",
+          "romaji": "Gokentou itadaki, arigatou gozaimasu.",
+          "translation": "Terima kasih atas pertimbangannya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_negosiasi_suku_bunga_pinjaman_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "こちらこそ、ありがとうございます。",
+            "romaji": "Kochira koso, arigatou gozaimasu.",
+            "translation": "Sama-sama, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう二度と借りません。",
+            "romaji": "Mou nidoto karimasen.",
+            "translation": "Tidak akan pinjam lagi selamanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tolak_kartu_kredit_n3",
+    "title": "Menjelaskan Alasan Ditolak Pengajuan Kartu Kredit",
+    "category": "bank_n3",
+    "description": "Kamu menjelaskan ke teman soal pengajuan kartu kredit yang ditolak.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "クレジットカード、審査に落ちたって聞いたけど。",
+          "romaji": "Kurejitto kaado, shinsa ni ochita tte kiita kedo.",
+          "translation": "Kudengar kartu kreditnya tidak lolos seleksi ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_tolak_kartu_kredit_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、正直、理由がはっきり分からなくて困っているんだ。",
+            "romaji": "Un, shoujiki, riyuu ga hakkiri wakaranakute komatte iru n da.",
+            "translation": "Iya, jujur, aku bingung karena alasannya tidak jelas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、余裕で通ったよ。",
+            "romaji": "Iya, yoyuu de tootta yo.",
+            "translation": "Tidak, lolos dengan mudah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何か心当たりはあるの？",
+          "romaji": "Nanika kokoroatari wa aru no?",
+          "translation": "Ada dugaan tertentu?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_tolak_kartu_kredit_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "過去に支払いを延滞したことが、影響したのかもしれない。",
+            "romaji": "Kako ni shiharai wo entai shita koto ga, eikyou shita no kamoshirenai.",
+            "translation": "Mungkin pernah menunggak pembayaran dulu, itu yang berpengaruh.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く心当たりはないよ。",
+            "romaji": "Mattaku kokoroatari wa nai yo.",
+            "translation": "Sama sekali tidak ada dugaan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "再申請はできるの？",
+          "romaji": "Saishinsei wa dekiru no?",
+          "translation": "Bisa ajukan ulang?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_tolak_kartu_kredit_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、半年後には再挑戦できるらしいよ。",
+            "romaji": "Un, hantoshi go ni wa saichousen dekiru rashii yo.",
+            "translation": "Iya, katanya bisa coba lagi enam bulan lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "二度と申請できないと言われたよ。",
+            "romaji": "Nidoto shinsei dekinai to iwareta yo.",
+            "translation": "Dibilang tidak bisa mengajukan lagi selamanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それまでにできることはある？",
+          "romaji": "Sore made ni dekiru koto wa aru?",
+          "translation": "Ada yang bisa dilakukan sampai saat itu?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_tolak_kartu_kredit_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "支払い履歴をきれいにしておこうと思っているよ。",
+            "romaji": "Shiharai rireki wo kirei ni shite okou to omotte iru yo.",
+            "translation": "Aku berpikir mau membersihkan riwayat pembayaran dulu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何もしないつもりだよ。",
+            "romaji": "Toku ni nanimo shinai tsumori da yo.",
+            "translation": "Berniat tidak melakukan apa pun khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "きっと次は通るよ。",
+          "romaji": "Kitto tsugi wa tooru yo.",
+          "translation": "Pasti lain kali lolos."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_tolak_kartu_kredit_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そう信じてる。",
+            "romaji": "Un, sou shinjiteru.",
+            "translation": "Iya, aku percaya begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう諦めているよ。",
+            "romaji": "Mou akiramete iru yo.",
+            "translation": "Sudah menyerah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_investasi_jangka_panjang_bank_n3",
+    "title": "Mendiskusikan Investasi Jangka Panjang di Bank",
+    "category": "bank_n3",
+    "description": "Kamu membicarakan investasi jangka panjang di bank dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "銀行の長期投資商品、興味あるって言ってたよね。",
+          "romaji": "Ginkou no chouki toushi shouhin, kyoumi aru tte itteta yo ne.",
+          "translation": "Katanya tertarik dengan produk investasi jangka panjang bank ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_investasi_jangka_panjang_bank_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、老後のために、少しずつ始めてみようと思っているんだ。",
+            "romaji": "Un, rougo no tame ni, sukoshi zutsu hajimete miyou to omotte iru n da.",
+            "translation": "Iya, aku berpikir mau coba mulai sedikit demi sedikit untuk masa tua.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く興味ないよ。",
+            "romaji": "Mattaku kyoumi nai yo.",
+            "translation": "Sama sekali tidak tertarik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "リスクについては理解してる？",
+          "romaji": "Risuku ni tsuite wa rikai shiteru?",
+          "translation": "Sudah paham soal risikonya?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_investasi_jangka_panjang_bank_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "元本割れの可能性もあると、説明を受けたよ。",
+            "romaji": "Ganpon ware no kanousei mo aru to, setsumei wo uketa yo.",
+            "translation": "Aku sudah diberi penjelasan bahwa ada juga kemungkinan modal berkurang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "リスクは全くないと言われたよ。",
+            "romaji": "Risuku wa mattaku nai to iwareta yo.",
+            "translation": "Dibilang sama sekali tidak ada risiko.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのくらいの期間を考えてるの？",
+          "romaji": "Dono kurai no kikan wo kangaeteru no?",
+          "translation": "Berapa lama jangka waktu yang dipertimbangkan?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_investasi_jangka_panjang_bank_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "少なくとも十年は続けるつもりでいるよ。",
+            "romaji": "Sukunakutomo juunen wa tsuzukeru tsumori de iru yo.",
+            "translation": "Aku berencana melanjutkan setidaknya sepuluh tahun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一年で全部引き出すつもりだよ。",
+            "romaji": "Ichinen de zenbu hikidasu tsumori da yo.",
+            "translation": "Berniat menarik semuanya dalam satu tahun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "専門家に相談したりした？",
+          "romaji": "Senmonka ni soudan shitari shita?",
+          "translation": "Sempat konsultasi ke ahli?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_investasi_jangka_panjang_bank_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、担当者に詳しく説明してもらったよ。",
+            "romaji": "Un, tantousha ni kuwashiku setsumei shite moratta yo.",
+            "translation": "Iya, sudah dijelaskan detail oleh petugasnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰にも相談せずに決めたよ。",
+            "romaji": "Dare ni mo soudan sezu ni kimeta yo.",
+            "translation": "Memutuskan tanpa konsultasi ke siapa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "慎重に進めているんだね。",
+          "romaji": "Shinchou ni susumete iru n da ne.",
+          "translation": "Berarti berjalan dengan hati-hati ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_investasi_jangka_panjang_bank_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そう思う。",
+            "romaji": "Un, sou omou.",
+            "translation": "Iya, aku setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "そう思わないよ。",
+            "romaji": "Sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_terkena_penipuan_perbankan_n3",
+    "title": "Menceritakan Pengalaman Terkena Penipuan Perbankan",
+    "category": "bank_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman terkena penipuan yang menyamar sebagai bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "銀行の詐欺に遭ったことがあるって聞いたけど。",
+          "romaji": "Ginkou no sagi ni atta koto ga aru tte kiita kedo.",
+          "translation": "Kudengar pernah kena penipuan bank ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_terkena_penipuan_perbankan_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、行員を装った電話に、うっかり騙されてしまったんだ。",
+            "romaji": "Un, kouin wo yosootta denwa ni, ukkari damasarete shimatta n da.",
+            "translation": "Iya, aku tanpa sadar tertipu telepon yang menyamar sebagai petugas bank.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "そんな経験は一度もないよ。",
+            "romaji": "Sonna keiken wa ichido mo nai yo.",
+            "translation": "Pengalaman seperti itu belum pernah sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうやって気づいたの？",
+          "romaji": "Dou yatte kizuita no?",
+          "translation": "Bagaimana bisa menyadarinya?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_terkena_penipuan_perbankan_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "不自然な要求をされて、初めて詐欺だと気づいたんだ。",
+            "romaji": "Fushizen na youkyuu wo sarete, hajimete sagi da to kizuita n da.",
+            "translation": "Diminta hal yang tidak wajar, baru sadar itu penipuan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "すぐに詐欺だと気づいたよ。",
+            "romaji": "Sugu ni sagi da to kizuita yo.",
+            "translation": "Langsung sadar itu penipuan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "被害額はどのくらいだったの？",
+          "romaji": "Higaigaku wa dono kurai datta no?",
+          "translation": "Berapa jumlah kerugiannya?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_terkena_penipuan_perbankan_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "幸い、大きな被害には至らなかったよ。",
+            "romaji": "Saiwai, ookina higai ni wa itaranakatta yo.",
+            "translation": "Untungnya, tidak sampai kerugian besar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "かなりの金額をだまし取られてしまったよ。",
+            "romaji": "Kanari no kingaku wo damashitorarete shimatta yo.",
+            "translation": "Sejumlah besar uang jadi tertipu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "警察には届けたの？",
+          "romaji": "Keisatsu ni wa todoketa no?",
+          "translation": "Sudah lapor ke polisi?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_terkena_penipuan_perbankan_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、すぐに相談しに行ったよ。",
+            "romaji": "Un, sugu ni soudan shi ni itta yo.",
+            "translation": "Iya, langsung pergi konsultasi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "面倒だから届けなかったよ。",
+            "romaji": "Mendou dakara todokenakatta yo.",
+            "translation": "Karena merepotkan tidak dilaporkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今後は気をつけないとね。",
+          "romaji": "Kongo wa ki wo tsukenai to ne.",
+          "translation": "Ke depannya harus lebih hati-hati ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_terkena_penipuan_perbankan_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に気をつけなくていいと思うよ。",
+            "romaji": "Betsu ni ki wo tsukenakute ii to omou yo.",
+            "translation": "Tidak usah hati-hati juga tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kelola_utang_menumpuk_n3",
+    "title": "Menjelaskan Cara Mengelola Utang yang Menumpuk",
+    "category": "bank_n3",
+    "description": "Kamu menjelaskan ke teman cara mengelola utang yang menumpuk.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "借金がかさんでるって言ってたよね、大丈夫？",
+          "romaji": "Shakkin ga kasanderu tte itteta yo ne, daijoubu?",
+          "translation": "Katanya utang menumpuk ya, tidak apa-apa?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_kelola_utang_menumpuk_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、返済計画を見直さざるを得ない状況なんだ。",
+            "romaji": "Shoujiki, hensai keikaku wo minaosazaru wo enai joukyou nan da.",
+            "translation": "Jujur, situasinya terpaksa harus meninjau ulang rencana pembayaran.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く問題ないよ。",
+            "romaji": "Mattaku mondai nai yo.",
+            "translation": "Sama sekali tidak masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "専門家に相談したことはある？",
+          "romaji": "Senmonka ni soudan shita koto wa aru?",
+          "translation": "Pernah konsultasi ke ahli?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_kelola_utang_menumpuk_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、無料相談窓口を利用してみたよ。",
+            "romaji": "Un, muryou soudan madoguchi wo riyou shite mita yo.",
+            "translation": "Iya, aku coba manfaatkan konter konsultasi gratis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰にも相談したことないよ。",
+            "romaji": "Dare ni mo soudan shita koto nai yo.",
+            "translation": "Belum pernah konsultasi ke siapa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんなアドバイスをもらったの？",
+          "romaji": "Donna adobaisu wo moratta no?",
+          "translation": "Saran seperti apa yang didapat?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_kelola_utang_menumpuk_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "高金利の借金から優先的に返すべきだと言われたよ。",
+            "romaji": "Koukinri no shakkin kara yuusenteki ni kaesu beki da to iwareta yo.",
+            "translation": "Dibilang harus bayar terlebih dahulu utang dengan bunga tinggi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く借金を気にしなくていいと言われたよ。",
+            "romaji": "Mattaku shakkin wo ki ni shinakute ii to iwareta yo.",
+            "translation": "Dibilang sama sekali tidak perlu memedulikan utang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "これから改善していけそう？",
+          "romaji": "Kore kara kaizen shite ikesou?",
+          "translation": "Sepertinya bisa membaik ke depannya?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_kelola_utang_menumpuk_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、計画的に取り組んでいこうと思っているよ。",
+            "romaji": "Un, keikakuteki ni torikunde ikou to omotte iru yo.",
+            "translation": "Iya, aku berpikir mau menangani secara terencana.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう改善は諦めているよ。",
+            "romaji": "Mou kaizen wa akiramete iru yo.",
+            "translation": "Sudah menyerah untuk membaik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "応援してるよ。",
+          "romaji": "Ouen shiteru yo.",
+          "translation": "Aku dukung."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_kelola_utang_menumpuk_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、頑張るよ。",
+            "romaji": "Arigatou, ganbaru yo.",
+            "translation": "Terima kasih, akan aku usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "応援は要らないよ。",
+            "romaji": "Ouen wa iranai yo.",
+            "translation": "Dukungan tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_beda_bank_konvensional_digital_n3",
+    "title": "Membicarakan Perbedaan Bank Konvensional dan Bank Digital",
+    "category": "bank_n3",
+    "description": "Kamu membicarakan alasan beralih ke bank digital dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、ネット銀行に切り替えたって聞いたよ。",
+          "romaji": "Saikin, netto ginkou ni kirikaeta tte kiita yo.",
+          "translation": "Kudengar belakangan beralih ke bank digital ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_beda_bank_konvensional_digital_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、手数料の安さに惹かれて、切り替えたんだ。",
+            "romaji": "Un, tesuuryou no yasusa ni hikarete, kirikaeta n da.",
+            "translation": "Iya, aku beralih karena tertarik dengan biaya yang murah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、まだ従来の銀行を使っているよ。",
+            "romaji": "Iya, mada juurai no ginkou wo tsukatte iru yo.",
+            "translation": "Tidak, masih pakai bank konvensional.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "対面での相談ができないのは不便じゃない？",
+          "romaji": "Taimen de no soudan ga dekinai no wa fuben janai?",
+          "translation": "Tidak bisa konsultasi tatap muka, tidak kurang praktis?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_beda_bank_konvensional_digital_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、複雑な相談をしたい時は、少し不便に感じるかな。",
+            "romaji": "Shoujiki, fukuzatsu na soudan wo shitai toki wa, sukoshi fuben ni kanjiru ka na.",
+            "translation": "Jujur, waktu ingin konsultasi hal rumit, mungkin agak terasa kurang praktis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く不便に感じたことないよ。",
+            "romaji": "Mattaku fuben ni kanjita koto nai yo.",
+            "translation": "Sama sekali tidak pernah merasa kurang praktis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "セキュリティ面は心配じゃない？",
+          "romaji": "Sekyuriti men wa shinpai janai?",
+          "translation": "Sisi keamanannya tidak khawatir?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_beda_bank_konvensional_digital_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "最初は不安だったけど、対策がしっかりしていると分かって安心したよ。",
+            "romaji": "Saisho wa fuan datta kedo, taisaku ga shikkari shite iru to wakatte anshin shita yo.",
+            "translation": "Awalnya cemas, tapi setelah tahu tindakan pengamanannya kuat jadi lega.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "セキュリティなんて全く気にしていないよ。",
+            "romaji": "Sekyuriti nante mattaku ki ni shite inai yo.",
+            "translation": "Sama sekali tidak dipedulikan soal keamanan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "従来の銀行に戻る気はない？",
+          "romaji": "Juurai no ginkou ni modoru ki wa nai?",
+          "translation": "Tidak ada niat kembali ke bank konvensional?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_beda_bank_konvensional_digital_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "今のところ、戻るつもりはないよ。",
+            "romaji": "Ima no tokoro, modoru tsumori wa nai yo.",
+            "translation": "Untuk saat ini, tidak berniat kembali.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう戻ろうと思っているよ。",
+            "romaji": "Mou modorou to omotte iru yo.",
+            "translation": "Sudah berpikir mau kembali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いい選択だと思うよ。",
+          "romaji": "Ii sentaku da to omou yo.",
+          "translation": "Kurasa itu pilihan yang bagus."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_beda_bank_konvensional_digital_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。",
+            "romaji": "Arigatou.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にいい選択だとは思わないよ。",
+            "romaji": "Betsu ni ii sentaku da to wa omowanai yo.",
+            "translation": "Kupikir bukan pilihan yang bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_buka_usaha_modal_pinjaman_n3",
+    "title": "Menceritakan Pengalaman Membuka Usaha dengan Modal Pinjaman",
+    "category": "bank_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman membuka toko dengan modal pinjaman dari bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お店を始める時、銀行から融資を受けたって聞いたよ。",
+          "romaji": "Omise wo hajimeru toki, ginkou kara yuushi wo uketa tte kiita yo.",
+          "translation": "Kudengar waktu mulai buka toko, dapat pinjaman dari bank ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_buka_usaha_modal_pinjaman_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、自己資金だけでは足りなくて、融資に頼ることにしたんだ。",
+            "romaji": "Un, jiko shikin dake dewa tarinakute, yuushi ni tayoru koto ni shita n da.",
+            "translation": "Iya, karena dana sendiri tidak cukup, aku putuskan bergantung pada pinjaman.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "融資は一切受けなかったよ。",
+            "romaji": "Yuushi wa issai ukenakatta yo.",
+            "translation": "Sama sekali tidak menerima pinjaman.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "審査は厳しかった？",
+          "romaji": "Shinsa wa kibishikatta?",
+          "translation": "Seleksinya ketat?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_buka_usaha_modal_pinjaman_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、事業計画書をかなり細かく確認されたよ。",
+            "romaji": "Un, jigyou keikakusho wo kanari komakaku kakunin sareta yo.",
+            "translation": "Iya, proposal usahanya diperiksa dengan sangat detail.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く審査されなかったよ。",
+            "romaji": "Mattaku shinsa sarenakatta yo.",
+            "translation": "Sama sekali tidak diseleksi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "返済のプレッシャーは感じる？",
+          "romaji": "Hensai no puresshaa wa kanjiru?",
+          "translation": "Merasakan tekanan pembayaran?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_buka_usaha_modal_pinjaman_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、毎月の返済に、それなりのプレッシャーを感じているよ。",
+            "romaji": "Shoujiki, maitsuki no hensai ni, sore nari no puresshaa wo kanjite iru yo.",
+            "translation": "Jujur, merasakan tekanan yang cukup besar untuk pembayaran tiap bulan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全くプレッシャーを感じないよ。",
+            "romaji": "Mattaku puresshaa wo kanjinai yo.",
+            "translation": "Sama sekali tidak merasakan tekanan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "事業はうまくいってる？",
+          "romaji": "Jigyou wa umaku itteru?",
+          "translation": "Usahanya berjalan lancar?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_buka_usaha_modal_pinjaman_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "おかげさまで、少しずつ軌道に乗ってきているよ。",
+            "romaji": "Okagesama de, sukoshi zutsu kidou ni notte kite iru yo.",
+            "translation": "Berkat itu, sedikit demi sedikit mulai berjalan sesuai jalurnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全くうまくいっていないよ。",
+            "romaji": "Mattaku umaku itte inai yo.",
+            "translation": "Sama sekali tidak berjalan lancar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "これからも頑張ってね。",
+          "romaji": "Kore kara mo ganbatte ne.",
+          "translation": "Semangat terus ke depannya ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_buka_usaha_modal_pinjaman_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、頑張るよ。",
+            "romaji": "Un, ganbaru yo.",
+            "translation": "Iya, akan aku usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう頑張る気力がないよ。",
+            "romaji": "Mou ganbaru kiryoku ga nai yo.",
+            "translation": "Sudah tidak ada semangat lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_prosedur_kpr_n3",
+    "title": "Menjelaskan Prosedur Mengajukan KPR",
+    "category": "bank_n3",
+    "description": "Kamu menanyakan prosedur mengajukan KPR ke petugas bank.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "住宅ローンについてのご相談ですね。",
+          "romaji": "Juutaku roon ni tsuite no gosoudan desu ne.",
+          "translation": "Konsultasi soal KPR ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_prosedur_kpr_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、手続きの流れを教えていただけますか。",
+            "romaji": "Hai, tetsuzuki no nagare wo oshiete itadakemasu ka.",
+            "translation": "Iya, bisakah dijelaskan alur prosesnya?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "手続きはもう終わっています。",
+            "romaji": "Tetsuzuki wa mou owatte imasu.",
+            "translation": "Prosesnya sudah selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "まず、収入証明書などの書類が必要になります。",
+          "romaji": "Mazu, shuunyuu shoumeisho nado no shorui ga hitsuyou ni narimasu.",
+          "translation": "Pertama, diperlukan dokumen seperti bukti penghasilan."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_prosedur_kpr_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かりました、準備しておきます。",
+            "romaji": "Wakarimashita, junbi shite okimasu.",
+            "translation": "Mengerti, akan saya siapkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "書類は準備しなくていいですか。",
+            "romaji": "Shorui wa junbi shinakute ii desu ka.",
+            "translation": "Dokumennya tidak usah disiapkan boleh?",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "審査には一ヶ月ほどかかる見込みです。",
+          "romaji": "Shinsa ni wa ikkagetsu hodo kakaru mikomi desu.",
+          "translation": "Diperkirakan seleksinya perlu waktu sekitar satu bulan."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_prosedur_kpr_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "承知しました、気長に待ちます。",
+            "romaji": "Shouchi shimashita, kinaga ni machimasu.",
+            "translation": "Mengerti, akan saya tunggu dengan sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは長すぎます。",
+            "romaji": "Sore wa nagasugimasu.",
+            "translation": "Itu terlalu lama.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "頭金はどのくらいご用意されていますか。",
+          "romaji": "Atamakin wa dono kurai goyoui sarete imasu ka.",
+          "translation": "Uang muka sudah disiapkan berapa banyak?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_prosedur_kpr_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "物件価格の二割ほど用意しております。",
+            "romaji": "Bukken kakaku no niwari hodo youi shite orimasu.",
+            "translation": "Saya siapkan sekitar dua puluh persen dari harga properti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "頭金は全く用意していません。",
+            "romaji": "Atamakin wa mattaku youi shite imasen.",
+            "translation": "Uang muka sama sekali belum disiapkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Petugas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それなら審査も通りやすいと思います。",
+          "romaji": "Sore nara shinsa mo toriyasui to omoimasu.",
+          "translation": "Kalau begitu kurasa seleksinya juga akan mudah lolos."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_prosedur_kpr_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "それを聞いて安心しました。",
+            "romaji": "Sore wo kiite anshin shimashita.",
+            "translation": "Mendengar itu jadi lega.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それを聞いて不安になりました。",
+            "romaji": "Sore wo kiite fuan ni narimashita.",
+            "translation": "Mendengar itu jadi cemas.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_dampak_suku_bunga_ekonomi_rt_n3",
+    "title": "Mendiskusikan Dampak Suku Bunga terhadap Ekonomi Rumah Tangga",
+    "category": "bank_n3",
+    "description": "Kamu membicarakan dampak kenaikan suku bunga terhadap keuangan rumah tangga dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "金利が上がったこと、家計に影響してる？",
+          "romaji": "Kinri ga agatta koto, kakei ni eikyou shiteru?",
+          "translation": "Kenaikan suku bunga, berpengaruh ke keuangan rumah tangga?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_dampak_suku_bunga_ekonomi_rt_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、住宅ローンの返済額が、思っていた以上に増えてしまったよ。",
+            "romaji": "Un, juutaku roon no hensaigaku ga, omotte ita ijou ni fuete shimatta yo.",
+            "translation": "Iya, jumlah pembayaran KPR meningkat lebih dari yang dibayangkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く影響を受けていないよ。",
+            "romaji": "Mattaku eikyou wo ukete inai yo.",
+            "translation": "Sama sekali tidak terpengaruh.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何か対策は考えてる？",
+          "romaji": "Nanika taisaku wa kangaeteru?",
+          "translation": "Ada rencana tindakan?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_dampak_suku_bunga_ekonomi_rt_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "無駄な出費を見直すことから始めようと思っているよ。",
+            "romaji": "Muda na shuppi wo minaosu koto kara hajimeyou to omotte iru yo.",
+            "translation": "Aku berpikir mau mulai dari meninjau ulang pengeluaran yang sia-sia.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に対策は考えていないよ。",
+            "romaji": "Toku ni taisaku wa kangaete inai yo.",
+            "translation": "Tidak memikirkan tindakan apa pun khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "貯蓄にも影響出てる？",
+          "romaji": "Chochiku ni mo eikyou deteru?",
+          "translation": "Ada pengaruh ke tabungan juga?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_dampak_suku_bunga_ekonomi_rt_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、以前ほど貯金に回せなくなってしまったよ。",
+            "romaji": "Un, izen hodo chokin ni mawasenaku natte shimatta yo.",
+            "translation": "Iya, jadi tidak bisa dialokasikan ke tabungan sebanyak sebelumnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "貯蓄には全く影響していないよ。",
+            "romaji": "Chochiku ni wa mattaku eikyou shite inai yo.",
+            "translation": "Sama sekali tidak berpengaruh ke tabungan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今後の見通しはどう思う？",
+          "romaji": "Kongo no mitooshi wa dou omou?",
+          "translation": "Menurutmu prospek ke depannya bagaimana?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_dampak_suku_bunga_ekonomi_rt_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "しばらくは厳しい状況が続くと思う。",
+            "romaji": "Shibaraku wa kibishii joukyou ga tsuzuku to omou.",
+            "translation": "Kurasa situasi berat akan terus berlanjut untuk sementara.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "すぐに良くなると思うよ。",
+            "romaji": "Sugu ni yoku naru to omou yo.",
+            "translation": "Kupikir akan segera membaik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大変だね。",
+          "romaji": "Taihen da ne.",
+          "translation": "Berat ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_dampak_suku_bunga_ekonomi_rt_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に大変じゃないよ。",
+            "romaji": "Betsu ni taihen janai yo.",
+            "translation": "Sama sekali tidak berat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_korban_peretasan_rekening_n3",
+    "title": "Menceritakan Pengalaman Menjadi Korban Peretasan Rekening",
+    "category": "bank_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman rekening yang diakses secara ilegal.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "口座が不正アクセスされたって聞いたけど、本当？",
+          "romaji": "Kouza ga fusei akusesu sareta tte kiita kedo, hontou?",
+          "translation": "Kudengar rekeningnya diakses secara ilegal ya, benar?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_korban_peretasan_rekening_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、身に覚えのない引き出しがあって、青ざめたよ。",
+            "romaji": "Un, mi ni oboe no nai hikidashi ga atte, aozameta yo.",
+            "translation": "Iya, ada penarikan yang tidak aku ingat, sampai pucat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全くそんなことはなかったよ。",
+            "romaji": "Mattaku sonna koto wa nakatta yo.",
+            "translation": "Sama sekali tidak ada hal seperti itu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "すぐに銀行に連絡したの？",
+          "romaji": "Sugu ni ginkou ni renraku shita no?",
+          "translation": "Langsung hubungi bank?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_korban_peretasan_rekening_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、気づいた瞬間に、すぐに連絡したよ。",
+            "romaji": "Un, kizuita shunkan ni, sugu ni renraku shita yo.",
+            "translation": "Iya, begitu menyadari, langsung menghubungi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "しばらく放置してしまったよ。",
+            "romaji": "Shibaraku houchi shite shimatta yo.",
+            "translation": "Malah dibiarkan untuk sementara.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "口座は凍結されたの？",
+          "romaji": "Kouza wa touketsu sareta no?",
+          "translation": "Rekeningnya dibekukan?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_korban_peretasan_rekening_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、すぐに凍結してもらえたよ。",
+            "romaji": "Un, sugu ni touketsu shite moraeta yo.",
+            "translation": "Iya, langsung bisa dibekukan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "凍結されるまで一週間もかかったよ。",
+            "romaji": "Touketsu sareru made isshuukan mo kakatta yo.",
+            "translation": "Sampai dibekukan perlu waktu seminggu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "被害額は戻ってきたの？",
+          "romaji": "Higaigaku wa modotte kita no?",
+          "translation": "Uang yang hilang kembali?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_korban_peretasan_rekening_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、最終的には全額補償してもらえたよ。",
+            "romaji": "Un, saishuuteki ni wa zengaku hoshou shite moraeta yo.",
+            "translation": "Iya, akhirnya bisa diganti seluruhnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "結局一円も戻ってこなかったよ。",
+            "romaji": "Kekkyoku ichien mo modotte konakatta yo.",
+            "translation": "Akhirnya satu yen pun tidak kembali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それは良かったね。",
+          "romaji": "Sore wa yokatta ne.",
+          "translation": "Itu syukurlah ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_korban_peretasan_rekening_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、今ではセキュリティに気をつけているよ。",
+            "romaji": "Un, ima dewa sekyuriti ni ki wo tsukete iru yo.",
+            "translation": "Iya, sekarang aku memperhatikan keamanan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それでも全く気をつけていないよ。",
+            "romaji": "Sore demo mattaku ki wo tsukete inai yo.",
+            "translation": "Meski begitu tetap sama sekali tidak diperhatikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_rencanakan_dana_pensiun_n3",
+    "title": "Menjelaskan Cara Merencanakan Dana Pensiun",
+    "category": "bank_n3",
+    "description": "Kamu menjelaskan ke teman cara merencanakan dana pensiun.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "老後資金、もう考え始めてるの？",
+          "romaji": "Rougo shikin, mou kangaehajimeteru no?",
+          "translation": "Dana masa tua, sudah mulai dipikirkan?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_rencanakan_dana_pensiun_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、早いうちから準備しておいたほうがいいと思って、始めたよ。",
+            "romaji": "Un, hayai uchi kara junbi shite oita hou ga ii to omotte, hajimeta yo.",
+            "translation": "Iya, aku mulai karena berpikir lebih baik disiapkan sejak dini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ何も考えていないよ。",
+            "romaji": "Mada nanimo kangaete inai yo.",
+            "translation": "Belum dipikirkan apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな方法で準備してるの？",
+          "romaji": "Donna houhou de junbi shiteru no?",
+          "translation": "Bersiap dengan cara apa?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_rencanakan_dana_pensiun_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "積立型の保険と、投資を組み合わせているよ。",
+            "romaji": "Tsumitategata no hoken to, toushi wo kumiawasete iru yo.",
+            "translation": "Aku kombinasikan asuransi tabungan dan investasi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何もせずに、成り行きに任せているよ。",
+            "romaji": "Toku ni nanimo sezu ni, nariyuki ni makasete iru yo.",
+            "translation": "Tidak melakukan apa pun, dibiarkan mengalir begitu saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "目標額とか決めてる？",
+          "romaji": "Mokuhyougaku toka kimeteru?",
+          "translation": "Menentukan target jumlah?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_rencanakan_dana_pensiun_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、大まかな目標額は設定しているよ。",
+            "romaji": "Un, oomaka na mokuhyougaku wa settei shite iru yo.",
+            "translation": "Iya, aku sudah tentukan target jumlah kasarnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "目標額なんて考えたこともないよ。",
+            "romaji": "Mokuhyougaku nante kangaeta koto mo nai yo.",
+            "translation": "Belum pernah memikirkan target jumlah sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "不安に思うことはない？",
+          "romaji": "Fuan ni omou koto wa nai?",
+          "translation": "Ada yang dikhawatirkan?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_rencanakan_dana_pensiun_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、インフレの影響には不安を感じているよ。",
+            "romaji": "Shoujiki, infure no eikyou ni wa fuan wo kanjite iru yo.",
+            "translation": "Jujur, merasakan kecemasan soal pengaruh inflasi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く不安に思うことはないよ。",
+            "romaji": "Mattaku fuan ni omou koto wa nai yo.",
+            "translation": "Sama sekali tidak ada yang dikhawatirkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "計画的だね。",
+          "romaji": "Keikakuteki da ne.",
+          "translation": "Terencana ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_rencanakan_dana_pensiun_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、そう心がけているよ。",
+            "romaji": "Arigatou, sou kokorogakete iru yo.",
+            "translation": "Terima kasih, aku usahakan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に計画的じゃないよ。",
+            "romaji": "Betsu ni keikakuteki janai yo.",
+            "translation": "Sama sekali tidak terencana.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_literasi_keuangan_kurang_n3",
+    "title": "Membicarakan Literasi Keuangan yang Kurang di Masyarakat",
+    "category": "bank_n3",
+    "description": "Kamu membicarakan literasi keuangan yang kurang di masyarakat dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "日本人って、金融の知識があまりないってよく言われるよね。",
+          "romaji": "Nihonjin tte, kin'yuu no chishiki ga amari nai tte yoku iwareru yo ne.",
+          "translation": "Katanya orang Jepang kurang punya pengetahuan finansial ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_literasi_keuangan_kurang_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、学校でお金について学ぶ機会が、少なかったことも一因だと思う。",
+            "romaji": "Un, gakkou de okane ni tsuite manabu kikai ga, sukunakatta koto mo ichiin da to omou.",
+            "translation": "Iya, kurasa kesempatan belajar soal uang di sekolah yang sedikit juga jadi salah satu penyebab.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全くそんなことはないと思うよ。",
+            "romaji": "Mattaku sonna koto wa nai to omou yo.",
+            "translation": "Kupikir sama sekali tidak seperti itu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分は投資とか詳しい？",
+          "romaji": "Jibun wa toushi toka kuwashii?",
+          "translation": "Kamu sendiri paham soal investasi?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_literasi_keuangan_kurang_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、最近になってようやく勉強し始めたところなんだ。",
+            "romaji": "Shoujiki, saikin ni natte youyaku benkyou shihajimeta tokoro nan da.",
+            "translation": "Jujur, baru-baru ini akhirnya mulai belajar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "昔からずっと詳しかったよ。",
+            "romaji": "Mukashi kara zutto kuwashikatta yo.",
+            "translation": "Sejak dulu selalu paham.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうやって勉強してるの？",
+          "romaji": "Dou yatte benkyou shiteru no?",
+          "translation": "Bagaimana caranya belajar?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_literasi_keuangan_kurang_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本を読んだり、セミナーに参加したりしているよ。",
+            "romaji": "Hon wo yondari, seminaa ni sanka shitari shite iru yo.",
+            "translation": "Aku baca buku atau ikut seminar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も勉強していないよ。",
+            "romaji": "Toku ni nanimo benkyou shite inai yo.",
+            "translation": "Tidak belajar apa pun khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "子供にも早く教えたほうがいいのかな。",
+          "romaji": "Kodomo ni mo hayaku oshieta hou ga ii no ka na.",
+          "translation": "Mungkin lebih baik anak juga diajari sejak dini ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_literasi_keuangan_kurang_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、早めに金融教育を受けさせたほうがいいと思う。",
+            "romaji": "Un, hayame ni kin'yuu kyouiku wo ukesaseta hou ga ii to omou.",
+            "translation": "Iya, kurasa lebih baik dibiarkan menerima edukasi finansial lebih dini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "子供には全く必要ないと思うよ。",
+            "romaji": "Kodomo ni wa mattaku hitsuyou nai to omou yo.",
+            "translation": "Kupikir sama sekali tidak perlu untuk anak.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大事な視点だね。",
+          "romaji": "Daiji na shiten da ne.",
+          "translation": "Sudut pandang yang penting ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_literasi_keuangan_kurang_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そう言ってもらえると嬉しいよ。",
+            "romaji": "Sou itte moraeru to ureshii yo.",
+            "translation": "Kalau dikatakan begitu, aku senang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に大事だとは思わないよ。",
+            "romaji": "Betsu ni daiji da to wa omowanai yo.",
+            "translation": "Kupikir bukan hal yang penting.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jadi_penjamin_pinjaman_n3",
+    "title": "Menceritakan Pengalaman Menjadi Penjamin Pinjaman",
+    "category": "bank_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman menjadi penjamin utang teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "友達の借金の保証人になったことがあるって聞いたけど。",
+          "romaji": "Tomodachi no shakkin no hoshounin ni natta koto ga aru tte kiita kedo.",
+          "translation": "Kudengar pernah jadi penjamin utang teman ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_jadi_penjamin_pinjaman_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、頼まれて、断りきれずに引き受けてしまったんだ。",
+            "romaji": "Un, tanomarete, kotowarikirezu ni hikiukete shimatta n da.",
+            "translation": "Iya, diminta tolong, tidak bisa menolak sepenuhnya jadi terima.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "保証人になったことは一度もないよ。",
+            "romaji": "Hoshounin ni natta koto wa ichido mo nai yo.",
+            "translation": "Belum pernah jadi penjamin sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "後悔してる？",
+          "romaji": "Koukai shiteru?",
+          "translation": "Menyesal?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_jadi_penjamin_pinjaman_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、今振り返ると、慎重になるべきだったと思う。",
+            "romaji": "Shoujiki, ima furikaeru to, shinchou ni naru beki datta to omou.",
+            "translation": "Jujur, sekarang kalau diingat kembali, kurasa harusnya lebih hati-hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く後悔していないよ。",
+            "romaji": "Mattaku koukai shite inai yo.",
+            "translation": "Sama sekali tidak menyesal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "相手はきちんと返済してるの？",
+          "romaji": "Aite wa kichinto hensai shiteru no?",
+          "translation": "Yang bersangkutan bayar dengan benar?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_jadi_penjamin_pinjaman_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "今のところは、問題なく返済されているよ。",
+            "romaji": "Ima no tokoro wa, mondai naku hensai sarete iru yo.",
+            "translation": "Sejauh ini, dibayar tanpa masalah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く返済されていないよ。",
+            "romaji": "Mattaku hensai sarete inai yo.",
+            "translation": "Sama sekali tidak dibayar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もし返済が滞ったらどうする？",
+          "romaji": "Moshi hensai ga todokottara dou suru?",
+          "translation": "Kalau seandainya pembayarannya macet gimana?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_jadi_penjamin_pinjaman_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "その時は、自分が肩代わりするしかないと思う。",
+            "romaji": "Sono toki wa, jibun ga katagawari suru shika nai to omou.",
+            "translation": "Saat itu, kurasa terpaksa aku yang menanggung.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く関係ないと思っているよ。",
+            "romaji": "Mattaku kankei nai to omotte iru yo.",
+            "translation": "Kupikir sama sekali tidak ada hubungannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大変な立場だね。",
+          "romaji": "Taihen na tachiba da ne.",
+          "translation": "Posisi yang berat ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_jadi_penjamin_pinjaman_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に大変じゃないよ。",
+            "romaji": "Betsu ni taihen janai yo.",
+            "translation": "Sama sekali tidak berat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pilih_bank_syariah_n3",
+    "title": "Menjelaskan Alasan Memilih Bank Syariah",
+    "category": "bank_n3",
+    "description": "Kamu menjelaskan ke teman alasan memilih bank syariah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "イスラム銀行を使ってるって聞いたけど、どうして選んだの？",
+          "romaji": "Isuramu ginkou wo tsukatteru tte kiita kedo, doushite eranda no?",
+          "translation": "Kudengar pakai bank syariah ya, kenapa memilihnya?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_pilih_bank_syariah_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "宗教上の理由から、利子のない仕組みを選ぶことにしたんだ。",
+            "romaji": "Shuukyoujou no riyuu kara, rishi no nai shikumi wo erabu koto ni shita n da.",
+            "translation": "Karena alasan agama, aku memutuskan memilih mekanisme tanpa bunga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に理由はなく、なんとなく選んだよ。",
+            "romaji": "Toku ni riyuu wa naku, nantonaku eranda yo.",
+            "translation": "Tidak ada alasan khususnya, sekadar pilih saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一般的な銀行と、仕組みはどう違うの？",
+          "romaji": "Ippanteki na ginkou to, shikumi wa dou chigau no?",
+          "translation": "Dengan bank umum, mekanismenya beda bagaimana?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_pilih_bank_syariah_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "利子の代わりに、利益を分配する仕組みになっているんだ。",
+            "romaji": "Rishi no kawari ni, rieki wo bunpai suru shikumi ni natte iru n da.",
+            "translation": "Sebagai ganti bunga, mekanismenya membagikan keuntungan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一般的な銀行と全く同じ仕組みだよ。",
+            "romaji": "Ippanteki na ginkou to mattaku onaji shikumi da yo.",
+            "translation": "Mekanismenya sama persis dengan bank umum.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "不便に感じることはない？",
+          "romaji": "Fuben ni kanjiru koto wa nai?",
+          "translation": "Ada yang terasa kurang praktis?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_pilih_bank_syariah_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、対応している店舗が少ないと感じることはあるよ。",
+            "romaji": "Shoujiki, taiou shite iru tenpo ga sukunai to kanjiru koto wa aru yo.",
+            "translation": "Jujur, kadang merasa cabangnya yang melayani sedikit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く不便に感じたことないよ。",
+            "romaji": "Mattaku fuben ni kanjita koto nai yo.",
+            "translation": "Sama sekali tidak pernah merasa kurang praktis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでも満足してる？",
+          "romaji": "Sore demo manzoku shiteru?",
+          "translation": "Meski begitu tetap puas?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_pilih_bank_syariah_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、自分の信念に沿った選択ができて、満足しているよ。",
+            "romaji": "Un, jibun no shinnen ni sotta sentaku ga dekite, manzoku shite iru yo.",
+            "translation": "Iya, aku puas bisa memilih sesuai keyakinanku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く満足していないよ。",
+            "romaji": "Mattaku manzoku shite inai yo.",
+            "translation": "Sama sekali tidak puas.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分らしい選択だね。",
+          "romaji": "Jibun rashii sentaku da ne.",
+          "translation": "Pilihan yang khas dirimu ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_pilih_bank_syariah_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、そう思う。",
+            "romaji": "Arigatou, sou omou.",
+            "translation": "Terima kasih, aku setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_masa_depan_uang_tunai_digital_n3",
+    "title": "Mendiskusikan Masa Depan Uang Tunai di Era Digital",
+    "category": "bank_n3",
+    "description": "Kamu dan teman mendiskusikan masa depan uang tunai di era cashless.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "キャッシュレス化が進んで、現金を使う機会が減ってきたよね。",
+          "romaji": "Kyasshuresuka ga susunde, genkin wo tsukau kikai ga hette kita yo ne.",
+          "translation": "Cashless makin berkembang, kesempatan pakai uang tunai jadi berkurang ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_masa_depan_uang_tunai_digital_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、財布を持ち歩かなくなった人も増えていると思う。",
+            "romaji": "Un, saifu wo mochiarukanaku natta hito mo fuete iru to omou.",
+            "translation": "Iya, kurasa orang yang tidak lagi membawa dompet juga bertambah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く減っていないと思うよ。",
+            "romaji": "Mattaku hette inai to omou yo.",
+            "translation": "Kupikir sama sekali tidak berkurang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "現金は完全になくなると思う？",
+          "romaji": "Genkin wa kanzen ni nakunaru to omou?",
+          "translation": "Menurutmu uang tunai akan hilang sepenuhnya?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_masa_depan_uang_tunai_digital_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "完全になくなることはないと思うけど、役割は縮小していくと思う。",
+            "romaji": "Kanzen ni nakunaru koto wa nai to omou kedo, yakuwari wa shukushou shite iku to omou.",
+            "translation": "Kupikir tidak akan sepenuhnya hilang, tapi kurasa perannya akan menyusut.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "すぐに完全になくなると思うよ。",
+            "romaji": "Sugu ni kanzen ni nakunaru to omou yo.",
+            "translation": "Kupikir akan segera hilang sepenuhnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "高齢者にとっては難しい変化かもね。",
+          "romaji": "Koureisha ni totte wa muzukashii henka kamo ne.",
+          "translation": "Mungkin perubahan yang sulit bagi lansia ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_masa_depan_uang_tunai_digital_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、デジタルに慣れていない人への配慮も必要だと思う。",
+            "romaji": "Un, dejitaru ni narete inai hito e no hairyo mo hitsuyou da to omou.",
+            "translation": "Iya, kurasa perlu juga perhatian bagi orang yang belum terbiasa digital.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "高齢者のことは考える必要ないと思うよ。",
+            "romaji": "Koureisha no koto wa kangaeru hitsuyou nai to omou yo.",
+            "translation": "Kupikir tidak perlu memikirkan lansia.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "停電とかの時はどうする？",
+          "romaji": "Teiden toka no toki wa dou suru?",
+          "translation": "Waktu mati listrik dan semacamnya gimana?"
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_masa_depan_uang_tunai_digital_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そういう時のために、多少の現金は持っておいたほうがいいと思う。",
+            "romaji": "Sou iu toki no tame ni, tashou no genkin wa motte oita hou ga ii to omou.",
+            "translation": "Untuk saat seperti itu, kurasa sebaiknya tetap bawa sedikit uang tunai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "停電の時でもキャッシュレスで十分だと思うよ。",
+            "romaji": "Teiden no toki demo kyasshuresu de juubun da to omou yo.",
+            "translation": "Kupikir waktu mati listrik pun cashless sudah cukup.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "バランスが大事だね。",
+          "romaji": "Baransu ga daiji da ne.",
+          "translation": "Keseimbangan itu penting ya."
+        },
+        "imagePath": "kaiwa_images/bank_n3/kaiwa_masa_depan_uang_tunai_digital_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]
