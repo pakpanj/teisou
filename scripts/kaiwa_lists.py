@@ -1224,6 +1224,24 @@ HOBI_N3_TITLES = [
     "Mendiskusikan Rencana Mendalami Hobi Lebih Serius",
 ]
 
+TELEPON_N3_TITLES = [
+    "Menjelaskan Alasan Tidak Mengangkat Telepon",
+    "Menegosiasikan Waktu Telepon yang Lebih Baik",
+    "Menjelaskan Masalah Sinyal saat Telepon Penting",
+    "Mendiskusikan Etika Menelepon di Tempat Umum",
+    "Menceritakan Pengalaman Telepon yang Disambungkan Salah",
+    "Menjelaskan Cara Menangani Telepon dari Nomor Tidak Dikenal",
+    "Membicarakan Perbedaan Menelepon dan Mengirim Pesan",
+    "Menceritakan Pengalaman Wawancara Kerja via Telepon",
+    "Menjelaskan Alasan Lebih Suka Video Call daripada Telepon Biasa",
+    "Mendiskusikan Cara Menyampaikan Kabar Buruk lewat Telepon",
+    "Menceritakan Pengalaman Ditelepon Telemarketing",
+    "Menjelaskan Cara Menolak Ajakan lewat Telepon dengan Sopan",
+    "Membicarakan Kecemasan Menelepon dalam Bahasa Asing",
+    "Menceritakan Pengalaman Telepon Darurat",
+    "Mendiskusikan Kebiasaan Menelepon Keluarga secara Rutin",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1269,6 +1287,7 @@ CATEGORY_META = {
     "cuaca_basa_basi_n3": ("Cuaca & Basa-basi", "☁️", "N3"),
     "rumah_sakit_n3": ("Di Rumah Sakit", "🏥", "N3"),
     "hobi_n3": ("Hobi", "🎨", "N3"),
+    "telepon_n3": ("Telepon", "☎️", "N3"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1316,6 +1335,7 @@ AVAILABLE_CATEGORIES = {
     "cuaca_basa_basi_n3": CUACA_BASA_BASI_N3_TITLES,
     "rumah_sakit_n3": RUMAH_SAKIT_N3_TITLES,
     "hobi_n3": HOBI_N3_TITLES,
+    "telepon_n3": TELEPON_N3_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1375,6 +1395,7 @@ _ALL_TITLE_LISTS = {
     "CUACA_BASA_BASI_N3_TITLES": CUACA_BASA_BASI_N3_TITLES,
     "RUMAH_SAKIT_N3_TITLES": RUMAH_SAKIT_N3_TITLES,
     "HOBI_N3_TITLES": HOBI_N3_TITLES,
+    "TELEPON_N3_TITLES": TELEPON_N3_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
