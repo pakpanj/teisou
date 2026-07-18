@@ -159572,5 +159572,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_pesan_permintaan_khusus_n3",
+    "title": "Memesan Makanan dengan Permintaan Khusus",
+    "category": "restoran_n3",
+    "description": "Kamu memesan makanan dengan beberapa permintaan khusus ke pelayan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ご注文はお決まりでしょうか。",
+          "romaji": "Gochuumon wa okimari deshou ka.",
+          "translation": "Sudah menentukan pesanan?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pesan_permintaan_khusus_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、これをお願いしたいのですが、辛さを控えめにしていただけますか。",
+            "romaji": "Hai, kore wo onegai shitai no desu ga, karasa wo hikaeme ni shite itadakemasu ka.",
+            "translation": "Iya, saya mau pesan ini, tapi bisakah tingkat pedasnya dikurangi?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も注文したくありません。",
+            "romaji": "Nanimo chuumon shitakunai desu.",
+            "translation": "Tidak mau pesan apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "かしこまりました。他にご要望はございますか。",
+          "romaji": "Kashikomarimashita. Hoka ni goyoubou wa gozaimasu ka.",
+          "translation": "Baik. Ada permintaan lain?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pesan_permintaan_khusus_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ソースは別添えにしていただけると助かります。",
+            "romaji": "Soosu wa betsuzoe ni shite itadakeru to tasukarimasu.",
+            "translation": "Kalau sausnya dipisah, sangat membantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も要望はございません。",
+            "romaji": "Nanimo youbou wa gozaimasen.",
+            "translation": "Tidak ada permintaan apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "承知しました。アレルギーなどはございますか。",
+          "romaji": "Shouchi shimashita. Arerugii nado wa gozaimasu ka.",
+          "translation": "Mengerti. Ada alergi?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pesan_permintaan_khusus_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "特にありませんが、念のため確認させていただきました。",
+            "romaji": "Toku ni arimasen ga, nen no tame kakunin sasete itadakimashita.",
+            "translation": "Tidak ada khususnya, tapi saya konfirmasi untuk berjaga-jaga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アレルギーだらけです。",
+            "romaji": "Arerugii darake desu.",
+            "translation": "Penuh alergi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ご丁寧にありがとうございます。準備ができ次第、お持ちします。",
+          "romaji": "Goteinei ni arigatou gozaimasu. Junbi ga deki shidai, omochi shimasu.",
+          "translation": "Terima kasih atas kehati-hatiannya. Begitu siap, akan saya antarkan."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pesan_permintaan_khusus_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "よろしくお願いします、楽しみにしています。",
+            "romaji": "Yoroshiku onegaishimasu, tanoshimi ni shite imasu.",
+            "translation": "Mohon bantuannya, saya tunggu-tunggu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "急がなくて結構です。",
+            "romaji": "Isoganakute kekkou desu.",
+            "translation": "Tidak usah buru-buru.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お待たせいたしました、こちらでございます。",
+          "romaji": "Omatase itashimashita, kochira de gozaimasu.",
+          "translation": "Maaf menunggu lama, ini pesanannya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pesan_permintaan_khusus_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、いただきます。",
+            "romaji": "Arigatou gozaimasu, itadakimasu.",
+            "translation": "Terima kasih, saya makan dulu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "頼んでいません。",
+            "romaji": "Tanonde imasen.",
+            "translation": "Saya tidak memesan ini.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_keluhkan_kualitas_makanan_n3",
+    "title": "Mengeluhkan Kualitas Makanan yang Disajikan",
+    "category": "restoran_n3",
+    "description": "Kamu mengeluhkan rasa makanan yang terasa hambar ke pelayan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お料理はいかがでしょうか。",
+          "romaji": "Oryouri wa ikaga deshou ka.",
+          "translation": "Bagaimana makanannya?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_keluhkan_kualitas_makanan_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "実は、少し味が薄いように感じたのですが。",
+            "romaji": "Jitsu wa, sukoshi aji ga usui you ni kanjita no desu ga.",
+            "translation": "Sebenarnya, saya merasa rasanya agak hambar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "とても美味しかったです。",
+            "romaji": "Totemo oishikatta desu.",
+            "translation": "Sangat enak.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "申し訳ございません、すぐに確認いたします。",
+          "romaji": "Moushiwake gozaimasen, sugu ni kakunin itashimasu.",
+          "translation": "Mohon maaf, akan segera kami periksa."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_keluhkan_kualitas_makanan_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お手数をおかけしますが、よろしくお願いします。",
+            "romaji": "Otesuu wo okake shimasu ga, yoroshiku onegaishimasu.",
+            "translation": "Maaf merepotkan, mohon bantuannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もういいです、大丈夫です。",
+            "romaji": "Mou ii desu, daijoubu desu.",
+            "translation": "Sudah tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お待たせして申し訳ございません、作り直させていただきました。",
+          "romaji": "Omatase shite moushiwake gozaimasen, tsukurinaosasete itadakimashita.",
+          "translation": "Maaf membuat menunggu, kami sudah buatkan ulang."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_keluhkan_kualitas_makanan_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "わざわざありがとうございます。",
+            "romaji": "Wazawaza arigatou gozaimasu.",
+            "translation": "Terima kasih sudah repot-repot.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "面倒なことをさせてしまいましたね。",
+            "romaji": "Mendou na koto wo sasete shimaimashita ne.",
+            "translation": "Malah jadi merepotkan ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度はいかがですか。",
+          "romaji": "Kondo wa ikaga desu ka.",
+          "translation": "Yang ini bagaimana?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_keluhkan_kualitas_makanan_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "今度は、ちょうど良い味だと思います。",
+            "romaji": "Kondo wa, choudo ii aji da to omoimasu.",
+            "translation": "Yang ini, menurut saya pas rasanya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "これも薄いと思います。",
+            "romaji": "Kore mo usui to omoimasu.",
+            "translation": "Ini juga hambar menurut saya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それは何よりです、ご迷惑をおかけしました。",
+          "romaji": "Sore wa nani yori desu, gomeiwaku wo okake shimashita.",
+          "translation": "Syukurlah, mohon maaf atas ketidaknyamanannya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_keluhkan_kualitas_makanan_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいえ、丁寧に対応していただき感謝しています。",
+            "romaji": "Iie, teinei ni taiou shite itadaki kansha shite imasu.",
+            "translation": "Tidak, saya berterima kasih atas respons yang teliti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう二度と来ません。",
+            "romaji": "Mou nidoto kimasen.",
+            "translation": "Tidak akan pernah kembali lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jelaskan_alergi_detail_n3",
+    "title": "Menjelaskan Alergi Makanan secara Detail",
+    "category": "restoran_n3",
+    "description": "Kamu menjelaskan alergi makanan secara detail ke pelayan restoran.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "アレルギーをお持ちでしたら、事前にお伺いしております。",
+          "romaji": "Arerugii wo omochi deshitara, jizen ni oukagai shite orimasu.",
+          "translation": "Kalau ada alergi, kami tanyakan dulu sebelumnya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_jelaskan_alergi_detail_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、甲殻類のアレルギーがありまして、少し気をつけていただきたいんです。",
+            "romaji": "Hai, koukakurui no arerugii ga arimashite, sukoshi ki wo tsukete itadakitai n desu.",
+            "translation": "Iya, saya punya alergi kerang-kerangan, jadi mohon sedikit diperhatikan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アレルギーは特にございません。",
+            "romaji": "Arerugii wa toku ni gozaimasen.",
+            "translation": "Tidak ada alergi khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "承知しました。具体的にはどのような症状が出るんですか。",
+          "romaji": "Shouchi shimashita. Gutaiteki ni wa dono you na shoujou ga deru n desu ka.",
+          "translation": "Mengerti. Secara konkret gejalanya seperti apa?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_jelaskan_alergi_detail_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "口の中が痒くなったり、腫れたりすることがあります。",
+            "romaji": "Kuchi no naka ga kayuku nattari, harettari suru koto ga arimasu.",
+            "translation": "Kadang mulut jadi gatal atau bengkak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何の症状も出たことがありません。",
+            "romaji": "Nan no shoujou mo deta koto ga arimasen.",
+            "translation": "Belum pernah muncul gejala apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それは大変ですね。調理器具も別にしたほうがよろしいですか。",
+          "romaji": "Sore wa taihen desu ne. Chouri kigu mo betsu ni shita hou ga yoroshii desu ka.",
+          "translation": "Itu berat ya. Alat masaknya juga sebaiknya dipisah?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_jelaskan_alergi_detail_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "できれば、そうしていただけると安心です。",
+            "romaji": "Dekireba, sou shite itadakeru to anshin desu.",
+            "translation": "Kalau bisa, akan lebih tenang kalau begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "そこまでしなくて大丈夫です。",
+            "romaji": "Soko made shinakute daijoubu desu.",
+            "translation": "Sampai segitu tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "分かりました、厨房にも共有しておきます。",
+          "romaji": "Wakarimashita, chuubou ni mo kyouyuu shite okimasu.",
+          "translation": "Mengerti, akan saya sampaikan juga ke dapur."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_jelaskan_alergi_detail_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、助かります。",
+            "romaji": "Arigatou gozaimasu, tasukarimasu.",
+            "translation": "Terima kasih, sangat membantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "共有しなくていいです。",
+            "romaji": "Kyouyuu shinakute ii desu.",
+            "translation": "Tidak usah disampaikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かあれば、すぐにお呼びください。",
+          "romaji": "Nanika areba, sugu ni oyobi kudasai.",
+          "translation": "Kalau ada apa-apa, segera panggil kami."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_jelaskan_alergi_detail_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、そうさせていただきます。",
+            "romaji": "Hai, sou sasete itadakimasu.",
+            "translation": "Baik, akan saya lakukan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も呼ばないと思います。",
+            "romaji": "Nanimo yobanai to omoimasu.",
+            "translation": "Kurasa tidak akan memanggil apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_rekomendasi_restoran_teman_n3",
+    "title": "Merekomendasikan Restoran ke Teman",
+    "category": "restoran_n3",
+    "description": "Kamu merekomendasikan restoran baru yang bagus ke teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どこかおすすめのレストランある？",
+          "romaji": "Doko ka osusume no resutoran aru?",
+          "translation": "Ada restoran yang direkomendasikan?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_rekomendasi_restoran_teman_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "あるよ、駅前にできた店が評判いいらしいよ。",
+            "romaji": "Aru yo, ekimae ni dekita mise ga hyouban ii rashii yo.",
+            "translation": "Ada, katanya restoran yang baru buka di depan stasiun reputasinya bagus.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "おすすめできる店はないよ。",
+            "romaji": "Osusume dekiru mise wa nai yo.",
+            "translation": "Tidak ada yang bisa direkomendasikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな料理を出す店なの？",
+          "romaji": "Donna ryouri wo dasu mise na no?",
+          "translation": "Restoran yang menyajikan masakan apa?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_rekomendasi_restoran_teman_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "創作料理を中心に出しているみたいだよ。",
+            "romaji": "Sousaku ryouri wo chuushin ni dashite iru mitai da yo.",
+            "translation": "Sepertinya menyajikan masakan kreasi sebagai utamanya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何を出しているか分からないよ。",
+            "romaji": "Nani wo dashite iru ka wakaranai yo.",
+            "translation": "Tidak tahu menyajikan apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "値段はどうなんだろう。",
+          "romaji": "Nedan wa dou nan darou.",
+          "translation": "Harganya kira-kira bagaimana ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_rekomendasi_restoran_teman_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そこまで高くないわりに、質がいいらしいよ。",
+            "romaji": "Soko made takakunai wari ni, shitsu ga ii rashii yo.",
+            "translation": "Katanya kualitasnya bagus meski tidak terlalu mahal.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "かなり高いから、おすすめしないよ。",
+            "romaji": "Kanari takai kara, osusume shinai yo.",
+            "translation": "Cukup mahal jadi tidak direkomendasikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度一緒に行かない？",
+          "romaji": "Kondo issho ni ikanai?",
+          "translation": "Mau pergi bareng lain kali tidak?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_rekomendasi_restoran_teman_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいね、予約しておくよ。",
+            "romaji": "Ii ne, yoyaku shite oku yo.",
+            "translation": "Boleh, akan aku pesan tempat dulu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "行きたくないな。",
+            "romaji": "Ikitakunai na.",
+            "translation": "Tidak mau pergi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみにしてる。",
+          "romaji": "Tanoshimi ni shiteru.",
+          "translation": "Aku tunggu-tunggu."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_rekomendasi_restoran_teman_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、期待していてね。",
+            "romaji": "Un, kitai shite ite ne.",
+            "translation": "Iya, tunggu saja dengan harapan tinggi ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "期待しないでね。",
+            "romaji": "Kitai shinaide ne.",
+            "translation": "Jangan berharap ya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_restoran_mewah_n3",
+    "title": "Membicarakan Pengalaman Makan di Restoran Mewah",
+    "category": "restoran_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman makan di restoran mewah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "高級レストランに行ったことがあるって聞いたけど、どうだった？",
+          "romaji": "Koukyuu resutoran ni itta koto ga aru tte kiita kedo, dou datta?",
+          "translation": "Kudengar pernah pergi ke restoran mewah, gimana?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_restoran_mewah_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、値段に見合うだけの価値があったと思うよ。",
+            "romaji": "Un, nedan ni miau dake no kachi ga atta to omou yo.",
+            "translation": "Iya, kurasa memang sepadan dengan harganya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然価値がなかったと思うよ。",
+            "romaji": "Zenzen kachi ga nakatta to omou yo.",
+            "translation": "Kurasa sama sekali tidak sepadan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "特にどんな料理が印象に残ってる？",
+          "romaji": "Toku ni donna ryouri ga inshou ni nokotteru?",
+          "translation": "Masakan apa khususnya yang membekas?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_restoran_mewah_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "シェフが目の前で仕上げてくれた一品が忘れられないな。",
+            "romaji": "Shefu ga menomae de shiagete kureta ippin ga wasurerarenai na.",
+            "translation": "Satu hidangan yang diselesaikan sang chef di depan mataku tidak terlupakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どの料理も印象に残っていないな。",
+            "romaji": "Dono ryouri mo inshou ni nokotte inai na.",
+            "translation": "Tidak ada masakan yang membekas.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "サービスも良かった？",
+          "romaji": "Saabisu mo yokatta?",
+          "translation": "Pelayanannya juga bagus?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_restoran_mewah_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、細やかな気配りが感じられたよ。",
+            "romaji": "Un, komayaka na kikubari ga kanjirareta yo.",
+            "translation": "Iya, terasa perhatian yang detail.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "サービスは雑だったよ。",
+            "romaji": "Saabisu wa zatsu datta yo.",
+            "translation": "Pelayanannya asal-asalan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "特別な日にまた行きたいね。",
+          "romaji": "Tokubetsu na hi ni mata ikitai ne.",
+          "translation": "Ingin pergi lagi di hari spesial ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_restoran_mewah_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、記念日にはぴったりだと思う。",
+            "romaji": "Sou da ne, kinenbi ni wa pittari da to omou.",
+            "translation": "Betul juga, kurasa pas untuk hari peringatan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう二度と行きたくないな。",
+            "romaji": "Mou nidoto ikitakunai na.",
+            "translation": "Tidak mau pergi lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみだね。",
+          "romaji": "Tanoshimi da ne.",
+          "translation": "Tidak sabar ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_restoran_mewah_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、今から楽しみにしてる。",
+            "romaji": "Un, ima kara tanoshimi ni shiteru.",
+            "translation": "Iya, dari sekarang sudah tidak sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に楽しみじゃないよ。",
+            "romaji": "Betsu ni tanoshimi janai yo.",
+            "translation": "Tidak begitu tidak sabar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_preferensi_makanan_rumit_n3",
+    "title": "Menjelaskan Preferensi Makanan yang Rumit",
+    "category": "restoran_n3",
+    "description": "Kamu menjelaskan preferensi makananmu yang agak rumit ke teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "苦手な食べ物とかあるの？",
+          "romaji": "Nigate na tabemono toka aru no?",
+          "translation": "Ada makanan yang kurang suka?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_preferensi_makanan_rumit_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "実は、辛い物は好きな一方で、酸っぱい物は苦手なんだ。",
+            "romaji": "Jitsu wa, karai mono wa suki na ippou de, suppai mono wa nigate nan da.",
+            "translation": "Sebenarnya, di satu sisi suka pedas, tapi kurang suka asam.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何でも食べられるよ。",
+            "romaji": "Nan demo taberareru yo.",
+            "translation": "Bisa makan apa saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それは珍しい組み合わせだね。",
+          "romaji": "Sore wa mezurashii kumiawase da ne.",
+          "translation": "Itu kombinasi yang jarang ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_preferensi_makanan_rumit_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "よく言われるよ、自分でも不思議に思うことがある。",
+            "romaji": "Yoku iwareru yo, jibun demo fushigi ni omou koto ga aru.",
+            "translation": "Sering dibilang begitu, aku sendiri kadang merasa aneh juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然珍しくないと思うよ。",
+            "romaji": "Zenzen mezurashikunai to omou yo.",
+            "translation": "Kurasa sama sekali tidak jarang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "子供の頃からそうだったの？",
+          "romaji": "Kodomo no koro kara sou datta no?",
+          "translation": "Sejak kecil sudah begitu?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_preferensi_makanan_rumit_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、小さい頃からその傾向があったみたいだよ。",
+            "romaji": "Un, chiisai koro kara sono keikou ga atta mitai da yo.",
+            "translation": "Iya, sepertinya kecenderungan itu sudah ada sejak kecil.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "大人になってから急に変わったんだ。",
+            "romaji": "Otona ni natte kara kyuu ni kawatta n da.",
+            "translation": "Berubah tiba-tiba setelah dewasa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "レストラン選びも大変そうだね。",
+          "romaji": "Resutoran erabi mo taihen sou da ne.",
+          "translation": "Kelihatannya susah juga milih restoran ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_preferensi_makanan_rumit_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうなんだよ、メニューを見比べるのに時間がかかるんだ。",
+            "romaji": "Sou nan da yo, menyuu wo mikuraberu no ni jikan ga kakaru n da.",
+            "translation": "Betul, jadi butuh waktu membandingkan menu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然大変じゃないよ。",
+            "romaji": "Zenzen taihen janai yo.",
+            "translation": "Sama sekali tidak susah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度一緒に選んであげるよ。",
+          "romaji": "Kondo issho ni erande ageru yo.",
+          "translation": "Lain kali aku bantu pilihkan."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_preferensi_makanan_rumit_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、助かるよ。",
+            "romaji": "Arigatou, tasukaru yo.",
+            "translation": "Terima kasih, sangat membantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一人で選べるから大丈夫だよ。",
+            "romaji": "Hitori de eraberu kara daijoubu da yo.",
+            "translation": "Bisa memilih sendiri jadi tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_etika_makan_restoran_jepang_n3",
+    "title": "Mendiskusikan Etika Makan di Restoran Jepang",
+    "category": "restoran_n3",
+    "description": "Kamu dan teman mendiskusikan etika makan yang benar di restoran Jepang.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "日本のレストランでのマナーって、意外と細かいよね。",
+          "romaji": "Nihon no resutoran de no manaa tte, igai to komakai yo ne.",
+          "translation": "Etika di restoran Jepang itu, ternyata cukup detail ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_etika_makan_restoran_jepang_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、箸の使い方一つとっても、気をつけることが多いよね。",
+            "romaji": "Un, hashi no tsukaikata hitotsu tottemo, ki wo tsukeru koto ga ooi yo ne.",
+            "translation": "Iya, cara pakai sumpit saja, banyak hal yang harus diperhatikan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "箸の使い方に決まりなんてないと思うよ。",
+            "romaji": "Hashi no tsukaikata ni kimari nante nai to omou yo.",
+            "translation": "Kupikir cara pakai sumpit tidak ada aturannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "箸を料理に突き刺すのは良くないんだよね。",
+          "romaji": "Hashi wo ryouri ni tsukisasu no wa yokunai n da yo ne.",
+          "translation": "Menusuk makanan dengan sumpit itu tidak baik ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_etika_makan_restoran_jepang_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、それは「刺し箸」って言って、避けるべきマナーなんだ。",
+            "romaji": "Un, sore wa \"sashibashi\" tte itte, sakeru beki manaa nan da.",
+            "translation": "Iya, itu disebut 'sashi-bashi', etika yang harus dihindari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは全く問題ないマナーだよ。",
+            "romaji": "Sore wa mattaku mondai nai manaa da yo.",
+            "translation": "Itu etika yang sama sekali tidak masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "他にも気をつけることある？",
+          "romaji": "Hoka ni mo ki wo tsukeru koto aru?",
+          "translation": "Ada hal lain yang perlu diperhatikan?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_etika_makan_restoran_jepang_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お茶碗を持たずに食べるのも、行儀が悪いとされているよ。",
+            "romaji": "Ochawan wo motazu ni taberu no mo, gyougi ga warui to sarete iru yo.",
+            "translation": "Makan tanpa memegang mangkuk juga dianggap sopan santun yang buruk.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "お茶碗は置いたまま食べるのが普通だよ。",
+            "romaji": "Ochawan wa oita mama taberu no ga futsuu da yo.",
+            "translation": "Makan dengan mangkuk diletakkan itu biasa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "知らないと恥をかいてしまいそうだね。",
+          "romaji": "Shiranai to haji wo kaite shimaisou da ne.",
+          "translation": "Kalau tidak tahu, sepertinya bisa jadi malu ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_etika_makan_restoran_jepang_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、事前に調べておいて良かったよ。",
+            "romaji": "Sou da ne, jizen ni shirabete oite yokatta yo.",
+            "translation": "Betul juga, bagus sudah cari tahu duluan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "調べる必要は全くないと思うよ。",
+            "romaji": "Shiraberu hitsuyou wa mattaku nai to omou yo.",
+            "translation": "Kupikir sama sekali tidak perlu dicari tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "マナーを守れば、気持ちよく食事できるね。",
+          "romaji": "Manaa wo mamoreba, kimochiyoku shokuji dekiru ne.",
+          "translation": "Kalau menjaga etika, jadi bisa makan dengan nyaman ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_etika_makan_restoran_jepang_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どうでもいいと思う。",
+            "romaji": "Dou demo ii to omou.",
+            "translation": "Kupikir terserah saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pengalaman_buruk_restoran_n3",
+    "title": "Menceritakan Pengalaman Buruk di Restoran",
+    "category": "restoran_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman buruk pernah menunggu lama di restoran.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "前に嫌な経験をしたレストランがあるって言ってたよね。",
+          "romaji": "Mae ni iya na keiken wo shita resutoran ga aru tte itteta yo ne.",
+          "translation": "Katanya pernah punya pengalaman tidak enak di sebuah restoran ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pengalaman_buruk_restoran_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、注文したものがなかなか来なくて、困ったことがあるんだ。",
+            "romaji": "Un, chuumon shita mono ga nakanaka konakute, komatta koto ga aru n da.",
+            "translation": "Iya, pernah kesulitan karena pesanan lama sekali tidak datang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いつもすぐに料理が来て満足しているよ。",
+            "romaji": "Itsumo sugu ni ryouri ga kite manzoku shite iru yo.",
+            "translation": "Selalu cepat datang dan puas.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どのくらい待たされたの？",
+          "romaji": "Dono kurai matasareta no?",
+          "translation": "Berapa lama dibuat menunggu?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pengalaman_buruk_restoran_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "一時間近く待たされて、さすがに諦めかけたよ。",
+            "romaji": "Ichijikan chikaku matasarete, sasuga ni akiramekaketa yo.",
+            "translation": "Dibuat menunggu hampir satu jam, hampir saja menyerah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "五分ぐらいで来たよ。",
+            "romaji": "Gofun gurai de kita yo.",
+            "translation": "Datang sekitar lima menit.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お店の対応はどうだった？",
+          "romaji": "Omise no taiou wa dou datta?",
+          "translation": "Respons dari pihak restoran gimana?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pengalaman_buruk_restoran_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "謝罪はあったものの、あまり誠意を感じなかったな。",
+            "romaji": "Shazai wa atta mono no, amari seii wo kanjinakatta na.",
+            "translation": "Ada permintaan maaf, tapi tidak begitu merasakan ketulusan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "とても誠実に対応してくれたよ。",
+            "romaji": "Totemo seijitsu ni taiou shite kureta yo.",
+            "translation": "Mereka merespons dengan sangat tulus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それ以来、その店には行ってないの？",
+          "romaji": "Sore irai, sono mise ni wa itte nai no?",
+          "translation": "Sejak itu, tidak pernah pergi ke situ lagi?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pengalaman_buruk_restoran_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、二度と行く気にはなれないな。",
+            "romaji": "Un, nidoto iku ki ni wa narenai na.",
+            "translation": "Iya, tidak muncul niat untuk pergi lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "また普通に通っているよ。",
+            "romaji": "Mata futsuu ni kayotte iru yo.",
+            "translation": "Masih rutin pergi ke sana seperti biasa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それは残念だったね。",
+          "romaji": "Sore wa zannen datta ne.",
+          "translation": "Itu disayangkan ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pengalaman_buruk_restoran_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、期待していただけに残念だったよ。",
+            "romaji": "Un, kitai shite ita dake ni zannen datta yo.",
+            "translation": "Iya, justru karena berharap jadi kecewa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に期待していなかったから平気だよ。",
+            "romaji": "Betsu ni kitai shite inakatta kara heiki da yo.",
+            "translation": "Karena tidak berharap jadi biasa saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pesan_tempat_acara_khusus_n3",
+    "title": "Memesan Tempat untuk Acara Khusus",
+    "category": "restoran_n3",
+    "description": "Kamu menelepon restoran untuk memesan ruang privat untuk acara ulang tahun.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お電話ありがとうございます、ご予約でしょうか。",
+          "romaji": "Odenwa arigatou gozaimasu, goyoyaku deshou ka.",
+          "translation": "Terima kasih sudah menelepon, mau reservasi?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pesan_tempat_acara_khusus_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、誕生日のお祝いに個室を利用したいのですが。",
+            "romaji": "Hai, tanjoubi no oiwai ni koshitsu wo riyou shitai no desu ga.",
+            "translation": "Iya, saya ingin memakai ruang privat untuk merayakan ulang tahun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、予約はしません。",
+            "romaji": "Iie, yoyaku wa shimasen.",
+            "translation": "Tidak, tidak akan reservasi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "かしこまりました。何名様でご利用でしょうか。",
+          "romaji": "Kashikomarimashita. Nanmeisama de goriyou deshou ka.",
+          "translation": "Baik. Untuk berapa orang?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pesan_tempat_acara_khusus_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "八名でお願いしたいと思っております。",
+            "romaji": "Hachimei de onegaishitai to omotte orimasu.",
+            "translation": "Saya berpikir mau memesan untuk delapan orang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一人で利用したいです。",
+            "romaji": "Hitori de riyou shitai desu.",
+            "translation": "Ingin memakai sendirian.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かご要望はございますか。",
+          "romaji": "Nanika goyoubou wa gozaimasu ka.",
+          "translation": "Ada permintaan khusus?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pesan_tempat_acara_khusus_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "可能であれば、ケーキの持ち込みをお願いしたいのですが。",
+            "romaji": "Kanou de areba, keeki no mochikomi wo onegaishitai no desu ga.",
+            "translation": "Kalau memungkinkan, saya ingin minta izin membawa kue sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に要望はございません。",
+            "romaji": "Toku ni youbou wa gozaimasen.",
+            "translation": "Tidak ada permintaan khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "承知しました、持ち込み料はかかりますが、よろしいですか。",
+          "romaji": "Shouchi shimashita, mochikomiryou wa kakarimasu ga, yoroshii desu ka.",
+          "translation": "Mengerti, akan dikenakan biaya bawa sendiri, apakah tidak apa-apa?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pesan_tempat_acara_khusus_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、それで構いません。",
+            "romaji": "Hai, sore de kamaimasen.",
+            "translation": "Iya, itu tidak masalah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それなら、持ち込みはやめます。",
+            "romaji": "Sore nara, mochikomi wa yamemasu.",
+            "translation": "Kalau begitu, batal bawa sendiri.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "では、当日を楽しみにお待ちしております。",
+          "romaji": "Dewa, toujitsu wo tanoshimi ni omachi shite orimasu.",
+          "translation": "Kalau begitu, kami tunggu dengan senang hati hari-H nanti."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_pesan_tempat_acara_khusus_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、よろしくお願いします。",
+            "romaji": "Arigatou gozaimasu, yoroshiku onegaishimasu.",
+            "translation": "Terima kasih, mohon bantuannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "やっぱりキャンセルします。",
+            "romaji": "Yappari kyanseru shimasu.",
+            "translation": "Jadi batalkan saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_alasan_vegetarian_n3",
+    "title": "Menjelaskan Alasan Menjadi Vegetarian",
+    "category": "restoran_n3",
+    "description": "Kamu menjelaskan ke teman alasan menjadi vegetarian.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ベジタリアンになったきっかけって何だったの？",
+          "romaji": "Bejitarian ni natta kikkake tte nan datta no?",
+          "translation": "Apa yang jadi pemicu jadi vegetarian?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_alasan_vegetarian_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "健康を意識するようになったことがきっかけなんだ。",
+            "romaji": "Kenkou wo ishiki suru you ni natta koto ga kikkake nan da.",
+            "translation": "Pemicunya adalah karena jadi lebih sadar kesehatan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にきっかけはないんだ。",
+            "romaji": "Toku ni kikkake wa nai n da.",
+            "translation": "Tidak ada pemicu khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "完全に肉を断っているの？",
+          "romaji": "Kanzen ni niku wo tatte iru no?",
+          "translation": "Benar-benar berhenti total daging?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_alasan_vegetarian_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いや、断つというよりは、量を減らすようにしているんだ。",
+            "romaji": "Iya, tatsu to iu yori wa, ryou wo herasu you ni shite iru n da.",
+            "translation": "Tidak, bukannya berhenti total, lebih ke mengurangi jumlahnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、一切食べていないよ。",
+            "romaji": "Un, issai tabete inai yo.",
+            "translation": "Iya, sama sekali tidak makan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "外食する時は困らない？",
+          "romaji": "Gaishoku suru toki wa komaranai?",
+          "translation": "Waktu makan di luar tidak kesulitan?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_alasan_vegetarian_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "選択肢が限られがちで、正直困ることもあるよ。",
+            "romaji": "Sentakushi ga kagiraregachi de, shoujiki komaru koto mo aru yo.",
+            "translation": "Pilihannya cenderung terbatas, jujur kadang kesulitan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く困ったことはないよ。",
+            "romaji": "Mattaku komatta koto wa nai yo.",
+            "translation": "Sama sekali tidak pernah kesulitan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "栄養バランスは大丈夫なの？",
+          "romaji": "Eiyou baransu wa daijoubu na no?",
+          "translation": "Keseimbangan gizinya tidak apa-apa?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_alasan_vegetarian_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "意識して工夫しているから、今のところ問題ないよ。",
+            "romaji": "Ishiki shite kufuu shite iru kara, ima no tokoro mondai nai yo.",
+            "translation": "Karena aku sengaja usahakan, sejauh ini tidak masalah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く気にしていないよ。",
+            "romaji": "Mattaku ki ni shite inai yo.",
+            "translation": "Sama sekali tidak dipedulikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "体調はどう変わった？",
+          "romaji": "Taichou wa dou kawatta?",
+          "translation": "Kondisi tubuh berubah bagaimana?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_alasan_vegetarian_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "前より調子がいいと感じているよ。",
+            "romaji": "Mae yori choushi ga ii to kanjite iru yo.",
+            "translation": "Aku rasakan kondisinya lebih baik dari sebelumnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "前より悪くなったと感じているよ。",
+            "romaji": "Mae yori waruku natta to kanjite iru yo.",
+            "translation": "Aku rasakan jadi lebih buruk dari sebelumnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tren_kuliner_terkini_n3",
+    "title": "Membicarakan Tren Kuliner Terkini",
+    "category": "restoran_n3",
+    "description": "Kamu membicarakan tren kuliner terkini dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、どんな食のトレンドが流行ってるか知ってる？",
+          "romaji": "Saikin, donna shoku no torendo ga hayatteru ka shitteru?",
+          "translation": "Belakangan, tahu tren kuliner apa yang lagi populer?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_tren_kuliner_terkini_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "植物性の代替食品が注目を集めているらしいよ。",
+            "romaji": "Shokubutsusei no daitai shokuhin ga chuumoku wo atsumete iru rashii yo.",
+            "translation": "Katanya makanan alternatif nabati sedang menarik perhatian.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に流行っているものはないと思うよ。",
+            "romaji": "Toku ni hayatte iru mono wa nai to omou yo.",
+            "translation": "Kupikir tidak ada yang lagi populer.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうしてそんなに注目されているんだろう。",
+          "romaji": "Doushite sonna ni chuumoku sarete iru n darou.",
+          "translation": "Kenapa sampai begitu banyak perhatian ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_tren_kuliner_terkini_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "環境への配慮から選ぶ人が増えているみたいだよ。",
+            "romaji": "Kankyou e no hairyo kara erabu hito ga fuete iru mitai da yo.",
+            "translation": "Sepertinya orang yang memilih karena kepedulian lingkungan makin banyak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "味が普通の食品より美味しいからだと思うよ。",
+            "romaji": "Aji ga futsuu no shokuhin yori oishii kara da to omou yo.",
+            "translation": "Kupikir karena rasanya lebih enak dari makanan biasa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "実際に食べてみたことある？",
+          "romaji": "Jissai ni tabete mita koto aru?",
+          "translation": "Pernah coba makan langsung?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_tren_kuliner_terkini_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、思っていたより美味しくて驚いたよ。",
+            "romaji": "Un, omotte ita yori oishikute odoroita yo.",
+            "translation": "Iya, ternyata lebih enak dari yang kukira, sampai kaget.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一度も食べたことないよ。",
+            "romaji": "Ichido mo tabeta koto nai yo.",
+            "translation": "Belum pernah coba sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度、専門店に行ってみようか。",
+          "romaji": "Kondo, senmonten ni itte miyou ka.",
+          "translation": "Lain kali, coba pergi ke toko khusus yuk."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_tren_kuliner_terkini_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいね、行ってみたいと思ってたところなんだ。",
+            "romaji": "Ii ne, itte mitai to omotteta tokoro nan da.",
+            "translation": "Boleh, aku juga baru saja berpikir mau coba.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "あまり興味ないな。",
+            "romaji": "Amari kyoumi nai na.",
+            "translation": "Kurang tertarik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "楽しみだね。",
+          "romaji": "Tanoshimi da ne.",
+          "translation": "Tidak sabar ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_tren_kuliner_terkini_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、新しい発見がありそうで楽しみだよ。",
+            "romaji": "Un, atarashii hakken ga arisou de tanoshimi da yo.",
+            "translation": "Iya, sepertinya akan ada penemuan baru, tidak sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に楽しみじゃないよ。",
+            "romaji": "Betsu ni tanoshimi janai yo.",
+            "translation": "Tidak begitu tidak sabar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_negosiasi_perubahan_pesanan_n3",
+    "title": "Menegosiasikan Perubahan Pesanan",
+    "category": "restoran_n3",
+    "description": "Kamu meminta pelayan mengubah salah satu item pesanan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ご注文はこちらでよろしいでしょうか。",
+          "romaji": "Gochuumon wa kochira de yoroshii deshou ka.",
+          "translation": "Pesanannya ini sudah benar?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_negosiasi_perubahan_pesanan_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "すみません、やはり一品変更させていただいてもよろしいですか。",
+            "romaji": "Sumimasen, yahari ippin henkou sasete itadaite mo yoroshii desu ka.",
+            "translation": "Maaf, bisakah saya ubah satu item?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "これで問題ありません。",
+            "romaji": "Kore de mondai arimasen.",
+            "translation": "Ini tidak masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もちろんです、どちらに変更されますか。",
+          "romaji": "Mochiron desu, dochira ni henkou saremasu ka.",
+          "translation": "Tentu, mau diubah menjadi apa?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_negosiasi_perubahan_pesanan_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "こちらのパスタに変えていただけますか。",
+            "romaji": "Kochira no pasuta ni kaete itadakemasu ka.",
+            "translation": "Bisakah diubah menjadi pasta ini?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も変えたくありません。",
+            "romaji": "Nanimo kaetakunai desu.",
+            "translation": "Tidak mau mengubah apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "承知しました。少々お時間をいただくかもしれませんが、よろしいですか。",
+          "romaji": "Shouchi shimashita. Shoushou ojikan wo itadaku kamoshiremasen ga, yoroshii desu ka.",
+          "translation": "Mengerti. Mungkin akan makan sedikit waktu, apakah tidak apa-apa?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_negosiasi_perubahan_pesanan_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、大丈夫です、お待ちします。",
+            "romaji": "Hai, daijoubu desu, omachi shimasu.",
+            "translation": "Iya, tidak apa-apa, saya akan tunggu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それなら、変更はやめます。",
+            "romaji": "Sore nara, henkou wa yamemasu.",
+            "translation": "Kalau begitu, batal diubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "追加料金が発生する場合がございますが。",
+          "romaji": "Tsuika ryoukin ga hassei suru baai ga gozaimasu ga.",
+          "translation": "Ada kemungkinan timbul biaya tambahan."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_negosiasi_perubahan_pesanan_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "承知しました、問題ありません。",
+            "romaji": "Shouchi shimashita, mondai arimasen.",
+            "translation": "Mengerti, tidak masalah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それは困ります、元のままでいいです。",
+            "romaji": "Sore wa komarimasu, moto no mama de ii desu.",
+            "translation": "Itu menyulitkan, yang semula saja tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Pelayan",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "少々お待ちくださいませ。",
+          "romaji": "Shoushou omachi kudasaimase.",
+          "translation": "Mohon tunggu sebentar."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_negosiasi_perubahan_pesanan_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、よろしくお願いします。",
+            "romaji": "Hai, yoroshiku onegaishimasu.",
+            "translation": "Baik, mohon bantuannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "早くしてください。",
+            "romaji": "Hayaku shite kudasai.",
+            "translation": "Tolong cepat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_perbedaan_masakan_daerah_n3",
+    "title": "Menjelaskan Perbedaan Masakan Daerah",
+    "category": "restoran_n3",
+    "description": "Kamu menjelaskan perbedaan masakan daerah asalmu dengan tempat tinggal sekarang.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "出身地の料理と、今住んでる場所の料理って、結構違うの？",
+          "romaji": "Shusshinchi no ryouri to, ima sunderu basho no ryouri tte, kekkou chigau no?",
+          "translation": "Masakan daerah asalmu dan tempat tinggal sekarang, cukup beda?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_perbedaan_masakan_daerah_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、味付けからして全然違うんだ。",
+            "romaji": "Un, ajitsuke kara shite zenzen chigau n da.",
+            "translation": "Iya, dari bumbunya saja sudah beda sekali.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く同じだと思うよ。",
+            "romaji": "Mattaku onaji da to omou yo.",
+            "translation": "Kupikir sama persis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんなところが違うの？",
+          "romaji": "Donna tokoro ga chigau no?",
+          "translation": "Bagian mana yang beda?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_perbedaan_masakan_daerah_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "こっちの方が味が濃い一方で、うちの方はあっさりしているんだ。",
+            "romaji": "Kocchi no hou ga aji ga koi ippou de, uchi no hou wa assari shite iru n da.",
+            "translation": "Di sini rasanya lebih kental, sedangkan di daerahku lebih ringan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どちらも全く同じ濃さだよ。",
+            "romaji": "Dochira mo mattaku onaji kosa da yo.",
+            "translation": "Keduanya sama persis kepekatannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最初は戸惑った？",
+          "romaji": "Saisho wa tomadotta?",
+          "translation": "Awalnya kebingungan?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_perbedaan_masakan_daerah_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、慣れるまでには、それなりに時間がかかったよ。",
+            "romaji": "Un, nareru made ni wa, sore nari ni jikan ga kakatta yo.",
+            "translation": "Iya, sampai terbiasa, butuh waktu yang cukup lama.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然戸惑わなかったよ。",
+            "romaji": "Zenzen tomadowanakatta yo.",
+            "translation": "Sama sekali tidak kebingungan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今では両方好きになった？",
+          "romaji": "Ima dewa ryouhou suki ni natta?",
+          "translation": "Sekarang jadi suka keduanya?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_perbedaan_masakan_daerah_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、それぞれの良さが分かるようになったよ。",
+            "romaji": "Un, sorezore no yosa ga wakaru you ni natta yo.",
+            "translation": "Iya, jadi bisa memahami kelebihan masing-masing.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "やっぱりどちらも好きになれないよ。",
+            "romaji": "Yappari dochira mo suki ni narenai yo.",
+            "translation": "Tetap saja tidak bisa suka keduanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それはいいことだね。",
+          "romaji": "Sore wa ii koto da ne.",
+          "translation": "Itu hal yang bagus ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_perbedaan_masakan_daerah_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、視野が広がった気がするよ。",
+            "romaji": "Un, shiya ga hirogatta ki ga suru yo.",
+            "translation": "Iya, rasanya wawasanku jadi luas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に良いことだとは思わないよ。",
+            "romaji": "Betsu ni ii koto da to wa omowanai yo.",
+            "translation": "Kupikir bukan hal yang bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kerja_paruh_waktu_restoran_n3",
+    "title": "Mendiskusikan Pengalaman Kerja Paruh Waktu di Restoran",
+    "category": "restoran_n3",
+    "description": "Kamu bercerita ke teman tentang pengalaman kerja paruh waktu di restoran.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "レストランでバイトしてたことあるんだって？",
+          "romaji": "Resutoran de baito shiteta koto aru n datte?",
+          "translation": "Katanya pernah kerja paruh waktu di restoran ya?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_kerja_paruh_waktu_restoran_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、学生時代に二年ほど働いていたんだ。",
+            "romaji": "Un, gakusei jidai ni ninen hodo hataraite ita n da.",
+            "translation": "Iya, waktu masih mahasiswa aku kerja sekitar dua tahun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一度も働いたことないよ。",
+            "romaji": "Ichido mo hataraita koto nai yo.",
+            "translation": "Belum pernah kerja sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんなことを学んだ？",
+          "romaji": "Donna koto wo mananda?",
+          "translation": "Belajar hal apa saja?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_kerja_paruh_waktu_restoran_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お客様への気配りの大切さを学んだと思う。",
+            "romaji": "Okyakusama e no kikubari no taisetsusa wo mananda to omou.",
+            "translation": "Kurasa aku belajar pentingnya perhatian terhadap pelanggan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も学ばなかったと思う。",
+            "romaji": "Toku ni nanimo manabanakatta to omou.",
+            "translation": "Kurasa tidak belajar apa pun khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大変だったことはある？",
+          "romaji": "Taihen datta koto wa aru?",
+          "translation": "Ada yang berat?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_kerja_paruh_waktu_restoran_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "忙しい時間帯は、休む暇もないくらい大変だったよ。",
+            "romaji": "Isogashii jikantai wa, yasumu hima mo nai kurai taihen datta yo.",
+            "translation": "Waktu jam sibuk, sampai tidak ada waktu istirahat, benar-benar berat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いつも暇で楽だったよ。",
+            "romaji": "Itsumo hima de raku datta yo.",
+            "translation": "Selalu santai dan mudah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでも続けられた理由は？",
+          "romaji": "Sore demo tsuzukerareta riyuu wa?",
+          "translation": "Meski begitu, alasan bisa terus bertahan?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_kerja_paruh_waktu_restoran_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "一緒に働く仲間がいたからこそ、頑張れたんだと思う。",
+            "romaji": "Issho ni hataraku nakama ga ita kara koso, ganbareta n da to omou.",
+            "translation": "Justru karena ada rekan kerja, kurasa aku bisa bertahan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に理由はなかったと思う。",
+            "romaji": "Toku ni riyuu wa nakatta to omou.",
+            "translation": "Kurasa tidak ada alasan khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今の仕事にも活かされてる？",
+          "romaji": "Ima no shigoto ni mo ikasarete ru?",
+          "translation": "Terpakai juga di pekerjaan sekarang?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_kerja_paruh_waktu_restoran_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、接客のスキルは今でも役立っているよ。",
+            "romaji": "Un, sekkyaku no sukiru wa ima demo yakudatte iru yo.",
+            "translation": "Iya, keterampilan melayani pelanggan masih berguna sampai sekarang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く活かされていないよ。",
+            "romaji": "Mattaku ikasarete inai yo.",
+            "translation": "Sama sekali tidak terpakai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kenangan_makan_keluarga_n3",
+    "title": "Menceritakan Kenangan Makan Bersama Keluarga",
+    "category": "restoran_n3",
+    "description": "Kamu menceritakan kenangan makan bersama keluarga di masa kecil.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族との食事で、一番思い出に残ってることは何？",
+          "romaji": "Kazoku to no shokuji de, ichiban omoide ni nokotteru koto wa nani?",
+          "translation": "Dari makan bersama keluarga, yang paling membekas apa?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_kenangan_makan_keluarga_n3_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "毎週日曜日に、家族全員で食卓を囲んでいたことかな。",
+            "romaji": "Maishuu nichiyoubi ni, kazoku zen'in de shokutaku wo kakonde ita koto ka na.",
+            "translation": "Mungkin setiap hari Minggu, seluruh keluarga berkumpul di meja makan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に思い出はないかな。",
+            "romaji": "Toku ni omoide wa nai ka na.",
+            "translation": "Mungkin tidak ada kenangan khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな料理をよく食べていたの？",
+          "romaji": "Donna ryouri wo yoku tabete ita no?",
+          "translation": "Sering makan masakan apa?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_kenangan_makan_keluarga_n3_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "母が作る特製カレーが、毎回楽しみだったんだ。",
+            "romaji": "Haha ga tsukuru tokusei karee ga, maikai tanoshimi datta n da.",
+            "translation": "Kari spesial buatan ibu, selalu ditunggu-tunggu setiap kali.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に決まった料理はなかったよ。",
+            "romaji": "Toku ni kimatta ryouri wa nakatta yo.",
+            "translation": "Tidak ada masakan tertentu yang tetap.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今でもその味を覚えてる？",
+          "romaji": "Ima demo sono aji wo oboeteru?",
+          "translation": "Sekarang masih ingat rasanya?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_kenangan_makan_keluarga_n3_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、今でも鮮明に覚えているよ。",
+            "romaji": "Un, ima demo senmei ni oboete iru yo.",
+            "translation": "Iya, sampai sekarang masih ingat jelas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう完全に忘れてしまったよ。",
+            "romaji": "Mou kanzen ni wasurete shimatta yo.",
+            "translation": "Sudah benar-benar lupa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分で再現してみたことある？",
+          "romaji": "Jibun de saigen shite mita koto aru?",
+          "translation": "Pernah coba membuatnya sendiri?"
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_kenangan_makan_keluarga_n3_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "何度か挑戦してみたけど、あの味には及ばないんだ。",
+            "romaji": "Nandoka chousen shite mita kedo, ano aji ni wa oyobanai n da.",
+            "translation": "Sudah beberapa kali coba, tapi tidak bisa menyamai rasa itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一度で完璧に再現できたよ。",
+            "romaji": "Ichido de kanpeki ni saigen dekita yo.",
+            "translation": "Sekali coba langsung sempurna.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それだけ特別な味だったんだね。",
+          "romaji": "Sore dake tokubetsu na aji datta n da ne.",
+          "translation": "Berarti memang rasa yang spesial ya."
+        },
+        "imagePath": "kaiwa_images/restoran_n3/kaiwa_kenangan_makan_keluarga_n3_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、家族の思い出そのものだと思う。",
+            "romaji": "Un, kazoku no omoide sonomono da to omou.",
+            "translation": "Iya, kurasa itu adalah kenangan keluarga itu sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に特別じゃなかったと思う。",
+            "romaji": "Betsu ni tokubetsu janakatta to omou.",
+            "translation": "Kurasa tidak begitu spesial.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]
