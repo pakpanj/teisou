@@ -119987,5 +119987,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_diskusi_tugas_kelompok_n4",
+    "title": "Berdiskusi Tugas Kelompok yang Rumit",
+    "category": "sekolah_n4",
+    "description": "Kamu dan teman sekelas berdiskusi cara menyelesaikan tugas kelompok.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman Sekelas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "グループの発表、どう進めようか。",
+          "romaji": "Guruupu no happyou, dou susumeyou ka.",
+          "translation": "Presentasi kelompok, mau bagaimana lanjutnya?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_tugas_kelompok_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "役割を分担すれば、早く終わると思うよ。",
+            "romaji": "Yakuwari wo buntan sureba, hayaku owaru to omou yo.",
+            "translation": "Kalau bagi tugas, kurasa akan cepat selesai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一人でやった方がいいよ。",
+            "romaji": "Hitori de yatta hou ga ii yo.",
+            "translation": "Lebih baik dikerjakan sendiri.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman Sekelas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "誰がどの部分を担当する？",
+          "romaji": "Dare ga dono bubun wo tantou suru?",
+          "translation": "Siapa yang tanggung jawab bagian mana?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_tugas_kelompok_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "私は資料作成を担当するよ。",
+            "romaji": "Watashi wa shiryou sakusei wo tantou suru yo.",
+            "translation": "Aku yang tanggung jawab bikin materi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何もしなくていいよ。",
+            "romaji": "Nanimo shinakute ii yo.",
+            "translation": "Tidak usah melakukan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman Sekelas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "締め切りに間に合いそう？",
+          "romaji": "Shimekiri ni maniaisou?",
+          "translation": "Sepertinya bisa keburu deadline?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_tugas_kelompok_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "みんなで頑張れば、間に合うと思うよ。",
+            "romaji": "Minna de ganbareba, maniau to omou yo.",
+            "translation": "Kalau semua berusaha, kurasa akan keburu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "絶対間に合わないよ。",
+            "romaji": "Zettai maniawanai yo.",
+            "translation": "Pasti tidak akan keburu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman Sekelas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "発表、上手くいったね。",
+          "romaji": "Happyou, umaku itta ne.",
+          "translation": "Presentasinya berjalan lancar ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_tugas_kelompok_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、みんなで頑張った甲斐があったね。",
+            "romaji": "Un, minna de ganbatta kai ga atta ne.",
+            "translation": "Iya, usaha semua orang jadi berbuah ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "失敗したと思う。",
+            "romaji": "Shippai shita to omou.",
+            "translation": "Kurasa gagal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman Sekelas",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "また今度もこのメンバーでやりたいね。",
+          "romaji": "Mata kondo mo kono menbaa de yaritai ne.",
+          "translation": "Lain kali juga mau kerja bareng anggota ini ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_tugas_kelompok_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、いいチームだったね。",
+            "romaji": "Un, ii chiimu datta ne.",
+            "translation": "Iya, tim yang bagus ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう一緒にやりたくないよ。",
+            "romaji": "Mou issho ni yaritakunai yo.",
+            "translation": "Sudah tidak mau kerja bareng lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_izin_alasan_khusus_n4",
+    "title": "Meminta Izin karena Alasan Khusus",
+    "category": "sekolah_n4",
+    "description": "Kamu meminta izin pulang cepat ke guru karena urusan keluarga.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今日は元気がないようですが、大丈夫ですか。",
+          "romaji": "Kyou wa genki ga nai you desu ga, daijoubu desu ka.",
+          "translation": "Hari ini kelihatan kurang semangat, baik-baik saja?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_izin_alasan_khusus_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "実は家族の用事で早退させていただきたいんです。",
+            "romaji": "Jitsu wa kazoku no youji de soutai sasete itadakitai n desu.",
+            "translation": "Sebenarnya saya ingin izin pulang cepat karena urusan keluarga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も問題ありません。",
+            "romaji": "Nanimo mondai arimasen.",
+            "translation": "Tidak ada masalah apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "分かりました、どのくらい早く帰りますか。",
+          "romaji": "Wakarimashita, dono kurai hayaku kaerimasu ka.",
+          "translation": "Baik, mau pulang berapa cepat?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_izin_alasan_khusus_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "2時間くらい早く帰りたいです。",
+            "romaji": "Nijikan kurai hayaku kaeritai desu.",
+            "translation": "Saya ingin pulang sekitar 2 jam lebih awal.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "帰りたくないです。",
+            "romaji": "Kaeritakunai desu.",
+            "translation": "Saya tidak mau pulang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "保護者からの連絡はありますか。",
+          "romaji": "Hogosha kara no renraku wa arimasu ka.",
+          "translation": "Ada kontak dari wali murid?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_izin_alasan_khusus_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、母から連絡帳に書いてもらいました。",
+            "romaji": "Hai, haha kara renrakuchou ni kaite moraimashita.",
+            "translation": "Ya, saya minta ibu tulis di buku penghubung.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "連絡はありません。",
+            "romaji": "Renraku wa arimasen.",
+            "translation": "Tidak ada kontak.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "分かりました、気をつけて帰ってくださいね。",
+          "romaji": "Wakarimashita, ki wo tsukete kaette kudasai ne.",
+          "translation": "Baik, hati-hati pulangnya ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_izin_alasan_khusus_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、ありがとうございます。",
+            "romaji": "Hai, arigatou gozaimasu.",
+            "translation": "Ya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、結構です。",
+            "romaji": "Iie, kekkou desu.",
+            "translation": "Tidak, tidak usah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "明日の授業内容は後で伝えますね。",
+          "romaji": "Ashita no jugyou naiyou wa ato de tsutaemasu ne.",
+          "translation": "Materi pelajaran besok akan saya sampaikan nanti ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_izin_alasan_khusus_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、助かります。",
+            "romaji": "Arigatou gozaimasu, tasukarimasu.",
+            "translation": "Terima kasih, sangat membantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "要りません。",
+            "romaji": "Irimasen.",
+            "translation": "Tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_rencana_setelah_lulus_n4",
+    "title": "Membicarakan Rencana Setelah Lulus",
+    "category": "sekolah_n4",
+    "description": "Kamu dan teman membicarakan rencana setelah lulus sekolah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "卒業したら何をするつもり？",
+          "romaji": "Sotsugyou shitara nani wo suru tsumori?",
+          "translation": "Setelah lulus rencananya mau apa?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_rencana_setelah_lulus_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "大学に進学するつもりだよ。",
+            "romaji": "Daigaku ni shingaku suru tsumori da yo.",
+            "translation": "Rencananya mau lanjut kuliah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何もしないつもりだよ。",
+            "romaji": "Nanimo shinai tsumori da yo.",
+            "translation": "Rencananya tidak melakukan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな学部に興味があるの？",
+          "romaji": "Donna gakubu ni kyoumi ga aru no?",
+          "translation": "Tertarik fakultas apa?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_rencana_setelah_lulus_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "経済学部に興味があるんだ。",
+            "romaji": "Keizai gakubu ni kyoumi ga aru n da.",
+            "translation": "Aku tertarik fakultas ekonomi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "興味がある学部はないよ。",
+            "romaji": "Kyoumi ga aru gakubu wa nai yo.",
+            "translation": "Tidak ada fakultas yang aku tertarik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "受験勉強は順調？",
+          "romaji": "Juken benkyou wa junchou?",
+          "translation": "Belajar untuk ujian masuk lancar?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_rencana_setelah_lulus_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "まあまあだけど、もっと頑張らなきゃ。",
+            "romaji": "Maamaa dakedo, motto ganbaranakya.",
+            "translation": "Lumayan, tapi harus lebih giat lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然勉強していないよ。",
+            "romaji": "Zenzen benkyou shite inai yo.",
+            "translation": "Sama sekali tidak belajar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "応援してるよ。",
+          "romaji": "Ouen shiteru yo.",
+          "translation": "Aku dukung kok."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_rencana_setelah_lulus_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、頑張るよ。",
+            "romaji": "Arigatou, ganbaru yo.",
+            "translation": "Terima kasih, akan aku usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "応援は要らないよ。",
+            "romaji": "Ouen wa iranai yo.",
+            "translation": "Dukungan tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "夢が叶うといいね。",
+          "romaji": "Yume ga kanau to ii ne.",
+          "translation": "Semoga impiannya terwujud ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_rencana_setelah_lulus_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、頑張る。",
+            "romaji": "Un, ganbaru.",
+            "translation": "Iya, akan aku usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "夢はもう諦めたよ。",
+            "romaji": "Yume wa mou akirameta yo.",
+            "translation": "Impian sudah aku lupakan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jelaskan_nilai_turun_n4",
+    "title": "Menjelaskan Kenapa Nilai Turun",
+    "category": "sekolah_n4",
+    "description": "Kamu menjelaskan ke guru kenapa nilaimu belakangan turun.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近テストの点数が下がっているようですね。",
+          "romaji": "Saikin tesuto no tensuu ga sagatte iru you desu ne.",
+          "translation": "Belakangan nilai tesnya kelihatan turun ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_nilai_turun_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "すみません、部活が忙しくて勉強する時間が減ってしまって。",
+            "romaji": "Sumimasen, bukatsu ga isogashikute benkyou suru jikan ga hette shimatte.",
+            "translation": "Maaf, klub ekstrakurikuler sibuk jadi waktu belajar jadi berkurang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然問題ありません。",
+            "romaji": "Zenzen mondai arimasen.",
+            "translation": "Sama sekali tidak ada masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうすれば時間を作れそうですか。",
+          "romaji": "Dou sureba jikan wo tsukuresou desu ka.",
+          "translation": "Bagaimana kalau dilakukan agar bisa membuat waktu?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_nilai_turun_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "部活の後、少しずつ復習するようにします。",
+            "romaji": "Bukatsu no ato, sukoshi zutsu fukushuu suru you ni shimasu.",
+            "translation": "Setelah ekskul, akan saya usahakan review sedikit-sedikit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "部活をやめます。",
+            "romaji": "Bukatsu wo yamemasu.",
+            "translation": "Saya akan berhenti ekskul.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "分からないところがあれば、質問してくださいね。",
+          "romaji": "Wakaranai tokoro ga areba, shitsumon shite kudasai ne.",
+          "translation": "Kalau ada yang tidak dimengerti, tanya saja ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_nilai_turun_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、そうします。",
+            "romaji": "Hai, sou shimasu.",
+            "translation": "Ya, akan saya lakukan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "質問はしません。",
+            "romaji": "Shitsumon wa shimasen.",
+            "translation": "Saya tidak akan tanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "次のテストで頑張りましょう。",
+          "romaji": "Tsugi no tesuto de ganbarimashou.",
+          "translation": "Ayo semangat di tes berikutnya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_nilai_turun_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、頑張ります。",
+            "romaji": "Hai, ganbarimasu.",
+            "translation": "Ya, akan saya usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう頑張りません。",
+            "romaji": "Mou ganbarimasen.",
+            "translation": "Tidak akan berusaha lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "応援していますよ。",
+          "romaji": "Ouen shite imasu yo.",
+          "translation": "Saya mendukung lho."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_nilai_turun_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "応援は要りません。",
+            "romaji": "Ouen wa irimasen.",
+            "translation": "Dukungan tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_diskusi_guru_jurusan_n4",
+    "title": "Berdiskusi dengan Guru Tentang Jurusan",
+    "category": "sekolah_n4",
+    "description": "Kamu berdiskusi dengan guru BK tentang jurusan yang cocok untukmu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Guru BK",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "将来何をしたいか考えていますか。",
+          "romaji": "Shourai nani wo shitai ka kangaete imasu ka.",
+          "translation": "Sudah memikirkan mau jadi apa nanti?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_guru_jurusan_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、エンジニアになりたいと考えています。",
+            "romaji": "Hai, enjinia ni naritai to kangaete imasu.",
+            "translation": "Ya, saya berpikir ingin jadi insinyur.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も考えていません。",
+            "romaji": "Nanimo kangaete imasen.",
+            "translation": "Saya tidak memikirkan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Guru BK",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それなら、理系の学部がいいかもしれません。",
+          "romaji": "Sore nara, rikei no gakubu ga ii kamoshiremasen.",
+          "translation": "Kalau begitu, mungkin fakultas sains lebih baik."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_guru_jurusan_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうですね、調べてみます。",
+            "romaji": "Sou desu ne, shirabete mimasu.",
+            "translation": "Iya ya, akan saya coba cari tahu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "文系にします。",
+            "romaji": "Bunkei ni shimasu.",
+            "translation": "Saya ambil ilmu sosial.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Guru BK",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "数学と物理は得意ですか。",
+          "romaji": "Suugaku to butsuri wa tokui desu ka.",
+          "translation": "Matematika dan fisika jago?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_guru_jurusan_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "数学は得意ですが、物理はまだ苦手です。",
+            "romaji": "Suugaku wa tokui desu ga, butsuri wa mada nigate desu.",
+            "translation": "Matematika jago, tapi fisika masih kurang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どちらも苦手です。",
+            "romaji": "Dochira mo nigate desu.",
+            "translation": "Keduanya kurang jago.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Guru BK",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "物理を頑張れば、道が開けますよ。",
+          "romaji": "Butsuri wo ganbareba, michi ga hirakemasu yo.",
+          "translation": "Kalau berusaha di fisika, jalan akan terbuka lho."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_guru_jurusan_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、もっと勉強します。",
+            "romaji": "Hai, motto benkyou shimasu.",
+            "translation": "Ya, akan saya belajar lebih giat lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "物理は勉強しません。",
+            "romaji": "Butsuri wa benkyou shimasen.",
+            "translation": "Saya tidak akan belajar fisika.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Guru BK",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "応援していますので、頑張ってください。",
+          "romaji": "Ouen shite imasu node, ganbatte kudasai.",
+          "translation": "Saya mendukung, jadi semangat ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_guru_jurusan_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、頑張ります。",
+            "romaji": "Arigatou gozaimasu, ganbarimasu.",
+            "translation": "Terima kasih, akan saya usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう頑張りたくないです。",
+            "romaji": "Mou ganbaritakunai desu.",
+            "translation": "Sudah tidak mau berusaha lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_alasan_ikut_ekskul_baru_n4",
+    "title": "Menjelaskan Alasan Ikut Ekstrakurikuler Baru",
+    "category": "sekolah_n4",
+    "description": "Kamu menjelaskan ke teman kenapa pindah ke ekstrakurikuler baru.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新しい部活に入るんだって？",
+          "romaji": "Atarashii bukatsu ni hairu n datte?",
+          "translation": "Katanya mau ikut ekskul baru?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_alasan_ikut_ekskul_baru_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、前から興味があったから入ることにしたんだ。",
+            "romaji": "Un, mae kara kyoumi ga atta kara hairu koto ni shita n da.",
+            "translation": "Iya, karena dari dulu tertarik jadi memutuskan ikut.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然興味なかったよ。",
+            "romaji": "Zenzen kyoumi nakatta yo.",
+            "translation": "Sama sekali tidak tertarik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "前の部活はどうするの？",
+          "romaji": "Mae no bukatsu wa dou suru no?",
+          "translation": "Ekskul yang dulu bagaimana?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_alasan_ikut_ekskul_baru_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そっちは辞めることにしたんだ。",
+            "romaji": "Sotchi wa yameru koto ni shita n da.",
+            "translation": "Yang itu diputuskan untuk berhenti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "両方続けるよ。",
+            "romaji": "Ryouhou tsuzukeru yo.",
+            "translation": "Akan aku lanjutkan keduanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新しい部活は大変？",
+          "romaji": "Atarashii bukatsu wa taihen?",
+          "translation": "Ekskul barunya berat?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_alasan_ikut_ekskul_baru_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、思ったより大変だけど楽しいよ。",
+            "romaji": "Un, omotta yori taihen dakedo tanoshii yo.",
+            "translation": "Iya, lebih berat dari yang aku kira tapi menyenangkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然大変じゃないよ。",
+            "romaji": "Zenzen taihen janai yo.",
+            "translation": "Sama sekali tidak berat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "仲間はできた？",
+          "romaji": "Nakama wa dekita?",
+          "translation": "Sudah dapat teman satu tim?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_alasan_ikut_ekskul_baru_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、いい先輩たちがいるんだ。",
+            "romaji": "Un, ii senpai-tachi ga iru n da.",
+            "translation": "Iya, ada senior-senior yang baik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰とも話していないよ。",
+            "romaji": "Dare to mo hanashite inai yo.",
+            "translation": "Belum bicara dengan siapa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "これからも頑張ってね。",
+          "romaji": "Kore kara mo ganbatte ne.",
+          "translation": "Semangat terus ke depannya ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_alasan_ikut_ekskul_baru_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう頑張らないよ。",
+            "romaji": "Mou ganbaranai yo.",
+            "translation": "Sudah tidak akan berusaha lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_minta_bimbingan_tambahan_n4",
+    "title": "Meminta Bimbingan Belajar Tambahan",
+    "category": "sekolah_n4",
+    "description": "Kamu meminta les tambahan ke guru karena kesulitan di matematika.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうしましたか。",
+          "romaji": "Dou shimashita ka.",
+          "translation": "Ada apa?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_minta_bimbingan_tambahan_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "数学がよく分からないので、補習をお願いできますか。",
+            "romaji": "Suugaku ga yoku wakaranai node, hoshuu wo onegai dekimasu ka.",
+            "translation": "Matematika kurang saya pahami, bisa minta les tambahan?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "補習は要りません。",
+            "romaji": "Hoshuu wa irimasen.",
+            "translation": "Les tambahan tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いつが都合いいですか。",
+          "romaji": "Itsu ga tsugou ii desu ka.",
+          "translation": "Kapan yang nyaman?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_minta_bimbingan_tambahan_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "放課後ならいつでも大丈夫です。",
+            "romaji": "Houkago nara itsudemo daijoubu desu.",
+            "translation": "Kalau setelah sekolah kapan saja tidak apa-apa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "授業中がいいです。",
+            "romaji": "Jugyouchuu ga ii desu.",
+            "translation": "Saat pelajaran lebih baik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どの単元が特に苦手ですか。",
+          "romaji": "Dono tan'i ga toku ni nigate desu ka.",
+          "translation": "Unit mana yang paling kurang dikuasai?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_minta_bimbingan_tambahan_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "二次関数が特に苦手です。",
+            "romaji": "Nijikansuu ga toku ni nigate desu.",
+            "translation": "Fungsi kuadrat yang paling kurang saya kuasai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全部得意です。",
+            "romaji": "Zenbu tokui desu.",
+            "translation": "Semua jago.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一緒に頑張りましょう。",
+          "romaji": "Issho ni ganbarimashou.",
+          "translation": "Ayo kita berjuang bersama."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_minta_bimbingan_tambahan_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、よろしくお願いします。",
+            "romaji": "Hai, yoroshiku onegaishimasu.",
+            "translation": "Ya, mohon bantuannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一人でやります。",
+            "romaji": "Hitori de yarimasu.",
+            "translation": "Saya akan lakukan sendiri.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "少しずつ分かるようになりますよ。",
+          "romaji": "Sukoshi zutsu wakaru you ni narimasu yo.",
+          "translation": "Sedikit-sedikit akan jadi paham lho."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_minta_bimbingan_tambahan_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、頑張ります。",
+            "romaji": "Arigatou gozaimasu, ganbarimasu.",
+            "translation": "Terima kasih, akan saya usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう諦めます。",
+            "romaji": "Mou akiramemasu.",
+            "translation": "Saya akan menyerah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jelaskan_terlambat_tugas_n4",
+    "title": "Menjelaskan Kenapa Terlambat Mengumpulkan Tugas",
+    "category": "sekolah_n4",
+    "description": "Kamu menjelaskan ke guru kenapa PR-mu terlambat dikumpulkan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "宿題がまだ提出されていませんね。",
+          "romaji": "Shukudai ga mada teishutsu sarete imasen ne.",
+          "translation": "PR-nya belum dikumpulkan ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_terlambat_tugas_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "すみません、体調を崩してしまって遅れました。",
+            "romaji": "Sumimasen, taichou wo kuzushite shimatte okuremashita.",
+            "translation": "Maaf, saya jadi sakit sehingga telat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "忘れていました。",
+            "romaji": "Wasurete imashita.",
+            "translation": "Saya lupa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大丈夫ですか、もう治りましたか。",
+          "romaji": "Daijoubu desu ka, mou naorimashita ka.",
+          "translation": "Sudah baik-baik saja, sudah sembuh?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_terlambat_tugas_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、もう大丈夫です。",
+            "romaji": "Hai, mou daijoubu desu.",
+            "translation": "Ya, sudah baik-baik saja.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いいえ、まだ寝ています。",
+            "romaji": "Iie, mada nete imasu.",
+            "translation": "Tidak, masih tidur.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いつまでに出せますか。",
+          "romaji": "Itsu made ni dasemasu ka.",
+          "translation": "Bisa kumpulkan sampai kapan?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_terlambat_tugas_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "明日までに必ず出します。",
+            "romaji": "Ashita made ni kanarazu dashimasu.",
+            "translation": "Besok pasti akan saya kumpulkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "出す予定はありません。",
+            "romaji": "Dasu yotei wa arimasen.",
+            "translation": "Tidak ada rencana untuk mengumpulkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "分かりました、待っていますね。",
+          "romaji": "Wakarimashita, matte imasu ne.",
+          "translation": "Baik, saya tunggu ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_terlambat_tugas_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます。",
+            "romaji": "Arigatou gozaimasu.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "待たなくていいです。",
+            "romaji": "Matanakute ii desu.",
+            "translation": "Tidak usah ditunggu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "次からは早めに連絡してくださいね。",
+          "romaji": "Kondo kara wa hayame ni renraku shite kudasai ne.",
+          "translation": "Mulai sekarang tolong kabari lebih awal ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_terlambat_tugas_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、気をつけます。",
+            "romaji": "Hai, ki wo tsukemasu.",
+            "translation": "Ya, akan saya perhatikan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう連絡しません。",
+            "romaji": "Mou renraku shimasen.",
+            "translation": "Tidak akan kabari lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_diskusi_persiapan_ujian_masuk_n4",
+    "title": "Berdiskusi Persiapan Ujian Masuk",
+    "category": "sekolah_n4",
+    "description": "Kamu dan teman membicarakan persiapan untuk ujian masuk.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "受験勉強、進んでる？",
+          "romaji": "Juken benkyou, susunderu?",
+          "translation": "Belajar untuk ujian masuk, berjalan lancar?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_persiapan_ujian_masuk_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、少しずつ進めているよ。",
+            "romaji": "Un, sukoshi zutsu susumete iru yo.",
+            "translation": "Iya, sedikit-sedikit berjalan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然進んでいないよ。",
+            "romaji": "Zenzen susunde inai yo.",
+            "translation": "Sama sekali tidak berjalan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どの科目が一番不安？",
+          "romaji": "Dono kamoku ga ichiban fuan?",
+          "translation": "Mata pelajaran mana yang paling mengkhawatirkan?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_persiapan_ujian_masuk_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "英語が一番不安かな。",
+            "romaji": "Eigo ga ichiban fuan kana.",
+            "translation": "Bahasa Inggris yang paling khawatir kayaknya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "不安な科目はないよ。",
+            "romaji": "Fuan na kamoku wa nai yo.",
+            "translation": "Tidak ada mata pelajaran yang mengkhawatirkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一緒に勉強しない？",
+          "romaji": "Issho ni benkyou shinai?",
+          "translation": "Belajar bareng yuk?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_persiapan_ujian_masuk_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいね、そうしよう。",
+            "romaji": "Ii ne, sou shiyou.",
+            "translation": "Bagus, ayo begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一人がいいよ。",
+            "romaji": "Hitori ga ii yo.",
+            "translation": "Sendiri lebih baik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お互い頑張ろうね。",
+          "romaji": "Otagai ganbarou ne.",
+          "translation": "Ayo kita saling semangat ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_persiapan_ujian_masuk_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、頑張ろう。",
+            "romaji": "Un, ganbarou.",
+            "translation": "Iya, ayo semangat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "頑張らなくていいよ。",
+            "romaji": "Ganbaranakute ii yo.",
+            "translation": "Tidak usah semangat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "合格できるといいね。",
+          "romaji": "Goukaku dekiru to ii ne.",
+          "translation": "Semoga bisa lulus ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_persiapan_ujian_masuk_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、絶対合格するよ。",
+            "romaji": "Un, zettai goukaku suru yo.",
+            "translation": "Iya, pasti akan lulus.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "合格できないと思うよ。",
+            "romaji": "Goukaku dekinai to omou yo.",
+            "translation": "Kurasa tidak akan lulus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jelaskan_konflik_teman_n4",
+    "title": "Menjelaskan Konflik dengan Teman Sekelas",
+    "category": "sekolah_n4",
+    "description": "Kamu menjelaskan ke guru tentang konflik kecil dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、元気がないみたいですね。",
+          "romaji": "Saikin, genki ga nai mitai desu ne.",
+          "translation": "Belakangan kelihatan kurang semangat ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_konflik_teman_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "実は友達と少しけんかしてしまって。",
+            "romaji": "Jitsu wa tomodachi to sukoshi kenka shite shimatte.",
+            "translation": "Sebenarnya saya sedikit bertengkar dengan teman.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も問題ありません。",
+            "romaji": "Nanimo mondai arimasen.",
+            "translation": "Tidak ada masalah apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何が原因だったんですか。",
+          "romaji": "Nani ga gen'in datta n desu ka.",
+          "translation": "Apa penyebabnya?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_konflik_teman_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ちょっとした誤解があったんです。",
+            "romaji": "Chotto shita gokai ga atta n desu.",
+            "translation": "Ada kesalahpahaman kecil.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何もありませんでした。",
+            "romaji": "Nanimo arimasen deshita.",
+            "translation": "Tidak ada apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もう話しましたか。",
+          "romaji": "Mou hanashimashita ka.",
+          "translation": "Sudah bicara?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_konflik_teman_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいえ、まだ話す勇気が出ません。",
+            "romaji": "Iie, mada hanasu yuuki ga demasen.",
+            "translation": "Belum, masih belum berani bicara.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "はい、もう仲直りしました。",
+            "romaji": "Hai, mou nakanaori shimashita.",
+            "translation": "Ya, sudah berbaikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "素直に話せば、分かってもらえると思いますよ。",
+          "romaji": "Sunao ni hanaseba, wakatte moraeru to omoimasu yo.",
+          "translation": "Kalau bicara dengan jujur, kurasa akan dimengerti lho."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_konflik_teman_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうですね、話してみます。",
+            "romaji": "Sou desu ne, hanashite mimasu.",
+            "translation": "Iya ya, akan saya coba bicara.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "話したくないです。",
+            "romaji": "Hanashitakunai desu.",
+            "translation": "Saya tidak mau bicara.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "きっとうまくいきますよ。",
+          "romaji": "Kitto umaku ikimasu yo.",
+          "translation": "Pasti akan berjalan baik lho."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_konflik_teman_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、頑張ります。",
+            "romaji": "Arigatou gozaimasu, ganbarimasu.",
+            "translation": "Terima kasih, akan saya usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう無理だと思います。",
+            "romaji": "Mou muri da to omoimasu.",
+            "translation": "Kurasa sudah tidak mungkin.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_minta_surat_rekomendasi_n4",
+    "title": "Meminta Surat Rekomendasi ke Guru",
+    "category": "sekolah_n4",
+    "description": "Kamu meminta guru menuliskan surat rekomendasi untuk kuliah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうしましたか。",
+          "romaji": "Dou shimashita ka.",
+          "translation": "Ada apa?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_minta_surat_rekomendasi_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "大学の推薦状を書いていただけないでしょうか。",
+            "romaji": "Daigaku no suisenjou wo kaite itadakenai deshou ka.",
+            "translation": "Bisakah Anda menuliskan surat rekomendasi untuk kuliah?",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "推薦状は要りません。",
+            "romaji": "Suisenjou wa irimasen.",
+            "translation": "Surat rekomendasi tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どちらの大学に出すんですか。",
+          "romaji": "Dochira no daigaku ni dasu n desu ka.",
+          "translation": "Mau dikirim ke universitas mana?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_minta_surat_rekomendasi_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "東京大学に出したいんです。",
+            "romaji": "Toukyou Daigaku ni dashitai n desu.",
+            "translation": "Saya ingin kirim ke Universitas Tokyo.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どこにも出しません。",
+            "romaji": "Doko ni mo dashimasen.",
+            "translation": "Tidak akan dikirim ke mana pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いつまでに必要ですか。",
+          "romaji": "Itsu made ni hitsuyou desu ka.",
+          "translation": "Sampai kapan diperlukan?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_minta_surat_rekomendasi_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "来週の金曜日までにお願いします。",
+            "romaji": "Raishuu no kin'youbi made ni onegaishimasu.",
+            "translation": "Tolong sampai hari Jumat minggu depan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "急がなくていいです。",
+            "romaji": "Isoganakute ii desu.",
+            "translation": "Tidak usah buru-buru.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "分かりました、書かせていただきますね。",
+          "romaji": "Wakarimashita, kakasete itadakimasu ne.",
+          "translation": "Baik, akan saya tuliskan ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_minta_surat_rekomendasi_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、助かります。",
+            "romaji": "Arigatou gozaimasu, tasukarimasu.",
+            "translation": "Terima kasih, sangat membantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "書かなくていいです。",
+            "romaji": "Kakanakute ii desu.",
+            "translation": "Tidak usah ditulis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "合格を応援していますよ。",
+          "romaji": "Goukaku wo ouen shite imasu yo.",
+          "translation": "Saya mendukung kelulusan Anda lho."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_minta_surat_rekomendasi_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとうございます、頑張ります。",
+            "romaji": "Arigatou gozaimasu, ganbarimasu.",
+            "translation": "Terima kasih, akan saya usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "応援は要りません。",
+            "romaji": "Ouen wa irimasen.",
+            "translation": "Dukungan tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_khawatir_sebelum_lulus_n4",
+    "title": "Membicarakan Kekhawatiran Sebelum Kelulusan",
+    "category": "sekolah_n4",
+    "description": "Kamu dan teman membicarakan kekhawatiran menjelang kelulusan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "卒業が近づいてきたね。",
+          "romaji": "Sotsugyou ga chikazuite kita ne.",
+          "translation": "Kelulusan sudah semakin dekat ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_khawatir_sebelum_lulus_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ちょっと不安になってきたよ。",
+            "romaji": "Un, chotto fuan ni natte kita yo.",
+            "translation": "Iya, jadi agak khawatir.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然不安じゃないよ。",
+            "romaji": "Zenzen fuan janai yo.",
+            "translation": "Sama sekali tidak khawatir.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何が一番不安なの？",
+          "romaji": "Nani ga ichiban fuan na no?",
+          "translation": "Apa yang paling dikhawatirkan?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_khawatir_sebelum_lulus_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "新しい環境に馴染めるかどうかだよ。",
+            "romaji": "Atarashii kankyou ni najimeru ka dou ka da yo.",
+            "translation": "Apakah bisa beradaptasi dengan lingkungan baru.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も不安じゃないよ。",
+            "romaji": "Nanimo fuan janai yo.",
+            "translation": "Tidak ada yang khawatir.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "みんな同じ気持ちだと思うよ。",
+          "romaji": "Minna onaji kimochi da to omou yo.",
+          "translation": "Kurasa semua orang merasakan hal yang sama lho."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_khawatir_sebelum_lulus_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そう聞くと少し安心する。",
+            "romaji": "Sou kiku to sukoshi anshin suru.",
+            "translation": "Setelah dengar itu jadi agak lega.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それでも不安だよ。",
+            "romaji": "Soredemo fuan da yo.",
+            "translation": "Tetap saja khawatir.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "きっと大丈夫だよ。",
+          "romaji": "Kitto daijoubu da yo.",
+          "translation": "Pasti baik-baik saja kok."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_khawatir_sebelum_lulus_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう、そう信じるよ。",
+            "romaji": "Arigatou, sou shinjiru yo.",
+            "translation": "Terima kasih, aku akan percaya begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "信じられないよ。",
+            "romaji": "Shinjirarenai yo.",
+            "translation": "Tidak bisa percaya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新しい生活、楽しみだね。",
+          "romaji": "Atarashii seikatsu, tanoshimi da ne.",
+          "translation": "Kehidupan baru, tidak sabar ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_khawatir_sebelum_lulus_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、楽しみになってきた。",
+            "romaji": "Un, tanoshimi ni natte kita.",
+            "translation": "Iya, jadi mulai tidak sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "楽しみじゃないよ。",
+            "romaji": "Tanoshimi janai yo.",
+            "translation": "Tidak menantikannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jelaskan_pindah_jurusan_n4",
+    "title": "Menjelaskan Kenapa Pindah Jurusan",
+    "category": "sekolah_n4",
+    "description": "Kamu menjelaskan ke guru kenapa ingin pindah dari IPS ke IPA.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "文系から理系に変えたいそうですね。",
+          "romaji": "Bunkei kara rikei ni kaetai sou desu ne.",
+          "translation": "Katanya ingin pindah dari IPS ke IPA ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_pindah_jurusan_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、将来の夢が変わったので。",
+            "romaji": "Hai, shourai no yume ga kawatta node.",
+            "translation": "Ya, karena impian masa depan saya berubah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "変えるつもりはありません。",
+            "romaji": "Kaeru tsumori wa arimasen.",
+            "translation": "Tidak berniat pindah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "理系の勉強についていけそうですか。",
+          "romaji": "Rikei no benkyou ni tsuite ikesou desu ka.",
+          "translation": "Sepertinya bisa mengikuti pelajaran IPA?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_pindah_jurusan_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "大変だと思いますが、頑張ります。",
+            "romaji": "Taihen da to omoimasu ga, ganbarimasu.",
+            "translation": "Kurasa akan berat, tapi akan saya usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "簡単だと思います。",
+            "romaji": "Kantan da to omoimasu.",
+            "translation": "Kurasa mudah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "保護者の方は同意していますか。",
+          "romaji": "Hogosha no kata wa doui shite imasu ka.",
+          "translation": "Orang tua sudah setuju?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_pindah_jurusan_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、両親も応援してくれています。",
+            "romaji": "Hai, ryoushin mo ouen shite kurete imasu.",
+            "translation": "Ya, orang tua saya juga mendukung.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "両親は知りません。",
+            "romaji": "Ryoushin wa shirimasen.",
+            "translation": "Orang tua saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手続きを進めましょう。",
+          "romaji": "Tetsuzuki wo susumemashou.",
+          "translation": "Ayo kita lanjutkan prosesnya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_pindah_jurusan_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "よろしくお願いします。",
+            "romaji": "Yoroshiku onegaishimasu.",
+            "translation": "Mohon bantuannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ決めていません。",
+            "romaji": "Mada kimete imasen.",
+            "translation": "Belum diputuskan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新しい道で頑張ってくださいね。",
+          "romaji": "Atarashii michi de ganbatte kudasai ne.",
+          "translation": "Semangat di jalan baru ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_jelaskan_pindah_jurusan_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、頑張ります。",
+            "romaji": "Hai, ganbarimasu.",
+            "translation": "Ya, akan saya usahakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう頑張りません。",
+            "romaji": "Mou ganbarimasen.",
+            "translation": "Tidak akan berusaha lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_diskusi_study_tour_n4",
+    "title": "Berdiskusi Tentang Study Tour ke Luar Kota",
+    "category": "sekolah_n4",
+    "description": "Kelasmu berdiskusi dengan guru tentang tujuan study tour.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "修学旅行の行き先について話し合いましょう。",
+          "romaji": "Shuugaku ryokou no ikisaki ni tsuite hanashiaimashou.",
+          "translation": "Ayo bahas tujuan study tour."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_study_tour_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "京都はどうですか、歴史も学べますし。",
+            "romaji": "Kyouto wa dou desu ka, rekishi mo manabemasu shi.",
+            "translation": "Bagaimana kalau Kyoto, sejarahnya juga bisa dipelajari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どこでもいいです。",
+            "romaji": "Doko demo ii desu.",
+            "translation": "Di mana saja boleh.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "予算内で行けますかね。",
+          "romaji": "Yosannai de ikemasu ka ne.",
+          "translation": "Bisa masuk anggaran ya?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_study_tour_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "調べてみないと分かりませんね。",
+            "romaji": "Shirabete minai to wakarimasen ne.",
+            "translation": "Kalau tidak dicoba dicek tidak akan tahu ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "予算は関係ありません。",
+            "romaji": "Yosan wa kankei arimasen.",
+            "translation": "Anggaran tidak ada hubungannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分かりません。",
+            "romaji": "Wakarimasen.",
+            "translation": "Saya tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "みんなの意見も聞いてみましょう。",
+          "romaji": "Minna no iken mo kiite mimashou.",
+          "translation": "Ayo dengar pendapat semua juga."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_study_tour_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いいですね、そうしましょう。",
+            "romaji": "Ii desu ne, sou shimashou.",
+            "translation": "Bagus, ayo begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "聞く必要はありません。",
+            "romaji": "Kiku hitsuyou wa arimasen.",
+            "translation": "Tidak perlu didengar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "京都に決まりましたね。",
+          "romaji": "Kyouto ni kimarimashita ne.",
+          "translation": "Sudah diputuskan Kyoto ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_study_tour_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、楽しみです。",
+            "romaji": "Hai, tanoshimi desu.",
+            "translation": "Ya, tidak sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "まだ決まっていません。",
+            "romaji": "Mada kimatte imasen.",
+            "translation": "Belum diputuskan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Guru",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "良い思い出になるといいですね。",
+          "romaji": "Ii omoide ni naru to ii desu ne.",
+          "translation": "Semoga jadi kenangan yang bagus ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_diskusi_study_tour_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "はい、絶対いい思い出になります。",
+            "romaji": "Hai, zettai ii omoide ni narimasu.",
+            "translation": "Ya, pasti akan jadi kenangan yang bagus.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "つまらないと思います。",
+            "romaji": "Tsumaranai to omoimasu.",
+            "translation": "Kurasa akan membosankan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_cerita_ketua_kelas_n4",
+    "title": "Menceritakan Pengalaman Menjadi Ketua Kelas",
+    "category": "sekolah_n4",
+    "description": "Kamu bercerita ke teman tentang pengalamanmu menjadi ketua kelas.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "クラス委員長になったんだって？",
+          "romaji": "Kurasu iinchou ni natta n datte?",
+          "translation": "Katanya jadi ketua kelas?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_cerita_ketua_kelas_n4_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、みんなに選ばれてしまったんだ。",
+            "romaji": "Un, minna ni erabarete shimatta n da.",
+            "translation": "Iya, kepilih sama semua orang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "委員長にはなっていないよ。",
+            "romaji": "Iinchou ni wa natte inai yo.",
+            "translation": "Aku belum jadi ketua.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大変じゃない？",
+          "romaji": "Taihen janai?",
+          "translation": "Tidak berat?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_cerita_ketua_kelas_n4_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "大変だけど、やりがいがあるよ。",
+            "romaji": "Taihen dakedo, yarigai ga aru yo.",
+            "translation": "Berat, tapi ada rasa berartinya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全然大変じゃないよ。",
+            "romaji": "Zenzen taihen janai yo.",
+            "translation": "Sama sekali tidak berat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんなことをするの？",
+          "romaji": "Donna koto wo suru no?",
+          "translation": "Melakukan hal seperti apa?"
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_cerita_ketua_kelas_n4_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "クラスの意見をまとめたりするんだ。",
+            "romaji": "Kurasu no iken wo matometari suru n da.",
+            "translation": "Merangkum pendapat kelas dan sebagainya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何もしないよ。",
+            "romaji": "Nanimo shinai yo.",
+            "translation": "Tidak melakukan apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "リーダーシップが身についてきたね。",
+          "romaji": "Riidaashippu ga mi ni tsuite kita ne.",
+          "translation": "Kepemimpinannya jadi terbentuk ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_cerita_ketua_kelas_n4_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、色々学んでいるよ。",
+            "romaji": "Un, iroiro manande iru yo.",
+            "translation": "Iya, banyak belajar hal.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も学んでいないよ。",
+            "romaji": "Nanimo manande inai yo.",
+            "translation": "Tidak belajar apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いい経験になるね。",
+          "romaji": "Ii keiken ni naru ne.",
+          "translation": "Jadi pengalaman yang bagus ya."
+        },
+        "imagePath": "kaiwa_images/sekolah_n4/kaiwa_cerita_ketua_kelas_n4_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "つまらない経験だよ。",
+            "romaji": "Tsumaranai keiken da yo.",
+            "translation": "Pengalaman yang membosankan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]

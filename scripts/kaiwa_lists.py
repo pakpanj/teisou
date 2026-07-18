@@ -846,6 +846,24 @@ ARAH_JALAN_N4_TITLES = [
     "Memberi Saran Rute Ramah Kursi Roda",
 ]
 
+SEKOLAH_N4_TITLES = [
+    "Berdiskusi Tugas Kelompok yang Rumit",
+    "Meminta Izin karena Alasan Khusus",
+    "Membicarakan Rencana Setelah Lulus",
+    "Menjelaskan Kenapa Nilai Turun",
+    "Berdiskusi dengan Guru Tentang Jurusan",
+    "Menjelaskan Alasan Ikut Ekstrakurikuler Baru",
+    "Meminta Bimbingan Belajar Tambahan",
+    "Menjelaskan Kenapa Terlambat Mengumpulkan Tugas",
+    "Berdiskusi Persiapan Ujian Masuk",
+    "Menjelaskan Konflik dengan Teman Sekelas",
+    "Meminta Surat Rekomendasi ke Guru",
+    "Membicarakan Kekhawatiran Sebelum Kelulusan",
+    "Menjelaskan Kenapa Pindah Jurusan",
+    "Berdiskusi Tentang Study Tour ke Luar Kota",
+    "Menceritakan Pengalaman Menjadi Ketua Kelas",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -870,6 +888,7 @@ CATEGORY_META = {
     "stasiun_n4": ("Di Stasiun", "🚉", "N4"),
     "belanja_n4": ("Belanja", "🛍️", "N4"),
     "arah_jalan_n4": ("Menanyakan Arah", "🧭", "N4"),
+    "sekolah_n4": ("Di Sekolah", "🏫", "N4"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -896,6 +915,7 @@ AVAILABLE_CATEGORIES = {
     "stasiun_n4": STASIUN_N4_TITLES,
     "belanja_n4": BELANJA_N4_TITLES,
     "arah_jalan_n4": ARAH_JALAN_N4_TITLES,
+    "sekolah_n4": SEKOLAH_N4_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -934,6 +954,7 @@ _ALL_TITLE_LISTS = {
     "STASIUN_N4_TITLES": STASIUN_N4_TITLES,
     "BELANJA_N4_TITLES": BELANJA_N4_TITLES,
     "ARAH_JALAN_N4_TITLES": ARAH_JALAN_N4_TITLES,
+    "SEKOLAH_N4_TITLES": SEKOLAH_N4_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
