@@ -918,6 +918,24 @@ HOBI_N4_TITLES = [
     "Mendiskusikan Rencana Membuka Kelas untuk Hobi Sendiri",
 ]
 
+TELEPON_N4_TITLES = [
+    "Menelepon untuk Menjelaskan Situasi yang Rumit",
+    "Menegosiasikan Jadwal Lewat Telepon",
+    "Meminta Maaf Lewat Telepon Karena Kesalahan Besar",
+    "Menelepon untuk Mengklarifikasi Kesalahpahaman",
+    "Menelepon Perusahaan untuk Komplain Layanan",
+    "Menjelaskan Alasan Membatalkan Janji Penting Lewat Telepon",
+    "Menelepon untuk Meminta Perpanjangan Deadline",
+    "Menegosiasikan Harga Lewat Telepon",
+    "Menelepon untuk Memberi Kabar Buruk",
+    "Menjelaskan Kesulitan Teknis Lewat Telepon",
+    "Menelepon untuk Meminta Rekomendasi",
+    "Menjelaskan Rencana Bisnis Lewat Telepon",
+    "Menelepon untuk Menindaklanjuti Wawancara Kerja",
+    "Meyakinkan Klien Lewat Telepon",
+    "Menelepon untuk Menyampaikan Keputusan Penting",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -946,6 +964,7 @@ CATEGORY_META = {
     "cuaca_basa_basi_n4": ("Cuaca & Basa-basi", "☁️", "N4"),
     "rumah_sakit_n4": ("Di Rumah Sakit", "🏥", "N4"),
     "hobi_n4": ("Hobi", "🎨", "N4"),
+    "telepon_n4": ("Telepon", "☎️", "N4"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -976,6 +995,7 @@ AVAILABLE_CATEGORIES = {
     "cuaca_basa_basi_n4": CUACA_BASA_BASI_N4_TITLES,
     "rumah_sakit_n4": RUMAH_SAKIT_N4_TITLES,
     "hobi_n4": HOBI_N4_TITLES,
+    "telepon_n4": TELEPON_N4_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1018,6 +1038,7 @@ _ALL_TITLE_LISTS = {
     "CUACA_BASA_BASI_N4_TITLES": CUACA_BASA_BASI_N4_TITLES,
     "RUMAH_SAKIT_N4_TITLES": RUMAH_SAKIT_N4_TITLES,
     "HOBI_N4_TITLES": HOBI_N4_TITLES,
+    "TELEPON_N4_TITLES": TELEPON_N4_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
