@@ -1062,6 +1062,24 @@ BIOSKOP_N4_TITLES = [
     "Membicarakan Festival Film yang Pernah Dikunjungi",
 ]
 
+PERKENALAN_N3_TITLES = [
+    "Memperkenalkan Diri di Acara Networking",
+    "Menjelaskan Latar Belakang Pendidikan secara Detail",
+    "Menceritakan Alasan Pindah ke Kota Ini",
+    "Memperkenalkan Diri sebagai Karyawan Baru",
+    "Menjelaskan Pengalaman Kerja Sebelumnya",
+    "Menceritakan Perjalanan Karier yang Berliku",
+    "Memperkenalkan Diri di Depan Klien Penting",
+    "Menjelaskan Kepribadian Diri Secara Jujur",
+    "Menceritakan Alasan Belajar Bahasa Jepang",
+    "Memperkenalkan Diri sebagai Mahasiswa Pertukaran",
+    "Menjelaskan Nilai-nilai yang Dipegang dalam Hidup",
+    "Menceritakan Tantangan yang Pernah Dihadapi",
+    "Memperkenalkan Diri di Wawancara Kerja",
+    "Menjelaskan Rencana Jangka Panjang",
+    "Menceritakan Kesan Pertama Bertemu Seseorang",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1098,6 +1116,7 @@ CATEGORY_META = {
     "bank_n4": ("Di Bank", "🏦", "N4"),
     "olahraga_n4": ("Olahraga", "⚽", "N4"),
     "bioskop_n4": ("Di Bioskop", "🎬", "N4"),
+    "perkenalan_n3": ("Perkenalan", "👋", "N3"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1136,6 +1155,7 @@ AVAILABLE_CATEGORIES = {
     "bank_n4": BANK_N4_TITLES,
     "olahraga_n4": OLAHRAGA_N4_TITLES,
     "bioskop_n4": BIOSKOP_N4_TITLES,
+    "perkenalan_n3": PERKENALAN_N3_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1146,7 +1166,7 @@ PLANNED_CATEGORIES = []
 LEVEL_META = {
     "N5": ("N5", True),
     "N4": ("N4", True),
-    "N3": ("N3", False),
+    "N3": ("N3", True),
     "N2": ("N2", False),
     "N1": ("N1", False),
 }
@@ -1186,6 +1206,7 @@ _ALL_TITLE_LISTS = {
     "BANK_N4_TITLES": BANK_N4_TITLES,
     "OLAHRAGA_N4_TITLES": OLAHRAGA_N4_TITLES,
     "BIOSKOP_N4_TITLES": BIOSKOP_N4_TITLES,
+    "PERKENALAN_N3_TITLES": PERKENALAN_N3_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
