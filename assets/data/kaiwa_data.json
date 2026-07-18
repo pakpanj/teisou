@@ -220472,5 +220472,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_sering_tersesat_meski_gps_n2",
+    "title": "Menjelaskan Alasan Sering Tersesat Meski Punya GPS",
+    "category": "arah_jalan_n2",
+    "description": "Kamu menjelaskan ke teman alasan sering tersesat meski sudah punya GPS.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "GPSがあるのに、いつも道に迷ってるよね。",
+          "romaji": "Jiipiiesu ga aru noni, itsumo michi ni mayotteru yo ne.",
+          "translation": "Meski ada GPS, selalu tersesat ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_sering_tersesat_meski_gps_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、方向音痴なだけに、地図を見ても混乱してしまうんだ。",
+            "romaji": "Un, houkou onchi na dake ni, chizu wo mite mo konran shite shimau n da.",
+            "translation": "Iya, karena memang buta arah, meski lihat peta pun tetap bingung.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "GPSさえあれば、絶対に迷わないよ。",
+            "romaji": "Jiipiiesu sae areba, zettai ni mayowanai yo.",
+            "translation": "Asal ada GPS, pasti tidak akan tersesat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "アプリの使い方が悪いんじゃない？",
+          "romaji": "Apuri no tsukaikata ga warui n janai?",
+          "translation": "Mungkin cara pakai aplikasinya yang salah?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_sering_tersesat_meski_gps_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "それもあるかもしれないけど、根本的な方向感覚のなさは否めないな。",
+            "romaji": "Sore mo aru kamoshirenai kedo, konponteki na houkou kankaku no nasa wa inamenai na.",
+            "translation": "Mungkin juga begitu, tapi tidak bisa dipungkiri kurangnya kepekaan arah dasarku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アプリの使い方には全く問題ないよ。",
+            "romaji": "Apuri no tsukaikata ni wa mattaku mondai nai yo.",
+            "translation": "Cara pakai aplikasinya sama sekali tidak ada masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何か対策はしてる？",
+          "romaji": "Nanika taisaku wa shiteru?",
+          "translation": "Ada langkah antisipasi?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_sering_tersesat_meski_gps_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "目印になる建物を、事前に確認するようにしているよ。",
+            "romaji": "Mejirushi ni naru tatemono wo, jizen ni kakunin suru you ni shite iru yo.",
+            "translation": "Aku berusaha memastikan bangunan penanda terlebih dahulu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に対策はせず、いつも行き当たりばったりだよ。",
+            "romaji": "Toku ni taisaku wa sezu, itsumo ikiatari battari da yo.",
+            "translation": "Tidak melakukan antisipasi apa pun, selalu asal jalan saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでも迷うことある？",
+          "romaji": "Sore demo mayou koto aru?",
+          "translation": "Meski begitu masih tersesat?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_sering_tersesat_meski_gps_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、対策していてもなお、迷ってしまうことがあるよ。",
+            "romaji": "Shoujiki, taisaku shite ite mo nao, mayotte shimau koto ga aru yo.",
+            "translation": "Jujur, meski sudah antisipasi tetap saja kadang tersesat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "対策してからは、一度も迷ったことないよ。",
+            "romaji": "Taisaku shite kara wa, ichido mo mayotta koto nai yo.",
+            "translation": "Sejak antisipasi, belum pernah tersesat sekali pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大変だね。",
+          "romaji": "Taihen da ne.",
+          "translation": "Berat ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_sering_tersesat_meski_gps_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に大変じゃないよ。",
+            "romaji": "Betsu ni taihen janai yo.",
+            "translation": "Sama sekali tidak berat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_keandalan_aplikasi_peta_n2",
+    "title": "Mendiskusikan Keandalan Aplikasi Peta Dibanding Peta Kertas",
+    "category": "arah_jalan_n2",
+    "description": "Kamu dan teman mendiskusikan keandalan aplikasi peta dibanding peta kertas.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "紙の地図って、もう時代遅れなのかな。",
+          "romaji": "Kami no chizu tte, mou jidai okure na no ka na.",
+          "translation": "Peta kertas itu, sudah ketinggalan zaman ya kayaknya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_keandalan_aplikasi_peta_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "便利さという点では負けるかもしれないけど、電池切れの心配がないのは強みだと思う。",
+            "romaji": "Benrisa to iu ten dewa makeru kamoshirenai kedo, denchigire no shinpai ga nai no wa tsuyomi da to omou.",
+            "translation": "Dari segi kepraktisan mungkin kalah, tapi tidak perlu khawatir baterai habis itu jadi kelebihannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "紙の地図なんて、見たことすらないよ。",
+            "romaji": "Kami no chizu nante, mita koto sura nai yo.",
+            "translation": "Bahkan belum pernah lihat peta kertas sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "アプリだと圏外で使えなくなるもんね。",
+          "romaji": "Apuri da to ken'gai de tsukaenaku naru mon ne.",
+          "translation": "Kalau aplikasi kan jadi tidak bisa dipakai di luar jangkauan sinyal ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_keandalan_aplikasi_peta_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、通信環境あっての便利さだから、過信は禁物だと思う。",
+            "romaji": "Un, tsuushin kankyou atte no benrisa da kara, kashin wa kinmotsu da to omou.",
+            "translation": "Iya, karena kepraktisannya bergantung pada kondisi jaringan, jangan terlalu percaya diri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "通信環境がなくても、アプリは完璧に使えるよ。",
+            "romaji": "Tsuushin kankyou ga nakute mo, apuri wa kanpeki ni tsukaeru yo.",
+            "translation": "Meski tidak ada jaringan, aplikasi bisa dipakai dengan sempurna.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "両方使い分けるのが理想的だよね。",
+          "romaji": "Ryouhou tsukaiwakeru no ga risouteki da yo ne.",
+          "translation": "Idealnya pakai keduanya secara bergantian ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_keandalan_aplikasi_peta_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、状況次第で使い分けるのが賢明だと思う。",
+            "romaji": "Un, joukyou shidai de tsukaiwakeru no ga kenmei da to omou.",
+            "translation": "Iya, kurasa bijak memakainya bergantian tergantung situasi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どちらか一方だけを使い続ければいいと思うよ。",
+            "romaji": "Dochira ka ippou dake wo tsukaitsuzukereba ii to omou yo.",
+            "translation": "Kupikir cukup terus pakai salah satu saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "アナログの良さも見直されてるらしいね。",
+          "romaji": "Anarogu no yosa mo minaosarete iru rashii ne.",
+          "translation": "Katanya kelebihan cara analog juga mulai ditinjau ulang ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_keandalan_aplikasi_peta_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、全体像を把握しやすいという声もあるよ。",
+            "romaji": "Un, zentaizou wo haaku shiyasui to iu koe mo aru yo.",
+            "translation": "Iya, ada juga suara yang bilang lebih mudah memahami gambaran keseluruhan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "アナログには、良いところが全くないという声ばかりだよ。",
+            "romaji": "Anarogu ni wa, ii tokoro ga mattaku nai to iu koe bakari da yo.",
+            "translation": "Hanya ada suara yang bilang cara analog sama sekali tidak ada kelebihannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "バランスが大事だね。",
+          "romaji": "Baransu ga daiji da ne.",
+          "translation": "Keseimbangan itu penting ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_keandalan_aplikasi_peta_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にバランスなんて必要ないと思うよ。",
+            "romaji": "Betsu ni baransu nante hitsuyou nai to omou yo.",
+            "translation": "Kupikir sama sekali tidak perlu keseimbangan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tersesat_kota_asing_tanpa_sinyal_n2",
+    "title": "Menceritakan Pengalaman Tersesat di Kota Asing Tanpa Sinyal",
+    "category": "arah_jalan_n2",
+    "description": "Kamu bercerita ke teman tentang pengalaman tersesat di kota asing tanpa sinyal.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "海外で迷子になったことがあるって聞いたよ。",
+          "romaji": "Kaigai de maigo ni natta koto ga aru tte kiita yo.",
+          "translation": "Kudengar pernah tersesat di luar negeri ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tersesat_kota_asing_tanpa_sinyal_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、圏外になった途端、頼れるものが何もなくなって焦ったよ。",
+            "romaji": "Un, ken'gai ni natta totan, tayoreru mono ga nanimo naku natte aseta yo.",
+            "translation": "Iya, begitu keluar jangkauan sinyal, tidak ada yang bisa diandalkan lagi dan aku panik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "迷子になったことなんて、一度もないよ。",
+            "romaji": "Maigo ni natta koto nante, ichido mo nai yo.",
+            "translation": "Belum pernah tersesat sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうやって解決したの？",
+          "romaji": "Dou yatte kaiketsu shita no?",
+          "translation": "Bagaimana menyelesaikannya?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tersesat_kota_asing_tanpa_sinyal_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "身振り手振りで、なんとか通行人に助けを求めたよ。",
+            "romaji": "Miburi teburi de, nantoka tsuukounin ni tasuke wo motometa yo.",
+            "translation": "Dengan bahasa tubuh, entah bagaimana aku meminta bantuan orang yang lewat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰にも頼らず、自力で解決したよ。",
+            "romaji": "Dare ni mo tayorazu, jiriki de kaiketsu shita yo.",
+            "translation": "Tidak bergantung pada siapa pun, menyelesaikan sendiri.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "怖くなかった？",
+          "romaji": "Kowakunakatta?",
+          "translation": "Tidak takut?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tersesat_kota_asing_tanpa_sinyal_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、不安と焦りで、涙が出そうになったよ。",
+            "romaji": "Shoujiki, fuan to aseri de, namida ga desou ni natta yo.",
+            "translation": "Jujur, karena cemas dan panik, hampir menangis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く怖くなく、むしろ楽しんでいたよ。",
+            "romaji": "Mattaku kowakunaku, mushiro tanoshinde ita yo.",
+            "translation": "Sama sekali tidak takut, malah menikmatinya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "この経験から学んだことは？",
+          "romaji": "Kono keiken kara mananda koto wa?",
+          "translation": "Yang dipelajari dari pengalaman ini apa?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tersesat_kota_asing_tanpa_sinyal_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "オフラインでも使える地図アプリを、必ず用意しておくようになったよ。",
+            "romaji": "Ofurain demo tsukaeru chizu apuri wo, kanarazu youi shite oku you ni natta yo.",
+            "translation": "Aku jadi selalu menyiapkan aplikasi peta yang bisa dipakai offline.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も学ばず、同じ失敗を繰り返しているよ。",
+            "romaji": "Toku ni nanimo manabazu, onaji shippai wo kurikaeshite iru yo.",
+            "translation": "Tidak belajar apa pun khususnya, terus mengulangi kesalahan yang sama.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "貴重な教訓だね。",
+          "romaji": "Kichou na kyoukun da ne.",
+          "translation": "Pelajaran yang berharga ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tersesat_kota_asing_tanpa_sinyal_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に貴重じゃないと思うよ。",
+            "romaji": "Betsu ni kichou janai to omou yo.",
+            "translation": "Kupikir sama sekali tidak berharga.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_baca_rambu_jalan_membingungkan_n2",
+    "title": "Menjelaskan Cara Membaca Rambu Jalan yang Membingungkan",
+    "category": "arah_jalan_n2",
+    "description": "Kamu menjelaskan ke teman cara membaca rambu jalan Jepang yang membingungkan bagi orang asing.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "日本の道路標識、複雑で分かりにくいことあるよね。",
+          "romaji": "Nihon no dourohyoushiki, fukuzatsu de wakarinikui koto aru yo ne.",
+          "translation": "Rambu jalan Jepang, kadang rumit dan susah dipahami ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_baca_rambu_jalan_membingungkan_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、漢字ばかりの標識は、外国人にはハードルが高いと言わざるを得ないよ。",
+            "romaji": "Un, kanji bakari no hyoushiki wa, gaikokujin ni wa haadoru ga takai to iwazaru wo enai yo.",
+            "translation": "Iya, rambu yang penuh kanji itu, terpaksa aku bilang jadi hambatan tinggi bagi orang asing.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "標識は誰にでも分かりやすいと思うよ。",
+            "romaji": "Hyoushiki wa dare ni demo wakariyasui to omou yo.",
+            "translation": "Kupikir rambunya mudah dipahami siapa saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうやって理解してるの？",
+          "romaji": "Dou yatte rikai shiteru no?",
+          "translation": "Bagaimana caranya memahaminya?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_baca_rambu_jalan_membingungkan_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "記号や色を手がかりに、なんとか推測するようにしているよ。",
+            "romaji": "Kigou ya iro wo tegakari ni, nantoka suisoku suru you ni shite iru yo.",
+            "translation": "Aku berusaha menebak dengan mengandalkan simbol dan warna sebagai petunjuk.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "標識は完全に無視して運転しているよ。",
+            "romaji": "Hyoushiki wa kanzen ni mushi shite unten shite iru yo.",
+            "translation": "Mengabaikan rambu sepenuhnya saat berkendara.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ローマ字表記があれば助かるよね。",
+          "romaji": "Roomaji hyouki ga areba tasukaru yo ne.",
+          "translation": "Kalau ada tulisan romaji pasti membantu ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_baca_rambu_jalan_membingungkan_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あるとないとでは、安心感がまるで違うと思う。",
+            "romaji": "Un, aru to nai to de wa, anshinkan ga marude chigau to omou.",
+            "translation": "Iya, kurasa rasa amannya benar-benar berbeda antara ada dan tidak ada.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ローマ字があってもなくても、全く変わらないと思うよ。",
+            "romaji": "Roomaji ga atte mo nakute mo, mattaku kawaranai to omou yo.",
+            "translation": "Kupikir ada atau tidak ada romaji sama sekali tidak berubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "改善されるといいね。",
+          "romaji": "Kaizen sareru to ii ne.",
+          "translation": "Semoga membaik ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_baca_rambu_jalan_membingungkan_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、外国人にも配慮した表示が増えるといいな。",
+            "romaji": "Un, gaikokujin ni mo hairyo shita hyouji ga fueru to ii na.",
+            "translation": "Iya, semoga tampilan yang mempertimbangkan orang asing juga bertambah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に改善される必要はないと思うよ。",
+            "romaji": "Betsu ni kaizen sareru hitsuyou wa nai to omou yo.",
+            "translation": "Kupikir tidak perlu diperbaiki juga tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そうだね。",
+          "romaji": "Sou da ne.",
+          "translation": "Benar juga ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_baca_rambu_jalan_membingungkan_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん。",
+            "romaji": "Un.",
+            "translation": "Iya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_alamat_jepang_tidak_berurutan_n2",
+    "title": "Membicarakan Fenomena Alamat di Jepang yang Tidak Berurutan",
+    "category": "arah_jalan_n2",
+    "description": "Kamu membicarakan fenomena alamat di Jepang yang nomor bloknya tidak berurutan dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "日本の住所って、番地が順番通りじゃないことが多いよね。",
+          "romaji": "Nihon no juusho tte, banchi ga junban doori janai koto ga ooi yo ne.",
+          "translation": "Alamat di Jepang itu, seringnya nomor bloknya tidak berurutan ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_alamat_jepang_tidak_berurutan_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、地番が土地の登記順だから、道順とは一致しないんだよね。",
+            "romaji": "Un, chiban ga tochi no touki jun da kara, michijun to wa icchi shinai n da yo ne.",
+            "translation": "Iya, karena nomor tanahnya berdasarkan urutan pendaftaran tanah, jadi tidak sesuai dengan urutan jalan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "日本の住所は、いつも綺麗に順番通りだよ。",
+            "romaji": "Nihon no juusho wa, itsumo kirei ni junban doori da yo.",
+            "translation": "Alamat Jepang selalu rapi berurutan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "初めて見た時は混乱したでしょ。",
+          "romaji": "Hajimete mita toki wa konran shita desho.",
+          "translation": "Waktu pertama kali melihat pasti bingung ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_alamat_jepang_tidak_berurutan_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、隣同士の番地が飛んでいることもあって、驚いたよ。",
+            "romaji": "Un, tonaridoushi no banchi ga tonde iru koto mo atte, odoroita yo.",
+            "translation": "Iya, aku terkejut karena kadang nomor bloknya melompat meski bersebelahan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く混乱せず、すぐに理解できたよ。",
+            "romaji": "Mattaku konran sezu, sugu ni rikai dekita yo.",
+            "translation": "Sama sekali tidak bingung, langsung bisa dipahami.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうやって目的地を見つけるの？",
+          "romaji": "Dou yatte mokutekichi wo mitsukeru no?",
+          "translation": "Bagaimana caranya menemukan tempat tujuan?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_alamat_jepang_tidak_berurutan_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "番地だけに頼らず、目印になる建物を探すようにしているよ。",
+            "romaji": "Banchi dake ni tayorazu, mejirushi ni naru tatemono wo sagasu you ni shite iru yo.",
+            "translation": "Aku berusaha mencari bangunan penanda, tidak hanya mengandalkan nomor blok saja.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "番地さえ見れば、迷わず見つけられるよ。",
+            "romaji": "Banchi sae mireba, mayowazu mitsukerareru yo.",
+            "translation": "Asal lihat nomor bloknya, pasti bisa ditemukan tanpa tersesat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "慣れるまで大変だったね。",
+          "romaji": "Nareru made taihen datta ne.",
+          "translation": "Sampai terbiasa pasti berat ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_alamat_jepang_tidak_berurutan_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、慣れるまでは本当に苦労したよ。",
+            "romaji": "Un, nareru made wa hontou ni kurou shita yo.",
+            "translation": "Iya, sampai terbiasa benar-benar kesulitan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く苦労しなかったよ。",
+            "romaji": "Mattaku kurou shinakatta yo.",
+            "translation": "Sama sekali tidak kesulitan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "面白いシステムだね。",
+          "romaji": "Omoshiroi shisutemu da ne.",
+          "translation": "Sistem yang menarik ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_alamat_jepang_tidak_berurutan_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に面白くないと思うよ。",
+            "romaji": "Betsu ni omoshirokunai to omou yo.",
+            "translation": "Kupikir sama sekali tidak menarik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_etika_bertanya_arah_n2",
+    "title": "Mendiskusikan Etika Bertanya Arah kepada Orang Asing",
+    "category": "arah_jalan_n2",
+    "description": "Kamu dan teman mendiskusikan etika bertanya arah kepada orang yang tidak dikenal.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "知らない人に道を聞くの、ためらうことある？",
+          "romaji": "Shiranai hito ni michi wo kiku no, tamerau koto aru?",
+          "translation": "Ragu untuk tanya arah ke orang asing?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_etika_bertanya_arah_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、忙しそうな人には、声をかけるのをつい躊躇ってしまうんだ。",
+            "romaji": "Un, isogashisou na hito ni wa, koe wo kakeru no wo tsui tameratte shimau n da.",
+            "translation": "Iya, kalau ke orang yang terlihat sibuk, aku selalu ragu untuk menyapa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰にでも遠慮なく声をかけているよ。",
+            "romaji": "Dare ni demo enryo naku koe wo kakete iru yo.",
+            "translation": "Menyapa siapa saja tanpa sungkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな人になら聞きやすい？",
+          "romaji": "Donna hito ni nara kikiyasui?",
+          "translation": "Ke orang seperti apa yang mudah untuk bertanya?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_etika_bertanya_arah_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "立ち止まっている人のほうが、話しかけやすい気がするな。",
+            "romaji": "Tachidomatte iru hito no hou ga, hanashikakeyasui ki ga suru na.",
+            "translation": "Kurasa lebih mudah menyapa orang yang sedang berhenti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰であっても、話しかけやすさに違いはないと思うよ。",
+            "romaji": "Dare de atte mo, hanashikakeyasusa ni chigai wa nai to omou yo.",
+            "translation": "Siapa pun sama saja, tidak ada bedanya untuk disapa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "断られたことはある？",
+          "romaji": "Kotowarareta koto wa aru?",
+          "translation": "Pernah ditolak?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_etika_bertanya_arah_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、急いでいたのか、そっけなく去られたことがあるよ。",
+            "romaji": "Un, isoide ita no ka, sokkenaku sararareta koto ga aru yo.",
+            "translation": "Iya, pernah ditinggalkan dengan dingin, mungkin karena sedang buru-buru.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "断られたことは一度もないよ。",
+            "romaji": "Kotowarareta koto wa ichido mo nai yo.",
+            "translation": "Belum pernah ditolak sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでもまた聞くようにしてる？",
+          "romaji": "Sore demo mata kiku you ni shiteru?",
+          "translation": "Meski begitu masih berusaha bertanya lagi?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_etika_bertanya_arah_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、一度断られたくらいでは、諦めないようにしているよ。",
+            "romaji": "Un, ichido kotowarareta kurai dewa, akiramenai you ni shite iru yo.",
+            "translation": "Iya, aku berusaha tidak menyerah hanya karena sekali ditolak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一度断られてからは、二度と誰にも聞かないようにしているよ。",
+            "romaji": "Ichido kotowararete kara wa, nidoto dare ni mo kikanai you ni shite iru yo.",
+            "translation": "Sejak sekali ditolak, aku berusaha tidak pernah bertanya ke siapa pun lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "勇気がいるよね。",
+          "romaji": "Yuuki ga iru yo ne.",
+          "translation": "Butuh keberanian ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_etika_bertanya_arah_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に勇気なんていらないと思うよ。",
+            "romaji": "Betsu ni yuuki nante iranai to omou yo.",
+            "translation": "Kupikir sama sekali tidak perlu keberanian.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jadi_penunjuk_jalan_turis_n2",
+    "title": "Menceritakan Pengalaman Menjadi Penunjuk Jalan bagi Turis",
+    "category": "arah_jalan_n2",
+    "description": "Kamu bercerita ke teman tentang pengalaman ditanya arah oleh turis asing.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "観光客に道を聞かれたことがあるって聞いたよ。",
+          "romaji": "Kankoukyaku ni michi wo kikareta koto ga aru tte kiita yo.",
+          "translation": "Kudengar pernah ditanya arah oleh turis ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_jadi_penunjuk_jalan_turis_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、英語での説明を求められて、たじたじになったよ。",
+            "romaji": "Un, eigo de no setsumei wo motomerarete, tajitaji ni natta yo.",
+            "translation": "Iya, diminta menjelaskan dalam bahasa Inggris, aku sampai kebingungan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "観光客に道を聞かれたことなんて、一度もないよ。",
+            "romaji": "Kankoukyaku ni michi wo kikareta koto nante, ichido mo nai yo.",
+            "translation": "Belum pernah ditanya arah oleh turis sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ちゃんと案内できたの？",
+          "romaji": "Chanto annai dekita no?",
+          "translation": "Bisa mengantar dengan baik?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_jadi_penunjuk_jalan_turis_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "拙い英語ながらも、身振りを交えて、なんとか伝えたよ。",
+            "romaji": "Tsutanai eigo nagara mo, miburi wo majiete, nantoka tsutaeta yo.",
+            "translation": "Meski bahasa Inggrisku terbatas, aku berusaha menyampaikannya dengan bahasa tubuh.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "英語が全く通じず、諦めて立ち去ったよ。",
+            "romaji": "Eigo ga mattaku tsuujizu, akiramete tachisatta yo.",
+            "translation": "Bahasa Inggrisnya sama sekali tidak nyambung, aku menyerah dan pergi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "感謝された？",
+          "romaji": "Kansha sareta?",
+          "translation": "Diberi ucapan terima kasih?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_jadi_penunjuk_jalan_turis_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、満面の笑みで感謝してくれて、嬉しかったよ。",
+            "romaji": "Un, manmen no emi de kansha shite kurete, ureshikatta yo.",
+            "translation": "Iya, mereka berterima kasih dengan senyum lebar, aku senang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "お礼なんて、一言もなかったよ。",
+            "romaji": "Orei nante, hitokoto mo nakatta yo.",
+            "translation": "Sama sekali tidak ada ucapan terima kasih.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いい経験になったね。",
+          "romaji": "Ii keiken ni natta ne.",
+          "translation": "Jadi pengalaman yang bagus ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_jadi_penunjuk_jalan_turis_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、また誰かの役に立ちたいと思ったよ。",
+            "romaji": "Un, mata dareka no yaku ni tachitai to omotta yo.",
+            "translation": "Iya, aku jadi ingin membantu orang lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "もう二度と関わりたくないと思ったよ。",
+            "romaji": "Mou nidoto kakawaritakunai to omotta yo.",
+            "translation": "Berpikir tidak ingin terlibat lagi sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "素敵な出来事だね。",
+          "romaji": "Suteki na dekigoto da ne.",
+          "translation": "Kejadian yang indah ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_jadi_penunjuk_jalan_turis_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。",
+            "romaji": "Arigatou.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に素敵じゃないと思うよ。",
+            "romaji": "Betsu ni suteki janai to omou yo.",
+            "translation": "Kupikir sama sekali tidak indah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_perbedaan_budaya_petunjuk_arah_n2",
+    "title": "Menjelaskan Perbedaan Budaya dalam Memberi Petunjuk Arah",
+    "category": "arah_jalan_n2",
+    "description": "Kamu menjelaskan ke teman perbedaan budaya dalam memberi petunjuk arah antar negara.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "国によって道案内の仕方も違うって聞くよね。",
+          "romaji": "Kuni ni yotte michi annai no shikata mo chigau tte kiku yo ne.",
+          "translation": "Kudengar tergantung negaranya cara menunjukkan arah juga berbeda ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_perbedaan_budaya_petunjuk_arah_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、目印中心の国もあれば、距離や方角中心の国もあるらしいよ。",
+            "romaji": "Un, mejirushi chuushin no kuni mo areba, kyori ya houkaku chuushin no kuni mo aru rashii yo.",
+            "translation": "Iya, katanya ada negara yang berpatokan pada penanda, ada juga yang berpatokan pada jarak dan arah mata angin.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "どこの国でも、道案内の仕方は全く同じらしいよ。",
+            "romaji": "Doko no kuni demo, michi annai no shikata wa mattaku onaji rashii yo.",
+            "translation": "Katanya cara menunjukkan arah sama persis di negara mana pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "日本はどっちなんだろう。",
+          "romaji": "Nihon wa docchi nan darou.",
+          "translation": "Jepang termasuk yang mana ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_perbedaan_budaya_petunjuk_arah_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "コンビニや駅など、目印を使うことが多い気がするな。",
+            "romaji": "Konbini ya eki nado, mejirushi wo tsukau koto ga ooi ki ga suru na.",
+            "translation": "Kurasa seringnya menggunakan penanda seperti minimarket atau stasiun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "日本では、方角しか使わないと思うよ。",
+            "romaji": "Nihon dewa, houkaku shika tsukawanai to omou yo.",
+            "translation": "Kupikir di Jepang hanya menggunakan arah mata angin saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "海外だと方角で説明されること多いの？",
+          "romaji": "Kaigai da to houkaku de setsumei sareru koto ooi no?",
+          "translation": "Kalau di luar negeri sering dijelaskan dengan arah mata angin ya?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_perbedaan_budaya_petunjuk_arah_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、東西南北で説明されて、戸惑ったことがあるよ。",
+            "romaji": "Un, touzainanboku de setsumei sarete, tomadotta koto ga aru yo.",
+            "translation": "Iya, pernah bingung karena dijelaskan dengan arah timur-barat-utara-selatan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "方角で説明されたことは、一度もないよ。",
+            "romaji": "Houkaku de setsumei sareta koto wa, ichido mo nai yo.",
+            "translation": "Belum pernah dijelaskan dengan arah mata angin sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "文化の違いって興味深いね。",
+          "romaji": "Bunka no chigai tte kyoumibukai ne.",
+          "translation": "Perbedaan budaya itu menarik ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_perbedaan_budaya_petunjuk_arah_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に興味深いとは思わないよ。",
+            "romaji": "Betsu ni kyoumibukai to wa omowanai yo.",
+            "translation": "Sama sekali tidak berpikir menarik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もっと知りたいね。",
+          "romaji": "Motto shiritai ne.",
+          "translation": "Ingin tahu lebih banyak ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_perbedaan_budaya_petunjuk_arah_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に知りたくないよ。",
+            "romaji": "Betsu ni shiritakunai yo.",
+            "translation": "Sama sekali tidak ingin tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_dampak_navigasi_kemampuan_orientasi_n2",
+    "title": "Membicarakan Dampak Aplikasi Navigasi terhadap Kemampuan Orientasi",
+    "category": "arah_jalan_n2",
+    "description": "Kamu membicarakan dampak ketergantungan pada aplikasi navigasi terhadap kemampuan orientasi dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ナビに頼りすぎて、方向感覚が鈍った気がするんだよね。",
+          "romaji": "Nabi ni tayorisugite, houkou kankaku ga nibutta ki ga suru n da yo ne.",
+          "translation": "Terlalu bergantung pada navigasi, kurasa kepekaan arahku jadi tumpul."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_dampak_navigasi_kemampuan_orientasi_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "分かる、僕も地図アプリなしでは、近所すら歩けなくなったよ。",
+            "romaji": "Wakaru, boku mo chizu apuri nashi de wa, kinjo sura arukenaku natta yo.",
+            "translation": "Aku paham, aku pun tanpa aplikasi peta bahkan tidak bisa jalan di lingkungan sekitar sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "僕はナビなんて、一度も使ったことないよ。",
+            "romaji": "Boku wa nabi nante, ichido mo tsukatta koto nai yo.",
+            "translation": "Belum pernah pakai navigasi sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "昔の人はすごかったんだろうね。",
+          "romaji": "Mukashi no hito wa sugokatta n darou ne.",
+          "translation": "Orang zaman dulu pasti hebat ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_dampak_navigasi_kemampuan_orientasi_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、地図一枚あっての旅というのは、今では考えられないな。",
+            "romaji": "Un, chizu ichimai atte no tabi to iu no wa, ima dewa kangaerarenai na.",
+            "translation": "Iya, perjalanan yang hanya mengandalkan selembar peta itu, sekarang tidak terbayangkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "昔の人も、今とほとんど変わらなかったと思うよ。",
+            "romaji": "Mukashi no hito mo, ima to hotondo kawaranakatta to omou yo.",
+            "translation": "Kupikir orang zaman dulu pun hampir sama seperti sekarang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "意識的に地図を見るようにしてる？",
+          "romaji": "Ishikiteki ni chizu wo miru you ni shiteru?",
+          "translation": "Sengaja berusaha melihat peta?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_dampak_navigasi_kemampuan_orientasi_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、たまにはあえてアプリを使わずに歩くようにしているよ。",
+            "romaji": "Un, tamani wa aete apuri wo tsukawazu ni aruku you ni shite iru yo.",
+            "translation": "Iya, kadang aku sengaja berjalan tanpa memakai aplikasi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "意識的に地図を見ることは、全くしていないよ。",
+            "romaji": "Ishikiteki ni chizu wo miru koto wa, mattaku shite inai yo.",
+            "translation": "Sama sekali tidak berusaha sengaja melihat peta.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "バランスが大事だね。",
+          "romaji": "Baransu ga daiji da ne.",
+          "translation": "Keseimbangan itu penting ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_dampak_navigasi_kemampuan_orientasi_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にバランスなんて必要ないと思うよ。",
+            "romaji": "Betsu ni baransu nante hitsuyou nai to omou yo.",
+            "translation": "Kupikir sama sekali tidak perlu keseimbangan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "便利さと引き換えに失うものもあるね。",
+          "romaji": "Benrisa to hikikae ni ushinau mono mo aru ne.",
+          "translation": "Ada juga yang hilang sebagai gantinya kepraktisan ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_dampak_navigasi_kemampuan_orientasi_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に失っているものはないと思うよ。",
+            "romaji": "Betsu ni ushinatte iru mono wa nai to omou yo.",
+            "translation": "Kupikir sama sekali tidak ada yang hilang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tata_kota_membingungkan_pendatang_n2",
+    "title": "Mendiskusikan Tata Kota yang Membingungkan bagi Pendatang Baru",
+    "category": "arah_jalan_n2",
+    "description": "Kamu dan teman mendiskusikan tata kota yang rumit dan membingungkan bagi pendatang baru.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "この街の道、入り組んでて分かりにくいよね。",
+          "romaji": "Kono machi no michi, irikundete wakarinikui yo ne.",
+          "translation": "Jalan di kota ini, rumit bertumpuk-tumpuk dan susah dipahami ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tata_kota_membingungkan_pendatang_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、碁盤の目状ではないだけに、引っ越したばかりの頃は本当に苦労したよ。",
+            "romaji": "Un, gobannomejou dewa nai dake ni, hikkoshita bakari no koro wa hontou ni kurou shita yo.",
+            "translation": "Iya, karena bukan berbentuk kotak-kotak, waktu baru pindah dulu benar-benar kesulitan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "この街の道は、とても分かりやすいと思うよ。",
+            "romaji": "Kono machi no michi wa, totemo wakariyasui to omou yo.",
+            "translation": "Kupikir jalan di kota ini sangat mudah dipahami.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今はもう慣れた？",
+          "romaji": "Ima wa mou nareta?",
+          "translation": "Sekarang sudah terbiasa?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tata_kota_membingungkan_pendatang_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、住んでいるうちに、自然と覚えていったよ。",
+            "romaji": "Un, sunde iru uchi ni, shizen to oboete itta yo.",
+            "translation": "Iya, seiring tinggal di sini, secara alami aku hafal sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いまだに全く覚えられていないよ。",
+            "romaji": "Imada ni mattaku oboerarete inai yo.",
+            "translation": "Sampai sekarang sama sekali belum hafal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新しく引っ越してくる人は大変だろうね。",
+          "romaji": "Atarashiku hikkoshite kuru hito wa taihen darou ne.",
+          "translation": "Orang yang baru pindah pasti kesulitan ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tata_kota_membingungkan_pendatang_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、最初の数ヶ月は迷ってばかりだと思うよ。",
+            "romaji": "Un, saisho no suukagetsu wa mayotte bakari da to omou yo.",
+            "translation": "Iya, kurasa beberapa bulan pertama akan sering tersesat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰でもすぐに覚えられると思うよ。",
+            "romaji": "Dare demo sugu ni oboerareru to omou yo.",
+            "translation": "Kupikir siapa pun akan langsung bisa hafal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何かアドバイスある？",
+          "romaji": "Nanika adobaisu aru?",
+          "translation": "Ada saran?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tata_kota_membingungkan_pendatang_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "焦らず、少しずつ歩いて覚えるのが一番だと思うよ。",
+            "romaji": "Aserazu, sukoshi zutsu aruite oboeru no ga ichiban da to omou yo.",
+            "translation": "Kurasa yang terbaik adalah tidak terburu-buru dan menghafal sedikit demi sedikit dengan berjalan kaki.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "一度に全部覚えようとするのが一番だと思うよ。",
+            "romaji": "Ichido ni zenbu oboeyou to suru no ga ichiban da to omou yo.",
+            "translation": "Kupikir yang terbaik adalah berusaha menghafal semuanya sekaligus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "参考にするよ。",
+          "romaji": "Sankou ni suru yo.",
+          "translation": "Akan kujadikan referensi."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tata_kota_membingungkan_pendatang_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、頑張ってね。",
+            "romaji": "Un, ganbatte ne.",
+            "translation": "Iya, semangat ya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に参考にしなくていいよ。",
+            "romaji": "Betsu ni sankou ni shinakute ii yo.",
+            "translation": "Tidak usah dijadikan referensi juga tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_nyasar_kejar_waktu_n2",
+    "title": "Menceritakan Pengalaman Nyasar Saat Mengejar Waktu Penting",
+    "category": "arah_jalan_n2",
+    "description": "Kamu bercerita ke teman tentang pengalaman tersesat di hari wawancara penting.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大事な面接の日に道に迷ったことがあるって聞いたよ。",
+          "romaji": "Daiji na mensetsu no hi ni michi ni mayotta koto ga aru tte kiita yo.",
+          "translation": "Kudengar pernah tersesat di hari wawancara penting ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_nyasar_kejar_waktu_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、焦れば焦るほど、余計に道が分からなくなってしまったんだ。",
+            "romaji": "Un, asereba aseru hodo, yokei ni michi ga wakaranaku natte shimatta n da.",
+            "translation": "Iya, semakin panik semakin tidak tahu jalan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く焦らず、冷静に対処できたよ。",
+            "romaji": "Mattaku aserazu, reisei ni taisho dekita yo.",
+            "translation": "Sama sekali tidak panik, bisa mengatasinya dengan tenang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "結局どうなったの？",
+          "romaji": "Kekkyoku dou natta no?",
+          "translation": "Akhirnya jadi bagaimana?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_nyasar_kejar_waktu_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "通行人に泣きつくようにして、なんとか間に合わせたよ。",
+            "romaji": "Tsuukounin ni nakitsuku you ni shite, nantoka maniawaseta yo.",
+            "translation": "Aku hampir merengek ke orang yang lewat, entah bagaimana berhasil tepat waktu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "結局、面接には間に合わなかったよ。",
+            "romaji": "Kekkyoku, mensetsu ni wa maniawanakatta yo.",
+            "translation": "Akhirnya tidak sempat tiba di wawancara.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "面接官には正直に話した？",
+          "romaji": "Mensetsukan ni wa shoujiki ni hanashita?",
+          "translation": "Bilang jujur ke pewawancara?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_nyasar_kejar_waktu_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、正直に事情を話したら、意外にも理解を示してくれたよ。",
+            "romaji": "Un, shoujiki ni jijou wo hanashitara, igai ni mo rikai wo shimeshite kureta yo.",
+            "translation": "Iya, setelah cerita apa adanya, di luar dugaan mereka menunjukkan pengertian.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "事情は一切話さず、黙っていたよ。",
+            "romaji": "Jijou wa issai hanasazu, damatte ita yo.",
+            "translation": "Tidak menceritakan situasinya sama sekali, diam saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それ以来、対策してる？",
+          "romaji": "Sore irai, taisaku shiteru?",
+          "translation": "Sejak itu melakukan antisipasi?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_nyasar_kejar_waktu_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、大事な予定の前は、必ず下見をするようにしているよ。",
+            "romaji": "Un, daiji na yotei no mae wa, kanarazu shitami wo suru you ni shite iru yo.",
+            "translation": "Iya, sebelum jadwal penting, aku selalu berusaha survei lokasi dulu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "それ以来も、特に何も対策していないよ。",
+            "romaji": "Sore irai mo, toku ni nanimo taisaku shite inai yo.",
+            "translation": "Sejak itu pun sama sekali tidak melakukan antisipasi apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いい教訓になったね。",
+          "romaji": "Ii kyoukun ni natta ne.",
+          "translation": "Jadi pelajaran yang baik ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_nyasar_kejar_waktu_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に教訓にはならなかったよ。",
+            "romaji": "Betsu ni kyoukun ni wa naranakatta yo.",
+            "translation": "Sama sekali tidak jadi pelajaran.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_hafalkan_rute_n2",
+    "title": "Menjelaskan Strategi Menghafal Rute agar Tidak Tersesat",
+    "category": "arah_jalan_n2",
+    "description": "Kamu menjelaskan ke teman strategi menghafal rute agar tidak tersesat.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "道を覚えるの、得意だって聞いたよ。",
+          "romaji": "Michi wo oboeru no, tokui da tte kiita yo.",
+          "translation": "Kudengar pandai menghafal jalan ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_hafalkan_rute_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、一度通った道は、大体頭に入るタイプなんだ。",
+            "romaji": "Un, ichido tootta michi wa, daitai atama ni hairu taipu nan da.",
+            "translation": "Iya, aku tipe yang jalan yang sudah pernah dilewati sekali biasanya langsung masuk ke kepala.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "道を覚えるのは、大の苦手なんだ。",
+            "romaji": "Michi wo oboeru no wa, dai no nigate nan da.",
+            "translation": "Sangat tidak jago menghafal jalan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "コツを教えてほしいな。",
+          "romaji": "Kotsu wo oshiete hoshii na.",
+          "translation": "Aku ingin diajari triknya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_hafalkan_rute_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "曲がり角ごとに、印象的な建物を結びつけて覚えるといいよ。",
+            "romaji": "Magarikado goto ni, inshouteki na tatemono wo musubitsukete oboeru to ii yo.",
+            "translation": "Sebaiknya kaitkan bangunan yang berkesan di tiap tikungan untuk menghafal.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にコツと呼べるものはないよ。",
+            "romaji": "Toku ni kotsu to yoberu mono wa nai yo.",
+            "translation": "Tidak ada yang bisa disebut trik khususnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "地図アプリは使わないの？",
+          "romaji": "Chizu apuri wa tsukawanai no?",
+          "translation": "Tidak pakai aplikasi peta?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_hafalkan_rute_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "最初だけ確認して、あとは自分の記憶を頼りにしているよ。",
+            "romaji": "Saisho dake kakunin shite, ato wa jibun no kioku wo tayori ni shite iru yo.",
+            "translation": "Aku hanya memastikan di awal saja, sisanya mengandalkan ingatanku sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "常にアプリに頼りきりで、自分では何も覚えていないよ。",
+            "romaji": "Tsune ni apuri ni tayorikiri de, jibun de wa nanimo oboete inai yo.",
+            "translation": "Selalu sepenuhnya bergantung pada aplikasi, sama sekali tidak menghafal sendiri.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "すごい記憶力だね。",
+          "romaji": "Sugoi kiokuryoku da ne.",
+          "translation": "Daya ingatnya luar biasa ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_hafalkan_rute_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。",
+            "romaji": "Arigatou.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にすごくないと思うよ。",
+            "romaji": "Betsu ni sugokunai to omou yo.",
+            "translation": "Kupikir sama sekali tidak hebat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "羨ましいな。",
+          "romaji": "Urayamashii na.",
+          "translation": "Iri deh."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_hafalkan_rute_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いつでも教えるよ。",
+            "romaji": "Itsu demo oshieru yo.",
+            "translation": "Kapan saja akan kuajari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰にも教えるつもりはないよ。",
+            "romaji": "Dare ni mo oshieru tsumori wa nai yo.",
+            "translation": "Sama sekali tidak berniat mengajari siapa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_petunjuk_arah_desa_kota_n2",
+    "title": "Membicarakan Perbedaan Petunjuk Arah di Desa dan Kota",
+    "category": "arah_jalan_n2",
+    "description": "Kamu membicarakan perbedaan cara memberi petunjuk arah di desa dan kota dengan teman.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "田舎と都会だと、道案内の仕方も違うよね。",
+          "romaji": "Inaka to tokai da to, michi annai no shikata mo chigau yo ne.",
+          "translation": "Kalau desa dan kota, cara menunjukkan arah juga beda ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_petunjuk_arah_desa_kota_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、田舎ならではの、のどかな案内の仕方があると思う。",
+            "romaji": "Un, inaka naradewa no, nodoka na annai no shikata ga aru to omou.",
+            "translation": "Iya, kurasa ada cara menunjukkan arah yang khas desa dan santai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "田舎も都会も、道案内の仕方に違いはないと思うよ。",
+            "romaji": "Inaka mo tokai mo, michi annai no shikata ni chigai wa nai to omou yo.",
+            "translation": "Kupikir tidak ada beda cara menunjukkan arah antara desa dan kota.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にどう違うの？",
+          "romaji": "Gutaiteki ni dou chigau no?",
+          "translation": "Secara konkret bedanya bagaimana?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_petunjuk_arah_desa_kota_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "田舎では「あの大きな木を過ぎたら」みたいな案内をされることが多いよ。",
+            "romaji": "Inaka dewa 'ano ookina ki wo sugitara' mitai na annai wo sareru koto ga ooi yo.",
+            "translation": "Di desa seringnya diberi petunjuk seperti 'setelah melewati pohon besar itu'.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "田舎でも都会と同じく、番地で説明されることが多いよ。",
+            "romaji": "Inaka demo tokai to onajiku, banchi de setsumei sareru koto ga ooi yo.",
+            "translation": "Di desa pun sama seperti kota, sering dijelaskan dengan nomor blok.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "都会だとどう？",
+          "romaji": "Tokai da to dou?",
+          "translation": "Kalau di kota bagaimana?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_petunjuk_arah_desa_kota_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "都会ともなると、駅名やビル名を使った説明が中心になるね。",
+            "romaji": "Tokai to mo naru to, ekimei ya birumei wo tsukatta setsumei ga chuushin ni naru ne.",
+            "translation": "Kalau sudah di kota, penjelasannya jadi berpusat pada nama stasiun atau gedung.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "都会でも、田舎と全く同じ説明のされ方をされるよ。",
+            "romaji": "Tokai demo, inaka to mattaku onaji setsumei no sarekata wo sareru yo.",
+            "translation": "Di kota pun dijelaskan dengan cara yang sama persis dengan desa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どちらも味があるよね。",
+          "romaji": "Dochira mo aji ga aru yo ne.",
+          "translation": "Keduanya punya ciri khas masing-masing ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_petunjuk_arah_desa_kota_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "面白い違いだね。",
+          "romaji": "Omoshiroi chigai da ne.",
+          "translation": "Perbedaan yang menarik ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_petunjuk_arah_desa_kota_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に面白くないと思うよ。",
+            "romaji": "Betsu ni omoshirokunai to omou yo.",
+            "translation": "Kupikir sama sekali tidak menarik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_peran_landmark_n2",
+    "title": "Mendiskusikan Peran Landmark dalam Memberi Petunjuk Arah",
+    "category": "arah_jalan_n2",
+    "description": "Kamu dan teman mendiskusikan peran landmark dalam memberi petunjuk arah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "道案内する時、ランドマークを使うことが多いよね。",
+          "romaji": "Michi annai suru toki, randomaaku wo tsukau koto ga ooi yo ne.",
+          "translation": "Waktu menunjukkan arah, sering pakai landmark ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_peran_landmark_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、言葉での説明だけでは、伝わりにくいことも多いからね。",
+            "romaji": "Un, kotoba de no setsumei dake dewa, tsutawarinikui koto mo ooi kara ne.",
+            "translation": "Iya, karena hanya dengan penjelasan lewat kata-kata saja, sering susah tersampaikan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ランドマークなんて、一度も使ったことないよ。",
+            "romaji": "Randomaaku nante, ichido mo tsukatta koto nai yo.",
+            "translation": "Belum pernah pakai landmark sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな建物がランドマークになりやすいの？",
+          "romaji": "Donna tatemono ga randomaaku ni nariyasui no?",
+          "translation": "Bangunan seperti apa yang mudah jadi landmark?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_peran_landmark_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "高い建物や、独特な外観のものが目印になりやすいと思う。",
+            "romaji": "Takai tatemono ya, dokutoku na gaikan no mono ga mejirushi ni nariyasui to omou.",
+            "translation": "Kurasa bangunan tinggi atau yang punya tampilan khas mudah jadi penanda.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "目立たない建物のほうが、目印になりやすいと思うよ。",
+            "romaji": "Medatanai tatemono no hou ga, mejirushi ni nariyasui to omou yo.",
+            "translation": "Kupikir bangunan yang tidak mencolok lebih mudah jadi penanda.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ランドマークがなくなったら困るね。",
+          "romaji": "Randomaaku ga naku nattara komaru ne.",
+          "translation": "Kalau landmarknya hilang jadi susah ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_peran_landmark_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、目印あっての道案内だから、なくなると本当に困ると思う。",
+            "romaji": "Un, mejirushi atte no michi annai da kara, naku naru to hontou ni komaru to omou.",
+            "translation": "Iya, karena petunjuk arah bergantung pada penanda, kalau hilang kurasa benar-benar akan kesulitan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "目印がなくなっても、全く困らないと思うよ。",
+            "romaji": "Mejirushi ga naku natte mo, mattaku komaranai to omou yo.",
+            "translation": "Kupikir meski penandanya hilang sama sekali tidak akan kesulitan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "実際そういうことあった？",
+          "romaji": "Jissai sou iu koto atta?",
+          "translation": "Sebenarnya pernah terjadi hal seperti itu?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_peran_landmark_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、建て替えでランドマークが消えて、混乱したことがあるよ。",
+            "romaji": "Un, tatekae de randomaaku ga kiete, konran shita koto ga aru yo.",
+            "translation": "Iya, pernah bingung karena landmarknya hilang gara-gara direnovasi ulang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "そういうことは、一度も経験したことないよ。",
+            "romaji": "Sou iu koto wa, ichido mo keiken shita koto nai yo.",
+            "translation": "Belum pernah mengalami hal seperti itu sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大事な存在なんだね。",
+          "romaji": "Daiji na sonzai nan da ne.",
+          "translation": "Ternyata keberadaannya penting ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_peran_landmark_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に大事じゃないと思うよ。",
+            "romaji": "Betsu ni daiji janai to omou yo.",
+            "translation": "Kupikir sama sekali tidak penting.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tolong_turis_kebingungan_n2",
+    "title": "Menceritakan Pengalaman Menolong Turis yang Kebingungan di Jalan",
+    "category": "arah_jalan_n2",
+    "description": "Kamu bercerita ke teman tentang pengalaman menolong turis yang kebingungan di jalan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "道に迷ってる観光客を見かけたら、どうする？",
+          "romaji": "Michi ni mayotteru kankoukyaku wo mikaketara, dou suru?",
+          "translation": "Kalau melihat turis yang tersesat, bagaimana?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tolong_turis_kebingungan_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "困っているようなら、こちらから声をかけるようにしているよ。",
+            "romaji": "Komatte iru you nara, kochira kara koe wo kakeru you ni shite iru yo.",
+            "translation": "Kalau terlihat kebingungan, aku berusaha menyapa duluan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "見かけても、絶対に声をかけないようにしているよ。",
+            "romaji": "Mikakete mo, zettai ni koe wo kakenai you ni shite iru yo.",
+            "translation": "Meski melihat, aku berusaha untuk sama sekali tidak menyapa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "実際に声をかけたことあるの？",
+          "romaji": "Jissai ni koe wo kaketa koto aru no?",
+          "translation": "Pernah benar-benar menyapa?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tolong_turis_kebingungan_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、地図を見て困っている様子だったから、放っておけなかったんだ。",
+            "romaji": "Un, chizu wo mite komatte iru yousu datta kara, hootte okenakatta n da.",
+            "translation": "Iya, karena terlihat kebingungan melihat peta, aku tidak bisa mengabaikannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "声をかけたことは、一度もないよ。",
+            "romaji": "Koe wo kaketa koto wa, ichido mo nai yo.",
+            "translation": "Belum pernah menyapa sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どこまで案内したの？",
+          "romaji": "Doko made annai shita no?",
+          "translation": "Diantar sampai mana?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tolong_turis_kebingungan_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "途中まで一緒に歩いて、案内したよ。",
+            "romaji": "Tochuu made issho ni aruite, annai shita yo.",
+            "translation": "Aku mengantarnya berjalan bareng sampai setengah jalan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "方向だけ指差して、すぐに離れたよ。",
+            "romaji": "Houkou dake yubisashite, sugu ni hanareta yo.",
+            "translation": "Hanya menunjuk arah saja, langsung pergi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "感謝された？",
+          "romaji": "Kansha sareta?",
+          "translation": "Diberi ucapan terima kasih?"
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tolong_turis_kebingungan_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、何度もお辞儀をして感謝されて、恐縮したよ。",
+            "romaji": "Un, nando mo ojigi wo shite kansha sarete, kyoushuku shita yo.",
+            "translation": "Iya, aku jadi tidak enak karena mereka berterima kasih dengan membungkuk berkali-kali.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "お礼なんて、一言もなかったよ。",
+            "romaji": "Orei nante, hitokoto mo nakatta yo.",
+            "translation": "Sama sekali tidak ada ucapan terima kasih.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いいことをしたね。",
+          "romaji": "Ii koto wo shita ne.",
+          "translation": "Melakukan hal yang baik ya."
+        },
+        "imagePath": "kaiwa_images/arah_jalan_n2/kaiwa_tolong_turis_kebingungan_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。",
+            "romaji": "Arigatou.",
+            "translation": "Terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に良いことじゃないと思うよ。",
+            "romaji": "Betsu ni ii koto janai to omou yo.",
+            "translation": "Kupikir sama sekali bukan hal yang baik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]

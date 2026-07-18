@@ -1440,6 +1440,24 @@ BELANJA_N2_TITLES = [
     "Menjelaskan Pentingnya Riset Sebelum Membeli Barang Mahal",
 ]
 
+ARAH_JALAN_N2_TITLES = [
+    "Menjelaskan Alasan Sering Tersesat Meski Punya GPS",
+    "Mendiskusikan Keandalan Aplikasi Peta Dibanding Peta Kertas",
+    "Menceritakan Pengalaman Tersesat di Kota Asing Tanpa Sinyal",
+    "Menjelaskan Cara Membaca Rambu Jalan yang Membingungkan",
+    "Membicarakan Fenomena Alamat di Jepang yang Tidak Berurutan",
+    "Mendiskusikan Etika Bertanya Arah kepada Orang Asing",
+    "Menceritakan Pengalaman Menjadi Penunjuk Jalan bagi Turis",
+    "Menjelaskan Perbedaan Budaya dalam Memberi Petunjuk Arah",
+    "Membicarakan Dampak Aplikasi Navigasi terhadap Kemampuan Orientasi",
+    "Mendiskusikan Tata Kota yang Membingungkan bagi Pendatang Baru",
+    "Menceritakan Pengalaman Nyasar Saat Mengejar Waktu Penting",
+    "Menjelaskan Strategi Menghafal Rute agar Tidak Tersesat",
+    "Membicarakan Perbedaan Petunjuk Arah di Desa dan Kota",
+    "Mendiskusikan Peran Landmark dalam Memberi Petunjuk Arah",
+    "Menceritakan Pengalaman Menolong Turis yang Kebingungan di Jalan",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1497,6 +1515,7 @@ CATEGORY_META = {
     "restoran_n2": ("Di Restoran", "🍽️", "N2"),
     "stasiun_n2": ("Di Stasiun", "🚉", "N2"),
     "belanja_n2": ("Belanja", "🛍️", "N2"),
+    "arah_jalan_n2": ("Menanyakan Arah", "🧭", "N2"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1556,6 +1575,7 @@ AVAILABLE_CATEGORIES = {
     "restoran_n2": RESTORAN_N2_TITLES,
     "stasiun_n2": STASIUN_N2_TITLES,
     "belanja_n2": BELANJA_N2_TITLES,
+    "arah_jalan_n2": ARAH_JALAN_N2_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1627,6 +1647,7 @@ _ALL_TITLE_LISTS = {
     "RESTORAN_N2_TITLES": RESTORAN_N2_TITLES,
     "STASIUN_N2_TITLES": STASIUN_N2_TITLES,
     "BELANJA_N2_TITLES": BELANJA_N2_TITLES,
+    "ARAH_JALAN_N2_TITLES": ARAH_JALAN_N2_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
