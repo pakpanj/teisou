@@ -1008,6 +1008,24 @@ KELUARGA_N4_TITLES = [
     "Menjelaskan Cara Menyelesaikan Konflik dengan Saudara",
 ]
 
+BANK_N4_TITLES = [
+    "Membuka Rekening Bank Baru",
+    "Menanyakan Cara Mengisi Formulir Setoran",
+    "Melaporkan Kartu ATM yang Hilang",
+    "Menanyakan Biaya Transfer ke Luar Negeri",
+    "Mengajukan Pinjaman di Bank",
+    "Menanyakan Cara Menggunakan Internet Banking",
+    "Mengubah Alamat yang Terdaftar di Bank",
+    "Menanyakan Suku Bunga Deposito",
+    "Melaporkan Transaksi yang Mencurigakan",
+    "Menanyakan Cara Menutup Rekening",
+    "Meminta Buku Tabungan Baru",
+    "Menanyakan Proses Pengajuan Kartu Kredit",
+    "Menjelaskan Kesalahan Transfer ke Rekening yang Salah",
+    "Menanyakan Layanan Bank untuk Mahasiswa",
+    "Membicarakan Rencana Menabung untuk Masa Depan",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1041,6 +1059,7 @@ CATEGORY_META = {
     "kantor_pos_n4": ("Di Kantor Pos", "📮", "N4"),
     "liburan_n4": ("Rencana Liburan", "🏖️", "N4"),
     "keluarga_n4": ("Keluarga", "👨‍👩‍👧", "N4"),
+    "bank_n4": ("Di Bank", "🏦", "N4"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1076,6 +1095,7 @@ AVAILABLE_CATEGORIES = {
     "kantor_pos_n4": KANTOR_POS_N4_TITLES,
     "liburan_n4": LIBURAN_N4_TITLES,
     "keluarga_n4": KELUARGA_N4_TITLES,
+    "bank_n4": BANK_N4_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1123,6 +1143,7 @@ _ALL_TITLE_LISTS = {
     "KANTOR_POS_N4_TITLES": KANTOR_POS_N4_TITLES,
     "LIBURAN_N4_TITLES": LIBURAN_N4_TITLES,
     "KELUARGA_N4_TITLES": KELUARGA_N4_TITLES,
+    "BANK_N4_TITLES": BANK_N4_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
