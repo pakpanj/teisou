@@ -882,6 +882,24 @@ CUACA_BASA_BASI_N4_TITLES = [
     "Menceritakan Pengalaman Terjebak Badai",
 ]
 
+RUMAH_SAKIT_N4_TITLES = [
+    "Menjelaskan Gejala yang Kompleks ke Dokter",
+    "Menanyakan Efek Samping Pengobatan Jangka Panjang",
+    "Mendiskusikan Pilihan Pengobatan dengan Dokter",
+    "Menjelaskan Riwayat Penyakit Keluarga",
+    "Meminta Second Opinion ke Dokter Lain",
+    "Menjelaskan Kenapa Menunda Pemeriksaan",
+    "Berdiskusi Tentang Efektivitas Obat Herbal",
+    "Menjelaskan Kekhawatiran Sebelum Operasi",
+    "Menanyakan Prosedur Pemulihan Setelah Operasi",
+    "Mendiskusikan Perubahan Gaya Hidup untuk Kesehatan",
+    "Menjelaskan Alasan Berhenti Minum Obat",
+    "Berdiskusi dengan Dokter Tentang Hasil Tes Darah",
+    "Menjelaskan Stres sebagai Penyebab Sakit",
+    "Menanyakan Kemungkinan Alergi Obat Baru",
+    "Menceritakan Pengalaman Dirawat Inap",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -908,6 +926,7 @@ CATEGORY_META = {
     "arah_jalan_n4": ("Menanyakan Arah", "🧭", "N4"),
     "sekolah_n4": ("Di Sekolah", "🏫", "N4"),
     "cuaca_basa_basi_n4": ("Cuaca & Basa-basi", "☁️", "N4"),
+    "rumah_sakit_n4": ("Di Rumah Sakit", "🏥", "N4"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -936,6 +955,7 @@ AVAILABLE_CATEGORIES = {
     "arah_jalan_n4": ARAH_JALAN_N4_TITLES,
     "sekolah_n4": SEKOLAH_N4_TITLES,
     "cuaca_basa_basi_n4": CUACA_BASA_BASI_N4_TITLES,
+    "rumah_sakit_n4": RUMAH_SAKIT_N4_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -976,6 +996,7 @@ _ALL_TITLE_LISTS = {
     "ARAH_JALAN_N4_TITLES": ARAH_JALAN_N4_TITLES,
     "SEKOLAH_N4_TITLES": SEKOLAH_N4_TITLES,
     "CUACA_BASA_BASI_N4_TITLES": CUACA_BASA_BASI_N4_TITLES,
+    "RUMAH_SAKIT_N4_TITLES": RUMAH_SAKIT_N4_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
