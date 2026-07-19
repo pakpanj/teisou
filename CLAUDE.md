@@ -453,7 +453,7 @@ interactive on-device pass — same standing gap noted above, and
 specifically relevant here given the Slider-vs-swipe risk just
 described.
 
-## Update (2026-07-20): Dokkai content rollout begins — 3 → 60 passages, all 5 levels seeded
+## Update (2026-07-20): Dokkai content rollout — 3 → 100 passages, all 5 levels at 20 each
 
 User asked to clear out the Ujian → Dokkai backlog specifically,
 eventually targeting **~100 passages per JLPT level (~500 total)** —
@@ -489,17 +489,24 @@ adding a future level's entries is just adding to that map, not
 touching `main()` again. `_levels.json`'s `passageCount` is now
 computed per level instead of hardcoded to `None` for everyone but N5.
 
-**Current state**: 60/~500 total (12%) — N5=20, N4=10, N3=10, N2=10,
-N1=10. All cross-checked (unique ids across the whole file, unique
-titles, every question has ≥2 options with a valid `correctIndex`,
-zero Cyrillic contamination), `flutter analyze`/`test --concurrency=1`
-clean. **No interactive on-device pass done** for any of this
-content — same standing gap as everywhere else in this file. If
-continuing this rollout: pick a level, draft more passages at that
-level's grammar/topic ceiling following the escalation pattern above,
-append to that level's `_ENTRIES` list and the matching `_TITLES` list
-in `dokkai_lists.py`, regenerate, and re-run the same cross-checks —
-the pipeline needs no further changes to keep scaling.
+3. **N4/N3/N2/N1 phase 2** (same session, immediately after): every
+   non-N5 level doubled from 10 to 20, closing the gap with N5's own
+   count. Same escalation pattern per level continued, no new topics
+   overlapping the first 10 at each level (titles are asserted unique
+   across the whole file, per level and across levels).
+
+**Current state**: 100/~500 total (20%) — **N5=20, N4=20, N3=20,
+N2=20, N1=20**, every level now at exact parity. All cross-checked
+(unique ids across the whole file, unique titles, every question has
+≥2 options with a valid `correctIndex`, zero Cyrillic contamination),
+`flutter analyze`/`test --concurrency=1` clean. **No interactive
+on-device pass done** for any of this content — same standing gap as
+everywhere else in this file. If continuing this rollout: pick a
+level, draft more passages at that level's grammar/topic ceiling
+following the escalation pattern above, append to that level's
+`_ENTRIES` list and the matching `_TITLES` list in `dokkai_lists.py`,
+regenerate, and re-run the same cross-checks — the pipeline needs no
+further changes to keep scaling.
 
 ## Architecture
 
