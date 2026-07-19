@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy) and **fully authored across all 5 JLPT levels — 17/17 themes and 255/255 (680 for N5) dialogues at every level, 1700/1700 grand total, zero placeholders** — and free. Bunpou/Partikel/Kaiwa are all content-complete for their current scope; Choukai still untouched. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa modules, Ujian expansion (Dokkai/Choukai/Kanji-Kombinasi), AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy) and **fully authored across all 5 JLPT levels — 17/17 themes and 255/255 (680 for N5) dialogues at every level, 1700/1700 grand total, zero placeholders** — and free. Bunpou/Partikel/Kaiwa are all content-complete for their current scope. **Choukai is no longer a standalone module** — per an explicit scope decision (2026-07-19), it was folded into Ujian as a listening-exam category instead; see the "Ujian expansion" note in the status snapshot below. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -63,7 +63,9 @@ data files, not just "code exists")**:
 "finished"**:
 - **Cam Detector** (offline Japanese OCR camera scanning) is fully
   built and still compiles/tests clean, but is **deliberately locked
-  out of navigation** (`ModulesScreen` shows a grey "Diperbaiki"
+  out of navigation** (the module list — `ModulesSection`, embedded in
+  Home's tab body since the 2026-07-19 later-session update above,
+  formerly its own `ModulesScreen` tab — shows a grey "Diperbaiki"
   card, not the module itself) because of real bugs — see "Known
   placeholders" below for the full ProGuard/R8, camera-lifecycle, and
   Impeller-rendering history. Several of those specific issues *have*
@@ -98,7 +100,10 @@ data files, not just "code exists")**:
   (the write path works, nothing reads it back yet).
 
 **Completely untouched — no code, no content, nothing started**:
-- **Choukai** (listening comprehension module).
+- **Choukai's actual dialogue/audio content** — the architecture exists
+  (see the 2026-07-19 later-session update above, Ujian expansion) but
+  every level ships with zero clips authored. No longer "no code at
+  all" the way it was earlier the same day; still "no content at all."
 - **Belajar dari Gambar** and **Belajar dari Video** (two more
   planned modules, referenced only in the monetization roadmap note
   below — no screens, models, or scope decisions exist for either
@@ -121,11 +126,138 @@ regardless of task urgency).
 
 If your task is "keep going" without a more specific pointer: the
 Batch-9+ row above and this snapshot together are the full list of
-what's left — Choukai is the largest genuinely-unstarted piece of
-scope, monetization gating is the largest piece of *started-but-
+what's left — monetization gating is the largest piece of *started-but-
 unfinished* work, and the two image-upload backlogs (Kotoba 519 +
 Kaiwa 7468) are large, well-defined, non-code tasks that don't require
-figuring out what to build next.
+figuring out what to build next. (Choukai used to be listed here as
+the largest fully-unstarted piece of scope — as of the same-day update
+directly below, it's no longer unstarted, though its *content* still
+is.)
+
+## Update (2026-07-19, later session): UX polish + Ujian expansion
+
+A follow-up session the same day as the snapshot above shipped four
+more changes, committed straight to root `master` (`3e67824` →
+`881a762` → `50cc0ee` → `dbba461`, in that order) per this project's
+standing local-merge convention:
+
+1. **Flashcard swipe navigation** — `FlashcardScreen` (Hiragana/
+   Katakana) can now be swiped left/right to move between cards, via a
+   new generic `SwipeNavigator` widget (`lib/features/flashcard/widgets/
+   swipe_navigator.dart`) wrapping `FlipCard`. The existing next/prev
+   arrow buttons stay (added swipe, didn't replace the discoverable
+   path). This is the app's first swipe-nav pattern — `SwipeNavigator`
+   was deliberately kept generic so `kotoba_word_detail_screen.dart`/
+   `kanji_word_detail_screen.dart` (which still use the older index-
+   button-only pattern) could adopt it later with no changes to the
+   widget itself; that adoption hasn't happened yet.
+2. **"Belajar" tab merged into "Home"; bottom nav swipeable.**
+   `HomeScreen`'s bottom nav dropped from 4 tabs to 3 (Home / Ujian /
+   Profil) — `ModulesScreen` no longer exists as a separate tab; its
+   full body (Kosakata/Kanji/Bunpou/Partikel/Kaiwa/Cam Detector/Segera
+   Hadir) was extracted into `ModulesSection`
+   (`lib/features/home/widgets/modules_section.dart` — git tracks this
+   as a rename from `modules_screen.dart`, not a fresh file) and is now
+   rendered inline inside Home's tab body, below the pre-existing
+   Hiragana/Katakana/Ujian shortcut cards. **Every older mention of
+   `ModulesScreen` elsewhere in this file describes historical state
+   from when that screen still existed as its own tab — the class name
+   survives only as `ModulesSection`, embedded in Home, not a
+   standalone screen.** Separately, `HomeScreen`'s tab container changed
+   from `IndexedStack` to a `PageView` (each tab wrapped in a small
+   `AutomaticKeepAliveClientMixin` helper so per-tab scroll/state
+   survives switching, the same guarantee `IndexedStack` gave for
+   free) so swiping left/right on the body also switches tabs, not just
+   tapping the bottom nav icons.
+3. **Kaiwa TTS voice now matches speaker gender where the data actually
+   supports it.** Gender is inferred once, at content-generation time
+   (`scripts/kaiwa_lists.py`'s `infer_gender`, not hand-authored per
+   dialogue), covering proper names and Bu/Pak/Ibu/Ayah/Kakek/Nenek
+   honorifics — **64 of the 203 unique speaker labels across the whole
+   1700-dialogue dataset**. The remaining, higher-volume role-only
+   speakers ("Teman" alone is ~4645 of the ~7468 NPC lines, plus
+   "Dokter"/"Petugas Bank"/etc.) are deliberately left unmapped —
+   Indonesian carries no grammatical gender signal for generic role
+   nouns, so guessing would be fabricating data, not inferring it; those
+   lines keep using the app's single default TTS voice, same as before
+   this change. `TtsService.speak()` gained an optional gender param;
+   on first use it queries `flutter_tts`'s `getVoices()` **once**
+   (cached, never re-queried per call) and picks a distinct-sounding
+   `ja-JP` voice by name heuristic if the device exposes one, else
+   falls back to a pitch nudge — never throws/hangs on a device with a
+   sparse voice list. `kaiwa_data.json` was regenerated in full to add
+   the new `"gender"` field to every npc line; no dialogue *content*
+   changed.
+4. **Ujian expanded from kana-only to a 4-category picker: Kana /
+   Dokkai / Choukai / Kanji-Kombinasi**, and the standalone Choukai
+   module concept is retired (see the Batch-9+ table row above) — this
+   is the "Ujian expansion" referenced there. `ExamModePickerScreen` is
+   now that category picker; the original 3-mode kana flow moved
+   unchanged into `KanaExamModePickerScreen`. `ExamMode`/
+   `ExamRepository`/`ExamQuestion`/`ExamResult` (kana-specific, see the
+   Architecture section below) were **not** touched or generalized —
+   each new category is a sibling module instead, following the same
+   own-model/own-repository/own-screens convention every other module
+   (Kanji/Kotoba/Bunpou/Partikel/Kaiwa) already uses, plus two small
+   shared pieces since their quiz-flow/result shape is genuinely
+   identical across all three: `McQuizFlow` and `SimpleExamResultScreen`
+   (both `lib/features/exam/`), and one parametrized
+   `ExamHistoryRepository` instead of three copy-pasted Firestore-mirror
+   classes.
+   - **Dokkai** (reading comprehension): `DokkaiPassage` model +
+     `assets/data/dokkai_data.json`, JLPT level picker → passage list →
+     passage text stays visible alongside its questions (unlike
+     Choukai below). Ships with **3 real, hand-authored N5 passages** —
+     a proof-of-architecture sample, explicitly not a content rollout —
+     via the same locked-list (`scripts/dokkai_lists.py`) +
+     generator-script (`scripts/generate_dokkai_seed.py`) pipeline
+     Kaiwa/Bunpou/Partikel established. N4-N1 are registered in
+     `assets/data/dokkai/_levels.json` as `available: false`, zero
+     themes — same placeholder convention Kaiwa used for its own N4-N1
+     before that rollout happened. **Expanding Dokkai to more N5
+     passages and then N4-N1 is real, unstarted content work,
+     comparable in shape to Kaiwa's multi-phase rollout — not done by
+     this change.**
+   - **Choukai** (listening comprehension): `ChoukaiClip` model, full
+     architecture, **zero content authored** — all 5 levels ship
+     "Segera" in `assets/data/choukai/_levels.json` and
+     `choukai_data.json` is an empty array. Audio is
+     `ttsServiceProvider.speak(clip.audioText)` (no recorded-audio
+     pipeline anywhere in this app); the Japanese script is
+     deliberately never shown during the exam, only revealed on the
+     result screen for review — same no-visible-text-for-audio-source
+     philosophy already established by Kaiwa's NPC turns. **This is the
+     module that most needs a first content-authoring pass** if Ujian's
+     Choukai category is to be usable at all.
+   - **Kanji-Kombinasi**: deliberately **no new bundled dataset** —
+     questions are generated at runtime from data that already exists:
+     single-kanji mode reads `KanjiRepository`, compound mode mines
+     `KotobaEntry.kanji` for entries that are exactly 2-3 raw kanji
+     characters (`lib/data/repositories/kanji_combo_repository.dart`).
+     Because of this, every JLPT level with enough real (non-
+     placeholder) Kanji/Kotoba content already works today, with no
+     separate authoring step — the one new-module exception to the
+     "content still needs authoring" pattern above.
+   - Firestore: each new category writes exam attempts to its own
+     subcollection (`dokkaiExamHistory`/`choukaiExamHistory`/
+     `kanjiComboExamHistory` under `users/{uid}`, see
+     `lib/core/firebase/firestore_paths.dart`) rather than being forced
+     into kana's existing `examHistory` shape, which is hard-typed to
+     `KanaCharacter`/`WrongAnswerEntry.kanaId` and couldn't represent a
+     reading passage or an audio clip without a bigger refactor that
+     wasn't warranted for this pass. There is deliberately no unified
+     "riwayat ujian" view across all four categories yet — `ExamHistoryScreen`
+     (profile) was already an unbuilt placeholder before this change and
+     still is.
+
+Verification for all four: `flutter analyze` clean, `flutter test
+--concurrency=1` (11/11, two tests updated/added for the new Ujian
+picker structure), `flutter build apk --debug` succeeded. **No
+interactive on-device pass has been done for any of this** — same
+category of gap already documented elsewhere in this file for other
+modules; worth a manual pass (especially the tab-swipe-vs-bottom-nav
+interaction, and Kaiwa's gendered-voice playback on a real device)
+before treating this as fully verified.
 
 ## Architecture
 
@@ -986,7 +1118,9 @@ figuring out what to build next.
   (new work) and restore gating on Partikel/Kaiwa/Choukai.
 - **Cam Detector is deliberately locked from navigation** (not deleted —
   every file under `lib/features/cam_detector/` is untouched and still
-  compiles/tests clean). `ModulesScreen` renders it as a grey
+  compiles/tests clean). `ModulesSection` (formerly `ModulesScreen`,
+  see the 2026-07-19 later-session update above — same module list,
+  now embedded in Home instead of its own tab) renders it as a grey
   `_LockedModuleCard` with a "Diperbaiki" badge instead of the
   `_AvailableModuleCard` it used to be; tapping shows a `SnackBar`
   explaining it's under repair, instead of the generic
