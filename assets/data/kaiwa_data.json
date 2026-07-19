@@ -287462,5 +287462,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_suara_lebih_bermakna_pesan_n1",
+    "title": "Menjelaskan Alasan Mendengar Suara Seseorang Lebih Bermakna daripada Membaca Pesan",
+    "category": "telepon_n1",
+    "description": "Kamu menjelaskan ke teman alasan mendengar suara seseorang lebih bermakna daripada membaca pesan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、電話よりメッセージのほうが多いよね。",
+          "romaji": "Saikin, denwa yori messeeji no hou ga ooi yo ne.",
+          "translation": "Akhir-akhir ini lebih sering pesan daripada telepon ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_suara_lebih_bermakna_pesan_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、でも本当に伝えたい時は、声を聞くことにほかならないと思うんだ。",
+            "romaji": "Un, demo hontou ni tsutaetai toki wa, koe wo kiku koto ni hoka naranai to omou n da.",
+            "translation": "Iya, tapi aku berpikir saat benar-benar ingin menyampaikan sesuatu, itu tidak lain adalah mendengarkan suara.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、メッセージのほうが、声よりずっと伝わると思っているよ。",
+            "romaji": "Iya, messeeji no hou ga, koe yori zutto tsutawaru to omotte iru yo.",
+            "translation": "Tidak, aku berpikir pesan jauh lebih tersampaikan daripada suara.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "声を聞くと、何が違うの？",
+          "romaji": "Koe wo kiku to, nani ga chigau no?",
+          "translation": "Kalau mendengar suara, apa yang berbeda?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_suara_lebih_bermakna_pesan_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "文字では消えてしまう温度や間が、声にはほかならないと感じるよ。",
+            "romaji": "Moji de wa kiete shimau ondo ya ma ga, koe ni wa hoka naranai to kanjiru yo.",
+            "translation": "Aku merasa kehangatan dan jeda yang hilang dalam tulisan itu tidak lain adalah yang ada dalam suara.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も違わなくて、文字も声も全く同じ情報量だと思うよ。",
+            "romaji": "Toku ni nanimo chigawanakute, moji mo koe mo mattaku onaji jouhouryou da to omou yo.",
+            "translation": "Tidak ada yang berbeda secara khusus, tulisan dan suara membawa jumlah informasi yang sama persis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "確かに、声のトーンで気持ちが分かるよね。",
+          "romaji": "Tashika ni, koe no toon de kimochi ga wakaru yo ne.",
+          "translation": "Memang benar, lewat nada suara bisa tahu perasaannya ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_suara_lebih_bermakna_pesan_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、言葉の裏にある本音は、声のトーンにほかならないと思うんだ。",
+            "romaji": "Un, kotoba no ura ni aru honne wa, koe no toon ni hoka naranai to omou n da.",
+            "translation": "Iya, aku berpikir perasaan sejujurnya di balik kata-kata itu tidak lain adalah nada suara.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、声のトーンなんて、気持ちには全く関係ないと思うよ。",
+            "romaji": "Iya, koe no toon nante, kimochi ni wa mattaku kankei nai to omou yo.",
+            "translation": "Tidak, kupikir nada suara sama sekali tidak berhubungan dengan perasaan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "だから大事な話は電話でするんだね。",
+          "romaji": "Dakara daiji na hanashi wa denwa de suru n da ne.",
+          "translation": "Makanya pembicaraan penting dilakukan lewat telepon ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_suara_lebih_bermakna_pesan_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、相手の反応をその場で感じ取れることこそが、電話の価値にほかならないよ。",
+            "romaji": "Un, aite no hannou wo sono ba de kanjitoreru koto koso ga, denwa no kachi ni hoka naranai yo.",
+            "translation": "Iya, justru bisa merasakan reaksi lawan bicara saat itu juga, itulah yang tidak lain adalah nilai dari telepon.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、電話でする理由なんて、特にないと思うよ。",
+            "romaji": "Iya, denwa de suru riyuu nante, toku ni nai to omou yo.",
+            "translation": "Tidak, kupikir tidak ada alasan khusus melakukannya lewat telepon.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "声にはそれだけの力があるんだね。",
+          "romaji": "Koe ni wa sore dake no chikara ga aru n da ne.",
+          "translation": "Ternyata suara punya kekuatan sebesar itu ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_suara_lebih_bermakna_pesan_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_filosofi_komunikasi_melampaui_kata_n1",
+    "title": "Mendiskusikan Filosofi Komunikasi Sejati Melampaui Sekadar Kata-kata",
+    "category": "telepon_n1",
+    "description": "Kamu dan teman mendiskusikan filosofi bahwa komunikasi sejati melampaui sekadar kata-kata.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "コミュニケーションって、言葉が全てだと思う？",
+          "romaji": "Komyunikeeshon tte, kotoba ga subete da to omou?",
+          "translation": "Menurutmu komunikasi itu kata-kata adalah segalanya?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_filosofi_komunikasi_melampaui_kata_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いや、言葉が完璧に揃っているからといって、心が伝わるとは限らないと思うんだ。",
+            "romaji": "Iya, kotoba ga kanpeki ni sorotte iru kara to itte, kokoro ga tsutawaru to wa kagiranai to omou n da.",
+            "translation": "Tidak, aku berpikir belum tentu hati tersampaikan hanya karena kata-katanya sempurna tersusun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、正しい言葉さえ使えば、心は必ず伝わると思っているよ。",
+            "romaji": "Un, tadashii kotoba sae tsukaeba, kokoro wa kanarazu tsutawaru to omotte iru yo.",
+            "translation": "Iya, aku berpikir asal menggunakan kata-kata yang benar, hati pasti tersampaikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "じゃあ、何が心を伝えると思う？",
+          "romaji": "Jaa, nani ga kokoro wo tsutaeru to omou?",
+          "translation": "Kalau begitu, menurutmu apa yang menyampaikan hati?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_filosofi_komunikasi_melampaui_kata_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "沈黙の間にも、言葉にできない気持ちが宿っているとは限らないとも言い切れないよ。",
+            "romaji": "Chinmoku no aida ni mo, kotoba ni dekinai kimochi ga yadotte iru to wa kagiranai to mo iikirenai yo.",
+            "translation": "Aku juga tidak bisa menegaskan bahwa dalam keheningan pun tidak mungkin ada perasaan yang tidak bisa diungkapkan dengan kata-kata.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "沈黙なんて、何の意味も持たないただの空白だと思うよ。",
+            "romaji": "Chinmoku nante, nan no imi mo motanai tada no kuuhaku da to omou yo.",
+            "translation": "Kupikir keheningan itu hanya kekosongan yang tidak punya makna apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "言葉数が多ければ多いほど、伝わるものなの？",
+          "romaji": "Kotobakazu ga ookereba ooi hodo, tsutawaru mono na no?",
+          "translation": "Makin banyak kata, makin tersampaikan?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_filosofi_komunikasi_melampaui_kata_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "たくさん話したからといって、深く伝わったとは限らないと実感することがあるよ。",
+            "romaji": "Takusan hanashita kara to itte, fukaku tsutawatta to wa kagiranai to jikkan suru koto ga aru yo.",
+            "translation": "Ada kalanya aku benar-benar merasakan bahwa belum tentu tersampaikan secara mendalam hanya karena bicara banyak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、話す量が多ければ多いほど、必ず深く伝わると思うよ。",
+            "romaji": "Un, hanasu ryou ga ookereba ooi hodo, kanarazu fukaku tsutawaru to omou yo.",
+            "translation": "Iya, kupikir makin banyak bicara, pasti makin tersampaikan secara mendalam.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "難しいものだね、コミュニケーションって。",
+          "romaji": "Muzukashii mono da ne, komyunikeeshon tte.",
+          "translation": "Komunikasi itu memang hal yang sulit ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_filosofi_komunikasi_melampaui_kata_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、完璧な言葉を探すことばかりが、良い会話とは限らないと思ってるよ。",
+            "romaji": "Un, kanpeki na kotoba wo sagasu koto bakari ga, ii kaiwa to wa kagiranai to omotteru yo.",
+            "translation": "Iya, aku berpikir belum tentu hanya mencari kata-kata yang sempurna itu berarti percakapan yang baik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、完璧な言葉さえ見つければ、それが最高の会話になると思うよ。",
+            "romaji": "Iya, kanpeki na kotoba sae mitsukereba, sore ga saikou no kaiwa ni naru to omou yo.",
+            "translation": "Tidak, asal menemukan kata-kata yang sempurna, kupikir itu jadi percakapan terbaik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "深いコミュニケーション観だね。",
+          "romaji": "Fukai komyunikeeshonkan da ne.",
+          "translation": "Pandangan komunikasi yang mendalam ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_filosofi_komunikasi_melampaui_kata_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_ubah_segalanya_n1",
+    "title": "Menceritakan Pengalaman Menerima Telepon yang Mengubah Segalanya",
+    "category": "telepon_n1",
+    "description": "Kamu bercerita ke teman tentang pengalaman menerima telepon yang mengubah segalanya.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あの電話がかかってきた日のこと、覚えてる？",
+          "romaji": "Ano denwa ga kakatte kita hi no koto, oboeteru?",
+          "translation": "Ingat hari saat telepon itu datang?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_ubah_segalanya_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、電話に出て初めて、人生が一変する知らせだと分かったんだ。",
+            "romaji": "Un, denwa ni dete hajimete, jinsei ga ippen suru shirase da to wakatta n da.",
+            "translation": "Iya, hanya setelah mengangkat telepon, aku baru tahu itu kabar yang akan mengubah hidupku sepenuhnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、あの電話のことなんて、もう忘れてしまったよ。",
+            "romaji": "Iya, ano denwa no koto nante, mou wasurete shimatta yo.",
+            "translation": "Tidak, soal telepon itu sudah kulupakan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電話を切った後、どんな気持ちだった？",
+          "romaji": "Denwa wo kitta ato, donna kimochi datta?",
+          "translation": "Setelah menutup telepon, bagaimana perasaanmu?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_ubah_segalanya_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "受話器を置いて初めて、自分の手が震えていることに気づいたよ。",
+            "romaji": "Juwaki wo oite hajimete, jibun no te ga furuete iru koto ni kizuita yo.",
+            "translation": "Hanya setelah meletakkan gagang telepon, aku menyadari tanganku gemetar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も感じず、いつも通りの一日を過ごしただけだよ。",
+            "romaji": "Toku ni nanimo kanjizu, itsumo doori no ichinichi wo sugoshita dake da yo.",
+            "translation": "Tanpa merasakan apa pun secara khusus, hanya menjalani hari seperti biasa saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その後、何をしたの？",
+          "romaji": "Sono ato, nani wo shita no?",
+          "translation": "Setelah itu, kamu ngapain?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_ubah_segalanya_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "現実を受け止めて初めて、次に何をすべきか冷静に考えられるようになったよ。",
+            "romaji": "Genjitsu wo uketomete hajimete, tsugi ni nani wo subeki ka reisei ni kangaerareru you ni natta yo.",
+            "translation": "Hanya setelah menerima kenyataan, aku jadi bisa berpikir dengan tenang tentang apa yang harus dilakukan selanjutnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何もせず、ただその場に立ち尽くしていただけだよ。",
+            "romaji": "Toku ni nanimo sezu, tada sono ba ni tachitsukushite ita dake da yo.",
+            "translation": "Tanpa melakukan apa pun secara khusus, hanya berdiri terpaku di tempat itu saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あの電話が、今の人生を変えたんだね。",
+          "romaji": "Ano denwa ga, ima no jinsei wo kaeta n da ne.",
+          "translation": "Telepon itu mengubah hidupmu yang sekarang ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_ubah_segalanya_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの一本の電話を受けて初めて、今の自分がここにいるんだと思うよ。",
+            "romaji": "Un, ano ippon no denwa wo ukete hajimete, ima no jibun ga koko ni iru n da to omou yo.",
+            "translation": "Iya, hanya karena menerima telepon itu, aku berpikir diriku yang sekarang berada di sini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、あの電話は、今の人生には何の影響もないよ。",
+            "romaji": "Iya, ano denwa wa, ima no jinsei ni wa nan no eikyou mo nai yo.",
+            "translation": "Tidak, telepon itu sama sekali tidak berpengaruh pada hidupku sekarang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "運命的な電話だったんだね。",
+          "romaji": "Unmeiteki na denwa datta n da ne.",
+          "translation": "Itu telepon yang penuh takdir ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_ubah_segalanya_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_takut_generasi_muda_telepon_n1",
+    "title": "Membicarakan Ketakutan Generasi Muda terhadap Percakapan Telepon Langsung",
+    "category": "telepon_n1",
+    "description": "Kamu membicarakan dengan teman ketakutan generasi muda terhadap percakapan telepon secara langsung.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近の若い子、電話に出るの苦手な子が多いよね。",
+          "romaji": "Saikin no wakai ko, denwa ni deru no nigate na ko ga ooi yo ne.",
+          "translation": "Banyak ya anak muda sekarang yang tidak suka mengangkat telepon."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_takut_generasi_muda_telepon_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、着信を無視し続けると、電話恐怖症になりかねないって聞いたことあるよ。",
+            "romaji": "Un, chakushin wo mushi shitsuzukeru to, denwa kyoufushou ni narikanenai tte kiita koto aru yo.",
+            "translation": "Iya, aku pernah dengar kalau terus mengabaikan panggilan, bisa saja jadi takut telepon.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、若い子は、電話が一番得意な世代だと思うよ。",
+            "romaji": "Iya, wakai ko wa, denwa ga ichiban tokui na sedai da to omou yo.",
+            "translation": "Tidak, kupikir anak muda adalah generasi yang paling jago bertelepon.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "なんでそんなに苦手になったんだろう。",
+          "romaji": "Nande sonna ni nigate ni natta n darou.",
+          "translation": "Kenapa ya sampai jadi tidak suka begitu."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_takut_generasi_muda_telepon_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "文字でのやり取りに慣れすぎると、即興で話す力が衰えかねないと思うんだ。",
+            "romaji": "Moji de no yaritori ni naresugiru to, sokkyou de hanasu chikara ga otoroekanenai to omou n da.",
+            "translation": "Aku berpikir kalau terlalu terbiasa bertukar pesan tertulis, kemampuan bicara secara spontan bisa saja melemah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に理由なんてなくて、みんな昔から電話が得意だったと思うよ。",
+            "romaji": "Toku ni riyuu nante nakute, minna mukashi kara denwa ga tokui datta to omou yo.",
+            "translation": "Tidak ada alasan khusus, kupikir semua orang sejak dulu memang jago telepon.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電話が来ると、緊張しちゃうんだね。",
+          "romaji": "Denwa ga kuru to, kinchou shichau n da ne.",
+          "translation": "Kalau ada telepon masuk, jadi tegang ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_takut_generasi_muda_telepon_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、準備なしに反応を求められると、頭が真っ白になりかねないんだ。",
+            "romaji": "Un, junbi nashi ni hannou wo motomerareru to, atama ga masshiro ni narikanenai n da.",
+            "translation": "Iya, kalau diminta bereaksi tanpa persiapan, kepalaku bisa saja jadi kosong.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、電話が来ても、全く緊張したことないよ。",
+            "romaji": "Iya, denwa ga kite mo, mattaku kinchou shita koto nai yo.",
+            "translation": "Tidak, meski ada telepon masuk, belum pernah sama sekali merasa tegang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電話への苦手意識、克服できるものかな。",
+          "romaji": "Denwa e no nigate ishiki, kokufuku dekiru mono ka na.",
+          "translation": "Apa ya rasa tidak suka telepon itu bisa diatasi."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_takut_generasi_muda_telepon_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "少しずつ慣れないと、いつまでも避け続けかねないと思うから、練習してるよ。",
+            "romaji": "Sukoshizutsu narenai to, itsu made mo sakezuzukekanenai to omou kara, renshuu shiteru yo.",
+            "translation": "Karena kupikir kalau tidak terbiasa sedikit demi sedikit, aku bisa saja terus menghindarinya selamanya, aku berlatih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、克服する必要なんて、全くないと思っているよ。",
+            "romaji": "Iya, kokufuku suru hitsuyou nante, mattaku nai to omotte iru yo.",
+            "translation": "Tidak, aku berpikir sama sekali tidak perlu mengatasinya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "少しずつ慣れていけるといいね。",
+          "romaji": "Sukoshizutsu narete ikeru to ii ne.",
+          "translation": "Semoga bisa terbiasa sedikit demi sedikit ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_takut_generasi_muda_telepon_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうする。",
+            "romaji": "Un, sou suru.",
+            "translation": "Iya, akan kulakukan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_makna_keheningan_nyaman_telepon_n1",
+    "title": "Mendiskusikan Makna Keheningan yang Nyaman Saat Bertelepon",
+    "category": "telepon_n1",
+    "description": "Kamu dan teman mendiskusikan makna keheningan yang nyaman saat bertelepon dengan seseorang.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電話してるのに、二人とも黙ってる時があるよね。",
+          "romaji": "Denwa shiteru noni, futari tomo damatteru toki ga aru yo ne.",
+          "translation": "Padahal sedang telepon, ada kalanya kalian berdua diam ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_makna_keheningan_nyaman_telepon_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、何も話さなくていいからこそ、繋がっている安心感を得られるんだ。",
+            "romaji": "Un, nanimo hanasanakute ii kara koso, tsunagatte iru anshinkan wo erareru n da.",
+            "translation": "Iya, justru karena tidak perlu membicarakan apa pun, aku bisa mendapat rasa aman karena terhubung.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、電話中に黙るなんて、絶対に気まずいだけだと思うよ。",
+            "romaji": "Iya, denwa chuu ni damaru nante, zettai ni kimazui dake da to omou yo.",
+            "translation": "Tidak, kupikir diam saat telepon itu pasti hanya canggung saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その沈黙、心地いいものなの？",
+          "romaji": "Sono chinmoku, kokochii mono na no?",
+          "translation": "Keheningan itu, sesuatu yang nyaman?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_makna_keheningan_nyaman_telepon_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "無理に話題を探さなくていいからこそ、リラックスできる時間になるんだ。",
+            "romaji": "Muri ni wadai wo sagasanakute ii kara koso, rirakkusu dekiru jikan ni naru n da.",
+            "translation": "Justru karena tidak perlu memaksakan mencari topik, itu jadi waktu yang membuatku rileks.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "沈黙が続くと、いつも気まずくて電話を切りたくなるよ。",
+            "romaji": "Chinmoku ga tsuzuku to, itsumo kimazukute denwa wo kiritaku naru yo.",
+            "translation": "Kalau keheningan berlanjut, selalu jadi canggung dan ingin menutup telepon.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そういう関係、なかなかないよね。",
+          "romaji": "Sou iu kankei, nakanaka nai yo ne.",
+          "translation": "Hubungan seperti itu jarang ada ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_makna_keheningan_nyaman_telepon_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、信頼があるからこそ、無言の時間も安心して過ごせるんだと思う。",
+            "romaji": "Un, shinrai ga aru kara koso, mugon no jikan mo anshin shite sugoseru n da to omou.",
+            "translation": "Iya, kupikir justru karena ada kepercayaan, waktu tanpa kata pun bisa dijalani dengan tenang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、どんな関係でも、沈黙は同じように気まずいと思うよ。",
+            "romaji": "Iya, donna kankei demo, chinmoku wa onaji you ni kimazui to omou yo.",
+            "translation": "Tidak, kupikir hubungan apa pun, keheningan sama canggungnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電話越しの沈黙にも、意味があるんだね。",
+          "romaji": "Denwagoshi no chinmoku ni mo, imi ga aru n da ne.",
+          "translation": "Ternyata keheningan lewat telepon pun ada maknanya ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_makna_keheningan_nyaman_telepon_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、声が聞こえているからこそ、言葉がなくても寂しくないんだ。",
+            "romaji": "Un, koe ga kikoete iru kara koso, kotoba ga nakute mo sabishikunai n da.",
+            "translation": "Iya, justru karena bisa mendengar suaranya, meski tanpa kata-kata tetap tidak kesepian.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、電話越しの沈黙なんて、何の意味もないと思うよ。",
+            "romaji": "Iya, denwagoshi no chinmoku nante, nan no imi mo nai to omou yo.",
+            "translation": "Tidak, kupikir keheningan lewat telepon itu sama sekali tidak ada artinya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "素敵な関係だね。",
+          "romaji": "Suteki na kankei da ne.",
+          "translation": "Hubungan yang indah ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_makna_keheningan_nyaman_telepon_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_terakhir_orang_tercinta_n1",
+    "title": "Menceritakan Pengalaman Telepon Terakhir dengan Orang Tercinta",
+    "category": "telepon_n1",
+    "description": "Kamu bercerita ke teman tentang pengalaman telepon terakhir dengan orang tercinta.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "おじいさんとの最後の電話、覚えてる？",
+          "romaji": "Ojiisan to no saigo no denwa, oboeteru?",
+          "translation": "Ingat telepon terakhir dengan kakekmu?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_terakhir_orang_tercinta_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの時のかすれた声を、今でも思い出さずにはいられないんだ。",
+            "romaji": "Un, ano toki no kasureta koe wo, ima demo omoidasazu ni wa irarenai n da.",
+            "translation": "Iya, sampai sekarang pun aku tidak bisa tidak teringat suara paraunya waktu itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、最後の電話のことなんて、特に覚えていないよ。",
+            "romaji": "Iya, saigo no denwa no koto nante, toku ni oboete inai yo.",
+            "translation": "Tidak, tentang telepon terakhir itu, tidak terlalu kuingat secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その時、何を話したの？",
+          "romaji": "Sono toki, nani wo hanashita no?",
+          "translation": "Waktu itu, kamu bicara apa?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_terakhir_orang_tercinta_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "特別なことは話せなかったけど、いつも通りの会話に安心せずにはいられなかったよ。",
+            "romaji": "Tokubetsu na koto wa hanasenakatta kedo, itsumo doori no kaiwa ni anshin sezu ni wa irarenakatta yo.",
+            "translation": "Tidak sempat membicarakan hal spesial, tapi aku tidak bisa tidak merasa tenang dengan percakapan biasa seperti itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も話さず、ただ黙って電話を切っただけだよ。",
+            "romaji": "Toku ni nanimo hanasazu, tada damatte denwa wo kitta dake da yo.",
+            "translation": "Tanpa membicarakan apa pun secara khusus, hanya menutup telepon dengan diam saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "後になって、後悔していることは？",
+          "romaji": "Ato ni natte, koukai shite iru koto wa?",
+          "translation": "Belakangan, ada yang kamu sesali?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_terakhir_orang_tercinta_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "もっと話しておけばよかったと、今でも思わずにはいられないんだ。",
+            "romaji": "Motto hanashite okeba yokatta to, ima demo omowazu ni wa irarenai n da.",
+            "translation": "Sampai sekarang pun aku tidak bisa tidak berpikir seharusnya aku bicara lebih banyak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く後悔していないし、あれで十分だったと思っているよ。",
+            "romaji": "Mattaku koukai shite inai shi, are de juubun datta to omotte iru yo.",
+            "translation": "Sama sekali tidak menyesal, dan berpikir itu sudah cukup.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最後の会話が、いつも通りだったのは救いだね。",
+          "romaji": "Saigo no kaiwa ga, itsumo doori datta no wa sukui da ne.",
+          "translation": "Percakapan terakhir yang biasa-biasa saja itu suatu keselamatan ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_terakhir_orang_tercinta_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの普段通りの温かさを、忘れずにはいられないと思ってるよ。",
+            "romaji": "Un, ano fudan doori no atatakasa wo, wasurezu ni wa irarenai to omotteru yo.",
+            "translation": "Iya, aku berpikir aku tidak bisa tidak selamanya mengingat kehangatan biasa itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、いつも通りだったことに、何の意味も感じないよ。",
+            "romaji": "Iya, itsumo doori datta koto ni, nan no imi mo kanjinai yo.",
+            "translation": "Tidak, sama sekali tidak merasakan makna apa pun dari kesamaan biasanya itu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大切な思い出だね。",
+          "romaji": "Taisetsu na omoide da ne.",
+          "translation": "Kenangan yang berharga ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_terakhir_orang_tercinta_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pilih_kata_hati_hati_waktu_terbatas_n1",
+    "title": "Menjelaskan Alasan Memilih Kata dengan Hati-hati Saat Waktu Bicara Terbatas",
+    "category": "telepon_n1",
+    "description": "Kamu menjelaskan ke teman alasan memilih kata dengan hati-hati saat waktu bicara di telepon terbatas.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "海外に住むお母さんとの電話、いつも短いよね。",
+          "romaji": "Kaigai ni sumu okaasan to no denwa, itsumo mijikai yo ne.",
+          "translation": "Telepon dengan ibumu yang tinggal di luar negeri, selalu singkat ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_pilih_kata_hati_hati_waktu_terbatas_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、時間が限られているからこそ、本当に伝えたいことだけを選んで話すんだ。",
+            "romaji": "Un, jikan ga kagirarete iru kara koso, hontou ni tsutaetai koto dake wo erande hanasu n da.",
+            "translation": "Iya, justru karena waktunya terbatas, aku memilih untuk membicarakan hanya hal yang benar-benar ingin kusampaikan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、時間なんて気にせず、いつもだらだら長話しているよ。",
+            "romaji": "Iya, jikan nante ki ni sezu, itsumo daradara nagabanashi shite iru yo.",
+            "translation": "Tidak, tanpa memedulikan waktu, selalu bicara panjang bertele-tele.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "限られた時間の中で、何を優先するの？",
+          "romaji": "Kagirareta jikan no naka de, nani wo yuusen suru no?",
+          "translation": "Dalam waktu yang terbatas, apa yang kamu prioritaskan?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_pilih_kata_hati_hati_waktu_terbatas_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "近況報告よりも、感謝の気持ちを伝えることこそが大事だからこそ、それを優先するよ。",
+            "romaji": "Kinkyou houkoku yori mo, kansha no kimochi wo tsutaeru koto koso ga daiji dakara koso, sore wo yuusen suru yo.",
+            "translation": "Justru karena menyampaikan rasa terima kasih itu lebih penting daripada laporan kabar terbaru, aku memprioritaskan itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に優先することはなくて、思いついたことをそのまま話すだけだよ。",
+            "romaji": "Toku ni yuusen suru koto wa nakute, omoitsuita koto wo sono mama hanasu dake da yo.",
+            "translation": "Tidak ada prioritas khusus, hanya bicara apa yang terpikir begitu saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "言葉を選ぶのって、難しくない？",
+          "romaji": "Kotoba wo erabu no tte, muzukashikunai?",
+          "translation": "Memilih kata itu tidak sulit?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_pilih_kata_hati_hati_waktu_terbatas_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "難しいけど、限られた時間だからこそ、一言一言に心を込めるようにしているよ。",
+            "romaji": "Muzukashii kedo, kagirareta jikan dakara koso, hitokoto hitokoto ni kokoro wo komeru you ni shite iru yo.",
+            "translation": "Sulit, tapi justru karena waktunya terbatas, aku berusaha menaruh hati di setiap kata.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、全く難しくなくて、いつも適当に話しているだけだよ。",
+            "romaji": "Iya, mattaku muzukashikunakute, itsumo tekitou ni hanashite iru dake da yo.",
+            "translation": "Tidak, sama sekali tidak sulit, selalu bicara sekenanya saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その電話、いつも心に残るものになりそうだね。",
+          "romaji": "Sono denwa, itsumo kokoro ni nokoru mono ni narisou da ne.",
+          "translation": "Telepon itu sepertinya selalu jadi sesuatu yang membekas di hati ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_pilih_kata_hati_hati_waktu_terbatas_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、短いからこそ、その一瞬一瞬が特別なものになるんだと思うよ。",
+            "romaji": "Un, mijikai kara koso, sono isshun isshun ga tokubetsu na mono ni naru n da to omou yo.",
+            "translation": "Iya, kupikir justru karena singkat, setiap momennya menjadi sesuatu yang spesial.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、短い電話なんて、特に印象に残らないと思うよ。",
+            "romaji": "Iya, mijikai denwa nante, toku ni inshou ni nokoranai to omou yo.",
+            "translation": "Tidak, kupikir telepon yang singkat tidak terlalu membekas secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "心のこもった電話だね。",
+          "romaji": "Kokoro no komotta denwa da ne.",
+          "translation": "Telepon yang penuh hati ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_pilih_kata_hati_hati_waktu_terbatas_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kesepian_selalu_bisa_dihubungi_n1",
+    "title": "Membicarakan Kesepian di Balik Selalu Bisa Dihubungi Namun Jarang Didengar",
+    "category": "telepon_n1",
+    "description": "Kamu membicarakan dengan teman kesepian di balik selalu bisa dihubungi namun jarang benar-benar didengar.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "スマホがあれば、いつでも誰かと繋がれるよね。",
+          "romaji": "Sumaho ga areba, itsudemo dareka to tsunagareru yo ne.",
+          "translation": "Kalau ada ponsel, kapan saja bisa terhubung dengan seseorang ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_kesepian_selalu_bisa_dihubungi_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、でもいつでも繋がれるはずなのに、本当の意味で聞いてもらえていない気がしてならないんだ。",
+            "romaji": "Un, demo itsudemo tsunagareru hazu na noni, hontou no imi de kiite moraete inai ki ga shite naranai n da.",
+            "translation": "Iya, tapi meski seharusnya bisa terhubung kapan saja, aku tidak bisa tidak merasa tidak benar-benar didengar dalam arti sesungguhnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、いつでも繋がれるからこそ、いつも十分に理解されている気がするよ。",
+            "romaji": "Iya, itsudemo tsunagareru kara koso, itsumo juubun ni rikai sarete iru ki ga suru yo.",
+            "translation": "Tidak, justru karena bisa terhubung kapan saja, aku selalu merasa cukup dipahami.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にどんな時にそう感じるの？",
+          "romaji": "Gutaiteki ni donna toki ni sou kanjiru no?",
+          "translation": "Secara konkret kapan kamu merasa begitu?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_kesepian_selalu_bisa_dihubungi_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "既読がついてもすぐに返信が来ないと、無視された気がしてならないよ。",
+            "romaji": "Kidoku ga tsuite mo sugu ni henshin ga konai to, mushi sareta ki ga shite naranai yo.",
+            "translation": "Kalau sudah terbaca tapi tidak segera dibalas, aku tidak bisa tidak merasa diabaikan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "既読がついても返信が遅くても、特に何も感じたことないよ。",
+            "romaji": "Kidoku ga tsuite mo henshin ga osokute mo, toku ni nanimo kanjita koto nai yo.",
+            "translation": "Meski sudah terbaca dan balasannya lambat, belum pernah merasakan apa pun secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "繋がってるのに、孤独を感じるんだね。",
+          "romaji": "Tsunagatteru noni, kodoku wo kanjiru n da ne.",
+          "translation": "Padahal terhubung, tapi merasa kesepian ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_kesepian_selalu_bisa_dihubungi_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、大勢と繋がっているはずなのに、誰にも本音を言えない気がしてならないんだ。",
+            "romaji": "Un, oozei to tsunagatte iru hazu na noni, dare ni mo honne wo ienai ki ga shite naranai n da.",
+            "translation": "Iya, meski seharusnya terhubung dengan banyak orang, aku tidak bisa tidak merasa tidak bisa mengatakan perasaan sejujurnya ke siapa pun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、大勢と繋がっていれば、孤独を感じることなんて絶対にないよ。",
+            "romaji": "Iya, oozei to tsunagatte ireba, kodoku wo kanjiru koto nante zettai ni nai yo.",
+            "translation": "Tidak, kalau terhubung dengan banyak orang, mustahil merasa kesepian.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "本当に聞いてくれる相手を見つけたいね。",
+          "romaji": "Hontou ni kiite kureru aite wo mitsuketai ne.",
+          "translation": "Ingin menemukan seseorang yang benar-benar mendengarkan ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_kesepian_selalu_bisa_dihubungi_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、表面的な繋がりよりも、深く話せる相手が欲しくてならないよ。",
+            "romaji": "Un, hyoumenteki na tsunagari yori mo, fukaku hanaseru aite ga hoshikute naranai yo.",
+            "translation": "Iya, aku tidak bisa tidak sangat menginginkan seseorang yang bisa diajak bicara secara mendalam, lebih dari sekadar hubungan permukaan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、表面的な繋がりだけで、十分満足しているよ。",
+            "romaji": "Iya, hyoumenteki na tsunagari dake de, juubun manzoku shite iru yo.",
+            "translation": "Tidak, dengan hubungan permukaan saja aku sudah cukup puas.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "本音で話せる相手、見つかるといいね。",
+          "romaji": "Honne de hanaseru aite, mitsukaru to ii ne.",
+          "translation": "Semoga bisa menemukan lawan bicara yang bisa diajak bicara sejujurnya ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_kesepian_selalu_bisa_dihubungi_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_nostalgia_surat_tulisan_tangan_n1",
+    "title": "Mendiskusikan Nostalgia terhadap Surat Tulisan Tangan Dibanding Pesan Instan",
+    "category": "telepon_n1",
+    "description": "Kamu dan teman mendiskusikan nostalgia terhadap surat tulisan tangan dibanding pesan instan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、手紙をもらうことなんてないよね。",
+          "romaji": "Saikin, tegami wo morau koto nante nai yo ne.",
+          "translation": "Akhir-akhir ini tidak pernah menerima surat ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_nostalgia_surat_tulisan_tangan_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、でも手書きの文字ならではの温もりが、時々恋しくなるんだ。",
+            "romaji": "Un, demo tegaki no moji naradewa no nukumori ga, tokidoki koishiku naru n da.",
+            "translation": "Iya, tapi kadang aku merindukan kehangatan yang khas dari tulisan tangan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、手紙になんて、何の魅力も感じたことないよ。",
+            "romaji": "Iya, tegami ni nante, nan no miryoku mo kanjita koto nai yo.",
+            "translation": "Tidak, sama sekali belum pernah merasakan daya tarik apa pun pada surat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手紙のどんなところが恋しいの？",
+          "romaji": "Tegami no donna tokoro ga koishii no?",
+          "translation": "Bagian mana dari surat yang kamu rindukan?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_nostalgia_surat_tulisan_tangan_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "書き手ならではの癖や間違いさえも、愛おしく感じられるところだよ。",
+            "romaji": "Kakite naradewa no kuse ya machigai sae mo, itooshiku kanjirareru tokoro da yo.",
+            "translation": "Bagiannya adalah bahkan kebiasaan dan kesalahan yang khas dari penulisnya pun terasa menggemaskan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にどこも恋しくなくて、メッセージのほうがずっと便利だよ。",
+            "romaji": "Toku ni doko mo koishikunakute, messeeji no hou ga zutto benri da yo.",
+            "translation": "Tidak ada bagian yang dirindukan secara khusus, pesan jauh lebih praktis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "デジタルにはない良さがあるんだね。",
+          "romaji": "Dejitaru ni wa nai yosa ga aru n da ne.",
+          "translation": "Ada kebaikan yang tidak dimiliki digital ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_nostalgia_surat_tulisan_tangan_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、時間をかけて書かれた文字ならではの重みが、画面の文字にはないんだ。",
+            "romaji": "Un, jikan wo kakete kakareta moji naradewa no omomi ga, gamen no moji ni wa nai n da.",
+            "translation": "Iya, bobot yang khas dari tulisan yang ditulis dengan meluangkan waktu itu tidak ada pada tulisan di layar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、画面の文字にも、手紙と全く同じ重みがあると思うよ。",
+            "romaji": "Iya, gamen no moji ni mo, tegami to mattaku onaji omomi ga aru to omou yo.",
+            "translation": "Tidak, kupikir tulisan di layar pun punya bobot yang sama persis seperti surat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "また誰かに手紙を書いてみたら？",
+          "romaji": "Mata dareka ni tegami wo kaite mitara?",
+          "translation": "Bagaimana kalau coba menulis surat lagi ke seseorang?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_nostalgia_surat_tulisan_tangan_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、手書きならではの気持ちの込め方を、久しぶりに味わってみようかな。",
+            "romaji": "Un, tegaki naradewa no kimochi no komekata wo, hisashiburi ni ajiwatte miyou ka na.",
+            "translation": "Iya, mungkin aku akan coba merasakan cara menaruh perasaan yang khas dari tulisan tangan, setelah sekian lama.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、今さら手紙を書くなんて、時間の無駄だと思うよ。",
+            "romaji": "Iya, ima sara tegami wo kaku nante, jikan no muda da to omou yo.",
+            "translation": "Tidak, menulis surat sekarang ini kupikir hanya buang-buang waktu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手紙、書いてみてね。",
+          "romaji": "Tegami, kaite mite ne.",
+          "translation": "Coba tulis surat ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_nostalgia_surat_tulisan_tangan_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、書いてみる。",
+            "romaji": "Un, kaite miru.",
+            "translation": "Iya, akan kucoba menulisnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_sadar_usia_orang_tua_suara_n1",
+    "title": "Menceritakan Pengalaman Menyadari Usia Orang Tua Lewat Suaranya di Telepon",
+    "category": "telepon_n1",
+    "description": "Kamu bercerita ke teman tentang pengalaman menyadari usia orang tua lewat suaranya di telepon.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お母さんと電話して、何か気づいたことある？",
+          "romaji": "Okaasan to denwa shite, nanika kizuita koto aru?",
+          "translation": "Setelah telepon dengan ibumu, ada yang kamu sadari?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_sadar_usia_orang_tua_suara_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、久しぶりに声を聞いて初めて、母が年を取ったことに気づいたんだ。",
+            "romaji": "Un, hisashiburi ni koe wo kiite hajimete, haha ga toshi wo totta koto ni kizuita n da.",
+            "translation": "Iya, hanya setelah mendengar suaranya lagi setelah sekian lama, aku menyadari ibuku telah menua.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、母と電話しても、特に何も気づかなかったよ。",
+            "romaji": "Iya, haha to denwa shite mo, toku ni nanimo kizukanakatta yo.",
+            "translation": "Tidak, meski telepon dengan ibu, tidak menyadari apa pun secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にどんなところで気づいたの？",
+          "romaji": "Gutaiteki ni donna tokoro de kizuita no?",
+          "translation": "Secara konkret di bagian mana kamu menyadarinya?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_sadar_usia_orang_tua_suara_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "以前より声が小さくなっているのを聞いて初めて、時の流れを実感したよ。",
+            "romaji": "Izen yori koe ga chiisaku natte iru no wo kiite hajimete, toki no nagare wo jikkan shita yo.",
+            "translation": "Hanya setelah mendengar suaranya jadi lebih pelan dari sebelumnya, aku benar-benar merasakan aliran waktu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にどこも変わっておらず、昔と全く同じ声だったよ。",
+            "romaji": "Toku ni doko mo kawatte orazu, mukashi to mattaku onaji koe datta yo.",
+            "translation": "Tidak ada yang berubah secara khusus, suaranya sama persis seperti dulu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それに気づいて、どう思った？",
+          "romaji": "Sore ni kizuite, dou omotta?",
+          "translation": "Setelah menyadarinya, bagaimana perasaanmu?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_sadar_usia_orang_tua_suara_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "元気なうちにもっと電話しようと、その瞬間に初めて強く思ったよ。",
+            "romaji": "Genki na uchi ni motto denwa shiyou to, sono shunkan ni hajimete tsuyoku omotta yo.",
+            "translation": "Untuk pertama kalinya di momen itu, aku berpikir kuat bahwa aku harus lebih sering menelepon selagi dia sehat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も思わず、いつも通り電話を切っただけだよ。",
+            "romaji": "Toku ni nanimo omowazu, itsumo doori denwa wo kitta dake da yo.",
+            "translation": "Tanpa memikirkan apa pun secara khusus, hanya menutup telepon seperti biasa saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その気づき、大事にしたいね。",
+          "romaji": "Sono kizuki, daiji ni shitai ne.",
+          "translation": "Ingin menghargai kesadaran itu ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_sadar_usia_orang_tua_suara_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの瞬間があって初めて、当たり前の日常のありがたさが分かったよ。",
+            "romaji": "Un, ano shunkan ga atte hajimete, atarimae no nichijou no arigatasa ga wakatta yo.",
+            "translation": "Iya, hanya karena ada momen itu, aku memahami betapa berharganya keseharian yang biasa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、あの瞬間は、今の自分には何の影響もないよ。",
+            "romaji": "Iya, ano shunkan wa, ima no jibun ni wa nan no eikyou mo nai yo.",
+            "translation": "Tidak, momen itu sama sekali tidak berpengaruh pada diriku sekarang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その気づき、大事だね。",
+          "romaji": "Sono kizuki, daiji da ne.",
+          "translation": "Kesadaran itu penting ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_sadar_usia_orang_tua_suara_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_filosofi_kehadiran_lebih_penting_n1",
+    "title": "Menjelaskan Filosofi Bahwa Kehadiran Lebih Penting daripada Kata-kata",
+    "category": "telepon_n1",
+    "description": "Kamu menjelaskan ke teman filosofi bahwa kehadiran lewat telepon lebih penting daripada kata-kata yang sempurna.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電話で何を話すか、いつも準備してから電話するの？",
+          "romaji": "Denwa de nani wo hanasu ka, itsumo junbi shite kara denwa suru no?",
+          "translation": "Kamu selalu menyiapkan apa yang akan dibicarakan sebelum menelepon?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_filosofi_kehadiran_lebih_penting_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "話す内容を完璧に準備するというより、ただそばにいる感覚を届けたいだけなんだ。",
+            "romaji": "Hanasu naiyou wo kanpeki ni junbi suru to iu yori, tada soba ni iru kankaku wo todoketai dake na n da.",
+            "translation": "Lebih dari menyiapkan isi pembicaraan dengan sempurna, aku hanya ingin menyampaikan perasaan berada di sampingnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、話す内容を完璧に準備してから電話するようにしているよ。",
+            "romaji": "Un, hanasu naiyou wo kanpeki ni junbi shite kara denwa suru you ni shite iru yo.",
+            "translation": "Iya, aku selalu berusaha menyiapkan isi pembicaraan dengan sempurna sebelum menelepon.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "内容よりも大事なことがあるの？",
+          "romaji": "Naiyou yori mo daiji na koto ga aru no?",
+          "translation": "Ada hal yang lebih penting dari isinya?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_filosofi_kehadiran_lebih_penting_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "気の利いた言葉を探すというより、ただ電話に出ることそのものに意味があると思うんだ。",
+            "romaji": "Ki no kiita kotoba wo sagasu to iu yori, tada denwa ni deru koto sono mono ni imi ga aru to omou n da.",
+            "translation": "Lebih dari mencari kata-kata yang cerdas, aku berpikir ada makna dalam mengangkat telepon itu sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "内容が完璧じゃなければ、電話をする意味なんてないと思うよ。",
+            "romaji": "Naiyou ga kanpeki janakereba, denwa wo suru imi nante nai to omou yo.",
+            "translation": "Kalau isinya tidak sempurna, kupikir tidak ada artinya menelepon.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "存在そのものが伝わるってこと？",
+          "romaji": "Sonzai sono mono ga tsutawaru tte koto?",
+          "translation": "Maksudnya keberadaan itu sendiri yang tersampaikan?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_filosofi_kehadiran_lebih_penting_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、慰めの言葉を並べるというより、ただ寄り添う気持ちのほうが伝わると思うよ。",
+            "romaji": "Un, nagusame no kotoba wo naraberu to iu yori, tada yorisou kimochi no hou ga tsutawaru to omou yo.",
+            "translation": "Iya, lebih dari merangkai kata-kata penghiburan, kupikir perasaan mendampingi itulah yang lebih tersampaikan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、言葉を並べることこそが、一番相手に伝わる方法だと思うよ。",
+            "romaji": "Iya, kotoba wo naraberu koto koso ga, ichiban aite ni tsutawaru houhou da to omou yo.",
+            "translation": "Tidak, kupikir justru merangkai kata-kata itulah cara yang paling tersampaikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その考え方、優しいね。",
+          "romaji": "Sono kangaekata, yasashii ne.",
+          "translation": "Cara berpikir itu penuh kelembutan ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_filosofi_kehadiran_lebih_penting_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。正しいことを言うというより、ただ聞くことを大事にしたいんだ。",
+            "romaji": "Arigatou. Tadashii koto wo iu to iu yori, tada kiku koto wo daiji ni shitai n da.",
+            "translation": "Terima kasih. Lebih dari mengatakan hal yang benar, aku ingin menghargai sekadar mendengarkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、優しいとは思わないし、ただ楽をしているだけだよ。",
+            "romaji": "Iya, yasashii to wa omowanai shi, tada raku wo shite iru dake da yo.",
+            "translation": "Tidak, sama sekali tidak lembut, hanya bersantai saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "優しい電話の仕方だね。",
+          "romaji": "Yasashii denwa no shikata da ne.",
+          "translation": "Cara menelepon yang penuh kelembutan ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_filosofi_kehadiran_lebih_penting_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_keberanian_menelepon_seseorang_n1",
+    "title": "Membicarakan Keberanian yang Dibutuhkan untuk Menelepon Seseorang",
+    "category": "telepon_n1",
+    "description": "Kamu membicarakan dengan teman keberanian yang dibutuhkan untuk menelepon seseorang yang penting.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "彼女に電話するの、ずっと迷ってたよね。",
+          "romaji": "Kanojo ni denwa suru no, zutto mayotteta yo ne.",
+          "translation": "Kamu terus ragu untuk menelepon pacarmu ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_keberanian_menelepon_seseorang_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、でもこのままでは前に進めないから、勇気を出して電話をかけざるを得なかったんだ。",
+            "romaji": "Un, demo kono mama de wa mae ni susumenai kara, yuuki wo dashite denwa wo kakezaru wo enakatta n da.",
+            "translation": "Iya, tapi karena tidak bisa maju kalau begini terus, aku terpaksa memberanikan diri menelepon.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、電話するのに、迷ったことなんて一度もないよ。",
+            "romaji": "Iya, denwa suru no ni, mayotta koto nante ichido mo nai yo.",
+            "translation": "Tidak, belum pernah sama sekali ragu untuk menelepon.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何を伝えたかったの？",
+          "romaji": "Nani wo tsutaetakatta no?",
+          "translation": "Apa yang ingin kamu sampaikan?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_keberanian_menelepon_seseorang_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "誤解を解くためには、直接声で伝えざるを得ないと思ったんだ。",
+            "romaji": "Gokai wo toku tame ni wa, chokusetsu koe de tsutaezaru wo enai to omotta n da.",
+            "translation": "Aku berpikir untuk menghilangkan kesalahpahaman, aku terpaksa menyampaikannya langsung dengan suara.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も伝えたいことはなくて、ただ電話しただけだよ。",
+            "romaji": "Toku ni nanimo tsutaetai koto wa nakute, tada denwa shita dake da yo.",
+            "translation": "Tidak ada yang ingin disampaikan secara khusus, hanya menelepon saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電話をかける前、緊張した？",
+          "romaji": "Denwa wo kakeru mae, kinchou shita?",
+          "translation": "Sebelum menelepon, apa kamu gugup?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_keberanian_menelepon_seseorang_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "すごく緊張したけど、伝えないと後悔すると思って、番号を押さざるを得なかったよ。",
+            "romaji": "Sugoku kinchou shita kedo, tsutaenai to koukai suru to omotte, bangou wo osazaru wo enakatta yo.",
+            "translation": "Aku sangat gugup, tapi karena berpikir akan menyesal kalau tidak menyampaikannya, aku terpaksa menekan nomor itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く緊張せず、いつも通りの気持ちでかけられたよ。",
+            "romaji": "Mattaku kinchou sezu, itsumo doori no kimochi de kakerareta yo.",
+            "translation": "Sama sekali tidak gugup, bisa menelepon dengan perasaan biasa saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その勇気、すごいと思うよ。",
+          "romaji": "Sono yuuki, sugoi to omou yo.",
+          "translation": "Kupikir keberanian itu hebat."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_keberanian_menelepon_seseorang_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。あの状況では、電話をかけざるを得なかっただけだよ。",
+            "romaji": "Arigatou. Ano joukyou de wa, denwa wo kakezaru wo enakatta dake da yo.",
+            "translation": "Terima kasih. Dalam situasi itu, aku hanya terpaksa menelepon saja.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、勇気なんて、全く必要なかったよ。",
+            "romaji": "Iya, yuuki nante, mattaku hitsuyou nakatta yo.",
+            "translation": "Tidak, keberanian sama sekali tidak diperlukan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その勇気、尊敬するよ。",
+          "romaji": "Sono yuuki, sonkei suru yo.",
+          "translation": "Aku menghormati keberanian itu."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_keberanian_menelepon_seseorang_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_telepon_ritual_mulai_punah_n1",
+    "title": "Mendiskusikan Fenomena Telepon sebagai Ritual yang Mulai Punah",
+    "category": "telepon_n1",
+    "description": "Kamu dan teman mendiskusikan fenomena panggilan telepon sebagai ritual yang mulai punah.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、電話でおしゃべりする人、減ってきたよね。",
+          "romaji": "Saikin, denwa de oshaberi suru hito, hette kita yo ne.",
+          "translation": "Akhir-akhir ini orang yang ngobrol lewat telepon berkurang ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_ritual_mulai_punah_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、メッセージアプリに取って代わられつつあるのを感じるよ。",
+            "romaji": "Un, messeeji apuri ni tottekawararetsutsu aru no wo kanjiru yo.",
+            "translation": "Iya, aku merasakan itu gradual digantikan oleh aplikasi pesan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、電話でおしゃべりする人は、むしろ増えているらしいよ。",
+            "romaji": "Iya, denwa de oshaberi suru hito wa, mushiro fuete iru rashii yo.",
+            "translation": "Tidak, katanya orang yang ngobrol lewat telepon justru bertambah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "なぜそう変わってきたと思う？",
+          "romaji": "Naze sou kawatte kita to omou?",
+          "translation": "Menurutmu kenapa jadi berubah begitu?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_ritual_mulai_punah_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "即座に返信できる便利さが、電話の習慣に取って代わりつつあるんだと思うよ。",
+            "romaji": "Sokuza ni henshin dekiru benrisa ga, denwa no shuukan ni tottekawaritsutsu aru n da to omou yo.",
+            "translation": "Kupikir kepraktisan bisa membalas langsung sedang gradual menggantikan kebiasaan menelepon.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に理由はなくて、たまたま偶然そうなっただけだと思うよ。",
+            "romaji": "Toku ni riyuu wa nakute, tamatama guuzen sou natta dake da to omou yo.",
+            "translation": "Tidak ada alasan khusus, kupikir hanya kebetulan saja jadi begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電話という文化、なくなっちゃうのかな。",
+          "romaji": "Denwa to iu bunka, nakunacchau no ka na.",
+          "translation": "Apa budaya telepon akan hilang ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_ritual_mulai_punah_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "完全になくなるとまでは思わないけど、特別な手段になりつつある気がするよ。",
+            "romaji": "Kanzen ni nakunaru to made wa omowanai kedo, tokubetsu na shudan ni naritsutsu aru ki ga suru yo.",
+            "translation": "Aku tidak sampai berpikir akan hilang sepenuhnya, tapi rasanya sedang gradual menjadi sarana yang spesial.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、電話という文化は、もうすぐ完全に消滅すると思うよ。",
+            "romaji": "Un, denwa to iu bunka wa, mou sugu kanzen ni shoumetsu suru to omou yo.",
+            "translation": "Iya, kupikir budaya telepon akan segera hilang sepenuhnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "少し寂しい変化だね。",
+          "romaji": "Sukoshi sabishii henka da ne.",
+          "translation": "Perubahan yang agak menyedihkan ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_ritual_mulai_punah_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、でもだからこそ、電話をかける瞬間の価値が高まりつつあるとも思うよ。",
+            "romaji": "Un, demo dakara koso, denwa wo kakeru shunkan no kachi ga takamaritsutsu aru to mo omou yo.",
+            "translation": "Iya, tapi justru karena itu, aku juga berpikir nilai momen menelepon sedang gradual meningkat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、全く寂しくないし、この変化を心から喜んでいるよ。",
+            "romaji": "Iya, mattaku sabishikunai shi, kono henka wo kokoro kara yorokonde iru yo.",
+            "translation": "Tidak, sama sekali tidak menyedihkan, dan menyambut perubahan ini dengan sepenuh hati.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "時代は変わっていくんだね。",
+          "romaji": "Jidai wa kawatte iku n da ne.",
+          "translation": "Zaman memang terus berubah ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_telepon_ritual_mulai_punah_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_komunikasi_retak_meski_terhubung_n1",
+    "title": "Menceritakan Pengalaman Komunikasi yang Retak Meski Selalu Terhubung",
+    "category": "telepon_n1",
+    "description": "Kamu bercerita ke teman tentang pengalaman komunikasi yang retak meski selalu terhubung secara digital.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "毎日連絡取り合ってるのに、何かすれ違ってる気がするって言ってたよね。",
+          "romaji": "Mainichi renraku toriatteru noni, nanika surechigatteru ki ga suru tte itteta yo ne.",
+          "translation": "Kamu pernah bilang meski saling kontak setiap hari, rasanya ada yang tidak nyambung ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_komunikasi_retak_meski_terhubung_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、頻繁に連絡を取り合っているからといって、心が通じ合っているとは限らないと気づいたんだ。",
+            "romaji": "Un, hinpan ni renraku wo toriatte iru kara to itte, kokoro ga tsuujiatte iru to wa kagiranai to kizuita n da.",
+            "translation": "Iya, aku menyadari belum tentu hati saling terhubung hanya karena sering saling menghubungi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、頻繁に連絡を取り合っていれば、心も必ず通じ合うと思っているよ。",
+            "romaji": "Iya, hinpan ni renraku wo toriatte ireba, kokoro mo kanarazu tsuujiau to omotte iru yo.",
+            "translation": "Tidak, aku berpikir kalau sering saling menghubungi, hati pun pasti akan saling terhubung.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にどんなすれ違いを感じるの？",
+          "romaji": "Gutaiteki ni donna surechigai wo kanjiru no?",
+          "translation": "Secara konkret ketidaknyambungan seperti apa yang kamu rasakan?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_komunikasi_retak_meski_terhubung_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "毎日メッセージを送っているからといって、本音を伝えられているとは限らないと思うんだ。",
+            "romaji": "Mainichi messeeji wo okutte iru kara to itte, honne wo tsutaerarete iru to wa kagiranai to omou n da.",
+            "translation": "Aku berpikir belum tentu bisa menyampaikan perasaan sejujurnya hanya karena mengirim pesan setiap hari.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "毎日メッセージを送っていれば、それだけで十分に伝わっていると思うよ。",
+            "romaji": "Mainichi messeeji wo okutte ireba, sore dake de juubun ni tsutawatte iru to omou yo.",
+            "translation": "Kalau mengirim pesan setiap hari, kupikir hanya dengan itu sudah cukup tersampaikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "表面的なやり取りだけになってるのかもね。",
+          "romaji": "Hyoumenteki na yaritori dake ni natteru no kamo ne.",
+          "translation": "Mungkin jadi hanya pertukaran yang permukaan saja ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_komunikasi_retak_meski_terhubung_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、連絡の頻度が多いからといって、関係が深いとは限らないと実感しているよ。",
+            "romaji": "Un, renraku no hindo ga ooi kara to itte, kankei ga fukai to wa kagiranai to jikkan shite iru yo.",
+            "translation": "Iya, aku benar-benar merasakan bahwa belum tentu hubungannya dalam hanya karena frekuensi kontaknya tinggi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、連絡の頻度こそが、関係の深さを表していると思うよ。",
+            "romaji": "Iya, renraku no hindo koso ga, kankei no fukasa wo arawashite iru to omou yo.",
+            "translation": "Tidak, kupikir justru frekuensi kontak itulah yang menunjukkan kedalaman hubungan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どうすればすれ違いを解消できると思う？",
+          "romaji": "Dou sureba surechigai wo kaishou dekiru to omou?",
+          "translation": "Menurutmu bagaimana caranya mengatasi ketidaknyambungan itu?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_komunikasi_retak_meski_terhubung_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "回数を増やすことよりも、一回の会話の質を高めるとは限らないけど、試す価値はあると思うよ。",
+            "romaji": "Kaisuu wo fuyasu koto yori mo, ikkai no kaiwa no shitsu wo takameru to wa kagiranai kedo, tamesu kachi wa aru to omou yo.",
+            "translation": "Belum tentu meningkatkan kualitas satu percakapan lebih baik daripada menambah frekuensinya, tapi kupikir layak dicoba.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、連絡の回数を増やせば、すれ違いなんて自然に解消すると思うよ。",
+            "romaji": "Iya, renraku no kaisuu wo fuyaseba, surechigai nante shizen ni kaishou suru to omou yo.",
+            "translation": "Tidak, kupikir kalau menambah frekuensi kontak, ketidaknyambungan akan terselesaikan secara alami.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "質を大事にしていこうね。",
+          "romaji": "Shitsu wo daiji ni shite ikou ne.",
+          "translation": "Ayo hargai kualitasnya ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_komunikasi_retak_meski_terhubung_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうする。",
+            "romaji": "Un, sou suru.",
+            "translation": "Iya, akan kulakukan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_janji_angkat_telepon_orang_tua_n1",
+    "title": "Menjelaskan Alasan Menepati Janji untuk Selalu Mengangkat Telepon Orang Tua",
+    "category": "telepon_n1",
+    "description": "Kamu menjelaskan ke teman alasan menepati janji untuk selalu mengangkat telepon orang tua.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "親からの電話、忙しくても必ず出るようにしてるんだよね。",
+          "romaji": "Oya kara no denwa, isogashikute mo kanarazu deru you ni shiteru n da yo ne.",
+          "translation": "Telepon dari orang tua, kamu selalu berusaha mengangkatnya meski sibuk ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_janji_angkat_telepon_orang_tua_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、いつまで一緒にいられるか分からないからこそ、絶対に無視したくないんだ。",
+            "romaji": "Un, itsu made issho ni irareru ka wakaranai kara koso, zettai ni mushi shitakunai n da.",
+            "translation": "Iya, justru karena tidak tahu sampai kapan bisa bersama, aku sama sekali tidak ingin mengabaikannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、親からの電話は、忙しい時は普通に無視しているよ。",
+            "romaji": "Iya, oya kara no denwa wa, isogashii toki wa futsuu ni mushi shite iru yo.",
+            "translation": "Tidak, telepon dari orang tua, saat sibuk kuabaikan begitu saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その約束、いつからしてるの？",
+          "romaji": "Sono yakusoku, itsu kara shiteru no?",
+          "translation": "Sejak kapan kamu memegang janji itu?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_janji_angkat_telepon_orang_tua_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "後悔した友達の話を聞いてからこそ、この習慣を大事にするようになったんだ。",
+            "romaji": "Koukai shita tomodachi no hanashi wo kiite kara koso, kono shuukan wo daiji ni suru you ni natta n da.",
+            "translation": "Justru setelah mendengar cerita penyesalan temanku, aku jadi menghargai kebiasaan ini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にきっかけはなくて、昔からずっと当たり前にやっていたよ。",
+            "romaji": "Toku ni kikkake wa nakute, mukashi kara zutto atarimae ni yatte ita yo.",
+            "translation": "Tidak ada pemicu khusus, sejak dulu memang selalu melakukannya seperti hal wajar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "忙しい時でも、必ず出るの？",
+          "romaji": "Isogashii toki demo, kanarazu deru no?",
+          "translation": "Meski sibuk, selalu diangkat?"
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_janji_angkat_telepon_orang_tua_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "仕事中だからこそ出られない時もあるけど、必ず折り返すようにしているよ。",
+            "romaji": "Shigotochuu dakara koso derarenai toki mo aru kedo, kanarazu orikaesu you ni shite iru yo.",
+            "translation": "Justru karena sedang bekerja, ada kalanya tidak bisa mengangkat, tapi aku selalu berusaha menelepon balik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、どんな状況でも、絶対に出られなかったことは一度もないよ。",
+            "romaji": "Un, donna joukyou demo, zettai ni derarenakatta koto wa ichido mo nai yo.",
+            "translation": "Iya, dalam situasi apa pun, belum pernah sama sekali gagal mengangkat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その気持ち、素敵だね。",
+          "romaji": "Sono kimochi, suteki da ne.",
+          "translation": "Perasaan itu indah ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_janji_angkat_telepon_orang_tua_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。限られた時間だからこそ、一回一回を大事にしたいんだ。",
+            "romaji": "Arigatou. Kagirareta jikan dakara koso, ikkai ikkai wo daiji ni shitai n da.",
+            "translation": "Terima kasih. Justru karena waktunya terbatas, aku ingin menghargai setiap kesempatannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、素敵だとは思わないし、ただの義務感でやっているだけだよ。",
+            "romaji": "Iya, suteki da to wa omowanai shi, tada no gimukan de yatte iru dake da yo.",
+            "translation": "Tidak, sama sekali tidak indah, hanya melakukannya karena rasa wajib saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "親孝行だね。",
+          "romaji": "Oyakoukou da ne.",
+          "translation": "Kamu berbakti pada orang tua ya."
+        },
+        "imagePath": "kaiwa_images/telepon_n1/kaiwa_janji_angkat_telepon_orang_tua_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]

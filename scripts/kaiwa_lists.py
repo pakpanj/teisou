@@ -1836,6 +1836,24 @@ HOBI_N1_TITLES = [
     "Menjelaskan Alasan Hobi Sebagai Bentuk Meditasi Sehari-hari",
 ]
 
+TELEPON_N1_TITLES = [
+    "Menjelaskan Alasan Mendengar Suara Seseorang Lebih Bermakna daripada Membaca Pesan",
+    "Mendiskusikan Filosofi Komunikasi Sejati Melampaui Sekadar Kata-kata",
+    "Menceritakan Pengalaman Menerima Telepon yang Mengubah Segalanya",
+    "Membicarakan Ketakutan Generasi Muda terhadap Percakapan Telepon Langsung",
+    "Mendiskusikan Makna Keheningan yang Nyaman Saat Bertelepon",
+    "Menceritakan Pengalaman Telepon Terakhir dengan Orang Tercinta",
+    "Menjelaskan Alasan Memilih Kata dengan Hati-hati Saat Waktu Bicara Terbatas",
+    "Membicarakan Kesepian di Balik Selalu Bisa Dihubungi Namun Jarang Didengar",
+    "Mendiskusikan Nostalgia terhadap Surat Tulisan Tangan Dibanding Pesan Instan",
+    "Menceritakan Pengalaman Menyadari Usia Orang Tua Lewat Suaranya di Telepon",
+    "Menjelaskan Filosofi Bahwa Kehadiran Lebih Penting daripada Kata-kata",
+    "Membicarakan Keberanian yang Dibutuhkan untuk Menelepon Seseorang",
+    "Mendiskusikan Fenomena Telepon sebagai Ritual yang Mulai Punah",
+    "Menceritakan Pengalaman Komunikasi yang Retak Meski Selalu Terhubung",
+    "Menjelaskan Alasan Menepati Janji untuk Selalu Mengangkat Telepon Orang Tua",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1915,6 +1933,7 @@ CATEGORY_META = {
     "cuaca_basa_basi_n1": ("Cuaca & Basa-basi", "☁️", "N1"),
     "rumah_sakit_n1": ("Di Rumah Sakit", "🏥", "N1"),
     "hobi_n1": ("Hobi", "🎨", "N1"),
+    "telepon_n1": ("Telepon", "☎️", "N1"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1996,6 +2015,7 @@ AVAILABLE_CATEGORIES = {
     "cuaca_basa_basi_n1": CUACA_BASA_BASI_N1_TITLES,
     "rumah_sakit_n1": RUMAH_SAKIT_N1_TITLES,
     "hobi_n1": HOBI_N1_TITLES,
+    "telepon_n1": TELEPON_N1_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -2089,6 +2109,7 @@ _ALL_TITLE_LISTS = {
     "CUACA_BASA_BASI_N1_TITLES": CUACA_BASA_BASI_N1_TITLES,
     "RUMAH_SAKIT_N1_TITLES": RUMAH_SAKIT_N1_TITLES,
     "HOBI_N1_TITLES": HOBI_N1_TITLES,
+    "TELEPON_N1_TITLES": TELEPON_N1_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
