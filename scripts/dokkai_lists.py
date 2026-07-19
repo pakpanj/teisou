@@ -32,10 +32,65 @@ N5_TITLES = [
     "Perubahan Jadwal Sekolah",
 ]
 
+# N4-N1 initial seed (10 each) — every level now has real starting
+# content instead of zero; deepening toward the ~100/level target
+# continues in future sessions/phases, same as N5's own rollout.
+N4_TITLES = [
+    "Hasil Wawancara Kerja",
+    "Peringatan Topan",
+    "Ulasan Restoran",
+    "Blog Perjalanan",
+    "Esai Pendapat tentang Media Sosial",
+    "Ulasan Produk",
+    "Surat Keluhan",
+    "Balasan Undangan",
+    "Pengumuman Pindah Alamat",
+    "Artikel Tips Kesehatan",
+]
+
+N3_TITLES = [
+    "Artikel Koran tentang Lingkungan",
+    "Memo Tempat Kerja tentang Perubahan Sistem",
+    "Esai Perbandingan Budaya",
+    "Petunjuk Penggunaan Alat",
+    "Esai Kesadaran Lingkungan",
+    "Artikel Kesehatan",
+    "Artikel Tren Teknologi",
+    "Teks Sejarah Singkat",
+    "Memo Rapat Kerja",
+    "Cerita Pertukaran Budaya Internasional",
+]
+
+N2_TITLES = [
+    "Laporan Manajemen Perusahaan",
+    "Editorial Sosial",
+    "Penjelasan Ilmiah",
+    "Esai tentang Karier dan Kehidupan",
+    "Berita Ekonomi",
+    "Analisis Budaya",
+    "Pengembangan Karier",
+    "Kebijakan Medis",
+    "Strategi Perusahaan",
+    "Esai tentang Pendidikan",
+]
+
+N1_TITLES = [
+    "Esai tentang Kehilangan",
+    "Esai tentang Ketidakkekalan Waktu",
+    "Kritik Sosial",
+    "Surat Formal Perkenalan Bisnis",
+    "Esai tentang Proses Kemandirian",
+    "Kajian Sejarah Mendalam",
+    "Refleksi tentang Pemaafan Diri",
+    "Diskusi Filosofis tentang Etika Sains",
+    "Kritik Seni Sastra",
+    "Kajian Perubahan Sosial",
+]
+
 LEVEL_META = {
     "n5": ("N5", True),
-    "n4": ("N4", False),
-    "n3": ("N3", False),
-    "n2": ("N2", False),
-    "n1": ("N1", False),
+    "n4": ("N4", True),
+    "n3": ("N3", True),
+    "n2": ("N2", True),
+    "n1": ("N1", True),
 }
