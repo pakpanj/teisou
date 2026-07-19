@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -5,12 +7,16 @@ import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/dokkai_jlpt_level_info.dart';
 import '../../data/models/jlpt_level.dart';
-import 'dokkai_level_screen.dart';
+import 'dokkai_exam_screen.dart';
 import 'dokkai_providers.dart';
 
 /// Entry point for Dokkai (reading comprehension) within Ujian: JLPT level
 /// picker, mirrors `KaiwaHomeScreen`/`BunpouHomeScreen`. Only levels with a
-/// real passage set are tappable.
+/// real passage set are tappable. Unlike every other browse-flow module in
+/// this app, there is deliberately no intermediate passage-list screen —
+/// tapping a level picks one random passage from it and opens the exam
+/// directly, per an explicit product decision (Ujian is meant to feel like
+/// "take a quiz now", not "browse a catalog").
 class DokkaiHomeScreen extends ConsumerWidget {
   const DokkaiHomeScreen({super.key});
 
@@ -38,29 +44,37 @@ class DokkaiHomeScreen extends ConsumerWidget {
   }
 }
 
-class _LevelCard extends StatelessWidget {
+class _LevelCard extends ConsumerWidget {
   final DokkaiJlptLevelInfo level;
 
   const _LevelCard({required this.level});
 
-  void _open(BuildContext context) {
+  Future<void> _open(BuildContext context, WidgetRef ref) async {
     if (!level.available) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Dokkai ${level.name} segera hadir!')),
       );
       return;
     }
-    AppNavigator.slideFromRight(
-      context,
-      DokkaiLevelScreen(
-        level: JlptLevelX.fromKey(level.id),
-        levelName: level.name,
-      ),
+    final passages = await ref.read(
+      dokkaiByLevelProvider(JlptLevelX.fromKey(level.id)).future,
     );
+    if (passages.isEmpty) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Bacaan untuk Dokkai ${level.name} belum tersedia.'),
+        ),
+      );
+      return;
+    }
+    final passage = passages[Random().nextInt(passages.length)];
+    if (!context.mounted) return;
+    AppNavigator.slideFromRight(context, DokkaiExamScreen(passage: passage));
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final available = level.available;
 
     return Material(
@@ -68,7 +82,7 @@ class _LevelCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () => _open(context),
+        onTap: () => _open(context, ref),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -77,8 +91,11 @@ class _LevelCard extends StatelessWidget {
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: (available ? AppColors.primaryCoral : AppColors.freeBadgeGrey)
-                      .withValues(alpha: 0.15),
+                  color:
+                      (available
+                              ? AppColors.primaryCoral
+                              : AppColors.freeBadgeGrey)
+                          .withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
@@ -86,7 +103,9 @@ class _LevelCard extends StatelessWidget {
                   level.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: available ? AppColors.primaryCoral : AppColors.freeBadgeGrey,
+                    color: available
+                        ? AppColors.primaryCoral
+                        : AppColors.freeBadgeGrey,
                   ),
                 ),
               ),
@@ -100,13 +119,15 @@ class _LevelCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: available ? AppColors.textNavy : AppColors.freeBadgeGrey,
+                        color: available
+                            ? AppColors.textNavy
+                            : AppColors.freeBadgeGrey,
                       ),
                     ),
                     const SizedBox(height: 4),
                     if (available)
                       Text(
-                        '${level.passageCount ?? 0} bacaan',
+                        '${level.passageCount ?? 0} bacaan · acak setiap kali',
                         style: TextStyle(
                           fontSize: 12,
                           color: AppColors.textNavy.withValues(alpha: 0.6),
@@ -114,7 +135,10 @@ class _LevelCard extends StatelessWidget {
                       )
                     else
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 1,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
@@ -133,7 +157,9 @@ class _LevelCard extends StatelessWidget {
               ),
               Icon(
                 Icons.chevron_right,
-                color: available ? AppColors.primaryCoral : AppColors.freeBadgeGrey,
+                color: available
+                    ? AppColors.primaryCoral
+                    : AppColors.freeBadgeGrey,
               ),
             ],
           ),
