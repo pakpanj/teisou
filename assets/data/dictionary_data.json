@@ -7528,5 +7528,1555 @@
       "japanese": "ドアを引いて開けます。",
       "translation": "Saya membuka pintu dengan menariknya."
     }
+  },
+  {
+    "id": "dict_00754",
+    "kanji": "一",
+    "reading": "いち",
+    "meaning": "satu",
+    "example": {
+      "japanese": "一から数えます。",
+      "translation": "Saya menghitung dari satu."
+    }
+  },
+  {
+    "id": "dict_00755",
+    "kanji": "二",
+    "reading": "に",
+    "meaning": "dua",
+    "example": {
+      "japanese": "二回読みました。",
+      "translation": "Saya membaca dua kali."
+    }
+  },
+  {
+    "id": "dict_00756",
+    "kanji": "三",
+    "reading": "さん",
+    "meaning": "tiga",
+    "example": {
+      "japanese": "三時に会いましょう。",
+      "translation": "Mari bertemu jam tiga."
+    }
+  },
+  {
+    "id": "dict_00757",
+    "kanji": "四",
+    "reading": "よん",
+    "meaning": "empat",
+    "example": {
+      "japanese": "四人で行きます。",
+      "translation": "Kami pergi berempat."
+    }
+  },
+  {
+    "id": "dict_00758",
+    "kanji": "五",
+    "reading": "ご",
+    "meaning": "lima",
+    "example": {
+      "japanese": "五分待ってください。",
+      "translation": "Tolong tunggu lima menit."
+    }
+  },
+  {
+    "id": "dict_00759",
+    "kanji": "六",
+    "reading": "ろく",
+    "meaning": "enam",
+    "example": {
+      "japanese": "六時に起きます。",
+      "translation": "Saya bangun jam enam."
+    }
+  },
+  {
+    "id": "dict_00760",
+    "kanji": "七",
+    "reading": "なな",
+    "meaning": "tujuh",
+    "example": {
+      "japanese": "七日間旅行します。",
+      "translation": "Saya bepergian selama tujuh hari."
+    }
+  },
+  {
+    "id": "dict_00761",
+    "kanji": "八",
+    "reading": "はち",
+    "meaning": "delapan",
+    "example": {
+      "japanese": "八時間寝ました。",
+      "translation": "Saya tidur selama delapan jam."
+    }
+  },
+  {
+    "id": "dict_00762",
+    "kanji": "九",
+    "reading": "きゅう",
+    "meaning": "sembilan",
+    "example": {
+      "japanese": "九月に卒業します。",
+      "translation": "Saya lulus bulan September."
+    }
+  },
+  {
+    "id": "dict_00763",
+    "kanji": "十",
+    "reading": "じゅう",
+    "meaning": "sepuluh",
+    "example": {
+      "japanese": "十分後に着きます。",
+      "translation": "Saya akan tiba sepuluh menit lagi."
+    }
+  },
+  {
+    "id": "dict_00764",
+    "kanji": "百",
+    "reading": "ひゃく",
+    "meaning": "seratus",
+    "example": {
+      "japanese": "百人が参加しました。",
+      "translation": "Seratus orang ikut berpartisipasi."
+    }
+  },
+  {
+    "id": "dict_00765",
+    "kanji": "千",
+    "reading": "せん",
+    "meaning": "seribu",
+    "example": {
+      "japanese": "千円札があります。",
+      "translation": "Ada uang kertas seribu yen."
+    }
+  },
+  {
+    "id": "dict_00766",
+    "kanji": "万",
+    "reading": "まん",
+    "meaning": "sepuluh ribu",
+    "example": {
+      "japanese": "一万円で買いました。",
+      "translation": "Saya membelinya dengan sepuluh ribu yen."
+    }
+  },
+  {
+    "id": "dict_00767",
+    "kanji": "何番目",
+    "reading": "なんばんめ",
+    "meaning": "urutan ke berapa",
+    "example": {
+      "japanese": "何番目に並んでいますか。",
+      "translation": "Kamu antre di urutan ke berapa?"
+    }
+  },
+  {
+    "id": "dict_00768",
+    "kanji": "番号",
+    "reading": "ばんごう",
+    "meaning": "nomor",
+    "example": {
+      "japanese": "電話番号を教えてください。",
+      "translation": "Tolong beri tahu nomor teleponmu."
+    }
+  },
+  {
+    "id": "dict_00769",
+    "kanji": "経営者",
+    "reading": "けいえいしゃ",
+    "meaning": "pemilik usaha, direktur",
+    "example": {
+      "japanese": "彼は会社の経営者です。",
+      "translation": "Dia direktur perusahaan."
+    }
+  },
+  {
+    "id": "dict_00770",
+    "kanji": "上司",
+    "reading": "じょうし",
+    "meaning": "atasan",
+    "example": {
+      "japanese": "上司に報告しました。",
+      "translation": "Saya melaporkan kepada atasan."
+    }
+  },
+  {
+    "id": "dict_00771",
+    "kanji": "部下",
+    "reading": "ぶか",
+    "meaning": "bawahan",
+    "example": {
+      "japanese": "彼には部下が五人います。",
+      "translation": "Dia punya lima orang bawahan."
+    }
+  },
+  {
+    "id": "dict_00772",
+    "kanji": "同僚",
+    "reading": "どうりょう",
+    "meaning": "rekan kerja",
+    "example": {
+      "japanese": "同僚とランチに行きます。",
+      "translation": "Saya pergi makan siang dengan rekan kerja."
+    }
+  },
+  {
+    "id": "dict_00773",
+    "kanji": "部署",
+    "reading": "ぶしょ",
+    "meaning": "departemen",
+    "example": {
+      "japanese": "営業部署に異動しました。",
+      "translation": "Saya dipindahkan ke departemen penjualan."
+    }
+  },
+  {
+    "id": "dict_00774",
+    "kanji": "受付",
+    "reading": "うけつけ",
+    "meaning": "resepsionis, meja depan",
+    "example": {
+      "japanese": "受付で名前を伝えてください。",
+      "translation": "Tolong sebutkan nama Anda di meja depan."
+    }
+  },
+  {
+    "id": "dict_00775",
+    "kanji": "報告書",
+    "reading": "ほうこくしょ",
+    "meaning": "laporan",
+    "example": {
+      "japanese": "報告書を提出しました。",
+      "translation": "Saya sudah menyerahkan laporan."
+    }
+  },
+  {
+    "id": "dict_00776",
+    "kanji": "企画",
+    "reading": "きかく",
+    "meaning": "perencanaan, proposal",
+    "example": {
+      "japanese": "新しい企画を考えています。",
+      "translation": "Saya sedang memikirkan proposal baru."
+    }
+  },
+  {
+    "id": "dict_00777",
+    "kanji": "目標",
+    "reading": "もくひょう",
+    "meaning": "target",
+    "example": {
+      "japanese": "今月の目標を達成しました。",
+      "translation": "Saya mencapai target bulan ini."
+    }
+  },
+  {
+    "id": "dict_00778",
+    "kanji": "業績",
+    "reading": "ぎょうせき",
+    "meaning": "kinerja usaha",
+    "example": {
+      "japanese": "会社の業績が伸びています。",
+      "translation": "Kinerja perusahaan meningkat."
+    }
+  },
+  {
+    "id": "dict_00779",
+    "kanji": "昇進",
+    "reading": "しょうしん",
+    "meaning": "promosi jabatan",
+    "example": {
+      "japanese": "彼は先月、昇進しました。",
+      "translation": "Dia dipromosikan bulan lalu."
+    }
+  },
+  {
+    "id": "dict_00780",
+    "kanji": "辞める",
+    "reading": "やめる",
+    "meaning": "berhenti (kerja)",
+    "example": {
+      "japanese": "会社を辞めることにしました。",
+      "translation": "Saya memutuskan berhenti dari perusahaan."
+    }
+  },
+  {
+    "id": "dict_00781",
+    "kanji": "採用",
+    "reading": "さいよう",
+    "meaning": "perekrutan",
+    "example": {
+      "japanese": "新入社員の採用を行います。",
+      "translation": "Kami melakukan perekrutan karyawan baru."
+    }
+  },
+  {
+    "id": "dict_00782",
+    "kanji": "出勤する",
+    "reading": "しゅっきんする",
+    "meaning": "berangkat kerja",
+    "example": {
+      "japanese": "毎朝八時に出勤します。",
+      "translation": "Saya berangkat kerja jam delapan setiap pagi."
+    }
+  },
+  {
+    "id": "dict_00783",
+    "kanji": "退勤する",
+    "reading": "たいきんする",
+    "meaning": "pulang kerja",
+    "example": {
+      "japanese": "六時に退勤します。",
+      "translation": "Saya pulang kerja jam enam."
+    }
+  },
+  {
+    "id": "dict_00784",
+    "kanji": "投稿する",
+    "reading": "とうこうする",
+    "meaning": "memposting",
+    "example": {
+      "japanese": "写真をSNSに投稿しました。",
+      "translation": "Saya memposting foto di media sosial."
+    }
+  },
+  {
+    "id": "dict_00785",
+    "kanji": "共有する",
+    "reading": "きょうゆうする",
+    "meaning": "membagikan",
+    "example": {
+      "japanese": "この記事を友達と共有しました。",
+      "translation": "Saya membagikan artikel ini kepada teman."
+    }
+  },
+  {
+    "id": "dict_00786",
+    "kanji": null,
+    "reading": "フォロー",
+    "meaning": "mengikuti (follow)",
+    "example": {
+      "japanese": "彼のアカウントをフォローしました。",
+      "translation": "Saya mengikuti akunnya."
+    }
+  },
+  {
+    "id": "dict_00787",
+    "kanji": "友達申請",
+    "reading": "ともだちしんせい",
+    "meaning": "permintaan pertemanan",
+    "example": {
+      "japanese": "友達申請を送りました。",
+      "translation": "Saya mengirim permintaan pertemanan."
+    }
+  },
+  {
+    "id": "dict_00788",
+    "kanji": null,
+    "reading": "コメント",
+    "meaning": "komentar",
+    "example": {
+      "japanese": "動画にコメントを書きました。",
+      "translation": "Saya menulis komentar di video."
+    }
+  },
+  {
+    "id": "dict_00789",
+    "kanji": "配信する",
+    "reading": "はいしんする",
+    "meaning": "menyiarkan (streaming)",
+    "example": {
+      "japanese": "毎週、ライブを配信します。",
+      "translation": "Saya melakukan siaran langsung setiap minggu."
+    }
+  },
+  {
+    "id": "dict_00790",
+    "kanji": "接続する",
+    "reading": "せつぞくする",
+    "meaning": "menyambungkan koneksi",
+    "example": {
+      "japanese": "Wi-Fiに接続します。",
+      "translation": "Saya menyambungkan ke Wi-Fi."
+    }
+  },
+  {
+    "id": "dict_00791",
+    "kanji": null,
+    "reading": "アカウント",
+    "meaning": "akun",
+    "example": {
+      "japanese": "新しいアカウントを作りました。",
+      "translation": "Saya membuat akun baru."
+    }
+  },
+  {
+    "id": "dict_00792",
+    "kanji": "通知",
+    "reading": "つうち",
+    "meaning": "notifikasi",
+    "example": {
+      "japanese": "通知がたくさん来ました。",
+      "translation": "Banyak notifikasi yang datang."
+    }
+  },
+  {
+    "id": "dict_00793",
+    "kanji": "既読",
+    "reading": "きどく",
+    "meaning": "sudah dibaca (pesan)",
+    "example": {
+      "japanese": "メッセージが既読になりました。",
+      "translation": "Pesannya sudah dibaca."
+    }
+  },
+  {
+    "id": "dict_00794",
+    "kanji": "拡散する",
+    "reading": "かくさんする",
+    "meaning": "menyebarkan (viral)",
+    "example": {
+      "japanese": "そのニュースはすぐに拡散しました。",
+      "translation": "Berita itu segera menyebar."
+    }
+  },
+  {
+    "id": "dict_00795",
+    "kanji": "炎上する",
+    "reading": "えんじょうする",
+    "meaning": "jadi kontroversi online",
+    "example": {
+      "japanese": "その発言が炎上しました。",
+      "translation": "Ucapan itu jadi kontroversi online."
+    }
+  },
+  {
+    "id": "dict_00796",
+    "kanji": "匿名",
+    "reading": "とくめい",
+    "meaning": "anonim",
+    "example": {
+      "japanese": "匿名でコメントしました。",
+      "translation": "Saya berkomentar secara anonim."
+    }
+  },
+  {
+    "id": "dict_00797",
+    "kanji": "個人情報",
+    "reading": "こじんじょうほう",
+    "meaning": "informasi pribadi",
+    "example": {
+      "japanese": "個人情報を守ってください。",
+      "translation": "Tolong jaga informasi pribadimu."
+    }
+  },
+  {
+    "id": "dict_00798",
+    "kanji": "画像",
+    "reading": "がぞう",
+    "meaning": "gambar (digital)",
+    "example": {
+      "japanese": "画像をダウンロードしました。",
+      "translation": "Saya mengunduh gambarnya."
+    }
+  },
+  {
+    "id": "dict_00799",
+    "kanji": "人間関係",
+    "reading": "にんげんかんけい",
+    "meaning": "hubungan antar manusia",
+    "example": {
+      "japanese": "人間関係が難しいです。",
+      "translation": "Hubungan antar manusia itu sulit."
+    }
+  },
+  {
+    "id": "dict_00800",
+    "kanji": "信頼する",
+    "reading": "しんらいする",
+    "meaning": "mempercayai",
+    "example": {
+      "japanese": "彼を信頼しています。",
+      "translation": "Saya mempercayai dia."
+    }
+  },
+  {
+    "id": "dict_00801",
+    "kanji": "裏切る",
+    "reading": "うらぎる",
+    "meaning": "mengkhianati",
+    "example": {
+      "japanese": "友達を裏切りたくありません。",
+      "translation": "Saya tidak ingin mengkhianati teman."
+    }
+  },
+  {
+    "id": "dict_00802",
+    "kanji": "仲直りする",
+    "reading": "なかなおりする",
+    "meaning": "berbaikan",
+    "example": {
+      "japanese": "喧嘩した後、仲直りしました。",
+      "translation": "Setelah bertengkar, kami berbaikan."
+    }
+  },
+  {
+    "id": "dict_00803",
+    "kanji": "喧嘩する",
+    "reading": "けんかする",
+    "meaning": "bertengkar",
+    "example": {
+      "japanese": "兄弟でよく喧嘩します。",
+      "translation": "Kami saudara sering bertengkar."
+    }
+  },
+  {
+    "id": "dict_00804",
+    "kanji": "付き合う",
+    "reading": "つきあう",
+    "meaning": "berpacaran, bergaul",
+    "example": {
+      "japanese": "二人は三年付き合っています。",
+      "translation": "Mereka berdua sudah berpacaran tiga tahun."
+    }
+  },
+  {
+    "id": "dict_00805",
+    "kanji": "別れる",
+    "reading": "わかれる",
+    "meaning": "berpisah",
+    "example": {
+      "japanese": "彼氏と別れました。",
+      "translation": "Saya putus dengan pacar."
+    }
+  },
+  {
+    "id": "dict_00806",
+    "kanji": "親友",
+    "reading": "しんゆう",
+    "meaning": "sahabat",
+    "example": {
+      "japanese": "彼は私の親友です。",
+      "translation": "Dia sahabat saya."
+    }
+  },
+  {
+    "id": "dict_00807",
+    "kanji": "知り合い",
+    "reading": "しりあい",
+    "meaning": "kenalan",
+    "example": {
+      "japanese": "彼は仕事の知り合いです。",
+      "translation": "Dia kenalan dari pekerjaan."
+    }
+  },
+  {
+    "id": "dict_00808",
+    "kanji": "先輩",
+    "reading": "せんぱい",
+    "meaning": "senior",
+    "example": {
+      "japanese": "先輩にアドバイスをもらいました。",
+      "translation": "Saya mendapat nasihat dari senior."
+    }
+  },
+  {
+    "id": "dict_00809",
+    "kanji": "後輩",
+    "reading": "こうはい",
+    "meaning": "junior",
+    "example": {
+      "japanese": "後輩を指導しています。",
+      "translation": "Saya membimbing junior."
+    }
+  },
+  {
+    "id": "dict_00810",
+    "kanji": "世話をする",
+    "reading": "せわをする",
+    "meaning": "merawat, mengurus",
+    "example": {
+      "japanese": "妹の世話をしています。",
+      "translation": "Saya mengurus adik perempuan."
+    }
+  },
+  {
+    "id": "dict_00811",
+    "kanji": "頼る",
+    "reading": "たよる",
+    "meaning": "mengandalkan",
+    "example": {
+      "japanese": "困った時は友達に頼ります。",
+      "translation": "Saat kesulitan, saya mengandalkan teman."
+    }
+  },
+  {
+    "id": "dict_00812",
+    "kanji": "支える",
+    "reading": "ささえる",
+    "meaning": "mendukung",
+    "example": {
+      "japanese": "家族がいつも私を支えてくれます。",
+      "translation": "Keluarga selalu mendukung saya."
+    }
+  },
+  {
+    "id": "dict_00813",
+    "kanji": "理解する",
+    "reading": "りかいする",
+    "meaning": "memahami",
+    "example": {
+      "japanese": "彼の気持ちを理解しました。",
+      "translation": "Saya memahami perasaannya."
+    }
+  },
+  {
+    "id": "dict_00814",
+    "kanji": "集める",
+    "reading": "あつめる",
+    "meaning": "mengumpulkan",
+    "example": {
+      "japanese": "切手を集めています。",
+      "translation": "Saya mengumpulkan perangko."
+    }
+  },
+  {
+    "id": "dict_00815",
+    "kanji": "集まる",
+    "reading": "あつまる",
+    "meaning": "berkumpul",
+    "example": {
+      "japanese": "公園にみんなが集まりました。",
+      "translation": "Semua orang berkumpul di taman."
+    }
+  },
+  {
+    "id": "dict_00816",
+    "kanji": "並べる",
+    "reading": "ならべる",
+    "meaning": "menata berjajar",
+    "example": {
+      "japanese": "本を棚に並べます。",
+      "translation": "Saya menata buku di rak."
+    }
+  },
+  {
+    "id": "dict_00817",
+    "kanji": "並ぶ",
+    "reading": "ならぶ",
+    "meaning": "mengantre, berjajar",
+    "example": {
+      "japanese": "レジの前に並びます。",
+      "translation": "Saya mengantre di depan kasir."
+    }
+  },
+  {
+    "id": "dict_00818",
+    "kanji": "包む",
+    "reading": "つつむ",
+    "meaning": "membungkus",
+    "example": {
+      "japanese": "プレゼントを包みました。",
+      "translation": "Saya membungkus hadiah."
+    }
+  },
+  {
+    "id": "dict_00819",
+    "kanji": "運ぶ",
+    "reading": "はこぶ",
+    "meaning": "membawa, mengangkut",
+    "example": {
+      "japanese": "荷物を車で運びます。",
+      "translation": "Saya mengangkut barang dengan mobil."
+    }
+  },
+  {
+    "id": "dict_00820",
+    "kanji": "届ける",
+    "reading": "とどける",
+    "meaning": "mengantarkan",
+    "example": {
+      "japanese": "荷物を届けます。",
+      "translation": "Saya mengantarkan paket."
+    }
+  },
+  {
+    "id": "dict_00821",
+    "kanji": "残す",
+    "reading": "のこす",
+    "meaning": "menyisakan, meninggalkan",
+    "example": {
+      "japanese": "食べ物を残さないでください。",
+      "translation": "Tolong jangan menyisakan makanan."
+    }
+  },
+  {
+    "id": "dict_00822",
+    "kanji": "残る",
+    "reading": "のこる",
+    "meaning": "tersisa, tertinggal",
+    "example": {
+      "japanese": "少しお金が残っています。",
+      "translation": "Masih ada sedikit uang tersisa."
+    }
+  },
+  {
+    "id": "dict_00823",
+    "kanji": "失う",
+    "reading": "うしなう",
+    "meaning": "kehilangan",
+    "example": {
+      "japanese": "財布を失いました。",
+      "translation": "Saya kehilangan dompet."
+    }
+  },
+  {
+    "id": "dict_00824",
+    "kanji": "守る",
+    "reading": "まもる",
+    "meaning": "melindungi, menjaga",
+    "example": {
+      "japanese": "約束を守ります。",
+      "translation": "Saya menepati janji."
+    }
+  },
+  {
+    "id": "dict_00825",
+    "kanji": "戦う",
+    "reading": "たたかう",
+    "meaning": "berjuang, bertarung",
+    "example": {
+      "japanese": "困難と戦います。",
+      "translation": "Saya berjuang melawan kesulitan."
+    }
+  },
+  {
+    "id": "dict_00826",
+    "kanji": "勝つ",
+    "reading": "かつ",
+    "meaning": "menang",
+    "example": {
+      "japanese": "試合に勝ちました。",
+      "translation": "Saya menang dalam pertandingan."
+    }
+  },
+  {
+    "id": "dict_00827",
+    "kanji": "負ける",
+    "reading": "まける",
+    "meaning": "kalah",
+    "example": {
+      "japanese": "試合に負けてしまいました。",
+      "translation": "Saya kalah dalam pertandingan."
+    }
+  },
+  {
+    "id": "dict_00828",
+    "kanji": "誘う",
+    "reading": "さそう",
+    "meaning": "mengajak",
+    "example": {
+      "japanese": "友達を映画に誘いました。",
+      "translation": "Saya mengajak teman nonton film."
+    }
+  },
+  {
+    "id": "dict_00829",
+    "kanji": "驚かす",
+    "reading": "おどろかす",
+    "meaning": "mengejutkan",
+    "example": {
+      "japanese": "サプライズで彼を驚かせました。",
+      "translation": "Saya mengejutkannya dengan kejutan."
+    }
+  },
+  {
+    "id": "dict_00830",
+    "kanji": "慣れる",
+    "reading": "なれる",
+    "meaning": "terbiasa",
+    "example": {
+      "japanese": "新しい仕事に慣れてきました。",
+      "translation": "Saya mulai terbiasa dengan pekerjaan baru."
+    }
+  },
+  {
+    "id": "dict_00831",
+    "kanji": "疑う",
+    "reading": "うたがう",
+    "meaning": "meragukan, mencurigai",
+    "example": {
+      "japanese": "彼の話を疑いました。",
+      "translation": "Saya meragukan ceritanya."
+    }
+  },
+  {
+    "id": "dict_00832",
+    "kanji": "信じる",
+    "reading": "しんじる",
+    "meaning": "percaya",
+    "example": {
+      "japanese": "あなたを信じています。",
+      "translation": "Saya percaya kepadamu."
+    }
+  },
+  {
+    "id": "dict_00833",
+    "kanji": "祈る",
+    "reading": "いのる",
+    "meaning": "berdoa",
+    "example": {
+      "japanese": "無事を祈っています。",
+      "translation": "Saya berdoa untuk keselamatan."
+    }
+  },
+  {
+    "id": "dict_00834",
+    "kanji": "複雑",
+    "reading": "ふくざつ",
+    "meaning": "rumit",
+    "example": {
+      "japanese": "この問題はとても複雑です。",
+      "translation": "Masalah ini sangat rumit."
+    }
+  },
+  {
+    "id": "dict_00835",
+    "kanji": "単純",
+    "reading": "たんじゅん",
+    "meaning": "sederhana",
+    "example": {
+      "japanese": "その仕組みは単純です。",
+      "translation": "Sistemnya sederhana."
+    }
+  },
+  {
+    "id": "dict_00836",
+    "kanji": "正確",
+    "reading": "せいかく",
+    "meaning": "akurat, tepat",
+    "example": {
+      "japanese": "正確な情報が必要です。",
+      "translation": "Kita butuh informasi yang akurat."
+    }
+  },
+  {
+    "id": "dict_00837",
+    "kanji": "曖昧",
+    "reading": "あいまい",
+    "meaning": "ambigu, tidak jelas",
+    "example": {
+      "japanese": "彼の返事は曖昧でした。",
+      "translation": "Jawabannya ambigu."
+    }
+  },
+  {
+    "id": "dict_00838",
+    "kanji": "十分",
+    "reading": "じゅうぶん",
+    "meaning": "cukup",
+    "example": {
+      "japanese": "時間は十分にあります。",
+      "translation": "Waktunya cukup."
+    }
+  },
+  {
+    "id": "dict_00839",
+    "kanji": "不足",
+    "reading": "ふそく",
+    "meaning": "kurang",
+    "example": {
+      "japanese": "経験が不足しています。",
+      "translation": "Pengalamannya kurang."
+    }
+  },
+  {
+    "id": "dict_00840",
+    "kanji": "豊か",
+    "reading": "ゆたか",
+    "meaning": "kaya, berlimpah",
+    "example": {
+      "japanese": "自然が豊かな町です。",
+      "translation": "Kota dengan alam yang kaya."
+    }
+  },
+  {
+    "id": "dict_00841",
+    "kanji": "貧しい",
+    "reading": "まずしい",
+    "meaning": "miskin",
+    "example": {
+      "japanese": "昔は貧しい生活でした。",
+      "translation": "Dulu kehidupannya miskin."
+    }
+  },
+  {
+    "id": "dict_00842",
+    "kanji": "重要",
+    "reading": "じゅうよう",
+    "meaning": "penting",
+    "example": {
+      "japanese": "これは重要な会議です。",
+      "translation": "Ini adalah rapat yang penting."
+    }
+  },
+  {
+    "id": "dict_00843",
+    "kanji": "可能",
+    "reading": "かのう",
+    "meaning": "mungkin, memungkinkan",
+    "example": {
+      "japanese": "それは可能です。",
+      "translation": "Itu memungkinkan."
+    }
+  },
+  {
+    "id": "dict_00844",
+    "kanji": "不可能",
+    "reading": "ふかのう",
+    "meaning": "tidak mungkin",
+    "example": {
+      "japanese": "一日で終わるのは不可能です。",
+      "translation": "Selesai dalam satu hari itu tidak mungkin."
+    }
+  },
+  {
+    "id": "dict_00845",
+    "kanji": "適切",
+    "reading": "てきせつ",
+    "meaning": "tepat, sesuai",
+    "example": {
+      "japanese": "適切な言葉を選びます。",
+      "translation": "Saya memilih kata yang tepat."
+    }
+  },
+  {
+    "id": "dict_00846",
+    "kanji": "十分な",
+    "reading": "じゅうぶんな",
+    "meaning": "cukup memadai",
+    "example": {
+      "japanese": "十分な準備をしました。",
+      "translation": "Saya sudah melakukan persiapan yang cukup."
+    }
+  },
+  {
+    "id": "dict_00847",
+    "kanji": "完璧",
+    "reading": "かんぺき",
+    "meaning": "sempurna",
+    "example": {
+      "japanese": "彼の演技は完璧でした。",
+      "translation": "Penampilannya sempurna."
+    }
+  },
+  {
+    "id": "dict_00848",
+    "kanji": "不完全",
+    "reading": "ふかんぜん",
+    "meaning": "tidak sempurna",
+    "example": {
+      "japanese": "この計画は不完全です。",
+      "translation": "Rencana ini tidak sempurna."
+    }
+  },
+  {
+    "id": "dict_00849",
+    "kanji": "注文",
+    "reading": "ちゅうもん",
+    "meaning": "pesanan",
+    "example": {
+      "japanese": "注文をお願いします。",
+      "translation": "Tolong saya mau memesan."
+    }
+  },
+  {
+    "id": "dict_00850",
+    "kanji": null,
+    "reading": "おすすめ",
+    "meaning": "rekomendasi",
+    "example": {
+      "japanese": "おすすめは何ですか。",
+      "translation": "Apa yang direkomendasikan?"
+    }
+  },
+  {
+    "id": "dict_00851",
+    "kanji": "お会計",
+    "reading": "おかいけい",
+    "meaning": "pembayaran (di restoran)",
+    "example": {
+      "japanese": "お会計をお願いします。",
+      "translation": "Tolong saya mau membayar."
+    }
+  },
+  {
+    "id": "dict_00852",
+    "kanji": "持ち帰り",
+    "reading": "もちかえり",
+    "meaning": "dibawa pulang",
+    "example": {
+      "japanese": "持ち帰りでお願いします。",
+      "translation": "Tolong dibungkus untuk dibawa pulang."
+    }
+  },
+  {
+    "id": "dict_00853",
+    "kanji": "店内",
+    "reading": "てんない",
+    "meaning": "makan di tempat",
+    "example": {
+      "japanese": "店内で食べます。",
+      "translation": "Saya makan di tempat."
+    }
+  },
+  {
+    "id": "dict_00854",
+    "kanji": "辛さ",
+    "reading": "からさ",
+    "meaning": "tingkat kepedasan",
+    "example": {
+      "japanese": "辛さを選べますか。",
+      "translation": "Bisa memilih tingkat kepedasan?"
+    }
+  },
+  {
+    "id": "dict_00855",
+    "kanji": "大盛り",
+    "reading": "おおもり",
+    "meaning": "porsi besar",
+    "example": {
+      "japanese": "大盛りでお願いします。",
+      "translation": "Tolong porsi besar."
+    }
+  },
+  {
+    "id": "dict_00856",
+    "kanji": "お冷",
+    "reading": "おひや",
+    "meaning": "air minum gratis",
+    "example": {
+      "japanese": "お冷をください。",
+      "translation": "Tolong berikan air minum."
+    }
+  },
+  {
+    "id": "dict_00857",
+    "kanji": "満席",
+    "reading": "まんせき",
+    "meaning": "penuh (kursi)",
+    "example": {
+      "japanese": "今、満席です。",
+      "translation": "Sekarang penuh."
+    }
+  },
+  {
+    "id": "dict_00858",
+    "kanji": "予約席",
+    "reading": "よやくせき",
+    "meaning": "kursi reservasi",
+    "example": {
+      "japanese": "こちらは予約席です。",
+      "translation": "Ini kursi reservasi."
+    }
+  },
+  {
+    "id": "dict_00859",
+    "kanji": null,
+    "reading": "すごい",
+    "meaning": "hebat, keren",
+    "example": {
+      "japanese": "すごいですね！",
+      "translation": "Hebat, ya!"
+    }
+  },
+  {
+    "id": "dict_00860",
+    "kanji": null,
+    "reading": "やった",
+    "meaning": "berhasil, horee",
+    "example": {
+      "japanese": "やった！合格した！",
+      "translation": "Horee! Lulus!"
+    }
+  },
+  {
+    "id": "dict_00861",
+    "kanji": null,
+    "reading": "頑張って",
+    "meaning": "semangat, ayo berusaha",
+    "example": {
+      "japanese": "頑張ってください。",
+      "translation": "Semangat ya."
+    }
+  },
+  {
+    "id": "dict_00862",
+    "kanji": null,
+    "reading": "残念",
+    "meaning": "sayang sekali",
+    "example": {
+      "japanese": "残念でしたね。",
+      "translation": "Sayang sekali ya."
+    }
+  },
+  {
+    "id": "dict_00863",
+    "kanji": null,
+    "reading": "危ない",
+    "meaning": "awas, bahaya",
+    "example": {
+      "japanese": "危ない！気をつけて。",
+      "translation": "Awas! Hati-hati."
+    }
+  },
+  {
+    "id": "dict_00864",
+    "kanji": null,
+    "reading": "大丈夫",
+    "meaning": "tidak apa-apa, baik-baik saja",
+    "example": {
+      "japanese": "大丈夫ですか。",
+      "translation": "Apakah kamu baik-baik saja?"
+    }
+  },
+  {
+    "id": "dict_00865",
+    "kanji": null,
+    "reading": "もちろん",
+    "meaning": "tentu saja",
+    "example": {
+      "japanese": "もちろん手伝います。",
+      "translation": "Tentu saja saya akan membantu."
+    }
+  },
+  {
+    "id": "dict_00866",
+    "kanji": null,
+    "reading": "まさか",
+    "meaning": "masa sih, tidak mungkin",
+    "example": {
+      "japanese": "まさか、本当ですか。",
+      "translation": "Masa sih, benarkah?"
+    }
+  },
+  {
+    "id": "dict_00867",
+    "kanji": null,
+    "reading": "なるほど",
+    "meaning": "oh begitu, mengerti",
+    "example": {
+      "japanese": "なるほど、分かりました。",
+      "translation": "Oh begitu, saya mengerti."
+    }
+  },
+  {
+    "id": "dict_00868",
+    "kanji": null,
+    "reading": "お疲れ様",
+    "meaning": "terima kasih atas kerja kerasnya",
+    "example": {
+      "japanese": "お疲れ様でした。",
+      "translation": "Terima kasih atas kerja kerasnya."
+    }
+  },
+  {
+    "id": "dict_00869",
+    "kanji": "音符",
+    "reading": "おんぷ",
+    "meaning": "not balok (musik)",
+    "example": {
+      "japanese": "音符の読み方を習います。",
+      "translation": "Saya belajar cara membaca not balok."
+    }
+  },
+  {
+    "id": "dict_00870",
+    "kanji": null,
+    "reading": "ピアノ",
+    "meaning": "piano",
+    "example": {
+      "japanese": "ピアノを習っています。",
+      "translation": "Saya sedang belajar piano."
+    }
+  },
+  {
+    "id": "dict_00871",
+    "kanji": null,
+    "reading": "ギター",
+    "meaning": "gitar",
+    "example": {
+      "japanese": "ギターを弾くのが好きです。",
+      "translation": "Saya suka bermain gitar."
+    }
+  },
+  {
+    "id": "dict_00872",
+    "kanji": null,
+    "reading": "バイオリン",
+    "meaning": "biola",
+    "example": {
+      "japanese": "彼女はバイオリンが上手です。",
+      "translation": "Dia pandai bermain biola."
+    }
+  },
+  {
+    "id": "dict_00873",
+    "kanji": null,
+    "reading": "ドラム",
+    "meaning": "drum",
+    "example": {
+      "japanese": "彼はバンドでドラムを叩きます。",
+      "translation": "Dia memainkan drum di band."
+    }
+  },
+  {
+    "id": "dict_00874",
+    "kanji": "歌詞",
+    "reading": "かし",
+    "meaning": "lirik lagu",
+    "example": {
+      "japanese": "この歌の歌詞が好きです。",
+      "translation": "Saya suka lirik lagu ini."
+    }
+  },
+  {
+    "id": "dict_00875",
+    "kanji": null,
+    "reading": "メロディー",
+    "meaning": "melodi",
+    "example": {
+      "japanese": "美しいメロディーです。",
+      "translation": "Melodinya indah."
+    }
+  },
+  {
+    "id": "dict_00876",
+    "kanji": "演奏する",
+    "reading": "えんそうする",
+    "meaning": "memainkan (musik)",
+    "example": {
+      "japanese": "コンサートで演奏します。",
+      "translation": "Saya akan tampil bermain musik di konser."
+    }
+  },
+  {
+    "id": "dict_00877",
+    "kanji": null,
+    "reading": "コンサート",
+    "meaning": "konser",
+    "example": {
+      "japanese": "来月コンサートに行きます。",
+      "translation": "Bulan depan saya pergi ke konser."
+    }
+  },
+  {
+    "id": "dict_00878",
+    "kanji": "合唱",
+    "reading": "がっしょう",
+    "meaning": "paduan suara",
+    "example": {
+      "japanese": "合唱部に入っています。",
+      "translation": "Saya masuk klub paduan suara."
+    }
+  },
+  {
+    "id": "dict_00879",
+    "kanji": "政府",
+    "reading": "せいふ",
+    "meaning": "pemerintah",
+    "example": {
+      "japanese": "政府が新しい政策を発表しました。",
+      "translation": "Pemerintah mengumumkan kebijakan baru."
+    }
+  },
+  {
+    "id": "dict_00880",
+    "kanji": "法律",
+    "reading": "ほうりつ",
+    "meaning": "hukum",
+    "example": {
+      "japanese": "法律を守らなければなりません。",
+      "translation": "Kita harus mematuhi hukum."
+    }
+  },
+  {
+    "id": "dict_00881",
+    "kanji": "選挙",
+    "reading": "せんきょ",
+    "meaning": "pemilu",
+    "example": {
+      "japanese": "来月、選挙があります。",
+      "translation": "Bulan depan ada pemilu."
+    }
+  },
+  {
+    "id": "dict_00882",
+    "kanji": "税金",
+    "reading": "ぜいきん",
+    "meaning": "pajak",
+    "example": {
+      "japanese": "税金を払います。",
+      "translation": "Saya membayar pajak."
+    }
+  },
+  {
+    "id": "dict_00883",
+    "kanji": "市役所",
+    "reading": "しやくしょ",
+    "meaning": "kantor balai kota",
+    "example": {
+      "japanese": "市役所で手続きをしました。",
+      "translation": "Saya mengurus dokumen di kantor balai kota."
+    }
+  },
+  {
+    "id": "dict_00884",
+    "kanji": "大使館",
+    "reading": "たいしかん",
+    "meaning": "kedutaan besar",
+    "example": {
+      "japanese": "大使館でビザを申請しました。",
+      "translation": "Saya mengajukan visa di kedutaan besar."
+    }
+  },
+  {
+    "id": "dict_00885",
+    "kanji": "裁判",
+    "reading": "さいばん",
+    "meaning": "persidangan",
+    "example": {
+      "japanese": "裁判が来週始まります。",
+      "translation": "Persidangan dimulai minggu depan."
+    }
+  },
+  {
+    "id": "dict_00886",
+    "kanji": "犯罪",
+    "reading": "はんざい",
+    "meaning": "kejahatan",
+    "example": {
+      "japanese": "この町は犯罪が少ないです。",
+      "translation": "Kota ini sedikit kejahatannya."
+    }
+  },
+  {
+    "id": "dict_00887",
+    "kanji": "権利",
+    "reading": "けんり",
+    "meaning": "hak",
+    "example": {
+      "japanese": "誰にでも権利があります。",
+      "translation": "Setiap orang memiliki hak."
+    }
+  },
+  {
+    "id": "dict_00888",
+    "kanji": "義務",
+    "reading": "ぎむ",
+    "meaning": "kewajiban",
+    "example": {
+      "japanese": "税金を払うのは国民の義務です。",
+      "translation": "Membayar pajak adalah kewajiban warga negara."
+    }
+  },
+  {
+    "id": "dict_00889",
+    "kanji": "環境",
+    "reading": "かんきょう",
+    "meaning": "lingkungan",
+    "example": {
+      "japanese": "環境を守りましょう。",
+      "translation": "Mari kita jaga lingkungan."
+    }
+  },
+  {
+    "id": "dict_00890",
+    "kanji": "汚染",
+    "reading": "おせん",
+    "meaning": "polusi",
+    "example": {
+      "japanese": "空気の汚染が問題です。",
+      "translation": "Polusi udara adalah masalah."
+    }
+  },
+  {
+    "id": "dict_00891",
+    "kanji": null,
+    "reading": "リサイクル",
+    "meaning": "daur ulang",
+    "example": {
+      "japanese": "ペットボトルをリサイクルします。",
+      "translation": "Saya mendaur ulang botol plastik."
+    }
+  },
+  {
+    "id": "dict_00892",
+    "kanji": "節約する",
+    "reading": "せつやくする",
+    "meaning": "menghemat",
+    "example": {
+      "japanese": "電気を節約します。",
+      "translation": "Saya menghemat listrik."
+    }
+  },
+  {
+    "id": "dict_00893",
+    "kanji": "温暖化",
+    "reading": "おんだんか",
+    "meaning": "pemanasan global",
+    "example": {
+      "japanese": "地球温暖化が心配です。",
+      "translation": "Pemanasan global mengkhawatirkan."
+    }
+  },
+  {
+    "id": "dict_00894",
+    "kanji": "森林",
+    "reading": "しんりん",
+    "meaning": "hutan (luas)",
+    "example": {
+      "japanese": "森林を保護します。",
+      "translation": "Kita melindungi hutan."
+    }
+  },
+  {
+    "id": "dict_00895",
+    "kanji": "絶滅",
+    "reading": "ぜつめつ",
+    "meaning": "kepunahan",
+    "example": {
+      "japanese": "この動物は絶滅の危機にあります。",
+      "translation": "Hewan ini terancam punah."
+    }
+  },
+  {
+    "id": "dict_00896",
+    "kanji": "再生可能",
+    "reading": "さいせいかのう",
+    "meaning": "dapat diperbarui (energi)",
+    "example": {
+      "japanese": "再生可能エネルギーを使います。",
+      "translation": "Kita menggunakan energi terbarukan."
+    }
+  },
+  {
+    "id": "dict_00897",
+    "kanji": null,
+    "reading": "エコ",
+    "meaning": "ramah lingkungan",
+    "example": {
+      "japanese": "エコバッグを持っています。",
+      "translation": "Saya membawa tas ramah lingkungan."
+    }
+  },
+  {
+    "id": "dict_00898",
+    "kanji": "自然保護",
+    "reading": "しぜんほご",
+    "meaning": "konservasi alam",
+    "example": {
+      "japanese": "自然保護に協力します。",
+      "translation": "Saya berkontribusi pada konservasi alam."
+    }
+  },
+  {
+    "id": "dict_00899",
+    "kanji": "切符",
+    "reading": "きっぷ",
+    "meaning": "tiket (transportasi)",
+    "example": {
+      "japanese": "電車の切符を買います。",
+      "translation": "Saya membeli tiket kereta."
+    }
+  },
+  {
+    "id": "dict_00900",
+    "kanji": "改札",
+    "reading": "かいさつ",
+    "meaning": "gerbang tiket stasiun",
+    "example": {
+      "japanese": "改札を通ります。",
+      "translation": "Saya melewati gerbang tiket."
+    }
+  },
+  {
+    "id": "dict_00901",
+    "kanji": "時刻表",
+    "reading": "じこくひょう",
+    "meaning": "jadwal (transportasi)",
+    "example": {
+      "japanese": "時刻表を確認します。",
+      "translation": "Saya mengecek jadwal."
+    }
+  },
+  {
+    "id": "dict_00902",
+    "kanji": "乗り換える",
+    "reading": "のりかえる",
+    "meaning": "berpindah kereta/kendaraan",
+    "example": {
+      "japanese": "次の駅で乗り換えます。",
+      "translation": "Saya berpindah kereta di stasiun berikutnya."
+    }
+  },
+  {
+    "id": "dict_00903",
+    "kanji": "満員",
+    "reading": "まんいん",
+    "meaning": "penuh sesak",
+    "example": {
+      "japanese": "電車が満員でした。",
+      "translation": "Keretanya penuh sesak."
+    }
+  },
+  {
+    "id": "dict_00904",
+    "kanji": "運賃",
+    "reading": "うんちん",
+    "meaning": "ongkos transportasi",
+    "example": {
+      "japanese": "運賃はいくらですか。",
+      "translation": "Berapa ongkosnya?"
+    }
+  },
+  {
+    "id": "dict_00905",
+    "kanji": "遅延",
+    "reading": "ちえん",
+    "meaning": "keterlambatan (transportasi)",
+    "example": {
+      "japanese": "電車に遅延がありました。",
+      "translation": "Ada keterlambatan kereta."
+    }
+  },
+  {
+    "id": "dict_00906",
+    "kanji": "始発",
+    "reading": "しはつ",
+    "meaning": "kereta/bus pertama",
+    "example": {
+      "japanese": "始発に乗ります。",
+      "translation": "Saya naik kereta pertama."
+    }
+  },
+  {
+    "id": "dict_00907",
+    "kanji": "終電",
+    "reading": "しゅうでん",
+    "meaning": "kereta terakhir",
+    "example": {
+      "japanese": "終電に間に合いました。",
+      "translation": "Saya sempat naik kereta terakhir."
+    }
+  },
+  {
+    "id": "dict_00908",
+    "kanji": "高速道路",
+    "reading": "こうそくどうろ",
+    "meaning": "jalan tol",
+    "example": {
+      "japanese": "高速道路で行きます。",
+      "translation": "Saya pergi lewat jalan tol."
+    }
   }
 ]
