@@ -544,6 +544,37 @@ ceiling → append to that level's `_ENTRIES`/`_TITLES` lists →
 regenerate → re-run cross-checks) is proven and doesn't need
 rethinking, just repeating.
 
+**Update, same day (2026-07-20), session redesign + phase 4**: two
+more changes right after phase 3.
+1. **One Dokkai exam session is now 50 questions, not one passage's
+   ~3.** `DokkaiExamScreen` (`lib/features/dokkai/dokkai_exam_screen.dart`)
+   takes a `List<DokkaiPassage>` instead of one `DokkaiPassage`,
+   flattens them into (passage, question) pairs in order, and stops
+   once it collects `sessionQuestionTarget` (50) — consecutive
+   questions from the same passage stay grouped so the passage text
+   keeps showing correctly while they're answered (McQuizFlow's
+   header), before moving to the next passage. `DokkaiHomeScreen`
+   shuffles the *entire* level pool (not just one passage) and hands
+   it all over; the exam screen just consumes as many as it needs. Per
+   the user's own framing, this means a bigger content pool
+   automatically buys more session variety with **zero further code
+   changes** — the "feels infinite" goal is now purely a content-volume
+   problem, not an architecture one.
+2. **Phase 4**: N5/N4/N3/N2/N1 each went from 40 to 50 passages (50
+   new, 250/~500 = 50% overall — halfway there). Same pipeline, same
+   escalation pattern, no surprises.
+
+**If continuing this rollout, know that the target changed shape**:
+it's no longer "N5-N1 each need to reach 100 passages" in isolation —
+it's "each level's *pool* needs to comfortably support varied
+50-question sessions." At the current 50 passages/level (~150
+questions/level, since every passage has exactly 3), a session already
+draws from roughly a third of the pool, so more content still directly
+improves felt variety. The original ~100/level target is still a
+reasonable direction to keep heading, just note *why* if asked — it's
+in service of session variety now, not a bare content-count goal for
+its own sake.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),
