@@ -60,6 +60,16 @@ N5_TITLES = [
     "Menu Sarapan di Asrama",
     "Surat untuk Kakak yang Kuliah",
     "Pengumuman Perpindahan Kelas",
+    "Pengumuman Perbaikan Lapangan Sekolah",
+    "Cerita Piknik ke Kebun Binatang",
+    "Surat Ucapan Selamat Ulang Tahun untuk Teman",
+    "Aturan Ruang Komputer Perpustakaan Kota",
+    "Jadwal Kegiatan Pramuka",
+    "Cerita Membantu Adik Belajar",
+    "Pengumuman Pertukaran Pelajar",
+    "Menu Spesial Hari Anak",
+    "Surat Permintaan Maaf ke Guru",
+    "Pengumuman Perpustakaan Buka di Hari Libur",
 ]
 
 # N4-N1 initial seed (10 each) — every level now has real starting
@@ -116,6 +126,16 @@ N4_TITLES = [
     "Panduan Daur Ulang Sampah",
     "Artikel tentang Kebiasaan Berolahraga Pagi",
     "Blog tentang Merapikan Rumah",
+    "Blog tentang Mencoba Resep Baru",
+    "Artikel tentang Cara Mengatur Waktu",
+    "Surat Ucapan Terima Kasih atas Bantuan Pindahan",
+    "Email Pengingat Rapat",
+    "Cerita Belajar Mengendarai Sepeda Motor",
+    "Pengumuman Perpanjangan Masa Berlaku Kartu Anggota",
+    "Ulasan Aplikasi Pengatur Keuangan",
+    "Blog tentang Menonton Film di Bioskop",
+    "Artikel tentang Manfaat Membaca Buku",
+    "Pengumuman Penggantian Jadwal Bus Kantor",
 ]
 
 N3_TITLES = [
@@ -169,6 +189,16 @@ N3_TITLES = [
     "Petunjuk Menghadapi Wawancara Kerja",
     "Esai tentang Nilai Kejujuran",
     "Artikel tentang Tren Kerja Freelance",
+    "Artikel tentang Etika Penggunaan Media Sosial di Tempat Kerja",
+    "Esai tentang Menemukan Keseimbangan Hidup",
+    "Cerita Pengalaman Belajar di Luar Negeri",
+    "Panduan Merencanakan Anggaran Perjalanan",
+    "Artikel tentang Tren Belanja Berkelanjutan",
+    "Esai tentang Menghadapi Kritik",
+    "Petunjuk Prosedur Pengajuan Klaim Asuransi",
+    "Artikel tentang Perubahan Gaya Hidup Perkotaan",
+    "Cerita Pengalaman Menjadi Mentor",
+    "Esai tentang Arti Kesuksesan bagi Generasi Muda",
 ]
 
 N2_TITLES = [
@@ -222,6 +252,16 @@ N2_TITLES = [
     "Artikel tentang Masa Depan Energi Terbarukan",
     "Analisis tentang Perubahan Preferensi Karier Generasi Muda",
     "Esai tentang Makna Kerja dalam Kehidupan Modern",
+    "Editorial tentang Krisis Perumahan Perkotaan",
+    "Analisis tentang Perubahan Pola Migrasi Tenaga Kerja",
+    "Esai tentang Dilema Kemajuan Teknologi Medis",
+    "Artikel tentang Tantangan Regulasi Mata Uang Digital",
+    "Laporan tentang Perubahan Perilaku Investasi Generasi Muda",
+    "Editorial tentang Beban Sistem Kesehatan Masyarakat",
+    "Esai tentang Tanggung Jawab Antar Generasi",
+    "Artikel tentang Dampak Otomatisasi terhadap Pasar Kerja",
+    "Analisis tentang Krisis Kepercayaan pada Sains",
+    "Esai tentang Definisi Komunitas di Era Digital",
 ]
 
 N1_TITLES = [
@@ -275,6 +315,16 @@ N1_TITLES = [
     "Diskusi tentang Batas Pengetahuan Manusia",
     "Refleksi tentang Jejak yang Ditinggalkan",
     "Esai Penutup tentang Perjalanan Mencari Makna",
+    "Esai tentang Ambang Batas Antara Kewarasan dan Kegilaan",
+    "Refleksi tentang Kefanaan Kenangan",
+    "Diskusi Filosofis tentang Makna Penderitaan",
+    "Esai tentang Ironi Kemajuan Peradaban",
+    "Kritik tentang Tirani Pilihan dalam Masyarakat Modern",
+    "Refleksi tentang Jarak Antara Kata dan Perasaan",
+    "Esai tentang Paradoks Kebebasan dan Keterikatan",
+    "Diskusi tentang Batas Antara Empati dan Simpati",
+    "Refleksi tentang Warisan yang Tak Diminta",
+    "Esai Akhir tentang Rekonsiliasi dengan Masa Lalu",
 ]
 
 LEVEL_META = {
