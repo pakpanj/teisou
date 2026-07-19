@@ -9,7 +9,13 @@ import '../data/models/user_profile.dart';
 import '../data/repositories/bunpou_level_repository.dart';
 import '../data/repositories/bunpou_progress_repository.dart';
 import '../data/repositories/bunpou_repository.dart';
+import '../data/repositories/choukai_level_repository.dart';
+import '../data/repositories/choukai_repository.dart';
+import '../data/repositories/dokkai_level_repository.dart';
+import '../data/repositories/dokkai_repository.dart';
+import '../data/repositories/exam_history_repository.dart';
 import '../data/repositories/exam_repository.dart';
+import '../data/repositories/kanji_combo_repository.dart';
 import '../data/repositories/kaiwa_category_repository.dart';
 import '../data/repositories/kaiwa_level_repository.dart';
 import '../data/repositories/kaiwa_progress_repository.dart';
@@ -27,6 +33,7 @@ import '../data/repositories/particle_progress_repository.dart';
 import '../data/repositories/particle_repository.dart';
 import '../data/repositories/progress_repository.dart';
 import '../data/repositories/saved_words_repository.dart';
+import 'firebase/firestore_paths.dart';
 import 'services/ad_service.dart';
 import 'services/auth_service.dart';
 import 'services/avatar_upload_service.dart';
@@ -107,6 +114,33 @@ final examRepositoryProvider = Provider<ExamRepository>(
     progressRepository: ref.watch(progressRepositoryProvider),
     leaderboardRepository: ref.watch(leaderboardRepositoryProvider),
   ),
+);
+final dokkaiRepositoryProvider = Provider<DokkaiRepository>(
+  (ref) => DokkaiRepository(),
+);
+final dokkaiLevelRepositoryProvider = Provider<DokkaiLevelRepository>(
+  (ref) => DokkaiLevelRepository(),
+);
+final dokkaiExamHistoryRepositoryProvider = Provider<ExamHistoryRepository>(
+  (ref) => ExamHistoryRepository(FirestorePaths.dokkaiExamHistory),
+);
+final choukaiRepositoryProvider = Provider<ChoukaiRepository>(
+  (ref) => ChoukaiRepository(),
+);
+final choukaiLevelRepositoryProvider = Provider<ChoukaiLevelRepository>(
+  (ref) => ChoukaiLevelRepository(),
+);
+final choukaiExamHistoryRepositoryProvider = Provider<ExamHistoryRepository>(
+  (ref) => ExamHistoryRepository(FirestorePaths.choukaiExamHistory),
+);
+final kanjiComboRepositoryProvider = Provider<KanjiComboRepository>(
+  (ref) => KanjiComboRepository(
+    kanjiRepository: ref.watch(kanjiRepositoryProvider),
+    kotobaRepository: ref.watch(kotobaRepositoryProvider),
+  ),
+);
+final kanjiComboExamHistoryRepositoryProvider = Provider<ExamHistoryRepository>(
+  (ref) => ExamHistoryRepository(FirestorePaths.kanjiComboExamHistory),
 );
 /// Ensures anonymous sign-in and the user profile doc exist. Screens should
 /// gate progress reads/writes on this resolving.

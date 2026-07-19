@@ -1,0 +1,154 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
+import '../../core/theme/app_colors.dart';
+import '../../data/models/choukai_clip.dart';
+import '../../data/models/jlpt_level.dart';
+import '../../data/models/simple_exam_result.dart';
+import '../exam/mc_quiz_flow.dart';
+import '../exam/simple_exam_result_screen.dart';
+
+/// Runs one Choukai clip: [clip.audioText] is only ever spoken via
+/// [ttsServiceProvider], never shown on screen — that's the whole point of
+/// a listening exercise, same "no visible text for audio-source content"
+/// rule Kaiwa's NPC turns already follow. The script is revealed on the
+/// result screen afterward, for review.
+class ChoukaiExamScreen extends ConsumerWidget {
+  final ChoukaiClip clip;
+
+  const ChoukaiExamScreen({super.key, required this.clip});
+
+  Future<void> _onComplete(
+    BuildContext context,
+    WidgetRef ref,
+    int score,
+    int total,
+  ) async {
+    final user = ref.read(appStartupProvider).valueOrNull;
+    final result = SimpleExamResult(
+      itemId: clip.id,
+      jlptLevel: clip.jlptLevel.key,
+      score: score,
+      total: total,
+      completedAt: DateTime.now(),
+    );
+    if (user != null) {
+      try {
+        await ref
+            .read(choukaiExamHistoryRepositoryProvider)
+            .submit(user.uid, result);
+      } catch (_) {
+        // Best-effort mirror only — see DokkaiExamScreen for the same
+        // reasoning.
+      }
+    }
+    if (!context.mounted) return;
+    AppNavigator.replaceFadeScale(
+      context,
+      SimpleExamResultScreen(
+        title: 'Hasil Choukai',
+        result: result,
+        reviewContent: _ScriptReview(clip: clip),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: AppBar(title: Text(clip.title)),
+      body: McQuizFlow(
+        totalQuestions: clip.questions.length,
+        headerBuilder: (context, index) => _AudioHeader(
+          clip: clip,
+          prompt: clip.questions[index].prompt,
+        ),
+        optionsOf: (index) => clip.questions[index].options,
+        correctIndexOf: (index) => clip.questions[index].correctIndex,
+        onComplete: (score, total) => _onComplete(context, ref, score, total),
+      ),
+    );
+  }
+}
+
+class _AudioHeader extends ConsumerWidget {
+  final ChoukaiClip clip;
+  final String prompt;
+
+  const _AudioHeader({required this.clip, required this.prompt});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(
+      children: [
+        Material(
+          color: AppColors.primaryCoral,
+          shape: const CircleBorder(),
+          elevation: 3,
+          child: InkWell(
+            customBorder: const CircleBorder(),
+            onTap: () => ref.read(ttsServiceProvider).speak(clip.audioText),
+            child: const Padding(
+              padding: EdgeInsets.all(24),
+              child: Icon(Icons.volume_up, color: Colors.white, size: 40),
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Ketuk untuk memutar / mengulang',
+          style: TextStyle(
+            fontSize: 12,
+            color: AppColors.textNavy.withValues(alpha: 0.6),
+          ),
+        ),
+        const SizedBox(height: 20),
+        Text(
+          prompt,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: AppColors.textNavy,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _ScriptReview extends StatelessWidget {
+  final ChoukaiClip clip;
+
+  const _ScriptReview({required this.clip});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.cardWhite,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Naskah Audio',
+            style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.textNavy),
+          ),
+          const SizedBox(height: 8),
+          Text(clip.audioText, style: const TextStyle(color: AppColors.textNavy)),
+          const SizedBox(height: 8),
+          Text(
+            clip.audioTranslation,
+            style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
+          ),
+        ],
+      ),
+    );
+  }
+}

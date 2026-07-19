@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kana_master/features/exam/exam_mode_picker_screen.dart';
 
 void main() {
-  testWidgets('ExamModePickerScreen lists all three exam modes', (
+  testWidgets('ExamModePickerScreen lists all four exam categories', (
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(
@@ -14,8 +14,9 @@ void main() {
       ),
     );
 
-    expect(find.text('Ujian Hiragana'), findsOneWidget);
-    expect(find.text('Ujian Katakana'), findsOneWidget);
-    expect(find.text('Ujian Campuran'), findsOneWidget);
+    expect(find.text('Kana'), findsOneWidget);
+    expect(find.text('Dokkai'), findsOneWidget);
+    expect(find.text('Choukai'), findsOneWidget);
+    expect(find.text('Kanji'), findsOneWidget);
   });
 }

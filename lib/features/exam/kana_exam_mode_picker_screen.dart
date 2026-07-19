@@ -2,86 +2,66 @@ import 'package:flutter/material.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
-import '../choukai/choukai_home_screen.dart';
-import '../dokkai/dokkai_home_screen.dart';
-import '../kanji_combo/kanji_combo_home_screen.dart';
-import 'kana_exam_mode_picker_screen.dart';
+import '../../data/models/exam_mode.dart';
+import 'exam_screen.dart';
 
-/// Top of the Ujian tab: a category picker (Kana / Dokkai / Choukai /
-/// Kanji-Kombinasi). Kana has no JLPT levels (it predates the level
-/// concept entirely — Batch 1), so it still opens straight into its own
-/// 3-mode picker; the other three each need a JLPT level first, so they
-/// open their own level-picker home screen instead of being flattened into
-/// one shared list.
-class ExamModePickerScreen extends StatelessWidget {
-  const ExamModePickerScreen({super.key});
+/// Lets the user choose which kana pool ("Hiragana", "Katakana", or
+/// "Campuran") the upcoming 10-question exam should draw from. This is what
+/// `ExamModePickerScreen` used to be before Ujian grew a category layer on
+/// top (Kana / Dokkai / Choukai / Kanji-Kombinasi).
+class KanaExamModePickerScreen extends StatelessWidget {
+  const KanaExamModePickerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Ujian'), automaticallyImplyLeading: false),
+      appBar: AppBar(title: const Text('Ujian Kana')),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            _CategoryCard(
+            _ModeCard(
               color: AppColors.primaryCoral,
               icon: Icons.text_fields,
-              title: 'Kana',
-              subtitle: 'Hiragana, Katakana, atau campuran',
-              onTap: () => AppNavigator.slideFromBottom(
-                context,
-                const KanaExamModePickerScreen(),
-              ),
+              title: 'Ujian Hiragana',
+              subtitle: 'Soal dari 46 karakter hiragana',
+              onTap: () => _startExam(context, ExamMode.hiragana),
             ),
             const SizedBox(height: 16),
-            _CategoryCard(
+            _ModeCard(
               color: AppColors.secondaryBlue,
-              icon: Icons.menu_book_rounded,
-              title: 'Dokkai',
-              subtitle: 'Pemahaman bacaan, N5-N1',
-              onTap: () => AppNavigator.slideFromBottom(
-                context,
-                const DokkaiHomeScreen(),
-              ),
+              icon: Icons.text_fields,
+              title: 'Ujian Katakana',
+              subtitle: 'Soal dari 46 karakter katakana',
+              onTap: () => _startExam(context, ExamMode.katakana),
             ),
             const SizedBox(height: 16),
-            _CategoryCard(
+            _ModeCard(
               color: AppColors.tertiaryAmber,
-              icon: Icons.headphones_rounded,
-              title: 'Choukai',
-              subtitle: 'Pemahaman mendengar, N5-N1',
-              onTap: () => AppNavigator.slideFromBottom(
-                context,
-                const ChoukaiHomeScreen(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            _CategoryCard(
-              color: AppColors.primaryCoral,
-              icon: Icons.translate_rounded,
-              title: 'Kanji',
-              subtitle: 'Kanji tunggal atau kombinasi kata',
-              onTap: () => AppNavigator.slideFromBottom(
-                context,
-                const KanjiComboHomeScreen(),
-              ),
+              icon: Icons.shuffle,
+              title: 'Ujian Campuran',
+              subtitle: 'Gabungan hiragana & katakana',
+              onTap: () => _startExam(context, ExamMode.mixed),
             ),
           ],
         ),
       ),
     );
   }
+
+  void _startExam(BuildContext context, ExamMode mode) {
+    AppNavigator.slideFromBottom(context, ExamScreen(mode: mode));
+  }
 }
 
-class _CategoryCard extends StatelessWidget {
+class _ModeCard extends StatelessWidget {
   final Color color;
   final IconData icon;
   final String title;
   final String subtitle;
   final VoidCallback onTap;
 
-  const _CategoryCard({
+  const _ModeCard({
     required this.color,
     required this.icon,
     required this.title,

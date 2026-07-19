@@ -14,6 +14,9 @@ class FirestorePaths {
   static const bunpouProgress = 'bunpouProgress';
   static const particleProgress = 'particleProgress';
   static const kaiwaProgress = 'kaiwaProgress';
+  static const dokkaiExamHistory = 'dokkaiExamHistory';
+  static const choukaiExamHistory = 'choukaiExamHistory';
+  static const kanjiComboExamHistory = 'kanjiComboExamHistory';
 
   static const fieldProfile = 'profile';
   static const fieldProgress = 'progress';
@@ -37,4 +40,10 @@ class FirestorePaths {
       '$users/$uid/$particleProgress';
   static String kaiwaProgressCollection(String uid) =>
       '$users/$uid/$kaiwaProgress';
+  static String dokkaiExamHistoryCollection(String uid) =>
+      '$users/$uid/$dokkaiExamHistory';
+  static String choukaiExamHistoryCollection(String uid) =>
+      '$users/$uid/$choukaiExamHistory';
+  static String kanjiComboExamHistoryCollection(String uid) =>
+      '$users/$uid/$kanjiComboExamHistory';
 }

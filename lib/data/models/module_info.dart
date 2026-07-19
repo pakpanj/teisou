@@ -20,16 +20,10 @@ class ModuleInfo {
 
 /// Static registry of learning modules. Hiragana/Katakana are already
 /// shipped; everything else is a "Segera Hadir" placeholder until its
-/// screen is built out.
+/// screen is built out. Choukai is deliberately NOT here — listening
+/// comprehension now lives as an exam type inside the Ujian tab instead of
+/// being its own standalone module (see lib/features/choukai/).
 const kComingSoonModules = <ModuleInfo>[
-  ModuleInfo(
-    id: 'choukai',
-    title: 'Choukai (Listening)',
-    description: 'Latihan mendengar percakapan sehari-hari',
-    iconAsset: '',
-    status: ModuleStatus.comingSoon,
-    requiresPremium: true,
-  ),
   ModuleInfo(
     id: 'picture_learning',
     title: 'Belajar dari Gambar',

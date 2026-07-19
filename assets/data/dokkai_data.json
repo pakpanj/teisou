@@ -1,0 +1,128 @@
+[
+  {
+    "id": "dokkai_surat_sahabat_pena",
+    "title": "Surat dari Sahabat Pena",
+    "jlptLevel": "N5",
+    "passageJapanese": "はじめまして。わたしはメアリーです。アメリカから来ました。今、日本語を勉強しています。わたしの趣味は料理と読書です。週末はよく公園を散歩します。日本に行ったことがありません。いつか行きたいです。どうぞよろしくお願いします。",
+    "passageTranslation": "Salam kenal. Saya Mary. Saya berasal dari Amerika. Sekarang saya sedang belajar bahasa Jepang. Hobi saya adalah memasak dan membaca. Di akhir pekan saya sering jalan-jalan di taman. Saya belum pernah pergi ke Jepang. Suatu hari saya ingin pergi. Mohon bantuannya.",
+    "questions": [
+      {
+        "id": "dokkai_surat_sahabat_pena_q0",
+        "prompt": "メアリーさんはどこから来ましたか。",
+        "options": [
+          "アメリカ",
+          "日本",
+          "イギリス",
+          "中国"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_surat_sahabat_pena_q1",
+        "prompt": "メアリーさんの趣味は何ですか。",
+        "options": [
+          "料理と読書",
+          "サッカーと水泳",
+          "音楽と映画",
+          "旅行と写真"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_surat_sahabat_pena_q2",
+        "prompt": "メアリーさんは日本に行ったことがありますか。",
+        "options": [
+          "いいえ、ありません",
+          "はい、あります",
+          "わかりません",
+          "三回行きました"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_papan_pengumuman_sekolah",
+    "title": "Papan Pengumuman di Sekolah",
+    "jlptLevel": "N5",
+    "passageJapanese": "来週の月曜日は運動会です。朝八時に学校に来てください。お弁当を持ってきてください。雨の日は運動会がありません。その時は火曜日にします。",
+    "passageTranslation": "Minggu depan hari Senin ada acara olahraga. Silakan datang ke sekolah jam 8 pagi. Silakan bawa bekal makan siang. Jika hujan, acara olahraga tidak diadakan. Pada saat itu akan diadakan hari Selasa.",
+    "questions": [
+      {
+        "id": "dokkai_papan_pengumuman_sekolah_q0",
+        "prompt": "運動会は何曜日ですか。",
+        "options": [
+          "月曜日",
+          "火曜日",
+          "水曜日",
+          "日曜日"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_papan_pengumuman_sekolah_q1",
+        "prompt": "何時に学校に来ますか。",
+        "options": [
+          "朝八時",
+          "朝七時",
+          "昼十二時",
+          "夕方五時"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_papan_pengumuman_sekolah_q2",
+        "prompt": "雨が降ったら、運動会はいつしますか。",
+        "options": [
+          "火曜日",
+          "水曜日",
+          "来週の月曜日",
+          "中止です"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_jadwal_harian_yuki",
+    "title": "Jadwal Harian Yuki",
+    "jlptLevel": "N5",
+    "passageJapanese": "ゆきさんは毎朝六時半に起きます。七時にご飯を食べます。八時に家を出て、学校へ行きます。授業は九時から三時までです。放課後、図書館で勉強します。家に帰ってから、晩ご飯を食べて、宿題をします。十時に寝ます。",
+    "passageTranslation": "Yuki bangun jam 6.30 setiap pagi. Jam 7 dia makan. Jam 8 dia keluar rumah dan pergi ke sekolah. Pelajaran dari jam 9 sampai jam 3. Setelah pulang sekolah, dia belajar di perpustakaan. Setelah pulang ke rumah, dia makan malam dan mengerjakan PR. Dia tidur jam 10.",
+    "questions": [
+      {
+        "id": "dokkai_jadwal_harian_yuki_q0",
+        "prompt": "ゆきさんは何時に起きますか。",
+        "options": [
+          "六時半",
+          "七時",
+          "六時",
+          "八時"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_jadwal_harian_yuki_q1",
+        "prompt": "放課後、ゆきさんはどこで勉強しますか。",
+        "options": [
+          "図書館",
+          "教室",
+          "家",
+          "公園"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_jadwal_harian_yuki_q2",
+        "prompt": "ゆきさんは何時に寝ますか。",
+        "options": [
+          "十時",
+          "九時",
+          "十一時",
+          "十二時"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  }
+]
