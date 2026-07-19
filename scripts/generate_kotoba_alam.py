@@ -13,7 +13,7 @@ import json
 def _plain_registers(word, romaji, noun_label):
     return {
         "casual": f"{word} ({romaji})",
-        "formal": f"{word} ({romaji}) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+        "formal": f"{word} ({romaji})",
         "keigo": f"{word} ({romaji}) — tidak ada bentuk keigo khusus untuk {noun_label}",
     }
 

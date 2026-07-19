@@ -146,7 +146,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
           ),
         ),
         const Text(
-          'Geser atau tekan kartu untuk melihat arti',
+          'tekan kartu untuk melihat arti',
           style: TextStyle(color: AppColors.textNavy, fontSize: 13),
         ),
         const SizedBox(height: 16),
