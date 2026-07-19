@@ -1782,6 +1782,24 @@ SEKOLAH_N1_TITLES = [
     "Menjelaskan Alasan Terus Tumbuh Melampaui Apa yang Diajarkan Sekolah",
 ]
 
+CUACA_BASA_BASI_N1_TITLES = [
+    "Menjelaskan Alasan Basa-basi Bukan Sekadar Obrolan Kosong",
+    "Mendiskusikan Filosofi Cuaca sebagai Cerminan Suasana Hati",
+    "Menceritakan Pengalaman Menemukan Kenyamanan dalam Keheningan Bersama Orang Lain",
+    "Membicarakan Makna Musim sebagai Metafora Fase Kehidupan",
+    "Mendiskusikan Kerinduan terhadap Cuaca di Kampung Halaman",
+    "Menceritakan Pengalaman Kesepian karena Tidak Ada Teman untuk Basa-basi",
+    "Menjelaskan Alasan Basa-basi Bisa Jadi Cara Memperhatikan Orang Lain",
+    "Membicarakan Filosofi Menerima Hal yang Tidak Bisa Dikendalikan Seperti Cuaca",
+    "Mendiskusikan Kecemasan terhadap Perubahan Iklim yang Semakin Nyata",
+    "Menceritakan Pengalaman Belajar Basa-basi Antar Budaya yang Berbeda",
+    "Menjelaskan Filosofi Bahwa Obrolan Ringan Bisa Jadi Awal Hubungan Mendalam",
+    "Membicarakan Dampak Cuaca terhadap Suasana Hati dan Cara Mengatasinya",
+    "Mendiskusikan Kenyamanan dari Ritual Musiman yang Dapat Diprediksi",
+    "Menceritakan Pengalaman Merindukan Hujan Setelah Tinggal di Tempat Kering",
+    "Menjelaskan Alasan Basa-basi Tentang Cuaca Adalah Bahasa Universal",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1858,6 +1876,7 @@ CATEGORY_META = {
     "belanja_n1": ("Belanja", "🛍️", "N1"),
     "arah_jalan_n1": ("Menanyakan Arah", "🧭", "N1"),
     "sekolah_n1": ("Di Sekolah", "🏫", "N1"),
+    "cuaca_basa_basi_n1": ("Cuaca & Basa-basi", "☁️", "N1"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1936,6 +1955,7 @@ AVAILABLE_CATEGORIES = {
     "belanja_n1": BELANJA_N1_TITLES,
     "arah_jalan_n1": ARAH_JALAN_N1_TITLES,
     "sekolah_n1": SEKOLAH_N1_TITLES,
+    "cuaca_basa_basi_n1": CUACA_BASA_BASI_N1_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -2026,6 +2046,7 @@ _ALL_TITLE_LISTS = {
     "BELANJA_N1_TITLES": BELANJA_N1_TITLES,
     "ARAH_JALAN_N1_TITLES": ARAH_JALAN_N1_TITLES,
     "SEKOLAH_N1_TITLES": SEKOLAH_N1_TITLES,
+    "CUACA_BASA_BASI_N1_TITLES": CUACA_BASA_BASI_N1_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
