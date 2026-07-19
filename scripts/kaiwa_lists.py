@@ -1746,6 +1746,24 @@ BELANJA_N1_TITLES = [
     "Menjelaskan Alasan Memilih Kualitas Dibanding Kuantitas dalam Hidup",
 ]
 
+ARAH_JALAN_N1_TITLES = [
+    "Menjelaskan Alasan Menikmati Sensasi Tersesat di Tempat Asing",
+    "Mendiskusikan Filosofi Bahwa Tersesat dalam Hidup Bukanlah Kegagalan",
+    "Menceritakan Pengalaman Menemukan Kepercayaan Diri Setelah Berhasil Menemukan Jalan Sendiri",
+    "Membicarakan Dilema Mengandalkan Insting Dibanding Teknologi Navigasi",
+    "Mendiskusikan Makna Memberi Petunjuk Arah sebagai Bentuk Kepedulian",
+    "Menceritakan Pengalaman Meminta Bantuan Arah sebagai Momen Kerendahan Hati",
+    "Menjelaskan Alasan Menyukai Rute Memutar Dibanding Jalan Tercepat",
+    "Membicarakan Simbolisme Persimpangan Jalan dalam Pengambilan Keputusan",
+    "Mendiskusikan Kenyamanan Emosional yang Diberikan oleh Penanda Jalan yang Familiar",
+    "Menceritakan Pengalaman Merasa Tersesat secara Emosional Meski Tahu Jalan Pulang",
+    "Menjelaskan Filosofi Bahwa Tujuan Tidak Selalu Harus Jelas Sejak Awal",
+    "Membicarakan Ketakutan Tidak Bisa Menemukan Jalan Kembali dalam Hidup",
+    "Mendiskusikan Peran Ingatan dalam Membentuk Peta Mental Seseorang",
+    "Menceritakan Pengalaman Belajar Mempercayai Orang Asing Saat Tersesat",
+    "Menjelaskan Alasan Memilih Berjalan Tanpa Peta demi Kebebasan",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1820,6 +1838,7 @@ CATEGORY_META = {
     "restoran_n1": ("Di Restoran", "🍽️", "N1"),
     "stasiun_n1": ("Di Stasiun", "🚉", "N1"),
     "belanja_n1": ("Belanja", "🛍️", "N1"),
+    "arah_jalan_n1": ("Menanyakan Arah", "🧭", "N1"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1896,6 +1915,7 @@ AVAILABLE_CATEGORIES = {
     "restoran_n1": RESTORAN_N1_TITLES,
     "stasiun_n1": STASIUN_N1_TITLES,
     "belanja_n1": BELANJA_N1_TITLES,
+    "arah_jalan_n1": ARAH_JALAN_N1_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1984,6 +2004,7 @@ _ALL_TITLE_LISTS = {
     "RESTORAN_N1_TITLES": RESTORAN_N1_TITLES,
     "STASIUN_N1_TITLES": STASIUN_N1_TITLES,
     "BELANJA_N1_TITLES": BELANJA_N1_TITLES,
+    "ARAH_JALAN_N1_TITLES": ARAH_JALAN_N1_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
