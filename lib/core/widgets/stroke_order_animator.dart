@@ -43,7 +43,24 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
     _controller.addListener(() {
       setState(() {});
     });
+    _controller.addStatusListener(_handleStatusChange);
     _load();
+  }
+
+  /// Loops the animation instead of stopping at the last stroke: once it
+  /// completes, pause briefly on the finished character (more natural for
+  /// repeated practice than snapping straight back to stroke 1), then
+  /// restart from the beginning — unless "show all numbered" static mode
+  /// was switched on in the meantime, or the widget's gone.
+  void _handleStatusChange(AnimationStatus status) {
+    if (status != AnimationStatus.completed) return;
+    if (_showAllNumbered) return;
+    Future.delayed(const Duration(milliseconds: 700), () {
+      if (!mounted) return;
+      if (_showAllNumbered) return;
+      if (_controller.status != AnimationStatus.completed) return;
+      _controller.forward(from: 0);
+    });
   }
 
   @override
@@ -157,7 +174,9 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
           decoration: BoxDecoration(
             color: AppColors.cardWhite,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors.textNavy.withValues(alpha: 0.08)),
+            border: Border.all(
+              color: AppColors.textNavy.withValues(alpha: 0.08),
+            ),
           ),
           child: CustomPaint(
             size: Size(widget.size, widget.size),
@@ -180,7 +199,9 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
             IconButton(
               onPressed: _showAllNumbered ? null : _togglePlayPause,
               icon: Icon(
-                _controller.isAnimating ? Icons.pause_circle_filled : Icons.play_circle_fill,
+                _controller.isAnimating
+                    ? Icons.pause_circle_filled
+                    : Icons.play_circle_fill,
                 color: AppColors.secondaryBlue,
                 size: 40,
               ),
@@ -190,7 +211,9 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
               onPressed: _toggleShowAllNumbered,
               icon: Icon(
                 Icons.format_list_numbered,
-                color: _showAllNumbered ? AppColors.secondaryBlue : AppColors.textNavy,
+                color: _showAllNumbered
+                    ? AppColors.secondaryBlue
+                    : AppColors.textNavy,
               ),
               tooltip: 'Tampilkan semua goresan bernomor',
             ),
@@ -204,7 +227,9 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
                 data: SliderTheme.of(context).copyWith(
                   activeTrackColor: AppColors.secondaryBlue,
                   thumbColor: AppColors.secondaryBlue,
-                  inactiveTrackColor: AppColors.textNavy.withValues(alpha: 0.12),
+                  inactiveTrackColor: AppColors.textNavy.withValues(
+                    alpha: 0.12,
+                  ),
                 ),
                 child: Slider(
                   value: _speed,
@@ -279,7 +304,10 @@ class _StrokeOrderPainter extends CustomPainter {
       }
       if (complete < strokeCount && partial > 0) {
         for (final metric in data.strokes[complete].path.computeMetrics()) {
-          canvas.drawPath(metric.extractPath(0, metric.length * partial), strokePaint);
+          canvas.drawPath(
+            metric.extractPath(0, metric.length * partial),
+            strokePaint,
+          );
         }
       }
     }

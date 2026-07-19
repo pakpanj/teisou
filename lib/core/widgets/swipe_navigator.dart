@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-/// Wraps [child] with horizontal-swipe next/prev detection. Generic on
-/// purpose (no flashcard-specific typing) so other next/prev screens
-/// (kotoba/kanji word detail) can reuse it later without changes here.
+/// Wraps [child] with horizontal-swipe next/prev detection. Generic
+/// on purpose (no module-specific typing) so any next/prev screen
+/// across the app (flashcards, Kotoba/Kanji/Bunpou/Partikel word
+/// detail, Kaiwa dialogues) can reuse it. Passing `null` for either
+/// callback makes swiping that direction a no-op — mirrors the
+/// disabled-arrow-button convention already used everywhere next/prev
+/// buttons appear (`hasNext ? onNext : null`), so swipe and the arrow
+/// buttons always agree on whether a direction is available.
 class SwipeNavigator extends StatelessWidget {
   final Widget child;
   final VoidCallback? onSwipeLeft;

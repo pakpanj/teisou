@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/bunpou_entry.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/sentence_example.dart';
@@ -62,7 +63,8 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final entry = _entry;
-    final learnedIds = ref.watch(bunpouLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final learnedIds =
+        ref.watch(bunpouLearnedIdsProvider).valueOrNull ?? const <String>{};
     final isLearned = learnedIds.contains(entry.id);
 
     return Scaffold(
@@ -72,62 +74,74 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
         child: Column(
           children: [
             Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
-                child: Column(
-                  children: [
-                    _PatternDisplay(key: ValueKey(entry.id), entry: entry),
-                    const SizedBox(height: 12),
-                    Wrap(
-                      spacing: 8,
-                      alignment: WrapAlignment.center,
-                      children: [
-                        JlptBadge(level: entry.jlptLevel),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    _AudioButton(
-                      onTap: () => ref.read(ttsServiceProvider).speak(entry.pattern),
-                    ),
-                    const SizedBox(height: 16),
-                    _LearnedButton(
-                      learned: isLearned,
-                      busy: _togglingLearned,
-                      onTap: _togglingLearned ? null : () => _toggleLearned(isLearned),
-                    ),
-                    const SizedBox(height: 24),
-                    const _SectionTitle('Arti'),
-                    const SizedBox(height: 8),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(entry.meaning, style: const TextStyle(color: AppColors.textNavy)),
-                    ),
-                    const SizedBox(height: 24),
-                    const _SectionTitle('Pembentukan'),
-                    const SizedBox(height: 8),
-                    _InfoCard(text: entry.formation),
-                    const SizedBox(height: 24),
-                    const _SectionTitle('Catatan Pemakaian'),
-                    const SizedBox(height: 8),
-                    _InfoCard(text: entry.usageNotes),
-                    if (entry.similarPatterns.isNotEmpty) ...[
+              child: SwipeNavigator(
+                onSwipeLeft: _index < widget.entries.length - 1
+                    ? _goNext
+                    : null,
+                onSwipeRight: _index > 0 ? _goPrev : null,
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+                  child: Column(
+                    children: [
+                      _PatternDisplay(key: ValueKey(entry.id), entry: entry),
+                      const SizedBox(height: 12),
+                      Wrap(
+                        spacing: 8,
+                        alignment: WrapAlignment.center,
+                        children: [JlptBadge(level: entry.jlptLevel)],
+                      ),
+                      const SizedBox(height: 16),
+                      _AudioButton(
+                        onTap: () =>
+                            ref.read(ttsServiceProvider).speak(entry.pattern),
+                      ),
+                      const SizedBox(height: 16),
+                      _LearnedButton(
+                        learned: isLearned,
+                        busy: _togglingLearned,
+                        onTap: _togglingLearned
+                            ? null
+                            : () => _toggleLearned(isLearned),
+                      ),
                       const SizedBox(height: 24),
-                      const _SectionTitle('Pola Serupa'),
+                      const _SectionTitle('Arti'),
                       const SizedBox(height: 8),
-                      _SimilarPatternsRow(ids: entry.similarPatterns),
-                    ],
-                    if (entry.sentenceExamples.isNotEmpty) ...[
-                      const SizedBox(height: 24),
-                      const _SectionTitle('Contoh Kalimat'),
-                      const SizedBox(height: 8),
-                      ...entry.sentenceExamples.map(
-                        (example) => _SentenceExampleCard(
-                          example: example,
-                          onSpeak: () => ref.read(ttsServiceProvider).speak(example.japanese),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          entry.meaning,
+                          style: const TextStyle(color: AppColors.textNavy),
                         ),
                       ),
+                      const SizedBox(height: 24),
+                      const _SectionTitle('Pembentukan'),
+                      const SizedBox(height: 8),
+                      _InfoCard(text: entry.formation),
+                      const SizedBox(height: 24),
+                      const _SectionTitle('Catatan Pemakaian'),
+                      const SizedBox(height: 8),
+                      _InfoCard(text: entry.usageNotes),
+                      if (entry.similarPatterns.isNotEmpty) ...[
+                        const SizedBox(height: 24),
+                        const _SectionTitle('Pola Serupa'),
+                        const SizedBox(height: 8),
+                        _SimilarPatternsRow(ids: entry.similarPatterns),
+                      ],
+                      if (entry.sentenceExamples.isNotEmpty) ...[
+                        const SizedBox(height: 24),
+                        const _SectionTitle('Contoh Kalimat'),
+                        const SizedBox(height: 8),
+                        ...entry.sentenceExamples.map(
+                          (example) => _SentenceExampleCard(
+                            example: example,
+                            onSpeak: () => ref
+                                .read(ttsServiceProvider)
+                                .speak(example.japanese),
+                          ),
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),
@@ -172,7 +186,10 @@ class _PatternDisplay extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             entry.patternRomaji,
-            style: TextStyle(fontSize: 14, color: AppColors.textNavy.withValues(alpha: 0.6)),
+            style: TextStyle(
+              fontSize: 14,
+              color: AppColors.textNavy.withValues(alpha: 0.6),
+            ),
           ),
         ],
       ),
@@ -196,7 +213,10 @@ class _InfoCard extends StatelessWidget {
       ),
       child: Align(
         alignment: Alignment.centerLeft,
-        child: Text(text, style: const TextStyle(color: AppColors.textNavy, height: 1.4)),
+        child: Text(
+          text,
+          style: const TextStyle(color: AppColors.textNavy, height: 1.4),
+        ),
       ),
     );
   }
@@ -221,13 +241,22 @@ class _SimilarPatternsRow extends ConsumerWidget {
           spacing: 8,
           runSpacing: 8,
           children: ids
-              .map((id) => _Pill(text: byId[id] ?? id, color: AppColors.primaryCoral))
+              .map(
+                (id) =>
+                    _Pill(text: byId[id] ?? id, color: AppColors.primaryCoral),
+              )
               .toList(),
         );
       },
       loading: () => const SizedBox(
         height: 24,
-        child: Center(child: SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2))),
+        child: Center(
+          child: SizedBox(
+            width: 16,
+            height: 16,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
+        ),
       ),
       error: (_, _) => const SizedBox.shrink(),
     );
@@ -250,7 +279,11 @@ class _Pill extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: color),
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: color,
+        ),
       ),
     );
   }
@@ -304,7 +337,11 @@ class _LearnedButton extends StatelessWidget {
   final bool busy;
   final VoidCallback? onTap;
 
-  const _LearnedButton({required this.learned, required this.busy, required this.onTap});
+  const _LearnedButton({
+    required this.learned,
+    required this.busy,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -376,7 +413,10 @@ class _SentenceExampleCard extends StatelessWidget {
               children: [
                 Text(
                   example.japanese,
-                  style: const TextStyle(fontSize: 16, color: AppColors.textNavy),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: AppColors.textNavy,
+                  ),
                 ),
                 if (example.romaji != null) ...[
                   const SizedBox(height: 2),

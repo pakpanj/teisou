@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/particle_entry.dart';
 import '../../data/models/particle_function.dart';
 import '../../data/models/sentence_example.dart';
@@ -30,7 +31,8 @@ class ParticleDetailScreen extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<ParticleDetailScreen> createState() => _ParticleDetailScreenState();
+  ConsumerState<ParticleDetailScreen> createState() =>
+      _ParticleDetailScreenState();
 }
 
 class _ParticleDetailScreenState extends ConsumerState<ParticleDetailScreen> {
@@ -66,7 +68,8 @@ class _ParticleDetailScreenState extends ConsumerState<ParticleDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final entry = _entry;
-    final learnedIds = ref.watch(particleLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final learnedIds =
+        ref.watch(particleLearnedIdsProvider).valueOrNull ?? const <String>{};
     final isLearned = learnedIds.contains(entry.id);
 
     return Scaffold(
@@ -76,57 +79,68 @@ class _ParticleDetailScreenState extends ConsumerState<ParticleDetailScreen> {
         child: Column(
           children: [
             Expanded(
-              // Keyed on the particle id so the scroll position (and every
-              // ExpansionTile's expand state) resets when paging next/prev,
-              // instead of carrying over a stale scroll offset from an
-              // entry with a very different number of functions.
-              child: SingleChildScrollView(
-                key: ValueKey(entry.id),
-                padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
-                child: Column(
-                  children: [
-                    _ParticleDisplay(entry: entry),
-                    const SizedBox(height: 12),
-                    Wrap(
-                      spacing: 8,
-                      alignment: WrapAlignment.center,
-                      children: [
-                        _CategoryBadge(category: entry.category),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    _AudioButton(
-                      onTap: () => ref.read(ttsServiceProvider).speak(entry.particle),
-                    ),
-                    const SizedBox(height: 16),
-                    _LearnedButton(
-                      learned: isLearned,
-                      busy: _togglingLearned,
-                      onTap: _togglingLearned ? null : () => _toggleLearned(isLearned),
-                    ),
-                    const SizedBox(height: 24),
-                    const _SectionTitle('Ringkasan'),
-                    const SizedBox(height: 8),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(entry.overview, style: const TextStyle(color: AppColors.textNavy)),
-                    ),
-                    if (entry.similarParticles.isNotEmpty) ...[
-                      const SizedBox(height: 24),
-                      const _SectionTitle('Partikel Serupa'),
-                      const SizedBox(height: 8),
-                      _SimilarParticlesRow(ids: entry.similarParticles),
-                    ],
-                    const SizedBox(height: 24),
-                    const _SectionTitle('Fungsi'),
-                    const SizedBox(height: 8),
-                    for (var i = 0; i < entry.functions.length; i++)
-                      _FunctionTile(
-                        function: entry.functions[i],
-                        initiallyExpanded: i == 0,
-                        onSpeak: (text) => ref.read(ttsServiceProvider).speak(text),
+              child: SwipeNavigator(
+                onSwipeLeft: _index < widget.entries.length - 1
+                    ? _goNext
+                    : null,
+                onSwipeRight: _index > 0 ? _goPrev : null,
+                // Keyed on the particle id so the scroll position (and every
+                // ExpansionTile's expand state) resets when paging next/prev,
+                // instead of carrying over a stale scroll offset from an
+                // entry with a very different number of functions.
+                child: SingleChildScrollView(
+                  key: ValueKey(entry.id),
+                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+                  child: Column(
+                    children: [
+                      _ParticleDisplay(entry: entry),
+                      const SizedBox(height: 12),
+                      Wrap(
+                        spacing: 8,
+                        alignment: WrapAlignment.center,
+                        children: [_CategoryBadge(category: entry.category)],
                       ),
-                  ],
+                      const SizedBox(height: 16),
+                      _AudioButton(
+                        onTap: () =>
+                            ref.read(ttsServiceProvider).speak(entry.particle),
+                      ),
+                      const SizedBox(height: 16),
+                      _LearnedButton(
+                        learned: isLearned,
+                        busy: _togglingLearned,
+                        onTap: _togglingLearned
+                            ? null
+                            : () => _toggleLearned(isLearned),
+                      ),
+                      const SizedBox(height: 24),
+                      const _SectionTitle('Ringkasan'),
+                      const SizedBox(height: 8),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          entry.overview,
+                          style: const TextStyle(color: AppColors.textNavy),
+                        ),
+                      ),
+                      if (entry.similarParticles.isNotEmpty) ...[
+                        const SizedBox(height: 24),
+                        const _SectionTitle('Partikel Serupa'),
+                        const SizedBox(height: 8),
+                        _SimilarParticlesRow(ids: entry.similarParticles),
+                      ],
+                      const SizedBox(height: 24),
+                      const _SectionTitle('Fungsi'),
+                      const SizedBox(height: 8),
+                      for (var i = 0; i < entry.functions.length; i++)
+                        _FunctionTile(
+                          function: entry.functions[i],
+                          initiallyExpanded: i == 0,
+                          onSpeak: (text) =>
+                              ref.read(ttsServiceProvider).speak(text),
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -171,7 +185,10 @@ class _ParticleDisplay extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             entry.particleRomaji,
-            style: TextStyle(fontSize: 14, color: AppColors.textNavy.withValues(alpha: 0.6)),
+            style: TextStyle(
+              fontSize: 14,
+              color: AppColors.textNavy.withValues(alpha: 0.6),
+            ),
           ),
         ],
       ),
@@ -197,10 +214,7 @@ class _CategoryBadge extends ConsumerWidget {
     return categoriesAsync.when(
       data: (categories) {
         final name = categories
-            .firstWhere(
-              (c) => c.id == category,
-              orElse: () => categories.first,
-            )
+            .firstWhere((c) => c.id == category, orElse: () => categories.first)
             .name;
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -210,7 +224,11 @@ class _CategoryBadge extends ConsumerWidget {
           ),
           child: Text(
             name,
-            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppColors.tertiaryAmber),
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: AppColors.tertiaryAmber,
+            ),
           ),
         );
       },
@@ -238,13 +256,22 @@ class _SimilarParticlesRow extends ConsumerWidget {
           spacing: 8,
           runSpacing: 8,
           children: ids
-              .map((id) => _Pill(text: byId[id] ?? id, color: AppColors.primaryCoral))
+              .map(
+                (id) =>
+                    _Pill(text: byId[id] ?? id, color: AppColors.primaryCoral),
+              )
               .toList(),
         );
       },
       loading: () => const SizedBox(
         height: 24,
-        child: Center(child: SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2))),
+        child: Center(
+          child: SizedBox(
+            width: 16,
+            height: 16,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
+        ),
       ),
       error: (_, _) => const SizedBox.shrink(),
     );
@@ -267,7 +294,11 @@ class _Pill extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: color),
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: color,
+        ),
       ),
     );
   }
@@ -321,7 +352,11 @@ class _LearnedButton extends StatelessWidget {
   final bool busy;
   final VoidCallback? onTap;
 
-  const _LearnedButton({required this.learned, required this.busy, required this.onTap});
+  const _LearnedButton({
+    required this.learned,
+    required this.busy,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -399,7 +434,10 @@ class _FunctionTile extends StatelessWidget {
           childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
           title: Text(
             function.title,
-            style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.textNavy),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: AppColors.textNavy,
+            ),
           ),
           children: [
             Align(
@@ -421,7 +459,10 @@ class _FunctionTile extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   function.formation,
-                  style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.8), height: 1.4),
+                  style: TextStyle(
+                    color: AppColors.textNavy.withValues(alpha: 0.8),
+                    height: 1.4,
+                  ),
                 ),
               ),
             ),
@@ -465,7 +506,10 @@ class _SentenceExampleCard extends StatelessWidget {
               children: [
                 Text(
                   example.japanese,
-                  style: const TextStyle(fontSize: 15, color: AppColors.textNavy),
+                  style: const TextStyle(
+                    fontSize: 15,
+                    color: AppColors.textNavy,
+                  ),
                 ),
                 if (example.romaji != null) ...[
                   const SizedBox(height: 2),

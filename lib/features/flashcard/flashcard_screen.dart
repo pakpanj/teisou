@@ -4,12 +4,12 @@ import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/kana_glyph.dart';
+import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kana_progress.dart';
 import '../../data/models/kana_type.dart';
 import '../../data/models/kana_type_progress.dart';
 import 'widgets/flip_card.dart';
-import 'widgets/swipe_navigator.dart';
 
 class FlashcardScreen extends ConsumerStatefulWidget {
   final KanaType type;

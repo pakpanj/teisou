@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/kaiwa_expressions.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/kaiwa_answer_option.dart';
 import '../../data/models/kaiwa_entry.dart';
 import '../../data/models/kaiwa_line.dart';
@@ -104,7 +105,11 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
     });
   }
 
-  void _selectOption(int lineIndex, int originalIndex, KaiwaAnswerOption option) {
+  void _selectOption(
+    int lineIndex,
+    int originalIndex,
+    KaiwaAnswerOption option,
+  ) {
     if (option.isCorrect) {
       setState(() {
         _answered[lineIndex] = option;
@@ -157,11 +162,12 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
         ref.watch(kaiwaLearnedIdsProvider).valueOrNull ?? const <String>{};
     final isLearned = learnedIds.contains(_entry.id);
     final lines = _entry.lines;
-    final lastIsUnansweredUserTurn = _revealedCount > 0 &&
+    final lastIsUnansweredUserTurn =
+        _revealedCount > 0 &&
         lines[_revealedCount - 1].isUserTurn &&
         !_answered.containsKey(_revealedCount - 1);
-    final dialogueComplete = _revealedCount >= lines.length &&
-        !lastIsUnansweredUserTurn;
+    final dialogueComplete =
+        _revealedCount >= lines.length && !lastIsUnansweredUserTurn;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -169,28 +175,40 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              key: ValueKey(_entry.id),
-              controller: _scrollController,
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    _entry.description,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: AppColors.textNavy.withValues(alpha: 0.7),
+            // Swipe is only wired up once dialogueComplete — same
+            // condition that shows the _CompletionBar's next/prev
+            // buttons — so a horizontal swipe mid-dialogue can't be used
+            // to skip past an unanswered user turn. hasNext/hasPrev mirror
+            // the buttons' own disabled-state logic exactly.
+            child: SwipeNavigator(
+              onSwipeLeft:
+                  dialogueComplete && _index < widget.entries.length - 1
+                  ? _goNext
+                  : null,
+              onSwipeRight: dialogueComplete && _index > 0 ? _goPrev : null,
+              child: SingleChildScrollView(
+                key: ValueKey(_entry.id),
+                controller: _scrollController,
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _entry.description,
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: AppColors.textNavy.withValues(alpha: 0.7),
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 16),
-                  for (var i = 0; i < _revealedCount; i++)
-                    _LineBubble(
-                      key: ValueKey(lines[i].id),
-                      line: lines[i],
-                      answer: _answered[i],
-                    ),
-                ],
+                    const SizedBox(height: 16),
+                    for (var i = 0; i < _revealedCount; i++)
+                      _LineBubble(
+                        key: ValueKey(lines[i].id),
+                        line: lines[i],
+                        answer: _answered[i],
+                      ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -199,11 +217,8 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
               options: lines[_revealedCount - 1].options,
               order: _optionOrder[_revealedCount - 1] ?? const [],
               wrongOptionIndex: _wrongOptionIndex,
-              onSelect: (originalIndex, option) => _selectOption(
-                _revealedCount - 1,
-                originalIndex,
-                option,
-              ),
+              onSelect: (originalIndex, option) =>
+                  _selectOption(_revealedCount - 1, originalIndex, option),
             )
           else if (dialogueComplete)
             _CompletionBar(
@@ -270,7 +285,10 @@ class _LineBubble extends StatelessWidget {
                   if (npc != null)
                     Padding(
                       padding: const EdgeInsets.all(6),
-                      child: _SpeakButton(text: npc.japanese, gender: line.gender),
+                      child: _SpeakButton(
+                        text: npc.japanese,
+                        gender: line.gender,
+                      ),
                     ),
                 ],
               ),
@@ -403,7 +421,11 @@ class _SpeakButton extends ConsumerWidget {
         onTap: () => ref.read(ttsServiceProvider).speak(text, gender: gender),
         child: const Padding(
           padding: EdgeInsets.all(8),
-          child: Icon(Icons.volume_up, size: 20, color: AppColors.secondaryBlue),
+          child: Icon(
+            Icons.volume_up,
+            size: 20,
+            color: AppColors.secondaryBlue,
+          ),
         ),
       ),
     );
@@ -563,8 +585,12 @@ class _CompletionBar extends StatelessWidget {
           Expanded(
             child: OutlinedButton.icon(
               onPressed: toggling ? null : onToggleLearned,
-              icon: Icon(learned ? Icons.check_circle : Icons.check_circle_outline),
-              label: Text(learned ? 'Sudah Dipelajari' : 'Tandai Sudah Dipelajari'),
+              icon: Icon(
+                learned ? Icons.check_circle : Icons.check_circle_outline,
+              ),
+              label: Text(
+                learned ? 'Sudah Dipelajari' : 'Tandai Sudah Dipelajari',
+              ),
             ),
           ),
           IconButton(

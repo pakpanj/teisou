@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/stroke_order_animator.dart';
+import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/kanji_entry.dart';
 import '../../data/models/sentence_example.dart';
@@ -29,7 +30,8 @@ class KanjiWordDetailScreen extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<KanjiWordDetailScreen> createState() => _KanjiWordDetailScreenState();
+  ConsumerState<KanjiWordDetailScreen> createState() =>
+      _KanjiWordDetailScreenState();
 }
 
 class _KanjiWordDetailScreenState extends ConsumerState<KanjiWordDetailScreen> {
@@ -65,7 +67,8 @@ class _KanjiWordDetailScreenState extends ConsumerState<KanjiWordDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final entry = _entry;
-    final learnedIds = ref.watch(kanjiLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final learnedIds =
+        ref.watch(kanjiLearnedIdsProvider).valueOrNull ?? const <String>{};
     final isLearned = learnedIds.contains(entry.id);
 
     return Scaffold(
@@ -75,98 +78,139 @@ class _KanjiWordDetailScreenState extends ConsumerState<KanjiWordDetailScreen> {
         child: Column(
           children: [
             Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
-                child: Column(
-                  children: [
-                    StrokeOrderAnimator(
-                      key: ValueKey(entry.id),
-                      character: entry.character,
-                      svgAssetPath: entry.svgAsset,
-                      size: 200,
-                    ),
-                    const SizedBox(height: 12),
-                    Wrap(
-                      spacing: 8,
-                      alignment: WrapAlignment.center,
-                      children: [
-                        JlptBadge(level: entry.jlptLevel),
-                        _Pill(text: '${entry.strokeCount} goresan', color: AppColors.tertiaryAmber),
-                        if (entry.radical != null)
-                          _Pill(text: 'Radikal ${entry.radical}', color: AppColors.secondaryBlue),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    _AudioButton(
-                      onTap: () => ref.read(ttsServiceProvider).speak(entry.character),
-                    ),
-                    const SizedBox(height: 16),
-                    _LearnedButton(
-                      learned: isLearned,
-                      busy: _togglingLearned,
-                      onTap: _togglingLearned ? null : () => _toggleLearned(isLearned),
-                    ),
-                    const SizedBox(height: 24),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(child: _ReadingColumn(title: "On'yomi", readings: entry.onyomi)),
-                        const SizedBox(width: 16),
-                        Expanded(child: _ReadingColumn(title: "Kun'yomi", readings: entry.kunyomi)),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                    const _SectionTitle('Arti'),
-                    const SizedBox(height: 8),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: entry.meanings
-                            .map((m) => Padding(
-                                  padding: const EdgeInsets.only(bottom: 4),
-                                  child: Text('• $m', style: const TextStyle(color: AppColors.textNavy)),
-                                ))
-                            .toList(),
+              child: SwipeNavigator(
+                onSwipeLeft: _index < widget.entries.length - 1
+                    ? _goNext
+                    : null,
+                onSwipeRight: _index > 0 ? _goPrev : null,
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+                  child: Column(
+                    children: [
+                      StrokeOrderAnimator(
+                        key: ValueKey(entry.id),
+                        character: entry.character,
+                        svgAssetPath: entry.svgAsset,
+                        size: 200,
                       ),
-                    ),
-                    if (entry.relatedBunpou.isNotEmpty) ...[
-                      const SizedBox(height: 24),
-                      const _SectionTitle('Bunpou Terkait'),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 12),
                       Wrap(
                         spacing: 8,
-                        runSpacing: 8,
-                        children: entry.relatedBunpou
-                            .map((b) => _Pill(text: b, color: AppColors.primaryCoral))
-                            .toList(),
+                        alignment: WrapAlignment.center,
+                        children: [
+                          JlptBadge(level: entry.jlptLevel),
+                          _Pill(
+                            text: '${entry.strokeCount} goresan',
+                            color: AppColors.tertiaryAmber,
+                          ),
+                          if (entry.radical != null)
+                            _Pill(
+                              text: 'Radikal ${entry.radical}',
+                              color: AppColors.secondaryBlue,
+                            ),
+                        ],
                       ),
-                    ],
-                    if (entry.wordExamples.isNotEmpty) ...[
+                      const SizedBox(height: 16),
+                      _AudioButton(
+                        onTap: () =>
+                            ref.read(ttsServiceProvider).speak(entry.character),
+                      ),
+                      const SizedBox(height: 16),
+                      _LearnedButton(
+                        learned: isLearned,
+                        busy: _togglingLearned,
+                        onTap: _togglingLearned
+                            ? null
+                            : () => _toggleLearned(isLearned),
+                      ),
                       const SizedBox(height: 24),
-                      const _SectionTitle('Contoh Kata'),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: _ReadingColumn(
+                              title: "On'yomi",
+                              readings: entry.onyomi,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: _ReadingColumn(
+                              title: "Kun'yomi",
+                              readings: entry.kunyomi,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 24),
+                      const _SectionTitle('Arti'),
                       const SizedBox(height: 8),
-                      ...entry.wordExamples.map(
-                        (example) => _WordExampleCard(
-                          word: example.word,
-                          reading: example.reading,
-                          meaning: example.meaning,
-                          onSpeak: () => ref.read(ttsServiceProvider).speak(example.word),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: entry.meanings
+                              .map(
+                                (m) => Padding(
+                                  padding: const EdgeInsets.only(bottom: 4),
+                                  child: Text(
+                                    '• $m',
+                                    style: const TextStyle(
+                                      color: AppColors.textNavy,
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
                         ),
                       ),
-                    ],
-                    if (entry.sentenceExamples.isNotEmpty) ...[
-                      const SizedBox(height: 24),
-                      const _SectionTitle('Contoh Kalimat'),
-                      const SizedBox(height: 8),
-                      ...entry.sentenceExamples.map(
-                        (example) => _SentenceExampleCard(
-                          example: example,
-                          onSpeak: () => ref.read(ttsServiceProvider).speak(example.japanese),
+                      if (entry.relatedBunpou.isNotEmpty) ...[
+                        const SizedBox(height: 24),
+                        const _SectionTitle('Bunpou Terkait'),
+                        const SizedBox(height: 8),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: entry.relatedBunpou
+                              .map(
+                                (b) => _Pill(
+                                  text: b,
+                                  color: AppColors.primaryCoral,
+                                ),
+                              )
+                              .toList(),
                         ),
-                      ),
+                      ],
+                      if (entry.wordExamples.isNotEmpty) ...[
+                        const SizedBox(height: 24),
+                        const _SectionTitle('Contoh Kata'),
+                        const SizedBox(height: 8),
+                        ...entry.wordExamples.map(
+                          (example) => _WordExampleCard(
+                            word: example.word,
+                            reading: example.reading,
+                            meaning: example.meaning,
+                            onSpeak: () => ref
+                                .read(ttsServiceProvider)
+                                .speak(example.word),
+                          ),
+                        ),
+                      ],
+                      if (entry.sentenceExamples.isNotEmpty) ...[
+                        const SizedBox(height: 24),
+                        const _SectionTitle('Contoh Kalimat'),
+                        const SizedBox(height: 8),
+                        ...entry.sentenceExamples.map(
+                          (example) => _SentenceExampleCard(
+                            example: example,
+                            onSpeak: () => ref
+                                .read(ttsServiceProvider)
+                                .speak(example.japanese),
+                          ),
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),
@@ -199,7 +243,11 @@ class _Pill extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: color),
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: color,
+        ),
       ),
     );
   }
@@ -289,7 +337,11 @@ class _LearnedButton extends StatelessWidget {
   final bool busy;
   final VoidCallback? onTap;
 
-  const _LearnedButton({required this.learned, required this.busy, required this.onTap});
+  const _LearnedButton({
+    required this.learned,
+    required this.busy,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -375,12 +427,19 @@ class _WordExampleCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 2),
-                Text(meaning, style: const TextStyle(color: AppColors.textNavy)),
+                Text(
+                  meaning,
+                  style: const TextStyle(color: AppColors.textNavy),
+                ),
               ],
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.volume_up, size: 20, color: AppColors.primaryCoral),
+            icon: const Icon(
+              Icons.volume_up,
+              size: 20,
+              color: AppColors.primaryCoral,
+            ),
             onPressed: onSpeak,
           ),
         ],
@@ -413,7 +472,10 @@ class _SentenceExampleCard extends StatelessWidget {
               children: [
                 Text(
                   example.japanese,
-                  style: const TextStyle(fontSize: 16, color: AppColors.textNavy),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: AppColors.textNavy,
+                  ),
                 ),
                 if (example.romaji != null) ...[
                   const SizedBox(height: 2),

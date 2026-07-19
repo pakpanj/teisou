@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/kotoba_entry.dart';
 import '../../data/models/sentence_example.dart';
 import 'kotoba_providers.dart';
@@ -24,10 +25,12 @@ class KotobaWordDetailScreen extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<KotobaWordDetailScreen> createState() => _KotobaWordDetailScreenState();
+  ConsumerState<KotobaWordDetailScreen> createState() =>
+      _KotobaWordDetailScreenState();
 }
 
-class _KotobaWordDetailScreenState extends ConsumerState<KotobaWordDetailScreen> {
+class _KotobaWordDetailScreenState
+    extends ConsumerState<KotobaWordDetailScreen> {
   late int _index = widget.initialIndex;
   bool _togglingLearned = false;
 
@@ -60,7 +63,8 @@ class _KotobaWordDetailScreenState extends ConsumerState<KotobaWordDetailScreen>
   @override
   Widget build(BuildContext context) {
     final entry = _entry;
-    final learnedIds = ref.watch(kotobaLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final learnedIds =
+        ref.watch(kotobaLearnedIdsProvider).valueOrNull ?? const <String>{};
     final isLearned = learnedIds.contains(entry.id);
 
     return Scaffold(
@@ -70,57 +74,69 @@ class _KotobaWordDetailScreenState extends ConsumerState<KotobaWordDetailScreen>
         child: Column(
           children: [
             Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
-                child: Column(
-                  children: [
-                    KotobaImage(
-                      imagePath: entry.imagePath,
-                      categoryIcon: widget.categoryIcon,
-                      size: 180,
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    const SizedBox(height: 20),
-                    _WordHeading(entry: entry),
-                    const SizedBox(height: 4),
-                    Text(
-                      entry.romaji,
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: AppColors.textNavy.withValues(alpha: 0.7),
+              child: SwipeNavigator(
+                onSwipeLeft: _index < widget.entries.length - 1
+                    ? _goNext
+                    : null,
+                onSwipeRight: _index > 0 ? _goPrev : null,
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+                  child: Column(
+                    children: [
+                      KotobaImage(
+                        imagePath: entry.imagePath,
+                        categoryIcon: widget.categoryIcon,
+                        size: 180,
+                        borderRadius: BorderRadius.circular(24),
                       ),
-                    ),
-                    const SizedBox(height: 12),
-                    _AudioButton(
-                      onTap: () => ref.read(ttsServiceProvider).speak(entry.kanji ?? entry.word),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      entry.meaning,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.textNavy,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    _LearnedButton(
-                      learned: isLearned,
-                      busy: _togglingLearned,
-                      onTap: _togglingLearned ? null : () => _toggleLearned(isLearned),
-                    ),
-                    if (entry.sentenceExamples.isNotEmpty) ...[
-                      const SizedBox(height: 24),
-                      const _SectionTitle('Contoh Kalimat'),
-                      const SizedBox(height: 8),
-                      ...entry.sentenceExamples.map(
-                        (example) => _ExampleCard(
-                          example: example,
-                          onSpeak: () => ref.read(ttsServiceProvider).speak(example.japanese),
+                      const SizedBox(height: 20),
+                      _WordHeading(entry: entry),
+                      const SizedBox(height: 4),
+                      Text(
+                        entry.romaji,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: AppColors.textNavy.withValues(alpha: 0.7),
                         ),
                       ),
+                      const SizedBox(height: 12),
+                      _AudioButton(
+                        onTap: () => ref
+                            .read(ttsServiceProvider)
+                            .speak(entry.kanji ?? entry.word),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        entry.meaning,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.textNavy,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      _LearnedButton(
+                        learned: isLearned,
+                        busy: _togglingLearned,
+                        onTap: _togglingLearned
+                            ? null
+                            : () => _toggleLearned(isLearned),
+                      ),
+                      if (entry.sentenceExamples.isNotEmpty) ...[
+                        const SizedBox(height: 24),
+                        const _SectionTitle('Contoh Kalimat'),
+                        const SizedBox(height: 8),
+                        ...entry.sentenceExamples.map(
+                          (example) => _ExampleCard(
+                            example: example,
+                            onSpeak: () => ref
+                                .read(ttsServiceProvider)
+                                .speak(example.japanese),
+                          ),
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),
@@ -162,7 +178,10 @@ class _WordHeading extends StatelessWidget {
       children: [
         Text(
           entry.reading,
-          style: TextStyle(fontSize: 14, color: AppColors.textNavy.withValues(alpha: 0.7)),
+          style: TextStyle(
+            fontSize: 14,
+            color: AppColors.textNavy.withValues(alpha: 0.7),
+          ),
         ),
         Text(
           kanji,
@@ -225,7 +244,11 @@ class _LearnedButton extends StatelessWidget {
   final bool busy;
   final VoidCallback? onTap;
 
-  const _LearnedButton({required this.learned, required this.busy, required this.onTap});
+  const _LearnedButton({
+    required this.learned,
+    required this.busy,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -297,7 +320,10 @@ class _ExampleCard extends StatelessWidget {
               children: [
                 Text(
                   example.japanese,
-                  style: const TextStyle(fontSize: 16, color: AppColors.textNavy),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: AppColors.textNavy,
+                  ),
                 ),
                 if (example.romaji != null) ...[
                   const SizedBox(height: 2),
