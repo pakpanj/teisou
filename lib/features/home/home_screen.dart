@@ -9,12 +9,15 @@ import '../../data/models/kana_type.dart';
 import '../exam/exam_mode_picker_screen.dart';
 import '../flashcard/flashcard_screen.dart';
 import '../leaderboard/leaderboard_screen.dart';
-import '../modules/modules_screen.dart';
 import '../profile/profile_screen.dart';
 import '../search/search_screen.dart';
+import 'widgets/modules_section.dart';
 
-/// Root tab shell: Home / Belajar / Ujian / Profil share one bottom nav bar
-/// via an [IndexedStack] so each tab keeps its scroll/state when switching.
+/// Root tab shell: Home / Ujian / Profil share one bottom nav bar. A
+/// [PageView] backs the tabs (not just the bottom nav) so swiping
+/// left/right also switches tabs — each page is wrapped in [_KeepAlivePage]
+/// so scroll/state survives switching, matching the old [IndexedStack]'s
+/// guarantee.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -23,24 +26,66 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _pageController = PageController();
   int _navIndex = 0;
 
   static const _tabs = [
-    _HomeTabBody(),
-    ModulesScreen(),
-    ExamModePickerScreen(),
-    ProfileScreen(),
+    _KeepAlivePage(child: _HomeTabBody()),
+    _KeepAlivePage(child: ExamModePickerScreen()),
+    _KeepAlivePage(child: ProfileScreen()),
   ];
+
+  void _onNavTap(int index) {
+    setState(() => _navIndex = index);
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.easeOut,
+    );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: _navIndex, children: _tabs),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) => setState(() => _navIndex = index),
+        children: _tabs,
+      ),
       bottomNavigationBar: _BottomNavBar(
         currentIndex: _navIndex,
-        onTap: (index) => setState(() => _navIndex = index),
+        onTap: _onNavTap,
       ),
     );
+  }
+}
+
+/// Keeps [child]'s state alive once built, so swiping away and back to a
+/// tab doesn't lose scroll position or rebuild it from scratch.
+class _KeepAlivePage extends StatefulWidget {
+  final Widget child;
+
+  const _KeepAlivePage({required this.child});
+
+  @override
+  State<_KeepAlivePage> createState() => _KeepAlivePageState();
+}
+
+class _KeepAlivePageState extends State<_KeepAlivePage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return widget.child;
   }
 }
 
@@ -197,6 +242,8 @@ class _HomeTabBody extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 24),
+                        const ModulesSection(),
+                        const SizedBox(height: 24),
                       ],
                     ),
                   ),
@@ -302,7 +349,6 @@ class _BottomNavBar extends StatelessWidget {
 
   static const _items = [
     (icon: Icons.home_rounded, label: 'Home'),
-    (icon: Icons.menu_book_rounded, label: 'Belajar'),
     (icon: Icons.assignment_rounded, label: 'Ujian'),
     (icon: Icons.person_rounded, label: 'Profil'),
   ];

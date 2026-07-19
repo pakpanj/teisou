@@ -8,8 +8,9 @@ import '../../../data/models/module_info.dart';
 import '../../paywall/paywall_screen.dart';
 
 /// Shared "this module isn't built yet" body, used both as a bottom sheet
-/// (tapping a coming-soon card on [ModulesScreen]) and as the entire body
-/// of each dedicated placeholder screen (kanji, particle, ...).
+/// (tapping a coming-soon card on the Home tab's `ModulesSection`) and as
+/// the entire body of each dedicated placeholder screen (kanji, particle,
+/// ...).
 class ComingSoonContent extends ConsumerWidget {
   final String moduleId;
   final VoidCallback? onClose;

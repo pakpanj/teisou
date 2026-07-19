@@ -1,133 +1,104 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/navigation/app_navigator.dart';
-import '../../core/theme/app_colors.dart';
-import '../../data/models/kana_type.dart';
-import '../../data/models/module_info.dart';
-import '../bunpou/bunpou_home_screen.dart';
-import '../flashcard/flashcard_screen.dart';
-import '../kaiwa/kaiwa_home_screen.dart';
-import '../kanji/kanji_home_screen.dart';
-import '../kotoba/kotoba_home_screen.dart';
-import '../particle/particle_home_screen.dart';
-import 'widgets/coming_soon_content.dart';
+import '../../../core/navigation/app_navigator.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../data/models/module_info.dart';
+import '../../bunpou/bunpou_home_screen.dart';
+import '../../kaiwa/kaiwa_home_screen.dart';
+import '../../kanji/kanji_home_screen.dart';
+import '../../kotoba/kotoba_home_screen.dart';
+import '../../modules/widgets/coming_soon_content.dart';
+import '../../particle/particle_home_screen.dart';
 
-class ModulesScreen extends ConsumerWidget {
-  const ModulesScreen({super.key});
+/// The rest of the learning modules (beyond the Hiragana/Katakana/Ujian
+/// shortcuts already on the Home tab's header) — formerly the standalone
+/// "Belajar" tab's [ModulesScreen], folded into Home so the bottom nav
+/// only needs Home/Ujian/Profil. Not a [Scaffold]/[AppBar] — this is meant
+/// to be embedded inside Home's own scroll body.
+class ModulesSection extends StatelessWidget {
+  const ModulesSection({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(
-        title: const Text('Modul Belajar'),
-        automaticallyImplyLeading: false,
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(20),
-        children: [
-          const _SectionHeader('Tersedia'),
-          const SizedBox(height: 12),
-          _AvailableModuleCard(
-            emoji: 'あ',
-            backgroundColor: AppColors.hiraganaCardBg,
-            iconColor: AppColors.primaryCoral,
-            title: 'Belajar Hiragana',
-            subtitle: '46 karakter dasar',
-            onTap: () => AppNavigator.slideFromRight(
-              context,
-              const FlashcardScreen(type: KanaType.hiragana),
-            ),
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const _SectionHeader('Modul Lainnya'),
+        const SizedBox(height: 12),
+        const _LockedModuleCard(
+          emoji: '📷',
+          title: 'Cam Detector',
+          subtitle: 'Scan karakter Jepang lewat kamera',
+          reason: 'Sedang diperbaiki karena masih ada beberapa bug. '
+              'Modul ini akan diaktifkan kembali setelah perbaikan selesai.',
+        ),
+        const SizedBox(height: 12),
+        _AvailableModuleCard(
+          emoji: '📚',
+          backgroundColor: AppColors.katakanaCardBg,
+          iconColor: AppColors.secondaryBlue,
+          title: 'Kosakata',
+          subtitle: 'Belajar kotoba per kategori',
+          onTap: () => AppNavigator.slideFromRight(
+            context,
+            const KotobaHomeScreen(),
           ),
-          const SizedBox(height: 12),
-          _AvailableModuleCard(
-            emoji: 'ア',
-            backgroundColor: AppColors.katakanaCardBg,
-            iconColor: AppColors.secondaryBlue,
-            title: 'Belajar Katakana',
-            subtitle: '46 karakter dasar',
-            onTap: () => AppNavigator.slideFromRight(
-              context,
-              const FlashcardScreen(type: KanaType.katakana),
-            ),
+        ),
+        const SizedBox(height: 12),
+        _AvailableModuleCard(
+          emoji: '字',
+          backgroundColor: AppColors.tertiaryAmberCardBg,
+          iconColor: AppColors.tertiaryAmber,
+          title: 'Kanji',
+          subtitle: 'Belajar Kanji per level JLPT',
+          onTap: () => AppNavigator.slideFromRight(
+            context,
+            const KanjiHomeScreen(),
           ),
-          const SizedBox(height: 12),
-          const _LockedModuleCard(
-            emoji: '📷',
-            title: 'Cam Detector',
-            subtitle: 'Scan karakter Jepang lewat kamera',
-            reason: 'Sedang diperbaiki karena masih ada beberapa bug. '
-                'Modul ini akan diaktifkan kembali setelah perbaikan selesai.',
+        ),
+        const SizedBox(height: 12),
+        _AvailableModuleCard(
+          emoji: '文',
+          backgroundColor: AppColors.hiraganaCardBg,
+          iconColor: AppColors.primaryCoral,
+          title: 'Bunpou',
+          subtitle: 'Belajar pola tata bahasa per level JLPT',
+          onTap: () => AppNavigator.slideFromRight(
+            context,
+            const BunpouHomeScreen(),
           ),
-          const SizedBox(height: 12),
-          _AvailableModuleCard(
-            emoji: '📚',
-            backgroundColor: AppColors.katakanaCardBg,
-            iconColor: AppColors.secondaryBlue,
-            title: 'Kosakata',
-            subtitle: 'Belajar kotoba per kategori',
-            onTap: () => AppNavigator.slideFromRight(
-              context,
-              const KotobaHomeScreen(),
-            ),
+        ),
+        const SizedBox(height: 12),
+        // Premium gate temporarily removed for dev testing (2026-07-17) —
+        // see memory/project_monetization_roadmap.md. Restore
+        // _PremiumModuleCard + PaywallScreen branch before release.
+        _AvailableModuleCard(
+          emoji: 'を',
+          backgroundColor: AppColors.tertiaryAmberCardBg,
+          iconColor: AppColors.tertiaryAmber,
+          title: 'Partikel',
+          subtitle: 'Catatan fungsi partikel + mini-game latihan',
+          onTap: () => AppNavigator.slideFromRight(context, const ParticleHomeScreen()),
+        ),
+        const SizedBox(height: 12),
+        _AvailableModuleCard(
+          emoji: '💬',
+          backgroundColor: AppColors.hiraganaCardBg,
+          iconColor: AppColors.primaryCoral,
+          title: 'Kaiwa',
+          subtitle: 'Latihan percakapan interaktif',
+          onTap: () => AppNavigator.slideFromRight(context, const KaiwaHomeScreen()),
+        ),
+        const SizedBox(height: 28),
+        const _SectionHeader('Segera Hadir'),
+        const SizedBox(height: 12),
+        ...kComingSoonModules.map(
+          (module) => Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: _ComingSoonCard(module: module),
           ),
-          const SizedBox(height: 12),
-          _AvailableModuleCard(
-            emoji: '字',
-            backgroundColor: AppColors.tertiaryAmberCardBg,
-            iconColor: AppColors.tertiaryAmber,
-            title: 'Kanji',
-            subtitle: 'Belajar Kanji per level JLPT',
-            onTap: () => AppNavigator.slideFromRight(
-              context,
-              const KanjiHomeScreen(),
-            ),
-          ),
-          const SizedBox(height: 12),
-          _AvailableModuleCard(
-            emoji: '文',
-            backgroundColor: AppColors.hiraganaCardBg,
-            iconColor: AppColors.primaryCoral,
-            title: 'Bunpou',
-            subtitle: 'Belajar pola tata bahasa per level JLPT',
-            onTap: () => AppNavigator.slideFromRight(
-              context,
-              const BunpouHomeScreen(),
-            ),
-          ),
-          const SizedBox(height: 12),
-          // Premium gate temporarily removed for dev testing (2026-07-17) —
-          // see memory/project_monetization_roadmap.md. Restore
-          // _PremiumModuleCard + PaywallScreen branch before release.
-          _AvailableModuleCard(
-            emoji: 'を',
-            backgroundColor: AppColors.tertiaryAmberCardBg,
-            iconColor: AppColors.tertiaryAmber,
-            title: 'Partikel',
-            subtitle: 'Catatan fungsi partikel + mini-game latihan',
-            onTap: () => AppNavigator.slideFromRight(context, const ParticleHomeScreen()),
-          ),
-          const SizedBox(height: 12),
-          _AvailableModuleCard(
-            emoji: '💬',
-            backgroundColor: AppColors.hiraganaCardBg,
-            iconColor: AppColors.primaryCoral,
-            title: 'Kaiwa',
-            subtitle: 'Latihan percakapan interaktif',
-            onTap: () => AppNavigator.slideFromRight(context, const KaiwaHomeScreen()),
-          ),
-          const SizedBox(height: 28),
-          const _SectionHeader('Segera Hadir'),
-          const SizedBox(height: 12),
-          ...kComingSoonModules.map(
-            (module) => Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: _ComingSoonCard(module: module),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -334,7 +305,6 @@ class _ComingSoonCard extends StatelessWidget {
   const _ComingSoonCard({required this.module});
 
   static const _icons = {
-    'choukai': '🎧',
     'picture_learning': '🖼️',
     'video_learning': '🎬',
   };
