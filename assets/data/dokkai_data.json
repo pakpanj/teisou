@@ -1260,6 +1260,426 @@
     ]
   },
   {
+    "id": "dokkai_toshokan_open",
+    "title": "Pengumuman Perpustakaan Baru Dibuka",
+    "jlptLevel": "N4",
+    "passageJapanese": "来月、駅の近くに新しい図書館ができます。開館時間は朝九時から夜八時までです。子供のための絵本コーナーもあります。誰でも無料で利用することができます。ぜひ一度、来てみてください。",
+    "passageTranslation": "Bulan depan, perpustakaan baru akan dibuka dekat stasiun. Jam bukanya dari jam 9 pagi sampai jam 8 malam. Ada juga sudut buku bergambar untuk anak-anak. Siapa saja bisa menggunakannya secara gratis. Silakan datang sekali ke sana.",
+    "questions": [
+      {
+        "id": "dokkai_toshokan_open_q0",
+        "prompt": "新しい図書館はどこにできますか。",
+        "options": [
+          "駅の近く",
+          "学校の隣",
+          "公園の中",
+          "病院の前"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_toshokan_open_q1",
+        "prompt": "開館時間は何時までですか。",
+        "options": [
+          "夜八時",
+          "夜六時",
+          "夜十時",
+          "夕方五時"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_toshokan_open_q2",
+        "prompt": "利用するのにお金がかかりますか。",
+        "options": [
+          "いいえ、無料です",
+          "はい、少しかかります",
+          "はい、高いです",
+          "分かりません"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_kantan_reshipi",
+    "title": "Resep Sederhana",
+    "jlptLevel": "N4",
+    "passageJapanese": "簡単な卵焼きの作り方を紹介します。まず、卵を二つ割って、よく混ぜます。次に、フライパンに油を入れて温めます。卵を入れたら、弱火でゆっくり焼いてください。焦げないように気をつけましょう。",
+    "passageTranslation": "Saya perkenalkan cara membuat telur dadar sederhana. Pertama, pecahkan dua butir telur dan aduk rata. Selanjutnya, panaskan minyak di wajan. Setelah memasukkan telur, masak perlahan dengan api kecil. Hati-hati agar tidak gosong.",
+    "questions": [
+      {
+        "id": "dokkai_kantan_reshipi_q0",
+        "prompt": "卵をいくつ使いますか。",
+        "options": [
+          "二つ",
+          "一つ",
+          "三つ",
+          "四つ"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kantan_reshipi_q1",
+        "prompt": "フライパンに何を入れて温めますか。",
+        "options": [
+          "油",
+          "水",
+          "塩",
+          "砂糖"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kantan_reshipi_q2",
+        "prompt": "どんな火で焼きますか。",
+        "options": [
+          "弱火",
+          "強火",
+          "中火",
+          "火を使わない"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_shigoto_hajimete",
+    "title": "Pengalaman Hari Pertama Kerja",
+    "jlptLevel": "N4",
+    "passageJapanese": "今日は初めての出勤日でした。緊張して、朝早く起きてしまいました。会社に着いたら、同僚がやさしく声をかけてくれました。仕事はまだよく分かりませんが、少しずつ覚えていきたいと思います。",
+    "passageTranslation": "Hari ini adalah hari pertama saya masuk kerja. Karena gugup, saya bangun terlalu pagi. Setelah sampai di kantor, rekan kerja menyapa saya dengan ramah. Saya belum begitu paham pekerjaannya, tapi ingin belajar sedikit demi sedikit.",
+    "questions": [
+      {
+        "id": "dokkai_shigoto_hajimete_q0",
+        "prompt": "どうして朝早く起きてしまいましたか。",
+        "options": [
+          "緊張していたから",
+          "目覚まし時計が壊れていたから",
+          "用事があったから",
+          "眠れなかったから"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shigoto_hajimete_q1",
+        "prompt": "会社に着いたら、誰が声をかけてくれましたか。",
+        "options": [
+          "同僚",
+          "家族",
+          "先生",
+          "友達"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shigoto_hajimete_q2",
+        "prompt": "この人は仕事についてどう思っていますか。",
+        "options": [
+          "少しずつ覚えていきたい",
+          "もう全部分かる",
+          "すぐ辞めたい",
+          "とても簡単だ"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_densha_norikata",
+    "title": "Panduan Naik Kereta",
+    "jlptLevel": "N4",
+    "passageJapanese": "初めて日本の電車に乗る人のために説明します。まず、切符を買うか、ICカードを用意してください。ホームに入る時は、改札で切符を通します。電車を降りる駅を間違えないように、駅名をよく見てください。",
+    "passageTranslation": "Saya jelaskan untuk orang yang baru pertama kali naik kereta di Jepang. Pertama, silakan beli tiket atau siapkan kartu IC. Saat masuk peron, lewatkan tiket di gerbang tiket. Agar tidak salah turun di stasiun, tolong lihat baik-baik nama stasiunnya.",
+    "questions": [
+      {
+        "id": "dokkai_densha_norikata_q0",
+        "prompt": "電車に乗る前に何を用意しますか。",
+        "options": [
+          "切符かICカード",
+          "傘",
+          "お弁当",
+          "地図"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_densha_norikata_q1",
+        "prompt": "ホームに入る時、何をしますか。",
+        "options": [
+          "改札で切符を通す",
+          "お金を払う",
+          "荷物を預ける",
+          "走る"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_densha_norikata_q2",
+        "prompt": "何に気をつけますか。",
+        "options": [
+          "降りる駅を間違えないこと",
+          "電車の色",
+          "席の場所",
+          "時間"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_gengo_kouza",
+    "title": "Iklan Kursus Bahasa",
+    "jlptLevel": "N4",
+    "passageJapanese": "英会話を学びたい人を募集しています。初心者から上級者まで、レベルに合わせたクラスがあります。授業は週に二回、夜七時から始まります。先生は全員経験豊かなので、安心して学ぶことができます。",
+    "passageTranslation": "Kami sedang mencari orang yang ingin belajar percakapan bahasa Inggris. Ada kelas sesuai level, dari pemula sampai mahir. Kelasnya dua kali seminggu, dimulai jam 7 malam. Semua guru berpengalaman, jadi bisa belajar dengan tenang.",
+    "questions": [
+      {
+        "id": "dokkai_gengo_kouza_q0",
+        "prompt": "何のクラスですか。",
+        "options": [
+          "英会話",
+          "日本語",
+          "数学",
+          "料理"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_gengo_kouza_q1",
+        "prompt": "授業は週に何回ありますか。",
+        "options": [
+          "二回",
+          "一回",
+          "三回",
+          "毎日"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_gengo_kouza_q2",
+        "prompt": "先生についてどう書いてありますか。",
+        "options": [
+          "経験豊かだ",
+          "初めての先生だ",
+          "厳しい",
+          "若い"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_yoyaku_kakunin",
+    "title": "Email Konfirmasi Reservasi",
+    "jlptLevel": "N4",
+    "passageJapanese": "この度はご予約いただき、ありがとうございます。ご予約日は来週の金曜日、午後七時からです。人数は四名様で承っております。もし変更やキャンセルがある場合は、前日までにご連絡ください。",
+    "passageTranslation": "Terima kasih atas reservasi Anda kali ini. Tanggal reservasi Anda adalah hari Jumat depan, mulai jam 7 malam. Kami menerima untuk 4 orang. Jika ada perubahan atau pembatalan, silakan hubungi kami sampai sehari sebelumnya.",
+    "questions": [
+      {
+        "id": "dokkai_yoyaku_kakunin_q0",
+        "prompt": "予約はいつですか。",
+        "options": [
+          "来週の金曜日",
+          "今週の月曜日",
+          "明日",
+          "来月"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_yoyaku_kakunin_q1",
+        "prompt": "何名で予約しましたか。",
+        "options": [
+          "四名",
+          "二名",
+          "三名",
+          "五名"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_yoyaku_kakunin_q2",
+        "prompt": "変更がある場合、いつまでに連絡しますか。",
+        "options": [
+          "前日まで",
+          "当日でもいい",
+          "一週間前まで",
+          "連絡しなくていい"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_shumi_burogu",
+    "title": "Blog tentang Hobi Baru",
+    "jlptLevel": "N4",
+    "passageJapanese": "最近、写真を撮ることが好きになりました。休みの日に、いろいろな場所へ行って写真を撮っています。まだ上手ではありませんが、少しずつカメラの使い方が分かってきました。これからも続けていきたいです。",
+    "passageTranslation": "Belakangan ini, saya jadi suka memotret. Di hari libur, saya pergi ke berbagai tempat untuk memotret. Belum begitu mahir, tapi sedikit demi sedikit mulai paham cara menggunakan kamera. Saya ingin terus melanjutkannya ke depannya.",
+    "questions": [
+      {
+        "id": "dokkai_shumi_burogu_q0",
+        "prompt": "この人は最近何が好きになりましたか。",
+        "options": [
+          "写真を撮ること",
+          "料理をすること",
+          "本を読むこと",
+          "歌うこと"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shumi_burogu_q1",
+        "prompt": "いつ写真を撮りに行きますか。",
+        "options": [
+          "休みの日",
+          "平日",
+          "毎朝",
+          "仕事の後"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shumi_burogu_q2",
+        "prompt": "この人はカメラの使い方についてどう言っていますか。",
+        "options": [
+          "少しずつ分かってきた",
+          "全然分からない",
+          "もう完璧だ",
+          "難しすぎる"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_douro_kouji",
+    "title": "Pengumuman Perbaikan Jalan",
+    "jlptLevel": "N4",
+    "passageJapanese": "来週から、駅前の道路で工事を行います。工事の間、道が狭くなりますので、車を運転する方はお気をつけください。歩く人のための道は別に用意されています。ご不便をおかけしますが、よろしくお願いします。",
+    "passageTranslation": "Mulai minggu depan, akan ada perbaikan di jalan depan stasiun. Selama perbaikan, jalan akan menyempit, jadi bagi yang mengendarai mobil harap berhati-hati. Jalan untuk pejalan kaki disiapkan secara terpisah. Mohon maaf atas ketidaknyamanannya, mohon bantuannya.",
+    "questions": [
+      {
+        "id": "dokkai_douro_kouji_q0",
+        "prompt": "どこで工事が行われますか。",
+        "options": [
+          "駅前の道路",
+          "学校の中",
+          "公園",
+          "病院"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_douro_kouji_q1",
+        "prompt": "工事の間、道はどうなりますか。",
+        "options": [
+          "狭くなります",
+          "広くなります",
+          "閉まります",
+          "きれいになります"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_douro_kouji_q2",
+        "prompt": "歩く人のためにどうなっていますか。",
+        "options": [
+          "別の道が用意されている",
+          "道がない",
+          "工事に参加する",
+          "何もない"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_ryuugaku_tegami",
+    "title": "Surat dari Anak yang Kuliah di Luar Negeri",
+    "jlptLevel": "N4",
+    "passageJapanese": "お父さん、お母さん、元気ですか。こちらの生活にもだいぶ慣れてきました。最初は言葉が分からなくて大変でしたが、友達がたくさんできて、毎日楽しいです。今度の休みには、日本に帰るつもりです。会えるのを楽しみにしています。",
+    "passageTranslation": "Ayah, Ibu, apa kabar? Saya sudah lumayan terbiasa dengan kehidupan di sini. Awalnya sulit karena tidak mengerti bahasa, tapi sekarang punya banyak teman, dan setiap hari menyenangkan. Liburan berikutnya, saya berencana pulang ke Jepang. Saya menantikan bisa bertemu.",
+    "questions": [
+      {
+        "id": "dokkai_ryuugaku_tegami_q0",
+        "prompt": "最初、何が大変でしたか。",
+        "options": [
+          "言葉が分からなかったこと",
+          "お金がなかったこと",
+          "病気になったこと",
+          "一人だったこと"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_ryuugaku_tegami_q1",
+        "prompt": "今の生活はどうですか。",
+        "options": [
+          "毎日楽しい",
+          "とても寂しい",
+          "大変だ",
+          "つまらない"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_ryuugaku_tegami_q2",
+        "prompt": "今度の休み、この人は何をするつもりですか。",
+        "options": [
+          "日本に帰る",
+          "旅行に行く",
+          "働く",
+          "学校を辞める"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_undou_kouka",
+    "title": "Artikel tentang Manfaat Olahraga",
+    "jlptLevel": "N4",
+    "passageJapanese": "毎日少し運動をすることで、体だけでなく気持ちも元気になると言われています。忙しい人でも、朝に軽く体を動かすだけで、一日を気持ちよく始めることができるそうです。無理をせず、自分に合った運動を見つけることが大切です。",
+    "passageTranslation": "Dikatakan bahwa dengan berolahraga sedikit setiap hari, bukan hanya tubuh, tapi perasaan juga menjadi lebih semangat. Bahkan orang yang sibuk pun, katanya cukup menggerakkan tubuh ringan di pagi hari, bisa memulai hari dengan perasaan yang baik. Penting untuk menemukan olahraga yang cocok tanpa memaksakan diri.",
+    "questions": [
+      {
+        "id": "dokkai_undou_kouka_q0",
+        "prompt": "毎日運動をすると何が元気になりますか。",
+        "options": [
+          "体と気持ち",
+          "体だけ",
+          "お金",
+          "仕事"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_undou_kouka_q1",
+        "prompt": "忙しい人はいつ運動すればいいですか。",
+        "options": [
+          "朝、軽く",
+          "夜遅く",
+          "週末だけ",
+          "運動しなくていい"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_undou_kouka_q2",
+        "prompt": "何が大切だと書いてありますか。",
+        "options": [
+          "自分に合った運動を見つけること",
+          "毎日長時間運動すること",
+          "一番難しい運動をすること",
+          "友達と同じ運動をすること"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
     "id": "dokkai_shinbun_kiji_kankyou",
     "title": "Artikel Koran tentang Lingkungan",
     "jlptLevel": "N3",
@@ -1674,6 +2094,426 @@
           "言葉が完全に必要",
           "一人でいる方がいい",
           "留学は難しい"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_shokuseikatsu_kiji",
+    "title": "Artikel tentang Kebiasaan Makan Sehat",
+    "jlptLevel": "N3",
+    "passageJapanese": "健康的な食生活を送るためには、バランスの良い食事を心がけることが重要である。特に、野菜や果物を積極的に取り入れることで、体に必要な栄養を効率よく摂取することができる。また、食べる時間帯にも気をつけるべきだと言われている。",
+    "passageTranslation": "Untuk menjalani pola makan yang sehat, penting untuk memperhatikan makanan yang seimbang. Terutama, dengan aktif mengonsumsi sayur dan buah, kita bisa mendapatkan nutrisi yang dibutuhkan tubuh secara efisien. Selain itu, dikatakan juga perlu memperhatikan waktu makan.",
+    "questions": [
+      {
+        "id": "dokkai_shokuseikatsu_kiji_q0",
+        "prompt": "健康的な食生活のために何が重要ですか。",
+        "options": [
+          "バランスの良い食事",
+          "高い食べ物",
+          "少ない食事",
+          "一種類だけの食事"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shokuseikatsu_kiji_q1",
+        "prompt": "何を積極的に取り入れるといいですか。",
+        "options": [
+          "野菜や果物",
+          "お菓子",
+          "肉だけ",
+          "揚げ物"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shokuseikatsu_kiji_q2",
+        "prompt": "他に何に気をつけるべきですか。",
+        "options": [
+          "食べる時間帯",
+          "食べる場所",
+          "食器の色",
+          "一緒に食べる人"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_kisetsu_henka_essei",
+    "title": "Esai tentang Perubahan Musim",
+    "jlptLevel": "N3",
+    "passageJapanese": "季節が変わるたびに、自然の色や匂いが少しずつ変化していくことに気づく。特に、春から夏へ移り変わる時期は、新しい命の力強さを感じさせてくれる。忙しい日々の中でも、こうした季節の変化に目を向ける余裕を持ちたいと思う。",
+    "passageTranslation": "Setiap kali musim berganti, saya menyadari warna dan aroma alam berubah sedikit demi sedikit. Terutama, masa peralihan dari musim semi ke musim panas membuat saya merasakan kekuatan kehidupan baru. Bahkan di tengah hari-hari yang sibuk, saya ingin memiliki kelonggaran untuk memperhatikan perubahan musim seperti ini.",
+    "questions": [
+      {
+        "id": "dokkai_kisetsu_henka_essei_q0",
+        "prompt": "季節が変わるたびに何に気づきますか。",
+        "options": [
+          "自然の色や匂いの変化",
+          "人の性格",
+          "お金の価値",
+          "時間の速さ"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kisetsu_henka_essei_q1",
+        "prompt": "どの時期が特に力強さを感じさせますか。",
+        "options": [
+          "春から夏へ移り変わる時期",
+          "夏から秋",
+          "秋から冬",
+          "冬から春"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kisetsu_henka_essei_q2",
+        "prompt": "筆者は何を持ちたいと思っていますか。",
+        "options": [
+          "季節の変化に目を向ける余裕",
+          "もっとお金",
+          "もっと友達",
+          "もっと休み"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_bijinesu_manaa",
+    "title": "Panduan Etika Bisnis di Jepang",
+    "jlptLevel": "N3",
+    "passageJapanese": "日本のビジネスの場では、名刺の交換の仕方にもマナーがある。名刺は両手で渡し、相手の名刺も両手で受け取るのが一般的である。また、受け取った名刺をすぐにしまうのではなく、しばらく机の上に置いておくことも礼儀とされている。",
+    "passageTranslation": "Dalam dunia bisnis Jepang, ada etika dalam cara bertukar kartu nama. Umumnya, kartu nama diberikan dengan dua tangan, dan kartu nama lawan bicara juga diterima dengan dua tangan. Selain itu, tidak langsung menyimpan kartu nama yang diterima, melainkan meletakkannya di atas meja untuk sementara waktu juga dianggap sebagai sopan santun.",
+    "questions": [
+      {
+        "id": "dokkai_bijinesu_manaa_q0",
+        "prompt": "名刺はどうやって渡しますか。",
+        "options": [
+          "両手で",
+          "片手で",
+          "投げて",
+          "口で"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_bijinesu_manaa_q1",
+        "prompt": "受け取った名刺はすぐにどうしますか。",
+        "options": [
+          "しばらく机の上に置く",
+          "すぐにしまう",
+          "捨てる",
+          "相手に返す"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_bijinesu_manaa_q2",
+        "prompt": "この文章のテーマは何ですか。",
+        "options": [
+          "名刺交換のマナー",
+          "服装のマナー",
+          "食事のマナー",
+          "電話のマナー"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_toshi_hatten",
+    "title": "Artikel tentang Perkembangan Kota",
+    "jlptLevel": "N3",
+    "passageJapanese": "この十年間で、この町は大きく変わった。以前は田んぼが広がっていた場所に、今では高いビルが立ち並んでいる。便利になった一方で、昔ながらの静かな風景が失われたことを寂しく思う人も少なくない。",
+    "passageTranslation": "Dalam sepuluh tahun terakhir, kota ini berubah besar-besaran. Tempat yang dulunya membentang sawah, kini berjejer gedung-gedung tinggi. Meskipun jadi lebih praktis, tidak sedikit orang yang merasa sedih karena pemandangan tenang seperti dulu hilang.",
+    "questions": [
+      {
+        "id": "dokkai_toshi_hatten_q0",
+        "prompt": "この十年間で町はどう変わりましたか。",
+        "options": [
+          "大きく変わった",
+          "何も変わらなかった",
+          "小さくなった",
+          "人が減った"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_toshi_hatten_q1",
+        "prompt": "以前、その場所には何が広がっていましたか。",
+        "options": [
+          "田んぼ",
+          "海",
+          "山",
+          "森"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_toshi_hatten_q2",
+        "prompt": "便利になった一方で、何を寂しく思う人がいますか。",
+        "options": [
+          "静かな風景が失われたこと",
+          "物価が上がったこと",
+          "人が増えたこと",
+          "店が減ったこと"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_borantia_taiken",
+    "title": "Pengalaman Kegiatan Sukarelawan",
+    "jlptLevel": "N3",
+    "passageJapanese": "先週、地域の清掃ボランティアに参加した。初めは面倒だと思っていたが、実際にやってみると、地域の人々と交流する良い機会になった。小さな活動でも、続けることで町がきれいになっていくのを実感し、やりがいを感じた。",
+    "passageTranslation": "Minggu lalu saya mengikuti kegiatan sukarelawan membersihkan lingkungan. Awalnya saya pikir merepotkan, tapi setelah benar-benar mencobanya, itu menjadi kesempatan baik untuk berinteraksi dengan warga sekitar. Meskipun kegiatan kecil, saya merasakan kepuasan karena menyadari kota menjadi bersih dengan melanjutkannya.",
+    "questions": [
+      {
+        "id": "dokkai_borantia_taiken_q0",
+        "prompt": "先週、何に参加しましたか。",
+        "options": [
+          "地域の清掃ボランティア",
+          "スポーツ大会",
+          "料理教室",
+          "音楽会"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_borantia_taiken_q1",
+        "prompt": "初め、この人はどう思っていましたか。",
+        "options": [
+          "面倒だと思っていた",
+          "とても楽しみだった",
+          "興味がなかった",
+          "怖かった"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_borantia_taiken_q2",
+        "prompt": "実際にやってみて、何を実感しましたか。",
+        "options": [
+          "町がきれいになっていくこと",
+          "お金がもらえること",
+          "有名になること",
+          "疲れるだけ"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_media_hikaku",
+    "title": "Perbandingan Media Tradisional dan Digital",
+    "jlptLevel": "N3",
+    "passageJapanese": "新聞やテレビといった従来のメディアに加えて、インターネットを通じた情報発信が急速に広まっている。若い世代を中心に、ニュースをスマートフォンで読む人が増えている一方、高齢者の間では、依然として新聞やテレビが主な情報源となっている。",
+    "passageTranslation": "Selain media konvensional seperti koran dan televisi, penyebaran informasi melalui internet berkembang pesat. Di kalangan generasi muda, orang yang membaca berita lewat smartphone semakin bertambah, sementara di kalangan lansia, koran dan televisi tetap menjadi sumber informasi utama.",
+    "questions": [
+      {
+        "id": "dokkai_media_hikaku_q0",
+        "prompt": "何が急速に広まっていますか。",
+        "options": [
+          "インターネットを通じた情報発信",
+          "新聞の読者",
+          "テレビの視聴時間",
+          "手紙の数"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_media_hikaku_q1",
+        "prompt": "若い世代はどうやってニュースを読むことが多いですか。",
+        "options": [
+          "スマートフォン",
+          "新聞",
+          "ラジオ",
+          "雑誌"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_media_hikaku_q2",
+        "prompt": "高齢者の主な情報源は何ですか。",
+        "options": [
+          "新聞やテレビ",
+          "インターネット",
+          "スマートフォン",
+          "SNS"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_yuujou_essei",
+    "title": "Esai tentang Persahabatan",
+    "jlptLevel": "N3",
+    "passageJapanese": "長い間連絡を取っていなかった友人から、久しぶりに電話がかかってきた。時間が経っていても、話し始めるとすぐに昔と同じような雰囲気に戻れることに驚いた。本当の友情とは、時間や距離に関係なく続くものなのかもしれないと感じた。",
+    "passageTranslation": "Teman yang sudah lama tidak dihubungi tiba-tiba menelepon setelah sekian lama. Meskipun waktu telah berlalu, saya kaget karena begitu mulai berbicara, langsung bisa kembali ke suasana yang sama seperti dulu. Saya merasa bahwa persahabatan sejati mungkin adalah sesuatu yang berlanjut tanpa peduli waktu atau jarak.",
+    "questions": [
+      {
+        "id": "dokkai_yuujou_essei_q0",
+        "prompt": "誰から電話がかかってきましたか。",
+        "options": [
+          "長い間連絡を取っていなかった友人",
+          "家族",
+          "会社の同僚",
+          "知らない人"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_yuujou_essei_q1",
+        "prompt": "話し始めて、この人はどう感じましたか。",
+        "options": [
+          "すぐに昔と同じ雰囲気に戻れた",
+          "全然話が合わなかった",
+          "気まずかった",
+          "何も感じなかった"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_yuujou_essei_q2",
+        "prompt": "筆者は本当の友情について、どう感じましたか。",
+        "options": [
+          "時間や距離に関係なく続くもの",
+          "すぐに終わるもの",
+          "お金が必要なもの",
+          "難しいもの"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_kinkyuu_taiou",
+    "title": "Panduan Prosedur Darurat",
+    "jlptLevel": "N3",
+    "passageJapanese": "地震が起きた時は、まず自分の身の安全を確保することが最優先である。丈夫な机の下に隠れるなどして、落下物から身を守ってほしい。揺れが収まったら、火の元を確認し、慌てずに避難場所へ移動すること。",
+    "passageTranslation": "Saat gempa bumi terjadi, prioritas utama adalah memastikan keselamatan diri sendiri terlebih dahulu. Tolong lindungi diri dari benda jatuh, misalnya dengan bersembunyi di bawah meja yang kokoh. Setelah guncangan mereda, periksa sumber api dan pindah ke tempat evakuasi tanpa panik.",
+    "questions": [
+      {
+        "id": "dokkai_kinkyuu_taiou_q0",
+        "prompt": "地震が起きた時、まず何を確保しますか。",
+        "options": [
+          "自分の身の安全",
+          "お金",
+          "食べ物",
+          "携帯電話"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kinkyuu_taiou_q1",
+        "prompt": "落下物から身を守るために何をしますか。",
+        "options": [
+          "丈夫な机の下に隠れる",
+          "外に走って出る",
+          "窓を開ける",
+          "大声を出す"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kinkyuu_taiou_q2",
+        "prompt": "揺れが収まったら何を確認しますか。",
+        "options": [
+          "火の元",
+          "テレビ",
+          "電話",
+          "冷蔵庫"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_kankou_toreando",
+    "title": "Artikel tentang Tren Pariwisata",
+    "jlptLevel": "N3",
+    "passageJapanese": "近年、有名な観光地だけでなく、地元の人しか知らないような場所を訪れる旅行者が増えている。SNSの普及により、こうした「隠れた名所」の情報が簡単に共有されるようになったことが背景にあるようだ。",
+    "passageTranslation": "Belakangan ini, bukan hanya tempat wisata terkenal, semakin banyak wisatawan yang mengunjungi tempat yang hanya diketahui warga lokal. Latar belakangnya tampaknya karena dengan menyebarnya media sosial, informasi tentang 'tempat tersembunyi' seperti ini menjadi mudah dibagikan.",
+    "questions": [
+      {
+        "id": "dokkai_kankou_toreando_q0",
+        "prompt": "最近、旅行者はどんな場所を訪れることが増えていますか。",
+        "options": [
+          "地元の人しか知らない場所",
+          "有名な観光地だけ",
+          "外国だけ",
+          "テーマパークだけ"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kankou_toreando_q1",
+        "prompt": "この背景には何がありますか。",
+        "options": [
+          "SNSの普及",
+          "テレビ番組",
+          "政府の宣伝",
+          "交通機関の発達"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kankou_toreando_q2",
+        "prompt": "このような場所は何と呼ばれていますか。",
+        "options": [
+          "隠れた名所",
+          "有名スポット",
+          "定番の観光地",
+          "危険な場所"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_shippai_kokufuku",
+    "title": "Cerita tentang Mengatasi Kegagalan",
+    "jlptLevel": "N3",
+    "passageJapanese": "大きなプロジェクトで失敗した時、しばらく立ち直れないほど落ち込んだ。しかし、上司が「失敗は次への準備だ」と声をかけてくれたことで、少しずつ前向きになれた。あの経験があったからこそ、今の自分があると思っている。",
+    "passageTranslation": "Saat gagal dalam proyek besar, saya terpuruk sampai hampir tidak bisa bangkit untuk sementara waktu. Namun, karena atasan menyapa saya dengan berkata 'kegagalan adalah persiapan untuk selanjutnya,' saya bisa berpikir positif sedikit demi sedikit. Saya berpikir justru karena pengalaman itulah, ada diri saya yang sekarang.",
+    "questions": [
+      {
+        "id": "dokkai_shippai_kokufuku_q0",
+        "prompt": "何が起きた時、落ち込みましたか。",
+        "options": [
+          "大きなプロジェクトで失敗した時",
+          "病気になった時",
+          "遅刻した時",
+          "お金をなくした時"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shippai_kokufuku_q1",
+        "prompt": "誰が声をかけてくれましたか。",
+        "options": [
+          "上司",
+          "家族",
+          "友達",
+          "先生"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shippai_kokufuku_q2",
+        "prompt": "上司は何と言いましたか。",
+        "options": [
+          "失敗は次への準備だ",
+          "失敗は絶対ダメだ",
+          "もう諦めろ",
+          "気にしなくていい"
         ],
         "correctIndex": 0
       }
@@ -2100,6 +2940,426 @@
     ]
   },
   {
+    "id": "dokkai_shijou_chousa",
+    "title": "Laporan Riset Pasar",
+    "jlptLevel": "N2",
+    "passageJapanese": "今回の市場調査において、二十代から三十代の消費者は、価格よりも商品の背景にあるストーリーを重視する傾向が明らかになった。この結果を踏まえ、単に安さを訴求するのではなく、ブランドの価値観を伝える戦略が求められている。",
+    "passageTranslation": "Dalam riset pasar kali ini, terungkap bahwa konsumen usia 20-an hingga 30-an cenderung mementingkan cerita di balik produk dibandingkan harga. Berdasarkan hasil ini, dituntut strategi yang menyampaikan nilai brand, bukan sekadar menonjolkan kemurahan harga.",
+    "questions": [
+      {
+        "id": "dokkai_shijou_chousa_q0",
+        "prompt": "どの世代の消費者について調査しましたか。",
+        "options": [
+          "二十代から三十代",
+          "十代",
+          "四十代から五十代",
+          "全世代"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shijou_chousa_q1",
+        "prompt": "消費者は何を重視する傾向がありますか。",
+        "options": [
+          "商品の背景にあるストーリー",
+          "価格の安さ",
+          "デザインだけ",
+          "有名なブランド名"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shijou_chousa_q2",
+        "prompt": "この結果から、どんな戦略が求められていますか。",
+        "options": [
+          "ブランドの価値観を伝える戦略",
+          "とにかく安くする戦略",
+          "広告を増やす戦略",
+          "店舗を減らす戦略"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_kodomo_kyouiku_ronsetsu",
+    "title": "Editorial tentang Pendidikan Anak",
+    "jlptLevel": "N2",
+    "passageJapanese": "子供の自主性を育てるためには、失敗を恐れずに挑戦できる環境を用意することが欠かせない。親がすべてを先回りして手助けするのではなく、時には見守る姿勢も必要だろう。過保護は、かえって子供の成長を妨げる可能性がある。",
+    "passageTranslation": "Untuk menumbuhkan kemandirian anak, penting untuk menyiapkan lingkungan yang memungkinkan mereka mencoba tanpa takut gagal. Orang tua tidak selalu membantu terlebih dahulu untuk semuanya, tetapi terkadang sikap mengawasi dari jauh juga diperlukan. Terlalu melindungi justru bisa menghambat pertumbuhan anak.",
+    "questions": [
+      {
+        "id": "dokkai_kodomo_kyouiku_ronsetsu_q0",
+        "prompt": "子供の自主性を育てるために何が欠かせませんか。",
+        "options": [
+          "失敗を恐れずに挑戦できる環境",
+          "高価なおもちゃ",
+          "たくさんの宿題",
+          "厳しいルール"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kodomo_kyouiku_ronsetsu_q1",
+        "prompt": "親にはどんな姿勢も必要だと言っていますか。",
+        "options": [
+          "見守る姿勢",
+          "常に手助けする姿勢",
+          "無関心な姿勢",
+          "厳しく叱る姿勢"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kodomo_kyouiku_ronsetsu_q2",
+        "prompt": "過保護はどんな可能性がありますか。",
+        "options": [
+          "子供の成長を妨げること",
+          "子供を賢くすること",
+          "子供を幸せにすること",
+          "何も変わらないこと"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_kankyou_gijutsu",
+    "title": "Artikel tentang Inovasi Teknologi Ramah Lingkungan",
+    "jlptLevel": "N2",
+    "passageJapanese": "太陽光発電の技術は年々進歩しており、以前に比べて発電効率が大幅に向上した。それに伴い、導入コストも下がってきている。今後、こうした再生可能エネルギー技術の普及が、環境問題の解決に大きく貢献することが期待されている。",
+    "passageTranslation": "Teknologi pembangkit listrik tenaga surya berkembang setiap tahun, efisiensi pembangkitannya meningkat pesat dibanding sebelumnya. Seiring dengan itu, biaya pemasangan juga mulai turun. Ke depannya, diharapkan penyebaran teknologi energi terbarukan seperti ini berkontribusi besar dalam menyelesaikan masalah lingkungan.",
+    "questions": [
+      {
+        "id": "dokkai_kankyou_gijutsu_q0",
+        "prompt": "太陽光発電の技術はどうなっていますか。",
+        "options": [
+          "年々進歩している",
+          "進歩が止まった",
+          "使われなくなった",
+          "昔と変わらない"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kankyou_gijutsu_q1",
+        "prompt": "発電効率が上がると、コストはどうなりましたか。",
+        "options": [
+          "下がってきている",
+          "上がっている",
+          "変わらない",
+          "分からない"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kankyou_gijutsu_q2",
+        "prompt": "何が環境問題の解決に貢献すると期待されていますか。",
+        "options": [
+          "再生可能エネルギー技術の普及",
+          "石油の使用増加",
+          "人口の減少",
+          "都市の拡大"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_waaku_raifu_baransu",
+    "title": "Esai tentang Keseimbangan Kerja dan Kehidupan",
+    "jlptLevel": "N2",
+    "passageJapanese": "仕事に情熱を注ぐことは大切だが、それによってプライベートの時間が犠牲になってしまっては本末転倒である。効率よく働き、限られた時間の中で成果を出す力こそが、これからの時代に求められる能力ではないだろうか。",
+    "passageTranslation": "Mencurahkan semangat pada pekerjaan itu penting, tetapi jika waktu pribadi menjadi korban karena itu, itu adalah kebalikan dari yang seharusnya. Bukankah kemampuan untuk bekerja secara efisien dan menghasilkan hasil dalam waktu yang terbatas adalah kemampuan yang dibutuhkan di era mendatang?",
+    "questions": [
+      {
+        "id": "dokkai_waaku_raifu_baransu_q0",
+        "prompt": "何が大切だと述べられていますか。",
+        "options": [
+          "仕事に情熱を注ぐこと",
+          "プライベートを完全に犠牲にすること",
+          "仕事を辞めること",
+          "お金を稼がないこと"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_waaku_raifu_baransu_q1",
+        "prompt": "プライベートの時間が犠牲になることを筆者はどう表現していますか。",
+        "options": [
+          "本末転倒",
+          "当然のこと",
+          "理想的なこと",
+          "簡単なこと"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_waaku_raifu_baransu_q2",
+        "prompt": "これからの時代に求められる能力とは何ですか。",
+        "options": [
+          "限られた時間の中で成果を出す力",
+          "長時間働く力",
+          "お金を稼ぐ力だけ",
+          "何もしない力"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_shouhisha_toreando",
+    "title": "Analisis Tren Konsumen",
+    "jlptLevel": "N2",
+    "passageJapanese": "近年、モノを所有することよりも、体験を重視する消費者が増えている。旅行やイベントへの支出が伸びている一方、物品の購入は伸び悩んでいるというデータもある。この傾向は、特に若い世代において顕著に見られる。",
+    "passageTranslation": "Belakangan ini, semakin banyak konsumen yang lebih mementingkan pengalaman daripada memiliki barang. Ada data yang menunjukkan bahwa pengeluaran untuk perjalanan dan acara meningkat, sementara pembelian barang cenderung stagnan. Tren ini terlihat sangat menonjol terutama di kalangan generasi muda.",
+    "questions": [
+      {
+        "id": "dokkai_shouhisha_toreando_q0",
+        "prompt": "最近、消費者は何を重視するようになっていますか。",
+        "options": [
+          "体験",
+          "モノの所有",
+          "値段の安さ",
+          "ブランド名"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shouhisha_toreando_q1",
+        "prompt": "何への支出が伸びていますか。",
+        "options": [
+          "旅行やイベント",
+          "家具",
+          "電化製品",
+          "服だけ"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shouhisha_toreando_q2",
+        "prompt": "この傾向はどの世代に顕著ですか。",
+        "options": [
+          "若い世代",
+          "高齢者",
+          "全世代同じ",
+          "子供だけ"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_bunka_gaikou",
+    "title": "Artikel tentang Diplomasi Budaya",
+    "jlptLevel": "N2",
+    "passageJapanese": "文化交流は、国と国との関係を深める上で重要な役割を果たしている。政治的な対立があったとしても、映画や音楽、料理といった文化を通じた交流は、人々の心の距離を縮める力を持っているといえるだろう。",
+    "passageTranslation": "Pertukaran budaya memainkan peran penting dalam memperdalam hubungan antarnegara. Meskipun ada konflik politik, bisa dikatakan bahwa pertukaran melalui budaya seperti film, musik, dan masakan memiliki kekuatan untuk mempersempit jarak hati antarmanusia.",
+    "questions": [
+      {
+        "id": "dokkai_bunka_gaikou_q0",
+        "prompt": "文化交流はどんな役割を果たしていますか。",
+        "options": [
+          "国と国との関係を深める役割",
+          "経済を発展させる役割",
+          "戦争を起こす役割",
+          "何の役割もない"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_bunka_gaikou_q1",
+        "prompt": "文化交流の例として何が挙げられていますか。",
+        "options": [
+          "映画や音楽、料理",
+          "政治の会議",
+          "軍事訓練",
+          "経済制裁"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_bunka_gaikou_q2",
+        "prompt": "文化を通じた交流はどんな力を持っていますか。",
+        "options": [
+          "人々の心の距離を縮める力",
+          "対立を深める力",
+          "何も変えない力",
+          "お金を作る力"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_kazoku_isan",
+    "title": "Esai tentang Warisan Keluarga",
+    "jlptLevel": "N2",
+    "passageJapanese": "祖父が遺してくれた古い時計を、今も大切に使っている。動くたびに、祖父と過ごした時間が思い出される。物としての価値はそれほど高くないかもしれないが、私にとっては何にも代えがたい宝物である。",
+    "passageTranslation": "Jam tua yang ditinggalkan kakek, masih saya gunakan dengan hati-hati sampai sekarang. Setiap kali berjalan, saya teringat waktu yang saya habiskan bersama kakek. Sebagai barang, nilainya mungkin tidak begitu tinggi, tetapi bagi saya, itu adalah harta yang tak tergantikan oleh apa pun.",
+    "questions": [
+      {
+        "id": "dokkai_kazoku_isan_q0",
+        "prompt": "祖父は何を遺してくれましたか。",
+        "options": [
+          "古い時計",
+          "お金",
+          "家",
+          "本"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kazoku_isan_q1",
+        "prompt": "時計が動くたびに、何が思い出されますか。",
+        "options": [
+          "祖父と過ごした時間",
+          "学校生活",
+          "旅行の思い出",
+          "仕事のこと"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_kazoku_isan_q2",
+        "prompt": "筆者にとって、この時計はどんな存在ですか。",
+        "options": [
+          "何にも代えがたい宝物",
+          "ただの古い物",
+          "邪魔な物",
+          "売りたい物"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_jinkou_henka_houkoku",
+    "title": "Laporan tentang Perubahan Demografi",
+    "jlptLevel": "N2",
+    "passageJapanese": "少子化が進む中、地方都市では人口減少が特に深刻な問題となっている。若者の都市部への流出も一因とされており、地域経済の維持が困難になりつつある自治体も少なくない。抜本的な対策が急がれている。",
+    "passageTranslation": "Di tengah penurunan angka kelahiran, penurunan populasi menjadi masalah yang sangat serius terutama di kota-kota daerah. Perpindahan anak muda ke wilayah perkotaan juga dianggap sebagai salah satu penyebabnya, dan tidak sedikit pemerintah daerah yang mulai kesulitan mempertahankan ekonomi wilayahnya. Langkah-langkah fundamental sangat mendesak diperlukan.",
+    "questions": [
+      {
+        "id": "dokkai_jinkou_henka_houkoku_q0",
+        "prompt": "地方都市で特に深刻な問題は何ですか。",
+        "options": [
+          "人口減少",
+          "交通渋滞",
+          "環境汚染",
+          "物価上昇"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_jinkou_henka_houkoku_q1",
+        "prompt": "一因とされているのは何ですか。",
+        "options": [
+          "若者の都市部への流出",
+          "高齢者の増加",
+          "出生率の上昇",
+          "外国人の増加"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_jinkou_henka_houkoku_q2",
+        "prompt": "何が急がれていますか。",
+        "options": [
+          "抜本的な対策",
+          "都市部の開発",
+          "若者の教育",
+          "観光の促進"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_gurobaru_rinri",
+    "title": "Artikel tentang Etika Bisnis Global",
+    "jlptLevel": "N2",
+    "passageJapanese": "グローバル企業には、利益の追求だけでなく、社会的責任を果たすことも強く求められるようになった。労働環境や環境保護への配慮が不十分な企業は、消費者からの信頼を失うリスクを負うことになる。",
+    "passageTranslation": "Perusahaan global kini dituntut kuat bukan hanya mengejar keuntungan, tapi juga memenuhi tanggung jawab sosial. Perusahaan yang kurang memperhatikan lingkungan kerja dan perlindungan lingkungan hidup, akan menanggung risiko kehilangan kepercayaan dari konsumen.",
+    "questions": [
+      {
+        "id": "dokkai_gurobaru_rinri_q0",
+        "prompt": "グローバル企業に何が求められるようになりましたか。",
+        "options": [
+          "社会的責任を果たすこと",
+          "利益だけを追求すること",
+          "従業員を減らすこと",
+          "広告を増やすこと"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_gurobaru_rinri_q1",
+        "prompt": "何への配慮が不十分だとリスクがありますか。",
+        "options": [
+          "労働環境や環境保護",
+          "商品のデザイン",
+          "価格設定",
+          "店舗の場所"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_gurobaru_rinri_q2",
+        "prompt": "そのリスクとは何ですか。",
+        "options": [
+          "消費者からの信頼を失うこと",
+          "利益が増えること",
+          "従業員が増えること",
+          "株価が上がること"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_seikou_teigi",
+    "title": "Esai tentang Definisi Kesuksesan",
+    "jlptLevel": "N2",
+    "passageJapanese": "若い頃は、成功とは高い地位やお金を得ることだと信じていた。しかし、年を重ねるにつれ、日々の小さな幸せを大切にできることこそが、真の成功なのではないかと考えるようになった。人それぞれ、成功の形は異なるのだろう。",
+    "passageTranslation": "Saat masih muda, saya percaya bahwa kesuksesan adalah mendapatkan posisi tinggi atau uang. Namun, seiring bertambahnya usia, saya mulai berpikir bahwa bisa menghargai kebahagiaan kecil sehari-hari itulah kesuksesan yang sebenarnya. Mungkin bentuk kesuksesan berbeda-beda bagi setiap orang.",
+    "questions": [
+      {
+        "id": "dokkai_seikou_teigi_q0",
+        "prompt": "若い頃、筆者は成功をどう考えていましたか。",
+        "options": [
+          "高い地位やお金を得ること",
+          "家族を持つこと",
+          "有名になること",
+          "旅行すること"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_seikou_teigi_q1",
+        "prompt": "年を重ねて、何が真の成功だと考えるようになりましたか。",
+        "options": [
+          "日々の小さな幸せを大切にできること",
+          "もっとお金を稼ぐこと",
+          "もっと働くこと",
+          "有名になること"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_seikou_teigi_q2",
+        "prompt": "筆者は成功についてどう思っていますか。",
+        "options": [
+          "人それぞれ形が異なる",
+          "誰にとっても同じだ",
+          "お金だけが基準だ",
+          "意味がない"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
     "id": "dokkai_soushitsu_essei",
     "title": "Esai tentang Kehilangan",
     "jlptLevel": "N1",
@@ -2514,6 +3774,426 @@
           "現状維持に固執する姿勢",
           "変化を完全に止めること",
           "過去に戻ること"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_jiyuu_no_imi",
+    "title": "Esai tentang Makna Kebebasan",
+    "jlptLevel": "N1",
+    "passageJapanese": "自由とは何かを追求すればするほど、その定義の曖昧さに気づかされる。何ものにも縛られないことを自由と呼ぶ人もいれば、責任を全うした上で得られる境地こそが真の自由だと説く者もいる。容易に答えの出ない問いであるがゆえに、人は生涯をかけてそれを探求し続けるのかもしれない。",
+    "passageTranslation": "Semakin saya mengejar apa itu kebebasan, semakin saya disadarkan akan ambiguitas definisinya. Ada yang menyebut kebebasan sebagai tidak terikat oleh apa pun, ada pula yang berpendapat bahwa keadaan yang diperoleh setelah memenuhi tanggung jawab itulah kebebasan sejati. Justru karena ini pertanyaan yang tidak mudah dijawab, mungkin manusia terus mencarinya seumur hidup.",
+    "questions": [
+      {
+        "id": "dokkai_jiyuu_no_imi_q0",
+        "prompt": "自由を追求すればするほど何に気づかされますか。",
+        "options": [
+          "定義の曖昧さ",
+          "お金の大切さ",
+          "時間の速さ",
+          "友情の価値"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_jiyuu_no_imi_q1",
+        "prompt": "ある人にとって自由とは何ですか。",
+        "options": [
+          "何ものにも縛られないこと",
+          "責任を全うすること",
+          "お金を持つこと",
+          "有名になること"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_jiyuu_no_imi_q2",
+        "prompt": "別の考え方では、真の自由とは何ですか。",
+        "options": [
+          "責任を全うした上で得られる境地",
+          "完全な孤独",
+          "経済的な成功",
+          "他人からの評価"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_ushinawareta_isan",
+    "title": "Refleksi tentang Warisan Budaya yang Hilang",
+    "jlptLevel": "N1",
+    "passageJapanese": "古い町並みが次々と取り壊され、近代的な建物に姿を変えていく様子を目の当たりにするたび、言いようのない喪失感に襲われる。効率や利便性を追求するあまり、先人たちが築き上げてきた文化的財産を軽視してはいないだろうか。開発と保存のバランスを、今一度真剣に考える必要があるのではないかと痛感する。",
+    "passageTranslation": "Setiap kali menyaksikan bangunan kota lama dirobohkan satu per satu dan berubah menjadi bangunan modern, saya diserang rasa kehilangan yang tak terungkapkan. Bukankah kita terlalu mengejar efisiensi dan kepraktisan sehingga meremehkan warisan budaya yang dibangun oleh para pendahulu? Saya sangat menyadari perlunya memikirkan kembali dengan serius keseimbangan antara pembangunan dan pelestarian.",
+    "questions": [
+      {
+        "id": "dokkai_ushinawareta_isan_q0",
+        "prompt": "筆者は何を目の当たりにしていますか。",
+        "options": [
+          "古い町並みが取り壊される様子",
+          "新しい町並みが作られる喜び",
+          "人口が増える様子",
+          "自然が回復する様子"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_ushinawareta_isan_q1",
+        "prompt": "筆者はどんな感情に襲われますか。",
+        "options": [
+          "言いようのない喪失感",
+          "大きな喜び",
+          "強い怒り",
+          "安心感"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_ushinawareta_isan_q2",
+        "prompt": "筆者は何を真剣に考える必要があると述べていますか。",
+        "options": [
+          "開発と保存のバランス",
+          "開発をすべて止めること",
+          "保存をすべてやめること",
+          "何もしないこと"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_shouhi_shakai_hihan",
+    "title": "Kritik tentang Konsumerisme Modern",
+    "jlptLevel": "N1",
+    "passageJapanese": "次々と新しい商品が生み出され、消費を煽られる現代社会において、私たちは本当に必要なものと、単に欲望を刺激されて欲しくなっただけのものとを見分ける力を失いつつあるのではないか。物にあふれた生活が、必ずしも心の豊かさを意味するとは限らないということを、私たちは今一度思い出すべきであろう。",
+    "passageTranslation": "Dalam masyarakat modern di mana produk baru diciptakan secara terus-menerus dan konsumsi terus didorong, bukankah kita mulai kehilangan kemampuan untuk membedakan antara apa yang benar-benar kita butuhkan dan apa yang hanya diinginkan karena keinginan yang terstimulasi? Kita seharusnya mengingat kembali bahwa kehidupan yang berlimpah barang tidak selalu berarti kekayaan hati.",
+    "questions": [
+      {
+        "id": "dokkai_shouhi_shakai_hihan_q0",
+        "prompt": "現代社会で私たちが失いつつある力は何ですか。",
+        "options": [
+          "本当に必要なものを見分ける力",
+          "お金を稼ぐ力",
+          "商品を作る力",
+          "話す力"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shouhi_shakai_hihan_q1",
+        "prompt": "筆者は物にあふれた生活について、どう述べていますか。",
+        "options": [
+          "心の豊かさを意味するとは限らない",
+          "必ず心を豊かにする",
+          "何の意味もない",
+          "誰にとっても幸せだ"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shouhi_shakai_hihan_q2",
+        "prompt": "筆者は何を思い出すべきだと考えていますか。",
+        "options": [
+          "物と心の豊かさの違い",
+          "もっと消費すべきこと",
+          "商品の値段",
+          "広告の力"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_shizen_to_ningen",
+    "title": "Diskusi tentang Hubungan Manusia dan Alam",
+    "jlptLevel": "N1",
+    "passageJapanese": "人間は長らく、自然を征服し、利用する対象としてのみ捉えてきた側面がある。しかし、度重なる自然災害を経験する中で、人間もまた自然の一部に過ぎないという謙虚な認識を取り戻しつつあるように思われる。自然と共生する道を模索することこそ、これからの人類に課せられた責務ではないだろうか。",
+    "passageTranslation": "Manusia telah lama memandang alam hanya sebagai objek untuk ditaklukkan dan dimanfaatkan. Namun, di tengah mengalami bencana alam yang berulang kali, tampaknya manusia mulai mendapatkan kembali kesadaran rendah hati bahwa manusia juga hanyalah bagian dari alam. Bukankah mencari jalan untuk hidup berdampingan dengan alam adalah tanggung jawab yang dibebankan pada umat manusia ke depannya?",
+    "questions": [
+      {
+        "id": "dokkai_shizen_to_ningen_q0",
+        "prompt": "人間は長らく自然をどう捉えてきましたか。",
+        "options": [
+          "征服し利用する対象",
+          "神聖なもの",
+          "恐れるべきもの",
+          "無関係なもの"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shizen_to_ningen_q1",
+        "prompt": "度重なる自然災害を経験して、人間はどんな認識を取り戻しつつありますか。",
+        "options": [
+          "自然の一部に過ぎないという謙虚な認識",
+          "自然を完全に支配できるという自信",
+          "自然への無関心",
+          "自然への恐怖だけ"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_shizen_to_ningen_q2",
+        "prompt": "筆者は何が人類に課せられた責務だと考えていますか。",
+        "options": [
+          "自然と共生する道を模索すること",
+          "自然を完全に征服すること",
+          "自然から離れること",
+          "何もしないこと"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_gengo_aidentiti",
+    "title": "Diskusi tentang Bahasa dan Identitas",
+    "jlptLevel": "N1",
+    "passageJapanese": "母語とは、単なるコミュニケーションの道具にとどまらず、自己のアイデンティティを形成する根幹をなすものである。異なる文化圏で暮らす中で母語を失いかけた経験を持つ者ほど、その重みを痛感するのかもしれない。言葉を守ることは、自分自身を守ることに他ならないのである。",
+    "passageTranslation": "Bahasa ibu bukan sekadar alat komunikasi semata, tetapi menjadi dasar yang membentuk identitas diri. Mereka yang memiliki pengalaman hampir kehilangan bahasa ibunya saat tinggal di lingkungan budaya yang berbeda mungkin lebih menyadari betapa beratnya hal itu. Menjaga bahasa tidak lain adalah menjaga diri sendiri.",
+    "questions": [
+      {
+        "id": "dokkai_gengo_aidentiti_q0",
+        "prompt": "母語とは何にとどまらないものですか。",
+        "options": [
+          "単なるコミュニケーションの道具",
+          "アイデンティティの根幹",
+          "文化の一部",
+          "教育の手段"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_gengo_aidentiti_q1",
+        "prompt": "誰がその重みを痛感するかもしれませんか。",
+        "options": [
+          "母語を失いかけた経験を持つ者",
+          "母語しか話せない者",
+          "外国語が得意な者",
+          "教師"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_gengo_aidentiti_q2",
+        "prompt": "言葉を守ることは何に他なりませんか。",
+        "options": [
+          "自分自身を守ること",
+          "お金を守ること",
+          "家族を守ること",
+          "国を守ること"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_jinsei_no_tabi",
+    "title": "Refleksi tentang Perjalanan Hidup",
+    "jlptLevel": "N1",
+    "passageJapanese": "振り返れば、人生とは予測不可能な出来事の連続であった。計画通りに進んだことなど、むしろ少なかったように思う。しかし、その予測できなさこそが、人生に彩りを与えてくれていたのではないかと、今になって思う。不確実性を恐れるのではなく、受け入れる姿勢が、豊かな人生につながるのかもしれない。",
+    "passageTranslation": "Jika saya renungkan, hidup adalah rangkaian peristiwa yang tak terduga. Saya pikir hal-hal yang berjalan sesuai rencana justru sedikit. Namun, saya sekarang berpikir bahwa justru ketidakterprediksian itulah yang memberi warna pada kehidupan. Sikap menerima ketidakpastian, bukan menakutinya, mungkin akan mengarah pada kehidupan yang kaya.",
+    "questions": [
+      {
+        "id": "dokkai_jinsei_no_tabi_q0",
+        "prompt": "筆者は人生をどう振り返っていますか。",
+        "options": [
+          "予測不可能な出来事の連続",
+          "計画通りに進んだもの",
+          "単調なもの",
+          "簡単なもの"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_jinsei_no_tabi_q1",
+        "prompt": "筆者は何が人生に彩りを与えたと考えていますか。",
+        "options": [
+          "予測できなさ",
+          "計画性",
+          "お金",
+          "他人からの評価"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_jinsei_no_tabi_q2",
+        "prompt": "筆者はどんな姿勢が豊かな人生につながると考えていますか。",
+        "options": [
+          "不確実性を受け入れる姿勢",
+          "不確実性を避ける姿勢",
+          "完璧な計画を立てる姿勢",
+          "何も考えない姿勢"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_chinmoku_no_chie",
+    "title": "Esai tentang Keheningan dan Kebijaksanaan",
+    "jlptLevel": "N1",
+    "passageJapanese": "言葉を発することよりも、沈黙を保つことの方が難しい場面が人生には多々ある。すべてを語らずとも伝わるものがあるという事実に、若い頃の私は気づいていなかった。年齢を重ねた今だからこそ、沈黙の中に宿る豊かな意味を感じ取れるようになったのかもしれない。",
+    "passageTranslation": "Dalam hidup, ada banyak momen di mana menjaga keheningan lebih sulit daripada mengeluarkan kata-kata. Dulu saat masih muda, saya tidak menyadari fakta bahwa ada hal yang tersampaikan tanpa harus diucapkan semuanya. Mungkin justru karena sekarang usia saya sudah bertambah, saya bisa merasakan makna kaya yang bersemayam dalam keheningan.",
+    "questions": [
+      {
+        "id": "dokkai_chinmoku_no_chie_q0",
+        "prompt": "人生において何の方が難しい場面が多いですか。",
+        "options": [
+          "沈黙を保つこと",
+          "言葉を発すること",
+          "歩くこと",
+          "食べること"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_chinmoku_no_chie_q1",
+        "prompt": "若い頃、筆者は何に気づいていませんでしたか。",
+        "options": [
+          "すべてを語らずとも伝わるものがあること",
+          "言葉の大切さ",
+          "お金の価値",
+          "時間の速さ"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_chinmoku_no_chie_q2",
+        "prompt": "年齢を重ねた今、筆者は何を感じ取れるようになりましたか。",
+        "options": [
+          "沈黙の中に宿る豊かな意味",
+          "言葉の無意味さ",
+          "若さの価値",
+          "孤独の辛さ"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_koten_hihyou",
+    "title": "Kritik Sastra Klasik",
+    "jlptLevel": "N1",
+    "passageJapanese": "この古典作品が数百年の時を経てもなお読み継がれている理由は、人間の本質を鋭く捉えた普遍性にあると言えよう。時代背景こそ異なれど、登場人物たちが抱える葛藤や苦悩は、現代を生きる私たちの心にも深く響くものがある。",
+    "passageTranslation": "Alasan mengapa karya klasik ini masih terus dibaca meskipun sudah melewati ratusan tahun bisa dikatakan terletak pada universalitasnya yang menangkap esensi manusia secara tajam. Meskipun latar belakang zamannya berbeda, konflik dan penderitaan yang dialami para tokoh juga bergema dalam hati kita yang hidup di zaman modern.",
+    "questions": [
+      {
+        "id": "dokkai_koten_hihyou_q0",
+        "prompt": "この古典作品が読み継がれている理由は何だと言われていますか。",
+        "options": [
+          "人間の本質を捉えた普遍性",
+          "面白い挿絵",
+          "短い文章",
+          "有名な作者"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_koten_hihyou_q1",
+        "prompt": "時代背景はどうですか。",
+        "options": [
+          "異なる",
+          "同じ",
+          "分からない",
+          "関係ない"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_koten_hihyou_q2",
+        "prompt": "登場人物たちの葛藤や苦悩は、現代の私たちにどう響きますか。",
+        "options": [
+          "深く響く",
+          "全く響かない",
+          "少しだけ響く",
+          "意味がない"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_genjitsu_to_gensou",
+    "title": "Esai tentang Batas Antara Realita dan Ilusi",
+    "jlptLevel": "N1",
+    "passageJapanese": "夢と現実の境界線が曖昧になる瞬間を、誰もが一度は経験したことがあるのではないだろうか。テクノロジーの発展により、仮想現実と現実世界の境目はますます不明瞭になりつつある。何が真実で何が虚構であるかを見極める力は、今後さらに重要性を増していくに違いない。",
+    "passageTranslation": "Bukankah setiap orang setidaknya pernah mengalami momen di mana batas antara mimpi dan realita menjadi kabur? Dengan perkembangan teknologi, batas antara realitas virtual dan dunia nyata semakin tidak jelas. Kemampuan untuk membedakan apa yang benar dan apa yang fiktif pasti akan semakin penting ke depannya.",
+    "questions": [
+      {
+        "id": "dokkai_genjitsu_to_gensou_q0",
+        "prompt": "誰もが一度は経験したことがあるのは何ですか。",
+        "options": [
+          "夢と現実の境界線が曖昧になる瞬間",
+          "完全な現実",
+          "完全な夢",
+          "何も感じないこと"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_genjitsu_to_gensou_q1",
+        "prompt": "テクノロジーの発展により何が起きていますか。",
+        "options": [
+          "仮想現実と現実世界の境目が不明瞭になる",
+          "現実がなくなる",
+          "夢がなくなる",
+          "何も変わらない"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_genjitsu_to_gensou_q2",
+        "prompt": "今後何がさらに重要になると述べられていますか。",
+        "options": [
+          "真実と虚構を見極める力",
+          "お金を稼ぐ力",
+          "技術を作る力",
+          "忘れる力"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "dokkai_seishi_no_tetsugaku",
+    "title": "Refleksi Filosofis tentang Kematian dan Kehidupan",
+    "jlptLevel": "N1",
+    "passageJapanese": "死を意識することなくして、生を真に実感することはできないのかもしれない。限りある時間だからこそ、一瞬一瞬が尊いものとして輝きを放つのである。死を忌避すべきものとしてではなく、生の一部として受け入れる時、人は初めて、今このときを精一杯生きようとする覚悟を持てるのではないだろうか。",
+    "passageTranslation": "Mungkin kita tidak bisa benar-benar merasakan kehidupan tanpa menyadari kematian. Justru karena waktu yang terbatas, setiap momen memancarkan kilau sebagai sesuatu yang berharga. Ketika manusia menerima kematian bukan sebagai sesuatu yang harus dihindari, melainkan sebagai bagian dari kehidupan, mungkin saat itulah untuk pertama kalinya seseorang bisa memiliki tekad untuk menjalani saat ini sepenuh hati.",
+    "questions": [
+      {
+        "id": "dokkai_seishi_no_tetsugaku_q0",
+        "prompt": "筆者は何を意識することが生を実感するために必要だと述べていますか。",
+        "options": [
+          "死",
+          "お金",
+          "名声",
+          "若さ"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_seishi_no_tetsugaku_q1",
+        "prompt": "限りある時間だからこそ、何が輝きを放ちますか。",
+        "options": [
+          "一瞬一瞬",
+          "過去の思い出",
+          "未来の計画",
+          "他人の人生"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "dokkai_seishi_no_tetsugaku_q2",
+        "prompt": "死をどう受け入れる時、人は覚悟を持てますか。",
+        "options": [
+          "生の一部として",
+          "完全に忌避すべきものとして",
+          "恐れるべきものとして",
+          "無視すべきものとして"
         ],
         "correctIndex": 0
       }

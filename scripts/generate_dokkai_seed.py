@@ -547,6 +547,175 @@ N4_ENTRIES = [
             ("健康にとって他に何が重要ですか。", ["よく寝ること", "たくさん働くこと", "テレビを見ること", "買い物すること"], 0),
         ],
     ),
+    (
+        "toshokan_open",
+        "Pengumuman Perpustakaan Baru Dibuka",
+        "来月、駅の近くに新しい図書館ができます。開館時間は朝九時から夜"
+        "八時までです。子供のための絵本コーナーもあります。誰でも無料で"
+        "利用することができます。ぜひ一度、来てみてください。",
+        "Bulan depan, perpustakaan baru akan dibuka dekat stasiun. Jam "
+        "bukanya dari jam 9 pagi sampai jam 8 malam. Ada juga sudut buku "
+        "bergambar untuk anak-anak. Siapa saja bisa menggunakannya secara "
+        "gratis. Silakan datang sekali ke sana.",
+        [
+            ("新しい図書館はどこにできますか。", ["駅の近く", "学校の隣", "公園の中", "病院の前"], 0),
+            ("開館時間は何時までですか。", ["夜八時", "夜六時", "夜十時", "夕方五時"], 0),
+            ("利用するのにお金がかかりますか。", ["いいえ、無料です", "はい、少しかかります", "はい、高いです", "分かりません"], 0),
+        ],
+    ),
+    (
+        "kantan_reshipi",
+        "Resep Sederhana",
+        "簡単な卵焼きの作り方を紹介します。まず、卵を二つ割って、よく"
+        "混ぜます。次に、フライパンに油を入れて温めます。卵を入れたら、"
+        "弱火でゆっくり焼いてください。焦げないように気をつけましょう。",
+        "Saya perkenalkan cara membuat telur dadar sederhana. Pertama, "
+        "pecahkan dua butir telur dan aduk rata. Selanjutnya, panaskan "
+        "minyak di wajan. Setelah memasukkan telur, masak perlahan dengan "
+        "api kecil. Hati-hati agar tidak gosong.",
+        [
+            ("卵をいくつ使いますか。", ["二つ", "一つ", "三つ", "四つ"], 0),
+            ("フライパンに何を入れて温めますか。", ["油", "水", "塩", "砂糖"], 0),
+            ("どんな火で焼きますか。", ["弱火", "強火", "中火", "火を使わない"], 0),
+        ],
+    ),
+    (
+        "shigoto_hajimete",
+        "Pengalaman Hari Pertama Kerja",
+        "今日は初めての出勤日でした。緊張して、朝早く起きてしまいました。"
+        "会社に着いたら、同僚がやさしく声をかけてくれました。仕事はまだ"
+        "よく分かりませんが、少しずつ覚えていきたいと思います。",
+        "Hari ini adalah hari pertama saya masuk kerja. Karena gugup, "
+        "saya bangun terlalu pagi. Setelah sampai di kantor, rekan kerja "
+        "menyapa saya dengan ramah. Saya belum begitu paham pekerjaannya, "
+        "tapi ingin belajar sedikit demi sedikit.",
+        [
+            ("どうして朝早く起きてしまいましたか。", ["緊張していたから", "目覚まし時計が壊れていたから", "用事があったから", "眠れなかったから"], 0),
+            ("会社に着いたら、誰が声をかけてくれましたか。", ["同僚", "家族", "先生", "友達"], 0),
+            ("この人は仕事についてどう思っていますか。", ["少しずつ覚えていきたい", "もう全部分かる", "すぐ辞めたい", "とても簡単だ"], 0),
+        ],
+    ),
+    (
+        "densha_norikata",
+        "Panduan Naik Kereta",
+        "初めて日本の電車に乗る人のために説明します。まず、切符を買うか、"
+        "ICカードを用意してください。ホームに入る時は、改札で切符を"
+        "通します。電車を降りる駅を間違えないように、駅名をよく見て"
+        "ください。",
+        "Saya jelaskan untuk orang yang baru pertama kali naik kereta di "
+        "Jepang. Pertama, silakan beli tiket atau siapkan kartu IC. Saat "
+        "masuk peron, lewatkan tiket di gerbang tiket. Agar tidak salah "
+        "turun di stasiun, tolong lihat baik-baik nama stasiunnya.",
+        [
+            ("電車に乗る前に何を用意しますか。", ["切符かICカード", "傘", "お弁当", "地図"], 0),
+            ("ホームに入る時、何をしますか。", ["改札で切符を通す", "お金を払う", "荷物を預ける", "走る"], 0),
+            ("何に気をつけますか。", ["降りる駅を間違えないこと", "電車の色", "席の場所", "時間"], 0),
+        ],
+    ),
+    (
+        "gengo_kouza",
+        "Iklan Kursus Bahasa",
+        "英会話を学びたい人を募集しています。初心者から上級者まで、"
+        "レベルに合わせたクラスがあります。授業は週に二回、夜七時から"
+        "始まります。先生は全員経験豊かなので、安心して学ぶことが"
+        "できます。",
+        "Kami sedang mencari orang yang ingin belajar percakapan bahasa "
+        "Inggris. Ada kelas sesuai level, dari pemula sampai mahir. "
+        "Kelasnya dua kali seminggu, dimulai jam 7 malam. Semua guru "
+        "berpengalaman, jadi bisa belajar dengan tenang.",
+        [
+            ("何のクラスですか。", ["英会話", "日本語", "数学", "料理"], 0),
+            ("授業は週に何回ありますか。", ["二回", "一回", "三回", "毎日"], 0),
+            ("先生についてどう書いてありますか。", ["経験豊かだ", "初めての先生だ", "厳しい", "若い"], 0),
+        ],
+    ),
+    (
+        "yoyaku_kakunin",
+        "Email Konfirmasi Reservasi",
+        "この度はご予約いただき、ありがとうございます。ご予約日は来週の"
+        "金曜日、午後七時からです。人数は四名様で承っております。もし"
+        "変更やキャンセルがある場合は、前日までにご連絡ください。",
+        "Terima kasih atas reservasi Anda kali ini. Tanggal reservasi "
+        "Anda adalah hari Jumat depan, mulai jam 7 malam. Kami menerima "
+        "untuk 4 orang. Jika ada perubahan atau pembatalan, silakan "
+        "hubungi kami sampai sehari sebelumnya.",
+        [
+            ("予約はいつですか。", ["来週の金曜日", "今週の月曜日", "明日", "来月"], 0),
+            ("何名で予約しましたか。", ["四名", "二名", "三名", "五名"], 0),
+            ("変更がある場合、いつまでに連絡しますか。", ["前日まで", "当日でもいい", "一週間前まで", "連絡しなくていい"], 0),
+        ],
+    ),
+    (
+        "shumi_burogu",
+        "Blog tentang Hobi Baru",
+        "最近、写真を撮ることが好きになりました。休みの日に、いろいろな"
+        "場所へ行って写真を撮っています。まだ上手ではありませんが、"
+        "少しずつカメラの使い方が分かってきました。これからも続けて"
+        "いきたいです。",
+        "Belakangan ini, saya jadi suka memotret. Di hari libur, saya "
+        "pergi ke berbagai tempat untuk memotret. Belum begitu mahir, "
+        "tapi sedikit demi sedikit mulai paham cara menggunakan kamera. "
+        "Saya ingin terus melanjutkannya ke depannya.",
+        [
+            ("この人は最近何が好きになりましたか。", ["写真を撮ること", "料理をすること", "本を読むこと", "歌うこと"], 0),
+            ("いつ写真を撮りに行きますか。", ["休みの日", "平日", "毎朝", "仕事の後"], 0),
+            ("この人はカメラの使い方についてどう言っていますか。", ["少しずつ分かってきた", "全然分からない", "もう完璧だ", "難しすぎる"], 0),
+        ],
+    ),
+    (
+        "douro_kouji",
+        "Pengumuman Perbaikan Jalan",
+        "来週から、駅前の道路で工事を行います。工事の間、道が狭くなり"
+        "ますので、車を運転する方はお気をつけください。歩く人のための"
+        "道は別に用意されています。ご不便をおかけしますが、よろしく"
+        "お願いします。",
+        "Mulai minggu depan, akan ada perbaikan di jalan depan stasiun. "
+        "Selama perbaikan, jalan akan menyempit, jadi bagi yang "
+        "mengendarai mobil harap berhati-hati. Jalan untuk pejalan kaki "
+        "disiapkan secara terpisah. Mohon maaf atas ketidaknyamanannya, "
+        "mohon bantuannya.",
+        [
+            ("どこで工事が行われますか。", ["駅前の道路", "学校の中", "公園", "病院"], 0),
+            ("工事の間、道はどうなりますか。", ["狭くなります", "広くなります", "閉まります", "きれいになります"], 0),
+            ("歩く人のためにどうなっていますか。", ["別の道が用意されている", "道がない", "工事に参加する", "何もない"], 0),
+        ],
+    ),
+    (
+        "ryuugaku_tegami",
+        "Surat dari Anak yang Kuliah di Luar Negeri",
+        "お父さん、お母さん、元気ですか。こちらの生活にもだいぶ慣れて"
+        "きました。最初は言葉が分からなくて大変でしたが、友達がたくさん"
+        "できて、毎日楽しいです。今度の休みには、日本に帰るつもりです。"
+        "会えるのを楽しみにしています。",
+        "Ayah, Ibu, apa kabar? Saya sudah lumayan terbiasa dengan "
+        "kehidupan di sini. Awalnya sulit karena tidak mengerti bahasa, "
+        "tapi sekarang punya banyak teman, dan setiap hari menyenangkan. "
+        "Liburan berikutnya, saya berencana pulang ke Jepang. Saya "
+        "menantikan bisa bertemu.",
+        [
+            ("最初、何が大変でしたか。", ["言葉が分からなかったこと", "お金がなかったこと", "病気になったこと", "一人だったこと"], 0),
+            ("今の生活はどうですか。", ["毎日楽しい", "とても寂しい", "大変だ", "つまらない"], 0),
+            ("今度の休み、この人は何をするつもりですか。", ["日本に帰る", "旅行に行く", "働く", "学校を辞める"], 0),
+        ],
+    ),
+    (
+        "undou_kouka",
+        "Artikel tentang Manfaat Olahraga",
+        "毎日少し運動をすることで、体だけでなく気持ちも元気になると言わ"
+        "れています。忙しい人でも、朝に軽く体を動かすだけで、一日を"
+        "気持ちよく始めることができるそうです。無理をせず、自分に合った"
+        "運動を見つけることが大切です。",
+        "Dikatakan bahwa dengan berolahraga sedikit setiap hari, bukan "
+        "hanya tubuh, tapi perasaan juga menjadi lebih semangat. Bahkan "
+        "orang yang sibuk pun, katanya cukup menggerakkan tubuh ringan di "
+        "pagi hari, bisa memulai hari dengan perasaan yang baik. Penting "
+        "untuk menemukan olahraga yang cocok tanpa memaksakan diri.",
+        [
+            ("毎日運動をすると何が元気になりますか。", ["体と気持ち", "体だけ", "お金", "仕事"], 0),
+            ("忙しい人はいつ運動すればいいですか。", ["朝、軽く", "夜遅く", "週末だけ", "運動しなくていい"], 0),
+            ("何が大切だと書いてありますか。", ["自分に合った運動を見つけること", "毎日長時間運動すること", "一番難しい運動をすること", "友達と同じ運動をすること"], 0),
+        ],
+    ),
 ]
 
 N3_ENTRIES = [
@@ -735,6 +904,191 @@ N3_ENTRIES = [
             ("この人は何を実感しましたか。", ["笑顔で話せば気持ちは伝わる", "言葉が完全に必要", "一人でいる方がいい", "留学は難しい"], 0),
         ],
     ),
+    (
+        "shokuseikatsu_kiji",
+        "Artikel tentang Kebiasaan Makan Sehat",
+        "健康的な食生活を送るためには、バランスの良い食事を心がけることが"
+        "重要である。特に、野菜や果物を積極的に取り入れることで、体に"
+        "必要な栄養を効率よく摂取することができる。また、食べる時間帯にも"
+        "気をつけるべきだと言われている。",
+        "Untuk menjalani pola makan yang sehat, penting untuk "
+        "memperhatikan makanan yang seimbang. Terutama, dengan aktif "
+        "mengonsumsi sayur dan buah, kita bisa mendapatkan nutrisi yang "
+        "dibutuhkan tubuh secara efisien. Selain itu, dikatakan juga "
+        "perlu memperhatikan waktu makan.",
+        [
+            ("健康的な食生活のために何が重要ですか。", ["バランスの良い食事", "高い食べ物", "少ない食事", "一種類だけの食事"], 0),
+            ("何を積極的に取り入れるといいですか。", ["野菜や果物", "お菓子", "肉だけ", "揚げ物"], 0),
+            ("他に何に気をつけるべきですか。", ["食べる時間帯", "食べる場所", "食器の色", "一緒に食べる人"], 0),
+        ],
+    ),
+    (
+        "kisetsu_henka_essei",
+        "Esai tentang Perubahan Musim",
+        "季節が変わるたびに、自然の色や匂いが少しずつ変化していくことに"
+        "気づく。特に、春から夏へ移り変わる時期は、新しい命の力強さを"
+        "感じさせてくれる。忙しい日々の中でも、こうした季節の変化に目を"
+        "向ける余裕を持ちたいと思う。",
+        "Setiap kali musim berganti, saya menyadari warna dan aroma alam "
+        "berubah sedikit demi sedikit. Terutama, masa peralihan dari "
+        "musim semi ke musim panas membuat saya merasakan kekuatan "
+        "kehidupan baru. Bahkan di tengah hari-hari yang sibuk, saya "
+        "ingin memiliki kelonggaran untuk memperhatikan perubahan musim "
+        "seperti ini.",
+        [
+            ("季節が変わるたびに何に気づきますか。", ["自然の色や匂いの変化", "人の性格", "お金の価値", "時間の速さ"], 0),
+            ("どの時期が特に力強さを感じさせますか。", ["春から夏へ移り変わる時期", "夏から秋", "秋から冬", "冬から春"], 0),
+            ("筆者は何を持ちたいと思っていますか。", ["季節の変化に目を向ける余裕", "もっとお金", "もっと友達", "もっと休み"], 0),
+        ],
+    ),
+    (
+        "bijinesu_manaa",
+        "Panduan Etika Bisnis di Jepang",
+        "日本のビジネスの場では、名刺の交換の仕方にもマナーがある。名刺は"
+        "両手で渡し、相手の名刺も両手で受け取るのが一般的である。また、"
+        "受け取った名刺をすぐにしまうのではなく、しばらく机の上に置いて"
+        "おくことも礼儀とされている。",
+        "Dalam dunia bisnis Jepang, ada etika dalam cara bertukar kartu "
+        "nama. Umumnya, kartu nama diberikan dengan dua tangan, dan "
+        "kartu nama lawan bicara juga diterima dengan dua tangan. Selain "
+        "itu, tidak langsung menyimpan kartu nama yang diterima, "
+        "melainkan meletakkannya di atas meja untuk sementara waktu juga "
+        "dianggap sebagai sopan santun.",
+        [
+            ("名刺はどうやって渡しますか。", ["両手で", "片手で", "投げて", "口で"], 0),
+            ("受け取った名刺はすぐにどうしますか。", ["しばらく机の上に置く", "すぐにしまう", "捨てる", "相手に返す"], 0),
+            ("この文章のテーマは何ですか。", ["名刺交換のマナー", "服装のマナー", "食事のマナー", "電話のマナー"], 0),
+        ],
+    ),
+    (
+        "toshi_hatten",
+        "Artikel tentang Perkembangan Kota",
+        "この十年間で、この町は大きく変わった。以前は田んぼが広がって"
+        "いた場所に、今では高いビルが立ち並んでいる。便利になった一方"
+        "で、昔ながらの静かな風景が失われたことを寂しく思う人も少なく"
+        "ない。",
+        "Dalam sepuluh tahun terakhir, kota ini berubah besar-besaran. "
+        "Tempat yang dulunya membentang sawah, kini berjejer gedung-"
+        "gedung tinggi. Meskipun jadi lebih praktis, tidak sedikit orang "
+        "yang merasa sedih karena pemandangan tenang seperti dulu "
+        "hilang.",
+        [
+            ("この十年間で町はどう変わりましたか。", ["大きく変わった", "何も変わらなかった", "小さくなった", "人が減った"], 0),
+            ("以前、その場所には何が広がっていましたか。", ["田んぼ", "海", "山", "森"], 0),
+            ("便利になった一方で、何を寂しく思う人がいますか。", ["静かな風景が失われたこと", "物価が上がったこと", "人が増えたこと", "店が減ったこと"], 0),
+        ],
+    ),
+    (
+        "borantia_taiken",
+        "Pengalaman Kegiatan Sukarelawan",
+        "先週、地域の清掃ボランティアに参加した。初めは面倒だと思って"
+        "いたが、実際にやってみると、地域の人々と交流する良い機会に"
+        "なった。小さな活動でも、続けることで町がきれいになっていくのを"
+        "実感し、やりがいを感じた。",
+        "Minggu lalu saya mengikuti kegiatan sukarelawan membersihkan "
+        "lingkungan. Awalnya saya pikir merepotkan, tapi setelah benar-"
+        "benar mencobanya, itu menjadi kesempatan baik untuk berinteraksi "
+        "dengan warga sekitar. Meskipun kegiatan kecil, saya merasakan "
+        "kepuasan karena menyadari kota menjadi bersih dengan "
+        "melanjutkannya.",
+        [
+            ("先週、何に参加しましたか。", ["地域の清掃ボランティア", "スポーツ大会", "料理教室", "音楽会"], 0),
+            ("初め、この人はどう思っていましたか。", ["面倒だと思っていた", "とても楽しみだった", "興味がなかった", "怖かった"], 0),
+            ("実際にやってみて、何を実感しましたか。", ["町がきれいになっていくこと", "お金がもらえること", "有名になること", "疲れるだけ"], 0),
+        ],
+    ),
+    (
+        "media_hikaku",
+        "Perbandingan Media Tradisional dan Digital",
+        "新聞やテレビといった従来のメディアに加えて、インターネットを"
+        "通じた情報発信が急速に広まっている。若い世代を中心に、ニュース"
+        "をスマートフォンで読む人が増えている一方、高齢者の間では、"
+        "依然として新聞やテレビが主な情報源となっている。",
+        "Selain media konvensional seperti koran dan televisi, "
+        "penyebaran informasi melalui internet berkembang pesat. Di "
+        "kalangan generasi muda, orang yang membaca berita lewat "
+        "smartphone semakin bertambah, sementara di kalangan lansia, "
+        "koran dan televisi tetap menjadi sumber informasi utama.",
+        [
+            ("何が急速に広まっていますか。", ["インターネットを通じた情報発信", "新聞の読者", "テレビの視聴時間", "手紙の数"], 0),
+            ("若い世代はどうやってニュースを読むことが多いですか。", ["スマートフォン", "新聞", "ラジオ", "雑誌"], 0),
+            ("高齢者の主な情報源は何ですか。", ["新聞やテレビ", "インターネット", "スマートフォン", "SNS"], 0),
+        ],
+    ),
+    (
+        "yuujou_essei",
+        "Esai tentang Persahabatan",
+        "長い間連絡を取っていなかった友人から、久しぶりに電話がかかって"
+        "きた。時間が経っていても、話し始めるとすぐに昔と同じような"
+        "雰囲気に戻れることに驚いた。本当の友情とは、時間や距離に関係"
+        "なく続くものなのかもしれないと感じた。",
+        "Teman yang sudah lama tidak dihubungi tiba-tiba menelepon "
+        "setelah sekian lama. Meskipun waktu telah berlalu, saya kaget "
+        "karena begitu mulai berbicara, langsung bisa kembali ke suasana "
+        "yang sama seperti dulu. Saya merasa bahwa persahabatan sejati "
+        "mungkin adalah sesuatu yang berlanjut tanpa peduli waktu atau "
+        "jarak.",
+        [
+            ("誰から電話がかかってきましたか。", ["長い間連絡を取っていなかった友人", "家族", "会社の同僚", "知らない人"], 0),
+            ("話し始めて、この人はどう感じましたか。", ["すぐに昔と同じ雰囲気に戻れた", "全然話が合わなかった", "気まずかった", "何も感じなかった"], 0),
+            ("筆者は本当の友情について、どう感じましたか。", ["時間や距離に関係なく続くもの", "すぐに終わるもの", "お金が必要なもの", "難しいもの"], 0),
+        ],
+    ),
+    (
+        "kinkyuu_taiou",
+        "Panduan Prosedur Darurat",
+        "地震が起きた時は、まず自分の身の安全を確保することが最優先で"
+        "ある。丈夫な机の下に隠れるなどして、落下物から身を守って"
+        "ほしい。揺れが収まったら、火の元を確認し、慌てずに避難場所へ"
+        "移動すること。",
+        "Saat gempa bumi terjadi, prioritas utama adalah memastikan "
+        "keselamatan diri sendiri terlebih dahulu. Tolong lindungi diri "
+        "dari benda jatuh, misalnya dengan bersembunyi di bawah meja "
+        "yang kokoh. Setelah guncangan mereda, periksa sumber api dan "
+        "pindah ke tempat evakuasi tanpa panik.",
+        [
+            ("地震が起きた時、まず何を確保しますか。", ["自分の身の安全", "お金", "食べ物", "携帯電話"], 0),
+            ("落下物から身を守るために何をしますか。", ["丈夫な机の下に隠れる", "外に走って出る", "窓を開ける", "大声を出す"], 0),
+            ("揺れが収まったら何を確認しますか。", ["火の元", "テレビ", "電話", "冷蔵庫"], 0),
+        ],
+    ),
+    (
+        "kankou_toreando",
+        "Artikel tentang Tren Pariwisata",
+        "近年、有名な観光地だけでなく、地元の人しか知らないような場所を"
+        "訪れる旅行者が増えている。SNSの普及により、こうした「隠れた"
+        "名所」の情報が簡単に共有されるようになったことが背景にある"
+        "ようだ。",
+        "Belakangan ini, bukan hanya tempat wisata terkenal, semakin "
+        "banyak wisatawan yang mengunjungi tempat yang hanya diketahui "
+        "warga lokal. Latar belakangnya tampaknya karena dengan "
+        "menyebarnya media sosial, informasi tentang 'tempat "
+        "tersembunyi' seperti ini menjadi mudah dibagikan.",
+        [
+            ("最近、旅行者はどんな場所を訪れることが増えていますか。", ["地元の人しか知らない場所", "有名な観光地だけ", "外国だけ", "テーマパークだけ"], 0),
+            ("この背景には何がありますか。", ["SNSの普及", "テレビ番組", "政府の宣伝", "交通機関の発達"], 0),
+            ("このような場所は何と呼ばれていますか。", ["隠れた名所", "有名スポット", "定番の観光地", "危険な場所"], 0),
+        ],
+    ),
+    (
+        "shippai_kokufuku",
+        "Cerita tentang Mengatasi Kegagalan",
+        "大きなプロジェクトで失敗した時、しばらく立ち直れないほど落ち"
+        "込んだ。しかし、上司が「失敗は次への準備だ」と声をかけてくれた"
+        "ことで、少しずつ前向きになれた。あの経験があったからこそ、今の"
+        "自分があると思っている。",
+        "Saat gagal dalam proyek besar, saya terpuruk sampai hampir "
+        "tidak bisa bangkit untuk sementara waktu. Namun, karena atasan "
+        "menyapa saya dengan berkata 'kegagalan adalah persiapan untuk "
+        "selanjutnya,' saya bisa berpikir positif sedikit demi sedikit. "
+        "Saya berpikir justru karena pengalaman itulah, ada diri saya "
+        "yang sekarang.",
+        [
+            ("何が起きた時、落ち込みましたか。", ["大きなプロジェクトで失敗した時", "病気になった時", "遅刻した時", "お金をなくした時"], 0),
+            ("誰が声をかけてくれましたか。", ["上司", "家族", "友達", "先生"], 0),
+            ("上司は何と言いましたか。", ["失敗は次への準備だ", "失敗は絶対ダメだ", "もう諦めろ", "気にしなくていい"], 0),
+        ],
+    ),
 ]
 
 N2_ENTRIES = [
@@ -919,6 +1273,187 @@ N2_ENTRIES = [
             ("オンライン教育の普及で何が整いつつありますか。", ["場所を問わず学べる環境", "高い給料", "新しい建物", "交通機関"], 0),
             ("オンライン教育はどんな点で意義深いですか。", ["学習の機会を広げること", "値段が安いこと", "簡単なこと", "早く終わること"], 0),
             ("どんな課題が浮き彫りになっていますか。", ["集中力を保つのが難しいこと", "先生が足りないこと", "教科書が高いこと", "時間が短すぎること"], 0),
+        ],
+    ),
+    (
+        "shijou_chousa",
+        "Laporan Riset Pasar",
+        "今回の市場調査において、二十代から三十代の消費者は、価格よりも"
+        "商品の背景にあるストーリーを重視する傾向が明らかになった。この"
+        "結果を踏まえ、単に安さを訴求するのではなく、ブランドの価値観を"
+        "伝える戦略が求められている。",
+        "Dalam riset pasar kali ini, terungkap bahwa konsumen usia 20-an "
+        "hingga 30-an cenderung mementingkan cerita di balik produk "
+        "dibandingkan harga. Berdasarkan hasil ini, dituntut strategi "
+        "yang menyampaikan nilai brand, bukan sekadar menonjolkan "
+        "kemurahan harga.",
+        [
+            ("どの世代の消費者について調査しましたか。", ["二十代から三十代", "十代", "四十代から五十代", "全世代"], 0),
+            ("消費者は何を重視する傾向がありますか。", ["商品の背景にあるストーリー", "価格の安さ", "デザインだけ", "有名なブランド名"], 0),
+            ("この結果から、どんな戦略が求められていますか。", ["ブランドの価値観を伝える戦略", "とにかく安くする戦略", "広告を増やす戦略", "店舗を減らす戦略"], 0),
+        ],
+    ),
+    (
+        "kodomo_kyouiku_ronsetsu",
+        "Editorial tentang Pendidikan Anak",
+        "子供の自主性を育てるためには、失敗を恐れずに挑戦できる環境を"
+        "用意することが欠かせない。親がすべてを先回りして手助けするので"
+        "はなく、時には見守る姿勢も必要だろう。過保護は、かえって子供の"
+        "成長を妨げる可能性がある。",
+        "Untuk menumbuhkan kemandirian anak, penting untuk menyiapkan "
+        "lingkungan yang memungkinkan mereka mencoba tanpa takut gagal. "
+        "Orang tua tidak selalu membantu terlebih dahulu untuk semuanya, "
+        "tetapi terkadang sikap mengawasi dari jauh juga diperlukan. "
+        "Terlalu melindungi justru bisa menghambat pertumbuhan anak.",
+        [
+            ("子供の自主性を育てるために何が欠かせませんか。", ["失敗を恐れずに挑戦できる環境", "高価なおもちゃ", "たくさんの宿題", "厳しいルール"], 0),
+            ("親にはどんな姿勢も必要だと言っていますか。", ["見守る姿勢", "常に手助けする姿勢", "無関心な姿勢", "厳しく叱る姿勢"], 0),
+            ("過保護はどんな可能性がありますか。", ["子供の成長を妨げること", "子供を賢くすること", "子供を幸せにすること", "何も変わらないこと"], 0),
+        ],
+    ),
+    (
+        "kankyou_gijutsu",
+        "Artikel tentang Inovasi Teknologi Ramah Lingkungan",
+        "太陽光発電の技術は年々進歩しており、以前に比べて発電効率が大幅に"
+        "向上した。それに伴い、導入コストも下がってきている。今後、こう"
+        "した再生可能エネルギー技術の普及が、環境問題の解決に大きく貢献"
+        "することが期待されている。",
+        "Teknologi pembangkit listrik tenaga surya berkembang setiap "
+        "tahun, efisiensi pembangkitannya meningkat pesat dibanding "
+        "sebelumnya. Seiring dengan itu, biaya pemasangan juga mulai "
+        "turun. Ke depannya, diharapkan penyebaran teknologi energi "
+        "terbarukan seperti ini berkontribusi besar dalam menyelesaikan "
+        "masalah lingkungan.",
+        [
+            ("太陽光発電の技術はどうなっていますか。", ["年々進歩している", "進歩が止まった", "使われなくなった", "昔と変わらない"], 0),
+            ("発電効率が上がると、コストはどうなりましたか。", ["下がってきている", "上がっている", "変わらない", "分からない"], 0),
+            ("何が環境問題の解決に貢献すると期待されていますか。", ["再生可能エネルギー技術の普及", "石油の使用増加", "人口の減少", "都市の拡大"], 0),
+        ],
+    ),
+    (
+        "waaku_raifu_baransu",
+        "Esai tentang Keseimbangan Kerja dan Kehidupan",
+        "仕事に情熱を注ぐことは大切だが、それによってプライベートの時間が"
+        "犠牲になってしまっては本末転倒である。効率よく働き、限られた"
+        "時間の中で成果を出す力こそが、これからの時代に求められる能力で"
+        "はないだろうか。",
+        "Mencurahkan semangat pada pekerjaan itu penting, tetapi jika "
+        "waktu pribadi menjadi korban karena itu, itu adalah kebalikan "
+        "dari yang seharusnya. Bukankah kemampuan untuk bekerja secara "
+        "efisien dan menghasilkan hasil dalam waktu yang terbatas adalah "
+        "kemampuan yang dibutuhkan di era mendatang?",
+        [
+            ("何が大切だと述べられていますか。", ["仕事に情熱を注ぐこと", "プライベートを完全に犠牲にすること", "仕事を辞めること", "お金を稼がないこと"], 0),
+            ("プライベートの時間が犠牲になることを筆者はどう表現していますか。", ["本末転倒", "当然のこと", "理想的なこと", "簡単なこと"], 0),
+            ("これからの時代に求められる能力とは何ですか。", ["限られた時間の中で成果を出す力", "長時間働く力", "お金を稼ぐ力だけ", "何もしない力"], 0),
+        ],
+    ),
+    (
+        "shouhisha_toreando",
+        "Analisis Tren Konsumen",
+        "近年、モノを所有することよりも、体験を重視する消費者が増えて"
+        "いる。旅行やイベントへの支出が伸びている一方、物品の購入は伸び"
+        "悩んでいるというデータもある。この傾向は、特に若い世代において"
+        "顕著に見られる。",
+        "Belakangan ini, semakin banyak konsumen yang lebih mementingkan "
+        "pengalaman daripada memiliki barang. Ada data yang menunjukkan "
+        "bahwa pengeluaran untuk perjalanan dan acara meningkat, "
+        "sementara pembelian barang cenderung stagnan. Tren ini terlihat "
+        "sangat menonjol terutama di kalangan generasi muda.",
+        [
+            ("最近、消費者は何を重視するようになっていますか。", ["体験", "モノの所有", "値段の安さ", "ブランド名"], 0),
+            ("何への支出が伸びていますか。", ["旅行やイベント", "家具", "電化製品", "服だけ"], 0),
+            ("この傾向はどの世代に顕著ですか。", ["若い世代", "高齢者", "全世代同じ", "子供だけ"], 0),
+        ],
+    ),
+    (
+        "bunka_gaikou",
+        "Artikel tentang Diplomasi Budaya",
+        "文化交流は、国と国との関係を深める上で重要な役割を果たしている。"
+        "政治的な対立があったとしても、映画や音楽、料理といった文化を"
+        "通じた交流は、人々の心の距離を縮める力を持っているといえる"
+        "だろう。",
+        "Pertukaran budaya memainkan peran penting dalam memperdalam "
+        "hubungan antarnegara. Meskipun ada konflik politik, bisa "
+        "dikatakan bahwa pertukaran melalui budaya seperti film, musik, "
+        "dan masakan memiliki kekuatan untuk mempersempit jarak hati "
+        "antarmanusia.",
+        [
+            ("文化交流はどんな役割を果たしていますか。", ["国と国との関係を深める役割", "経済を発展させる役割", "戦争を起こす役割", "何の役割もない"], 0),
+            ("文化交流の例として何が挙げられていますか。", ["映画や音楽、料理", "政治の会議", "軍事訓練", "経済制裁"], 0),
+            ("文化を通じた交流はどんな力を持っていますか。", ["人々の心の距離を縮める力", "対立を深める力", "何も変えない力", "お金を作る力"], 0),
+        ],
+    ),
+    (
+        "kazoku_isan",
+        "Esai tentang Warisan Keluarga",
+        "祖父が遺してくれた古い時計を、今も大切に使っている。動くたびに、"
+        "祖父と過ごした時間が思い出される。物としての価値はそれほど高く"
+        "ないかもしれないが、私にとっては何にも代えがたい宝物である。",
+        "Jam tua yang ditinggalkan kakek, masih saya gunakan dengan "
+        "hati-hati sampai sekarang. Setiap kali berjalan, saya teringat "
+        "waktu yang saya habiskan bersama kakek. Sebagai barang, nilainya "
+        "mungkin tidak begitu tinggi, tetapi bagi saya, itu adalah harta "
+        "yang tak tergantikan oleh apa pun.",
+        [
+            ("祖父は何を遺してくれましたか。", ["古い時計", "お金", "家", "本"], 0),
+            ("時計が動くたびに、何が思い出されますか。", ["祖父と過ごした時間", "学校生活", "旅行の思い出", "仕事のこと"], 0),
+            ("筆者にとって、この時計はどんな存在ですか。", ["何にも代えがたい宝物", "ただの古い物", "邪魔な物", "売りたい物"], 0),
+        ],
+    ),
+    (
+        "jinkou_henka_houkoku",
+        "Laporan tentang Perubahan Demografi",
+        "少子化が進む中、地方都市では人口減少が特に深刻な問題となって"
+        "いる。若者の都市部への流出も一因とされており、地域経済の維持が"
+        "困難になりつつある自治体も少なくない。抜本的な対策が急がれて"
+        "いる。",
+        "Di tengah penurunan angka kelahiran, penurunan populasi menjadi "
+        "masalah yang sangat serius terutama di kota-kota daerah. "
+        "Perpindahan anak muda ke wilayah perkotaan juga dianggap "
+        "sebagai salah satu penyebabnya, dan tidak sedikit pemerintah "
+        "daerah yang mulai kesulitan mempertahankan ekonomi wilayahnya. "
+        "Langkah-langkah fundamental sangat mendesak diperlukan.",
+        [
+            ("地方都市で特に深刻な問題は何ですか。", ["人口減少", "交通渋滞", "環境汚染", "物価上昇"], 0),
+            ("一因とされているのは何ですか。", ["若者の都市部への流出", "高齢者の増加", "出生率の上昇", "外国人の増加"], 0),
+            ("何が急がれていますか。", ["抜本的な対策", "都市部の開発", "若者の教育", "観光の促進"], 0),
+        ],
+    ),
+    (
+        "gurobaru_rinri",
+        "Artikel tentang Etika Bisnis Global",
+        "グローバル企業には、利益の追求だけでなく、社会的責任を果たす"
+        "ことも強く求められるようになった。労働環境や環境保護への配慮が"
+        "不十分な企業は、消費者からの信頼を失うリスクを負うことになる。",
+        "Perusahaan global kini dituntut kuat bukan hanya mengejar "
+        "keuntungan, tapi juga memenuhi tanggung jawab sosial. "
+        "Perusahaan yang kurang memperhatikan lingkungan kerja dan "
+        "perlindungan lingkungan hidup, akan menanggung risiko "
+        "kehilangan kepercayaan dari konsumen.",
+        [
+            ("グローバル企業に何が求められるようになりましたか。", ["社会的責任を果たすこと", "利益だけを追求すること", "従業員を減らすこと", "広告を増やすこと"], 0),
+            ("何への配慮が不十分だとリスクがありますか。", ["労働環境や環境保護", "商品のデザイン", "価格設定", "店舗の場所"], 0),
+            ("そのリスクとは何ですか。", ["消費者からの信頼を失うこと", "利益が増えること", "従業員が増えること", "株価が上がること"], 0),
+        ],
+    ),
+    (
+        "seikou_teigi",
+        "Esai tentang Definisi Kesuksesan",
+        "若い頃は、成功とは高い地位やお金を得ることだと信じていた。しかし、"
+        "年を重ねるにつれ、日々の小さな幸せを大切にできることこそが、"
+        "真の成功なのではないかと考えるようになった。人それぞれ、成功の"
+        "形は異なるのだろう。",
+        "Saat masih muda, saya percaya bahwa kesuksesan adalah "
+        "mendapatkan posisi tinggi atau uang. Namun, seiring "
+        "bertambahnya usia, saya mulai berpikir bahwa bisa menghargai "
+        "kebahagiaan kecil sehari-hari itulah kesuksesan yang "
+        "sebenarnya. Mungkin bentuk kesuksesan berbeda-beda bagi setiap "
+        "orang.",
+        [
+            ("若い頃、筆者は成功をどう考えていましたか。", ["高い地位やお金を得ること", "家族を持つこと", "有名になること", "旅行すること"], 0),
+            ("年を重ねて、何が真の成功だと考えるようになりましたか。", ["日々の小さな幸せを大切にできること", "もっとお金を稼ぐこと", "もっと働くこと", "有名になること"], 0),
+            ("筆者は成功についてどう思っていますか。", ["人それぞれ形が異なる", "誰にとっても同じだ", "お金だけが基準だ", "意味がない"], 0),
         ],
     ),
 ]
@@ -1117,6 +1652,209 @@ N1_ENTRIES = [
             ("日本社会で何が進んでいますか。", ["少子高齢化", "人口増加", "経済成長", "都市化"], 0),
             ("何が増えつつありますか。", ["従来の価値観では立ち行かない領域", "若者の数", "仕事の種類", "休みの日数"], 0),
             ("筆者は今後何が求められると考えていますか。", ["柔軟に制度を見直していく姿勢", "現状維持に固執する姿勢", "変化を完全に止めること", "過去に戻ること"], 0),
+        ],
+    ),
+    (
+        "jiyuu_no_imi",
+        "Esai tentang Makna Kebebasan",
+        "自由とは何かを追求すればするほど、その定義の曖昧さに気づかされる。"
+        "何ものにも縛られないことを自由と呼ぶ人もいれば、責任を全うした"
+        "上で得られる境地こそが真の自由だと説く者もいる。容易に答えの出"
+        "ない問いであるがゆえに、人は生涯をかけてそれを探求し続けるのか"
+        "もしれない。",
+        "Semakin saya mengejar apa itu kebebasan, semakin saya "
+        "disadarkan akan ambiguitas definisinya. Ada yang menyebut "
+        "kebebasan sebagai tidak terikat oleh apa pun, ada pula yang "
+        "berpendapat bahwa keadaan yang diperoleh setelah memenuhi "
+        "tanggung jawab itulah kebebasan sejati. Justru karena ini "
+        "pertanyaan yang tidak mudah dijawab, mungkin manusia terus "
+        "mencarinya seumur hidup.",
+        [
+            ("自由を追求すればするほど何に気づかされますか。", ["定義の曖昧さ", "お金の大切さ", "時間の速さ", "友情の価値"], 0),
+            ("ある人にとって自由とは何ですか。", ["何ものにも縛られないこと", "責任を全うすること", "お金を持つこと", "有名になること"], 0),
+            ("別の考え方では、真の自由とは何ですか。", ["責任を全うした上で得られる境地", "完全な孤独", "経済的な成功", "他人からの評価"], 0),
+        ],
+    ),
+    (
+        "ushinawareta_isan",
+        "Refleksi tentang Warisan Budaya yang Hilang",
+        "古い町並みが次々と取り壊され、近代的な建物に姿を変えていく様子を"
+        "目の当たりにするたび、言いようのない喪失感に襲われる。効率や"
+        "利便性を追求するあまり、先人たちが築き上げてきた文化的財産を"
+        "軽視してはいないだろうか。開発と保存のバランスを、今一度真剣に"
+        "考える必要があるのではないかと痛感する。",
+        "Setiap kali menyaksikan bangunan kota lama dirobohkan satu per "
+        "satu dan berubah menjadi bangunan modern, saya diserang rasa "
+        "kehilangan yang tak terungkapkan. Bukankah kita terlalu "
+        "mengejar efisiensi dan kepraktisan sehingga meremehkan warisan "
+        "budaya yang dibangun oleh para pendahulu? Saya sangat menyadari "
+        "perlunya memikirkan kembali dengan serius keseimbangan antara "
+        "pembangunan dan pelestarian.",
+        [
+            ("筆者は何を目の当たりにしていますか。", ["古い町並みが取り壊される様子", "新しい町並みが作られる喜び", "人口が増える様子", "自然が回復する様子"], 0),
+            ("筆者はどんな感情に襲われますか。", ["言いようのない喪失感", "大きな喜び", "強い怒り", "安心感"], 0),
+            ("筆者は何を真剣に考える必要があると述べていますか。", ["開発と保存のバランス", "開発をすべて止めること", "保存をすべてやめること", "何もしないこと"], 0),
+        ],
+    ),
+    (
+        "shouhi_shakai_hihan",
+        "Kritik tentang Konsumerisme Modern",
+        "次々と新しい商品が生み出され、消費を煽られる現代社会において、"
+        "私たちは本当に必要なものと、単に欲望を刺激されて欲しくなった"
+        "だけのものとを見分ける力を失いつつあるのではないか。物にあふれた"
+        "生活が、必ずしも心の豊かさを意味するとは限らないということを、"
+        "私たちは今一度思い出すべきであろう。",
+        "Dalam masyarakat modern di mana produk baru diciptakan secara "
+        "terus-menerus dan konsumsi terus didorong, bukankah kita mulai "
+        "kehilangan kemampuan untuk membedakan antara apa yang benar-"
+        "benar kita butuhkan dan apa yang hanya diinginkan karena "
+        "keinginan yang terstimulasi? Kita seharusnya mengingat kembali "
+        "bahwa kehidupan yang berlimpah barang tidak selalu berarti "
+        "kekayaan hati.",
+        [
+            ("現代社会で私たちが失いつつある力は何ですか。", ["本当に必要なものを見分ける力", "お金を稼ぐ力", "商品を作る力", "話す力"], 0),
+            ("筆者は物にあふれた生活について、どう述べていますか。", ["心の豊かさを意味するとは限らない", "必ず心を豊かにする", "何の意味もない", "誰にとっても幸せだ"], 0),
+            ("筆者は何を思い出すべきだと考えていますか。", ["物と心の豊かさの違い", "もっと消費すべきこと", "商品の値段", "広告の力"], 0),
+        ],
+    ),
+    (
+        "shizen_to_ningen",
+        "Diskusi tentang Hubungan Manusia dan Alam",
+        "人間は長らく、自然を征服し、利用する対象としてのみ捉えてきた"
+        "側面がある。しかし、度重なる自然災害を経験する中で、人間もまた"
+        "自然の一部に過ぎないという謙虚な認識を取り戻しつつあるように"
+        "思われる。自然と共生する道を模索することこそ、これからの人類に"
+        "課せられた責務ではないだろうか。",
+        "Manusia telah lama memandang alam hanya sebagai objek untuk "
+        "ditaklukkan dan dimanfaatkan. Namun, di tengah mengalami "
+        "bencana alam yang berulang kali, tampaknya manusia mulai "
+        "mendapatkan kembali kesadaran rendah hati bahwa manusia juga "
+        "hanyalah bagian dari alam. Bukankah mencari jalan untuk hidup "
+        "berdampingan dengan alam adalah tanggung jawab yang dibebankan "
+        "pada umat manusia ke depannya?",
+        [
+            ("人間は長らく自然をどう捉えてきましたか。", ["征服し利用する対象", "神聖なもの", "恐れるべきもの", "無関係なもの"], 0),
+            ("度重なる自然災害を経験して、人間はどんな認識を取り戻しつつありますか。", ["自然の一部に過ぎないという謙虚な認識", "自然を完全に支配できるという自信", "自然への無関心", "自然への恐怖だけ"], 0),
+            ("筆者は何が人類に課せられた責務だと考えていますか。", ["自然と共生する道を模索すること", "自然を完全に征服すること", "自然から離れること", "何もしないこと"], 0),
+        ],
+    ),
+    (
+        "gengo_aidentiti",
+        "Diskusi tentang Bahasa dan Identitas",
+        "母語とは、単なるコミュニケーションの道具にとどまらず、自己の"
+        "アイデンティティを形成する根幹をなすものである。異なる文化圏で"
+        "暮らす中で母語を失いかけた経験を持つ者ほど、その重みを痛感する"
+        "のかもしれない。言葉を守ることは、自分自身を守ることに他なら"
+        "ないのである。",
+        "Bahasa ibu bukan sekadar alat komunikasi semata, tetapi menjadi "
+        "dasar yang membentuk identitas diri. Mereka yang memiliki "
+        "pengalaman hampir kehilangan bahasa ibunya saat tinggal di "
+        "lingkungan budaya yang berbeda mungkin lebih menyadari betapa "
+        "beratnya hal itu. Menjaga bahasa tidak lain adalah menjaga diri "
+        "sendiri.",
+        [
+            ("母語とは何にとどまらないものですか。", ["単なるコミュニケーションの道具", "アイデンティティの根幹", "文化の一部", "教育の手段"], 0),
+            ("誰がその重みを痛感するかもしれませんか。", ["母語を失いかけた経験を持つ者", "母語しか話せない者", "外国語が得意な者", "教師"], 0),
+            ("言葉を守ることは何に他なりませんか。", ["自分自身を守ること", "お金を守ること", "家族を守ること", "国を守ること"], 0),
+        ],
+    ),
+    (
+        "jinsei_no_tabi",
+        "Refleksi tentang Perjalanan Hidup",
+        "振り返れば、人生とは予測不可能な出来事の連続であった。計画通りに"
+        "進んだことなど、むしろ少なかったように思う。しかし、その予測でき"
+        "なさこそが、人生に彩りを与えてくれていたのではないかと、今に"
+        "なって思う。不確実性を恐れるのではなく、受け入れる姿勢が、豊かな"
+        "人生につながるのかもしれない。",
+        "Jika saya renungkan, hidup adalah rangkaian peristiwa yang tak "
+        "terduga. Saya pikir hal-hal yang berjalan sesuai rencana justru "
+        "sedikit. Namun, saya sekarang berpikir bahwa justru "
+        "ketidakterprediksian itulah yang memberi warna pada kehidupan. "
+        "Sikap menerima ketidakpastian, bukan menakutinya, mungkin akan "
+        "mengarah pada kehidupan yang kaya.",
+        [
+            ("筆者は人生をどう振り返っていますか。", ["予測不可能な出来事の連続", "計画通りに進んだもの", "単調なもの", "簡単なもの"], 0),
+            ("筆者は何が人生に彩りを与えたと考えていますか。", ["予測できなさ", "計画性", "お金", "他人からの評価"], 0),
+            ("筆者はどんな姿勢が豊かな人生につながると考えていますか。", ["不確実性を受け入れる姿勢", "不確実性を避ける姿勢", "完璧な計画を立てる姿勢", "何も考えない姿勢"], 0),
+        ],
+    ),
+    (
+        "chinmoku_no_chie",
+        "Esai tentang Keheningan dan Kebijaksanaan",
+        "言葉を発することよりも、沈黙を保つことの方が難しい場面が人生には"
+        "多々ある。すべてを語らずとも伝わるものがあるという事実に、若い"
+        "頃の私は気づいていなかった。年齢を重ねた今だからこそ、沈黙の中に"
+        "宿る豊かな意味を感じ取れるようになったのかもしれない。",
+        "Dalam hidup, ada banyak momen di mana menjaga keheningan lebih "
+        "sulit daripada mengeluarkan kata-kata. Dulu saat masih muda, "
+        "saya tidak menyadari fakta bahwa ada hal yang tersampaikan "
+        "tanpa harus diucapkan semuanya. Mungkin justru karena sekarang "
+        "usia saya sudah bertambah, saya bisa merasakan makna kaya yang "
+        "bersemayam dalam keheningan.",
+        [
+            ("人生において何の方が難しい場面が多いですか。", ["沈黙を保つこと", "言葉を発すること", "歩くこと", "食べること"], 0),
+            ("若い頃、筆者は何に気づいていませんでしたか。", ["すべてを語らずとも伝わるものがあること", "言葉の大切さ", "お金の価値", "時間の速さ"], 0),
+            ("年齢を重ねた今、筆者は何を感じ取れるようになりましたか。", ["沈黙の中に宿る豊かな意味", "言葉の無意味さ", "若さの価値", "孤独の辛さ"], 0),
+        ],
+    ),
+    (
+        "koten_hihyou",
+        "Kritik Sastra Klasik",
+        "この古典作品が数百年の時を経てもなお読み継がれている理由は、"
+        "人間の本質を鋭く捉えた普遍性にあると言えよう。時代背景こそ"
+        "異なれど、登場人物たちが抱える葛藤や苦悩は、現代を生きる私たちの"
+        "心にも深く響くものがある。",
+        "Alasan mengapa karya klasik ini masih terus dibaca meskipun "
+        "sudah melewati ratusan tahun bisa dikatakan terletak pada "
+        "universalitasnya yang menangkap esensi manusia secara tajam. "
+        "Meskipun latar belakang zamannya berbeda, konflik dan "
+        "penderitaan yang dialami para tokoh juga bergema dalam hati "
+        "kita yang hidup di zaman modern.",
+        [
+            ("この古典作品が読み継がれている理由は何だと言われていますか。", ["人間の本質を捉えた普遍性", "面白い挿絵", "短い文章", "有名な作者"], 0),
+            ("時代背景はどうですか。", ["異なる", "同じ", "分からない", "関係ない"], 0),
+            ("登場人物たちの葛藤や苦悩は、現代の私たちにどう響きますか。", ["深く響く", "全く響かない", "少しだけ響く", "意味がない"], 0),
+        ],
+    ),
+    (
+        "genjitsu_to_gensou",
+        "Esai tentang Batas Antara Realita dan Ilusi",
+        "夢と現実の境界線が曖昧になる瞬間を、誰もが一度は経験したことが"
+        "あるのではないだろうか。テクノロジーの発展により、仮想現実と"
+        "現実世界の境目はますます不明瞭になりつつある。何が真実で何が"
+        "虚構であるかを見極める力は、今後さらに重要性を増していくに違い"
+        "ない。",
+        "Bukankah setiap orang setidaknya pernah mengalami momen di mana "
+        "batas antara mimpi dan realita menjadi kabur? Dengan "
+        "perkembangan teknologi, batas antara realitas virtual dan dunia "
+        "nyata semakin tidak jelas. Kemampuan untuk membedakan apa yang "
+        "benar dan apa yang fiktif pasti akan semakin penting ke "
+        "depannya.",
+        [
+            ("誰もが一度は経験したことがあるのは何ですか。", ["夢と現実の境界線が曖昧になる瞬間", "完全な現実", "完全な夢", "何も感じないこと"], 0),
+            ("テクノロジーの発展により何が起きていますか。", ["仮想現実と現実世界の境目が不明瞭になる", "現実がなくなる", "夢がなくなる", "何も変わらない"], 0),
+            ("今後何がさらに重要になると述べられていますか。", ["真実と虚構を見極める力", "お金を稼ぐ力", "技術を作る力", "忘れる力"], 0),
+        ],
+    ),
+    (
+        "seishi_no_tetsugaku",
+        "Refleksi Filosofis tentang Kematian dan Kehidupan",
+        "死を意識することなくして、生を真に実感することはできないのかも"
+        "しれない。限りある時間だからこそ、一瞬一瞬が尊いものとして輝きを"
+        "放つのである。死を忌避すべきものとしてではなく、生の一部として"
+        "受け入れる時、人は初めて、今このときを精一杯生きようとする覚悟を"
+        "持てるのではないだろうか。",
+        "Mungkin kita tidak bisa benar-benar merasakan kehidupan tanpa "
+        "menyadari kematian. Justru karena waktu yang terbatas, setiap "
+        "momen memancarkan kilau sebagai sesuatu yang berharga. Ketika "
+        "manusia menerima kematian bukan sebagai sesuatu yang harus "
+        "dihindari, melainkan sebagai bagian dari kehidupan, mungkin "
+        "saat itulah untuk pertama kalinya seseorang bisa memiliki tekad "
+        "untuk menjalani saat ini sepenuh hati.",
+        [
+            ("筆者は何を意識することが生を実感するために必要だと述べていますか。", ["死", "お金", "名声", "若さ"], 0),
+            ("限りある時間だからこそ、何が輝きを放ちますか。", ["一瞬一瞬", "過去の思い出", "未来の計画", "他人の人生"], 0),
+            ("死をどう受け入れる時、人は覚悟を持てますか。", ["生の一部として", "完全に忌避すべきものとして", "恐れるべきものとして", "無視すべきものとして"], 0),
         ],
     ),
 ]

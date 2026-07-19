@@ -46,6 +46,16 @@ N4_TITLES = [
     "Balasan Undangan",
     "Pengumuman Pindah Alamat",
     "Artikel Tips Kesehatan",
+    "Pengumuman Perpustakaan Baru Dibuka",
+    "Resep Sederhana",
+    "Pengalaman Hari Pertama Kerja",
+    "Panduan Naik Kereta",
+    "Iklan Kursus Bahasa",
+    "Email Konfirmasi Reservasi",
+    "Blog tentang Hobi Baru",
+    "Pengumuman Perbaikan Jalan",
+    "Surat dari Anak yang Kuliah di Luar Negeri",
+    "Artikel tentang Manfaat Olahraga",
 ]
 
 N3_TITLES = [
@@ -59,6 +69,16 @@ N3_TITLES = [
     "Teks Sejarah Singkat",
     "Memo Rapat Kerja",
     "Cerita Pertukaran Budaya Internasional",
+    "Artikel tentang Kebiasaan Makan Sehat",
+    "Esai tentang Perubahan Musim",
+    "Panduan Etika Bisnis di Jepang",
+    "Artikel tentang Perkembangan Kota",
+    "Pengalaman Kegiatan Sukarelawan",
+    "Perbandingan Media Tradisional dan Digital",
+    "Esai tentang Persahabatan",
+    "Panduan Prosedur Darurat",
+    "Artikel tentang Tren Pariwisata",
+    "Cerita tentang Mengatasi Kegagalan",
 ]
 
 N2_TITLES = [
@@ -72,6 +92,16 @@ N2_TITLES = [
     "Kebijakan Medis",
     "Strategi Perusahaan",
     "Esai tentang Pendidikan",
+    "Laporan Riset Pasar",
+    "Editorial tentang Pendidikan Anak",
+    "Artikel tentang Inovasi Teknologi Ramah Lingkungan",
+    "Esai tentang Keseimbangan Kerja dan Kehidupan",
+    "Analisis Tren Konsumen",
+    "Artikel tentang Diplomasi Budaya",
+    "Esai tentang Warisan Keluarga",
+    "Laporan tentang Perubahan Demografi",
+    "Artikel tentang Etika Bisnis Global",
+    "Esai tentang Definisi Kesuksesan",
 ]
 
 N1_TITLES = [
@@ -85,6 +115,16 @@ N1_TITLES = [
     "Diskusi Filosofis tentang Etika Sains",
     "Kritik Seni Sastra",
     "Kajian Perubahan Sosial",
+    "Esai tentang Makna Kebebasan",
+    "Refleksi tentang Warisan Budaya yang Hilang",
+    "Kritik tentang Konsumerisme Modern",
+    "Diskusi tentang Hubungan Manusia dan Alam",
+    "Diskusi tentang Bahasa dan Identitas",
+    "Refleksi tentang Perjalanan Hidup",
+    "Esai tentang Keheningan dan Kebijaksanaan",
+    "Kritik Sastra Klasik",
+    "Esai tentang Batas Antara Realita dan Ilusi",
+    "Refleksi Filosofis tentang Kematian dan Kehidupan",
 ]
 
 LEVEL_META = {
