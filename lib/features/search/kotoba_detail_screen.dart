@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/kotoba_entry.dart';
-import '../../data/models/speech_register.dart';
 import 'widgets/jlpt_badge.dart';
 
 class KotobaDetailScreen extends ConsumerWidget {
@@ -84,20 +83,6 @@ class KotobaDetailScreen extends ConsumerWidget {
                 style: const TextStyle(fontSize: 16, color: AppColors.textNavy),
               ),
             ),
-            if (entry.registers.isNotEmpty) ...[
-              const SizedBox(height: 24),
-              _SectionTitle('Register / Cara Pakai'),
-              const SizedBox(height: 8),
-              ...SpeechRegister.values
-                  .where((r) => entry.registers.containsKey(r))
-                  .map(
-                    (r) => _RegisterTile(
-                      register: r,
-                      value: entry.registers[r]!,
-                      onSpeak: () => ref.read(ttsServiceProvider).speak(entry.registers[r]!),
-                    ),
-                  ),
-            ],
             if (entry.sentenceExample != null) ...[
               const SizedBox(height: 24),
               _SectionTitle('Contoh Kalimat'),
@@ -154,55 +139,6 @@ class _AudioButton extends StatelessWidget {
           padding: EdgeInsets.all(14),
           child: Icon(Icons.volume_up, color: Colors.white, size: 24),
         ),
-      ),
-    );
-  }
-}
-
-class _RegisterTile extends StatelessWidget {
-  final SpeechRegister register;
-  final String value;
-  final VoidCallback onSpeak;
-
-  const _RegisterTile({
-    required this.register,
-    required this.value,
-    required this.onSpeak,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(bottom: 8),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: AppColors.cardWhite,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Row(
-        children: [
-          Text(register.emoji, style: const TextStyle(fontSize: 20)),
-          const SizedBox(width: 10),
-          SizedBox(
-            width: 64,
-            child: Text(
-              register.label,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: AppColors.textNavy,
-                fontSize: 13,
-              ),
-            ),
-          ),
-          Expanded(
-            child: Text(value, style: const TextStyle(color: AppColors.textNavy)),
-          ),
-          IconButton(
-            icon: const Icon(Icons.volume_up, size: 18, color: AppColors.primaryCoral),
-            onPressed: onSpeak,
-          ),
-        ],
       ),
     );
   }

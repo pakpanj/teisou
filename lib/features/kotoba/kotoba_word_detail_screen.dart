@@ -5,7 +5,6 @@ import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/kotoba_entry.dart';
 import '../../data/models/sentence_example.dart';
-import '../../data/models/speech_register.dart';
 import 'kotoba_providers.dart';
 import 'widgets/kotoba_image.dart';
 
@@ -110,19 +109,6 @@ class _KotobaWordDetailScreenState extends ConsumerState<KotobaWordDetailScreen>
                       busy: _togglingLearned,
                       onTap: _togglingLearned ? null : () => _toggleLearned(isLearned),
                     ),
-                    if (entry.registers.isNotEmpty) ...[
-                      const SizedBox(height: 24),
-                      const _SectionTitle('Formal / Informal / Keigo'),
-                      const SizedBox(height: 8),
-                      ...SpeechRegister.values
-                          .where((r) => entry.registers.containsKey(r))
-                          .map((r) => _RegisterRow(
-                                register: r,
-                                value: entry.registers[r]!,
-                                onSpeak: () =>
-                                    ref.read(ttsServiceProvider).speak(entry.registers[r]!),
-                              )),
-                    ],
                     if (entry.sentenceExamples.isNotEmpty) ...[
                       const SizedBox(height: 24),
                       const _SectionTitle('Contoh Kalimat'),
@@ -282,54 +268,6 @@ class _LearnedButton extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _RegisterRow extends StatelessWidget {
-  final SpeechRegister register;
-  final String value;
-  final VoidCallback onSpeak;
-
-  const _RegisterRow({required this.register, required this.value, required this.onSpeak});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(bottom: 8),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: AppColors.cardWhite,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Row(
-        children: [
-          Text(register.emoji, style: const TextStyle(fontSize: 18)),
-          const SizedBox(width: 10),
-          SizedBox(
-            width: 56,
-            child: Text(
-              register.label,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: AppColors.textNavy,
-                fontSize: 12,
-              ),
-            ),
-          ),
-          Expanded(
-            child: Text(
-              value,
-              style: const TextStyle(color: AppColors.textNavy, fontSize: 13),
-            ),
-          ),
-          IconButton(
-            icon: const Icon(Icons.volume_up, size: 18, color: AppColors.primaryCoral),
-            onPressed: onSpeak,
-          ),
-        ],
       ),
     );
   }
