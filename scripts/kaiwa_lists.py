@@ -1620,6 +1620,24 @@ KELUARGA_N2_TITLES = [
     "Menjelaskan Filosofi Membangun Keluarga Sendiri di Masa Depan",
 ]
 
+BANK_N2_TITLES = [
+    "Menjelaskan Alasan Cemas Setiap Kali Memeriksa Saldo Rekening",
+    "Mendiskusikan Filosofi Pribadi tentang Uang dan Kebahagiaan",
+    "Menceritakan Pengalaman Berhutang demi Menjaga Gengsi",
+    "Membicarakan Dampak Kebiasaan Menabung Orang Tua terhadap Diri Sendiri",
+    "Mendiskusikan Fenomena Generasi Muda yang Sulit Menabung",
+    "Menceritakan Pengalaman Pertama Kali Mengelola Keuangan Sendiri",
+    "Menjelaskan Dilema Antara Menabung dan Membantu Keluarga secara Finansial",
+    "Membicarakan Tekanan Sosial untuk Terlihat Mapan secara Finansial",
+    "Mendiskusikan Pentingnya Merdeka secara Finansial di Usia Muda",
+    "Menceritakan Pengalaman Menyesal karena Gaya Hidup Konsumtif",
+    "Menjelaskan Alasan Memilih Hidup Sederhana Meski Mampu",
+    "Membicarakan Dampak Trauma Finansial Keluarga terhadap Kebiasaan Menabung",
+    "Mendiskusikan Etika Meminjamkan Uang kepada Teman",
+    "Menceritakan Pengalaman Belajar dari Kesalahan Finansial Masa Lalu",
+    "Menjelaskan Filosofi Mengelola Uang untuk Ketenangan Pikiran",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1687,6 +1705,7 @@ CATEGORY_META = {
     "kantor_pos_n2": ("Di Kantor Pos", "📮", "N2"),
     "liburan_n2": ("Rencana Liburan", "🏖️", "N2"),
     "keluarga_n2": ("Keluarga", "👨‍👩‍👧", "N2"),
+    "bank_n2": ("Di Bank", "🏦", "N2"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1756,6 +1775,7 @@ AVAILABLE_CATEGORIES = {
     "kantor_pos_n2": KANTOR_POS_N2_TITLES,
     "liburan_n2": LIBURAN_N2_TITLES,
     "keluarga_n2": KELUARGA_N2_TITLES,
+    "bank_n2": BANK_N2_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1837,6 +1857,7 @@ _ALL_TITLE_LISTS = {
     "KANTOR_POS_N2_TITLES": KANTOR_POS_N2_TITLES,
     "LIBURAN_N2_TITLES": LIBURAN_N2_TITLES,
     "KELUARGA_N2_TITLES": KELUARGA_N2_TITLES,
+    "BANK_N2_TITLES": BANK_N2_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"

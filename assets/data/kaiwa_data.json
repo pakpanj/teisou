@@ -250922,5 +250922,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_cemas_cek_saldo_n2",
+    "title": "Menjelaskan Alasan Cemas Setiap Kali Memeriksa Saldo Rekening",
+    "category": "bank_n2",
+    "description": "Kamu menjelaskan ke teman alasan cemas setiap kali memeriksa saldo rekening.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、口座残高をよく確認してるみたいだね。",
+          "romaji": "Saikin, kouza zandaka wo yoku kakunin shiteru mitai da ne.",
+          "translation": "Akhir-akhir ini kamu kelihatan sering memeriksa saldo rekening ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_cemas_cek_saldo_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、確認するたびに、なんだか落ち着かない気持ちになるんだ。",
+            "romaji": "Un, kakunin suru tabi ni, nandaka ochitsukanai kimochi ni naru n da.",
+            "translation": "Iya, setiap kali memeriksa, entah kenapa aku jadi merasa gelisah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ううん、残高なんて、一度も確認したことないよ。",
+            "romaji": "Uun, zandaka nante, ichido mo kakunin shita koto nai yo.",
+            "translation": "Tidak, belum pernah sama sekali memeriksa saldo.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何がそんなに不安にさせるの？",
+          "romaji": "Nani ga sonna ni fuan ni saseru no?",
+          "translation": "Apa yang membuatmu begitu cemas?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_cemas_cek_saldo_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "収入が減るたびに、生活が成り立たなくなるんじゃないかって怖くなるんだ。",
+            "romaji": "Shuunyuu ga heru tabi ni, seikatsu ga naritatanaku naru n janai ka tte kowaku naru n da.",
+            "translation": "Setiap kali penghasilan berkurang, aku jadi takut kalau-kalau hidupku tidak akan cukup lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "収入が減っても、全く不安を感じたことはないよ。",
+            "romaji": "Shuunyuu ga hette mo, mattaku fuan wo kanjita koto wa nai yo.",
+            "translation": "Meski penghasilan berkurang, aku sama sekali belum pernah merasa cemas.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "確認する頻度を減らしてみたら？",
+          "romaji": "Kakunin suru hindo wo herashite mitara?",
+          "translation": "Bagaimana kalau coba mengurangi frekuensi memeriksanya?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_cemas_cek_saldo_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "確認するたびに気にしてしまうから、見る回数を決めてみようと思ってる。",
+            "romaji": "Kakunin suru tabi ni ki ni shite shimau kara, miru kaisuu wo kimete miyou to omotteru.",
+            "translation": "Karena aku jadi khawatir setiap kali memeriksa, aku berpikir untuk menetapkan jumlah kali melihatnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、確認する回数はもっと増やそうと思ってるよ。",
+            "romaji": "Iya, kakunin suru kaisuu wa motto fuyasou to omotteru yo.",
+            "translation": "Tidak, aku berniat menambah frekuensi memeriksanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お金の不安、根が深そうだね。",
+          "romaji": "Okane no fuan, ne ga fukasou da ne.",
+          "translation": "Kecemasan soal uang itu sepertinya berakar dalam ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_cemas_cek_saldo_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、少しずつでも、お金との付き合い方を見直していきたいな。",
+            "romaji": "Un, sukoshizutsu demo, okane to no tsukiaikata wo minaoshite ikitai na.",
+            "translation": "Iya, aku ingin meninjau ulang cara berhubungan dengan uang sedikit demi sedikit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、お金の不安なんて、全く考えたこともないよ。",
+            "romaji": "Iya, okane no fuan nante, mattaku kangaeta koto mo nai yo.",
+            "translation": "Tidak, belum pernah sama sekali memikirkan kecemasan soal uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "焦らなくて大丈夫だよ。",
+          "romaji": "Aseranakute daijoubu da yo.",
+          "translation": "Tidak apa-apa, tidak perlu terburu-buru."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_cemas_cek_saldo_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に大丈夫だとは思わないよ。",
+            "romaji": "Betsu ni daijoubu da to wa omowanai yo.",
+            "translation": "Kupikir sama sekali tidak apa-apa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_filosofi_uang_kebahagiaan_n2",
+    "title": "Mendiskusikan Filosofi Pribadi tentang Uang dan Kebahagiaan",
+    "category": "bank_n2",
+    "description": "Kamu dan teman mendiskusikan filosofi pribadi tentang hubungan antara uang dan kebahagiaan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お金があれば幸せになれると思う？",
+          "romaji": "Okane ga areba shiawase ni nareru to omou?",
+          "translation": "Menurutmu kalau punya uang bisa jadi bahagia?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_filosofi_uang_kebahagiaan_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いや、お金があるからといって、必ずしも幸せになれるとは限らないと思うよ。",
+            "romaji": "Iya, okane ga aru kara to itte, kanarazu shimo shiawase ni nareru to wa kagiranai to omou yo.",
+            "translation": "Tidak, kupikir belum tentu bisa bahagia hanya karena punya uang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、お金さえあれば、間違いなく幸せになれると思うよ。",
+            "romaji": "Un, okane sae areba, machigainaku shiawase ni nareru to omou yo.",
+            "translation": "Iya, kupikir asal punya uang, pasti bisa bahagia.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "じゃあ、何が幸せに繋がると思う？",
+          "romaji": "Jaa, nani ga shiawase ni tsunagaru to omou?",
+          "translation": "Kalau begitu, menurutmu apa yang mengarah ke kebahagiaan?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_filosofi_uang_kebahagiaan_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "十分な蓄えがあることが、安心には繋がっても、幸せとは限らない気がするよ。",
+            "romaji": "Juubun na takuwae ga aru koto ga, anshin ni wa tsunagatte mo, shiawase to wa kagiranai ki ga suru yo.",
+            "translation": "Punya tabungan yang cukup mungkin mengarah ke rasa tenang, tapi rasanya belum tentu itu kebahagiaan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "貯金額の多さだけが、幸せの基準だと思うよ。",
+            "romaji": "Chokingaku no oosa dake ga, shiawase no kijun da to omou yo.",
+            "translation": "Hanya besarnya jumlah tabungan yang jadi standar kebahagiaan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お金より大事なものがあるってこと？",
+          "romaji": "Okane yori daiji na mono ga aru tte koto?",
+          "translation": "Maksudnya ada yang lebih penting dari uang?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_filosofi_uang_kebahagiaan_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、人との繋がりも、お金では買えるとは限らないと思ってる。",
+            "romaji": "Un, hito to no tsunagari mo, okane de wa kaeru to wa kagiranai to omotteru.",
+            "translation": "Iya, aku berpikir hubungan dengan orang lain juga belum tentu bisa dibeli dengan uang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、お金さえあれば、どんな繋がりも買えると思うよ。",
+            "romaji": "Iya, okane sae areba, donna tsunagari mo kaeru to omou yo.",
+            "translation": "Tidak, kupikir asal punya uang, hubungan apa pun bisa dibeli.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "バランスが大事ってことだね。",
+          "romaji": "Baransu ga daiji tte koto da ne.",
+          "translation": "Berarti keseimbangan itu penting ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_filosofi_uang_kebahagiaan_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、お金を軽視するわけじゃないけど、それが全てとは限らないよ。",
+            "romaji": "Sou da ne, okane wo keishi suru wake janai kedo, sore ga subete to wa kagiranai yo.",
+            "translation": "Benar juga, bukan berarti aku meremehkan uang, tapi itu belum tentu segalanya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、お金が全てだと思っているよ。",
+            "romaji": "Iya, okane ga subete da to omotte iru yo.",
+            "translation": "Tidak, aku berpikir uang adalah segalanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分なりの幸せの形があるんだね。",
+          "romaji": "Jibun nari no shiawase no katachi ga aru n da ne.",
+          "translation": "Ternyata ada bentuk kebahagiaan menurut versimu sendiri ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_filosofi_uang_kebahagiaan_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_berhutang_demi_gengsi_n2",
+    "title": "Menceritakan Pengalaman Berhutang demi Menjaga Gengsi",
+    "category": "bank_n2",
+    "description": "Kamu bercerita ke teman tentang pengalaman berhutang demi menjaga gengsi.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "前に無理して高いブランド品を買ったって言ってたよね。",
+          "romaji": "Mae ni muri shite takai burando hin wo katta tte itteta yo ne.",
+          "translation": "Kamu pernah bilang memaksakan diri membeli barang bermerek yang mahal ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_berhutang_demi_gengsi_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、見栄を張りたいばかりに、分割払いまでして買ってしまったんだ。",
+            "romaji": "Un, mie wo haritai bakari ni, bunkatsu barai made shite katte shimatta n da.",
+            "translation": "Iya, hanya karena ingin terlihat keren, aku sampai membelinya dengan cicilan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、ブランド品なんて、一度も買ったことないよ。",
+            "romaji": "Iya, burando hin nante, ichido mo katta koto nai yo.",
+            "translation": "Tidak, belum pernah sama sekali membeli barang bermerek.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "後悔してる？",
+          "romaji": "Koukai shiteru?",
+          "translation": "Menyesal?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_berhutang_demi_gengsi_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、周りと比べたいばかりに、無理な出費をしたことを後悔してるよ。",
+            "romaji": "Un, mawari to kurabetai bakari ni, muri na shuppi wo shita koto wo koukai shiteru yo.",
+            "translation": "Iya, aku menyesal melakukan pengeluaran yang tidak masuk akal hanya karena ingin dibandingkan dengan orang sekitar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く後悔していないし、また同じことをすると思うよ。",
+            "romaji": "Mattaku koukai shite inai shi, mata onaji koto wo suru to omou yo.",
+            "translation": "Sama sekali tidak menyesal, dan kupikir akan melakukan hal yang sama lagi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "なんでそんなに見栄を張りたくなったの？",
+          "romaji": "Nande sonna ni mie wo haritaku natta no?",
+          "translation": "Kenapa jadi sangat ingin terlihat keren begitu?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_berhutang_demi_gengsi_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "劣っていると思われたくないばかりに、無理してでも張り合おうとしてたんだ。",
+            "romaji": "Ototte iru to omowaretakunai bakari ni, muri shite demo hariaou to shiteta n da.",
+            "translation": "Hanya karena tidak ingin dianggap lebih rendah, aku mencoba bersaing meski memaksakan diri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に理由はなくて、ただ欲しかっただけだよ。",
+            "romaji": "Toku ni riyuu wa nakute, tada hoshikatta dake da yo.",
+            "translation": "Tidak ada alasan khusus, hanya karena ingin saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "これからはどうするつもり？",
+          "romaji": "Kore kara wa dou suru tsumori?",
+          "translation": "Ke depannya mau bagaimana?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_berhutang_demi_gengsi_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "見栄を張るばかりに無理をするのはやめて、身の丈に合った生活をするよ。",
+            "romaji": "Mie wo haru bakari ni muri wo suru no wa yamete, mi no take ni atta seikatsu wo suru yo.",
+            "translation": "Aku akan berhenti memaksakan diri hanya demi gengsi, dan menjalani hidup sesuai kemampuanku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "これからも、見栄のためなら借金してでも買い物を続けるよ。",
+            "romaji": "Kore kara mo, mie no tame nara shakkin shite demo kaimono wo tsuzukeru yo.",
+            "translation": "Ke depannya pun, demi gengsi aku akan terus berbelanja meski harus berhutang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "これからは無理しないでね。",
+          "romaji": "Kore kara wa muri shinaide ne.",
+          "translation": "Mulai sekarang jangan memaksakan diri ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_berhutang_demi_gengsi_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pengaruh_menabung_orang_tua_n2",
+    "title": "Membicarakan Dampak Kebiasaan Menabung Orang Tua terhadap Diri Sendiri",
+    "category": "bank_n2",
+    "description": "Kamu membicarakan dengan teman dampak kebiasaan menabung orang tua terhadap kebiasaan finansialmu sendiri.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "貯金の仕方って、親の影響を受けてると思う？",
+          "romaji": "Chokin no shikata tte, oya no eikyou wo ukete ru to omou?",
+          "translation": "Menurutmu cara menabungmu terpengaruh orang tua?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_pengaruh_menabung_orang_tua_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、親のお金の使い方に応じて、自分の金銭感覚も形作られたと思うよ。",
+            "romaji": "Un, oya no okane no tsukaikata ni oujite, jibun no kinsen kankaku mo katachizukurareta to omou yo.",
+            "translation": "Iya, kupikir sesuai cara orang tuaku menggunakan uang, sense keuanganku sendiri juga terbentuk.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、親のお金の使い方なんて、全く見たことないよ。",
+            "romaji": "Iya, oya no okane no tsukaikata nante, mattaku mita koto nai yo.",
+            "translation": "Tidak, aku sama sekali belum pernah melihat bagaimana orang tuaku menggunakan uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にどんな影響があったの？",
+          "romaji": "Gutaiteki ni donna eikyou ga atta no?",
+          "translation": "Secara konkret pengaruh seperti apa yang ada?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_pengaruh_menabung_orang_tua_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "収入に応じて、無理のない範囲でしか使わない親の姿勢を、自然と真似するようになったよ。",
+            "romaji": "Shuunyuu ni oujite, muri no nai han'i de shika tsukawanai oya no shisei wo, shizen to mane suru you ni natta yo.",
+            "translation": "Aku secara alami jadi meniru sikap orang tuaku yang hanya menggunakan uang sesuai penghasilan dalam batas wajar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "親がどんな風にお金を使っていたか、全く記憶にないよ。",
+            "romaji": "Oya ga donna fuu ni okane wo tsukatte ita ka, mattaku kioku ni nai yo.",
+            "translation": "Aku sama sekali tidak ingat bagaimana orang tuaku menggunakan uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それはいい影響だね。",
+          "romaji": "Sore wa ii eikyou da ne.",
+          "translation": "Itu pengaruh yang baik ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_pengaruh_menabung_orang_tua_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、状況に応じて計画的に使う姿勢は、本当にありがたいと思ってるよ。",
+            "romaji": "Un, joukyou ni oujite keikakuteki ni tsukau shisei wa, hontou ni arigatai to omotteru yo.",
+            "translation": "Iya, aku benar-benar bersyukur dengan sikap menggunakan uang secara terencana sesuai situasi itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、悪い影響のほうがずっと大きかったと思うよ。",
+            "romaji": "Iya, warui eikyou no hou ga zutto ookikatta to omou yo.",
+            "translation": "Tidak, kupikir pengaruh buruknya jauh lebih besar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分の子供にも同じことを伝えたい？",
+          "romaji": "Jibun no kodomo ni mo onaji koto wo tsutaetai?",
+          "translation": "Ingin menyampaikan hal yang sama ke anakmu sendiri juga?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_pengaruh_menabung_orang_tua_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、収入に応じて計画的に使うことの大切さを、いつか伝えたいな。",
+            "romaji": "Un, shuunyuu ni oujite keikakuteki ni tsukau koto no taisetsusa wo, itsuka tsutaetai na.",
+            "translation": "Iya, aku ingin suatu saat menyampaikan pentingnya menggunakan uang secara terencana sesuai penghasilan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、お金のことは何も教えなくていいと思っているよ。",
+            "romaji": "Iya, okane no koto wa nanimo oshienakute ii to omotte iru yo.",
+            "translation": "Tidak, kupikir tidak perlu mengajarkan apa pun soal uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いい教えを受け継いだね。",
+          "romaji": "Ii oshie wo uketsuida ne.",
+          "translation": "Kamu mewarisi ajaran yang baik ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_pengaruh_menabung_orang_tua_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_generasi_muda_sulit_menabung_n2",
+    "title": "Mendiskusikan Fenomena Generasi Muda yang Sulit Menabung",
+    "category": "bank_n2",
+    "description": "Kamu dan teman mendiskusikan fenomena generasi muda yang sulit menabung.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近の若い世代、貯金が苦手な人が多いって聞くよね。",
+          "romaji": "Saikin no wakai sedai, chokin ga nigate na hito ga ooi tte kiku yo ne.",
+          "translation": "Katanya generasi muda sekarang banyak yang tidak pandai menabung ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_generasi_muda_sulit_menabung_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、物価が上がる一方で、給料はなかなか上がらない状況になりつつあるらしいよ。",
+            "romaji": "Un, bukka ga agaru ippou de, kyuuryou wa nakanaka agaranai joukyou ni naritsutsu aru rashii yo.",
+            "translation": "Iya, katanya sementara harga barang naik, gaji tidak kunjung naik — situasinya mulai mengarah ke sana.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、若い世代のほうが、貯金が得意な人が多いらしいよ。",
+            "romaji": "Iya, wakai sedai no hou ga, chokin ga tokui na hito ga ooi rashii yo.",
+            "translation": "Tidak, katanya generasi muda justru lebih banyak yang pandai menabung.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "貯金する余裕がないってこと？",
+          "romaji": "Chokin suru yoyuu ga nai tte koto?",
+          "translation": "Maksudnya tidak ada kelonggaran untuk menabung?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_generasi_muda_sulit_menabung_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、固定費だけで収入の大半が消えていく人が増えつつあるみたいだよ。",
+            "romaji": "Un, koteihi dake de shuunyuu no taihan ga kiete iku hito ga fuetsutsu aru mitai da yo.",
+            "translation": "Iya, sepertinya makin banyak orang yang sebagian besar penghasilannya habis hanya untuk biaya tetap.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、固定費なんて、収入のほんの一部しか占めていないらしいよ。",
+            "romaji": "Iya, koteihi nante, shuunyuu no hon no ichibu shika shimete inai rashii yo.",
+            "translation": "Tidak, katanya biaya tetap hanya menempati sebagian kecil dari penghasilan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "対策としてはどんなことがあるの？",
+          "romaji": "Taisaku to shite wa donna koto ga aru no?",
+          "translation": "Ada langkah antisipasi apa saja?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_generasi_muda_sulit_menabung_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "少額から始める投資に興味を持つ人が、少しずつ増えつつあるらしいよ。",
+            "romaji": "Shougaku kara hajimeru toushi ni kyoumi wo motsu hito ga, sukoshizutsu fuetsutsu aru rashii yo.",
+            "translation": "Katanya orang yang mulai tertarik pada investasi dari jumlah kecil bertambah sedikit demi sedikit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に対策なんて、誰も考えていないみたいだよ。",
+            "romaji": "Toku ni taisaku nante, dare mo kangaete inai mitai da yo.",
+            "translation": "Sepertinya tidak ada seorang pun yang memikirkan langkah antisipasi khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "簡単には解決しなさそうだね。",
+          "romaji": "Kantan ni wa kaiketsu shinasasou da ne.",
+          "translation": "Sepertinya tidak akan mudah terselesaikan ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_generasi_muda_sulit_menabung_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、社会全体の仕組みが変わりつつある中で、個人の努力にも限界があると思うよ。",
+            "romaji": "Un, shakai zentai no shikumi ga kawaritsutsu aru naka de, kojin no doryoku ni mo genkai ga aru to omou yo.",
+            "translation": "Iya, di tengah sistem masyarakat secara keseluruhan yang mulai berubah, kupikir usaha individu juga ada batasnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、個人の努力だけで、簡単に解決できると思うよ。",
+            "romaji": "Iya, kojin no doryoku dake de, kantan ni kaiketsu dekiru to omou yo.",
+            "translation": "Tidak, kupikir hanya dengan usaha individu, bisa terselesaikan dengan mudah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "難しい問題だね。",
+          "romaji": "Muzukashii mondai da ne.",
+          "translation": "Masalah yang sulit ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_generasi_muda_sulit_menabung_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pertama_kelola_keuangan_sendiri_n2",
+    "title": "Menceritakan Pengalaman Pertama Kali Mengelola Keuangan Sendiri",
+    "category": "bank_n2",
+    "description": "Kamu bercerita ke teman tentang pengalaman pertama kali mengelola keuangan sendiri setelah mulai hidup mandiri.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一人暮らしを始めて、お金の管理は大丈夫？",
+          "romaji": "Hitorigurashi wo hajimete, okane no kanri wa daijoubu?",
+          "translation": "Setelah mulai hidup sendiri, pengelolaan uangnya aman?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_pertama_kelola_keuangan_sendiri_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "自分で管理して初めて、今まで実家がどれだけ助けてくれていたか分かったよ。",
+            "romaji": "Jibun de kanri shite hajimete, ima made jikka ga dore dake tasukete kurete ita ka wakatta yo.",
+            "translation": "Hanya setelah mengelolanya sendiri, aku baru tahu betapa besar bantuan rumah orang tuaku selama ini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、実家にいた時と全く変わらない感覚で管理できているよ。",
+            "romaji": "Un, jikka ni ita toki to mattaku kawaranai kankaku de kanri dekite iru yo.",
+            "translation": "Iya, aku bisa mengelolanya dengan perasaan yang sama sekali tidak berubah seperti saat di rumah orang tua.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最初は苦労した？",
+          "romaji": "Saisho wa kurou shita?",
+          "translation": "Awalnya susah?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_pertama_kelola_keuangan_sendiri_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、家計簿をつけて初めて、無駄な出費の多さに気づいたよ。",
+            "romaji": "Un, kakeibo wo tsukete hajimete, muda na shuppi no oosa ni kizuita yo.",
+            "translation": "Iya, hanya setelah mencatat anggaran rumah tangga, aku baru menyadari banyaknya pengeluaran yang sia-sia.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、最初から何の苦労もなく、完璧に管理できていたよ。",
+            "romaji": "Iya, saisho kara nan no kurou mo naku, kanpeki ni kanri dekite ita yo.",
+            "translation": "Tidak, sejak awal sama sekali tidak susah, dan bisa mengelolanya dengan sempurna.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今はうまくいってる？",
+          "romaji": "Ima wa umaku itteru?",
+          "translation": "Sekarang berjalan lancar?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_pertama_kelola_keuangan_sendiri_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "毎月記録をつけて初めて、自分の使い方の癖が見えてきた気がするよ。",
+            "romaji": "Maitsuki kiroku wo tsukete hajimete, jibun no tsukaikata no kuse ga miete kita ki ga suru yo.",
+            "translation": "Hanya setelah mencatat setiap bulan, rasanya aku jadi bisa melihat kebiasaan cara pengeluaranku sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "記録なんてつけなくても、いつも完璧に把握できているよ。",
+            "romaji": "Kiroku nante tsukenakute mo, itsumo kanpeki ni haaku dekite iru yo.",
+            "translation": "Meski tanpa mencatat, aku selalu bisa memahaminya dengan sempurna.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自立するって、大変なことも多いね。",
+          "romaji": "Jiritsu suru tte, taihen na koto mo ooi ne.",
+          "translation": "Menjadi mandiri itu banyak juga hal yang beratnya ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_pertama_kelola_keuangan_sendiri_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、自分でやって初めて、親のありがたみが分かった気がするよ。",
+            "romaji": "Un, jibun de yatte hajimete, oya no arigatami ga wakatta ki ga suru yo.",
+            "translation": "Iya, hanya setelah melakukannya sendiri, rasanya aku jadi paham betapa berartinya orang tuaku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、自立しても、特に何も感じることはなかったよ。",
+            "romaji": "Iya, jiritsu shite mo, toku ni nanimo kanjiru koto wa nakatta yo.",
+            "translation": "Tidak, meski jadi mandiri, sama sekali tidak merasakan apa pun secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自立できてえらいね。",
+          "romaji": "Jiritsu dekite erai ne.",
+          "translation": "Hebat bisa jadi mandiri begitu."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_pertama_kelola_keuangan_sendiri_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にえらいとは思わないよ。",
+            "romaji": "Betsu ni erai to wa omowanai yo.",
+            "translation": "Kupikir sama sekali tidak hebat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_dilema_menabung_bantu_keluarga_n2",
+    "title": "Menjelaskan Dilema Antara Menabung dan Membantu Keluarga secara Finansial",
+    "category": "bank_n2",
+    "description": "Kamu menjelaskan ke teman dilema antara menabung untuk diri sendiri dan membantu keluarga secara finansial.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "実家に仕送りしてるんだよね。大変じゃない？",
+          "romaji": "Jikka ni shiokuri shiteru n da yo ne. Taihen janai?",
+          "translation": "Kamu mengirim uang ke rumah orang tua ya. Tidak berat?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_dilema_menabung_bantu_keluarga_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直悩むよ。自分の将来のために貯めるにしても、家族を助けたい気持ちもあるから。",
+            "romaji": "Shoujiki nayamu yo. Jibun no shourai no tame ni tameru ni shite mo, kazoku wo tasuketai kimochi mo aru kara.",
+            "translation": "Sejujurnya membingungkan. Meskipun menabung demi masa depanku sendiri, aku juga punya keinginan untuk membantu keluarga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、仕送りのことなんて、一度も考えたことないよ。",
+            "romaji": "Iya, shiokuri no koto nante, ichido mo kangaeta koto nai yo.",
+            "translation": "Tidak, belum pernah sama sekali memikirkan soal kirim uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どれくらい仕送りしてるの？",
+          "romaji": "Dore kurai shiokuri shiteru no?",
+          "translation": "Berapa banyak yang kamu kirim?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_dilema_menabung_bantu_keluarga_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "多く送るにしても少なく送るにしても、いつも金額に悩んでしまうんだ。",
+            "romaji": "Ooku okuru ni shite mo sukunaku okuru ni shite mo, itsumo kingaku ni nayande shimau n da.",
+            "translation": "Baik mengirim banyak maupun sedikit, aku selalu bingung soal jumlahnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "毎月同じ金額を、何も考えずに送っているだけだよ。",
+            "romaji": "Maitsuki onaji kingaku wo, nanimo kangaezu ni okutte iru dake da yo.",
+            "translation": "Aku hanya mengirim jumlah yang sama setiap bulan tanpa memikirkan apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分の生活は苦しくならない？",
+          "romaji": "Jibun no seikatsu wa kurushiku naranai?",
+          "translation": "Hidupmu sendiri tidak jadi susah?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_dilema_menabung_bantu_keluarga_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "多少切り詰めるにしても、家族が助かるなら仕方ないと思ってるよ。",
+            "romaji": "Tashou kiritsumeru ni shite mo, kazoku ga tasukaru nara shikatanai to omotteru yo.",
+            "translation": "Meski harus sedikit berhemat, kupikir tidak apa-apa kalau itu membantu keluarga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く切り詰める必要はなくて、余裕で生活できているよ。",
+            "romaji": "Mattaku kiritsumeru hitsuyou wa nakute, yoyuu de seikatsu dekite iru yo.",
+            "translation": "Sama sekali tidak perlu berhemat, dan bisa hidup dengan leluasa.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分を犠牲にしすぎないでね。",
+          "romaji": "Jibun wo gisei ni shisuginaide ne.",
+          "translation": "Jangan sampai terlalu mengorbankan diri sendiri ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_dilema_menabung_bantu_keluarga_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、無理するにしても限度があるから、気をつけるようにするよ。",
+            "romaji": "Un, muri suru ni shite mo gendo ga aru kara, ki wo tsukeru you ni suru yo.",
+            "translation": "Iya, meski memaksakan diri, ada batasnya, jadi aku akan berhati-hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、自分を犠牲にすることに、何の抵抗もないよ。",
+            "romaji": "Iya, jibun wo gisei ni suru koto ni, nan no teikou mo nai yo.",
+            "translation": "Tidak, aku sama sekali tidak keberatan mengorbankan diri sendiri.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "無理しすぎないでね。",
+          "romaji": "Muri shisuginaide ne.",
+          "translation": "Jangan terlalu memaksakan diri ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_dilema_menabung_bantu_keluarga_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tekanan_terlihat_mapan_n2",
+    "title": "Membicarakan Tekanan Sosial untuk Terlihat Mapan secara Finansial",
+    "category": "bank_n2",
+    "description": "Kamu membicarakan dengan teman tekanan sosial untuk terlihat mapan secara finansial.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "同年代の友達と自分を比べて、焦ることある？",
+          "romaji": "Dounendai no tomodachi to jibun wo kurabete, aseru koto aru?",
+          "translation": "Pernah cemas membandingkan diri dengan teman seusia?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_tekanan_terlihat_mapan_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、周りが家や車を持ち始めるのを見ると、自分も何かしなきゃと思わずにはいられないんだ。",
+            "romaji": "Un, mawari ga ie ya kuruma wo mochihajimeru no wo miru to, jibun mo nanika shinakya to omowazu ni wa irarenai n da.",
+            "translation": "Iya, melihat orang-orang di sekitar mulai punya rumah atau mobil, aku jadi tidak bisa tidak merasa harus melakukan sesuatu juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、周りと比べて焦ることなんて、一度もないよ。",
+            "romaji": "Iya, mawari to kurabete aseru koto nante, ichido mo nai yo.",
+            "translation": "Tidak, belum pernah sama sekali merasa cemas membandingkan diri dengan sekitar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "実際に無理して何か買ったことあるの？",
+          "romaji": "Jissai ni muri shite nanika katta koto aru no?",
+          "translation": "Pernah benar-benar memaksakan diri membeli sesuatu?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_tekanan_terlihat_mapan_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "見栄のために、必要以上に高い車を買ってしまったことがあるよ。",
+            "romaji": "Mie no tame ni, hitsuyou ijou ni takai kuruma wo katte shimatta koto ga aru yo.",
+            "translation": "Pernah membeli mobil yang lebih mahal dari yang diperlukan demi gengsi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、見栄のために何かを買ったことなんて一度もないよ。",
+            "romaji": "Iya, mie no tame ni nanika wo katta koto nante ichido mo nai yo.",
+            "translation": "Tidak, belum pernah sama sekali membeli sesuatu demi gengsi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それで満足できた？",
+          "romaji": "Sore de manzoku dekita?",
+          "translation": "Apa itu membuatmu puas?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_tekanan_terlihat_mapan_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "一瞬は満足したけど、後になってローンの重さに焦らずにはいられなかったよ。",
+            "romaji": "Isshun wa manzoku shita kedo, ato ni natte roon no omosa ni aserazu ni wa irarenakatta yo.",
+            "translation": "Sesaat merasa puas, tapi belakangan aku tidak bisa tidak merasa cemas dengan beratnya cicilan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、ずっと満足したままで、何の後悔もなかったよ。",
+            "romaji": "Un, zutto manzoku shita mama de, nan no koukai mo nakatta yo.",
+            "translation": "Iya, tetap puas terus, dan sama sekali tidak menyesal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "他人と比べる必要はないと思うよ。",
+          "romaji": "Tanin to kuraberu hitsuyou wa nai to omou yo.",
+          "translation": "Kupikir tidak perlu membandingkan diri dengan orang lain."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_tekanan_terlihat_mapan_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本当にそう思う。自分のペースを大事にするようにするよ。",
+            "romaji": "Hontou ni sou omou. Jibun no peesu wo daiji ni suru you ni suru yo.",
+            "translation": "Aku benar-benar setuju. Aku akan berusaha menghargai ritmeku sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、他人と比べることこそが一番大事だと思うよ。",
+            "romaji": "Iya, tanin to kuraberu koto koso ga ichiban daiji da to omou yo.",
+            "translation": "Tidak, kupikir justru membandingkan dengan orang lain itu yang paling penting.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分のペースでいいんだよ。",
+          "romaji": "Jibun no peesu de ii n da yo.",
+          "translation": "Ritmemu sendiri sudah cukup kok."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_tekanan_terlihat_mapan_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_merdeka_finansial_usia_muda_n2",
+    "title": "Mendiskusikan Pentingnya Merdeka secara Finansial di Usia Muda",
+    "category": "bank_n2",
+    "description": "Kamu dan teman mendiskusikan pentingnya merdeka secara finansial sejak usia muda.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "経済的自立を早く達成したいって、前に言ってたよね。",
+          "romaji": "Keizaiteki jiritsu wo hayaku tassei shitai tte, mae ni itteta yo ne.",
+          "translation": "Kamu pernah bilang ingin cepat mencapai kemandirian ekonomi ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_merdeka_finansial_usia_muda_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、若いうちに基盤を作っておいたからこそ、将来の選択肢が広がると思うんだ。",
+            "romaji": "Un, wakai uchi ni kiban wo tsukutte oita kara koso, shourai no sentakushi ga hirogaru to omou n da.",
+            "translation": "Iya, justru karena membangun fondasi selagi muda, kupikir pilihan-pilihan di masa depan akan meluas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、経済的自立のことなんて、特に考えたことないよ。",
+            "romaji": "Iya, keizaiteki jiritsu no koto nante, toku ni kangaeta koto nai yo.",
+            "translation": "Tidak, belum pernah secara khusus memikirkan soal kemandirian ekonomi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんなことを心がけているの？",
+          "romaji": "Donna koto wo kokorogakete iru no?",
+          "translation": "Hal apa yang kamu perhatikan?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_merdeka_finansial_usia_muda_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "早くから支出を管理していたからこそ、無駄遣いのクセがつかなかったんだ。",
+            "romaji": "Hayaku kara shishutsu wo kanri shite ita kara koso, mudazukai no kuse ga tsukanakatta n da.",
+            "translation": "Justru karena mengelola pengeluaran sejak awal, aku tidak sampai punya kebiasaan boros.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も心がけずに、思うままにお金を使っているよ。",
+            "romaji": "Toku ni nanimo kokorogakezu ni, omou mama ni okane wo tsukatte iru yo.",
+            "translation": "Tanpa memperhatikan apa pun secara khusus, aku menggunakan uang sesuka hati.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "投資にも興味があるの？",
+          "romaji": "Toushi ni mo kyoumi ga aru no?",
+          "translation": "Tertarik pada investasi juga?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_merdeka_finansial_usia_muda_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、早く始めたからこそ、長期的に資産を育てられると考えているよ。",
+            "romaji": "Un, hayaku hajimeta kara koso, choukiteki ni shisan wo sodaterareru to kangaete iru yo.",
+            "translation": "Iya, justru karena mulai lebih awal, kupikir aku bisa menumbuhkan aset dalam jangka panjang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、投資には全く興味がなくて、始めようとも思わないよ。",
+            "romaji": "Iya, toushi ni wa mattaku kyoumi ga nakute, hajimeyou to mo omowanai yo.",
+            "translation": "Tidak, sama sekali tidak tertarik pada investasi, dan tidak berpikir untuk memulainya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分に合ったやり方を見つけたんだね。",
+          "romaji": "Jibun ni atta yarikata wo mitsuketa n da ne.",
+          "translation": "Kamu jadi menemukan cara yang cocok denganmu ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_merdeka_finansial_usia_muda_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、若いうちに失敗できたからこそ、今の考え方に辿り着けた気がするよ。",
+            "romaji": "Un, wakai uchi ni shippai dekita kara koso, ima no kangaekata ni tadoritsuketa ki ga suru yo.",
+            "translation": "Iya, justru karena bisa gagal selagi muda, rasanya aku bisa sampai pada cara berpikirku yang sekarang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、失敗なんて一度もしたことがないよ。",
+            "romaji": "Iya, shippai nante ichido mo shita koto ga nai yo.",
+            "translation": "Tidak, belum pernah gagal sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "着実に進んでるね。",
+          "romaji": "Chakujitsu ni susunderu ne.",
+          "translation": "Kamu maju dengan mantap ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_merdeka_finansial_usia_muda_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_menyesal_gaya_hidup_konsumtif_n2",
+    "title": "Menceritakan Pengalaman Menyesal karena Gaya Hidup Konsumtif",
+    "category": "bank_n2",
+    "description": "Kamu bercerita ke teman tentang pengalaman menyesal karena dulu punya gaya hidup konsumtif.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "前はよく衝動買いしてたよね。今は落ち着いた？",
+          "romaji": "Mae wa yoku shoudougai shiteta yo ne. Ima wa ochitsuita?",
+          "translation": "Dulu kamu sering belanja impulsif ya. Sekarang sudah tenang?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_menyesal_gaya_hidup_konsumtif_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、欲しい物を次々に買い続けた末に、貯金が全然増えないことに気づいたんだ。",
+            "romaji": "Un, hoshii mono wo tsugitsugi ni kaitsuzuketa sue ni, chokin ga zenzen fuenai koto ni kizuita n da.",
+            "translation": "Iya, setelah terus-menerus membeli barang yang kuinginkan satu demi satu, aku menyadari tabunganku sama sekali tidak bertambah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、今も変わらず衝動買いを続けているよ。",
+            "romaji": "Iya, ima mo kawarazu shoudougai wo tsuzukete iru yo.",
+            "translation": "Tidak, sekarang pun masih terus belanja impulsif tanpa berubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何がきっかけで気づいたの？",
+          "romaji": "Nani ga kikkake de kizuita no?",
+          "translation": "Apa yang membuatmu menyadarinya?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_menyesal_gaya_hidup_konsumtif_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "クレジットカードの明細を見返した末に、自分の使いすぎに愕然としたんだ。",
+            "romaji": "Kurejitto kaado no meisai wo mikaeshita sue ni, jibun no tsukaisugi ni gakuzen to shita n da.",
+            "translation": "Setelah melihat kembali rincian kartu kreditku, aku terkejut dengan betapa berlebihannya pengeluaranku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にきっかけはなくて、いつも通り気にせず買い物してたよ。",
+            "romaji": "Toku ni kikkake wa nakute, itsumo doori ki ni sezu kaimono shiteta yo.",
+            "translation": "Tidak ada pemicu khusus, aku berbelanja seperti biasa tanpa memikirkannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでどう変えたの？",
+          "romaji": "Sore de dou kaeta no?",
+          "translation": "Lalu bagaimana kamu mengubahnya?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_menyesal_gaya_hidup_konsumtif_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "買う前に一晩考える習慣をつけた末に、本当に必要な物だけ買うようになったよ。",
+            "romaji": "Kau mae ni hitoban kangaeru shuukan wo tsuketa sue ni, hontou ni hitsuyou na mono dake kau you ni natta yo.",
+            "translation": "Setelah membangun kebiasaan berpikir semalaman sebelum membeli, aku jadi hanya membeli barang yang benar-benar diperlukan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も変えずに、これまで通りの買い方を続けているよ。",
+            "romaji": "Toku ni nanimo kaezu ni, kore made doori no kaikata wo tsuzukete iru yo.",
+            "translation": "Tanpa mengubah apa pun secara khusus, aku melanjutkan cara belanja yang sama seperti sebelumnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分を変えられたんだね。",
+          "romaji": "Jibun wo kaerareta n da ne.",
+          "translation": "Kamu berhasil mengubah dirimu sendiri ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_menyesal_gaya_hidup_konsumtif_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、試行錯誤した末に、やっと自分に合った買い物の仕方を見つけられたよ。",
+            "romaji": "Un, shikou sakugo shita sue ni, yatto jibun ni atta kaimono no shikata wo mitsukerareta yo.",
+            "translation": "Iya, setelah trial and error, akhirnya aku bisa menemukan cara belanja yang cocok denganku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、何も変わっていないし、これからも同じだと思うよ。",
+            "romaji": "Iya, nanimo kawatte inai shi, kore kara mo onaji da to omou yo.",
+            "translation": "Tidak, tidak ada yang berubah, dan kupikir ke depannya pun akan sama.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "変われてよかったね。",
+          "romaji": "Kawarete yokatta ne.",
+          "translation": "Bagus deh kamu bisa berubah."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_menyesal_gaya_hidup_konsumtif_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別によかったとは思わないよ。",
+            "romaji": "Betsu ni yokatta to wa omowanai yo.",
+            "translation": "Kupikir sama sekali tidak bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_hidup_sederhana_meski_mampu_n2",
+    "title": "Menjelaskan Alasan Memilih Hidup Sederhana Meski Mampu",
+    "category": "bank_n2",
+    "description": "Kamu menjelaskan ke teman alasan memilih hidup sederhana meski secara finansial mampu untuk lebih.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "収入が増えたのに、生活はあまり変わってないよね。",
+          "romaji": "Shuunyuu ga fueta noni, seikatsu wa amari kawatte nai yo ne.",
+          "translation": "Padahal penghasilan naik, tapi hidupmu tidak banyak berubah ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_hidup_sederhana_meski_mampu_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、収入が増えたからといって、生活水準を上げる必要はないと思ってるんだ。",
+            "romaji": "Un, shuunyuu ga fueta kara to itte, seikatsu suijun wo ageru hitsuyou wa nai to omotteru n da.",
+            "translation": "Iya, aku berpikir tidak perlu menaikkan standar hidup hanya karena penghasilan naik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、収入が増えたから、生活水準もどんどん上げているよ。",
+            "romaji": "Iya, shuunyuu ga fueta kara, seikatsu suijun mo dondon agete iru yo.",
+            "translation": "Tidak, karena penghasilan naik, aku terus menaikkan standar hidup.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "もっと贅沢したいとは思わない？",
+          "romaji": "Motto zeitaku shitai to wa omowanai?",
+          "translation": "Tidak ingin bermewah-mewahan lebih?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_hidup_sederhana_meski_mampu_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "余裕があるからといって、無駄に使う必要はないと感じているんだ。",
+            "romaji": "Yoyuu ga aru kara to itte, muda ni tsukau hitsuyou wa nai to kanjite iru n da.",
+            "translation": "Aku merasa tidak perlu menghabiskan uang dengan sia-sia hanya karena punya kelonggaran.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "余裕があるうちに、使えるだけ使っておくべきだと思うよ。",
+            "romaji": "Yoyuu ga aru uchi ni, tsukaeru dake tsukatte oku beki da to omou yo.",
+            "translation": "Kupikir selagi ada kelonggaran, sebaiknya dihabiskan sebanyak mungkin.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "増えた分はどうしてるの？",
+          "romaji": "Fueta bun wa dou shiteru no?",
+          "translation": "Bagian yang bertambah diapakan?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_hidup_sederhana_meski_mampu_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "収入が増えたからといって浮かれず、将来のために堅実に貯めているよ。",
+            "romaji": "Shuunyuu ga fueta kara to itte ukarezu, shourai no tame ni kenjitsu ni tamete iru yo.",
+            "translation": "Tanpa jadi terlena hanya karena penghasilan naik, aku menabungnya dengan mantap untuk masa depan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "増えた分は全部、その場ですぐに使い切っているよ。",
+            "romaji": "Fueta bun wa zenbu, sono ba de sugu ni tsukaikitte iru yo.",
+            "translation": "Bagian yang bertambah langsung kuhabiskan semuanya saat itu juga.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "堅実な考え方だね。",
+          "romaji": "Kenjitsu na kangaekata da ne.",
+          "translation": "Cara berpikir yang mantap ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_hidup_sederhana_meski_mampu_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、贅沢できるからといって、それが幸せに直結するとは思わないんだ。",
+            "romaji": "Un, zeitaku dekiru kara to itte, sore ga shiawase ni chokketsu suru to wa omowanai n da.",
+            "translation": "Iya, aku tidak berpikir hal itu langsung terhubung dengan kebahagiaan hanya karena bisa bermewah-mewahan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、贅沢することこそが、一番の幸せだと思っているよ。",
+            "romaji": "Iya, zeitaku suru koto koso ga, ichiban no shiawase da to omotte iru yo.",
+            "translation": "Tidak, aku berpikir justru bermewah-mewahan itulah kebahagiaan terbesar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "堅実な生き方だね。",
+          "romaji": "Kenjitsu na ikikata da ne.",
+          "translation": "Cara hidup yang mantap ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_hidup_sederhana_meski_mampu_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_trauma_finansial_keluarga_n2",
+    "title": "Membicarakan Dampak Trauma Finansial Keluarga terhadap Kebiasaan Menabung",
+    "category": "bank_n2",
+    "description": "Kamu membicarakan dengan teman dampak trauma finansial keluarga di masa kecil terhadap kebiasaan menabungmu sekarang.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お金の使い方に、すごく慎重だよね。",
+          "romaji": "Okane no tsukaikata ni, sugoku shinchou da ne.",
+          "translation": "Kamu sangat hati-hati soal cara menggunakan uang ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_trauma_finansial_keluarga_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、子供の頃に家計が苦しかった経験が、今も影響しかねないんだ。",
+            "romaji": "Un, kodomo no koro ni kakei ga kurushikatta keiken ga, ima mo eikyou shikanenai n da.",
+            "translation": "Iya, pengalaman kondisi keuangan keluarga yang susah waktu kecil mungkin masih memengaruhiku sekarang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、子供の頃のことなんて、今の自分には全く関係ないよ。",
+            "romaji": "Iya, kodomo no koro no koto nante, ima no jibun ni wa mattaku kankei nai yo.",
+            "translation": "Tidak, hal waktu kecil sama sekali tidak berhubungan dengan diriku sekarang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にどんな影響があるの？",
+          "romaji": "Gutaiteki ni donna eikyou ga aru no?",
+          "translation": "Secara konkret pengaruh seperti apa yang ada?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_trauma_finansial_keluarga_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お金が足りなくなる不安が、いつか生活を脅かしかねないって、つい考えてしまうんだ。",
+            "romaji": "Okane ga tarinaku naru fuan ga, itsuka seikatsu wo obiyakashikanenai tte, tsui kangaete shimau n da.",
+            "translation": "Aku jadi berpikir bahwa kecemasan kehabisan uang mungkin saja mengancam hidupku suatu saat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "お金が足りなくなる不安なんて、感じたことは一度もないよ。",
+            "romaji": "Okane ga tarinaku naru fuan nante, kanjita koto wa ichido mo nai yo.",
+            "translation": "Belum pernah sama sekali merasakan kecemasan kehabisan uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その不安、どう付き合ってるの？",
+          "romaji": "Sono fuan, dou tsukiatteru no?",
+          "translation": "Bagaimana caramu menghadapi kecemasan itu?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_trauma_finansial_keluarga_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "放っておくと不安が大きくなりかねないから、意識的に貯金額を確認するようにしてるよ。",
+            "romaji": "Hootte oku to fuan ga ookiku narikanenai kara, ishikiteki ni chokingaku wo kakunin suru you ni shiteru yo.",
+            "translation": "Karena kalau dibiarkan kecemasannya bisa saja membesar, aku secara sadar memeriksa jumlah tabunganku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く付き合い方を考えたことはなくて、ただ不安なだけだよ。",
+            "romaji": "Mattaku tsukiaikata wo kangaeta koto wa nakute, tada fuan na dake da yo.",
+            "translation": "Belum pernah sama sekali memikirkan cara menghadapinya, hanya merasa cemas saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "少しずつ克服できるといいね。",
+          "romaji": "Sukoshizutsu kokufuku dekiru to ii ne.",
+          "translation": "Semoga bisa diatasi sedikit demi sedikit ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_trauma_finansial_keluarga_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、根が深い分、時間をかけて向き合っていきたいと思ってるよ。",
+            "romaji": "Un, ne ga fukai bun, jikan wo kakete mukiatte ikitai to omotteru yo.",
+            "translation": "Iya, karena akarnya dalam, aku ingin menghadapinya sambil meluangkan waktu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、克服なんて、絶対に無理だと思っているよ。",
+            "romaji": "Iya, kokufuku nante, zettai ni muri da to omotte iru yo.",
+            "translation": "Tidak, kupikir mengatasinya benar-benar mustahil.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "無理せず向き合っていこうね。",
+          "romaji": "Muri sezu mukiatte ikou ne.",
+          "translation": "Ayo hadapi pelan-pelan tanpa memaksakan diri ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_trauma_finansial_keluarga_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_etika_meminjamkan_uang_teman_n2",
+    "title": "Mendiskusikan Etika Meminjamkan Uang kepada Teman",
+    "category": "bank_n2",
+    "description": "Kamu dan teman mendiskusikan etika meminjamkan uang kepada teman sendiri.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "友達にお金を貸してって頼まれたことある？",
+          "romaji": "Tomodachi ni okane wo kashite tte tanomareta koto aru?",
+          "translation": "Pernah diminta teman untuk meminjamkan uang?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_etika_meminjamkan_uang_teman_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "あるよ。断りたい気持ちはあるものの、長年の友情を考えると断りづらかったんだ。",
+            "romaji": "Aru yo. Kotowaritai kimochi wa aru mono no, naganen no yuujou wo kangaeru to kotowarizurakatta n da.",
+            "translation": "Pernah. Meski ada perasaan ingin menolak, mengingat persahabatan bertahun-tahun jadi sulit untuk menolak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、そんなお願いをされたことなんて一度もないよ。",
+            "romaji": "Iya, sonna onegai wo sareta koto nante ichido mo nai yo.",
+            "translation": "Tidak, belum pernah sama sekali diminta permintaan seperti itu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "実際に貸したの？",
+          "romaji": "Jissai ni kashita no?",
+          "translation": "Benar-benar meminjamkannya?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_etika_meminjamkan_uang_teman_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "少額であるものの、返ってこない可能性も考えた上で貸すことにしたよ。",
+            "romaji": "Shougaku de aru mono no, kaettekonai kanousei mo kangaeta ue de kasu koto ni shita yo.",
+            "translation": "Meski jumlahnya kecil, aku memutuskan untuk meminjamkannya setelah mempertimbangkan kemungkinan tidak kembali juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いくら頼まれても、絶対にお金は貸さないようにしているよ。",
+            "romaji": "Ikura tanomarete mo, zettai ni okane wa kasanai you ni shite iru yo.",
+            "translation": "Sebanyak apa pun diminta, aku selalu berusaha tidak pernah meminjamkan uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "ちゃんと返してもらえた？",
+          "romaji": "Chanto kaeshite moraeta?",
+          "translation": "Bisa dikembalikan dengan baik?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_etika_meminjamkan_uang_teman_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "遅れはあったものの、最終的にはきちんと返してもらえたよ。",
+            "romaji": "Okure wa atta mono no, saishuuteki ni wa kichinto kaeshite moraeta yo.",
+            "translation": "Meski ada keterlambatan, pada akhirnya dikembalikan dengan baik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、頼んだ翌日には、もう全額返ってきたよ。",
+            "romaji": "Un, tanonda yokujitsu ni wa, mou zengaku kaettekita yo.",
+            "translation": "Iya, keesokan harinya setelah diminta, seluruh jumlahnya sudah kembali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お金の貸し借りって難しいよね。",
+          "romaji": "Okane no kashikari tte muzukashii yo ne.",
+          "translation": "Urusan pinjam-meminjam uang itu sulit ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_etika_meminjamkan_uang_teman_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "本当にそう思う。友情は大事なものの、お金の話は別だと思ってるよ。",
+            "romaji": "Hontou ni sou omou. Yuujou wa daiji na mono no, okane no hanashi wa betsu da to omotteru yo.",
+            "translation": "Aku benar-benar setuju. Meski persahabatan itu penting, kupikir soal uang itu hal yang terpisah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、友情があれば、お金の貸し借りなんて何の問題もないと思うよ。",
+            "romaji": "Iya, yuujou ga areba, okane no kashikari nante nan no mondai mo nai to omou yo.",
+            "translation": "Tidak, kupikir kalau ada persahabatan, pinjam-meminjam uang sama sekali tidak masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "難しい判断だったね。",
+          "romaji": "Muzukashii handan datta ne.",
+          "translation": "Itu keputusan yang sulit ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_etika_meminjamkan_uang_teman_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_belajar_kesalahan_finansial_n2",
+    "title": "Menceritakan Pengalaman Belajar dari Kesalahan Finansial Masa Lalu",
+    "category": "bank_n2",
+    "description": "Kamu bercerita ke teman tentang pengalaman belajar dari kesalahan finansial di masa lalu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "昔、お金で大きな失敗をしたことがあるって言ってたよね。",
+          "romaji": "Mukashi, okane de ookina shippai wo shita koto ga aru tte itteta yo ne.",
+          "translation": "Kamu pernah bilang dulu pernah membuat kesalahan besar soal uang ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_belajar_kesalahan_finansial_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの失敗がきっかけで、お金との向き合い方が大きく変わったんだ。",
+            "romaji": "Un, ano shippai ga kikkake de, okane to no mukiaikata ga ookiku kawatta n da.",
+            "translation": "Iya, dipicu oleh kegagalan itu, caraku menghadapi uang berubah drastis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、お金で失敗したことなんて、一度もないよ。",
+            "romaji": "Iya, okane de shippai shita koto nante, ichido mo nai yo.",
+            "translation": "Tidak, belum pernah sama sekali gagal soal uang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな失敗だったの？",
+          "romaji": "Donna shippai datta no?",
+          "translation": "Kegagalan seperti apa itu?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_belajar_kesalahan_finansial_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "よく調べもせずに始めた投資がきっかけで、貯金の大半を失ったことがあるんだ。",
+            "romaji": "Yoku shirabe mo sezu ni hajimeta toushi ga kikkake de, chokin no taihan wo ushinatta koto ga aru n da.",
+            "translation": "Dipicu oleh investasi yang kumulai tanpa riset yang cukup, ada kalanya aku kehilangan sebagian besar tabunganku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に大きな失敗はしたことがなくて、いつも順調だったよ。",
+            "romaji": "Toku ni ookina shippai wa shita koto ga nakute, itsumo junchou datta yo.",
+            "translation": "Belum pernah membuat kesalahan besar secara khusus, selalu lancar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そこから何を学んだの？",
+          "romaji": "Soko kara nani wo mananda no?",
+          "translation": "Apa yang kamu pelajari dari situ?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_belajar_kesalahan_finansial_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "あの経験がきっかけで、リスクをしっかり調べる習慣が身についたよ。",
+            "romaji": "Ano keiken ga kikkake de, risuku wo shikkari shiraberu shuukan ga mi ni tsuita yo.",
+            "translation": "Dipicu oleh pengalaman itu, aku jadi punya kebiasaan meriset risiko dengan teliti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も学ばず、同じ失敗を何度も繰り返しているよ。",
+            "romaji": "Toku ni nanimo manabazu, onaji shippai wo nando mo kurikaeshite iru yo.",
+            "translation": "Tanpa belajar apa pun secara khusus, aku mengulangi kesalahan yang sama berkali-kali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "苦い経験が、今の自分を作ったんだね。",
+          "romaji": "Nigai keiken ga, ima no jibun wo tsukutta n da ne.",
+          "translation": "Pengalaman pahit itu membentuk dirimu yang sekarang ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_belajar_kesalahan_finansial_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの失敗がきっかけで、今は前より賢くお金と付き合えていると思うよ。",
+            "romaji": "Un, ano shippai ga kikkake de, ima wa mae yori kashikoku okane to tsukiaete iru to omou yo.",
+            "translation": "Iya, dipicu oleh kegagalan itu, kupikir sekarang aku bisa berhubungan dengan uang lebih bijak dari sebelumnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、あの経験は今の自分には何の影響もないよ。",
+            "romaji": "Iya, ano keiken wa ima no jibun ni wa nan no eikyou mo nai yo.",
+            "translation": "Tidak, pengalaman itu sama sekali tidak berpengaruh pada diriku sekarang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "失敗も無駄じゃなかったんだね。",
+          "romaji": "Shippai mo muda janakatta n da ne.",
+          "translation": "Ternyata kegagalan itu juga tidak sia-sia ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_belajar_kesalahan_finansial_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_filosofi_uang_ketenangan_pikiran_n2",
+    "title": "Menjelaskan Filosofi Mengelola Uang untuk Ketenangan Pikiran",
+    "category": "bank_n2",
+    "description": "Kamu menjelaskan ke teman filosofi mengelola uang demi ketenangan pikiran, bukan sekadar menumpuk kekayaan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お金を管理する上で、一番大事にしてることは何？",
+          "romaji": "Okane wo kanri suru ue de, ichiban daiji ni shiteru koto wa nani?",
+          "translation": "Dalam mengelola uang, apa yang paling kamu hargai?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_filosofi_uang_ketenangan_pikiran_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、増やすことよりも、心の余裕を保つことを大事にしているよ。",
+            "romaji": "Un, fuyasu koto yori mo, kokoro no yoyuu wo tamotsu koto wo daiji ni shite iru yo.",
+            "translation": "Iya, dibanding menambah jumlahnya, aku lebih menghargai menjaga ketenangan pikiran.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、とにかく増やすことだけを考えて生きているよ。",
+            "romaji": "Iya, tonikaku fuyasu koto dake wo kangaete ikite iru yo.",
+            "translation": "Tidak, aku hidup hanya memikirkan cara menambahnya saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "心の余裕って、具体的にどういうこと？",
+          "romaji": "Kokoro no yoyuu tte, gutaiteki ni dou iu koto?",
+          "translation": "Ketenangan pikiran itu secara konkret seperti apa?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_filosofi_uang_ketenangan_pikiran_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "急な出費があっても慌てずに済むように、余裕を持たせておくことなんだ。",
+            "romaji": "Kyuu na shuppi ga atte mo awatezu ni sumu you ni, yoyuu wo motasete oku koto na n da.",
+            "translation": "Itu tentang menjaga kelonggaran agar tidak panik meski ada pengeluaran mendadak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "余裕なんて考えずに、あるだけ全部使ってしまうことだよ。",
+            "romaji": "Yoyuu nante kangaezu ni, aru dake zenbu tsukatte shimau koto da yo.",
+            "translation": "Tanpa memikirkan kelonggaran, menghabiskan semua yang ada.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そのために何か工夫してるの？",
+          "romaji": "Sono tame ni nanika kufuu shiteru no?",
+          "translation": "Ada usaha khusus untuk itu?"
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_filosofi_uang_ketenangan_pikiran_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "毎月少しずつでも貯めることで、将来への不安を減らすようにしているよ。",
+            "romaji": "Maitsuki sukoshizutsu demo tameru koto de, shourai e no fuan wo herasu you ni shite iru yo.",
+            "translation": "Dengan menabung sedikit demi sedikit setiap bulan, aku berusaha mengurangi kecemasan akan masa depan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も工夫せず、将来のことは全く考えないようにしているよ。",
+            "romaji": "Nanimo kufuu sezu, shourai no koto wa mattaku kangaenai you ni shite iru yo.",
+            "translation": "Tanpa usaha apa pun, aku berusaha sama sekali tidak memikirkan masa depan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その考え方、素敵だね。",
+          "romaji": "Sono kangaekata, suteki da ne.",
+          "translation": "Cara berpikir itu indah ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_filosofi_uang_ketenangan_pikiran_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。お金に振り回されずに生きたいと思っているんだ。",
+            "romaji": "Arigatou. Okane ni furimawasarezu ni ikitai to omotte iru n da.",
+            "translation": "Terima kasih. Aku ingin hidup tanpa dikendalikan oleh uang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、素敵だとは思わないよ。",
+            "romaji": "Iya, suteki da to wa omowanai yo.",
+            "translation": "Tidak, kupikir sama sekali tidak indah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "心が豊かだね。",
+          "romaji": "Kokoro ga yutaka da ne.",
+          "translation": "Hatimu kaya ya."
+        },
+        "imagePath": "kaiwa_images/bank_n2/kaiwa_filosofi_uang_ketenangan_pikiran_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]
