@@ -70,6 +70,16 @@ N5_TITLES = [
     "Menu Spesial Hari Anak",
     "Surat Permintaan Maaf ke Guru",
     "Pengumuman Perpustakaan Buka di Hari Libur",
+    "Pengumuman Perbaikan Perpustakaan Sekolah",
+    "Jadwal Kunjungan Museum",
+    "Surat untuk Guru Baru",
+    "Menu Makan Siang Spesial",
+    "Pengumuman Kompetisi Olahraga",
+    "Cerita Membantu Membersihkan Taman",
+    "Jadwal Praktik Musik",
+    "Pengumuman Perpindahan Perpustakaan",
+    "Surat Ucapan Selamat Kelulusan",
+    "Cerita Belanja di Pasar bersama Ayah",
 ]
 
 # N4-N1 initial seed (10 each) — every level now has real starting
@@ -136,6 +146,16 @@ N4_TITLES = [
     "Blog tentang Menonton Film di Bioskop",
     "Artikel tentang Manfaat Membaca Buku",
     "Pengumuman Penggantian Jadwal Bus Kantor",
+    "Blog tentang Belajar Fotografi",
+    "Artikel tentang Kebiasaan Membaca sebelum Tidur",
+    "Email Permintaan Rekomendasi Kerja",
+    "Ulasan Kafe Baru di Kota",
+    "Panduan Menghemat Listrik di Rumah",
+    "Surat Undangan Reuni Sekolah",
+    "Artikel tentang Manfaat Berjalan Kaki",
+    "Pengalaman Pindah ke Apartemen Baru",
+    "Blog tentang Belajar Memasak Masakan Jepang",
+    "Pengumuman Perubahan Rute Bus Kota",
 ]
 
 N3_TITLES = [
@@ -199,6 +219,16 @@ N3_TITLES = [
     "Artikel tentang Perubahan Gaya Hidup Perkotaan",
     "Cerita Pengalaman Menjadi Mentor",
     "Esai tentang Arti Kesuksesan bagi Generasi Muda",
+    "Artikel tentang Perkembangan Kerja Jarak Jauh",
+    "Esai tentang Menghadapi Tekanan Ujian",
+    "Cerita Pengalaman Menjadi Ketua Kelas",
+    "Panduan Etika Menggunakan Media Sosial",
+    "Artikel tentang Tren Konsumsi Ramah Lingkungan",
+    "Esai tentang Pentingnya Komunikasi Keluarga",
+    "Petunjuk Prosedur Pengajuan Beasiswa",
+    "Artikel tentang Perubahan Kebiasaan Belanja",
+    "Esai tentang Menemukan Motivasi Belajar",
+    "Cerita Pengalaman Bekerja di Perusahaan Asing",
 ]
 
 N2_TITLES = [
@@ -262,6 +292,16 @@ N2_TITLES = [
     "Artikel tentang Dampak Otomatisasi terhadap Pasar Kerja",
     "Analisis tentang Krisis Kepercayaan pada Sains",
     "Esai tentang Definisi Komunitas di Era Digital",
+    "Esai tentang Etika Penelitian Ilmiah",
+    "Artikel tentang Reformasi Sistem Pajak",
+    "Analisis tentang Dampak Media Sosial pada Demokrasi",
+    "Laporan tentang Perubahan Pola Konsumsi Energi",
+    "Editorial tentang Krisis Kepercayaan Politik",
+    "Esai tentang Batas Kebebasan Berekspresi",
+    "Artikel tentang Tantangan Integrasi Imigran",
+    "Analisis tentang Perubahan Nilai Kerja Generasi Z",
+    "Laporan tentang Inovasi dalam Pendidikan Daring",
+    "Esai tentang Dilema Privasi dan Keamanan",
 ]
 
 N1_TITLES = [
@@ -325,6 +365,16 @@ N1_TITLES = [
     "Diskusi tentang Batas Antara Empati dan Simpati",
     "Refleksi tentang Warisan yang Tak Diminta",
     "Esai Akhir tentang Rekonsiliasi dengan Masa Lalu",
+    "Refleksi tentang Makna Keheningan dalam Percakapan",
+    "Esai tentang Beban Menjadi Saksi Sejarah",
+    "Diskusi Filosofis tentang Batas Moralitas",
+    "Kritik tentang Estetika Kesempurnaan",
+    "Refleksi tentang Arti Rumah bagi Perantau",
+    "Esai tentang Ironi Kemajuan Ilmu Pengetahuan",
+    "Diskusi tentang Batas Antara Seni dan Kehidupan",
+    "Refleksi tentang Warisan Kata-kata yang Tak Terucap",
+    "Esai tentang Ketahanan Jiwa dalam Kehilangan",
+    "Kritik tentang Mitos Kesuksesan Individual",
 ]
 
 LEVEL_META = {
