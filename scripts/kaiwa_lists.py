@@ -1818,6 +1818,24 @@ RUMAH_SAKIT_N1_TITLES = [
     "Menjelaskan Alasan Belajar Hidup di Masa Kini Setelah Sakit Parah",
 ]
 
+HOBI_N1_TITLES = [
+    "Menjelaskan Alasan Hobi Bisa Jadi Identitas di Luar Pekerjaan",
+    "Mendiskusikan Filosofi Semangat Pengrajin dalam Menekuni Sebuah Hobi",
+    "Menceritakan Pengalaman Menemukan Kembali Hobi yang Dulu Ditinggalkan",
+    "Membicarakan Ketegangan Antara Hobi sebagai Passion dan Hobi yang Dikomersilkan",
+    "Mendiskusikan Filosofi Melakukan Sesuatu Semata demi Prosesnya Sendiri",
+    "Menceritakan Pengalaman Memakai Hobi untuk Mengolah Emosi yang Sulit",
+    "Menjelaskan Alasan Keindahan Ketidaksempurnaan dalam Karya Buatan Tangan",
+    "Membicarakan Kesenjangan Antara Mengagumi Maestro dan Mempraktikkannya Sendiri",
+    "Mendiskusikan Kesepian Menekuni Hobi yang Jarang Dipahami Orang Lain",
+    "Menceritakan Pengalaman Mewarisi Hobi dari Orang Tua",
+    "Menjelaskan Filosofi Ikigai Lewat Latihan Kecil Setiap Hari",
+    "Membicarakan Makna Melepaskan Sebuah Hobi yang Pernah Dicintai",
+    "Mendiskusikan Hobi sebagai Jembatan Antar Generasi yang Berbeda",
+    "Menceritakan Pengalaman Menemukan Sisi Diri yang Tersembunyi Lewat Hobi",
+    "Menjelaskan Alasan Hobi Sebagai Bentuk Meditasi Sehari-hari",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1896,6 +1914,7 @@ CATEGORY_META = {
     "sekolah_n1": ("Di Sekolah", "🏫", "N1"),
     "cuaca_basa_basi_n1": ("Cuaca & Basa-basi", "☁️", "N1"),
     "rumah_sakit_n1": ("Di Rumah Sakit", "🏥", "N1"),
+    "hobi_n1": ("Hobi", "🎨", "N1"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1976,6 +1995,7 @@ AVAILABLE_CATEGORIES = {
     "sekolah_n1": SEKOLAH_N1_TITLES,
     "cuaca_basa_basi_n1": CUACA_BASA_BASI_N1_TITLES,
     "rumah_sakit_n1": RUMAH_SAKIT_N1_TITLES,
+    "hobi_n1": HOBI_N1_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -2068,6 +2088,7 @@ _ALL_TITLE_LISTS = {
     "SEKOLAH_N1_TITLES": SEKOLAH_N1_TITLES,
     "CUACA_BASA_BASI_N1_TITLES": CUACA_BASA_BASI_N1_TITLES,
     "RUMAH_SAKIT_N1_TITLES": RUMAH_SAKIT_N1_TITLES,
+    "HOBI_N1_TITLES": HOBI_N1_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
