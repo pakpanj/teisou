@@ -50,6 +50,16 @@ N5_TITLES = [
     "Pengumuman Libur Sekolah",
     "Cerita Belajar Kelompok",
     "Pengumuman Pameran Seni Sekolah",
+    "Pengumuman Perbaikan Toilet Sekolah",
+    "Cerita Menonton Kembang Api",
+    "Surat Meminta Izin Tidak Masuk Sekolah",
+    "Aturan Ruang Musik",
+    "Jadwal Ujian Akhir Semester",
+    "Cerita Membuat Kue Bersama Teman",
+    "Pengumuman Donor Darah",
+    "Menu Sarapan di Asrama",
+    "Surat untuk Kakak yang Kuliah",
+    "Pengumuman Perpindahan Kelas",
 ]
 
 # N4-N1 initial seed (10 each) — every level now has real starting
@@ -96,6 +106,16 @@ N4_TITLES = [
     "Cerita Membantu Tetangga",
     "Panduan Menggunakan Mesin Cuci Umum",
     "Pengumuman Perekrutan Anggota Klub",
+    "Ulasan Kursus Online",
+    "Artikel tentang Manfaat Sarapan",
+    "Blog tentang Belajar Bahasa Asing",
+    "Email Konfirmasi Pesanan Online",
+    "Pengalaman Bekerja Paruh Waktu",
+    "Pengumuman Perubahan Menu Kantin Kantor",
+    "Surat Permohonan Informasi Lowongan Kerja",
+    "Panduan Daur Ulang Sampah",
+    "Artikel tentang Kebiasaan Berolahraga Pagi",
+    "Blog tentang Merapikan Rumah",
 ]
 
 N3_TITLES = [
@@ -139,6 +159,16 @@ N3_TITLES = [
     "Esai tentang Menghargai Waktu",
     "Artikel tentang Perkembangan Transportasi Umum",
     "Esai tentang Belajar dari Kegagalan Orang Lain",
+    "Artikel tentang Keamanan Pangan",
+    "Esai tentang Menghargai Guru",
+    "Panduan Etika Wawancara Kerja",
+    "Artikel tentang Tren Konsumsi Berkelanjutan",
+    "Pengalaman Menjadi Relawan Bencana",
+    "Esai tentang Menjaga Kesehatan Mental",
+    "Artikel tentang Dampak Media terhadap Opini Publik",
+    "Petunjuk Menghadapi Wawancara Kerja",
+    "Esai tentang Nilai Kejujuran",
+    "Artikel tentang Tren Kerja Freelance",
 ]
 
 N2_TITLES = [
@@ -182,6 +212,16 @@ N2_TITLES = [
     "Laporan tentang Perkembangan Kota Pintar",
     "Editorial tentang Reformasi Pendidikan Tinggi",
     "Esai tentang Menyeimbangkan Tradisi dan Modernitas",
+    "Editorial tentang Krisis Kepercayaan Institusi",
+    "Analisis tentang Perubahan Perilaku Konsumen Digital",
+    "Esai tentang Tanggung Jawab Sosial Perusahaan",
+    "Artikel tentang Dilema Etika Bioteknologi",
+    "Laporan tentang Transformasi Industri Manufaktur",
+    "Editorial tentang Polarisasi Opini Publik",
+    "Esai tentang Adaptasi Terhadap Globalisasi",
+    "Artikel tentang Masa Depan Energi Terbarukan",
+    "Analisis tentang Perubahan Preferensi Karier Generasi Muda",
+    "Esai tentang Makna Kerja dalam Kehidupan Modern",
 ]
 
 N1_TITLES = [
@@ -225,6 +265,16 @@ N1_TITLES = [
     "Esai tentang Paradoks Kebahagiaan",
     "Kritik tentang Objektivitas dalam Jurnalisme",
     "Refleksi Penutup tentang Perjalanan Menulis",
+    "Esai tentang Keindahan Ketidaksempurnaan",
+    "Refleksi tentang Beban Sejarah Keluarga",
+    "Diskusi Filosofis tentang Kehendak Bebas",
+    "Esai tentang Arti Menjadi Dewasa",
+    "Kritik tentang Budaya Perbandingan Sosial",
+    "Refleksi tentang Suara yang Tak Terdengar",
+    "Esai tentang Ketahanan dalam Kesulitan",
+    "Diskusi tentang Batas Pengetahuan Manusia",
+    "Refleksi tentang Jejak yang Ditinggalkan",
+    "Esai Penutup tentang Perjalanan Mencari Makna",
 ]
 
 LEVEL_META = {
