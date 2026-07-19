@@ -570,10 +570,15 @@ pipeline, same escalation pattern, prompted by the user's terse
 "lanjut generate lagi" — this rollout continues across sessions purely
 as content authoring now, no further architecture changes expected.
 
+**Update, same day (2026-07-20), phase 6**: N5/N4/N3/N2/N1 each went
+from 60 to 70 passages (50 new, 350/~500 = 70% overall), same
+pipeline, same escalation pattern, prompted by another terse "lanjut
+generate" — purely content authoring, no architecture changes.
+
 **If continuing this rollout, know that the target changed shape**:
 it's no longer "N5-N1 each need to reach 100 passages" in isolation —
 it's "each level's *pool* needs to comfortably support varied
-50-question sessions." At the current 60 passages/level (~180
+50-question sessions." At the current 70 passages/level (~210
 questions/level, since every passage has exactly 3), a session already
 draws from over a third of the pool, so more content still directly
 improves felt variety. The original ~100/level target is still a
