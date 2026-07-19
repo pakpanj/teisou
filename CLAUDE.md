@@ -107,7 +107,24 @@ data files, not just "code exists")**:
 - **Belajar dari Gambar** and **Belajar dari Video** (two more
   planned modules, referenced only in the monetization roadmap note
   below — no screens, models, or scope decisions exist for either
-  yet, not even placeholders).
+  yet, not even placeholders). **Explicitly deferred (2026-07-20)**:
+  after finishing the Kanji-loop/swipe-nav/dictionary-batch work above,
+  the natural next step per the user's own stated roadmap was to start
+  a base for these two — the user asked to hold off instead, since
+  neither has a mature content plan or UX decided yet (for Gambar: what
+  images, sourced how, quiz vs. flashcard vs. something else; for
+  Video: what videos, hosted where, what format/subtitle shape). Rather
+  than write speculative models/screens now that would likely need
+  reworking once real product decisions land, the choice was to record
+  the deferral here and write nothing — **zero code exists for either,
+  on purpose, not because it was forgotten.** `kComingSoonModules`
+  (`lib/data/models/module_info.dart`) still lists both as-is; the
+  Home tab's "Segera Hadir" section still shows them exactly as before
+  this session. When picking this back up, start with the product
+  questions above (source/format/UX), not architecture — architecture
+  can follow quickly once those are answered, mirroring how every other
+  module in this app was built (own model/repository/screens trio) once
+  its content shape was actually known.
 - AdMob/IAP production setup (still on test IDs, no store billing
   wiring).
 - General release polish (the batch-9+ row's own description of what
