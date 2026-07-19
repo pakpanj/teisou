@@ -1944,6 +1944,24 @@ BANK_N1_TITLES = [
     "Menjelaskan Alasan Ketenangan Batin Lebih Berharga daripada Angka di Rekening",
 ]
 
+OLAHRAGA_N1_TITLES = [
+    "Menjelaskan Alasan Berolahraga Membuat Diri Berdamai dengan Tubuh yang Menua",
+    "Mendiskusikan Filosofi Bahwa Kemenangan Sejati Tidak Selalu soal Mengalahkan Orang Lain",
+    "Menceritakan Pengalaman Kehilangan Identitas Setelah Pensiun dari Dunia Kompetisi",
+    "Membicarakan Kesepian di Balik Disiplin Latihan Seorang Diri",
+    "Mendiskusikan Alasan Berhenti Berkompetisi Bukan Berarti Berhenti Mencintai Olahraga",
+    "Menceritakan Pengalaman Cedera Lama yang Mengubah Cara Memandang Tubuh Sendiri",
+    "Menjelaskan Filosofi Bahwa Usaha dan Hasil Tidak Selalu Berbanding Lurus",
+    "Membicarakan Rasa Bangga Melihat Rekan Setim Berhasil Meski Diri Sendiri Gagal",
+    "Mendiskusikan Perubahan Rivalitas Lama Menjadi Rasa Saling Menghormati",
+    "Menceritakan Pengalaman Menjadikan Olahraga sebagai Cara Mengolah Duka",
+    "Menjelaskan Alasan Tubuh Bukan Sesuatu yang Harus Ditaklukkan, Melainkan Didengarkan",
+    "Membicarakan Keberanian Berhenti di Tengah Latihan sebagai Bentuk Menghargai Diri",
+    "Mendiskusikan Makna Menjadi Pelatih Setelah Masa Kompetisi Diri Sendiri Berakhir",
+    "Menceritakan Pengalaman Berdamai dengan Tubuh yang Dulu Dibenci",
+    "Menjelaskan Filosofi Bahwa Bergerak Itu Sendiri Sudah Cukup, Tanpa Perlu Tujuan Besar",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -2029,6 +2047,7 @@ CATEGORY_META = {
     "liburan_n1": ("Rencana Liburan", "🏖️", "N1"),
     "keluarga_n1": ("Keluarga", "👨‍👩‍👧", "N1"),
     "bank_n1": ("Di Bank", "🏦", "N1"),
+    "olahraga_n1": ("Olahraga", "⚽", "N1"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -2116,6 +2135,7 @@ AVAILABLE_CATEGORIES = {
     "liburan_n1": LIBURAN_N1_TITLES,
     "keluarga_n1": KELUARGA_N1_TITLES,
     "bank_n1": BANK_N1_TITLES,
+    "olahraga_n1": OLAHRAGA_N1_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -2215,6 +2235,7 @@ _ALL_TITLE_LISTS = {
     "LIBURAN_N1_TITLES": LIBURAN_N1_TITLES,
     "KELUARGA_N1_TITLES": KELUARGA_N1_TITLES,
     "BANK_N1_TITLES": BANK_N1_TITLES,
+    "OLAHRAGA_N1_TITLES": OLAHRAGA_N1_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
