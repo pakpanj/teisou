@@ -247877,5 +247877,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_berbeda_dari_keluarga_lain_n2",
+    "title": "Menjelaskan Alasan Merasa Berbeda dari Anggota Keluarga Lain",
+    "category": "keluarga_n2",
+    "description": "Kamu menjelaskan ke teman alasan merasa berbeda dari anggota keluarga lainnya.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族の中で、自分だけ考え方が違うって感じたことある？",
+          "romaji": "Kazoku no naka de, jibun dake kangaekata ga chigau tte kanjita koto aru?",
+          "translation": "Pernah merasa hanya dirimu yang cara berpikirnya berbeda di antara keluarga?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_berbeda_dari_keluarga_lain_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、価値観が違うわけではないけど、興味の方向性が全然違う気がするんだ。",
+            "romaji": "Un, kachikan ga chigau wake dewa nai kedo, kyoumi no houkousei ga zenzen chigau ki ga suru n da.",
+            "translation": "Iya, bukan berarti nilai-nilainya berbeda, tapi rasanya arah minat kami benar-benar berbeda.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ううん、家族とは何もかも同じ考え方をしていると思うよ。",
+            "romaji": "Uun, kazoku to wa nanimokamo onaji kangaekata wo shite iru to omou yo.",
+            "translation": "Tidak, kupikir aku dan keluarga berpikir sama persis dalam segala hal.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にはどんな時にそう感じるの？",
+          "romaji": "Gutaiteki ni wa donna toki ni sou kanjiru no?",
+          "translation": "Secara konkret, kapan kamu merasa begitu?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_berbeda_dari_keluarga_lain_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "家族団らんの場で、話題についていけないと感じる時があるんだ。",
+            "romaji": "Kazoku danran no ba de, wadai ni tsuite ikenai to kanjiru toki ga aru n da.",
+            "translation": "Ada kalanya aku merasa tidak bisa mengikuti topik saat berkumpul dengan keluarga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "家族団らんの場では、いつも話題の中心になっているよ。",
+            "romaji": "Kazoku danran no ba de wa, itsumo wadai no chuushin ni natte iru yo.",
+            "translation": "Saat berkumpul dengan keluarga, aku selalu jadi pusat topik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それって寂しくない？",
+          "romaji": "Sore tte sabishikunai?",
+          "translation": "Apa itu tidak membuatmu kesepian?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_berbeda_dari_keluarga_lain_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "寂しく感じないわけではないけど、それも個性だと受け止めているよ。",
+            "romaji": "Sabishiku kanjinai wake dewa nai kedo, sore mo kosei da to uketomete iru yo.",
+            "translation": "Bukannya tidak merasa kesepian, tapi aku menerimanya sebagai bagian dari keunikanku juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く寂しくないし、個性だとも思っていないよ。",
+            "romaji": "Mattaku sabishikunai shi, kosei da to mo omotte inai yo.",
+            "translation": "Sama sekali tidak kesepian, dan juga tidak menganggapnya sebagai keunikan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分らしさを大事にしてるんだね。",
+          "romaji": "Jibun rashisa wo daiji ni shiteru n da ne.",
+          "translation": "Kamu menghargai jati dirimu sendiri ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_berbeda_dari_keluarga_lain_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、違うからといって、家族の絆が薄れるわけじゃないと思ってる。",
+            "romaji": "Un, chigau kara to itte, kazoku no kizuna ga usureru wake janai to omotteru.",
+            "translation": "Iya, bukan berarti ikatan keluarga jadi memudar hanya karena berbeda.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、違うことで家族の絆はどんどん薄れていくと思うよ。",
+            "romaji": "Iya, chigau koto de kazoku no kizuna wa dondon usurete iku to omou yo.",
+            "translation": "Tidak, kupikir karena berbeda, ikatan keluarga akan terus memudar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでいいと思うよ。",
+          "romaji": "Sore de ii to omou yo.",
+          "translation": "Kupikir itu tidak apa-apa."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_berbeda_dari_keluarga_lain_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pengaruh_pola_asuh_kepribadian_n2",
+    "title": "Mendiskusikan Pengaruh Pola Asuh Orang Tua terhadap Kepribadian",
+    "category": "keluarga_n2",
+    "description": "Kamu dan teman mendiskusikan pengaruh pola asuh orang tua terhadap kepribadian anak.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分の性格って、親の育て方に影響されてると思う？",
+          "romaji": "Jibun no seikaku tte, oya no sodatekata ni eikyou sarete ru to omou?",
+          "translation": "Menurutmu kepribadianmu terpengaruh cara orang tuamu membesarkanmu?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_pengaruh_pola_asuh_kepribadian_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、育てられ方に応じて、物事の捉え方も変わってくると思うよ。",
+            "romaji": "Un, sodaterarekata ni oujite, monogoto no toraekata mo kawatte kuru to omou yo.",
+            "translation": "Iya, kupikir cara memandang sesuatu juga berubah sesuai bagaimana kita dibesarkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、育て方なんて性格には全く関係ないと思うよ。",
+            "romaji": "Iya, sodatekata nante seikaku ni wa mattaku kankei nai to omou yo.",
+            "translation": "Tidak, kupikir cara membesarkan sama sekali tidak berhubungan dengan kepribadian.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にどんな影響があった？",
+          "romaji": "Gutaiteki ni donna eikyou ga atta?",
+          "translation": "Secara konkret pengaruh seperti apa yang ada?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_pengaruh_pola_asuh_kepribadian_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "親の口癖に応じて、自分でも同じような考え方をするようになった気がするよ。",
+            "romaji": "Oya no kuchiguse ni oujite, jibun demo onaji you na kangaekata wo suru you ni natta ki ga suru yo.",
+            "translation": "Sesuai kebiasaan ucapan orang tuaku, rasanya aku sendiri jadi berpikir dengan cara yang serupa.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "親が何を言っていたかなんて、全く覚えていないよ。",
+            "romaji": "Oya ga nani wo itte ita ka nante, mattaku oboete inai yo.",
+            "translation": "Aku sama sekali tidak ingat apa yang dikatakan orang tuaku.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いい影響もあれば、悪い影響もありそうだね。",
+          "romaji": "Ii eikyou mo areba, warui eikyou mo arisou da ne.",
+          "translation": "Sepertinya ada pengaruh baik, ada juga pengaruh buruk ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_pengaruh_pola_asuh_kepribadian_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、状況に応じて、いい面も難しい面も両方あると思うよ。",
+            "romaji": "Un, joukyou ni oujite, ii men mo muzukashii men mo ryouhou aru to omou yo.",
+            "translation": "Iya, kupikir sesuai situasinya, ada sisi baik dan sisi sulitnya juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、悪い影響なんて一つもないと思うよ。",
+            "romaji": "Iya, warui eikyou nante hitotsu mo nai to omou yo.",
+            "translation": "Tidak, kupikir sama sekali tidak ada pengaruh buruk.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分の子供にはどう育ってほしい？",
+          "romaji": "Jibun no kodomo ni wa dou sodatte hoshii?",
+          "translation": "Kamu ingin anakmu sendiri tumbuh seperti apa?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_pengaruh_pola_asuh_kepribadian_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "その子の個性に応じて、無理に型にはめないようにしたいな。",
+            "romaji": "Sono ko no kosei ni oujite, muri ni kata ni hamenai you ni shitai na.",
+            "translation": "Aku ingin tidak memaksakan anak masuk ke satu cetakan, tapi menyesuaikan dengan keunikannya sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "自分と全く同じように育てたいと思っているよ。",
+            "romaji": "Jibun to mattaku onaji you ni sodatetai to omotte iru yo.",
+            "translation": "Aku ingin membesarkannya persis sama seperti diriku.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それも愛情表現なんだね。",
+          "romaji": "Sore mo aijou hyougen na n da ne.",
+          "translation": "Itu juga bentuk ungkapan kasih sayang ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_pengaruh_pola_asuh_kepribadian_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_menerima_diri_dukungan_keluarga_n2",
+    "title": "Menceritakan Pengalaman Menerima Diri Sendiri Berkat Dukungan Keluarga",
+    "category": "keluarga_n2",
+    "description": "Kamu bercerita ke teman tentang pengalaman bisa menerima diri sendiri berkat dukungan keluarga.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、自分に自信が持てるようになったよね。",
+          "romaji": "Saikin, jibun ni jishin ga moteru you ni natta yo ne.",
+          "translation": "Akhir-akhir ini kamu jadi bisa lebih percaya diri ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_menerima_diri_dukungan_keluarga_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、家族に支えてもらって初めて、ありのままの自分でいいと思えたんだ。",
+            "romaji": "Un, kazoku ni sasaete moratte hajimete, ari no mama no jibun de ii to omoeta n da.",
+            "translation": "Iya, hanya setelah didukung oleh keluarga, aku baru bisa merasa apa adanya diriku ini sudah cukup.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ううん、自分一人の力だけで、自信を持てるようになったよ。",
+            "romaji": "Uun, jibun hitori no chikara dake de, jishin wo moteru you ni natta yo.",
+            "translation": "Tidak, aku jadi percaya diri hanya dengan kekuatan sendiri saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族はどんな風に支えてくれたの？",
+          "romaji": "Kazoku wa donna fuu ni sasaete kureta no?",
+          "translation": "Keluargamu mendukung dengan cara seperti apa?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_menerima_diri_dukungan_keluarga_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "何も否定せずに、ただ話を聞いてくれたことが一番大きかったよ。",
+            "romaji": "Nanimo hitei sezu ni, tada hanashi wo kiite kureta koto ga ichiban ookikatta yo.",
+            "translation": "Yang paling besar adalah mereka mendengarkan ceritaku tanpa membantah apa pun.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いつも厳しく指摘してくることが、一番の支えになったよ。",
+            "romaji": "Itsumo kibishiku shiteki shite kuru koto ga, ichiban no sasae ni natta yo.",
+            "translation": "Selalu menunjukkan kesalahanku dengan keras itu menjadi dukungan terbesar.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それで気持ちが楽になったんだね。",
+          "romaji": "Sore de kimochi ga raku ni natta n da ne.",
+          "translation": "Jadi perasaanmu jadi lebih ringan ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_menerima_diri_dukungan_keluarga_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、認めてもらえて初めて、自分を責めるのをやめられたよ。",
+            "romaji": "Un, mitomete moraete hajimete, jibun wo semeru no wo yamerareta yo.",
+            "translation": "Iya, hanya setelah diakui, aku baru bisa berhenti menyalahkan diri sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、認めてもらっても、自分を責める気持ちは変わらなかったよ。",
+            "romaji": "Iya, mitomete moratte mo, jibun wo semeru kimochi wa kawaranakatta yo.",
+            "translation": "Tidak, meski diakui, perasaan menyalahkan diri sendiri tidak berubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度は自分が誰かを支える番かもね。",
+          "romaji": "Kondo wa jibun ga dareka wo sasaeru ban kamo ne.",
+          "translation": "Mungkin sekarang giliranmu mendukung seseorang ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_menerima_diri_dukungan_keluarga_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、今度は自分が受けた優しさを誰かに返していきたいな。",
+            "romaji": "Sou da ne, kondo wa jibun ga uketa yasashisa wo dareka ni kaeshite ikitai na.",
+            "translation": "Benar juga, sekarang aku ingin mengembalikan kebaikan yang kuterima kepada orang lain.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、誰かを支えることには興味がないよ。",
+            "romaji": "Iya, dareka wo sasaeru koto ni wa kyoumi ga nai yo.",
+            "translation": "Tidak, aku tidak tertarik mendukung siapa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "支え合いって大事だね。",
+          "romaji": "Sasaeai tte daiji da ne.",
+          "translation": "Saling mendukung itu penting ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_menerima_diri_dukungan_keluarga_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_ekspektasi_keluarga_sulit_dipenuhi_n2",
+    "title": "Membicarakan Ekspektasi Keluarga yang Sulit Dipenuhi",
+    "category": "keluarga_n2",
+    "description": "Kamu membicarakan dengan teman tentang ekspektasi keluarga yang sulit untuk dipenuhi.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族の期待に応えるの、大変じゃない？",
+          "romaji": "Kazoku no kitai ni kotaeru no, taihen janai?",
+          "translation": "Memenuhi harapan keluarga itu tidak berat?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_ekspektasi_keluarga_sulit_dipenuhi_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、応えようがないと感じるほど、期待が大きいこともあるよ。",
+            "romaji": "Shoujiki, kotaeyou ga nai to kanjiru hodo, kitai ga ookii koto mo aru yo.",
+            "translation": "Sejujurnya, ada kalanya harapannya besar sampai terasa tidak ada cara untuk memenuhinya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、家族の期待なんて、簡単に応えられるものばかりだよ。",
+            "romaji": "Iya, kazoku no kitai nante, kantan ni kotaerareru mono bakari da yo.",
+            "translation": "Tidak, harapan keluarga itu semuanya hal yang mudah dipenuhi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな期待をかけられてるの？",
+          "romaji": "Donna kitai wo kakerarete ru no?",
+          "translation": "Harapan seperti apa yang diberikan padamu?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_ekspektasi_keluarga_sulit_dipenuhi_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "高い学歴や安定した仕事を求められて、断りようがない雰囲気があるんだ。",
+            "romaji": "Takai gakureki ya antei shita shigoto wo motomerarete, kotowariyou ga nai fun'iki ga aru n da.",
+            "translation": "Diminta pendidikan tinggi dan pekerjaan stabil, ada suasana yang tidak memungkinkan untuk menolak.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も期待されていないから、気楽なものだよ。",
+            "romaji": "Toku ni nanimo kitai sarete inai kara, kiraku na mono da yo.",
+            "translation": "Karena tidak diharapkan apa-apa secara khusus, jadi santai saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分の希望を伝えたことはあるの？",
+          "romaji": "Jibun no kibou wo tsutaeta koto wa aru no?",
+          "translation": "Pernahkah menyampaikan keinginanmu sendiri?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_ekspektasi_keluarga_sulit_dipenuhi_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "伝えようとしたことはあるけど、うまく言葉にしようがなくて諦めたこともあるよ。",
+            "romaji": "Tsutaeyou to shita koto wa aru kedo, umaku kotoba ni shiyou ga nakute akirameta koto mo aru yo.",
+            "translation": "Pernah mencoba menyampaikannya, tapi ada kalanya menyerah karena tidak ada cara untuk mengungkapkannya dengan baik.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、すぐに全部理解してもらえたよ。",
+            "romaji": "Un, sugu ni zenbu rikai shite moraeta yo.",
+            "translation": "Iya, langsung sepenuhnya dipahami.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "少しずつでも話してみたら？",
+          "romaji": "Sukoshizutsu demo hanashite mitara?",
+          "translation": "Bagaimana kalau coba bicarakan sedikit demi sedikit?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_ekspektasi_keluarga_sulit_dipenuhi_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、今すぐには変えようがなくても、少しずつ伝えていくよ。",
+            "romaji": "Sou da ne, ima sugu ni wa kaeyou ga nakute mo, sukoshizutsu tsutaete iku yo.",
+            "translation": "Benar juga, meski sekarang belum ada cara untuk langsung mengubahnya, aku akan menyampaikannya sedikit demi sedikit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、これからも自分の気持ちは黙っておくつもりだよ。",
+            "romaji": "Iya, kore kara mo jibun no kimochi wa damatte oku tsumori da yo.",
+            "translation": "Tidak, ke depannya pun aku berniat memendam perasaanku sendiri.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "少しずつでも伝わるといいね。",
+          "romaji": "Sukoshizutsu demo tsutawaru to ii ne.",
+          "translation": "Semoga tersampaikan sedikit demi sedikit ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_ekspektasi_keluarga_sulit_dipenuhi_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_parentifikasi_n2",
+    "title": "Mendiskusikan Fenomena Anak Menjadi Sosok Orang Tua bagi Orang Tuanya Sendiri (Parentifikasi)",
+    "category": "keluarga_n2",
+    "description": "Kamu dan teman mendiskusikan pengalaman menjadi sosok yang mengurus adik sejak kecil karena orang tua sibuk.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "小さい頃から、弟や妹の面倒をよく見てたよね。",
+          "romaji": "Chiisai koro kara, otouto ya imouto no mendou wo yoku miteta yo ne.",
+          "translation": "Sejak kecil, kamu sering mengurus adik-adikmu ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_parentifikasi_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、親が忙しかったから、自分が親代わりにならざるを得なかったんだ。",
+            "romaji": "Un, oya ga isogashikatta kara, jibun ga oyagawari ni narazaru wo enakatta n da.",
+            "translation": "Iya, karena orang tuaku sibuk, aku terpaksa menjadi pengganti orang tua.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、弟や妹の面倒なんて、一度も見たことないよ。",
+            "romaji": "Iya, otouto ya imouto no mendou nante, ichido mo mita koto nai yo.",
+            "translation": "Tidak, belum pernah sama sekali mengurus adik-adik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それって負担に感じなかった？",
+          "romaji": "Sore tte futan ni kanjinakatta?",
+          "translation": "Apa itu tidak terasa jadi beban?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_parentifikasi_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "負担に感じないと言えば嘘になるけど、家族のために頑張らざるを得なかったよ。",
+            "romaji": "Futan ni kanjinai to ieba uso ni naru kedo, kazoku no tame ni ganbarazaru wo enakatta yo.",
+            "translation": "Kalau bilang tidak terasa beban itu bohong, tapi aku terpaksa berusaha demi keluarga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く負担ではなかったし、むしろ楽しいだけだったよ。",
+            "romaji": "Mattaku futan de wa nakatta shi, mushiro tanoshii dake datta yo.",
+            "translation": "Sama sekali bukan beban, malah hanya menyenangkan saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分の子供時代が犠牲になったとは思わない？",
+          "romaji": "Jibun no kodomo jidai ga gisei ni natta to wa omowanai?",
+          "translation": "Tidak berpikir masa kecilmu sendiri jadi berkorban?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_parentifikasi_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そう思わざるを得ない部分もあるけど、それも自分の一部だと受け止めているよ。",
+            "romaji": "Sou omowazaru wo enai bubun mo aru kedo, sore mo jibun no ichibu da to uketomete iru yo.",
+            "translation": "Ada bagian yang membuatku tidak bisa tidak berpikir begitu, tapi aku menerimanya sebagai bagian dari diriku juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全くそう思わないし、犠牲にしたものは何もないよ。",
+            "romaji": "Mattaku sou omowanai shi, gisei ni shita mono wa nanimo nai yo.",
+            "translation": "Sama sekali tidak berpikir begitu, dan tidak ada yang kukorbankan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今は誰かに頼ることもできてる？",
+          "romaji": "Ima wa dareka ni tayoru koto mo dekiteru?",
+          "translation": "Sekarang apa kamu juga bisa bergantung pada seseorang?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_parentifikasi_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "少しずつだけど、自分も誰かに頼らざるを得ない時があると認められるようになったよ。",
+            "romaji": "Sukoshizutsu dakedo, jibun mo dareka ni tayorazaru wo enai toki ga aru to mitomerareru you ni natta yo.",
+            "translation": "Sedikit demi sedikit, aku jadi bisa mengakui bahwa ada kalanya aku juga terpaksa bergantung pada seseorang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、誰にも頼らずに、全部自分でやるべきだと思ってるよ。",
+            "romaji": "Iya, dare ni mo tayorazu ni, zenbu jibun de yaru beki da to omotteru yo.",
+            "translation": "Tidak, kupikir semua harus kulakukan sendiri tanpa bergantung pada siapa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "気づけているだけで十分だよ。",
+          "romaji": "Kizukete iru dake de juubun da yo.",
+          "translation": "Baru menyadarinya saja sudah cukup."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_parentifikasi_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に十分だとは思わないよ。",
+            "romaji": "Betsu ni juubun da to wa omowanai yo.",
+            "translation": "Kupikir sama sekali tidak cukup.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_memaafkan_orang_tua_n2",
+    "title": "Menceritakan Pengalaman Memaafkan Kesalahan Orang Tua di Masa Lalu",
+    "category": "keluarga_n2",
+    "description": "Kamu bercerita ke teman tentang pengalaman akhirnya bisa memaafkan kesalahan orang tua di masa lalu.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お父さんとの関係、最近どう？",
+          "romaji": "Otousan to no kankei, saikin dou?",
+          "translation": "Bagaimana hubunganmu dengan ayahmu akhir-akhir ini?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_memaafkan_orang_tua_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "長い間わだかまりがあったけど、たくさん話し合った末に、和解できたよ。",
+            "romaji": "Nagai aida wadakamari ga atta kedo, takusan hanashiatta sue ni, wakai dekita yo.",
+            "translation": "Sudah lama ada ganjalan, tapi setelah banyak berdiskusi, akhirnya kami bisa berdamai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、話し合ったことなんて一度もなくて、今も気まずいままだよ。",
+            "romaji": "Iya, hanashiatta koto nante ichido mo nakute, ima mo kimazui mama da yo.",
+            "translation": "Tidak, belum pernah sama sekali berdiskusi, dan sampai sekarang masih canggung.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何がきっかけで話し合うことになったの？",
+          "romaji": "Nani ga kikkake de hanashiau koto ni natta no?",
+          "translation": "Apa yang jadi pemicu kalian berdiskusi?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_memaafkan_orang_tua_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "お互い意地を張り続けた末に、このままではいけないと気づいたんだ。",
+            "romaji": "Otagai iji wo hariotsuzuketa sue ni, kono mama de wa ikenai to kizuita n da.",
+            "translation": "Setelah kami berdua terus keras kepala, aku menyadari ini tidak bisa dibiarkan begini terus.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にきっかけはなくて、自然と仲直りしていたよ。",
+            "romaji": "Toku ni kikkake wa nakute, shizen to nakanaori shite ita yo.",
+            "translation": "Tidak ada pemicu khusus, kami berbaikan secara alami saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "許すのは簡単じゃなかったでしょう。",
+          "romaji": "Yurusu no wa kantan janakatta deshou.",
+          "translation": "Memaafkan itu pasti tidak mudah ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_memaafkan_orang_tua_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、何度も葛藤した末に、やっと心から許せる気がしたよ。",
+            "romaji": "Un, nando mo kattou shita sue ni, yatto kokoro kara yuruseru ki ga shita yo.",
+            "translation": "Iya, setelah berkali-kali bergulat dengan diri sendiri, akhirnya aku merasa bisa memaafkan dari hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、すぐに何の抵抗もなく許せたよ。",
+            "romaji": "Iya, sugu ni nan no teikou mo naku yuruseta yo.",
+            "translation": "Tidak, langsung bisa memaafkan tanpa penolakan apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今は気持ちが軽くなった？",
+          "romaji": "Ima wa kimochi ga karuku natta?",
+          "translation": "Sekarang perasaanmu jadi lebih ringan?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_memaafkan_orang_tua_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、許した末に、自分自身も楽になれた気がするよ。",
+            "romaji": "Un, yurushita sue ni, jibun jishin mo raku ni nareta ki ga suru yo.",
+            "translation": "Iya, setelah memaafkan, rasanya aku sendiri juga jadi lebih lega.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、許しても、気持ちは全く変わらなかったよ。",
+            "romaji": "Iya, yurushite mo, kimochi wa mattaku kawaranakatta yo.",
+            "translation": "Tidak, meski memaafkan, perasaannya sama sekali tidak berubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "仲直りできてよかったね。",
+          "romaji": "Nakanaori dekite yokatta ne.",
+          "translation": "Bagus deh bisa berbaikan."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_memaafkan_orang_tua_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別によかったとは思わないよ。",
+            "romaji": "Betsu ni yokatta to wa omowanai yo.",
+            "translation": "Kupikir sama sekali tidak bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_jalan_hidup_berbeda_harapan_keluarga_n2",
+    "title": "Menjelaskan Alasan Memilih Jalan Hidup Berbeda dari Harapan Keluarga",
+    "category": "keluarga_n2",
+    "description": "Kamu menjelaskan ke teman alasan memilih jalan hidup yang berbeda dari harapan keluarga.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族が期待してた道とは違う道を選んだんだよね。",
+          "romaji": "Kazoku ga kitai shiteta michi to wa chigau michi wo eranda n da yo ne.",
+          "translation": "Kamu memilih jalan yang berbeda dari yang diharapkan keluarga ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_jalan_hidup_berbeda_harapan_keluarga_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、安定した仕事を勧められたからといって、それが自分の幸せとは限らないと思ったんだ。",
+            "romaji": "Un, antei shita shigoto wo susumerareta kara to itte, sore ga jibun no shiawase to wa kagiranai to omotta n da.",
+            "translation": "Iya, aku berpikir belum tentu itu kebahagiaanku hanya karena disarankan pekerjaan yang stabil.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、家族が勧めた道をそのまま選んだだけだよ。",
+            "romaji": "Iya, kazoku ga susumeta michi wo sono mama eranda dake da yo.",
+            "translation": "Tidak, aku hanya memilih jalan yang disarankan keluarga apa adanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族は反対しなかったの？",
+          "romaji": "Kazoku wa hantai shinakatta no?",
+          "translation": "Apa keluarga tidak menentang?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_jalan_hidup_berbeda_harapan_keluarga_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "最初は反対されたけど、自分の気持ちを伝えたからといって、すぐには理解されなかったよ。",
+            "romaji": "Saisho wa hantai sareta kedo, jibun no kimochi wo tsutaeta kara to itte, sugu ni wa rikai sarenakatta yo.",
+            "translation": "Awalnya ditentang, dan meski aku sudah menyampaikan perasaanku, tidak langsung dipahami.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、伝えた瞬間にすぐ賛成してくれたよ。",
+            "romaji": "Un, tsutaeta shunkan ni sugu sansei shite kureta yo.",
+            "translation": "Iya, begitu kusampaikan langsung setuju.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今はどんな関係なの？",
+          "romaji": "Ima wa donna kankei na no?",
+          "translation": "Sekarang hubungannya seperti apa?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_jalan_hidup_berbeda_harapan_keluarga_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "時間がかかったからといって、あきらめずに話し続けたら、少しずつ分かってもらえたよ。",
+            "romaji": "Jikan ga kakatta kara to itte, akiramezu ni hanashitsuzuketara, sukoshizutsu wakatte moraeta yo.",
+            "translation": "Meski memakan waktu, dengan terus bicara tanpa menyerah, aku jadi dipahami sedikit demi sedikit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いまだに全く理解してもらえていないし、話すこともないよ。",
+            "romaji": "Imada ni mattaku rikai shite moratte inai shi, hanasu koto mo nai yo.",
+            "translation": "Sampai sekarang sama sekali tidak dipahami, dan tidak ada pembicaraan juga.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分の選択に後悔はない？",
+          "romaji": "Jibun no sentaku ni koukai wa nai?",
+          "translation": "Tidak menyesali pilihanmu sendiri?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_jalan_hidup_berbeda_harapan_keluarga_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "楽な道じゃなかったからといって、後悔しているわけではないよ。",
+            "romaji": "Raku na michi janakatta kara to itte, koukai shite iru wake dewa nai yo.",
+            "translation": "Bukan berarti aku menyesal hanya karena itu bukan jalan yang mudah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "正直、選び直せるなら別の道を選ぶと思うよ。",
+            "romaji": "Shoujiki, erabinaoseru nara betsu no michi wo erabu to omou yo.",
+            "translation": "Jujur, kalau bisa memilih ulang, kupikir aku akan memilih jalan lain.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分の道を歩めてるんだね。",
+          "romaji": "Jibun no michi wo ayumeteru n da ne.",
+          "translation": "Kamu jadi bisa menapaki jalanmu sendiri ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_jalan_hidup_berbeda_harapan_keluarga_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_siklus_pola_asuh_diwariskan_n2",
+    "title": "Membicarakan Siklus Pola Asuh yang Diwariskan Antar Generasi",
+    "category": "keluarga_n2",
+    "description": "Kamu membicarakan dengan teman tentang siklus pola asuh yang diwariskan antar generasi.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "親と同じような育て方をしそうで怖いって、前に言ってたよね。",
+          "romaji": "Oya to onaji you na sodatekata wo shisou de kowai tte, mae ni itteta yo ne.",
+          "translation": "Kamu pernah bilang takut akan membesarkan anak dengan cara yang sama seperti orang tuamu ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_siklus_pola_asuh_diwariskan_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、気づかないうちに、同じパターンを繰り返しつつあるって感じることがあるんだ。",
+            "romaji": "Un, kizukanai uchi ni, onaji pataan wo kurikaeshitsutsu aru tte kanjiru koto ga aru n da.",
+            "translation": "Iya, ada kalanya aku merasa mulai mengulangi pola yang sama tanpa sadar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、親とは全く違う育て方しかしていないと思うよ。",
+            "romaji": "Iya, oya to wa mattaku chigau sodatekata shika shite inai to omou yo.",
+            "translation": "Tidak, kupikir aku hanya membesarkan dengan cara yang sama sekali berbeda dari orang tuaku.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にどんな場面で気づくの？",
+          "romaji": "Gutaiteki ni donna bamen de kizuku no?",
+          "translation": "Secara konkret di situasi seperti apa kamu menyadarinya?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_siklus_pola_asuh_diwariskan_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "疲れている時に、親と同じ言葉が口をついて出そうになりつつあるんだ。",
+            "romaji": "Tsukarete iru toki ni, oya to onaji kotoba ga kuchi wo tsuite desou ni naritsutsu aru n da.",
+            "translation": "Saat lelah, kata-kata yang sama seperti orang tuaku mulai hampir keluar dari mulutku tanpa sadar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にそういう場面に気づいたことは一度もないよ。",
+            "romaji": "Toku ni sou iu bamen ni kizuita koto wa ichido mo nai yo.",
+            "translation": "Belum pernah sama sekali menyadari situasi seperti itu secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それに気づけているのは大事だと思うよ。",
+          "romaji": "Sore ni kizukete iru no wa daiji da to omou yo.",
+          "translation": "Kupikir menyadari hal itu sudah penting."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_siklus_pola_asuh_diwariskan_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、意識し始めてから、少しずつ違う選択ができつつあると思うよ。",
+            "romaji": "Un, ishiki shihajimete kara, sukoshizutsu chigau sentaku ga dekitsutsu aru to omou yo.",
+            "translation": "Iya, sejak mulai menyadarinya, kupikir aku mulai bisa membuat pilihan berbeda sedikit demi sedikit.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "気づいてはいるけど、何も変えられていないと思うよ。",
+            "romaji": "Kizuite wa iru kedo, nanimo kaerarete inai to omou yo.",
+            "translation": "Sudah menyadarinya, tapi kupikir belum ada yang berhasil kuubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "これからどうしていきたい？",
+          "romaji": "Kore kara dou shite ikitai?",
+          "translation": "Ke depannya ingin bagaimana?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_siklus_pola_asuh_diwariskan_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "自分が嫌だったことは繰り返さないように、意識的に気をつけていきたいな。",
+            "romaji": "Jibun ga iyadatta koto wa kurikaesanai you ni, ishikiteki ni ki wo tsukete ikitai na.",
+            "translation": "Aku ingin secara sadar berhati-hati agar tidak mengulangi hal-hal yang tidak kusukai dulu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も気にせず、これまで通りでいいと思ってるよ。",
+            "romaji": "Toku ni nanimo ki ni sezu, kore made doori de ii to omotteru yo.",
+            "translation": "Tanpa memikirkan apa pun secara khusus, kupikir seperti biasa saja sudah cukup.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "変わろうとする姿勢が素敵だね。",
+          "romaji": "Kawarou to suru shisei ga suteki da ne.",
+          "translation": "Sikap yang berusaha berubah itu indah ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_siklus_pola_asuh_diwariskan_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に素敵だとは思わないよ。",
+            "romaji": "Betsu ni suteki da to wa omowanai yo.",
+            "translation": "Kupikir sama sekali tidak indah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_definisi_kesuksesan_keluarga_diri_sendiri_n2",
+    "title": "Mendiskusikan Definisi Kesuksesan Menurut Keluarga vs Diri Sendiri",
+    "category": "keluarga_n2",
+    "description": "Kamu dan teman mendiskusikan perbedaan definisi kesuksesan menurut keluarga dan menurut diri sendiri.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族が思う成功と、自分が思う成功、同じ？",
+          "romaji": "Kazoku ga omou seikou to, jibun ga omou seikou, onaji?",
+          "translation": "Kesuksesan menurut keluargamu dan menurutmu sendiri, sama?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_definisi_kesuksesan_keluarga_diri_sendiri_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "いや、収入や地位が高いことが、必ずしも成功とは限らないと思ってるんだ。",
+            "romaji": "Iya, shuunyuu ya chii ga takai koto ga, kanarazu shimo seikou to wa kagiranai to omotteru n da.",
+            "translation": "Tidak, aku berpikir belum tentu pendapatan atau status yang tinggi itu artinya sukses.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、収入や地位こそが、成功の全てだと思っているよ。",
+            "romaji": "Un, shuunyuu ya chii koso ga, seikou no subete da to omotte iru yo.",
+            "translation": "Iya, aku berpikir justru pendapatan dan status itulah keseluruhan kesuksesan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "じゃあ、何が成功だと思う？",
+          "romaji": "Jaa, nani ga seikou da to omou?",
+          "translation": "Kalau begitu, menurutmu apa yang disebut sukses?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_definisi_kesuksesan_keluarga_diri_sendiri_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "毎日を穏やかに楽しく過ごせることが、成功とは限らないけど、それに近い気がするよ。",
+            "romaji": "Mainichi wo odayaka ni tanoshiku sugoseru koto ga, seikou to wa kagiranai kedo, sore ni chikai ki ga suru yo.",
+            "translation": "Bisa menjalani hari-hari dengan tenang dan menyenangkan belum tentu itu kesuksesan, tapi rasanya mendekati itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "他人からどう見られるかだけが、成功の基準だと思うよ。",
+            "romaji": "Tanin kara dou mirareru ka dake ga, seikou no kijun da to omou yo.",
+            "translation": "Hanya bagaimana dipandang orang lain saja yang jadi standar kesuksesan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族に理解してもらうのは大変？",
+          "romaji": "Kazoku ni rikai shite morau no wa taihen?",
+          "translation": "Sulit membuat keluarga memahami?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_definisi_kesuksesan_keluarga_diri_sendiri_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、価値観が違うと理解されるとは限らないから、時々もどかしいよ。",
+            "romaji": "Un, kachikan ga chigau to rikai sareru to wa kagiranai kara, tokidoki modokashii yo.",
+            "translation": "Iya, karena belum tentu dipahami saat nilai-nilainya berbeda, kadang-kadang terasa gemas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、価値観が違っても、いつもすぐに理解してもらえるよ。",
+            "romaji": "Iya, kachikan ga chigatte mo, itsumo sugu ni rikai shite moraeru yo.",
+            "translation": "Tidak, meski nilai-nilainya berbeda, selalu langsung dipahami.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分の基準を大事にすればいいと思うよ。",
+          "romaji": "Jibun no kijun wo daiji ni sureba ii to omou yo.",
+          "translation": "Kupikir cukup menghargai standar dirimu sendiri."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_definisi_kesuksesan_keluarga_diri_sendiri_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね、他人の基準に合わせることが、幸せだとは限らないもんね。",
+            "romaji": "Sou da ne, tanin no kijun ni awaseru koto ga, shiawase da to wa kagiranai mon ne.",
+            "translation": "Benar juga, menyesuaikan diri dengan standar orang lain belum tentu itu kebahagiaan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、他人の基準に完全に合わせることが一番だと思うよ。",
+            "romaji": "Iya, tanin no kijun ni kanzen ni awaseru koto ga ichiban da to omou yo.",
+            "translation": "Tidak, kupikir sepenuhnya menyesuaikan diri dengan standar orang lain itu paling baik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分らしい基準でいいんだよ。",
+          "romaji": "Jibun rashii kijun de ii n da yo.",
+          "translation": "Standar yang sesuai dengan dirimu sendiri sudah cukup kok."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_definisi_kesuksesan_keluarga_diri_sendiri_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_cinta_keluarga_tidak_terucap_n2",
+    "title": "Menceritakan Pengalaman Menyadari Cinta Keluarga yang Tidak Terucap",
+    "category": "keluarga_n2",
+    "description": "Kamu bercerita ke teman tentang menyadari kasih sayang keluarga yang tidak pernah terucap lewat kata-kata.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お母さんとは、あまり素直に話せない関係だったよね。",
+          "romaji": "Okaasan to wa, amari sunao ni hanasenai kankei datta yo ne.",
+          "translation": "Hubunganmu dengan ibu itu yang tidak bisa terlalu terbuka bicara ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_cinta_keluarga_tidak_terucap_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、でも最近、些細な行動の中に、言葉にならない愛情を感じられるようになったんだ。",
+            "romaji": "Un, demo saikin, sasai na koudou no naka ni, kotoba ni naranai aijou wo kanjirareru you ni natta n da.",
+            "translation": "Iya, tapi akhir-akhir ini aku jadi bisa merasakan kasih sayang yang tak terucap di balik tindakan-tindakan kecilnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、素直に話せないだけで、愛情なんて感じたことないよ。",
+            "romaji": "Iya, sunao ni hanasenai dake de, aijou nante kanjita koto nai yo.",
+            "translation": "Tidak, cuma tidak bisa bicara terbuka saja, sama sekali belum pernah merasakan kasih sayang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな行動にそれを感じたの？",
+          "romaji": "Donna koudou ni sore wo kanjita no?",
+          "translation": "Tindakan seperti apa yang membuatmu merasa begitu?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_cinta_keluarga_tidak_terucap_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "何も言わずに、いつも好物を作って待っていてくれることに気づいたんだ。",
+            "romaji": "Nanimo iwazu ni, itsumo koubutsu wo tsukutte matte ite kureru koto ni kizuita n da.",
+            "translation": "Aku menyadari bahwa tanpa bilang apa-apa, dia selalu memasak makanan favoritku dan menungguku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も気づかなかったし、変わったこともなかったよ。",
+            "romaji": "Toku ni nanimo kizukanakatta shi, kawatta koto mo nakatta yo.",
+            "translation": "Tidak menyadari apa pun secara khusus, dan juga tidak ada yang berubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "直接言葉で伝え合ったりはしないの？",
+          "romaji": "Chokusetsu kotoba de tsutaeattari wa shinai no?",
+          "translation": "Tidak saling menyampaikan langsung lewat kata-kata?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_cinta_keluarga_tidak_terucap_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うちの家族は、言葉にするのが苦手な分、行動で示すタイプなんだと思う。",
+            "romaji": "Uchi no kazoku wa, kotoba ni suru no ga nigate na bun, koudou de shimesu taipu na n da to omou.",
+            "translation": "Kupikir keluargaku, karena tidak pandai mengungkapkan dengan kata-kata, adalah tipe yang menunjukkannya lewat tindakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、いつも言葉ではっきり愛情を伝え合っているよ。",
+            "romaji": "Un, itsumo kotoba de hakkiri aijou wo tsutaeatte iru yo.",
+            "translation": "Iya, selalu saling menyampaikan kasih sayang dengan jelas lewat kata-kata.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "不器用だけど、ちゃんと伝わっているんだね。",
+          "romaji": "Bukiyou dakedo, chanto tsutawatte iru n da ne.",
+          "translation": "Meski canggung, tapi tersampaikan dengan baik ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_cinta_keluarga_tidak_terucap_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そのことに気づけただけでも、十分な気がするよ。",
+            "romaji": "Un, sono koto ni kizuketa dake demo, juubun na ki ga suru yo.",
+            "translation": "Iya, rasanya baru menyadari hal itu saja sudah cukup.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、気づいたところで、何も変わらないと思うよ。",
+            "romaji": "Iya, kizuita tokoro de, nanimo kawaranai to omou yo.",
+            "translation": "Tidak, kupikir meski disadari, tidak ada yang berubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "気づけて良かったね。",
+          "romaji": "Kizukete yokatta ne.",
+          "translation": "Bagus deh kamu jadi sadar."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_cinta_keluarga_tidak_terucap_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に良かったとは思わないよ。",
+            "romaji": "Betsu ni yokatta to wa omowanai yo.",
+            "translation": "Kupikir sama sekali tidak bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kemandirian_ikatan_keluarga_n2",
+    "title": "Menjelaskan Kesulitan Menyeimbangkan Kemandirian dan Ikatan Keluarga",
+    "category": "keluarga_n2",
+    "description": "Kamu menjelaskan ke teman kesulitan menyeimbangkan antara kemandirian dan ikatan dengan keluarga.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "実家を出てからも、家族とよく連絡取ってるよね。",
+          "romaji": "Jikka wo dete kara mo, kazoku to yoku renraku totteru yo ne.",
+          "translation": "Meski sudah keluar dari rumah orang tua, kamu masih sering menghubungi keluarga ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_kemandirian_ikatan_keluarga_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、自立したいと思いつつも、家族との繋がりは大事にしたいんだ。",
+            "romaji": "Un, jiritsu shitai to omoitsutsu mo, kazoku to no tsunagari wa daiji ni shitai n da.",
+            "translation": "Iya, meski ingin mandiri, aku tetap ingin menghargai hubungan dengan keluarga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "ううん、実家を出てからは、家族とはほとんど連絡を取っていないよ。",
+            "romaji": "Uun, jikka wo dete kara wa, kazoku to wa hotondo renraku wo totte inai yo.",
+            "translation": "Tidak, sejak keluar dari rumah orang tua, hampir tidak pernah menghubungi keluarga.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その二つ、両立するのは難しくない？",
+          "romaji": "Sono futatsu, ryouritsu suru no wa muzukashikunai?",
+          "translation": "Menyeimbangkan keduanya tidak sulit?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_kemandirian_ikatan_keluarga_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "難しいと感じつつも、程よい距離感を探るようにしているよ。",
+            "romaji": "Muzukashii to kanjitsutsu mo, hodoyoi kyorikan wo saguru you ni shite iru yo.",
+            "translation": "Meski merasa sulit, aku berusaha mencari jarak yang pas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "全く難しくないし、何も考えずに過ごしているよ。",
+            "romaji": "Mattaku muzukashikunai shi, nanimo kangaezu ni sugoshite iru yo.",
+            "translation": "Sama sekali tidak sulit, dan aku menjalaninya tanpa memikirkan apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "程よい距離感って、どうやって見つけるの？",
+          "romaji": "Hodoyoi kyorikan tte, dou yatte mitsukeru no?",
+          "translation": "Bagaimana caramu menemukan jarak yang pas itu?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_kemandirian_ikatan_keluarga_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "干渉されたくないと思いつつも、心配はかけたくないから、こまめに近況を伝えるようにしてるよ。",
+            "romaji": "Kanshou saretakunai to omoitsutsu mo, shinpai wa kaketakunai kara, komame ni kinkyou wo tsutaeru you ni shiteru yo.",
+            "translation": "Meski tidak ingin dicampuri, karena tidak ingin membuat khawatir, aku berusaha rutin mengabarkan kabar terbaru.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "干渉されるのが嫌だから、近況は一切伝えないようにしているよ。",
+            "romaji": "Kanshou sareru no ga iya dakara, kinkyou wa issai tsutaenai you ni shite iru yo.",
+            "translation": "Karena tidak suka dicampuri, aku sama sekali tidak pernah mengabarkan kabar terbaru.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "バランス感覚があるんだね。",
+          "romaji": "Baransu kankaku ga aru n da ne.",
+          "translation": "Kamu punya rasa keseimbangan ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_kemandirian_ikatan_keluarga_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "自立を目指しつつも、一人じゃないって思えるのは、やっぱり安心するよ。",
+            "romaji": "Jiritsu wo mezashitsutsu mo, hitori janai tte omoeru no wa, yappari anshin suru yo.",
+            "translation": "Meski mengarah pada kemandirian, bisa merasa tidak sendirian tetap membuatku tenang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、一人でいることに何の安心も感じないよ。",
+            "romaji": "Iya, hitori de iru koto ni nan no anshin mo kanjinai yo.",
+            "translation": "Tidak, sendirian sama sekali tidak membuatku merasa tenang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いいバランスだね。",
+          "romaji": "Ii baransu da ne.",
+          "translation": "Keseimbangan yang bagus ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_kemandirian_ikatan_keluarga_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_trauma_keluarga_hubungan_masa_depan_n2",
+    "title": "Membicarakan Dampak Trauma Keluarga terhadap Hubungan di Masa Depan",
+    "category": "keluarga_n2",
+    "description": "Kamu membicarakan dengan teman dampak trauma keluarga terhadap kemampuan menjalin hubungan di masa depan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、恋愛に対して臆病になってる気がするって言ってたね。",
+          "romaji": "Saikin, ren'ai ni taishite okubyou ni natteru ki ga suru tte itteta ne.",
+          "translation": "Kamu bilang akhir-akhir ini merasa jadi penakut soal percintaan ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_trauma_keluarga_hubungan_masa_depan_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、両親の不仲を見て育ったせいで、人を信じることに臆病になりかねないんだ。",
+            "romaji": "Un, ryoushin no funaka wo mite sodatta sei de, hito wo shinjiru koto ni okubyou ni narikanenai n da.",
+            "translation": "Iya, gara-gara tumbuh melihat ketidakcocokan orang tuaku, aku bisa saja jadi penakut untuk mempercayai orang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、両親の関係と自分の恋愛は、全く関係ないと思ってるよ。",
+            "romaji": "Iya, ryoushin no kankei to jibun no ren'ai wa, mattaku kankei nai to omotteru yo.",
+            "translation": "Tidak, kupikir hubungan orang tuaku dan percintaanku sendiri sama sekali tidak berhubungan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "具体的にどんな影響があるの？",
+          "romaji": "Gutaiteki ni donna eikyou ga aru no?",
+          "translation": "Secara konkret pengaruh seperti apa yang ada?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_trauma_keluarga_hubungan_masa_depan_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "喧嘩を見ると、自分の関係もいつか壊れかねないって、つい不安になるんだ。",
+            "romaji": "Kenka wo miru to, jibun no kankei mo itsuka kowarekanenai tte, tsui fuan ni naru n da.",
+            "translation": "Kalau melihat pertengkaran, aku jadi cemas kalau-kalau hubunganku sendiri juga bisa hancur suatu saat.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "喧嘩を見ても、自分には全く関係ないと思って安心していられるよ。",
+            "romaji": "Kenka wo mite mo, jibun ni wa mattaku kankei nai to omotte anshin shite irareru yo.",
+            "translation": "Meski melihat pertengkaran, aku bisa tetap tenang karena berpikir itu sama sekali tidak berhubungan denganku.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そのことについて、誰かに相談したことある？",
+          "romaji": "Sono koto ni tsuite, dareka ni soudan shita koto aru?",
+          "translation": "Pernah konsultasi ke seseorang soal itu?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_trauma_keluarga_hubungan_masa_depan_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "話さないままでいると、いつか関係に響きかねないと思って、カウンセラーに相談したことがあるよ。",
+            "romaji": "Hanasanai mama de iru to, itsuka kankei ni hibikikanenai to omotte, kaunseraa ni soudan shita koto ga aru yo.",
+            "translation": "Karena berpikir kalau terus dipendam bisa saja berdampak pada hubunganku suatu saat, aku pernah konsultasi ke konselor.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "誰かに相談するなんて、考えたこともないよ。",
+            "romaji": "Dareka ni soudan suru nante, kangaeta koto mo nai yo.",
+            "translation": "Konsultasi ke seseorang pun, belum pernah terpikirkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "相談してみてどうだった？",
+          "romaji": "Soudan shite mite dou datta?",
+          "translation": "Bagaimana setelah konsultasi?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_trauma_keluarga_hubungan_masa_depan_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、話すことで、過去に縛られかねない自分に気づけた気がするよ。",
+            "romaji": "Un, hanasu koto de, kako ni shibararekanenai jibun ni kizuketa ki ga suru yo.",
+            "translation": "Iya, dengan membicarakannya, rasanya aku bisa menyadari diriku yang bisa saja terikat oleh masa lalu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何も変わらなかったし、話したことを後悔しているよ。",
+            "romaji": "Nanimo kawaranakatta shi, hanashita koto wo koukai shite iru yo.",
+            "translation": "Tidak ada yang berubah, dan aku menyesal sudah membicarakannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "無理せず向き合っていこうね。",
+          "romaji": "Muri sezu mukiatte ikou ne.",
+          "translation": "Ayo hadapi pelan-pelan tanpa memaksakan diri ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_trauma_keluarga_hubungan_masa_depan_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_batasan_dengan_keluarga_n2",
+    "title": "Mendiskusikan Pentingnya Menetapkan Batasan dengan Keluarga",
+    "category": "keluarga_n2",
+    "description": "Kamu dan teman mendiskusikan pentingnya menetapkan batasan yang sehat dengan keluarga.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族に対して、はっきり意見を言うようになったよね。",
+          "romaji": "Kazoku ni taishite, hakkiri iken wo iu you ni natta yo ne.",
+          "translation": "Kamu jadi lebih terus terang menyampaikan pendapat ke keluarga ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_batasan_dengan_keluarga_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、自分の中で境界線を決めないことには、ずっと我慢し続けることになると気づいたんだ。",
+            "romaji": "Un, jibun no naka de kyoukaisen wo kimenai koto ni wa, zutto gaman shitsuzukeru koto ni naru to kizuita n da.",
+            "translation": "Iya, aku menyadari kalau tidak menetapkan batasan dalam diriku, aku akan terus menahan diri selamanya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、家族に意見なんて、一度も言ったことないよ。",
+            "romaji": "Iya, kazoku ni iken nante, ichido mo itta koto nai yo.",
+            "translation": "Tidak, belum pernah sama sekali menyampaikan pendapat ke keluarga.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "境界線を決めるのって、具体的にどういうこと？",
+          "romaji": "Kyoukaisen wo kimeru no tte, gutaiteki ni dou iu koto?",
+          "translation": "Menetapkan batasan itu secara konkret bagaimana?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_batasan_dengan_keluarga_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "無理な頼み事は、はっきり断らないことには、自分がすり減っていくと思ったんだ。",
+            "romaji": "Muri na tanomigoto wa, hakkiri kotowaranai koto ni wa, jibun ga surihette iku to omotta n da.",
+            "translation": "Aku berpikir kalau tidak menolak permintaan yang berat dengan jelas, aku akan terkuras habis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "頼まれたことは、全部断らずに引き受けるようにしているよ。",
+            "romaji": "Tanomareta koto wa, zenbu kotowarazu ni hikiukeru you ni shite iru yo.",
+            "translation": "Aku berusaha menerima semua yang diminta tanpa menolak.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族の反応はどうだった？",
+          "romaji": "Kazoku no hannou wa dou datta?",
+          "translation": "Bagaimana reaksi keluarga?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_batasan_dengan_keluarga_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "最初は戸惑われたけど、伝えないことには、お互い理解し合えないと思って続けたよ。",
+            "romaji": "Saisho wa tomadowareta kedo, tsutaenai koto ni wa, otagai rikai shiaenai to omotte tsuzuketa yo.",
+            "translation": "Awalnya membuat mereka bingung, tapi aku melanjutkannya karena berpikir kalau tidak disampaikan, kami tidak akan bisa saling memahami.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "伝えた瞬間から、家族は全く変わらず前と同じ態度だったよ。",
+            "romaji": "Tsutaeta shunkan kara, kazoku wa mattaku kawarazu mae to onaji taido datta yo.",
+            "translation": "Sejak kusampaikan, keluarga sama sekali tidak berubah dan sikapnya sama seperti sebelumnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分を大事にできるようになったんだね。",
+          "romaji": "Jibun wo daiji ni dekiru you ni natta n da ne.",
+          "translation": "Kamu jadi bisa menghargai dirimu sendiri ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_batasan_dengan_keluarga_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、境界線を持たないことには、自分の心を守れないと分かったんだ。",
+            "romaji": "Un, kyoukaisen wo motanai koto ni wa, jibun no kokoro wo mamorenai to wakatta n da.",
+            "translation": "Iya, aku memahami bahwa kalau tidak punya batasan, aku tidak bisa melindungi hatiku sendiri.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、境界線なんて、なくても全く困らないと思うよ。",
+            "romaji": "Iya, kyoukaisen nante, nakute mo mattaku komaranai to omou yo.",
+            "translation": "Tidak, kupikir tanpa batasan pun sama sekali tidak masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "自分を守ることも大事だね。",
+          "romaji": "Jibun wo mamoru koto mo daiji da ne.",
+          "translation": "Melindungi diri sendiri juga penting ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_batasan_dengan_keluarga_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kedamaian_keluarga_tidak_sempurna_n2",
+    "title": "Menceritakan Pengalaman Menemukan Kedamaian dengan Keluarga yang Tidak Sempurna",
+    "category": "keluarga_n2",
+    "description": "Kamu bercerita ke teman tentang menemukan kedamaian dengan keluarga yang tidak sempurna.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "家族のことで悩んでるって前に言ってたけど、最近は落ち着いた？",
+          "romaji": "Kazoku no koto de nayanderu tte mae ni itteta kedo, saikin wa ochitsuita?",
+          "translation": "Kamu pernah bilang sedang galau soal keluarga, akhir-akhir ini sudah tenang?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_kedamaian_keluarga_tidak_sempurna_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、完璧な家族じゃないものの、今のままでも十分だと思えるようになったよ。",
+            "romaji": "Un, kanpeki na kazoku janai mono no, ima no mama demo juubun da to omoeru you ni natta yo.",
+            "translation": "Iya, meski bukan keluarga yang sempurna, aku jadi bisa berpikir keadaan sekarang pun sudah cukup.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、完璧じゃない家族なんて、受け入れられないと思っているよ。",
+            "romaji": "Iya, kanpeki janai kazoku nante, ukeirerarenai to omotte iru yo.",
+            "translation": "Tidak, kupikir keluarga yang tidak sempurna tidak bisa kuterima.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何がきっかけで、そう思えるようになったの？",
+          "romaji": "Nani ga kikkake de, sou omoeru you ni natta no?",
+          "translation": "Apa yang membuatmu bisa berpikir begitu?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_kedamaian_keluarga_tidak_sempurna_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "欠点は多いものの、それぞれ精一杯やっているんだと気づけたのが大きいよ。",
+            "romaji": "Kettenn wa ooi mono no, sorezore seiippai yatte iru n da to kizuketa no ga ookii yo.",
+            "translation": "Meski banyak kekurangannya, menyadari bahwa masing-masing sudah berusaha semaksimal mungkin itu yang paling besar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にきっかけはなくて、ただ諦めるようになっただけだよ。",
+            "romaji": "Toku ni kikkake wa nakute, tada akirameru you ni natta dake da yo.",
+            "translation": "Tidak ada pemicu khusus, hanya jadi menyerah saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "他の家族と比べたりはしない？",
+          "romaji": "Hoka no kazoku to kurabetari wa shinai?",
+          "translation": "Tidak membanding-bandingkan dengan keluarga lain?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_kedamaian_keluarga_tidak_sempurna_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "他の家族が羨ましく見えるものの、比べても意味がないと思うようになったよ。",
+            "romaji": "Hoka no kazoku ga urayamashiku mieru mono no, kurabete mo imi ga nai to omou you ni natta yo.",
+            "translation": "Meski keluarga lain kadang terlihat mengundang iri, aku jadi berpikir membandingkan pun tidak ada gunanya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いつも他の家族と比べて、自分の家族を否定しているよ。",
+            "romaji": "Itsumo hoka no kazoku to kurabete, jibun no kazoku wo hitei shite iru yo.",
+            "translation": "Selalu membandingkan dengan keluarga lain, dan menolak keluargaku sendiri.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今の関係に満足してる？",
+          "romaji": "Ima no kankei ni manzoku shiteru?",
+          "translation": "Puas dengan hubungan sekarang?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_kedamaian_keluarga_tidak_sempurna_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "完璧ではないものの、今の距離感が自分には心地いいと感じているよ。",
+            "romaji": "Kanpeki de wa nai mono no, ima no kyorikan ga jibun ni wa kokochii to kanjite iru yo.",
+            "translation": "Meski tidak sempurna, aku merasa jarak yang ada sekarang nyaman untukku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、今の関係には全く満足していないよ。",
+            "romaji": "Iya, ima no kankei ni wa mattaku manzoku shite inai yo.",
+            "translation": "Tidak, aku sama sekali tidak puas dengan hubungan yang sekarang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今の家族を大事にしたいね。",
+          "romaji": "Ima no kazoku wo daiji ni shitai ne.",
+          "translation": "Ingin menghargai keluarga yang sekarang ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_kedamaian_keluarga_tidak_sempurna_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_filosofi_membangun_keluarga_sendiri_n2",
+    "title": "Menjelaskan Filosofi Membangun Keluarga Sendiri di Masa Depan",
+    "category": "keluarga_n2",
+    "description": "Kamu menjelaskan ke teman filosofi yang ingin dipegang saat membangun keluarga sendiri di masa depan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "将来、自分の家族を持つことについて、考えることある？",
+          "romaji": "Shourai, jibun no kazoku wo motsu koto ni tsuite, kangaeru koto aru?",
+          "translation": "Apa kamu pernah memikirkan soal punya keluarga sendiri di masa depan?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_filosofi_membangun_keluarga_sendiri_n2_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、自分が育った家庭があったからこそ、理想の家族像を考えるようになったよ。",
+            "romaji": "Un, jibun ga sodatta katei ga atta kara koso, risou no kazoku zou wo kangaeru you ni natta yo.",
+            "translation": "Iya, justru karena ada keluarga tempatku dibesarkan, aku jadi memikirkan gambaran keluarga idealku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、将来の家族のことなんて、考えたこともないよ。",
+            "romaji": "Iya, shourai no kazoku no koto nante, kangaeta koto mo nai yo.",
+            "translation": "Tidak, belum pernah sama sekali memikirkan soal keluarga di masa depan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんな家族を作りたいと思ってるの？",
+          "romaji": "Donna kazoku wo tsukuritai to omotteru no?",
+          "translation": "Keluarga seperti apa yang ingin kamu bangun?"
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_filosofi_membangun_keluarga_sendiri_n2_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "厳しく育てられたからこそ、自分の子供には自由に選ばせてあげたいと思ってるよ。",
+            "romaji": "Kibishiku sodaterareta kara koso, jibun no kodomo ni wa jiyuu ni erabasete agetai to omotteru yo.",
+            "translation": "Justru karena dibesarkan dengan ketat, aku ingin membiarkan anakku sendiri memilih dengan bebas.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "自分が育てられたのと全く同じように育てたいと思っているよ。",
+            "romaji": "Jibun ga sodaterareta no to mattaku onaji you ni sodatetai to omotte iru yo.",
+            "translation": "Aku ingin membesarkannya persis sama seperti caraku dibesarkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "反面教師にしてるってことだね。",
+          "romaji": "Hanmen kyoushi ni shiteru tte koto da ne.",
+          "translation": "Berarti dijadikan pelajaran dari sisi sebaliknya ya."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_filosofi_membangun_keluarga_sendiri_n2_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "そうだね。苦労した経験があったからこそ、大事にしたいことが見えてきたんだ。",
+            "romaji": "Sou da ne. Kurou shita keiken ga atta kara koso, daiji ni shitai koto ga miete kita n da.",
+            "translation": "Benar begitu. Justru karena ada pengalaman susah, aku jadi bisa melihat apa yang ingin kuhargai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、苦労した経験なんて、特に役に立っていないと思うよ。",
+            "romaji": "Iya, kurou shita keiken nante, toku ni yaku ni tatte inai to omou yo.",
+            "translation": "Tidak, kupikir pengalaman susah itu sama sekali tidak berguna.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "きっといい家庭を築けるよ。",
+          "romaji": "Kitto ii katei wo kizukeru yo.",
+          "translation": "Pasti bisa membangun keluarga yang baik."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_filosofi_membangun_keluarga_sendiri_n2_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "ありがとう。今の経験があるからこそ、きっと頑張れると思う。",
+            "romaji": "Arigatou. Ima no keiken ga aru kara koso, kitto ganbareru to omou.",
+            "translation": "Terima kasih. Justru karena ada pengalaman sekarang ini, kupikir aku pasti bisa berusaha.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、自分には無理だと思ってるよ。",
+            "romaji": "Iya, jibun ni wa muri da to omotteru yo.",
+            "translation": "Tidak, kupikir itu mustahil bagiku.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "きっと素敵な家庭になるよ。",
+          "romaji": "Kitto suteki na katei ni naru yo.",
+          "translation": "Pasti akan jadi keluarga yang indah."
+        },
+        "imagePath": "kaiwa_images/keluarga_n2/kaiwa_filosofi_membangun_keluarga_sendiri_n2_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]
