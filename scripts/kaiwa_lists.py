@@ -1872,6 +1872,24 @@ TRANSPORTASI_N1_TITLES = [
     "Menjelaskan Alasan Memilih Rute Lambat demi Sebuah Pengalaman",
 ]
 
+KANTOR_POS_N1_TITLES = [
+    "Menjelaskan Alasan Lebih Menyukai Surat Tulisan Tangan daripada Pesan Digital",
+    "Mendiskusikan Kehilangan Rasa Menunggu di Era Pesan Instan",
+    "Menceritakan Pengalaman Menerima Surat Terakhir dari Seseorang yang Telah Tiada",
+    "Membicarakan Makna Alamat Rumah sebagai Bagian dari Identitas Diri",
+    "Mendiskusikan Filosofi Amplop Tertutup sebagai Simbol Kepercayaan",
+    "Menceritakan Pengalaman Menulis Kartu Tahun Baru untuk Terakhir Kalinya",
+    "Menjelaskan Alasan Mengirim Barang Berharga Selalu Terasa Menegangkan",
+    "Membicarakan Pekerjaan Kurir yang Jarang Terlihat namun Sangat Penting",
+    "Mendiskusikan Time Capsule Surat sebagai Pesan untuk Diri Masa Depan",
+    "Menceritakan Pengalaman Pindah Rumah dan Mengalihkan Alamat Pos",
+    "Menjelaskan Filosofi Bahwa Menunggu Balasan Surat Mengajarkan Kesabaran",
+    "Membicarakan Kerinduan terhadap Kebiasaan Berkirim Surat yang Mulai Hilang",
+    "Mendiskusikan Makna Tanda Tangan Tulisan Tangan di Era Digital",
+    "Menceritakan Pengalaman Menerima Paket yang Mengubah Cara Pandang terhadap Hidup",
+    "Menjelaskan Alasan Memilih Mengirim Kado secara Langsung daripada Uang Digital",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1953,6 +1971,7 @@ CATEGORY_META = {
     "hobi_n1": ("Hobi", "🎨", "N1"),
     "telepon_n1": ("Telepon", "☎️", "N1"),
     "transportasi_n1": ("Transportasi", "🚌", "N1"),
+    "kantor_pos_n1": ("Di Kantor Pos", "📮", "N1"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -2036,6 +2055,7 @@ AVAILABLE_CATEGORIES = {
     "hobi_n1": HOBI_N1_TITLES,
     "telepon_n1": TELEPON_N1_TITLES,
     "transportasi_n1": TRANSPORTASI_N1_TITLES,
+    "kantor_pos_n1": KANTOR_POS_N1_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -2131,6 +2151,7 @@ _ALL_TITLE_LISTS = {
     "HOBI_N1_TITLES": HOBI_N1_TITLES,
     "TELEPON_N1_TITLES": TELEPON_N1_TITLES,
     "TRANSPORTASI_N1_TITLES": TRANSPORTASI_N1_TITLES,
+    "KANTOR_POS_N1_TITLES": KANTOR_POS_N1_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"

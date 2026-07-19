@@ -293552,5 +293552,3050 @@
         ]
       }
     ]
+  },
+  {
+    "id": "kaiwa_surat_tulisan_tangan_pesan_digital_n1",
+    "title": "Menjelaskan Alasan Lebih Menyukai Surat Tulisan Tangan daripada Pesan Digital",
+    "category": "kantor_pos_n1",
+    "description": "Kamu menjelaskan ke teman alasan lebih menyukai surat tulisan tangan daripada pesan digital.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今どき、手紙を書く人なんて珍しいよね。",
+          "romaji": "Imadoki, tegami wo kaku hito nante mezurashii yo ne.",
+          "translation": "Sekarang ini, orang yang menulis surat itu langka ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_surat_tulisan_tangan_pesan_digital_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "効率を求めるからこそ、失われる温かさがあると思うんだ。",
+            "romaji": "Kouritsu wo motomeru kara koso, ushinawareru atatakasa ga aru to omou n da.",
+            "translation": "Justru karena mengejar efisiensi, aku berpikir ada kehangatan yang hilang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、手紙なんて書いたことは一度もないよ。",
+            "romaji": "Iya, tegami nante kaita koto wa ichido mo nai yo.",
+            "translation": "Tidak, belum pernah sama sekali menulis surat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手紙のどんなところが好きなの？",
+          "romaji": "Tegami no donna tokoro ga suki na no?",
+          "translation": "Bagian apa dari surat yang kamu suka?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_surat_tulisan_tangan_pesan_digital_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "相手を思いながら言葉を選ぶからこそ、気持ちが伝わる気がするんだ。",
+            "romaji": "Aite wo omoinagara kotoba wo erabu kara koso, kimochi ga tsutawaru ki ga suru n da.",
+            "translation": "Justru karena memilih kata sambil memikirkan lawan bicara, rasanya perasaan itu tersampaikan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に好きなところはなく、書くのが面倒なだけだよ。",
+            "romaji": "Toku ni suki na tokoro wa naku, kaku no ga mendou na dake da yo.",
+            "translation": "Tidak ada bagian yang disukai secara khusus, hanya merepotkan untuk menulis saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "デジタルのメッセージのほうが早いのに？",
+          "romaji": "Dejitaru no messeeji no hou ga hayai noni?",
+          "translation": "Padahal pesan digital lebih cepat?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_surat_tulisan_tangan_pesan_digital_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "早く伝わるものの、じっくり考える時間までは奪われたくないんだ。",
+            "romaji": "Hayaku tsutawaru mono no, jikkuri kangaeru jikan made wa ubawaretakunai n da.",
+            "translation": "Meski tersampaikan dengan cepat, aku tidak ingin waktu berpikir mendalam ikut terenggut.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、早ければ早いほど、良いメッセージになると思っているよ。",
+            "romaji": "Un, hayakereba hayai hodo, ii messeeji ni naru to omotte iru yo.",
+            "translation": "Iya, kupikir semakin cepat semakin bagus pesannya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手紙には手紙の良さがあるんだね。",
+          "romaji": "Tegami ni wa tegami no yosa ga aru n da ne.",
+          "translation": "Surat memang punya kebaikannya sendiri ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_surat_tulisan_tangan_pesan_digital_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、形に残るからこそ、何度でも読み返せる価値があるんだ。",
+            "romaji": "Un, katachi ni nokoru kara koso, nando demo yomikaeseru kachi ga aru n da.",
+            "translation": "Iya, justru karena tersisa dalam bentuk fisik, ada nilai untuk dibaca ulang berkali-kali.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、手紙にはデジタルメッセージ以上の価値はないと思うよ。",
+            "romaji": "Iya, tegami ni wa dejitaru messeeji ijou no kachi wa nai to omou yo.",
+            "translation": "Tidak, kupikir surat tidak punya nilai lebih dari pesan digital.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今度、私にも手紙書いてよ。",
+          "romaji": "Kondo, watashi ni mo tegami kaite yo.",
+          "translation": "Lain kali, tulis surat untukku juga dong."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_surat_tulisan_tangan_pesan_digital_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、いいよ。",
+            "romaji": "Un, ii yo.",
+            "translation": "Iya, boleh.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別に書きたくないよ。",
+            "romaji": "Betsu ni kakitakunai yo.",
+            "translation": "Tidak ingin menulis.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kehilangan_rasa_menunggu_pesan_instan_n1",
+    "title": "Mendiskusikan Kehilangan Rasa Menunggu di Era Pesan Instan",
+    "category": "kantor_pos_n1",
+    "description": "Kamu dan teman mendiskusikan kehilangan rasa menunggu di era pesan instan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "返信、すぐ来るのが当たり前になったよね。",
+          "romaji": "Henshin, sugu kuru no ga atarimae ni natta yo ne.",
+          "translation": "Balasan datang segera sudah jadi hal biasa ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_kehilangan_rasa_menunggu_pesan_instan_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "便利にはなったものの、返事を待つ楽しみは薄れた気がするよ。",
+            "romaji": "Benri ni wa natta mono no, henji wo matsu tanoshimi wa usureta ki ga suru yo.",
+            "translation": "Meski jadi praktis, rasanya kesenangan menunggu balasan jadi memudar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、待つことなんて、一度も楽しいと思ったことないよ。",
+            "romaji": "Un, matsu koto nante, ichido mo tanoshii to omotta koto nai yo.",
+            "translation": "Iya, menunggu itu belum pernah sekalipun terasa menyenangkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "昔は返事、どれくらい待ってたの？",
+          "romaji": "Mukashi wa henji, dore kurai matteta no?",
+          "translation": "Dulu, kamu menunggu balasan berapa lama?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_kehilangan_rasa_menunggu_pesan_instan_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "数日かかることもあったものの、その分届いた時の喜びは大きかったよ。",
+            "romaji": "Suujitsu kakaru koto mo atta mono no, sono bun todoita toki no yorokobi wa ookikatta yo.",
+            "translation": "Meski kadang butuh beberapa hari, kegembiraan saat surat itu tiba jadi lebih besar sebagai gantinya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何日も待ったことはなく、いつもすぐ届いていたよ。",
+            "romaji": "Toku ni nannichi mo matta koto wa naku, itsumo sugu todoite ita yo.",
+            "translation": "Tidak pernah menunggu berhari-hari secara khusus, selalu tiba dengan segera.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今は既読がつかないだけで、不安になるよね。",
+          "romaji": "Ima wa kidoku ga tsukanai dake de, fuan ni naru yo ne.",
+          "translation": "Sekarang, hanya karena belum terbaca saja, jadi cemas ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_kehilangan_rasa_menunggu_pesan_instan_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、便利な仕組みではあるものの、かえって心を疲れさせる面もあると思うよ。",
+            "romaji": "Un, benri na shikumi de wa aru mono no, kaette kokoro wo tsukaresaseru men mo aru to omou yo.",
+            "translation": "Iya, meski sistemnya praktis, kupikir ada sisi yang justru melelahkan hati.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、既読がつかなくても、全く気にならないよ。",
+            "romaji": "Iya, kidoku ga tsukanakute mo, mattaku ki ni naranai yo.",
+            "translation": "Tidak, meski belum terbaca, sama sekali tidak khawatir.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "待つことにも、意味があったんだね。",
+          "romaji": "Matsu koto ni mo, imi ga atta n da ne.",
+          "translation": "Ternyata menunggu juga punya makna ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_kehilangan_rasa_menunggu_pesan_instan_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、時間がかかるものの、その間に相手を想う時間まで生まれていたと思うよ。",
+            "romaji": "Un, jikan ga kakaru mono no, sono aida ni aite wo omou jikan made umarete ita to omou yo.",
+            "translation": "Iya, meski memakan waktu, kupikir selama itu juga tercipta waktu untuk memikirkan lawan bicara.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、待つことに、意味なんて一切なかったと思うよ。",
+            "romaji": "Iya, matsu koto ni, imi nante issai nakatta to omou yo.",
+            "translation": "Tidak, kupikir menunggu sama sekali tidak ada maknanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "たまには、あえて返信を待ってみるのもいいかもね。",
+          "romaji": "Tama ni wa, aete henshin wo matte miru no mo ii kamo ne.",
+          "translation": "Sesekali, mungkin bagus juga sengaja mencoba menunggu balasan."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_kehilangan_rasa_menunggu_pesan_instan_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_surat_terakhir_seseorang_tiada_n1",
+    "title": "Menceritakan Pengalaman Menerima Surat Terakhir dari Seseorang yang Telah Tiada",
+    "category": "kantor_pos_n1",
+    "description": "Kamu bercerita ke teman tentang pengalaman menemukan surat terakhir dari seseorang yang telah tiada.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "引き出しの奥から、古い手紙が出てきたんだね。",
+          "romaji": "Hikidashi no oku kara, furui tegami ga dete kita n da ne.",
+          "translation": "Dari dalam laci, muncul surat lama ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_surat_terakhir_seseorang_tiada_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、祖母が亡くなる前に書いてくれた手紙で、読み返すと懐かしさが募ってならないんだ。",
+            "romaji": "Un, sobo ga nakunaru mae ni kaite kureta tegami de, yomikaesu to natsukashisa ga tsunotte naranai n da.",
+            "translation": "Iya, itu surat yang ditulis nenekku sebelum meninggal, kalau dibaca ulang aku tidak bisa tidak merasa kerinduan yang makin dalam.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、古い手紙なんて、特に何の感情も湧かないよ。",
+            "romaji": "Iya, furui tegami nante, toku ni nan no kanjou mo wakanai yo.",
+            "translation": "Tidak, surat lama itu sama sekali tidak memunculkan perasaan apa pun secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんなことが書かれていたの？",
+          "romaji": "Donna koto ga kakarete ita no?",
+          "translation": "Apa yang tertulis di dalamnya?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_surat_terakhir_seseorang_tiada_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "何気ない日常の話だったけど、その普通さが今は恋しくてならないよ。",
+            "romaji": "Nanigenai nichijou no hanashi datta kedo, sono futsuusa ga ima wa koishikute naranai yo.",
+            "translation": "Itu cerita keseharian yang biasa saja, tapi kebiasaan itu sekarang tidak bisa tidak kurindukan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も書かれておらず、白紙のままだったよ。",
+            "romaji": "Toku ni nanimo kakarete orazu, hakushi no mama datta yo.",
+            "translation": "Tidak ada apa pun yang tertulis secara khusus, tetap kosong saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "そういう手紙、大事に取っておいた方がいいね。",
+          "romaji": "Sou iu tegami, daiji ni totte oita hou ga ii ne.",
+          "translation": "Surat seperti itu, sebaiknya disimpan baik-baik ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_surat_terakhir_seseorang_tiada_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、いつかまた読み返したくなる日が来ると思うと、捨てられなくてならないんだ。",
+            "romaji": "Un, itsuka mata yomikaeshitaku naru hi ga kuru to omou to, suterarenakute naranai n da.",
+            "translation": "Iya, kalau memikirkan akan datang hari ingin membaca ulang lagi, aku tidak bisa tidak merasa tak sanggup membuangnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、もう読み返すことはないと思うから、捨てるつもりだよ。",
+            "romaji": "Iya, mou yomikaesu koto wa nai to omou kara, suteru tsumori da yo.",
+            "translation": "Tidak, kupikir tidak akan membaca ulang lagi, jadi berniat membuangnya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手紙って、その人の存在そのものだね。",
+          "romaji": "Tegami tte, sono hito no sonzai sono mono da ne.",
+          "translation": "Surat itu, keberadaan orang itu sendiri ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_surat_terakhir_seseorang_tiada_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、声も姿もないのに、その筆跡だけで会いたさが募ってならないよ。",
+            "romaji": "Un, koe mo sugata mo nai noni, sono hisseki dake de aitasa ga tsunotte naranai yo.",
+            "translation": "Iya, meski tak ada suara maupun sosoknya, hanya dari tulisan tangannya saja aku tidak bisa tidak merasa makin ingin bertemu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、筆跡を見ても、特に何も感じることはないよ。",
+            "romaji": "Iya, hisseki wo mite mo, toku ni nanimo kanjiru koto wa nai yo.",
+            "translation": "Tidak, meski melihat tulisan tangannya, sama sekali tidak merasakan apa pun secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大切な思い出だね。",
+          "romaji": "Taisetsu na omoide da ne.",
+          "translation": "Kenangan yang berharga ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_surat_terakhir_seseorang_tiada_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当にそう思う。",
+            "romaji": "Un, hontou ni sou omou.",
+            "translation": "Iya, aku benar-benar setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別によかったとは思わないよ。",
+            "romaji": "Betsu ni yokatta to wa omowanai yo.",
+            "translation": "Kupikir sama sekali tidak bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_alamat_bagian_identitas_diri_n1",
+    "title": "Membicarakan Makna Alamat Rumah sebagai Bagian dari Identitas Diri",
+    "category": "kantor_pos_n1",
+    "description": "Kamu membicarakan dengan teman makna alamat rumah sebagai bagian dari identitas diri.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "引っ越しのたびに、住所が変わるのって不思議だよね。",
+          "romaji": "Hikkoshi no tabi ni, juusho ga kawaru no tte fushigi da yo ne.",
+          "translation": "Setiap kali pindah rumah, alamat berubah itu aneh ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_alamat_bagian_identitas_diri_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "住所は単なる記号というより、その時の自分の生活そのものにほかならないと思うよ。",
+            "romaji": "Juusho wa tannaru kigou to iu yori, sono toki no jibun no seikatsu sono mono ni hoka naranai to omou yo.",
+            "translation": "Alamat bukan sekadar simbol, kupikir itu tidak lain adalah kehidupan diri sendiri saat itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、住所なんて、ただの記号でしかないと思っているよ。",
+            "romaji": "Un, juusho nante, tada no kigou de shika nai to omotte iru yo.",
+            "translation": "Iya, kupikir alamat itu hanya sekadar simbol saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "前に住んでいた場所の住所、覚えてる？",
+          "romaji": "Mae ni sunde ita basho no juusho, oboeteru?",
+          "translation": "Alamat tempat tinggal sebelumnya, masih ingat?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_alamat_bagian_identitas_diri_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの住所を口にするだけで、当時の自分が蘇る気がするんだ。",
+            "romaji": "Un, ano juusho wo kuchi ni suru dake de, touji no jibun ga yomigaeru ki ga suru n da.",
+            "translation": "Iya, hanya dengan mengucapkan alamat itu, rasanya diriku saat itu bangkit kembali.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、前の住所なんて、一度も覚えたことないよ。",
+            "romaji": "Iya, mae no juusho nante, ichido mo oboeta koto nai yo.",
+            "translation": "Tidak, alamat sebelumnya belum pernah sekalipun kuingat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "住所を書くとき、何か特別な気持ちになる？",
+          "romaji": "Juusho wo kaku toki, nanika tokubetsu na kimochi ni naru?",
+          "translation": "Saat menulis alamat, apakah muncul perasaan khusus?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_alamat_bagian_identitas_diri_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、今の自分がどこに根を張っているかを示す証にほかならないと感じるよ。",
+            "romaji": "Un, ima no jibun ga doko ni ne wo hatte iru ka wo shimesu akashi ni hoka naranai to kanjiru yo.",
+            "translation": "Iya, aku merasa itu tidak lain adalah bukti yang menunjukkan di mana diriku sekarang berakar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何の気持ちにもならず、ただの作業だと思っているよ。",
+            "romaji": "Toku ni nan no kimochi ni mo narazu, tada no sagyou da to omotte iru yo.",
+            "translation": "Tidak muncul perasaan apa pun secara khusus, hanya kupikir sekadar pekerjaan saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "引っ越すたびに、自分も変わっていく気がするね。",
+          "romaji": "Hikkosu tabi ni, jibun mo kawatte iku ki ga suru ne.",
+          "translation": "Setiap pindah, rasanya diri sendiri juga ikut berubah ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_alamat_bagian_identitas_diri_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、新しい住所というより、新しい自分が始まる合図にほかならないと思うんだ。",
+            "romaji": "Un, atarashii juusho to iu yori, atarashii jibun ga hajimaru aizu ni hoka naranai to omou n da.",
+            "translation": "Iya, kupikir itu bukan sekadar alamat baru, tidak lain adalah tanda diri yang baru dimulai.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、住所が変わっても、自分は何も変わらないと思うよ。",
+            "romaji": "Iya, juusho ga kawatte mo, jibun wa nanimo kawaranai to omou yo.",
+            "translation": "Tidak, kupikir meski alamat berubah, diriku sama sekali tidak berubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "面白い考え方だね。",
+          "romaji": "Omoshiroi kangaekata da ne.",
+          "translation": "Cara berpikir yang menarik ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_alamat_bagian_identitas_diri_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうだね。",
+            "romaji": "Un, sou da ne.",
+            "translation": "Iya, benar juga.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_filosofi_amplop_tertutup_simbol_kepercayaan_n1",
+    "title": "Mendiskusikan Filosofi Amplop Tertutup sebagai Simbol Kepercayaan",
+    "category": "kantor_pos_n1",
+    "description": "Kamu dan teman mendiskusikan filosofi amplop tertutup sebagai simbol kepercayaan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "封筒を開ける瞬間って、ちょっと緊張するよね。",
+          "romaji": "Fuutou wo akeru shunkan tte, chotto kinchou suru yo ne.",
+          "translation": "Momen membuka amplop itu agak bikin tegang ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_filosofi_amplop_tertutup_simbol_kepercayaan_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "開けるまで中身が分からないというより、その未知さこそに意味があると思うんだ。",
+            "romaji": "Akeru made nakami ga wakaranai to iu yori, sono michisa koso ni imi ga aru to omou n da.",
+            "translation": "Bukan sekadar tidak tahu isinya sampai dibuka, kupikir justru ketidaktahuan itulah yang bermakna.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、封筒を開けることに、緊張したことなんて一度もないよ。",
+            "romaji": "Un, fuutou wo akeru koto ni, kinchou shita koto nante ichido mo nai yo.",
+            "translation": "Iya, belum pernah sekalipun tegang saat membuka amplop.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "封をするとき、何か意識してる？",
+          "romaji": "Fuu wo suru toki, nanika ishiki shiteru?",
+          "translation": "Saat menyegel amplop, apakah kamu sadar akan sesuatu?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_filosofi_amplop_tertutup_simbol_kepercayaan_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "中身を守るというより、相手を信じて託す気持ちを込めているんだ。",
+            "romaji": "Nakami wo mamoru to iu yori, aite wo shinjite takusu kimochi wo komete iru n da.",
+            "translation": "Bukan sekadar melindungi isinya, aku menaruh perasaan percaya dan menitipkan kepada lawan bicara.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も意識せず、ただの作業だと思っているよ。",
+            "romaji": "Toku ni nanimo ishiki sezu, tada no sagyou da to omotte iru yo.",
+            "translation": "Tidak sadar akan apa pun secara khusus, hanya kupikir sekadar pekerjaan saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "誰かの封筒を勝手に開けるのは、絶対だめだよね。",
+          "romaji": "Dareka no fuutou wo katte ni akeru no wa, zettai dame da yo ne.",
+          "translation": "Membuka amplop orang lain seenaknya, itu sama sekali tidak boleh ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_filosofi_amplop_tertutup_simbol_kepercayaan_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、開けないでいることというより、その信頼を守り抜くことに意味があると思うよ。",
+            "romaji": "Un, akenaide iru koto to iu yori, sono shinrai wo mamorinuku koto ni imi ga aru to omou yo.",
+            "translation": "Iya, bukan sekadar tidak membukanya, kupikir menjaga kepercayaan itu sampai akhirlah yang bermakna.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、封筒くらい、勝手に開けても問題ないと思うよ。",
+            "romaji": "Iya, fuutou kurai, katte ni aketemo mondai nai to omou yo.",
+            "translation": "Tidak, kupikir amplop segitu, dibuka seenaknya pun tidak masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "封筒一つに、そんな意味が込められているんだね。",
+          "romaji": "Fuutou hitotsu ni, sonna imi ga komerarete iru n da ne.",
+          "translation": "Ternyata dalam satu amplop, ada makna sebesar itu ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_filosofi_amplop_tertutup_simbol_kepercayaan_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ただの紙というより、人と人との信頼の形にほかならないと思うんだ。",
+            "romaji": "Un, tada no kami to iu yori, hito to hito to no shinrai no katachi ni hoka naranai to omou n da.",
+            "translation": "Iya, bukan sekadar kertas biasa, kupikir itu tidak lain adalah bentuk kepercayaan antar manusia.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、封筒なんて、ただの紙でしかないと思うよ。",
+            "romaji": "Iya, fuutou nante, tada no kami de shika nai to omou yo.",
+            "translation": "Tidak, kupikir amplop itu hanya sekadar kertas saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "次からもっと丁寧に扱うよ。",
+          "romaji": "Tsugi kara motto teinei ni atsukau yo.",
+          "translation": "Mulai lain kali akan kuperlakukan lebih hati-hati."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_filosofi_amplop_tertutup_simbol_kepercayaan_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、それがいいと思う。",
+            "romaji": "Un, sore ga ii to omou.",
+            "translation": "Iya, kupikir itu bagus.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_tulis_kartu_tahun_baru_terakhir_kali_n1",
+    "title": "Menceritakan Pengalaman Menulis Kartu Tahun Baru untuk Terakhir Kalinya",
+    "category": "kantor_pos_n1",
+    "description": "Kamu bercerita ke teman tentang pengalaman menulis kartu tahun baru untuk terakhir kalinya.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "今年で年賀状、やめるって本当？",
+          "romaji": "Kotoshi de nengajou, yameru tte hontou?",
+          "translation": "Katanya tahun ini kamu berhenti kirim kartu tahun baru, benar?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_tulis_kartu_tahun_baru_terakhir_kali_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、毎年書き続けるのは体力的に難しくなって、やめざるを得なくなったんだ。",
+            "romaji": "Un, maitoshi kakitsuzukeru no wa tairyokuteki ni muzukashiku natte, yamezaru wo enaku natta n da.",
+            "translation": "Iya, karena menulis terus setiap tahun jadi sulit secara fisik, aku terpaksa berhenti.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、年賀状なんて、一度も書いたことないよ。",
+            "romaji": "Iya, nengajou nante, ichido mo kaita koto nai yo.",
+            "translation": "Tidak, belum pernah sama sekali menulis kartu tahun baru.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何枚くらい書いてたの？",
+          "romaji": "Nanmai kurai kaiteta no?",
+          "translation": "Berapa lembar kira-kira yang biasa kamu tulis?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_tulis_kartu_tahun_baru_terakhir_kali_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "百枚近く書いていたけど、年々手が疲れて、枚数を減らさざるを得なかったよ。",
+            "romaji": "Hyakumai chikaku kaite ita kedo, nen'nen te ga tsukarete, maisuu wo herasazaru wo enakatta yo.",
+            "translation": "Dulu menulis hampir seratus lembar, tapi tahun demi tahun tanganku jadi lelah, aku terpaksa mengurangi jumlahnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何枚も書いておらず、いつも一枚だけだったよ。",
+            "romaji": "Toku ni nanmai mo kaite orazu, itsumo ichimai dake datta yo.",
+            "translation": "Tidak menulis banyak lembar secara khusus, selalu hanya satu lembar saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "寂しい気持ちにはならない？",
+          "romaji": "Sabishii kimochi ni wa naranai?",
+          "translation": "Tidak jadi merasa sedih?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_tulis_kartu_tahun_baru_terakhir_kali_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "正直、寂しさはあるものの、これも一つの区切りだと受け止めているよ。",
+            "romaji": "Shoujiki, sabishisa wa aru mono no, kore mo hitotsu no kugiri da to uketomete iru yo.",
+            "translation": "Sejujurnya, meski ada rasa sedih, aku menerima ini juga sebagai satu babak penutup.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、全く寂しくなく、むしろ清々しい気持ちだけだよ。",
+            "romaji": "Iya, mattaku sabishikunaku, mushiro sugasugashii kimochi dake da yo.",
+            "translation": "Tidak, sama sekali tidak sedih, justru hanya merasa lega saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最後の年賀状には、何を書いたの？",
+          "romaji": "Saigo no nengajou ni wa, nani wo kaita no?",
+          "translation": "Di kartu tahun baru terakhir, kamu menulis apa?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_tulis_kartu_tahun_baru_terakhir_kali_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "長年のお礼を込めて、感謝の言葉を書かざるを得ない気持ちになったよ。",
+            "romaji": "Naganen no orei wo komete, kansha no kotoba wo kakazaru wo enai kimochi ni natta yo.",
+            "translation": "Dengan menaruh terima kasih bertahun-tahun, aku jadi merasa terpaksa menulis kata-kata terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も書かず、名前だけ書いて終わらせたよ。",
+            "romaji": "Toku ni nanimo kakazu, namae dake kaite owaraseta yo.",
+            "translation": "Tidak menulis apa pun secara khusus, hanya menulis nama lalu selesai.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "素敵な締めくくりだね。",
+          "romaji": "Suteki na shimekukuri da ne.",
+          "translation": "Penutup yang indah ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_tulis_kartu_tahun_baru_terakhir_kali_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そう思ってもらえて嬉しいよ。",
+            "romaji": "Un, sou omotte moraete ureshii yo.",
+            "translation": "Iya, senang kalau kamu berpikir begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_kirim_barang_berharga_menegangkan_n1",
+    "title": "Menjelaskan Alasan Mengirim Barang Berharga Selalu Terasa Menegangkan",
+    "category": "kantor_pos_n1",
+    "description": "Kamu menjelaskan ke teman alasan mengirim barang berharga selalu terasa menegangkan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "高価な物を送るとき、いつも心配してるよね。",
+          "romaji": "Kouka na mono wo okuru toki, itsumo shinpai shiteru yo ne.",
+          "translation": "Saat mengirim barang mahal, kamu selalu khawatir ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_kirim_barang_berharga_menegangkan_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、無事に届くまでは、何度も追跡状況を確認せずにはいられないんだ。",
+            "romaji": "Un, buji ni todoku made wa, nando mo tsuiseki joukyou wo kakunin sezu ni wa irarenai n da.",
+            "translation": "Iya, sampai barang itu tiba dengan selamat, aku tidak bisa tidak berkali-kali memeriksa status pelacakan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、高価な物を送っても、特に何も心配しないよ。",
+            "romaji": "Iya, kouka na mono wo okutte mo, toku ni nanimo shinpai shinai yo.",
+            "translation": "Tidak, meski mengirim barang mahal, sama sekali tidak khawatir apa pun secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "何を送ったの？",
+          "romaji": "Nani wo okutta no?",
+          "translation": "Kamu mengirim apa?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_kirim_barang_berharga_menegangkan_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "祖父の形見を送ったから、割れないか気になって仕方なかったよ。",
+            "romaji": "Sofu no katami wo okutta kara, warenai ka ki ni natte shikata nakatta yo.",
+            "translation": "Karena aku mengirim barang peninggalan kakekku, aku tidak tahan memikirkan apakah itu akan pecah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に大事な物ではなく、ただの雑貨を送っただけだよ。",
+            "romaji": "Toku ni daiji na mono de wa naku, tada no zakka wo okutta dake da yo.",
+            "translation": "Bukan barang penting secara khusus, hanya mengirim barang biasa saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "保険はかけたの？",
+          "romaji": "Hoken wa kaketa no?",
+          "translation": "Sudah diasuransikan?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_kirim_barang_berharga_menegangkan_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、それでも心配で、届くまで落ち着かずにはいられなかったよ。",
+            "romaji": "Un, sore demo shinpai de, todoku made ochitsukazu ni wa irarenakatta yo.",
+            "translation": "Iya, tapi tetap saja khawatir, aku tidak bisa tidak gelisah sampai tiba.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、保険をかければ、何も心配する必要はないと思っていたよ。",
+            "romaji": "Iya, hoken wo kakereba, nanimo shinpai suru hitsuyou wa nai to omotte ita yo.",
+            "translation": "Tidak, kupikir kalau sudah diasuransikan, tidak perlu khawatir apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "無事に届いてよかったね。",
+          "romaji": "Buji ni todoite yokatta ne.",
+          "translation": "Syukurlah tiba dengan selamat."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_kirim_barang_berharga_menegangkan_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、届いたと連絡が来るまで、安心せずにはいられなかったよ。",
+            "romaji": "Un, todoita to renraku ga kuru made, anshin sezu ni wa irarenakatta yo.",
+            "translation": "Iya, sampai ada kabar bahwa itu sudah tiba, aku tidak bisa tidak merasa belum tenang.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、届く前から、ずっと安心していたよ。",
+            "romaji": "Iya, todoku mae kara, zutto anshin shite ita yo.",
+            "translation": "Tidak, sejak sebelum tiba pun, aku terus merasa tenang.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大事な物、無事でよかった。",
+          "romaji": "Daiji na mono, buji de yokatta.",
+          "translation": "Syukurlah barang pentingnya selamat."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_kirim_barang_berharga_menegangkan_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、本当によかった。",
+            "romaji": "Un, hontou ni yokatta.",
+            "translation": "Iya, benar-benar syukurlah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別によかったとは思わないよ。",
+            "romaji": "Betsu ni yokatta to wa omowanai yo.",
+            "translation": "Kupikir sama sekali tidak bagus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pekerjaan_kurir_jarang_terlihat_penting_n1",
+    "title": "Membicarakan Pekerjaan Kurir yang Jarang Terlihat namun Sangat Penting",
+    "category": "kantor_pos_n1",
+    "description": "Kamu membicarakan dengan teman pekerjaan kurir yang jarang terlihat namun sangat penting.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "配達員さんって、毎日大変そうだよね。",
+          "romaji": "Haitatsuin-san tte, mainichi taihen sou da yo ne.",
+          "translation": "Petugas kurir itu, sepertinya berat setiap hari ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pekerjaan_kurir_jarang_terlihat_penting_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、暑い日も寒い日も届けてくれることには、感謝にたえないよ。",
+            "romaji": "Un, atsui hi mo samui hi mo todokete kureru koto ni wa, kansha ni taenai yo.",
+            "translation": "Iya, karena mengantarkan di hari panas maupun dingin, aku tidak bisa tidak merasa sangat berterima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、配達員さんの仕事なんて、特に大変だと思わないよ。",
+            "romaji": "Iya, haitatsuin-san no shigoto nante, toku ni taihen da to omowanai yo.",
+            "translation": "Tidak, kupikir pekerjaan kurir sama sekali tidak berat secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "普段、あまり意識しないよね。",
+          "romaji": "Fudan, amari ishiki shinai yo ne.",
+          "translation": "Biasanya, jarang menyadarinya ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pekerjaan_kurir_jarang_terlihat_penting_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、当たり前のように届くからこそ、その努力を忘れがちだと反省したよ。",
+            "romaji": "Un, atarimae no you ni todoku kara koso, sono doryoku wo wasuregachi da to hansei shita yo.",
+            "translation": "Iya, justru karena barang datang seolah hal biasa, aku merenungkan bahwa aku cenderung melupakan usaha di baliknya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に反省することもなく、いつも通りだと思っているよ。",
+            "romaji": "Toku ni hansei suru koto mo naku, itsumo doori da to omotte iru yo.",
+            "translation": "Tidak ada yang perlu direnungkan secara khusus, kupikir seperti biasa saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "重い荷物、大変だろうね。",
+          "romaji": "Omoi nimotsu, taihen darou ne.",
+          "translation": "Barang berat, pasti berat ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pekerjaan_kurir_jarang_terlihat_penting_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの重さを毎日運んでくれることには、感謝にたえないよ。",
+            "romaji": "Un, ano omosa wo mainichi hakonde kureru koto ni wa, kansha ni taenai yo.",
+            "translation": "Iya, karena mengangkut beban seberat itu setiap hari, aku tidak bisa tidak merasa sangat berterima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、重い荷物を運ぶことに、特に感謝することはないよ。",
+            "romaji": "Iya, omoi nimotsu wo hakobu koto ni, toku ni kansha suru koto wa nai yo.",
+            "translation": "Tidak, sama sekali tidak perlu berterima kasih khusus untuk mengangkut barang berat.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "次から、ちゃんとお礼を言おうと思うよ。",
+          "romaji": "Tsugi kara, chanto orei wo iou to omou yo.",
+          "translation": "Mulai lain kali, aku akan mengucapkan terima kasih dengan benar."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pekerjaan_kurir_jarang_terlihat_penting_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、その気持ち、大事だと思う。",
+            "romaji": "Un, sono kimochi, daiji da to omou.",
+            "translation": "Iya, kupikir perasaan itu penting.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそんな必要はないと思うよ。",
+            "romaji": "Betsu ni sonna hitsuyou wa nai to omou yo.",
+            "translation": "Kupikir sama sekali tidak perlu begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "感謝の気持ち、忘れないようにしよう。",
+          "romaji": "Kansha no kimochi, wasurenai you ni shiyou.",
+          "translation": "Mari jangan lupa rasa terima kasih."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pekerjaan_kurir_jarang_terlihat_penting_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうしよう。",
+            "romaji": "Un, sou shiyou.",
+            "translation": "Iya, ayo lakukan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_time_capsule_surat_pesan_masa_depan_n1",
+    "title": "Mendiskusikan Time Capsule Surat sebagai Pesan untuk Diri Masa Depan",
+    "category": "kantor_pos_n1",
+    "description": "Kamu dan teman mendiskusikan time capsule surat sebagai pesan untuk diri masa depan.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "十年後の自分に手紙を書くって聞いたけど、本当？",
+          "romaji": "Juunen go no jibun ni tegami wo kaku tte kiita kedo, hontou?",
+          "translation": "Katanya kamu menulis surat untuk dirimu sepuluh tahun ke depan, benar?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_time_capsule_surat_pesan_masa_depan_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、今の気持ちを残しておきたいからこそ、書くことにしたんだ。",
+            "romaji": "Un, ima no kimochi wo nokoshite okitai kara koso, kaku koto ni shita n da.",
+            "translation": "Iya, justru karena ingin meninggalkan perasaan saat ini, aku memutuskan untuk menulisnya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、未来の自分に手紙を書くことなんて、考えたこともないよ。",
+            "romaji": "Iya, mirai no jibun ni tegami wo kaku koto nante, kangaeta koto mo nai yo.",
+            "translation": "Tidak, menulis surat untuk diri masa depan pun belum pernah terpikirkan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どんなことを書いたの？",
+          "romaji": "Donna koto wo kaita no?",
+          "translation": "Apa yang kamu tulis?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_time_capsule_surat_pesan_masa_depan_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "今抱えている不安も夢も、正直に書き残したいからこそ、素直な言葉を選んだよ。",
+            "romaji": "Ima kakaete iru fuan mo yume mo, shoujiki ni kakinokoshitai kara koso, sunao na kotoba wo eranda yo.",
+            "translation": "Justru karena ingin meninggalkan catatan jujur tentang kecemasan dan impian yang kupendam sekarang, aku memilih kata-kata yang polos apa adanya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も考えず、適当な言葉を並べただけだよ。",
+            "romaji": "Toku ni nanimo kangaezu, tekitou na kotoba wo narabeta dake da yo.",
+            "translation": "Tanpa memikirkan apa pun secara khusus, hanya menyusun kata-kata sembarangan saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "十年後、開けるのが楽しみだね。",
+          "romaji": "Juunen go, akeru no ga tanoshimi da ne.",
+          "translation": "Sepuluh tahun lagi, pasti seru dibuka ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_time_capsule_surat_pesan_masa_depan_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、その時の自分がどう変わっているか、今から気になってならないよ。",
+            "romaji": "Un, sono toki no jibun ga dou kawatte iru ka, ima kara ki ni natte naranai yo.",
+            "translation": "Iya, sejak sekarang aku tidak bisa tidak penasaran bagaimana diriku saat itu sudah berubah.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、十年後のことなんて、全く興味がないよ。",
+            "romaji": "Iya, juunen go no koto nante, mattaku kyoumi ga nai yo.",
+            "translation": "Tidak, sama sekali tidak tertarik pada hal sepuluh tahun ke depan.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "郵便局に預けるサービスもあるんだってね。",
+          "romaji": "Yuubinkyoku ni azukeru saabisu mo aru n datte ne.",
+          "translation": "Katanya ada juga layanan menitipkannya ke kantor pos ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_time_capsule_surat_pesan_masa_depan_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、自分で保管するより確実だからこそ、そのサービスを利用することにしたよ。",
+            "romaji": "Un, jibun de hokan suru yori kakujitsu dakara koso, sono saabisu wo riyou suru koto ni shita yo.",
+            "translation": "Iya, justru karena lebih pasti daripada menyimpan sendiri, aku memutuskan menggunakan layanan itu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、そんなサービス、全く信用できないと思うよ。",
+            "romaji": "Iya, sonna saabisu, mattaku shin'you dekinai to omou yo.",
+            "translation": "Tidak, kupikir layanan seperti itu sama sekali tidak bisa dipercaya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "いい思い出になりそうだね。",
+          "romaji": "Ii omoide ni narisou da ne.",
+          "translation": "Sepertinya akan jadi kenangan yang bagus ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_time_capsule_surat_pesan_masa_depan_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そう願ってる。",
+            "romaji": "Un, sou negatteru.",
+            "translation": "Iya, aku berharap begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pindah_rumah_alihkan_alamat_pos_n1",
+    "title": "Menceritakan Pengalaman Pindah Rumah dan Mengalihkan Alamat Pos",
+    "category": "kantor_pos_n1",
+    "description": "Kamu bercerita ke teman tentang pengalaman pindah rumah dan mengalihkan alamat pos.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "引っ越しの手続き、郵便局にも行ったの？",
+          "romaji": "Hikkoshi no tetsuzuki, yuubinkyoku ni mo itta no?",
+          "translation": "Untuk urusan pindah rumah, sudah ke kantor pos juga?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pindah_rumah_alihkan_alamat_pos_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、転送届を出さざるを得なかったから、朝一で行ってきたよ。",
+            "romaji": "Un, tensou todoke wo dasazaru wo enakatta kara, asaichi de itte kita yo.",
+            "translation": "Iya, karena aku terpaksa mengajukan surat penerusan alamat, aku pergi paling pagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、郵便局になんて、一度も行ったことないよ。",
+            "romaji": "Iya, yuubinkyoku ni nante, ichido mo itta koto nai yo.",
+            "translation": "Tidak, ke kantor pos pun belum pernah sekalipun pergi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "転送、どれくらいの期間有効なの？",
+          "romaji": "Tensou, dore kurai no kikan yuukou na no?",
+          "translation": "Penerusan surat, berlaku untuk berapa lama?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pindah_rumah_alihkan_alamat_pos_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "一年間だけらしくて、その後はまた手続きをせざるを得ないみたいだよ。",
+            "romaji": "Ichinenkan dake rashikute, sono ato wa mata tetsuzuki wo sezaru wo enai mitai da yo.",
+            "translation": "Katanya hanya satu tahun saja, setelah itu sepertinya aku terpaksa mengurusnya lagi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に期限はなく、ずっと有効なままらしいよ。",
+            "romaji": "Toku ni kigen wa naku, zutto yuukou na mama rashii yo.",
+            "translation": "Katanya tidak ada batas waktu secara khusus, tetap berlaku selamanya.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "前の家宛てに届く郵便物、どうするの？",
+          "romaji": "Mae no ie ate ni todoku yuubinbutsu, dou suru no?",
+          "translation": "Surat yang datang ke alamat rumah lama, bagaimana caranya?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pindah_rumah_alihkan_alamat_pos_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "転送届を出した以上、自動的にこちらへ届けてもらわざるを得ない仕組みになっているよ。",
+            "romaji": "Tensou todoke wo dashita ijou, jidouteki ni kochira e todokete morawazaru wo enai shikumi ni natte iru yo.",
+            "translation": "Karena sudah mengajukan surat penerusan, sistemnya membuat surat itu terpaksa diteruskan secara otomatis ke sini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何もせず、前の家の人に任せているよ。",
+            "romaji": "Toku ni nanimo sezu, mae no ie no hito ni makasete iru yo.",
+            "translation": "Tanpa melakukan apa pun secara khusus, menyerahkannya pada orang di rumah lama.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手続き、面倒だったでしょう。",
+          "romaji": "Tetsuzuki, mendou datta deshou.",
+          "translation": "Urusannya pasti merepotkan ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pindah_rumah_alihkan_alamat_pos_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、面倒ではあったけど、新生活のためだと思って我慢せざるを得なかったよ。",
+            "romaji": "Un, mendou de wa atta kedo, shinseikatsu no tame da to omotte gaman sezaru wo enakatta yo.",
+            "translation": "Iya, memang merepotkan, tapi aku terpaksa bersabar karena memikirkan ini demi kehidupan baru.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、全く面倒ではなく、あっという間に終わったよ。",
+            "romaji": "Iya, mattaku mendou de wa naku, atto iu ma ni owatta yo.",
+            "translation": "Tidak, sama sekali tidak merepotkan, selesai dalam sekejap.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "新生活、頑張ってね。",
+          "romaji": "Shinseikatsu, ganbatte ne.",
+          "translation": "Semangat untuk kehidupan barunya ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pindah_rumah_alihkan_alamat_pos_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ありがとう。",
+            "romaji": "Un, arigatou.",
+            "translation": "Iya, terima kasih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_filosofi_menunggu_balasan_surat_kesabaran_n1",
+    "title": "Menjelaskan Filosofi Bahwa Menunggu Balasan Surat Mengajarkan Kesabaran",
+    "category": "kantor_pos_n1",
+    "description": "Kamu menjelaskan ke teman filosofi bahwa menunggu balasan surat mengajarkan kesabaran.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手紙の返事、まだ来ないんだよね。",
+          "romaji": "Tegami no henji, mada konai n da yo ne.",
+          "translation": "Balasan suratnya, belum datang juga ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_filosofi_menunggu_balasan_surat_kesabaran_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、待ち続けて初めて、気長に構えることの大切さが分かった気がするよ。",
+            "romaji": "Un, machitsuzukete hajimete, kinagani kamaeru koto no taisetsusa ga wakatta ki ga suru yo.",
+            "translation": "Iya, hanya setelah terus menunggu, rasanya aku memahami pentingnya bersikap sabar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、返事なんて、全く待っていないよ。",
+            "romaji": "Iya, henji nante, mattaku matte inai yo.",
+            "translation": "Tidak, sama sekali tidak menunggu balasan apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "イライラしたりしないの？",
+          "romaji": "Iraira shitari shinai no?",
+          "translation": "Tidak jadi jengkel?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_filosofi_menunggu_balasan_surat_kesabaran_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "焦る気持ちを経験して初めて、急かしても仕方ないと悟ったよ。",
+            "romaji": "Aseru kimochi wo keiken shite hajimete, sekashite mo shikata nai to satotta yo.",
+            "translation": "Hanya setelah mengalami perasaan tergesa-gesa, aku menyadari bahwa terburu-buru pun tidak akan membantu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に焦ることもなく、いつも通り過ごしているよ。",
+            "romaji": "Toku ni aseru koto mo naku, itsumo doori sugoshite iru yo.",
+            "translation": "Tidak jadi terburu-buru secara khusus, menjalani hari seperti biasa saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "待つ時間、どう過ごしてるの？",
+          "romaji": "Matsu jikan, dou sugoshiteru no?",
+          "translation": "Waktu menunggu, kamu habiskan bagaimana?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_filosofi_menunggu_balasan_surat_kesabaran_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "この時間を持て余して初めて、他のことに集中する余裕が生まれたよ。",
+            "romaji": "Kono jikan wo moteamashite hajimete, hoka no koto ni shuuchuu suru yoyuu ga umareta yo.",
+            "translation": "Hanya setelah kebingungan mengisi waktu ini, muncul kelonggaran untuk fokus pada hal lain.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何もせず、ずっと郵便受けを見つめているだけだよ。",
+            "romaji": "Toku ni nanimo sezu, zutto yuubin uke wo mitsumete iru dake da yo.",
+            "translation": "Tanpa melakukan apa pun secara khusus, hanya terus menatap kotak surat saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その経験、他のことにも活かせそうだね。",
+          "romaji": "Sono keiken, hoka no koto ni mo ikasesou da ne.",
+          "translation": "Pengalaman itu sepertinya bisa berguna untuk hal lain juga ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_filosofi_menunggu_balasan_surat_kesabaran_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、待つことを学んで初めて、人生全般にも通じる姿勢だと気づいたよ。",
+            "romaji": "Un, matsu koto wo manande hajimete, jinsei zenpan ni mo tsuujiru shisei da to kizuita yo.",
+            "translation": "Iya, hanya setelah belajar menunggu, aku menyadari bahwa itu adalah sikap yang berlaku juga untuk hidup secara umum.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、待つことなんて、他の場面では全く役に立たないと思うよ。",
+            "romaji": "Iya, matsu koto nante, hoka no bamen de wa mattaku yaku ni tatanai to omou yo.",
+            "translation": "Tidak, kupikir menunggu sama sekali tidak berguna di situasi lain.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "気長に待とうね。",
+          "romaji": "Kinagani matou ne.",
+          "translation": "Ayo tunggu dengan sabar ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_filosofi_menunggu_balasan_surat_kesabaran_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうする。",
+            "romaji": "Un, sou suru.",
+            "translation": "Iya, akan kulakukan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_rindu_kebiasaan_kirim_surat_hilang_n1",
+    "title": "Membicarakan Kerinduan terhadap Kebiasaan Berkirim Surat yang Mulai Hilang",
+    "category": "kantor_pos_n1",
+    "description": "Kamu membicarakan dengan teman kerinduan terhadap kebiasaan berkirim surat yang mulai hilang.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、手紙を出す人、減った気がするね。",
+          "romaji": "Saikin, tegami wo dasu hito, hetta ki ga suru ne.",
+          "translation": "Belakangan ini, rasanya orang yang mengirim surat berkurang ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_rindu_kebiasaan_kirim_surat_hilang_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの文化が薄れていくのが、なんだか寂しくてならないよ。",
+            "romaji": "Un, ano bunka ga usurete iku no ga, nandaka sabishikute naranai yo.",
+            "translation": "Iya, entah kenapa aku tidak bisa tidak merasa sedih melihat budaya itu memudar.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、手紙を出す人が減っても、特に何とも思わないよ。",
+            "romaji": "Iya, tegami wo dasu hito ga hette mo, toku ni nan to mo omowanai yo.",
+            "translation": "Tidak, meski orang yang mengirim surat berkurang, sama sekali tidak merasakan apa pun secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "郵便局の窓口も、昔より静かになったよね。",
+          "romaji": "Yuubinkyoku no madoguchi mo, mukashi yori shizuka ni natta yo ne.",
+          "translation": "Loket kantor pos juga jadi lebih sepi dari dulu ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_rindu_kebiasaan_kirim_surat_hilang_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの賑わいが消えていくのを見ると、時代の流れとはいえ寂しくてならないんだ。",
+            "romaji": "Un, ano nigiwai ga kiete iku no wo miru to, jidai no nagare to wa ie sabishikute naranai n da.",
+            "translation": "Iya, melihat keramaian itu menghilang, meski katanya itu arus zaman, aku tidak bisa tidak merasa sedih.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、静かになったほうが、むしろ快適だと思うよ。",
+            "romaji": "Iya, shizuka ni natta hou ga, mushiro kaiteki da to omou yo.",
+            "translation": "Tidak, kupikir justru lebih nyaman kalau jadi sepi.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "この流れ、止められないのかな。",
+          "romaji": "Kono nagare, tomerarenai no ka na.",
+          "translation": "Arus ini, tidak bisa dihentikan ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_rindu_kebiasaan_kirim_surat_hilang_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "完全に止めることは難しいものの、せめて自分だけは続けたいと思ってるよ。",
+            "romaji": "Kanzen ni tomeru koto wa muzukashii mono no, semete jibun dake wa tsuzuketai to omotteru yo.",
+            "translation": "Meski sulit menghentikannya sepenuhnya, setidaknya aku sendiri ingin terus melakukannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、この流れは止められないから、自分もすぐにやめるつもりだよ。",
+            "romaji": "Un, kono nagare wa tomerarenai kara, jibun mo sugu ni yameru tsumori da yo.",
+            "translation": "Iya, karena arus ini tidak bisa dihentikan, aku juga berniat segera berhenti.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その気持ち、大事にしてほしいな。",
+          "romaji": "Sono kimochi, daiji ni shite hoshii na.",
+          "translation": "Semoga perasaan itu terus dijaga ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_rindu_kebiasaan_kirim_surat_hilang_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、この習慣が完全になくなってしまうのが、寂しくてならないから続けるよ。",
+            "romaji": "Un, kono shuukan ga kanzen ni nakunatte shimau no ga, sabishikute naranai kara tsuzukeru yo.",
+            "translation": "Iya, karena aku tidak bisa tidak merasa sedih kalau kebiasaan ini benar-benar hilang, aku akan terus melakukannya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、なくなってしまっても、別に構わないと思っているよ。",
+            "romaji": "Iya, nakunatte shimatte mo, betsu ni kamawanai to omotte iru yo.",
+            "translation": "Tidak, kupikir meski hilang pun tidak masalah sama sekali.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "一緒に手紙文化、大事にしていこうね。",
+          "romaji": "Issho ni tegami bunka, daiji ni shite ikou ne.",
+          "translation": "Ayo bersama-sama menjaga budaya surat-menyurat ini ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_rindu_kebiasaan_kirim_surat_hilang_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そうしよう。",
+            "romaji": "Un, sou shiyou.",
+            "translation": "Iya, ayo lakukan begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_makna_tanda_tangan_tulisan_tangan_digital_n1",
+    "title": "Mendiskusikan Makna Tanda Tangan Tulisan Tangan di Era Digital",
+    "category": "kantor_pos_n1",
+    "description": "Kamu dan teman mendiskusikan makna tanda tangan tulisan tangan di era digital.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "最近、書類も電子サインばかりだよね。",
+          "romaji": "Saikin, shorui mo denshi sain bakari da yo ne.",
+          "translation": "Belakangan ini, dokumen juga selalu tanda tangan elektronik ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_makna_tanda_tangan_tulisan_tangan_digital_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、便利だからといって、手書きの重みが完全になくなるとは限らないと思うよ。",
+            "romaji": "Un, benri da kara to itte, tegaki no omomi ga kanzen ni nakunaru to wa kagiranai to omou yo.",
+            "translation": "Iya, kupikir belum tentu bobot tulisan tangan sepenuhnya hilang hanya karena praktis.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、電子サインさえあれば、手書きは完全に不要になると思うよ。",
+            "romaji": "Un, denshi sain sae areba, tegaki wa kanzen ni fuyou ni naru to omou yo.",
+            "translation": "Iya, kupikir asal ada tanda tangan elektronik, tulisan tangan jadi sepenuhnya tidak perlu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "手書きのサインって、何が違うと思う？",
+          "romaji": "Tegaki no sain tte, nani ga chigau to omou?",
+          "translation": "Tanda tangan tulisan tangan, menurutmu apa bedanya?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_makna_tanda_tangan_tulisan_tangan_digital_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "字が整っているからといって、その人らしさが表れているとは限らないところが面白いと思うよ。",
+            "romaji": "Ji ga totonotte iru kara to itte, sono hito rashisa ga arawarete iru to wa kagiranai tokoro ga omoshiroi to omou yo.",
+            "translation": "Kupikir menariknya, belum tentu karakter khas orang itu tertampil hanya karena tulisannya rapi.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特に何も違わず、電子サインと全く同じ意味だと思うよ。",
+            "romaji": "Toku ni nanimo chigawazu, denshi sain to mattaku onaji imi da to omou yo.",
+            "translation": "Tidak ada yang berbeda secara khusus, kupikir maknanya sama persis dengan tanda tangan elektronik.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それでも、手書きにこだわる人もいるよね。",
+          "romaji": "Sore demo, tegaki ni kodawaru hito mo iru yo ne.",
+          "translation": "Meski begitu, ada juga orang yang tetap memilih tulisan tangan ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_makna_tanda_tangan_tulisan_tangan_digital_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、効率が悪いからといって、無意味だとは限らないと思っているからだろうね。",
+            "romaji": "Un, kouritsu ga warui kara to itte, muimi da to wa kagiranai to omotte iru kara darou ne.",
+            "translation": "Iya, mungkin karena mereka berpikir belum tentu itu sia-sia hanya karena tidak efisien.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、手書きにこだわる人なんて、今はもう一人もいないと思うよ。",
+            "romaji": "Iya, tegaki ni kodawaru hito nante, ima wa mou hitori mo inai to omou yo.",
+            "translation": "Tidak, kupikir orang yang tetap memilih tulisan tangan sekarang sudah tidak ada satu pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "どちらにも良さがあるんだね。",
+          "romaji": "Dochira ni mo yosa ga aru n da ne.",
+          "translation": "Ternyata keduanya punya kebaikan masing-masing ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_makna_tanda_tangan_tulisan_tangan_digital_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、新しい技術だからといって、古い方法が価値を失うとは限らないと思うんだ。",
+            "romaji": "Un, atarashii gijutsu da kara to itte, furui houhou ga kachi wo ushinau to wa kagiranai to omou n da.",
+            "translation": "Iya, kupikir belum tentu cara lama kehilangan nilainya hanya karena ada teknologi baru.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、新しい技術が出た以上、古い方法には何の価値も残っていないよ。",
+            "romaji": "Iya, atarashii gijutsu ga deta ijou, furui houhou ni wa nan no kachi mo nokotte inai yo.",
+            "translation": "Tidak, karena sudah ada teknologi baru, cara lama sama sekali tidak menyisakan nilai apa pun.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "バランスが大事だね。",
+          "romaji": "Baransu ga daiji da ne.",
+          "translation": "Keseimbangan itu penting ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_makna_tanda_tangan_tulisan_tangan_digital_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そう思う。",
+            "romaji": "Un, sou omou.",
+            "translation": "Iya, aku setuju.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_terima_paket_ubah_cara_pandang_hidup_n1",
+    "title": "Menceritakan Pengalaman Menerima Paket yang Mengubah Cara Pandang terhadap Hidup",
+    "category": "kantor_pos_n1",
+    "description": "Kamu bercerita ke teman tentang pengalaman menerima paket yang mengubah cara pandang terhadap hidup.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "あの時届いた荷物、特別なものだったんだよね。",
+          "romaji": "Ano toki todoita nimotsu, tokubetsu na mono datta n da yo ne.",
+          "translation": "Paket yang tiba waktu itu, sesuatu yang spesial ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_terima_paket_ubah_cara_pandang_hidup_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、開けて初めて、それが亡き父からの最後の贈り物だと分かったんだ。",
+            "romaji": "Un, akete hajimete, sore ga naki chichi kara no saigo no okurimono da to wakatta n da.",
+            "translation": "Iya, hanya setelah membukanya, aku baru tahu itu adalah hadiah terakhir dari mendiang ayahku.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、あの荷物には、特に何も入っていなかったよ。",
+            "romaji": "Iya, ano nimotsu ni wa, toku ni nanimo haitte inakatta yo.",
+            "translation": "Tidak, paket itu sama sekali tidak berisi apa pun secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "開けた瞬間、どんな気持ちだった？",
+          "romaji": "Aketa shunkan, donna kimochi datta?",
+          "translation": "Saat membukanya, perasaanmu bagaimana?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_terima_paket_ubah_cara_pandang_hidup_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "手紙を読んで初めて、父がずっと自分を見守ってくれていたことに気づいたよ。",
+            "romaji": "Tegami wo yonde hajimete, chichi ga zutto jibun wo mimamotte kureta koto ni kizuita yo.",
+            "translation": "Hanya setelah membaca suratnya, aku menyadari bahwa ayah selalu mengawasiku selama ini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にどんな気持ちにもならず、すぐに忘れてしまったよ。",
+            "romaji": "Toku ni donna kimochi ni mo narazu, sugu ni wasurete shimatta yo.",
+            "translation": "Tidak muncul perasaan apa pun secara khusus, langsung lupa begitu saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "それから、生き方が変わった？",
+          "romaji": "Sore kara, ikikata ga kawatta?",
+          "translation": "Sejak itu, cara hidupmu berubah?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_terima_paket_ubah_cara_pandang_hidup_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの経験をして初めて、今日という日を大切にしようと思えるようになったよ。",
+            "romaji": "Un, ano keiken wo shite hajimete, kyou to iu hi wo taisetsu ni shiyou to omoeru you ni natta yo.",
+            "translation": "Iya, hanya setelah mengalami itu, aku jadi bisa berpikir untuk menghargai hari ini.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、その経験があっても、生き方は全く変わらなかったよ。",
+            "romaji": "Iya, sono keiken ga atte mo, ikikata wa mattaku kawaranakatta yo.",
+            "translation": "Tidak, meski ada pengalaman itu, cara hidupku sama sekali tidak berubah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お父さんの想い、しっかり届いたんだね。",
+          "romaji": "Otousan no omoi, shikkari todoita n da ne.",
+          "translation": "Perasaan ayahmu, benar-benar tersampaikan ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_terima_paket_ubah_cara_pandang_hidup_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、あの荷物を受け取って初めて、言葉にできない愛情の重さを感じたよ。",
+            "romaji": "Un, ano nimotsu wo uketotte hajimete, kotoba ni dekinai aijou no omosa wo kanjita yo.",
+            "translation": "Iya, hanya setelah menerima paket itu, aku merasakan bobot kasih sayang yang tak terungkap dengan kata-kata.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、荷物を受け取っても、特に何の重さも感じなかったよ。",
+            "romaji": "Iya, nimotsu wo uketotte mo, toku ni nan no omosa mo kanjinakatta yo.",
+            "translation": "Tidak, meski menerima paket itu, sama sekali tidak merasakan bobot apa pun secara khusus.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "大切にしてね、その気持ち。",
+          "romaji": "Taisetsu ni shite ne, sono kimochi.",
+          "translation": "Jaga baik-baik ya, perasaan itu."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_terima_paket_ubah_cara_pandang_hidup_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、ずっと大切にする。",
+            "romaji": "Un, zutto taisetsu ni suru.",
+            "translation": "Iya, akan kujaga selamanya.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kaiwa_pilih_kado_langsung_daripada_digital_n1",
+    "title": "Menjelaskan Alasan Memilih Mengirim Kado secara Langsung daripada Uang Digital",
+    "category": "kantor_pos_n1",
+    "description": "Kamu menjelaskan ke teman alasan memilih mengirim kado secara langsung daripada uang digital.",
+    "lines": [
+      {
+        "id": "1",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "お祝い、電子マネーで送ればいいのに、わざわざ荷物を送るんだね。",
+          "romaji": "Oiwai, denshi manee de okureba ii noni, wazawaza nimotsu wo okuru n da ne.",
+          "translation": "Padahal ucapan selamat bisa dikirim lewat uang digital, tapi kamu sengaja mengirim paket ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pilih_kado_langsung_daripada_digital_n1_1.png"
+      },
+      {
+        "id": "2",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、実際に選んで包むからこそ、気持ちが伝わると思ってるんだ。",
+            "romaji": "Un, jissai ni erande tsutsumu kara koso, kimochi ga tsutawaru to omotteru n da.",
+            "translation": "Iya, justru karena benar-benar memilih dan membungkusnya sendiri, kupikir perasaan itu tersampaikan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、荷物なんて、一度も送ったことないよ。",
+            "romaji": "Iya, nimotsu nante, ichido mo okutta koto nai yo.",
+            "translation": "Tidak, paket pun belum pernah sekalipun mengirim.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "包装にも、こだわってるの？",
+          "romaji": "Housou ni mo, kodawatteru no?",
+          "translation": "Untuk pembungkusan juga, kamu punya prinsip?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pilih_kado_langsung_daripada_digital_n1_3.png"
+      },
+      {
+        "id": "4",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、丁寧に包むからこそ、開ける瞬間まで気持ちを込められると思うんだ。",
+            "romaji": "Un, teinei ni tsutsumu kara koso, akeru shunkan made kimochi wo komerareru to omou n da.",
+            "translation": "Iya, justru karena membungkus dengan hati-hati, kupikir sampai momen dibuka pun perasaan itu bisa dimasukkan.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "特にこだわりはなく、適当に包んでいるだけだよ。",
+            "romaji": "Toku ni kodawari wa naku, tekitou ni tsutsunde iru dake da yo.",
+            "translation": "Tidak ada prinsip khusus, hanya membungkus seadanya saja.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "分からないよ。",
+            "romaji": "Wakaranai yo.",
+            "translation": "Aku tidak tahu.",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "電子マネーのほうが、相手も助かるんじゃない？",
+          "romaji": "Denshi manee no hou ga, aite mo tasukaru n janai?",
+          "translation": "Bukannya uang digital lebih membantu lawan bicaranya?"
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pilih_kado_langsung_daripada_digital_n1_5.png"
+      },
+      {
+        "id": "6",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "助かるというより、選ぶ手間をかけるからこそ意味があると信じているんだ。",
+            "romaji": "Tasukaru to iu yori, erabu tema wo kakeru kara koso imi ga aru to shinjite iru n da.",
+            "translation": "Bukan sekadar membantu, aku percaya justru karena meluangkan usaha untuk memilih, itu jadi bermakna.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "うん、相手にとっては、電子マネーが一番助かると思っているよ。",
+            "romaji": "Un, aite ni totte wa, denshi manee ga ichiban tasukaru to omotte iru yo.",
+            "translation": "Iya, kupikir bagi lawan bicara, uang digital paling membantu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "その心遣い、きっと伝わるよ。",
+          "romaji": "Sono kokorozukai, kitto tsutawaru yo.",
+          "translation": "Perhatian itu, pasti tersampaikan kok."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pilih_kado_langsung_daripada_digital_n1_7.png"
+      },
+      {
+        "id": "8",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、手間をかけるからこそ、特別な気持ちになってもらえたら嬉しいな。",
+            "romaji": "Un, tema wo kakeru kara koso, tokubetsu na kimochi ni natte moraetara ureshii na.",
+            "translation": "Iya, justru karena meluangkan usaha, aku akan senang kalau bisa membuat mereka merasa spesial.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "いや、伝わらなくても、別に構わないと思っているよ。",
+            "romaji": "Iya, tsutawaranakute mo, betsu ni kamawanai to omotte iru yo.",
+            "translation": "Tidak, meski tidak tersampaikan pun, sama sekali tidak masalah.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何時ですか。",
+            "romaji": "Nanji desu ka.",
+            "translation": "Jam berapa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "speaker": "Teman",
+        "isUserTurn": false,
+        "npcLine": {
+          "japanese": "素敵な贈り物になりそうだね。",
+          "romaji": "Suteki na okurimono ni narisou da ne.",
+          "translation": "Sepertinya akan jadi hadiah yang indah ya."
+        },
+        "imagePath": "kaiwa_images/kantor_pos_n1/kaiwa_pilih_kado_langsung_daripada_digital_n1_9.png"
+      },
+      {
+        "id": "10",
+        "speaker": "Anda",
+        "isUserTurn": true,
+        "options": [
+          {
+            "japanese": "うん、そう願ってる。",
+            "romaji": "Un, sou negatteru.",
+            "translation": "Iya, aku berharap begitu.",
+            "isCorrect": true,
+            "expressionTag": null
+          },
+          {
+            "japanese": "別にそう思わないよ。",
+            "romaji": "Betsu ni sou omowanai yo.",
+            "translation": "Tidak berpikir begitu.",
+            "isCorrect": false,
+            "expressionTag": null
+          },
+          {
+            "japanese": "何ですか。",
+            "romaji": "Nan desu ka.",
+            "translation": "Apa?",
+            "isCorrect": false,
+            "expressionTag": null
+          }
+        ]
+      }
+    ]
   }
 ]
