@@ -1674,6 +1674,24 @@ BIOSKOP_N2_TITLES = [
     "Menjelaskan Filosofi Menonton Film sebagai Bentuk Empati",
 ]
 
+PERKENALAN_N1_TITLES = [
+    "Menjelaskan Alasan Sulit Menjawab Pertanyaan tentang Jati Diri Sendiri",
+    "Mendiskusikan Perbedaan antara Citra Diri di Publik dan Pribadi",
+    "Menceritakan Pengalaman Menyadari Diri Sendiri Telah Banyak Berubah",
+    "Membicarakan Beban Ekspektasi yang Melekat pada Sebuah Nama atau Gelar",
+    "Mendiskusikan Filosofi bahwa Identitas Seseorang Selalu Berproses",
+    "Menceritakan Pengalaman Membangun Ulang Diri Setelah Kehilangan Besar",
+    "Menjelaskan Alasan Enggan Didefinisikan oleh Satu Peran Saja",
+    "Membicarakan Kesenjangan antara Pencapaian dan Rasa Puas Batin",
+    "Mendiskusikan Warisan yang Ingin Ditinggalkan Setelah Tiada",
+    "Menceritakan Pengalaman Berdamai dengan Versi Diri di Masa Lalu",
+    "Menjelaskan Alasan Memilih Kejujuran Meski Berisiko Disalahpahami",
+    "Membicarakan Peran Bahasa dalam Membentuk Cara Berpikir Seseorang",
+    "Mendiskusikan Apakah Karakter Seseorang Bawaan Lahir atau Bentukan",
+    "Menceritakan Pengalaman Ditolak karena Menjadi Diri Sendiri",
+    "Menjelaskan Filosofi Hidup yang Ditemukan Lewat Penderitaan",
+]
+
 # category_id -> (display name, icon emoji, JLPT level key)
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
@@ -1744,6 +1762,7 @@ CATEGORY_META = {
     "bank_n2": ("Di Bank", "🏦", "N2"),
     "olahraga_n2": ("Olahraga", "⚽", "N2"),
     "bioskop_n2": ("Di Bioskop", "🎬", "N2"),
+    "perkenalan_n1": ("Perkenalan", "👋", "N1"),
 }
 
 # category_id -> locked dialogue title list, for themes with real content.
@@ -1816,6 +1835,7 @@ AVAILABLE_CATEGORIES = {
     "bank_n2": BANK_N2_TITLES,
     "olahraga_n2": OLAHRAGA_N2_TITLES,
     "bioskop_n2": BIOSKOP_N2_TITLES,
+    "perkenalan_n1": PERKENALAN_N1_TITLES,
 }
 
 # (id, display name, icon emoji) for themes with no dataset yet —
@@ -1828,7 +1848,7 @@ LEVEL_META = {
     "N4": ("N4", True),
     "N3": ("N3", True),
     "N2": ("N2", True),
-    "N1": ("N1", False),
+    "N1": ("N1", True),
 }
 
 _ALL_TITLE_LISTS = {
@@ -1900,6 +1920,7 @@ _ALL_TITLE_LISTS = {
     "BANK_N2_TITLES": BANK_N2_TITLES,
     "OLAHRAGA_N2_TITLES": OLAHRAGA_N2_TITLES,
     "BIOSKOP_N2_TITLES": BIOSKOP_N2_TITLES,
+    "PERKENALAN_N1_TITLES": PERKENALAN_N1_TITLES,
 }
 for _name, _titles in _ALL_TITLE_LISTS.items():
     assert len(_titles) >= 3, f"{_name} should have at least 3 dialogues, has {len(_titles)}"
