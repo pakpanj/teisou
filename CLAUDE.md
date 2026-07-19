@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy, N5-N2 fully authored (17 themes each, 680+255+255+255 dialogues) and N1 at 16/17 themes (240/255), 1685/1700 grand total — Bioskop is N1's last theme and mid-authoring, see the Kaiwa module section's session-handoff note below for exact state) and free — Bunpou/Partikel are done for their current scope, Kaiwa's N1 rollout is nearly done; Choukai still untouched. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa/Choukai modules, AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy) and **fully authored across all 5 JLPT levels — 17/17 themes and 255/255 (680 for N5) dialogues at every level, 1700/1700 grand total, zero placeholders** — and free. Bunpou/Partikel/Kaiwa are all content-complete for their current scope; Choukai still untouched. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -759,77 +759,78 @@ meant.
     next, tapping through Home→N5→a handful of themes, and specifically
     forcing an offline Firestore write to confirm the spinner now clears,
     is still worth doing since neither has actually happened yet.
-  - **N4-N1 rollout, session handoff (2026-07-19)**: this is a
-    continuation of the phase 1-3 work above, extending Kaiwa beyond N5
-    per explicit user request ("OKE UNTUK LANJUTKAN GENERATE KAIWA
-    SAMPAI N1" — continue generating Kaiwa until N1). Locked scope from
-    the user: **15 dialogues per theme for N4-N1** (not N5's 40), each
-    still 5 exchanges/10 lines (5 npc + 5 user turns), same
-    distractor-design rule as phases 1-3 (every wrong option is
-    grammatically valid Japanese that's contextually wrong, third
-    option a generic filler like 何時ですか/何ですか/分からないよ).
-    **Status at third handoff (2026-07-19, later the same day again,
-    mid-session account switch)**: N4 complete (17/17, 255/255). N3
-    complete (17/17, 255/255). N2 complete (17/17, 255/255 — the five
-    themes still open at the first handoff, Liburan/Keluarga/Bank/
-    Olahraga/Bioskop, were all authored in the prior continuation).
-    **N1 is 16/17 themes complete, 240/255 dialogues**: Perkenalan,
-    Restoran, Stasiun, Belanja, Arah Jalan, Sekolah, Cuaca & Basa-basi,
-    Rumah Sakit, Hobi, Telepon, Transportasi, Kantor Pos, Liburan,
-    Keluarga, Bank, Olahraga are done and committed. **Bioskop is the
-    17th and final theme, needed to close out N1 and the entire
-    five-level rollout, and is mid-authoring right now**: its 15 titles
-    plus all 3 registrations (`CATEGORY_META`, `AVAILABLE_CATEGORIES`,
-    `_ALL_TITLE_LISTS`) are already written into `scripts/kaiwa_lists.py`
-    as an **uncommitted working-tree diff** (titles run from "film
-    terasa seperti kapsul waktu" through "sebuah kisah tidak harus
-    berakhir bahagia untuk layak diceritakan" — read the file directly
-    rather than re-deriving them, they're already there and don't need
-    redrafting). The matching 15 dialogue entries for
-    `scripts/generate_kaiwa_seed.py` (the `BIOSKOP_N1_ENTRIES` list plus
-    its `ENTRIES_BY_CATEGORY` registration line) have **not been written
-    at all yet** — `grep -c BIOSKOP_N1_ENTRIES scripts/generate_kaiwa_seed.py`
-    returns 0. Root master (`/c/Users/LENOVO/teisou`, branch `master`)
-    is clean at commit `1d4d652` ("feat(kaiwa): add N1 Olahraga theme
-    (16/17 N1 themes)"); the only uncommitted diff is the Bioskop N1
-    titles/registration in `kaiwa_lists.py` described above. Grand
-    total at last commit: **1685/1700 dialogues** (N5 680 + N4 255 +
-    N3 255 + N2 255 + N1 240) — Bioskop N1 landing brings this to the
-    full **1700/1700**, completing every level.
-    **The repeatable per-theme workflow** (used identically ~65 times
-    across N4/N3/N2/N1 so far, safe to trust): (1) draft 15 dialogue
-    titles for the theme, appropriate to the target JLPT level's
-    vocabulary/grammar ceiling and distinct in *depth* from the same
-    theme at lower levels (see the N2 Perkenalan note a few paragraphs
-    up for why N2 skews abstract/introspective vs. N3's concrete
-    scenarios, and escalate further still for N1 — conversational
-    register throughout, never written/literary, even though the
-    grammar itself is N1-level); (2) add a `{THEME}_{LEVEL}_TITLES`
-    list plus 3 registration lines (`CATEGORY_META`,
-    `AVAILABLE_CATEGORIES`, `_ALL_TITLE_LISTS`) to
-    `scripts/kaiwa_lists.py`, anchored via Edit on the immediately
-    preceding theme's equivalent lines; (3) draft the matching 15 full
-    dialogue tuples (10-line schema: `("npc", suffix, speaker,
-    japanese, romaji, translation)` / `("user", suffix, [(japanese,
-    romaji, translation, is_correct, expression_tag_or_None), ...])`)
-    using level-appropriate grammar woven naturally into the scenario
-    implied by each title; (4) add a `{THEME}_{LEVEL}_ENTRIES` list to
-    `scripts/generate_kaiwa_seed.py` (insert immediately before the
-    `ENTRIES_BY_CATEGORY = {` declaration) plus one registration line
-    inside that dict; (5) syntax-check both files with `python -c
-    "import ast; ast.parse(open(path, encoding='utf-8').read())"`; (6)
-    regenerate via `python scripts/generate_kaiwa_seed.py` from
+  - **N4-N1 rollout — complete (2026-07-19)**: extending Kaiwa beyond
+    N5 per explicit user request ("OKE UNTUK LANJUTKAN GENERATE KAIWA
+    SAMPAI N1" — continue generating Kaiwa until N1), this multi-session
+    effort is now **fully done**: N4, N3, N2, and N1 are each 17/17
+    themes and 255/255 dialogues (**15 dialogues per theme** for these
+    four levels, deliberately less than N5's 40 — the user's locked
+    scope for this rollout), landing the grand total at **1700/1700**
+    across all five levels (N5 680 + N4 255 + N3 255 + N2 255 + N1
+    255). Every level covers the same 17 themes: Perkenalan, Restoran,
+    Stasiun, Belanja, Arah Jalan, Sekolah, Cuaca & Basa-basi, Rumah
+    Sakit, Hobi, Telepon, Transportasi, Kantor Pos, Liburan, Keluarga,
+    Bank, Olahraga, Bioskop. Every dialogue keeps the same 10-line/5-
+    exchange (5 npc + 5 user turns) structure as N5, and the same
+    distractor-design rule from N5's phases 1-3 (every wrong option is
+    grammatically valid Japanese that's contextually wrong, never
+    broken/nonsensical; the third option is consistently a generic
+    filler like 何時ですか/何ですか/分からないよ). Final verification
+    (`flutter analyze`, `flutter test --concurrency=1`, `flutter build
+    apk --debug`) all passed clean against the completed dataset.
+    **Grammar escalates by level, register stays conversational
+    throughout**: each level's dialogues use vocabulary and grammar
+    appropriate to that JLPT tier (N4 patterns for N4, all the way up
+    to N1's literary-register grammar points — ~ずにはいられない, ~ゆえに,
+    ~にたえない, ~と言わんばかりに, ~にせよ, heavy keigo, etc.), but the
+    *topic depth* also escalates independently of grammar difficulty —
+    N3 favors concrete everyday scenarios, N2 skews abstract/
+    introspective (career, identity, life philosophy), and N1 goes
+    further still into genuinely literary/emotional territory (grief,
+    impermanence, self-forgiveness) while the two characters'
+    *dialogue* itself is deliberately kept conversational rather than
+    written/formal-register, even when the grammar points themselves
+    are N1-level. Where a theme repeats across levels (e.g. Perkenalan
+    at N5 through N1), each level's 15-40 titles are freshly drafted
+    for that level's depth, never reused or simply reworded from a
+    lower level.
+    **The repeatable per-theme workflow** (used identically ~85 times
+    across N4/N3/N2/N1, safe to trust if this ever needs revisiting —
+    e.g. correcting an entry, or extending an existing level's theme
+    count): (1) draft 15 dialogue titles for the theme, matching the
+    target level's vocabulary/grammar ceiling and topic depth as
+    described above; (2) add a `{THEME}_{LEVEL}_TITLES` list plus 3
+    registration lines (`CATEGORY_META`, `AVAILABLE_CATEGORIES`,
+    `_ALL_TITLE_LISTS`) to `scripts/kaiwa_lists.py`, anchored via Edit
+    on the immediately preceding theme's equivalent lines; (3) draft
+    the matching 15 full dialogue tuples (10-line schema: `("npc",
+    suffix, speaker, japanese, romaji, translation)` / `("user",
+    suffix, [(japanese, romaji, translation, is_correct,
+    expression_tag_or_None), ...])`) using level-appropriate grammar
+    woven naturally into the scenario implied by each title; (4) add a
+    `{THEME}_{LEVEL}_ENTRIES` list to `scripts/generate_kaiwa_seed.py`
+    (insert immediately before the `ENTRIES_BY_CATEGORY = {`
+    declaration) plus one registration line inside that dict; (5)
+    syntax-check both files with `python -c "import ast;
+    ast.parse(open(path, encoding='utf-8').read())"`; (6) regenerate
+    via `python scripts/generate_kaiwa_seed.py` from
     `/c/Users/LENOVO/teisou` and confirm the printed per-category count
     and running grand total match expectations exactly; (7) run three
     Python cross-checks against the regenerated
-    `assets/data/kaiwa_data.json` before committing — no duplicate entry
-    ids across the whole file, every user turn has ≥2 options with
-    exactly 1 marked correct, and no dialogue has two identical NPC
-    lines within itself (this exact bug shipped-then-was-caught three
-    times this session: Stasiun N1, Rumah Sakit N1, and Transportasi
-    N1's `pilih_transportasi_umum_rasakan_kehidupan_n1`) — plus a
-    Cyrillic-contamination scan (`python -c "import re;
-    print(len(re.findall(r'[Ѐ-ӿ]',
+    `assets/data/kaiwa_data.json` before committing — no duplicate
+    entry ids across the whole file, every user turn has ≥2 options
+    with exactly 1 marked correct, and no dialogue has two identical
+    NPC lines within itself (this exact "reused a stock line for two
+    different NPC turns" bug shipped-then-was-caught **four** times
+    across this rollout — Stasiun N1, Rumah Sakit N1's
+    `pilih_transportasi_umum_rasakan_kehidupan_n1`-adjacent catch,
+    Transportasi N1, and Rumah Sakit N1's own
+    `perawat_keluarga_lelah_batin_n1` a second time, caught only on the
+    Bioskop N1 commit when the check was finally run against the
+    *entire* regenerated file rather than just newly-added entries —
+    worth re-running full-file, not incremental, if this is ever
+    touched again) — plus a Cyrillic-contamination scan (`python -c
+    "import re; print(len(re.findall(r'[Ѐ-ӿ]',
     open('scripts/generate_kaiwa_seed.py', encoding='utf-8').read())))"`
     should print 0), added after a stray Cyrillic "т" was found mixed
     into a romaji line in Arah Jalan N1; (8) `git add
@@ -847,19 +848,24 @@ meant.
     be exactly 5: `(japanese, romaji, translation, is_correct,
     expression_tag)`) in one N3 entry — both caught by the
     syntax-check/regenerate step, which is exactly why steps 5-6 are
-    never skipped. **Immediate next step**: write `BIOSKOP_N1_ENTRIES`
-    into `scripts/generate_kaiwa_seed.py` (15 tuples matching the
-    already-drafted titles in `kaiwa_lists.py`), register it in
-    `ENTRIES_BY_CATEGORY`, then run steps 5-9 above to close out N1 at
-    17/17 (255/255) and the grand total at 1700/1700. **After that
-    commits**, the remaining task is final verification (`flutter
-    analyze`, `flutter test --concurrency=1`, `flutter build apk
-    --debug`) and one more CLAUDE.md pass documenting the *fully
-    completed* N4-N1 rollout's scope, design, and verification gaps —
-    mirroring exactly how N5's completion was documented above. No
-    interactive on-device pass has been done for any of N4/N3/N2/N1's
-    content yet (same gap already noted for N5's own rollout) — worth
-    flagging in that final pass rather than assuming it happened.
+    never skipped.
+    **Verification gap, honestly not closed**: `flutter analyze`,
+    `flutter test --concurrency=1`, and `flutter build apk --debug` all
+    passed clean against the fully completed 1700-dialogue dataset, and
+    the generator's own schema assertions plus the four cross-checks in
+    step 7 above all passed against the entire file. **No interactive
+    on-device pass has been done for any of N4/N3/N2/N1's content** —
+    this mirrors the same gap already documented above for N5's own
+    rollout, which similarly never got a full on-device pass across its
+    phases. If you're touching any Kaiwa level next, tapping through
+    Home→a level→a handful of themes across N4 through N1 — confirming
+    the level picker surfaces all five levels correctly, dialogues
+    render and progress through their 5 exchanges properly, and nothing
+    about the deeper N1 topics (grief, loss, self-forgiveness) breaks
+    the UI in unexpected ways — is still worth doing since it hasn't
+    actually happened yet. Kaiwa remains free app-wide (see the
+    monetization-roadmap note above) — this rollout didn't touch
+    premium gating either way.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
