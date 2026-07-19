@@ -28,6 +28,105 @@ already taken (full Kotoba dataset, previous row), so it's recorded here
 as Batch 8. If told to work on "Batch 7" going forward, confirm which is
 meant.
 
+## Current status snapshot (session handoff, 2026-07-19)
+
+Read this first if you're picking up this project cold — it's a fast
+index into what's actually done vs. still open, with pointers into the
+detailed sections below for specifics. Everything here is cross-checked
+against the codebase/data as of commit `71f7596`, not just asserted from
+memory.
+
+**Fully complete, content-wise (no placeholders, verified against the
+data files, not just "code exists")**:
+- Kana Master, Profile/Ads/Premium/Leaderboard scaffold, Firebase
+  anonymous+Google auth, Profile Enhancement, Search & Dictionary
+  (Batches 1-4).
+- Kotoba vocab module + full dataset: 519 words across all 45
+  categories/7 groups (Batches 6-7).
+- Kanji module (browse/detail/quiz screens, `StrokeOrderAnimator`) +
+  full dataset: **2425/2425 kanji real across N5-N1**, zero
+  placeholders (Batch 8 + Fase 2).
+- Bunpou (grammar) module + full dataset: **848/848 grammar points
+  real across all 5 JLPT levels** (N5 84, N4 132, N3 182, N2 197, N1
+  253), zero placeholders.
+- Partikel (particle) module + full dataset: **25/25 particles, 48
+  nested functions real** across all 3 categories, zero placeholders.
+- Kaiwa (dialogue practice) module + full dataset: **1700/1700
+  dialogues real across all 5 JLPT levels** (N5 680, N4/N3/N2/N1 255
+  each, 17 themes per level), zero placeholders — this was the subject
+  of the multi-session rollout that just finished; see the dedicated
+  Kaiwa section below for full design/workflow detail. Final
+  verification (`flutter analyze`, `flutter test --concurrency=1`,
+  `flutter build apk --debug`) all passed clean against this state.
+
+**Built but with real, open gaps — don't assume "built" means
+"finished"**:
+- **Cam Detector** (offline Japanese OCR camera scanning) is fully
+  built and still compiles/tests clean, but is **deliberately locked
+  out of navigation** (`ModulesScreen` shows a grey "Diperbaiki"
+  card, not the module itself) because of real bugs — see "Known
+  placeholders" below for the full ProGuard/R8, camera-lifecycle, and
+  Impeller-rendering history. Several of those specific issues *have*
+  been fixed and confirmed on a physical device; one theory (Play
+  Services download vs. ProGuard as the root cause of a warning
+  banner) was never conclusively resolved either way. Re-enabling
+  needs a fresh confirmation pass, not just flipping the lock off.
+- **Monetization is unfinished and not representative of the intended
+  final product.** Kanji and Bunpou have *no* premium-gating code at
+  all — every level is open regardless of the eventual plan. Partikel
+  *had* a working premium gate but it was explicitly removed for dev
+  testing (deliberate, not a bug). Kaiwa was built free from day one
+  and this rollout didn't touch that. The actual intended split
+  (Kanji N3-N1, Bunpou N4-N1, Partikel, Choukai, Kaiwa, and two
+  entirely unbuilt modules — see below — all eventually premium) is
+  documented but essentially unimplemented right now.
+- **No illustration images exist in Firebase Storage for either
+  Kotoba or Kaiwa** — both modules render real content with graceful
+  pastel-emoji placeholders instead of art. Kotoba needs 519 images;
+  Kaiwa now needs **7468** (one per NPC line, across all 1700
+  dialogues — see the updated note below, this number grew ~350x
+  during the N4-N1 rollout and is worth scoping as a deliberate
+  project of its own, not a quick upload).
+- `KanjiEntry.relatedBunpou` is empty for all 2425 kanji — the
+  cross-link curation pass (deciding which of the 848 grammar points
+  relate to which kanji) has never been done; the schema and UI are
+  ready and waiting.
+- AdMob uses Google's public test ad unit IDs, not production ones.
+- Avatar art is unbuilt (emoji fallback everywhere it's needed).
+- `SavedWordsScreen` is local-only (no cross-device sync via
+  Firestore); there's no browse UI for `savedItems` bookmarks at all
+  (the write path works, nothing reads it back yet).
+
+**Completely untouched — no code, no content, nothing started**:
+- **Choukai** (listening comprehension module).
+- **Belajar dari Gambar** and **Belajar dari Video** (two more
+  planned modules, referenced only in the monetization roadmap note
+  below — no screens, models, or scope decisions exist for either
+  yet, not even placeholders).
+- AdMob/IAP production setup (still on test IDs, no store billing
+  wiring).
+- General release polish (the batch-9+ row's own description of what
+  "release polish" would cover hasn't been scoped in detail yet).
+
+**Verification gaps worth knowing about** (things that pass every
+automated check — `flutter analyze`/`test`/`build`, and this project's
+various Python cross-check scripts — but have never had a human or an
+on-device pass): the entire Kaiwa N4-N1 rollout (1020 of the 1700
+dialogues), Bunpou's N3/N2 levels specifically, and Partikel's full
+interactive flow (premium gate → Home → Category → Detail → Quiz) all
+fall into this bucket — see each module's own section below for why
+(mostly: the physical test device was locked behind a real credential
+whenever verification was attempted, which is treated as out of bounds
+regardless of task urgency).
+
+If your task is "keep going" without a more specific pointer: the
+Batch-9+ row above and this snapshot together are the full list of
+what's left — Choukai is the largest genuinely-unstarted piece of
+scope, monetization gating is the largest piece of *started-but-
+unfinished* work, and the two image-upload backlogs (Kotoba 519 +
+Kaiwa 7468) are large, well-defined, non-code tasks that don't require
+figuring out what to build next.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),
@@ -916,15 +1015,25 @@ meant.
   glob.glob('assets/data/kotoba/*.json') if '_categories' not in f for e
   in json.load(open(f, encoding='utf-8'))]"` (519 lines).
 - **No Kaiwa dialogue images have been uploaded to Firebase Storage
-  either** — same gap as Kotoba's, just younger. Every NPC line across all
-  21 dialogues (all 7 categories) has a real `imagePath`
-  (`kaiwa_images/{category}/{entry_id}_{line_suffix}.png`), but none of
-  those objects exist in the bucket yet, so every NPC turn currently shows
-  `KaiwaImage`'s 💬 placeholder. Since the image+multiple-choice redesign
-  made images the *only* thing an NPC turn shows (no text fallback), this
-  gap is more visible in Kaiwa than in Kotoba right now — worth
-  prioritizing this upload before Kotoba's larger 45-category backlog if
-  only one can be done soon.
+  either** — same gap as Kotoba's, just younger, and now much bigger
+  in scale. **Updated for the completed N4-N1 rollout**: Kaiwa now has
+  1700 dialogues (all five JLPT levels × 17 themes each, N5's 40/theme
+  and N4-N1's 15/theme) with **7468 total NPC lines**, every one
+  carrying a real `imagePath`
+  (`kaiwa_images/{category}/{entry_id}_{line_suffix}.png`) — none of
+  those objects exist in the bucket yet, so every NPC turn across the
+  entire module currently shows `KaiwaImage`'s 💬 placeholder. Since
+  the image+multiple-choice redesign made images the *only* thing an
+  NPC turn shows (no text fallback), this gap is fully visible
+  throughout Kaiwa right now — re-derive the full path list the same
+  way as Kotoba's, via `python -c "import json; data =
+  json.load(open('assets/data/kaiwa_data.json', encoding='utf-8'));
+  [print(l['npcLine']['imagePath']) for e in data for l in e['lines']
+  if not l.get('isUserTurn')]"` (7468 lines). Uploading illustrations
+  at this scale is a substantial separate task from dataset authoring
+  — worth scoping deliberately (e.g. shared/reusable images per scene
+  type rather than one bespoke illustration per NPC line) rather than
+  assuming 7468 unique uploads.
 - Word counts per category are curated, not padded to a target — they
   range from 5 (`musim`, a genuinely small closed set) to 22
   (`hari_bulan`, which deliberately includes all 7 days + all 12 months
