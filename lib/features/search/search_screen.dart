@@ -6,31 +6,44 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
+import '../../data/models/dictionary_word.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/kanji_entry.dart';
 import '../../data/models/kotoba_entry.dart';
+import 'dictionary_word_detail_screen.dart';
 import 'kanji_detail_screen.dart';
 import 'kotoba_detail_screen.dart';
 import 'widgets/jlpt_badge.dart';
 
 enum _TypeFilter { all, kanji, kotoba }
 
-/// Either a [KanjiEntry] or a [KotobaEntry] — a UI-only union so the
-/// results list can render both kinds without two separate ListViews.
-/// Not a persisted model, just a display-layer wrapper.
+/// Either a [KanjiEntry], a [KotobaEntry], or a [DictionaryWord] — a
+/// UI-only union so the results list can render all three kinds without
+/// three separate ListViews. Not a persisted model, just a display-layer
+/// wrapper. [DictionaryWord] results are treated as "kotoba" for the
+/// type filter (they're vocabulary too, just from the bigger, text-only
+/// comprehensive dataset instead of the curated 519-word module) and are
+/// excluded whenever a JLPT level filter is active, since that dataset
+/// carries no level metadata.
 class _SearchResult {
   final KanjiEntry? kanji;
   final KotobaEntry? kotoba;
+  final DictionaryWord? dictionary;
 
   const _SearchResult.kanji(KanjiEntry entry)
       : kanji = entry,
-        kotoba = null;
+        kotoba = null,
+        dictionary = null;
 
   const _SearchResult.kotoba(KotobaEntry entry)
       : kanji = null,
-        kotoba = entry;
+        kotoba = entry,
+        dictionary = null;
 
-  JlptLevel get level => kanji?.jlptLevel ?? kotoba!.jlptLevel;
+  const _SearchResult.dictionary(DictionaryWord entry)
+      : kanji = null,
+        kotoba = null,
+        dictionary = entry;
 }
 
 class SearchScreen extends ConsumerStatefulWidget {
@@ -96,6 +109,16 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             .where((k) => _levelFilter == null || k.jlptLevel == _levelFilter)
             .map(_SearchResult.kotoba),
       );
+
+      // Comprehensive text-only dictionary — no JLPT metadata, so it only
+      // contributes results when no level filter is narrowing the search.
+      if (_levelFilter == null) {
+        final dictionaryRepo = ref.read(dictionaryRepositoryProvider);
+        final dictionaryResults = _query.isEmpty
+            ? await dictionaryRepo.getAll()
+            : await dictionaryRepo.search(_query);
+        results.addAll(dictionaryResults.map(_SearchResult.dictionary));
+      }
     }
 
     return results;
@@ -104,8 +127,13 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   void _openResult(_SearchResult result) {
     if (result.kanji != null) {
       AppNavigator.slideFromRight(context, KanjiDetailScreen(entry: result.kanji!));
-    } else {
+    } else if (result.kotoba != null) {
       AppNavigator.slideFromRight(context, KotobaDetailScreen(entry: result.kotoba!));
+    } else {
+      AppNavigator.slideFromRight(
+        context,
+        DictionaryWordDetailScreen(entry: result.dictionary!),
+      );
     }
   }
 
@@ -179,9 +207,22 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           separatorBuilder: (_, _) => const SizedBox(height: 8),
           itemBuilder: (context, index) {
             final result = results[index];
-            return result.kanji != null
-                ? _KanjiResultTile(entry: result.kanji!, onTap: () => _openResult(result))
-                : _KotobaResultTile(entry: result.kotoba!, onTap: () => _openResult(result));
+            if (result.kanji != null) {
+              return _KanjiResultTile(
+                entry: result.kanji!,
+                onTap: () => _openResult(result),
+              );
+            }
+            if (result.kotoba != null) {
+              return _KotobaResultTile(
+                entry: result.kotoba!,
+                onTap: () => _openResult(result),
+              );
+            }
+            return _DictionaryResultTile(
+              entry: result.dictionary!,
+              onTap: () => _openResult(result),
+            );
           },
         );
       },
@@ -351,6 +392,77 @@ class _KotobaResultTile extends StatelessWidget {
                 ),
               ),
               JlptBadge(level: entry.jlptLevel),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Result tile for the comprehensive text-only dictionary — same layout
+/// as [_KotobaResultTile] minus the JLPT badge (that dataset has no
+/// level metadata) and a small "Kamus" tag instead, so it's visually
+/// distinguishable from the curated 519-word Kotoba module's results.
+class _DictionaryResultTile extends StatelessWidget {
+  final DictionaryWord entry;
+  final VoidCallback onTap;
+
+  const _DictionaryResultTile({required this.entry, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: AppColors.cardWhite,
+      borderRadius: BorderRadius.circular(16),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      entry.display,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textNavy,
+                      ),
+                    ),
+                    Text(
+                      '${entry.reading} · ${entry.meaning}',
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 4,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.freeBadgeGrey.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Text(
+                  'Kamus',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.freeBadgeGrey,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

@@ -259,6 +259,112 @@ modules; worth a manual pass (especially the tab-swipe-vs-bottom-nav
 interaction, and Kaiwa's gendered-voice playback on a real device)
 before treating this as fully verified.
 
+## Update (2026-07-19, third session): comprehensive search dictionary — batch 1/many
+
+`SearchScreen` used to only search `kanji_data.json` (2425 kanji, real
+coverage) and `kotoba_data.json` — which turned out to be the original
+12-word-ish Batch 4 seed file (30 entries), **not** the 519-word
+Kotoba vocab module's per-category files, so Search's word coverage
+was accidentally far smaller than what already existed elsewhere in
+the app. Rather than just wiring in the existing 519 words, the user
+asked for something closer to a translator: search should eventually
+cover ~10,000 everyday words, each with kanji/reading/meaning/one
+example sentence — explicitly **text only**, no image, no stroke
+order requirement (that requirement was raised and then deliberately
+dropped once the storage-cost question below was answered).
+
+**New, deliberately separate dataset** — not merged into the 519-word
+Kotoba module, so that module's existing curation (registers, images,
+categories, progress tracking) stays untouched:
+- `DictionaryWord` (`lib/data/models/dictionary_word.dart`): `id`,
+  `kanji` (nullable — many entries are kana-only, e.g. これ/とても/コーヒー),
+  `reading`, `meaning`, one `DictionaryExample` (`japanese`+
+  `translation`, no romaji field — kept intentionally lighter than the
+  shared `SentenceExample` class Kanji/Kotoba/Bunpou/Kaiwa use, since
+  10,000+ entries need to stay small; see the storage-math note below).
+- `DictionaryRepository` (`lib/data/repositories/dictionary_repository.dart`)
+  mirrors `KanjiRepository`'s eager-cache-the-whole-file pattern exactly
+  — deliberately **not** the lazy per-file pattern Kotoba's
+  `getVocabCategory` uses, because even at the full 10,000-word target
+  the file is only ~2MB (see below), well within what `kanji_data.json`
+  (2.7MB) already parses at startup fine today. Lazy/sharded loading
+  would only become worth the complexity somewhere past 50,000-100,000
+  words — not a concern at this dataset's actual target size.
+- Wired into `SearchScreen` as a third result kind alongside Kanji/
+  Kotoba (`_SearchResult.dictionary`, `_DictionaryResultTile` — small
+  grey "Kamus" tag instead of a JLPT badge, since this dataset carries
+  no level metadata at all). Included in search whenever the "Kotoba"
+  type filter is active (they're vocabulary too, just from the bigger
+  uncurated dataset) and **excluded whenever a JLPT level filter is
+  selected**, since there's nothing to filter by — a deliberate scope
+  cut, not a bug, and the honest tradeoff of skipping level-tagging for
+  this dataset.
+- `DictionaryWordDetailScreen` (`lib/features/search/`) is deliberately
+  lighter than `KotobaDetailScreen` — word, reading, meaning, one
+  example, TTS speak button, no image/category/registers. One thing it
+  *does* add back, cheaply: each kanji character in the word becomes a
+  tappable chip (`_KanjiChip`, resolved via the already-existing
+  `kanjiRepositoryProvider.findByCharacter`) that opens the full
+  `KanjiDetailScreen` (stroke order etc.) whenever that character
+  happens to be one of the curated 2425 — greyed out and untappable
+  otherwise. This gets back most of the value of the kanji-breakdown
+  idea the user originally asked for and then dropped, at effectively
+  zero extra engineering cost, since the lookup capability already
+  existed (built for Cam Detector).
+
+**Storage math that shaped this design** (measured against the real
+519-word Kotoba dataset's per-field byte sizes, not guessed): this
+schema averages **~217-280 bytes/word** compact, meaning the full
+10,000-word target is only **~2-3MB**, and even 100,000 words would be
+~21-27MB — trivial next to the app's existing ~98MB release APK and
+`kanji_data.json`'s own 2.7MB. Storage was never the real constraint;
+the actual bottleneck is **authoring** (every entry is hand-written by
+an AI content-authoring pass, same as Kaiwa/Bunpou/Partikel, not
+sourced from an external dictionary — see the next paragraph) and, at
+much larger scale than this dataset's target, JSON-parse time at app
+startup if it were ever all loaded eagerly (not a concern yet at
+10,000).
+
+**Content status: 320/~10,000 words shipped (batch 1 of many)**,
+locked in `scripts/dictionary_word_lists.py` (`BATCH_1_WORDS`,
+word+reading pairs asserted unique) and built by
+`scripts/generate_dictionary_seed.py` into
+`assets/data/dictionary_data.json` — ids are assigned sequentially by
+the generator (`dict_00001`...), not hand-authored, so future batches
+can just append to `ALL_WORDS` without id bookkeeping. Covers common
+verbs (50), i-/na-adjectives (50), and everyday nouns across ten
+themes (family, body, food, home, time, places/transport, nature,
+school/work, emotions, technology) — deliberately broad, general
+vocabulary rather than JLPT-level-scoped, and **not** cross-checked
+against the existing 519-word Kotoba dataset for overlap (some
+duplication between the two is expected and acceptable, same
+"intentional overlap" reasoning already established for Bunpou vs.
+Partikel elsewhere in this file). **Reaching 10,000 is explicitly a
+multi-session effort** — same shape as Kaiwa's N4-N1 rollout — continue
+by drafting more themed word batches, appending them to `ALL_WORDS` in
+`dictionary_word_lists.py` plus a matching entries block if organized
+separately, then re-running the generator and the checks below.
+**Caught and fixed during this batch, worth remembering for future
+batches**: kana-only entries (no kanji) must be written as
+`(None, "reading", ...)` — an early draft of all 31 kana-only entries
+in this batch had the tuple fields backwards
+(`("reading", None, ...)`, i.e. kanji and reading swapped), caught
+immediately by the generator's own `assert e["reading"]` check before
+ever reaching the JSON output. Re-run that same assertion (or just
+re-run the generator, which asserts on every field) after authoring
+any future batch — don't assume the tuple order was followed
+correctly by eye.
+
+Verification: `flutter analyze` clean, `flutter test --concurrency=1`
+(11/11 unchanged), `flutter build apk --debug` succeeded,
+Cyrillic-contamination scan on both new Python files == 0, generated
+JSON cross-checked (320 unique ids, no missing reading/meaning/example
+fields). **No interactive on-device pass done** — same standing gap as
+every other module in this file; worth confirming the "Kamus" tag
+renders distinctly from real Kotoba results and that kanji chips in
+`DictionaryWordDetailScreen` correctly resolve/grey-out before treating
+this as fully verified.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),

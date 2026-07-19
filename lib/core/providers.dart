@@ -11,6 +11,7 @@ import '../data/repositories/bunpou_progress_repository.dart';
 import '../data/repositories/bunpou_repository.dart';
 import '../data/repositories/choukai_level_repository.dart';
 import '../data/repositories/choukai_repository.dart';
+import '../data/repositories/dictionary_repository.dart';
 import '../data/repositories/dokkai_level_repository.dart';
 import '../data/repositories/dokkai_repository.dart';
 import '../data/repositories/exam_history_repository.dart';
@@ -98,6 +99,9 @@ final savedWordsRepositoryProvider = Provider<SavedWordsRepository>(
 );
 final kotobaProgressRepositoryProvider = Provider<KotobaProgressRepository>(
   (ref) => KotobaProgressRepository(),
+);
+final dictionaryRepositoryProvider = Provider<DictionaryRepository>(
+  (ref) => DictionaryRepository(),
 );
 final romajiConverterProvider = Provider<RomajiConverter>(
   (ref) => RomajiConverter(ref.watch(kanaRepositoryProvider)),
