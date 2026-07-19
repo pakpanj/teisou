@@ -532,6 +532,18 @@ user.
    handler made async to await the level's passage list before
    picking randomly.
 
+**Update, same day (2026-07-20), phase 3**: another full round across
+all five levels — N5/N4/N3/N2/N1 each went from 20 to 40 passages
+(100 new, 200/~500 = 40% overall now), same escalation pattern and
+pipeline as before, no architecture changes needed. This was
+explicitly framed by the user as ongoing work to continue across
+future sessions/updates alongside other features, not a
+this-session-only push to finish — if picking this back up, the
+per-level workflow (draft passages at that level's grammar/topic
+ceiling → append to that level's `_ENTRIES`/`_TITLES` lists →
+regenerate → re-run cross-checks) is proven and doesn't need
+rethinking, just repeating.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),
