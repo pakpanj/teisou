@@ -365,6 +365,77 @@ renders distinctly from real Kotoba results and that kanji chips in
 `DictionaryWordDetailScreen` correctly resolve/grey-out before treating
 this as fully verified.
 
+**Update (2026-07-20)**: three more proactive batches shipped (this is
+now a standing per-session habit, not something the user needs to ask
+for each time — see `memory/feedback_teisou_auto_dictionary_batches.md`
+outside this repo). Batch 2 (+235, clothing/shopping/animals/colors/
+sports/directions/travel/health), batch 3 (+198, kitchen tools/
+furniture/school subjects/professions/seasons/adverbs/question words/
+greetings/office supplies/city infra/cooking+emotion+communication
+verbs/weather/personality/gestures), batch 4 (+155, numbers/business/
+internet/relationships/more verbs+adjectives/restaurant phrases/
+exclamations/music/government/environment/transportation). **908/
+~10,000 words total now.** Each batch caught and fixed real authoring
+bugs via the file's own uniqueness/field assertions before shipping —
+batch 3 found 6 more kana-only entries with the reading accidentally
+duplicated into the kanji field (same bug class as batch 1's, see
+above) via a targeted `kanji == reading` scan; batch 4 hit 3 genuine
+cross-batch duplicate words (会社員/会議室/楽器, each already authored
+in an earlier batch) caught by `ALL_WORDS`'s own duplicate-key
+assertion and swapped for different words rather than silently
+dropped. Same standing lesson each time: always actually run the
+generator (which executes every assertion) rather than trusting the
+tuples were typed correctly by eye — `python -c "import ast; ...`
+syntax-checking alone does **not** catch either bug class, since both
+are runtime assertion failures, not syntax errors.
+
+## Update (2026-07-20): Kanji stroke animation loops; swipe navigation everywhere
+
+Two UX changes, both session-scoped and quick:
+
+- **`StrokeOrderAnimator`** (`lib/core/widgets/stroke_order_animator.dart`)
+  used to play a kanji's stroke order once and stop on the final
+  frame. It now loops automatically — an `AnimationStatus.completed`
+  listener pauses 700ms on the finished character (more natural for
+  repeated practice than an instant restart), then calls
+  `forward(from: 0)` again, guarded by a `mounted` check and skipped
+  entirely while "show all numbered" static mode is active. Applies
+  uniformly to both the initial autoplay and the replay button, since
+  both just call the same `forward(from: 0)` under the hood.
+- **`SwipeNavigator`** (built this session for the flashcard swipe
+  feature, previously `lib/features/flashcard/widgets/`) moved to
+  `lib/core/widgets/swipe_navigator.dart` now that it's genuinely
+  shared, and is wired into every remaining next/prev "browse" detail
+  screen: `KotobaWordDetailScreen`, `KanjiWordDetailScreen`,
+  `BunpouDetailScreen`, `ParticleDetailScreen`, and
+  `KaiwaDialogueScreen`. Every wiring mirrors that screen's existing
+  `hasPrev`/`hasNext`-gated arrow buttons exactly (swipe and the
+  buttons always agree on what's available) — **except Kaiwa**, which
+  additionally gates swipe on `dialogueComplete` (the same condition
+  that reveals the `_CompletionBar`'s next/prev buttons in the first
+  place), since without that extra gate a horizontal swipe mid-dialogue
+  could let the learner skip past an unanswered user turn — a
+  deliberate design constraint the buttons already enforced that swipe
+  needed to inherit, not an oversight to fix later.
+  **Known untested interaction, worth a physical-device check**:
+  `KanjiWordDetailScreen`'s `StrokeOrderAnimator` embeds a `Slider`
+  (playback speed) inside the same scrollable that's now wrapped in a
+  horizontal-drag-detecting `SwipeNavigator` — both are
+  `HorizontalDragGestureRecognizer`-based, and Flutter's gesture arena
+  doesn't strictly guarantee the Slider always wins pointer capture
+  within its own bounds. In practice nested horizontal-drag widgets
+  usually resolve fine (the more specific/descendant recognizer tends
+  to claim the gesture), but this specific combination hasn't been
+  confirmed on a real device — if the speed slider ever feels
+  unresponsive or fights with page-swiping on `KanjiWordDetailScreen`
+  specifically, this is the first place to look.
+
+Verification: `flutter analyze` clean, `flutter test --concurrency=1`
+(11/11 unchanged), `flutter build apk --debug` succeeded. No
+interactive on-device pass — same standing gap noted above, and
+specifically relevant here given the Slider-vs-swipe risk just
+described.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),
