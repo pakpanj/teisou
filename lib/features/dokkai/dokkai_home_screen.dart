@@ -68,9 +68,17 @@ class _LevelCard extends ConsumerWidget {
       );
       return;
     }
-    final passage = passages[Random().nextInt(passages.length)];
+    // Shuffle the whole level pool and hand it all to DokkaiExamScreen,
+    // which consumes passages in order and stops once it has enough
+    // questions for one session (default 50) — a bigger pool here means
+    // more session variety for free, no logic change needed as content
+    // keeps growing.
+    final shuffled = List.of(passages)..shuffle(Random());
     if (!context.mounted) return;
-    AppNavigator.slideFromRight(context, DokkaiExamScreen(passage: passage));
+    AppNavigator.slideFromRight(
+      context,
+      DokkaiExamScreen(passages: shuffled),
+    );
   }
 
   @override
@@ -127,7 +135,7 @@ class _LevelCard extends ConsumerWidget {
                     const SizedBox(height: 4),
                     if (available)
                       Text(
-                        '${level.passageCount ?? 0} bacaan · acak setiap kali',
+                        '${level.passageCount ?? 0} bacaan · ${DokkaiExamScreen.sessionQuestionTarget} soal acak setiap sesi',
                         style: TextStyle(
                           fontSize: 12,
                           color: AppColors.textNavy.withValues(alpha: 0.6),

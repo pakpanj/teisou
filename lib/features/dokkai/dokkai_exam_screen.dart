@@ -10,13 +10,36 @@ import '../../data/models/simple_exam_result.dart';
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 
-/// Runs one Dokkai passage: the Japanese text stays visible (this is a
-/// reading exercise, unlike Choukai) above each question, via
-/// [McQuizFlow]'s per-question header slot.
-class DokkaiExamScreen extends ConsumerWidget {
-  final DokkaiPassage passage;
+/// One (passage, question) pair — the flattened unit [McQuizFlow] steps
+/// through. Kept as a small typedef record rather than a new model class
+/// since it's purely a display-layer pairing, not persisted data.
+typedef _SessionItem = ({DokkaiPassage passage, DokkaiQuestion question});
 
-  const DokkaiExamScreen({super.key, required this.passage});
+/// Runs one Dokkai session: [sessionQuestionTarget] questions (default 50)
+/// pulled from [passages] in order, grouping every passage's own questions
+/// together so the reading-comprehension context (the Japanese text) stays
+/// visible and coherent while its 2-3 questions are being answered, before
+/// moving on to the next passage. [passages] is expected to already be
+/// shuffled by the caller (`DokkaiHomeScreen`) — this screen just consumes
+/// them in order and stops once it has enough questions, so a bigger
+/// content pool naturally means more session variety without any change
+/// here.
+class DokkaiExamScreen extends ConsumerWidget {
+  final List<DokkaiPassage> passages;
+  static const sessionQuestionTarget = 50;
+
+  const DokkaiExamScreen({super.key, required this.passages});
+
+  List<_SessionItem> get _items {
+    final items = <_SessionItem>[];
+    for (final passage in passages) {
+      for (final question in passage.questions) {
+        items.add((passage: passage, question: question));
+        if (items.length >= sessionQuestionTarget) return items;
+      }
+    }
+    return items;
+  }
 
   Future<void> _onComplete(
     BuildContext context,
@@ -26,8 +49,8 @@ class DokkaiExamScreen extends ConsumerWidget {
   ) async {
     final user = ref.read(appStartupProvider).valueOrNull;
     final result = SimpleExamResult(
-      itemId: passage.id,
-      jlptLevel: passage.jlptLevel.key,
+      itemId: 'dokkai_session_${DateTime.now().millisecondsSinceEpoch}',
+      jlptLevel: passages.first.jlptLevel.key,
       score: score,
       total: total,
       completedAt: DateTime.now(),
@@ -52,17 +75,18 @@ class DokkaiExamScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final items = _items;
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(title: Text(passage.title)),
+      appBar: AppBar(title: Text('Dokkai · ${items.length} Soal')),
       body: McQuizFlow(
-        totalQuestions: passage.questions.length,
+        totalQuestions: items.length,
         headerBuilder: (context, index) => _PassageHeader(
-          passage: passage,
-          prompt: passage.questions[index].prompt,
+          passage: items[index].passage,
+          prompt: items[index].question.prompt,
         ),
-        optionsOf: (index) => passage.questions[index].options,
-        correctIndexOf: (index) => passage.questions[index].correctIndex,
+        optionsOf: (index) => items[index].question.options,
+        correctIndexOf: (index) => items[index].question.correctIndex,
         onComplete: (score, total) => _onComplete(context, ref, score, total),
       ),
     );
@@ -95,7 +119,11 @@ class _PassageHeader extends StatelessWidget {
           ),
           child: Text(
             passage.passageJapanese,
-            style: const TextStyle(fontSize: 16, height: 1.6, color: AppColors.textNavy),
+            style: const TextStyle(
+              fontSize: 16,
+              height: 1.6,
+              color: AppColors.textNavy,
+            ),
           ),
         ),
         const SizedBox(height: 20),
