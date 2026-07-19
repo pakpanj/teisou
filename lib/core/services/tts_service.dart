@@ -62,27 +62,42 @@ class TtsService {
   /// only), picks a distinct-sounding voice if this device has one for
   /// ja-JP; otherwise falls back to the single default voice with a pitch
   /// nudge so male/female lines still sound at least somewhat different.
+  ///
+  /// Every voice/pitch reset below is wrapped in try/catch and always
+  /// falls through to [FlutterTts.speak] regardless of outcome —
+  /// `clearVoice`/`setVoice` aren't universally supported across
+  /// devices/TTS engines, and an unguarded failure here used to abort
+  /// the whole call before `speak()` ever ran, going silent on any
+  /// screen (not just Kaiwa, since every call — gendered or not — went
+  /// through this same reset). When no specific gendered voice is being
+  /// set, `setLanguage('ja-JP')` is explicitly re-asserted every time
+  /// (not just once in [_ensureInitialized]) so a previous call leaving
+  /// the engine on some other default voice/language self-heals on the
+  /// very next call instead of staying wrong for the rest of the app
+  /// session.
   Future<void> speak(String text, {KaiwaGender? gender}) async {
     await _ensureInitialized();
-    await _ensureVoicesResolved();
     await _tts.stop();
 
-    final voice = switch (gender) {
-      KaiwaGender.female => _femaleVoice,
-      KaiwaGender.male => _maleVoice,
-      null => null,
-    };
+    Map<String, String>? voice;
+    if (gender != null) {
+      await _ensureVoicesResolved();
+      voice = gender == KaiwaGender.female ? _femaleVoice : _maleVoice;
+    }
 
-    if (voice != null) {
-      await _tts.clearVoice();
-      await _tts.setVoice(voice);
-      await _tts.setPitch(1.0);
-    } else if (gender == KaiwaGender.male) {
-      await _tts.clearVoice();
-      await _tts.setPitch(0.85);
-    } else {
-      await _tts.clearVoice();
-      await _tts.setPitch(1.0);
+    try {
+      if (voice != null) {
+        await _tts.setVoice(voice);
+        await _tts.setPitch(1.0);
+      } else {
+        await _tts.clearVoice();
+        await _tts.setLanguage('ja-JP');
+        await _tts.setPitch(gender == KaiwaGender.male ? 0.85 : 1.0);
+      }
+    } catch (_) {
+      // Voice/pitch switching failed on this device — fall through and
+      // still speak with whatever state the engine is already in,
+      // rather than dropping audio entirely.
     }
 
     await _tts.speak(text);
