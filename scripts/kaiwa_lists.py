@@ -19,6 +19,52 @@
 # PLANNED_CATEGORIES works for themes, since a level with zero themes is
 # already unambiguous (LEVEL_META entry present, available=False).
 
+# Gender inferred from an NPC `speaker` label at generation time — NOT by
+# hand-editing the ~7468 existing npc-line tuples. Covers proper names we're
+# genuinely confident about (~70 of 203 unique labels) plus Indonesian
+# honorific prefixes/kinship terms (Bu/Ibu/Nenek -> female, Pak/Ayah/Kakek
+# -> male). Two categories are deliberately left OUT (return None, meaning
+# "use the app's single default TTS voice", exactly like today):
+#   1. Role-only labels ("Teman", "Dokter", "Petugas Bank", ...) — by far
+#      the majority of line volume (Teman alone is 4645 of 7468 lines).
+#      Indonesian has no grammatical gender, so these carry no signal at
+#      all; inventing one would be guessing, not inferring.
+#   2. Names that are genuinely unisex/ambiguous in Japanese or Indonesian
+#      usage (Yuki, Sora, Haru, Dian, Made, Tanaka-as-bare-surname, Kakak,
+#      Adik, Sensei, Kakek/Nenek used together, ...) — left unmapped rather
+#      than guessing wrong roughly half the time.
+SPEAKER_GENDER = {
+    # Japanese given names
+    "Kenji": "male", "Haruto": "male", "Riku": "male", "Taro": "male",
+    "Yuta": "male", "Kenta": "male", "Ken": "male", "Hiro": "male",
+    "Sakura": "female", "Aiko": "female", "Mei": "female", "Mika": "female",
+    # Indonesian given names
+    "Sari": "female", "Dewi": "female", "Sinta": "female", "Nina": "female",
+    "Lestari": "female", "Rani": "female", "Mira": "female", "Wati": "female",
+    "Lina": "female", "Bella": "female", "Lisa": "female", "Wulan": "female",
+    "Sisi": "female", "Wina": "female", "Lala": "female", "Yanti": "female",
+    "Fina": "female", "Nia": "female", "Putri": "female", "Ayu": "female",
+    "Nadia": "female", "Rina": "female",
+    "Joko": "male", "Bram": "male", "Yudi": "male", "Farid": "male",
+    "Rio": "male", "Ilham": "male", "Budi": "male", "Fajar": "male",
+    "Reza": "male", "Bayu": "male", "Bagas": "male", "Galih": "male",
+    "Vino": "male", "Dimas": "male", "Andi": "male", "Doni": "male",
+    "Eko": "male",
+    # Kinship / honorific standalone terms
+    "Ayah": "male", "Kakek": "male", "Ibu": "female", "Nenek": "female",
+}
+
+
+def infer_gender(speaker: str) -> str | None:
+    if speaker in SPEAKER_GENDER:
+        return SPEAKER_GENDER[speaker]
+    if speaker.startswith("Bu ") or speaker.startswith("Ibu "):
+        return "female"
+    if speaker.startswith("Pak ") or speaker.startswith("Ayah "):
+        return "male"
+    return None
+
+
 PERKENALAN_TITLES = [
     "Berkenalan dengan Teman Baru",
     "Menyapa di Pagi Hari",

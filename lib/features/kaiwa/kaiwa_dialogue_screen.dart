@@ -270,7 +270,7 @@ class _LineBubble extends StatelessWidget {
                   if (npc != null)
                     Padding(
                       padding: const EdgeInsets.all(6),
-                      child: _SpeakButton(text: npc.japanese),
+                      child: _SpeakButton(text: npc.japanese, gender: line.gender),
                     ),
                 ],
               ),
@@ -388,8 +388,9 @@ class _LineBubble extends StatelessWidget {
 
 class _SpeakButton extends ConsumerWidget {
   final String text;
+  final KaiwaGender? gender;
 
-  const _SpeakButton({required this.text});
+  const _SpeakButton({required this.text, this.gender});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -399,7 +400,7 @@ class _SpeakButton extends ConsumerWidget {
       elevation: 2,
       child: InkWell(
         customBorder: const CircleBorder(),
-        onTap: () => ref.read(ttsServiceProvider).speak(text),
+        onTap: () => ref.read(ttsServiceProvider).speak(text, gender: gender),
         child: const Padding(
           padding: EdgeInsets.all(8),
           child: Icon(Icons.volume_up, size: 20, color: AppColors.secondaryBlue),

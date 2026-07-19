@@ -1,6 +1,14 @@
 import 'kaiwa_answer_option.dart';
 import 'sentence_example.dart';
 
+/// Speaker gender, inferred at content-generation time from the `speaker`
+/// label (proper names + Bu/Pak-style honorifics only — see
+/// scripts/kaiwa_lists.py's `infer_gender`). Null for the majority of
+/// lines (generic role speakers like "Teman"/"Dokter" carry no gender
+/// signal in Indonesian) — those fall back to the app's single default
+/// TTS voice, same as before this existed.
+enum KaiwaGender { male, female }
+
 /// One turn in a [KaiwaEntry] dialogue. Either a scripted NPC line
 /// ([npcLine] + [imagePath] populated, [isUserTurn] false — rendered as
 /// just an image and a speak button, no visible text) or a learner turn
@@ -12,6 +20,7 @@ import 'sentence_example.dart';
 class KaiwaLine {
   final String id;
   final String speaker;
+  final KaiwaGender? gender;
   final bool isUserTurn;
   final SentenceExample? npcLine;
 
@@ -26,6 +35,7 @@ class KaiwaLine {
   KaiwaLine({
     required this.id,
     required this.speaker,
+    this.gender,
     required this.isUserTurn,
     this.npcLine,
     this.imagePath,
@@ -35,6 +45,11 @@ class KaiwaLine {
   factory KaiwaLine.fromJson(Map<String, dynamic> json) => KaiwaLine(
         id: json['id'] as String,
         speaker: json['speaker'] as String,
+        gender: switch (json['gender'] as String?) {
+          'male' => KaiwaGender.male,
+          'female' => KaiwaGender.female,
+          _ => null,
+        },
         isUserTurn: json['isUserTurn'] as bool? ?? false,
         npcLine: json['npcLine'] == null
             ? null

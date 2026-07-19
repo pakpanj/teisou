@@ -33,6 +33,7 @@ from kaiwa_lists import (
     CATEGORY_META,
     LEVEL_META,
     PLANNED_CATEGORIES,
+    infer_gender,
 )
 
 PERKENALAN_ENTRIES = [
@@ -66911,6 +66912,7 @@ def build_line(raw, category, entry_id):
         return {
             "id": suffix,
             "speaker": speaker,
+            "gender": infer_gender(speaker),
             "isUserTurn": False,
             "npcLine": {
                 "japanese": japanese,
