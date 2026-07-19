@@ -9,6 +9,7 @@ import '../../data/models/kana_progress.dart';
 import '../../data/models/kana_type.dart';
 import '../../data/models/kana_type_progress.dart';
 import 'widgets/flip_card.dart';
+import 'widgets/swipe_navigator.dart';
 
 class FlashcardScreen extends ConsumerStatefulWidget {
   final KanaType type;
@@ -125,19 +126,25 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
                 ),
                 child: AspectRatio(
                   aspectRatio: 400 / 700,
-                  child: FlipCard(
-                    key: ValueKey(kana.id),
-                    onFlipped: (isFront) =>
-                        _handleFlip(isFront, kana, currentProgress),
+                  child: SwipeNavigator(
+                    onSwipeLeft: index < list.length - 1
+                        ? () => _goNext(list.length)
+                        : null,
+                    onSwipeRight: index > 0 ? _goPrev : null,
+                    child: FlipCard(
+                      key: ValueKey(kana.id),
+                      onFlipped: (isFront) =>
+                          _handleFlip(isFront, kana, currentProgress),
 
-                    front: _CardFace(
-                      background: cardBackground,
-                      child: _FrontContent(kana: kana, accent: accent),
-                    ),
+                      front: _CardFace(
+                        background: cardBackground,
+                        child: _FrontContent(kana: kana, accent: accent),
+                      ),
 
-                    back: _CardFace(
-                      background: cardBackground,
-                      child: _BackContent(kana: kana, accent: accent),
+                      back: _CardFace(
+                        background: cardBackground,
+                        child: _BackContent(kana: kana, accent: accent),
+                      ),
                     ),
                   ),
                 ),
