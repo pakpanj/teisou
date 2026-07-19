@@ -508,6 +508,30 @@ following the escalation pattern above, append to that level's
 regenerate, and re-run the same cross-checks — the pipeline needs no
 further changes to keep scaling.
 
+**Update, same day (2026-07-20)**: two follow-up decisions from the
+user.
+1. **Choukai deferred to "v2"** — the user explicitly decided Choukai
+   (zero content, architecture-only, see the Ujian expansion section
+   above) is out of scope for now and will be picked up in a future
+   v2 update, so that Dokkai can be brought to maturity first. No code
+   change from this — Choukai was already architecture-only with
+   nothing scheduled — just recorded here so a future session doesn't
+   assume Choukai content is next in line without checking first.
+2. **Dokkai UX changed: no more passage-list screen.** Per explicit
+   product decision, `DokkaiLevelScreen` (the passage-title list
+   between the level picker and the exam) is now **deleted outright**
+   — tapping a level card in `DokkaiHomeScreen` picks one random
+   passage from that level's pool (`dokkaiByLevelProvider` +
+   `dart:math Random`) and opens `DokkaiExamScreen` directly. The
+   reasoning: Ujian is meant to feel like "take a quiz now", not
+   "browse a catalog of passages" — the level card even shows "N
+   bacaan · acak setiap kali" (N passages · random each time) instead
+   of a passage count you'd tap into. `DokkaiExamScreen` itself is
+   unchanged (still just takes one `DokkaiPassage`), so this was a
+   small, contained change — one screen deleted, one screen's tap
+   handler made async to await the level's passage list before
+   picking randomly.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),
