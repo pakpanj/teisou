@@ -453,6 +453,54 @@ interactive on-device pass — same standing gap noted above, and
 specifically relevant here given the Slider-vs-swipe risk just
 described.
 
+## Update (2026-07-20): Dokkai content rollout begins — 3 → 60 passages, all 5 levels seeded
+
+User asked to clear out the Ujian → Dokkai backlog specifically,
+eventually targeting **~100 passages per JLPT level (~500 total)** —
+explicitly acknowledged as a multi-session effort, same shape as
+Kaiwa's N4-N1 rollout. Two phases landed this session:
+
+1. **N5 phase 1**: 3 → 20 passages (17 new — notes, announcements,
+   schedules, letters, station/library/hospital/store notices, diary
+   entries), same locked-list + generator pipeline the original 3
+   used.
+2. **N4/N3/N2/N1 initial seed**: every level went from **zero** to 10
+   passages, per an explicit user call to prioritize breadth (some
+   content everywhere) over depth-first on N5 alone — deepening every
+   level toward 100 continues in future sessions, "bareng dengan
+   fitur-fitur lainnya" (alongside other features), not as its own
+   dedicated marathon. Grammar/topic complexity escalates by level
+   exactly like Kaiwa's N5→N1 progression did: N4 uses potential
+   form/conditionals/giving-receiving verbs over everyday-life topics;
+   N3 adds ~ことになる/~わけ/causative-passive over more abstract
+   newspaper-style and workplace topics; N2 adds ~にもかかわらず/
+   ~をきっかけに/keigo touches over business/editorial/scientific
+   topics; N1 adds ~ずにはいられない/~にたえない/~ゆえに/heavy keigo over
+   literary and introspective topics (loss, impermanence,
+   self-forgiveness) — the same "topic depth escalates independently
+   of grammar difficulty, register stays readable" philosophy already
+   documented for Kaiwa's N1 dialogues above.
+
+**Architecture change worth knowing if touching this again**:
+`generate_dokkai_seed.py`'s `main()` used to hardcode building only
+`N5_ENTRIES` — it's now generalized to loop over a `LEVEL_ENTRIES` map
+(`{level_key: (ENTRIES_list, TITLES_list)}`) covering all 5 levels, so
+adding a future level's entries is just adding to that map, not
+touching `main()` again. `_levels.json`'s `passageCount` is now
+computed per level instead of hardcoded to `None` for everyone but N5.
+
+**Current state**: 60/~500 total (12%) — N5=20, N4=10, N3=10, N2=10,
+N1=10. All cross-checked (unique ids across the whole file, unique
+titles, every question has ≥2 options with a valid `correctIndex`,
+zero Cyrillic contamination), `flutter analyze`/`test --concurrency=1`
+clean. **No interactive on-device pass done** for any of this
+content — same standing gap as everywhere else in this file. If
+continuing this rollout: pick a level, draft more passages at that
+level's grammar/topic ceiling following the escalation pattern above,
+append to that level's `_ENTRIES` list and the matching `_TITLES` list
+in `dokkai_lists.py`, regenerate, and re-run the same cross-checks —
+the pipeline needs no further changes to keep scaling.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),
