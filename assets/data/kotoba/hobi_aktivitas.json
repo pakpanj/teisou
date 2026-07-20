@@ -288,6 +288,102 @@
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kyanpu.png"
   },
   {
+    "id": "kotoba_hobi_aktivitas_sentaku",
+    "word": "せんたく",
+    "kanji": "洗濯",
+    "reading": "せんたく",
+    "romaji": "sentaku",
+    "meaning": "mencuci baju",
+    "jlptLevel": "N5",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "洗濯 (sentaku)",
+      "formal": "洗濯 (sentaku)",
+      "keigo": "洗濯 (sentaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "洗濯をします。",
+        "romaji": "Sentaku o shimasu.",
+        "translation": "Saya mencuci baju."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sentaku.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_souji",
+    "word": "そうじ",
+    "kanji": "掃除",
+    "reading": "そうじ",
+    "romaji": "souji",
+    "meaning": "membersihkan/bersih-bersih",
+    "jlptLevel": "N5",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "掃除 (souji)",
+      "formal": "掃除 (souji)",
+      "keigo": "掃除 (souji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "部屋を掃除します。",
+        "romaji": "Heya o souji shimasu.",
+        "translation": "Saya membersihkan kamar."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_souji.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_kaimono",
+    "word": "かいもの",
+    "kanji": "買物",
+    "reading": "かいもの",
+    "romaji": "kaimono",
+    "meaning": "berbelanja",
+    "jlptLevel": "N5",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "買物 (kaimono)",
+      "formal": "買物 (kaimono)",
+      "keigo": "買物 (kaimono) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "買物に行きます。",
+        "romaji": "Kaimono ni ikimasu.",
+        "translation": "Saya pergi berbelanja."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kaimono.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_sanpo",
+    "word": "さんぽ",
+    "kanji": "散歩",
+    "reading": "さんぽ",
+    "romaji": "sanpo",
+    "meaning": "jalan-jalan santai",
+    "jlptLevel": "N5",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "散歩 (sanpo)",
+      "formal": "散歩 (sanpo)",
+      "keigo": "散歩 (sanpo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "公園を散歩します。",
+        "romaji": "Kouen o sanpo shimasu.",
+        "translation": "Saya jalan-jalan santai di taman."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sanpo.png"
+  },
+  {
     "id": "kotoba_hobi_aktivitas_bottou",
     "word": "ぼっとう",
     "kanji": "没頭",

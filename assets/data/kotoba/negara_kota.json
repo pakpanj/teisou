@@ -262,5 +262,77 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kyouto.png"
+  },
+  {
+    "id": "kotoba_negara_kota_gaikoku",
+    "word": "がいこく",
+    "kanji": "外国",
+    "reading": "がいこく",
+    "romaji": "gaikoku",
+    "meaning": "negara asing/luar negeri",
+    "jlptLevel": "N5",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "外国 (gaikoku)",
+      "formal": "外国 (gaikoku)",
+      "keigo": "外国 (gaikoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "外国に住みたいです。",
+        "romaji": "Gaikoku ni sumitai desu.",
+        "translation": "Saya ingin tinggal di luar negeri."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_gaikoku.png"
+  },
+  {
+    "id": "kotoba_negara_kota_gaikokujin",
+    "word": "がいこくじん",
+    "kanji": "外国人",
+    "reading": "がいこくじん",
+    "romaji": "gaikokujin",
+    "meaning": "orang asing/warga negara asing",
+    "jlptLevel": "N5",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "外国人 (gaikokujin)",
+      "formal": "外国人 (gaikokujin)",
+      "keigo": "外国人 (gaikokujin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この町には外国人が多いです。",
+        "romaji": "Kono machi ni wa gaikokujin ga ooi desu.",
+        "translation": "Di kota ini banyak orang asing."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_gaikokujin.png"
+  },
+  {
+    "id": "kotoba_negara_kota_chuugokugo",
+    "word": "ちゅうごくご",
+    "kanji": "中国語",
+    "reading": "ちゅうごくご",
+    "romaji": "chuugokugo",
+    "meaning": "bahasa Mandarin",
+    "jlptLevel": "N5",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "中国語 (chuugokugo)",
+      "formal": "中国語 (chuugokugo)",
+      "keigo": "中国語 (chuugokugo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "中国語を勉強しています。",
+        "romaji": "Chuugokugo o benkyou shite imasu.",
+        "translation": "Saya sedang belajar bahasa Mandarin."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_chuugokugo.png"
   }
 ]

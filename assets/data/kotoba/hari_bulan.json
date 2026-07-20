@@ -526,5 +526,437 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_juunigatsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_ototoi",
+    "word": "おととい",
+    "kanji": "一昨日",
+    "reading": "おととい",
+    "romaji": "ototoi",
+    "meaning": "kemarin lusa",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "一昨日 (ototoi)",
+      "formal": "一昨日 (ototoi)",
+      "keigo": "一昨日 (ototoi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "一昨日、友達に会いました。",
+        "romaji": "Ototoi, tomodachi ni aimashita.",
+        "translation": "Kemarin lusa saya bertemu teman."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ototoi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_asatte",
+    "word": "あさって",
+    "kanji": "明後日",
+    "reading": "あさって",
+    "romaji": "asatte",
+    "meaning": "lusa",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "明後日 (asatte)",
+      "formal": "明後日 (asatte)",
+      "keigo": "明後日 (asatte) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "明後日、東京に行きます。",
+        "romaji": "Asatte, Toukyou ni ikimasu.",
+        "translation": "Lusa saya pergi ke Tokyo."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_asatte.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_konshuu",
+    "word": "こんしゅう",
+    "kanji": "今週",
+    "reading": "こんしゅう",
+    "romaji": "konshuu",
+    "meaning": "minggu ini",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "今週 (konshuu)",
+      "formal": "今週 (konshuu)",
+      "keigo": "今週 (konshuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今週は忙しいです。",
+        "romaji": "Konshuu wa isogashii desu.",
+        "translation": "Minggu ini sibuk."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_konshuu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kongetsu",
+    "word": "こんげつ",
+    "kanji": "今月",
+    "reading": "こんげつ",
+    "romaji": "kongetsu",
+    "meaning": "bulan ini",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "今月 (kongetsu)",
+      "formal": "今月 (kongetsu)",
+      "keigo": "今月 (kongetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今月、誕生日です。",
+        "romaji": "Kongetsu, tanjoubi desu.",
+        "translation": "Bulan ini ulang tahun saya."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kongetsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kotoshi",
+    "word": "ことし",
+    "kanji": "今年",
+    "reading": "ことし",
+    "romaji": "kotoshi",
+    "meaning": "tahun ini",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "今年 (kotoshi)",
+      "formal": "今年 (kotoshi)",
+      "keigo": "今年 (kotoshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今年、日本へ行きます。",
+        "romaji": "Kotoshi, Nihon e ikimasu.",
+        "translation": "Tahun ini saya pergi ke Jepang."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kotoshi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_raishuu",
+    "word": "らいしゅう",
+    "kanji": "来週",
+    "reading": "らいしゅう",
+    "romaji": "raishuu",
+    "meaning": "minggu depan",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "来週 (raishuu)",
+      "formal": "来週 (raishuu)",
+      "keigo": "来週 (raishuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来週、テストがあります。",
+        "romaji": "Raishuu, tesuto ga arimasu.",
+        "translation": "Minggu depan ada tes."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_raishuu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_raigetsu",
+    "word": "らいげつ",
+    "kanji": "来月",
+    "reading": "らいげつ",
+    "romaji": "raigetsu",
+    "meaning": "bulan depan",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "来月 (raigetsu)",
+      "formal": "来月 (raigetsu)",
+      "keigo": "来月 (raigetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来月、引っ越しします。",
+        "romaji": "Raigetsu, hikkoshi shimasu.",
+        "translation": "Bulan depan saya pindah rumah."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_raigetsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_rainen",
+    "word": "らいねん",
+    "kanji": "来年",
+    "reading": "らいねん",
+    "romaji": "rainen",
+    "meaning": "tahun depan",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "来年 (rainen)",
+      "formal": "来年 (rainen)",
+      "keigo": "来年 (rainen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来年、大学に入ります。",
+        "romaji": "Rainen, daigaku ni hairimasu.",
+        "translation": "Tahun depan saya masuk universitas."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_rainen.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_senshuu",
+    "word": "せんしゅう",
+    "kanji": "先週",
+    "reading": "せんしゅう",
+    "romaji": "senshuu",
+    "meaning": "minggu lalu",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "先週 (senshuu)",
+      "formal": "先週 (senshuu)",
+      "keigo": "先週 (senshuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "先週、映画を見ました。",
+        "romaji": "Senshuu, eiga o mimashita.",
+        "translation": "Minggu lalu saya menonton film."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_senshuu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_sengetsu",
+    "word": "せんげつ",
+    "kanji": "先月",
+    "reading": "せんげつ",
+    "romaji": "sengetsu",
+    "meaning": "bulan lalu",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "先月 (sengetsu)",
+      "formal": "先月 (sengetsu)",
+      "keigo": "先月 (sengetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "先月、大阪に行きました。",
+        "romaji": "Sengetsu, Oosaka ni ikimashita.",
+        "translation": "Bulan lalu saya pergi ke Osaka."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_sengetsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kyonen",
+    "word": "きょねん",
+    "kanji": "去年",
+    "reading": "きょねん",
+    "romaji": "kyonen",
+    "meaning": "tahun lalu",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "去年 (kyonen)",
+      "formal": "去年 (kyonen)",
+      "keigo": "去年 (kyonen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "去年、結婚しました。",
+        "romaji": "Kyonen, kekkon shimashita.",
+        "translation": "Tahun lalu saya menikah."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kyonen.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_gozen",
+    "word": "ごぜん",
+    "kanji": "午前",
+    "reading": "ごぜん",
+    "romaji": "gozen",
+    "meaning": "pagi (sebelum siang)",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "午前 (gozen)",
+      "formal": "午前 (gozen)",
+      "keigo": "午前 (gozen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "午前九時に会議があります。",
+        "romaji": "Gozen kuji ni kaigi ga arimasu.",
+        "translation": "Ada rapat jam 9 pagi."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_gozen.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_gogo",
+    "word": "ごご",
+    "kanji": "午後",
+    "reading": "ごご",
+    "romaji": "gogo",
+    "meaning": "siang/sore (setelah siang)",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "午後 (gogo)",
+      "formal": "午後 (gogo)",
+      "keigo": "午後 (gogo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "午後三時に会いましょう。",
+        "romaji": "Gogo sanji ni aimashou.",
+        "translation": "Mari bertemu jam 3 sore."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_gogo.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_mainichi",
+    "word": "まいにち",
+    "kanji": "毎日",
+    "reading": "まいにち",
+    "romaji": "mainichi",
+    "meaning": "setiap hari",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "毎日 (mainichi)",
+      "formal": "毎日 (mainichi)",
+      "keigo": "毎日 (mainichi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎日、日本語を勉強します。",
+        "romaji": "Mainichi, nihongo o benkyou shimasu.",
+        "translation": "Setiap hari saya belajar bahasa Jepang."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_mainichi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_maishuu",
+    "word": "まいしゅう",
+    "kanji": "毎週",
+    "reading": "まいしゅう",
+    "romaji": "maishuu",
+    "meaning": "setiap minggu",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "毎週 (maishuu)",
+      "formal": "毎週 (maishuu)",
+      "keigo": "毎週 (maishuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎週、公園を走ります。",
+        "romaji": "Maishuu, kouen o hashirimasu.",
+        "translation": "Setiap minggu saya lari di taman."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_maishuu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_maitsuki",
+    "word": "まいつき",
+    "kanji": "毎月",
+    "reading": "まいつき",
+    "romaji": "maitsuki",
+    "meaning": "setiap bulan",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "毎月 (maitsuki)",
+      "formal": "毎月 (maitsuki)",
+      "keigo": "毎月 (maitsuki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎月、本を一冊買います。",
+        "romaji": "Maitsuki, hon o issatsu kaimasu.",
+        "translation": "Setiap bulan saya membeli satu buku."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_maitsuki.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_maitoshi",
+    "word": "まいとし",
+    "kanji": "毎年",
+    "reading": "まいとし",
+    "romaji": "maitoshi",
+    "meaning": "setiap tahun",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "毎年 (maitoshi)",
+      "formal": "毎年 (maitoshi)",
+      "keigo": "毎年 (maitoshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎年、家族で旅行します。",
+        "romaji": "Maitoshi, kazoku de ryokou shimasu.",
+        "translation": "Setiap tahun saya bepergian bersama keluarga."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_maitoshi.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_jikan",
+    "word": "じかん",
+    "kanji": "時間",
+    "reading": "じかん",
+    "romaji": "jikan",
+    "meaning": "waktu/jam",
+    "jlptLevel": "N5",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "時間 (jikan)",
+      "formal": "時間 (jikan)",
+      "keigo": "時間 (jikan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "時間がありません。",
+        "romaji": "Jikan ga arimasen.",
+        "translation": "Saya tidak punya waktu."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jikan.png"
   }
 ]

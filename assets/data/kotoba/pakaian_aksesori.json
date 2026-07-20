@@ -286,5 +286,77 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kimono.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_saifu",
+    "word": "さいふ",
+    "kanji": "財布",
+    "reading": "さいふ",
+    "romaji": "saifu",
+    "meaning": "dompet",
+    "jlptLevel": "N5",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "財布 (saifu)",
+      "formal": "財布 (saifu)",
+      "keigo": "財布 (saifu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "財布を忘れました。",
+        "romaji": "Saifu o wasuremashita.",
+        "translation": "Saya lupa membawa dompet."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_saifu.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_kutsushita",
+    "word": "くつした",
+    "kanji": "靴下",
+    "reading": "くつした",
+    "romaji": "kutsushita",
+    "meaning": "kaus kaki",
+    "jlptLevel": "N5",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "靴下 (kutsushita)",
+      "formal": "靴下 (kutsushita)",
+      "keigo": "靴下 (kutsushita) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "靴下を履きます。",
+        "romaji": "Kutsushita o hakimasu.",
+        "translation": "Saya memakai kaus kaki."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kutsushita.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_youfuku",
+    "word": "ようふく",
+    "kanji": "洋服",
+    "reading": "ようふく",
+    "romaji": "youfuku",
+    "meaning": "baju (bergaya barat)",
+    "jlptLevel": "N5",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "洋服 (youfuku)",
+      "formal": "洋服 (youfuku)",
+      "keigo": "洋服 (youfuku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "洋服を買います。",
+        "romaji": "Youfuku o kaimasu.",
+        "translation": "Saya membeli baju."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_youfuku.png"
   }
 ]

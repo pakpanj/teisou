@@ -108,6 +108,70 @@ CATEGORIES = {
         ("juunigatsu", "十二月", "じゅうにがつ", "juunigatsu", "bulan Desember", "N5", "noun", "十二月", "juunigatsu", "十二月", "juunigatsu", [
             ("十二月にクリスマスがあります。", "Juunigatsu ni kurisumasu ga arimasu.", "Ada Natal di bulan Desember."),
         ]),
+        # Addition prompted by the user asking why the Kombinasi Kanji
+        # exam's N5 compound-word pool was stuck at 53 while N4-N1 kept
+        # growing — the answer was that recent batches only added
+        # N2/N1-leaning konsep_umum vocabulary, never new N5 words. These
+        # 18 are genuine everyday N5 time expressions (relative day/week/
+        # month/year words + morning/afternoon + every-day/week/month/
+        # year) that are all real 2-3 pure-kanji compounds, thematically
+        # exact for this category (relative-time siblings of 今日/明日/
+        # 昨日 already above), and were absent from the whole 782-word
+        # dataset before this addition (checked before authoring).
+        ("ototoi", "一昨日", "おととい", "ototoi", "kemarin lusa", "N5", "noun", "一昨日", "ototoi", "一昨日", "ototoi", [
+            ("一昨日、友達に会いました。", "Ototoi, tomodachi ni aimashita.", "Kemarin lusa saya bertemu teman."),
+        ]),
+        ("asatte", "明後日", "あさって", "asatte", "lusa", "N5", "noun", "明後日", "asatte", "明後日", "asatte", [
+            ("明後日、東京に行きます。", "Asatte, Toukyou ni ikimasu.", "Lusa saya pergi ke Tokyo."),
+        ]),
+        ("konshuu", "今週", "こんしゅう", "konshuu", "minggu ini", "N5", "noun", "今週", "konshuu", "今週", "konshuu", [
+            ("今週は忙しいです。", "Konshuu wa isogashii desu.", "Minggu ini sibuk."),
+        ]),
+        ("kongetsu", "今月", "こんげつ", "kongetsu", "bulan ini", "N5", "noun", "今月", "kongetsu", "今月", "kongetsu", [
+            ("今月、誕生日です。", "Kongetsu, tanjoubi desu.", "Bulan ini ulang tahun saya."),
+        ]),
+        ("kotoshi", "今年", "ことし", "kotoshi", "tahun ini", "N5", "noun", "今年", "kotoshi", "今年", "kotoshi", [
+            ("今年、日本へ行きます。", "Kotoshi, Nihon e ikimasu.", "Tahun ini saya pergi ke Jepang."),
+        ]),
+        ("raishuu", "来週", "らいしゅう", "raishuu", "minggu depan", "N5", "noun", "来週", "raishuu", "来週", "raishuu", [
+            ("来週、テストがあります。", "Raishuu, tesuto ga arimasu.", "Minggu depan ada tes."),
+        ]),
+        ("raigetsu", "来月", "らいげつ", "raigetsu", "bulan depan", "N5", "noun", "来月", "raigetsu", "来月", "raigetsu", [
+            ("来月、引っ越しします。", "Raigetsu, hikkoshi shimasu.", "Bulan depan saya pindah rumah."),
+        ]),
+        ("rainen", "来年", "らいねん", "rainen", "tahun depan", "N5", "noun", "来年", "rainen", "来年", "rainen", [
+            ("来年、大学に入ります。", "Rainen, daigaku ni hairimasu.", "Tahun depan saya masuk universitas."),
+        ]),
+        ("senshuu", "先週", "せんしゅう", "senshuu", "minggu lalu", "N5", "noun", "先週", "senshuu", "先週", "senshuu", [
+            ("先週、映画を見ました。", "Senshuu, eiga o mimashita.", "Minggu lalu saya menonton film."),
+        ]),
+        ("sengetsu", "先月", "せんげつ", "sengetsu", "bulan lalu", "N5", "noun", "先月", "sengetsu", "先月", "sengetsu", [
+            ("先月、大阪に行きました。", "Sengetsu, Oosaka ni ikimashita.", "Bulan lalu saya pergi ke Osaka."),
+        ]),
+        ("kyonen", "去年", "きょねん", "kyonen", "tahun lalu", "N5", "noun", "去年", "kyonen", "去年", "kyonen", [
+            ("去年、結婚しました。", "Kyonen, kekkon shimashita.", "Tahun lalu saya menikah."),
+        ]),
+        ("gozen", "午前", "ごぜん", "gozen", "pagi (sebelum siang)", "N5", "noun", "午前", "gozen", "午前", "gozen", [
+            ("午前九時に会議があります。", "Gozen kuji ni kaigi ga arimasu.", "Ada rapat jam 9 pagi."),
+        ]),
+        ("gogo", "午後", "ごご", "gogo", "siang/sore (setelah siang)", "N5", "noun", "午後", "gogo", "午後", "gogo", [
+            ("午後三時に会いましょう。", "Gogo sanji ni aimashou.", "Mari bertemu jam 3 sore."),
+        ]),
+        ("mainichi", "毎日", "まいにち", "mainichi", "setiap hari", "N5", "noun", "毎日", "mainichi", "毎日", "mainichi", [
+            ("毎日、日本語を勉強します。", "Mainichi, nihongo o benkyou shimasu.", "Setiap hari saya belajar bahasa Jepang."),
+        ]),
+        ("maishuu", "毎週", "まいしゅう", "maishuu", "setiap minggu", "N5", "noun", "毎週", "maishuu", "毎週", "maishuu", [
+            ("毎週、公園を走ります。", "Maishuu, kouen o hashirimasu.", "Setiap minggu saya lari di taman."),
+        ]),
+        ("maitsuki", "毎月", "まいつき", "maitsuki", "setiap bulan", "N5", "noun", "毎月", "maitsuki", "毎月", "maitsuki", [
+            ("毎月、本を一冊買います。", "Maitsuki, hon o issatsu kaimasu.", "Setiap bulan saya membeli satu buku."),
+        ]),
+        ("maitoshi", "毎年", "まいとし", "maitoshi", "setiap tahun", "N5", "noun", "毎年", "maitoshi", "毎年", "maitoshi", [
+            ("毎年、家族で旅行します。", "Maitoshi, kazoku de ryokou shimasu.", "Setiap tahun saya bepergian bersama keluarga."),
+        ]),
+        ("jikan", "時間", "じかん", "jikan", "waktu/jam", "N5", "noun", "時間", "jikan", "時間", "jikan", [
+            ("時間がありません。", "Jikan ga arimasen.", "Saya tidak punya waktu."),
+        ]),
     ],
     "musim": [
         ("haru", "春", "はる", "haru", "musim semi", "N5", "noun", "春", "haru", "春", "haru", [

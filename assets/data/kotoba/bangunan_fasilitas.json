@@ -358,5 +358,197 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ritchi.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kyoushitsu",
+    "word": "きょうしつ",
+    "kanji": "教室",
+    "reading": "きょうしつ",
+    "romaji": "kyoushitsu",
+    "meaning": "ruang kelas",
+    "jlptLevel": "N5",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "教室 (kyoushitsu)",
+      "formal": "教室 (kyoushitsu)",
+      "keigo": "教室 (kyoushitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "教室で勉強します。",
+        "romaji": "Kyoushitsu de benkyou shimasu.",
+        "translation": "Saya belajar di ruang kelas."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kyoushitsu.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_ryokan",
+    "word": "りょかん",
+    "kanji": "旅館",
+    "reading": "りょかん",
+    "romaji": "ryokan",
+    "meaning": "penginapan tradisional Jepang",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "旅館 (ryokan)",
+      "formal": "旅館 (ryokan)",
+      "keigo": "旅館 (ryokan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "旅館に泊まります。",
+        "romaji": "Ryokan ni tomarimasu.",
+        "translation": "Saya menginap di penginapan tradisional."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ryokan.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_ekimae",
+    "word": "えきまえ",
+    "kanji": "駅前",
+    "reading": "えきまえ",
+    "romaji": "ekimae",
+    "meaning": "depan stasiun",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "駅前 (ekimae)",
+      "formal": "駅前 (ekimae)",
+      "keigo": "駅前 (ekimae) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "駅前で待ち合わせします。",
+        "romaji": "Ekimae de machiawase shimasu.",
+        "translation": "Kami janjian bertemu di depan stasiun."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ekimae.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kouban",
+    "word": "こうばん",
+    "kanji": "交番",
+    "reading": "こうばん",
+    "romaji": "kouban",
+    "meaning": "pos polisi",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "交番 (kouban)",
+      "formal": "交番 (kouban)",
+      "keigo": "交番 (kouban) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "交番で道を聞きます。",
+        "romaji": "Kouban de michi o kikimasu.",
+        "translation": "Saya bertanya arah di pos polisi."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouban.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_doubutsuen",
+    "word": "どうぶつえん",
+    "kanji": "動物園",
+    "reading": "どうぶつえん",
+    "romaji": "doubutsuen",
+    "meaning": "kebun binatang",
+    "jlptLevel": "N5",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "動物園 (doubutsuen)",
+      "formal": "動物園 (doubutsuen)",
+      "keigo": "動物園 (doubutsuen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "動物園に行きます。",
+        "romaji": "Doubutsuen ni ikimasu.",
+        "translation": "Saya pergi ke kebun binatang."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_doubutsuen.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_bijutsukan",
+    "word": "びじゅつかん",
+    "kanji": "美術館",
+    "reading": "びじゅつかん",
+    "romaji": "bijutsukan",
+    "meaning": "galeri seni",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "美術館 (bijutsukan)",
+      "formal": "美術館 (bijutsukan)",
+      "keigo": "美術館 (bijutsukan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "美術館で絵を見ます。",
+        "romaji": "Bijutsukan de e o mimasu.",
+        "translation": "Saya melihat lukisan di galeri seni."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_bijutsukan.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_hakubutsukan",
+    "word": "はくぶつかん",
+    "kanji": "博物館",
+    "reading": "はくぶつかん",
+    "romaji": "hakubutsukan",
+    "meaning": "museum",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "博物館 (hakubutsukan)",
+      "formal": "博物館 (hakubutsukan)",
+      "keigo": "博物館 (hakubutsukan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "博物館を見学します。",
+        "romaji": "Hakubutsukan o kengaku shimasu.",
+        "translation": "Saya mengunjungi museum."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hakubutsukan.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kissaten",
+    "word": "きっさてん",
+    "kanji": "喫茶店",
+    "reading": "きっさてん",
+    "romaji": "kissaten",
+    "meaning": "kedai kopi/kafe",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "喫茶店 (kissaten)",
+      "formal": "喫茶店 (kissaten)",
+      "keigo": "喫茶店 (kissaten) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "喫茶店でコーヒーを飲みます。",
+        "romaji": "Kissaten de koohii o nomimasu.",
+        "translation": "Saya minum kopi di kedai kopi."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kissaten.png"
   }
 ]

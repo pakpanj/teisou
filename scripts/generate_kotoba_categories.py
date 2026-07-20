@@ -22,7 +22,7 @@ GROUPS = {
         ("bunga_tanaman", "Bunga & Tanaman", "🌸", True, 9),
         ("buah", "Buah", "🍎", True, 14),
         ("sayuran", "Sayuran", "🥬", True, 14),
-        ("cuaca", "Cuaca", "⛅", True, 16),
+        ("cuaca", "Cuaca", "⛅", True, 17),
         ("bencana_alam", "Bencana Alam", "🌪️", True, 16),
     ],
     "Makanan & Minuman": [
@@ -45,16 +45,16 @@ GROUPS = {
     "Tempat & Transportasi": [
         ("ruangan_rumah", "Ruangan di Rumah", "🚪", True, 11),
         ("perabot_rumah", "Perabot Rumah", "🛋️", True, 11),
-        ("bangunan_fasilitas", "Bangunan & Fasilitas", "🏢", True, 15),
+        ("bangunan_fasilitas", "Bangunan & Fasilitas", "🏢", True, 23),
         ("kendaraan", "Kendaraan", "🚗", True, 12),
         ("arah_lokasi", "Arah & Lokasi", "🧭", True, 11),
-        ("negara_kota", "Negara & Kota", "🗺️", True, 11),
+        ("negara_kota", "Negara & Kota", "🗺️", True, 14),
     ],
     "Manusia & Sosial": [
         ("profesi", "Profesi", "👨‍⚕️", True, 16),
-        ("keluarga_hubungan", "Keluarga & Hubungan", "👪", True, 17),
-        ("pakaian_aksesori", "Pakaian & Aksesori", "👕", True, 12),
-        ("hobi_aktivitas", "Hobi & Aktivitas", "🎨", True, 16),
+        ("keluarga_hubungan", "Keluarga & Hubungan", "👪", True, 22),
+        ("pakaian_aksesori", "Pakaian & Aksesori", "👕", True, 15),
+        ("hobi_aktivitas", "Hobi & Aktivitas", "🎨", True, 20),
         ("agama_budaya", "Agama & Budaya", "⛩️", True, 13),
         ("perayaan_haribesar", "Perayaan & Hari Besar", "🎉", True, 12),
         # New category (2026-07-20, sixth batch) — see the docstring on
@@ -64,14 +64,14 @@ GROUPS = {
         ("konsep_umum", "Konsep Umum", "💭", True, 168),
     ],
     "Pendidikan & Pekerjaan": [
-        ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", True, 11),
+        ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", True, 15),
         ("mata_pelajaran", "Mata Pelajaran", "📖", True, 13),
         ("pekerjaan_kantor", "Pekerjaan & Kantor", "💼", True, 41),
         ("teknologi_gadget", "Teknologi & Gadget", "💻", True, 16),
         ("media_hiburan", "Media & Hiburan", "📺", True, 15),
     ],
     "Waktu & Angka": [
-        ("hari_bulan", "Hari & Bulan", "📅", True, 22),
+        ("hari_bulan", "Hari & Bulan", "📅", True, 40),
         ("musim", "Musim", "🍂", True, 5),
         ("angka_satuan", "Angka & Satuan", "🔢", True, 13),
         ("warna", "Warna", "🌈", True, 11),

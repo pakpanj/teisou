@@ -142,6 +142,33 @@ CATEGORIES = {
         ("ritchi", "立地", "りっち", "ritchi", "lokasi/penempatan (usaha)", "N1", "noun", "立地", "ritchi", "立地", "ritchi", [
             ("この店は立地がいいです。", "Kono mise wa ritchi ga ii desu.", "Lokasi toko ini bagus."),
         ]),
+        # N5 addition, same compound-pool gap noted in
+        # generate_kotoba_waktu_angka.py's hari_bulan addition — everyday
+        # N5 places/facilities absent from the whole dataset before this.
+        ("kyoushitsu", "教室", "きょうしつ", "kyoushitsu", "ruang kelas", "N5", "noun", "教室", "kyoushitsu", "教室", "kyoushitsu", [
+            ("教室で勉強します。", "Kyoushitsu de benkyou shimasu.", "Saya belajar di ruang kelas."),
+        ]),
+        ("ryokan", "旅館", "りょかん", "ryokan", "penginapan tradisional Jepang", "N4", "noun", "旅館", "ryokan", "旅館", "ryokan", [
+            ("旅館に泊まります。", "Ryokan ni tomarimasu.", "Saya menginap di penginapan tradisional."),
+        ]),
+        ("ekimae", "駅前", "えきまえ", "ekimae", "depan stasiun", "N4", "noun", "駅前", "ekimae", "駅前", "ekimae", [
+            ("駅前で待ち合わせします。", "Ekimae de machiawase shimasu.", "Kami janjian bertemu di depan stasiun."),
+        ]),
+        ("kouban", "交番", "こうばん", "kouban", "pos polisi", "N4", "noun", "交番", "kouban", "交番", "kouban", [
+            ("交番で道を聞きます。", "Kouban de michi o kikimasu.", "Saya bertanya arah di pos polisi."),
+        ]),
+        ("doubutsuen", "動物園", "どうぶつえん", "doubutsuen", "kebun binatang", "N5", "noun", "動物園", "doubutsuen", "動物園", "doubutsuen", [
+            ("動物園に行きます。", "Doubutsuen ni ikimasu.", "Saya pergi ke kebun binatang."),
+        ]),
+        ("bijutsukan", "美術館", "びじゅつかん", "bijutsukan", "galeri seni", "N4", "noun", "美術館", "bijutsukan", "美術館", "bijutsukan", [
+            ("美術館で絵を見ます。", "Bijutsukan de e o mimasu.", "Saya melihat lukisan di galeri seni."),
+        ]),
+        ("hakubutsukan", "博物館", "はくぶつかん", "hakubutsukan", "museum", "N4", "noun", "博物館", "hakubutsukan", "博物館", "hakubutsukan", [
+            ("博物館を見学します。", "Hakubutsukan o kengaku shimasu.", "Saya mengunjungi museum."),
+        ]),
+        ("kissaten", "喫茶店", "きっさてん", "kissaten", "kedai kopi/kafe", "N4", "noun", "喫茶店", "kissaten", "喫茶店", "kissaten", [
+            ("喫茶店でコーヒーを飲みます。", "Kissaten de koohii o nomimasu.", "Saya minum kopi di kedai kopi."),
+        ]),
     ],
     "kendaraan": [
         ("kuruma", "車", "くるま", "kuruma", "mobil", "N5", "noun", "車", "kuruma", "車", "kuruma", [
@@ -251,6 +278,16 @@ CATEGORIES = {
         ]),
         ("kyouto", "京都", "きょうと", "kyouto", "Kyoto", "N3", "noun", "京都", "kyouto", "京都", "kyouto", [
             ("京都には神社がたくさんあります。", "Kyouto ni wa jinja ga takusan arimasu.", "Di Kyoto ada banyak kuil Shinto."),
+        ]),
+        # N5 addition, same compound-pool gap noted above.
+        ("gaikoku", "外国", "がいこく", "gaikoku", "negara asing/luar negeri", "N5", "noun", "外国", "gaikoku", "外国", "gaikoku", [
+            ("外国に住みたいです。", "Gaikoku ni sumitai desu.", "Saya ingin tinggal di luar negeri."),
+        ]),
+        ("gaikokujin", "外国人", "がいこくじん", "gaikokujin", "orang asing/warga negara asing", "N5", "noun", "外国人", "gaikokujin", "外国人", "gaikokujin", [
+            ("この町には外国人が多いです。", "Kono machi ni wa gaikokujin ga ooi desu.", "Di kota ini banyak orang asing."),
+        ]),
+        ("chuugokugo", "中国語", "ちゅうごくご", "chuugokugo", "bahasa Mandarin", "N5", "noun", "中国語", "chuugokugo", "中国語", "chuugokugo", [
+            ("中国語を勉強しています。", "Chuugokugo o benkyou shite imasu.", "Saya sedang belajar bahasa Mandarin."),
         ]),
     ],
 }

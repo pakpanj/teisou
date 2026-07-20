@@ -139,6 +139,26 @@ CATEGORIES = {
         ("danzetsu", "断絶", "だんぜつ", "danzetsu", "keterputusan (hubungan)", "N1", "noun", "断絶", "danzetsu", "断絶", "danzetsu", [
             ("親子関係が断絶しました。", "Oyako kankei ga danzetsu shimashita.", "Hubungan orang tua-anak itu terputus."),
         ]),
+        # N5 addition prompted by the same compound-pool gap noted in
+        # scripts/generate_kotoba_waktu_angka.py's hari_bulan addition —
+        # these are the general (non-"kata sendiri") sibling/parent/age
+        # terms, distinct from 兄/姉/弟/妹 above which are specifically
+        # how you refer to your OWN siblings.
+        ("kyoudai", "兄弟", "きょうだい", "kyoudai", "saudara kandung (kakak-adik)", "N5", "noun", "兄弟", "kyoudai", "兄弟", "kyoudai", [
+            ("兄弟は何人いますか。", "Kyoudai wa nan-nin imasu ka.", "Ada berapa saudara kandung?"),
+        ]),
+        ("shimai", "姉妹", "しまい", "shimai", "saudari perempuan (kakak-adik)", "N5", "noun", "姉妹", "shimai", "姉妹", "shimai", [
+            ("姉妹で買い物に行きます。", "Shimai de kaimono ni ikimasu.", "Kami bersaudari pergi berbelanja."),
+        ]),
+        ("ryoushin", "両親", "りょうしん", "ryoushin", "kedua orang tua", "N5", "noun", "両親", "ryoushin", "両親", "ryoushin", [
+            ("両親と話します。", "Ryoushin to hanashimasu.", "Saya berbicara dengan kedua orang tua saya."),
+        ]),
+        ("kodomo", "子供", "こども", "kodomo", "anak (secara umum)", "N5", "noun", "子供", "kodomo", "子供", "kodomo", [
+            ("子供が公園で遊びます。", "Kodomo ga kouen de asobimasu.", "Anak-anak bermain di taman."),
+        ]),
+        ("otona", "大人", "おとな", "otona", "orang dewasa", "N5", "noun", "大人", "otona", "大人", "otona", [
+            ("大人になりました。", "Otona ni narimashita.", "Saya sudah menjadi dewasa."),
+        ]),
     ],
     "pakaian_aksesori": [
         ("fuku", "服", "ふく", "fuku", "baju/pakaian", "N5", "noun", "服", "fuku", "服", "fuku", [
@@ -177,6 +197,16 @@ CATEGORIES = {
         ("kimono", "着物", "きもの", "kimono", "kimono (pakaian tradisional Jepang)", "N3", "noun", "着物", "kimono", "着物", "kimono", [
             ("着物を着ます。", "Kimono o kimasu.", "Saya memakai kimono."),
         ]),
+        # N5 addition, same compound-pool gap as noted above.
+        ("saifu", "財布", "さいふ", "saifu", "dompet", "N5", "noun", "財布", "saifu", "財布", "saifu", [
+            ("財布を忘れました。", "Saifu o wasuremashita.", "Saya lupa membawa dompet."),
+        ]),
+        ("kutsushita", "靴下", "くつした", "kutsushita", "kaus kaki", "N5", "noun", "靴下", "kutsushita", "靴下", "kutsushita", [
+            ("靴下を履きます。", "Kutsushita o hakimasu.", "Saya memakai kaus kaki."),
+        ]),
+        ("youfuku", "洋服", "ようふく", "youfuku", "baju (bergaya barat)", "N5", "noun", "洋服", "youfuku", "洋服", "youfuku", [
+            ("洋服を買います。", "Youfuku o kaimasu.", "Saya membeli baju."),
+        ]),
     ],
     "hobi_aktivitas": [
         ("shumi", "趣味", "しゅみ", "shumi", "hobi", "N4", "noun", "趣味", "shumi", "趣味", "shumi", [
@@ -214,6 +244,21 @@ CATEGORIES = {
         ]),
         ("kyanpu", None, "キャンプ", "kyanpu", "berkemah/camping", "N3", "noun", "キャンプ", "kyanpu", "キャンプ", "kyanpu", [
             ("キャンプに行きます。", "Kyanpu ni ikimasu.", "Saya pergi berkemah."),
+        ]),
+        # N5 addition, same compound-pool gap noted above — everyday
+        # household activities, verb-derived nouns like ryouri/dokusho
+        # above rather than a new word type.
+        ("sentaku", "洗濯", "せんたく", "sentaku", "mencuci baju", "N5", "noun", "洗濯", "sentaku", "洗濯", "sentaku", [
+            ("洗濯をします。", "Sentaku o shimasu.", "Saya mencuci baju."),
+        ]),
+        ("souji", "掃除", "そうじ", "souji", "membersihkan/bersih-bersih", "N5", "noun", "掃除", "souji", "掃除", "souji", [
+            ("部屋を掃除します。", "Heya o souji shimasu.", "Saya membersihkan kamar."),
+        ]),
+        ("kaimono", "買物", "かいもの", "kaimono", "berbelanja", "N5", "noun", "買物", "kaimono", "買物", "kaimono", [
+            ("買物に行きます。", "Kaimono ni ikimasu.", "Saya pergi berbelanja."),
+        ]),
+        ("sanpo", "散歩", "さんぽ", "sanpo", "jalan-jalan santai", "N5", "noun", "散歩", "sanpo", "散歩", "sanpo", [
+            ("公園を散歩します。", "Kouen o sanpo shimasu.", "Saya jalan-jalan santai di taman."),
         ]),
         # N1/N2 addition (2026-07-20, fourth batch): pure-kanji hobby-
         # related abstract nouns, for Kombinasi Kanji pool depth.

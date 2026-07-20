@@ -382,5 +382,29 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kanpa.png"
+  },
+  {
+    "id": "kotoba_cuaca_tenkiyohou",
+    "word": "てんきよほう",
+    "kanji": "天気予報",
+    "reading": "てんきよほう",
+    "romaji": "tenkiyohou",
+    "meaning": "ramalan cuaca",
+    "jlptLevel": "N5",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "てんきよほう (tenkiyohou)",
+      "formal": "てんきよほう (tenkiyohou)",
+      "keigo": "てんきよほう (tenkiyohou) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "天気予報を見ます。",
+        "romaji": "Tenkiyohou o mimasu.",
+        "translation": "Saya melihat ramalan cuaca."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_tenkiyohou.png"
   }
 ]

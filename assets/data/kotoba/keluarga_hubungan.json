@@ -406,5 +406,125 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_danzetsu.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_kyoudai",
+    "word": "きょうだい",
+    "kanji": "兄弟",
+    "reading": "きょうだい",
+    "romaji": "kyoudai",
+    "meaning": "saudara kandung (kakak-adik)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "兄弟 (kyoudai)",
+      "formal": "兄弟 (kyoudai)",
+      "keigo": "兄弟 (kyoudai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "兄弟は何人いますか。",
+        "romaji": "Kyoudai wa nan-nin imasu ka.",
+        "translation": "Ada berapa saudara kandung?"
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kyoudai.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_shimai",
+    "word": "しまい",
+    "kanji": "姉妹",
+    "reading": "しまい",
+    "romaji": "shimai",
+    "meaning": "saudari perempuan (kakak-adik)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "姉妹 (shimai)",
+      "formal": "姉妹 (shimai)",
+      "keigo": "姉妹 (shimai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "姉妹で買い物に行きます。",
+        "romaji": "Shimai de kaimono ni ikimasu.",
+        "translation": "Kami bersaudari pergi berbelanja."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shimai.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ryoushin",
+    "word": "りょうしん",
+    "kanji": "両親",
+    "reading": "りょうしん",
+    "romaji": "ryoushin",
+    "meaning": "kedua orang tua",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "両親 (ryoushin)",
+      "formal": "両親 (ryoushin)",
+      "keigo": "両親 (ryoushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "両親と話します。",
+        "romaji": "Ryoushin to hanashimasu.",
+        "translation": "Saya berbicara dengan kedua orang tua saya."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ryoushin.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_kodomo",
+    "word": "こども",
+    "kanji": "子供",
+    "reading": "こども",
+    "romaji": "kodomo",
+    "meaning": "anak (secara umum)",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "子供 (kodomo)",
+      "formal": "子供 (kodomo)",
+      "keigo": "子供 (kodomo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "子供が公園で遊びます。",
+        "romaji": "Kodomo ga kouen de asobimasu.",
+        "translation": "Anak-anak bermain di taman."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kodomo.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_otona",
+    "word": "おとな",
+    "kanji": "大人",
+    "reading": "おとな",
+    "romaji": "otona",
+    "meaning": "orang dewasa",
+    "jlptLevel": "N5",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "大人 (otona)",
+      "formal": "大人 (otona)",
+      "keigo": "大人 (otona) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大人になりました。",
+        "romaji": "Otona ni narimashita.",
+        "translation": "Saya sudah menjadi dewasa."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_otona.png"
   }
 ]

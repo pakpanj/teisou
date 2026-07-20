@@ -56,6 +56,22 @@ CATEGORIES = {
         ("kokuban", "黒板", "こくばん", "kokuban", "papan tulis", "N4", "noun", "黒板", "kokuban", "黒板", "kokuban", [
             ("黒板に書きます。", "Kokuban ni kakimasu.", "Saya menulis di papan tulis."),
         ]),
+        # Addition prompted by the same N5-compound-pool gap noted in
+        # scripts/generate_kotoba_waktu_angka.py's hari_bulan addition —
+        # these are genuine N5 school-life 2-3 kanji compounds, absent
+        # from the dataset before this addition.
+        ("kyoukasho", "教科書", "きょうかしょ", "kyoukasho", "buku pelajaran", "N5", "noun", "教科書", "kyoukasho", "教科書", "kyoukasho", [
+            ("教科書を忘れました。", "Kyoukasho o wasuremashita.", "Saya lupa membawa buku pelajaran."),
+        ]),
+        ("jisho", "辞書", "じしょ", "jisho", "kamus", "N5", "noun", "辞書", "jisho", "辞書", "jisho", [
+            ("辞書で言葉を調べます。", "Jisho de kotoba o shirabemasu.", "Saya mencari kata di kamus."),
+        ]),
+        ("shukudai", "宿題", "しゅくだい", "shukudai", "pekerjaan rumah (PR)", "N5", "noun", "宿題", "shukudai", "宿題", "shukudai", [
+            ("宿題をやります。", "Shukudai o yarimasu.", "Saya mengerjakan PR."),
+        ]),
+        ("kanji", "漢字", "かんじ", "kanji", "aksara kanji", "N5", "noun", "漢字", "kanji", "漢字", "kanji", [
+            ("漢字を勉強します。", "Kanji o benkyou shimasu.", "Saya belajar kanji."),
+        ]),
     ],
     "mata_pelajaran": [
         ("kokugo", "国語", "こくご", "kokugo", "bahasa nasional (mapel Jepang)", "N4", "noun", "国語", "kokugo", "国語", "kokugo", [

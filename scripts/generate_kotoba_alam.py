@@ -364,6 +364,9 @@ CATEGORIES = {
         ("kanpa", "寒波", "かんぱ", "kanpa", "gelombang dingin", "N1", [
             ("今週は強い寒波が来ます。", "Konshuu wa tsuyoi kanpa ga kimasu.", "Minggu ini akan datang gelombang dingin yang kuat."),
         ]),
+        ("tenkiyohou", "天気予報", "てんきよほう", "tenkiyohou", "ramalan cuaca", "N5", [
+            ("天気予報を見ます。", "Tenkiyohou o mimasu.", "Saya melihat ramalan cuaca."),
+        ]),
     ]),
     "bencana_alam": ("istilah bencana alam", [
         ("jishin", "地震", "じしん", "jishin", "gempa bumi", "N4", [

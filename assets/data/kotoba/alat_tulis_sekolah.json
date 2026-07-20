@@ -262,5 +262,101 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_kokuban.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_kyoukasho",
+    "word": "きょうかしょ",
+    "kanji": "教科書",
+    "reading": "きょうかしょ",
+    "romaji": "kyoukasho",
+    "meaning": "buku pelajaran",
+    "jlptLevel": "N5",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "教科書 (kyoukasho)",
+      "formal": "教科書 (kyoukasho)",
+      "keigo": "教科書 (kyoukasho) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "教科書を忘れました。",
+        "romaji": "Kyoukasho o wasuremashita.",
+        "translation": "Saya lupa membawa buku pelajaran."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_kyoukasho.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_jisho",
+    "word": "じしょ",
+    "kanji": "辞書",
+    "reading": "じしょ",
+    "romaji": "jisho",
+    "meaning": "kamus",
+    "jlptLevel": "N5",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "辞書 (jisho)",
+      "formal": "辞書 (jisho)",
+      "keigo": "辞書 (jisho) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "辞書で言葉を調べます。",
+        "romaji": "Jisho de kotoba o shirabemasu.",
+        "translation": "Saya mencari kata di kamus."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_jisho.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_shukudai",
+    "word": "しゅくだい",
+    "kanji": "宿題",
+    "reading": "しゅくだい",
+    "romaji": "shukudai",
+    "meaning": "pekerjaan rumah (PR)",
+    "jlptLevel": "N5",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "宿題 (shukudai)",
+      "formal": "宿題 (shukudai)",
+      "keigo": "宿題 (shukudai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "宿題をやります。",
+        "romaji": "Shukudai o yarimasu.",
+        "translation": "Saya mengerjakan PR."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_shukudai.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_kanji",
+    "word": "かんじ",
+    "kanji": "漢字",
+    "reading": "かんじ",
+    "romaji": "kanji",
+    "meaning": "aksara kanji",
+    "jlptLevel": "N5",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "漢字 (kanji)",
+      "formal": "漢字 (kanji)",
+      "keigo": "漢字 (kanji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "漢字を勉強します。",
+        "romaji": "Kanji o benkyou shimasu.",
+        "translation": "Saya belajar kanji."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_kanji.png"
   }
 ]
