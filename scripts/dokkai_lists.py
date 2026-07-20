@@ -100,6 +100,16 @@ N5_TITLES = [
     "Pengumuman Pemeriksaan Kesehatan Sekolah",
     "Surat Ucapan Terima Kasih untuk Orang Tua",
     "Cerita Bermain Salju di Musim Dingin",
+    "Jadwal Kelas Renang Musim Panas",
+    "Surat dari Teman yang Pindah ke Luar Negeri",
+    "Menu Makan Siang di Hari Olahraga",
+    "Pengumuman Perbaikan Atap Gimnasium",
+    "Cerita Membantu Menjaga Adik Bayi",
+    "Jadwal Latihan Klub Paduan Suara",
+    "Pengumuman Pemeriksaan Gigi Sekolah",
+    "Surat Ucapan Selamat Naik Kelas",
+    "Cerita Memancing bersama Kakek",
+    "Pengumuman Perpustakaan Keliling",
 ]
 
 # N4-N1 initial seed (10 each) — every level now has real starting
@@ -196,6 +206,16 @@ N4_TITLES = [
     "Pengalaman Pertama Kali Mengajar",
     "Blog tentang Belajar Bahasa Korea",
     "Pengumuman Perubahan Sistem Pembayaran Toko",
+    "Blog tentang Belajar Membuat Roti",
+    "Artikel tentang Manfaat Menanam Tanaman di Rumah",
+    "Email Permintaan Jadwal Wawancara Kerja",
+    "Ulasan Gym Baru di Dekat Rumah",
+    "Panduan Merawat Sepatu Kulit",
+    "Surat Ucapan Selamat Pensiun",
+    "Artikel tentang Manfaat Tidur Siang",
+    "Pengalaman Pertama Kali Menyetir Sendiri",
+    "Blog tentang Belajar Membuat Video",
+    "Pengumuman Perubahan Lokasi Kantor",
 ]
 
 N3_TITLES = [
@@ -289,6 +309,16 @@ N3_TITLES = [
     "Artikel tentang Perubahan Kebiasaan Menonton",
     "Esai tentang Menemukan Arti Kerja Tim",
     "Cerita Pengalaman Menjadi Penerjemah Sukarela",
+    "Artikel tentang Perkembangan Mobil Otonom",
+    "Esai tentang Menghadapi Kegagalan Ujian Masuk",
+    "Cerita Pengalaman Menjadi Pemandu Wisata",
+    "Panduan Etika Berbelanja di Pasar Tradisional",
+    "Artikel tentang Tren Bekerja dari Kafe",
+    "Esai tentang Pentingnya Mendengarkan Orang Lain",
+    "Petunjuk Prosedur Pengajuan Perpanjangan Paspor",
+    "Artikel tentang Perubahan Kebiasaan Berbelanja Pakaian",
+    "Esai tentang Menemukan Makna dalam Kegagalan",
+    "Cerita Pengalaman Menjadi Relawan Perpustakaan",
 ]
 
 N2_TITLES = [
@@ -382,6 +412,16 @@ N2_TITLES = [
     "Analisis tentang Perubahan Nilai Konsumsi Generasi Muda",
     "Laporan tentang Inovasi dalam Pertanian Perkotaan",
     "Esai tentang Dilema Kemajuan Genetika Manusia",
+    "Esai tentang Etika Kepemimpinan Politik",
+    "Artikel tentang Reformasi Sistem Peradilan",
+    "Analisis tentang Dampak Digitalisasi pada Sektor Perbankan",
+    "Laporan tentang Perubahan Pola Kerja Jarak Jauh Pasca Pandemi",
+    "Editorial tentang Krisis Kepercayaan terhadap Sains Publik",
+    "Esai tentang Batas Kebebasan Akademik",
+    "Artikel tentang Tantangan Adaptasi Iklim di Perkotaan",
+    "Analisis tentang Perubahan Nilai Karier Generasi Alpha",
+    "Laporan tentang Inovasi dalam Energi Terbarukan Laut",
+    "Esai tentang Dilema Kecerdasan Buatan dalam Seni",
 ]
 
 N1_TITLES = [
@@ -475,6 +515,16 @@ N1_TITLES = [
     "Refleksi tentang Warisan Luka yang Tersembunyi",
     "Esai tentang Ketahanan dalam Menghadapi Ketidakpastian",
     "Kritik tentang Mitos Kesempurnaan Cinta",
+    "Refleksi tentang Makna Kehadiran",
+    "Esai tentang Beban Menjadi Suara bagi yang Terdiam",
+    "Diskusi Filosofis tentang Batas Kehendak dan Takdir",
+    "Kritik tentang Estetika Kekosongan",
+    "Refleksi tentang Arti Pulang ke Diri Sendiri",
+    "Esai tentang Ironi Kemajuan Pendidikan",
+    "Diskusi tentang Batas Antara Keberanian dan Kecerobohan",
+    "Refleksi tentang Warisan Senyap Para Pendahulu",
+    "Esai tentang Ketahanan dalam Menghadapi Kegagalan Berulang",
+    "Kritik tentang Mitos Kejeniusan Tunggal",
 ]
 
 LEVEL_META = {
