@@ -559,6 +559,40 @@ standing local-merge convention:
      → **539** — **total pool 957**. Vocab module: 911 → 1288 words,
      still 46 categories (all 32 target categories already existed,
      no new one needed this time).
+     **Fifteenth and sixteenth batches (2026-07-20), N3 and N1 from the
+     open web instead of a user-supplied PDF**: the user asked to also
+     source N3 and N1 vocabulary the same way, since "banyak referensi
+     di web" (plenty of references exist online). jlptsensei.com — the
+     project's own established source for Kanji/Bunpou content — has a
+     genuinely comprehensive "JLPT N3 Nouns Vocabulary List" (160 words
+     across 2 pages, real pagination, `kanji (romaji) - meaning` per
+     entry), but its equivalent **N1** noun/verb/adjective sublists
+     turned out to be only 11-17 entries each — evidently unfinished on
+     their site, not a real master list — so N1 used
+     japanesetest4you.com's single flowing "JLPT N1 Vocabulary List"
+     page instead. Neither source includes example sentences (unlike
+     the TANGO PDF), so every example sentence + romaji + Indonesian
+     translation across both batches was hand-authored, back to the
+     batches-1-13 discipline. N3: cross-checked jlptsensei's 160 words
+     against the dataset, found 93 new 2-3-kanji compounds, dropped one
+     (木曜, "Thursday" without its 日 — a near-duplicate of the already-
+     present 木曜日) to land at 92, spread across 18 categories
+     (`scripts/reference/n3_web_batch.py`). Two homophone collisions
+     surfaced and were fixed the same way as the TANGO batch's (move to
+     a different category, not just an id-suffix bump): 強力 (kyouryoku,
+     "kuat") moved to `teknologi_gadget` to avoid `konsep_umum`'s
+     existing 協力 (kyouryoku, "kerja sama"); 味方 (mikata, "sekutu")
+     moved to `keluarga_hubungan` to avoid `konsep_umum`'s existing 見方
+     (mikata, "cara pandang"). N1: gathered ~147 candidates from
+     japanesetest4you across two fetches, found 123 new 2-3-kanji
+     compounds spread across 17 categories
+     (`scripts/reference/n1_web_batch.py`) — clean on the first
+     verification pass, no collisions this time. Pool: N5/N4/N2
+     unchanged (92/71/539 after the N3 batch, N2 stays 539 through the
+     N1 batch too), N3 139 → **231** (N3 batch), N1 116 → **239** (N1
+     batch) — **total pool 957 → 1049 → 1172** across the two batches.
+     Vocab module: 1288 → 1380 → 1503 words, still 46 categories both
+     times (every target category in both batches already existed).
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
