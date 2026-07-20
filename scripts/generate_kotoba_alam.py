@@ -419,6 +419,9 @@ CATEGORIES = {
         ("kyuujo", "救助", "きゅうじょ", "kyuujo", "penyelamatan", "N2", [
             ("救助隊が到着しました。", "Kyuujotai ga touchaku shimashita.", "Tim penyelamat telah tiba."),
         ]),
+        ("tatsumaki", "竜巻", "たつまき", "tatsumaki", "angin puting beliung/tornado", "N2", [
+            ("竜巻が発生しました。", "Tatsumaki ga hassei shimashita.", "Tornado terjadi."),
+        ]),
     ]),
 }
 

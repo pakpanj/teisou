@@ -334,5 +334,53 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masui.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_shoudoku",
+    "word": "しょうどく",
+    "kanji": "消毒",
+    "reading": "しょうどく",
+    "romaji": "shoudoku",
+    "meaning": "disinfeksi",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "消毒 (shoudoku)",
+      "formal": "消毒 (shoudoku)",
+      "keigo": "消毒 (shoudoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "傷口を消毒します。",
+        "romaji": "Kizuguchi o shoudoku shimasu.",
+        "translation": "Saya mendisinfeksi luka."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shoudoku.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_houtai",
+    "word": "ほうたい",
+    "kanji": "包帯",
+    "reading": "ほうたい",
+    "romaji": "houtai",
+    "meaning": "perban",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "包帯 (houtai)",
+      "formal": "包帯 (houtai)",
+      "keigo": "包帯 (houtai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "傷に包帯を巻きます。",
+        "romaji": "Kizu ni houtai o makimasu.",
+        "translation": "Saya membalut luka dengan perban."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_houtai.png"
   }
 ]

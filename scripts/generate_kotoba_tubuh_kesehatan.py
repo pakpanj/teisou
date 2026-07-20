@@ -85,6 +85,23 @@ CATEGORIES = {
         ("hiza", "膝", "ひざ", "hiza", "lutut", "N3", "noun", "膝", "hiza", "膝", "hiza", [
             ("膝が痛いです。", "Hiza ga itai desu.", "Lutut saya sakit."),
         ]),
+        # N1/N2/N3 addition (2026-07-20, twelfth batch): internal-anatomy
+        # nouns, for Kombinasi Kanji pool depth.
+        ("shinzou", "心臓", "しんぞう", "shinzou", "jantung", "N2", "noun", "心臓", "shinzou", "心臓", "shinzou", [
+            ("心臓がドキドキします。", "Shinzou ga dokidoki shimasu.", "Jantung saya berdebar-debar."),
+        ]),
+        ("naizou", "内臓", "ないぞう", "naizou", "organ dalam", "N1", "noun", "内臓", "naizou", "内臓", "naizou", [
+            ("内臓の検査を受けます。", "Naizou no kensa o ukemasu.", "Saya menjalani pemeriksaan organ dalam."),
+        ]),
+        ("kinniku", "筋肉", "きんにく", "kinniku", "otot", "N3", "noun", "筋肉", "kinniku", "筋肉", "kinniku", [
+            ("筋肉を鍛えます。", "Kinniku o kitaemasu.", "Saya melatih otot."),
+        ]),
+        ("kansetsu", "関節", "かんせつ", "kansetsu", "sendi", "N2", "noun", "関節", "kansetsu", "関節", "kansetsu", [
+            ("関節が痛いです。", "Kansetsu ga itai desu.", "Sendi saya sakit."),
+        ]),
+        ("kekkan", "血管", "けっかん", "kekkan", "pembuluh darah", "N2", "noun", "血管", "kekkan", "血管", "kekkan", [
+            ("血管が細くなっています。", "Kekkan ga hosoku natte imasu.", "Pembuluh darahnya menyempit."),
+        ]),
     ],
     "penyakit_gejala": [
         ("kaze", "風邪", "かぜ", "kaze", "flu/masuk angin (common cold)", "N4", "noun", "風邪", "kaze", "風邪", "kaze", [
@@ -163,6 +180,17 @@ CATEGORIES = {
         ("taion", "体温", "たいおん", "taion", "suhu tubuh", "N4", "noun", "体温", "taion", "体温", "taion", [
             ("体温を測ります。", "Taion o hakarimasu.", "Saya mengukur suhu tubuh."),
         ]),
+        # N1/N2 addition (2026-07-20, twelfth batch): more medical
+        # condition nouns, for Kombinasi Kanji pool depth.
+        ("hinketsu", "貧血", "ひんけつ", "hinketsu", "anemia (kurang darah)", "N2", "noun", "貧血", "hinketsu", "貧血", "hinketsu", [
+            ("貧血で倒れました。", "Hinketsu de taoremashita.", "Saya pingsan karena anemia."),
+        ]),
+        ("chuudoku", "中毒", "ちゅうどく", "chuudoku", "keracunan", "N2", "noun", "中毒", "chuudoku", "中毒", "chuudoku", [
+            ("食中毒になりました。", "Shoku-chuudoku ni narimashita.", "Saya keracunan makanan."),
+        ]),
+        ("mahi", "麻痺", "まひ", "mahi", "kelumpuhan/mati rasa", "N1", "noun", "麻痺", "mahi", "麻痺", "mahi", [
+            ("手足に麻痺があります。", "Teashi ni mahi ga arimasu.", "Ada kelumpuhan di tangan dan kaki."),
+        ]),
     ],
     "obat_obatan": [
         ("kusuri", "薬", "くすり", "kusuri", "obat", "N4", "noun", "薬", "kusuri", "薬", "kusuri", [
@@ -208,6 +236,14 @@ CATEGORIES = {
         ]),
         ("masui", "麻酔", "ますい", "masui", "anestesi/bius", "N1", "noun", "麻酔", "masui", "麻酔", "masui", [
             ("手術の前に麻酔をかけます。", "Shujutsu no mae ni masui o kakemasu.", "Sebelum operasi, dilakukan pembiusan."),
+        ]),
+        # N2 addition (2026-07-20, twelfth batch): more pharmacy/first-aid
+        # nouns, for Kombinasi Kanji pool depth.
+        ("shoudoku", "消毒", "しょうどく", "shoudoku", "disinfeksi", "N2", "noun", "消毒", "shoudoku", "消毒", "shoudoku", [
+            ("傷口を消毒します。", "Kizuguchi o shoudoku shimasu.", "Saya mendisinfeksi luka."),
+        ]),
+        ("houtai", "包帯", "ほうたい", "houtai", "perban", "N2", "noun", "包帯", "houtai", "包帯", "houtai", [
+            ("傷に包帯を巻きます。", "Kizu ni houtai o makimasu.", "Saya membalut luka dengan perban."),
         ]),
     ],
     "olahraga": [

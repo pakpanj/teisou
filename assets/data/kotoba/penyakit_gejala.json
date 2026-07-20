@@ -574,5 +574,77 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_taion.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_hinketsu",
+    "word": "ひんけつ",
+    "kanji": "貧血",
+    "reading": "ひんけつ",
+    "romaji": "hinketsu",
+    "meaning": "anemia (kurang darah)",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "貧血 (hinketsu)",
+      "formal": "貧血 (hinketsu)",
+      "keigo": "貧血 (hinketsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "貧血で倒れました。",
+        "romaji": "Hinketsu de taoremashita.",
+        "translation": "Saya pingsan karena anemia."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hinketsu.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_chuudoku",
+    "word": "ちゅうどく",
+    "kanji": "中毒",
+    "reading": "ちゅうどく",
+    "romaji": "chuudoku",
+    "meaning": "keracunan",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "中毒 (chuudoku)",
+      "formal": "中毒 (chuudoku)",
+      "keigo": "中毒 (chuudoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "食中毒になりました。",
+        "romaji": "Shoku-chuudoku ni narimashita.",
+        "translation": "Saya keracunan makanan."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_chuudoku.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_mahi",
+    "word": "まひ",
+    "kanji": "麻痺",
+    "reading": "まひ",
+    "romaji": "mahi",
+    "meaning": "kelumpuhan/mati rasa",
+    "jlptLevel": "N1",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "麻痺 (mahi)",
+      "formal": "麻痺 (mahi)",
+      "keigo": "麻痺 (mahi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "手足に麻痺があります。",
+        "romaji": "Teashi ni mahi ga arimasu.",
+        "translation": "Ada kelumpuhan di tangan dan kaki."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_mahi.png"
   }
 ]

@@ -262,5 +262,29 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_niwa.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_senmenjo",
+    "word": "せんめんじょ",
+    "kanji": "洗面所",
+    "reading": "せんめんじょ",
+    "romaji": "senmenjo",
+    "meaning": "kamar mandi/wastafel",
+    "jlptLevel": "N3",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "洗面所 (senmenjo)",
+      "formal": "洗面所 (senmenjo)",
+      "keigo": "洗面所 (senmenjo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "洗面所で顔を洗います。",
+        "romaji": "Senmenjo de kao o araimasu.",
+        "translation": "Saya mencuci muka di wastafel."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_senmenjo.png"
   }
 ]

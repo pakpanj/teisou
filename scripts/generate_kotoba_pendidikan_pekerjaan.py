@@ -115,6 +115,26 @@ CATEGORIES = {
         ("shingaku", "進学", "しんがく", "shingaku", "melanjutkan pendidikan", "N2", "noun", "進学", "shingaku", "進学", "shingaku", [
             ("大学に進学するつもりです。", "Daigaku ni shingaku suru tsumori desu.", "Saya berniat melanjutkan ke perguruan tinggi."),
         ]),
+        # N1/N2/N3 addition (2026-07-20, twelfth batch): more academic
+        # subject nouns, for Kombinasi Kanji pool depth across N5-N1.
+        ("keizai", "経済", "けいざい", "keizai", "ekonomi", "N3", "noun", "経済", "keizai", "経済", "keizai", [
+            ("経済を勉強しています。", "Keizai o benkyou shite imasu.", "Saya sedang belajar ekonomi."),
+        ]),
+        ("butsuri", "物理", "ぶつり", "butsuri", "fisika", "N2", "noun", "物理", "butsuri", "物理", "butsuri", [
+            ("物理は難しいです。", "Butsuri wa muzukashii desu.", "Fisika itu sulit."),
+        ]),
+        ("seibutsu", "生物", "せいぶつ", "seibutsu", "biologi", "N3", "noun", "生物", "seibutsu", "生物", "seibutsu", [
+            ("生物の授業が好きです。", "Seibutsu no jugyou ga suki desu.", "Saya suka pelajaran biologi."),
+        ]),
+        ("chiri", "地理", "ちり", "chiri", "geografi", "N3", "noun", "地理", "chiri", "地理", "chiri", [
+            ("地理のテストがあります。", "Chiri no tesuto ga arimasu.", "Ada tes geografi."),
+        ]),
+        ("rinri", "倫理", "りんり", "rinri", "etika", "N1", "noun", "倫理", "rinri", "倫理", "rinri", [
+            ("倫理について議論します。", "Rinri ni tsuite giron shimasu.", "Kami berdiskusi tentang etika."),
+        ]),
+        ("tetsugaku", "哲学", "てつがく", "tetsugaku", "filsafat", "N1", "noun", "哲学", "tetsugaku", "哲学", "tetsugaku", [
+            ("大学で哲学を学びました。", "Daigaku de tetsugaku o manabimashita.", "Saya belajar filsafat di universitas."),
+        ]),
     ],
     "pekerjaan_kantor": [
         ("kaisha", "会社", "かいしゃ", "kaisha", "perusahaan/kantor", "N5", "noun", "会社", "kaisha", "会社", "kaisha", [
@@ -331,6 +351,14 @@ CATEGORIES = {
         ]),
         ("sousa", "操作", "そうさ", "sousa", "pengoperasian", "N3", "noun", "操作", "sousa", "操作", "sousa", [
             ("機械を操作します。", "Kikai o sousa shimasu.", "Saya mengoperasikan mesin."),
+        ]),
+        # N1/N2 addition (2026-07-20, twelfth batch): telecom nouns, for
+        # Kombinasi Kanji pool depth.
+        ("tsuushin", "通信", "つうしん", "tsuushin", "telekomunikasi", "N2", "noun", "通信", "tsuushin", "通信", "tsuushin", [
+            ("通信速度が遅いです。", "Tsuushin sokudo ga osoi desu.", "Kecepatan telekomunikasinya lambat."),
+        ]),
+        ("tanmatsu", "端末", "たんまつ", "tanmatsu", "terminal/perangkat", "N1", "noun", "端末", "tanmatsu", "端末", "tanmatsu", [
+            ("この端末は古いです。", "Kono tanmatsu wa furui desu.", "Perangkat ini sudah tua."),
         ]),
     ],
     "media_hiburan": [

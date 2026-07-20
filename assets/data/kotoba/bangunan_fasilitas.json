@@ -550,5 +550,77 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kissaten.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_taishikan",
+    "word": "たいしかん",
+    "kanji": "大使館",
+    "reading": "たいしかん",
+    "romaji": "taishikan",
+    "meaning": "kedutaan besar",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "大使館 (taishikan)",
+      "formal": "大使館 (taishikan)",
+      "keigo": "大使館 (taishikan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大使館でビザを申請します。",
+        "romaji": "Taishikan de biza o shinsei shimasu.",
+        "translation": "Saya mengajukan visa di kedutaan besar."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_taishikan.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_saibansho",
+    "word": "さいばんしょ",
+    "kanji": "裁判所",
+    "reading": "さいばんしょ",
+    "romaji": "saibansho",
+    "meaning": "pengadilan",
+    "jlptLevel": "N1",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "裁判所 (saibansho)",
+      "formal": "裁判所 (saibansho)",
+      "keigo": "裁判所 (saibansho) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "裁判所で裁判があります。",
+        "romaji": "Saibansho de saiban ga arimasu.",
+        "translation": "Ada persidangan di pengadilan."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_saibansho.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_yakusho",
+    "word": "やくしょ",
+    "kanji": "役所",
+    "reading": "やくしょ",
+    "romaji": "yakusho",
+    "meaning": "kantor pemerintah",
+    "jlptLevel": "N3",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "役所 (yakusho)",
+      "formal": "役所 (yakusho)",
+      "keigo": "役所 (yakusho) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "役所で手続きをします。",
+        "romaji": "Yakusho de tetsuzuki o shimasu.",
+        "translation": "Saya mengurus dokumen di kantor pemerintah."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yakusho.png"
   }
 ]

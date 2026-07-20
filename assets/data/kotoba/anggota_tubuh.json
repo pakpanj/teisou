@@ -406,5 +406,125 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_hiza.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_shinzou",
+    "word": "しんぞう",
+    "kanji": "心臓",
+    "reading": "しんぞう",
+    "romaji": "shinzou",
+    "meaning": "jantung",
+    "jlptLevel": "N2",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "心臓 (shinzou)",
+      "formal": "心臓 (shinzou)",
+      "keigo": "心臓 (shinzou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "心臓がドキドキします。",
+        "romaji": "Shinzou ga dokidoki shimasu.",
+        "translation": "Jantung saya berdebar-debar."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_shinzou.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_naizou",
+    "word": "ないぞう",
+    "kanji": "内臓",
+    "reading": "ないぞう",
+    "romaji": "naizou",
+    "meaning": "organ dalam",
+    "jlptLevel": "N1",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "内臓 (naizou)",
+      "formal": "内臓 (naizou)",
+      "keigo": "内臓 (naizou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "内臓の検査を受けます。",
+        "romaji": "Naizou no kensa o ukemasu.",
+        "translation": "Saya menjalani pemeriksaan organ dalam."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_naizou.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_kinniku",
+    "word": "きんにく",
+    "kanji": "筋肉",
+    "reading": "きんにく",
+    "romaji": "kinniku",
+    "meaning": "otot",
+    "jlptLevel": "N3",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "筋肉 (kinniku)",
+      "formal": "筋肉 (kinniku)",
+      "keigo": "筋肉 (kinniku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "筋肉を鍛えます。",
+        "romaji": "Kinniku o kitaemasu.",
+        "translation": "Saya melatih otot."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kinniku.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_kansetsu",
+    "word": "かんせつ",
+    "kanji": "関節",
+    "reading": "かんせつ",
+    "romaji": "kansetsu",
+    "meaning": "sendi",
+    "jlptLevel": "N2",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "関節 (kansetsu)",
+      "formal": "関節 (kansetsu)",
+      "keigo": "関節 (kansetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "関節が痛いです。",
+        "romaji": "Kansetsu ga itai desu.",
+        "translation": "Sendi saya sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kansetsu.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_kekkan",
+    "word": "けっかん",
+    "kanji": "血管",
+    "reading": "けっかん",
+    "romaji": "kekkan",
+    "meaning": "pembuluh darah",
+    "jlptLevel": "N2",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "血管 (kekkan)",
+      "formal": "血管 (kekkan)",
+      "keigo": "血管 (kekkan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "血管が細くなっています。",
+        "romaji": "Kekkan ga hosoku natte imasu.",
+        "translation": "Pembuluh darahnya menyempit."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kekkan.png"
   }
 ]

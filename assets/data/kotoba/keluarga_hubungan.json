@@ -526,5 +526,77 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_otona.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_shinseki",
+    "word": "しんせき",
+    "kanji": "親戚",
+    "reading": "しんせき",
+    "romaji": "shinseki",
+    "meaning": "kerabat/saudara jauh",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "親戚 (shinseki)",
+      "formal": "親戚 (shinseki)",
+      "keigo": "親戚 (shinseki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お正月に親戚が集まります。",
+        "romaji": "Oshougatsu ni shinseki ga atsumarimasu.",
+        "translation": "Kerabat berkumpul saat Tahun Baru."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shinseki.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_haiguusha",
+    "word": "はいぐうしゃ",
+    "kanji": "配偶者",
+    "reading": "はいぐうしゃ",
+    "romaji": "haiguusha",
+    "meaning": "pasangan (suami/istri, istilah hukum)",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "配偶者 (haiguusha)",
+      "formal": "配偶者 (haiguusha)",
+      "keigo": "配偶者 (haiguusha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "配偶者の名前を記入してください。",
+        "romaji": "Haiguusha no namae o kinyuu shite kudasai.",
+        "translation": "Tolong isi nama pasangan Anda."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_haiguusha.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ketsuen",
+    "word": "けつえん",
+    "kanji": "血縁",
+    "reading": "けつえん",
+    "romaji": "ketsuen",
+    "meaning": "hubungan darah",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "血縁 (ketsuen)",
+      "formal": "血縁 (ketsuen)",
+      "keigo": "血縁 (ketsuen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "二人には血縁関係があります。",
+        "romaji": "Futari ni wa ketsuen kankei ga arimasu.",
+        "translation": "Kedua orang itu memiliki hubungan darah."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ketsuen.png"
   }
 ]

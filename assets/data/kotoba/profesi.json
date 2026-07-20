@@ -526,5 +526,53 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_ishi.png"
+  },
+  {
+    "id": "kotoba_profesi_koumuin",
+    "word": "こうむいん",
+    "kanji": "公務員",
+    "reading": "こうむいん",
+    "romaji": "koumuin",
+    "meaning": "pegawai negeri",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "公務員 (koumuin)",
+      "formal": "公務員 (koumuin)",
+      "keigo": "公務員 (koumuin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "兄は公務員です。",
+        "romaji": "Ani wa koumuin desu.",
+        "translation": "Kakak laki-laki saya seorang pegawai negeri."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_koumuin.png"
+  },
+  {
+    "id": "kotoba_profesi_kyoushi",
+    "word": "きょうし",
+    "kanji": "教師",
+    "reading": "きょうし",
+    "romaji": "kyoushi",
+    "meaning": "guru/pengajar (istilah profesi)",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "教師 (kyoushi)",
+      "formal": "教師 (kyoushi)",
+      "keigo": "教師 (kyoushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼女は教師です。",
+        "romaji": "Kanojo wa kyoushi desu.",
+        "translation": "Dia seorang guru."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kyoushi.png"
   }
 ]

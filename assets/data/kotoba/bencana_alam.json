@@ -382,5 +382,29 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kyuujo.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_tatsumaki",
+    "word": "たつまき",
+    "kanji": "竜巻",
+    "reading": "たつまき",
+    "romaji": "tatsumaki",
+    "meaning": "angin puting beliung/tornado",
+    "jlptLevel": "N2",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "たつまき (tatsumaki)",
+      "formal": "たつまき (tatsumaki)",
+      "keigo": "たつまき (tatsumaki) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "竜巻が発生しました。",
+        "romaji": "Tatsumaki ga hassei shimashita.",
+        "translation": "Tornado terjadi."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_tatsumaki.png"
   }
 ]

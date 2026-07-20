@@ -58,6 +58,12 @@ CATEGORIES = {
         ("niwa", "庭", "にわ", "niwa", "halaman/taman rumah", "N4", "noun", "庭", "niwa", "庭", "niwa", [
             ("庭に花があります。", "Niwa ni hana ga arimasu.", "Ada bunga di halaman."),
         ]),
+        # N3 addition (2026-07-20, twelfth batch): distinct from 浴室/お風呂
+        # above (bathtub room) — 洗面所 is specifically the sink/washroom
+        # area, for Kombinasi Kanji pool depth.
+        ("senmenjo", "洗面所", "せんめんじょ", "senmenjo", "kamar mandi/wastafel", "N3", "noun", "洗面所", "senmenjo", "洗面所", "senmenjo", [
+            ("洗面所で顔を洗います。", "Senmenjo de kao o araimasu.", "Saya mencuci muka di wastafel."),
+        ]),
     ],
     "perabot_rumah": [
         ("isu", "椅子", "いす", "isu", "kursi", "N5", "noun", "椅子", "isu", "椅子", "isu", [
@@ -92,6 +98,20 @@ CATEGORIES = {
         ]),
         ("denki", "電気", "でんき", "denki", "lampu/listrik", "N4", "noun", "電気", "denki", "電気", "denki", [
             ("電気をつけます。", "Denki o tsukemasu.", "Saya menyalakan lampu."),
+        ]),
+        # N2/N3 addition (2026-07-20, twelfth batch): more household nouns,
+        # for Kombinasi Kanji pool depth.
+        ("shuunou", "収納", "しゅうのう", "shuunou", "penyimpanan", "N2", "noun", "収納", "shuunou", "収納", "shuunou", [
+            ("この棚は収納が多いです。", "Kono tana wa shuunou ga ooi desu.", "Rak ini punya banyak ruang penyimpanan."),
+        ]),
+        ("kagu", "家具", "かぐ", "kagu", "perabotan/furnitur", "N3", "noun", "家具", "kagu", "家具", "kagu", [
+            ("新しい家具を買いました。", "Atarashii kagu o kaimashita.", "Saya membeli furnitur baru."),
+        ]),
+        ("reibou", "冷房", "れいぼう", "reibou", "AC/pendingin ruangan", "N3", "noun", "冷房", "reibou", "冷房", "reibou", [
+            ("冷房をつけます。", "Reibou o tsukemasu.", "Saya menyalakan AC."),
+        ]),
+        ("danbou", "暖房", "だんぼう", "danbou", "pemanas ruangan", "N3", "noun", "暖房", "danbou", "暖房", "danbou", [
+            ("冬は暖房が必要です。", "Fuyu wa danbou ga hitsuyou desu.", "Musim dingin butuh pemanas ruangan."),
         ]),
     ],
     "bangunan_fasilitas": [
@@ -168,6 +188,17 @@ CATEGORIES = {
         ]),
         ("kissaten", "喫茶店", "きっさてん", "kissaten", "kedai kopi/kafe", "N4", "noun", "喫茶店", "kissaten", "喫茶店", "kissaten", [
             ("喫茶店でコーヒーを飲みます。", "Kissaten de koohii o nomimasu.", "Saya minum kopi di kedai kopi."),
+        ]),
+        # N1/N2/N3 addition (2026-07-20, twelfth batch): government/legal
+        # facility nouns, for Kombinasi Kanji pool depth.
+        ("taishikan", "大使館", "たいしかん", "taishikan", "kedutaan besar", "N2", "noun", "大使館", "taishikan", "大使館", "taishikan", [
+            ("大使館でビザを申請します。", "Taishikan de biza o shinsei shimasu.", "Saya mengajukan visa di kedutaan besar."),
+        ]),
+        ("saibansho", "裁判所", "さいばんしょ", "saibansho", "pengadilan", "N1", "noun", "裁判所", "saibansho", "裁判所", "saibansho", [
+            ("裁判所で裁判があります。", "Saibansho de saiban ga arimasu.", "Ada persidangan di pengadilan."),
+        ]),
+        ("yakusho", "役所", "やくしょ", "yakusho", "kantor pemerintah", "N3", "noun", "役所", "yakusho", "役所", "yakusho", [
+            ("役所で手続きをします。", "Yakusho de tetsuzuki o shimasu.", "Saya mengurus dokumen di kantor pemerintah."),
         ]),
     ],
     "kendaraan": [

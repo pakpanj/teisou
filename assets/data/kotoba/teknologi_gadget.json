@@ -550,5 +550,53 @@
       }
     ],
     "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_sousa.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_tsuushin",
+    "word": "つうしん",
+    "kanji": "通信",
+    "reading": "つうしん",
+    "romaji": "tsuushin",
+    "meaning": "telekomunikasi",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "通信 (tsuushin)",
+      "formal": "通信 (tsuushin)",
+      "keigo": "通信 (tsuushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "通信速度が遅いです。",
+        "romaji": "Tsuushin sokudo ga osoi desu.",
+        "translation": "Kecepatan telekomunikasinya lambat."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_tsuushin.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_tanmatsu",
+    "word": "たんまつ",
+    "kanji": "端末",
+    "reading": "たんまつ",
+    "romaji": "tanmatsu",
+    "meaning": "terminal/perangkat",
+    "jlptLevel": "N1",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "端末 (tanmatsu)",
+      "formal": "端末 (tanmatsu)",
+      "keigo": "端末 (tanmatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この端末は古いです。",
+        "romaji": "Kono tanmatsu wa furui desu.",
+        "translation": "Perangkat ini sudah tua."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_tanmatsu.png"
   }
 ]

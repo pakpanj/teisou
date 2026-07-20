@@ -262,5 +262,101 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_denki.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_shuunou",
+    "word": "しゅうのう",
+    "kanji": "収納",
+    "reading": "しゅうのう",
+    "romaji": "shuunou",
+    "meaning": "penyimpanan",
+    "jlptLevel": "N2",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "収納 (shuunou)",
+      "formal": "収納 (shuunou)",
+      "keigo": "収納 (shuunou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この棚は収納が多いです。",
+        "romaji": "Kono tana wa shuunou ga ooi desu.",
+        "translation": "Rak ini punya banyak ruang penyimpanan."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_shuunou.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_kagu",
+    "word": "かぐ",
+    "kanji": "家具",
+    "reading": "かぐ",
+    "romaji": "kagu",
+    "meaning": "perabotan/furnitur",
+    "jlptLevel": "N3",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "家具 (kagu)",
+      "formal": "家具 (kagu)",
+      "keigo": "家具 (kagu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい家具を買いました。",
+        "romaji": "Atarashii kagu o kaimashita.",
+        "translation": "Saya membeli furnitur baru."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kagu.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_reibou",
+    "word": "れいぼう",
+    "kanji": "冷房",
+    "reading": "れいぼう",
+    "romaji": "reibou",
+    "meaning": "AC/pendingin ruangan",
+    "jlptLevel": "N3",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "冷房 (reibou)",
+      "formal": "冷房 (reibou)",
+      "keigo": "冷房 (reibou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "冷房をつけます。",
+        "romaji": "Reibou o tsukemasu.",
+        "translation": "Saya menyalakan AC."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_reibou.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_danbou",
+    "word": "だんぼう",
+    "kanji": "暖房",
+    "reading": "だんぼう",
+    "romaji": "danbou",
+    "meaning": "pemanas ruangan",
+    "jlptLevel": "N3",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "暖房 (danbou)",
+      "formal": "暖房 (danbou)",
+      "keigo": "暖房 (danbou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "冬は暖房が必要です。",
+        "romaji": "Fuyu wa danbou ga hitsuyou desu.",
+        "translation": "Musim dingin butuh pemanas ruangan."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_danbou.png"
   }
 ]

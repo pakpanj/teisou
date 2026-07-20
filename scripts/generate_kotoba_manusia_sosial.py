@@ -104,6 +104,14 @@ CATEGORIES = {
         ("ishi", "医師", "いし", "ishi", "dokter (istilah formal)", "N3", "noun", "医師", "ishi", "医師", "ishi", [
             ("医師に相談します。", "Ishi ni soudan shimasu.", "Saya berkonsultasi dengan dokter."),
         ]),
+        # N3/N4 addition (2026-07-20, twelfth batch): more concrete
+        # profession nouns, for Kombinasi Kanji pool depth.
+        ("koumuin", "公務員", "こうむいん", "koumuin", "pegawai negeri", "N3", "noun", "公務員", "koumuin", "公務員", "koumuin", [
+            ("兄は公務員です。", "Ani wa koumuin desu.", "Kakak laki-laki saya seorang pegawai negeri."),
+        ]),
+        ("kyoushi", "教師", "きょうし", "kyoushi", "guru/pengajar (istilah profesi)", "N4", "noun", "教師", "kyoushi", "教師", "kyoushi", [
+            ("彼女は教師です。", "Kanojo wa kyoushi desu.", "Dia seorang guru."),
+        ]),
     ],
     "keluarga_hubungan": [
         ("kazoku", "家族", "かぞく", "kazoku", "keluarga", "N5", "noun", "家族", "kazoku", "家族", "kazoku", [
@@ -178,6 +186,17 @@ CATEGORIES = {
         ]),
         ("otona", "大人", "おとな", "otona", "orang dewasa", "N5", "noun", "大人", "otona", "大人", "otona", [
             ("大人になりました。", "Otona ni narimashita.", "Saya sudah menjadi dewasa."),
+        ]),
+        # N1/N2 addition (2026-07-20, twelfth batch): extended-family/
+        # relationship nouns, for Kombinasi Kanji pool depth.
+        ("shinseki", "親戚", "しんせき", "shinseki", "kerabat/saudara jauh", "N2", "noun", "親戚", "shinseki", "親戚", "shinseki", [
+            ("お正月に親戚が集まります。", "Oshougatsu ni shinseki ga atsumarimasu.", "Kerabat berkumpul saat Tahun Baru."),
+        ]),
+        ("haiguusha", "配偶者", "はいぐうしゃ", "haiguusha", "pasangan (suami/istri, istilah hukum)", "N1", "noun", "配偶者", "haiguusha", "配偶者", "haiguusha", [
+            ("配偶者の名前を記入してください。", "Haiguusha no namae o kinyuu shite kudasai.", "Tolong isi nama pasangan Anda."),
+        ]),
+        ("ketsuen", "血縁", "けつえん", "ketsuen", "hubungan darah", "N1", "noun", "血縁", "ketsuen", "血縁", "ketsuen", [
+            ("二人には血縁関係があります。", "Futari ni wa ketsuen kankei ga arimasu.", "Kedua orang itu memiliki hubungan darah."),
         ]),
     ],
     "pakaian_aksesori": [

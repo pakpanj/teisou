@@ -310,5 +310,149 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shingaku.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_keizai",
+    "word": "けいざい",
+    "kanji": "経済",
+    "reading": "けいざい",
+    "romaji": "keizai",
+    "meaning": "ekonomi",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "経済 (keizai)",
+      "formal": "経済 (keizai)",
+      "keigo": "経済 (keizai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "経済を勉強しています。",
+        "romaji": "Keizai o benkyou shite imasu.",
+        "translation": "Saya sedang belajar ekonomi."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_keizai.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_butsuri",
+    "word": "ぶつり",
+    "kanji": "物理",
+    "reading": "ぶつり",
+    "romaji": "butsuri",
+    "meaning": "fisika",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "物理 (butsuri)",
+      "formal": "物理 (butsuri)",
+      "keigo": "物理 (butsuri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "物理は難しいです。",
+        "romaji": "Butsuri wa muzukashii desu.",
+        "translation": "Fisika itu sulit."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_butsuri.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_seibutsu",
+    "word": "せいぶつ",
+    "kanji": "生物",
+    "reading": "せいぶつ",
+    "romaji": "seibutsu",
+    "meaning": "biologi",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "生物 (seibutsu)",
+      "formal": "生物 (seibutsu)",
+      "keigo": "生物 (seibutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "生物の授業が好きです。",
+        "romaji": "Seibutsu no jugyou ga suki desu.",
+        "translation": "Saya suka pelajaran biologi."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_seibutsu.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_chiri",
+    "word": "ちり",
+    "kanji": "地理",
+    "reading": "ちり",
+    "romaji": "chiri",
+    "meaning": "geografi",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "地理 (chiri)",
+      "formal": "地理 (chiri)",
+      "keigo": "地理 (chiri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "地理のテストがあります。",
+        "romaji": "Chiri no tesuto ga arimasu.",
+        "translation": "Ada tes geografi."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_chiri.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_rinri",
+    "word": "りんり",
+    "kanji": "倫理",
+    "reading": "りんり",
+    "romaji": "rinri",
+    "meaning": "etika",
+    "jlptLevel": "N1",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "倫理 (rinri)",
+      "formal": "倫理 (rinri)",
+      "keigo": "倫理 (rinri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "倫理について議論します。",
+        "romaji": "Rinri ni tsuite giron shimasu.",
+        "translation": "Kami berdiskusi tentang etika."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rinri.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_tetsugaku",
+    "word": "てつがく",
+    "kanji": "哲学",
+    "reading": "てつがく",
+    "romaji": "tetsugaku",
+    "meaning": "filsafat",
+    "jlptLevel": "N1",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "哲学 (tetsugaku)",
+      "formal": "哲学 (tetsugaku)",
+      "keigo": "哲学 (tetsugaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大学で哲学を学びました。",
+        "romaji": "Daigaku de tetsugaku o manabimashita.",
+        "translation": "Saya belajar filsafat di universitas."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_tetsugaku.png"
   }
 ]
