@@ -286,5 +286,53 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_shukuga.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_kinenbi",
+    "word": "きねんび",
+    "kanji": "記念日",
+    "reading": "きねんび",
+    "romaji": "kinenbi",
+    "meaning": "hari peringatan/anniversary",
+    "jlptLevel": "N3",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "記念日 (kinenbi)",
+      "formal": "記念日 (kinenbi)",
+      "keigo": "記念日 (kinenbi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "結婚記念日をお祝いします。",
+        "romaji": "Kekkon kinenbi o oiwai shimasu.",
+        "translation": "Kami merayakan hari peringatan pernikahan."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kinenbi.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_seijinshiki",
+    "word": "せいじんしき",
+    "kanji": "成人式",
+    "reading": "せいじんしき",
+    "romaji": "seijinshiki",
+    "meaning": "upacara kedewasaan",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "成人式 (seijinshiki)",
+      "formal": "成人式 (seijinshiki)",
+      "keigo": "成人式 (seijinshiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来年、成人式に出ます。",
+        "romaji": "Rainen, seijinshiki ni demasu.",
+        "translation": "Tahun depan, saya akan mengikuti upacara kedewasaan."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_seijinshiki.png"
   }
 ]

@@ -382,5 +382,29 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_houtai.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_jouzai",
+    "word": "じょうざい",
+    "kanji": "錠剤",
+    "reading": "じょうざい",
+    "romaji": "jouzai",
+    "meaning": "tablet/pil",
+    "jlptLevel": "N1",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "錠剤 (jouzai)",
+      "formal": "錠剤 (jouzai)",
+      "keigo": "錠剤 (jouzai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この錠剤を一日三回飲みます。",
+        "romaji": "Kono jouzai o ichinichi sankai nomimasu.",
+        "translation": "Saya minum tablet ini tiga kali sehari."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_jouzai.png"
   }
 ]

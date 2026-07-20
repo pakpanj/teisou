@@ -334,5 +334,53 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_chuugokugo.png"
+  },
+  {
+    "id": "kotoba_negara_kota_taiwan",
+    "word": "たいわん",
+    "kanji": "台湾",
+    "reading": "たいわん",
+    "romaji": "taiwan",
+    "meaning": "Taiwan",
+    "jlptLevel": "N4",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "台湾 (taiwan)",
+      "formal": "台湾 (taiwan)",
+      "keigo": "台湾 (taiwan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "台湾に旅行します。",
+        "romaji": "Taiwan ni ryokou shimasu.",
+        "translation": "Saya bepergian ke Taiwan."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_taiwan.png"
+  },
+  {
+    "id": "kotoba_negara_kota_nagoya",
+    "word": "なごや",
+    "kanji": "名古屋",
+    "reading": "なごや",
+    "romaji": "nagoya",
+    "meaning": "Nagoya",
+    "jlptLevel": "N3",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "名古屋 (nagoya)",
+      "formal": "名古屋 (nagoya)",
+      "keigo": "名古屋 (nagoya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "名古屋で働いています。",
+        "romaji": "Nagoya de hataraite imasu.",
+        "translation": "Saya bekerja di Nagoya."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_nagoya.png"
   }
 ]

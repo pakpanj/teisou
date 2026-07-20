@@ -36,27 +36,27 @@ GROUPS = {
     ],
     "Tubuh & Kesehatan": [
         ("anggota_tubuh", "Anggota Tubuh", "🖐️", True, 22),
-        ("penyakit_gejala", "Penyakit & Gejala", "🤒", True, 27),
-        ("obat_obatan", "Obat-obatan", "💊", True, 16),
+        ("penyakit_gejala", "Penyakit & Gejala", "🤒", True, 29),
+        ("obat_obatan", "Obat-obatan", "💊", True, 17),
         ("olahraga", "Olahraga", "⚽", True, 20),
-        ("perasaan_emosi", "Perasaan & Emosi", "😊", True, 15),
+        ("perasaan_emosi", "Perasaan & Emosi", "😊", True, 17),
         ("ekspresi_wajah", "Ekspresi Wajah", "😮", True, 8),
     ],
     "Tempat & Transportasi": [
-        ("ruangan_rumah", "Ruangan di Rumah", "🚪", True, 12),
+        ("ruangan_rumah", "Ruangan di Rumah", "🚪", True, 13),
         ("perabot_rumah", "Perabot Rumah", "🛋️", True, 15),
-        ("bangunan_fasilitas", "Bangunan & Fasilitas", "🏢", True, 26),
+        ("bangunan_fasilitas", "Bangunan & Fasilitas", "🏢", True, 28),
         ("kendaraan", "Kendaraan", "🚗", True, 12),
-        ("arah_lokasi", "Arah & Lokasi", "🧭", True, 11),
-        ("negara_kota", "Negara & Kota", "🗺️", True, 14),
+        ("arah_lokasi", "Arah & Lokasi", "🧭", True, 15),
+        ("negara_kota", "Negara & Kota", "🗺️", True, 16),
     ],
     "Manusia & Sosial": [
-        ("profesi", "Profesi", "👨‍⚕️", True, 24),
-        ("keluarga_hubungan", "Keluarga & Hubungan", "👪", True, 25),
-        ("pakaian_aksesori", "Pakaian & Aksesori", "👕", True, 15),
+        ("profesi", "Profesi", "👨‍⚕️", True, 26),
+        ("keluarga_hubungan", "Keluarga & Hubungan", "👪", True, 26),
+        ("pakaian_aksesori", "Pakaian & Aksesori", "👕", True, 16),
         ("hobi_aktivitas", "Hobi & Aktivitas", "🎨", True, 20),
-        ("agama_budaya", "Agama & Budaya", "⛩️", True, 13),
-        ("perayaan_haribesar", "Perayaan & Hari Besar", "🎉", True, 12),
+        ("agama_budaya", "Agama & Budaya", "⛩️", True, 14),
+        ("perayaan_haribesar", "Perayaan & Hari Besar", "🎉", True, 14),
         # New category (2026-07-20, sixth batch) — see the docstring on
         # CATEGORIES["konsep_umum"] in generate_kotoba_manusia_sosial.py
         # for why this exists as its own category rather than being
@@ -65,9 +65,9 @@ GROUPS = {
     ],
     "Pendidikan & Pekerjaan": [
         ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", True, 15),
-        ("mata_pelajaran", "Mata Pelajaran", "📖", True, 19),
+        ("mata_pelajaran", "Mata Pelajaran", "📖", True, 20),
         ("pekerjaan_kantor", "Pekerjaan & Kantor", "💼", True, 41),
-        ("teknologi_gadget", "Teknologi & Gadget", "💻", True, 25),
+        ("teknologi_gadget", "Teknologi & Gadget", "💻", True, 27),
         ("media_hiburan", "Media & Hiburan", "📺", True, 19),
     ],
     "Waktu & Angka": [

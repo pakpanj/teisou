@@ -135,6 +135,9 @@ CATEGORIES = {
         ("tetsugaku", "哲学", "てつがく", "tetsugaku", "filsafat", "N1", "noun", "哲学", "tetsugaku", "哲学", "tetsugaku", [
             ("大学で哲学を学びました。", "Daigaku de tetsugaku o manabimashita.", "Saya belajar filsafat di universitas."),
         ]),
+        ("kateika", "家庭科", "かていか", "kateika", "tata boga/prakarya", "N4", "noun", "家庭科", "kateika", "家庭科", "kateika", [
+            ("家庭科でクッキーを作りました。", "Kateika de kukkii o tsukurimashita.", "Kami membuat kue di pelajaran tata boga."),
+        ]),
     ],
     "pekerjaan_kantor": [
         ("kaisha", "会社", "かいしゃ", "kaisha", "perusahaan/kantor", "N5", "noun", "会社", "kaisha", "会社", "kaisha", [
@@ -359,6 +362,14 @@ CATEGORIES = {
         ]),
         ("tanmatsu", "端末", "たんまつ", "tanmatsu", "terminal/perangkat", "N1", "noun", "端末", "tanmatsu", "端末", "tanmatsu", [
             ("この端末は古いです。", "Kono tanmatsu wa furui desu.", "Perangkat ini sudah tua."),
+        ]),
+        # N3 addition (2026-07-20, thirteenth batch): more everyday
+        # tech-usage nouns, for Kombinasi Kanji pool depth.
+        ("kensaku", "検索", "けんさく", "kensaku", "pencarian", "N3", "noun", "検索", "kensaku", "検索", "kensaku", [
+            ("インターネットで検索します。", "Intaanetto de kensaku shimasu.", "Saya mencari di internet."),
+        ]),
+        ("hozon", "保存", "ほぞん", "hozon", "penyimpanan (data)", "N3", "noun", "保存", "hozon", "保存", "hozon", [
+            ("ファイルを保存します。", "Fairu o hozon shimasu.", "Saya menyimpan berkas."),
         ]),
     ],
     "media_hiburan": [

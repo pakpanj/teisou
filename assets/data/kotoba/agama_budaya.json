@@ -310,5 +310,29 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shinkou.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_shuukan",
+    "word": "しゅうかん",
+    "kanji": "習慣",
+    "reading": "しゅうかん",
+    "romaji": "shuukan",
+    "meaning": "kebiasaan/adat",
+    "jlptLevel": "N4",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "習慣 (shuukan)",
+      "formal": "習慣 (shuukan)",
+      "keigo": "習慣 (shuukan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎朝運動する習慣があります。",
+        "romaji": "Maiasa undou suru shuukan ga arimasu.",
+        "translation": "Saya punya kebiasaan berolahraga setiap pagi."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shuukan.png"
   }
 ]

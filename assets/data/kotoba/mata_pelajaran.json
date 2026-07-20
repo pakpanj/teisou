@@ -454,5 +454,29 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_tetsugaku.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kateika",
+    "word": "かていか",
+    "kanji": "家庭科",
+    "reading": "かていか",
+    "romaji": "kateika",
+    "meaning": "tata boga/prakarya",
+    "jlptLevel": "N4",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "家庭科 (kateika)",
+      "formal": "家庭科 (kateika)",
+      "keigo": "家庭科 (kateika) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "家庭科でクッキーを作りました。",
+        "romaji": "Kateika de kukkii o tsukurimashita.",
+        "translation": "Kami membuat kue di pelajaran tata boga."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kateika.png"
   }
 ]

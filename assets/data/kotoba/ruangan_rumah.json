@@ -286,5 +286,29 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_senmenjo.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_shako",
+    "word": "しゃこ",
+    "kanji": "車庫",
+    "reading": "しゃこ",
+    "romaji": "shako",
+    "meaning": "garasi",
+    "jlptLevel": "N3",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "車庫 (shako)",
+      "formal": "車庫 (shako)",
+      "keigo": "車庫 (shako) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "車を車庫に入れます。",
+        "romaji": "Kuruma o shako ni iremasu.",
+        "translation": "Saya memasukkan mobil ke garasi."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shako.png"
   }
 ]

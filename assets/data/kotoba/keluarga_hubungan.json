@@ -598,5 +598,29 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ketsuen.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_dokushin",
+    "word": "どくしん",
+    "kanji": "独身",
+    "reading": "どくしん",
+    "romaji": "dokushin",
+    "meaning": "belum menikah/single",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "独身 (dokushin)",
+      "formal": "独身 (dokushin)",
+      "keigo": "独身 (dokushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼はまだ独身です。",
+        "romaji": "Kare wa mada dokushin desu.",
+        "translation": "Dia masih belum menikah."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_dokushin.png"
   }
 ]

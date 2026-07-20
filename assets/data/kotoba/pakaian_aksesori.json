@@ -358,5 +358,29 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_youfuku.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_tebukuro",
+    "word": "てぶくろ",
+    "kanji": "手袋",
+    "reading": "てぶくろ",
+    "romaji": "tebukuro",
+    "meaning": "sarung tangan",
+    "jlptLevel": "N3",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "手袋 (tebukuro)",
+      "formal": "手袋 (tebukuro)",
+      "keigo": "手袋 (tebukuro) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "手袋をはめます。",
+        "romaji": "Tebukuro o hamemasu.",
+        "translation": "Saya memakai sarung tangan."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_tebukuro.png"
   }
 ]

@@ -598,5 +598,53 @@
       }
     ],
     "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_tanmatsu.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_kensaku",
+    "word": "けんさく",
+    "kanji": "検索",
+    "reading": "けんさく",
+    "romaji": "kensaku",
+    "meaning": "pencarian",
+    "jlptLevel": "N3",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "検索 (kensaku)",
+      "formal": "検索 (kensaku)",
+      "keigo": "検索 (kensaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "インターネットで検索します。",
+        "romaji": "Intaanetto de kensaku shimasu.",
+        "translation": "Saya mencari di internet."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_kensaku.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_hozon",
+    "word": "ほぞん",
+    "kanji": "保存",
+    "reading": "ほぞん",
+    "romaji": "hozon",
+    "meaning": "penyimpanan (data)",
+    "jlptLevel": "N3",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "保存 (hozon)",
+      "formal": "保存 (hozon)",
+      "keigo": "保存 (hozon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ファイルを保存します。",
+        "romaji": "Fairu o hozon shimasu.",
+        "translation": "Saya menyimpan berkas."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_hozon.png"
   }
 ]

@@ -574,5 +574,53 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kyoushi.png"
+  },
+  {
+    "id": "kotoba_profesi_kaikeishi",
+    "word": "かいけいし",
+    "kanji": "会計士",
+    "reading": "かいけいし",
+    "romaji": "kaikeishi",
+    "meaning": "akuntan",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会計士 (kaikeishi)",
+      "formal": "会計士 (kaikeishi)",
+      "keigo": "会計士 (kaikeishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は会計士として働いています。",
+        "romaji": "Kare wa kaikeishi to shite hataraite imasu.",
+        "translation": "Dia bekerja sebagai akuntan."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kaikeishi.png"
+  },
+  {
+    "id": "kotoba_profesi_yakuzaishi",
+    "word": "やくざいし",
+    "kanji": "薬剤師",
+    "reading": "やくざいし",
+    "romaji": "yakuzaishi",
+    "meaning": "apoteker",
+    "jlptLevel": "N1",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "薬剤師 (yakuzaishi)",
+      "formal": "薬剤師 (yakuzaishi)",
+      "keigo": "薬剤師 (yakuzaishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "薬剤師に薬について聞きます。",
+        "romaji": "Yakuzaishi ni kusuri ni tsuite kikimasu.",
+        "translation": "Saya menanyakan obat kepada apoteker."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_yakuzaishi.png"
   }
 ]

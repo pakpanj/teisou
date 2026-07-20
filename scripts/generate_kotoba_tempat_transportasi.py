@@ -64,6 +64,9 @@ CATEGORIES = {
         ("senmenjo", "洗面所", "せんめんじょ", "senmenjo", "kamar mandi/wastafel", "N3", "noun", "洗面所", "senmenjo", "洗面所", "senmenjo", [
             ("洗面所で顔を洗います。", "Senmenjo de kao o araimasu.", "Saya mencuci muka di wastafel."),
         ]),
+        ("shako", "車庫", "しゃこ", "shako", "garasi", "N3", "noun", "車庫", "shako", "車庫", "shako", [
+            ("車を車庫に入れます。", "Kuruma o shako ni iremasu.", "Saya memasukkan mobil ke garasi."),
+        ]),
     ],
     "perabot_rumah": [
         ("isu", "椅子", "いす", "isu", "kursi", "N5", "noun", "椅子", "isu", "椅子", "isu", [
@@ -200,6 +203,16 @@ CATEGORIES = {
         ("yakusho", "役所", "やくしょ", "yakusho", "kantor pemerintah", "N3", "noun", "役所", "yakusho", "役所", "yakusho", [
             ("役所で手続きをします。", "Yakusho de tetsuzuki o shimasu.", "Saya mengurus dokumen di kantor pemerintah."),
         ]),
+        # N2/N3 addition (2026-07-20, thirteenth batch): more workplace
+        # facility nouns. "koujou2" avoids an id collision with
+        # konsep_umum's 向上 (koujou, "peningkatan") — a genuine homophone
+        # of 工場 (koujou, "pabrik"), different category, no ambiguity.
+        ("koujou2", "工場", "こうじょう", "koujou", "pabrik", "N3", "noun", "工場", "koujou", "工場", "koujou", [
+            ("工場で車を作ります。", "Koujou de kuruma o tsukurimasu.", "Mobil dibuat di pabrik."),
+        ]),
+        ("jimusho", "事務所", "じむしょ", "jimusho", "kantor", "N3", "noun", "事務所", "jimusho", "事務所", "jimusho", [
+            ("事務所で働いています。", "Jimusho de hataraite imasu.", "Saya bekerja di kantor."),
+        ]),
     ],
     "kendaraan": [
         ("kuruma", "車", "くるま", "kuruma", "mobil", "N5", "noun", "車", "kuruma", "車", "kuruma", [
@@ -275,6 +288,20 @@ CATEGORIES = {
         ("tooi", "遠い", "とおい", "tooi", "jauh", "N4", "adjective", "遠い", "tooi", "遠いです", "tooi desu", [
             ("学校は遠いです。", "Gakkou wa tooi desu.", "Sekolah itu jauh."),
         ]),
+        # N2/N3 addition (2026-07-20, thirteenth batch): more location
+        # nouns, for Kombinasi Kanji pool depth.
+        ("shuuhen", "周辺", "しゅうへん", "shuuhen", "sekitar/kawasan", "N2", "noun", "周辺", "shuuhen", "周辺", "shuuhen", [
+            ("駅の周辺にお店があります。", "Eki no shuuhen ni omise ga arimasu.", "Ada toko di sekitar stasiun."),
+        ]),
+        ("fukin", "付近", "ふきん", "fukin", "dekat/sekitar", "N2", "noun", "付近", "fukin", "付近", "fukin", [
+            ("この付近に住んでいます。", "Kono fukin ni sunde imasu.", "Saya tinggal di sekitar sini."),
+        ]),
+        ("houkou", "方向", "ほうこう", "houkou", "arah", "N3", "noun", "方向", "houkou", "方向", "houkou", [
+            ("違う方向に行きました。", "Chigau houkou ni ikimashita.", "Saya pergi ke arah yang salah."),
+        ]),
+        ("chuushin", "中心", "ちゅうしん", "chuushin", "pusat/tengah", "N3", "noun", "中心", "chuushin", "中心", "chuushin", [
+            ("町の中心に公園があります。", "Machi no chuushin ni kouen ga arimasu.", "Ada taman di pusat kota."),
+        ]),
     ],
     "negara_kota": [
         ("nihon", "日本", "にほん", "nihon", "Jepang", "N5", "noun", "日本", "nihon", "日本", "nihon", [
@@ -319,6 +346,14 @@ CATEGORIES = {
         ]),
         ("chuugokugo", "中国語", "ちゅうごくご", "chuugokugo", "bahasa Mandarin", "N5", "noun", "中国語", "chuugokugo", "中国語", "chuugokugo", [
             ("中国語を勉強しています。", "Chuugokugo o benkyou shite imasu.", "Saya sedang belajar bahasa Mandarin."),
+        ]),
+        # N3/N4 addition (2026-07-20, thirteenth batch): more country/city
+        # nouns, for Kombinasi Kanji pool depth.
+        ("taiwan", "台湾", "たいわん", "taiwan", "Taiwan", "N4", "noun", "台湾", "taiwan", "台湾", "taiwan", [
+            ("台湾に旅行します。", "Taiwan ni ryokou shimasu.", "Saya bepergian ke Taiwan."),
+        ]),
+        ("nagoya", "名古屋", "なごや", "nagoya", "Nagoya", "N3", "noun", "名古屋", "nagoya", "名古屋", "nagoya", [
+            ("名古屋で働いています。", "Nagoya de hataraite imasu.", "Saya bekerja di Nagoya."),
         ]),
     ],
 }

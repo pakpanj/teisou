@@ -622,5 +622,53 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yakusho.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_koujou2",
+    "word": "こうじょう",
+    "kanji": "工場",
+    "reading": "こうじょう",
+    "romaji": "koujou",
+    "meaning": "pabrik",
+    "jlptLevel": "N3",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "工場 (koujou)",
+      "formal": "工場 (koujou)",
+      "keigo": "工場 (koujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "工場で車を作ります。",
+        "romaji": "Koujou de kuruma o tsukurimasu.",
+        "translation": "Mobil dibuat di pabrik."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koujou2.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_jimusho",
+    "word": "じむしょ",
+    "kanji": "事務所",
+    "reading": "じむしょ",
+    "romaji": "jimusho",
+    "meaning": "kantor",
+    "jlptLevel": "N3",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "事務所 (jimusho)",
+      "formal": "事務所 (jimusho)",
+      "keigo": "事務所 (jimusho) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "事務所で働いています。",
+        "romaji": "Jimusho de hataraite imasu.",
+        "translation": "Saya bekerja di kantor."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jimusho.png"
   }
 ]

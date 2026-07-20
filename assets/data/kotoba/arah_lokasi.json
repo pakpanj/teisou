@@ -262,5 +262,101 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tooi.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_shuuhen",
+    "word": "しゅうへん",
+    "kanji": "周辺",
+    "reading": "しゅうへん",
+    "romaji": "shuuhen",
+    "meaning": "sekitar/kawasan",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "周辺 (shuuhen)",
+      "formal": "周辺 (shuuhen)",
+      "keigo": "周辺 (shuuhen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "駅の周辺にお店があります。",
+        "romaji": "Eki no shuuhen ni omise ga arimasu.",
+        "translation": "Ada toko di sekitar stasiun."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shuuhen.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_fukin",
+    "word": "ふきん",
+    "kanji": "付近",
+    "reading": "ふきん",
+    "romaji": "fukin",
+    "meaning": "dekat/sekitar",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "付近 (fukin)",
+      "formal": "付近 (fukin)",
+      "keigo": "付近 (fukin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この付近に住んでいます。",
+        "romaji": "Kono fukin ni sunde imasu.",
+        "translation": "Saya tinggal di sekitar sini."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_fukin.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_houkou",
+    "word": "ほうこう",
+    "kanji": "方向",
+    "reading": "ほうこう",
+    "romaji": "houkou",
+    "meaning": "arah",
+    "jlptLevel": "N3",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "方向 (houkou)",
+      "formal": "方向 (houkou)",
+      "keigo": "方向 (houkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "違う方向に行きました。",
+        "romaji": "Chigau houkou ni ikimashita.",
+        "translation": "Saya pergi ke arah yang salah."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_houkou.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_chuushin",
+    "word": "ちゅうしん",
+    "kanji": "中心",
+    "reading": "ちゅうしん",
+    "romaji": "chuushin",
+    "meaning": "pusat/tengah",
+    "jlptLevel": "N3",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "中心 (chuushin)",
+      "formal": "中心 (chuushin)",
+      "keigo": "中心 (chuushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "町の中心に公園があります。",
+        "romaji": "Machi no chuushin ni kouen ga arimasu.",
+        "translation": "Ada taman di pusat kota."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chuushin.png"
   }
 ]

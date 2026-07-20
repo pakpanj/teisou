@@ -646,5 +646,53 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_mahi.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_enshou",
+    "word": "えんしょう",
+    "kanji": "炎症",
+    "reading": "えんしょう",
+    "romaji": "enshou",
+    "meaning": "peradangan/inflamasi",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "炎症 (enshou)",
+      "formal": "炎症 (enshou)",
+      "keigo": "炎症 (enshou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "傷口に炎症が起きています。",
+        "romaji": "Kizuguchi ni enshou ga okite imasu.",
+        "translation": "Terjadi peradangan pada luka itu."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_enshou.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_benpi",
+    "word": "べんぴ",
+    "kanji": "便秘",
+    "reading": "べんぴ",
+    "romaji": "benpi",
+    "meaning": "sembelit",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "便秘 (benpi)",
+      "formal": "便秘 (benpi)",
+      "keigo": "便秘 (benpi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "便秘に悩んでいます。",
+        "romaji": "Benpi ni nayande imasu.",
+        "translation": "Saya mengalami sembelit."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_benpi.png"
   }
 ]

@@ -358,5 +358,53 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kanki.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kinchou",
+    "word": "きんちょう",
+    "kanji": "緊張",
+    "reading": "きんちょう",
+    "romaji": "kinchou",
+    "meaning": "gugup/tegang",
+    "jlptLevel": "N3",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "緊張 (kinchou)",
+      "formal": "緊張 (kinchou)",
+      "keigo": "緊張 (kinchou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "面接で緊張しました。",
+        "romaji": "Mensetsu de kinchou shimashita.",
+        "translation": "Saya gugup saat wawancara."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kinchou.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_koufun",
+    "word": "こうふん",
+    "kanji": "興奮",
+    "reading": "こうふん",
+    "romaji": "koufun",
+    "meaning": "semangat/excitement",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "興奮 (koufun)",
+      "formal": "興奮 (koufun)",
+      "keigo": "興奮 (koufun) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "試合を見て興奮しました。",
+        "romaji": "Shiai o mite koufun shimashita.",
+        "translation": "Saya bersemangat menonton pertandingan."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_koufun.png"
   }
 ]

@@ -112,6 +112,12 @@ CATEGORIES = {
         ("kyoushi", "教師", "きょうし", "kyoushi", "guru/pengajar (istilah profesi)", "N4", "noun", "教師", "kyoushi", "教師", "kyoushi", [
             ("彼女は教師です。", "Kanojo wa kyoushi desu.", "Dia seorang guru."),
         ]),
+        ("kaikeishi", "会計士", "かいけいし", "kaikeishi", "akuntan", "N2", "noun", "会計士", "kaikeishi", "会計士", "kaikeishi", [
+            ("彼は会計士として働いています。", "Kare wa kaikeishi to shite hataraite imasu.", "Dia bekerja sebagai akuntan."),
+        ]),
+        ("yakuzaishi", "薬剤師", "やくざいし", "yakuzaishi", "apoteker", "N1", "noun", "薬剤師", "yakuzaishi", "薬剤師", "yakuzaishi", [
+            ("薬剤師に薬について聞きます。", "Yakuzaishi ni kusuri ni tsuite kikimasu.", "Saya menanyakan obat kepada apoteker."),
+        ]),
     ],
     "keluarga_hubungan": [
         ("kazoku", "家族", "かぞく", "kazoku", "keluarga", "N5", "noun", "家族", "kazoku", "家族", "kazoku", [
@@ -198,6 +204,9 @@ CATEGORIES = {
         ("ketsuen", "血縁", "けつえん", "ketsuen", "hubungan darah", "N1", "noun", "血縁", "ketsuen", "血縁", "ketsuen", [
             ("二人には血縁関係があります。", "Futari ni wa ketsuen kankei ga arimasu.", "Kedua orang itu memiliki hubungan darah."),
         ]),
+        ("dokushin", "独身", "どくしん", "dokushin", "belum menikah/single", "N2", "noun", "独身", "dokushin", "独身", "dokushin", [
+            ("彼はまだ独身です。", "Kare wa mada dokushin desu.", "Dia masih belum menikah."),
+        ]),
     ],
     "pakaian_aksesori": [
         ("fuku", "服", "ふく", "fuku", "baju/pakaian", "N5", "noun", "服", "fuku", "服", "fuku", [
@@ -245,6 +254,9 @@ CATEGORIES = {
         ]),
         ("youfuku", "洋服", "ようふく", "youfuku", "baju (bergaya barat)", "N5", "noun", "洋服", "youfuku", "洋服", "youfuku", [
             ("洋服を買います。", "Youfuku o kaimasu.", "Saya membeli baju."),
+        ]),
+        ("tebukuro", "手袋", "てぶくろ", "tebukuro", "sarung tangan", "N3", "noun", "手袋", "tebukuro", "手袋", "tebukuro", [
+            ("手袋をはめます。", "Tebukuro o hamemasu.", "Saya memakai sarung tangan."),
         ]),
     ],
     "hobi_aktivitas": [
@@ -358,6 +370,11 @@ CATEGORIES = {
         ("shinkou", "信仰", "しんこう", "shinkou", "keyakinan/keimanan", "N2", "noun", "信仰", "shinkou", "信仰", "shinkou", [
             ("信仰は人それぞれです。", "Shinkou wa hito sorezore desu.", "Keyakinan itu berbeda-beda pada setiap orang."),
         ]),
+        # N4 addition (2026-07-20, thirteenth batch): neutral culture noun,
+        # same register discipline as the rest of this category.
+        ("shuukan", "習慣", "しゅうかん", "shuukan", "kebiasaan/adat", "N4", "noun", "習慣", "shuukan", "習慣", "shuukan", [
+            ("毎朝運動する習慣があります。", "Maiasa undou suru shuukan ga arimasu.", "Saya punya kebiasaan berolahraga setiap pagi."),
+        ]),
     ],
     "perayaan_haribesar": [
         ("oshougatsu", "お正月", "おしょうがつ", "oshougatsu", "Tahun Baru (Jepang)", "N4", "noun", "お正月", "oshougatsu", "お正月", "oshougatsu", [
@@ -397,6 +414,14 @@ CATEGORIES = {
         # noun, for Kombinasi Kanji pool depth.
         ("shukuga", "祝賀", "しゅくが", "shukuga", "perayaan/ucapan selamat (formal)", "N1", "noun", "祝賀", "shukuga", "祝賀", "shukuga", [
             ("創立百周年の祝賀会が開かれました。", "Souritsu hyakushuunen no shukugakai ga hirakaremashita.", "Perayaan seratus tahun pendirian diadakan."),
+        ]),
+        # N2/N3 addition (2026-07-20, thirteenth batch): more everyday
+        # celebration/milestone nouns, for Kombinasi Kanji pool depth.
+        ("kinenbi", "記念日", "きねんび", "kinenbi", "hari peringatan/anniversary", "N3", "noun", "記念日", "kinenbi", "記念日", "kinenbi", [
+            ("結婚記念日をお祝いします。", "Kekkon kinenbi o oiwai shimasu.", "Kami merayakan hari peringatan pernikahan."),
+        ]),
+        ("seijinshiki", "成人式", "せいじんしき", "seijinshiki", "upacara kedewasaan", "N2", "noun", "成人式", "seijinshiki", "成人式", "seijinshiki", [
+            ("来年、成人式に出ます。", "Rainen, seijinshiki ni demasu.", "Tahun depan, saya akan mengikuti upacara kedewasaan."),
         ]),
     ],
     # New category (2026-07-20, sixth batch), added specifically to keep

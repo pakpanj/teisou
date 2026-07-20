@@ -191,6 +191,14 @@ CATEGORIES = {
         ("mahi", "麻痺", "まひ", "mahi", "kelumpuhan/mati rasa", "N1", "noun", "麻痺", "mahi", "麻痺", "mahi", [
             ("手足に麻痺があります。", "Teashi ni mahi ga arimasu.", "Ada kelumpuhan di tangan dan kaki."),
         ]),
+        # N2 addition (2026-07-20, thirteenth batch): more everyday
+        # medical-condition nouns, for Kombinasi Kanji pool depth.
+        ("enshou", "炎症", "えんしょう", "enshou", "peradangan/inflamasi", "N2", "noun", "炎症", "enshou", "炎症", "enshou", [
+            ("傷口に炎症が起きています。", "Kizuguchi ni enshou ga okite imasu.", "Terjadi peradangan pada luka itu."),
+        ]),
+        ("benpi", "便秘", "べんぴ", "benpi", "sembelit", "N2", "noun", "便秘", "benpi", "便秘", "benpi", [
+            ("便秘に悩んでいます。", "Benpi ni nayande imasu.", "Saya mengalami sembelit."),
+        ]),
     ],
     "obat_obatan": [
         ("kusuri", "薬", "くすり", "kusuri", "obat", "N4", "noun", "薬", "kusuri", "薬", "kusuri", [
@@ -244,6 +252,9 @@ CATEGORIES = {
         ]),
         ("houtai", "包帯", "ほうたい", "houtai", "perban", "N2", "noun", "包帯", "houtai", "包帯", "houtai", [
             ("傷に包帯を巻きます。", "Kizu ni houtai o makimasu.", "Saya membalut luka dengan perban."),
+        ]),
+        ("jouzai", "錠剤", "じょうざい", "jouzai", "tablet/pil", "N1", "noun", "錠剤", "jouzai", "錠剤", "jouzai", [
+            ("この錠剤を一日三回飲みます。", "Kono jouzai o ichinichi sankai nomimasu.", "Saya minum tablet ini tiga kali sehari."),
         ]),
     ],
     "olahraga": [
@@ -362,6 +373,14 @@ CATEGORIES = {
         ]),
         ("kanki", "歓喜", "かんき", "kanki", "kegembiraan besar/sukacita", "N1", "noun", "歓喜", "kanki", "歓喜", "kanki", [
             ("優勝の知らせに歓喜しました。", "Yuushou no shirase ni kanki shimashita.", "Kami bersukacita mendengar kabar menang juara."),
+        ]),
+        # N2/N3 addition (2026-07-20, thirteenth batch): more everyday
+        # noun-form emotion words, for Kombinasi Kanji pool depth.
+        ("kinchou", "緊張", "きんちょう", "kinchou", "gugup/tegang", "N3", "noun", "緊張", "kinchou", "緊張", "kinchou", [
+            ("面接で緊張しました。", "Mensetsu de kinchou shimashita.", "Saya gugup saat wawancara."),
+        ]),
+        ("koufun", "興奮", "こうふん", "koufun", "semangat/excitement", "N2", "noun", "興奮", "koufun", "興奮", "koufun", [
+            ("試合を見て興奮しました。", "Shiai o mite koufun shimashita.", "Saya bersemangat menonton pertandingan."),
         ]),
     ],
     "ekspresi_wajah": [
