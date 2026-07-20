@@ -5,6 +5,7 @@ import '../models/kanji_combo_question.dart';
 import '../models/kanji_entry.dart';
 import '../models/kotoba_entry.dart';
 import 'kanji_repository.dart';
+import 'kotoba_category_repository.dart';
 import 'kotoba_repository.dart';
 
 /// A 2-3 raw-kanji compound word, no kana mixed in (e.g. 図書館, 電話) —
@@ -20,16 +21,46 @@ const _minPoolSize = 4;
 /// 2-3 character kanji compound with a real (non-placeholder) reading
 /// already authored. No new content-authoring pipeline needed for either
 /// mode.
+///
+/// Compound candidates are pooled from the full 519-word Batch 6 vocab
+/// module (`assets/data/kotoba/{category}.json`, via
+/// [KotobaRepository.getVocabCategory] across every category
+/// [KotobaCategoryRepository] marks available) rather than the ~30-entry
+/// Batch 4 dictionary seed (`kotoba_data.json`, [KotobaRepository.getByLevel])
+/// — the seed file is N5-only and was never meant as this feature's real
+/// data source; using it left Kombinasi mode locked behind a "Segera" badge
+/// for N4/N3/N2/N1 with only 0-8 eligible words per level. Pooling from the
+/// vocab module instead raises that to 53/56/61/19 words for N5/N4/N3/N2
+/// respectively — only N1 stays locked, since the vocab module itself has
+/// just 1 N1-tagged word so far (a content gap in Kotoba itself, not
+/// something this repository can work around).
 class KanjiComboRepository {
   final KanjiRepository kanjiRepository;
   final KotobaRepository kotobaRepository;
+  final KotobaCategoryRepository kotobaCategoryRepository;
   final Random _random;
 
   KanjiComboRepository({
     required this.kanjiRepository,
     required this.kotobaRepository,
+    required this.kotobaCategoryRepository,
     Random? random,
   }) : _random = random ?? Random();
+
+  List<KotobaEntry>? _vocabWordsCache;
+
+  Future<List<KotobaEntry>> _allVocabWords() async {
+    final cached = _vocabWordsCache;
+    if (cached != null) return cached;
+    final categories = await kotobaCategoryRepository.getAll();
+    final words = <KotobaEntry>[];
+    for (final category in categories) {
+      if (!category.available) continue;
+      words.addAll(await kotobaRepository.getVocabCategory(category.id));
+    }
+    _vocabWordsCache = words;
+    return words;
+  }
 
   Future<List<KanjiEntry>> _singlePool(JlptLevel level) async {
     final all = await kanjiRepository.getByLevel(level);
@@ -37,9 +68,12 @@ class KanjiComboRepository {
   }
 
   Future<List<KotobaEntry>> _compoundPool(JlptLevel level) async {
-    final all = await kotobaRepository.getByLevel(level);
+    final all = await _allVocabWords();
     return all
-        .where((w) => !w.placeholder && _compoundPattern.hasMatch(w.kanji ?? ''))
+        .where((w) =>
+            w.jlptLevel == level &&
+            !w.placeholder &&
+            _compoundPattern.hasMatch(w.kanji ?? ''))
         .toList();
   }
 

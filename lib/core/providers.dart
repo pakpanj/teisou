@@ -153,6 +153,7 @@ final kanjiComboRepositoryProvider = Provider<KanjiComboRepository>(
   (ref) => KanjiComboRepository(
     kanjiRepository: ref.watch(kanjiRepositoryProvider),
     kotobaRepository: ref.watch(kotobaRepositoryProvider),
+    kotobaCategoryRepository: ref.watch(kotobaCategoryRepositoryProvider),
   ),
 );
 final kanjiComboExamHistoryRepositoryProvider = Provider<ExamHistoryRepository>(
