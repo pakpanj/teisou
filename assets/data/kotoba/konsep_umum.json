@@ -1222,5 +1222,1109 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tsugou.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_kenri",
+    "word": "けんり",
+    "kanji": "権利",
+    "reading": "けんり",
+    "romaji": "kenri",
+    "meaning": "hak",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "権利 (kenri)",
+      "formal": "権利 (kenri)",
+      "keigo": "権利 (kenri) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "自由に発言する権利があります。",
+        "romaji": "Jiyuu ni hatsugen suru kenri ga arimasu.",
+        "translation": "Ada hak untuk berbicara bebas."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kenri.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_gimu",
+    "word": "ぎむ",
+    "kanji": "義務",
+    "reading": "ぎむ",
+    "romaji": "gimu",
+    "meaning": "kewajiban",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "義務 (gimu)",
+      "formal": "義務 (gimu)",
+      "keigo": "義務 (gimu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "税金を払う義務があります。",
+        "romaji": "Zeikin o harau gimu ga arimasu.",
+        "translation": "Ada kewajiban membayar pajak."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_gimu.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_keiyaku",
+    "word": "けいやく",
+    "kanji": "契約",
+    "reading": "けいやく",
+    "romaji": "keiyaku",
+    "meaning": "kontrak",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "契約 (keiyaku)",
+      "formal": "契約 (keiyaku)",
+      "keigo": "契約 (keiyaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "契約を結びました。",
+        "romaji": "Keiyaku o musubimashita.",
+        "translation": "Kami membuat kontrak."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_keiyaku.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_kisoku",
+    "word": "きそく",
+    "kanji": "規則",
+    "reading": "きそく",
+    "romaji": "kisoku",
+    "meaning": "peraturan",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "規則 (kisoku)",
+      "formal": "規則 (kisoku)",
+      "keigo": "規則 (kisoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学校の規則を守ります。",
+        "romaji": "Gakkou no kisoku o mamorimasu.",
+        "translation": "Saya mematuhi peraturan sekolah."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kisoku.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_ihan",
+    "word": "いはん",
+    "kanji": "違反",
+    "reading": "いはん",
+    "romaji": "ihan",
+    "meaning": "pelanggaran",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "違反 (ihan)",
+      "formal": "違反 (ihan)",
+      "keigo": "違反 (ihan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "交通違反をしました。",
+        "romaji": "Koutsuu ihan o shimashita.",
+        "translation": "Saya melakukan pelanggaran lalu lintas."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ihan.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_bakkin",
+    "word": "ばっきん",
+    "kanji": "罰金",
+    "reading": "ばっきん",
+    "romaji": "bakkin",
+    "meaning": "denda",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "罰金 (bakkin)",
+      "formal": "罰金 (bakkin)",
+      "keigo": "罰金 (bakkin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "罰金を払いました。",
+        "romaji": "Bakkin o haraimashita.",
+        "translation": "Saya membayar denda."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bakkin.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_soshou",
+    "word": "そしょう",
+    "kanji": "訴訟",
+    "reading": "そしょう",
+    "romaji": "soshou",
+    "meaning": "tuntutan hukum/litigasi",
+    "jlptLevel": "N1",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "訴訟 (soshou)",
+      "formal": "訴訟 (soshou)",
+      "keigo": "訴訟 (soshou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その件で訴訟を起こしました。",
+        "romaji": "Sono ken de soshou o okoshimashita.",
+        "translation": "Saya mengajukan tuntutan hukum atas kasus itu."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_soshou.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_saiban",
+    "word": "さいばん",
+    "kanji": "裁判",
+    "reading": "さいばん",
+    "romaji": "saiban",
+    "meaning": "persidangan",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "裁判 (saiban)",
+      "formal": "裁判 (saiban)",
+      "keigo": "裁判 (saiban) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "裁判が始まりました。",
+        "romaji": "Saiban ga hajimarimashita.",
+        "translation": "Persidangan telah dimulai."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_saiban.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_bensai",
+    "word": "べんさい",
+    "kanji": "弁済",
+    "reading": "べんさい",
+    "romaji": "bensai",
+    "meaning": "pelunasan (utang)",
+    "jlptLevel": "N1",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "弁済 (bensai)",
+      "formal": "弁済 (bensai)",
+      "keigo": "弁済 (bensai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "借金を弁済しました。",
+        "romaji": "Shakkin o bensai shimashita.",
+        "translation": "Saya melunasi utang."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bensai.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_juyou",
+    "word": "じゅよう",
+    "kanji": "需要",
+    "reading": "じゅよう",
+    "romaji": "juyou",
+    "meaning": "permintaan (ekonomi)",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "需要 (juyou)",
+      "formal": "需要 (juyou)",
+      "keigo": "需要 (juyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この商品は需要が高いです。",
+        "romaji": "Kono shouhin wa juyou ga takai desu.",
+        "translation": "Produk ini permintaannya tinggi."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_juyou.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_kyoukyuu",
+    "word": "きょうきゅう",
+    "kanji": "供給",
+    "reading": "きょうきゅう",
+    "romaji": "kyoukyuu",
+    "meaning": "penawaran/pasokan (ekonomi)",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "供給 (kyoukyuu)",
+      "formal": "供給 (kyoukyuu)",
+      "keigo": "供給 (kyoukyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電力を供給します。",
+        "romaji": "Denryoku o kyoukyuu shimasu.",
+        "translation": "Kami menyediakan pasokan listrik."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyoukyuu.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_shouhi",
+    "word": "しょうひ",
+    "kanji": "消費",
+    "reading": "しょうひ",
+    "romaji": "shouhi",
+    "meaning": "konsumsi",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "消費 (shouhi)",
+      "formal": "消費 (shouhi)",
+      "keigo": "消費 (shouhi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電気を消費します。",
+        "romaji": "Denki o shouhi shimasu.",
+        "translation": "Kami mengonsumsi listrik."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shouhi.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_chochiku",
+    "word": "ちょちく",
+    "kanji": "貯蓄",
+    "reading": "ちょちく",
+    "romaji": "chochiku",
+    "meaning": "tabungan",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "貯蓄 (chochiku)",
+      "formal": "貯蓄 (chochiku)",
+      "keigo": "貯蓄 (chochiku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "将来のために貯蓄します。",
+        "romaji": "Shourai no tame ni chochiku shimasu.",
+        "translation": "Saya menabung untuk masa depan."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chochiku.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_toushi",
+    "word": "とうし",
+    "kanji": "投資",
+    "reading": "とうし",
+    "romaji": "toushi",
+    "meaning": "investasi",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "投資 (toushi)",
+      "formal": "投資 (toushi)",
+      "keigo": "投資 (toushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "株に投資しました。",
+        "romaji": "Kabu ni toushi shimashita.",
+        "translation": "Saya berinvestasi saham."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_toushi.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_fusai",
+    "word": "ふさい",
+    "kanji": "負債",
+    "reading": "ふさい",
+    "romaji": "fusai",
+    "meaning": "utang/kewajiban finansial",
+    "jlptLevel": "N1",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "負債 (fusai)",
+      "formal": "負債 (fusai)",
+      "keigo": "負債 (fusai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会社は多額の負債を抱えています。",
+        "romaji": "Kaisha wa tagaku no fusai o kakaete imasu.",
+        "translation": "Perusahaan itu menanggung utang besar."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_fusai.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_shisan",
+    "word": "しさん",
+    "kanji": "資産",
+    "reading": "しさん",
+    "romaji": "shisan",
+    "meaning": "aset/kekayaan",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "資産 (shisan)",
+      "formal": "資産 (shisan)",
+      "keigo": "資産 (shisan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "資産を管理します。",
+        "romaji": "Shisan o kanri shimasu.",
+        "translation": "Saya mengelola aset."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shisan.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_keiki",
+    "word": "けいき",
+    "kanji": "景気",
+    "reading": "けいき",
+    "romaji": "keiki",
+    "meaning": "kondisi ekonomi",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "景気 (keiki)",
+      "formal": "景気 (keiki)",
+      "keigo": "景気 (keiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "景気が回復しています。",
+        "romaji": "Keiki ga kaifuku shite imasu.",
+        "translation": "Kondisi ekonomi sedang membaik."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_keiki.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_bukka",
+    "word": "ぶっか",
+    "kanji": "物価",
+    "reading": "ぶっか",
+    "romaji": "bukka",
+    "meaning": "harga barang (umum)",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "物価 (bukka)",
+      "formal": "物価 (bukka)",
+      "keigo": "物価 (bukka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "物価が上がりました。",
+        "romaji": "Bukka ga agarimashita.",
+        "translation": "Harga barang naik."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bukka.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_kawase",
+    "word": "かわせ",
+    "kanji": "為替",
+    "reading": "かわせ",
+    "romaji": "kawase",
+    "meaning": "nilai tukar",
+    "jlptLevel": "N1",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "為替 (kawase)",
+      "formal": "為替 (kawase)",
+      "keigo": "為替 (kawase) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "為替レートが変動しています。",
+        "romaji": "Kawase reeto ga hendou shite imasu.",
+        "translation": "Kurs nilai tukar sedang berfluktuasi."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kawase.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_ishiki",
+    "word": "いしき",
+    "kanji": "意識",
+    "reading": "いしき",
+    "romaji": "ishiki",
+    "meaning": "kesadaran",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "意識 (ishiki)",
+      "formal": "意識 (ishiki)",
+      "keigo": "意識 (ishiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "環境問題への意識が高まっています。",
+        "romaji": "Kankyou mondai e no ishiki ga takamatte imasu.",
+        "translation": "Kesadaran akan isu lingkungan meningkat."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ishiki.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_muishiki",
+    "word": "むいしき",
+    "kanji": "無意識",
+    "reading": "むいしき",
+    "romaji": "muishiki",
+    "meaning": "ketidaksadaran",
+    "jlptLevel": "N1",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "無意識 (muishiki)",
+      "formal": "無意識 (muishiki)",
+      "keigo": "無意識 (muishiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "無意識にそう言ってしまいました。",
+        "romaji": "Muishiki ni sou itte shimaimashita.",
+        "translation": "Saya mengatakannya tanpa sadar."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_muishiki.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_kioku",
+    "word": "きおく",
+    "kanji": "記憶",
+    "reading": "きおく",
+    "romaji": "kioku",
+    "meaning": "ingatan",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "記憶 (kioku)",
+      "formal": "記憶 (kioku)",
+      "keigo": "記憶 (kioku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その日の記憶が鮮明です。",
+        "romaji": "Sono hi no kioku ga senmei desu.",
+        "translation": "Ingatan hari itu masih jelas."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kioku.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_ninshiki",
+    "word": "にんしき",
+    "kanji": "認識",
+    "reading": "にんしき",
+    "romaji": "ninshiki",
+    "meaning": "pengenalan/kesadaran akan sesuatu",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "認識 (ninshiki)",
+      "formal": "認識 (ninshiki)",
+      "keigo": "認識 (ninshiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "問題を認識しています。",
+        "romaji": "Mondai o ninshiki shite imasu.",
+        "translation": "Saya menyadari masalahnya."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ninshiki.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_chokkan",
+    "word": "ちょっかん",
+    "kanji": "直感",
+    "reading": "ちょっかん",
+    "romaji": "chokkan",
+    "meaning": "intuisi",
+    "jlptLevel": "N1",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "直感 (chokkan)",
+      "formal": "直感 (chokkan)",
+      "keigo": "直感 (chokkan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "直感で決めました。",
+        "romaji": "Chokkan de kimemashita.",
+        "translation": "Saya memutuskan dengan intuisi."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chokkan.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_honnou",
+    "word": "ほんのう",
+    "kanji": "本能",
+    "reading": "ほんのう",
+    "romaji": "honnou",
+    "meaning": "insting",
+    "jlptLevel": "N1",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "本能 (honnou)",
+      "formal": "本能 (honnou)",
+      "keigo": "本能 (honnou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "動物の本能です。",
+        "romaji": "Doubutsu no honnou desu.",
+        "translation": "Itu insting hewan."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_honnou.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_iyoku",
+    "word": "いよく",
+    "kanji": "意欲",
+    "reading": "いよく",
+    "romaji": "iyoku",
+    "meaning": "motivasi/semangat",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "意欲 (iyoku)",
+      "formal": "意欲 (iyoku)",
+      "keigo": "意欲 (iyoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "仕事への意欲が湧いてきました。",
+        "romaji": "Shigoto e no iyoku ga waite kimashita.",
+        "translation": "Motivasi untuk bekerja mulai muncul."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_iyoku.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_shoudou",
+    "word": "しょうどう",
+    "kanji": "衝動",
+    "reading": "しょうどう",
+    "romaji": "shoudou",
+    "meaning": "impuls/dorongan",
+    "jlptLevel": "N1",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "衝動 (shoudou)",
+      "formal": "衝動 (shoudou)",
+      "keigo": "衝動 (shoudou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "衝動買いをしてしまいました。",
+        "romaji": "Shoudougai o shite shimaimashita.",
+        "translation": "Saya jadi belanja secara impulsif."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shoudou.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_seisaku",
+    "word": "せいさく",
+    "kanji": "政策",
+    "reading": "せいさく",
+    "romaji": "seisaku",
+    "meaning": "kebijakan",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "政策 (seisaku)",
+      "formal": "政策 (seisaku)",
+      "keigo": "政策 (seisaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい政策が発表されました。",
+        "romaji": "Atarashii seisaku ga happyou saremashita.",
+        "translation": "Kebijakan baru telah diumumkan."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_seisaku.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_seido",
+    "word": "せいど",
+    "kanji": "制度",
+    "reading": "せいど",
+    "romaji": "seido",
+    "meaning": "sistem/institusi",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "制度 (seido)",
+      "formal": "制度 (seido)",
+      "keigo": "制度 (seido) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この制度は複雑です。",
+        "romaji": "Kono seido wa fukuzatsu desu.",
+        "translation": "Sistem ini rumit."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_seido.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_senkyo",
+    "word": "せんきょ",
+    "kanji": "選挙",
+    "reading": "せんきょ",
+    "romaji": "senkyo",
+    "meaning": "pemilu",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "選挙 (senkyo)",
+      "formal": "選挙 (senkyo)",
+      "keigo": "選挙 (senkyo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来月選挙があります。",
+        "romaji": "Raigetsu senkyo ga arimasu.",
+        "translation": "Bulan depan ada pemilu."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_senkyo.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_kenryoku",
+    "word": "けんりょく",
+    "kanji": "権力",
+    "reading": "けんりょく",
+    "romaji": "kenryoku",
+    "meaning": "kekuasaan",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "権力 (kenryoku)",
+      "formal": "権力 (kenryoku)",
+      "keigo": "権力 (kenryoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "権力を乱用しないでください。",
+        "romaji": "Kenryoku o ran'you shinaide kudasai.",
+        "translation": "Tolong jangan menyalahgunakan kekuasaan."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kenryoku.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_byoudou",
+    "word": "びょうどう",
+    "kanji": "平等",
+    "reading": "びょうどう",
+    "romaji": "byoudou",
+    "meaning": "kesetaraan",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "平等 (byoudou)",
+      "formal": "平等 (byoudou)",
+      "keigo": "平等 (byoudou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "みんな平等であるべきです。",
+        "romaji": "Minna byoudou de aru beki desu.",
+        "translation": "Semua orang seharusnya setara."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_byoudou.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_kakusa",
+    "word": "かくさ",
+    "kanji": "格差",
+    "reading": "かくさ",
+    "romaji": "kakusa",
+    "meaning": "kesenjangan (sosial/ekonomi)",
+    "jlptLevel": "N1",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "格差 (kakusa)",
+      "formal": "格差 (kakusa)",
+      "keigo": "格差 (kakusa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "経済格差が広がっています。",
+        "romaji": "Keizai kakusa ga hirogatte imasu.",
+        "translation": "Kesenjangan ekonomi semakin melebar."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kakusa.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_sabetsu",
+    "word": "さべつ",
+    "kanji": "差別",
+    "reading": "さべつ",
+    "romaji": "sabetsu",
+    "meaning": "diskriminasi",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "差別 (sabetsu)",
+      "formal": "差別 (sabetsu)",
+      "keigo": "差別 (sabetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "差別をなくしたいです。",
+        "romaji": "Sabetsu o nakushitai desu.",
+        "translation": "Saya ingin menghapuskan diskriminasi."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_sabetsu.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_hyougen",
+    "word": "ひょうげん",
+    "kanji": "表現",
+    "reading": "ひょうげん",
+    "romaji": "hyougen",
+    "meaning": "ekspresi/ungkapan",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "表現 (hyougen)",
+      "formal": "表現 (hyougen)",
+      "keigo": "表現 (hyougen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "自分の気持ちを表現します。",
+        "romaji": "Jibun no kimochi o hyougen shimasu.",
+        "translation": "Saya mengekspresikan perasaan saya sendiri."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hyougen.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_hatsugen",
+    "word": "はつげん",
+    "kanji": "発言",
+    "reading": "はつげん",
+    "romaji": "hatsugen",
+    "meaning": "pernyataan/ucapan",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "発言 (hatsugen)",
+      "formal": "発言 (hatsugen)",
+      "keigo": "発言 (hatsugen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その発言に驚きました。",
+        "romaji": "Sono hatsugen ni odorokimashita.",
+        "translation": "Saya terkejut dengan pernyataan itu."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hatsugen.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_giron",
+    "word": "ぎろん",
+    "kanji": "議論",
+    "reading": "ぎろん",
+    "romaji": "giron",
+    "meaning": "diskusi/perdebatan",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "議論 (giron)",
+      "formal": "議論 (giron)",
+      "keigo": "議論 (giron) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その問題について議論します。",
+        "romaji": "Sono mondai ni tsuite giron shimasu.",
+        "translation": "Kami mendiskusikan masalah itu."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_giron.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_ito",
+    "word": "いと",
+    "kanji": "意図",
+    "reading": "いと",
+    "romaji": "ito",
+    "meaning": "maksud/niat",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "意図 (ito)",
+      "formal": "意図 (ito)",
+      "keigo": "意図 (ito) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼の意図が分かりません。",
+        "romaji": "Kare no ito ga wakarimasen.",
+        "translation": "Saya tidak paham maksudnya."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ito.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_aimai",
+    "word": "あいまい",
+    "kanji": "曖昧",
+    "reading": "あいまい",
+    "romaji": "aimai",
+    "meaning": "ambigu/samar",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "曖昧 (aimai)",
+      "formal": "曖昧 (aimai)",
+      "keigo": "曖昧 (aimai) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "曖昧な返事をしました。",
+        "romaji": "Aimai na henji o shimashita.",
+        "translation": "Saya memberi jawaban yang ambigu."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_aimai.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_shinpo",
+    "word": "しんぽ",
+    "kanji": "進歩",
+    "reading": "しんぽ",
+    "romaji": "shinpo",
+    "meaning": "kemajuan",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "進歩 (shinpo)",
+      "formal": "進歩 (shinpo)",
+      "keigo": "進歩 (shinpo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "技術が進歩しました。",
+        "romaji": "Gijutsu ga shinpo shimashita.",
+        "translation": "Teknologi mengalami kemajuan."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shinpo.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_junkan",
+    "word": "じゅんかん",
+    "kanji": "循環",
+    "reading": "じゅんかん",
+    "romaji": "junkan",
+    "meaning": "siklus/sirkulasi",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "循環 (junkan)",
+      "formal": "循環 (junkan)",
+      "keigo": "循環 (junkan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "血液が循環します。",
+        "romaji": "Ketsueki ga junkan shimasu.",
+        "translation": "Darah bersirkulasi."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_junkan.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_jizoku",
+    "word": "じぞく",
+    "kanji": "持続",
+    "reading": "じぞく",
+    "romaji": "jizoku",
+    "meaning": "keberlanjutan",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "持続 (jizoku)",
+      "formal": "持続 (jizoku)",
+      "keigo": "持続 (jizoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "効果が持続します。",
+        "romaji": "Kouka ga jizoku shimasu.",
+        "translation": "Efeknya berlangsung terus."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jizoku.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_iji",
+    "word": "いじ",
+    "kanji": "維持",
+    "reading": "いじ",
+    "romaji": "iji",
+    "meaning": "pemeliharaan/menjaga",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "維持 (iji)",
+      "formal": "維持 (iji)",
+      "keigo": "維持 (iji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "健康を維持します。",
+        "romaji": "Kenkou o iji shimasu.",
+        "translation": "Saya menjaga kesehatan."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_iji.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_tekiou",
+    "word": "てきおう",
+    "kanji": "適応",
+    "reading": "てきおう",
+    "romaji": "tekiou",
+    "meaning": "adaptasi",
+    "jlptLevel": "N2",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "適応 (tekiou)",
+      "formal": "適応 (tekiou)",
+      "keigo": "適応 (tekiou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい環境に適応します。",
+        "romaji": "Atarashii kankyou ni tekiou shimasu.",
+        "translation": "Saya beradaptasi dengan lingkungan baru."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tekiou.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_houritsu",
+    "word": "ほうりつ",
+    "kanji": "法律",
+    "reading": "ほうりつ",
+    "romaji": "houritsu",
+    "meaning": "hukum/undang-undang",
+    "jlptLevel": "N4",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "法律 (houritsu)",
+      "formal": "法律 (houritsu)",
+      "keigo": "法律 (houritsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "法律を守ります。",
+        "romaji": "Houritsu o mamorimasu.",
+        "translation": "Saya mematuhi hukum."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_houritsu.png"
+  },
+  {
+    "id": "kotoba_konsep_umum_henka",
+    "word": "へんか",
+    "kanji": "変化",
+    "reading": "へんか",
+    "romaji": "henka",
+    "meaning": "perubahan",
+    "jlptLevel": "N3",
+    "category": "konsep_umum",
+    "wordType": "noun",
+    "registers": {
+      "casual": "変化 (henka)",
+      "formal": "変化 (henka)",
+      "keigo": "変化 (henka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "季節の変化を感じます。",
+        "romaji": "Kisetsu no henka o kanjimasu.",
+        "translation": "Saya merasakan perubahan musim."
+      }
+    ],
+    "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_henka.png"
   }
 ]

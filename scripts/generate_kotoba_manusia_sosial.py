@@ -477,6 +477,151 @@ CATEGORIES = {
         ("tsugou", "都合", "つごう", "tsugou", "keadaan/kenyamanan (waktu)", "N3", "noun", "都合", "tsugou", "都合", "tsugou", [
             ("都合がいい時間を教えてください。", "Tsugou ga ii jikan o oshiete kudasai.", "Tolong beri tahu waktu yang cocok untuk Anda."),
         ]),
+        # Second addition (2026-07-20, seventh batch): another 46 pure
+        # 2-kanji general nouns, this time spanning legal/administrative,
+        # economics/finance, psychology/cognition, politics/society, and
+        # communication vocabulary — same rule as the first 51: nothing
+        # here is tied to a specific real-world domain the other 45
+        # categories already cover. Cross-checked against the whole
+        # dataset for kanji-string overlap before authoring (zero hits).
+        ("kenri", "権利", "けんり", "kenri", "hak", "N3", "noun", "権利", "kenri", "権利", "kenri", [
+            ("自由に発言する権利があります。", "Jiyuu ni hatsugen suru kenri ga arimasu.", "Ada hak untuk berbicara bebas."),
+        ]),
+        ("gimu", "義務", "ぎむ", "gimu", "kewajiban", "N3", "noun", "義務", "gimu", "義務", "gimu", [
+            ("税金を払う義務があります。", "Zeikin o harau gimu ga arimasu.", "Ada kewajiban membayar pajak."),
+        ]),
+        ("keiyaku", "契約", "けいやく", "keiyaku", "kontrak", "N3", "noun", "契約", "keiyaku", "契約", "keiyaku", [
+            ("契約を結びました。", "Keiyaku o musubimashita.", "Kami membuat kontrak."),
+        ]),
+        ("kisoku", "規則", "きそく", "kisoku", "peraturan", "N3", "noun", "規則", "kisoku", "規則", "kisoku", [
+            ("学校の規則を守ります。", "Gakkou no kisoku o mamorimasu.", "Saya mematuhi peraturan sekolah."),
+        ]),
+        ("ihan", "違反", "いはん", "ihan", "pelanggaran", "N2", "noun", "違反", "ihan", "違反", "ihan", [
+            ("交通違反をしました。", "Koutsuu ihan o shimashita.", "Saya melakukan pelanggaran lalu lintas."),
+        ]),
+        ("bakkin", "罰金", "ばっきん", "bakkin", "denda", "N2", "noun", "罰金", "bakkin", "罰金", "bakkin", [
+            ("罰金を払いました。", "Bakkin o haraimashita.", "Saya membayar denda."),
+        ]),
+        ("soshou", "訴訟", "そしょう", "soshou", "tuntutan hukum/litigasi", "N1", "noun", "訴訟", "soshou", "訴訟", "soshou", [
+            ("その件で訴訟を起こしました。", "Sono ken de soshou o okoshimashita.", "Saya mengajukan tuntutan hukum atas kasus itu."),
+        ]),
+        ("saiban", "裁判", "さいばん", "saiban", "persidangan", "N2", "noun", "裁判", "saiban", "裁判", "saiban", [
+            ("裁判が始まりました。", "Saiban ga hajimarimashita.", "Persidangan telah dimulai."),
+        ]),
+        ("bensai", "弁済", "べんさい", "bensai", "pelunasan (utang)", "N1", "noun", "弁済", "bensai", "弁済", "bensai", [
+            ("借金を弁済しました。", "Shakkin o bensai shimashita.", "Saya melunasi utang."),
+        ]),
+        ("juyou", "需要", "じゅよう", "juyou", "permintaan (ekonomi)", "N2", "noun", "需要", "juyou", "需要", "juyou", [
+            ("この商品は需要が高いです。", "Kono shouhin wa juyou ga takai desu.", "Produk ini permintaannya tinggi."),
+        ]),
+        ("kyoukyuu", "供給", "きょうきゅう", "kyoukyuu", "penawaran/pasokan (ekonomi)", "N2", "noun", "供給", "kyoukyuu", "供給", "kyoukyuu", [
+            ("電力を供給します。", "Denryoku o kyoukyuu shimasu.", "Kami menyediakan pasokan listrik."),
+        ]),
+        ("shouhi", "消費", "しょうひ", "shouhi", "konsumsi", "N3", "noun", "消費", "shouhi", "消費", "shouhi", [
+            ("電気を消費します。", "Denki o shouhi shimasu.", "Kami mengonsumsi listrik."),
+        ]),
+        ("chochiku", "貯蓄", "ちょちく", "chochiku", "tabungan", "N2", "noun", "貯蓄", "chochiku", "貯蓄", "chochiku", [
+            ("将来のために貯蓄します。", "Shourai no tame ni chochiku shimasu.", "Saya menabung untuk masa depan."),
+        ]),
+        ("toushi", "投資", "とうし", "toushi", "investasi", "N3", "noun", "投資", "toushi", "投資", "toushi", [
+            ("株に投資しました。", "Kabu ni toushi shimashita.", "Saya berinvestasi saham."),
+        ]),
+        ("fusai", "負債", "ふさい", "fusai", "utang/kewajiban finansial", "N1", "noun", "負債", "fusai", "負債", "fusai", [
+            ("会社は多額の負債を抱えています。", "Kaisha wa tagaku no fusai o kakaete imasu.", "Perusahaan itu menanggung utang besar."),
+        ]),
+        ("shisan", "資産", "しさん", "shisan", "aset/kekayaan", "N2", "noun", "資産", "shisan", "資産", "shisan", [
+            ("資産を管理します。", "Shisan o kanri shimasu.", "Saya mengelola aset."),
+        ]),
+        ("keiki", "景気", "けいき", "keiki", "kondisi ekonomi", "N2", "noun", "景気", "keiki", "景気", "keiki", [
+            ("景気が回復しています。", "Keiki ga kaifuku shite imasu.", "Kondisi ekonomi sedang membaik."),
+        ]),
+        ("bukka", "物価", "ぶっか", "bukka", "harga barang (umum)", "N3", "noun", "物価", "bukka", "物価", "bukka", [
+            ("物価が上がりました。", "Bukka ga agarimashita.", "Harga barang naik."),
+        ]),
+        ("kawase", "為替", "かわせ", "kawase", "nilai tukar", "N1", "noun", "為替", "kawase", "為替", "kawase", [
+            ("為替レートが変動しています。", "Kawase reeto ga hendou shite imasu.", "Kurs nilai tukar sedang berfluktuasi."),
+        ]),
+        ("ishiki", "意識", "いしき", "ishiki", "kesadaran", "N2", "noun", "意識", "ishiki", "意識", "ishiki", [
+            ("環境問題への意識が高まっています。", "Kankyou mondai e no ishiki ga takamatte imasu.", "Kesadaran akan isu lingkungan meningkat."),
+        ]),
+        ("muishiki", "無意識", "むいしき", "muishiki", "ketidaksadaran", "N1", "noun", "無意識", "muishiki", "無意識", "muishiki", [
+            ("無意識にそう言ってしまいました。", "Muishiki ni sou itte shimaimashita.", "Saya mengatakannya tanpa sadar."),
+        ]),
+        ("kioku", "記憶", "きおく", "kioku", "ingatan", "N3", "noun", "記憶", "kioku", "記憶", "kioku", [
+            ("その日の記憶が鮮明です。", "Sono hi no kioku ga senmei desu.", "Ingatan hari itu masih jelas."),
+        ]),
+        ("ninshiki", "認識", "にんしき", "ninshiki", "pengenalan/kesadaran akan sesuatu", "N2", "noun", "認識", "ninshiki", "認識", "ninshiki", [
+            ("問題を認識しています。", "Mondai o ninshiki shite imasu.", "Saya menyadari masalahnya."),
+        ]),
+        ("chokkan", "直感", "ちょっかん", "chokkan", "intuisi", "N1", "noun", "直感", "chokkan", "直感", "chokkan", [
+            ("直感で決めました。", "Chokkan de kimemashita.", "Saya memutuskan dengan intuisi."),
+        ]),
+        ("honnou", "本能", "ほんのう", "honnou", "insting", "N1", "noun", "本能", "honnou", "本能", "honnou", [
+            ("動物の本能です。", "Doubutsu no honnou desu.", "Itu insting hewan."),
+        ]),
+        ("iyoku", "意欲", "いよく", "iyoku", "motivasi/semangat", "N2", "noun", "意欲", "iyoku", "意欲", "iyoku", [
+            ("仕事への意欲が湧いてきました。", "Shigoto e no iyoku ga waite kimashita.", "Motivasi untuk bekerja mulai muncul."),
+        ]),
+        ("shoudou", "衝動", "しょうどう", "shoudou", "impuls/dorongan", "N1", "noun", "衝動", "shoudou", "衝動", "shoudou", [
+            ("衝動買いをしてしまいました。", "Shoudougai o shite shimaimashita.", "Saya jadi belanja secara impulsif."),
+        ]),
+        ("seisaku", "政策", "せいさく", "seisaku", "kebijakan", "N2", "noun", "政策", "seisaku", "政策", "seisaku", [
+            ("新しい政策が発表されました。", "Atarashii seisaku ga happyou saremashita.", "Kebijakan baru telah diumumkan."),
+        ]),
+        ("seido", "制度", "せいど", "seido", "sistem/institusi", "N2", "noun", "制度", "seido", "制度", "seido", [
+            ("この制度は複雑です。", "Kono seido wa fukuzatsu desu.", "Sistem ini rumit."),
+        ]),
+        ("senkyo", "選挙", "せんきょ", "senkyo", "pemilu", "N3", "noun", "選挙", "senkyo", "選挙", "senkyo", [
+            ("来月選挙があります。", "Raigetsu senkyo ga arimasu.", "Bulan depan ada pemilu."),
+        ]),
+        ("kenryoku", "権力", "けんりょく", "kenryoku", "kekuasaan", "N2", "noun", "権力", "kenryoku", "権力", "kenryoku", [
+            ("権力を乱用しないでください。", "Kenryoku o ran'you shinaide kudasai.", "Tolong jangan menyalahgunakan kekuasaan."),
+        ]),
+        ("byoudou", "平等", "びょうどう", "byoudou", "kesetaraan", "N3", "noun", "平等", "byoudou", "平等", "byoudou", [
+            ("みんな平等であるべきです。", "Minna byoudou de aru beki desu.", "Semua orang seharusnya setara."),
+        ]),
+        ("kakusa", "格差", "かくさ", "kakusa", "kesenjangan (sosial/ekonomi)", "N1", "noun", "格差", "kakusa", "格差", "kakusa", [
+            ("経済格差が広がっています。", "Keizai kakusa ga hirogatte imasu.", "Kesenjangan ekonomi semakin melebar."),
+        ]),
+        ("sabetsu", "差別", "さべつ", "sabetsu", "diskriminasi", "N2", "noun", "差別", "sabetsu", "差別", "sabetsu", [
+            ("差別をなくしたいです。", "Sabetsu o nakushitai desu.", "Saya ingin menghapuskan diskriminasi."),
+        ]),
+        ("hyougen", "表現", "ひょうげん", "hyougen", "ekspresi/ungkapan", "N3", "noun", "表現", "hyougen", "表現", "hyougen", [
+            ("自分の気持ちを表現します。", "Jibun no kimochi o hyougen shimasu.", "Saya mengekspresikan perasaan saya sendiri."),
+        ]),
+        ("hatsugen", "発言", "はつげん", "hatsugen", "pernyataan/ucapan", "N2", "noun", "発言", "hatsugen", "発言", "hatsugen", [
+            ("その発言に驚きました。", "Sono hatsugen ni odorokimashita.", "Saya terkejut dengan pernyataan itu."),
+        ]),
+        ("giron", "議論", "ぎろん", "giron", "diskusi/perdebatan", "N3", "noun", "議論", "giron", "議論", "giron", [
+            ("その問題について議論します。", "Sono mondai ni tsuite giron shimasu.", "Kami mendiskusikan masalah itu."),
+        ]),
+        ("ito", "意図", "いと", "ito", "maksud/niat", "N2", "noun", "意図", "ito", "意図", "ito", [
+            ("彼の意図が分かりません。", "Kare no ito ga wakarimasen.", "Saya tidak paham maksudnya."),
+        ]),
+        ("aimai", "曖昧", "あいまい", "aimai", "ambigu/samar", "N3", "adjective", "曖昧", "aimai", "曖昧", "aimai", [
+            ("曖昧な返事をしました。", "Aimai na henji o shimashita.", "Saya memberi jawaban yang ambigu."),
+        ]),
+        ("shinpo", "進歩", "しんぽ", "shinpo", "kemajuan", "N3", "noun", "進歩", "shinpo", "進歩", "shinpo", [
+            ("技術が進歩しました。", "Gijutsu ga shinpo shimashita.", "Teknologi mengalami kemajuan."),
+        ]),
+        ("junkan", "循環", "じゅんかん", "junkan", "siklus/sirkulasi", "N2", "noun", "循環", "junkan", "循環", "junkan", [
+            ("血液が循環します。", "Ketsueki ga junkan shimasu.", "Darah bersirkulasi."),
+        ]),
+        ("jizoku", "持続", "じぞく", "jizoku", "keberlanjutan", "N2", "noun", "持続", "jizoku", "持続", "jizoku", [
+            ("効果が持続します。", "Kouka ga jizoku shimasu.", "Efeknya berlangsung terus."),
+        ]),
+        ("iji", "維持", "いじ", "iji", "pemeliharaan/menjaga", "N2", "noun", "維持", "iji", "維持", "iji", [
+            ("健康を維持します。", "Kenkou o iji shimasu.", "Saya menjaga kesehatan."),
+        ]),
+        ("tekiou", "適応", "てきおう", "tekiou", "adaptasi", "N2", "noun", "適応", "tekiou", "適応", "tekiou", [
+            ("新しい環境に適応します。", "Atarashii kankyou ni tekiou shimasu.", "Saya beradaptasi dengan lingkungan baru."),
+        ]),
+        ("houritsu", "法律", "ほうりつ", "houritsu", "hukum/undang-undang", "N4", "noun", "法律", "houritsu", "法律", "houritsu", [
+            ("法律を守ります。", "Houritsu o mamorimasu.", "Saya mematuhi hukum."),
+        ]),
+        ("henka", "変化", "へんか", "henka", "perubahan", "N3", "noun", "変化", "henka", "変化", "henka", [
+            ("季節の変化を感じます。", "Kisetsu no henka o kanjimasu.", "Saya merasakan perubahan musim."),
+        ]),
     ],
 }
 
