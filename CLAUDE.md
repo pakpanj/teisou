@@ -575,10 +575,26 @@ from 60 to 70 passages (50 new, 350/~500 = 70% overall), same
 pipeline, same escalation pattern, prompted by another terse "lanjut
 generate" — purely content authoring, no architecture changes.
 
+**Update, same day (2026-07-20), phase 7**: N5/N4/N3/N2/N1 each went
+from 70 to 80 passages (50 new, 400/~500 = 80% overall), same
+pipeline, same escalation pattern, prompted by another terse "generate
+lagi". **Gotcha caught mid-phase, worth remembering**: the N2 and N1
+title lists in `dokkai_lists.py` were initially missed when adding this
+phase's 10-title-per-level batch (only N5/N4/N3 got updated in the
+first pass) — the generator's own
+`assert [e[1] for e in entries] == titles` caught it immediately with
+`AssertionError: n2: authored titles don't match the locked list, in
+order` on the first `python scripts/generate_dokkai_seed.py` run,
+before anything was committed. Fixed by adding the missing N2/N1
+title batches and re-running. This is exactly the failure mode
+steps 5-6 of the per-theme workflow exist to catch — always run the
+generator itself rather than assuming an edit sequence completed
+cleanly.
+
 **If continuing this rollout, know that the target changed shape**:
 it's no longer "N5-N1 each need to reach 100 passages" in isolation —
 it's "each level's *pool* needs to comfortably support varied
-50-question sessions." At the current 70 passages/level (~210
+50-question sessions." At the current 80 passages/level (~240
 questions/level, since every passage has exactly 3), a session already
 draws from over a third of the pool, so more content still directly
 improves felt variety. The original ~100/level target is still a
