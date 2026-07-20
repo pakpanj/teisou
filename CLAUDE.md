@@ -271,13 +271,21 @@ standing local-merge convention:
      `KotobaRepository.getVocabCategory` per category, which already
      carry per-word `jlptLevel` tags) — verified against the actual
      bundled data that eligible compounds per level go from 8/0/0/0/0
-     (N5-N1) to 53/56/61/19/0. N1 stays locked, since the vocab module
-     itself has only 1 N1-tagged word total — a Kotoba content gap, not
-     a Kanji-Kombinasi bug; closing it means adding N1 words to the
-     vocab module (its own separate authoring project, not scoped as
-     part of this fix). Single-kanji mode was never affected — it reads
+     (N5-N1) to 53/56/61/19/0. **N1 was still locked at that point**,
+     since the vocab module itself had only 1 N1-tagged word total —
+     closed the same session by adding 20 genuine N1-level 2-kanji
+     business/negotiation-register words (促進, 抑制, 是正, 妥協, 打開,
+     融合, 撤回, 遂行, 履行, 猶予, 逸脱, 兆候, 弊害, 妥結, 折衝, 示唆,
+     疎外, 醸成, 波及, 円滑) to the existing `pekerjaan_kantor` category
+     (10 → 30 words; vocab module total 519 → 539) — a natural fit since
+     real N1 vocabulary skews heavily toward exactly this formal
+     workplace/negotiation register. Re-verified against the regenerated
+     data: N1's compound-eligible pool goes from 0 to 20. **All 5 JLPT
+     levels are now available for both Kanji-Kombinasi and Kanji
+     Tunggal** — no more "Segera" badges anywhere in this feature.
+     Single-kanji mode was never affected by any of this — it reads
      `KanjiRepository` directly and already had 107-1503 real kanji per
-     level.
+     level throughout.
    - Firestore: each new category writes exam attempts to its own
      subcollection (`dokkaiExamHistory`/`choukaiExamHistory`/
      `kanjiComboExamHistory` under `users/{uid}`, see
