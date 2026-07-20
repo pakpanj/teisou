@@ -504,6 +504,61 @@ standing local-merge convention:
      given the suffix `koujou2`. Pool: N5 92 (unchanged), N4 68 → 71, N3
      128 → 139, N2 154 → 162, N1 114 → 116 — **total pool 580**. Vocab
      module: 887 → 911 words, still 46 categories.
+     **Fourteenth batch (2026-07-20), from a user-supplied reference
+     PDF instead of a hand-drafted word list**: the user provided a
+     scanned/exported TANGO N2 vocabulary book PDF (1000 words: kanji,
+     reading, example sentence, Indonesian translation). Extracted the
+     whole book to `scripts/reference/tango_n2_source.json` via
+     pypdf's layout-mode text extraction (poppler/pdftotext's table
+     reconstruction garbled ~100 rows differently; pypdf needed several
+     rounds of parser fixes too — glued number+kanji cells with no
+     space, a false-positive trap where a sentence's own leading time
+     reference like "7時" parsed as a new entry number, and a handful of
+     rows where content leaked into a neighboring cell — down to 7 rows
+     that never resolved automatically, fixed by hand against the raw
+     text: #139/384/846/862 missing entirely, #59/344/806/822 had
+     absorbed a neighbor's leaked text, #499 had a reading typo, #1000
+     needed a manual pick between its two given readings). Cross-checked
+     all 1000 against the existing 911-word dataset: 109 already
+     present, 891 new; of those, 377 are 2-3 pure-kanji compounds
+     (pool-eligible) — this batch imports exactly those 377, the other
+     ~514 (single-kanji, kana-only loanwords, adjectives/verbs with
+     okurigana) are not part of this batch. Per explicit user direction
+     (asked via AskUserQuestion given the unprecedented scale): spread
+     across 32 existing categories by meaning
+     (`scripts/reference/tango_n2_category_map.py`) rather than dumped
+     into one place, and reused the book's own example sentences/
+     translations rather than re-authoring them from scratch — but
+     with one correction the user's answer didn't anticipate: the
+     book's own "meaning" column is actually the example sentence's
+     Indonesian translation, not a standalone word gloss (e.g. "Saya
+     mengubah gaya rambut" for 髪型, not "gaya rambut"), so this
+     dataset's word-level `meaning` field needed a separately
+     hand-authored short gloss per word instead
+     (`scripts/reference/tango_n2_word_meaning.py`) — a first pass that
+     reused the sentence translation there shipped briefly to disk
+     before being caught by eye and reverted via `git checkout` before
+     ever being committed. Sentence-level romaji isn't in the source
+     book either (only kanji + reading + translation), and a mechanical
+     kana-to-romaji converter can't handle kanji correctly, so all 377
+     example-sentence romanizations were transliterated by hand too
+     (`scripts/reference/tango_n2_example_romaji.py`). Three genuine
+     homophone collisions surfaced *within a single target category*
+     this time (not the deliberate cross-category kind already
+     documented above for koujou2/kinou2) — two of the three would have
+     let both words show up as options in the *same* reading-quiz pool
+     with identical-looking answers, so each pair was moved to a
+     different category rather than just bumped with an id suffix: 減少
+     (genshou, "penurunan") moved from `konsep_umum` to
+     `pekerjaan_kantor` (already had 現象/genshou there), 意思 (ishi,
+     "niat/maksud") and 関心 (kanshin, "minat") both moved from
+     `perasaan_emosi` to `konsep_umum` (already had 意志/ishi and
+     感心/kanshin there respectively). Also cleaned a few stray OCR "F"
+     footnote-marker artifacts the extraction had left sitting in
+     translations. Pool: N5/N4/N3/N1 unchanged (92/71/139/116), N2 162
+     → **539** — **total pool 957**. Vocab module: 911 → 1288 words,
+     still 46 categories (all 32 target categories already existed,
+     no new one needed this time).
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
