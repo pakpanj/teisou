@@ -6,6 +6,7 @@ import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/simple_exam_result.dart';
+import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 import 'kanji_combo_providers.dart';
@@ -36,9 +37,16 @@ class KanjiComboExamScreen extends ConsumerWidget {
     );
     if (user != null) {
       try {
-        await ref
-            .read(kanjiComboExamHistoryRepositoryProvider)
-            .submit(user.uid, result);
+        final profile = ref.read(userProfileProvider).valueOrNull;
+        await ref.read(kanjiComboExamHistoryRepositoryProvider).submit(
+              uid: user.uid,
+              result: result,
+              displayName: profile?.resolveDisplayName(user) ??
+                  (user.displayName ?? 'Pelajar Kana'),
+              photoUrl: user.photoURL,
+              avatarType: profile?.avatarType ?? AvatarType.google,
+              avatarValue: profile?.avatarValue,
+            );
       } catch (_) {
         // Best-effort mirror only — see DokkaiExamScreen for the same
         // reasoning.

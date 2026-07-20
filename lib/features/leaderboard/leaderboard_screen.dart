@@ -14,7 +14,7 @@ class LeaderboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 6,
       child: Scaffold(
         backgroundColor: AppColors.background,
         appBar: AppBar(
@@ -26,12 +26,17 @@ class LeaderboardScreen extends StatelessWidget {
             ],
           ),
           bottom: const TabBar(
+            isScrollable: true,
             labelColor: AppColors.primaryCoral,
             unselectedLabelColor: AppColors.textNavy,
             indicatorColor: AppColors.primaryCoral,
             tabs: [
               Tab(text: 'Kana Mastered'),
               Tab(text: 'Skor Ujian'),
+              Tab(text: 'Rekor Kana'),
+              Tab(text: 'Rekor Dokkai'),
+              Tab(text: 'Rekor Choukai'),
+              Tab(text: 'Rekor Kanji-Kombinasi'),
             ],
           ),
         ),
@@ -39,6 +44,10 @@ class LeaderboardScreen extends StatelessWidget {
           children: [
             _LeaderboardTab(metric: LeaderboardMetric.totalMastered),
             _LeaderboardTab(metric: LeaderboardMetric.examHighScore),
+            _LeaderboardTab(metric: LeaderboardMetric.kanaRecord),
+            _LeaderboardTab(metric: LeaderboardMetric.dokkaiRecord),
+            _LeaderboardTab(metric: LeaderboardMetric.choukaiRecord),
+            _LeaderboardTab(metric: LeaderboardMetric.kanjiComboRecord),
           ],
         ),
       ),
@@ -46,15 +55,42 @@ class LeaderboardScreen extends StatelessWidget {
   }
 }
 
+/// Renders one metric's value for [entry] as a display string. The two
+/// original metrics stay bare numbers (unchanged from before this "Rekor"
+/// feature); the four new per-category record metrics render as
+/// "XX.X% (Nx)" — literally the "Poin Nilai / berapa kali ujian" formula
+/// the record is built from, average and attempt count both visible in one
+/// line — or "Belum ada" when the user has never attempted that category
+/// (rather than a potentially-confusing "0.0% (0x)").
+String _valueLabel(LeaderboardMetric metric, LeaderboardEntry entry) {
+  switch (metric) {
+    case LeaderboardMetric.totalMastered:
+      return '${entry.totalMastered}';
+    case LeaderboardMetric.examHighScore:
+      return '${entry.examHighScore}';
+    case LeaderboardMetric.kanaRecord:
+      return entry.kanaRecordCount == 0
+          ? 'Belum ada'
+          : '${entry.kanaRecordAvg.toStringAsFixed(1)}% (${entry.kanaRecordCount}x)';
+    case LeaderboardMetric.dokkaiRecord:
+      return entry.dokkaiRecordCount == 0
+          ? 'Belum ada'
+          : '${entry.dokkaiRecordAvg.toStringAsFixed(1)}% (${entry.dokkaiRecordCount}x)';
+    case LeaderboardMetric.choukaiRecord:
+      return entry.choukaiRecordCount == 0
+          ? 'Belum ada'
+          : '${entry.choukaiRecordAvg.toStringAsFixed(1)}% (${entry.choukaiRecordCount}x)';
+    case LeaderboardMetric.kanjiComboRecord:
+      return entry.kanjiComboRecordCount == 0
+          ? 'Belum ada'
+          : '${entry.kanjiComboRecordAvg.toStringAsFixed(1)}% (${entry.kanjiComboRecordCount}x)';
+  }
+}
+
 class _LeaderboardTab extends ConsumerWidget {
   final LeaderboardMetric metric;
 
   const _LeaderboardTab({required this.metric});
-
-  int _valueFor(LeaderboardEntry entry) =>
-      metric == LeaderboardMetric.totalMastered
-          ? entry.totalMastered
-          : entry.examHighScore;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -67,7 +103,7 @@ class _LeaderboardTab extends ConsumerWidget {
         _SelfHeader(
           entry: selfEntryAsync.valueOrNull,
           rank: selfRankAsync.valueOrNull,
-          valueOf: _valueFor,
+          metric: metric,
         ),
         Expanded(
           child: topAsync.when(
@@ -87,7 +123,7 @@ class _LeaderboardTab extends ConsumerWidget {
                 itemBuilder: (context, index) => _LeaderboardTile(
                   rank: index + 1,
                   entry: entries[index],
-                  value: _valueFor(entries[index]),
+                  valueLabel: _valueLabel(metric, entries[index]),
                 ),
               );
             },
@@ -104,9 +140,9 @@ class _LeaderboardTab extends ConsumerWidget {
 class _SelfHeader extends StatelessWidget {
   final LeaderboardEntry? entry;
   final int? rank;
-  final int Function(LeaderboardEntry) valueOf;
+  final LeaderboardMetric metric;
 
-  const _SelfHeader({required this.entry, required this.rank, required this.valueOf});
+  const _SelfHeader({required this.entry, required this.rank, required this.metric});
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +179,7 @@ class _SelfHeader extends StatelessWidget {
             ),
           ),
           Text(
-            '${valueOf(entry!)}',
+            _valueLabel(metric, entry!),
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: AppColors.textNavy,
@@ -158,12 +194,12 @@ class _SelfHeader extends StatelessWidget {
 class _LeaderboardTile extends StatelessWidget {
   final int rank;
   final LeaderboardEntry entry;
-  final int value;
+  final String valueLabel;
 
   const _LeaderboardTile({
     required this.rank,
     required this.entry,
-    required this.value,
+    required this.valueLabel,
   });
 
   String get _rankBadge {
@@ -230,7 +266,7 @@ class _LeaderboardTile extends StatelessWidget {
             ),
           ),
           Text(
-            '$value',
+            valueLabel,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: AppColors.primaryCoral,

@@ -12,7 +12,7 @@ import '../models/kana_status.dart';
 import '../models/kana_type.dart';
 import '../models/user_profile.dart' show AvatarType;
 import 'kana_repository.dart';
-import 'leaderboard_repository.dart';
+import 'leaderboard_repository.dart' show LeaderboardRepository, LeaderboardCategory;
 import 'progress_repository.dart';
 
 /// Generates weighted exam sessions and persists results atomically.
@@ -276,6 +276,15 @@ class ExamRepository {
       avatarType: avatarType,
       avatarValue: avatarValue,
       score: score,
+    );
+    await leaderboardRepository.updateCategoryRecord(
+      uid: uid,
+      displayName: displayName,
+      photoUrl: photoUrl,
+      avatarType: avatarType,
+      avatarValue: avatarValue,
+      category: LeaderboardCategory.kana,
+      percentage: result.percentage,
     );
 
     return result;

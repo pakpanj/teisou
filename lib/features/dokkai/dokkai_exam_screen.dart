@@ -7,6 +7,7 @@ import '../../core/theme/app_colors.dart';
 import '../../data/models/dokkai_passage.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/simple_exam_result.dart';
+import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 
@@ -57,9 +58,16 @@ class DokkaiExamScreen extends ConsumerWidget {
     );
     if (user != null) {
       try {
-        await ref
-            .read(dokkaiExamHistoryRepositoryProvider)
-            .submit(user.uid, result);
+        final profile = ref.read(userProfileProvider).valueOrNull;
+        await ref.read(dokkaiExamHistoryRepositoryProvider).submit(
+              uid: user.uid,
+              result: result,
+              displayName: profile?.resolveDisplayName(user) ??
+                  (user.displayName ?? 'Pelajar Kana'),
+              photoUrl: user.photoURL,
+              avatarType: profile?.avatarType ?? AvatarType.google,
+              avatarValue: profile?.avatarValue,
+            );
       } catch (_) {
         // Best-effort mirror only — the score is shown either way, same
         // "don't let a network failure block the result" reasoning as

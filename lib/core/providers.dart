@@ -126,7 +126,11 @@ final dokkaiLevelRepositoryProvider = Provider<DokkaiLevelRepository>(
   (ref) => DokkaiLevelRepository(),
 );
 final dokkaiExamHistoryRepositoryProvider = Provider<ExamHistoryRepository>(
-  (ref) => ExamHistoryRepository(FirestorePaths.dokkaiExamHistory),
+  (ref) => ExamHistoryRepository(
+    FirestorePaths.dokkaiExamHistory,
+    category: LeaderboardCategory.dokkai,
+    leaderboardRepository: ref.watch(leaderboardRepositoryProvider),
+  ),
 );
 final choukaiRepositoryProvider = Provider<ChoukaiRepository>(
   (ref) => ChoukaiRepository(),
@@ -135,7 +139,11 @@ final choukaiLevelRepositoryProvider = Provider<ChoukaiLevelRepository>(
   (ref) => ChoukaiLevelRepository(),
 );
 final choukaiExamHistoryRepositoryProvider = Provider<ExamHistoryRepository>(
-  (ref) => ExamHistoryRepository(FirestorePaths.choukaiExamHistory),
+  (ref) => ExamHistoryRepository(
+    FirestorePaths.choukaiExamHistory,
+    category: LeaderboardCategory.choukai,
+    leaderboardRepository: ref.watch(leaderboardRepositoryProvider),
+  ),
 );
 final kanjiComboRepositoryProvider = Provider<KanjiComboRepository>(
   (ref) => KanjiComboRepository(
@@ -144,7 +152,11 @@ final kanjiComboRepositoryProvider = Provider<KanjiComboRepository>(
   ),
 );
 final kanjiComboExamHistoryRepositoryProvider = Provider<ExamHistoryRepository>(
-  (ref) => ExamHistoryRepository(FirestorePaths.kanjiComboExamHistory),
+  (ref) => ExamHistoryRepository(
+    FirestorePaths.kanjiComboExamHistory,
+    category: LeaderboardCategory.kanjiCombo,
+    leaderboardRepository: ref.watch(leaderboardRepositoryProvider),
+  ),
 );
 /// Ensures anonymous sign-in and the user profile doc exist. Screens should
 /// gate progress reads/writes on this resolving.

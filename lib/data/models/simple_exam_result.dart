@@ -19,6 +19,8 @@ class SimpleExamResult {
     required this.completedAt,
   });
 
+  double get percentage => total == 0 ? 0 : (score / total) * 100;
+
   Map<String, dynamic> toMap() => {
         'itemId': itemId,
         'jlptLevel': jlptLevel,
