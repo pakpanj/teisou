@@ -61,9 +61,9 @@ GROUPS = {
     "Pendidikan & Pekerjaan": [
         ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", True, 11),
         ("mata_pelajaran", "Mata Pelajaran", "📖", True, 10),
-        ("pekerjaan_kantor", "Pekerjaan & Kantor", "💼", True, 30),
+        ("pekerjaan_kantor", "Pekerjaan & Kantor", "💼", True, 41),
         ("teknologi_gadget", "Teknologi & Gadget", "💻", True, 10),
-        ("media_hiburan", "Media & Hiburan", "📺", True, 10),
+        ("media_hiburan", "Media & Hiburan", "📺", True, 15),
     ],
     "Waktu & Angka": [
         ("hari_bulan", "Hari & Bulan", "📅", True, 22),

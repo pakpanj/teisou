@@ -718,5 +718,269 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_enkatsu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_koushou",
+    "word": "こうしょう",
+    "kanji": "交渉",
+    "reading": "こうしょう",
+    "romaji": "koushou",
+    "meaning": "negosiasi",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "交渉 (koushou)",
+      "formal": "交渉 (koushou)",
+      "keigo": "交渉 (koushou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "取引先と交渉します。",
+        "romaji": "Torihikisaki to koushou shimasu.",
+        "translation": "Saya bernegosiasi dengan mitra bisnis."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_koushou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_teian",
+    "word": "ていあん",
+    "kanji": "提案",
+    "reading": "ていあん",
+    "romaji": "teian",
+    "meaning": "usulan/proposal",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "提案 (teian)",
+      "formal": "提案 (teian)",
+      "keigo": "提案 (teian) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい企画を提案しました。",
+        "romaji": "Atarashii kikaku o teian shimashita.",
+        "translation": "Saya mengusulkan rencana baru."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_teian.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_shounin",
+    "word": "しょうにん",
+    "kanji": "承認",
+    "reading": "しょうにん",
+    "romaji": "shounin",
+    "meaning": "persetujuan",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "承認 (shounin)",
+      "formal": "承認 (shounin)",
+      "keigo": "承認 (shounin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "上司の承認をもらいました。",
+        "romaji": "Joushi no shounin o moraimashita.",
+        "translation": "Saya mendapat persetujuan dari atasan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shounin.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_shoushin",
+    "word": "しょうしん",
+    "kanji": "昇進",
+    "reading": "しょうしん",
+    "romaji": "shoushin",
+    "meaning": "kenaikan jabatan/promosi",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "昇進 (shoushin)",
+      "formal": "昇進 (shoushin)",
+      "keigo": "昇進 (shoushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来月、昇進します。",
+        "romaji": "Raigetsu, shoushin shimasu.",
+        "translation": "Bulan depan, saya naik jabatan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shoushin.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_kaiko",
+    "word": "かいこ",
+    "kanji": "解雇",
+    "reading": "かいこ",
+    "romaji": "kaiko",
+    "meaning": "pemecatan",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "解雇 (kaiko)",
+      "formal": "解雇 (kaiko)",
+      "keigo": "解雇 (kaiko) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は会社を解雇されました。",
+        "romaji": "Kare wa kaisha o kaiko saremashita.",
+        "translation": "Dia dipecat dari perusahaan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaiko.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_keiei",
+    "word": "けいえい",
+    "kanji": "経営",
+    "reading": "けいえい",
+    "romaji": "keiei",
+    "meaning": "manajemen/pengelolaan (usaha)",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "経営 (keiei)",
+      "formal": "経営 (keiei)",
+      "keigo": "経営 (keiei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "父は会社を経営しています。",
+        "romaji": "Chichi wa kaisha o keiei shite imasu.",
+        "translation": "Ayah saya mengelola sebuah perusahaan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_keiei.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_gyouseki",
+    "word": "ぎょうせき",
+    "kanji": "業績",
+    "reading": "ぎょうせき",
+    "romaji": "gyouseki",
+    "meaning": "kinerja/prestasi (perusahaan)",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "業績 (gyouseki)",
+      "formal": "業績 (gyouseki)",
+      "keigo": "業績 (gyouseki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今年の業績はよかったです。",
+        "romaji": "Kotoshi no gyouseki wa yokatta desu.",
+        "translation": "Kinerja tahun ini bagus."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gyouseki.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_akaji",
+    "word": "あかじ",
+    "kanji": "赤字",
+    "reading": "あかじ",
+    "romaji": "akaji",
+    "meaning": "defisit/kerugian",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "赤字 (akaji)",
+      "formal": "赤字 (akaji)",
+      "keigo": "赤字 (akaji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今月は赤字になりました。",
+        "romaji": "Kongetsu wa akaji ni narimashita.",
+        "translation": "Bulan ini mengalami defisit."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_akaji.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_kuroji",
+    "word": "くろじ",
+    "kanji": "黒字",
+    "reading": "くろじ",
+    "romaji": "kuroji",
+    "meaning": "surplus/keuntungan",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "黒字 (kuroji)",
+      "formal": "黒字 (kuroji)",
+      "keigo": "黒字 (kuroji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会社は黒字に転換しました。",
+        "romaji": "Kaisha wa kuroji ni tenkan shimashita.",
+        "translation": "Perusahaan itu berbalik meraih keuntungan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kuroji.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_tousan",
+    "word": "とうさん",
+    "kanji": "倒産",
+    "reading": "とうさん",
+    "romaji": "tousan",
+    "meaning": "kebangkrutan",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "倒産 (tousan)",
+      "formal": "倒産 (tousan)",
+      "keigo": "倒産 (tousan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その会社は倒産しました。",
+        "romaji": "Sono kaisha wa tousan shimashita.",
+        "translation": "Perusahaan itu bangkrut."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tousan.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_gappei",
+    "word": "がっぺい",
+    "kanji": "合併",
+    "reading": "がっぺい",
+    "romaji": "gappei",
+    "meaning": "penggabungan/merger",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "合併 (gappei)",
+      "formal": "合併 (gappei)",
+      "keigo": "合併 (gappei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "二つの会社が合併しました。",
+        "romaji": "Futatsu no kaisha ga gappei shimashita.",
+        "translation": "Dua perusahaan itu melakukan merger."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gappei.png"
   }
 ]

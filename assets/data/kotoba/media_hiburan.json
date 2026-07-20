@@ -238,5 +238,125 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_sns.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_ken'etsu",
+    "word": "けんえつ",
+    "kanji": "検閲",
+    "reading": "けんえつ",
+    "romaji": "ken'etsu",
+    "meaning": "sensor (media/pers)",
+    "jlptLevel": "N1",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "検閲 (ken'etsu)",
+      "formal": "検閲 (ken'etsu)",
+      "keigo": "検閲 (ken'etsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その国では報道が検閲されています。",
+        "romaji": "Sono kuni de wa houdou ga ken'etsu sarete imasu.",
+        "translation": "Di negara itu, pemberitaan disensor."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_ken'etsu.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_netsuzou",
+    "word": "ねつぞう",
+    "kanji": "捏造",
+    "reading": "ねつぞう",
+    "romaji": "netsuzou",
+    "meaning": "pemalsuan/rekayasa (berita)",
+    "jlptLevel": "N1",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "捏造 (netsuzou)",
+      "formal": "捏造 (netsuzou)",
+      "keigo": "捏造 (netsuzou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その記事は捏造だと分かりました。",
+        "romaji": "Sono kiji wa netsuzou da to wakarimashita.",
+        "translation": "Artikel itu ternyata rekayasa/palsu."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_netsuzou.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_inpei",
+    "word": "いんぺい",
+    "kanji": "隠蔽",
+    "reading": "いんぺい",
+    "romaji": "inpei",
+    "meaning": "penyembunyian/penutupan (fakta)",
+    "jlptLevel": "N1",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "隠蔽 (inpei)",
+      "formal": "隠蔽 (inpei)",
+      "keigo": "隠蔽 (inpei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会社は問題を隠蔽していました。",
+        "romaji": "Kaisha wa mondai o inpei shite imashita.",
+        "translation": "Perusahaan itu menutup-nutupi masalahnya."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_inpei.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_okusoku",
+    "word": "おくそく",
+    "kanji": "憶測",
+    "reading": "おくそく",
+    "romaji": "okusoku",
+    "meaning": "spekulasi/dugaan",
+    "jlptLevel": "N1",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "憶測 (okusoku)",
+      "formal": "憶測 (okusoku)",
+      "keigo": "憶測 (okusoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "憶測で記事を書くべきではありません。",
+        "romaji": "Okusoku de kiji o kaku beki de wa arimasen.",
+        "translation": "Tidak seharusnya menulis artikel berdasarkan spekulasi."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_okusoku.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_rotei",
+    "word": "ろてい",
+    "kanji": "露呈",
+    "reading": "ろてい",
+    "romaji": "rotei",
+    "meaning": "terbongkarnya/terungkapnya (kelemahan)",
+    "jlptLevel": "N1",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "露呈 (rotei)",
+      "formal": "露呈 (rotei)",
+      "keigo": "露呈 (rotei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会見で問題点が露呈しました。",
+        "romaji": "Kaiken de mondaiten ga rotei shimashita.",
+        "translation": "Titik masalahnya terungkap dalam konferensi pers."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rotei.png"
   }
 ]

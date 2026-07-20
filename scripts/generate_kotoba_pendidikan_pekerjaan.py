@@ -187,6 +187,42 @@ CATEGORIES = {
         ("enkatsu", "円滑", "えんかつ", "enkatsu", "kelancaran", "N1", "adjective", "円滑", "enkatsu", "円滑", "enkatsu", [
             ("業務を円滑に進めます。", "Gyoumu o enkatsu ni susumemasu.", "Kami menjalankan pekerjaan dengan lancar."),
         ]),
+        # N2 addition (2026-07-20): common business 2-kanji compounds, added
+        # to raise Kanji Kombinasi's N2 pool closer to N5/N4/N3's variety
+        # (was 19 words total, thinnest after N1 before this batch).
+        ("koushou", "交渉", "こうしょう", "koushou", "negosiasi", "N2", "noun", "交渉", "koushou", "交渉", "koushou", [
+            ("取引先と交渉します。", "Torihikisaki to koushou shimasu.", "Saya bernegosiasi dengan mitra bisnis."),
+        ]),
+        ("teian", "提案", "ていあん", "teian", "usulan/proposal", "N2", "noun", "提案", "teian", "提案", "teian", [
+            ("新しい企画を提案しました。", "Atarashii kikaku o teian shimashita.", "Saya mengusulkan rencana baru."),
+        ]),
+        ("shounin", "承認", "しょうにん", "shounin", "persetujuan", "N2", "noun", "承認", "shounin", "承認", "shounin", [
+            ("上司の承認をもらいました。", "Joushi no shounin o moraimashita.", "Saya mendapat persetujuan dari atasan."),
+        ]),
+        ("shoushin", "昇進", "しょうしん", "shoushin", "kenaikan jabatan/promosi", "N2", "noun", "昇進", "shoushin", "昇進", "shoushin", [
+            ("来月、昇進します。", "Raigetsu, shoushin shimasu.", "Bulan depan, saya naik jabatan."),
+        ]),
+        ("kaiko", "解雇", "かいこ", "kaiko", "pemecatan", "N2", "noun", "解雇", "kaiko", "解雇", "kaiko", [
+            ("彼は会社を解雇されました。", "Kare wa kaisha o kaiko saremashita.", "Dia dipecat dari perusahaan."),
+        ]),
+        ("keiei", "経営", "けいえい", "keiei", "manajemen/pengelolaan (usaha)", "N2", "noun", "経営", "keiei", "経営", "keiei", [
+            ("父は会社を経営しています。", "Chichi wa kaisha o keiei shite imasu.", "Ayah saya mengelola sebuah perusahaan."),
+        ]),
+        ("gyouseki", "業績", "ぎょうせき", "gyouseki", "kinerja/prestasi (perusahaan)", "N2", "noun", "業績", "gyouseki", "業績", "gyouseki", [
+            ("今年の業績はよかったです。", "Kotoshi no gyouseki wa yokatta desu.", "Kinerja tahun ini bagus."),
+        ]),
+        ("akaji", "赤字", "あかじ", "akaji", "defisit/kerugian", "N2", "noun", "赤字", "akaji", "赤字", "akaji", [
+            ("今月は赤字になりました。", "Kongetsu wa akaji ni narimashita.", "Bulan ini mengalami defisit."),
+        ]),
+        ("kuroji", "黒字", "くろじ", "kuroji", "surplus/keuntungan", "N2", "noun", "黒字", "kuroji", "黒字", "kuroji", [
+            ("会社は黒字に転換しました。", "Kaisha wa kuroji ni tenkan shimashita.", "Perusahaan itu berbalik meraih keuntungan."),
+        ]),
+        ("tousan", "倒産", "とうさん", "tousan", "kebangkrutan", "N2", "noun", "倒産", "tousan", "倒産", "tousan", [
+            ("その会社は倒産しました。", "Sono kaisha wa tousan shimashita.", "Perusahaan itu bangkrut."),
+        ]),
+        ("gappei", "合併", "がっぺい", "gappei", "penggabungan/merger", "N2", "noun", "合併", "gappei", "合併", "gappei", [
+            ("二つの会社が合併しました。", "Futatsu no kaisha ga gappei shimashita.", "Dua perusahaan itu melakukan merger."),
+        ]),
     ],
     "teknologi_gadget": [
         ("konpyuutaa", None, "コンピューター", "konpyuutaa", "komputer", "N4", "noun", "コンピューター", "konpyuutaa", "コンピューター", "konpyuutaa", [
@@ -250,6 +286,25 @@ CATEGORIES = {
         ]),
         ("sns", None, "SNS", "esu-enu-esu", "media sosial", "N3", "noun", "SNS", "esu-enu-esu", "SNS", "esu-enu-esu", [
             ("SNSを使います。", "SNS o tsukaimasu.", "Saya menggunakan media sosial."),
+        ]),
+        # N1 addition (2026-07-20, second batch): formal journalism/media
+        # vocabulary — a second, thematically distinct pool for Kanji
+        # Kombinasi's N1 mode beyond pekerjaan_kantor's business register,
+        # so N1 exam questions don't all read like the same workplace memo.
+        ("ken'etsu", "検閲", "けんえつ", "ken'etsu", "sensor (media/pers)", "N1", "noun", "検閲", "ken'etsu", "検閲", "ken'etsu", [
+            ("その国では報道が検閲されています。", "Sono kuni de wa houdou ga ken'etsu sarete imasu.", "Di negara itu, pemberitaan disensor."),
+        ]),
+        ("netsuzou", "捏造", "ねつぞう", "netsuzou", "pemalsuan/rekayasa (berita)", "N1", "noun", "捏造", "netsuzou", "捏造", "netsuzou", [
+            ("その記事は捏造だと分かりました。", "Sono kiji wa netsuzou da to wakarimashita.", "Artikel itu ternyata rekayasa/palsu."),
+        ]),
+        ("inpei", "隠蔽", "いんぺい", "inpei", "penyembunyian/penutupan (fakta)", "N1", "noun", "隠蔽", "inpei", "隠蔽", "inpei", [
+            ("会社は問題を隠蔽していました。", "Kaisha wa mondai o inpei shite imashita.", "Perusahaan itu menutup-nutupi masalahnya."),
+        ]),
+        ("okusoku", "憶測", "おくそく", "okusoku", "spekulasi/dugaan", "N1", "noun", "憶測", "okusoku", "憶測", "okusoku", [
+            ("憶測で記事を書くべきではありません。", "Okusoku de kiji o kaku beki de wa arimasen.", "Tidak seharusnya menulis artikel berdasarkan spekulasi."),
+        ]),
+        ("rotei", "露呈", "ろてい", "rotei", "terbongkarnya/terungkapnya (kelemahan)", "N1", "noun", "露呈", "rotei", "露呈", "rotei", [
+            ("会見で問題点が露呈しました。", "Kaiken de mondaiten ga rotei shimashita.", "Titik masalahnya terungkap dalam konferensi pers."),
         ]),
     ],
 }
