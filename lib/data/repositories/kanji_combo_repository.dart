@@ -14,6 +14,177 @@ final _compoundPattern = RegExp(r'^[一-鿿]{2,3}$');
 
 const _minPoolSize = 4;
 
+/// Kana pairs that only differ by a dakuten/handakuten (voicing) mark,
+/// grouped so a mutation can jump from any member to any other in the same
+/// group (e.g. か -> が, は -> ば -> ぱ). Includes small-y digraphs (きゃ,
+/// しゅ, etc.) as their own tokens since they're single mora, not two.
+const _dakutenGroups = <List<String>>[
+  ['か', 'が'], ['き', 'ぎ'], ['く', 'ぐ'], ['け', 'げ'], ['こ', 'ご'],
+  ['さ', 'ざ'], ['し', 'じ'], ['す', 'ず'], ['せ', 'ぜ'], ['そ', 'ぞ'],
+  ['た', 'だ'], ['ち', 'ぢ'], ['つ', 'づ'], ['て', 'で'], ['と', 'ど'],
+  ['は', 'ば', 'ぱ'], ['ひ', 'び', 'ぴ'], ['ふ', 'ぶ', 'ぷ'], ['へ', 'べ', 'ぺ'], ['ほ', 'ぼ', 'ぽ'],
+  ['きゃ', 'ぎゃ'], ['きゅ', 'ぎゅ'], ['きょ', 'ぎょ'],
+  ['しゃ', 'じゃ'], ['しゅ', 'じゅ'], ['しょ', 'じょ'],
+  ['ちゃ', 'ぢゃ'], ['ちゅ', 'ぢゅ'], ['ちょ', 'ぢょ'],
+  ['ひゃ', 'びゃ', 'ぴゃ'], ['ひゅ', 'びゅ', 'ぴゅ'], ['ひょ', 'びょ', 'ぴょ'],
+];
+
+/// Kana that share the same consonant but differ in vowel, grouped by row
+/// (e.g. さしすせそ) so a mutation can swap the vowel while keeping the
+/// consonant. Includes や/ゆ/よ as their own (incomplete, historically
+/// defective) row - it's still a real phonetic neighborhood even without
+/// an い/え member.
+const _vowelRowGroups = <List<String>>[
+  ['あ', 'い', 'う', 'え', 'お'],
+  ['か', 'き', 'く', 'け', 'こ'], ['が', 'ぎ', 'ぐ', 'げ', 'ご'],
+  ['さ', 'し', 'す', 'せ', 'そ'], ['ざ', 'じ', 'ず', 'ぜ', 'ぞ'],
+  ['た', 'ち', 'つ', 'て', 'と'], ['だ', 'ぢ', 'づ', 'で', 'ど'],
+  ['な', 'に', 'ぬ', 'ね', 'の'],
+  ['は', 'ひ', 'ふ', 'へ', 'ほ'], ['ば', 'び', 'ぶ', 'べ', 'ぼ'], ['ぱ', 'ぴ', 'ぷ', 'ぺ', 'ぽ'],
+  ['ま', 'み', 'む', 'め', 'も'],
+  ['ら', 'り', 'る', 'れ', 'ろ'],
+  ['や', 'ゆ', 'よ'],
+];
+
+const _smallY = {'ゃ', 'ゅ', 'ょ'};
+
+/// Mora a real Japanese reading may never *start* with - ん/ン never opens
+/// a word, and を/ヲ exists only as the object-marker particle, never as a
+/// word's first syllable. A distractor starting with one of these would
+/// look immediately, obviously fake to a learner.
+const _invalidStartMora = {'ん', 'ン', 'を', 'ヲ'};
+
+String _toHiragana(String s) => String.fromCharCodes(
+      s.runes.map((r) => (r >= 0x30A1 && r <= 0x30F6) ? r - 0x60 : r),
+    );
+
+String _toKatakana(String s) => String.fromCharCodes(
+      s.runes.map((r) => (r >= 0x3041 && r <= 0x3096) ? r + 0x60 : r),
+    );
+
+bool _isKatakana(String s) => s.runes.any((r) => r >= 0x30A1 && r <= 0x30F6);
+
+/// Splits a reading into mora tokens. A standalone "-" (the okurigana
+/// boundary marker some kunyomi entries use, e.g. "のこ-す") is kept as its
+/// own immutable token so mutation never touches it. Small-y kana combine
+/// with the preceding consonant-kana into one two-character mora (きゃ,
+/// しゅ, etc.) rather than being split into two mora.
+List<String> _splitMora(String reading) {
+  final chars = reading.runes.map(String.fromCharCode).toList();
+  final mora = <String>[];
+  var i = 0;
+  while (i < chars.length) {
+    if (chars[i] == '-') {
+      mora.add('-');
+      i += 1;
+      continue;
+    }
+    if (i + 1 < chars.length && _smallY.contains(chars[i + 1])) {
+      mora.add(chars[i] + chars[i + 1]);
+      i += 2;
+    } else {
+      mora.add(chars[i]);
+      i += 1;
+    }
+  }
+  return mora;
+}
+
+List<String>? _mutateDakuten(List<String> mora, int idx, Random random) {
+  final token = mora[idx];
+  final wasKatakana = _isKatakana(token);
+  final base = _toHiragana(token);
+  final group = _dakutenGroups.firstWhere((g) => g.contains(base), orElse: () => const []);
+  if (group.isEmpty) return null;
+  final options = group.where((m) => m != base).toList();
+  if (options.isEmpty) return null;
+  final replacement = options[random.nextInt(options.length)];
+  final copy = List<String>.from(mora);
+  copy[idx] = wasKatakana ? _toKatakana(replacement) : replacement;
+  return copy;
+}
+
+List<String>? _mutateVowel(List<String> mora, int idx, Random random) {
+  final token = mora[idx];
+  final wasKatakana = _isKatakana(token);
+  final base = _toHiragana(token);
+  final group = _vowelRowGroups.firstWhere((g) => g.contains(base), orElse: () => const []);
+  if (group.isEmpty) return null;
+  final options = group.where((m) => m != base).toList();
+  if (options.isEmpty) return null;
+  final replacement = options[random.nextInt(options.length)];
+  final copy = List<String>.from(mora);
+  copy[idx] = wasKatakana ? _toKatakana(replacement) : replacement;
+  return copy;
+}
+
+List<String>? _mutateSwap(List<String> mora, int idx, Random random) {
+  if (idx + 1 >= mora.length) return null;
+  if (mora[idx] == '-' || mora[idx + 1] == '-') return null;
+  final copy = List<String>.from(mora);
+  final tmp = copy[idx];
+  copy[idx] = copy[idx + 1];
+  copy[idx + 1] = tmp;
+  return copy;
+}
+
+/// True if [reading] is a plausible word-initial kana string - its first
+/// mora (skipping a leading "-", which shouldn't occur but is guarded
+/// anyway) is not in [_invalidStartMora].
+bool isValidKotobaStart(String reading) {
+  for (final m in _splitMora(reading)) {
+    if (m == '-') continue;
+    return !_invalidStartMora.contains(m);
+  }
+  return true;
+}
+
+/// Generates up to [n] distinct kana-mutation distractors for
+/// [correctReading] by mutating the reading itself - toggling a mora's
+/// dakuten/handakuten mark, shifting a mora's vowel within its consonant
+/// row, or swapping two adjacent mora - rather than searching the pool for
+/// a close match. Every result is therefore guaranteed same mora-length as
+/// the original and differs by exactly one small step, and any candidate
+/// that fails [isValidKotobaStart] (would start with ん/ン/を/ヲ) is
+/// discarded and another mutation attempted instead. May return fewer than
+/// [n] for very short readings that don't have enough valid mutable
+/// positions (e.g. a single-mora わ reading has no dakuten pair and no
+/// other valid same-row neighbor) - callers should top up any shortfall
+/// from another source.
+Set<String> generateMutationDistractors(String correctReading, int n, Random random) {
+  final mora = _splitMora(correctReading);
+  final mutablePositions = [
+    for (var i = 0; i < mora.length; i++)
+      if (mora[i] != '-') i
+  ];
+  if (mutablePositions.isEmpty) return {};
+
+  final results = <String>{};
+  var guard = 0;
+  while (results.length < n && guard < 300) {
+    guard++;
+    final idx = mutablePositions[random.nextInt(mutablePositions.length)];
+    final strategy = random.nextInt(3);
+    List<String>? mutated;
+    switch (strategy) {
+      case 0:
+        mutated = _mutateDakuten(mora, idx, random);
+        break;
+      case 1:
+        mutated = _mutateVowel(mora, idx, random);
+        break;
+      default:
+        mutated = _mutateSwap(mora, idx, random);
+    }
+    if (mutated == null) continue;
+    final candidate = mutated.join();
+    if (candidate == correctReading) continue;
+    if (!isValidKotobaStart(candidate)) continue;
+    results.add(candidate);
+  }
+  return results;
+}
+
 /// Kanji-Kombinasi exam content, generated at runtime from the existing
 /// Kanji and Kotoba datasets rather than a bundled dataset of its own —
 /// single-kanji questions come straight from [KanjiRepository]; compound
@@ -107,14 +278,14 @@ class KanjiComboRepository {
     return prev[lb];
   }
 
-  /// Picks [n] distractors that read *similarly* to [correctAnswer]
-  /// (e.g. for 事情/じじょう this favors じしょう/しじょう over something
-  /// unrelated like かわい) rather than uniformly at random — otherwise a
-  /// learner can tell the right answer apart from the wrong ones just by
-  /// their rough shape, without actually knowing the exact reading. Picks
-  /// randomly *among* the closest matches (not always the single closest)
-  /// so repeated attempts at the same word don't always show the same
-  /// four options.
+  /// Picks [n] distractors that read *similarly* to [correctAnswer] from a
+  /// pool of candidates, ranked by edit distance rather than picked
+  /// uniformly at random. Used as [_pickReadingDistractors]'s fallback
+  /// top-up for readings too short/structurally limited for
+  /// [generateMutationDistractors] to produce enough valid mutations on its
+  /// own. Picks randomly *among* the closest matches (not always the single
+  /// closest) so repeated attempts at the same word don't always show the
+  /// same four options.
   Set<String> _pickCloseDistractors(String correctAnswer, Iterable<String> candidates, int n) {
     final unique = candidates.toSet()..remove(correctAnswer);
     if (unique.length <= n) return unique;
@@ -123,6 +294,24 @@ class KanjiComboRepository {
     final closePoolSize = min(ranked.length, max(n * 3, 8));
     final closePool = ranked.take(closePoolSize).toList()..shuffle(_random);
     return closePool.take(n).toSet();
+  }
+
+  /// Picks [n] distractors for a *reading* question: mutation-based
+  /// ([generateMutationDistractors]) first, since a single-kana-step
+  /// mutation of the real reading is a closer, more deliberately-crafted
+  /// near-miss than anything a pool search can offer. If the reading is too
+  /// short/structurally limited to yield [n] valid mutations on its own
+  /// (e.g. single-mora わ has no dakuten pair and を/ん are the only other
+  /// members of its row, both banned as word-initial by
+  /// [isValidKotobaStart]), the shortfall is topped up from [poolCandidates]
+  /// via the old edit-distance closeness ranking - the pool always has
+  /// hundreds of other readings per level, so this always reaches [n].
+  Set<String> _pickReadingDistractors(String correctAnswer, Iterable<String> poolCandidates, int n) {
+    final mutated = generateMutationDistractors(correctAnswer, n, _random);
+    if (mutated.length >= n) return mutated;
+    final remainingPool = poolCandidates.where((c) => c != correctAnswer && !mutated.contains(c));
+    final topUp = _pickCloseDistractors(correctAnswer, remainingPool, n - mutated.length);
+    return {...mutated, ...topUp};
   }
 
   /// Picks [n] distractors uniformly at random - used for meaning options,
@@ -180,7 +369,7 @@ class KanjiComboRepository {
     return List.generate(selected.length, (i) {
       final item = selected[i];
       final correctAnswer = answerOf(item);
-      final distractors = _pickCloseDistractors(correctAnswer, allAnswers, 3);
+      final distractors = _pickReadingDistractors(correctAnswer, allAnswers, 3);
       final options = [correctAnswer, ...distractors]..shuffle(_random);
       return KanjiComboQuestion(
         id: 'kombo_$i',
@@ -220,7 +409,7 @@ class KanjiComboRepository {
       // answer that's technically still valid for this exact kanji.
       final otherEntries = pool.where((k) => !identical(k, item));
       final distractors = askReading
-          ? _pickCloseDistractors(
+          ? _pickReadingDistractors(
               correctAnswer,
               otherEntries.expand((k) => [...k.onyomi, ...k.kunyomi]),
               3,
