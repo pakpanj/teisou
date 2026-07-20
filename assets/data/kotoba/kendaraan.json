@@ -238,5 +238,53 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_torakku.png"
+  },
+  {
+    "id": "kotoba_kendaraan_unkou",
+    "word": "うんこう",
+    "kanji": "運行",
+    "reading": "うんこう",
+    "romaji": "unkou",
+    "meaning": "pengoperasian (transportasi)",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "運行 (unkou)",
+      "formal": "運行 (unkou)",
+      "keigo": "運行 (unkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電車は定刻通りに運行しています。",
+        "romaji": "Densha wa teikoku doori ni unkou shite imasu.",
+        "translation": "Kereta beroperasi tepat waktu."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_unkou.png"
+  },
+  {
+    "id": "kotoba_kendaraan_chien",
+    "word": "ちえん",
+    "kanji": "遅延",
+    "reading": "ちえん",
+    "romaji": "chien",
+    "meaning": "keterlambatan",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "遅延 (chien)",
+      "formal": "遅延 (chien)",
+      "keigo": "遅延 (chien) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大雨で電車に遅延が出ています。",
+        "romaji": "Ooame de densha ni chien ga dete imasu.",
+        "translation": "Karena hujan deras, kereta mengalami keterlambatan."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_chien.png"
   }
 ]

@@ -286,5 +286,101 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_hyou.png"
+  },
+  {
+    "id": "kotoba_cuaca_shitsudo",
+    "word": "しつど",
+    "kanji": "湿度",
+    "reading": "しつど",
+    "romaji": "shitsudo",
+    "meaning": "kelembapan udara",
+    "jlptLevel": "N2",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "しつど (shitsudo)",
+      "formal": "しつど (shitsudo)",
+      "keigo": "しつど (shitsudo) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今日は湿度が高いです。",
+        "romaji": "Kyou wa shitsudo ga takai desu.",
+        "translation": "Hari ini kelembapan udaranya tinggi."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_shitsudo.png"
+  },
+  {
+    "id": "kotoba_cuaca_kiatsu",
+    "word": "きあつ",
+    "kanji": "気圧",
+    "reading": "きあつ",
+    "romaji": "kiatsu",
+    "meaning": "tekanan udara",
+    "jlptLevel": "N1",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きあつ (kiatsu)",
+      "formal": "きあつ (kiatsu)",
+      "keigo": "きあつ (kiatsu) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "気圧が下がると頭が痛くなります。",
+        "romaji": "Kiatsu ga sagaru to atama ga itaku narimasu.",
+        "translation": "Kalau tekanan udara turun, kepala saya jadi sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kiatsu.png"
+  },
+  {
+    "id": "kotoba_cuaca_mousho",
+    "word": "もうしょ",
+    "kanji": "猛暑",
+    "reading": "もうしょ",
+    "romaji": "mousho",
+    "meaning": "panas ekstrem",
+    "jlptLevel": "N1",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "もうしょ (mousho)",
+      "formal": "もうしょ (mousho)",
+      "keigo": "もうしょ (mousho) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今年の夏は猛暑です。",
+        "romaji": "Kotoshi no natsu wa mousho desu.",
+        "translation": "Musim panas tahun ini sangat panas ekstrem."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_mousho.png"
+  },
+  {
+    "id": "kotoba_cuaca_kanpa",
+    "word": "かんぱ",
+    "kanji": "寒波",
+    "reading": "かんぱ",
+    "romaji": "kanpa",
+    "meaning": "gelombang dingin",
+    "jlptLevel": "N1",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かんぱ (kanpa)",
+      "formal": "かんぱ (kanpa)",
+      "keigo": "かんぱ (kanpa) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今週は強い寒波が来ます。",
+        "romaji": "Konshuu wa tsuyoi kanpa ga kimasu.",
+        "translation": "Minggu ini akan datang gelombang dingin yang kuat."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kanpa.png"
   }
 ]

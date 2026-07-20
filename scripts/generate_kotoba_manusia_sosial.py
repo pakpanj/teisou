@@ -309,6 +309,11 @@ CATEGORIES = {
         ("barentaindee", None, "バレンタインデー", "barentaindee", "Hari Valentine", "N3", "noun", "バレンタインデー", "barentaindee", "バレンタインデー", "barentaindee", [
             ("バレンタインデーにチョコレートをあげます。", "Barentaindee ni chokoreeto o agemasu.", "Saat Hari Valentine, saya memberi cokelat."),
         ]),
+        # N1 addition (2026-07-20, fifth batch): pure-kanji celebration
+        # noun, for Kombinasi Kanji pool depth.
+        ("shukuga", "祝賀", "しゅくが", "shukuga", "perayaan/ucapan selamat (formal)", "N1", "noun", "祝賀", "shukuga", "祝賀", "shukuga", [
+            ("創立百周年の祝賀会が開かれました。", "Souritsu hyakushuunen no shukugakai ga hirakaremashita.", "Perayaan seratus tahun pendirian diadakan."),
+        ]),
     ],
 }
 

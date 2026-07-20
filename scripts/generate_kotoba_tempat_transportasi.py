@@ -174,6 +174,14 @@ CATEGORIES = {
         ("torakku", None, "トラック", "torakku", "truk", "N3", "noun", "トラック", "torakku", "トラック", "torakku", [
             ("トラックが荷物を運びます。", "Torakku ga nimotsu o hakobimasu.", "Truk mengangkut barang."),
         ]),
+        # N1/N2 addition (2026-07-20, fifth batch): pure-kanji transit-
+        # operation nouns, for Kombinasi Kanji pool depth.
+        ("unkou", "運行", "うんこう", "unkou", "pengoperasian (transportasi)", "N2", "noun", "運行", "unkou", "運行", "unkou", [
+            ("電車は定刻通りに運行しています。", "Densha wa teikoku doori ni unkou shite imasu.", "Kereta beroperasi tepat waktu."),
+        ]),
+        ("chien", "遅延", "ちえん", "chien", "keterlambatan", "N2", "noun", "遅延", "chien", "遅延", "chien", [
+            ("大雨で電車に遅延が出ています。", "Ooame de densha ni chien ga dete imasu.", "Karena hujan deras, kereta mengalami keterlambatan."),
+        ]),
     ],
     "arah_lokasi": [
         ("migi", "右", "みぎ", "migi", "kanan", "N5", "noun", "右", "migi", "右", "migi", [

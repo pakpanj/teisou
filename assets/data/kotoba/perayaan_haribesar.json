@@ -262,5 +262,29 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_barentaindee.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_shukuga",
+    "word": "しゅくが",
+    "kanji": "祝賀",
+    "reading": "しゅくが",
+    "romaji": "shukuga",
+    "meaning": "perayaan/ucapan selamat (formal)",
+    "jlptLevel": "N1",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "祝賀 (shukuga)",
+      "formal": "祝賀 (shukuga)",
+      "keigo": "祝賀 (shukuga) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "創立百周年の祝賀会が開かれました。",
+        "romaji": "Souritsu hyakushuunen no shukugakai ga hirakaremashita.",
+        "translation": "Perayaan seratus tahun pendirian diadakan."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_shukuga.png"
   }
 ]

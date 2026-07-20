@@ -286,5 +286,77 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_undou.png"
+  },
+  {
+    "id": "kotoba_olahraga_tanren",
+    "word": "たんれん",
+    "kanji": "鍛錬",
+    "reading": "たんれん",
+    "romaji": "tanren",
+    "meaning": "penempaan/pelatihan (fisik/mental)",
+    "jlptLevel": "N1",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "鍛錬 (tanren)",
+      "formal": "鍛錬 (tanren)",
+      "keigo": "鍛錬 (tanren) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎日体を鍛錬しています。",
+        "romaji": "Mainichi karada o tanren shite imasu.",
+        "translation": "Saya melatih tubuh setiap hari."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tanren.png"
+  },
+  {
+    "id": "kotoba_olahraga_jikyuuryoku",
+    "word": "じきゅうりょく",
+    "kanji": "持久力",
+    "reading": "じきゅうりょく",
+    "romaji": "jikyuuryoku",
+    "meaning": "daya tahan (fisik)",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "持久力 (jikyuuryoku)",
+      "formal": "持久力 (jikyuuryoku)",
+      "keigo": "持久力 (jikyuuryoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "マラソンには持久力が必要です。",
+        "romaji": "Marason ni wa jikyuuryoku ga hitsuyou desu.",
+        "translation": "Maraton membutuhkan daya tahan."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_jikyuuryoku.png"
+  },
+  {
+    "id": "kotoba_olahraga_kinryoku",
+    "word": "きんりょく",
+    "kanji": "筋力",
+    "reading": "きんりょく",
+    "romaji": "kinryoku",
+    "meaning": "kekuatan otot",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "筋力 (kinryoku)",
+      "formal": "筋力 (kinryoku)",
+      "keigo": "筋力 (kinryoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "筋力トレーニングをします。",
+        "romaji": "Kinryoku toreeningu o shimasu.",
+        "translation": "Saya melakukan latihan kekuatan otot."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_kinryoku.png"
   }
 ]

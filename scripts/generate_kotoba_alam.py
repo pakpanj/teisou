@@ -350,6 +350,20 @@ CATEGORIES = {
         ("hyou", "雹", "ひょう", "hyou", "hujan es (hail)", "N2", [
             ("雹が降りました。", "Hyou ga furimashita.", "Hujan es turun."),
         ]),
+        # N1/N2 addition (2026-07-20, fifth batch): pure-kanji meteorology
+        # nouns, for Kombinasi Kanji pool depth.
+        ("shitsudo", "湿度", "しつど", "shitsudo", "kelembapan udara", "N2", [
+            ("今日は湿度が高いです。", "Kyou wa shitsudo ga takai desu.", "Hari ini kelembapan udaranya tinggi."),
+        ]),
+        ("kiatsu", "気圧", "きあつ", "kiatsu", "tekanan udara", "N1", [
+            ("気圧が下がると頭が痛くなります。", "Kiatsu ga sagaru to atama ga itaku narimasu.", "Kalau tekanan udara turun, kepala saya jadi sakit."),
+        ]),
+        ("mousho", "猛暑", "もうしょ", "mousho", "panas ekstrem", "N1", [
+            ("今年の夏は猛暑です。", "Kotoshi no natsu wa mousho desu.", "Musim panas tahun ini sangat panas ekstrem."),
+        ]),
+        ("kanpa", "寒波", "かんぱ", "kanpa", "gelombang dingin", "N1", [
+            ("今週は強い寒波が来ます。", "Konshuu wa tsuyoi kanpa ga kimasu.", "Minggu ini akan datang gelombang dingin yang kuat."),
+        ]),
     ]),
     "bencana_alam": ("istilah bencana alam", [
         ("jishin", "地震", "じしん", "jishin", "gempa bumi", "N4", [

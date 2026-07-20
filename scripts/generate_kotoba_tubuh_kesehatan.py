@@ -230,6 +230,17 @@ CATEGORIES = {
         ("undou", "運動", "うんどう", "undou", "olahraga/gerak badan", "N4", "noun", "運動", "undou", "運動", "undou", [
             ("運動は健康にいいです。", "Undou wa kenkou ni ii desu.", "Olahraga baik untuk kesehatan."),
         ]),
+        # N1/N2 addition (2026-07-20, fifth batch): pure-kanji training/
+        # fitness nouns, for Kombinasi Kanji pool depth.
+        ("tanren", "鍛錬", "たんれん", "tanren", "penempaan/pelatihan (fisik/mental)", "N1", "noun", "鍛錬", "tanren", "鍛錬", "tanren", [
+            ("毎日体を鍛錬しています。", "Mainichi karada o tanren shite imasu.", "Saya melatih tubuh setiap hari."),
+        ]),
+        ("jikyuuryoku", "持久力", "じきゅうりょく", "jikyuuryoku", "daya tahan (fisik)", "N2", "noun", "持久力", "jikyuuryoku", "持久力", "jikyuuryoku", [
+            ("マラソンには持久力が必要です。", "Marason ni wa jikyuuryoku ga hitsuyou desu.", "Maraton membutuhkan daya tahan."),
+        ]),
+        ("kinryoku", "筋力", "きんりょく", "kinryoku", "kekuatan otot", "N2", "noun", "筋力", "kinryoku", "筋力", "kinryoku", [
+            ("筋力トレーニングをします。", "Kinryoku toreeningu o shimasu.", "Saya melakukan latihan kekuatan otot."),
+        ]),
     ],
     "perasaan_emosi": [
         ("ureshii", "嬉しい", "うれしい", "ureshii", "senang/gembira", "N4", "adjective", "嬉しい", "ureshii", "嬉しいです", "ureshii desu", [
