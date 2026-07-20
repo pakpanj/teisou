@@ -423,6 +423,39 @@ standing local-merge convention:
      eighth batch's 契機/景気 catch. Pool: N5 53 (unchanged), N4 59, N3
      103, N2 131, N1 106 — **total pool 452**. Vocab module: 782 words,
      46 categories.
+     **Tenth batch, same session — N5-specific, following the user's
+     question "kenapa kanji gabungan N5 cuma 53?"**: investigated why
+     the N5 compound-word pool had stayed flat at 53 across nine batches
+     while N4-N1 kept growing — the answer was that every recent batch
+     added `konsep_umum` vocabulary leaning N2-N1, never new N5 words,
+     so N5's pool was reading off the existing dataset's ceiling, not an
+     actual shortage of real N5 2-3-kanji compounds. Found 46 genuine
+     everyday N5 compounds missing from the whole 782-word dataset and
+     — unlike every `konsep_umum`-only batch before it — distributed
+     them into their best-fitting **existing** category instead:
+     `hari_bulan` (+18 relative-time words: 一昨日, 明後日, 今週, 今月,
+     今年, 来週, 来月, 来年, 先週, 先月, 去年, 午前, 午後, 毎日, 毎週,
+     毎月, 毎年, 時間 — natural siblings of the 今日/明日/昨日 already
+     there), `alat_tulis_sekolah` (+4: 教科書, 辞書, 宿題, 漢字), `cuaca`
+     (+1: 天気予報), `keluarga_hubungan` (+5: 兄弟, 姉妹, 両親, 子供, 大人
+     — the general terms, distinct from the existing 兄/姉/弟/妹
+     "kata sendiri" entries), `pakaian_aksesori` (+3: 財布, 靴下, 洋服),
+     `hobi_aktivitas` (+4: 洗濯, 掃除, 買物, 散歩), `bangunan_fasilitas`
+     (+8: 教室, 旅館, 駅前, 交番, 動物園, 美術館, 博物館, 喫茶店), and
+     `negara_kota` (+3: 外国, 外国人, 中国語). Not all 46 are N5: six of
+     `bangunan_fasilitas`'s eight (旅館, 駅前, 交番, 美術館, 博物館, 喫茶店)
+     are genuinely N4-level vocabulary — tagged accurately as N4 rather
+     than force-fit into N5 just because they were found while looking
+     for N5 words, so this batch is really 40 N5 + 6 N4 words. One
+     id-suffix collision caught before authoring: 防止's candidate id
+     `boushi` (from the ninth batch, added the same session) already
+     existed. Pool: N5 53 → **92** (+39, not +40 — 天気予報 is real N5
+     vocabulary but is 4 kanji long, so it doesn't qualify for the
+     2-3-kanji compound pool even though it's in the vocab module), N4
+     59 → **65** (+6, from the bangunan_fasilitas N4 words above), N3/N2/
+     N1 unchanged (103/131/106) — **total pool 497**. Vocab module: 782
+     → 828 words, still 46 categories (no new category this batch,
+     unlike the sixth batch's `konsep_umum`).
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
