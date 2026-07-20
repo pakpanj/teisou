@@ -487,6 +487,23 @@ standing local-merge convention:
      Pool: N5 92 (unchanged), N4 67 → 68, N3 118 → 128, N2 141 → 154, N1
      106 → 114 — **total pool 556**. Vocab module: 855 → 887 words,
      still 46 categories.
+     **Thirteenth batch, same session, following "lanjut generate
+     lagi"**: 24 more words across fourteen thin categories — 
+     `arah_lokasi` (+4: 周辺/付近 N2, 方向/中心 N3), `perayaan_haribesar`
+     (+2: 成人式 N2, 記念日 N3), `ruangan_rumah` (+1: 車庫 N3),
+     `agama_budaya` (+1: 習慣 N4), `negara_kota` (+2: 台湾 N4, 名古屋 N3),
+     `pakaian_aksesori` (+1: 手袋 N3), `perasaan_emosi` (+2: 興奮 N2,
+     緊張 N3), `bangunan_fasilitas` (+2: 工場/事務所 N3), `teknologi_gadget`
+     (+2: 検索/保存 N3), `profesi` (+2: 会計士 N2, 薬剤師 N1),
+     `penyakit_gejala` (+2: 炎症/便秘 N2), `obat_obatan` (+1: 錠剤 N1),
+     `keluarga_hubungan` (+1: 独身 N2), `mata_pelajaran` (+1: 家庭科 N4).
+     Two candidates (伝統, 安心) turned out to already exist and were
+     dropped before authoring. One id-suffix disambiguation, not a
+     collision to fix: 工場 (koujou, "pabrik") is a genuine homophone of
+     `konsep_umum`'s 向上 (koujou, "peningkatan") — different category,
+     given the suffix `koujou2`. Pool: N5 92 (unchanged), N4 68 → 71, N3
+     128 → 139, N2 154 → 162, N1 114 → 116 — **total pool 580**. Vocab
+     module: 887 → 911 words, still 46 categories.
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
