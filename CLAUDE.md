@@ -701,13 +701,62 @@ standing local-merge convention:
      and both exam modes since the distractor logic is shared, not
      per-level - matching the user's explicit ask that the fix "berlaku
      untuk semua soal kanji dari N5 sd N1".
+   - **Distractor similarity, take two — mutation instead of pool-search
+     (2026-07-21)**: the edit-distance fix above still picks distractors
+     from whatever readings happen to already exist in that level's pool,
+     so how close a wrong answer actually is to the correct one is
+     luck-of-the-draw. User follow-up asked for distractors *constructed*
+     from the correct reading itself instead: pick a mora, toggle its
+     dakuten/handakuten mark (じ↔し's group), shift its vowel within the
+     same consonant row (せ↔そ↔す↔さ), or swap two adjacent mora — always
+     exactly one small step off, always the same mora-length by
+     construction. Added as top-level, unit-tested functions in
+     `kanji_combo_repository.dart`: `generateMutationDistractors` (tries
+     random mutations up to an attempt cap, collecting valid ones into a
+     `Set` so duplicates can't occur) and `isValidKotobaStart` (rejects any
+     candidate starting with ん/ン/を/ヲ — ん never opens a real word, を/ヲ
+     is only ever the object particle, never a word-initial syllable —
+     re-attempting another mutation instead of ever surfacing one).
+     `_pickReadingDistractors` wraps this as the new primary path for both
+     reading-question call sites, falling back to the take-one fix's
+     `_pickCloseDistractors` pool search to top up any shortfall.
+     **That fallback is load-bearing, not defensive-only**: an exhaustive
+     (not random-sampled) Python script cross-checked against the *entire*
+     real dataset (`kanji_data.json` onyomi/kunyomi + every
+     `assets/data/kotoba/*.json` reading, 4927 entries total) found 33
+     entries (12 unique readings) that can't reach 3 valid mutations alone
+     — almost all single-mora readings in phonetically sparse rows: わ has
+     no dakuten pair and its only row-neighbors (を/ん) are banned as
+     word-initial, so a bare わ reading (輪/我/吾 kunyomi, 話/和/琶/倭
+     onyomi) has zero valid mutations; わん compounds (湾/腕) fail the same
+     way via swap. Adding a や/ゆ/よ row to `_vowelRowGroups` — genuinely
+     missing before this fix, not a new invention — alone resolved 20 of
+     the 33 for free. The remaining ~13 (the わ-family above, plus 旬's
+     しゅん which only has one dakuten pair and no vowel-row neighbor for
+     its しゅ digraph) rely on the pool-search fallback to still reach 3
+     options. Separately flagged, not fixed here: one Kotoba entry
+     (`kotoba_media_hiburan_sns`) has its `reading` field literally set to
+     the Latin string `"SNS"` instead of a kana reading like えすえぬえす —
+     a pre-existing data quality gap the coverage script surfaced as a
+     side effect, unrelated to the distractor logic itself.
+     `test/kanji_combo_distractor_test.dart` (new) covers: never equals
+     the correct reading, no duplicates, same mora-count, katakana
+     preserved, the hyphenated-okurigana marker treated as immutable, the
+     ん/ン/を/ヲ guard, and graceful degradation (returns fewer than
+     requested rather than an invalid result) for a structurally limited
+     reading.
 
-Verification for all four: `flutter analyze` clean, `flutter test
---concurrency=1` (11/11, two tests updated/added for the new Ujian
-picker structure), `flutter build apk --debug` succeeded. **No
-interactive on-device pass has been done for any of this** — same
-category of gap already documented elsewhere in this file for other
-modules; worth a manual pass (especially the tab-swipe-vs-bottom-nav
+Verification for the first three (exam-restructure, staleness, and the
+take-one pool-search distractor fix): `flutter analyze` clean, `flutter
+test --concurrency=1` (11/11, two tests updated/added for the new Ujian
+picker structure), `flutter build apk --debug` succeeded. The mutation-based
+distractor take-two above has its own separate verification: `flutter
+analyze` clean, `flutter test --concurrency=1` (20/20 - the 9 new
+`kanji_combo_distractor_test.dart` cases plus the 11 pre-existing ones),
+`flutter build apk --debug` succeeded. **No interactive on-device pass has
+been done for any of this** — same category of gap already documented
+elsewhere in this file for other modules; worth a manual pass (especially
+the tab-swipe-vs-bottom-nav
 interaction, and Kaiwa's gendered-voice playback on a real device)
 before treating this as fully verified.
 
