@@ -698,8 +698,68 @@ practice.
   confirming the 6-tab scrollable `TabBar` renders/scrolls correctly and
   that a real Dokkai/Choukai/Kanji-Kombinasi submission actually updates
   its "Rekor" tab before treating this as fully verified.
+- **Clan/host system** (2026-07-20, same day as Rekor): a Clash-of-Clans-
+  style grouping feature, deliberately scoped to **just leaderboard
+  ranking** — no teacher/student role system, no per-student detail
+  dashboard, per explicit user request ("hanya sebagai leaderboard saja").
+  Anyone can create a clan (self-serve — `ClanRepository.createClan`);
+  students join with a short generated code (`clans/{code}`, where the
+  Firestore **document id doubles as the join code** — no separate lookup
+  index needed, joining is just `clans.doc(code).get()`). A user can
+  belong to multiple clans simultaneously (explicit user choice, not the
+  simpler single-clan default that was recommended). Schema: `clans/{code}`
+  (name/hostUid/hostDisplayName/memberCount/createdAt),
+  `clans/{code}/members/{uid}` (roster, denormalized display identity —
+  same reasoning as `leaderboard/{uid}`), `users/{uid}/clanMemberships/{code}`
+  (reverse index so "which clans am I in" doesn't need a Firestore
+  collection-group query + index this session couldn't verify against a
+  live console). `memberCount` is the one place this feature uses
+  `FieldValue.increment` rather than the read-then-write style
+  `LeaderboardRepository` already established for Rekor — the right tool
+  for a bare counter (no averaging involved), not an inconsistency.
+  **Clan ranking is assembled client-side, not a Firestore `orderBy`**:
+  `LeaderboardRepository.getMany()` (chunked `whereIn`, the first query of
+  that kind in this codebase) fetches whatever `leaderboard/{uid}` docs
+  exist for a clan's roster, then `clanRankingProvider`
+  (`lib/features/leaderboard/clan_providers.dart`) fills in a zero-scored
+  placeholder `LeaderboardEntry` for any roster member with no doc yet
+  (using their `ClanMember`-denormalized name/avatar) before sorting via
+  the new `LeaderboardRepository.sortByMetric()` — **every clan member
+  always appears in the ranking, even at 0**, specifically so a teacher
+  monitoring the clan never loses sight of a student who hasn't attempted
+  anything. This is a deliberate design choice, not a bug, if the ranking
+  ever looks like it's "padding" the list with zero-scorers. Ranking is a
+  **one-shot fetch, not a live stream** (`getMembersOnce`) — a school clan
+  could run into the dozens/hundreds of members, and this app has no
+  Cloud Functions for server-side aggregation, so holding that many
+  realtime listeners open wasn't worth it; `myClansProvider` (which clans
+  the user is in) stays live since that list is always small per user.
+  UI: 7th tab "Clan" in `LeaderboardScreen`
+  (`lib/features/leaderboard/widgets/clan_tab.dart`) — clan picker +
+  metric picker (reusing all six existing `LeaderboardMetric` values via
+  a new `LeaderboardMetricX.label` getter, so "which stat ranks the clan"
+  needed zero new metrics) + join-code display with a copy button + leave
+  action, reusing `LeaderboardTile`/`LeaderboardAvatar` (renamed from
+  private `_LeaderboardTile`/`_Avatar` specifically so this new file could
+  reuse them instead of duplicating row rendering — any other doc in this
+  file referring to `_Avatar` in `leaderboard_screen.dart` predates this
+  rename). Host gets a 👑 badge in the ranking (`LeaderboardTile.isHost`).
+  **Deliberately not built this pass**: kick member, rename/delete clan,
+  transfer host — moderation was out of the user's stated scope.
+  **"Leave clan" was added despite not being explicitly requested** — a
+  judgment call, flagged here in case it needs revisiting: without it, a
+  mistyped join code traps a student in the wrong clan permanently, which
+  seemed like an obvious enough gap to close rather than leave as a dead
+  end. **Verification gap, same standing pattern as everywhere else in
+  this file**: `flutter analyze`/`test --concurrency=1`/`build apk --debug`
+  all passed clean, but no interactive on-device pass — worth confirming
+  the create → share-code → join → leave round trip actually works, and
+  that the 7-tab scrollable `TabBar` still renders correctly, before
+  treating this as fully verified.
 - **Avatar resolution priority** (see `UserAvatar` widget, and its
-  leaderboard-row counterpart `_Avatar` in `leaderboard_screen.dart`):
+  leaderboard-row counterpart `LeaderboardAvatar` in
+  `leaderboard_screen.dart` — renamed from private `_Avatar` when the Clan
+  tab needed to reuse it, see the Clan/host note above):
   custom Storage upload > premium preset > free preset > Google photo >
   default emoji. 16 presets (6 free, 10 premium) are emoji + color
   placeholders defined in `lib/core/constants/avatars.dart` — swap for real
