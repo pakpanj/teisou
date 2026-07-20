@@ -12,5 +12,30 @@ service cloud.firestore {
       allow read: if request.auth != null;
       allow write: if request.auth != null && request.auth.uid == uid;
     }
+
+    // Clans — siapa saja yang login bisa baca (cari lewat kode join, lihat
+    // ranking anggota). Membuat clan hanya boleh kalau hostUid == diri
+    // sendiri. Mengubah dokumen clan setelah dibuat hanya boleh oleh host
+    // (mis. nanti kalau ada fitur rename), KECUALI perubahan yang hanya
+    // menyentuh `memberCount` — itu yang dilakukan siapa pun saat
+    // join/leaveClan menaikkan/menurunkan hitungan anggota.
+    match /clans/{code} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null
+          && request.resource.data.hostUid == request.auth.uid;
+      allow update: if request.auth != null
+          && (resource.data.hostUid == request.auth.uid
+              || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['memberCount']));
+      allow delete: if request.auth != null && resource.data.hostUid == request.auth.uid;
+
+      // Roster — siapa saja yang login bisa baca daftar anggota, tapi
+      // setiap orang hanya bisa menulis/menghapus baris miliknya sendiri
+      // (uid dokumen == uid yang login) — mencegah orang lain mendaftarkan
+      // atau mengeluarkan anggota atas nama orang lain.
+      match /members/{memberUid} {
+        allow read: if request.auth != null;
+        allow write: if request.auth != null && request.auth.uid == memberUid;
+      }
+    }
   }
 }
