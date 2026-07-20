@@ -653,6 +653,51 @@ practice.
   also carries `avatarType`/`avatarValue`, not just `photoUrl`, so a custom
   avatar isn't clobbered back to the Google photo on the next exam
   submission).
+- **Per-category exam "Rekor"** (2026-07-20): each of the four exam
+  categories — Kana, Dokkai, Choukai, Kanji-Kombinasi — earns its own
+  leaderboard record, defined per explicit user request as **the average
+  score-percentage across every attempt** (`Poin Nilai / berapa kali
+  ujian`), not a single high score. This is deliberately additive, not a
+  replacement of the pre-existing `totalMastered`/`examHighScore` fields —
+  `LeaderboardScreen` now has 6 scrollable tabs (`isScrollable: true`,
+  bumped from 2 non-scrollable), the original two plus "Rekor Kana"/"Rekor
+  Dokkai"/"Rekor Choukai"/"Rekor Kanji-Kombinasi". Storage: 3 flat fields
+  per category on the same `leaderboard/{uid}` doc — `{category}RecordSum`,
+  `{category}RecordCount`, `{category}RecordAvg` (the only one actually
+  `orderBy`'d, since Firestore can't sort by a computed ratio of two
+  fields) — updated via `LeaderboardRepository.updateCategoryRecord()`,
+  which mirrors the existing `updateTotalMastered`/
+  `updateExamHighScoreIfHigher` read-then-write style exactly (non-
+  transactional `getSelf()` then `.set(merge:true)` — same accepted race
+  trade-off already made for those two, not a new gap). `LeaderboardEntry`
+  gained a `LeaderboardCategory` enum (`kana`/`dokkai`/`choukai`/
+  `kanjiCombo`) and `recordSumFor`/`recordCountFor`/`recordAvgFor` accessors
+  so callers don't need their own per-category switch. Kana's
+  `ExamRepository.submitExam` calls `updateCategoryRecord` directly
+  alongside its existing two leaderboard calls; Dokkai/Choukai/
+  Kanji-Kombinasi's shared `ExamHistoryRepository` (previously just an
+  `.add()` with no leaderboard hook at all) now takes a `LeaderboardCategory`
+  + `LeaderboardRepository` in its constructor and calls the record update
+  internally — best-effort, wrapped in its own try/catch so a leaderboard
+  hiccup never undoes a history write that already succeeded — right after
+  every `submit()`. This meant `ExamHistoryRepository.submit()`'s signature
+  changed from positional `(uid, result)` to named params including
+  `displayName`/`photoUrl`/`avatarType`/`avatarValue`, so all three exam
+  screens (`dokkai_exam_screen.dart`/`choukai_exam_screen.dart`/
+  `kanji_combo_exam_screen.dart`) now also read `userProfileProvider` at
+  submit time, mirroring the kana exam screen's existing
+  `profile?.resolveDisplayName(user)` pattern exactly (previously they only
+  read `appStartupProvider` for the uid). `SimpleExamResult` gained a
+  `percentage` getter mirroring `ExamResult.percentage` (`score/total*100`)
+  for reuse. **Not touched on purpose**: `SimpleExamResultScreen` (the
+  post-exam result screen) doesn't show anything about the new record —
+  user asked for it in the Leaderboard specifically, not the result screen.
+  **Verification gap, same standing pattern as everywhere else in this
+  file**: `flutter analyze`/`test --concurrency=1`/`build apk --debug` all
+  passed clean, but no interactive on-device pass has been done — worth
+  confirming the 6-tab scrollable `TabBar` renders/scrolls correctly and
+  that a real Dokkai/Choukai/Kanji-Kombinasi submission actually updates
+  its "Rekor" tab before treating this as fully verified.
 - **Avatar resolution priority** (see `UserAvatar` widget, and its
   leaderboard-row counterpart `_Avatar` in `leaderboard_screen.dart`):
   custom Storage upload > premium preset > free preset > Google photo >
