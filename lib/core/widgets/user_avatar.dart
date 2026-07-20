@@ -68,7 +68,11 @@ class _PresetCircle extends StatelessWidget {
     return CircleAvatar(
       radius: radius,
       backgroundColor: preset.background,
-      child: Text(preset.emoji, style: TextStyle(fontSize: radius * 0.8)),
+      child: AvatarPresetArt(
+        preset: preset,
+        imageSize: radius * 1.4,
+        emojiFontSize: radius * 0.8,
+      ),
     );
   }
 }

@@ -316,7 +316,11 @@ class LeaderboardAvatar extends StatelessWidget {
         return CircleAvatar(
           radius: size / 2,
           backgroundColor: preset.background,
-          child: Text(preset.emoji, style: TextStyle(fontSize: size * 0.4)),
+          child: AvatarPresetArt(
+            preset: preset,
+            imageSize: size * 0.7,
+            emojiFontSize: size * 0.4,
+          ),
         );
       }
     }

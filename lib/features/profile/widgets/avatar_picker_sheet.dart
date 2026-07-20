@@ -342,7 +342,11 @@ class _PresetTile extends StatelessWidget {
                   : null,
             ),
             alignment: Alignment.center,
-            child: Text(preset.emoji, style: const TextStyle(fontSize: 28)),
+            child: AvatarPresetArt(
+              preset: preset,
+              imageSize: 40,
+              emojiFontSize: 28,
+            ),
           ),
           if (selected)
             const Positioned(

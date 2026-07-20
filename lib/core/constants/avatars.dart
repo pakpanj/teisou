@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-/// One selectable avatar preset. Placeholder rendering is an emoji over a
-/// colored circle — swap [emoji] usage for `SvgPicture.asset` per id once
-/// real SVG art lands, without touching callers of [UserAvatar].
+/// One selectable avatar preset. Real art is a bundled PNG at [assetPath];
+/// the emoji-over-colored-circle rendering only ever shows if that file
+/// isn't present in the asset bundle yet (see [AvatarPresetArt]), so presets
+/// keep working before art is dropped in and after, with no caller changes.
 class AvatarPreset {
   final String id;
   final String emoji;
@@ -15,6 +16,40 @@ class AvatarPreset {
     required this.background,
     required this.premium,
   });
+
+  /// Where this preset's PNG art lives once supplied — filename must match
+  /// [id] exactly (e.g. `mood_happy` -> `assets/avatars/mood_happy.png`) so
+  /// dropping files in never needs a separate mapping table.
+  String get assetPath => 'assets/avatars/$id.png';
+}
+
+/// Renders a preset's real PNG art, falling back to its emoji placeholder on
+/// any load failure (art not supplied yet, decode error, etc.) — same
+/// never-crash contract as [KotobaImage]/[KaiwaImage], just for a bundled
+/// asset instead of an on-demand Storage download.
+class AvatarPresetArt extends StatelessWidget {
+  final AvatarPreset preset;
+  final double imageSize;
+  final double emojiFontSize;
+
+  const AvatarPresetArt({
+    super.key,
+    required this.preset,
+    required this.imageSize,
+    required this.emojiFontSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      preset.assetPath,
+      width: imageSize,
+      height: imageSize,
+      fit: BoxFit.contain,
+      errorBuilder: (context, error, stackTrace) =>
+          Text(preset.emoji, style: TextStyle(fontSize: emojiFontSize)),
+    );
+  }
 }
 
 /// Definitions for all 16 avatar presets (6 free + 10 premium), keyed by id
