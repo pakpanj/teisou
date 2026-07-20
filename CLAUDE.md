@@ -94,7 +94,11 @@ data files, not just "code exists")**:
   relate to which kanji) has never been done; the schema and UI are
   ready and waiting.
 - AdMob uses Google's public test ad unit IDs, not production ones.
-- Avatar art is unbuilt (emoji fallback everywhere it's needed).
+- Avatar art PNGs haven't been supplied yet, but the code is ready for
+  them: `AvatarPreset.assetPath` + `AvatarPresetArt` (emoji-fallback
+  `Image.asset`) are wired into every render site — drop 16 files into
+  `assets/avatars/` named to match each preset id and they'll render
+  automatically, no further code changes needed.
 - `SavedWordsScreen` is local-only (no cross-device sync via
   Firestore); there's no browse UI for `savedItems` bookmarks at all
   (the write path works, nothing reads it back yet).
@@ -1672,9 +1676,24 @@ practice.
   3), but AdMob uses Google's public **test** ad unit IDs
   (`lib/core/services/ad_service.dart`, `AndroidManifest.xml`) — swap for
   production IDs before release (Batch 12+).
-- Avatar art is unbuilt; every place that renders it already has a
-  graceful emoji fallback. (Kanji stroke-order art *is* built now, as of
-  Batch 8 — see the Kanji module note above; don't confuse the two.)
+- Avatar art PNGs haven't been supplied yet, but as of the 2026-07-20
+  profile bug-hunt session the code is fully ready for them:
+  `AvatarPreset` (`lib/core/constants/avatars.dart`) gained an
+  `assetPath` getter (`assets/avatars/{id}.png`, derived from `id` so
+  there's no separate filename-mapping table to keep in sync) and a
+  new `AvatarPresetArt` widget that renders `Image.asset(preset.assetPath)`
+  with an `errorBuilder` falling back to the existing emoji — same
+  never-crash contract as `KotobaImage`/`KaiwaImage`, just for a
+  bundled asset instead of an on-demand Storage download. Wired into
+  all three render sites (`_PresetCircle` in `user_avatar.dart`,
+  `LeaderboardAvatar`, `_PresetTile` in `avatar_picker_sheet.dart`).
+  `assets/avatars/` is declared in `pubspec.yaml` and exists on disk
+  (currently just a `.gitkeep`, confirmed an empty declared asset
+  directory doesn't break `flutter build apk --debug`). Dropping in 16
+  PNGs named to match each preset's `id` (`mood_happy.png`,
+  `neko_sakura.png`, etc.) is the only remaining step — no code changes
+  needed. (Kanji stroke-order art *is* built now, as of Batch 8 — see
+  the Kanji module note above; don't confuse the two.)
 - **No Kotoba vocab images have been uploaded to Firebase Storage yet** —
   all 519 words across all 45 categories have a real `imagePath` (see
   `KotobaImage`'s gracefully-handled 404 fallback above), but the actual
