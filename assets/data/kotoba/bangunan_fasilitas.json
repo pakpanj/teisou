@@ -262,5 +262,101 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_otera.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kensetsu",
+    "word": "けんせつ",
+    "kanji": "建設",
+    "reading": "けんせつ",
+    "romaji": "kensetsu",
+    "meaning": "pembangunan/konstruksi",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "建設 (kensetsu)",
+      "formal": "建設 (kensetsu)",
+      "keigo": "建設 (kensetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しいビルを建設しています。",
+        "romaji": "Atarashii biru o kensetsu shite imasu.",
+        "translation": "Kami sedang membangun gedung baru."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kensetsu.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kaichiku",
+    "word": "かいちく",
+    "kanji": "改築",
+    "reading": "かいちく",
+    "romaji": "kaichiku",
+    "meaning": "renovasi bangunan",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "改築 (kaichiku)",
+      "formal": "改築 (kaichiku)",
+      "keigo": "改築 (kaichiku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "古い家を改築しました。",
+        "romaji": "Furui ie o kaichiku shimashita.",
+        "translation": "Kami merenovasi rumah lama."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaichiku.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_tekkyo",
+    "word": "てっきょ",
+    "kanji": "撤去",
+    "reading": "てっきょ",
+    "romaji": "tekkyo",
+    "meaning": "pembongkaran",
+    "jlptLevel": "N1",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "撤去 (tekkyo)",
+      "formal": "撤去 (tekkyo)",
+      "keigo": "撤去 (tekkyo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "古い建物が撤去されました。",
+        "romaji": "Furui tatemono ga tekkyo saremashita.",
+        "translation": "Bangunan lama itu dibongkar."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tekkyo.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_ritchi",
+    "word": "りっち",
+    "kanji": "立地",
+    "reading": "りっち",
+    "romaji": "ritchi",
+    "meaning": "lokasi/penempatan (usaha)",
+    "jlptLevel": "N1",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "立地 (ritchi)",
+      "formal": "立地 (ritchi)",
+      "keigo": "立地 (ritchi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この店は立地がいいです。",
+        "romaji": "Kono mise wa ritchi ga ii desu.",
+        "translation": "Lokasi toko ini bagus."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ritchi.png"
   }
 ]

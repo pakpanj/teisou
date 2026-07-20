@@ -238,5 +238,77 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_reihai.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_keishou",
+    "word": "けいしょう",
+    "kanji": "継承",
+    "reading": "けいしょう",
+    "romaji": "keishou",
+    "meaning": "pewarisan (tradisi/budaya)",
+    "jlptLevel": "N1",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "継承 (keishou)",
+      "formal": "継承 (keishou)",
+      "keigo": "継承 (keishou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "伝統文化を継承します。",
+        "romaji": "Dentou bunka o keishou shimasu.",
+        "translation": "Kami mewariskan budaya tradisional."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_keishou.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_gishiki",
+    "word": "ぎしき",
+    "kanji": "儀式",
+    "reading": "ぎしき",
+    "romaji": "gishiki",
+    "meaning": "upacara/ritual",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "儀式 (gishiki)",
+      "formal": "儀式 (gishiki)",
+      "keigo": "儀式 (gishiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "結婚の儀式を行います。",
+        "romaji": "Kekkon no gishiki o okonaimasu.",
+        "translation": "Kami melaksanakan upacara pernikahan."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_gishiki.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_shinkou",
+    "word": "しんこう",
+    "kanji": "信仰",
+    "reading": "しんこう",
+    "romaji": "shinkou",
+    "meaning": "keyakinan/keimanan",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "信仰 (shinkou)",
+      "formal": "信仰 (shinkou)",
+      "keigo": "信仰 (shinkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "信仰は人それぞれです。",
+        "romaji": "Shinkou wa hito sorezore desu.",
+        "translation": "Keyakinan itu berbeda-beda pada setiap orang."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shinkou.png"
   }
 ]

@@ -88,6 +88,17 @@ CATEGORIES = {
         ("kagaku", "化学", "かがく", "kagaku", "kimia", "N2", "noun", "化学", "kagaku", "化学", "kagaku", [
             ("化学は面白いです。", "Kagaku wa omoshiroi desu.", "Kimia itu menarik."),
         ]),
+        # N1/N2 addition (2026-07-20, fourth batch): pure-kanji academic
+        # nouns, for Kombinasi Kanji pool depth.
+        ("senkou", "専攻", "せんこう", "senkou", "jurusan/spesialisasi (kuliah)", "N2", "noun", "専攻", "senkou", "専攻", "senkou", [
+            ("大学で経済学を専攻しています。", "Daigaku de keizaigaku o senkou shite imasu.", "Saya berkuliah jurusan ekonomi."),
+        ]),
+        ("rishuu", "履修", "りしゅう", "rishuu", "pengambilan mata kuliah", "N1", "noun", "履修", "rishuu", "履修", "rishuu", [
+            ("来学期、この科目を履修します。", "Rai gakki, kono kamoku o rishuu shimasu.", "Semester depan, saya akan mengambil mata kuliah ini."),
+        ]),
+        ("shingaku", "進学", "しんがく", "shingaku", "melanjutkan pendidikan", "N2", "noun", "進学", "shingaku", "進学", "shingaku", [
+            ("大学に進学するつもりです。", "Daigaku ni shingaku suru tsumori desu.", "Saya berniat melanjutkan ke perguruan tinggi."),
+        ]),
     ],
     "pekerjaan_kantor": [
         ("kaisha", "会社", "かいしゃ", "kaisha", "perusahaan/kantor", "N5", "noun", "会社", "kaisha", "会社", "kaisha", [

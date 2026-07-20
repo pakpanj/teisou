@@ -286,5 +286,101 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kashu.png"
+  },
+  {
+    "id": "kotoba_profesi_juuji",
+    "word": "じゅうじ",
+    "kanji": "従事",
+    "reading": "じゅうじ",
+    "romaji": "juuji",
+    "meaning": "menekuni (pekerjaan)",
+    "jlptLevel": "N1",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "従事 (juuji)",
+      "formal": "従事 (juuji)",
+      "keigo": "従事 (juuji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "農業に従事しています。",
+        "romaji": "Nougyou ni juuji shite imasu.",
+        "translation": "Saya menekuni bidang pertanian."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_juuji.png"
+  },
+  {
+    "id": "kotoba_profesi_tekisei",
+    "word": "てきせい",
+    "kanji": "適性",
+    "reading": "てきせい",
+    "romaji": "tekisei",
+    "meaning": "bakat/kesesuaian (profesi)",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "適性 (tekisei)",
+      "formal": "適性 (tekisei)",
+      "keigo": "適性 (tekisei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この仕事に適性があります。",
+        "romaji": "Kono shigoto ni tekisei ga arimasu.",
+        "translation": "Saya punya bakat untuk pekerjaan ini."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tekisei.png"
+  },
+  {
+    "id": "kotoba_profesi_tenshoku",
+    "word": "てんしょく",
+    "kanji": "転職",
+    "reading": "てんしょく",
+    "romaji": "tenshoku",
+    "meaning": "pindah kerja/ganti profesi",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "転職 (tenshoku)",
+      "formal": "転職 (tenshoku)",
+      "keigo": "転職 (tenshoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来月転職します。",
+        "romaji": "Raigetsu tenshoku shimasu.",
+        "translation": "Bulan depan saya pindah kerja."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenshoku.png"
+  },
+  {
+    "id": "kotoba_profesi_kengyou",
+    "word": "けんぎょう",
+    "kanji": "兼業",
+    "reading": "けんぎょう",
+    "romaji": "kengyou",
+    "meaning": "pekerjaan sampingan",
+    "jlptLevel": "N1",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "兼業 (kengyou)",
+      "formal": "兼業 (kengyou)",
+      "keigo": "兼業 (kengyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "農家と兼業しています。",
+        "romaji": "Nouka to kengyou shite imasu.",
+        "translation": "Saya menjalankan usaha sampingan sebagai petani."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kengyou.png"
   }
 ]

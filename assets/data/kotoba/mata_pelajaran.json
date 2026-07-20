@@ -238,5 +238,77 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kagaku.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_senkou",
+    "word": "せんこう",
+    "kanji": "専攻",
+    "reading": "せんこう",
+    "romaji": "senkou",
+    "meaning": "jurusan/spesialisasi (kuliah)",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "専攻 (senkou)",
+      "formal": "専攻 (senkou)",
+      "keigo": "専攻 (senkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大学で経済学を専攻しています。",
+        "romaji": "Daigaku de keizaigaku o senkou shite imasu.",
+        "translation": "Saya berkuliah jurusan ekonomi."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_senkou.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_rishuu",
+    "word": "りしゅう",
+    "kanji": "履修",
+    "reading": "りしゅう",
+    "romaji": "rishuu",
+    "meaning": "pengambilan mata kuliah",
+    "jlptLevel": "N1",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "履修 (rishuu)",
+      "formal": "履修 (rishuu)",
+      "keigo": "履修 (rishuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来学期、この科目を履修します。",
+        "romaji": "Rai gakki, kono kamoku o rishuu shimasu.",
+        "translation": "Semester depan, saya akan mengambil mata kuliah ini."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rishuu.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_shingaku",
+    "word": "しんがく",
+    "kanji": "進学",
+    "reading": "しんがく",
+    "romaji": "shingaku",
+    "meaning": "melanjutkan pendidikan",
+    "jlptLevel": "N2",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "進学 (shingaku)",
+      "formal": "進学 (shingaku)",
+      "keigo": "進学 (shingaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大学に進学するつもりです。",
+        "romaji": "Daigaku ni shingaku suru tsumori desu.",
+        "translation": "Saya berniat melanjutkan ke perguruan tinggi."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shingaku.png"
   }
 ]

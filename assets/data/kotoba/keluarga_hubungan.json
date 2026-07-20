@@ -334,5 +334,77 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_fuufu.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_soen",
+    "word": "そえん",
+    "kanji": "疎遠",
+    "reading": "そえん",
+    "romaji": "soen",
+    "meaning": "keterasingan/jarang berhubungan",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "疎遠 (soen)",
+      "formal": "疎遠 (soen)",
+      "keigo": "疎遠 (soen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "最近、彼とは疎遠になりました。",
+        "romaji": "Saikin, kare to wa soen ni narimashita.",
+        "translation": "Belakangan ini, saya jadi jarang berhubungan dengannya."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_soen.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_wakai",
+    "word": "わかい",
+    "kanji": "和解",
+    "reading": "わかい",
+    "romaji": "wakai",
+    "meaning": "berdamai/rekonsiliasi",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "和解 (wakai)",
+      "formal": "和解 (wakai)",
+      "keigo": "和解 (wakai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "兄弟はようやく和解しました。",
+        "romaji": "Kyoudai wa youyaku wakai shimashita.",
+        "translation": "Kakak beradik itu akhirnya berdamai."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_wakai.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_danzetsu",
+    "word": "だんぜつ",
+    "kanji": "断絶",
+    "reading": "だんぜつ",
+    "romaji": "danzetsu",
+    "meaning": "keterputusan (hubungan)",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "断絶 (danzetsu)",
+      "formal": "断絶 (danzetsu)",
+      "keigo": "断絶 (danzetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "親子関係が断絶しました。",
+        "romaji": "Oyako kankei ga danzetsu shimashita.",
+        "translation": "Hubungan orang tua-anak itu terputus."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_danzetsu.png"
   }
 ]

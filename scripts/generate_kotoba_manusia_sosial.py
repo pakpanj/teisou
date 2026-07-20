@@ -70,6 +70,20 @@ CATEGORIES = {
         ("kashu", "歌手", "かしゅ", "kashu", "penyanyi", "N3", "noun", "歌手", "kashu", "歌手", "kashu", [
             ("彼女は有名な歌手です。", "Kanojo wa yuumei na kashu desu.", "Dia penyanyi terkenal."),
         ]),
+        # N1/N2 addition (2026-07-20, fourth batch): pure-kanji career-
+        # related abstract nouns, for Kombinasi Kanji pool depth.
+        ("juuji", "従事", "じゅうじ", "juuji", "menekuni (pekerjaan)", "N1", "noun", "従事", "juuji", "従事", "juuji", [
+            ("農業に従事しています。", "Nougyou ni juuji shite imasu.", "Saya menekuni bidang pertanian."),
+        ]),
+        ("tekisei", "適性", "てきせい", "tekisei", "bakat/kesesuaian (profesi)", "N2", "noun", "適性", "tekisei", "適性", "tekisei", [
+            ("この仕事に適性があります。", "Kono shigoto ni tekisei ga arimasu.", "Saya punya bakat untuk pekerjaan ini."),
+        ]),
+        ("tenshoku", "転職", "てんしょく", "tenshoku", "pindah kerja/ganti profesi", "N2", "noun", "転職", "tenshoku", "転職", "tenshoku", [
+            ("来月転職します。", "Raigetsu tenshoku shimasu.", "Bulan depan saya pindah kerja."),
+        ]),
+        ("kengyou", "兼業", "けんぎょう", "kengyou", "pekerjaan sampingan", "N1", "noun", "兼業", "kengyou", "兼業", "kengyou", [
+            ("農家と兼業しています。", "Nouka to kengyou shite imasu.", "Saya menjalankan usaha sampingan sebagai petani."),
+        ]),
     ],
     "keluarga_hubungan": [
         ("kazoku", "家族", "かぞく", "kazoku", "keluarga", "N5", "noun", "家族", "kazoku", "家族", "kazoku", [
@@ -113,6 +127,17 @@ CATEGORIES = {
         ]),
         ("fuufu", "夫婦", "ふうふ", "fuufu", "pasangan suami istri", "N3", "noun", "夫婦", "fuufu", "夫婦", "fuufu", [
             ("二人は夫婦です。", "Futari wa fuufu desu.", "Mereka berdua adalah pasangan suami istri."),
+        ]),
+        # N1/N2 addition (2026-07-20, fourth batch): pure-kanji relationship
+        # nouns, for Kombinasi Kanji pool depth.
+        ("soen", "疎遠", "そえん", "soen", "keterasingan/jarang berhubungan", "N1", "noun", "疎遠", "soen", "疎遠", "soen", [
+            ("最近、彼とは疎遠になりました。", "Saikin, kare to wa soen ni narimashita.", "Belakangan ini, saya jadi jarang berhubungan dengannya."),
+        ]),
+        ("wakai", "和解", "わかい", "wakai", "berdamai/rekonsiliasi", "N2", "noun", "和解", "wakai", "和解", "wakai", [
+            ("兄弟はようやく和解しました。", "Kyoudai wa youyaku wakai shimashita.", "Kakak beradik itu akhirnya berdamai."),
+        ]),
+        ("danzetsu", "断絶", "だんぜつ", "danzetsu", "keterputusan (hubungan)", "N1", "noun", "断絶", "danzetsu", "断絶", "danzetsu", [
+            ("親子関係が断絶しました。", "Oyako kankei ga danzetsu shimashita.", "Hubungan orang tua-anak itu terputus."),
         ]),
     ],
     "pakaian_aksesori": [
@@ -190,6 +215,20 @@ CATEGORIES = {
         ("kyanpu", None, "キャンプ", "kyanpu", "berkemah/camping", "N3", "noun", "キャンプ", "kyanpu", "キャンプ", "kyanpu", [
             ("キャンプに行きます。", "Kyanpu ni ikimasu.", "Saya pergi berkemah."),
         ]),
+        # N1/N2 addition (2026-07-20, fourth batch): pure-kanji hobby-
+        # related abstract nouns, for Kombinasi Kanji pool depth.
+        ("bottou", "没頭", "ぼっとう", "bottou", "keasyikan/tenggelam (dalam kegiatan)", "N1", "noun", "没頭", "bottou", "没頭", "bottou", [
+            ("趣味に没頭しています。", "Shumi ni bottou shite imasu.", "Saya tenggelam dalam hobi saya."),
+        ]),
+        ("netchuu", "熱中", "ねっちゅう", "netchuu", "antusiasme/keasyikan", "N2", "noun", "熱中", "netchuu", "熱中", "netchuu", [
+            ("ゲームに熱中しています。", "Geemu ni netchuu shite imasu.", "Saya sangat antusias dengan game."),
+        ]),
+        ("juujitsu", "充実", "じゅうじつ", "juujitsu", "kepuasan/terpenuhi (kegiatan)", "N2", "noun", "充実", "juujitsu", "充実", "juujitsu", [
+            ("毎日充実しています。", "Mainichi juujitsu shite imasu.", "Setiap hari terasa memuaskan."),
+        ]),
+        ("hassan", "発散", "はっさん", "hassan", "pelampiasan/pelepasan (stres)", "N1", "noun", "発散", "hassan", "発散", "hassan", [
+            ("運動でストレスを発散します。", "Undou de sutoresu o hassan shimasu.", "Saya melampiaskan stres lewat olahraga."),
+        ]),
     ],
     "agama_budaya": [
         ("shuukyou", "宗教", "しゅうきょう", "shuukyou", "agama", "N3", "noun", "宗教", "shuukyou", "宗教", "shuukyou", [
@@ -221,6 +260,19 @@ CATEGORIES = {
         ]),
         ("reihai", "礼拝", "れいはい", "reihai", "ibadah/sembahyang", "N2", "noun", "礼拝", "reihai", "礼拝", "reihai", [
             ("礼拝に行きます。", "Reihai ni ikimasu.", "Saya pergi beribadah."),
+        ]),
+        # N1/N2 addition (2026-07-20, fourth batch): kept to the same
+        # neutral, factual register as the rest of this category (see the
+        # CLAUDE.md note on agama_budaya) — general concepts, no claim
+        # about any specific religion's doctrine or practice.
+        ("keishou", "継承", "けいしょう", "keishou", "pewarisan (tradisi/budaya)", "N1", "noun", "継承", "keishou", "継承", "keishou", [
+            ("伝統文化を継承します。", "Dentou bunka o keishou shimasu.", "Kami mewariskan budaya tradisional."),
+        ]),
+        ("gishiki", "儀式", "ぎしき", "gishiki", "upacara/ritual", "N2", "noun", "儀式", "gishiki", "儀式", "gishiki", [
+            ("結婚の儀式を行います。", "Kekkon no gishiki o okonaimasu.", "Kami melaksanakan upacara pernikahan."),
+        ]),
+        ("shinkou", "信仰", "しんこう", "shinkou", "keyakinan/keimanan", "N2", "noun", "信仰", "shinkou", "信仰", "shinkou", [
+            ("信仰は人それぞれです。", "Shinkou wa hito sorezore desu.", "Keyakinan itu berbeda-beda pada setiap orang."),
         ]),
     ],
     "perayaan_haribesar": [

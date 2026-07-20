@@ -286,5 +286,101 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kyanpu.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_bottou",
+    "word": "ぼっとう",
+    "kanji": "没頭",
+    "reading": "ぼっとう",
+    "romaji": "bottou",
+    "meaning": "keasyikan/tenggelam (dalam kegiatan)",
+    "jlptLevel": "N1",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "没頭 (bottou)",
+      "formal": "没頭 (bottou)",
+      "keigo": "没頭 (bottou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "趣味に没頭しています。",
+        "romaji": "Shumi ni bottou shite imasu.",
+        "translation": "Saya tenggelam dalam hobi saya."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_bottou.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_netchuu",
+    "word": "ねっちゅう",
+    "kanji": "熱中",
+    "reading": "ねっちゅう",
+    "romaji": "netchuu",
+    "meaning": "antusiasme/keasyikan",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "熱中 (netchuu)",
+      "formal": "熱中 (netchuu)",
+      "keigo": "熱中 (netchuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ゲームに熱中しています。",
+        "romaji": "Geemu ni netchuu shite imasu.",
+        "translation": "Saya sangat antusias dengan game."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_netchuu.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_juujitsu",
+    "word": "じゅうじつ",
+    "kanji": "充実",
+    "reading": "じゅうじつ",
+    "romaji": "juujitsu",
+    "meaning": "kepuasan/terpenuhi (kegiatan)",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "充実 (juujitsu)",
+      "formal": "充実 (juujitsu)",
+      "keigo": "充実 (juujitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎日充実しています。",
+        "romaji": "Mainichi juujitsu shite imasu.",
+        "translation": "Setiap hari terasa memuaskan."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_juujitsu.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_hassan",
+    "word": "はっさん",
+    "kanji": "発散",
+    "reading": "はっさん",
+    "romaji": "hassan",
+    "meaning": "pelampiasan/pelepasan (stres)",
+    "jlptLevel": "N1",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "発散 (hassan)",
+      "formal": "発散 (hassan)",
+      "keigo": "発散 (hassan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "運動でストレスを発散します。",
+        "romaji": "Undou de sutoresu o hassan shimasu.",
+        "translation": "Saya melampiaskan stres lewat olahraga."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_hassan.png"
   }
 ]

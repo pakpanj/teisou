@@ -128,6 +128,20 @@ CATEGORIES = {
         ("otera", "お寺", "おてら", "otera", "kuil Buddha", "N3", "noun", "お寺", "otera", "お寺", "otera", [
             ("お寺を訪れます。", "Otera o otozuremasu.", "Saya mengunjungi kuil Buddha."),
         ]),
+        # N1/N2 addition (2026-07-20, fourth batch): pure-kanji urban-
+        # planning/construction nouns, for Kombinasi Kanji pool depth.
+        ("kensetsu", "建設", "けんせつ", "kensetsu", "pembangunan/konstruksi", "N2", "noun", "建設", "kensetsu", "建設", "kensetsu", [
+            ("新しいビルを建設しています。", "Atarashii biru o kensetsu shite imasu.", "Kami sedang membangun gedung baru."),
+        ]),
+        ("kaichiku", "改築", "かいちく", "kaichiku", "renovasi bangunan", "N2", "noun", "改築", "kaichiku", "改築", "kaichiku", [
+            ("古い家を改築しました。", "Furui ie o kaichiku shimashita.", "Kami merenovasi rumah lama."),
+        ]),
+        ("tekkyo", "撤去", "てっきょ", "tekkyo", "pembongkaran", "N1", "noun", "撤去", "tekkyo", "撤去", "tekkyo", [
+            ("古い建物が撤去されました。", "Furui tatemono ga tekkyo saremashita.", "Bangunan lama itu dibongkar."),
+        ]),
+        ("ritchi", "立地", "りっち", "ritchi", "lokasi/penempatan (usaha)", "N1", "noun", "立地", "ritchi", "立地", "ritchi", [
+            ("この店は立地がいいです。", "Kono mise wa ritchi ga ii desu.", "Lokasi toko ini bagus."),
+        ]),
     ],
     "kendaraan": [
         ("kuruma", "車", "くるま", "kuruma", "mobil", "N5", "noun", "車", "kuruma", "車", "kuruma", [
