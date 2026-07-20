@@ -756,6 +756,34 @@ practice.
   the create → share-code → join → leave round trip actually works, and
   that the 7-tab scrollable `TabBar` still renders correctly, before
   treating this as fully verified.
+  **Real bug shipped with this feature, caught the same day when the user
+  tried it and every clan creation failed**: `firestore.rules` was never
+  updated for the new `clans` collection — it only had rules for
+  `users/{uid}/**` and `leaderboard/{uid}`, and Firestore denies by
+  default, so every read/write to `clans/*` (including just creating one)
+  failed with permission-denied from the moment this feature shipped.
+  Fixed the same day by adding `clans/{code}` + `clans/{code}/members/{uid}`
+  rules (any signed-in user can read; creating requires `hostUid` to match
+  the creator; updating an existing clan doc is host-only except a
+  memberCount-only write, which is what join/leave actually perform; each
+  roster row is writable only by the uid it belongs to). **This fix lives
+  in the repo's `firestore.rules` file, but that file being correct in git
+  does not mean the live Firebase project is enforcing it** — Firestore
+  rules only take effect once deployed (`firebase deploy --only
+  firestore:rules`, or pasted into the Firebase Console's Rules tab and
+  published). Neither this coding environment's Firebase CLI (broken —
+  crashes on its own first-run welcome script) nor Claude's own operating
+  guidelines (deploying to shared/live infrastructure needs explicit user
+  action) allow deploying this automatically — **if clan creation is still
+  failing, check whether the updated rules have actually been deployed to
+  the live project before assuming there's a new client-side bug.** Worth
+  remembering for any *future* new top-level Firestore collection in this
+  app too: adding a repository/provider/UI for a new collection is not
+  enough by itself, `firestore.rules` needs an explicit `match` block for
+  it or every read/write silently permission-denies — this is exactly the
+  kind of gap that's invisible to `flutter analyze`/`test`/`build` (which
+  is exactly why it slipped through the Clan feature's original
+  verification pass).
 - **Avatar resolution priority** (see `UserAvatar` widget, and its
   leaderboard-row counterpart `LeaderboardAvatar` in
   `leaderboard_screen.dart` — renamed from private `_Avatar` when the Clan
