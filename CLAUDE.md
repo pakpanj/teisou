@@ -298,9 +298,24 @@ standing local-merge convention:
      number doesn't correspond to any real kanji count; the actual
      ~10,000 target elsewhere in this file is the unrelated Dictionary/
      Search feature's *word* count, not kanji).
-     Single-kanji mode was never affected by any of this — it reads
-     `KanjiRepository` directly and already had 107-1503 real kanji per
-     level throughout.
+     Single-kanji mode's *pool* was never affected by any of this — it
+     reads `KanjiRepository` directly and already had 107-1503 real
+     kanji per level throughout. **But the user pushed back that "the
+     pool isn't complete" anyway, and turned out to be right about
+     something real**: every single-kanji question only ever asked "apa
+     artinya" (`KanjiEntry.meanings.first`) — `onyomi`/`kunyomi` (real,
+     non-empty for all 2425 kanji, verified) were never surfaced as a
+     question at all, so a whole field of the dataset went untested, not
+     the kanji selection itself. Fixed same session:
+     `KanjiComboQuestion` gained a per-question `promptLabel` (previously
+     decided once for the whole exam from the screen-level `combination`
+     bool); `_buildSingleKanjiQuestions` (new, replacing the generic
+     `_buildQuestions` call for single mode) randomly picks per question
+     between a meaning question and a reading question (options = other
+     kanjis' onyomi/kunyomi), so one exam session now naturally mixes
+     both instead of only ever testing meaning. Combination mode is
+     unchanged, just now passes its `promptLabel` explicitly through the
+     same `_buildQuestions` path instead of a screen-level ternary.
    - Firestore: each new category writes exam attempts to its own
      subcollection (`dokkaiExamHistory`/`choukaiExamHistory`/
      `kanjiComboExamHistory` under `users/{uid}`, see
