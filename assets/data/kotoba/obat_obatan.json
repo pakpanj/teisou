@@ -238,5 +238,101 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenshin.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_shohou",
+    "word": "しょほう",
+    "kanji": "処方",
+    "reading": "しょほう",
+    "romaji": "shohou",
+    "meaning": "resep (obat)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "処方 (shohou)",
+      "formal": "処方 (shohou)",
+      "keigo": "処方 (shohou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "医者が薬を処方しました。",
+        "romaji": "Isha ga kusuri o shohou shimashita.",
+        "translation": "Dokter meresepkan obat."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shohou.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_fukusayou",
+    "word": "ふくさよう",
+    "kanji": "副作用",
+    "reading": "ふくさよう",
+    "romaji": "fukusayou",
+    "meaning": "efek samping",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "副作用 (fukusayou)",
+      "formal": "副作用 (fukusayou)",
+      "keigo": "副作用 (fukusayou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この薬には副作用があります。",
+        "romaji": "Kono kusuri ni wa fukusayou ga arimasu.",
+        "translation": "Obat ini punya efek samping."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_fukusayou.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_fukuyou",
+    "word": "ふくよう",
+    "kanji": "服用",
+    "reading": "ふくよう",
+    "romaji": "fukuyou",
+    "meaning": "meminum (obat, formal)",
+    "jlptLevel": "N1",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "服用 (fukuyou)",
+      "formal": "服用 (fukuyou)",
+      "keigo": "服用 (fukuyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "食後にこの薬を服用してください。",
+        "romaji": "Shokugo ni kono kusuri o fukuyou shite kudasai.",
+        "translation": "Tolong minum obat ini setelah makan."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_fukuyou.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_masui",
+    "word": "ますい",
+    "kanji": "麻酔",
+    "reading": "ますい",
+    "romaji": "masui",
+    "meaning": "anestesi/bius",
+    "jlptLevel": "N1",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "麻酔 (masui)",
+      "formal": "麻酔 (masui)",
+      "keigo": "麻酔 (masui) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "手術の前に麻酔をかけます。",
+        "romaji": "Shujutsu no mae ni masui o kakemasu.",
+        "translation": "Sebelum operasi, dilakukan pembiusan."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masui.png"
   }
 ]

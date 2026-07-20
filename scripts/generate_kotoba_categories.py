@@ -23,7 +23,7 @@ GROUPS = {
         ("buah", "Buah", "🍎", True, 14),
         ("sayuran", "Sayuran", "🥬", True, 14),
         ("cuaca", "Cuaca", "⛅", True, 12),
-        ("bencana_alam", "Bencana Alam", "🌪️", True, 11),
+        ("bencana_alam", "Bencana Alam", "🌪️", True, 16),
     ],
     "Makanan & Minuman": [
         ("makanan_jepang", "Makanan Jepang", "🍱", True, 15),
@@ -36,10 +36,10 @@ GROUPS = {
     ],
     "Tubuh & Kesehatan": [
         ("anggota_tubuh", "Anggota Tubuh", "🖐️", True, 17),
-        ("penyakit_gejala", "Penyakit & Gejala", "🤒", True, 11),
-        ("obat_obatan", "Obat-obatan", "💊", True, 10),
+        ("penyakit_gejala", "Penyakit & Gejala", "🤒", True, 19),
+        ("obat_obatan", "Obat-obatan", "💊", True, 14),
         ("olahraga", "Olahraga", "⚽", True, 12),
-        ("perasaan_emosi", "Perasaan & Emosi", "😊", True, 10),
+        ("perasaan_emosi", "Perasaan & Emosi", "😊", True, 15),
         ("ekspresi_wajah", "Ekspresi Wajah", "😮", True, 8),
     ],
     "Tempat & Transportasi": [
@@ -62,7 +62,7 @@ GROUPS = {
         ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", True, 11),
         ("mata_pelajaran", "Mata Pelajaran", "📖", True, 10),
         ("pekerjaan_kantor", "Pekerjaan & Kantor", "💼", True, 41),
-        ("teknologi_gadget", "Teknologi & Gadget", "💻", True, 10),
+        ("teknologi_gadget", "Teknologi & Gadget", "💻", True, 16),
         ("media_hiburan", "Media & Hiburan", "📺", True, 15),
     ],
     "Waktu & Angka": [

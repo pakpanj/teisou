@@ -120,6 +120,32 @@ CATEGORIES = {
         ("tsukare", "疲れ", "つかれ", "tsukare", "kelelahan", "N3", "noun", "疲れ", "tsukare", "疲れ", "tsukare", [
             ("疲れを感じます。", "Tsukare o kanjimasu.", "Saya merasa lelah."),
         ]),
+        # N2/N3 addition (2026-07-20, third batch): pure-kanji medical
+        # nouns, for Kombinasi Kanji pool depth.
+        ("shindan", "診断", "しんだん", "shindan", "diagnosis", "N2", "noun", "診断", "shindan", "診断", "shindan", [
+            ("医者に診断してもらいました。", "Isha ni shindan shite moraimashita.", "Saya didiagnosis oleh dokter."),
+        ]),
+        ("kansen", "感染", "かんせん", "kansen", "infeksi", "N2", "noun", "感染", "kansen", "感染", "kansen", [
+            ("ウイルスに感染しました。", "Uirusu ni kansen shimashita.", "Saya terinfeksi virus."),
+        ]),
+        ("men'eki", "免疫", "めんえき", "men'eki", "kekebalan/imun", "N2", "noun", "免疫", "men'eki", "免疫", "men'eki", [
+            ("免疫力を高めましょう。", "Men'ekiryoku o takamemashou.", "Mari tingkatkan daya tahan tubuh."),
+        ]),
+        ("shoujou", "症状", "しょうじょう", "shoujou", "gejala", "N3", "noun", "症状", "shoujou", "症状", "shoujou", [
+            ("どんな症状がありますか。", "Donna shoujou ga arimasu ka.", "Gejala seperti apa yang Anda rasakan?"),
+        ]),
+        ("akka", "悪化", "あっか", "akka", "memburuk (kondisi)", "N2", "noun", "悪化", "akka", "悪化", "akka", [
+            ("病状が悪化しました。", "Byoujou ga akka shimashita.", "Kondisi penyakitnya memburuk."),
+        ]),
+        ("kaifuku", "回復", "かいふく", "kaifuku", "pemulihan", "N2", "noun", "回復", "kaifuku", "回復", "kaifuku", [
+            ("体調が回復しました。", "Taichou ga kaifuku shimashita.", "Kondisi tubuh saya sudah pulih."),
+        ]),
+        ("chiryou", "治療", "ちりょう", "chiryou", "pengobatan", "N3", "noun", "治療", "chiryou", "治療", "chiryou", [
+            ("病院で治療を受けます。", "Byouin de chiryou o ukemasu.", "Saya menjalani pengobatan di rumah sakit."),
+        ]),
+        ("yobou", "予防", "よぼう", "yobou", "pencegahan", "N3", "noun", "予防", "yobou", "予防", "yobou", [
+            ("手洗いは風邪の予防になります。", "Tearai wa kaze no yobou ni narimasu.", "Cuci tangan adalah pencegahan flu."),
+        ]),
     ],
     "obat_obatan": [
         ("kusuri", "薬", "くすり", "kusuri", "obat", "N4", "noun", "薬", "kusuri", "薬", "kusuri", [
@@ -151,6 +177,20 @@ CATEGORIES = {
         ]),
         ("kenshin", "検診", "けんしん", "kenshin", "pemeriksaan kesehatan", "N2", "noun", "検診", "kenshin", "検診", "kenshin", [
             ("毎年検診を受けます。", "Maitoshi kenshin o ukemasu.", "Saya menjalani pemeriksaan kesehatan setiap tahun."),
+        ]),
+        # N1/N2 addition (2026-07-20, third batch): pure-kanji pharmacy/
+        # treatment nouns, for Kombinasi Kanji pool depth.
+        ("shohou", "処方", "しょほう", "shohou", "resep (obat)", "N2", "noun", "処方", "shohou", "処方", "shohou", [
+            ("医者が薬を処方しました。", "Isha ga kusuri o shohou shimashita.", "Dokter meresepkan obat."),
+        ]),
+        ("fukusayou", "副作用", "ふくさよう", "fukusayou", "efek samping", "N2", "noun", "副作用", "fukusayou", "副作用", "fukusayou", [
+            ("この薬には副作用があります。", "Kono kusuri ni wa fukusayou ga arimasu.", "Obat ini punya efek samping."),
+        ]),
+        ("fukuyou", "服用", "ふくよう", "fukuyou", "meminum (obat, formal)", "N1", "noun", "服用", "fukuyou", "服用", "fukuyou", [
+            ("食後にこの薬を服用してください。", "Shokugo ni kono kusuri o fukuyou shite kudasai.", "Tolong minum obat ini setelah makan."),
+        ]),
+        ("masui", "麻酔", "ますい", "masui", "anestesi/bius", "N1", "noun", "麻酔", "masui", "麻酔", "masui", [
+            ("手術の前に麻酔をかけます。", "Shujutsu no mae ni masui o kakemasu.", "Sebelum operasi, dilakukan pembiusan."),
         ]),
     ],
     "olahraga": [
@@ -221,6 +261,26 @@ CATEGORIES = {
         ]),
         ("anshin", "安心", "あんしん", "anshin", "lega/tenang", "N3", "verb", "安心する", "anshin suru", "安心します", "anshin shimasu", [
             ("安心しました。", "Anshin shimashita.", "Saya merasa lega."),
+        ]),
+        # N1/N2 addition (2026-07-20, third batch): pure-kanji noun-form
+        # emotion words, for Kombinasi Kanji pool depth — the emotion words
+        # already here are mostly i-adjectives/verbs with okurigana (e.g.
+        # 嬉しい, 怒る), which never counted toward the compound pool since
+        # they aren't pure kanji strings.
+        ("ando", "安堵", "あんど", "ando", "lega (formal)", "N1", "noun", "安堵", "ando", "安堵", "ando", [
+            ("無事だと聞いて安堵しました。", "Buji da to kiite ando shimashita.", "Saya lega mendengar dia selamat."),
+        ]),
+        ("douyou", "動揺", "どうよう", "douyou", "keguncangan/kegelisahan", "N1", "noun", "動揺", "douyou", "動揺", "douyou", [
+            ("そのニュースに動揺しました。", "Sono nyuusu ni douyou shimashita.", "Saya terguncang mendengar berita itu."),
+        ]),
+        ("rakutan", "落胆", "らくたん", "rakutan", "kekecewaan/patah semangat", "N2", "noun", "落胆", "rakutan", "落胆", "rakutan", [
+            ("試験に落ちて落胆しました。", "Shiken ni ochite rakutan shimashita.", "Saya kecewa karena gagal ujian."),
+        ]),
+        ("yuuutsu", "憂鬱", "ゆううつ", "yuuutsu", "murung/suram", "N1", "noun", "憂鬱", "yuuutsu", "憂鬱", "yuuutsu", [
+            ("月曜日はいつも憂鬱です。", "Getsuyoubi wa itsumo yuuutsu desu.", "Hari Senin selalu terasa suram."),
+        ]),
+        ("kanki", "歓喜", "かんき", "kanki", "kegembiraan besar/sukacita", "N1", "noun", "歓喜", "kanki", "歓喜", "kanki", [
+            ("優勝の知らせに歓喜しました。", "Yuushou no shirase ni kanki shimashita.", "Kami bersukacita mendengar kabar menang juara."),
         ]),
     ],
     "ekspresi_wajah": [

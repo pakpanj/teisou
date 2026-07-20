@@ -262,5 +262,125 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hinanjo.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_fukkyuu",
+    "word": "ふっきゅう",
+    "kanji": "復旧",
+    "reading": "ふっきゅう",
+    "romaji": "fukkyuu",
+    "meaning": "pemulihan (pascabencana)",
+    "jlptLevel": "N1",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ふっきゅう (fukkyuu)",
+      "formal": "ふっきゅう (fukkyuu)",
+      "keigo": "ふっきゅう (fukkyuu) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電気の復旧まで時間がかかります。",
+        "romaji": "Denki no fukkyuu made jikan ga kakarimasu.",
+        "translation": "Butuh waktu sampai listrik pulih kembali."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_fukkyuu.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_houkai",
+    "word": "ほうかい",
+    "kanji": "崩壊",
+    "reading": "ほうかい",
+    "romaji": "houkai",
+    "meaning": "keruntuhan",
+    "jlptLevel": "N2",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ほうかい (houkai)",
+      "formal": "ほうかい (houkai)",
+      "keigo": "ほうかい (houkai) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "建物が崩壊しました。",
+        "romaji": "Tatemono ga houkai shimashita.",
+        "translation": "Bangunan itu runtuh."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_houkai.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_hisai",
+    "word": "ひさい",
+    "kanji": "被災",
+    "reading": "ひさい",
+    "romaji": "hisai",
+    "meaning": "menjadi korban bencana",
+    "jlptLevel": "N1",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ひさい (hisai)",
+      "formal": "ひさい (hisai)",
+      "keigo": "ひさい (hisai) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "被災した地域を支援します。",
+        "romaji": "Hisai shita chiiki o shien shimasu.",
+        "translation": "Kami mendukung daerah yang terkena bencana."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hisai.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_songai",
+    "word": "そんがい",
+    "kanji": "損害",
+    "reading": "そんがい",
+    "romaji": "songai",
+    "meaning": "kerugian/kerusakan",
+    "jlptLevel": "N2",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "そんがい (songai)",
+      "formal": "そんがい (songai)",
+      "keigo": "そんがい (songai) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "台風で大きな損害が出ました。",
+        "romaji": "Taifuu de ookina songai ga demashita.",
+        "translation": "Topan menyebabkan kerugian besar."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_songai.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_kyuujo",
+    "word": "きゅうじょ",
+    "kanji": "救助",
+    "reading": "きゅうじょ",
+    "romaji": "kyuujo",
+    "meaning": "penyelamatan",
+    "jlptLevel": "N2",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きゅうじょ (kyuujo)",
+      "formal": "きゅうじょ (kyuujo)",
+      "keigo": "きゅうじょ (kyuujo) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "救助隊が到着しました。",
+        "romaji": "Kyuujotai ga touchaku shimashita.",
+        "translation": "Tim penyelamat telah tiba."
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kyuujo.png"
   }
 ]

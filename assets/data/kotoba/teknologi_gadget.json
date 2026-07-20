@@ -238,5 +238,149 @@
       }
     ],
     "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_waifai.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_kakushin",
+    "word": "かくしん",
+    "kanji": "革新",
+    "reading": "かくしん",
+    "romaji": "kakushin",
+    "meaning": "inovasi/pembaruan",
+    "jlptLevel": "N1",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "革新 (kakushin)",
+      "formal": "革新 (kakushin)",
+      "keigo": "革新 (kakushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この技術は業界に革新をもたらしました。",
+        "romaji": "Kono gijutsu wa gyoukai ni kakushin o motarashimashita.",
+        "translation": "Teknologi ini membawa inovasi bagi industri."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_kakushin.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_fukyuu",
+    "word": "ふきゅう",
+    "kanji": "普及",
+    "reading": "ふきゅう",
+    "romaji": "fukyuu",
+    "meaning": "penyebaran/pemasyarakatan (teknologi)",
+    "jlptLevel": "N1",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "普及 (fukyuu)",
+      "formal": "普及 (fukyuu)",
+      "keigo": "普及 (fukyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "スマートフォンが急速に普及しました。",
+        "romaji": "Sumaatofon ga kyuusoku ni fukyuu shimashita.",
+        "translation": "Smartphone menyebar dengan cepat."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_fukyuu.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_shinka",
+    "word": "しんか",
+    "kanji": "進化",
+    "reading": "しんか",
+    "romaji": "shinka",
+    "meaning": "evolusi/perkembangan",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "進化 (shinka)",
+      "formal": "進化 (shinka)",
+      "keigo": "進化 (shinka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "技術は日々進化しています。",
+        "romaji": "Gijutsu wa hibi shinka shite imasu.",
+        "translation": "Teknologi berevolusi setiap hari."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_shinka.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_ouyou",
+    "word": "おうよう",
+    "kanji": "応用",
+    "reading": "おうよう",
+    "romaji": "ouyou",
+    "meaning": "penerapan/aplikasi (teori)",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "応用 (ouyou)",
+      "formal": "応用 (ouyou)",
+      "keigo": "応用 (ouyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この理論は実生活に応用できます。",
+        "romaji": "Kono riron wa jisseikatsu ni ouyou dekimasu.",
+        "translation": "Teori ini bisa diterapkan dalam kehidupan sehari-hari."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_ouyou.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_seimitsu",
+    "word": "せいみつ",
+    "kanji": "精密",
+    "reading": "せいみつ",
+    "romaji": "seimitsu",
+    "meaning": "presisi/ketelitian",
+    "jlptLevel": "N1",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "精密 (seimitsu)",
+      "formal": "精密 (seimitsu)",
+      "keigo": "精密 (seimitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "精密な機械を作っています。",
+        "romaji": "Seimitsu na kikai o tsukutte imasu.",
+        "translation": "Kami membuat mesin yang presisi."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_seimitsu.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_hanyou",
+    "word": "はんよう",
+    "kanji": "汎用",
+    "reading": "はんよう",
+    "romaji": "hanyou",
+    "meaning": "serbaguna (kegunaan umum)",
+    "jlptLevel": "N1",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "汎用 (hanyou)",
+      "formal": "汎用 (hanyou)",
+      "keigo": "汎用 (hanyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "これは汎用性の高いソフトです。",
+        "romaji": "Kore wa hanyousei no takai sofuto desu.",
+        "translation": "Ini perangkat lunak yang sangat serbaguna."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_hanyou.png"
   }
 ]

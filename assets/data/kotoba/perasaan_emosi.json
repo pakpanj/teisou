@@ -238,5 +238,125 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_anshin.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_ando",
+    "word": "あんど",
+    "kanji": "安堵",
+    "reading": "あんど",
+    "romaji": "ando",
+    "meaning": "lega (formal)",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "安堵 (ando)",
+      "formal": "安堵 (ando)",
+      "keigo": "安堵 (ando) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "無事だと聞いて安堵しました。",
+        "romaji": "Buji da to kiite ando shimashita.",
+        "translation": "Saya lega mendengar dia selamat."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_ando.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_douyou",
+    "word": "どうよう",
+    "kanji": "動揺",
+    "reading": "どうよう",
+    "romaji": "douyou",
+    "meaning": "keguncangan/kegelisahan",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "動揺 (douyou)",
+      "formal": "動揺 (douyou)",
+      "keigo": "動揺 (douyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "そのニュースに動揺しました。",
+        "romaji": "Sono nyuusu ni douyou shimashita.",
+        "translation": "Saya terguncang mendengar berita itu."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_douyou.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_rakutan",
+    "word": "らくたん",
+    "kanji": "落胆",
+    "reading": "らくたん",
+    "romaji": "rakutan",
+    "meaning": "kekecewaan/patah semangat",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "落胆 (rakutan)",
+      "formal": "落胆 (rakutan)",
+      "keigo": "落胆 (rakutan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "試験に落ちて落胆しました。",
+        "romaji": "Shiken ni ochite rakutan shimashita.",
+        "translation": "Saya kecewa karena gagal ujian."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_rakutan.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_yuuutsu",
+    "word": "ゆううつ",
+    "kanji": "憂鬱",
+    "reading": "ゆううつ",
+    "romaji": "yuuutsu",
+    "meaning": "murung/suram",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "憂鬱 (yuuutsu)",
+      "formal": "憂鬱 (yuuutsu)",
+      "keigo": "憂鬱 (yuuutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "月曜日はいつも憂鬱です。",
+        "romaji": "Getsuyoubi wa itsumo yuuutsu desu.",
+        "translation": "Hari Senin selalu terasa suram."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_yuuutsu.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kanki",
+    "word": "かんき",
+    "kanji": "歓喜",
+    "reading": "かんき",
+    "romaji": "kanki",
+    "meaning": "kegembiraan besar/sukacita",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "歓喜 (kanki)",
+      "formal": "歓喜 (kanki)",
+      "keigo": "歓喜 (kanki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "優勝の知らせに歓喜しました。",
+        "romaji": "Yuushou no shirase ni kanki shimashita.",
+        "translation": "Kami bersukacita mendengar kabar menang juara."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kanki.png"
   }
 ]

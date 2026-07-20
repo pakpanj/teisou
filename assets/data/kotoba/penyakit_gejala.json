@@ -262,5 +262,197 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_tsukare.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_shindan",
+    "word": "しんだん",
+    "kanji": "診断",
+    "reading": "しんだん",
+    "romaji": "shindan",
+    "meaning": "diagnosis",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "診断 (shindan)",
+      "formal": "診断 (shindan)",
+      "keigo": "診断 (shindan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "医者に診断してもらいました。",
+        "romaji": "Isha ni shindan shite moraimashita.",
+        "translation": "Saya didiagnosis oleh dokter."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shindan.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_kansen",
+    "word": "かんせん",
+    "kanji": "感染",
+    "reading": "かんせん",
+    "romaji": "kansen",
+    "meaning": "infeksi",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "感染 (kansen)",
+      "formal": "感染 (kansen)",
+      "keigo": "感染 (kansen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ウイルスに感染しました。",
+        "romaji": "Uirusu ni kansen shimashita.",
+        "translation": "Saya terinfeksi virus."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kansen.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_men'eki",
+    "word": "めんえき",
+    "kanji": "免疫",
+    "reading": "めんえき",
+    "romaji": "men'eki",
+    "meaning": "kekebalan/imun",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "免疫 (men'eki)",
+      "formal": "免疫 (men'eki)",
+      "keigo": "免疫 (men'eki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "免疫力を高めましょう。",
+        "romaji": "Men'ekiryoku o takamemashou.",
+        "translation": "Mari tingkatkan daya tahan tubuh."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_men'eki.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_shoujou",
+    "word": "しょうじょう",
+    "kanji": "症状",
+    "reading": "しょうじょう",
+    "romaji": "shoujou",
+    "meaning": "gejala",
+    "jlptLevel": "N3",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "症状 (shoujou)",
+      "formal": "症状 (shoujou)",
+      "keigo": "症状 (shoujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "どんな症状がありますか。",
+        "romaji": "Donna shoujou ga arimasu ka.",
+        "translation": "Gejala seperti apa yang Anda rasakan?"
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shoujou.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_akka",
+    "word": "あっか",
+    "kanji": "悪化",
+    "reading": "あっか",
+    "romaji": "akka",
+    "meaning": "memburuk (kondisi)",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "悪化 (akka)",
+      "formal": "悪化 (akka)",
+      "keigo": "悪化 (akka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "病状が悪化しました。",
+        "romaji": "Byoujou ga akka shimashita.",
+        "translation": "Kondisi penyakitnya memburuk."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_akka.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_kaifuku",
+    "word": "かいふく",
+    "kanji": "回復",
+    "reading": "かいふく",
+    "romaji": "kaifuku",
+    "meaning": "pemulihan",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "回復 (kaifuku)",
+      "formal": "回復 (kaifuku)",
+      "keigo": "回復 (kaifuku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "体調が回復しました。",
+        "romaji": "Taichou ga kaifuku shimashita.",
+        "translation": "Kondisi tubuh saya sudah pulih."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kaifuku.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_chiryou",
+    "word": "ちりょう",
+    "kanji": "治療",
+    "reading": "ちりょう",
+    "romaji": "chiryou",
+    "meaning": "pengobatan",
+    "jlptLevel": "N3",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "治療 (chiryou)",
+      "formal": "治療 (chiryou)",
+      "keigo": "治療 (chiryou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "病院で治療を受けます。",
+        "romaji": "Byouin de chiryou o ukemasu.",
+        "translation": "Saya menjalani pengobatan di rumah sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_chiryou.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_yobou",
+    "word": "よぼう",
+    "kanji": "予防",
+    "reading": "よぼう",
+    "romaji": "yobou",
+    "meaning": "pencegahan",
+    "jlptLevel": "N3",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "予防 (yobou)",
+      "formal": "予防 (yobou)",
+      "keigo": "予防 (yobou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "手洗いは風邪の予防になります。",
+        "romaji": "Tearai wa kaze no yobou ni narimasu.",
+        "translation": "Cuci tangan adalah pencegahan flu."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_yobou.png"
   }
 ]

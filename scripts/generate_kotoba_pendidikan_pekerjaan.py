@@ -255,6 +255,29 @@ CATEGORIES = {
         ("waifai", None, "ワイファイ", "waifai", "wifi", "N4", "noun", "ワイファイ", "waifai", "ワイファイ", "waifai", [
             ("ワイファイに繋げます。", "Waifai ni tsunagemasu.", "Saya menyambungkan ke wifi."),
         ]),
+        # N1/N2 addition (2026-07-20, third batch): pure-kanji tech/science
+        # nouns, for Kombinasi Kanji pool depth — this category was
+        # previously almost all katakana loanwords (no kanji at all), so
+        # none of it counted toward the compound pool despite being a
+        # natural tech-vocabulary home.
+        ("kakushin", "革新", "かくしん", "kakushin", "inovasi/pembaruan", "N1", "noun", "革新", "kakushin", "革新", "kakushin", [
+            ("この技術は業界に革新をもたらしました。", "Kono gijutsu wa gyoukai ni kakushin o motarashimashita.", "Teknologi ini membawa inovasi bagi industri."),
+        ]),
+        ("fukyuu", "普及", "ふきゅう", "fukyuu", "penyebaran/pemasyarakatan (teknologi)", "N1", "noun", "普及", "fukyuu", "普及", "fukyuu", [
+            ("スマートフォンが急速に普及しました。", "Sumaatofon ga kyuusoku ni fukyuu shimashita.", "Smartphone menyebar dengan cepat."),
+        ]),
+        ("shinka", "進化", "しんか", "shinka", "evolusi/perkembangan", "N2", "noun", "進化", "shinka", "進化", "shinka", [
+            ("技術は日々進化しています。", "Gijutsu wa hibi shinka shite imasu.", "Teknologi berevolusi setiap hari."),
+        ]),
+        ("ouyou", "応用", "おうよう", "ouyou", "penerapan/aplikasi (teori)", "N2", "noun", "応用", "ouyou", "応用", "ouyou", [
+            ("この理論は実生活に応用できます。", "Kono riron wa jisseikatsu ni ouyou dekimasu.", "Teori ini bisa diterapkan dalam kehidupan sehari-hari."),
+        ]),
+        ("seimitsu", "精密", "せいみつ", "seimitsu", "presisi/ketelitian", "N1", "noun", "精密", "seimitsu", "精密", "seimitsu", [
+            ("精密な機械を作っています。", "Seimitsu na kikai o tsukutte imasu.", "Kami membuat mesin yang presisi."),
+        ]),
+        ("hanyou", "汎用", "はんよう", "hanyou", "serbaguna (kegunaan umum)", "N1", "noun", "汎用", "hanyou", "汎用", "hanyou", [
+            ("これは汎用性の高いソフトです。", "Kore wa hanyousei no takai sofuto desu.", "Ini perangkat lunak yang sangat serbaguna."),
+        ]),
     ],
     "media_hiburan": [
         ("terebi", None, "テレビ", "terebi", "televisi", "N5", "noun", "テレビ", "terebi", "テレビ", "terebi", [

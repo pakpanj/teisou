@@ -385,6 +385,23 @@ CATEGORIES = {
         ("hinanjo", "避難所", "ひなんじょ", "hinanjo", "tempat pengungsian", "N2", [
             ("避難所に行きます。", "Hinanjo ni ikimasu.", "Saya pergi ke tempat pengungsian."),
         ]),
+        # N1/N2 addition (2026-07-20, third batch): pure-kanji disaster-
+        # aftermath nouns, for Kombinasi Kanji pool depth.
+        ("fukkyuu", "復旧", "ふっきゅう", "fukkyuu", "pemulihan (pascabencana)", "N1", [
+            ("電気の復旧まで時間がかかります。", "Denki no fukkyuu made jikan ga kakarimasu.", "Butuh waktu sampai listrik pulih kembali."),
+        ]),
+        ("houkai", "崩壊", "ほうかい", "houkai", "keruntuhan", "N2", [
+            ("建物が崩壊しました。", "Tatemono ga houkai shimashita.", "Bangunan itu runtuh."),
+        ]),
+        ("hisai", "被災", "ひさい", "hisai", "menjadi korban bencana", "N1", [
+            ("被災した地域を支援します。", "Hisai shita chiiki o shien shimasu.", "Kami mendukung daerah yang terkena bencana."),
+        ]),
+        ("songai", "損害", "そんがい", "songai", "kerugian/kerusakan", "N2", [
+            ("台風で大きな損害が出ました。", "Taifuu de ookina songai ga demashita.", "Topan menyebabkan kerugian besar."),
+        ]),
+        ("kyuujo", "救助", "きゅうじょ", "kyuujo", "penyelamatan", "N2", [
+            ("救助隊が到着しました。", "Kyuujotai ga touchaku shimashita.", "Tim penyelamat telah tiba."),
+        ]),
     ]),
 }
 
