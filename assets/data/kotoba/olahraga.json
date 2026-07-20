@@ -574,5 +574,29 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tozan.png"
+  },
+  {
+    "id": "kotoba_olahraga_taikai",
+    "word": "たいかい",
+    "kanji": "大会",
+    "reading": "たいかい",
+    "romaji": "taikai",
+    "meaning": "kompetisi/turnamen besar",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "大会 (taikai)",
+      "formal": "大会 (taikai)",
+      "keigo": "大会 (taikai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大会に出場します。",
+        "romaji": "Taikai ni shutsujou shimasu.",
+        "translation": "Ikut kompetisi."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_taikai.png"
   }
 ]

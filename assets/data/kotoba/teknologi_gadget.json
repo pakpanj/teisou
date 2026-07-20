@@ -766,5 +766,53 @@
       }
     ],
     "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_buhin.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_hatsumei",
+    "word": "はつめい",
+    "kanji": "発明",
+    "reading": "はつめい",
+    "romaji": "hatsumei",
+    "meaning": "penemuan (inovasi)",
+    "jlptLevel": "N3",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "発明 (hatsumei)",
+      "formal": "発明 (hatsumei)",
+      "keigo": "発明 (hatsumei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい機械を発明しました。",
+        "romaji": "Atarashii kikai o hatsumei shimashita.",
+        "translation": "Menemukan mesin baru."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_hatsumei.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_kyouryoku",
+    "word": "きょうりょく",
+    "kanji": "強力",
+    "reading": "きょうりょく",
+    "romaji": "kyouryoku",
+    "meaning": "kuat/tangguh",
+    "jlptLevel": "N3",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "強力 (kyouryoku)",
+      "formal": "強力 (kyouryoku)",
+      "keigo": "強力 (kyouryoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "強力な機械です。",
+        "romaji": "Kyouryoku na kikai desu.",
+        "translation": "Mesin yang kuat."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_kyouryoku.png"
   }
 ]

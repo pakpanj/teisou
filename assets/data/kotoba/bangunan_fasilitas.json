@@ -1174,5 +1174,29 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ichiba.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_nyuujou",
+    "word": "にゅうじょう",
+    "kanji": "入場",
+    "reading": "にゅうじょう",
+    "romaji": "nyuujou",
+    "meaning": "masuk (ke tempat acara)",
+    "jlptLevel": "N3",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "入場 (nyuujou)",
+      "formal": "入場 (nyuujou)",
+      "keigo": "入場 (nyuujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "入場は無料です。",
+        "romaji": "Nyuujou wa muryou desu.",
+        "translation": "Masuk gratis."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_nyuujou.png"
   }
 ]

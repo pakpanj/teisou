@@ -814,5 +814,29 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_nougyou.png"
+  },
+  {
+    "id": "kotoba_profesi_gakusha",
+    "word": "がくしゃ",
+    "kanji": "学者",
+    "reading": "がくしゃ",
+    "romaji": "gakusha",
+    "meaning": "sarjana/cendekiawan",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学者 (gakusha)",
+      "formal": "学者 (gakusha)",
+      "keigo": "学者 (gakusha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "有名な学者です。",
+        "romaji": "Yuumei na gakusha desu.",
+        "translation": "Dia sarjana terkenal."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusha.png"
   }
 ]

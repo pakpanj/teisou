@@ -622,5 +622,197 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_ijuu.png"
+  },
+  {
+    "id": "kotoba_negara_kota_gaikou",
+    "word": "がいこう",
+    "kanji": "外交",
+    "reading": "がいこう",
+    "romaji": "gaikou",
+    "meaning": "diplomasi",
+    "jlptLevel": "N3",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "外交 (gaikou)",
+      "formal": "外交 (gaikou)",
+      "keigo": "外交 (gaikou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "外交関係を築きます。",
+        "romaji": "Gaikou kankei o kizukimasu.",
+        "translation": "Membangun hubungan diplomatik."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_gaikou.png"
+  },
+  {
+    "id": "kotoba_negara_kota_gikai",
+    "word": "ぎかい",
+    "kanji": "議会",
+    "reading": "ぎかい",
+    "romaji": "gikai",
+    "meaning": "parlemen/dewan",
+    "jlptLevel": "N3",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "議会 (gikai)",
+      "formal": "議会 (gikai)",
+      "keigo": "議会 (gikai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "議会で審議します。",
+        "romaji": "Gikai de shingi shimasu.",
+        "translation": "Dibahas di parlemen."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_gikai.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kaigai",
+    "word": "かいがい",
+    "kanji": "海外",
+    "reading": "かいがい",
+    "romaji": "kaigai",
+    "meaning": "luar negeri",
+    "jlptLevel": "N3",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "海外 (kaigai)",
+      "formal": "海外 (kaigai)",
+      "keigo": "海外 (kaigai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "海外に住みたいです。",
+        "romaji": "Kaigai ni sumitai desu.",
+        "translation": "Saya ingin tinggal di luar negeri."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kaigai.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kokka",
+    "word": "こっか",
+    "kanji": "国家",
+    "reading": "こっか",
+    "romaji": "kokka",
+    "meaning": "negara (bangsa)",
+    "jlptLevel": "N3",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "国家 (kokka)",
+      "formal": "国家 (kokka)",
+      "keigo": "国家 (kokka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国家の代表です。",
+        "romaji": "Kokka no daihyou desu.",
+        "translation": "Perwakilan negara."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokka.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kokkai",
+    "word": "こっかい",
+    "kanji": "国会",
+    "reading": "こっかい",
+    "romaji": "kokkai",
+    "meaning": "parlemen nasional",
+    "jlptLevel": "N3",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "国会 (kokkai)",
+      "formal": "国会 (kokkai)",
+      "keigo": "国会 (kokkai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国会で決定します。",
+        "romaji": "Kokkai de kettei shimasu.",
+        "translation": "Diputuskan di parlemen."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokkai.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kokkyou",
+    "word": "こっきょう",
+    "kanji": "国境",
+    "reading": "こっきょう",
+    "romaji": "kokkyou",
+    "meaning": "perbatasan negara",
+    "jlptLevel": "N3",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "国境 (kokkyou)",
+      "formal": "国境 (kokkyou)",
+      "keigo": "国境 (kokkyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国境を越えます。",
+        "romaji": "Kokkyou o koemasu.",
+        "translation": "Melintasi perbatasan negara."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokkyou.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kokumin",
+    "word": "こくみん",
+    "kanji": "国民",
+    "reading": "こくみん",
+    "romaji": "kokumin",
+    "meaning": "rakyat/warga negara",
+    "jlptLevel": "N3",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "国民 (kokumin)",
+      "formal": "国民 (kokumin)",
+      "keigo": "国民 (kokumin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国民の声を聞きます。",
+        "romaji": "Kokumin no koe o kikimasu.",
+        "translation": "Mendengarkan suara rakyat."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokumin.png"
+  },
+  {
+    "id": "kotoba_negara_kota_zenkoku",
+    "word": "ぜんこく",
+    "kanji": "全国",
+    "reading": "ぜんこく",
+    "romaji": "zenkoku",
+    "meaning": "seluruh negeri",
+    "jlptLevel": "N3",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "全国 (zenkoku)",
+      "formal": "全国 (zenkoku)",
+      "keigo": "全国 (zenkoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "全国で販売します。",
+        "romaji": "Zenkoku de hanbai shimasu.",
+        "translation": "Dijual di seluruh negeri."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_zenkoku.png"
   }
 ]

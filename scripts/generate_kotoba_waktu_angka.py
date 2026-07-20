@@ -247,6 +247,27 @@ CATEGORIES = {
         ("choujikan", "長時間", "ちょうじかん", "choujikan", "waktu lama", "N2", "noun", "長時間", "choujikan", "長時間", "choujikan", [
             ("長時間働きました。", "Choujikan hatarakimashita.", "Saya bekerja dalam waktu lama."),
         ]),
+        ("ichiji", "一時", "いちじ", "ichiji", "sementara/jam satu", "N3", "noun", "一時", "ichiji", "一時", "ichiji", [
+            ("一時的な問題です。", "Ichijiteki na mondai desu.", "Ini masalah sementara."),
+        ]),
+        ("isshun", "一瞬", "いっしゅん", "isshun", "sekejap", "N3", "noun", "一瞬", "isshun", "一瞬", "isshun", [
+            ("一瞬で終わりました。", "Isshun de owarimashita.", "Selesai dalam sekejap."),
+        ]),
+        ("kongo", "今後", "こんご", "kongo", "mulai sekarang/selanjutnya", "N3", "noun", "今後", "kongo", "今後", "kongo", [
+            ("今後気をつけます。", "Kongo ki o tsukemasu.", "Akan lebih berhati-hati mulai sekarang."),
+        ]),
+        ("konkai", "今回", "こんかい", "konkai", "kali ini", "N3", "noun", "今回", "konkai", "今回", "konkai", [
+            ("今回は特別です。", "Konkai wa tokubetsu desu.", "Kali ini istimewa."),
+        ]),
+        ("shougo", "正午", "しょうご", "shougo", "tengah hari", "N3", "noun", "正午", "shougo", "正午", "shougo", [
+            ("正午に会いましょう。", "Shougo ni aimashou.", "Mari bertemu tengah hari."),
+        ]),
+        ("shuukan", "週間", "しゅうかん", "shuukan", "seminggu (durasi)", "N3", "noun", "週間", "shuukan", "週間", "shuukan", [
+            ("一週間旅行します。", "Isshuukan ryokou shimasu.", "Bepergian selama seminggu."),
+        ]),
+        ("yonaka", "夜中", "よなか", "yonaka", "tengah malam", "N3", "noun", "夜中", "yonaka", "夜中", "yonaka", [
+            ("夜中に起きました。", "Yonaka ni okimashita.", "Bangun tengah malam."),
+        ]),
     ],
     "musim": [
         ("haru", "春", "はる", "haru", "musim semi", "N5", "noun", "春", "haru", "春", "haru", [

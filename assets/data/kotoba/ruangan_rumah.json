@@ -406,5 +406,29 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_rouka.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_shosai",
+    "word": "しょさい",
+    "kanji": "書斎",
+    "reading": "しょさい",
+    "romaji": "shosai",
+    "meaning": "ruang kerja/studi pribadi",
+    "jlptLevel": "N3",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "書斎 (shosai)",
+      "formal": "書斎 (shosai)",
+      "keigo": "書斎 (shosai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "書斎で本を読みます。",
+        "romaji": "Shosai de hon o yomimasu.",
+        "translation": "Membaca buku di ruang kerja."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shosai.png"
   }
 ]

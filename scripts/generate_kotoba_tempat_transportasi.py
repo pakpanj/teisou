@@ -79,6 +79,9 @@ CATEGORIES = {
         ("rouka", "廊下", "ろうか", "rouka", "koridor/lorong", "N2", "noun", "廊下", "rouka", "廊下", "rouka", [
             ("廊下を走らないでください。", "Rouka o hashiranaide kudasai.", "Jangan lari di koridor/lorong."),
         ]),
+        ("shosai", "書斎", "しょさい", "shosai", "ruang kerja/studi pribadi", "N3", "noun", "書斎", "shosai", "書斎", "shosai", [
+            ("書斎で本を読みます。", "Shosai de hon o yomimasu.", "Membaca buku di ruang kerja."),
+        ]),
     ],
     "perabot_rumah": [
         ("isu", "椅子", "いす", "isu", "kursi", "N5", "noun", "椅子", "isu", "椅子", "isu", [
@@ -300,6 +303,9 @@ CATEGORIES = {
         ("ichiba", "市場", "いちば", "ichiba", "pasar", "N2", "noun", "市場", "ichiba", "市場", "ichiba", [
             ("魚市場へ行きました。", "Sakana ichiba e ikimashita.", "Saya pergi ke pasar ikan."),
         ]),
+        ("nyuujou", "入場", "にゅうじょう", "nyuujou", "masuk (ke tempat acara)", "N3", "noun", "入場", "nyuujou", "入場", "nyuujou", [
+            ("入場は無料です。", "Nyuujou wa muryou desu.", "Masuk gratis."),
+        ]),
     ],
     "kendaraan": [
         ("kuruma", "車", "くるま", "kuruma", "mobil", "N5", "noun", "車", "kuruma", "車", "kuruma", [
@@ -391,6 +397,15 @@ CATEGORIES = {
         ("kaisatsuguchi", "改札口", "かいさつぐち", "kaisatsuguchi", "gerbang tiket", "N2", "noun", "改札口", "kaisatsuguchi", "改札口", "kaisatsuguchi", [
             ("改札口で待っています。", "Kaisatsuguchi de matte imasu.", "Saya menunggu di gerbang tiket."),
         ]),
+        ("kousoku", "高速", "こうそく", "kousoku", "kecepatan tinggi", "N3", "noun", "高速", "kousoku", "高速", "kousoku", [
+            ("高速道路を走ります。", "Kousoku douro o hashirimasu.", "Melaju di jalan tol."),
+        ]),
+        ("sokudo", "速度", "そくど", "sokudo", "kecepatan", "N3", "noun", "速度", "sokudo", "速度", "sokudo", [
+            ("速度を落としてください。", "Sokudo o otoshite kudasai.", "Tolong kurangi kecepatan."),
+        ]),
+        ("unten", "運転", "うんてん", "unten", "mengemudi/mengoperasikan", "N3", "noun", "運転", "unten", "運転", "unten", [
+            ("車を運転します。", "Kuruma o unten shimasu.", "Mengemudikan mobil."),
+        ]),
     ],
     "arah_lokasi": [
         ("migi", "右", "みぎ", "migi", "kanan", "N5", "noun", "右", "migi", "右", "migi", [
@@ -479,6 +494,12 @@ CATEGORIES = {
         ("hodou", "歩道", "ほどう", "hodou", "trotoar", "N2", "noun", "歩道", "hodou", "歩道", "hodou", [
             ("歩道を歩いてください。", "Hodou o aruite kudasai.", "Tolong berjalan di trotoar."),
         ]),
+        ("chiheisen", "地平線", "ちへいせん", "chiheisen", "garis horizon", "N3", "noun", "地平線", "chiheisen", "地平線", "chiheisen", [
+            ("地平線に夕日が見えます。", "Chiheisen ni yuuhi ga miemasu.", "Matahari terbenam terlihat di garis horizon."),
+        ]),
+        ("sayuu", "左右", "さゆう", "sayuu", "kiri dan kanan", "N3", "noun", "左右", "sayuu", "左右", "sayuu", [
+            ("左右を確認します。", "Sayuu o kakunin shimasu.", "Memeriksa kiri dan kanan."),
+        ]),
     ],
     "negara_kota": [
         ("nihon", "日本", "にほん", "nihon", "Jepang", "N5", "noun", "日本", "nihon", "日本", "nihon", [
@@ -561,6 +582,30 @@ CATEGORIES = {
         ]),
         ("ijuu", "移住", "いじゅう", "ijuu", "pindah tinggal (menetap)", "N2", "noun", "移住", "ijuu", "移住", "ijuu", [
             ("彼は外国に移住しました。", "Kare wa gaikoku ni ijuu shimashita.", "Dia pindah tinggal ke luar negeri. (Pindah menetap lama)"),
+        ]),
+        ("gaikou", "外交", "がいこう", "gaikou", "diplomasi", "N3", "noun", "外交", "gaikou", "外交", "gaikou", [
+            ("外交関係を築きます。", "Gaikou kankei o kizukimasu.", "Membangun hubungan diplomatik."),
+        ]),
+        ("gikai", "議会", "ぎかい", "gikai", "parlemen/dewan", "N3", "noun", "議会", "gikai", "議会", "gikai", [
+            ("議会で審議します。", "Gikai de shingi shimasu.", "Dibahas di parlemen."),
+        ]),
+        ("kaigai", "海外", "かいがい", "kaigai", "luar negeri", "N3", "noun", "海外", "kaigai", "海外", "kaigai", [
+            ("海外に住みたいです。", "Kaigai ni sumitai desu.", "Saya ingin tinggal di luar negeri."),
+        ]),
+        ("kokka", "国家", "こっか", "kokka", "negara (bangsa)", "N3", "noun", "国家", "kokka", "国家", "kokka", [
+            ("国家の代表です。", "Kokka no daihyou desu.", "Perwakilan negara."),
+        ]),
+        ("kokkai", "国会", "こっかい", "kokkai", "parlemen nasional", "N3", "noun", "国会", "kokkai", "国会", "kokkai", [
+            ("国会で決定します。", "Kokkai de kettei shimasu.", "Diputuskan di parlemen."),
+        ]),
+        ("kokkyou", "国境", "こっきょう", "kokkyou", "perbatasan negara", "N3", "noun", "国境", "kokkyou", "国境", "kokkyou", [
+            ("国境を越えます。", "Kokkyou o koemasu.", "Melintasi perbatasan negara."),
+        ]),
+        ("kokumin", "国民", "こくみん", "kokumin", "rakyat/warga negara", "N3", "noun", "国民", "kokumin", "国民", "kokumin", [
+            ("国民の声を聞きます。", "Kokumin no koe o kikimasu.", "Mendengarkan suara rakyat."),
+        ]),
+        ("zenkoku", "全国", "ぜんこく", "zenkoku", "seluruh negeri", "N3", "noun", "全国", "zenkoku", "全国", "zenkoku", [
+            ("全国で販売します。", "Zenkoku de hanbai shimasu.", "Dijual di seluruh negeri."),
         ]),
     ],
 }

@@ -81,6 +81,12 @@ CATEGORIES = {
         ("youshi", "用紙", "ようし", "youshi", "kertas formulir", "N2", "noun", "用紙", "youshi", "用紙", "youshi", [
             ("用紙に名前を書いてください。", "Youshi ni namae o kaite kudasai.", "Tolong tulis nama di kertas formulir."),
         ]),
+        ("shomotsu", "書物", "しょもつ", "shomotsu", "buku (istilah formal)", "N3", "noun", "書物", "shomotsu", "書物", "shomotsu", [
+            ("古い書物を読みます。", "Furui shomotsu o yomimasu.", "Membaca buku kuno."),
+        ]),
+        ("tosho", "図書", "としょ", "tosho", "buku-buku (koleksi, istilah formal)", "N3", "noun", "図書", "tosho", "図書", "tosho", [
+            ("図書を整理します。", "Tosho o seiri shimasu.", "Merapikan buku-buku."),
+        ]),
     ],
     "mata_pelajaran": [
         ("kokugo", "国語", "こくご", "kokugo", "bahasa nasional (mapel Jepang)", "N4", "noun", "国語", "kokugo", "国語", "kokugo", [
@@ -206,6 +212,30 @@ CATEGORIES = {
         ]),
         ("daigakuin", "大学院", "だいがくいん", "daigakuin", "sekolah pascasarjana", "N2", "noun", "大学院", "daigakuin", "大学院", "daigakuin", [
             ("彼は大学院で勉強しています。", "Kare wa daigakuin de benkyou shite imasu.", "Dia belajar di sekolah pascasarjana. 修士課程 S2 博はく士課程 S3"),
+        ]),
+        ("anki", "暗記", "あんき", "anki", "menghafal", "N3", "noun", "暗記", "anki", "暗記", "anki", [
+            ("単語を暗記します。", "Tango o anki shimasu.", "Saya menghafal kosakata."),
+        ]),
+        ("chuugaku", "中学", "ちゅうがく", "chuugaku", "SMP", "N3", "noun", "中学", "chuugaku", "中学", "chuugaku", [
+            ("中学に入学します。", "Chuugaku ni nyuugaku shimasu.", "Saya masuk SMP."),
+        ]),
+        ("gakumon", "学問", "がくもん", "gakumon", "ilmu pengetahuan", "N3", "noun", "学問", "gakumon", "学問", "gakumon", [
+            ("学問を深めます。", "Gakumon o fukamemasu.", "Saya memperdalam ilmu pengetahuan."),
+        ]),
+        ("gakushuu", "学習", "がくしゅう", "gakushuu", "pembelajaran", "N3", "noun", "学習", "gakushuu", "学習", "gakushuu", [
+            ("日本語を学習します。", "Nihongo o gakushuu shimasu.", "Saya belajar bahasa Jepang."),
+        ]),
+        ("gogaku", "語学", "ごがく", "gogaku", "studi bahasa asing", "N3", "noun", "語学", "gogaku", "語学", "gogaku", [
+            ("語学が得意です。", "Gogaku ga tokui desu.", "Saya mahir dalam bahasa asing."),
+        ]),
+        ("kamoku", "科目", "かもく", "kamoku", "mata pelajaran (kurikulum)", "N3", "noun", "科目", "kamoku", "科目", "kamoku", [
+            ("好きな科目は何ですか。", "Sukina kamoku wa nan desu ka.", "Mata pelajaran favoritmu apa?"),
+        ]),
+        ("ryuugaku", "留学", "りゅうがく", "ryuugaku", "belajar di luar negeri", "N3", "noun", "留学", "ryuugaku", "留学", "ryuugaku", [
+            ("アメリカに留学します。", "Amerika ni ryuugaku shimasu.", "Belajar ke Amerika."),
+        ]),
+        ("shougakukin", "奨学金", "しょうがくきん", "shougakukin", "beasiswa", "N3", "noun", "奨学金", "shougakukin", "奨学金", "shougakukin", [
+            ("奨学金をもらいました。", "Shougakukin o moraimashita.", "Menerima beasiswa."),
         ]),
     ],
     "pekerjaan_kantor": [
@@ -472,6 +502,33 @@ CATEGORIES = {
         ("genshou", "減少", "げんしょう", "genshou", "penurunan (jumlah)", "N2", "noun", "減少", "genshou", "減少", "genshou", [
             ("人口が減少しています。", "Jinkou ga genshou shite imasu.", "Populasi menurun."),
         ]),
+        ("gichou", "議長", "ぎちょう", "gichou", "ketua rapat/pimpinan sidang", "N3", "noun", "議長", "gichou", "議長", "gichou", [
+            ("議長が発言します。", "Gichou ga hatsugen shimasu.", "Ketua rapat berbicara."),
+        ]),
+        ("hanbai", "販売", "はんばい", "hanbai", "penjualan", "N3", "noun", "販売", "hanbai", "販売", "hanbai", [
+            ("商品を販売します。", "Shouhin o hanbai shimasu.", "Menjual barang dagangan."),
+        ]),
+        ("kaigou", "会合", "かいごう", "kaigou", "pertemuan/rapat", "N3", "noun", "会合", "kaigou", "会合", "kaigou", [
+            ("会合に出席します。", "Kaigou ni shusseki shimasu.", "Menghadiri pertemuan."),
+        ]),
+        ("kinyuu", "記入", "きにゅう", "kinyuu", "mengisi (formulir)", "N3", "noun", "記入", "kinyuu", "記入", "kinyuu", [
+            ("名前を記入します。", "Namae o kinyuu shimasu.", "Mengisi nama."),
+        ]),
+        ("rieki", "利益", "りえき", "rieki", "keuntungan/laba", "N3", "noun", "利益", "rieki", "利益", "rieki", [
+            ("利益が増えました。", "Rieki ga fuemashita.", "Keuntungan bertambah."),
+        ]),
+        ("seihin", "製品", "せいひん", "seihin", "produk (hasil manufaktur)", "N3", "noun", "製品", "seihin", "製品", "seihin", [
+            ("新しい製品を作ります。", "Atarashii seihin o tsukurimasu.", "Membuat produk baru."),
+        ]),
+        ("shihon", "資本", "しほん", "shihon", "modal (dana)", "N3", "noun", "資本", "shihon", "資本", "shihon", [
+            ("資本を集めます。", "Shihon o atsumemasu.", "Mengumpulkan modal."),
+        ]),
+        ("shoubai", "商売", "しょうばい", "shoubai", "perdagangan/bisnis", "N3", "noun", "商売", "shoubai", "商売", "shoubai", [
+            ("商売を始めます。", "Shoubai o hajimemasu.", "Mulai berbisnis."),
+        ]),
+        ("yushutsu", "輸出", "ゆしゅつ", "yushutsu", "ekspor", "N3", "noun", "輸出", "yushutsu", "輸出", "yushutsu", [
+            ("車を輸出します。", "Kuruma o yushutsu shimasu.", "Mengekspor mobil."),
+        ]),
     ],
     "teknologi_gadget": [
         ("konpyuutaa", None, "コンピューター", "konpyuutaa", "komputer", "N4", "noun", "コンピューター", "konpyuutaa", "コンピューター", "konpyuutaa", [
@@ -585,6 +642,12 @@ CATEGORIES = {
         ("buhin", "部品", "ぶひん", "buhin", "komponen/onderdil", "N2", "noun", "部品", "buhin", "部品", "buhin", [
             ("この部品は必要です。", "Kono buhin wa hitsuyou desu.", "Komponen ini diperlukan."),
         ]),
+        ("hatsumei", "発明", "はつめい", "hatsumei", "penemuan (inovasi)", "N3", "noun", "発明", "hatsumei", "発明", "hatsumei", [
+            ("新しい機械を発明しました。", "Atarashii kikai o hatsumei shimashita.", "Menemukan mesin baru."),
+        ]),
+        ("kyouryoku", "強力", "きょうりょく", "kyouryoku", "kuat/tangguh", "N3", "noun", "強力", "kyouryoku", "強力", "kyouryoku", [
+            ("強力な機械です。", "Kyouryoku na kikai desu.", "Mesin yang kuat."),
+        ]),
     ],
     "media_hiburan": [
         ("terebi", None, "テレビ", "terebi", "televisi", "N5", "noun", "テレビ", "terebi", "テレビ", "terebi", [
@@ -664,6 +727,9 @@ CATEGORIES = {
         ]),
         ("monogatari", "物語", "ものがたり", "monogatari", "cerita/dongeng", "N2", "noun", "物語", "monogatari", "物語", "monogatari", [
             ("面白い物語を読みました。", "Omoshiroi monogatari o yomimashita.", "Saya membaca cerita yang menarik. (Dongeng)"),
+        ]),
+        ("shuukan", "週刊", "しゅうかん", "shuukan", "terbitan mingguan", "N3", "noun", "週刊", "shuukan", "週刊", "shuukan", [
+            ("週刊誌を読みます。", "Shuukanshi o yomimasu.", "Membaca majalah mingguan."),
         ]),
     ],
 }

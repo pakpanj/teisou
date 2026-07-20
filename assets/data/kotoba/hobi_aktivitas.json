@@ -694,5 +694,29 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryuukou.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_tejina",
+    "word": "てじな",
+    "kanji": "手品",
+    "reading": "てじな",
+    "romaji": "tejina",
+    "meaning": "sulap/trik sulap",
+    "jlptLevel": "N3",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "手品 (tejina)",
+      "formal": "手品 (tejina)",
+      "keigo": "手品 (tejina) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "手品を見せます。",
+        "romaji": "Tejina o misemasu.",
+        "translation": "Menunjukkan sulap."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_tejina.png"
   }
 ]

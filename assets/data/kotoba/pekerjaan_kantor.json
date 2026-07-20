@@ -1990,5 +1990,221 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_genshou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_gichou",
+    "word": "ぎちょう",
+    "kanji": "議長",
+    "reading": "ぎちょう",
+    "romaji": "gichou",
+    "meaning": "ketua rapat/pimpinan sidang",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "議長 (gichou)",
+      "formal": "議長 (gichou)",
+      "keigo": "議長 (gichou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "議長が発言します。",
+        "romaji": "Gichou ga hatsugen shimasu.",
+        "translation": "Ketua rapat berbicara."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gichou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_hanbai",
+    "word": "はんばい",
+    "kanji": "販売",
+    "reading": "はんばい",
+    "romaji": "hanbai",
+    "meaning": "penjualan",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "販売 (hanbai)",
+      "formal": "販売 (hanbai)",
+      "keigo": "販売 (hanbai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "商品を販売します。",
+        "romaji": "Shouhin o hanbai shimasu.",
+        "translation": "Menjual barang dagangan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hanbai.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_kaigou",
+    "word": "かいごう",
+    "kanji": "会合",
+    "reading": "かいごう",
+    "romaji": "kaigou",
+    "meaning": "pertemuan/rapat",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会合 (kaigou)",
+      "formal": "会合 (kaigou)",
+      "keigo": "会合 (kaigou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会合に出席します。",
+        "romaji": "Kaigou ni shusseki shimasu.",
+        "translation": "Menghadiri pertemuan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaigou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_kinyuu",
+    "word": "きにゅう",
+    "kanji": "記入",
+    "reading": "きにゅう",
+    "romaji": "kinyuu",
+    "meaning": "mengisi (formulir)",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "記入 (kinyuu)",
+      "formal": "記入 (kinyuu)",
+      "keigo": "記入 (kinyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "名前を記入します。",
+        "romaji": "Namae o kinyuu shimasu.",
+        "translation": "Mengisi nama."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kinyuu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_rieki",
+    "word": "りえき",
+    "kanji": "利益",
+    "reading": "りえき",
+    "romaji": "rieki",
+    "meaning": "keuntungan/laba",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "利益 (rieki)",
+      "formal": "利益 (rieki)",
+      "keigo": "利益 (rieki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "利益が増えました。",
+        "romaji": "Rieki ga fuemashita.",
+        "translation": "Keuntungan bertambah."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_rieki.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_seihin",
+    "word": "せいひん",
+    "kanji": "製品",
+    "reading": "せいひん",
+    "romaji": "seihin",
+    "meaning": "produk (hasil manufaktur)",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "製品 (seihin)",
+      "formal": "製品 (seihin)",
+      "keigo": "製品 (seihin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい製品を作ります。",
+        "romaji": "Atarashii seihin o tsukurimasu.",
+        "translation": "Membuat produk baru."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seihin.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_shihon",
+    "word": "しほん",
+    "kanji": "資本",
+    "reading": "しほん",
+    "romaji": "shihon",
+    "meaning": "modal (dana)",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "資本 (shihon)",
+      "formal": "資本 (shihon)",
+      "keigo": "資本 (shihon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "資本を集めます。",
+        "romaji": "Shihon o atsumemasu.",
+        "translation": "Mengumpulkan modal."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shihon.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_shoubai",
+    "word": "しょうばい",
+    "kanji": "商売",
+    "reading": "しょうばい",
+    "romaji": "shoubai",
+    "meaning": "perdagangan/bisnis",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "商売 (shoubai)",
+      "formal": "商売 (shoubai)",
+      "keigo": "商売 (shoubai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "商売を始めます。",
+        "romaji": "Shoubai o hajimemasu.",
+        "translation": "Mulai berbisnis."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shoubai.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_yushutsu",
+    "word": "ゆしゅつ",
+    "kanji": "輸出",
+    "reading": "ゆしゅつ",
+    "romaji": "yushutsu",
+    "meaning": "ekspor",
+    "jlptLevel": "N3",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "輸出 (yushutsu)",
+      "formal": "輸出 (yushutsu)",
+      "keigo": "輸出 (yushutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "車を輸出します。",
+        "romaji": "Kuruma o yushutsu shimasu.",
+        "translation": "Mengekspor mobil."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yushutsu.png"
   }
 ]

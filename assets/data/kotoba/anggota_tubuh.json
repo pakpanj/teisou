@@ -646,5 +646,29 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ashimoto.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_shinchou",
+    "word": "しんちょう",
+    "kanji": "身長",
+    "reading": "しんちょう",
+    "romaji": "shinchou",
+    "meaning": "tinggi badan",
+    "jlptLevel": "N3",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "身長 (shinchou)",
+      "formal": "身長 (shinchou)",
+      "keigo": "身長 (shinchou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "身長を測ります。",
+        "romaji": "Shinchou o hakarimasu.",
+        "translation": "Mengukur tinggi badan."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_shinchou.png"
   }
 ]

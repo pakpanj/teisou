@@ -790,5 +790,101 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_ishi.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_miryoku",
+    "word": "みりょく",
+    "kanji": "魅力",
+    "reading": "みりょく",
+    "romaji": "miryoku",
+    "meaning": "daya tarik/pesona",
+    "jlptLevel": "N3",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "魅力 (miryoku)",
+      "formal": "魅力 (miryoku)",
+      "keigo": "魅力 (miryoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼女には魅力があります。",
+        "romaji": "Kanojo ni wa miryoku ga arimasu.",
+        "translation": "Dia memiliki daya tarik."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_miryoku.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_nesshin",
+    "word": "ねっしん",
+    "kanji": "熱心",
+    "reading": "ねっしん",
+    "romaji": "nesshin",
+    "meaning": "antusias/tekun",
+    "jlptLevel": "N3",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "熱心 (nesshin)",
+      "formal": "熱心 (nesshin)",
+      "keigo": "熱心 (nesshin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "熱心に勉強します。",
+        "romaji": "Nesshin ni benkyou shimasu.",
+        "translation": "Belajar dengan tekun."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_nesshin.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_shigeki",
+    "word": "しげき",
+    "kanji": "刺激",
+    "reading": "しげき",
+    "romaji": "shigeki",
+    "meaning": "stimulus/rangsangan",
+    "jlptLevel": "N3",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "刺激 (shigeki)",
+      "formal": "刺激 (shigeki)",
+      "keigo": "刺激 (shigeki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "強い刺激を受けました。",
+        "romaji": "Tsuyoi shigeki o ukemashita.",
+        "translation": "Menerima stimulus yang kuat."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_shigeki.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_waruguchi",
+    "word": "わるぐち",
+    "kanji": "悪口",
+    "reading": "わるぐち",
+    "romaji": "waruguchi",
+    "meaning": "omongan jelek/fitnah",
+    "jlptLevel": "N3",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "悪口 (waruguchi)",
+      "formal": "悪口 (waruguchi)",
+      "keigo": "悪口 (waruguchi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "悪口を言わないでください。",
+        "romaji": "Waruguchi o iwanaide kudasai.",
+        "translation": "Jangan bicara buruk tentang orang."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_waruguchi.png"
   }
 ]

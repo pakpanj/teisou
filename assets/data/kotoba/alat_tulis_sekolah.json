@@ -430,5 +430,53 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_youshi.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_shomotsu",
+    "word": "しょもつ",
+    "kanji": "書物",
+    "reading": "しょもつ",
+    "romaji": "shomotsu",
+    "meaning": "buku (istilah formal)",
+    "jlptLevel": "N3",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "書物 (shomotsu)",
+      "formal": "書物 (shomotsu)",
+      "keigo": "書物 (shomotsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "古い書物を読みます。",
+        "romaji": "Furui shomotsu o yomimasu.",
+        "translation": "Membaca buku kuno."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_shomotsu.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_tosho",
+    "word": "としょ",
+    "kanji": "図書",
+    "reading": "としょ",
+    "romaji": "tosho",
+    "meaning": "buku-buku (koleksi, istilah formal)",
+    "jlptLevel": "N3",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "図書 (tosho)",
+      "formal": "図書 (tosho)",
+      "keigo": "図書 (tosho) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "図書を整理します。",
+        "romaji": "Tosho o seiri shimasu.",
+        "translation": "Merapikan buku-buku."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_tosho.png"
   }
 ]

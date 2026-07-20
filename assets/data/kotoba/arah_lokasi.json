@@ -670,5 +670,53 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hodou.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_chiheisen",
+    "word": "ちへいせん",
+    "kanji": "地平線",
+    "reading": "ちへいせん",
+    "romaji": "chiheisen",
+    "meaning": "garis horizon",
+    "jlptLevel": "N3",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "地平線 (chiheisen)",
+      "formal": "地平線 (chiheisen)",
+      "keigo": "地平線 (chiheisen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "地平線に夕日が見えます。",
+        "romaji": "Chiheisen ni yuuhi ga miemasu.",
+        "translation": "Matahari terbenam terlihat di garis horizon."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chiheisen.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_sayuu",
+    "word": "さゆう",
+    "kanji": "左右",
+    "reading": "さゆう",
+    "romaji": "sayuu",
+    "meaning": "kiri dan kanan",
+    "jlptLevel": "N3",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "左右 (sayuu)",
+      "formal": "左右 (sayuu)",
+      "keigo": "左右 (sayuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "左右を確認します。",
+        "romaji": "Sayuu o kakunin shimasu.",
+        "translation": "Memeriksa kiri dan kanan."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sayuu.png"
   }
 ]

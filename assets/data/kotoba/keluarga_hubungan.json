@@ -934,5 +934,197 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ikuji.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_chichioya",
+    "word": "ちちおや",
+    "kanji": "父親",
+    "reading": "ちちおや",
+    "romaji": "chichioya",
+    "meaning": "ayah (istilah umum)",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "父親 (chichioya)",
+      "formal": "父親 (chichioya)",
+      "keigo": "父親 (chichioya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "父親と話します。",
+        "romaji": "Chichioya to hanashimasu.",
+        "translation": "Saya berbicara dengan ayah."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chichioya.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_danshi",
+    "word": "だんし",
+    "kanji": "男子",
+    "reading": "だんし",
+    "romaji": "danshi",
+    "meaning": "anak laki-laki/pria muda",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "男子 (danshi)",
+      "formal": "男子 (danshi)",
+      "keigo": "男子 (danshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "男子校に通っています。",
+        "romaji": "Danshi kou ni kayotte imasu.",
+        "translation": "Saya sekolah di sekolah khusus laki-laki."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_danshi.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_hahaoya",
+    "word": "ははおや",
+    "kanji": "母親",
+    "reading": "ははおや",
+    "romaji": "hahaoya",
+    "meaning": "ibu (istilah umum)",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "母親 (hahaoya)",
+      "formal": "母親 (hahaoya)",
+      "keigo": "母親 (hahaoya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "母親に会います。",
+        "romaji": "Hahaoya ni aimasu.",
+        "translation": "Saya bertemu ibu."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_hahaoya.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_ikka",
+    "word": "いっか",
+    "kanji": "一家",
+    "reading": "いっか",
+    "romaji": "ikka",
+    "meaning": "satu keluarga",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "一家 (ikka)",
+      "formal": "一家 (ikka)",
+      "keigo": "一家 (ikka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "一家で旅行します。",
+        "romaji": "Ikka de ryokou shimasu.",
+        "translation": "Bepergian sekeluarga."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ikka.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_mikata",
+    "word": "みかた",
+    "kanji": "味方",
+    "reading": "みかた",
+    "romaji": "mikata",
+    "meaning": "sekutu/pendukung",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "味方 (mikata)",
+      "formal": "味方 (mikata)",
+      "keigo": "味方 (mikata) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は私の味方です。",
+        "romaji": "Kare wa watashi no mikata desu.",
+        "translation": "Dia adalah sekutu saya."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_mikata.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_seinen",
+    "word": "せいねん",
+    "kanji": "青年",
+    "reading": "せいねん",
+    "romaji": "seinen",
+    "meaning": "pemuda",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "青年 (seinen)",
+      "formal": "青年 (seinen)",
+      "keigo": "青年 (seinen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "青年が集まっています。",
+        "romaji": "Seinen ga atsumatte imasu.",
+        "translation": "Para pemuda berkumpul."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_seinen.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_shoujo",
+    "word": "しょうじょ",
+    "kanji": "少女",
+    "reading": "しょうじょ",
+    "romaji": "shoujo",
+    "meaning": "gadis muda",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "少女 (shoujo)",
+      "formal": "少女 (shoujo)",
+      "keigo": "少女 (shoujo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "少女が歌っています。",
+        "romaji": "Shoujo ga utatte imasu.",
+        "translation": "Gadis muda sedang menyanyi."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shoujo.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_shounen",
+    "word": "しょうねん",
+    "kanji": "少年",
+    "reading": "しょうねん",
+    "romaji": "shounen",
+    "meaning": "anak laki-laki/remaja",
+    "jlptLevel": "N3",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "少年 (shounen)",
+      "formal": "少年 (shounen)",
+      "keigo": "少年 (shounen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "少年が野球をします。",
+        "romaji": "Shounen ga yakyuu o shimasu.",
+        "translation": "Remaja laki-laki bermain bisbol."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shounen.png"
   }
 ]

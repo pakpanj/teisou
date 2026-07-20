@@ -694,5 +694,77 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kaisatsuguchi.png"
+  },
+  {
+    "id": "kotoba_kendaraan_kousoku",
+    "word": "こうそく",
+    "kanji": "高速",
+    "reading": "こうそく",
+    "romaji": "kousoku",
+    "meaning": "kecepatan tinggi",
+    "jlptLevel": "N3",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "高速 (kousoku)",
+      "formal": "高速 (kousoku)",
+      "keigo": "高速 (kousoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "高速道路を走ります。",
+        "romaji": "Kousoku douro o hashirimasu.",
+        "translation": "Melaju di jalan tol."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kousoku.png"
+  },
+  {
+    "id": "kotoba_kendaraan_sokudo",
+    "word": "そくど",
+    "kanji": "速度",
+    "reading": "そくど",
+    "romaji": "sokudo",
+    "meaning": "kecepatan",
+    "jlptLevel": "N3",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "速度 (sokudo)",
+      "formal": "速度 (sokudo)",
+      "keigo": "速度 (sokudo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "速度を落としてください。",
+        "romaji": "Sokudo o otoshite kudasai.",
+        "translation": "Tolong kurangi kecepatan."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_sokudo.png"
+  },
+  {
+    "id": "kotoba_kendaraan_unten",
+    "word": "うんてん",
+    "kanji": "運転",
+    "reading": "うんてん",
+    "romaji": "unten",
+    "meaning": "mengemudi/mengoperasikan",
+    "jlptLevel": "N3",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "運転 (unten)",
+      "formal": "運転 (unten)",
+      "keigo": "運転 (unten) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "車を運転します。",
+        "romaji": "Kuruma o unten shimasu.",
+        "translation": "Mengemudikan mobil."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_unten.png"
   }
 ]

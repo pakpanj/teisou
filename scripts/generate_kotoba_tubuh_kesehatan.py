@@ -117,6 +117,9 @@ CATEGORIES = {
         ("ashimoto", "足元", "あしもと", "ashimoto", "langkah kaki/area bawah kaki", "N2", "noun", "足元", "ashimoto", "足元", "ashimoto", [
             ("足元に気をつけてください。", "Ashimoto ni ki o tsukete kudasai.", "Hati-hati dengan langkah kaki Anda."),
         ]),
+        ("shinchou", "身長", "しんちょう", "shinchou", "tinggi badan", "N3", "noun", "身長", "shinchou", "身長", "shinchou", [
+            ("身長を測ります。", "Shinchou o hakarimasu.", "Mengukur tinggi badan."),
+        ]),
     ],
     "penyakit_gejala": [
         ("kaze", "風邪", "かぜ", "kaze", "flu/masuk angin (common cold)", "N4", "noun", "風邪", "kaze", "風邪", "kaze", [
@@ -376,6 +379,9 @@ CATEGORIES = {
         ("tozan", "登山", "とざん", "tozan", "mendaki gunung", "N2", "noun", "登山", "tozan", "登山", "tozan", [
             ("週末に登山します。", "Shuumatsu ni tozan shimasu.", "Akhir pekan saya mendaki gunung."),
         ]),
+        ("taikai", "大会", "たいかい", "taikai", "kompetisi/turnamen besar", "N3", "noun", "大会", "taikai", "大会", "taikai", [
+            ("大会に出場します。", "Taikai ni shutsujou shimasu.", "Ikut kompetisi."),
+        ]),
     ],
     "perasaan_emosi": [
         ("ureshii", "嬉しい", "うれしい", "ureshii", "senang/gembira", "N4", "adjective", "嬉しい", "ureshii", "嬉しいです", "ureshii desu", [
@@ -483,6 +489,18 @@ CATEGORIES = {
         ]),
         ("ishi", "意志", "いし", "ishi", "kemauan/tekad", "N2", "noun", "意志", "ishi", "意志", "ishi", [
             ("彼は強い意志を持っています。", "Kare wa tsuyoi ishi o motte imasu.", "Dia memiliki kemauan yang kuat."),
+        ]),
+        ("miryoku", "魅力", "みりょく", "miryoku", "daya tarik/pesona", "N3", "noun", "魅力", "miryoku", "魅力", "miryoku", [
+            ("彼女には魅力があります。", "Kanojo ni wa miryoku ga arimasu.", "Dia memiliki daya tarik."),
+        ]),
+        ("nesshin", "熱心", "ねっしん", "nesshin", "antusias/tekun", "N3", "noun", "熱心", "nesshin", "熱心", "nesshin", [
+            ("熱心に勉強します。", "Nesshin ni benkyou shimasu.", "Belajar dengan tekun."),
+        ]),
+        ("shigeki", "刺激", "しげき", "shigeki", "stimulus/rangsangan", "N3", "noun", "刺激", "shigeki", "刺激", "shigeki", [
+            ("強い刺激を受けました。", "Tsuyoi shigeki o ukemashita.", "Menerima stimulus yang kuat."),
+        ]),
+        ("waruguchi", "悪口", "わるぐち", "waruguchi", "omongan jelek/fitnah", "N3", "noun", "悪口", "waruguchi", "悪口", "waruguchi", [
+            ("悪口を言わないでください。", "Waruguchi o iwanaide kudasai.", "Jangan bicara buruk tentang orang."),
         ]),
     ],
     "ekspresi_wajah": [

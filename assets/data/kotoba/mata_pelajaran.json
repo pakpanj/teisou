@@ -958,5 +958,197 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_daigakuin.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_anki",
+    "word": "あんき",
+    "kanji": "暗記",
+    "reading": "あんき",
+    "romaji": "anki",
+    "meaning": "menghafal",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "暗記 (anki)",
+      "formal": "暗記 (anki)",
+      "keigo": "暗記 (anki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "単語を暗記します。",
+        "romaji": "Tango o anki shimasu.",
+        "translation": "Saya menghafal kosakata."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_anki.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_chuugaku",
+    "word": "ちゅうがく",
+    "kanji": "中学",
+    "reading": "ちゅうがく",
+    "romaji": "chuugaku",
+    "meaning": "SMP",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "中学 (chuugaku)",
+      "formal": "中学 (chuugaku)",
+      "keigo": "中学 (chuugaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "中学に入学します。",
+        "romaji": "Chuugaku ni nyuugaku shimasu.",
+        "translation": "Saya masuk SMP."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_chuugaku.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gakumon",
+    "word": "がくもん",
+    "kanji": "学問",
+    "reading": "がくもん",
+    "romaji": "gakumon",
+    "meaning": "ilmu pengetahuan",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学問 (gakumon)",
+      "formal": "学問 (gakumon)",
+      "keigo": "学問 (gakumon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学問を深めます。",
+        "romaji": "Gakumon o fukamemasu.",
+        "translation": "Saya memperdalam ilmu pengetahuan."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakumon.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gakushuu",
+    "word": "がくしゅう",
+    "kanji": "学習",
+    "reading": "がくしゅう",
+    "romaji": "gakushuu",
+    "meaning": "pembelajaran",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "学習 (gakushuu)",
+      "formal": "学習 (gakushuu)",
+      "keigo": "学習 (gakushuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本語を学習します。",
+        "romaji": "Nihongo o gakushuu shimasu.",
+        "translation": "Saya belajar bahasa Jepang."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakushuu.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_gogaku",
+    "word": "ごがく",
+    "kanji": "語学",
+    "reading": "ごがく",
+    "romaji": "gogaku",
+    "meaning": "studi bahasa asing",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "語学 (gogaku)",
+      "formal": "語学 (gogaku)",
+      "keigo": "語学 (gogaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "語学が得意です。",
+        "romaji": "Gogaku ga tokui desu.",
+        "translation": "Saya mahir dalam bahasa asing."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gogaku.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kamoku",
+    "word": "かもく",
+    "kanji": "科目",
+    "reading": "かもく",
+    "romaji": "kamoku",
+    "meaning": "mata pelajaran (kurikulum)",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "科目 (kamoku)",
+      "formal": "科目 (kamoku)",
+      "keigo": "科目 (kamoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "好きな科目は何ですか。",
+        "romaji": "Sukina kamoku wa nan desu ka.",
+        "translation": "Mata pelajaran favoritmu apa?"
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kamoku.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_ryuugaku",
+    "word": "りゅうがく",
+    "kanji": "留学",
+    "reading": "りゅうがく",
+    "romaji": "ryuugaku",
+    "meaning": "belajar di luar negeri",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "留学 (ryuugaku)",
+      "formal": "留学 (ryuugaku)",
+      "keigo": "留学 (ryuugaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "アメリカに留学します。",
+        "romaji": "Amerika ni ryuugaku shimasu.",
+        "translation": "Belajar ke Amerika."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_ryuugaku.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_shougakukin",
+    "word": "しょうがくきん",
+    "kanji": "奨学金",
+    "reading": "しょうがくきん",
+    "romaji": "shougakukin",
+    "meaning": "beasiswa",
+    "jlptLevel": "N3",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "奨学金 (shougakukin)",
+      "formal": "奨学金 (shougakukin)",
+      "keigo": "奨学金 (shougakukin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "奨学金をもらいました。",
+        "romaji": "Shougakukin o moraimashita.",
+        "translation": "Menerima beasiswa."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shougakukin.png"
   }
 ]

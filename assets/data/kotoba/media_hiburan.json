@@ -574,5 +574,29 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_monogatari.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_shuukan",
+    "word": "しゅうかん",
+    "kanji": "週刊",
+    "reading": "しゅうかん",
+    "romaji": "shuukan",
+    "meaning": "terbitan mingguan",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "週刊 (shuukan)",
+      "formal": "週刊 (shuukan)",
+      "keigo": "週刊 (shuukan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "週刊誌を読みます。",
+        "romaji": "Shuukanshi o yomimasu.",
+        "translation": "Membaca majalah mingguan."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shuukan.png"
   }
 ]

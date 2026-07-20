@@ -1558,5 +1558,173 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_choujikan.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_ichiji",
+    "word": "いちじ",
+    "kanji": "一時",
+    "reading": "いちじ",
+    "romaji": "ichiji",
+    "meaning": "sementara/jam satu",
+    "jlptLevel": "N3",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "一時 (ichiji)",
+      "formal": "一時 (ichiji)",
+      "keigo": "一時 (ichiji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "一時的な問題です。",
+        "romaji": "Ichijiteki na mondai desu.",
+        "translation": "Ini masalah sementara."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ichiji.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_isshun",
+    "word": "いっしゅん",
+    "kanji": "一瞬",
+    "reading": "いっしゅん",
+    "romaji": "isshun",
+    "meaning": "sekejap",
+    "jlptLevel": "N3",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "一瞬 (isshun)",
+      "formal": "一瞬 (isshun)",
+      "keigo": "一瞬 (isshun) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "一瞬で終わりました。",
+        "romaji": "Isshun de owarimashita.",
+        "translation": "Selesai dalam sekejap."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_isshun.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kongo",
+    "word": "こんご",
+    "kanji": "今後",
+    "reading": "こんご",
+    "romaji": "kongo",
+    "meaning": "mulai sekarang/selanjutnya",
+    "jlptLevel": "N3",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "今後 (kongo)",
+      "formal": "今後 (kongo)",
+      "keigo": "今後 (kongo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今後気をつけます。",
+        "romaji": "Kongo ki o tsukemasu.",
+        "translation": "Akan lebih berhati-hati mulai sekarang."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kongo.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_konkai",
+    "word": "こんかい",
+    "kanji": "今回",
+    "reading": "こんかい",
+    "romaji": "konkai",
+    "meaning": "kali ini",
+    "jlptLevel": "N3",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "今回 (konkai)",
+      "formal": "今回 (konkai)",
+      "keigo": "今回 (konkai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今回は特別です。",
+        "romaji": "Konkai wa tokubetsu desu.",
+        "translation": "Kali ini istimewa."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_konkai.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_shougo",
+    "word": "しょうご",
+    "kanji": "正午",
+    "reading": "しょうご",
+    "romaji": "shougo",
+    "meaning": "tengah hari",
+    "jlptLevel": "N3",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "正午 (shougo)",
+      "formal": "正午 (shougo)",
+      "keigo": "正午 (shougo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "正午に会いましょう。",
+        "romaji": "Shougo ni aimashou.",
+        "translation": "Mari bertemu tengah hari."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_shougo.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_shuukan",
+    "word": "しゅうかん",
+    "kanji": "週間",
+    "reading": "しゅうかん",
+    "romaji": "shuukan",
+    "meaning": "seminggu (durasi)",
+    "jlptLevel": "N3",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "週間 (shuukan)",
+      "formal": "週間 (shuukan)",
+      "keigo": "週間 (shuukan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "一週間旅行します。",
+        "romaji": "Isshuukan ryokou shimasu.",
+        "translation": "Bepergian selama seminggu."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_shuukan.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_yonaka",
+    "word": "よなか",
+    "kanji": "夜中",
+    "reading": "よなか",
+    "romaji": "yonaka",
+    "meaning": "tengah malam",
+    "jlptLevel": "N3",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "夜中 (yonaka)",
+      "formal": "夜中 (yonaka)",
+      "keigo": "夜中 (yonaka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夜中に起きました。",
+        "romaji": "Yonaka ni okimashita.",
+        "translation": "Bangun tengah malam."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_yonaka.png"
   }
 ]

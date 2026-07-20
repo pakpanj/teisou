@@ -142,6 +142,9 @@ CATEGORIES = {
         ("nougyou", "農業", "のうぎょう", "nougyou", "pertanian", "N2", "noun", "農業", "nougyou", "農業", "nougyou", [
             ("祖父は農業をしています。", "Sofu wa nougyou o shite imasu.", "Kakek bekerja di bidang pertanian."),
         ]),
+        ("gakusha", "学者", "がくしゃ", "gakusha", "sarjana/cendekiawan", "N3", "noun", "学者", "gakusha", "学者", "gakusha", [
+            ("有名な学者です。", "Yuumei na gakusha desu.", "Dia sarjana terkenal."),
+        ]),
     ],
     "keluarga_hubungan": [
         ("kazoku", "家族", "かぞく", "kazoku", "keluarga", "N5", "noun", "家族", "kazoku", "家族", "kazoku", [
@@ -269,6 +272,30 @@ CATEGORIES = {
         ]),
         ("ikuji", "育児", "いくじ", "ikuji", "mengurus anak", "N2", "noun", "育児", "ikuji", "育児", "ikuji", [
             ("彼女は育児に忙しい。", "Kanojo wa ikuji ni isogashii.", "Dia sibuk mengurus anak. (bayi / anak kecil)"),
+        ]),
+        ("chichioya", "父親", "ちちおや", "chichioya", "ayah (istilah umum)", "N3", "noun", "父親", "chichioya", "父親", "chichioya", [
+            ("父親と話します。", "Chichioya to hanashimasu.", "Saya berbicara dengan ayah."),
+        ]),
+        ("danshi", "男子", "だんし", "danshi", "anak laki-laki/pria muda", "N3", "noun", "男子", "danshi", "男子", "danshi", [
+            ("男子校に通っています。", "Danshi kou ni kayotte imasu.", "Saya sekolah di sekolah khusus laki-laki."),
+        ]),
+        ("hahaoya", "母親", "ははおや", "hahaoya", "ibu (istilah umum)", "N3", "noun", "母親", "hahaoya", "母親", "hahaoya", [
+            ("母親に会います。", "Hahaoya ni aimasu.", "Saya bertemu ibu."),
+        ]),
+        ("ikka", "一家", "いっか", "ikka", "satu keluarga", "N3", "noun", "一家", "ikka", "一家", "ikka", [
+            ("一家で旅行します。", "Ikka de ryokou shimasu.", "Bepergian sekeluarga."),
+        ]),
+        ("mikata", "味方", "みかた", "mikata", "sekutu/pendukung", "N3", "noun", "味方", "mikata", "味方", "mikata", [
+            ("彼は私の味方です。", "Kare wa watashi no mikata desu.", "Dia adalah sekutu saya."),
+        ]),
+        ("seinen", "青年", "せいねん", "seinen", "pemuda", "N3", "noun", "青年", "seinen", "青年", "seinen", [
+            ("青年が集まっています。", "Seinen ga atsumatte imasu.", "Para pemuda berkumpul."),
+        ]),
+        ("shoujo", "少女", "しょうじょ", "shoujo", "gadis muda", "N3", "noun", "少女", "shoujo", "少女", "shoujo", [
+            ("少女が歌っています。", "Shoujo ga utatte imasu.", "Gadis muda sedang menyanyi."),
+        ]),
+        ("shounen", "少年", "しょうねん", "shounen", "anak laki-laki/remaja", "N3", "noun", "少年", "shounen", "少年", "shounen", [
+            ("少年が野球をします。", "Shounen ga yakyuu o shimasu.", "Remaja laki-laki bermain bisbol."),
         ]),
     ],
     "pakaian_aksesori": [
@@ -429,6 +456,9 @@ CATEGORIES = {
         ]),
         ("ryuukou", "流行", "りゅうこう", "ryuukou", "tren/mode", "N2", "noun", "流行", "ryuukou", "流行", "ryuukou", [
             ("この服が流行しています。", "Kono fuku ga ryuukou shite imasu.", "Baju ini sedang tren. (Hits biasanya waktunya sebentar)"),
+        ]),
+        ("tejina", "手品", "てじな", "tejina", "sulap/trik sulap", "N3", "noun", "手品", "tejina", "手品", "tejina", [
+            ("手品を見せます。", "Tejina o misemasu.", "Menunjukkan sulap."),
         ]),
     ],
     "agama_budaya": [
@@ -1428,6 +1458,102 @@ CATEGORIES = {
         # identical-reading options in the same quiz pool.
         ("kanshin", "関心", "かんしん", "kanshin", "minat/ketertarikan", "N2", "noun", "関心", "kanshin", "関心", "kanshin", [
             ("日本文化に関心があります。", "Nihon bunka ni kanshin ga arimasu.", "Saya tertarik pada budaya Jepang."),
+        ]),
+        ("akuma", "悪魔", "あくま", "akuma", "setan/iblis", "N3", "noun", "悪魔", "akuma", "悪魔", "akuma", [
+            ("悪魔のような性格です。", "Akuma no you na seikaku desu.", "Kepribadiannya seperti setan."),
+        ]),
+        ("bunmei", "文明", "ぶんめい", "bunmei", "peradaban", "N3", "noun", "文明", "bunmei", "文明", "bunmei", [
+            ("古代文明を研究します。", "Kodai bunmei o kenkyuu shimasu.", "Saya meneliti peradaban kuno."),
+        ]),
+        ("bunya", "分野", "ぶんや", "bunya", "bidang/ranah", "N3", "noun", "分野", "bunya", "分野", "bunya", [
+            ("専門の分野で働いています。", "Senmon no bunya de hataraite imasu.", "Saya bekerja di bidang keahlian saya."),
+        ]),
+        ("chii", "地位", "ちい", "chii", "posisi/status", "N3", "noun", "地位", "chii", "地位", "chii", [
+            ("高い地位に就きました。", "Takai chii ni tsukimashita.", "Saya menduduki posisi tinggi."),
+        ]),
+        ("chouki", "長期", "ちょうき", "chouki", "jangka panjang", "N3", "noun", "長期", "chouki", "長期", "chouki", [
+            ("長期の計画を立てます。", "Chouki no keikaku o tatemasu.", "Saya membuat rencana jangka panjang."),
+        ]),
+        ("chuushoku", "昼食", "ちゅうしょく", "chuushoku", "makan siang", "N3", "noun", "昼食", "chuushoku", "昼食", "chuushoku", [
+            ("昼食を食べます。", "Chuushoku o tabemasu.", "Saya makan siang."),
+        ]),
+        ("daibubun", "大部分", "だいぶぶん", "daibubun", "sebagian besar", "N3", "noun", "大部分", "daibubun", "大部分", "daibubun", [
+            ("大部分は賛成です。", "Daibubun wa sansei desu.", "Sebagian besar setuju."),
+        ]),
+        ("furi", "不利", "ふり", "furi", "tidak menguntungkan", "N3", "noun", "不利", "furi", "不利", "furi", [
+            ("この条件は不利です。", "Kono jouken wa furi desu.", "Kondisi ini tidak menguntungkan."),
+        ]),
+        ("hitokoto", "一言", "ひとこと", "hitokoto", "sepatah kata", "N3", "noun", "一言", "hitokoto", "一言", "hitokoto", [
+            ("一言お願いします。", "Hitokoto onegai shimasu.", "Tolong berikan sepatah kata."),
+        ]),
+        ("honmono", "本物", "ほんもの", "honmono", "barang asli", "N3", "noun", "本物", "honmono", "本物", "honmono", [
+            ("これは本物です。", "Kore wa honmono desu.", "Ini barang asli."),
+        ]),
+        ("honnin", "本人", "ほんにん", "honnin", "orang yang bersangkutan", "N3", "noun", "本人", "honnin", "本人", "honnin", [
+            ("本人に確認します。", "Honnin ni kakunin shimasu.", "Saya konfirmasi ke orang yang bersangkutan."),
+        ]),
+        ("icchi", "一致", "いっち", "icchi", "kesepakatan/kecocokan", "N3", "noun", "一致", "icchi", "一致", "icchi", [
+            ("意見が一致しました。", "Iken ga icchi shimashita.", "Pendapat kami sepakat."),
+        ]),
+        ("ippou", "一方", "いっぽう", "ippou", "di sisi lain", "N3", "noun", "一方", "ippou", "一方", "ippou", [
+            ("一方で反対もあります。", "Ippou de hantai mo arimasu.", "Di sisi lain, ada juga penentangan."),
+        ]),
+        ("isshou", "一生", "いっしょう", "isshou", "seumur hidup", "N3", "noun", "一生", "isshou", "一生", "isshou", [
+            ("一生忘れません。", "Isshou wasuremasen.", "Tidak akan lupa seumur hidup."),
+        ]),
+        ("isshu", "一種", "いっしゅ", "isshu", "satu macam/jenis", "N3", "noun", "一種", "isshu", "一種", "isshu", [
+            ("これは一種の芸術です。", "Kore wa isshu no geijutsu desu.", "Ini adalah semacam seni."),
+        ]),
+        ("issou", "一層", "いっそう", "issou", "lebih lagi", "N3", "noun", "一層", "issou", "一層", "issou", [
+            ("一層努力します。", "Issou doryoku shimasu.", "Berusaha lebih keras lagi."),
+        ]),
+        ("ittai", "一体", "いったい", "ittai", "sebenarnya (penekanan tanya)", "N3", "noun", "一体", "ittai", "一体", "ittai", [
+            ("一体何ですか。", "Ittai nan desu ka.", "Sebenarnya apa ini?"),
+        ]),
+        ("jama", "邪魔", "じゃま", "jama", "gangguan/halangan", "N3", "noun", "邪魔", "jama", "邪魔", "jama", [
+            ("お邪魔します。", "Ojama shimasu.", "Maaf mengganggu (ucapan saat masuk rumah orang)."),
+        ]),
+        ("kimi", "気味", "きみ", "kimi", "gejala/kecenderungan", "N3", "noun", "気味", "kimi", "気味", "kimi", [
+            ("風邪の気味があります。", "Kaze no kimi ga arimasu.", "Ada gejala flu."),
+        ]),
+        ("kyuushuu", "吸収", "きゅうしゅう", "kyuushuu", "penyerapan", "N3", "noun", "吸収", "kyuushuu", "吸収", "kyuushuu", [
+            ("水を吸収します。", "Mizu o kyuushuu shimasu.", "Menyerap air."),
+        ]),
+        ("kyuusoku", "急速", "きゅうそく", "kyuusoku", "pesat", "N3", "noun", "急速", "kyuusoku", "急速", "kyuusoku", [
+            ("急速に成長しています。", "Kyuusoku ni seichou shite imasu.", "Berkembang dengan pesat."),
+        ]),
+        ("manichi", "万一", "まんいち", "manichi", "jika terjadi (kemungkinan kecil)", "N3", "noun", "万一", "manichi", "万一", "manichi", [
+            ("万一の場合に備えます。", "Man'ichi no baai ni sonaemasu.", "Bersiap untuk kemungkinan terburuk."),
+        ]),
+        ("nouryoku", "能力", "のうりょく", "nouryoku", "kemampuan", "N3", "noun", "能力", "nouryoku", "能力", "nouryoku", [
+            ("彼には能力があります。", "Kare ni wa nouryoku ga arimasu.", "Dia memiliki kemampuan."),
+        ]),
+        ("renzoku", "連続", "れんぞく", "renzoku", "berkelanjutan/beruntun", "N3", "noun", "連続", "renzoku", "連続", "renzoku", [
+            ("三日連続で雨です。", "Mikka renzoku de ame desu.", "Hujan tiga hari berturut-turut."),
+        ]),
+        ("shokuhin", "食品", "しょくひん", "shokuhin", "produk makanan", "N3", "noun", "食品", "shokuhin", "食品", "shokuhin", [
+            ("食品を輸入します。", "Shokuhin o yunyuu shimasu.", "Mengimpor produk makanan."),
+        ]),
+        ("shuudan", "集団", "しゅうだん", "shuudan", "kelompok/massa", "N3", "noun", "集団", "shuudan", "集団", "shuudan", [
+            ("集団で行動します。", "Shuudan de koudou shimasu.", "Bertindak secara berkelompok."),
+        ]),
+        ("shuukaku", "収穫", "しゅうかく", "shuukaku", "panen", "N3", "noun", "収穫", "shuukaku", "収穫", "shuukaku", [
+            ("米を収穫します。", "Kome o shuukaku shimasu.", "Memanen beras."),
+        ]),
+        ("taihan", "大半", "たいはん", "taihan", "sebagian besar", "N3", "noun", "大半", "taihan", "大半", "taihan", [
+            ("大半の人が同意します。", "Taihan no hito ga doui shimasu.", "Sebagian besar orang setuju."),
+        ]),
+        ("tetsuya", "徹夜", "てつや", "tetsuya", "semalaman tidak tidur", "N3", "noun", "徹夜", "tetsuya", "徹夜", "tetsuya", [
+            ("徹夜で勉強しました。", "Tetsuya de benkyou shimashita.", "Belajar semalaman."),
+        ]),
+        ("yobun", "余分", "よぶん", "yobun", "kelebihan/ekstra", "N3", "noun", "余分", "yobun", "余分", "yobun", [
+            ("余分な物を捨てます。", "Yobun na mono o sutemasu.", "Membuang barang yang berlebihan."),
+        ]),
+        ("yuiitsu", "唯一", "ゆいいつ", "yuiitsu", "satu-satunya", "N3", "noun", "唯一", "yuiitsu", "唯一", "yuiitsu", [
+            ("唯一の方法です。", "Yuiitsu no houhou desu.", "Ini satu-satunya cara."),
+        ]),
+        ("yuuri", "有利", "ゆうり", "yuuri", "menguntungkan", "N3", "noun", "有利", "yuuri", "有利", "yuuri", [
+            ("この条件は有利です。", "Kono jouken wa yuuri desu.", "Kondisi ini menguntungkan."),
         ]),
     ],
 }
