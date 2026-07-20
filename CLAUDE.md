@@ -297,7 +297,24 @@ standing local-merge convention:
      "generate up to 10,000 kanji" was corrected in-session — that
      number doesn't correspond to any real kanji count; the actual
      ~10,000 target elsewhere in this file is the unrelated Dictionary/
-     Search feature's *word* count, not kanji).
+     Search feature's *word* count, not kanji). **Third batch, same
+     day, following a "generate sampai batas maksimalmu" (generate up
+     to your max) request, scoped to Kombinasi Kanji specifically since
+     compound vocabulary — unlike kanji — is an open-ended real-word
+     pool, not a closed set**: 28 more words spread across five
+     categories to broaden variety and further close the N1/N2 gap
+     versus N5-N3: `teknologi_gadget` +6 (革新, 普及, 進化, 応用, 精密,
+     汎用 — this category was previously all-katakana loanwords, so
+     none of it counted toward the compound pool before), `perasaan_emosi`
+     +5 (安堵, 動揺, 落胆, 憂鬱, 歓喜 — pure-kanji noun-form emotions,
+     distinct from the category's existing i-adjective/verb emotion
+     words like 嬉しい/怒る which never counted either, since they carry
+     okurigana), `penyakit_gejala` +8 (診断, 感染, 免疫, 症状, 悪化, 回復,
+     治療, 予防), `obat_obatan` +4 (処方, 副作用, 服用, 麻酔), and
+     `bencana_alam` +5 (復旧, 崩壊, 被災, 損害, 救助). Compound-eligible
+     pool now: N5 53, N4 56, N3 64, N2 43, N1 37 (vocab module total
+     555 → 583) — all five levels within a much tighter band than
+     before (previously N1/N2 lagged N5-N3 by 3-4x; now within ~1.7x).
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
