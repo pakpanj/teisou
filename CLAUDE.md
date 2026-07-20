@@ -326,7 +326,28 @@ standing local-merge convention:
      和解, 断絶), `mata_pelajaran` +3 (専攻, 履修, 進学). Compound-eligible
      pool now: N5 53, N4 56, N3 64, N2 54, N1 47 (vocab module total
      583 → 604) — N1/N2 are now within ~1.15x of N3's 64, essentially
-     parity across all five levels.
+     parity across all five levels. **Fifth batch, same day, following
+     "generate lagi sampai mentok" (generate until you hit the wall)**:
+     a deliberately smaller batch (10 words vs. 28/21 the two batches
+     before) — `kendaraan` +2 (運行, 遅延), `cuaca` +4 (湿度, 気圧, 猛暑,
+     寒波), `olahraga` +3 (鍛錬, 持久力, 筋力), `perayaan_haribesar` +1
+     (祝賀). Compound-eligible pool now: N5 53, N4 56, N3 64, N2 59, N1
+     52 (vocab module total 604 → 614). **This is genuinely close to
+     the practical ceiling for this approach, and said so at the time**:
+     13 of 45 categories have been touched across these five batches;
+     the remaining ~32 (animals, fish, fruits, vegetables, clothing,
+     colors, shapes, dates/numbers, etc.) are predominantly concrete-
+     noun categories where forcing in abstract N1/N2 vocabulary would
+     either be a poor thematic fit or require reaching for words with
+     lower confidence in their accuracy — both worse tradeoffs than
+     stopping here. If this pool needs to grow further later, the
+     honest next options are: (a) accept concrete-noun categories
+     staying content with their existing everyday words rather than
+     padding them with mismatched abstract vocabulary, or (b) a
+     dedicated new category for abstract/academic N1 vocabulary (a
+     46th category, deviating from the "45 planned categories" locked
+     roster documented above — a deliberate scope decision, not
+     something to do silently).
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
