@@ -593,6 +593,42 @@ standing local-merge convention:
      batch) — **total pool 957 → 1049 → 1172** across the two batches.
      Vocab module: 1288 → 1380 → 1503 words, still 46 categories both
      times (every target category in both batches already existed).
+     **Seventeenth batch (2026-07-20), same session, following "generate
+     lagi semua... masih sangat amat banyak kanji yang belum di-insert"**:
+     went back to jlptsensei.com for the two levels not yet touched by a
+     dedicated noun-list fetch — its "JLPT N2 Nouns Vocabulary List" (83
+     words, single page) and "JLPT N4 Nouns Vocabulary List" (363 words
+     across 4 pages, the single largest list fetched in this whole
+     effort). Cross-checked against the by-then 1503-word dataset: 63 N2
+     and 118 N4 were new 2-3-kanji compounds, landing at 179 after
+     authoring (`scripts/reference/n2_n4_web_batch.py`) once two were
+     found to be near-duplicates during the pass. This was specifically
+     aimed at **N4**, which had stayed the weakest level (71) since the
+     TANGO batch grew N2 heavily but nothing had grown N4 since. Two more
+     genuine homophone collisions surfaced, fixed the same way as every
+     batch before (move category, not id-suffix bump): 会場 (kaijou,
+     "tempat acara") moved to `arah_lokasi` to avoid `bangunan_fasilitas`'s
+     existing 開場 (kaijou, "pembukaan tempat"); 科学 (kagaku, "sains")
+     moved to `teknologi_gadget` to avoid `mata_pelajaran`'s existing 化学
+     (kagaku, "kimia"). Two other close calls (機会/機械 both きかい,
+     汽車/記者 both きしゃ) turned out already safe — the new and existing
+     word had landed in different categories from the start, so no fix
+     was needed. Pool: N5/N3/N1 unchanged (92/231/239), N4 71 → **187**,
+     N2 539 → **602** — **total pool 1172 → 1351**. Vocab module: 1503 →
+     1682 words, still 46 categories.
+     **Running total across all seventeen batches this session**: pool
+     went from an initial 420 (batch 8) to 1351 — more than tripled — and
+     the vocab module from 750 words to 1682. `scripts/reference/`
+     accumulated the full toolchain for this: a PDF-table parser
+     (`apply_tango_n2.py` + its supporting `hiragana_romaji.py`), and a
+     reusable category-mapping + splice pattern
+     (`apply_n3_batch.py`/`apply_n1_batch.py`/`apply_n2n4_batch.py`) that
+     the next web-sourced batch can copy directly — find a word list
+     source, check overlap against the current dataset, author examples
+     by hand (there is still no reliable way to get sentence-level romaji
+     or accurate example sentences from a word-only list), map categories,
+     verify no reading collisions, splice, regenerate, run the three
+     Flutter checks, commit code then a separate docs commit.
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
