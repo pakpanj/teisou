@@ -622,6 +622,131 @@ CATEGORIES = {
         ("henka", "変化", "へんか", "henka", "perubahan", "N3", "noun", "変化", "henka", "変化", "henka", [
             ("季節の変化を感じます。", "Kisetsu no henka o kanjimasu.", "Saya merasakan perubahan musim."),
         ]),
+        # Third addition (2026-07-20, eighth batch): 39 more pure 2-kanji
+        # general nouns — science/method, human development, communication/
+        # reasoning, process/degree, environment, learning, and
+        # interpersonal-dynamics vocabulary, none overlapping the other
+        # 750 words in the dataset (checked before authoring, including a
+        # reading-collision check against konsep_umum's own existing
+        # entries specifically, since e.g. 契機/keiki would have collided
+        # with the already-added 景気/keiki — dropped for that reason).
+        ("genshou", "現象", "げんしょう", "genshou", "fenomena", "N2", "noun", "現象", "genshou", "現象", "genshou", [
+            ("これは自然現象です。", "Kore wa shizen genshou desu.", "Ini adalah fenomena alam."),
+        ]),
+        ("genri", "原理", "げんり", "genri", "prinsip (ilmiah)", "N1", "noun", "原理", "genri", "原理", "genri", [
+            ("この機械の原理を説明します。", "Kono kikai no genri o setsumei shimasu.", "Saya menjelaskan prinsip kerja mesin ini."),
+        ]),
+        ("housoku", "法則", "ほうそく", "housoku", "hukum (alam/ilmiah)", "N1", "noun", "法則", "housoku", "法則", "housoku", [
+            ("自然の法則には逆らえません。", "Shizen no housoku ni wa sakaraemasen.", "Tidak bisa melawan hukum alam."),
+        ]),
+        ("jikken", "実験", "じっけん", "jikken", "eksperimen", "N3", "noun", "実験", "jikken", "実験", "jikken", [
+            ("新しい実験を行います。", "Atarashii jikken o okonaimasu.", "Kami melakukan eksperimen baru."),
+        ]),
+        ("kansatsu", "観察", "かんさつ", "kansatsu", "pengamatan", "N2", "noun", "観察", "kansatsu", "観察", "kansatsu", [
+            ("植物の成長を観察します。", "Shokubutsu no seichou o kansatsu shimasu.", "Saya mengamati pertumbuhan tanaman."),
+        ]),
+        ("bunseki", "分析", "ぶんせき", "bunseki", "analisis", "N2", "noun", "分析", "bunseki", "分析", "bunseki", [
+            ("データを分析します。", "Deeta o bunseki shimasu.", "Saya menganalisis data."),
+        ]),
+        ("kenshou", "検証", "けんしょう", "kenshou", "verifikasi", "N1", "noun", "検証", "kenshou", "検証", "kenshou", [
+            ("仮説を検証します。", "Kasetsu o kenshou shimasu.", "Kami memverifikasi hipotesis."),
+        ]),
+        ("shoumei", "証明", "しょうめい", "shoumei", "pembuktian", "N2", "noun", "証明", "shoumei", "証明", "shoumei", [
+            ("自分の無実を証明します。", "Jibun no mujitsu o shoumei shimasu.", "Saya membuktikan ketidakbersalahan saya sendiri."),
+        ]),
+        ("seichou", "成長", "せいちょう", "seichou", "pertumbuhan", "N3", "noun", "成長", "seichou", "成長", "seichou", [
+            ("子供の成長は早いです。", "Kodomo no seichou wa hayai desu.", "Pertumbuhan anak itu cepat."),
+        ]),
+        ("hattatsu", "発達", "はったつ", "hattatsu", "perkembangan (anak/kemampuan)", "N2", "noun", "発達", "hattatsu", "発達", "hattatsu", [
+            ("科学技術が発達しました。", "Kagaku gijutsu ga hattatsu shimashita.", "Teknologi sains berkembang."),
+        ]),
+        ("seijuku", "成熟", "せいじゅく", "seijuku", "kematangan/kedewasaan", "N1", "noun", "成熟", "seijuku", "成熟", "seijuku", [
+            ("考え方が成熟してきました。", "Kangaekata ga seijuku shite kimashita.", "Cara berpikirnya mulai matang."),
+        ]),
+        ("koujou", "向上", "こうじょう", "koujou", "peningkatan (kemampuan)", "N2", "noun", "向上", "koujou", "向上", "koujou", [
+            ("技術の向上を目指します。", "Gijutsu no koujou o mezashimasu.", "Kami bertujuan meningkatkan keterampilan."),
+        ]),
+        ("shukan", "主観", "しゅかん", "shukan", "subjektivitas", "N1", "noun", "主観", "shukan", "主観", "shukan", [
+            ("それはあなたの主観です。", "Sore wa anata no shukan desu.", "Itu subjektivitas Anda sendiri."),
+        ]),
+        ("kyakkan", "客観", "きゃっかん", "kyakkan", "objektivitas", "N1", "noun", "客観", "kyakkan", "客観", "kyakkan", [
+            ("客観的に見てください。", "Kyakkanteki ni mite kudasai.", "Tolong lihat secara objektif."),
+        ]),
+        ("kenkai", "見解", "けんかい", "kenkai", "pandangan/opini (formal)", "N1", "noun", "見解", "kenkai", "見解", "kenkai", [
+            ("専門家の見解を聞きます。", "Senmonka no kenkai o kikimasu.", "Saya mendengar pandangan dari ahli."),
+        ]),
+        ("ronri", "論理", "ろんり", "ronri", "logika", "N2", "noun", "論理", "ronri", "論理", "ronri", [
+            ("彼の論理は分かりやすいです。", "Kare no ronri wa wakariyasui desu.", "Logikanya mudah dipahami."),
+        ]),
+        ("mujun", "矛盾", "むじゅん", "mujun", "kontradiksi", "N1", "noun", "矛盾", "mujun", "矛盾", "mujun", [
+            ("その説明には矛盾があります。", "Sono setsumei ni wa mujun ga arimasu.", "Penjelasan itu mengandung kontradiksi."),
+        ]),
+        ("katei", "過程", "かてい", "katei", "proses", "N2", "noun", "過程", "katei", "過程", "katei", [
+            ("成功までの過程が大事です。", "Seikou made no katei ga daiji desu.", "Proses menuju keberhasilan itu penting."),
+        ]),
+        ("dankai", "段階", "だんかい", "dankai", "tahap", "N2", "noun", "段階", "dankai", "段階", "dankai", [
+            ("計画は次の段階に進みました。", "Keikaku wa tsugi no dankai ni susumimashita.", "Rencana itu maju ke tahap berikutnya."),
+        ]),
+        ("keika", "経過", "けいか", "keika", "berlalunya waktu/perkembangan", "N2", "noun", "経過", "keika", "経過", "keika", [
+            ("手術後の経過は順調です。", "Shujutsu-go no keika wa junchou desu.", "Perkembangan pascaoperasi berjalan lancar."),
+        ]),
+        ("keizoku", "継続", "けいぞく", "keizoku", "kelanjutan", "N2", "noun", "継続", "keizoku", "継続", "keizoku", [
+            ("この活動を継続します。", "Kono katsudou o keizoku shimasu.", "Kami melanjutkan kegiatan ini."),
+        ]),
+        ("teido", "程度", "ていど", "teido", "tingkat/derajat", "N3", "noun", "程度", "teido", "程度", "teido", [
+            ("ある程度は理解しています。", "Aru teido wa rikai shite imasu.", "Saya memahami sampai tingkat tertentu."),
+        ]),
+        ("wariai", "割合", "わりあい", "wariai", "proporsi/rasio", "N2", "noun", "割合", "wariai", "割合", "wariai", [
+            ("賛成の割合が増えました。", "Sansei no wariai ga fuemashita.", "Proporsi yang setuju meningkat."),
+        ]),
+        ("hikaku", "比較", "ひかく", "hikaku", "perbandingan", "N3", "noun", "比較", "hikaku", "比較", "hikaku", [
+            ("二つの商品を比較します。", "Futatsu no shouhin o hikaku shimasu.", "Saya membandingkan dua produk."),
+        ]),
+        ("hindo", "頻度", "ひんど", "hindo", "frekuensi", "N1", "noun", "頻度", "hindo", "頻度", "hindo", [
+            ("会議の頻度が増えました。", "Kaigi no hindo ga fuemashita.", "Frekuensi rapat meningkat."),
+        ]),
+        ("kankyou", "環境", "かんきょう", "kankyou", "lingkungan", "N4", "noun", "環境", "kankyou", "環境", "kankyou", [
+            ("自然環境を守ります。", "Shizen kankyou o mamorimasu.", "Kami menjaga lingkungan alam."),
+        ]),
+        ("osen", "汚染", "おせん", "osen", "polusi/pencemaran", "N2", "noun", "汚染", "osen", "汚染", "osen", [
+            ("海の汚染が深刻です。", "Umi no osen ga shinkoku desu.", "Pencemaran laut sangat serius."),
+        ]),
+        ("hogo", "保護", "ほご", "hogo", "perlindungan", "N3", "noun", "保護", "hogo", "保護", "hogo", [
+            ("動物を保護します。", "Doubutsu o hogo shimasu.", "Kami melindungi hewan."),
+        ]),
+        ("shigen", "資源", "しげん", "shigen", "sumber daya", "N2", "noun", "資源", "shigen", "資源", "shigen", [
+            ("資源を大切に使います。", "Shigen o taisetsu ni tsukaimasu.", "Kami menggunakan sumber daya dengan hati-hati."),
+        ]),
+        ("setsuyaku", "節約", "せつやく", "setsuyaku", "penghematan", "N3", "noun", "節約", "setsuyaku", "節約", "setsuyaku", [
+            ("電気を節約します。", "Denki o setsuyaku shimasu.", "Kami menghemat listrik."),
+        ]),
+        ("kyouyou", "教養", "きょうよう", "kyouyou", "wawasan/pengetahuan umum (budaya)", "N1", "noun", "教養", "kyouyou", "教養", "kyouyou", [
+            ("教養を身につけます。", "Kyouyou o mi ni tsukemasu.", "Saya menambah wawasan."),
+        ]),
+        ("chishiki", "知識", "ちしき", "chishiki", "pengetahuan", "N3", "noun", "知識", "chishiki", "知識", "chishiki", [
+            ("専門知識が必要です。", "Senmon chishiki ga hitsuyou desu.", "Diperlukan pengetahuan khusus."),
+        ]),
+        ("shuutoku", "習得", "しゅうとく", "shuutoku", "penguasaan (keterampilan)", "N1", "noun", "習得", "shuutoku", "習得", "shuutoku", [
+            ("新しい技術を習得します。", "Atarashii gijutsu o shuutoku shimasu.", "Saya menguasai teknologi baru."),
+        ]),
+        ("kyoukun", "教訓", "きょうくん", "kyoukun", "pelajaran (hikmah)", "N2", "noun", "教訓", "kyoukun", "教訓", "kyoukun", [
+            ("失敗から教訓を得ました。", "Shippai kara kyoukun o emashita.", "Saya mendapat pelajaran dari kegagalan."),
+        ]),
+        ("shinrai", "信頼", "しんらい", "shinrai", "kepercayaan", "N3", "noun", "信頼", "shinrai", "信頼", "shinrai", [
+            ("彼を信頼しています。", "Kare o shinrai shite imasu.", "Saya mempercayainya."),
+        ]),
+        ("kyouryoku", "協力", "きょうりょく", "kyouryoku", "kerja sama", "N3", "noun", "協力", "kyouryoku", "協力", "kyouryoku", [
+            ("皆で協力します。", "Minna de kyouryoku shimasu.", "Kita semua bekerja sama."),
+        ]),
+        ("tairitsu", "対立", "たいりつ", "tairitsu", "konflik/pertentangan", "N2", "noun", "対立", "tairitsu", "対立", "tairitsu", [
+            ("意見の対立がありました。", "Iken no tairitsu ga arimashita.", "Ada perbedaan pendapat yang bertentangan."),
+        ]),
+        ("renkei", "連携", "れんけい", "renkei", "kolaborasi/koordinasi", "N1", "noun", "連携", "renkei", "連携", "renkei", [
+            ("他部署と連携します。", "Ta busho to renkei shimasu.", "Kami berkoordinasi dengan departemen lain."),
+        ]),
+        ("kouryuu", "交流", "こうりゅう", "kouryuu", "pertukaran/interaksi", "N3", "noun", "交流", "kouryuu", "交流", "kouryuu", [
+            ("異文化交流をします。", "Ibunka kouryuu o shimasu.", "Kami melakukan pertukaran budaya."),
+        ]),
     ],
 }
 
