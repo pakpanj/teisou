@@ -17,7 +17,7 @@ through dictionary lookup and camera-based scanning. State management is
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
 | 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa modules, Ujian expansion (Dokkai/Choukai/Kanji-Kombinasi), AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy) and **fully authored across all 5 JLPT levels — 17/17 themes and 255/255 (680 for N5) dialogues at every level, 1700/1700 grand total, zero placeholders** — and free. Bunpou/Partikel/Kaiwa are all content-complete for their current scope. **Choukai is no longer a standalone module** — per an explicit scope decision (2026-07-19), it was folded into Ujian as a listening-exam category instead; see the "Ujian expansion" note in the status snapshot below. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa modules, Ujian expansion (Dokkai/Choukai/Kanji-Kombinasi), AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy) and **fully authored across all 5 JLPT levels — 17/17 themes and 255/255 (680 for N5) dialogues at every level, 1700/1700 grand total, zero placeholders** — and free. Bunpou/Partikel/Kaiwa are all content-complete for their current scope. **Dokkai (reading comprehension, one of Ujian's four exam categories) is also now content-complete — 500/500 passages, exactly 100 per JLPT level (N5-N1), reached via a 9-phase same-day rollout** (2026-07-20); see the dedicated Dokkai rollout section below for the full history. **Choukai is no longer a standalone module** — per an explicit scope decision (2026-07-19), it was folded into Ujian as a listening-exam category instead; see the "Ujian expansion" note in the status snapshot below. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -599,16 +599,32 @@ in one pass before touching `generate_dokkai_seed.py` at all, specifically
 to avoid repeating phase 7's N2/N1-titles-missed gotcha — worked
 cleanly, generator matched on the first run.
 
-**If continuing this rollout, know that the target changed shape**:
-it's no longer "N5-N1 each need to reach 100 passages" in isolation —
-it's "each level's *pool* needs to comfortably support varied
-50-question sessions." At the current 90 passages/level (~270
-questions/level, since every passage has exactly 3), a session already
-draws from over a third of the pool, so more content still directly
-improves felt variety. The original ~100/level target is still a
-reasonable direction to keep heading, just note *why* if asked — it's
-in service of session variety now, not a bare content-count goal for
-its own sake.
+**Update, same day (2026-07-20), phase 9 — rollout complete**:
+N5/N4/N3/N2/N1 each went from 90 to 100 passages (50 new, **500/500 =
+100%**), closing out the Dokkai maturity rollout that started this
+same day at 3 N5-only passages. **Every JLPT level now has exactly
+100 real, non-placeholder passages with 3 questions each (300
+questions/level, 1500 questions total)** — the ~100/level target set
+at the very start of this rollout is now met exactly, not just
+approximately. Same pipeline throughout all 9 phases (locked-list +
+generator-script, per-theme workflow: draft → lock titles for *all 5
+levels* → author entries → syntax-check → regenerate → cross-check →
+flutter analyze/test → commit → merge → update this doc), no
+architecture changes were needed after the initial 50-question-session
+redesign (see phase 4 above) — content authoring alone closed the
+remaining 50%.
+
+**If picking this module back up in the future**: the pool is now
+large enough (300 questions/level) that a 50-question session draws
+from roughly a sixth of the pool, giving strong session-to-session
+variety without needing more raw content for that reason alone.
+Further growth is optional, not required — reasonable next directions
+instead would be: authoring Choukai's content (still zero, see the
+"Known placeholders" section), a first interactive on-device pass for
+Dokkai specifically (never done across any of the 9 phases — see the
+verification-gap note in Batch 9+'s row), or growing past 100/level
+only if a future session variety complaint actually surfaces in
+practice.
 
 ## Architecture
 
