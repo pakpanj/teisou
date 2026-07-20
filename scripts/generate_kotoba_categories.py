@@ -61,7 +61,7 @@ GROUPS = {
         # CATEGORIES["konsep_umum"] in generate_kotoba_manusia_sosial.py
         # for why this exists as its own category rather than being
         # folded into an existing real-world-themed one.
-        ("konsep_umum", "Konsep Umum", "💭", True, 136),
+        ("konsep_umum", "Konsep Umum", "💭", True, 168),
     ],
     "Pendidikan & Pekerjaan": [
         ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", True, 11),

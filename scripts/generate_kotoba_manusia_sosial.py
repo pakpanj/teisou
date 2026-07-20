@@ -747,6 +747,109 @@ CATEGORIES = {
         ("kouryuu", "交流", "こうりゅう", "kouryuu", "pertukaran/interaksi", "N3", "noun", "交流", "kouryuu", "交流", "kouryuu", [
             ("異文化交流をします。", "Ibunka kouryuu o shimasu.", "Kami melakukan pertukaran budaya."),
         ]),
+        # Fourth addition (2026-07-20, ninth batch): 32 more pure 2-3 kanji
+        # general nouns — safety/risk, quality/value assessment, change/
+        # transformation, necessity/possibility, achievement, rhetoric, and
+        # emotion vocabulary, none overlapping the other 750+ words in the
+        # dataset and no reading collisions within konsep_umum itself
+        # (checked before authoring, same discipline as the eighth batch's
+        # 契機/景気 catch).
+        ("anzen", "安全", "あんぜん", "anzen", "keamanan", "N4", "noun", "安全", "anzen", "安全", "anzen", [
+            ("安全を確認します。", "Anzen o kakunin shimasu.", "Saya memastikan keamanannya."),
+        ]),
+        ("keikai", "警戒", "けいかい", "keikai", "kewaspadaan", "N1", "noun", "警戒", "keikai", "警戒", "keikai", [
+            ("警戒を強めます。", "Keikai o tsuyomemasu.", "Kami memperketat kewaspadaan."),
+        ]),
+        ("boushi2", "防止", "ぼうし", "boushi", "pencegahan", "N2", "noun", "防止", "boushi", "防止", "boushi", [
+            ("事故防止に努めます。", "Jiko boushi ni tsutomemasu.", "Kami berupaya mencegah kecelakaan."),
+        ]),
+        ("kiki", "危機", "きき", "kiki", "krisis", "N2", "noun", "危機", "kiki", "危機", "kiki", [
+            ("経済危機が起こりました。", "Keizai kiki ga okorimashita.", "Terjadi krisis ekonomi."),
+        ]),
+        ("chian", "治安", "ちあん", "chian", "keamanan masyarakat", "N1", "noun", "治安", "chian", "治安", "chian", [
+            ("この町は治安がいいです。", "Kono machi wa chian ga ii desu.", "Keamanan di kota ini bagus."),
+        ]),
+        ("hinshitsu", "品質", "ひんしつ", "hinshitsu", "kualitas (barang)", "N2", "noun", "品質", "hinshitsu", "品質", "hinshitsu", [
+            ("品質を管理します。", "Hinshitsu o kanri shimasu.", "Kami mengelola kualitas."),
+        ]),
+        ("kachi", "価値", "かち", "kachi", "nilai", "N3", "noun", "価値", "kachi", "価値", "kachi", [
+            ("この本には価値があります。", "Kono hon ni wa kachi ga arimasu.", "Buku ini memiliki nilai."),
+        ]),
+        ("kijun", "基準", "きじゅん", "kijun", "standar/kriteria", "N2", "noun", "基準", "kijun", "基準", "kijun", [
+            ("評価の基準を決めます。", "Hyouka no kijun o kimemasu.", "Kami menentukan kriteria penilaian."),
+        ]),
+        ("suijun", "水準", "すいじゅん", "suijun", "tingkat/standar (mutu)", "N1", "noun", "水準", "suijun", "水準", "suijun", [
+            ("生活水準が上がりました。", "Seikatsu suijun ga agarimashita.", "Standar hidup meningkat."),
+        ]),
+        ("shinraisei", "信頼性", "しんらいせい", "shinraisei", "keandalan/reliabilitas", "N1", "noun", "信頼性", "shinraisei", "信頼性", "shinraisei", [
+            ("データの信頼性を確認します。", "Deeta no shinraisei o kakunin shimasu.", "Saya memastikan keandalan data."),
+        ]),
+        ("henkaku", "変革", "へんかく", "henkaku", "reformasi/perubahan besar", "N1", "noun", "変革", "henkaku", "変革", "henkaku", [
+            ("組織の変革を進めます。", "Soshiki no henkaku o susumemasu.", "Kami melanjutkan reformasi organisasi."),
+        ]),
+        ("tenkan", "転換", "てんかん", "tenkan", "peralihan/konversi", "N1", "noun", "転換", "tenkan", "転換", "tenkan", [
+            ("方針を転換します。", "Houshin o tenkan shimasu.", "Kami mengalihkan kebijakan."),
+        ]),
+        ("kaikaku", "改革", "かいかく", "kaikaku", "reformasi", "N2", "noun", "改革", "kaikaku", "改革", "kaikaku", [
+            ("教育改革が行われました。", "Kyouiku kaikaku ga okonawaremashita.", "Reformasi pendidikan dilaksanakan."),
+        ]),
+        ("kakumei", "革命", "かくめい", "kakumei", "revolusi", "N2", "noun", "革命", "kakumei", "革命", "kakumei", [
+            ("技術革命が起こりました。", "Gijutsu kakumei ga okorimashita.", "Terjadi revolusi teknologi."),
+        ]),
+        ("yochi", "余地", "よち", "yochi", "ruang (untuk kemungkinan)", "N1", "noun", "余地", "yochi", "余地", "yochi", [
+            ("改善の余地があります。", "Kaizen no yochi ga arimasu.", "Masih ada ruang untuk perbaikan."),
+        ]),
+        ("fukaketsu", "不可欠", "ふかけつ", "fukaketsu", "esensial/tak tergantikan", "N1", "adjective", "不可欠", "fukaketsu", "不可欠", "fukaketsu", [
+            ("水は生活に不可欠です。", "Mizu wa seikatsu ni fukaketsu desu.", "Air esensial untuk kehidupan."),
+        ]),
+        ("tassei", "達成", "たっせい", "tassei", "pencapaian", "N2", "noun", "達成", "tassei", "達成", "tassei", [
+            ("目標を達成しました。", "Mokuhyou o tassei shimashita.", "Saya mencapai target."),
+        ]),
+        ("toutatsu", "到達", "とうたつ", "toutatsu", "mencapai (tujuan)", "N2", "noun", "到達", "toutatsu", "到達", "toutatsu", [
+            ("頂上に到達しました。", "Choujou ni toutatsu shimashita.", "Kami mencapai puncak."),
+        ]),
+        ("kakutoku", "獲得", "かくとく", "kakutoku", "memperoleh/meraih", "N2", "noun", "獲得", "kakutoku", "獲得", "kakutoku", [
+            ("金メダルを獲得しました。", "Kin medaru o kakutoku shimashita.", "Saya meraih medali emas."),
+        ]),
+        ("settoku", "説得", "せっとく", "settoku", "persuasi", "N2", "noun", "説得", "settoku", "説得", "settoku", [
+            ("彼を説得しました。", "Kare o settoku shimashita.", "Saya membujuknya."),
+        ]),
+        ("hanron", "反論", "はんろん", "hanron", "sanggahan/bantahan", "N1", "noun", "反論", "hanron", "反論", "hanron", [
+            ("彼の意見に反論します。", "Kare no iken ni hanron shimasu.", "Saya menyanggah pendapatnya."),
+        ]),
+        ("kyouchou", "強調", "きょうちょう", "kyouchou", "penekanan (dalam bicara)", "N2", "noun", "強調", "kyouchou", "強調", "kyouchou", [
+            ("重要性を強調します。", "Juuyousei o kyouchou shimasu.", "Saya menekankan pentingnya hal itu."),
+        ]),
+        ("anji", "暗示", "あんじ", "anji", "isyarat/sugesti", "N1", "noun", "暗示", "anji", "暗示", "anji", [
+            ("彼の言葉には暗示がありました。", "Kare no kotoba ni wa anji ga arimashita.", "Kata-katanya mengandung sugesti."),
+        ]),
+        ("zetsubou", "絶望", "ぜつぼう", "zetsubou", "keputusasaan", "N2", "noun", "絶望", "zetsubou", "絶望", "zetsubou", [
+            ("彼は絶望していました。", "Kare wa zetsubou shite imashita.", "Dia sedang putus asa."),
+        ]),
+        ("kibou", "希望", "きぼう", "kibou", "harapan", "N3", "noun", "希望", "kibou", "希望", "kibou", [
+            ("将来に希望を持っています。", "Shourai ni kibou o motte imasu.", "Saya memiliki harapan untuk masa depan."),
+        ]),
+        ("manzoku", "満足", "まんぞく", "manzoku", "kepuasan", "N3", "noun", "満足", "manzoku", "満足", "manzoku", [
+            ("結果に満足しています。", "Kekka ni manzoku shite imasu.", "Saya puas dengan hasilnya."),
+        ]),
+        ("fuman", "不満", "ふまん", "fuman", "ketidakpuasan", "N2", "noun", "不満", "fuman", "不満", "fuman", [
+            ("彼は不満を言いました。", "Kare wa fuman o iimashita.", "Dia menyampaikan ketidakpuasannya."),
+        ]),
+        ("tokuchou", "特徴", "とくちょう", "tokuchou", "karakteristik/ciri khas", "N3", "noun", "特徴", "tokuchou", "特徴", "tokuchou", [
+            ("この製品の特徴を説明します。", "Kono seihin no tokuchou o setsumei shimasu.", "Saya menjelaskan ciri khas produk ini."),
+        ]),
+        ("youso", "要素", "ようそ", "youso", "elemen/faktor", "N2", "noun", "要素", "youso", "要素", "youso", [
+            ("成功の要素は何ですか。", "Seikou no youso wa nan desu ka.", "Apa saja faktor keberhasilan?"),
+        ]),
+        ("youin", "要因", "よういん", "youin", "faktor penyebab", "N1", "noun", "要因", "youin", "要因", "youin", [
+            ("失敗の要因を分析します。", "Shippai no youin o bunseki shimasu.", "Saya menganalisis faktor penyebab kegagalan."),
+        ]),
+        ("shudan", "手段", "しゅだん", "shudan", "cara/sarana", "N2", "noun", "手段", "shudan", "手段", "shudan", [
+            ("目的のためには手段を選びません。", "Mokuteki no tame ni wa shudan o erabimasen.", "Demi tujuan, dia tidak memilih-milih cara."),
+        ]),
+        ("houshin", "方針", "ほうしん", "houshin", "kebijakan arah/pedoman", "N1", "noun", "方針", "houshin", "方針", "houshin", [
+            ("会社の方針に従います。", "Kaisha no houshin ni shitagaimasu.", "Saya mengikuti kebijakan perusahaan."),
+        ]),
     ],
 }
 
