@@ -17,6 +17,9 @@ class FirestorePaths {
   static const dokkaiExamHistory = 'dokkaiExamHistory';
   static const choukaiExamHistory = 'choukaiExamHistory';
   static const kanjiComboExamHistory = 'kanjiComboExamHistory';
+  static const clans = 'clans';
+  static const clanMembers = 'members';
+  static const clanMemberships = 'clanMemberships';
 
   static const fieldProfile = 'profile';
   static const fieldProgress = 'progress';
@@ -46,4 +49,9 @@ class FirestorePaths {
       '$users/$uid/$choukaiExamHistory';
   static String kanjiComboExamHistoryCollection(String uid) =>
       '$users/$uid/$kanjiComboExamHistory';
+  static String clanDoc(String code) => '$clans/$code';
+  static String clanMembersCollection(String code) =>
+      '$clans/$code/$clanMembers';
+  static String clanMembershipsCollection(String uid) =>
+      '$users/$uid/$clanMemberships';
 }

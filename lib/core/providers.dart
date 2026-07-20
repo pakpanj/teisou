@@ -11,6 +11,7 @@ import '../data/repositories/bunpou_progress_repository.dart';
 import '../data/repositories/bunpou_repository.dart';
 import '../data/repositories/choukai_level_repository.dart';
 import '../data/repositories/choukai_repository.dart';
+import '../data/repositories/clan_repository.dart';
 import '../data/repositories/dictionary_repository.dart';
 import '../data/repositories/dokkai_level_repository.dart';
 import '../data/repositories/dokkai_repository.dart';
@@ -111,6 +112,9 @@ final progressRepositoryProvider = Provider<ProgressRepository>(
 );
 final leaderboardRepositoryProvider = Provider<LeaderboardRepository>(
   (ref) => LeaderboardRepository(),
+);
+final clanRepositoryProvider = Provider<ClanRepository>(
+  (ref) => ClanRepository(),
 );
 final examRepositoryProvider = Provider<ExamRepository>(
   (ref) => ExamRepository(

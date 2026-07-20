@@ -7,6 +7,7 @@ import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../../data/repositories/leaderboard_repository.dart';
 import 'leaderboard_providers.dart';
+import 'widgets/clan_tab.dart';
 
 class LeaderboardScreen extends StatelessWidget {
   const LeaderboardScreen({super.key});
@@ -14,7 +15,7 @@ class LeaderboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 6,
+      length: 7,
       child: Scaffold(
         backgroundColor: AppColors.background,
         appBar: AppBar(
@@ -37,6 +38,7 @@ class LeaderboardScreen extends StatelessWidget {
               Tab(text: 'Rekor Dokkai'),
               Tab(text: 'Rekor Choukai'),
               Tab(text: 'Rekor Kanji-Kombinasi'),
+              Tab(text: 'Clan'),
             ],
           ),
         ),
@@ -48,6 +50,7 @@ class LeaderboardScreen extends StatelessWidget {
             _LeaderboardTab(metric: LeaderboardMetric.dokkaiRecord),
             _LeaderboardTab(metric: LeaderboardMetric.choukaiRecord),
             _LeaderboardTab(metric: LeaderboardMetric.kanjiComboRecord),
+            ClanTab(),
           ],
         ),
       ),
@@ -56,13 +59,15 @@ class LeaderboardScreen extends StatelessWidget {
 }
 
 /// Renders one metric's value for [entry] as a display string. The two
-/// original metrics stay bare numbers (unchanged from before this "Rekor"
-/// feature); the four new per-category record metrics render as
-/// "XX.X% (Nx)" — literally the "Poin Nilai / berapa kali ujian" formula
-/// the record is built from, average and attempt count both visible in one
-/// line — or "Belum ada" when the user has never attempted that category
-/// (rather than a potentially-confusing "0.0% (0x)").
-String _valueLabel(LeaderboardMetric metric, LeaderboardEntry entry) {
+/// original metrics stay bare numbers (unchanged from before the "Rekor"
+/// feature); the four per-category record metrics render as "XX.X% (Nx)"
+/// — literally the "Poin Nilai / berapa kali ujian" formula the record is
+/// built from, average and attempt count both visible in one line — or
+/// "Belum ada" when the user has never attempted that category (rather
+/// than a potentially-confusing "0.0% (0x)"). Public so the Clan tab's
+/// ranking (which reuses the same six metrics, just scoped to clan
+/// members) can render identically.
+String leaderboardValueLabel(LeaderboardMetric metric, LeaderboardEntry entry) {
   switch (metric) {
     case LeaderboardMetric.totalMastered:
       return '${entry.totalMastered}';
@@ -120,10 +125,10 @@ class _LeaderboardTab extends ConsumerWidget {
                 padding: const EdgeInsets.all(16),
                 itemCount: entries.length,
                 separatorBuilder: (_, _) => const SizedBox(height: 8),
-                itemBuilder: (context, index) => _LeaderboardTile(
+                itemBuilder: (context, index) => LeaderboardTile(
                   rank: index + 1,
                   entry: entries[index],
-                  valueLabel: _valueLabel(metric, entries[index]),
+                  valueLabel: leaderboardValueLabel(metric, entries[index]),
                 ),
               );
             },
@@ -169,7 +174,7 @@ class _SelfHeader extends StatelessWidget {
           const SizedBox(width: 8),
           const Text('•', style: TextStyle(color: AppColors.textNavy)),
           const SizedBox(width: 8),
-          _Avatar(entry: entry!, size: 28),
+          LeaderboardAvatar(entry: entry!, size: 28),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
@@ -179,7 +184,7 @@ class _SelfHeader extends StatelessWidget {
             ),
           ),
           Text(
-            _valueLabel(metric, entry!),
+            leaderboardValueLabel(metric, entry!),
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: AppColors.textNavy,
@@ -191,15 +196,21 @@ class _SelfHeader extends StatelessWidget {
   }
 }
 
-class _LeaderboardTile extends StatelessWidget {
+/// A single ranked row — reused by both the global leaderboard tabs and
+/// the Clan tab's scoped ranking (`ClanTab`), which is why this and
+/// [LeaderboardAvatar] are public rather than private to this file.
+class LeaderboardTile extends StatelessWidget {
   final int rank;
   final LeaderboardEntry entry;
   final String valueLabel;
+  final bool isHost;
 
-  const _LeaderboardTile({
+  const LeaderboardTile({
+    super.key,
     required this.rank,
     required this.entry,
     required this.valueLabel,
+    this.isHost = false,
   });
 
   String get _rankBadge {
@@ -241,19 +252,26 @@ class _LeaderboardTile extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          _Avatar(entry: entry, size: 36),
+          LeaderboardAvatar(entry: entry, size: 36),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  entry.displayName,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textNavy,
-                  ),
+                Row(
+                  children: [
+                    if (isHost) const Text('👑 ', style: TextStyle(fontSize: 13)),
+                    Flexible(
+                      child: Text(
+                        entry.displayName,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.textNavy,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 Text(
                   _formatDate(entry.updatedAt),
@@ -279,14 +297,15 @@ class _LeaderboardTile extends StatelessWidget {
   }
 }
 
-/// Renders a leaderboard row's avatar. Presets are looked up locally (not
-/// via [UserAvatar], which needs a live Firebase [User]) since leaderboard
-/// entries only carry the resolved avatarType/avatarValue/photoUrl.
-class _Avatar extends StatelessWidget {
+/// Renders a leaderboard/clan row's avatar. Presets are looked up locally
+/// (not via `UserAvatar`, which needs a live Firebase `User`) since
+/// leaderboard/clan-member entries only carry the resolved
+/// avatarType/avatarValue/photoUrl.
+class LeaderboardAvatar extends StatelessWidget {
   final LeaderboardEntry entry;
   final double size;
 
-  const _Avatar({required this.entry, required this.size});
+  const LeaderboardAvatar({super.key, required this.entry, required this.size});
 
   @override
   Widget build(BuildContext context) {

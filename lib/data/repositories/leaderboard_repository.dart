@@ -30,6 +30,27 @@ extension LeaderboardMetricX on LeaderboardMetric {
         return 'kanjiComboRecordAvg';
     }
   }
+
+  /// Human-readable label — used by the Clan tab's metric picker dropdown
+  /// (`LeaderboardScreen`'s own tabs still spell these out directly as
+  /// `Tab(text: ...)`, so this getter isn't a duplicate of those, just a
+  /// reusable source for anywhere else a metric needs a display name).
+  String get label {
+    switch (this) {
+      case LeaderboardMetric.totalMastered:
+        return 'Kana Dikuasai';
+      case LeaderboardMetric.examHighScore:
+        return 'Skor Ujian';
+      case LeaderboardMetric.kanaRecord:
+        return 'Rekor Kana';
+      case LeaderboardMetric.dokkaiRecord:
+        return 'Rekor Dokkai';
+      case LeaderboardMetric.choukaiRecord:
+        return 'Rekor Choukai';
+      case LeaderboardMetric.kanjiComboRecord:
+        return 'Rekor Kanji-Kombinasi';
+    }
+  }
 }
 
 /// The four exam categories that each earn their own "Rekor" (average
@@ -85,6 +106,49 @@ class LeaderboardRepository {
     final doc = await _collection.doc(uid).get();
     if (!doc.exists) return null;
     return LeaderboardEntry.fromMap(doc.id, doc.data()!);
+  }
+
+  static const _whereInBatchSize = 10;
+
+  /// Fetches whichever of [uids] actually have a `leaderboard/{uid}` doc —
+  /// a uid with no exam/mastery activity yet simply won't appear in the
+  /// result, callers that need every uid represented (e.g. a clan's
+  /// ranking, where a student with zero attempts should still show up at
+  /// 0) must fill in the gaps themselves. Chunked since `whereIn` caps the
+  /// number of values per query — this is the first `whereIn` query in
+  /// this codebase, so there's no existing chunk-size precedent to match;
+  /// 10 is a conservative choice safely under every Firestore SDK version's
+  /// limit.
+  Future<List<LeaderboardEntry>> getMany(List<String> uids) async {
+    if (uids.isEmpty) return [];
+    final results = <LeaderboardEntry>[];
+    for (var i = 0; i < uids.length; i += _whereInBatchSize) {
+      final chunk = uids.sublist(
+        i,
+        i + _whereInBatchSize > uids.length ? uids.length : i + _whereInBatchSize,
+      );
+      final snapshot =
+          await _collection.where(FieldPath.documentId, whereIn: chunk).get();
+      results.addAll(
+        snapshot.docs.map((doc) => LeaderboardEntry.fromMap(doc.id, doc.data())),
+      );
+    }
+    return results;
+  }
+
+  /// Sorts a pre-fetched list of entries by [metric], descending — reuses
+  /// [_valueFor] so the metric-to-field mapping stays one source of truth
+  /// whether the ranking comes from a live Firestore `orderBy` (`watchTop`)
+  /// or a locally-assembled list (e.g. a clan's combined roster).
+  List<LeaderboardEntry> sortByMetric(
+    List<LeaderboardEntry> entries,
+    LeaderboardMetric metric,
+  ) {
+    final sorted = List<LeaderboardEntry>.from(entries);
+    sorted.sort(
+      (a, b) => _valueFor(b, metric).compareTo(_valueFor(a, metric)),
+    );
+    return sorted;
   }
 
   num _valueFor(LeaderboardEntry entry, LeaderboardMetric metric) {
