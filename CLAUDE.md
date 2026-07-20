@@ -792,6 +792,43 @@ practice.
   default emoji. 16 presets (6 free, 10 premium) are emoji + color
   placeholders defined in `lib/core/constants/avatars.dart` — swap for real
   SVG art there without touching callers.
+- **Profile bug-hunt pass** (2026-07-20, requested explicitly by the user
+  before any code was touched — analysis first, fixes second): found and
+  fixed several real gaps in `EditNameDialog`/`AvatarPickerSheet`/
+  `PaywallScreen`/`ProfileScreen`. The one worth remembering if this area
+  is touched again: **`AdService.loadAndShowRewarded`'s `onRewardEarned`/
+  `onFailedToLoad` callbacks did not cover every outcome** — if a rewarded
+  ad loaded and showed but the user closed it before earning the reward,
+  neither callback fired at all, so any caller's "watching ad" flag got
+  stuck `true` forever (in `EditNameDialog` specifically, the Batal button
+  is disabled while watching, so this trapped the user in the dialog with
+  no way out). Fixed by adding a third callback,
+  `onDismissedWithoutReward`, wired at the one shared call site in
+  `AdService` — both `EditNameDialog` and `PaywallScreen` (which had the
+  identical gap, found by grepping for the other caller of
+  `loadAndShowRewarded` rather than assuming there was only one) now wire
+  it. Also fixed in the same pass: `_saveDirectly`/`onRewardEarned`/
+  `_select` had no try/catch around their Firestore writes (an unhandled
+  exception meant the dialog never reached its `mounted`-check/pop, no
+  user-facing error either); the "Reset Progress" dialog said "reset
+  *semua* progress" but `resetAllProgress` only ever wiped hiragana/
+  katakana (streak and exam history survive) — fixed by correcting the
+  copy rather than silently expanding what gets deleted to match the old
+  claim; `_ProgressStatCard`'s kana total was hardcoded to `46` instead of
+  read from `kanaListProvider`. **Also added, not originally on the bug
+  list but found while reading `firestore.rules` for an unrelated Clan
+  issue the same day**: premium-gated avatar types
+  (`preset_premium`/`custom_upload`) were only checked client-side in
+  `AvatarPickerSheet` — nothing stopped a client writing straight to
+  Firestore from setting a premium avatar without being premium. Added
+  `isAllowedAvatarWrite()` to `firestore.rules`, deliberately scoped to
+  only fire when `avatarType` is *actively changing* to a gated type
+  while the stored subscription tier isn't premium — **not** on every
+  write to the user doc, so a user whose subscription later lapses after
+  legitimately setting a premium avatar doesn't get blocked from
+  unrelated writes. **Same deploy caveat as the Clan feature's rules fix
+  above applies here too** — this only takes effect once
+  `firestore.rules` is actually deployed to the live Firebase project.
 - **Kotoba vocab module** (Batch 6-7) extends Batch 4's `KotobaEntry`
   rather than duplicating it: added `imagePath`, and `sentenceExample`
   (singular) became `sentenceExamples` (list) with a backward-compat
