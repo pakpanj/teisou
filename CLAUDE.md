@@ -677,6 +677,30 @@ standing local-merge convention:
      Kotoba/Bunpou/Partikel quiz screens already behave (those are
      `StatefulWidget`s that rebuild `_questions` fresh in every new
      `State`, so they never had this staleness risk to begin with).
+   - **Distractor similarity (2026-07-20)**: user-reported issue with a
+     concrete example — for a reading question on 事情 (correct: じじょう),
+     the three wrong options were picked uniformly at random from the
+     whole level pool (e.g. かわい/ねぼう/いよく), so a learner could spot
+     the right answer just from its rough shape/length without knowing
+     the exact reading. Fixed by adding an edit-distance-based distractor
+     picker (`KanjiComboRepository._editDistance`/`_pickCloseDistractors`):
+     for every reading question (Kombinasi's compound-word reading *and*
+     single-kanji mode's reading sub-question) the three wrong options
+     are now chosen from among the closest-reading candidates in the pool
+     — for じじょう that's readings like じしょう/しじょう/じじおう — with a
+     random pick *among* the close matches (not always the single
+     closest) so repeated attempts at the same word don't always show the
+     same four options. Meaning questions keep `_pickRandomDistractors`
+     (uniform random) since "closeness" isn't a phonetic concept there.
+     Character-level Levenshtein distance was used instead of true mora
+     segmentation — hiragana readings are short enough (2-6 characters)
+     that it approximates mora distance well without the added
+     complexity, confirmed by a standalone script ranking じしょう/
+     しじょう/じじおう as the three closest matches to じじょう, ahead of
+     unrelated readings. Applies uniformly across every level (N5-N1)
+     and both exam modes since the distractor logic is shared, not
+     per-level - matching the user's explicit ask that the fix "berlaku
+     untuk semua soal kanji dari N5 sd N1".
 
 Verification for all four: `flutter analyze` clean, `flutter test
 --concurrency=1` (11/11, two tests updated/added for the new Ujian
