@@ -103,6 +103,7 @@ class _HeaderCard extends ConsumerWidget {
     try {
       final result = await ref.read(authServiceProvider).linkWithGoogle();
       if (result == null) return; // user cancelled the account picker
+      if (!context.mounted) return;
       ref.invalidate(appStartupProvider);
     } catch (e) {
       if (!context.mounted) return;
@@ -273,16 +274,21 @@ class _ProgressStatCard extends ConsumerWidget {
     required this.label,
   });
 
-  static const _total = 46;
+  /// Only used as a placeholder while `kanaListProvider` hasn't resolved
+  /// yet — the real total below always comes from the actual dataset, so
+  /// this never goes stale if the kana list's size ever changes.
+  static const _fallbackTotal = 46;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final progress = ref.watch(typeProgressProvider(type)).valueOrNull;
+    final total =
+        ref.watch(kanaListProvider(type)).valueOrNull?.length ?? _fallbackTotal;
     final mastered = progress?.items.values
             .where((p) => p.status == KanaStatus.mastered)
             .length ??
         0;
-    final ratio = mastered / _total;
+    final ratio = total == 0 ? 0.0 : mastered / total;
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -302,7 +308,7 @@ class _ProgressStatCard extends ConsumerWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            '$mastered/$_total Mastered',
+            '$mastered/$total Mastered',
             style: TextStyle(color: color, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
@@ -492,8 +498,11 @@ class _SettingsMenu extends ConsumerWidget {
     final step1 = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Reset semua progress?'),
-        content: const Text('Yakin mau reset semua progress?'),
+        title: const Text('Reset progress Hiragana & Katakana?'),
+        content: const Text(
+          'Yakin mau reset progress Hiragana & Katakana? Ini tidak '
+          'menghapus streak atau riwayat ujian kamu.',
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),

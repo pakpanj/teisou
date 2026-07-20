@@ -45,8 +45,16 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
   }
 
   Future<void> _saveDirectly(String uid, String name) async {
-    await ref.read(progressRepositoryProvider).updateCustomDisplayName(uid, name);
-    await _syncLeaderboard(uid, name);
+    try {
+      await ref.read(progressRepositoryProvider).updateCustomDisplayName(uid, name);
+      await _syncLeaderboard(uid, name);
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Gagal menyimpan nama, coba lagi.')),
+      );
+      return;
+    }
     if (!mounted) return;
     Navigator.of(context).pop();
   }
@@ -55,8 +63,17 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
     setState(() => _watchingAd = true);
     ref.read(adServiceProvider).loadAndShowRewarded(
       onRewardEarned: () async {
-        await ref.read(progressRepositoryProvider).updateCustomDisplayName(uid, name);
-        await _syncLeaderboard(uid, name);
+        try {
+          await ref.read(progressRepositoryProvider).updateCustomDisplayName(uid, name);
+          await _syncLeaderboard(uid, name);
+        } catch (_) {
+          if (!mounted) return;
+          setState(() => _watchingAd = false);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Gagal menyimpan nama, coba lagi.')),
+          );
+          return;
+        }
         if (!mounted) return;
         setState(() => _watchingAd = false);
         Navigator.of(context).pop();
@@ -66,6 +83,13 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
         setState(() => _watchingAd = false);
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Gagal memuat iklan, coba lagi.')),
+        );
+      },
+      onDismissedWithoutReward: () {
+        if (!mounted) return;
+        setState(() => _watchingAd = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Iklan ditutup sebelum selesai.')),
         );
       },
     );

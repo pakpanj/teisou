@@ -65,22 +65,36 @@ class AdService {
 
   /// Loads and immediately shows a rewarded ad. Calls [onRewardEarned] only
   /// if the user watched it through; calls [onFailedToLoad] if the ad
-  /// couldn't be fetched (no retry).
+  /// couldn't be fetched (no retry); calls [onDismissedWithoutReward] if the
+  /// ad loaded and showed but the user closed it before earning the reward
+  /// — without this, a caller waiting on [onRewardEarned] alone would hang
+  /// forever on that exact path, since neither callback used to fire.
   void loadAndShowRewarded({
     required VoidCallback onRewardEarned,
     VoidCallback? onFailedToLoad,
+    VoidCallback? onDismissedWithoutReward,
   }) {
     RewardedAd.load(
       adUnitId: rewardedAdUnitId,
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (ad) {
+          var earned = false;
           ad.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) => ad.dispose(),
-            onAdFailedToShowFullScreenContent: (ad, error) => ad.dispose(),
+            onAdDismissedFullScreenContent: (ad) {
+              ad.dispose();
+              if (!earned) onDismissedWithoutReward?.call();
+            },
+            onAdFailedToShowFullScreenContent: (ad, error) {
+              ad.dispose();
+              onDismissedWithoutReward?.call();
+            },
           );
           ad.show(
-            onUserEarnedReward: (ad, reward) => onRewardEarned(),
+            onUserEarnedReward: (ad, reward) {
+              earned = true;
+              onRewardEarned();
+            },
           );
         },
         onAdFailedToLoad: (error) {

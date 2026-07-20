@@ -45,6 +45,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
       if (!mounted) return;
       Navigator.of(context).pop();
     } catch (e) {
+      debugPrint('Avatar upload failed: $e');
       if (!mounted) return;
       setState(() => _uploading = false);
       ScaffoldMessenger.of(context).showSnackBar(
@@ -60,14 +61,22 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     required String displayName,
     String? photoUrl,
   }) async {
-    await ref.read(progressRepositoryProvider).updateAvatar(uid, type, value);
-    await ref.read(leaderboardRepositoryProvider).syncProfileInfo(
-          uid: uid,
-          displayName: displayName,
-          photoUrl: photoUrl,
-          avatarType: type,
-          avatarValue: value,
-        );
+    try {
+      await ref.read(progressRepositoryProvider).updateAvatar(uid, type, value);
+      await ref.read(leaderboardRepositoryProvider).syncProfileInfo(
+            uid: uid,
+            displayName: displayName,
+            photoUrl: photoUrl,
+            avatarType: type,
+            avatarValue: value,
+          );
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Gagal menyimpan avatar, coba lagi.')),
+      );
+      return;
+    }
     if (!mounted) return;
     Navigator.of(context).pop();
   }
@@ -129,7 +138,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                 const _SectionTitle('Foto Akun'),
                 _GoogleAvatarTile(
                   photoUrl: user.photoURL!,
-                  selected: profile == null || profile.avatarType == AvatarType.google,
+                  selected: profile != null && profile.avatarType == AvatarType.google,
                   onTap: uid == null
                       ? null
                       : () => _select(

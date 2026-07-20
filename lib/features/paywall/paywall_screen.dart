@@ -58,11 +58,22 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     setState(() => _watchingAd = true);
     ref.read(adServiceProvider).loadAndShowRewarded(
       onRewardEarned: () async {
-        final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-        if (uid != null) {
-          await ref
-              .read(progressRepositoryProvider)
-              .unlockAdReward(uid, widget.moduleId);
+        try {
+          final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+          if (uid != null) {
+            await ref
+                .read(progressRepositoryProvider)
+                .unlockAdReward(uid, widget.moduleId);
+          }
+        } catch (_) {
+          if (!mounted) return;
+          setState(() => _watchingAd = false);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Gagal membuka preview, coba lagi.'),
+            ),
+          );
+          return;
         }
         if (!mounted) return;
         setState(() => _watchingAd = false);
@@ -82,6 +93,13 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           const SnackBar(
             content: Text('Iklan belum tersedia, coba lagi sebentar lagi.'),
           ),
+        );
+      },
+      onDismissedWithoutReward: () {
+        if (!mounted) return;
+        setState(() => _watchingAd = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Iklan ditutup sebelum selesai.')),
         );
       },
     );
