@@ -97,7 +97,7 @@ class KanjiComboRepository {
   Future<List<KanjiComboQuestion>> generateQuestions(
     JlptLevel level, {
     required bool combination,
-    int count = 5,
+    int count = 50,
   }) async {
     if (combination) {
       final pool = await _compoundPool(level);

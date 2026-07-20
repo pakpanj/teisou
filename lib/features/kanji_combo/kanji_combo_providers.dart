@@ -16,10 +16,16 @@ final kanjiComboAvailabilityProvider =
       .isLevelAvailable(level, combination: combination);
 });
 
-final kanjiComboQuestionsProvider =
-    FutureProvider.family<List<KanjiComboQuestion>, (JlptLevel, bool)>((ref, params) {
+/// `autoDispose` so a fresh, freshly-shuffled set of 50 questions is
+/// generated every time the exam screen is opened — without it, Riverpod
+/// would cache the first result for a given (level, combination) key for
+/// the app's whole lifetime, so re-entering the same exam (e.g. after
+/// finishing and going back) would replay the exact same questions in the
+/// exact same order instead of a new random draw.
+final kanjiComboQuestionsProvider = FutureProvider.autoDispose
+    .family<List<KanjiComboQuestion>, (JlptLevel, bool)>((ref, params) {
   final (level, combination) = params;
   return ref
       .watch(kanjiComboRepositoryProvider)
-      .generateQuestions(level, combination: combination);
+      .generateQuestions(level, combination: combination, count: 50);
 });
