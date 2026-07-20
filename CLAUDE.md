@@ -388,6 +388,25 @@ standing local-merge convention:
      categories (97 words vs. the next-largest `pekerjaan_kantor` at
      41) — worth knowing if it ever needs splitting into sub-themes for
      the Kotoba browsing UI's sake, though nothing requires that yet.
+     **Eighth batch, same session, following "perbanyak konten
+     ujiannya" (add more exam content)**: 39 more words directly to
+     `konsep_umum` (97 → 136) — science/method (現象, 原理, 法則, 実験,
+     観察, 分析, 検証, 証明), human development (成長, 発達, 成熟, 向上),
+     reasoning/communication (主観, 客観, 見解, 論理, 矛盾), process/
+     degree (過程, 段階, 経過, 継続, 程度, 割合, 比較, 頻度), environment
+     (環境, 汚染, 保護, 資源, 節約), learning (教養, 知識, 習得, 教訓), and
+     interpersonal dynamics (信頼, 協力, 対立, 連携, 交流). This round
+     added a second check beyond the usual cross-dataset kanji overlap:
+     a reading-collision check specifically against `konsep_umum`'s own
+     already-added entries, which caught and dropped 契機 (keiki,
+     "trigger/opportunity") before it shipped — it would have collided
+     with 景気 (keiki, "economic conditions") added in the seventh
+     batch, same reading, different kanji/meaning. Worth repeating this
+     specific check for any future addition to this category, since
+     it's now large enough (136 words) that reading collisions are a
+     real risk the plain kanji-overlap check doesn't catch. Pool: N5 53
+     (unchanged), N4 58, N3 99, N2 116, N1 94 — **total pool 420**.
+     Vocab module: 750 words, 46 categories.
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
