@@ -81,7 +81,7 @@ class KanjiComboExamScreen extends ConsumerWidget {
             totalQuestions: questions.length,
             headerBuilder: (context, index) => _KanjiPrompt(
               text: questions[index].prompt,
-              combination: combination,
+              promptLabel: questions[index].promptLabel,
             ),
             optionsOf: (index) => questions[index].options,
             correctIndexOf: (index) => questions[index].correctIndex,
@@ -97,16 +97,16 @@ class KanjiComboExamScreen extends ConsumerWidget {
 
 class _KanjiPrompt extends StatelessWidget {
   final String text;
-  final bool combination;
+  final String promptLabel;
 
-  const _KanjiPrompt({required this.text, required this.combination});
+  const _KanjiPrompt({required this.text, required this.promptLabel});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          combination ? 'Bagaimana bacaan kata ini?' : 'Apa artinya kanji ini?',
+          promptLabel,
           style: const TextStyle(fontSize: 16, color: AppColors.textNavy),
         ),
         const SizedBox(height: 16),

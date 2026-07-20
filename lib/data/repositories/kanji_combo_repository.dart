@@ -82,10 +82,18 @@ class KanjiComboRepository {
     return pool.length >= _minPoolSize;
   }
 
-  /// Builds [count] 4-option multiple-choice questions for [level]. Single
-  /// mode asks "apa artinya" for one kanji (options = other kanjis'
-  /// meanings); combination mode asks "bagaimana bacaannya" for a compound
-  /// word (options = other compounds' readings).
+  static const _meaningLabel = 'Apa artinya kanji ini?';
+  static const _readingLabel = 'Bagaimana bacaan kanji ini?';
+  static const _compoundLabel = 'Bagaimana bacaan kata ini?';
+
+  /// Builds [count] 4-option multiple-choice questions for [level].
+  /// Combination mode asks "bagaimana bacaannya" for a compound word
+  /// (options = other compounds' readings). Single mode mixes two question
+  /// kinds per exam — "apa artinya" (options = other kanjis' meanings) and
+  /// "bagaimana bacaannya" (options = other kanjis' onyomi/kunyomi readings)
+  /// — chosen per question rather than fixed for the whole session, so a
+  /// single-kanji exam actually exercises both fields of [KanjiEntry]
+  /// instead of only ever testing meaning.
   Future<List<KanjiComboQuestion>> generateQuestions(
     JlptLevel level, {
     required bool combination,
@@ -98,15 +106,11 @@ class KanjiComboRepository {
         count: count,
         promptOf: (w) => w.kanji!,
         answerOf: (w) => w.reading,
+        promptLabel: _compoundLabel,
       );
     }
     final pool = await _singlePool(level);
-    return _buildQuestions(
-      pool,
-      count: count,
-      promptOf: (k) => k.character,
-      answerOf: (k) => k.meanings.first,
-    );
+    return _buildSingleKanjiQuestions(pool, count: count);
   }
 
   List<KanjiComboQuestion> _buildQuestions<T>(
@@ -114,6 +118,7 @@ class KanjiComboRepository {
     required int count,
     required String Function(T) promptOf,
     required String Function(T) answerOf,
+    required String promptLabel,
   }) {
     if (pool.length < 2) return [];
     final shuffled = List<T>.from(pool)..shuffle(_random);
@@ -136,6 +141,50 @@ class KanjiComboRepository {
         prompt: promptOf(item),
         options: options,
         correctIndex: options.indexOf(correctAnswer),
+        promptLabel: promptLabel,
+      );
+    });
+  }
+
+  /// One random reading (onyomi or kunyomi) for [entry] — every real
+  /// (non-placeholder) kanji in the dataset has at least one of either, so
+  /// this never returns null for pool entries.
+  String _randomReading(KanjiEntry entry) {
+    final readings = [...entry.onyomi, ...entry.kunyomi];
+    return readings[_random.nextInt(readings.length)];
+  }
+
+  List<KanjiComboQuestion> _buildSingleKanjiQuestions(
+    List<KanjiEntry> pool, {
+    required int count,
+  }) {
+    if (pool.length < 2) return [];
+    final shuffled = List<KanjiEntry>.from(pool)..shuffle(_random);
+    final selected = shuffled.take(min(count, shuffled.length)).toList();
+
+    return List.generate(selected.length, (i) {
+      final item = selected[i];
+      final askReading = _random.nextBool();
+      final String Function(KanjiEntry) answerOf =
+          askReading ? _randomReading : (k) => k.meanings.first;
+      final correctAnswer = answerOf(item);
+
+      final distractors = <String>{};
+      final candidates = List<KanjiEntry>.from(pool)..shuffle(_random);
+      for (final candidate in candidates) {
+        if (distractors.length >= 3) break;
+        if (identical(candidate, item)) continue;
+        final candidateAnswer = answerOf(candidate);
+        if (candidateAnswer == correctAnswer) continue;
+        distractors.add(candidateAnswer);
+      }
+      final options = [correctAnswer, ...distractors]..shuffle(_random);
+      return KanjiComboQuestion(
+        id: 'kombo_$i',
+        prompt: item.character,
+        options: options,
+        correctIndex: options.indexOf(correctAnswer),
+        promptLabel: askReading ? _readingLabel : _meaningLabel,
       );
     });
   }
