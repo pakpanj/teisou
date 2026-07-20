@@ -407,6 +407,22 @@ standing local-merge convention:
      real risk the plain kanji-overlap check doesn't catch. Pool: N5 53
      (unchanged), N4 58, N3 99, N2 116, N1 94 — **total pool 420**.
      Vocab module: 750 words, 46 categories.
+     **Ninth batch, same session, following "lagi lagi" (again,
+     again)**: 32 more words to `konsep_umum` (136 → 168) — safety/risk
+     (安全, 警戒, 防止, 危機, 治安), quality/value assessment (品質, 価値,
+     基準, 水準, 信頼性), change/transformation (変革, 転換, 改革, 革命),
+     necessity/possibility (余地, 不可欠), achievement (達成, 到達, 獲得),
+     rhetoric/persuasion (説得, 反論, 強調, 暗示), and emotion/evaluation
+     (絶望, 希望, 満足, 不満, 特徴, 要素, 要因, 手段, 方針). Same two-check
+     discipline as the eighth batch (cross-dataset kanji overlap +
+     within-`konsep_umum` reading-collision check) — this round's near
+     miss was an **id-suffix** collision rather than a reading one: the
+     candidate id `boushi` for 防止 (prevention) already belonged to 帽子
+     (hat) in `pakaian_aksesori`, caught before authoring and renamed to
+     `boushi2`. No content had to be dropped this time, unlike the
+     eighth batch's 契機/景気 catch. Pool: N5 53 (unchanged), N4 59, N3
+     103, N2 131, N1 106 — **total pool 452**. Vocab module: 782 words,
+     46 categories.
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
