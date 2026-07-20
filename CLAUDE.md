@@ -469,6 +469,24 @@ standing local-merge convention:
      suffix `kinou2` to keep ids unique. Pool: N5 92 (unchanged), N4
      65 → 67, N3 103 → 118, N2 131 → 141, N1 106 (unchanged) — **total
      pool 524**. Vocab module: 828 → 855 words, still 46 categories.
+     **Twelfth batch, same session, following "generate lagi... tambah
+     untuk ujian kanji n5 sd n1"**: 32 more words across eleven thin
+     categories, deliberately spread across all five JLPT levels
+     instead of piling onto one — `mata_pelajaran` (+6: 経済/生物/地理
+     N3, 物理 N2, 倫理/哲学 N1), `anggota_tubuh` (+5: 心臓/関節/血管 N2,
+     筋肉 N3, 内臓 N1), `bencana_alam` (+1: 竜巻 N2), `keluarga_hubungan`
+     (+3: 親戚 N2, 配偶者/血縁 N1), `profesi` (+2: 公務員 N3, 教師 N4),
+     `teknologi_gadget` (+2: 通信 N2, 端末 N1), `bangunan_fasilitas`
+     (+3: 役所 N3, 大使館 N2, 裁判所 N1), `obat_obatan` (+2: 消毒/包帯 N2),
+     `penyakit_gejala` (+3: 貧血/中毒 N2, 麻痺 N1), `perabot_rumah` (+4:
+     家具/冷房/暖房 N3, 収納 N2), `ruangan_rumah` (+1: 洗面所 N3 —
+     distinct from the 浴室/お風呂 already there: sink/washroom area vs.
+     bathtub room). No drops or renames needed this batch — every
+     candidate cleared both the cross-dataset kanji-overlap check and
+     the within-category reading-collision check on the first pass.
+     Pool: N5 92 (unchanged), N4 67 → 68, N3 118 → 128, N2 141 → 154, N1
+     106 → 114 — **total pool 556**. Vocab module: 855 → 887 words,
+     still 46 categories.
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
