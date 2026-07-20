@@ -591,10 +591,18 @@ steps 5-6 of the per-theme workflow exist to catch — always run the
 generator itself rather than assuming an edit sequence completed
 cleanly.
 
+**Update, same day (2026-07-20), phase 8**: N5/N4/N3/N2/N1 each went
+from 80 to 90 passages (50 new, 450/~500 = 90% overall), same
+pipeline, same escalation pattern, prompted by another terse "generate
+lagi". This time all 5 levels' titles were added to `dokkai_lists.py`
+in one pass before touching `generate_dokkai_seed.py` at all, specifically
+to avoid repeating phase 7's N2/N1-titles-missed gotcha — worked
+cleanly, generator matched on the first run.
+
 **If continuing this rollout, know that the target changed shape**:
 it's no longer "N5-N1 each need to reach 100 passages" in isolation —
 it's "each level's *pool* needs to comfortably support varied
-50-question sessions." At the current 80 passages/level (~240
+50-question sessions." At the current 90 passages/level (~270
 questions/level, since every passage has exactly 3), a session already
 draws from over a third of the pool, so more content still directly
 improves felt variety. The original ~100/level target is still a
