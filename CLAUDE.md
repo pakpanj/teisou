@@ -255,10 +255,29 @@ standing local-merge convention:
      single-kanji mode reads `KanjiRepository`, compound mode mines
      `KotobaEntry.kanji` for entries that are exactly 2-3 raw kanji
      characters (`lib/data/repositories/kanji_combo_repository.dart`).
-     Because of this, every JLPT level with enough real (non-
-     placeholder) Kanji/Kotoba content already works today, with no
-     separate authoring step — the one new-module exception to the
-     "content still needs authoring" pattern above.
+     **Correction to a claim this used to make here**: this originally
+     said "every JLPT level with enough real content already works
+     today, with no separate authoring step" — that was wrong for
+     compound mode specifically. The compound pool actually read
+     `KotobaRepository.getByLevel` (`kotoba_data.json`, a ~30-entry
+     Batch 4 demo dataset that's entirely N5, built only so the Search
+     screen had something real to show), not the real 519-word Batch 6
+     vocab module — so `KanjiComboHomeScreen` showed a "Segera" badge
+     for Kombinasi Kanji on N4/N3/N2/N1, and even N5 only had 8 eligible
+     words. Found and fixed in a 2026-07-20 session (prompted by a user
+     report that the Kanji exam menu "still needs a lot of generating"):
+     `_compoundPool` now aggregates every available category from the
+     vocab module instead (`KotobaCategoryRepository.getAll()` +
+     `KotobaRepository.getVocabCategory` per category, which already
+     carry per-word `jlptLevel` tags) — verified against the actual
+     bundled data that eligible compounds per level go from 8/0/0/0/0
+     (N5-N1) to 53/56/61/19/0. N1 stays locked, since the vocab module
+     itself has only 1 N1-tagged word total — a Kotoba content gap, not
+     a Kanji-Kombinasi bug; closing it means adding N1 words to the
+     vocab module (its own separate authoring project, not scoped as
+     part of this fix). Single-kanji mode was never affected — it reads
+     `KanjiRepository` directly and already had 107-1503 real kanji per
+     level.
    - Firestore: each new category writes exam attempts to its own
      subcollection (`dokkaiExamHistory`/`choukaiExamHistory`/
      `kanjiComboExamHistory` under `users/{uid}`, see
