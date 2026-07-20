@@ -305,6 +305,33 @@ CATEGORIES = {
         ("hanyou", "汎用", "はんよう", "hanyou", "serbaguna (kegunaan umum)", "N1", "noun", "汎用", "hanyou", "汎用", "hanyou", [
             ("これは汎用性の高いソフトです。", "Kore wa hanyousei no takai sofuto desu.", "Ini perangkat lunak yang sangat serbaguna."),
         ]),
+        # N2/N3 addition (2026-07-20, eleventh batch): everyday tech-usage
+        # nouns (distinct from the abstract N1/N2 pair above), for
+        # Kombinasi Kanji pool depth. "kinou" (機能, function) is a real
+        # homophone of 昨日 (kinou, "yesterday") in hari_bulan — different
+        # category, so no ambiguity for learners, but the id suffix is
+        # disambiguated to kinou2 to avoid a duplicate id.
+        ("jouhou", "情報", "じょうほう", "jouhou", "informasi", "N3", "noun", "情報", "jouhou", "情報", "jouhou", [
+            ("インターネットで情報を調べます。", "Intaanetto de jouhou o shirabemasu.", "Saya mencari informasi di internet."),
+        ]),
+        ("shori", "処理", "しょり", "shori", "pemrosesan", "N2", "noun", "処理", "shori", "処理", "shori", [
+            ("データを処理します。", "Deeta o shori shimasu.", "Saya memproses data."),
+        ]),
+        ("koushin", "更新", "こうしん", "koushin", "pembaruan (update)", "N2", "noun", "更新", "koushin", "更新", "koushin", [
+            ("アプリを更新します。", "Apuri o koushin shimasu.", "Saya memperbarui aplikasi."),
+        ]),
+        ("setsuzoku", "接続", "せつぞく", "setsuzoku", "koneksi/penyambungan", "N2", "noun", "接続", "setsuzoku", "接続", "setsuzoku", [
+            ("ワイファイに接続します。", "Waifai ni setsuzoku shimasu.", "Saya menyambungkan ke wifi."),
+        ]),
+        ("gamen", "画面", "がめん", "gamen", "layar", "N3", "noun", "画面", "gamen", "画面", "gamen", [
+            ("画面が割れました。", "Gamen ga waremashita.", "Layarnya pecah."),
+        ]),
+        ("kinou2", "機能", "きのう", "kinou", "fungsi", "N3", "noun", "機能", "kinou", "機能", "kinou", [
+            ("このアプリには便利な機能があります。", "Kono apuri ni wa benri na kinou ga arimasu.", "Aplikasi ini punya fungsi yang berguna."),
+        ]),
+        ("sousa", "操作", "そうさ", "sousa", "pengoperasian", "N3", "noun", "操作", "sousa", "操作", "sousa", [
+            ("機械を操作します。", "Kikai o sousa shimasu.", "Saya mengoperasikan mesin."),
+        ]),
     ],
     "media_hiburan": [
         ("terebi", None, "テレビ", "terebi", "televisi", "N5", "noun", "テレビ", "terebi", "テレビ", "terebi", [
@@ -355,6 +382,20 @@ CATEGORIES = {
         ]),
         ("rotei", "露呈", "ろてい", "rotei", "terbongkarnya/terungkapnya (kelemahan)", "N1", "noun", "露呈", "rotei", "露呈", "rotei", [
             ("会見で問題点が露呈しました。", "Kaiken de mondaiten ga rotei shimashita.", "Titik masalahnya terungkap dalam konferensi pers."),
+        ]),
+        # N2/N3 addition (2026-07-20, eleventh batch): everyday broadcast/
+        # media-industry nouns, for Kombinasi Kanji pool depth.
+        ("koukoku", "広告", "こうこく", "koukoku", "iklan", "N3", "noun", "広告", "koukoku", "広告", "koukoku", [
+            ("テレビで広告を見ます。", "Terebi de koukoku o mimasu.", "Saya melihat iklan di televisi."),
+        ]),
+        ("housou", "放送", "ほうそう", "housou", "siaran", "N3", "noun", "放送", "housou", "放送", "housou", [
+            ("この番組は毎週放送されます。", "Kono bangumi wa maishuu housou saremasu.", "Acara ini disiarkan setiap minggu."),
+        ]),
+        ("haishin", "配信", "はいしん", "haishin", "streaming/distribusi (konten)", "N2", "noun", "配信", "haishin", "配信", "haishin", [
+            ("新しいドラマが配信されました。", "Atarashii dorama ga haishin saremashita.", "Drama baru sudah dirilis untuk streaming."),
+        ]),
+        ("eizou", "映像", "えいぞう", "eizou", "rekaman video/visual", "N2", "noun", "映像", "eizou", "映像", "eizou", [
+            ("その映像はとても美しいです。", "Sono eizou wa totemo utsukushii desu.", "Rekaman visual itu sangat indah."),
         ]),
     ],
 }

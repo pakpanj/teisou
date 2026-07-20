@@ -382,5 +382,149 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kengyou.png"
+  },
+  {
+    "id": "kotoba_profesi_tsuuyaku",
+    "word": "つうやく",
+    "kanji": "通訳",
+    "reading": "つうやく",
+    "romaji": "tsuuyaku",
+    "meaning": "juru bahasa/penerjemah lisan",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "通訳 (tsuuyaku)",
+      "formal": "通訳 (tsuuyaku)",
+      "keigo": "通訳 (tsuuyaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼女は通訳をしています。",
+        "romaji": "Kanojo wa tsuuyaku o shite imasu.",
+        "translation": "Dia bekerja sebagai juru bahasa."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tsuuyaku.png"
+  },
+  {
+    "id": "kotoba_profesi_juui",
+    "word": "じゅうい",
+    "kanji": "獣医",
+    "reading": "じゅうい",
+    "romaji": "juui",
+    "meaning": "dokter hewan",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "獣医 (juui)",
+      "formal": "獣医 (juui)",
+      "keigo": "獣医 (juui) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "獣医に犬を診てもらいます。",
+        "romaji": "Juui ni inu o mite moraimasu.",
+        "translation": "Saya membawa anjing ke dokter hewan."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_juui.png"
+  },
+  {
+    "id": "kotoba_profesi_biyoushi",
+    "word": "びようし",
+    "kanji": "美容師",
+    "reading": "びようし",
+    "romaji": "biyoushi",
+    "meaning": "penata rambut",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "美容師 (biyoushi)",
+      "formal": "美容師 (biyoushi)",
+      "keigo": "美容師 (biyoushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "美容師に髪を切ってもらいます。",
+        "romaji": "Biyoushi ni kami o kitte moraimasu.",
+        "translation": "Saya minta penata rambut memotong rambut saya."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_biyoushi.png"
+  },
+  {
+    "id": "kotoba_profesi_kisha",
+    "word": "きしゃ",
+    "kanji": "記者",
+    "reading": "きしゃ",
+    "romaji": "kisha",
+    "meaning": "wartawan",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "記者 (kisha)",
+      "formal": "記者 (kisha)",
+      "keigo": "記者 (kisha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "記者が質問をします。",
+        "romaji": "Kisha ga shitsumon o shimasu.",
+        "translation": "Wartawan mengajukan pertanyaan."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kisha.png"
+  },
+  {
+    "id": "kotoba_profesi_gaka",
+    "word": "がか",
+    "kanji": "画家",
+    "reading": "がか",
+    "romaji": "gaka",
+    "meaning": "pelukis",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "画家 (gaka)",
+      "formal": "画家 (gaka)",
+      "keigo": "画家 (gaka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は有名な画家です。",
+        "romaji": "Kare wa yuumei na gaka desu.",
+        "translation": "Dia pelukis terkenal."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_gaka.png"
+  },
+  {
+    "id": "kotoba_profesi_ishi",
+    "word": "いし",
+    "kanji": "医師",
+    "reading": "いし",
+    "romaji": "ishi",
+    "meaning": "dokter (istilah formal)",
+    "jlptLevel": "N3",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "医師 (ishi)",
+      "formal": "医師 (ishi)",
+      "keigo": "医師 (ishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "医師に相談します。",
+        "romaji": "Ishi ni soudan shimasu.",
+        "translation": "Saya berkonsultasi dengan dokter."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_ishi.png"
   }
 ]

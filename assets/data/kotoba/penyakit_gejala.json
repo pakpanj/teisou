@@ -454,5 +454,125 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_yobou.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_zutsuu",
+    "word": "ずつう",
+    "kanji": "頭痛",
+    "reading": "ずつう",
+    "romaji": "zutsuu",
+    "meaning": "sakit kepala",
+    "jlptLevel": "N3",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "頭痛 (zutsuu)",
+      "formal": "頭痛 (zutsuu)",
+      "keigo": "頭痛 (zutsuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "頭痛がします。",
+        "romaji": "Zutsuu ga shimasu.",
+        "translation": "Saya sakit kepala."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_zutsuu.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_fukutsuu",
+    "word": "ふくつう",
+    "kanji": "腹痛",
+    "reading": "ふくつう",
+    "romaji": "fukutsuu",
+    "meaning": "sakit perut",
+    "jlptLevel": "N3",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "腹痛 (fukutsuu)",
+      "formal": "腹痛 (fukutsuu)",
+      "keigo": "腹痛 (fukutsuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "腹痛で学校を休みました。",
+        "romaji": "Fukutsuu de gakkou o yasumimashita.",
+        "translation": "Saya bolos sekolah karena sakit perut."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_fukutsuu.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_kossetsu",
+    "word": "こっせつ",
+    "kanji": "骨折",
+    "reading": "こっせつ",
+    "romaji": "kossetsu",
+    "meaning": "patah tulang",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "骨折 (kossetsu)",
+      "formal": "骨折 (kossetsu)",
+      "keigo": "骨折 (kossetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "転んで骨折しました。",
+        "romaji": "Koronde kossetsu shimashita.",
+        "translation": "Saya patah tulang karena jatuh."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kossetsu.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_shukketsu",
+    "word": "しゅっけつ",
+    "kanji": "出血",
+    "reading": "しゅっけつ",
+    "romaji": "shukketsu",
+    "meaning": "pendarahan",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "出血 (shukketsu)",
+      "formal": "出血 (shukketsu)",
+      "keigo": "出血 (shukketsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "傷口から出血しています。",
+        "romaji": "Kizuguchi kara shukketsu shite imasu.",
+        "translation": "Luka itu berdarah."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shukketsu.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_taion",
+    "word": "たいおん",
+    "kanji": "体温",
+    "reading": "たいおん",
+    "romaji": "taion",
+    "meaning": "suhu tubuh",
+    "jlptLevel": "N4",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "体温 (taion)",
+      "formal": "体温 (taion)",
+      "keigo": "体温 (taion) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "体温を測ります。",
+        "romaji": "Taion o hakarimasu.",
+        "translation": "Saya mengukur suhu tubuh."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_taion.png"
   }
 ]

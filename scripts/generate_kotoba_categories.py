@@ -36,9 +36,9 @@ GROUPS = {
     ],
     "Tubuh & Kesehatan": [
         ("anggota_tubuh", "Anggota Tubuh", "🖐️", True, 17),
-        ("penyakit_gejala", "Penyakit & Gejala", "🤒", True, 19),
+        ("penyakit_gejala", "Penyakit & Gejala", "🤒", True, 24),
         ("obat_obatan", "Obat-obatan", "💊", True, 14),
-        ("olahraga", "Olahraga", "⚽", True, 15),
+        ("olahraga", "Olahraga", "⚽", True, 20),
         ("perasaan_emosi", "Perasaan & Emosi", "😊", True, 15),
         ("ekspresi_wajah", "Ekspresi Wajah", "😮", True, 8),
     ],
@@ -51,7 +51,7 @@ GROUPS = {
         ("negara_kota", "Negara & Kota", "🗺️", True, 14),
     ],
     "Manusia & Sosial": [
-        ("profesi", "Profesi", "👨‍⚕️", True, 16),
+        ("profesi", "Profesi", "👨‍⚕️", True, 22),
         ("keluarga_hubungan", "Keluarga & Hubungan", "👪", True, 22),
         ("pakaian_aksesori", "Pakaian & Aksesori", "👕", True, 15),
         ("hobi_aktivitas", "Hobi & Aktivitas", "🎨", True, 20),
@@ -67,8 +67,8 @@ GROUPS = {
         ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", True, 15),
         ("mata_pelajaran", "Mata Pelajaran", "📖", True, 13),
         ("pekerjaan_kantor", "Pekerjaan & Kantor", "💼", True, 41),
-        ("teknologi_gadget", "Teknologi & Gadget", "💻", True, 16),
-        ("media_hiburan", "Media & Hiburan", "📺", True, 15),
+        ("teknologi_gadget", "Teknologi & Gadget", "💻", True, 23),
+        ("media_hiburan", "Media & Hiburan", "📺", True, 19),
     ],
     "Waktu & Angka": [
         ("hari_bulan", "Hari & Bulan", "📅", True, 40),

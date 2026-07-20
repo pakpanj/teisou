@@ -146,6 +146,23 @@ CATEGORIES = {
         ("yobou", "予防", "よぼう", "yobou", "pencegahan", "N3", "noun", "予防", "yobou", "予防", "yobou", [
             ("手洗いは風邪の予防になります。", "Tearai wa kaze no yobou ni narimasu.", "Cuci tangan adalah pencegahan flu."),
         ]),
+        # N2/N3/N4 addition (2026-07-20, eleventh batch): concrete
+        # symptom/injury nouns, for Kombinasi Kanji pool depth.
+        ("zutsuu", "頭痛", "ずつう", "zutsuu", "sakit kepala", "N3", "noun", "頭痛", "zutsuu", "頭痛", "zutsuu", [
+            ("頭痛がします。", "Zutsuu ga shimasu.", "Saya sakit kepala."),
+        ]),
+        ("fukutsuu", "腹痛", "ふくつう", "fukutsuu", "sakit perut", "N3", "noun", "腹痛", "fukutsuu", "腹痛", "fukutsuu", [
+            ("腹痛で学校を休みました。", "Fukutsuu de gakkou o yasumimashita.", "Saya bolos sekolah karena sakit perut."),
+        ]),
+        ("kossetsu", "骨折", "こっせつ", "kossetsu", "patah tulang", "N2", "noun", "骨折", "kossetsu", "骨折", "kossetsu", [
+            ("転んで骨折しました。", "Koronde kossetsu shimashita.", "Saya patah tulang karena jatuh."),
+        ]),
+        ("shukketsu", "出血", "しゅっけつ", "shukketsu", "pendarahan", "N2", "noun", "出血", "shukketsu", "出血", "shukketsu", [
+            ("傷口から出血しています。", "Kizuguchi kara shukketsu shite imasu.", "Luka itu berdarah."),
+        ]),
+        ("taion", "体温", "たいおん", "taion", "suhu tubuh", "N4", "noun", "体温", "taion", "体温", "taion", [
+            ("体温を測ります。", "Taion o hakarimasu.", "Saya mengukur suhu tubuh."),
+        ]),
     ],
     "obat_obatan": [
         ("kusuri", "薬", "くすり", "kusuri", "obat", "N4", "noun", "薬", "kusuri", "薬", "kusuri", [
@@ -240,6 +257,23 @@ CATEGORIES = {
         ]),
         ("kinryoku", "筋力", "きんりょく", "kinryoku", "kekuatan otot", "N2", "noun", "筋力", "kinryoku", "筋力", "kinryoku", [
             ("筋力トレーニングをします。", "Kinryoku toreeningu o shimasu.", "Saya melakukan latihan kekuatan otot."),
+        ]),
+        # N2/N3/N4 addition (2026-07-20, eleventh batch): concrete sport/
+        # competition nouns, for Kombinasi Kanji pool depth.
+        ("takkyuu", "卓球", "たっきゅう", "takkyuu", "tenis meja", "N3", "noun", "卓球", "takkyuu", "卓球", "takkyuu", [
+            ("卓球をします。", "Takkyuu o shimasu.", "Saya bermain tenis meja."),
+        ]),
+        ("rikujou", "陸上", "りくじょう", "rikujou", "atletik", "N3", "noun", "陸上", "rikujou", "陸上", "rikujou", [
+            ("陸上部に入っています。", "Rikujou-bu ni haitte imasu.", "Saya ikut klub atletik."),
+        ]),
+        ("yuushou", "優勝", "ゆうしょう", "yuushou", "juara/kemenangan (kompetisi)", "N2", "noun", "優勝", "yuushou", "優勝", "yuushou", [
+            ("大会で優勝しました。", "Taikai de yuushou shimashita.", "Saya juara di kompetisi itu."),
+        ]),
+        ("shiai", "試合", "しあい", "shiai", "pertandingan", "N4", "noun", "試合", "shiai", "試合", "shiai", [
+            ("明日試合があります。", "Ashita shiai ga arimasu.", "Besok ada pertandingan."),
+        ]),
+        ("senshu", "選手", "せんしゅ", "senshu", "atlet", "N3", "noun", "選手", "senshu", "選手", "senshu", [
+            ("彼は有名な選手です。", "Kare wa yuumei na senshu desu.", "Dia atlet terkenal."),
         ]),
     ],
     "perasaan_emosi": [

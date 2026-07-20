@@ -358,5 +358,101 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rotei.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_koukoku",
+    "word": "こうこく",
+    "kanji": "広告",
+    "reading": "こうこく",
+    "romaji": "koukoku",
+    "meaning": "iklan",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "広告 (koukoku)",
+      "formal": "広告 (koukoku)",
+      "keigo": "広告 (koukoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "テレビで広告を見ます。",
+        "romaji": "Terebi de koukoku o mimasu.",
+        "translation": "Saya melihat iklan di televisi."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_koukoku.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_housou",
+    "word": "ほうそう",
+    "kanji": "放送",
+    "reading": "ほうそう",
+    "romaji": "housou",
+    "meaning": "siaran",
+    "jlptLevel": "N3",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "放送 (housou)",
+      "formal": "放送 (housou)",
+      "keigo": "放送 (housou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この番組は毎週放送されます。",
+        "romaji": "Kono bangumi wa maishuu housou saremasu.",
+        "translation": "Acara ini disiarkan setiap minggu."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_housou.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_haishin",
+    "word": "はいしん",
+    "kanji": "配信",
+    "reading": "はいしん",
+    "romaji": "haishin",
+    "meaning": "streaming/distribusi (konten)",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "配信 (haishin)",
+      "formal": "配信 (haishin)",
+      "keigo": "配信 (haishin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しいドラマが配信されました。",
+        "romaji": "Atarashii dorama ga haishin saremashita.",
+        "translation": "Drama baru sudah dirilis untuk streaming."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_haishin.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_eizou",
+    "word": "えいぞう",
+    "kanji": "映像",
+    "reading": "えいぞう",
+    "romaji": "eizou",
+    "meaning": "rekaman video/visual",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "映像 (eizou)",
+      "formal": "映像 (eizou)",
+      "keigo": "映像 (eizou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "その映像はとても美しいです。",
+        "romaji": "Sono eizou wa totemo utsukushii desu.",
+        "translation": "Rekaman visual itu sangat indah."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_eizou.png"
   }
 ]

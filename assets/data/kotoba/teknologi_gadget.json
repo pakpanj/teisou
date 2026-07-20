@@ -382,5 +382,173 @@
       }
     ],
     "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_hanyou.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_jouhou",
+    "word": "じょうほう",
+    "kanji": "情報",
+    "reading": "じょうほう",
+    "romaji": "jouhou",
+    "meaning": "informasi",
+    "jlptLevel": "N3",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "情報 (jouhou)",
+      "formal": "情報 (jouhou)",
+      "keigo": "情報 (jouhou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "インターネットで情報を調べます。",
+        "romaji": "Intaanetto de jouhou o shirabemasu.",
+        "translation": "Saya mencari informasi di internet."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_jouhou.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_shori",
+    "word": "しょり",
+    "kanji": "処理",
+    "reading": "しょり",
+    "romaji": "shori",
+    "meaning": "pemrosesan",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "処理 (shori)",
+      "formal": "処理 (shori)",
+      "keigo": "処理 (shori) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "データを処理します。",
+        "romaji": "Deeta o shori shimasu.",
+        "translation": "Saya memproses data."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_shori.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_koushin",
+    "word": "こうしん",
+    "kanji": "更新",
+    "reading": "こうしん",
+    "romaji": "koushin",
+    "meaning": "pembaruan (update)",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "更新 (koushin)",
+      "formal": "更新 (koushin)",
+      "keigo": "更新 (koushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "アプリを更新します。",
+        "romaji": "Apuri o koushin shimasu.",
+        "translation": "Saya memperbarui aplikasi."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_koushin.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_setsuzoku",
+    "word": "せつぞく",
+    "kanji": "接続",
+    "reading": "せつぞく",
+    "romaji": "setsuzoku",
+    "meaning": "koneksi/penyambungan",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "接続 (setsuzoku)",
+      "formal": "接続 (setsuzoku)",
+      "keigo": "接続 (setsuzoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ワイファイに接続します。",
+        "romaji": "Waifai ni setsuzoku shimasu.",
+        "translation": "Saya menyambungkan ke wifi."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_setsuzoku.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_gamen",
+    "word": "がめん",
+    "kanji": "画面",
+    "reading": "がめん",
+    "romaji": "gamen",
+    "meaning": "layar",
+    "jlptLevel": "N3",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "画面 (gamen)",
+      "formal": "画面 (gamen)",
+      "keigo": "画面 (gamen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "画面が割れました。",
+        "romaji": "Gamen ga waremashita.",
+        "translation": "Layarnya pecah."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_gamen.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_kinou2",
+    "word": "きのう",
+    "kanji": "機能",
+    "reading": "きのう",
+    "romaji": "kinou",
+    "meaning": "fungsi",
+    "jlptLevel": "N3",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "機能 (kinou)",
+      "formal": "機能 (kinou)",
+      "keigo": "機能 (kinou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "このアプリには便利な機能があります。",
+        "romaji": "Kono apuri ni wa benri na kinou ga arimasu.",
+        "translation": "Aplikasi ini punya fungsi yang berguna."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_kinou2.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_sousa",
+    "word": "そうさ",
+    "kanji": "操作",
+    "reading": "そうさ",
+    "romaji": "sousa",
+    "meaning": "pengoperasian",
+    "jlptLevel": "N3",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "操作 (sousa)",
+      "formal": "操作 (sousa)",
+      "keigo": "操作 (sousa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "機械を操作します。",
+        "romaji": "Kikai o sousa shimasu.",
+        "translation": "Saya mengoperasikan mesin."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_sousa.png"
   }
 ]

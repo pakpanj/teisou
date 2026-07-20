@@ -84,6 +84,26 @@ CATEGORIES = {
         ("kengyou", "兼業", "けんぎょう", "kengyou", "pekerjaan sampingan", "N1", "noun", "兼業", "kengyou", "兼業", "kengyou", [
             ("農家と兼業しています。", "Nouka to kengyou shite imasu.", "Saya menjalankan usaha sampingan sebagai petani."),
         ]),
+        # N2/N3 addition (2026-07-20, eleventh batch): more concrete
+        # profession nouns, for Kombinasi Kanji pool depth.
+        ("tsuuyaku", "通訳", "つうやく", "tsuuyaku", "juru bahasa/penerjemah lisan", "N2", "noun", "通訳", "tsuuyaku", "通訳", "tsuuyaku", [
+            ("彼女は通訳をしています。", "Kanojo wa tsuuyaku o shite imasu.", "Dia bekerja sebagai juru bahasa."),
+        ]),
+        ("juui", "獣医", "じゅうい", "juui", "dokter hewan", "N2", "noun", "獣医", "juui", "獣医", "juui", [
+            ("獣医に犬を診てもらいます。", "Juui ni inu o mite moraimasu.", "Saya membawa anjing ke dokter hewan."),
+        ]),
+        ("biyoushi", "美容師", "びようし", "biyoushi", "penata rambut", "N3", "noun", "美容師", "biyoushi", "美容師", "biyoushi", [
+            ("美容師に髪を切ってもらいます。", "Biyoushi ni kami o kitte moraimasu.", "Saya minta penata rambut memotong rambut saya."),
+        ]),
+        ("kisha", "記者", "きしゃ", "kisha", "wartawan", "N3", "noun", "記者", "kisha", "記者", "kisha", [
+            ("記者が質問をします。", "Kisha ga shitsumon o shimasu.", "Wartawan mengajukan pertanyaan."),
+        ]),
+        ("gaka", "画家", "がか", "gaka", "pelukis", "N3", "noun", "画家", "gaka", "画家", "gaka", [
+            ("彼は有名な画家です。", "Kare wa yuumei na gaka desu.", "Dia pelukis terkenal."),
+        ]),
+        ("ishi", "医師", "いし", "ishi", "dokter (istilah formal)", "N3", "noun", "医師", "ishi", "医師", "ishi", [
+            ("医師に相談します。", "Ishi ni soudan shimasu.", "Saya berkonsultasi dengan dokter."),
+        ]),
     ],
     "keluarga_hubungan": [
         ("kazoku", "家族", "かぞく", "kazoku", "keluarga", "N5", "noun", "家族", "kazoku", "家族", "kazoku", [

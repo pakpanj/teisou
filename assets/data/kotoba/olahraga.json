@@ -358,5 +358,125 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_kinryoku.png"
+  },
+  {
+    "id": "kotoba_olahraga_takkyuu",
+    "word": "たっきゅう",
+    "kanji": "卓球",
+    "reading": "たっきゅう",
+    "romaji": "takkyuu",
+    "meaning": "tenis meja",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "卓球 (takkyuu)",
+      "formal": "卓球 (takkyuu)",
+      "keigo": "卓球 (takkyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "卓球をします。",
+        "romaji": "Takkyuu o shimasu.",
+        "translation": "Saya bermain tenis meja."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_takkyuu.png"
+  },
+  {
+    "id": "kotoba_olahraga_rikujou",
+    "word": "りくじょう",
+    "kanji": "陸上",
+    "reading": "りくじょう",
+    "romaji": "rikujou",
+    "meaning": "atletik",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "陸上 (rikujou)",
+      "formal": "陸上 (rikujou)",
+      "keigo": "陸上 (rikujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "陸上部に入っています。",
+        "romaji": "Rikujou-bu ni haitte imasu.",
+        "translation": "Saya ikut klub atletik."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_rikujou.png"
+  },
+  {
+    "id": "kotoba_olahraga_yuushou",
+    "word": "ゆうしょう",
+    "kanji": "優勝",
+    "reading": "ゆうしょう",
+    "romaji": "yuushou",
+    "meaning": "juara/kemenangan (kompetisi)",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "優勝 (yuushou)",
+      "formal": "優勝 (yuushou)",
+      "keigo": "優勝 (yuushou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大会で優勝しました。",
+        "romaji": "Taikai de yuushou shimashita.",
+        "translation": "Saya juara di kompetisi itu."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_yuushou.png"
+  },
+  {
+    "id": "kotoba_olahraga_shiai",
+    "word": "しあい",
+    "kanji": "試合",
+    "reading": "しあい",
+    "romaji": "shiai",
+    "meaning": "pertandingan",
+    "jlptLevel": "N4",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "試合 (shiai)",
+      "formal": "試合 (shiai)",
+      "keigo": "試合 (shiai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "明日試合があります。",
+        "romaji": "Ashita shiai ga arimasu.",
+        "translation": "Besok ada pertandingan."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_shiai.png"
+  },
+  {
+    "id": "kotoba_olahraga_senshu",
+    "word": "せんしゅ",
+    "kanji": "選手",
+    "reading": "せんしゅ",
+    "romaji": "senshu",
+    "meaning": "atlet",
+    "jlptLevel": "N3",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "選手 (senshu)",
+      "formal": "選手 (senshu)",
+      "keigo": "選手 (senshu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は有名な選手です。",
+        "romaji": "Kare wa yuumei na senshu desu.",
+        "translation": "Dia atlet terkenal."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_senshu.png"
   }
 ]
