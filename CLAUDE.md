@@ -315,6 +315,18 @@ standing local-merge convention:
      pool now: N5 53, N4 56, N3 64, N2 43, N1 37 (vocab module total
      555 → 583) — all five levels within a much tighter band than
      before (previously N1/N2 lagged N5-N3 by 3-4x; now within ~1.7x).
+     **Fourth batch, same day, following another "generate lagi"**: 21
+     more words across six categories, picking categories that were
+     previously either all-katakana or all-okurigana (so nothing in
+     them counted toward the compound pool yet): `bangunan_fasilitas`
+     +4 (建設, 改築, 撤去, 立地), `hobi_aktivitas` +4 (没頭, 熱中, 充実,
+     発散), `agama_budaya` +3 (継承, 儀式, 信仰 — kept to the same
+     neutral, no-doctrine-claims register as the rest of this category),
+     `profesi` +4 (従事, 適性, 転職, 兼業), `keluarga_hubungan` +3 (疎遠,
+     和解, 断絶), `mata_pelajaran` +3 (専攻, 履修, 進学). Compound-eligible
+     pool now: N5 53, N4 56, N3 64, N2 54, N1 47 (vocab module total
+     583 → 604) — N1/N2 are now within ~1.15x of N3's 64, essentially
+     parity across all five levels.
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
