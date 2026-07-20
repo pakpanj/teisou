@@ -456,6 +456,19 @@ standing local-merge convention:
      N1 unchanged (103/131/106) — **total pool 497**. Vocab module: 782
      → 828 words, still 46 categories (no new category this batch,
      unlike the sixth batch's `konsep_umum`).
+     **Eleventh batch, same session, following "lagi lagi" (again,
+     again)**: 27 more words spread across five thin categories instead
+     of `konsep_umum` again — `profesi` (+6: 通訳, 獣医, 美容師, 記者,
+     画家, 医師), `teknologi_gadget` (+7: 情報, 処理, 更新, 接続, 画面,
+     機能, 操作), `media_hiburan` (+4: 広告, 放送, 配信, 映像),
+     `penyakit_gejala` (+5: 頭痛, 腹痛, 骨折, 出血, 体温), `olahraga`
+     (+5: 卓球, 陸上, 優勝, 試合, 選手). One deliberate id-suffix
+     disambiguation, not a collision to fix: 機能 (kinou, "fungsi") is a
+     genuine homophone of 昨日 (kinou, "kemarin") in `hari_bulan` —
+     different category, no learner-facing ambiguity, but given the id
+     suffix `kinou2` to keep ids unique. Pool: N5 92 (unchanged), N4
+     65 → 67, N3 103 → 118, N2 131 → 141, N1 106 (unchanged) — **total
+     pool 524**. Vocab module: 828 → 855 words, still 46 categories.
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
