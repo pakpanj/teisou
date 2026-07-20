@@ -90,6 +90,16 @@ N5_TITLES = [
     "Pengumuman Pertukaran Buku Bekas",
     "Surat Ucapan Selamat Tahun Baru",
     "Cerita Membantu Kakek di Kebun",
+    "Pengumuman Latihan Evakuasi Gempa",
+    "Jadwal Kelas Kaligrafi",
+    "Surat dari Teman di Sekolah Baru",
+    "Menu Bekal untuk Piknik",
+    "Pengumuman Perbaikan Lapangan Basket",
+    "Cerita Membantu Ibu Memasak",
+    "Jadwal Latihan Klub Menari",
+    "Pengumuman Pemeriksaan Kesehatan Sekolah",
+    "Surat Ucapan Terima Kasih untuk Orang Tua",
+    "Cerita Bermain Salju di Musim Dingin",
 ]
 
 # N4-N1 initial seed (10 each) — every level now has real starting
@@ -176,6 +186,16 @@ N4_TITLES = [
     "Pengalaman Menjadi Sukarelawan Pertama Kali",
     "Blog tentang Belajar Merajut",
     "Pengumuman Perubahan Jam Operasional Toko",
+    "Blog tentang Belajar Membuat Kerajinan Tangan",
+    "Artikel tentang Manfaat Mendengarkan Musik",
+    "Email Permintaan Perpanjangan Sewa Apartemen",
+    "Ulasan Aplikasi Belanja Online",
+    "Panduan Merawat Kucing Peliharaan",
+    "Surat Ucapan Selamat Kelahiran Anak",
+    "Artikel tentang Manfaat Minum Air Putih",
+    "Pengalaman Pertama Kali Mengajar",
+    "Blog tentang Belajar Bahasa Korea",
+    "Pengumuman Perubahan Sistem Pembayaran Toko",
 ]
 
 N3_TITLES = [
@@ -259,6 +279,16 @@ N3_TITLES = [
     "Artikel tentang Perubahan Kebiasaan Berolahraga",
     "Esai tentang Menemukan Keberanian Berbicara di Depan Umum",
     "Cerita Pengalaman Tinggal di Asrama",
+    "Artikel tentang Perkembangan Energi Surya di Rumah",
+    "Esai tentang Menghadapi Rasa Iri",
+    "Cerita Pengalaman Menjadi Tutor Sebaya",
+    "Panduan Etika Menerima Tamu di Rumah",
+    "Artikel tentang Tren Makanan Nabati",
+    "Esai tentang Pentingnya Meminta Maaf",
+    "Petunjuk Prosedur Pengajuan Cuti Melahirkan",
+    "Artikel tentang Perubahan Kebiasaan Menonton",
+    "Esai tentang Menemukan Arti Kerja Tim",
+    "Cerita Pengalaman Menjadi Penerjemah Sukarela",
 ]
 
 N2_TITLES = [
@@ -342,6 +372,16 @@ N2_TITLES = [
     "Analisis tentang Perubahan Nilai Keluarga Modern",
     "Laporan tentang Inovasi dalam Transportasi Umum",
     "Esai tentang Dilema Kebebasan Individu dan Kepentingan Bersama",
+    "Esai tentang Etika Periklanan Digital",
+    "Artikel tentang Reformasi Sistem Ketenagakerjaan",
+    "Analisis tentang Dampak Otomasi pada Industri Ritel",
+    "Laporan tentang Perubahan Pola Konsumsi Media",
+    "Editorial tentang Krisis Kepercayaan Perbankan",
+    "Esai tentang Batas Tanggung Jawab Individu dalam Krisis Iklim",
+    "Artikel tentang Tantangan Kesehatan Mental di Tempat Kerja",
+    "Analisis tentang Perubahan Nilai Konsumsi Generasi Muda",
+    "Laporan tentang Inovasi dalam Pertanian Perkotaan",
+    "Esai tentang Dilema Kemajuan Genetika Manusia",
 ]
 
 N1_TITLES = [
@@ -425,6 +465,16 @@ N1_TITLES = [
     "Refleksi tentang Warisan Diam yang Diwariskan",
     "Esai tentang Ketahanan dalam Menghadapi Kesepian",
     "Kritik tentang Mitos Kebahagiaan Sempurna",
+    "Refleksi tentang Makna Menunggu Tanpa Kepastian",
+    "Esai tentang Beban Menjadi Penerus Tunggal",
+    "Diskusi Filosofis tentang Batas Identitas Diri",
+    "Kritik tentang Estetika Ketidakabadian",
+    "Refleksi tentang Arti Kehilangan Bahasa Ibu",
+    "Esai tentang Ironi Kemajuan Komunikasi",
+    "Diskusi tentang Batas Antara Ingatan dan Rekaan",
+    "Refleksi tentang Warisan Luka yang Tersembunyi",
+    "Esai tentang Ketahanan dalam Menghadapi Ketidakpastian",
+    "Kritik tentang Mitos Kesempurnaan Cinta",
 ]
 
 LEVEL_META = {
