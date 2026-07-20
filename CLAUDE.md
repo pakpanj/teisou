@@ -283,6 +283,21 @@ standing local-merge convention:
      data: N1's compound-eligible pool goes from 0 to 20. **All 5 JLPT
      levels are now available for both Kanji-Kombinasi and Kanji
      Tunggal** — no more "Segera" badges anywhere in this feature.
+     **Second batch, same day, following an explicit "generate lagi"
+     request**: added 5 more N1 words to `media_hiburan` (検閲, 捏造,
+     隠蔽, 憶測, 露呈 — journalism/media-scandal register, deliberately
+     a different N1 theme than `pekerjaan_kantor`'s business vocabulary)
+     and 11 N2 words to `pekerjaan_kantor` (交渉, 提案, 承認, 昇進, 解雇,
+     経営, 業績, 赤字, 黒字, 倒産, 合併 — N2 was the thinnest pool at 19
+     words). Compound-eligible pool now: N5 53, N4 56, N3 61, N2 30, N1
+     25 (vocab module total 539 → 555). **Kanji Tunggal needs no further
+     content, ever** — it already draws on the complete 2425/2425 real
+     kanji dataset (all N5-N1 jouyou kanji), which is final; there is no
+     legitimate "more kanji" to add beyond that (a user request to
+     "generate up to 10,000 kanji" was corrected in-session — that
+     number doesn't correspond to any real kanji count; the actual
+     ~10,000 target elsewhere in this file is the unrelated Dictionary/
+     Search feature's *word* count, not kanji).
      Single-kanji mode was never affected by any of this — it reads
      `KanjiRepository` directly and already had 107-1503 real kanji per
      level throughout.
