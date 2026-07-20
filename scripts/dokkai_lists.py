@@ -80,6 +80,16 @@ N5_TITLES = [
     "Pengumuman Perpindahan Perpustakaan",
     "Surat Ucapan Selamat Kelulusan",
     "Cerita Belanja di Pasar bersama Ayah",
+    "Pengumuman Perpanjangan Waktu Belajar di Perpustakaan",
+    "Jadwal Kunjungan ke Pemadam Kebakaran",
+    "Surat dari Sepupu di Desa",
+    "Menu Makan Malam Keluarga",
+    "Pengumuman Kelas Origami",
+    "Cerita Menanam Bunga di Sekolah",
+    "Jadwal Latihan Klub Basket",
+    "Pengumuman Pertukaran Buku Bekas",
+    "Surat Ucapan Selamat Tahun Baru",
+    "Cerita Membantu Kakek di Kebun",
 ]
 
 # N4-N1 initial seed (10 each) — every level now has real starting
@@ -156,6 +166,16 @@ N4_TITLES = [
     "Pengalaman Pindah ke Apartemen Baru",
     "Blog tentang Belajar Memasak Masakan Jepang",
     "Pengumuman Perubahan Rute Bus Kota",
+    "Blog tentang Belajar Bahasa Isyarat",
+    "Artikel tentang Manfaat Menulis Jurnal",
+    "Email Permintaan Informasi Kursus",
+    "Ulasan Toko Buku Baru",
+    "Panduan Merawat Sepeda",
+    "Surat Ucapan Selamat Pernikahan",
+    "Artikel tentang Manfaat Peregangan Pagi",
+    "Pengalaman Menjadi Sukarelawan Pertama Kali",
+    "Blog tentang Belajar Merajut",
+    "Pengumuman Perubahan Jam Operasional Toko",
 ]
 
 N3_TITLES = [
@@ -229,6 +249,16 @@ N3_TITLES = [
     "Artikel tentang Perubahan Kebiasaan Belanja",
     "Esai tentang Menemukan Motivasi Belajar",
     "Cerita Pengalaman Bekerja di Perusahaan Asing",
+    "Artikel tentang Perkembangan Kendaraan Listrik",
+    "Esai tentang Menghadapi Perpisahan dengan Teman",
+    "Cerita Pengalaman Menjadi Panitia Acara",
+    "Panduan Etika Berkomunikasi lewat Email",
+    "Artikel tentang Tren Kerja Paruh Waktu bagi Pelajar",
+    "Esai tentang Pentingnya Waktu Istirahat",
+    "Petunjuk Prosedur Pengajuan Visa",
+    "Artikel tentang Perubahan Kebiasaan Berolahraga",
+    "Esai tentang Menemukan Keberanian Berbicara di Depan Umum",
+    "Cerita Pengalaman Tinggal di Asrama",
 ]
 
 N2_TITLES = [
@@ -302,6 +332,16 @@ N2_TITLES = [
     "Analisis tentang Perubahan Nilai Kerja Generasi Z",
     "Laporan tentang Inovasi dalam Pendidikan Daring",
     "Esai tentang Dilema Privasi dan Keamanan",
+    "Esai tentang Etika Jurnalisme Investigasi",
+    "Artikel tentang Reformasi Sistem Kesehatan",
+    "Analisis tentang Dampak Kecerdasan Buatan pada Lapangan Kerja",
+    "Laporan tentang Perubahan Pola Migrasi Perkotaan",
+    "Editorial tentang Krisis Kepercayaan Media",
+    "Esai tentang Batas Tanggung Jawab Perusahaan",
+    "Artikel tentang Tantangan Kesetaraan Pendidikan",
+    "Analisis tentang Perubahan Nilai Keluarga Modern",
+    "Laporan tentang Inovasi dalam Transportasi Umum",
+    "Esai tentang Dilema Kebebasan Individu dan Kepentingan Bersama",
 ]
 
 N1_TITLES = [
@@ -375,6 +415,16 @@ N1_TITLES = [
     "Refleksi tentang Warisan Kata-kata yang Tak Terucap",
     "Esai tentang Ketahanan Jiwa dalam Kehilangan",
     "Kritik tentang Mitos Kesuksesan Individual",
+    "Refleksi tentang Makna Kesetiaan",
+    "Esai tentang Beban Menjaga Warisan Keluarga",
+    "Diskusi Filosofis tentang Batas Kebenaran Subjektif",
+    "Kritik tentang Estetika Kesederhanaan",
+    "Refleksi tentang Arti Kepulangan",
+    "Esai tentang Ironi Kemajuan Sosial",
+    "Diskusi tentang Batas Antara Mimpi dan Kenyataan",
+    "Refleksi tentang Warisan Diam yang Diwariskan",
+    "Esai tentang Ketahanan dalam Menghadapi Kesepian",
+    "Kritik tentang Mitos Kebahagiaan Sempurna",
 ]
 
 LEVEL_META = {
