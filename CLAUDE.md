@@ -371,6 +371,23 @@ standing local-merge convention:
      authoring time and cross-referencing real JLPT vocabulary
      accurately, same as it's always been for every other content
      module in this project (Kaiwa, Kanji, Bunpou, Partikel).
+     **Seventh batch, same session**: confirmed this is a repeatable
+     pattern, not a one-off — added 46 more words directly to
+     `konsep_umum` (51 → 97), spanning domains not touched in the first
+     round: legal/administrative (権利, 義務, 契約, 規則, 違反, 罰金,
+     訴訟, 裁判, 弁済), economics/finance (需要, 供給, 消費, 貯蓄, 投資,
+     負債, 資産, 景気, 物価, 為替), psychology/cognition (意識, 無意識,
+     記憶, 認識, 直感, 本能, 意欲, 衝動), politics/society (政策, 制度,
+     選挙, 権力, 平等, 格差, 差別), communication (表現, 発言, 議論, 意図,
+     曖昧), and a few miscellaneous (進歩, 循環, 持続, 維持, 適応, 法律,
+     変化). Same cross-check discipline (zero kanji-string overlap
+     against the other 665 words before authoring). Compound-eligible
+     pool: N5 53 (unchanged), N4 56 → 57, N3 74 → 89, N2 79 → 100, N1
+     73 → 82 — **total pool 335 → 381**. Vocab module: 665 → 711 words.
+     `konsep_umum` alone is now larger than any of the other 46
+     categories (97 words vs. the next-largest `pekerjaan_kantor` at
+     41) — worth knowing if it ever needs splitting into sub-themes for
+     the Kotoba browsing UI's sake, though nothing requires that yet.
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
