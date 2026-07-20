@@ -1174,5 +1174,125 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_doushi.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_chounan",
+    "word": "ちょうなん",
+    "kanji": "長男",
+    "reading": "ちょうなん",
+    "romaji": "chounan",
+    "meaning": "anak laki-laki tertua",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "長男 (chounan)",
+      "formal": "長男 (chounan)",
+      "keigo": "長男 (chounan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は長男です。",
+        "romaji": "Kare wa chounan desu.",
+        "translation": "Dia anak laki-laki tertua."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chounan.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_fubo",
+    "word": "ふぼ",
+    "kanji": "父母",
+    "reading": "ふぼ",
+    "romaji": "fubo",
+    "meaning": "ayah dan ibu",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "父母 (fubo)",
+      "formal": "父母 (fubo)",
+      "keigo": "父母 (fubo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "父母に感謝します。",
+        "romaji": "Fubo ni kansha shimasu.",
+        "translation": "Berterima kasih pada orang tua."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_fubo.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_seishounen",
+    "word": "せいしょうねん",
+    "kanji": "青少年",
+    "reading": "せいしょうねん",
+    "romaji": "seishounen",
+    "meaning": "remaja/pemuda",
+    "jlptLevel": "N2",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "青少年 (seishounen)",
+      "formal": "青少年 (seishounen)",
+      "keigo": "青少年 (seishounen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "青少年の教育が大切です。",
+        "romaji": "Seishounen no kyouiku ga taisetsu desu.",
+        "translation": "Pendidikan remaja itu penting."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_seishounen.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_dansei",
+    "word": "だんせい",
+    "kanji": "男性",
+    "reading": "だんせい",
+    "romaji": "dansei",
+    "meaning": "laki-laki (formal)",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "男性 (dansei)",
+      "formal": "男性 (dansei)",
+      "keigo": "男性 (dansei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "男性用のトイレです。",
+        "romaji": "Dansei-you no toire desu.",
+        "translation": "Ini toilet untuk laki-laki."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_dansei.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_kanai",
+    "word": "かない",
+    "kanji": "家内",
+    "reading": "かない",
+    "romaji": "kanai",
+    "meaning": "istri saya",
+    "jlptLevel": "N4",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "家内 (kanai)",
+      "formal": "家内 (kanai)",
+      "keigo": "家内 (kanai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "家内と話します。",
+        "romaji": "Kanai to hanashimasu.",
+        "translation": "Berbicara dengan istri saya."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kanai.png"
   }
 ]

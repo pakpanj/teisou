@@ -454,5 +454,53 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_soujiki.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_dentou",
+    "word": "でんとう",
+    "kanji": "電灯",
+    "reading": "でんとう",
+    "romaji": "dentou",
+    "meaning": "lampu listrik",
+    "jlptLevel": "N4",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "電灯 (dentou)",
+      "formal": "電灯 (dentou)",
+      "keigo": "電灯 (dentou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電灯をつけます。",
+        "romaji": "Dentou o tsukemasu.",
+        "translation": "Menyalakan lampu listrik."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_dentou.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_futon",
+    "word": "ふとん",
+    "kanji": "布団",
+    "reading": "ふとん",
+    "romaji": "futon",
+    "meaning": "kasur lipat Jepang",
+    "jlptLevel": "N4",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "布団 (futon)",
+      "formal": "布団 (futon)",
+      "keigo": "布団 (futon) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "布団を敷きます。",
+        "romaji": "Futon o shikimasu.",
+        "translation": "Menghamparkan futon."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_futon.png"
   }
 ]

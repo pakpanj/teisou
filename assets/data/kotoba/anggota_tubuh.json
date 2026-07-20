@@ -670,5 +670,53 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_shinchou.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_ashiato",
+    "word": "あしあと",
+    "kanji": "足跡",
+    "reading": "あしあと",
+    "romaji": "ashiato",
+    "meaning": "jejak kaki",
+    "jlptLevel": "N2",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "足跡 (ashiato)",
+      "formal": "足跡 (ashiato)",
+      "keigo": "足跡 (ashiato) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "雪の上に足跡があります。",
+        "romaji": "Yuki no ue ni ashiato ga arimasu.",
+        "translation": "Ada jejak kaki di atas salju."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ashiato.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_shiraga",
+    "word": "しらが",
+    "kanji": "白髪",
+    "reading": "しらが",
+    "romaji": "shiraga",
+    "meaning": "rambut putih",
+    "jlptLevel": "N2",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "白髪 (shiraga)",
+      "formal": "白髪 (shiraga)",
+      "keigo": "白髪 (shiraga) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "白髪が増えました。",
+        "romaji": "Shiraga ga fuemashita.",
+        "translation": "Rambut putih bertambah."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_shiraga.png"
   }
 ]

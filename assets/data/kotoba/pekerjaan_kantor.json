@@ -2566,5 +2566,269 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kabushiki.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_baibai",
+    "word": "ばいばい",
+    "kanji": "売買",
+    "reading": "ばいばい",
+    "romaji": "baibai",
+    "meaning": "jual beli",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "売買 (baibai)",
+      "formal": "売買 (baibai)",
+      "keigo": "売買 (baibai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "株を売買します。",
+        "romaji": "Kabu o baibai shimasu.",
+        "translation": "Jual beli saham."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_baibai.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_iten",
+    "word": "いてん",
+    "kanji": "移転",
+    "reading": "いてん",
+    "romaji": "iten",
+    "meaning": "pindah (kantor/toko)",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "移転 (iten)",
+      "formal": "移転 (iten)",
+      "keigo": "移転 (iten) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "事務所を移転します。",
+        "romaji": "Jimusho o iten shimasu.",
+        "translation": "Memindahkan kantor."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_iten.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_nyuusha",
+    "word": "にゅうしゃ",
+    "kanji": "入社",
+    "reading": "にゅうしゃ",
+    "romaji": "nyuusha",
+    "meaning": "masuk perusahaan",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "入社 (nyuusha)",
+      "formal": "入社 (nyuusha)",
+      "keigo": "入社 (nyuusha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会社に入社します。",
+        "romaji": "Kaisha ni nyuusha shimasu.",
+        "translation": "Masuk bekerja di perusahaan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_nyuusha.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_ryoushuu",
+    "word": "りょうしゅう",
+    "kanji": "領収",
+    "reading": "りょうしゅう",
+    "romaji": "ryoushuu",
+    "meaning": "penerimaan (uang)",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "領収 (ryoushuu)",
+      "formal": "領収 (ryoushuu)",
+      "keigo": "領収 (ryoushuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "領収書をもらいます。",
+        "romaji": "Ryoushuusho o moraimasu.",
+        "translation": "Menerima kuitansi."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_ryoushuu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_shousha",
+    "word": "しょうしゃ",
+    "kanji": "商社",
+    "reading": "しょうしゃ",
+    "romaji": "shousha",
+    "meaning": "perusahaan dagang",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "商社 (shousha)",
+      "formal": "商社 (shousha)",
+      "keigo": "商社 (shousha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "商社で働いています。",
+        "romaji": "Shousha de hataraite imasu.",
+        "translation": "Bekerja di perusahaan dagang."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shousha.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_shuukai",
+    "word": "しゅうかい",
+    "kanji": "集会",
+    "reading": "しゅうかい",
+    "romaji": "shuukai",
+    "meaning": "rapat umum/pertemuan",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "集会 (shuukai)",
+      "formal": "集会 (shuukai)",
+      "keigo": "集会 (shuukai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "集会に参加します。",
+        "romaji": "Shuukai ni sanka shimasu.",
+        "translation": "Menghadiri pertemuan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shuukai.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_uriage",
+    "word": "うりあげ",
+    "kanji": "売上",
+    "reading": "うりあげ",
+    "romaji": "uriage",
+    "meaning": "hasil penjualan",
+    "jlptLevel": "N2",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "売上 (uriage)",
+      "formal": "売上 (uriage)",
+      "keigo": "売上 (uriage) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "売上が伸びました。",
+        "romaji": "Uriage ga nobimashita.",
+        "translation": "Hasil penjualan meningkat."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_uriage.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_sangyou",
+    "word": "さんぎょう",
+    "kanji": "産業",
+    "reading": "さんぎょう",
+    "romaji": "sangyou",
+    "meaning": "industri",
+    "jlptLevel": "N4",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "産業 (sangyou)",
+      "formal": "産業 (sangyou)",
+      "keigo": "産業 (sangyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "産業が発展しています。",
+        "romaji": "Sangyou ga hatten shite imasu.",
+        "translation": "Industri berkembang."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sangyou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_seisan",
+    "word": "せいさん",
+    "kanji": "生産",
+    "reading": "せいさん",
+    "romaji": "seisan",
+    "meaning": "produksi",
+    "jlptLevel": "N4",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "生産 (seisan)",
+      "formal": "生産 (seisan)",
+      "keigo": "生産 (seisan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "製品を生産します。",
+        "romaji": "Seihin o seisan shimasu.",
+        "translation": "Memproduksi barang."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seisan.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_shinamono",
+    "word": "しなもの",
+    "kanji": "品物",
+    "reading": "しなもの",
+    "romaji": "shinamono",
+    "meaning": "barang",
+    "jlptLevel": "N4",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "品物 (shinamono)",
+      "formal": "品物 (shinamono)",
+      "keigo": "品物 (shinamono) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "品物を確認します。",
+        "romaji": "Shinamono o kakunin shimasu.",
+        "translation": "Memeriksa barang."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinamono.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_shinbunsha",
+    "word": "しんぶんしゃ",
+    "kanji": "新聞社",
+    "reading": "しんぶんしゃ",
+    "romaji": "shinbunsha",
+    "meaning": "perusahaan koran",
+    "jlptLevel": "N4",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "新聞社 (shinbunsha)",
+      "formal": "新聞社 (shinbunsha)",
+      "keigo": "新聞社 (shinbunsha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新聞社で働いています。",
+        "romaji": "Shinbunsha de hataraite imasu.",
+        "translation": "Bekerja di perusahaan koran."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinbunsha.png"
   }
 ]

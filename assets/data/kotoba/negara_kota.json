@@ -1102,5 +1102,221 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kainyuu.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kokuou",
+    "word": "こくおう",
+    "kanji": "国王",
+    "reading": "こくおう",
+    "romaji": "kokuou",
+    "meaning": "raja",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "国王 (kokuou)",
+      "formal": "国王 (kokuou)",
+      "keigo": "国王 (kokuou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国王が訪問します。",
+        "romaji": "Kokuou ga houmon shimasu.",
+        "translation": "Raja berkunjung."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokuou.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kokuritsu",
+    "word": "こくりつ",
+    "kanji": "国立",
+    "reading": "こくりつ",
+    "romaji": "kokuritsu",
+    "meaning": "negeri (nasional)",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "国立 (kokuritsu)",
+      "formal": "国立 (kokuritsu)",
+      "keigo": "国立 (kokuritsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国立大学に入学します。",
+        "romaji": "Kokuritsu daigaku ni nyuugaku shimasu.",
+        "translation": "Masuk universitas negeri."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokuritsu.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kokuseki",
+    "word": "こくせき",
+    "kanji": "国籍",
+    "reading": "こくせき",
+    "romaji": "kokuseki",
+    "meaning": "kewarganegaraan",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "国籍 (kokuseki)",
+      "formal": "国籍 (kokuseki)",
+      "keigo": "国籍 (kokuseki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国籍を取得します。",
+        "romaji": "Kokuseki o shutoku shimasu.",
+        "translation": "Memperoleh kewarganegaraan."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokuseki.png"
+  },
+  {
+    "id": "kotoba_negara_kota_touyou",
+    "word": "とうよう",
+    "kanji": "東洋",
+    "reading": "とうよう",
+    "romaji": "touyou",
+    "meaning": "Timur (Asia)",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "東洋 (touyou)",
+      "formal": "東洋 (touyou)",
+      "keigo": "東洋 (touyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "東洋の文化を学びます。",
+        "romaji": "Touyou no bunka o manabimasu.",
+        "translation": "Belajar budaya Timur."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_touyou.png"
+  },
+  {
+    "id": "kotoba_negara_kota_jinkou",
+    "word": "じんこう",
+    "kanji": "人口",
+    "reading": "じんこう",
+    "romaji": "jinkou",
+    "meaning": "populasi",
+    "jlptLevel": "N4",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "人口 (jinkou)",
+      "formal": "人口 (jinkou)",
+      "keigo": "人口 (jinkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "人口が増えています。",
+        "romaji": "Jinkou ga fuete imasu.",
+        "translation": "Populasi bertambah."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_jinkou.png"
+  },
+  {
+    "id": "kotoba_negara_kota_seiji",
+    "word": "せいじ",
+    "kanji": "政治",
+    "reading": "せいじ",
+    "romaji": "seiji",
+    "meaning": "politik",
+    "jlptLevel": "N4",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "政治 (seiji)",
+      "formal": "政治 (seiji)",
+      "keigo": "政治 (seiji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "政治に興味があります。",
+        "romaji": "Seiji ni kyoumi ga arimasu.",
+        "translation": "Tertarik pada politik."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_seiji.png"
+  },
+  {
+    "id": "kotoba_negara_kota_seiyou",
+    "word": "せいよう",
+    "kanji": "西洋",
+    "reading": "せいよう",
+    "romaji": "seiyou",
+    "meaning": "Barat (dunia)",
+    "jlptLevel": "N4",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "西洋 (seiyou)",
+      "formal": "西洋 (seiyou)",
+      "keigo": "西洋 (seiyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "西洋の文化を学びます。",
+        "romaji": "Seiyou no bunka o manabimasu.",
+        "translation": "Belajar budaya Barat."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_seiyou.png"
+  },
+  {
+    "id": "kotoba_negara_kota_sekai",
+    "word": "せかい",
+    "kanji": "世界",
+    "reading": "せかい",
+    "romaji": "sekai",
+    "meaning": "dunia",
+    "jlptLevel": "N4",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "世界 (sekai)",
+      "formal": "世界 (sekai)",
+      "keigo": "世界 (sekai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "世界を旅行します。",
+        "romaji": "Sekai o ryokou shimasu.",
+        "translation": "Bepergian keliling dunia."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_sekai.png"
+  },
+  {
+    "id": "kotoba_negara_kota_sensou",
+    "word": "せんそう",
+    "kanji": "戦争",
+    "reading": "せんそう",
+    "romaji": "sensou",
+    "meaning": "perang",
+    "jlptLevel": "N4",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "戦争 (sensou)",
+      "formal": "戦争 (sensou)",
+      "keigo": "戦争 (sensou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "戦争が終わりました。",
+        "romaji": "Sensou ga owarimashita.",
+        "translation": "Perang telah berakhir."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_sensou.png"
   }
 ]

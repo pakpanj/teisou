@@ -406,5 +406,77 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ninzuubun.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_kahansuu",
+    "word": "かはんすう",
+    "kanji": "過半数",
+    "reading": "かはんすう",
+    "romaji": "kahansuu",
+    "meaning": "lebih dari separuh",
+    "jlptLevel": "N2",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "過半数 (kahansuu)",
+      "formal": "過半数 (kahansuu)",
+      "keigo": "過半数 (kahansuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "過半数の賛成が必要です。",
+        "romaji": "Kahansuu no sansei ga hitsuyou desu.",
+        "translation": "Diperlukan persetujuan lebih dari separuh."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_kahansuu.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_ijou",
+    "word": "いじょう",
+    "kanji": "以上",
+    "reading": "いじょう",
+    "romaji": "ijou",
+    "meaning": "lebih dari",
+    "jlptLevel": "N4",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "以上 (ijou)",
+      "formal": "以上 (ijou)",
+      "keigo": "以上 (ijou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "20歳以上です。",
+        "romaji": "Nijussai ijou desu.",
+        "translation": "Usia 20 tahun ke atas."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ijou.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_ika",
+    "word": "いか",
+    "kanji": "以下",
+    "reading": "いか",
+    "romaji": "ika",
+    "meaning": "kurang dari/di bawah",
+    "jlptLevel": "N4",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "以下 (ika)",
+      "formal": "以下 (ika)",
+      "keigo": "以下 (ika) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "10人以下です。",
+        "romaji": "Juunin ika desu.",
+        "translation": "Kurang dari 10 orang."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ika.png"
   }
 ]

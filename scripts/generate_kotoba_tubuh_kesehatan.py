@@ -120,6 +120,12 @@ CATEGORIES = {
         ("shinchou", "身長", "しんちょう", "shinchou", "tinggi badan", "N3", "noun", "身長", "shinchou", "身長", "shinchou", [
             ("身長を測ります。", "Shinchou o hakarimasu.", "Mengukur tinggi badan."),
         ]),
+        ("ashiato", "足跡", "あしあと", "ashiato", "jejak kaki", "N2", "noun", "足跡", "ashiato", "足跡", "ashiato", [
+            ("雪の上に足跡があります。", "Yuki no ue ni ashiato ga arimasu.", "Ada jejak kaki di atas salju."),
+        ]),
+        ("shiraga", "白髪", "しらが", "shiraga", "rambut putih", "N2", "noun", "白髪", "shiraga", "白髪", "shiraga", [
+            ("白髪が増えました。", "Shiraga ga fuemashita.", "Rambut putih bertambah."),
+        ]),
     ],
     "penyakit_gejala": [
         ("kaze", "風邪", "かぜ", "kaze", "flu/masuk angin (common cold)", "N4", "noun", "風邪", "kaze", "風邪", "kaze", [
@@ -232,6 +238,9 @@ CATEGORIES = {
         ("hirou", "疲労", "ひろう", "hirou", "kelelahan", "N1", "noun", "疲労", "hirou", "疲労", "hirou", [
             ("疲労がたまっています。", "Hirou ga tamatte imasu.", "Kelelahan menumpuk."),
         ]),
+        ("guai", "具合", "ぐあい", "guai", "kondisi (kesehatan)", "N4", "noun", "具合", "guai", "具合", "guai", [
+            ("具合が悪いです。", "Guai ga warui desu.", "Kondisinya tidak baik (sakit)."),
+        ]),
     ],
     "obat_obatan": [
         ("kusuri", "薬", "くすり", "kusuri", "obat", "N4", "noun", "薬", "kusuri", "薬", "kusuri", [
@@ -306,6 +315,18 @@ CATEGORIES = {
         ]),
         ("kurumaisu", "車椅子", "くるまいす", "kurumaisu", "kursi roda", "N2", "noun", "車椅子", "kurumaisu", "車椅子", "kurumaisu", [
             ("車椅子を押します。", "Kurumaisu o oshimasu.", "Mendorong kursi roda."),
+        ]),
+        ("geka", "外科", "げか", "geka", "bedah (bidang medis)", "N2", "noun", "外科", "geka", "外科", "geka", [
+            ("外科で手術します。", "Geka de shujutsu shimasu.", "Operasi di bagian bedah."),
+        ]),
+        ("naika", "内科", "ないか", "naika", "penyakit dalam (bidang medis)", "N2", "noun", "内科", "naika", "内科", "naika", [
+            ("内科に行きます。", "Naika ni ikimasu.", "Pergi ke dokter penyakit dalam."),
+        ]),
+        ("yuketsu", "輸血", "ゆけつ", "yuketsu", "transfusi darah", "N2", "noun", "輸血", "yuketsu", "輸血", "yuketsu", [
+            ("輸血を受けます。", "Yuketsu o ukemasu.", "Menerima transfusi darah."),
+        ]),
+        ("nyuuin", "入院", "にゅういん", "nyuuin", "dirawat di RS", "N4", "noun", "入院", "nyuuin", "入院", "nyuuin", [
+            ("入院しました。", "Nyuuin shimashita.", "Dirawat di rumah sakit."),
         ]),
     ],
     "olahraga": [
@@ -558,6 +579,24 @@ CATEGORIES = {
         ]),
         ("kakushin", "確信", "かくしん", "kakushin", "keyakinan penuh", "N1", "noun", "確信", "kakushin", "確信", "kakushin", [
             ("成功を確信しています。", "Seikou o kakushin shite imasu.", "Yakin akan kesuksesan."),
+        ]),
+        ("ijiwaru", "意地悪", "いじわる", "ijiwaru", "jahat/usil", "N2", "noun", "意地悪", "ijiwaru", "意地悪", "ijiwaru", [
+            ("意地悪なことを言わないでください。", "Ijiwaru na koto o iwanaide kudasai.", "Jangan mengatakan hal yang usil."),
+        ]),
+        ("kenka", "喧嘩", "けんか", "kenka", "bertengkar", "N4", "noun", "喧嘩", "kenka", "喧嘩", "kenka", [
+            ("喧嘩をしました。", "Kenka o shimashita.", "Bertengkar."),
+        ]),
+        ("kibun", "気分", "きぶん", "kibun", "perasaan/mood", "N4", "noun", "気分", "kibun", "気分", "kibun", [
+            ("気分がいいです。", "Kibun ga ii desu.", "Perasaan saya baik."),
+        ]),
+        ("shinsetsu", "親切", "しんせつ", "shinsetsu", "ramah/baik hati", "N4", "noun", "親切", "shinsetsu", "親切", "shinsetsu", [
+            ("彼は親切です。", "Kare wa shinsetsu desu.", "Dia baik hati."),
+        ]),
+        ("teinei", "丁寧", "ていねい", "teinei", "sopan", "N4", "noun", "丁寧", "teinei", "丁寧", "teinei", [
+            ("丁寧に話します。", "Teinei ni hanashimasu.", "Berbicara dengan sopan."),
+        ]),
+        ("zannen", "残念", "ざんねん", "zannen", "sayang/menyesal", "N4", "noun", "残念", "zannen", "残念", "zannen", [
+            ("残念です。", "Zannen desu.", "Sayang sekali."),
         ]),
     ],
     "ekspresi_wajah": [

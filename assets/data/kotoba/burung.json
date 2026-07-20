@@ -310,5 +310,29 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_inko.png"
+  },
+  {
+    "id": "kotoba_burung_kodori",
+    "word": "こどり",
+    "kanji": "小鳥",
+    "reading": "こどり",
+    "romaji": "kodori",
+    "meaning": "burung kecil",
+    "jlptLevel": "N4",
+    "category": "burung",
+    "wordType": "noun",
+    "registers": {
+      "casual": "こどり (kodori)",
+      "formal": "こどり (kodori)",
+      "keigo": "こどり (kodori) — tidak ada bentuk keigo khusus untuk nama burung"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "小鳥が鳴いています。",
+        "romaji": "Kotori ga naite imasu.",
+        "translation": "Burung kecil berkicau."
+      }
+    ],
+    "imagePath": "kotoba_images/burung/kotoba_burung_kodori.png"
   }
 ]

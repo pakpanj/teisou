@@ -598,5 +598,77 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shuukan.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_shasetsu",
+    "word": "しゃせつ",
+    "kanji": "社説",
+    "reading": "しゃせつ",
+    "romaji": "shasetsu",
+    "meaning": "editorial (koran)",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "社説 (shasetsu)",
+      "formal": "社説 (shasetsu)",
+      "keigo": "社説 (shasetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "社説を読みます。",
+        "romaji": "Shasetsu o yomimasu.",
+        "translation": "Membaca editorial."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shasetsu.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_bangumi",
+    "word": "ばんぐみ",
+    "kanji": "番組",
+    "reading": "ばんぐみ",
+    "romaji": "bangumi",
+    "meaning": "acara (TV/radio)",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "番組 (bangumi)",
+      "formal": "番組 (bangumi)",
+      "keigo": "番組 (bangumi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "テレビ番組を見ます。",
+        "romaji": "Terebi bangumi o mimasu.",
+        "translation": "Menonton acara TV."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_bangumi.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_shousetsu",
+    "word": "しょうせつ",
+    "kanji": "小説",
+    "reading": "しょうせつ",
+    "romaji": "shousetsu",
+    "meaning": "novel",
+    "jlptLevel": "N4",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "小説 (shousetsu)",
+      "formal": "小説 (shousetsu)",
+      "keigo": "小説 (shousetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "小説を読みます。",
+        "romaji": "Shousetsu o yomimasu.",
+        "translation": "Membaca novel."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shousetsu.png"
   }
 ]

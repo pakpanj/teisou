@@ -1246,5 +1246,509 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_houtei.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_deiriguchi",
+    "word": "でいりぐち",
+    "kanji": "出入口",
+    "reading": "でいりぐち",
+    "romaji": "deiriguchi",
+    "meaning": "pintu keluar masuk",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "出入口 (deiriguchi)",
+      "formal": "出入口 (deiriguchi)",
+      "keigo": "出入口 (deiriguchi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "出入口はこちらです。",
+        "romaji": "Deiriguchi wa kochira desu.",
+        "translation": "Pintu keluar masuk ada di sini."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_deiriguchi.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kaikan",
+    "word": "かいかん",
+    "kanji": "会館",
+    "reading": "かいかん",
+    "romaji": "kaikan",
+    "meaning": "gedung pertemuan",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会館 (kaikan)",
+      "formal": "会館 (kaikan)",
+      "keigo": "会館 (kaikan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会館で結婚式をします。",
+        "romaji": "Kaikan de kekkonshiki o shimasu.",
+        "translation": "Mengadakan pernikahan di gedung pertemuan."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaikan.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kousha",
+    "word": "こうしゃ",
+    "kanji": "校舎",
+    "reading": "こうしゃ",
+    "romaji": "kousha",
+    "meaning": "gedung sekolah",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "校舎 (kousha)",
+      "formal": "校舎 (kousha)",
+      "keigo": "校舎 (kousha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい校舎ができました。",
+        "romaji": "Atarashii kousha ga dekimashita.",
+        "translation": "Gedung sekolah baru sudah jadi."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kousha.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_koutei",
+    "word": "こうてい",
+    "kanji": "校庭",
+    "reading": "こうてい",
+    "romaji": "koutei",
+    "meaning": "halaman sekolah",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "校庭 (koutei)",
+      "formal": "校庭 (koutei)",
+      "keigo": "校庭 (koutei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "校庭で遊びます。",
+        "romaji": "Koutei de asobimasu.",
+        "translation": "Bermain di halaman sekolah."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koutei.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_machiaishitsu",
+    "word": "まちあいしつ",
+    "kanji": "待合室",
+    "reading": "まちあいしつ",
+    "romaji": "machiaishitsu",
+    "meaning": "ruang tunggu",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "待合室 (machiaishitsu)",
+      "formal": "待合室 (machiaishitsu)",
+      "keigo": "待合室 (machiaishitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "待合室で待ちます。",
+        "romaji": "Machiaishitsu de machimasu.",
+        "translation": "Menunggu di ruang tunggu."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_machiaishitsu.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_miseya",
+    "word": "みせや",
+    "kanji": "店屋",
+    "reading": "みせや",
+    "romaji": "miseya",
+    "meaning": "toko/kedai",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "店屋 (miseya)",
+      "formal": "店屋 (miseya)",
+      "keigo": "店屋 (miseya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "店屋で買い物します。",
+        "romaji": "Miseya de kaimono shimasu.",
+        "translation": "Berbelanja di toko."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_miseya.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_shoten",
+    "word": "しょてん",
+    "kanji": "書店",
+    "reading": "しょてん",
+    "romaji": "shoten",
+    "meaning": "toko buku",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "書店 (shoten)",
+      "formal": "書店 (shoten)",
+      "keigo": "書店 (shoten) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "書店で本を買います。",
+        "romaji": "Shoten de hon o kaimasu.",
+        "translation": "Membeli buku di toko buku."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shoten.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_shouten",
+    "word": "しょうてん",
+    "kanji": "商店",
+    "reading": "しょうてん",
+    "romaji": "shouten",
+    "meaning": "toko",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "商店 (shouten)",
+      "formal": "商店 (shouten)",
+      "keigo": "商店 (shouten) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "商店で働きます。",
+        "romaji": "Shouten de hatarakimasu.",
+        "translation": "Bekerja di toko."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shouten.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_sokutatsu",
+    "word": "そくたつ",
+    "kanji": "速達",
+    "reading": "そくたつ",
+    "romaji": "sokutatsu",
+    "meaning": "pos kilat",
+    "jlptLevel": "N2",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "速達 (sokutatsu)",
+      "formal": "速達 (sokutatsu)",
+      "keigo": "速達 (sokutatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "速達で送ります。",
+        "romaji": "Sokutatsu de okurimasu.",
+        "translation": "Mengirim dengan pos kilat."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_sokutatsu.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_annai",
+    "word": "あんない",
+    "kanji": "案内",
+    "reading": "あんない",
+    "romaji": "annai",
+    "meaning": "pemanduan/petunjuk",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "案内 (annai)",
+      "formal": "案内 (annai)",
+      "keigo": "案内 (annai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "案内をお願いします。",
+        "romaji": "Annai o onegai shimasu.",
+        "translation": "Tolong berikan petunjuk."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_annai.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_chuugakkou",
+    "word": "ちゅうがっこう",
+    "kanji": "中学校",
+    "reading": "ちゅうがっこう",
+    "romaji": "chuugakkou",
+    "meaning": "SMP",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "中学校 (chuugakkou)",
+      "formal": "中学校 (chuugakkou)",
+      "keigo": "中学校 (chuugakkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "中学校に通っています。",
+        "romaji": "Chuugakkou ni kayotte imasu.",
+        "translation": "Sekolah di SMP."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_chuugakkou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_chuushajou",
+    "word": "ちゅうしゃじょう",
+    "kanji": "駐車場",
+    "reading": "ちゅうしゃじょう",
+    "romaji": "chuushajou",
+    "meaning": "tempat parkir",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "駐車場 (chuushajou)",
+      "formal": "駐車場 (chuushajou)",
+      "keigo": "駐車場 (chuushajou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "駐車場に車を止めます。",
+        "romaji": "Chuushajou ni kuruma o tomemasu.",
+        "translation": "Memarkir mobil di tempat parkir."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_chuushajou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_hikoujou",
+    "word": "ひこうじょう",
+    "kanji": "飛行場",
+    "reading": "ひこうじょう",
+    "romaji": "hikoujou",
+    "meaning": "bandara/lapangan udara",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "飛行場 (hikoujou)",
+      "formal": "飛行場 (hikoujou)",
+      "keigo": "飛行場 (hikoujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "飛行場に着きました。",
+        "romaji": "Hikoujou ni tsukimashita.",
+        "translation": "Tiba di bandara."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hikoujou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kaigishitsu",
+    "word": "かいぎしつ",
+    "kanji": "会議室",
+    "reading": "かいぎしつ",
+    "romaji": "kaigishitsu",
+    "meaning": "ruang rapat",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会議室 (kaigishitsu)",
+      "formal": "会議室 (kaigishitsu)",
+      "keigo": "会議室 (kaigishitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会議室で話します。",
+        "romaji": "Kaigishitsu de hanashimasu.",
+        "translation": "Berbicara di ruang rapat."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaigishitsu.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_kenkyuushitsu",
+    "word": "けんきゅうしつ",
+    "kanji": "研究室",
+    "reading": "けんきゅうしつ",
+    "romaji": "kenkyuushitsu",
+    "meaning": "ruang penelitian/lab",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "研究室 (kenkyuushitsu)",
+      "formal": "研究室 (kenkyuushitsu)",
+      "keigo": "研究室 (kenkyuushitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "研究室で実験します。",
+        "romaji": "Kenkyuushitsu de jikken shimasu.",
+        "translation": "Melakukan eksperimen di lab."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kenkyuushitsu.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_koudou",
+    "word": "こうどう",
+    "kanji": "講堂",
+    "reading": "こうどう",
+    "romaji": "koudou",
+    "meaning": "aula",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "講堂 (koudou)",
+      "formal": "講堂 (koudou)",
+      "keigo": "講堂 (koudou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "講堂で式をします。",
+        "romaji": "Koudou de shiki o shimasu.",
+        "translation": "Mengadakan upacara di aula."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koudou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_koukou",
+    "word": "こうこう",
+    "kanji": "高校",
+    "reading": "こうこう",
+    "romaji": "koukou",
+    "meaning": "SMA",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "高校 (koukou)",
+      "formal": "高校 (koukou)",
+      "keigo": "高校 (koukou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "高校に通っています。",
+        "romaji": "Koukou ni kayotte imasu.",
+        "translation": "Sekolah di SMA."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koukou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_okujou",
+    "word": "おくじょう",
+    "kanji": "屋上",
+    "reading": "おくじょう",
+    "romaji": "okujou",
+    "meaning": "atap gedung (rooftop)",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "屋上 (okujou)",
+      "formal": "屋上 (okujou)",
+      "keigo": "屋上 (okujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "屋上に上がります。",
+        "romaji": "Okujou ni agarimasu.",
+        "translation": "Naik ke atap gedung."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_okujou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_shougakkou",
+    "word": "しょうがっこう",
+    "kanji": "小学校",
+    "reading": "しょうがっこう",
+    "romaji": "shougakkou",
+    "meaning": "SD",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "小学校 (shougakkou)",
+      "formal": "小学校 (shougakkou)",
+      "keigo": "小学校 (shougakkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "小学校に通っています。",
+        "romaji": "Shougakkou ni kayotte imasu.",
+        "translation": "Sekolah di SD."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shougakkou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_uketsuke",
+    "word": "うけつけ",
+    "kanji": "受付",
+    "reading": "うけつけ",
+    "romaji": "uketsuke",
+    "meaning": "penerimaan/resepsionis",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "受付 (uketsuke)",
+      "formal": "受付 (uketsuke)",
+      "keigo": "受付 (uketsuke) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "受付で聞きます。",
+        "romaji": "Uketsuke de kikimasu.",
+        "translation": "Bertanya di resepsionis."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_uketsuke.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_yoyaku",
+    "word": "よやく",
+    "kanji": "予約",
+    "reading": "よやく",
+    "romaji": "yoyaku",
+    "meaning": "reservasi",
+    "jlptLevel": "N4",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "予約 (yoyaku)",
+      "formal": "予約 (yoyaku)",
+      "keigo": "予約 (yoyaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "レストランを予約します。",
+        "romaji": "Resutoran o yoyaku shimasu.",
+        "translation": "Memesan (reservasi) restoran."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yoyaku.png"
   }
 ]

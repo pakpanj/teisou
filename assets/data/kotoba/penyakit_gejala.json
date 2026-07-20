@@ -814,5 +814,29 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hirou.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_guai",
+    "word": "ぐあい",
+    "kanji": "具合",
+    "reading": "ぐあい",
+    "romaji": "guai",
+    "meaning": "kondisi (kesehatan)",
+    "jlptLevel": "N4",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "具合 (guai)",
+      "formal": "具合 (guai)",
+      "keigo": "具合 (guai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "具合が悪いです。",
+        "romaji": "Guai ga warui desu.",
+        "translation": "Kondisinya tidak baik (sakit)."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_guai.png"
   }
 ]

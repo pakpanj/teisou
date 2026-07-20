@@ -274,6 +274,21 @@ CATEGORIES = {
         ("jizen", "事前", "じぜん", "jizen", "sebelumnya/di muka", "N1", "noun", "事前", "jizen", "事前", "jizen", [
             ("事前に予約します。", "Jizen ni yoyaku shimasu.", "Memesan sebelumnya (di muka)."),
         ]),
+        ("kondo", "今度", "こんど", "kondo", "kali ini/lain kali", "N4", "noun", "今度", "kondo", "今度", "kondo", [
+            ("今度会いましょう。", "Kondo aimashou.", "Mari bertemu lain kali."),
+        ]),
+        ("konya", "今夜", "こんや", "konya", "malam ini", "N4", "noun", "今夜", "konya", "今夜", "konya", [
+            ("今夜は寒いです。", "Kon'ya wa samui desu.", "Malam ini dingin."),
+        ]),
+        ("saikin", "最近", "さいきん", "saikin", "belakangan ini", "N4", "noun", "最近", "saikin", "最近", "saikin", [
+            ("最近忙しいです。", "Saikin isogashii desu.", "Belakangan ini sibuk."),
+        ]),
+        ("saraigetsu", "再来月", "さらいげつ", "saraigetsu", "bulan depan setelah bulan depan", "N4", "noun", "再来月", "saraigetsu", "再来月", "saraigetsu", [
+            ("再来月旅行します。", "Saraigetsu ryokou shimasu.", "Bepergian dua bulan lagi."),
+        ]),
+        ("saraishuu", "再来週", "さらいしゅう", "saraishuu", "minggu setelah minggu depan", "N4", "noun", "再来週", "saraishuu", "再来週", "saraishuu", [
+            ("再来週会います。", "Saraishuu aimasu.", "Bertemu dua minggu lagi."),
+        ]),
     ],
     "musim": [
         ("haru", "春", "はる", "haru", "musim semi", "N5", "noun", "春", "haru", "春", "haru", [
@@ -344,6 +359,15 @@ CATEGORIES = {
         ("ninzuubun", "人数分", "にんずうぶん", "ninzuubun", "sesuai jumlah orang", "N2", "noun", "人数分", "ninzuubun", "人数分", "ninzuubun", [
             ("人数分の料理を用意します。", "Ninzuubun no ryouri o youi shimasu.", "Menyiapkan makanan sesuai jumlah orang."),
         ]),
+        ("kahansuu", "過半数", "かはんすう", "kahansuu", "lebih dari separuh", "N2", "noun", "過半数", "kahansuu", "過半数", "kahansuu", [
+            ("過半数の賛成が必要です。", "Kahansuu no sansei ga hitsuyou desu.", "Diperlukan persetujuan lebih dari separuh."),
+        ]),
+        ("ijou", "以上", "いじょう", "ijou", "lebih dari", "N4", "noun", "以上", "ijou", "以上", "ijou", [
+            ("20歳以上です。", "Nijussai ijou desu.", "Usia 20 tahun ke atas."),
+        ]),
+        ("ika", "以下", "いか", "ika", "kurang dari/di bawah", "N4", "noun", "以下", "ika", "以下", "ika", [
+            ("10人以下です。", "Juunin ika desu.", "Kurang dari 10 orang."),
+        ]),
     ],
     "warna": [
         ("akai", "赤い", "あかい", "akai", "merah", "N5", "adjective", "赤い", "akai", "赤いです", "akai desu", [
@@ -401,6 +425,15 @@ CATEGORIES = {
         ]),
         ("chouhoukei", "長方形", "ちょうほうけい", "chouhoukei", "persegi panjang", "N2", "noun", "長方形", "chouhoukei", "長方形", "chouhoukei", [
             ("長方形の紙です。", "Chouhoukei no kami desu.", "Ini kertas persegi panjang."),
+        ]),
+        ("daen", "楕円", "だえん", "daen", "elips", "N2", "noun", "楕円", "daen", "楕円", "daen", [
+            ("これは楕円の形です。", "Kore wa daen no katachi desu.", "Ini bentuk elips."),
+        ]),
+        ("enshuu", "円周", "えんしゅう", "enshuu", "keliling lingkaran", "N2", "noun", "円周", "enshuu", "円周", "enshuu", [
+            ("円周を計算します。", "Enshuu o keisan shimasu.", "Menghitung keliling lingkaran."),
+        ]),
+        ("hankei", "半径", "はんけい", "hankei", "radius", "N2", "noun", "半径", "hankei", "半径", "hankei", [
+            ("円の半径を測ります。", "En no hankei o hakarimasu.", "Mengukur radius lingkaran."),
         ]),
     ],
 }

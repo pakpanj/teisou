@@ -790,5 +790,173 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_jimoto.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_hantou",
+    "word": "はんとう",
+    "kanji": "半島",
+    "reading": "はんとう",
+    "romaji": "hantou",
+    "meaning": "semenanjung",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "半島 (hantou)",
+      "formal": "半島 (hantou)",
+      "keigo": "半島 (hantou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "半島を旅行します。",
+        "romaji": "Hantou o ryokou shimasu.",
+        "translation": "Bepergian ke semenanjung."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hantou.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_namiki",
+    "word": "なみき",
+    "kanji": "並木",
+    "reading": "なみき",
+    "romaji": "namiki",
+    "meaning": "deretan pohon",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "並木 (namiki)",
+      "formal": "並木 (namiki)",
+      "keigo": "並木 (namiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "並木道を歩きます。",
+        "romaji": "Namikimichi o arukimasu.",
+        "translation": "Berjalan di jalan berderet pohon."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_namiki.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_sekidou",
+    "word": "せきどう",
+    "kanji": "赤道",
+    "reading": "せきどう",
+    "romaji": "sekidou",
+    "meaning": "garis khatulistiwa",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "赤道 (sekidou)",
+      "formal": "赤道 (sekidou)",
+      "keigo": "赤道 (sekidou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "赤道を通過します。",
+        "romaji": "Sekidou o tsuuka shimasu.",
+        "translation": "Melintasi garis khatulistiwa."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sekidou.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_basho",
+    "word": "ばしょ",
+    "kanji": "場所",
+    "reading": "ばしょ",
+    "romaji": "basho",
+    "meaning": "tempat/lokasi",
+    "jlptLevel": "N4",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "場所 (basho)",
+      "formal": "場所 (basho)",
+      "keigo": "場所 (basho) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "集合場所を確認します。",
+        "romaji": "Shuugou basho o kakunin shimasu.",
+        "translation": "Memeriksa tempat berkumpul."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_basho.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_kaigan",
+    "word": "かいがん",
+    "kanji": "海岸",
+    "reading": "かいがん",
+    "romaji": "kaigan",
+    "meaning": "pantai",
+    "jlptLevel": "N4",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "海岸 (kaigan)",
+      "formal": "海岸 (kaigan)",
+      "keigo": "海岸 (kaigan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "海岸を歩きます。",
+        "romaji": "Kaigan o arukimasu.",
+        "translation": "Berjalan di pantai."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kaigan.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_kaijou",
+    "word": "かいじょう",
+    "kanji": "会場",
+    "reading": "かいじょう",
+    "romaji": "kaijou",
+    "meaning": "tempat acara",
+    "jlptLevel": "N4",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "会場 (kaijou)",
+      "formal": "会場 (kaijou)",
+      "keigo": "会場 (kaijou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会場に到着しました。",
+        "romaji": "Kaijou ni touchaku shimashita.",
+        "translation": "Tiba di tempat acara."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kaijou.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_kougai",
+    "word": "こうがい",
+    "kanji": "郊外",
+    "reading": "こうがい",
+    "romaji": "kougai",
+    "meaning": "pinggiran kota",
+    "jlptLevel": "N4",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "郊外 (kougai)",
+      "formal": "郊外 (kougai)",
+      "keigo": "郊外 (kougai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "郊外に住んでいます。",
+        "romaji": "Kougai ni sunde imasu.",
+        "translation": "Tinggal di pinggiran kota."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kougai.png"
   }
 ]

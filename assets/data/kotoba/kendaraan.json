@@ -790,5 +790,197 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jouriku.png"
+  },
+  {
+    "id": "kotoba_kendaraan_jisoku",
+    "word": "じそく",
+    "kanji": "時速",
+    "reading": "じそく",
+    "romaji": "jisoku",
+    "meaning": "kecepatan per jam",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "時速 (jisoku)",
+      "formal": "時速 (jisoku)",
+      "keigo": "時速 (jisoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "時速80キロで走ります。",
+        "romaji": "Jisoku hachijuu kiro de hashirimasu.",
+        "translation": "Melaju dengan kecepatan 80 km/jam."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jisoku.png"
+  },
+  {
+    "id": "kotoba_kendaraan_kasoku",
+    "word": "かそく",
+    "kanji": "加速",
+    "reading": "かそく",
+    "romaji": "kasoku",
+    "meaning": "akselerasi",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "加速 (kasoku)",
+      "formal": "加速 (kasoku)",
+      "keigo": "加速 (kasoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "車が加速します。",
+        "romaji": "Kuruma ga kasoku shimasu.",
+        "translation": "Mobil berakselerasi."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kasoku.png"
+  },
+  {
+    "id": "kotoba_kendaraan_kasokudo",
+    "word": "かそくど",
+    "kanji": "加速度",
+    "reading": "かそくど",
+    "romaji": "kasokudo",
+    "meaning": "tingkat akselerasi",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "加速度 (kasokudo)",
+      "formal": "加速度 (kasokudo)",
+      "keigo": "加速度 (kasokudo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "加速度を計算します。",
+        "romaji": "Kasokudo o keisan shimasu.",
+        "translation": "Menghitung tingkat akselerasi."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kasokudo.png"
+  },
+  {
+    "id": "kotoba_kendaraan_sokuryoku",
+    "word": "そくりょく",
+    "kanji": "速力",
+    "reading": "そくりょく",
+    "romaji": "sokuryoku",
+    "meaning": "kecepatan",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "速力 (sokuryoku)",
+      "formal": "速力 (sokuryoku)",
+      "keigo": "速力 (sokuryoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "速力を上げます。",
+        "romaji": "Sokuryoku o agemasu.",
+        "translation": "Menambah kecepatan."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_sokuryoku.png"
+  },
+  {
+    "id": "kotoba_kendaraan_yusou",
+    "word": "ゆそう",
+    "kanji": "輸送",
+    "reading": "ゆそう",
+    "romaji": "yusou",
+    "meaning": "pengangkutan barang",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "輸送 (yusou)",
+      "formal": "輸送 (yusou)",
+      "keigo": "輸送 (yusou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "荷物を輸送します。",
+        "romaji": "Nimotsu o yusou shimasu.",
+        "translation": "Mengangkut barang."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_yusou.png"
+  },
+  {
+    "id": "kotoba_kendaraan_kisha",
+    "word": "きしゃ",
+    "kanji": "汽車",
+    "reading": "きしゃ",
+    "romaji": "kisha",
+    "meaning": "kereta (uap, lama)",
+    "jlptLevel": "N4",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "汽車 (kisha)",
+      "formal": "汽車 (kisha)",
+      "keigo": "汽車 (kisha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "汽車に乗ります。",
+        "romaji": "Kisha ni norimasu.",
+        "translation": "Naik kereta."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kisha.png"
+  },
+  {
+    "id": "kotoba_kendaraan_kyuukou",
+    "word": "きゅうこう",
+    "kanji": "急行",
+    "reading": "きゅうこう",
+    "romaji": "kyuukou",
+    "meaning": "kereta cepat",
+    "jlptLevel": "N4",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "急行 (kyuukou)",
+      "formal": "急行 (kyuukou)",
+      "keigo": "急行 (kyuukou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "急行に乗ります。",
+        "romaji": "Kyuukou ni norimasu.",
+        "translation": "Naik kereta cepat."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kyuukou.png"
+  },
+  {
+    "id": "kotoba_kendaraan_tokkyuu",
+    "word": "とっきゅう",
+    "kanji": "特急",
+    "reading": "とっきゅう",
+    "romaji": "tokkyuu",
+    "meaning": "kereta ekspres",
+    "jlptLevel": "N4",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "特急 (tokkyuu)",
+      "formal": "特急 (tokkyuu)",
+      "keigo": "特急 (tokkyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "特急に乗ります。",
+        "romaji": "Tokkyuu ni norimasu.",
+        "translation": "Naik kereta ekspres."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_tokkyuu.png"
   }
 ]

@@ -862,5 +862,77 @@
       }
     ],
     "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_kaihatsu.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_denpou",
+    "word": "でんぽう",
+    "kanji": "電報",
+    "reading": "でんぽう",
+    "romaji": "denpou",
+    "meaning": "telegram",
+    "jlptLevel": "N4",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "電報 (denpou)",
+      "formal": "電報 (denpou)",
+      "keigo": "電報 (denpou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電報を送ります。",
+        "romaji": "Denpou o okurimasu.",
+        "translation": "Mengirim telegram."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_denpou.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_kagaku",
+    "word": "かがく",
+    "kanji": "科学",
+    "reading": "かがく",
+    "romaji": "kagaku",
+    "meaning": "sains",
+    "jlptLevel": "N4",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "科学 (kagaku)",
+      "formal": "科学 (kagaku)",
+      "keigo": "科学 (kagaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "科学を勉強します。",
+        "romaji": "Kagaku o benkyou shimasu.",
+        "translation": "Belajar sains."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_kagaku.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_koshou",
+    "word": "こしょう",
+    "kanji": "故障",
+    "reading": "こしょう",
+    "romaji": "koshou",
+    "meaning": "kerusakan (mesin)",
+    "jlptLevel": "N4",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "故障 (koshou)",
+      "formal": "故障 (koshou)",
+      "keigo": "故障 (koshou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "車が故障しました。",
+        "romaji": "Kuruma ga koshou shimashita.",
+        "translation": "Mobil rusak."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_koshou.png"
   }
 ]

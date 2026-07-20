@@ -886,5 +886,221 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_juugyouin.png"
+  },
+  {
+    "id": "kotoba_profesi_shikai",
+    "word": "しかい",
+    "kanji": "司会",
+    "reading": "しかい",
+    "romaji": "shikai",
+    "meaning": "pembawa acara/MC",
+    "jlptLevel": "N2",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "司会 (shikai)",
+      "formal": "司会 (shikai)",
+      "keigo": "司会 (shikai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "司会を務めます。",
+        "romaji": "Shikai o tsutomemasu.",
+        "translation": "Menjadi pembawa acara."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shikai.png"
+  },
+  {
+    "id": "kotoba_profesi_buchou",
+    "word": "ぶちょう",
+    "kanji": "部長",
+    "reading": "ぶちょう",
+    "romaji": "buchou",
+    "meaning": "kepala departemen",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "部長 (buchou)",
+      "formal": "部長 (buchou)",
+      "keigo": "部長 (buchou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "部長に報告します。",
+        "romaji": "Buchou ni houkoku shimasu.",
+        "translation": "Melapor ke kepala departemen."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_buchou.png"
+  },
+  {
+    "id": "kotoba_profesi_dorobou",
+    "word": "どろぼう",
+    "kanji": "泥棒",
+    "reading": "どろぼう",
+    "romaji": "dorobou",
+    "meaning": "pencuri",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "泥棒 (dorobou)",
+      "formal": "泥棒 (dorobou)",
+      "keigo": "泥棒 (dorobou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "泥棒に気をつけてください。",
+        "romaji": "Dorobou ni ki o tsukete kudasai.",
+        "translation": "Waspada terhadap pencuri."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_dorobou.png"
+  },
+  {
+    "id": "kotoba_profesi_haisha",
+    "word": "はいしゃ",
+    "kanji": "歯医者",
+    "reading": "はいしゃ",
+    "romaji": "haisha",
+    "meaning": "dokter gigi",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "歯医者 (haisha)",
+      "formal": "歯医者 (haisha)",
+      "keigo": "歯医者 (haisha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "歯医者に行きます。",
+        "romaji": "Haisha ni ikimasu.",
+        "translation": "Pergi ke dokter gigi."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_haisha.png"
+  },
+  {
+    "id": "kotoba_profesi_kangofu",
+    "word": "かんごふ",
+    "kanji": "看護婦",
+    "reading": "かんごふ",
+    "romaji": "kangofu",
+    "meaning": "perawat (perempuan)",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "看護婦 (kangofu)",
+      "formal": "看護婦 (kangofu)",
+      "keigo": "看護婦 (kangofu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "看護婦さんが優しいです。",
+        "romaji": "Kangofu-san ga yasashii desu.",
+        "translation": "Perawatnya baik hati."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kangofu.png"
+  },
+  {
+    "id": "kotoba_profesi_kouchou",
+    "word": "こうちょう",
+    "kanji": "校長",
+    "reading": "こうちょう",
+    "romaji": "kouchou",
+    "meaning": "kepala sekolah",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "校長 (kouchou)",
+      "formal": "校長 (kouchou)",
+      "keigo": "校長 (kouchou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "校長先生に会います。",
+        "romaji": "Kouchou sensei ni aimasu.",
+        "translation": "Bertemu kepala sekolah."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kouchou.png"
+  },
+  {
+    "id": "kotoba_profesi_shachou",
+    "word": "しゃちょう",
+    "kanji": "社長",
+    "reading": "しゃちょう",
+    "romaji": "shachou",
+    "meaning": "presiden direktur",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "社長 (shachou)",
+      "formal": "社長 (shachou)",
+      "keigo": "社長 (shachou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "社長に会います。",
+        "romaji": "Shachou ni aimasu.",
+        "translation": "Bertemu presiden direktur."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shachou.png"
+  },
+  {
+    "id": "kotoba_profesi_tenin",
+    "word": "てんいん",
+    "kanji": "店員",
+    "reading": "てんいん",
+    "romaji": "tenin",
+    "meaning": "pegawai toko",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "店員 (tenin)",
+      "formal": "店員 (tenin)",
+      "keigo": "店員 (tenin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "店員に聞きます。",
+        "romaji": "Ten'in ni kikimasu.",
+        "translation": "Bertanya kepada pegawai toko."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenin.png"
+  },
+  {
+    "id": "kotoba_profesi_tokoya",
+    "word": "とこや",
+    "kanji": "床屋",
+    "reading": "とこや",
+    "romaji": "tokoya",
+    "meaning": "tukang cukur",
+    "jlptLevel": "N4",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "床屋 (tokoya)",
+      "formal": "床屋 (tokoya)",
+      "keigo": "床屋 (tokoya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "床屋で髪を切ります。",
+        "romaji": "Tokoya de kami o kirimasu.",
+        "translation": "Memotong rambut di tukang cukur."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tokoya.png"
   }
 ]

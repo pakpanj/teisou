@@ -358,5 +358,53 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_jigoku.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_jiin",
+    "word": "じいん",
+    "kanji": "寺院",
+    "reading": "じいん",
+    "romaji": "jiin",
+    "meaning": "kuil (Buddha)",
+    "jlptLevel": "N2",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "寺院 (jiin)",
+      "formal": "寺院 (jiin)",
+      "keigo": "寺院 (jiin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "寺院を訪れます。",
+        "romaji": "Jiin o otozuremasu.",
+        "translation": "Mengunjungi kuil."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_jiin.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_kyoukai",
+    "word": "きょうかい",
+    "kanji": "教会",
+    "reading": "きょうかい",
+    "romaji": "kyoukai",
+    "meaning": "gereja",
+    "jlptLevel": "N4",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "教会 (kyoukai)",
+      "formal": "教会 (kyoukai)",
+      "keigo": "教会 (kyoukai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "教会に行きます。",
+        "romaji": "Kyoukai ni ikimasu.",
+        "translation": "Pergi ke gereja."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_kyoukai.png"
   }
 ]

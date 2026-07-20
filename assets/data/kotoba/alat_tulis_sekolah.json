@@ -478,5 +478,29 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_tosho.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_jiten",
+    "word": "じてん",
+    "kanji": "辞典",
+    "reading": "じてん",
+    "romaji": "jiten",
+    "meaning": "kamus",
+    "jlptLevel": "N4",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "辞典 (jiten)",
+      "formal": "辞典 (jiten)",
+      "keigo": "辞典 (jiten) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "辞典で調べます。",
+        "romaji": "Jiten de shirabemasu.",
+        "translation": "Mencari di kamus."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_jiten.png"
   }
 ]

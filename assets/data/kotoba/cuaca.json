@@ -526,5 +526,29 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_nikkou.png"
+  },
+  {
+    "id": "kotoba_cuaca_kuuki",
+    "word": "くうき",
+    "kanji": "空気",
+    "reading": "くうき",
+    "romaji": "kuuki",
+    "meaning": "udara",
+    "jlptLevel": "N4",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "くうき (kuuki)",
+      "formal": "くうき (kuuki)",
+      "keigo": "くうき (kuuki) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "空気がきれいです。",
+        "romaji": "Kuuki ga kirei desu.",
+        "translation": "Udaranya bersih."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kuuki.png"
   }
 ]

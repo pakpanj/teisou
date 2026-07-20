@@ -1774,5 +1774,125 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jizen.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kondo",
+    "word": "こんど",
+    "kanji": "今度",
+    "reading": "こんど",
+    "romaji": "kondo",
+    "meaning": "kali ini/lain kali",
+    "jlptLevel": "N4",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "今度 (kondo)",
+      "formal": "今度 (kondo)",
+      "keigo": "今度 (kondo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今度会いましょう。",
+        "romaji": "Kondo aimashou.",
+        "translation": "Mari bertemu lain kali."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kondo.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_konya",
+    "word": "こんや",
+    "kanji": "今夜",
+    "reading": "こんや",
+    "romaji": "konya",
+    "meaning": "malam ini",
+    "jlptLevel": "N4",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "今夜 (konya)",
+      "formal": "今夜 (konya)",
+      "keigo": "今夜 (konya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今夜は寒いです。",
+        "romaji": "Kon'ya wa samui desu.",
+        "translation": "Malam ini dingin."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_konya.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_saikin",
+    "word": "さいきん",
+    "kanji": "最近",
+    "reading": "さいきん",
+    "romaji": "saikin",
+    "meaning": "belakangan ini",
+    "jlptLevel": "N4",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "最近 (saikin)",
+      "formal": "最近 (saikin)",
+      "keigo": "最近 (saikin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "最近忙しいです。",
+        "romaji": "Saikin isogashii desu.",
+        "translation": "Belakangan ini sibuk."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_saikin.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_saraigetsu",
+    "word": "さらいげつ",
+    "kanji": "再来月",
+    "reading": "さらいげつ",
+    "romaji": "saraigetsu",
+    "meaning": "bulan depan setelah bulan depan",
+    "jlptLevel": "N4",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "再来月 (saraigetsu)",
+      "formal": "再来月 (saraigetsu)",
+      "keigo": "再来月 (saraigetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "再来月旅行します。",
+        "romaji": "Saraigetsu ryokou shimasu.",
+        "translation": "Bepergian dua bulan lagi."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_saraigetsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_saraishuu",
+    "word": "さらいしゅう",
+    "kanji": "再来週",
+    "reading": "さらいしゅう",
+    "romaji": "saraishuu",
+    "meaning": "minggu setelah minggu depan",
+    "jlptLevel": "N4",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "再来週 (saraishuu)",
+      "formal": "再来週 (saraishuu)",
+      "keigo": "再来週 (saraishuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "再来週会います。",
+        "romaji": "Saraishuu aimasu.",
+        "translation": "Bertemu dua minggu lagi."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_saraishuu.png"
   }
 ]

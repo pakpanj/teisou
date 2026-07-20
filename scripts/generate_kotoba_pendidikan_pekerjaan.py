@@ -87,6 +87,9 @@ CATEGORIES = {
         ("tosho", "図書", "としょ", "tosho", "buku-buku (koleksi, istilah formal)", "N3", "noun", "図書", "tosho", "図書", "tosho", [
             ("図書を整理します。", "Tosho o seiri shimasu.", "Merapikan buku-buku."),
         ]),
+        ("jiten", "辞典", "じてん", "jiten", "kamus", "N4", "noun", "辞典", "jiten", "辞典", "jiten", [
+            ("辞典で調べます。", "Jiten de shirabemasu.", "Mencari di kamus."),
+        ]),
     ],
     "mata_pelajaran": [
         ("kokugo", "国語", "こくご", "kokugo", "bahasa nasional (mapel Jepang)", "N4", "noun", "国語", "kokugo", "国語", "kokugo", [
@@ -242,6 +245,63 @@ CATEGORIES = {
         ]),
         ("kadai", "課題", "かだい", "kadai", "tugas/isu", "N1", "noun", "課題", "kadai", "課題", "kadai", [
             ("課題を提出します。", "Kadai o teishutsu shimasu.", "Menyerahkan tugas."),
+        ]),
+        ("ensoku", "遠足", "えんそく", "ensoku", "tamasya sekolah", "N2", "noun", "遠足", "ensoku", "遠足", "ensoku", [
+            ("遠足に行きます。", "Ensoku ni ikimasu.", "Pergi tamasya sekolah."),
+        ]),
+        ("gakka", "学科", "がっか", "gakka", "jurusan/mata kuliah", "N2", "noun", "学科", "gakka", "学科", "gakka", [
+            ("学科を選びます。", "Gakka o erabimasu.", "Memilih jurusan."),
+        ]),
+        ("gakkai", "学会", "がっかい", "gakkai", "himpunan akademik", "N2", "noun", "学会", "gakkai", "学会", "gakkai", [
+            ("学会に出席します。", "Gakkai ni shusseki shimasu.", "Menghadiri konferensi akademik."),
+        ]),
+        ("gakuryoku", "学力", "がくりょく", "gakuryoku", "kemampuan akademik", "N2", "noun", "学力", "gakuryoku", "学力", "gakuryoku", [
+            ("学力を伸ばします。", "Gakuryoku o nobashimasu.", "Meningkatkan kemampuan akademik."),
+        ]),
+        ("jishuu", "自習", "じしゅう", "jishuu", "belajar mandiri", "N2", "noun", "自習", "jishuu", "自習", "jishuu", [
+            ("図書館で自習します。", "Toshokan de jishuu shimasu.", "Belajar mandiri di perpustakaan."),
+        ]),
+        ("jisshuu", "実習", "じっしゅう", "jisshuu", "praktik/pelatihan", "N2", "noun", "実習", "jisshuu", "実習", "jisshuu", [
+            ("実習を行います。", "Jisshuu o okonaimasu.", "Melakukan praktik."),
+        ]),
+        ("kengaku", "見学", "けんがく", "kengaku", "kunjungan observasi", "N2", "noun", "見学", "kengaku", "見学", "kengaku", [
+            ("工場を見学します。", "Koujou o kengaku shimasu.", "Mengunjungi pabrik untuk observasi."),
+        ]),
+        ("bungaku", "文学", "ぶんがく", "bungaku", "sastra", "N4", "noun", "文学", "bungaku", "文学", "bungaku", [
+            ("文学を勉強します。", "Bungaku o benkyou shimasu.", "Belajar sastra."),
+        ]),
+        ("bunpou", "文法", "ぶんぽう", "bunpou", "tata bahasa", "N4", "noun", "文法", "bunpou", "文法", "bunpou", [
+            ("文法を勉強します。", "Bunpou o benkyou shimasu.", "Belajar tata bahasa."),
+        ]),
+        ("daigakusei", "大学生", "だいがくせい", "daigakusei", "mahasiswa", "N4", "noun", "大学生", "daigakusei", "大学生", "daigakusei", [
+            ("大学生になりました。", "Daigakusei ni narimashita.", "Menjadi mahasiswa."),
+        ]),
+        ("fukushuu", "復習", "ふくしゅう", "fukushuu", "mengulang pelajaran", "N4", "noun", "復習", "fukushuu", "復習", "fukushuu", [
+            ("授業の復習をします。", "Jugyou no fukushuu o shimasu.", "Mengulang materi pelajaran."),
+        ]),
+        ("honyaku", "翻訳", "ほんやく", "honyaku", "terjemahan", "N4", "noun", "翻訳", "honyaku", "翻訳", "honyaku", [
+            ("本を翻訳します。", "Hon o honyaku shimasu.", "Menerjemahkan buku."),
+        ]),
+        ("igaku", "医学", "いがく", "igaku", "ilmu kedokteran", "N4", "noun", "医学", "igaku", "医学", "igaku", [
+            ("医学を学びます。", "Igaku o manabimasu.", "Belajar ilmu kedokteran."),
+        ]),
+        ("kaiwa", "会話", "かいわ", "kaiwa", "percakapan", "N4", "noun", "会話", "kaiwa", "会話", "kaiwa", [
+            ("会話を練習します。", "Kaiwa o renshuu shimasu.", "Berlatih percakapan."),
+        ]),
+        ("kenkyuu", "研究", "けんきゅう", "kenkyuu", "penelitian", "N4", "noun", "研究", "kenkyuu", "研究", "kenkyuu", [
+            ("研究をしています。", "Kenkyuu o shite imasu.", "Melakukan penelitian."),
+        ]),
+        ("kyouiku", "教育", "きょういく", "kyouiku", "pendidikan", "N4", "noun", "教育", "kyouiku", "教育", "kyouiku", [
+            ("教育を受けます。", "Kyouiku o ukemasu.", "Menerima pendidikan."),
+        ]),
+        ("nyuugaku", "入学", "にゅうがく", "nyuugaku", "masuk sekolah", "N4", "noun", "入学", "nyuugaku", "入学", "nyuugaku", [
+            ("大学に入学します。", "Daigaku ni nyuugaku shimasu.", "Masuk universitas."),
+        ]),
+        ("sotsugyou", "卒業", "そつぎょう", "sotsugyou", "kelulusan", "N4", "noun", "卒業", "sotsugyou", "卒業", "sotsugyou", [
+            ("大学を卒業します。", "Daigaku o sotsugyou shimasu.", "Lulus dari universitas."),
+        ]),
+        ("yoshuu", "予習", "よしゅう", "yoshuu", "belajar sebelum kelas", "N4", "noun", "予習", "yoshuu", "予習", "yoshuu", [
+            ("予習をします。", "Yoshuu o shimasu.", "Belajar sebelum kelas (pra-belajar)."),
         ]),
     ],
     "pekerjaan_kantor": [
@@ -580,6 +640,39 @@ CATEGORIES = {
         ("kabushiki", "株式", "かぶしき", "kabushiki", "saham", "N1", "noun", "株式", "kabushiki", "株式", "kabushiki", [
             ("株式を購入します。", "Kabushiki o kounyuu shimasu.", "Membeli saham."),
         ]),
+        ("baibai", "売買", "ばいばい", "baibai", "jual beli", "N2", "noun", "売買", "baibai", "売買", "baibai", [
+            ("株を売買します。", "Kabu o baibai shimasu.", "Jual beli saham."),
+        ]),
+        ("iten", "移転", "いてん", "iten", "pindah (kantor/toko)", "N2", "noun", "移転", "iten", "移転", "iten", [
+            ("事務所を移転します。", "Jimusho o iten shimasu.", "Memindahkan kantor."),
+        ]),
+        ("nyuusha", "入社", "にゅうしゃ", "nyuusha", "masuk perusahaan", "N2", "noun", "入社", "nyuusha", "入社", "nyuusha", [
+            ("会社に入社します。", "Kaisha ni nyuusha shimasu.", "Masuk bekerja di perusahaan."),
+        ]),
+        ("ryoushuu", "領収", "りょうしゅう", "ryoushuu", "penerimaan (uang)", "N2", "noun", "領収", "ryoushuu", "領収", "ryoushuu", [
+            ("領収書をもらいます。", "Ryoushuusho o moraimasu.", "Menerima kuitansi."),
+        ]),
+        ("shousha", "商社", "しょうしゃ", "shousha", "perusahaan dagang", "N2", "noun", "商社", "shousha", "商社", "shousha", [
+            ("商社で働いています。", "Shousha de hataraite imasu.", "Bekerja di perusahaan dagang."),
+        ]),
+        ("shuukai", "集会", "しゅうかい", "shuukai", "rapat umum/pertemuan", "N2", "noun", "集会", "shuukai", "集会", "shuukai", [
+            ("集会に参加します。", "Shuukai ni sanka shimasu.", "Menghadiri pertemuan."),
+        ]),
+        ("uriage", "売上", "うりあげ", "uriage", "hasil penjualan", "N2", "noun", "売上", "uriage", "売上", "uriage", [
+            ("売上が伸びました。", "Uriage ga nobimashita.", "Hasil penjualan meningkat."),
+        ]),
+        ("sangyou", "産業", "さんぎょう", "sangyou", "industri", "N4", "noun", "産業", "sangyou", "産業", "sangyou", [
+            ("産業が発展しています。", "Sangyou ga hatten shite imasu.", "Industri berkembang."),
+        ]),
+        ("seisan", "生産", "せいさん", "seisan", "produksi", "N4", "noun", "生産", "seisan", "生産", "seisan", [
+            ("製品を生産します。", "Seihin o seisan shimasu.", "Memproduksi barang."),
+        ]),
+        ("shinamono", "品物", "しなもの", "shinamono", "barang", "N4", "noun", "品物", "shinamono", "品物", "shinamono", [
+            ("品物を確認します。", "Shinamono o kakunin shimasu.", "Memeriksa barang."),
+        ]),
+        ("shinbunsha", "新聞社", "しんぶんしゃ", "shinbunsha", "perusahaan koran", "N4", "noun", "新聞社", "shinbunsha", "新聞社", "shinbunsha", [
+            ("新聞社で働いています。", "Shinbunsha de hataraite imasu.", "Bekerja di perusahaan koran."),
+        ]),
     ],
     "teknologi_gadget": [
         ("konpyuutaa", None, "コンピューター", "konpyuutaa", "komputer", "N4", "noun", "コンピューター", "konpyuutaa", "コンピューター", "konpyuutaa", [
@@ -705,6 +798,15 @@ CATEGORIES = {
         ("kaihatsu", "開発", "かいはつ", "kaihatsu", "pengembangan", "N1", "noun", "開発", "kaihatsu", "開発", "kaihatsu", [
             ("新製品を開発します。", "Shin seihin o kaihatsu shimasu.", "Mengembangkan produk baru."),
         ]),
+        ("denpou", "電報", "でんぽう", "denpou", "telegram", "N4", "noun", "電報", "denpou", "電報", "denpou", [
+            ("電報を送ります。", "Denpou o okurimasu.", "Mengirim telegram."),
+        ]),
+        ("kagaku", "科学", "かがく", "kagaku", "sains", "N4", "noun", "科学", "kagaku", "科学", "kagaku", [
+            ("科学を勉強します。", "Kagaku o benkyou shimasu.", "Belajar sains."),
+        ]),
+        ("koshou", "故障", "こしょう", "koshou", "kerusakan (mesin)", "N4", "noun", "故障", "koshou", "故障", "koshou", [
+            ("車が故障しました。", "Kuruma ga koshou shimashita.", "Mobil rusak."),
+        ]),
     ],
     "media_hiburan": [
         ("terebi", None, "テレビ", "terebi", "televisi", "N5", "noun", "テレビ", "terebi", "テレビ", "terebi", [
@@ -787,6 +889,15 @@ CATEGORIES = {
         ]),
         ("shuukan", "週刊", "しゅうかん", "shuukan", "terbitan mingguan", "N3", "noun", "週刊", "shuukan", "週刊", "shuukan", [
             ("週刊誌を読みます。", "Shuukanshi o yomimasu.", "Membaca majalah mingguan."),
+        ]),
+        ("shasetsu", "社説", "しゃせつ", "shasetsu", "editorial (koran)", "N2", "noun", "社説", "shasetsu", "社説", "shasetsu", [
+            ("社説を読みます。", "Shasetsu o yomimasu.", "Membaca editorial."),
+        ]),
+        ("bangumi", "番組", "ばんぐみ", "bangumi", "acara (TV/radio)", "N4", "noun", "番組", "bangumi", "番組", "bangumi", [
+            ("テレビ番組を見ます。", "Terebi bangumi o mimasu.", "Menonton acara TV."),
+        ]),
+        ("shousetsu", "小説", "しょうせつ", "shousetsu", "novel", "N4", "noun", "小説", "shousetsu", "小説", "shousetsu", [
+            ("小説を読みます。", "Shousetsu o yomimasu.", "Membaca novel."),
         ]),
     ],
 }

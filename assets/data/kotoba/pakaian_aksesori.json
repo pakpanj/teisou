@@ -502,5 +502,77 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_ishou.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_kakkou",
+    "word": "かっこう",
+    "kanji": "格好",
+    "reading": "かっこう",
+    "romaji": "kakkou",
+    "meaning": "penampilan",
+    "jlptLevel": "N4",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "格好 (kakkou)",
+      "formal": "格好 (kakkou)",
+      "keigo": "格好 (kakkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "格好がいいですね。",
+        "romaji": "Kakkou ga ii desu ne.",
+        "translation": "Penampilannya bagus ya."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kakkou.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_momen",
+    "word": "もめん",
+    "kanji": "木綿",
+    "reading": "もめん",
+    "romaji": "momen",
+    "meaning": "katun",
+    "jlptLevel": "N4",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "木綿 (momen)",
+      "formal": "木綿 (momen)",
+      "keigo": "木綿 (momen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "木綿のシャツです。",
+        "romaji": "Momen no shatsu desu.",
+        "translation": "Kemeja katun."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_momen.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_shitagi",
+    "word": "したぎ",
+    "kanji": "下着",
+    "reading": "したぎ",
+    "romaji": "shitagi",
+    "meaning": "pakaian dalam",
+    "jlptLevel": "N4",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "下着 (shitagi)",
+      "formal": "下着 (shitagi)",
+      "keigo": "下着 (shitagi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "下着を洗います。",
+        "romaji": "Shitagi o araimasu.",
+        "translation": "Mencuci pakaian dalam."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_shitagi.png"
   }
 ]

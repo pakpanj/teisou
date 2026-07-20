@@ -550,5 +550,101 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kurumaisu.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_geka",
+    "word": "げか",
+    "kanji": "外科",
+    "reading": "げか",
+    "romaji": "geka",
+    "meaning": "bedah (bidang medis)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "外科 (geka)",
+      "formal": "外科 (geka)",
+      "keigo": "外科 (geka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "外科で手術します。",
+        "romaji": "Geka de shujutsu shimasu.",
+        "translation": "Operasi di bagian bedah."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_geka.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_naika",
+    "word": "ないか",
+    "kanji": "内科",
+    "reading": "ないか",
+    "romaji": "naika",
+    "meaning": "penyakit dalam (bidang medis)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "内科 (naika)",
+      "formal": "内科 (naika)",
+      "keigo": "内科 (naika) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "内科に行きます。",
+        "romaji": "Naika ni ikimasu.",
+        "translation": "Pergi ke dokter penyakit dalam."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_naika.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_yuketsu",
+    "word": "ゆけつ",
+    "kanji": "輸血",
+    "reading": "ゆけつ",
+    "romaji": "yuketsu",
+    "meaning": "transfusi darah",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "輸血 (yuketsu)",
+      "formal": "輸血 (yuketsu)",
+      "keigo": "輸血 (yuketsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "輸血を受けます。",
+        "romaji": "Yuketsu o ukemasu.",
+        "translation": "Menerima transfusi darah."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_yuketsu.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_nyuuin",
+    "word": "にゅういん",
+    "kanji": "入院",
+    "reading": "にゅういん",
+    "romaji": "nyuuin",
+    "meaning": "dirawat di RS",
+    "jlptLevel": "N4",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "入院 (nyuuin)",
+      "formal": "入院 (nyuuin)",
+      "keigo": "入院 (nyuuin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "入院しました。",
+        "romaji": "Nyuuin shimashita.",
+        "translation": "Dirawat di rumah sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_nyuuin.png"
   }
 ]

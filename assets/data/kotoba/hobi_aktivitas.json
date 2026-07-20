@@ -742,5 +742,125 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_chousen.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_shuuji",
+    "word": "しゅうじ",
+    "kanji": "習字",
+    "reading": "しゅうじ",
+    "romaji": "shuuji",
+    "meaning": "kaligrafi",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "習字 (shuuji)",
+      "formal": "習字 (shuuji)",
+      "keigo": "習字 (shuuji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "習字を習っています。",
+        "romaji": "Shuuji o naratte imasu.",
+        "translation": "Belajar kaligrafi."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shuuji.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_hanami",
+    "word": "はなみ",
+    "kanji": "花見",
+    "reading": "はなみ",
+    "romaji": "hanami",
+    "meaning": "melihat bunga sakura",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "花見 (hanami)",
+      "formal": "花見 (hanami)",
+      "keigo": "花見 (hanami) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "花見に行きます。",
+        "romaji": "Hanami ni ikimasu.",
+        "translation": "Pergi melihat bunga sakura."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_hanami.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_kenbutsu",
+    "word": "けんぶつ",
+    "kanji": "見物",
+    "reading": "けんぶつ",
+    "romaji": "kenbutsu",
+    "meaning": "melihat-lihat (wisata)",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "見物 (kenbutsu)",
+      "formal": "見物 (kenbutsu)",
+      "keigo": "見物 (kenbutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "お祭りを見物します。",
+        "romaji": "Omatsuri o kenbutsu shimasu.",
+        "translation": "Melihat-lihat festival."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kenbutsu.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_ningyou",
+    "word": "にんぎょう",
+    "kanji": "人形",
+    "reading": "にんぎょう",
+    "romaji": "ningyou",
+    "meaning": "boneka",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "人形 (ningyou)",
+      "formal": "人形 (ningyou)",
+      "keigo": "人形 (ningyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "人形で遊びます。",
+        "romaji": "Ningyou de asobimasu.",
+        "translation": "Bermain boneka."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ningyou.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_tenrankai",
+    "word": "てんらんかい",
+    "kanji": "展覧会",
+    "reading": "てんらんかい",
+    "romaji": "tenrankai",
+    "meaning": "pameran",
+    "jlptLevel": "N4",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "展覧会 (tenrankai)",
+      "formal": "展覧会 (tenrankai)",
+      "keigo": "展覧会 (tenrankai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "展覧会を見ます。",
+        "romaji": "Tenrankai o mimasu.",
+        "translation": "Melihat pameran."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_tenrankai.png"
   }
 ]

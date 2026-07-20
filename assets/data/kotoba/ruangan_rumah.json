@@ -430,5 +430,53 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shosai.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_geshuku",
+    "word": "げしゅく",
+    "kanji": "下宿",
+    "reading": "げしゅく",
+    "romaji": "geshuku",
+    "meaning": "kos/indekos",
+    "jlptLevel": "N4",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "下宿 (geshuku)",
+      "formal": "下宿 (geshuku)",
+      "keigo": "下宿 (geshuku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "下宿に住んでいます。",
+        "romaji": "Geshuku ni sunde imasu.",
+        "translation": "Tinggal di tempat kos."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_geshuku.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_suidou",
+    "word": "すいどう",
+    "kanji": "水道",
+    "reading": "すいどう",
+    "romaji": "suidou",
+    "meaning": "saluran air (PAM)",
+    "jlptLevel": "N4",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "水道 (suidou)",
+      "formal": "水道 (suidou)",
+      "keigo": "水道 (suidou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "水道を使います。",
+        "romaji": "Suidou o tsukaimasu.",
+        "translation": "Menggunakan air ledeng."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_suidou.png"
   }
 ]

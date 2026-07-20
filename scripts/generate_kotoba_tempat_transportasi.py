@@ -82,6 +82,12 @@ CATEGORIES = {
         ("shosai", "書斎", "しょさい", "shosai", "ruang kerja/studi pribadi", "N3", "noun", "書斎", "shosai", "書斎", "shosai", [
             ("書斎で本を読みます。", "Shosai de hon o yomimasu.", "Membaca buku di ruang kerja."),
         ]),
+        ("geshuku", "下宿", "げしゅく", "geshuku", "kos/indekos", "N4", "noun", "下宿", "geshuku", "下宿", "geshuku", [
+            ("下宿に住んでいます。", "Geshuku ni sunde imasu.", "Tinggal di tempat kos."),
+        ]),
+        ("suidou", "水道", "すいどう", "suidou", "saluran air (PAM)", "N4", "noun", "水道", "suidou", "水道", "suidou", [
+            ("水道を使います。", "Suidou o tsukaimasu.", "Menggunakan air ledeng."),
+        ]),
     ],
     "perabot_rumah": [
         ("isu", "椅子", "いす", "isu", "kursi", "N5", "noun", "椅子", "isu", "椅子", "isu", [
@@ -142,6 +148,12 @@ CATEGORIES = {
         ]),
         ("soujiki", "掃除機", "そうじき", "soujiki", "penyedot debu", "N2", "noun", "掃除機", "soujiki", "掃除機", "soujiki", [
             ("掃除機で部屋を掃除します。", "Soujiki de heya o souji shimasu.", "Saya membersihkan kamar dengan vacuum cleaner."),
+        ]),
+        ("dentou", "電灯", "でんとう", "dentou", "lampu listrik", "N4", "noun", "電灯", "dentou", "電灯", "dentou", [
+            ("電灯をつけます。", "Dentou o tsukemasu.", "Menyalakan lampu listrik."),
+        ]),
+        ("futon", "布団", "ふとん", "futon", "kasur lipat Jepang", "N4", "noun", "布団", "futon", "布団", "futon", [
+            ("布団を敷きます。", "Futon o shikimasu.", "Menghamparkan futon."),
         ]),
     ],
     "bangunan_fasilitas": [
@@ -312,6 +324,69 @@ CATEGORIES = {
         ("houtei", "法廷", "ほうてい", "houtei", "ruang sidang pengadilan", "N1", "noun", "法廷", "houtei", "法廷", "houtei", [
             ("法廷で証言します。", "Houtei de shougen shimasu.", "Bersaksi di ruang sidang."),
         ]),
+        ("deiriguchi", "出入口", "でいりぐち", "deiriguchi", "pintu keluar masuk", "N2", "noun", "出入口", "deiriguchi", "出入口", "deiriguchi", [
+            ("出入口はこちらです。", "Deiriguchi wa kochira desu.", "Pintu keluar masuk ada di sini."),
+        ]),
+        ("kaikan", "会館", "かいかん", "kaikan", "gedung pertemuan", "N2", "noun", "会館", "kaikan", "会館", "kaikan", [
+            ("会館で結婚式をします。", "Kaikan de kekkonshiki o shimasu.", "Mengadakan pernikahan di gedung pertemuan."),
+        ]),
+        ("kousha", "校舎", "こうしゃ", "kousha", "gedung sekolah", "N2", "noun", "校舎", "kousha", "校舎", "kousha", [
+            ("新しい校舎ができました。", "Atarashii kousha ga dekimashita.", "Gedung sekolah baru sudah jadi."),
+        ]),
+        ("koutei", "校庭", "こうてい", "koutei", "halaman sekolah", "N2", "noun", "校庭", "koutei", "校庭", "koutei", [
+            ("校庭で遊びます。", "Koutei de asobimasu.", "Bermain di halaman sekolah."),
+        ]),
+        ("machiaishitsu", "待合室", "まちあいしつ", "machiaishitsu", "ruang tunggu", "N2", "noun", "待合室", "machiaishitsu", "待合室", "machiaishitsu", [
+            ("待合室で待ちます。", "Machiaishitsu de machimasu.", "Menunggu di ruang tunggu."),
+        ]),
+        ("miseya", "店屋", "みせや", "miseya", "toko/kedai", "N2", "noun", "店屋", "miseya", "店屋", "miseya", [
+            ("店屋で買い物します。", "Miseya de kaimono shimasu.", "Berbelanja di toko."),
+        ]),
+        ("shoten", "書店", "しょてん", "shoten", "toko buku", "N2", "noun", "書店", "shoten", "書店", "shoten", [
+            ("書店で本を買います。", "Shoten de hon o kaimasu.", "Membeli buku di toko buku."),
+        ]),
+        ("shouten", "商店", "しょうてん", "shouten", "toko", "N2", "noun", "商店", "shouten", "商店", "shouten", [
+            ("商店で働きます。", "Shouten de hatarakimasu.", "Bekerja di toko."),
+        ]),
+        ("sokutatsu", "速達", "そくたつ", "sokutatsu", "pos kilat", "N2", "noun", "速達", "sokutatsu", "速達", "sokutatsu", [
+            ("速達で送ります。", "Sokutatsu de okurimasu.", "Mengirim dengan pos kilat."),
+        ]),
+        ("annai", "案内", "あんない", "annai", "pemanduan/petunjuk", "N4", "noun", "案内", "annai", "案内", "annai", [
+            ("案内をお願いします。", "Annai o onegai shimasu.", "Tolong berikan petunjuk."),
+        ]),
+        ("chuugakkou", "中学校", "ちゅうがっこう", "chuugakkou", "SMP", "N4", "noun", "中学校", "chuugakkou", "中学校", "chuugakkou", [
+            ("中学校に通っています。", "Chuugakkou ni kayotte imasu.", "Sekolah di SMP."),
+        ]),
+        ("chuushajou", "駐車場", "ちゅうしゃじょう", "chuushajou", "tempat parkir", "N4", "noun", "駐車場", "chuushajou", "駐車場", "chuushajou", [
+            ("駐車場に車を止めます。", "Chuushajou ni kuruma o tomemasu.", "Memarkir mobil di tempat parkir."),
+        ]),
+        ("hikoujou", "飛行場", "ひこうじょう", "hikoujou", "bandara/lapangan udara", "N4", "noun", "飛行場", "hikoujou", "飛行場", "hikoujou", [
+            ("飛行場に着きました。", "Hikoujou ni tsukimashita.", "Tiba di bandara."),
+        ]),
+        ("kaigishitsu", "会議室", "かいぎしつ", "kaigishitsu", "ruang rapat", "N4", "noun", "会議室", "kaigishitsu", "会議室", "kaigishitsu", [
+            ("会議室で話します。", "Kaigishitsu de hanashimasu.", "Berbicara di ruang rapat."),
+        ]),
+        ("kenkyuushitsu", "研究室", "けんきゅうしつ", "kenkyuushitsu", "ruang penelitian/lab", "N4", "noun", "研究室", "kenkyuushitsu", "研究室", "kenkyuushitsu", [
+            ("研究室で実験します。", "Kenkyuushitsu de jikken shimasu.", "Melakukan eksperimen di lab."),
+        ]),
+        ("koudou", "講堂", "こうどう", "koudou", "aula", "N4", "noun", "講堂", "koudou", "講堂", "koudou", [
+            ("講堂で式をします。", "Koudou de shiki o shimasu.", "Mengadakan upacara di aula."),
+        ]),
+        ("koukou", "高校", "こうこう", "koukou", "SMA", "N4", "noun", "高校", "koukou", "高校", "koukou", [
+            ("高校に通っています。", "Koukou ni kayotte imasu.", "Sekolah di SMA."),
+        ]),
+        ("okujou", "屋上", "おくじょう", "okujou", "atap gedung (rooftop)", "N4", "noun", "屋上", "okujou", "屋上", "okujou", [
+            ("屋上に上がります。", "Okujou ni agarimasu.", "Naik ke atap gedung."),
+        ]),
+        ("shougakkou", "小学校", "しょうがっこう", "shougakkou", "SD", "N4", "noun", "小学校", "shougakkou", "小学校", "shougakkou", [
+            ("小学校に通っています。", "Shougakkou ni kayotte imasu.", "Sekolah di SD."),
+        ]),
+        ("uketsuke", "受付", "うけつけ", "uketsuke", "penerimaan/resepsionis", "N4", "noun", "受付", "uketsuke", "受付", "uketsuke", [
+            ("受付で聞きます。", "Uketsuke de kikimasu.", "Bertanya di resepsionis."),
+        ]),
+        ("yoyaku", "予約", "よやく", "yoyaku", "reservasi", "N4", "noun", "予約", "yoyaku", "予約", "yoyaku", [
+            ("レストランを予約します。", "Resutoran o yoyaku shimasu.", "Memesan (reservasi) restoran."),
+        ]),
     ],
     "kendaraan": [
         ("kuruma", "車", "くるま", "kuruma", "mobil", "N5", "noun", "車", "kuruma", "車", "kuruma", [
@@ -415,6 +490,30 @@ CATEGORIES = {
         ("jouriku", "上陸", "じょうりく", "jouriku", "pendaratan (di darat)", "N1", "noun", "上陸", "jouriku", "上陸", "jouriku", [
             ("台風が上陸しました。", "Taifuu ga jouriku shimashita.", "Topan mendarat di daratan."),
         ]),
+        ("jisoku", "時速", "じそく", "jisoku", "kecepatan per jam", "N2", "noun", "時速", "jisoku", "時速", "jisoku", [
+            ("時速80キロで走ります。", "Jisoku hachijuu kiro de hashirimasu.", "Melaju dengan kecepatan 80 km/jam."),
+        ]),
+        ("kasoku", "加速", "かそく", "kasoku", "akselerasi", "N2", "noun", "加速", "kasoku", "加速", "kasoku", [
+            ("車が加速します。", "Kuruma ga kasoku shimasu.", "Mobil berakselerasi."),
+        ]),
+        ("kasokudo", "加速度", "かそくど", "kasokudo", "tingkat akselerasi", "N2", "noun", "加速度", "kasokudo", "加速度", "kasokudo", [
+            ("加速度を計算します。", "Kasokudo o keisan shimasu.", "Menghitung tingkat akselerasi."),
+        ]),
+        ("sokuryoku", "速力", "そくりょく", "sokuryoku", "kecepatan", "N2", "noun", "速力", "sokuryoku", "速力", "sokuryoku", [
+            ("速力を上げます。", "Sokuryoku o agemasu.", "Menambah kecepatan."),
+        ]),
+        ("yusou", "輸送", "ゆそう", "yusou", "pengangkutan barang", "N2", "noun", "輸送", "yusou", "輸送", "yusou", [
+            ("荷物を輸送します。", "Nimotsu o yusou shimasu.", "Mengangkut barang."),
+        ]),
+        ("kisha", "汽車", "きしゃ", "kisha", "kereta (uap, lama)", "N4", "noun", "汽車", "kisha", "汽車", "kisha", [
+            ("汽車に乗ります。", "Kisha ni norimasu.", "Naik kereta."),
+        ]),
+        ("kyuukou", "急行", "きゅうこう", "kyuukou", "kereta cepat", "N4", "noun", "急行", "kyuukou", "急行", "kyuukou", [
+            ("急行に乗ります。", "Kyuukou ni norimasu.", "Naik kereta cepat."),
+        ]),
+        ("tokkyuu", "特急", "とっきゅう", "tokkyuu", "kereta ekspres", "N4", "noun", "特急", "tokkyuu", "特急", "tokkyuu", [
+            ("特急に乗ります。", "Tokkyuu ni norimasu.", "Naik kereta ekspres."),
+        ]),
     ],
     "arah_lokasi": [
         ("migi", "右", "みぎ", "migi", "kanan", "N5", "noun", "右", "migi", "右", "migi", [
@@ -517,6 +616,27 @@ CATEGORIES = {
         ]),
         ("jimoto", "地元", "じもと", "jimoto", "daerah asal/setempat", "N1", "noun", "地元", "jimoto", "地元", "jimoto", [
             ("地元に帰ります。", "Jimoto ni kaerimasu.", "Pulang ke daerah asal."),
+        ]),
+        ("hantou", "半島", "はんとう", "hantou", "semenanjung", "N2", "noun", "半島", "hantou", "半島", "hantou", [
+            ("半島を旅行します。", "Hantou o ryokou shimasu.", "Bepergian ke semenanjung."),
+        ]),
+        ("namiki", "並木", "なみき", "namiki", "deretan pohon", "N2", "noun", "並木", "namiki", "並木", "namiki", [
+            ("並木道を歩きます。", "Namikimichi o arukimasu.", "Berjalan di jalan berderet pohon."),
+        ]),
+        ("sekidou", "赤道", "せきどう", "sekidou", "garis khatulistiwa", "N2", "noun", "赤道", "sekidou", "赤道", "sekidou", [
+            ("赤道を通過します。", "Sekidou o tsuuka shimasu.", "Melintasi garis khatulistiwa."),
+        ]),
+        ("basho", "場所", "ばしょ", "basho", "tempat/lokasi", "N4", "noun", "場所", "basho", "場所", "basho", [
+            ("集合場所を確認します。", "Shuugou basho o kakunin shimasu.", "Memeriksa tempat berkumpul."),
+        ]),
+        ("kaigan", "海岸", "かいがん", "kaigan", "pantai", "N4", "noun", "海岸", "kaigan", "海岸", "kaigan", [
+            ("海岸を歩きます。", "Kaigan o arukimasu.", "Berjalan di pantai."),
+        ]),
+        ("kaijou", "会場", "かいじょう", "kaijou", "tempat acara", "N4", "noun", "会場", "kaijou", "会場", "kaijou", [
+            ("会場に到着しました。", "Kaijou ni touchaku shimashita.", "Tiba di tempat acara."),
+        ]),
+        ("kougai", "郊外", "こうがい", "kougai", "pinggiran kota", "N4", "noun", "郊外", "kougai", "郊外", "kougai", [
+            ("郊外に住んでいます。", "Kougai ni sunde imasu.", "Tinggal di pinggiran kota."),
         ]),
     ],
     "negara_kota": [
@@ -660,6 +780,33 @@ CATEGORIES = {
         ]),
         ("kainyuu", "介入", "かいにゅう", "kainyuu", "intervensi", "N1", "noun", "介入", "kainyuu", "介入", "kainyuu", [
             ("政府が介入します。", "Seifu ga kainyuu shimasu.", "Pemerintah melakukan intervensi."),
+        ]),
+        ("kokuou", "国王", "こくおう", "kokuou", "raja", "N2", "noun", "国王", "kokuou", "国王", "kokuou", [
+            ("国王が訪問します。", "Kokuou ga houmon shimasu.", "Raja berkunjung."),
+        ]),
+        ("kokuritsu", "国立", "こくりつ", "kokuritsu", "negeri (nasional)", "N2", "noun", "国立", "kokuritsu", "国立", "kokuritsu", [
+            ("国立大学に入学します。", "Kokuritsu daigaku ni nyuugaku shimasu.", "Masuk universitas negeri."),
+        ]),
+        ("kokuseki", "国籍", "こくせき", "kokuseki", "kewarganegaraan", "N2", "noun", "国籍", "kokuseki", "国籍", "kokuseki", [
+            ("国籍を取得します。", "Kokuseki o shutoku shimasu.", "Memperoleh kewarganegaraan."),
+        ]),
+        ("touyou", "東洋", "とうよう", "touyou", "Timur (Asia)", "N2", "noun", "東洋", "touyou", "東洋", "touyou", [
+            ("東洋の文化を学びます。", "Touyou no bunka o manabimasu.", "Belajar budaya Timur."),
+        ]),
+        ("jinkou", "人口", "じんこう", "jinkou", "populasi", "N4", "noun", "人口", "jinkou", "人口", "jinkou", [
+            ("人口が増えています。", "Jinkou ga fuete imasu.", "Populasi bertambah."),
+        ]),
+        ("seiji", "政治", "せいじ", "seiji", "politik", "N4", "noun", "政治", "seiji", "政治", "seiji", [
+            ("政治に興味があります。", "Seiji ni kyoumi ga arimasu.", "Tertarik pada politik."),
+        ]),
+        ("seiyou", "西洋", "せいよう", "seiyou", "Barat (dunia)", "N4", "noun", "西洋", "seiyou", "西洋", "seiyou", [
+            ("西洋の文化を学びます。", "Seiyou no bunka o manabimasu.", "Belajar budaya Barat."),
+        ]),
+        ("sekai", "世界", "せかい", "sekai", "dunia", "N4", "noun", "世界", "sekai", "世界", "sekai", [
+            ("世界を旅行します。", "Sekai o ryokou shimasu.", "Bepergian keliling dunia."),
+        ]),
+        ("sensou", "戦争", "せんそう", "sensou", "perang", "N4", "noun", "戦争", "sensou", "戦争", "sensou", [
+            ("戦争が終わりました。", "Sensou ga owarimashita.", "Perang telah berakhir."),
         ]),
     ],
 }

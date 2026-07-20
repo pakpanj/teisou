@@ -128,6 +128,9 @@ CATEGORIES = {
         ("inko", None, "インコ", "inko", "burung parkit", "N3", [
             ("インコを飼っています。", "Inko o katte imasu.", "Saya memelihara burung parkit."),
         ]),
+        ("kodori", "小鳥", "こどり", "kodori", "burung kecil", "N4", [
+            ("小鳥が鳴いています。", "Kotori ga naite imasu.", "Burung kecil berkicau."),
+        ]),
     ]),
     "serangga": ("nama serangga", [
         ("mushi", "虫", "むし", "mushi", "serangga", "N5", [
@@ -387,6 +390,9 @@ CATEGORIES = {
         ]),
         ("nikkou", "日光", "にっこう", "nikkou", "sinar matahari", "N2", [
             ("日光が強いですね。", "Nikkou ga tsuyoi desu ne.", "Sinar matahari kuat ya."),
+        ]),
+        ("kuuki", "空気", "くうき", "kuuki", "udara", "N4", [
+            ("空気がきれいです。", "Kuuki ga kirei desu.", "Udaranya bersih."),
         ]),
     ]),
     "bencana_alam": ("istilah bencana alam", [

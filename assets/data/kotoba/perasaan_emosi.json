@@ -1270,5 +1270,149 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kakushin.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_ijiwaru",
+    "word": "いじわる",
+    "kanji": "意地悪",
+    "reading": "いじわる",
+    "romaji": "ijiwaru",
+    "meaning": "jahat/usil",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "意地悪 (ijiwaru)",
+      "formal": "意地悪 (ijiwaru)",
+      "keigo": "意地悪 (ijiwaru) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "意地悪なことを言わないでください。",
+        "romaji": "Ijiwaru na koto o iwanaide kudasai.",
+        "translation": "Jangan mengatakan hal yang usil."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_ijiwaru.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kenka",
+    "word": "けんか",
+    "kanji": "喧嘩",
+    "reading": "けんか",
+    "romaji": "kenka",
+    "meaning": "bertengkar",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "喧嘩 (kenka)",
+      "formal": "喧嘩 (kenka)",
+      "keigo": "喧嘩 (kenka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "喧嘩をしました。",
+        "romaji": "Kenka o shimashita.",
+        "translation": "Bertengkar."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kenka.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kibun",
+    "word": "きぶん",
+    "kanji": "気分",
+    "reading": "きぶん",
+    "romaji": "kibun",
+    "meaning": "perasaan/mood",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "気分 (kibun)",
+      "formal": "気分 (kibun)",
+      "keigo": "気分 (kibun) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "気分がいいです。",
+        "romaji": "Kibun ga ii desu.",
+        "translation": "Perasaan saya baik."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kibun.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_shinsetsu",
+    "word": "しんせつ",
+    "kanji": "親切",
+    "reading": "しんせつ",
+    "romaji": "shinsetsu",
+    "meaning": "ramah/baik hati",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "親切 (shinsetsu)",
+      "formal": "親切 (shinsetsu)",
+      "keigo": "親切 (shinsetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は親切です。",
+        "romaji": "Kare wa shinsetsu desu.",
+        "translation": "Dia baik hati."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_shinsetsu.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_teinei",
+    "word": "ていねい",
+    "kanji": "丁寧",
+    "reading": "ていねい",
+    "romaji": "teinei",
+    "meaning": "sopan",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "丁寧 (teinei)",
+      "formal": "丁寧 (teinei)",
+      "keigo": "丁寧 (teinei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "丁寧に話します。",
+        "romaji": "Teinei ni hanashimasu.",
+        "translation": "Berbicara dengan sopan."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_teinei.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_zannen",
+    "word": "ざんねん",
+    "kanji": "残念",
+    "reading": "ざんねん",
+    "romaji": "zannen",
+    "meaning": "sayang/menyesal",
+    "jlptLevel": "N4",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "残念 (zannen)",
+      "formal": "残念 (zannen)",
+      "keigo": "残念 (zannen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "残念です。",
+        "romaji": "Zannen desu.",
+        "translation": "Sayang sekali."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_zannen.png"
   }
 ]

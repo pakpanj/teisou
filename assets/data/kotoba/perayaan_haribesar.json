@@ -382,5 +382,53 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_shoutai.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_enkai",
+    "word": "えんかい",
+    "kanji": "宴会",
+    "reading": "えんかい",
+    "romaji": "enkai",
+    "meaning": "pesta/jamuan",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "宴会 (enkai)",
+      "formal": "宴会 (enkai)",
+      "keigo": "宴会 (enkai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "宴会に参加します。",
+        "romaji": "Enkai ni sanka shimasu.",
+        "translation": "Ikut pesta jamuan."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_enkai.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_kaikai",
+    "word": "かいかい",
+    "kanji": "開会",
+    "reading": "かいかい",
+    "romaji": "kaikai",
+    "meaning": "pembukaan acara",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "開会 (kaikai)",
+      "formal": "開会 (kaikai)",
+      "keigo": "開会 (kaikai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "開会のあいさつをします。",
+        "romaji": "Kaikai no aisatsu o shimasu.",
+        "translation": "Menyampaikan sambutan pembukaan."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kaikai.png"
   }
 ]

@@ -166,5 +166,77 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_chouhoukei.png"
+  },
+  {
+    "id": "kotoba_bentuk_daen",
+    "word": "だえん",
+    "kanji": "楕円",
+    "reading": "だえん",
+    "romaji": "daen",
+    "meaning": "elips",
+    "jlptLevel": "N2",
+    "category": "bentuk",
+    "wordType": "noun",
+    "registers": {
+      "casual": "楕円 (daen)",
+      "formal": "楕円 (daen)",
+      "keigo": "楕円 (daen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "これは楕円の形です。",
+        "romaji": "Kore wa daen no katachi desu.",
+        "translation": "Ini bentuk elips."
+      }
+    ],
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_daen.png"
+  },
+  {
+    "id": "kotoba_bentuk_enshuu",
+    "word": "えんしゅう",
+    "kanji": "円周",
+    "reading": "えんしゅう",
+    "romaji": "enshuu",
+    "meaning": "keliling lingkaran",
+    "jlptLevel": "N2",
+    "category": "bentuk",
+    "wordType": "noun",
+    "registers": {
+      "casual": "円周 (enshuu)",
+      "formal": "円周 (enshuu)",
+      "keigo": "円周 (enshuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "円周を計算します。",
+        "romaji": "Enshuu o keisan shimasu.",
+        "translation": "Menghitung keliling lingkaran."
+      }
+    ],
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_enshuu.png"
+  },
+  {
+    "id": "kotoba_bentuk_hankei",
+    "word": "はんけい",
+    "kanji": "半径",
+    "reading": "はんけい",
+    "romaji": "hankei",
+    "meaning": "radius",
+    "jlptLevel": "N2",
+    "category": "bentuk",
+    "wordType": "noun",
+    "registers": {
+      "casual": "半径 (hankei)",
+      "formal": "半径 (hankei)",
+      "keigo": "半径 (hankei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "円の半径を測ります。",
+        "romaji": "En no hankei o hakarimasu.",
+        "translation": "Mengukur radius lingkaran."
+      }
+    ],
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_hankei.png"
   }
 ]
