@@ -406,5 +406,149 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_jouzai.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_eiyou",
+    "word": "えいよう",
+    "kanji": "栄養",
+    "reading": "えいよう",
+    "romaji": "eiyou",
+    "meaning": "gizi/nutrisi",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "栄養 (eiyou)",
+      "formal": "栄養 (eiyou)",
+      "keigo": "栄養 (eiyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "栄養をしっかり取ります。",
+        "romaji": "Eiyou o shikkari torimasu.",
+        "translation": "Mengonsumsi nutrisi dengan baik."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_eiyou.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_kango",
+    "word": "かんご",
+    "kanji": "看護",
+    "reading": "かんご",
+    "romaji": "kango",
+    "meaning": "perawatan (medis)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "看護 (kango)",
+      "formal": "看護 (kango)",
+      "keigo": "看護 (kango) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "母を看護しています。",
+        "romaji": "Haha o kango shite imasu.",
+        "translation": "Saya merawat ibu."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kango.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_kenkou",
+    "word": "けんこう",
+    "kanji": "健康",
+    "reading": "けんこう",
+    "romaji": "kenkou",
+    "meaning": "kesehatan",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "健康 (kenkou)",
+      "formal": "健康 (kenkou)",
+      "keigo": "健康 (kenkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "健康が大切です。",
+        "romaji": "Kenkou ga taisetsu desu.",
+        "translation": "Kesehatan itu penting."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenkou.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_kensa",
+    "word": "けんさ",
+    "kanji": "検査",
+    "reading": "けんさ",
+    "romaji": "kensa",
+    "meaning": "pemeriksaan",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "検査 (kensa)",
+      "formal": "検査 (kensa)",
+      "keigo": "検査 (kensa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "荷物を検査します。",
+        "romaji": "Nimotsu o kensa shimasu.",
+        "translation": "Memeriksa barang. (kesehatan, mesin, kalitas)"
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kensa.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_shujutsu",
+    "word": "しゅじゅつ",
+    "kanji": "手術",
+    "reading": "しゅじゅつ",
+    "romaji": "shujutsu",
+    "meaning": "operasi (medis)",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "手術 (shujutsu)",
+      "formal": "手術 (shujutsu)",
+      "keigo": "手術 (shujutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "手術を受けました。",
+        "romaji": "Shujutsu o ukemashita.",
+        "translation": "Menjalani operasi."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shujutsu.png"
+  },
+  {
+    "id": "kotoba_obat_obatan_kurumaisu",
+    "word": "くるまいす",
+    "kanji": "車椅子",
+    "reading": "くるまいす",
+    "romaji": "kurumaisu",
+    "meaning": "kursi roda",
+    "jlptLevel": "N2",
+    "category": "obat_obatan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "車椅子 (kurumaisu)",
+      "formal": "車椅子 (kurumaisu)",
+      "keigo": "車椅子 (kurumaisu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "車椅子を押します。",
+        "romaji": "Kurumaisu o oshimasu.",
+        "translation": "Mendorong kursi roda."
+      }
+    ],
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kurumaisu.png"
   }
 ]

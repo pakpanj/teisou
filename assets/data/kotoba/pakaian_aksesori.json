@@ -382,5 +382,125 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_tebukuro.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_seifuku",
+    "word": "せいふく",
+    "kanji": "制服",
+    "reading": "せいふく",
+    "romaji": "seifuku",
+    "meaning": "seragam",
+    "jlptLevel": "N2",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "制服 (seifuku)",
+      "formal": "制服 (seifuku)",
+      "keigo": "制服 (seifuku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学校の制服を着ます。",
+        "romaji": "Gakkou no seifuku o kimasu.",
+        "translation": "Memakai seragam sekolah."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_seifuku.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_fukusou",
+    "word": "ふくそう",
+    "kanji": "服装",
+    "reading": "ふくそう",
+    "romaji": "fukusou",
+    "meaning": "pakaian/penampilan",
+    "jlptLevel": "N2",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "服装 (fukusou)",
+      "formal": "服装 (fukusou)",
+      "keigo": "服装 (fukusou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "服装に気をつけてください。",
+        "romaji": "Fukusou ni ki o tsukete kudasai.",
+        "translation": "Tolong perhatikan pakaian. (tampilan, outfit)"
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_fukusou.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_furugi",
+    "word": "ふるぎ",
+    "kanji": "古着",
+    "reading": "ふるぎ",
+    "romaji": "furugi",
+    "meaning": "baju bekas",
+    "jlptLevel": "N2",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "古着 (furugi)",
+      "formal": "古着 (furugi)",
+      "keigo": "古着 (furugi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "古着を買いました。",
+        "romaji": "Furugi o kaimashita.",
+        "translation": "Saya membeli baju bekas."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_furugi.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_udedokei",
+    "word": "うでどけい",
+    "kanji": "腕時計",
+    "reading": "うでどけい",
+    "romaji": "udedokei",
+    "meaning": "jam tangan",
+    "jlptLevel": "N2",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "腕時計 (udedokei)",
+      "formal": "腕時計 (udedokei)",
+      "keigo": "腕時計 (udedokei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "腕時計を買いました。",
+        "romaji": "Udedokei o kaimashita.",
+        "translation": "Saya membeli jam tangan."
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_udedokei.png"
+  },
+  {
+    "id": "kotoba_pakaian_aksesori_ishou",
+    "word": "いしょう",
+    "kanji": "衣装",
+    "reading": "いしょう",
+    "romaji": "ishou",
+    "meaning": "kostum",
+    "jlptLevel": "N2",
+    "category": "pakaian_aksesori",
+    "wordType": "noun",
+    "registers": {
+      "casual": "衣装 (ishou)",
+      "formal": "衣装 (ishou)",
+      "keigo": "衣装 (ishou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "祭りの衣装を着ました。",
+        "romaji": "Matsuri no ishou o kimashita.",
+        "translation": "Saya memakai kostum festival. (untuk pertunjukan)"
+      }
+    ],
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_ishou.png"
   }
 ]

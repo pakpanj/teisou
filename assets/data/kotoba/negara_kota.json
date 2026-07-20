@@ -382,5 +382,245 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_nagoya.png"
+  },
+  {
+    "id": "kotoba_negara_kota_inaka",
+    "word": "いなか",
+    "kanji": "田舎",
+    "reading": "いなか",
+    "romaji": "inaka",
+    "meaning": "desa/kampung",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "田舎 (inaka)",
+      "formal": "田舎 (inaka)",
+      "keigo": "田舎 (inaka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "田舎で育ちました。",
+        "romaji": "Inaka de sodachimashita.",
+        "translation": "tumbuh besar di desa. (kk.pasif)"
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_inaka.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kakuchi",
+    "word": "かくち",
+    "kanji": "各地",
+    "reading": "かくち",
+    "romaji": "kakuchi",
+    "meaning": "berbagai daerah",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "各地 (kakuchi)",
+      "formal": "各地 (kakuchi)",
+      "keigo": "各地 (kakuchi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "各地で地震が起きています。",
+        "romaji": "Kakuchi de jishin ga okite imasu.",
+        "translation": "Gempa terjadi di berbagai daerah."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kakuchi.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kakkoku",
+    "word": "かっこく",
+    "kanji": "各国",
+    "reading": "かっこく",
+    "romaji": "kakkoku",
+    "meaning": "berbagai negara",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "各国 (kakkoku)",
+      "formal": "各国 (kakkoku)",
+      "keigo": "各国 (kakkoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "各国の文化を学びます。",
+        "romaji": "Kakkoku no bunka o manabimasu.",
+        "translation": "Mempelajari budaya berbagai negara. (setiap negara)"
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kakkoku.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kikoku",
+    "word": "きこく",
+    "kanji": "帰国",
+    "reading": "きこく",
+    "romaji": "kikoku",
+    "meaning": "pulang ke negara asal",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "帰国 (kikoku)",
+      "formal": "帰国 (kikoku)",
+      "keigo": "帰国 (kikoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "来年帰国します。",
+        "romaji": "Rainen kikoku shimasu.",
+        "translation": "Tahun depan pulang ke negara asal."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kikoku.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kokusai",
+    "word": "こくさい",
+    "kanji": "国際",
+    "reading": "こくさい",
+    "romaji": "kokusai",
+    "meaning": "internasional",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "国際 (kokusai)",
+      "formal": "国際 (kokusai)",
+      "keigo": "国際 (kokusai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国際会議に参加します。",
+        "romaji": "Kokusai kaigi ni sanka shimasu.",
+        "translation": "Mengikuti konferensi pertemuan internasional."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokusai.png"
+  },
+  {
+    "id": "kotoba_negara_kota_shimin",
+    "word": "しみん",
+    "kanji": "市民",
+    "reading": "しみん",
+    "romaji": "shimin",
+    "meaning": "warga kota",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "市民 (shimin)",
+      "formal": "市民 (shimin)",
+      "keigo": "市民 (shimin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "市民が集まっています。",
+        "romaji": "Shimin ga atsumatte imasu.",
+        "translation": "Warga kota berkumpul."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_shimin.png"
+  },
+  {
+    "id": "kotoba_negara_kota_shusshin",
+    "word": "しゅっしん",
+    "kanji": "出身",
+    "reading": "しゅっしん",
+    "romaji": "shusshin",
+    "meaning": "asal (daerah/negara)",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "出身 (shusshin)",
+      "formal": "出身 (shusshin)",
+      "keigo": "出身 (shusshin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "私はインドネシア出身です。",
+        "romaji": "Watashi wa Indoneshia shusshin desu.",
+        "translation": "Saya berasal dari Indonesia. (daerah, negara,sekolah)"
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_shusshin.png"
+  },
+  {
+    "id": "kotoba_negara_kota_taizai",
+    "word": "たいざい",
+    "kanji": "滞在",
+    "reading": "たいざい",
+    "romaji": "taizai",
+    "meaning": "tinggal sementara",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "滞在 (taizai)",
+      "formal": "滞在 (taizai)",
+      "keigo": "滞在 (taizai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日本に3か月滞在します。",
+        "romaji": "Nihon ni sankagetsu taizai shimasu.",
+        "translation": "Tinggal di Jepang 3 bulan. (Tinggal sementara)"
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_taizai.png"
+  },
+  {
+    "id": "kotoba_negara_kota_tokai",
+    "word": "とかい",
+    "kanji": "都会",
+    "reading": "とかい",
+    "romaji": "tokai",
+    "meaning": "kota besar/metropolitan",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "都会 (tokai)",
+      "formal": "都会 (tokai)",
+      "keigo": "都会 (tokai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "都会で働きたいです。",
+        "romaji": "Tokai de hatarakitai desu.",
+        "translation": "Saya ingin bekerja di kota besar. (metropolitan)"
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_tokai.png"
+  },
+  {
+    "id": "kotoba_negara_kota_ijuu",
+    "word": "いじゅう",
+    "kanji": "移住",
+    "reading": "いじゅう",
+    "romaji": "ijuu",
+    "meaning": "pindah tinggal (menetap)",
+    "jlptLevel": "N2",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "移住 (ijuu)",
+      "formal": "移住 (ijuu)",
+      "keigo": "移住 (ijuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は外国に移住しました。",
+        "romaji": "Kare wa gaikoku ni ijuu shimashita.",
+        "translation": "Dia pindah tinggal ke luar negeri. (Pindah menetap lama)"
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_ijuu.png"
   }
 ]

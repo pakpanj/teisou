@@ -406,5 +406,125 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_tenkiyohou.png"
+  },
+  {
+    "id": "kotoba_cuaca_aozora",
+    "word": "あおぞら",
+    "kanji": "青空",
+    "reading": "あおぞら",
+    "romaji": "aozora",
+    "meaning": "langit biru",
+    "jlptLevel": "N2",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あおぞら (aozora)",
+      "formal": "あおぞら (aozora)",
+      "keigo": "あおぞら (aozora) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "青空が広がっています。",
+        "romaji": "Aozora ga hirogatte imasu.",
+        "translation": "Langit biru terbentang luas."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_aozora.png"
+  },
+  {
+    "id": "kotoba_cuaca_kansou",
+    "word": "かんそう",
+    "kanji": "乾燥",
+    "reading": "かんそう",
+    "romaji": "kansou",
+    "meaning": "pengeringan",
+    "jlptLevel": "N2",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かんそう (kansou)",
+      "formal": "かんそう (kansou)",
+      "keigo": "かんそう (kansou) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "洗濯物を乾燥します。",
+        "romaji": "Sentakumono o kansou shimasu.",
+        "translation": "Mengeringkan cucian. (Pakai alat/proses mengeringkan)"
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kansou.png"
+  },
+  {
+    "id": "kotoba_cuaca_kion",
+    "word": "きおん",
+    "kanji": "気温",
+    "reading": "きおん",
+    "romaji": "kion",
+    "meaning": "suhu udara",
+    "jlptLevel": "N2",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "きおん (kion)",
+      "formal": "きおん (kion)",
+      "keigo": "きおん (kion) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "気温が下がりました。",
+        "romaji": "Kion ga sagarimashita.",
+        "translation": "Suhu menurun. (suhu udara, cuaca)"
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kion.png"
+  },
+  {
+    "id": "kotoba_cuaca_kouon",
+    "word": "こうおん",
+    "kanji": "高温",
+    "reading": "こうおん",
+    "romaji": "kouon",
+    "meaning": "suhu tinggi",
+    "jlptLevel": "N2",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "こうおん (kouon)",
+      "formal": "こうおん (kouon)",
+      "keigo": "こうおん (kouon) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "高温に注意してください。",
+        "romaji": "Kouon ni chuui shite kudasai.",
+        "translation": "Hati-hati suhu tinggi."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kouon.png"
+  },
+  {
+    "id": "kotoba_cuaca_nikkou",
+    "word": "にっこう",
+    "kanji": "日光",
+    "reading": "にっこう",
+    "romaji": "nikkou",
+    "meaning": "sinar matahari",
+    "jlptLevel": "N2",
+    "category": "cuaca",
+    "wordType": "noun",
+    "registers": {
+      "casual": "にっこう (nikkou)",
+      "formal": "にっこう (nikkou)",
+      "keigo": "にっこう (nikkou) — tidak ada bentuk keigo khusus untuk istilah cuaca"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日光が強いですね。",
+        "romaji": "Nikkou ga tsuyoi desu ne.",
+        "translation": "Sinar matahari kuat ya."
+      }
+    ],
+    "imagePath": "kotoba_images/cuaca/kotoba_cuaca_nikkou.png"
   }
 ]

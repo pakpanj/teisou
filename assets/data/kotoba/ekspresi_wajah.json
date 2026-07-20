@@ -190,5 +190,29 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_mitsumeru.png"
+  },
+  {
+    "id": "kotoba_ekspresi_wajah_egao",
+    "word": "えがお",
+    "kanji": "笑顔",
+    "reading": "えがお",
+    "romaji": "egao",
+    "meaning": "wajah tersenyum",
+    "jlptLevel": "N2",
+    "category": "ekspresi_wajah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "笑顔 (egao)",
+      "formal": "笑顔 (egao)",
+      "keigo": "笑顔 (egao) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "笑顔であいさつします。",
+        "romaji": "Egao de aisatsu shimasu.",
+        "translation": "Menyapa dengan senyum."
+      }
+    ],
+    "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_egao.png"
   }
 ]

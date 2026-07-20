@@ -310,5 +310,101 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shako.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_kadan",
+    "word": "かだん",
+    "kanji": "花壇",
+    "reading": "かだん",
+    "romaji": "kadan",
+    "meaning": "taman bunga",
+    "jlptLevel": "N2",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "花壇 (kadan)",
+      "formal": "花壇 (kadan)",
+      "keigo": "花壇 (kadan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "花壇に花を植えます。",
+        "romaji": "Kadan ni hana o uemasu.",
+        "translation": "Menanam bunga di taman bunga. (kotak tanaman bunga)"
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_kadan.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_tenjou",
+    "word": "てんじょう",
+    "kanji": "天井",
+    "reading": "てんじょう",
+    "romaji": "tenjou",
+    "meaning": "langit-langit (ruangan)",
+    "jlptLevel": "N2",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "天井 (tenjou)",
+      "formal": "天井 (tenjou)",
+      "keigo": "天井 (tenjou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "天井が高い部屋ですね。",
+        "romaji": "Tenjou ga takai heya desu ne.",
+        "translation": "Ruangan ini langit-langitnya tinggi ya."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_tenjou.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_yane",
+    "word": "やね",
+    "kanji": "屋根",
+    "reading": "やね",
+    "romaji": "yane",
+    "meaning": "atap",
+    "jlptLevel": "N2",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "屋根 (yane)",
+      "formal": "屋根 (yane)",
+      "keigo": "屋根 (yane) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "屋根を修理しました。",
+        "romaji": "Yane o shuuri shimashita.",
+        "translation": "Saya memperbaiki atap."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_yane.png"
+  },
+  {
+    "id": "kotoba_ruangan_rumah_rouka",
+    "word": "ろうか",
+    "kanji": "廊下",
+    "reading": "ろうか",
+    "romaji": "rouka",
+    "meaning": "koridor/lorong",
+    "jlptLevel": "N2",
+    "category": "ruangan_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "廊下 (rouka)",
+      "formal": "廊下 (rouka)",
+      "keigo": "廊下 (rouka) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "廊下を走らないでください。",
+        "romaji": "Rouka o hashiranaide kudasai.",
+        "translation": "Jangan lari di koridor/lorong."
+      }
+    ],
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_rouka.png"
   }
 ]

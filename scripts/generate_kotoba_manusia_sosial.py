@@ -118,6 +118,30 @@ CATEGORIES = {
         ("yakuzaishi", "薬剤師", "やくざいし", "yakuzaishi", "apoteker", "N1", "noun", "薬剤師", "yakuzaishi", "薬剤師", "yakuzaishi", [
             ("薬剤師に薬について聞きます。", "Yakuzaishi ni kusuri ni tsuite kikimasu.", "Saya menanyakan obat kepada apoteker."),
         ]),
+        ("kachou", "課長", "かちょう", "kachou", "kepala bagian", "N2", "noun", "課長", "kachou", "課長", "kachou", [
+            ("課長に報告します。", "Kachou ni houkoku shimasu.", "Saya melapor ke kepala bagian."),
+        ]),
+        ("keikan", "警官", "けいかん", "keikan", "polisi (istilah sapaan)", "N2", "noun", "警官", "keikan", "警官", "keikan", [
+            ("警官に聞きました。", "Keikan ni kikimashita.", "Bertanya pada pak polisi. (Gelar) (お巡りさんmenyapa.C)"),
+        ]),
+        ("keisatsu", "警察", "けいさつ", "keisatsu", "kepolisian (institusi)", "N2", "noun", "警察", "keisatsu", "警察", "keisatsu", [
+            ("警察を呼びます。", "Keisatsu o yobimasu.", "Memanggil kepolisian. (isntitusi)"),
+        ]),
+        ("sakusha", "作者", "さくしゃ", "sakusha", "pengarang", "N2", "noun", "作者", "sakusha", "作者", "sakusha", [
+            ("作者の名前を書きます。", "Sakusha no namae o kakimasu.", "Menulis nama pengarang."),
+        ]),
+        ("sakka", "作家", "さっか", "sakka", "penulis", "N2", "noun", "作家", "sakka", "作家", "sakka", [
+            ("彼は有名な作家です。", "Kare wa yuumei na sakka desu.", "Dia penulis terkenal."),
+        ]),
+        ("shichou", "市長", "しちょう", "shichou", "wali kota", "N2", "noun", "市長", "shichou", "市長", "shichou", [
+            ("市長が来ました。", "Shichou ga kimashita.", "Wali kota datang."),
+        ]),
+        ("tenchou", "店長", "てんちょう", "tenchou", "kepala toko", "N2", "noun", "店長", "tenchou", "店長", "tenchou", [
+            ("店長に相談しました。", "Tenchou ni soudan shimashita.", "Saya berkonsultasi dengan kepala toko."),
+        ]),
+        ("nougyou", "農業", "のうぎょう", "nougyou", "pertanian", "N2", "noun", "農業", "nougyou", "農業", "nougyou", [
+            ("祖父は農業をしています。", "Sofu wa nougyou o shite imasu.", "Kakek bekerja di bidang pertanian."),
+        ]),
     ],
     "keluarga_hubungan": [
         ("kazoku", "家族", "かぞく", "kazoku", "keluarga", "N5", "noun", "家族", "kazoku", "家族", "kazoku", [
@@ -207,6 +231,45 @@ CATEGORIES = {
         ("dokushin", "独身", "どくしん", "dokushin", "belum menikah/single", "N2", "noun", "独身", "dokushin", "独身", "dokushin", [
             ("彼はまだ独身です。", "Kare wa mada dokushin desu.", "Dia masih belum menikah."),
         ]),
+        ("oyako", "親子", "おやこ", "oyako", "orang tua dan anak", "N2", "noun", "親子", "oyako", "親子", "oyako", [
+            ("親子で来ました。", "Oyako de kimashita.", "Datang bersama orang tua dan anak."),
+        ]),
+        ("katei", "家庭", "かてい", "katei", "keluarga/rumah tangga", "N2", "noun", "家庭", "katei", "家庭", "katei", [
+            ("家庭を大切にします。", "Katei o taisetsu ni shimasu.", "Saya menghargai keluarga."),
+        ]),
+        ("kekkon", "結婚", "けっこん", "kekkon", "pernikahan", "N2", "noun", "結婚", "kekkon", "結婚", "kekkon", [
+            ("来年結婚します。", "Rainen kekkon shimasu.", "Tahun depan menikah."),
+        ]),
+        ("jikka", "実家", "じっか", "jikka", "rumah orang tua", "N2", "noun", "実家", "jikka", "実家", "jikka", [
+            ("実家に帰ります。", "Jikka ni kaerimasu.", "Pulang ke rumah orang tua."),
+        ]),
+        ("tanjou", "誕生", "たんじょう", "tanjou", "kelahiran", "N2", "noun", "誕生", "tanjou", "誕生", "tanjou", [
+            ("子どもが誕生しました。", "Kodomo ga tanjou shimashita.", "Bayi lahir. (Kelahiran resmi/peristiwa penting)"),
+        ]),
+        ("nakama", "仲間", "なかま", "nakama", "teman/rekan satu kelompok", "N2", "noun", "仲間", "nakama", "仲間", "nakama", [
+            ("仲間と協力します。", "Nakama to kyouryoku shimasu.", "Saya bekerja sama dengan teman satu tim."),
+        ]),
+        ("yakuwari", "役割", "やくわり", "yakuwari", "peran/tugas", "N2", "noun", "役割", "yakuwari", "役割", "yakuwari", [
+            ("両親の役割はたいせつです。", "Ryoushin no yakuwari wa taisetsu desu.", "Peran orang tua penting."),
+        ]),
+        ("yuujou", "友情", "ゆうじょう", "yuujou", "persahabatan", "N2", "noun", "友情", "yuujou", "友情", "yuujou", [
+            ("彼との友情は大切です。", "Kare to no yuujou wa taisetsu desu.", "Persahabatan dengannya penting. (hub persahabantan)"),
+        ]),
+        ("yuujin", "友人", "ゆうじん", "yuujin", "teman (istilah formal)", "N2", "noun", "友人", "yuujin", "友人", "yuujin", [
+            ("友人に会いました。", "Yuujin ni aimashita.", "Saya bertemu teman. (saat pidato,tulisan dll)"),
+        ]),
+        ("wakamono", "若者", "わかもの", "wakamono", "anak muda", "N2", "noun", "若者", "wakamono", "若者", "wakamono", [
+            ("若者が増えています。", "Wakamono ga fuete imasu.", "Anak muda bertambah."),
+        ]),
+        ("sofubo", "祖父母", "そふぼ", "sofubo", "kakek dan nenek", "N2", "noun", "祖父母", "sofubo", "祖父母", "sofubo", [
+            ("祖父母は田舎に住んでいます。", "Sofubo wa inaka ni sunde imasu.", "Kakek nenek tinggal di desa."),
+        ]),
+        ("aishou", "相性", "あいしょう", "aishou", "kecocokan (antar orang)", "N2", "noun", "相性", "aishou", "相性", "aishou", [
+            ("この二人は相性がいい。", "Kono futari wa aishou ga ii.", "Kedua orang ini cocok satu sama lain."),
+        ]),
+        ("ikuji", "育児", "いくじ", "ikuji", "mengurus anak", "N2", "noun", "育児", "ikuji", "育児", "ikuji", [
+            ("彼女は育児に忙しい。", "Kanojo wa ikuji ni isogashii.", "Dia sibuk mengurus anak. (bayi / anak kecil)"),
+        ]),
     ],
     "pakaian_aksesori": [
         ("fuku", "服", "ふく", "fuku", "baju/pakaian", "N5", "noun", "服", "fuku", "服", "fuku", [
@@ -257,6 +320,21 @@ CATEGORIES = {
         ]),
         ("tebukuro", "手袋", "てぶくろ", "tebukuro", "sarung tangan", "N3", "noun", "手袋", "tebukuro", "手袋", "tebukuro", [
             ("手袋をはめます。", "Tebukuro o hamemasu.", "Saya memakai sarung tangan."),
+        ]),
+        ("seifuku", "制服", "せいふく", "seifuku", "seragam", "N2", "noun", "制服", "seifuku", "制服", "seifuku", [
+            ("学校の制服を着ます。", "Gakkou no seifuku o kimasu.", "Memakai seragam sekolah."),
+        ]),
+        ("fukusou", "服装", "ふくそう", "fukusou", "pakaian/penampilan", "N2", "noun", "服装", "fukusou", "服装", "fukusou", [
+            ("服装に気をつけてください。", "Fukusou ni ki o tsukete kudasai.", "Tolong perhatikan pakaian. (tampilan, outfit)"),
+        ]),
+        ("furugi", "古着", "ふるぎ", "furugi", "baju bekas", "N2", "noun", "古着", "furugi", "古着", "furugi", [
+            ("古着を買いました。", "Furugi o kaimashita.", "Saya membeli baju bekas."),
+        ]),
+        ("udedokei", "腕時計", "うでどけい", "udedokei", "jam tangan", "N2", "noun", "腕時計", "udedokei", "腕時計", "udedokei", [
+            ("腕時計を買いました。", "Udedokei o kaimashita.", "Saya membeli jam tangan."),
+        ]),
+        ("ishou", "衣装", "いしょう", "ishou", "kostum", "N2", "noun", "衣装", "ishou", "衣装", "ishou", [
+            ("祭りの衣装を着ました。", "Matsuri no ishou o kimashita.", "Saya memakai kostum festival. (untuk pertunjukan)"),
         ]),
     ],
     "hobi_aktivitas": [
@@ -324,6 +402,33 @@ CATEGORIES = {
         ]),
         ("hassan", "発散", "はっさん", "hassan", "pelampiasan/pelepasan (stres)", "N1", "noun", "発散", "hassan", "発散", "hassan", [
             ("運動でストレスを発散します。", "Undou de sutoresu o hassan shimasu.", "Saya melampiaskan stres lewat olahraga."),
+        ]),
+        ("ensou", "演奏", "えんそう", "ensou", "permainan musik/pertunjukan", "N2", "noun", "演奏", "ensou", "演奏", "ensou", [
+            ("ピアノを演奏します。", "Piano o ensou shimasu.", "Memainkan piano. (pertunjukkan)"),
+        ]),
+        ("kaiga", "絵画", "かいが", "kaiga", "lukisan", "N2", "noun", "絵画", "kaiga", "絵画", "kaiga", [
+            ("絵画を見に行きます。", "Kaiga o mi ni ikimasu.", "Pergi melihat lukisan. (lukisan seni, artistik)"),
+        ]),
+        ("katsudou", "活動", "かつどう", "katsudou", "kegiatan", "N2", "noun", "活動", "katsudou", "活動", "katsudou", [
+            ("ボランティア活動をしている。", "Borantia katsudou o shite iru.", "Saya melakukan kegiatan relawan."),
+        ]),
+        ("kankou", "観光", "かんこう", "kankou", "wisata", "N2", "noun", "観光", "kankou", "観光", "kankou", [
+            ("京都を観光します。", "Kyouto o kankou shimasu.", "Berwisata di Kyoto."),
+        ]),
+        ("gaishoku", "外食", "がいしょく", "gaishoku", "makan di luar", "N2", "noun", "外食", "gaishoku", "外食", "gaishoku", [
+            ("今日は外食します。", "Kyou wa gaishoku shimasu.", "Hari ini makan di luar."),
+        ]),
+        ("gakki", "楽器", "がっき", "gakki", "alat musik", "N2", "noun", "楽器", "gakki", "楽器", "gakki", [
+            ("楽器を練習します。", "Gakki o renshuu shimasu.", "Berlatih alat musik."),
+        ]),
+        ("geijutsu", "芸術", "げいじゅつ", "geijutsu", "seni", "N2", "noun", "芸術", "geijutsu", "芸術", "geijutsu", [
+            ("芸術に興味があります。", "Geijutsu ni kyoumi ga arimasu.", "Tertarik pada seni. (seni pertunjukan/ hiburan)"),
+        ]),
+        ("sakuhin", "作品", "さくひん", "sakuhin", "karya", "N2", "noun", "作品", "sakuhin", "作品", "sakuhin", [
+            ("この作品は有名です。", "Kono sakuhin wa yuumei desu.", "Karya ini terkenal."),
+        ]),
+        ("ryuukou", "流行", "りゅうこう", "ryuukou", "tren/mode", "N2", "noun", "流行", "ryuukou", "流行", "ryuukou", [
+            ("この服が流行しています。", "Kono fuku ga ryuukou shite imasu.", "Baju ini sedang tren. (Hits biasanya waktunya sebentar)"),
         ]),
     ],
     "agama_budaya": [
@@ -422,6 +527,12 @@ CATEGORIES = {
         ]),
         ("seijinshiki", "成人式", "せいじんしき", "seijinshiki", "upacara kedewasaan", "N2", "noun", "成人式", "seijinshiki", "成人式", "seijinshiki", [
             ("来年、成人式に出ます。", "Rainen, seijinshiki ni demasu.", "Tahun depan, saya akan mengikuti upacara kedewasaan."),
+        ]),
+        ("kinen", "記念", "きねん", "kinen", "kenangan/peringatan", "N2", "noun", "記念", "kinen", "記念", "kinen", [
+            ("記念写真を撮ります。", "Kinen shashin o torimasu.", "Mengambil foto kenangan."),
+        ]),
+        ("shoutai", "招待", "しょうたい", "shoutai", "undangan", "N2", "noun", "招待", "shoutai", "招待", "shoutai", [
+            ("パーティーに招待されました。", "Paatii ni shoutai saremashita.", "Diundang ke pesta."),
         ]),
     ],
     # New category (2026-07-20, sixth batch), added specifically to keep
@@ -958,6 +1069,365 @@ CATEGORIES = {
         ]),
         ("houshin", "方針", "ほうしん", "houshin", "kebijakan arah/pedoman", "N1", "noun", "方針", "houshin", "方針", "houshin", [
             ("会社の方針に従います。", "Kaisha no houshin ni shitagaimasu.", "Saya mengikuti kebijakan perusahaan."),
+        ]),
+        ("aizu", "合図", "あいず", "aizu", "tanda/sinyal", "N2", "noun", "合図", "aizu", "合図", "aizu", [
+            ("合図をしてください。", "Aizu o shite kudasai.", "Tolong beri tanda. (aba2, suara,gerakan, hitungan)"),
+        ]),
+        ("igai", "以外", "いがい", "igai", "selain", "N2", "noun", "以外", "igai", "以外", "igai", [
+            ("日曜日以外働きます。", "Nichiyoubi igai hatarakimasu.", "Saya bekerja selain hari Minggu."),
+        ]),
+        ("ichiryuu", "一流", "いちりゅう", "ichiryuu", "kelas satu/papan atas", "N2", "noun", "一流", "ichiryuu", "一流", "ichiryuu", [
+            ("一流の会社です。", "Ichiryuu no kaisha desu.", "Perusahaan kelas satu."),
+        ]),
+        ("ippan", "一般", "いっぱん", "ippan", "umum", "N2", "noun", "一般", "ippan", "一般", "ippan", [
+            ("一般の人も参加できます。", "Ippan no hito mo sanka dekimasu.", "Orang umum juga bisa ikut. (umum, biasanya)"),
+        ]),
+        ("idou", "移動", "いどう", "idou", "berpindah", "N2", "noun", "移動", "idou", "移動", "idou", [
+            ("部屋を移動します。", "Heya o idou shimasu.", "Pindah ruangan."),
+        ]),
+        ("uchuu", "宇宙", "うちゅう", "uchuu", "alam semesta/luar angkasa", "N2", "noun", "宇宙", "uchuu", "宇宙", "uchuu", [
+            ("宇宙に興味があります。", "Uchuu ni kyoumi ga arimasu.", "Saya tertarik pada luar angkasa."),
+        ]),
+        ("enryo", "遠慮", "えんりょ", "enryo", "sungkan/segan", "N2", "noun", "遠慮", "enryo", "遠慮", "enryo", [
+            ("遠慮しないでください。", "Enryo shinaide kudasai.", "Jangan sungkan."),
+        ]),
+        ("oozei", "大勢", "おおぜい", "oozei", "banyak orang", "N2", "noun", "大勢", "oozei", "大勢", "oozei", [
+            ("大勢の人がいます。", "Oozei no hito ga imasu.", "Ada banyak orang. (hanya orang)"),
+        ]),
+        ("kaiin", "会員", "かいいん", "kaiin", "anggota", "N2", "noun", "会員", "kaiin", "会員", "kaiin", [
+            ("会員になりました。", "Kaiin ni narimashita.", "Menjadi anggota."),
+        ]),
+        ("kaiketsu", "解決", "かいけつ", "kaiketsu", "penyelesaian", "N2", "noun", "解決", "kaiketsu", "解決", "kaiketsu", [
+            ("問題を解決しました。", "Mondai o kaiketsu shimashita.", "Masalah sudah diselesaikan."),
+        ]),
+        ("kaishuu", "回収", "かいしゅう", "kaishuu", "pengumpulan", "N2", "noun", "回収", "kaishuu", "回収", "kaishuu", [
+            ("ゴミを回収します。", "Gomi o kaishuu shimasu.", "Mengumpulkan sampah. (Oleh petugas)"),
+        ]),
+        ("kaishi", "開始", "かいし", "kaishi", "permulaan", "N2", "noun", "開始", "kaishi", "開始", "kaishi", [
+            ("作業を開始します。", "Sagyou o kaishi shimasu.", "Memulai pekerjaan."),
+        ]),
+        ("kaisuu", "回数", "かいすう", "kaisuu", "jumlah kali/frekuensi", "N2", "noun", "回数", "kaisuu", "回数", "kaisuu", [
+            ("回数が増えました。", "Kaisuu ga fuemashita.", "Jumlah kali bertambah. (frekuensi)"),
+        ]),
+        ("kaisetsu", "解説", "かいせつ", "kaisetsu", "penjelasan", "N2", "noun", "解説", "kaisetsu", "解説", "kaisetsu", [
+            ("先生が解説します。", "Sensei ga kaisetsu shimasu.", "Guru menjelaskan. (materi, aturan, hal)"),
+        ]),
+        ("kakaku", "価格", "かかく", "kakaku", "harga", "N2", "noun", "価格", "kakaku", "価格", "kakaku", [
+            ("価格が高いです。", "Kakaku ga takai desu.", "Harganya mahal. (industri, ekonomi, laporan)"),
+        ]),
+        ("kakunin", "確認", "かくにん", "kakunin", "konfirmasi", "N2", "noun", "確認", "kakunin", "確認", "kakunin", [
+            ("もう一度確認してください。", "Mou ichido kakunin shite kudasai.", "Tolong periksa sekali lagi."),
+        ]),
+        ("kankyaku", "観客", "かんきゃく", "kankyaku", "penonton", "N2", "noun", "観客", "kankyaku", "観客", "kankyaku", [
+            ("観客が多いです。", "Kankyaku ga ooi desu.", "Penontonnya banyak. (konser,pertandingan)"),
+        ]),
+        ("kankei", "関係", "かんけい", "kankei", "hubungan", "N2", "noun", "関係", "kankei", "関係", "kankei", [
+            ("仕事に関係があります。", "Shigoto ni kankei ga arimasu.", "Ada hubungan dengan pekerjaan."),
+        ]),
+        ("kangei", "歓迎", "かんげい", "kangei", "sambutan/penyambutan", "N2", "noun", "歓迎", "kangei", "歓迎", "kangei", [
+            ("皆さんを歓迎します。", "Minasan o kangei shimasu.", "Kami menyambut kalian."),
+        ]),
+        ("kansei", "完成", "かんせい", "kansei", "penyelesaian (hasil)", "N2", "noun", "完成", "kansei", "完成", "kansei", [
+            ("レポートが完成しました。", "Repooto ga kansei shimashita.", "Laporan sudah selesai. (sudah hasilnya)"),
+        ]),
+        ("gaishutsu", "外出", "がいしゅつ", "gaishutsu", "keluar rumah", "N2", "noun", "外出", "gaishutsu", "外出", "gaishutsu", [
+            ("これから外出します。", "Korekara gaishutsu shimasu.", "Saya akan keluar. (resmi,formal,laporan)"),
+        ]),
+        ("kitaku", "帰宅", "きたく", "kitaku", "pulang ke rumah", "N2", "noun", "帰宅", "kitaku", "帰宅", "kitaku", [
+            ("10時に帰宅しました。", "Juji ni kitaku shimashita.", "Saya pulang ke rumah jam 10."),
+        ]),
+        ("kyousou", "競争", "きょうそう", "kyousou", "persaingan", "N2", "noun", "競争", "kyousou", "競争", "kyousou", [
+            ("激しい競争があります。", "Hageshii kyousou ga arimasu.", "Ada persaingan ketat."),
+        ]),
+        ("kyoutsuu", "共通", "きょうつう", "kyoutsuu", "kesamaan/umum", "N2", "noun", "共通", "kyoutsuu", "共通", "kyoutsuu", [
+            ("共通の趣味があります。", "Kyoutsuu no shumi ga arimasu.", "Punya hobi yang sama. (tidak harus identik, ada persamaan)"),
+        ]),
+        ("kiroku", "記録", "きろく", "kiroku", "catatan/rekor", "N2", "noun", "記録", "kiroku", "記録", "kiroku", [
+            ("記録を取ります。", "Kiroku o torimasu.", "Mencatat / mengambil data. (dengan catatan)"),
+        ]),
+        ("kufuu", "工夫", "くふう", "kufuu", "cara praktis/strategi", "N2", "noun", "工夫", "kufuu", "工夫", "kufuu", [
+            ("作業を工夫します。", "Sagyou o kufuu shimasu.", "Mencari cara agar kerja lebih efisien. (cara praktis, strategi)"),
+        ]),
+        ("kubetsu", "区別", "くべつ", "kubetsu", "perbedaan", "N2", "noun", "区別", "kubetsu", "区別", "kubetsu", [
+            ("二つを区別してください。", "Futatsu o kubetsu shite kudasai.", "Tolong bedakan keduanya. (kategori, perbedaan)"),
+        ]),
+        ("kunren", "訓練", "くんれん", "kunren", "latihan", "N2", "noun", "訓練", "kunren", "訓練", "kunren", [
+            ("毎日訓練します。", "Mainichi kunren shimasu.", "Latihan setiap hari. (pelatihan serius, profesi)"),
+        ]),
+        ("guuzen", "偶然", "ぐうぜん", "guuzen", "kebetulan", "N2", "noun", "偶然", "guuzen", "偶然", "guuzen", [
+            ("偶然会いました。", "Guuzen aimashita.", "Bertemu secara kebetulan."),
+        ]),
+        ("keikaku", "計画", "けいかく", "keikaku", "rencana", "N2", "noun", "計画", "keikaku", "計画", "keikaku", [
+            ("計画を立てます。", "Keikaku o tatemasu.", "Membuat rencana."),
+        ]),
+        ("kekkyoku", "結局", "けっきょく", "kekkyoku", "akhirnya", "N2", "noun", "結局", "kekkyoku", "結局", "kekkyoku", [
+            ("結局行きませんでした。", "Kekkyoku ikimasen deshita.", "Akhirnya tidak jadi pergi."),
+        ]),
+        ("kekkou", "結構", "けっこう", "kekkou", "cukup/baiklah", "N2", "noun", "結構", "kekkou", "結構", "kekkou", [
+            ("それで結構です。", "Sore de kekkou desu.", "Itu sudah cukup / tidak apa-apa."),
+        ]),
+        ("ketten", "欠点", "けってん", "ketten", "kekurangan", "N2", "noun", "欠点", "ketten", "欠点", "ketten", [
+            ("彼の欠点を知っています。", "Kare no ketten o shitte imasu.", "Saya tahu kekurangannya."),
+        ]),
+        ("koukan", "交換", "こうかん", "koukan", "penggantian/tukar", "N2", "noun", "交換", "koukan", "交換", "koukan", [
+            ("部品を交換します。", "Buhin o koukan shimasu.", "Mengganti komponen."),
+        ]),
+        ("koukyou", "公共", "こうきょう", "koukyou", "publik/umum", "N2", "noun", "公共", "koukyou", "公共", "koukyou", [
+            ("公共の場所です。", "Koukyou no basho desu.", "Tempat umum. (publik, fasum)"),
+        ]),
+        ("koudou", "行動", "こうどう", "koudou", "tindakan", "N2", "noun", "行動", "koudou", "行動", "koudou", [
+            ("すぐ行動してください。", "Sugu koudou shite kudasai.", "Segera bertindak. (tindakan, perilaku)"),
+        ]),
+        ("kojin", "個人", "こじん", "kojin", "pribadi/perseorangan", "N2", "noun", "個人", "kojin", "個人", "kojin", [
+            ("個人情報を守ります。", "Kojin jouhou o mamorimasu.", "Melindungi data pribadi."),
+        ]),
+        ("goukei", "合計", "ごうけい", "goukei", "total/jumlah keseluruhan", "N2", "noun", "合計", "goukei", "合計", "goukei", [
+            ("合計を計算します。", "Goukei o keisan shimasu.", "Menghitung total."),
+        ]),
+        ("saishuu", "最終", "さいしゅう", "saishuu", "terakhir", "N2", "noun", "最終", "saishuu", "最終", "saishuu", [
+            ("最終電車に乗ります。", "Saishuu densha ni norimasu.", "Naik kereta terakhir."),
+        ]),
+        ("saisho", "最初", "さいしょ", "saisho", "pertama/awal", "N2", "noun", "最初", "saisho", "最初", "saisho", [
+            ("最初に自己紹介します。", "Saisho ni jiko shoukai shimasu.", "Pertama saya perkenalan diri."),
+        ]),
+        ("sansei", "賛成", "さんせい", "sansei", "persetujuan", "N2", "noun", "賛成", "sansei", "賛成", "sansei", [
+            ("私は賛成です。", "Watashi wa sansei desu.", "Saya setuju."),
+        ]),
+        ("zairyou", "材料", "ざいりょう", "zairyou", "bahan", "N2", "noun", "材料", "zairyou", "材料", "zairyou", [
+            ("材料を準備します。", "Zairyou o junbi shimasu.", "Menyiapkan bahan. (masakan, bangunan, kerajianan)"),
+        ]),
+        ("shizen", "自然", "しぜん", "shizen", "alam", "N2", "noun", "自然", "shizen", "自然", "shizen", [
+            ("自然が豊ゆたかです。", "Shizen ga yutaka desu.", "Alamnya kaya."),
+        ]),
+        ("shitei", "指定", "してい", "shitei", "penentuan (waktu)", "N2", "noun", "指定", "shitei", "指定", "shitei", [
+            ("時間を指定してください。", "Jikan o shitei shite kudasai.", "Tolong tentukan waktunya."),
+        ]),
+        ("shimei", "氏名", "しめい", "shimei", "nama lengkap", "N2", "noun", "氏名", "shimei", "氏名", "shimei", [
+            ("氏名を書いてください。", "Shimei o kaite kudasai.", "Tolong tulis nama lengkap."),
+        ]),
+        ("shuuchuu", "集中", "しゅうちゅう", "shuuchuu", "fokus/konsentrasi", "N2", "noun", "集中", "shuuchuu", "集中", "shuuchuu", [
+            ("勉強に集中します。", "Benkyou ni shuuchuu shimasu.", "Fokus belajar."),
+        ]),
+        ("shuuryou", "終了", "しゅうりょう", "shuuryou", "berakhir/selesai", "N2", "noun", "終了", "shuuryou", "終了", "shuuryou", [
+            ("会議が終了しました。", "Kaigi ga shuuryou shimashita.", "Rapat selesai."),
+        ]),
+        ("shurui", "種類", "しゅるい", "shurui", "jenis", "N2", "noun", "種類", "shurui", "種類", "shurui", [
+            ("種類が多いです。", "Shurui ga ooi desu.", "Jenisnya banyak."),
+        ]),
+        ("shiyou", "使用", "しよう", "shiyou", "penggunaan", "N2", "noun", "使用", "shiyou", "使用", "shiyou", [
+            ("この機械を使用します。", "Kono kikai o shiyou shimasu.", "Menggunakan mesin ini."),
+        ]),
+        ("shoukai", "紹介", "しょうかい", "shoukai", "perkenalan", "N2", "noun", "紹介", "shoukai", "紹介", "shoukai", [
+            ("友達を紹介します。", "Tomodachi o shoukai shimasu.", "Memperkenalkan teman."),
+        ]),
+        ("shourai", "将来", "しょうらい", "shourai", "masa depan", "N2", "noun", "将来", "shourai", "将来", "shourai", [
+            ("将来日本で働きたいです。", "Shourai Nihon de hatarakitai desu.", "Ingin bekerja di Jepang di masa depan."),
+        ]),
+        ("shinkou", "進行", "しんこう", "shinkou", "berlangsungnya (proses)", "N2", "noun", "進行", "shinkou", "進行", "shinkou", [
+            ("会議が進行しています。", "Kaigi ga shinkou shite imasu.", "Rapat sedang berlangsung. (jalannya suatu proses, kondisi)"),
+        ]),
+        ("shinrin", "森林", "しんりん", "shinrin", "hutan", "N2", "noun", "森林", "shinrin", "森林", "shinrin", [
+            ("森林を守りましょう。", "Shinrin o mamorimashou.", "Mari melindungi hutan."),
+        ]),
+        ("jiken", "事件", "じけん", "jiken", "kejadian/insiden", "N2", "noun", "事件", "jiken", "事件", "jiken", [
+            ("大きな事件がありました。", "Ookina jiken ga arimashita.", "Ada kejadian besar."),
+        ]),
+        ("jisan", "持参", "じさん", "jisan", "membawa (barang)", "N2", "noun", "持参", "jisan", "持参", "jisan", [
+            ("パスポートを持参してください。", "Pasupooto o jisan shite kudasai.", "Harap membawa paspor. (pengumuman)"),
+        ]),
+        ("jijou", "事情", "じじょう", "jijou", "keadaan/situasi", "N2", "noun", "事情", "jijou", "事情", "jijou", [
+            ("事情を説明します。", "Jijou o setsumei shimasu.", "Menjelaskan keadaan/alasan."),
+        ]),
+        ("jikkou", "実行", "じっこう", "jikkou", "pelaksanaan", "N2", "noun", "実行", "jikkou", "実行", "jikkou", [
+            ("計画を実行します。", "Keikaku o jikkou shimasu.", "Melaksanakan rencana. (menjalankan)"),
+        ]),
+        ("jitsuyou", "実用", "じつよう", "jitsuyou", "kepraktisan", "N2", "noun", "実用", "jitsuyou", "実用", "jitsuyou", [
+            ("実用的な道具です。", "Jitsuyouteki na dougu desu.", "Alat yang praktis/berguna. (keperaktisannya bermanfaat)"),
+        ]),
+        ("jitsuryoku", "実力", "じつりょく", "jitsuryoku", "kemampuan (nyata)", "N2", "noun", "実力", "jitsuryoku", "実力", "jitsuryoku", [
+            ("実力を伸ばします。", "Jitsuryoku o nobashimasu.", "Meningkatkan kemampuan. (Skill sebenarnya)"),
+        ]),
+        ("junban", "順番", "じゅんばん", "junban", "urutan", "N2", "noun", "順番", "junban", "順番", "junban", [
+            ("順番を守ってください。", "Junban o mamotte kudasai.", "Tolong patuhi urutan."),
+        ]),
+        ("joutai", "状態", "じょうたい", "joutai", "kondisi/keadaan", "N2", "noun", "状態", "joutai", "状態", "joutai", [
+            ("機械の状態を確認します。", "Kikai no joutai o kakunin shimasu.", "Mengecek kondisi mesin."),
+        ]),
+        ("joudan", "冗談", "じょうだん", "joudan", "candaan/lelucon", "N2", "noun", "冗談", "joudan", "冗談", "joudan", [
+            ("冗談ですよ。", "Joudan desu yo.", "Itu hanya bercanda."),
+        ]),
+        ("josei", "女性", "じょせい", "josei", "perempuan", "N2", "noun", "女性", "josei", "女性", "josei", [
+            ("女性が多いです。", "Josei ga ooi desu.", "Banyak perempuan."),
+        ]),
+        ("jinsei", "人生", "じんせい", "jinsei", "kehidupan", "N2", "noun", "人生", "jinsei", "人生", "jinsei", [
+            ("人生は一度だけです。", "Jinsei wa ichido dake desu.", "Hidup hanya sekali."),
+        ]),
+        ("seigen", "制限", "せいげん", "seigen", "pembatasan", "N2", "noun", "制限", "seigen", "制限", "seigen", [
+            ("時間を制限します。", "Jikan o seigen shimasu.", "Membatasi waktu. (batasan, limit kemampuan/aturan)"),
+        ]),
+        ("zenin2", "全員", "ぜんいん", "zenin", "semua orang", "N2", "noun", "全員", "zenin", "全員", "zenin", [
+            ("全員集まってください。", "Zen'in atsumatte kudasai.", "Semua orang harap berkumpul."),
+        ]),
+        ("soutou", "相当", "そうとう", "soutou", "cukup/sangat (tingkat)", "N2", "noun", "相当", "soutou", "相当", "soutou", [
+            ("N2の文字語彙は相当難しいです。", "N2 no mojigoi wa soutou muzukashii desu.", "Mojigoi N2 Cukup/sangat sulit. (Naik level kesulitannya)"),
+        ]),
+        ("souryou", "送料", "そうりょう", "souryou", "ongkos kirim", "N2", "noun", "送料", "souryou", "送料", "souryou", [
+            ("送料は無料です。", "Souryou wa muryou desu.", "Ongkir gratis."),
+        ]),
+        ("zouka", "増加", "ぞうか", "zouka", "peningkatan (jumlah)", "N2", "noun", "増加", "zouka", "増加", "zouka", [
+            ("人口が増加しています。", "Jinkou ga zouka shite imasu.", "Populasi meningkat."),
+        ]),
+        ("tairyou", "大量", "たいりょう", "tairyou", "jumlah besar", "N2", "noun", "大量", "tairyou", "大量", "tairyou", [
+            ("大量に水を使います。", "Tairyou ni mizu o tsukaimasu.", "Menggunakan air dalam jumlah besar."),
+        ]),
+        ("daikin", "代金", "だいきん", "daikin", "biaya/pembayaran", "N2", "noun", "代金", "daikin", "代金", "daikin", [
+            ("代金を払います。", "Daikin o haraimasu.", "Membayar biaya."),
+        ]),
+        ("dantai", "団体", "だんたい", "dantai", "rombongan/kelompok", "N2", "noun", "団体", "dantai", "団体", "dantai", [
+            ("団体で旅行します。", "Dantai de ryokou shimasu.", "Bepergian secara rombongan."),
+        ]),
+        ("chuumon", "注文", "ちゅうもん", "chuumon", "pemesanan", "N2", "noun", "注文", "chuumon", "注文", "chuumon", [
+            ("料理を注文します。", "Ryouri o chuumon shimasu.", "Memesan makanan."),
+        ]),
+        ("choushi", "調子", "ちょうし", "choushi", "kondisi (tubuh/keadaan)", "N2", "noun", "調子", "choushi", "調子", "choushi", [
+            ("調子がいいです。", "Choushi ga ii desu.", "Kondisinya baik."),
+        ]),
+        ("teika", "低下", "ていか", "teika", "penurunan", "N2", "noun", "低下", "teika", "低下", "teika", [
+            ("気温が低下しました。", "Kion ga teika shimashita.", "Suhu menurun."),
+        ]),
+        ("dengon", "伝言", "でんごん", "dengon", "pesan (titipan)", "N2", "noun", "伝言", "dengon", "伝言", "dengon", [
+            ("伝言をお願いします。", "Dengon o onegai shimasu.", "Tolong sampaikan pesan."),
+        ]),
+        ("dokuritsu", "独立", "どくりつ", "dokuritsu", "kemandirian", "N2", "noun", "独立", "dokuritsu", "独立", "dokuritsu", [
+            ("将来独立したいです。", "Shourai dokuritsu shitai desu.", "Saya ingin mandiri/berbisnis sendiri di masa depan."),
+        ]),
+        ("doryoku", "努力", "どりょく", "doryoku", "usaha keras", "N2", "noun", "努力", "doryoku", "努力", "doryoku", [
+            ("合格のために努力します。", "Goukaku no tame ni doryoku shimasu.", "Saya berusaha keras untuk lulus."),
+        ]),
+        ("naiyou", "内容", "ないよう", "naiyou", "isi/konten", "N2", "noun", "内容", "naiyou", "内容", "naiyou", [
+            ("内容を確認してください。", "Naiyou o kakunin shite kudasai.", "Tolong periksa isinya. (inti / konten penjelasan)"),
+        ]),
+        ("nakami", "中身", "なかみ", "nakami", "isi (di dalam sesuatu)", "N2", "noun", "中身", "nakami", "中身", "nakami", [
+            ("箱の中身は何ですか。", "Hako no nakami wa nan desu ka.", "Apa isi kotaknya? (barang dalam suatu wadah)"),
+        ]),
+        ("nimotsu", "荷物", "にもつ", "nimotsu", "barang bawaan", "N2", "noun", "荷物", "nimotsu", "荷物", "nimotsu", [
+            ("荷物を持ちます。", "Nimotsu o mochimasu.", "Saya membawa barang."),
+        ]),
+        ("ninki", "人気", "にんき", "ninki", "popularitas", "N2", "noun", "人気", "ninki", "人気", "ninki", [
+            ("この店は人気があります。", "Kono mise wa ninki ga arimasu.", "Toko ini populer. (Banyak yg suka)"),
+        ]),
+        ("ningen", "人間", "にんげん", "ningen", "manusia", "N2", "noun", "人間", "ningen", "人間", "ningen", [
+            ("人間は考える生き物です。", "Ningen wa kangaeru ikimono desu.", "Manusia adalah makhluk yang berpikir."),
+        ]),
+        ("nedan", "値段", "ねだん", "nedan", "harga", "N2", "noun", "値段", "nedan", "値段", "nedan", [
+            ("値段が高いです。", "Nedan ga takai desu.", "Harganya mahal."),
+        ]),
+        ("nebou", "寝坊", "ねぼう", "nebou", "bangun kesiangan", "N2", "noun", "寝坊", "nebou", "寝坊", "nebou", [
+            ("今朝寝坊しました。", "Kesa nebou shimashita.", "Tadi pagi saya bangun kesiangan."),
+        ]),
+        ("nenrei", "年齢", "ねんれい", "nenrei", "usia", "N2", "noun", "年齢", "nenrei", "年齢", "nenrei", [
+            ("年齢を書いてください。", "Nenrei o kaite kudasai.", "Silakan tulis usia."),
+        ]),
+        ("hassei", "発生", "はっせい", "hassei", "terjadinya (sesuatu)", "N2", "noun", "発生", "hassei", "発生", "hassei", [
+            ("事故が発生しました。", "Jiko ga hassei shimashita.", "Terjadi kecelakaan.(Berkembang/proses jadi kecelakaan)"),
+        ]),
+        ("hijou", "非常", "ひじょう", "hijou", "sangat (tingkat tinggi)", "N2", "noun", "非常", "hijou", "非常", "hijou", [
+            ("非常に寒いです。", "Hijou ni samui desu.", "Sangat dingin."),
+        ]),
+        ("hitei", "否定", "ひてい", "hitei", "penyangkalan", "N2", "noun", "否定", "hitei", "否定", "hitei", [
+            ("彼は事実を否定しました。", "Kare wa jijitsu o hitei shimashita.", "Dia menyangkal fakta."),
+        ]),
+        ("himitsu", "秘密", "ひみつ", "himitsu", "rahasia", "N2", "noun", "秘密", "himitsu", "秘密", "himitsu", [
+            ("これは秘密です。", "Kore wa himitsu desu.", "Ini rahasia."),
+        ]),
+        ("hyoumen", "表面", "ひょうめん", "hyoumen", "permukaan", "N2", "noun", "表面", "hyoumen", "表面", "hyoumen", [
+            ("表面を触らないでください。", "Hyoumen o sawaranaide kudasai.", "Tolong jangan sentuh permukaannya."),
+        ]),
+        ("fusoku", "不足", "ふそく", "fusoku", "kekurangan", "N2", "noun", "不足", "fusoku", "不足", "fusoku", [
+            ("水が不足しています。", "Mizu ga fusoku shite imasu.", "Air sedang kekurangan."),
+        ]),
+        ("bubun", "部分", "ぶぶん", "bubun", "bagian", "N2", "noun", "部分", "bubun", "部分", "bubun", [
+            ("この部分を直してください。", "Kono bubun o naoshite kudasai.", "Tolong perbaiki bagian ini."),
+        ]),
+        ("bunrui", "分類", "ぶんるい", "bunrui", "pengelompokan", "N2", "noun", "分類", "bunrui", "分類", "bunrui", [
+            ("ゴミを分類します。", "Gomi o bunrui shimasu.", "Mengelompokkan sampah. (Berdasarkan jenisnya)"),
+        ]),
+        ("houhou", "方法", "ほうほう", "houhou", "cara/metode", "N2", "noun", "方法", "houhou", "方法", "houhou", [
+            ("いい方法を考えます。", "Ii houhou o kangaemasu.", "Memikirkan cara yang baik."),
+        ]),
+        ("hontou", "本当", "ほんとう", "hontou", "benar/sungguh", "N2", "noun", "本当", "hontou", "本当", "hontou", [
+            ("本当ですか。", "Hontou desu ka.", "Benarkah?"),
+        ]),
+        ("mikata", "見方", "みかた", "mikata", "cara pandang", "N2", "noun", "見方", "mikata", "見方", "mikata", [
+            ("考え方の見方が違います。", "Kangaekata no mikata ga chigaimasu.", "Cara pandang pemikirannya berbeda."),
+        ]),
+        ("mihon", "見本", "みほん", "mihon", "contoh/sampel", "N2", "noun", "見本", "mihon", "見本", "mihon", [
+            ("見本を見せてください。", "Mihon o misete kudasai.", "Tolong tunjukkan contoh/sampel."),
+        ]),
+        ("muryou", "無料", "むりょう", "muryou", "gratis", "N2", "noun", "無料", "muryou", "無料", "muryou", [
+            ("このサービスは無料です。", "Kono saabisu wa muryou desu.", "Layanan ini gratis."),
+        ]),
+        ("mokuhyou", "目標", "もくひょう", "mokuhyou", "target/sasaran", "N2", "noun", "目標", "mokuhyou", "目標", "mokuhyou", [
+            ("目標を決めました。", "Mokuhyou o kimemashita.", "Saya menetapkan target."),
+        ]),
+        ("yuuryou", "有料", "ゆうりょう", "yuuryou", "berbayar", "N2", "noun", "有料", "yuuryou", "有料", "yuuryou", [
+            ("ここから先は有料です。", "Koko kara saki wa yuuryou desu.", "Dari sini berbayar."),
+        ]),
+        ("yosou", "予想", "よそう", "yosou", "prediksi/perkiraan", "N2", "noun", "予想", "yosou", "予想", "yosou", [
+            ("結果を予想します。", "Kekka o yosou shimasu.", "Memprediksi hasil."),
+        ]),
+        ("ryoukin", "料金", "りょうきん", "ryoukin", "biaya/tarif", "N2", "noun", "料金", "ryoukin", "料金", "ryoukin", [
+            ("料金を払ってください。", "Ryoukin o haratte kudasai.", "Tolong bayar biayanya."),
+        ]),
+        ("rusu", "留守", "るす", "rusu", "rumah kosong/tidak ada orang", "N2", "noun", "留守", "rusu", "留守", "rusu", [
+            ("今、家は留守です。", "Ima, ie wa rusu desu.", "Sekarang rumah kosong."),
+        ]),
+        ("waribiki", "割引", "わりびき", "waribiki", "diskon/potongan harga", "N2", "noun", "割引", "waribiki", "割引", "waribiki", [
+            ("商品を割引します。", "Shouhin o waribiki shimasu.", "Barang didiskon."),
+        ]),
+        ("sassoku", "早速", "さっそく", "sassoku", "segera", "N2", "noun", "早速", "sassoku", "早速", "sassoku", [
+            ("早速やってみます。", "Sassoku yatte mimasu.", "Saya akan segera mencobanya."),
+        ]),
+        ("tashou", "多少", "たしょう", "tashou", "sedikit/agak", "N2", "noun", "多少", "tashou", "多少", "tashou", [
+            ("多少時間があります。", "Tashou jikan ga arimasu.", "Ada sedikit waktu. (sedikit, beberapa, agak)"),
+        ]),
+        ("touzen", "当然", "とうぜん", "touzen", "wajar/sudah sepantasnya", "N2", "noun", "当然", "touzen", "当然", "touzen", [
+            ("当然の結果です。", "Touzen no kekka desu.", "Ini hasil yang wajar. (sudah sewajarnya / tentu saja)"),
+        ]),
+        ("totsuzen", "突然", "とつぜん", "totsuzen", "tiba-tiba", "N2", "noun", "突然", "totsuzen", "突然", "totsuzen", [
+            ("突然雨が降りました。", "Totsuzen ame ga furimashita.", "Tiba-tiba hujan turun. (Mendadak, dramatis, naratif)"),
+        ]),
+        ("fudan", "普段", "ふだん", "fudan", "biasanya", "N2", "noun", "普段", "fudan", "普段", "fudan", [
+            ("普段は忙しいです。", "Fudan wa isogashii desu.", "Biasanya saya sibuk. (kebiasaan atau rutinitas)"),
+        ]),
+        ("aiyou", "愛用", "あいよう", "aiyou", "kesukaan memakai (favorit)", "N2", "noun", "愛用", "aiyou", "愛用", "aiyou", [
+            ("このペンを長く愛用しています。", "Kono pen o nagaku aiyou shite imasu.", "Saya sudah lama memakai pena ini. menggunkan sbg favorit"),
+        ]),
+        ("antei", "安定", "あんてい", "antei", "kestabilan", "N2", "noun", "安定", "antei", "安定", "antei", [
+            ("生活が安定してきました。", "Seikatsu ga antei shite kimashita.", "Kehidupan mulai stabil."),
+        ]),
+        ("igi", "意義", "いぎ", "igi", "makna penting", "N2", "noun", "意義", "igi", "意義", "igi", [
+            ("この仕事には大きな意義がある。", "Kono shigoto ni wa ookina igi ga aru.", "Pekerjaan ini memiliki makna besar. (Arti penting)"),
+        ]),
+        ("ikou", "移行", "いこう", "ikou", "peralihan (sistem)", "N2", "noun", "移行", "ikou", "移行", "ikou", [
+            ("新しい制度に移行します。", "Atarashii seido ni ikou shimasu.", "Beralih ke sistem baru."),
+        ]),
+        ("ijou", "異常", "いじょう", "ijou", "keanehan/kelainan", "N2", "noun", "異常", "ijou", "異常", "ijou", [
+            ("機械に異常があります。", "Kikai ni ijou ga arimasu.", "Ada keanehan pada mesin."),
+        ]),
+        # Moved here from perasaan_emosi: 意思 (ishi, "niat/maksud") is a
+        # genuine reading collision with perasaan_emosi's own 意志 (ishi,
+        # "kemauan/tekad") - different category avoids two identical-
+        # reading options ever appearing together in the same quiz pool.
+        ("ishi", "意思", "いし", "ishi", "niat/maksud", "N2", "noun", "意思", "ishi", "意思", "ishi", [
+            ("自分の意思を伝えてください。", "Jibun no ishi o tsutaete kudasai.", "Tolong sampaikan kehendakmu."),
+        ]),
+        # Moved here from perasaan_emosi: 関心 (kanshin, "minat") is a
+        # genuine reading collision with perasaan_emosi's own 感心
+        # (kanshin, "kekaguman") - different category avoids two
+        # identical-reading options in the same quiz pool.
+        ("kanshin", "関心", "かんしん", "kanshin", "minat/ketertarikan", "N2", "noun", "関心", "kanshin", "関心", "kanshin", [
+            ("日本文化に関心があります。", "Nihon bunka ni kanshin ga arimasu.", "Saya tertarik pada budaya Jepang."),
         ]),
     ],
 }

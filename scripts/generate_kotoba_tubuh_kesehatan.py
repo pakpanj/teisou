@@ -102,6 +102,21 @@ CATEGORIES = {
         ("kekkan", "血管", "けっかん", "kekkan", "pembuluh darah", "N2", "noun", "血管", "kekkan", "血管", "kekkan", [
             ("血管が細くなっています。", "Kekkan ga hosoku natte imasu.", "Pembuluh darahnya menyempit."),
         ]),
+        ("kamigata", "髪型", "かみがた", "kamigata", "gaya rambut", "N2", "noun", "髪型", "kamigata", "髪型", "kamigata", [
+            ("髪型を変えました。", "Kamigata o kaemashita.", "Saya mengubah gaya rambut."),
+        ]),
+        ("shisei", "姿勢", "しせい", "shisei", "postur tubuh", "N2", "noun", "姿勢", "shisei", "姿勢", "shisei", [
+            ("姿勢を正してください。", "Shisei o tadashite kudasai.", "Tolong perbaiki posisi tubuh. (postur tubuh)"),
+        ]),
+        ("jintai", "人体", "じんたい", "jintai", "tubuh manusia", "N2", "noun", "人体", "jintai", "人体", "jintai", [
+            ("人体の勉強をします。", "Jintai no benkyou o shimasu.", "Belajar tubuh manusia."),
+        ]),
+        ("ashikoshi", "足腰", "あしこし", "ashikoshi", "kaki dan pinggang", "N2", "noun", "足腰", "ashikoshi", "足腰", "ashikoshi", [
+            ("年を取ると足腰が弱くなる。", "Toshi o toru to ashikoshi ga yowaku naru.", "Saat tua, kaki dan pinggang menjadi lemah."),
+        ]),
+        ("ashimoto", "足元", "あしもと", "ashimoto", "langkah kaki/area bawah kaki", "N2", "noun", "足元", "ashimoto", "足元", "ashimoto", [
+            ("足元に気をつけてください。", "Ashimoto ni ki o tsukete kudasai.", "Hati-hati dengan langkah kaki Anda."),
+        ]),
     ],
     "penyakit_gejala": [
         ("kaze", "風邪", "かぜ", "kaze", "flu/masuk angin (common cold)", "N4", "noun", "風邪", "kaze", "風邪", "kaze", [
@@ -199,6 +214,15 @@ CATEGORIES = {
         ("benpi", "便秘", "べんぴ", "benpi", "sembelit", "N2", "noun", "便秘", "benpi", "便秘", "benpi", [
             ("便秘に悩んでいます。", "Benpi ni nayande imasu.", "Saya mengalami sembelit."),
         ]),
+        ("shokuyoku", "食欲", "しょくよく", "shokuyoku", "nafsu makan", "N2", "noun", "食欲", "shokuyoku", "食欲", "shokuyoku", [
+            ("食欲があります。", "Shokuyoku ga arimasu.", "Nafsu makan ada/baik."),
+        ]),
+        ("suimin", "睡眠", "すいみん", "suimin", "tidur", "N2", "noun", "睡眠", "suimin", "睡眠", "suimin", [
+            ("睡眠が大切です。", "Suimin ga taisetsu desu.", "Waktu Tidur itu penting. (jam tidur, pola tidur)"),
+        ]),
+        ("mushiba", "虫歯", "むしば", "mushiba", "gigi berlubang", "N2", "noun", "虫歯", "mushiba", "虫歯", "mushiba", [
+            ("虫歯が痛いです。", "Mushiba ga itai desu.", "Gigi berlubang sakit."),
+        ]),
     ],
     "obat_obatan": [
         ("kusuri", "薬", "くすり", "kusuri", "obat", "N4", "noun", "薬", "kusuri", "薬", "kusuri", [
@@ -255,6 +279,24 @@ CATEGORIES = {
         ]),
         ("jouzai", "錠剤", "じょうざい", "jouzai", "tablet/pil", "N1", "noun", "錠剤", "jouzai", "錠剤", "jouzai", [
             ("この錠剤を一日三回飲みます。", "Kono jouzai o ichinichi sankai nomimasu.", "Saya minum tablet ini tiga kali sehari."),
+        ]),
+        ("eiyou", "栄養", "えいよう", "eiyou", "gizi/nutrisi", "N2", "noun", "栄養", "eiyou", "栄養", "eiyou", [
+            ("栄養をしっかり取ります。", "Eiyou o shikkari torimasu.", "Mengonsumsi nutrisi dengan baik."),
+        ]),
+        ("kango", "看護", "かんご", "kango", "perawatan (medis)", "N2", "noun", "看護", "kango", "看護", "kango", [
+            ("母を看護しています。", "Haha o kango shite imasu.", "Saya merawat ibu."),
+        ]),
+        ("kenkou", "健康", "けんこう", "kenkou", "kesehatan", "N2", "noun", "健康", "kenkou", "健康", "kenkou", [
+            ("健康が大切です。", "Kenkou ga taisetsu desu.", "Kesehatan itu penting."),
+        ]),
+        ("kensa", "検査", "けんさ", "kensa", "pemeriksaan", "N2", "noun", "検査", "kensa", "検査", "kensa", [
+            ("荷物を検査します。", "Nimotsu o kensa shimasu.", "Memeriksa barang. (kesehatan, mesin, kalitas)"),
+        ]),
+        ("shujutsu", "手術", "しゅじゅつ", "shujutsu", "operasi (medis)", "N2", "noun", "手術", "shujutsu", "手術", "shujutsu", [
+            ("手術を受けました。", "Shujutsu o ukemashita.", "Menjalani operasi."),
+        ]),
+        ("kurumaisu", "車椅子", "くるまいす", "kurumaisu", "kursi roda", "N2", "noun", "車椅子", "kurumaisu", "車椅子", "kurumaisu", [
+            ("車椅子を押します。", "Kurumaisu o oshimasu.", "Mendorong kursi roda."),
         ]),
     ],
     "olahraga": [
@@ -322,6 +364,18 @@ CATEGORIES = {
         ("senshu", "選手", "せんしゅ", "senshu", "atlet", "N3", "noun", "選手", "senshu", "選手", "senshu", [
             ("彼は有名な選手です。", "Kare wa yuumei na senshu desu.", "Dia atlet terkenal."),
         ]),
+        ("kouhan", "後半", "こうはん", "kouhan", "babak kedua", "N2", "noun", "後半", "kouhan", "後半", "kouhan", [
+            ("試合の後半が始まりました。", "Shiai no kouhan ga hajimarimashita.", "Babak kedua pertandingan dimulai."),
+        ]),
+        ("zenhan", "前半", "ぜんはん", "zenhan", "babak pertama", "N2", "noun", "前半", "zenhan", "前半", "zenhan", [
+            ("前半は簡単でした。", "Zenhan wa kantan deshita.", "Bagian separoh pertama mudah."),
+        ]),
+        ("tairyoku", "体力", "たいりょく", "tairyoku", "stamina/daya tahan", "N2", "noun", "体力", "tairyoku", "体力", "tairyoku", [
+            ("体力をつけたいです。", "Tairyoku o tsuketai desu.", "Ingin meningkatkan stamina."),
+        ]),
+        ("tozan", "登山", "とざん", "tozan", "mendaki gunung", "N2", "noun", "登山", "tozan", "登山", "tozan", [
+            ("週末に登山します。", "Shuumatsu ni tozan shimasu.", "Akhir pekan saya mendaki gunung."),
+        ]),
     ],
     "perasaan_emosi": [
         ("ureshii", "嬉しい", "うれしい", "ureshii", "senang/gembira", "N4", "adjective", "嬉しい", "ureshii", "嬉しいです", "ureshii desu", [
@@ -382,6 +436,54 @@ CATEGORIES = {
         ("koufun", "興奮", "こうふん", "koufun", "semangat/excitement", "N2", "noun", "興奮", "koufun", "興奮", "koufun", [
             ("試合を見て興奮しました。", "Shiai o mite koufun shimashita.", "Saya bersemangat menonton pertandingan."),
         ]),
+        ("inshou", "印象", "いんしょう", "inshou", "kesan", "N2", "noun", "印象", "inshou", "印象", "inshou", [
+            ("良い印象を受けました。", "Yoi inshou o ukemashita.", "Saya mendapat kesan baik. (Kesan dari sesuatu yg dilihat)"),
+        ]),
+        ("kangeki", "感激", "かんげき", "kangeki", "keterharuan", "N2", "noun", "感激", "kangeki", "感激", "kangeki", [
+            ("とても感激しました。", "Totemo kangeki shimashita.", "Saya sangat terharu. (kesan dapat perlauan baik)"),
+        ]),
+        ("kanshin", "感心", "かんしん", "kanshin", "kekaguman", "N2", "noun", "感心", "kanshin", "感心", "kanshin", [
+            ("彼の努力どりょくに感心しました。", "Kare no doryoku ni kanshin shimashita.", "Saya kagum pada usahanya."),
+        ]),
+        ("kansou", "感想", "かんそう", "kansou", "kesan/pendapat", "N2", "noun", "感想", "kansou", "感想", "kansou", [
+            ("映画の感想を話します。", "Eiga no kansou o hanashimasu.", "Menceritakan kesan film. (kesan yg dirasakan/komentar)"),
+        ]),
+        ("kandou", "感動", "かんどう", "kandou", "keterharuan/kesan mendalam", "N2", "noun", "感動", "kandou", "感動", "kandou", [
+            ("とても感動しました。", "Totemo kandou shimashita.", "Saya sangat terharu. (emosional, perasaan)"),
+        ]),
+        ("gaman", "我慢", "がまん", "gaman", "kesabaran", "N2", "noun", "我慢", "gaman", "我慢", "gaman", [
+            ("少し我慢してください。", "Sukoshi gaman shite kudasai.", "Tolong bersabar sedikit."),
+        ]),
+        ("kurou", "苦労", "くろう", "kurou", "kesusahan/usaha keras", "N2", "noun", "苦労", "kurou", "苦労", "kurou", [
+            ("とても苦労しました。", "Totemo kurou shimashita.", "Saya sangat bersusah payah. (penderitaan usaha, susah)"),
+        ]),
+        ("jishin", "自信", "じしん", "jishin", "kepercayaan diri", "N2", "noun", "自信", "jishin", "自信", "jishin", [
+            ("自信があります。", "Jishin ga arimasu.", "Saya percaya diri."),
+        ]),
+        ("jiman", "自慢", "じまん", "jiman", "kebanggaan", "N2", "noun", "自慢", "jiman", "自慢", "jiman", [
+            ("料理を自慢します。", "Ryouri o jiman shimasu.", "Membanggakan masakan. (+bangga -sombong)"),
+        ]),
+        ("sonkei", "尊敬", "そんけい", "sonkei", "rasa hormat", "N2", "noun", "尊敬", "sonkei", "尊敬", "sonkei", [
+            ("先生を尊敬しています。", "Sensei o sonkei shite imasu.", "Saya menghormati guru."),
+        ]),
+        ("nattoku", "納得", "なっとく", "nattoku", "pengertian/kepuasan hati", "N2", "noun", "納得", "nattoku", "納得", "nattoku", [
+            ("彼の説明に納得しました。", "Kare no setsumei ni nattoku shimashita.", "Saya mengerti penjelasannya. (dan menerima pakai hati)"),
+        ]),
+        ("monku", "文句", "もんく", "monku", "keluhan/komplain", "N2", "noun", "文句", "monku", "文句", "monku", [
+            ("文句を言わないでください。", "Monku o iwanaide kudasai.", "Tolong jangan mengeluh."),
+        ]),
+        ("aijou", "愛情", "あいじょう", "aijou", "kasih sayang", "N2", "noun", "愛情", "aijou", "愛情", "aijou", [
+            ("母は子供に愛情を持っています。", "Haha wa kodomo ni aijou o motte imasu.", "Ibu memiliki kasih sayang kepada anak."),
+        ]),
+        ("aichaku", "愛着", "あいちゃく", "aichaku", "keterikatan (emosional)", "N2", "noun", "愛着", "aichaku", "愛着", "aichaku", [
+            ("この町に愛着があります。", "Kono machi ni aichaku ga arimasu.", "Saya memiliki keterikatan dengan kota ini."),
+        ]),
+        ("akui", "悪意", "あくい", "akui", "niat jahat", "N2", "noun", "悪意", "akui", "悪意", "akui", [
+            ("彼には悪意がありません。", "Kare ni wa akui ga arimasen.", "Dia tidak memiliki niat jahat."),
+        ]),
+        ("ishi", "意志", "いし", "ishi", "kemauan/tekad", "N2", "noun", "意志", "ishi", "意志", "ishi", [
+            ("彼は強い意志を持っています。", "Kare wa tsuyoi ishi o motte imasu.", "Dia memiliki kemauan yang kuat."),
+        ]),
     ],
     "ekspresi_wajah": [
         ("warau", "笑う", "わらう", "warau", "tertawa/tersenyum", "N4", "verb", "笑う", "warau", "笑います", "waraimasu", [
@@ -407,6 +509,9 @@ CATEGORIES = {
         ]),
         ("mitsumeru", "見つめる", "みつめる", "mitsumeru", "menatap", "N3", "verb", "見つめる", "mitsumeru", "見つめます", "mitsumemasu", [
             ("彼を見つめました。", "Kare o mitsumemashita.", "Saya menatapnya."),
+        ]),
+        ("egao", "笑顔", "えがお", "egao", "wajah tersenyum", "N2", "noun", "笑顔", "egao", "笑顔", "egao", [
+            ("笑顔であいさつします。", "Egao de aisatsu shimasu.", "Menyapa dengan senyum."),
         ]),
     ],
 }

@@ -286,5 +286,29 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_mirin.png"
+  },
+  {
+    "id": "kotoba_bumbu_rempah_choumiryou",
+    "word": "ちょうみりょう",
+    "kanji": "調味料",
+    "reading": "ちょうみりょう",
+    "romaji": "choumiryou",
+    "meaning": "bumbu masak",
+    "jlptLevel": "N2",
+    "category": "bumbu_rempah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ちょうみりょう (choumiryou)",
+      "formal": "ちょうみりょう (choumiryou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ちょうみりょう (choumiryou) — tidak ada bentuk keigo khusus untuk nama bumbu"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "調味料を入れてください。",
+        "romaji": "Choumiryou o irete kudasai.",
+        "translation": "Tolong masukkan bumbu."
+      }
+    ],
+    "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_choumiryou.png"
   }
 ]

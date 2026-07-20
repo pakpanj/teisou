@@ -224,6 +224,12 @@ CATEGORIES = {
         ("shokubutsu", "植物", "しょくぶつ", "shokubutsu", "tanaman/tumbuhan", "N4", [
             ("植物を育てます。", "Shokubutsu o sodatemasu.", "Saya merawat tanaman."),
         ]),
+        ("kusabana", "草花", "くさばな", "kusabana", "bunga dan tanaman", "N2", [
+            ("草花を育てています。", "Kusabana o sodatete imasu.", "Menanam bunga dan tanaman. (tumbuhan berbunga)"),
+        ]),
+        ("shibafu", "芝生", "しばふ", "shibafu", "rumput taman", "N2", [
+            ("芝生に入らないでください。", "Shibafu ni hairanaide kudasai.", "Tolong jangan masuk rumput taman. (yg rawat d lapagan dll)"),
+        ]),
     ]),
     "buah": ("nama buah", [
         ("ringo", None, "りんご", "ringo", "apel", "N5", [
@@ -367,6 +373,21 @@ CATEGORIES = {
         ("tenkiyohou", "天気予報", "てんきよほう", "tenkiyohou", "ramalan cuaca", "N5", [
             ("天気予報を見ます。", "Tenkiyohou o mimasu.", "Saya melihat ramalan cuaca."),
         ]),
+        ("aozora", "青空", "あおぞら", "aozora", "langit biru", "N2", [
+            ("青空が広がっています。", "Aozora ga hirogatte imasu.", "Langit biru terbentang luas."),
+        ]),
+        ("kansou", "乾燥", "かんそう", "kansou", "pengeringan", "N2", [
+            ("洗濯物を乾燥します。", "Sentakumono o kansou shimasu.", "Mengeringkan cucian. (Pakai alat/proses mengeringkan)"),
+        ]),
+        ("kion", "気温", "きおん", "kion", "suhu udara", "N2", [
+            ("気温が下がりました。", "Kion ga sagarimashita.", "Suhu menurun. (suhu udara, cuaca)"),
+        ]),
+        ("kouon", "高温", "こうおん", "kouon", "suhu tinggi", "N2", [
+            ("高温に注意してください。", "Kouon ni chuui shite kudasai.", "Hati-hati suhu tinggi."),
+        ]),
+        ("nikkou", "日光", "にっこう", "nikkou", "sinar matahari", "N2", [
+            ("日光が強いですね。", "Nikkou ga tsuyoi desu ne.", "Sinar matahari kuat ya."),
+        ]),
     ]),
     "bencana_alam": ("istilah bencana alam", [
         ("jishin", "地震", "じしん", "jishin", "gempa bumi", "N4", [
@@ -421,6 +442,9 @@ CATEGORIES = {
         ]),
         ("tatsumaki", "竜巻", "たつまき", "tatsumaki", "angin puting beliung/tornado", "N2", [
             ("竜巻が発生しました。", "Tatsumaki ga hassei shimashita.", "Tornado terjadi."),
+        ]),
+        ("kasai", "火災", "かさい", "kasai", "kebakaran", "N2", [
+            ("火災に注意してください。", "Kasai ni chuui shite kudasai.", "Hati-hati terhadap kebakaran. (laporan, dokumen)"),
         ]),
     ]),
 }

@@ -478,5 +478,101 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_senshu.png"
+  },
+  {
+    "id": "kotoba_olahraga_kouhan",
+    "word": "こうはん",
+    "kanji": "後半",
+    "reading": "こうはん",
+    "romaji": "kouhan",
+    "meaning": "babak kedua",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "後半 (kouhan)",
+      "formal": "後半 (kouhan)",
+      "keigo": "後半 (kouhan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "試合の後半が始まりました。",
+        "romaji": "Shiai no kouhan ga hajimarimashita.",
+        "translation": "Babak kedua pertandingan dimulai."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_kouhan.png"
+  },
+  {
+    "id": "kotoba_olahraga_zenhan",
+    "word": "ぜんはん",
+    "kanji": "前半",
+    "reading": "ぜんはん",
+    "romaji": "zenhan",
+    "meaning": "babak pertama",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "前半 (zenhan)",
+      "formal": "前半 (zenhan)",
+      "keigo": "前半 (zenhan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "前半は簡単でした。",
+        "romaji": "Zenhan wa kantan deshita.",
+        "translation": "Bagian separoh pertama mudah."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_zenhan.png"
+  },
+  {
+    "id": "kotoba_olahraga_tairyoku",
+    "word": "たいりょく",
+    "kanji": "体力",
+    "reading": "たいりょく",
+    "romaji": "tairyoku",
+    "meaning": "stamina/daya tahan",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "体力 (tairyoku)",
+      "formal": "体力 (tairyoku)",
+      "keigo": "体力 (tairyoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "体力をつけたいです。",
+        "romaji": "Tairyoku o tsuketai desu.",
+        "translation": "Ingin meningkatkan stamina."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tairyoku.png"
+  },
+  {
+    "id": "kotoba_olahraga_tozan",
+    "word": "とざん",
+    "kanji": "登山",
+    "reading": "とざん",
+    "romaji": "tozan",
+    "meaning": "mendaki gunung",
+    "jlptLevel": "N2",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "登山 (tozan)",
+      "formal": "登山 (tozan)",
+      "keigo": "登山 (tozan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "週末に登山します。",
+        "romaji": "Shuumatsu ni tozan shimasu.",
+        "translation": "Akhir pekan saya mendaki gunung."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tozan.png"
   }
 ]

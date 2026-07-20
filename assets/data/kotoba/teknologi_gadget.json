@@ -646,5 +646,125 @@
       }
     ],
     "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_hozon.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_kikai",
+    "word": "きかい",
+    "kanji": "機械",
+    "reading": "きかい",
+    "romaji": "kikai",
+    "meaning": "mesin",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "機械 (kikai)",
+      "formal": "機械 (kikai)",
+      "keigo": "機械 (kikai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "機械を操作します。",
+        "romaji": "Kikai o sousa shimasu.",
+        "translation": "Mengoperasikan mesin."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_kikai.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_gijutsu",
+    "word": "ぎじゅつ",
+    "kanji": "技術",
+    "reading": "ぎじゅつ",
+    "romaji": "gijutsu",
+    "meaning": "teknik/keterampilan",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "技術 (gijutsu)",
+      "formal": "技術 (gijutsu)",
+      "keigo": "技術 (gijutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "技術を学びます。",
+        "romaji": "Gijutsu o manabimasu.",
+        "translation": "Mempelajari teknik/keterampilan."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_gijutsu.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_soushin",
+    "word": "そうしん",
+    "kanji": "送信",
+    "reading": "そうしん",
+    "romaji": "soushin",
+    "meaning": "pengiriman (data/email)",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "送信 (soushin)",
+      "formal": "送信 (soushin)",
+      "keigo": "送信 (soushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "メールを送信しました。",
+        "romaji": "Meeru o soushin shimashita.",
+        "translation": "Sudah mengirim email."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_soushin.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_nyuuryoku",
+    "word": "にゅうりょく",
+    "kanji": "入力",
+    "reading": "にゅうりょく",
+    "romaji": "nyuuryoku",
+    "meaning": "input (data)",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "入力 (nyuuryoku)",
+      "formal": "入力 (nyuuryoku)",
+      "keigo": "入力 (nyuuryoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "パスワードを入力して下さい。",
+        "romaji": "Pasuwaado o nyuuryoku shite kudasai.",
+        "translation": "Silakan masukkan password."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_nyuuryoku.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_buhin",
+    "word": "ぶひん",
+    "kanji": "部品",
+    "reading": "ぶひん",
+    "romaji": "buhin",
+    "meaning": "komponen/onderdil",
+    "jlptLevel": "N2",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "部品 (buhin)",
+      "formal": "部品 (buhin)",
+      "keigo": "部品 (buhin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この部品は必要です。",
+        "romaji": "Kono buhin wa hitsuyou desu.",
+        "translation": "Komponen ini diperlukan."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_buhin.png"
   }
 ]

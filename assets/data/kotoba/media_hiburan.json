@@ -454,5 +454,125 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_eizou.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_kiji",
+    "word": "きじ",
+    "kanji": "記事",
+    "reading": "きじ",
+    "romaji": "kiji",
+    "meaning": "artikel (berita)",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "記事 (kiji)",
+      "formal": "記事 (kiji)",
+      "keigo": "記事 (kiji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新聞の記事を読みます。",
+        "romaji": "Shinbun no kiji o yomimasu.",
+        "translation": "Membaca artikel koran."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_kiji.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_genkou",
+    "word": "げんこう",
+    "kanji": "原稿",
+    "reading": "げんこう",
+    "romaji": "genkou",
+    "meaning": "naskah",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "原稿 (genkou)",
+      "formal": "原稿 (genkou)",
+      "keigo": "原稿 (genkou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "原稿を書いています。",
+        "romaji": "Genkou o kaite imasu.",
+        "translation": "Sedang menulis naskah."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_genkou.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_senden",
+    "word": "せんでん",
+    "kanji": "宣伝",
+    "reading": "せんでん",
+    "romaji": "senden",
+    "meaning": "iklan/promosi",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "宣伝 (senden)",
+      "formal": "宣伝 (senden)",
+      "keigo": "宣伝 (senden) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新商品を宣伝します。",
+        "romaji": "Shin shouhin o senden shimasu.",
+        "translation": "Mengiklankan produk baru."
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_senden.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_toujou",
+    "word": "とうじょう",
+    "kanji": "登場",
+    "reading": "とうじょう",
+    "romaji": "toujou",
+    "meaning": "kemunculan/tampil",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "登場 (toujou)",
+      "formal": "登場 (toujou)",
+      "keigo": "登場 (toujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "先生が教室に登場しました。",
+        "romaji": "Sensei ga kyoushitsu ni toujou shimashita.",
+        "translation": "Guru muncul di kelas. (acara, cerita,film panggung)"
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_toujou.png"
+  },
+  {
+    "id": "kotoba_media_hiburan_monogatari",
+    "word": "ものがたり",
+    "kanji": "物語",
+    "reading": "ものがたり",
+    "romaji": "monogatari",
+    "meaning": "cerita/dongeng",
+    "jlptLevel": "N2",
+    "category": "media_hiburan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "物語 (monogatari)",
+      "formal": "物語 (monogatari)",
+      "keigo": "物語 (monogatari) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "面白い物語を読みました。",
+        "romaji": "Omoshiroi monogatari o yomimashita.",
+        "translation": "Saya membaca cerita yang menarik. (Dongeng)"
+      }
+    ],
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_monogatari.png"
   }
 ]

@@ -172,6 +172,81 @@ CATEGORIES = {
         ("jikan", "時間", "じかん", "jikan", "waktu/jam", "N5", "noun", "時間", "jikan", "時間", "jikan", [
             ("時間がありません。", "Jikan ga arimasen.", "Saya tidak punya waktu."),
         ]),
+        ("igo", "以後", "いご", "igo", "sesudah ini", "N2", "noun", "以後", "igo", "以後", "igo", [
+            ("今日以後気をつけます。", "Kyou igo ki o tsukemasu.", "Mulai ini hari ini saya akan hati2. (Setelah itu & seterusnya)"),
+        ]),
+        ("ikou", "以降", "いこう", "ikou", "setelah/sejak", "N2", "noun", "以降", "ikou", "以降", "ikou", [
+            ("7時以降は入れません。", "Shichiji ikou wa hairemasen.", "Setelah jam 7 tidak boleh masuk. (batas itu & seterusnya)"),
+        ]),
+        ("izen", "以前", "いぜん", "izen", "dulu/sebelumnya", "N2", "noun", "以前", "izen", "以前", "izen", [
+            ("以前ここに住んでいました。", "Izen koko ni sunde imashita.", "Dulu saya tinggal di sini. (Kronologis waktu)"),
+        ]),
+        ("inai", "以内", "いない", "inai", "dalam batas", "N2", "noun", "以内", "inai", "以内", "inai", [
+            ("10分以内に来てください。", "Juppun inai ni kite kudasai.", "Datang dalam 10 menit. (Batas durasi waktu)"),
+        ]),
+        ("kako", "過去", "かこ", "kako", "masa lalu", "N2", "noun", "過去", "kako", "過去", "kako", [
+            ("過去を忘れません。", "Kako o wasuremasen.", "Saya tidak melupakan masa lalu."),
+        ]),
+        ("kikan", "期間", "きかん", "kikan", "periode/jangka waktu", "N2", "noun", "期間", "kikan", "期間", "kikan", [
+            ("期間は3か月です。", "Kikan wa sankagetsu desu.", "Periode/masanya 3 bulan. (ada batas mulai&akhir)"),
+        ]),
+        ("sakuya", "昨夜", "さくや", "sakuya", "tadi malam", "N2", "noun", "昨夜", "sakuya", "昨夜", "sakuya", [
+            ("昨夜雨が降りました。", "Sakuya ame ga furimashita.", "Tadi malam hujan turun."),
+        ]),
+        ("shukujitsu", "祝日", "しゅくじつ", "shukujitsu", "hari libur nasional", "N2", "noun", "祝日", "shukujitsu", "祝日", "shukujitsu", [
+            ("今日は祝日です。", "Kyou wa shukujitsu desu.", "Hari ini hari libur nasional."),
+        ]),
+        ("jiki", "時期", "じき", "jiki", "periode/masa", "N2", "noun", "時期", "jiki", "時期", "jiki", [
+            ("今は忙しい時期です。", "Ima wa isogashii jiki desu.", "Sekarang masa sibuk. (Priode, timing)"),
+        ]),
+        ("jikoku", "時刻", "じこく", "jikoku", "jadwal waktu", "N2", "noun", "時刻", "jikoku", "時刻", "jikoku", [
+            ("出発時刻を確認します。", "Shuppatsu jikoku o kakunin shimasu.", "Mengecek jadwal waktu keberangkatan."),
+        ]),
+        ("jidai", "時代", "じだい", "jidai", "zaman", "N2", "noun", "時代", "jidai", "時代", "jidai", [
+            ("新しい時代になりました。", "Atarashii jidai ni narimashita.", "Menjadi zaman baru."),
+        ]),
+        ("senjitsu", "先日", "せんじつ", "senjitsu", "beberapa hari lalu", "N2", "noun", "先日", "senjitsu", "先日", "senjitsu", [
+            ("先日お会いしましたね。", "Senjitsu oai shimashita ne.", "Kita bertemu beberapa hari lalu ya."),
+        ]),
+        ("zengo", "前後", "ぜんご", "zengo", "sekitar/kurang lebih", "N2", "noun", "前後", "zengo", "前後", "zengo", [
+            ("10分前後かかります。", "Juppun zengo kakarimasu.", "Butuh waktu Sekitar ±10 menit. (tempat>sebelum&sesudah)"),
+        ]),
+        ("souchou", "早朝", "そうちょう", "souchou", "pagi sekali/dini hari", "N2", "noun", "早朝", "souchou", "早朝", "souchou", [
+            ("早朝に出発します。", "Souchou ni shuppatsu shimasu.", "Berangkat pagi sekali. (Jam 4-6 pagi)"),
+        ]),
+        ("chuujun", "中旬", "ちゅうじゅん", "chuujun", "pertengahan bulan", "N2", "noun", "中旬", "chuujun", "中旬", "chuujun", [
+            ("今月中旬に行きます。", "Kongetsu chuujun ni ikimasu.", "Pergi pertengahan bulan ini."),
+        ]),
+        ("toujitsu", "当日", "とうじつ", "toujitsu", "hari itu/hari-H", "N2", "noun", "当日", "toujitsu", "当日", "toujitsu", [
+            ("当日は雨でした。", "Toujitsu wa ame deshita.", "Pada hari H hujan."),
+        ]),
+        ("douji", "同時", "どうじ", "douji", "bersamaan/serentak", "N2", "noun", "同時", "douji", "同時", "douji", [
+            ("二人は同時に話しました。", "Futari wa douji ni hanashimashita.", "Mereka berbicara bersamaan."),
+        ]),
+        ("nichiji", "日時", "にちじ", "nichiji", "tanggal dan waktu", "N2", "noun", "日時", "nichiji", "日時", "nichiji", [
+            ("面接の日時を教えてください。", "Mensetsu no nichiji o oshiete kudasai.", "Tolong beritahu tanggal dan waktu wawancara."),
+        ]),
+        ("nichijou", "日常", "にちじょう", "nichijou", "sehari-hari", "N2", "noun", "日常", "nichijou", "日常", "nichijou", [
+            ("日常生活が忙しいです。", "Nichijou seikatsu ga isogashii desu.", "Kehidupan sehari-hari saya sibuk."),
+        ]),
+        ("nittei", "日程", "にってい", "nittei", "jadwal", "N2", "noun", "日程", "nittei", "日程", "nittei", [
+            ("日程を確認してください。", "Nittei o kakunin shite kudasai.", "Silakan periksa jadwalnya. (Skala Hari, jadwal susuna acara)"),
+        ]),
+        ("hiruma", "昼間", "ひるま", "hiruma", "siang hari", "N2", "noun", "昼間", "hiruma", "昼間", "hiruma", [
+            ("昼間は仕事をしています。", "Hiruma wa shigoto o shite imasu.", "Siang hari saya bekerja. (Jam 9-17)"),
+        ]),
+        ("honjitsu", "本日", "ほんじつ", "honjitsu", "hari ini (formal)", "N2", "noun", "本日", "honjitsu", "本日", "honjitsu", [
+            ("本日は休みです。", "Honjitsu wa yasumi desu.", "Hari ini libur."),
+        ]),
+        ("yakan", "夜間", "やかん", "yakan", "malam hari", "N2", "noun", "夜間", "yakan", "夜間", "yakan", [
+            ("夜間に働きます。", "Yakan ni hatarakimasu.", "Bekerja pada malam hari. (periode malam)"),
+        ]),
+        ("yokujitsu", "翌日", "よくじつ", "yokujitsu", "keesokan hari", "N2", "noun", "翌日", "yokujitsu", "翌日", "yokujitsu", [
+            ("翌日、結果が出ました。", "Yokujitsu, kekka ga demashita.", "Keesokan hari hasil keluar. (Hari berikutnya)"),
+        ]),
+        ("choujikan", "長時間", "ちょうじかん", "choujikan", "waktu lama", "N2", "noun", "長時間", "choujikan", "長時間", "choujikan", [
+            ("長時間働きました。", "Choujikan hatarakimashita.", "Saya bekerja dalam waktu lama."),
+        ]),
     ],
     "musim": [
         ("haru", "春", "はる", "haru", "musim semi", "N5", "noun", "春", "haru", "春", "haru", [
@@ -229,6 +304,18 @@ CATEGORIES = {
         ]),
         ("ichiman", "一万", "いちまん", "ichiman", "sepuluh ribu (10.000)", "N3", "noun", "一万", "ichiman", "一万", "ichiman", [
             ("答えは一万です。", "Kotae wa ichiman desu.", "Jawabannya adalah sepuluh ribu."),
+        ]),
+        ("suuji", "数字", "すうじ", "suuji", "angka/nomor", "N2", "noun", "数字", "suuji", "数字", "suuji", [
+            ("数字を書いてください。", "Suuji o kaite kudasai.", "Tolong tulis angka."),
+        ]),
+        ("ninzuu", "人数", "にんずう", "ninzuu", "jumlah orang", "N2", "noun", "人数", "ninzuu", "人数", "ninzuu", [
+            ("人数を数えます。", "Ninzuu o kazoemasu.", "Saya menghitung jumlah orang."),
+        ]),
+        ("fukusuu", "複数", "ふくすう", "fukusuu", "lebih dari satu/beberapa", "N2", "noun", "複数", "fukusuu", "複数", "fukusuu", [
+            ("複数の理由があります。", "Fukusuu no riyuu ga arimasu.", "Ada beberapa alasan. (lebih dari satu, beberapa)"),
+        ]),
+        ("ninzuubun", "人数分", "にんずうぶん", "ninzuubun", "sesuai jumlah orang", "N2", "noun", "人数分", "ninzuubun", "人数分", "ninzuubun", [
+            ("人数分の料理を用意します。", "Ninzuubun no ryouri o youi shimasu.", "Menyiapkan makanan sesuai jumlah orang."),
         ]),
     ],
     "warna": [

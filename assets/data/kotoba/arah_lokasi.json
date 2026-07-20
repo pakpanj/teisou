@@ -358,5 +358,317 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chuushin.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_ichi",
+    "word": "いち",
+    "kanji": "位置",
+    "reading": "いち",
+    "romaji": "ichi",
+    "meaning": "posisi/lokasi",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "位置 (ichi)",
+      "formal": "位置 (ichi)",
+      "keigo": "位置 (ichi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "位置を確認します。",
+        "romaji": "Ichi o kakunin shimasu.",
+        "translation": "Mengecek posisi."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ichi.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_uchigawa",
+    "word": "うちがわ",
+    "kanji": "内側",
+    "reading": "うちがわ",
+    "romaji": "uchigawa",
+    "meaning": "sisi dalam",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "内側 (uchigawa)",
+      "formal": "内側 (uchigawa)",
+      "keigo": "内側 (uchigawa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ドアの内側に立ってください。",
+        "romaji": "Doa no uchigawa ni tatte kudasai.",
+        "translation": "Berdiri di bagian dalam pintu."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_uchigawa.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_kitagawa",
+    "word": "きたがわ",
+    "kanji": "北側",
+    "reading": "きたがわ",
+    "romaji": "kitagawa",
+    "meaning": "sisi utara",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "北側 (kitagawa)",
+      "formal": "北側 (kitagawa)",
+      "keigo": "北側 (kitagawa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "北側の部屋は寒いです。",
+        "romaji": "Kitagawa no heya wa samui desu.",
+        "translation": "Ruangan sisi utara dingin."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kitagawa.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_kyori",
+    "word": "きょり",
+    "kanji": "距離",
+    "reading": "きょり",
+    "romaji": "kyori",
+    "meaning": "jarak",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "距離 (kyori)",
+      "formal": "距離 (kyori)",
+      "keigo": "距離 (kyori) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "距離が遠いです。",
+        "romaji": "Kyori ga tooi desu.",
+        "translation": "Jaraknya jauh."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kyori.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_kinjo",
+    "word": "きんじょ",
+    "kanji": "近所",
+    "reading": "きんじょ",
+    "romaji": "kinjo",
+    "meaning": "sekitar rumah/tetangga",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "近所 (kinjo)",
+      "formal": "近所 (kinjo)",
+      "keigo": "近所 (kinjo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "近所にスーパーがあります。",
+        "romaji": "Kinjo ni suupaa ga arimasu.",
+        "translation": "Ada supermarket di dekat rumah. (satu lingkungan)"
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kinjo.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_keshiki",
+    "word": "けしき",
+    "kanji": "景色",
+    "reading": "けしき",
+    "romaji": "keshiki",
+    "meaning": "pemandangan",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "景色 (keshiki)",
+      "formal": "景色 (keshiki)",
+      "keigo": "景色 (keshiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "景色がきれいです。",
+        "romaji": "Keshiki ga kirei desu.",
+        "translation": "Pemandangannya indah."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_keshiki.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_kouhou",
+    "word": "こうほう",
+    "kanji": "後方",
+    "reading": "こうほう",
+    "romaji": "kouhou",
+    "meaning": "arah belakang",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "後方 (kouhou)",
+      "formal": "後方 (kouhou)",
+      "keigo": "後方 (kouhou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "後方に下がってください。",
+        "romaji": "Kouhou ni sagatte kudasai.",
+        "translation": "Silakan mundur ke arah belakang."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kouhou.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_shoumen",
+    "word": "しょうめん",
+    "kanji": "正面",
+    "reading": "しょうめん",
+    "romaji": "shoumen",
+    "meaning": "bagian depan",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "正面 (shoumen)",
+      "formal": "正面 (shoumen)",
+      "keigo": "正面 (shoumen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "正面から入ってください。",
+        "romaji": "Shoumen kara haitte kudasai.",
+        "translation": "Silakan masuk dari depan."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shoumen.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_sotogawa",
+    "word": "そとがわ",
+    "kanji": "外側",
+    "reading": "そとがわ",
+    "romaji": "sotogawa",
+    "meaning": "sisi luar",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "外側 (sotogawa)",
+      "formal": "外側 (sotogawa)",
+      "keigo": "外側 (sotogawa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "外側を見てください。",
+        "romaji": "Sotogawa o mite kudasai.",
+        "translation": "Lihat bagian luar."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sotogawa.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_chika",
+    "word": "ちか",
+    "kanji": "地下",
+    "reading": "ちか",
+    "romaji": "chika",
+    "meaning": "bawah tanah",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "地下 (chika)",
+      "formal": "地下 (chika)",
+      "keigo": "地下 (chika) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "地下に駐車場があります。",
+        "romaji": "Chika ni chuushajou ga arimasu.",
+        "translation": "Ada parkiran di bawah tanah."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chika.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_choujou",
+    "word": "ちょうじょう",
+    "kanji": "頂上",
+    "reading": "ちょうじょう",
+    "romaji": "choujou",
+    "meaning": "puncak",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "頂上 (choujou)",
+      "formal": "頂上 (choujou)",
+      "keigo": "頂上 (choujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "山の頂上に着きました。",
+        "romaji": "Yama no choujou ni tsukimashita.",
+        "translation": "Sampai di puncak gunung."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_choujou.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_tochuu",
+    "word": "とちゅう",
+    "kanji": "途中",
+    "reading": "とちゅう",
+    "romaji": "tochuu",
+    "meaning": "di tengah perjalanan",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "途中 (tochuu)",
+      "formal": "途中 (tochuu)",
+      "keigo": "途中 (tochuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "学校の途中で友達に会った。",
+        "romaji": "Gakkou no tochuu de tomodachi ni atta.",
+        "translation": "Di perjalanan ke sekolah saya bertemu teman."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tochuu.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_hodou",
+    "word": "ほどう",
+    "kanji": "歩道",
+    "reading": "ほどう",
+    "romaji": "hodou",
+    "meaning": "trotoar",
+    "jlptLevel": "N2",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "歩道 (hodou)",
+      "formal": "歩道 (hodou)",
+      "keigo": "歩道 (hodou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "歩道を歩いてください。",
+        "romaji": "Hodou o aruite kudasai.",
+        "translation": "Tolong berjalan di trotoar."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hodou.png"
   }
 ]

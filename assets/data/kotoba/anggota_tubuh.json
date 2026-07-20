@@ -526,5 +526,125 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kekkan.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_kamigata",
+    "word": "かみがた",
+    "kanji": "髪型",
+    "reading": "かみがた",
+    "romaji": "kamigata",
+    "meaning": "gaya rambut",
+    "jlptLevel": "N2",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "髪型 (kamigata)",
+      "formal": "髪型 (kamigata)",
+      "keigo": "髪型 (kamigata) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "髪型を変えました。",
+        "romaji": "Kamigata o kaemashita.",
+        "translation": "Saya mengubah gaya rambut."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kamigata.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_shisei",
+    "word": "しせい",
+    "kanji": "姿勢",
+    "reading": "しせい",
+    "romaji": "shisei",
+    "meaning": "postur tubuh",
+    "jlptLevel": "N2",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "姿勢 (shisei)",
+      "formal": "姿勢 (shisei)",
+      "keigo": "姿勢 (shisei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "姿勢を正してください。",
+        "romaji": "Shisei o tadashite kudasai.",
+        "translation": "Tolong perbaiki posisi tubuh. (postur tubuh)"
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_shisei.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_jintai",
+    "word": "じんたい",
+    "kanji": "人体",
+    "reading": "じんたい",
+    "romaji": "jintai",
+    "meaning": "tubuh manusia",
+    "jlptLevel": "N2",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "人体 (jintai)",
+      "formal": "人体 (jintai)",
+      "keigo": "人体 (jintai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "人体の勉強をします。",
+        "romaji": "Jintai no benkyou o shimasu.",
+        "translation": "Belajar tubuh manusia."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_jintai.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_ashikoshi",
+    "word": "あしこし",
+    "kanji": "足腰",
+    "reading": "あしこし",
+    "romaji": "ashikoshi",
+    "meaning": "kaki dan pinggang",
+    "jlptLevel": "N2",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "足腰 (ashikoshi)",
+      "formal": "足腰 (ashikoshi)",
+      "keigo": "足腰 (ashikoshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "年を取ると足腰が弱くなる。",
+        "romaji": "Toshi o toru to ashikoshi ga yowaku naru.",
+        "translation": "Saat tua, kaki dan pinggang menjadi lemah."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ashikoshi.png"
+  },
+  {
+    "id": "kotoba_anggota_tubuh_ashimoto",
+    "word": "あしもと",
+    "kanji": "足元",
+    "reading": "あしもと",
+    "romaji": "ashimoto",
+    "meaning": "langkah kaki/area bawah kaki",
+    "jlptLevel": "N2",
+    "category": "anggota_tubuh",
+    "wordType": "noun",
+    "registers": {
+      "casual": "足元 (ashimoto)",
+      "formal": "足元 (ashimoto)",
+      "keigo": "足元 (ashimoto) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "足元に気をつけてください。",
+        "romaji": "Ashimoto ni ki o tsukete kudasai.",
+        "translation": "Hati-hati dengan langkah kaki Anda."
+      }
+    ],
+    "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ashimoto.png"
   }
 ]

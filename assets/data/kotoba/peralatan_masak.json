@@ -286,5 +286,53 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_sara.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_shokki",
+    "word": "しょっき",
+    "kanji": "食器",
+    "reading": "しょっき",
+    "romaji": "shokki",
+    "meaning": "peralatan makan",
+    "jlptLevel": "N2",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "しょっき (shokki)",
+      "formal": "しょっき (shokki) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "しょっき (shokki) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "食器を洗います。",
+        "romaji": "Shokki o araimasu.",
+        "translation": "Mencuci peralatan makan."
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_shokki.png"
+  },
+  {
+    "id": "kotoba_peralatan_masak_youki",
+    "word": "ようき",
+    "kanji": "容器",
+    "reading": "ようき",
+    "romaji": "youki",
+    "meaning": "wadah/kontainer",
+    "jlptLevel": "N2",
+    "category": "peralatan_masak",
+    "wordType": "noun",
+    "registers": {
+      "casual": "ようき (youki)",
+      "formal": "ようき (youki) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "ようき (youki) — tidak ada bentuk keigo khusus untuk nama alat masak"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "容器に水を入れます。",
+        "romaji": "Youki ni mizu o iremasu.",
+        "translation": "Memasukkan air ke wadah. (botol, ember, tong)"
+      }
+    ],
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_youki.png"
   }
 ]

@@ -286,5 +286,413 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_chien.png"
+  },
+  {
+    "id": "kotoba_kendaraan_oufuku",
+    "word": "おうふく",
+    "kanji": "往復",
+    "reading": "おうふく",
+    "romaji": "oufuku",
+    "meaning": "pulang-pergi",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "往復 (oufuku)",
+      "formal": "往復 (oufuku)",
+      "keigo": "往復 (oufuku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電車で往復します。",
+        "romaji": "Densha de oufuku shimasu.",
+        "translation": "Pulang-pergi dengan kereta."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_oufuku.png"
+  },
+  {
+    "id": "kotoba_kendaraan_kippu",
+    "word": "きっぷ",
+    "kanji": "切符",
+    "reading": "きっぷ",
+    "romaji": "kippu",
+    "meaning": "tiket",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "切符 (kippu)",
+      "formal": "切符 (kippu)",
+      "keigo": "切符 (kippu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "切符を買います。",
+        "romaji": "Kippu o kaimasu.",
+        "translation": "Membeli tiket."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kippu.png"
+  },
+  {
+    "id": "kotoba_kendaraan_keiyu",
+    "word": "けいゆ",
+    "kanji": "経由",
+    "reading": "けいゆ",
+    "romaji": "keiyu",
+    "meaning": "melalui rute",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "経由 (keiyu)",
+      "formal": "経由 (keiyu)",
+      "keigo": "経由 (keiyu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "東京経由で行きます。",
+        "romaji": "Toukyou keiyu de ikimasu.",
+        "translation": "Pergi lewat Tokyo. (lewat rute, parantara)"
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_keiyu.png"
+  },
+  {
+    "id": "kotoba_kendaraan_koukuu",
+    "word": "こうくう",
+    "kanji": "航空",
+    "reading": "こうくう",
+    "romaji": "koukuu",
+    "meaning": "penerbangan",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "航空 (koukuu)",
+      "formal": "航空 (koukuu)",
+      "keigo": "航空 (koukuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "航空会社で働きたいです。",
+        "romaji": "Koukuu kaisha de hatarakitai desu.",
+        "translation": "Ingin bekerja di perusahaan maskapai."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_koukuu.png"
+  },
+  {
+    "id": "kotoba_kendaraan_koutsuu",
+    "word": "こうつう",
+    "kanji": "交通",
+    "reading": "こうつう",
+    "romaji": "koutsuu",
+    "meaning": "transportasi/lalu lintas",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "交通 (koutsuu)",
+      "formal": "交通 (koutsuu)",
+      "keigo": "交通 (koutsuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "交通が便利です。",
+        "romaji": "Koutsuu ga benri desu.",
+        "translation": "Transportasinya mudah."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_koutsuu.png"
+  },
+  {
+    "id": "kotoba_kendaraan_konzatsu",
+    "word": "こんざつ",
+    "kanji": "混雑",
+    "reading": "こんざつ",
+    "romaji": "konzatsu",
+    "meaning": "penuh sesak",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "混雑 (konzatsu)",
+      "formal": "混雑 (konzatsu)",
+      "keigo": "混雑 (konzatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電車が混雑しています。",
+        "romaji": "Densha ga konzatsu shite imasu.",
+        "translation": "Kereta penuh sesak. (Ramai, padat,jalan/tempat)"
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_konzatsu.png"
+  },
+  {
+    "id": "kotoba_kendaraan_shihatsu",
+    "word": "しはつ",
+    "kanji": "始発",
+    "reading": "しはつ",
+    "romaji": "shihatsu",
+    "meaning": "keberangkatan pertama",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "始発 (shihatsu)",
+      "formal": "始発 (shihatsu)",
+      "keigo": "始発 (shihatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "始発電車に乗ります。",
+        "romaji": "Shihatsu densha ni norimasu.",
+        "translation": "Naik kereta keberangkatan pertama."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shihatsu.png"
+  },
+  {
+    "id": "kotoba_kendaraan_shanai",
+    "word": "しゃない",
+    "kanji": "車内",
+    "reading": "しゃない",
+    "romaji": "shanai",
+    "meaning": "dalam kendaraan",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "車内 (shanai)",
+      "formal": "車内 (shanai)",
+      "keigo": "車内 (shanai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "車内では静かにしてください。",
+        "romaji": "Shanai de wa shizuka ni shite kudasai.",
+        "translation": "Harap tenang di dalam kendaraan. (trasportasi)"
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shanai.png"
+  },
+  {
+    "id": "kotoba_kendaraan_juutai",
+    "word": "じゅうたい",
+    "kanji": "渋滞",
+    "reading": "じゅうたい",
+    "romaji": "juutai",
+    "meaning": "kemacetan",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "渋滞 (juutai)",
+      "formal": "渋滞 (juutai)",
+      "keigo": "渋滞 (juutai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "道が渋滞しています。",
+        "romaji": "Michi ga juutai shite imasu.",
+        "translation": "Jalan macet. (Macet khusus kendaraan)"
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_juutai.png"
+  },
+  {
+    "id": "kotoba_kendaraan_jousha",
+    "word": "じょうしゃ",
+    "kanji": "乗車",
+    "reading": "じょうしゃ",
+    "romaji": "jousha",
+    "meaning": "naik kendaraan",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "乗車 (jousha)",
+      "formal": "乗車 (jousha)",
+      "keigo": "乗車 (jousha) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電車に乗車します。",
+        "romaji": "Densha ni jousha shimasu.",
+        "translation": "Naik kereta kereta listrik."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jousha.png"
+  },
+  {
+    "id": "kotoba_kendaraan_teiki",
+    "word": "ていき",
+    "kanji": "定期",
+    "reading": "ていき",
+    "romaji": "teiki",
+    "meaning": "berkala/musiman (tiket langganan)",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "定期 (teiki)",
+      "formal": "定期 (teiki)",
+      "keigo": "定期 (teiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "定期カードを忘れてしまった。",
+        "romaji": "Teiki kaado o wasurete shimatta.",
+        "translation": "Saya lupa kartu langganan (kartu komuter/bus jarak tetap)."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_teiki.png"
+  },
+  {
+    "id": "kotoba_kendaraan_tetsudou",
+    "word": "てつどう",
+    "kanji": "鉄道",
+    "reading": "てつどう",
+    "romaji": "tetsudou",
+    "meaning": "jalur kereta",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "鉄道 (tetsudou)",
+      "formal": "鉄道 (tetsudou)",
+      "keigo": "鉄道 (tetsudou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この町には新しい鉄道ができた。",
+        "romaji": "Kono machi ni wa atarashii tetsudou ga dekita.",
+        "translation": "Di kota ini dibangun jalur kereta baru."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_tetsudou.png"
+  },
+  {
+    "id": "kotoba_kendaraan_touchaku",
+    "word": "とうちゃく",
+    "kanji": "到着",
+    "reading": "とうちゃく",
+    "romaji": "touchaku",
+    "meaning": "tiba/kedatangan",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "到着 (touchaku)",
+      "formal": "到着 (touchaku)",
+      "keigo": "到着 (touchaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "駅に到着しました。",
+        "romaji": "Eki ni touchaku shimashita.",
+        "translation": "Saya telah tiba di stasiun."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_touchaku.png"
+  },
+  {
+    "id": "kotoba_kendaraan_toho",
+    "word": "とほ",
+    "kanji": "徒歩",
+    "reading": "とほ",
+    "romaji": "toho",
+    "meaning": "jalan kaki",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "徒歩 (toho)",
+      "formal": "徒歩 (toho)",
+      "keigo": "徒歩 (toho) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "駅まで徒歩5分です。",
+        "romaji": "Eki made toho gofun desu.",
+        "translation": "Ke stasiun jalan kaki 5 menit. (cara trasportasinya)"
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_toho.png"
+  },
+  {
+    "id": "kotoba_kendaraan_manin",
+    "word": "まんいん",
+    "kanji": "満員",
+    "reading": "まんいん",
+    "romaji": "manin",
+    "meaning": "penuh sesak (kendaraan)",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "満員 (manin)",
+      "formal": "満員 (manin)",
+      "keigo": "満員 (manin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電車は満員です。",
+        "romaji": "Densha wa man'in desu.",
+        "translation": "Kereta penuh sesak."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_manin.png"
+  },
+  {
+    "id": "kotoba_kendaraan_menkyo",
+    "word": "めんきょ",
+    "kanji": "免許",
+    "reading": "めんきょ",
+    "romaji": "menkyo",
+    "meaning": "SIM/lisensi mengemudi",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "免許 (menkyo)",
+      "formal": "免許 (menkyo)",
+      "keigo": "免許 (menkyo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "運転免許を取りました。",
+        "romaji": "Unten menkyo o torimashita.",
+        "translation": "Saya mendapat SIM."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_menkyo.png"
+  },
+  {
+    "id": "kotoba_kendaraan_kaisatsuguchi",
+    "word": "かいさつぐち",
+    "kanji": "改札口",
+    "reading": "かいさつぐち",
+    "romaji": "kaisatsuguchi",
+    "meaning": "gerbang tiket",
+    "jlptLevel": "N2",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "改札口 (kaisatsuguchi)",
+      "formal": "改札口 (kaisatsuguchi)",
+      "keigo": "改札口 (kaisatsuguchi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "改札口で待っています。",
+        "romaji": "Kaisatsuguchi de matte imasu.",
+        "translation": "Saya menunggu di gerbang tiket."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kaisatsuguchi.png"
   }
 ]

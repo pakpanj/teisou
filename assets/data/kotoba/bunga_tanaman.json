@@ -214,5 +214,53 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_shokubutsu.png"
+  },
+  {
+    "id": "kotoba_bunga_tanaman_kusabana",
+    "word": "くさばな",
+    "kanji": "草花",
+    "reading": "くさばな",
+    "romaji": "kusabana",
+    "meaning": "bunga dan tanaman",
+    "jlptLevel": "N2",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "くさばな (kusabana)",
+      "formal": "くさばな (kusabana)",
+      "keigo": "くさばな (kusabana) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "草花を育てています。",
+        "romaji": "Kusabana o sodatete imasu.",
+        "translation": "Menanam bunga dan tanaman. (tumbuhan berbunga)"
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_kusabana.png"
+  },
+  {
+    "id": "kotoba_bunga_tanaman_shibafu",
+    "word": "しばふ",
+    "kanji": "芝生",
+    "reading": "しばふ",
+    "romaji": "shibafu",
+    "meaning": "rumput taman",
+    "jlptLevel": "N2",
+    "category": "bunga_tanaman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "しばふ (shibafu)",
+      "formal": "しばふ (shibafu)",
+      "keigo": "しばふ (shibafu) — tidak ada bentuk keigo khusus untuk nama bunga atau tanaman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "芝生に入らないでください。",
+        "romaji": "Shibafu ni hairanaide kudasai.",
+        "translation": "Tolong jangan masuk rumput taman. (yg rawat d lapagan dll)"
+      }
+    ],
+    "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_shibafu.png"
   }
 ]

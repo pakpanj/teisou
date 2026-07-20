@@ -358,5 +358,53 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_yakitori.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_bentou",
+    "word": "べんとう",
+    "kanji": "弁当",
+    "reading": "べんとう",
+    "romaji": "bentou",
+    "meaning": "bekal makan",
+    "jlptLevel": "N2",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "べんとう (bentou)",
+      "formal": "べんとう (bentou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "べんとう (bentou) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "毎日弁当を持って行きます。",
+        "romaji": "Mainichi bentou o motte ikimasu.",
+        "translation": "Saya membawa bekal setiap hari."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_bentou.png"
+  },
+  {
+    "id": "kotoba_makanan_jepang_washoku",
+    "word": "わしょく",
+    "kanji": "和食",
+    "reading": "わしょく",
+    "romaji": "washoku",
+    "meaning": "makanan Jepang",
+    "jlptLevel": "N2",
+    "category": "makanan_jepang",
+    "wordType": "noun",
+    "registers": {
+      "casual": "わしょく (washoku)",
+      "formal": "わしょく (washoku) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "わしょく (washoku) — tidak ada bentuk keigo khusus untuk nama makanan"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "和食が好きです。",
+        "romaji": "Washoku ga suki desu.",
+        "translation": "Saya suka makanan Jepang."
+      }
+    ],
+    "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_washoku.png"
   }
 ]

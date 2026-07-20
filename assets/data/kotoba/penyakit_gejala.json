@@ -694,5 +694,77 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_benpi.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_shokuyoku",
+    "word": "しょくよく",
+    "kanji": "食欲",
+    "reading": "しょくよく",
+    "romaji": "shokuyoku",
+    "meaning": "nafsu makan",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "食欲 (shokuyoku)",
+      "formal": "食欲 (shokuyoku)",
+      "keigo": "食欲 (shokuyoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "食欲があります。",
+        "romaji": "Shokuyoku ga arimasu.",
+        "translation": "Nafsu makan ada/baik."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shokuyoku.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_suimin",
+    "word": "すいみん",
+    "kanji": "睡眠",
+    "reading": "すいみん",
+    "romaji": "suimin",
+    "meaning": "tidur",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "睡眠 (suimin)",
+      "formal": "睡眠 (suimin)",
+      "keigo": "睡眠 (suimin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "睡眠が大切です。",
+        "romaji": "Suimin ga taisetsu desu.",
+        "translation": "Waktu Tidur itu penting. (jam tidur, pola tidur)"
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_suimin.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_mushiba",
+    "word": "むしば",
+    "kanji": "虫歯",
+    "reading": "むしば",
+    "romaji": "mushiba",
+    "meaning": "gigi berlubang",
+    "jlptLevel": "N2",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "虫歯 (mushiba)",
+      "formal": "虫歯 (mushiba)",
+      "keigo": "虫歯 (mushiba) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "虫歯が痛いです。",
+        "romaji": "Mushiba ga itai desu.",
+        "translation": "Gigi berlubang sakit."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_mushiba.png"
   }
 ]

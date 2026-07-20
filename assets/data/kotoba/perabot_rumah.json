@@ -358,5 +358,101 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_danbou.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_kabin",
+    "word": "かびん",
+    "kanji": "花瓶",
+    "reading": "かびん",
+    "romaji": "kabin",
+    "meaning": "vas bunga",
+    "jlptLevel": "N2",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "花瓶 (kabin)",
+      "formal": "花瓶 (kabin)",
+      "keigo": "花瓶 (kabin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "花瓶に花を入れます。",
+        "romaji": "Kabin ni hana o iremasu.",
+        "translation": "Memasukkan bunga ke vas."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kabin.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_denkyuu",
+    "word": "でんきゅう",
+    "kanji": "電球",
+    "reading": "でんきゅう",
+    "romaji": "denkyuu",
+    "meaning": "bohlam lampu",
+    "jlptLevel": "N2",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "電球 (denkyuu)",
+      "formal": "電球 (denkyuu)",
+      "keigo": "電球 (denkyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "電球を交換しました。",
+        "romaji": "Denkyuu o koukan shimashita.",
+        "translation": "Saya mengganti bohlam lampu."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_denkyuu.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_hondana",
+    "word": "ほんだな",
+    "kanji": "本棚",
+    "reading": "ほんだな",
+    "romaji": "hondana",
+    "meaning": "rak buku",
+    "jlptLevel": "N2",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "本棚 (hondana)",
+      "formal": "本棚 (hondana)",
+      "keigo": "本棚 (hondana) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "本棚に本があります。",
+        "romaji": "Hondana ni hon ga arimasu.",
+        "translation": "Ada buku di rak buku."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_hondana.png"
+  },
+  {
+    "id": "kotoba_perabot_rumah_soujiki",
+    "word": "そうじき",
+    "kanji": "掃除機",
+    "reading": "そうじき",
+    "romaji": "soujiki",
+    "meaning": "penyedot debu",
+    "jlptLevel": "N2",
+    "category": "perabot_rumah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "掃除機 (soujiki)",
+      "formal": "掃除機 (soujiki)",
+      "keigo": "掃除機 (soujiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "掃除機で部屋を掃除します。",
+        "romaji": "Soujiki de heya o souji shimasu.",
+        "translation": "Saya membersihkan kamar dengan vacuum cleaner."
+      }
+    ],
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_soujiki.png"
   }
 ]

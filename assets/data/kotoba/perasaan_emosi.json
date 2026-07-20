@@ -406,5 +406,389 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_koufun.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_inshou",
+    "word": "いんしょう",
+    "kanji": "印象",
+    "reading": "いんしょう",
+    "romaji": "inshou",
+    "meaning": "kesan",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "印象 (inshou)",
+      "formal": "印象 (inshou)",
+      "keigo": "印象 (inshou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "良い印象を受けました。",
+        "romaji": "Yoi inshou o ukemashita.",
+        "translation": "Saya mendapat kesan baik. (Kesan dari sesuatu yg dilihat)"
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_inshou.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kangeki",
+    "word": "かんげき",
+    "kanji": "感激",
+    "reading": "かんげき",
+    "romaji": "kangeki",
+    "meaning": "keterharuan",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "感激 (kangeki)",
+      "formal": "感激 (kangeki)",
+      "keigo": "感激 (kangeki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "とても感激しました。",
+        "romaji": "Totemo kangeki shimashita.",
+        "translation": "Saya sangat terharu. (kesan dapat perlauan baik)"
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kangeki.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kanshin",
+    "word": "かんしん",
+    "kanji": "感心",
+    "reading": "かんしん",
+    "romaji": "kanshin",
+    "meaning": "kekaguman",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "感心 (kanshin)",
+      "formal": "感心 (kanshin)",
+      "keigo": "感心 (kanshin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼の努力どりょくに感心しました。",
+        "romaji": "Kare no doryoku ni kanshin shimashita.",
+        "translation": "Saya kagum pada usahanya."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kanshin.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kansou",
+    "word": "かんそう",
+    "kanji": "感想",
+    "reading": "かんそう",
+    "romaji": "kansou",
+    "meaning": "kesan/pendapat",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "感想 (kansou)",
+      "formal": "感想 (kansou)",
+      "keigo": "感想 (kansou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "映画の感想を話します。",
+        "romaji": "Eiga no kansou o hanashimasu.",
+        "translation": "Menceritakan kesan film. (kesan yg dirasakan/komentar)"
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kansou.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kandou",
+    "word": "かんどう",
+    "kanji": "感動",
+    "reading": "かんどう",
+    "romaji": "kandou",
+    "meaning": "keterharuan/kesan mendalam",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "感動 (kandou)",
+      "formal": "感動 (kandou)",
+      "keigo": "感動 (kandou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "とても感動しました。",
+        "romaji": "Totemo kandou shimashita.",
+        "translation": "Saya sangat terharu. (emosional, perasaan)"
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kandou.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_gaman",
+    "word": "がまん",
+    "kanji": "我慢",
+    "reading": "がまん",
+    "romaji": "gaman",
+    "meaning": "kesabaran",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "我慢 (gaman)",
+      "formal": "我慢 (gaman)",
+      "keigo": "我慢 (gaman) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "少し我慢してください。",
+        "romaji": "Sukoshi gaman shite kudasai.",
+        "translation": "Tolong bersabar sedikit."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_gaman.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kurou",
+    "word": "くろう",
+    "kanji": "苦労",
+    "reading": "くろう",
+    "romaji": "kurou",
+    "meaning": "kesusahan/usaha keras",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "苦労 (kurou)",
+      "formal": "苦労 (kurou)",
+      "keigo": "苦労 (kurou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "とても苦労しました。",
+        "romaji": "Totemo kurou shimashita.",
+        "translation": "Saya sangat bersusah payah. (penderitaan usaha, susah)"
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kurou.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_jishin",
+    "word": "じしん",
+    "kanji": "自信",
+    "reading": "じしん",
+    "romaji": "jishin",
+    "meaning": "kepercayaan diri",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "自信 (jishin)",
+      "formal": "自信 (jishin)",
+      "keigo": "自信 (jishin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "自信があります。",
+        "romaji": "Jishin ga arimasu.",
+        "translation": "Saya percaya diri."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_jishin.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_jiman",
+    "word": "じまん",
+    "kanji": "自慢",
+    "reading": "じまん",
+    "romaji": "jiman",
+    "meaning": "kebanggaan",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "自慢 (jiman)",
+      "formal": "自慢 (jiman)",
+      "keigo": "自慢 (jiman) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "料理を自慢します。",
+        "romaji": "Ryouri o jiman shimasu.",
+        "translation": "Membanggakan masakan. (+bangga -sombong)"
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_jiman.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_sonkei",
+    "word": "そんけい",
+    "kanji": "尊敬",
+    "reading": "そんけい",
+    "romaji": "sonkei",
+    "meaning": "rasa hormat",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "尊敬 (sonkei)",
+      "formal": "尊敬 (sonkei)",
+      "keigo": "尊敬 (sonkei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "先生を尊敬しています。",
+        "romaji": "Sensei o sonkei shite imasu.",
+        "translation": "Saya menghormati guru."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_sonkei.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_nattoku",
+    "word": "なっとく",
+    "kanji": "納得",
+    "reading": "なっとく",
+    "romaji": "nattoku",
+    "meaning": "pengertian/kepuasan hati",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "納得 (nattoku)",
+      "formal": "納得 (nattoku)",
+      "keigo": "納得 (nattoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼の説明に納得しました。",
+        "romaji": "Kare no setsumei ni nattoku shimashita.",
+        "translation": "Saya mengerti penjelasannya. (dan menerima pakai hati)"
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_nattoku.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_monku",
+    "word": "もんく",
+    "kanji": "文句",
+    "reading": "もんく",
+    "romaji": "monku",
+    "meaning": "keluhan/komplain",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "文句 (monku)",
+      "formal": "文句 (monku)",
+      "keigo": "文句 (monku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "文句を言わないでください。",
+        "romaji": "Monku o iwanaide kudasai.",
+        "translation": "Tolong jangan mengeluh."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_monku.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_aijou",
+    "word": "あいじょう",
+    "kanji": "愛情",
+    "reading": "あいじょう",
+    "romaji": "aijou",
+    "meaning": "kasih sayang",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "愛情 (aijou)",
+      "formal": "愛情 (aijou)",
+      "keigo": "愛情 (aijou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "母は子供に愛情を持っています。",
+        "romaji": "Haha wa kodomo ni aijou o motte imasu.",
+        "translation": "Ibu memiliki kasih sayang kepada anak."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_aijou.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_aichaku",
+    "word": "あいちゃく",
+    "kanji": "愛着",
+    "reading": "あいちゃく",
+    "romaji": "aichaku",
+    "meaning": "keterikatan (emosional)",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "愛着 (aichaku)",
+      "formal": "愛着 (aichaku)",
+      "keigo": "愛着 (aichaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この町に愛着があります。",
+        "romaji": "Kono machi ni aichaku ga arimasu.",
+        "translation": "Saya memiliki keterikatan dengan kota ini."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_aichaku.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_akui",
+    "word": "あくい",
+    "kanji": "悪意",
+    "reading": "あくい",
+    "romaji": "akui",
+    "meaning": "niat jahat",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "悪意 (akui)",
+      "formal": "悪意 (akui)",
+      "keigo": "悪意 (akui) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼には悪意がありません。",
+        "romaji": "Kare ni wa akui ga arimasen.",
+        "translation": "Dia tidak memiliki niat jahat."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_akui.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_ishi",
+    "word": "いし",
+    "kanji": "意志",
+    "reading": "いし",
+    "romaji": "ishi",
+    "meaning": "kemauan/tekad",
+    "jlptLevel": "N2",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "意志 (ishi)",
+      "formal": "意志 (ishi)",
+      "keigo": "意志 (ishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼は強い意志を持っています。",
+        "romaji": "Kare wa tsuyoi ishi o motte imasu.",
+        "translation": "Dia memiliki kemauan yang kuat."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_ishi.png"
   }
 ]

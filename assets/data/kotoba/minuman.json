@@ -286,5 +286,53 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_mirukutii.png"
+  },
+  {
+    "id": "kotoba_minuman_inryou",
+    "word": "いんりょう",
+    "kanji": "飲料",
+    "reading": "いんりょう",
+    "romaji": "inryou",
+    "meaning": "minuman",
+    "jlptLevel": "N2",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "いんりょう (inryou)",
+      "formal": "いんりょう (inryou) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "いんりょう (inryou) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "飲料水を用意します。",
+        "romaji": "Inryousui o youi shimasu.",
+        "translation": "Menyiapkan air minum. (segala minuman/nomimono)"
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_inryou.png"
+  },
+  {
+    "id": "kotoba_minuman_aiin",
+    "word": "あいいん",
+    "kanji": "愛飲",
+    "reading": "あいいん",
+    "romaji": "aiin",
+    "meaning": "kesukaan minum",
+    "jlptLevel": "N2",
+    "category": "minuman",
+    "wordType": "noun",
+    "registers": {
+      "casual": "あいいん (aiin)",
+      "formal": "あいいん (aiin) — kesopanan ada di kalimat, mis. '~です' / '~があります'",
+      "keigo": "あいいん (aiin) — tidak ada bentuk keigo khusus untuk nama minuman"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼はコーヒーを愛飲しています。",
+        "romaji": "Kare wa koohii o aiin shite imasu.",
+        "translation": "Dia sangat suka minum kopi."
+      }
+    ],
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_aiin.png"
   }
 ]

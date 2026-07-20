@@ -358,5 +358,77 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_kanji.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_techou",
+    "word": "てちょう",
+    "kanji": "手帳",
+    "reading": "てちょう",
+    "romaji": "techou",
+    "meaning": "buku agenda/catatan",
+    "jlptLevel": "N2",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "手帳 (techou)",
+      "formal": "手帳 (techou)",
+      "keigo": "手帳 (techou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "手帳に予定を書きます。",
+        "romaji": "Techou ni yotei o kakimasu.",
+        "translation": "Saya menulis jadwal di buku agenda."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_techou.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_hyoushi",
+    "word": "ひょうし",
+    "kanji": "表紙",
+    "reading": "ひょうし",
+    "romaji": "hyoushi",
+    "meaning": "sampul (buku)",
+    "jlptLevel": "N2",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "表紙 (hyoushi)",
+      "formal": "表紙 (hyoushi)",
+      "keigo": "表紙 (hyoushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "本の表紙がきれいです。",
+        "romaji": "Hon no hyoushi ga kirei desu.",
+        "translation": "Sampul buku indah."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_hyoushi.png"
+  },
+  {
+    "id": "kotoba_alat_tulis_sekolah_youshi",
+    "word": "ようし",
+    "kanji": "用紙",
+    "reading": "ようし",
+    "romaji": "youshi",
+    "meaning": "kertas formulir",
+    "jlptLevel": "N2",
+    "category": "alat_tulis_sekolah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "用紙 (youshi)",
+      "formal": "用紙 (youshi)",
+      "keigo": "用紙 (youshi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "用紙に名前を書いてください。",
+        "romaji": "Youshi ni namae o kaite kudasai.",
+        "translation": "Tolong tulis nama di kertas formulir."
+      }
+    ],
+    "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_youshi.png"
   }
 ]

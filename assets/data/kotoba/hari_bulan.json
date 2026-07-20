@@ -958,5 +958,605 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jikan.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_igo",
+    "word": "いご",
+    "kanji": "以後",
+    "reading": "いご",
+    "romaji": "igo",
+    "meaning": "sesudah ini",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "以後 (igo)",
+      "formal": "以後 (igo)",
+      "keigo": "以後 (igo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今日以後気をつけます。",
+        "romaji": "Kyou igo ki o tsukemasu.",
+        "translation": "Mulai ini hari ini saya akan hati2. (Setelah itu & seterusnya)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_igo.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_ikou",
+    "word": "いこう",
+    "kanji": "以降",
+    "reading": "いこう",
+    "romaji": "ikou",
+    "meaning": "setelah/sejak",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "以降 (ikou)",
+      "formal": "以降 (ikou)",
+      "keigo": "以降 (ikou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "7時以降は入れません。",
+        "romaji": "Shichiji ikou wa hairemasen.",
+        "translation": "Setelah jam 7 tidak boleh masuk. (batas itu & seterusnya)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ikou.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_izen",
+    "word": "いぜん",
+    "kanji": "以前",
+    "reading": "いぜん",
+    "romaji": "izen",
+    "meaning": "dulu/sebelumnya",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "以前 (izen)",
+      "formal": "以前 (izen)",
+      "keigo": "以前 (izen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "以前ここに住んでいました。",
+        "romaji": "Izen koko ni sunde imashita.",
+        "translation": "Dulu saya tinggal di sini. (Kronologis waktu)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_izen.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_inai",
+    "word": "いない",
+    "kanji": "以内",
+    "reading": "いない",
+    "romaji": "inai",
+    "meaning": "dalam batas",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "以内 (inai)",
+      "formal": "以内 (inai)",
+      "keigo": "以内 (inai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "10分以内に来てください。",
+        "romaji": "Juppun inai ni kite kudasai.",
+        "translation": "Datang dalam 10 menit. (Batas durasi waktu)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_inai.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kako",
+    "word": "かこ",
+    "kanji": "過去",
+    "reading": "かこ",
+    "romaji": "kako",
+    "meaning": "masa lalu",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "過去 (kako)",
+      "formal": "過去 (kako)",
+      "keigo": "過去 (kako) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "過去を忘れません。",
+        "romaji": "Kako o wasuremasen.",
+        "translation": "Saya tidak melupakan masa lalu."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kako.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_kikan",
+    "word": "きかん",
+    "kanji": "期間",
+    "reading": "きかん",
+    "romaji": "kikan",
+    "meaning": "periode/jangka waktu",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "期間 (kikan)",
+      "formal": "期間 (kikan)",
+      "keigo": "期間 (kikan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "期間は3か月です。",
+        "romaji": "Kikan wa sankagetsu desu.",
+        "translation": "Periode/masanya 3 bulan. (ada batas mulai&akhir)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kikan.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_sakuya",
+    "word": "さくや",
+    "kanji": "昨夜",
+    "reading": "さくや",
+    "romaji": "sakuya",
+    "meaning": "tadi malam",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "昨夜 (sakuya)",
+      "formal": "昨夜 (sakuya)",
+      "keigo": "昨夜 (sakuya) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "昨夜雨が降りました。",
+        "romaji": "Sakuya ame ga furimashita.",
+        "translation": "Tadi malam hujan turun."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_sakuya.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_shukujitsu",
+    "word": "しゅくじつ",
+    "kanji": "祝日",
+    "reading": "しゅくじつ",
+    "romaji": "shukujitsu",
+    "meaning": "hari libur nasional",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "祝日 (shukujitsu)",
+      "formal": "祝日 (shukujitsu)",
+      "keigo": "祝日 (shukujitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今日は祝日です。",
+        "romaji": "Kyou wa shukujitsu desu.",
+        "translation": "Hari ini hari libur nasional."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_shukujitsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_jiki",
+    "word": "じき",
+    "kanji": "時期",
+    "reading": "じき",
+    "romaji": "jiki",
+    "meaning": "periode/masa",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "時期 (jiki)",
+      "formal": "時期 (jiki)",
+      "keigo": "時期 (jiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今は忙しい時期です。",
+        "romaji": "Ima wa isogashii jiki desu.",
+        "translation": "Sekarang masa sibuk. (Priode, timing)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jiki.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_jikoku",
+    "word": "じこく",
+    "kanji": "時刻",
+    "reading": "じこく",
+    "romaji": "jikoku",
+    "meaning": "jadwal waktu",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "時刻 (jikoku)",
+      "formal": "時刻 (jikoku)",
+      "keigo": "時刻 (jikoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "出発時刻を確認します。",
+        "romaji": "Shuppatsu jikoku o kakunin shimasu.",
+        "translation": "Mengecek jadwal waktu keberangkatan."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jikoku.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_jidai",
+    "word": "じだい",
+    "kanji": "時代",
+    "reading": "じだい",
+    "romaji": "jidai",
+    "meaning": "zaman",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "時代 (jidai)",
+      "formal": "時代 (jidai)",
+      "keigo": "時代 (jidai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい時代になりました。",
+        "romaji": "Atarashii jidai ni narimashita.",
+        "translation": "Menjadi zaman baru."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jidai.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_senjitsu",
+    "word": "せんじつ",
+    "kanji": "先日",
+    "reading": "せんじつ",
+    "romaji": "senjitsu",
+    "meaning": "beberapa hari lalu",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "先日 (senjitsu)",
+      "formal": "先日 (senjitsu)",
+      "keigo": "先日 (senjitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "先日お会いしましたね。",
+        "romaji": "Senjitsu oai shimashita ne.",
+        "translation": "Kita bertemu beberapa hari lalu ya."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_senjitsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_zengo",
+    "word": "ぜんご",
+    "kanji": "前後",
+    "reading": "ぜんご",
+    "romaji": "zengo",
+    "meaning": "sekitar/kurang lebih",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "前後 (zengo)",
+      "formal": "前後 (zengo)",
+      "keigo": "前後 (zengo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "10分前後かかります。",
+        "romaji": "Juppun zengo kakarimasu.",
+        "translation": "Butuh waktu Sekitar ±10 menit. (tempat>sebelum&sesudah)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_zengo.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_souchou",
+    "word": "そうちょう",
+    "kanji": "早朝",
+    "reading": "そうちょう",
+    "romaji": "souchou",
+    "meaning": "pagi sekali/dini hari",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "早朝 (souchou)",
+      "formal": "早朝 (souchou)",
+      "keigo": "早朝 (souchou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "早朝に出発します。",
+        "romaji": "Souchou ni shuppatsu shimasu.",
+        "translation": "Berangkat pagi sekali. (Jam 4-6 pagi)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_souchou.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_chuujun",
+    "word": "ちゅうじゅん",
+    "kanji": "中旬",
+    "reading": "ちゅうじゅん",
+    "romaji": "chuujun",
+    "meaning": "pertengahan bulan",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "中旬 (chuujun)",
+      "formal": "中旬 (chuujun)",
+      "keigo": "中旬 (chuujun) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今月中旬に行きます。",
+        "romaji": "Kongetsu chuujun ni ikimasu.",
+        "translation": "Pergi pertengahan bulan ini."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_chuujun.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_toujitsu",
+    "word": "とうじつ",
+    "kanji": "当日",
+    "reading": "とうじつ",
+    "romaji": "toujitsu",
+    "meaning": "hari itu/hari-H",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "当日 (toujitsu)",
+      "formal": "当日 (toujitsu)",
+      "keigo": "当日 (toujitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "当日は雨でした。",
+        "romaji": "Toujitsu wa ame deshita.",
+        "translation": "Pada hari H hujan."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_toujitsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_douji",
+    "word": "どうじ",
+    "kanji": "同時",
+    "reading": "どうじ",
+    "romaji": "douji",
+    "meaning": "bersamaan/serentak",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "同時 (douji)",
+      "formal": "同時 (douji)",
+      "keigo": "同時 (douji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "二人は同時に話しました。",
+        "romaji": "Futari wa douji ni hanashimashita.",
+        "translation": "Mereka berbicara bersamaan."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_douji.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_nichiji",
+    "word": "にちじ",
+    "kanji": "日時",
+    "reading": "にちじ",
+    "romaji": "nichiji",
+    "meaning": "tanggal dan waktu",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "日時 (nichiji)",
+      "formal": "日時 (nichiji)",
+      "keigo": "日時 (nichiji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "面接の日時を教えてください。",
+        "romaji": "Mensetsu no nichiji o oshiete kudasai.",
+        "translation": "Tolong beritahu tanggal dan waktu wawancara."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_nichiji.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_nichijou",
+    "word": "にちじょう",
+    "kanji": "日常",
+    "reading": "にちじょう",
+    "romaji": "nichijou",
+    "meaning": "sehari-hari",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "日常 (nichijou)",
+      "formal": "日常 (nichijou)",
+      "keigo": "日常 (nichijou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日常生活が忙しいです。",
+        "romaji": "Nichijou seikatsu ga isogashii desu.",
+        "translation": "Kehidupan sehari-hari saya sibuk."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_nichijou.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_nittei",
+    "word": "にってい",
+    "kanji": "日程",
+    "reading": "にってい",
+    "romaji": "nittei",
+    "meaning": "jadwal",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "日程 (nittei)",
+      "formal": "日程 (nittei)",
+      "keigo": "日程 (nittei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "日程を確認してください。",
+        "romaji": "Nittei o kakunin shite kudasai.",
+        "translation": "Silakan periksa jadwalnya. (Skala Hari, jadwal susuna acara)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_nittei.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_hiruma",
+    "word": "ひるま",
+    "kanji": "昼間",
+    "reading": "ひるま",
+    "romaji": "hiruma",
+    "meaning": "siang hari",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "昼間 (hiruma)",
+      "formal": "昼間 (hiruma)",
+      "keigo": "昼間 (hiruma) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "昼間は仕事をしています。",
+        "romaji": "Hiruma wa shigoto o shite imasu.",
+        "translation": "Siang hari saya bekerja. (Jam 9-17)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_hiruma.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_honjitsu",
+    "word": "ほんじつ",
+    "kanji": "本日",
+    "reading": "ほんじつ",
+    "romaji": "honjitsu",
+    "meaning": "hari ini (formal)",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "本日 (honjitsu)",
+      "formal": "本日 (honjitsu)",
+      "keigo": "本日 (honjitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "本日は休みです。",
+        "romaji": "Honjitsu wa yasumi desu.",
+        "translation": "Hari ini libur."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_honjitsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_yakan",
+    "word": "やかん",
+    "kanji": "夜間",
+    "reading": "やかん",
+    "romaji": "yakan",
+    "meaning": "malam hari",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "夜間 (yakan)",
+      "formal": "夜間 (yakan)",
+      "keigo": "夜間 (yakan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "夜間に働きます。",
+        "romaji": "Yakan ni hatarakimasu.",
+        "translation": "Bekerja pada malam hari. (periode malam)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_yakan.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_yokujitsu",
+    "word": "よくじつ",
+    "kanji": "翌日",
+    "reading": "よくじつ",
+    "romaji": "yokujitsu",
+    "meaning": "keesokan hari",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "翌日 (yokujitsu)",
+      "formal": "翌日 (yokujitsu)",
+      "keigo": "翌日 (yokujitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "翌日、結果が出ました。",
+        "romaji": "Yokujitsu, kekka ga demashita.",
+        "translation": "Keesokan hari hasil keluar. (Hari berikutnya)"
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_yokujitsu.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_choujikan",
+    "word": "ちょうじかん",
+    "kanji": "長時間",
+    "reading": "ちょうじかん",
+    "romaji": "choujikan",
+    "meaning": "waktu lama",
+    "jlptLevel": "N2",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "長時間 (choujikan)",
+      "formal": "長時間 (choujikan)",
+      "keigo": "長時間 (choujikan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "長時間働きました。",
+        "romaji": "Choujikan hatarakimashita.",
+        "translation": "Saya bekerja dalam waktu lama."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_choujikan.png"
   }
 ]

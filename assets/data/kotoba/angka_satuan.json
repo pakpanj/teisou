@@ -310,5 +310,101 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ichiman.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_suuji",
+    "word": "すうじ",
+    "kanji": "数字",
+    "reading": "すうじ",
+    "romaji": "suuji",
+    "meaning": "angka/nomor",
+    "jlptLevel": "N2",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "数字 (suuji)",
+      "formal": "数字 (suuji)",
+      "keigo": "数字 (suuji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "数字を書いてください。",
+        "romaji": "Suuji o kaite kudasai.",
+        "translation": "Tolong tulis angka."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_suuji.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_ninzuu",
+    "word": "にんずう",
+    "kanji": "人数",
+    "reading": "にんずう",
+    "romaji": "ninzuu",
+    "meaning": "jumlah orang",
+    "jlptLevel": "N2",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "人数 (ninzuu)",
+      "formal": "人数 (ninzuu)",
+      "keigo": "人数 (ninzuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "人数を数えます。",
+        "romaji": "Ninzuu o kazoemasu.",
+        "translation": "Saya menghitung jumlah orang."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ninzuu.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_fukusuu",
+    "word": "ふくすう",
+    "kanji": "複数",
+    "reading": "ふくすう",
+    "romaji": "fukusuu",
+    "meaning": "lebih dari satu/beberapa",
+    "jlptLevel": "N2",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "複数 (fukusuu)",
+      "formal": "複数 (fukusuu)",
+      "keigo": "複数 (fukusuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "複数の理由があります。",
+        "romaji": "Fukusuu no riyuu ga arimasu.",
+        "translation": "Ada beberapa alasan. (lebih dari satu, beberapa)"
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_fukusuu.png"
+  },
+  {
+    "id": "kotoba_angka_satuan_ninzuubun",
+    "word": "にんずうぶん",
+    "kanji": "人数分",
+    "reading": "にんずうぶん",
+    "romaji": "ninzuubun",
+    "meaning": "sesuai jumlah orang",
+    "jlptLevel": "N2",
+    "category": "angka_satuan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "人数分 (ninzuubun)",
+      "formal": "人数分 (ninzuubun)",
+      "keigo": "人数分 (ninzuubun) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "人数分の料理を用意します。",
+        "romaji": "Ninzuubun no ryouri o youi shimasu.",
+        "translation": "Menyiapkan makanan sesuai jumlah orang."
+      }
+    ],
+    "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ninzuubun.png"
   }
 ]

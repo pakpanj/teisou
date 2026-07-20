@@ -334,5 +334,53 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_seijinshiki.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_kinen",
+    "word": "きねん",
+    "kanji": "記念",
+    "reading": "きねん",
+    "romaji": "kinen",
+    "meaning": "kenangan/peringatan",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "記念 (kinen)",
+      "formal": "記念 (kinen)",
+      "keigo": "記念 (kinen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "記念写真を撮ります。",
+        "romaji": "Kinen shashin o torimasu.",
+        "translation": "Mengambil foto kenangan."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kinen.png"
+  },
+  {
+    "id": "kotoba_perayaan_haribesar_shoutai",
+    "word": "しょうたい",
+    "kanji": "招待",
+    "reading": "しょうたい",
+    "romaji": "shoutai",
+    "meaning": "undangan",
+    "jlptLevel": "N2",
+    "category": "perayaan_haribesar",
+    "wordType": "noun",
+    "registers": {
+      "casual": "招待 (shoutai)",
+      "formal": "招待 (shoutai)",
+      "keigo": "招待 (shoutai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "パーティーに招待されました。",
+        "romaji": "Paatii ni shoutai saremashita.",
+        "translation": "Diundang ke pesta."
+      }
+    ],
+    "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_shoutai.png"
   }
 ]

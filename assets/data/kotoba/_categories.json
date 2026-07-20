@@ -45,7 +45,7 @@
     "group": "Alam & Lingkungan",
     "icon": "🌸",
     "available": true,
-    "wordCount": 9
+    "wordCount": 11
   },
   {
     "id": "buah",
@@ -69,7 +69,7 @@
     "group": "Alam & Lingkungan",
     "icon": "⛅",
     "available": true,
-    "wordCount": 17
+    "wordCount": 22
   },
   {
     "id": "bencana_alam",
@@ -77,7 +77,7 @@
     "group": "Alam & Lingkungan",
     "icon": "🌪️",
     "available": true,
-    "wordCount": 17
+    "wordCount": 18
   },
   {
     "id": "makanan_jepang",
@@ -85,7 +85,7 @@
     "group": "Makanan & Minuman",
     "icon": "🍱",
     "available": true,
-    "wordCount": 15
+    "wordCount": 17
   },
   {
     "id": "makanan_indonesia",
@@ -109,7 +109,7 @@
     "group": "Makanan & Minuman",
     "icon": "🥤",
     "available": true,
-    "wordCount": 12
+    "wordCount": 14
   },
   {
     "id": "bumbu_rempah",
@@ -117,7 +117,7 @@
     "group": "Makanan & Minuman",
     "icon": "🧂",
     "available": true,
-    "wordCount": 12
+    "wordCount": 13
   },
   {
     "id": "peralatan_masak",
@@ -125,7 +125,7 @@
     "group": "Makanan & Minuman",
     "icon": "🍳",
     "available": true,
-    "wordCount": 12
+    "wordCount": 14
   },
   {
     "id": "cara_memasak",
@@ -141,7 +141,7 @@
     "group": "Tubuh & Kesehatan",
     "icon": "🖐️",
     "available": true,
-    "wordCount": 22
+    "wordCount": 27
   },
   {
     "id": "penyakit_gejala",
@@ -149,7 +149,7 @@
     "group": "Tubuh & Kesehatan",
     "icon": "🤒",
     "available": true,
-    "wordCount": 29
+    "wordCount": 32
   },
   {
     "id": "obat_obatan",
@@ -157,7 +157,7 @@
     "group": "Tubuh & Kesehatan",
     "icon": "💊",
     "available": true,
-    "wordCount": 17
+    "wordCount": 23
   },
   {
     "id": "olahraga",
@@ -165,7 +165,7 @@
     "group": "Tubuh & Kesehatan",
     "icon": "⚽",
     "available": true,
-    "wordCount": 20
+    "wordCount": 24
   },
   {
     "id": "perasaan_emosi",
@@ -173,7 +173,7 @@
     "group": "Tubuh & Kesehatan",
     "icon": "😊",
     "available": true,
-    "wordCount": 17
+    "wordCount": 33
   },
   {
     "id": "ekspresi_wajah",
@@ -181,7 +181,7 @@
     "group": "Tubuh & Kesehatan",
     "icon": "😮",
     "available": true,
-    "wordCount": 8
+    "wordCount": 9
   },
   {
     "id": "ruangan_rumah",
@@ -189,7 +189,7 @@
     "group": "Tempat & Transportasi",
     "icon": "🚪",
     "available": true,
-    "wordCount": 13
+    "wordCount": 17
   },
   {
     "id": "perabot_rumah",
@@ -197,7 +197,7 @@
     "group": "Tempat & Transportasi",
     "icon": "🛋️",
     "available": true,
-    "wordCount": 15
+    "wordCount": 19
   },
   {
     "id": "bangunan_fasilitas",
@@ -205,7 +205,7 @@
     "group": "Tempat & Transportasi",
     "icon": "🏢",
     "available": true,
-    "wordCount": 28
+    "wordCount": 49
   },
   {
     "id": "kendaraan",
@@ -213,7 +213,7 @@
     "group": "Tempat & Transportasi",
     "icon": "🚗",
     "available": true,
-    "wordCount": 12
+    "wordCount": 29
   },
   {
     "id": "arah_lokasi",
@@ -221,7 +221,7 @@
     "group": "Tempat & Transportasi",
     "icon": "🧭",
     "available": true,
-    "wordCount": 15
+    "wordCount": 28
   },
   {
     "id": "negara_kota",
@@ -229,7 +229,7 @@
     "group": "Tempat & Transportasi",
     "icon": "🗺️",
     "available": true,
-    "wordCount": 16
+    "wordCount": 26
   },
   {
     "id": "profesi",
@@ -237,7 +237,7 @@
     "group": "Manusia & Sosial",
     "icon": "👨‍⚕️",
     "available": true,
-    "wordCount": 26
+    "wordCount": 34
   },
   {
     "id": "keluarga_hubungan",
@@ -245,7 +245,7 @@
     "group": "Manusia & Sosial",
     "icon": "👪",
     "available": true,
-    "wordCount": 26
+    "wordCount": 39
   },
   {
     "id": "pakaian_aksesori",
@@ -253,7 +253,7 @@
     "group": "Manusia & Sosial",
     "icon": "👕",
     "available": true,
-    "wordCount": 16
+    "wordCount": 21
   },
   {
     "id": "hobi_aktivitas",
@@ -261,7 +261,7 @@
     "group": "Manusia & Sosial",
     "icon": "🎨",
     "available": true,
-    "wordCount": 20
+    "wordCount": 29
   },
   {
     "id": "agama_budaya",
@@ -277,7 +277,7 @@
     "group": "Manusia & Sosial",
     "icon": "🎉",
     "available": true,
-    "wordCount": 14
+    "wordCount": 16
   },
   {
     "id": "konsep_umum",
@@ -285,7 +285,7 @@
     "group": "Manusia & Sosial",
     "icon": "💭",
     "available": true,
-    "wordCount": 168
+    "wordCount": 285
   },
   {
     "id": "alat_tulis_sekolah",
@@ -293,7 +293,7 @@
     "group": "Pendidikan & Pekerjaan",
     "icon": "✏️",
     "available": true,
-    "wordCount": 15
+    "wordCount": 18
   },
   {
     "id": "mata_pelajaran",
@@ -301,7 +301,7 @@
     "group": "Pendidikan & Pekerjaan",
     "icon": "📖",
     "available": true,
-    "wordCount": 20
+    "wordCount": 40
   },
   {
     "id": "pekerjaan_kantor",
@@ -309,7 +309,7 @@
     "group": "Pendidikan & Pekerjaan",
     "icon": "💼",
     "available": true,
-    "wordCount": 41
+    "wordCount": 83
   },
   {
     "id": "teknologi_gadget",
@@ -317,7 +317,7 @@
     "group": "Pendidikan & Pekerjaan",
     "icon": "💻",
     "available": true,
-    "wordCount": 27
+    "wordCount": 32
   },
   {
     "id": "media_hiburan",
@@ -325,7 +325,7 @@
     "group": "Pendidikan & Pekerjaan",
     "icon": "📺",
     "available": true,
-    "wordCount": 19
+    "wordCount": 24
   },
   {
     "id": "hari_bulan",
@@ -333,7 +333,7 @@
     "group": "Waktu & Angka",
     "icon": "📅",
     "available": true,
-    "wordCount": 40
+    "wordCount": 65
   },
   {
     "id": "musim",
@@ -349,7 +349,7 @@
     "group": "Waktu & Angka",
     "icon": "🔢",
     "available": true,
-    "wordCount": 13
+    "wordCount": 17
   },
   {
     "id": "warna",

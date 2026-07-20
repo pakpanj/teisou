@@ -72,6 +72,12 @@ CATEGORIES = {
         ("yakitori", "焼き鳥", "やきとり", "yakitori", "sate ayam Jepang", "N3", [
             ("焼き鳥屋に行きます。", "Yakitoriya ni ikimasu.", "Saya pergi ke kedai yakitori."),
         ]),
+        ("bentou", "弁当", "べんとう", "bentou", "bekal makan", "N2", [
+            ("毎日弁当を持って行きます。", "Mainichi bentou o motte ikimasu.", "Saya membawa bekal setiap hari."),
+        ]),
+        ("washoku", "和食", "わしょく", "washoku", "makanan Jepang", "N2", [
+            ("和食が好きです。", "Washoku ga suki desu.", "Saya suka makanan Jepang."),
+        ]),
     ]),
     "makanan_indonesia": ("nama makanan", "noun", [
         ("nasigoreng", None, "ナシゴレン", "nashigoren", "nasi goreng", "N3", [
@@ -177,6 +183,12 @@ CATEGORIES = {
         ("mirukutii", None, "ミルクティー", "mirukutii", "teh susu", "N3", [
             ("ミルクティーを飲みます。", "Mirukutii o nomimasu.", "Saya minum teh susu."),
         ]),
+        ("inryou", "飲料", "いんりょう", "inryou", "minuman", "N2", [
+            ("飲料水を用意します。", "Inryousui o youi shimasu.", "Menyiapkan air minum. (segala minuman/nomimono)"),
+        ]),
+        ("aiin", "愛飲", "あいいん", "aiin", "kesukaan minum", "N2", [
+            ("彼はコーヒーを愛飲しています。", "Kare wa koohii o aiin shite imasu.", "Dia sangat suka minum kopi."),
+        ]),
     ]),
     "bumbu_rempah": ("nama bumbu", "noun", [
         ("shio", "塩", "しお", "shio", "garam", "N5", [
@@ -215,6 +227,9 @@ CATEGORIES = {
         ("mirin", None, "みりん", "mirin", "mirin (arak masak manis)", "N2", [
             ("料理にみりんを使います。", "Ryouri ni mirin o tsukaimasu.", "Saya menggunakan mirin dalam masakan."),
         ]),
+        ("choumiryou", "調味料", "ちょうみりょう", "choumiryou", "bumbu masak", "N2", [
+            ("調味料を入れてください。", "Choumiryou o irete kudasai.", "Tolong masukkan bumbu."),
+        ]),
     ]),
     "peralatan_masak": ("nama alat masak", "noun", [
         ("nabe", "鍋", "なべ", "nabe", "panci", "N4", [
@@ -252,6 +267,12 @@ CATEGORIES = {
         ]),
         ("sara", "皿", "さら", "sara", "piring", "N4", [
             ("皿を洗います。", "Sara o araimasu.", "Saya mencuci piring."),
+        ]),
+        ("shokki", "食器", "しょっき", "shokki", "peralatan makan", "N2", [
+            ("食器を洗います。", "Shokki o araimasu.", "Mencuci peralatan makan."),
+        ]),
+        ("youki", "容器", "ようき", "youki", "wadah/kontainer", "N2", [
+            ("容器に水を入れます。", "Youki ni mizu o iremasu.", "Memasukkan air ke wadah. (botol, ember, tong)"),
         ]),
     ]),
 }

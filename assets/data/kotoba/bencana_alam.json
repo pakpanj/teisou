@@ -406,5 +406,29 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_tatsumaki.png"
+  },
+  {
+    "id": "kotoba_bencana_alam_kasai",
+    "word": "かさい",
+    "kanji": "火災",
+    "reading": "かさい",
+    "romaji": "kasai",
+    "meaning": "kebakaran",
+    "jlptLevel": "N2",
+    "category": "bencana_alam",
+    "wordType": "noun",
+    "registers": {
+      "casual": "かさい (kasai)",
+      "formal": "かさい (kasai)",
+      "keigo": "かさい (kasai) — tidak ada bentuk keigo khusus untuk istilah bencana alam"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "火災に注意してください。",
+        "romaji": "Kasai ni chuui shite kudasai.",
+        "translation": "Hati-hati terhadap kebakaran. (laporan, dokumen)"
+      }
+    ],
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kasai.png"
   }
 ]

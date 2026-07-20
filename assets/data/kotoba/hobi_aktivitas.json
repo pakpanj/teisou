@@ -478,5 +478,221 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_hassan.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_ensou",
+    "word": "えんそう",
+    "kanji": "演奏",
+    "reading": "えんそう",
+    "romaji": "ensou",
+    "meaning": "permainan musik/pertunjukan",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "演奏 (ensou)",
+      "formal": "演奏 (ensou)",
+      "keigo": "演奏 (ensou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ピアノを演奏します。",
+        "romaji": "Piano o ensou shimasu.",
+        "translation": "Memainkan piano. (pertunjukkan)"
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ensou.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_kaiga",
+    "word": "かいが",
+    "kanji": "絵画",
+    "reading": "かいが",
+    "romaji": "kaiga",
+    "meaning": "lukisan",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "絵画 (kaiga)",
+      "formal": "絵画 (kaiga)",
+      "keigo": "絵画 (kaiga) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "絵画を見に行きます。",
+        "romaji": "Kaiga o mi ni ikimasu.",
+        "translation": "Pergi melihat lukisan. (lukisan seni, artistik)"
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kaiga.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_katsudou",
+    "word": "かつどう",
+    "kanji": "活動",
+    "reading": "かつどう",
+    "romaji": "katsudou",
+    "meaning": "kegiatan",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "活動 (katsudou)",
+      "formal": "活動 (katsudou)",
+      "keigo": "活動 (katsudou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "ボランティア活動をしている。",
+        "romaji": "Borantia katsudou o shite iru.",
+        "translation": "Saya melakukan kegiatan relawan."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_katsudou.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_kankou",
+    "word": "かんこう",
+    "kanji": "観光",
+    "reading": "かんこう",
+    "romaji": "kankou",
+    "meaning": "wisata",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "観光 (kankou)",
+      "formal": "観光 (kankou)",
+      "keigo": "観光 (kankou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "京都を観光します。",
+        "romaji": "Kyouto o kankou shimasu.",
+        "translation": "Berwisata di Kyoto."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kankou.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_gaishoku",
+    "word": "がいしょく",
+    "kanji": "外食",
+    "reading": "がいしょく",
+    "romaji": "gaishoku",
+    "meaning": "makan di luar",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "外食 (gaishoku)",
+      "formal": "外食 (gaishoku)",
+      "keigo": "外食 (gaishoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "今日は外食します。",
+        "romaji": "Kyou wa gaishoku shimasu.",
+        "translation": "Hari ini makan di luar."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gaishoku.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_gakki",
+    "word": "がっき",
+    "kanji": "楽器",
+    "reading": "がっき",
+    "romaji": "gakki",
+    "meaning": "alat musik",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "楽器 (gakki)",
+      "formal": "楽器 (gakki)",
+      "keigo": "楽器 (gakki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "楽器を練習します。",
+        "romaji": "Gakki o renshuu shimasu.",
+        "translation": "Berlatih alat musik."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gakki.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_geijutsu",
+    "word": "げいじゅつ",
+    "kanji": "芸術",
+    "reading": "げいじゅつ",
+    "romaji": "geijutsu",
+    "meaning": "seni",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "芸術 (geijutsu)",
+      "formal": "芸術 (geijutsu)",
+      "keigo": "芸術 (geijutsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "芸術に興味があります。",
+        "romaji": "Geijutsu ni kyoumi ga arimasu.",
+        "translation": "Tertarik pada seni. (seni pertunjukan/ hiburan)"
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_geijutsu.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_sakuhin",
+    "word": "さくひん",
+    "kanji": "作品",
+    "reading": "さくひん",
+    "romaji": "sakuhin",
+    "meaning": "karya",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "作品 (sakuhin)",
+      "formal": "作品 (sakuhin)",
+      "keigo": "作品 (sakuhin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この作品は有名です。",
+        "romaji": "Kono sakuhin wa yuumei desu.",
+        "translation": "Karya ini terkenal."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sakuhin.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_ryuukou",
+    "word": "りゅうこう",
+    "kanji": "流行",
+    "reading": "りゅうこう",
+    "romaji": "ryuukou",
+    "meaning": "tren/mode",
+    "jlptLevel": "N2",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "流行 (ryuukou)",
+      "formal": "流行 (ryuukou)",
+      "keigo": "流行 (ryuukou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この服が流行しています。",
+        "romaji": "Kono fuku ga ryuukou shite imasu.",
+        "translation": "Baju ini sedang tren. (Hits biasanya waktunya sebentar)"
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryuukou.png"
   }
 ]
