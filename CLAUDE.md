@@ -347,7 +347,30 @@ standing local-merge convention:
      dedicated new category for abstract/academic N1 vocabulary (a
      46th category, deviating from the "45 planned categories" locked
      roster documented above — a deliberate scope decision, not
-     something to do silently).
+     something to do silently). **Sixth batch, same session, after the
+     user confirmed option (b) explicitly** ("kamu hanya perlu mencari
+     kosakata di kamus... yang penting kosakata tersebut marking sesuai
+     level" — you just need to find vocabulary, correctly level-tagged,
+     wherever): added exactly that 46th category, `konsep_umum`
+     ("Konsep Umum" / General Concepts, under the Manusia & Sosial
+     group in `generate_kotoba_manusia_sosial.py` — see that file's
+     `CATEGORIES["konsep_umum"]` docstring), with 51 pure 2-kanji
+     general/abstract nouns (21 N1, 20 N2, 10 N3) that don't belong to
+     any specific real-world domain the other 45 categories cover —
+     words like 概念/傾向/判断/実現/経験, not tied to a theme like
+     "professions" or "weather". Cross-checked against the other 45
+     categories' kanji strings before authoring (zero overlap).
+     Compound-eligible pool jumps from 284 to 335: N5 53 (unchanged),
+     N4 56 (unchanged), N3 64 → 74, N2 59 → 79, N1 52 → 73. Vocab
+     module: 614 → 665 words, 45 → 46 categories. This is the real
+     answer to "how much further can this go" — with a dedicated
+     general-vocabulary category as an outlet, growth is no longer
+     bottlenecked by finding a thematically-fitting home for each new
+     word, so the ceiling described in the fifth-batch note above no
+     longer applies in the same way; the remaining constraint is purely
+     authoring time and cross-referencing real JLPT vocabulary
+     accurately, same as it's always been for every other content
+     module in this project (Kaiwa, Kanji, Bunpou, Partikel).
      Single-kanji mode's *pool* was never affected by any of this — it
      reads `KanjiRepository` directly and already had 107-1503 real
      kanji per level throughout. **But the user pushed back that "the
