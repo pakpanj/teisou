@@ -498,6 +498,25 @@ standing local-merge convention:
      "riwayat ujian" view across all four categories yet — `ExamHistoryScreen`
      (profile) was already an unbuilt placeholder before this change and
      still is.
+   - **Exam length + re-randomization (2026-07-20)**: per explicit user
+     request, both single-kanji and combination exams grew from 5 to 50
+     questions per session (`KanjiComboRepository.generateQuestions`'s
+     `count` default, now also passed explicitly at the
+     `kanjiComboQuestionsProvider` call site) — every level's pool
+     comfortably supports it in both modes (smallest is N4's compound
+     pool at 67, well above 50). Separately fixed a staleness bug this
+     request surfaced: `kanjiComboQuestionsProvider` was a plain
+     `FutureProvider.family`, so Riverpod cached the generated question
+     set per (level, combination) key for the app's entire lifetime —
+     re-entering the same exam (e.g. finish, go back, start again)
+     replayed the exact same questions in the exact same order instead
+     of a fresh shuffle. Switched it to
+     `FutureProvider.autoDispose.family`, so the cached value is cleared
+     the moment the exam screen is left and a brand-new random draw
+     happens on every open, matching how the sibling
+     Kotoba/Bunpou/Partikel quiz screens already behave (those are
+     `StatefulWidget`s that rebuild `_questions` fresh in every new
+     `State`, so they never had this staleness risk to begin with).
 
 Verification for all four: `flutter analyze` clean, `flutter test
 --concurrency=1` (11/11, two tests updated/added for the new Ujian
