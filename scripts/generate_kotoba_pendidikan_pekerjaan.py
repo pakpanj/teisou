@@ -120,6 +120,73 @@ CATEGORIES = {
         ("kyuujitsu", "休日", "きゅうじつ", "kyuujitsu", "hari libur", "N4", "noun", "休日", "kyuujitsu", "休日", "kyuujitsu", [
             ("休日は家にいます。", "Kyuujitsu wa ie ni imasu.", "Saat hari libur, saya di rumah."),
         ]),
+        # N1 addition (2026-07-20): formal/business-register 2-kanji compound
+        # nouns, the kind that actually shows up in JLPT N1 vocabulary lists —
+        # added specifically so Ujian Kanji's Kombinasi mode has an N1 pool
+        # to draw from (see kanji_combo_repository.dart), not just to pad
+        # this category. Kept to genuinely workplace/negotiation-flavored
+        # words rather than reaching into unrelated N1 vocabulary just to
+        # hit a word count.
+        ("sokushin", "促進", "そくしん", "sokushin", "mendorong/mempercepat (kemajuan)", "N1", "noun", "促進", "sokushin", "促進", "sokushin", [
+            ("販売促進のキャンペーンを行います。", "Hanbai sokushin no kyanpeen o okonaimasu.", "Kami mengadakan kampanye promosi penjualan."),
+        ]),
+        ("yokusei", "抑制", "よくせい", "yokusei", "penekanan/pengendalian", "N1", "noun", "抑制", "yokusei", "抑制", "yokusei", [
+            ("経費の抑制が求められています。", "Keihi no yokusei ga motomerarete imasu.", "Penekanan biaya sedang dituntut."),
+        ]),
+        ("zesei", "是正", "ぜせい", "zesei", "koreksi/perbaikan", "N1", "noun", "是正", "zesei", "是正", "zesei", [
+            ("問題点を是正する必要があります。", "Mondaiten o zesei suru hitsuyou ga arimasu.", "Perlu memperbaiki titik masalahnya."),
+        ]),
+        ("dakyou", "妥協", "だきょう", "dakyou", "kompromi", "N1", "noun", "妥協", "dakyou", "妥協", "dakyou", [
+            ("両者は妥協点を見つけました。", "Ryousha wa dakyouten o mitsukemashita.", "Kedua belah pihak menemukan titik kompromi."),
+        ]),
+        ("dakai", "打開", "だかい", "dakai", "terobosan", "N1", "noun", "打開", "dakai", "打開", "dakai", [
+            ("現状打開のための会議です。", "Genjou dakai no tame no kaigi desu.", "Ini rapat untuk menerobos situasi saat ini."),
+        ]),
+        ("yuugou", "融合", "ゆうごう", "yuugou", "peleburan/penggabungan", "N1", "noun", "融合", "yuugou", "融合", "yuugou", [
+            ("二つの部署が融合しました。", "Futatsu no busho ga yuugou shimashita.", "Dua departemen itu dilebur menjadi satu."),
+        ]),
+        ("tekkai", "撤回", "てっかい", "tekkai", "penarikan kembali", "N1", "noun", "撤回", "tekkai", "撤回", "tekkai", [
+            ("提案を撤回することにしました。", "Teian o tekkai suru koto ni shimashita.", "Kami memutuskan untuk menarik kembali usulan itu."),
+        ]),
+        ("suikou", "遂行", "すいこう", "suikou", "pelaksanaan", "N1", "noun", "遂行", "suikou", "遂行", "suikou", [
+            ("任務を遂行します。", "Ninmu o suikou shimasu.", "Saya akan melaksanakan tugas."),
+        ]),
+        ("rikou", "履行", "りこう", "rikou", "pemenuhan (kewajiban)", "N1", "noun", "履行", "rikou", "履行", "rikou", [
+            ("契約を履行する義務があります。", "Keiyaku o rikou suru gimu ga arimasu.", "Ada kewajiban untuk memenuhi kontrak."),
+        ]),
+        ("yuuyo", "猶予", "ゆうよ", "yuuyo", "penangguhan", "N1", "noun", "猶予", "yuuyo", "猶予", "yuuyo", [
+            ("支払いの猶予をお願いします。", "Shiharai no yuuyo o onegai shimasu.", "Mohon penangguhan pembayaran."),
+        ]),
+        ("itsudatsu", "逸脱", "いつだつ", "itsudatsu", "penyimpangan", "N1", "noun", "逸脱", "itsudatsu", "逸脱", "itsudatsu", [
+            ("規則からの逸脱は許されません。", "Kisoku kara no itsudatsu wa yurusaremasen.", "Penyimpangan dari aturan tidak diizinkan."),
+        ]),
+        ("choukou", "兆候", "ちょうこう", "choukou", "tanda/gejala", "N1", "noun", "兆候", "choukou", "兆候", "choukou", [
+            ("業績回復の兆候が見えます。", "Gyouseki kaifuku no choukou ga miemasu.", "Terlihat tanda-tanda pemulihan kinerja."),
+        ]),
+        ("heigai", "弊害", "へいがい", "heigai", "dampak buruk", "N1", "noun", "弊害", "heigai", "弊害", "heigai", [
+            ("この制度には弊害があります。", "Kono seido ni wa heigai ga arimasu.", "Sistem ini memiliki dampak buruk."),
+        ]),
+        ("daketsu", "妥結", "だけつ", "daketsu", "kesepakatan (negosiasi)", "N1", "noun", "妥結", "daketsu", "妥結", "daketsu", [
+            ("交渉はようやく妥結しました。", "Koushou wa youyaku daketsu shimashita.", "Negosiasi akhirnya mencapai kesepakatan."),
+        ]),
+        ("sesshou", "折衝", "せっしょう", "sesshou", "negosiasi (alot)", "N1", "noun", "折衝", "sesshou", "折衝", "sesshou", [
+            ("取引先と折衝を重ねました。", "Torihikisaki to sesshou o kasanemashita.", "Kami melakukan negosiasi berulang kali dengan mitra bisnis."),
+        ]),
+        ("shisa", "示唆", "しさ", "shisa", "sindiran/isyarat", "N1", "noun", "示唆", "shisa", "示唆", "shisa", [
+            ("上司の言葉には示唆が含まれていました。", "Joushi no kotoba ni wa shisa ga fukumarete imashita.", "Kata-kata atasan mengandung sindiran/petunjuk."),
+        ]),
+        ("sogai", "疎外", "そがい", "sogai", "pengucilan", "N1", "noun", "疎外", "sogai", "疎外", "sogai", [
+            ("新人が疎外感を感じています。", "Shinjin ga sogaikan o kanjite imasu.", "Karyawan baru merasa dikucilkan."),
+        ]),
+        ("jousei", "醸成", "じょうせい", "jousei", "pembentukan (suasana/situasi)", "N1", "noun", "醸成", "jousei", "醸成", "jousei", [
+            ("チームの一体感を醸成します。", "Chiimu no ittaikan o jousei shimasu.", "Kami membangun rasa kebersamaan tim."),
+        ]),
+        ("hakyuu", "波及", "はきゅう", "hakyuu", "efek berantai/menyebar", "N1", "noun", "波及", "hakyuu", "波及", "hakyuu", [
+            ("影響が他の部署にも波及しました。", "Eikyou ga hoka no busho ni mo hakyuu shimashita.", "Dampaknya menyebar ke departemen lain juga."),
+        ]),
+        ("enkatsu", "円滑", "えんかつ", "enkatsu", "kelancaran", "N1", "adjective", "円滑", "enkatsu", "円滑", "enkatsu", [
+            ("業務を円滑に進めます。", "Gyoumu o enkatsu ni susumemasu.", "Kami menjalankan pekerjaan dengan lancar."),
+        ]),
     ],
     "teknologi_gadget": [
         ("konpyuutaa", None, "コンピューター", "konpyuutaa", "komputer", "N4", "noun", "コンピューター", "konpyuutaa", "コンピューター", "konpyuutaa", [

@@ -238,5 +238,485 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kyuujitsu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_sokushin",
+    "word": "そくしん",
+    "kanji": "促進",
+    "reading": "そくしん",
+    "romaji": "sokushin",
+    "meaning": "mendorong/mempercepat (kemajuan)",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "促進 (sokushin)",
+      "formal": "促進 (sokushin)",
+      "keigo": "促進 (sokushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "販売促進のキャンペーンを行います。",
+        "romaji": "Hanbai sokushin no kyanpeen o okonaimasu.",
+        "translation": "Kami mengadakan kampanye promosi penjualan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sokushin.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_yokusei",
+    "word": "よくせい",
+    "kanji": "抑制",
+    "reading": "よくせい",
+    "romaji": "yokusei",
+    "meaning": "penekanan/pengendalian",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "抑制 (yokusei)",
+      "formal": "抑制 (yokusei)",
+      "keigo": "抑制 (yokusei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "経費の抑制が求められています。",
+        "romaji": "Keihi no yokusei ga motomerarete imasu.",
+        "translation": "Penekanan biaya sedang dituntut."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yokusei.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_zesei",
+    "word": "ぜせい",
+    "kanji": "是正",
+    "reading": "ぜせい",
+    "romaji": "zesei",
+    "meaning": "koreksi/perbaikan",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "是正 (zesei)",
+      "formal": "是正 (zesei)",
+      "keigo": "是正 (zesei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "問題点を是正する必要があります。",
+        "romaji": "Mondaiten o zesei suru hitsuyou ga arimasu.",
+        "translation": "Perlu memperbaiki titik masalahnya."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_zesei.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_dakyou",
+    "word": "だきょう",
+    "kanji": "妥協",
+    "reading": "だきょう",
+    "romaji": "dakyou",
+    "meaning": "kompromi",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "妥協 (dakyou)",
+      "formal": "妥協 (dakyou)",
+      "keigo": "妥協 (dakyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "両者は妥協点を見つけました。",
+        "romaji": "Ryousha wa dakyouten o mitsukemashita.",
+        "translation": "Kedua belah pihak menemukan titik kompromi."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dakyou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_dakai",
+    "word": "だかい",
+    "kanji": "打開",
+    "reading": "だかい",
+    "romaji": "dakai",
+    "meaning": "terobosan",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "打開 (dakai)",
+      "formal": "打開 (dakai)",
+      "keigo": "打開 (dakai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "現状打開のための会議です。",
+        "romaji": "Genjou dakai no tame no kaigi desu.",
+        "translation": "Ini rapat untuk menerobos situasi saat ini."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dakai.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_yuugou",
+    "word": "ゆうごう",
+    "kanji": "融合",
+    "reading": "ゆうごう",
+    "romaji": "yuugou",
+    "meaning": "peleburan/penggabungan",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "融合 (yuugou)",
+      "formal": "融合 (yuugou)",
+      "keigo": "融合 (yuugou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "二つの部署が融合しました。",
+        "romaji": "Futatsu no busho ga yuugou shimashita.",
+        "translation": "Dua departemen itu dilebur menjadi satu."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yuugou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_tekkai",
+    "word": "てっかい",
+    "kanji": "撤回",
+    "reading": "てっかい",
+    "romaji": "tekkai",
+    "meaning": "penarikan kembali",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "撤回 (tekkai)",
+      "formal": "撤回 (tekkai)",
+      "keigo": "撤回 (tekkai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "提案を撤回することにしました。",
+        "romaji": "Teian o tekkai suru koto ni shimashita.",
+        "translation": "Kami memutuskan untuk menarik kembali usulan itu."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tekkai.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_suikou",
+    "word": "すいこう",
+    "kanji": "遂行",
+    "reading": "すいこう",
+    "romaji": "suikou",
+    "meaning": "pelaksanaan",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "遂行 (suikou)",
+      "formal": "遂行 (suikou)",
+      "keigo": "遂行 (suikou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "任務を遂行します。",
+        "romaji": "Ninmu o suikou shimasu.",
+        "translation": "Saya akan melaksanakan tugas."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_suikou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_rikou",
+    "word": "りこう",
+    "kanji": "履行",
+    "reading": "りこう",
+    "romaji": "rikou",
+    "meaning": "pemenuhan (kewajiban)",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "履行 (rikou)",
+      "formal": "履行 (rikou)",
+      "keigo": "履行 (rikou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "契約を履行する義務があります。",
+        "romaji": "Keiyaku o rikou suru gimu ga arimasu.",
+        "translation": "Ada kewajiban untuk memenuhi kontrak."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_rikou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_yuuyo",
+    "word": "ゆうよ",
+    "kanji": "猶予",
+    "reading": "ゆうよ",
+    "romaji": "yuuyo",
+    "meaning": "penangguhan",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "猶予 (yuuyo)",
+      "formal": "猶予 (yuuyo)",
+      "keigo": "猶予 (yuuyo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "支払いの猶予をお願いします。",
+        "romaji": "Shiharai no yuuyo o onegai shimasu.",
+        "translation": "Mohon penangguhan pembayaran."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yuuyo.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_itsudatsu",
+    "word": "いつだつ",
+    "kanji": "逸脱",
+    "reading": "いつだつ",
+    "romaji": "itsudatsu",
+    "meaning": "penyimpangan",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "逸脱 (itsudatsu)",
+      "formal": "逸脱 (itsudatsu)",
+      "keigo": "逸脱 (itsudatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "規則からの逸脱は許されません。",
+        "romaji": "Kisoku kara no itsudatsu wa yurusaremasen.",
+        "translation": "Penyimpangan dari aturan tidak diizinkan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_itsudatsu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_choukou",
+    "word": "ちょうこう",
+    "kanji": "兆候",
+    "reading": "ちょうこう",
+    "romaji": "choukou",
+    "meaning": "tanda/gejala",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "兆候 (choukou)",
+      "formal": "兆候 (choukou)",
+      "keigo": "兆候 (choukou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "業績回復の兆候が見えます。",
+        "romaji": "Gyouseki kaifuku no choukou ga miemasu.",
+        "translation": "Terlihat tanda-tanda pemulihan kinerja."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_choukou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_heigai",
+    "word": "へいがい",
+    "kanji": "弊害",
+    "reading": "へいがい",
+    "romaji": "heigai",
+    "meaning": "dampak buruk",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "弊害 (heigai)",
+      "formal": "弊害 (heigai)",
+      "keigo": "弊害 (heigai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "この制度には弊害があります。",
+        "romaji": "Kono seido ni wa heigai ga arimasu.",
+        "translation": "Sistem ini memiliki dampak buruk."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_heigai.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_daketsu",
+    "word": "だけつ",
+    "kanji": "妥結",
+    "reading": "だけつ",
+    "romaji": "daketsu",
+    "meaning": "kesepakatan (negosiasi)",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "妥結 (daketsu)",
+      "formal": "妥結 (daketsu)",
+      "keigo": "妥結 (daketsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "交渉はようやく妥結しました。",
+        "romaji": "Koushou wa youyaku daketsu shimashita.",
+        "translation": "Negosiasi akhirnya mencapai kesepakatan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_daketsu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_sesshou",
+    "word": "せっしょう",
+    "kanji": "折衝",
+    "reading": "せっしょう",
+    "romaji": "sesshou",
+    "meaning": "negosiasi (alot)",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "折衝 (sesshou)",
+      "formal": "折衝 (sesshou)",
+      "keigo": "折衝 (sesshou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "取引先と折衝を重ねました。",
+        "romaji": "Torihikisaki to sesshou o kasanemashita.",
+        "translation": "Kami melakukan negosiasi berulang kali dengan mitra bisnis."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sesshou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_shisa",
+    "word": "しさ",
+    "kanji": "示唆",
+    "reading": "しさ",
+    "romaji": "shisa",
+    "meaning": "sindiran/isyarat",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "示唆 (shisa)",
+      "formal": "示唆 (shisa)",
+      "keigo": "示唆 (shisa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "上司の言葉には示唆が含まれていました。",
+        "romaji": "Joushi no kotoba ni wa shisa ga fukumarete imashita.",
+        "translation": "Kata-kata atasan mengandung sindiran/petunjuk."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shisa.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_sogai",
+    "word": "そがい",
+    "kanji": "疎外",
+    "reading": "そがい",
+    "romaji": "sogai",
+    "meaning": "pengucilan",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "疎外 (sogai)",
+      "formal": "疎外 (sogai)",
+      "keigo": "疎外 (sogai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新人が疎外感を感じています。",
+        "romaji": "Shinjin ga sogaikan o kanjite imasu.",
+        "translation": "Karyawan baru merasa dikucilkan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sogai.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_jousei",
+    "word": "じょうせい",
+    "kanji": "醸成",
+    "reading": "じょうせい",
+    "romaji": "jousei",
+    "meaning": "pembentukan (suasana/situasi)",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "醸成 (jousei)",
+      "formal": "醸成 (jousei)",
+      "keigo": "醸成 (jousei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "チームの一体感を醸成します。",
+        "romaji": "Chiimu no ittaikan o jousei shimasu.",
+        "translation": "Kami membangun rasa kebersamaan tim."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jousei.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_hakyuu",
+    "word": "はきゅう",
+    "kanji": "波及",
+    "reading": "はきゅう",
+    "romaji": "hakyuu",
+    "meaning": "efek berantai/menyebar",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "波及 (hakyuu)",
+      "formal": "波及 (hakyuu)",
+      "keigo": "波及 (hakyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "影響が他の部署にも波及しました。",
+        "romaji": "Eikyou ga hoka no busho ni mo hakyuu shimashita.",
+        "translation": "Dampaknya menyebar ke departemen lain juga."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hakyuu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_enkatsu",
+    "word": "えんかつ",
+    "kanji": "円滑",
+    "reading": "えんかつ",
+    "romaji": "enkatsu",
+    "meaning": "kelancaran",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "adjective",
+    "registers": {
+      "casual": "円滑 (enkatsu)",
+      "formal": "円滑 (enkatsu)",
+      "keigo": "円滑 (enkatsu) — tidak ada bentuk keigo khusus untuk kata sifat ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "業務を円滑に進めます。",
+        "romaji": "Gyoumu o enkatsu ni susumemasu.",
+        "translation": "Kami menjalankan pekerjaan dengan lancar."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_enkatsu.png"
   }
 ]
