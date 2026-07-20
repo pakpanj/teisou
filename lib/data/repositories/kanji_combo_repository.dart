@@ -86,6 +86,58 @@ class KanjiComboRepository {
   static const _readingLabel = 'Bagaimana bacaan kanji ini?';
   static const _compoundLabel = 'Bagaimana bacaan kata ini?';
 
+  /// Character-level Levenshtein distance. Hiragana readings are short
+  /// enough (2-6 characters) that this approximates mora-level distance
+  /// well without needing real mora segmentation — most mora are exactly
+  /// one character, small-y digraphs (きゃ, しゅ, etc.) are two.
+  static int _editDistance(String a, String b) {
+    final la = a.length, lb = b.length;
+    if (la == 0) return lb;
+    if (lb == 0) return la;
+    var prev = List<int>.generate(lb + 1, (j) => j);
+    for (var i = 1; i <= la; i++) {
+      final curr = List<int>.filled(lb + 1, 0);
+      curr[0] = i;
+      for (var j = 1; j <= lb; j++) {
+        final cost = a[i - 1] == b[j - 1] ? 0 : 1;
+        curr[j] = [prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + cost].reduce(min);
+      }
+      prev = curr;
+    }
+    return prev[lb];
+  }
+
+  /// Picks [n] distractors that read *similarly* to [correctAnswer]
+  /// (e.g. for 事情/じじょう this favors じしょう/しじょう over something
+  /// unrelated like かわい) rather than uniformly at random — otherwise a
+  /// learner can tell the right answer apart from the wrong ones just by
+  /// their rough shape, without actually knowing the exact reading. Picks
+  /// randomly *among* the closest matches (not always the single closest)
+  /// so repeated attempts at the same word don't always show the same
+  /// four options.
+  Set<String> _pickCloseDistractors(String correctAnswer, Iterable<String> candidates, int n) {
+    final unique = candidates.toSet()..remove(correctAnswer);
+    if (unique.length <= n) return unique;
+    final ranked = unique.toList()
+      ..sort((a, b) => _editDistance(a, correctAnswer).compareTo(_editDistance(b, correctAnswer)));
+    final closePoolSize = min(ranked.length, max(n * 3, 8));
+    final closePool = ranked.take(closePoolSize).toList()..shuffle(_random);
+    return closePool.take(n).toSet();
+  }
+
+  /// Picks [n] distractors uniformly at random - used for meaning options,
+  /// where "closeness" isn't a phonetic concept the way it is for readings.
+  Set<String> _pickRandomDistractors(String correctAnswer, Iterable<String> candidates, int n) {
+    final distractors = <String>{};
+    final shuffled = candidates.toList()..shuffle(_random);
+    for (final c in shuffled) {
+      if (distractors.length >= n) break;
+      if (c == correctAnswer) continue;
+      distractors.add(c);
+    }
+    return distractors;
+  }
+
   /// Builds [count] 4-option multiple-choice questions for [level].
   /// Combination mode asks "bagaimana bacaannya" for a compound word
   /// (options = other compounds' readings). Single mode mixes two question
@@ -123,18 +175,12 @@ class KanjiComboRepository {
     if (pool.length < 2) return [];
     final shuffled = List<T>.from(pool)..shuffle(_random);
     final selected = shuffled.take(min(count, shuffled.length)).toList();
+    final allAnswers = pool.map(answerOf);
 
     return List.generate(selected.length, (i) {
       final item = selected[i];
       final correctAnswer = answerOf(item);
-      final distractors = <String>{};
-      final candidates = List<T>.from(pool)..shuffle(_random);
-      for (final candidate in candidates) {
-        if (distractors.length >= 3) break;
-        final candidateAnswer = answerOf(candidate);
-        if (candidateAnswer == correctAnswer) continue;
-        distractors.add(candidateAnswer);
-      }
+      final distractors = _pickCloseDistractors(correctAnswer, allAnswers, 3);
       final options = [correctAnswer, ...distractors]..shuffle(_random);
       return KanjiComboQuestion(
         id: 'kombo_$i',
@@ -169,15 +215,21 @@ class KanjiComboRepository {
           askReading ? _randomReading : (k) => k.meanings.first;
       final correctAnswer = answerOf(item);
 
-      final distractors = <String>{};
-      final candidates = List<KanjiEntry>.from(pool)..shuffle(_random);
-      for (final candidate in candidates) {
-        if (distractors.length >= 3) break;
-        if (identical(candidate, item)) continue;
-        final candidateAnswer = answerOf(candidate);
-        if (candidateAnswer == correctAnswer) continue;
-        distractors.add(candidateAnswer);
-      }
+      // Excludes item itself - one of its *other* on'yomi/kun'yomi
+      // readings (or meanings) would otherwise leak in as a "wrong"
+      // answer that's technically still valid for this exact kanji.
+      final otherEntries = pool.where((k) => !identical(k, item));
+      final distractors = askReading
+          ? _pickCloseDistractors(
+              correctAnswer,
+              otherEntries.expand((k) => [...k.onyomi, ...k.kunyomi]),
+              3,
+            )
+          : _pickRandomDistractors(
+              correctAnswer,
+              otherEntries.map((k) => k.meanings.first),
+              3,
+            );
       final options = [correctAnswer, ...distractors]..shuffle(_random);
       return KanjiComboQuestion(
         id: 'kombo_$i',
