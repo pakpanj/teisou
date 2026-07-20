@@ -315,6 +315,169 @@ CATEGORIES = {
             ("創立百周年の祝賀会が開かれました。", "Souritsu hyakushuunen no shukugakai ga hirakaremashita.", "Perayaan seratus tahun pendirian diadakan."),
         ]),
     ],
+    # New category (2026-07-20, sixth batch), added specifically to keep
+    # growing Kanji Kombinasi's pool without forcing abstract N1-N3 nouns
+    # into concrete real-world categories (fish, fruits, colors, etc.)
+    # where they'd be a poor thematic fit — general/abstract concept words
+    # that don't belong to a specific everyday-life domain live here
+    # instead. All 51 entries are pure 2-kanji compounds, cross-checked
+    # against the rest of the 614-word dataset for kanji-string overlap
+    # (zero hits) before authoring.
+    "konsep_umum": [
+        ("gainen", "概念", "がいねん", "gainen", "konsep", "N1", "noun", "概念", "gainen", "概念", "gainen", [
+            ("この概念を理解するのは難しいです。", "Kono gainen o rikai suru no wa muzukashii desu.", "Sulit memahami konsep ini."),
+        ]),
+        ("keikou", "傾向", "けいこう", "keikou", "kecenderungan", "N1", "noun", "傾向", "keikou", "傾向", "keikou", [
+            ("最近、若者の傾向が変わってきました。", "Saikin, wakamono no keikou ga kawatte kimashita.", "Belakangan ini, kecenderungan anak muda mulai berubah."),
+        ]),
+        ("yokuatsu", "抑圧", "よくあつ", "yokuatsu", "penindasan", "N1", "noun", "抑圧", "yokuatsu", "抑圧", "yokuatsu", [
+            ("長年の抑圧から解放されました。", "Naganen no yokuatsu kara kaihou saremashita.", "Saya dibebaskan dari penindasan bertahun-tahun."),
+        ]),
+        ("haijo", "排除", "はいじょ", "haijo", "pengecualian/penyingkiran", "N1", "noun", "排除", "haijo", "排除", "haijo", [
+            ("不正な行為を排除します。", "Fusei na koui o haijo shimasu.", "Kami menyingkirkan tindakan curang."),
+        ]),
+        ("zenin", "是認", "ぜにん", "zenin", "pengakuan/persetujuan", "N1", "noun", "是認", "zenin", "是認", "zenin", [
+            ("その意見は広く是認されています。", "Sono iken wa hiroku zenin sarete imasu.", "Pendapat itu diakui secara luas."),
+        ]),
+        ("dashin", "打診", "だしん", "dashin", "menjajaki (secara halus)", "N1", "noun", "打診", "dashin", "打診", "dashin", [
+            ("転勤の可能性を打診されました。", "Tenkin no kanousei o dashin saremashita.", "Saya ditanya secara halus soal kemungkinan pindah kerja."),
+        ]),
+        ("hamon", "波紋", "はもん", "hamon", "riak/dampak (kiasan)", "N1", "noun", "波紋", "hamon", "波紋", "hamon", [
+            ("その発言が波紋を広げました。", "Sono hatsugen ga hamon o hirogemashita.", "Pernyataan itu menimbulkan dampak luas."),
+        ]),
+        ("kinkou", "均衡", "きんこう", "kinkou", "keseimbangan", "N1", "noun", "均衡", "kinkou", "均衡", "kinkou", [
+            ("収入と支出の均衡を保ちます。", "Shuunyuu to shishutsu no kinkou o tamochimasu.", "Saya menjaga keseimbangan pendapatan dan pengeluaran."),
+        ]),
+        ("taitou", "台頭", "たいとう", "taitou", "kebangkitan (kekuatan baru)", "N1", "noun", "台頭", "taitou", "台頭", "taitou", [
+            ("新しい勢力が台頭しています。", "Atarashii seiryoku ga taitou shite imasu.", "Kekuatan baru sedang bangkit."),
+        ]),
+        ("senzai", "潜在", "せんざい", "senzai", "potensi tersembunyi", "N1", "noun", "潜在", "senzai", "潜在", "senzai", [
+            ("彼には潜在的な才能があります。", "Kare ni wa senzaiteki na sainou ga arimasu.", "Dia punya bakat tersembunyi."),
+        ]),
+        ("kencho", "顕著", "けんちょ", "kencho", "jelas/mencolok", "N1", "adjective", "顕著", "kencho", "顕著", "kencho", [
+            ("効果が顕著に現れました。", "Kouka ga kencho ni arawaremashita.", "Efeknya terlihat jelas/mencolok."),
+        ]),
+        ("kinpaku", "緊迫", "きんぱく", "kinpaku", "ketegangan (situasi)", "N1", "noun", "緊迫", "kinpaku", "緊迫", "kinpaku", [
+            ("現場は緊迫した状況です。", "Genba wa kinpaku shita joukyou desu.", "Situasi di lapangan sedang tegang."),
+        ]),
+        ("sakkaku", "錯覚", "さっかく", "sakkaku", "ilusi/salah persepsi", "N1", "noun", "錯覚", "sakkaku", "錯覚", "sakkaku", [
+            ("それは目の錯覚です。", "Sore wa me no sakkaku desu.", "Itu ilusi mata."),
+        ]),
+        ("douin", "動員", "どういん", "douin", "mobilisasi", "N1", "noun", "動員", "douin", "動員", "douin", [
+            ("多くの人が動員されました。", "Ooku no hito ga douin saremashita.", "Banyak orang dimobilisasi."),
+        ]),
+        ("nankou", "難航", "なんこう", "nankou", "kesulitan (proses/negosiasi)", "N1", "noun", "難航", "nankou", "難航", "nankou", [
+            ("交渉は難航しています。", "Koushou wa nankou shite imasu.", "Negosiasi sedang mengalami kesulitan."),
+        ]),
+        ("kanshou", "干渉", "かんしょう", "kanshou", "campur tangan/interferensi", "N1", "noun", "干渉", "kanshou", "干渉", "kanshou", [
+            ("他人の生活に干渉しないでください。", "Tanin no seikatsu ni kanshou shinaide kudasai.", "Tolong jangan campur tangan dalam kehidupan orang lain."),
+        ]),
+        ("tousei", "統制", "とうせい", "tousei", "kontrol/pengaturan (ketat)", "N1", "noun", "統制", "tousei", "統制", "tousei", [
+            ("情報が統制されています。", "Jouhou ga tousei sarete imasu.", "Informasi sedang dikontrol."),
+        ]),
+        ("bokumetsu", "撲滅", "ぼくめつ", "bokumetsu", "pemberantasan", "N1", "noun", "撲滅", "bokumetsu", "撲滅", "bokumetsu", [
+            ("この病気の撲滅を目指します。", "Kono byouki no bokumetsu o mezashimasu.", "Kami bertujuan memberantas penyakit ini."),
+        ]),
+        ("kokufuku", "克服", "こくふく", "kokufuku", "mengatasi (kesulitan)", "N1", "noun", "克服", "kokufuku", "克服", "kokufuku", [
+            ("困難を克服しました。", "Konnan o kokufuku shimashita.", "Saya mengatasi kesulitan."),
+        ]),
+        ("hoshou", "補償", "ほしょう", "hoshou", "kompensasi/ganti rugi", "N1", "noun", "補償", "hoshou", "補償", "hoshou", [
+            ("損害の補償を求めます。", "Songai no hoshou o motomemasu.", "Saya meminta kompensasi kerugian."),
+        ]),
+        ("soshi", "阻止", "そし", "soshi", "menghalangi/mencegah", "N1", "noun", "阻止", "soshi", "阻止", "soshi", [
+            ("計画の実行を阻止しました。", "Keikaku no jikkou o soshi shimashita.", "Kami menghalangi pelaksanaan rencana itu."),
+        ]),
+        ("eikyou", "影響", "えいきょう", "eikyou", "pengaruh/dampak", "N2", "noun", "影響", "eikyou", "影響", "eikyou", [
+            ("天気が体調に影響します。", "Tenki ga taichou ni eikyou shimasu.", "Cuaca berpengaruh pada kondisi tubuh."),
+        ]),
+        ("hatten", "発展", "はってん", "hatten", "perkembangan", "N2", "noun", "発展", "hatten", "発展", "hatten", [
+            ("この地域は急速に発展しています。", "Kono chiiki wa kyuusoku ni hatten shite imasu.", "Daerah ini berkembang dengan cepat."),
+        ]),
+        ("handan", "判断", "はんだん", "handan", "penilaian/keputusan", "N2", "noun", "判断", "handan", "判断", "handan", [
+            ("自分で判断してください。", "Jibun de handan shite kudasai.", "Tolong buat keputusan sendiri."),
+        ]),
+        ("souzou", "想像", "そうぞう", "souzou", "imajinasi/bayangan", "N2", "noun", "想像", "souzou", "想像", "souzou", [
+            ("将来を想像してみます。", "Shourai o souzou shite mimasu.", "Saya mencoba membayangkan masa depan."),
+        ]),
+        ("kansha", "感謝", "かんしゃ", "kansha", "rasa terima kasih", "N2", "noun", "感謝", "kansha", "感謝", "kansha", [
+            ("皆さんに感謝しています。", "Minasan ni kansha shite imasu.", "Saya berterima kasih pada semua orang."),
+        ]),
+        ("kitai", "期待", "きたい", "kitai", "harapan/ekspektasi", "N2", "noun", "期待", "kitai", "期待", "kitai", [
+            ("あなたの成功を期待しています。", "Anata no seikou o kitai shite imasu.", "Saya berharap Anda berhasil."),
+        ]),
+        ("ketsudan", "決断", "けつだん", "ketsudan", "keputusan (tegas)", "N2", "noun", "決断", "ketsudan", "決断", "ketsudan", [
+            ("重要な決断をしました。", "Juuyou na ketsudan o shimashita.", "Saya membuat keputusan penting."),
+        ]),
+        ("jitsugen", "実現", "じつげん", "jitsugen", "terwujud/realisasi", "N2", "noun", "実現", "jitsugen", "実現", "jitsugen", [
+            ("夢がついに実現しました。", "Yume ga tsui ni jitsugen shimashita.", "Impian itu akhirnya terwujud."),
+        ]),
+        ("kouka", "効果", "こうか", "kouka", "efek/dampak", "N2", "noun", "効果", "kouka", "効果", "kouka", [
+            ("この薬は効果があります。", "Kono kusuri wa kouka ga arimasu.", "Obat ini punya efek."),
+        ]),
+        ("gen'in", "原因", "げんいん", "gen'in", "penyebab", "N2", "noun", "原因", "gen'in", "原因", "gen'in", [
+            ("事故の原因を調べます。", "Jiko no gen'in o shirabemasu.", "Kami menyelidiki penyebab kecelakaan."),
+        ]),
+        ("kekka", "結果", "けっか", "kekka", "hasil", "N2", "noun", "結果", "kekka", "結果", "kekka", [
+            ("テストの結果が出ました。", "Tesuto no kekka ga demashita.", "Hasil tes sudah keluar."),
+        ]),
+        ("shuchou", "主張", "しゅちょう", "shuchou", "klaim/pendapat (tegas)", "N2", "noun", "主張", "shuchou", "主張", "shuchou", [
+            ("自分の意見を主張します。", "Jibun no iken o shuchou shimasu.", "Saya menegaskan pendapat saya sendiri."),
+        ]),
+        ("hansei", "反省", "はんせい", "hansei", "introspeksi/refleksi diri", "N2", "noun", "反省", "hansei", "反省", "hansei", [
+            ("自分の行動を反省します。", "Jibun no koudou o hansei shimasu.", "Saya merefleksikan tindakan saya sendiri."),
+        ]),
+        ("rikai", "理解", "りかい", "rikai", "pemahaman", "N2", "noun", "理解", "rikai", "理解", "rikai", [
+            ("その説明で理解できました。", "Sono setsumei de rikai dekimashita.", "Saya jadi paham dengan penjelasan itu."),
+        ]),
+        ("gokai", "誤解", "ごかい", "gokai", "kesalahpahaman", "N2", "noun", "誤解", "gokai", "誤解", "gokai", [
+            ("誤解を解きたいです。", "Gokai o tokitai desu.", "Saya ingin meluruskan kesalahpahaman."),
+        ]),
+        ("taiou", "対応", "たいおう", "taiou", "respons/penanganan", "N2", "noun", "対応", "taiou", "対応", "taiou", [
+            ("迅速に対応します。", "Jinsoku ni taiou shimasu.", "Kami merespons dengan cepat."),
+        ]),
+        ("taisaku", "対策", "たいさく", "taisaku", "langkah penanggulangan", "N2", "noun", "対策", "taisaku", "対策", "taisaku", [
+            ("台風の対策をします。", "Taifuu no taisaku o shimasu.", "Kami menyiapkan langkah penanggulangan topan."),
+        ]),
+        ("kentou", "検討", "けんとう", "kentou", "pertimbangan/kajian", "N2", "noun", "検討", "kentou", "検討", "kentou", [
+            ("その案を検討しています。", "Sono an o kentou shite imasu.", "Kami sedang mempertimbangkan usulan itu."),
+        ]),
+        ("kaizen", "改善", "かいぜん", "kaizen", "perbaikan", "N2", "noun", "改善", "kaizen", "改善", "kaizen", [
+            ("サービスを改善します。", "Saabisu o kaizen shimasu.", "Kami memperbaiki layanan."),
+        ]),
+        ("hyouka", "評価", "ひょうか", "hyouka", "penilaian/evaluasi", "N2", "noun", "評価", "hyouka", "評価", "hyouka", [
+            ("彼の仕事は高く評価されています。", "Kare no shigoto wa takaku hyouka sarete imasu.", "Pekerjaannya dinilai tinggi."),
+        ]),
+        ("sanka", "参加", "さんか", "sanka", "partisipasi", "N3", "noun", "参加", "sanka", "参加", "sanka", [
+            ("パーティーに参加します。", "Paatii ni sanka shimasu.", "Saya berpartisipasi dalam pesta."),
+        ]),
+        ("junbi", "準備", "じゅんび", "junbi", "persiapan", "N3", "noun", "準備", "junbi", "準備", "junbi", [
+            ("旅行の準備をします。", "Ryokou no junbi o shimasu.", "Saya mempersiapkan perjalanan."),
+        ]),
+        ("setsumei", "説明", "せつめい", "setsumei", "penjelasan", "N3", "noun", "説明", "setsumei", "説明", "setsumei", [
+            ("詳しく説明してください。", "Kuwashiku setsumei shite kudasai.", "Tolong jelaskan secara rinci."),
+        ]),
+        ("shitsumon", "質問", "しつもん", "shitsumon", "pertanyaan", "N3", "noun", "質問", "shitsumon", "質問", "shitsumon", [
+            ("質問があります。", "Shitsumon ga arimasu.", "Saya punya pertanyaan."),
+        ]),
+        ("renshuu", "練習", "れんしゅう", "renshuu", "latihan", "N3", "noun", "練習", "renshuu", "練習", "renshuu", [
+            ("毎日ピアノを練習します。", "Mainichi piano o renshuu shimasu.", "Saya berlatih piano setiap hari."),
+        ]),
+        ("seikou", "成功", "せいこう", "seikou", "keberhasilan", "N3", "noun", "成功", "seikou", "成功", "seikou", [
+            ("プロジェクトが成功しました。", "Purojekuto ga seikou shimashita.", "Proyek itu berhasil."),
+        ]),
+        ("shippai", "失敗", "しっぱい", "shippai", "kegagalan", "N3", "noun", "失敗", "shippai", "失敗", "shippai", [
+            ("実験は失敗しました。", "Jikken wa shippai shimashita.", "Eksperimen itu gagal."),
+        ]),
+        ("keiken", "経験", "けいけん", "keiken", "pengalaman", "N3", "noun", "経験", "keiken", "経験", "keiken", [
+            ("貴重な経験をしました。", "Kichou na keiken o shimashita.", "Saya mendapat pengalaman berharga."),
+        ]),
+        ("yotei", "予定", "よてい", "yotei", "rencana/jadwal", "N3", "noun", "予定", "yotei", "予定", "yotei", [
+            ("明日の予定を確認します。", "Ashita no yotei o kakunin shimasu.", "Saya memeriksa jadwal besok."),
+        ]),
+        ("tsugou", "都合", "つごう", "tsugou", "keadaan/kenyamanan (waktu)", "N3", "noun", "都合", "tsugou", "都合", "tsugou", [
+            ("都合がいい時間を教えてください。", "Tsugou ga ii jikan o oshiete kudasai.", "Tolong beri tahu waktu yang cocok untuk Anda."),
+        ]),
+    ],
 }
 
 

@@ -57,6 +57,11 @@ GROUPS = {
         ("hobi_aktivitas", "Hobi & Aktivitas", "🎨", True, 16),
         ("agama_budaya", "Agama & Budaya", "⛩️", True, 13),
         ("perayaan_haribesar", "Perayaan & Hari Besar", "🎉", True, 12),
+        # New category (2026-07-20, sixth batch) — see the docstring on
+        # CATEGORIES["konsep_umum"] in generate_kotoba_manusia_sosial.py
+        # for why this exists as its own category rather than being
+        # folded into an existing real-world-themed one.
+        ("konsep_umum", "Konsep Umum", "💭", True, 51),
     ],
     "Pendidikan & Pekerjaan": [
         ("alat_tulis_sekolah", "Alat Tulis & Perlengkapan Sekolah", "✏️", True, 11),
