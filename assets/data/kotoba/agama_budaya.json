@@ -334,5 +334,29 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shuukan.png"
+  },
+  {
+    "id": "kotoba_agama_budaya_jigoku",
+    "word": "じごく",
+    "kanji": "地獄",
+    "reading": "じごく",
+    "romaji": "jigoku",
+    "meaning": "neraka",
+    "jlptLevel": "N1",
+    "category": "agama_budaya",
+    "wordType": "noun",
+    "registers": {
+      "casual": "地獄 (jigoku)",
+      "formal": "地獄 (jigoku)",
+      "keigo": "地獄 (jigoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "地獄という考え方があります。",
+        "romaji": "Jigoku to iu kangaekata ga arimasu.",
+        "translation": "Ada konsep tentang neraka."
+      }
+    ],
+    "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_jigoku.png"
   }
 ]

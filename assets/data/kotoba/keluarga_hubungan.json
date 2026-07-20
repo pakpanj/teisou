@@ -1126,5 +1126,53 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shounen.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_chuujitsu",
+    "word": "ちゅうじつ",
+    "kanji": "忠実",
+    "reading": "ちゅうじつ",
+    "romaji": "chuujitsu",
+    "meaning": "setia/loyal",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "忠実 (chuujitsu)",
+      "formal": "忠実 (chuujitsu)",
+      "keigo": "忠実 (chuujitsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "忠実な部下です。",
+        "romaji": "Chuujitsu na buka desu.",
+        "translation": "Bawahan yang loyal."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chuujitsu.png"
+  },
+  {
+    "id": "kotoba_keluarga_hubungan_doushi",
+    "word": "どうし",
+    "kanji": "同士",
+    "reading": "どうし",
+    "romaji": "doushi",
+    "meaning": "sesama/rekan",
+    "jlptLevel": "N1",
+    "category": "keluarga_hubungan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "同士 (doushi)",
+      "formal": "同士 (doushi)",
+      "keigo": "同士 (doushi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "友人同士で話します。",
+        "romaji": "Yuujin doushi de hanashimasu.",
+        "translation": "Berbicara sesama teman."
+      }
+    ],
+    "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_doushi.png"
   }
 ]

@@ -214,5 +214,29 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_egao.png"
+  },
+  {
+    "id": "kotoba_ekspresi_wajah_bishou",
+    "word": "びしょう",
+    "kanji": "微笑",
+    "reading": "びしょう",
+    "romaji": "bishou",
+    "meaning": "senyuman",
+    "jlptLevel": "N1",
+    "category": "ekspresi_wajah",
+    "wordType": "noun",
+    "registers": {
+      "casual": "微笑 (bishou)",
+      "formal": "微笑 (bishou)",
+      "keigo": "微笑 (bishou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "微笑を浮かべました。",
+        "romaji": "Bishou o ukabemashita.",
+        "translation": "Menampilkan senyuman."
+      }
+    ],
+    "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_bishou.png"
   }
 ]

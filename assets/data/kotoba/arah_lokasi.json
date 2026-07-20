@@ -718,5 +718,77 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sayuu.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_genchi",
+    "word": "げんち",
+    "kanji": "現地",
+    "reading": "げんち",
+    "romaji": "genchi",
+    "meaning": "lokasi setempat",
+    "jlptLevel": "N1",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "現地 (genchi)",
+      "formal": "現地 (genchi)",
+      "keigo": "現地 (genchi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "現地に到着しました。",
+        "romaji": "Genchi ni touchaku shimashita.",
+        "translation": "Tiba di lokasi setempat."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_genchi.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_haigo",
+    "word": "はいご",
+    "kanji": "背後",
+    "reading": "はいご",
+    "romaji": "haigo",
+    "meaning": "di balik/belakang",
+    "jlptLevel": "N1",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "背後 (haigo)",
+      "formal": "背後 (haigo)",
+      "keigo": "背後 (haigo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "背後に隠れます。",
+        "romaji": "Haigo ni kakuremasu.",
+        "translation": "Bersembunyi di belakang."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_haigo.png"
+  },
+  {
+    "id": "kotoba_arah_lokasi_jimoto",
+    "word": "じもと",
+    "kanji": "地元",
+    "reading": "じもと",
+    "romaji": "jimoto",
+    "meaning": "daerah asal/setempat",
+    "jlptLevel": "N1",
+    "category": "arah_lokasi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "地元 (jimoto)",
+      "formal": "地元 (jimoto)",
+      "keigo": "地元 (jimoto) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "地元に帰ります。",
+        "romaji": "Jimoto ni kaerimasu.",
+        "translation": "Pulang ke daerah asal."
+      }
+    ],
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_jimoto.png"
   }
 ]

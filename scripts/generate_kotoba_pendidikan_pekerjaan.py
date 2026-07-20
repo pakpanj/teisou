@@ -237,6 +237,12 @@ CATEGORIES = {
         ("shougakukin", "奨学金", "しょうがくきん", "shougakukin", "beasiswa", "N3", "noun", "奨学金", "shougakukin", "奨学金", "shougakukin", [
             ("奨学金をもらいました。", "Shougakukin o moraimashita.", "Menerima beasiswa."),
         ]),
+        ("jissen", "実践", "じっせん", "jissen", "praktik (penerapan nyata)", "N1", "noun", "実践", "jissen", "実践", "jissen", [
+            ("理論を実践します。", "Riron o jissen shimasu.", "Mempraktikkan teori."),
+        ]),
+        ("kadai", "課題", "かだい", "kadai", "tugas/isu", "N1", "noun", "課題", "kadai", "課題", "kadai", [
+            ("課題を提出します。", "Kadai o teishutsu shimasu.", "Menyerahkan tugas."),
+        ]),
     ],
     "pekerjaan_kantor": [
         ("kaisha", "会社", "かいしゃ", "kaisha", "perusahaan/kantor", "N5", "noun", "会社", "kaisha", "会社", "kaisha", [
@@ -529,6 +535,51 @@ CATEGORIES = {
         ("yushutsu", "輸出", "ゆしゅつ", "yushutsu", "ekspor", "N3", "noun", "輸出", "yushutsu", "輸出", "yushutsu", [
             ("車を輸出します。", "Kuruma o yushutsu shimasu.", "Mengekspor mobil."),
         ]),
+        ("baishuu", "買収", "ばいしゅう", "baishuu", "akuisisi/pengambilalihan", "N1", "noun", "買収", "baishuu", "買収", "baishuu", [
+            ("会社を買収しました。", "Kaisha o baishuu shimashita.", "Mengakuisisi perusahaan."),
+        ]),
+        ("bengo", "弁護", "べんご", "bengo", "pembelaan (hukum)", "N1", "noun", "弁護", "bengo", "弁護", "bengo", [
+            ("弁護士が弁護します。", "Bengoshi ga bengo shimasu.", "Pengacara melakukan pembelaan."),
+        ]),
+        ("bunsho", "文書", "ぶんしょ", "bunsho", "dokumen", "N1", "noun", "文書", "bunsho", "文書", "bunsho", [
+            ("文書を作成します。", "Bunsho o sakusei shimasu.", "Membuat dokumen."),
+        ]),
+        ("chakushu", "着手", "ちゃくしゅ", "chakushu", "mulai mengerjakan", "N1", "noun", "着手", "chakushu", "着手", "chakushu", [
+            ("計画に着手します。", "Keikaku ni chakushu shimasu.", "Mulai mengerjakan rencana."),
+        ]),
+        ("chingin", "賃金", "ちんぎん", "chingin", "upah", "N1", "noun", "賃金", "chingin", "賃金", "chingin", [
+            ("賃金が上がりました。", "Chingin ga agarimashita.", "Upah naik."),
+        ]),
+        ("choutatsu", "調達", "ちょうたつ", "choutatsu", "pengadaan (dana/barang)", "N1", "noun", "調達", "choutatsu", "調達", "choutatsu", [
+            ("資金を調達します。", "Shikin o choutatsu shimasu.", "Mengumpulkan dana."),
+        ]),
+        ("dokusen", "独占", "どくせん", "dokusen", "monopoli", "N1", "noun", "独占", "dokusen", "独占", "dokusen", [
+            ("市場を独占しています。", "Shijou o dokusen shite imasu.", "Memonopoli pasar."),
+        ]),
+        ("gyoumu", "業務", "ぎょうむ", "gyoumu", "urusan bisnis/tugas kerja", "N1", "noun", "業務", "gyoumu", "業務", "gyoumu", [
+            ("業務を分担します。", "Gyoumu o buntan shimasu.", "Membagi tugas kerja."),
+        ]),
+        ("haichi", "配置", "はいち", "haichi", "penempatan", "N1", "noun", "配置", "haichi", "配置", "haichi", [
+            ("社員を配置します。", "Shain o haichi shimasu.", "Menempatkan karyawan."),
+        ]),
+        ("haken", "派遣", "はけん", "haken", "pengiriman/penugasan (staf)", "N1", "noun", "派遣", "haken", "派遣", "haken", [
+            ("社員を派遣します。", "Shain o haken shimasu.", "Mengirim karyawan (ke lokasi tugas)."),
+        ]),
+        ("hoken", "保険", "ほけん", "hoken", "asuransi", "N1", "noun", "保険", "hoken", "保険", "hoken", [
+            ("保険に入ります。", "Hoken ni hairimasu.", "Mengikuti asuransi."),
+        ]),
+        ("housaku", "方策", "ほうさく", "housaku", "kebijakan/strategi", "N1", "noun", "方策", "housaku", "方策", "housaku", [
+            ("新しい方策を考えます。", "Atarashii housaku o kangaemasu.", "Memikirkan strategi baru."),
+        ]),
+        ("houshuu", "報酬", "ほうしゅう", "houshuu", "imbalan/upah", "N1", "noun", "報酬", "houshuu", "報酬", "houshuu", [
+            ("報酬をもらいます。", "Houshuu o moraimasu.", "Menerima imbalan."),
+        ]),
+        ("jigyou", "事業", "じぎょう", "jigyou", "usaha/bisnis", "N1", "noun", "事業", "jigyou", "事業", "jigyou", [
+            ("新しい事業を始めます。", "Atarashii jigyou o hajimemasu.", "Memulai usaha baru."),
+        ]),
+        ("kabushiki", "株式", "かぶしき", "kabushiki", "saham", "N1", "noun", "株式", "kabushiki", "株式", "kabushiki", [
+            ("株式を購入します。", "Kabushiki o kounyuu shimasu.", "Membeli saham."),
+        ]),
     ],
     "teknologi_gadget": [
         ("konpyuutaa", None, "コンピューター", "konpyuutaa", "komputer", "N4", "noun", "コンピューター", "konpyuutaa", "コンピューター", "konpyuutaa", [
@@ -647,6 +698,12 @@ CATEGORIES = {
         ]),
         ("kyouryoku", "強力", "きょうりょく", "kyouryoku", "kuat/tangguh", "N3", "noun", "強力", "kyouryoku", "強力", "kyouryoku", [
             ("強力な機械です。", "Kyouryoku na kikai desu.", "Mesin yang kuat."),
+        ]),
+        ("gousei", "合成", "ごうせい", "gousei", "sintesis/gabungan", "N1", "noun", "合成", "gousei", "合成", "gousei", [
+            ("合成写真を作ります。", "Gousei shashin o tsukurimasu.", "Membuat foto hasil gabungan (edit)."),
+        ]),
+        ("kaihatsu", "開発", "かいはつ", "kaihatsu", "pengembangan", "N1", "noun", "開発", "kaihatsu", "開発", "kaihatsu", [
+            ("新製品を開発します。", "Shin seihin o kaihatsu shimasu.", "Mengembangkan produk baru."),
         ]),
     ],
     "media_hiburan": [

@@ -598,5 +598,29 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_taikai.png"
+  },
+  {
+    "id": "kotoba_olahraga_hitteki",
+    "word": "ひってき",
+    "kanji": "匹敵",
+    "reading": "ひってき",
+    "romaji": "hitteki",
+    "meaning": "setanding/sebanding",
+    "jlptLevel": "N1",
+    "category": "olahraga",
+    "wordType": "noun",
+    "registers": {
+      "casual": "匹敵 (hitteki)",
+      "formal": "匹敵 (hitteki)",
+      "keigo": "匹敵 (hitteki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼の実力に匹敵します。",
+        "romaji": "Kare no jitsuryoku ni hitteki shimasu.",
+        "translation": "Setanding dengan kemampuannya."
+      }
+    ],
+    "imagePath": "kotoba_images/olahraga/kotoba_olahraga_hitteki.png"
   }
 ]

@@ -886,5 +886,389 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_waruguchi.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_binkan",
+    "word": "びんかん",
+    "kanji": "敏感",
+    "reading": "びんかん",
+    "romaji": "binkan",
+    "meaning": "sensitif",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "敏感 (binkan)",
+      "formal": "敏感 (binkan)",
+      "keigo": "敏感 (binkan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "肌が敏感です。",
+        "romaji": "Hada ga binkan desu.",
+        "translation": "Kulitnya sensitif."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_binkan.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_bujoku",
+    "word": "ぶじょく",
+    "kanji": "侮辱",
+    "reading": "ぶじょく",
+    "romaji": "bujoku",
+    "meaning": "penghinaan",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "侮辱 (bujoku)",
+      "formal": "侮辱 (bujoku)",
+      "keigo": "侮辱 (bujoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "侮辱された気がします。",
+        "romaji": "Bujoku sareta ki ga shimasu.",
+        "translation": "Merasa dihina."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_bujoku.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_burei",
+    "word": "ぶれい",
+    "kanji": "無礼",
+    "reading": "ぶれい",
+    "romaji": "burei",
+    "meaning": "tidak sopan",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "無礼 (burei)",
+      "formal": "無礼 (burei)",
+      "keigo": "無礼 (burei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "無礼な態度でした。",
+        "romaji": "Burei na taido deshita.",
+        "translation": "Sikapnya tidak sopan."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_burei.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_daitan",
+    "word": "だいたん",
+    "kanji": "大胆",
+    "reading": "だいたん",
+    "romaji": "daitan",
+    "meaning": "berani/nekat",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "大胆 (daitan)",
+      "formal": "大胆 (daitan)",
+      "keigo": "大胆 (daitan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "大胆な決断をしました。",
+        "romaji": "Daitan na ketsudan o shimashita.",
+        "translation": "Membuat keputusan yang berani."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_daitan.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_dokyou",
+    "word": "どきょう",
+    "kanji": "度胸",
+    "reading": "どきょう",
+    "romaji": "dokyou",
+    "meaning": "keberanian/nyali",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "度胸 (dokyou)",
+      "formal": "度胸 (dokyou)",
+      "keigo": "度胸 (dokyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "度胸がありますね。",
+        "romaji": "Dokyou ga arimasu ne.",
+        "translation": "Kamu punya nyali ya."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_dokyou.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_doujou",
+    "word": "どうじょう",
+    "kanji": "同情",
+    "reading": "どうじょう",
+    "romaji": "doujou",
+    "meaning": "simpati/rasa kasihan",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "同情 (doujou)",
+      "formal": "同情 (doujou)",
+      "keigo": "同情 (doujou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "彼に同情します。",
+        "romaji": "Kare ni doujou shimasu.",
+        "translation": "Saya bersimpati padanya."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_doujou.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_fukushuu",
+    "word": "ふくしゅう",
+    "kanji": "復讐",
+    "reading": "ふくしゅう",
+    "romaji": "fukushuu",
+    "meaning": "balas dendam",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "復讐 (fukushuu)",
+      "formal": "復讐 (fukushuu)",
+      "keigo": "復讐 (fukushuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "復讐を計画しています。",
+        "romaji": "Fukushuu o keikaku shite imasu.",
+        "translation": "Merencanakan balas dendam."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_fukushuu.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_hairyo",
+    "word": "はいりょ",
+    "kanji": "配慮",
+    "reading": "はいりょ",
+    "romaji": "hairyo",
+    "meaning": "pertimbangan/perhatian",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "配慮 (hairyo)",
+      "formal": "配慮 (hairyo)",
+      "keigo": "配慮 (hairyo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "相手に配慮します。",
+        "romaji": "Aite ni hairyo shimasu.",
+        "translation": "Memberikan perhatian kepada lawan bicara."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_hairyo.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_henken",
+    "word": "へんけん",
+    "kanji": "偏見",
+    "reading": "へんけん",
+    "romaji": "henken",
+    "meaning": "prasangka",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "偏見 (henken)",
+      "formal": "偏見 (henken)",
+      "keigo": "偏見 (henken) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "偏見を持たないでください。",
+        "romaji": "Henken o motanaide kudasai.",
+        "translation": "Jangan berprasangka."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_henken.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_himei",
+    "word": "ひめい",
+    "kanji": "悲鳴",
+    "reading": "ひめい",
+    "romaji": "himei",
+    "meaning": "jeritan/pekikan",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "悲鳴 (himei)",
+      "formal": "悲鳴 (himei)",
+      "keigo": "悲鳴 (himei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "悲鳴が聞こえました。",
+        "romaji": "Himei ga kikoemashita.",
+        "translation": "Terdengar jeritan."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_himei.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_hinan",
+    "word": "ひなん",
+    "kanji": "非難",
+    "reading": "ひなん",
+    "romaji": "hinan",
+    "meaning": "kritik/celaan",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "非難 (hinan)",
+      "formal": "非難 (hinan)",
+      "keigo": "非難 (hinan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "非難を受けました。",
+        "romaji": "Hinan o ukemashita.",
+        "translation": "Menerima kritik."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_hinan.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_hisan",
+    "word": "ひさん",
+    "kanji": "悲惨",
+    "reading": "ひさん",
+    "romaji": "hisan",
+    "meaning": "tragis/menyedihkan",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "悲惨 (hisan)",
+      "formal": "悲惨 (hisan)",
+      "keigo": "悲惨 (hisan) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "悲惨な事故でした。",
+        "romaji": "Hisan na jiko deshita.",
+        "translation": "Kecelakaan yang tragis."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_hisan.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_honshin",
+    "word": "ほんしん",
+    "kanji": "本心",
+    "reading": "ほんしん",
+    "romaji": "honshin",
+    "meaning": "perasaan sebenarnya",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "本心 (honshin)",
+      "formal": "本心 (honshin)",
+      "keigo": "本心 (honshin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "本心を話してください。",
+        "romaji": "Honshin o hanashite kudasai.",
+        "translation": "Tolong bicarakan perasaan sebenarnya."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_honshin.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_jikaku",
+    "word": "じかく",
+    "kanji": "自覚",
+    "reading": "じかく",
+    "romaji": "jikaku",
+    "meaning": "kesadaran diri",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "自覚 (jikaku)",
+      "formal": "自覚 (jikaku)",
+      "keigo": "自覚 (jikaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "責任を自覚します。",
+        "romaji": "Sekinin o jikaku shimasu.",
+        "translation": "Menyadari tanggung jawab."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_jikaku.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_jounetsu",
+    "word": "じょうねつ",
+    "kanji": "情熱",
+    "reading": "じょうねつ",
+    "romaji": "jounetsu",
+    "meaning": "semangat/passion",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "情熱 (jounetsu)",
+      "formal": "情熱 (jounetsu)",
+      "keigo": "情熱 (jounetsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "仕事に情熱を持っています。",
+        "romaji": "Shigoto ni jounetsu o motte imasu.",
+        "translation": "Memiliki passion dalam pekerjaan."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_jounetsu.png"
+  },
+  {
+    "id": "kotoba_perasaan_emosi_kakushin",
+    "word": "かくしん",
+    "kanji": "確信",
+    "reading": "かくしん",
+    "romaji": "kakushin",
+    "meaning": "keyakinan penuh",
+    "jlptLevel": "N1",
+    "category": "perasaan_emosi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "確信 (kakushin)",
+      "formal": "確信 (kakushin)",
+      "keigo": "確信 (kakushin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "成功を確信しています。",
+        "romaji": "Seikou o kakushin shite imasu.",
+        "translation": "Yakin akan kesuksesan."
+      }
+    ],
+    "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kakushin.png"
   }
 ]

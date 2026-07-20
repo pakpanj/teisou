@@ -766,5 +766,53 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_mushiba.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_fushou",
+    "word": "ふしょう",
+    "kanji": "負傷",
+    "reading": "ふしょう",
+    "romaji": "fushou",
+    "meaning": "luka/cedera",
+    "jlptLevel": "N1",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "負傷 (fushou)",
+      "formal": "負傷 (fushou)",
+      "keigo": "負傷 (fushou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "事故で負傷しました。",
+        "romaji": "Jiko de fushou shimashita.",
+        "translation": "Terluka karena kecelakaan."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_fushou.png"
+  },
+  {
+    "id": "kotoba_penyakit_gejala_hirou",
+    "word": "ひろう",
+    "kanji": "疲労",
+    "reading": "ひろう",
+    "romaji": "hirou",
+    "meaning": "kelelahan",
+    "jlptLevel": "N1",
+    "category": "penyakit_gejala",
+    "wordType": "noun",
+    "registers": {
+      "casual": "疲労 (hirou)",
+      "formal": "疲労 (hirou)",
+      "keigo": "疲労 (hirou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "疲労がたまっています。",
+        "romaji": "Hirou ga tamatte imasu.",
+        "translation": "Kelelahan menumpuk."
+      }
+    ],
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hirou.png"
   }
 ]

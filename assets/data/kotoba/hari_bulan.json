@@ -1726,5 +1726,53 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_yonaka.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_ikkoku",
+    "word": "いっこく",
+    "kanji": "一刻",
+    "reading": "いっこく",
+    "romaji": "ikkoku",
+    "meaning": "sesaat/sejenak",
+    "jlptLevel": "N1",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "一刻 (ikkoku)",
+      "formal": "一刻 (ikkoku)",
+      "keigo": "一刻 (ikkoku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "一刻も早く来てください。",
+        "romaji": "Ikkoku mo hayaku kite kudasai.",
+        "translation": "Tolong datang secepatnya."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ikkoku.png"
+  },
+  {
+    "id": "kotoba_hari_bulan_jizen",
+    "word": "じぜん",
+    "kanji": "事前",
+    "reading": "じぜん",
+    "romaji": "jizen",
+    "meaning": "sebelumnya/di muka",
+    "jlptLevel": "N1",
+    "category": "hari_bulan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "事前 (jizen)",
+      "formal": "事前 (jizen)",
+      "keigo": "事前 (jizen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "事前に予約します。",
+        "romaji": "Jizen ni yoyaku shimasu.",
+        "translation": "Memesan sebelumnya (di muka)."
+      }
+    ],
+    "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jizen.png"
   }
 ]

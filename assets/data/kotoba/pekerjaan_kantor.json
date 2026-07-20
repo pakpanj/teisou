@@ -2206,5 +2206,365 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yushutsu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_baishuu",
+    "word": "ばいしゅう",
+    "kanji": "買収",
+    "reading": "ばいしゅう",
+    "romaji": "baishuu",
+    "meaning": "akuisisi/pengambilalihan",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "買収 (baishuu)",
+      "formal": "買収 (baishuu)",
+      "keigo": "買収 (baishuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "会社を買収しました。",
+        "romaji": "Kaisha o baishuu shimashita.",
+        "translation": "Mengakuisisi perusahaan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_baishuu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_bengo",
+    "word": "べんご",
+    "kanji": "弁護",
+    "reading": "べんご",
+    "romaji": "bengo",
+    "meaning": "pembelaan (hukum)",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "弁護 (bengo)",
+      "formal": "弁護 (bengo)",
+      "keigo": "弁護 (bengo) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "弁護士が弁護します。",
+        "romaji": "Bengoshi ga bengo shimasu.",
+        "translation": "Pengacara melakukan pembelaan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_bengo.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_bunsho",
+    "word": "ぶんしょ",
+    "kanji": "文書",
+    "reading": "ぶんしょ",
+    "romaji": "bunsho",
+    "meaning": "dokumen",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "文書 (bunsho)",
+      "formal": "文書 (bunsho)",
+      "keigo": "文書 (bunsho) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "文書を作成します。",
+        "romaji": "Bunsho o sakusei shimasu.",
+        "translation": "Membuat dokumen."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_bunsho.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_chakushu",
+    "word": "ちゃくしゅ",
+    "kanji": "着手",
+    "reading": "ちゃくしゅ",
+    "romaji": "chakushu",
+    "meaning": "mulai mengerjakan",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "着手 (chakushu)",
+      "formal": "着手 (chakushu)",
+      "keigo": "着手 (chakushu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "計画に着手します。",
+        "romaji": "Keikaku ni chakushu shimasu.",
+        "translation": "Mulai mengerjakan rencana."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chakushu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_chingin",
+    "word": "ちんぎん",
+    "kanji": "賃金",
+    "reading": "ちんぎん",
+    "romaji": "chingin",
+    "meaning": "upah",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "賃金 (chingin)",
+      "formal": "賃金 (chingin)",
+      "keigo": "賃金 (chingin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "賃金が上がりました。",
+        "romaji": "Chingin ga agarimashita.",
+        "translation": "Upah naik."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chingin.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_choutatsu",
+    "word": "ちょうたつ",
+    "kanji": "調達",
+    "reading": "ちょうたつ",
+    "romaji": "choutatsu",
+    "meaning": "pengadaan (dana/barang)",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "調達 (choutatsu)",
+      "formal": "調達 (choutatsu)",
+      "keigo": "調達 (choutatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "資金を調達します。",
+        "romaji": "Shikin o choutatsu shimasu.",
+        "translation": "Mengumpulkan dana."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_choutatsu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_dokusen",
+    "word": "どくせん",
+    "kanji": "独占",
+    "reading": "どくせん",
+    "romaji": "dokusen",
+    "meaning": "monopoli",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "独占 (dokusen)",
+      "formal": "独占 (dokusen)",
+      "keigo": "独占 (dokusen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "市場を独占しています。",
+        "romaji": "Shijou o dokusen shite imasu.",
+        "translation": "Memonopoli pasar."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dokusen.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_gyoumu",
+    "word": "ぎょうむ",
+    "kanji": "業務",
+    "reading": "ぎょうむ",
+    "romaji": "gyoumu",
+    "meaning": "urusan bisnis/tugas kerja",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "業務 (gyoumu)",
+      "formal": "業務 (gyoumu)",
+      "keigo": "業務 (gyoumu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "業務を分担します。",
+        "romaji": "Gyoumu o buntan shimasu.",
+        "translation": "Membagi tugas kerja."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gyoumu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_haichi",
+    "word": "はいち",
+    "kanji": "配置",
+    "reading": "はいち",
+    "romaji": "haichi",
+    "meaning": "penempatan",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "配置 (haichi)",
+      "formal": "配置 (haichi)",
+      "keigo": "配置 (haichi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "社員を配置します。",
+        "romaji": "Shain o haichi shimasu.",
+        "translation": "Menempatkan karyawan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haichi.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_haken",
+    "word": "はけん",
+    "kanji": "派遣",
+    "reading": "はけん",
+    "romaji": "haken",
+    "meaning": "pengiriman/penugasan (staf)",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "派遣 (haken)",
+      "formal": "派遣 (haken)",
+      "keigo": "派遣 (haken) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "社員を派遣します。",
+        "romaji": "Shain o haken shimasu.",
+        "translation": "Mengirim karyawan (ke lokasi tugas)."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haken.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_hoken",
+    "word": "ほけん",
+    "kanji": "保険",
+    "reading": "ほけん",
+    "romaji": "hoken",
+    "meaning": "asuransi",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "保険 (hoken)",
+      "formal": "保険 (hoken)",
+      "keigo": "保険 (hoken) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "保険に入ります。",
+        "romaji": "Hoken ni hairimasu.",
+        "translation": "Mengikuti asuransi."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hoken.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_housaku",
+    "word": "ほうさく",
+    "kanji": "方策",
+    "reading": "ほうさく",
+    "romaji": "housaku",
+    "meaning": "kebijakan/strategi",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "方策 (housaku)",
+      "formal": "方策 (housaku)",
+      "keigo": "方策 (housaku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい方策を考えます。",
+        "romaji": "Atarashii housaku o kangaemasu.",
+        "translation": "Memikirkan strategi baru."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_housaku.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_houshuu",
+    "word": "ほうしゅう",
+    "kanji": "報酬",
+    "reading": "ほうしゅう",
+    "romaji": "houshuu",
+    "meaning": "imbalan/upah",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "報酬 (houshuu)",
+      "formal": "報酬 (houshuu)",
+      "keigo": "報酬 (houshuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "報酬をもらいます。",
+        "romaji": "Houshuu o moraimasu.",
+        "translation": "Menerima imbalan."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_houshuu.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_jigyou",
+    "word": "じぎょう",
+    "kanji": "事業",
+    "reading": "じぎょう",
+    "romaji": "jigyou",
+    "meaning": "usaha/bisnis",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "事業 (jigyou)",
+      "formal": "事業 (jigyou)",
+      "keigo": "事業 (jigyou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しい事業を始めます。",
+        "romaji": "Atarashii jigyou o hajimemasu.",
+        "translation": "Memulai usaha baru."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jigyou.png"
+  },
+  {
+    "id": "kotoba_pekerjaan_kantor_kabushiki",
+    "word": "かぶしき",
+    "kanji": "株式",
+    "reading": "かぶしき",
+    "romaji": "kabushiki",
+    "meaning": "saham",
+    "jlptLevel": "N1",
+    "category": "pekerjaan_kantor",
+    "wordType": "noun",
+    "registers": {
+      "casual": "株式 (kabushiki)",
+      "formal": "株式 (kabushiki)",
+      "keigo": "株式 (kabushiki) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "株式を購入します。",
+        "romaji": "Kabushiki o kounyuu shimasu.",
+        "translation": "Membeli saham."
+      }
+    ],
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kabushiki.png"
   }
 ]

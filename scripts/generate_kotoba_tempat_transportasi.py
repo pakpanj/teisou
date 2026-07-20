@@ -306,6 +306,12 @@ CATEGORIES = {
         ("nyuujou", "入場", "にゅうじょう", "nyuujou", "masuk (ke tempat acara)", "N3", "noun", "入場", "nyuujou", "入場", "nyuujou", [
             ("入場は無料です。", "Nyuujou wa muryou desu.", "Masuk gratis."),
         ]),
+        ("heisa", "閉鎖", "へいさ", "heisa", "penutupan (tempat)", "N1", "noun", "閉鎖", "heisa", "閉鎖", "heisa", [
+            ("工場が閉鎖されました。", "Koujou ga heisa saremashita.", "Pabrik ditutup."),
+        ]),
+        ("houtei", "法廷", "ほうてい", "houtei", "ruang sidang pengadilan", "N1", "noun", "法廷", "houtei", "法廷", "houtei", [
+            ("法廷で証言します。", "Houtei de shougen shimasu.", "Bersaksi di ruang sidang."),
+        ]),
     ],
     "kendaraan": [
         ("kuruma", "車", "くるま", "kuruma", "mobil", "N5", "noun", "車", "kuruma", "車", "kuruma", [
@@ -406,6 +412,9 @@ CATEGORIES = {
         ("unten", "運転", "うんてん", "unten", "mengemudi/mengoperasikan", "N3", "noun", "運転", "unten", "運転", "unten", [
             ("車を運転します。", "Kuruma o unten shimasu.", "Mengemudikan mobil."),
         ]),
+        ("jouriku", "上陸", "じょうりく", "jouriku", "pendaratan (di darat)", "N1", "noun", "上陸", "jouriku", "上陸", "jouriku", [
+            ("台風が上陸しました。", "Taifuu ga jouriku shimashita.", "Topan mendarat di daratan."),
+        ]),
     ],
     "arah_lokasi": [
         ("migi", "右", "みぎ", "migi", "kanan", "N5", "noun", "右", "migi", "右", "migi", [
@@ -499,6 +508,15 @@ CATEGORIES = {
         ]),
         ("sayuu", "左右", "さゆう", "sayuu", "kiri dan kanan", "N3", "noun", "左右", "sayuu", "左右", "sayuu", [
             ("左右を確認します。", "Sayuu o kakunin shimasu.", "Memeriksa kiri dan kanan."),
+        ]),
+        ("genchi", "現地", "げんち", "genchi", "lokasi setempat", "N1", "noun", "現地", "genchi", "現地", "genchi", [
+            ("現地に到着しました。", "Genchi ni touchaku shimashita.", "Tiba di lokasi setempat."),
+        ]),
+        ("haigo", "背後", "はいご", "haigo", "di balik/belakang", "N1", "noun", "背後", "haigo", "背後", "haigo", [
+            ("背後に隠れます。", "Haigo ni kakuremasu.", "Bersembunyi di belakang."),
+        ]),
+        ("jimoto", "地元", "じもと", "jimoto", "daerah asal/setempat", "N1", "noun", "地元", "jimoto", "地元", "jimoto", [
+            ("地元に帰ります。", "Jimoto ni kaerimasu.", "Pulang ke daerah asal."),
         ]),
     ],
     "negara_kota": [
@@ -606,6 +624,42 @@ CATEGORIES = {
         ]),
         ("zenkoku", "全国", "ぜんこく", "zenkoku", "seluruh negeri", "N3", "noun", "全国", "zenkoku", "全国", "zenkoku", [
             ("全国で販売します。", "Zenkoku de hanbai shimasu.", "Dijual di seluruh negeri."),
+        ]),
+        ("dokusai", "独裁", "どくさい", "dokusai", "kediktatoran", "N1", "noun", "独裁", "dokusai", "独裁", "dokusai", [
+            ("独裁政権が続いています。", "Dokusai seiken ga tsuzuite imasu.", "Rezim diktator masih berlanjut."),
+        ]),
+        ("doumei", "同盟", "どうめい", "doumei", "aliansi", "N1", "noun", "同盟", "doumei", "同盟", "doumei", [
+            ("同盟を結びます。", "Doumei o musubimasu.", "Membentuk aliansi."),
+        ]),
+        ("fuhai", "腐敗", "ふはい", "fuhai", "korupsi/pembusukan", "N1", "noun", "腐敗", "fuhai", "腐敗", "fuhai", [
+            ("政治の腐敗を批判します。", "Seiji no fuhai o hihan shimasu.", "Mengkritik korupsi politik."),
+        ]),
+        ("funsou", "紛争", "ふんそう", "funsou", "konflik/perselisihan", "N1", "noun", "紛争", "funsou", "紛争", "funsou", [
+            ("国際紛争が続いています。", "Kokusai funsou ga tsuzuite imasu.", "Konflik internasional masih berlanjut."),
+        ]),
+        ("fuusa", "封鎖", "ふうさ", "fuusa", "blokade/penutupan", "N1", "noun", "封鎖", "fuusa", "封鎖", "fuusa", [
+            ("道路を封鎖します。", "Douro o fuusa shimasu.", "Menutup jalan."),
+        ]),
+        ("gunji", "軍事", "ぐんじ", "gunji", "urusan militer", "N1", "noun", "軍事", "gunji", "軍事", "gunji", [
+            ("軍事力を強化します。", "Gunjiryoku o kyouka shimasu.", "Memperkuat kekuatan militer."),
+        ]),
+        ("haishi", "廃止", "はいし", "haishi", "penghapusan (aturan)", "N1", "noun", "廃止", "haishi", "廃止", "haishi", [
+            ("制度を廃止します。", "Seido o haishi shimasu.", "Menghapus sistem."),
+        ]),
+        ("hanei", "繁栄", "はんえい", "hanei", "kemakmuran", "N1", "noun", "繁栄", "hanei", "繁栄", "hanei", [
+            ("国が繁栄しています。", "Kuni ga han'ei shite imasu.", "Negara berkembang makmur."),
+        ]),
+        ("hanran", "反乱", "はんらん", "hanran", "pemberontakan", "N1", "noun", "反乱", "hanran", "反乱", "hanran", [
+            ("反乱が起こりました。", "Hanran ga okorimashita.", "Pemberontakan terjadi."),
+        ]),
+        ("imin", "移民", "いみん", "imin", "imigran/imigrasi", "N1", "noun", "移民", "imin", "移民", "imin", [
+            ("移民が増えています。", "Imin ga fuete imasu.", "Jumlah imigran bertambah."),
+        ]),
+        ("jousei", "情勢", "じょうせい", "jousei", "keadaan/situasi", "N1", "noun", "情勢", "jousei", "情勢", "jousei", [
+            ("政治情勢が不安定です。", "Seiji jousei ga fuantei desu.", "Situasi politik tidak stabil."),
+        ]),
+        ("kainyuu", "介入", "かいにゅう", "kainyuu", "intervensi", "N1", "noun", "介入", "kainyuu", "介入", "kainyuu", [
+            ("政府が介入します。", "Seifu ga kainyuu shimasu.", "Pemerintah melakukan intervensi."),
         ]),
     ],
 }

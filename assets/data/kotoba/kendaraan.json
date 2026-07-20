@@ -766,5 +766,29 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_unten.png"
+  },
+  {
+    "id": "kotoba_kendaraan_jouriku",
+    "word": "じょうりく",
+    "kanji": "上陸",
+    "reading": "じょうりく",
+    "romaji": "jouriku",
+    "meaning": "pendaratan (di darat)",
+    "jlptLevel": "N1",
+    "category": "kendaraan",
+    "wordType": "noun",
+    "registers": {
+      "casual": "上陸 (jouriku)",
+      "formal": "上陸 (jouriku)",
+      "keigo": "上陸 (jouriku) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "台風が上陸しました。",
+        "romaji": "Taifuu ga jouriku shimashita.",
+        "translation": "Topan mendarat di daratan."
+      }
+    ],
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jouriku.png"
   }
 ]

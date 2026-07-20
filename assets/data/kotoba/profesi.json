@@ -838,5 +838,53 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusha.png"
+  },
+  {
+    "id": "kotoba_profesi_heishi",
+    "word": "へいし",
+    "kanji": "兵士",
+    "reading": "へいし",
+    "romaji": "heishi",
+    "meaning": "tentara/prajurit",
+    "jlptLevel": "N1",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "兵士 (heishi)",
+      "formal": "兵士 (heishi)",
+      "keigo": "兵士 (heishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "兵士が行進します。",
+        "romaji": "Heishi ga koushin shimasu.",
+        "translation": "Prajurit berbaris."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_heishi.png"
+  },
+  {
+    "id": "kotoba_profesi_juugyouin",
+    "word": "じゅうぎょういん",
+    "kanji": "従業員",
+    "reading": "じゅうぎょういん",
+    "romaji": "juugyouin",
+    "meaning": "karyawan",
+    "jlptLevel": "N1",
+    "category": "profesi",
+    "wordType": "noun",
+    "registers": {
+      "casual": "従業員 (juugyouin)",
+      "formal": "従業員 (juugyouin)",
+      "keigo": "従業員 (juugyouin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "従業員を採用します。",
+        "romaji": "Juugyouin o saiyou shimasu.",
+        "translation": "Merekrut karyawan."
+      }
+    ],
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_juugyouin.png"
   }
 ]

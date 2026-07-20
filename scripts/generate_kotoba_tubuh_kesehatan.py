@@ -226,6 +226,12 @@ CATEGORIES = {
         ("mushiba", "虫歯", "むしば", "mushiba", "gigi berlubang", "N2", "noun", "虫歯", "mushiba", "虫歯", "mushiba", [
             ("虫歯が痛いです。", "Mushiba ga itai desu.", "Gigi berlubang sakit."),
         ]),
+        ("fushou", "負傷", "ふしょう", "fushou", "luka/cedera", "N1", "noun", "負傷", "fushou", "負傷", "fushou", [
+            ("事故で負傷しました。", "Jiko de fushou shimashita.", "Terluka karena kecelakaan."),
+        ]),
+        ("hirou", "疲労", "ひろう", "hirou", "kelelahan", "N1", "noun", "疲労", "hirou", "疲労", "hirou", [
+            ("疲労がたまっています。", "Hirou ga tamatte imasu.", "Kelelahan menumpuk."),
+        ]),
     ],
     "obat_obatan": [
         ("kusuri", "薬", "くすり", "kusuri", "obat", "N4", "noun", "薬", "kusuri", "薬", "kusuri", [
@@ -382,6 +388,9 @@ CATEGORIES = {
         ("taikai", "大会", "たいかい", "taikai", "kompetisi/turnamen besar", "N3", "noun", "大会", "taikai", "大会", "taikai", [
             ("大会に出場します。", "Taikai ni shutsujou shimasu.", "Ikut kompetisi."),
         ]),
+        ("hitteki", "匹敵", "ひってき", "hitteki", "setanding/sebanding", "N1", "noun", "匹敵", "hitteki", "匹敵", "hitteki", [
+            ("彼の実力に匹敵します。", "Kare no jitsuryoku ni hitteki shimasu.", "Setanding dengan kemampuannya."),
+        ]),
     ],
     "perasaan_emosi": [
         ("ureshii", "嬉しい", "うれしい", "ureshii", "senang/gembira", "N4", "adjective", "嬉しい", "ureshii", "嬉しいです", "ureshii desu", [
@@ -502,6 +511,54 @@ CATEGORIES = {
         ("waruguchi", "悪口", "わるぐち", "waruguchi", "omongan jelek/fitnah", "N3", "noun", "悪口", "waruguchi", "悪口", "waruguchi", [
             ("悪口を言わないでください。", "Waruguchi o iwanaide kudasai.", "Jangan bicara buruk tentang orang."),
         ]),
+        ("binkan", "敏感", "びんかん", "binkan", "sensitif", "N1", "noun", "敏感", "binkan", "敏感", "binkan", [
+            ("肌が敏感です。", "Hada ga binkan desu.", "Kulitnya sensitif."),
+        ]),
+        ("bujoku", "侮辱", "ぶじょく", "bujoku", "penghinaan", "N1", "noun", "侮辱", "bujoku", "侮辱", "bujoku", [
+            ("侮辱された気がします。", "Bujoku sareta ki ga shimasu.", "Merasa dihina."),
+        ]),
+        ("burei", "無礼", "ぶれい", "burei", "tidak sopan", "N1", "noun", "無礼", "burei", "無礼", "burei", [
+            ("無礼な態度でした。", "Burei na taido deshita.", "Sikapnya tidak sopan."),
+        ]),
+        ("daitan", "大胆", "だいたん", "daitan", "berani/nekat", "N1", "noun", "大胆", "daitan", "大胆", "daitan", [
+            ("大胆な決断をしました。", "Daitan na ketsudan o shimashita.", "Membuat keputusan yang berani."),
+        ]),
+        ("dokyou", "度胸", "どきょう", "dokyou", "keberanian/nyali", "N1", "noun", "度胸", "dokyou", "度胸", "dokyou", [
+            ("度胸がありますね。", "Dokyou ga arimasu ne.", "Kamu punya nyali ya."),
+        ]),
+        ("doujou", "同情", "どうじょう", "doujou", "simpati/rasa kasihan", "N1", "noun", "同情", "doujou", "同情", "doujou", [
+            ("彼に同情します。", "Kare ni doujou shimasu.", "Saya bersimpati padanya."),
+        ]),
+        ("fukushuu", "復讐", "ふくしゅう", "fukushuu", "balas dendam", "N1", "noun", "復讐", "fukushuu", "復讐", "fukushuu", [
+            ("復讐を計画しています。", "Fukushuu o keikaku shite imasu.", "Merencanakan balas dendam."),
+        ]),
+        ("hairyo", "配慮", "はいりょ", "hairyo", "pertimbangan/perhatian", "N1", "noun", "配慮", "hairyo", "配慮", "hairyo", [
+            ("相手に配慮します。", "Aite ni hairyo shimasu.", "Memberikan perhatian kepada lawan bicara."),
+        ]),
+        ("henken", "偏見", "へんけん", "henken", "prasangka", "N1", "noun", "偏見", "henken", "偏見", "henken", [
+            ("偏見を持たないでください。", "Henken o motanaide kudasai.", "Jangan berprasangka."),
+        ]),
+        ("himei", "悲鳴", "ひめい", "himei", "jeritan/pekikan", "N1", "noun", "悲鳴", "himei", "悲鳴", "himei", [
+            ("悲鳴が聞こえました。", "Himei ga kikoemashita.", "Terdengar jeritan."),
+        ]),
+        ("hinan", "非難", "ひなん", "hinan", "kritik/celaan", "N1", "noun", "非難", "hinan", "非難", "hinan", [
+            ("非難を受けました。", "Hinan o ukemashita.", "Menerima kritik."),
+        ]),
+        ("hisan", "悲惨", "ひさん", "hisan", "tragis/menyedihkan", "N1", "noun", "悲惨", "hisan", "悲惨", "hisan", [
+            ("悲惨な事故でした。", "Hisan na jiko deshita.", "Kecelakaan yang tragis."),
+        ]),
+        ("honshin", "本心", "ほんしん", "honshin", "perasaan sebenarnya", "N1", "noun", "本心", "honshin", "本心", "honshin", [
+            ("本心を話してください。", "Honshin o hanashite kudasai.", "Tolong bicarakan perasaan sebenarnya."),
+        ]),
+        ("jikaku", "自覚", "じかく", "jikaku", "kesadaran diri", "N1", "noun", "自覚", "jikaku", "自覚", "jikaku", [
+            ("責任を自覚します。", "Sekinin o jikaku shimasu.", "Menyadari tanggung jawab."),
+        ]),
+        ("jounetsu", "情熱", "じょうねつ", "jounetsu", "semangat/passion", "N1", "noun", "情熱", "jounetsu", "情熱", "jounetsu", [
+            ("仕事に情熱を持っています。", "Shigoto ni jounetsu o motte imasu.", "Memiliki passion dalam pekerjaan."),
+        ]),
+        ("kakushin", "確信", "かくしん", "kakushin", "keyakinan penuh", "N1", "noun", "確信", "kakushin", "確信", "kakushin", [
+            ("成功を確信しています。", "Seikou o kakushin shite imasu.", "Yakin akan kesuksesan."),
+        ]),
     ],
     "ekspresi_wajah": [
         ("warau", "笑う", "わらう", "warau", "tertawa/tersenyum", "N4", "verb", "笑う", "warau", "笑います", "waraimasu", [
@@ -530,6 +587,9 @@ CATEGORIES = {
         ]),
         ("egao", "笑顔", "えがお", "egao", "wajah tersenyum", "N2", "noun", "笑顔", "egao", "笑顔", "egao", [
             ("笑顔であいさつします。", "Egao de aisatsu shimasu.", "Menyapa dengan senyum."),
+        ]),
+        ("bishou", "微笑", "びしょう", "bishou", "senyuman", "N1", "noun", "微笑", "bishou", "微笑", "bishou", [
+            ("微笑を浮かべました。", "Bishou o ukabemashita.", "Menampilkan senyuman."),
         ]),
     ],
 }

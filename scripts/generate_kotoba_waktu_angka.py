@@ -268,6 +268,12 @@ CATEGORIES = {
         ("yonaka", "夜中", "よなか", "yonaka", "tengah malam", "N3", "noun", "夜中", "yonaka", "夜中", "yonaka", [
             ("夜中に起きました。", "Yonaka ni okimashita.", "Bangun tengah malam."),
         ]),
+        ("ikkoku", "一刻", "いっこく", "ikkoku", "sesaat/sejenak", "N1", "noun", "一刻", "ikkoku", "一刻", "ikkoku", [
+            ("一刻も早く来てください。", "Ikkoku mo hayaku kite kudasai.", "Tolong datang secepatnya."),
+        ]),
+        ("jizen", "事前", "じぜん", "jizen", "sebelumnya/di muka", "N1", "noun", "事前", "jizen", "事前", "jizen", [
+            ("事前に予約します。", "Jizen ni yoyaku shimasu.", "Memesan sebelumnya (di muka)."),
+        ]),
     ],
     "musim": [
         ("haru", "春", "はる", "haru", "musim semi", "N5", "noun", "春", "haru", "春", "haru", [

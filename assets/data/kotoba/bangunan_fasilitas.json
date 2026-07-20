@@ -1198,5 +1198,53 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_nyuujou.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_heisa",
+    "word": "へいさ",
+    "kanji": "閉鎖",
+    "reading": "へいさ",
+    "romaji": "heisa",
+    "meaning": "penutupan (tempat)",
+    "jlptLevel": "N1",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "閉鎖 (heisa)",
+      "formal": "閉鎖 (heisa)",
+      "keigo": "閉鎖 (heisa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "工場が閉鎖されました。",
+        "romaji": "Koujou ga heisa saremashita.",
+        "translation": "Pabrik ditutup."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_heisa.png"
+  },
+  {
+    "id": "kotoba_bangunan_fasilitas_houtei",
+    "word": "ほうてい",
+    "kanji": "法廷",
+    "reading": "ほうてい",
+    "romaji": "houtei",
+    "meaning": "ruang sidang pengadilan",
+    "jlptLevel": "N1",
+    "category": "bangunan_fasilitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "法廷 (houtei)",
+      "formal": "法廷 (houtei)",
+      "keigo": "法廷 (houtei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "法廷で証言します。",
+        "romaji": "Houtei de shougen shimasu.",
+        "translation": "Bersaksi di ruang sidang."
+      }
+    ],
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_houtei.png"
   }
 ]

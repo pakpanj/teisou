@@ -1150,5 +1150,53 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shougakukin.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_jissen",
+    "word": "じっせん",
+    "kanji": "実践",
+    "reading": "じっせん",
+    "romaji": "jissen",
+    "meaning": "praktik (penerapan nyata)",
+    "jlptLevel": "N1",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "実践 (jissen)",
+      "formal": "実践 (jissen)",
+      "keigo": "実践 (jissen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "理論を実践します。",
+        "romaji": "Riron o jissen shimasu.",
+        "translation": "Mempraktikkan teori."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_jissen.png"
+  },
+  {
+    "id": "kotoba_mata_pelajaran_kadai",
+    "word": "かだい",
+    "kanji": "課題",
+    "reading": "かだい",
+    "romaji": "kadai",
+    "meaning": "tugas/isu",
+    "jlptLevel": "N1",
+    "category": "mata_pelajaran",
+    "wordType": "noun",
+    "registers": {
+      "casual": "課題 (kadai)",
+      "formal": "課題 (kadai)",
+      "keigo": "課題 (kadai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "課題を提出します。",
+        "romaji": "Kadai o teishutsu shimasu.",
+        "translation": "Menyerahkan tugas."
+      }
+    ],
+    "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kadai.png"
   }
 ]

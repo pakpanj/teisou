@@ -814,5 +814,293 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_zenkoku.png"
+  },
+  {
+    "id": "kotoba_negara_kota_dokusai",
+    "word": "どくさい",
+    "kanji": "独裁",
+    "reading": "どくさい",
+    "romaji": "dokusai",
+    "meaning": "kediktatoran",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "独裁 (dokusai)",
+      "formal": "独裁 (dokusai)",
+      "keigo": "独裁 (dokusai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "独裁政権が続いています。",
+        "romaji": "Dokusai seiken ga tsuzuite imasu.",
+        "translation": "Rezim diktator masih berlanjut."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_dokusai.png"
+  },
+  {
+    "id": "kotoba_negara_kota_doumei",
+    "word": "どうめい",
+    "kanji": "同盟",
+    "reading": "どうめい",
+    "romaji": "doumei",
+    "meaning": "aliansi",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "同盟 (doumei)",
+      "formal": "同盟 (doumei)",
+      "keigo": "同盟 (doumei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "同盟を結びます。",
+        "romaji": "Doumei o musubimasu.",
+        "translation": "Membentuk aliansi."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_doumei.png"
+  },
+  {
+    "id": "kotoba_negara_kota_fuhai",
+    "word": "ふはい",
+    "kanji": "腐敗",
+    "reading": "ふはい",
+    "romaji": "fuhai",
+    "meaning": "korupsi/pembusukan",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "腐敗 (fuhai)",
+      "formal": "腐敗 (fuhai)",
+      "keigo": "腐敗 (fuhai) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "政治の腐敗を批判します。",
+        "romaji": "Seiji no fuhai o hihan shimasu.",
+        "translation": "Mengkritik korupsi politik."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_fuhai.png"
+  },
+  {
+    "id": "kotoba_negara_kota_funsou",
+    "word": "ふんそう",
+    "kanji": "紛争",
+    "reading": "ふんそう",
+    "romaji": "funsou",
+    "meaning": "konflik/perselisihan",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "紛争 (funsou)",
+      "formal": "紛争 (funsou)",
+      "keigo": "紛争 (funsou) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国際紛争が続いています。",
+        "romaji": "Kokusai funsou ga tsuzuite imasu.",
+        "translation": "Konflik internasional masih berlanjut."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_funsou.png"
+  },
+  {
+    "id": "kotoba_negara_kota_fuusa",
+    "word": "ふうさ",
+    "kanji": "封鎖",
+    "reading": "ふうさ",
+    "romaji": "fuusa",
+    "meaning": "blokade/penutupan",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "封鎖 (fuusa)",
+      "formal": "封鎖 (fuusa)",
+      "keigo": "封鎖 (fuusa) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "道路を封鎖します。",
+        "romaji": "Douro o fuusa shimasu.",
+        "translation": "Menutup jalan."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_fuusa.png"
+  },
+  {
+    "id": "kotoba_negara_kota_gunji",
+    "word": "ぐんじ",
+    "kanji": "軍事",
+    "reading": "ぐんじ",
+    "romaji": "gunji",
+    "meaning": "urusan militer",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "軍事 (gunji)",
+      "formal": "軍事 (gunji)",
+      "keigo": "軍事 (gunji) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "軍事力を強化します。",
+        "romaji": "Gunjiryoku o kyouka shimasu.",
+        "translation": "Memperkuat kekuatan militer."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_gunji.png"
+  },
+  {
+    "id": "kotoba_negara_kota_haishi",
+    "word": "はいし",
+    "kanji": "廃止",
+    "reading": "はいし",
+    "romaji": "haishi",
+    "meaning": "penghapusan (aturan)",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "廃止 (haishi)",
+      "formal": "廃止 (haishi)",
+      "keigo": "廃止 (haishi) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "制度を廃止します。",
+        "romaji": "Seido o haishi shimasu.",
+        "translation": "Menghapus sistem."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_haishi.png"
+  },
+  {
+    "id": "kotoba_negara_kota_hanei",
+    "word": "はんえい",
+    "kanji": "繁栄",
+    "reading": "はんえい",
+    "romaji": "hanei",
+    "meaning": "kemakmuran",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "繁栄 (hanei)",
+      "formal": "繁栄 (hanei)",
+      "keigo": "繁栄 (hanei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "国が繁栄しています。",
+        "romaji": "Kuni ga han'ei shite imasu.",
+        "translation": "Negara berkembang makmur."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_hanei.png"
+  },
+  {
+    "id": "kotoba_negara_kota_hanran",
+    "word": "はんらん",
+    "kanji": "反乱",
+    "reading": "はんらん",
+    "romaji": "hanran",
+    "meaning": "pemberontakan",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "反乱 (hanran)",
+      "formal": "反乱 (hanran)",
+      "keigo": "反乱 (hanran) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "反乱が起こりました。",
+        "romaji": "Hanran ga okorimashita.",
+        "translation": "Pemberontakan terjadi."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_hanran.png"
+  },
+  {
+    "id": "kotoba_negara_kota_imin",
+    "word": "いみん",
+    "kanji": "移民",
+    "reading": "いみん",
+    "romaji": "imin",
+    "meaning": "imigran/imigrasi",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "移民 (imin)",
+      "formal": "移民 (imin)",
+      "keigo": "移民 (imin) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "移民が増えています。",
+        "romaji": "Imin ga fuete imasu.",
+        "translation": "Jumlah imigran bertambah."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_imin.png"
+  },
+  {
+    "id": "kotoba_negara_kota_jousei",
+    "word": "じょうせい",
+    "kanji": "情勢",
+    "reading": "じょうせい",
+    "romaji": "jousei",
+    "meaning": "keadaan/situasi",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "情勢 (jousei)",
+      "formal": "情勢 (jousei)",
+      "keigo": "情勢 (jousei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "政治情勢が不安定です。",
+        "romaji": "Seiji jousei ga fuantei desu.",
+        "translation": "Situasi politik tidak stabil."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_jousei.png"
+  },
+  {
+    "id": "kotoba_negara_kota_kainyuu",
+    "word": "かいにゅう",
+    "kanji": "介入",
+    "reading": "かいにゅう",
+    "romaji": "kainyuu",
+    "meaning": "intervensi",
+    "jlptLevel": "N1",
+    "category": "negara_kota",
+    "wordType": "noun",
+    "registers": {
+      "casual": "介入 (kainyuu)",
+      "formal": "介入 (kainyuu)",
+      "keigo": "介入 (kainyuu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "政府が介入します。",
+        "romaji": "Seifu ga kainyuu shimasu.",
+        "translation": "Pemerintah melakukan intervensi."
+      }
+    ],
+    "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kainyuu.png"
   }
 ]

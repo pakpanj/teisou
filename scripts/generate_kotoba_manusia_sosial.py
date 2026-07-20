@@ -145,6 +145,12 @@ CATEGORIES = {
         ("gakusha", "学者", "がくしゃ", "gakusha", "sarjana/cendekiawan", "N3", "noun", "学者", "gakusha", "学者", "gakusha", [
             ("有名な学者です。", "Yuumei na gakusha desu.", "Dia sarjana terkenal."),
         ]),
+        ("heishi", "兵士", "へいし", "heishi", "tentara/prajurit", "N1", "noun", "兵士", "heishi", "兵士", "heishi", [
+            ("兵士が行進します。", "Heishi ga koushin shimasu.", "Prajurit berbaris."),
+        ]),
+        ("juugyouin", "従業員", "じゅうぎょういん", "juugyouin", "karyawan", "N1", "noun", "従業員", "juugyouin", "従業員", "juugyouin", [
+            ("従業員を採用します。", "Juugyouin o saiyou shimasu.", "Merekrut karyawan."),
+        ]),
     ],
     "keluarga_hubungan": [
         ("kazoku", "家族", "かぞく", "kazoku", "keluarga", "N5", "noun", "家族", "kazoku", "家族", "kazoku", [
@@ -296,6 +302,12 @@ CATEGORIES = {
         ]),
         ("shounen", "少年", "しょうねん", "shounen", "anak laki-laki/remaja", "N3", "noun", "少年", "shounen", "少年", "shounen", [
             ("少年が野球をします。", "Shounen ga yakyuu o shimasu.", "Remaja laki-laki bermain bisbol."),
+        ]),
+        ("chuujitsu", "忠実", "ちゅうじつ", "chuujitsu", "setia/loyal", "N1", "noun", "忠実", "chuujitsu", "忠実", "chuujitsu", [
+            ("忠実な部下です。", "Chuujitsu na buka desu.", "Bawahan yang loyal."),
+        ]),
+        ("doushi", "同士", "どうし", "doushi", "sesama/rekan", "N1", "noun", "同士", "doushi", "同士", "doushi", [
+            ("友人同士で話します。", "Yuujin doushi de hanashimasu.", "Berbicara sesama teman."),
         ]),
     ],
     "pakaian_aksesori": [
@@ -460,6 +472,9 @@ CATEGORIES = {
         ("tejina", "手品", "てじな", "tejina", "sulap/trik sulap", "N3", "noun", "手品", "tejina", "手品", "tejina", [
             ("手品を見せます。", "Tejina o misemasu.", "Menunjukkan sulap."),
         ]),
+        ("chousen", "挑戦", "ちょうせん", "chousen", "tantangan", "N1", "noun", "挑戦", "chousen", "挑戦", "chousen", [
+            ("新しいことに挑戦します。", "Atarashii koto ni chousen shimasu.", "Menantang diri dengan hal baru."),
+        ]),
     ],
     "agama_budaya": [
         ("shuukyou", "宗教", "しゅうきょう", "shuukyou", "agama", "N3", "noun", "宗教", "shuukyou", "宗教", "shuukyou", [
@@ -509,6 +524,9 @@ CATEGORIES = {
         # same register discipline as the rest of this category.
         ("shuukan", "習慣", "しゅうかん", "shuukan", "kebiasaan/adat", "N4", "noun", "習慣", "shuukan", "習慣", "shuukan", [
             ("毎朝運動する習慣があります。", "Maiasa undou suru shuukan ga arimasu.", "Saya punya kebiasaan berolahraga setiap pagi."),
+        ]),
+        ("jigoku", "地獄", "じごく", "jigoku", "neraka", "N1", "noun", "地獄", "jigoku", "地獄", "jigoku", [
+            ("地獄という考え方があります。", "Jigoku to iu kangaekata ga arimasu.", "Ada konsep tentang neraka."),
         ]),
     ],
     "perayaan_haribesar": [
@@ -1554,6 +1572,180 @@ CATEGORIES = {
         ]),
         ("yuuri", "有利", "ゆうり", "yuuri", "menguntungkan", "N3", "noun", "有利", "yuuri", "有利", "yuuri", [
             ("この条件は有利です。", "Kono jouken wa yuuri desu.", "Kondisi ini menguntungkan."),
+        ]),
+        ("akuji", "悪事", "あくじ", "akuji", "kejahatan/perbuatan jahat", "N1", "noun", "悪事", "akuji", "悪事", "akuji", [
+            ("悪事を働きました。", "Akuji o hatarakimashita.", "Melakukan kejahatan."),
+        ]),
+        ("attou", "圧倒", "あっとう", "attou", "mengalahkan telak/menguasai", "N1", "noun", "圧倒", "attou", "圧倒", "attou", [
+            ("相手を圧倒しました。", "Aite o attou shimashita.", "Mengalahkan lawan secara telak."),
+        ]),
+        ("atsuryoku", "圧力", "あつりょく", "atsuryoku", "tekanan", "N1", "noun", "圧力", "atsuryoku", "圧力", "atsuryoku", [
+            ("圧力をかけます。", "Atsuryoku o kakemasu.", "Memberikan tekanan."),
+        ]),
+        ("bakudan", "爆弾", "ばくだん", "bakudan", "bom", "N1", "noun", "爆弾", "bakudan", "爆弾", "bakudan", [
+            ("爆弾が見つかりました。", "Bakudan ga mitsukarimashita.", "Bom ditemukan."),
+        ]),
+        ("benkai", "弁解", "べんかい", "benkai", "pembelaan diri/dalih", "N1", "noun", "弁解", "benkai", "弁解", "benkai", [
+            ("弁解する必要はありません。", "Benkai suru hitsuyou wa arimasen.", "Tidak perlu membela diri."),
+        ]),
+        ("benmei", "弁明", "べんめい", "benmei", "penjelasan/pembelaan", "N1", "noun", "弁明", "benmei", "弁明", "benmei", [
+            ("弁明の機会を与えます。", "Benmei no kikai o ataemasu.", "Memberikan kesempatan untuk menjelaskan diri."),
+        ]),
+        ("binbou", "貧乏", "びんぼう", "binbou", "kemiskinan", "N1", "noun", "貧乏", "binbou", "貧乏", "binbou", [
+            ("貧乏な生活をしています。", "Binbou na seikatsu o shite imasu.", "Menjalani hidup miskin."),
+        ]),
+        ("bouchou", "膨張", "ぼうちょう", "bouchou", "pemuaian/ekspansi", "N1", "noun", "膨張", "bouchou", "膨張", "bouchou", [
+            ("経済が膨張しています。", "Keizai ga bouchou shite imasu.", "Ekonomi berekspansi."),
+        ]),
+        ("bouei", "防衛", "ぼうえい", "bouei", "pertahanan", "N1", "noun", "防衛", "bouei", "防衛", "bouei", [
+            ("国を防衛します。", "Kuni o bouei shimasu.", "Mempertahankan negara."),
+        ]),
+        ("bouryoku", "暴力", "ぼうりょく", "bouryoku", "kekerasan", "N1", "noun", "暴力", "bouryoku", "暴力", "bouryoku", [
+            ("暴力は許されません。", "Bouryoku wa yurusaremasen.", "Kekerasan tidak diperbolehkan."),
+        ]),
+        ("bunpai", "分配", "ぶんぱい", "bunpai", "pembagian", "N1", "noun", "分配", "bunpai", "分配", "bunpai", [
+            ("利益を分配します。", "Rieki o bunpai shimasu.", "Membagi keuntungan."),
+        ]),
+        ("bunsan", "分散", "ぶんさん", "bunsan", "penyebaran/dispersi", "N1", "noun", "分散", "bunsan", "分散", "bunsan", [
+            ("リスクを分散します。", "Risuku o bunsan shimasu.", "Menyebarkan risiko."),
+        ]),
+        ("busou", "武装", "ぶそう", "busou", "persenjataan", "N1", "noun", "武装", "busou", "武装", "busou", [
+            ("武装した兵士がいます。", "Busou shita heishi ga imasu.", "Ada tentara bersenjata."),
+        ]),
+        ("chikuseki", "蓄積", "ちくせき", "chikuseki", "akumulasi/penumpukan", "N1", "noun", "蓄積", "chikuseki", "蓄積", "chikuseki", [
+            ("経験を蓄積します。", "Keiken o chikuseki shimasu.", "Mengakumulasi pengalaman."),
+        ]),
+        ("chinmoku", "沈黙", "ちんもく", "chinmoku", "keheningan/diam", "N1", "noun", "沈黙", "chinmoku", "沈黙", "chinmoku", [
+            ("沈黙を守ります。", "Chinmoku o mamorimasu.", "Menjaga kediaman."),
+        ]),
+        ("chisei", "知性", "ちせい", "chisei", "kecerdasan intelek", "N1", "noun", "知性", "chisei", "知性", "chisei", [
+            ("彼は知性があります。", "Kare wa chisei ga arimasu.", "Dia memiliki kecerdasan."),
+        ]),
+        ("chitsujo", "秩序", "ちつじょ", "chitsujo", "ketertiban", "N1", "noun", "秩序", "chitsujo", "秩序", "chitsujo", [
+            ("秩序を守ります。", "Chitsujo o mamorimasu.", "Menjaga ketertiban."),
+        ]),
+        ("chokumen", "直面", "ちょくめん", "chokumen", "berhadapan (dengan masalah)", "N1", "noun", "直面", "chokumen", "直面", "chokumen", [
+            ("困難に直面しています。", "Konnan ni chokumen shite imasu.", "Menghadapi kesulitan."),
+        ]),
+        ("chuudan", "中断", "ちゅうだん", "chuudan", "terhenti sementara", "N1", "noun", "中断", "chuudan", "中断", "chuudan", [
+            ("会議が中断しました。", "Kaigi ga chuudan shimashita.", "Rapat terhenti sementara."),
+        ]),
+        ("chuukoku", "忠告", "ちゅうこく", "chuukoku", "nasihat/peringatan", "N1", "noun", "忠告", "chuukoku", "忠告", "chuukoku", [
+            ("忠告を聞きます。", "Chuukoku o kikimasu.", "Mendengarkan nasihat."),
+        ]),
+        ("dageki", "打撃", "だげき", "dageki", "pukulan (dampak)", "N1", "noun", "打撃", "dageki", "打撃", "dageki", [
+            ("経済に打撃を与えました。", "Keizai ni dageki o ataemashita.", "Memberikan dampak pada ekonomi."),
+        ]),
+        ("danketsu", "団結", "だんけつ", "danketsu", "persatuan", "N1", "noun", "団結", "danketsu", "団結", "danketsu", [
+            ("みんなで団結します。", "Minna de danketsu shimasu.", "Kita semua bersatu."),
+        ]),
+        ("dasshutsu", "脱出", "だっしゅつ", "dasshutsu", "melarikan diri/lolos", "N1", "noun", "脱出", "dasshutsu", "脱出", "dasshutsu", [
+            ("火事から脱出しました。", "Kaji kara dasshutsu shimashita.", "Melarikan diri dari kebakaran."),
+        ]),
+        ("dodai", "土台", "どだい", "dodai", "landasan/fondasi", "N1", "noun", "土台", "dodai", "土台", "dodai", [
+            ("土台を作ります。", "Dodai o tsukurimasu.", "Membuat fondasi."),
+        ]),
+        ("douki", "動機", "どうき", "douki", "motif", "N1", "noun", "動機", "douki", "動機", "douki", [
+            ("犯罪の動機を調べます。", "Hanzai no douki o shirabemasu.", "Menyelidiki motif kejahatan."),
+        ]),
+        ("dourui", "同類", "どうるい", "dourui", "jenis yang sama/sejenis", "N1", "noun", "同類", "dourui", "同類", "dourui", [
+            ("これは同類の問題です。", "Kore wa dourui no mondai desu.", "Ini masalah yang sejenis."),
+        ]),
+        ("doutou", "同等", "どうとう", "doutou", "setara", "N1", "noun", "同等", "doutou", "同等", "doutou", [
+            ("同等の権利があります。", "Doutou no kenri ga arimasu.", "Memiliki hak yang setara."),
+        ]),
+        ("futan", "負担", "ふたん", "futan", "beban", "N1", "noun", "負担", "futan", "負担", "futan", [
+            ("経済的な負担があります。", "Keizaiteki na futan ga arimasu.", "Ada beban ekonomi."),
+        ]),
+        ("futou", "不当", "ふとう", "futou", "tidak adil", "N1", "noun", "不当", "futou", "不当", "futou", [
+            ("不当な扱いを受けました。", "Futou na atsukai o ukemashita.", "Menerima perlakuan yang tidak adil."),
+        ]),
+        ("genmitsu", "厳密", "げんみつ", "genmitsu", "ketat/teliti", "N1", "noun", "厳密", "genmitsu", "厳密", "genmitsu", [
+            ("厳密に調査します。", "Genmitsu ni chousa shimasu.", "Menyelidiki secara teliti."),
+        ]),
+        ("gensoku", "原則", "げんそく", "gensoku", "prinsip", "N1", "noun", "原則", "gensoku", "原則", "gensoku", [
+            ("原則として禁止です。", "Gensoku to shite kinshi desu.", "Pada prinsipnya dilarang."),
+        ]),
+        ("gensou", "幻想", "げんそう", "gensou", "ilusi/khayalan", "N1", "noun", "幻想", "gensou", "幻想", "gensou", [
+            ("それは幻想です。", "Sore wa gensou desu.", "Itu hanyalah ilusi."),
+        ]),
+        ("gisei", "犠牲", "ぎせい", "gisei", "korban/pengorbanan", "N1", "noun", "犠牲", "gisei", "犠牲", "gisei", [
+            ("多くの犠牲を払いました。", "Ooku no gisei o haraimashita.", "Membayar banyak pengorbanan."),
+        ]),
+        ("haaku", "把握", "はあく", "haaku", "pemahaman/penguasaan (situasi)", "N1", "noun", "把握", "haaku", "把握", "haaku", [
+            ("状況を把握します。", "Joukyou o haaku shimasu.", "Memahami situasi."),
+        ]),
+        ("hakai", "破壊", "はかい", "hakai", "kehancuran", "N1", "noun", "破壊", "hakai", "破壊", "hakai", [
+            ("建物が破壊されました。", "Tatemono ga hakai saremashita.", "Bangunan dihancurkan."),
+        ]),
+        ("hakujou", "白状", "はくじょう", "hakujou", "pengakuan (bersalah)", "N1", "noun", "白状", "hakujou", "白状", "hakujou", [
+            ("罪を白状しました。", "Tsumi o hakujou shimashita.", "Mengakui kesalahan."),
+        ]),
+        ("hannou", "反応", "はんのう", "hannou", "reaksi", "N1", "noun", "反応", "hannou", "反応", "hannou", [
+            ("すぐに反応します。", "Sugu ni hannou shimasu.", "Bereaksi dengan cepat."),
+        ]),
+        ("heiki", "兵器", "へいき", "heiki", "senjata (militer)", "N1", "noun", "兵器", "heiki", "兵器", "heiki", [
+            ("新しい兵器を開発します。", "Atarashii heiki o kaihatsu shimasu.", "Mengembangkan senjata baru."),
+        ]),
+        ("hendou", "変動", "へんどう", "hendou", "fluktuasi", "N1", "noun", "変動", "hendou", "変動", "hendou", [
+            ("価格が変動します。", "Kakaku ga hendou shimasu.", "Harga berfluktuasi."),
+        ]),
+        ("hinkon", "貧困", "ひんこん", "hinkon", "kemiskinan", "N1", "noun", "貧困", "hinkon", "貧困", "hinkon", [
+            ("貧困問題を解決します。", "Hinkon mondai o kaiketsu shimasu.", "Menyelesaikan masalah kemiskinan."),
+        ]),
+        ("hinpan", "頻繁", "ひんぱん", "hinpan", "sering/kerap", "N1", "noun", "頻繁", "hinpan", "頻繁", "hinpan", [
+            ("頻繁に会います。", "Hinpan ni aimasu.", "Sering bertemu."),
+        ]),
+        ("hitsuzen", "必然", "ひつぜん", "hitsuzen", "keniscayaan", "N1", "noun", "必然", "hitsuzen", "必然", "hitsuzen", [
+            ("必然の結果です。", "Hitsuzen no kekka desu.", "Ini adalah hasil yang tak terelakkan."),
+        ]),
+        ("honshitsu", "本質", "ほんしつ", "honshitsu", "esensi/sifat dasar", "N1", "noun", "本質", "honshitsu", "本質", "honshitsu", [
+            ("問題の本質を考えます。", "Mondai no honshitsu o kangaemasu.", "Memikirkan esensi masalah."),
+        ]),
+        ("houki", "放棄", "ほうき", "houki", "meninggalkan/melepaskan (hak)", "N1", "noun", "放棄", "houki", "放棄", "houki", [
+            ("権利を放棄します。", "Kenri o houki shimasu.", "Melepaskan hak."),
+        ]),
+        ("ichibu", "一部", "いちぶ", "ichibu", "sebagian", "N1", "noun", "一部", "ichibu", "一部", "ichibu", [
+            ("一部の人が反対します。", "Ichibu no hito ga hantai shimasu.", "Sebagian orang menentang."),
+        ]),
+        ("izen", "依然", "いぜん", "izen", "masih (seperti sebelumnya)", "N1", "noun", "依然", "izen", "依然", "izen", [
+            ("依然として問題があります。", "Izen to shite mondai ga arimasu.", "Masih ada masalah seperti sebelumnya."),
+        ]),
+        ("izon", "依存", "いぞん", "izon", "ketergantungan", "N1", "noun", "依存", "izon", "依存", "izon", [
+            ("スマホに依存しています。", "Sumaho ni izon shite imasu.", "Ketergantungan pada HP."),
+        ]),
+        ("jinsoku", "迅速", "じんそく", "jinsoku", "cepat/segera", "N1", "noun", "迅速", "jinsoku", "迅速", "jinsoku", [
+            ("迅速に対応します。", "Jinsoku ni taiou shimasu.", "Menanggapi dengan cepat."),
+        ]),
+        ("jisshitsu", "実質", "じっしつ", "jisshitsu", "substansi/hakikat", "N1", "noun", "実質", "jisshitsu", "実質", "jisshitsu", [
+            ("実質的な効果があります。", "Jisshitsuteki na kouka ga arimasu.", "Memiliki efek yang substansial."),
+        ]),
+        ("jogen", "助言", "じょげん", "jogen", "nasihat", "N1", "noun", "助言", "jogen", "助言", "jogen", [
+            ("助言をいただきました。", "Jogen o itadakimashita.", "Menerima nasihat."),
+        ]),
+        ("jouho", "譲歩", "じょうほ", "jouho", "kompromi/mengalah", "N1", "noun", "譲歩", "jouho", "譲歩", "jouho", [
+            ("譲歩しました。", "Jouho shimashita.", "Kami mengalah (berkompromi)."),
+        ]),
+        ("juunan", "柔軟", "じゅうなん", "juunan", "fleksibel/lentur", "N1", "noun", "柔軟", "juunan", "柔軟", "juunan", [
+            ("柔軟に対応します。", "Juunan ni taiou shimasu.", "Menanggapi secara fleksibel."),
+        ]),
+        ("kaihi", "回避", "かいひ", "kaihi", "penghindaran", "N1", "noun", "回避", "kaihi", "回避", "kaihi", [
+            ("危険を回避します。", "Kiken o kaihi shimasu.", "Menghindari bahaya."),
+        ]),
+        ("kaijo", "解除", "かいじょ", "kaijo", "pembatalan/pelepasan", "N1", "noun", "解除", "kaijo", "解除", "kaijo", [
+            ("契約を解除します。", "Keiyaku o kaijo shimasu.", "Membatalkan kontrak."),
+        ]),
+        ("kaikyuu", "階級", "かいきゅう", "kaikyuu", "kelas sosial/pangkat", "N1", "noun", "階級", "kaikyuu", "階級", "kaikyuu", [
+            ("社会階級があります。", "Shakai kaikyuu ga arimasu.", "Ada kelas sosial."),
+        ]),
+        ("kakuho", "確保", "かくほ", "kakuho", "penjaminan/pengamanan", "N1", "noun", "確保", "kakuho", "確保", "kakuho", [
+            ("安全を確保します。", "Anzen o kakuho shimasu.", "Menjamin keamanan."),
+        ]),
+        ("kanjin", "肝心", "かんじん", "kanjin", "penting/esensial", "N1", "noun", "肝心", "kanjin", "肝心", "kanjin", [
+            ("肝心な点を説明します。", "Kanjin na ten o setsumei shimasu.", "Menjelaskan poin penting."),
+        ]),
+        ("kanpeki", "完璧", "かんぺき", "kanpeki", "sempurna", "N1", "noun", "完璧", "kanpeki", "完璧", "kanpeki", [
+            ("完璧な計画です。", "Kanpeki na keikaku desu.", "Rencana yang sempurna."),
         ]),
     ],
 }

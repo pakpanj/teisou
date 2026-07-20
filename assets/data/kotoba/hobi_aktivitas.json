@@ -718,5 +718,29 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_tejina.png"
+  },
+  {
+    "id": "kotoba_hobi_aktivitas_chousen",
+    "word": "ちょうせん",
+    "kanji": "挑戦",
+    "reading": "ちょうせん",
+    "romaji": "chousen",
+    "meaning": "tantangan",
+    "jlptLevel": "N1",
+    "category": "hobi_aktivitas",
+    "wordType": "noun",
+    "registers": {
+      "casual": "挑戦 (chousen)",
+      "formal": "挑戦 (chousen)",
+      "keigo": "挑戦 (chousen) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新しいことに挑戦します。",
+        "romaji": "Atarashii koto ni chousen shimasu.",
+        "translation": "Menantang diri dengan hal baru."
+      }
+    ],
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_chousen.png"
   }
 ]

@@ -814,5 +814,53 @@
       }
     ],
     "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_kyouryoku.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_gousei",
+    "word": "ごうせい",
+    "kanji": "合成",
+    "reading": "ごうせい",
+    "romaji": "gousei",
+    "meaning": "sintesis/gabungan",
+    "jlptLevel": "N1",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "合成 (gousei)",
+      "formal": "合成 (gousei)",
+      "keigo": "合成 (gousei) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "合成写真を作ります。",
+        "romaji": "Gousei shashin o tsukurimasu.",
+        "translation": "Membuat foto hasil gabungan (edit)."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_gousei.png"
+  },
+  {
+    "id": "kotoba_teknologi_gadget_kaihatsu",
+    "word": "かいはつ",
+    "kanji": "開発",
+    "reading": "かいはつ",
+    "romaji": "kaihatsu",
+    "meaning": "pengembangan",
+    "jlptLevel": "N1",
+    "category": "teknologi_gadget",
+    "wordType": "noun",
+    "registers": {
+      "casual": "開発 (kaihatsu)",
+      "formal": "開発 (kaihatsu)",
+      "keigo": "開発 (kaihatsu) — tidak ada bentuk keigo khusus untuk kata benda ini"
+    },
+    "sentenceExamples": [
+      {
+        "japanese": "新製品を開発します。",
+        "romaji": "Shin seihin o kaihatsu shimasu.",
+        "translation": "Mengembangkan produk baru."
+      }
+    ],
+    "imagePath": "kotoba_images/teknologi_gadget/kotoba_teknologi_gadget_kaihatsu.png"
   }
 ]
