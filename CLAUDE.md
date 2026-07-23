@@ -1110,6 +1110,66 @@ verification-gap note in Batch 9+'s row), or growing past 100/level
 only if a future session variety complaint actually surfaces in
 practice.
 
+## Update (2026-07-23): pull-to-refresh (Facebook/X-style) on every main screen
+
+User request: dragging down from the top of any main screen should show
+a loading spinner and reload content, the same gesture Facebook/X/
+Instagram use. Added `AppRefreshIndicator`
+(`lib/core/widgets/app_refresh_indicator.dart`) — a thin wrapper around
+Flutter's built-in `RefreshIndicator` styled with the app's brand color
+(`AppColors.primaryCoral`) so every screen looks consistent without
+repeating that styling at each call site. Wired into the `data:` branch
+of every Home/Level/Category screen's `AsyncValue.when` across Kotoba,
+Kanji, Bunpou, Partikel, and Kaiwa (10 screens total), plus Profile and
+both parts of Leaderboard (the six metric tabs' shared `_LeaderboardTab`,
+and the Clan tab's ranking) — 14 screens in total. Each `onRefresh`
+invalidates that screen's own Riverpod provider(s) (e.g. `kanjiByLevelProvider`
++ `kanjiLearnedIdsProvider` for `KanjiLevelScreen`) and returns
+`ref.refresh(provider.future)` so the spinner stays visible for the real
+refetch duration instead of flashing instantly — a plain `await
+ref.refresh(...)` followed by another statement trips the analyzer's
+`unused_result` lint (the refreshed value must be consumed, e.g.
+returned or placed inside a `Future.wait([...])` list, not just
+awaited-and-discarded as a bare statement), so screens needing to
+invalidate *two* things do the non-awaited one first (`ref.invalidate(...)`,
+which returns `void`, not `@useResult`) and end with `return
+ref.refresh(mainProvider.future);` as the function's tail expression.
+
+Home's `_HomeTabBody` had no provider-backed data at all (fully static
+menu cards) — converted from `StatelessWidget` to `ConsumerWidget` so
+pulling down still does something meaningful: re-invoke
+`appStartupProvider`, the same ensure-signed-in + record-daily-activity
+flow that already runs on cold launch. This one invalidation also
+cascades to refresh Profile's `userProfileProvider`/`subscriptionProvider`/
+`typeProgressProvider`/`recentExamHistoryProvider` and Leaderboard's
+`selfLeaderboardEntryProvider`/`selfRankProvider`, since all of those
+already `watch(appStartupProvider.future)` internally — Riverpod
+invalidates transitively through watch dependencies, so no extra wiring
+was needed there.
+
+**Gotcha worth remembering**: `RefreshIndicator` only detects the pull
+gesture through a *scrollable* descendant. Several list screens had a
+`filtered.isEmpty ? Center(child: Text(...)) : ListView(...)` branch for
+their empty/no-results state — a bare `Center` widget doesn't scroll, so
+pull-to-refresh silently didn't work whenever a filter matched zero
+results. Fixed by changing every such branch to a `ListView` (with
+`physics: AlwaysScrollableScrollPhysics()`) wrapping that same centered
+text in a `Padding`, so the gesture works in every state, not just the
+happy path. Also added `physics: const AlwaysScrollableScrollPhysics()`
+to every wrapped List/GridView as a defensive measure — most already
+behaved correctly without it, but a short list that doesn't fill the
+viewport can otherwise refuse the overscroll needed to trigger the
+indicator on some platform/physics combinations.
+
+**Verification**: `flutter analyze` clean, `flutter test --concurrency=1`
+(20/20 pass, including the pre-existing `HomeScreen` widget test — it
+still renders correctly after `_HomeTabBody`'s `StatelessWidget` →
+`ConsumerWidget` conversion), `flutter build apk --debug` clean. **No
+interactive on-device pass has been done** — same standing gap
+documented elsewhere in this file for other features; worth confirming
+the pull gesture actually feels right (indicator distance, spinner
+timing) on a real device before treating this as fully verified.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),
