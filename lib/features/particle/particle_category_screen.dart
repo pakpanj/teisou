@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/particle_entry.dart';
 import 'particle_detail_screen.dart';
 import 'particle_providers.dart';
@@ -28,13 +29,18 @@ class ParticleCategoryScreen extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<ParticleCategoryScreen> createState() => _ParticleCategoryScreenState();
+  ConsumerState<ParticleCategoryScreen> createState() =>
+      _ParticleCategoryScreenState();
 }
 
-class _ParticleCategoryScreenState extends ConsumerState<ParticleCategoryScreen> {
+class _ParticleCategoryScreenState
+    extends ConsumerState<ParticleCategoryScreen> {
   _LearnFilter _filter = _LearnFilter.semua;
 
-  List<ParticleEntry> _applyFilters(List<ParticleEntry> all, Set<String> learnedIds) {
+  List<ParticleEntry> _applyFilters(
+    List<ParticleEntry> all,
+    Set<String> learnedIds,
+  ) {
     var result = all.where((p) => !p.placeholder).toList();
     switch (_filter) {
       case _LearnFilter.belum:
@@ -56,8 +62,11 @@ class _ParticleCategoryScreenState extends ConsumerState<ParticleCategoryScreen>
 
   @override
   Widget build(BuildContext context) {
-    final particleAsync = ref.watch(particleByCategoryProvider(widget.category));
-    final learnedIds = ref.watch(particleLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final particleAsync = ref.watch(
+      particleByCategoryProvider(widget.category),
+    );
+    final learnedIds =
+        ref.watch(particleLearnedIdsProvider).valueOrNull ?? const <String>{};
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -94,8 +103,9 @@ class _ParticleCategoryScreenState extends ConsumerState<ParticleCategoryScreen>
             );
           }
           final filtered = _applyFilters(all, learnedIds);
-          final learnedCount =
-              all.where((p) => !p.placeholder && learnedIds.contains(p.id)).length;
+          final learnedCount = all
+              .where((p) => !p.placeholder && learnedIds.contains(p.id))
+              .length;
           return Column(
             children: [
               _ProgressBar(learned: learnedCount, total: realTotal),
@@ -104,30 +114,52 @@ class _ParticleCategoryScreenState extends ConsumerState<ParticleCategoryScreen>
                 onFilterChanged: (v) => setState(() => _filter = v),
               ),
               Expanded(
-                child: filtered.isEmpty
-                    ? Center(
-                        child: Text(
-                          'Tidak ada partikel yang cocok dengan filter.',
-                          style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
-                        ),
-                      )
-                    : ListView.separated(
-                        padding: const EdgeInsets.all(16),
-                        itemCount: filtered.length,
-                        separatorBuilder: (_, _) => const SizedBox(height: 10),
-                        itemBuilder: (context, index) => _ParticleTile(
-                          entry: filtered[index],
-                          learned: learnedIds.contains(filtered[index].id),
-                          onTap: () => AppNavigator.slideFromRight(
-                            context,
-                            ParticleDetailScreen(
-                              entries: filtered,
-                              initialIndex: index,
-                              categoryName: widget.categoryName,
+                child: AppRefreshIndicator(
+                  onRefresh: () {
+                    ref.invalidate(particleLearnedIdsProvider);
+                    return ref.refresh(
+                      particleByCategoryProvider(widget.category).future,
+                    );
+                  },
+                  child: filtered.isEmpty
+                      ? ListView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 120),
+                              child: Center(
+                                child: Text(
+                                  'Tidak ada partikel yang cocok dengan filter.',
+                                  style: TextStyle(
+                                    color: AppColors.textNavy.withValues(
+                                      alpha: 0.6,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : ListView.separated(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          padding: const EdgeInsets.all(16),
+                          itemCount: filtered.length,
+                          separatorBuilder: (_, _) =>
+                              const SizedBox(height: 10),
+                          itemBuilder: (context, index) => _ParticleTile(
+                            entry: filtered[index],
+                            learned: learnedIds.contains(filtered[index].id),
+                            onTap: () => AppNavigator.slideFromRight(
+                              context,
+                              ParticleDetailScreen(
+                                entries: filtered,
+                                initialIndex: index,
+                                categoryName: widget.categoryName,
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                ),
               ),
             ],
           );
@@ -206,7 +238,9 @@ class _FilterRow extends StatelessWidget {
                 selectedColor: AppColors.primaryCoral.withValues(alpha: 0.2),
                 labelStyle: TextStyle(
                   fontSize: 12,
-                  color: isSelected ? AppColors.primaryCoral : AppColors.textNavy,
+                  color: isSelected
+                      ? AppColors.primaryCoral
+                      : AppColors.textNavy,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 ),
                 onSelected: (_) => onFilterChanged(f),
@@ -224,7 +258,11 @@ class _ParticleTile extends StatelessWidget {
   final bool learned;
   final VoidCallback onTap;
 
-  const _ParticleTile({required this.entry, required this.learned, required this.onTap});
+  const _ParticleTile({
+    required this.entry,
+    required this.learned,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -273,7 +311,10 @@ class _ParticleTile extends StatelessWidget {
                       entry.overview,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 12, color: AppColors.textNavy.withValues(alpha: 0.6)),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                      ),
                     ),
                   ],
                 ),
@@ -281,7 +322,11 @@ class _ParticleTile extends StatelessWidget {
               if (learned)
                 const Padding(
                   padding: EdgeInsets.only(left: 8),
-                  child: Icon(Icons.check_circle, size: 18, color: AppColors.secondaryBlue),
+                  child: Icon(
+                    Icons.check_circle,
+                    size: 18,
+                    color: AppColors.secondaryBlue,
+                  ),
                 ),
               const Icon(Icons.chevron_right, color: AppColors.freeBadgeGrey),
             ],

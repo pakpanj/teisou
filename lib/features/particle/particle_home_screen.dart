@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/particle_category_info.dart';
 import 'particle_category_screen.dart';
 import 'particle_providers.dart';
@@ -22,14 +23,18 @@ class ParticleHomeScreen extends ConsumerWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(title: const Text('Partikel')),
       body: categoriesAsync.when(
-        data: (categories) => ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            for (final category in categories) ...[
-              _CategoryCard(category: category),
-              const SizedBox(height: 12),
+        data: (categories) => AppRefreshIndicator(
+          onRefresh: () => ref.refresh(particleCategoriesProvider.future),
+          child: ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(20),
+            children: [
+              for (final category in categories) ...[
+                _CategoryCard(category: category),
+                const SizedBox(height: 12),
+              ],
             ],
-          ],
+          ),
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Gagal memuat kategori: $e')),
@@ -45,14 +50,17 @@ class _CategoryCard extends ConsumerWidget {
 
   void _open(BuildContext context) {
     if (!category.available) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${category.name} segera hadir!')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('${category.name} segera hadir!')));
       return;
     }
     AppNavigator.slideFromRight(
       context,
-      ParticleCategoryScreen(category: category.id, categoryName: category.name),
+      ParticleCategoryScreen(
+        category: category.id,
+        categoryName: category.name,
+      ),
     );
   }
 
@@ -77,12 +85,18 @@ class _CategoryCard extends ConsumerWidget {
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: (available ? AppColors.primaryCoral : AppColors.freeBadgeGrey)
-                      .withValues(alpha: 0.15),
+                  color:
+                      (available
+                              ? AppColors.primaryCoral
+                              : AppColors.freeBadgeGrey)
+                          .withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
-                child: Text(category.icon, style: const TextStyle(fontSize: 22)),
+                child: Text(
+                  category.icon,
+                  style: const TextStyle(fontSize: 22),
+                ),
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -94,7 +108,9 @@ class _CategoryCard extends ConsumerWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: available ? AppColors.textNavy : AppColors.freeBadgeGrey,
+                        color: available
+                            ? AppColors.textNavy
+                            : AppColors.freeBadgeGrey,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -110,7 +126,10 @@ class _CategoryCard extends ConsumerWidget {
                       )
                     else
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 1,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
@@ -129,7 +148,9 @@ class _CategoryCard extends ConsumerWidget {
               ),
               Icon(
                 Icons.chevron_right,
-                color: available ? AppColors.primaryCoral : AppColors.freeBadgeGrey,
+                color: available
+                    ? AppColors.primaryCoral
+                    : AppColors.freeBadgeGrey,
               ),
             ],
           ),

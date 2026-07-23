@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/user_avatar.dart';
 import '../../data/models/exam_mode.dart';
 import '../../data/models/exam_result.dart';
@@ -58,38 +59,42 @@ class _ProfileBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ListView(
-      padding: const EdgeInsets.all(20),
-      children: [
-        _HeaderCard(user: user),
-        const SizedBox(height: 16),
-        Row(
-          children: [
-            Expanded(
-              child: _ProgressStatCard(
-                type: KanaType.hiragana,
-                color: AppColors.primaryCoral,
-                label: 'Hiragana',
+    return AppRefreshIndicator(
+      onRefresh: () => ref.refresh(appStartupProvider.future),
+      child: ListView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        padding: const EdgeInsets.all(20),
+        children: [
+          _HeaderCard(user: user),
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              Expanded(
+                child: _ProgressStatCard(
+                  type: KanaType.hiragana,
+                  color: AppColors.primaryCoral,
+                  label: 'Hiragana',
+                ),
               ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: _ProgressStatCard(
-                type: KanaType.katakana,
-                color: AppColors.secondaryBlue,
-                label: 'Katakana',
+              const SizedBox(width: 12),
+              Expanded(
+                child: _ProgressStatCard(
+                  type: KanaType.katakana,
+                  color: AppColors.secondaryBlue,
+                  label: 'Katakana',
+                ),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
-        const _StreakCard(),
-        const SizedBox(height: 24),
-        const _ExamHistorySection(),
-        const SizedBox(height: 24),
-        const _SettingsMenu(),
-        const SizedBox(height: 24),
-      ],
+            ],
+          ),
+          const SizedBox(height: 16),
+          const _StreakCard(),
+          const SizedBox(height: 24),
+          const _ExamHistorySection(),
+          const SizedBox(height: 24),
+          const _SettingsMenu(),
+          const SizedBox(height: 24),
+        ],
+      ),
     );
   }
 }
@@ -107,9 +112,9 @@ class _HeaderCard extends ConsumerWidget {
       ref.invalidate(appStartupProvider);
     } catch (e) {
       if (!context.mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(_friendlyGoogleSignInError(e))),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(_friendlyGoogleSignInError(e))));
     }
   }
 
@@ -146,7 +151,9 @@ class _HeaderCard extends ConsumerWidget {
     final isPremium = subscription?.isPremium ?? false;
     final isAnonymous = user.isAnonymous;
     final profile = ref.watch(userProfileProvider).valueOrNull;
-    final displayName = profile?.resolveDisplayName(user) ?? (user.displayName ?? 'Pelajar Kana');
+    final displayName =
+        profile?.resolveDisplayName(user) ??
+        (user.displayName ?? 'Pelajar Kana');
 
     return Container(
       width: double.infinity,
@@ -171,7 +178,11 @@ class _HeaderCard extends ConsumerWidget {
                       color: AppColors.primaryCoral,
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.camera_alt, size: 14, color: Colors.white),
+                    child: const Icon(
+                      Icons.camera_alt,
+                      size: 14,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
@@ -190,7 +201,11 @@ class _HeaderCard extends ConsumerWidget {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.edit, size: 18, color: AppColors.textNavy),
+                icon: const Icon(
+                  Icons.edit,
+                  size: 18,
+                  color: AppColors.textNavy,
+                ),
                 tooltip: 'Ganti Nama',
                 onPressed: () => _editName(context, displayName),
                 visualDensity: VisualDensity.compact,
@@ -284,7 +299,8 @@ class _ProgressStatCard extends ConsumerWidget {
     final progress = ref.watch(typeProgressProvider(type)).valueOrNull;
     final total =
         ref.watch(kanaListProvider(type)).valueOrNull?.length ?? _fallbackTotal;
-    final mastered = progress?.items.values
+    final mastered =
+        progress?.items.values
             .where((p) => p.status == KanaStatus.mastered)
             .length ??
         0;
@@ -332,7 +348,8 @@ class _StreakCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final streak = ref.watch(userProfileProvider).valueOrNull?.currentStreak ?? 0;
+    final streak =
+        ref.watch(userProfileProvider).valueOrNull?.currentStreak ?? 0;
 
     return Container(
       width: double.infinity,
@@ -394,7 +411,9 @@ class _ExamHistorySection extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Text(
               'Belum ada riwayat ujian.',
-              style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
+              style: TextStyle(
+                color: AppColors.textNavy.withValues(alpha: 0.6),
+              ),
             ),
           )
         else
@@ -527,9 +546,9 @@ class _SettingsMenu extends ConsumerWidget {
     if (uid == null) return;
     await ref.read(progressRepositoryProvider).resetAllProgress(uid);
     if (!context.mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Progress berhasil direset.')),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Progress berhasil direset.')));
   }
 
   @override
@@ -544,17 +563,17 @@ class _SettingsMenu extends ConsumerWidget {
           _MenuTile(
             emoji: '📖',
             title: 'Daftar Belajar',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => const SavedWordsScreen()),
-            ),
+            onTap: () => Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (_) => const SavedWordsScreen())),
           ),
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
             emoji: '🌐',
             title: 'Bahasa App',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => const LanguageScreen()),
-            ),
+            onTap: () => Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (_) => const LanguageScreen())),
           ),
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
@@ -568,9 +587,9 @@ class _SettingsMenu extends ConsumerWidget {
           _MenuTile(
             emoji: 'ℹ️',
             title: 'Tentang App',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => const AboutScreen()),
-            ),
+            onTap: () => Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (_) => const AboutScreen())),
           ),
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(

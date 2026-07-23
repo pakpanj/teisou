@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/bunpou_entry.dart';
 import '../../data/models/jlpt_level.dart';
 import 'bunpou_detail_screen.dart';
@@ -33,7 +34,10 @@ class BunpouLevelScreen extends ConsumerStatefulWidget {
 class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
   _LearnFilter _filter = _LearnFilter.semua;
 
-  List<BunpouEntry> _applyFilters(List<BunpouEntry> all, Set<String> learnedIds) {
+  List<BunpouEntry> _applyFilters(
+    List<BunpouEntry> all,
+    Set<String> learnedIds,
+  ) {
     var result = all.where((b) => !b.placeholder).toList();
     switch (_filter) {
       case _LearnFilter.belum:
@@ -51,14 +55,16 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => _QuizModeSheet(levelName: widget.levelName, entries: entries),
+      builder: (_) =>
+          _QuizModeSheet(levelName: widget.levelName, entries: entries),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     final bunpouAsync = ref.watch(bunpouByLevelProvider(widget.jlptLevel));
-    final learnedIds = ref.watch(bunpouLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final learnedIds =
+        ref.watch(bunpouLearnedIdsProvider).valueOrNull ?? const <String>{};
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -95,8 +101,9 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
             );
           }
           final filtered = _applyFilters(all, learnedIds);
-          final learnedCount =
-              all.where((b) => !b.placeholder && learnedIds.contains(b.id)).length;
+          final learnedCount = all
+              .where((b) => !b.placeholder && learnedIds.contains(b.id))
+              .length;
           return Column(
             children: [
               _ProgressBar(learned: learnedCount, total: realTotal),
@@ -105,30 +112,52 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
                 onFilterChanged: (v) => setState(() => _filter = v),
               ),
               Expanded(
-                child: filtered.isEmpty
-                    ? Center(
-                        child: Text(
-                          'Tidak ada pola yang cocok dengan filter.',
-                          style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
-                        ),
-                      )
-                    : ListView.separated(
-                        padding: const EdgeInsets.all(16),
-                        itemCount: filtered.length,
-                        separatorBuilder: (_, _) => const SizedBox(height: 10),
-                        itemBuilder: (context, index) => _BunpouTile(
-                          entry: filtered[index],
-                          learned: learnedIds.contains(filtered[index].id),
-                          onTap: () => AppNavigator.slideFromRight(
-                            context,
-                            BunpouDetailScreen(
-                              entries: filtered,
-                              initialIndex: index,
-                              levelName: widget.levelName,
+                child: AppRefreshIndicator(
+                  onRefresh: () {
+                    ref.invalidate(bunpouLearnedIdsProvider);
+                    return ref.refresh(
+                      bunpouByLevelProvider(widget.jlptLevel).future,
+                    );
+                  },
+                  child: filtered.isEmpty
+                      ? ListView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 120),
+                              child: Center(
+                                child: Text(
+                                  'Tidak ada pola yang cocok dengan filter.',
+                                  style: TextStyle(
+                                    color: AppColors.textNavy.withValues(
+                                      alpha: 0.6,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : ListView.separated(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          padding: const EdgeInsets.all(16),
+                          itemCount: filtered.length,
+                          separatorBuilder: (_, _) =>
+                              const SizedBox(height: 10),
+                          itemBuilder: (context, index) => _BunpouTile(
+                            entry: filtered[index],
+                            learned: learnedIds.contains(filtered[index].id),
+                            onTap: () => AppNavigator.slideFromRight(
+                              context,
+                              BunpouDetailScreen(
+                                entries: filtered,
+                                initialIndex: index,
+                                levelName: widget.levelName,
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                ),
               ),
             ],
           );
@@ -207,7 +236,9 @@ class _FilterRow extends StatelessWidget {
                 selectedColor: AppColors.primaryCoral.withValues(alpha: 0.2),
                 labelStyle: TextStyle(
                   fontSize: 12,
-                  color: isSelected ? AppColors.primaryCoral : AppColors.textNavy,
+                  color: isSelected
+                      ? AppColors.primaryCoral
+                      : AppColors.textNavy,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 ),
                 onSelected: (_) => onFilterChanged(f),
@@ -225,7 +256,11 @@ class _BunpouTile extends StatelessWidget {
   final bool learned;
   final VoidCallback onTap;
 
-  const _BunpouTile({required this.entry, required this.learned, required this.onTap});
+  const _BunpouTile({
+    required this.entry,
+    required this.learned,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -256,7 +291,10 @@ class _BunpouTile extends StatelessWidget {
                       entry.meaning,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 12, color: AppColors.textNavy.withValues(alpha: 0.6)),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                      ),
                     ),
                   ],
                 ),
@@ -264,7 +302,11 @@ class _BunpouTile extends StatelessWidget {
               if (learned)
                 const Padding(
                   padding: EdgeInsets.only(left: 8),
-                  child: Icon(Icons.check_circle, size: 18, color: AppColors.secondaryBlue),
+                  child: Icon(
+                    Icons.check_circle,
+                    size: 18,
+                    color: AppColors.secondaryBlue,
+                  ),
                 ),
               const Icon(Icons.chevron_right, color: AppColors.freeBadgeGrey),
             ],
@@ -314,7 +356,11 @@ class _QuizModeSheet extends StatelessWidget {
           ),
           const Text(
             'Pilih Mode Kuis',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.textNavy),
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textNavy,
+            ),
           ),
           const SizedBox(height: 16),
           _ModeTile(
@@ -379,11 +425,17 @@ class _ModeTile extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.textNavy),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textNavy,
+                      ),
                     ),
                     Text(
                       subtitle,
-                      style: TextStyle(fontSize: 12, color: AppColors.textNavy.withValues(alpha: 0.6)),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                      ),
                     ),
                   ],
                 ),

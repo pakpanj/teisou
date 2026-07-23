@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/kanji_entry.dart';
 import 'kanji_providers.dart';
@@ -46,7 +47,8 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
         break;
     }
     if (_sort == _SortMode.goresan) {
-      result = [...result]..sort((a, b) => a.strokeCount.compareTo(b.strokeCount));
+      result = [...result]
+        ..sort((a, b) => a.strokeCount.compareTo(b.strokeCount));
     }
     return result;
   }
@@ -63,7 +65,8 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
   @override
   Widget build(BuildContext context) {
     final kanjiAsync = ref.watch(kanjiByLevelProvider(widget.jlptLevel));
-    final learnedIds = ref.watch(kanjiLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final learnedIds =
+        ref.watch(kanjiLearnedIdsProvider).valueOrNull ?? const <String>{};
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -100,8 +103,9 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
             );
           }
           final filtered = _applyFilters(all, learnedIds);
-          final learnedCount =
-              all.where((k) => !k.placeholder && learnedIds.contains(k.id)).length;
+          final learnedCount = all
+              .where((k) => !k.placeholder && learnedIds.contains(k.id))
+              .length;
           return Column(
             children: [
               _ProgressBar(learned: learnedCount, total: realTotal),
@@ -112,35 +116,57 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
                 onFilterChanged: (v) => setState(() => _filter = v),
               ),
               Expanded(
-                child: filtered.isEmpty
-                    ? Center(
-                        child: Text(
-                          'Tidak ada kanji yang cocok dengan filter.',
-                          style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
-                        ),
-                      )
-                    : GridView.builder(
-                        padding: const EdgeInsets.all(16),
-                        itemCount: filtered.length,
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          crossAxisSpacing: 12,
-                          mainAxisSpacing: 12,
-                          childAspectRatio: 0.85,
-                        ),
-                        itemBuilder: (context, index) => _KanjiTile(
-                          entry: filtered[index],
-                          learned: learnedIds.contains(filtered[index].id),
-                          onTap: () => AppNavigator.slideFromRight(
-                            context,
-                            KanjiWordDetailScreen(
-                              entries: filtered,
-                              initialIndex: index,
-                              levelName: widget.levelName,
+                child: AppRefreshIndicator(
+                  onRefresh: () {
+                    ref.invalidate(kanjiLearnedIdsProvider);
+                    return ref.refresh(
+                      kanjiByLevelProvider(widget.jlptLevel).future,
+                    );
+                  },
+                  child: filtered.isEmpty
+                      ? ListView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 120),
+                              child: Center(
+                                child: Text(
+                                  'Tidak ada kanji yang cocok dengan filter.',
+                                  style: TextStyle(
+                                    color: AppColors.textNavy.withValues(
+                                      alpha: 0.6,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : GridView.builder(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          padding: const EdgeInsets.all(16),
+                          itemCount: filtered.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 4,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 12,
+                                childAspectRatio: 0.85,
+                              ),
+                          itemBuilder: (context, index) => _KanjiTile(
+                            entry: filtered[index],
+                            learned: learnedIds.contains(filtered[index].id),
+                            onTap: () => AppNavigator.slideFromRight(
+                              context,
+                              KanjiWordDetailScreen(
+                                entries: filtered,
+                                initialIndex: index,
+                                levelName: widget.levelName,
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                ),
               ),
             ],
           );
@@ -226,11 +252,17 @@ class _ControlsRow extends StatelessWidget {
                     child: ChoiceChip(
                       label: Text(_labels[f]!),
                       selected: isSelected,
-                      selectedColor: AppColors.primaryCoral.withValues(alpha: 0.2),
+                      selectedColor: AppColors.primaryCoral.withValues(
+                        alpha: 0.2,
+                      ),
                       labelStyle: TextStyle(
                         fontSize: 12,
-                        color: isSelected ? AppColors.primaryCoral : AppColors.textNavy,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                        color: isSelected
+                            ? AppColors.primaryCoral
+                            : AppColors.textNavy,
+                        fontWeight: isSelected
+                            ? FontWeight.bold
+                            : FontWeight.normal,
                       ),
                       onSelected: (_) => onFilterChanged(f),
                     ),
@@ -245,8 +277,14 @@ class _ControlsRow extends StatelessWidget {
             onSelected: onSortChanged,
             icon: const Icon(Icons.sort, color: AppColors.textNavy),
             itemBuilder: (context) => const [
-              PopupMenuItem(value: _SortMode.urutan, child: Text('Urutan Dasar')),
-              PopupMenuItem(value: _SortMode.goresan, child: Text('Jumlah Goresan')),
+              PopupMenuItem(
+                value: _SortMode.urutan,
+                child: Text('Urutan Dasar'),
+              ),
+              PopupMenuItem(
+                value: _SortMode.goresan,
+                child: Text('Jumlah Goresan'),
+              ),
             ],
           ),
         ],
@@ -260,7 +298,11 @@ class _KanjiTile extends StatelessWidget {
   final bool learned;
   final VoidCallback onTap;
 
-  const _KanjiTile({required this.entry, required this.learned, required this.onTap});
+  const _KanjiTile({
+    required this.entry,
+    required this.learned,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -286,7 +328,11 @@ class _KanjiTile extends StatelessWidget {
               const Positioned(
                 top: 4,
                 right: 4,
-                child: Icon(Icons.check_circle, size: 14, color: AppColors.secondaryBlue),
+                child: Icon(
+                  Icons.check_circle,
+                  size: 14,
+                  color: AppColors.secondaryBlue,
+                ),
               ),
           ],
         ),
@@ -334,7 +380,11 @@ class _QuizModeSheet extends StatelessWidget {
           ),
           const Text(
             'Pilih Mode Kuis',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.textNavy),
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textNavy,
+            ),
           ),
           const SizedBox(height: 16),
           _ModeTile(
@@ -399,11 +449,17 @@ class _ModeTile extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.textNavy),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textNavy,
+                      ),
                     ),
                     Text(
                       subtitle,
-                      style: TextStyle(fontSize: 12, color: AppColors.textNavy.withValues(alpha: 0.6)),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                      ),
                     ),
                   ],
                 ),

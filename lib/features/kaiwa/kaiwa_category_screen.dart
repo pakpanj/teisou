@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/kaiwa_entry.dart';
 import 'kaiwa_dialogue_screen.dart';
 import 'kaiwa_providers.dart';
@@ -25,7 +26,8 @@ class KaiwaCategoryScreen extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<KaiwaCategoryScreen> createState() => _KaiwaCategoryScreenState();
+  ConsumerState<KaiwaCategoryScreen> createState() =>
+      _KaiwaCategoryScreenState();
 }
 
 class _KaiwaCategoryScreenState extends ConsumerState<KaiwaCategoryScreen> {
@@ -47,7 +49,8 @@ class _KaiwaCategoryScreenState extends ConsumerState<KaiwaCategoryScreen> {
   @override
   Widget build(BuildContext context) {
     final kaiwaAsync = ref.watch(kaiwaByCategoryProvider(widget.category));
-    final learnedIds = ref.watch(kaiwaLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final learnedIds =
+        ref.watch(kaiwaLearnedIdsProvider).valueOrNull ?? const <String>{};
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -68,8 +71,9 @@ class _KaiwaCategoryScreenState extends ConsumerState<KaiwaCategoryScreen> {
             );
           }
           final filtered = _applyFilters(all, learnedIds);
-          final learnedCount =
-              all.where((e) => !e.placeholder && learnedIds.contains(e.id)).length;
+          final learnedCount = all
+              .where((e) => !e.placeholder && learnedIds.contains(e.id))
+              .length;
           return Column(
             children: [
               _ProgressBar(learned: learnedCount, total: realTotal),
@@ -78,30 +82,52 @@ class _KaiwaCategoryScreenState extends ConsumerState<KaiwaCategoryScreen> {
                 onFilterChanged: (v) => setState(() => _filter = v),
               ),
               Expanded(
-                child: filtered.isEmpty
-                    ? Center(
-                        child: Text(
-                          'Tidak ada dialog yang cocok dengan filter.',
-                          style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
-                        ),
-                      )
-                    : ListView.separated(
-                        padding: const EdgeInsets.all(16),
-                        itemCount: filtered.length,
-                        separatorBuilder: (_, _) => const SizedBox(height: 10),
-                        itemBuilder: (context, index) => _DialogueTile(
-                          entry: filtered[index],
-                          learned: learnedIds.contains(filtered[index].id),
-                          onTap: () => AppNavigator.slideFromRight(
-                            context,
-                            KaiwaDialogueScreen(
-                              entries: filtered,
-                              initialIndex: index,
-                              categoryName: widget.categoryName,
+                child: AppRefreshIndicator(
+                  onRefresh: () {
+                    ref.invalidate(kaiwaLearnedIdsProvider);
+                    return ref.refresh(
+                      kaiwaByCategoryProvider(widget.category).future,
+                    );
+                  },
+                  child: filtered.isEmpty
+                      ? ListView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 120),
+                              child: Center(
+                                child: Text(
+                                  'Tidak ada dialog yang cocok dengan filter.',
+                                  style: TextStyle(
+                                    color: AppColors.textNavy.withValues(
+                                      alpha: 0.6,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : ListView.separated(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          padding: const EdgeInsets.all(16),
+                          itemCount: filtered.length,
+                          separatorBuilder: (_, _) =>
+                              const SizedBox(height: 10),
+                          itemBuilder: (context, index) => _DialogueTile(
+                            entry: filtered[index],
+                            learned: learnedIds.contains(filtered[index].id),
+                            onTap: () => AppNavigator.slideFromRight(
+                              context,
+                              KaiwaDialogueScreen(
+                                entries: filtered,
+                                initialIndex: index,
+                                categoryName: widget.categoryName,
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                ),
               ),
             ],
           );
@@ -180,7 +206,9 @@ class _FilterRow extends StatelessWidget {
                 selectedColor: AppColors.primaryCoral.withValues(alpha: 0.2),
                 labelStyle: TextStyle(
                   fontSize: 12,
-                  color: isSelected ? AppColors.primaryCoral : AppColors.textNavy,
+                  color: isSelected
+                      ? AppColors.primaryCoral
+                      : AppColors.textNavy,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 ),
                 onSelected: (_) => onFilterChanged(f),
@@ -198,7 +226,11 @@ class _DialogueTile extends StatelessWidget {
   final bool learned;
   final VoidCallback onTap;
 
-  const _DialogueTile({required this.entry, required this.learned, required this.onTap});
+  const _DialogueTile({
+    required this.entry,
+    required this.learned,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +252,11 @@ class _DialogueTile extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
-                child: const Icon(Icons.chat_bubble_outline, size: 18, color: AppColors.primaryCoral),
+                child: const Icon(
+                  Icons.chat_bubble_outline,
+                  size: 18,
+                  color: AppColors.primaryCoral,
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -240,7 +276,10 @@ class _DialogueTile extends StatelessWidget {
                       entry.description,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 12, color: AppColors.textNavy.withValues(alpha: 0.6)),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                      ),
                     ),
                   ],
                 ),
@@ -248,7 +287,11 @@ class _DialogueTile extends StatelessWidget {
               if (learned)
                 const Padding(
                   padding: EdgeInsets.only(left: 8),
-                  child: Icon(Icons.check_circle, size: 18, color: AppColors.secondaryBlue),
+                  child: Icon(
+                    Icons.check_circle,
+                    size: 18,
+                    color: AppColors.secondaryBlue,
+                  ),
                 ),
               const Icon(Icons.chevron_right, color: AppColors.freeBadgeGrey),
             ],

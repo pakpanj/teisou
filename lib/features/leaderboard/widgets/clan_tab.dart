@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/providers.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/widgets/app_refresh_indicator.dart';
 import '../../../data/repositories/leaderboard_repository.dart';
 import '../clan_providers.dart';
 import '../leaderboard_screen.dart' show LeaderboardTile, leaderboardValueLabel;
@@ -66,10 +67,14 @@ class _ClanTabState extends ConsumerState<ClanTab> {
       data: (clans) {
         if (clans.isEmpty) {
           return _NoClanState(
-            onCreate: () =>
-                showDialog(context: context, builder: (_) => const CreateClanDialog()),
-            onJoin: () =>
-                showDialog(context: context, builder: (_) => const JoinClanDialog()),
+            onCreate: () => showDialog(
+              context: context,
+              builder: (_) => const CreateClanDialog(),
+            ),
+            onJoin: () => showDialog(
+              context: context,
+              builder: (_) => const JoinClanDialog(),
+            ),
           );
         }
 
@@ -96,11 +101,15 @@ class _ClanTabState extends ConsumerState<ClanTab> {
                           .map(
                             (c) => DropdownMenuItem(
                               value: c.code,
-                              child: Text(c.name, overflow: TextOverflow.ellipsis),
+                              child: Text(
+                                c.name,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                           )
                           .toList(),
-                      onChanged: (value) => setState(() => _selectedCode = value),
+                      onChanged: (value) =>
+                          setState(() => _selectedCode = value),
                     ),
                   ),
                   const SizedBox(width: 4),
@@ -110,7 +119,10 @@ class _ClanTabState extends ConsumerState<ClanTab> {
                       context: context,
                       builder: (_) => const CreateClanDialog(),
                     ),
-                    icon: const Icon(Icons.add_circle_outline, color: AppColors.primaryCoral),
+                    icon: const Icon(
+                      Icons.add_circle_outline,
+                      color: AppColors.primaryCoral,
+                    ),
                   ),
                   IconButton(
                     tooltip: 'Gabung dengan Kode',
@@ -118,7 +130,10 @@ class _ClanTabState extends ConsumerState<ClanTab> {
                       context: context,
                       builder: (_) => const JoinClanDialog(),
                     ),
-                    icon: const Icon(Icons.group_add, color: AppColors.primaryCoral),
+                    icon: const Icon(
+                      Icons.group_add,
+                      color: AppColors.primaryCoral,
+                    ),
                   ),
                 ],
               ),
@@ -134,7 +149,9 @@ class _ClanTabState extends ConsumerState<ClanTab> {
                   isDense: true,
                 ),
                 items: LeaderboardMetric.values
-                    .map((m) => DropdownMenuItem(value: m, child: Text(m.label)))
+                    .map(
+                      (m) => DropdownMenuItem(value: m, child: Text(m.label)),
+                    )
                     .toList(),
                 onChanged: (value) {
                   if (value != null) setState(() => _selectedMetric = value);
@@ -235,7 +252,9 @@ class _ClanRanking extends ConsumerWidget {
               decoration: BoxDecoration(
                 color: AppColors.primaryCoral.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: AppColors.primaryCoral.withValues(alpha: 0.3)),
+                border: Border.all(
+                  color: AppColors.primaryCoral.withValues(alpha: 0.3),
+                ),
               ),
               child: Row(
                 children: [
@@ -269,12 +288,20 @@ class _ClanRanking extends ConsumerWidget {
                         const SnackBar(content: Text('Kode disalin.')),
                       );
                     },
-                    icon: const Icon(Icons.copy, size: 18, color: AppColors.primaryCoral),
+                    icon: const Icon(
+                      Icons.copy,
+                      size: 18,
+                      color: AppColors.primaryCoral,
+                    ),
                   ),
                   IconButton(
                     tooltip: 'Keluar dari Clan',
                     onPressed: () => onLeave(clan.name),
-                    icon: const Icon(Icons.logout, size: 18, color: Colors.redAccent),
+                    icon: const Icon(
+                      Icons.logout,
+                      size: 18,
+                      color: Colors.redAccent,
+                    ),
                   ),
                 ],
               ),
@@ -284,28 +311,48 @@ class _ClanRanking extends ConsumerWidget {
           error: (_, _) => const SizedBox.shrink(),
         ),
         Expanded(
-          child: rankingAsync.when(
-            data: (entries) {
-              final hostUid = clanAsync.valueOrNull?.hostUid;
-              if (entries.isEmpty) {
-                return const Center(
-                  child: Text('Belum ada anggota.', style: TextStyle(color: AppColors.textNavy)),
-                );
-              }
-              return ListView.separated(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                itemCount: entries.length,
-                separatorBuilder: (_, _) => const SizedBox(height: 8),
-                itemBuilder: (context, index) => LeaderboardTile(
-                  rank: index + 1,
-                  entry: entries[index],
-                  valueLabel: leaderboardValueLabel(metric, entries[index]),
-                  isHost: entries[index].uid == hostUid,
-                ),
-              );
+          child: AppRefreshIndicator(
+            onRefresh: () async {
+              await Future.wait([
+                ref.refresh(clanDetailsProvider(code).future),
+                ref.refresh(clanRankingProvider((code, metric)).future),
+              ]);
             },
-            loading: () => const Center(child: CircularProgressIndicator()),
-            error: (e, _) => Center(child: Text('Gagal memuat anggota: $e')),
+            child: rankingAsync.when(
+              data: (entries) {
+                final hostUid = clanAsync.valueOrNull?.hostUid;
+                if (entries.isEmpty) {
+                  return ListView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.only(top: 80),
+                        child: Center(
+                          child: Text(
+                            'Belum ada anggota.',
+                            style: TextStyle(color: AppColors.textNavy),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                return ListView.separated(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                  itemCount: entries.length,
+                  separatorBuilder: (_, _) => const SizedBox(height: 8),
+                  itemBuilder: (context, index) => LeaderboardTile(
+                    rank: index + 1,
+                    entry: entries[index],
+                    valueLabel: leaderboardValueLabel(metric, entries[index]),
+                    isHost: entries[index].uid == hostUid,
+                  ),
+                );
+              },
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (e, _) => Center(child: Text('Gagal memuat anggota: $e')),
+            ),
           ),
         ),
       ],

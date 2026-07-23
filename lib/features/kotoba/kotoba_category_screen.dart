@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/kotoba_category.dart';
 import '../../data/models/kotoba_entry.dart';
 import 'kotoba_providers.dart';
@@ -21,7 +22,8 @@ class KotobaCategoryScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final wordsAsync = ref.watch(kotobaVocabCategoryProvider(category.id));
-    final learnedIds = ref.watch(kotobaLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final learnedIds =
+        ref.watch(kotobaLearnedIdsProvider).valueOrNull ?? const <String>{};
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -64,25 +66,36 @@ class KotobaCategoryScreen extends ConsumerWidget {
               ),
             );
           }
-          final learnedCount = words.where((w) => learnedIds.contains(w.id)).length;
+          final learnedCount = words
+              .where((w) => learnedIds.contains(w.id))
+              .length;
           return Column(
             children: [
               _ProgressBar(learned: learnedCount, total: words.length),
               Expanded(
-                child: ListView.separated(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: words.length,
-                  separatorBuilder: (_, _) => const SizedBox(height: 8),
-                  itemBuilder: (context, index) => _WordTile(
-                    entry: words[index],
-                    categoryIcon: category.icon,
-                    learned: learnedIds.contains(words[index].id),
-                    onTap: () => AppNavigator.slideFromRight(
-                      context,
-                      KotobaWordDetailScreen(
-                        entries: words,
-                        initialIndex: index,
-                        categoryIcon: category.icon,
+                child: AppRefreshIndicator(
+                  onRefresh: () {
+                    ref.invalidate(kotobaLearnedIdsProvider);
+                    return ref.refresh(
+                      kotobaVocabCategoryProvider(category.id).future,
+                    );
+                  },
+                  child: ListView.separated(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    padding: const EdgeInsets.all(16),
+                    itemCount: words.length,
+                    separatorBuilder: (_, _) => const SizedBox(height: 8),
+                    itemBuilder: (context, index) => _WordTile(
+                      entry: words[index],
+                      categoryIcon: category.icon,
+                      learned: learnedIds.contains(words[index].id),
+                      onTap: () => AppNavigator.slideFromRight(
+                        context,
+                        KotobaWordDetailScreen(
+                          entries: words,
+                          initialIndex: index,
+                          categoryIcon: category.icon,
+                        ),
                       ),
                     ),
                   ),
@@ -192,13 +205,20 @@ class _WordTile extends StatelessWidget {
                     Text(
                       entry.meaning,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 13, color: AppColors.textNavy),
+                      style: const TextStyle(
+                        fontSize: 13,
+                        color: AppColors.textNavy,
+                      ),
                     ),
                   ],
                 ),
               ),
               if (learned) ...[
-                const Icon(Icons.check_circle, color: AppColors.secondaryBlue, size: 20),
+                const Icon(
+                  Icons.check_circle,
+                  color: AppColors.secondaryBlue,
+                  size: 20,
+                ),
                 const SizedBox(width: 4),
               ],
               const Icon(Icons.chevron_right, color: AppColors.freeBadgeGrey),

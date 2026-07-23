@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/sakura_decoration.dart';
 import '../../core/widgets/sakura_fall_widget.dart';
@@ -89,11 +92,11 @@ class _KeepAlivePageState extends State<_KeepAlivePage>
   }
 }
 
-class _HomeTabBody extends StatelessWidget {
+class _HomeTabBody extends ConsumerWidget {
   const _HomeTabBody();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: Stack(
@@ -103,148 +106,167 @@ class _HomeTabBody extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            RichText(
-                              text: const TextSpan(
-                                style: TextStyle(
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.bold,
-                                  height: 1.1,
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: 'Kana\n',
-                                    style: TextStyle(color: AppColors.textNavy),
+                  child: AppRefreshIndicator(
+                    onRefresh: () => ref.refresh(appStartupProvider.future),
+                    child: SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              RichText(
+                                text: const TextSpan(
+                                  style: TextStyle(
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.bold,
+                                    height: 1.1,
                                   ),
-                                  TextSpan(
-                                    text: 'Master',
-                                    style: TextStyle(
-                                      color: AppColors.primaryCoral,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Row(
                                   children: [
-                                    IconButton(
-                                      tooltip: 'Cari Kanji & Kotoba',
-                                      onPressed: () => AppNavigator.slideFromRight(
-                                        context,
-                                        const SearchScreen(),
-                                      ),
-                                      icon: const Icon(
-                                        Icons.search,
+                                    TextSpan(
+                                      text: 'Kana\n',
+                                      style: TextStyle(
                                         color: AppColors.textNavy,
                                       ),
                                     ),
-                                    IconButton(
-                                      tooltip: 'Papan Peringkat',
-                                      onPressed: () => Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (_) => const LeaderboardScreen(),
-                                        ),
-                                      ),
-                                      icon: const Text(
-                                        '🏆',
-                                        style: TextStyle(fontSize: 22),
+                                    TextSpan(
+                                      text: 'Master',
+                                      style: TextStyle(
+                                        color: AppColors.primaryCoral,
                                       ),
                                     ),
                                   ],
                                 ),
-                                const SakuraDecoration(size: 48),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
-                        const Text(
-                          'Belajar Kana, Langkah Pertama Menuju Jepang!',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: AppColors.textNavy,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Stack(
-                            children: [
-                              SizedBox(
-                                height: 120,
-                                width: double.infinity,
-                                child: Image.asset(
-                                  'assets/images/japan_station.png',
-                                  fit: BoxFit.cover,
-                                ),
                               ),
-
-                              Container(
-                                height: 120,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      const Color.fromARGB(0, 155, 68, 138),
-                                      const Color.fromARGB(53, 248, 90, 248),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                        tooltip: 'Cari Kanji & Kotoba',
+                                        onPressed: () =>
+                                            AppNavigator.slideFromRight(
+                                              context,
+                                              const SearchScreen(),
+                                            ),
+                                        icon: const Icon(
+                                          Icons.search,
+                                          color: AppColors.textNavy,
+                                        ),
+                                      ),
+                                      IconButton(
+                                        tooltip: 'Papan Peringkat',
+                                        onPressed: () =>
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (_) =>
+                                                    const LeaderboardScreen(),
+                                              ),
+                                            ),
+                                        icon: const Text(
+                                          '🏆',
+                                          style: TextStyle(fontSize: 22),
+                                        ),
+                                      ),
                                     ],
                                   ),
-                                ),
+                                  const SakuraDecoration(size: 48),
+                                ],
                               ),
                             ],
                           ),
-                        ),
-                        const SizedBox(height: 24),
-                        _MenuCard(
-                          backgroundColor: AppColors.hiraganaCardBg,
-                          iconBackgroundColor: const Color.fromARGB(255, 254, 129, 146),
-                          iconLabel: 'あ',
-                          title: 'Belajar Hiragana',
-                          subtitle: '46 karakter dasar',
-                          onTap: () => AppNavigator.slideFromRight(
-                            context,
-                            const FlashcardScreen(type: KanaType.hiragana),
+                          const SizedBox(height: 8),
+                          const Text(
+                            'Belajar Kana, Langkah Pertama Menuju Jepang!',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: AppColors.textNavy,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        _MenuCard(
-                          backgroundColor: AppColors.katakanaCardBg,
-                          iconBackgroundColor: const Color.fromARGB(255, 112, 174, 255),
-                          iconLabel: 'ア',
-                          title: 'Belajar Katakana',
-                          subtitle: '46 karakter dasar',
-                          onTap: () => AppNavigator.slideFromRight(
-                            context,
-                            const FlashcardScreen(type: KanaType.katakana),
+                          const SizedBox(height: 20),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Stack(
+                              children: [
+                                SizedBox(
+                                  height: 120,
+                                  width: double.infinity,
+                                  child: Image.asset(
+                                    'assets/images/japan_station.png',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+
+                                Container(
+                                  height: 120,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        const Color.fromARGB(0, 155, 68, 138),
+                                        const Color.fromARGB(53, 248, 90, 248),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        _MenuCard(
-                          backgroundColor: AppColors.tertiaryAmberCardBg,
-                          iconBackgroundColor: AppColors.tertiaryAmber,
-                          icon: Icons.assignment_outlined,
-                          title: 'Ujian',
-                          subtitle: 'Uji kemampuanmu!',
-                          onTap: () => AppNavigator.slideFromBottom(
-                            context,
-                            const ExamModePickerScreen(),
+                          const SizedBox(height: 24),
+                          _MenuCard(
+                            backgroundColor: AppColors.hiraganaCardBg,
+                            iconBackgroundColor: const Color.fromARGB(
+                              255,
+                              254,
+                              129,
+                              146,
+                            ),
+                            iconLabel: 'あ',
+                            title: 'Belajar Hiragana',
+                            subtitle: '46 karakter dasar',
+                            onTap: () => AppNavigator.slideFromRight(
+                              context,
+                              const FlashcardScreen(type: KanaType.hiragana),
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 24),
-                        const ModulesSection(),
-                        const SizedBox(height: 24),
-                      ],
+                          const SizedBox(height: 16),
+                          _MenuCard(
+                            backgroundColor: AppColors.katakanaCardBg,
+                            iconBackgroundColor: const Color.fromARGB(
+                              255,
+                              112,
+                              174,
+                              255,
+                            ),
+                            iconLabel: 'ア',
+                            title: 'Belajar Katakana',
+                            subtitle: '46 karakter dasar',
+                            onTap: () => AppNavigator.slideFromRight(
+                              context,
+                              const FlashcardScreen(type: KanaType.katakana),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          _MenuCard(
+                            backgroundColor: AppColors.tertiaryAmberCardBg,
+                            iconBackgroundColor: AppColors.tertiaryAmber,
+                            icon: Icons.assignment_outlined,
+                            title: 'Ujian',
+                            subtitle: 'Uji kemampuanmu!',
+                            onTap: () => AppNavigator.slideFromBottom(
+                              context,
+                              const ExamModePickerScreen(),
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          const ModulesSection(),
+                          const SizedBox(height: 24),
+                        ],
+                      ),
                     ),
                   ),
                 ),

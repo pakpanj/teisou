@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/avatars.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../../data/repositories/leaderboard_repository.dart';
@@ -111,30 +112,48 @@ class _LeaderboardTab extends ConsumerWidget {
           metric: metric,
         ),
         Expanded(
-          child: topAsync.when(
-            data: (entries) {
-              if (entries.isEmpty) {
-                return const Center(
-                  child: Text(
-                    'Belum ada data peringkat.',
-                    style: TextStyle(color: AppColors.textNavy),
+          child: AppRefreshIndicator(
+            onRefresh: () async {
+              ref.invalidate(leaderboardTopProvider(metric));
+              await Future.wait([
+                ref.refresh(selfLeaderboardEntryProvider(metric).future),
+                ref.refresh(selfRankProvider(metric).future),
+              ]);
+            },
+            child: topAsync.when(
+              data: (entries) {
+                if (entries.isEmpty) {
+                  return ListView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.only(top: 120),
+                        child: Center(
+                          child: Text(
+                            'Belum ada data peringkat.',
+                            style: TextStyle(color: AppColors.textNavy),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                return ListView.separated(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(16),
+                  itemCount: entries.length,
+                  separatorBuilder: (_, _) => const SizedBox(height: 8),
+                  itemBuilder: (context, index) => LeaderboardTile(
+                    rank: index + 1,
+                    entry: entries[index],
+                    valueLabel: leaderboardValueLabel(metric, entries[index]),
                   ),
                 );
-              }
-              return ListView.separated(
-                padding: const EdgeInsets.all(16),
-                itemCount: entries.length,
-                separatorBuilder: (_, _) => const SizedBox(height: 8),
-                itemBuilder: (context, index) => LeaderboardTile(
-                  rank: index + 1,
-                  entry: entries[index],
-                  valueLabel: leaderboardValueLabel(metric, entries[index]),
-                ),
-              );
-            },
-            loading: () => const Center(child: CircularProgressIndicator()),
-            error: (e, _) =>
-                Center(child: Text('Gagal memuat papan peringkat: $e')),
+              },
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (e, _) =>
+                  Center(child: Text('Gagal memuat papan peringkat: $e')),
+            ),
           ),
         ),
       ],
@@ -147,7 +166,11 @@ class _SelfHeader extends StatelessWidget {
   final int? rank;
   final LeaderboardMetric metric;
 
-  const _SelfHeader({required this.entry, required this.rank, required this.metric});
+  const _SelfHeader({
+    required this.entry,
+    required this.rank,
+    required this.metric,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +183,9 @@ class _SelfHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.primaryCoral.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.primaryCoral.withValues(alpha: 0.3)),
+        border: Border.all(
+          color: AppColors.primaryCoral.withValues(alpha: 0.3),
+        ),
       ),
       child: Row(
         children: [
@@ -260,7 +285,8 @@ class LeaderboardTile extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    if (isHost) const Text('👑 ', style: TextStyle(fontSize: 13)),
+                    if (isHost)
+                      const Text('👑 ', style: TextStyle(fontSize: 13)),
                     Flexible(
                       child: Text(
                         entry.displayName,
@@ -327,7 +353,10 @@ class LeaderboardAvatar extends StatelessWidget {
 
     final photoUrl = entry.photoUrl;
     if (photoUrl != null && photoUrl.isNotEmpty) {
-      return CircleAvatar(radius: size / 2, backgroundImage: NetworkImage(photoUrl));
+      return CircleAvatar(
+        radius: size / 2,
+        backgroundImage: NetworkImage(photoUrl),
+      );
     }
     return CircleAvatar(
       radius: size / 2,

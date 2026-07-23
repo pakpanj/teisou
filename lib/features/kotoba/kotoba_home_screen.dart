@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/kotoba_category.dart';
 import 'kotoba_category_screen.dart';
 import 'kotoba_providers.dart';
@@ -21,16 +22,20 @@ class KotobaHomeScreen extends ConsumerWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(title: const Text('Kosakata')),
       body: groupsAsync.when(
-        data: (groups) => ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            for (final entry in groups.entries) ...[
-              _GroupHeader(title: entry.key),
-              const SizedBox(height: 12),
-              _CategoryGrid(categories: entry.value),
-              const SizedBox(height: 24),
+        data: (groups) => AppRefreshIndicator(
+          onRefresh: () => ref.refresh(kotobaCategoryGroupsProvider.future),
+          child: ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(20),
+            children: [
+              for (final entry in groups.entries) ...[
+                _GroupHeader(title: entry.key),
+                const SizedBox(height: 12),
+                _CategoryGrid(categories: entry.value),
+                const SizedBox(height: 24),
+              ],
             ],
-          ],
+          ),
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Gagal memuat kategori: $e')),
@@ -74,7 +79,8 @@ class _CategoryGrid extends StatelessWidget {
         mainAxisSpacing: 12,
         childAspectRatio: 2.4,
       ),
-      itemBuilder: (context, index) => _CategoryCard(category: categories[index]),
+      itemBuilder: (context, index) =>
+          _CategoryCard(category: categories[index]),
     );
   }
 }
@@ -86,12 +92,15 @@ class _CategoryCard extends ConsumerWidget {
 
   void _openCategory(BuildContext context) {
     if (!category.available) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${category.name} segera hadir!')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('${category.name} segera hadir!')));
       return;
     }
-    AppNavigator.slideFromRight(context, KotobaCategoryScreen(category: category));
+    AppNavigator.slideFromRight(
+      context,
+      KotobaCategoryScreen(category: category),
+    );
   }
 
   @override
@@ -114,12 +123,18 @@ class _CategoryCard extends ConsumerWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: (available ? AppColors.primaryCoral : AppColors.freeBadgeGrey)
-                      .withValues(alpha: 0.15),
+                  color:
+                      (available
+                              ? AppColors.primaryCoral
+                              : AppColors.freeBadgeGrey)
+                          .withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
-                child: Text(category.icon, style: const TextStyle(fontSize: 18)),
+                child: Text(
+                  category.icon,
+                  style: const TextStyle(fontSize: 18),
+                ),
               ),
               const SizedBox(width: 10),
               Expanded(
@@ -134,7 +149,9 @@ class _CategoryCard extends ConsumerWidget {
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
-                        color: available ? AppColors.textNavy : AppColors.freeBadgeGrey,
+                        color: available
+                            ? AppColors.textNavy
+                            : AppColors.freeBadgeGrey,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -150,7 +167,10 @@ class _CategoryCard extends ConsumerWidget {
                       )
                     else
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 1,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),

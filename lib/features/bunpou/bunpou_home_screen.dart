@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/bunpou_level.dart';
 import '../../data/models/jlpt_level.dart';
 import 'bunpou_level_screen.dart';
@@ -22,14 +23,18 @@ class BunpouHomeScreen extends ConsumerWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(title: const Text('Bunpou')),
       body: levelsAsync.when(
-        data: (levels) => ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            for (final level in levels) ...[
-              _LevelCard(level: level),
-              const SizedBox(height: 12),
+        data: (levels) => AppRefreshIndicator(
+          onRefresh: () => ref.refresh(bunpouLevelsProvider.future),
+          child: ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(20),
+            children: [
+              for (final level in levels) ...[
+                _LevelCard(level: level),
+                const SizedBox(height: 12),
+              ],
             ],
-          ],
+          ),
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Gagal memuat level: $e')),
@@ -63,7 +68,9 @@ class _LevelCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final available = level.available;
     final progress = available
-        ? ref.watch(bunpouLevelProgressProvider(JlptLevelX.fromKey(level.id))).valueOrNull
+        ? ref
+              .watch(bunpouLevelProgressProvider(JlptLevelX.fromKey(level.id)))
+              .valueOrNull
         : null;
 
     return Material(
@@ -80,8 +87,11 @@ class _LevelCard extends ConsumerWidget {
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: (available ? AppColors.primaryCoral : AppColors.freeBadgeGrey)
-                      .withValues(alpha: 0.15),
+                  color:
+                      (available
+                              ? AppColors.primaryCoral
+                              : AppColors.freeBadgeGrey)
+                          .withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
@@ -89,7 +99,9 @@ class _LevelCard extends ConsumerWidget {
                   level.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: available ? AppColors.primaryCoral : AppColors.freeBadgeGrey,
+                    color: available
+                        ? AppColors.primaryCoral
+                        : AppColors.freeBadgeGrey,
                   ),
                 ),
               ),
@@ -103,7 +115,9 @@ class _LevelCard extends ConsumerWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: available ? AppColors.textNavy : AppColors.freeBadgeGrey,
+                        color: available
+                            ? AppColors.textNavy
+                            : AppColors.freeBadgeGrey,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -119,7 +133,10 @@ class _LevelCard extends ConsumerWidget {
                       )
                     else
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 1,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
@@ -138,7 +155,9 @@ class _LevelCard extends ConsumerWidget {
               ),
               Icon(
                 Icons.chevron_right,
-                color: available ? AppColors.primaryCoral : AppColors.freeBadgeGrey,
+                color: available
+                    ? AppColors.primaryCoral
+                    : AppColors.freeBadgeGrey,
               ),
             ],
           ),
