@@ -2234,16 +2234,48 @@ timing) on a real device before treating this as fully verified.
   `neko_sakura.png`, etc.) is the only remaining step — no code changes
   needed. (Kanji stroke-order art *is* built now, as of Batch 8 — see
   the Kanji module note above; don't confuse the two.)
-- **No Kotoba vocab images have been uploaded to Firebase Storage yet** —
-  all 519 words across all 45 categories have a real `imagePath` (see
-  `KotobaImage`'s gracefully-handled 404 fallback above), but the actual
-  PNGs at `kotoba_images/{category}/{entry_id}.png` don't exist in the
-  bucket. Every category/word tile currently shows its pastel emoji
-  placeholder. Uploading real illustrations is a separate task from
-  dataset authoring — re-derive the full path list via `python -c
-  "import json,glob; [print(e['imagePath']) for f in
+- **Kotoba vocab image generation is now underway, in a separate local
+  project outside this repo** (2026-07-23): `C:\kosa kata ( benar )` on the
+  user's machine — a Python pipeline (`generate_images.py` via Gemini,
+  `crop_and_name.py`, `prepare_kotoba_upload.py`) that generates, crops,
+  and stages illustrations matching the exact `imagePath` scheme
+  (`kotoba_images/{category_id}/{entry_id}.png`) this app already expects.
+  That pipeline's own session hit a Claude usage limit mid-category
+  (Profesi) — full verified status (which categories are fully generated,
+  which are partial with exact missing-word lists, which haven't started,
+  plus an honest caveat that **live-Firebase-upload status could not be
+  confirmed from either session** since no script in that folder actually
+  calls the Storage API) is written to `HANDOFF.md` **inside that external
+  folder**, not here — check there first before assuming the note below is
+  still accurate. **Do not assume "0 images uploaded" without checking
+  that file first** — as of the hand-off, 37 of this repo's 45 real
+  categories were locally generated/cropped (word-count-complete) and the
+  previous session's own transcript claimed most of those were already
+  pushed live, though neither session could independently verify that
+  from disk alone.
+  **Also found while cross-checking**: the external pipeline's own word
+  list loader (`kotoba_loader.py`, which reads the same
+  `generate_kotoba_*.py` scripts this repo's `scripts/` folder has copies
+  of) reports a *46th* "category", `konsep_umum` (416 words) — this
+  really is a tracked, actively-growing file in this repo
+  (`assets/data/kotoba/konsep_umum.json`, recent commits importing
+  N1-N4 words for "Kanji-Kombinasi" batches), but it is **not** listed in
+  `assets/data/kotoba/_categories.json`'s 45 categories and **not**
+  referenced anywhere in `lib/` — meaning it's very likely a raw word pool
+  feeding `KanjiComboRepository`'s kanji-mining (see the Ujian expansion
+  note elsewhere in this file), not a browsable illustrated category. If
+  the external pipeline ever gets to `konsep_umum`, confirm with the user
+  first whether it actually needs 416 illustrations before spending the
+  ~70 API-call batches that would take — don't assume either way, and
+  don't let its 46-vs-45 mismatch cause confusion about this repo's real
+  category count (it's still 45, per `_categories.json`).
+  Original note, still accurate for the 45 real categories: all 519 words
+  across all 45 categories have a real `imagePath` (see `KotobaImage`'s
+  gracefully-handled 404 fallback above); re-derive the full path list via
+  `python -c "import json,glob; [print(e['imagePath']) for f in
   glob.glob('assets/data/kotoba/*.json') if '_categories' not in f for e
-  in json.load(open(f, encoding='utf-8'))]"` (519 lines).
+  in json.load(open(f, encoding='utf-8'))]"` (519 lines) if you need it
+  again.
 - **No Kaiwa dialogue images have been uploaded to Firebase Storage
   either** — same gap as Kotoba's, just younger, and now much bigger
   in scale. **Updated for the completed N4-N1 rollout**: Kaiwa now has
