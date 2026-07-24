@@ -21,7 +21,8 @@
         "translation": "Saya belok kanan."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_migi.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_migi.png",
+    "meaningEn": "right"
   },
   {
     "id": "kotoba_arah_lokasi_hidari",
@@ -45,7 +46,8 @@
         "translation": "Saya belok kiri."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hidari.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hidari.png",
+    "meaningEn": "left"
   },
   {
     "id": "kotoba_arah_lokasi_mae",
@@ -69,7 +71,8 @@
         "translation": "Ada di depan stasiun."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_mae.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_mae.png",
+    "meaningEn": "front"
   },
   {
     "id": "kotoba_arah_lokasi_ushiro",
@@ -93,7 +96,8 @@
         "translation": "Ada taman di belakang rumah."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ushiro.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ushiro.png",
+    "meaningEn": "behind/back"
   },
   {
     "id": "kotoba_arah_lokasi_ue",
@@ -117,7 +121,8 @@
         "translation": "Ada buku di atas meja."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ue.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ue.png",
+    "meaningEn": "above/top"
   },
   {
     "id": "kotoba_arah_lokasi_shita",
@@ -141,7 +146,8 @@
         "translation": "Ada kucing di bawah meja."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shita.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shita.png",
+    "meaningEn": "below/under"
   },
   {
     "id": "kotoba_arah_lokasi_naka",
@@ -165,7 +171,8 @@
         "translation": "Apa yang ada di dalam kotak?"
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_naka.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_naka.png",
+    "meaningEn": "inside"
   },
   {
     "id": "kotoba_arah_lokasi_soto",
@@ -189,7 +196,8 @@
         "translation": "Di luar dingin."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_soto.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_soto.png",
+    "meaningEn": "outside"
   },
   {
     "id": "kotoba_arah_lokasi_tonari",
@@ -213,7 +221,8 @@
         "translation": "Saya duduk di sebelah."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tonari.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tonari.png",
+    "meaningEn": "next to"
   },
   {
     "id": "kotoba_arah_lokasi_chikaku",
@@ -237,7 +246,8 @@
         "translation": "Saya tinggal dekat stasiun."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chikaku.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chikaku.png",
+    "meaningEn": "nearby"
   },
   {
     "id": "kotoba_arah_lokasi_tooi",
@@ -261,7 +271,8 @@
         "translation": "Sekolah itu jauh."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tooi.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tooi.png",
+    "meaningEn": "far"
   },
   {
     "id": "kotoba_arah_lokasi_shuuhen",
@@ -285,7 +296,8 @@
         "translation": "Ada toko di sekitar stasiun."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shuuhen.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shuuhen.png",
+    "meaningEn": "surrounding area"
   },
   {
     "id": "kotoba_arah_lokasi_fukin",
@@ -309,7 +321,8 @@
         "translation": "Saya tinggal di sekitar sini."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_fukin.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_fukin.png",
+    "meaningEn": "nearby/vicinity"
   },
   {
     "id": "kotoba_arah_lokasi_houkou",
@@ -333,7 +346,8 @@
         "translation": "Saya pergi ke arah yang salah."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_houkou.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_houkou.png",
+    "meaningEn": "direction"
   },
   {
     "id": "kotoba_arah_lokasi_chuushin",
@@ -357,7 +371,8 @@
         "translation": "Ada taman di pusat kota."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chuushin.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chuushin.png",
+    "meaningEn": "center"
   },
   {
     "id": "kotoba_arah_lokasi_ichi",
@@ -381,7 +396,8 @@
         "translation": "Mengecek posisi."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ichi.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ichi.png",
+    "meaningEn": "position/location"
   },
   {
     "id": "kotoba_arah_lokasi_uchigawa",
@@ -405,7 +421,8 @@
         "translation": "Berdiri di bagian dalam pintu."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_uchigawa.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_uchigawa.png",
+    "meaningEn": "inner side"
   },
   {
     "id": "kotoba_arah_lokasi_kitagawa",
@@ -429,7 +446,8 @@
         "translation": "Ruangan sisi utara dingin."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kitagawa.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kitagawa.png",
+    "meaningEn": "north side"
   },
   {
     "id": "kotoba_arah_lokasi_kyori",
@@ -453,7 +471,8 @@
         "translation": "Jaraknya jauh."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kyori.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kyori.png",
+    "meaningEn": "distance"
   },
   {
     "id": "kotoba_arah_lokasi_kinjo",
@@ -477,7 +496,8 @@
         "translation": "Ada supermarket di dekat rumah. (satu lingkungan)"
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kinjo.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kinjo.png",
+    "meaningEn": "neighborhood"
   },
   {
     "id": "kotoba_arah_lokasi_keshiki",
@@ -501,7 +521,8 @@
         "translation": "Pemandangannya indah."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_keshiki.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_keshiki.png",
+    "meaningEn": "scenery"
   },
   {
     "id": "kotoba_arah_lokasi_kouhou",
@@ -525,7 +546,8 @@
         "translation": "Silakan mundur ke arah belakang."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kouhou.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kouhou.png",
+    "meaningEn": "rear direction"
   },
   {
     "id": "kotoba_arah_lokasi_shoumen",
@@ -549,7 +571,8 @@
         "translation": "Silakan masuk dari depan."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shoumen.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shoumen.png",
+    "meaningEn": "front (facing side)"
   },
   {
     "id": "kotoba_arah_lokasi_sotogawa",
@@ -573,7 +596,8 @@
         "translation": "Lihat bagian luar."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sotogawa.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sotogawa.png",
+    "meaningEn": "outer side"
   },
   {
     "id": "kotoba_arah_lokasi_chika",
@@ -597,7 +621,8 @@
         "translation": "Ada parkiran di bawah tanah."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chika.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chika.png",
+    "meaningEn": "underground"
   },
   {
     "id": "kotoba_arah_lokasi_choujou",
@@ -621,7 +646,8 @@
         "translation": "Sampai di puncak gunung."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_choujou.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_choujou.png",
+    "meaningEn": "summit/peak"
   },
   {
     "id": "kotoba_arah_lokasi_tochuu",
@@ -645,7 +671,8 @@
         "translation": "Di perjalanan ke sekolah saya bertemu teman."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tochuu.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tochuu.png",
+    "meaningEn": "on the way/midway"
   },
   {
     "id": "kotoba_arah_lokasi_hodou",
@@ -669,7 +696,8 @@
         "translation": "Tolong berjalan di trotoar."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hodou.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hodou.png",
+    "meaningEn": "sidewalk"
   },
   {
     "id": "kotoba_arah_lokasi_chiheisen",
@@ -693,7 +721,8 @@
         "translation": "Matahari terbenam terlihat di garis horizon."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chiheisen.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chiheisen.png",
+    "meaningEn": "horizon"
   },
   {
     "id": "kotoba_arah_lokasi_sayuu",
@@ -717,7 +746,8 @@
         "translation": "Memeriksa kiri dan kanan."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sayuu.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sayuu.png",
+    "meaningEn": "left and right"
   },
   {
     "id": "kotoba_arah_lokasi_genchi",
@@ -741,7 +771,8 @@
         "translation": "Tiba di lokasi setempat."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_genchi.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_genchi.png",
+    "meaningEn": "local site/on-site"
   },
   {
     "id": "kotoba_arah_lokasi_haigo",
@@ -765,7 +796,8 @@
         "translation": "Bersembunyi di belakang."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_haigo.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_haigo.png",
+    "meaningEn": "behind (someone/something)"
   },
   {
     "id": "kotoba_arah_lokasi_jimoto",
@@ -789,7 +821,8 @@
         "translation": "Pulang ke daerah asal."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_jimoto.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_jimoto.png",
+    "meaningEn": "one's hometown/local area"
   },
   {
     "id": "kotoba_arah_lokasi_hantou",
@@ -813,7 +846,8 @@
         "translation": "Bepergian ke semenanjung."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hantou.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hantou.png",
+    "meaningEn": "peninsula"
   },
   {
     "id": "kotoba_arah_lokasi_namiki",
@@ -837,7 +871,8 @@
         "translation": "Berjalan di jalan berderet pohon."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_namiki.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_namiki.png",
+    "meaningEn": "row of trees"
   },
   {
     "id": "kotoba_arah_lokasi_sekidou",
@@ -861,7 +896,8 @@
         "translation": "Melintasi garis khatulistiwa."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sekidou.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sekidou.png",
+    "meaningEn": "equator"
   },
   {
     "id": "kotoba_arah_lokasi_basho",
@@ -885,7 +921,8 @@
         "translation": "Memeriksa tempat berkumpul."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_basho.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_basho.png",
+    "meaningEn": "place/location"
   },
   {
     "id": "kotoba_arah_lokasi_kaigan",
@@ -909,7 +946,8 @@
         "translation": "Berjalan di pantai."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kaigan.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kaigan.png",
+    "meaningEn": "coast/beach"
   },
   {
     "id": "kotoba_arah_lokasi_kaijou",
@@ -933,7 +971,8 @@
         "translation": "Tiba di tempat acara."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kaijou.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kaijou.png",
+    "meaningEn": "venue"
   },
   {
     "id": "kotoba_arah_lokasi_kougai",
@@ -957,6 +996,7 @@
         "translation": "Tinggal di pinggiran kota."
       }
     ],
-    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kougai.png"
+    "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kougai.png",
+    "meaningEn": "suburb"
   }
 ]

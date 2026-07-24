@@ -2477,14 +2477,15 @@ timing) on a real device before treating this as fully verified.
   current total, read straight from `_categories.json`'s own
   `wordCount` fields, is **1266 words across 45 categories** (excludes
   `konsep_umum`'s 416, which stays out of scope — not a browsable
-  category, see its own note elsewhere in this file). **535/1266 words
-  done (26 categories — all of "Alam & Lingkungan" + all of "Makanan &
-  Minuman" + all of "Tubuh & Kesehatan" + 3 of "Tempat & Transportasi":
-  ruangan_rumah, perabot_rumah, bangunan_fasilitas), 731 words across 19
-  categories remain. Group-to-category mapping is per
-  `_categories.json`'s own `group` field, not guessed from name/context —
-  verified via `python -c "import json; [print(e['id'], e['group']) for e
-  in json.load(open('assets/data/kotoba/_categories.json',
+  category, see its own note elsewhere in this file). **671/1266 words
+  done (29 categories — all of "Alam & Lingkungan" + all of "Makanan &
+  Minuman" + all of "Tubuh & Kesehatan" + all of "Tempat &
+  Transportasi": ruangan_rumah, perabot_rumah, bangunan_fasilitas,
+  kendaraan, arah_lokasi, negara_kota), 595 words across 16 categories
+  remain. Group-to-category mapping is per `_categories.json`'s own
+  `group` field, not guessed from name/context — verified via `python -c
+  "import json; [print(e['id'], e['group']) for e in
+  json.load(open('assets/data/kotoba/_categories.json',
   encoding='utf-8'))]"` since an earlier pass in this file mislabeled 6
   Tubuh & Kesehatan categories as "Manusia & Sosial" before this was
   checked.**
@@ -2535,9 +2536,9 @@ timing) on a real device before treating this as fully verified.
   - [x] ruangan_rumah (20 words)
   - [x] perabot_rumah (21 words)
   - [x] bangunan_fasilitas (73 words)
-  - [ ] kendaraan (41 words)
-  - [ ] arah_lokasi (40 words)
-  - [ ] negara_kota (55 words)
+  - [x] kendaraan (41 words)
+  - [x] arah_lokasi (40 words)
+  - [x] negara_kota (55 words)
   - [ ] profesi (46 words)
   - [ ] keluarga_hubungan (54 words)
   - [ ] pakaian_aksesori (24 words)

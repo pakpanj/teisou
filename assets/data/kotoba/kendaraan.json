@@ -21,7 +21,8 @@
         "translation": "Saya pergi dengan mobil."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kuruma.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kuruma.png",
+    "meaningEn": "car"
   },
   {
     "id": "kotoba_kendaraan_densha",
@@ -45,7 +46,8 @@
         "translation": "Saya naik kereta."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_densha.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_densha.png",
+    "meaningEn": "(electric) train"
   },
   {
     "id": "kotoba_kendaraan_basu",
@@ -69,7 +71,8 @@
         "translation": "Saya menunggu bus."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_basu.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_basu.png",
+    "meaningEn": "bus"
   },
   {
     "id": "kotoba_kendaraan_jitensha",
@@ -93,7 +96,8 @@
         "translation": "Saya naik sepeda."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jitensha.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jitensha.png",
+    "meaningEn": "bicycle"
   },
   {
     "id": "kotoba_kendaraan_hikouki",
@@ -117,7 +121,8 @@
         "translation": "Saya bepergian dengan pesawat."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_hikouki.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_hikouki.png",
+    "meaningEn": "airplane"
   },
   {
     "id": "kotoba_kendaraan_fune",
@@ -141,7 +146,8 @@
         "translation": "Saya pergi ke pulau dengan kapal."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_fune.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_fune.png",
+    "meaningEn": "ship/boat"
   },
   {
     "id": "kotoba_kendaraan_takushii",
@@ -165,7 +171,8 @@
         "translation": "Saya memanggil taksi."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_takushii.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_takushii.png",
+    "meaningEn": "taxi"
   },
   {
     "id": "kotoba_kendaraan_baiku",
@@ -189,7 +196,8 @@
         "translation": "Saya berangkat kerja dengan motor."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_baiku.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_baiku.png",
+    "meaningEn": "motorcycle"
   },
   {
     "id": "kotoba_kendaraan_shinkansen",
@@ -213,7 +221,8 @@
         "translation": "Shinkansen itu cepat."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shinkansen.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shinkansen.png",
+    "meaningEn": "bullet train"
   },
   {
     "id": "kotoba_kendaraan_torakku",
@@ -237,7 +246,8 @@
         "translation": "Truk mengangkut barang."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_torakku.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_torakku.png",
+    "meaningEn": "truck"
   },
   {
     "id": "kotoba_kendaraan_unkou",
@@ -261,7 +271,8 @@
         "translation": "Kereta beroperasi tepat waktu."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_unkou.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_unkou.png",
+    "meaningEn": "(transportation) operation/service"
   },
   {
     "id": "kotoba_kendaraan_chien",
@@ -285,7 +296,8 @@
         "translation": "Karena hujan deras, kereta mengalami keterlambatan."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_chien.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_chien.png",
+    "meaningEn": "delay"
   },
   {
     "id": "kotoba_kendaraan_oufuku",
@@ -309,7 +321,8 @@
         "translation": "Pulang-pergi dengan kereta."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_oufuku.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_oufuku.png",
+    "meaningEn": "round trip"
   },
   {
     "id": "kotoba_kendaraan_kippu",
@@ -333,7 +346,8 @@
         "translation": "Membeli tiket."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kippu.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kippu.png",
+    "meaningEn": "ticket"
   },
   {
     "id": "kotoba_kendaraan_keiyu",
@@ -357,7 +371,8 @@
         "translation": "Pergi lewat Tokyo. (lewat rute, parantara)"
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_keiyu.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_keiyu.png",
+    "meaningEn": "via (a route)"
   },
   {
     "id": "kotoba_kendaraan_koukuu",
@@ -381,7 +396,8 @@
         "translation": "Ingin bekerja di perusahaan maskapai."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_koukuu.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_koukuu.png",
+    "meaningEn": "aviation"
   },
   {
     "id": "kotoba_kendaraan_koutsuu",
@@ -405,7 +421,8 @@
         "translation": "Transportasinya mudah."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_koutsuu.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_koutsuu.png",
+    "meaningEn": "transportation/traffic"
   },
   {
     "id": "kotoba_kendaraan_konzatsu",
@@ -429,7 +446,8 @@
         "translation": "Kereta penuh sesak. (Ramai, padat,jalan/tempat)"
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_konzatsu.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_konzatsu.png",
+    "meaningEn": "congestion/crowding"
   },
   {
     "id": "kotoba_kendaraan_shihatsu",
@@ -453,7 +471,8 @@
         "translation": "Naik kereta keberangkatan pertama."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shihatsu.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shihatsu.png",
+    "meaningEn": "first departure"
   },
   {
     "id": "kotoba_kendaraan_shanai",
@@ -477,7 +496,8 @@
         "translation": "Harap tenang di dalam kendaraan. (trasportasi)"
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shanai.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shanai.png",
+    "meaningEn": "inside the vehicle"
   },
   {
     "id": "kotoba_kendaraan_juutai",
@@ -501,7 +521,8 @@
         "translation": "Jalan macet. (Macet khusus kendaraan)"
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_juutai.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_juutai.png",
+    "meaningEn": "traffic jam"
   },
   {
     "id": "kotoba_kendaraan_jousha",
@@ -525,7 +546,8 @@
         "translation": "Naik kereta kereta listrik."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jousha.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jousha.png",
+    "meaningEn": "boarding (a vehicle)"
   },
   {
     "id": "kotoba_kendaraan_teiki",
@@ -549,7 +571,8 @@
         "translation": "Saya lupa kartu langganan (kartu komuter/bus jarak tetap)."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_teiki.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_teiki.png",
+    "meaningEn": "commuter pass"
   },
   {
     "id": "kotoba_kendaraan_tetsudou",
@@ -573,7 +596,8 @@
         "translation": "Di kota ini dibangun jalur kereta baru."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_tetsudou.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_tetsudou.png",
+    "meaningEn": "railway"
   },
   {
     "id": "kotoba_kendaraan_touchaku",
@@ -597,7 +621,8 @@
         "translation": "Saya telah tiba di stasiun."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_touchaku.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_touchaku.png",
+    "meaningEn": "arrival"
   },
   {
     "id": "kotoba_kendaraan_toho",
@@ -621,7 +646,8 @@
         "translation": "Ke stasiun jalan kaki 5 menit. (cara trasportasinya)"
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_toho.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_toho.png",
+    "meaningEn": "on foot"
   },
   {
     "id": "kotoba_kendaraan_manin",
@@ -645,7 +671,8 @@
         "translation": "Kereta penuh sesak."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_manin.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_manin.png",
+    "meaningEn": "full (of passengers)"
   },
   {
     "id": "kotoba_kendaraan_menkyo",
@@ -669,7 +696,8 @@
         "translation": "Saya mendapat SIM."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_menkyo.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_menkyo.png",
+    "meaningEn": "driver's license"
   },
   {
     "id": "kotoba_kendaraan_kaisatsuguchi",
@@ -693,7 +721,8 @@
         "translation": "Saya menunggu di gerbang tiket."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kaisatsuguchi.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kaisatsuguchi.png",
+    "meaningEn": "ticket gate"
   },
   {
     "id": "kotoba_kendaraan_kousoku",
@@ -717,7 +746,8 @@
         "translation": "Melaju di jalan tol."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kousoku.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kousoku.png",
+    "meaningEn": "high speed"
   },
   {
     "id": "kotoba_kendaraan_sokudo",
@@ -741,7 +771,8 @@
         "translation": "Tolong kurangi kecepatan."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_sokudo.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_sokudo.png",
+    "meaningEn": "speed"
   },
   {
     "id": "kotoba_kendaraan_unten",
@@ -765,7 +796,8 @@
         "translation": "Mengemudikan mobil."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_unten.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_unten.png",
+    "meaningEn": "driving/operating"
   },
   {
     "id": "kotoba_kendaraan_jouriku",
@@ -789,7 +821,8 @@
         "translation": "Topan mendarat di daratan."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jouriku.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jouriku.png",
+    "meaningEn": "landing (making landfall)"
   },
   {
     "id": "kotoba_kendaraan_jisoku",
@@ -813,7 +846,8 @@
         "translation": "Melaju dengan kecepatan 80 km/jam."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jisoku.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jisoku.png",
+    "meaningEn": "speed per hour"
   },
   {
     "id": "kotoba_kendaraan_kasoku",
@@ -837,7 +871,8 @@
         "translation": "Mobil berakselerasi."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kasoku.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kasoku.png",
+    "meaningEn": "acceleration"
   },
   {
     "id": "kotoba_kendaraan_kasokudo",
@@ -861,7 +896,8 @@
         "translation": "Menghitung tingkat akselerasi."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kasokudo.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kasokudo.png",
+    "meaningEn": "rate of acceleration"
   },
   {
     "id": "kotoba_kendaraan_sokuryoku",
@@ -885,7 +921,8 @@
         "translation": "Menambah kecepatan."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_sokuryoku.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_sokuryoku.png",
+    "meaningEn": "speed"
   },
   {
     "id": "kotoba_kendaraan_yusou",
@@ -909,7 +946,8 @@
         "translation": "Mengangkut barang."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_yusou.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_yusou.png",
+    "meaningEn": "transport (of goods)"
   },
   {
     "id": "kotoba_kendaraan_kisha",
@@ -933,7 +971,8 @@
         "translation": "Naik kereta."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kisha.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kisha.png",
+    "meaningEn": "(steam) train"
   },
   {
     "id": "kotoba_kendaraan_kyuukou",
@@ -957,7 +996,8 @@
         "translation": "Naik kereta cepat."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kyuukou.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kyuukou.png",
+    "meaningEn": "express train"
   },
   {
     "id": "kotoba_kendaraan_tokkyuu",
@@ -981,6 +1021,7 @@
         "translation": "Naik kereta ekspres."
       }
     ],
-    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_tokkyuu.png"
+    "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_tokkyuu.png",
+    "meaningEn": "limited express train"
   }
 ]
