@@ -2477,8 +2477,10 @@ timing) on a real device before treating this as fully verified.
   current total, read straight from `_categories.json`'s own
   `wordCount` fields, is **1266 words across 45 categories** (excludes
   `konsep_umum`'s 416, which stays out of scope — not a browsable
-  category, see its own note elsewhere in this file). 8 done, **1258
-  words across 44 categories remain**.
+  category, see its own note elsewhere in this file). **104/1266 words
+  done (8 categories: ikan, hewan_darat, burung, serangga, pohon,
+  bunga_tanaman, buah, sayuran), 1162 words across 37 categories
+  remain.**
   **Hand-off infrastructure, built specifically so a session that hits
   its limit mid-rollout doesn't lose progress or force a resume-session
   to reverse-engineer state**: `scripts/kotoba_meaning_en.py` is the
@@ -2501,13 +2503,13 @@ timing) on a real device before treating this as fully verified.
   check the box and update the two counts above when a category's
   `meaningEn` coverage is confirmed complete):
   - [x] ikan (8 words)
-  - [ ] hewan_darat (22 words)
-  - [ ] burung (14 words)
-  - [ ] serangga (13 words)
-  - [ ] pohon (8 words)
-  - [ ] bunga_tanaman (11 words)
-  - [ ] buah (14 words)
-  - [ ] sayuran (14 words)
+  - [x] hewan_darat (22 words)
+  - [x] burung (14 words)
+  - [x] serangga (13 words)
+  - [x] pohon (8 words)
+  - [x] bunga_tanaman (11 words)
+  - [x] buah (14 words)
+  - [x] sayuran (14 words)
   - [ ] cuaca (23 words)
   - [ ] bencana_alam (18 words)
   - [ ] makanan_jepang (17 words)

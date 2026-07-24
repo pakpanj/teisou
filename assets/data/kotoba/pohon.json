@@ -21,7 +21,8 @@
         "translation": "Saya beristirahat di bawah pohon."
       }
     ],
-    "imagePath": "kotoba_images/pohon/kotoba_pohon_ki.png"
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_ki.png",
+    "meaningEn": "tree"
   },
   {
     "id": "kotoba_pohon_sakura",
@@ -45,7 +46,8 @@
         "translation": "Bunga sakura itu indah."
       }
     ],
-    "imagePath": "kotoba_images/pohon/kotoba_pohon_sakura.png"
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_sakura.png",
+    "meaningEn": "cherry blossom tree"
   },
   {
     "id": "kotoba_pohon_matsu",
@@ -69,7 +71,8 @@
         "translation": "Ada pohon pinus di halaman."
       }
     ],
-    "imagePath": "kotoba_images/pohon/kotoba_pohon_matsu.png"
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_matsu.png",
+    "meaningEn": "pine tree"
   },
   {
     "id": "kotoba_pohon_take",
@@ -93,7 +96,8 @@
         "translation": "Bambu itu lurus."
       }
     ],
-    "imagePath": "kotoba_images/pohon/kotoba_pohon_take.png"
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_take.png",
+    "meaningEn": "bamboo"
   },
   {
     "id": "kotoba_pohon_momiji",
@@ -117,7 +121,8 @@
         "translation": "Di musim gugur, daun momiji menjadi merah."
       }
     ],
-    "imagePath": "kotoba_images/pohon/kotoba_pohon_momiji.png"
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_momiji.png",
+    "meaningEn": "maple tree (momiji)"
   },
   {
     "id": "kotoba_pohon_yashi",
@@ -141,7 +146,8 @@
         "translation": "Ada pohon kelapa di pantai."
       }
     ],
-    "imagePath": "kotoba_images/pohon/kotoba_pohon_yashi.png"
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_yashi.png",
+    "meaningEn": "palm/coconut tree"
   },
   {
     "id": "kotoba_pohon_ichou",
@@ -165,7 +171,8 @@
         "translation": "Daun ginkgo berwarna kuning."
       }
     ],
-    "imagePath": "kotoba_images/pohon/kotoba_pohon_ichou.png"
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_ichou.png",
+    "meaningEn": "ginkgo tree"
   },
   {
     "id": "kotoba_pohon_sugi",
@@ -189,6 +196,7 @@
         "translation": "Ada banyak pohon cemara Jepang di gunung."
       }
     ],
-    "imagePath": "kotoba_images/pohon/kotoba_pohon_sugi.png"
+    "imagePath": "kotoba_images/pohon/kotoba_pohon_sugi.png",
+    "meaningEn": "Japanese cedar tree"
   }
 ]

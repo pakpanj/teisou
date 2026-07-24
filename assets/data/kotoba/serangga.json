@@ -21,7 +21,8 @@
         "translation": "Saya tidak suka serangga."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_mushi.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_mushi.png",
+    "meaningEn": "insect/bug"
   },
   {
     "id": "kotoba_serangga_chou",
@@ -45,7 +46,8 @@
         "translation": "Ada kupu-kupu di bunga."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_chou.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_chou.png",
+    "meaningEn": "butterfly"
   },
   {
     "id": "kotoba_serangga_hachi",
@@ -69,7 +71,8 @@
         "translation": "Saya disengat lebah."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_hachi.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_hachi.png",
+    "meaningEn": "bee"
   },
   {
     "id": "kotoba_serangga_ari",
@@ -93,7 +96,8 @@
         "translation": "Semut itu kecil."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_ari.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_ari.png",
+    "meaningEn": "ant"
   },
   {
     "id": "kotoba_serangga_ka",
@@ -117,7 +121,8 @@
         "translation": "Saya digigit nyamuk."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_ka.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_ka.png",
+    "meaningEn": "mosquito"
   },
   {
     "id": "kotoba_serangga_hae",
@@ -141,7 +146,8 @@
         "translation": "Lalat itu berisik."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_hae.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_hae.png",
+    "meaningEn": "fly"
   },
   {
     "id": "kotoba_serangga_kumo",
@@ -165,7 +171,8 @@
         "translation": "Ada laba-laba di kamar."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_kumo.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_kumo.png",
+    "meaningEn": "spider"
   },
   {
     "id": "kotoba_serangga_tonbo",
@@ -189,7 +196,8 @@
         "translation": "Capung sedang terbang."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_tonbo.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_tonbo.png",
+    "meaningEn": "dragonfly"
   },
   {
     "id": "kotoba_serangga_semi",
@@ -213,7 +221,8 @@
         "translation": "Saat musim panas tiba, tonggeret bersuara."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_semi.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_semi.png",
+    "meaningEn": "cicada"
   },
   {
     "id": "kotoba_serangga_kabutomushi",
@@ -237,7 +246,8 @@
         "translation": "Anak laki-laki suka kumbang badak."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_kabutomushi.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_kabutomushi.png",
+    "meaningEn": "rhinoceros beetle"
   },
   {
     "id": "kotoba_serangga_tentoumushi",
@@ -261,7 +271,8 @@
         "translation": "Kepik itu berwarna merah."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_tentoumushi.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_tentoumushi.png",
+    "meaningEn": "ladybug"
   },
   {
     "id": "kotoba_serangga_batta",
@@ -285,7 +296,8 @@
         "translation": "Belalang melompat."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_batta.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_batta.png",
+    "meaningEn": "grasshopper"
   },
   {
     "id": "kotoba_serangga_kuwagata",
@@ -309,6 +321,7 @@
         "translation": "Saya menangkap kumbang tanduk rusa."
       }
     ],
-    "imagePath": "kotoba_images/serangga/kotoba_serangga_kuwagata.png"
+    "imagePath": "kotoba_images/serangga/kotoba_serangga_kuwagata.png",
+    "meaningEn": "stag beetle"
   }
 ]
