@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
@@ -19,10 +21,11 @@ class ParticleHomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categoriesAsync = ref.watch(particleCategoriesProvider);
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(title: const Text('Partikel')),
+      appBar: AppBar(title: Text(s.particleTitle)),
       body: categoriesAsync.when(
         data: (categories) => Column(
           children: [
@@ -46,7 +49,7 @@ class ParticleHomeScreen extends ConsumerWidget {
           ],
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat kategori: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadCategories(e))),
       ),
     );
   }
@@ -57,11 +60,11 @@ class _CategoryCard extends ConsumerWidget {
 
   const _CategoryCard({required this.category});
 
-  void _open(BuildContext context) {
+  void _open(BuildContext context, AppStrings s) {
     if (!category.available) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('${category.name} segera hadir!')));
+      ).showSnackBar(SnackBar(content: Text(s.categoryComingSoon(category.name))));
       return;
     }
     AppNavigator.slideFromRight(
@@ -79,13 +82,14 @@ class _CategoryCard extends ConsumerWidget {
     final progress = available
         ? ref.watch(particleCategoryProgressProvider(category.id)).valueOrNull
         : null;
+    final s = ref.watch(appStringsProvider);
 
     return Material(
       color: available ? AppColors.cardWhite : Colors.grey.shade100,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () => _open(context),
+        onTap: () => _open(context, s),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -126,8 +130,8 @@ class _CategoryCard extends ConsumerWidget {
                     if (available)
                       Text(
                         progress != null && progress.$1 > 0
-                            ? '${progress.$1}/${progress.$2} dipelajari'
-                            : '${category.particleCount ?? 0} partikel',
+                            ? s.progressLearned(progress.$1, progress.$2)
+                            : s.particleCount(category.particleCount ?? 0),
                         style: TextStyle(
                           fontSize: 12,
                           color: AppColors.textNavy.withValues(alpha: 0.6),
@@ -143,9 +147,9 @@ class _CategoryCard extends ConsumerWidget {
                           color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Text(
-                          'Segera',
-                          style: TextStyle(
+                        child: Text(
+                          s.soonBadge,
+                          style: const TextStyle(
                             fontSize: 9,
                             fontWeight: FontWeight.bold,
                             color: AppColors.freeBadgeGrey,

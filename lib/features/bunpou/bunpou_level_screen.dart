@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
@@ -66,18 +68,19 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
     final bunpouAsync = ref.watch(bunpouByLevelProvider(widget.jlptLevel));
     final learnedIds =
         ref.watch(bunpouLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Bunpou ${widget.levelName}'),
+        title: Text(s.bunpouLevelTitle(widget.levelName)),
         actions: [
           bunpouAsync.maybeWhen(
             data: (all) {
               final real = all.where((b) => !b.placeholder).toList();
               if (real.length < 4) return const SizedBox.shrink();
               return IconButton(
-                tooltip: 'Mulai Kuis',
+                tooltip: s.startQuizTooltip,
                 icon: const Icon(Icons.quiz_outlined),
                 onPressed: () => _openQuizPicker(real),
               );
@@ -90,13 +93,13 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
         data: (all) {
           final realTotal = all.where((b) => !b.placeholder).length;
           if (realTotal == 0) {
-            return const Center(
+            return Center(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32),
+                padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Text(
-                  'Pola tata bahasa untuk level ini belum tersedia.',
+                  s.noBunpouForLevel,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: AppColors.textNavy),
+                  style: const TextStyle(color: AppColors.textNavy),
                 ),
               ),
             );
@@ -107,9 +110,10 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
               .length;
           return Column(
             children: [
-              _ProgressBar(learned: learnedCount, total: realTotal),
+              _ProgressBar(learned: learnedCount, total: realTotal, strings: s),
               _FilterRow(
                 filter: _filter,
+                strings: s,
                 onFilterChanged: (v) => setState(() => _filter = v),
               ),
               Expanded(
@@ -128,7 +132,7 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
                               padding: const EdgeInsets.only(top: 120),
                               child: Center(
                                 child: Text(
-                                  'Tidak ada pola yang cocok dengan filter.',
+                                  s.noBunpouMatchesFilter,
                                   style: TextStyle(
                                     color: AppColors.textNavy.withValues(
                                       alpha: 0.6,
@@ -165,7 +169,7 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat pola: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadBunpou(e))),
       ),
     );
   }
@@ -174,8 +178,13 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
 class _ProgressBar extends StatelessWidget {
   final int learned;
   final int total;
+  final AppStrings strings;
 
-  const _ProgressBar({required this.learned, required this.total});
+  const _ProgressBar({
+    required this.learned,
+    required this.total,
+    required this.strings,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -186,7 +195,7 @@ class _ProgressBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '$learned/$total dipelajari',
+            strings.progressLearned(learned, total),
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
@@ -211,18 +220,22 @@ class _ProgressBar extends StatelessWidget {
 
 class _FilterRow extends StatelessWidget {
   final _LearnFilter filter;
+  final AppStrings strings;
   final ValueChanged<_LearnFilter> onFilterChanged;
 
-  const _FilterRow({required this.filter, required this.onFilterChanged});
-
-  static const _labels = {
-    _LearnFilter.semua: 'Semua',
-    _LearnFilter.belum: 'Belum Dipelajari',
-    _LearnFilter.sudah: 'Sudah Dipelajari',
-  };
+  const _FilterRow({
+    required this.filter,
+    required this.strings,
+    required this.onFilterChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final labels = {
+      _LearnFilter.semua: strings.filterAll,
+      _LearnFilter.belum: strings.filterNotLearned,
+      _LearnFilter.sudah: strings.filterLearned,
+    };
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: SingleChildScrollView(
@@ -233,7 +246,7 @@ class _FilterRow extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.only(right: 8),
               child: ChoiceChip(
-                label: Text(_labels[f]!),
+                label: Text(labels[f]!),
                 selected: isSelected,
                 selectedColor: AppColors.primaryCoral.withValues(alpha: 0.2),
                 labelStyle: TextStyle(
@@ -319,7 +332,7 @@ class _BunpouTile extends StatelessWidget {
   }
 }
 
-class _QuizModeSheet extends StatelessWidget {
+class _QuizModeSheet extends ConsumerWidget {
   final String levelName;
   final List<BunpouEntry> entries;
 
@@ -334,7 +347,8 @@ class _QuizModeSheet extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
       decoration: const BoxDecoration(
@@ -356,9 +370,9 @@ class _QuizModeSheet extends StatelessWidget {
               ),
             ),
           ),
-          const Text(
-            'Pilih Mode Kuis',
-            style: TextStyle(
+          Text(
+            s.chooseQuizMode,
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: AppColors.textNavy,
@@ -368,16 +382,16 @@ class _QuizModeSheet extends StatelessWidget {
           _ModeTile(
             icon: Icons.text_fields,
             color: AppColors.primaryCoral,
-            title: 'Pola → Arti',
-            subtitle: 'Lihat pola, pilih artinya',
+            title: s.patternToMeaningTitle,
+            subtitle: s.patternToMeaningSubtitle,
             onTap: () => _start(context, BunpouQuizMode.patternToMeaning),
           ),
           const SizedBox(height: 10),
           _ModeTile(
             icon: Icons.translate,
             color: AppColors.secondaryBlue,
-            title: 'Arti → Pola',
-            subtitle: 'Lihat artinya, pilih polanya',
+            title: s.meaningToPatternTitle,
+            subtitle: s.meaningToPatternSubtitle,
             onTap: () => _start(context, BunpouQuizMode.meaningToPattern),
           ),
         ],

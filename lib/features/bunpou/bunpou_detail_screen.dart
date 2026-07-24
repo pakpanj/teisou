@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/swipe_navigator.dart';
@@ -66,6 +67,7 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
     final learnedIds =
         ref.watch(bunpouLearnedIdsProvider).valueOrNull ?? const <String>{};
     final isLearned = learnedIds.contains(entry.id);
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -99,12 +101,13 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
                       _LearnedButton(
                         learned: isLearned,
                         busy: _togglingLearned,
+                        strings: s,
                         onTap: _togglingLearned
                             ? null
                             : () => _toggleLearned(isLearned),
                       ),
                       const SizedBox(height: 24),
-                      const _SectionTitle('Arti'),
+                      _SectionTitle(s.meaningSectionTitle),
                       const SizedBox(height: 8),
                       Align(
                         alignment: Alignment.centerLeft,
@@ -114,22 +117,22 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
                         ),
                       ),
                       const SizedBox(height: 24),
-                      const _SectionTitle('Pembentukan'),
+                      _SectionTitle(s.formationSectionTitle),
                       const SizedBox(height: 8),
                       _InfoCard(text: entry.formation),
                       const SizedBox(height: 24),
-                      const _SectionTitle('Catatan Pemakaian'),
+                      _SectionTitle(s.usageNotesSectionTitle),
                       const SizedBox(height: 8),
                       _InfoCard(text: entry.usageNotes),
                       if (entry.similarPatterns.isNotEmpty) ...[
                         const SizedBox(height: 24),
-                        const _SectionTitle('Pola Serupa'),
+                        _SectionTitle(s.similarPatternsTitle),
                         const SizedBox(height: 8),
                         _SimilarPatternsRow(ids: entry.similarPatterns),
                       ],
                       if (entry.sentenceExamples.isNotEmpty) ...[
                         const SizedBox(height: 24),
-                        const _SectionTitle('Contoh Kalimat'),
+                        _SectionTitle(s.sentenceExamplesTitle),
                         const SizedBox(height: 8),
                         ...entry.sentenceExamples.map(
                           (example) => _SentenceExampleCard(
@@ -335,11 +338,13 @@ class _AudioButton extends StatelessWidget {
 class _LearnedButton extends StatelessWidget {
   final bool learned;
   final bool busy;
+  final AppStrings strings;
   final VoidCallback? onTap;
 
   const _LearnedButton({
     required this.learned,
     required this.busy,
+    required this.strings,
     required this.onTap,
   });
 
@@ -374,7 +379,7 @@ class _LearnedButton extends StatelessWidget {
                 ),
               const SizedBox(width: 8),
               Text(
-                learned ? 'Sudah Dipelajari' : 'Tandai Sudah Dipelajari',
+                learned ? strings.markedLearned : strings.markAsLearned,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 13,

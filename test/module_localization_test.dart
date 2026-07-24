@@ -8,6 +8,7 @@ import 'package:kana_master/data/models/app_language.dart';
 import 'package:kana_master/data/models/jlpt_level.dart';
 import 'package:kana_master/features/kanji/kanji_level_screen.dart';
 import 'package:kana_master/features/kotoba/kotoba_home_screen.dart';
+import 'package:kana_master/features/particle/particle_home_screen.dart';
 
 void main() {
   // kanjiLearnedIdsProvider reads SharedPreferences — without a mock, the
@@ -61,6 +62,29 @@ void main() {
       expect(find.text('Not Learned'), findsOneWidget);
       expect(find.text('Learned'), findsOneWidget);
       expect(find.text('Semua'), findsNothing);
+    },
+  );
+
+  testWidgets(
+    'ParticleHomeScreen app bar title switches language',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          key: UniqueKey(),
+          child: const MaterialApp(home: ParticleHomeScreen()),
+        ),
+      );
+      expect(find.text('Partikel'), findsOneWidget);
+
+      await tester.pumpWidget(
+        ProviderScope(
+          key: UniqueKey(),
+          overrides: [languageProvider.overrideWith((ref) => AppLanguage.english)],
+          child: const MaterialApp(home: ParticleHomeScreen()),
+        ),
+      );
+      expect(find.text('Particles'), findsOneWidget);
+      expect(find.text('Partikel'), findsNothing);
     },
   );
 }

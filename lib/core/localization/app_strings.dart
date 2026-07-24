@@ -7,15 +7,15 @@ import '../../data/models/app_language.dart';
 /// Flutter's ARB/gen-l10n pipeline for the first time.
 ///
 /// **Coverage, not the whole app**: Home tab, Modules section, Profile
-/// screen, language picker, and (as of the Kanji/Kotoba pass) the Kanji
-/// and Kotoba modules' Home/Level-or-Category/Detail/Quiz screens are
-/// wired to this. Bunpou/Partikel/Kaiwa's equivalent screens, and
-/// everything outside the 5 learning modules (Search, Leaderboard, Ujian,
-/// Saved Words, About, Notification, Paywall, Cam Detector, etc.) are
-/// NOT yet — see CLAUDE.md's "Bahasa App" note for the exact scope and
-/// why. Switching to English right now only changes what's listed there;
-/// the rest of the app stays in Indonesian until a later pass extends
-/// this, following the same `ref.watch(appStringsProvider)` pattern.
+/// screen, language picker, and all 5 learning modules' Home/Level-or-
+/// Category/Detail/Quiz screens (Kanji, Kotoba, Bunpou, Partikel, Kaiwa)
+/// are wired to this. Everything outside those 5 modules (Search,
+/// Leaderboard, Ujian, Saved Words, About, Notification, Paywall, Cam
+/// Detector, etc.) is NOT yet — see CLAUDE.md's "Bahasa App" note for the
+/// exact scope and why. Switching to English right now only changes
+/// what's listed there; the rest of the app stays in Indonesian until a
+/// later pass extends this, following the same
+/// `ref.watch(appStringsProvider)` pattern.
 class AppStrings {
   final AppLanguage language;
   const AppStrings(this.language);
@@ -238,4 +238,92 @@ class AppStrings {
   String get whatIsWordMeaning => _t('Apa arti kata ini?', 'What does this word mean?');
   String get reviewWordsAgain =>
       _t('Yuk, pelajari lagi kata-katanya!', "Let's review the words again!");
+
+  // --- Bunpou module ---
+  String bunpouLevelComingSoon(String levelName) =>
+      _t('Bunpou $levelName segera hadir!', 'Bunpou $levelName coming soon!');
+  String bunpouLevelTitle(String levelName) => 'Bunpou $levelName';
+  String bunpouPatternCount(int n) => _t('$n pola', '$n patterns');
+  String failedToLoadBunpou(Object e) =>
+      _t('Gagal memuat pola: $e', 'Failed to load grammar patterns: $e');
+  String get noBunpouForLevel => _t(
+        'Pola tata bahasa untuk level ini belum tersedia.',
+        'No grammar patterns available for this level yet.',
+      );
+  String get noBunpouMatchesFilter => _t(
+        'Tidak ada pola yang cocok dengan filter.',
+        'No patterns match this filter.',
+      );
+  String bunpouQuizTitle(String levelName) =>
+      _t('Kuis · Bunpou $levelName', 'Quiz · Bunpou $levelName');
+  String get whatIsPatternMeaning =>
+      _t('Apa arti pola ini?', 'What does this pattern mean?');
+  String get whichPatternMeans =>
+      _t('Pola mana yang berarti ini?', 'Which pattern means this?');
+  String get reviewPatternsAgain =>
+      _t('Yuk, pelajari lagi polanya!', "Let's review the patterns again!");
+  String get patternToMeaningTitle => _t('Pola → Arti', 'Pattern → Meaning');
+  String get patternToMeaningSubtitle =>
+      _t('Lihat pola, pilih artinya', 'See the pattern, pick its meaning');
+  String get meaningToPatternTitle => _t('Arti → Pola', 'Meaning → Pattern');
+  String get meaningToPatternSubtitle =>
+      _t('Lihat artinya, pilih polanya', 'See the meaning, pick the pattern');
+  String get formationSectionTitle => _t('Pembentukan', 'Formation');
+  String get usageNotesSectionTitle => _t('Catatan Pemakaian', 'Usage Notes');
+  String get similarPatternsTitle => _t('Pola Serupa', 'Similar Patterns');
+
+  // --- Partikel module ---
+  String particleCount(int n) => _t('$n partikel', '$n particles');
+  String failedToLoadParticles(Object e) =>
+      _t('Gagal memuat partikel: $e', 'Failed to load particles: $e');
+  String get noParticlesForCategory => _t(
+        'Partikel untuk kategori ini belum tersedia.',
+        'No particles available for this category yet.',
+      );
+  String get noParticlesMatchFilter => _t(
+        'Tidak ada partikel yang cocok dengan filter.',
+        'No particles match this filter.',
+      );
+  String particleQuizTitle(String categoryName) =>
+      _t('Kuis · Partikel $categoryName', 'Quiz · Particle $categoryName');
+  String get whichParticleFits => _t(
+        'Partikel mana yang tepat untuk mengisi kalimat ini?',
+        'Which particle correctly fills this sentence?',
+      );
+  String get reviewParticlesAgain => _t(
+        'Yuk, pelajari lagi partikelnya!',
+        "Let's review the particles again!",
+      );
+  String get summarySectionTitle => _t('Ringkasan', 'Summary');
+  String get similarParticlesTitle => _t('Partikel Serupa', 'Similar Particles');
+  String get functionsSectionTitle => _t('Fungsi', 'Functions');
+
+  // --- Kaiwa module ---
+  String kaiwaLevelComingSoon(String levelName) =>
+      _t('Kaiwa $levelName segera hadir!', 'Kaiwa $levelName coming soon!');
+  String kaiwaLevelTitle(String levelName) => 'Kaiwa $levelName';
+  String themeCount(int n) => _t('$n tema', '$n themes');
+  String failedToLoadThemes(Object e) =>
+      _t('Gagal memuat tema: $e', 'Failed to load themes: $e');
+  String get noThemesForLevel => _t(
+        'Tema untuk level ini belum tersedia.',
+        'No themes available for this level yet.',
+      );
+  String dialogueCount(int n) => _t('$n dialog', '$n dialogues');
+  String failedToLoadDialogues(Object e) =>
+      _t('Gagal memuat dialog: $e', 'Failed to load dialogues: $e');
+  String get noDialoguesForCategory => _t(
+        'Dialog untuk kategori ini belum tersedia.',
+        'No dialogues available for this category yet.',
+      );
+  String get noDialoguesMatchFilter => _t(
+        'Tidak ada dialog yang cocok dengan filter.',
+        'No dialogues match this filter.',
+      );
+  String get yourTurnPickAnswer => _t(
+        'Giliranmu — pilih jawaban di bawah',
+        'Your turn — pick the answer below',
+      );
+  String get pickCorrectAnswer =>
+      _t('Pilih jawaban yang tepat:', 'Pick the correct answer:');
 }

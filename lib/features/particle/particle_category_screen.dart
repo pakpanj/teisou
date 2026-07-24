@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
@@ -68,6 +70,7 @@ class _ParticleCategoryScreenState
     );
     final learnedIds =
         ref.watch(particleLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -79,7 +82,7 @@ class _ParticleCategoryScreenState
               final real = all.where((p) => !p.placeholder).toList();
               if (real.length < 4) return const SizedBox.shrink();
               return IconButton(
-                tooltip: 'Mulai Kuis',
+                tooltip: s.startQuizTooltip,
                 icon: const Icon(Icons.quiz_outlined),
                 onPressed: () => _openQuiz(real),
               );
@@ -92,13 +95,13 @@ class _ParticleCategoryScreenState
         data: (all) {
           final realTotal = all.where((p) => !p.placeholder).length;
           if (realTotal == 0) {
-            return const Center(
+            return Center(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32),
+                padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Text(
-                  'Partikel untuk kategori ini belum tersedia.',
+                  s.noParticlesForCategory,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: AppColors.textNavy),
+                  style: const TextStyle(color: AppColors.textNavy),
                 ),
               ),
             );
@@ -109,9 +112,10 @@ class _ParticleCategoryScreenState
               .length;
           return Column(
             children: [
-              _ProgressBar(learned: learnedCount, total: realTotal),
+              _ProgressBar(learned: learnedCount, total: realTotal, strings: s),
               _FilterRow(
                 filter: _filter,
+                strings: s,
                 onFilterChanged: (v) => setState(() => _filter = v),
               ),
               Expanded(
@@ -130,7 +134,7 @@ class _ParticleCategoryScreenState
                               padding: const EdgeInsets.only(top: 120),
                               child: Center(
                                 child: Text(
-                                  'Tidak ada partikel yang cocok dengan filter.',
+                                  s.noParticlesMatchFilter,
                                   style: TextStyle(
                                     color: AppColors.textNavy.withValues(
                                       alpha: 0.6,
@@ -167,7 +171,7 @@ class _ParticleCategoryScreenState
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat partikel: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadParticles(e))),
       ),
     );
   }
@@ -176,8 +180,13 @@ class _ParticleCategoryScreenState
 class _ProgressBar extends StatelessWidget {
   final int learned;
   final int total;
+  final AppStrings strings;
 
-  const _ProgressBar({required this.learned, required this.total});
+  const _ProgressBar({
+    required this.learned,
+    required this.total,
+    required this.strings,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -188,7 +197,7 @@ class _ProgressBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '$learned/$total dipelajari',
+            strings.progressLearned(learned, total),
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
@@ -213,18 +222,22 @@ class _ProgressBar extends StatelessWidget {
 
 class _FilterRow extends StatelessWidget {
   final _LearnFilter filter;
+  final AppStrings strings;
   final ValueChanged<_LearnFilter> onFilterChanged;
 
-  const _FilterRow({required this.filter, required this.onFilterChanged});
-
-  static const _labels = {
-    _LearnFilter.semua: 'Semua',
-    _LearnFilter.belum: 'Belum Dipelajari',
-    _LearnFilter.sudah: 'Sudah Dipelajari',
-  };
+  const _FilterRow({
+    required this.filter,
+    required this.strings,
+    required this.onFilterChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final labels = {
+      _LearnFilter.semua: strings.filterAll,
+      _LearnFilter.belum: strings.filterNotLearned,
+      _LearnFilter.sudah: strings.filterLearned,
+    };
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: SingleChildScrollView(
@@ -235,7 +248,7 @@ class _FilterRow extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.only(right: 8),
               child: ChoiceChip(
-                label: Text(_labels[f]!),
+                label: Text(labels[f]!),
                 selected: isSelected,
                 selectedColor: AppColors.primaryCoral.withValues(alpha: 0.2),
                 labelStyle: TextStyle(

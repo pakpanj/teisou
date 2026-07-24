@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
@@ -28,10 +30,11 @@ class KaiwaLevelScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categoriesAsync = ref.watch(kaiwaCategoriesByLevelProvider(level));
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(title: Text('Kaiwa $levelName')),
+      appBar: AppBar(title: Text(s.kaiwaLevelTitle(levelName))),
       body: categoriesAsync.when(
         data: (categories) => Column(
           children: [
@@ -42,18 +45,18 @@ class KaiwaLevelScreen extends ConsumerWidget {
                 child: categories.isEmpty
                     ? ListView(
                         physics: const AlwaysScrollableScrollPhysics(),
-                        children: const [
+                        children: [
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                               top: 120,
                               left: 32,
                               right: 32,
                             ),
                             child: Center(
                               child: Text(
-                                'Tema untuk level ini belum tersedia.',
+                                s.noThemesForLevel,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(color: AppColors.textNavy),
+                                style: const TextStyle(color: AppColors.textNavy),
                               ),
                             ),
                           ),
@@ -75,7 +78,7 @@ class KaiwaLevelScreen extends ConsumerWidget {
           ],
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat tema: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadThemes(e))),
       ),
     );
   }
@@ -86,11 +89,11 @@ class _ThemeCard extends ConsumerWidget {
 
   const _ThemeCard({required this.category});
 
-  void _open(BuildContext context) {
+  void _open(BuildContext context, AppStrings s) {
     if (!category.available) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('${category.name} segera hadir!')));
+      ).showSnackBar(SnackBar(content: Text(s.categoryComingSoon(category.name))));
       return;
     }
     AppNavigator.slideFromRight(
@@ -105,13 +108,14 @@ class _ThemeCard extends ConsumerWidget {
     final progress = available
         ? ref.watch(kaiwaCategoryProgressProvider(category.id)).valueOrNull
         : null;
+    final s = ref.watch(appStringsProvider);
 
     return Material(
       color: available ? AppColors.cardWhite : Colors.grey.shade100,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () => _open(context),
+        onTap: () => _open(context, s),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -152,8 +156,8 @@ class _ThemeCard extends ConsumerWidget {
                     if (available)
                       Text(
                         progress != null && progress.$1 > 0
-                            ? '${progress.$1}/${progress.$2} dipelajari'
-                            : '${category.dialogueCount ?? 0} dialog',
+                            ? s.progressLearned(progress.$1, progress.$2)
+                            : s.dialogueCount(category.dialogueCount ?? 0),
                         style: TextStyle(
                           fontSize: 12,
                           color: AppColors.textNavy.withValues(alpha: 0.6),
@@ -169,9 +173,9 @@ class _ThemeCard extends ConsumerWidget {
                           color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Text(
-                          'Segera',
-                          style: TextStyle(
+                        child: Text(
+                          s.soonBadge,
+                          style: const TextStyle(
                             fontSize: 9,
                             fontWeight: FontWeight.bold,
                             color: AppColors.freeBadgeGrey,

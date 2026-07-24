@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/kaiwa_expressions.dart';
+import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/swipe_navigator.dart';
@@ -161,6 +162,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
     final learnedIds =
         ref.watch(kaiwaLearnedIdsProvider).valueOrNull ?? const <String>{};
     final isLearned = learnedIds.contains(_entry.id);
+    final s = ref.watch(appStringsProvider);
     final lines = _entry.lines;
     final lastIsUnansweredUserTurn =
         _revealedCount > 0 &&
@@ -206,6 +208,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
                         key: ValueKey(lines[i].id),
                         line: lines[i],
                         answer: _answered[i],
+                        strings: s,
                       ),
                   ],
                 ),
@@ -217,6 +220,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
               options: lines[_revealedCount - 1].options,
               order: _optionOrder[_revealedCount - 1] ?? const [],
               wrongOptionIndex: _wrongOptionIndex,
+              strings: s,
               onSelect: (originalIndex, option) =>
                   _selectOption(_revealedCount - 1, originalIndex, option),
             )
@@ -224,6 +228,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
             _CompletionBar(
               learned: isLearned,
               toggling: _togglingLearned,
+              strings: s,
               onToggleLearned: _toggleLearned,
               hasNext: _index < widget.entries.length - 1,
               hasPrev: _index > 0,
@@ -249,8 +254,14 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
 class _LineBubble extends StatelessWidget {
   final KaiwaLine line;
   final KaiwaAnswerOption? answer;
+  final AppStrings strings;
 
-  const _LineBubble({super.key, required this.line, this.answer});
+  const _LineBubble({
+    super.key,
+    required this.line,
+    this.answer,
+    required this.strings,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -390,7 +401,7 @@ class _LineBubble extends StatelessWidget {
               borderRadius: BorderRadius.circular(14),
             ),
             child: Text(
-              'Giliranmu — pilih jawaban di bawah',
+              strings.yourTurnPickAnswer,
               style: TextStyle(
                 fontSize: 13,
                 fontStyle: FontStyle.italic,
@@ -436,12 +447,14 @@ class _AnswerOptions extends StatelessWidget {
   final List<KaiwaAnswerOption> options;
   final List<int> order;
   final int? wrongOptionIndex;
+  final AppStrings strings;
   final void Function(int originalIndex, KaiwaAnswerOption option) onSelect;
 
   const _AnswerOptions({
     required this.options,
     required this.order,
     required this.wrongOptionIndex,
+    required this.strings,
     required this.onSelect,
   });
 
@@ -469,7 +482,7 @@ class _AnswerOptions extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Pilih jawaban yang tepat:',
+            strings.pickCorrectAnswer,
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
@@ -546,6 +559,7 @@ class _OptionButton extends StatelessWidget {
 class _CompletionBar extends StatelessWidget {
   final bool learned;
   final bool toggling;
+  final AppStrings strings;
   final VoidCallback onToggleLearned;
   final bool hasNext;
   final bool hasPrev;
@@ -555,6 +569,7 @@ class _CompletionBar extends StatelessWidget {
   const _CompletionBar({
     required this.learned,
     required this.toggling,
+    required this.strings,
     required this.onToggleLearned,
     required this.hasNext,
     required this.hasPrev,
@@ -589,7 +604,7 @@ class _CompletionBar extends StatelessWidget {
                 learned ? Icons.check_circle : Icons.check_circle_outline,
               ),
               label: Text(
-                learned ? 'Sudah Dipelajari' : 'Tandai Sudah Dipelajari',
+                learned ? strings.markedLearned : strings.markAsLearned,
               ),
             ),
           ),
