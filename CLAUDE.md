@@ -2477,17 +2477,17 @@ timing) on a real device before treating this as fully verified.
   current total, read straight from `_categories.json`'s own
   `wordCount` fields, is **1266 words across 45 categories** (excludes
   `konsep_umum`'s 416, which stays out of scope — not a browsable
-  category, see its own note elsewhere in this file). **956/1266 words
-  done (37 categories — all of "Alam & Lingkungan" + all of "Makanan &
+  category, see its own note elsewhere in this file). **1023/1266 words
+  done (39 categories — all of "Alam & Lingkungan" + all of "Makanan &
   Minuman" + all of "Tubuh & Kesehatan" + all of "Tempat &
-  Transportasi" + all of "Manusia & Sosial" + 2 of "Pendidikan &
-  Pekerjaan": alat_tulis_sekolah, mata_pelajaran — konsep_umum
-  excluded, out of scope), 310 words across 8 categories remain (3 more
-  in "Pendidikan & Pekerjaan" + all 5 of "Waktu & Angka", which
-  includes warna/bentuk per _categories.json's real group field).
-  Group-to-category mapping is per `_categories.json`'s own `group`
-  field, not guessed from name/context — verified via `python -c
-  "import json; [print(e['id'], e['group']) for e in
+  Transportasi" + all of "Manusia & Sosial" + 4 of "Pendidikan &
+  Pekerjaan": alat_tulis_sekolah, mata_pelajaran, teknologi_gadget,
+  media_hiburan — konsep_umum excluded, out of scope), 243 words across
+  6 categories remain (just pekerjaan_kantor's 118 + all 5 of "Waktu &
+  Angka", which includes warna/bentuk per _categories.json's real group
+  field). Group-to-category mapping is per `_categories.json`'s own
+  `group` field, not guessed from name/context — verified via `python
+  -c "import json; [print(e['id'], e['group']) for e in
   json.load(open('assets/data/kotoba/_categories.json',
   encoding='utf-8'))]"` since an earlier pass in this file mislabeled 6
   Tubuh & Kesehatan categories as "Manusia & Sosial" before this was
@@ -2551,8 +2551,8 @@ timing) on a real device before treating this as fully verified.
   - [x] alat_tulis_sekolah (21 words)
   - [x] mata_pelajaran (69 words)
   - [ ] pekerjaan_kantor (118 words)
-  - [ ] teknologi_gadget (39 words)
-  - [ ] media_hiburan (28 words)
+  - [x] teknologi_gadget (39 words)
+  - [x] media_hiburan (28 words)
   - [ ] hari_bulan (79 words)
   - [ ] musim (5 words)
   - [ ] angka_satuan (20 words)

@@ -21,7 +21,8 @@
         "translation": "Saya menonton televisi."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_terebi.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_terebi.png",
+    "meaningEn": "television"
   },
   {
     "id": "kotoba_media_hiburan_manga",
@@ -45,7 +46,8 @@
         "translation": "Saya membaca komik."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_manga.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_manga.png",
+    "meaningEn": "comic (manga)"
   },
   {
     "id": "kotoba_media_hiburan_anime",
@@ -69,7 +71,8 @@
         "translation": "Saya suka anime."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_anime.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_anime.png",
+    "meaningEn": "animation (anime)"
   },
   {
     "id": "kotoba_media_hiburan_shinbun",
@@ -93,7 +96,8 @@
         "translation": "Saya membaca koran."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shinbun.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shinbun.png",
+    "meaningEn": "newspaper"
   },
   {
     "id": "kotoba_media_hiburan_zasshi",
@@ -117,7 +121,8 @@
         "translation": "Saya membeli majalah."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_zasshi.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_zasshi.png",
+    "meaningEn": "magazine"
   },
   {
     "id": "kotoba_media_hiburan_rajio",
@@ -141,7 +146,8 @@
         "translation": "Saya mendengarkan radio."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rajio.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rajio.png",
+    "meaningEn": "radio"
   },
   {
     "id": "kotoba_media_hiburan_nyuusu",
@@ -165,7 +171,8 @@
         "translation": "Saya menonton berita."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_nyuusu.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_nyuusu.png",
+    "meaningEn": "news"
   },
   {
     "id": "kotoba_media_hiburan_dorama",
@@ -189,7 +196,8 @@
         "translation": "Saya menonton drama."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_dorama.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_dorama.png",
+    "meaningEn": "TV drama"
   },
   {
     "id": "kotoba_media_hiburan_yuuchuubu",
@@ -213,7 +221,8 @@
         "translation": "Saya menonton video di YouTube."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_yuuchuubu.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_yuuchuubu.png",
+    "meaningEn": "YouTube"
   },
   {
     "id": "kotoba_media_hiburan_sns",
@@ -237,7 +246,8 @@
         "translation": "Saya menggunakan media sosial."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_sns.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_sns.png",
+    "meaningEn": "social media"
   },
   {
     "id": "kotoba_media_hiburan_ken'etsu",
@@ -261,7 +271,8 @@
         "translation": "Di negara itu, pemberitaan disensor."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_ken'etsu.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_ken'etsu.png",
+    "meaningEn": "censorship (media/press)"
   },
   {
     "id": "kotoba_media_hiburan_netsuzou",
@@ -285,7 +296,8 @@
         "translation": "Artikel itu ternyata rekayasa/palsu."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_netsuzou.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_netsuzou.png",
+    "meaningEn": "fabrication (of news)"
   },
   {
     "id": "kotoba_media_hiburan_inpei",
@@ -309,7 +321,8 @@
         "translation": "Perusahaan itu menutup-nutupi masalahnya."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_inpei.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_inpei.png",
+    "meaningEn": "cover-up/concealment (of facts)"
   },
   {
     "id": "kotoba_media_hiburan_okusoku",
@@ -333,7 +346,8 @@
         "translation": "Tidak seharusnya menulis artikel berdasarkan spekulasi."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_okusoku.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_okusoku.png",
+    "meaningEn": "speculation/conjecture"
   },
   {
     "id": "kotoba_media_hiburan_rotei",
@@ -357,7 +371,8 @@
         "translation": "Titik masalahnya terungkap dalam konferensi pers."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rotei.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rotei.png",
+    "meaningEn": "exposure (of a flaw)"
   },
   {
     "id": "kotoba_media_hiburan_koukoku",
@@ -381,7 +396,8 @@
         "translation": "Saya melihat iklan di televisi."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_koukoku.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_koukoku.png",
+    "meaningEn": "advertisement"
   },
   {
     "id": "kotoba_media_hiburan_housou",
@@ -405,7 +421,8 @@
         "translation": "Acara ini disiarkan setiap minggu."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_housou.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_housou.png",
+    "meaningEn": "broadcast"
   },
   {
     "id": "kotoba_media_hiburan_haishin",
@@ -429,7 +446,8 @@
         "translation": "Drama baru sudah dirilis untuk streaming."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_haishin.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_haishin.png",
+    "meaningEn": "streaming/distribution (of content)"
   },
   {
     "id": "kotoba_media_hiburan_eizou",
@@ -453,7 +471,8 @@
         "translation": "Rekaman visual itu sangat indah."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_eizou.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_eizou.png",
+    "meaningEn": "video footage/visual"
   },
   {
     "id": "kotoba_media_hiburan_kiji",
@@ -477,7 +496,8 @@
         "translation": "Membaca artikel koran."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_kiji.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_kiji.png",
+    "meaningEn": "(news) article"
   },
   {
     "id": "kotoba_media_hiburan_genkou",
@@ -501,7 +521,8 @@
         "translation": "Sedang menulis naskah."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_genkou.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_genkou.png",
+    "meaningEn": "manuscript/draft"
   },
   {
     "id": "kotoba_media_hiburan_senden",
@@ -525,7 +546,8 @@
         "translation": "Mengiklankan produk baru."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_senden.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_senden.png",
+    "meaningEn": "advertising/promotion"
   },
   {
     "id": "kotoba_media_hiburan_toujou",
@@ -549,7 +571,8 @@
         "translation": "Guru muncul di kelas. (acara, cerita,film panggung)"
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_toujou.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_toujou.png",
+    "meaningEn": "appearance/entrance"
   },
   {
     "id": "kotoba_media_hiburan_monogatari",
@@ -573,7 +596,8 @@
         "translation": "Saya membaca cerita yang menarik. (Dongeng)"
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_monogatari.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_monogatari.png",
+    "meaningEn": "story/tale"
   },
   {
     "id": "kotoba_media_hiburan_shuukan",
@@ -597,7 +621,8 @@
         "translation": "Membaca majalah mingguan."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shuukan.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shuukan.png",
+    "meaningEn": "weekly publication"
   },
   {
     "id": "kotoba_media_hiburan_shasetsu",
@@ -621,7 +646,8 @@
         "translation": "Membaca editorial."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shasetsu.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shasetsu.png",
+    "meaningEn": "editorial (newspaper)"
   },
   {
     "id": "kotoba_media_hiburan_bangumi",
@@ -645,7 +671,8 @@
         "translation": "Menonton acara TV."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_bangumi.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_bangumi.png",
+    "meaningEn": "(TV/radio) program"
   },
   {
     "id": "kotoba_media_hiburan_shousetsu",
@@ -669,6 +696,7 @@
         "translation": "Membaca novel."
       }
     ],
-    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shousetsu.png"
+    "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shousetsu.png",
+    "meaningEn": "novel"
   }
 ]

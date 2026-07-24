@@ -11,13 +11,14 @@ patches the real JSON files, so there's never a second copy to keep in
 sync by hand.
 
 STATUS (update this line every time a category is finished):
-    Done (37): all of "Alam & Lingkungan" (10) + all of "Makanan &
+    Done (39): all of "Alam & Lingkungan" (10) + all of "Makanan &
     Minuman" (7) + all of "Tubuh & Kesehatan" (6) + all of "Tempat &
-    Transportasi" (6) + all of "Manusia & Sosial" (6) + 2 of
-    "Pendidikan & Pekerjaan" (alat_tulis_sekolah, mata_pelajaran) =
-    956/1266 words. Remaining: 8 categories, 310 words (Pendidikan &
-    Pekerjaan's remaining 3 + all 5 of Waktu & Angka, which includes
-    warna/bentuk per _categories.json's real group field).
+    Transportasi" (6) + all of "Manusia & Sosial" (6) + 4 of
+    "Pendidikan & Pekerjaan" (alat_tulis_sekolah, mata_pelajaran,
+    teknologi_gadget, media_hiburan) = 1023/1266 words. Remaining: 6
+    categories, 243 words (just pekerjaan_kantor's 118 + all 5 of Waktu
+    & Angka, which includes warna/bentuk per _categories.json's real
+    group field).
     See CLAUDE.md's Kotoba-localization note for the full per-category
     checklist and the exact workflow to add a new category here.
 
@@ -1067,6 +1068,77 @@ MEANING_EN: dict[str, dict[str, str]] = {
         "kotoba_mata_pelajaran_nyuugaku": "school enrollment",
         "kotoba_mata_pelajaran_sotsugyou": "graduation",
         "kotoba_mata_pelajaran_yoshuu": "preparing before class",
+    },
+    "teknologi_gadget": {
+        "kotoba_teknologi_gadget_konpyuutaa": "computer",
+        "kotoba_teknologi_gadget_sumaho": "smartphone",
+        "kotoba_teknologi_gadget_keitai": "mobile phone (general term)",
+        "kotoba_teknologi_gadget_intaanetto": "internet",
+        "kotoba_teknologi_gadget_denwa": "telephone",
+        "kotoba_teknologi_gadget_meeru": "email",
+        "kotoba_teknologi_gadget_apuri": "app",
+        "kotoba_teknologi_gadget_kamera": "camera",
+        "kotoba_teknologi_gadget_juuden": "charging (battery)",
+        "kotoba_teknologi_gadget_waifai": "wifi",
+        "kotoba_teknologi_gadget_kakushin": "innovation",
+        "kotoba_teknologi_gadget_fukyuu": "spread/proliferation (of technology)",
+        "kotoba_teknologi_gadget_shinka": "evolution/advancement",
+        "kotoba_teknologi_gadget_ouyou": "application (of theory)",
+        "kotoba_teknologi_gadget_seimitsu": "precision",
+        "kotoba_teknologi_gadget_hanyou": "general-purpose/versatile",
+        "kotoba_teknologi_gadget_jouhou": "information",
+        "kotoba_teknologi_gadget_shori": "processing",
+        "kotoba_teknologi_gadget_koushin": "update",
+        "kotoba_teknologi_gadget_setsuzoku": "connection",
+        "kotoba_teknologi_gadget_gamen": "screen",
+        "kotoba_teknologi_gadget_kinou2": "function",
+        "kotoba_teknologi_gadget_sousa": "operation",
+        "kotoba_teknologi_gadget_tsuushin": "telecommunications",
+        "kotoba_teknologi_gadget_tanmatsu": "terminal/device",
+        "kotoba_teknologi_gadget_kensaku": "search",
+        "kotoba_teknologi_gadget_hozon": "saving (data)",
+        "kotoba_teknologi_gadget_kikai": "machine",
+        "kotoba_teknologi_gadget_gijutsu": "technology/skill",
+        "kotoba_teknologi_gadget_soushin": "sending (data/email)",
+        "kotoba_teknologi_gadget_nyuuryoku": "input (data)",
+        "kotoba_teknologi_gadget_buhin": "component/part",
+        "kotoba_teknologi_gadget_hatsumei": "invention",
+        "kotoba_teknologi_gadget_kyouryoku": "powerful/strong",
+        "kotoba_teknologi_gadget_gousei": "synthesis/composite",
+        "kotoba_teknologi_gadget_kaihatsu": "development",
+        "kotoba_teknologi_gadget_denpou": "telegram",
+        "kotoba_teknologi_gadget_kagaku": "science",
+        "kotoba_teknologi_gadget_koshou": "breakdown (of a machine)",
+    },
+    "media_hiburan": {
+        "kotoba_media_hiburan_terebi": "television",
+        "kotoba_media_hiburan_manga": "comic (manga)",
+        "kotoba_media_hiburan_anime": "animation (anime)",
+        "kotoba_media_hiburan_shinbun": "newspaper",
+        "kotoba_media_hiburan_zasshi": "magazine",
+        "kotoba_media_hiburan_rajio": "radio",
+        "kotoba_media_hiburan_nyuusu": "news",
+        "kotoba_media_hiburan_dorama": "TV drama",
+        "kotoba_media_hiburan_yuuchuubu": "YouTube",
+        "kotoba_media_hiburan_sns": "social media",
+        "kotoba_media_hiburan_ken'etsu": "censorship (media/press)",
+        "kotoba_media_hiburan_netsuzou": "fabrication (of news)",
+        "kotoba_media_hiburan_inpei": "cover-up/concealment (of facts)",
+        "kotoba_media_hiburan_okusoku": "speculation/conjecture",
+        "kotoba_media_hiburan_rotei": "exposure (of a flaw)",
+        "kotoba_media_hiburan_koukoku": "advertisement",
+        "kotoba_media_hiburan_housou": "broadcast",
+        "kotoba_media_hiburan_haishin": "streaming/distribution (of content)",
+        "kotoba_media_hiburan_eizou": "video footage/visual",
+        "kotoba_media_hiburan_kiji": "(news) article",
+        "kotoba_media_hiburan_genkou": "manuscript/draft",
+        "kotoba_media_hiburan_senden": "advertising/promotion",
+        "kotoba_media_hiburan_toujou": "appearance/entrance",
+        "kotoba_media_hiburan_monogatari": "story/tale",
+        "kotoba_media_hiburan_shuukan": "weekly publication",
+        "kotoba_media_hiburan_shasetsu": "editorial (newspaper)",
+        "kotoba_media_hiburan_bangumi": "(TV/radio) program",
+        "kotoba_media_hiburan_shousetsu": "novel",
     },
     # Add the next category here, e.g.:
     # "pekerjaan_kantor": {
