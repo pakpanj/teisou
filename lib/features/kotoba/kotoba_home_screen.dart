@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
+import '../../core/localization/kotoba_category_i18n.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
@@ -37,7 +38,9 @@ class KotobaHomeScreen extends ConsumerWidget {
                   padding: const EdgeInsets.all(20),
                   children: [
                     for (final entry in groups.entries) ...[
-                      _GroupHeader(title: entry.key),
+                      _GroupHeader(
+                        title: KotobaCategoryI18n.group(entry.key, s.language),
+                      ),
                       const SizedBox(height: 12),
                       _CategoryGrid(categories: entry.value),
                       const SizedBox(height: 24),
@@ -104,9 +107,10 @@ class _CategoryCard extends ConsumerWidget {
 
   void _openCategory(BuildContext context, AppStrings s) {
     if (!category.available) {
+      final localizedName = KotobaCategoryI18n.name(category.name, s.language);
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text(s.categoryComingSoon(category.name))));
+      ).showSnackBar(SnackBar(content: Text(s.categoryComingSoon(localizedName))));
       return;
     }
     AppNavigator.slideFromRight(
@@ -156,7 +160,7 @@ class _CategoryCard extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      category.name,
+                      KotobaCategoryI18n.name(category.name, s.language),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

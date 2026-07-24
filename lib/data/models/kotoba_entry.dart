@@ -1,3 +1,4 @@
+import 'app_language.dart';
 import 'jlpt_level.dart';
 import 'sentence_example.dart';
 import 'speech_register.dart';
@@ -9,6 +10,14 @@ class KotobaEntry {
   final String reading;
   final String romaji;
   final String meaning;
+
+  /// English translation of [meaning], authored incrementally category by
+  /// category (see CLAUDE.md's Kotoba-localization note) — null for any
+  /// word not translated yet. [localizedMeaning] falls back to the
+  /// Indonesian [meaning] whenever this is null, so an untranslated word
+  /// never renders blank even mid-rollout.
+  final String? meaningEn;
+
   final JlptLevel jlptLevel;
   final String category;
   final String wordType;
@@ -33,6 +42,7 @@ class KotobaEntry {
     required this.reading,
     required this.romaji,
     required this.meaning,
+    this.meaningEn,
     required this.jlptLevel,
     required this.category,
     required this.wordType,
@@ -46,6 +56,13 @@ class KotobaEntry {
   /// Convenience accessor for callers that only ever want one example.
   SentenceExample? get sentenceExample =>
       sentenceExamples.isEmpty ? null : sentenceExamples.first;
+
+  /// [meaningEn] when [language] is English and a translation exists yet,
+  /// else the original Indonesian [meaning].
+  String localizedMeaning(AppLanguage language) =>
+      language == AppLanguage.english && meaningEn != null && meaningEn!.isNotEmpty
+          ? meaningEn!
+          : meaning;
 
   factory KotobaEntry.fromJson(Map<String, dynamic> json) {
     final rawRegisters = json['registers'] as Map<String, dynamic>? ?? {};
@@ -73,6 +90,7 @@ class KotobaEntry {
       reading: json['reading'] as String,
       romaji: json['romaji'] as String,
       meaning: json['meaning'] as String,
+      meaningEn: json['meaningEn'] as String?,
       jlptLevel: JlptLevelX.fromKey(json['jlptLevel'] as String?),
       category: json['category'] as String? ?? '',
       wordType: json['wordType'] as String? ?? '',

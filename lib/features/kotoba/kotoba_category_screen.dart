@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
+import '../../core/localization/kotoba_category_i18n.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
+import '../../data/models/app_language.dart';
 import '../../data/models/kotoba_category.dart';
 import '../../data/models/kotoba_entry.dart';
 import 'kotoba_providers.dart';
@@ -37,7 +39,7 @@ class KotobaCategoryScreen extends ConsumerWidget {
           children: [
             Text(category.icon, style: const TextStyle(fontSize: 18)),
             const SizedBox(width: 8),
-            Text(category.name),
+            Text(KotobaCategoryI18n.name(category.name, s.language)),
           ],
         ),
         actions: [
@@ -92,6 +94,7 @@ class KotobaCategoryScreen extends ConsumerWidget {
                     itemBuilder: (context, index) => _WordTile(
                       entry: words[index],
                       categoryIcon: category.icon,
+                      language: s.language,
                       learned: learnedIds.contains(words[index].id),
                       onTap: () => AppNavigator.slideFromRight(
                         context,
@@ -162,12 +165,14 @@ class _ProgressBar extends StatelessWidget {
 class _WordTile extends StatelessWidget {
   final KotobaEntry entry;
   final String categoryIcon;
+  final AppLanguage language;
   final bool learned;
   final VoidCallback onTap;
 
   const _WordTile({
     required this.entry,
     required this.categoryIcon,
+    required this.language,
     required this.learned,
     required this.onTap,
   });
@@ -213,7 +218,7 @@ class _WordTile extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      entry.meaning,
+                      entry.localizedMeaning(language),
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontSize: 13,

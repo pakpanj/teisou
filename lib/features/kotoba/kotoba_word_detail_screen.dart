@@ -109,7 +109,7 @@ class _KotobaWordDetailScreenState
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        entry.meaning,
+                        entry.localizedMeaning(s.language),
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,

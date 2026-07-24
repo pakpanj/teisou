@@ -21,7 +21,8 @@
         "translation": "Saya makan tuna."
       }
     ],
-    "imagePath": "kotoba_images/ikan/kotoba_ikan_maguro.png"
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_maguro.png",
+    "meaningEn": "tuna"
   },
   {
     "id": "kotoba_ikan_sake",
@@ -45,7 +46,8 @@
         "translation": "Salmon adalah ikan."
       }
     ],
-    "imagePath": "kotoba_images/ikan/kotoba_ikan_sake.png"
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_sake.png",
+    "meaningEn": "salmon"
   },
   {
     "id": "kotoba_ikan_tai",
@@ -69,7 +71,8 @@
         "translation": "Kakap merah adalah ikan untuk perayaan."
       }
     ],
-    "imagePath": "kotoba_images/ikan/kotoba_ikan_tai.png"
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_tai.png",
+    "meaningEn": "red seabream"
   },
   {
     "id": "kotoba_ikan_unagi",
@@ -93,7 +96,8 @@
         "translation": "Di musim panas, orang makan belut."
       }
     ],
-    "imagePath": "kotoba_images/ikan/kotoba_ikan_unagi.png"
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_unagi.png",
+    "meaningEn": "eel"
   },
   {
     "id": "kotoba_ikan_iwashi",
@@ -117,7 +121,8 @@
         "translation": "Ikan sarden itu murah."
       }
     ],
-    "imagePath": "kotoba_images/ikan/kotoba_ikan_iwashi.png"
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_iwashi.png",
+    "meaningEn": "sardine"
   },
   {
     "id": "kotoba_ikan_saba",
@@ -141,7 +146,8 @@
         "translation": "Saya memanggang ikan makarel."
       }
     ],
-    "imagePath": "kotoba_images/ikan/kotoba_ikan_saba.png"
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_saba.png",
+    "meaningEn": "mackerel"
   },
   {
     "id": "kotoba_ikan_katsuo",
@@ -165,7 +171,8 @@
         "translation": "Saya suka sashimi cakalang."
       }
     ],
-    "imagePath": "kotoba_images/ikan/kotoba_ikan_katsuo.png"
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_katsuo.png",
+    "meaningEn": "bonito (skipjack tuna)"
   },
   {
     "id": "kotoba_ikan_fugu",
@@ -189,6 +196,7 @@
         "translation": "Ikan buntal mahal, tapi enak."
       }
     ],
-    "imagePath": "kotoba_images/ikan/kotoba_ikan_fugu.png"
+    "imagePath": "kotoba_images/ikan/kotoba_ikan_fugu.png",
+    "meaningEn": "pufferfish (fugu)"
   }
 ]

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
+import '../../core/localization/kotoba_category_i18n.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/kotoba_category.dart';
@@ -40,18 +41,21 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
   int? _selected;
 
   List<_QuizQuestion> _buildQuestions() {
+    final language = ref.read(appStringsProvider).language;
     final random = Random();
     final pool = List<KotobaEntry>.from(widget.words)..shuffle(random);
     final chosen = pool.take(min(_questionCount, pool.length)).toList();
 
     return chosen.map((entry) {
       final distractorPool = widget.words.where((w) => w.id != entry.id).toList()..shuffle(random);
-      final distractors = distractorPool.take(3).map((w) => w.meaning).toList();
-      final options = [entry.meaning, ...distractors]..shuffle(random);
+      final distractors =
+          distractorPool.take(3).map((w) => w.localizedMeaning(language)).toList();
+      final correctAnswer = entry.localizedMeaning(language);
+      final options = [correctAnswer, ...distractors]..shuffle(random);
       return _QuizQuestion(
         entry: entry,
         options: options,
-        correctIndex: options.indexOf(entry.meaning),
+        correctIndex: options.indexOf(correctAnswer),
       );
     }).toList();
   }
@@ -93,7 +97,9 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text(s.kotobaQuizTitle(widget.category.name)),
+        title: Text(
+          s.kotobaQuizTitle(KotobaCategoryI18n.name(widget.category.name, s.language)),
+        ),
       ),
       body: SafeArea(
         child: finished
