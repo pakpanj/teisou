@@ -21,7 +21,8 @@
         "translation": "Saya bertanya kepada guru."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_sensei.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_sensei.png",
+    "meaningEn": "teacher/professor"
   },
   {
     "id": "kotoba_profesi_gakusei",
@@ -45,7 +46,8 @@
         "translation": "Saya seorang siswa."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusei.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusei.png",
+    "meaningEn": "student"
   },
   {
     "id": "kotoba_profesi_kaishain",
@@ -69,7 +71,8 @@
         "translation": "Ayah saya karyawan perusahaan."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_kaishain.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kaishain.png",
+    "meaningEn": "company employee"
   },
   {
     "id": "kotoba_profesi_keisatsukan",
@@ -93,7 +96,8 @@
         "translation": "Polisi mengatur lalu lintas."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_keisatsukan.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_keisatsukan.png",
+    "meaningEn": "police officer"
   },
   {
     "id": "kotoba_profesi_shouboushi",
@@ -117,7 +121,8 @@
         "translation": "Pemadam kebakaran itu berani."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_shouboushi.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shouboushi.png",
+    "meaningEn": "firefighter"
   },
   {
     "id": "kotoba_profesi_ryourinin",
@@ -141,7 +146,8 @@
         "translation": "Koki membuat masakan."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_ryourinin.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_ryourinin.png",
+    "meaningEn": "cook/chef"
   },
   {
     "id": "kotoba_profesi_bengoshi",
@@ -165,7 +171,8 @@
         "translation": "Saya berkonsultasi dengan pengacara."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_bengoshi.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_bengoshi.png",
+    "meaningEn": "lawyer"
   },
   {
     "id": "kotoba_profesi_enjinia",
@@ -189,7 +196,8 @@
         "translation": "Dia seorang insinyur."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_enjinia.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_enjinia.png",
+    "meaningEn": "engineer"
   },
   {
     "id": "kotoba_profesi_nouka",
@@ -213,7 +221,8 @@
         "translation": "Petani menanam sayuran."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_nouka.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_nouka.png",
+    "meaningEn": "farmer"
   },
   {
     "id": "kotoba_profesi_untenshu",
@@ -237,7 +246,8 @@
         "translation": "Dia supir bus."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_untenshu.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_untenshu.png",
+    "meaningEn": "driver"
   },
   {
     "id": "kotoba_profesi_shufu",
@@ -261,7 +271,8 @@
         "translation": "Ibu saya adalah ibu rumah tangga."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_shufu.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shufu.png",
+    "meaningEn": "housewife"
   },
   {
     "id": "kotoba_profesi_kashu",
@@ -285,7 +296,8 @@
         "translation": "Dia penyanyi terkenal."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_kashu.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kashu.png",
+    "meaningEn": "singer"
   },
   {
     "id": "kotoba_profesi_juuji",
@@ -309,7 +321,8 @@
         "translation": "Saya menekuni bidang pertanian."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_juuji.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_juuji.png",
+    "meaningEn": "engaging in (an occupation)"
   },
   {
     "id": "kotoba_profesi_tekisei",
@@ -333,7 +346,8 @@
         "translation": "Saya punya bakat untuk pekerjaan ini."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_tekisei.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tekisei.png",
+    "meaningEn": "aptitude (for a job)"
   },
   {
     "id": "kotoba_profesi_tenshoku",
@@ -357,7 +371,8 @@
         "translation": "Bulan depan saya pindah kerja."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenshoku.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenshoku.png",
+    "meaningEn": "changing jobs"
   },
   {
     "id": "kotoba_profesi_kengyou",
@@ -381,7 +396,8 @@
         "translation": "Saya menjalankan usaha sampingan sebagai petani."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_kengyou.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kengyou.png",
+    "meaningEn": "side job"
   },
   {
     "id": "kotoba_profesi_tsuuyaku",
@@ -405,7 +421,8 @@
         "translation": "Dia bekerja sebagai juru bahasa."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_tsuuyaku.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tsuuyaku.png",
+    "meaningEn": "interpreter"
   },
   {
     "id": "kotoba_profesi_juui",
@@ -429,7 +446,8 @@
         "translation": "Saya membawa anjing ke dokter hewan."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_juui.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_juui.png",
+    "meaningEn": "veterinarian"
   },
   {
     "id": "kotoba_profesi_biyoushi",
@@ -453,7 +471,8 @@
         "translation": "Saya minta penata rambut memotong rambut saya."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_biyoushi.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_biyoushi.png",
+    "meaningEn": "hairstylist"
   },
   {
     "id": "kotoba_profesi_kisha",
@@ -477,7 +496,8 @@
         "translation": "Wartawan mengajukan pertanyaan."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_kisha.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kisha.png",
+    "meaningEn": "journalist"
   },
   {
     "id": "kotoba_profesi_gaka",
@@ -501,7 +521,8 @@
         "translation": "Dia pelukis terkenal."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_gaka.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_gaka.png",
+    "meaningEn": "painter"
   },
   {
     "id": "kotoba_profesi_ishi",
@@ -525,7 +546,8 @@
         "translation": "Saya berkonsultasi dengan dokter."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_ishi.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_ishi.png",
+    "meaningEn": "doctor (formal term)"
   },
   {
     "id": "kotoba_profesi_koumuin",
@@ -549,7 +571,8 @@
         "translation": "Kakak laki-laki saya seorang pegawai negeri."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_koumuin.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_koumuin.png",
+    "meaningEn": "civil servant"
   },
   {
     "id": "kotoba_profesi_kyoushi",
@@ -573,7 +596,8 @@
         "translation": "Dia seorang guru."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_kyoushi.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kyoushi.png",
+    "meaningEn": "teacher (professional term)"
   },
   {
     "id": "kotoba_profesi_kaikeishi",
@@ -597,7 +621,8 @@
         "translation": "Dia bekerja sebagai akuntan."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_kaikeishi.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kaikeishi.png",
+    "meaningEn": "accountant"
   },
   {
     "id": "kotoba_profesi_yakuzaishi",
@@ -621,7 +646,8 @@
         "translation": "Saya menanyakan obat kepada apoteker."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_yakuzaishi.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_yakuzaishi.png",
+    "meaningEn": "pharmacist"
   },
   {
     "id": "kotoba_profesi_kachou",
@@ -645,7 +671,8 @@
         "translation": "Saya melapor ke kepala bagian."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_kachou.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kachou.png",
+    "meaningEn": "section chief"
   },
   {
     "id": "kotoba_profesi_keikan",
@@ -669,7 +696,8 @@
         "translation": "Bertanya pada pak polisi. (Gelar) (お巡りさんmenyapa.C)"
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_keikan.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_keikan.png",
+    "meaningEn": "police officer (address term)"
   },
   {
     "id": "kotoba_profesi_keisatsu",
@@ -693,7 +721,8 @@
         "translation": "Memanggil kepolisian. (isntitusi)"
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_keisatsu.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_keisatsu.png",
+    "meaningEn": "police (institution)"
   },
   {
     "id": "kotoba_profesi_sakusha",
@@ -717,7 +746,8 @@
         "translation": "Menulis nama pengarang."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_sakusha.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_sakusha.png",
+    "meaningEn": "author"
   },
   {
     "id": "kotoba_profesi_sakka",
@@ -741,7 +771,8 @@
         "translation": "Dia penulis terkenal."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_sakka.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_sakka.png",
+    "meaningEn": "writer"
   },
   {
     "id": "kotoba_profesi_shichou",
@@ -765,7 +796,8 @@
         "translation": "Wali kota datang."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_shichou.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shichou.png",
+    "meaningEn": "mayor"
   },
   {
     "id": "kotoba_profesi_tenchou",
@@ -789,7 +821,8 @@
         "translation": "Saya berkonsultasi dengan kepala toko."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenchou.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenchou.png",
+    "meaningEn": "store manager"
   },
   {
     "id": "kotoba_profesi_nougyou",
@@ -813,7 +846,8 @@
         "translation": "Kakek bekerja di bidang pertanian."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_nougyou.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_nougyou.png",
+    "meaningEn": "agriculture"
   },
   {
     "id": "kotoba_profesi_gakusha",
@@ -837,7 +871,8 @@
         "translation": "Dia sarjana terkenal."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusha.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusha.png",
+    "meaningEn": "scholar"
   },
   {
     "id": "kotoba_profesi_heishi",
@@ -861,7 +896,8 @@
         "translation": "Prajurit berbaris."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_heishi.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_heishi.png",
+    "meaningEn": "soldier"
   },
   {
     "id": "kotoba_profesi_juugyouin",
@@ -885,7 +921,8 @@
         "translation": "Merekrut karyawan."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_juugyouin.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_juugyouin.png",
+    "meaningEn": "employee"
   },
   {
     "id": "kotoba_profesi_shikai",
@@ -909,7 +946,8 @@
         "translation": "Menjadi pembawa acara."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_shikai.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shikai.png",
+    "meaningEn": "emcee/host"
   },
   {
     "id": "kotoba_profesi_buchou",
@@ -933,7 +971,8 @@
         "translation": "Melapor ke kepala departemen."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_buchou.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_buchou.png",
+    "meaningEn": "department head"
   },
   {
     "id": "kotoba_profesi_dorobou",
@@ -957,7 +996,8 @@
         "translation": "Waspada terhadap pencuri."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_dorobou.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_dorobou.png",
+    "meaningEn": "thief"
   },
   {
     "id": "kotoba_profesi_haisha",
@@ -981,7 +1021,8 @@
         "translation": "Pergi ke dokter gigi."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_haisha.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_haisha.png",
+    "meaningEn": "dentist"
   },
   {
     "id": "kotoba_profesi_kangofu",
@@ -1005,7 +1046,8 @@
         "translation": "Perawatnya baik hati."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_kangofu.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kangofu.png",
+    "meaningEn": "nurse (female)"
   },
   {
     "id": "kotoba_profesi_kouchou",
@@ -1029,7 +1071,8 @@
         "translation": "Bertemu kepala sekolah."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_kouchou.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_kouchou.png",
+    "meaningEn": "school principal"
   },
   {
     "id": "kotoba_profesi_shachou",
@@ -1053,7 +1096,8 @@
         "translation": "Bertemu presiden direktur."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_shachou.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_shachou.png",
+    "meaningEn": "company president"
   },
   {
     "id": "kotoba_profesi_tenin",
@@ -1077,7 +1121,8 @@
         "translation": "Bertanya kepada pegawai toko."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenin.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tenin.png",
+    "meaningEn": "shop clerk"
   },
   {
     "id": "kotoba_profesi_tokoya",
@@ -1101,6 +1146,7 @@
         "translation": "Memotong rambut di tukang cukur."
       }
     ],
-    "imagePath": "kotoba_images/profesi/kotoba_profesi_tokoya.png"
+    "imagePath": "kotoba_images/profesi/kotoba_profesi_tokoya.png",
+    "meaningEn": "barbershop/barber"
   }
 ]

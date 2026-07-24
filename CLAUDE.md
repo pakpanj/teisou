@@ -2477,15 +2477,14 @@ timing) on a real device before treating this as fully verified.
   current total, read straight from `_categories.json`'s own
   `wordCount` fields, is **1266 words across 45 categories** (excludes
   `konsep_umum`'s 416, which stays out of scope — not a browsable
-  category, see its own note elsewhere in this file). **671/1266 words
-  done (29 categories — all of "Alam & Lingkungan" + all of "Makanan &
+  category, see its own note elsewhere in this file). **771/1266 words
+  done (31 categories — all of "Alam & Lingkungan" + all of "Makanan &
   Minuman" + all of "Tubuh & Kesehatan" + all of "Tempat &
-  Transportasi": ruangan_rumah, perabot_rumah, bangunan_fasilitas,
-  kendaraan, arah_lokasi, negara_kota), 595 words across 16 categories
-  remain. Group-to-category mapping is per `_categories.json`'s own
-  `group` field, not guessed from name/context — verified via `python -c
-  "import json; [print(e['id'], e['group']) for e in
-  json.load(open('assets/data/kotoba/_categories.json',
+  Transportasi" + 2 of "Manusia & Sosial": profesi, keluarga_hubungan),
+  495 words across 14 categories remain. Group-to-category mapping is
+  per `_categories.json`'s own `group` field, not guessed from
+  name/context — verified via `python -c "import json; [print(e['id'],
+  e['group']) for e in json.load(open('assets/data/kotoba/_categories.json',
   encoding='utf-8'))]"` since an earlier pass in this file mislabeled 6
   Tubuh & Kesehatan categories as "Manusia & Sosial" before this was
   checked.**
@@ -2539,8 +2538,8 @@ timing) on a real device before treating this as fully verified.
   - [x] kendaraan (41 words)
   - [x] arah_lokasi (40 words)
   - [x] negara_kota (55 words)
-  - [ ] profesi (46 words)
-  - [ ] keluarga_hubungan (54 words)
+  - [x] profesi (46 words)
+  - [x] keluarga_hubungan (54 words)
   - [ ] pakaian_aksesori (24 words)
   - [ ] hobi_aktivitas (36 words)
   - [ ] agama_budaya (17 words)
