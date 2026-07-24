@@ -2470,12 +2470,83 @@ timing) on a real device before treating this as fully verified.
   proof-of-concept (confirmed on the Moto G52J: Fish/Land Animals both
   show correct English category names, Fish shows all 8 meanings in
   English, the not-yet-translated Land Animals correctly falls back to
-  Indonesian instead of blanking out). **44 categories, ~511 words
-  remain** — continue by adding `meaningEn` to each category's JSON
-  file (short glosses, not new content — translate what `meaning`
-  already says) and re-verifying a sample on-device, the same
-  multi-session-batch shape as the Dokkai/Kaiwa content rollouts
-  elsewhere in this file.
+  Indonesian instead of blanking out).
+  **Scale correction while scoping this**: the dataset has grown well
+  past Batch 6-7's original "519 words" figure quoted elsewhere in this
+  file (`pekerjaan_kantor` alone is 118, `hari_bulan` 79) — the real
+  current total, read straight from `_categories.json`'s own
+  `wordCount` fields, is **1266 words across 45 categories** (excludes
+  `konsep_umum`'s 416, which stays out of scope — not a browsable
+  category, see its own note elsewhere in this file). 8 done, **1258
+  words across 44 categories remain**.
+  **Hand-off infrastructure, built specifically so a session that hits
+  its limit mid-rollout doesn't lose progress or force a resume-session
+  to reverse-engineer state**: `scripts/kotoba_meaning_en.py` is the
+  single locked source of truth (mirrors `dokkai_lists.py`'s own
+  pattern) — one dict per category id, `entry_id -> english gloss`,
+  `ikan` already filled in. `scripts/apply_kotoba_meaning_en.py` reads
+  it and patches `meaningEn` into the real
+  `assets/data/kotoba/{id}.json` files (safe to re-run, validates every
+  id in the dict actually exists in the target file, reports a
+  patched/total count per category). **Workflow for the next
+  category**: open its JSON, translate `meaning` -> a short English
+  gloss per entry (translation, not new authoring), add the dict to
+  `MEANING_EN`, run `python scripts/apply_kotoba_meaning_en.py
+  {category_id}`, confirm the printed count matches the category's
+  full word count with no "id tidak ditemukan" warnings, tick its box
+  below, `flutter analyze`/`test`, commit. Do a handful of categories
+  per session rather than trying all 44 at once — same pacing the
+  Dokkai/Kaiwa rollouts used.
+  **Per-category checklist** (word counts from `_categories.json`,
+  check the box and update the two counts above when a category's
+  `meaningEn` coverage is confirmed complete):
+  - [x] ikan (8 words)
+  - [ ] hewan_darat (22 words)
+  - [ ] burung (14 words)
+  - [ ] serangga (13 words)
+  - [ ] pohon (8 words)
+  - [ ] bunga_tanaman (11 words)
+  - [ ] buah (14 words)
+  - [ ] sayuran (14 words)
+  - [ ] cuaca (23 words)
+  - [ ] bencana_alam (18 words)
+  - [ ] makanan_jepang (17 words)
+  - [ ] makanan_indonesia (7 words)
+  - [ ] makanan_barat (14 words)
+  - [ ] minuman (14 words)
+  - [ ] bumbu_rempah (13 words)
+  - [ ] peralatan_masak (14 words)
+  - [ ] cara_memasak (10 words)
+  - [ ] anggota_tubuh (30 words)
+  - [ ] penyakit_gejala (35 words)
+  - [ ] obat_obatan (27 words)
+  - [ ] olahraga (26 words)
+  - [ ] perasaan_emosi (59 words)
+  - [ ] ekspresi_wajah (10 words)
+  - [ ] ruangan_rumah (20 words)
+  - [ ] perabot_rumah (21 words)
+  - [ ] bangunan_fasilitas (73 words)
+  - [ ] kendaraan (41 words)
+  - [ ] arah_lokasi (40 words)
+  - [ ] negara_kota (55 words)
+  - [ ] profesi (46 words)
+  - [ ] keluarga_hubungan (54 words)
+  - [ ] pakaian_aksesori (24 words)
+  - [ ] hobi_aktivitas (36 words)
+  - [ ] agama_budaya (17 words)
+  - [ ] perayaan_haribesar (18 words)
+  - [ ] alat_tulis_sekolah (21 words)
+  - [ ] mata_pelajaran (69 words)
+  - [ ] pekerjaan_kantor (118 words)
+  - [ ] teknologi_gadget (39 words)
+  - [ ] media_hiburan (28 words)
+  - [ ] hari_bulan (79 words)
+  - [ ] musim (5 words)
+  - [ ] angka_satuan (20 words)
+  - [ ] warna (11 words)
+  - [ ] bentuk (10 words)
+  - `konsep_umum` (416 words) — **not in scope**, not a browsable
+    category (see its own note elsewhere in this file), skip entirely.
 - Avatar art PNGs haven't been supplied yet, but as of the 2026-07-20
   profile bug-hunt session the code is fully ready for them:
   `AvatarPreset` (`lib/core/constants/avatars.dart`) gained an
