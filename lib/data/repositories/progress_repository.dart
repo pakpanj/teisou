@@ -110,6 +110,15 @@ class ProgressRepository {
     }, SetOptions(merge: true));
   }
 
+  /// Sets which Profile-header cover the user has selected. [coverId] is
+  /// one of [CoverPresets.all]'s ids, or `null` to fall back to the
+  /// default hand-drawn [ProfileHeaderIllustration].
+  Future<void> updateCover(String uid, String? coverId) {
+    return _userDoc(uid).set({
+      'profile': {'coverId': coverId},
+    }, SetOptions(merge: true));
+  }
+
   /// Raw `profile` map — displayName/isAnonymous/currentStreak/etc.
   Stream<Map<String, dynamic>> watchProfile(String uid) {
     return _userDoc(uid).snapshots().map(
