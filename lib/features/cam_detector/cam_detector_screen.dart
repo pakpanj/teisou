@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -64,14 +63,12 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     _requestPermissionAndInit();
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    SystemChrome.setPreferredOrientations(DeviceOrientation.values);
     _disposeController();
     _recognizer.close();
     super.dispose();
@@ -224,9 +221,9 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
   }
 
   /// Converts a raw [CameraImage] frame into ML Kit's [InputImage]. Assumes
-  /// the screen is locked to portrait (see [initState]), which lets the
-  /// rotation compensation collapse to the camera's sensor orientation
-  /// directly instead of also tracking live device rotation.
+  /// the screen is locked to portrait (app-wide, see `main.dart`), which
+  /// lets the rotation compensation collapse to the camera's sensor
+  /// orientation directly instead of also tracking live device rotation.
   InputImage? _toInputImage(CameraImage image, CameraDescription camera) {
     final rotation = InputImageRotationValue.fromRawValue(camera.sensorOrientation) ??
         InputImageRotation.rotation0deg;

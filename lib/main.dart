@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -11,6 +12,14 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Also locked via `android:screenOrientation="portrait"` in
+  // AndroidManifest.xml (enforced before the Flutter engine even starts,
+  // so there's no landscape flash on launch) — this call covers platforms
+  // where the manifest lock doesn't apply.
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
