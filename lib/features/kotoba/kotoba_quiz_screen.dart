@@ -1,7 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/kotoba_category.dart';
 import '../../data/models/kotoba_entry.dart';
@@ -10,14 +13,14 @@ import '../../data/models/kotoba_entry.dart';
 /// asks the user to pick its meaning from 4 shuffled options. Standalone
 /// practice tool — quiz results don't affect the "Sudah Dipelajari" marks
 /// from [KotobaWordDetailScreen], which stay a deliberate user action.
-class KotobaQuizScreen extends StatefulWidget {
+class KotobaQuizScreen extends ConsumerStatefulWidget {
   final KotobaCategory category;
   final List<KotobaEntry> words;
 
   const KotobaQuizScreen({super.key, required this.category, required this.words});
 
   @override
-  State<KotobaQuizScreen> createState() => _KotobaQuizScreenState();
+  ConsumerState<KotobaQuizScreen> createState() => _KotobaQuizScreenState();
 }
 
 class _QuizQuestion {
@@ -28,7 +31,7 @@ class _QuizQuestion {
   _QuizQuestion({required this.entry, required this.options, required this.correctIndex});
 }
 
-class _KotobaQuizScreenState extends State<KotobaQuizScreen> {
+class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
   static const _questionCount = 10;
 
   late final List<_QuizQuestion> _questions = _buildQuestions();
@@ -86,18 +89,26 @@ class _KotobaQuizScreenState extends State<KotobaQuizScreen> {
   @override
   Widget build(BuildContext context) {
     final finished = _index >= _questions.length;
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Kuis · ${widget.category.name}'),
+        title: Text(s.kotobaQuizTitle(widget.category.name)),
       ),
       body: SafeArea(
-        child: finished ? _ResultView(score: _score, total: _questions.length, onRestart: _restart) : _buildQuestion(),
+        child: finished
+            ? _ResultView(
+                score: _score,
+                total: _questions.length,
+                strings: s,
+                onRestart: _restart,
+              )
+            : _buildQuestion(s),
       ),
     );
   }
 
-  Widget _buildQuestion() {
+  Widget _buildQuestion(AppStrings s) {
     final question = _questions[_index];
     final answered = _selected != null;
 
@@ -107,7 +118,7 @@ class _KotobaQuizScreenState extends State<KotobaQuizScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'Soal ${_index + 1} / ${_questions.length}',
+            s.questionOf(_index + 1, _questions.length),
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.bold,
@@ -126,7 +137,7 @@ class _KotobaQuizScreenState extends State<KotobaQuizScreen> {
           ),
           const SizedBox(height: 32),
           Text(
-            'Apa arti kata ini?',
+            s.whatIsWordMeaning,
             style: TextStyle(fontSize: 14, color: AppColors.textNavy.withValues(alpha: 0.7)),
           ),
           const SizedBox(height: 12),
@@ -184,7 +195,7 @@ class _KotobaQuizScreenState extends State<KotobaQuizScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
-              child: Text(_index >= _questions.length - 1 ? 'Lihat Skor' : 'Lanjut'),
+              child: Text(_index >= _questions.length - 1 ? s.seeScore : s.continueLabel),
             ),
           ),
         ],
@@ -259,18 +270,24 @@ class _OptionTile extends StatelessWidget {
 class _ResultView extends StatelessWidget {
   final int score;
   final int total;
+  final AppStrings strings;
   final VoidCallback onRestart;
 
-  const _ResultView({required this.score, required this.total, required this.onRestart});
+  const _ResultView({
+    required this.score,
+    required this.total,
+    required this.strings,
+    required this.onRestart,
+  });
 
   @override
   Widget build(BuildContext context) {
     final ratio = total == 0 ? 0.0 : score / total;
     final message = ratio >= 0.8
-        ? 'Luar biasa!'
+        ? strings.resultExcellent
         : ratio >= 0.5
-            ? 'Bagus, terus berlatih!'
-            : 'Yuk, pelajari lagi kata-katanya!';
+            ? strings.resultGood
+            : strings.reviewWordsAgain;
 
     return Padding(
       padding: const EdgeInsets.all(24),
@@ -285,7 +302,7 @@ class _ResultView extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'Skor: $score / $total',
+            strings.scoreOf(score, total),
             style: TextStyle(fontSize: 15, color: AppColors.textNavy.withValues(alpha: 0.7)),
           ),
           const SizedBox(height: 32),
@@ -298,7 +315,7 @@ class _ResultView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   ),
-                  child: const Text('Selesai'),
+                  child: Text(strings.finish),
                 ),
               ),
               const SizedBox(width: 12),
@@ -310,7 +327,7 @@ class _ResultView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   ),
-                  child: const Text('Ulangi'),
+                  child: Text(strings.retry),
                 ),
               ),
             ],

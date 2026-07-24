@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
@@ -25,6 +27,7 @@ class KotobaCategoryScreen extends ConsumerWidget {
     final wordsAsync = ref.watch(kotobaVocabCategoryProvider(category.id));
     final learnedIds =
         ref.watch(kotobaLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -42,7 +45,7 @@ class KotobaCategoryScreen extends ConsumerWidget {
             data: (words) => words.length < 4
                 ? const SizedBox.shrink()
                 : IconButton(
-                    tooltip: 'Mulai Kuis',
+                    tooltip: s.startQuizTooltip,
                     icon: const Icon(Icons.quiz_outlined),
                     onPressed: () => AppNavigator.slideFromRight(
                       context,
@@ -56,13 +59,13 @@ class KotobaCategoryScreen extends ConsumerWidget {
       body: wordsAsync.when(
         data: (words) {
           if (words.isEmpty) {
-            return const Center(
+            return Center(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32),
+                padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Text(
-                  'Kata untuk kategori ini belum tersedia.',
+                  s.noWordsForCategory,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: AppColors.textNavy),
+                  style: const TextStyle(color: AppColors.textNavy),
                 ),
               ),
             );
@@ -72,7 +75,7 @@ class KotobaCategoryScreen extends ConsumerWidget {
               .length;
           return Column(
             children: [
-              _ProgressBar(learned: learnedCount, total: words.length),
+              _ProgressBar(learned: learnedCount, total: words.length, strings: s),
               Expanded(
                 child: AppRefreshIndicator(
                   onRefresh: () {
@@ -107,7 +110,7 @@ class KotobaCategoryScreen extends ConsumerWidget {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat kata: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadWords(e))),
       ),
     );
   }
@@ -116,8 +119,13 @@ class KotobaCategoryScreen extends ConsumerWidget {
 class _ProgressBar extends StatelessWidget {
   final int learned;
   final int total;
+  final AppStrings strings;
 
-  const _ProgressBar({required this.learned, required this.total});
+  const _ProgressBar({
+    required this.learned,
+    required this.total,
+    required this.strings,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +136,7 @@ class _ProgressBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '$learned/$total dipelajari',
+            strings.progressLearned(learned, total),
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,

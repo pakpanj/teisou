@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
@@ -68,18 +70,19 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
     final kanjiAsync = ref.watch(kanjiByLevelProvider(widget.jlptLevel));
     final learnedIds =
         ref.watch(kanjiLearnedIdsProvider).valueOrNull ?? const <String>{};
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text('Kanji ${widget.levelName}'),
+        title: Text(s.kanjiLevelAppBarTitle(widget.levelName)),
         actions: [
           kanjiAsync.maybeWhen(
             data: (all) {
               final real = all.where((k) => !k.placeholder).toList();
               if (real.length < 4) return const SizedBox.shrink();
               return IconButton(
-                tooltip: 'Mulai Kuis',
+                tooltip: s.startQuizTooltip,
                 icon: const Icon(Icons.quiz_outlined),
                 onPressed: () => _openQuizPicker(real),
               );
@@ -92,13 +95,13 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
         data: (all) {
           final realTotal = all.where((k) => !k.placeholder).length;
           if (realTotal == 0) {
-            return const Center(
+            return Center(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32),
+                padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Text(
-                  'Kanji untuk level ini belum tersedia.',
+                  s.noKanjiForLevel,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: AppColors.textNavy),
+                  style: const TextStyle(color: AppColors.textNavy),
                 ),
               ),
             );
@@ -109,10 +112,11 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
               .length;
           return Column(
             children: [
-              _ProgressBar(learned: learnedCount, total: realTotal),
+              _ProgressBar(learned: learnedCount, total: realTotal, strings: s),
               _ControlsRow(
                 sort: _sort,
                 filter: _filter,
+                strings: s,
                 onSortChanged: (v) => setState(() => _sort = v),
                 onFilterChanged: (v) => setState(() => _filter = v),
               ),
@@ -132,7 +136,7 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
                               padding: const EdgeInsets.only(top: 120),
                               child: Center(
                                 child: Text(
-                                  'Tidak ada kanji yang cocok dengan filter.',
+                                  s.noKanjiMatchesFilter,
                                   style: TextStyle(
                                     color: AppColors.textNavy.withValues(
                                       alpha: 0.6,
@@ -174,7 +178,9 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat kanji: $e')),
+        error: (e, _) => Center(
+          child: Text(ref.read(appStringsProvider).failedToLoadKanji(e)),
+        ),
       ),
     );
   }
@@ -183,8 +189,13 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
 class _ProgressBar extends StatelessWidget {
   final int learned;
   final int total;
+  final AppStrings strings;
 
-  const _ProgressBar({required this.learned, required this.total});
+  const _ProgressBar({
+    required this.learned,
+    required this.total,
+    required this.strings,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +206,7 @@ class _ProgressBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '$learned/$total dipelajari',
+            strings.progressLearned(learned, total),
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
@@ -221,24 +232,25 @@ class _ProgressBar extends StatelessWidget {
 class _ControlsRow extends StatelessWidget {
   final _SortMode sort;
   final _LearnFilter filter;
+  final AppStrings strings;
   final ValueChanged<_SortMode> onSortChanged;
   final ValueChanged<_LearnFilter> onFilterChanged;
 
   const _ControlsRow({
     required this.sort,
     required this.filter,
+    required this.strings,
     required this.onSortChanged,
     required this.onFilterChanged,
   });
 
-  static const _labels = {
-    _LearnFilter.semua: 'Semua',
-    _LearnFilter.belum: 'Belum Dipelajari',
-    _LearnFilter.sudah: 'Sudah Dipelajari',
-  };
-
   @override
   Widget build(BuildContext context) {
+    final labels = {
+      _LearnFilter.semua: strings.filterAll,
+      _LearnFilter.belum: strings.filterNotLearned,
+      _LearnFilter.sudah: strings.filterLearned,
+    };
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: Row(
@@ -252,7 +264,7 @@ class _ControlsRow extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.only(right: 8),
                     child: ChoiceChip(
-                      label: Text(_labels[f]!),
+                      label: Text(labels[f]!),
                       selected: isSelected,
                       selectedColor: AppColors.primaryCoral.withValues(
                         alpha: 0.2,
@@ -274,18 +286,18 @@ class _ControlsRow extends StatelessWidget {
             ),
           ),
           PopupMenuButton<_SortMode>(
-            tooltip: 'Urutkan',
+            tooltip: strings.sortTooltip,
             initialValue: sort,
             onSelected: onSortChanged,
             icon: const Icon(Icons.sort, color: AppColors.textNavy),
-            itemBuilder: (context) => const [
+            itemBuilder: (context) => [
               PopupMenuItem(
                 value: _SortMode.urutan,
-                child: Text('Urutan Dasar'),
+                child: Text(strings.sortDefault),
               ),
               PopupMenuItem(
                 value: _SortMode.goresan,
-                child: Text('Jumlah Goresan'),
+                child: Text(strings.sortByStrokeCount),
               ),
             ],
           ),
@@ -343,7 +355,7 @@ class _KanjiTile extends StatelessWidget {
   }
 }
 
-class _QuizModeSheet extends StatelessWidget {
+class _QuizModeSheet extends ConsumerWidget {
   final String levelName;
   final List<KanjiEntry> kanji;
 
@@ -358,7 +370,8 @@ class _QuizModeSheet extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
       decoration: const BoxDecoration(
@@ -380,9 +393,9 @@ class _QuizModeSheet extends StatelessWidget {
               ),
             ),
           ),
-          const Text(
-            'Pilih Mode Kuis',
-            style: TextStyle(
+          Text(
+            s.chooseQuizMode,
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: AppColors.textNavy,
@@ -392,16 +405,16 @@ class _QuizModeSheet extends StatelessWidget {
           _ModeTile(
             icon: Icons.text_fields,
             color: AppColors.primaryCoral,
-            title: 'Kanji → Arti',
-            subtitle: 'Lihat kanji, pilih artinya',
+            title: s.kanjiToMeaningTitle,
+            subtitle: s.kanjiToMeaningSubtitle,
             onTap: () => _start(context, KanjiQuizMode.kanjiToMeaning),
           ),
           const SizedBox(height: 10),
           _ModeTile(
             icon: Icons.translate,
             color: AppColors.secondaryBlue,
-            title: 'Arti → Kanji',
-            subtitle: 'Lihat artinya, pilih kanjinya',
+            title: s.meaningToKanjiTitle,
+            subtitle: s.meaningToKanjiSubtitle,
             onTap: () => _start(context, KanjiQuizMode.meaningToKanji),
           ),
         ],

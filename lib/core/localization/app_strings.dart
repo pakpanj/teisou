@@ -6,13 +6,16 @@ import '../../data/models/app_language.dart';
 /// freezed/json_serializable), so this follows suit instead of introducing
 /// Flutter's ARB/gen-l10n pipeline for the first time.
 ///
-/// **Coverage, not the whole app**: this only covers the Home tab, the
-/// Modules section, the Profile screen, and the language picker itself —
-/// see CLAUDE.md's "Bahasa App" note for the exact screen list and why the
-/// other ~50 module screens (Kanji/Kotoba/Bunpou/Partikel/Kaiwa's Home/
-/// Level/Category/Detail/Quiz screens etc.) aren't wired to this yet.
-/// Switching to English right now only changes what's listed there; the
-/// rest of the app stays in Indonesian until a later pass extends this.
+/// **Coverage, not the whole app**: Home tab, Modules section, Profile
+/// screen, language picker, and (as of the Kanji/Kotoba pass) the Kanji
+/// and Kotoba modules' Home/Level-or-Category/Detail/Quiz screens are
+/// wired to this. Bunpou/Partikel/Kaiwa's equivalent screens, and
+/// everything outside the 5 learning modules (Search, Leaderboard, Ujian,
+/// Saved Words, About, Notification, Paywall, Cam Detector, etc.) are
+/// NOT yet — see CLAUDE.md's "Bahasa App" note for the exact scope and
+/// why. Switching to English right now only changes what's listed there;
+/// the rest of the app stays in Indonesian until a later pass extends
+/// this, following the same `ref.watch(appStringsProvider)` pattern.
 class AppStrings {
   final AppLanguage language;
   const AppStrings(this.language);
@@ -154,4 +157,85 @@ class AppStrings {
         "Note: some screens may still show Indonesian text for now.",
       );
   String get languageSaved => _t('Bahasa disimpan.', 'Language saved.');
+
+  // --- Shared across module Home/Level/Category/Detail/Quiz screens ---
+  String get soonBadge => _t('Segera', 'Soon');
+  String get startQuizTooltip => _t('Mulai Kuis', 'Start Quiz');
+  String get filterAll => _t('Semua', 'All');
+  String get filterNotLearned => _t('Belum Dipelajari', 'Not Learned');
+  String get filterLearned => _t('Sudah Dipelajari', 'Learned');
+  String progressLearned(int learned, int total) =>
+      _t('$learned/$total dipelajari', '$learned/$total learned');
+  String get markedLearned => _t('Sudah Dipelajari', 'Learned');
+  String get markAsLearned => _t('Tandai Sudah Dipelajari', 'Mark as Learned');
+  String questionOf(int index, int total) =>
+      _t('Soal $index / $total', 'Question $index / $total');
+  String get seeScore => _t('Lihat Skor', 'See Score');
+  String get finish => _t('Selesai', 'Finish');
+  String get retry => _t('Ulangi', 'Retry');
+  String scoreOf(int score, int total) =>
+      _t('Skor: $score / $total', 'Score: $score / $total');
+  String get resultExcellent => _t('Luar biasa!', 'Excellent!');
+  String get resultGood => _t('Bagus, terus berlatih!', 'Good, keep practicing!');
+  String get sentenceExamplesTitle => _t('Contoh Kalimat', 'Sentence Examples');
+  /// Generic "X segera hadir!" snackbar shared by Kotoba/Partikel/Kaiwa's
+  /// category cards (Kanji/Bunpou use [kanjiLevelComingSoon] instead since
+  /// theirs is phrased "Kanji X segera hadir!" with a module prefix).
+  String categoryComingSoon(String name) =>
+      _t('$name segera hadir!', '$name coming soon!');
+
+  // --- Kanji module ---
+  String failedToLoadLevels(Object e) =>
+      _t('Gagal memuat level: $e', 'Failed to load levels: $e');
+  String kanjiLevelComingSoon(String levelName) =>
+      _t('Kanji $levelName segera hadir!', 'Kanji $levelName coming soon!');
+  String kanjiLevelCardTitle(String levelName) => 'Kanji $levelName';
+  String kanjiCount(int n) => _t('$n kanji', '$n kanji');
+  String kanjiLevelAppBarTitle(String levelName) => 'Kanji $levelName';
+  String failedToLoadKanji(Object e) =>
+      _t('Gagal memuat kanji: $e', 'Failed to load kanji: $e');
+  String get noKanjiForLevel =>
+      _t('Kanji untuk level ini belum tersedia.', 'No kanji available for this level yet.');
+  String get noKanjiMatchesFilter => _t(
+        'Tidak ada kanji yang cocok dengan filter.',
+        'No kanji match this filter.',
+      );
+  String get sortTooltip => _t('Urutkan', 'Sort');
+  String get sortDefault => _t('Urutan Dasar', 'Default Order');
+  String get sortByStrokeCount => _t('Jumlah Goresan', 'Stroke Count');
+  String get chooseQuizMode => _t('Pilih Mode Kuis', 'Choose Quiz Mode');
+  String get kanjiToMeaningTitle => _t('Kanji → Arti', 'Kanji → Meaning');
+  String get kanjiToMeaningSubtitle =>
+      _t('Lihat kanji, pilih artinya', 'See the kanji, pick its meaning');
+  String get meaningToKanjiTitle => _t('Arti → Kanji', 'Meaning → Kanji');
+  String get meaningToKanjiSubtitle =>
+      _t('Lihat artinya, pilih kanjinya', 'See the meaning, pick the kanji');
+  String strokeCountPill(int n) => _t('$n goresan', '$n strokes');
+  String radicalPill(String radical) => _t('Radikal $radical', 'Radical $radical');
+  String get meaningSectionTitle => _t('Arti', 'Meaning');
+  String get relatedBunpouTitle => _t('Bunpou Terkait', 'Related Bunpou');
+  String get wordExamplesTitle => _t('Contoh Kata', 'Word Examples');
+  String kanjiQuizTitle(String levelName) =>
+      _t('Kuis · Kanji $levelName', 'Quiz · Kanji $levelName');
+  String get whatIsKanjiMeaning => _t('Apa arti kanji ini?', "What does this kanji mean?");
+  String get whichKanjiMeans =>
+      _t('Kanji mana yang berarti ini?', 'Which kanji means this?');
+  String get reviewKanjiAgain =>
+      _t('Yuk, pelajari lagi kanjinya!', "Let's review the kanji again!");
+
+  // --- Kotoba module ---
+  String failedToLoadCategories(Object e) =>
+      _t('Gagal memuat kategori: $e', 'Failed to load categories: $e');
+  String wordCount(int n) => _t('$n kata', '$n words');
+  String failedToLoadWords(Object e) =>
+      _t('Gagal memuat kata: $e', 'Failed to load words: $e');
+  String get noWordsForCategory => _t(
+        'Kata untuk kategori ini belum tersedia.',
+        'No words available for this category yet.',
+      );
+  String kotobaQuizTitle(String categoryName) =>
+      _t('Kuis · $categoryName', 'Quiz · $categoryName');
+  String get whatIsWordMeaning => _t('Apa arti kata ini?', 'What does this word mean?');
+  String get reviewWordsAgain =>
+      _t('Yuk, pelajari lagi kata-katanya!', "Let's review the words again!");
 }
