@@ -2450,6 +2450,32 @@ timing) on a real device before treating this as fully verified.
   Indonesian-authored either way — translating ~4000 pieces of
   educational content is a wholly separate effort from switching UI
   chrome, not something "add English" was ever meant to include.
+  **Correction, Kotoba only (2026-07-25)**: the blanket "content stays
+  Indonesian" claim above turned out to read as a bug to the user —
+  switching to English left Kotoba's category names and per-word "arti"
+  (meaning) still Indonesian, reported directly. Fixed in two parts,
+  deliberately scoped to just Kotoba (not the other 4 modules, not
+  sentence-example translations or the `registers` explanatory text,
+  which nobody's asked about yet): (1) `KotobaCategoryI18n`
+  (`lib/core/localization/kotoba_category_i18n.dart`) is a small
+  id/en lookup table for all 46 category names + 7 group names —
+  presentation-layer only, `_categories.json` itself is untouched.
+  **This part is fully done**, all 46 categories. (2) `KotobaEntry`
+  gained a nullable `meaningEn` field + `localizedMeaning(language)`
+  (falls back to the Indonesian `meaning` if untranslated), wired into
+  all 4 places a word's meaning renders (category word-tile, word
+  detail, quiz prompt + quiz distractors). **This part is content
+  authoring, not a code fix, and is far from done** — only `ikan.json`
+  (8 words) has real `meaningEn` values so far, as a verified
+  proof-of-concept (confirmed on the Moto G52J: Fish/Land Animals both
+  show correct English category names, Fish shows all 8 meanings in
+  English, the not-yet-translated Land Animals correctly falls back to
+  Indonesian instead of blanking out). **44 categories, ~511 words
+  remain** — continue by adding `meaningEn` to each category's JSON
+  file (short glosses, not new content — translate what `meaning`
+  already says) and re-verifying a sample on-device, the same
+  multi-session-batch shape as the Dokkai/Kaiwa content rollouts
+  elsewhere in this file.
 - Avatar art PNGs haven't been supplied yet, but as of the 2026-07-20
   profile bug-hunt session the code is fully ready for them:
   `AvatarPreset` (`lib/core/constants/avatars.dart`) gained an
