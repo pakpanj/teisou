@@ -2383,11 +2383,34 @@ timing) on a real device before treating this as fully verified.
   `flashcard_screen_test.dart` never hit this with kana's much smaller
   JSON. Worth trying the same `runAsync` fix first if a future widget
   test against Bunpou/Kaiwa's similarly large datasets also hangs.
-  **Still not covered**: Bunpou/Partikel/Kaiwa's equivalent Home/Level/
-  Category/Detail/Quiz screens, and everything outside the 5 learning
-  modules (Search, Leaderboard, Ujian, Saved Words, About, Notification,
-  Paywall, Cam Detector, etc.) — next increments, per the user's own
-  prioritization when asked.
+  **Extended to Bunpou + Partikel + Kaiwa (2026-07-25, same session)**,
+  completing the module-by-module rollout across all 5 learning
+  modules. 12 more screens wired: `bunpou_home_screen.dart`/
+  `bunpou_level_screen.dart`/`bunpou_detail_screen.dart`/
+  `bunpou_quiz_screen.dart`, `particle_home_screen.dart`/
+  `particle_category_screen.dart`/`particle_detail_screen.dart`/
+  `particle_quiz_screen.dart`, `kaiwa_home_screen.dart`/
+  `kaiwa_level_screen.dart`/`kaiwa_category_screen.dart`/
+  `kaiwa_dialogue_screen.dart`. Same conversions as the Kanji/Kotoba
+  pass where needed: `BunpouQuizScreen`/`ParticleQuizScreen`
+  `StatefulWidget` → `ConsumerStatefulWidget`,
+  `BunpouLevelScreen`'s `_QuizModeSheet` `StatelessWidget` →
+  `ConsumerWidget` (Partikel's quiz has no mode-picker sheet to convert;
+  Kaiwa's four screens were already Consumer-based, so that pass just
+  threaded `strings` through `_LineBubble`/`_AnswerOptions`/
+  `_CompletionBar`). ~50 more `AppStrings` getters, again mostly reusing
+  the shared progress/filter/quiz-result section from the Kanji/Kotoba
+  pass, plus small per-module sections (Bunpou's Pembentukan/Catatan
+  Pemakaian, Partikel's nested Fungsi/summary strings, Kaiwa's
+  answer-prompt copy). Verified with a third `module_localization_test.dart`
+  case asserting `ParticleHomeScreen`'s app bar switches Partikel/
+  Particles.
+  **All 5 learning modules (Kanji, Kotoba, Bunpou, Partikel, Kaiwa) are
+  now fully covered** — every Home/Level-or-Category/Detail/Quiz screen
+  in each reads `appStringsProvider`. **Still not covered**: everything
+  outside those 5 modules — Search, Leaderboard, Ujian (exam screens),
+  Saved Words, About, Notification, Paywall, Cam Detector, etc. — next
+  increment, per the user's own prioritization when asked.
   **Learning content is intentionally out of scope, permanently, not
   just for now**: kana/kanji/kotoba/bunpou/particle/kaiwa datasets stay
   Indonesian-authored either way — translating ~4000 pieces of
