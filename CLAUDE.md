@@ -2407,10 +2407,44 @@ timing) on a real device before treating this as fully verified.
   Particles.
   **All 5 learning modules (Kanji, Kotoba, Bunpou, Partikel, Kaiwa) are
   now fully covered** — every Home/Level-or-Category/Detail/Quiz screen
-  in each reads `appStringsProvider`. **Still not covered**: everything
-  outside those 5 modules — Search, Leaderboard, Ujian (exam screens),
-  Saved Words, About, Notification, Paywall, Cam Detector, etc. — next
-  increment, per the user's own prioritization when asked.
+  in each reads `appStringsProvider`.
+  **Extended beyond the 5 modules (2026-07-25, same day)**, per explicit
+  user follow-up ("jelas dong, lanjutkan" — continue, obviously) after
+  the 5-module rollout finished. Covers everything else that was still
+  hardcoded Indonesian: `search_screen.dart` + its 3 detail screens
+  (`kanji_detail_screen.dart`/`kotoba_detail_screen.dart`/
+  `dictionary_word_detail_screen.dart`), the Leaderboard (main screen +
+  `ClanTab` + `CreateClanDialog`/`JoinClanDialog`), the Ujian flow
+  (`exam_mode_picker_screen.dart`, `kana_exam_mode_picker_screen.dart`,
+  `exam_screen.dart`, `mc_quiz_flow.dart` — shared by Dokkai/Choukai/
+  Kanji-Kombinasi — `simple_exam_result_screen.dart`, and the kana-exam
+  `exam_result_screen.dart`), `saved_words_screen.dart`,
+  `about_screen.dart`, `notification_screen.dart`,
+  `exam_history_screen.dart`, `paywall_screen.dart`, the whole Cam
+  Detector screen + its `DetectionResultSheet` (still locked from
+  navigation, but the code exists and now reads `appStringsProvider`
+  too), the "coming soon" module placeholders
+  (`coming_soon_content.dart`/`coming_soon_screen.dart`, covering the
+  `picture_learning`/`video_learning` stub screens), and the remaining
+  Profile pieces (`avatar_picker_sheet.dart`, `edit_name_dialog.dart`,
+  `cover_picker_sheet.dart`). ~140 more `AppStrings` getters. Several
+  screens converted `StatelessWidget`/`StatefulWidget` →
+  `ConsumerWidget`/`ConsumerStatefulWidget` purely to reach the
+  provider: `LeaderboardScreen`, `ExamModePickerScreen`,
+  `KanaExamModePickerScreen`, `McQuizFlow`, `SimpleExamResultScreen`,
+  `AboutScreen`, `NotificationScreen`, `ExamHistoryScreen`,
+  `CamDetectorScreen`, `ComingSoonScreen`. The module-level
+  `leaderboardValueLabel(metric, entry)` helper (shared between the
+  main leaderboard tabs and `ClanTab`'s ranking) picked up a third
+  `AppStrings` parameter instead of hardcoding `'Belum ada'`.
+  Verified with 2 more `module_localization_test.dart` cases:
+  `ExamModePickerScreen`'s category subtitles and `PaywallScreen`'s
+  benefit list both actually render in English when `languageProvider`
+  is English, not just that the code compiles — 5 cases total in that
+  file now.
+  **This closes out every screen in the app** — there is no more
+  "still Indonesian" surface left to extend to; any future work here is
+  refining/correcting existing translations, not adding new coverage.
   **Learning content is intentionally out of scope, permanently, not
   just for now**: kana/kanji/kotoba/bunpou/particle/kaiwa datasets stay
   Indonesian-authored either way — translating ~4000 pieces of

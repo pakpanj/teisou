@@ -6,16 +6,16 @@ import '../../data/models/app_language.dart';
 /// freezed/json_serializable), so this follows suit instead of introducing
 /// Flutter's ARB/gen-l10n pipeline for the first time.
 ///
-/// **Coverage, not the whole app**: Home tab, Modules section, Profile
-/// screen, language picker, and all 5 learning modules' Home/Level-or-
-/// Category/Detail/Quiz screens (Kanji, Kotoba, Bunpou, Partikel, Kaiwa)
-/// are wired to this. Everything outside those 5 modules (Search,
-/// Leaderboard, Ujian, Saved Words, About, Notification, Paywall, Cam
-/// Detector, etc.) is NOT yet — see CLAUDE.md's "Bahasa App" note for the
-/// exact scope and why. Switching to English right now only changes
-/// what's listed there; the rest of the app stays in Indonesian until a
-/// later pass extends this, following the same
-/// `ref.watch(appStringsProvider)` pattern.
+/// **Coverage**: every screen in the app reads this now — Home tab,
+/// Modules section, Profile (+ its avatar/cover/edit-name sheets), the
+/// language picker, all 5 learning modules (Kanji, Kotoba, Bunpou,
+/// Partikel, Kaiwa), Search + its detail screens, Leaderboard + Clan,
+/// the whole Ujian/exam flow, Saved Words, About, Notification, Paywall,
+/// Cam Detector, and the "coming soon" module placeholders. See
+/// CLAUDE.md's "Bahasa App" note for the full rollout history. Learning
+/// content (kana/kanji/kotoba/bunpou/particle/kaiwa datasets) is
+/// intentionally and permanently out of scope — this bundle is UI chrome
+/// only.
 class AppStrings {
   final AppLanguage language;
   const AppStrings(this.language);
