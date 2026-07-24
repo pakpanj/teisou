@@ -6,7 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'core/providers.dart';
 import 'core/theme/app_theme.dart';
+import 'data/repositories/language_repository.dart';
 import 'features/home/home_screen.dart';
 import 'firebase_options.dart';
 
@@ -32,7 +34,13 @@ Future<void> main() async {
   // depends on it — ads are loaded lazily wherever they're shown — so it
   // must not block the first frame.
   unawaited(_initializeMobileAds());
-  runApp(const ProviderScope(child: KanaMasterApp()));
+  final initialLanguage = await LanguageRepository().getLanguage();
+  runApp(
+    ProviderScope(
+      overrides: [languageProvider.overrideWith((ref) => initialLanguage)],
+      child: const KanaMasterApp(),
+    ),
+  );
 }
 
 Future<void> _initializeMobileAds() async {

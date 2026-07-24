@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/constants/covers.dart';
+import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
@@ -19,6 +21,7 @@ import 'language_screen.dart';
 import 'notification_screen.dart';
 import 'profile_providers.dart';
 import 'widgets/avatar_picker_sheet.dart';
+import 'widgets/cover_picker_sheet.dart';
 import 'widgets/edit_name_dialog.dart';
 import 'widgets/exam_history_empty_illustration.dart';
 import 'widgets/profile_header_illustration.dart';
@@ -29,16 +32,17 @@ class ProfileScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userAsync = ref.watch(appStartupProvider);
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('Profil'),
+        title: Text(s.profile),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: const Text('🏆', style: TextStyle(fontSize: 22)),
-            tooltip: 'Papan Peringkat',
+            tooltip: s.leaderboardTooltip,
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const LeaderboardScreen()),
             ),
@@ -48,7 +52,7 @@ class ProfileScreen extends ConsumerWidget {
       body: userAsync.when(
         data: (user) => _ProfileBody(user: user),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat profil: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadProfile(e))),
       ),
     );
   }
@@ -118,9 +122,10 @@ class _HeaderCard extends ConsumerWidget {
       ref.invalidate(appStartupProvider);
     } catch (e) {
       if (!context.mounted) return;
+      final s = ref.read(appStringsProvider);
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text(_friendlyGoogleSignInError(e))));
+      ).showSnackBar(SnackBar(content: Text(_friendlyGoogleSignInError(e, s))));
     }
   }
 
@@ -128,11 +133,11 @@ class _HeaderCard extends ConsumerWidget {
   /// network, Play Services hiccup, misconfigured OAuth consent screen)
   /// rather than something the user can fix by retrying differently, so we
   /// keep the message generic instead of surfacing the raw exception.
-  String _friendlyGoogleSignInError(Object e) {
+  String _friendlyGoogleSignInError(Object e, AppStrings s) {
     if (e is FirebaseAuthException && e.code == 'credential-already-in-use') {
-      return 'Akun Google ini sudah terhubung ke akun lain.';
+      return s.googleAccountAlreadyLinked;
     }
-    return 'Gagal masuk dengan Google. Periksa koneksi internet kamu dan coba lagi.';
+    return s.googleSignInFailed;
   }
 
   void _editName(BuildContext context, String currentName) {
@@ -151,27 +156,48 @@ class _HeaderCard extends ConsumerWidget {
     );
   }
 
+  void _pickCover(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => const CoverPickerSheet(),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final subscription = ref.watch(subscriptionProvider).valueOrNull;
     final isPremium = subscription?.isPremium ?? false;
     final isAnonymous = user.isAnonymous;
     final profile = ref.watch(userProfileProvider).valueOrNull;
+    final s = ref.watch(appStringsProvider);
     final displayName =
         profile?.resolveDisplayName(user) ??
-        (user.displayName ?? 'Pelajar Kana');
+        (user.displayName ?? s.defaultLearnerName);
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(16, 24, 0, 24),
-      decoration: BoxDecoration(
-        color: AppColors.hiraganaCardBg,
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(24),
+      child: Stack(
         children: [
-          Expanded(
+          // Full-bleed cover background — either the selected preset's art
+          // (or its emoji placeholder) or, with no cover chosen, the plain
+          // brand-color background with the original decorative scene
+          // anchored in a corner.
+          Positioned.fill(
+            child: _HeaderBackground(coverId: profile?.coverId),
+          ),
+          // Scrim so avatar/name/text stay legible over any cover photo,
+          // busy or plain.
+          const Positioned.fill(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(255, 255, 255, 0.62),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -220,7 +246,7 @@ class _HeaderCard extends ConsumerWidget {
                         size: 18,
                         color: AppColors.textNavy,
                       ),
-                      tooltip: 'Ganti Nama',
+                      tooltip: s.changeNameTooltip,
                       onPressed: () => _editName(context, displayName),
                       visualDensity: VisualDensity.compact,
                     ),
@@ -228,10 +254,10 @@ class _HeaderCard extends ConsumerWidget {
                 ),
                 _TierBadge(isPremium: isPremium),
                 const SizedBox(height: 8),
-                const Text(
-                  'Belajar setiap hari,\nsedikit demi sedikit, pasti bisa! 🌸',
+                Text(
+                  s.profileMotivation,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 12.5, color: AppColors.textNavy),
+                  style: const TextStyle(fontSize: 12.5, color: AppColors.textNavy),
                 ),
                 if (isAnonymous) ...[
                   const SizedBox(height: 16),
@@ -248,15 +274,61 @@ class _HeaderCard extends ConsumerWidget {
                       ),
                       onPressed: () => _linkGoogle(context, ref),
                       icon: const Icon(Icons.login, size: 18),
-                      label: const Text('Masuk dengan Google'),
+                      label: Text(s.signInWithGoogle),
                     ),
                   ),
                 ],
               ],
             ),
           ),
-          const ProfileHeaderIllustration(),
+          Positioned(
+            right: 12,
+            top: 12,
+            child: GestureDetector(
+              onTap: () => _pickCover(context),
+              child: Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.35),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(Icons.edit, size: 16, color: Colors.white),
+              ),
+            ),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+/// Full-bleed background for [_HeaderCard]: the selected cover preset's art
+/// (or its emoji placeholder) filling the whole card, or — with no cover
+/// chosen — the plain brand-color background with the original decorative
+/// torii/Fuji/sakura scene anchored in a corner, matching how it looked
+/// before covers existed.
+class _HeaderBackground extends StatelessWidget {
+  final String? coverId;
+
+  const _HeaderBackground({required this.coverId});
+
+  @override
+  Widget build(BuildContext context) {
+    final preset = CoverPresets.byId(coverId);
+    if (preset == null) {
+      return const ColoredBox(
+        color: AppColors.hiraganaCardBg,
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: ProfileHeaderIllustration(),
+        ),
+      );
+    }
+    return LayoutBuilder(
+      builder: (context, constraints) => CoverArt(
+        preset: preset,
+        width: constraints.maxWidth,
+        height: constraints.maxHeight,
       ),
     );
   }
@@ -344,6 +416,7 @@ class _ProgressStatCard extends ConsumerWidget {
             .length ??
         0;
     final ratio = total == 0 ? 0.0 : mastered / total;
+    final s = ref.watch(appStringsProvider);
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -382,7 +455,7 @@ class _ProgressStatCard extends ConsumerWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            '$mastered/$total Mastered',
+            s.masteredCount(mastered, total),
             style: TextStyle(color: color, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
@@ -408,6 +481,7 @@ class _StreakCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final streak =
         ref.watch(userProfileProvider).valueOrNull?.currentStreak ?? 0;
+    final s = ref.watch(appStringsProvider);
 
     return Container(
       width: double.infinity,
@@ -424,23 +498,23 @@ class _StreakCard extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Streak',
-                  style: TextStyle(
+                Text(
+                  s.streak,
+                  style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
                     color: AppColors.tertiaryAmber,
                   ),
                 ),
                 Text(
-                  '$streak hari berturut-turut belajar!',
+                  s.streakDays(streak),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: AppColors.textNavy,
                   ),
                 ),
                 Text(
-                  'Pertahankan streak-mu!',
+                  s.keepYourStreak,
                   style: TextStyle(
                     fontSize: 12,
                     color: AppColors.textNavy.withValues(alpha: 0.6),
@@ -450,7 +524,7 @@ class _StreakCard extends ConsumerWidget {
             ),
           ),
           const SizedBox(width: 8),
-          _StreakDayBadge(streak: streak),
+          _StreakDayBadge(streak: streak, daysLabel: s.days),
         ],
       ),
     );
@@ -459,8 +533,9 @@ class _StreakCard extends ConsumerWidget {
 
 class _StreakDayBadge extends StatelessWidget {
   final int streak;
+  final String daysLabel;
 
-  const _StreakDayBadge({required this.streak});
+  const _StreakDayBadge({required this.streak, required this.daysLabel});
 
   @override
   Widget build(BuildContext context) {
@@ -488,11 +563,11 @@ class _StreakDayBadge extends StatelessWidget {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 3),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3),
             child: Text(
-              'HARI',
-              style: TextStyle(
+              daysLabel,
+              style: const TextStyle(
                 fontSize: 9,
                 fontWeight: FontWeight.bold,
                 color: AppColors.textNavy,
@@ -511,6 +586,7 @@ class _ExamHistorySection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final history = ref.watch(recentExamHistoryProvider).valueOrNull ?? [];
+    final s = ref.watch(appStringsProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -518,9 +594,9 @@ class _ExamHistorySection extends ConsumerWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'Riwayat Ujian',
-              style: TextStyle(
+            Text(
+              s.examHistory,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: AppColors.textNavy,
@@ -530,7 +606,7 @@ class _ExamHistorySection extends ConsumerWidget {
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(builder: (_) => const ExamHistoryScreen()),
               ),
-              child: const Text('Lihat Semua'),
+              child: Text(s.seeAll),
             ),
           ],
         ),
@@ -541,7 +617,7 @@ class _ExamHistorySection extends ConsumerWidget {
               children: [
                 Expanded(
                   child: Text(
-                    'Belum ada riwayat ujian.',
+                    s.noExamHistory,
                     style: TextStyle(
                       color: AppColors.textNavy.withValues(alpha: 0.6),
                     ),
@@ -611,24 +687,22 @@ class _SettingsMenu extends ConsumerWidget {
   const _SettingsMenu();
 
   Future<void> _confirmLogout(BuildContext context, WidgetRef ref) async {
+    final s = ref.read(appStringsProvider);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Keluar dari akun?'),
-        content: const Text(
-          'Yakin mau keluar? Progress kamu sudah tersimpan di cloud dan '
-          'bisa diakses kembali setelah login.',
-        ),
+        title: Text(s.logoutConfirmTitle),
+        content: Text(s.logoutConfirmBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Batal'),
+            child: Text(s.cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text(
-              'Keluar',
-              style: TextStyle(
+            child: Text(
+              s.logout,
+              style: const TextStyle(
                 color: AppColors.primaryCoral,
                 fontWeight: FontWeight.bold,
               ),
@@ -649,22 +723,20 @@ class _SettingsMenu extends ConsumerWidget {
   }
 
   Future<void> _confirmReset(BuildContext context, WidgetRef ref) async {
+    final s = ref.read(appStringsProvider);
     final step1 = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Reset progress Hiragana & Katakana?'),
-        content: const Text(
-          'Yakin mau reset progress Hiragana & Katakana? Ini tidak '
-          'menghapus streak atau riwayat ujian kamu.',
-        ),
+        title: Text(s.resetProgressConfirmTitle),
+        content: Text(s.resetProgressConfirmBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Batal'),
+            child: Text(s.cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Lanjut'),
+            child: Text(s.continueLabel),
           ),
         ],
       ),
@@ -673,7 +745,7 @@ class _SettingsMenu extends ConsumerWidget {
 
     final confirmed = await showDialog<bool>(
       context: context,
-      builder: (ctx) => const _ResetConfirmDialog(),
+      builder: (ctx) => _ResetConfirmDialog(strings: s),
     );
     if (confirmed != true) return;
 
@@ -683,11 +755,12 @@ class _SettingsMenu extends ConsumerWidget {
     if (!context.mounted) return;
     ScaffoldMessenger.of(
       context,
-    ).showSnackBar(const SnackBar(content: Text('Progress berhasil direset.')));
+    ).showSnackBar(SnackBar(content: Text(s.resetSuccessSnackbar)));
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Container(
       decoration: BoxDecoration(
         color: AppColors.cardWhite,
@@ -697,7 +770,7 @@ class _SettingsMenu extends ConsumerWidget {
         children: [
           _MenuTile(
             emoji: '📖',
-            title: 'Daftar Belajar',
+            title: s.savedWords,
             onTap: () => Navigator.of(
               context,
             ).push(MaterialPageRoute(builder: (_) => const SavedWordsScreen())),
@@ -705,7 +778,7 @@ class _SettingsMenu extends ConsumerWidget {
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
             emoji: '🌐',
-            title: 'Bahasa App',
+            title: s.appLanguage,
             onTap: () => Navigator.of(
               context,
             ).push(MaterialPageRoute(builder: (_) => const LanguageScreen())),
@@ -713,7 +786,7 @@ class _SettingsMenu extends ConsumerWidget {
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
             emoji: '🔔',
-            title: 'Notifikasi',
+            title: s.notifications,
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const NotificationScreen()),
             ),
@@ -721,7 +794,7 @@ class _SettingsMenu extends ConsumerWidget {
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
             emoji: 'ℹ️',
-            title: 'Tentang App',
+            title: s.aboutApp,
             onTap: () => Navigator.of(
               context,
             ).push(MaterialPageRoute(builder: (_) => const AboutScreen())),
@@ -729,14 +802,14 @@ class _SettingsMenu extends ConsumerWidget {
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
             emoji: '🗑️',
-            title: 'Reset Progress',
+            title: s.resetProgress,
             titleColor: AppColors.errorRed,
             onTap: () => _confirmReset(context, ref),
           ),
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
             emoji: '🚪',
-            title: 'Keluar',
+            title: s.logout,
             onTap: () => _confirmLogout(context, ref),
           ),
         ],
@@ -773,7 +846,9 @@ class _MenuTile extends StatelessWidget {
 }
 
 class _ResetConfirmDialog extends StatefulWidget {
-  const _ResetConfirmDialog();
+  final AppStrings strings;
+
+  const _ResetConfirmDialog({required this.strings});
 
   @override
   State<_ResetConfirmDialog> createState() => _ResetConfirmDialogState();
@@ -791,16 +866,14 @@ class _ResetConfirmDialogState extends State<_ResetConfirmDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final s = widget.strings;
     return AlertDialog(
-      title: const Text('Konfirmasi Reset'),
+      title: Text(s.resetConfirmTitle),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Progress yang dihapus tidak bisa dikembalikan. Ketik RESET '
-            'untuk konfirmasi.',
-          ),
+          Text(s.resetConfirmBody),
           const SizedBox(height: 12),
           TextField(
             controller: _controller,
@@ -815,13 +888,13 @@ class _ResetConfirmDialogState extends State<_ResetConfirmDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context, false),
-          child: const Text('Batal'),
+          child: Text(s.cancel),
         ),
         TextButton(
           onPressed: _valid ? () => Navigator.pop(context, true) : null,
-          child: const Text(
-            'Hapus',
-            style: TextStyle(
+          child: Text(
+            s.delete,
+            style: const TextStyle(
               color: AppColors.errorRed,
               fontWeight: FontWeight.bold,
             ),

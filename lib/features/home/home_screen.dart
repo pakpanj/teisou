@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
@@ -21,14 +22,14 @@ import 'widgets/modules_section.dart';
 /// left/right also switches tabs — each page is wrapped in [_KeepAlivePage]
 /// so scroll/state survives switching, matching the old [IndexedStack]'s
 /// guarantee.
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   final _pageController = PageController();
   int _navIndex = 0;
 
@@ -55,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final strings = ref.watch(appStringsProvider);
     return Scaffold(
       body: PageView(
         controller: _pageController,
@@ -64,6 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: _BottomNavBar(
         currentIndex: _navIndex,
         onTap: _onNavTap,
+        strings: strings,
       ),
     );
   }
@@ -97,6 +100,7 @@ class _HomeTabBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: Stack(
@@ -146,7 +150,7 @@ class _HomeTabBody extends ConsumerWidget {
                                   Row(
                                     children: [
                                       IconButton(
-                                        tooltip: 'Cari Kanji & Kotoba',
+                                        tooltip: s.searchTooltip,
                                         onPressed: () =>
                                             AppNavigator.slideFromRight(
                                               context,
@@ -158,7 +162,7 @@ class _HomeTabBody extends ConsumerWidget {
                                         ),
                                       ),
                                       IconButton(
-                                        tooltip: 'Papan Peringkat',
+                                        tooltip: s.leaderboardTooltip,
                                         onPressed: () =>
                                             Navigator.of(context).push(
                                               MaterialPageRoute(
@@ -179,9 +183,9 @@ class _HomeTabBody extends ConsumerWidget {
                             ],
                           ),
                           const SizedBox(height: 8),
-                          const Text(
-                            'Belajar Kana, Langkah Pertama Menuju Jepang!',
-                            style: TextStyle(
+                          Text(
+                            s.homeTagline,
+                            style: const TextStyle(
                               fontSize: 14,
                               color: AppColors.textNavy,
                             ),
@@ -226,8 +230,8 @@ class _HomeTabBody extends ConsumerWidget {
                               146,
                             ),
                             iconLabel: 'あ',
-                            title: 'Belajar Hiragana',
-                            subtitle: '46 karakter dasar',
+                            title: s.learnHiragana,
+                            subtitle: s.basicChars46,
                             onTap: () => AppNavigator.slideFromRight(
                               context,
                               const FlashcardScreen(type: KanaType.hiragana),
@@ -243,8 +247,8 @@ class _HomeTabBody extends ConsumerWidget {
                               255,
                             ),
                             iconLabel: 'ア',
-                            title: 'Belajar Katakana',
-                            subtitle: '46 karakter dasar',
+                            title: s.learnKatakana,
+                            subtitle: s.basicChars46,
                             onTap: () => AppNavigator.slideFromRight(
                               context,
                               const FlashcardScreen(type: KanaType.katakana),
@@ -255,8 +259,8 @@ class _HomeTabBody extends ConsumerWidget {
                             backgroundColor: AppColors.tertiaryAmberCardBg,
                             iconBackgroundColor: AppColors.tertiaryAmber,
                             icon: Icons.assignment_outlined,
-                            title: 'Ujian',
-                            subtitle: 'Uji kemampuanmu!',
+                            title: s.exam,
+                            subtitle: s.testYourSkills,
                             onTap: () => AppNavigator.slideFromBottom(
                               context,
                               const ExamModePickerScreen(),
@@ -366,17 +370,21 @@ class _MenuCard extends StatelessWidget {
 class _BottomNavBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
+  final AppStrings strings;
 
-  const _BottomNavBar({required this.currentIndex, required this.onTap});
-
-  static const _items = [
-    (icon: Icons.home_rounded, label: 'Home'),
-    (icon: Icons.assignment_rounded, label: 'Ujian'),
-    (icon: Icons.person_rounded, label: 'Profil'),
-  ];
+  const _BottomNavBar({
+    required this.currentIndex,
+    required this.onTap,
+    required this.strings,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final items = [
+      (icon: Icons.home_rounded, label: strings.navHome),
+      (icon: Icons.assignment_rounded, label: strings.navExam),
+      (icon: Icons.person_rounded, label: strings.navProfile),
+    ];
     return Container(
       decoration: BoxDecoration(
         color: AppColors.cardWhite,
@@ -391,8 +399,8 @@ class _BottomNavBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: List.generate(_items.length, (index) {
-          final item = _items[index];
+        children: List.generate(items.length, (index) {
+          final item = items[index];
           final active = index == currentIndex;
           final color = active ? AppColors.primaryCoral : Colors.grey;
           return InkWell(

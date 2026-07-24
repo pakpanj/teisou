@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/models/app_language.dart';
 import '../data/models/kana_character.dart';
 import '../data/models/kana_type.dart';
 import '../data/models/kana_type_progress.dart';
 import '../data/models/subscription.dart';
 import '../data/models/user_profile.dart';
+import '../data/repositories/language_repository.dart';
 import '../data/repositories/bunpou_level_repository.dart';
 import '../data/repositories/bunpou_progress_repository.dart';
 import '../data/repositories/bunpou_repository.dart';
@@ -36,11 +38,31 @@ import '../data/repositories/particle_repository.dart';
 import '../data/repositories/progress_repository.dart';
 import '../data/repositories/saved_words_repository.dart';
 import 'firebase/firestore_paths.dart';
+import 'localization/app_strings.dart';
 import 'services/ad_service.dart';
 import 'services/auth_service.dart';
 import 'services/avatar_upload_service.dart';
 import 'services/romaji_converter.dart';
 import 'services/tts_service.dart';
+
+final languageRepositoryProvider = Provider<LanguageRepository>(
+  (ref) => LanguageRepository(),
+);
+
+/// Current UI-chrome language. Initial value is overridden in `main.dart`
+/// from the persisted SharedPreferences value before `runApp` — the
+/// default here (Indonesian) only applies if that override is somehow
+/// missing (e.g. a test harness building the app without it).
+final languageProvider = StateProvider<AppLanguage>(
+  (ref) => AppLanguage.indonesian,
+);
+
+/// Screens read UI-chrome text through this instead of hardcoding
+/// Indonesian strings directly — see [AppStrings] for exactly which
+/// screens are wired up so far.
+final appStringsProvider = Provider<AppStrings>(
+  (ref) => AppStrings(ref.watch(languageProvider)),
+);
 
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
 final ttsServiceProvider = Provider<TtsService>((ref) => TtsService());

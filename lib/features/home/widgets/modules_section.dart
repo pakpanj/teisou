@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/localization/app_strings.dart';
 import '../../../core/navigation/app_navigator.dart';
+import '../../../core/providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../data/models/module_info.dart';
 import '../../bunpou/bunpou_home_screen.dart';
@@ -15,30 +18,31 @@ import '../../particle/particle_home_screen.dart';
 /// "Belajar" tab's [ModulesScreen], folded into Home so the bottom nav
 /// only needs Home/Ujian/Profil. Not a [Scaffold]/[AppBar] — this is meant
 /// to be embedded inside Home's own scroll body.
-class ModulesSection extends StatelessWidget {
+class ModulesSection extends ConsumerWidget {
   const ModulesSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _SectionHeader('Modul Lainnya'),
+        _SectionHeader(s.otherModules),
         const SizedBox(height: 12),
-        const _LockedModuleCard(
+        _LockedModuleCard(
           emoji: '📷',
-          title: 'Cam Detector',
-          subtitle: 'Scan karakter Jepang lewat kamera',
-          reason: 'Sedang diperbaiki karena masih ada beberapa bug. '
-              'Modul ini akan diaktifkan kembali setelah perbaikan selesai.',
+          title: s.camDetectorTitle,
+          subtitle: s.camDetectorSubtitle,
+          reason: s.camDetectorReason,
+          fixingBadge: s.fixingBadge,
         ),
         const SizedBox(height: 12),
         _AvailableModuleCard(
           emoji: '📚',
           backgroundColor: AppColors.katakanaCardBg,
           iconColor: AppColors.secondaryBlue,
-          title: 'Kosakata',
-          subtitle: 'Belajar kotoba per kategori',
+          title: s.kotobaTitle,
+          subtitle: s.kotobaSubtitle,
           onTap: () => AppNavigator.slideFromRight(
             context,
             const KotobaHomeScreen(),
@@ -49,8 +53,8 @@ class ModulesSection extends StatelessWidget {
           emoji: '字',
           backgroundColor: AppColors.tertiaryAmberCardBg,
           iconColor: AppColors.tertiaryAmber,
-          title: 'Kanji',
-          subtitle: 'Belajar Kanji per level JLPT',
+          title: s.kanjiTitle,
+          subtitle: s.kanjiSubtitle,
           onTap: () => AppNavigator.slideFromRight(
             context,
             const KanjiHomeScreen(),
@@ -61,8 +65,8 @@ class ModulesSection extends StatelessWidget {
           emoji: '文',
           backgroundColor: AppColors.hiraganaCardBg,
           iconColor: AppColors.primaryCoral,
-          title: 'Bunpou',
-          subtitle: 'Belajar pola tata bahasa per level JLPT',
+          title: s.bunpouTitle,
+          subtitle: s.bunpouSubtitle,
           onTap: () => AppNavigator.slideFromRight(
             context,
             const BunpouHomeScreen(),
@@ -76,8 +80,8 @@ class ModulesSection extends StatelessWidget {
           emoji: 'を',
           backgroundColor: AppColors.tertiaryAmberCardBg,
           iconColor: AppColors.tertiaryAmber,
-          title: 'Partikel',
-          subtitle: 'Catatan fungsi partikel + mini-game latihan',
+          title: s.particleTitle,
+          subtitle: s.particleSubtitle,
           onTap: () => AppNavigator.slideFromRight(context, const ParticleHomeScreen()),
         ),
         const SizedBox(height: 12),
@@ -85,17 +89,17 @@ class ModulesSection extends StatelessWidget {
           emoji: '💬',
           backgroundColor: AppColors.hiraganaCardBg,
           iconColor: AppColors.primaryCoral,
-          title: 'Kaiwa',
-          subtitle: 'Latihan percakapan interaktif',
+          title: s.kaiwaTitle,
+          subtitle: s.kaiwaSubtitle,
           onTap: () => AppNavigator.slideFromRight(context, const KaiwaHomeScreen()),
         ),
         const SizedBox(height: 28),
-        const _SectionHeader('Segera Hadir'),
+        _SectionHeader(s.comingSoonHeader),
         const SizedBox(height: 12),
         ...kComingSoonModules.map(
           (module) => Padding(
             padding: const EdgeInsets.only(bottom: 12),
-            child: _ComingSoonCard(module: module),
+            child: _ComingSoonCard(module: module, strings: s),
           ),
         ),
       ],
@@ -208,12 +212,14 @@ class _LockedModuleCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final String reason;
+  final String fixingBadge;
 
   const _LockedModuleCard({
     required this.emoji,
     required this.title,
     required this.subtitle,
     required this.reason,
+    required this.fixingBadge,
   });
 
   @override
@@ -268,9 +274,9 @@ class _LockedModuleCard extends StatelessWidget {
                             color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: const Text(
-                            'Diperbaiki',
-                            style: TextStyle(
+                          child: Text(
+                            fixingBadge,
+                            style: const TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
                               color: AppColors.freeBadgeGrey,
@@ -301,16 +307,32 @@ class _LockedModuleCard extends StatelessWidget {
 
 class _ComingSoonCard extends StatelessWidget {
   final ModuleInfo module;
+  final AppStrings strings;
 
-  const _ComingSoonCard({required this.module});
+  const _ComingSoonCard({required this.module, required this.strings});
 
   static const _icons = {
     'picture_learning': '🖼️',
     'video_learning': '🎬',
   };
 
+  /// [ModuleInfo.title]/[description] are the dataset's Indonesian-authored
+  /// identity strings (see `module_info.dart`) — resolve the localized
+  /// display text by id instead of touching the model itself.
+  (String, String) _displayText() {
+    switch (module.id) {
+      case 'picture_learning':
+        return (strings.pictureLearningTitle, strings.pictureLearningSubtitle);
+      case 'video_learning':
+        return (strings.videoLearningTitle, strings.videoLearningSubtitle);
+      default:
+        return (module.title, module.description);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final (title, description) = _displayText();
     return Material(
       color: Colors.grey.shade100,
       borderRadius: BorderRadius.circular(20),
@@ -343,7 +365,7 @@ class _ComingSoonCard extends StatelessWidget {
                       children: [
                         Flexible(
                           child: Text(
-                            module.title,
+                            title,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                               fontSize: 15,
@@ -362,9 +384,9 @@ class _ComingSoonCard extends StatelessWidget {
                             color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: const Text(
-                            'Segera Hadir',
-                            style: TextStyle(
+                          child: Text(
+                            strings.comingSoonBadge,
+                            style: const TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
                               color: AppColors.freeBadgeGrey,
@@ -375,7 +397,7 @@ class _ComingSoonCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      module.description,
+                      description,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
