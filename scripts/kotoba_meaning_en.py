@@ -11,13 +11,13 @@ patches the real JSON files, so there's never a second copy to keep in
 sync by hand.
 
 STATUS (update this line every time a category is finished):
-    Done (35): all of "Alam & Lingkungan" (10) + all of "Makanan &
+    Done (37): all of "Alam & Lingkungan" (10) + all of "Makanan &
     Minuman" (7) + all of "Tubuh & Kesehatan" (6) + all of "Tempat &
-    Transportasi" (6) + all of "Manusia & Sosial" (6: profesi,
-    keluarga_hubungan, pakaian_aksesori, hobi_aktivitas, agama_budaya,
-    perayaan_haribesar) = 866/1266 words. Remaining: 10 categories, 400
-    words (Pendidikan & Pekerjaan's 5 + Waktu & Angka's 5, which
-    includes warna/bentuk per _categories.json's real group field).
+    Transportasi" (6) + all of "Manusia & Sosial" (6) + 2 of
+    "Pendidikan & Pekerjaan" (alat_tulis_sekolah, mata_pelajaran) =
+    956/1266 words. Remaining: 8 categories, 310 words (Pendidikan &
+    Pekerjaan's remaining 3 + all 5 of Waktu & Angka, which includes
+    warna/bentuk per _categories.json's real group field).
     See CLAUDE.md's Kotoba-localization note for the full per-category
     checklist and the exact workflow to add a new category here.
 
@@ -974,8 +974,102 @@ MEANING_EN: dict[str, dict[str, str]] = {
         "kotoba_perayaan_haribesar_enkai": "banquet/party",
         "kotoba_perayaan_haribesar_kaikai": "opening (of an event)",
     },
+    "alat_tulis_sekolah": {
+        "kotoba_alat_tulis_sekolah_enpitsu": "pencil",
+        "kotoba_alat_tulis_sekolah_keshigomu": "eraser",
+        "kotoba_alat_tulis_sekolah_nooto": "notebook",
+        "kotoba_alat_tulis_sekolah_hon": "book",
+        "kotoba_alat_tulis_sekolah_kaban": "school bag",
+        "kotoba_alat_tulis_sekolah_hasami": "scissors",
+        "kotoba_alat_tulis_sekolah_nori": "glue",
+        "kotoba_alat_tulis_sekolah_jougi": "ruler",
+        "kotoba_alat_tulis_sekolah_pen": "pen",
+        "kotoba_alat_tulis_sekolah_fude": "(calligraphy) brush",
+        "kotoba_alat_tulis_sekolah_kokuban": "blackboard",
+        "kotoba_alat_tulis_sekolah_kyoukasho": "textbook",
+        "kotoba_alat_tulis_sekolah_jisho": "dictionary",
+        "kotoba_alat_tulis_sekolah_shukudai": "homework",
+        "kotoba_alat_tulis_sekolah_kanji": "kanji character",
+        "kotoba_alat_tulis_sekolah_techou": "notebook/planner",
+        "kotoba_alat_tulis_sekolah_hyoushi": "(book) cover",
+        "kotoba_alat_tulis_sekolah_youshi": "form paper",
+        "kotoba_alat_tulis_sekolah_shomotsu": "book (formal term)",
+        "kotoba_alat_tulis_sekolah_tosho": "books (collection, formal term)",
+        "kotoba_alat_tulis_sekolah_jiten": "dictionary",
+    },
+    "mata_pelajaran": {
+        "kotoba_mata_pelajaran_kokugo": "Japanese language (school subject)",
+        "kotoba_mata_pelajaran_suugaku": "mathematics",
+        "kotoba_mata_pelajaran_rika": "science",
+        "kotoba_mata_pelajaran_shakai": "social studies",
+        "kotoba_mata_pelajaran_eigo": "English",
+        "kotoba_mata_pelajaran_nihongo": "Japanese language",
+        "kotoba_mata_pelajaran_taiiku": "physical education",
+        "kotoba_mata_pelajaran_bijutsu": "fine arts",
+        "kotoba_mata_pelajaran_rekishi": "history",
+        "kotoba_mata_pelajaran_kagaku": "chemistry",
+        "kotoba_mata_pelajaran_senkou": "major/specialization",
+        "kotoba_mata_pelajaran_rishuu": "taking a course",
+        "kotoba_mata_pelajaran_shingaku": "advancing to higher education",
+        "kotoba_mata_pelajaran_keizai": "economics",
+        "kotoba_mata_pelajaran_butsuri": "physics",
+        "kotoba_mata_pelajaran_seibutsu": "biology",
+        "kotoba_mata_pelajaran_chiri": "geography",
+        "kotoba_mata_pelajaran_rinri": "ethics",
+        "kotoba_mata_pelajaran_tetsugaku": "philosophy",
+        "kotoba_mata_pelajaran_kateika": "home economics",
+        "kotoba_mata_pelajaran_gakubu": "faculty (university)",
+        "kotoba_mata_pelajaran_gakki": "semester",
+        "kotoba_mata_pelajaran_kiso": "basics/foundation",
+        "kotoba_mata_pelajaran_kihon": "basics/fundamentals",
+        "kotoba_mata_pelajaran_gengo": "language",
+        "kotoba_mata_pelajaran_kouki": "second semester",
+        "kotoba_mata_pelajaran_kougi": "(university) lecture",
+        "kotoba_mata_pelajaran_goukaku": "passing (an exam)",
+        "kotoba_mata_pelajaran_sansuu": "arithmetic",
+        "kotoba_mata_pelajaran_shiken": "exam/test",
+        "kotoba_mata_pelajaran_shidou": "guidance",
+        "kotoba_mata_pelajaran_juken": "taking an exam",
+        "kotoba_mata_pelajaran_seikai": "correct answer",
+        "kotoba_mata_pelajaran_tango": "vocabulary word",
+        "kotoba_mata_pelajaran_tsuugaku": "commuting to school",
+        "kotoba_mata_pelajaran_nyuumon": "introduction (to a subject)",
+        "kotoba_mata_pelajaran_hatsuon": "pronunciation",
+        "kotoba_mata_pelajaran_moji": "letter/character",
+        "kotoba_mata_pelajaran_shinnyuusei": "new student",
+        "kotoba_mata_pelajaran_daigakuin": "graduate school",
+        "kotoba_mata_pelajaran_anki": "memorization",
+        "kotoba_mata_pelajaran_chuugaku": "junior high school",
+        "kotoba_mata_pelajaran_gakumon": "scholarship/academics",
+        "kotoba_mata_pelajaran_gakushuu": "learning/study",
+        "kotoba_mata_pelajaran_gogaku": "foreign language study",
+        "kotoba_mata_pelajaran_kamoku": "(curriculum) subject",
+        "kotoba_mata_pelajaran_ryuugaku": "studying abroad",
+        "kotoba_mata_pelajaran_shougakukin": "scholarship (money)",
+        "kotoba_mata_pelajaran_jissen": "practice (real application)",
+        "kotoba_mata_pelajaran_kadai": "assignment/issue",
+        "kotoba_mata_pelajaran_ensoku": "school excursion",
+        "kotoba_mata_pelajaran_gakka": "(university) department",
+        "kotoba_mata_pelajaran_gakkai": "academic society",
+        "kotoba_mata_pelajaran_gakuryoku": "academic ability",
+        "kotoba_mata_pelajaran_jishuu": "self-study",
+        "kotoba_mata_pelajaran_jisshuu": "practical training",
+        "kotoba_mata_pelajaran_kengaku": "observational visit",
+        "kotoba_mata_pelajaran_bungaku": "literature",
+        "kotoba_mata_pelajaran_bunpou": "grammar",
+        "kotoba_mata_pelajaran_daigakusei": "university student",
+        "kotoba_mata_pelajaran_fukushuu": "review (of lessons)",
+        "kotoba_mata_pelajaran_honyaku": "translation",
+        "kotoba_mata_pelajaran_igaku": "medicine (as a field)",
+        "kotoba_mata_pelajaran_kaiwa": "conversation",
+        "kotoba_mata_pelajaran_kenkyuu": "research",
+        "kotoba_mata_pelajaran_kyouiku": "education",
+        "kotoba_mata_pelajaran_nyuugaku": "school enrollment",
+        "kotoba_mata_pelajaran_sotsugyou": "graduation",
+        "kotoba_mata_pelajaran_yoshuu": "preparing before class",
+    },
     # Add the next category here, e.g.:
-    # "alat_tulis_sekolah": {
-    #     "kotoba_alat_tulis_sekolah_...": "...",
+    # "pekerjaan_kantor": {
+    #     "kotoba_pekerjaan_kantor_...": "...",
     # },
 }
