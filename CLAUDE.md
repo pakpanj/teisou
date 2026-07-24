@@ -2307,6 +2307,59 @@ timing) on a real device before treating this as fully verified.
   banner. Interstitial frequency (every 3rd exam,
   `AdService._interstitialFrequency`) and rewarded-ad call sites were
   untouched — this pass was placement-only, not frequency tuning.
+- **Cover photo picker (2026-07-24)**: `_HeaderCard` in
+  `profile_screen.dart` now renders the selected cover as a full-bleed
+  background behind the whole header card (not just a small side
+  decoration) — `CoverPreset`/`CoverArt`/`CoverPresets`
+  (`lib/core/constants/covers.dart`) mirror `AvatarPreset`'s
+  emoji-fallback-until-real-PNG pattern, `CoverPickerSheet` mirrors
+  `AvatarPickerSheet`'s grid (no premium gating — plain, ungated
+  presets), `UserProfile.coverId` + `ProgressRepository.updateCover`
+  persist the choice. Same gap as avatar art: no real cover PNGs
+  supplied yet (`assets/covers/` only has a `.gitkeep`), so every cover
+  tile currently shows its emoji-over-color placeholder. **Not yet
+  visually verified on a physical device** — no device was connected
+  during the session that built this.
+- **"Bahasa App" language toggle (2026-07-24)**: the Profile settings
+  item that used to open a `SimplePlaceholderScreen` stub
+  ("Untuk saat ini Teisou hanya berbahasa Indonesia") now opens a real
+  Bahasa Indonesia / English picker (`language_screen.dart`). Mechanism:
+  `AppLanguage` enum (`lib/data/models/app_language.dart`),
+  `LanguageRepository` (SharedPreferences-backed, key `app_language`,
+  no Firestore mirror — pure device-local setting, nothing to sync),
+  `languageProvider` (a `StateProvider<AppLanguage>` whose initial value
+  `main.dart` overrides from the persisted pref before `runApp`, so
+  there's no flash of the wrong language on launch), and `AppStrings`
+  (`lib/core/localization/app_strings.dart`) — a **hand-written**
+  id/en string bundle, not Flutter's ARB/gen-l10n codegen, matching
+  this codebase's existing no-codegen style (hand-written
+  `fromJson`/`toJson` everywhere in `data/models`). Screens read it via
+  `ref.watch(appStringsProvider)`, never hardcode a second language
+  inline. `MaterialApp.locale`/`supportedLocales`/`flutter_localizations`
+  were deliberately **not** touched — this is a pure Riverpod-driven
+  string swap, decoupled from Flutter's own `Locale` system, since
+  nothing in this app needs system-widget locale awareness (no date
+  pickers etc.).
+  **Coverage — this is a partial rollout, not the whole app**: switching
+  to English right now changes the Home tab (menu cards, tagline,
+  bottom nav), `ModulesSection` (module titles/subtitles/badges,
+  locked/coming-soon reasons), the Profile screen (header, streak, exam
+  history, settings menu, all confirm dialogs), and the language picker
+  itself. It does **not** yet cover the ~50 other module screens
+  (Kanji/Kotoba/Bunpou/Partikel/Kaiwa's Home/Level/Category/Detail/Quiz
+  screens, Search, Cam Detector, Leaderboard, exam screens, etc.) —
+  those stay in Indonesian regardless of the toggle until a later pass
+  extends `AppStrings` to them, following the exact same
+  `ref.watch(appStringsProvider)` pattern already established here.
+  **Learning content is intentionally out of scope, permanently, not
+  just for now**: kana/kanji/kotoba/bunpou/particle/kaiwa datasets stay
+  Indonesian-authored either way — translating ~4000 pieces of
+  educational content is a wholly separate effort from switching UI
+  chrome, not something "add English" was ever meant to include.
+  Verified with a real functional test (not just compilation):
+  `test/widget_test.dart` overrides `languageProvider` to English and
+  asserts `HomeScreen` actually renders English strings
+  ("Learn Hiragana" etc.) instead of the Indonesian ones.
 - Avatar art PNGs haven't been supplied yet, but as of the 2026-07-20
   profile bug-hunt session the code is fully ready for them:
   `AvatarPreset` (`lib/core/constants/avatars.dart`) gained an
