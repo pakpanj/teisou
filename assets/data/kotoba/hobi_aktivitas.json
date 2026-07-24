@@ -21,7 +21,8 @@
         "translation": "Apa hobimu?"
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shumi.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shumi.png",
+    "meaningEn": "hobby"
   },
   {
     "id": "kotoba_hobi_aktivitas_dokusho",
@@ -45,7 +46,8 @@
         "translation": "Saya suka membaca buku."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_dokusho.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_dokusho.png",
+    "meaningEn": "reading (books)"
   },
   {
     "id": "kotoba_hobi_aktivitas_ongaku",
@@ -69,7 +71,8 @@
         "translation": "Saya mendengarkan musik."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ongaku.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ongaku.png",
+    "meaningEn": "music"
   },
   {
     "id": "kotoba_hobi_aktivitas_eiga",
@@ -93,7 +96,8 @@
         "translation": "Saya menonton film."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_eiga.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_eiga.png",
+    "meaningEn": "movie/film"
   },
   {
     "id": "kotoba_hobi_aktivitas_ryokou",
@@ -117,7 +121,8 @@
         "translation": "Saya suka bepergian."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryokou.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryokou.png",
+    "meaningEn": "travel/trip"
   },
   {
     "id": "kotoba_hobi_aktivitas_shashin",
@@ -141,7 +146,8 @@
         "translation": "Saya memotret."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shashin.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shashin.png",
+    "meaningEn": "photo/photography"
   },
   {
     "id": "kotoba_hobi_aktivitas_e",
@@ -165,7 +171,8 @@
         "translation": "Saya menggambar."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_e.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_e.png",
+    "meaningEn": "picture/drawing"
   },
   {
     "id": "kotoba_hobi_aktivitas_gaadeningu",
@@ -189,7 +196,8 @@
         "translation": "Berkebun adalah hobi saya."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gaadeningu.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gaadeningu.png",
+    "meaningEn": "gardening"
   },
   {
     "id": "kotoba_hobi_aktivitas_ryouri",
@@ -213,7 +221,8 @@
         "translation": "Saya suka memasak."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryouri.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryouri.png",
+    "meaningEn": "cooking (as a hobby)"
   },
   {
     "id": "kotoba_hobi_aktivitas_geemu",
@@ -237,7 +246,8 @@
         "translation": "Saya bermain game."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_geemu.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_geemu.png",
+    "meaningEn": "game"
   },
   {
     "id": "kotoba_hobi_aktivitas_dansu",
@@ -261,7 +271,8 @@
         "translation": "Saya sedang belajar menari."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_dansu.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_dansu.png",
+    "meaningEn": "dance"
   },
   {
     "id": "kotoba_hobi_aktivitas_kyanpu",
@@ -285,7 +296,8 @@
         "translation": "Saya pergi berkemah."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kyanpu.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kyanpu.png",
+    "meaningEn": "camping"
   },
   {
     "id": "kotoba_hobi_aktivitas_sentaku",
@@ -309,7 +321,8 @@
         "translation": "Saya mencuci baju."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sentaku.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sentaku.png",
+    "meaningEn": "laundry"
   },
   {
     "id": "kotoba_hobi_aktivitas_souji",
@@ -333,7 +346,8 @@
         "translation": "Saya membersihkan kamar."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_souji.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_souji.png",
+    "meaningEn": "cleaning"
   },
   {
     "id": "kotoba_hobi_aktivitas_kaimono",
@@ -357,7 +371,8 @@
         "translation": "Saya pergi berbelanja."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kaimono.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kaimono.png",
+    "meaningEn": "shopping"
   },
   {
     "id": "kotoba_hobi_aktivitas_sanpo",
@@ -381,7 +396,8 @@
         "translation": "Saya jalan-jalan santai di taman."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sanpo.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sanpo.png",
+    "meaningEn": "(leisurely) walk"
   },
   {
     "id": "kotoba_hobi_aktivitas_bottou",
@@ -405,7 +421,8 @@
         "translation": "Saya tenggelam dalam hobi saya."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_bottou.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_bottou.png",
+    "meaningEn": "absorption/immersion (in an activity)"
   },
   {
     "id": "kotoba_hobi_aktivitas_netchuu",
@@ -429,7 +446,8 @@
         "translation": "Saya sangat antusias dengan game."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_netchuu.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_netchuu.png",
+    "meaningEn": "enthusiasm/being absorbed"
   },
   {
     "id": "kotoba_hobi_aktivitas_juujitsu",
@@ -453,7 +471,8 @@
         "translation": "Setiap hari terasa memuaskan."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_juujitsu.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_juujitsu.png",
+    "meaningEn": "fulfillment"
   },
   {
     "id": "kotoba_hobi_aktivitas_hassan",
@@ -477,7 +496,8 @@
         "translation": "Saya melampiaskan stres lewat olahraga."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_hassan.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_hassan.png",
+    "meaningEn": "release/venting (stress)"
   },
   {
     "id": "kotoba_hobi_aktivitas_ensou",
@@ -501,7 +521,8 @@
         "translation": "Memainkan piano. (pertunjukkan)"
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ensou.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ensou.png",
+    "meaningEn": "(musical) performance"
   },
   {
     "id": "kotoba_hobi_aktivitas_kaiga",
@@ -525,7 +546,8 @@
         "translation": "Pergi melihat lukisan. (lukisan seni, artistik)"
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kaiga.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kaiga.png",
+    "meaningEn": "painting"
   },
   {
     "id": "kotoba_hobi_aktivitas_katsudou",
@@ -549,7 +571,8 @@
         "translation": "Saya melakukan kegiatan relawan."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_katsudou.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_katsudou.png",
+    "meaningEn": "activity"
   },
   {
     "id": "kotoba_hobi_aktivitas_kankou",
@@ -573,7 +596,8 @@
         "translation": "Berwisata di Kyoto."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kankou.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kankou.png",
+    "meaningEn": "sightseeing"
   },
   {
     "id": "kotoba_hobi_aktivitas_gaishoku",
@@ -597,7 +621,8 @@
         "translation": "Hari ini makan di luar."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gaishoku.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gaishoku.png",
+    "meaningEn": "eating out"
   },
   {
     "id": "kotoba_hobi_aktivitas_gakki",
@@ -621,7 +646,8 @@
         "translation": "Berlatih alat musik."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gakki.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gakki.png",
+    "meaningEn": "musical instrument"
   },
   {
     "id": "kotoba_hobi_aktivitas_geijutsu",
@@ -645,7 +671,8 @@
         "translation": "Tertarik pada seni. (seni pertunjukan/ hiburan)"
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_geijutsu.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_geijutsu.png",
+    "meaningEn": "art"
   },
   {
     "id": "kotoba_hobi_aktivitas_sakuhin",
@@ -669,7 +696,8 @@
         "translation": "Karya ini terkenal."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sakuhin.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sakuhin.png",
+    "meaningEn": "a work (of art)"
   },
   {
     "id": "kotoba_hobi_aktivitas_ryuukou",
@@ -693,7 +721,8 @@
         "translation": "Baju ini sedang tren. (Hits biasanya waktunya sebentar)"
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryuukou.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryuukou.png",
+    "meaningEn": "trend/fashion"
   },
   {
     "id": "kotoba_hobi_aktivitas_tejina",
@@ -717,7 +746,8 @@
         "translation": "Menunjukkan sulap."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_tejina.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_tejina.png",
+    "meaningEn": "magic trick"
   },
   {
     "id": "kotoba_hobi_aktivitas_chousen",
@@ -741,7 +771,8 @@
         "translation": "Menantang diri dengan hal baru."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_chousen.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_chousen.png",
+    "meaningEn": "challenge"
   },
   {
     "id": "kotoba_hobi_aktivitas_shuuji",
@@ -765,7 +796,8 @@
         "translation": "Belajar kaligrafi."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shuuji.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shuuji.png",
+    "meaningEn": "calligraphy"
   },
   {
     "id": "kotoba_hobi_aktivitas_hanami",
@@ -789,7 +821,8 @@
         "translation": "Pergi melihat bunga sakura."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_hanami.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_hanami.png",
+    "meaningEn": "cherry blossom viewing"
   },
   {
     "id": "kotoba_hobi_aktivitas_kenbutsu",
@@ -813,7 +846,8 @@
         "translation": "Melihat-lihat festival."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kenbutsu.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kenbutsu.png",
+    "meaningEn": "sightseeing/looking around"
   },
   {
     "id": "kotoba_hobi_aktivitas_ningyou",
@@ -837,7 +871,8 @@
         "translation": "Bermain boneka."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ningyou.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ningyou.png",
+    "meaningEn": "doll"
   },
   {
     "id": "kotoba_hobi_aktivitas_tenrankai",
@@ -861,6 +896,7 @@
         "translation": "Melihat pameran."
       }
     ],
-    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_tenrankai.png"
+    "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_tenrankai.png",
+    "meaningEn": "exhibition"
   }
 ]

@@ -21,7 +21,8 @@
         "translation": "Saya memakai baju."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_fuku.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_fuku.png",
+    "meaningEn": "clothing"
   },
   {
     "id": "kotoba_pakaian_aksesori_shatsu",
@@ -45,7 +46,8 @@
         "translation": "Saya memakai kemeja."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_shatsu.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_shatsu.png",
+    "meaningEn": "shirt"
   },
   {
     "id": "kotoba_pakaian_aksesori_zubon",
@@ -69,7 +71,8 @@
         "translation": "Saya memakai celana panjang."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_zubon.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_zubon.png",
+    "meaningEn": "trousers/pants"
   },
   {
     "id": "kotoba_pakaian_aksesori_sukaato",
@@ -93,7 +96,8 @@
         "translation": "Saya memakai rok."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_sukaato.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_sukaato.png",
+    "meaningEn": "skirt"
   },
   {
     "id": "kotoba_pakaian_aksesori_kutsu",
@@ -117,7 +121,8 @@
         "translation": "Saya memakai sepatu."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kutsu.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kutsu.png",
+    "meaningEn": "shoes"
   },
   {
     "id": "kotoba_pakaian_aksesori_boushi",
@@ -141,7 +146,8 @@
         "translation": "Saya memakai topi."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_boushi.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_boushi.png",
+    "meaningEn": "hat"
   },
   {
     "id": "kotoba_pakaian_aksesori_megane",
@@ -165,7 +171,8 @@
         "translation": "Saya memakai kacamata."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_megane.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_megane.png",
+    "meaningEn": "glasses"
   },
   {
     "id": "kotoba_pakaian_aksesori_tokei",
@@ -189,7 +196,8 @@
         "translation": "Saya memakai jam tangan."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_tokei.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_tokei.png",
+    "meaningEn": "watch/clock"
   },
   {
     "id": "kotoba_pakaian_aksesori_baggu",
@@ -213,7 +221,8 @@
         "translation": "Saya membawa tas."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_baggu.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_baggu.png",
+    "meaningEn": "bag"
   },
   {
     "id": "kotoba_pakaian_aksesori_yubiwa",
@@ -237,7 +246,8 @@
         "translation": "Saya memakai cincin."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_yubiwa.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_yubiwa.png",
+    "meaningEn": "ring"
   },
   {
     "id": "kotoba_pakaian_aksesori_nekutai",
@@ -261,7 +271,8 @@
         "translation": "Saya memakai dasi."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_nekutai.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_nekutai.png",
+    "meaningEn": "necktie"
   },
   {
     "id": "kotoba_pakaian_aksesori_kimono",
@@ -285,7 +296,8 @@
         "translation": "Saya memakai kimono."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kimono.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kimono.png",
+    "meaningEn": "kimono (traditional Japanese clothing)"
   },
   {
     "id": "kotoba_pakaian_aksesori_saifu",
@@ -309,7 +321,8 @@
         "translation": "Saya lupa membawa dompet."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_saifu.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_saifu.png",
+    "meaningEn": "wallet"
   },
   {
     "id": "kotoba_pakaian_aksesori_kutsushita",
@@ -333,7 +346,8 @@
         "translation": "Saya memakai kaus kaki."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kutsushita.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kutsushita.png",
+    "meaningEn": "socks"
   },
   {
     "id": "kotoba_pakaian_aksesori_youfuku",
@@ -357,7 +371,8 @@
         "translation": "Saya membeli baju."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_youfuku.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_youfuku.png",
+    "meaningEn": "clothing (Western-style)"
   },
   {
     "id": "kotoba_pakaian_aksesori_tebukuro",
@@ -381,7 +396,8 @@
         "translation": "Saya memakai sarung tangan."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_tebukuro.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_tebukuro.png",
+    "meaningEn": "gloves"
   },
   {
     "id": "kotoba_pakaian_aksesori_seifuku",
@@ -405,7 +421,8 @@
         "translation": "Memakai seragam sekolah."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_seifuku.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_seifuku.png",
+    "meaningEn": "uniform"
   },
   {
     "id": "kotoba_pakaian_aksesori_fukusou",
@@ -429,7 +446,8 @@
         "translation": "Tolong perhatikan pakaian. (tampilan, outfit)"
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_fukusou.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_fukusou.png",
+    "meaningEn": "attire/outfit"
   },
   {
     "id": "kotoba_pakaian_aksesori_furugi",
@@ -453,7 +471,8 @@
         "translation": "Saya membeli baju bekas."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_furugi.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_furugi.png",
+    "meaningEn": "used/secondhand clothing"
   },
   {
     "id": "kotoba_pakaian_aksesori_udedokei",
@@ -477,7 +496,8 @@
         "translation": "Saya membeli jam tangan."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_udedokei.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_udedokei.png",
+    "meaningEn": "wristwatch"
   },
   {
     "id": "kotoba_pakaian_aksesori_ishou",
@@ -501,7 +521,8 @@
         "translation": "Saya memakai kostum festival. (untuk pertunjukan)"
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_ishou.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_ishou.png",
+    "meaningEn": "costume"
   },
   {
     "id": "kotoba_pakaian_aksesori_kakkou",
@@ -525,7 +546,8 @@
         "translation": "Penampilannya bagus ya."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kakkou.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kakkou.png",
+    "meaningEn": "appearance/look"
   },
   {
     "id": "kotoba_pakaian_aksesori_momen",
@@ -549,7 +571,8 @@
         "translation": "Kemeja katun."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_momen.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_momen.png",
+    "meaningEn": "cotton"
   },
   {
     "id": "kotoba_pakaian_aksesori_shitagi",
@@ -573,6 +596,7 @@
         "translation": "Mencuci pakaian dalam."
       }
     ],
-    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_shitagi.png"
+    "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_shitagi.png",
+    "meaningEn": "underwear"
   }
 ]
