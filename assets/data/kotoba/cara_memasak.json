@@ -21,7 +21,8 @@
         "translation": "Saya memanggang ikan."
       }
     ],
-    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_yaku.png"
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_yaku.png",
+    "meaningEn": "to grill/pan-fry"
   },
   {
     "id": "kotoba_cara_memasak_niru",
@@ -45,7 +46,8 @@
         "translation": "Saya merebus sayuran."
       }
     ],
-    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_niru.png"
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_niru.png",
+    "meaningEn": "to simmer/boil in broth"
   },
   {
     "id": "kotoba_cara_memasak_ageru",
@@ -69,7 +71,8 @@
         "translation": "Saya menggoreng tempura."
       }
     ],
-    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_ageru.png"
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_ageru.png",
+    "meaningEn": "to deep-fry"
   },
   {
     "id": "kotoba_cara_memasak_musu",
@@ -93,7 +96,8 @@
         "translation": "Saya mengukus sayuran."
       }
     ],
-    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_musu.png"
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_musu.png",
+    "meaningEn": "to steam"
   },
   {
     "id": "kotoba_cara_memasak_itameru",
@@ -117,7 +121,8 @@
         "translation": "Saya menumis sayuran."
       }
     ],
-    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_itameru.png"
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_itameru.png",
+    "meaningEn": "to stir-fry"
   },
   {
     "id": "kotoba_cara_memasak_yuderu",
@@ -141,7 +146,8 @@
         "translation": "Saya merebus telur."
       }
     ],
-    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_yuderu.png"
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_yuderu.png",
+    "meaningEn": "to boil"
   },
   {
     "id": "kotoba_cara_memasak_kiru",
@@ -165,7 +171,8 @@
         "translation": "Saya memotong sayuran."
       }
     ],
-    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_kiru.png"
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_kiru.png",
+    "meaningEn": "to cut"
   },
   {
     "id": "kotoba_cara_memasak_mazeru",
@@ -189,7 +196,8 @@
         "translation": "Saya mencampur bahan-bahan."
       }
     ],
-    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_mazeru.png"
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_mazeru.png",
+    "meaningEn": "to mix"
   },
   {
     "id": "kotoba_cara_memasak_tsukuru",
@@ -213,7 +221,8 @@
         "translation": "Saya membuat masakan."
       }
     ],
-    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_tsukuru.png"
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_tsukuru.png",
+    "meaningEn": "to make (cook)"
   },
   {
     "id": "kotoba_cara_memasak_taku",
@@ -237,6 +246,7 @@
         "translation": "Saya menanak nasi."
       }
     ],
-    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_taku.png"
+    "imagePath": "kotoba_images/cara_memasak/kotoba_cara_memasak_taku.png",
+    "meaningEn": "to cook rice"
   }
 ]

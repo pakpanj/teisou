@@ -21,7 +21,8 @@
         "translation": "Saya membuat sup dengan panci."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_nabe.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_nabe.png",
+    "meaningEn": "pot"
   },
   {
     "id": "kotoba_peralatan_masak_furaipan",
@@ -45,7 +46,8 @@
         "translation": "Saya memasak dengan wajan."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_furaipan.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_furaipan.png",
+    "meaningEn": "frying pan"
   },
   {
     "id": "kotoba_peralatan_masak_houchou",
@@ -69,7 +71,8 @@
         "translation": "Saya memotong dengan pisau dapur."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_houchou.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_houchou.png",
+    "meaningEn": "kitchen knife"
   },
   {
     "id": "kotoba_peralatan_masak_manaita",
@@ -93,7 +96,8 @@
         "translation": "Saya memotong di atas talenan."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_manaita.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_manaita.png",
+    "meaningEn": "cutting board"
   },
   {
     "id": "kotoba_peralatan_masak_oobun",
@@ -117,7 +121,8 @@
         "translation": "Saya memanggang dengan oven."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_oobun.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_oobun.png",
+    "meaningEn": "oven"
   },
   {
     "id": "kotoba_peralatan_masak_denshirenji",
@@ -141,7 +146,8 @@
         "translation": "Saya menghangatkan dengan microwave."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_denshirenji.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_denshirenji.png",
+    "meaningEn": "microwave"
   },
   {
     "id": "kotoba_peralatan_masak_suihanki",
@@ -165,7 +171,8 @@
         "translation": "Saya memasak nasi dengan rice cooker."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_suihanki.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_suihanki.png",
+    "meaningEn": "rice cooker"
   },
   {
     "id": "kotoba_peralatan_masak_oosaji",
@@ -189,7 +196,8 @@
         "translation": "Satu sendok makan gula."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_oosaji.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_oosaji.png",
+    "meaningEn": "tablespoon (measure)"
   },
   {
     "id": "kotoba_peralatan_masak_kosaji",
@@ -213,7 +221,8 @@
         "translation": "Setengah sendok teh garam."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_kosaji.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_kosaji.png",
+    "meaningEn": "teaspoon (measure)"
   },
   {
     "id": "kotoba_peralatan_masak_zaru",
@@ -237,7 +246,8 @@
         "translation": "Saya meniriskan air dengan saringan."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_zaru.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_zaru.png",
+    "meaningEn": "colander/strainer"
   },
   {
     "id": "kotoba_peralatan_masak_yakan",
@@ -261,7 +271,8 @@
         "translation": "Saya merebus air dengan ketel."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_yakan.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_yakan.png",
+    "meaningEn": "kettle"
   },
   {
     "id": "kotoba_peralatan_masak_sara",
@@ -285,7 +296,8 @@
         "translation": "Saya mencuci piring."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_sara.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_sara.png",
+    "meaningEn": "plate"
   },
   {
     "id": "kotoba_peralatan_masak_shokki",
@@ -309,7 +321,8 @@
         "translation": "Mencuci peralatan makan."
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_shokki.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_shokki.png",
+    "meaningEn": "tableware"
   },
   {
     "id": "kotoba_peralatan_masak_youki",
@@ -333,6 +346,7 @@
         "translation": "Memasukkan air ke wadah. (botol, ember, tong)"
       }
     ],
-    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_youki.png"
+    "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_youki.png",
+    "meaningEn": "container"
   }
 ]

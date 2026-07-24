@@ -21,7 +21,8 @@
         "translation": "Saya minum air."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_mizu.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_mizu.png",
+    "meaningEn": "water"
   },
   {
     "id": "kotoba_minuman_ocha",
@@ -45,7 +46,8 @@
         "translation": "Silakan minum teh."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_ocha.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_ocha.png",
+    "meaningEn": "Japanese tea"
   },
   {
     "id": "kotoba_minuman_koucha",
@@ -69,7 +71,8 @@
         "translation": "Saya memasukkan gula ke teh hitam."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_koucha.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_koucha.png",
+    "meaningEn": "black tea"
   },
   {
     "id": "kotoba_minuman_koohii",
@@ -93,7 +96,8 @@
         "translation": "Saya minum kopi setiap pagi."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_koohii.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_koohii.png",
+    "meaningEn": "coffee"
   },
   {
     "id": "kotoba_minuman_gyuunyuu",
@@ -117,7 +121,8 @@
         "translation": "Saya membeli susu."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_gyuunyuu.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_gyuunyuu.png",
+    "meaningEn": "milk"
   },
   {
     "id": "kotoba_minuman_juusu",
@@ -141,7 +146,8 @@
         "translation": "Saya minum jus."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_juusu.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_juusu.png",
+    "meaningEn": "juice"
   },
   {
     "id": "kotoba_minuman_koora",
@@ -165,7 +171,8 @@
         "translation": "Cola itu manis."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_koora.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_koora.png",
+    "meaningEn": "cola"
   },
   {
     "id": "kotoba_minuman_biiru",
@@ -189,7 +196,8 @@
         "translation": "Saya minum bir."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_biiru.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_biiru.png",
+    "meaningEn": "beer"
   },
   {
     "id": "kotoba_minuman_nihonshu",
@@ -213,7 +221,8 @@
         "translation": "Sake dibuat dari beras."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_nihonshu.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_nihonshu.png",
+    "meaningEn": "sake (Japanese rice wine)"
   },
   {
     "id": "kotoba_minuman_wain",
@@ -237,7 +246,8 @@
         "translation": "Saya suka anggur merah."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_wain.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_wain.png",
+    "meaningEn": "wine"
   },
   {
     "id": "kotoba_minuman_tansan",
@@ -261,7 +271,8 @@
         "translation": "Saya suka minuman soda."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_tansan.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_tansan.png",
+    "meaningEn": "carbonated/soda drink"
   },
   {
     "id": "kotoba_minuman_mirukutii",
@@ -285,7 +296,8 @@
         "translation": "Saya minum teh susu."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_mirukutii.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_mirukutii.png",
+    "meaningEn": "milk tea"
   },
   {
     "id": "kotoba_minuman_inryou",
@@ -309,7 +321,8 @@
         "translation": "Menyiapkan air minum. (segala minuman/nomimono)"
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_inryou.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_inryou.png",
+    "meaningEn": "beverage/drink"
   },
   {
     "id": "kotoba_minuman_aiin",
@@ -333,6 +346,7 @@
         "translation": "Dia sangat suka minum kopi."
       }
     ],
-    "imagePath": "kotoba_images/minuman/kotoba_minuman_aiin.png"
+    "imagePath": "kotoba_images/minuman/kotoba_minuman_aiin.png",
+    "meaningEn": "habitually enjoying a drink"
   }
 ]
