@@ -19,6 +19,8 @@ import 'notification_screen.dart';
 import 'profile_providers.dart';
 import 'widgets/avatar_picker_sheet.dart';
 import 'widgets/edit_name_dialog.dart';
+import 'widgets/exam_history_empty_illustration.dart';
+import 'widgets/profile_header_illustration.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -69,7 +71,9 @@ class _ProfileBody extends ConsumerWidget {
               child: _ProgressStatCard(
                 type: KanaType.hiragana,
                 color: AppColors.primaryCoral,
+                cardBg: AppColors.hiraganaCardBg,
                 label: 'Hiragana',
+                character: 'あ',
               ),
             ),
             const SizedBox(width: 12),
@@ -77,7 +81,9 @@ class _ProfileBody extends ConsumerWidget {
               child: _ProgressStatCard(
                 type: KanaType.katakana,
                 color: AppColors.secondaryBlue,
+                cardBg: AppColors.katakanaCardBg,
                 label: 'Katakana',
+                character: 'ア',
               ),
             ),
           ],
@@ -150,62 +156,91 @@ class _HeaderCard extends ConsumerWidget {
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+      padding: const EdgeInsets.fromLTRB(16, 24, 0, 24),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: AppColors.hiraganaCardBg,
         borderRadius: BorderRadius.circular(24),
       ),
-      child: Column(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          GestureDetector(
-            onTap: () => _pickAvatar(context),
-            child: Stack(
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                UserAvatar(profile: profile, user: user, radius: 40),
-                Positioned(
-                  right: 0,
-                  bottom: 0,
-                  child: Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: const BoxDecoration(
-                      color: AppColors.primaryCoral,
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(Icons.camera_alt, size: 14, color: Colors.white),
+                GestureDetector(
+                  onTap: () => _pickAvatar(context),
+                  child: Stack(
+                    children: [
+                      UserAvatar(profile: profile, user: user, radius: 40),
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: const BoxDecoration(
+                            color: AppColors.primaryCoral,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(Icons.camera_alt, size: 14, color: Colors.white),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        displayName,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textNavy,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.edit, size: 18, color: AppColors.textNavy),
+                      tooltip: 'Ganti Nama',
+                      onPressed: () => _editName(context, displayName),
+                      visualDensity: VisualDensity.compact,
+                    ),
+                  ],
+                ),
+                _TierBadge(isPremium: isPremium),
+                const SizedBox(height: 8),
+                const Text(
+                  'Belajar setiap hari,\nsedikit demi sedikit, pasti bisa! 🌸',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 12.5, color: AppColors.textNavy),
+                ),
+                if (isAnonymous) ...[
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: AppColors.primaryCoral,
+                        side: const BorderSide(color: AppColors.primaryCoral),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      onPressed: () => _linkGoogle(context, ref),
+                      icon: const Icon(Icons.login, size: 18),
+                      label: const Text('Masuk dengan Google'),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),
-          const SizedBox(height: 12),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                displayName,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.textNavy,
-                ),
-              ),
-              IconButton(
-                icon: const Icon(Icons.edit, size: 18, color: AppColors.textNavy),
-                tooltip: 'Ganti Nama',
-                onPressed: () => _editName(context, displayName),
-                visualDensity: VisualDensity.compact,
-              ),
-            ],
-          ),
-          _TierBadge(isPremium: isPremium),
-          if (isAnonymous) ...[
-            const SizedBox(height: 16),
-            OutlinedButton.icon(
-              onPressed: () => _linkGoogle(context, ref),
-              icon: const Icon(Icons.login, size: 18),
-              label: const Text('Masuk dengan Google'),
-            ),
-          ],
+          const ProfileHeaderIllustration(),
         ],
       ),
     );
@@ -248,13 +283,13 @@ class _TierBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       decoration: BoxDecoration(
-        color: AppColors.freeBadgeGrey.withValues(alpha: 0.15),
+        color: Colors.white.withValues(alpha: 0.6),
         borderRadius: BorderRadius.circular(20),
       ),
       child: const Text(
-        'FREE',
+        '🌸 FREE',
         style: TextStyle(
-          color: AppColors.freeBadgeGrey,
+          color: AppColors.primaryCoral,
           fontWeight: FontWeight.bold,
           fontSize: 12,
         ),
@@ -266,12 +301,16 @@ class _TierBadge extends StatelessWidget {
 class _ProgressStatCard extends ConsumerWidget {
   final KanaType type;
   final Color color;
+  final Color cardBg;
   final String label;
+  final String character;
 
   const _ProgressStatCard({
     required this.type,
     required this.color,
+    required this.cardBg,
     required this.label,
+    required this.character,
   });
 
   /// Only used as a placeholder while `kanaListProvider` hasn't resolved
@@ -293,20 +332,39 @@ class _ProgressStatCard extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: cardBg,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            label,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: AppColors.textNavy,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                label,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textNavy,
+                ),
+              ),
+              Container(
+                width: 34,
+                height: 34,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+                child: Text(
+                  character,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 6),
+          const SizedBox(height: 10),
           Text(
             '$mastered/$total Mastered',
             style: TextStyle(color: color, fontWeight: FontWeight.bold),
@@ -346,9 +404,79 @@ class _StreakCard extends ConsumerWidget {
           const Text('🔥', style: TextStyle(fontSize: 28)),
           const SizedBox(width: 12),
           Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Streak',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.tertiaryAmber,
+                  ),
+                ),
+                Text(
+                  '$streak hari berturut-turut belajar!',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textNavy,
+                  ),
+                ),
+                Text(
+                  'Pertahankan streak-mu!',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: AppColors.textNavy.withValues(alpha: 0.6),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          _StreakDayBadge(streak: streak),
+        ],
+      ),
+    );
+  }
+}
+
+class _StreakDayBadge extends StatelessWidget {
+  final int streak;
+
+  const _StreakDayBadge({required this.streak});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 46,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: double.infinity,
+            color: AppColors.tertiaryAmber,
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            alignment: Alignment.center,
             child: Text(
-              '$streak hari berturut-turut belajar',
+              '$streak',
               style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 3),
+            child: Text(
+              'HARI',
+              style: TextStyle(
+                fontSize: 9,
                 fontWeight: FontWeight.bold,
                 color: AppColors.textNavy,
               ),
@@ -392,9 +520,18 @@ class _ExamHistorySection extends ConsumerWidget {
         if (history.isEmpty)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Text(
-              'Belum ada riwayat ujian.',
-              style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Belum ada riwayat ujian.',
+                    style: TextStyle(
+                      color: AppColors.textNavy.withValues(alpha: 0.6),
+                    ),
+                  ),
+                ),
+                const ExamHistoryEmptyIllustration(),
+              ],
             ),
           )
         else
