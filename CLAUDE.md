@@ -1373,6 +1373,75 @@ timing) on a real device before treating this as fully verified.
   unrelated writes. **Same deploy caveat as the Clan feature's rules fix
   above applies here too** — this only takes effect once
   `firestore.rules` is actually deployed to the live Firebase project.
+- **Profile redesign to match user-supplied mockup** (2026-07-24): the
+  header card, progress cards, streak card, and empty exam-history state
+  were reworked to match a reference screenshot the user shared in chat.
+  Header card background changed from `cardWhite` to `hiraganaCardBg`
+  (soft pink) and restructured from a centered `Column` to a
+  `Row(Expanded(left content) | illustration)`; the left side gained a
+  motivational tagline ("Belajar setiap hari, sedikit demi sedikit, pasti
+  bisa! 🌸") and the FREE badge got a 🌸 prefix + pink tint (was flat
+  grey). New `ProfileHeaderIllustration` widget
+  (`lib/features/profile/widgets/profile_header_illustration.dart`) draws
+  a torii-gate + Mt. Fuji + sun + sakura-blossom scene entirely from
+  layered `Container`/`ClipPath`/`Text(emoji)` shapes — no image asset,
+  same "emoji + color placeholder" convention `AvatarPreset` already
+  uses. `_ProgressStatCard` gained `cardBg`/`character` params (tinted
+  `hiraganaCardBg`/`katakanaCardBg` backgrounds, a circular badge showing
+  あ/ア) — this is a **breaking constructor change**, both call sites in
+  `_ProfileBody` were updated in the same commit. `_StreakCard` gained a
+  "Streak" heading, a "Pertahankan streak-mu!" subtitle, and a new
+  `_StreakDayBadge` (calendar-style day-count chip) on the right. Empty
+  `_ExamHistorySection` now shows `ExamHistoryEmptyIllustration`
+  (napping-cat-under-a-sakura-tree, same layered-shapes convention) next
+  to the "Belum ada riwayat ujian." text. **Verified end-to-end on a
+  physical device** (Moto G52J 5G, via `adb install` + screenshot
+  comparison against the reference mockup) — the first time this
+  session's UI work got a real on-device visual check rather than just
+  `flutter analyze`/`test`, worth doing again for future visual/design
+  requests specifically (code-level verification alone can't catch
+  "does this actually look like the reference" the way a screenshot
+  can). Landed in both the active worktree and root `master` (see the
+  git-workflow note below for why both needed the same edits applied
+  separately rather than a straight file copy).
+- **Kotoba `KotobaImage` placeholder color** (2026-07-24, same session):
+  the loading/fallback background was hardcoded to `AppColors.hiraganaCardBg`
+  (pale pink, originally meant for the "Belajar Hiragana" menu card) —
+  reported by the user as looking "dull" against the now-live vocab
+  illustrations. Swapped for the already-existing `tertiaryAmberCardBg`
+  token (warm cream, already used on Home/Profile/exam-result cards)
+  instead of inventing a new one. `KaiwaImage` has the exact same
+  hardcoded-`hiraganaCardBg` pattern and was **not** touched — flagged to
+  the user, not fixed, since they scoped the request to "menu kosa kata"
+  specifically and Kaiwa has no live images yet anyway (see the Kaiwa
+  dialogue-images gap elsewhere in this file).
+- **Git-workflow gotcha worth remembering**: mid-session, edits made
+  while "in a worktree" per the system environment actually landed in
+  root `teisou`'s own working tree instead (a plain `Read`/`Edit` on an
+  absolute `C:\Users\LENOVO\teisou\...` path, not the worktree's mirrored
+  path under `.claude\worktrees\...`) — caught only because `git status`
+  in the worktree showed no pending change right after editing. Root and
+  the worktree can drift in **content**, not just commit history (e.g.
+  root's `ProfileScreen` had a pull-to-refresh `AppRefreshIndicator`
+  wrapper the worktree's copy didn't), so a change made in one location
+  cannot be safely `cp`'d wholesale into the other — each needs the same
+  conceptual edit applied on its own, and `flutter analyze`/`test` need
+  re-running separately in whichever directory actually received the
+  edit (running them in the *other* one proves nothing about the file
+  you just changed). Also worth knowing: this project has no Flutter web
+  platform files (`web/` didn't exist before this session) and Flutter
+  web's debug-mode `-d chrome`/`-d web-server` connection crashes on the
+  injected DWDS debug client here (`TypeError: Instance of '_JsonMap'
+  is not a subtype of type 'List<Object?>'`, a webdev/DDC version
+  mismatch, not an app bug) — `flutter run -d <device-serial>` +
+  `adb exec-out screencap` against the physical Moto G52J is the proven
+  working path for visual verification in this environment, not a web
+  preview. `flutter run -d <serial>` can itself fail at the "debug
+  connection" step with `adb.exe: error: more than one device/emulator`
+  whenever the ATD emulator is also connected — the APK still builds and
+  installs fine in that case, just launch it directly with
+  `adb -s <serial> shell monkey -p com.teisou.kanamaster -c
+  android.intent.category.LAUNCHER 1` instead of waiting on `flutter run`.
 - **Kotoba vocab module** (Batch 6-7) extends Batch 4's `KotobaEntry`
   rather than duplicating it: added `imagePath`, and `sentenceExample`
   (singular) became `sentenceExamples` (list) with a backward-compat
