@@ -2285,6 +2285,28 @@ timing) on a real device before treating this as fully verified.
   3), but AdMob uses Google's public **test** ad unit IDs
   (`lib/core/services/ad_service.dart`, `AndroidManifest.xml`) — swap for
   production IDs before release (Batch 12+).
+- **Banner ad placement (2026-07-24)**: `const FreeTierBannerAd()` (already
+  used on `home_screen.dart`/`flashcard_screen.dart`) was extended to all
+  10 remaining module browse screens per explicit user request — every
+  module's Home screen plus its Level/Category list screen:
+  `kotoba_home_screen.dart`/`kotoba_category_screen.dart`,
+  `kanji_home_screen.dart`/`kanji_level_screen.dart`,
+  `bunpou_home_screen.dart`/`bunpou_level_screen.dart`,
+  `particle_home_screen.dart`/`particle_category_screen.dart`,
+  `kaiwa_home_screen.dart`/`kaiwa_level_screen.dart`. Same placement
+  convention as the existing two screens: the scrollable content wrapped
+  in `Expanded` inside a `Column`, with the banner as a fixed sibling
+  below it (not inside the scroll view), so it never scrolls out of
+  view but also never overlaps content. `KaiwaCategoryScreen` (the
+  dialogue-list screen one level below `KaiwaLevelScreen`) was
+  deliberately left out of this pass — the user's scope was "Home +
+  Level/Category" per module, and for Kaiwa that maps to
+  `KaiwaHomeScreen` (level picker) + `KaiwaLevelScreen` (theme picker),
+  matching the other four modules' two-screen depth; add it too if a
+  future ask clarifies Kaiwa's three-tier hierarchy should get a third
+  banner. Interstitial frequency (every 3rd exam,
+  `AdService._interstitialFrequency`) and rewarded-ad call sites were
+  untouched — this pass was placement-only, not frequency tuning.
 - Avatar art PNGs haven't been supplied yet, but as of the 2026-07-20
   profile bug-hunt session the code is fully ready for them:
   `AvatarPreset` (`lib/core/constants/avatars.dart`) gained an
