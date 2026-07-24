@@ -1181,13 +1181,43 @@ toggle.
 snow" alone instead of "salju, snow". `flutter analyze` clean, `flutter
 test --concurrency=1` 30/30.
 
+### Batch 2 (same day): every word-level meaning in the app is now bilingual
+
+Continuing the same rollout, two more datasets got their English pass:
+
+- **`konsep_umum` (416 words)** — the gap the new test exposed. Authored
+  into `scripts/kotoba_meaning_en.py` like any other category, so Kotoba
+  is now **1682/1682 across all 46 categories**, and
+  `content_localization_test.dart` dropped its `pendingEnglishPass`
+  exemption (it now asserts *every* available category is complete).
+- **The search dictionary (908 words)** — needed new infrastructure,
+  built as an exact mirror of the Kotoba pair:
+  `scripts/dictionary_meaning_en.py` (locked translations) +
+  `scripts/apply_dictionary_meaning_en.py` (patches `meaningEn` into
+  `assets/data/dictionary_data.json`). Same re-run rule as everywhere
+  else: **re-apply after `generate_dictionary_seed.py` regenerates the
+  dataset.** Future dictionary batches should translate in the same pass
+  that authors the words rather than leaving a backlog.
+
+Both dictionary and Kotoba search now match English glosses too (same
+change already made for `KanjiRepository.search`), so a learner in
+English mode can search "to eat" and an Indonesian-mode learner can
+search "makan" and both find 食べる. Verified on the Moto G52J: the
+"General Concepts" category renders English meanings (concept, tendency,
+oppression/suppression…). `flutter analyze` clean, `flutter test
+--concurrency=1` 32/32.
+
+**Net effect: every *word meaning* surface in the app — Kanji, Kotoba,
+Dictionary — is bilingual.** What remains is sentence-level and prose
+content (below).
+
 **What is still Indonesian in English mode** (the honest remainder, all
 of it content authoring, none of it blocked on code): kanji word-example
 meanings (7,271) and sentence translations (4,850); Kotoba sentence
-translations (1,264) and `konsep_umum`'s 416 meanings; every Bunpou
-prose field (3,839); the dictionary's 908 meanings + 908 examples;
-Particle titles/explanations/cloze (236); all of Kaiwa (34,019); Dokkai
-titles + passage translations (1,000). Also **exam-history rows store
+translations (1,264); every Bunpou prose field (3,839); the dictionary's
+908 example translations; Particle titles/explanations/cloze (236); all
+of Kaiwa (34,019); Dokkai titles + passage translations (1,000). Also
+**exam-history rows store
 their title as a plain string at submit time** ("Ujian Katakana"), so
 old rows stay Indonesian forever — a schema question (store a mode key,
 localize at render) rather than a translation batch, and untouched here.

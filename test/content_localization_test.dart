@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:kana_master/data/models/app_language.dart';
 import 'package:kana_master/data/models/jlpt_level.dart';
+import 'package:kana_master/data/repositories/dictionary_repository.dart';
 import 'package:kana_master/data/repositories/kanji_repository.dart';
 import 'package:kana_master/data/repositories/kotoba_category_repository.dart';
 import 'package:kana_master/data/repositories/kotoba_repository.dart';
@@ -59,26 +60,19 @@ void main() {
     expect(leaked, isEmpty);
   });
 
-  // konsep_umum is the one category still awaiting its English pass (416
-  // abstract-noun entries). It is browsable in the app like any other
-  // category, so this is a real gap, not an excluded dataset — tighten this
-  // test by dropping the filter once that batch lands.
-  const pendingEnglishPass = {'konsep_umum'};
-
   test('every real Kotoba word has an English meaning', () async {
     final categories = await KotobaCategoryRepository().getAll();
     final repo = KotobaRepository();
     final missing = <String>[];
     var total = 0;
-    for (final category in categories.where(
-        (c) => c.available && !pendingEnglishPass.contains(c.id))) {
+    for (final category in categories.where((c) => c.available)) {
       for (final word in await repo.getVocabCategory(category.id)) {
         if (word.placeholder) continue;
         total++;
         if ((word.meaningEn ?? '').isEmpty) missing.add(word.id);
       }
     }
-    expect(total, greaterThan(1000));
+    expect(total, greaterThan(1600));
     expect(missing, isEmpty,
         reason: '${missing.length} words still have no meaningEn — add them '
             'to scripts/kotoba_meaning_en.py and run the applier');
@@ -92,5 +86,29 @@ void main() {
     expect(unagi.localizedMeaning(AppLanguage.indonesian), 'belut');
     expect(unagi.localizedMeaning(AppLanguage.english), 'eel');
     expect(unagi.jlptLevel, isA<JlptLevel>());
+  });
+
+  test('every dictionary word has an English meaning', () async {
+    final words = await DictionaryRepository().getAll();
+    expect(words.length, greaterThan(900));
+    final missing = words.where((w) => (w.meaningEn ?? '').isEmpty).toList();
+    expect(
+      missing.map((w) => w.id).take(10).toList(),
+      isEmpty,
+      reason: '${missing.length} dictionary words have no meaningEn — add them '
+          'to scripts/dictionary_meaning_en.py and run the applier',
+    );
+
+    final taberu = words.firstWhere((w) => w.id == 'dict_00001');
+    expect(taberu.localizedMeaning(AppLanguage.indonesian), 'makan');
+    expect(taberu.localizedMeaning(AppLanguage.english), 'to eat');
+  });
+
+  test('dictionary search matches English glosses too', () async {
+    final repo = DictionaryRepository();
+    final byEnglish = await repo.search('to eat');
+    expect(byEnglish.map((w) => w.id), contains('dict_00001'));
+    final byIndonesian = await repo.search('makan');
+    expect(byIndonesian.map((w) => w.id), contains('dict_00001'));
   });
 }

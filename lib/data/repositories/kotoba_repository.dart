@@ -62,6 +62,7 @@ class KotobaRepository {
       if (k.reading.toLowerCase().contains(trimmed)) return true;
       if (k.romaji.toLowerCase().contains(trimmed)) return true;
       if (k.meaning.toLowerCase().contains(trimmed)) return true;
+      if ((k.meaningEn ?? '').toLowerCase().contains(trimmed)) return true;
       return false;
     }).toList();
   }

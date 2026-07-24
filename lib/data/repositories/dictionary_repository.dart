@@ -27,7 +27,9 @@ class DictionaryRepository {
 
   Future<List<DictionaryWord>> getAll() => _loadAll();
 
-  /// Case-insensitive search across kanji, reading, and meaning.
+  /// Case-insensitive search across kanji, reading, and both the
+  /// Indonesian and English meanings — matching regardless of the app's
+  /// language toggle, same as [KanjiRepository.search].
   Future<List<DictionaryWord>> search(String query) async {
     final trimmed = query.trim().toLowerCase();
     if (trimmed.isEmpty) return [];
@@ -36,6 +38,7 @@ class DictionaryRepository {
       if (w.kanji?.toLowerCase().contains(trimmed) ?? false) return true;
       if (w.reading.toLowerCase().contains(trimmed)) return true;
       if (w.meaning.toLowerCase().contains(trimmed)) return true;
+      if ((w.meaningEn ?? '').toLowerCase().contains(trimmed)) return true;
       return false;
     }).toList();
   }
