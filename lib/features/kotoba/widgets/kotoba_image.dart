@@ -24,7 +24,7 @@ class KotobaImage extends StatefulWidget {
     required this.categoryIcon,
     this.size = 96,
     this.borderRadius = const BorderRadius.all(Radius.circular(16)),
-    this.backgroundColor = AppColors.hiraganaCardBg,
+    this.backgroundColor = AppColors.tertiaryAmberCardBg,
   });
 
   @override
