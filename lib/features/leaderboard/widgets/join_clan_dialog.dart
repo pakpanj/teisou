@@ -29,6 +29,7 @@ class _JoinClanDialogState extends ConsumerState<JoinClanDialog> {
     final code = _controller.text.trim().toUpperCase();
     final user = ref.read(appStartupProvider).valueOrNull;
     if (code.isEmpty || user == null) return;
+    final s = ref.read(appStringsProvider);
 
     setState(() {
       _joining = true;
@@ -41,7 +42,7 @@ class _JoinClanDialogState extends ConsumerState<JoinClanDialog> {
       if (!mounted) return;
       setState(() {
         _joining = false;
-        _error = 'Kode tidak ditemukan.';
+        _error = s.codeNotFound;
       });
       return;
     }
@@ -52,7 +53,7 @@ class _JoinClanDialogState extends ConsumerState<JoinClanDialog> {
         code: code,
         uid: user.uid,
         displayName: profile?.resolveDisplayName(user) ??
-            (user.displayName ?? 'Pelajar Kana'),
+            (user.displayName ?? s.defaultLearnerName),
         photoUrl: user.photoURL,
         avatarType: profile?.avatarType ?? AvatarType.google,
         avatarValue: profile?.avatarValue,
@@ -63,15 +64,16 @@ class _JoinClanDialogState extends ConsumerState<JoinClanDialog> {
       if (!mounted) return;
       setState(() {
         _joining = false;
-        _error = 'Gagal bergabung, coba lagi.';
+        _error = s.joinClanFailed;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final s = ref.watch(appStringsProvider);
     return AlertDialog(
-      title: const Text('Gabung dengan Kode'),
+      title: Text(s.joinWithCode),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,9 +84,9 @@ class _JoinClanDialogState extends ConsumerState<JoinClanDialog> {
             autofocus: true,
             textCapitalization: TextCapitalization.characters,
             onChanged: (_) => setState(() {}),
-            decoration: const InputDecoration(
-              hintText: 'Kode clan',
-              border: OutlineInputBorder(),
+            decoration: InputDecoration(
+              hintText: s.clanCodeHint,
+              border: const OutlineInputBorder(),
             ),
           ),
           if (_error != null) ...[
@@ -99,7 +101,7 @@ class _JoinClanDialogState extends ConsumerState<JoinClanDialog> {
       actions: [
         TextButton(
           onPressed: _joining ? null : () => Navigator.of(context).pop(),
-          child: const Text('Batal'),
+          child: Text(s.cancel),
         ),
         FilledButton(
           onPressed:
@@ -110,7 +112,7 @@ class _JoinClanDialogState extends ConsumerState<JoinClanDialog> {
                   height: 18,
                   child: CircularProgressIndicator(strokeWidth: 2),
                 )
-              : const Text('Gabung'),
+              : Text(s.joinButton),
         ),
       ],
     );

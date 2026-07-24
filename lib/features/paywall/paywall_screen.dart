@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/mascot_widget.dart';
@@ -31,12 +32,11 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   Future<void> _upgradePremium() async {
     final available = await InAppPurchase.instance.isAvailable();
     if (!mounted) return;
+    final s = ref.read(appStringsProvider);
 
     if (!available) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Toko aplikasi tidak tersedia di perangkat ini.'),
-        ),
+        SnackBar(content: Text(s.storeUnavailable)),
       );
       return;
     }
@@ -45,17 +45,13 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     // Console yet, so we can't actually query/purchase it. Wire this up for
     // real once the product exists there.
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          'Pembelian Premium akan segera tersedia setelah paket '
-          '"$_premiumSku" terdaftar di Play Console.',
-        ),
-      ),
+      SnackBar(content: Text(s.purchaseComingSoon(_premiumSku))),
     );
   }
 
   Future<void> _watchAdForPreview() async {
     setState(() => _watchingAd = true);
+    final s = ref.read(appStringsProvider);
     ref.read(adServiceProvider).loadAndShowRewarded(
       onRewardEarned: () async {
         try {
@@ -69,20 +65,14 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
           if (!mounted) return;
           setState(() => _watchingAd = false);
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Gagal membuka preview, coba lagi.'),
-            ),
+            SnackBar(content: Text(s.previewUnlockFailed)),
           );
           return;
         }
         if (!mounted) return;
         setState(() => _watchingAd = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              '${widget.moduleTitle} terbuka untuk preview 24 jam!',
-            ),
-          ),
+          SnackBar(content: Text(s.previewUnlockedFor(widget.moduleTitle))),
         );
         Navigator.of(context).pop();
       },
@@ -90,16 +80,14 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
         if (!mounted) return;
         setState(() => _watchingAd = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Iklan belum tersedia, coba lagi sebentar lagi.'),
-          ),
+          SnackBar(content: Text(s.adNotReadyYet)),
         );
       },
       onDismissedWithoutReward: () {
         if (!mounted) return;
         setState(() => _watchingAd = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Iklan ditutup sebelum selesai.')),
+          SnackBar(content: Text(s.adClosedEarly)),
         );
       },
     );
@@ -107,6 +95,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(title: const Text('Premium')),
@@ -117,28 +106,28 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
             children: [
               const MascotWidget(mood: MascotMood.proud, size: 150),
               const SizedBox(height: 20),
-              const Text(
-                'Buka Semua Modul!',
-                style: TextStyle(
+              Text(
+                s.unlockAllModulesTitle,
+                style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textNavy,
                 ),
               ),
               const SizedBox(height: 8),
-              const Text(
-                'Akses penuh Kanji, Partikel, Bunpou, dan lebih banyak lagi',
+              Text(
+                s.unlockAllModulesSubtitle,
                 textAlign: TextAlign.center,
-                style: TextStyle(color: AppColors.textNavy),
+                style: const TextStyle(color: AppColors.textNavy),
               ),
               const SizedBox(height: 24),
-              const _BenefitList(),
+              _BenefitList(strings: s),
               const SizedBox(height: 28),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: _upgradePremium,
-                  child: const Text('Upgrade Premium — Rp 29.000/bulan'),
+                  child: Text(s.upgradePremiumButton),
                 ),
               ),
               const SizedBox(height: 16),
@@ -150,7 +139,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
-                      'atau',
+                      s.orLabel,
                       style: TextStyle(
                         color: AppColors.textNavy.withValues(alpha: 0.5),
                       ),
@@ -172,7 +161,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                           height: 20,
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
-                      : const Text('Nonton Iklan untuk Preview 24 Jam'),
+                      : Text(s.watchAdForPreviewButton),
                 ),
               ),
             ],
@@ -184,14 +173,16 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 }
 
 class _BenefitList extends StatelessWidget {
-  const _BenefitList();
+  final AppStrings strings;
 
-  static const _benefits = [
-    'Akses semua modul belajar',
-    'Tanpa iklan',
-    'Progress tersimpan cloud',
-    'Leaderboard eksklusif',
-  ];
+  const _BenefitList({required this.strings});
+
+  List<String> get _benefits => [
+        strings.benefitAllModules,
+        strings.benefitNoAds,
+        strings.benefitCloudProgress,
+        strings.benefitExclusiveLeaderboard,
+      ];
 
   @override
   Widget build(BuildContext context) {

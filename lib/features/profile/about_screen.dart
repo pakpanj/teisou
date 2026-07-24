@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 
-class AboutScreen extends StatelessWidget {
+class AboutScreen extends ConsumerWidget {
   const AboutScreen({super.key});
 
   static const _appVersion = '1.0.0';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(title: const Text('Tentang App')),
+      appBar: AppBar(title: Text(s.aboutApp)),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
@@ -32,26 +35,14 @@ class AboutScreen extends StatelessWidget {
           const SizedBox(height: 4),
           Center(
             child: Text(
-              'Versi $_appVersion',
+              s.appVersionLabel(_appVersion),
               style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
             ),
           ),
           const SizedBox(height: 32),
-          const _Section(
-            title: 'Tentang',
-            body:
-                'Teisou adalah teman belajar bahasa Jepang — dimulai dari '
-                'Hiragana dan Katakana, menuju Kanji, Partikel, dan Tata '
-                'Bahasa. Belajar Kana, langkah pertama menuju Jepang!',
-          ),
+          _Section(title: s.aboutSectionTitle, body: s.aboutSectionBody),
           const SizedBox(height: 20),
-          const _Section(
-            title: 'Kredit',
-            body:
-                'Ilustrasi urutan goresan karakter menggunakan data dari '
-                'proyek KanjiVG (© Ulrich Apel), dilisensikan di bawah '
-                'Creative Commons Attribution-Share Alike 3.0.',
-          ),
+          _Section(title: s.creditsSectionTitle, body: s.creditsSectionBody),
         ],
       ),
     );

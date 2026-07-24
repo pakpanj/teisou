@@ -26,8 +26,9 @@ class ComingSoonContent extends ConsumerWidget {
       await ref.read(progressRepositoryProvider).recordModuleInterest(uid, moduleId);
     }
     if (!context.mounted) return;
+    final s = ref.read(appStringsProvider);
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Kami akan mengingatkanmu saat modul ini siap!')),
+      SnackBar(content: Text(s.willRemindYou)),
     );
     onClose?.call();
   }
@@ -35,6 +36,7 @@ class ComingSoonContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final module = _module;
+    final s = ref.watch(appStringsProvider);
 
     return Padding(
       padding: const EdgeInsets.all(24),
@@ -43,10 +45,10 @@ class ComingSoonContent extends ConsumerWidget {
         children: [
           const MascotWidget(mood: MascotMood.sleepy, size: 120),
           const SizedBox(height: 16),
-          const Text(
-            'Modul ini sedang dalam pengembangan',
+          Text(
+            s.moduleInDevelopment,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
               color: AppColors.textNavy,
@@ -57,7 +59,7 @@ class ComingSoonContent extends ConsumerWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () => _remindMe(context, ref),
-              child: const Text('Ingatkan Saya'),
+              child: Text(s.remindMeButton),
             ),
           ),
           if (module.requiresPremium) ...[
@@ -73,7 +75,7 @@ class ComingSoonContent extends ConsumerWidget {
                     ),
                   ),
                 ),
-                child: const Text('Lihat Opsi Premium'),
+                child: Text(s.viewPremiumOptionsButton),
               ),
             ),
           ],
@@ -83,7 +85,7 @@ class ComingSoonContent extends ConsumerWidget {
               width: double.infinity,
               child: OutlinedButton(
                 onPressed: onClose,
-                child: const Text('Tutup'),
+                child: Text(s.closeButton),
               ),
             ),
           ],

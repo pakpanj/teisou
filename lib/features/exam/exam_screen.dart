@@ -58,11 +58,12 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
     }
 
     setState(() => _submitting = true);
+    final s = ref.read(appStringsProvider);
     final user = ref.read(appStartupProvider).valueOrNull;
     if (user == null) {
       setState(() => _submitting = false);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Gagal menyimpan hasil ujian, coba lagi.')),
+        SnackBar(content: Text(s.failedToSaveExamResult)),
       );
       return;
     }
@@ -74,7 +75,7 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
           uid: user.uid,
           mode: widget.mode,
           answers: _answers,
-          displayName: profile?.resolveDisplayName(user) ?? (user.displayName ?? 'Pelajar Kana'),
+          displayName: profile?.resolveDisplayName(user) ?? (user.displayName ?? s.defaultLearnerName),
           photoUrl: user.photoURL,
           avatarType: profile?.avatarType ?? AvatarType.google,
           avatarValue: profile?.avatarValue,
@@ -87,13 +88,14 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
   @override
   Widget build(BuildContext context) {
     final questionsAsync = ref.watch(examQuestionsProvider(widget.mode));
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text(widget.mode.title)),
       body: questionsAsync.when(
         data: (questions) {
           if (questions.isEmpty) {
-            return const Center(child: Text('Soal tidak tersedia'));
+            return Center(child: Text(s.noQuestionsAvailable));
           }
           final question = questions[_currentIndex];
           final total = questions.length;
@@ -108,7 +110,7 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
               ),
               const SizedBox(height: 12),
               Text(
-                'Soal ${_currentIndex + 1} / $total',
+                s.questionOf(_currentIndex + 1, total),
                 style: const TextStyle(
                   color: AppColors.textNavy,
                   fontWeight: FontWeight.w600,
@@ -120,9 +122,9 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                   child: Column(
                     children: [
                       const SizedBox(height: 16),
-                      const Text(
-                        'Apa bacaan dari huruf ini?',
-                        style: TextStyle(
+                      Text(
+                        s.whatIsThisCharacterReading,
+                        style: const TextStyle(
                           fontSize: 16,
                           color: AppColors.textNavy,
                         ),
@@ -187,7 +189,7 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                               color: Colors.white,
                             ),
                           )
-                        : const Text('Soal Berikutnya'),
+                        : Text(s.nextQuestionButton),
                   ),
                 ),
               ),
@@ -195,7 +197,7 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat soal: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadQuestions(e))),
       ),
     );
   }

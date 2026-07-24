@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/simple_exam_result.dart';
 
@@ -10,7 +12,7 @@ import '../../data/models/simple_exam_result.dart';
 /// when given, is shown below the score (e.g. Choukai's audio script
 /// reveal for post-listening review) — null for exam types with nothing
 /// extra to show.
-class SimpleExamResultScreen extends StatelessWidget {
+class SimpleExamResultScreen extends ConsumerWidget {
   final String title;
   final SimpleExamResult result;
   final Widget? reviewContent;
@@ -23,15 +25,16 @@ class SimpleExamResultScreen extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     final percentage = result.total == 0
         ? 0
         : ((result.score / result.total) * 100).round();
     final label = percentage >= 80
-        ? 'Hebat! 🎉'
+        ? s.simpleExamResultGreat
         : percentage >= 60
-            ? 'Bagus, terus berlatih! 👍'
-            : 'Jangan menyerah, coba lagi! 💪';
+            ? s.simpleExamResultGood
+            : s.simpleExamResultTryAgain;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -89,7 +92,7 @@ class SimpleExamResultScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('Selesai'),
+                  child: Text(s.done),
                 ),
               ),
             ],

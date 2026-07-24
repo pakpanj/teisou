@@ -22,6 +22,7 @@ class DictionaryWordDetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(title: Text(entry.display)),
@@ -58,7 +59,7 @@ class DictionaryWordDetailScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 24),
-            const _SectionTitle('Arti'),
+            _SectionTitle(s.meaningSectionTitle),
             const SizedBox(height: 8),
             Text(
               entry.meaning,
@@ -71,7 +72,7 @@ class DictionaryWordDetailScreen extends ConsumerWidget {
               _KanjiCharacterRow(characters: entry.kanjiCharacters),
             ],
             const SizedBox(height: 24),
-            const _SectionTitle('Contoh Kalimat'),
+            _SectionTitle(s.sentenceExamplesTitle),
             const SizedBox(height: 8),
             _SentenceCard(
               japanese: entry.example.japanese,

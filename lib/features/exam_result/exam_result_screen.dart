@@ -4,6 +4,7 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/mascot_widget.dart';
@@ -24,10 +25,10 @@ class ExamResultScreen extends ConsumerStatefulWidget {
 class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
   ExamResult get result => widget.result;
 
-  String get _title {
-    if (result.percentage >= 80) return 'Hebat! Ujian Selesai 🎉';
-    if (result.percentage >= 60) return 'Bagus! Terus Berlatih 👍';
-    return 'Jangan Menyerah, Ayo Coba Lagi! 💪';
+  String _title(AppStrings s) {
+    if (result.percentage >= 80) return s.examResultTitleGreat;
+    if (result.percentage >= 60) return s.examResultTitleGood;
+    return s.examResultTitleTryAgain;
   }
 
   MascotMood get _mood {
@@ -61,6 +62,7 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Stack(
@@ -91,7 +93,7 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
               ),
               const SizedBox(height: 24),
               Text(
-                _title,
+                _title(s),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 20,
@@ -131,7 +133,7 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
                 children: [
                   Expanded(
                     child: _StatCard(
-                      label: 'Benar',
+                      label: s.correctLabel,
                       value: result.correctCount,
                       color: AppColors.successGreen,
                     ),
@@ -139,7 +141,7 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
                   const SizedBox(width: 16),
                   Expanded(
                     child: _StatCard(
-                      label: 'Salah',
+                      label: s.wrongLabel,
                       value: result.wrongCount,
                       color: AppColors.errorRed,
                     ),
@@ -157,7 +159,7 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
                       ),
                     );
                   },
-                  child: const Text('Ulangi Ujian'),
+                  child: Text(s.retryExamButton),
                 ),
               ),
               const SizedBox(height: 12),
@@ -170,7 +172,7 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
                       (route) => false,
                     );
                   },
-                  child: const Text('Kembali ke Menu'),
+                  child: Text(s.backToMenuButton),
                 ),
               ),
             ],

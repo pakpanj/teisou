@@ -51,7 +51,7 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Gagal menyimpan nama, coba lagi.')),
+        SnackBar(content: Text(ref.read(appStringsProvider).nameSaveFailed)),
       );
       return;
     }
@@ -61,6 +61,7 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
 
   void _watchAdThenSave(String uid, String name) {
     setState(() => _watchingAd = true);
+    final s = ref.read(appStringsProvider);
     ref.read(adServiceProvider).loadAndShowRewarded(
       onRewardEarned: () async {
         try {
@@ -70,7 +71,7 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
           if (!mounted) return;
           setState(() => _watchingAd = false);
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Gagal menyimpan nama, coba lagi.')),
+            SnackBar(content: Text(s.nameSaveFailed)),
           );
           return;
         }
@@ -82,14 +83,14 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
         if (!mounted) return;
         setState(() => _watchingAd = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Gagal memuat iklan, coba lagi.')),
+          SnackBar(content: Text(s.adLoadFailed)),
         );
       },
       onDismissedWithoutReward: () {
         if (!mounted) return;
         setState(() => _watchingAd = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Iklan ditutup sebelum selesai.')),
+          SnackBar(content: Text(s.adClosedEarly)),
         );
       },
     );
@@ -100,9 +101,10 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
     final uid = ref.watch(appStartupProvider).valueOrNull?.uid;
     final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
     final name = _trimmedOrNull;
+    final s = ref.watch(appStringsProvider);
 
     return AlertDialog(
-      title: const Text('Ganti Nama'),
+      title: Text(s.changeNameTooltip),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,16 +114,16 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
             maxLength: 20,
             autofocus: true,
             onChanged: (_) => setState(() {}),
-            decoration: const InputDecoration(
-              hintText: 'Nama tampilan',
-              border: OutlineInputBorder(),
+            decoration: InputDecoration(
+              hintText: s.displayNameHint,
+              border: const OutlineInputBorder(),
             ),
           ),
           if (!isPremium) ...[
             const SizedBox(height: 4),
-            const Text(
-              'Ganti nama gratis dengan menonton iklan sebentar.',
-              style: TextStyle(fontSize: 13, color: AppColors.textNavy),
+            Text(
+              s.freeNameChangeHint,
+              style: const TextStyle(fontSize: 13, color: AppColors.textNavy),
             ),
           ],
         ],
@@ -129,14 +131,14 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
       actions: [
         TextButton(
           onPressed: _watchingAd ? null : () => Navigator.of(context).pop(),
-          child: const Text('Batal'),
+          child: Text(s.cancel),
         ),
         if (isPremium)
           FilledButton(
             onPressed: (name == null || uid == null)
                 ? null
                 : () => _saveDirectly(uid, name),
-            child: const Text('Simpan'),
+            child: Text(s.saveButton),
           )
         else
           FilledButton(
@@ -149,7 +151,7 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
                     height: 18,
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
-                : const Text('Nonton Iklan & Simpan'),
+                : Text(s.watchAdAndSaveButton),
           ),
       ],
     );

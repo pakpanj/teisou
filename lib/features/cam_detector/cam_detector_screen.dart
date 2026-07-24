@@ -3,9 +3,12 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../core/localization/app_strings.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import 'widgets/detection_overlay.dart';
 import 'widgets/detection_result_sheet.dart';
@@ -23,14 +26,14 @@ enum _CamState {
 /// kanji) using on-device ML Kit OCR, throttled to roughly one frame a
 /// second. Tapping a detected block (or the auto-highlighted "most
 /// prominent" one) opens [DetectionResultSheet] with a dictionary lookup.
-class CamDetectorScreen extends StatefulWidget {
+class CamDetectorScreen extends ConsumerStatefulWidget {
   const CamDetectorScreen({super.key});
 
   @override
-  State<CamDetectorScreen> createState() => _CamDetectorScreenState();
+  ConsumerState<CamDetectorScreen> createState() => _CamDetectorScreenState();
 }
 
-class _CamDetectorScreenState extends State<CamDetectorScreen>
+class _CamDetectorScreenState extends ConsumerState<CamDetectorScreen>
     with WidgetsBindingObserver {
   static const _throttle = Duration(milliseconds: 700);
 
@@ -145,7 +148,7 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
       }
       setState(() {
         _state = _CamState.error;
-        _errorMessage = 'Gagal membuka kamera. Coba lagi.';
+        _errorMessage = ref.read(appStringsProvider).cameraOpenFailed;
       });
       return;
     }
@@ -303,59 +306,55 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
         foregroundColor: Colors.white,
         title: const Text('Cam Detector'),
       ),
-      body: SafeArea(child: _buildBody()),
+      body: SafeArea(child: _buildBody(ref.watch(appStringsProvider))),
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(AppStrings s) {
     switch (_state) {
       case _CamState.initializing:
-        return const _CenteredMessage(
+        return _CenteredMessage(
           icon: null,
-          message: 'Menyiapkan kamera...',
+          message: s.preparingCamera,
           showSpinner: true,
         );
       case _CamState.permissionDenied:
         return _CenteredMessage(
           icon: Icons.camera_alt_outlined,
-          message:
-              'Izin kamera dibutuhkan untuk memindai karakter Jepang. '
-              'Aplikasi tidak akan mengirim gambar kamu kemana pun.',
-          actionLabel: 'Izinkan Kamera',
+          message: s.cameraPermissionNeeded,
+          actionLabel: s.allowCameraButton,
           onAction: _requestPermissionAndInit,
         );
       case _CamState.permissionPermanentlyDenied:
         return _CenteredMessage(
           icon: Icons.camera_alt_outlined,
-          message:
-              'Izin kamera ditolak permanen. Buka Pengaturan untuk '
-              'mengaktifkannya secara manual.',
-          actionLabel: 'Buka Pengaturan',
+          message: s.cameraPermissionDeniedPermanently,
+          actionLabel: s.openSettingsButton,
           onAction: openAppSettings,
         );
       case _CamState.noCamera:
-        return const _CenteredMessage(
+        return _CenteredMessage(
           icon: Icons.videocam_off_outlined,
-          message: 'Tidak ada kamera yang tersedia di perangkat ini.',
+          message: s.noCameraAvailable,
         );
       case _CamState.error:
         return _CenteredMessage(
           icon: Icons.error_outline,
-          message: _errorMessage ?? 'Terjadi kesalahan.',
-          actionLabel: 'Coba Lagi',
+          message: _errorMessage ?? s.genericError,
+          actionLabel: s.tryAgainButton,
           onAction: _initCameras,
         );
       case _CamState.ready:
-        return _buildCameraView();
+        return _buildCameraView(s);
     }
   }
 
-  Widget _buildCameraView() {
+  Widget _buildCameraView(AppStrings s) {
     final controller = _controller;
     if (controller == null || !controller.value.isInitialized) {
-      return const _CenteredMessage(
+      return _CenteredMessage(
         icon: null,
-        message: 'Menyiapkan kamera...',
+        message: s.preparingCamera,
         showSpinner: true,
       );
     }
@@ -405,14 +404,14 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
                   _RoundIconButton(
                     icon: _flashMode == FlashMode.torch ? Icons.flash_on : Icons.flash_off,
                     onTap: _toggleFlash,
-                    tooltip: 'Nyala/Matikan Flash',
+                    tooltip: s.toggleFlashTooltip,
                   ),
                   const SizedBox(height: 8),
                   if (_cameras.length > 1)
                     _RoundIconButton(
                       icon: Icons.cameraswitch,
                       onTap: _switchCamera,
-                      tooltip: 'Ganti Kamera',
+                      tooltip: s.switchCameraTooltip,
                     ),
                 ],
               ),
@@ -435,7 +434,9 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
                 child: _RoundIconButton(
                   icon: _isPaused ? Icons.play_arrow : Icons.pause,
                   onTap: _togglePause,
-                  tooltip: _isPaused ? 'Lanjutkan Deteksi' : 'Jeda Deteksi',
+                  tooltip: _isPaused
+                      ? s.resumeDetectionTooltip
+                      : s.pauseDetectionTooltip,
                   large: true,
                 ),
               ),
@@ -447,13 +448,14 @@ class _CamDetectorScreenState extends State<CamDetectorScreen>
   }
 }
 
-class _RecognitionWarningBanner extends StatelessWidget {
+class _RecognitionWarningBanner extends ConsumerWidget {
   final VoidCallback onDismiss;
 
   const _RecognitionWarningBanner({required this.onDismiss});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Material(
       color: Colors.black.withValues(alpha: 0.75),
       borderRadius: BorderRadius.circular(12),
@@ -463,11 +465,10 @@ class _RecognitionWarningBanner extends StatelessWidget {
           children: [
             const Icon(Icons.info_outline, color: Colors.white, size: 18),
             const SizedBox(width: 8),
-            const Expanded(
+            Expanded(
               child: Text(
-                'Model pengenalan teks belum siap. Pastikan koneksi '
-                'internet aktif untuk pemakaian pertama, lalu coba lagi.',
-                style: TextStyle(color: Colors.white, fontSize: 12),
+                s.recognitionModelNotReady,
+                style: const TextStyle(color: Colors.white, fontSize: 12),
               ),
             ),
             InkWell(

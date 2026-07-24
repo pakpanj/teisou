@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/exam_mode.dart';
 import 'exam_screen.dart';
@@ -9,13 +11,14 @@ import 'exam_screen.dart';
 /// "Campuran") the upcoming 10-question exam should draw from. This is what
 /// `ExamModePickerScreen` used to be before Ujian grew a category layer on
 /// top (Kana / Dokkai / Choukai / Kanji-Kombinasi).
-class KanaExamModePickerScreen extends StatelessWidget {
+class KanaExamModePickerScreen extends ConsumerWidget {
   const KanaExamModePickerScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text('Ujian Kana')),
+      appBar: AppBar(title: Text(s.kanaExamTitle)),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -23,24 +26,24 @@ class KanaExamModePickerScreen extends StatelessWidget {
             _ModeCard(
               color: AppColors.primaryCoral,
               icon: Icons.text_fields,
-              title: 'Ujian Hiragana',
-              subtitle: 'Soal dari 46 karakter hiragana',
+              title: s.examHiraganaTitle,
+              subtitle: s.examHiraganaSubtitle,
               onTap: () => _startExam(context, ExamMode.hiragana),
             ),
             const SizedBox(height: 16),
             _ModeCard(
               color: AppColors.secondaryBlue,
               icon: Icons.text_fields,
-              title: 'Ujian Katakana',
-              subtitle: 'Soal dari 46 karakter katakana',
+              title: s.examKatakanaTitle,
+              subtitle: s.examKatakanaSubtitle,
               onTap: () => _startExam(context, ExamMode.katakana),
             ),
             const SizedBox(height: 16),
             _ModeCard(
               color: AppColors.tertiaryAmber,
               icon: Icons.shuffle,
-              title: 'Ujian Campuran',
-              subtitle: 'Gabungan hiragana & katakana',
+              title: s.examMixedTitle,
+              subtitle: s.examMixedSubtitle,
               onTap: () => _startExam(context, ExamMode.mixed),
             ),
           ],

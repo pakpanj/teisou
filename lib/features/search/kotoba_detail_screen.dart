@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/kotoba_entry.dart';
@@ -11,7 +12,7 @@ class KotobaDetailScreen extends ConsumerWidget {
 
   const KotobaDetailScreen({super.key, required this.entry});
 
-  Future<void> _save(BuildContext context, WidgetRef ref) async {
+  Future<void> _save(BuildContext context, WidgetRef ref, AppStrings s) async {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (uid == null) return;
     await ref
@@ -19,13 +20,14 @@ class KotobaDetailScreen extends ConsumerWidget {
         .saveDictionaryItem(uid, itemId: entry.id, type: 'kotoba');
     if (!context.mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Tersimpan ke Daftar Belajar!')),
+      SnackBar(content: Text(s.savedToLearningList)),
     );
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final displayWord = entry.kanji ?? entry.word;
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -34,8 +36,8 @@ class KotobaDetailScreen extends ConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.bookmark_border),
-            tooltip: 'Simpan ke Daftar Belajar',
-            onPressed: () => _save(context, ref),
+            tooltip: s.saveToLearningList,
+            onPressed: () => _save(context, ref, s),
           ),
         ],
       ),
@@ -74,7 +76,7 @@ class KotobaDetailScreen extends ConsumerWidget {
               onTap: () => ref.read(ttsServiceProvider).speak(entry.word),
             ),
             const SizedBox(height: 24),
-            _SectionTitle('Arti'),
+            _SectionTitle(s.meaningSectionTitle),
             const SizedBox(height: 8),
             Align(
               alignment: Alignment.centerLeft,
@@ -85,7 +87,7 @@ class KotobaDetailScreen extends ConsumerWidget {
             ),
             if (entry.sentenceExample != null) ...[
               const SizedBox(height: 24),
-              _SectionTitle('Contoh Kalimat'),
+              _SectionTitle(s.sentenceExamplesTitle),
               const SizedBox(height: 8),
               _SentenceCard(
                 japanese: entry.sentenceExample!.japanese,

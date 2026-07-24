@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../data/models/saved_word.dart';
@@ -39,9 +40,10 @@ class _SavedWordsScreenState extends ConsumerState<SavedWordsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(title: const Text('Daftar Belajar')),
+      appBar: AppBar(title: Text(s.savedWords)),
       body: FutureBuilder<List<SavedWord>>(
         future: _future,
         builder: (context, snapshot) {
@@ -50,14 +52,13 @@ class _SavedWordsScreenState extends ConsumerState<SavedWordsScreen> {
           }
           final words = snapshot.data!;
           if (words.isEmpty) {
-            return const Center(
+            return Center(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32),
+                padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: Text(
-                  'Belum ada kata tersimpan. Simpan kata dari Cam Detector '
-                  'untuk melihatnya di sini.',
+                  s.noSavedWordsMessage,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: AppColors.textNavy),
+                  style: const TextStyle(color: AppColors.textNavy),
                 ),
               ),
             );
@@ -71,7 +72,7 @@ class _SavedWordsScreenState extends ConsumerState<SavedWordsScreen> {
               return Dismissible(
                 key: ValueKey(word.id),
                 direction: DismissDirection.endToStart,
-                confirmDismiss: (_) => _confirmDelete(context),
+                confirmDismiss: (_) => _confirmDelete(context, s),
                 onDismissed: (_) => _delete(word),
                 background: Container(
                   alignment: Alignment.centerRight,
@@ -91,20 +92,20 @@ class _SavedWordsScreenState extends ConsumerState<SavedWordsScreen> {
     );
   }
 
-  Future<bool> _confirmDelete(BuildContext context) async {
+  Future<bool> _confirmDelete(BuildContext context, AppStrings s) async {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Hapus kata ini?'),
-        content: const Text('Kata yang dihapus tidak bisa dikembalikan.'),
+        title: Text(s.deleteWordConfirmTitle),
+        content: Text(s.deleteWordConfirmBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Batal'),
+            child: Text(s.cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text('Hapus', style: TextStyle(color: AppColors.errorRed)),
+            child: Text(s.delete, style: const TextStyle(color: AppColors.errorRed)),
           ),
         ],
       ),

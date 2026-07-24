@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
@@ -139,6 +140,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -146,8 +148,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           controller: _controller,
           autofocus: true,
           onChanged: _onQueryChanged,
-          decoration: const InputDecoration(
-            hintText: 'Cari kanji, hiragana, romaji, atau arti...',
+          decoration: InputDecoration(
+            hintText: s.searchHint,
             border: InputBorder.none,
           ),
         ),
@@ -158,7 +160,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             values: _TypeFilter.values,
             selected: _typeFilter,
             labelOf: (v) => switch (v) {
-              _TypeFilter.all => 'Semua',
+              _TypeFilter.all => s.filterAll,
               _TypeFilter.kanji => 'Kanji',
               _TypeFilter.kotoba => 'Kotoba',
             },
@@ -170,25 +172,23 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           _FilterChipsRow<JlptLevel?>(
             values: const [null, ...JlptLevel.values],
             selected: _levelFilter,
-            labelOf: (v) => v?.key ?? 'Semua',
+            labelOf: (v) => v?.key ?? s.filterAll,
             onSelected: (v) => setState(() {
               _levelFilter = v;
               _refresh();
             }),
           ),
           const Divider(height: 1),
-          Expanded(child: _buildResults()),
+          Expanded(child: _buildResults(s)),
         ],
       ),
     );
   }
 
-  Widget _buildResults() {
+  Widget _buildResults(AppStrings s) {
     final future = _resultsFuture;
     if (future == null) {
-      return const _HintMessage(
-        'Ketik kanji, hiragana, romaji, atau arti untuk mencari',
-      );
+      return _HintMessage(s.searchHintMessage);
     }
 
     return FutureBuilder<List<_SearchResult>>(
@@ -199,7 +199,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         }
         final results = snapshot.data ?? [];
         if (results.isEmpty) {
-          return const _HintMessage('Tidak ditemukan. Coba kata kunci lain.');
+          return _HintMessage(s.searchNoResults);
         }
         return ListView.separated(
           padding: const EdgeInsets.all(16),
@@ -404,14 +404,15 @@ class _KotobaResultTile extends StatelessWidget {
 /// as [_KotobaResultTile] minus the JLPT badge (that dataset has no
 /// level metadata) and a small "Kamus" tag instead, so it's visually
 /// distinguishable from the curated 519-word Kotoba module's results.
-class _DictionaryResultTile extends StatelessWidget {
+class _DictionaryResultTile extends ConsumerWidget {
   final DictionaryWord entry;
   final VoidCallback onTap;
 
   const _DictionaryResultTile({required this.entry, required this.onTap});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Material(
       color: AppColors.cardWhite,
       borderRadius: BorderRadius.circular(16),
@@ -454,9 +455,9 @@ class _DictionaryResultTile extends StatelessWidget {
                   color: AppColors.freeBadgeGrey.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Text(
-                  'Kamus',
-                  style: TextStyle(
+                child: Text(
+                  s.dictionaryTag,
+                  style: const TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                     color: AppColors.freeBadgeGrey,

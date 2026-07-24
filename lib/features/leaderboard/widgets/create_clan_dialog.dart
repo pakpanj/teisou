@@ -39,6 +39,7 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
     final name = _trimmedOrNull;
     final user = ref.read(appStartupProvider).valueOrNull;
     if (name == null || user == null) return;
+    final s = ref.read(appStringsProvider);
 
     setState(() {
       _creating = true;
@@ -51,7 +52,7 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
             hostUid: user.uid,
             name: name,
             hostDisplayName: profile?.resolveDisplayName(user) ??
-                (user.displayName ?? 'Pelajar Kana'),
+                (user.displayName ?? s.defaultLearnerName),
             photoUrl: user.photoURL,
             avatarType: profile?.avatarType ?? AvatarType.google,
             avatarValue: profile?.avatarValue,
@@ -65,7 +66,7 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
       if (!mounted) return;
       setState(() {
         _creating = false;
-        _error = 'Gagal membuat clan, coba lagi.';
+        _error = s.createClanFailed;
       });
     }
   }
@@ -73,15 +74,16 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
   @override
   Widget build(BuildContext context) {
     final code = _createdCode;
+    final s = ref.watch(appStringsProvider);
     if (code != null) {
       return AlertDialog(
-        title: const Text('Clan Dibuat!'),
+        title: Text(s.clanCreatedTitle),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              'Bagikan kode ini ke murid supaya bisa bergabung:',
-              style: TextStyle(color: AppColors.textNavy),
+            Text(
+              s.shareCodeMessage,
+              style: const TextStyle(color: AppColors.textNavy),
             ),
             const SizedBox(height: 12),
             Container(
@@ -111,14 +113,14 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
             onPressed: () {
               Clipboard.setData(ClipboardData(text: code));
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Kode disalin.')),
+                SnackBar(content: Text(s.codeCopied)),
               );
             },
-            child: const Text('Salin Kode'),
+            child: Text(s.copyCode),
           ),
           FilledButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Selesai'),
+            child: Text(s.done),
           ),
         ],
       );
@@ -126,7 +128,7 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
 
     final name = _trimmedOrNull;
     return AlertDialog(
-      title: const Text('Buat Clan'),
+      title: Text(s.createClan),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,9 +138,9 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
             maxLength: 30,
             autofocus: true,
             onChanged: (_) => setState(() {}),
-            decoration: const InputDecoration(
-              hintText: 'Nama clan (mis. SMA 1 Kelas 9A)',
-              border: OutlineInputBorder(),
+            decoration: InputDecoration(
+              hintText: s.clanNameHint,
+              border: const OutlineInputBorder(),
             ),
           ),
           if (_error != null) ...[
@@ -153,7 +155,7 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
       actions: [
         TextButton(
           onPressed: _creating ? null : () => Navigator.of(context).pop(),
-          child: const Text('Batal'),
+          child: Text(s.cancel),
         ),
         FilledButton(
           onPressed: (name == null || _creating) ? null : _create,
@@ -163,7 +165,7 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
                   height: 18,
                   child: CircularProgressIndicator(strokeWidth: 2),
                 )
-              : const Text('Buat'),
+              : Text(s.createButton),
         ),
       ],
     );

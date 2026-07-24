@@ -6,9 +6,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kana_master/core/providers.dart';
 import 'package:kana_master/data/models/app_language.dart';
 import 'package:kana_master/data/models/jlpt_level.dart';
+import 'package:kana_master/features/exam/exam_mode_picker_screen.dart';
 import 'package:kana_master/features/kanji/kanji_level_screen.dart';
 import 'package:kana_master/features/kotoba/kotoba_home_screen.dart';
 import 'package:kana_master/features/particle/particle_home_screen.dart';
+import 'package:kana_master/features/paywall/paywall_screen.dart';
 
 void main() {
   // kanjiLearnedIdsProvider reads SharedPreferences — without a mock, the
@@ -85,6 +87,43 @@ void main() {
       );
       expect(find.text('Particles'), findsOneWidget);
       expect(find.text('Partikel'), findsNothing);
+    },
+  );
+
+  testWidgets(
+    'ExamModePickerScreen category subtitles switch language',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [languageProvider.overrideWith((ref) => AppLanguage.english)],
+          child: const MaterialApp(home: ExamModePickerScreen()),
+        ),
+      );
+
+      expect(find.text('Hiragana, Katakana, or mixed'), findsOneWidget);
+      expect(find.text('Reading comprehension, N5-N1'), findsOneWidget);
+      expect(find.text('Hiragana, Katakana, atau campuran'), findsNothing);
+    },
+  );
+
+  testWidgets(
+    'PaywallScreen benefit list switches language',
+    (WidgetTester tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [languageProvider.overrideWith((ref) => AppLanguage.english)],
+          child: const MaterialApp(
+            home: PaywallScreen(moduleId: 'kanji', moduleTitle: 'Kanji N5'),
+          ),
+        ),
+      );
+      await tester.pump();
+
+      expect(find.text('Unlock All Modules!'), findsOneWidget);
+      expect(find.text('Access to all learning modules'), findsOneWidget);
+      expect(find.text('No ads'), findsOneWidget);
+      expect(find.text('Watch Ad for 24-Hour Preview'), findsOneWidget);
+      expect(find.text('Buka Semua Modul!'), findsNothing);
     },
   );
 }

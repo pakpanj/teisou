@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/avatars.dart';
+import '../../core/localization/app_strings.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/leaderboard_entry.dart';
@@ -10,36 +12,37 @@ import '../../data/repositories/leaderboard_repository.dart';
 import 'leaderboard_providers.dart';
 import 'widgets/clan_tab.dart';
 
-class LeaderboardScreen extends StatelessWidget {
+class LeaderboardScreen extends ConsumerWidget {
   const LeaderboardScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return DefaultTabController(
       length: 7,
       child: Scaffold(
         backgroundColor: AppColors.background,
         appBar: AppBar(
-          title: const Row(
+          title: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('🏆 ', style: TextStyle(fontSize: 18)),
-              Text('Papan Peringkat'),
+              const Text('🏆 ', style: TextStyle(fontSize: 18)),
+              Text(s.leaderboardTitle),
             ],
           ),
-          bottom: const TabBar(
+          bottom: TabBar(
             isScrollable: true,
             labelColor: AppColors.primaryCoral,
             unselectedLabelColor: AppColors.textNavy,
             indicatorColor: AppColors.primaryCoral,
             tabs: [
-              Tab(text: 'Kana Mastered'),
-              Tab(text: 'Skor Ujian'),
-              Tab(text: 'Rekor Kana'),
-              Tab(text: 'Rekor Dokkai'),
-              Tab(text: 'Rekor Choukai'),
-              Tab(text: 'Rekor Kanji-Kombinasi'),
-              Tab(text: 'Clan'),
+              const Tab(text: 'Kana Mastered'),
+              Tab(text: s.tabExamScore),
+              Tab(text: s.tabKanaRecord),
+              Tab(text: s.tabDokkaiRecord),
+              Tab(text: s.tabChoukaiRecord),
+              Tab(text: s.tabKanjiComboRecord),
+              const Tab(text: 'Clan'),
             ],
           ),
         ),
@@ -68,7 +71,11 @@ class LeaderboardScreen extends StatelessWidget {
 /// than a potentially-confusing "0.0% (0x)"). Public so the Clan tab's
 /// ranking (which reuses the same six metrics, just scoped to clan
 /// members) can render identically.
-String leaderboardValueLabel(LeaderboardMetric metric, LeaderboardEntry entry) {
+String leaderboardValueLabel(
+  LeaderboardMetric metric,
+  LeaderboardEntry entry,
+  AppStrings strings,
+) {
   switch (metric) {
     case LeaderboardMetric.totalMastered:
       return '${entry.totalMastered}';
@@ -76,19 +83,19 @@ String leaderboardValueLabel(LeaderboardMetric metric, LeaderboardEntry entry) {
       return '${entry.examHighScore}';
     case LeaderboardMetric.kanaRecord:
       return entry.kanaRecordCount == 0
-          ? 'Belum ada'
+          ? strings.noRecordYet
           : '${entry.kanaRecordAvg.toStringAsFixed(1)}% (${entry.kanaRecordCount}x)';
     case LeaderboardMetric.dokkaiRecord:
       return entry.dokkaiRecordCount == 0
-          ? 'Belum ada'
+          ? strings.noRecordYet
           : '${entry.dokkaiRecordAvg.toStringAsFixed(1)}% (${entry.dokkaiRecordCount}x)';
     case LeaderboardMetric.choukaiRecord:
       return entry.choukaiRecordCount == 0
-          ? 'Belum ada'
+          ? strings.noRecordYet
           : '${entry.choukaiRecordAvg.toStringAsFixed(1)}% (${entry.choukaiRecordCount}x)';
     case LeaderboardMetric.kanjiComboRecord:
       return entry.kanjiComboRecordCount == 0
-          ? 'Belum ada'
+          ? strings.noRecordYet
           : '${entry.kanjiComboRecordAvg.toStringAsFixed(1)}% (${entry.kanjiComboRecordCount}x)';
   }
 }
@@ -103,6 +110,7 @@ class _LeaderboardTab extends ConsumerWidget {
     final topAsync = ref.watch(leaderboardTopProvider(metric));
     final selfEntryAsync = ref.watch(selfLeaderboardEntryProvider(metric));
     final selfRankAsync = ref.watch(selfRankProvider(metric));
+    final s = ref.watch(appStringsProvider);
 
     return Column(
       children: [
@@ -110,6 +118,7 @@ class _LeaderboardTab extends ConsumerWidget {
           entry: selfEntryAsync.valueOrNull,
           rank: selfRankAsync.valueOrNull,
           metric: metric,
+          strings: s,
         ),
         Expanded(
           child: AppRefreshIndicator(
@@ -125,13 +134,13 @@ class _LeaderboardTab extends ConsumerWidget {
                 if (entries.isEmpty) {
                   return ListView(
                     physics: const AlwaysScrollableScrollPhysics(),
-                    children: const [
+                    children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 120),
+                        padding: const EdgeInsets.only(top: 120),
                         child: Center(
                           child: Text(
-                            'Belum ada data peringkat.',
-                            style: TextStyle(color: AppColors.textNavy),
+                            s.noRankingData,
+                            style: const TextStyle(color: AppColors.textNavy),
                           ),
                         ),
                       ),
@@ -146,13 +155,13 @@ class _LeaderboardTab extends ConsumerWidget {
                   itemBuilder: (context, index) => LeaderboardTile(
                     rank: index + 1,
                     entry: entries[index],
-                    valueLabel: leaderboardValueLabel(metric, entries[index]),
+                    valueLabel: leaderboardValueLabel(metric, entries[index], s),
                   ),
                 );
               },
               loading: () => const Center(child: CircularProgressIndicator()),
               error: (e, _) =>
-                  Center(child: Text('Gagal memuat papan peringkat: $e')),
+                  Center(child: Text(s.failedToLoadLeaderboard(e))),
             ),
           ),
         ),
@@ -165,11 +174,13 @@ class _SelfHeader extends StatelessWidget {
   final LeaderboardEntry? entry;
   final int? rank;
   final LeaderboardMetric metric;
+  final AppStrings strings;
 
   const _SelfHeader({
     required this.entry,
     required this.rank,
     required this.metric,
+    required this.strings,
   });
 
   @override
@@ -190,7 +201,7 @@ class _SelfHeader extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            rank != null ? 'Peringkat ke-$rank' : 'Belum berperingkat',
+            rank != null ? strings.rankOf(rank!) : strings.notRankedYet,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: AppColors.primaryCoral,
@@ -209,7 +220,7 @@ class _SelfHeader extends StatelessWidget {
             ),
           ),
           Text(
-            leaderboardValueLabel(metric, entry!),
+            leaderboardValueLabel(metric, entry!, strings),
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: AppColors.textNavy,

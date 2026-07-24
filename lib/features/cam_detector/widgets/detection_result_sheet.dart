@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/localization/app_strings.dart';
 import '../../../core/navigation/app_navigator.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_colors.dart';
@@ -110,7 +111,9 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
         final kanji = await kanjiRepo.findByCharacter(char);
         breakdown.add(_CharBreakdown(
           character: char,
-          description: kanji != null ? kanji.meanings.join(', ') : 'Arti belum tersedia',
+          description: kanji != null
+              ? kanji.meanings.join(', ')
+              : ref.read(appStringsProvider).meaningNotAvailable,
         ));
       } else {
         breakdown.add(_CharBreakdown(character: char, description: char));
@@ -135,7 +138,7 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
     if (!mounted) return;
     setState(() => _saving = false);
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Tersimpan ke Daftar Belajar!')),
+      SnackBar(content: Text(ref.read(appStringsProvider).savedToLearningList)),
     );
     Navigator.of(context).pop();
   }
@@ -168,7 +171,11 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
               if (!snapshot.hasData) {
                 return const Center(child: CircularProgressIndicator());
               }
-              return _buildContent(scrollController, snapshot.data!);
+              return _buildContent(
+                scrollController,
+                snapshot.data!,
+                ref.watch(appStringsProvider),
+              );
             },
           ),
         );
@@ -176,7 +183,11 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
     );
   }
 
-  Widget _buildContent(ScrollController scrollController, _LookupResult result) {
+  Widget _buildContent(
+    ScrollController scrollController,
+    _LookupResult result,
+    AppStrings s,
+  ) {
     return ListView(
       controller: scrollController,
       padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
@@ -222,12 +233,12 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
           JlptBadge(level: result.kotoba!.jlptLevel),
         ],
         const SizedBox(height: 20),
-        const _SectionLabel('Arti'),
+        _SectionLabel(s.meaningSectionTitle),
         const SizedBox(height: 6),
         Text(result.meaningSummary, style: const TextStyle(color: AppColors.textNavy, fontSize: 16)),
         if (result.kotoba != null && result.kotoba!.registers.isNotEmpty) ...[
           const SizedBox(height: 20),
-          const _SectionLabel('Register / Cara Pakai'),
+          _SectionLabel(s.registerUsageTitle),
           const SizedBox(height: 6),
           ...SpeechRegister.values
               .where((r) => result.kotoba!.registers.containsKey(r))
@@ -235,7 +246,7 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
         ],
         if (result.exampleSentence != null) ...[
           const SizedBox(height: 20),
-          const _SectionLabel('Contoh Kalimat'),
+          _SectionLabel(s.sentenceExamplesTitle),
           const SizedBox(height: 6),
           Text(result.exampleSentence!, style: const TextStyle(color: AppColors.textNavy)),
         ],
@@ -243,7 +254,7 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
         if (result.kotoba != null || result.kanji != null)
           OutlinedButton(
             onPressed: () => _openFullDetail(result),
-            child: const Text('Lihat Detail Lengkap'),
+            child: Text(s.viewFullDetail),
           ),
         const SizedBox(height: 12),
         SizedBox(
@@ -257,7 +268,7 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
                     child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                   )
                 : const Icon(Icons.bookmark_add_outlined),
-            label: const Text('Simpan ke Daftar Belajar'),
+            label: Text(s.saveToLearningList),
           ),
         ),
       ],

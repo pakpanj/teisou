@@ -24,7 +24,7 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Gagal menyimpan sampul, coba lagi.')),
+        SnackBar(content: Text(ref.read(appStringsProvider).coverSaveFailed)),
       );
       return;
     }
@@ -38,6 +38,7 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final uid = user?.uid;
     final selectedId = profile?.coverId;
+    final s = ref.watch(appStringsProvider);
 
     return DraggableScrollableSheet(
       expand: false,
@@ -65,9 +66,9 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
                 ),
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Pilih Sampul',
-                style: TextStyle(
+              Text(
+                s.pickCoverTitle,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textNavy,
@@ -88,6 +89,7 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
                   if (index == 0) {
                     return _DefaultCoverTile(
                       selected: selectedId == null,
+                      label: s.defaultLabel,
                       onTap: uid == null ? null : () => _select(uid, null),
                     );
                   }
@@ -109,9 +111,14 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
 
 class _DefaultCoverTile extends StatelessWidget {
   final bool selected;
+  final String label;
   final VoidCallback? onTap;
 
-  const _DefaultCoverTile({required this.selected, required this.onTap});
+  const _DefaultCoverTile({
+    required this.selected,
+    required this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -141,12 +148,12 @@ class _DefaultCoverTile extends StatelessWidget {
               top: 6,
               child: Icon(Icons.check_circle, color: AppColors.primaryCoral, size: 20),
             ),
-          const Positioned(
+          Positioned(
             left: 8,
             bottom: 6,
             child: Text(
-              'Default',
-              style: TextStyle(
+              label,
+              style: const TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textNavy,

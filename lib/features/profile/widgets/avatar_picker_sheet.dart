@@ -49,7 +49,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
       if (!mounted) return;
       setState(() => _uploading = false);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Gagal mengunggah avatar, coba lagi.')),
+        SnackBar(content: Text(ref.read(appStringsProvider).avatarUploadFailed)),
       );
     }
   }
@@ -73,7 +73,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Gagal menyimpan avatar, coba lagi.')),
+        SnackBar(content: Text(ref.read(appStringsProvider).avatarSaveFailed)),
       );
       return;
     }
@@ -98,7 +98,8 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
     final uid = user?.uid;
-    final displayName = profile?.resolveDisplayName(user) ?? (user?.displayName ?? 'Pelajar Kana');
+    final s = ref.watch(appStringsProvider);
+    final displayName = profile?.resolveDisplayName(user) ?? (user?.displayName ?? s.defaultLearnerName);
 
     return DraggableScrollableSheet(
       expand: false,
@@ -126,18 +127,19 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                 ),
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Pilih Avatar',
-                style: TextStyle(
+              Text(
+                s.pickAvatarTitle,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textNavy,
                 ),
               ),
               if (user != null && !user.isAnonymous && user.photoURL != null) ...[
-                const _SectionTitle('Foto Akun'),
+                _SectionTitle(s.accountPhotoSection),
                 _GoogleAvatarTile(
                   photoUrl: user.photoURL!,
+                  label: s.googleAccountPhotoLabel,
                   selected: profile != null && profile.avatarType == AvatarType.google,
                   onTap: uid == null
                       ? null
@@ -150,7 +152,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                           ),
                 ),
               ],
-              const _SectionTitle('Preset Gratis'),
+              _SectionTitle(s.freePresetsSection),
               _PresetGrid(
                 presets: AvatarPresets.free,
                 isSelected: (preset) =>
@@ -168,7 +170,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                   );
                 },
               ),
-              const _SectionTitle('Preset Premium'),
+              _SectionTitle(s.premiumPresetsSection),
               _PresetGrid(
                 presets: AvatarPresets.premium,
                 isSelected: (preset) =>
@@ -190,10 +192,11 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                   );
                 },
               ),
-              const _SectionTitle('Upload dari Galeri'),
+              _SectionTitle(s.uploadFromGallerySection),
               _UploadTile(
                 isPremium: isPremium,
                 uploading: _uploading,
+                label: s.uploadFromGallerySection,
                 onTap: () {
                   if (!isPremium) {
                     _openPaywall(context);
@@ -238,11 +241,13 @@ class _SectionTitle extends StatelessWidget {
 
 class _GoogleAvatarTile extends StatelessWidget {
   final String photoUrl;
+  final String label;
   final bool selected;
   final VoidCallback? onTap;
 
   const _GoogleAvatarTile({
     required this.photoUrl,
+    required this.label,
     required this.selected,
     required this.onTap,
   });
@@ -265,8 +270,8 @@ class _GoogleAvatarTile extends StatelessWidget {
           children: [
             CircleAvatar(radius: 24, backgroundImage: NetworkImage(photoUrl)),
             const SizedBox(width: 12),
-            const Expanded(
-              child: Text('Foto akun Google', style: TextStyle(color: AppColors.textNavy)),
+            Expanded(
+              child: Text(label, style: const TextStyle(color: AppColors.textNavy)),
             ),
             if (selected) const Icon(Icons.check_circle, color: AppColors.primaryCoral),
           ],
@@ -376,11 +381,13 @@ class _PresetTile extends StatelessWidget {
 class _UploadTile extends StatelessWidget {
   final bool isPremium;
   final bool uploading;
+  final String label;
   final VoidCallback onTap;
 
   const _UploadTile({
     required this.isPremium,
     required this.uploading,
+    required this.label,
     required this.onTap,
   });
 
@@ -408,9 +415,9 @@ class _UploadTile extends StatelessWidget {
             else ...[
               const Text('📷', style: TextStyle(fontSize: 20)),
               const SizedBox(width: 10),
-              const Text(
-                'Upload dari Galeri',
-                style: TextStyle(color: AppColors.textNavy, fontWeight: FontWeight.w600),
+              Text(
+                label,
+                style: const TextStyle(color: AppColors.textNavy, fontWeight: FontWeight.w600),
               ),
               if (!isPremium) ...[
                 const SizedBox(width: 8),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/kanji_glyph.dart';
@@ -12,7 +13,7 @@ class KanjiDetailScreen extends ConsumerWidget {
 
   const KanjiDetailScreen({super.key, required this.entry});
 
-  Future<void> _save(BuildContext context, WidgetRef ref) async {
+  Future<void> _save(BuildContext context, WidgetRef ref, AppStrings s) async {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (uid == null) return;
     await ref
@@ -20,12 +21,13 @@ class KanjiDetailScreen extends ConsumerWidget {
         .saveDictionaryItem(uid, itemId: entry.id, type: 'kanji');
     if (!context.mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Tersimpan ke Daftar Belajar!')),
+      SnackBar(content: Text(s.savedToLearningList)),
     );
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -33,8 +35,8 @@ class KanjiDetailScreen extends ConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.bookmark_border),
-            tooltip: 'Simpan ke Daftar Belajar',
-            onPressed: () => _save(context, ref),
+            tooltip: s.saveToLearningList,
+            onPressed: () => _save(context, ref, s),
           ),
         ],
       ),
@@ -60,7 +62,7 @@ class KanjiDetailScreen extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    '${entry.strokeCount} goresan',
+                    s.strokeCountPill(entry.strokeCount),
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
@@ -88,7 +90,7 @@ class KanjiDetailScreen extends ConsumerWidget {
               ],
             ),
             const SizedBox(height: 24),
-            _SectionTitle('Arti'),
+            _SectionTitle(s.meaningSectionTitle),
             const SizedBox(height: 8),
             Align(
               alignment: Alignment.centerLeft,
@@ -107,7 +109,7 @@ class KanjiDetailScreen extends ConsumerWidget {
             ),
             if (entry.examples.isNotEmpty) ...[
               const SizedBox(height: 24),
-              _SectionTitle('Contoh Kata'),
+              _SectionTitle(s.wordExamplesTitle),
               const SizedBox(height: 8),
               ...entry.examples.map(
                 (example) => _ExampleCard(

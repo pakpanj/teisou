@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../choukai/choukai_home_screen.dart';
 import '../dokkai/dokkai_home_screen.dart';
@@ -13,13 +15,14 @@ import 'kana_exam_mode_picker_screen.dart';
 /// 3-mode picker; the other three each need a JLPT level first, so they
 /// open their own level-picker home screen instead of being flattened into
 /// one shared list.
-class ExamModePickerScreen extends StatelessWidget {
+class ExamModePickerScreen extends ConsumerWidget {
   const ExamModePickerScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text('Ujian'), automaticallyImplyLeading: false),
+      appBar: AppBar(title: Text(s.exam), automaticallyImplyLeading: false),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -28,7 +31,7 @@ class ExamModePickerScreen extends StatelessWidget {
               color: AppColors.primaryCoral,
               icon: Icons.text_fields,
               title: 'Kana',
-              subtitle: 'Hiragana, Katakana, atau campuran',
+              subtitle: s.kanaCategorySubtitle,
               onTap: () => AppNavigator.slideFromBottom(
                 context,
                 const KanaExamModePickerScreen(),
@@ -39,7 +42,7 @@ class ExamModePickerScreen extends StatelessWidget {
               color: AppColors.secondaryBlue,
               icon: Icons.menu_book_rounded,
               title: 'Dokkai',
-              subtitle: 'Pemahaman bacaan, N5-N1',
+              subtitle: s.dokkaiCategorySubtitle,
               onTap: () => AppNavigator.slideFromBottom(
                 context,
                 const DokkaiHomeScreen(),
@@ -50,7 +53,7 @@ class ExamModePickerScreen extends StatelessWidget {
               color: AppColors.tertiaryAmber,
               icon: Icons.headphones_rounded,
               title: 'Choukai',
-              subtitle: 'Pemahaman mendengar, N5-N1',
+              subtitle: s.choukaiCategorySubtitle,
               onTap: () => AppNavigator.slideFromBottom(
                 context,
                 const ChoukaiHomeScreen(),
@@ -61,7 +64,7 @@ class ExamModePickerScreen extends StatelessWidget {
               color: AppColors.primaryCoral,
               icon: Icons.translate_rounded,
               title: 'Kanji',
-              subtitle: 'Kanji tunggal atau kombinasi kata',
+              subtitle: s.kanjiComboCategorySubtitle,
               onTap: () => AppNavigator.slideFromBottom(
                 context,
                 const KanjiComboHomeScreen(),

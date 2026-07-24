@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 
 /// Shared "N multiple-choice questions, one at a time, tap to reveal
@@ -9,7 +11,7 @@ import '../../core/theme/app_colors.dart';
 /// romaji-string comparisons, and over a caller-supplied header per
 /// question (a passage card, an audio-replay button, a kanji glyph, ...)
 /// instead of one fixed kana-character display.
-class McQuizFlow extends StatefulWidget {
+class McQuizFlow extends ConsumerStatefulWidget {
   final int totalQuestions;
   final Widget Function(BuildContext context, int index) headerBuilder;
   final List<String> Function(int index) optionsOf;
@@ -26,10 +28,10 @@ class McQuizFlow extends StatefulWidget {
   });
 
   @override
-  State<McQuizFlow> createState() => _McQuizFlowState();
+  ConsumerState<McQuizFlow> createState() => _McQuizFlowState();
 }
 
-class _McQuizFlowState extends State<McQuizFlow> {
+class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   int _index = 0;
   int? _selected;
   int _score = 0;
@@ -56,6 +58,7 @@ class _McQuizFlowState extends State<McQuizFlow> {
   Widget build(BuildContext context) {
     final options = widget.optionsOf(_index);
     final correctIndex = widget.correctIndexOf(_index);
+    final s = ref.watch(appStringsProvider);
 
     return Column(
       children: [
@@ -67,7 +70,7 @@ class _McQuizFlowState extends State<McQuizFlow> {
         ),
         const SizedBox(height: 12),
         Text(
-          'Soal ${_index + 1} / ${widget.totalQuestions}',
+          s.questionOf(_index + 1, widget.totalQuestions),
           style: const TextStyle(
             color: AppColors.textNavy,
             fontWeight: FontWeight.w600,
@@ -105,8 +108,8 @@ class _McQuizFlowState extends State<McQuizFlow> {
               onPressed: _selected == null ? null : _next,
               child: Text(
                 _index >= widget.totalQuestions - 1
-                    ? 'Selesai'
-                    : 'Soal Berikutnya',
+                    ? s.done
+                    : s.nextQuestionButton,
               ),
             ),
           ),
