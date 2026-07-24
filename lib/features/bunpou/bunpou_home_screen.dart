@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
+import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/bunpou_level.dart';
 import '../../data/models/jlpt_level.dart';
 import 'bunpou_level_screen.dart';
@@ -23,18 +24,25 @@ class BunpouHomeScreen extends ConsumerWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(title: const Text('Bunpou')),
       body: levelsAsync.when(
-        data: (levels) => AppRefreshIndicator(
-          onRefresh: () => ref.refresh(bunpouLevelsProvider.future),
-          child: ListView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(20),
-            children: [
-              for (final level in levels) ...[
-                _LevelCard(level: level),
-                const SizedBox(height: 12),
-              ],
-            ],
-          ),
+        data: (levels) => Column(
+          children: [
+            Expanded(
+              child: AppRefreshIndicator(
+                onRefresh: () => ref.refresh(bunpouLevelsProvider.future),
+                child: ListView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(20),
+                  children: [
+                    for (final level in levels) ...[
+                      _LevelCard(level: level),
+                      const SizedBox(height: 12),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+            const FreeTierBannerAd(),
+          ],
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Gagal memuat level: $e')),

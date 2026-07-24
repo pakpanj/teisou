@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
+import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/bunpou_entry.dart';
 import '../../data/models/jlpt_level.dart';
 import 'bunpou_detail_screen.dart';
@@ -159,6 +160,7 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
                         ),
                 ),
               ),
+              const FreeTierBannerAd(),
             ],
           );
         },

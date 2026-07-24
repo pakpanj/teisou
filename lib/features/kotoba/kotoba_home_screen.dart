@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
+import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/kotoba_category.dart';
 import 'kotoba_category_screen.dart';
 import 'kotoba_providers.dart';
@@ -22,20 +23,28 @@ class KotobaHomeScreen extends ConsumerWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(title: const Text('Kosakata')),
       body: groupsAsync.when(
-        data: (groups) => AppRefreshIndicator(
-          onRefresh: () => ref.refresh(kotobaCategoryGroupsProvider.future),
-          child: ListView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(20),
-            children: [
-              for (final entry in groups.entries) ...[
-                _GroupHeader(title: entry.key),
-                const SizedBox(height: 12),
-                _CategoryGrid(categories: entry.value),
-                const SizedBox(height: 24),
-              ],
-            ],
-          ),
+        data: (groups) => Column(
+          children: [
+            Expanded(
+              child: AppRefreshIndicator(
+                onRefresh: () =>
+                    ref.refresh(kotobaCategoryGroupsProvider.future),
+                child: ListView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(20),
+                  children: [
+                    for (final entry in groups.entries) ...[
+                      _GroupHeader(title: entry.key),
+                      const SizedBox(height: 12),
+                      _CategoryGrid(categories: entry.value),
+                      const SizedBox(height: 24),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+            const FreeTierBannerAd(),
+          ],
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Gagal memuat kategori: $e')),

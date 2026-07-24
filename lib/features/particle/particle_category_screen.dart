@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
+import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/particle_entry.dart';
 import 'particle_detail_screen.dart';
 import 'particle_providers.dart';
@@ -161,6 +162,7 @@ class _ParticleCategoryScreenState
                         ),
                 ),
               ),
+              const FreeTierBannerAd(),
             ],
           );
         },

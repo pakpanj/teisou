@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
+import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/kanji_entry.dart';
 import 'kanji_providers.dart';
@@ -168,6 +169,7 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
                         ),
                 ),
               ),
+              const FreeTierBannerAd(),
             ],
           );
         },

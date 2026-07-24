@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
+import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/particle_category_info.dart';
 import 'particle_category_screen.dart';
 import 'particle_providers.dart';
@@ -23,18 +24,26 @@ class ParticleHomeScreen extends ConsumerWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(title: const Text('Partikel')),
       body: categoriesAsync.when(
-        data: (categories) => AppRefreshIndicator(
-          onRefresh: () => ref.refresh(particleCategoriesProvider.future),
-          child: ListView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(20),
-            children: [
-              for (final category in categories) ...[
-                _CategoryCard(category: category),
-                const SizedBox(height: 12),
-              ],
-            ],
-          ),
+        data: (categories) => Column(
+          children: [
+            Expanded(
+              child: AppRefreshIndicator(
+                onRefresh: () =>
+                    ref.refresh(particleCategoriesProvider.future),
+                child: ListView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(20),
+                  children: [
+                    for (final category in categories) ...[
+                      _CategoryCard(category: category),
+                      const SizedBox(height: 12),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+            const FreeTierBannerAd(),
+          ],
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Gagal memuat kategori: $e')),
