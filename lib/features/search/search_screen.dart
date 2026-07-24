@@ -7,6 +7,7 @@ import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
+import '../../data/models/app_language.dart';
 import '../../data/models/dictionary_word.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/kanji_entry.dart';
@@ -210,12 +211,14 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             if (result.kanji != null) {
               return _KanjiResultTile(
                 entry: result.kanji!,
+                language: s.language,
                 onTap: () => _openResult(result),
               );
             }
             if (result.kotoba != null) {
               return _KotobaResultTile(
                 entry: result.kotoba!,
+                language: s.language,
                 onTap: () => _openResult(result),
               );
             }
@@ -292,9 +295,14 @@ class _HintMessage extends StatelessWidget {
 
 class _KanjiResultTile extends StatelessWidget {
   final KanjiEntry entry;
+  final AppLanguage language;
   final VoidCallback onTap;
 
-  const _KanjiResultTile({required this.entry, required this.onTap});
+  const _KanjiResultTile({
+    required this.entry,
+    required this.language,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -331,7 +339,7 @@ class _KanjiResultTile extends StatelessWidget {
                   children: [
                     Text(reading, style: const TextStyle(color: AppColors.textNavy)),
                     Text(
-                      entry.meanings.join(', '),
+                      entry.localizedMeanings(language).join(', '),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
@@ -352,9 +360,14 @@ class _KanjiResultTile extends StatelessWidget {
 
 class _KotobaResultTile extends StatelessWidget {
   final KotobaEntry entry;
+  final AppLanguage language;
   final VoidCallback onTap;
 
-  const _KotobaResultTile({required this.entry, required this.onTap});
+  const _KotobaResultTile({
+    required this.entry,
+    required this.language,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -381,7 +394,7 @@ class _KotobaResultTile extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${entry.reading} · ${entry.meaning}',
+                      '${entry.reading} · ${entry.localizedMeaning(language)}',
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,

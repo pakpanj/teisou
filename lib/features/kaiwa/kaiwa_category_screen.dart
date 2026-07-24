@@ -234,7 +234,7 @@ class _FilterRow extends StatelessWidget {
   }
 }
 
-class _DialogueTile extends StatelessWidget {
+class _DialogueTile extends ConsumerWidget {
   final KaiwaEntry entry;
   final bool learned;
   final VoidCallback onTap;
@@ -246,7 +246,7 @@ class _DialogueTile extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Material(
       color: AppColors.cardWhite,
       borderRadius: BorderRadius.circular(14),
@@ -277,7 +277,7 @@ class _DialogueTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      entry.title,
+                      entry.localizedTitle(ref.watch(appStringsProvider).language),
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -286,7 +286,7 @@ class _DialogueTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      entry.description,
+                      entry.localizedDescription(ref.watch(appStringsProvider).language),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

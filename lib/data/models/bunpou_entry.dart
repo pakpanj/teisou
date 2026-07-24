@@ -1,3 +1,4 @@
+import 'app_language.dart';
 import 'jlpt_level.dart';
 import 'sentence_example.dart';
 
@@ -9,6 +10,12 @@ class BunpouEntry {
   final String meaning;
   final String formation;
   final String usageNotes;
+
+  /// English renderings of the three prose fields above, null until
+  /// authored — [localizedMeaning]/[localizedUsageNotes] fall back to the
+  /// Indonesian text so an untranslated entry never renders blank.
+  final String? meaningEn;
+  final String? usageNotesEn;
 
   /// Ids of other [BunpouEntry]s with a similar/easily-confused pattern
   /// (e.g. てある vs ている) — cross-referenced from the detail screen.
@@ -30,10 +37,21 @@ class BunpouEntry {
     required this.meaning,
     required this.formation,
     required this.usageNotes,
+    this.meaningEn,
+    this.usageNotesEn,
     this.similarPatterns = const [],
     this.sentenceExamples = const [],
     this.placeholder = false,
   });
+
+  String localizedMeaning(AppLanguage language) =>
+      _pick(language, meaning, meaningEn);
+
+  String localizedUsageNotes(AppLanguage language) =>
+      _pick(language, usageNotes, usageNotesEn);
+
+  static String _pick(AppLanguage language, String id, String? en) =>
+      language == AppLanguage.english && en != null && en.isNotEmpty ? en : id;
 
   factory BunpouEntry.fromJson(Map<String, dynamic> json) => BunpouEntry(
         id: json['id'] as String,

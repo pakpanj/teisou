@@ -1,3 +1,5 @@
+import 'app_language.dart';
+
 /// A single Japanese-Indonesian example sentence, scoped to
 /// [DictionaryWord] — deliberately not the shared module-neutral
 /// `SentenceExample` class (Kanji/Kotoba/Bunpou/Kaiwa's), since this
@@ -7,12 +9,28 @@ class DictionaryExample {
   final String japanese;
   final String translation;
 
-  const DictionaryExample({required this.japanese, required this.translation});
+  /// English rendering of [translation], null until authored — see
+  /// [SentenceExample.translationEn] for the same fallback contract.
+  final String? translationEn;
+
+  const DictionaryExample({
+    required this.japanese,
+    required this.translation,
+    this.translationEn,
+  });
+
+  String localizedTranslation(AppLanguage language) =>
+      language == AppLanguage.english &&
+              translationEn != null &&
+              translationEn!.isNotEmpty
+          ? translationEn!
+          : translation;
 
   factory DictionaryExample.fromJson(Map<String, dynamic> json) {
     return DictionaryExample(
       japanese: json['japanese'] as String,
       translation: json['translation'] as String,
+      translationEn: json['translationEn'] as String?,
     );
   }
 }
@@ -27,6 +45,10 @@ class DictionaryWord {
   final String? kanji;
   final String reading;
   final String meaning;
+
+  /// English gloss for [meaning], null until authored.
+  final String? meaningEn;
+
   final DictionaryExample example;
 
   const DictionaryWord({
@@ -34,8 +56,18 @@ class DictionaryWord {
     this.kanji,
     required this.reading,
     required this.meaning,
+    this.meaningEn,
     required this.example,
   });
+
+  /// [meaningEn] when [language] is English and a translation exists, else
+  /// the original Indonesian [meaning].
+  String localizedMeaning(AppLanguage language) =>
+      language == AppLanguage.english &&
+              meaningEn != null &&
+              meaningEn!.isNotEmpty
+          ? meaningEn!
+          : meaning;
 
   /// The word as displayed — kanji form when available, else the reading.
   String get display => kanji ?? reading;
@@ -51,6 +83,7 @@ class DictionaryWord {
       kanji: json['kanji'] as String?,
       reading: json['reading'] as String,
       meaning: json['meaning'] as String,
+      meaningEn: json['meaningEn'] as String?,
       example: DictionaryExample.fromJson(
         json['example'] as Map<String, dynamic>,
       ),

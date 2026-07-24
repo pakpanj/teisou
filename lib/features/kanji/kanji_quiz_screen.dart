@@ -49,7 +49,9 @@ class _KanjiQuizScreenState extends ConsumerState<KanjiQuizScreen> {
 
   bool get _isKanjiToMeaning => widget.mode == KanjiQuizMode.kanjiToMeaning;
 
-  String _valueOf(KanjiEntry entry) => _isKanjiToMeaning ? entry.meanings.first : entry.character;
+  String _valueOf(KanjiEntry entry) => _isKanjiToMeaning
+      ? entry.localizedMeaning(ref.read(appStringsProvider).language)
+      : entry.character;
 
   List<_QuizQuestion> _buildQuestions() {
     final random = Random();
@@ -163,7 +165,9 @@ class _KanjiQuizScreenState extends ConsumerState<KanjiQuizScreen> {
             child: Column(
               children: [
                 Text(
-                  _isKanjiToMeaning ? question.entry.character : question.entry.meanings.first,
+                  _isKanjiToMeaning
+                      ? question.entry.character
+                      : question.entry.localizedMeaning(s.language),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: _isKanjiToMeaning ? 48 : 24,

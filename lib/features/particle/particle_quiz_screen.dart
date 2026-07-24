@@ -218,7 +218,7 @@ class _ParticleQuizScreenState extends ConsumerState<ParticleQuizScreen> {
                 ],
                 const SizedBox(height: 4),
                 Text(
-                  cloze.translation,
+                  cloze.localizedTranslation(s.language),
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 13, color: AppColors.textNavy.withValues(alpha: 0.6)),
                 ),

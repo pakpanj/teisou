@@ -409,7 +409,7 @@ class _LearnedButton extends StatelessWidget {
   }
 }
 
-class _FunctionTile extends StatelessWidget {
+class _FunctionTile extends ConsumerWidget {
   final ParticleFunction function;
   final bool initiallyExpanded;
   final ValueChanged<String> onSpeak;
@@ -421,7 +421,7 @@ class _FunctionTile extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       clipBehavior: Clip.antiAlias,
@@ -438,7 +438,7 @@ class _FunctionTile extends StatelessWidget {
           tilePadding: const EdgeInsets.symmetric(horizontal: 16),
           childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
           title: Text(
-            function.title,
+            function.localizedTitle(ref.watch(appStringsProvider).language),
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: AppColors.textNavy,
@@ -448,7 +448,7 @@ class _FunctionTile extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                function.explanation,
+                function.localizedExplanation(ref.watch(appStringsProvider).language),
                 style: const TextStyle(color: AppColors.textNavy, height: 1.4),
               ),
             ),
@@ -487,14 +487,14 @@ class _FunctionTile extends StatelessWidget {
   }
 }
 
-class _SentenceExampleCard extends StatelessWidget {
+class _SentenceExampleCard extends ConsumerWidget {
   final SentenceExample example;
   final VoidCallback onSpeak;
 
   const _SentenceExampleCard({required this.example, required this.onSpeak});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 8),
@@ -528,7 +528,8 @@ class _SentenceExampleCard extends StatelessWidget {
                 ],
                 const SizedBox(height: 4),
                 Text(
-                  example.translation,
+                  example.localizedTranslation(
+                      ref.watch(appStringsProvider).language),
                   style: TextStyle(
                     fontSize: 13,
                     color: AppColors.textNavy.withValues(alpha: 0.7),

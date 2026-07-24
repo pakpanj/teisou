@@ -81,7 +81,7 @@ class KotobaDetailScreen extends ConsumerWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                entry.meaning,
+                entry.localizedMeaning(s.language),
                 style: const TextStyle(fontSize: 16, color: AppColors.textNavy),
               ),
             ),
@@ -91,7 +91,8 @@ class KotobaDetailScreen extends ConsumerWidget {
               const SizedBox(height: 8),
               _SentenceCard(
                 japanese: entry.sentenceExample!.japanese,
-                translation: entry.sentenceExample!.translation,
+                translation:
+                    entry.sentenceExample!.localizedTranslation(s.language),
                 onSpeak: () =>
                     ref.read(ttsServiceProvider).speak(entry.sentenceExample!.japanese),
               ),

@@ -49,7 +49,9 @@ class _BunpouQuizScreenState extends ConsumerState<BunpouQuizScreen> {
 
   bool get _isPatternToMeaning => widget.mode == BunpouQuizMode.patternToMeaning;
 
-  String _valueOf(BunpouEntry entry) => _isPatternToMeaning ? entry.meaning : entry.pattern;
+  String _valueOf(BunpouEntry entry) => _isPatternToMeaning
+      ? entry.localizedMeaning(ref.read(appStringsProvider).language)
+      : entry.pattern;
 
   List<_QuizQuestion> _buildQuestions() {
     final random = Random();
@@ -163,7 +165,9 @@ class _BunpouQuizScreenState extends ConsumerState<BunpouQuizScreen> {
             child: Column(
               children: [
                 Text(
-                  _isPatternToMeaning ? question.entry.pattern : question.entry.meaning,
+                  _isPatternToMeaning
+                      ? question.entry.pattern
+                      : question.entry.localizedMeaning(s.language),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: _isPatternToMeaning ? 32 : 20,

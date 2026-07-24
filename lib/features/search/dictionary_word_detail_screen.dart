@@ -62,7 +62,7 @@ class DictionaryWordDetailScreen extends ConsumerWidget {
             _SectionTitle(s.meaningSectionTitle),
             const SizedBox(height: 8),
             Text(
-              entry.meaning,
+              entry.localizedMeaning(s.language),
               style: const TextStyle(fontSize: 16, color: AppColors.textNavy),
             ),
             if (entry.kanjiCharacters.isNotEmpty) ...[
@@ -76,7 +76,7 @@ class DictionaryWordDetailScreen extends ConsumerWidget {
             const SizedBox(height: 8),
             _SentenceCard(
               japanese: entry.example.japanese,
-              translation: entry.example.translation,
+              translation: entry.example.localizedTranslation(s.language),
               onSpeak: () =>
                   ref.read(ttsServiceProvider).speak(entry.example.japanese),
             ),

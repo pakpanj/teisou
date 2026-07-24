@@ -1,3 +1,4 @@
+import 'app_language.dart';
 import 'jlpt_level.dart';
 import 'kanji_example.dart';
 import 'kanji_word_example.dart';
@@ -10,6 +11,14 @@ class KanjiEntry {
   final List<String> onyomi;
   final List<String> kunyomi;
   final List<String> meanings;
+
+  /// English glosses for this kanji. The dataset originally held both
+  /// languages in one `meanings` list (["pagi", "morning"]); they were split
+  /// apart by `scripts/split_kanji_meanings_en.py`, which must be re-run
+  /// whenever `generate_kanji_seed.py` regenerates `kanji_data.json`.
+  /// [localizedMeanings] falls back to [meanings] when this is empty.
+  final List<String> meaningsEn;
+
   final int strokeCount;
 
   /// Path to this kanji's KanjiVG stroke-order SVG (e.g.
@@ -44,6 +53,7 @@ class KanjiEntry {
     required this.onyomi,
     required this.kunyomi,
     required this.meanings,
+    this.meaningsEn = const [],
     required this.strokeCount,
     this.svgAsset,
     this.wordExamples = const [],
@@ -52,6 +62,19 @@ class KanjiEntry {
     required this.relatedBunpou,
     this.placeholder = false,
   });
+
+  /// [meaningsEn] when [language] is English and English glosses exist, else
+  /// the Indonesian [meanings].
+  List<String> localizedMeanings(AppLanguage language) =>
+      language == AppLanguage.english && meaningsEn.isNotEmpty
+          ? meaningsEn
+          : meanings;
+
+  /// Single-line gloss used by list tiles, quiz prompts and exam options.
+  String localizedMeaning(AppLanguage language) {
+    final list = localizedMeanings(language);
+    return list.isEmpty ? '' : list.first;
+  }
 
   /// Backward-compat view for callers built against Batch 4's flat
   /// word+sentence shape (`search/kanji_detail_screen.dart`) — pairs word
@@ -78,6 +101,7 @@ class KanjiEntry {
         onyomi: (json['onyomi'] as List? ?? []).cast<String>(),
         kunyomi: (json['kunyomi'] as List? ?? []).cast<String>(),
         meanings: (json['meanings'] as List? ?? []).cast<String>(),
+        meaningsEn: (json['meaningsEn'] as List? ?? []).cast<String>(),
         strokeCount: (json['strokeCount'] as num?)?.toInt() ?? 0,
         svgAsset: json['svgAsset'] as String?,
         wordExamples: (json['wordExamples'] as List? ?? [])

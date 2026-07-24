@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/kanji_combo_question.dart';
+import '../../data/repositories/kanji_combo_repository.dart';
 
 /// Family key: (level, combination) — combination=true asks for 2-3 kanji
 /// compound-word readings, false asks for single-kanji meanings. Dart
@@ -25,7 +26,16 @@ final kanjiComboAvailabilityProvider =
 final kanjiComboQuestionsProvider = FutureProvider.autoDispose
     .family<List<KanjiComboQuestion>, (JlptLevel, bool)>((ref, params) {
   final (level, combination) = params;
-  return ref
-      .watch(kanjiComboRepositoryProvider)
-      .generateQuestions(level, combination: combination, count: 50);
+  final s = ref.watch(appStringsProvider);
+  return ref.watch(kanjiComboRepositoryProvider).generateQuestions(
+        level,
+        combination: combination,
+        count: 50,
+        labels: KanjiComboLabels(
+          meaning: s.kanjiComboMeaningPrompt,
+          reading: s.kanjiComboReadingPrompt,
+          compound: s.kanjiComboCompoundPrompt,
+          language: s.language,
+        ),
+      );
 });

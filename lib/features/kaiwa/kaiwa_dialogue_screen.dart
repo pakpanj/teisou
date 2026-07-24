@@ -173,7 +173,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(title: Text(_entry.title)),
+      appBar: AppBar(title: Text(_entry.localizedTitle(s.language))),
       body: Column(
         children: [
           Expanded(
@@ -196,7 +196,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      _entry.description,
+                      _entry.localizedDescription(s.language),
                       style: TextStyle(
                         fontSize: 13,
                         color: AppColors.textNavy.withValues(alpha: 0.7),
@@ -360,7 +360,7 @@ class _LineBubble extends StatelessWidget {
                   ],
                   const SizedBox(height: 4),
                   Text(
-                    chosen.translation,
+                    chosen.localizedTranslation(strings.language),
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       fontSize: 13,

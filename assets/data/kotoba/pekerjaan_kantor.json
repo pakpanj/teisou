@@ -21,7 +21,8 @@
         "translation": "Saya bekerja di kantor."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaisha.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaisha.png",
+    "meaningEn": "company/office"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shigoto",
@@ -45,7 +46,8 @@
         "translation": "Pekerjaan saya sibuk."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shigoto.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shigoto.png",
+    "meaningEn": "work/job"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kaigi",
@@ -69,7 +71,8 @@
         "translation": "Ada rapat."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaigi.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaigi.png",
+    "meaningEn": "meeting"
   },
   {
     "id": "kotoba_pekerjaan_kantor_meishi",
@@ -93,7 +96,8 @@
         "translation": "Saya bertukar kartu nama."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_meishi.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_meishi.png",
+    "meaningEn": "business card"
   },
   {
     "id": "kotoba_pekerjaan_kantor_joushi",
@@ -117,7 +121,8 @@
         "translation": "Saya berkonsultasi dengan atasan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_joushi.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_joushi.png",
+    "meaningEn": "boss/superior"
   },
   {
     "id": "kotoba_pekerjaan_kantor_buka",
@@ -141,7 +146,8 @@
         "translation": "Saya memberi instruksi kepada bawahan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_buka.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_buka.png",
+    "meaningEn": "subordinate"
   },
   {
     "id": "kotoba_pekerjaan_kantor_douryou",
@@ -165,7 +171,8 @@
         "translation": "Saya berbicara dengan rekan kerja."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_douryou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_douryou.png",
+    "meaningEn": "colleague"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kyuuryou",
@@ -189,7 +196,8 @@
         "translation": "Saya menerima gaji."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kyuuryou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kyuuryou.png",
+    "meaningEn": "salary"
   },
   {
     "id": "kotoba_pekerjaan_kantor_zangyou",
@@ -213,7 +221,8 @@
         "translation": "Hari ini saya lembur."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_zangyou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_zangyou.png",
+    "meaningEn": "overtime work"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kyuujitsu",
@@ -237,7 +246,8 @@
         "translation": "Saat hari libur, saya di rumah."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kyuujitsu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kyuujitsu.png",
+    "meaningEn": "day off"
   },
   {
     "id": "kotoba_pekerjaan_kantor_sokushin",
@@ -261,7 +271,8 @@
         "translation": "Kami mengadakan kampanye promosi penjualan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sokushin.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sokushin.png",
+    "meaningEn": "promotion/acceleration (of progress)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_yokusei",
@@ -285,7 +296,8 @@
         "translation": "Penekanan biaya sedang dituntut."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yokusei.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yokusei.png",
+    "meaningEn": "restraint/control"
   },
   {
     "id": "kotoba_pekerjaan_kantor_zesei",
@@ -309,7 +321,8 @@
         "translation": "Perlu memperbaiki titik masalahnya."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_zesei.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_zesei.png",
+    "meaningEn": "correction/rectification"
   },
   {
     "id": "kotoba_pekerjaan_kantor_dakyou",
@@ -333,7 +346,8 @@
         "translation": "Kedua belah pihak menemukan titik kompromi."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dakyou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dakyou.png",
+    "meaningEn": "compromise"
   },
   {
     "id": "kotoba_pekerjaan_kantor_dakai",
@@ -357,7 +371,8 @@
         "translation": "Ini rapat untuk menerobos situasi saat ini."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dakai.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dakai.png",
+    "meaningEn": "breakthrough"
   },
   {
     "id": "kotoba_pekerjaan_kantor_yuugou",
@@ -381,7 +396,8 @@
         "translation": "Dua departemen itu dilebur menjadi satu."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yuugou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yuugou.png",
+    "meaningEn": "fusion/merger"
   },
   {
     "id": "kotoba_pekerjaan_kantor_tekkai",
@@ -405,7 +421,8 @@
         "translation": "Kami memutuskan untuk menarik kembali usulan itu."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tekkai.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tekkai.png",
+    "meaningEn": "withdrawal/retraction"
   },
   {
     "id": "kotoba_pekerjaan_kantor_suikou",
@@ -429,7 +446,8 @@
         "translation": "Saya akan melaksanakan tugas."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_suikou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_suikou.png",
+    "meaningEn": "execution/carrying out"
   },
   {
     "id": "kotoba_pekerjaan_kantor_rikou",
@@ -453,7 +471,8 @@
         "translation": "Ada kewajiban untuk memenuhi kontrak."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_rikou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_rikou.png",
+    "meaningEn": "fulfilment (of an obligation)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_yuuyo",
@@ -477,7 +496,8 @@
         "translation": "Mohon penangguhan pembayaran."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yuuyo.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yuuyo.png",
+    "meaningEn": "postponement/grace period"
   },
   {
     "id": "kotoba_pekerjaan_kantor_itsudatsu",
@@ -501,7 +521,8 @@
         "translation": "Penyimpangan dari aturan tidak diizinkan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_itsudatsu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_itsudatsu.png",
+    "meaningEn": "deviation"
   },
   {
     "id": "kotoba_pekerjaan_kantor_choukou",
@@ -525,7 +546,8 @@
         "translation": "Terlihat tanda-tanda pemulihan kinerja."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_choukou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_choukou.png",
+    "meaningEn": "sign/indication"
   },
   {
     "id": "kotoba_pekerjaan_kantor_heigai",
@@ -549,7 +571,8 @@
         "translation": "Sistem ini memiliki dampak buruk."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_heigai.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_heigai.png",
+    "meaningEn": "harmful effect"
   },
   {
     "id": "kotoba_pekerjaan_kantor_daketsu",
@@ -573,7 +596,8 @@
         "translation": "Negosiasi akhirnya mencapai kesepakatan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_daketsu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_daketsu.png",
+    "meaningEn": "settlement (of negotiations)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_sesshou",
@@ -597,7 +621,8 @@
         "translation": "Kami melakukan negosiasi berulang kali dengan mitra bisnis."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sesshou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sesshou.png",
+    "meaningEn": "tough negotiation"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shisa",
@@ -621,7 +646,8 @@
         "translation": "Kata-kata atasan mengandung sindiran/petunjuk."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shisa.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shisa.png",
+    "meaningEn": "hint/suggestion"
   },
   {
     "id": "kotoba_pekerjaan_kantor_sogai",
@@ -645,7 +671,8 @@
         "translation": "Karyawan baru merasa dikucilkan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sogai.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sogai.png",
+    "meaningEn": "alienation/exclusion"
   },
   {
     "id": "kotoba_pekerjaan_kantor_jousei",
@@ -669,7 +696,8 @@
         "translation": "Kami membangun rasa kebersamaan tim."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jousei.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jousei.png",
+    "meaningEn": "fostering (an atmosphere)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_hakyuu",
@@ -693,7 +721,8 @@
         "translation": "Dampaknya menyebar ke departemen lain juga."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hakyuu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hakyuu.png",
+    "meaningEn": "ripple effect/spread"
   },
   {
     "id": "kotoba_pekerjaan_kantor_enkatsu",
@@ -717,7 +746,8 @@
         "translation": "Kami menjalankan pekerjaan dengan lancar."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_enkatsu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_enkatsu.png",
+    "meaningEn": "smoothness"
   },
   {
     "id": "kotoba_pekerjaan_kantor_koushou",
@@ -741,7 +771,8 @@
         "translation": "Saya bernegosiasi dengan mitra bisnis."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_koushou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_koushou.png",
+    "meaningEn": "negotiation"
   },
   {
     "id": "kotoba_pekerjaan_kantor_teian",
@@ -765,7 +796,8 @@
         "translation": "Saya mengusulkan rencana baru."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_teian.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_teian.png",
+    "meaningEn": "proposal"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shounin",
@@ -789,7 +821,8 @@
         "translation": "Saya mendapat persetujuan dari atasan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shounin.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shounin.png",
+    "meaningEn": "approval"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shoushin",
@@ -813,7 +846,8 @@
         "translation": "Bulan depan, saya naik jabatan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shoushin.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shoushin.png",
+    "meaningEn": "promotion (in rank)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kaiko",
@@ -837,7 +871,8 @@
         "translation": "Dia dipecat dari perusahaan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaiko.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaiko.png",
+    "meaningEn": "dismissal/firing"
   },
   {
     "id": "kotoba_pekerjaan_kantor_keiei",
@@ -861,7 +896,8 @@
         "translation": "Ayah saya mengelola sebuah perusahaan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_keiei.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_keiei.png",
+    "meaningEn": "management (of a business)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_gyouseki",
@@ -885,7 +921,8 @@
         "translation": "Kinerja tahun ini bagus."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gyouseki.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gyouseki.png",
+    "meaningEn": "performance/results (of a company)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_akaji",
@@ -909,7 +946,8 @@
         "translation": "Bulan ini mengalami defisit."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_akaji.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_akaji.png",
+    "meaningEn": "deficit/red ink"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kuroji",
@@ -933,7 +971,8 @@
         "translation": "Perusahaan itu berbalik meraih keuntungan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kuroji.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kuroji.png",
+    "meaningEn": "surplus/profit"
   },
   {
     "id": "kotoba_pekerjaan_kantor_tousan",
@@ -957,7 +996,8 @@
         "translation": "Perusahaan itu bangkrut."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tousan.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tousan.png",
+    "meaningEn": "bankruptcy"
   },
   {
     "id": "kotoba_pekerjaan_kantor_gappei",
@@ -981,7 +1021,8 @@
         "translation": "Dua perusahaan itu melakukan merger."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gappei.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gappei.png",
+    "meaningEn": "merger"
   },
   {
     "id": "kotoba_pekerjaan_kantor_insatsu",
@@ -1005,7 +1046,8 @@
         "translation": "Saya mencetak dokumen."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_insatsu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_insatsu.png",
+    "meaningEn": "printing"
   },
   {
     "id": "kotoba_pekerjaan_kantor_eigyou",
@@ -1029,7 +1071,8 @@
         "translation": "Perusahaan beroperasi dari jam 9. (usaha berjalan/buka)"
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_eigyou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_eigyou.png",
+    "meaningEn": "business operations"
   },
   {
     "id": "kotoba_pekerjaan_kantor_enki",
@@ -1053,7 +1096,8 @@
         "translation": "Rapat ditunda."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_enki.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_enki.png",
+    "meaningEn": "postponement"
   },
   {
     "id": "kotoba_pekerjaan_kantor_oubo",
@@ -1077,7 +1121,8 @@
         "translation": "Melamar pekerjaan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_oubo.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_oubo.png",
+    "meaningEn": "applying/signing up"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kaikei",
@@ -1101,7 +1146,8 @@
         "translation": "Tolong hitung/pembayaran."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaikei.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaikei.png",
+    "meaningEn": "accounting/payment"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kigyou",
@@ -1125,7 +1171,8 @@
         "translation": "Ingin bekerja di perusahaan Jepang."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kigyou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kigyou.png",
+    "meaningEn": "enterprise/company"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kigen",
@@ -1149,7 +1196,8 @@
         "translation": "Tolong patuhi batas waktu."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kigen.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kigen.png",
+    "meaningEn": "deadline"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kouen",
@@ -1173,7 +1221,8 @@
         "translation": "Guru memberi ceramah. (pidato formal informasi 1 arah)"
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kouen.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kouen.png",
+    "meaningEn": "lecture/speech"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kougyou",
@@ -1197,7 +1246,8 @@
         "translation": "Industri berkembang."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kougyou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kougyou.png",
+    "meaningEn": "industry (manufacturing)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_sagyou",
@@ -1221,7 +1271,8 @@
         "translation": "Memulai pekerjaan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sagyou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sagyou.png",
+    "meaningEn": "work/task"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shiji",
@@ -1245,7 +1296,8 @@
         "translation": "Mengikuti instruksi atasan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shiji.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shiji.png",
+    "meaningEn": "instruction"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shiten",
@@ -1269,7 +1321,8 @@
         "translation": "Bekerja di kantor cabang Osaka."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shiten.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shiten.png",
+    "meaningEn": "branch office"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shuushoku",
@@ -1293,7 +1346,8 @@
         "translation": "Ingin bekerja di Jepang. (dapat kerja, diterima kerja)"
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shuushoku.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shuushoku.png",
+    "meaningEn": "getting a job"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shuunyuu",
@@ -1317,7 +1371,8 @@
         "translation": "Pendapatan bertambah."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shuunyuu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shuunyuu.png",
+    "meaningEn": "income"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shukkin",
@@ -1341,7 +1396,8 @@
         "translation": "Berangkat kerja tiap jam 8."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shukkin.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shukkin.png",
+    "meaningEn": "going to work"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shouhin",
@@ -1365,7 +1421,8 @@
         "translation": "Menata barang dagangan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shouhin.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shouhin.png",
+    "meaningEn": "merchandise"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shorui",
@@ -1389,7 +1446,8 @@
         "translation": "Mengumpulkan dokumen."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shorui.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shorui.png",
+    "meaningEn": "documents"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shiryou",
@@ -1413,7 +1471,8 @@
         "translation": "Membagikan materi/dokumen."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shiryou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shiryou.png",
+    "meaningEn": "reference material"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shinsei",
@@ -1437,7 +1496,8 @@
         "translation": "Mengajukan visa."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinsei.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinsei.png",
+    "meaningEn": "application (formal request)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_jikyuu",
@@ -1461,7 +1521,8 @@
         "translation": "Upah per jam 1000 yen."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jikyuu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jikyuu.png",
+    "meaningEn": "hourly wage"
   },
   {
     "id": "kotoba_pekerjaan_kantor_jimu",
@@ -1485,7 +1546,8 @@
         "translation": "Bekerja bagian administrasi."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jimu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jimu.png",
+    "meaningEn": "office/clerical work"
   },
   {
     "id": "kotoba_pekerjaan_kantor_seisou",
@@ -1509,7 +1571,8 @@
         "translation": "Membersihkan setiap pagi. (kerjaan, profesi)"
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seisou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seisou.png",
+    "meaningEn": "cleaning"
   },
   {
     "id": "kotoba_pekerjaan_kantor_senpai",
@@ -1533,7 +1596,8 @@
         "translation": "Bertanya kepada senior."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_senpai.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_senpai.png",
+    "meaningEn": "senior (colleague)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_senmon",
@@ -1557,7 +1621,8 @@
         "translation": "Keahlian saya bahasa Jepang."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_senmon.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_senmon.png",
+    "meaningEn": "speciality/expertise"
   },
   {
     "id": "kotoba_pekerjaan_kantor_daihyou",
@@ -1581,7 +1646,8 @@
         "translation": "Saya adalah perwakilan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_daihyou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_daihyou.png",
+    "meaningEn": "representative"
   },
   {
     "id": "kotoba_pekerjaan_kantor_chikoku",
@@ -1605,7 +1671,8 @@
         "translation": "Saya terlambat."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chikoku.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chikoku.png",
+    "meaningEn": "being late"
   },
   {
     "id": "kotoba_pekerjaan_kantor_chousa",
@@ -1629,7 +1696,8 @@
         "translation": "Meneliti pasar."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chousa.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chousa.png",
+    "meaningEn": "investigation/survey"
   },
   {
     "id": "kotoba_pekerjaan_kantor_tsuukin",
@@ -1653,7 +1721,8 @@
         "translation": "Pergi kerja naik bus."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tsuukin.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tsuukin.png",
+    "meaningEn": "commuting to work"
   },
   {
     "id": "kotoba_pekerjaan_kantor_tenkin",
@@ -1677,7 +1746,8 @@
         "translation": "Bulan depan saya dipindahtugaskan ke Osaka."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tenkin.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tenkin.png",
+    "meaningEn": "job transfer"
   },
   {
     "id": "kotoba_pekerjaan_kantor_haitatsu",
@@ -1701,7 +1771,8 @@
         "translation": "Mengantarkan paket. (Delivery)"
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haitatsu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haitatsu.png",
+    "meaningEn": "delivery"
   },
   {
     "id": "kotoba_pekerjaan_kantor_hatsubai",
@@ -1725,7 +1796,8 @@
         "translation": "Produk baru telah dirilis."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hatsubai.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hatsubai.png",
+    "meaningEn": "release (of a new product)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_houkoku",
@@ -1749,7 +1821,8 @@
         "translation": "Melapor kepada guru."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_houkoku.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_houkoku.png",
+    "meaningEn": "report"
   },
   {
     "id": "kotoba_pekerjaan_kantor_houmon",
@@ -1773,7 +1846,8 @@
         "translation": "Mengunjungi perusahaan. (Kunjungan resmi / bisnis)"
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_houmon.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_houmon.png",
+    "meaningEn": "(official) visit"
   },
   {
     "id": "kotoba_pekerjaan_kantor_boueki",
@@ -1797,7 +1871,8 @@
         "translation": "Jepang dan India melakukan perdagangan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_boueki.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_boueki.png",
+    "meaningEn": "trade"
   },
   {
     "id": "kotoba_pekerjaan_kantor_boshuu",
@@ -1821,7 +1896,8 @@
         "translation": "Sedang merekrut karyawan baru."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_boshuu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_boshuu.png",
+    "meaningEn": "recruitment"
   },
   {
     "id": "kotoba_pekerjaan_kantor_meirei",
@@ -1845,7 +1921,8 @@
         "translation": "Atasan memberi perintah."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_meirei.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_meirei.png",
+    "meaningEn": "order/command"
   },
   {
     "id": "kotoba_pekerjaan_kantor_mensetsu",
@@ -1869,7 +1946,8 @@
         "translation": "Besok ada wawancara perusahaan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_mensetsu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_mensetsu.png",
+    "meaningEn": "interview"
   },
   {
     "id": "kotoba_pekerjaan_kantor_yunyuu",
@@ -1893,7 +1971,8 @@
         "translation": "Jepang mengimpor banyak makanan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yunyuu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yunyuu.png",
+    "meaningEn": "import"
   },
   {
     "id": "kotoba_pekerjaan_kantor_raiten",
@@ -1917,7 +1996,8 @@
         "translation": "Banyak pelanggan datang ke toko."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_raiten.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_raiten.png",
+    "meaningEn": "visiting a shop"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shouhinmei",
@@ -1941,7 +2021,8 @@
         "translation": "Tolong beri tahu nama produknya."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shouhinmei.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shouhinmei.png",
+    "meaningEn": "product name"
   },
   {
     "id": "kotoba_pekerjaan_kantor_fudousan",
@@ -1965,7 +2046,8 @@
         "translation": "Bekerja di bidang properti."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_fudousan.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_fudousan.png",
+    "meaningEn": "real estate"
   },
   {
     "id": "kotoba_pekerjaan_kantor_genshou",
@@ -1989,7 +2071,8 @@
         "translation": "Populasi menurun."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_genshou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_genshou.png",
+    "meaningEn": "decrease (in quantity)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_gichou",
@@ -2013,7 +2096,8 @@
         "translation": "Ketua rapat berbicara."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gichou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gichou.png",
+    "meaningEn": "chairperson"
   },
   {
     "id": "kotoba_pekerjaan_kantor_hanbai",
@@ -2037,7 +2121,8 @@
         "translation": "Menjual barang dagangan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hanbai.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hanbai.png",
+    "meaningEn": "sales"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kaigou",
@@ -2061,7 +2146,8 @@
         "translation": "Menghadiri pertemuan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaigou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaigou.png",
+    "meaningEn": "gathering/meeting"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kinyuu",
@@ -2085,7 +2171,8 @@
         "translation": "Mengisi nama."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kinyuu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kinyuu.png",
+    "meaningEn": "filling in (a form)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_rieki",
@@ -2109,7 +2196,8 @@
         "translation": "Keuntungan bertambah."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_rieki.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_rieki.png",
+    "meaningEn": "profit"
   },
   {
     "id": "kotoba_pekerjaan_kantor_seihin",
@@ -2133,7 +2221,8 @@
         "translation": "Membuat produk baru."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seihin.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seihin.png",
+    "meaningEn": "manufactured product"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shihon",
@@ -2157,7 +2246,8 @@
         "translation": "Mengumpulkan modal."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shihon.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shihon.png",
+    "meaningEn": "capital (funds)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shoubai",
@@ -2181,7 +2271,8 @@
         "translation": "Mulai berbisnis."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shoubai.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shoubai.png",
+    "meaningEn": "trade/business"
   },
   {
     "id": "kotoba_pekerjaan_kantor_yushutsu",
@@ -2205,7 +2296,8 @@
         "translation": "Mengekspor mobil."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yushutsu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yushutsu.png",
+    "meaningEn": "export"
   },
   {
     "id": "kotoba_pekerjaan_kantor_baishuu",
@@ -2229,7 +2321,8 @@
         "translation": "Mengakuisisi perusahaan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_baishuu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_baishuu.png",
+    "meaningEn": "acquisition/buyout"
   },
   {
     "id": "kotoba_pekerjaan_kantor_bengo",
@@ -2253,7 +2346,8 @@
         "translation": "Pengacara melakukan pembelaan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_bengo.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_bengo.png",
+    "meaningEn": "legal defence"
   },
   {
     "id": "kotoba_pekerjaan_kantor_bunsho",
@@ -2277,7 +2371,8 @@
         "translation": "Membuat dokumen."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_bunsho.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_bunsho.png",
+    "meaningEn": "document"
   },
   {
     "id": "kotoba_pekerjaan_kantor_chakushu",
@@ -2301,7 +2396,8 @@
         "translation": "Mulai mengerjakan rencana."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chakushu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chakushu.png",
+    "meaningEn": "starting work on something"
   },
   {
     "id": "kotoba_pekerjaan_kantor_chingin",
@@ -2325,7 +2421,8 @@
         "translation": "Upah naik."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chingin.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chingin.png",
+    "meaningEn": "wages"
   },
   {
     "id": "kotoba_pekerjaan_kantor_choutatsu",
@@ -2349,7 +2446,8 @@
         "translation": "Mengumpulkan dana."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_choutatsu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_choutatsu.png",
+    "meaningEn": "procurement (of funds/goods)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_dokusen",
@@ -2373,7 +2471,8 @@
         "translation": "Memonopoli pasar."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dokusen.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dokusen.png",
+    "meaningEn": "monopoly"
   },
   {
     "id": "kotoba_pekerjaan_kantor_gyoumu",
@@ -2397,7 +2496,8 @@
         "translation": "Membagi tugas kerja."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gyoumu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gyoumu.png",
+    "meaningEn": "business duties"
   },
   {
     "id": "kotoba_pekerjaan_kantor_haichi",
@@ -2421,7 +2521,8 @@
         "translation": "Menempatkan karyawan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haichi.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haichi.png",
+    "meaningEn": "placement/arrangement"
   },
   {
     "id": "kotoba_pekerjaan_kantor_haken",
@@ -2445,7 +2546,8 @@
         "translation": "Mengirim karyawan (ke lokasi tugas)."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haken.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haken.png",
+    "meaningEn": "dispatch (of staff)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_hoken",
@@ -2469,7 +2571,8 @@
         "translation": "Mengikuti asuransi."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hoken.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hoken.png",
+    "meaningEn": "insurance"
   },
   {
     "id": "kotoba_pekerjaan_kantor_housaku",
@@ -2493,7 +2596,8 @@
         "translation": "Memikirkan strategi baru."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_housaku.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_housaku.png",
+    "meaningEn": "policy/strategy"
   },
   {
     "id": "kotoba_pekerjaan_kantor_houshuu",
@@ -2517,7 +2621,8 @@
         "translation": "Menerima imbalan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_houshuu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_houshuu.png",
+    "meaningEn": "remuneration"
   },
   {
     "id": "kotoba_pekerjaan_kantor_jigyou",
@@ -2541,7 +2646,8 @@
         "translation": "Memulai usaha baru."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jigyou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jigyou.png",
+    "meaningEn": "business/undertaking"
   },
   {
     "id": "kotoba_pekerjaan_kantor_kabushiki",
@@ -2565,7 +2671,8 @@
         "translation": "Membeli saham."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kabushiki.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kabushiki.png",
+    "meaningEn": "stocks/shares"
   },
   {
     "id": "kotoba_pekerjaan_kantor_baibai",
@@ -2589,7 +2696,8 @@
         "translation": "Jual beli saham."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_baibai.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_baibai.png",
+    "meaningEn": "buying and selling"
   },
   {
     "id": "kotoba_pekerjaan_kantor_iten",
@@ -2613,7 +2721,8 @@
         "translation": "Memindahkan kantor."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_iten.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_iten.png",
+    "meaningEn": "relocation (of an office/shop)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_nyuusha",
@@ -2637,7 +2746,8 @@
         "translation": "Masuk bekerja di perusahaan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_nyuusha.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_nyuusha.png",
+    "meaningEn": "joining a company"
   },
   {
     "id": "kotoba_pekerjaan_kantor_ryoushuu",
@@ -2661,7 +2771,8 @@
         "translation": "Menerima kuitansi."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_ryoushuu.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_ryoushuu.png",
+    "meaningEn": "receipt (of money)"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shousha",
@@ -2685,7 +2796,8 @@
         "translation": "Bekerja di perusahaan dagang."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shousha.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shousha.png",
+    "meaningEn": "trading company"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shuukai",
@@ -2709,7 +2821,8 @@
         "translation": "Menghadiri pertemuan."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shuukai.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shuukai.png",
+    "meaningEn": "assembly/gathering"
   },
   {
     "id": "kotoba_pekerjaan_kantor_uriage",
@@ -2733,7 +2846,8 @@
         "translation": "Hasil penjualan meningkat."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_uriage.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_uriage.png",
+    "meaningEn": "sales revenue"
   },
   {
     "id": "kotoba_pekerjaan_kantor_sangyou",
@@ -2757,7 +2871,8 @@
         "translation": "Industri berkembang."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sangyou.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sangyou.png",
+    "meaningEn": "industry"
   },
   {
     "id": "kotoba_pekerjaan_kantor_seisan",
@@ -2781,7 +2896,8 @@
         "translation": "Memproduksi barang."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seisan.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seisan.png",
+    "meaningEn": "production"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shinamono",
@@ -2805,7 +2921,8 @@
         "translation": "Memeriksa barang."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinamono.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinamono.png",
+    "meaningEn": "goods"
   },
   {
     "id": "kotoba_pekerjaan_kantor_shinbunsha",
@@ -2829,6 +2946,7 @@
         "translation": "Bekerja di perusahaan koran."
       }
     ],
-    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinbunsha.png"
+    "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinbunsha.png",
+    "meaningEn": "newspaper company"
   }
 ]

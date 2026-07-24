@@ -1110,6 +1110,88 @@ verification-gap note in Batch 9+'s row), or growing past 100/level
 only if a future session variety complaint actually surfaces in
 practice.
 
+## Update (2026-07-25): learning-content localization — audit, kanji split, plumbing
+
+User ran the app on the Moto G52J in English mode and reported that
+content was still Indonesian ("arti kosakata dan contoh kalimatnya masih
+bahasa indonesia", "penjelasan kanji dari n5 sd n1"), asking for an
+app-wide check. Root cause: the earlier language work covered **UI
+chrome only** (`AppStrings`); the only *content* field with an English
+path was `KotobaEntry.meaningEn`.
+
+**Measured scope** (counted from the JSON, excluding strings containing
+Japanese script, which need no translation) — ~61,000 Indonesian strings,
+43,163 unique: Kaiwa 34,019 · Kanji 18,759 · Bunpou 3,839 · Dictionary
+1,816 · Kotoba 1,464 · Dokkai 1,002 · Particle 236 · kotoba_seed 60. Far
+past one session, so the user picked "plumbing + quick wins first" over
+finishing one module at a time. Re-derive this table any time with a
+scan script like `scripts/split_kanji_meanings_en.py`'s lexicon builder.
+
+**1. Kanji meanings were never a translation problem — they were a
+*splitting* problem.** `generate_kanji_seed.py` authored both languages
+into one `meanings` list, Indonesian first: 朝 → `["pagi", "morning"]`,
+恥 → `["malu", "aib", "shame", "embarrassment"]`. So the app showed both
+at once in either language. `scripts/split_kanji_meanings_en.py` (new)
+splits all 2425 into `meanings` (Indonesian) + `meaningsEn` (English):
+a bootstrapped classifier (Indonesian lexicon mined from
+Indonesian-only fields elsewhere in the datasets; English lexicon seeded
+from kotoba's `meaningEn` then grown from its own confident splits over
+8 rounds) handles 2233, and an `OVERRIDES` table holds **192
+hand-reviewed entries** — loanwords that read as Indonesian
+("proposal"/"momentum"/"platform"), 9 entries with no English gloss at
+all (written by hand), and two authored in **reverse** order, English
+first (萩, 葛 — the "Indonesian always comes first" assumption is not
+universal, don't rely on it). Result: 2425/2425 have English, 0 empty.
+**This script must be re-run after any `generate_kanji_seed.py` run** —
+that generator knows nothing about `meaningsEn` and will silently
+restore the mixed list. `test/content_localization_test.dart` (new)
+fails loudly if that happens.
+
+**2. Kotoba `meaningEn` finished**: the last two categories
+(pekerjaan_kantor 118, hari_bulan 79) were authored, so all 1266 words
+across the 45 documented categories are done — but see the correction
+in the Kotoba-localization section below: `konsep_umum` (416 words) is a
+**real, browsable 46th category**, not the out-of-scope word pool this
+file claimed, so its glosses are the one remaining gap for this field.
+
+**3. Plumbing for every other module** — nullable `*En` fields +
+`localized*(AppLanguage)` getters that fall back to the Indonesian text,
+so translations render the moment they land and nothing goes blank
+mid-rollout: `SentenceExample.translationEn` (shared by Kanji/Kotoba/
+Bunpou/Particle at once), `KanjiEntry.meaningsEn`,
+`DictionaryWord.meaningEn` + `DictionaryExample.translationEn`,
+`BunpouEntry.meaningEn`/`usageNotesEn`, `ParticleFunction.titleEn`/
+`explanationEn`, `ClozeExample.translationEn`,
+`KaiwaEntry.titleEn`/`descriptionEn`, `KaiwaAnswerOption.translationEn`,
+`DokkaiPassage.titleEn`/`passageTranslationEn`. Every render site was
+wired (four near-identical `_SentenceExampleCard`/`_ExampleCard` widgets
+plus `_BunpouTile`/`_FunctionTile`/`_DialogueTile` became
+`ConsumerWidget`s to reach `appStringsProvider`). Two bugs found in
+passing and fixed: `SearchScreen`'s Kotoba result tile rendered raw
+`entry.meaning` even though `localizedMeaning` already existed, and the
+Kanji-Kombinasi exam's prompts were hardcoded Indonesian strings inside
+`KanjiComboRepository` — now passed in via a new `KanjiComboLabels`
+(prompt wording + language, defaulting to the old Indonesian text so
+tests/tooling need no argument). `KanjiRepository.search` now matches
+`meaningsEn` too, so "morning" and "pagi" both find 朝 regardless of the
+toggle.
+
+**Verified on the physical Moto G52J** (`flutter build apk --debug` +
+`adb install` + screenshots): in English mode 雪 now shows "Meaning: •
+snow" alone instead of "salju, snow". `flutter analyze` clean, `flutter
+test --concurrency=1` 30/30.
+
+**What is still Indonesian in English mode** (the honest remainder, all
+of it content authoring, none of it blocked on code): kanji word-example
+meanings (7,271) and sentence translations (4,850); Kotoba sentence
+translations (1,264) and `konsep_umum`'s 416 meanings; every Bunpou
+prose field (3,839); the dictionary's 908 meanings + 908 examples;
+Particle titles/explanations/cloze (236); all of Kaiwa (34,019); Dokkai
+titles + passage translations (1,000). Also **exam-history rows store
+their title as a plain string at submit time** ("Ujian Katakana"), so
+old rows stay Indonesian forever — a schema question (store a mode key,
+localize at render) rather than a translation batch, and untouched here.
+
 ## Update (2026-07-23): pull-to-refresh (Facebook/X-style) on every main screen
 
 User request: dragging down from the top of any main screen should show
@@ -2475,17 +2557,22 @@ timing) on a real device before treating this as fully verified.
   past Batch 6-7's original "519 words" figure quoted elsewhere in this
   file (`pekerjaan_kantor` alone is 118, `hari_bulan` 79) — the real
   current total, read straight from `_categories.json`'s own
-  `wordCount` fields, is **1266 words across 45 categories** (excludes
-  `konsep_umum`'s 416, which stays out of scope — not a browsable
-  category, see its own note elsewhere in this file). **1069/1266 words
-  done (43 categories — all of "Alam & Lingkungan" + all of "Makanan &
-  Minuman" + all of "Tubuh & Kesehatan" + all of "Tempat &
-  Transportasi" + all of "Manusia & Sosial" + 4 of "Pendidikan &
-  Pekerjaan" (alat_tulis_sekolah, mata_pelajaran, teknologi_gadget,
-  media_hiburan) + 4 of "Waktu & Angka" (musim, angka_satuan, warna,
-  bentuk) — konsep_umum excluded, out of scope), 197 words across 2
-  categories remain: **just pekerjaan_kantor (118) and hari_bulan (79)
-  — the two biggest remaining categories, both still pending.**
+  `wordCount` fields, is **1266 words across 45 categories** plus
+  `konsep_umum`'s 416. **DONE as of 2026-07-25: all 1266/1266 words
+  across all 45 categories have `meaningEn`** — the last two
+  (pekerjaan_kantor 118, hari_bulan 79) landed in the same session as
+  the kanji-meanings split described below.
+  **Correction to a claim this file repeated several times**:
+  `konsep_umum` is **not** out of scope, and it is **not** a
+  non-browsable raw word pool. It really is listed in
+  `assets/data/kotoba/_categories.json` (46 entries, `available: true`,
+  wordCount 416), so it renders in the Kotoba category list exactly like
+  the other 45 and its Indonesian-only meanings are visible to users.
+  This was caught by `test/content_localization_test.dart` failing on
+  416 missing `meaningEn` values, not by re-reading the prose here — so
+  **`konsep_umum`'s 416 glosses are the one real remaining gap** for
+  this field, tracked by that test's `pendingEnglishPass` filter (drop
+  the filter once the batch lands).
   Group-to-category mapping is per `_categories.json`'s own `group`
   field, not guessed from name/context — verified via `python -c
   "import json; [print(e['id'], e['group']) for e in
@@ -2551,16 +2638,17 @@ timing) on a real device before treating this as fully verified.
   - [x] perayaan_haribesar (18 words)
   - [x] alat_tulis_sekolah (21 words)
   - [x] mata_pelajaran (69 words)
-  - [ ] pekerjaan_kantor (118 words)
+  - [x] pekerjaan_kantor (118 words)
   - [x] teknologi_gadget (39 words)
   - [x] media_hiburan (28 words)
-  - [ ] hari_bulan (79 words)
+  - [x] hari_bulan (79 words)
   - [x] musim (5 words)
   - [x] angka_satuan (20 words)
   - [x] warna (11 words)
   - [x] bentuk (10 words)
-  - `konsep_umum` (416 words) — **not in scope**, not a browsable
-    category (see its own note elsewhere in this file), skip entirely.
+  - [ ] konsep_umum (416 words) — the only category left. It IS
+    browsable (see the correction above); earlier notes in this file
+    calling it out-of-scope were wrong.
 - Avatar art PNGs haven't been supplied yet, but as of the 2026-07-20
   profile bug-hunt session the code is fully ready for them:
   `AvatarPreset` (`lib/core/constants/avatars.dart`) gained an

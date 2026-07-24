@@ -266,7 +266,7 @@ class _FilterRow extends StatelessWidget {
   }
 }
 
-class _BunpouTile extends StatelessWidget {
+class _BunpouTile extends ConsumerWidget {
   final BunpouEntry entry;
   final bool learned;
   final VoidCallback onTap;
@@ -278,7 +278,7 @@ class _BunpouTile extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Material(
       color: AppColors.cardWhite,
       borderRadius: BorderRadius.circular(14),
@@ -303,7 +303,7 @@ class _BunpouTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      entry.meaning,
+                      entry.localizedMeaning(ref.watch(appStringsProvider).language),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

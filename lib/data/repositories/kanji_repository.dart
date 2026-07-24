@@ -52,8 +52,11 @@ class KanjiRepository {
     return null;
   }
 
-  /// Case-insensitive search across character, on'yomi, kun'yomi, and
-  /// meanings. Placeholder rows never match since they carry no content.
+  /// Case-insensitive search across character, on'yomi, kun'yomi, and both
+  /// the Indonesian and English meanings — searching always covers both
+  /// languages regardless of the app's language toggle, so an English-mode
+  /// user typing "morning" and an Indonesian-mode user typing "pagi" both
+  /// find 朝. Placeholder rows never match since they carry no content.
   Future<List<KanjiEntry>> search(String query) async {
     final trimmed = query.trim().toLowerCase();
     if (trimmed.isEmpty) return [];
@@ -64,6 +67,7 @@ class KanjiRepository {
       if (k.onyomi.any((r) => r.toLowerCase().contains(trimmed))) return true;
       if (k.kunyomi.any((r) => r.toLowerCase().contains(trimmed))) return true;
       if (k.meanings.any((m) => m.toLowerCase().contains(trimmed))) return true;
+      if (k.meaningsEn.any((m) => m.toLowerCase().contains(trimmed))) return true;
       return false;
     }).toList();
   }

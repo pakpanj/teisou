@@ -152,7 +152,8 @@ class _KanjiWordDetailScreenState extends ConsumerState<KanjiWordDetailScreen> {
                         alignment: Alignment.centerLeft,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: entry.meanings
+                          children: entry
+                              .localizedMeanings(s.language)
                               .map(
                                 (m) => Padding(
                                   padding: const EdgeInsets.only(bottom: 4),
@@ -453,14 +454,14 @@ class _WordExampleCard extends StatelessWidget {
   }
 }
 
-class _SentenceExampleCard extends StatelessWidget {
+class _SentenceExampleCard extends ConsumerWidget {
   final SentenceExample example;
   final VoidCallback onSpeak;
 
   const _SentenceExampleCard({required this.example, required this.onSpeak});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 12),
@@ -494,7 +495,8 @@ class _SentenceExampleCard extends StatelessWidget {
                 ],
                 const SizedBox(height: 4),
                 Text(
-                  example.translation,
+                  example.localizedTranslation(
+                      ref.watch(appStringsProvider).language),
                   style: TextStyle(
                     fontSize: 13,
                     color: AppColors.textNavy.withValues(alpha: 0.7),

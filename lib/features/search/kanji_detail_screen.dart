@@ -96,7 +96,8 @@ class KanjiDetailScreen extends ConsumerWidget {
               alignment: Alignment.centerLeft,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: entry.meanings
+                children: entry
+                    .localizedMeanings(s.language)
                     .map((m) => Padding(
                           padding: const EdgeInsets.only(bottom: 4),
                           child: Text(

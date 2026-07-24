@@ -301,14 +301,14 @@ class _LearnedButton extends StatelessWidget {
   }
 }
 
-class _ExampleCard extends StatelessWidget {
+class _ExampleCard extends ConsumerWidget {
   final SentenceExample example;
   final VoidCallback onSpeak;
 
   const _ExampleCard({required this.example, required this.onSpeak});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 12),
@@ -342,7 +342,8 @@ class _ExampleCard extends StatelessWidget {
                 ],
                 const SizedBox(height: 4),
                 Text(
-                  example.translation,
+                  example.localizedTranslation(
+                      ref.watch(appStringsProvider).language),
                   style: TextStyle(
                     fontSize: 13,
                     color: AppColors.textNavy.withValues(alpha: 0.7),

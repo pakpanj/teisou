@@ -112,7 +112,7 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          entry.meaning,
+                          entry.localizedMeaning(s.language),
                           style: const TextStyle(color: AppColors.textNavy),
                         ),
                       ),
@@ -123,7 +123,7 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
                       const SizedBox(height: 24),
                       _SectionTitle(s.usageNotesSectionTitle),
                       const SizedBox(height: 8),
-                      _InfoCard(text: entry.usageNotes),
+                      _InfoCard(text: entry.localizedUsageNotes(s.language)),
                       if (entry.similarPatterns.isNotEmpty) ...[
                         const SizedBox(height: 24),
                         _SectionTitle(s.similarPatternsTitle),
@@ -394,14 +394,14 @@ class _LearnedButton extends StatelessWidget {
   }
 }
 
-class _SentenceExampleCard extends StatelessWidget {
+class _SentenceExampleCard extends ConsumerWidget {
   final SentenceExample example;
   final VoidCallback onSpeak;
 
   const _SentenceExampleCard({required this.example, required this.onSpeak});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 12),
@@ -435,7 +435,8 @@ class _SentenceExampleCard extends StatelessWidget {
                 ],
                 const SizedBox(height: 4),
                 Text(
-                  example.translation,
+                  example.localizedTranslation(
+                      ref.watch(appStringsProvider).language),
                   style: TextStyle(
                     fontSize: 13,
                     color: AppColors.textNavy.withValues(alpha: 0.7),

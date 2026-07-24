@@ -410,6 +410,12 @@ class AppStrings {
       _t('Pemahaman mendengar, N5-N1', 'Listening comprehension, N5-N1');
   String get kanjiComboCategorySubtitle =>
       _t('Kanji tunggal atau kombinasi kata', 'Single kanji or word combinations');
+  String get kanjiComboMeaningPrompt =>
+      _t('Apa artinya kanji ini?', "What does this kanji mean?");
+  String get kanjiComboReadingPrompt =>
+      _t('Bagaimana bacaan kanji ini?', 'How is this kanji read?');
+  String get kanjiComboCompoundPrompt =>
+      _t('Bagaimana bacaan kata ini?', 'How is this word read?');
   String get kanaExamTitle => _t('Ujian Kana', 'Kana Exam');
   String get examHiraganaTitle => _t('Ujian Hiragana', 'Hiragana Exam');
   String get examHiraganaSubtitle =>

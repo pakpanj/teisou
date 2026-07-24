@@ -6,6 +6,7 @@ import '../../../core/navigation/app_navigator.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/japanese_text_filter.dart';
+import '../../../data/models/app_language.dart';
 import '../../../data/models/kanji_entry.dart';
 import '../../../data/models/kotoba_entry.dart';
 import '../../../data/models/saved_word.dart';
@@ -43,15 +44,17 @@ class _LookupResult {
       : kotoba = null,
         kanji = null;
 
-  String get meaningSummary {
-    if (kotoba != null) return kotoba!.meaning;
-    if (kanji != null) return kanji!.meanings.join(', ');
+  String meaningSummary(AppLanguage language) {
+    if (kotoba != null) return kotoba!.localizedMeaning(language);
+    if (kanji != null) return kanji!.localizedMeanings(language).join(', ');
     return breakdown!.map((b) => '${b.character}: ${b.description}').join(' · ');
   }
 
-  String? get exampleSentence {
+  String? exampleSentence(AppLanguage language) {
     final sentence = kotoba?.sentenceExample;
-    if (sentence != null) return '${sentence.japanese} (${sentence.translation})';
+    if (sentence != null) {
+      return '${sentence.japanese} (${sentence.localizedTranslation(language)})';
+    }
     final kanjiExamples = kanji?.examples;
     if (kanjiExamples != null && kanjiExamples.isNotEmpty) {
       final ex = kanjiExamples.first;
@@ -112,7 +115,9 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
         breakdown.add(_CharBreakdown(
           character: char,
           description: kanji != null
-              ? kanji.meanings.join(', ')
+              ? kanji
+                  .localizedMeanings(ref.read(appStringsProvider).language)
+                  .join(', ')
               : ref.read(appStringsProvider).meaningNotAvailable,
         ));
       } else {
@@ -128,8 +133,9 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
       id: DateTime.now().microsecondsSinceEpoch.toString(),
       text: widget.text,
       romaji: result.romaji,
-      meaning: result.meaningSummary,
-      exampleSentence: result.exampleSentence,
+      meaning: result.meaningSummary(ref.read(appStringsProvider).language),
+      exampleSentence:
+          result.exampleSentence(ref.read(appStringsProvider).language),
       source: 'cam_detector',
       createdAt: DateTime.now(),
     );
@@ -235,7 +241,8 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
         const SizedBox(height: 20),
         _SectionLabel(s.meaningSectionTitle),
         const SizedBox(height: 6),
-        Text(result.meaningSummary, style: const TextStyle(color: AppColors.textNavy, fontSize: 16)),
+        Text(result.meaningSummary(s.language),
+            style: const TextStyle(color: AppColors.textNavy, fontSize: 16)),
         if (result.kotoba != null && result.kotoba!.registers.isNotEmpty) ...[
           const SizedBox(height: 20),
           _SectionLabel(s.registerUsageTitle),
@@ -244,11 +251,12 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
               .where((r) => result.kotoba!.registers.containsKey(r))
               .map((r) => _RegisterRow(register: r, value: result.kotoba!.registers[r]!)),
         ],
-        if (result.exampleSentence != null) ...[
+        if (result.exampleSentence(s.language) != null) ...[
           const SizedBox(height: 20),
           _SectionLabel(s.sentenceExamplesTitle),
           const SizedBox(height: 6),
-          Text(result.exampleSentence!, style: const TextStyle(color: AppColors.textNavy)),
+          Text(result.exampleSentence(s.language)!,
+              style: const TextStyle(color: AppColors.textNavy)),
         ],
         const SizedBox(height: 24),
         if (result.kotoba != null || result.kanji != null)
