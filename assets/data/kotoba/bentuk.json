@@ -21,7 +21,8 @@
         "translation": "Saya menggambar lingkaran."
       }
     ],
-    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_maru.png"
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_maru.png",
+    "meaningEn": "circle"
   },
   {
     "id": "kotoba_bentuk_shikaku",
@@ -45,7 +46,8 @@
         "translation": "Saya menggambar persegi."
       }
     ],
-    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_shikaku.png"
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_shikaku.png",
+    "meaningEn": "square"
   },
   {
     "id": "kotoba_bentuk_sankaku",
@@ -69,7 +71,8 @@
         "translation": "Saya menggambar segitiga."
       }
     ],
-    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_sankaku.png"
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_sankaku.png",
+    "meaningEn": "triangle"
   },
   {
     "id": "kotoba_bentuk_hoshi",
@@ -93,7 +96,8 @@
         "translation": "Ini bentuk bintang."
       }
     ],
-    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_hoshi.png"
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_hoshi.png",
+    "meaningEn": "star (shape)"
   },
   {
     "id": "kotoba_bentuk_haato",
@@ -117,7 +121,8 @@
         "translation": "Ini bentuk hati."
       }
     ],
-    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_haato.png"
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_haato.png",
+    "meaningEn": "heart (shape)"
   },
   {
     "id": "kotoba_bentuk_katachi",
@@ -141,7 +146,8 @@
         "translation": "Bentuk apa ini?"
       }
     ],
-    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_katachi.png"
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_katachi.png",
+    "meaningEn": "shape (general term)"
   },
   {
     "id": "kotoba_bentuk_chouhoukei",
@@ -165,7 +171,8 @@
         "translation": "Ini kertas persegi panjang."
       }
     ],
-    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_chouhoukei.png"
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_chouhoukei.png",
+    "meaningEn": "rectangle"
   },
   {
     "id": "kotoba_bentuk_daen",
@@ -189,7 +196,8 @@
         "translation": "Ini bentuk elips."
       }
     ],
-    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_daen.png"
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_daen.png",
+    "meaningEn": "ellipse/oval"
   },
   {
     "id": "kotoba_bentuk_enshuu",
@@ -213,7 +221,8 @@
         "translation": "Menghitung keliling lingkaran."
       }
     ],
-    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_enshuu.png"
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_enshuu.png",
+    "meaningEn": "circumference"
   },
   {
     "id": "kotoba_bentuk_hankei",
@@ -237,6 +246,7 @@
         "translation": "Mengukur radius lingkaran."
       }
     ],
-    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_hankei.png"
+    "imagePath": "kotoba_images/bentuk/kotoba_bentuk_hankei.png",
+    "meaningEn": "radius"
   }
 ]

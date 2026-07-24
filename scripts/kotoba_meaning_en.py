@@ -11,14 +11,17 @@ patches the real JSON files, so there's never a second copy to keep in
 sync by hand.
 
 STATUS (update this line every time a category is finished):
-    Done (39): all of "Alam & Lingkungan" (10) + all of "Makanan &
+    Done (43): all of "Alam & Lingkungan" (10) + all of "Makanan &
     Minuman" (7) + all of "Tubuh & Kesehatan" (6) + all of "Tempat &
     Transportasi" (6) + all of "Manusia & Sosial" (6) + 4 of
     "Pendidikan & Pekerjaan" (alat_tulis_sekolah, mata_pelajaran,
-    teknologi_gadget, media_hiburan) = 1023/1266 words. Remaining: 6
-    categories, 243 words (just pekerjaan_kantor's 118 + all 5 of Waktu
-    & Angka, which includes warna/bentuk per _categories.json's real
-    group field).
+    teknologi_gadget, media_hiburan) + 4 of "Waktu & Angka" (musim,
+    angka_satuan, warna, bentuk) = 1069/1266 words. Remaining: 2
+    categories, 197 words — pekerjaan_kantor (118) and hari_bulan (79).
+    Next session: read assets/data/kotoba/pekerjaan_kantor.json and
+    hari_bulan.json, translate, add both dicts here, run the applier
+    for both, tick both boxes in CLAUDE.md, this reaches 1266/1266 =
+    ALL 45 real categories done (konsep_umum stays excluded).
     See CLAUDE.md's Kotoba-localization note for the full per-category
     checklist and the exact workflow to add a new category here.
 
@@ -1139,6 +1142,60 @@ MEANING_EN: dict[str, dict[str, str]] = {
         "kotoba_media_hiburan_shasetsu": "editorial (newspaper)",
         "kotoba_media_hiburan_bangumi": "(TV/radio) program",
         "kotoba_media_hiburan_shousetsu": "novel",
+    },
+    "musim": {
+        "kotoba_musim_haru": "spring",
+        "kotoba_musim_natsu": "summer",
+        "kotoba_musim_aki": "autumn/fall",
+        "kotoba_musim_fuyu": "winter",
+        "kotoba_musim_kisetsu": "season (general term)",
+    },
+    "angka_satuan": {
+        "kotoba_angka_satuan_ichi": "one (1)",
+        "kotoba_angka_satuan_ni": "two (2)",
+        "kotoba_angka_satuan_san": "three (3)",
+        "kotoba_angka_satuan_yon": "four (4)",
+        "kotoba_angka_satuan_go": "five (5)",
+        "kotoba_angka_satuan_roku": "six (6)",
+        "kotoba_angka_satuan_nana": "seven (7)",
+        "kotoba_angka_satuan_hachi": "eight (8)",
+        "kotoba_angka_satuan_kyuu": "nine (9)",
+        "kotoba_angka_satuan_juu": "ten (10)",
+        "kotoba_angka_satuan_hyaku": "hundred (100)",
+        "kotoba_angka_satuan_sen": "thousand (1,000)",
+        "kotoba_angka_satuan_ichiman": "ten thousand (10,000)",
+        "kotoba_angka_satuan_suuji": "number/digit",
+        "kotoba_angka_satuan_ninzuu": "number of people",
+        "kotoba_angka_satuan_fukusuu": "multiple/plural",
+        "kotoba_angka_satuan_ninzuubun": "enough for the number of people",
+        "kotoba_angka_satuan_kahansuu": "majority (more than half)",
+        "kotoba_angka_satuan_ijou": "or more/above",
+        "kotoba_angka_satuan_ika": "or less/below",
+    },
+    "warna": {
+        "kotoba_warna_akai": "red",
+        "kotoba_warna_aoi": "blue",
+        "kotoba_warna_kiiroi": "yellow",
+        "kotoba_warna_midori": "green",
+        "kotoba_warna_shiroi": "white",
+        "kotoba_warna_kuroi": "black",
+        "kotoba_warna_chairo": "brown",
+        "kotoba_warna_murasaki": "purple",
+        "kotoba_warna_pinku": "pink",
+        "kotoba_warna_orenji": "orange",
+        "kotoba_warna_haiiro": "gray",
+    },
+    "bentuk": {
+        "kotoba_bentuk_maru": "circle",
+        "kotoba_bentuk_shikaku": "square",
+        "kotoba_bentuk_sankaku": "triangle",
+        "kotoba_bentuk_hoshi": "star (shape)",
+        "kotoba_bentuk_haato": "heart (shape)",
+        "kotoba_bentuk_katachi": "shape (general term)",
+        "kotoba_bentuk_chouhoukei": "rectangle",
+        "kotoba_bentuk_daen": "ellipse/oval",
+        "kotoba_bentuk_enshuu": "circumference",
+        "kotoba_bentuk_hankei": "radius",
     },
     # Add the next category here, e.g.:
     # "pekerjaan_kantor": {

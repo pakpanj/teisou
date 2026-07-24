@@ -21,7 +21,8 @@
         "translation": "Di musim semi, bunga sakura mekar."
       }
     ],
-    "imagePath": "kotoba_images/musim/kotoba_musim_haru.png"
+    "imagePath": "kotoba_images/musim/kotoba_musim_haru.png",
+    "meaningEn": "spring"
   },
   {
     "id": "kotoba_musim_natsu",
@@ -45,7 +46,8 @@
         "translation": "Musim panas itu panas."
       }
     ],
-    "imagePath": "kotoba_images/musim/kotoba_musim_natsu.png"
+    "imagePath": "kotoba_images/musim/kotoba_musim_natsu.png",
+    "meaningEn": "summer"
   },
   {
     "id": "kotoba_musim_aki",
@@ -69,7 +71,8 @@
         "translation": "Di musim gugur, daun berwarna indah."
       }
     ],
-    "imagePath": "kotoba_images/musim/kotoba_musim_aki.png"
+    "imagePath": "kotoba_images/musim/kotoba_musim_aki.png",
+    "meaningEn": "autumn/fall"
   },
   {
     "id": "kotoba_musim_fuyu",
@@ -93,7 +96,8 @@
         "translation": "Musim dingin itu dingin."
       }
     ],
-    "imagePath": "kotoba_images/musim/kotoba_musim_fuyu.png"
+    "imagePath": "kotoba_images/musim/kotoba_musim_fuyu.png",
+    "meaningEn": "winter"
   },
   {
     "id": "kotoba_musim_kisetsu",
@@ -117,6 +121,7 @@
         "translation": "Musim apa yang kamu suka?"
       }
     ],
-    "imagePath": "kotoba_images/musim/kotoba_musim_kisetsu.png"
+    "imagePath": "kotoba_images/musim/kotoba_musim_kisetsu.png",
+    "meaningEn": "season (general term)"
   }
 ]

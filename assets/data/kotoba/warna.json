@@ -21,7 +21,8 @@
         "translation": "Ini apel merah."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_akai.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_akai.png",
+    "meaningEn": "red"
   },
   {
     "id": "kotoba_warna_aoi",
@@ -45,7 +46,8 @@
         "translation": "Langit itu biru."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_aoi.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_aoi.png",
+    "meaningEn": "blue"
   },
   {
     "id": "kotoba_warna_kiiroi",
@@ -69,7 +71,8 @@
         "translation": "Pisang itu kuning."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_kiiroi.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_kiiroi.png",
+    "meaningEn": "yellow"
   },
   {
     "id": "kotoba_warna_midori",
@@ -93,7 +96,8 @@
         "translation": "Daun pohon berwarna hijau."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_midori.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_midori.png",
+    "meaningEn": "green"
   },
   {
     "id": "kotoba_warna_shiroi",
@@ -117,7 +121,8 @@
         "translation": "Salju berwarna putih."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_shiroi.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_shiroi.png",
+    "meaningEn": "white"
   },
   {
     "id": "kotoba_warna_kuroi",
@@ -141,7 +146,8 @@
         "translation": "Kucing itu hitam."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_kuroi.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_kuroi.png",
+    "meaningEn": "black"
   },
   {
     "id": "kotoba_warna_chairo",
@@ -165,7 +171,8 @@
         "translation": "Anjing itu berwarna coklat."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_chairo.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_chairo.png",
+    "meaningEn": "brown"
   },
   {
     "id": "kotoba_warna_murasaki",
@@ -189,7 +196,8 @@
         "translation": "Anggur berwarna ungu."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_murasaki.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_murasaki.png",
+    "meaningEn": "purple"
   },
   {
     "id": "kotoba_warna_pinku",
@@ -213,7 +221,8 @@
         "translation": "Sakura berwarna pink."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_pinku.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_pinku.png",
+    "meaningEn": "pink"
   },
   {
     "id": "kotoba_warna_orenji",
@@ -237,7 +246,8 @@
         "translation": "Saya suka warna oranye."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_orenji.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_orenji.png",
+    "meaningEn": "orange"
   },
   {
     "id": "kotoba_warna_haiiro",
@@ -261,6 +271,7 @@
         "translation": "Langit berwarna abu-abu."
       }
     ],
-    "imagePath": "kotoba_images/warna/kotoba_warna_haiiro.png"
+    "imagePath": "kotoba_images/warna/kotoba_warna_haiiro.png",
+    "meaningEn": "gray"
   }
 ]
