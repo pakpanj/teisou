@@ -11,8 +11,9 @@ patches the real JSON files, so there's never a second copy to keep in
 sync by hand.
 
 STATUS (update this line every time a category is finished):
-    Done (8): ikan, hewan_darat, burung, serangga, pohon, bunga_tanaman,
-    buah, sayuran (104/1266 words). Remaining: 37 categories, 1162 words.
+    Done (10, all of "Alam & Lingkungan"): ikan, hewan_darat, burung,
+    serangga, pohon, bunga_tanaman, buah, sayuran, cuaca, bencana_alam
+    (145/1266 words). Remaining: 35 categories, 1121 words.
     See CLAUDE.md's Kotoba-localization note for the full per-category
     checklist and the exact workflow to add a new category here.
 
@@ -153,8 +154,53 @@ MEANING_EN: dict[str, dict[str, str]] = {
         "kotoba_sayuran_negi": "green onion/scallion",
         "kotoba_sayuran_ninniku": "garlic",
     },
+    "cuaca": {
+        "kotoba_cuaca_tenki": "weather",
+        "kotoba_cuaca_hare": "sunny/clear",
+        "kotoba_cuaca_ame": "rain",
+        "kotoba_cuaca_kumori": "cloudy",
+        "kotoba_cuaca_yuki": "snow",
+        "kotoba_cuaca_kaze": "wind",
+        "kotoba_cuaca_kaminari": "thunder/lightning",
+        "kotoba_cuaca_kiri": "fog",
+        "kotoba_cuaca_taifuu": "typhoon",
+        "kotoba_cuaca_niji": "rainbow",
+        "kotoba_cuaca_tsuyu": "rainy season (Japan)",
+        "kotoba_cuaca_hyou": "hail",
+        "kotoba_cuaca_shitsudo": "humidity",
+        "kotoba_cuaca_kiatsu": "air pressure",
+        "kotoba_cuaca_mousho": "extreme heat",
+        "kotoba_cuaca_kanpa": "cold wave",
+        "kotoba_cuaca_tenkiyohou": "weather forecast",
+        "kotoba_cuaca_aozora": "blue sky",
+        "kotoba_cuaca_kansou": "drying/dryness",
+        "kotoba_cuaca_kion": "air temperature",
+        "kotoba_cuaca_kouon": "high temperature",
+        "kotoba_cuaca_nikkou": "sunlight",
+        "kotoba_cuaca_kuuki": "air",
+    },
+    "bencana_alam": {
+        "kotoba_bencana_alam_jishin": "earthquake",
+        "kotoba_bencana_alam_tsunami": "tsunami",
+        "kotoba_bencana_alam_kouzui": "flood",
+        "kotoba_bencana_alam_kaji": "fire",
+        "kotoba_bencana_alam_funka": "volcanic eruption",
+        "kotoba_bencana_alam_teiden": "power outage",
+        "kotoba_bencana_alam_kazan": "volcano",
+        "kotoba_bencana_alam_hinan": "evacuation",
+        "kotoba_bencana_alam_arashi": "storm",
+        "kotoba_bencana_alam_bousai": "disaster prevention/mitigation",
+        "kotoba_bencana_alam_hinanjo": "evacuation shelter",
+        "kotoba_bencana_alam_fukkyuu": "recovery (post-disaster)",
+        "kotoba_bencana_alam_houkai": "collapse",
+        "kotoba_bencana_alam_hisai": "being disaster-stricken",
+        "kotoba_bencana_alam_songai": "damage/loss",
+        "kotoba_bencana_alam_kyuujo": "rescue",
+        "kotoba_bencana_alam_tatsumaki": "tornado",
+        "kotoba_bencana_alam_kasai": "fire (formal term)",
+    },
     # Add the next category here, e.g.:
-    # "cuaca": {
-    #     "kotoba_cuaca_...": "...",
+    # "makanan_jepang": {
+    #     "kotoba_makanan_jepang_...": "...",
     # },
 }

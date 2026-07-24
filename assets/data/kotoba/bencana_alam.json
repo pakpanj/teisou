@@ -21,7 +21,8 @@
         "translation": "Kemarin ada gempa bumi."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_jishin.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_jishin.png",
+    "meaningEn": "earthquake"
   },
   {
     "id": "kotoba_bencana_alam_tsunami",
@@ -45,7 +46,8 @@
         "translation": "Setelah gempa, tsunami datang."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_tsunami.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_tsunami.png",
+    "meaningEn": "tsunami"
   },
   {
     "id": "kotoba_bencana_alam_kouzui",
@@ -69,7 +71,8 @@
         "translation": "Karena hujan deras, terjadi banjir."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kouzui.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kouzui.png",
+    "meaningEn": "flood"
   },
   {
     "id": "kotoba_bencana_alam_kaji",
@@ -93,7 +96,8 @@
         "translation": "Ada kebakaran di dekat sini."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kaji.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kaji.png",
+    "meaningEn": "fire"
   },
   {
     "id": "kotoba_bencana_alam_funka",
@@ -117,7 +121,8 @@
         "translation": "Gunung berapi meletus."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_funka.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_funka.png",
+    "meaningEn": "volcanic eruption"
   },
   {
     "id": "kotoba_bencana_alam_teiden",
@@ -141,7 +146,8 @@
         "translation": "Karena topan, listrik padam."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_teiden.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_teiden.png",
+    "meaningEn": "power outage"
   },
   {
     "id": "kotoba_bencana_alam_kazan",
@@ -165,7 +171,8 @@
         "translation": "Di Jepang ada banyak gunung berapi."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kazan.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kazan.png",
+    "meaningEn": "volcano"
   },
   {
     "id": "kotoba_bencana_alam_hinan",
@@ -189,7 +196,8 @@
         "translation": "Saat gempa, tolong mengungsi."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hinan.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hinan.png",
+    "meaningEn": "evacuation"
   },
   {
     "id": "kotoba_bencana_alam_arashi",
@@ -213,7 +221,8 @@
         "translation": "Malam ini akan ada badai."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_arashi.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_arashi.png",
+    "meaningEn": "storm"
   },
   {
     "id": "kotoba_bencana_alam_bousai",
@@ -237,7 +246,8 @@
         "translation": "Di sekolah kami melakukan latihan mitigasi bencana."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_bousai.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_bousai.png",
+    "meaningEn": "disaster prevention/mitigation"
   },
   {
     "id": "kotoba_bencana_alam_hinanjo",
@@ -261,7 +271,8 @@
         "translation": "Saya pergi ke tempat pengungsian."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hinanjo.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hinanjo.png",
+    "meaningEn": "evacuation shelter"
   },
   {
     "id": "kotoba_bencana_alam_fukkyuu",
@@ -285,7 +296,8 @@
         "translation": "Butuh waktu sampai listrik pulih kembali."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_fukkyuu.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_fukkyuu.png",
+    "meaningEn": "recovery (post-disaster)"
   },
   {
     "id": "kotoba_bencana_alam_houkai",
@@ -309,7 +321,8 @@
         "translation": "Bangunan itu runtuh."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_houkai.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_houkai.png",
+    "meaningEn": "collapse"
   },
   {
     "id": "kotoba_bencana_alam_hisai",
@@ -333,7 +346,8 @@
         "translation": "Kami mendukung daerah yang terkena bencana."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hisai.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hisai.png",
+    "meaningEn": "being disaster-stricken"
   },
   {
     "id": "kotoba_bencana_alam_songai",
@@ -357,7 +371,8 @@
         "translation": "Topan menyebabkan kerugian besar."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_songai.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_songai.png",
+    "meaningEn": "damage/loss"
   },
   {
     "id": "kotoba_bencana_alam_kyuujo",
@@ -381,7 +396,8 @@
         "translation": "Tim penyelamat telah tiba."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kyuujo.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kyuujo.png",
+    "meaningEn": "rescue"
   },
   {
     "id": "kotoba_bencana_alam_tatsumaki",
@@ -405,7 +421,8 @@
         "translation": "Tornado terjadi."
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_tatsumaki.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_tatsumaki.png",
+    "meaningEn": "tornado"
   },
   {
     "id": "kotoba_bencana_alam_kasai",
@@ -429,6 +446,7 @@
         "translation": "Hati-hati terhadap kebakaran. (laporan, dokumen)"
       }
     ],
-    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kasai.png"
+    "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kasai.png",
+    "meaningEn": "fire (formal term)"
   }
 ]
