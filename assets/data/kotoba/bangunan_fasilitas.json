@@ -21,7 +21,8 @@
         "translation": "Saya pergi ke sekolah."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_gakkou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_gakkou.png",
+    "meaningEn": "school"
   },
   {
     "id": "kotoba_bangunan_fasilitas_ginkou",
@@ -45,7 +46,8 @@
         "translation": "Saya mengambil uang di bank."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ginkou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ginkou.png",
+    "meaningEn": "bank"
   },
   {
     "id": "kotoba_bangunan_fasilitas_yuubinkyoku",
@@ -69,7 +71,8 @@
         "translation": "Saya mengirim surat di kantor pos."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yuubinkyoku.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yuubinkyoku.png",
+    "meaningEn": "post office"
   },
   {
     "id": "kotoba_bangunan_fasilitas_toshokan",
@@ -93,7 +96,8 @@
         "translation": "Saya meminjam buku di perpustakaan."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_toshokan.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_toshokan.png",
+    "meaningEn": "library"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kouen",
@@ -117,7 +121,8 @@
         "translation": "Saya bermain di taman."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouen.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouen.png",
+    "meaningEn": "(public) park"
   },
   {
     "id": "kotoba_bangunan_fasilitas_suupaa",
@@ -141,7 +146,8 @@
         "translation": "Saya berbelanja di supermarket."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_suupaa.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_suupaa.png",
+    "meaningEn": "supermarket"
   },
   {
     "id": "kotoba_bangunan_fasilitas_depaato",
@@ -165,7 +171,8 @@
         "translation": "Saya pergi ke department store."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_depaato.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_depaato.png",
+    "meaningEn": "department store"
   },
   {
     "id": "kotoba_bangunan_fasilitas_eki",
@@ -189,7 +196,8 @@
         "translation": "Saya berjalan sampai stasiun."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_eki.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_eki.png",
+    "meaningEn": "station"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kuukou",
@@ -213,7 +221,8 @@
         "translation": "Saya sampai di bandara."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kuukou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kuukou.png",
+    "meaningEn": "airport"
   },
   {
     "id": "kotoba_bangunan_fasilitas_jinja",
@@ -237,7 +246,8 @@
         "translation": "Saya berdoa di kuil Shinto."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jinja.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jinja.png",
+    "meaningEn": "Shinto shrine"
   },
   {
     "id": "kotoba_bangunan_fasilitas_otera",
@@ -261,7 +271,8 @@
         "translation": "Saya mengunjungi kuil Buddha."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_otera.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_otera.png",
+    "meaningEn": "Buddhist temple"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kensetsu",
@@ -285,7 +296,8 @@
         "translation": "Kami sedang membangun gedung baru."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kensetsu.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kensetsu.png",
+    "meaningEn": "construction"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kaichiku",
@@ -309,7 +321,8 @@
         "translation": "Kami merenovasi rumah lama."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaichiku.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaichiku.png",
+    "meaningEn": "building renovation"
   },
   {
     "id": "kotoba_bangunan_fasilitas_tekkyo",
@@ -333,7 +346,8 @@
         "translation": "Bangunan lama itu dibongkar."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tekkyo.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tekkyo.png",
+    "meaningEn": "demolition/removal"
   },
   {
     "id": "kotoba_bangunan_fasilitas_ritchi",
@@ -357,7 +371,8 @@
         "translation": "Lokasi toko ini bagus."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ritchi.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ritchi.png",
+    "meaningEn": "location (of a business)"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kyoushitsu",
@@ -381,7 +396,8 @@
         "translation": "Saya belajar di ruang kelas."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kyoushitsu.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kyoushitsu.png",
+    "meaningEn": "classroom"
   },
   {
     "id": "kotoba_bangunan_fasilitas_ryokan",
@@ -405,7 +421,8 @@
         "translation": "Saya menginap di penginapan tradisional."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ryokan.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ryokan.png",
+    "meaningEn": "traditional Japanese inn"
   },
   {
     "id": "kotoba_bangunan_fasilitas_ekimae",
@@ -429,7 +446,8 @@
         "translation": "Kami janjian bertemu di depan stasiun."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ekimae.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ekimae.png",
+    "meaningEn": "in front of the station"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kouban",
@@ -453,7 +471,8 @@
         "translation": "Saya bertanya arah di pos polisi."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouban.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouban.png",
+    "meaningEn": "police box"
   },
   {
     "id": "kotoba_bangunan_fasilitas_doubutsuen",
@@ -477,7 +496,8 @@
         "translation": "Saya pergi ke kebun binatang."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_doubutsuen.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_doubutsuen.png",
+    "meaningEn": "zoo"
   },
   {
     "id": "kotoba_bangunan_fasilitas_bijutsukan",
@@ -501,7 +521,8 @@
         "translation": "Saya melihat lukisan di galeri seni."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_bijutsukan.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_bijutsukan.png",
+    "meaningEn": "art museum/gallery"
   },
   {
     "id": "kotoba_bangunan_fasilitas_hakubutsukan",
@@ -525,7 +546,8 @@
         "translation": "Saya mengunjungi museum."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hakubutsukan.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hakubutsukan.png",
+    "meaningEn": "museum"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kissaten",
@@ -549,7 +571,8 @@
         "translation": "Saya minum kopi di kedai kopi."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kissaten.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kissaten.png",
+    "meaningEn": "coffee shop/café"
   },
   {
     "id": "kotoba_bangunan_fasilitas_taishikan",
@@ -573,7 +596,8 @@
         "translation": "Saya mengajukan visa di kedutaan besar."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_taishikan.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_taishikan.png",
+    "meaningEn": "embassy"
   },
   {
     "id": "kotoba_bangunan_fasilitas_saibansho",
@@ -597,7 +621,8 @@
         "translation": "Ada persidangan di pengadilan."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_saibansho.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_saibansho.png",
+    "meaningEn": "courthouse"
   },
   {
     "id": "kotoba_bangunan_fasilitas_yakusho",
@@ -621,7 +646,8 @@
         "translation": "Saya mengurus dokumen di kantor pemerintah."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yakusho.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yakusho.png",
+    "meaningEn": "government office"
   },
   {
     "id": "kotoba_bangunan_fasilitas_koujou2",
@@ -645,7 +671,8 @@
         "translation": "Mobil dibuat di pabrik."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koujou2.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koujou2.png",
+    "meaningEn": "factory"
   },
   {
     "id": "kotoba_bangunan_fasilitas_jimusho",
@@ -669,7 +696,8 @@
         "translation": "Saya bekerja di kantor."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jimusho.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jimusho.png",
+    "meaningEn": "office"
   },
   {
     "id": "kotoba_bangunan_fasilitas_onsen",
@@ -693,7 +721,8 @@
         "translation": "Ingin masuk pemandian air panas."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_onsen.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_onsen.png",
+    "meaningEn": "hot spring"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kaijou",
@@ -717,7 +746,8 @@
         "translation": "Tempat dibuka jam 8. (rapat, konser, seminar, lomba dll)"
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaijou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaijou.png",
+    "meaningEn": "venue opening"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kaiten",
@@ -741,7 +771,8 @@
         "translation": "Toko buka jam 10."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaiten.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaiten.png",
+    "meaningEn": "store opening"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kannai",
@@ -765,7 +796,8 @@
         "translation": "Di dalam gedung dilarang merokok."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kannai.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kannai.png",
+    "meaningEn": "inside the building"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kenchiku",
@@ -789,7 +821,8 @@
         "translation": "Belajar arsitektur/bidang konstruksi."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kenchiku.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kenchiku.png",
+    "meaningEn": "architecture/construction"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kouji",
@@ -813,7 +846,8 @@
         "translation": "Jalan sedang diperbaiki. (renovasi proyek)"
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouji.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouji.png",
+    "meaningEn": "construction project"
   },
   {
     "id": "kotoba_bangunan_fasilitas_jitaku",
@@ -837,7 +871,8 @@
         "translation": "Belajar di rumah sendiri."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jitaku.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jitaku.png",
+    "meaningEn": "one's own home"
   },
   {
     "id": "kotoba_bangunan_fasilitas_setsubi",
@@ -861,7 +896,8 @@
         "translation": "Tolong periksa fasilitas/peralatan."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_setsubi.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_setsubi.png",
+    "meaningEn": "facilities/equipment"
   },
   {
     "id": "kotoba_bangunan_fasilitas_souko",
@@ -885,7 +921,8 @@
         "translation": "Menaruh barang di gudang."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_souko.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_souko.png",
+    "meaningEn": "warehouse"
   },
   {
     "id": "kotoba_bangunan_fasilitas_tsuuro",
@@ -909,7 +946,8 @@
         "translation": "Silakan berjalan di lorong. (jalur jalan dalam/luar ruangan)"
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tsuuro.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tsuuro.png",
+    "meaningEn": "passage/aisle"
   },
   {
     "id": "kotoba_bangunan_fasilitas_teiin",
@@ -933,7 +971,8 @@
         "translation": "Kapasitas 30 orang."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_teiin.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_teiin.png",
+    "meaningEn": "capacity (number of people)"
   },
   {
     "id": "kotoba_bangunan_fasilitas_tochi",
@@ -957,7 +996,8 @@
         "translation": "Tanah ini mahal."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tochi.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tochi.png",
+    "meaningEn": "land"
   },
   {
     "id": "kotoba_bangunan_fasilitas_baiten",
@@ -981,7 +1021,8 @@
         "translation": "Saya membeli air di kios kecil. (di RS, eki, gakkou)"
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_baiten.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_baiten.png",
+    "meaningEn": "small stand/kiosk"
   },
   {
     "id": "kotoba_bangunan_fasilitas_madoguchi",
@@ -1005,7 +1046,8 @@
         "translation": "Mendaftar di loket."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_madoguchi.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_madoguchi.png",
+    "meaningEn": "counter/window (service)"
   },
   {
     "id": "kotoba_bangunan_fasilitas_yachin",
@@ -1029,7 +1071,8 @@
         "translation": "Saya membayar uang sewa rumah."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yachin.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yachin.png",
+    "meaningEn": "rent"
   },
   {
     "id": "kotoba_bangunan_fasilitas_yuusou",
@@ -1053,7 +1096,8 @@
         "translation": "Mengirim dokumen pengiriman pos."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yuusou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yuusou.png",
+    "meaningEn": "mailing/postal delivery"
   },
   {
     "id": "kotoba_bangunan_fasilitas_shiyakusho",
@@ -1077,7 +1121,8 @@
         "translation": "Saya mengurus prosedur di balai kota."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shiyakusho.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shiyakusho.png",
+    "meaningEn": "city hall"
   },
   {
     "id": "kotoba_bangunan_fasilitas_senmonten",
@@ -1101,7 +1146,8 @@
         "translation": "Ini saya beli di toko khusus."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_senmonten.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_senmonten.png",
+    "meaningEn": "specialty store"
   },
   {
     "id": "kotoba_bangunan_fasilitas_biyouin",
@@ -1125,7 +1171,8 @@
         "translation": "Saya memotong rambut di salon."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_biyouin.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_biyouin.png",
+    "meaningEn": "beauty salon"
   },
   {
     "id": "kotoba_bangunan_fasilitas_hoikuen",
@@ -1149,7 +1196,8 @@
         "translation": "Menitipkan anak di tempat penitipan anak."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hoikuen.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hoikuen.png",
+    "meaningEn": "daycare center"
   },
   {
     "id": "kotoba_bangunan_fasilitas_ichiba",
@@ -1173,7 +1221,8 @@
         "translation": "Saya pergi ke pasar ikan."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ichiba.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ichiba.png",
+    "meaningEn": "market"
   },
   {
     "id": "kotoba_bangunan_fasilitas_nyuujou",
@@ -1197,7 +1246,8 @@
         "translation": "Masuk gratis."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_nyuujou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_nyuujou.png",
+    "meaningEn": "admission/entry"
   },
   {
     "id": "kotoba_bangunan_fasilitas_heisa",
@@ -1221,7 +1271,8 @@
         "translation": "Pabrik ditutup."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_heisa.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_heisa.png",
+    "meaningEn": "closure (of a place)"
   },
   {
     "id": "kotoba_bangunan_fasilitas_houtei",
@@ -1245,7 +1296,8 @@
         "translation": "Bersaksi di ruang sidang."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_houtei.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_houtei.png",
+    "meaningEn": "courtroom"
   },
   {
     "id": "kotoba_bangunan_fasilitas_deiriguchi",
@@ -1269,7 +1321,8 @@
         "translation": "Pintu keluar masuk ada di sini."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_deiriguchi.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_deiriguchi.png",
+    "meaningEn": "entrance/exit"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kaikan",
@@ -1293,7 +1346,8 @@
         "translation": "Mengadakan pernikahan di gedung pertemuan."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaikan.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaikan.png",
+    "meaningEn": "meeting hall/community center"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kousha",
@@ -1317,7 +1371,8 @@
         "translation": "Gedung sekolah baru sudah jadi."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kousha.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kousha.png",
+    "meaningEn": "school building"
   },
   {
     "id": "kotoba_bangunan_fasilitas_koutei",
@@ -1341,7 +1396,8 @@
         "translation": "Bermain di halaman sekolah."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koutei.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koutei.png",
+    "meaningEn": "school yard"
   },
   {
     "id": "kotoba_bangunan_fasilitas_machiaishitsu",
@@ -1365,7 +1421,8 @@
         "translation": "Menunggu di ruang tunggu."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_machiaishitsu.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_machiaishitsu.png",
+    "meaningEn": "waiting room"
   },
   {
     "id": "kotoba_bangunan_fasilitas_miseya",
@@ -1389,7 +1446,8 @@
         "translation": "Berbelanja di toko."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_miseya.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_miseya.png",
+    "meaningEn": "shop/store"
   },
   {
     "id": "kotoba_bangunan_fasilitas_shoten",
@@ -1413,7 +1471,8 @@
         "translation": "Membeli buku di toko buku."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shoten.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shoten.png",
+    "meaningEn": "bookstore"
   },
   {
     "id": "kotoba_bangunan_fasilitas_shouten",
@@ -1437,7 +1496,8 @@
         "translation": "Bekerja di toko."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shouten.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shouten.png",
+    "meaningEn": "shop/store"
   },
   {
     "id": "kotoba_bangunan_fasilitas_sokutatsu",
@@ -1461,7 +1521,8 @@
         "translation": "Mengirim dengan pos kilat."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_sokutatsu.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_sokutatsu.png",
+    "meaningEn": "express mail"
   },
   {
     "id": "kotoba_bangunan_fasilitas_annai",
@@ -1485,7 +1546,8 @@
         "translation": "Tolong berikan petunjuk."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_annai.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_annai.png",
+    "meaningEn": "guidance/information"
   },
   {
     "id": "kotoba_bangunan_fasilitas_chuugakkou",
@@ -1509,7 +1571,8 @@
         "translation": "Sekolah di SMP."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_chuugakkou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_chuugakkou.png",
+    "meaningEn": "junior high school"
   },
   {
     "id": "kotoba_bangunan_fasilitas_chuushajou",
@@ -1533,7 +1596,8 @@
         "translation": "Memarkir mobil di tempat parkir."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_chuushajou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_chuushajou.png",
+    "meaningEn": "parking lot"
   },
   {
     "id": "kotoba_bangunan_fasilitas_hikoujou",
@@ -1557,7 +1621,8 @@
         "translation": "Tiba di bandara."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hikoujou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hikoujou.png",
+    "meaningEn": "airfield/airport"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kaigishitsu",
@@ -1581,7 +1646,8 @@
         "translation": "Berbicara di ruang rapat."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaigishitsu.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaigishitsu.png",
+    "meaningEn": "meeting room"
   },
   {
     "id": "kotoba_bangunan_fasilitas_kenkyuushitsu",
@@ -1605,7 +1671,8 @@
         "translation": "Melakukan eksperimen di lab."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kenkyuushitsu.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kenkyuushitsu.png",
+    "meaningEn": "research room/lab"
   },
   {
     "id": "kotoba_bangunan_fasilitas_koudou",
@@ -1629,7 +1696,8 @@
         "translation": "Mengadakan upacara di aula."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koudou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koudou.png",
+    "meaningEn": "auditorium/hall"
   },
   {
     "id": "kotoba_bangunan_fasilitas_koukou",
@@ -1653,7 +1721,8 @@
         "translation": "Sekolah di SMA."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koukou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koukou.png",
+    "meaningEn": "high school"
   },
   {
     "id": "kotoba_bangunan_fasilitas_okujou",
@@ -1677,7 +1746,8 @@
         "translation": "Naik ke atap gedung."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_okujou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_okujou.png",
+    "meaningEn": "rooftop"
   },
   {
     "id": "kotoba_bangunan_fasilitas_shougakkou",
@@ -1701,7 +1771,8 @@
         "translation": "Sekolah di SD."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shougakkou.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shougakkou.png",
+    "meaningEn": "elementary school"
   },
   {
     "id": "kotoba_bangunan_fasilitas_uketsuke",
@@ -1725,7 +1796,8 @@
         "translation": "Bertanya di resepsionis."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_uketsuke.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_uketsuke.png",
+    "meaningEn": "reception (desk)"
   },
   {
     "id": "kotoba_bangunan_fasilitas_yoyaku",
@@ -1749,6 +1821,7 @@
         "translation": "Memesan (reservasi) restoran."
       }
     ],
-    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yoyaku.png"
+    "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yoyaku.png",
+    "meaningEn": "reservation"
   }
 ]

@@ -21,7 +21,8 @@
         "translation": "Saya terkena flu."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kaze.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kaze.png",
+    "meaningEn": "cold/flu"
   },
   {
     "id": "kotoba_penyakit_gejala_netsu",
@@ -45,7 +46,8 @@
         "translation": "Saya demam."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_netsu.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_netsu.png",
+    "meaningEn": "fever"
   },
   {
     "id": "kotoba_penyakit_gejala_seki",
@@ -69,7 +71,8 @@
         "translation": "Saya batuk."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_seki.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_seki.png",
+    "meaningEn": "cough"
   },
   {
     "id": "kotoba_penyakit_gejala_hanamizu",
@@ -93,7 +96,8 @@
         "translation": "Saya pilek."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hanamizu.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hanamizu.png",
+    "meaningEn": "runny nose"
   },
   {
     "id": "kotoba_penyakit_gejala_itai",
@@ -117,7 +121,8 @@
         "translation": "Perut saya sakit."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_itai.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_itai.png",
+    "meaningEn": "painful/hurting"
   },
   {
     "id": "kotoba_penyakit_gejala_kega",
@@ -141,7 +146,8 @@
         "translation": "Saya terluka."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kega.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kega.png",
+    "meaningEn": "injury/wound"
   },
   {
     "id": "kotoba_penyakit_gejala_arerugii",
@@ -165,7 +171,8 @@
         "translation": "Saya punya alergi."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_arerugii.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_arerugii.png",
+    "meaningEn": "allergy"
   },
   {
     "id": "kotoba_penyakit_gejala_kafunshou",
@@ -189,7 +196,8 @@
         "translation": "Musim semi, alergi serbuk sari itu berat."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kafunshou.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kafunshou.png",
+    "meaningEn": "hay fever (pollen allergy)"
   },
   {
     "id": "kotoba_penyakit_gejala_geri",
@@ -213,7 +221,8 @@
         "translation": "Saya terkena diare."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_geri.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_geri.png",
+    "meaningEn": "diarrhea"
   },
   {
     "id": "kotoba_penyakit_gejala_memai",
@@ -237,7 +246,8 @@
         "translation": "Saya merasa pusing."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_memai.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_memai.png",
+    "meaningEn": "dizziness"
   },
   {
     "id": "kotoba_penyakit_gejala_tsukare",
@@ -261,7 +271,8 @@
         "translation": "Saya merasa lelah."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_tsukare.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_tsukare.png",
+    "meaningEn": "fatigue/tiredness"
   },
   {
     "id": "kotoba_penyakit_gejala_shindan",
@@ -285,7 +296,8 @@
         "translation": "Saya didiagnosis oleh dokter."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shindan.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shindan.png",
+    "meaningEn": "diagnosis"
   },
   {
     "id": "kotoba_penyakit_gejala_kansen",
@@ -309,7 +321,8 @@
         "translation": "Saya terinfeksi virus."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kansen.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kansen.png",
+    "meaningEn": "infection"
   },
   {
     "id": "kotoba_penyakit_gejala_men'eki",
@@ -333,7 +346,8 @@
         "translation": "Mari tingkatkan daya tahan tubuh."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_men'eki.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_men'eki.png",
+    "meaningEn": "immunity"
   },
   {
     "id": "kotoba_penyakit_gejala_shoujou",
@@ -357,7 +371,8 @@
         "translation": "Gejala seperti apa yang Anda rasakan?"
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shoujou.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shoujou.png",
+    "meaningEn": "symptom"
   },
   {
     "id": "kotoba_penyakit_gejala_akka",
@@ -381,7 +396,8 @@
         "translation": "Kondisi penyakitnya memburuk."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_akka.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_akka.png",
+    "meaningEn": "worsening (of a condition)"
   },
   {
     "id": "kotoba_penyakit_gejala_kaifuku",
@@ -405,7 +421,8 @@
         "translation": "Kondisi tubuh saya sudah pulih."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kaifuku.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kaifuku.png",
+    "meaningEn": "recovery"
   },
   {
     "id": "kotoba_penyakit_gejala_chiryou",
@@ -429,7 +446,8 @@
         "translation": "Saya menjalani pengobatan di rumah sakit."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_chiryou.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_chiryou.png",
+    "meaningEn": "treatment"
   },
   {
     "id": "kotoba_penyakit_gejala_yobou",
@@ -453,7 +471,8 @@
         "translation": "Cuci tangan adalah pencegahan flu."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_yobou.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_yobou.png",
+    "meaningEn": "prevention"
   },
   {
     "id": "kotoba_penyakit_gejala_zutsuu",
@@ -477,7 +496,8 @@
         "translation": "Saya sakit kepala."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_zutsuu.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_zutsuu.png",
+    "meaningEn": "headache"
   },
   {
     "id": "kotoba_penyakit_gejala_fukutsuu",
@@ -501,7 +521,8 @@
         "translation": "Saya bolos sekolah karena sakit perut."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_fukutsuu.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_fukutsuu.png",
+    "meaningEn": "stomachache"
   },
   {
     "id": "kotoba_penyakit_gejala_kossetsu",
@@ -525,7 +546,8 @@
         "translation": "Saya patah tulang karena jatuh."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kossetsu.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kossetsu.png",
+    "meaningEn": "bone fracture"
   },
   {
     "id": "kotoba_penyakit_gejala_shukketsu",
@@ -549,7 +571,8 @@
         "translation": "Luka itu berdarah."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shukketsu.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shukketsu.png",
+    "meaningEn": "bleeding"
   },
   {
     "id": "kotoba_penyakit_gejala_taion",
@@ -573,7 +596,8 @@
         "translation": "Saya mengukur suhu tubuh."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_taion.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_taion.png",
+    "meaningEn": "body temperature"
   },
   {
     "id": "kotoba_penyakit_gejala_hinketsu",
@@ -597,7 +621,8 @@
         "translation": "Saya pingsan karena anemia."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hinketsu.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hinketsu.png",
+    "meaningEn": "anemia"
   },
   {
     "id": "kotoba_penyakit_gejala_chuudoku",
@@ -621,7 +646,8 @@
         "translation": "Saya keracunan makanan."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_chuudoku.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_chuudoku.png",
+    "meaningEn": "poisoning"
   },
   {
     "id": "kotoba_penyakit_gejala_mahi",
@@ -645,7 +671,8 @@
         "translation": "Ada kelumpuhan di tangan dan kaki."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_mahi.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_mahi.png",
+    "meaningEn": "paralysis/numbness"
   },
   {
     "id": "kotoba_penyakit_gejala_enshou",
@@ -669,7 +696,8 @@
         "translation": "Terjadi peradangan pada luka itu."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_enshou.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_enshou.png",
+    "meaningEn": "inflammation"
   },
   {
     "id": "kotoba_penyakit_gejala_benpi",
@@ -693,7 +721,8 @@
         "translation": "Saya mengalami sembelit."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_benpi.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_benpi.png",
+    "meaningEn": "constipation"
   },
   {
     "id": "kotoba_penyakit_gejala_shokuyoku",
@@ -717,7 +746,8 @@
         "translation": "Nafsu makan ada/baik."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shokuyoku.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shokuyoku.png",
+    "meaningEn": "appetite"
   },
   {
     "id": "kotoba_penyakit_gejala_suimin",
@@ -741,7 +771,8 @@
         "translation": "Waktu Tidur itu penting. (jam tidur, pola tidur)"
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_suimin.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_suimin.png",
+    "meaningEn": "sleep"
   },
   {
     "id": "kotoba_penyakit_gejala_mushiba",
@@ -765,7 +796,8 @@
         "translation": "Gigi berlubang sakit."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_mushiba.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_mushiba.png",
+    "meaningEn": "cavity (tooth decay)"
   },
   {
     "id": "kotoba_penyakit_gejala_fushou",
@@ -789,7 +821,8 @@
         "translation": "Terluka karena kecelakaan."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_fushou.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_fushou.png",
+    "meaningEn": "injury"
   },
   {
     "id": "kotoba_penyakit_gejala_hirou",
@@ -813,7 +846,8 @@
         "translation": "Kelelahan menumpuk."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hirou.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hirou.png",
+    "meaningEn": "fatigue"
   },
   {
     "id": "kotoba_penyakit_gejala_guai",
@@ -837,6 +871,7 @@
         "translation": "Kondisinya tidak baik (sakit)."
       }
     ],
-    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_guai.png"
+    "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_guai.png",
+    "meaningEn": "(physical) condition"
   }
 ]

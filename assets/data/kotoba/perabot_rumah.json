@@ -21,7 +21,8 @@
         "translation": "Saya duduk di kursi."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_isu.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_isu.png",
+    "meaningEn": "chair"
   },
   {
     "id": "kotoba_perabot_rumah_tsukue",
@@ -45,7 +46,8 @@
         "translation": "Saya belajar di meja."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tsukue.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tsukue.png",
+    "meaningEn": "desk"
   },
   {
     "id": "kotoba_perabot_rumah_teeburu",
@@ -69,7 +71,8 @@
         "translation": "Ada buku di atas meja."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_teeburu.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_teeburu.png",
+    "meaningEn": "table"
   },
   {
     "id": "kotoba_perabot_rumah_beddo",
@@ -93,7 +96,8 @@
         "translation": "Saya tidur di tempat tidur."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_beddo.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_beddo.png",
+    "meaningEn": "bed"
   },
   {
     "id": "kotoba_perabot_rumah_sofaa",
@@ -117,7 +121,8 @@
         "translation": "Saya duduk di sofa."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_sofaa.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_sofaa.png",
+    "meaningEn": "sofa"
   },
   {
     "id": "kotoba_perabot_rumah_tana",
@@ -141,7 +146,8 @@
         "translation": "Saya meletakkan buku di rak."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tana.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tana.png",
+    "meaningEn": "shelf"
   },
   {
     "id": "kotoba_perabot_rumah_reizouko",
@@ -165,7 +171,8 @@
         "translation": "Ada susu di kulkas."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_reizouko.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_reizouko.png",
+    "meaningEn": "refrigerator"
   },
   {
     "id": "kotoba_perabot_rumah_kagami",
@@ -189,7 +196,8 @@
         "translation": "Saya bercermin."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kagami.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kagami.png",
+    "meaningEn": "mirror"
   },
   {
     "id": "kotoba_perabot_rumah_kaaten",
@@ -213,7 +221,8 @@
         "translation": "Saya menutup tirai."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kaaten.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kaaten.png",
+    "meaningEn": "curtain"
   },
   {
     "id": "kotoba_perabot_rumah_tansu",
@@ -237,7 +246,8 @@
         "translation": "Saya menyimpan baju di lemari."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tansu.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tansu.png",
+    "meaningEn": "chest of drawers/wardrobe"
   },
   {
     "id": "kotoba_perabot_rumah_denki",
@@ -261,7 +271,8 @@
         "translation": "Saya menyalakan lampu."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_denki.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_denki.png",
+    "meaningEn": "light/electricity"
   },
   {
     "id": "kotoba_perabot_rumah_shuunou",
@@ -285,7 +296,8 @@
         "translation": "Rak ini punya banyak ruang penyimpanan."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_shuunou.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_shuunou.png",
+    "meaningEn": "storage"
   },
   {
     "id": "kotoba_perabot_rumah_kagu",
@@ -309,7 +321,8 @@
         "translation": "Saya membeli furnitur baru."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kagu.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kagu.png",
+    "meaningEn": "furniture"
   },
   {
     "id": "kotoba_perabot_rumah_reibou",
@@ -333,7 +346,8 @@
         "translation": "Saya menyalakan AC."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_reibou.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_reibou.png",
+    "meaningEn": "air conditioning (cooling)"
   },
   {
     "id": "kotoba_perabot_rumah_danbou",
@@ -357,7 +371,8 @@
         "translation": "Musim dingin butuh pemanas ruangan."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_danbou.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_danbou.png",
+    "meaningEn": "heating"
   },
   {
     "id": "kotoba_perabot_rumah_kabin",
@@ -381,7 +396,8 @@
         "translation": "Memasukkan bunga ke vas."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kabin.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kabin.png",
+    "meaningEn": "vase"
   },
   {
     "id": "kotoba_perabot_rumah_denkyuu",
@@ -405,7 +421,8 @@
         "translation": "Saya mengganti bohlam lampu."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_denkyuu.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_denkyuu.png",
+    "meaningEn": "light bulb"
   },
   {
     "id": "kotoba_perabot_rumah_hondana",
@@ -429,7 +446,8 @@
         "translation": "Ada buku di rak buku."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_hondana.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_hondana.png",
+    "meaningEn": "bookshelf"
   },
   {
     "id": "kotoba_perabot_rumah_soujiki",
@@ -453,7 +471,8 @@
         "translation": "Saya membersihkan kamar dengan vacuum cleaner."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_soujiki.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_soujiki.png",
+    "meaningEn": "vacuum cleaner"
   },
   {
     "id": "kotoba_perabot_rumah_dentou",
@@ -477,7 +496,8 @@
         "translation": "Menyalakan lampu listrik."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_dentou.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_dentou.png",
+    "meaningEn": "electric light"
   },
   {
     "id": "kotoba_perabot_rumah_futon",
@@ -501,6 +521,7 @@
         "translation": "Menghamparkan futon."
       }
     ],
-    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_futon.png"
+    "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_futon.png",
+    "meaningEn": "Japanese futon (floor bedding)"
   }
 ]

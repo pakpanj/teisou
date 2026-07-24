@@ -21,7 +21,8 @@
         "translation": "Saya minum obat."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kusuri.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kusuri.png",
+    "meaningEn": "medicine"
   },
   {
     "id": "kotoba_obat_obatan_byouin",
@@ -45,7 +46,8 @@
         "translation": "Saya pergi ke rumah sakit."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_byouin.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_byouin.png",
+    "meaningEn": "hospital"
   },
   {
     "id": "kotoba_obat_obatan_isha",
@@ -69,7 +71,8 @@
         "translation": "Saya diperiksa oleh dokter."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_isha.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_isha.png",
+    "meaningEn": "doctor"
   },
   {
     "id": "kotoba_obat_obatan_kangoshi",
@@ -93,7 +96,8 @@
         "translation": "Perawatnya baik hati."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kangoshi.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kangoshi.png",
+    "meaningEn": "nurse"
   },
   {
     "id": "kotoba_obat_obatan_yakkyoku",
@@ -117,7 +121,8 @@
         "translation": "Saya membeli obat di apotek."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_yakkyoku.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_yakkyoku.png",
+    "meaningEn": "pharmacy"
   },
   {
     "id": "kotoba_obat_obatan_chuusha",
@@ -141,7 +146,8 @@
         "translation": "Saya disuntik."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_chuusha.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_chuusha.png",
+    "meaningEn": "injection/shot"
   },
   {
     "id": "kotoba_obat_obatan_bansoukou",
@@ -165,7 +171,8 @@
         "translation": "Saya menempelkan plester."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_bansoukou.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_bansoukou.png",
+    "meaningEn": "bandage (band-aid)"
   },
   {
     "id": "kotoba_obat_obatan_taionkei",
@@ -189,7 +196,8 @@
         "translation": "Saya mengukur demam dengan termometer."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_taionkei.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_taionkei.png",
+    "meaningEn": "thermometer"
   },
   {
     "id": "kotoba_obat_obatan_masuku",
@@ -213,7 +221,8 @@
         "translation": "Saya memakai masker."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masuku.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masuku.png",
+    "meaningEn": "mask"
   },
   {
     "id": "kotoba_obat_obatan_kenshin",
@@ -237,7 +246,8 @@
         "translation": "Saya menjalani pemeriksaan kesehatan setiap tahun."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenshin.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenshin.png",
+    "meaningEn": "health checkup"
   },
   {
     "id": "kotoba_obat_obatan_shohou",
@@ -261,7 +271,8 @@
         "translation": "Dokter meresepkan obat."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shohou.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shohou.png",
+    "meaningEn": "prescription"
   },
   {
     "id": "kotoba_obat_obatan_fukusayou",
@@ -285,7 +296,8 @@
         "translation": "Obat ini punya efek samping."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_fukusayou.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_fukusayou.png",
+    "meaningEn": "side effect"
   },
   {
     "id": "kotoba_obat_obatan_fukuyou",
@@ -309,7 +321,8 @@
         "translation": "Tolong minum obat ini setelah makan."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_fukuyou.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_fukuyou.png",
+    "meaningEn": "taking (medicine, formal)"
   },
   {
     "id": "kotoba_obat_obatan_masui",
@@ -333,7 +346,8 @@
         "translation": "Sebelum operasi, dilakukan pembiusan."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masui.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masui.png",
+    "meaningEn": "anesthesia"
   },
   {
     "id": "kotoba_obat_obatan_shoudoku",
@@ -357,7 +371,8 @@
         "translation": "Saya mendisinfeksi luka."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shoudoku.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shoudoku.png",
+    "meaningEn": "disinfection"
   },
   {
     "id": "kotoba_obat_obatan_houtai",
@@ -381,7 +396,8 @@
         "translation": "Saya membalut luka dengan perban."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_houtai.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_houtai.png",
+    "meaningEn": "bandage"
   },
   {
     "id": "kotoba_obat_obatan_jouzai",
@@ -405,7 +421,8 @@
         "translation": "Saya minum tablet ini tiga kali sehari."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_jouzai.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_jouzai.png",
+    "meaningEn": "tablet/pill"
   },
   {
     "id": "kotoba_obat_obatan_eiyou",
@@ -429,7 +446,8 @@
         "translation": "Mengonsumsi nutrisi dengan baik."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_eiyou.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_eiyou.png",
+    "meaningEn": "nutrition"
   },
   {
     "id": "kotoba_obat_obatan_kango",
@@ -453,7 +471,8 @@
         "translation": "Saya merawat ibu."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kango.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kango.png",
+    "meaningEn": "nursing care"
   },
   {
     "id": "kotoba_obat_obatan_kenkou",
@@ -477,7 +496,8 @@
         "translation": "Kesehatan itu penting."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenkou.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenkou.png",
+    "meaningEn": "health"
   },
   {
     "id": "kotoba_obat_obatan_kensa",
@@ -501,7 +521,8 @@
         "translation": "Memeriksa barang. (kesehatan, mesin, kalitas)"
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kensa.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kensa.png",
+    "meaningEn": "examination/inspection"
   },
   {
     "id": "kotoba_obat_obatan_shujutsu",
@@ -525,7 +546,8 @@
         "translation": "Menjalani operasi."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shujutsu.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shujutsu.png",
+    "meaningEn": "surgery (medical)"
   },
   {
     "id": "kotoba_obat_obatan_kurumaisu",
@@ -549,7 +571,8 @@
         "translation": "Mendorong kursi roda."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kurumaisu.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kurumaisu.png",
+    "meaningEn": "wheelchair"
   },
   {
     "id": "kotoba_obat_obatan_geka",
@@ -573,7 +596,8 @@
         "translation": "Operasi di bagian bedah."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_geka.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_geka.png",
+    "meaningEn": "surgery (medical field)"
   },
   {
     "id": "kotoba_obat_obatan_naika",
@@ -597,7 +621,8 @@
         "translation": "Pergi ke dokter penyakit dalam."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_naika.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_naika.png",
+    "meaningEn": "internal medicine (medical field)"
   },
   {
     "id": "kotoba_obat_obatan_yuketsu",
@@ -621,7 +646,8 @@
         "translation": "Menerima transfusi darah."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_yuketsu.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_yuketsu.png",
+    "meaningEn": "blood transfusion"
   },
   {
     "id": "kotoba_obat_obatan_nyuuin",
@@ -645,6 +671,7 @@
         "translation": "Dirawat di rumah sakit."
       }
     ],
-    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_nyuuin.png"
+    "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_nyuuin.png",
+    "meaningEn": "hospitalization"
   }
 ]

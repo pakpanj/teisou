@@ -21,7 +21,8 @@
         "translation": "Saya membersihkan kamar."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_heya.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_heya.png",
+    "meaningEn": "room"
   },
   {
     "id": "kotoba_ruangan_rumah_genkan",
@@ -45,7 +46,8 @@
         "translation": "Saya melepas sepatu di genkan."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_genkan.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_genkan.png",
+    "meaningEn": "entryway (shoe-removal area)"
   },
   {
     "id": "kotoba_ruangan_rumah_daidokoro",
@@ -69,7 +71,8 @@
         "translation": "Saya memasak di dapur."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_daidokoro.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_daidokoro.png",
+    "meaningEn": "kitchen"
   },
   {
     "id": "kotoba_ruangan_rumah_ima",
@@ -93,7 +96,8 @@
         "translation": "Saya menonton TV di ruang keluarga."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_ima.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_ima.png",
+    "meaningEn": "living room"
   },
   {
     "id": "kotoba_ruangan_rumah_shinshitsu",
@@ -117,7 +121,8 @@
         "translation": "Saya tidur di kamar tidur."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shinshitsu.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shinshitsu.png",
+    "meaningEn": "bedroom"
   },
   {
     "id": "kotoba_ruangan_rumah_toire",
@@ -141,7 +146,8 @@
         "translation": "Di mana toilet?"
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_toire.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_toire.png",
+    "meaningEn": "toilet"
   },
   {
     "id": "kotoba_ruangan_rumah_ofuro",
@@ -165,7 +171,8 @@
         "translation": "Saya mandi."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_ofuro.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_ofuro.png",
+    "meaningEn": "bath(tub)"
   },
   {
     "id": "kotoba_ruangan_rumah_yokushitsu",
@@ -189,7 +196,8 @@
         "translation": "Saya membersihkan kamar mandi."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_yokushitsu.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_yokushitsu.png",
+    "meaningEn": "bathroom (formal)"
   },
   {
     "id": "kotoba_ruangan_rumah_beranda",
@@ -213,7 +221,8 @@
         "translation": "Saya menjemur pakaian di balkon."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_beranda.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_beranda.png",
+    "meaningEn": "balcony/veranda"
   },
   {
     "id": "kotoba_ruangan_rumah_kaidan",
@@ -237,7 +246,8 @@
         "translation": "Saya menaiki tangga."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_kaidan.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_kaidan.png",
+    "meaningEn": "stairs"
   },
   {
     "id": "kotoba_ruangan_rumah_niwa",
@@ -261,7 +271,8 @@
         "translation": "Ada bunga di halaman."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_niwa.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_niwa.png",
+    "meaningEn": "yard/garden"
   },
   {
     "id": "kotoba_ruangan_rumah_senmenjo",
@@ -285,7 +296,8 @@
         "translation": "Saya mencuci muka di wastafel."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_senmenjo.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_senmenjo.png",
+    "meaningEn": "washroom/washstand"
   },
   {
     "id": "kotoba_ruangan_rumah_shako",
@@ -309,7 +321,8 @@
         "translation": "Saya memasukkan mobil ke garasi."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shako.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shako.png",
+    "meaningEn": "garage"
   },
   {
     "id": "kotoba_ruangan_rumah_kadan",
@@ -333,7 +346,8 @@
         "translation": "Menanam bunga di taman bunga. (kotak tanaman bunga)"
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_kadan.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_kadan.png",
+    "meaningEn": "flower bed"
   },
   {
     "id": "kotoba_ruangan_rumah_tenjou",
@@ -357,7 +371,8 @@
         "translation": "Ruangan ini langit-langitnya tinggi ya."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_tenjou.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_tenjou.png",
+    "meaningEn": "ceiling"
   },
   {
     "id": "kotoba_ruangan_rumah_yane",
@@ -381,7 +396,8 @@
         "translation": "Saya memperbaiki atap."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_yane.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_yane.png",
+    "meaningEn": "roof"
   },
   {
     "id": "kotoba_ruangan_rumah_rouka",
@@ -405,7 +421,8 @@
         "translation": "Jangan lari di koridor/lorong."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_rouka.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_rouka.png",
+    "meaningEn": "hallway/corridor"
   },
   {
     "id": "kotoba_ruangan_rumah_shosai",
@@ -429,7 +446,8 @@
         "translation": "Membaca buku di ruang kerja."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shosai.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shosai.png",
+    "meaningEn": "study/home office"
   },
   {
     "id": "kotoba_ruangan_rumah_geshuku",
@@ -453,7 +471,8 @@
         "translation": "Tinggal di tempat kos."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_geshuku.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_geshuku.png",
+    "meaningEn": "boarding house/lodging"
   },
   {
     "id": "kotoba_ruangan_rumah_suidou",
@@ -477,6 +496,7 @@
         "translation": "Menggunakan air ledeng."
       }
     ],
-    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_suidou.png"
+    "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_suidou.png",
+    "meaningEn": "water supply/plumbing"
   }
 ]
