@@ -2341,25 +2341,58 @@ timing) on a real device before treating this as fully verified.
   nothing in this app needs system-widget locale awareness (no date
   pickers etc.).
   **Coverage — this is a partial rollout, not the whole app**: switching
-  to English right now changes the Home tab (menu cards, tagline,
-  bottom nav), `ModulesSection` (module titles/subtitles/badges,
-  locked/coming-soon reasons), the Profile screen (header, streak, exam
-  history, settings menu, all confirm dialogs), and the language picker
-  itself. It does **not** yet cover the ~50 other module screens
-  (Kanji/Kotoba/Bunpou/Partikel/Kaiwa's Home/Level/Category/Detail/Quiz
-  screens, Search, Cam Detector, Leaderboard, exam screens, etc.) —
-  those stay in Indonesian regardless of the toggle until a later pass
-  extends `AppStrings` to them, following the exact same
-  `ref.watch(appStringsProvider)` pattern already established here.
+  to English changes the Home tab (menu cards, tagline, bottom nav),
+  `ModulesSection` (module titles/subtitles/badges, locked/coming-soon
+  reasons), the Profile screen (header, streak, exam history, settings
+  menu, all confirm dialogs), and the language picker itself.
+  Verified with a real functional test (not just compilation):
+  `test/widget_test.dart` overrides `languageProvider` to English and
+  asserts `HomeScreen` actually renders English strings
+  ("Learn Hiragana" etc.) instead of the Indonesian ones.
+  **Extended to Kanji + Kotoba (2026-07-25)**, per explicit user
+  follow-up after noticing the first pass was "just the surface" — all
+  8 screens (`kanji_home_screen.dart`, `kanji_level_screen.dart`,
+  `kanji_word_detail_screen.dart`, `kanji_quiz_screen.dart`,
+  `kotoba_home_screen.dart`, `kotoba_category_screen.dart`,
+  `kotoba_word_detail_screen.dart`, `kotoba_quiz_screen.dart`) now read
+  `appStringsProvider` too. `KanjiQuizScreen`/`KotobaQuizScreen`
+  converted `StatefulWidget` → `ConsumerStatefulWidget`, and
+  `KanjiLevelScreen`'s `_QuizModeSheet` converted `StatelessWidget` →
+  `ConsumerWidget`, purely to reach the provider — no other behavior
+  changed. `AppStrings` gained ~35 getters: a "shared" section reused by
+  both modules' near-identical progress-bar/filter-chip/quiz-result
+  patterns (`progressLearned`, `filterAll`/`filterNotLearned`/
+  `filterLearned`, `questionOf`, `scoreOf`, `resultExcellent`/
+  `resultGood`, etc.), plus small per-module sections for the handful of
+  genuinely different strings (Kanji's stroke-count/radical pills vs
+  Kotoba's plain word tiles). Verified with
+  `test/module_localization_test.dart` — asserts `KotobaHomeScreen`'s
+  app bar text and `KanjiLevelScreen`'s filter chips actually render in
+  English, not just that the code compiles.
+  **Gotcha hit while writing that test**: loading real N5 kanji data
+  (`kanji_data.json`, 2425 entries) inside `testWidgets` never settled
+  via plain `pump()`/`pumpAndSettle()` calls — the `FutureProvider`
+  stayed stuck showing its loading spinner no matter how many frames
+  were pumped, even though the exact same repository call resolved
+  near-instantly via a bare `ProviderContainer` in a non-widget `test()`.
+  Root cause not fully pinned down (suspected: `testWidgets`' fake-async
+  zone doesn't let a large asset's bundle-message round-trip complete on
+  its own), but wrapping a `tester.runAsync(() =>
+  Future.delayed(...))` before the follow-up `pump()`s reliably
+  unblocks it — needed only for this large a dataset; the existing
+  `flashcard_screen_test.dart` never hit this with kana's much smaller
+  JSON. Worth trying the same `runAsync` fix first if a future widget
+  test against Bunpou/Kaiwa's similarly large datasets also hangs.
+  **Still not covered**: Bunpou/Partikel/Kaiwa's equivalent Home/Level/
+  Category/Detail/Quiz screens, and everything outside the 5 learning
+  modules (Search, Leaderboard, Ujian, Saved Words, About, Notification,
+  Paywall, Cam Detector, etc.) — next increments, per the user's own
+  prioritization when asked.
   **Learning content is intentionally out of scope, permanently, not
   just for now**: kana/kanji/kotoba/bunpou/particle/kaiwa datasets stay
   Indonesian-authored either way — translating ~4000 pieces of
   educational content is a wholly separate effort from switching UI
   chrome, not something "add English" was ever meant to include.
-  Verified with a real functional test (not just compilation):
-  `test/widget_test.dart` overrides `languageProvider` to English and
-  asserts `HomeScreen` actually renders English strings
-  ("Learn Hiragana" etc.) instead of the Indonesian ones.
 - Avatar art PNGs haven't been supplied yet, but as of the 2026-07-20
   profile bug-hunt session the code is fully ready for them:
   `AvatarPreset` (`lib/core/constants/avatars.dart`) gained an
