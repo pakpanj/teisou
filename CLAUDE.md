@@ -1223,15 +1223,36 @@ same compound appears under several kanji (一人 sits under both 一 and 人)
 and each slot is patched independently. The applier prints per-level
 coverage, so progress across sessions is visible without extra tooling.
 
-**Done: N5 321, N4 399, N3 945 = 1,665 of 7,274.** N2 (1,101) and N1
-(4,509) remain — 5,609 glosses, best continued one level per session,
-same rhythm as the Dokkai/Kaiwa rollouts.
+**Update: done, all five levels.** N5 321, N4 399, N3 945, N2 1,101, and
+now N1 4,509 = **7,275/7,275 word-example slots have `meaningEn`**
+(7,274 distinct keys, see the quirk below). N2 landed in its own session;
+N1 — 4x any other level — was split into 6 batches of ~750
+(kanji-boundary aligned) across several sessions so no single
+interruption could lose more than one batch, each verified independently
+(exact key-count match against the source dump, Python syntax check, the
+applier's per-level coverage printout, JSON validity) before committing.
 
 **Data quirk found while building the key scheme**: 也 (`kanji_ya_n1`)
-lists the word 也 twice in its own `wordExamples`, so the dataset holds
-7,275 examples but only 7,274 distinct keys. Harmless here (both rows are
-the same word, so one gloss fills both), but worth fixing in
-`generate_kanji_seed.py` if that entry is ever revisited.
+lists the word 也 twice in its own `wordExamples` with two different
+classical readings/meanings (nari: assertive particle "is"; ya:
+sentence-final particle), so the dataset holds 7,275 examples but only
+7,274 distinct `"{id}|{word}"` keys — the format can't tell the two
+apart, so only one gloss ("classical sentence-final particle", the ya
+reading) is stored and applies to both. **Correction to a claim this
+file made when this quirk was first found**: this used to say the
+duplicate was "harmless" because "one gloss fills both" slots — that was
+wrong. `apply_kanji_word_meaning_en.py`'s `slots` dict was keyed by
+`"{id}|{word}"` and silently *overwrote* on the second occurrence, so
+only whichever array slot got iterated last (also_n1's ya-reading slot,
+by luck) ever received a `meaningEn`; the nari-reading slot had none from
+batch 2 onward, through every re-run, until this was caught and fixed
+while closing out N1 batch 6 — the applier now collects every matching
+example per key instead of overwriting, so both slots get patched
+consistently. Giving the nari reading its own accurate gloss would need
+a reading-aware key (e.g. `"{id}|{word}|{reading}"`); worth doing in
+`generate_kanji_seed.py` if that entry is ever revisited, but the
+same-gloss-for-both state is at least no longer silently wrong for one
+of the two slots.
 
 `flutter analyze` clean, `flutter test --concurrency=1` 33/33 (a new case
 asserts N5-N3 coverage and that 雪's first example reads "snow" in
@@ -1241,12 +1262,13 @@ disconnected from USB (`adb devices` empty) right after the build, so the
 screenshot check that covered batches 1-2 didn't happen for this one.
 
 **What is still Indonesian in English mode** (the honest remainder, all
-of it content authoring, none of it blocked on code): kanji word-example
-meanings for N2/N1 (5,609) and all kanji sentence translations
-(4,850); Kotoba sentence translations (1,264); every Bunpou prose field
-(3,839); the dictionary's 908 example translations; Particle
-titles/explanations/cloze (236); all of Kaiwa (34,019); Dokkai titles +
-passage translations (1,000). Also **exam-history rows store
+of it content authoring, none of it blocked on code — **kanji
+word-example meanings are now fully done, see the update above**; the
+gap that remains is all kanji *sentence* translations): all kanji
+sentence translations (4,850); Kotoba sentence translations (1,264);
+every Bunpou prose field (3,839); the dictionary's 908 example
+translations; Particle titles/explanations/cloze (236); all of Kaiwa
+(34,019); Dokkai titles + passage translations (1,000). Also **exam-history rows store
 their title as a plain string at submit time** ("Ujian Katakana"), so
 old rows stay Indonesian forever — a schema question (store a mode key,
 localize at render) rather than a translation batch, and untouched here.
