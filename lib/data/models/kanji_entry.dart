@@ -87,9 +87,12 @@ class KanjiEntry {
           word: wordExamples[i].word,
           reading: wordExamples[i].reading,
           meaning: wordExamples[i].meaning,
+          meaningEn: wordExamples[i].meaningEn,
           sentence: i < sentenceExamples.length ? sentenceExamples[i].japanese : '',
           sentenceTranslation:
               i < sentenceExamples.length ? sentenceExamples[i].translation : '',
+          sentenceTranslationEn:
+              i < sentenceExamples.length ? sentenceExamples[i].translationEn : null,
         ),
     ];
   }

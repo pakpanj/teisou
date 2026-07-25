@@ -193,7 +193,7 @@ class _KanjiWordDetailScreenState extends ConsumerState<KanjiWordDetailScreen> {
                           (example) => _WordExampleCard(
                             word: example.word,
                             reading: example.reading,
-                            meaning: example.meaning,
+                            meaning: example.localizedMeaning(s.language),
                             onSpeak: () => ref
                                 .read(ttsServiceProvider)
                                 .speak(example.word),

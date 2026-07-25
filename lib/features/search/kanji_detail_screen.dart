@@ -116,9 +116,10 @@ class KanjiDetailScreen extends ConsumerWidget {
                 (example) => _ExampleCard(
                   word: example.word,
                   reading: example.reading,
-                  meaning: example.meaning,
+                  meaning: example.localizedMeaning(s.language),
                   sentence: example.sentence,
-                  sentenceTranslation: example.sentenceTranslation,
+                  sentenceTranslation:
+                      example.localizedSentenceTranslation(s.language),
                   onSpeak: () => ref.read(ttsServiceProvider).speak(example.word),
                 ),
               ),

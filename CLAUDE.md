@@ -1211,13 +1211,42 @@ oppression/suppression…). `flutter analyze` clean, `flutter test
 Dictionary — is bilingual.** What remains is sentence-level and prose
 content (below).
 
+### Batch 3 (same day): kanji word examples, N5 + N4
+
+`KanjiWordExample.meaningEn` (plus `KanjiExample.meaningEn` /
+`sentenceTranslationEn`, so the search-flow detail screen gets the same
+treatment through `KanjiEntry.examples`) with the usual
+Indonesian-fallback getter. Pipeline is a third copy of the proven pair:
+`scripts/kanji_word_meaning_en.py` + `apply_kanji_word_meaning_en.py`,
+keyed **`"{kanji_id}|{word}"`** — the kanji id is in the key because the
+same compound appears under several kanji (一人 sits under both 一 and 人)
+and each slot is patched independently. The applier prints per-level
+coverage, so progress across sessions is visible without extra tooling.
+
+**Done: N5 321/321 and N4 399/399 (720 of 7,274).** N3 (945), N2 (1,101)
+and N1 (4,509) remain — 6,555 glosses, best continued one level per
+session, same rhythm as the Dokkai/Kaiwa rollouts.
+
+**Data quirk found while building the key scheme**: 也 (`kanji_ya_n1`)
+lists the word 也 twice in its own `wordExamples`, so the dataset holds
+7,275 examples but only 7,274 distinct keys. Harmless here (both rows are
+the same word, so one gloss fills both), but worth fixing in
+`generate_kanji_seed.py` if that entry is ever revisited.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 33/33 (a new case
+asserts N5/N4 coverage and that 雪's first example reads "snow" in
+English, "salju" in Indonesian), `flutter build apk --debug` clean.
+**No on-device pass for this batch specifically** — the Moto G52J
+disconnected from USB (`adb devices` empty) right after the build, so the
+screenshot check that covered batches 1-2 didn't happen for this one.
+
 **What is still Indonesian in English mode** (the honest remainder, all
 of it content authoring, none of it blocked on code): kanji word-example
-meanings (7,271) and sentence translations (4,850); Kotoba sentence
-translations (1,264); every Bunpou prose field (3,839); the dictionary's
-908 example translations; Particle titles/explanations/cloze (236); all
-of Kaiwa (34,019); Dokkai titles + passage translations (1,000). Also
-**exam-history rows store
+meanings for N3/N2/N1 (6,555) and all kanji sentence translations
+(4,850); Kotoba sentence translations (1,264); every Bunpou prose field
+(3,839); the dictionary's 908 example translations; Particle
+titles/explanations/cloze (236); all of Kaiwa (34,019); Dokkai titles +
+passage translations (1,000). Also **exam-history rows store
 their title as a plain string at submit time** ("Ujian Katakana"), so
 old rows stay Indonesian forever — a schema question (store a mode key,
 localize at render) rather than a translation batch, and untouched here.
