@@ -38,7 +38,8 @@ def main() -> None:
     slots = {}
     for entry in entries:
         for example in entry.get("wordExamples", []):
-            slots[f"{entry['id']}|{example['word']}"] = example
+            key = f"{entry['id']}|{example['word']}"
+            slots.setdefault(key, []).append(example)
 
     unknown = [key for key in WORD_MEANING_EN if key not in slots]
     for key in unknown:
@@ -46,18 +47,16 @@ def main() -> None:
 
     patched = 0
     for key, english in WORD_MEANING_EN.items():
-        example = slots.get(key)
-        if example is None:
-            continue
-        example["meaningEn"] = english
-        patched += 1
+        for example in slots.get(key, []):
+            example["meaningEn"] = english
+            patched += 1
 
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(entries, f, ensure_ascii=False, indent=2)
         f.write("\n")
 
-    total = len(slots)
-    have = sum(1 for e in slots.values() if e.get("meaningEn"))
+    total = sum(len(examples) for examples in slots.values())
+    have = sum(1 for examples in slots.values() for e in examples if e.get("meaningEn"))
     print(f"[ok] kanji word examples: patched {patched}, {have}/{total} sudah ada meaningEn")
 
     by_level = {}
