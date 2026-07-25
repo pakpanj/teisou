@@ -1223,9 +1223,9 @@ same compound appears under several kanji (一人 sits under both 一 and 人)
 and each slot is patched independently. The applier prints per-level
 coverage, so progress across sessions is visible without extra tooling.
 
-**Done: N5 321/321 and N4 399/399 (720 of 7,274).** N3 (945), N2 (1,101)
-and N1 (4,509) remain — 6,555 glosses, best continued one level per
-session, same rhythm as the Dokkai/Kaiwa rollouts.
+**Done: N5 321, N4 399, N3 945 = 1,665 of 7,274.** N2 (1,101) and N1
+(4,509) remain — 5,609 glosses, best continued one level per session,
+same rhythm as the Dokkai/Kaiwa rollouts.
 
 **Data quirk found while building the key scheme**: 也 (`kanji_ya_n1`)
 lists the word 也 twice in its own `wordExamples`, so the dataset holds
@@ -1234,7 +1234,7 @@ the same word, so one gloss fills both), but worth fixing in
 `generate_kanji_seed.py` if that entry is ever revisited.
 
 `flutter analyze` clean, `flutter test --concurrency=1` 33/33 (a new case
-asserts N5/N4 coverage and that 雪's first example reads "snow" in
+asserts N5-N3 coverage and that 雪's first example reads "snow" in
 English, "salju" in Indonesian), `flutter build apk --debug` clean.
 **No on-device pass for this batch specifically** — the Moto G52J
 disconnected from USB (`adb devices` empty) right after the build, so the
@@ -1242,7 +1242,7 @@ screenshot check that covered batches 1-2 didn't happen for this one.
 
 **What is still Indonesian in English mode** (the honest remainder, all
 of it content authoring, none of it blocked on code): kanji word-example
-meanings for N3/N2/N1 (6,555) and all kanji sentence translations
+meanings for N2/N1 (5,609) and all kanji sentence translations
 (4,850); Kotoba sentence translations (1,264); every Bunpou prose field
 (3,839); the dictionary's 908 example translations; Particle
 titles/explanations/cloze (236); all of Kaiwa (34,019); Dokkai titles +

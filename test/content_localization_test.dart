@@ -112,10 +112,10 @@ void main() {
     expect(byIndonesian.map((w) => w.id), contains('dict_00001'));
   });
 
-  test('N5 and N4 kanji word examples have English glosses', () async {
+  test('N5-N3 kanji word examples have English glosses', () async {
     final entries = await KanjiRepository().getAll();
-    final done = entries.where(
-        (e) => e.jlptLevel == JlptLevel.n5 || e.jlptLevel == JlptLevel.n4);
+    const covered = {JlptLevel.n5, JlptLevel.n4, JlptLevel.n3};
+    final done = entries.where((e) => covered.contains(e.jlptLevel));
     final missing = <String>[];
     for (final entry in done) {
       for (final example in entry.wordExamples) {
@@ -125,7 +125,7 @@ void main() {
       }
     }
     expect(missing.take(10).toList(), isEmpty,
-        reason: '${missing.length} N5/N4 word examples have no meaningEn — '
+        reason: '${missing.length} N5-N3 word examples have no meaningEn — '
             'add them to scripts/kanji_word_meaning_en.py and run the applier');
 
     final yuki = entries.firstWhere((e) => e.character == '雪');
