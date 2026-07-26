@@ -88757,21 +88757,24 @@
             "romaji": "Hai, tanoshimimasu.",
             "translation": "Ya, akan saya nikmati.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I'll enjoy it."
           },
           {
             "japanese": "いいえ、楽しみません。",
             "romaji": "Iie, tanoshimimasen.",
             "translation": "Tidak, tidak akan saya nikmati.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I won't enjoy it."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -88807,21 +88810,24 @@
             "romaji": "Watashi no kazoku desu.",
             "translation": "Ini keluarga saya.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "This is my family."
           },
           {
             "japanese": "私の学校です。",
             "romaji": "Watashi no gakkou desu.",
             "translation": "Ini sekolah saya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "This is my school."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -88847,21 +88853,24 @@
             "romaji": "Hai, sou desu.",
             "translation": "Ya, benar.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, that's right."
           },
           {
             "japanese": "いいえ、先生です。",
             "romaji": "Iie, sensei desu.",
             "translation": "Bukan, ini guru.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, this is my teacher."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -88897,21 +88906,24 @@
             "romaji": "Futari imasu.",
             "translation": "Ada dua orang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "There are two."
           },
           {
             "japanese": "学生です。",
             "romaji": "Gakusei desu.",
             "translation": "Saya pelajar.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'm a student."
           },
           {
             "japanese": "二十歳です。",
             "romaji": "Hatachi desu.",
             "translation": "Saya berusia 20 tahun.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'm 20 years old."
           }
         ]
       },
@@ -88937,21 +88949,24 @@
             "romaji": "Ani to imouto desu.",
             "translation": "Kakak laki-laki dan adik perempuan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "An older brother and a younger sister."
           },
           {
             "japanese": "猫です。",
             "romaji": "Neko desu.",
             "translation": "Kucing.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "A cat."
           },
           {
             "japanese": "いません。",
             "romaji": "Imasen.",
             "translation": "Tidak ada.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "None."
           }
         ]
       }
@@ -88987,21 +89002,24 @@
             "romaji": "Isha desu.",
             "translation": "Dokter.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "A doctor."
           },
           {
             "japanese": "病院です。",
             "romaji": "Byouin desu.",
             "translation": "Rumah sakit.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "A hospital."
           },
           {
             "japanese": "元気です。",
             "romaji": "Genki desu.",
             "translation": "Sehat/baik-baik saja.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Healthy/doing fine."
           }
         ]
       },
@@ -89027,21 +89045,24 @@
             "romaji": "Sensei desu.",
             "translation": "Guru.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "A teacher."
           },
           {
             "japanese": "学生です。",
             "romaji": "Gakusei desu.",
             "translation": "Pelajar.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "A student."
           },
           {
             "japanese": "猫が好きです。",
             "romaji": "Neko ga suki desu.",
             "translation": "Suka kucing.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Likes cats."
           }
         ]
       }
@@ -89077,21 +89098,24 @@
             "romaji": "Yoku issho ni shokuji wo shimasu.",
             "translation": "Sering makan bareng.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "We often eat together."
           },
           {
             "japanese": "家族に会いません。",
             "romaji": "Kazoku ni aimasen.",
             "translation": "Saya tidak bertemu keluarga.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't see my family."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -89117,21 +89141,24 @@
             "romaji": "Hai, yoku dekakemasu.",
             "translation": "Ya, sering jalan-jalan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, we often go out together."
           },
           {
             "japanese": "いいえ、一人です。",
             "romaji": "Iie, hitori desu.",
             "translation": "Tidak, sendirian.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, alone."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -89157,21 +89184,24 @@
             "romaji": "Arigatou gozaimasu.",
             "translation": "Terima kasih.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -89197,21 +89227,24 @@
             "romaji": "Itsudemo asobi ni kite kudasai.",
             "translation": "Kapan saja main ke rumah ya.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Come visit anytime."
           },
           {
             "japanese": "来ないでください。",
             "romaji": "Konaide kudasai.",
             "translation": "Jangan datang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Don't come."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -89247,21 +89280,24 @@
             "romaji": "Iie, Indonesia ni sunde imasu.",
             "translation": "Tidak, tinggal di Indonesia.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, they live in Indonesia."
           },
           {
             "japanese": "はい、隣に住んでいます。",
             "romaji": "Hai, tonari ni sunde imasu.",
             "translation": "Ya, tinggal di sebelah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, they live next door."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -89287,21 +89323,24 @@
             "romaji": "Hai, sukoshi sabishii desu.",
             "translation": "Ya, agak kesepian.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, a bit lonely."
           },
           {
             "japanese": "いいえ、楽しいです。",
             "romaji": "Iie, tanoshii desu.",
             "translation": "Tidak, menyenangkan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, it's fun."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -89327,21 +89366,24 @@
             "romaji": "Hai, yoku denwa shimasu.",
             "translation": "Ya, sering telepon.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, we call often."
           },
           {
             "japanese": "いいえ、電話しません。",
             "romaji": "Iie, denwa shimasen.",
             "translation": "Tidak, tidak pernah telepon.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, we never call."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -89367,21 +89409,24 @@
             "romaji": "Hai, anshin shimasu.",
             "translation": "Ya, jadi tenang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, that's reassuring."
           },
           {
             "japanese": "いいえ、心配です。",
             "romaji": "Iie, shinpai desu.",
             "translation": "Tidak, masih khawatir.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, still worried."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -89405,21 +89450,24 @@
             "romaji": "Kyou wa imouto no tanjoubi desu.",
             "translation": "Hari ini ulang tahun adik perempuan saya.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Today is my younger sister's birthday."
           },
           {
             "japanese": "今日は妹の誕生日ではありません。",
             "romaji": "Kyou wa imouto no tanjoubi de wa arimasen.",
             "translation": "Hari ini bukan ulang tahun adik saya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Today isn't my sister's birthday."
           },
           {
             "japanese": "妹が好きじゃないです。",
             "romaji": "Imouto ga suki janai desu.",
             "translation": "Saya tidak suka adik perempuan saya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't like my younger sister."
           }
         ]
       },
@@ -89445,21 +89493,24 @@
             "romaji": "Keeki wo kaimasu.",
             "translation": "Saya beli kue.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I bought a cake."
           },
           {
             "japanese": "ケーキは嫌いです。",
             "romaji": "Keeki wa kirai desu.",
             "translation": "Saya tidak suka kue.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't like cake."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -89485,21 +89536,24 @@
             "romaji": "Arigatou gozaimasu.",
             "translation": "Terima kasih.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -89525,21 +89579,24 @@
             "romaji": "Hai, tsutaemasu.",
             "translation": "Ya, akan saya sampaikan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I'll pass it along."
           },
           {
             "japanese": "いいえ、伝えません。",
             "romaji": "Iie, tsutaemasen.",
             "translation": "Tidak, tidak akan saya sampaikan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I won't pass it along."
           },
           {
             "japanese": "いただきます。",
             "romaji": "Itadakimasu.",
             "translation": "Selamat makan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Enjoy your meal."
           }
         ]
       }
@@ -89575,21 +89632,24 @@
             "romaji": "Hai, inu wo katte imasu.",
             "translation": "Ya, saya punya anjing.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I have a dog."
           },
           {
             "japanese": "いいえ、何も飼っていません。",
             "romaji": "Iie, nanimo katte imasen.",
             "translation": "Tidak, tidak punya peliharaan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't have a pet."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -89615,21 +89675,24 @@
             "romaji": "Koko desu.",
             "translation": "Namanya Koko.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Its name is Koko."
           },
           {
             "japanese": "五歳です。",
             "romaji": "Gosai desu.",
             "translation": "5 tahun.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "5 years."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -89655,21 +89718,24 @@
             "romaji": "Sansai desu.",
             "translation": "3 tahun.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "3 years."
           },
           {
             "japanese": "ココです。",
             "romaji": "Koko desu.",
             "translation": "Koko.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Koko."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -89695,21 +89761,24 @@
             "romaji": "Hai, douzo.",
             "translation": "Ya, ini silakan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, here you go."
           },
           {
             "japanese": "写真はありません。",
             "romaji": "Shashin wa arimasen.",
             "translation": "Tidak ada fotonya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "There are no photos."
           },
           {
             "japanese": "いいえ、見ないでください。",
             "romaji": "Iie, minaide kudasai.",
             "translation": "Tidak, jangan dilihat.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, don't look."
           }
         ]
       }
@@ -89733,21 +89802,24 @@
             "romaji": "Konshuumatsu, sofubo no ie ni ikimasu.",
             "translation": "Akhir pekan ini, saya akan ke rumah kakek nenek.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "This weekend, I'm going to my grandparents' house."
           },
           {
             "japanese": "祖父母の家に行きません。",
             "romaji": "Sofubo no ie ni ikimasen.",
             "translation": "Saya tidak akan ke rumah kakek nenek.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'm not going to my grandparents' house."
           },
           {
             "japanese": "祖父母が嫌いです。",
             "romaji": "Sofubo ga kirai desu.",
             "translation": "Saya tidak suka kakek nenek.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't like my grandparents."
           }
         ]
       },
@@ -89773,21 +89845,24 @@
             "romaji": "Hai, hantoshiburi desu.",
             "translation": "Ya, sudah setengah tahun.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, it's been half a year."
           },
           {
             "japanese": "いいえ、昨日会いました。",
             "romaji": "Iie, kinou aimashita.",
             "translation": "Tidak, kemarin baru ketemu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I just saw them yesterday."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -89813,21 +89888,24 @@
             "romaji": "Hai, totemo tanoshimi desu.",
             "translation": "Ya, sangat tidak sabar.",
             "isCorrect": true,
-            "expressionTag": "senang"
+            "expressionTag": "senang",
+            "translationEn": "Yes, really can't wait."
           },
           {
             "japanese": "いいえ、楽しみじゃないです。",
             "romaji": "Iie, tanoshimi janai desu.",
             "translation": "Tidak, tidak menantikannya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not looking forward to it."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -89853,21 +89931,24 @@
             "romaji": "Hai, tsutaemasu.",
             "translation": "Ya, akan saya sampaikan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I'll pass it along."
           },
           {
             "japanese": "いいえ、伝えません。",
             "romaji": "Iie, tsutaemasen.",
             "translation": "Tidak, tidak akan saya sampaikan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I won't pass it along."
           },
           {
             "japanese": "いただきます。",
             "romaji": "Itadakimasu.",
             "translation": "Selamat makan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Enjoy your meal."
           }
         ]
       }
@@ -89903,21 +89984,24 @@
             "romaji": "Ookikute furui ie desu.",
             "translation": "Rumah yang besar dan tua.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "A big, old house."
           },
           {
             "japanese": "家はありません。",
             "romaji": "Ie wa arimasen.",
             "translation": "Saya tidak punya rumah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't have a house."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -89943,21 +90027,24 @@
             "romaji": "Hai, ookii niwa ga arimasu.",
             "translation": "Ya, ada halaman yang besar.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, there's a big yard."
           },
           {
             "japanese": "いいえ、部屋です。",
             "romaji": "Iie, heya desu.",
             "translation": "Tidak, kamar.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, a room."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -89983,21 +90070,24 @@
             "romaji": "Hai, misemasu ne.",
             "translation": "Ya, akan saya perlihatkan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I'll show you."
           },
           {
             "japanese": "写真はありません。",
             "romaji": "Shashin wa arimasen.",
             "translation": "Tidak ada fotonya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "There are no photos."
           },
           {
             "japanese": "いいえ、見せません。",
             "romaji": "Iie, misemasen.",
             "translation": "Tidak, tidak saya perlihatkan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I won't show you."
           }
         ]
       },
@@ -90023,21 +90113,24 @@
             "romaji": "Arigatou gozaimasu.",
             "translation": "Terima kasih.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -90073,21 +90166,24 @@
             "romaji": "Totemo genki na kodomo deshita.",
             "translation": "Anak yang sangat aktif.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "A very active kid."
           },
           {
             "japanese": "静かな子供でした。",
             "romaji": "Shizuka na kodomo deshita.",
             "translation": "Anak yang pendiam.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "A quiet kid."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -90113,21 +90209,24 @@
             "romaji": "Sakkaa ga suki deshita.",
             "translation": "Suka main sepak bola.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Liked playing soccer."
           },
           {
             "japanese": "遊びは嫌いでした。",
             "romaji": "Asobi wa kirai deshita.",
             "translation": "Saya tidak suka main.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I didn't like playing."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -90153,21 +90252,24 @@
             "romaji": "Hai, natsukashii desu.",
             "translation": "Ya, jadi kangen masa itu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, it makes me miss those days."
           },
           {
             "japanese": "いいえ、嫌な思い出です。",
             "romaji": "Iie, iyana omoide desu.",
             "translation": "Tidak, kenangan buruk.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, bad memories."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -90193,21 +90295,24 @@
             "romaji": "Hai, itsudemo!",
             "translation": "Ya, kapan saja!",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, anytime!"
           },
           {
             "japanese": "いいえ、もう話しません。",
             "romaji": "Iie, mou hanashimasen.",
             "translation": "Tidak, saya tidak akan cerita lagi.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I won't tell any more stories."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -90243,21 +90348,24 @@
             "romaji": "Un, tetsudau yo.",
             "translation": "Iya, aku bantu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, I'll help."
           },
           {
             "japanese": "いいえ、手伝わないよ。",
             "romaji": "Iie, tetsudawanai yo.",
             "translation": "Tidak, aku tidak mau bantu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't want to help."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -90283,21 +90391,24 @@
             "romaji": "Un, ii yo.",
             "translation": "Iya, boleh.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, sure."
           },
           {
             "japanese": "いいえ、嫌だよ。",
             "romaji": "Iie, iya da yo.",
             "translation": "Tidak, aku tidak mau.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't want to."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -90323,21 +90434,24 @@
             "romaji": "Dou itashimashite.",
             "translation": "Sama-sama.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "You're welcome."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -90363,21 +90477,24 @@
             "romaji": "Un, tanoshimi!",
             "translation": "Iya, tidak sabar!",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, can't wait!"
           },
           {
             "japanese": "お菓子は嫌い。",
             "romaji": "Okashi wa kirai.",
             "translation": "Aku tidak suka camilan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't like snacks."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -90401,21 +90518,24 @@
             "romaji": "Konban, kazoku minna de bangohan wo tabemasen ka.",
             "translation": "Malam ini, makan malam bareng sekeluarga yuk?",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Let's have dinner together as a family tonight?"
           },
           {
             "japanese": "晩ご飯は要りません。",
             "romaji": "Bangohan wa irimasen.",
             "translation": "Saya tidak butuh makan malam.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't need dinner."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -90441,21 +90561,24 @@
             "romaji": "Kare wa dou?",
             "translation": "Gimana kalau kari?",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "How about curry?"
           },
           {
             "japanese": "料理はしないよ。",
             "romaji": "Ryouri wa shinai yo.",
             "translation": "Aku tidak akan masak.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I won't cook."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -90481,21 +90604,24 @@
             "romaji": "Un, tanoshimi!",
             "translation": "Iya, tidak sabar!",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, can't wait!"
           },
           {
             "japanese": "いいえ、楽しくない。",
             "romaji": "Iie, tanoshikunai.",
             "translation": "Tidak, tidak menyenangkan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, it's not fun."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -90521,21 +90647,24 @@
             "romaji": "Un, tetsudau yo.",
             "translation": "Iya, aku bantu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, I'll help."
           },
           {
             "japanese": "いいえ、手伝わないよ。",
             "romaji": "Iie, tetsudawanai yo.",
             "translation": "Tidak, aku tidak mau bantu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't want to help."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -90571,21 +90700,24 @@
             "romaji": "Ichiban ue desu.",
             "translation": "Saya yang paling tua.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'm the oldest."
           },
           {
             "japanese": "一番下です。",
             "romaji": "Ichiban shita desu.",
             "translation": "Saya yang paling bungsu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'm the youngest."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -90611,21 +90743,24 @@
             "romaji": "Hai, sukoshi sekinin ga arimasu.",
             "translation": "Ya, ada sedikit tanggung jawab.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, there's some responsibility."
           },
           {
             "japanese": "いいえ、全然楽です。",
             "romaji": "Iie, zenzen raku desu.",
             "translation": "Tidak, sama sekali santai.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, totally relaxed."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -90651,21 +90786,24 @@
             "romaji": "Hai, yoku mendou wo mimasu.",
             "translation": "Ya, sering jaga mereka.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I often look after them."
           },
           {
             "japanese": "いいえ、面倒を見ません。",
             "romaji": "Iie, mendou wo mimasen.",
             "translation": "Tidak, saya tidak menjaga mereka.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't look after them."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -90691,21 +90829,24 @@
             "romaji": "Arigatou gozaimasu.",
             "translation": "Terima kasih.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -90741,21 +90882,24 @@
             "romaji": "Hai, yoku iwaremasu.",
             "translation": "Ya, sering dibilang begitu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, people often say that."
           },
           {
             "japanese": "いいえ、全然似ていません。",
             "romaji": "Iie, zenzen nite imasen.",
             "translation": "Tidak, sama sekali tidak mirip.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not alike at all."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -90781,21 +90925,24 @@
             "romaji": "Hai, sosokkashii tokoro ga nite imasu.",
             "translation": "Ya, mirip di bagian cerobohnya.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, alike in being clumsy."
           },
           {
             "japanese": "いいえ、全く違います。",
             "romaji": "Iie, mattaku chigaimasu.",
             "translation": "Tidak, sama sekali beda.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, completely different."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -90821,21 +90968,24 @@
             "romaji": "Me ga okaasan ni nite imasu.",
             "translation": "Matanya mirip ibu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "The eyes look like mom's."
           },
           {
             "japanese": "全然似ていません。",
             "romaji": "Zenzen nite imasen.",
             "translation": "Sama sekali tidak mirip.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Not alike at all."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -90861,21 +91011,24 @@
             "romaji": "Hai, sou desu ne.",
             "translation": "Ya, begitulah.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, that's right."
           },
           {
             "japanese": "いいえ、つまらないです。",
             "romaji": "Iie, tsumaranai desu.",
             "translation": "Tidak, membosankan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, boring."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -90899,21 +91052,24 @@
             "romaji": "Otouto no benkyou wo tetsudatte imasu.",
             "translation": "Saya membantu adik belajar.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I help my younger sibling study."
           },
           {
             "japanese": "弟の勉強は手伝いません。",
             "romaji": "Otouto no benkyou wa tetsudaimasen.",
             "translation": "Saya tidak membantu adik belajar.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't help my younger sibling study."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -90939,21 +91095,24 @@
             "romaji": "Sansuu wo oshiete imasu.",
             "translation": "Saya mengajari matematika.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I teach math."
           },
           {
             "japanese": "何も教えていません。",
             "romaji": "Nanimo oshiete imasen.",
             "translation": "Saya tidak mengajari apa-apa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't teach anything."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -90979,21 +91138,24 @@
             "romaji": "Hai, totemo yorokonde imasu.",
             "translation": "Ya, sangat senang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, really happy."
           },
           {
             "japanese": "いいえ、嫌がっています。",
             "romaji": "Iie, iyagatte imasu.",
             "translation": "Tidak, dia tidak suka.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, they don't like it."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -91019,21 +91181,24 @@
             "romaji": "Arigatou gozaimasu.",
             "translation": "Terima kasih.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -91069,21 +91234,24 @@
             "romaji": "Un, genki da yo, obaachan.",
             "translation": "Iya, sehat, Nek.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I'm doing fine, Grandma."
           },
           {
             "japanese": "いいえ、忙しいです。",
             "romaji": "Iie, isogashii desu.",
             "translation": "Tidak, saya sibuk.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I'm busy."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -91109,21 +91277,24 @@
             "romaji": "Un, mieru?",
             "translation": "Iya, kelihatan?",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, can you see it?"
           },
           {
             "japanese": "いいえ、見せません。",
             "romaji": "Iie, misemasen.",
             "translation": "Tidak, saya tidak akan perlihatkan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I won't show it."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -91149,21 +91320,24 @@
             "romaji": "Un, sou da yo.",
             "translation": "Iya, benar.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, that's right."
           },
           {
             "japanese": "いいえ、変わっていません。",
             "romaji": "Iie, kawatte imasen.",
             "translation": "Tidak, tidak berubah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, unchanged."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -91189,21 +91363,24 @@
             "romaji": "Un, kanarazu kaeru yo.",
             "translation": "Iya, pasti pulang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I'll definitely come home."
           },
           {
             "japanese": "いいえ、帰らないよ。",
             "romaji": "Iie, kaeranai yo.",
             "translation": "Tidak, aku tidak akan pulang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I won't come home."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -91239,21 +91416,24 @@
             "romaji": "Hai, kuji made ni kaeru koto desu ne.",
             "translation": "Ya, pulang sebelum jam 9 ya.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, be home before 9."
           },
           {
             "japanese": "何時でも帰れることですね。",
             "romaji": "Nanji demo kaereru koto desu ne.",
             "translation": "Boleh pulang jam berapa saja ya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "You can come home any time."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -91279,21 +91459,24 @@
             "romaji": "Hai, mamorimasu.",
             "translation": "Ya, akan saya patuhi.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I'll follow it."
           },
           {
             "japanese": "いいえ、守りません。",
             "romaji": "Iie, mamorimasen.",
             "translation": "Tidak, saya tidak akan patuhi.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I won't follow it."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -91319,21 +91502,24 @@
             "romaji": "Wakarimashita, ganbarimasu.",
             "translation": "Baik, saya akan berusaha.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Okay, I'll try."
           },
           {
             "japanese": "片付けたくないです。",
             "romaji": "Katazuketakunai desu.",
             "translation": "Saya tidak mau merapikan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't want to tidy up."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -91359,21 +91545,24 @@
             "romaji": "Un, makasete.",
             "translation": "Iya, serahkan padaku.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, leave it to me."
           },
           {
             "japanese": "いいえ、無理だよ。",
             "romaji": "Iie, muri da yo.",
             "translation": "Tidak, tidak bisa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I can't."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -91409,21 +91598,24 @@
             "romaji": "Ii desu ne, sansei desu.",
             "translation": "Bagus, setuju.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Great, agreed."
           },
           {
             "japanese": "いいえ、反対です。",
             "romaji": "Iie, hantai desu.",
             "translation": "Tidak, tidak setuju.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, disagreed."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -91449,21 +91641,24 @@
             "romaji": "Obaachan no ie wa dou desu ka.",
             "translation": "Bagaimana kalau di rumah Nenek?",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "How about at Grandma's house?"
           },
           {
             "japanese": "学校はどうですか。",
             "romaji": "Gakkou wa dou desu ka.",
             "translation": "Bagaimana kalau di sekolah?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "How about at school?"
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -91489,21 +91684,24 @@
             "romaji": "Nijuu-nin kurai da to omoimasu.",
             "translation": "Kira-kira 20 orang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "About 20 people."
           },
           {
             "japanese": "20時くらいだと思います。",
             "romaji": "Nijuu-ji kurai da to omoimasu.",
             "translation": "Kira-kira jam 20 (8 malam).",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "About 8 PM."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -91529,21 +91727,24 @@
             "romaji": "Hai, totemo tanoshimi desu.",
             "translation": "Ya, sangat tidak sabar.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, really can't wait."
           },
           {
             "japanese": "いいえ、楽しみじゃないです。",
             "romaji": "Iie, tanoshimi janai desu.",
             "translation": "Tidak, tidak menantikannya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not looking forward to it."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -91579,21 +91780,24 @@
             "romaji": "Maitoshi issho ni ryokou shimasu.",
             "translation": "Setiap tahun liburan bareng.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Every year we vacation together."
           },
           {
             "japanese": "伝統はありません。",
             "romaji": "Dentou wa arimasen.",
             "translation": "Tidak ada tradisi.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "There's no tradition."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -91619,21 +91823,24 @@
             "romaji": "Watashi ga kodomo no koro kara desu.",
             "translation": "Sejak saya masih kecil.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Since I was little."
           },
           {
             "japanese": "去年からです。",
             "romaji": "Kyonen kara desu.",
             "translation": "Sejak tahun lalu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Since last year."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -91659,21 +91866,24 @@
             "romaji": "Arigatou gozaimasu.",
             "translation": "Terima kasih.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -91699,21 +91909,24 @@
             "romaji": "Hai, raigetsu ikimasu.",
             "translation": "Ya, bulan depan pergi.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, going next month."
           },
           {
             "japanese": "いいえ、今年は行きません。",
             "romaji": "Iie, kotoshi wa ikimasen.",
             "translation": "Tidak, tahun ini tidak pergi.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not going this year."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -91749,21 +91962,24 @@
             "romaji": "Hai, takusan imasu.",
             "translation": "Ya, banyak.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, a lot."
           },
           {
             "japanese": "いいえ、一人もいません。",
             "romaji": "Iie, hitori mo imasen.",
             "translation": "Tidak, tidak ada satu pun.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not a single one."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -91789,21 +92005,24 @@
             "romaji": "Hai, totemo naka ga ii desu.",
             "translation": "Ya, sangat akur.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, we get along really well."
           },
           {
             "japanese": "いいえ、仲が悪いです。",
             "romaji": "Iie, naka ga warui desu.",
             "translation": "Tidak, tidak akur.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, we don't get along."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -91829,21 +92048,24 @@
             "romaji": "Hai, oshougatsu ni yoku aimasu.",
             "translation": "Ya, sering ketemu saat Tahun Baru.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, we often meet at New Year's."
           },
           {
             "japanese": "いいえ、全然会いません。",
             "romaji": "Iie, zenzen aimasen.",
             "translation": "Tidak, sama sekali tidak ketemu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, we never meet at all."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -91869,21 +92091,24 @@
             "romaji": "Hai, itsumo tanoshii desu.",
             "translation": "Ya, selalu seru.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, always fun."
           },
           {
             "japanese": "いいえ、つまらないです。",
             "romaji": "Iie, tsumaranai desu.",
             "translation": "Tidak, membosankan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, boring."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -91919,21 +92144,24 @@
             "romaji": "Hai, senshuu umaremashita.",
             "translation": "Ya, minggu lalu lahir.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, born last week."
           },
           {
             "japanese": "いいえ、まだです。",
             "romaji": "Iie, mada desu.",
             "translation": "Tidak, belum.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not yet."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -91959,21 +92187,24 @@
             "romaji": "Hai, Yui to iu namae desu.",
             "translation": "Ya, namanya Yui.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, her name is Yui."
           },
           {
             "japanese": "いいえ、まだ決まっていません。",
             "romaji": "Iie, mada kimatte imasen.",
             "translation": "Belum ditentukan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Not decided yet."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -91999,21 +92230,24 @@
             "romaji": "Hai, totemo kawaii desu.",
             "translation": "Ya, sangat lucu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, really cute."
           },
           {
             "japanese": "いいえ、可愛くないです。",
             "romaji": "Iie, kawaikunai desu.",
             "translation": "Tidak, tidak lucu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not cute."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -92039,21 +92273,24 @@
             "romaji": "Arigatou gozaimasu, ureshii desu.",
             "translation": "Terima kasih, senang sekali.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you, I'm really happy."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -92089,21 +92326,24 @@
             "romaji": "Hai, raigetsu kekkon shimasu.",
             "translation": "Ya, bulan depan menikah.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, getting married next month."
           },
           {
             "japanese": "いいえ、結婚しません。",
             "romaji": "Iie, kekkon shimasen.",
             "translation": "Tidak, tidak akan menikah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not getting married."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -92129,21 +92369,24 @@
             "romaji": "Hai, mochiron shusseki shimasu.",
             "translation": "Ya, tentu saja hadir.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I'll definitely attend."
           },
           {
             "japanese": "いいえ、出席しません。",
             "romaji": "Iie, shusseki shimasen.",
             "translation": "Tidak, saya tidak akan hadir.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I won't attend."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -92169,21 +92412,24 @@
             "romaji": "Atarashii doresu wo kimasu.",
             "translation": "Saya pakai gaun baru.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'll wear a new dress."
           },
           {
             "japanese": "普段着で行きます。",
             "romaji": "Fudangi de ikimasu.",
             "translation": "Saya pakai baju sehari-hari.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'll wear everyday clothes."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -92209,21 +92455,24 @@
             "romaji": "Hai, tanoshimi desu.",
             "translation": "Ya, tidak sabar.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, can't wait."
           },
           {
             "japanese": "いいえ、興味ないです。",
             "romaji": "Iie, kyoumi nai desu.",
             "translation": "Tidak, tidak tertarik.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not interested."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -92259,21 +92508,24 @@
             "romaji": "Chichi wa hoka no machi de hataraite imasu.",
             "translation": "Ayah saya bekerja di kota lain.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "My father works in another city."
           },
           {
             "japanese": "父は家にいます。",
             "romaji": "Chichi wa ie ni imasu.",
             "translation": "Ayah saya ada di rumah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "My father is at home."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -92299,21 +92551,24 @@
             "romaji": "Tsuki ni ikkai kaette kimasu.",
             "translation": "Pulang sebulan sekali.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "He comes home once a month."
           },
           {
             "japanese": "毎日帰ってきます。",
             "romaji": "Mainichi kaette kimasu.",
             "translation": "Pulang setiap hari.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "He comes home every day."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -92339,21 +92594,24 @@
             "romaji": "Hai, sukoshi sabishii desu.",
             "translation": "Ya, agak kesepian.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, a bit lonely."
           },
           {
             "japanese": "いいえ、全然寂しくないです。",
             "romaji": "Iie, zenzen sabishikunai desu.",
             "translation": "Tidak, sama sekali tidak kesepian.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not lonely at all."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -92379,21 +92637,24 @@
             "romaji": "Hai, maiban denwa shimasu.",
             "translation": "Ya, telepon setiap malam.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, we call every night."
           },
           {
             "japanese": "いいえ、全然話しません。",
             "romaji": "Iie, zenzen hanashimasen.",
             "translation": "Tidak, sama sekali tidak bicara.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, we never talk at all."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -92429,21 +92690,24 @@
             "romaji": "Kare ga ichiban suki desu.",
             "translation": "Kari yang paling saya suka.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I like curry the most."
           },
           {
             "japanese": "好きな料理はありません。",
             "romaji": "Suki na ryouri wa arimasen.",
             "translation": "Tidak ada masakan favorit.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "There's no favorite dish."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -92469,21 +92733,24 @@
             "romaji": "Iie, haha dake ga shitte imasu.",
             "translation": "Tidak, hanya ibu yang tahu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, only Mom knows."
           },
           {
             "japanese": "はい、私も作れます。",
             "romaji": "Hai, watashi mo tsukuremasu.",
             "translation": "Ya, saya juga bisa buat.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I can also make it."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -92509,21 +92776,24 @@
             "romaji": "Ii desu ne, tanonde mimasu.",
             "translation": "Bagus, akan saya coba minta.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Great, I'll try asking for it."
           },
           {
             "japanese": "興味ないです。",
             "romaji": "Kyoumi nai desu.",
             "translation": "Tidak tertarik.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Not interested."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -92549,21 +92819,24 @@
             "romaji": "Arigatou gozaimasu, ganbarimasu.",
             "translation": "Terima kasih, akan saya usahakan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you, I'll try."
           },
           {
             "japanese": "いいえ、無理です。",
             "romaji": "Iie, muri desu.",
             "translation": "Tidak, tidak mungkin.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, it's impossible."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -92599,21 +92872,24 @@
             "romaji": "Hai, yoku tsuri ni ikimashita.",
             "translation": "Ya, sering pergi mancing.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, we often went fishing."
           },
           {
             "japanese": "いいえ、全然遊びませんでした。",
             "romaji": "Iie, zenzen asobimasen deshita.",
             "translation": "Tidak, sama sekali tidak main.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, we never played at all."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -92639,21 +92915,24 @@
             "romaji": "Mukashi no sensou no hanashi wo shite kuremashita.",
             "translation": "Beliau cerita tentang perang zaman dulu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "He told stories about the old wartime."
           },
           {
             "japanese": "何も話してくれませんでした。",
             "romaji": "Nanimo hanashite kuremasen deshita.",
             "translation": "Tidak cerita apa-apa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "He didn't tell any stories."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -92679,21 +92958,24 @@
             "romaji": "Iie, mou nakunarimashita.",
             "translation": "Tidak, beliau sudah meninggal.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, he has passed away."
           },
           {
             "japanese": "はい、毎日会っています。",
             "romaji": "Hai, mainichi atte imasu.",
             "translation": "Ya, setiap hari ketemu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, we meet every day."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -92719,21 +93001,24 @@
             "romaji": "Hai, wasureraremasen.",
             "translation": "Ya, tak terlupakan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, unforgettable."
           },
           {
             "japanese": "いいえ、もう忘れました。",
             "romaji": "Iie, mou wasuremashita.",
             "translation": "Tidak, sudah saya lupakan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I've already forgotten it."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -92769,21 +93054,24 @@
             "romaji": "Hai, raigetsu hikkoshimasu.",
             "translation": "Ya, bulan depan pindah.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, moving next month."
           },
           {
             "japanese": "いいえ、引っ越しません。",
             "romaji": "Iie, hikkoshimasen.",
             "translation": "Tidak, tidak akan pindah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not moving."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -92809,21 +93097,24 @@
             "romaji": "Tonari no machi ni hikkoshimasu.",
             "translation": "Pindah ke kota sebelah.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Moving to the next town."
           },
           {
             "japanese": "学校に引っ越します。",
             "romaji": "Gakkou ni hikkoshimasu.",
             "translation": "Pindah ke sekolah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Moving to school."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -92849,21 +93140,24 @@
             "romaji": "Hai, ima yori hiroi desu.",
             "translation": "Ya, lebih luas dari sekarang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, bigger than now."
           },
           {
             "japanese": "いいえ、今より狭いです。",
             "romaji": "Iie, ima yori semai desu.",
             "translation": "Tidak, lebih sempit dari sekarang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, smaller than now."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -92889,21 +93183,24 @@
             "romaji": "Hai, sukoshi kinchou mo shimasu.",
             "translation": "Ya, agak gugup juga.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, a bit nervous too."
           },
           {
             "japanese": "いいえ、興味ないです。",
             "romaji": "Iie, kyoumi nai desu.",
             "translation": "Tidak, tidak tertarik.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not interested."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -92939,21 +93236,24 @@
             "romaji": "Haha ni hana wo agemasu.",
             "translation": "Saya kasih bunga ke ibu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I gave flowers to Mom."
           },
           {
             "japanese": "母に何もあげません。",
             "romaji": "Haha ni nanimo agemasen.",
             "translation": "Saya tidak kasih apa-apa ke ibu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I didn't give Mom anything."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -92979,21 +93279,24 @@
             "romaji": "Hai, issho ni tsukurimasu.",
             "translation": "Ya, saya buat bareng.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I made it together with them."
           },
           {
             "japanese": "いいえ、作りません。",
             "romaji": "Iie, tsukurimasen.",
             "translation": "Tidak, saya tidak akan buat.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I won't make it."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -93019,21 +93322,24 @@
             "romaji": "Hai, kitto yorokobimasu.",
             "translation": "Ya, pasti senang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, she'll definitely be happy."
           },
           {
             "japanese": "いいえ、喜びません。",
             "romaji": "Iie, yorokobimasen.",
             "translation": "Tidak, tidak akan senang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, she won't be happy."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -93059,21 +93365,24 @@
             "romaji": "Arigatou gozaimasu.",
             "translation": "Terima kasih.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -93109,21 +93418,24 @@
             "romaji": "Nekutai wo agemasu.",
             "translation": "Saya kasih dasi.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I gave him a tie."
           },
           {
             "japanese": "何もあげません。",
             "romaji": "Nanimo agemasen.",
             "translation": "Saya tidak kasih apa-apa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I didn't give anything."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -93149,21 +93461,24 @@
             "romaji": "Ao ga suki desu.",
             "translation": "Suka biru.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "He likes blue."
           },
           {
             "japanese": "色は好きじゃないです。",
             "romaji": "Iro wa suki janai desu.",
             "translation": "Tidak suka warna.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Doesn't like colors."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -93189,21 +93504,24 @@
             "romaji": "Hai, kazoku de gaishoku shimasu.",
             "translation": "Ya, makan di luar bareng keluarga.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, eating out together as a family."
           },
           {
             "japanese": "いいえ、家で食べます。",
             "romaji": "Iie, ie de tabemasu.",
             "translation": "Tidak, makan di rumah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, eating at home."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -93229,21 +93547,24 @@
             "romaji": "Sou da to ii desu.",
             "translation": "Semoga begitu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I hope so."
           },
           {
             "japanese": "喜ばないと思います。",
             "romaji": "Yorokobanai to omoimasu.",
             "translation": "Kurasa tidak akan senang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't think he'll be happy."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -93279,21 +93600,24 @@
             "romaji": "Hai, kazoku no furui shashin desu.",
             "translation": "Ya, foto lama keluarga.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, old family photos."
           },
           {
             "japanese": "いいえ、新しい写真です。",
             "romaji": "Iie, atarashii shashin desu.",
             "translation": "Tidak, foto baru.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, new photos."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -93319,21 +93643,24 @@
             "romaji": "Watashi no sofubo desu.",
             "translation": "Ini kakek nenek saya.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "This is my grandparents."
           },
           {
             "japanese": "私の先生です。",
             "romaji": "Watashi no sensei desu.",
             "translation": "Ini guru saya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "This is my teacher."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -93359,21 +93686,24 @@
             "romaji": "Hai, hontou ni natsukashii desu.",
             "translation": "Ya, benar-benar bikin kangen.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, it really makes me nostalgic."
           },
           {
             "japanese": "いいえ、興味ないです。",
             "romaji": "Iie, kyoumi nai desu.",
             "translation": "Tidak, tidak tertarik.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not interested."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -93399,21 +93729,24 @@
             "romaji": "Dou itashimashite.",
             "translation": "Sama-sama.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "You're welcome."
           },
           {
             "japanese": "もう見せません。",
             "romaji": "Mou misemasen.",
             "translation": "Sudah tidak akan saya tunjukkan lagi.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I won't show it again."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -93449,21 +93782,24 @@
             "romaji": "Hai, itsumo utainagara ryouri shimasu.",
             "translation": "Ya, selalu masak sambil bernyanyi.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, he always cooks while singing."
           },
           {
             "japanese": "いいえ、変な癖はありません。",
             "romaji": "Iie, hen na kuse wa arimasen.",
             "translation": "Tidak, tidak ada kebiasaan aneh.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, no strange habits."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -93489,21 +93825,24 @@
             "romaji": "Hai, kazoku minna waraimasu.",
             "translation": "Ya, semua keluarga tertawa.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, the whole family laughs."
           },
           {
             "japanese": "いいえ、誰も笑いません。",
             "romaji": "Iie, dare mo waraimasen.",
             "translation": "Tidak, tidak ada yang tertawa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, no one laughs."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -93529,21 +93868,24 @@
             "romaji": "Itsumo onaji kutsushita wo sagashimasu.",
             "translation": "Selalu cari kaus kaki yang sama.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Always looking for the same socks."
           },
           {
             "japanese": "特にありません。",
             "romaji": "Toku ni arimasen.",
             "translation": "Tidak ada khususnya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Nothing in particular."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -93569,21 +93911,24 @@
             "romaji": "Hai, daisuki desu.",
             "translation": "Ya, saya sangat sayang beliau.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I love him very much."
           },
           {
             "japanese": "いいえ、嫌いです。",
             "romaji": "Iie, kirai desu.",
             "translation": "Tidak, saya tidak suka.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't like it."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -93619,21 +93964,24 @@
             "romaji": "Hai, sosen wo shirabete imasu.",
             "translation": "Ya, sedang mencari tahu nenek moyang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I'm researching my ancestors."
           },
           {
             "japanese": "いいえ、興味ないです。",
             "romaji": "Iie, kyoumi nai desu.",
             "translation": "Tidak, tidak tertarik.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, not interested."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -93659,21 +94007,24 @@
             "romaji": "Hai, sousofu no hanashi wo shirimashita.",
             "translation": "Ya, saya jadi tahu cerita kakek buyut.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I learned about my great-grandfather's story."
           },
           {
             "japanese": "いいえ、何も見つかりませんでした。",
             "romaji": "Iie, nanimo mitsukarimasen deshita.",
             "translation": "Tidak, tidak menemukan apa-apa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I didn't find anything."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -93699,21 +94050,24 @@
             "romaji": "Hai, hontou ni omoshiroi desu.",
             "translation": "Ya, benar-benar menarik.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, really interesting."
           },
           {
             "japanese": "いいえ、つまらないです。",
             "romaji": "Iie, tsumaranai desu.",
             "translation": "Tidak, membosankan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, boring."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -93739,21 +94093,24 @@
             "romaji": "Hai, ganbarimasu.",
             "translation": "Ya, akan saya usahakan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I'll try."
           },
           {
             "japanese": "いいえ、もうやめます。",
             "romaji": "Iie, mou yamemasu.",
             "translation": "Tidak, saya akan berhenti.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I'll stop."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -93789,21 +94146,24 @@
             "romaji": "Un, ii yo.",
             "translation": "Iya, boleh.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, sure."
           },
           {
             "japanese": "いいえ、行きたくないよ。",
             "romaji": "Iie, ikitakunai yo.",
             "translation": "Tidak, aku tidak mau ikut.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't want to come."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -93829,21 +94189,24 @@
             "romaji": "Un, makasete.",
             "translation": "Iya, serahkan padaku.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, leave it to me."
           },
           {
             "japanese": "重いのは無理だよ。",
             "romaji": "Omoi no wa muri da yo.",
             "translation": "Yang berat tidak bisa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I can't carry the heavy ones."
           },
           {
             "japanese": "分からないよ。",
             "romaji": "Wakaranai yo.",
             "translation": "Aku tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -93869,21 +94232,24 @@
             "romaji": "Dou itashimashite.",
             "translation": "Sama-sama.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "You're welcome."
           },
           {
             "japanese": "もう手伝わないよ。",
             "romaji": "Mou tetsudawanai yo.",
             "translation": "Sudah tidak mau bantu lagi.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't want to help anymore."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -93909,21 +94275,24 @@
             "romaji": "Ureshii yo, arigatou.",
             "translation": "Senang deh, terima kasih.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "That makes me happy, thank you."
           },
           {
             "japanese": "いいえ、頼りにならないよ。",
             "romaji": "Iie, tayori ni naranai yo.",
             "translation": "Tidak, tidak bisa diandalkan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, can't be relied on."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -93959,21 +94328,24 @@
             "romaji": "Un, makasete.",
             "translation": "Iya, serahkan padaku.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, leave it to me."
           },
           {
             "japanese": "嫌だよ、無理。",
             "romaji": "Iya da yo, muri.",
             "translation": "Tidak mau, tidak bisa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't want to, I can't."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -93999,21 +94371,24 @@
             "romaji": "Okashi wo ageru ne.",
             "translation": "Aku kasih camilan ya.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'll give them a snack."
           },
           {
             "japanese": "我慢してね。",
             "romaji": "Gaman shite ne.",
             "translation": "Tahan dulu ya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Hold on for now."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -94039,21 +94414,24 @@
             "romaji": "Un, nani wo shite asobu?",
             "translation": "Iya, mau main apa?",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, what do you want to play?"
           },
           {
             "japanese": "遊びたくないよ。",
             "romaji": "Asobitakunai yo.",
             "translation": "Aku tidak mau main.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't want to play."
           },
           {
             "japanese": "分からないよ。",
             "romaji": "Wakaranai yo.",
             "translation": "Aku tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -94079,21 +94457,24 @@
             "romaji": "Un, tanoshikatta yo.",
             "translation": "Iya, seru.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, fun."
           },
           {
             "japanese": "大変だったよ。",
             "romaji": "Taihen datta yo.",
             "translation": "Berat tadi.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "It was tough earlier."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -94129,21 +94510,24 @@
             "romaji": "Oya to sukoshi iken ga chigaimashita.",
             "translation": "Saya sedikit beda pendapat dengan orang tua.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I had a bit of a disagreement with my parents."
           },
           {
             "japanese": "何もありませんでした。",
             "romaji": "Nanimo arimasen deshita.",
             "translation": "Tidak ada apa-apa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "It's nothing."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -94169,21 +94553,24 @@
             "romaji": "Shourai no shigoto ni tsuite desu.",
             "translation": "Tentang pekerjaan di masa depan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "About my future career."
           },
           {
             "japanese": "天気についてです。",
             "romaji": "Tenki ni tsuite desu.",
             "translation": "Tentang cuaca.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "About the weather."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -94209,21 +94596,24 @@
             "romaji": "Hai, yukkuri hanashimashita.",
             "translation": "Ya, kami bicara pelan-pelan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, we talked it through calmly."
           },
           {
             "japanese": "いいえ、まだ解決していません。",
             "romaji": "Iie, mada kaiketsu shite imasen.",
             "translation": "Belum, belum diselesaikan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Not yet, not resolved yet."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -94249,21 +94639,24 @@
             "romaji": "Hai, hontou ni yokatta desu.",
             "translation": "Ya, benar-benar syukurlah.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, what a relief."
           },
           {
             "japanese": "いいえ、まだ大変です。",
             "romaji": "Iie, mada taihen desu.",
             "translation": "Tidak, masih berat.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, still difficult."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -94299,21 +94692,24 @@
             "romaji": "Sapuraizu paatii wo shiyou.",
             "translation": "Ayo bikin pesta kejutan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Let's throw a surprise party."
           },
           {
             "japanese": "何もしなくていいよ。",
             "romaji": "Nanimo shinakute ii yo.",
             "translation": "Tidak usah bikin apa-apa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No need to do anything."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -94339,21 +94735,24 @@
             "romaji": "Un, chuumon shiyou.",
             "translation": "Iya, ayo pesan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, let's order one."
           },
           {
             "japanese": "ケーキは要らないよ。",
             "romaji": "Keeki wa iranai yo.",
             "translation": "Kue tidak perlu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "A cake isn't necessary."
           },
           {
             "japanese": "分からないよ。",
             "romaji": "Wakaranai yo.",
             "translation": "Aku tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -94379,21 +94778,24 @@
             "romaji": "Ii aidea da ne.",
             "translation": "Ide yang bagus ya.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "That's a good idea."
           },
           {
             "japanese": "要らないと思うよ。",
             "romaji": "Iranai to omou yo.",
             "translation": "Kurasa tidak perlu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't think it's necessary."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -94419,21 +94821,24 @@
             "romaji": "Omedetou gozaimasu!",
             "translation": "Selamat!",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Congratulations!"
           },
           {
             "japanese": "お疲れ様でした。",
             "romaji": "Otsukaresama deshita.",
             "translation": "Terima kasih atas kerja kerasnya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you for all your hard work."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       }
@@ -94469,21 +94874,24 @@
             "romaji": "Hai, koinu wo kaimashita.",
             "translation": "Ya, kami pelihara anak anjing.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, we're keeping a puppy."
           },
           {
             "japanese": "いいえ、何も飼っていません。",
             "romaji": "Iie, nanimo katte imasen.",
             "translation": "Tidak, kami tidak pelihara apa-apa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, we don't keep any pets."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -94509,21 +94917,24 @@
             "romaji": "Hai, Pochi to iu namae desu.",
             "translation": "Ya, namanya Pochi.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, its name is Pochi."
           },
           {
             "japanese": "いいえ、まだです。",
             "romaji": "Iie, mada desu.",
             "translation": "Belum.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Not yet."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -94549,21 +94960,24 @@
             "romaji": "Hai, minna oyorokobi desu.",
             "translation": "Ya, semua sangat senang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, everyone is very happy."
           },
           {
             "japanese": "いいえ、誰も喜んでいません。",
             "romaji": "Iie, dare mo yorokonde imasen.",
             "translation": "Tidak, tidak ada yang senang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, no one is happy."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -94589,21 +95003,24 @@
             "romaji": "Hai, douzo.",
             "translation": "Ya, silakan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, here you go."
           },
           {
             "japanese": "写真はありません。",
             "romaji": "Shashin wa arimasen.",
             "translation": "Tidak ada fotonya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "There are no photos."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -94639,21 +95056,24 @@
             "romaji": "Okinawa e no ryokou desu.",
             "translation": "Liburan ke Okinawa.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "The trip to Okinawa."
           },
           {
             "japanese": "楽しい旅行はありませんでした。",
             "romaji": "Tanoshii ryokou wa arimasen deshita.",
             "translation": "Tidak ada liburan yang menyenangkan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "There's no fun vacation."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -94679,21 +95099,24 @@
             "romaji": "Umi de oyoida koto desu.",
             "translation": "Berenang di laut.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Swimming in the ocean."
           },
           {
             "japanese": "何もしませんでした。",
             "romaji": "Nanimo shimasen deshita.",
             "translation": "Tidak melakukan apa-apa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Not doing anything."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -94719,21 +95142,24 @@
             "romaji": "Hai, zettai mata ikitai desu.",
             "translation": "Ya, pasti mau ke sana lagi.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I definitely want to go there again."
           },
           {
             "japanese": "いいえ、もう行きたくないです。",
             "romaji": "Iie, mou ikitakunai desu.",
             "translation": "Tidak, sudah tidak mau ke sana lagi.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't want to go there again."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -94759,21 +95185,24 @@
             "romaji": "Hai, kazoku no takaramono desu.",
             "translation": "Ya, harta keluarga.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, a family treasure."
           },
           {
             "japanese": "いいえ、大したことないです。",
             "romaji": "Iie, taishita koto nai desu.",
             "translation": "Tidak, biasa saja.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, just ordinary."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -94809,21 +95238,24 @@
             "romaji": "Un, ii yo.",
             "translation": "Iya, boleh.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, sure."
           },
           {
             "japanese": "いいえ、話したくないよ。",
             "romaji": "Iie, hanashitakunai yo.",
             "translation": "Tidak, aku tidak mau bicara.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't want to talk."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -94849,21 +95281,24 @@
             "romaji": "Keizaigaku wo benkyou shitai yo.",
             "translation": "Aku mau belajar ekonomi.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I want to study economics."
           },
           {
             "japanese": "何も勉強したくないよ。",
             "romaji": "Nanimo benkyou shitakunai yo.",
             "translation": "Aku tidak mau belajar apa-apa.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't want to study anything."
           },
           {
             "japanese": "分からないよ。",
             "romaji": "Wakaranai yo.",
             "translation": "Aku tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -94889,21 +95324,24 @@
             "romaji": "Arigatou, ganbaru yo.",
             "translation": "Terima kasih, akan aku usahakan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you, I'll try my best."
           },
           {
             "japanese": "要らないよ。",
             "romaji": "Iranai yo.",
             "translation": "Tidak perlu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Not necessary."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -94929,21 +95367,24 @@
             "romaji": "Un, ganbatte iku yo.",
             "translation": "Iya, akan aku usahakan terus.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, I'll keep trying."
           },
           {
             "japanese": "いいえ、諦めるよ。",
             "romaji": "Iie, akirameru yo.",
             "translation": "Tidak, aku akan menyerah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I'll give up."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -94979,21 +95420,24 @@
             "romaji": "Un, mochiron tetsudau yo.",
             "translation": "Iya, tentu saja aku bantu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, of course I'll help."
           },
           {
             "japanese": "いいえ、手伝いたくないよ。",
             "romaji": "Iie, tetsudaitakunai yo.",
             "translation": "Tidak, aku tidak mau bantu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't want to help."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -95019,21 +95463,24 @@
             "romaji": "Un, makasete.",
             "translation": "Iya, serahkan padaku.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, leave it to me."
           },
           {
             "japanese": "薬は要らないよ。",
             "romaji": "Kusuri wa iranai yo.",
             "translation": "Obat tidak perlu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Medicine isn't necessary."
           },
           {
             "japanese": "分からないよ。",
             "romaji": "Wakaranai yo.",
             "translation": "Aku tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -95059,21 +95506,24 @@
             "romaji": "Uun, touzen da yo.",
             "translation": "Tidak, itu sudah seharusnya.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's only right."
           },
           {
             "japanese": "いいえ、面倒だよ。",
             "romaji": "Iie, mendou da yo.",
             "translation": "Tidak, merepotkan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, it's a hassle."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -95099,21 +95549,24 @@
             "romaji": "Un, sou negau yo.",
             "translation": "Iya, semoga begitu.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yeah, I hope so."
           },
           {
             "japanese": "どうでもいいよ。",
             "romaji": "Dou demo ii yo.",
             "translation": "Terserah saja.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Whatever."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -95149,21 +95602,24 @@
             "romaji": "Hai, sofu kara uketsuida mono desu.",
             "translation": "Ya, ini barang warisan dari kakek.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, this is an heirloom from my grandfather."
           },
           {
             "japanese": "いいえ、昨日買いました。",
             "romaji": "Iie, kinou kaimashita.",
             "translation": "Tidak, saya beli kemarin.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I bought it yesterday."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -95189,21 +95645,24 @@
             "romaji": "Hai, totemo taisetsu desu.",
             "translation": "Ya, sangat berharga.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, very precious."
           },
           {
             "japanese": "いいえ、どうでもいいです。",
             "romaji": "Iie, dou demo ii desu.",
             "translation": "Tidak, terserah saja.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, whatever."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -95229,21 +95688,24 @@
             "romaji": "Hai, itsuka watashitai desu.",
             "translation": "Ya, suatu saat ingin saya berikan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, someday I want to pass it on."
           },
           {
             "japanese": "いいえ、売りたいです。",
             "romaji": "Iie, uritai desu.",
             "translation": "Tidak, saya ingin jual.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I want to sell it."
           },
           {
             "japanese": "何ですか。",
             "romaji": "Nan desu ka.",
             "translation": "Apa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What?"
           }
         ]
       },
@@ -95269,21 +95731,24 @@
             "romaji": "Hai, hontou ni sou omoimasu.",
             "translation": "Ya, saya benar-benar setuju.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, I completely agree."
           },
           {
             "japanese": "いいえ、そう思いません。",
             "romaji": "Iie, sou omoimasen.",
             "translation": "Tidak, saya tidak setuju.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, I don't agree."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       }
@@ -95307,21 +95772,24 @@
             "romaji": "Kouza wo hirakitai desu.",
             "translation": "Saya mau membuka rekening.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'd like to open an account."
           },
           {
             "japanese": "口座は要りません。",
             "romaji": "Kouza wa irimasen.",
             "translation": "Saya tidak butuh rekening.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't need an account."
           },
           {
             "japanese": "お金がありません。",
             "romaji": "Okane ga arimasen.",
             "translation": "Saya tidak punya uang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't have any money."
           }
         ]
       },
@@ -95347,21 +95815,24 @@
             "romaji": "Hai, douzo.",
             "translation": "Ini, silakan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Here you go."
           },
           {
             "japanese": "パスポートはありません。",
             "romaji": "Pasupooto wa arimasen.",
             "translation": "Saya tidak punya paspor.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't have a passport."
           },
           {
             "japanese": "いくらですか。",
             "romaji": "Ikura desu ka.",
             "translation": "Berapa harganya?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "How much does it cost?"
           }
         ]
       },
@@ -95397,21 +95868,24 @@
             "romaji": "Okane wo ryougae shitai desu.",
             "translation": "Saya mau menukar uang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'd like to exchange money."
           },
           {
             "japanese": "お金を借りたいです。",
             "romaji": "Okane wo karitai desu.",
             "translation": "Saya mau pinjam uang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'd like to borrow money."
           },
           {
             "japanese": "お金は要りません。",
             "romaji": "Okane wa irimasen.",
             "translation": "Saya tidak butuh uang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't need money."
           }
         ]
       },
@@ -95437,21 +95911,24 @@
             "romaji": "Ichiman en desu.",
             "translation": "10.000 yen.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "10,000 yen."
           },
           {
             "japanese": "一時です。",
             "romaji": "Ichiji desu.",
             "translation": "Jam satu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "1 o'clock."
           },
           {
             "japanese": "分かりません。",
             "romaji": "Wakarimasen.",
             "translation": "Saya tidak tahu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't know."
           }
         ]
       },
@@ -95499,21 +95976,24 @@
             "romaji": "Iie, oshiete kudasai.",
             "translation": "Tidak, tolong ajari saya.",
             "isCorrect": true,
-            "expressionTag": "sopan"
+            "expressionTag": "sopan",
+            "translationEn": "No, please teach me."
           },
           {
             "japanese": "はい、簡単です。",
             "romaji": "Hai, kantan desu.",
             "translation": "Ya, gampang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, it's easy."
           },
           {
             "japanese": "ATMは嫌いです。",
             "romaji": "ATM wa kirai desu.",
             "translation": "Saya tidak suka ATM.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't like ATMs."
           }
         ]
       },
@@ -95539,21 +96019,24 @@
             "romaji": "Wakarimashita, arigatou.",
             "translation": "Baik, terima kasih.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Okay, thank you."
           },
           {
             "japanese": "カードはありません。",
             "romaji": "Kaado wa arimasen.",
             "translation": "Saya tidak punya kartu.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't have a card."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           }
         ]
       }
@@ -95577,21 +96060,24 @@
             "romaji": "Zandaka wo kakunin shitai desu.",
             "translation": "Saya mau cek saldo.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'd like to check my balance."
           },
           {
             "japanese": "残高は要りません。",
             "romaji": "Zandaka wa irimasen.",
             "translation": "Saya tidak butuh saldo.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't need a balance."
           },
           {
             "japanese": "お金が好きです。",
             "romaji": "Okane ga suki desu.",
             "translation": "Saya suka uang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I like money."
           }
         ]
       },
@@ -95617,21 +96103,24 @@
             "romaji": "Hai, douzo.",
             "translation": "Ini, silakan.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Here you go."
           },
           {
             "japanese": "通帳はありません。",
             "romaji": "Tsuuchou wa arimasen.",
             "translation": "Saya tidak punya buku tabungan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't have a bankbook."
           },
           {
             "japanese": "何時ですか。",
             "romaji": "Nanji desu ka.",
             "translation": "Jam berapa?",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "What time?"
           }
         ]
       },
@@ -95657,21 +96146,24 @@
             "romaji": "Hai, onegaishimasu.",
             "translation": "Ya, tolong.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Yes, please."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "高いですね。",
             "romaji": "Takai desu ne.",
             "translation": "Mahal ya.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "That's expensive."
           }
         ]
       },
@@ -95697,21 +96189,24 @@
             "romaji": "Arigatou gozaimasu.",
             "translation": "Terima kasih.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Thank you."
           },
           {
             "japanese": "いいえ、結構です。",
             "romaji": "Iie, kekkou desu.",
             "translation": "Tidak, tidak usah.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "No, that's not necessary."
           },
           {
             "japanese": "いただきます。",
             "romaji": "Itadakimasu.",
             "translation": "Selamat makan.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "Enjoy your meal."
           }
         ]
       }
@@ -95735,21 +96230,24 @@
             "romaji": "Okane wo karitai desu.",
             "translation": "Saya mau pinjam uang.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I'd like to borrow money."
           },
           {
             "japanese": "お金は要りません。",
             "romaji": "Okane wa irimasen.",
             "translation": "Saya tidak butuh uang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I don't need money."
           },
           {
             "japanese": "お金が好きです。",
             "romaji": "Okane ga suki desu.",
             "translation": "Saya suka uang.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I like money."
           }
         ]
       },
@@ -95775,14 +96273,16 @@
             "romaji": "Juuman en hitsuyou desu.",
             "translation": "Butuh 100.000 yen.",
             "isCorrect": true,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I need 100,000 yen."
           },
           {
             "japanese": "10時必要です。",
             "romaji": "Juuji hitsuyou desu.",
             "translation": "Butuh jam 10.",
             "isCorrect": false,
-            "expressionTag": null
+            "expressionTag": null,
+            "translationEn": "I need it by 10 o'clock."
           },
           {
             "japanese": "分かりません。",
