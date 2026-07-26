@@ -1267,8 +1267,12 @@ word-example meanings are now fully done, see the update above**; the
 gap that remains is all kanji *sentence* translations): all kanji
 sentence translations (4,850); Kotoba sentence translations (1,264);
 every Bunpou prose field (3,839); the dictionary's 908 example
-translations; Particle titles/explanations/cloze (236); all of Kaiwa
-(34,019); Dokkai titles + passage translations (1,000). Also **exam-history rows store
+translations; Particle titles/explanations/cloze (236); Dokkai titles +
+passage translations (1,000). **The "all of Kaiwa (34,019)" this
+paragraph used to claim is now stale** — a later, separate rollout is
+actively translating Kaiwa's content; see the dedicated "Kaiwa full-content
+English translation" update further below (search for
+`kaiwa_meaning_en.py`) for the real, currently-in-progress state. Also **exam-history rows store
 their title as a plain string at submit time** ("Ujian Katakana"), so
 old rows stay Indonesian forever — a schema question (store a mode key,
 localize at render) rather than a translation batch, and untouched here.
@@ -1332,6 +1336,84 @@ interactive on-device pass has been done** — same standing gap
 documented elsewhere in this file for other features; worth confirming
 the pull gesture actually feels right (indicator distance, spinner
 timing) on a real device before treating this as fully verified.
+
+## Update (2026-07-26, in progress across sessions): Kaiwa full-content
+English translation — separate from, and further along than, the
+"What is still Indonesian" note above
+
+The note above (in the 2026-07-25 localization update, "all of Kaiwa
+(34,019)") is now **stale** — a separate, later rollout started
+translating Kaiwa's full content (not just UI chrome) into English,
+independent of that earlier audit. If you're picking this up cold,
+read this section, not the 34,019-still-Indonesian claim above it.
+
+**Scope**: `KaiwaEntry.titleEn`/`descriptionEn`,
+`KaiwaLine.npcLine.translationEn`, and
+`KaiwaAnswerOption.translationEn` across all 1700 dialogues (1,700
+titles + 1,700 descriptions + 7,468 NPC lines + 23,151 answer
+options = 34,019 total fields). This uses the same
+locked-dict-plus-applier-script pattern as `kotoba_meaning_en.py`/
+`dokkai_lists.py`: `scripts/kaiwa_meaning_en.py` holds
+`KAIWA_MEANING_EN` (a flat dict keyed `"{entry_id}|title"` /
+`"{entry_id}|description"` / `"{entry_id}|{line_id}|npc"` /
+`"{entry_id}|{line_id}|opt{i}"`, 0-based option index), and
+`scripts/apply_kaiwa_meaning_en.py` patches those values into
+`assets/data/kaiwa_data.json` — safe to re-run, only ever adds
+`*En` fields, never touches Indonesian content. **Always check
+`scripts/kaiwa_meaning_en.py`'s own STATUS docstring for the exact
+current count** — it's updated after every batch and is more
+current than this paragraph will stay.
+
+**Current state as of this note**: titles + descriptions are
+**100% done** (1,700/1,700 each). Answer options are at
+**11,000/23,151** (batches 1-22 of ~500 rows each, committed
+individually — see `git log --oneline --grep "Kaiwa answer options"`
+for the full batch history). NPC lines are at **0/7,468** — lowest
+priority since `npcLine.translationEn` isn't rendered anywhere in
+the app yet (Kaiwa's NPC turns show only an image + speak button,
+never on-screen Japanese/translation text — see the Kaiwa module
+architecture note further below).
+
+**Continuing this rollout (per-batch workflow, proven over 22
+batches)**: dump the next 500-row slice of the answer-options list
+(iterate `kaiwa_data.json` in `entry → line → option` order, build
+`"{entry_id}|{line_id}|opt{i}"` keys, slice by row range) to a
+scratch file → extract unique Indonesian values (many phrases repeat
+across dialogues) → hand-translate every unique phrase into natural
+conversational English → verify 100% coverage of the 500 rows against
+the translation map before touching the real file → generate a patch
+block (a real `.py` script that writes the patch, not an inline
+`python -c` — inline string-escaping broke on this content early in
+the rollout) → **verify continuity**: the patch's first key must be
+the literal next key after `kaiwa_meaning_en.py`'s current last entry,
+and the next batch's first key must follow this batch's last key, with
+no gap or overlap → insert the patch into `KAIWA_MEANING_EN` →
+`python -c "import ast; ast.parse(...)"` to confirm syntax → run
+`python scripts/apply_kaiwa_meaning_en.py` and confirm the printed
+`opt: N/23151` count increased by exactly the batch size → confirm
+`assets/data/kaiwa_data.json` is still valid JSON with exactly 1700
+entries → update the STATUS docstring's batch-count and
+remaining-rows lines → delete the batch's scratch files → commit
+just `assets/data/kaiwa_data.json` + `scripts/kaiwa_meaning_en.py`
+with a message like `feat(i18n): Kaiwa answer options batch N (rows
+X-Y)`. **Two pre-existing untracked scratch files,
+`scratch_kaiwa_options.txt` and `scripts/_patch_kaiwa_batch.py`, are
+leftover from early in this rollout and are deliberately never
+staged or deleted** — leave them alone.
+
+**Standing user instruction for this rollout specifically**: when the
+user says "lanjut" (continue) to resume this work, do **two** batches
+(1,000 rows) per invocation, not one, and commit both together in a
+single commit (message pattern: `feat(i18n): Kaiwa answer options
+batches N-M (rows X-Z)`) rather than two separate commits. This was an
+explicit, standing correction from the user partway through the
+rollout — don't revert to one-batch-per-"lanjut" without them saying
+so again.
+
+**After answer options reach 23,151/23,151**: move on to NPC lines
+(7,468, `"{entry_id}|{line_id}|npc"` keys) using the identical
+workflow — lowest priority as noted above, but the natural next phase
+once options are done.
 
 ## Architecture
 
