@@ -1366,7 +1366,7 @@ current than this paragraph will stay.
 
 **Current state as of this note**: titles + descriptions are
 **100% done** (1,700/1,700 each). Answer options are at
-**18,000/23,151** (batches 1-36 of ~500 rows each, committed
+**19,000/23,151** (batches 1-38 of ~500 rows each, committed
 individually — see `git log --oneline --grep "Kaiwa answer options"`
 for the full batch history). NPC lines are at **0/7,468** — lowest
 priority since `npcLine.translationEn` isn't rendered anywhere in
