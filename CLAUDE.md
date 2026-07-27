@@ -2501,6 +2501,61 @@ once options are done.
 
 ## Known placeholders / deferred work
 
+- **iOS platform folder scaffolded (2026-07-27), not release-ready yet**:
+  this project was originally generated with `flutter create
+  --platforms=android,windows .` (confirmed via `.metadata`'s own
+  `platforms:` list, which had no `ios` entry at all) — `ios/` never
+  existed until this session, ahead of the user's stated plan to build
+  for iOS soon. Added via `flutter create --platforms=ios .`, then fixed
+  two things that command got wrong/left incomplete: (1) that command
+  overwrites `.metadata`'s `platforms:` list with only what was passed to
+  *that* invocation instead of appending — it briefly dropped the
+  `android`/`windows` entries, restored by hand; (2) the generated iOS
+  bundle id defaults to `com.teisou.kanaMaster` (capital M), which doesn't
+  match Android's `applicationId` (`com.teisou.kanamaster`, lowercase) in
+  `android/app/build.gradle.kts` — normalized to lowercase everywhere in
+  `ios/Runner.xcodeproj/project.pbxproj` so both platforms ship under the
+  same id. Also added `NSCameraUsageDescription` (the `camera` plugin,
+  Cam Detector) and `NSPhotoLibraryUsageDescription` (`image_picker`,
+  used gallery-only by `AvatarUploadService` for avatar upload) to
+  `ios/Runner/Info.plist` — both plugins are real dependencies already
+  linked into the app, so iOS would crash the first time either
+  permission was actually requested without these keys present.
+  `flutter analyze` stayed clean after all of this (no Dart code was
+  touched, `ios/` is additive).
+  **Real blockers still open, need action outside this Windows
+  environment before an iOS build will actually run**:
+  1. **`lib/firebase_options.dart` has no iOS case at all** — its
+     `currentPlatform` switch only handles `TargetPlatform.android`, so
+     `Firebase.initializeApp()` throws `UnsupportedError` immediately on
+     iOS. Fixing this needs a *real* iOS app registered under the
+     `teisou-kana-master` Firebase project (bundle id
+     `com.teisou.kanamaster`) — via the Firebase Console (Project
+     Settings → Add app → iOS) or `flutterfire configure` (this
+     project's Firebase CLI is already documented elsewhere in this file
+     as broken/crashing on its welcome script in this environment, so the
+     Console path is more likely to work). Either way produces a
+     `GoogleService-Info.plist` (goes in `ios/Runner/`) with the real
+     iOS `appId`/`apiKey` — **do not fabricate placeholder values for
+     these**, a fake `FirebaseOptions.ios` block would compile fine and
+     then fail at runtime with confusing auth/Firestore errors instead of
+     a clear "not configured" error.
+  2. **`google_sign_in` needs a URL scheme** (`CFBundleURLTypes` in
+     Info.plist, using the reversed client id) to complete the OAuth
+     redirect on iOS — this value also comes from the same
+     `GoogleService-Info.plist` in (1), so it's blocked on the same
+     Firebase iOS registration step.
+  3. **No `ios/Podfile` exists yet** — CocoaPods isn't available on this
+     Windows machine, so it wasn't generated. It's created automatically
+     the first time `flutter pub get` or `flutter build ios`/`pod
+     install` runs on a Mac. Worth a close look at that point:
+     `google_mlkit_text_recognition` (Cam Detector's OCR) has a
+     noticeably higher minimum iOS deployment target than Flutter's
+     default template ships with — if `pod install` complains about a
+     deployment-target conflict, that's the plugin to check first.
+  4. No physical/simulator iOS run has happened — same standing
+     verification-gap pattern as everything else in this file, just
+     starting from zero for this platform.
 - **Monetization is mid-transition, not final** (as of 2026-07-17): the
   eventual plan is Kanji N3-N1, Bunpou N4-N1, Partikel, Choukai, Kaiwa,
   Belajar dari Gambar, and Belajar dari Video all premium; everything else
