@@ -1267,15 +1267,17 @@ word-example meanings are now fully done, see the update above**; the
 gap that remains is all kanji *sentence* translations): all kanji
 sentence translations (4,850); Kotoba sentence translations (1,264);
 every Bunpou prose field (3,839); the dictionary's 908 example
-translations; Dokkai titles + passage translations (1,000). **The "all
-of Kaiwa (34,019)" this paragraph used to claim is now stale** — a
-later, separate rollout finished translating Kaiwa's full content; see
-the dedicated "Kaiwa full-content English translation" update further
-below (search for `kaiwa_meaning_en.py`) — **that rollout is now
-complete, 34,019/34,019**. **Particle is also now fully done
-(311/311)** — see the "Particle module full English translation"
-update further below (search for `particle_meaning_en.py`); it's
-removed from this remainder list. Also **exam-history rows store
+translations. **The "all of Kaiwa (34,019)" this paragraph used to
+claim is now stale** — a later, separate rollout finished translating
+Kaiwa's full content; see the dedicated "Kaiwa full-content English
+translation" update further below (search for `kaiwa_meaning_en.py`)
+— **that rollout is now complete, 34,019/34,019**. **Particle is also
+now fully done (311/311)** — see the "Particle module full English
+translation" update further below (search for `particle_meaning_en.py`).
+**Dokkai is also now fully done (1,000/1,000)** — see the "Dokkai
+passages full English translation" update further below (search for
+`dokkai_meaning_en.py`). Both are removed from this remainder list.
+Also **exam-history rows store
 their title as a plain string at submit time** ("Ujian Katakana"), so
 old rows stay Indonesian forever — a schema question (store a mode key,
 localize at render) rather than a translation batch, and untouched
@@ -1506,6 +1508,53 @@ done** — same standing gap as everywhere else in this file; worth
 confirming the overview text actually renders in English on
 `ParticleCategoryScreen`'s list tiles and `ParticleDetailScreen` on a
 real device before treating this as fully verified.
+
+## Update (2026-07-28): Dokkai passages full English translation
+
+The third rollout in the same session as Kaiwa's NPC-lines completion
+and the Particle module — translates `DokkaiPassage.titleEn`/
+`passageTranslationEn` across all 500 passages (100 per JLPT level,
+N5-N1). Both fields were already plumbed (nullable `*En` + a
+`localizedTitle`/`localizedPassageTranslation` getter pair, from the
+2026-07-25 localization-plumbing session) but never authored.
+
+**Scope note, same shape as Kaiwa's npc lines**: neither field is
+actually rendered anywhere in the app today. `DokkaiLevelScreen` (the
+passage-title list) was deleted in an earlier session — tapping a
+level now opens a random passage directly — and `DokkaiExamScreen`
+only ever shows `passageJapanese` (the original Japanese text) plus
+Japanese questions/options, never the Indonesian or English
+translation, deliberately, to keep the reading-comprehension exam
+genuine (showing a translation would give the answer away). This was
+translated for completeness / future use, the same reasoning already
+applied to Kaiwa's npc lines.
+
+**Same locked-dict + applier-script pattern as every other rollout**:
+`scripts/dokkai_meaning_en.py` holds `DOKKAI_MEANING_EN` (keyed
+`"{id}|title"` / `"{id}|passageTranslation"`),
+`scripts/apply_dokkai_meaning_en.py` patches
+`assets/data/dokkai_data.json` — safe to re-run, only ever adds `*En`
+fields, must be re-run after `generate_dokkai_seed.py` regenerates the
+dataset. Done in 5 batches by JLPT level (N5 → N4 → N3 → N2 → N1, 100
+passages / 200 fields each), each independently verified for full
+coverage against that level's dump before committing — no dump-uniq
+pipeline was needed the way Kaiwa's was, since every passage's title
+and translation is distinct prose (a full paragraph per passage, not
+short repeated dialogue phrases), so there was little repetition to
+exploit.
+
+**Status: DONE, 1,000/1,000**, verified via
+`apply_dokkai_meaning_en.py`'s own coverage printout (title 500/500,
+passageTranslation 500/500) after the final N1 batch, plus
+`assets/data/dokkai_data.json` re-validated as parseable JSON with
+exactly 500 entries after every batch. `flutter analyze`/`flutter
+test` re-run clean after the full rollout (no Dart code changed by
+this rollout — pure JSON content — so no new test case was added the
+way Particle's was). **No interactive on-device pass done** — same
+standing gap as everywhere else in this file, and doubly moot here
+since neither field renders in the UI at all right now; worth
+revisiting only if a future session actually surfaces passage titles
+or translations somewhere in the exam flow.
 
 ## Architecture
 
