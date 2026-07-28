@@ -113,6 +113,26 @@ void main() {
     expect(byIndonesian.map((w) => w.id), contains('dict_00001'));
   });
 
+  test('every dictionary example has an English translation', () async {
+    final words = await DictionaryRepository().getAll();
+    final missing = words
+        .where((w) => (w.example.translationEn ?? '').isEmpty)
+        .toList();
+    expect(
+      missing.map((w) => w.id).take(10).toList(),
+      isEmpty,
+      reason: '${missing.length} dictionary examples have no translationEn '
+          '— add them to scripts/dictionary_example_translation_en.py and '
+          'run the applier',
+    );
+
+    final taberu = words.firstWhere((w) => w.id == 'dict_00001');
+    expect(taberu.example.localizedTranslation(AppLanguage.indonesian),
+        'Saya makan sarapan setiap hari.');
+    expect(taberu.example.localizedTranslation(AppLanguage.english),
+        'I eat breakfast every day.');
+  });
+
   test('all kanji word examples have English glosses', () async {
     final entries = await KanjiRepository().getAll();
     final missing = <String>[];
