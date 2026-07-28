@@ -1265,16 +1265,20 @@ screenshot check that covered batches 1-2 didn't happen for this one.
 of it content authoring, none of it blocked on code — **kanji
 word-example meanings are now fully done, see the update above**; the
 gap that remains is all kanji *sentence* translations): all kanji
-sentence translations (4,850); Kotoba sentence translations (1,264);
-every Bunpou prose field (3,839). **The "all of Kaiwa (34,019)" this
-paragraph used to claim is now stale** — a later, separate rollout
-finished translating Kaiwa's full content; see the dedicated "Kaiwa
-full-content English translation" update further below (search for
-`kaiwa_meaning_en.py`) — **that rollout is now complete,
-34,019/34,019**. **Particle is also now fully done (311/311)** — see
-the "Particle module full English translation" update further below
-(search for `particle_meaning_en.py`). **Dokkai is also now fully
-done (1,000/1,000)** — see the "Dokkai passages full English
+sentence translations (4,850); every Bunpou prose field (3,839).
+**The "all of Kaiwa (34,019)" this paragraph used to claim is now
+stale** — a later, separate rollout finished translating Kaiwa's full
+content; see the dedicated "Kaiwa full-content English translation"
+update further below (search for `kaiwa_meaning_en.py`) — **that
+rollout is now complete, 34,019/34,019**. **Particle is also now
+fully done (311/311)** — see the "Particle module full English
+translation" update further below (search for `particle_meaning_en.py`).
+**Kotoba's 1,682 sentence-example translations are also now fully
+done** (this figure corrects the stale "1,264" this paragraph used to
+quote) — see the "Kotoba example sentences full English translation"
+update further below (search for `kotoba_example_translation_en.py`).
+**Dokkai is also now fully done (1,000/1,000)** — see the "Dokkai
+passages full English
 translation" update further below (search for `dokkai_meaning_en.py`).
 **The dictionary's 908 example translations are also now fully done**
 — see the "Dictionary example sentences full English translation"
@@ -1597,6 +1601,70 @@ coverage plus a language-toggle spot check on `dict_00001`'s example
 sentence. `flutter analyze` clean, `flutter test --concurrency=1`
 passing (1 new case). **No interactive on-device pass done** — same
 standing gap as everywhere else in this file.
+
+## Update (2026-07-28): Kotoba example sentences full English translation
+
+The fifth and largest content-translation rollout in the same session
+as Kaiwa's NPC-lines completion, Particle, Dokkai, and the search
+dictionary — translates `SentenceExample.translationEn` (the shared
+module-neutral class, same one Kanji/Bunpou/Particle use) across all
+1,682 Kotoba vocab words (every word has exactly one example, verified
+dataset-wide — never zero, never multiple). This closes the last
+untranslated word-level field on `KotobaEntry` (`meaningEn` was
+already 100% done, including `konsep_umum`, from an earlier session).
+
+**Real total corrected**: this rollout's own scope count (1,682, 1 per
+word across all 46 categories) is the actual, counted number — the
+"1,264" figure this file quoted in several places before this update
+was stale/approximate from an earlier, smaller version of the dataset
+and was never re-verified as the vocab module grew across many
+sessions. All references to that figure elsewhere in this file have
+been corrected as part of this update.
+
+**Already correctly wired, no code gap** (unlike Particle's `overview`
+bug) — `KotobaWordDetailScreen` already calls
+`example.localizedTranslation(...)`, confirmed before starting.
+
+**Same locked-dict + applier-script pattern, spread across every
+category file rather than one JSON**: `scripts/kotoba_example_translation_en.py`
+holds `KOTOBA_EXAMPLE_TRANSLATION_EN` (keyed by plain word id, since
+each word has only one example), `scripts/apply_kotoba_example_translation_en.py`
+iterates every `assets/data/kotoba/{category}.json` file (skipping
+`_categories.json`) and patches `sentenceExamples[0].translationEn` —
+safe to re-run, only ever adds that one field, must be re-run after
+any `generate_kotoba_*.py` group script regenerates a category file.
+
+Done in 4 batches across one session, largest categories handled as
+their own checkpoints rather than splitting them awkwardly: batch 1
+(23 smaller categories, 564 fields), batch 2 (`konsep_umum` alone —
+this dataset's single largest category at 416 words, more than a
+quarter of the whole rollout by itself), batch 3 (12 more categories
+including `pekerjaan_kantor`, the second-largest at 118 words, 404
+fields), batch 4 (the remaining 12 categories, 298 fields) — each
+batch independently verified for full category coverage before
+committing.
+
+**Status: DONE, 1,682/1,682**, verified via
+`apply_kotoba_example_translation_en.py`'s own coverage printout
+(1,682/1,682) and every category file re-validated as parseable JSON
+with word counts summing back to 1,682. New
+`test/content_localization_test.dart` case ("every Kotoba word has an
+English example translation") checks full coverage plus a
+language-toggle spot check on `ikan`'s unagi entry (chosen because,
+like the existing `meaningEn` test for the same word, its Indonesian
+and English text genuinely differ — many other entries' Indonesian
+gloss happens to already read as English, e.g. proper nouns, which
+would make a weaker test). `flutter analyze` clean, `flutter test
+--concurrency=1` passing. **No interactive on-device pass done** —
+same standing gap as everywhere else in this file.
+
+**This closes out the entire Kaiwa/Particle/Dokkai/Dictionary/Kotoba
+content-translation effort started this session.** What remains
+Indonesian-only in English mode, per the "What is still Indonesian"
+note above, is now down to two modules: all kanji sentence
+translations (4,850) and every Bunpou prose field (3,839) — Bunpou
+specifically has zero English translation work done on it yet, unlike
+every other module in this list.
 
 ## Architecture
 
