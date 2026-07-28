@@ -1266,17 +1266,20 @@ of it content authoring, none of it blocked on code — **kanji
 word-example meanings are now fully done, see the update above**; the
 gap that remains is all kanji *sentence* translations): all kanji
 sentence translations (4,850); Kotoba sentence translations (1,264);
-every Bunpou prose field (3,839); the dictionary's 908 example
-translations. **The "all of Kaiwa (34,019)" this paragraph used to
-claim is now stale** — a later, separate rollout finished translating
-Kaiwa's full content; see the dedicated "Kaiwa full-content English
-translation" update further below (search for `kaiwa_meaning_en.py`)
-— **that rollout is now complete, 34,019/34,019**. **Particle is also
-now fully done (311/311)** — see the "Particle module full English
-translation" update further below (search for `particle_meaning_en.py`).
-**Dokkai is also now fully done (1,000/1,000)** — see the "Dokkai
-passages full English translation" update further below (search for
-`dokkai_meaning_en.py`). Both are removed from this remainder list.
+every Bunpou prose field (3,839). **The "all of Kaiwa (34,019)" this
+paragraph used to claim is now stale** — a later, separate rollout
+finished translating Kaiwa's full content; see the dedicated "Kaiwa
+full-content English translation" update further below (search for
+`kaiwa_meaning_en.py`) — **that rollout is now complete,
+34,019/34,019**. **Particle is also now fully done (311/311)** — see
+the "Particle module full English translation" update further below
+(search for `particle_meaning_en.py`). **Dokkai is also now fully
+done (1,000/1,000)** — see the "Dokkai passages full English
+translation" update further below (search for `dokkai_meaning_en.py`).
+**The dictionary's 908 example translations are also now fully done**
+— see the "Dictionary example sentences full English translation"
+update further below (search for `dictionary_example_translation_en.py`).
+All four are removed from this remainder list.
 Also **exam-history rows store
 their title as a plain string at submit time** ("Ujian Katakana"), so
 old rows stay Indonesian forever — a schema question (store a mode key,
@@ -1555,6 +1558,45 @@ standing gap as everywhere else in this file, and doubly moot here
 since neither field renders in the UI at all right now; worth
 revisiting only if a future session actually surfaces passage titles
 or translations somewhere in the exam flow.
+
+## Update (2026-07-28): Dictionary example sentences full English translation
+
+The fourth rollout in the same session as Kaiwa's NPC-lines
+completion, Particle, and Dokkai — translates
+`DictionaryExample.translationEn` across all 908 search-dictionary
+words (each word has exactly one example sentence, so this is 908
+fields, not 908×2). `meaningEn` (the word-level gloss) was already
+100% done from an earlier session; this closes the one remaining
+untranslated field on `DictionaryWord`.
+
+**Already correctly wired, no code gap this time** (unlike Particle's
+`overview` bug) — `DictionaryWordDetailScreen` already calls
+`entry.example.localizedTranslation(s.language)`, confirmed before
+starting, so this was pure content authoring from the start.
+
+**Same locked-dict + applier-script pattern, kept in its own file
+rather than merged into the existing `dictionary_meaning_en.py`**
+(which owns the word-level `meaningEn` field and is keyed
+differently): `scripts/dictionary_example_translation_en.py` holds
+`DICTIONARY_EXAMPLE_TRANSLATION_EN` (keyed by plain word id, since
+each word has only one example — no sub-key needed),
+`scripts/apply_dictionary_example_translation_en.py` patches
+`assets/data/dictionary_data.json` — safe to re-run, only ever adds
+`example.translationEn`, must be re-run after
+`generate_dictionary_seed.py` regenerates the dataset. Done in one
+session across 5 large batches (~150-180 entries per batch) directly
+keyed by id — skipped the dump-uniq-map pipeline Kaiwa's rollout
+needed, since a spot-check found only 8 duplicate sentences out of
+908 (900 unique), not enough repetition to be worth exploiting.
+
+**Status: DONE, 908/908**, verified via
+`apply_dictionary_example_translation_en.py`'s own coverage printout
+(908/908) and a new `test/content_localization_test.dart` case
+("every dictionary example has an English translation") checking full
+coverage plus a language-toggle spot check on `dict_00001`'s example
+sentence. `flutter analyze` clean, `flutter test --concurrency=1`
+passing (1 new case). **No interactive on-device pass done** — same
+standing gap as everywhere else in this file.
 
 ## Architecture
 
