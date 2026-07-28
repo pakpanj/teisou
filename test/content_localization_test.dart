@@ -113,6 +113,38 @@ void main() {
     expect(byIndonesian.map((w) => w.id), contains('dict_00001'));
   });
 
+  test('every Kotoba word has an English example translation', () async {
+    final categories = await KotobaCategoryRepository().getAll();
+    final repo = KotobaRepository();
+    final missing = <String>[];
+    var total = 0;
+    for (final category in categories.where((c) => c.available)) {
+      for (final word in await repo.getVocabCategory(category.id)) {
+        if (word.placeholder) continue;
+        for (final se in word.sentenceExamples) {
+          total++;
+          if ((se.translationEn ?? '').isEmpty) missing.add(word.id);
+        }
+      }
+    }
+    expect(total, greaterThan(1600));
+    expect(missing.take(10).toList(), isEmpty,
+        reason: '${missing.length} Kotoba examples have no translationEn — '
+            'add them to scripts/kotoba_example_translation_en.py and run '
+            'the applier');
+
+    final unagi = (await repo.getVocabCategory('ikan'))
+        .firstWhere((w) => w.id.endsWith('_unagi'));
+    expect(
+        unagi.sentenceExamples.first
+            .localizedTranslation(AppLanguage.indonesian),
+        'Di musim panas, orang makan belut.');
+    expect(
+        unagi.sentenceExamples.first
+            .localizedTranslation(AppLanguage.english),
+        'In summer, people eat eel.');
+  });
+
   test('every dictionary example has an English translation', () async {
     final words = await DictionaryRepository().getAll();
     final missing = words

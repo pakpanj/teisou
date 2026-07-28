@@ -18,7 +18,8 @@
       {
         "japanese": "部屋を掃除します。",
         "romaji": "Heya o souji shimasu.",
-        "translation": "Saya membersihkan kamar."
+        "translation": "Saya membersihkan kamar.",
+        "translationEn": "I clean my room."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_heya.png",
@@ -43,7 +44,8 @@
       {
         "japanese": "玄関で靴を脱ぎます。",
         "romaji": "Genkan de kutsu o nugimasu.",
-        "translation": "Saya melepas sepatu di genkan."
+        "translation": "Saya melepas sepatu di genkan.",
+        "translationEn": "I take off my shoes at the entryway."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_genkan.png",
@@ -68,7 +70,8 @@
       {
         "japanese": "台所で料理します。",
         "romaji": "Daidokoro de ryouri shimasu.",
-        "translation": "Saya memasak di dapur."
+        "translation": "Saya memasak di dapur.",
+        "translationEn": "I cook in the kitchen."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_daidokoro.png",
@@ -93,7 +96,8 @@
       {
         "japanese": "居間でテレビを見ます。",
         "romaji": "Ima de terebi o mimasu.",
-        "translation": "Saya menonton TV di ruang keluarga."
+        "translation": "Saya menonton TV di ruang keluarga.",
+        "translationEn": "I watch TV in the living room."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_ima.png",
@@ -118,7 +122,8 @@
       {
         "japanese": "寝室で寝ます。",
         "romaji": "Shinshitsu de nemasu.",
-        "translation": "Saya tidur di kamar tidur."
+        "translation": "Saya tidur di kamar tidur.",
+        "translationEn": "I sleep in the bedroom."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shinshitsu.png",
@@ -143,7 +148,8 @@
       {
         "japanese": "トイレはどこですか。",
         "romaji": "Toire wa doko desu ka.",
-        "translation": "Di mana toilet?"
+        "translation": "Di mana toilet?",
+        "translationEn": "Where's the toilet?"
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_toire.png",
@@ -168,7 +174,8 @@
       {
         "japanese": "お風呂に入ります。",
         "romaji": "Ofuro ni hairimasu.",
-        "translation": "Saya mandi."
+        "translation": "Saya mandi.",
+        "translationEn": "I take a bath."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_ofuro.png",
@@ -193,7 +200,8 @@
       {
         "japanese": "浴室を掃除します。",
         "romaji": "Yokushitsu o souji shimasu.",
-        "translation": "Saya membersihkan kamar mandi."
+        "translation": "Saya membersihkan kamar mandi.",
+        "translationEn": "I clean the bathroom."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_yokushitsu.png",
@@ -218,7 +226,8 @@
       {
         "japanese": "ベランダで洗濯物を干します。",
         "romaji": "Beranda de sentakumono o hoshimasu.",
-        "translation": "Saya menjemur pakaian di balkon."
+        "translation": "Saya menjemur pakaian di balkon.",
+        "translationEn": "I dry the laundry on the balcony."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_beranda.png",
@@ -243,7 +252,8 @@
       {
         "japanese": "階段を上ります。",
         "romaji": "Kaidan o noborimasu.",
-        "translation": "Saya menaiki tangga."
+        "translation": "Saya menaiki tangga.",
+        "translationEn": "I go up the stairs."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_kaidan.png",
@@ -268,7 +278,8 @@
       {
         "japanese": "庭に花があります。",
         "romaji": "Niwa ni hana ga arimasu.",
-        "translation": "Ada bunga di halaman."
+        "translation": "Ada bunga di halaman.",
+        "translationEn": "There are flowers in the yard."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_niwa.png",
@@ -293,7 +304,8 @@
       {
         "japanese": "洗面所で顔を洗います。",
         "romaji": "Senmenjo de kao o araimasu.",
-        "translation": "Saya mencuci muka di wastafel."
+        "translation": "Saya mencuci muka di wastafel.",
+        "translationEn": "I wash my face at the sink."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_senmenjo.png",
@@ -318,7 +330,8 @@
       {
         "japanese": "車を車庫に入れます。",
         "romaji": "Kuruma o shako ni iremasu.",
-        "translation": "Saya memasukkan mobil ke garasi."
+        "translation": "Saya memasukkan mobil ke garasi.",
+        "translationEn": "I put the car in the garage."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shako.png",
@@ -343,7 +356,8 @@
       {
         "japanese": "花壇に花を植えます。",
         "romaji": "Kadan ni hana o uemasu.",
-        "translation": "Menanam bunga di taman bunga. (kotak tanaman bunga)"
+        "translation": "Menanam bunga di taman bunga. (kotak tanaman bunga)",
+        "translationEn": "Planting flowers in the flower bed."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_kadan.png",
@@ -368,7 +382,8 @@
       {
         "japanese": "天井が高い部屋ですね。",
         "romaji": "Tenjou ga takai heya desu ne.",
-        "translation": "Ruangan ini langit-langitnya tinggi ya."
+        "translation": "Ruangan ini langit-langitnya tinggi ya.",
+        "translationEn": "This room's ceiling is high, isn't it."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_tenjou.png",
@@ -393,7 +408,8 @@
       {
         "japanese": "屋根を修理しました。",
         "romaji": "Yane o shuuri shimashita.",
-        "translation": "Saya memperbaiki atap."
+        "translation": "Saya memperbaiki atap.",
+        "translationEn": "I fix the roof."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_yane.png",
@@ -418,7 +434,8 @@
       {
         "japanese": "廊下を走らないでください。",
         "romaji": "Rouka o hashiranaide kudasai.",
-        "translation": "Jangan lari di koridor/lorong."
+        "translation": "Jangan lari di koridor/lorong.",
+        "translationEn": "Don't run in the hallway."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_rouka.png",
@@ -443,7 +460,8 @@
       {
         "japanese": "書斎で本を読みます。",
         "romaji": "Shosai de hon o yomimasu.",
-        "translation": "Membaca buku di ruang kerja."
+        "translation": "Membaca buku di ruang kerja.",
+        "translationEn": "Reading a book in the study."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shosai.png",
@@ -468,7 +486,8 @@
       {
         "japanese": "下宿に住んでいます。",
         "romaji": "Geshuku ni sunde imasu.",
-        "translation": "Tinggal di tempat kos."
+        "translation": "Tinggal di tempat kos.",
+        "translationEn": "Living at a boarding house."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_geshuku.png",
@@ -493,7 +512,8 @@
       {
         "japanese": "水道を使います。",
         "romaji": "Suidou o tsukaimasu.",
-        "translation": "Menggunakan air ledeng."
+        "translation": "Menggunakan air ledeng.",
+        "translationEn": "Using tap water."
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_suidou.png",
