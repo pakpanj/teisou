@@ -2882,19 +2882,25 @@
       {
         "japanese": "夏休みの間、ずっと勉強していました。",
         "romaji": "Natsuyasumi no aida, zutto benkyou shite imashita.",
-        "translation": "Selama liburan musim panas, saya terus belajar."
+        "translation": "Selama liburan musim panas, saya terus belajar.",
+        "translationEn": "I kept studying throughout summer vacation."
       },
       {
         "japanese": "彼が話している間、静かに聞いていました。",
         "romaji": "Kare ga hanashite iru aida, shizuka ni kiite imashita.",
-        "translation": "Selama dia berbicara, saya mendengarkan dengan tenang."
+        "translation": "Selama dia berbicara, saya mendengarkan dengan tenang.",
+        "translationEn": "While he was talking, I listened quietly."
       },
       {
         "japanese": "子供が寝ている間、テレビを見ていました。",
         "romaji": "Kodomo ga nete iru aida, terebi o mite imashita.",
-        "translation": "Selama anak tidur, saya menonton TV."
+        "translation": "Selama anak tidur, saya menonton TV.",
+        "translationEn": "While the child slept, I watched TV."
       }
-    ]
+    ],
+    "meaningEn": "During, throughout (a span of time)",
+    "formationEn": "Noun + の + 間; Verb continuous form (~ている) + 間",
+    "usageNotesEn": "Expresses something happening continuously throughout a span of time, emphasizing the entire duration (unlike 間に, which emphasizes one point within that span)."
   },
   {
     "id": "bunpou_aida_ni",
@@ -2911,19 +2917,25 @@
       {
         "japanese": "子供が寝ている間に、家事をします。",
         "romaji": "Kodomo ga nete iru aida ni, kaji o shimasu.",
-        "translation": "Selagi anak tidur, saya mengerjakan pekerjaan rumah."
+        "translation": "Selagi anak tidur, saya mengerjakan pekerjaan rumah.",
+        "translationEn": "While the child was sleeping, I did the housework."
       },
       {
         "japanese": "夏休みの間に、旅行に行きたいです。",
         "romaji": "Natsuyasumi no aida ni, ryokou ni ikitai desu.",
-        "translation": "Saya ingin pergi berlibur di suatu waktu selama liburan musim panas."
+        "translation": "Saya ingin pergi berlibur di suatu waktu selama liburan musim panas.",
+        "translationEn": "I want to go on a trip at some point during summer vacation."
       },
       {
         "japanese": "彼が出かけている間に、電話がありました。",
         "romaji": "Kare ga dekakete iru aida ni, denwa ga arimashita.",
-        "translation": "Selagi dia keluar, ada telepon masuk."
+        "translation": "Selagi dia keluar, ada telepon masuk.",
+        "translationEn": "While he was out, a call came in."
       }
-    ]
+    ],
+    "meaningEn": "At some point during ~ (an action happens once within a span)",
+    "formationEn": "Noun + の + 間に; Verb continuous form (~ている) + 間に",
+    "usageNotesEn": "Unlike 間 (which emphasizes the whole duration), 間に emphasizes that something happens AT a specific point within that span of time, not continuously."
   },
   {
     "id": "bunpou_amari_nai",
@@ -2938,19 +2950,25 @@
       {
         "japanese": "この料理はあまりおいしくないです。",
         "romaji": "Kono ryouri wa amari oishikunai desu.",
-        "translation": "Masakan ini tidak terlalu enak."
+        "translation": "Masakan ini tidak terlalu enak.",
+        "translationEn": "This dish isn't too tasty."
       },
       {
         "japanese": "あまり勉強しませんでした。",
         "romaji": "Amari benkyou shimasen deshita.",
-        "translation": "Saya tidak terlalu belajar."
+        "translation": "Saya tidak terlalu belajar.",
+        "translationEn": "I don't study too much."
       },
       {
         "japanese": "今日はあまり忙しくないです。",
         "romaji": "Kyou wa amari isogashikunai desu.",
-        "translation": "Hari ini tidak terlalu sibuk."
+        "translation": "Hari ini tidak terlalu sibuk.",
+        "translationEn": "Today isn't too busy."
       }
-    ]
+    ],
+    "meaningEn": "Not too ~",
+    "formationEn": "あまり + adjective/verb negative form",
+    "usageNotesEn": "Expresses a low degree/not too much, always paired with a negative sentence form (unlike とても, which is used for positive sentences)."
   },
   {
     "id": "bunpou_ato_de",
@@ -2967,19 +2985,25 @@
       {
         "japanese": "後で電話します。",
         "romaji": "Ato de denwa shimasu.",
-        "translation": "Nanti saya akan menelepon."
+        "translation": "Nanti saya akan menelepon.",
+        "translationEn": "I'll call later."
       },
       {
         "japanese": "宿題をした後で、遊びに行きます。",
         "romaji": "Shukudai o shita ato de, asobi ni ikimasu.",
-        "translation": "Setelah mengerjakan PR, saya akan pergi bermain."
+        "translation": "Setelah mengerjakan PR, saya akan pergi bermain.",
+        "translationEn": "After doing my homework, I'll go play."
       },
       {
         "japanese": "後でまた来てください。",
         "romaji": "Ato de mata kite kudasai.",
-        "translation": "Tolong datang lagi nanti."
+        "translation": "Tolong datang lagi nanti.",
+        "translationEn": "Please come again later."
       }
-    ]
+    ],
+    "meaningEn": "Later, afterward",
+    "formationEn": "後で + sentence; or Verb dictionary form + 後で",
+    "usageNotesEn": "Expresses something that will/has been done after the present moment or after an event, more general/less specific than てから."
   },
   {
     "id": "bunpou_ba",
@@ -2994,19 +3018,25 @@
       {
         "japanese": "練習すれば、上手になります。",
         "romaji": "Renshuu sureba, jouzu ni narimasu.",
-        "translation": "Jika berlatih, akan menjadi mahir."
+        "translation": "Jika berlatih, akan menjadi mahir.",
+        "translationEn": "If you practice, you'll get good at it."
       },
       {
         "japanese": "安ければ、買います。",
         "romaji": "Yasukereba, kaimasu.",
-        "translation": "Jika murah, saya akan membeli."
+        "translation": "Jika murah, saya akan membeli.",
+        "translationEn": "If it's cheap, I'll buy it."
       },
       {
         "japanese": "雨が降れば、行きません。",
         "romaji": "Ame ga fureba, ikimasen.",
-        "translation": "Jika hujan turun, saya tidak akan pergi."
+        "translation": "Jika hujan turun, saya tidak akan pergi.",
+        "translationEn": "If it rains, I won't go."
       }
-    ]
+    ],
+    "meaningEn": "If ~ (conditional)",
+    "formationEn": "Verb/i-adjective ば-form (ru→reba, u→eba, i→kereba); noun/na-adjective + であれば/なら",
+    "usageNotesEn": "A conditional form emphasizing a general/natural cause-effect relationship, often used for hypothetical conditions or proverbs, less suited to inviting/suggesting a specific one-time action (たら fits better there)."
   },
   {
     "id": "bunpou_baai_wa",
@@ -3021,19 +3051,25 @@
       {
         "japanese": "地震の場合は、机の下に隠れてください。",
         "romaji": "Jishin no baai wa, tsukue no shita ni kakurete kudasai.",
-        "translation": "Jika terjadi gempa, tolong bersembunyi di bawah meja."
+        "translation": "Jika terjadi gempa, tolong bersembunyi di bawah meja.",
+        "translationEn": "If an earthquake happens, please hide under the desk."
       },
       {
         "japanese": "雨が降った場合は、中止します。",
         "romaji": "Ame ga futta baai wa, chuushi shimasu.",
-        "translation": "Jika terjadi hujan, akan dibatalkan."
+        "translation": "Jika terjadi hujan, akan dibatalkan.",
+        "translationEn": "If it rains, it'll be canceled."
       },
       {
         "japanese": "質問がある場合は、聞いてください。",
         "romaji": "Shitsumon ga aru baai wa, kiite kudasai.",
-        "translation": "Jika ada pertanyaan, silakan bertanya."
+        "translation": "Jika ada pertanyaan, silakan bertanya.",
+        "translationEn": "If you have any questions, please ask."
       }
-    ]
+    ],
+    "meaningEn": "In the case of ~, if ~ happens",
+    "formationEn": "Verb dictionary/past form + 場合は; noun + の場合は",
+    "usageNotesEn": "Expresses a certain condition/scenario that might happen, often used for instructions/rules about what to do in a given situation."
   },
   {
     "id": "bunpou_bakari",
@@ -3048,19 +3084,25 @@
       {
         "japanese": "さっき食べたばかりです。",
         "romaji": "Sakki tabeta bakari desu.",
-        "translation": "Saya baru saja makan."
+        "translation": "Saya baru saja makan.",
+        "translationEn": "I just ate."
       },
       {
         "japanese": "彼はゲームばかりしています。",
         "romaji": "Kare wa geemu bakari shite imasu.",
-        "translation": "Dia hanya bermain game melulu."
+        "translation": "Dia hanya bermain game melulu.",
+        "translationEn": "He does nothing but play games."
       },
       {
         "japanese": "日本に来たばかりです。",
         "romaji": "Nihon ni kita bakari desu.",
-        "translation": "Saya baru saja datang ke Jepang."
+        "translation": "Saya baru saja datang ke Jepang.",
+        "translationEn": "I just arrived in Japan."
       }
-    ]
+    ],
+    "meaningEn": "Just ~ (time); only/nothing but ~ (amount/frequency)",
+    "formationEn": "Verb past form (~た) + ばかり (just did); noun + ばかり (only/nothing but)",
+    "usageNotesEn": "Two main meanings: expressing something just happened (with the past form), or expressing something happens/exists excessively/exclusively (with a noun)."
   },
   {
     "id": "bunpou_dake_de",
@@ -3077,19 +3119,25 @@
       {
         "japanese": "見るだけで分かります。",
         "romaji": "Miru dake de wakarimasu.",
-        "translation": "Hanya dengan melihat saja sudah paham."
+        "translation": "Hanya dengan melihat saja sudah paham.",
+        "translationEn": "Just by looking, I already understood."
       },
       {
         "japanese": "少し休むだけで元気になりました。",
         "romaji": "Sukoshi yasumu dake de genki ni narimashita.",
-        "translation": "Hanya dengan istirahat sebentar saja sudah jadi sehat."
+        "translation": "Hanya dengan istirahat sebentar saja sudah jadi sehat.",
+        "translationEn": "Just resting a little already made me feel healthy."
       },
       {
         "japanese": "話を聞くだけで十分です。",
         "romaji": "Hanashi o kiku dake de juubun desu.",
-        "translation": "Hanya dengan mendengarkan ceritanya saja sudah cukup."
+        "translation": "Hanya dengan mendengarkan ceritanya saja sudah cukup.",
+        "translationEn": "Just hearing the story alone was enough."
       }
-    ]
+    ],
+    "meaningEn": "Just by/with ~ alone",
+    "formationEn": "Noun/verb dictionary form + だけで",
+    "usageNotesEn": "Emphasizes that one single thing alone is already enough to produce a result, often used to show how easy/simple something is."
   },
   {
     "id": "bunpou_dasu",
@@ -3106,19 +3154,25 @@
       {
         "japanese": "急に雨が降り出しました。",
         "romaji": "Kyuu ni ame ga furidashimashita.",
-        "translation": "Tiba-tiba hujan mulai turun."
+        "translation": "Tiba-tiba hujan mulai turun.",
+        "translationEn": "It suddenly started raining."
       },
       {
         "japanese": "赤ちゃんが泣き出しました。",
         "romaji": "Akachan ga nakidashimashita.",
-        "translation": "Bayi tiba-tiba mulai menangis."
+        "translation": "Bayi tiba-tiba mulai menangis.",
+        "translationEn": "The baby suddenly started crying."
       },
       {
         "japanese": "彼は突然笑い出しました。",
         "romaji": "Kare wa totsuzen waraidashimashita.",
-        "translation": "Dia tiba-tiba mulai tertawa."
+        "translation": "Dia tiba-tiba mulai tertawa.",
+        "translationEn": "He suddenly burst out laughing."
       }
-    ]
+    ],
+    "meaningEn": "Start ~ (suddenly); to bring out",
+    "formationEn": "Verb ~ます form (drop ます) + 出す",
+    "usageNotesEn": "As a suffix on another verb, expresses something suddenly starting to happen, often for a sudden change of state (e.g. 泣き出す — suddenly burst into tears)."
   },
   {
     "id": "bunpou_de_gozaimasu",
@@ -3135,19 +3189,25 @@
       {
         "japanese": "こちらが会議室でございます。",
         "romaji": "Kochira ga kaigishitsu de gozaimasu.",
-        "translation": "Ini adalah ruang rapatnya."
+        "translation": "Ini adalah ruang rapatnya.",
+        "translationEn": "This is the meeting room."
       },
       {
         "japanese": "私は田中でございます。",
         "romaji": "Watashi wa Tanaka de gozaimasu.",
-        "translation": "Saya adalah Tanaka."
+        "translation": "Saya adalah Tanaka.",
+        "translationEn": "I am Tanaka."
       },
       {
         "japanese": "はい、そうでございます。",
         "romaji": "Hai, sou de gozaimasu.",
-        "translation": "Ya, benar begitu."
+        "translation": "Ya, benar begitu.",
+        "translationEn": "Yes, that is correct."
       }
-    ]
+    ],
+    "meaningEn": "To be (extremely polite/formal form of です)",
+    "formationEn": "Noun + でございます",
+    "usageNotesEn": "A high level of politeness (keigo), commonly used in customer service/business, rarely used in ordinary daily conversation."
   },
   {
     "id": "bunpou_demo2",
@@ -3164,19 +3224,25 @@
       {
         "japanese": "お茶でも飲みませんか。",
         "romaji": "Ocha demo nomimasen ka.",
-        "translation": "Mau minum teh atau semacamnya?"
+        "translation": "Mau minum teh atau semacamnya?",
+        "translationEn": "Would you like some tea or something?"
       },
       {
         "japanese": "映画でも見に行きましょうか。",
         "romaji": "Eiga demo mi ni ikimashou ka.",
-        "translation": "Bagaimana kalau nonton film atau semacamnya?"
+        "translation": "Bagaimana kalau nonton film atau semacamnya?",
+        "translationEn": "How about watching a movie or something?"
       },
       {
         "japanese": "暇な時、本でも読んだらどうですか。",
         "romaji": "Hima na toki, hon demo yondara dou desu ka.",
-        "translation": "Saat senggang, bagaimana kalau membaca buku atau semacamnya?"
+        "translation": "Saat senggang, bagaimana kalau membaca buku atau semacamnya?",
+        "translationEn": "When you're free, how about reading a book or something?"
       }
-    ]
+    ],
+    "meaningEn": "Or something like that, for example (softens an invitation/suggestion)",
+    "formationEn": "Noun + でも + verb",
+    "usageNotesEn": "Unlike でも as the conjunction \"but\" (N5 level), this usage softens an invitation/suggestion by naming one casual example, as if saying \"X or something\", making the invitation sound less pushy."
   },
   {
     "id": "bunpou_dewa_nai_ka",
@@ -3191,19 +3257,25 @@
       {
         "japanese": "それは間違いではないか。",
         "romaji": "Sore wa machigai dewa nai ka.",
-        "translation": "Bukankah itu suatu kesalahan?"
+        "translation": "Bukankah itu suatu kesalahan?",
+        "translationEn": "Isn't that a mistake?"
       },
       {
         "japanese": "彼が犯人ではないか。",
         "romaji": "Kare ga hannin dewa nai ka.",
-        "translation": "Bukankah dia pelakunya?"
+        "translation": "Bukankah dia pelakunya?",
+        "translationEn": "Isn't he the culprit?"
       },
       {
         "japanese": "もう少し考えたほうがいいのではないか。",
         "romaji": "Mou sukoshi kangaeta hou ga ii no dewa nai ka.",
-        "translation": "Bukankah sebaiknya dipikirkan lebih lanjut?"
+        "translation": "Bukankah sebaiknya dipikirkan lebih lanjut?",
+        "translationEn": "Shouldn't we think about this more?"
       }
-    ]
+    ],
+    "meaningEn": "Isn't it ~? (rhetorical assertion)",
+    "formationEn": "Noun/na-adjective + ではないか; verb/i-adjective plain form + のではないか",
+    "usageNotesEn": "A rhetorical expression that asserts something by asking indirectly, similar to \"isn't that right?\" — often used to convey the speaker's strong opinion."
   },
   {
     "id": "bunpou_ga_hitsuyou",
@@ -3220,19 +3292,25 @@
       {
         "japanese": "お金が必要です。",
         "romaji": "Okane ga hitsuyou desu.",
-        "translation": "Perlu uang."
+        "translation": "Perlu uang.",
+        "translationEn": "Money is needed."
       },
       {
         "japanese": "この仕事には経験が必要です。",
         "romaji": "Kono shigoto ni wa keiken ga hitsuyou desu.",
-        "translation": "Pekerjaan ini membutuhkan pengalaman."
+        "translation": "Pekerjaan ini membutuhkan pengalaman.",
+        "translationEn": "This job requires experience."
       },
       {
         "japanese": "もっと時間が必要です。",
         "romaji": "Motto jikan ga hitsuyou desu.",
-        "translation": "Perlu lebih banyak waktu."
+        "translation": "Perlu lebih banyak waktu.",
+        "translationEn": "More time is needed."
       }
-    ]
+    ],
+    "meaningEn": "Need ~, require ~",
+    "formationEn": "Noun + が + 必要",
+    "usageNotesEn": "Expresses that something is needed/required, the needed noun is marked with the particle が."
   },
   {
     "id": "bunpou_ga_suru",
@@ -3247,19 +3325,25 @@
       {
         "japanese": "いい匂いがします。",
         "romaji": "Ii nioi ga shimasu.",
-        "translation": "Tercium bau yang enak."
+        "translation": "Tercium bau yang enak.",
+        "translationEn": "A nice smell is coming through."
       },
       {
         "japanese": "変な音がします。",
         "romaji": "Hen na oto ga shimasu.",
-        "translation": "Terdengar suara yang aneh."
+        "translation": "Terdengar suara yang aneh.",
+        "translationEn": "A strange sound can be heard."
       },
       {
         "japanese": "頭痛がします。",
         "romaji": "Zutsuu ga shimasu.",
-        "translation": "Terasa sakit kepala."
+        "translation": "Terasa sakit kepala.",
+        "translationEn": "I feel a headache coming on."
       }
-    ]
+    ],
+    "meaningEn": "To feel/smell/hear ~ (sensory)",
+    "formationEn": "Noun (smell/sound/taste/feeling) + が + する",
+    "usageNotesEn": "Expresses a sensory perception felt passively (smell, sound, taste, hunch), not a deliberate action."
   },
   {
     "id": "bunpou_gari",
@@ -3276,19 +3360,25 @@
       {
         "japanese": "彼は寒がりです。",
         "romaji": "Kare wa samugari desu.",
-        "translation": "Dia orang yang mudah kedinginan."
+        "translation": "Dia orang yang mudah kedinginan.",
+        "translationEn": "He easily gets cold."
       },
       {
         "japanese": "妹は恥ずかしがりです。",
         "romaji": "Imouto wa hazukashigari desu.",
-        "translation": "Adik perempuan saya pemalu."
+        "translation": "Adik perempuan saya pemalu.",
+        "translationEn": "My little sister is shy."
       },
       {
         "japanese": "彼女は寂しがりです。",
         "romaji": "Kanojo wa sabishigari desu.",
-        "translation": "Dia orang yang mudah kesepian."
+        "translation": "Dia orang yang mudah kesepian.",
+        "translationEn": "She easily gets lonely."
       }
-    ]
+    ],
+    "meaningEn": "Tends to feel/show ~ (about another person)",
+    "formationEn": "i-adjective (drop い) + がり; na-adjective + がり",
+    "usageNotesEn": "A suffix that turns a feeling-adjective into a noun, expressing that someone tends to/easily feels something (e.g. 寒がり — someone who easily gets cold), generally used for a third person."
   },
   {
     "id": "bunpou_garu",
@@ -3305,19 +3395,25 @@
       {
         "japanese": "弟が新しいおもちゃをほしがっています。",
         "romaji": "Otouto ga atarashii omocha o hoshigatte imasu.",
-        "translation": "Adik laki-laki saya menginginkan mainan baru."
+        "translation": "Adik laki-laki saya menginginkan mainan baru.",
+        "translationEn": "My little brother wants a new toy."
       },
       {
         "japanese": "子供が怖がっています。",
         "romaji": "Kodomo ga kowagatte imasu.",
-        "translation": "Anak itu terlihat ketakutan."
+        "translation": "Anak itu terlihat ketakutan.",
+        "translationEn": "That child looks scared."
       },
       {
         "japanese": "彼女は嬉しがっています。",
         "romaji": "Kanojo wa ureshigatte imasu.",
-        "translation": "Dia terlihat senang."
+        "translation": "Dia terlihat senang.",
+        "translationEn": "He looks happy."
       }
-    ]
+    ],
+    "meaningEn": "Shows signs of feeling ~ (about another person, happening now)",
+    "formationEn": "i-adjective (drop い) + がる/がっている; na-adjective + がる/がっている",
+    "usageNotesEn": "Unlike がり (a general trait/tendency), がる/がっている expresses that someone is currently showing signs of a certain feeling right now, used for a third person since another person's inner feelings can only be observed from outside."
   },
   {
     "id": "bunpou_gozaimasu",
@@ -3334,19 +3430,25 @@
       {
         "japanese": "お手洗いはあちらにございます。",
         "romaji": "Otearai wa achira ni gozaimasu.",
-        "translation": "Toiletnya ada di sebelah sana."
+        "translation": "Toiletnya ada di sebelah sana.",
+        "translationEn": "The restroom is over there."
       },
       {
         "japanese": "ありがとうございます。",
         "romaji": "Arigatou gozaimasu.",
-        "translation": "Terima kasih."
+        "translation": "Terima kasih.",
+        "translationEn": "Thank you very much."
       },
       {
         "japanese": "こちらにメニューがございます。",
         "romaji": "Kochira ni menyuu ga gozaimasu.",
-        "translation": "Menunya ada di sini."
+        "translation": "Menunya ada di sini.",
+        "translationEn": "The menu is here."
       }
-    ]
+    ],
+    "meaningEn": "To exist (extremely polite form of あります)",
+    "formationEn": "Noun + が + ございます",
+    "usageNotesEn": "The keigo (extremely polite) form of あります, used in formal service/business contexts."
   },
   {
     "id": "bunpou_hajimeru",
@@ -3363,19 +3465,25 @@
       {
         "japanese": "日本語を勉強し始めました。",
         "romaji": "Nihongo o benkyou shihajimemashita.",
-        "translation": "Saya mulai belajar bahasa Jepang."
+        "translation": "Saya mulai belajar bahasa Jepang.",
+        "translationEn": "I started studying Japanese."
       },
       {
         "japanese": "雨が降り始めました。",
         "romaji": "Ame ga furihajimemashita.",
-        "translation": "Hujan mulai turun."
+        "translation": "Hujan mulai turun.",
+        "translationEn": "It started raining."
       },
       {
         "japanese": "彼は走り始めました。",
         "romaji": "Kare wa hashirihajimemashita.",
-        "translation": "Dia mulai berlari."
+        "translation": "Dia mulai berlari.",
+        "translationEn": "He started running."
       }
-    ]
+    ],
+    "meaningEn": "Start ~",
+    "formationEn": "Verb ~ます form (drop ます) + 始める",
+    "usageNotesEn": "As a suffix on another verb, expresses the deliberate/gradual start of an activity, unlike 出す, which emphasizes suddenness/spontaneity."
   },
   {
     "id": "bunpou_hazu_da",
@@ -3392,19 +3500,25 @@
       {
         "japanese": "彼はもう着いているはずです。",
         "romaji": "Kare wa mou tsuite iru hazu desu.",
-        "translation": "Dia seharusnya sudah tiba."
+        "translation": "Dia seharusnya sudah tiba.",
+        "translationEn": "He should have already arrived."
       },
       {
         "japanese": "今日は休みのはずです。",
         "romaji": "Kyou wa yasumi no hazu desu.",
-        "translation": "Hari ini seharusnya libur."
+        "translation": "Hari ini seharusnya libur.",
+        "translationEn": "Today should be a holiday."
       },
       {
         "japanese": "彼女は日本語が上手なはずです。",
         "romaji": "Kanojo wa nihongo ga jouzu na hazu desu.",
-        "translation": "Dia seharusnya mahir bahasa Jepang."
+        "translation": "Dia seharusnya mahir bahasa Jepang.",
+        "translationEn": "He should be fluent in Japanese."
       }
-    ]
+    ],
+    "meaningEn": "Should be, is surely ~ (belief based on logic/information)",
+    "formationEn": "Verb/i-adjective plain form + はずだ; na-adjective/noun + な/の + はずだ",
+    "usageNotesEn": "Expresses a strong belief based on a logical reason/information (not just a guess), stronger in certainty than だろう/でしょう."
   },
   {
     "id": "bunpou_hazu_ga_nai",
@@ -3421,19 +3535,25 @@
       {
         "japanese": "彼がそんなことを言うはずがない。",
         "romaji": "Kare ga sonna koto o iu hazu ga nai.",
-        "translation": "Tidak mungkin dia mengatakan hal seperti itu."
+        "translation": "Tidak mungkin dia mengatakan hal seperti itu.",
+        "translationEn": "There's no way he'd say something like that."
       },
       {
         "japanese": "こんなに安いはずがない。",
         "romaji": "Konna ni yasui hazu ga nai.",
-        "translation": "Tidak mungkin semurah ini."
+        "translation": "Tidak mungkin semurah ini.",
+        "translationEn": "There's no way it's this cheap."
       },
       {
         "japanese": "彼女が嘘をつくはずがない。",
         "romaji": "Kanojo ga uso o tsuku hazu ga nai.",
-        "translation": "Tidak mungkin dia berbohong."
+        "translation": "Tidak mungkin dia berbohong.",
+        "translationEn": "There's no way he's lying."
       }
-    ]
+    ],
+    "meaningEn": "There's no way ~",
+    "formationEn": "Verb/i-adjective plain form + はずがない; na-adjective/noun + な/の + はずがない",
+    "usageNotesEn": "The strong negative form of はずだ, expressing a belief that something is IMPOSSIBLE based on the speaker's logic/information."
   },
   {
     "id": "bunpou_hitsuyou_ga_aru",
@@ -3450,19 +3570,25 @@
       {
         "japanese": "もっと勉強する必要があります。",
         "romaji": "Motto benkyou suru hitsuyou ga arimasu.",
-        "translation": "Perlu belajar lebih banyak."
+        "translation": "Perlu belajar lebih banyak.",
+        "translationEn": "I need to study more."
       },
       {
         "japanese": "すぐに病院に行く必要があります。",
         "romaji": "Sugu ni byouin ni iku hitsuyou ga arimasu.",
-        "translation": "Perlu segera pergi ke rumah sakit."
+        "translation": "Perlu segera pergi ke rumah sakit.",
+        "translationEn": "I need to go to the hospital right away."
       },
       {
         "japanese": "早く決める必要があります。",
         "romaji": "Hayaku kimeru hitsuyou ga arimasu.",
-        "translation": "Perlu segera memutuskan."
+        "translation": "Perlu segera memutuskan.",
+        "translationEn": "I need to decide right away."
       }
-    ]
+    ],
+    "meaningEn": "Need to ~",
+    "formationEn": "Verb dictionary form + 必要がある",
+    "usageNotesEn": "Expresses the necessity of doing something based on the situation, similar to なければならない but emphasizing an objective reason rather than personal obligation."
   },
   {
     "id": "bunpou_ikoukei",
@@ -3479,19 +3605,25 @@
       {
         "japanese": "明日早く起きよう。",
         "romaji": "Ashita hayaku okiyou.",
-        "translation": "Ayo (aku akan) bangun pagi besok."
+        "translation": "Ayo (aku akan) bangun pagi besok.",
+        "translationEn": "Let's wake up early tomorrow."
       },
       {
         "japanese": "一緒に行こう。",
         "romaji": "Issho ni ikou.",
-        "translation": "Ayo pergi bersama."
+        "translation": "Ayo pergi bersama.",
+        "translationEn": "Let's go together."
       },
       {
         "japanese": "頑張ろうと思います。",
         "romaji": "Ganbarou to omoimasu.",
-        "translation": "Saya berniat untuk berusaha."
+        "translation": "Saya berniat untuk berusaha.",
+        "translationEn": "I intend to try my best."
       }
-    ]
+    ],
+    "meaningEn": "Volitional form (e.g. 行こう, 食べよう)",
+    "formationEn": "Godan: u→ou (行く→行こう); ichidan: る→よう (食べる→食べよう); irregular: する→しよう, 来る→来よう",
+    "usageNotesEn": "A grammar category (not a single particle) expressing intent/invitation in a casual form, the informal counterpart of ~ましょう, also used in the と思う pattern (intending to do something)."
   },
   {
     "id": "bunpou_irassharu",
@@ -3508,19 +3640,25 @@
       {
         "japanese": "先生はもう教室にいらっしゃいます。",
         "romaji": "Sensei wa mou kyoushitsu ni irasshaimasu.",
-        "translation": "Guru sudah ada di kelas."
+        "translation": "Guru sudah ada di kelas.",
+        "translationEn": "The teacher is already in the classroom."
       },
       {
         "japanese": "明日、パーティーにいらっしゃいますか。",
         "romaji": "Ashita, paatii ni irasshaimasu ka.",
-        "translation": "Apakah besok Anda akan datang ke pesta?"
+        "translation": "Apakah besok Anda akan datang ke pesta?",
+        "translationEn": "Will you be coming to the party tomorrow?"
       },
       {
         "japanese": "お客様がいらっしゃいました。",
         "romaji": "Okyakusama ga irasshaimashita.",
-        "translation": "Tamu telah datang."
+        "translation": "Tamu telah datang.",
+        "translationEn": "The guest has arrived."
       }
-    ]
+    ],
+    "meaningEn": "To exist/go/come (extremely polite form — sonkeigo)",
+    "formationEn": "Noun + が/は + いらっしゃる (replaces いる/行く/来る)",
+    "usageNotesEn": "A keigo (sonkeigo) verb that replaces いる (to exist), 行く (to go), or 来る (to come) to refer to the action of a respected person, never used for oneself."
   },
   {
     "id": "bunpou_itashimasu",
@@ -3537,19 +3675,25 @@
       {
         "japanese": "私がご案内いたします。",
         "romaji": "Watashi ga goannai itashimasu.",
-        "translation": "Saya yang akan memandu Anda."
+        "translation": "Saya yang akan memandu Anda.",
+        "translationEn": "I will be your guide."
       },
       {
         "japanese": "よろしくお願いいたします。",
         "romaji": "Yoroshiku onegai itashimasu.",
-        "translation": "Mohon bantuannya."
+        "translation": "Mohon bantuannya.",
+        "translationEn": "I appreciate your kind support."
       },
       {
         "japanese": "すぐに確認いたします。",
         "romaji": "Sugu ni kakunin itashimasu.",
-        "translation": "Saya akan segera memeriksanya."
+        "translation": "Saya akan segera memeriksanya.",
+        "translationEn": "I will check on it right away."
       }
-    ]
+    ],
+    "meaningEn": "To do (extremely polite, humble form — kenjougo)",
+    "formationEn": "Noun + を + いたします (replaces します)",
+    "usageNotesEn": "A keigo (kenjougo) verb that humbles oneself while doing something for/in front of a respected person, the opposite direction of いらっしゃる, which elevates the listener."
   },
   {
     "id": "bunpou_ja_nai_ka",
@@ -3566,19 +3710,25 @@
       {
         "japanese": "それ、いいじゃないか。",
         "romaji": "Sore, ii janai ka.",
-        "translation": "Itu bagus, bukan?"
+        "translation": "Itu bagus, bukan?",
+        "translationEn": "That's great, isn't it?"
       },
       {
         "japanese": "もう遅いんじゃないか。",
         "romaji": "Mou osoi n janai ka.",
-        "translation": "Bukankah sudah terlambat?"
+        "translation": "Bukankah sudah terlambat?",
+        "translationEn": "Isn't it already late?"
       },
       {
         "japanese": "彼が正しいんじゃないか。",
         "romaji": "Kare ga tadashii n janai ka.",
-        "translation": "Bukankah dia yang benar?"
+        "translation": "Bukankah dia yang benar?",
+        "translationEn": "Isn't he the one who's right?"
       }
-    ]
+    ],
+    "meaningEn": "Isn't it ~? (casual version of ではないか)",
+    "formationEn": "Noun/na-adjective + じゃないか; verb/i-adjective plain form + んじゃないか",
+    "usageNotesEn": "The casual version of ではないか, used in everyday conversation to rhetorically assert something."
   },
   {
     "id": "bunpou_ka_dou_ka",
@@ -3593,19 +3743,25 @@
       {
         "japanese": "彼が来るかどうか分かりません。",
         "romaji": "Kare ga kuru ka dou ka wakarimasen.",
-        "translation": "Saya tidak tahu apakah dia akan datang atau tidak."
+        "translation": "Saya tidak tahu apakah dia akan datang atau tidak.",
+        "translationEn": "I don't know whether he'll come or not."
       },
       {
         "japanese": "これが正しいかどうか確認してください。",
         "romaji": "Kore ga tadashii ka dou ka kakunin shite kudasai.",
-        "translation": "Tolong periksa apakah ini benar atau tidak."
+        "translation": "Tolong periksa apakah ini benar atau tidak.",
+        "translationEn": "Please check whether this is correct or not."
       },
       {
         "japanese": "行けるかどうか分かりません。",
         "romaji": "Ikeru ka dou ka wakarimasen.",
-        "translation": "Saya tidak tahu apakah bisa pergi atau tidak."
+        "translation": "Saya tidak tahu apakah bisa pergi atau tidak.",
+        "translationEn": "I don't know whether I can go or not."
       }
-    ]
+    ],
+    "meaningEn": "Whether ~ or not",
+    "formationEn": "Sentence (plain form) + かどうか",
+    "usageNotesEn": "Expresses uncertainty about whether something is true or not, often followed by verbs like 分からない/確認する."
   },
   {
     "id": "bunpou_kashira",
@@ -3622,19 +3778,25 @@
       {
         "japanese": "明日は晴れるかしら。",
         "romaji": "Ashita wa hareru kashira.",
-        "translation": "Apa besok akan cerah, ya?"
+        "translation": "Apa besok akan cerah, ya?",
+        "translationEn": "I wonder if it'll be sunny tomorrow."
       },
       {
         "japanese": "彼は元気かしら。",
         "romaji": "Kare wa genki kashira.",
-        "translation": "Apa dia baik-baik saja, ya?"
+        "translation": "Apa dia baik-baik saja, ya?",
+        "translationEn": "I wonder if he's okay."
       },
       {
         "japanese": "どうしようかしら。",
         "romaji": "Dou shiyou kashira.",
-        "translation": "Bagaimana ya sebaiknya?"
+        "translation": "Bagaimana ya sebaiknya?",
+        "translationEn": "I wonder what's best to do."
       }
-    ]
+    ],
+    "meaningEn": "I wonder ~? (gentle questioning particle, traditionally feminine speech)",
+    "formationEn": "Sentence (plain form) + かしら",
+    "usageNotesEn": "A questioning particle expressing self-directed doubt/wondering, traditionally regarded as characteristic of women's speech, though it's used less directly by men."
   },
   {
     "id": "bunpou_kai",
@@ -3649,19 +3811,25 @@
       {
         "japanese": "元気かい。",
         "romaji": "Genki kai.",
-        "translation": "Kamu sehat?"
+        "translation": "Kamu sehat?",
+        "translationEn": "Are you doing well?"
       },
       {
         "japanese": "もう終わったかい。",
         "romaji": "Mou owatta kai.",
-        "translation": "Sudah selesai?"
+        "translation": "Sudah selesai?",
+        "translationEn": "Are you done already?"
       },
       {
         "japanese": "これでいいかい。",
         "romaji": "Kore de ii kai.",
-        "translation": "Ini sudah cukup?"
+        "translation": "Ini sudah cukup?",
+        "translationEn": "Is this enough already?"
       }
-    ]
+    ],
+    "meaningEn": "Casual questioning particle (traditionally men's/older speaker's speech)",
+    "formationEn": "Sentence (plain form) + かい",
+    "usageNotesEn": "A casual questioning particle that gives a friendly/familiar impression, traditionally used by men or older speakers toward younger ones."
   },
   {
     "id": "bunpou_kamoshirenai",
@@ -3679,19 +3847,25 @@
       {
         "japanese": "明日雨が降るかもしれません。",
         "romaji": "Ashita ame ga furu kamoshiremasen.",
-        "translation": "Besok mungkin hujan."
+        "translation": "Besok mungkin hujan.",
+        "translationEn": "It might rain tomorrow."
       },
       {
         "japanese": "彼は忙しいかもしれません。",
         "romaji": "Kare wa isogashii kamoshiremasen.",
-        "translation": "Dia mungkin sedang sibuk."
+        "translation": "Dia mungkin sedang sibuk.",
+        "translationEn": "He might be busy."
       },
       {
         "japanese": "これは間違いかもしれません。",
         "romaji": "Kore wa machigai kamoshiremasen.",
-        "translation": "Ini mungkin suatu kesalahan."
+        "translation": "Ini mungkin suatu kesalahan.",
+        "translationEn": "This might be a mistake."
       }
-    ]
+    ],
+    "meaningEn": "Might ~ (lower likelihood than だろう)",
+    "formationEn": "Verb/i-adjective plain form + かもしれない; na-adjective/noun + かもしれない",
+    "usageNotesEn": "Expresses a lower/less certain possibility than だろう/でしょう, can be used even for a small chance."
   },
   {
     "id": "bunpou_kana",
@@ -3708,19 +3882,25 @@
       {
         "japanese": "明日は晴れるかな。",
         "romaji": "Ashita wa hareru kana.",
-        "translation": "Apa besok cerah, ya?"
+        "translation": "Apa besok cerah, ya?",
+        "translationEn": "I wonder if it'll be sunny tomorrow."
       },
       {
         "japanese": "どっちがいいかな。",
         "romaji": "Docchi ga ii kana.",
-        "translation": "Mana yang lebih baik, ya?"
+        "translation": "Mana yang lebih baik, ya?",
+        "translationEn": "I wonder which one is better."
       },
       {
         "japanese": "もう帰ってもいいかな。",
         "romaji": "Mou kaettemo ii kana.",
-        "translation": "Boleh pulang sekarang, ya?"
+        "translation": "Boleh pulang sekarang, ya?",
+        "translationEn": "I wonder if it's okay to go home now."
       }
-    ]
+    ],
+    "meaningEn": "I wonder ~? (self-directed question, gender-neutral)",
+    "formationEn": "Sentence (plain form) + かな",
+    "usageNotesEn": "Similar to かしら but gender-neutral and more commonly used in everyday speech, expresses light self-directed doubt/wondering."
   },
   {
     "id": "bunpou_kara_tsukuru",
@@ -3735,19 +3915,25 @@
       {
         "japanese": "お酒は米から作られます。",
         "romaji": "Osake wa kome kara tsukuraremasu.",
-        "translation": "Sake dibuat dari beras."
+        "translation": "Sake dibuat dari beras.",
+        "translationEn": "Sake is made from rice."
       },
       {
         "japanese": "チーズは牛乳から作られます。",
         "romaji": "Chiizu wa gyuunyuu kara tsukuraremasu.",
-        "translation": "Keju dibuat dari susu."
+        "translation": "Keju dibuat dari susu.",
+        "translationEn": "Cheese is made from milk."
       },
       {
         "japanese": "紙は木から作られます。",
         "romaji": "Kami wa ki kara tsukuraremasu.",
-        "translation": "Kertas dibuat dari kayu."
+        "translation": "Kertas dibuat dari kayu.",
+        "translationEn": "Paper is made from wood."
       }
-    ]
+    ],
+    "meaningEn": "Made from ~ (raw material transformed)",
+    "formationEn": "Noun (raw material) + から + 作る",
+    "usageNotesEn": "Expresses a raw material that changes shape/form significantly into the final product (unlike 〜で作る, used when the original material is still clearly visible in the finished result)."
   },
   {
     "id": "bunpou_kitto",
@@ -3764,19 +3950,25 @@
       {
         "japanese": "彼はきっと来ます。",
         "romaji": "Kare wa kitto kimasu.",
-        "translation": "Dia pasti akan datang."
+        "translation": "Dia pasti akan datang.",
+        "translationEn": "He'll surely come."
       },
       {
         "japanese": "きっと大丈夫です。",
         "romaji": "Kitto daijoubu desu.",
-        "translation": "Pasti baik-baik saja."
+        "translation": "Pasti baik-baik saja.",
+        "translationEn": "It'll surely be fine."
       },
       {
         "japanese": "きっと成功するでしょう。",
         "romaji": "Kitto seikou suru deshou.",
-        "translation": "Pasti akan berhasil."
+        "translation": "Pasti akan berhasil.",
+        "translationEn": "It'll surely succeed."
       }
-    ]
+    ],
+    "meaningEn": "Surely ~ (strong belief)",
+    "formationEn": "きっと + sentence (often ending with だろう/でしょう/はずだ)",
+    "usageNotesEn": "An adverb expressing the speaker's strong belief, often paired with だろう/でしょう to reinforce the guess."
   },
   {
     "id": "bunpou_koro_goro",
@@ -3791,19 +3983,25 @@
       {
         "japanese": "三時頃、来てください。",
         "romaji": "Sanji goro, kite kudasai.",
-        "translation": "Tolong datang sekitar jam tiga."
+        "translation": "Tolong datang sekitar jam tiga.",
+        "translationEn": "Please come around three o'clock."
       },
       {
         "japanese": "子供の頃、よく公園で遊びました。",
         "romaji": "Kodomo no koro, yoku kouen de asobimashita.",
-        "translation": "Waktu kecil, saya sering bermain di taman."
+        "translation": "Waktu kecil, saya sering bermain di taman.",
+        "translationEn": "When I was little, I often played at the park."
       },
       {
         "japanese": "来月の頃には終わるでしょう。",
         "romaji": "Raigetsu no koro ni wa owaru deshou.",
-        "translation": "Sekitar bulan depan mungkin akan selesai."
+        "translation": "Sekitar bulan depan mungkin akan selesai.",
+        "translationEn": "It might be finished around next month."
       }
-    ]
+    ],
+    "meaningEn": "Around (a time)",
+    "formationEn": "Noun (time) + 頃",
+    "usageNotesEn": "Expresses an approximate/rough time, read ころ standalone or ごろ when attached after another word (rendaku), unlike くらい, which is more about an amount/duration."
   },
   {
     "id": "bunpou_koto",
@@ -3820,19 +4018,25 @@
       {
         "japanese": "泳ぐことが好きです。",
         "romaji": "Oyogu koto ga suki desu.",
-        "translation": "Saya suka (hal) berenang."
+        "translation": "Saya suka (hal) berenang.",
+        "translationEn": "I like swimming."
       },
       {
         "japanese": "早く起きることは大切です。",
         "romaji": "Hayaku okiru koto wa taisetsu desu.",
-        "translation": "Bangun pagi itu penting."
+        "translation": "Bangun pagi itu penting.",
+        "translationEn": "Waking up early is important."
       },
       {
         "japanese": "彼の言うことは正しいです。",
         "romaji": "Kare no iu koto wa tadashii desu.",
-        "translation": "Apa yang dia katakan itu benar."
+        "translation": "Apa yang dia katakan itu benar.",
+        "translationEn": "What he said is true."
       }
-    ]
+    ],
+    "meaningEn": "Thing, matter (nominalizes a verb/sentence)",
+    "formationEn": "Verb dictionary form + こと",
+    "usageNotesEn": "Nominalizes a verb/sentence into an abstract noun phrase, similar to の but こと suits abstract concepts/statements better than a direct sensory perception."
   },
   {
     "id": "bunpou_koto_ga_aru",
@@ -3849,19 +4053,25 @@
       {
         "japanese": "時々、遅刻することがあります。",
         "romaji": "Tokidoki, chikoku suru koto ga arimasu.",
-        "translation": "Kadang-kadang saya terlambat."
+        "translation": "Kadang-kadang saya terlambat.",
+        "translationEn": "I'm sometimes late."
       },
       {
         "japanese": "彼は嘘をつくことがあります。",
         "romaji": "Kare wa uso o tsuku koto ga arimasu.",
-        "translation": "Dia kadang-kadang berbohong."
+        "translation": "Dia kadang-kadang berbohong.",
+        "translationEn": "He sometimes lies."
       },
       {
         "japanese": "忘れることがあります。",
         "romaji": "Wasureru koto ga arimasu.",
-        "translation": "Kadang-kadang saya lupa."
+        "translation": "Kadang-kadang saya lupa.",
+        "translationEn": "I sometimes forget."
       }
-    ]
+    ],
+    "meaningEn": "Sometimes ~ happens",
+    "formationEn": "Verb dictionary form + ことがある",
+    "usageNotesEn": "Expresses that something sometimes/occasionally happens, don't confuse it with たことがある (have done before, experience), which uses the past form."
   },
   {
     "id": "bunpou_koto_ga_dekiru",
@@ -3876,19 +4086,25 @@
       {
         "japanese": "日本語を話すことができます。",
         "romaji": "Nihongo o hanasu koto ga dekimasu.",
-        "translation": "Bisa berbicara bahasa Jepang."
+        "translation": "Bisa berbicara bahasa Jepang.",
+        "translationEn": "I can speak Japanese."
       },
       {
         "japanese": "ここで泳ぐことができます。",
         "romaji": "Koko de oyogu koto ga dekimasu.",
-        "translation": "Bisa berenang di sini."
+        "translation": "Bisa berenang di sini.",
+        "translationEn": "You can swim here."
       },
       {
         "japanese": "一人で行くことができません。",
         "romaji": "Hitori de iku koto ga dekimasen.",
-        "translation": "Tidak bisa pergi sendirian."
+        "translation": "Tidak bisa pergi sendirian.",
+        "translationEn": "I can't go alone."
       }
-    ]
+    ],
+    "meaningEn": "Can/be able to ~",
+    "formationEn": "Verb dictionary form + ことができる",
+    "usageNotesEn": "Expresses the ability to do something, a more formal/written form than the direct potential form (e.g. 食べられる)."
   },
   {
     "id": "bunpou_koto_ni_naru",
@@ -3905,19 +4121,25 @@
       {
         "japanese": "来月、大阪に引っ越すことになりました。",
         "romaji": "Raigetsu, Oosaka ni hikkosu koto ni narimashita.",
-        "translation": "Sudah diputuskan saya akan pindah ke Osaka bulan depan."
+        "translation": "Sudah diputuskan saya akan pindah ke Osaka bulan depan.",
+        "translationEn": "It's been decided that I'll move to Osaka next month."
       },
       {
         "japanese": "会議は中止することになりました。",
         "romaji": "Kaigi wa chuushi suru koto ni narimashita.",
-        "translation": "Sudah ditetapkan rapatnya dibatalkan."
+        "translation": "Sudah ditetapkan rapatnya dibatalkan.",
+        "translationEn": "It's been decided that the meeting is canceled."
       },
       {
         "japanese": "彼と結婚することになりました。",
         "romaji": "Kare to kekkon suru koto ni narimashita.",
-        "translation": "Sudah diputuskan saya akan menikah dengannya."
+        "translation": "Sudah diputuskan saya akan menikah dengannya.",
+        "translationEn": "It's been decided that I'll marry him."
       }
-    ]
+    ],
+    "meaningEn": "It has been decided that ~ (indirectly/passively)",
+    "formationEn": "Verb dictionary/~ない form + ことになる",
+    "usageNotesEn": "Expresses that a decision/outcome happened as if not by the speaker's own direct will, often used for official announcements or results decided by another party."
   },
   {
     "id": "bunpou_koto_ni_suru",
@@ -3934,19 +4156,25 @@
       {
         "japanese": "明日から毎日運動することにします。",
         "romaji": "Ashita kara mainichi undou suru koto ni shimasu.",
-        "translation": "Saya memutuskan untuk berolahraga setiap hari mulai besok."
+        "translation": "Saya memutuskan untuk berolahraga setiap hari mulai besok.",
+        "translationEn": "I've decided to exercise every day starting tomorrow."
       },
       {
         "japanese": "タバコをやめることにしました。",
         "romaji": "Tabako o yameru koto ni shimashita.",
-        "translation": "Saya memutuskan untuk berhenti merokok."
+        "translation": "Saya memutuskan untuk berhenti merokok.",
+        "translationEn": "I've decided to quit smoking."
       },
       {
         "japanese": "今年は旅行しないことにしました。",
         "romaji": "Kotoshi wa ryokou shinai koto ni shimashita.",
-        "translation": "Saya memutuskan untuk tidak berlibur tahun ini."
+        "translation": "Saya memutuskan untuk tidak berlibur tahun ini.",
+        "translationEn": "I've decided not to go on vacation this year."
       }
-    ]
+    ],
+    "meaningEn": "Decide to ~ (the speaker's direct will)",
+    "formationEn": "Verb dictionary/~ない form + ことにする",
+    "usageNotesEn": "Unlike ことになる (an outcome outside one's control/passive), ことにする expresses a decision made consciously/actively by the speaker themselves."
   },
   {
     "id": "bunpou_ku_suru",
@@ -3963,19 +4191,25 @@
       {
         "japanese": "部屋を明るくしました。",
         "romaji": "Heya o akaruku shimashita.",
-        "translation": "Membuat kamar menjadi terang."
+        "translation": "Membuat kamar menjadi terang.",
+        "translationEn": "Making the room bright."
       },
       {
         "japanese": "音を小さくしてください。",
         "romaji": "Oto o chiisaku shite kudasai.",
-        "translation": "Tolong kecilkan suaranya."
+        "translation": "Tolong kecilkan suaranya.",
+        "translationEn": "Please turn the volume down."
       },
       {
         "japanese": "スープを熱くしました。",
         "romaji": "Suupu o atsuku shimashita.",
-        "translation": "Membuat sup menjadi panas."
+        "translation": "Membuat sup menjadi panas.",
+        "translationEn": "Making the soup hot."
       }
-    ]
+    ],
+    "meaningEn": "Make ~ (i-adjective, a deliberate change)",
+    "formationEn": "i-adjective (drop い) + くする",
+    "usageNotesEn": "Expresses a deliberate action of making something into a certain state (i-adjective), paired with なる, which expresses a natural/passive change."
   },
   {
     "id": "bunpou_kyuu_ni",
@@ -3990,19 +4224,25 @@
       {
         "japanese": "急に雨が降ってきました。",
         "romaji": "Kyuu ni ame ga futte kimashita.",
-        "translation": "Tiba-tiba hujan turun."
+        "translation": "Tiba-tiba hujan turun.",
+        "translationEn": "It suddenly started raining."
       },
       {
         "japanese": "急に予定が変わりました。",
         "romaji": "Kyuu ni yotei ga kawarimashita.",
-        "translation": "Rencananya tiba-tiba berubah."
+        "translation": "Rencananya tiba-tiba berubah.",
+        "translationEn": "The plan suddenly changed."
       },
       {
         "japanese": "彼は急に立ち上がりました。",
         "romaji": "Kare wa kyuu ni tachiagarimashita.",
-        "translation": "Dia tiba-tiba berdiri."
+        "translation": "Dia tiba-tiba berdiri.",
+        "translationEn": "He suddenly stood up."
       }
-    ]
+    ],
+    "meaningEn": "Suddenly, abruptly",
+    "formationEn": "急に + verb",
+    "usageNotesEn": "An adverb expressing that something happens suddenly/without warning, similar to 突然."
   },
   {
     "id": "bunpou_made_ni",
@@ -4019,19 +4259,25 @@
       {
         "japanese": "金曜日までにレポートを出してください。",
         "romaji": "Kin'youbi made ni repooto o dashite kudasai.",
-        "translation": "Tolong serahkan laporan paling lambat hari Jumat."
+        "translation": "Tolong serahkan laporan paling lambat hari Jumat.",
+        "translationEn": "Please submit the report by Friday at the latest."
       },
       {
         "japanese": "五時までに帰ります。",
         "romaji": "Goji made ni kaerimasu.",
-        "translation": "Saya akan pulang sebelum jam lima."
+        "translation": "Saya akan pulang sebelum jam lima.",
+        "translationEn": "I'll be home before five o'clock."
       },
       {
         "japanese": "来週までに決めてください。",
         "romaji": "Raishuu made ni kimete kudasai.",
-        "translation": "Tolong putuskan sebelum minggu depan."
+        "translation": "Tolong putuskan sebelum minggu depan.",
+        "translationEn": "Please decide by next week."
       }
-    ]
+    ],
+    "meaningEn": "By/before a deadline ~",
+    "formationEn": "Noun (time) + までに",
+    "usageNotesEn": "Expresses a deadline, unlike まで, which expresses a duration continuing up to a point — までに emphasizes that the action must be completed BEFORE or AT that point, not continuing up to it."
   },
   {
     "id": "bunpou_mama",
@@ -4046,19 +4292,25 @@
       {
         "japanese": "靴を履いたまま部屋に入りました。",
         "romaji": "Kutsu o haita mama heya ni hairimashita.",
-        "translation": "Masuk kamar dengan sepatu masih dipakai."
+        "translation": "Masuk kamar dengan sepatu masih dipakai.",
+        "translationEn": "He entered the room with his shoes still on."
       },
       {
         "japanese": "テレビをつけたまま寝てしまいました。",
         "romaji": "Terebi o tsuketa mama nete shimaimashita.",
-        "translation": "Tertidur dengan TV masih menyala."
+        "translation": "Tertidur dengan TV masih menyala.",
+        "translationEn": "He fell asleep with the TV still on."
       },
       {
         "japanese": "そのままにしておいてください。",
         "romaji": "Sono mama ni shite oite kudasai.",
-        "translation": "Tolong biarkan apa adanya begitu saja."
+        "translation": "Tolong biarkan apa adanya begitu saja.",
+        "translationEn": "Please just leave it as it is."
       }
-    ]
+    ],
+    "meaningEn": "Remaining in the state of ~, as-is",
+    "formationEn": "Verb past form (~た)/te-form with いる/ある + まま; noun + の + まま",
+    "usageNotesEn": "Expresses a condition continuing unchanged while another action happens, e.g. 靴を履いたまま部屋に入った (entered the room with shoes still on)."
   },
   {
     "id": "bunpou_matawa",
@@ -4073,19 +4325,25 @@
       {
         "japanese": "ペンまたは鉛筆で書いてください。",
         "romaji": "Pen matawa enpitsu de kaite kudasai.",
-        "translation": "Tolong tulis dengan pulpen atau pensil."
+        "translation": "Tolong tulis dengan pulpen atau pensil.",
+        "translationEn": "Please write with a pen or pencil."
       },
       {
         "japanese": "電話またはメールでご連絡ください。",
         "romaji": "Denwa matawa meeru de gorenraku kudasai.",
-        "translation": "Tolong hubungi lewat telepon atau email."
+        "translation": "Tolong hubungi lewat telepon atau email.",
+        "translationEn": "Please contact us by phone or email."
       },
       {
         "japanese": "現金またはカードでお支払いください。",
         "romaji": "Genkin matawa kaado de oshiharai kudasai.",
-        "translation": "Tolong bayar dengan tunai atau kartu."
+        "translation": "Tolong bayar dengan tunai atau kartu.",
+        "translationEn": "Please pay in cash or by card."
       }
-    ]
+    ],
+    "meaningEn": "Or (formal conjunction)",
+    "formationEn": "Word/sentence A + または + word/sentence B",
+    "usageNotesEn": "A formal conjunction expressing a choice of \"or\", commonly used in official writing/instructions, more formal than それとも."
   },
   {
     "id": "bunpou_mitai_da",
@@ -4103,19 +4361,25 @@
       {
         "japanese": "雨が降っているみたいです。",
         "romaji": "Ame ga futte iru mitai desu.",
-        "translation": "Sepertinya sedang hujan."
+        "translation": "Sepertinya sedang hujan.",
+        "translationEn": "It seems to be raining."
       },
       {
         "japanese": "彼は疲れているみたいです。",
         "romaji": "Kare wa tsukarete iru mitai desu.",
-        "translation": "Sepertinya dia lelah."
+        "translation": "Sepertinya dia lelah.",
+        "translationEn": "He seems tired."
       },
       {
         "japanese": "これは本物みたいです。",
         "romaji": "Kore wa honmono mitai desu.",
-        "translation": "Ini sepertinya barang asli."
+        "translation": "Ini sepertinya barang asli.",
+        "translationEn": "This looks like the real thing."
       }
-    ]
+    ],
+    "meaningEn": "It seems ~ (impression-based guess, casual version of ようだ)",
+    "formationEn": "Noun/verb/adjective plain form + みたいだ",
+    "usageNotesEn": "The casual version of ようだ, expressing a guess based on a direct impression/observation, commonly used in everyday conversation."
   },
   {
     "id": "bunpou_mitai_na",
@@ -4133,19 +4397,25 @@
       {
         "japanese": "猫みたいな動物です。",
         "romaji": "Neko mitai na doubutsu desu.",
-        "translation": "Ini hewan yang seperti kucing."
+        "translation": "Ini hewan yang seperti kucing.",
+        "translationEn": "This is an animal that's like a cat."
       },
       {
         "japanese": "夢みたいな話です。",
         "romaji": "Yume mitai na hanashi desu.",
-        "translation": "Ini cerita yang seperti mimpi."
+        "translation": "Ini cerita yang seperti mimpi.",
+        "translationEn": "This is a story that's like a dream."
       },
       {
         "japanese": "子供みたいな性格です。",
         "romaji": "Kodomo mitai na seikaku desu.",
-        "translation": "Kepribadian yang seperti anak kecil."
+        "translation": "Kepribadian yang seperti anak kecil.",
+        "translationEn": "A personality that's like a child's."
       }
-    ]
+    ],
+    "meaningEn": "Like ~ (attributive form of みたいだ, modifying a noun)",
+    "formationEn": "Noun/verb plain form + みたいな + noun",
+    "usageNotesEn": "The form みたいだ takes when directly modifying the following noun (like a na-adjective), e.g. 猫みたいな動物 (an animal that's like a cat)."
   },
   {
     "id": "bunpou_mitai_ni",
@@ -4163,19 +4433,25 @@
       {
         "japanese": "鳥みたいに飛びたいです。",
         "romaji": "Tori mitai ni tobitai desu.",
-        "translation": "Ingin terbang seperti burung."
+        "translation": "Ingin terbang seperti burung.",
+        "translationEn": "I want to fly like a bird."
       },
       {
         "japanese": "彼みたいに上手に話したいです。",
         "romaji": "Kare mitai ni jouzu ni hanashitai desu.",
-        "translation": "Ingin bicara mahir seperti dia."
+        "translation": "Ingin bicara mahir seperti dia.",
+        "translationEn": "I want to speak fluently like him."
       },
       {
         "japanese": "昨日みたいに雨が降っています。",
         "romaji": "Kinou mitai ni ame ga futte imasu.",
-        "translation": "Hujan turun seperti kemarin."
+        "translation": "Hujan turun seperti kemarin.",
+        "translationEn": "It's raining like yesterday."
       }
-    ]
+    ],
+    "meaningEn": "Like ~ (adverbial form of みたいだ, modifying a verb)",
+    "formationEn": "Noun + みたいに + verb",
+    "usageNotesEn": "The form みたいだ takes when modifying a verb (like a na-adjective's に-form), e.g. 鳥みたいに飛ぶ (fly like a bird)."
   },
   {
     "id": "bunpou_mo2",
@@ -4192,19 +4468,25 @@
       {
         "japanese": "十時間も寝ました。",
         "romaji": "Juu jikan mo nemashita.",
-        "translation": "Saya tidur sampai sepuluh jam."
+        "translation": "Saya tidur sampai sepuluh jam.",
+        "translationEn": "I slept for as much as ten hours."
       },
       {
         "japanese": "三回も電話しました。",
         "romaji": "San kai mo denwa shimashita.",
-        "translation": "Saya menelepon sampai tiga kali."
+        "translation": "Saya menelepon sampai tiga kali.",
+        "translationEn": "I called as many as three times."
       },
       {
         "japanese": "一万円も使いました。",
         "romaji": "Ichiman en mo tsukaimashita.",
-        "translation": "Saya menghabiskan sampai sepuluh ribu yen."
+        "translation": "Saya menghabiskan sampai sepuluh ribu yen.",
+        "translationEn": "I spent as much as ten thousand yen."
       }
-    ]
+    ],
+    "meaningEn": "Even/as much as ~ (emphasizing a large/surprising quantity)",
+    "formationEn": "Number/quantity + も",
+    "usageNotesEn": "Unlike も meaning \"also\" (N5 level), this usage attaches to a number/quantity to emphasize that the amount is large/surprising, similar to \"as much as/even\"."
   },
   {
     "id": "bunpou_na",
@@ -4219,19 +4501,25 @@
       {
         "japanese": "そこに行くな。",
         "romaji": "Soko ni iku na.",
-        "translation": "Jangan pergi ke sana!"
+        "translation": "Jangan pergi ke sana!",
+        "translationEn": "Don't go there!"
       },
       {
         "japanese": "心配するな。",
         "romaji": "Shinpai suru na.",
-        "translation": "Jangan khawatir!"
+        "translation": "Jangan khawatir!",
+        "translationEn": "Don't worry!"
       },
       {
         "japanese": "触るな。",
         "romaji": "Sawaru na.",
-        "translation": "Jangan sentuh!"
+        "translation": "Jangan sentuh!",
+        "translationEn": "Don't touch!"
       }
-    ]
+    ],
+    "meaningEn": "Don't ~ (blunt/harsh prohibition)",
+    "formationEn": "Verb dictionary form + な",
+    "usageNotesEn": "A very casual/harsh prohibition particle, attaching directly to the dictionary form of the verb, commonly used by men or in urgent/blunt situations."
   },
   {
     "id": "bunpou_nado",
@@ -4248,19 +4536,25 @@
       {
         "japanese": "りんごやバナナなどが好きです。",
         "romaji": "Ringo ya banana nado ga suki desu.",
-        "translation": "Saya suka apel, pisang, dan lain-lain."
+        "translation": "Saya suka apel, pisang, dan lain-lain.",
+        "translationEn": "I like apples, bananas, etc."
       },
       {
         "japanese": "日本にはお寿司などおいしい食べ物があります。",
         "romaji": "Nihon ni wa osushi nado oishii tabemono ga arimasu.",
-        "translation": "Di Jepang ada makanan enak seperti sushi dan sebagainya."
+        "translation": "Di Jepang ada makanan enak seperti sushi dan sebagainya.",
+        "translationEn": "In Japan there's delicious food like sushi and so on."
       },
       {
         "japanese": "掃除や洗濯などをしました。",
         "romaji": "Souji ya sentaku nado o shimashita.",
-        "translation": "Saya melakukan bersih-bersih, cuci baju, dan sebagainya."
+        "translation": "Saya melakukan bersih-bersih, cuci baju, dan sebagainya.",
+        "translationEn": "I did cleaning, laundry, and so on."
       }
-    ]
+    ],
+    "meaningEn": "Etc., and so on",
+    "formationEn": "Noun + など",
+    "usageNotesEn": "Names one or more examples from a broader category, similar to や but can be used after just one noun (doesn't require connecting two nouns)."
   },
   {
     "id": "bunpou_nagara",
@@ -4275,19 +4569,25 @@
       {
         "japanese": "音楽を聞きながら勉強します。",
         "romaji": "Ongaku o kikinagara benkyou shimasu.",
-        "translation": "Belajar sambil mendengarkan musik."
+        "translation": "Belajar sambil mendengarkan musik.",
+        "translationEn": "Studying while listening to music."
       },
       {
         "japanese": "テレビを見ながら食べました。",
         "romaji": "Terebi o minagara tabemashita.",
-        "translation": "Makan sambil menonton TV."
+        "translation": "Makan sambil menonton TV.",
+        "translationEn": "Eating while watching TV."
       },
       {
         "japanese": "歩きながら話しましょう。",
         "romaji": "Arukinagara hanashimashou.",
-        "translation": "Ayo bicara sambil berjalan."
+        "translation": "Ayo bicara sambil berjalan.",
+        "translationEn": "Let's talk while walking."
       }
-    ]
+    ],
+    "meaningEn": "While ~",
+    "formationEn": "Verb ~ます form (drop ます) + ながら",
+    "usageNotesEn": "Expresses two actions done at the same time by the same subject, the main action is in the second clause."
   },
   {
     "id": "bunpou_nakanaka_nai",
@@ -4302,19 +4602,25 @@
       {
         "japanese": "バスがなかなか来ません。",
         "romaji": "Basu ga nakanaka kimasen.",
-        "translation": "Bus tidak kunjung datang."
+        "translation": "Bus tidak kunjung datang.",
+        "translationEn": "The bus just won't come."
       },
       {
         "japanese": "日本語がなかなか上手になりません。",
         "romaji": "Nihongo ga nakanaka jouzu ni narimasen.",
-        "translation": "Bahasa Jepang saya tidak kunjung mahir."
+        "translation": "Bahasa Jepang saya tidak kunjung mahir.",
+        "translationEn": "My Japanese just won't improve."
       },
       {
         "japanese": "病気がなかなか治りません。",
         "romaji": "Byouki ga nakanaka naorimasen.",
-        "translation": "Penyakitnya tidak kunjung sembuh."
+        "translation": "Penyakitnya tidak kunjung sembuh.",
+        "translationEn": "The illness just won't heal."
       }
-    ]
+    ],
+    "meaningEn": "Just won't/doesn't easily ~ (despite trying)",
+    "formationEn": "なかなか + verb negative form",
+    "usageNotesEn": "Expresses that something just won't happen despite being attempted/waited for, emphasizing a frustrating difficulty or delay."
   },
   {
     "id": "bunpou_nakereba_ikenai",
@@ -4332,19 +4638,25 @@
       {
         "japanese": "毎日運動しなければいけません。",
         "romaji": "Mainichi undou shinakereba ikemasen.",
-        "translation": "Harus berolahraga setiap hari."
+        "translation": "Harus berolahraga setiap hari.",
+        "translationEn": "I must exercise every day."
       },
       {
         "japanese": "早く寝なければいけない。",
         "romaji": "Hayaku nenakereba ikenai.",
-        "translation": "Harus tidur cepat."
+        "translation": "Harus tidur cepat.",
+        "translationEn": "I must sleep early."
       },
       {
         "japanese": "約束を守らなければいけません。",
         "romaji": "Yakusoku o mamoranakereba ikemasen.",
-        "translation": "Harus menepati janji."
+        "translation": "Harus menepati janji.",
+        "translationEn": "I must keep my promise."
       }
-    ]
+    ],
+    "meaningEn": "Must ~ (synonym of なくてはいけない)",
+    "formationEn": "Verb ~ない form (drop い) + ければいけない",
+    "usageNotesEn": "A synonym of なくてはいけない, grammatically derived from the conditional ば form (~なければ + いけない), equally common."
   },
   {
     "id": "bunpou_nakereba_naranai",
@@ -4362,19 +4674,25 @@
       {
         "japanese": "規則を守らなければならない。",
         "romaji": "Kisoku o mamoranakereba naranai.",
-        "translation": "Harus mematuhi peraturan."
+        "translation": "Harus mematuhi peraturan.",
+        "translationEn": "Everyone must follow the rules."
       },
       {
         "japanese": "税金を払わなければなりません。",
         "romaji": "Zeikin o harawanakereba narimasen.",
-        "translation": "Harus membayar pajak."
+        "translation": "Harus membayar pajak.",
+        "translationEn": "Everyone must pay taxes."
       },
       {
         "japanese": "全員が出席しなければならない。",
         "romaji": "Zen'in ga shusseki shinakereba naranai.",
-        "translation": "Semua orang harus hadir."
+        "translation": "Semua orang harus hadir.",
+        "translationEn": "Everyone must attend."
       }
-    ]
+    ],
+    "meaningEn": "Must ~ (more formal, synonym of なくてはならない)",
+    "formationEn": "Verb ~ない form (drop い) + ければならない",
+    "usageNotesEn": "A synonym of なくてはならない, the more formal/written ば-conditional version, often used in official rules."
   },
   {
     "id": "bunpou_nara",
@@ -4391,19 +4709,25 @@
       {
         "japanese": "日本に行くなら、京都がおすすめです。",
         "romaji": "Nihon ni iku nara, Kyouto ga osusume desu.",
-        "translation": "Kalau (kamu mau) pergi ke Jepang, saya rekomendasikan Kyoto."
+        "translation": "Kalau (kamu mau) pergi ke Jepang, saya rekomendasikan Kyoto.",
+        "translationEn": "If you're going to Japan, I recommend Kyoto."
       },
       {
         "japanese": "忙しいなら、後で電話します。",
         "romaji": "Isogashii nara, ato de denwa shimasu.",
-        "translation": "Kalau sedang sibuk, saya akan telepon nanti."
+        "translation": "Kalau sedang sibuk, saya akan telepon nanti.",
+        "translationEn": "If you're busy, I'll call later."
       },
       {
         "japanese": "好きなら、買ってください。",
         "romaji": "Suki nara, katte kudasai.",
-        "translation": "Kalau suka, silakan beli."
+        "translation": "Kalau suka, silakan beli.",
+        "translationEn": "If you like it, please buy it."
       }
-    ]
+    ],
+    "meaningEn": "If ~, if that's really the case",
+    "formationEn": "Noun/na-adjective + なら; verb/i-adjective plain form + なら",
+    "usageNotesEn": "A conditional that responds to a topic/situation the listener just mentioned, often used to give advice based on newly learned information."
   },
   {
     "id": "bunpou_nasai",
@@ -4418,19 +4742,25 @@
       {
         "japanese": "早く寝なさい。",
         "romaji": "Hayaku nenasai.",
-        "translation": "Cepat tidur."
+        "translation": "Cepat tidur.",
+        "translationEn": "Go to sleep quickly."
       },
       {
         "japanese": "宿題をしなさい。",
         "romaji": "Shukudai o shinasai.",
-        "translation": "Kerjakan PR-mu."
+        "translation": "Kerjakan PR-mu.",
+        "translationEn": "Do your homework."
       },
       {
         "japanese": "もっと勉強しなさい。",
         "romaji": "Motto benkyou shinasai.",
-        "translation": "Belajarlah lebih giat."
+        "translation": "Belajarlah lebih giat.",
+        "translationEn": "Study harder."
       }
-    ]
+    ],
+    "meaningEn": "Do ~ (a somewhat gentle command, typically to a child/student)",
+    "formationEn": "Verb ~ます form (drop ます) + なさい",
+    "usageNotesEn": "A command form gentler than the harsh imperative form (行け etc.), commonly used by parents to children or teachers to students."
   },
   {
     "id": "bunpou_nasaru",
@@ -4448,19 +4778,25 @@
       {
         "japanese": "何をなさいますか。",
         "romaji": "Nani o nasaimasu ka.",
-        "translation": "Apa yang akan Anda lakukan?"
+        "translation": "Apa yang akan Anda lakukan?",
+        "translationEn": "What will you be doing?"
       },
       {
         "japanese": "どうぞ、ご自由になさってください。",
         "romaji": "Douzo, gojiyuu ni nasatte kudasai.",
-        "translation": "Silakan, lakukan sesuka Anda."
+        "translation": "Silakan, lakukan sesuka Anda.",
+        "translationEn": "Please do as you wish."
       },
       {
         "japanese": "社長がご挨拶なさいました。",
         "romaji": "Shachou ga goaisatsu nasaimashita.",
-        "translation": "Direktur telah memberikan sambutan."
+        "translation": "Direktur telah memberikan sambutan.",
+        "translationEn": "The director has given a speech."
       }
-    ]
+    ],
+    "meaningEn": "To do (polite sonkeigo form of する)",
+    "formationEn": "Noun + を + なさる",
+    "usageNotesEn": "A keigo (sonkeigo) verb that replaces する to refer to the action of a respected person."
   },
   {
     "id": "bunpou_ni_ki_ga_tsuku",
@@ -4475,19 +4811,25 @@
       {
         "japanese": "間違いに気がつきました。",
         "romaji": "Machigai ni ki ga tsukimashita.",
-        "translation": "Saya menyadari kesalahannya."
+        "translation": "Saya menyadari kesalahannya.",
+        "translationEn": "I noticed the mistake."
       },
       {
         "japanese": "彼の変化に気がつきませんでした。",
         "romaji": "Kare no henka ni ki ga tsukimasen deshita.",
-        "translation": "Saya tidak menyadari perubahannya."
+        "translation": "Saya tidak menyadari perubahannya.",
+        "translationEn": "I didn't notice the change."
       },
       {
         "japanese": "忘れ物に気がつきました。",
         "romaji": "Wasuremono ni ki ga tsukimashita.",
-        "translation": "Saya menyadari ada barang yang tertinggal."
+        "translation": "Saya menyadari ada barang yang tertinggal.",
+        "translationEn": "I noticed something had been left behind."
       }
-    ]
+    ],
+    "meaningEn": "Notice ~",
+    "formationEn": "Noun + に + 気がつく",
+    "usageNotesEn": "Expresses noticing/becoming aware of something, often used for something not previously noticed."
   },
   {
     "id": "bunpou_ni_mieru",
@@ -4502,19 +4844,25 @@
       {
         "japanese": "彼は若く見えます。",
         "romaji": "Kare wa wakaku miemasu.",
-        "translation": "Dia terlihat muda."
+        "translation": "Dia terlihat muda.",
+        "translationEn": "He looks young."
       },
       {
         "japanese": "元気に見えます。",
         "romaji": "Genki ni miemasu.",
-        "translation": "Terlihat sehat."
+        "translation": "Terlihat sehat.",
+        "translationEn": "It looks healthy."
       },
       {
         "japanese": "難しそうに見えます。",
         "romaji": "Muzukashisou ni miemasu.",
-        "translation": "Terlihat sulit."
+        "translation": "Terlihat sulit.",
+        "translationEn": "It looks difficult."
       }
-    ]
+    ],
+    "meaningEn": "Looks/appears ~",
+    "formationEn": "Adjective/noun + に見える",
+    "usageNotesEn": "Expresses a visual impression of how something looks, based purely on outward appearance."
   },
   {
     "id": "bunpou_ni_suru2",
@@ -4531,19 +4879,25 @@
       {
         "japanese": "部屋をきれいにしました。",
         "romaji": "Heya o kirei ni shimashita.",
-        "translation": "Membuat kamar menjadi bersih."
+        "translation": "Membuat kamar menjadi bersih.",
+        "translationEn": "Making the room clean."
       },
       {
         "japanese": "静かにしてください。",
         "romaji": "Shizuka ni shite kudasai.",
-        "translation": "Tolong buat menjadi tenang (diam)."
+        "translation": "Tolong buat menjadi tenang (diam).",
+        "translationEn": "Please make it quiet."
       },
       {
         "japanese": "パーティーを盛大にしました。",
         "romaji": "Paatii o seidai ni shimashita.",
-        "translation": "Membuat pestanya menjadi meriah."
+        "translation": "Membuat pestanya menjadi meriah.",
+        "translationEn": "Making the party lively."
       }
-    ]
+    ],
+    "meaningEn": "Make it into ~ (changing a state, not just choosing)",
+    "formationEn": "na-adjective/noun + にする",
+    "usageNotesEn": "Unlike にする at N5 level (choosing from several options, e.g. ordering food), this usage expresses deliberately changing something into a new state/condition."
   },
   {
     "id": "bunpou_nikui",
@@ -4558,19 +4912,25 @@
       {
         "japanese": "この靴は歩きにくいです。",
         "romaji": "Kono kutsu wa arukinikui desu.",
-        "translation": "Sepatu ini sulit untuk dipakai berjalan."
+        "translation": "Sepatu ini sulit untuk dipakai berjalan.",
+        "translationEn": "These shoes are hard to walk in."
       },
       {
         "japanese": "漢字は覚えにくいです。",
         "romaji": "Kanji wa oboenikui desu.",
-        "translation": "Kanji sulit untuk dihafal."
+        "translation": "Kanji sulit untuk dihafal.",
+        "translationEn": "Kanji are hard to memorize."
       },
       {
         "japanese": "この魚は骨が多くて食べにくいです。",
         "romaji": "Kono sakana wa hone ga ookute tabenikui desu.",
-        "translation": "Ikan ini banyak durinya jadi sulit dimakan."
+        "translation": "Ikan ini banyak durinya jadi sulit dimakan.",
+        "translationEn": "This fish has a lot of bones so it's hard to eat."
       }
-    ]
+    ],
+    "meaningEn": "Hard to ~",
+    "formationEn": "Verb ~ます form (drop ます) + にくい",
+    "usageNotesEn": "Expresses the objective difficulty of doing an action (due to the nature of the object/situation), the opposite of やすい (easy)."
   },
   {
     "id": "bunpou_no_naka_de2",
@@ -4587,19 +4947,25 @@
       {
         "japanese": "兄弟の中で一番背が高いです。",
         "romaji": "Kyoudai no naka de ichiban se ga takai desu.",
-        "translation": "Di antara saudara-saudara, saya yang paling tinggi."
+        "translation": "Di antara saudara-saudara, saya yang paling tinggi.",
+        "translationEn": "Among my siblings, I'm the tallest."
       },
       {
         "japanese": "クラスの中で日本語が上手です。",
         "romaji": "Kurasu no naka de nihongo ga jouzu desu.",
-        "translation": "Di antara sekelas, saya mahir bahasa Jepang."
+        "translation": "Di antara sekelas, saya mahir bahasa Jepang.",
+        "translationEn": "Among the class, I'm the most fluent in Japanese."
       },
       {
         "japanese": "この中で、どれが好きですか。",
         "romaji": "Kono naka de, dore ga suki desu ka.",
-        "translation": "Di antara ini semua, mana yang kamu suka?"
+        "translation": "Di antara ini semua, mana yang kamu suka?",
+        "translationEn": "Among all of these, which do you like?"
       }
-    ]
+    ],
+    "meaningEn": "Among ~ (leads into a superlative, without naming who's superlative)",
+    "formationEn": "Noun (group) + の中で",
+    "usageNotesEn": "The opening phrase of the superlative comparison pattern within a group, already learned as part of the full の中で[A]が一番 pattern at N5 — reviewed here as a standalone phrase that can also be used without always being followed explicitly by いちばん."
   },
   {
     "id": "bunpou_noni_gyakusetsu",
@@ -4618,19 +4984,25 @@
       {
         "japanese": "頑張ったのに、失敗しました。",
         "romaji": "Ganbatta noni, shippai shimashita.",
-        "translation": "Padahal sudah berusaha, tapi gagal."
+        "translation": "Padahal sudah berusaha, tapi gagal.",
+        "translationEn": "Even though I tried hard, I still failed."
       },
       {
         "japanese": "雨なのに、出かけました。",
         "romaji": "Ame na noni, dekakemashita.",
-        "translation": "Padahal hujan, tapi tetap keluar."
+        "translation": "Padahal hujan, tapi tetap keluar.",
+        "translationEn": "Even though it was raining, he still went out."
       },
       {
         "japanese": "高いのに、質が悪いです。",
         "romaji": "Takai noni, shitsu ga warui desu.",
-        "translation": "Padahal mahal, tapi kualitasnya buruk."
+        "translation": "Padahal mahal, tapi kualitasnya buruk.",
+        "translationEn": "Even though it was expensive, the quality was bad."
       }
-    ]
+    ],
+    "meaningEn": "Even though, despite (a disappointing/surprising contrast)",
+    "formationEn": "Verb/i-adjective plain form + のに; na-adjective/noun + な/の + のに",
+    "usageNotesEn": "Expresses a contrast carrying a nuance of disappointment/surprise/unmet expectation, more emotional than のに used as a neutral connector like けど/が."
   },
   {
     "id": "bunpou_noni_mokuteki",
@@ -4647,19 +5019,25 @@
       {
         "japanese": "この道具は野菜を切るのに便利です。",
         "romaji": "Kono dougu wa yasai o kiru noni benri desu.",
-        "translation": "Alat ini praktis untuk memotong sayuran."
+        "translation": "Alat ini praktis untuk memotong sayuran.",
+        "translationEn": "This tool is handy for cutting vegetables."
       },
       {
         "japanese": "空港まで行くのに一時間かかります。",
         "romaji": "Kuukou made iku noni ichijikan kakarimasu.",
-        "translation": "Butuh satu jam untuk pergi ke bandara."
+        "translation": "Butuh satu jam untuk pergi ke bandara.",
+        "translationEn": "It takes an hour to get to the airport."
       },
       {
         "japanese": "これを開けるのにドライバーが必要です。",
         "romaji": "Kore o akeru noni doraibaa ga hitsuyou desu.",
-        "translation": "Perlu obeng untuk membuka ini."
+        "translation": "Perlu obeng untuk membuka ini.",
+        "translationEn": "You need a screwdriver to open this."
       }
-    ]
+    ],
+    "meaningEn": "For ~ (purpose/use)",
+    "formationEn": "Verb dictionary form + のに + を使う/かかる/便利",
+    "usageNotesEn": "Expresses the purpose/use of an object, or how much time/effort something needs, entirely different from the contrastive のに above despite the identical spelling."
   },
   {
     "id": "bunpou_no_wa_da",
@@ -4674,19 +5052,25 @@
       {
         "japanese": "私が好きなのはラーメンです。",
         "romaji": "Watashi ga suki na no wa raamen desu.",
-        "translation": "Yang saya suka adalah ramen."
+        "translation": "Yang saya suka adalah ramen.",
+        "translationEn": "What I like is ramen."
       },
       {
         "japanese": "彼が来たのは昨日です。",
         "romaji": "Kare ga kita no wa kinou desu.",
-        "translation": "Yang (terjadi adalah) dia datang kemarin."
+        "translation": "Yang (terjadi adalah) dia datang kemarin.",
+        "translationEn": "What happened is he came yesterday."
       },
       {
         "japanese": "大切なのは努力です。",
         "romaji": "Taisetsu na no wa doryoku desu.",
-        "translation": "Yang penting adalah usaha."
+        "translation": "Yang penting adalah usaha.",
+        "translationEn": "What matters is effort."
       }
-    ]
+    ],
+    "meaningEn": "What ~ is ~ (emphasizing a specific part of the sentence)",
+    "formationEn": "Sentence + のは + [emphasized part] + だ/です",
+    "usageNotesEn": "A cleft-sentence emphasis pattern that nominalizes part of a sentence with の, then asserts the important piece of information at the end of the sentence."
   },
   {
     "id": "bunpou_o_verb_kudasai",
@@ -4703,19 +5087,25 @@
       {
         "japanese": "こちらでお待ちください。",
         "romaji": "Kochira de omachi kudasai.",
-        "translation": "Silakan tunggu di sini."
+        "translation": "Silakan tunggu di sini.",
+        "translationEn": "Please wait here."
       },
       {
         "japanese": "お座りください。",
         "romaji": "Osuwari kudasai.",
-        "translation": "Silakan duduk."
+        "translation": "Silakan duduk.",
+        "translationEn": "Please have a seat."
       },
       {
         "japanese": "お名前をお書きください。",
         "romaji": "Onamae o okaki kudasai.",
-        "translation": "Silakan tuliskan nama Anda."
+        "translation": "Silakan tuliskan nama Anda.",
+        "translationEn": "Please write your name."
       }
-    ]
+    ],
+    "meaningEn": "Please ~ (a polite request, keigo version of てください)",
+    "formationEn": "お + verb ~ます form (drop ます) + ください",
+    "usageNotesEn": "A polite request form (a keigo version) higher than てください, commonly used in formal announcements/service."
   },
   {
     "id": "bunpou_o_ni_naru",
@@ -4733,19 +5123,25 @@
       {
         "japanese": "何時にお帰りになりますか。",
         "romaji": "Nanji ni okaeri ni narimasu ka.",
-        "translation": "Jam berapa Anda akan pulang?"
+        "translation": "Jam berapa Anda akan pulang?",
+        "translationEn": "What time will you be going home?"
       },
       {
         "japanese": "先生がお話しになりました。",
         "romaji": "Sensei ga ohanashi ni narimashita.",
-        "translation": "Guru telah berbicara."
+        "translation": "Guru telah berbicara.",
+        "translationEn": "The teacher has spoken."
       },
       {
         "japanese": "もうお読みになりましたか。",
         "romaji": "Mou oyomi ni narimashita ka.",
-        "translation": "Apakah Anda sudah membacanya?"
+        "translation": "Apakah Anda sudah membacanya?",
+        "translationEn": "Have you already read it?"
       }
-    ]
+    ],
+    "meaningEn": "To do ~ (common sonkeigo polite form)",
+    "formationEn": "お + verb ~ます form (drop ます) + になる",
+    "usageNotesEn": "A general sonkeigo pattern that elevates the action of a respected person, applicable to many verbs that don't have a special keigo form (unlike the irregular いらっしゃる/なさる)."
   },
   {
     "id": "bunpou_okini",
@@ -4760,19 +5156,25 @@
       {
         "japanese": "一日おきに薬を飲みます。",
         "romaji": "Ichinichi oki ni kusuri o nomimasu.",
-        "translation": "Minum obat setiap dua hari sekali."
+        "translation": "Minum obat setiap dua hari sekali.",
+        "translationEn": "Taking medicine every other day."
       },
       {
         "japanese": "三十分おきにバスが来ます。",
         "romaji": "Sanjuppun oki ni basu ga kimasu.",
-        "translation": "Bus datang setiap tiga puluh menit sekali."
+        "translation": "Bus datang setiap tiga puluh menit sekali.",
+        "translationEn": "The bus comes every thirty minutes."
       },
       {
         "japanese": "一年おきにお祭りがあります。",
         "romaji": "Ichinen oki ni omatsuri ga arimasu.",
-        "translation": "Ada festival setiap dua tahun sekali."
+        "translation": "Ada festival setiap dua tahun sekali.",
+        "translationEn": "There's a festival every two years."
       }
-    ]
+    ],
+    "meaningEn": "Every ~ (a regular interval)",
+    "formationEn": "Number + time unit + おきに",
+    "usageNotesEn": "Expresses a regular interval/gap between repeated events, e.g. 一日おきに (every other day)."
   },
   {
     "id": "bunpou_owaru",
@@ -4787,19 +5189,25 @@
       {
         "japanese": "宿題を書き終わりました。",
         "romaji": "Shukudai o kakiowarimashita.",
-        "translation": "Selesai menulis PR."
+        "translation": "Selesai menulis PR.",
+        "translationEn": "Finished writing the homework."
       },
       {
         "japanese": "本を読み終わりました。",
         "romaji": "Hon o yomiowarimashita.",
-        "translation": "Selesai membaca buku."
+        "translation": "Selesai membaca buku.",
+        "translationEn": "Finished reading the book."
       },
       {
         "japanese": "仕事が終わりました。",
         "romaji": "Shigoto ga owarimashita.",
-        "translation": "Pekerjaan telah selesai."
+        "translation": "Pekerjaan telah selesai.",
+        "translationEn": "The work has been finished."
       }
-    ]
+    ],
+    "meaningEn": "Finish, end",
+    "formationEn": "Verb ~ます form (drop ます) + 終わる",
+    "usageNotesEn": "As a suffix on another verb, expresses that the activity has been fully completed."
   },
   {
     "id": "bunpou_rareru",
@@ -4814,19 +5222,25 @@
       {
         "japanese": "先生に褒められました。",
         "romaji": "Sensei ni homeraremashita.",
-        "translation": "Saya dipuji oleh guru."
+        "translation": "Saya dipuji oleh guru.",
+        "translationEn": "I was praised by the teacher."
       },
       {
         "japanese": "朝、早く起きられます。",
         "romaji": "Asa, hayaku okiraremasu.",
-        "translation": "Bisa bangun pagi-pagi."
+        "translation": "Bisa bangun pagi-pagi.",
+        "translationEn": "I can wake up early in the morning."
       },
       {
         "japanese": "財布を盗まれました。",
         "romaji": "Saifu o nusumaremashita.",
-        "translation": "Dompet saya dicuri."
+        "translation": "Dompet saya dicuri.",
+        "translationEn": "My wallet was stolen."
       }
-    ]
+    ],
+    "meaningEn": "Passive/potential form (to be done to; to be able to)",
+    "formationEn": "Ichidan: る→られる (食べる→食べられる, same for passive & potential); godan passive: u→areru (話す→話される); godan potential: u→eru (話す→話せる, different from passive); irregular: する→される (passive) / できる (potential), 来る→来られる (both)",
+    "usageNotesEn": "For ichidan and irregular verbs, the passive and potential forms are identical so meaning is determined from context; for godan verbs, the passive (-areru) and potential (-eru) forms differ so there's no ambiguity."
   },
   {
     "id": "bunpou_rashii",
@@ -4843,19 +5257,25 @@
       {
         "japanese": "明日は雨らしいです。",
         "romaji": "Ashita wa ame rashii desu.",
-        "translation": "Katanya besok akan hujan."
+        "translation": "Katanya besok akan hujan.",
+        "translationEn": "I heard it'll rain tomorrow."
       },
       {
         "japanese": "彼はもう帰ったらしいです。",
         "romaji": "Kare wa mou kaetta rashii desu.",
-        "translation": "Katanya dia sudah pulang."
+        "translation": "Katanya dia sudah pulang.",
+        "translationEn": "I heard he already went home."
       },
       {
         "japanese": "このニュースは本当らしいです。",
         "romaji": "Kono nyuusu wa hontou rashii desu.",
-        "translation": "Katanya berita ini benar."
+        "translation": "Katanya berita ini benar.",
+        "translationEn": "I heard this news is true."
       }
-    ]
+    ],
+    "meaningEn": "Seems ~ (guess based on outside information/hearsay)",
+    "formationEn": "Noun/verb/adjective plain form + らしい",
+    "usageNotesEn": "Expresses a guess based on information heard/read from an outside source (not the speaker's direct observation), more objective/distanced than みたいだ/ようだ."
   },
   {
     "id": "bunpou_sa",
@@ -4872,19 +5292,25 @@
       {
         "japanese": "この山の高さはどれくらいですか。",
         "romaji": "Kono yama no takasa wa dorekurai desu ka.",
-        "translation": "Berapa tinggi gunung ini?"
+        "translation": "Berapa tinggi gunung ini?",
+        "translationEn": "How tall is this mountain?"
       },
       {
         "japanese": "彼の優しさに感動しました。",
         "romaji": "Kare no yasashisa ni kandou shimashita.",
-        "translation": "Saya terharu oleh kebaikannya."
+        "translation": "Saya terharu oleh kebaikannya.",
+        "translationEn": "I was moved by his kindness."
       },
       {
         "japanese": "部屋の広さを測りました。",
         "romaji": "Heya no hirosa o hakarimashita.",
-        "translation": "Mengukur luas kamar."
+        "translation": "Mengukur luas kamar.",
+        "translationEn": "Measuring the size of the room."
       }
-    ]
+    ],
+    "meaningEn": "A suffix forming a noun from an adjective (degree/measure)",
+    "formationEn": "i-adjective (drop い) + さ; na-adjective + さ",
+    "usageNotesEn": "Turns an adjective into an abstract noun expressing an objective/measurable degree of a quality, e.g. 高い→高さ (height). Different from [[sa2]] N1 (a colloquial sentence-final assertion particle, e.g. 大丈夫さ)."
   },
   {
     "id": "bunpou_sakki",
@@ -4899,19 +5325,25 @@
       {
         "japanese": "さっき電話がありました。",
         "romaji": "Sakki denwa ga arimashita.",
-        "translation": "Barusan ada telepon."
+        "translation": "Barusan ada telepon.",
+        "translationEn": "There was a call just now."
       },
       {
         "japanese": "さっき食べたばかりです。",
         "romaji": "Sakki tabeta bakari desu.",
-        "translation": "Baru saja makan tadi."
+        "translation": "Baru saja makan tadi.",
+        "translationEn": "I just ate a moment ago."
       },
       {
         "japanese": "さっき見た映画は面白かったです。",
         "romaji": "Sakki mita eiga wa omoshirokatta desu.",
-        "translation": "Film yang tadi ditonton menarik."
+        "translation": "Film yang tadi ditonton menarik.",
+        "translationEn": "The movie I watched a moment ago was interesting."
       }
-    ]
+    ],
+    "meaningEn": "A moment ago, just now (a recent past moment)",
+    "formationEn": "さっき + sentence",
+    "usageNotesEn": "A casual time adverb for \"a moment ago/just now\", used only in conversation (the more formal version is 先ほど)."
   },
   {
     "id": "bunpou_saserareru",
@@ -4928,19 +5360,25 @@
       {
         "japanese": "母に野菜を食べさせられました。",
         "romaji": "Haha ni yasai o tabesaseraremashita.",
-        "translation": "Saya dipaksa ibu untuk makan sayur."
+        "translation": "Saya dipaksa ibu untuk makan sayur.",
+        "translationEn": "I was made to eat vegetables by my mother."
       },
       {
         "japanese": "先生に立たされました。",
         "romaji": "Sensei ni tatasaremashita.",
-        "translation": "Saya disuruh berdiri oleh guru."
+        "translation": "Saya disuruh berdiri oleh guru.",
+        "translationEn": "I was made to stand up by the teacher."
       },
       {
         "japanese": "長時間待たせられました。",
         "romaji": "Choujikan mataseraremashita.",
-        "translation": "Saya dipaksa menunggu lama."
+        "translation": "Saya dipaksa menunggu lama.",
+        "translationEn": "I was made to wait a long time."
       }
-    ]
+    ],
+    "meaningEn": "Be made/forced to do ~ (causative-passive)",
+    "formationEn": "Godan: u→aserareru (話す→話させられる); ichidan: る→させられる (食べる→食べさせられる); irregular: する→させられる, 来る→来させられる",
+    "usageNotesEn": "Combines the causative form (making someone do something) with the passive (receiving that), expressing the subject being forced/made to do something by another party, often carrying a nuance of reluctance/being forced."
   },
   {
     "id": "bunpou_saseru",
@@ -4958,19 +5396,25 @@
       {
         "japanese": "子供に野菜を食べさせます。",
         "romaji": "Kodomo ni yasai o tabesasemasu.",
-        "translation": "Menyuruh anak makan sayur."
+        "translation": "Menyuruh anak makan sayur.",
+        "translationEn": "Making the child eat vegetables."
       },
       {
         "japanese": "子供を公園で遊ばせました。",
         "romaji": "Kodomo o kouen de asobasemashita.",
-        "translation": "Membiarkan anak bermain di taman."
+        "translation": "Membiarkan anak bermain di taman.",
+        "translationEn": "Letting the child play at the park."
       },
       {
         "japanese": "彼に仕事を手伝わせました。",
         "romaji": "Kare ni shigoto o tetsudawasemashita.",
-        "translation": "Menyuruh dia membantu pekerjaan."
+        "translation": "Menyuruh dia membantu pekerjaan.",
+        "translationEn": "Having him help with the work."
       }
-    ]
+    ],
+    "meaningEn": "Make/let someone do ~ (causative)",
+    "formationEn": "Godan: u→aseru (話す→話させる); ichidan: る→させる (食べる→食べさせる); irregular: する→させる, 来る→来させる",
+    "usageNotesEn": "Expresses the subject making or letting someone else do something, depending on context it can mean \"forcing\" or \"allowing\"."
   },
   {
     "id": "bunpou_sasete_kudasai",
@@ -4987,19 +5431,25 @@
       {
         "japanese": "説明させてください。",
         "romaji": "Setsumei sasete kudasai.",
-        "translation": "Izinkan saya menjelaskan."
+        "translation": "Izinkan saya menjelaskan.",
+        "translationEn": "Please let me explain."
       },
       {
         "japanese": "少し考えさせてください。",
         "romaji": "Sukoshi kangaesasete kudasai.",
-        "translation": "Izinkan saya berpikir sebentar."
+        "translation": "Izinkan saya berpikir sebentar.",
+        "translationEn": "Please let me think for a moment."
       },
       {
         "japanese": "手伝わせてください。",
         "romaji": "Tetsudawasete kudasai.",
-        "translation": "Izinkan saya membantu."
+        "translation": "Izinkan saya membantu.",
+        "translationEn": "Please let me help."
       }
-    ]
+    ],
+    "meaningEn": "Please let me ~",
+    "formationEn": "Verb causative-te form (~させて) + ください",
+    "usageNotesEn": "Politely asks permission to do something, using the causative form to humble oneself as if asking to \"be allowed\" to act."
   },
   {
     "id": "bunpou_sasuga",
@@ -5014,19 +5464,25 @@
       {
         "japanese": "さすが先生ですね。",
         "romaji": "Sasuga sensei desu ne.",
-        "translation": "Memang benar-benar (hebat) sebagai guru, ya."
+        "translation": "Memang benar-benar (hebat) sebagai guru, ya.",
+        "translationEn": "As expected of a teacher, truly impressive."
       },
       {
         "japanese": "さすがに疲れました。",
         "romaji": "Sasuga ni tsukaremashita.",
-        "translation": "Sudah pasti (pada akhirnya) saya jadi lelah."
+        "translation": "Sudah pasti (pada akhirnya) saya jadi lelah.",
+        "translationEn": "As expected, I ended up getting tired."
       },
       {
         "japanese": "さすが日本製は質がいいです。",
         "romaji": "Sasuga Nihonsei wa shitsu ga ii desu.",
-        "translation": "Memang benar buatan Jepang kualitasnya bagus."
+        "translation": "Memang benar buatan Jepang kualitasnya bagus.",
+        "translationEn": "As expected, things made in Japan are good quality."
       }
-    ]
+    ],
+    "meaningEn": "Truly, as expected (of someone/something well-known)",
+    "formationEn": "さすが + noun/sentence",
+    "usageNotesEn": "An expression of admiration confirming that something lives up to a reputation/expectation already known beforehand."
   },
   {
     "id": "bunpou_shi",
@@ -5041,19 +5497,25 @@
       {
         "japanese": "このレストランは安いし、おいしいです。",
         "romaji": "Kono resutoran wa yasui shi, oishii desu.",
-        "translation": "Restoran ini murah, dan lagi enak."
+        "translation": "Restoran ini murah, dan lagi enak.",
+        "translationEn": "This restaurant is cheap, and also tasty."
       },
       {
         "japanese": "雨も降っているし、家にいましょう。",
         "romaji": "Ame mo futte iru shi, ie ni imashou.",
-        "translation": "Sedang hujan juga, ayo di rumah saja."
+        "translation": "Sedang hujan juga, ayo di rumah saja.",
+        "translationEn": "It's raining too, so let's just stay home."
       },
       {
         "japanese": "彼は頭がいいし、優しいです。",
         "romaji": "Kare wa atama ga ii shi, yasashii desu.",
-        "translation": "Dia pintar, dan lagi baik hati."
+        "translation": "Dia pintar, dan lagi baik hati.",
+        "translationEn": "She's smart, and also kind."
       }
-    ]
+    ],
+    "meaningEn": "And also, on top of that (listing several reasons/traits)",
+    "formationEn": "Sentence (plain form) + し",
+    "usageNotesEn": "Connects several reasons/traits supporting one conclusion, implying there are other unstated reasons as well."
   },
   {
     "id": "bunpou_sonna_ni",
@@ -5068,19 +5530,25 @@
       {
         "japanese": "そんなに高くないです。",
         "romaji": "Sonna ni takakunai desu.",
-        "translation": "Tidak semahal itu."
+        "translation": "Tidak semahal itu.",
+        "translationEn": "It's not that expensive."
       },
       {
         "japanese": "そんなに心配しないでください。",
         "romaji": "Sonna ni shinpai shinaide kudasai.",
-        "translation": "Jangan khawatir sebegitu rupa."
+        "translation": "Jangan khawatir sebegitu rupa.",
+        "translationEn": "Don't worry that much."
       },
       {
         "japanese": "そんなに難しくありません。",
         "romaji": "Sonna ni muzukashiku arimasen.",
-        "translation": "Tidak sesulit itu."
+        "translation": "Tidak sesulit itu.",
+        "translationEn": "It's not that difficult."
       }
-    ]
+    ],
+    "meaningEn": "That much, to that extent",
+    "formationEn": "そんなに + adjective/verb",
+    "usageNotesEn": "Expresses the degree \"that much/to that extent\", often used in negative sentences to deny an excessive degree the listener assumed."
   },
   {
     "id": "bunpou_soredemo",
@@ -5095,19 +5563,25 @@
       {
         "japanese": "失敗しました。それでも、諦めません。",
         "romaji": "Shippai shimashita. Soredemo, akiramemasen.",
-        "translation": "Saya gagal. Meskipun begitu, saya tidak menyerah."
+        "translation": "Saya gagal. Meskipun begitu, saya tidak menyerah.",
+        "translationEn": "I failed. Even so, I won't give up."
       },
       {
         "japanese": "雨が降っています。それでも、出かけます。",
         "romaji": "Ame ga futte imasu. Soredemo, dekakemasu.",
-        "translation": "Sedang hujan. Walau demikian, saya akan keluar."
+        "translation": "Sedang hujan. Walau demikian, saya akan keluar.",
+        "translationEn": "It's raining. Nevertheless, I'll go out."
       },
       {
         "japanese": "難しいです。それでも、挑戦します。",
         "romaji": "Muzukashii desu. Soredemo, chousen shimasu.",
-        "translation": "Ini sulit. Meskipun begitu, saya akan mencoba."
+        "translation": "Ini sulit. Meskipun begitu, saya akan mencoba.",
+        "translationEn": "This is difficult. Even so, I'll try."
       }
-    ]
+    ],
+    "meaningEn": "Even so, nevertheless",
+    "formationEn": "それでも + sentence",
+    "usageNotesEn": "A conjunction expressing that something still happens/holds despite an obstacle just mentioned, emphasizing persistence/strong contrast."
   },
   {
     "id": "bunpou_sore_ni",
@@ -5124,19 +5598,25 @@
       {
         "japanese": "このカフェは静かです。それに、コーヒーもおいしいです。",
         "romaji": "Kono kafe wa shizuka desu. Sore ni, koohii mo oishii desu.",
-        "translation": "Kafe ini tenang. Selain itu, kopinya juga enak."
+        "translation": "Kafe ini tenang. Selain itu, kopinya juga enak.",
+        "translationEn": "This cafe is quiet. Besides, the coffee is good too."
       },
       {
         "japanese": "今日は忙しいです。それに、疲れています。",
         "romaji": "Kyou wa isogashii desu. Sore ni, tsukarete imasu.",
-        "translation": "Hari ini sibuk. Terlebih lagi, saya lelah."
+        "translation": "Hari ini sibuk. Terlebih lagi, saya lelah.",
+        "translationEn": "Today's busy. Moreover, I'm tired."
       },
       {
         "japanese": "彼は優しいです。それに、頭もいいです。",
         "romaji": "Kare wa yasashii desu. Sore ni, atama mo ii desu.",
-        "translation": "Dia baik hati. Selain itu, dia juga pintar."
+        "translation": "Dia baik hati. Selain itu, dia juga pintar.",
+        "translationEn": "She's kind. Besides, she's smart too."
       }
-    ]
+    ],
+    "meaningEn": "Besides, moreover",
+    "formationEn": "それに + sentence",
+    "usageNotesEn": "A conjunction adding extra information/reasoning that supports the previous point, similar to し but used to connect full sentences rather than within one sentence."
   },
   {
     "id": "bunpou_souda_denbun",
@@ -5154,19 +5634,25 @@
       {
         "japanese": "天気予報によると、明日は雨だそうです。",
         "romaji": "Tenki yohou ni yoru to, ashita wa ame da sou desu.",
-        "translation": "Menurut ramalan cuaca, katanya besok akan hujan."
+        "translation": "Menurut ramalan cuaca, katanya besok akan hujan.",
+        "translationEn": "According to the weather forecast, I heard it'll rain tomorrow."
       },
       {
         "japanese": "彼は忙しいそうです。",
         "romaji": "Kare wa isogashii sou desu.",
-        "translation": "Katanya dia sedang sibuk."
+        "translation": "Katanya dia sedang sibuk.",
+        "translationEn": "I heard he's busy."
       },
       {
         "japanese": "このレストランはおいしいそうです。",
         "romaji": "Kono resutoran wa oishii sou desu.",
-        "translation": "Katanya restoran ini enak."
+        "translation": "Katanya restoran ini enak.",
+        "translationEn": "I heard this restaurant is good."
       }
-    ]
+    ],
+    "meaningEn": "I heard that ~ (quoting information from another source)",
+    "formationEn": "Verb/adjective/noun plain form + そうだ",
+    "usageNotesEn": "Expresses information heard/read from another source (hearsay), attached to the full plain form (unlike そうだ様態, which attaches to the stem of the adjective/verb)."
   },
   {
     "id": "bunpou_souda_youtai",
@@ -5184,19 +5670,25 @@
       {
         "japanese": "このケーキはおいしそうです。",
         "romaji": "Kono keeki wa oishisou desu.",
-        "translation": "Kue ini kelihatannya enak."
+        "translation": "Kue ini kelihatannya enak.",
+        "translationEn": "This cake looks delicious."
       },
       {
         "japanese": "雨が降りそうです。",
         "romaji": "Ame ga furisou desu.",
-        "translation": "Kelihatannya akan hujan."
+        "translation": "Kelihatannya akan hujan.",
+        "translationEn": "It looks like it'll rain."
       },
       {
         "japanese": "彼は元気そうです。",
         "romaji": "Kare wa genkisou desu.",
-        "translation": "Dia kelihatannya sehat."
+        "translation": "Dia kelihatannya sehat.",
+        "translationEn": "He looks healthy."
       }
-    ]
+    ],
+    "meaningEn": "Looks ~ (based on appearance/direct impression)",
+    "formationEn": "i-adjective (drop い) + そうだ; na-adjective (drop だ) + そうだ; verb ~ます form (drop ます) + そうだ",
+    "usageNotesEn": "Expresses a visual impression/guess based on a direct appearance right now, unlike そうだ伝聞 (hearsay from others) — it attaches to the stem of the adjective/verb, not the full plain form."
   },
   {
     "id": "bunpou_souni_souna",
@@ -5213,19 +5705,25 @@
       {
         "japanese": "楽しそうに遊んでいます。",
         "romaji": "Tanoshisou ni asonde imasu.",
-        "translation": "Bermain dengan kelihatan senang."
+        "translation": "Bermain dengan kelihatan senang.",
+        "translationEn": "Playing happily."
       },
       {
         "japanese": "おいしそうなケーキですね。",
         "romaji": "Oishisou na keeki desu ne.",
-        "translation": "Ini kue yang kelihatan enak, ya."
+        "translation": "Ini kue yang kelihatan enak, ya.",
+        "translationEn": "This looks like a tasty cake, doesn't it."
       },
       {
         "japanese": "嬉しそうに笑いました。",
         "romaji": "Ureshisou ni waraimashita.",
-        "translation": "Tertawa dengan kelihatan senang."
+        "translation": "Tertawa dengan kelihatan senang.",
+        "translationEn": "Laughing happily."
       }
-    ]
+    ],
+    "meaningEn": "The adverbial/attributive form of そうだ (appearance)",
+    "formationEn": "そうだ (appearance) stem + に (adverbial, modifies a verb); + な (attributive, modifies a noun)",
+    "usageNotesEn": "A variant of そうだ (appearance, visual impression) when modifying a verb (そうに) or a noun (そうな), the same pattern as na-adjectives in general."
   },
   {
     "id": "bunpou_ta_bakari",
@@ -5243,19 +5741,25 @@
       {
         "japanese": "今、起きたばかりです。",
         "romaji": "Ima, okita bakari desu.",
-        "translation": "Baru saja bangun sekarang."
+        "translation": "Baru saja bangun sekarang.",
+        "translationEn": "I just woke up now."
       },
       {
         "japanese": "引っ越したばかりで、まだ片付いていません。",
         "romaji": "Hikkoshita bakari de, mada katazuite imasen.",
-        "translation": "Baru saja pindah, jadi belum beres-beres."
+        "translation": "Baru saja pindah, jadi belum beres-beres.",
+        "translationEn": "I just moved, so I haven't tidied up yet."
       },
       {
         "japanese": "この本は買ったばかりです。",
         "romaji": "Kono hon wa katta bakari desu.",
-        "translation": "Buku ini baru saja dibeli."
+        "translation": "Buku ini baru saja dibeli.",
+        "translationEn": "This book was just bought."
       }
-    ]
+    ],
+    "meaningEn": "Just ~ (same as the past-tense sense of ばかり, treated as its own pattern)",
+    "formationEn": "Verb past form (~た) + ばかり",
+    "usageNotesEn": "Actually the same pattern as one of ばかり's functions above, reviewed here as its own separate pattern since it's often taught separately — emphasizes time that has just passed since an event."
   },
   {
     "id": "bunpou_ta_tokoro",
@@ -5272,19 +5776,25 @@
       {
         "japanese": "ちょうど今、着いたところです。",
         "romaji": "Choudo ima, tsuita tokoro desu.",
-        "translation": "Baru saja tiba persis sekarang."
+        "translation": "Baru saja tiba persis sekarang.",
+        "translationEn": "I just arrived this very moment."
       },
       {
         "japanese": "食べ終わったところです。",
         "romaji": "Tabeowatta tokoro desu.",
-        "translation": "Baru saja selesai makan."
+        "translation": "Baru saja selesai makan.",
+        "translationEn": "I just finished eating."
       },
       {
         "japanese": "出かけたところに、電話が来ました。",
         "romaji": "Dekaketa tokoro ni, denwa ga kimashita.",
-        "translation": "Persis setelah keluar, ada telepon masuk."
+        "translation": "Persis setelah keluar, ada telepon masuk.",
+        "translationEn": "Right after going out, a call came in."
       }
-    ]
+    ],
+    "meaningEn": "Just ~ (emphasizes the exact moment right after finishing)",
+    "formationEn": "Verb past form (~た) + ところ",
+    "usageNotesEn": "Similar to たばかり, but たところ emphasizes the moment RIGHT AFTER an action is finished (instantaneous), whereas たばかり can cover a subjectively slightly longer span of time."
   },
   {
     "id": "bunpou_tadoushi_jidoushi",
@@ -5299,19 +5809,25 @@
       {
         "japanese": "ドアを開けました。",
         "romaji": "Doa o akemashita.",
-        "translation": "Membuka pintu."
+        "translation": "Membuka pintu.",
+        "translationEn": "Opening the door."
       },
       {
         "japanese": "ドアが開きました。",
         "romaji": "Doa ga akimashita.",
-        "translation": "Pintu terbuka (dengan sendirinya)."
+        "translation": "Pintu terbuka (dengan sendirinya).",
+        "translationEn": "The door opens (by itself)."
       },
       {
         "japanese": "電気を消しました。",
         "romaji": "Denki o keshimashita.",
-        "translation": "Mematikan lampu."
+        "translation": "Mematikan lampu.",
+        "translationEn": "Turning off the light."
       }
-    ]
+    ],
+    "meaningEn": "Transitive & intransitive verbs",
+    "formationEn": "Verb pairs (e.g. 開ける(transitive)/開く(intransitive), 閉める/閉まる)",
+    "usageNotesEn": "A grammar category distinguishing verbs that require a direct object with the particle を (transitive, the subject deliberately acts) from those that don't (intransitive, happens on its own) — there are many such verb pairs and they need to be memorized individually."
   },
   {
     "id": "bunpou_tagaru",
@@ -5329,19 +5845,25 @@
       {
         "japanese": "弟はゲームをやりたがっています。",
         "romaji": "Otouto wa geemu o yaritagatte imasu.",
-        "translation": "Adik laki-laki saya ingin bermain game."
+        "translation": "Adik laki-laki saya ingin bermain game.",
+        "translationEn": "My little brother wants to play games."
       },
       {
         "japanese": "子供は外に行きたがっています。",
         "romaji": "Kodomo wa soto ni ikitagatte imasu.",
-        "translation": "Anak itu ingin pergi keluar."
+        "translation": "Anak itu ingin pergi keluar.",
+        "translationEn": "That child wants to go outside."
       },
       {
         "japanese": "彼は真実を知りたがっています。",
         "romaji": "Kare wa shinjitsu o shiritagatte imasu.",
-        "translation": "Dia ingin tahu kebenarannya."
+        "translation": "Dia ingin tahu kebenarannya.",
+        "translationEn": "He wants to know the truth."
       }
-    ]
+    ],
+    "meaningEn": "Shows signs of wanting to ~ (about another person)",
+    "formationEn": "Verb ~ます form (drop ます) + たがる",
+    "usageNotesEn": "The たい (want) version for a third person, following the same pattern as がる (expressing signs of another person's feelings from the outside), unlike たい, which is used only for oneself in a plain statement."
   },
   {
     "id": "bunpou_tara",
@@ -5359,19 +5881,25 @@
       {
         "japanese": "雨が降ったら、行きません。",
         "romaji": "Ame ga futtara, ikimasen.",
-        "translation": "Jika hujan turun, saya tidak akan pergi."
+        "translation": "Jika hujan turun, saya tidak akan pergi.",
+        "translationEn": "If it rains, I won't go."
       },
       {
         "japanese": "家に着いたら、電話します。",
         "romaji": "Ie ni tsuitara, denwa shimasu.",
-        "translation": "Setelah sampai rumah, saya akan menelepon."
+        "translation": "Setelah sampai rumah, saya akan menelepon.",
+        "translationEn": "Once I get home, I'll call."
       },
       {
         "japanese": "安かったら、買います。",
         "romaji": "Yasukattara, kaimasu.",
-        "translation": "Jika murah, saya akan membeli."
+        "translation": "Jika murah, saya akan membeli.",
+        "translationEn": "If it's cheap, I'll buy it."
       }
-    ]
+    ],
+    "meaningEn": "If/after ~ (a general conditional, also used for suggestions/invitations)",
+    "formationEn": "Verb/adjective past form (~た) + ら",
+    "usageNotesEn": "The most flexible and commonly used conditional in daily speech, usable both for hypothetical conditions and events certain to happen in sequence, also commonly used to give suggestions (~たらどうですか)."
   },
   {
     "id": "bunpou_tara_dou",
@@ -5389,19 +5917,25 @@
       {
         "japanese": "少し休んだらどう？",
         "romaji": "Sukoshi yasundara dou?",
-        "translation": "Bagaimana kalau istirahat sebentar?"
+        "translation": "Bagaimana kalau istirahat sebentar?",
+        "translationEn": "How about resting for a bit?"
       },
       {
         "japanese": "病院に行ったらどうですか。",
         "romaji": "Byouin ni ittara dou desu ka.",
-        "translation": "Bagaimana kalau pergi ke rumah sakit?"
+        "translation": "Bagaimana kalau pergi ke rumah sakit?",
+        "translationEn": "How about going to the hospital?"
       },
       {
         "japanese": "彼に聞いたらどう？",
         "romaji": "Kare ni kiitara dou?",
-        "translation": "Bagaimana kalau tanya dia?"
+        "translation": "Bagaimana kalau tanya dia?",
+        "translationEn": "How about asking him?"
       }
-    ]
+    ],
+    "meaningEn": "How about ~? (suggestion)",
+    "formationEn": "Verb past form (~た) + らどう(ですか)",
+    "usageNotesEn": "Uses the たら conditional form to give a suggestion, literally \"how about if ~\", more casual than ほうがいい."
   },
   {
     "id": "bunpou_tara_ii_desu_ka",
@@ -5418,19 +5952,25 @@
       {
         "japanese": "どうしたらいいですか。",
         "romaji": "Dou shitara ii desu ka.",
-        "translation": "Sebaiknya saya harus bagaimana?"
+        "translation": "Sebaiknya saya harus bagaimana?",
+        "translationEn": "What should I do?"
       },
       {
         "japanese": "何を食べたらいいですか。",
         "romaji": "Nani o tabetara ii desu ka.",
-        "translation": "Sebaiknya makan apa?"
+        "translation": "Sebaiknya makan apa?",
+        "translationEn": "What would be best to eat?"
       },
       {
         "japanese": "どこに行ったらいいですか。",
         "romaji": "Doko ni ittara ii desu ka.",
-        "translation": "Sebaiknya pergi ke mana?"
+        "translation": "Sebaiknya pergi ke mana?",
+        "translationEn": "Where would be best to go?"
       }
-    ]
+    ],
+    "meaningEn": "What would be best to ~?",
+    "formationEn": "Verb past form (~た) + らいいですか",
+    "usageNotesEn": "Asks for advice/the best way to do something, usually preceded by a question word like どう/何/どこ."
   },
   {
     "id": "bunpou_te_de",
@@ -5445,19 +5985,25 @@
       {
         "japanese": "朝起きて、顔を洗います。",
         "romaji": "Asa okite, kao o araimasu.",
-        "translation": "Bangun pagi, lalu mencuci muka."
+        "translation": "Bangun pagi, lalu mencuci muka.",
+        "translationEn": "Waking up, then washing my face."
       },
       {
         "japanese": "この部屋は広くて明るいです。",
         "romaji": "Kono heya wa hirokute akarui desu.",
-        "translation": "Kamar ini luas dan terang."
+        "translation": "Kamar ini luas dan terang.",
+        "translationEn": "This room is spacious and bright."
       },
       {
         "japanese": "彼女は親切で優しいです。",
         "romaji": "Kanojo wa shinsetsu de yasashii desu.",
-        "translation": "Dia ramah dan baik hati."
+        "translation": "Dia ramah dan baik hati.",
+        "translationEn": "He's friendly and kind."
       }
-    ]
+    ],
+    "meaningEn": "And (connects two sequential events/states)",
+    "formationEn": "Verb te-form; i-adjective (い→くて); na-adjective/noun + で",
+    "usageNotesEn": "The basic connecting form that links two clauses (a sequence of events, a light cause-effect, or a list of traits), one of the most important/versatile forms in Japanese grammar."
   },
   {
     "id": "bunpou_te_ageru",
@@ -5475,19 +6021,25 @@
       {
         "japanese": "友達に本を貸してあげました。",
         "romaji": "Tomodachi ni hon o kashite agemashita.",
-        "translation": "Meminjamkan buku untuk teman."
+        "translation": "Meminjamkan buku untuk teman.",
+        "translationEn": "Lending a book to a friend."
       },
       {
         "japanese": "妹に宿題を手伝ってあげました。",
         "romaji": "Imouto ni shukudai o tetsudatte agemashita.",
-        "translation": "Membantu PR untuk adik perempuan."
+        "translation": "Membantu PR untuk adik perempuan.",
+        "translationEn": "Helping my little sister with her homework."
       },
       {
         "japanese": "道を教えてあげました。",
         "romaji": "Michi o oshiete agemashita.",
-        "translation": "Menunjukkan jalan (untuk orang lain)."
+        "translation": "Menunjukkan jalan (untuk orang lain).",
+        "translationEn": "Showing (someone else) the way."
       }
-    ]
+    ],
+    "meaningEn": "Do ~ for someone else (as a kindness)",
+    "formationEn": "Verb te-form + あげる",
+    "usageNotesEn": "Expresses giving an action/help to someone else, use with caution toward a superior (can sound arrogant) — safer to use てさしあげる for a superior or avoid stating the subject directly."
   },
   {
     "id": "bunpou_te_hoshii",
@@ -5504,19 +6056,25 @@
       {
         "japanese": "彼に来てほしいです。",
         "romaji": "Kare ni kite hoshii desu.",
-        "translation": "Saya ingin dia datang."
+        "translation": "Saya ingin dia datang.",
+        "translationEn": "I want him to come."
       },
       {
         "japanese": "もっと勉強してほしいです。",
         "romaji": "Motto benkyou shite hoshii desu.",
-        "translation": "Saya ingin (kamu) belajar lebih giat."
+        "translation": "Saya ingin (kamu) belajar lebih giat.",
+        "translationEn": "I want you to study harder."
       },
       {
         "japanese": "静かにしてほしいです。",
         "romaji": "Shizuka ni shite hoshii desu.",
-        "translation": "Saya ingin (kalian) diam."
+        "translation": "Saya ingin (kalian) diam.",
+        "translationEn": "I want you all to be quiet."
       }
-    ]
+    ],
+    "meaningEn": "Want someone to do ~",
+    "formationEn": "Verb te-form + ほしい",
+    "usageNotesEn": "Expresses wanting ANOTHER PERSON to do something (unlike たい, which is for oneself), the person expected to act is marked with the particle に."
   },
   {
     "id": "bunpou_te_iku",
@@ -5533,19 +6091,25 @@
       {
         "japanese": "これからも頑張っていきます。",
         "romaji": "Kore kara mo ganbatte ikimasu.",
-        "translation": "Mulai sekarang pun saya akan terus berusaha."
+        "translation": "Mulai sekarang pun saya akan terus berusaha.",
+        "translationEn": "I'll keep trying my best from now on too."
       },
       {
         "japanese": "人口が減っていきます。",
         "romaji": "Jinkou ga hette ikimasu.",
-        "translation": "Populasi akan terus berkurang."
+        "translation": "Populasi akan terus berkurang.",
+        "translationEn": "The population will keep decreasing."
       },
       {
         "japanese": "荷物を持っていきました。",
         "romaji": "Nimotsu o motte ikimashita.",
-        "translation": "Membawa pergi barangnya."
+        "translation": "Membawa pergi barangnya.",
+        "translationEn": "Taking the items away."
       }
-    ]
+    ],
+    "meaningEn": "Keep/increasingly ~ (continuing away from now)",
+    "formationEn": "Verb te-form + いく",
+    "usageNotesEn": "Expresses a change/action continuing into the future, moving away from the present viewpoint, the opposite direction of てくる."
   },
   {
     "id": "bunpou_te_ita",
@@ -5562,19 +6126,25 @@
       {
         "japanese": "昨日、雨が降っていました。",
         "romaji": "Kinou, ame ga futte imashita.",
-        "translation": "Kemarin, hujan sedang turun."
+        "translation": "Kemarin, hujan sedang turun.",
+        "translationEn": "Yesterday, it was raining."
       },
       {
         "japanese": "その時、彼はテレビを見ていました。",
         "romaji": "Sono toki, kare wa terebi o mite imashita.",
-        "translation": "Saat itu, dia sedang menonton TV."
+        "translation": "Saat itu, dia sedang menonton TV.",
+        "translationEn": "At that time, he was watching TV."
       },
       {
         "japanese": "十年前、東京に住んでいました。",
         "romaji": "Juunen mae, Toukyou ni sunde imashita.",
-        "translation": "Sepuluh tahun lalu, saya tinggal di Tokyo."
+        "translation": "Sepuluh tahun lalu, saya tinggal di Tokyo.",
+        "translationEn": "Ten years ago, I was living in Tokyo."
       }
-    ]
+    ],
+    "meaningEn": "Was ~ing / had been ~ (past-tense form of ている)",
+    "formationEn": "Verb te-form + いた",
+    "usageNotesEn": "The past-tense form of ている, expressing an action in progress or a state continuing in the past."
   },
   {
     "id": "bunpou_te_itadakemasen_ka",
@@ -5591,19 +6161,25 @@
       {
         "japanese": "少し待っていただけませんか。",
         "romaji": "Sukoshi matte itadakemasen ka.",
-        "translation": "Bisakah Anda tolong menunggu sebentar?"
+        "translation": "Bisakah Anda tolong menunggu sebentar?",
+        "translationEn": "Could you please wait a moment?"
       },
       {
         "japanese": "もう一度説明していただけませんか。",
         "romaji": "Mou ichido setsumei shite itadakemasen ka.",
-        "translation": "Bisakah Anda tolong jelaskan sekali lagi?"
+        "translation": "Bisakah Anda tolong jelaskan sekali lagi?",
+        "translationEn": "Could you please explain once more?"
       },
       {
         "japanese": "ここに名前を書いていただけませんか。",
         "romaji": "Koko ni namae o kaite itadakemasen ka.",
-        "translation": "Bisakah Anda tolong tuliskan nama di sini?"
+        "translation": "Bisakah Anda tolong tuliskan nama di sini?",
+        "translationEn": "Could you please write your name here?"
       }
-    ]
+    ],
+    "meaningEn": "Could you please ~? (an extremely polite request)",
+    "formationEn": "Verb te-form + いただけませんか",
+    "usageNotesEn": "The most polite request form, a keigo version of てもらえませんか/てくれませんか, commonly used in formal/business situations."
   },
   {
     "id": "bunpou_te_kureru",
@@ -5621,19 +6197,25 @@
       {
         "japanese": "友達が手伝ってくれました。",
         "romaji": "Tomodachi ga tetsudatte kuremashita.",
-        "translation": "Teman membantu saya."
+        "translation": "Teman membantu saya.",
+        "translationEn": "My friend helped me."
       },
       {
         "japanese": "母が料理を作ってくれました。",
         "romaji": "Haha ga ryouri o tsukutte kuremashita.",
-        "translation": "Ibu memasakkan untuk saya."
+        "translation": "Ibu memasakkan untuk saya.",
+        "translationEn": "My mother cooked for me."
       },
       {
         "japanese": "彼が道を教えてくれました。",
         "romaji": "Kare ga michi o oshiete kuremashita.",
-        "translation": "Dia menunjukkan jalan untuk saya."
+        "translation": "Dia menunjukkan jalan untuk saya.",
+        "translationEn": "He showed me the way."
       }
-    ]
+    ],
+    "meaningEn": "Someone does ~ for me (a kindness received)",
+    "formationEn": "Verb te-form + くれる",
+    "usageNotesEn": "Expresses another person doing something for the benefit of the speaker (or their group), the direction of kindness flows toward the speaker (the opposite direction of てあげる)."
   },
   {
     "id": "bunpou_te_kuru",
@@ -5650,19 +6232,25 @@
       {
         "japanese": "だんだん寒くなってきました。",
         "romaji": "Dandan samuku natte kimashita.",
-        "translation": "Perlahan-lahan menjadi dingin."
+        "translation": "Perlahan-lahan menjadi dingin.",
+        "translationEn": "It's gradually getting colder."
       },
       {
         "japanese": "コンビニに行ってきます。",
         "romaji": "Konbini ni itte kimasu.",
-        "translation": "Saya pergi ke minimarket sebentar (dan akan kembali)."
+        "translation": "Saya pergi ke minimarket sebentar (dan akan kembali).",
+        "translationEn": "I'll pop over to the convenience store (and come back)."
       },
       {
         "japanese": "雨が降ってきました。",
         "romaji": "Ame ga futte kimashita.",
-        "translation": "Hujan mulai turun (mendekat ke sekarang)."
+        "translation": "Hujan mulai turun (mendekat ke sekarang).",
+        "translationEn": "It's starting to rain (approaching now)."
       }
-    ]
+    ],
+    "meaningEn": "Start/become ~ (continuing toward now); go and come back",
+    "formationEn": "Verb te-form + くる",
+    "usageNotesEn": "Expresses a change/action approaching the present viewpoint (the opposite of ていく), or literally \"go do something and come back\"."
   },
   {
     "id": "bunpou_te_miru",
@@ -5677,19 +6265,25 @@
       {
         "japanese": "この料理を食べてみてください。",
         "romaji": "Kono ryouri o tabete mite kudasai.",
-        "translation": "Cobalah makan masakan ini."
+        "translation": "Cobalah makan masakan ini.",
+        "translationEn": "Try eating this dish."
       },
       {
         "japanese": "新しい方法を試してみます。",
         "romaji": "Atarashii houhou o tameshite mimasu.",
-        "translation": "Saya akan coba metode baru."
+        "translation": "Saya akan coba metode baru.",
+        "translationEn": "I'll try a new method."
       },
       {
         "japanese": "一度聞いてみましょう。",
         "romaji": "Ichido kiite mimashou.",
-        "translation": "Ayo coba tanyakan sekali."
+        "translation": "Ayo coba tanyakan sekali.",
+        "translationEn": "Let's try asking once."
       }
-    ]
+    ],
+    "meaningEn": "Try doing ~",
+    "formationEn": "Verb te-form + みる",
+    "usageNotesEn": "Expresses trying something to see the result, literally derived from みる (to see/look)."
   },
   {
     "id": "bunpou_te_morau",
@@ -5707,19 +6301,25 @@
       {
         "japanese": "友達に手伝ってもらいました。",
         "romaji": "Tomodachi ni tetsudatte moraimashita.",
-        "translation": "Saya dibantu oleh teman (menerima bantuan darinya)."
+        "translation": "Saya dibantu oleh teman (menerima bantuan darinya).",
+        "translationEn": "I got help from a friend (received help from them)."
       },
       {
         "japanese": "先生に教えてもらいました。",
         "romaji": "Sensei ni oshiete moraimashita.",
-        "translation": "Saya diajari oleh guru."
+        "translation": "Saya diajari oleh guru.",
+        "translationEn": "I was taught by the teacher."
       },
       {
         "japanese": "母に料理を作ってもらいました。",
         "romaji": "Haha ni ryouri o tsukutte moraimashita.",
-        "translation": "Saya dimasakkan oleh ibu."
+        "translation": "Saya dimasakkan oleh ibu.",
+        "translationEn": "I had my mother cook for me."
       }
-    ]
+    ],
+    "meaningEn": "Receive the kindness of someone doing ~ (from the receiver's viewpoint)",
+    "formationEn": "Verb te-form + もらう",
+    "usageNotesEn": "Expresses the speaker receiving a benefit from another person's action, the viewpoint is centered on the RECEIVER (unlike てくれる, which more neutrally states who did the kind act)."
   },
   {
     "id": "bunpou_te_oku",
@@ -5734,19 +6334,25 @@
       {
         "japanese": "部屋を掃除しておきます。",
         "romaji": "Heya o souji shite okimasu.",
-        "translation": "Membersihkan kamar (sebagai persiapan)."
+        "translation": "Membersihkan kamar (sebagai persiapan).",
+        "translationEn": "Cleaning the room (as preparation)."
       },
       {
         "japanese": "チケットを買っておきました。",
         "romaji": "Chiketto o katte okimashita.",
-        "translation": "Sudah membeli tiket (sebagai persiapan)."
+        "translation": "Sudah membeli tiket (sebagai persiapan).",
+        "translationEn": "Already bought the tickets (in preparation)."
       },
       {
         "japanese": "資料を準備しておいてください。",
         "romaji": "Shiryou o junbi shite oite kudasai.",
-        "translation": "Tolong siapkan dokumennya (sebelumnya)."
+        "translation": "Tolong siapkan dokumennya (sebelumnya).",
+        "translationEn": "Please prepare the documents (beforehand)."
       }
-    ]
+    ],
+    "meaningEn": "Do ~ in preparation (for later)",
+    "formationEn": "Verb te-form + おく",
+    "usageNotesEn": "Expresses an action done now in preparation for a future need, often shortened to とく in casual conversation."
   },
   {
     "id": "bunpou_te_shimau",
@@ -5761,19 +6367,25 @@
       {
         "japanese": "宿題を全部やってしまいました。",
         "romaji": "Shukudai o zenbu yatte shimaimashita.",
-        "translation": "Sudah selesai mengerjakan semua PR."
+        "translation": "Sudah selesai mengerjakan semua PR.",
+        "translationEn": "Already finished all the homework."
       },
       {
         "japanese": "財布を忘れてしまいました。",
         "romaji": "Saifu o wasurete shimaimashita.",
-        "translation": "Saya (tidak sengaja) lupa membawa dompet."
+        "translation": "Saya (tidak sengaja) lupa membawa dompet.",
+        "translationEn": "I (accidentally) forgot to bring my wallet."
       },
       {
         "japanese": "もう食べちゃった。",
         "romaji": "Mou tabechatta.",
-        "translation": "Sudah kumakan (semua)."
+        "translation": "Sudah kumakan (semua).",
+        "translationEn": "I already ate it (all of it)."
       }
-    ]
+    ],
+    "meaningEn": "Completely finish ~ (or regretfully/unintentionally do)",
+    "formationEn": "Verb te-form + しまう (formal); て→ちゃう/でしまう→じゃう (casual contraction)",
+    "usageNotesEn": "Two main nuances: completely finishing something, or expressing regret/an unintentional occurrence. ちゃう is a very common casual contraction in conversation."
   },
   {
     "id": "bunpou_te_sumimasen",
@@ -5788,19 +6400,25 @@
       {
         "japanese": "遅れてすみません。",
         "romaji": "Okurete sumimasen.",
-        "translation": "Maaf karena terlambat."
+        "translation": "Maaf karena terlambat.",
+        "translationEn": "Sorry for being late."
       },
       {
         "japanese": "待たせてすみません。",
         "romaji": "Matasete sumimasen.",
-        "translation": "Maaf sudah membuat menunggu."
+        "translation": "Maaf sudah membuat menunggu.",
+        "translationEn": "Sorry for making you wait."
       },
       {
         "japanese": "迷惑をかけてすみません。",
         "romaji": "Meiwaku o kakete sumimasen.",
-        "translation": "Maaf sudah merepotkan."
+        "translation": "Maaf sudah merepotkan.",
+        "translationEn": "Sorry for the trouble."
       }
-    ]
+    ],
+    "meaningEn": "Sorry for having ~",
+    "formationEn": "Verb te-form + すみません",
+    "usageNotesEn": "An apology expression for an action already done/that caused a problem."
   },
   {
     "id": "bunpou_te_yaru",
@@ -5817,19 +6435,25 @@
       {
         "japanese": "犬にご飯をやりました。",
         "romaji": "Inu ni gohan o yarimashita.",
-        "translation": "Memberi makan anjing."
+        "translation": "Memberi makan anjing.",
+        "translationEn": "Feeding the dog."
       },
       {
         "japanese": "弟の宿題を手伝ってやりました。",
         "romaji": "Otouto no shukudai o tetsudatte yarimashita.",
-        "translation": "Membantu PR adik laki-laki."
+        "translation": "Membantu PR adik laki-laki.",
+        "translationEn": "Helping my little brother with his homework."
       },
       {
         "japanese": "花に水をやりました。",
         "romaji": "Hana ni mizu o yarimashita.",
-        "translation": "Menyiram bunga."
+        "translation": "Menyiram bunga.",
+        "translationEn": "Watering the flowers."
       }
-    ]
+    ],
+    "meaningEn": "Do ~ for someone else (casual/condescending, to a subordinate/animal/child)",
+    "formationEn": "Verb te-form + やる",
+    "usageNotesEn": "A rougher/more casual version of てあげる, only suitable toward a subordinate, a pet, or one's own child — impolite if used toward a peer or someone respected."
   },
   {
     "id": "bunpou_te_yokatta",
@@ -5844,19 +6468,25 @@
       {
         "japanese": "来てよかったです。",
         "romaji": "Kite yokatta desu.",
-        "translation": "Syukurlah sudah datang."
+        "translation": "Syukurlah sudah datang.",
+        "translationEn": "Glad you came."
       },
       {
         "japanese": "諦めなくてよかったです。",
         "romaji": "Akiramenakute yokatta desu.",
-        "translation": "Syukurlah tidak menyerah."
+        "translation": "Syukurlah tidak menyerah.",
+        "translationEn": "Glad I didn't give up."
       },
       {
         "japanese": "早く出発してよかったです。",
         "romaji": "Hayaku shuppatsu shite yokatta desu.",
-        "translation": "Syukurlah berangkat lebih awal."
+        "translation": "Syukurlah berangkat lebih awal.",
+        "translationEn": "Glad I left earlier."
       }
-    ]
+    ],
+    "meaningEn": "Glad that ~",
+    "formationEn": "Verb te-form + よかった",
+    "usageNotesEn": "Expresses relief/gratitude over an action already done or something that already happened."
   },
   {
     "id": "bunpou_te_iru_tokoro",
@@ -5874,19 +6504,25 @@
       {
         "japanese": "今、食べているところです。",
         "romaji": "Ima, tabete iru tokoro desu.",
-        "translation": "Sekarang, sedang dalam proses makan."
+        "translation": "Sekarang, sedang dalam proses makan.",
+        "translationEn": "Right now, I'm in the middle of eating."
       },
       {
         "japanese": "資料を作っているところです。",
         "romaji": "Shiryou o tsukutte iru tokoro desu.",
-        "translation": "Sedang dalam proses membuat dokumen."
+        "translation": "Sedang dalam proses membuat dokumen.",
+        "translationEn": "In the middle of making the document."
       },
       {
         "japanese": "説明しているところに、電話が鳴りました。",
         "romaji": "Setsumei shite iru tokoro ni, denwa ga narimashita.",
-        "translation": "Persis saat sedang menjelaskan, telepon berdering."
+        "translation": "Persis saat sedang menjelaskan, telepon berdering.",
+        "translationEn": "Right as I was explaining, the phone rang."
       }
-    ]
+    ],
+    "meaningEn": "In the middle of ~ (emphasizes the moment currently happening)",
+    "formationEn": "Verb te-form + いるところ",
+    "usageNotesEn": "Emphasizes the exact moment an action is IN PROGRESS, similar to ている but more strongly highlighting the current \"position within the process\"."
   },
   {
     "id": "bunpou_temo",
@@ -5903,19 +6539,25 @@
       {
         "japanese": "雨が降っても、行きます。",
         "romaji": "Ame ga futtemo, ikimasu.",
-        "translation": "Meskipun hujan, saya akan pergi."
+        "translation": "Meskipun hujan, saya akan pergi.",
+        "translationEn": "Even if it rains, I'll go."
       },
       {
         "japanese": "高くても、買います。",
         "romaji": "Takakutemo, kaimasu.",
-        "translation": "Meskipun mahal, saya akan membeli."
+        "translation": "Meskipun mahal, saya akan membeli.",
+        "translationEn": "Even if it's expensive, I'll buy it."
       },
       {
         "japanese": "何を言っても、彼は聞きません。",
         "romaji": "Nani o ittemo, kare wa kikimasen.",
-        "translation": "Apapun yang dikatakan, dia tidak akan mendengarkan."
+        "translation": "Apapun yang dikatakan, dia tidak akan mendengarkan.",
+        "translationEn": "No matter what's said, he won't listen."
       }
-    ]
+    ],
+    "meaningEn": "Even if/though ~",
+    "formationEn": "Verb te-form + も; i-adjective (い→くて) + も; na-adjective/noun + でも",
+    "usageNotesEn": "Expresses that the outcome doesn't change even if a condition is met, often used with a question word for \"no matter what/where/etc.\"."
   },
   {
     "id": "bunpou_to2",
@@ -5933,19 +6575,25 @@
       {
         "japanese": "春になると、桜が咲きます。",
         "romaji": "Haru ni naru to, sakura ga sakimasu.",
-        "translation": "Kalau musim semi tiba, bunga sakura pasti mekar."
+        "translation": "Kalau musim semi tiba, bunga sakura pasti mekar.",
+        "translationEn": "When spring comes, the cherry blossoms always bloom."
       },
       {
         "japanese": "このボタンを押すと、ドアが開きます。",
         "romaji": "Kono botan o osu to, doa ga akimasu.",
-        "translation": "Kalau menekan tombol ini, pintu pasti terbuka."
+        "translation": "Kalau menekan tombol ini, pintu pasti terbuka.",
+        "translationEn": "If you press this button, the door always opens."
       },
       {
         "japanese": "塩を入れすぎると、辛くなります。",
         "romaji": "Shio o iresugiru to, karaku narimasu.",
-        "translation": "Kalau garamnya kebanyakan, pasti jadi asin."
+        "translation": "Kalau garamnya kebanyakan, pasti jadi asin.",
+        "translationEn": "If there's too much salt, it always turns out salty."
       }
-    ]
+    ],
+    "meaningEn": "If ~, then always ~ (automatic/natural-result conditional, revisited)",
+    "formationEn": "Verb/adjective dictionary form + と",
+    "usageNotesEn": "A review of と's conditional function already touched on at N5 — emphasizes that the result happens automatically/certainly every time the condition is met (like a natural law/fixed habit), not suited for suggestions/invitations/requests."
   },
   {
     "id": "bunpou_to_itte_mo_ii",
@@ -5960,19 +6608,25 @@
       {
         "japanese": "彼は天才と言ってもいいです。",
         "romaji": "Kare wa tensai to itte mo ii desu.",
-        "translation": "Bisa dikatakan dia jenius."
+        "translation": "Bisa dikatakan dia jenius.",
+        "translationEn": "It could be said that he's a genius."
       },
       {
         "japanese": "これは奇跡と言ってもいいでしょう。",
         "romaji": "Kore wa kiseki to itte mo ii deshou.",
-        "translation": "Ini bisa dikatakan sebuah keajaiban."
+        "translation": "Ini bisa dikatakan sebuah keajaiban.",
+        "translationEn": "This could be called a miracle."
       },
       {
         "japanese": "完璧と言ってもいい出来です。",
         "romaji": "Kanpeki to itte mo ii deki desu.",
-        "translation": "Hasilnya bisa dikatakan sempurna."
+        "translation": "Hasilnya bisa dikatakan sempurna.",
+        "translationEn": "The result could be called perfect."
       }
-    ]
+    ],
+    "meaningEn": "It could be said that ~",
+    "formationEn": "Sentence (plain form) + と言ってもいい",
+    "usageNotesEn": "Expresses a conclusion/judgment the speaker considers reasonable enough to state, literally \"it's okay to say that\"."
   },
   {
     "id": "bunpou_to_iu",
@@ -5989,19 +6643,25 @@
       {
         "japanese": "田中という人が来ました。",
         "romaji": "Tanaka to iu hito ga kimashita.",
-        "translation": "Ada orang bernama Tanaka yang datang."
+        "translation": "Ada orang bernama Tanaka yang datang.",
+        "translationEn": "A person named Tanaka came."
       },
       {
         "japanese": "明日休みだという話を聞きました。",
         "romaji": "Ashita yasumi da to iu hanashi o kikimashita.",
-        "translation": "Saya dengar kabar bahwa besok libur."
+        "translation": "Saya dengar kabar bahwa besok libur.",
+        "translationEn": "I heard news that tomorrow's a holiday."
       },
       {
         "japanese": "これは寿司という食べ物です。",
         "romaji": "Kore wa sushi to iu tabemono desu.",
-        "translation": "Ini adalah makanan yang disebut sushi."
+        "translation": "Ini adalah makanan yang disebut sushi.",
+        "translationEn": "This is food called sushi."
       }
-    ]
+    ],
+    "meaningEn": "Called/named ~; that ~ (quoting/explaining)",
+    "formationEn": "Noun + という + noun; sentence + という + noun",
+    "usageNotesEn": "Connects a name/term with its explanation, or introduces a statement/rumor as additional information on the following noun. Different from [[to_iu2]] N1 (describing an entire situation/event narratively, journalistic style, not just naming)."
   },
   {
     "id": "bunpou_to_iu_koto",
@@ -6018,19 +6678,25 @@
       {
         "japanese": "つまり、彼は来ないということです。",
         "romaji": "Tsumari, kare wa konai to iu koto desu.",
-        "translation": "Singkatnya, itu artinya dia tidak akan datang."
+        "translation": "Singkatnya, itu artinya dia tidak akan datang.",
+        "translationEn": "In short, that means he won't come."
       },
       {
         "japanese": "頑張れば、できるということです。",
         "romaji": "Ganbareba, dekiru to iu koto desu.",
-        "translation": "Artinya, kalau berusaha, pasti bisa."
+        "translation": "Artinya, kalau berusaha, pasti bisa.",
+        "translationEn": "That means, if you try, you can do it."
       },
       {
         "japanese": "明日は休みだということを忘れないでください。",
         "romaji": "Ashita wa yasumi da to iu koto o wasurenaide kudasai.",
-        "translation": "Tolong jangan lupa bahwa besok libur."
+        "translation": "Tolong jangan lupa bahwa besok libur.",
+        "translationEn": "Please don't forget that tomorrow's a holiday."
       }
-    ]
+    ],
+    "meaningEn": "That is to say ~ (explains/asserts a statement)",
+    "formationEn": "Sentence + ということ(です)",
+    "usageNotesEn": "Nominalizes/explains a statement as a single unit of meaning, often used to summarize/conclude a preceding explanation."
   },
   {
     "id": "bunpou_to_iwarete_iru",
@@ -6048,19 +6714,25 @@
       {
         "japanese": "この寺は有名だと言われています。",
         "romaji": "Kono tera wa yuumei da to iwarete imasu.",
-        "translation": "Kuil ini dikatakan terkenal."
+        "translation": "Kuil ini dikatakan terkenal.",
+        "translationEn": "This temple is said to be famous."
       },
       {
         "japanese": "納豆は体にいいと言われています。",
         "romaji": "Nattou wa karada ni ii to iwarete imasu.",
-        "translation": "Natto dikatakan baik untuk tubuh."
+        "translation": "Natto dikatakan baik untuk tubuh.",
+        "translationEn": "Natto is said to be good for the body."
       },
       {
         "japanese": "この本は難しいと言われています。",
         "romaji": "Kono hon wa muzukashii to iwarete imasu.",
-        "translation": "Buku ini dikatakan sulit."
+        "translation": "Buku ini dikatakan sulit.",
+        "translationEn": "This book is said to be difficult."
       }
-    ]
+    ],
+    "meaningEn": "It is said that ~ (generally/according to the public)",
+    "formationEn": "Sentence + と言われている",
+    "usageNotesEn": "Expresses an opinion/fact generally believed by the wider public, without naming a specific source, similar to \"it's commonly said\"."
   },
   {
     "id": "bunpou_to_kiita",
@@ -6077,19 +6749,25 @@
       {
         "japanese": "彼が結婚すると聞きました。",
         "romaji": "Kare ga kekkon suru to kikimashita.",
-        "translation": "Saya dengar dia akan menikah."
+        "translation": "Saya dengar dia akan menikah.",
+        "translationEn": "I heard he's getting married."
       },
       {
         "japanese": "あの店は美味しいと聞きました。",
         "romaji": "Ano mise wa oishii to kikimashita.",
-        "translation": "Saya dengar toko itu enak."
+        "translation": "Saya dengar toko itu enak.",
+        "translationEn": "I heard that shop is good."
       },
       {
         "japanese": "明日は雨だと聞きました。",
         "romaji": "Ashita wa ame da to kikimashita.",
-        "translation": "Saya dengar besok akan hujan."
+        "translation": "Saya dengar besok akan hujan.",
+        "translationEn": "I heard it'll rain tomorrow."
       }
-    ]
+    ],
+    "meaningEn": "I heard that ~",
+    "formationEn": "Sentence + と聞いた",
+    "usageNotesEn": "Expresses information the speaker specifically heard from a source (more personal than と言われている, which is more general/anonymous)."
   },
   {
     "id": "bunpou_to_omou",
@@ -6104,19 +6782,25 @@
       {
         "japanese": "明日は晴れると思います。",
         "romaji": "Ashita wa hareru to omoimasu.",
-        "translation": "Saya pikir besok akan cerah."
+        "translation": "Saya pikir besok akan cerah.",
+        "translationEn": "I think it'll be sunny tomorrow."
       },
       {
         "japanese": "この映画は面白いと思います。",
         "romaji": "Kono eiga wa omoshiroi to omoimasu.",
-        "translation": "Saya pikir film ini menarik."
+        "translation": "Saya pikir film ini menarik.",
+        "translationEn": "I think this movie is interesting."
       },
       {
         "japanese": "彼は正しいと思います。",
         "romaji": "Kare wa tadashii to omoimasu.",
-        "translation": "Saya pikir dia benar."
+        "translation": "Saya pikir dia benar.",
+        "translationEn": "I think he's right."
       }
-    ]
+    ],
+    "meaningEn": "I think that ~",
+    "formationEn": "Sentence (plain form) + と思う",
+    "usageNotesEn": "Expresses the speaker's personal opinion/thought, one of the most basic and frequently used patterns for stating an opinion politely/without forcing it."
   },
   {
     "id": "bunpou_toka_toka",
@@ -6134,19 +6818,25 @@
       {
         "japanese": "映画とか音楽とかが好きです。",
         "romaji": "Eiga toka ongaku toka ga suki desu.",
-        "translation": "Saya suka hal-hal seperti film atau musik."
+        "translation": "Saya suka hal-hal seperti film atau musik.",
+        "translationEn": "I like things like movies or music."
       },
       {
         "japanese": "週末は買い物とか掃除とかをします。",
         "romaji": "Shuumatsu wa kaimono toka souji toka o shimasu.",
-        "translation": "Akhir pekan saya melakukan hal-hal seperti belanja atau bersih-bersih."
+        "translation": "Akhir pekan saya melakukan hal-hal seperti belanja atau bersih-bersih.",
+        "translationEn": "On weekends I do things like shopping or cleaning."
       },
       {
         "japanese": "りんごとかバナナとかを買いました。",
         "romaji": "Ringo toka banana toka o kaimashita.",
-        "translation": "Saya membeli hal-hal seperti apel atau pisang."
+        "translation": "Saya membeli hal-hal seperti apel atau pisang.",
+        "translationEn": "I bought things like apples or bananas."
       }
-    ]
+    ],
+    "meaningEn": "Things like ~ or ~ (naming a few examples, casual)",
+    "formationEn": "Noun A + とか + noun B + とか",
+    "usageNotesEn": "A casual version of や for naming an incomplete list of examples, commonly used in everyday relaxed conversation."
   },
   {
     "id": "bunpou_tokoro",
@@ -6161,19 +6851,25 @@
       {
         "japanese": "彼のいいところは優しいところです。",
         "romaji": "Kare no ii tokoro wa yasashii tokoro desu.",
-        "translation": "Kelebihan (bagian baik) dia adalah sifatnya yang baik hati."
+        "translation": "Kelebihan (bagian baik) dia adalah sifatnya yang baik hati.",
+        "translationEn": "His good point is his kind nature."
       },
       {
         "japanese": "そこがおかしいところです。",
         "romaji": "Soko ga okashii tokoro desu.",
-        "translation": "Itulah bagian yang aneh."
+        "translation": "Itulah bagian yang aneh.",
+        "translationEn": "That's the strange part."
       },
       {
         "japanese": "難しいところが分かりません。",
         "romaji": "Muzukashii tokoro ga wakarimasen.",
-        "translation": "Saya tidak paham bagian yang sulitnya."
+        "translation": "Saya tidak paham bagian yang sulitnya.",
+        "translationEn": "I don't understand the difficult part."
       }
-    ]
+    ],
+    "meaningEn": "Part, place, point (in an abstract context)",
+    "formationEn": "Adjective/verb plain form + ところ",
+    "usageNotesEn": "Nominalizes a particular aspect/part of something, often used to refer to a distinctive trait or a certain point in a process/argument."
   },
   {
     "id": "bunpou_tsuzukeru",
@@ -6190,19 +6886,25 @@
       {
         "japanese": "十年間、日本語を勉強し続けています。",
         "romaji": "Juunenkan, nihongo o benkyoushitsuzukete imasu.",
-        "translation": "Sudah sepuluh tahun terus belajar bahasa Jepang."
+        "translation": "Sudah sepuluh tahun terus belajar bahasa Jepang.",
+        "translationEn": "I've been studying Japanese for ten years now."
       },
       {
         "japanese": "彼は走り続けました。",
         "romaji": "Kare wa hashiritsuzukemashita.",
-        "translation": "Dia terus berlari."
+        "translation": "Dia terus berlari.",
+        "translationEn": "He keeps running."
       },
       {
         "japanese": "雨が降り続いています。",
         "romaji": "Ame ga furitsuzuite imasu.",
-        "translation": "Hujan terus turun."
+        "translation": "Hujan terus turun.",
+        "translationEn": "It keeps raining."
       }
-    ]
+    ],
+    "meaningEn": "Keep doing ~",
+    "formationEn": "Verb ~ます form (drop ます) + 続ける",
+    "usageNotesEn": "As a suffix on another verb, expresses an activity continuing without stopping, the opposite concept of 終わる/やめる."
   },
   {
     "id": "bunpou_tte",
@@ -6220,19 +6922,25 @@
       {
         "japanese": "明日休みだって。",
         "romaji": "Ashita yasumi datte.",
-        "translation": "Katanya besok libur."
+        "translation": "Katanya besok libur.",
+        "translationEn": "I heard tomorrow's a holiday."
       },
       {
         "japanese": "田中さんって、知ってる？",
         "romaji": "Tanaka-san tte, shitteru?",
-        "translation": "Tahu (tentang) Tanaka?"
+        "translation": "Tahu (tentang) Tanaka?",
+        "translationEn": "Do you know (about) Tanaka?"
       },
       {
         "japanese": "これって何？",
         "romaji": "Kore tte nani?",
-        "translation": "Ini apa, sih?"
+        "translation": "Ini apa, sih?",
+        "translationEn": "What is this, anyway?"
       }
-    ]
+    ],
+    "meaningEn": "Said to be/about ~ (casual version of と/は/という)",
+    "formationEn": "Sentence + って (casual quote); noun + って (casual topic, a version of は)",
+    "usageNotesEn": "A very casual contraction that can replace と (quote), は (topic), or という (name/reference) depending on context, common in casual conversation."
   },
   {
     "id": "bunpou_ukemikei",
@@ -6249,19 +6957,25 @@
       {
         "japanese": "犬に噛まれました。",
         "romaji": "Inu ni kamaremashita.",
-        "translation": "Saya digigit anjing."
+        "translation": "Saya digigit anjing.",
+        "translationEn": "I was bitten by a dog."
       },
       {
         "japanese": "この本は多くの人に読まれています。",
         "romaji": "Kono hon wa ooku no hito ni yomarete imasu.",
-        "translation": "Buku ini dibaca oleh banyak orang."
+        "translation": "Buku ini dibaca oleh banyak orang.",
+        "translationEn": "This book is read by many people."
       },
       {
         "japanese": "財布を盗まれました。",
         "romaji": "Saifu o nusumaremashita.",
-        "translation": "Dompet saya dicuri."
+        "translation": "Dompet saya dicuri.",
+        "translationEn": "My wallet was stolen."
       }
-    ]
+    ],
+    "meaningEn": "Passive form (grammar category)",
+    "formationEn": "Godan: u→areru (書く→書かれる); ichidan: る→られる (見る→見られる); irregular: する→される, 来る→来られる",
+    "usageNotesEn": "A grammar category (not a single pattern) expressing the subject receiving an action from another party, shares its conjugation with the potential form for ichidan/irregular verbs (see られる)."
   },
   {
     "id": "bunpou_wa_ga_wa",
@@ -6276,19 +6990,25 @@
       {
         "japanese": "この店は魚はおいしいですが、肉はあまりよくないです。",
         "romaji": "Kono mise wa sakana wa oishii desu ga, niku wa amari yokunai desu.",
-        "translation": "Toko ini ikannya enak, tapi dagingnya kurang begitu bagus."
+        "translation": "Toko ini ikannya enak, tapi dagingnya kurang begitu bagus.",
+        "translationEn": "This restaurant's fish is good, but its meat isn't so great."
       },
       {
         "japanese": "彼は英語は上手ですが、日本語はまだです。",
         "romaji": "Kare wa eigo wa jouzu desu ga, nihongo wa mada desu.",
-        "translation": "Dia bahasa Inggrisnya mahir, tapi bahasa Jepangnya masih (belum)."
+        "translation": "Dia bahasa Inggrisnya mahir, tapi bahasa Jepangnya masih (belum).",
+        "translationEn": "His English is fluent, but his Japanese is still (not yet)."
       },
       {
         "japanese": "この町は昼は静かですが、夜は賑やかです。",
         "romaji": "Kono machi wa hiru wa shizuka desu ga, yoru wa nigiyaka desu.",
-        "translation": "Kota ini siang harinya tenang, tapi malamnya ramai."
+        "translation": "Kota ini siang harinya tenang, tapi malamnya ramai.",
+        "translationEn": "This city is quiet in the daytime, but lively at night."
       }
-    ]
+    ],
+    "meaningEn": "Regarding ~, [part A] is ~ but [part B] is ~ (contrasting two topics)",
+    "formationEn": "[main topic]は[part A]が[trait A]、[part B]は[trait B]",
+    "usageNotesEn": "A pattern for comparing two parts of the same overall topic, often used to describe something from several different angles in a single sentence."
   },
   {
     "id": "bunpou_yasui",
@@ -6305,19 +7025,25 @@
       {
         "japanese": "この本は読みやすいです。",
         "romaji": "Kono hon wa yomiyasui desu.",
-        "translation": "Buku ini mudah dibaca."
+        "translation": "Buku ini mudah dibaca.",
+        "translationEn": "This book is easy to read."
       },
       {
         "japanese": "この靴は歩きやすいです。",
         "romaji": "Kono kutsu wa arukiyasui desu.",
-        "translation": "Sepatu ini mudah untuk berjalan."
+        "translation": "Sepatu ini mudah untuk berjalan.",
+        "translationEn": "These shoes are easy to walk in."
       },
       {
         "japanese": "分かりやすい説明でした。",
         "romaji": "Wakariyasui setsumei deshita.",
-        "translation": "Penjelasannya mudah dipahami."
+        "translation": "Penjelasannya mudah dipahami.",
+        "translationEn": "The explanation is easy to understand."
       }
-    ]
+    ],
+    "meaningEn": "Easy to ~",
+    "formationEn": "Verb ~ます form (drop ます) + やすい",
+    "usageNotesEn": "Expresses the objective ease of doing an action, the opposite of にくい."
   },
   {
     "id": "bunpou_yatto",
@@ -6332,19 +7058,25 @@
       {
         "japanese": "やっと宿題が終わりました。",
         "romaji": "Yatto shukudai ga owarimashita.",
-        "translation": "Akhirnya PR selesai."
+        "translation": "Akhirnya PR selesai.",
+        "translationEn": "The homework is finally done."
       },
       {
         "japanese": "やっと日本に着きました。",
         "romaji": "Yatto Nihon ni tsukimashita.",
-        "translation": "Akhirnya sampai di Jepang."
+        "translation": "Akhirnya sampai di Jepang.",
+        "translationEn": "Finally arrived in Japan."
       },
       {
         "japanese": "やっと分かりました。",
         "romaji": "Yatto wakarimashita.",
-        "translation": "Akhirnya mengerti."
+        "translation": "Akhirnya mengerti.",
+        "translationEn": "Finally understood."
       }
-    ]
+    ],
+    "meaningEn": "Finally (after a long wait/effort)",
+    "formationEn": "やっと + sentence",
+    "usageNotesEn": "Expresses something finally happening after a long/tiring process, carrying a nuance of relief."
   },
   {
     "id": "bunpou_yori",
@@ -6362,19 +7094,25 @@
       {
         "japanese": "東京より大阪のほうが近いです。",
         "romaji": "Toukyou yori Oosaka no hou ga chikai desu.",
-        "translation": "Osaka lebih dekat daripada Tokyo."
+        "translation": "Osaka lebih dekat daripada Tokyo.",
+        "translationEn": "Osaka is closer than Tokyo."
       },
       {
         "japanese": "九時より会議が始まります。",
         "romaji": "Kuji yori kaigi ga hajimarimasu.",
-        "translation": "Rapat dimulai dari jam sembilan."
+        "translation": "Rapat dimulai dari jam sembilan.",
+        "translationEn": "The meeting starts from nine o'clock."
       },
       {
         "japanese": "彼は私より背が高いです。",
         "romaji": "Kare wa watashi yori se ga takai desu.",
-        "translation": "Dia lebih tinggi daripada saya."
+        "translation": "Dia lebih tinggi daripada saya.",
+        "translationEn": "He's taller than me."
       }
-    ]
+    ],
+    "meaningEn": "From, than (comparison particle)",
+    "formationEn": "Noun + より",
+    "usageNotesEn": "Marks the reference point in a comparison sentence (already appeared as part of the は〜より pattern at N5, reviewed here as a standalone particle), can also mean \"since/from\" for time/place in a formal context."
   },
   {
     "id": "bunpou_yotei_da",
@@ -6391,19 +7129,25 @@
       {
         "japanese": "来月、日本に行く予定です。",
         "romaji": "Raigetsu, nihon ni iku yotei desu.",
-        "translation": "Rencananya bulan depan akan pergi ke Jepang."
+        "translation": "Rencananya bulan depan akan pergi ke Jepang.",
+        "translationEn": "It's planned that I'll go to Japan next month."
       },
       {
         "japanese": "会議は三時からの予定です。",
         "romaji": "Kaigi wa sanji kara no yotei desu.",
-        "translation": "Rapat rencananya dimulai dari jam tiga."
+        "translation": "Rapat rencananya dimulai dari jam tiga.",
+        "translationEn": "The meeting is scheduled to start from three o'clock."
       },
       {
         "japanese": "彼女は来年結婚する予定です。",
         "romaji": "Kanojo wa rainen kekkon suru yotei desu.",
-        "translation": "Dia rencananya akan menikah tahun depan."
+        "translation": "Dia rencananya akan menikah tahun depan.",
+        "translationEn": "He's scheduled to get married next year."
       }
-    ]
+    ],
+    "meaningEn": "It's scheduled/planned that ~",
+    "formationEn": "Verb dictionary form + 予定だ; noun + の予定だ",
+    "usageNotesEn": "Expresses a plan/schedule already set in advance, more formal/concrete than つもり, which is more about a personal intention."
   },
   {
     "id": "bunpou_you_da",
@@ -6420,19 +7164,25 @@
       {
         "japanese": "彼は忙しいようです。",
         "romaji": "Kare wa isogashii you desu.",
-        "translation": "Sepertinya dia sedang sibuk."
+        "translation": "Sepertinya dia sedang sibuk.",
+        "translationEn": "It seems he's busy."
       },
       {
         "japanese": "雨が降っているようです。",
         "romaji": "Ame ga futte iru you desu.",
-        "translation": "Sepertinya sedang hujan."
+        "translation": "Sepertinya sedang hujan.",
+        "translationEn": "It seems to be raining."
       },
       {
         "japanese": "これは本物のようです。",
         "romaji": "Kore wa honmono no you desu.",
-        "translation": "Sepertinya ini barang asli."
+        "translation": "Sepertinya ini barang asli.",
+        "translationEn": "This seems to be the real thing."
       }
-    ]
+    ],
+    "meaningEn": "It seems ~ (guess based on observation/evidence, more formal than みたいだ)",
+    "formationEn": "Verb/i-adjective plain form + ようだ; na-adjective + な + ようだ; noun + の + ようだ",
+    "usageNotesEn": "A more formal/written version of みたいだ, expressing a guess based on fairly convincing evidence/observation."
   },
   {
     "id": "bunpou_youni_youna",
@@ -6451,19 +7201,25 @@
       {
         "japanese": "忘れないように書いておきます。",
         "romaji": "Wasurenai you ni kaite okimasu.",
-        "translation": "Menuliskannya supaya tidak lupa."
+        "translation": "Menuliskannya supaya tidak lupa.",
+        "translationEn": "Writing it down so as not to forget."
       },
       {
         "japanese": "彼のような人になりたいです。",
         "romaji": "Kare no you na hito ni naritai desu.",
-        "translation": "Ingin menjadi orang seperti dia."
+        "translation": "Ingin menjadi orang seperti dia.",
+        "translationEn": "I want to become someone like him."
       },
       {
         "japanese": "鳥のように飛びたいです。",
         "romaji": "Tori no you ni tobitai desu.",
-        "translation": "Ingin terbang seperti burung."
+        "translation": "Ingin terbang seperti burung.",
+        "translationEn": "I want to fly like a bird."
       }
-    ]
+    ],
+    "meaningEn": "Like ~ (adverbial/attributive form of ようだ)",
+    "formationEn": "ようだ stem + に (adverbial, modifies a verb); + な (attributive, modifies a noun)",
+    "usageNotesEn": "A variant of ようだ modifying a verb (ように, also used to express a hope/purpose) or a noun (ような), the formal counterpart of みたいに/みたいな."
   },
   {
     "id": "bunpou_you_ni_naru",
@@ -6480,19 +7236,25 @@
       {
         "japanese": "日本語が話せるようになりました。",
         "romaji": "Nihongo ga hanaseru you ni narimashita.",
-        "translation": "Sekarang sudah bisa berbicara bahasa Jepang."
+        "translation": "Sekarang sudah bisa berbicara bahasa Jepang.",
+        "translationEn": "I've become able to speak Japanese now."
       },
       {
         "japanese": "早く起きるようになりました。",
         "romaji": "Hayaku okiru you ni narimashita.",
-        "translation": "Sekarang sudah terbiasa bangun pagi."
+        "translation": "Sekarang sudah terbiasa bangun pagi.",
+        "translationEn": "I've gotten used to waking up early now."
       },
       {
         "japanese": "一人で料理を作れるようになりました。",
         "romaji": "Hitori de ryouri o tsukureru you ni narimashita.",
-        "translation": "Sekarang sudah bisa memasak sendiri."
+        "translation": "Sekarang sudah bisa memasak sendiri.",
+        "translationEn": "I've become able to cook by myself now."
       }
-    ]
+    ],
+    "meaningEn": "Become able to/get used to ~ (a gradual change in ability/habit)",
+    "formationEn": "Verb dictionary/potential form + ようになる",
+    "usageNotesEn": "Expresses a gradual change from not being able to/not being used to something to being able to/used to it, emphasizing the process of that change itself."
   },
   {
     "id": "bunpou_you_ni_suru",
@@ -6510,19 +7272,25 @@
       {
         "japanese": "毎日野菜を食べるようにしています。",
         "romaji": "Mainichi yasai o taberu you ni shite imasu.",
-        "translation": "Saya berusaha selalu makan sayur setiap hari."
+        "translation": "Saya berusaha selalu makan sayur setiap hari.",
+        "translationEn": "I try to always eat vegetables every day."
       },
       {
         "japanese": "遅刻しないようにします。",
         "romaji": "Chikoku shinai you ni shimasu.",
-        "translation": "Saya akan berusaha untuk tidak terlambat."
+        "translation": "Saya akan berusaha untuk tidak terlambat.",
+        "translationEn": "I'll try not to be late."
       },
       {
         "japanese": "早く寝るようにしてください。",
         "romaji": "Hayaku neru you ni shite kudasai.",
-        "translation": "Tolong usahakan untuk tidur cepat."
+        "translation": "Tolong usahakan untuk tidur cepat.",
+        "translationEn": "Please try to sleep early."
       }
-    ]
+    ],
+    "meaningEn": "Try to (always) ~ (a consciously cultivated habit)",
+    "formationEn": "Verb dictionary/~ない form + ようにする",
+    "usageNotesEn": "Expresses a conscious effort to make a habit of doing (or not doing) something, unlike ようになる, which expresses the result of a natural/gradual change."
   },
   {
     "id": "bunpou_you_to_omou",
@@ -6540,19 +7308,25 @@
       {
         "japanese": "来年、日本に留学しようと思います。",
         "romaji": "Rainen, nihon ni ryuugaku shiyou to omoimasu.",
-        "translation": "Saya berniat untuk kuliah di Jepang tahun depan."
+        "translation": "Saya berniat untuk kuliah di Jepang tahun depan.",
+        "translationEn": "I intend to study at university in Japan next year."
       },
       {
         "japanese": "明日から早く起きようと思います。",
         "romaji": "Ashita kara hayaku okiyou to omoimasu.",
-        "translation": "Saya berniat mulai bangun pagi besok."
+        "translation": "Saya berniat mulai bangun pagi besok.",
+        "translationEn": "I intend to start waking up early tomorrow."
       },
       {
         "japanese": "彼に謝ろうと思います。",
         "romaji": "Kare ni ayamarou to omoimasu.",
-        "translation": "Saya berniat untuk minta maaf padanya."
+        "translation": "Saya berniat untuk minta maaf padanya.",
+        "translationEn": "I intend to apologize to him."
       }
-    ]
+    ],
+    "meaningEn": "Intend to ~ (using the volitional form + thinking)",
+    "formationEn": "Verb volitional form (意向形) + と思う",
+    "usageNotesEn": "Combines the volitional form (意向形, already learned earlier) with と思う to express an intention the speaker is currently thinking about/planning."
   },
   {
     "id": "bunpou_zehi",
@@ -6567,19 +7341,25 @@
       {
         "japanese": "ぜひ遊びに来てください。",
         "romaji": "Zehi asobi ni kite kudasai.",
-        "translation": "Datanglah bermain, ya (dengan sangat)."
+        "translation": "Datanglah bermain, ya (dengan sangat).",
+        "translationEn": "Do come visit sometime, by all means."
       },
       {
         "japanese": "ぜひ試してみてください。",
         "romaji": "Zehi tameshite mite kudasai.",
-        "translation": "Cobalah, ya (sungguh-sungguh disarankan)."
+        "translation": "Cobalah, ya (sungguh-sungguh disarankan).",
+        "translationEn": "Please do try it, I really recommend it."
       },
       {
         "japanese": "ぜひ一度会いたいです。",
         "romaji": "Zehi ichido aitai desu.",
-        "translation": "Saya sangat ingin bertemu sekali saja."
+        "translation": "Saya sangat ingin bertemu sekali saja.",
+        "translationEn": "I really want to meet you at least once."
       }
-    ]
+    ],
+    "meaningEn": "By all means, definitely (a strong hope/request)",
+    "formationEn": "ぜひ + sentence (often with a request/hope)",
+    "usageNotesEn": "An adverb emphasizing the speaker's strong hope/request, often used in invitations or requests for something to truly happen."
   },
   {
     "id": "bunpou_zenzen_nai",
@@ -6596,19 +7376,25 @@
       {
         "japanese": "全然分かりません。",
         "romaji": "Zenzen wakarimasen.",
-        "translation": "Sama sekali tidak mengerti."
+        "translation": "Sama sekali tidak mengerti.",
+        "translationEn": "I don't understand at all."
       },
       {
         "japanese": "お金が全然ありません。",
         "romaji": "Okane ga zenzen arimasen.",
-        "translation": "Sama sekali tidak ada uang."
+        "translation": "Sama sekali tidak ada uang.",
+        "translationEn": "I have no money at all."
       },
       {
         "japanese": "全然疲れていません。",
         "romaji": "Zenzen tsukarete imasen.",
-        "translation": "Sama sekali tidak lelah."
+        "translation": "Sama sekali tidak lelah.",
+        "translationEn": "I'm not tired at all."
       }
-    ]
+    ],
+    "meaningEn": "Not at all ~",
+    "formationEn": "全然 + verb/adjective negative form",
+    "usageNotesEn": "Expresses total/absolute denial, traditionally must be paired with a negative form (though in modern casual speech it's sometimes used with a positive meaning \"totally\", but the standard form still pairs with negative)."
   },
   {
     "id": "bunpou_zurai",
@@ -6625,19 +7411,25 @@
       {
         "japanese": "ちょっと言いづらいことがあります。",
         "romaji": "Chotto iizurai koto ga arimasu.",
-        "translation": "Ada hal yang agak sulit untuk dikatakan."
+        "translation": "Ada hal yang agak sulit untuk dikatakan.",
+        "translationEn": "There's something a bit hard to say."
       },
       {
         "japanese": "この話は聞きづらいです。",
         "romaji": "Kono hanashi wa kikizurai desu.",
-        "translation": "Cerita ini berat untuk didengar."
+        "translation": "Cerita ini berat untuk didengar.",
+        "translationEn": "This story is tough to hear."
       },
       {
         "japanese": "頼みづらいお願いです。",
         "romaji": "Tanomizurai onegai desu.",
-        "translation": "Ini permintaan yang sulit untuk diminta."
+        "translation": "Ini permintaan yang sulit untuk diminta.",
+        "translationEn": "This is a hard request to make."
       }
-    ]
+    ],
+    "meaningEn": "Hard/tough to ~ (emotionally/psychologically, not just technically)",
+    "formationEn": "Verb ~ます form (drop ます) + づらい",
+    "usageNotesEn": "Similar to にくい but emphasizing a difficulty that's emotional/an uncomfortable feeling (not purely technical/physical difficulty), e.g. 言いづらい (hard to say because it's awkward)."
   },
   {
     "id": "bunpou_ageru",
