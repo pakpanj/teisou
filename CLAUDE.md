@@ -1377,7 +1377,7 @@ the one remaining piece — lowest priority since
 on-screen Japanese/translation text — see the Kaiwa module
 architecture note further below). This is genuinely optional
 follow-up work, not a gap in what's user-facing today. NPC lines are
-now at **3,000/7,468** (batches 1-6), continuing on the same
+now at **4,000/7,468** (batches 1-8), continuing on the same
 per-batch workflow.
 
 **Continuing this rollout (per-batch workflow, proven over 46
