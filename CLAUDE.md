@@ -1267,15 +1267,26 @@ word-example meanings are now fully done, see the update above**; the
 gap that remains is all kanji *sentence* translations): all kanji
 sentence translations (4,850); Kotoba sentence translations (1,264);
 every Bunpou prose field (3,839); the dictionary's 908 example
-translations; Particle titles/explanations/cloze (236); Dokkai titles +
-passage translations (1,000). **The "all of Kaiwa (34,019)" this
-paragraph used to claim is now stale** — a later, separate rollout is
-actively translating Kaiwa's content; see the dedicated "Kaiwa full-content
-English translation" update further below (search for
-`kaiwa_meaning_en.py`) for the real, currently-in-progress state. Also **exam-history rows store
+translations; Dokkai titles + passage translations (1,000). **The "all
+of Kaiwa (34,019)" this paragraph used to claim is now stale** — a
+later, separate rollout finished translating Kaiwa's full content; see
+the dedicated "Kaiwa full-content English translation" update further
+below (search for `kaiwa_meaning_en.py`) — **that rollout is now
+complete, 34,019/34,019**. **Particle is also now fully done
+(311/311)** — see the "Particle module full English translation"
+update further below (search for `particle_meaning_en.py`); it's
+removed from this remainder list. Also **exam-history rows store
 their title as a plain string at submit time** ("Ujian Katakana"), so
 old rows stay Indonesian forever — a schema question (store a mode key,
-localize at render) rather than a translation batch, and untouched here.
+localize at render) rather than a translation batch, and untouched
+here. **User-reported (2026-07-28): the exam-history function itself
+is erroring**, separate from the Indonesian-only-title issue above —
+not yet investigated, deliberately deferred at the user's explicit
+request ("untuk riwayat nanti kita clearkan, bahkan fungsinya saja
+error") in favor of finishing the remaining translation batches
+first. Don't assume this is just the stale-title cosmetic issue —
+treat it as a distinct, unconfirmed bug report until actually
+diagnosed.
 
 ## Update (2026-07-23): pull-to-refresh (Facebook/X-style) on every main screen
 
@@ -1424,10 +1435,77 @@ explicit, standing correction from the user partway through the
 rollout — don't revert to one-batch-per-"lanjut" without them saying
 so again.
 
-**After answer options reach 23,151/23,151**: move on to NPC lines
-(7,468, `"{entry_id}|{line_id}|npc"` keys) using the identical
-workflow — lowest priority as noted above, but the natural next phase
-once options are done.
+**Update (2026-07-28): rollout complete.** NPC lines were finished
+across 15 batches (batches 1-14 at 500 rows each, batch 15 closing out
+the final 468 to land exactly on 7,468/7,468) using the identical
+per-batch workflow described above. **Every field in this file's
+scope — titles, descriptions, answer options, npc lines, 34,019/34,019
+total — now has an English translation.** See commits
+`feat(i18n): Kaiwa NPC lines batches 1-2` through `batch 15 (rows
+7001-7468, final)` for the full history. This closes out the Kaiwa
+translation effort entirely — nothing left to continue here.
+
+## Update (2026-07-28): Particle module full English translation
+
+A separate, much smaller rollout than Kaiwa's: the Particle module's
+content (25 particles, 48 nested functions) had **zero** English
+translations anywhere — `ParticleFunction.titleEn`/`explanationEn` and
+`SentenceExample`/`ClozeExample.translationEn` were already plumbed
+(nullable fields + `localized*()` getters, from the 2026-07-25
+localization-plumbing session), but never authored. Done in one pass
+rather than a multi-session batch rollout, since the whole module is
+only **311 fields total** (25 overviews + 48 titles + 48 explanations
++ 144 sentence-example translations + 46 cloze-example translations) —
+far smaller than Kaiwa's 34,019, so no batch-dump-uniq pipeline was
+needed, just one direct translate-and-verify pass.
+
+**Real code gap found and fixed along the way**: `ParticleEntry.overview`
+(the prose summary shown at the top of both `ParticleCategoryScreen`'s
+list tiles and `ParticleDetailScreen`) had **no English field or
+localized getter at all** — unlike every other prose field in this
+module, which was already plumbed from the earlier session. This meant
+overview text stayed Indonesian in English mode regardless of how much
+translation content existed, since there was nowhere to put it. Fixed
+by adding `overviewEn` + `localizedOverview(AppLanguage)` to
+`ParticleEntry` (mirroring the exact pattern already used by
+`ParticleFunction.titleEn`/`localizedTitle`), and wiring it into both
+render sites — `particle_category_screen.dart`'s `_ParticleTile`
+(converted from `StatelessWidget` to `ConsumerWidget` to reach
+`languageProvider`, the same conversion already applied to `_BunpouTile`/
+`_FunctionTile`/`_DialogueTile` etc. in the 2026-07-25 session) and
+`particle_detail_screen.dart` (which already had `ref`/`language`
+available in its `build()`, just needed one more `ref.watch` line).
+
+**Same locked-dict + applier-script pattern as every other content-
+localization batch**: `scripts/particle_meaning_en.py` holds
+`PARTICLE_MEANING_EN` (keyed `"{entry_id}|overview"` /
+`"{entry_id}|{function_id}|title"` / `"...|explanation"` /
+`"...|se{i}"` / `"...|cloze{i}"`), `scripts/apply_particle_meaning_en.py`
+patches `assets/data/particle_data.json` — safe to re-run, only ever
+adds `*En` fields, must be re-run after `generate_particle_seed.py`
+regenerates the dataset. **Minor bug caught in the applier's own
+per-kind coverage printout, harmless to the actual data**: the first
+version of `apply_particle_meaning_en.py` misclassified every `se{i}`
+key as `cloze` (a broken substring check, `"|se" in
+key.rsplit("|", 1)[-1]`, which can never match since the last segment
+after the final `|` never contains another `|`) — the real JSON
+patching was unaffected either way since both kinds write to the same
+`translationEn` field, but the printed breakdown showed `se: 0/0,
+cloze: 190/190` instead of the correct `se: 144/144, cloze: 46/46`.
+Fixed with a proper `.startswith()` check before this ever shipped.
+
+**Status: DONE, 311/311**, verified via
+`apply_particle_meaning_en.py`'s own coverage printout (overview
+25/25, title 48/48, explanation 48/48, se 144/144, cloze 46/46) and a
+new `test/content_localization_test.dart` case ("every particle field
+has an English translation") that checks full coverage plus a
+language-toggle spot check on が's overview and its `ga_subject`
+function's title. `flutter analyze` clean, `flutter test
+--concurrency=1` 34/34 (1 new case). **No interactive on-device pass
+done** — same standing gap as everywhere else in this file; worth
+confirming the overview text actually renders in English on
+`ParticleCategoryScreen`'s list tiles and `ParticleDetailScreen` on a
+real device before treating this as fully verified.
 
 ## Architecture
 
