@@ -1371,13 +1371,13 @@ batch closing out at 651 rows instead of 500 to land exactly on the
 total)** — see `git log --oneline --grep "Kaiwa answer options"` for
 the full batch history. **Every rendered piece of Kaiwa text a
 learner actually sees now has an English translation.** NPC lines are
-the one remaining piece, at **0/7,468** — lowest priority since
+the one remaining piece — lowest priority since
 `npcLine.translationEn` isn't rendered anywhere in the app yet
 (Kaiwa's NPC turns show only an image + speak button, never
 on-screen Japanese/translation text — see the Kaiwa module
 architecture note further below). This is genuinely optional
 follow-up work, not a gap in what's user-facing today. NPC lines are
-now at **1,000/7,468** (batches 1-2), continuing on the same
+now at **2,000/7,468** (batches 1-4), continuing on the same
 per-batch workflow.
 
 **Continuing this rollout (per-batch workflow, proven over 46
