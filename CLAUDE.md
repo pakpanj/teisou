@@ -1365,17 +1365,23 @@ current count** — it's updated after every batch and is more
 current than this paragraph will stay.
 
 **Current state as of this note**: titles + descriptions are
-**100% done** (1,700/1,700 each). Answer options are at
-**22,000/23,151** (batches 1-44 of ~500 rows each, committed
-individually — see `git log --oneline --grep "Kaiwa answer options"`
-for the full batch history). NPC lines are at **0/7,468** — lowest
-priority since `npcLine.translationEn` isn't rendered anywhere in
-the app yet (Kaiwa's NPC turns show only an image + speak button,
-never on-screen Japanese/translation text — see the Kaiwa module
-architecture note further below).
+**100% done** (1,700/1,700 each), and as of this update **answer
+options are also 100% done (23,151/23,151, batches 1-46, the last
+batch closing out at 651 rows instead of 500 to land exactly on the
+total)** — see `git log --oneline --grep "Kaiwa answer options"` for
+the full batch history. **Every rendered piece of Kaiwa text a
+learner actually sees now has an English translation.** NPC lines are
+the one remaining piece, at **0/7,468** — lowest priority since
+`npcLine.translationEn` isn't rendered anywhere in the app yet
+(Kaiwa's NPC turns show only an image + speak button, never
+on-screen Japanese/translation text — see the Kaiwa module
+architecture note further below). This is genuinely optional
+follow-up work, not a gap in what's user-facing today.
 
-**Continuing this rollout (per-batch workflow, proven over 22
-batches)**: dump the next 500-row slice of the answer-options list
+**Continuing this rollout (per-batch workflow, proven over 46
+batches for answer options — the same shape applies to npc lines,
+just with `"{entry_id}|{line_id}|npc"` keys instead of `opt{i}`)**:
+dump the next 500-row slice of the relevant list
 (iterate `kaiwa_data.json` in `entry → line → option` order, build
 `"{entry_id}|{line_id}|opt{i}"` keys, slice by row range) to a
 scratch file → extract unique Indonesian values (many phrases repeat
