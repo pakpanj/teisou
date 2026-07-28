@@ -61,6 +61,19 @@ dev_dependencies:
 
   flutter_lints: ^6.0.0
 
+# path_provider_android pulls in package:jni transitively. jni 1.0.1's
+# android/build.gradle unconditionally calls `kotlin { compilerOptions {...} }`
+# but only applies the kotlin-android plugin when AGP major version < 9
+# (assuming AGP 9+ registers the `kotlin` extension itself) — with this
+# project's AGP 9.0.1, that assumption doesn't hold, so the `kotlin`
+# extension is never registered and the build fails with "Could not find
+# method kotlin() ... on project ':jni'". Fixed upstream in jni 1.0.2
+# ("Revert an unnecessary (and breaking) KGP migration"). Remove this
+# override once path_provider_android's own pubspec bumps its jni
+# constraint past 1.0.1 and `flutter pub get` picks up >=1.0.2 on its own.
+dependency_overrides:
+  jni: ^1.0.2
+
 flutter:
   uses-material-design: true
 

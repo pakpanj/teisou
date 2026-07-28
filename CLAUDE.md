@@ -3210,7 +3210,41 @@ the cheapest way to catch native Android build breaks (Gradle dependency
 conflicts, manifest merge failures) before Codemagic does. minSdk is 24
 (bumped from Flutter's default for the `camera` plugin).
 
-**Gotcha**: bare `flutter test` (default concurrency) silently drops
+**Gotcha (2026-07-28)**: `flutter analyze`/`flutter test` never run
+Gradle, so they're both completely blind to native Android build
+breaks — confirmed the hard way when `flutter run` on a physical
+device failed at `assembleDebug` with `Could not find method kotlin()
+for arguments [...] on project ':jni'` right after a session that had
+only touched Dart/JSON/Python files and had `flutter analyze`/`test`
+both passing clean. Root cause: `package:jni` (a transitive dependency
+of `path_provider_android`, not a direct dependency of this app)
+version 1.0.1's `android/build.gradle` only applies the
+`kotlin-android` plugin when the Android Gradle Plugin's major version
+is below 9 (`if (agpMajor < 9) apply plugin: 'kotlin-android'`) but
+unconditionally calls a `kotlin { compilerOptions { ... } } ` block
+right after — with this project's AGP 9.0.1 (`android/settings.gradle.kts`),
+that guard skips applying the plugin, so the `kotlin` extension is
+never registered and the build fails the moment Gradle evaluates
+`:jni`'s build file. Confirmed via `jni`'s own pub.dev changelog that
+version 1.0.2 (released the same day this was hit) explicitly says
+"Revert an unnecessary (and breaking) KGP migration" — matches the
+symptom exactly. Fixed with a `dependency_overrides: jni: ^1.0.2` in
+`pubspec.yaml` (documented inline there with the same explanation),
+verified by an actual `flutter build apk --debug` run succeeding
+(364.7s, produced `app-debug.apk`) — not just by trusting the
+changelog's wording. **Remove the override once `path_provider_android`
+bumps its own `jni` constraint past 1.0.1** so `flutter pub get` picks
+up `>=1.0.2` on its own without an override being needed.
+Separately, the same build run printed a **forward-looking, non-blocking
+warning**: `flutter_tts`, `google_mlkit_commons`, and
+`google_mlkit_text_recognition` all still apply the Kotlin Gradle
+Plugin the old way, and "Future versions of Flutter will fail to build"
+if that's still true when Flutter finishes migrating to Built-in
+Kotlin — not an active problem today, but worth checking again if a
+future Flutter upgrade ever reintroduces a `kotlin()`-shaped build
+failure that this specific `jni` fix doesn't explain.
+
+**Older gotcha**: bare `flutter test` (default concurrency) silently drops
 `test/kanjivg_parser_test.dart` from the report on this machine — it
 doesn't even print a "loading" line for it, and the pass count comes out
 9 instead of the real 13, with no error or warning either way. Confirmed
