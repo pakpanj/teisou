@@ -1376,7 +1376,9 @@ the one remaining piece, at **0/7,468** — lowest priority since
 (Kaiwa's NPC turns show only an image + speak button, never
 on-screen Japanese/translation text — see the Kaiwa module
 architecture note further below). This is genuinely optional
-follow-up work, not a gap in what's user-facing today.
+follow-up work, not a gap in what's user-facing today. NPC lines are
+now at **1,000/7,468** (batches 1-2), continuing on the same
+per-batch workflow.
 
 **Continuing this rollout (per-batch workflow, proven over 46
 batches for answer options — the same shape applies to npc lines,
