@@ -12,9 +12,11 @@ class BunpouEntry {
   final String usageNotes;
 
   /// English renderings of the three prose fields above, null until
-  /// authored — [localizedMeaning]/[localizedUsageNotes] fall back to the
-  /// Indonesian text so an untranslated entry never renders blank.
+  /// authored — [localizedMeaning]/[localizedFormation]/[localizedUsageNotes]
+  /// fall back to the Indonesian text so an untranslated entry never
+  /// renders blank.
   final String? meaningEn;
+  final String? formationEn;
   final String? usageNotesEn;
 
   /// Ids of other [BunpouEntry]s with a similar/easily-confused pattern
@@ -38,6 +40,7 @@ class BunpouEntry {
     required this.formation,
     required this.usageNotes,
     this.meaningEn,
+    this.formationEn,
     this.usageNotesEn,
     this.similarPatterns = const [],
     this.sentenceExamples = const [],
@@ -46,6 +49,9 @@ class BunpouEntry {
 
   String localizedMeaning(AppLanguage language) =>
       _pick(language, meaning, meaningEn);
+
+  String localizedFormation(AppLanguage language) =>
+      _pick(language, formation, formationEn);
 
   String localizedUsageNotes(AppLanguage language) =>
       _pick(language, usageNotes, usageNotesEn);
@@ -61,6 +67,9 @@ class BunpouEntry {
         meaning: json['meaning'] as String,
         formation: json['formation'] as String,
         usageNotes: json['usageNotes'] as String,
+        meaningEn: json['meaningEn'] as String?,
+        formationEn: json['formationEn'] as String?,
+        usageNotesEn: json['usageNotesEn'] as String?,
         similarPatterns: (json['similarPatterns'] as List? ?? []).cast<String>(),
         sentenceExamples: (json['sentenceExamples'] as List? ?? [])
             .map((e) => SentenceExample.fromJson(e as Map<String, dynamic>))

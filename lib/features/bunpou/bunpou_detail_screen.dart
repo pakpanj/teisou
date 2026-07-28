@@ -119,7 +119,7 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
                       const SizedBox(height: 24),
                       _SectionTitle(s.formationSectionTitle),
                       const SizedBox(height: 8),
-                      _InfoCard(text: entry.formation),
+                      _InfoCard(text: entry.localizedFormation(s.language)),
                       const SizedBox(height: 24),
                       _SectionTitle(s.usageNotesSectionTitle),
                       const SizedBox(height: 8),
