@@ -6,6 +6,7 @@ import 'package:kana_master/data/repositories/dictionary_repository.dart';
 import 'package:kana_master/data/repositories/kanji_repository.dart';
 import 'package:kana_master/data/repositories/kotoba_category_repository.dart';
 import 'package:kana_master/data/repositories/kotoba_repository.dart';
+import 'package:kana_master/data/repositories/particle_repository.dart';
 
 /// Guards the *content* side of the language toggle, as opposed to
 /// `module_localization_test.dart`, which covers UI chrome.
@@ -130,5 +131,52 @@ void main() {
     expect(yuki.wordExamples.first.localizedMeaning(AppLanguage.indonesian),
         'salju');
     expect(yuki.wordExamples.first.localizedMeaning(AppLanguage.english), 'snow');
+  });
+
+  test('every particle field has an English translation', () async {
+    final entries = await ParticleRepository().getAll();
+    expect(entries, isNotEmpty);
+
+    final missingOverview =
+        entries.where((e) => (e.overviewEn ?? '').isEmpty).toList();
+    expect(missingOverview.map((e) => e.id).toList(), isEmpty,
+        reason: '${missingOverview.length} particles have no overviewEn — '
+            'add them to scripts/particle_meaning_en.py and run the applier');
+
+    final missingFunctionFields = <String>[];
+    final missingExamples = <String>[];
+    for (final entry in entries) {
+      for (final fn in entry.functions) {
+        if ((fn.titleEn ?? '').isEmpty || (fn.explanationEn ?? '').isEmpty) {
+          missingFunctionFields.add('${entry.id}/${fn.id}');
+        }
+        for (final se in fn.sentenceExamples) {
+          if ((se.translationEn ?? '').isEmpty) {
+            missingExamples.add('${entry.id}/${fn.id}/se');
+          }
+        }
+        for (final ce in fn.clozeExamples) {
+          if ((ce.translationEn ?? '').isEmpty) {
+            missingExamples.add('${entry.id}/${fn.id}/cloze');
+          }
+        }
+      }
+    }
+    expect(missingFunctionFields, isEmpty,
+        reason: '${missingFunctionFields.length} functions have no '
+            'titleEn/explanationEn — add them to '
+            'scripts/particle_meaning_en.py and run the applier');
+    expect(missingExamples, isEmpty,
+        reason: '${missingExamples.length} examples have no translationEn — '
+            'add them to scripts/particle_meaning_en.py and run the applier');
+
+    final ga = entries.firstWhere((e) => e.id == 'particle_ga');
+    expect(ga.localizedOverview(AppLanguage.indonesian),
+        contains('menandai subjek'));
+    expect(ga.localizedOverview(AppLanguage.english), contains('marks the'));
+    final gaSubject =
+        ga.functions.firstWhere((fn) => fn.id == 'ga_subject');
+    expect(gaSubject.localizedTitle(AppLanguage.english),
+        contains('subject'));
   });
 }

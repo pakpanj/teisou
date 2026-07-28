@@ -1,3 +1,4 @@
+import 'app_language.dart';
 import 'particle_function.dart';
 
 /// A single Japanese particle (助詞) and every distinct function it can
@@ -16,6 +17,10 @@ class ParticleEntry {
   final String particleRomaji;
   final String category;
   final String overview;
+
+  /// English rendering of [overview], null until authored.
+  final String? overviewEn;
+
   final List<ParticleFunction> functions;
 
   /// Ids of other [ParticleEntry]s that are easily confused with this one
@@ -32,10 +37,18 @@ class ParticleEntry {
     required this.particleRomaji,
     required this.category,
     required this.overview,
+    this.overviewEn,
     this.functions = const [],
     this.similarParticles = const [],
     this.placeholder = false,
   });
+
+  String localizedOverview(AppLanguage language) =>
+      language == AppLanguage.english &&
+              overviewEn != null &&
+              overviewEn!.isNotEmpty
+          ? overviewEn!
+          : overview;
 
   factory ParticleEntry.fromJson(Map<String, dynamic> json) => ParticleEntry(
         id: json['id'] as String,
@@ -43,6 +56,7 @@ class ParticleEntry {
         particleRomaji: json['particleRomaji'] as String,
         category: json['category'] as String,
         overview: json['overview'] as String,
+        overviewEn: json['overviewEn'] as String?,
         functions: (json['functions'] as List? ?? [])
             .map((e) => ParticleFunction.fromJson(e as Map<String, dynamic>))
             .toList(),

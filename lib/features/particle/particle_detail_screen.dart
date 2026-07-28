@@ -73,6 +73,7 @@ class _ParticleDetailScreenState extends ConsumerState<ParticleDetailScreen> {
         ref.watch(particleLearnedIdsProvider).valueOrNull ?? const <String>{};
     final isLearned = learnedIds.contains(entry.id);
     final s = ref.watch(appStringsProvider);
+    final language = ref.watch(languageProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -122,7 +123,7 @@ class _ParticleDetailScreenState extends ConsumerState<ParticleDetailScreen> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          entry.overview,
+                          entry.localizedOverview(language),
                           style: const TextStyle(color: AppColors.textNavy),
                         ),
                       ),

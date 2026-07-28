@@ -268,7 +268,7 @@ class _FilterRow extends StatelessWidget {
   }
 }
 
-class _ParticleTile extends StatelessWidget {
+class _ParticleTile extends ConsumerWidget {
   final ParticleEntry entry;
   final bool learned;
   final VoidCallback onTap;
@@ -280,7 +280,8 @@ class _ParticleTile extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final language = ref.watch(languageProvider);
     return Material(
       color: AppColors.cardWhite,
       borderRadius: BorderRadius.circular(14),
@@ -323,7 +324,7 @@ class _ParticleTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      entry.overview,
+                      entry.localizedOverview(language),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
