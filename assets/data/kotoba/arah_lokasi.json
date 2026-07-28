@@ -18,7 +18,8 @@
       {
         "japanese": "右に曲がります。",
         "romaji": "Migi ni magarimasu.",
-        "translation": "Saya belok kanan."
+        "translation": "Saya belok kanan.",
+        "translationEn": "I turn right."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_migi.png",
@@ -43,7 +44,8 @@
       {
         "japanese": "左に曲がります。",
         "romaji": "Hidari ni magarimasu.",
-        "translation": "Saya belok kiri."
+        "translation": "Saya belok kiri.",
+        "translationEn": "I turn left."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hidari.png",
@@ -68,7 +70,8 @@
       {
         "japanese": "駅の前にあります。",
         "romaji": "Eki no mae ni arimasu.",
-        "translation": "Ada di depan stasiun."
+        "translation": "Ada di depan stasiun.",
+        "translationEn": "It's in front of the station."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_mae.png",
@@ -93,7 +96,8 @@
       {
         "japanese": "家の後ろに公園があります。",
         "romaji": "Ie no ushiro ni kouen ga arimasu.",
-        "translation": "Ada taman di belakang rumah."
+        "translation": "Ada taman di belakang rumah.",
+        "translationEn": "There's a park behind the house."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ushiro.png",
@@ -118,7 +122,8 @@
       {
         "japanese": "机の上に本があります。",
         "romaji": "Tsukue no ue ni hon ga arimasu.",
-        "translation": "Ada buku di atas meja."
+        "translation": "Ada buku di atas meja.",
+        "translationEn": "There's a book on top of the table."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ue.png",
@@ -143,7 +148,8 @@
       {
         "japanese": "机の下に猫がいます。",
         "romaji": "Tsukue no shita ni neko ga imasu.",
-        "translation": "Ada kucing di bawah meja."
+        "translation": "Ada kucing di bawah meja.",
+        "translationEn": "There's a cat under the table."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shita.png",
@@ -168,7 +174,8 @@
       {
         "japanese": "箱の中に何がありますか。",
         "romaji": "Hako no naka ni nani ga arimasu ka.",
-        "translation": "Apa yang ada di dalam kotak?"
+        "translation": "Apa yang ada di dalam kotak?",
+        "translationEn": "What's inside the box?"
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_naka.png",
@@ -193,7 +200,8 @@
       {
         "japanese": "外は寒いです。",
         "romaji": "Soto wa samui desu.",
-        "translation": "Di luar dingin."
+        "translation": "Di luar dingin.",
+        "translationEn": "It's cold outside."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_soto.png",
@@ -218,7 +226,8 @@
       {
         "japanese": "隣に座ります。",
         "romaji": "Tonari ni suwarimasu.",
-        "translation": "Saya duduk di sebelah."
+        "translation": "Saya duduk di sebelah.",
+        "translationEn": "I sit next to it."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tonari.png",
@@ -243,7 +252,8 @@
       {
         "japanese": "駅の近くに住んでいます。",
         "romaji": "Eki no chikaku ni sunde imasu.",
-        "translation": "Saya tinggal dekat stasiun."
+        "translation": "Saya tinggal dekat stasiun.",
+        "translationEn": "I live near the station."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chikaku.png",
@@ -268,7 +278,8 @@
       {
         "japanese": "学校は遠いです。",
         "romaji": "Gakkou wa tooi desu.",
-        "translation": "Sekolah itu jauh."
+        "translation": "Sekolah itu jauh.",
+        "translationEn": "That school is far."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tooi.png",
@@ -293,7 +304,8 @@
       {
         "japanese": "駅の周辺にお店があります。",
         "romaji": "Eki no shuuhen ni omise ga arimasu.",
-        "translation": "Ada toko di sekitar stasiun."
+        "translation": "Ada toko di sekitar stasiun.",
+        "translationEn": "There's a shop around the station."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shuuhen.png",
@@ -318,7 +330,8 @@
       {
         "japanese": "この付近に住んでいます。",
         "romaji": "Kono fukin ni sunde imasu.",
-        "translation": "Saya tinggal di sekitar sini."
+        "translation": "Saya tinggal di sekitar sini.",
+        "translationEn": "I live around here."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_fukin.png",
@@ -343,7 +356,8 @@
       {
         "japanese": "違う方向に行きました。",
         "romaji": "Chigau houkou ni ikimashita.",
-        "translation": "Saya pergi ke arah yang salah."
+        "translation": "Saya pergi ke arah yang salah.",
+        "translationEn": "I went in the wrong direction."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_houkou.png",
@@ -368,7 +382,8 @@
       {
         "japanese": "町の中心に公園があります。",
         "romaji": "Machi no chuushin ni kouen ga arimasu.",
-        "translation": "Ada taman di pusat kota."
+        "translation": "Ada taman di pusat kota.",
+        "translationEn": "There's a park in the city center."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chuushin.png",
@@ -393,7 +408,8 @@
       {
         "japanese": "位置を確認します。",
         "romaji": "Ichi o kakunin shimasu.",
-        "translation": "Mengecek posisi."
+        "translation": "Mengecek posisi.",
+        "translationEn": "Checking the position."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ichi.png",
@@ -418,7 +434,8 @@
       {
         "japanese": "ドアの内側に立ってください。",
         "romaji": "Doa no uchigawa ni tatte kudasai.",
-        "translation": "Berdiri di bagian dalam pintu."
+        "translation": "Berdiri di bagian dalam pintu.",
+        "translationEn": "Standing on the inside of the door."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_uchigawa.png",
@@ -443,7 +460,8 @@
       {
         "japanese": "北側の部屋は寒いです。",
         "romaji": "Kitagawa no heya wa samui desu.",
-        "translation": "Ruangan sisi utara dingin."
+        "translation": "Ruangan sisi utara dingin.",
+        "translationEn": "The room on the north side is cold."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kitagawa.png",
@@ -468,7 +486,8 @@
       {
         "japanese": "距離が遠いです。",
         "romaji": "Kyori ga tooi desu.",
-        "translation": "Jaraknya jauh."
+        "translation": "Jaraknya jauh.",
+        "translationEn": "The distance is far."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kyori.png",
@@ -493,7 +512,8 @@
       {
         "japanese": "近所にスーパーがあります。",
         "romaji": "Kinjo ni suupaa ga arimasu.",
-        "translation": "Ada supermarket di dekat rumah. (satu lingkungan)"
+        "translation": "Ada supermarket di dekat rumah. (satu lingkungan)",
+        "translationEn": "There's a supermarket near the house."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kinjo.png",
@@ -518,7 +538,8 @@
       {
         "japanese": "景色がきれいです。",
         "romaji": "Keshiki ga kirei desu.",
-        "translation": "Pemandangannya indah."
+        "translation": "Pemandangannya indah.",
+        "translationEn": "The scenery is beautiful."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_keshiki.png",
@@ -543,7 +564,8 @@
       {
         "japanese": "後方に下がってください。",
         "romaji": "Kouhou ni sagatte kudasai.",
-        "translation": "Silakan mundur ke arah belakang."
+        "translation": "Silakan mundur ke arah belakang.",
+        "translationEn": "Please move back toward the rear."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kouhou.png",
@@ -568,7 +590,8 @@
       {
         "japanese": "正面から入ってください。",
         "romaji": "Shoumen kara haitte kudasai.",
-        "translation": "Silakan masuk dari depan."
+        "translation": "Silakan masuk dari depan.",
+        "translationEn": "Please enter from the front."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shoumen.png",
@@ -593,7 +616,8 @@
       {
         "japanese": "外側を見てください。",
         "romaji": "Sotogawa o mite kudasai.",
-        "translation": "Lihat bagian luar."
+        "translation": "Lihat bagian luar.",
+        "translationEn": "Look at the outer part."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sotogawa.png",
@@ -618,7 +642,8 @@
       {
         "japanese": "地下に駐車場があります。",
         "romaji": "Chika ni chuushajou ga arimasu.",
-        "translation": "Ada parkiran di bawah tanah."
+        "translation": "Ada parkiran di bawah tanah.",
+        "translationEn": "There's underground parking."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chika.png",
@@ -643,7 +668,8 @@
       {
         "japanese": "山の頂上に着きました。",
         "romaji": "Yama no choujou ni tsukimashita.",
-        "translation": "Sampai di puncak gunung."
+        "translation": "Sampai di puncak gunung.",
+        "translationEn": "Reached the mountain's peak."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_choujou.png",
@@ -668,7 +694,8 @@
       {
         "japanese": "学校の途中で友達に会った。",
         "romaji": "Gakkou no tochuu de tomodachi ni atta.",
-        "translation": "Di perjalanan ke sekolah saya bertemu teman."
+        "translation": "Di perjalanan ke sekolah saya bertemu teman.",
+        "translationEn": "On the way to school I met a friend."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tochuu.png",
@@ -693,7 +720,8 @@
       {
         "japanese": "歩道を歩いてください。",
         "romaji": "Hodou o aruite kudasai.",
-        "translation": "Tolong berjalan di trotoar."
+        "translation": "Tolong berjalan di trotoar.",
+        "translationEn": "Please walk on the sidewalk."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hodou.png",
@@ -718,7 +746,8 @@
       {
         "japanese": "地平線に夕日が見えます。",
         "romaji": "Chiheisen ni yuuhi ga miemasu.",
-        "translation": "Matahari terbenam terlihat di garis horizon."
+        "translation": "Matahari terbenam terlihat di garis horizon.",
+        "translationEn": "The sunset can be seen on the horizon."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chiheisen.png",
@@ -743,7 +772,8 @@
       {
         "japanese": "左右を確認します。",
         "romaji": "Sayuu o kakunin shimasu.",
-        "translation": "Memeriksa kiri dan kanan."
+        "translation": "Memeriksa kiri dan kanan.",
+        "translationEn": "Checking left and right."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sayuu.png",
@@ -768,7 +798,8 @@
       {
         "japanese": "現地に到着しました。",
         "romaji": "Genchi ni touchaku shimashita.",
-        "translation": "Tiba di lokasi setempat."
+        "translation": "Tiba di lokasi setempat.",
+        "translationEn": "Arrived at the local site."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_genchi.png",
@@ -793,7 +824,8 @@
       {
         "japanese": "背後に隠れます。",
         "romaji": "Haigo ni kakuremasu.",
-        "translation": "Bersembunyi di belakang."
+        "translation": "Bersembunyi di belakang.",
+        "translationEn": "Hiding behind."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_haigo.png",
@@ -818,7 +850,8 @@
       {
         "japanese": "地元に帰ります。",
         "romaji": "Jimoto ni kaerimasu.",
-        "translation": "Pulang ke daerah asal."
+        "translation": "Pulang ke daerah asal.",
+        "translationEn": "Going home to my hometown."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_jimoto.png",
@@ -843,7 +876,8 @@
       {
         "japanese": "半島を旅行します。",
         "romaji": "Hantou o ryokou shimasu.",
-        "translation": "Bepergian ke semenanjung."
+        "translation": "Bepergian ke semenanjung.",
+        "translationEn": "Traveling to the peninsula."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hantou.png",
@@ -868,7 +902,8 @@
       {
         "japanese": "並木道を歩きます。",
         "romaji": "Namikimichi o arukimasu.",
-        "translation": "Berjalan di jalan berderet pohon."
+        "translation": "Berjalan di jalan berderet pohon.",
+        "translationEn": "Walking on a tree-lined road."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_namiki.png",
@@ -893,7 +928,8 @@
       {
         "japanese": "赤道を通過します。",
         "romaji": "Sekidou o tsuuka shimasu.",
-        "translation": "Melintasi garis khatulistiwa."
+        "translation": "Melintasi garis khatulistiwa.",
+        "translationEn": "Crossing the equator."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sekidou.png",
@@ -918,7 +954,8 @@
       {
         "japanese": "集合場所を確認します。",
         "romaji": "Shuugou basho o kakunin shimasu.",
-        "translation": "Memeriksa tempat berkumpul."
+        "translation": "Memeriksa tempat berkumpul.",
+        "translationEn": "Checking the meeting place."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_basho.png",
@@ -943,7 +980,8 @@
       {
         "japanese": "海岸を歩きます。",
         "romaji": "Kaigan o arukimasu.",
-        "translation": "Berjalan di pantai."
+        "translation": "Berjalan di pantai.",
+        "translationEn": "Walking on the coast."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kaigan.png",
@@ -968,7 +1006,8 @@
       {
         "japanese": "会場に到着しました。",
         "romaji": "Kaijou ni touchaku shimashita.",
-        "translation": "Tiba di tempat acara."
+        "translation": "Tiba di tempat acara.",
+        "translationEn": "Arrived at the event venue."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kaijou.png",
@@ -993,7 +1032,8 @@
       {
         "japanese": "郊外に住んでいます。",
         "romaji": "Kougai ni sunde imasu.",
-        "translation": "Tinggal di pinggiran kota."
+        "translation": "Tinggal di pinggiran kota.",
+        "translationEn": "Living in the suburbs."
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kougai.png",

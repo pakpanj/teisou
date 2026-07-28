@@ -18,7 +18,8 @@
       {
         "japanese": "学校に行きます。",
         "romaji": "Gakkou ni ikimasu.",
-        "translation": "Saya pergi ke sekolah."
+        "translation": "Saya pergi ke sekolah.",
+        "translationEn": "I go to school."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_gakkou.png",
@@ -43,7 +44,8 @@
       {
         "japanese": "銀行でお金を下ろします。",
         "romaji": "Ginkou de okane o oroshimasu.",
-        "translation": "Saya mengambil uang di bank."
+        "translation": "Saya mengambil uang di bank.",
+        "translationEn": "I withdraw money at the bank."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ginkou.png",
@@ -68,7 +70,8 @@
       {
         "japanese": "郵便局で手紙を出します。",
         "romaji": "Yuubinkyoku de tegami o dashimasu.",
-        "translation": "Saya mengirim surat di kantor pos."
+        "translation": "Saya mengirim surat di kantor pos.",
+        "translationEn": "I send a letter at the post office."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yuubinkyoku.png",
@@ -93,7 +96,8 @@
       {
         "japanese": "図書館で本を借ります。",
         "romaji": "Toshokan de hon o karimasu.",
-        "translation": "Saya meminjam buku di perpustakaan."
+        "translation": "Saya meminjam buku di perpustakaan.",
+        "translationEn": "I borrow a book at the library."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_toshokan.png",
@@ -118,7 +122,8 @@
       {
         "japanese": "公園で遊びます。",
         "romaji": "Kouen de asobimasu.",
-        "translation": "Saya bermain di taman."
+        "translation": "Saya bermain di taman.",
+        "translationEn": "I play at the park."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouen.png",
@@ -143,7 +148,8 @@
       {
         "japanese": "スーパーで買い物します。",
         "romaji": "Suupaa de kaimono shimasu.",
-        "translation": "Saya berbelanja di supermarket."
+        "translation": "Saya berbelanja di supermarket.",
+        "translationEn": "I shop at the supermarket."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_suupaa.png",
@@ -168,7 +174,8 @@
       {
         "japanese": "デパートに行きます。",
         "romaji": "Depaato ni ikimasu.",
-        "translation": "Saya pergi ke department store."
+        "translation": "Saya pergi ke department store.",
+        "translationEn": "I go to the department store."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_depaato.png",
@@ -193,7 +200,8 @@
       {
         "japanese": "駅まで歩きます。",
         "romaji": "Eki made arukimasu.",
-        "translation": "Saya berjalan sampai stasiun."
+        "translation": "Saya berjalan sampai stasiun.",
+        "translationEn": "I walk to the station."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_eki.png",
@@ -218,7 +226,8 @@
       {
         "japanese": "空港に着きました。",
         "romaji": "Kuukou ni tsukimashita.",
-        "translation": "Saya sampai di bandara."
+        "translation": "Saya sampai di bandara.",
+        "translationEn": "I arrive at the airport."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kuukou.png",
@@ -243,7 +252,8 @@
       {
         "japanese": "神社にお参りします。",
         "romaji": "Jinja ni omairi shimasu.",
-        "translation": "Saya berdoa di kuil Shinto."
+        "translation": "Saya berdoa di kuil Shinto.",
+        "translationEn": "I pray at a Shinto shrine."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jinja.png",
@@ -268,7 +278,8 @@
       {
         "japanese": "お寺を訪れます。",
         "romaji": "Otera o otozuremasu.",
-        "translation": "Saya mengunjungi kuil Buddha."
+        "translation": "Saya mengunjungi kuil Buddha.",
+        "translationEn": "I visit a Buddhist temple."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_otera.png",
@@ -293,7 +304,8 @@
       {
         "japanese": "新しいビルを建設しています。",
         "romaji": "Atarashii biru o kensetsu shite imasu.",
-        "translation": "Kami sedang membangun gedung baru."
+        "translation": "Kami sedang membangun gedung baru.",
+        "translationEn": "We're building a new building."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kensetsu.png",
@@ -318,7 +330,8 @@
       {
         "japanese": "古い家を改築しました。",
         "romaji": "Furui ie o kaichiku shimashita.",
-        "translation": "Kami merenovasi rumah lama."
+        "translation": "Kami merenovasi rumah lama.",
+        "translationEn": "We're renovating an old house."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaichiku.png",
@@ -343,7 +356,8 @@
       {
         "japanese": "古い建物が撤去されました。",
         "romaji": "Furui tatemono ga tekkyo saremashita.",
-        "translation": "Bangunan lama itu dibongkar."
+        "translation": "Bangunan lama itu dibongkar.",
+        "translationEn": "That old building was torn down."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tekkyo.png",
@@ -368,7 +382,8 @@
       {
         "japanese": "この店は立地がいいです。",
         "romaji": "Kono mise wa ritchi ga ii desu.",
-        "translation": "Lokasi toko ini bagus."
+        "translation": "Lokasi toko ini bagus.",
+        "translationEn": "This shop's location is good."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ritchi.png",
@@ -393,7 +408,8 @@
       {
         "japanese": "教室で勉強します。",
         "romaji": "Kyoushitsu de benkyou shimasu.",
-        "translation": "Saya belajar di ruang kelas."
+        "translation": "Saya belajar di ruang kelas.",
+        "translationEn": "I study in the classroom."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kyoushitsu.png",
@@ -418,7 +434,8 @@
       {
         "japanese": "旅館に泊まります。",
         "romaji": "Ryokan ni tomarimasu.",
-        "translation": "Saya menginap di penginapan tradisional."
+        "translation": "Saya menginap di penginapan tradisional.",
+        "translationEn": "I stay at a traditional inn."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ryokan.png",
@@ -443,7 +460,8 @@
       {
         "japanese": "駅前で待ち合わせします。",
         "romaji": "Ekimae de machiawase shimasu.",
-        "translation": "Kami janjian bertemu di depan stasiun."
+        "translation": "Kami janjian bertemu di depan stasiun.",
+        "translationEn": "We agreed to meet in front of the station."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ekimae.png",
@@ -468,7 +486,8 @@
       {
         "japanese": "交番で道を聞きます。",
         "romaji": "Kouban de michi o kikimasu.",
-        "translation": "Saya bertanya arah di pos polisi."
+        "translation": "Saya bertanya arah di pos polisi.",
+        "translationEn": "I asked for directions at the police box."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouban.png",
@@ -493,7 +512,8 @@
       {
         "japanese": "動物園に行きます。",
         "romaji": "Doubutsuen ni ikimasu.",
-        "translation": "Saya pergi ke kebun binatang."
+        "translation": "Saya pergi ke kebun binatang.",
+        "translationEn": "I go to the zoo."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_doubutsuen.png",
@@ -518,7 +538,8 @@
       {
         "japanese": "美術館で絵を見ます。",
         "romaji": "Bijutsukan de e o mimasu.",
-        "translation": "Saya melihat lukisan di galeri seni."
+        "translation": "Saya melihat lukisan di galeri seni.",
+        "translationEn": "I see paintings at the art gallery."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_bijutsukan.png",
@@ -543,7 +564,8 @@
       {
         "japanese": "博物館を見学します。",
         "romaji": "Hakubutsukan o kengaku shimasu.",
-        "translation": "Saya mengunjungi museum."
+        "translation": "Saya mengunjungi museum.",
+        "translationEn": "I visit the museum."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hakubutsukan.png",
@@ -568,7 +590,8 @@
       {
         "japanese": "喫茶店でコーヒーを飲みます。",
         "romaji": "Kissaten de koohii o nomimasu.",
-        "translation": "Saya minum kopi di kedai kopi."
+        "translation": "Saya minum kopi di kedai kopi.",
+        "translationEn": "I drink coffee at a coffee shop."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kissaten.png",
@@ -593,7 +616,8 @@
       {
         "japanese": "大使館でビザを申請します。",
         "romaji": "Taishikan de biza o shinsei shimasu.",
-        "translation": "Saya mengajukan visa di kedutaan besar."
+        "translation": "Saya mengajukan visa di kedutaan besar.",
+        "translationEn": "I apply for a visa at the embassy."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_taishikan.png",
@@ -618,7 +642,8 @@
       {
         "japanese": "裁判所で裁判があります。",
         "romaji": "Saibansho de saiban ga arimasu.",
-        "translation": "Ada persidangan di pengadilan."
+        "translation": "Ada persidangan di pengadilan.",
+        "translationEn": "There's a trial at the court."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_saibansho.png",
@@ -643,7 +668,8 @@
       {
         "japanese": "役所で手続きをします。",
         "romaji": "Yakusho de tetsuzuki o shimasu.",
-        "translation": "Saya mengurus dokumen di kantor pemerintah."
+        "translation": "Saya mengurus dokumen di kantor pemerintah.",
+        "translationEn": "I handle documents at the government office."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yakusho.png",
@@ -668,7 +694,8 @@
       {
         "japanese": "工場で車を作ります。",
         "romaji": "Koujou de kuruma o tsukurimasu.",
-        "translation": "Mobil dibuat di pabrik."
+        "translation": "Mobil dibuat di pabrik.",
+        "translationEn": "Cars are made at the factory."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koujou2.png",
@@ -693,7 +720,8 @@
       {
         "japanese": "事務所で働いています。",
         "romaji": "Jimusho de hataraite imasu.",
-        "translation": "Saya bekerja di kantor."
+        "translation": "Saya bekerja di kantor.",
+        "translationEn": "I work at the office."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jimusho.png",
@@ -718,7 +746,8 @@
       {
         "japanese": "温泉に入りたいです。",
         "romaji": "Onsen ni hairitai desu.",
-        "translation": "Ingin masuk pemandian air panas."
+        "translation": "Ingin masuk pemandian air panas.",
+        "translationEn": "I want to go into the hot spring."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_onsen.png",
@@ -743,7 +772,8 @@
       {
         "japanese": "8時に開場します。",
         "romaji": "Hachiji ni kaijou shimasu.",
-        "translation": "Tempat dibuka jam 8. (rapat, konser, seminar, lomba dll)"
+        "translation": "Tempat dibuka jam 8. (rapat, konser, seminar, lomba dll)",
+        "translationEn": "The venue opens at 8 o'clock."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaijou.png",
@@ -768,7 +798,8 @@
       {
         "japanese": "店は10時に開店します。",
         "romaji": "Mise wa juji ni kaiten shimasu.",
-        "translation": "Toko buka jam 10."
+        "translation": "Toko buka jam 10.",
+        "translationEn": "The shop opens at 10 o'clock."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaiten.png",
@@ -793,7 +824,8 @@
       {
         "japanese": "館内では禁煙です。",
         "romaji": "Kannai de wa kin'en desu.",
-        "translation": "Di dalam gedung dilarang merokok."
+        "translation": "Di dalam gedung dilarang merokok.",
+        "translationEn": "Smoking is prohibited inside the building."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kannai.png",
@@ -818,7 +850,8 @@
       {
         "japanese": "建築を勉強しています。",
         "romaji": "Kenchiku o benkyou shite imasu.",
-        "translation": "Belajar arsitektur/bidang konstruksi."
+        "translation": "Belajar arsitektur/bidang konstruksi.",
+        "translationEn": "Studying architecture/construction."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kenchiku.png",
@@ -843,7 +876,8 @@
       {
         "japanese": "道路を工事しています。",
         "romaji": "Douro o kouji shite imasu.",
-        "translation": "Jalan sedang diperbaiki. (renovasi proyek)"
+        "translation": "Jalan sedang diperbaiki. (renovasi proyek)",
+        "translationEn": "The road is being repaired."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouji.png",
@@ -868,7 +902,8 @@
       {
         "japanese": "自宅で勉強します。",
         "romaji": "Jitaku de benkyou shimasu.",
-        "translation": "Belajar di rumah sendiri."
+        "translation": "Belajar di rumah sendiri.",
+        "translationEn": "Studying at my own home."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jitaku.png",
@@ -893,7 +928,8 @@
       {
         "japanese": "設備を確認してください。",
         "romaji": "Setsubi o kakunin shite kudasai.",
-        "translation": "Tolong periksa fasilitas/peralatan."
+        "translation": "Tolong periksa fasilitas/peralatan.",
+        "translationEn": "Please check the facilities/equipment."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_setsubi.png",
@@ -918,7 +954,8 @@
       {
         "japanese": "倉庫に荷物を置きます。",
         "romaji": "Souko ni nimotsu o okimasu.",
-        "translation": "Menaruh barang di gudang."
+        "translation": "Menaruh barang di gudang.",
+        "translationEn": "Storing items in the warehouse."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_souko.png",
@@ -943,7 +980,8 @@
       {
         "japanese": "通路を歩いてください。",
         "romaji": "Tsuuro o aruite kudasai.",
-        "translation": "Silakan berjalan di lorong. (jalur jalan dalam/luar ruangan)"
+        "translation": "Silakan berjalan di lorong. (jalur jalan dalam/luar ruangan)",
+        "translationEn": "Please walk in the corridor."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tsuuro.png",
@@ -968,7 +1006,8 @@
       {
         "japanese": "定員は30人です。",
         "romaji": "Teiin wa sanjuunin desu.",
-        "translation": "Kapasitas 30 orang."
+        "translation": "Kapasitas 30 orang.",
+        "translationEn": "Capacity of 30 people."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_teiin.png",
@@ -993,7 +1032,8 @@
       {
         "japanese": "この土地は高いです。",
         "romaji": "Kono tochi wa takai desu.",
-        "translation": "Tanah ini mahal."
+        "translation": "Tanah ini mahal.",
+        "translationEn": "This land is expensive."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tochi.png",
@@ -1018,7 +1058,8 @@
       {
         "japanese": "売店で水を買いました。",
         "romaji": "Baiten de mizu o kaimashita.",
-        "translation": "Saya membeli air di kios kecil. (di RS, eki, gakkou)"
+        "translation": "Saya membeli air di kios kecil. (di RS, eki, gakkou)",
+        "translationEn": "I buy water at the small kiosk."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_baiten.png",
@@ -1043,7 +1084,8 @@
       {
         "japanese": "窓口で申し込みます。",
         "romaji": "Madoguchi de moshikomimasu.",
-        "translation": "Mendaftar di loket."
+        "translation": "Mendaftar di loket.",
+        "translationEn": "Registering at the counter."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_madoguchi.png",
@@ -1068,7 +1110,8 @@
       {
         "japanese": "家賃を払いました。",
         "romaji": "Yachin o haraimashita.",
-        "translation": "Saya membayar uang sewa rumah."
+        "translation": "Saya membayar uang sewa rumah.",
+        "translationEn": "I pay the house rent."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yachin.png",
@@ -1093,7 +1136,8 @@
       {
         "japanese": "書類を郵送します。",
         "romaji": "Shorui o yuusou shimasu.",
-        "translation": "Mengirim dokumen pengiriman pos."
+        "translation": "Mengirim dokumen pengiriman pos.",
+        "translationEn": "Mailing the shipping document."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yuusou.png",
@@ -1118,7 +1162,8 @@
       {
         "japanese": "市役所で手続きをします。",
         "romaji": "Shiyakusho de tetsuzuki o shimasu.",
-        "translation": "Saya mengurus prosedur di balai kota."
+        "translation": "Saya mengurus prosedur di balai kota.",
+        "translationEn": "I handle a procedure at city hall."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shiyakusho.png",
@@ -1143,7 +1188,8 @@
       {
         "japanese": "これは専門店で買いました。",
         "romaji": "Kore wa senmonten de kaimashita.",
-        "translation": "Ini saya beli di toko khusus."
+        "translation": "Ini saya beli di toko khusus.",
+        "translationEn": "I bought this at a specialty shop."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_senmonten.png",
@@ -1168,7 +1214,8 @@
       {
         "japanese": "美容院で髪を切りました。",
         "romaji": "Biyouin de kami o kirimashita.",
-        "translation": "Saya memotong rambut di salon."
+        "translation": "Saya memotong rambut di salon.",
+        "translationEn": "I get a haircut at the salon."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_biyouin.png",
@@ -1193,7 +1240,8 @@
       {
         "japanese": "子供を保育園に預あずけます。",
         "romaji": "Kodomo o hoikuen ni azukemasu.",
-        "translation": "Menitipkan anak di tempat penitipan anak."
+        "translation": "Menitipkan anak di tempat penitipan anak.",
+        "translationEn": "Leaving a child at daycare."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hoikuen.png",
@@ -1218,7 +1266,8 @@
       {
         "japanese": "魚市場へ行きました。",
         "romaji": "Sakana ichiba e ikimashita.",
-        "translation": "Saya pergi ke pasar ikan."
+        "translation": "Saya pergi ke pasar ikan.",
+        "translationEn": "I go to the fish market."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ichiba.png",
@@ -1243,7 +1292,8 @@
       {
         "japanese": "入場は無料です。",
         "romaji": "Nyuujou wa muryou desu.",
-        "translation": "Masuk gratis."
+        "translation": "Masuk gratis.",
+        "translationEn": "Free entry."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_nyuujou.png",
@@ -1268,7 +1318,8 @@
       {
         "japanese": "工場が閉鎖されました。",
         "romaji": "Koujou ga heisa saremashita.",
-        "translation": "Pabrik ditutup."
+        "translation": "Pabrik ditutup.",
+        "translationEn": "The factory is closed."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_heisa.png",
@@ -1293,7 +1344,8 @@
       {
         "japanese": "法廷で証言します。",
         "romaji": "Houtei de shougen shimasu.",
-        "translation": "Bersaksi di ruang sidang."
+        "translation": "Bersaksi di ruang sidang.",
+        "translationEn": "Testifying in the courtroom."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_houtei.png",
@@ -1318,7 +1370,8 @@
       {
         "japanese": "出入口はこちらです。",
         "romaji": "Deiriguchi wa kochira desu.",
-        "translation": "Pintu keluar masuk ada di sini."
+        "translation": "Pintu keluar masuk ada di sini.",
+        "translationEn": "The entrance/exit is here."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_deiriguchi.png",
@@ -1343,7 +1396,8 @@
       {
         "japanese": "会館で結婚式をします。",
         "romaji": "Kaikan de kekkonshiki o shimasu.",
-        "translation": "Mengadakan pernikahan di gedung pertemuan."
+        "translation": "Mengadakan pernikahan di gedung pertemuan.",
+        "translationEn": "Holding a wedding at the hall."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaikan.png",
@@ -1368,7 +1422,8 @@
       {
         "japanese": "新しい校舎ができました。",
         "romaji": "Atarashii kousha ga dekimashita.",
-        "translation": "Gedung sekolah baru sudah jadi."
+        "translation": "Gedung sekolah baru sudah jadi.",
+        "translationEn": "The new school building is finished."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kousha.png",
@@ -1393,7 +1448,8 @@
       {
         "japanese": "校庭で遊びます。",
         "romaji": "Koutei de asobimasu.",
-        "translation": "Bermain di halaman sekolah."
+        "translation": "Bermain di halaman sekolah.",
+        "translationEn": "Playing in the schoolyard."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koutei.png",
@@ -1418,7 +1474,8 @@
       {
         "japanese": "待合室で待ちます。",
         "romaji": "Machiaishitsu de machimasu.",
-        "translation": "Menunggu di ruang tunggu."
+        "translation": "Menunggu di ruang tunggu.",
+        "translationEn": "Waiting in the waiting room."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_machiaishitsu.png",
@@ -1443,7 +1500,8 @@
       {
         "japanese": "店屋で買い物します。",
         "romaji": "Miseya de kaimono shimasu.",
-        "translation": "Berbelanja di toko."
+        "translation": "Berbelanja di toko.",
+        "translationEn": "Shopping at the store."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_miseya.png",
@@ -1468,7 +1526,8 @@
       {
         "japanese": "書店で本を買います。",
         "romaji": "Shoten de hon o kaimasu.",
-        "translation": "Membeli buku di toko buku."
+        "translation": "Membeli buku di toko buku.",
+        "translationEn": "Buying a book at the bookstore."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shoten.png",
@@ -1493,7 +1552,8 @@
       {
         "japanese": "商店で働きます。",
         "romaji": "Shouten de hatarakimasu.",
-        "translation": "Bekerja di toko."
+        "translation": "Bekerja di toko.",
+        "translationEn": "Working at the shop."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shouten.png",
@@ -1518,7 +1578,8 @@
       {
         "japanese": "速達で送ります。",
         "romaji": "Sokutatsu de okurimasu.",
-        "translation": "Mengirim dengan pos kilat."
+        "translation": "Mengirim dengan pos kilat.",
+        "translationEn": "Sending by express mail."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_sokutatsu.png",
@@ -1543,7 +1604,8 @@
       {
         "japanese": "案内をお願いします。",
         "romaji": "Annai o onegai shimasu.",
-        "translation": "Tolong berikan petunjuk."
+        "translation": "Tolong berikan petunjuk.",
+        "translationEn": "Please give directions."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_annai.png",
@@ -1568,7 +1630,8 @@
       {
         "japanese": "中学校に通っています。",
         "romaji": "Chuugakkou ni kayotte imasu.",
-        "translation": "Sekolah di SMP."
+        "translation": "Sekolah di SMP.",
+        "translationEn": "Attending middle school."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_chuugakkou.png",
@@ -1593,7 +1656,8 @@
       {
         "japanese": "駐車場に車を止めます。",
         "romaji": "Chuushajou ni kuruma o tomemasu.",
-        "translation": "Memarkir mobil di tempat parkir."
+        "translation": "Memarkir mobil di tempat parkir.",
+        "translationEn": "Parking the car in the parking lot."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_chuushajou.png",
@@ -1618,7 +1682,8 @@
       {
         "japanese": "飛行場に着きました。",
         "romaji": "Hikoujou ni tsukimashita.",
-        "translation": "Tiba di bandara."
+        "translation": "Tiba di bandara.",
+        "translationEn": "Arriving at the airfield."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hikoujou.png",
@@ -1643,7 +1708,8 @@
       {
         "japanese": "会議室で話します。",
         "romaji": "Kaigishitsu de hanashimasu.",
-        "translation": "Berbicara di ruang rapat."
+        "translation": "Berbicara di ruang rapat.",
+        "translationEn": "Speaking in the meeting room."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaigishitsu.png",
@@ -1668,7 +1734,8 @@
       {
         "japanese": "研究室で実験します。",
         "romaji": "Kenkyuushitsu de jikken shimasu.",
-        "translation": "Melakukan eksperimen di lab."
+        "translation": "Melakukan eksperimen di lab.",
+        "translationEn": "Doing an experiment in the lab."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kenkyuushitsu.png",
@@ -1693,7 +1760,8 @@
       {
         "japanese": "講堂で式をします。",
         "romaji": "Koudou de shiki o shimasu.",
-        "translation": "Mengadakan upacara di aula."
+        "translation": "Mengadakan upacara di aula.",
+        "translationEn": "Holding a ceremony in the auditorium."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koudou.png",
@@ -1718,7 +1786,8 @@
       {
         "japanese": "高校に通っています。",
         "romaji": "Koukou ni kayotte imasu.",
-        "translation": "Sekolah di SMA."
+        "translation": "Sekolah di SMA.",
+        "translationEn": "Attending high school."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koukou.png",
@@ -1743,7 +1812,8 @@
       {
         "japanese": "屋上に上がります。",
         "romaji": "Okujou ni agarimasu.",
-        "translation": "Naik ke atap gedung."
+        "translation": "Naik ke atap gedung.",
+        "translationEn": "Going up to the building's rooftop."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_okujou.png",
@@ -1768,7 +1838,8 @@
       {
         "japanese": "小学校に通っています。",
         "romaji": "Shougakkou ni kayotte imasu.",
-        "translation": "Sekolah di SD."
+        "translation": "Sekolah di SD.",
+        "translationEn": "Attending elementary school."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shougakkou.png",
@@ -1793,7 +1864,8 @@
       {
         "japanese": "受付で聞きます。",
         "romaji": "Uketsuke de kikimasu.",
-        "translation": "Bertanya di resepsionis."
+        "translation": "Bertanya di resepsionis.",
+        "translationEn": "Asking at the reception desk."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_uketsuke.png",
@@ -1818,7 +1890,8 @@
       {
         "japanese": "レストランを予約します。",
         "romaji": "Resutoran o yoyaku shimasu.",
-        "translation": "Memesan (reservasi) restoran."
+        "translation": "Memesan (reservasi) restoran.",
+        "translationEn": "Making a restaurant reservation."
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yoyaku.png",
