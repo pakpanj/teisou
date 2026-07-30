@@ -17,15 +17,16 @@ class AvatarPickerSheet extends ConsumerStatefulWidget {
   ConsumerState<AvatarPickerSheet> createState() => _AvatarPickerSheetState();
 }
 
-/// The `moduleId` watching an ad on [PaywallScreen] grants a 24h unlock
-/// for — shared by the premium-presets grid and the gallery-upload tile
-/// below, since both are the same "Avatar Premium" offer on that screen.
+/// The `moduleId` watching an ad on [PaywallScreen] grants a one-time
+/// unlock for — shared by the premium-presets grid and the gallery-upload
+/// tile below, since both are the same "Avatar Premium" offer on that
+/// screen.
 const _avatarPremiumModuleId = 'avatar_premium';
 
 class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
   bool _uploading = false;
 
-  /// Whether an unexpired ad-reward unlock for [_avatarPremiumModuleId]
+  /// Whether an unspent ad-reward unlock for [_avatarPremiumModuleId]
   /// exists. `ProgressRepository.unlockAdReward`/`getAdRewards` already
   /// existed but were a write with no matching read anywhere in the app —
   /// this sheet used to gate premium presets/upload on [isPremium] alone,
@@ -33,10 +34,15 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
   /// but nothing ever consulted it: the gallery tile just reopened the
   /// paywall again, which read as "watched the ad but gallery won't open"
   /// (the exact bug report this fixed). Refreshed in [initState] (in case
-  /// an earlier session's 24h unlock is still active) and again after
+  /// an earlier session's still-unspent unlock exists) and again after
   /// [_openPaywall] returns, since this sheet is only ever pushed over by
   /// `PaywallScreen`, never replaced — its own state must be refreshed
   /// explicitly on return rather than assumed to recompute automatically.
+  /// One ad grants exactly one avatar change: whichever action spends it
+  /// (a premium preset pick or a gallery upload) calls
+  /// `ProgressRepository.consumeAdReward` right after succeeding, rather
+  /// than leaving it active for its full 24h backstop window — see
+  /// [_select]/[_uploadFromGallery]'s `consumeReward` param.
   bool _adRewardActive = false;
 
   @override
@@ -57,6 +63,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     String uid, {
     required String displayName,
     String? photoUrl,
+    required bool consumeReward,
   }) async {
     setState(() => _uploading = true);
     try {
@@ -75,6 +82,16 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
             avatarType: AvatarType.customUpload,
             avatarValue: url,
           );
+      if (consumeReward) {
+        // Best-effort only: the avatar itself already saved successfully
+        // above, so a hiccup here must not surface as an upload failure —
+        // worst case the unlock lingers until its 24h backstop expiry.
+        try {
+          await ref
+              .read(progressRepositoryProvider)
+              .consumeAdReward(uid, _avatarPremiumModuleId);
+        } catch (_) {}
+      }
       if (!mounted) return;
       Navigator.of(context).pop();
     } catch (e) {
@@ -93,6 +110,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     String? value, {
     required String displayName,
     String? photoUrl,
+    bool consumeReward = false,
   }) async {
     try {
       await ref.read(progressRepositoryProvider).updateAvatar(uid, type, value);
@@ -110,6 +128,15 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
       );
       return;
     }
+    if (consumeReward) {
+      // Best-effort only, same reasoning as _uploadFromGallery's — the
+      // avatar itself already saved successfully above.
+      try {
+        await ref
+            .read(progressRepositoryProvider)
+            .consumeAdReward(uid, _avatarPremiumModuleId);
+      } catch (_) {}
+    }
     if (!mounted) return;
     Navigator.of(context).pop();
   }
@@ -120,6 +147,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
         builder: (_) => const PaywallScreen(
           moduleId: _avatarPremiumModuleId,
           moduleTitle: 'Avatar Premium',
+          singleUse: true,
         ),
       ),
     );
@@ -135,10 +163,14 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     final user = ref.watch(appStartupProvider).valueOrNull;
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
-    // A real subscription OR an unexpired ad-reward unlock both count —
-    // see _adRewardActive's doc comment for why the latter needs its own
+    // A real subscription OR an unspent ad-reward unlock both count — see
+    // _adRewardActive's doc comment for why the latter needs its own
     // explicit tracking instead of folding into isPremium at the source.
     final unlocked = isPremium || _adRewardActive;
+    // Whether the action about to happen would be spending the ad-reward
+    // (not a real subscription) — if so, the caller must consume it right
+    // after succeeding so one ad only ever buys one change.
+    final viaAdReward = !isPremium && _adRewardActive;
     final uid = user?.uid;
     final s = ref.watch(appStringsProvider);
     final displayName = profile?.resolveDisplayName(user) ?? (user?.displayName ?? s.defaultLearnerName);
@@ -231,6 +263,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                     preset.id,
                     displayName: displayName,
                     photoUrl: user?.photoURL,
+                    consumeReward: viaAdReward,
                   );
                 },
               ),
@@ -249,6 +282,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                     uid,
                     displayName: displayName,
                     photoUrl: user?.photoURL,
+                    consumeReward: viaAdReward,
                   );
                 },
               ),

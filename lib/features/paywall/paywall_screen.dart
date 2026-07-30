@@ -8,16 +8,20 @@ import '../../core/theme/app_colors.dart';
 import '../../core/widgets/mascot_widget.dart';
 
 /// Shown when a free user taps a premium-gated module. Offers the (not yet
-/// wired to a real Play Console SKU) monthly upgrade, or a rewarded ad for
-/// a 24h preview of [moduleId].
+/// wired to a real Play Console SKU) monthly upgrade, or a rewarded ad —
+/// either a 24h preview of [moduleId] (default), or a single use if
+/// [singleUse] is set (e.g. the avatar picker: one ad grants exactly one
+/// profile photo change, not a free-for-all 24h window).
 class PaywallScreen extends ConsumerStatefulWidget {
   final String moduleId;
   final String moduleTitle;
+  final bool singleUse;
 
   const PaywallScreen({
     super.key,
     required this.moduleId,
     required this.moduleTitle,
+    this.singleUse = false,
   });
 
   @override
@@ -72,7 +76,13 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
         if (!mounted) return;
         setState(() => _watchingAd = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(s.previewUnlockedFor(widget.moduleTitle))),
+          SnackBar(
+            content: Text(
+              widget.singleUse
+                  ? s.previewUnlockedSingleUse(widget.moduleTitle)
+                  : s.previewUnlockedFor(widget.moduleTitle),
+            ),
+          ),
         );
         Navigator.of(context).pop();
       },
@@ -161,7 +171,11 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                           height: 20,
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
-                      : Text(s.watchAdForPreviewButton),
+                      : Text(
+                          widget.singleUse
+                              ? s.watchAdForSingleChangeButton
+                              : s.watchAdForPreviewButton,
+                        ),
                 ),
               ),
             ],

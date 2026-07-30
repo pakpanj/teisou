@@ -159,11 +159,22 @@ class ProgressRepository {
   }
 
   /// Grants a 24h preview unlock for [moduleId] after a rewarded ad finishes.
+  /// The 24h window is a backstop expiry, not the intended usage model for
+  /// every caller — some callers (e.g. the avatar picker) revoke this via
+  /// [consumeAdReward] the moment it's spent once, well before it would
+  /// naturally expire.
   Future<void> unlockAdReward(String uid, String moduleId) {
     final reward = AdReward.unlockNow(moduleId);
     return _userDoc(uid).set({
       'adRewards': {moduleId: reward.toMap()},
     }, SetOptions(merge: true));
+  }
+
+  /// Revokes an ad-reward unlock immediately after it's been spent on one
+  /// action, instead of leaving it active until its 24h expiry. Used where
+  /// "watch an ad" is meant to grant a single use, not a time window.
+  Future<void> consumeAdReward(String uid, String moduleId) {
+    return _userDoc(uid).update({'adRewards.$moduleId': FieldValue.delete()});
   }
 
   /// Records "Ingatkan Saya" interest for a coming-soon module.

@@ -520,6 +520,12 @@ class AppStrings {
   String get orLabel => _t('atau', 'or');
   String get watchAdForPreviewButton =>
       _t('Nonton Iklan untuk Preview 24 Jam', 'Watch Ad for 24-Hour Preview');
+  String get watchAdForSingleChangeButton =>
+      _t('Nonton Iklan untuk Ganti Foto (1x)', 'Watch Ad to Change Photo (1x)');
+  String previewUnlockedSingleUse(String moduleTitle) => _t(
+        '$moduleTitle terbuka — berlaku untuk 1x ganti foto.',
+        '$moduleTitle unlocked — good for one photo change.',
+      );
   String get benefitAllModules => _t('Akses semua modul belajar', 'Access to all learning modules');
   String get benefitNoAds => _t('Tanpa iklan', 'No ads');
   String get benefitCloudProgress => _t('Progress tersimpan cloud', 'Cloud-saved progress');
