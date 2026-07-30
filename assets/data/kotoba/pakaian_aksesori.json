@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_fuku.png",
-    "meaningEn": "clothing"
+    "meaningEn": "clothing",
+    "registersEn": {
+      "casual": "服 (fuku)",
+      "formal": "服 (fuku)",
+      "keigo": "服 (fuku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_shatsu",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_shatsu.png",
-    "meaningEn": "shirt"
+    "meaningEn": "shirt",
+    "registersEn": {
+      "casual": "シャツ (shatsu)",
+      "formal": "シャツ (shatsu)",
+      "keigo": "シャツ (shatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_zubon",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_zubon.png",
-    "meaningEn": "trousers/pants"
+    "meaningEn": "trousers/pants",
+    "registersEn": {
+      "casual": "ズボン (zubon)",
+      "formal": "ズボン (zubon)",
+      "keigo": "ズボン (zubon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_sukaato",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_sukaato.png",
-    "meaningEn": "skirt"
+    "meaningEn": "skirt",
+    "registersEn": {
+      "casual": "スカート (sukaato)",
+      "formal": "スカート (sukaato)",
+      "keigo": "スカート (sukaato) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_kutsu",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kutsu.png",
-    "meaningEn": "shoes"
+    "meaningEn": "shoes",
+    "registersEn": {
+      "casual": "靴 (kutsu)",
+      "formal": "靴 (kutsu)",
+      "keigo": "靴 (kutsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_boushi",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_boushi.png",
-    "meaningEn": "hat"
+    "meaningEn": "hat",
+    "registersEn": {
+      "casual": "帽子 (boushi)",
+      "formal": "帽子 (boushi)",
+      "keigo": "帽子 (boushi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_megane",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_megane.png",
-    "meaningEn": "glasses"
+    "meaningEn": "glasses",
+    "registersEn": {
+      "casual": "眼鏡 (megane)",
+      "formal": "眼鏡 (megane)",
+      "keigo": "眼鏡 (megane) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_tokei",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_tokei.png",
-    "meaningEn": "watch/clock"
+    "meaningEn": "watch/clock",
+    "registersEn": {
+      "casual": "時計 (tokei)",
+      "formal": "時計 (tokei)",
+      "keigo": "時計 (tokei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_baggu",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_baggu.png",
-    "meaningEn": "bag"
+    "meaningEn": "bag",
+    "registersEn": {
+      "casual": "バッグ (baggu)",
+      "formal": "バッグ (baggu)",
+      "keigo": "バッグ (baggu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_yubiwa",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_yubiwa.png",
-    "meaningEn": "ring"
+    "meaningEn": "ring",
+    "registersEn": {
+      "casual": "指輪 (yubiwa)",
+      "formal": "指輪 (yubiwa)",
+      "keigo": "指輪 (yubiwa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_nekutai",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_nekutai.png",
-    "meaningEn": "necktie"
+    "meaningEn": "necktie",
+    "registersEn": {
+      "casual": "ネクタイ (nekutai)",
+      "formal": "ネクタイ (nekutai)",
+      "keigo": "ネクタイ (nekutai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_kimono",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kimono.png",
-    "meaningEn": "kimono (traditional Japanese clothing)"
+    "meaningEn": "kimono (traditional Japanese clothing)",
+    "registersEn": {
+      "casual": "着物 (kimono)",
+      "formal": "着物 (kimono)",
+      "keigo": "着物 (kimono) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_saifu",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_saifu.png",
-    "meaningEn": "wallet"
+    "meaningEn": "wallet",
+    "registersEn": {
+      "casual": "財布 (saifu)",
+      "formal": "財布 (saifu)",
+      "keigo": "財布 (saifu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_kutsushita",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kutsushita.png",
-    "meaningEn": "socks"
+    "meaningEn": "socks",
+    "registersEn": {
+      "casual": "靴下 (kutsushita)",
+      "formal": "靴下 (kutsushita)",
+      "keigo": "靴下 (kutsushita) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_youfuku",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_youfuku.png",
-    "meaningEn": "clothing (Western-style)"
+    "meaningEn": "clothing (Western-style)",
+    "registersEn": {
+      "casual": "洋服 (youfuku)",
+      "formal": "洋服 (youfuku)",
+      "keigo": "洋服 (youfuku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_tebukuro",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_tebukuro.png",
-    "meaningEn": "gloves"
+    "meaningEn": "gloves",
+    "registersEn": {
+      "casual": "手袋 (tebukuro)",
+      "formal": "手袋 (tebukuro)",
+      "keigo": "手袋 (tebukuro) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_seifuku",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_seifuku.png",
-    "meaningEn": "uniform"
+    "meaningEn": "uniform",
+    "registersEn": {
+      "casual": "制服 (seifuku)",
+      "formal": "制服 (seifuku)",
+      "keigo": "制服 (seifuku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_fukusou",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_fukusou.png",
-    "meaningEn": "attire/outfit"
+    "meaningEn": "attire/outfit",
+    "registersEn": {
+      "casual": "服装 (fukusou)",
+      "formal": "服装 (fukusou)",
+      "keigo": "服装 (fukusou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_furugi",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_furugi.png",
-    "meaningEn": "used/secondhand clothing"
+    "meaningEn": "used/secondhand clothing",
+    "registersEn": {
+      "casual": "古着 (furugi)",
+      "formal": "古着 (furugi)",
+      "keigo": "古着 (furugi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_udedokei",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_udedokei.png",
-    "meaningEn": "wristwatch"
+    "meaningEn": "wristwatch",
+    "registersEn": {
+      "casual": "腕時計 (udedokei)",
+      "formal": "腕時計 (udedokei)",
+      "keigo": "腕時計 (udedokei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_ishou",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_ishou.png",
-    "meaningEn": "costume"
+    "meaningEn": "costume",
+    "registersEn": {
+      "casual": "衣装 (ishou)",
+      "formal": "衣装 (ishou)",
+      "keigo": "衣装 (ishou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_kakkou",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_kakkou.png",
-    "meaningEn": "appearance/look"
+    "meaningEn": "appearance/look",
+    "registersEn": {
+      "casual": "格好 (kakkou)",
+      "formal": "格好 (kakkou)",
+      "keigo": "格好 (kakkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_momen",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_momen.png",
-    "meaningEn": "cotton"
+    "meaningEn": "cotton",
+    "registersEn": {
+      "casual": "木綿 (momen)",
+      "formal": "木綿 (momen)",
+      "keigo": "木綿 (momen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pakaian_aksesori_shitagi",
@@ -621,6 +736,11 @@
       }
     ],
     "imagePath": "kotoba_images/pakaian_aksesori/kotoba_pakaian_aksesori_shitagi.png",
-    "meaningEn": "underwear"
+    "meaningEn": "underwear",
+    "registersEn": {
+      "casual": "下着 (shitagi)",
+      "formal": "下着 (shitagi)",
+      "keigo": "下着 (shitagi) — no special keigo form for this noun"
+    }
   }
 ]

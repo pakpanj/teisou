@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shumi.png",
-    "meaningEn": "hobby"
+    "meaningEn": "hobby",
+    "registersEn": {
+      "casual": "趣味 (shumi)",
+      "formal": "趣味 (shumi)",
+      "keigo": "趣味 (shumi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_dokusho",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_dokusho.png",
-    "meaningEn": "reading (books)"
+    "meaningEn": "reading (books)",
+    "registersEn": {
+      "casual": "読書 (dokusho)",
+      "formal": "読書 (dokusho)",
+      "keigo": "読書 (dokusho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_ongaku",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ongaku.png",
-    "meaningEn": "music"
+    "meaningEn": "music",
+    "registersEn": {
+      "casual": "音楽 (ongaku)",
+      "formal": "音楽 (ongaku)",
+      "keigo": "音楽 (ongaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_eiga",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_eiga.png",
-    "meaningEn": "movie/film"
+    "meaningEn": "movie/film",
+    "registersEn": {
+      "casual": "映画 (eiga)",
+      "formal": "映画 (eiga)",
+      "keigo": "映画 (eiga) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_ryokou",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryokou.png",
-    "meaningEn": "travel/trip"
+    "meaningEn": "travel/trip",
+    "registersEn": {
+      "casual": "旅行 (ryokou)",
+      "formal": "旅行 (ryokou)",
+      "keigo": "旅行 (ryokou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_shashin",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shashin.png",
-    "meaningEn": "photo/photography"
+    "meaningEn": "photo/photography",
+    "registersEn": {
+      "casual": "写真 (shashin)",
+      "formal": "写真 (shashin)",
+      "keigo": "写真 (shashin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_e",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_e.png",
-    "meaningEn": "picture/drawing"
+    "meaningEn": "picture/drawing",
+    "registersEn": {
+      "casual": "絵 (e)",
+      "formal": "絵 (e)",
+      "keigo": "絵 (e) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_gaadeningu",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gaadeningu.png",
-    "meaningEn": "gardening"
+    "meaningEn": "gardening",
+    "registersEn": {
+      "casual": "ガーデニング (gaadeningu)",
+      "formal": "ガーデニング (gaadeningu)",
+      "keigo": "ガーデニング (gaadeningu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_ryouri",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryouri.png",
-    "meaningEn": "cooking (as a hobby)"
+    "meaningEn": "cooking (as a hobby)",
+    "registersEn": {
+      "casual": "料理 (ryouri)",
+      "formal": "料理 (ryouri)",
+      "keigo": "料理 (ryouri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_geemu",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_geemu.png",
-    "meaningEn": "game"
+    "meaningEn": "game",
+    "registersEn": {
+      "casual": "ゲーム (geemu)",
+      "formal": "ゲーム (geemu)",
+      "keigo": "ゲーム (geemu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_dansu",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_dansu.png",
-    "meaningEn": "dance"
+    "meaningEn": "dance",
+    "registersEn": {
+      "casual": "ダンス (dansu)",
+      "formal": "ダンス (dansu)",
+      "keigo": "ダンス (dansu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_kyanpu",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kyanpu.png",
-    "meaningEn": "camping"
+    "meaningEn": "camping",
+    "registersEn": {
+      "casual": "キャンプ (kyanpu)",
+      "formal": "キャンプ (kyanpu)",
+      "keigo": "キャンプ (kyanpu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_sentaku",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sentaku.png",
-    "meaningEn": "laundry"
+    "meaningEn": "laundry",
+    "registersEn": {
+      "casual": "洗濯 (sentaku)",
+      "formal": "洗濯 (sentaku)",
+      "keigo": "洗濯 (sentaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_souji",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_souji.png",
-    "meaningEn": "cleaning"
+    "meaningEn": "cleaning",
+    "registersEn": {
+      "casual": "掃除 (souji)",
+      "formal": "掃除 (souji)",
+      "keigo": "掃除 (souji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_kaimono",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kaimono.png",
-    "meaningEn": "shopping"
+    "meaningEn": "shopping",
+    "registersEn": {
+      "casual": "買物 (kaimono)",
+      "formal": "買物 (kaimono)",
+      "keigo": "買物 (kaimono) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_sanpo",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sanpo.png",
-    "meaningEn": "(leisurely) walk"
+    "meaningEn": "(leisurely) walk",
+    "registersEn": {
+      "casual": "散歩 (sanpo)",
+      "formal": "散歩 (sanpo)",
+      "keigo": "散歩 (sanpo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_bottou",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_bottou.png",
-    "meaningEn": "absorption/immersion (in an activity)"
+    "meaningEn": "absorption/immersion (in an activity)",
+    "registersEn": {
+      "casual": "没頭 (bottou)",
+      "formal": "没頭 (bottou)",
+      "keigo": "没頭 (bottou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_netchuu",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_netchuu.png",
-    "meaningEn": "enthusiasm/being absorbed"
+    "meaningEn": "enthusiasm/being absorbed",
+    "registersEn": {
+      "casual": "熱中 (netchuu)",
+      "formal": "熱中 (netchuu)",
+      "keigo": "熱中 (netchuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_juujitsu",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_juujitsu.png",
-    "meaningEn": "fulfillment"
+    "meaningEn": "fulfillment",
+    "registersEn": {
+      "casual": "充実 (juujitsu)",
+      "formal": "充実 (juujitsu)",
+      "keigo": "充実 (juujitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_hassan",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_hassan.png",
-    "meaningEn": "release/venting (stress)"
+    "meaningEn": "release/venting (stress)",
+    "registersEn": {
+      "casual": "発散 (hassan)",
+      "formal": "発散 (hassan)",
+      "keigo": "発散 (hassan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_ensou",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ensou.png",
-    "meaningEn": "(musical) performance"
+    "meaningEn": "(musical) performance",
+    "registersEn": {
+      "casual": "演奏 (ensou)",
+      "formal": "演奏 (ensou)",
+      "keigo": "演奏 (ensou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_kaiga",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kaiga.png",
-    "meaningEn": "painting"
+    "meaningEn": "painting",
+    "registersEn": {
+      "casual": "絵画 (kaiga)",
+      "formal": "絵画 (kaiga)",
+      "keigo": "絵画 (kaiga) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_katsudou",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_katsudou.png",
-    "meaningEn": "activity"
+    "meaningEn": "activity",
+    "registersEn": {
+      "casual": "活動 (katsudou)",
+      "formal": "活動 (katsudou)",
+      "keigo": "活動 (katsudou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_kankou",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kankou.png",
-    "meaningEn": "sightseeing"
+    "meaningEn": "sightseeing",
+    "registersEn": {
+      "casual": "観光 (kankou)",
+      "formal": "観光 (kankou)",
+      "keigo": "観光 (kankou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_gaishoku",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gaishoku.png",
-    "meaningEn": "eating out"
+    "meaningEn": "eating out",
+    "registersEn": {
+      "casual": "外食 (gaishoku)",
+      "formal": "外食 (gaishoku)",
+      "keigo": "外食 (gaishoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_gakki",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_gakki.png",
-    "meaningEn": "musical instrument"
+    "meaningEn": "musical instrument",
+    "registersEn": {
+      "casual": "楽器 (gakki)",
+      "formal": "楽器 (gakki)",
+      "keigo": "楽器 (gakki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_geijutsu",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_geijutsu.png",
-    "meaningEn": "art"
+    "meaningEn": "art",
+    "registersEn": {
+      "casual": "芸術 (geijutsu)",
+      "formal": "芸術 (geijutsu)",
+      "keigo": "芸術 (geijutsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_sakuhin",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_sakuhin.png",
-    "meaningEn": "a work (of art)"
+    "meaningEn": "a work (of art)",
+    "registersEn": {
+      "casual": "作品 (sakuhin)",
+      "formal": "作品 (sakuhin)",
+      "keigo": "作品 (sakuhin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_ryuukou",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ryuukou.png",
-    "meaningEn": "trend/fashion"
+    "meaningEn": "trend/fashion",
+    "registersEn": {
+      "casual": "流行 (ryuukou)",
+      "formal": "流行 (ryuukou)",
+      "keigo": "流行 (ryuukou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_tejina",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_tejina.png",
-    "meaningEn": "magic trick"
+    "meaningEn": "magic trick",
+    "registersEn": {
+      "casual": "手品 (tejina)",
+      "formal": "手品 (tejina)",
+      "keigo": "手品 (tejina) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_chousen",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_chousen.png",
-    "meaningEn": "challenge"
+    "meaningEn": "challenge",
+    "registersEn": {
+      "casual": "挑戦 (chousen)",
+      "formal": "挑戦 (chousen)",
+      "keigo": "挑戦 (chousen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_shuuji",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_shuuji.png",
-    "meaningEn": "calligraphy"
+    "meaningEn": "calligraphy",
+    "registersEn": {
+      "casual": "習字 (shuuji)",
+      "formal": "習字 (shuuji)",
+      "keigo": "習字 (shuuji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_hanami",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_hanami.png",
-    "meaningEn": "cherry blossom viewing"
+    "meaningEn": "cherry blossom viewing",
+    "registersEn": {
+      "casual": "花見 (hanami)",
+      "formal": "花見 (hanami)",
+      "keigo": "花見 (hanami) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_kenbutsu",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_kenbutsu.png",
-    "meaningEn": "sightseeing/looking around"
+    "meaningEn": "sightseeing/looking around",
+    "registersEn": {
+      "casual": "見物 (kenbutsu)",
+      "formal": "見物 (kenbutsu)",
+      "keigo": "見物 (kenbutsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_ningyou",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_ningyou.png",
-    "meaningEn": "doll"
+    "meaningEn": "doll",
+    "registersEn": {
+      "casual": "人形 (ningyou)",
+      "formal": "人形 (ningyou)",
+      "keigo": "人形 (ningyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hobi_aktivitas_tenrankai",
@@ -933,6 +1108,11 @@
       }
     ],
     "imagePath": "kotoba_images/hobi_aktivitas/kotoba_hobi_aktivitas_tenrankai.png",
-    "meaningEn": "exhibition"
+    "meaningEn": "exhibition",
+    "registersEn": {
+      "casual": "展覧会 (tenrankai)",
+      "formal": "展覧会 (tenrankai)",
+      "keigo": "展覧会 (tenrankai) — no special keigo form for this noun"
+    }
   }
 ]

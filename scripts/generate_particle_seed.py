@@ -907,6 +907,7 @@ def main():
         {
             "id": "kasus",
             "name": "Partikel Kasus",
+            "nameEn": "Case Particles",
             "icon": "格",
             "available": True,
             "particleCount": len(KASUS_ENTRIES),
@@ -914,6 +915,7 @@ def main():
         {
             "id": "keterangan",
             "name": "Partikel Keterangan",
+            "nameEn": "Adverbial Particles",
             "icon": "副",
             "available": True,
             "particleCount": len(KETERANGAN_ENTRIES),
@@ -921,6 +923,7 @@ def main():
         {
             "id": "akhir_kalimat",
             "name": "Partikel Akhir Kalimat",
+            "nameEn": "Sentence-Final Particles",
             "icon": "終",
             "available": True,
             "particleCount": len(AKHIR_KALIMAT_ENTRIES),

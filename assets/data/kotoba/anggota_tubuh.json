@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_atama.png",
-    "meaningEn": "head"
+    "meaningEn": "head",
+    "registersEn": {
+      "casual": "頭 (atama)",
+      "formal": "頭 (atama)",
+      "keigo": "頭 (atama) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_kao",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kao.png",
-    "meaningEn": "face"
+    "meaningEn": "face",
+    "registersEn": {
+      "casual": "顔 (kao)",
+      "formal": "顔 (kao)",
+      "keigo": "顔 (kao) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_me",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_me.png",
-    "meaningEn": "eye"
+    "meaningEn": "eye",
+    "registersEn": {
+      "casual": "目 (me)",
+      "formal": "目 (me)",
+      "keigo": "目 (me) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_hana",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_hana.png",
-    "meaningEn": "nose"
+    "meaningEn": "nose",
+    "registersEn": {
+      "casual": "鼻 (hana)",
+      "formal": "鼻 (hana)",
+      "keigo": "鼻 (hana) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_mimi",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_mimi.png",
-    "meaningEn": "ear"
+    "meaningEn": "ear",
+    "registersEn": {
+      "casual": "耳 (mimi)",
+      "formal": "耳 (mimi)",
+      "keigo": "耳 (mimi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_kuchi",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kuchi.png",
-    "meaningEn": "mouth"
+    "meaningEn": "mouth",
+    "registersEn": {
+      "casual": "口 (kuchi)",
+      "formal": "口 (kuchi)",
+      "keigo": "口 (kuchi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_ha",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ha.png",
-    "meaningEn": "tooth"
+    "meaningEn": "tooth",
+    "registersEn": {
+      "casual": "歯 (ha)",
+      "formal": "歯 (ha)",
+      "keigo": "歯 (ha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_te",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_te.png",
-    "meaningEn": "hand"
+    "meaningEn": "hand",
+    "registersEn": {
+      "casual": "手 (te)",
+      "formal": "手 (te)",
+      "keigo": "手 (te) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_ashi",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ashi.png",
-    "meaningEn": "leg/foot"
+    "meaningEn": "leg/foot",
+    "registersEn": {
+      "casual": "足 (ashi)",
+      "formal": "足 (ashi)",
+      "keigo": "足 (ashi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_kubi",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kubi.png",
-    "meaningEn": "neck"
+    "meaningEn": "neck",
+    "registersEn": {
+      "casual": "首 (kubi)",
+      "formal": "首 (kubi)",
+      "keigo": "首 (kubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_kata",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kata.png",
-    "meaningEn": "shoulder"
+    "meaningEn": "shoulder",
+    "registersEn": {
+      "casual": "肩 (kata)",
+      "formal": "肩 (kata)",
+      "keigo": "肩 (kata) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_onaka",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_onaka.png",
-    "meaningEn": "stomach/belly"
+    "meaningEn": "stomach/belly",
+    "registersEn": {
+      "casual": "お腹 (onaka)",
+      "formal": "お腹 (onaka)",
+      "keigo": "お腹 (onaka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_senaka",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_senaka.png",
-    "meaningEn": "back"
+    "meaningEn": "back",
+    "registersEn": {
+      "casual": "背中 (senaka)",
+      "formal": "背中 (senaka)",
+      "keigo": "背中 (senaka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_yubi",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_yubi.png",
-    "meaningEn": "finger"
+    "meaningEn": "finger",
+    "registersEn": {
+      "casual": "指 (yubi)",
+      "formal": "指 (yubi)",
+      "keigo": "指 (yubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_kami",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kami.png",
-    "meaningEn": "hair"
+    "meaningEn": "hair",
+    "registersEn": {
+      "casual": "髪 (kami)",
+      "formal": "髪 (kami)",
+      "keigo": "髪 (kami) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_mune",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_mune.png",
-    "meaningEn": "chest"
+    "meaningEn": "chest",
+    "registersEn": {
+      "casual": "胸 (mune)",
+      "formal": "胸 (mune)",
+      "keigo": "胸 (mune) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_hiza",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_hiza.png",
-    "meaningEn": "knee"
+    "meaningEn": "knee",
+    "registersEn": {
+      "casual": "膝 (hiza)",
+      "formal": "膝 (hiza)",
+      "keigo": "膝 (hiza) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_shinzou",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_shinzou.png",
-    "meaningEn": "heart"
+    "meaningEn": "heart",
+    "registersEn": {
+      "casual": "心臓 (shinzou)",
+      "formal": "心臓 (shinzou)",
+      "keigo": "心臓 (shinzou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_naizou",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_naizou.png",
-    "meaningEn": "internal organs"
+    "meaningEn": "internal organs",
+    "registersEn": {
+      "casual": "内臓 (naizou)",
+      "formal": "内臓 (naizou)",
+      "keigo": "内臓 (naizou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_kinniku",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kinniku.png",
-    "meaningEn": "muscle"
+    "meaningEn": "muscle",
+    "registersEn": {
+      "casual": "筋肉 (kinniku)",
+      "formal": "筋肉 (kinniku)",
+      "keigo": "筋肉 (kinniku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_kansetsu",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kansetsu.png",
-    "meaningEn": "joint"
+    "meaningEn": "joint",
+    "registersEn": {
+      "casual": "関節 (kansetsu)",
+      "formal": "関節 (kansetsu)",
+      "keigo": "関節 (kansetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_kekkan",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kekkan.png",
-    "meaningEn": "blood vessel"
+    "meaningEn": "blood vessel",
+    "registersEn": {
+      "casual": "血管 (kekkan)",
+      "formal": "血管 (kekkan)",
+      "keigo": "血管 (kekkan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_kamigata",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_kamigata.png",
-    "meaningEn": "hairstyle"
+    "meaningEn": "hairstyle",
+    "registersEn": {
+      "casual": "髪型 (kamigata)",
+      "formal": "髪型 (kamigata)",
+      "keigo": "髪型 (kamigata) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_shisei",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_shisei.png",
-    "meaningEn": "posture"
+    "meaningEn": "posture",
+    "registersEn": {
+      "casual": "姿勢 (shisei)",
+      "formal": "姿勢 (shisei)",
+      "keigo": "姿勢 (shisei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_jintai",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_jintai.png",
-    "meaningEn": "human body"
+    "meaningEn": "human body",
+    "registersEn": {
+      "casual": "人体 (jintai)",
+      "formal": "人体 (jintai)",
+      "keigo": "人体 (jintai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_ashikoshi",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ashikoshi.png",
-    "meaningEn": "legs and hips"
+    "meaningEn": "legs and hips",
+    "registersEn": {
+      "casual": "足腰 (ashikoshi)",
+      "formal": "足腰 (ashikoshi)",
+      "keigo": "足腰 (ashikoshi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_ashimoto",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ashimoto.png",
-    "meaningEn": "one's step/footing"
+    "meaningEn": "one's step/footing",
+    "registersEn": {
+      "casual": "足元 (ashimoto)",
+      "formal": "足元 (ashimoto)",
+      "keigo": "足元 (ashimoto) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_shinchou",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_shinchou.png",
-    "meaningEn": "height"
+    "meaningEn": "height",
+    "registersEn": {
+      "casual": "身長 (shinchou)",
+      "formal": "身長 (shinchou)",
+      "keigo": "身長 (shinchou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_ashiato",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_ashiato.png",
-    "meaningEn": "footprint"
+    "meaningEn": "footprint",
+    "registersEn": {
+      "casual": "足跡 (ashiato)",
+      "formal": "足跡 (ashiato)",
+      "keigo": "足跡 (ashiato) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_anggota_tubuh_shiraga",
@@ -777,6 +922,11 @@
       }
     ],
     "imagePath": "kotoba_images/anggota_tubuh/kotoba_anggota_tubuh_shiraga.png",
-    "meaningEn": "gray/white hair"
+    "meaningEn": "gray/white hair",
+    "registersEn": {
+      "casual": "白髪 (shiraga)",
+      "formal": "白髪 (shiraga)",
+      "keigo": "白髪 (shiraga) — no special keigo form for this noun"
+    }
   }
 ]

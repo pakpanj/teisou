@@ -22,6 +22,14 @@ class KotobaEntry {
   final String category;
   final String wordType;
   final Map<SpeechRegister, String> registers;
+
+  /// English translation of [registers], keyed the same way — null (or a
+  /// key missing from the map) for any register note not translated yet.
+  /// [localizedRegisters] falls back per-key to the Indonesian [registers]
+  /// value whenever this is null/incomplete, so an untranslated word never
+  /// renders blank even mid-rollout.
+  final Map<SpeechRegister, String>? registersEn;
+
   final List<SentenceExample> sentenceExamples;
   final String? imageAsset;
 
@@ -47,6 +55,7 @@ class KotobaEntry {
     required this.category,
     required this.wordType,
     required this.registers,
+    this.registersEn,
     this.sentenceExamples = const [],
     this.imageAsset,
     this.imagePath,
@@ -64,8 +73,35 @@ class KotobaEntry {
           ? meaningEn!
           : meaning;
 
+  /// [registers] with each value swapped for its [registersEn] counterpart
+  /// when [language] is English and a translation exists for that key,
+  /// else the original Indonesian value for that key.
+  Map<SpeechRegister, String> localizedRegisters(AppLanguage language) {
+    if (language != AppLanguage.english) return registers;
+    return {
+      for (final entry in registers.entries)
+        entry.key: (registersEn?[entry.key]?.isNotEmpty ?? false)
+            ? registersEn![entry.key]!
+            : entry.value,
+    };
+  }
+
+  static Map<SpeechRegister, String> _parseRegisters(
+    Map<String, dynamic> raw,
+  ) =>
+      {
+        for (final entry in raw.entries)
+          if (entry.key == 'casual')
+            SpeechRegister.casual: entry.value as String
+          else if (entry.key == 'formal')
+            SpeechRegister.formal: entry.value as String
+          else if (entry.key == 'keigo')
+            SpeechRegister.keigo: entry.value as String,
+      };
+
   factory KotobaEntry.fromJson(Map<String, dynamic> json) {
     final rawRegisters = json['registers'] as Map<String, dynamic>? ?? {};
+    final rawRegistersEn = json['registersEn'] as Map<String, dynamic>?;
 
     // Batch 6 datasets write a `sentenceExamples` list; Batch 4's
     // kotoba_data.json predates that and only has a single `sentenceExample`
@@ -94,15 +130,8 @@ class KotobaEntry {
       jlptLevel: JlptLevelX.fromKey(json['jlptLevel'] as String?),
       category: json['category'] as String? ?? '',
       wordType: json['wordType'] as String? ?? '',
-      registers: {
-        for (final entry in rawRegisters.entries)
-          if (entry.key == 'casual')
-            SpeechRegister.casual: entry.value as String
-          else if (entry.key == 'formal')
-            SpeechRegister.formal: entry.value as String
-          else if (entry.key == 'keigo')
-            SpeechRegister.keigo: entry.value as String,
-      },
+      registers: _parseRegisters(rawRegisters),
+      registersEn: rawRegistersEn != null ? _parseRegisters(rawRegistersEn) : null,
       sentenceExamples: examples,
       imageAsset: json['imageAsset'] as String?,
       imagePath: json['imagePath'] as String?,

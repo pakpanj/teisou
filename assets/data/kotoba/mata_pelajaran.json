@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kokugo.png",
-    "meaningEn": "Japanese language (school subject)"
+    "meaningEn": "Japanese language (school subject)",
+    "registersEn": {
+      "casual": "国語 (kokugo)",
+      "formal": "国語 (kokugo)",
+      "keigo": "国語 (kokugo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_suugaku",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_suugaku.png",
-    "meaningEn": "mathematics"
+    "meaningEn": "mathematics",
+    "registersEn": {
+      "casual": "数学 (suugaku)",
+      "formal": "数学 (suugaku)",
+      "keigo": "数学 (suugaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_rika",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rika.png",
-    "meaningEn": "science"
+    "meaningEn": "science",
+    "registersEn": {
+      "casual": "理科 (rika)",
+      "formal": "理科 (rika)",
+      "keigo": "理科 (rika) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_shakai",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shakai.png",
-    "meaningEn": "social studies"
+    "meaningEn": "social studies",
+    "registersEn": {
+      "casual": "社会 (shakai)",
+      "formal": "社会 (shakai)",
+      "keigo": "社会 (shakai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_eigo",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_eigo.png",
-    "meaningEn": "English"
+    "meaningEn": "English",
+    "registersEn": {
+      "casual": "英語 (eigo)",
+      "formal": "英語 (eigo)",
+      "keigo": "英語 (eigo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_nihongo",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_nihongo.png",
-    "meaningEn": "Japanese language"
+    "meaningEn": "Japanese language",
+    "registersEn": {
+      "casual": "日本語 (nihongo)",
+      "formal": "日本語 (nihongo)",
+      "keigo": "日本語 (nihongo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_taiiku",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_taiiku.png",
-    "meaningEn": "physical education"
+    "meaningEn": "physical education",
+    "registersEn": {
+      "casual": "体育 (taiiku)",
+      "formal": "体育 (taiiku)",
+      "keigo": "体育 (taiiku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_bijutsu",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_bijutsu.png",
-    "meaningEn": "fine arts"
+    "meaningEn": "fine arts",
+    "registersEn": {
+      "casual": "美術 (bijutsu)",
+      "formal": "美術 (bijutsu)",
+      "keigo": "美術 (bijutsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_rekishi",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rekishi.png",
-    "meaningEn": "history"
+    "meaningEn": "history",
+    "registersEn": {
+      "casual": "歴史 (rekishi)",
+      "formal": "歴史 (rekishi)",
+      "keigo": "歴史 (rekishi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kagaku",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kagaku.png",
-    "meaningEn": "chemistry"
+    "meaningEn": "chemistry",
+    "registersEn": {
+      "casual": "化学 (kagaku)",
+      "formal": "化学 (kagaku)",
+      "keigo": "化学 (kagaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_senkou",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_senkou.png",
-    "meaningEn": "major/specialization"
+    "meaningEn": "major/specialization",
+    "registersEn": {
+      "casual": "専攻 (senkou)",
+      "formal": "専攻 (senkou)",
+      "keigo": "専攻 (senkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_rishuu",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rishuu.png",
-    "meaningEn": "taking a course"
+    "meaningEn": "taking a course",
+    "registersEn": {
+      "casual": "履修 (rishuu)",
+      "formal": "履修 (rishuu)",
+      "keigo": "履修 (rishuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_shingaku",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shingaku.png",
-    "meaningEn": "advancing to higher education"
+    "meaningEn": "advancing to higher education",
+    "registersEn": {
+      "casual": "進学 (shingaku)",
+      "formal": "進学 (shingaku)",
+      "keigo": "進学 (shingaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_keizai",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_keizai.png",
-    "meaningEn": "economics"
+    "meaningEn": "economics",
+    "registersEn": {
+      "casual": "経済 (keizai)",
+      "formal": "経済 (keizai)",
+      "keigo": "経済 (keizai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_butsuri",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_butsuri.png",
-    "meaningEn": "physics"
+    "meaningEn": "physics",
+    "registersEn": {
+      "casual": "物理 (butsuri)",
+      "formal": "物理 (butsuri)",
+      "keigo": "物理 (butsuri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_seibutsu",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_seibutsu.png",
-    "meaningEn": "biology"
+    "meaningEn": "biology",
+    "registersEn": {
+      "casual": "生物 (seibutsu)",
+      "formal": "生物 (seibutsu)",
+      "keigo": "生物 (seibutsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_chiri",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_chiri.png",
-    "meaningEn": "geography"
+    "meaningEn": "geography",
+    "registersEn": {
+      "casual": "地理 (chiri)",
+      "formal": "地理 (chiri)",
+      "keigo": "地理 (chiri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_rinri",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_rinri.png",
-    "meaningEn": "ethics"
+    "meaningEn": "ethics",
+    "registersEn": {
+      "casual": "倫理 (rinri)",
+      "formal": "倫理 (rinri)",
+      "keigo": "倫理 (rinri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_tetsugaku",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_tetsugaku.png",
-    "meaningEn": "philosophy"
+    "meaningEn": "philosophy",
+    "registersEn": {
+      "casual": "哲学 (tetsugaku)",
+      "formal": "哲学 (tetsugaku)",
+      "keigo": "哲学 (tetsugaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kateika",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kateika.png",
-    "meaningEn": "home economics"
+    "meaningEn": "home economics",
+    "registersEn": {
+      "casual": "家庭科 (kateika)",
+      "formal": "家庭科 (kateika)",
+      "keigo": "家庭科 (kateika) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_gakubu",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakubu.png",
-    "meaningEn": "faculty (university)"
+    "meaningEn": "faculty (university)",
+    "registersEn": {
+      "casual": "学部 (gakubu)",
+      "formal": "学部 (gakubu)",
+      "keigo": "学部 (gakubu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_gakki",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakki.png",
-    "meaningEn": "semester"
+    "meaningEn": "semester",
+    "registersEn": {
+      "casual": "学期 (gakki)",
+      "formal": "学期 (gakki)",
+      "keigo": "学期 (gakki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kiso",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kiso.png",
-    "meaningEn": "basics/foundation"
+    "meaningEn": "basics/foundation",
+    "registersEn": {
+      "casual": "基礎 (kiso)",
+      "formal": "基礎 (kiso)",
+      "keigo": "基礎 (kiso) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kihon",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kihon.png",
-    "meaningEn": "basics/fundamentals"
+    "meaningEn": "basics/fundamentals",
+    "registersEn": {
+      "casual": "基本 (kihon)",
+      "formal": "基本 (kihon)",
+      "keigo": "基本 (kihon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_gengo",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gengo.png",
-    "meaningEn": "language"
+    "meaningEn": "language",
+    "registersEn": {
+      "casual": "言語 (gengo)",
+      "formal": "言語 (gengo)",
+      "keigo": "言語 (gengo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kouki",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kouki.png",
-    "meaningEn": "second semester"
+    "meaningEn": "second semester",
+    "registersEn": {
+      "casual": "後期 (kouki)",
+      "formal": "後期 (kouki)",
+      "keigo": "後期 (kouki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kougi",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kougi.png",
-    "meaningEn": "(university) lecture"
+    "meaningEn": "(university) lecture",
+    "registersEn": {
+      "casual": "講義 (kougi)",
+      "formal": "講義 (kougi)",
+      "keigo": "講義 (kougi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_goukaku",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_goukaku.png",
-    "meaningEn": "passing (an exam)"
+    "meaningEn": "passing (an exam)",
+    "registersEn": {
+      "casual": "合格 (goukaku)",
+      "formal": "合格 (goukaku)",
+      "keigo": "合格 (goukaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_sansuu",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_sansuu.png",
-    "meaningEn": "arithmetic"
+    "meaningEn": "arithmetic",
+    "registersEn": {
+      "casual": "算数 (sansuu)",
+      "formal": "算数 (sansuu)",
+      "keigo": "算数 (sansuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_shiken",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shiken.png",
-    "meaningEn": "exam/test"
+    "meaningEn": "exam/test",
+    "registersEn": {
+      "casual": "試験 (shiken)",
+      "formal": "試験 (shiken)",
+      "keigo": "試験 (shiken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_shidou",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shidou.png",
-    "meaningEn": "guidance"
+    "meaningEn": "guidance",
+    "registersEn": {
+      "casual": "指導 (shidou)",
+      "formal": "指導 (shidou)",
+      "keigo": "指導 (shidou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_juken",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_juken.png",
-    "meaningEn": "taking an exam"
+    "meaningEn": "taking an exam",
+    "registersEn": {
+      "casual": "受験 (juken)",
+      "formal": "受験 (juken)",
+      "keigo": "受験 (juken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_seikai",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_seikai.png",
-    "meaningEn": "correct answer"
+    "meaningEn": "correct answer",
+    "registersEn": {
+      "casual": "正解 (seikai)",
+      "formal": "正解 (seikai)",
+      "keigo": "正解 (seikai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_tango",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_tango.png",
-    "meaningEn": "vocabulary word"
+    "meaningEn": "vocabulary word",
+    "registersEn": {
+      "casual": "単語 (tango)",
+      "formal": "単語 (tango)",
+      "keigo": "単語 (tango) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_tsuugaku",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_tsuugaku.png",
-    "meaningEn": "commuting to school"
+    "meaningEn": "commuting to school",
+    "registersEn": {
+      "casual": "通学 (tsuugaku)",
+      "formal": "通学 (tsuugaku)",
+      "keigo": "通学 (tsuugaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_nyuumon",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_nyuumon.png",
-    "meaningEn": "introduction (to a subject)"
+    "meaningEn": "introduction (to a subject)",
+    "registersEn": {
+      "casual": "入門 (nyuumon)",
+      "formal": "入門 (nyuumon)",
+      "keigo": "入門 (nyuumon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_hatsuon",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_hatsuon.png",
-    "meaningEn": "pronunciation"
+    "meaningEn": "pronunciation",
+    "registersEn": {
+      "casual": "発音 (hatsuon)",
+      "formal": "発音 (hatsuon)",
+      "keigo": "発音 (hatsuon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_moji",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_moji.png",
-    "meaningEn": "letter/character"
+    "meaningEn": "letter/character",
+    "registersEn": {
+      "casual": "文字 (moji)",
+      "formal": "文字 (moji)",
+      "keigo": "文字 (moji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_shinnyuusei",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shinnyuusei.png",
-    "meaningEn": "new student"
+    "meaningEn": "new student",
+    "registersEn": {
+      "casual": "新入生 (shinnyuusei)",
+      "formal": "新入生 (shinnyuusei)",
+      "keigo": "新入生 (shinnyuusei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_daigakuin",
@@ -1037,7 +1232,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_daigakuin.png",
-    "meaningEn": "graduate school"
+    "meaningEn": "graduate school",
+    "registersEn": {
+      "casual": "大学院 (daigakuin)",
+      "formal": "大学院 (daigakuin)",
+      "keigo": "大学院 (daigakuin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_anki",
@@ -1063,7 +1263,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_anki.png",
-    "meaningEn": "memorization"
+    "meaningEn": "memorization",
+    "registersEn": {
+      "casual": "暗記 (anki)",
+      "formal": "暗記 (anki)",
+      "keigo": "暗記 (anki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_chuugaku",
@@ -1089,7 +1294,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_chuugaku.png",
-    "meaningEn": "junior high school"
+    "meaningEn": "junior high school",
+    "registersEn": {
+      "casual": "中学 (chuugaku)",
+      "formal": "中学 (chuugaku)",
+      "keigo": "中学 (chuugaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_gakumon",
@@ -1115,7 +1325,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakumon.png",
-    "meaningEn": "scholarship/academics"
+    "meaningEn": "scholarship/academics",
+    "registersEn": {
+      "casual": "学問 (gakumon)",
+      "formal": "学問 (gakumon)",
+      "keigo": "学問 (gakumon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_gakushuu",
@@ -1141,7 +1356,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakushuu.png",
-    "meaningEn": "learning/study"
+    "meaningEn": "learning/study",
+    "registersEn": {
+      "casual": "学習 (gakushuu)",
+      "formal": "学習 (gakushuu)",
+      "keigo": "学習 (gakushuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_gogaku",
@@ -1167,7 +1387,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gogaku.png",
-    "meaningEn": "foreign language study"
+    "meaningEn": "foreign language study",
+    "registersEn": {
+      "casual": "語学 (gogaku)",
+      "formal": "語学 (gogaku)",
+      "keigo": "語学 (gogaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kamoku",
@@ -1193,7 +1418,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kamoku.png",
-    "meaningEn": "(curriculum) subject"
+    "meaningEn": "(curriculum) subject",
+    "registersEn": {
+      "casual": "科目 (kamoku)",
+      "formal": "科目 (kamoku)",
+      "keigo": "科目 (kamoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_ryuugaku",
@@ -1219,7 +1449,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_ryuugaku.png",
-    "meaningEn": "studying abroad"
+    "meaningEn": "studying abroad",
+    "registersEn": {
+      "casual": "留学 (ryuugaku)",
+      "formal": "留学 (ryuugaku)",
+      "keigo": "留学 (ryuugaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_shougakukin",
@@ -1245,7 +1480,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_shougakukin.png",
-    "meaningEn": "scholarship (money)"
+    "meaningEn": "scholarship (money)",
+    "registersEn": {
+      "casual": "奨学金 (shougakukin)",
+      "formal": "奨学金 (shougakukin)",
+      "keigo": "奨学金 (shougakukin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_jissen",
@@ -1271,7 +1511,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_jissen.png",
-    "meaningEn": "practice (real application)"
+    "meaningEn": "practice (real application)",
+    "registersEn": {
+      "casual": "実践 (jissen)",
+      "formal": "実践 (jissen)",
+      "keigo": "実践 (jissen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kadai",
@@ -1297,7 +1542,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kadai.png",
-    "meaningEn": "assignment/issue"
+    "meaningEn": "assignment/issue",
+    "registersEn": {
+      "casual": "課題 (kadai)",
+      "formal": "課題 (kadai)",
+      "keigo": "課題 (kadai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_ensoku",
@@ -1323,7 +1573,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_ensoku.png",
-    "meaningEn": "school excursion"
+    "meaningEn": "school excursion",
+    "registersEn": {
+      "casual": "遠足 (ensoku)",
+      "formal": "遠足 (ensoku)",
+      "keigo": "遠足 (ensoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_gakka",
@@ -1349,7 +1604,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakka.png",
-    "meaningEn": "(university) department"
+    "meaningEn": "(university) department",
+    "registersEn": {
+      "casual": "学科 (gakka)",
+      "formal": "学科 (gakka)",
+      "keigo": "学科 (gakka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_gakkai",
@@ -1375,7 +1635,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakkai.png",
-    "meaningEn": "academic society"
+    "meaningEn": "academic society",
+    "registersEn": {
+      "casual": "学会 (gakkai)",
+      "formal": "学会 (gakkai)",
+      "keigo": "学会 (gakkai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_gakuryoku",
@@ -1401,7 +1666,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_gakuryoku.png",
-    "meaningEn": "academic ability"
+    "meaningEn": "academic ability",
+    "registersEn": {
+      "casual": "学力 (gakuryoku)",
+      "formal": "学力 (gakuryoku)",
+      "keigo": "学力 (gakuryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_jishuu",
@@ -1427,7 +1697,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_jishuu.png",
-    "meaningEn": "self-study"
+    "meaningEn": "self-study",
+    "registersEn": {
+      "casual": "自習 (jishuu)",
+      "formal": "自習 (jishuu)",
+      "keigo": "自習 (jishuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_jisshuu",
@@ -1453,7 +1728,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_jisshuu.png",
-    "meaningEn": "practical training"
+    "meaningEn": "practical training",
+    "registersEn": {
+      "casual": "実習 (jisshuu)",
+      "formal": "実習 (jisshuu)",
+      "keigo": "実習 (jisshuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kengaku",
@@ -1479,7 +1759,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kengaku.png",
-    "meaningEn": "observational visit"
+    "meaningEn": "observational visit",
+    "registersEn": {
+      "casual": "見学 (kengaku)",
+      "formal": "見学 (kengaku)",
+      "keigo": "見学 (kengaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_bungaku",
@@ -1505,7 +1790,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_bungaku.png",
-    "meaningEn": "literature"
+    "meaningEn": "literature",
+    "registersEn": {
+      "casual": "文学 (bungaku)",
+      "formal": "文学 (bungaku)",
+      "keigo": "文学 (bungaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_bunpou",
@@ -1531,7 +1821,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_bunpou.png",
-    "meaningEn": "grammar"
+    "meaningEn": "grammar",
+    "registersEn": {
+      "casual": "文法 (bunpou)",
+      "formal": "文法 (bunpou)",
+      "keigo": "文法 (bunpou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_daigakusei",
@@ -1557,7 +1852,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_daigakusei.png",
-    "meaningEn": "university student"
+    "meaningEn": "university student",
+    "registersEn": {
+      "casual": "大学生 (daigakusei)",
+      "formal": "大学生 (daigakusei)",
+      "keigo": "大学生 (daigakusei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_fukushuu",
@@ -1583,7 +1883,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_fukushuu.png",
-    "meaningEn": "review (of lessons)"
+    "meaningEn": "review (of lessons)",
+    "registersEn": {
+      "casual": "復習 (fukushuu)",
+      "formal": "復習 (fukushuu)",
+      "keigo": "復習 (fukushuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_honyaku",
@@ -1609,7 +1914,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_honyaku.png",
-    "meaningEn": "translation"
+    "meaningEn": "translation",
+    "registersEn": {
+      "casual": "翻訳 (honyaku)",
+      "formal": "翻訳 (honyaku)",
+      "keigo": "翻訳 (honyaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_igaku",
@@ -1635,7 +1945,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_igaku.png",
-    "meaningEn": "medicine (as a field)"
+    "meaningEn": "medicine (as a field)",
+    "registersEn": {
+      "casual": "医学 (igaku)",
+      "formal": "医学 (igaku)",
+      "keigo": "医学 (igaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kaiwa",
@@ -1661,7 +1976,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kaiwa.png",
-    "meaningEn": "conversation"
+    "meaningEn": "conversation",
+    "registersEn": {
+      "casual": "会話 (kaiwa)",
+      "formal": "会話 (kaiwa)",
+      "keigo": "会話 (kaiwa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kenkyuu",
@@ -1687,7 +2007,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kenkyuu.png",
-    "meaningEn": "research"
+    "meaningEn": "research",
+    "registersEn": {
+      "casual": "研究 (kenkyuu)",
+      "formal": "研究 (kenkyuu)",
+      "keigo": "研究 (kenkyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_kyouiku",
@@ -1713,7 +2038,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_kyouiku.png",
-    "meaningEn": "education"
+    "meaningEn": "education",
+    "registersEn": {
+      "casual": "教育 (kyouiku)",
+      "formal": "教育 (kyouiku)",
+      "keigo": "教育 (kyouiku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_nyuugaku",
@@ -1739,7 +2069,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_nyuugaku.png",
-    "meaningEn": "school enrollment"
+    "meaningEn": "school enrollment",
+    "registersEn": {
+      "casual": "入学 (nyuugaku)",
+      "formal": "入学 (nyuugaku)",
+      "keigo": "入学 (nyuugaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_sotsugyou",
@@ -1765,7 +2100,12 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_sotsugyou.png",
-    "meaningEn": "graduation"
+    "meaningEn": "graduation",
+    "registersEn": {
+      "casual": "卒業 (sotsugyou)",
+      "formal": "卒業 (sotsugyou)",
+      "keigo": "卒業 (sotsugyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_mata_pelajaran_yoshuu",
@@ -1791,6 +2131,11 @@
       }
     ],
     "imagePath": "kotoba_images/mata_pelajaran/kotoba_mata_pelajaran_yoshuu.png",
-    "meaningEn": "preparing before class"
+    "meaningEn": "preparing before class",
+    "registersEn": {
+      "casual": "予習 (yoshuu)",
+      "formal": "予習 (yoshuu)",
+      "keigo": "予習 (yoshuu) — no special keigo form for this noun"
+    }
   }
 ]

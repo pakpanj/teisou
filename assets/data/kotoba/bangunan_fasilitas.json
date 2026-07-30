@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_gakkou.png",
-    "meaningEn": "school"
+    "meaningEn": "school",
+    "registersEn": {
+      "casual": "学校 (gakkou)",
+      "formal": "学校 (gakkou)",
+      "keigo": "学校 (gakkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_ginkou",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ginkou.png",
-    "meaningEn": "bank"
+    "meaningEn": "bank",
+    "registersEn": {
+      "casual": "銀行 (ginkou)",
+      "formal": "銀行 (ginkou)",
+      "keigo": "銀行 (ginkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_yuubinkyoku",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yuubinkyoku.png",
-    "meaningEn": "post office"
+    "meaningEn": "post office",
+    "registersEn": {
+      "casual": "郵便局 (yuubinkyoku)",
+      "formal": "郵便局 (yuubinkyoku)",
+      "keigo": "郵便局 (yuubinkyoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_toshokan",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_toshokan.png",
-    "meaningEn": "library"
+    "meaningEn": "library",
+    "registersEn": {
+      "casual": "図書館 (toshokan)",
+      "formal": "図書館 (toshokan)",
+      "keigo": "図書館 (toshokan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kouen",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouen.png",
-    "meaningEn": "(public) park"
+    "meaningEn": "(public) park",
+    "registersEn": {
+      "casual": "公園 (kouen)",
+      "formal": "公園 (kouen)",
+      "keigo": "公園 (kouen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_suupaa",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_suupaa.png",
-    "meaningEn": "supermarket"
+    "meaningEn": "supermarket",
+    "registersEn": {
+      "casual": "スーパー (suupaa)",
+      "formal": "スーパー (suupaa)",
+      "keigo": "スーパー (suupaa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_depaato",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_depaato.png",
-    "meaningEn": "department store"
+    "meaningEn": "department store",
+    "registersEn": {
+      "casual": "デパート (depaato)",
+      "formal": "デパート (depaato)",
+      "keigo": "デパート (depaato) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_eki",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_eki.png",
-    "meaningEn": "station"
+    "meaningEn": "station",
+    "registersEn": {
+      "casual": "駅 (eki)",
+      "formal": "駅 (eki)",
+      "keigo": "駅 (eki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kuukou",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kuukou.png",
-    "meaningEn": "airport"
+    "meaningEn": "airport",
+    "registersEn": {
+      "casual": "空港 (kuukou)",
+      "formal": "空港 (kuukou)",
+      "keigo": "空港 (kuukou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_jinja",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jinja.png",
-    "meaningEn": "Shinto shrine"
+    "meaningEn": "Shinto shrine",
+    "registersEn": {
+      "casual": "神社 (jinja)",
+      "formal": "神社 (jinja)",
+      "keigo": "神社 (jinja) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_otera",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_otera.png",
-    "meaningEn": "Buddhist temple"
+    "meaningEn": "Buddhist temple",
+    "registersEn": {
+      "casual": "お寺 (otera)",
+      "formal": "お寺 (otera)",
+      "keigo": "お寺 (otera) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kensetsu",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kensetsu.png",
-    "meaningEn": "construction"
+    "meaningEn": "construction",
+    "registersEn": {
+      "casual": "建設 (kensetsu)",
+      "formal": "建設 (kensetsu)",
+      "keigo": "建設 (kensetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kaichiku",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaichiku.png",
-    "meaningEn": "building renovation"
+    "meaningEn": "building renovation",
+    "registersEn": {
+      "casual": "改築 (kaichiku)",
+      "formal": "改築 (kaichiku)",
+      "keigo": "改築 (kaichiku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_tekkyo",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tekkyo.png",
-    "meaningEn": "demolition/removal"
+    "meaningEn": "demolition/removal",
+    "registersEn": {
+      "casual": "撤去 (tekkyo)",
+      "formal": "撤去 (tekkyo)",
+      "keigo": "撤去 (tekkyo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_ritchi",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ritchi.png",
-    "meaningEn": "location (of a business)"
+    "meaningEn": "location (of a business)",
+    "registersEn": {
+      "casual": "立地 (ritchi)",
+      "formal": "立地 (ritchi)",
+      "keigo": "立地 (ritchi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kyoushitsu",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kyoushitsu.png",
-    "meaningEn": "classroom"
+    "meaningEn": "classroom",
+    "registersEn": {
+      "casual": "教室 (kyoushitsu)",
+      "formal": "教室 (kyoushitsu)",
+      "keigo": "教室 (kyoushitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_ryokan",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ryokan.png",
-    "meaningEn": "traditional Japanese inn"
+    "meaningEn": "traditional Japanese inn",
+    "registersEn": {
+      "casual": "旅館 (ryokan)",
+      "formal": "旅館 (ryokan)",
+      "keigo": "旅館 (ryokan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_ekimae",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ekimae.png",
-    "meaningEn": "in front of the station"
+    "meaningEn": "in front of the station",
+    "registersEn": {
+      "casual": "駅前 (ekimae)",
+      "formal": "駅前 (ekimae)",
+      "keigo": "駅前 (ekimae) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kouban",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouban.png",
-    "meaningEn": "police box"
+    "meaningEn": "police box",
+    "registersEn": {
+      "casual": "交番 (kouban)",
+      "formal": "交番 (kouban)",
+      "keigo": "交番 (kouban) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_doubutsuen",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_doubutsuen.png",
-    "meaningEn": "zoo"
+    "meaningEn": "zoo",
+    "registersEn": {
+      "casual": "動物園 (doubutsuen)",
+      "formal": "動物園 (doubutsuen)",
+      "keigo": "動物園 (doubutsuen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_bijutsukan",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_bijutsukan.png",
-    "meaningEn": "art museum/gallery"
+    "meaningEn": "art museum/gallery",
+    "registersEn": {
+      "casual": "美術館 (bijutsukan)",
+      "formal": "美術館 (bijutsukan)",
+      "keigo": "美術館 (bijutsukan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_hakubutsukan",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hakubutsukan.png",
-    "meaningEn": "museum"
+    "meaningEn": "museum",
+    "registersEn": {
+      "casual": "博物館 (hakubutsukan)",
+      "formal": "博物館 (hakubutsukan)",
+      "keigo": "博物館 (hakubutsukan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kissaten",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kissaten.png",
-    "meaningEn": "coffee shop/café"
+    "meaningEn": "coffee shop/café",
+    "registersEn": {
+      "casual": "喫茶店 (kissaten)",
+      "formal": "喫茶店 (kissaten)",
+      "keigo": "喫茶店 (kissaten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_taishikan",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_taishikan.png",
-    "meaningEn": "embassy"
+    "meaningEn": "embassy",
+    "registersEn": {
+      "casual": "大使館 (taishikan)",
+      "formal": "大使館 (taishikan)",
+      "keigo": "大使館 (taishikan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_saibansho",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_saibansho.png",
-    "meaningEn": "courthouse"
+    "meaningEn": "courthouse",
+    "registersEn": {
+      "casual": "裁判所 (saibansho)",
+      "formal": "裁判所 (saibansho)",
+      "keigo": "裁判所 (saibansho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_yakusho",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yakusho.png",
-    "meaningEn": "government office"
+    "meaningEn": "government office",
+    "registersEn": {
+      "casual": "役所 (yakusho)",
+      "formal": "役所 (yakusho)",
+      "keigo": "役所 (yakusho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_koujou2",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koujou2.png",
-    "meaningEn": "factory"
+    "meaningEn": "factory",
+    "registersEn": {
+      "casual": "工場 (koujou)",
+      "formal": "工場 (koujou)",
+      "keigo": "工場 (koujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_jimusho",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jimusho.png",
-    "meaningEn": "office"
+    "meaningEn": "office",
+    "registersEn": {
+      "casual": "事務所 (jimusho)",
+      "formal": "事務所 (jimusho)",
+      "keigo": "事務所 (jimusho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_onsen",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_onsen.png",
-    "meaningEn": "hot spring"
+    "meaningEn": "hot spring",
+    "registersEn": {
+      "casual": "温泉 (onsen)",
+      "formal": "温泉 (onsen)",
+      "keigo": "温泉 (onsen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kaijou",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaijou.png",
-    "meaningEn": "venue opening"
+    "meaningEn": "venue opening",
+    "registersEn": {
+      "casual": "開場 (kaijou)",
+      "formal": "開場 (kaijou)",
+      "keigo": "開場 (kaijou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kaiten",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaiten.png",
-    "meaningEn": "store opening"
+    "meaningEn": "store opening",
+    "registersEn": {
+      "casual": "開店 (kaiten)",
+      "formal": "開店 (kaiten)",
+      "keigo": "開店 (kaiten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kannai",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kannai.png",
-    "meaningEn": "inside the building"
+    "meaningEn": "inside the building",
+    "registersEn": {
+      "casual": "館内 (kannai)",
+      "formal": "館内 (kannai)",
+      "keigo": "館内 (kannai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kenchiku",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kenchiku.png",
-    "meaningEn": "architecture/construction"
+    "meaningEn": "architecture/construction",
+    "registersEn": {
+      "casual": "建築 (kenchiku)",
+      "formal": "建築 (kenchiku)",
+      "keigo": "建築 (kenchiku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kouji",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kouji.png",
-    "meaningEn": "construction project"
+    "meaningEn": "construction project",
+    "registersEn": {
+      "casual": "工事 (kouji)",
+      "formal": "工事 (kouji)",
+      "keigo": "工事 (kouji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_jitaku",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_jitaku.png",
-    "meaningEn": "one's own home"
+    "meaningEn": "one's own home",
+    "registersEn": {
+      "casual": "自宅 (jitaku)",
+      "formal": "自宅 (jitaku)",
+      "keigo": "自宅 (jitaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_setsubi",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_setsubi.png",
-    "meaningEn": "facilities/equipment"
+    "meaningEn": "facilities/equipment",
+    "registersEn": {
+      "casual": "設備 (setsubi)",
+      "formal": "設備 (setsubi)",
+      "keigo": "設備 (setsubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_souko",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_souko.png",
-    "meaningEn": "warehouse"
+    "meaningEn": "warehouse",
+    "registersEn": {
+      "casual": "倉庫 (souko)",
+      "formal": "倉庫 (souko)",
+      "keigo": "倉庫 (souko) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_tsuuro",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tsuuro.png",
-    "meaningEn": "passage/aisle"
+    "meaningEn": "passage/aisle",
+    "registersEn": {
+      "casual": "通路 (tsuuro)",
+      "formal": "通路 (tsuuro)",
+      "keigo": "通路 (tsuuro) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_teiin",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_teiin.png",
-    "meaningEn": "capacity (number of people)"
+    "meaningEn": "capacity (number of people)",
+    "registersEn": {
+      "casual": "定員 (teiin)",
+      "formal": "定員 (teiin)",
+      "keigo": "定員 (teiin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_tochi",
@@ -1037,7 +1232,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_tochi.png",
-    "meaningEn": "land"
+    "meaningEn": "land",
+    "registersEn": {
+      "casual": "土地 (tochi)",
+      "formal": "土地 (tochi)",
+      "keigo": "土地 (tochi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_baiten",
@@ -1063,7 +1263,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_baiten.png",
-    "meaningEn": "small stand/kiosk"
+    "meaningEn": "small stand/kiosk",
+    "registersEn": {
+      "casual": "売店 (baiten)",
+      "formal": "売店 (baiten)",
+      "keigo": "売店 (baiten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_madoguchi",
@@ -1089,7 +1294,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_madoguchi.png",
-    "meaningEn": "counter/window (service)"
+    "meaningEn": "counter/window (service)",
+    "registersEn": {
+      "casual": "窓口 (madoguchi)",
+      "formal": "窓口 (madoguchi)",
+      "keigo": "窓口 (madoguchi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_yachin",
@@ -1115,7 +1325,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yachin.png",
-    "meaningEn": "rent"
+    "meaningEn": "rent",
+    "registersEn": {
+      "casual": "家賃 (yachin)",
+      "formal": "家賃 (yachin)",
+      "keigo": "家賃 (yachin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_yuusou",
@@ -1141,7 +1356,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yuusou.png",
-    "meaningEn": "mailing/postal delivery"
+    "meaningEn": "mailing/postal delivery",
+    "registersEn": {
+      "casual": "郵送 (yuusou)",
+      "formal": "郵送 (yuusou)",
+      "keigo": "郵送 (yuusou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_shiyakusho",
@@ -1167,7 +1387,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shiyakusho.png",
-    "meaningEn": "city hall"
+    "meaningEn": "city hall",
+    "registersEn": {
+      "casual": "市役所 (shiyakusho)",
+      "formal": "市役所 (shiyakusho)",
+      "keigo": "市役所 (shiyakusho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_senmonten",
@@ -1193,7 +1418,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_senmonten.png",
-    "meaningEn": "specialty store"
+    "meaningEn": "specialty store",
+    "registersEn": {
+      "casual": "専門店 (senmonten)",
+      "formal": "専門店 (senmonten)",
+      "keigo": "専門店 (senmonten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_biyouin",
@@ -1219,7 +1449,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_biyouin.png",
-    "meaningEn": "beauty salon"
+    "meaningEn": "beauty salon",
+    "registersEn": {
+      "casual": "美容院 (biyouin)",
+      "formal": "美容院 (biyouin)",
+      "keigo": "美容院 (biyouin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_hoikuen",
@@ -1245,7 +1480,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hoikuen.png",
-    "meaningEn": "daycare center"
+    "meaningEn": "daycare center",
+    "registersEn": {
+      "casual": "保育園 (hoikuen)",
+      "formal": "保育園 (hoikuen)",
+      "keigo": "保育園 (hoikuen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_ichiba",
@@ -1271,7 +1511,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_ichiba.png",
-    "meaningEn": "market"
+    "meaningEn": "market",
+    "registersEn": {
+      "casual": "市場 (ichiba)",
+      "formal": "市場 (ichiba)",
+      "keigo": "市場 (ichiba) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_nyuujou",
@@ -1297,7 +1542,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_nyuujou.png",
-    "meaningEn": "admission/entry"
+    "meaningEn": "admission/entry",
+    "registersEn": {
+      "casual": "入場 (nyuujou)",
+      "formal": "入場 (nyuujou)",
+      "keigo": "入場 (nyuujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_heisa",
@@ -1323,7 +1573,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_heisa.png",
-    "meaningEn": "closure (of a place)"
+    "meaningEn": "closure (of a place)",
+    "registersEn": {
+      "casual": "閉鎖 (heisa)",
+      "formal": "閉鎖 (heisa)",
+      "keigo": "閉鎖 (heisa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_houtei",
@@ -1349,7 +1604,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_houtei.png",
-    "meaningEn": "courtroom"
+    "meaningEn": "courtroom",
+    "registersEn": {
+      "casual": "法廷 (houtei)",
+      "formal": "法廷 (houtei)",
+      "keigo": "法廷 (houtei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_deiriguchi",
@@ -1375,7 +1635,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_deiriguchi.png",
-    "meaningEn": "entrance/exit"
+    "meaningEn": "entrance/exit",
+    "registersEn": {
+      "casual": "出入口 (deiriguchi)",
+      "formal": "出入口 (deiriguchi)",
+      "keigo": "出入口 (deiriguchi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kaikan",
@@ -1401,7 +1666,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaikan.png",
-    "meaningEn": "meeting hall/community center"
+    "meaningEn": "meeting hall/community center",
+    "registersEn": {
+      "casual": "会館 (kaikan)",
+      "formal": "会館 (kaikan)",
+      "keigo": "会館 (kaikan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kousha",
@@ -1427,7 +1697,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kousha.png",
-    "meaningEn": "school building"
+    "meaningEn": "school building",
+    "registersEn": {
+      "casual": "校舎 (kousha)",
+      "formal": "校舎 (kousha)",
+      "keigo": "校舎 (kousha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_koutei",
@@ -1453,7 +1728,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koutei.png",
-    "meaningEn": "school yard"
+    "meaningEn": "school yard",
+    "registersEn": {
+      "casual": "校庭 (koutei)",
+      "formal": "校庭 (koutei)",
+      "keigo": "校庭 (koutei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_machiaishitsu",
@@ -1479,7 +1759,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_machiaishitsu.png",
-    "meaningEn": "waiting room"
+    "meaningEn": "waiting room",
+    "registersEn": {
+      "casual": "待合室 (machiaishitsu)",
+      "formal": "待合室 (machiaishitsu)",
+      "keigo": "待合室 (machiaishitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_miseya",
@@ -1505,7 +1790,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_miseya.png",
-    "meaningEn": "shop/store"
+    "meaningEn": "shop/store",
+    "registersEn": {
+      "casual": "店屋 (miseya)",
+      "formal": "店屋 (miseya)",
+      "keigo": "店屋 (miseya) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_shoten",
@@ -1531,7 +1821,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shoten.png",
-    "meaningEn": "bookstore"
+    "meaningEn": "bookstore",
+    "registersEn": {
+      "casual": "書店 (shoten)",
+      "formal": "書店 (shoten)",
+      "keigo": "書店 (shoten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_shouten",
@@ -1557,7 +1852,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shouten.png",
-    "meaningEn": "shop/store"
+    "meaningEn": "shop/store",
+    "registersEn": {
+      "casual": "商店 (shouten)",
+      "formal": "商店 (shouten)",
+      "keigo": "商店 (shouten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_sokutatsu",
@@ -1583,7 +1883,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_sokutatsu.png",
-    "meaningEn": "express mail"
+    "meaningEn": "express mail",
+    "registersEn": {
+      "casual": "速達 (sokutatsu)",
+      "formal": "速達 (sokutatsu)",
+      "keigo": "速達 (sokutatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_annai",
@@ -1609,7 +1914,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_annai.png",
-    "meaningEn": "guidance/information"
+    "meaningEn": "guidance/information",
+    "registersEn": {
+      "casual": "案内 (annai)",
+      "formal": "案内 (annai)",
+      "keigo": "案内 (annai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_chuugakkou",
@@ -1635,7 +1945,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_chuugakkou.png",
-    "meaningEn": "junior high school"
+    "meaningEn": "junior high school",
+    "registersEn": {
+      "casual": "中学校 (chuugakkou)",
+      "formal": "中学校 (chuugakkou)",
+      "keigo": "中学校 (chuugakkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_chuushajou",
@@ -1661,7 +1976,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_chuushajou.png",
-    "meaningEn": "parking lot"
+    "meaningEn": "parking lot",
+    "registersEn": {
+      "casual": "駐車場 (chuushajou)",
+      "formal": "駐車場 (chuushajou)",
+      "keigo": "駐車場 (chuushajou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_hikoujou",
@@ -1687,7 +2007,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_hikoujou.png",
-    "meaningEn": "airfield/airport"
+    "meaningEn": "airfield/airport",
+    "registersEn": {
+      "casual": "飛行場 (hikoujou)",
+      "formal": "飛行場 (hikoujou)",
+      "keigo": "飛行場 (hikoujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kaigishitsu",
@@ -1713,7 +2038,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kaigishitsu.png",
-    "meaningEn": "meeting room"
+    "meaningEn": "meeting room",
+    "registersEn": {
+      "casual": "会議室 (kaigishitsu)",
+      "formal": "会議室 (kaigishitsu)",
+      "keigo": "会議室 (kaigishitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_kenkyuushitsu",
@@ -1739,7 +2069,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_kenkyuushitsu.png",
-    "meaningEn": "research room/lab"
+    "meaningEn": "research room/lab",
+    "registersEn": {
+      "casual": "研究室 (kenkyuushitsu)",
+      "formal": "研究室 (kenkyuushitsu)",
+      "keigo": "研究室 (kenkyuushitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_koudou",
@@ -1765,7 +2100,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koudou.png",
-    "meaningEn": "auditorium/hall"
+    "meaningEn": "auditorium/hall",
+    "registersEn": {
+      "casual": "講堂 (koudou)",
+      "formal": "講堂 (koudou)",
+      "keigo": "講堂 (koudou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_koukou",
@@ -1791,7 +2131,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_koukou.png",
-    "meaningEn": "high school"
+    "meaningEn": "high school",
+    "registersEn": {
+      "casual": "高校 (koukou)",
+      "formal": "高校 (koukou)",
+      "keigo": "高校 (koukou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_okujou",
@@ -1817,7 +2162,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_okujou.png",
-    "meaningEn": "rooftop"
+    "meaningEn": "rooftop",
+    "registersEn": {
+      "casual": "屋上 (okujou)",
+      "formal": "屋上 (okujou)",
+      "keigo": "屋上 (okujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_shougakkou",
@@ -1843,7 +2193,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_shougakkou.png",
-    "meaningEn": "elementary school"
+    "meaningEn": "elementary school",
+    "registersEn": {
+      "casual": "小学校 (shougakkou)",
+      "formal": "小学校 (shougakkou)",
+      "keigo": "小学校 (shougakkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_uketsuke",
@@ -1869,7 +2224,12 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_uketsuke.png",
-    "meaningEn": "reception (desk)"
+    "meaningEn": "reception (desk)",
+    "registersEn": {
+      "casual": "受付 (uketsuke)",
+      "formal": "受付 (uketsuke)",
+      "keigo": "受付 (uketsuke) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bangunan_fasilitas_yoyaku",
@@ -1895,6 +2255,11 @@
       }
     ],
     "imagePath": "kotoba_images/bangunan_fasilitas/kotoba_bangunan_fasilitas_yoyaku.png",
-    "meaningEn": "reservation"
+    "meaningEn": "reservation",
+    "registersEn": {
+      "casual": "予約 (yoyaku)",
+      "formal": "予約 (yoyaku)",
+      "keigo": "予約 (yoyaku) — no special keigo form for this noun"
+    }
   }
 ]

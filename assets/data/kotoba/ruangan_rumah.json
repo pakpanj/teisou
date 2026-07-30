@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_heya.png",
-    "meaningEn": "room"
+    "meaningEn": "room",
+    "registersEn": {
+      "casual": "部屋 (heya)",
+      "formal": "部屋 (heya)",
+      "keigo": "部屋 (heya) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_genkan",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_genkan.png",
-    "meaningEn": "entryway (shoe-removal area)"
+    "meaningEn": "entryway (shoe-removal area)",
+    "registersEn": {
+      "casual": "玄関 (genkan)",
+      "formal": "玄関 (genkan)",
+      "keigo": "玄関 (genkan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_daidokoro",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_daidokoro.png",
-    "meaningEn": "kitchen"
+    "meaningEn": "kitchen",
+    "registersEn": {
+      "casual": "台所 (daidokoro)",
+      "formal": "台所 (daidokoro)",
+      "keigo": "台所 (daidokoro) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_ima",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_ima.png",
-    "meaningEn": "living room"
+    "meaningEn": "living room",
+    "registersEn": {
+      "casual": "居間 (ima)",
+      "formal": "居間 (ima)",
+      "keigo": "居間 (ima) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_shinshitsu",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shinshitsu.png",
-    "meaningEn": "bedroom"
+    "meaningEn": "bedroom",
+    "registersEn": {
+      "casual": "寝室 (shinshitsu)",
+      "formal": "寝室 (shinshitsu)",
+      "keigo": "寝室 (shinshitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_toire",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_toire.png",
-    "meaningEn": "toilet"
+    "meaningEn": "toilet",
+    "registersEn": {
+      "casual": "トイレ (toire)",
+      "formal": "トイレ (toire)",
+      "keigo": "トイレ (toire) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_ofuro",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_ofuro.png",
-    "meaningEn": "bath(tub)"
+    "meaningEn": "bath(tub)",
+    "registersEn": {
+      "casual": "お風呂 (ofuro)",
+      "formal": "お風呂 (ofuro)",
+      "keigo": "お風呂 (ofuro) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_yokushitsu",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_yokushitsu.png",
-    "meaningEn": "bathroom (formal)"
+    "meaningEn": "bathroom (formal)",
+    "registersEn": {
+      "casual": "浴室 (yokushitsu)",
+      "formal": "浴室 (yokushitsu)",
+      "keigo": "浴室 (yokushitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_beranda",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_beranda.png",
-    "meaningEn": "balcony/veranda"
+    "meaningEn": "balcony/veranda",
+    "registersEn": {
+      "casual": "ベランダ (beranda)",
+      "formal": "ベランダ (beranda)",
+      "keigo": "ベランダ (beranda) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_kaidan",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_kaidan.png",
-    "meaningEn": "stairs"
+    "meaningEn": "stairs",
+    "registersEn": {
+      "casual": "階段 (kaidan)",
+      "formal": "階段 (kaidan)",
+      "keigo": "階段 (kaidan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_niwa",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_niwa.png",
-    "meaningEn": "yard/garden"
+    "meaningEn": "yard/garden",
+    "registersEn": {
+      "casual": "庭 (niwa)",
+      "formal": "庭 (niwa)",
+      "keigo": "庭 (niwa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_senmenjo",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_senmenjo.png",
-    "meaningEn": "washroom/washstand"
+    "meaningEn": "washroom/washstand",
+    "registersEn": {
+      "casual": "洗面所 (senmenjo)",
+      "formal": "洗面所 (senmenjo)",
+      "keigo": "洗面所 (senmenjo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_shako",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shako.png",
-    "meaningEn": "garage"
+    "meaningEn": "garage",
+    "registersEn": {
+      "casual": "車庫 (shako)",
+      "formal": "車庫 (shako)",
+      "keigo": "車庫 (shako) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_kadan",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_kadan.png",
-    "meaningEn": "flower bed"
+    "meaningEn": "flower bed",
+    "registersEn": {
+      "casual": "花壇 (kadan)",
+      "formal": "花壇 (kadan)",
+      "keigo": "花壇 (kadan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_tenjou",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_tenjou.png",
-    "meaningEn": "ceiling"
+    "meaningEn": "ceiling",
+    "registersEn": {
+      "casual": "天井 (tenjou)",
+      "formal": "天井 (tenjou)",
+      "keigo": "天井 (tenjou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_yane",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_yane.png",
-    "meaningEn": "roof"
+    "meaningEn": "roof",
+    "registersEn": {
+      "casual": "屋根 (yane)",
+      "formal": "屋根 (yane)",
+      "keigo": "屋根 (yane) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_rouka",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_rouka.png",
-    "meaningEn": "hallway/corridor"
+    "meaningEn": "hallway/corridor",
+    "registersEn": {
+      "casual": "廊下 (rouka)",
+      "formal": "廊下 (rouka)",
+      "keigo": "廊下 (rouka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_shosai",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_shosai.png",
-    "meaningEn": "study/home office"
+    "meaningEn": "study/home office",
+    "registersEn": {
+      "casual": "書斎 (shosai)",
+      "formal": "書斎 (shosai)",
+      "keigo": "書斎 (shosai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_geshuku",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_geshuku.png",
-    "meaningEn": "boarding house/lodging"
+    "meaningEn": "boarding house/lodging",
+    "registersEn": {
+      "casual": "下宿 (geshuku)",
+      "formal": "下宿 (geshuku)",
+      "keigo": "下宿 (geshuku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ruangan_rumah_suidou",
@@ -517,6 +612,11 @@
       }
     ],
     "imagePath": "kotoba_images/ruangan_rumah/kotoba_ruangan_rumah_suidou.png",
-    "meaningEn": "water supply/plumbing"
+    "meaningEn": "water supply/plumbing",
+    "registersEn": {
+      "casual": "水道 (suidou)",
+      "formal": "水道 (suidou)",
+      "keigo": "水道 (suidou) — no special keigo form for this noun"
+    }
   }
 ]

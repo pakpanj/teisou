@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_akai.png",
-    "meaningEn": "red"
+    "meaningEn": "red",
+    "registersEn": {
+      "casual": "赤い (akai)",
+      "formal": "赤いです (akai desu)",
+      "keigo": "赤い (akai) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_warna_aoi",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_aoi.png",
-    "meaningEn": "blue"
+    "meaningEn": "blue",
+    "registersEn": {
+      "casual": "青い (aoi)",
+      "formal": "青いです (aoi desu)",
+      "keigo": "青い (aoi) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_warna_kiiroi",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_kiiroi.png",
-    "meaningEn": "yellow"
+    "meaningEn": "yellow",
+    "registersEn": {
+      "casual": "黄色い (kiiroi)",
+      "formal": "黄色いです (kiiroi desu)",
+      "keigo": "黄色い (kiiroi) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_warna_midori",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_midori.png",
-    "meaningEn": "green"
+    "meaningEn": "green",
+    "registersEn": {
+      "casual": "緑 (midori)",
+      "formal": "緑です (midori desu)",
+      "keigo": "緑 (midori) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_warna_shiroi",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_shiroi.png",
-    "meaningEn": "white"
+    "meaningEn": "white",
+    "registersEn": {
+      "casual": "白い (shiroi)",
+      "formal": "白いです (shiroi desu)",
+      "keigo": "白い (shiroi) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_warna_kuroi",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_kuroi.png",
-    "meaningEn": "black"
+    "meaningEn": "black",
+    "registersEn": {
+      "casual": "黒い (kuroi)",
+      "formal": "黒いです (kuroi desu)",
+      "keigo": "黒い (kuroi) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_warna_chairo",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_chairo.png",
-    "meaningEn": "brown"
+    "meaningEn": "brown",
+    "registersEn": {
+      "casual": "茶色 (chairo)",
+      "formal": "茶色です (chairo desu)",
+      "keigo": "茶色 (chairo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_warna_murasaki",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_murasaki.png",
-    "meaningEn": "purple"
+    "meaningEn": "purple",
+    "registersEn": {
+      "casual": "紫 (murasaki)",
+      "formal": "紫です (murasaki desu)",
+      "keigo": "紫 (murasaki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_warna_pinku",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_pinku.png",
-    "meaningEn": "pink"
+    "meaningEn": "pink",
+    "registersEn": {
+      "casual": "ピンク (pinku)",
+      "formal": "ピンクです (pinku desu)",
+      "keigo": "ピンク (pinku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_warna_orenji",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_orenji.png",
-    "meaningEn": "orange"
+    "meaningEn": "orange",
+    "registersEn": {
+      "casual": "オレンジ (orenji)",
+      "formal": "オレンジです (orenji desu)",
+      "keigo": "オレンジ (orenji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_warna_haiiro",
@@ -283,6 +333,11 @@
       }
     ],
     "imagePath": "kotoba_images/warna/kotoba_warna_haiiro.png",
-    "meaningEn": "gray"
+    "meaningEn": "gray",
+    "registersEn": {
+      "casual": "灰色 (haiiro)",
+      "formal": "灰色です (haiiro desu)",
+      "keigo": "灰色 (haiiro) — no special keigo form for this noun"
+    }
   }
 ]

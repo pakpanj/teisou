@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_enpitsu.png",
-    "meaningEn": "pencil"
+    "meaningEn": "pencil",
+    "registersEn": {
+      "casual": "鉛筆 (enpitsu)",
+      "formal": "鉛筆 (enpitsu)",
+      "keigo": "鉛筆 (enpitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_keshigomu",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_keshigomu.png",
-    "meaningEn": "eraser"
+    "meaningEn": "eraser",
+    "registersEn": {
+      "casual": "けしゴム (keshigomu)",
+      "formal": "けしゴム (keshigomu)",
+      "keigo": "けしゴム (keshigomu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_nooto",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_nooto.png",
-    "meaningEn": "notebook"
+    "meaningEn": "notebook",
+    "registersEn": {
+      "casual": "ノート (nooto)",
+      "formal": "ノート (nooto)",
+      "keigo": "ノート (nooto) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_hon",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_hon.png",
-    "meaningEn": "book"
+    "meaningEn": "book",
+    "registersEn": {
+      "casual": "本 (hon)",
+      "formal": "本 (hon)",
+      "keigo": "本 (hon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_kaban",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_kaban.png",
-    "meaningEn": "school bag"
+    "meaningEn": "school bag",
+    "registersEn": {
+      "casual": "鞄 (kaban)",
+      "formal": "鞄 (kaban)",
+      "keigo": "鞄 (kaban) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_hasami",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_hasami.png",
-    "meaningEn": "scissors"
+    "meaningEn": "scissors",
+    "registersEn": {
+      "casual": "はさみ (hasami)",
+      "formal": "はさみ (hasami)",
+      "keigo": "はさみ (hasami) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_nori",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_nori.png",
-    "meaningEn": "glue"
+    "meaningEn": "glue",
+    "registersEn": {
+      "casual": "のり (nori)",
+      "formal": "のり (nori)",
+      "keigo": "のり (nori) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_jougi",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_jougi.png",
-    "meaningEn": "ruler"
+    "meaningEn": "ruler",
+    "registersEn": {
+      "casual": "定規 (jougi)",
+      "formal": "定規 (jougi)",
+      "keigo": "定規 (jougi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_pen",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_pen.png",
-    "meaningEn": "pen"
+    "meaningEn": "pen",
+    "registersEn": {
+      "casual": "ペン (pen)",
+      "formal": "ペン (pen)",
+      "keigo": "ペン (pen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_fude",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_fude.png",
-    "meaningEn": "(calligraphy) brush"
+    "meaningEn": "(calligraphy) brush",
+    "registersEn": {
+      "casual": "筆 (fude)",
+      "formal": "筆 (fude)",
+      "keigo": "筆 (fude) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_kokuban",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_kokuban.png",
-    "meaningEn": "blackboard"
+    "meaningEn": "blackboard",
+    "registersEn": {
+      "casual": "黒板 (kokuban)",
+      "formal": "黒板 (kokuban)",
+      "keigo": "黒板 (kokuban) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_kyoukasho",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_kyoukasho.png",
-    "meaningEn": "textbook"
+    "meaningEn": "textbook",
+    "registersEn": {
+      "casual": "教科書 (kyoukasho)",
+      "formal": "教科書 (kyoukasho)",
+      "keigo": "教科書 (kyoukasho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_jisho",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_jisho.png",
-    "meaningEn": "dictionary"
+    "meaningEn": "dictionary",
+    "registersEn": {
+      "casual": "辞書 (jisho)",
+      "formal": "辞書 (jisho)",
+      "keigo": "辞書 (jisho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_shukudai",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_shukudai.png",
-    "meaningEn": "homework"
+    "meaningEn": "homework",
+    "registersEn": {
+      "casual": "宿題 (shukudai)",
+      "formal": "宿題 (shukudai)",
+      "keigo": "宿題 (shukudai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_kanji",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_kanji.png",
-    "meaningEn": "kanji character"
+    "meaningEn": "kanji character",
+    "registersEn": {
+      "casual": "漢字 (kanji)",
+      "formal": "漢字 (kanji)",
+      "keigo": "漢字 (kanji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_techou",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_techou.png",
-    "meaningEn": "notebook/planner"
+    "meaningEn": "notebook/planner",
+    "registersEn": {
+      "casual": "手帳 (techou)",
+      "formal": "手帳 (techou)",
+      "keigo": "手帳 (techou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_hyoushi",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_hyoushi.png",
-    "meaningEn": "(book) cover"
+    "meaningEn": "(book) cover",
+    "registersEn": {
+      "casual": "表紙 (hyoushi)",
+      "formal": "表紙 (hyoushi)",
+      "keigo": "表紙 (hyoushi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_youshi",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_youshi.png",
-    "meaningEn": "form paper"
+    "meaningEn": "form paper",
+    "registersEn": {
+      "casual": "用紙 (youshi)",
+      "formal": "用紙 (youshi)",
+      "keigo": "用紙 (youshi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_shomotsu",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_shomotsu.png",
-    "meaningEn": "book (formal term)"
+    "meaningEn": "book (formal term)",
+    "registersEn": {
+      "casual": "書物 (shomotsu)",
+      "formal": "書物 (shomotsu)",
+      "keigo": "書物 (shomotsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_tosho",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_tosho.png",
-    "meaningEn": "books (collection, formal term)"
+    "meaningEn": "books (collection, formal term)",
+    "registersEn": {
+      "casual": "図書 (tosho)",
+      "formal": "図書 (tosho)",
+      "keigo": "図書 (tosho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_alat_tulis_sekolah_jiten",
@@ -543,6 +643,11 @@
       }
     ],
     "imagePath": "kotoba_images/alat_tulis_sekolah/kotoba_alat_tulis_sekolah_jiten.png",
-    "meaningEn": "dictionary"
+    "meaningEn": "dictionary",
+    "registersEn": {
+      "casual": "辞典 (jiten)",
+      "formal": "辞典 (jiten)",
+      "keigo": "辞典 (jiten) — no special keigo form for this noun"
+    }
   }
 ]

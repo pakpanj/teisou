@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/musim/kotoba_musim_haru.png",
-    "meaningEn": "spring"
+    "meaningEn": "spring",
+    "registersEn": {
+      "casual": "春 (haru)",
+      "formal": "春 (haru)",
+      "keigo": "春 (haru) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_musim_natsu",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/musim/kotoba_musim_natsu.png",
-    "meaningEn": "summer"
+    "meaningEn": "summer",
+    "registersEn": {
+      "casual": "夏 (natsu)",
+      "formal": "夏 (natsu)",
+      "keigo": "夏 (natsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_musim_aki",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/musim/kotoba_musim_aki.png",
-    "meaningEn": "autumn/fall"
+    "meaningEn": "autumn/fall",
+    "registersEn": {
+      "casual": "秋 (aki)",
+      "formal": "秋 (aki)",
+      "keigo": "秋 (aki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_musim_fuyu",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/musim/kotoba_musim_fuyu.png",
-    "meaningEn": "winter"
+    "meaningEn": "winter",
+    "registersEn": {
+      "casual": "冬 (fuyu)",
+      "formal": "冬 (fuyu)",
+      "keigo": "冬 (fuyu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_musim_kisetsu",
@@ -127,6 +147,11 @@
       }
     ],
     "imagePath": "kotoba_images/musim/kotoba_musim_kisetsu.png",
-    "meaningEn": "season (general term)"
+    "meaningEn": "season (general term)",
+    "registersEn": {
+      "casual": "季節 (kisetsu)",
+      "formal": "季節 (kisetsu)",
+      "keigo": "季節 (kisetsu) — no special keigo form for this noun"
+    }
   }
 ]

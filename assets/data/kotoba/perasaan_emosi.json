@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_ureshii.png",
-    "meaningEn": "happy/glad"
+    "meaningEn": "happy/glad",
+    "registersEn": {
+      "casual": "嬉しい (ureshii)",
+      "formal": "嬉しいです (ureshii desu)",
+      "keigo": "嬉しい (ureshii) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kanashii",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kanashii.png",
-    "meaningEn": "sad"
+    "meaningEn": "sad",
+    "registersEn": {
+      "casual": "悲しい (kanashii)",
+      "formal": "悲しいです (kanashii desu)",
+      "keigo": "悲しい (kanashii) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_tanoshii",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_tanoshii.png",
-    "meaningEn": "fun/enjoyable"
+    "meaningEn": "fun/enjoyable",
+    "registersEn": {
+      "casual": "楽しい (tanoshii)",
+      "formal": "楽しいです (tanoshii desu)",
+      "keigo": "楽しい (tanoshii) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_okoru",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_okoru.png",
-    "meaningEn": "to get angry"
+    "meaningEn": "to get angry",
+    "registersEn": {
+      "casual": "怒る (okoru)",
+      "formal": "怒ります (okorimasu)",
+      "keigo": "怒る (okoru) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kowai",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kowai.png",
-    "meaningEn": "scary/afraid"
+    "meaningEn": "scary/afraid",
+    "registersEn": {
+      "casual": "怖い (kowai)",
+      "formal": "怖いです (kowai desu)",
+      "keigo": "怖い (kowai) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_shinpai",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_shinpai.png",
-    "meaningEn": "worried/anxious"
+    "meaningEn": "worried/anxious",
+    "registersEn": {
+      "casual": "心配 (shinpai)",
+      "formal": "心配です (shinpai desu)",
+      "keigo": "心配 (shinpai) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_bikkuri",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_bikkuri.png",
-    "meaningEn": "surprised"
+    "meaningEn": "surprised",
+    "registersEn": {
+      "casual": "びっくりする (bikkuri suru)",
+      "formal": "びっくりします (bikkuri shimasu)",
+      "keigo": "びっくりする (bikkuri suru) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_sabishii",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_sabishii.png",
-    "meaningEn": "lonely"
+    "meaningEn": "lonely",
+    "registersEn": {
+      "casual": "寂しい (sabishii)",
+      "formal": "寂しいです (sabishii desu)",
+      "keigo": "寂しい (sabishii) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_hazukashii",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_hazukashii.png",
-    "meaningEn": "embarrassed"
+    "meaningEn": "embarrassed",
+    "registersEn": {
+      "casual": "恥ずかしい (hazukashii)",
+      "formal": "恥ずかしいです (hazukashii desu)",
+      "keigo": "恥ずかしい (hazukashii) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_anshin",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_anshin.png",
-    "meaningEn": "relieved/at ease"
+    "meaningEn": "relieved/at ease",
+    "registersEn": {
+      "casual": "安心する (anshin suru)",
+      "formal": "安心します (anshin shimasu)",
+      "keigo": "安心する (anshin suru) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_ando",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_ando.png",
-    "meaningEn": "relief (formal)"
+    "meaningEn": "relief (formal)",
+    "registersEn": {
+      "casual": "安堵 (ando)",
+      "formal": "安堵 (ando)",
+      "keigo": "安堵 (ando) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_douyou",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_douyou.png",
-    "meaningEn": "agitation/shock"
+    "meaningEn": "agitation/shock",
+    "registersEn": {
+      "casual": "動揺 (douyou)",
+      "formal": "動揺 (douyou)",
+      "keigo": "動揺 (douyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_rakutan",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_rakutan.png",
-    "meaningEn": "disappointment/dejection"
+    "meaningEn": "disappointment/dejection",
+    "registersEn": {
+      "casual": "落胆 (rakutan)",
+      "formal": "落胆 (rakutan)",
+      "keigo": "落胆 (rakutan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_yuuutsu",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_yuuutsu.png",
-    "meaningEn": "gloomy/melancholy"
+    "meaningEn": "gloomy/melancholy",
+    "registersEn": {
+      "casual": "憂鬱 (yuuutsu)",
+      "formal": "憂鬱 (yuuutsu)",
+      "keigo": "憂鬱 (yuuutsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kanki",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kanki.png",
-    "meaningEn": "great joy/elation"
+    "meaningEn": "great joy/elation",
+    "registersEn": {
+      "casual": "歓喜 (kanki)",
+      "formal": "歓喜 (kanki)",
+      "keigo": "歓喜 (kanki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kinchou",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kinchou.png",
-    "meaningEn": "nervous/tense"
+    "meaningEn": "nervous/tense",
+    "registersEn": {
+      "casual": "緊張 (kinchou)",
+      "formal": "緊張 (kinchou)",
+      "keigo": "緊張 (kinchou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_koufun",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_koufun.png",
-    "meaningEn": "excitement"
+    "meaningEn": "excitement",
+    "registersEn": {
+      "casual": "興奮 (koufun)",
+      "formal": "興奮 (koufun)",
+      "keigo": "興奮 (koufun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_inshou",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_inshou.png",
-    "meaningEn": "impression"
+    "meaningEn": "impression",
+    "registersEn": {
+      "casual": "印象 (inshou)",
+      "formal": "印象 (inshou)",
+      "keigo": "印象 (inshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kangeki",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kangeki.png",
-    "meaningEn": "being deeply moved"
+    "meaningEn": "being deeply moved",
+    "registersEn": {
+      "casual": "感激 (kangeki)",
+      "formal": "感激 (kangeki)",
+      "keigo": "感激 (kangeki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kanshin",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kanshin.png",
-    "meaningEn": "admiration"
+    "meaningEn": "admiration",
+    "registersEn": {
+      "casual": "感心 (kanshin)",
+      "formal": "感心 (kanshin)",
+      "keigo": "感心 (kanshin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kansou",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kansou.png",
-    "meaningEn": "impression/thoughts"
+    "meaningEn": "impression/thoughts",
+    "registersEn": {
+      "casual": "感想 (kansou)",
+      "formal": "感想 (kansou)",
+      "keigo": "感想 (kansou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kandou",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kandou.png",
-    "meaningEn": "being deeply moved/touched"
+    "meaningEn": "being deeply moved/touched",
+    "registersEn": {
+      "casual": "感動 (kandou)",
+      "formal": "感動 (kandou)",
+      "keigo": "感動 (kandou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_gaman",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_gaman.png",
-    "meaningEn": "patience/endurance"
+    "meaningEn": "patience/endurance",
+    "registersEn": {
+      "casual": "我慢 (gaman)",
+      "formal": "我慢 (gaman)",
+      "keigo": "我慢 (gaman) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kurou",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kurou.png",
-    "meaningEn": "hardship/hard work"
+    "meaningEn": "hardship/hard work",
+    "registersEn": {
+      "casual": "苦労 (kurou)",
+      "formal": "苦労 (kurou)",
+      "keigo": "苦労 (kurou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_jishin",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_jishin.png",
-    "meaningEn": "self-confidence"
+    "meaningEn": "self-confidence",
+    "registersEn": {
+      "casual": "自信 (jishin)",
+      "formal": "自信 (jishin)",
+      "keigo": "自信 (jishin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_jiman",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_jiman.png",
-    "meaningEn": "pride/boasting"
+    "meaningEn": "pride/boasting",
+    "registersEn": {
+      "casual": "自慢 (jiman)",
+      "formal": "自慢 (jiman)",
+      "keigo": "自慢 (jiman) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_sonkei",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_sonkei.png",
-    "meaningEn": "respect"
+    "meaningEn": "respect",
+    "registersEn": {
+      "casual": "尊敬 (sonkei)",
+      "formal": "尊敬 (sonkei)",
+      "keigo": "尊敬 (sonkei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_nattoku",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_nattoku.png",
-    "meaningEn": "understanding/being convinced"
+    "meaningEn": "understanding/being convinced",
+    "registersEn": {
+      "casual": "納得 (nattoku)",
+      "formal": "納得 (nattoku)",
+      "keigo": "納得 (nattoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_monku",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_monku.png",
-    "meaningEn": "complaint"
+    "meaningEn": "complaint",
+    "registersEn": {
+      "casual": "文句 (monku)",
+      "formal": "文句 (monku)",
+      "keigo": "文句 (monku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_aijou",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_aijou.png",
-    "meaningEn": "affection/love"
+    "meaningEn": "affection/love",
+    "registersEn": {
+      "casual": "愛情 (aijou)",
+      "formal": "愛情 (aijou)",
+      "keigo": "愛情 (aijou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_aichaku",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_aichaku.png",
-    "meaningEn": "attachment (emotional)"
+    "meaningEn": "attachment (emotional)",
+    "registersEn": {
+      "casual": "愛着 (aichaku)",
+      "formal": "愛着 (aichaku)",
+      "keigo": "愛着 (aichaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_akui",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_akui.png",
-    "meaningEn": "malice/ill will"
+    "meaningEn": "malice/ill will",
+    "registersEn": {
+      "casual": "悪意 (akui)",
+      "formal": "悪意 (akui)",
+      "keigo": "悪意 (akui) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_ishi",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_ishi.png",
-    "meaningEn": "will/determination"
+    "meaningEn": "will/determination",
+    "registersEn": {
+      "casual": "意志 (ishi)",
+      "formal": "意志 (ishi)",
+      "keigo": "意志 (ishi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_miryoku",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_miryoku.png",
-    "meaningEn": "charm/appeal"
+    "meaningEn": "charm/appeal",
+    "registersEn": {
+      "casual": "魅力 (miryoku)",
+      "formal": "魅力 (miryoku)",
+      "keigo": "魅力 (miryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_nesshin",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_nesshin.png",
-    "meaningEn": "enthusiasm/eagerness"
+    "meaningEn": "enthusiasm/eagerness",
+    "registersEn": {
+      "casual": "熱心 (nesshin)",
+      "formal": "熱心 (nesshin)",
+      "keigo": "熱心 (nesshin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_shigeki",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_shigeki.png",
-    "meaningEn": "stimulus"
+    "meaningEn": "stimulus",
+    "registersEn": {
+      "casual": "刺激 (shigeki)",
+      "formal": "刺激 (shigeki)",
+      "keigo": "刺激 (shigeki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_waruguchi",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_waruguchi.png",
-    "meaningEn": "badmouthing/gossip"
+    "meaningEn": "badmouthing/gossip",
+    "registersEn": {
+      "casual": "悪口 (waruguchi)",
+      "formal": "悪口 (waruguchi)",
+      "keigo": "悪口 (waruguchi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_binkan",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_binkan.png",
-    "meaningEn": "sensitive"
+    "meaningEn": "sensitive",
+    "registersEn": {
+      "casual": "敏感 (binkan)",
+      "formal": "敏感 (binkan)",
+      "keigo": "敏感 (binkan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_bujoku",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_bujoku.png",
-    "meaningEn": "insult"
+    "meaningEn": "insult",
+    "registersEn": {
+      "casual": "侮辱 (bujoku)",
+      "formal": "侮辱 (bujoku)",
+      "keigo": "侮辱 (bujoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_burei",
@@ -1037,7 +1232,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_burei.png",
-    "meaningEn": "rudeness"
+    "meaningEn": "rudeness",
+    "registersEn": {
+      "casual": "無礼 (burei)",
+      "formal": "無礼 (burei)",
+      "keigo": "無礼 (burei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_daitan",
@@ -1063,7 +1263,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_daitan.png",
-    "meaningEn": "bold/daring"
+    "meaningEn": "bold/daring",
+    "registersEn": {
+      "casual": "大胆 (daitan)",
+      "formal": "大胆 (daitan)",
+      "keigo": "大胆 (daitan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_dokyou",
@@ -1089,7 +1294,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_dokyou.png",
-    "meaningEn": "courage/guts"
+    "meaningEn": "courage/guts",
+    "registersEn": {
+      "casual": "度胸 (dokyou)",
+      "formal": "度胸 (dokyou)",
+      "keigo": "度胸 (dokyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_doujou",
@@ -1115,7 +1325,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_doujou.png",
-    "meaningEn": "sympathy"
+    "meaningEn": "sympathy",
+    "registersEn": {
+      "casual": "同情 (doujou)",
+      "formal": "同情 (doujou)",
+      "keigo": "同情 (doujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_fukushuu",
@@ -1141,7 +1356,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_fukushuu.png",
-    "meaningEn": "revenge"
+    "meaningEn": "revenge",
+    "registersEn": {
+      "casual": "復讐 (fukushuu)",
+      "formal": "復讐 (fukushuu)",
+      "keigo": "復讐 (fukushuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_hairyo",
@@ -1167,7 +1387,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_hairyo.png",
-    "meaningEn": "consideration"
+    "meaningEn": "consideration",
+    "registersEn": {
+      "casual": "配慮 (hairyo)",
+      "formal": "配慮 (hairyo)",
+      "keigo": "配慮 (hairyo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_henken",
@@ -1193,7 +1418,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_henken.png",
-    "meaningEn": "prejudice"
+    "meaningEn": "prejudice",
+    "registersEn": {
+      "casual": "偏見 (henken)",
+      "formal": "偏見 (henken)",
+      "keigo": "偏見 (henken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_himei",
@@ -1219,7 +1449,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_himei.png",
-    "meaningEn": "scream"
+    "meaningEn": "scream",
+    "registersEn": {
+      "casual": "悲鳴 (himei)",
+      "formal": "悲鳴 (himei)",
+      "keigo": "悲鳴 (himei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_hinan",
@@ -1245,7 +1480,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_hinan.png",
-    "meaningEn": "criticism/blame"
+    "meaningEn": "criticism/blame",
+    "registersEn": {
+      "casual": "非難 (hinan)",
+      "formal": "非難 (hinan)",
+      "keigo": "非難 (hinan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_hisan",
@@ -1271,7 +1511,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_hisan.png",
-    "meaningEn": "tragic/miserable"
+    "meaningEn": "tragic/miserable",
+    "registersEn": {
+      "casual": "悲惨 (hisan)",
+      "formal": "悲惨 (hisan)",
+      "keigo": "悲惨 (hisan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_honshin",
@@ -1297,7 +1542,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_honshin.png",
-    "meaningEn": "true feelings"
+    "meaningEn": "true feelings",
+    "registersEn": {
+      "casual": "本心 (honshin)",
+      "formal": "本心 (honshin)",
+      "keigo": "本心 (honshin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_jikaku",
@@ -1323,7 +1573,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_jikaku.png",
-    "meaningEn": "self-awareness"
+    "meaningEn": "self-awareness",
+    "registersEn": {
+      "casual": "自覚 (jikaku)",
+      "formal": "自覚 (jikaku)",
+      "keigo": "自覚 (jikaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_jounetsu",
@@ -1349,7 +1604,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_jounetsu.png",
-    "meaningEn": "passion"
+    "meaningEn": "passion",
+    "registersEn": {
+      "casual": "情熱 (jounetsu)",
+      "formal": "情熱 (jounetsu)",
+      "keigo": "情熱 (jounetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kakushin",
@@ -1375,7 +1635,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kakushin.png",
-    "meaningEn": "conviction/certainty"
+    "meaningEn": "conviction/certainty",
+    "registersEn": {
+      "casual": "確信 (kakushin)",
+      "formal": "確信 (kakushin)",
+      "keigo": "確信 (kakushin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_ijiwaru",
@@ -1401,7 +1666,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_ijiwaru.png",
-    "meaningEn": "mean/spiteful"
+    "meaningEn": "mean/spiteful",
+    "registersEn": {
+      "casual": "意地悪 (ijiwaru)",
+      "formal": "意地悪 (ijiwaru)",
+      "keigo": "意地悪 (ijiwaru) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kenka",
@@ -1427,7 +1697,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kenka.png",
-    "meaningEn": "quarrel/fight"
+    "meaningEn": "quarrel/fight",
+    "registersEn": {
+      "casual": "喧嘩 (kenka)",
+      "formal": "喧嘩 (kenka)",
+      "keigo": "喧嘩 (kenka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_kibun",
@@ -1453,7 +1728,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_kibun.png",
-    "meaningEn": "mood/feeling"
+    "meaningEn": "mood/feeling",
+    "registersEn": {
+      "casual": "気分 (kibun)",
+      "formal": "気分 (kibun)",
+      "keigo": "気分 (kibun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_shinsetsu",
@@ -1479,7 +1759,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_shinsetsu.png",
-    "meaningEn": "kind"
+    "meaningEn": "kind",
+    "registersEn": {
+      "casual": "親切 (shinsetsu)",
+      "formal": "親切 (shinsetsu)",
+      "keigo": "親切 (shinsetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_teinei",
@@ -1505,7 +1790,12 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_teinei.png",
-    "meaningEn": "polite"
+    "meaningEn": "polite",
+    "registersEn": {
+      "casual": "丁寧 (teinei)",
+      "formal": "丁寧 (teinei)",
+      "keigo": "丁寧 (teinei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perasaan_emosi_zannen",
@@ -1531,6 +1821,11 @@
       }
     ],
     "imagePath": "kotoba_images/perasaan_emosi/kotoba_perasaan_emosi_zannen.png",
-    "meaningEn": "unfortunate/regrettable"
+    "meaningEn": "unfortunate/regrettable",
+    "registersEn": {
+      "casual": "残念 (zannen)",
+      "formal": "残念 (zannen)",
+      "keigo": "残念 (zannen) — no special keigo form for this noun"
+    }
   }
 ]

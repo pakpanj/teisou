@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_warau.png",
-    "meaningEn": "to laugh/smile"
+    "meaningEn": "to laugh/smile",
+    "registersEn": {
+      "casual": "笑う (warau)",
+      "formal": "笑います (waraimasu)",
+      "keigo": "笑う (warau) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_ekspresi_wajah_naku",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_naku.png",
-    "meaningEn": "to cry"
+    "meaningEn": "to cry",
+    "registersEn": {
+      "casual": "泣く (naku)",
+      "formal": "泣きます (nakimasu)",
+      "keigo": "泣く (naku) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_ekspresi_wajah_hohoemu",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_hohoemu.png",
-    "meaningEn": "to smile (gently)"
+    "meaningEn": "to smile (gently)",
+    "registersEn": {
+      "casual": "微笑む (hohoemu)",
+      "formal": "微笑みます (hohoemimasu)",
+      "keigo": "微笑む (hohoemu) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_ekspresi_wajah_odoroku",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_odoroku.png",
-    "meaningEn": "to be surprised"
+    "meaningEn": "to be surprised",
+    "registersEn": {
+      "casual": "驚く (odoroku)",
+      "formal": "驚きます (odorokimasu)",
+      "keigo": "驚く (odoroku) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_ekspresi_wajah_mabataki",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_mabataki.png",
-    "meaningEn": "blink (of the eyes)"
+    "meaningEn": "blink (of the eyes)",
+    "registersEn": {
+      "casual": "瞬きする (mabataki suru)",
+      "formal": "瞬きします (mabataki shimasu)",
+      "keigo": "瞬きする (mabataki suru) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_ekspresi_wajah_akubi",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_akubi.png",
-    "meaningEn": "to yawn"
+    "meaningEn": "to yawn",
+    "registersEn": {
+      "casual": "あくびする (akubi suru)",
+      "formal": "あくびします (akubi shimasu)",
+      "keigo": "あくびする (akubi suru) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_ekspresi_wajah_shikameru",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_shikameru.png",
-    "meaningEn": "to grimace/frown"
+    "meaningEn": "to grimace/frown",
+    "registersEn": {
+      "casual": "しかめる (shikameru)",
+      "formal": "しかめます (shikamemasu)",
+      "keigo": "しかめる (shikameru) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_ekspresi_wajah_mitsumeru",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_mitsumeru.png",
-    "meaningEn": "to stare/gaze at"
+    "meaningEn": "to stare/gaze at",
+    "registersEn": {
+      "casual": "見つめる (mitsumeru)",
+      "formal": "見つめます (mitsumemasu)",
+      "keigo": "見つめる (mitsumeru) — no special keigo form for this verb"
+    }
   },
   {
     "id": "kotoba_ekspresi_wajah_egao",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_egao.png",
-    "meaningEn": "smiling face"
+    "meaningEn": "smiling face",
+    "registersEn": {
+      "casual": "笑顔 (egao)",
+      "formal": "笑顔 (egao)",
+      "keigo": "笑顔 (egao) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_ekspresi_wajah_bishou",
@@ -257,6 +302,11 @@
       }
     ],
     "imagePath": "kotoba_images/ekspresi_wajah/kotoba_ekspresi_wajah_bishou.png",
-    "meaningEn": "a smile"
+    "meaningEn": "a smile",
+    "registersEn": {
+      "casual": "微笑 (bishou)",
+      "formal": "微笑 (bishou)",
+      "keigo": "微笑 (bishou) — no special keigo form for this noun"
+    }
   }
 ]

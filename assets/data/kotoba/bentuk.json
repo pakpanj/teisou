@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_maru.png",
-    "meaningEn": "circle"
+    "meaningEn": "circle",
+    "registersEn": {
+      "casual": "丸 (maru)",
+      "formal": "丸 (maru)",
+      "keigo": "丸 (maru) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bentuk_shikaku",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_shikaku.png",
-    "meaningEn": "square"
+    "meaningEn": "square",
+    "registersEn": {
+      "casual": "四角 (shikaku)",
+      "formal": "四角 (shikaku)",
+      "keigo": "四角 (shikaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bentuk_sankaku",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_sankaku.png",
-    "meaningEn": "triangle"
+    "meaningEn": "triangle",
+    "registersEn": {
+      "casual": "三角 (sankaku)",
+      "formal": "三角 (sankaku)",
+      "keigo": "三角 (sankaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bentuk_hoshi",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_hoshi.png",
-    "meaningEn": "star (shape)"
+    "meaningEn": "star (shape)",
+    "registersEn": {
+      "casual": "星 (hoshi)",
+      "formal": "星 (hoshi)",
+      "keigo": "星 (hoshi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bentuk_haato",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_haato.png",
-    "meaningEn": "heart (shape)"
+    "meaningEn": "heart (shape)",
+    "registersEn": {
+      "casual": "ハート (haato)",
+      "formal": "ハート (haato)",
+      "keigo": "ハート (haato) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bentuk_katachi",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_katachi.png",
-    "meaningEn": "shape (general term)"
+    "meaningEn": "shape (general term)",
+    "registersEn": {
+      "casual": "形 (katachi)",
+      "formal": "形 (katachi)",
+      "keigo": "形 (katachi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bentuk_chouhoukei",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_chouhoukei.png",
-    "meaningEn": "rectangle"
+    "meaningEn": "rectangle",
+    "registersEn": {
+      "casual": "長方形 (chouhoukei)",
+      "formal": "長方形 (chouhoukei)",
+      "keigo": "長方形 (chouhoukei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bentuk_daen",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_daen.png",
-    "meaningEn": "ellipse/oval"
+    "meaningEn": "ellipse/oval",
+    "registersEn": {
+      "casual": "楕円 (daen)",
+      "formal": "楕円 (daen)",
+      "keigo": "楕円 (daen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bentuk_enshuu",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_enshuu.png",
-    "meaningEn": "circumference"
+    "meaningEn": "circumference",
+    "registersEn": {
+      "casual": "円周 (enshuu)",
+      "formal": "円周 (enshuu)",
+      "keigo": "円周 (enshuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_bentuk_hankei",
@@ -257,6 +302,11 @@
       }
     ],
     "imagePath": "kotoba_images/bentuk/kotoba_bentuk_hankei.png",
-    "meaningEn": "radius"
+    "meaningEn": "radius",
+    "registersEn": {
+      "casual": "半径 (hankei)",
+      "formal": "半径 (hankei)",
+      "keigo": "半径 (hankei) — no special keigo form for this noun"
+    }
   }
 ]

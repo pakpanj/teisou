@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_shio.png",
-    "meaningEn": "salt"
+    "meaningEn": "salt",
+    "registersEn": {
+      "casual": "しお (shio)",
+      "formal": "しお (shio) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "しお (shio) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_satou",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_satou.png",
-    "meaningEn": "sugar"
+    "meaningEn": "sugar",
+    "registersEn": {
+      "casual": "さとう (satou)",
+      "formal": "さとう (satou) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "さとう (satou) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_shouyu",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_shouyu.png",
-    "meaningEn": "soy sauce"
+    "meaningEn": "soy sauce",
+    "registersEn": {
+      "casual": "しょうゆ (shouyu)",
+      "formal": "しょうゆ (shouyu) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "しょうゆ (shouyu) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_miso",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_miso.png",
-    "meaningEn": "miso paste"
+    "meaningEn": "miso paste",
+    "registersEn": {
+      "casual": "みそ (miso)",
+      "formal": "みそ (miso) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "みそ (miso) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_su",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_su.png",
-    "meaningEn": "vinegar"
+    "meaningEn": "vinegar",
+    "registersEn": {
+      "casual": "す (su)",
+      "formal": "す (su) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "す (su) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_koshou",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_koshou.png",
-    "meaningEn": "pepper"
+    "meaningEn": "pepper",
+    "registersEn": {
+      "casual": "こしょう (koshou)",
+      "formal": "こしょう (koshou) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "こしょう (koshou) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_abura",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_abura.png",
-    "meaningEn": "oil"
+    "meaningEn": "oil",
+    "registersEn": {
+      "casual": "あぶら (abura)",
+      "formal": "あぶら (abura) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "あぶら (abura) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_shouga",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_shouga.png",
-    "meaningEn": "ginger"
+    "meaningEn": "ginger",
+    "registersEn": {
+      "casual": "しょうが (shouga)",
+      "formal": "しょうが (shouga) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "しょうが (shouga) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_karashi",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_karashi.png",
-    "meaningEn": "Japanese mustard (karashi)"
+    "meaningEn": "Japanese mustard (karashi)",
+    "registersEn": {
+      "casual": "からし (karashi)",
+      "formal": "からし (karashi) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "からし (karashi) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_wasabi",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_wasabi.png",
-    "meaningEn": "wasabi"
+    "meaningEn": "wasabi",
+    "registersEn": {
+      "casual": "わさび (wasabi)",
+      "formal": "わさび (wasabi) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "わさび (wasabi) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_katsuobushi",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_katsuobushi.png",
-    "meaningEn": "dried bonito flakes"
+    "meaningEn": "dried bonito flakes",
+    "registersEn": {
+      "casual": "かつおぶし (katsuobushi)",
+      "formal": "かつおぶし (katsuobushi) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "かつおぶし (katsuobushi) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_mirin",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_mirin.png",
-    "meaningEn": "mirin (sweet cooking sake)"
+    "meaningEn": "mirin (sweet cooking sake)",
+    "registersEn": {
+      "casual": "みりん (mirin)",
+      "formal": "みりん (mirin) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "みりん (mirin) — no special keigo form for seasoning names"
+    }
   },
   {
     "id": "kotoba_bumbu_rempah_choumiryou",
@@ -335,6 +395,11 @@
       }
     ],
     "imagePath": "kotoba_images/bumbu_rempah/kotoba_bumbu_rempah_choumiryou.png",
-    "meaningEn": "seasoning/condiments"
+    "meaningEn": "seasoning/condiments",
+    "registersEn": {
+      "casual": "ちょうみりょう (choumiryou)",
+      "formal": "ちょうみりょう (choumiryou) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ちょうみりょう (choumiryou) — no special keigo form for seasoning names"
+    }
   }
 ]

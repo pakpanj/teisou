@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_sensei.png",
-    "meaningEn": "teacher/professor"
+    "meaningEn": "teacher/professor",
+    "registersEn": {
+      "casual": "先生 (sensei)",
+      "formal": "先生 (sensei)",
+      "keigo": "先生 (sensei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_gakusei",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusei.png",
-    "meaningEn": "student"
+    "meaningEn": "student",
+    "registersEn": {
+      "casual": "学生 (gakusei)",
+      "formal": "学生 (gakusei)",
+      "keigo": "学生 (gakusei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_kaishain",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kaishain.png",
-    "meaningEn": "company employee"
+    "meaningEn": "company employee",
+    "registersEn": {
+      "casual": "会社員 (kaishain)",
+      "formal": "会社員 (kaishain)",
+      "keigo": "会社員 (kaishain) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_keisatsukan",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_keisatsukan.png",
-    "meaningEn": "police officer"
+    "meaningEn": "police officer",
+    "registersEn": {
+      "casual": "警察官 (keisatsukan)",
+      "formal": "警察官 (keisatsukan)",
+      "keigo": "警察官 (keisatsukan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_shouboushi",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_shouboushi.png",
-    "meaningEn": "firefighter"
+    "meaningEn": "firefighter",
+    "registersEn": {
+      "casual": "消防士 (shouboushi)",
+      "formal": "消防士 (shouboushi)",
+      "keigo": "消防士 (shouboushi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_ryourinin",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_ryourinin.png",
-    "meaningEn": "cook/chef"
+    "meaningEn": "cook/chef",
+    "registersEn": {
+      "casual": "料理人 (ryourinin)",
+      "formal": "料理人 (ryourinin)",
+      "keigo": "料理人 (ryourinin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_bengoshi",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_bengoshi.png",
-    "meaningEn": "lawyer"
+    "meaningEn": "lawyer",
+    "registersEn": {
+      "casual": "弁護士 (bengoshi)",
+      "formal": "弁護士 (bengoshi)",
+      "keigo": "弁護士 (bengoshi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_enjinia",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_enjinia.png",
-    "meaningEn": "engineer"
+    "meaningEn": "engineer",
+    "registersEn": {
+      "casual": "エンジニア (enjinia)",
+      "formal": "エンジニア (enjinia)",
+      "keigo": "エンジニア (enjinia) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_nouka",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_nouka.png",
-    "meaningEn": "farmer"
+    "meaningEn": "farmer",
+    "registersEn": {
+      "casual": "農家 (nouka)",
+      "formal": "農家 (nouka)",
+      "keigo": "農家 (nouka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_untenshu",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_untenshu.png",
-    "meaningEn": "driver"
+    "meaningEn": "driver",
+    "registersEn": {
+      "casual": "運転手 (untenshu)",
+      "formal": "運転手 (untenshu)",
+      "keigo": "運転手 (untenshu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_shufu",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_shufu.png",
-    "meaningEn": "housewife"
+    "meaningEn": "housewife",
+    "registersEn": {
+      "casual": "主婦 (shufu)",
+      "formal": "主婦 (shufu)",
+      "keigo": "主婦 (shufu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_kashu",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kashu.png",
-    "meaningEn": "singer"
+    "meaningEn": "singer",
+    "registersEn": {
+      "casual": "歌手 (kashu)",
+      "formal": "歌手 (kashu)",
+      "keigo": "歌手 (kashu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_juuji",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_juuji.png",
-    "meaningEn": "engaging in (an occupation)"
+    "meaningEn": "engaging in (an occupation)",
+    "registersEn": {
+      "casual": "従事 (juuji)",
+      "formal": "従事 (juuji)",
+      "keigo": "従事 (juuji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_tekisei",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_tekisei.png",
-    "meaningEn": "aptitude (for a job)"
+    "meaningEn": "aptitude (for a job)",
+    "registersEn": {
+      "casual": "適性 (tekisei)",
+      "formal": "適性 (tekisei)",
+      "keigo": "適性 (tekisei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_tenshoku",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_tenshoku.png",
-    "meaningEn": "changing jobs"
+    "meaningEn": "changing jobs",
+    "registersEn": {
+      "casual": "転職 (tenshoku)",
+      "formal": "転職 (tenshoku)",
+      "keigo": "転職 (tenshoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_kengyou",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kengyou.png",
-    "meaningEn": "side job"
+    "meaningEn": "side job",
+    "registersEn": {
+      "casual": "兼業 (kengyou)",
+      "formal": "兼業 (kengyou)",
+      "keigo": "兼業 (kengyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_tsuuyaku",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_tsuuyaku.png",
-    "meaningEn": "interpreter"
+    "meaningEn": "interpreter",
+    "registersEn": {
+      "casual": "通訳 (tsuuyaku)",
+      "formal": "通訳 (tsuuyaku)",
+      "keigo": "通訳 (tsuuyaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_juui",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_juui.png",
-    "meaningEn": "veterinarian"
+    "meaningEn": "veterinarian",
+    "registersEn": {
+      "casual": "獣医 (juui)",
+      "formal": "獣医 (juui)",
+      "keigo": "獣医 (juui) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_biyoushi",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_biyoushi.png",
-    "meaningEn": "hairstylist"
+    "meaningEn": "hairstylist",
+    "registersEn": {
+      "casual": "美容師 (biyoushi)",
+      "formal": "美容師 (biyoushi)",
+      "keigo": "美容師 (biyoushi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_kisha",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kisha.png",
-    "meaningEn": "journalist"
+    "meaningEn": "journalist",
+    "registersEn": {
+      "casual": "記者 (kisha)",
+      "formal": "記者 (kisha)",
+      "keigo": "記者 (kisha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_gaka",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_gaka.png",
-    "meaningEn": "painter"
+    "meaningEn": "painter",
+    "registersEn": {
+      "casual": "画家 (gaka)",
+      "formal": "画家 (gaka)",
+      "keigo": "画家 (gaka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_ishi",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_ishi.png",
-    "meaningEn": "doctor (formal term)"
+    "meaningEn": "doctor (formal term)",
+    "registersEn": {
+      "casual": "医師 (ishi)",
+      "formal": "医師 (ishi)",
+      "keigo": "医師 (ishi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_koumuin",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_koumuin.png",
-    "meaningEn": "civil servant"
+    "meaningEn": "civil servant",
+    "registersEn": {
+      "casual": "公務員 (koumuin)",
+      "formal": "公務員 (koumuin)",
+      "keigo": "公務員 (koumuin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_kyoushi",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kyoushi.png",
-    "meaningEn": "teacher (professional term)"
+    "meaningEn": "teacher (professional term)",
+    "registersEn": {
+      "casual": "教師 (kyoushi)",
+      "formal": "教師 (kyoushi)",
+      "keigo": "教師 (kyoushi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_kaikeishi",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kaikeishi.png",
-    "meaningEn": "accountant"
+    "meaningEn": "accountant",
+    "registersEn": {
+      "casual": "会計士 (kaikeishi)",
+      "formal": "会計士 (kaikeishi)",
+      "keigo": "会計士 (kaikeishi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_yakuzaishi",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_yakuzaishi.png",
-    "meaningEn": "pharmacist"
+    "meaningEn": "pharmacist",
+    "registersEn": {
+      "casual": "薬剤師 (yakuzaishi)",
+      "formal": "薬剤師 (yakuzaishi)",
+      "keigo": "薬剤師 (yakuzaishi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_kachou",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kachou.png",
-    "meaningEn": "section chief"
+    "meaningEn": "section chief",
+    "registersEn": {
+      "casual": "課長 (kachou)",
+      "formal": "課長 (kachou)",
+      "keigo": "課長 (kachou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_keikan",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_keikan.png",
-    "meaningEn": "police officer (address term)"
+    "meaningEn": "police officer (address term)",
+    "registersEn": {
+      "casual": "警官 (keikan)",
+      "formal": "警官 (keikan)",
+      "keigo": "警官 (keikan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_keisatsu",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_keisatsu.png",
-    "meaningEn": "police (institution)"
+    "meaningEn": "police (institution)",
+    "registersEn": {
+      "casual": "警察 (keisatsu)",
+      "formal": "警察 (keisatsu)",
+      "keigo": "警察 (keisatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_sakusha",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_sakusha.png",
-    "meaningEn": "author"
+    "meaningEn": "author",
+    "registersEn": {
+      "casual": "作者 (sakusha)",
+      "formal": "作者 (sakusha)",
+      "keigo": "作者 (sakusha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_sakka",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_sakka.png",
-    "meaningEn": "writer"
+    "meaningEn": "writer",
+    "registersEn": {
+      "casual": "作家 (sakka)",
+      "formal": "作家 (sakka)",
+      "keigo": "作家 (sakka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_shichou",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_shichou.png",
-    "meaningEn": "mayor"
+    "meaningEn": "mayor",
+    "registersEn": {
+      "casual": "市長 (shichou)",
+      "formal": "市長 (shichou)",
+      "keigo": "市長 (shichou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_tenchou",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_tenchou.png",
-    "meaningEn": "store manager"
+    "meaningEn": "store manager",
+    "registersEn": {
+      "casual": "店長 (tenchou)",
+      "formal": "店長 (tenchou)",
+      "keigo": "店長 (tenchou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_nougyou",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_nougyou.png",
-    "meaningEn": "agriculture"
+    "meaningEn": "agriculture",
+    "registersEn": {
+      "casual": "農業 (nougyou)",
+      "formal": "農業 (nougyou)",
+      "keigo": "農業 (nougyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_gakusha",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_gakusha.png",
-    "meaningEn": "scholar"
+    "meaningEn": "scholar",
+    "registersEn": {
+      "casual": "学者 (gakusha)",
+      "formal": "学者 (gakusha)",
+      "keigo": "学者 (gakusha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_heishi",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_heishi.png",
-    "meaningEn": "soldier"
+    "meaningEn": "soldier",
+    "registersEn": {
+      "casual": "兵士 (heishi)",
+      "formal": "兵士 (heishi)",
+      "keigo": "兵士 (heishi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_juugyouin",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_juugyouin.png",
-    "meaningEn": "employee"
+    "meaningEn": "employee",
+    "registersEn": {
+      "casual": "従業員 (juugyouin)",
+      "formal": "従業員 (juugyouin)",
+      "keigo": "従業員 (juugyouin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_shikai",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_shikai.png",
-    "meaningEn": "emcee/host"
+    "meaningEn": "emcee/host",
+    "registersEn": {
+      "casual": "司会 (shikai)",
+      "formal": "司会 (shikai)",
+      "keigo": "司会 (shikai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_buchou",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_buchou.png",
-    "meaningEn": "department head"
+    "meaningEn": "department head",
+    "registersEn": {
+      "casual": "部長 (buchou)",
+      "formal": "部長 (buchou)",
+      "keigo": "部長 (buchou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_dorobou",
@@ -1037,7 +1232,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_dorobou.png",
-    "meaningEn": "thief"
+    "meaningEn": "thief",
+    "registersEn": {
+      "casual": "泥棒 (dorobou)",
+      "formal": "泥棒 (dorobou)",
+      "keigo": "泥棒 (dorobou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_haisha",
@@ -1063,7 +1263,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_haisha.png",
-    "meaningEn": "dentist"
+    "meaningEn": "dentist",
+    "registersEn": {
+      "casual": "歯医者 (haisha)",
+      "formal": "歯医者 (haisha)",
+      "keigo": "歯医者 (haisha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_kangofu",
@@ -1089,7 +1294,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kangofu.png",
-    "meaningEn": "nurse (female)"
+    "meaningEn": "nurse (female)",
+    "registersEn": {
+      "casual": "看護婦 (kangofu)",
+      "formal": "看護婦 (kangofu)",
+      "keigo": "看護婦 (kangofu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_kouchou",
@@ -1115,7 +1325,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_kouchou.png",
-    "meaningEn": "school principal"
+    "meaningEn": "school principal",
+    "registersEn": {
+      "casual": "校長 (kouchou)",
+      "formal": "校長 (kouchou)",
+      "keigo": "校長 (kouchou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_shachou",
@@ -1141,7 +1356,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_shachou.png",
-    "meaningEn": "company president"
+    "meaningEn": "company president",
+    "registersEn": {
+      "casual": "社長 (shachou)",
+      "formal": "社長 (shachou)",
+      "keigo": "社長 (shachou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_tenin",
@@ -1167,7 +1387,12 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_tenin.png",
-    "meaningEn": "shop clerk"
+    "meaningEn": "shop clerk",
+    "registersEn": {
+      "casual": "店員 (tenin)",
+      "formal": "店員 (tenin)",
+      "keigo": "店員 (tenin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_profesi_tokoya",
@@ -1193,6 +1418,11 @@
       }
     ],
     "imagePath": "kotoba_images/profesi/kotoba_profesi_tokoya.png",
-    "meaningEn": "barbershop/barber"
+    "meaningEn": "barbershop/barber",
+    "registersEn": {
+      "casual": "床屋 (tokoya)",
+      "formal": "床屋 (tokoya)",
+      "keigo": "床屋 (tokoya) — no special keigo form for this noun"
+    }
   }
 ]

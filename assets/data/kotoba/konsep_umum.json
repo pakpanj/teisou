@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_gainen.png",
-    "meaningEn": "concept"
+    "meaningEn": "concept",
+    "registersEn": {
+      "casual": "概念 (gainen)",
+      "formal": "概念 (gainen)",
+      "keigo": "概念 (gainen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_keikou",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_keikou.png",
-    "meaningEn": "tendency"
+    "meaningEn": "tendency",
+    "registersEn": {
+      "casual": "傾向 (keikou)",
+      "formal": "傾向 (keikou)",
+      "keigo": "傾向 (keikou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_yokuatsu",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_yokuatsu.png",
-    "meaningEn": "oppression/suppression"
+    "meaningEn": "oppression/suppression",
+    "registersEn": {
+      "casual": "抑圧 (yokuatsu)",
+      "formal": "抑圧 (yokuatsu)",
+      "keigo": "抑圧 (yokuatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_haijo",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_haijo.png",
-    "meaningEn": "exclusion/removal"
+    "meaningEn": "exclusion/removal",
+    "registersEn": {
+      "casual": "排除 (haijo)",
+      "formal": "排除 (haijo)",
+      "keigo": "排除 (haijo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_zenin",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_zenin.png",
-    "meaningEn": "approval/affirmation"
+    "meaningEn": "approval/affirmation",
+    "registersEn": {
+      "casual": "是認 (zenin)",
+      "formal": "是認 (zenin)",
+      "keigo": "是認 (zenin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_dashin",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_dashin.png",
-    "meaningEn": "sounding out (someone's view)"
+    "meaningEn": "sounding out (someone's view)",
+    "registersEn": {
+      "casual": "打診 (dashin)",
+      "formal": "打診 (dashin)",
+      "keigo": "打診 (dashin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hamon",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hamon.png",
-    "meaningEn": "ripple effect"
+    "meaningEn": "ripple effect",
+    "registersEn": {
+      "casual": "波紋 (hamon)",
+      "formal": "波紋 (hamon)",
+      "keigo": "波紋 (hamon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kinkou",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kinkou.png",
-    "meaningEn": "equilibrium/balance"
+    "meaningEn": "equilibrium/balance",
+    "registersEn": {
+      "casual": "均衡 (kinkou)",
+      "formal": "均衡 (kinkou)",
+      "keigo": "均衡 (kinkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_taitou",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_taitou.png",
-    "meaningEn": "rise (of a new power)"
+    "meaningEn": "rise (of a new power)",
+    "registersEn": {
+      "casual": "台頭 (taitou)",
+      "formal": "台頭 (taitou)",
+      "keigo": "台頭 (taitou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_senzai",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_senzai.png",
-    "meaningEn": "latent potential"
+    "meaningEn": "latent potential",
+    "registersEn": {
+      "casual": "潜在 (senzai)",
+      "formal": "潜在 (senzai)",
+      "keigo": "潜在 (senzai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kencho",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kencho.png",
-    "meaningEn": "marked/conspicuous"
+    "meaningEn": "marked/conspicuous",
+    "registersEn": {
+      "casual": "顕著 (kencho)",
+      "formal": "顕著 (kencho)",
+      "keigo": "顕著 (kencho) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kinpaku",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kinpaku.png",
-    "meaningEn": "tension (of a situation)"
+    "meaningEn": "tension (of a situation)",
+    "registersEn": {
+      "casual": "緊迫 (kinpaku)",
+      "formal": "緊迫 (kinpaku)",
+      "keigo": "緊迫 (kinpaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_sakkaku",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_sakkaku.png",
-    "meaningEn": "illusion/misperception"
+    "meaningEn": "illusion/misperception",
+    "registersEn": {
+      "casual": "錯覚 (sakkaku)",
+      "formal": "錯覚 (sakkaku)",
+      "keigo": "錯覚 (sakkaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_douin",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_douin.png",
-    "meaningEn": "mobilisation"
+    "meaningEn": "mobilisation",
+    "registersEn": {
+      "casual": "動員 (douin)",
+      "formal": "動員 (douin)",
+      "keigo": "動員 (douin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_nankou",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_nankou.png",
-    "meaningEn": "rough going (of a process)"
+    "meaningEn": "rough going (of a process)",
+    "registersEn": {
+      "casual": "難航 (nankou)",
+      "formal": "難航 (nankou)",
+      "keigo": "難航 (nankou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kanshou",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kanshou.png",
-    "meaningEn": "interference"
+    "meaningEn": "interference",
+    "registersEn": {
+      "casual": "干渉 (kanshou)",
+      "formal": "干渉 (kanshou)",
+      "keigo": "干渉 (kanshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tousei",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tousei.png",
-    "meaningEn": "(strict) control"
+    "meaningEn": "(strict) control",
+    "registersEn": {
+      "casual": "統制 (tousei)",
+      "formal": "統制 (tousei)",
+      "keigo": "統制 (tousei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bokumetsu",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bokumetsu.png",
-    "meaningEn": "eradication"
+    "meaningEn": "eradication",
+    "registersEn": {
+      "casual": "撲滅 (bokumetsu)",
+      "formal": "撲滅 (bokumetsu)",
+      "keigo": "撲滅 (bokumetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kokufuku",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kokufuku.png",
-    "meaningEn": "overcoming (hardship)"
+    "meaningEn": "overcoming (hardship)",
+    "registersEn": {
+      "casual": "克服 (kokufuku)",
+      "formal": "克服 (kokufuku)",
+      "keigo": "克服 (kokufuku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hoshou",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hoshou.png",
-    "meaningEn": "compensation"
+    "meaningEn": "compensation",
+    "registersEn": {
+      "casual": "補償 (hoshou)",
+      "formal": "補償 (hoshou)",
+      "keigo": "補償 (hoshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_soshi",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_soshi.png",
-    "meaningEn": "obstruction/prevention"
+    "meaningEn": "obstruction/prevention",
+    "registersEn": {
+      "casual": "阻止 (soshi)",
+      "formal": "阻止 (soshi)",
+      "keigo": "阻止 (soshi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_eikyou",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_eikyou.png",
-    "meaningEn": "influence/impact"
+    "meaningEn": "influence/impact",
+    "registersEn": {
+      "casual": "影響 (eikyou)",
+      "formal": "影響 (eikyou)",
+      "keigo": "影響 (eikyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hatten",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hatten.png",
-    "meaningEn": "development"
+    "meaningEn": "development",
+    "registersEn": {
+      "casual": "発展 (hatten)",
+      "formal": "発展 (hatten)",
+      "keigo": "発展 (hatten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_handan",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_handan.png",
-    "meaningEn": "judgement/decision"
+    "meaningEn": "judgement/decision",
+    "registersEn": {
+      "casual": "判断 (handan)",
+      "formal": "判断 (handan)",
+      "keigo": "判断 (handan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_souzou",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_souzou.png",
-    "meaningEn": "imagination"
+    "meaningEn": "imagination",
+    "registersEn": {
+      "casual": "想像 (souzou)",
+      "formal": "想像 (souzou)",
+      "keigo": "想像 (souzou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kansha",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kansha.png",
-    "meaningEn": "gratitude"
+    "meaningEn": "gratitude",
+    "registersEn": {
+      "casual": "感謝 (kansha)",
+      "formal": "感謝 (kansha)",
+      "keigo": "感謝 (kansha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kitai",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kitai.png",
-    "meaningEn": "expectation"
+    "meaningEn": "expectation",
+    "registersEn": {
+      "casual": "期待 (kitai)",
+      "formal": "期待 (kitai)",
+      "keigo": "期待 (kitai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ketsudan",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ketsudan.png",
-    "meaningEn": "(firm) decision"
+    "meaningEn": "(firm) decision",
+    "registersEn": {
+      "casual": "決断 (ketsudan)",
+      "formal": "決断 (ketsudan)",
+      "keigo": "決断 (ketsudan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jitsugen",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jitsugen.png",
-    "meaningEn": "realisation/coming true"
+    "meaningEn": "realisation/coming true",
+    "registersEn": {
+      "casual": "実現 (jitsugen)",
+      "formal": "実現 (jitsugen)",
+      "keigo": "実現 (jitsugen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kouka",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kouka.png",
-    "meaningEn": "effect"
+    "meaningEn": "effect",
+    "registersEn": {
+      "casual": "効果 (kouka)",
+      "formal": "効果 (kouka)",
+      "keigo": "効果 (kouka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_gen'in",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_gen'in.png",
-    "meaningEn": "cause"
+    "meaningEn": "cause",
+    "registersEn": {
+      "casual": "原因 (gen'in)",
+      "formal": "原因 (gen'in)",
+      "keigo": "原因 (gen'in) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kekka",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kekka.png",
-    "meaningEn": "result"
+    "meaningEn": "result",
+    "registersEn": {
+      "casual": "結果 (kekka)",
+      "formal": "結果 (kekka)",
+      "keigo": "結果 (kekka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shuchou",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shuchou.png",
-    "meaningEn": "assertion/claim"
+    "meaningEn": "assertion/claim",
+    "registersEn": {
+      "casual": "主張 (shuchou)",
+      "formal": "主張 (shuchou)",
+      "keigo": "主張 (shuchou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hansei",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hansei.png",
-    "meaningEn": "self-reflection"
+    "meaningEn": "self-reflection",
+    "registersEn": {
+      "casual": "反省 (hansei)",
+      "formal": "反省 (hansei)",
+      "keigo": "反省 (hansei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_rikai",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_rikai.png",
-    "meaningEn": "understanding"
+    "meaningEn": "understanding",
+    "registersEn": {
+      "casual": "理解 (rikai)",
+      "formal": "理解 (rikai)",
+      "keigo": "理解 (rikai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_gokai",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_gokai.png",
-    "meaningEn": "misunderstanding"
+    "meaningEn": "misunderstanding",
+    "registersEn": {
+      "casual": "誤解 (gokai)",
+      "formal": "誤解 (gokai)",
+      "keigo": "誤解 (gokai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_taiou",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_taiou.png",
-    "meaningEn": "response/handling"
+    "meaningEn": "response/handling",
+    "registersEn": {
+      "casual": "対応 (taiou)",
+      "formal": "対応 (taiou)",
+      "keigo": "対応 (taiou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_taisaku",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_taisaku.png",
-    "meaningEn": "countermeasure"
+    "meaningEn": "countermeasure",
+    "registersEn": {
+      "casual": "対策 (taisaku)",
+      "formal": "対策 (taisaku)",
+      "keigo": "対策 (taisaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kentou",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kentou.png",
-    "meaningEn": "consideration/review"
+    "meaningEn": "consideration/review",
+    "registersEn": {
+      "casual": "検討 (kentou)",
+      "formal": "検討 (kentou)",
+      "keigo": "検討 (kentou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaizen",
@@ -1037,7 +1232,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaizen.png",
-    "meaningEn": "improvement"
+    "meaningEn": "improvement",
+    "registersEn": {
+      "casual": "改善 (kaizen)",
+      "formal": "改善 (kaizen)",
+      "keigo": "改善 (kaizen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hyouka",
@@ -1063,7 +1263,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hyouka.png",
-    "meaningEn": "evaluation"
+    "meaningEn": "evaluation",
+    "registersEn": {
+      "casual": "評価 (hyouka)",
+      "formal": "評価 (hyouka)",
+      "keigo": "評価 (hyouka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_sanka",
@@ -1089,7 +1294,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_sanka.png",
-    "meaningEn": "participation"
+    "meaningEn": "participation",
+    "registersEn": {
+      "casual": "参加 (sanka)",
+      "formal": "参加 (sanka)",
+      "keigo": "参加 (sanka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_junbi",
@@ -1115,7 +1325,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_junbi.png",
-    "meaningEn": "preparation"
+    "meaningEn": "preparation",
+    "registersEn": {
+      "casual": "準備 (junbi)",
+      "formal": "準備 (junbi)",
+      "keigo": "準備 (junbi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_setsumei",
@@ -1141,7 +1356,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_setsumei.png",
-    "meaningEn": "explanation"
+    "meaningEn": "explanation",
+    "registersEn": {
+      "casual": "説明 (setsumei)",
+      "formal": "説明 (setsumei)",
+      "keigo": "説明 (setsumei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shitsumon",
@@ -1167,7 +1387,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shitsumon.png",
-    "meaningEn": "question"
+    "meaningEn": "question",
+    "registersEn": {
+      "casual": "質問 (shitsumon)",
+      "formal": "質問 (shitsumon)",
+      "keigo": "質問 (shitsumon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_renshuu",
@@ -1193,7 +1418,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_renshuu.png",
-    "meaningEn": "practice"
+    "meaningEn": "practice",
+    "registersEn": {
+      "casual": "練習 (renshuu)",
+      "formal": "練習 (renshuu)",
+      "keigo": "練習 (renshuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_seikou",
@@ -1219,7 +1449,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_seikou.png",
-    "meaningEn": "success"
+    "meaningEn": "success",
+    "registersEn": {
+      "casual": "成功 (seikou)",
+      "formal": "成功 (seikou)",
+      "keigo": "成功 (seikou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shippai",
@@ -1245,7 +1480,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shippai.png",
-    "meaningEn": "failure"
+    "meaningEn": "failure",
+    "registersEn": {
+      "casual": "失敗 (shippai)",
+      "formal": "失敗 (shippai)",
+      "keigo": "失敗 (shippai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_keiken",
@@ -1271,7 +1511,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_keiken.png",
-    "meaningEn": "experience"
+    "meaningEn": "experience",
+    "registersEn": {
+      "casual": "経験 (keiken)",
+      "formal": "経験 (keiken)",
+      "keigo": "経験 (keiken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_yotei",
@@ -1297,7 +1542,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_yotei.png",
-    "meaningEn": "plan/schedule"
+    "meaningEn": "plan/schedule",
+    "registersEn": {
+      "casual": "予定 (yotei)",
+      "formal": "予定 (yotei)",
+      "keigo": "予定 (yotei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tsugou",
@@ -1323,7 +1573,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tsugou.png",
-    "meaningEn": "convenience (of timing)"
+    "meaningEn": "convenience (of timing)",
+    "registersEn": {
+      "casual": "都合 (tsugou)",
+      "formal": "都合 (tsugou)",
+      "keigo": "都合 (tsugou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kenri",
@@ -1349,7 +1604,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kenri.png",
-    "meaningEn": "right (entitlement)"
+    "meaningEn": "right (entitlement)",
+    "registersEn": {
+      "casual": "権利 (kenri)",
+      "formal": "権利 (kenri)",
+      "keigo": "権利 (kenri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_gimu",
@@ -1375,7 +1635,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_gimu.png",
-    "meaningEn": "duty/obligation"
+    "meaningEn": "duty/obligation",
+    "registersEn": {
+      "casual": "義務 (gimu)",
+      "formal": "義務 (gimu)",
+      "keigo": "義務 (gimu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_keiyaku",
@@ -1401,7 +1666,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_keiyaku.png",
-    "meaningEn": "contract"
+    "meaningEn": "contract",
+    "registersEn": {
+      "casual": "契約 (keiyaku)",
+      "formal": "契約 (keiyaku)",
+      "keigo": "契約 (keiyaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kisoku",
@@ -1427,7 +1697,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kisoku.png",
-    "meaningEn": "rule/regulation"
+    "meaningEn": "rule/regulation",
+    "registersEn": {
+      "casual": "規則 (kisoku)",
+      "formal": "規則 (kisoku)",
+      "keigo": "規則 (kisoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ihan",
@@ -1453,7 +1728,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ihan.png",
-    "meaningEn": "violation"
+    "meaningEn": "violation",
+    "registersEn": {
+      "casual": "違反 (ihan)",
+      "formal": "違反 (ihan)",
+      "keigo": "違反 (ihan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bakkin",
@@ -1479,7 +1759,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bakkin.png",
-    "meaningEn": "fine (penalty)"
+    "meaningEn": "fine (penalty)",
+    "registersEn": {
+      "casual": "罰金 (bakkin)",
+      "formal": "罰金 (bakkin)",
+      "keigo": "罰金 (bakkin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_soshou",
@@ -1505,7 +1790,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_soshou.png",
-    "meaningEn": "lawsuit"
+    "meaningEn": "lawsuit",
+    "registersEn": {
+      "casual": "訴訟 (soshou)",
+      "formal": "訴訟 (soshou)",
+      "keigo": "訴訟 (soshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_saiban",
@@ -1531,7 +1821,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_saiban.png",
-    "meaningEn": "trial (court)"
+    "meaningEn": "trial (court)",
+    "registersEn": {
+      "casual": "裁判 (saiban)",
+      "formal": "裁判 (saiban)",
+      "keigo": "裁判 (saiban) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bensai",
@@ -1557,7 +1852,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bensai.png",
-    "meaningEn": "repayment (of a debt)"
+    "meaningEn": "repayment (of a debt)",
+    "registersEn": {
+      "casual": "弁済 (bensai)",
+      "formal": "弁済 (bensai)",
+      "keigo": "弁済 (bensai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_juyou",
@@ -1583,7 +1883,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_juyou.png",
-    "meaningEn": "demand (economics)"
+    "meaningEn": "demand (economics)",
+    "registersEn": {
+      "casual": "需要 (juyou)",
+      "formal": "需要 (juyou)",
+      "keigo": "需要 (juyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kyoukyuu",
@@ -1609,7 +1914,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyoukyuu.png",
-    "meaningEn": "supply (economics)"
+    "meaningEn": "supply (economics)",
+    "registersEn": {
+      "casual": "供給 (kyoukyuu)",
+      "formal": "供給 (kyoukyuu)",
+      "keigo": "供給 (kyoukyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shouhi",
@@ -1635,7 +1945,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shouhi.png",
-    "meaningEn": "consumption"
+    "meaningEn": "consumption",
+    "registersEn": {
+      "casual": "消費 (shouhi)",
+      "formal": "消費 (shouhi)",
+      "keigo": "消費 (shouhi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chochiku",
@@ -1661,7 +1976,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chochiku.png",
-    "meaningEn": "savings"
+    "meaningEn": "savings",
+    "registersEn": {
+      "casual": "貯蓄 (chochiku)",
+      "formal": "貯蓄 (chochiku)",
+      "keigo": "貯蓄 (chochiku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_toushi",
@@ -1687,7 +2007,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_toushi.png",
-    "meaningEn": "investment"
+    "meaningEn": "investment",
+    "registersEn": {
+      "casual": "投資 (toushi)",
+      "formal": "投資 (toushi)",
+      "keigo": "投資 (toushi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_fusai",
@@ -1713,7 +2038,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_fusai.png",
-    "meaningEn": "debt/liabilities"
+    "meaningEn": "debt/liabilities",
+    "registersEn": {
+      "casual": "負債 (fusai)",
+      "formal": "負債 (fusai)",
+      "keigo": "負債 (fusai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shisan",
@@ -1739,7 +2069,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shisan.png",
-    "meaningEn": "assets"
+    "meaningEn": "assets",
+    "registersEn": {
+      "casual": "資産 (shisan)",
+      "formal": "資産 (shisan)",
+      "keigo": "資産 (shisan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_keiki",
@@ -1765,7 +2100,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_keiki.png",
-    "meaningEn": "economic conditions"
+    "meaningEn": "economic conditions",
+    "registersEn": {
+      "casual": "景気 (keiki)",
+      "formal": "景気 (keiki)",
+      "keigo": "景気 (keiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bukka",
@@ -1791,7 +2131,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bukka.png",
-    "meaningEn": "(general) price level"
+    "meaningEn": "(general) price level",
+    "registersEn": {
+      "casual": "物価 (bukka)",
+      "formal": "物価 (bukka)",
+      "keigo": "物価 (bukka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kawase",
@@ -1817,7 +2162,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kawase.png",
-    "meaningEn": "exchange rate"
+    "meaningEn": "exchange rate",
+    "registersEn": {
+      "casual": "為替 (kawase)",
+      "formal": "為替 (kawase)",
+      "keigo": "為替 (kawase) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ishiki",
@@ -1843,7 +2193,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ishiki.png",
-    "meaningEn": "consciousness"
+    "meaningEn": "consciousness",
+    "registersEn": {
+      "casual": "意識 (ishiki)",
+      "formal": "意識 (ishiki)",
+      "keigo": "意識 (ishiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_muishiki",
@@ -1869,7 +2224,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_muishiki.png",
-    "meaningEn": "unconsciousness"
+    "meaningEn": "unconsciousness",
+    "registersEn": {
+      "casual": "無意識 (muishiki)",
+      "formal": "無意識 (muishiki)",
+      "keigo": "無意識 (muishiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kioku",
@@ -1895,7 +2255,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kioku.png",
-    "meaningEn": "memory"
+    "meaningEn": "memory",
+    "registersEn": {
+      "casual": "記憶 (kioku)",
+      "formal": "記憶 (kioku)",
+      "keigo": "記憶 (kioku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ninshiki",
@@ -1921,7 +2286,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ninshiki.png",
-    "meaningEn": "recognition/awareness"
+    "meaningEn": "recognition/awareness",
+    "registersEn": {
+      "casual": "認識 (ninshiki)",
+      "formal": "認識 (ninshiki)",
+      "keigo": "認識 (ninshiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chokkan",
@@ -1947,7 +2317,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chokkan.png",
-    "meaningEn": "intuition"
+    "meaningEn": "intuition",
+    "registersEn": {
+      "casual": "直感 (chokkan)",
+      "formal": "直感 (chokkan)",
+      "keigo": "直感 (chokkan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_honnou",
@@ -1973,7 +2348,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_honnou.png",
-    "meaningEn": "instinct"
+    "meaningEn": "instinct",
+    "registersEn": {
+      "casual": "本能 (honnou)",
+      "formal": "本能 (honnou)",
+      "keigo": "本能 (honnou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_iyoku",
@@ -1999,7 +2379,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_iyoku.png",
-    "meaningEn": "motivation/drive"
+    "meaningEn": "motivation/drive",
+    "registersEn": {
+      "casual": "意欲 (iyoku)",
+      "formal": "意欲 (iyoku)",
+      "keigo": "意欲 (iyoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shoudou",
@@ -2025,7 +2410,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shoudou.png",
-    "meaningEn": "impulse"
+    "meaningEn": "impulse",
+    "registersEn": {
+      "casual": "衝動 (shoudou)",
+      "formal": "衝動 (shoudou)",
+      "keigo": "衝動 (shoudou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_seisaku",
@@ -2051,7 +2441,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_seisaku.png",
-    "meaningEn": "policy"
+    "meaningEn": "policy",
+    "registersEn": {
+      "casual": "政策 (seisaku)",
+      "formal": "政策 (seisaku)",
+      "keigo": "政策 (seisaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_seido",
@@ -2077,7 +2472,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_seido.png",
-    "meaningEn": "system/institution"
+    "meaningEn": "system/institution",
+    "registersEn": {
+      "casual": "制度 (seido)",
+      "formal": "制度 (seido)",
+      "keigo": "制度 (seido) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_senkyo",
@@ -2103,7 +2503,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_senkyo.png",
-    "meaningEn": "election"
+    "meaningEn": "election",
+    "registersEn": {
+      "casual": "選挙 (senkyo)",
+      "formal": "選挙 (senkyo)",
+      "keigo": "選挙 (senkyo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kenryoku",
@@ -2129,7 +2534,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kenryoku.png",
-    "meaningEn": "(political) power"
+    "meaningEn": "(political) power",
+    "registersEn": {
+      "casual": "権力 (kenryoku)",
+      "formal": "権力 (kenryoku)",
+      "keigo": "権力 (kenryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_byoudou",
@@ -2155,7 +2565,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_byoudou.png",
-    "meaningEn": "equality"
+    "meaningEn": "equality",
+    "registersEn": {
+      "casual": "平等 (byoudou)",
+      "formal": "平等 (byoudou)",
+      "keigo": "平等 (byoudou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kakusa",
@@ -2181,7 +2596,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kakusa.png",
-    "meaningEn": "disparity/gap"
+    "meaningEn": "disparity/gap",
+    "registersEn": {
+      "casual": "格差 (kakusa)",
+      "formal": "格差 (kakusa)",
+      "keigo": "格差 (kakusa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_sabetsu",
@@ -2207,7 +2627,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_sabetsu.png",
-    "meaningEn": "discrimination"
+    "meaningEn": "discrimination",
+    "registersEn": {
+      "casual": "差別 (sabetsu)",
+      "formal": "差別 (sabetsu)",
+      "keigo": "差別 (sabetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hyougen",
@@ -2233,7 +2658,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hyougen.png",
-    "meaningEn": "expression"
+    "meaningEn": "expression",
+    "registersEn": {
+      "casual": "表現 (hyougen)",
+      "formal": "表現 (hyougen)",
+      "keigo": "表現 (hyougen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hatsugen",
@@ -2259,7 +2689,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hatsugen.png",
-    "meaningEn": "statement/remark"
+    "meaningEn": "statement/remark",
+    "registersEn": {
+      "casual": "発言 (hatsugen)",
+      "formal": "発言 (hatsugen)",
+      "keigo": "発言 (hatsugen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_giron",
@@ -2285,7 +2720,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_giron.png",
-    "meaningEn": "discussion/debate"
+    "meaningEn": "discussion/debate",
+    "registersEn": {
+      "casual": "議論 (giron)",
+      "formal": "議論 (giron)",
+      "keigo": "議論 (giron) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ito",
@@ -2311,7 +2751,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ito.png",
-    "meaningEn": "intention"
+    "meaningEn": "intention",
+    "registersEn": {
+      "casual": "意図 (ito)",
+      "formal": "意図 (ito)",
+      "keigo": "意図 (ito) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_aimai",
@@ -2337,7 +2782,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_aimai.png",
-    "meaningEn": "ambiguous/vague"
+    "meaningEn": "ambiguous/vague",
+    "registersEn": {
+      "casual": "曖昧 (aimai)",
+      "formal": "曖昧 (aimai)",
+      "keigo": "曖昧 (aimai) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shinpo",
@@ -2363,7 +2813,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shinpo.png",
-    "meaningEn": "progress"
+    "meaningEn": "progress",
+    "registersEn": {
+      "casual": "進歩 (shinpo)",
+      "formal": "進歩 (shinpo)",
+      "keigo": "進歩 (shinpo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_junkan",
@@ -2389,7 +2844,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_junkan.png",
-    "meaningEn": "circulation/cycle"
+    "meaningEn": "circulation/cycle",
+    "registersEn": {
+      "casual": "循環 (junkan)",
+      "formal": "循環 (junkan)",
+      "keigo": "循環 (junkan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jizoku",
@@ -2415,7 +2875,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jizoku.png",
-    "meaningEn": "sustainability"
+    "meaningEn": "sustainability",
+    "registersEn": {
+      "casual": "持続 (jizoku)",
+      "formal": "持続 (jizoku)",
+      "keigo": "持続 (jizoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_iji",
@@ -2441,7 +2906,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_iji.png",
-    "meaningEn": "maintenance/upkeep"
+    "meaningEn": "maintenance/upkeep",
+    "registersEn": {
+      "casual": "維持 (iji)",
+      "formal": "維持 (iji)",
+      "keigo": "維持 (iji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tekiou",
@@ -2467,7 +2937,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tekiou.png",
-    "meaningEn": "adaptation"
+    "meaningEn": "adaptation",
+    "registersEn": {
+      "casual": "適応 (tekiou)",
+      "formal": "適応 (tekiou)",
+      "keigo": "適応 (tekiou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_houritsu",
@@ -2493,7 +2968,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_houritsu.png",
-    "meaningEn": "law/legislation"
+    "meaningEn": "law/legislation",
+    "registersEn": {
+      "casual": "法律 (houritsu)",
+      "formal": "法律 (houritsu)",
+      "keigo": "法律 (houritsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_henka",
@@ -2519,7 +2999,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_henka.png",
-    "meaningEn": "change"
+    "meaningEn": "change",
+    "registersEn": {
+      "casual": "変化 (henka)",
+      "formal": "変化 (henka)",
+      "keigo": "変化 (henka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_genshou",
@@ -2545,7 +3030,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_genshou.png",
-    "meaningEn": "phenomenon"
+    "meaningEn": "phenomenon",
+    "registersEn": {
+      "casual": "現象 (genshou)",
+      "formal": "現象 (genshou)",
+      "keigo": "現象 (genshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_genri",
@@ -2571,7 +3061,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_genri.png",
-    "meaningEn": "principle (scientific)"
+    "meaningEn": "principle (scientific)",
+    "registersEn": {
+      "casual": "原理 (genri)",
+      "formal": "原理 (genri)",
+      "keigo": "原理 (genri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_housoku",
@@ -2597,7 +3092,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_housoku.png",
-    "meaningEn": "law (of nature/science)"
+    "meaningEn": "law (of nature/science)",
+    "registersEn": {
+      "casual": "法則 (housoku)",
+      "formal": "法則 (housoku)",
+      "keigo": "法則 (housoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jikken",
@@ -2623,7 +3123,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jikken.png",
-    "meaningEn": "experiment"
+    "meaningEn": "experiment",
+    "registersEn": {
+      "casual": "実験 (jikken)",
+      "formal": "実験 (jikken)",
+      "keigo": "実験 (jikken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kansatsu",
@@ -2649,7 +3154,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kansatsu.png",
-    "meaningEn": "observation"
+    "meaningEn": "observation",
+    "registersEn": {
+      "casual": "観察 (kansatsu)",
+      "formal": "観察 (kansatsu)",
+      "keigo": "観察 (kansatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bunseki",
@@ -2675,7 +3185,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bunseki.png",
-    "meaningEn": "analysis"
+    "meaningEn": "analysis",
+    "registersEn": {
+      "casual": "分析 (bunseki)",
+      "formal": "分析 (bunseki)",
+      "keigo": "分析 (bunseki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kenshou",
@@ -2701,7 +3216,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kenshou.png",
-    "meaningEn": "verification"
+    "meaningEn": "verification",
+    "registersEn": {
+      "casual": "検証 (kenshou)",
+      "formal": "検証 (kenshou)",
+      "keigo": "検証 (kenshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shoumei",
@@ -2727,7 +3247,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shoumei.png",
-    "meaningEn": "proof"
+    "meaningEn": "proof",
+    "registersEn": {
+      "casual": "証明 (shoumei)",
+      "formal": "証明 (shoumei)",
+      "keigo": "証明 (shoumei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_seichou",
@@ -2753,7 +3278,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_seichou.png",
-    "meaningEn": "growth"
+    "meaningEn": "growth",
+    "registersEn": {
+      "casual": "成長 (seichou)",
+      "formal": "成長 (seichou)",
+      "keigo": "成長 (seichou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hattatsu",
@@ -2779,7 +3309,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hattatsu.png",
-    "meaningEn": "development (of ability)"
+    "meaningEn": "development (of ability)",
+    "registersEn": {
+      "casual": "発達 (hattatsu)",
+      "formal": "発達 (hattatsu)",
+      "keigo": "発達 (hattatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_seijuku",
@@ -2805,7 +3340,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_seijuku.png",
-    "meaningEn": "maturity"
+    "meaningEn": "maturity",
+    "registersEn": {
+      "casual": "成熟 (seijuku)",
+      "formal": "成熟 (seijuku)",
+      "keigo": "成熟 (seijuku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_koujou",
@@ -2831,7 +3371,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_koujou.png",
-    "meaningEn": "improvement (of skill)"
+    "meaningEn": "improvement (of skill)",
+    "registersEn": {
+      "casual": "向上 (koujou)",
+      "formal": "向上 (koujou)",
+      "keigo": "向上 (koujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shukan",
@@ -2857,7 +3402,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shukan.png",
-    "meaningEn": "subjectivity"
+    "meaningEn": "subjectivity",
+    "registersEn": {
+      "casual": "主観 (shukan)",
+      "formal": "主観 (shukan)",
+      "keigo": "主観 (shukan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kyakkan",
@@ -2883,7 +3433,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyakkan.png",
-    "meaningEn": "objectivity"
+    "meaningEn": "objectivity",
+    "registersEn": {
+      "casual": "客観 (kyakkan)",
+      "formal": "客観 (kyakkan)",
+      "keigo": "客観 (kyakkan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kenkai",
@@ -2909,7 +3464,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kenkai.png",
-    "meaningEn": "(formal) opinion/view"
+    "meaningEn": "(formal) opinion/view",
+    "registersEn": {
+      "casual": "見解 (kenkai)",
+      "formal": "見解 (kenkai)",
+      "keigo": "見解 (kenkai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ronri",
@@ -2935,7 +3495,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ronri.png",
-    "meaningEn": "logic"
+    "meaningEn": "logic",
+    "registersEn": {
+      "casual": "論理 (ronri)",
+      "formal": "論理 (ronri)",
+      "keigo": "論理 (ronri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_mujun",
@@ -2961,7 +3526,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_mujun.png",
-    "meaningEn": "contradiction"
+    "meaningEn": "contradiction",
+    "registersEn": {
+      "casual": "矛盾 (mujun)",
+      "formal": "矛盾 (mujun)",
+      "keigo": "矛盾 (mujun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_katei",
@@ -2987,7 +3557,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_katei.png",
-    "meaningEn": "process"
+    "meaningEn": "process",
+    "registersEn": {
+      "casual": "過程 (katei)",
+      "formal": "過程 (katei)",
+      "keigo": "過程 (katei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_dankai",
@@ -3013,7 +3588,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_dankai.png",
-    "meaningEn": "stage/phase"
+    "meaningEn": "stage/phase",
+    "registersEn": {
+      "casual": "段階 (dankai)",
+      "formal": "段階 (dankai)",
+      "keigo": "段階 (dankai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_keika",
@@ -3039,7 +3619,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_keika.png",
-    "meaningEn": "passage of time/progress"
+    "meaningEn": "passage of time/progress",
+    "registersEn": {
+      "casual": "経過 (keika)",
+      "formal": "経過 (keika)",
+      "keigo": "経過 (keika) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_keizoku",
@@ -3065,7 +3650,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_keizoku.png",
-    "meaningEn": "continuation"
+    "meaningEn": "continuation",
+    "registersEn": {
+      "casual": "継続 (keizoku)",
+      "formal": "継続 (keizoku)",
+      "keigo": "継続 (keizoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_teido",
@@ -3091,7 +3681,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_teido.png",
-    "meaningEn": "degree/extent"
+    "meaningEn": "degree/extent",
+    "registersEn": {
+      "casual": "程度 (teido)",
+      "formal": "程度 (teido)",
+      "keigo": "程度 (teido) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_wariai",
@@ -3117,7 +3712,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_wariai.png",
-    "meaningEn": "proportion/ratio"
+    "meaningEn": "proportion/ratio",
+    "registersEn": {
+      "casual": "割合 (wariai)",
+      "formal": "割合 (wariai)",
+      "keigo": "割合 (wariai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hikaku",
@@ -3143,7 +3743,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hikaku.png",
-    "meaningEn": "comparison"
+    "meaningEn": "comparison",
+    "registersEn": {
+      "casual": "比較 (hikaku)",
+      "formal": "比較 (hikaku)",
+      "keigo": "比較 (hikaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hindo",
@@ -3169,7 +3774,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hindo.png",
-    "meaningEn": "frequency"
+    "meaningEn": "frequency",
+    "registersEn": {
+      "casual": "頻度 (hindo)",
+      "formal": "頻度 (hindo)",
+      "keigo": "頻度 (hindo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kankyou",
@@ -3195,7 +3805,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kankyou.png",
-    "meaningEn": "environment"
+    "meaningEn": "environment",
+    "registersEn": {
+      "casual": "環境 (kankyou)",
+      "formal": "環境 (kankyou)",
+      "keigo": "環境 (kankyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_osen",
@@ -3221,7 +3836,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_osen.png",
-    "meaningEn": "pollution"
+    "meaningEn": "pollution",
+    "registersEn": {
+      "casual": "汚染 (osen)",
+      "formal": "汚染 (osen)",
+      "keigo": "汚染 (osen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hogo",
@@ -3247,7 +3867,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hogo.png",
-    "meaningEn": "protection"
+    "meaningEn": "protection",
+    "registersEn": {
+      "casual": "保護 (hogo)",
+      "formal": "保護 (hogo)",
+      "keigo": "保護 (hogo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shigen",
@@ -3273,7 +3898,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shigen.png",
-    "meaningEn": "resources"
+    "meaningEn": "resources",
+    "registersEn": {
+      "casual": "資源 (shigen)",
+      "formal": "資源 (shigen)",
+      "keigo": "資源 (shigen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_setsuyaku",
@@ -3299,7 +3929,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_setsuyaku.png",
-    "meaningEn": "saving/economising"
+    "meaningEn": "saving/economising",
+    "registersEn": {
+      "casual": "節約 (setsuyaku)",
+      "formal": "節約 (setsuyaku)",
+      "keigo": "節約 (setsuyaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kyouyou",
@@ -3325,7 +3960,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyouyou.png",
-    "meaningEn": "general culture/education"
+    "meaningEn": "general culture/education",
+    "registersEn": {
+      "casual": "教養 (kyouyou)",
+      "formal": "教養 (kyouyou)",
+      "keigo": "教養 (kyouyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chishiki",
@@ -3351,7 +3991,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chishiki.png",
-    "meaningEn": "knowledge"
+    "meaningEn": "knowledge",
+    "registersEn": {
+      "casual": "知識 (chishiki)",
+      "formal": "知識 (chishiki)",
+      "keigo": "知識 (chishiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shuutoku",
@@ -3377,7 +4022,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shuutoku.png",
-    "meaningEn": "mastery (of a skill)"
+    "meaningEn": "mastery (of a skill)",
+    "registersEn": {
+      "casual": "習得 (shuutoku)",
+      "formal": "習得 (shuutoku)",
+      "keigo": "習得 (shuutoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kyoukun",
@@ -3403,7 +4053,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyoukun.png",
-    "meaningEn": "lesson learned"
+    "meaningEn": "lesson learned",
+    "registersEn": {
+      "casual": "教訓 (kyoukun)",
+      "formal": "教訓 (kyoukun)",
+      "keigo": "教訓 (kyoukun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shinrai",
@@ -3429,7 +4084,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shinrai.png",
-    "meaningEn": "trust"
+    "meaningEn": "trust",
+    "registersEn": {
+      "casual": "信頼 (shinrai)",
+      "formal": "信頼 (shinrai)",
+      "keigo": "信頼 (shinrai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kyouryoku",
@@ -3455,7 +4115,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyouryoku.png",
-    "meaningEn": "cooperation"
+    "meaningEn": "cooperation",
+    "registersEn": {
+      "casual": "協力 (kyouryoku)",
+      "formal": "協力 (kyouryoku)",
+      "keigo": "協力 (kyouryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tairitsu",
@@ -3481,7 +4146,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tairitsu.png",
-    "meaningEn": "conflict/opposition"
+    "meaningEn": "conflict/opposition",
+    "registersEn": {
+      "casual": "対立 (tairitsu)",
+      "formal": "対立 (tairitsu)",
+      "keigo": "対立 (tairitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_renkei",
@@ -3507,7 +4177,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_renkei.png",
-    "meaningEn": "collaboration"
+    "meaningEn": "collaboration",
+    "registersEn": {
+      "casual": "連携 (renkei)",
+      "formal": "連携 (renkei)",
+      "keigo": "連携 (renkei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kouryuu",
@@ -3533,7 +4208,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kouryuu.png",
-    "meaningEn": "exchange/interaction"
+    "meaningEn": "exchange/interaction",
+    "registersEn": {
+      "casual": "交流 (kouryuu)",
+      "formal": "交流 (kouryuu)",
+      "keigo": "交流 (kouryuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_anzen",
@@ -3559,7 +4239,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_anzen.png",
-    "meaningEn": "safety"
+    "meaningEn": "safety",
+    "registersEn": {
+      "casual": "安全 (anzen)",
+      "formal": "安全 (anzen)",
+      "keigo": "安全 (anzen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_keikai",
@@ -3585,7 +4270,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_keikai.png",
-    "meaningEn": "vigilance/caution"
+    "meaningEn": "vigilance/caution",
+    "registersEn": {
+      "casual": "警戒 (keikai)",
+      "formal": "警戒 (keikai)",
+      "keigo": "警戒 (keikai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_boushi2",
@@ -3611,7 +4301,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_boushi2.png",
-    "meaningEn": "prevention"
+    "meaningEn": "prevention",
+    "registersEn": {
+      "casual": "防止 (boushi)",
+      "formal": "防止 (boushi)",
+      "keigo": "防止 (boushi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kiki",
@@ -3637,7 +4332,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kiki.png",
-    "meaningEn": "crisis"
+    "meaningEn": "crisis",
+    "registersEn": {
+      "casual": "危機 (kiki)",
+      "formal": "危機 (kiki)",
+      "keigo": "危機 (kiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chian",
@@ -3663,7 +4363,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chian.png",
-    "meaningEn": "public security"
+    "meaningEn": "public security",
+    "registersEn": {
+      "casual": "治安 (chian)",
+      "formal": "治安 (chian)",
+      "keigo": "治安 (chian) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hinshitsu",
@@ -3689,7 +4394,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hinshitsu.png",
-    "meaningEn": "quality (of goods)"
+    "meaningEn": "quality (of goods)",
+    "registersEn": {
+      "casual": "品質 (hinshitsu)",
+      "formal": "品質 (hinshitsu)",
+      "keigo": "品質 (hinshitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kachi",
@@ -3715,7 +4425,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kachi.png",
-    "meaningEn": "value"
+    "meaningEn": "value",
+    "registersEn": {
+      "casual": "価値 (kachi)",
+      "formal": "価値 (kachi)",
+      "keigo": "価値 (kachi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kijun",
@@ -3741,7 +4456,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kijun.png",
-    "meaningEn": "standard/criterion"
+    "meaningEn": "standard/criterion",
+    "registersEn": {
+      "casual": "基準 (kijun)",
+      "formal": "基準 (kijun)",
+      "keigo": "基準 (kijun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_suijun",
@@ -3767,7 +4487,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_suijun.png",
-    "meaningEn": "level (of quality)"
+    "meaningEn": "level (of quality)",
+    "registersEn": {
+      "casual": "水準 (suijun)",
+      "formal": "水準 (suijun)",
+      "keigo": "水準 (suijun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shinraisei",
@@ -3793,7 +4518,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shinraisei.png",
-    "meaningEn": "reliability"
+    "meaningEn": "reliability",
+    "registersEn": {
+      "casual": "信頼性 (shinraisei)",
+      "formal": "信頼性 (shinraisei)",
+      "keigo": "信頼性 (shinraisei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_henkaku",
@@ -3819,7 +4549,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_henkaku.png",
-    "meaningEn": "reform/transformation"
+    "meaningEn": "reform/transformation",
+    "registersEn": {
+      "casual": "変革 (henkaku)",
+      "formal": "変革 (henkaku)",
+      "keigo": "変革 (henkaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tenkan",
@@ -3845,7 +4580,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tenkan.png",
-    "meaningEn": "shift/conversion"
+    "meaningEn": "shift/conversion",
+    "registersEn": {
+      "casual": "転換 (tenkan)",
+      "formal": "転換 (tenkan)",
+      "keigo": "転換 (tenkan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaikaku",
@@ -3871,7 +4611,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaikaku.png",
-    "meaningEn": "reform"
+    "meaningEn": "reform",
+    "registersEn": {
+      "casual": "改革 (kaikaku)",
+      "formal": "改革 (kaikaku)",
+      "keigo": "改革 (kaikaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kakumei",
@@ -3897,7 +4642,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kakumei.png",
-    "meaningEn": "revolution"
+    "meaningEn": "revolution",
+    "registersEn": {
+      "casual": "革命 (kakumei)",
+      "formal": "革命 (kakumei)",
+      "keigo": "革命 (kakumei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_yochi",
@@ -3923,7 +4673,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_yochi.png",
-    "meaningEn": "room (for possibility)"
+    "meaningEn": "room (for possibility)",
+    "registersEn": {
+      "casual": "余地 (yochi)",
+      "formal": "余地 (yochi)",
+      "keigo": "余地 (yochi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_fukaketsu",
@@ -3949,7 +4704,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_fukaketsu.png",
-    "meaningEn": "indispensable"
+    "meaningEn": "indispensable",
+    "registersEn": {
+      "casual": "不可欠 (fukaketsu)",
+      "formal": "不可欠 (fukaketsu)",
+      "keigo": "不可欠 (fukaketsu) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tassei",
@@ -3975,7 +4735,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tassei.png",
-    "meaningEn": "achievement"
+    "meaningEn": "achievement",
+    "registersEn": {
+      "casual": "達成 (tassei)",
+      "formal": "達成 (tassei)",
+      "keigo": "達成 (tassei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_toutatsu",
@@ -4001,7 +4766,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_toutatsu.png",
-    "meaningEn": "reaching (a goal)"
+    "meaningEn": "reaching (a goal)",
+    "registersEn": {
+      "casual": "到達 (toutatsu)",
+      "formal": "到達 (toutatsu)",
+      "keigo": "到達 (toutatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kakutoku",
@@ -4027,7 +4797,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kakutoku.png",
-    "meaningEn": "acquisition"
+    "meaningEn": "acquisition",
+    "registersEn": {
+      "casual": "獲得 (kakutoku)",
+      "formal": "獲得 (kakutoku)",
+      "keigo": "獲得 (kakutoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_settoku",
@@ -4053,7 +4828,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_settoku.png",
-    "meaningEn": "persuasion"
+    "meaningEn": "persuasion",
+    "registersEn": {
+      "casual": "説得 (settoku)",
+      "formal": "説得 (settoku)",
+      "keigo": "説得 (settoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hanron",
@@ -4079,7 +4859,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hanron.png",
-    "meaningEn": "rebuttal"
+    "meaningEn": "rebuttal",
+    "registersEn": {
+      "casual": "反論 (hanron)",
+      "formal": "反論 (hanron)",
+      "keigo": "反論 (hanron) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kyouchou",
@@ -4105,7 +4890,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyouchou.png",
-    "meaningEn": "emphasis"
+    "meaningEn": "emphasis",
+    "registersEn": {
+      "casual": "強調 (kyouchou)",
+      "formal": "強調 (kyouchou)",
+      "keigo": "強調 (kyouchou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_anji",
@@ -4131,7 +4921,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_anji.png",
-    "meaningEn": "hint/suggestion"
+    "meaningEn": "hint/suggestion",
+    "registersEn": {
+      "casual": "暗示 (anji)",
+      "formal": "暗示 (anji)",
+      "keigo": "暗示 (anji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_zetsubou",
@@ -4157,7 +4952,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_zetsubou.png",
-    "meaningEn": "despair"
+    "meaningEn": "despair",
+    "registersEn": {
+      "casual": "絶望 (zetsubou)",
+      "formal": "絶望 (zetsubou)",
+      "keigo": "絶望 (zetsubou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kibou",
@@ -4183,7 +4983,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kibou.png",
-    "meaningEn": "hope"
+    "meaningEn": "hope",
+    "registersEn": {
+      "casual": "希望 (kibou)",
+      "formal": "希望 (kibou)",
+      "keigo": "希望 (kibou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_manzoku",
@@ -4209,7 +5014,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_manzoku.png",
-    "meaningEn": "satisfaction"
+    "meaningEn": "satisfaction",
+    "registersEn": {
+      "casual": "満足 (manzoku)",
+      "formal": "満足 (manzoku)",
+      "keigo": "満足 (manzoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_fuman",
@@ -4235,7 +5045,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_fuman.png",
-    "meaningEn": "dissatisfaction"
+    "meaningEn": "dissatisfaction",
+    "registersEn": {
+      "casual": "不満 (fuman)",
+      "formal": "不満 (fuman)",
+      "keigo": "不満 (fuman) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tokuchou",
@@ -4261,7 +5076,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tokuchou.png",
-    "meaningEn": "characteristic"
+    "meaningEn": "characteristic",
+    "registersEn": {
+      "casual": "特徴 (tokuchou)",
+      "formal": "特徴 (tokuchou)",
+      "keigo": "特徴 (tokuchou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_youso",
@@ -4287,7 +5107,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_youso.png",
-    "meaningEn": "element/factor"
+    "meaningEn": "element/factor",
+    "registersEn": {
+      "casual": "要素 (youso)",
+      "formal": "要素 (youso)",
+      "keigo": "要素 (youso) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_youin",
@@ -4313,7 +5138,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_youin.png",
-    "meaningEn": "contributing factor"
+    "meaningEn": "contributing factor",
+    "registersEn": {
+      "casual": "要因 (youin)",
+      "formal": "要因 (youin)",
+      "keigo": "要因 (youin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shudan",
@@ -4339,7 +5169,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shudan.png",
-    "meaningEn": "means/method"
+    "meaningEn": "means/method",
+    "registersEn": {
+      "casual": "手段 (shudan)",
+      "formal": "手段 (shudan)",
+      "keigo": "手段 (shudan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_houshin",
@@ -4365,7 +5200,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_houshin.png",
-    "meaningEn": "policy/guiding principle"
+    "meaningEn": "policy/guiding principle",
+    "registersEn": {
+      "casual": "方針 (houshin)",
+      "formal": "方針 (houshin)",
+      "keigo": "方針 (houshin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_aizu",
@@ -4391,7 +5231,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_aizu.png",
-    "meaningEn": "signal/sign"
+    "meaningEn": "signal/sign",
+    "registersEn": {
+      "casual": "合図 (aizu)",
+      "formal": "合図 (aizu)",
+      "keigo": "合図 (aizu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_igai",
@@ -4417,7 +5262,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_igai.png",
-    "meaningEn": "other than/except"
+    "meaningEn": "other than/except",
+    "registersEn": {
+      "casual": "以外 (igai)",
+      "formal": "以外 (igai)",
+      "keigo": "以外 (igai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ichiryuu",
@@ -4443,7 +5293,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ichiryuu.png",
-    "meaningEn": "first-class/top-tier"
+    "meaningEn": "first-class/top-tier",
+    "registersEn": {
+      "casual": "一流 (ichiryuu)",
+      "formal": "一流 (ichiryuu)",
+      "keigo": "一流 (ichiryuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ippan",
@@ -4469,7 +5324,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ippan.png",
-    "meaningEn": "general"
+    "meaningEn": "general",
+    "registersEn": {
+      "casual": "一般 (ippan)",
+      "formal": "一般 (ippan)",
+      "keigo": "一般 (ippan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_idou",
@@ -4495,7 +5355,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_idou.png",
-    "meaningEn": "moving/transfer"
+    "meaningEn": "moving/transfer",
+    "registersEn": {
+      "casual": "移動 (idou)",
+      "formal": "移動 (idou)",
+      "keigo": "移動 (idou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_uchuu",
@@ -4521,7 +5386,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_uchuu.png",
-    "meaningEn": "universe/outer space"
+    "meaningEn": "universe/outer space",
+    "registersEn": {
+      "casual": "宇宙 (uchuu)",
+      "formal": "宇宙 (uchuu)",
+      "keigo": "宇宙 (uchuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_enryo",
@@ -4547,7 +5417,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_enryo.png",
-    "meaningEn": "reserve/holding back"
+    "meaningEn": "reserve/holding back",
+    "registersEn": {
+      "casual": "遠慮 (enryo)",
+      "formal": "遠慮 (enryo)",
+      "keigo": "遠慮 (enryo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_oozei",
@@ -4573,7 +5448,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_oozei.png",
-    "meaningEn": "a large crowd"
+    "meaningEn": "a large crowd",
+    "registersEn": {
+      "casual": "大勢 (oozei)",
+      "formal": "大勢 (oozei)",
+      "keigo": "大勢 (oozei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaiin",
@@ -4599,7 +5479,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaiin.png",
-    "meaningEn": "member"
+    "meaningEn": "member",
+    "registersEn": {
+      "casual": "会員 (kaiin)",
+      "formal": "会員 (kaiin)",
+      "keigo": "会員 (kaiin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaiketsu",
@@ -4625,7 +5510,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaiketsu.png",
-    "meaningEn": "solution"
+    "meaningEn": "solution",
+    "registersEn": {
+      "casual": "解決 (kaiketsu)",
+      "formal": "解決 (kaiketsu)",
+      "keigo": "解決 (kaiketsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaishuu",
@@ -4651,7 +5541,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaishuu.png",
-    "meaningEn": "collection/recovery"
+    "meaningEn": "collection/recovery",
+    "registersEn": {
+      "casual": "回収 (kaishuu)",
+      "formal": "回収 (kaishuu)",
+      "keigo": "回収 (kaishuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaishi",
@@ -4677,7 +5572,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaishi.png",
-    "meaningEn": "start/beginning"
+    "meaningEn": "start/beginning",
+    "registersEn": {
+      "casual": "開始 (kaishi)",
+      "formal": "開始 (kaishi)",
+      "keigo": "開始 (kaishi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaisuu",
@@ -4703,7 +5603,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaisuu.png",
-    "meaningEn": "number of times"
+    "meaningEn": "number of times",
+    "registersEn": {
+      "casual": "回数 (kaisuu)",
+      "formal": "回数 (kaisuu)",
+      "keigo": "回数 (kaisuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaisetsu",
@@ -4729,7 +5634,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaisetsu.png",
-    "meaningEn": "commentary/explanation"
+    "meaningEn": "commentary/explanation",
+    "registersEn": {
+      "casual": "解説 (kaisetsu)",
+      "formal": "解説 (kaisetsu)",
+      "keigo": "解説 (kaisetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kakaku",
@@ -4755,7 +5665,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kakaku.png",
-    "meaningEn": "price"
+    "meaningEn": "price",
+    "registersEn": {
+      "casual": "価格 (kakaku)",
+      "formal": "価格 (kakaku)",
+      "keigo": "価格 (kakaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kakunin",
@@ -4781,7 +5696,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kakunin.png",
-    "meaningEn": "confirmation"
+    "meaningEn": "confirmation",
+    "registersEn": {
+      "casual": "確認 (kakunin)",
+      "formal": "確認 (kakunin)",
+      "keigo": "確認 (kakunin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kankyaku",
@@ -4807,7 +5727,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kankyaku.png",
-    "meaningEn": "audience"
+    "meaningEn": "audience",
+    "registersEn": {
+      "casual": "観客 (kankyaku)",
+      "formal": "観客 (kankyaku)",
+      "keigo": "観客 (kankyaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kankei",
@@ -4833,7 +5758,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kankei.png",
-    "meaningEn": "relationship"
+    "meaningEn": "relationship",
+    "registersEn": {
+      "casual": "関係 (kankei)",
+      "formal": "関係 (kankei)",
+      "keigo": "関係 (kankei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kangei",
@@ -4859,7 +5789,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kangei.png",
-    "meaningEn": "welcome"
+    "meaningEn": "welcome",
+    "registersEn": {
+      "casual": "歓迎 (kangei)",
+      "formal": "歓迎 (kangei)",
+      "keigo": "歓迎 (kangei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kansei",
@@ -4885,7 +5820,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kansei.png",
-    "meaningEn": "completion"
+    "meaningEn": "completion",
+    "registersEn": {
+      "casual": "完成 (kansei)",
+      "formal": "完成 (kansei)",
+      "keigo": "完成 (kansei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_gaishutsu",
@@ -4911,7 +5851,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_gaishutsu.png",
-    "meaningEn": "going out"
+    "meaningEn": "going out",
+    "registersEn": {
+      "casual": "外出 (gaishutsu)",
+      "formal": "外出 (gaishutsu)",
+      "keigo": "外出 (gaishutsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kitaku",
@@ -4937,7 +5882,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kitaku.png",
-    "meaningEn": "returning home"
+    "meaningEn": "returning home",
+    "registersEn": {
+      "casual": "帰宅 (kitaku)",
+      "formal": "帰宅 (kitaku)",
+      "keigo": "帰宅 (kitaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kyousou",
@@ -4963,7 +5913,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyousou.png",
-    "meaningEn": "competition"
+    "meaningEn": "competition",
+    "registersEn": {
+      "casual": "競争 (kyousou)",
+      "formal": "競争 (kyousou)",
+      "keigo": "競争 (kyousou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kyoutsuu",
@@ -4989,7 +5944,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyoutsuu.png",
-    "meaningEn": "common/shared"
+    "meaningEn": "common/shared",
+    "registersEn": {
+      "casual": "共通 (kyoutsuu)",
+      "formal": "共通 (kyoutsuu)",
+      "keigo": "共通 (kyoutsuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kiroku",
@@ -5015,7 +5975,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kiroku.png",
-    "meaningEn": "record"
+    "meaningEn": "record",
+    "registersEn": {
+      "casual": "記録 (kiroku)",
+      "formal": "記録 (kiroku)",
+      "keigo": "記録 (kiroku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kufuu",
@@ -5041,7 +6006,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kufuu.png",
-    "meaningEn": "clever device/workaround"
+    "meaningEn": "clever device/workaround",
+    "registersEn": {
+      "casual": "工夫 (kufuu)",
+      "formal": "工夫 (kufuu)",
+      "keigo": "工夫 (kufuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kubetsu",
@@ -5067,7 +6037,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kubetsu.png",
-    "meaningEn": "distinction"
+    "meaningEn": "distinction",
+    "registersEn": {
+      "casual": "区別 (kubetsu)",
+      "formal": "区別 (kubetsu)",
+      "keigo": "区別 (kubetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kunren",
@@ -5093,7 +6068,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kunren.png",
-    "meaningEn": "training"
+    "meaningEn": "training",
+    "registersEn": {
+      "casual": "訓練 (kunren)",
+      "formal": "訓練 (kunren)",
+      "keigo": "訓練 (kunren) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_guuzen",
@@ -5119,7 +6099,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_guuzen.png",
-    "meaningEn": "coincidence"
+    "meaningEn": "coincidence",
+    "registersEn": {
+      "casual": "偶然 (guuzen)",
+      "formal": "偶然 (guuzen)",
+      "keigo": "偶然 (guuzen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_keikaku",
@@ -5145,7 +6130,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_keikaku.png",
-    "meaningEn": "plan"
+    "meaningEn": "plan",
+    "registersEn": {
+      "casual": "計画 (keikaku)",
+      "formal": "計画 (keikaku)",
+      "keigo": "計画 (keikaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kekkyoku",
@@ -5171,7 +6161,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kekkyoku.png",
-    "meaningEn": "in the end"
+    "meaningEn": "in the end",
+    "registersEn": {
+      "casual": "結局 (kekkyoku)",
+      "formal": "結局 (kekkyoku)",
+      "keigo": "結局 (kekkyoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kekkou",
@@ -5197,7 +6192,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kekkou.png",
-    "meaningEn": "quite/fine as it is"
+    "meaningEn": "quite/fine as it is",
+    "registersEn": {
+      "casual": "結構 (kekkou)",
+      "formal": "結構 (kekkou)",
+      "keigo": "結構 (kekkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ketten",
@@ -5223,7 +6223,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ketten.png",
-    "meaningEn": "flaw/shortcoming"
+    "meaningEn": "flaw/shortcoming",
+    "registersEn": {
+      "casual": "欠点 (ketten)",
+      "formal": "欠点 (ketten)",
+      "keigo": "欠点 (ketten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_koukan",
@@ -5249,7 +6254,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_koukan.png",
-    "meaningEn": "exchange/replacement"
+    "meaningEn": "exchange/replacement",
+    "registersEn": {
+      "casual": "交換 (koukan)",
+      "formal": "交換 (koukan)",
+      "keigo": "交換 (koukan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_koukyou",
@@ -5275,7 +6285,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_koukyou.png",
-    "meaningEn": "public"
+    "meaningEn": "public",
+    "registersEn": {
+      "casual": "公共 (koukyou)",
+      "formal": "公共 (koukyou)",
+      "keigo": "公共 (koukyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_koudou",
@@ -5301,7 +6316,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_koudou.png",
-    "meaningEn": "action/behaviour"
+    "meaningEn": "action/behaviour",
+    "registersEn": {
+      "casual": "行動 (koudou)",
+      "formal": "行動 (koudou)",
+      "keigo": "行動 (koudou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kojin",
@@ -5327,7 +6347,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kojin.png",
-    "meaningEn": "individual"
+    "meaningEn": "individual",
+    "registersEn": {
+      "casual": "個人 (kojin)",
+      "formal": "個人 (kojin)",
+      "keigo": "個人 (kojin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_goukei",
@@ -5353,7 +6378,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_goukei.png",
-    "meaningEn": "total"
+    "meaningEn": "total",
+    "registersEn": {
+      "casual": "合計 (goukei)",
+      "formal": "合計 (goukei)",
+      "keigo": "合計 (goukei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_saishuu",
@@ -5379,7 +6409,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_saishuu.png",
-    "meaningEn": "final"
+    "meaningEn": "final",
+    "registersEn": {
+      "casual": "最終 (saishuu)",
+      "formal": "最終 (saishuu)",
+      "keigo": "最終 (saishuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_saisho",
@@ -5405,7 +6440,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_saisho.png",
-    "meaningEn": "first/at the start"
+    "meaningEn": "first/at the start",
+    "registersEn": {
+      "casual": "最初 (saisho)",
+      "formal": "最初 (saisho)",
+      "keigo": "最初 (saisho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_sansei",
@@ -5431,7 +6471,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_sansei.png",
-    "meaningEn": "agreement/approval"
+    "meaningEn": "agreement/approval",
+    "registersEn": {
+      "casual": "賛成 (sansei)",
+      "formal": "賛成 (sansei)",
+      "keigo": "賛成 (sansei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_zairyou",
@@ -5457,7 +6502,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_zairyou.png",
-    "meaningEn": "material/ingredients"
+    "meaningEn": "material/ingredients",
+    "registersEn": {
+      "casual": "材料 (zairyou)",
+      "formal": "材料 (zairyou)",
+      "keigo": "材料 (zairyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shizen",
@@ -5483,7 +6533,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shizen.png",
-    "meaningEn": "nature"
+    "meaningEn": "nature",
+    "registersEn": {
+      "casual": "自然 (shizen)",
+      "formal": "自然 (shizen)",
+      "keigo": "自然 (shizen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shitei",
@@ -5509,7 +6564,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shitei.png",
-    "meaningEn": "designation (of a time)"
+    "meaningEn": "designation (of a time)",
+    "registersEn": {
+      "casual": "指定 (shitei)",
+      "formal": "指定 (shitei)",
+      "keigo": "指定 (shitei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shimei",
@@ -5535,7 +6595,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shimei.png",
-    "meaningEn": "full name"
+    "meaningEn": "full name",
+    "registersEn": {
+      "casual": "氏名 (shimei)",
+      "formal": "氏名 (shimei)",
+      "keigo": "氏名 (shimei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shuuchuu",
@@ -5561,7 +6626,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shuuchuu.png",
-    "meaningEn": "concentration"
+    "meaningEn": "concentration",
+    "registersEn": {
+      "casual": "集中 (shuuchuu)",
+      "formal": "集中 (shuuchuu)",
+      "keigo": "集中 (shuuchuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shuuryou",
@@ -5587,7 +6657,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shuuryou.png",
-    "meaningEn": "end/completion"
+    "meaningEn": "end/completion",
+    "registersEn": {
+      "casual": "終了 (shuuryou)",
+      "formal": "終了 (shuuryou)",
+      "keigo": "終了 (shuuryou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shurui",
@@ -5613,7 +6688,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shurui.png",
-    "meaningEn": "kind/type"
+    "meaningEn": "kind/type",
+    "registersEn": {
+      "casual": "種類 (shurui)",
+      "formal": "種類 (shurui)",
+      "keigo": "種類 (shurui) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shiyou",
@@ -5639,7 +6719,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shiyou.png",
-    "meaningEn": "use"
+    "meaningEn": "use",
+    "registersEn": {
+      "casual": "使用 (shiyou)",
+      "formal": "使用 (shiyou)",
+      "keigo": "使用 (shiyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shoukai",
@@ -5665,7 +6750,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shoukai.png",
-    "meaningEn": "introduction"
+    "meaningEn": "introduction",
+    "registersEn": {
+      "casual": "紹介 (shoukai)",
+      "formal": "紹介 (shoukai)",
+      "keigo": "紹介 (shoukai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shourai",
@@ -5691,7 +6781,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shourai.png",
-    "meaningEn": "the future"
+    "meaningEn": "the future",
+    "registersEn": {
+      "casual": "将来 (shourai)",
+      "formal": "将来 (shourai)",
+      "keigo": "将来 (shourai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shinkou",
@@ -5717,7 +6812,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shinkou.png",
-    "meaningEn": "progress (of a process)"
+    "meaningEn": "progress (of a process)",
+    "registersEn": {
+      "casual": "進行 (shinkou)",
+      "formal": "進行 (shinkou)",
+      "keigo": "進行 (shinkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shinrin",
@@ -5743,7 +6843,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shinrin.png",
-    "meaningEn": "forest"
+    "meaningEn": "forest",
+    "registersEn": {
+      "casual": "森林 (shinrin)",
+      "formal": "森林 (shinrin)",
+      "keigo": "森林 (shinrin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jiken",
@@ -5769,7 +6874,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jiken.png",
-    "meaningEn": "incident"
+    "meaningEn": "incident",
+    "registersEn": {
+      "casual": "事件 (jiken)",
+      "formal": "事件 (jiken)",
+      "keigo": "事件 (jiken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jisan",
@@ -5795,7 +6905,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jisan.png",
-    "meaningEn": "bringing (something) along"
+    "meaningEn": "bringing (something) along",
+    "registersEn": {
+      "casual": "持参 (jisan)",
+      "formal": "持参 (jisan)",
+      "keigo": "持参 (jisan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jijou",
@@ -5821,7 +6936,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jijou.png",
-    "meaningEn": "circumstances"
+    "meaningEn": "circumstances",
+    "registersEn": {
+      "casual": "事情 (jijou)",
+      "formal": "事情 (jijou)",
+      "keigo": "事情 (jijou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jikkou",
@@ -5847,7 +6967,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jikkou.png",
-    "meaningEn": "execution/carrying out"
+    "meaningEn": "execution/carrying out",
+    "registersEn": {
+      "casual": "実行 (jikkou)",
+      "formal": "実行 (jikkou)",
+      "keigo": "実行 (jikkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jitsuyou",
@@ -5873,7 +6998,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jitsuyou.png",
-    "meaningEn": "practical use"
+    "meaningEn": "practical use",
+    "registersEn": {
+      "casual": "実用 (jitsuyou)",
+      "formal": "実用 (jitsuyou)",
+      "keigo": "実用 (jitsuyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jitsuryoku",
@@ -5899,7 +7029,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jitsuryoku.png",
-    "meaningEn": "real ability"
+    "meaningEn": "real ability",
+    "registersEn": {
+      "casual": "実力 (jitsuryoku)",
+      "formal": "実力 (jitsuryoku)",
+      "keigo": "実力 (jitsuryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_junban",
@@ -5925,7 +7060,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_junban.png",
-    "meaningEn": "order/turn"
+    "meaningEn": "order/turn",
+    "registersEn": {
+      "casual": "順番 (junban)",
+      "formal": "順番 (junban)",
+      "keigo": "順番 (junban) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_joutai",
@@ -5951,7 +7091,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_joutai.png",
-    "meaningEn": "state/condition"
+    "meaningEn": "state/condition",
+    "registersEn": {
+      "casual": "状態 (joutai)",
+      "formal": "状態 (joutai)",
+      "keigo": "状態 (joutai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_joudan",
@@ -5977,7 +7122,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_joudan.png",
-    "meaningEn": "joke"
+    "meaningEn": "joke",
+    "registersEn": {
+      "casual": "冗談 (joudan)",
+      "formal": "冗談 (joudan)",
+      "keigo": "冗談 (joudan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_josei",
@@ -6003,7 +7153,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_josei.png",
-    "meaningEn": "woman"
+    "meaningEn": "woman",
+    "registersEn": {
+      "casual": "女性 (josei)",
+      "formal": "女性 (josei)",
+      "keigo": "女性 (josei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jinsei",
@@ -6029,7 +7184,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jinsei.png",
-    "meaningEn": "(a person's) life"
+    "meaningEn": "(a person's) life",
+    "registersEn": {
+      "casual": "人生 (jinsei)",
+      "formal": "人生 (jinsei)",
+      "keigo": "人生 (jinsei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_seigen",
@@ -6055,7 +7215,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_seigen.png",
-    "meaningEn": "restriction/limit"
+    "meaningEn": "restriction/limit",
+    "registersEn": {
+      "casual": "制限 (seigen)",
+      "formal": "制限 (seigen)",
+      "keigo": "制限 (seigen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_zenin2",
@@ -6081,7 +7246,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_zenin2.png",
-    "meaningEn": "everyone/all members"
+    "meaningEn": "everyone/all members",
+    "registersEn": {
+      "casual": "全員 (zenin)",
+      "formal": "全員 (zenin)",
+      "keigo": "全員 (zenin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_soutou",
@@ -6107,7 +7277,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_soutou.png",
-    "meaningEn": "considerably"
+    "meaningEn": "considerably",
+    "registersEn": {
+      "casual": "相当 (soutou)",
+      "formal": "相当 (soutou)",
+      "keigo": "相当 (soutou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_souryou",
@@ -6133,7 +7308,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_souryou.png",
-    "meaningEn": "shipping fee"
+    "meaningEn": "shipping fee",
+    "registersEn": {
+      "casual": "送料 (souryou)",
+      "formal": "送料 (souryou)",
+      "keigo": "送料 (souryou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_zouka",
@@ -6159,7 +7339,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_zouka.png",
-    "meaningEn": "increase"
+    "meaningEn": "increase",
+    "registersEn": {
+      "casual": "増加 (zouka)",
+      "formal": "増加 (zouka)",
+      "keigo": "増加 (zouka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tairyou",
@@ -6185,7 +7370,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tairyou.png",
-    "meaningEn": "large quantity"
+    "meaningEn": "large quantity",
+    "registersEn": {
+      "casual": "大量 (tairyou)",
+      "formal": "大量 (tairyou)",
+      "keigo": "大量 (tairyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_daikin",
@@ -6211,7 +7401,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_daikin.png",
-    "meaningEn": "payment/charge"
+    "meaningEn": "payment/charge",
+    "registersEn": {
+      "casual": "代金 (daikin)",
+      "formal": "代金 (daikin)",
+      "keigo": "代金 (daikin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_dantai",
@@ -6237,7 +7432,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_dantai.png",
-    "meaningEn": "group/party"
+    "meaningEn": "group/party",
+    "registersEn": {
+      "casual": "団体 (dantai)",
+      "formal": "団体 (dantai)",
+      "keigo": "団体 (dantai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chuumon",
@@ -6263,7 +7463,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chuumon.png",
-    "meaningEn": "order (of goods)"
+    "meaningEn": "order (of goods)",
+    "registersEn": {
+      "casual": "注文 (chuumon)",
+      "formal": "注文 (chuumon)",
+      "keigo": "注文 (chuumon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_choushi",
@@ -6289,7 +7494,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_choushi.png",
-    "meaningEn": "condition/state (of health)"
+    "meaningEn": "condition/state (of health)",
+    "registersEn": {
+      "casual": "調子 (choushi)",
+      "formal": "調子 (choushi)",
+      "keigo": "調子 (choushi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_teika",
@@ -6315,7 +7525,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_teika.png",
-    "meaningEn": "decline/drop"
+    "meaningEn": "decline/drop",
+    "registersEn": {
+      "casual": "低下 (teika)",
+      "formal": "低下 (teika)",
+      "keigo": "低下 (teika) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_dengon",
@@ -6341,7 +7556,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_dengon.png",
-    "meaningEn": "message (passed on)"
+    "meaningEn": "message (passed on)",
+    "registersEn": {
+      "casual": "伝言 (dengon)",
+      "formal": "伝言 (dengon)",
+      "keigo": "伝言 (dengon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_dokuritsu",
@@ -6367,7 +7587,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_dokuritsu.png",
-    "meaningEn": "independence"
+    "meaningEn": "independence",
+    "registersEn": {
+      "casual": "独立 (dokuritsu)",
+      "formal": "独立 (dokuritsu)",
+      "keigo": "独立 (dokuritsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_doryoku",
@@ -6393,7 +7618,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_doryoku.png",
-    "meaningEn": "effort"
+    "meaningEn": "effort",
+    "registersEn": {
+      "casual": "努力 (doryoku)",
+      "formal": "努力 (doryoku)",
+      "keigo": "努力 (doryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_naiyou",
@@ -6419,7 +7649,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_naiyou.png",
-    "meaningEn": "content"
+    "meaningEn": "content",
+    "registersEn": {
+      "casual": "内容 (naiyou)",
+      "formal": "内容 (naiyou)",
+      "keigo": "内容 (naiyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_nakami",
@@ -6445,7 +7680,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_nakami.png",
-    "meaningEn": "contents (inside)"
+    "meaningEn": "contents (inside)",
+    "registersEn": {
+      "casual": "中身 (nakami)",
+      "formal": "中身 (nakami)",
+      "keigo": "中身 (nakami) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_nimotsu",
@@ -6471,7 +7711,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_nimotsu.png",
-    "meaningEn": "luggage"
+    "meaningEn": "luggage",
+    "registersEn": {
+      "casual": "荷物 (nimotsu)",
+      "formal": "荷物 (nimotsu)",
+      "keigo": "荷物 (nimotsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ninki",
@@ -6497,7 +7742,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ninki.png",
-    "meaningEn": "popularity"
+    "meaningEn": "popularity",
+    "registersEn": {
+      "casual": "人気 (ninki)",
+      "formal": "人気 (ninki)",
+      "keigo": "人気 (ninki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ningen",
@@ -6523,7 +7773,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ningen.png",
-    "meaningEn": "human being"
+    "meaningEn": "human being",
+    "registersEn": {
+      "casual": "人間 (ningen)",
+      "formal": "人間 (ningen)",
+      "keigo": "人間 (ningen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_nedan",
@@ -6549,7 +7804,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_nedan.png",
-    "meaningEn": "price"
+    "meaningEn": "price",
+    "registersEn": {
+      "casual": "値段 (nedan)",
+      "formal": "値段 (nedan)",
+      "keigo": "値段 (nedan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_nebou",
@@ -6575,7 +7835,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_nebou.png",
-    "meaningEn": "oversleeping"
+    "meaningEn": "oversleeping",
+    "registersEn": {
+      "casual": "寝坊 (nebou)",
+      "formal": "寝坊 (nebou)",
+      "keigo": "寝坊 (nebou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_nenrei",
@@ -6601,7 +7866,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_nenrei.png",
-    "meaningEn": "age"
+    "meaningEn": "age",
+    "registersEn": {
+      "casual": "年齢 (nenrei)",
+      "formal": "年齢 (nenrei)",
+      "keigo": "年齢 (nenrei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hassei",
@@ -6627,7 +7897,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hassei.png",
-    "meaningEn": "occurrence"
+    "meaningEn": "occurrence",
+    "registersEn": {
+      "casual": "発生 (hassei)",
+      "formal": "発生 (hassei)",
+      "keigo": "発生 (hassei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hijou",
@@ -6653,7 +7928,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hijou.png",
-    "meaningEn": "extremely"
+    "meaningEn": "extremely",
+    "registersEn": {
+      "casual": "非常 (hijou)",
+      "formal": "非常 (hijou)",
+      "keigo": "非常 (hijou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hitei",
@@ -6679,7 +7959,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hitei.png",
-    "meaningEn": "denial"
+    "meaningEn": "denial",
+    "registersEn": {
+      "casual": "否定 (hitei)",
+      "formal": "否定 (hitei)",
+      "keigo": "否定 (hitei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_himitsu",
@@ -6705,7 +7990,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_himitsu.png",
-    "meaningEn": "secret"
+    "meaningEn": "secret",
+    "registersEn": {
+      "casual": "秘密 (himitsu)",
+      "formal": "秘密 (himitsu)",
+      "keigo": "秘密 (himitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hyoumen",
@@ -6731,7 +8021,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hyoumen.png",
-    "meaningEn": "surface"
+    "meaningEn": "surface",
+    "registersEn": {
+      "casual": "表面 (hyoumen)",
+      "formal": "表面 (hyoumen)",
+      "keigo": "表面 (hyoumen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_fusoku",
@@ -6757,7 +8052,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_fusoku.png",
-    "meaningEn": "shortage"
+    "meaningEn": "shortage",
+    "registersEn": {
+      "casual": "不足 (fusoku)",
+      "formal": "不足 (fusoku)",
+      "keigo": "不足 (fusoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bubun",
@@ -6783,7 +8083,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bubun.png",
-    "meaningEn": "part/portion"
+    "meaningEn": "part/portion",
+    "registersEn": {
+      "casual": "部分 (bubun)",
+      "formal": "部分 (bubun)",
+      "keigo": "部分 (bubun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bunrui",
@@ -6809,7 +8114,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bunrui.png",
-    "meaningEn": "classification"
+    "meaningEn": "classification",
+    "registersEn": {
+      "casual": "分類 (bunrui)",
+      "formal": "分類 (bunrui)",
+      "keigo": "分類 (bunrui) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_houhou",
@@ -6835,7 +8145,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_houhou.png",
-    "meaningEn": "method"
+    "meaningEn": "method",
+    "registersEn": {
+      "casual": "方法 (houhou)",
+      "formal": "方法 (houhou)",
+      "keigo": "方法 (houhou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hontou",
@@ -6861,7 +8176,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hontou.png",
-    "meaningEn": "true/real"
+    "meaningEn": "true/real",
+    "registersEn": {
+      "casual": "本当 (hontou)",
+      "formal": "本当 (hontou)",
+      "keigo": "本当 (hontou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_mikata",
@@ -6887,7 +8207,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_mikata.png",
-    "meaningEn": "way of looking at things"
+    "meaningEn": "way of looking at things",
+    "registersEn": {
+      "casual": "見方 (mikata)",
+      "formal": "見方 (mikata)",
+      "keigo": "見方 (mikata) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_mihon",
@@ -6913,7 +8238,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_mihon.png",
-    "meaningEn": "sample"
+    "meaningEn": "sample",
+    "registersEn": {
+      "casual": "見本 (mihon)",
+      "formal": "見本 (mihon)",
+      "keigo": "見本 (mihon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_muryou",
@@ -6939,7 +8269,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_muryou.png",
-    "meaningEn": "free of charge"
+    "meaningEn": "free of charge",
+    "registersEn": {
+      "casual": "無料 (muryou)",
+      "formal": "無料 (muryou)",
+      "keigo": "無料 (muryou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_mokuhyou",
@@ -6965,7 +8300,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_mokuhyou.png",
-    "meaningEn": "goal/target"
+    "meaningEn": "goal/target",
+    "registersEn": {
+      "casual": "目標 (mokuhyou)",
+      "formal": "目標 (mokuhyou)",
+      "keigo": "目標 (mokuhyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_yuuryou",
@@ -6991,7 +8331,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_yuuryou.png",
-    "meaningEn": "paid/for a fee"
+    "meaningEn": "paid/for a fee",
+    "registersEn": {
+      "casual": "有料 (yuuryou)",
+      "formal": "有料 (yuuryou)",
+      "keigo": "有料 (yuuryou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_yosou",
@@ -7017,7 +8362,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_yosou.png",
-    "meaningEn": "prediction"
+    "meaningEn": "prediction",
+    "registersEn": {
+      "casual": "予想 (yosou)",
+      "formal": "予想 (yosou)",
+      "keigo": "予想 (yosou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ryoukin",
@@ -7043,7 +8393,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ryoukin.png",
-    "meaningEn": "fee/fare"
+    "meaningEn": "fee/fare",
+    "registersEn": {
+      "casual": "料金 (ryoukin)",
+      "formal": "料金 (ryoukin)",
+      "keigo": "料金 (ryoukin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_rusu",
@@ -7069,7 +8424,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_rusu.png",
-    "meaningEn": "being away from home"
+    "meaningEn": "being away from home",
+    "registersEn": {
+      "casual": "留守 (rusu)",
+      "formal": "留守 (rusu)",
+      "keigo": "留守 (rusu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_waribiki",
@@ -7095,7 +8455,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_waribiki.png",
-    "meaningEn": "discount"
+    "meaningEn": "discount",
+    "registersEn": {
+      "casual": "割引 (waribiki)",
+      "formal": "割引 (waribiki)",
+      "keigo": "割引 (waribiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_sassoku",
@@ -7121,7 +8486,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_sassoku.png",
-    "meaningEn": "at once/right away"
+    "meaningEn": "at once/right away",
+    "registersEn": {
+      "casual": "早速 (sassoku)",
+      "formal": "早速 (sassoku)",
+      "keigo": "早速 (sassoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tashou",
@@ -7147,7 +8517,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tashou.png",
-    "meaningEn": "somewhat/a little"
+    "meaningEn": "somewhat/a little",
+    "registersEn": {
+      "casual": "多少 (tashou)",
+      "formal": "多少 (tashou)",
+      "keigo": "多少 (tashou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_touzen",
@@ -7173,7 +8548,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_touzen.png",
-    "meaningEn": "naturally/of course"
+    "meaningEn": "naturally/of course",
+    "registersEn": {
+      "casual": "当然 (touzen)",
+      "formal": "当然 (touzen)",
+      "keigo": "当然 (touzen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_totsuzen",
@@ -7199,7 +8579,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_totsuzen.png",
-    "meaningEn": "suddenly"
+    "meaningEn": "suddenly",
+    "registersEn": {
+      "casual": "突然 (totsuzen)",
+      "formal": "突然 (totsuzen)",
+      "keigo": "突然 (totsuzen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_fudan",
@@ -7225,7 +8610,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_fudan.png",
-    "meaningEn": "usually"
+    "meaningEn": "usually",
+    "registersEn": {
+      "casual": "普段 (fudan)",
+      "formal": "普段 (fudan)",
+      "keigo": "普段 (fudan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_aiyou",
@@ -7251,7 +8641,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_aiyou.png",
-    "meaningEn": "favourite (regularly used)"
+    "meaningEn": "favourite (regularly used)",
+    "registersEn": {
+      "casual": "愛用 (aiyou)",
+      "formal": "愛用 (aiyou)",
+      "keigo": "愛用 (aiyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_antei",
@@ -7277,7 +8672,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_antei.png",
-    "meaningEn": "stability"
+    "meaningEn": "stability",
+    "registersEn": {
+      "casual": "安定 (antei)",
+      "formal": "安定 (antei)",
+      "keigo": "安定 (antei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_igi",
@@ -7303,7 +8703,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_igi.png",
-    "meaningEn": "significance"
+    "meaningEn": "significance",
+    "registersEn": {
+      "casual": "意義 (igi)",
+      "formal": "意義 (igi)",
+      "keigo": "意義 (igi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ikou",
@@ -7329,7 +8734,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ikou.png",
-    "meaningEn": "transition (of a system)"
+    "meaningEn": "transition (of a system)",
+    "registersEn": {
+      "casual": "移行 (ikou)",
+      "formal": "移行 (ikou)",
+      "keigo": "移行 (ikou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ijou",
@@ -7355,7 +8765,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ijou.png",
-    "meaningEn": "abnormality"
+    "meaningEn": "abnormality",
+    "registersEn": {
+      "casual": "異常 (ijou)",
+      "formal": "異常 (ijou)",
+      "keigo": "異常 (ijou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ishi",
@@ -7381,7 +8796,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ishi.png",
-    "meaningEn": "intention/will"
+    "meaningEn": "intention/will",
+    "registersEn": {
+      "casual": "意思 (ishi)",
+      "formal": "意思 (ishi)",
+      "keigo": "意思 (ishi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kanshin",
@@ -7407,7 +8827,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kanshin.png",
-    "meaningEn": "interest/concern"
+    "meaningEn": "interest/concern",
+    "registersEn": {
+      "casual": "関心 (kanshin)",
+      "formal": "関心 (kanshin)",
+      "keigo": "関心 (kanshin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_akuma",
@@ -7433,7 +8858,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_akuma.png",
-    "meaningEn": "devil/demon"
+    "meaningEn": "devil/demon",
+    "registersEn": {
+      "casual": "悪魔 (akuma)",
+      "formal": "悪魔 (akuma)",
+      "keigo": "悪魔 (akuma) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bunmei",
@@ -7459,7 +8889,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bunmei.png",
-    "meaningEn": "civilisation"
+    "meaningEn": "civilisation",
+    "registersEn": {
+      "casual": "文明 (bunmei)",
+      "formal": "文明 (bunmei)",
+      "keigo": "文明 (bunmei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bunya",
@@ -7485,7 +8920,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bunya.png",
-    "meaningEn": "field/domain"
+    "meaningEn": "field/domain",
+    "registersEn": {
+      "casual": "分野 (bunya)",
+      "formal": "分野 (bunya)",
+      "keigo": "分野 (bunya) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chii",
@@ -7511,7 +8951,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chii.png",
-    "meaningEn": "status/position"
+    "meaningEn": "status/position",
+    "registersEn": {
+      "casual": "地位 (chii)",
+      "formal": "地位 (chii)",
+      "keigo": "地位 (chii) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chouki",
@@ -7537,7 +8982,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chouki.png",
-    "meaningEn": "long term"
+    "meaningEn": "long term",
+    "registersEn": {
+      "casual": "長期 (chouki)",
+      "formal": "長期 (chouki)",
+      "keigo": "長期 (chouki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chuushoku",
@@ -7563,7 +9013,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chuushoku.png",
-    "meaningEn": "lunch"
+    "meaningEn": "lunch",
+    "registersEn": {
+      "casual": "昼食 (chuushoku)",
+      "formal": "昼食 (chuushoku)",
+      "keigo": "昼食 (chuushoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_daibubun",
@@ -7589,7 +9044,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_daibubun.png",
-    "meaningEn": "the greater part"
+    "meaningEn": "the greater part",
+    "registersEn": {
+      "casual": "大部分 (daibubun)",
+      "formal": "大部分 (daibubun)",
+      "keigo": "大部分 (daibubun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_furi",
@@ -7615,7 +9075,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_furi.png",
-    "meaningEn": "disadvantageous"
+    "meaningEn": "disadvantageous",
+    "registersEn": {
+      "casual": "不利 (furi)",
+      "formal": "不利 (furi)",
+      "keigo": "不利 (furi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hitokoto",
@@ -7641,7 +9106,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hitokoto.png",
-    "meaningEn": "a word/a brief remark"
+    "meaningEn": "a word/a brief remark",
+    "registersEn": {
+      "casual": "一言 (hitokoto)",
+      "formal": "一言 (hitokoto)",
+      "keigo": "一言 (hitokoto) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_honmono",
@@ -7667,7 +9137,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_honmono.png",
-    "meaningEn": "the real thing"
+    "meaningEn": "the real thing",
+    "registersEn": {
+      "casual": "本物 (honmono)",
+      "formal": "本物 (honmono)",
+      "keigo": "本物 (honmono) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_honnin",
@@ -7693,7 +9168,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_honnin.png",
-    "meaningEn": "the person in question"
+    "meaningEn": "the person in question",
+    "registersEn": {
+      "casual": "本人 (honnin)",
+      "formal": "本人 (honnin)",
+      "keigo": "本人 (honnin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_icchi",
@@ -7719,7 +9199,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_icchi.png",
-    "meaningEn": "agreement/match"
+    "meaningEn": "agreement/match",
+    "registersEn": {
+      "casual": "一致 (icchi)",
+      "formal": "一致 (icchi)",
+      "keigo": "一致 (icchi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ippou",
@@ -7745,7 +9230,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ippou.png",
-    "meaningEn": "on the other hand"
+    "meaningEn": "on the other hand",
+    "registersEn": {
+      "casual": "一方 (ippou)",
+      "formal": "一方 (ippou)",
+      "keigo": "一方 (ippou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_isshou",
@@ -7771,7 +9261,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_isshou.png",
-    "meaningEn": "a whole lifetime"
+    "meaningEn": "a whole lifetime",
+    "registersEn": {
+      "casual": "一生 (isshou)",
+      "formal": "一生 (isshou)",
+      "keigo": "一生 (isshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_isshu",
@@ -7797,7 +9292,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_isshu.png",
-    "meaningEn": "a kind of"
+    "meaningEn": "a kind of",
+    "registersEn": {
+      "casual": "一種 (isshu)",
+      "formal": "一種 (isshu)",
+      "keigo": "一種 (isshu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_issou",
@@ -7823,7 +9323,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_issou.png",
-    "meaningEn": "even more"
+    "meaningEn": "even more",
+    "registersEn": {
+      "casual": "一層 (issou)",
+      "formal": "一層 (issou)",
+      "keigo": "一層 (issou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ittai",
@@ -7849,7 +9354,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ittai.png",
-    "meaningEn": "just what/on earth (emphasis)"
+    "meaningEn": "just what/on earth (emphasis)",
+    "registersEn": {
+      "casual": "一体 (ittai)",
+      "formal": "一体 (ittai)",
+      "keigo": "一体 (ittai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jama",
@@ -7875,7 +9385,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jama.png",
-    "meaningEn": "hindrance/nuisance"
+    "meaningEn": "hindrance/nuisance",
+    "registersEn": {
+      "casual": "邪魔 (jama)",
+      "formal": "邪魔 (jama)",
+      "keigo": "邪魔 (jama) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kimi",
@@ -7901,7 +9416,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kimi.png",
-    "meaningEn": "a touch of/tendency"
+    "meaningEn": "a touch of/tendency",
+    "registersEn": {
+      "casual": "気味 (kimi)",
+      "formal": "気味 (kimi)",
+      "keigo": "気味 (kimi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kyuushuu",
@@ -7927,7 +9447,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyuushuu.png",
-    "meaningEn": "absorption"
+    "meaningEn": "absorption",
+    "registersEn": {
+      "casual": "吸収 (kyuushuu)",
+      "formal": "吸収 (kyuushuu)",
+      "keigo": "吸収 (kyuushuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kyuusoku",
@@ -7953,7 +9478,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kyuusoku.png",
-    "meaningEn": "rapid"
+    "meaningEn": "rapid",
+    "registersEn": {
+      "casual": "急速 (kyuusoku)",
+      "formal": "急速 (kyuusoku)",
+      "keigo": "急速 (kyuusoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_manichi",
@@ -7979,7 +9509,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_manichi.png",
-    "meaningEn": "in the unlikely event"
+    "meaningEn": "in the unlikely event",
+    "registersEn": {
+      "casual": "万一 (manichi)",
+      "formal": "万一 (manichi)",
+      "keigo": "万一 (manichi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_nouryoku",
@@ -8005,7 +9540,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_nouryoku.png",
-    "meaningEn": "ability"
+    "meaningEn": "ability",
+    "registersEn": {
+      "casual": "能力 (nouryoku)",
+      "formal": "能力 (nouryoku)",
+      "keigo": "能力 (nouryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_renzoku",
@@ -8031,7 +9571,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_renzoku.png",
-    "meaningEn": "continuous/consecutive"
+    "meaningEn": "continuous/consecutive",
+    "registersEn": {
+      "casual": "連続 (renzoku)",
+      "formal": "連続 (renzoku)",
+      "keigo": "連続 (renzoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shokuhin",
@@ -8057,7 +9602,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shokuhin.png",
-    "meaningEn": "foodstuffs"
+    "meaningEn": "foodstuffs",
+    "registersEn": {
+      "casual": "食品 (shokuhin)",
+      "formal": "食品 (shokuhin)",
+      "keigo": "食品 (shokuhin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shuudan",
@@ -8083,7 +9633,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shuudan.png",
-    "meaningEn": "group/collective"
+    "meaningEn": "group/collective",
+    "registersEn": {
+      "casual": "集団 (shuudan)",
+      "formal": "集団 (shuudan)",
+      "keigo": "集団 (shuudan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shuukaku",
@@ -8109,7 +9664,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shuukaku.png",
-    "meaningEn": "harvest"
+    "meaningEn": "harvest",
+    "registersEn": {
+      "casual": "収穫 (shuukaku)",
+      "formal": "収穫 (shuukaku)",
+      "keigo": "収穫 (shuukaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_taihan",
@@ -8135,7 +9695,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_taihan.png",
-    "meaningEn": "the majority"
+    "meaningEn": "the majority",
+    "registersEn": {
+      "casual": "大半 (taihan)",
+      "formal": "大半 (taihan)",
+      "keigo": "大半 (taihan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tetsuya",
@@ -8161,7 +9726,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tetsuya.png",
-    "meaningEn": "staying up all night"
+    "meaningEn": "staying up all night",
+    "registersEn": {
+      "casual": "徹夜 (tetsuya)",
+      "formal": "徹夜 (tetsuya)",
+      "keigo": "徹夜 (tetsuya) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_yobun",
@@ -8187,7 +9757,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_yobun.png",
-    "meaningEn": "surplus/extra"
+    "meaningEn": "surplus/extra",
+    "registersEn": {
+      "casual": "余分 (yobun)",
+      "formal": "余分 (yobun)",
+      "keigo": "余分 (yobun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_yuiitsu",
@@ -8213,7 +9788,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_yuiitsu.png",
-    "meaningEn": "the only one"
+    "meaningEn": "the only one",
+    "registersEn": {
+      "casual": "唯一 (yuiitsu)",
+      "formal": "唯一 (yuiitsu)",
+      "keigo": "唯一 (yuiitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_yuuri",
@@ -8239,7 +9819,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_yuuri.png",
-    "meaningEn": "advantageous"
+    "meaningEn": "advantageous",
+    "registersEn": {
+      "casual": "有利 (yuuri)",
+      "formal": "有利 (yuuri)",
+      "keigo": "有利 (yuuri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_akuji",
@@ -8265,7 +9850,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_akuji.png",
-    "meaningEn": "wrongdoing"
+    "meaningEn": "wrongdoing",
+    "registersEn": {
+      "casual": "悪事 (akuji)",
+      "formal": "悪事 (akuji)",
+      "keigo": "悪事 (akuji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_attou",
@@ -8291,7 +9881,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_attou.png",
-    "meaningEn": "overwhelming"
+    "meaningEn": "overwhelming",
+    "registersEn": {
+      "casual": "圧倒 (attou)",
+      "formal": "圧倒 (attou)",
+      "keigo": "圧倒 (attou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_atsuryoku",
@@ -8317,7 +9912,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_atsuryoku.png",
-    "meaningEn": "pressure"
+    "meaningEn": "pressure",
+    "registersEn": {
+      "casual": "圧力 (atsuryoku)",
+      "formal": "圧力 (atsuryoku)",
+      "keigo": "圧力 (atsuryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bakudan",
@@ -8343,7 +9943,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bakudan.png",
-    "meaningEn": "bomb"
+    "meaningEn": "bomb",
+    "registersEn": {
+      "casual": "爆弾 (bakudan)",
+      "formal": "爆弾 (bakudan)",
+      "keigo": "爆弾 (bakudan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_benkai",
@@ -8369,7 +9974,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_benkai.png",
-    "meaningEn": "excuse/justification"
+    "meaningEn": "excuse/justification",
+    "registersEn": {
+      "casual": "弁解 (benkai)",
+      "formal": "弁解 (benkai)",
+      "keigo": "弁解 (benkai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_benmei",
@@ -8395,7 +10005,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_benmei.png",
-    "meaningEn": "explanation in one's defence"
+    "meaningEn": "explanation in one's defence",
+    "registersEn": {
+      "casual": "弁明 (benmei)",
+      "formal": "弁明 (benmei)",
+      "keigo": "弁明 (benmei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_binbou",
@@ -8421,7 +10036,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_binbou.png",
-    "meaningEn": "poverty"
+    "meaningEn": "poverty",
+    "registersEn": {
+      "casual": "貧乏 (binbou)",
+      "formal": "貧乏 (binbou)",
+      "keigo": "貧乏 (binbou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bouchou",
@@ -8447,7 +10067,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bouchou.png",
-    "meaningEn": "expansion"
+    "meaningEn": "expansion",
+    "registersEn": {
+      "casual": "膨張 (bouchou)",
+      "formal": "膨張 (bouchou)",
+      "keigo": "膨張 (bouchou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bouei",
@@ -8473,7 +10098,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bouei.png",
-    "meaningEn": "defence"
+    "meaningEn": "defence",
+    "registersEn": {
+      "casual": "防衛 (bouei)",
+      "formal": "防衛 (bouei)",
+      "keigo": "防衛 (bouei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bouryoku",
@@ -8499,7 +10129,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bouryoku.png",
-    "meaningEn": "violence"
+    "meaningEn": "violence",
+    "registersEn": {
+      "casual": "暴力 (bouryoku)",
+      "formal": "暴力 (bouryoku)",
+      "keigo": "暴力 (bouryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bunpai",
@@ -8525,7 +10160,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bunpai.png",
-    "meaningEn": "distribution/sharing out"
+    "meaningEn": "distribution/sharing out",
+    "registersEn": {
+      "casual": "分配 (bunpai)",
+      "formal": "分配 (bunpai)",
+      "keigo": "分配 (bunpai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_bunsan",
@@ -8551,7 +10191,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_bunsan.png",
-    "meaningEn": "dispersion"
+    "meaningEn": "dispersion",
+    "registersEn": {
+      "casual": "分散 (bunsan)",
+      "formal": "分散 (bunsan)",
+      "keigo": "分散 (bunsan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_busou",
@@ -8577,7 +10222,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_busou.png",
-    "meaningEn": "armament"
+    "meaningEn": "armament",
+    "registersEn": {
+      "casual": "武装 (busou)",
+      "formal": "武装 (busou)",
+      "keigo": "武装 (busou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chikuseki",
@@ -8603,7 +10253,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chikuseki.png",
-    "meaningEn": "accumulation"
+    "meaningEn": "accumulation",
+    "registersEn": {
+      "casual": "蓄積 (chikuseki)",
+      "formal": "蓄積 (chikuseki)",
+      "keigo": "蓄積 (chikuseki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chinmoku",
@@ -8629,7 +10284,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chinmoku.png",
-    "meaningEn": "silence"
+    "meaningEn": "silence",
+    "registersEn": {
+      "casual": "沈黙 (chinmoku)",
+      "formal": "沈黙 (chinmoku)",
+      "keigo": "沈黙 (chinmoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chisei",
@@ -8655,7 +10315,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chisei.png",
-    "meaningEn": "intellect"
+    "meaningEn": "intellect",
+    "registersEn": {
+      "casual": "知性 (chisei)",
+      "formal": "知性 (chisei)",
+      "keigo": "知性 (chisei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chitsujo",
@@ -8681,7 +10346,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chitsujo.png",
-    "meaningEn": "order (social)"
+    "meaningEn": "order (social)",
+    "registersEn": {
+      "casual": "秩序 (chitsujo)",
+      "formal": "秩序 (chitsujo)",
+      "keigo": "秩序 (chitsujo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chokumen",
@@ -8707,7 +10377,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chokumen.png",
-    "meaningEn": "facing (a problem)"
+    "meaningEn": "facing (a problem)",
+    "registersEn": {
+      "casual": "直面 (chokumen)",
+      "formal": "直面 (chokumen)",
+      "keigo": "直面 (chokumen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chuudan",
@@ -8733,7 +10408,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chuudan.png",
-    "meaningEn": "interruption"
+    "meaningEn": "interruption",
+    "registersEn": {
+      "casual": "中断 (chuudan)",
+      "formal": "中断 (chuudan)",
+      "keigo": "中断 (chuudan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chuukoku",
@@ -8759,7 +10439,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chuukoku.png",
-    "meaningEn": "advice/warning"
+    "meaningEn": "advice/warning",
+    "registersEn": {
+      "casual": "忠告 (chuukoku)",
+      "formal": "忠告 (chuukoku)",
+      "keigo": "忠告 (chuukoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_dageki",
@@ -8785,7 +10470,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_dageki.png",
-    "meaningEn": "blow/damage"
+    "meaningEn": "blow/damage",
+    "registersEn": {
+      "casual": "打撃 (dageki)",
+      "formal": "打撃 (dageki)",
+      "keigo": "打撃 (dageki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_danketsu",
@@ -8811,7 +10501,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_danketsu.png",
-    "meaningEn": "unity/solidarity"
+    "meaningEn": "unity/solidarity",
+    "registersEn": {
+      "casual": "団結 (danketsu)",
+      "formal": "団結 (danketsu)",
+      "keigo": "団結 (danketsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_dasshutsu",
@@ -8837,7 +10532,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_dasshutsu.png",
-    "meaningEn": "escape"
+    "meaningEn": "escape",
+    "registersEn": {
+      "casual": "脱出 (dasshutsu)",
+      "formal": "脱出 (dasshutsu)",
+      "keigo": "脱出 (dasshutsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_dodai",
@@ -8863,7 +10563,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_dodai.png",
-    "meaningEn": "foundation"
+    "meaningEn": "foundation",
+    "registersEn": {
+      "casual": "土台 (dodai)",
+      "formal": "土台 (dodai)",
+      "keigo": "土台 (dodai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_douki",
@@ -8889,7 +10594,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_douki.png",
-    "meaningEn": "motive"
+    "meaningEn": "motive",
+    "registersEn": {
+      "casual": "動機 (douki)",
+      "formal": "動機 (douki)",
+      "keigo": "動機 (douki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_dourui",
@@ -8915,7 +10625,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_dourui.png",
-    "meaningEn": "the same kind"
+    "meaningEn": "the same kind",
+    "registersEn": {
+      "casual": "同類 (dourui)",
+      "formal": "同類 (dourui)",
+      "keigo": "同類 (dourui) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_doutou",
@@ -8941,7 +10656,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_doutou.png",
-    "meaningEn": "equivalent"
+    "meaningEn": "equivalent",
+    "registersEn": {
+      "casual": "同等 (doutou)",
+      "formal": "同等 (doutou)",
+      "keigo": "同等 (doutou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_futan",
@@ -8967,7 +10687,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_futan.png",
-    "meaningEn": "burden"
+    "meaningEn": "burden",
+    "registersEn": {
+      "casual": "負担 (futan)",
+      "formal": "負担 (futan)",
+      "keigo": "負担 (futan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_futou",
@@ -8993,7 +10718,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_futou.png",
-    "meaningEn": "unfair/unjust"
+    "meaningEn": "unfair/unjust",
+    "registersEn": {
+      "casual": "不当 (futou)",
+      "formal": "不当 (futou)",
+      "keigo": "不当 (futou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_genmitsu",
@@ -9019,7 +10749,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_genmitsu.png",
-    "meaningEn": "strict/rigorous"
+    "meaningEn": "strict/rigorous",
+    "registersEn": {
+      "casual": "厳密 (genmitsu)",
+      "formal": "厳密 (genmitsu)",
+      "keigo": "厳密 (genmitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_gensoku",
@@ -9045,7 +10780,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_gensoku.png",
-    "meaningEn": "principle/general rule"
+    "meaningEn": "principle/general rule",
+    "registersEn": {
+      "casual": "原則 (gensoku)",
+      "formal": "原則 (gensoku)",
+      "keigo": "原則 (gensoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_gensou",
@@ -9071,7 +10811,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_gensou.png",
-    "meaningEn": "illusion/fantasy"
+    "meaningEn": "illusion/fantasy",
+    "registersEn": {
+      "casual": "幻想 (gensou)",
+      "formal": "幻想 (gensou)",
+      "keigo": "幻想 (gensou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_gisei",
@@ -9097,7 +10842,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_gisei.png",
-    "meaningEn": "sacrifice/victim"
+    "meaningEn": "sacrifice/victim",
+    "registersEn": {
+      "casual": "犠牲 (gisei)",
+      "formal": "犠牲 (gisei)",
+      "keigo": "犠牲 (gisei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_haaku",
@@ -9123,7 +10873,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_haaku.png",
-    "meaningEn": "grasp (of a situation)"
+    "meaningEn": "grasp (of a situation)",
+    "registersEn": {
+      "casual": "把握 (haaku)",
+      "formal": "把握 (haaku)",
+      "keigo": "把握 (haaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hakai",
@@ -9149,7 +10904,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hakai.png",
-    "meaningEn": "destruction"
+    "meaningEn": "destruction",
+    "registersEn": {
+      "casual": "破壊 (hakai)",
+      "formal": "破壊 (hakai)",
+      "keigo": "破壊 (hakai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hakujou",
@@ -9175,7 +10935,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hakujou.png",
-    "meaningEn": "confession"
+    "meaningEn": "confession",
+    "registersEn": {
+      "casual": "白状 (hakujou)",
+      "formal": "白状 (hakujou)",
+      "keigo": "白状 (hakujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hannou",
@@ -9201,7 +10966,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hannou.png",
-    "meaningEn": "reaction"
+    "meaningEn": "reaction",
+    "registersEn": {
+      "casual": "反応 (hannou)",
+      "formal": "反応 (hannou)",
+      "keigo": "反応 (hannou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_heiki",
@@ -9227,7 +10997,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_heiki.png",
-    "meaningEn": "weapon"
+    "meaningEn": "weapon",
+    "registersEn": {
+      "casual": "兵器 (heiki)",
+      "formal": "兵器 (heiki)",
+      "keigo": "兵器 (heiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hendou",
@@ -9253,7 +11028,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hendou.png",
-    "meaningEn": "fluctuation"
+    "meaningEn": "fluctuation",
+    "registersEn": {
+      "casual": "変動 (hendou)",
+      "formal": "変動 (hendou)",
+      "keigo": "変動 (hendou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hinkon",
@@ -9279,7 +11059,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hinkon.png",
-    "meaningEn": "poverty"
+    "meaningEn": "poverty",
+    "registersEn": {
+      "casual": "貧困 (hinkon)",
+      "formal": "貧困 (hinkon)",
+      "keigo": "貧困 (hinkon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hinpan",
@@ -9305,7 +11090,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hinpan.png",
-    "meaningEn": "frequent"
+    "meaningEn": "frequent",
+    "registersEn": {
+      "casual": "頻繁 (hinpan)",
+      "formal": "頻繁 (hinpan)",
+      "keigo": "頻繁 (hinpan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hitsuzen",
@@ -9331,7 +11121,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hitsuzen.png",
-    "meaningEn": "inevitability"
+    "meaningEn": "inevitability",
+    "registersEn": {
+      "casual": "必然 (hitsuzen)",
+      "formal": "必然 (hitsuzen)",
+      "keigo": "必然 (hitsuzen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_honshitsu",
@@ -9357,7 +11152,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_honshitsu.png",
-    "meaningEn": "essence"
+    "meaningEn": "essence",
+    "registersEn": {
+      "casual": "本質 (honshitsu)",
+      "formal": "本質 (honshitsu)",
+      "keigo": "本質 (honshitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_houki",
@@ -9383,7 +11183,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_houki.png",
-    "meaningEn": "abandonment (of a right)"
+    "meaningEn": "abandonment (of a right)",
+    "registersEn": {
+      "casual": "放棄 (houki)",
+      "formal": "放棄 (houki)",
+      "keigo": "放棄 (houki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ichibu",
@@ -9409,7 +11214,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ichibu.png",
-    "meaningEn": "a part/portion"
+    "meaningEn": "a part/portion",
+    "registersEn": {
+      "casual": "一部 (ichibu)",
+      "formal": "一部 (ichibu)",
+      "keigo": "一部 (ichibu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_izen",
@@ -9435,7 +11245,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_izen.png",
-    "meaningEn": "still (as before)"
+    "meaningEn": "still (as before)",
+    "registersEn": {
+      "casual": "依然 (izen)",
+      "formal": "依然 (izen)",
+      "keigo": "依然 (izen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_izon",
@@ -9461,7 +11276,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_izon.png",
-    "meaningEn": "dependence"
+    "meaningEn": "dependence",
+    "registersEn": {
+      "casual": "依存 (izon)",
+      "formal": "依存 (izon)",
+      "keigo": "依存 (izon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jinsoku",
@@ -9487,7 +11307,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jinsoku.png",
-    "meaningEn": "prompt/swift"
+    "meaningEn": "prompt/swift",
+    "registersEn": {
+      "casual": "迅速 (jinsoku)",
+      "formal": "迅速 (jinsoku)",
+      "keigo": "迅速 (jinsoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jisshitsu",
@@ -9513,7 +11338,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jisshitsu.png",
-    "meaningEn": "substance/essence"
+    "meaningEn": "substance/essence",
+    "registersEn": {
+      "casual": "実質 (jisshitsu)",
+      "formal": "実質 (jisshitsu)",
+      "keigo": "実質 (jisshitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jogen",
@@ -9539,7 +11369,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jogen.png",
-    "meaningEn": "advice"
+    "meaningEn": "advice",
+    "registersEn": {
+      "casual": "助言 (jogen)",
+      "formal": "助言 (jogen)",
+      "keigo": "助言 (jogen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jouho",
@@ -9565,7 +11400,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jouho.png",
-    "meaningEn": "concession"
+    "meaningEn": "concession",
+    "registersEn": {
+      "casual": "譲歩 (jouho)",
+      "formal": "譲歩 (jouho)",
+      "keigo": "譲歩 (jouho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_juunan",
@@ -9591,7 +11431,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_juunan.png",
-    "meaningEn": "flexible"
+    "meaningEn": "flexible",
+    "registersEn": {
+      "casual": "柔軟 (juunan)",
+      "formal": "柔軟 (juunan)",
+      "keigo": "柔軟 (juunan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaihi",
@@ -9617,7 +11462,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaihi.png",
-    "meaningEn": "avoidance"
+    "meaningEn": "avoidance",
+    "registersEn": {
+      "casual": "回避 (kaihi)",
+      "formal": "回避 (kaihi)",
+      "keigo": "回避 (kaihi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaijo",
@@ -9643,7 +11493,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaijo.png",
-    "meaningEn": "cancellation/lifting"
+    "meaningEn": "cancellation/lifting",
+    "registersEn": {
+      "casual": "解除 (kaijo)",
+      "formal": "解除 (kaijo)",
+      "keigo": "解除 (kaijo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaikyuu",
@@ -9669,7 +11524,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaikyuu.png",
-    "meaningEn": "class/rank"
+    "meaningEn": "class/rank",
+    "registersEn": {
+      "casual": "階級 (kaikyuu)",
+      "formal": "階級 (kaikyuu)",
+      "keigo": "階級 (kaikyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kakuho",
@@ -9695,7 +11555,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kakuho.png",
-    "meaningEn": "securing/ensuring"
+    "meaningEn": "securing/ensuring",
+    "registersEn": {
+      "casual": "確保 (kakuho)",
+      "formal": "確保 (kakuho)",
+      "keigo": "確保 (kakuho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kanjin",
@@ -9721,7 +11586,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kanjin.png",
-    "meaningEn": "essential/crucial"
+    "meaningEn": "essential/crucial",
+    "registersEn": {
+      "casual": "肝心 (kanjin)",
+      "formal": "肝心 (kanjin)",
+      "keigo": "肝心 (kanjin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kanpeki",
@@ -9747,7 +11617,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kanpeki.png",
-    "meaningEn": "perfect"
+    "meaningEn": "perfect",
+    "registersEn": {
+      "casual": "完璧 (kanpeki)",
+      "formal": "完璧 (kanpeki)",
+      "keigo": "完璧 (kanpeki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hayakuchi",
@@ -9773,7 +11648,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hayakuchi.png",
-    "meaningEn": "fast talking"
+    "meaningEn": "fast talking",
+    "registersEn": {
+      "casual": "早口 (hayakuchi)",
+      "formal": "早口 (hayakuchi)",
+      "keigo": "早口 (hayakuchi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hirune",
@@ -9799,7 +11679,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hirune.png",
-    "meaningEn": "afternoon nap"
+    "meaningEn": "afternoon nap",
+    "registersEn": {
+      "casual": "昼寝 (hirune)",
+      "formal": "昼寝 (hirune)",
+      "keigo": "昼寝 (hirune) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kaiten",
@@ -9825,7 +11710,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kaiten.png",
-    "meaningEn": "rotation"
+    "meaningEn": "rotation",
+    "registersEn": {
+      "casual": "回転 (kaiten)",
+      "formal": "回転 (kaiten)",
+      "keigo": "回転 (kaiten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_maido",
@@ -9851,7 +11741,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_maido.png",
-    "meaningEn": "every time"
+    "meaningEn": "every time",
+    "registersEn": {
+      "casual": "毎度 (maido)",
+      "formal": "毎度 (maido)",
+      "keigo": "毎度 (maido) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_mokuzai",
@@ -9877,7 +11772,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_mokuzai.png",
-    "meaningEn": "timber/wood (material)"
+    "meaningEn": "timber/wood (material)",
+    "registersEn": {
+      "casual": "木材 (mokuzai)",
+      "formal": "木材 (mokuzai)",
+      "keigo": "木材 (mokuzai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shuugou",
@@ -9903,7 +11803,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shuugou.png",
-    "meaningEn": "gathering/assembling"
+    "meaningEn": "gathering/assembling",
+    "registersEn": {
+      "casual": "集合 (shuugou)",
+      "formal": "集合 (shuugou)",
+      "keigo": "集合 (shuugou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tokubai",
@@ -9929,7 +11834,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tokubai.png",
-    "meaningEn": "special sale"
+    "meaningEn": "special sale",
+    "registersEn": {
+      "casual": "特売 (tokubai)",
+      "formal": "特売 (tokubai)",
+      "keigo": "特売 (tokubai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_toumei",
@@ -9955,7 +11865,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_toumei.png",
-    "meaningEn": "transparent"
+    "meaningEn": "transparent",
+    "registersEn": {
+      "casual": "透明 (toumei)",
+      "formal": "透明 (toumei)",
+      "keigo": "透明 (toumei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_zaimoku",
@@ -9981,7 +11896,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_zaimoku.png",
-    "meaningEn": "lumber"
+    "meaningEn": "lumber",
+    "registersEn": {
+      "casual": "材木 (zaimoku)",
+      "formal": "材木 (zaimoku)",
+      "keigo": "材木 (zaimoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_aisatsu",
@@ -10007,7 +11927,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_aisatsu.png",
-    "meaningEn": "greeting"
+    "meaningEn": "greeting",
+    "registersEn": {
+      "casual": "挨拶 (aisatsu)",
+      "formal": "挨拶 (aisatsu)",
+      "keigo": "挨拶 (aisatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_chuui",
@@ -10033,7 +11958,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_chuui.png",
-    "meaningEn": "attention/caution"
+    "meaningEn": "attention/caution",
+    "registersEn": {
+      "casual": "注意 (chuui)",
+      "formal": "注意 (chuui)",
+      "keigo": "注意 (chuui) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_dougu",
@@ -10059,7 +11989,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_dougu.png",
-    "meaningEn": "tool"
+    "meaningEn": "tool",
+    "registersEn": {
+      "casual": "道具 (dougu)",
+      "formal": "道具 (dougu)",
+      "keigo": "道具 (dougu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_fuben",
@@ -10085,7 +12020,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_fuben.png",
-    "meaningEn": "inconvenient"
+    "meaningEn": "inconvenient",
+    "registersEn": {
+      "casual": "不便 (fuben)",
+      "formal": "不便 (fuben)",
+      "keigo": "不便 (fuben) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_fukuzatsu",
@@ -10111,7 +12051,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_fukuzatsu.png",
-    "meaningEn": "complicated"
+    "meaningEn": "complicated",
+    "registersEn": {
+      "casual": "複雑 (fukuzatsu)",
+      "formal": "複雑 (fukuzatsu)",
+      "keigo": "複雑 (fukuzatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_futsuu",
@@ -10137,7 +12082,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_futsuu.png",
-    "meaningEn": "ordinary/usual"
+    "meaningEn": "ordinary/usual",
+    "registersEn": {
+      "casual": "普通 (futsuu)",
+      "formal": "普通 (futsuu)",
+      "keigo": "普通 (futsuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_haiken",
@@ -10163,7 +12113,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_haiken.png",
-    "meaningEn": "to look at (humble)"
+    "meaningEn": "to look at (humble)",
+    "registersEn": {
+      "casual": "拝見 (haiken)",
+      "formal": "拝見 (haiken)",
+      "keigo": "拝見 (haiken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_hantai",
@@ -10189,7 +12144,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_hantai.png",
-    "meaningEn": "opposition/the opposite"
+    "meaningEn": "opposition/the opposite",
+    "registersEn": {
+      "casual": "反対 (hantai)",
+      "formal": "反対 (hantai)",
+      "keigo": "反対 (hantai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_henji",
@@ -10215,7 +12175,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_henji.png",
-    "meaningEn": "reply"
+    "meaningEn": "reply",
+    "registersEn": {
+      "casual": "返事 (henji)",
+      "formal": "返事 (henji)",
+      "keigo": "返事 (henji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_iken",
@@ -10241,7 +12206,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_iken.png",
-    "meaningEn": "opinion"
+    "meaningEn": "opinion",
+    "registersEn": {
+      "casual": "意見 (iken)",
+      "formal": "意見 (iken)",
+      "keigo": "意見 (iken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jiko",
@@ -10267,7 +12237,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jiko.png",
-    "meaningEn": "accident"
+    "meaningEn": "accident",
+    "registersEn": {
+      "casual": "事故 (jiko)",
+      "formal": "事故 (jiko)",
+      "keigo": "事故 (jiko) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_jiyuu",
@@ -10293,7 +12268,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_jiyuu.png",
-    "meaningEn": "freedom"
+    "meaningEn": "freedom",
+    "registersEn": {
+      "casual": "自由 (jiyuu)",
+      "formal": "自由 (jiyuu)",
+      "keigo": "自由 (jiyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_juubun",
@@ -10319,7 +12299,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_juubun.png",
-    "meaningEn": "enough/sufficient"
+    "meaningEn": "enough/sufficient",
+    "registersEn": {
+      "casual": "十分 (juubun)",
+      "formal": "十分 (juubun)",
+      "keigo": "十分 (juubun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_juusho",
@@ -10345,7 +12330,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_juusho.png",
-    "meaningEn": "address"
+    "meaningEn": "address",
+    "registersEn": {
+      "casual": "住所 (juusho)",
+      "formal": "住所 (juusho)",
+      "keigo": "住所 (juusho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kantan",
@@ -10371,7 +12361,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kantan.png",
-    "meaningEn": "simple/easy"
+    "meaningEn": "simple/easy",
+    "registersEn": {
+      "casual": "簡単 (kantan)",
+      "formal": "簡単 (kantan)",
+      "keigo": "簡単 (kantan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kikai",
@@ -10397,7 +12392,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kikai.png",
-    "meaningEn": "opportunity"
+    "meaningEn": "opportunity",
+    "registersEn": {
+      "casual": "機会 (kikai)",
+      "formal": "機会 (kikai)",
+      "keigo": "機会 (kikai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_kiken",
@@ -10423,7 +12423,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_kiken.png",
-    "meaningEn": "dangerous"
+    "meaningEn": "dangerous",
+    "registersEn": {
+      "casual": "危険 (kiken)",
+      "formal": "危険 (kiken)",
+      "keigo": "危険 (kiken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_muri",
@@ -10449,7 +12454,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_muri.png",
-    "meaningEn": "impossible/unreasonable"
+    "meaningEn": "impossible/unreasonable",
+    "registersEn": {
+      "casual": "無理 (muri)",
+      "formal": "無理 (muri)",
+      "keigo": "無理 (muri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_riyou",
@@ -10475,7 +12485,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_riyou.png",
-    "meaningEn": "use/utilisation"
+    "meaningEn": "use/utilisation",
+    "registersEn": {
+      "casual": "利用 (riyou)",
+      "formal": "利用 (riyou)",
+      "keigo": "利用 (riyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_riyuu",
@@ -10501,7 +12516,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_riyuu.png",
-    "meaningEn": "reason"
+    "meaningEn": "reason",
+    "registersEn": {
+      "casual": "理由 (riyuu)",
+      "formal": "理由 (riyuu)",
+      "keigo": "理由 (riyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_ryouhou",
@@ -10527,7 +12547,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_ryouhou.png",
-    "meaningEn": "both"
+    "meaningEn": "both",
+    "registersEn": {
+      "casual": "両方 (ryouhou)",
+      "formal": "両方 (ryouhou)",
+      "keigo": "両方 (ryouhou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_saigo",
@@ -10553,7 +12578,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_saigo.png",
-    "meaningEn": "the last/the end"
+    "meaningEn": "the last/the end",
+    "registersEn": {
+      "casual": "最後 (saigo)",
+      "formal": "最後 (saigo)",
+      "keigo": "最後 (saigo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_seikatsu",
@@ -10579,7 +12609,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_seikatsu.png",
-    "meaningEn": "daily life"
+    "meaningEn": "daily life",
+    "registersEn": {
+      "casual": "生活 (seikatsu)",
+      "formal": "生活 (seikatsu)",
+      "keigo": "生活 (seikatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_seimei",
@@ -10605,7 +12640,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_seimei.png",
-    "meaningEn": "life"
+    "meaningEn": "life",
+    "registersEn": {
+      "casual": "生命 (seimei)",
+      "formal": "生命 (seimei)",
+      "keigo": "生命 (seimei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shikata",
@@ -10631,7 +12671,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shikata.png",
-    "meaningEn": "way of doing something"
+    "meaningEn": "way of doing something",
+    "registersEn": {
+      "casual": "仕方 (shikata)",
+      "formal": "仕方 (shikata)",
+      "keigo": "仕方 (shikata) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_shokuryouhin",
@@ -10657,7 +12702,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_shokuryouhin.png",
-    "meaningEn": "groceries"
+    "meaningEn": "groceries",
+    "registersEn": {
+      "casual": "食料品 (shokuryouhin)",
+      "formal": "食料品 (shokuryouhin)",
+      "keigo": "食料品 (shokuryouhin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_soudan",
@@ -10683,7 +12733,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_soudan.png",
-    "meaningEn": "consultation"
+    "meaningEn": "consultation",
+    "registersEn": {
+      "casual": "相談 (soudan)",
+      "formal": "相談 (soudan)",
+      "keigo": "相談 (soudan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tekitou",
@@ -10709,7 +12764,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tekitou.png",
-    "meaningEn": "suitable/appropriate"
+    "meaningEn": "suitable/appropriate",
+    "registersEn": {
+      "casual": "適当 (tekitou)",
+      "formal": "適当 (tekitou)",
+      "keigo": "適当 (tekitou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_tokubetsu",
@@ -10735,7 +12795,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_tokubetsu.png",
-    "meaningEn": "special"
+    "meaningEn": "special",
+    "registersEn": {
+      "casual": "特別 (tokubetsu)",
+      "formal": "特別 (tokubetsu)",
+      "keigo": "特別 (tokubetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_yakusoku",
@@ -10761,7 +12826,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_yakusoku.png",
-    "meaningEn": "promise"
+    "meaningEn": "promise",
+    "registersEn": {
+      "casual": "約束 (yakusoku)",
+      "formal": "約束 (yakusoku)",
+      "keigo": "約束 (yakusoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_youi",
@@ -10787,7 +12857,12 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_youi.png",
-    "meaningEn": "preparation"
+    "meaningEn": "preparation",
+    "registersEn": {
+      "casual": "用意 (youi)",
+      "formal": "用意 (youi)",
+      "keigo": "用意 (youi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_konsep_umum_youji",
@@ -10813,6 +12888,11 @@
       }
     ],
     "imagePath": "kotoba_images/konsep_umum/kotoba_konsep_umum_youji.png",
-    "meaningEn": "errand/business to attend to"
+    "meaningEn": "errand/business to attend to",
+    "registersEn": {
+      "casual": "用事 (youji)",
+      "formal": "用事 (youji)",
+      "keigo": "用事 (youji) — no special keigo form for this noun"
+    }
   }
 ]

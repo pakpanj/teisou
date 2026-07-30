@@ -33,6 +33,7 @@ from kaiwa_lists import (
     CATEGORY_META,
     LEVEL_META,
     PLANNED_CATEGORIES,
+    THEME_NAME_EN,
     infer_gender,
 )
 
@@ -66978,6 +66979,7 @@ def main():
         categories.append({
             "id": category_id,
             "name": name,
+            "nameEn": THEME_NAME_EN.get(name),
             "icon": icon,
             "level": level,
             "available": True,

@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_mizu.png",
-    "meaningEn": "water"
+    "meaningEn": "water",
+    "registersEn": {
+      "casual": "みず (mizu)",
+      "formal": "みず (mizu) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "みず (mizu) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_ocha",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_ocha.png",
-    "meaningEn": "Japanese tea"
+    "meaningEn": "Japanese tea",
+    "registersEn": {
+      "casual": "おちゃ (ocha)",
+      "formal": "おちゃ (ocha) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "おちゃ (ocha) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_koucha",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_koucha.png",
-    "meaningEn": "black tea"
+    "meaningEn": "black tea",
+    "registersEn": {
+      "casual": "こうちゃ (koucha)",
+      "formal": "こうちゃ (koucha) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "こうちゃ (koucha) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_koohii",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_koohii.png",
-    "meaningEn": "coffee"
+    "meaningEn": "coffee",
+    "registersEn": {
+      "casual": "コーヒー (koohii)",
+      "formal": "コーヒー (koohii) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "コーヒー (koohii) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_gyuunyuu",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_gyuunyuu.png",
-    "meaningEn": "milk"
+    "meaningEn": "milk",
+    "registersEn": {
+      "casual": "ぎゅうにゅう (gyuunyuu)",
+      "formal": "ぎゅうにゅう (gyuunyuu) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ぎゅうにゅう (gyuunyuu) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_juusu",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_juusu.png",
-    "meaningEn": "juice"
+    "meaningEn": "juice",
+    "registersEn": {
+      "casual": "ジュース (juusu)",
+      "formal": "ジュース (juusu) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ジュース (juusu) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_koora",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_koora.png",
-    "meaningEn": "cola"
+    "meaningEn": "cola",
+    "registersEn": {
+      "casual": "コーラ (koora)",
+      "formal": "コーラ (koora) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "コーラ (koora) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_biiru",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_biiru.png",
-    "meaningEn": "beer"
+    "meaningEn": "beer",
+    "registersEn": {
+      "casual": "ビール (biiru)",
+      "formal": "ビール (biiru) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ビール (biiru) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_nihonshu",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_nihonshu.png",
-    "meaningEn": "sake (Japanese rice wine)"
+    "meaningEn": "sake (Japanese rice wine)",
+    "registersEn": {
+      "casual": "にほんしゅ (nihonshu)",
+      "formal": "にほんしゅ (nihonshu) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "にほんしゅ (nihonshu) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_wain",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_wain.png",
-    "meaningEn": "wine"
+    "meaningEn": "wine",
+    "registersEn": {
+      "casual": "ワイン (wain)",
+      "formal": "ワイン (wain) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ワイン (wain) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_tansan",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_tansan.png",
-    "meaningEn": "carbonated/soda drink"
+    "meaningEn": "carbonated/soda drink",
+    "registersEn": {
+      "casual": "たんさん (tansan)",
+      "formal": "たんさん (tansan) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "たんさん (tansan) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_mirukutii",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_mirukutii.png",
-    "meaningEn": "milk tea"
+    "meaningEn": "milk tea",
+    "registersEn": {
+      "casual": "ミルクティー (mirukutii)",
+      "formal": "ミルクティー (mirukutii) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ミルクティー (mirukutii) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_inryou",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_inryou.png",
-    "meaningEn": "beverage/drink"
+    "meaningEn": "beverage/drink",
+    "registersEn": {
+      "casual": "いんりょう (inryou)",
+      "formal": "いんりょう (inryou) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "いんりょう (inryou) — no special keigo form for drink names"
+    }
   },
   {
     "id": "kotoba_minuman_aiin",
@@ -361,6 +426,11 @@
       }
     ],
     "imagePath": "kotoba_images/minuman/kotoba_minuman_aiin.png",
-    "meaningEn": "habitually enjoying a drink"
+    "meaningEn": "habitually enjoying a drink",
+    "registersEn": {
+      "casual": "あいいん (aiin)",
+      "formal": "あいいん (aiin) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "あいいん (aiin) — no special keigo form for drink names"
+    }
   }
 ]

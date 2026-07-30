@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_isu.png",
-    "meaningEn": "chair"
+    "meaningEn": "chair",
+    "registersEn": {
+      "casual": "椅子 (isu)",
+      "formal": "椅子 (isu)",
+      "keigo": "椅子 (isu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_tsukue",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tsukue.png",
-    "meaningEn": "desk"
+    "meaningEn": "desk",
+    "registersEn": {
+      "casual": "机 (tsukue)",
+      "formal": "机 (tsukue)",
+      "keigo": "机 (tsukue) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_teeburu",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_teeburu.png",
-    "meaningEn": "table"
+    "meaningEn": "table",
+    "registersEn": {
+      "casual": "テーブル (teeburu)",
+      "formal": "テーブル (teeburu)",
+      "keigo": "テーブル (teeburu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_beddo",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_beddo.png",
-    "meaningEn": "bed"
+    "meaningEn": "bed",
+    "registersEn": {
+      "casual": "ベッド (beddo)",
+      "formal": "ベッド (beddo)",
+      "keigo": "ベッド (beddo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_sofaa",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_sofaa.png",
-    "meaningEn": "sofa"
+    "meaningEn": "sofa",
+    "registersEn": {
+      "casual": "ソファー (sofaa)",
+      "formal": "ソファー (sofaa)",
+      "keigo": "ソファー (sofaa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_tana",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tana.png",
-    "meaningEn": "shelf"
+    "meaningEn": "shelf",
+    "registersEn": {
+      "casual": "棚 (tana)",
+      "formal": "棚 (tana)",
+      "keigo": "棚 (tana) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_reizouko",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_reizouko.png",
-    "meaningEn": "refrigerator"
+    "meaningEn": "refrigerator",
+    "registersEn": {
+      "casual": "冷蔵庫 (reizouko)",
+      "formal": "冷蔵庫 (reizouko)",
+      "keigo": "冷蔵庫 (reizouko) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_kagami",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kagami.png",
-    "meaningEn": "mirror"
+    "meaningEn": "mirror",
+    "registersEn": {
+      "casual": "鏡 (kagami)",
+      "formal": "鏡 (kagami)",
+      "keigo": "鏡 (kagami) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_kaaten",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kaaten.png",
-    "meaningEn": "curtain"
+    "meaningEn": "curtain",
+    "registersEn": {
+      "casual": "カーテン (kaaten)",
+      "formal": "カーテン (kaaten)",
+      "keigo": "カーテン (kaaten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_tansu",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_tansu.png",
-    "meaningEn": "chest of drawers/wardrobe"
+    "meaningEn": "chest of drawers/wardrobe",
+    "registersEn": {
+      "casual": "たんす (tansu)",
+      "formal": "たんす (tansu)",
+      "keigo": "たんす (tansu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_denki",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_denki.png",
-    "meaningEn": "light/electricity"
+    "meaningEn": "light/electricity",
+    "registersEn": {
+      "casual": "電気 (denki)",
+      "formal": "電気 (denki)",
+      "keigo": "電気 (denki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_shuunou",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_shuunou.png",
-    "meaningEn": "storage"
+    "meaningEn": "storage",
+    "registersEn": {
+      "casual": "収納 (shuunou)",
+      "formal": "収納 (shuunou)",
+      "keigo": "収納 (shuunou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_kagu",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kagu.png",
-    "meaningEn": "furniture"
+    "meaningEn": "furniture",
+    "registersEn": {
+      "casual": "家具 (kagu)",
+      "formal": "家具 (kagu)",
+      "keigo": "家具 (kagu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_reibou",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_reibou.png",
-    "meaningEn": "air conditioning (cooling)"
+    "meaningEn": "air conditioning (cooling)",
+    "registersEn": {
+      "casual": "冷房 (reibou)",
+      "formal": "冷房 (reibou)",
+      "keigo": "冷房 (reibou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_danbou",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_danbou.png",
-    "meaningEn": "heating"
+    "meaningEn": "heating",
+    "registersEn": {
+      "casual": "暖房 (danbou)",
+      "formal": "暖房 (danbou)",
+      "keigo": "暖房 (danbou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_kabin",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_kabin.png",
-    "meaningEn": "vase"
+    "meaningEn": "vase",
+    "registersEn": {
+      "casual": "花瓶 (kabin)",
+      "formal": "花瓶 (kabin)",
+      "keigo": "花瓶 (kabin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_denkyuu",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_denkyuu.png",
-    "meaningEn": "light bulb"
+    "meaningEn": "light bulb",
+    "registersEn": {
+      "casual": "電球 (denkyuu)",
+      "formal": "電球 (denkyuu)",
+      "keigo": "電球 (denkyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_hondana",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_hondana.png",
-    "meaningEn": "bookshelf"
+    "meaningEn": "bookshelf",
+    "registersEn": {
+      "casual": "本棚 (hondana)",
+      "formal": "本棚 (hondana)",
+      "keigo": "本棚 (hondana) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_soujiki",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_soujiki.png",
-    "meaningEn": "vacuum cleaner"
+    "meaningEn": "vacuum cleaner",
+    "registersEn": {
+      "casual": "掃除機 (soujiki)",
+      "formal": "掃除機 (soujiki)",
+      "keigo": "掃除機 (soujiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_dentou",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_dentou.png",
-    "meaningEn": "electric light"
+    "meaningEn": "electric light",
+    "registersEn": {
+      "casual": "電灯 (dentou)",
+      "formal": "電灯 (dentou)",
+      "keigo": "電灯 (dentou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perabot_rumah_futon",
@@ -543,6 +643,11 @@
       }
     ],
     "imagePath": "kotoba_images/perabot_rumah/kotoba_perabot_rumah_futon.png",
-    "meaningEn": "Japanese futon (floor bedding)"
+    "meaningEn": "Japanese futon (floor bedding)",
+    "registersEn": {
+      "casual": "布団 (futon)",
+      "formal": "布団 (futon)",
+      "keigo": "布団 (futon) — no special keigo form for this noun"
+    }
   }
 ]

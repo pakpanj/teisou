@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/ikan/kotoba_ikan_maguro.png",
-    "meaningEn": "tuna"
+    "meaningEn": "tuna",
+    "registersEn": {
+      "casual": "まぐろ (maguro)",
+      "formal": "まぐろ (maguro) — politeness lives in the sentence, e.g. '~を食べます'",
+      "keigo": "まぐろ (maguro) — no special keigo form for fish names"
+    }
   },
   {
     "id": "kotoba_ikan_sake",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/ikan/kotoba_ikan_sake.png",
-    "meaningEn": "salmon"
+    "meaningEn": "salmon",
+    "registersEn": {
+      "casual": "さけ (sake)",
+      "formal": "さけ (sake) — politeness lives in the sentence, e.g. '~を食べます'",
+      "keigo": "さけ (sake) — no special keigo form for fish names"
+    }
   },
   {
     "id": "kotoba_ikan_tai",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/ikan/kotoba_ikan_tai.png",
-    "meaningEn": "red seabream"
+    "meaningEn": "red seabream",
+    "registersEn": {
+      "casual": "たい (tai)",
+      "formal": "たい (tai) — politeness lives in the sentence, e.g. '~を食べます'",
+      "keigo": "たい (tai) — no special keigo form for fish names"
+    }
   },
   {
     "id": "kotoba_ikan_unagi",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/ikan/kotoba_ikan_unagi.png",
-    "meaningEn": "eel"
+    "meaningEn": "eel",
+    "registersEn": {
+      "casual": "うなぎ (unagi)",
+      "formal": "うなぎ (unagi) — politeness lives in the sentence, e.g. '~を食べます'",
+      "keigo": "うなぎ (unagi) — no special keigo form for fish names"
+    }
   },
   {
     "id": "kotoba_ikan_iwashi",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/ikan/kotoba_ikan_iwashi.png",
-    "meaningEn": "sardine"
+    "meaningEn": "sardine",
+    "registersEn": {
+      "casual": "いわし (iwashi)",
+      "formal": "いわし (iwashi) — politeness lives in the sentence, e.g. '~を食べます'",
+      "keigo": "いわし (iwashi) — no special keigo form for fish names"
+    }
   },
   {
     "id": "kotoba_ikan_saba",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/ikan/kotoba_ikan_saba.png",
-    "meaningEn": "mackerel"
+    "meaningEn": "mackerel",
+    "registersEn": {
+      "casual": "さば (saba)",
+      "formal": "さば (saba) — politeness lives in the sentence, e.g. '~を食べます'",
+      "keigo": "さば (saba) — no special keigo form for fish names"
+    }
   },
   {
     "id": "kotoba_ikan_katsuo",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/ikan/kotoba_ikan_katsuo.png",
-    "meaningEn": "bonito (skipjack tuna)"
+    "meaningEn": "bonito (skipjack tuna)",
+    "registersEn": {
+      "casual": "かつお (katsuo)",
+      "formal": "かつお (katsuo) — politeness lives in the sentence, e.g. '~を食べます'",
+      "keigo": "かつお (katsuo) — no special keigo form for fish names"
+    }
   },
   {
     "id": "kotoba_ikan_fugu",
@@ -205,6 +240,11 @@
       }
     ],
     "imagePath": "kotoba_images/ikan/kotoba_ikan_fugu.png",
-    "meaningEn": "pufferfish (fugu)"
+    "meaningEn": "pufferfish (fugu)",
+    "registersEn": {
+      "casual": "ふぐ (fugu)",
+      "formal": "ふぐ (fugu) — politeness lives in the sentence, e.g. '~を食べます'",
+      "keigo": "ふぐ (fugu) — no special keigo form for fish names"
+    }
   }
 ]

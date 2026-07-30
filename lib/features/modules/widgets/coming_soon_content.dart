@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/localization/app_strings.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/mascot_widget.dart';
@@ -19,6 +20,21 @@ class ComingSoonContent extends ConsumerWidget {
 
   ModuleInfo get _module =>
       kComingSoonModules.firstWhere((m) => m.id == moduleId);
+
+  /// [ModuleInfo.title] is the dataset's Indonesian-authored identity
+  /// string (see `module_info.dart`) — resolve the localized display title
+  /// by id instead of touching the model itself, mirroring
+  /// `_ComingSoonCard._displayText()` in `modules_section.dart`.
+  String _localizedTitle(AppStrings s, ModuleInfo module) {
+    switch (module.id) {
+      case 'picture_learning':
+        return s.pictureLearningTitle;
+      case 'video_learning':
+        return s.videoLearningTitle;
+      default:
+        return module.title;
+    }
+  }
 
   Future<void> _remindMe(BuildContext context, WidgetRef ref) async {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
@@ -71,7 +87,7 @@ class ComingSoonContent extends ConsumerWidget {
                   MaterialPageRoute(
                     builder: (_) => PaywallScreen(
                       moduleId: module.id,
-                      moduleTitle: module.title,
+                      moduleTitle: _localizedTitle(s, module),
                     ),
                   ),
                 ),

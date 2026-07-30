@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shuukyou.png",
-    "meaningEn": "religion"
+    "meaningEn": "religion",
+    "registersEn": {
+      "casual": "宗教 (shuukyou)",
+      "formal": "宗教 (shuukyou)",
+      "keigo": "宗教 (shuukyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_bukkyou",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_bukkyou.png",
-    "meaningEn": "Buddhism"
+    "meaningEn": "Buddhism",
+    "registersEn": {
+      "casual": "仏教 (bukkyou)",
+      "formal": "仏教 (bukkyou)",
+      "keigo": "仏教 (bukkyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_shintou",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shintou.png",
-    "meaningEn": "Shinto (Japan's native religion)"
+    "meaningEn": "Shinto (Japan's native religion)",
+    "registersEn": {
+      "casual": "神道 (shintou)",
+      "formal": "神道 (shintou)",
+      "keigo": "神道 (shintou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_isuramukyou",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_isuramukyou.png",
-    "meaningEn": "Islam"
+    "meaningEn": "Islam",
+    "registersEn": {
+      "casual": "イスラム教 (isuramukyou)",
+      "formal": "イスラム教 (isuramukyou)",
+      "keigo": "イスラム教 (isuramukyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_kirisutokyou",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_kirisutokyou.png",
-    "meaningEn": "Christianity"
+    "meaningEn": "Christianity",
+    "registersEn": {
+      "casual": "キリスト教 (kirisutokyou)",
+      "formal": "キリスト教 (kirisutokyou)",
+      "keigo": "キリスト教 (kirisutokyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_hinduukyou",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_hinduukyou.png",
-    "meaningEn": "Hinduism"
+    "meaningEn": "Hinduism",
+    "registersEn": {
+      "casual": "ヒンドゥー教 (hinduukyou)",
+      "formal": "ヒンドゥー教 (hinduukyou)",
+      "keigo": "ヒンドゥー教 (hinduukyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_matsuri",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_matsuri.png",
-    "meaningEn": "festival"
+    "meaningEn": "festival",
+    "registersEn": {
+      "casual": "祭り (matsuri)",
+      "formal": "祭り (matsuri)",
+      "keigo": "祭り (matsuri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_dentou",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_dentou.png",
-    "meaningEn": "tradition"
+    "meaningEn": "tradition",
+    "registersEn": {
+      "casual": "伝統 (dentou)",
+      "formal": "伝統 (dentou)",
+      "keigo": "伝統 (dentou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_bunka",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_bunka.png",
-    "meaningEn": "culture"
+    "meaningEn": "culture",
+    "registersEn": {
+      "casual": "文化 (bunka)",
+      "formal": "文化 (bunka)",
+      "keigo": "文化 (bunka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_reihai",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_reihai.png",
-    "meaningEn": "worship/religious service"
+    "meaningEn": "worship/religious service",
+    "registersEn": {
+      "casual": "礼拝 (reihai)",
+      "formal": "礼拝 (reihai)",
+      "keigo": "礼拝 (reihai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_keishou",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_keishou.png",
-    "meaningEn": "passing down (tradition/culture)"
+    "meaningEn": "passing down (tradition/culture)",
+    "registersEn": {
+      "casual": "継承 (keishou)",
+      "formal": "継承 (keishou)",
+      "keigo": "継承 (keishou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_gishiki",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_gishiki.png",
-    "meaningEn": "ceremony/ritual"
+    "meaningEn": "ceremony/ritual",
+    "registersEn": {
+      "casual": "儀式 (gishiki)",
+      "formal": "儀式 (gishiki)",
+      "keigo": "儀式 (gishiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_shinkou",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shinkou.png",
-    "meaningEn": "faith/belief"
+    "meaningEn": "faith/belief",
+    "registersEn": {
+      "casual": "信仰 (shinkou)",
+      "formal": "信仰 (shinkou)",
+      "keigo": "信仰 (shinkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_shuukan",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_shuukan.png",
-    "meaningEn": "custom/habit"
+    "meaningEn": "custom/habit",
+    "registersEn": {
+      "casual": "習慣 (shuukan)",
+      "formal": "習慣 (shuukan)",
+      "keigo": "習慣 (shuukan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_jigoku",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_jigoku.png",
-    "meaningEn": "hell"
+    "meaningEn": "hell",
+    "registersEn": {
+      "casual": "地獄 (jigoku)",
+      "formal": "地獄 (jigoku)",
+      "keigo": "地獄 (jigoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_jiin",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_jiin.png",
-    "meaningEn": "Buddhist temple"
+    "meaningEn": "Buddhist temple",
+    "registersEn": {
+      "casual": "寺院 (jiin)",
+      "formal": "寺院 (jiin)",
+      "keigo": "寺院 (jiin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_agama_budaya_kyoukai",
@@ -439,6 +519,11 @@
       }
     ],
     "imagePath": "kotoba_images/agama_budaya/kotoba_agama_budaya_kyoukai.png",
-    "meaningEn": "church"
+    "meaningEn": "church",
+    "registersEn": {
+      "casual": "教会 (kyoukai)",
+      "formal": "教会 (kyoukai)",
+      "keigo": "教会 (kyoukai) — no special keigo form for this noun"
+    }
   }
 ]

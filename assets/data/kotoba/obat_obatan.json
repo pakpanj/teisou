@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kusuri.png",
-    "meaningEn": "medicine"
+    "meaningEn": "medicine",
+    "registersEn": {
+      "casual": "薬 (kusuri)",
+      "formal": "薬 (kusuri)",
+      "keigo": "薬 (kusuri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_byouin",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_byouin.png",
-    "meaningEn": "hospital"
+    "meaningEn": "hospital",
+    "registersEn": {
+      "casual": "病院 (byouin)",
+      "formal": "病院 (byouin)",
+      "keigo": "病院 (byouin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_isha",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_isha.png",
-    "meaningEn": "doctor"
+    "meaningEn": "doctor",
+    "registersEn": {
+      "casual": "医者 (isha)",
+      "formal": "医者 (isha)",
+      "keigo": "医者 (isha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_kangoshi",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kangoshi.png",
-    "meaningEn": "nurse"
+    "meaningEn": "nurse",
+    "registersEn": {
+      "casual": "看護師 (kangoshi)",
+      "formal": "看護師 (kangoshi)",
+      "keigo": "看護師 (kangoshi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_yakkyoku",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_yakkyoku.png",
-    "meaningEn": "pharmacy"
+    "meaningEn": "pharmacy",
+    "registersEn": {
+      "casual": "薬局 (yakkyoku)",
+      "formal": "薬局 (yakkyoku)",
+      "keigo": "薬局 (yakkyoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_chuusha",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_chuusha.png",
-    "meaningEn": "injection/shot"
+    "meaningEn": "injection/shot",
+    "registersEn": {
+      "casual": "注射 (chuusha)",
+      "formal": "注射 (chuusha)",
+      "keigo": "注射 (chuusha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_bansoukou",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_bansoukou.png",
-    "meaningEn": "bandage (band-aid)"
+    "meaningEn": "bandage (band-aid)",
+    "registersEn": {
+      "casual": "絆創膏 (bansoukou)",
+      "formal": "絆創膏 (bansoukou)",
+      "keigo": "絆創膏 (bansoukou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_taionkei",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_taionkei.png",
-    "meaningEn": "thermometer"
+    "meaningEn": "thermometer",
+    "registersEn": {
+      "casual": "体温計 (taionkei)",
+      "formal": "体温計 (taionkei)",
+      "keigo": "体温計 (taionkei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_masuku",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masuku.png",
-    "meaningEn": "mask"
+    "meaningEn": "mask",
+    "registersEn": {
+      "casual": "マスク (masuku)",
+      "formal": "マスク (masuku)",
+      "keigo": "マスク (masuku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_kenshin",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenshin.png",
-    "meaningEn": "health checkup"
+    "meaningEn": "health checkup",
+    "registersEn": {
+      "casual": "検診 (kenshin)",
+      "formal": "検診 (kenshin)",
+      "keigo": "検診 (kenshin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_shohou",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shohou.png",
-    "meaningEn": "prescription"
+    "meaningEn": "prescription",
+    "registersEn": {
+      "casual": "処方 (shohou)",
+      "formal": "処方 (shohou)",
+      "keigo": "処方 (shohou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_fukusayou",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_fukusayou.png",
-    "meaningEn": "side effect"
+    "meaningEn": "side effect",
+    "registersEn": {
+      "casual": "副作用 (fukusayou)",
+      "formal": "副作用 (fukusayou)",
+      "keigo": "副作用 (fukusayou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_fukuyou",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_fukuyou.png",
-    "meaningEn": "taking (medicine, formal)"
+    "meaningEn": "taking (medicine, formal)",
+    "registersEn": {
+      "casual": "服用 (fukuyou)",
+      "formal": "服用 (fukuyou)",
+      "keigo": "服用 (fukuyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_masui",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_masui.png",
-    "meaningEn": "anesthesia"
+    "meaningEn": "anesthesia",
+    "registersEn": {
+      "casual": "麻酔 (masui)",
+      "formal": "麻酔 (masui)",
+      "keigo": "麻酔 (masui) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_shoudoku",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shoudoku.png",
-    "meaningEn": "disinfection"
+    "meaningEn": "disinfection",
+    "registersEn": {
+      "casual": "消毒 (shoudoku)",
+      "formal": "消毒 (shoudoku)",
+      "keigo": "消毒 (shoudoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_houtai",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_houtai.png",
-    "meaningEn": "bandage"
+    "meaningEn": "bandage",
+    "registersEn": {
+      "casual": "包帯 (houtai)",
+      "formal": "包帯 (houtai)",
+      "keigo": "包帯 (houtai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_jouzai",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_jouzai.png",
-    "meaningEn": "tablet/pill"
+    "meaningEn": "tablet/pill",
+    "registersEn": {
+      "casual": "錠剤 (jouzai)",
+      "formal": "錠剤 (jouzai)",
+      "keigo": "錠剤 (jouzai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_eiyou",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_eiyou.png",
-    "meaningEn": "nutrition"
+    "meaningEn": "nutrition",
+    "registersEn": {
+      "casual": "栄養 (eiyou)",
+      "formal": "栄養 (eiyou)",
+      "keigo": "栄養 (eiyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_kango",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kango.png",
-    "meaningEn": "nursing care"
+    "meaningEn": "nursing care",
+    "registersEn": {
+      "casual": "看護 (kango)",
+      "formal": "看護 (kango)",
+      "keigo": "看護 (kango) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_kenkou",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kenkou.png",
-    "meaningEn": "health"
+    "meaningEn": "health",
+    "registersEn": {
+      "casual": "健康 (kenkou)",
+      "formal": "健康 (kenkou)",
+      "keigo": "健康 (kenkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_kensa",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kensa.png",
-    "meaningEn": "examination/inspection"
+    "meaningEn": "examination/inspection",
+    "registersEn": {
+      "casual": "検査 (kensa)",
+      "formal": "検査 (kensa)",
+      "keigo": "検査 (kensa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_shujutsu",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_shujutsu.png",
-    "meaningEn": "surgery (medical)"
+    "meaningEn": "surgery (medical)",
+    "registersEn": {
+      "casual": "手術 (shujutsu)",
+      "formal": "手術 (shujutsu)",
+      "keigo": "手術 (shujutsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_kurumaisu",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_kurumaisu.png",
-    "meaningEn": "wheelchair"
+    "meaningEn": "wheelchair",
+    "registersEn": {
+      "casual": "車椅子 (kurumaisu)",
+      "formal": "車椅子 (kurumaisu)",
+      "keigo": "車椅子 (kurumaisu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_geka",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_geka.png",
-    "meaningEn": "surgery (medical field)"
+    "meaningEn": "surgery (medical field)",
+    "registersEn": {
+      "casual": "外科 (geka)",
+      "formal": "外科 (geka)",
+      "keigo": "外科 (geka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_naika",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_naika.png",
-    "meaningEn": "internal medicine (medical field)"
+    "meaningEn": "internal medicine (medical field)",
+    "registersEn": {
+      "casual": "内科 (naika)",
+      "formal": "内科 (naika)",
+      "keigo": "内科 (naika) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_yuketsu",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_yuketsu.png",
-    "meaningEn": "blood transfusion"
+    "meaningEn": "blood transfusion",
+    "registersEn": {
+      "casual": "輸血 (yuketsu)",
+      "formal": "輸血 (yuketsu)",
+      "keigo": "輸血 (yuketsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_obat_obatan_nyuuin",
@@ -699,6 +829,11 @@
       }
     ],
     "imagePath": "kotoba_images/obat_obatan/kotoba_obat_obatan_nyuuin.png",
-    "meaningEn": "hospitalization"
+    "meaningEn": "hospitalization",
+    "registersEn": {
+      "casual": "入院 (nyuuin)",
+      "formal": "入院 (nyuuin)",
+      "keigo": "入院 (nyuuin) — no special keigo form for this noun"
+    }
   }
 ]

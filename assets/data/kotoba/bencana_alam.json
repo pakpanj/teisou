@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_jishin.png",
-    "meaningEn": "earthquake"
+    "meaningEn": "earthquake",
+    "registersEn": {
+      "casual": "じしん (jishin)",
+      "formal": "じしん (jishin)",
+      "keigo": "じしん (jishin) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_tsunami",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_tsunami.png",
-    "meaningEn": "tsunami"
+    "meaningEn": "tsunami",
+    "registersEn": {
+      "casual": "つなみ (tsunami)",
+      "formal": "つなみ (tsunami)",
+      "keigo": "つなみ (tsunami) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_kouzui",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kouzui.png",
-    "meaningEn": "flood"
+    "meaningEn": "flood",
+    "registersEn": {
+      "casual": "こうずい (kouzui)",
+      "formal": "こうずい (kouzui)",
+      "keigo": "こうずい (kouzui) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_kaji",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kaji.png",
-    "meaningEn": "fire"
+    "meaningEn": "fire",
+    "registersEn": {
+      "casual": "かじ (kaji)",
+      "formal": "かじ (kaji)",
+      "keigo": "かじ (kaji) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_funka",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_funka.png",
-    "meaningEn": "volcanic eruption"
+    "meaningEn": "volcanic eruption",
+    "registersEn": {
+      "casual": "ふんか (funka)",
+      "formal": "ふんか (funka)",
+      "keigo": "ふんか (funka) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_teiden",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_teiden.png",
-    "meaningEn": "power outage"
+    "meaningEn": "power outage",
+    "registersEn": {
+      "casual": "ていでん (teiden)",
+      "formal": "ていでん (teiden)",
+      "keigo": "ていでん (teiden) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_kazan",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kazan.png",
-    "meaningEn": "volcano"
+    "meaningEn": "volcano",
+    "registersEn": {
+      "casual": "かざん (kazan)",
+      "formal": "かざん (kazan)",
+      "keigo": "かざん (kazan) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_hinan",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hinan.png",
-    "meaningEn": "evacuation"
+    "meaningEn": "evacuation",
+    "registersEn": {
+      "casual": "ひなん (hinan)",
+      "formal": "ひなん (hinan)",
+      "keigo": "ひなん (hinan) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_arashi",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_arashi.png",
-    "meaningEn": "storm"
+    "meaningEn": "storm",
+    "registersEn": {
+      "casual": "あらし (arashi)",
+      "formal": "あらし (arashi)",
+      "keigo": "あらし (arashi) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_bousai",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_bousai.png",
-    "meaningEn": "disaster prevention/mitigation"
+    "meaningEn": "disaster prevention/mitigation",
+    "registersEn": {
+      "casual": "ぼうさい (bousai)",
+      "formal": "ぼうさい (bousai)",
+      "keigo": "ぼうさい (bousai) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_hinanjo",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hinanjo.png",
-    "meaningEn": "evacuation shelter"
+    "meaningEn": "evacuation shelter",
+    "registersEn": {
+      "casual": "ひなんじょ (hinanjo)",
+      "formal": "ひなんじょ (hinanjo)",
+      "keigo": "ひなんじょ (hinanjo) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_fukkyuu",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_fukkyuu.png",
-    "meaningEn": "recovery (post-disaster)"
+    "meaningEn": "recovery (post-disaster)",
+    "registersEn": {
+      "casual": "ふっきゅう (fukkyuu)",
+      "formal": "ふっきゅう (fukkyuu)",
+      "keigo": "ふっきゅう (fukkyuu) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_houkai",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_houkai.png",
-    "meaningEn": "collapse"
+    "meaningEn": "collapse",
+    "registersEn": {
+      "casual": "ほうかい (houkai)",
+      "formal": "ほうかい (houkai)",
+      "keigo": "ほうかい (houkai) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_hisai",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_hisai.png",
-    "meaningEn": "being disaster-stricken"
+    "meaningEn": "being disaster-stricken",
+    "registersEn": {
+      "casual": "ひさい (hisai)",
+      "formal": "ひさい (hisai)",
+      "keigo": "ひさい (hisai) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_songai",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_songai.png",
-    "meaningEn": "damage/loss"
+    "meaningEn": "damage/loss",
+    "registersEn": {
+      "casual": "そんがい (songai)",
+      "formal": "そんがい (songai)",
+      "keigo": "そんがい (songai) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_kyuujo",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kyuujo.png",
-    "meaningEn": "rescue"
+    "meaningEn": "rescue",
+    "registersEn": {
+      "casual": "きゅうじょ (kyuujo)",
+      "formal": "きゅうじょ (kyuujo)",
+      "keigo": "きゅうじょ (kyuujo) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_tatsumaki",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_tatsumaki.png",
-    "meaningEn": "tornado"
+    "meaningEn": "tornado",
+    "registersEn": {
+      "casual": "たつまき (tatsumaki)",
+      "formal": "たつまき (tatsumaki)",
+      "keigo": "たつまき (tatsumaki) — no special keigo form for natural disaster terms"
+    }
   },
   {
     "id": "kotoba_bencana_alam_kasai",
@@ -465,6 +550,11 @@
       }
     ],
     "imagePath": "kotoba_images/bencana_alam/kotoba_bencana_alam_kasai.png",
-    "meaningEn": "fire (formal term)"
+    "meaningEn": "fire (formal term)",
+    "registersEn": {
+      "casual": "かさい (kasai)",
+      "formal": "かさい (kasai)",
+      "keigo": "かさい (kasai) — no special keigo form for natural disaster terms"
+    }
   }
 ]

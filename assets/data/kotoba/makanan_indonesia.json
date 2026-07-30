@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_indonesia/kotoba_makanan_indonesia_nasigoreng.png",
-    "meaningEn": "fried rice"
+    "meaningEn": "fried rice",
+    "registersEn": {
+      "casual": "ナシゴレン (nashigoren)",
+      "formal": "ナシゴレン (nashigoren) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ナシゴレン (nashigoren) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_indonesia_miegoreng",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_indonesia/kotoba_makanan_indonesia_miegoreng.png",
-    "meaningEn": "fried noodles"
+    "meaningEn": "fried noodles",
+    "registersEn": {
+      "casual": "ミーゴレン (miigoren)",
+      "formal": "ミーゴレン (miigoren) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ミーゴレン (miigoren) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_indonesia_sate",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_indonesia/kotoba_makanan_indonesia_sate.png",
-    "meaningEn": "satay"
+    "meaningEn": "satay",
+    "registersEn": {
+      "casual": "サテ (sate)",
+      "formal": "サテ (sate) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "サテ (sate) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_indonesia_gadogado",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_indonesia/kotoba_makanan_indonesia_gadogado.png",
-    "meaningEn": "gado-gado (vegetable salad with peanut sauce)"
+    "meaningEn": "gado-gado (vegetable salad with peanut sauce)",
+    "registersEn": {
+      "casual": "ガドガド (gadogado)",
+      "formal": "ガドガド (gadogado) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ガドガド (gadogado) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_indonesia_rendang",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_indonesia/kotoba_makanan_indonesia_rendang.png",
-    "meaningEn": "rendang"
+    "meaningEn": "rendang",
+    "registersEn": {
+      "casual": "ルンダン (rundan)",
+      "formal": "ルンダン (rundan) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ルンダン (rundan) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_indonesia_tempe",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_indonesia/kotoba_makanan_indonesia_tempe.png",
-    "meaningEn": "tempeh"
+    "meaningEn": "tempeh",
+    "registersEn": {
+      "casual": "テンペ (tenpe)",
+      "formal": "テンペ (tenpe) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "テンペ (tenpe) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_indonesia_sambal",
@@ -179,6 +209,11 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_indonesia/kotoba_makanan_indonesia_sambal.png",
-    "meaningEn": "chili sauce (sambal)"
+    "meaningEn": "chili sauce (sambal)",
+    "registersEn": {
+      "casual": "サンバル (sanbaru)",
+      "formal": "サンバル (sanbaru) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "サンバル (sanbaru) — no special keigo form for food names"
+    }
   }
 ]

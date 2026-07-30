@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_mushi.png",
-    "meaningEn": "insect/bug"
+    "meaningEn": "insect/bug",
+    "registersEn": {
+      "casual": "むし (mushi)",
+      "formal": "むし (mushi)",
+      "keigo": "むし (mushi) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_chou",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_chou.png",
-    "meaningEn": "butterfly"
+    "meaningEn": "butterfly",
+    "registersEn": {
+      "casual": "ちょう (chou)",
+      "formal": "ちょう (chou)",
+      "keigo": "ちょう (chou) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_hachi",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_hachi.png",
-    "meaningEn": "bee"
+    "meaningEn": "bee",
+    "registersEn": {
+      "casual": "はち (hachi)",
+      "formal": "はち (hachi)",
+      "keigo": "はち (hachi) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_ari",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_ari.png",
-    "meaningEn": "ant"
+    "meaningEn": "ant",
+    "registersEn": {
+      "casual": "あり (ari)",
+      "formal": "あり (ari)",
+      "keigo": "あり (ari) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_ka",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_ka.png",
-    "meaningEn": "mosquito"
+    "meaningEn": "mosquito",
+    "registersEn": {
+      "casual": "か (ka)",
+      "formal": "か (ka)",
+      "keigo": "か (ka) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_hae",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_hae.png",
-    "meaningEn": "fly"
+    "meaningEn": "fly",
+    "registersEn": {
+      "casual": "はえ (hae)",
+      "formal": "はえ (hae)",
+      "keigo": "はえ (hae) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_kumo",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_kumo.png",
-    "meaningEn": "spider"
+    "meaningEn": "spider",
+    "registersEn": {
+      "casual": "くも (kumo)",
+      "formal": "くも (kumo)",
+      "keigo": "くも (kumo) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_tonbo",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_tonbo.png",
-    "meaningEn": "dragonfly"
+    "meaningEn": "dragonfly",
+    "registersEn": {
+      "casual": "とんぼ (tonbo)",
+      "formal": "とんぼ (tonbo)",
+      "keigo": "とんぼ (tonbo) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_semi",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_semi.png",
-    "meaningEn": "cicada"
+    "meaningEn": "cicada",
+    "registersEn": {
+      "casual": "せみ (semi)",
+      "formal": "せみ (semi)",
+      "keigo": "せみ (semi) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_kabutomushi",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_kabutomushi.png",
-    "meaningEn": "rhinoceros beetle"
+    "meaningEn": "rhinoceros beetle",
+    "registersEn": {
+      "casual": "かぶとむし (kabutomushi)",
+      "formal": "かぶとむし (kabutomushi)",
+      "keigo": "かぶとむし (kabutomushi) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_tentoumushi",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_tentoumushi.png",
-    "meaningEn": "ladybug"
+    "meaningEn": "ladybug",
+    "registersEn": {
+      "casual": "てんとうむし (tentoumushi)",
+      "formal": "てんとうむし (tentoumushi)",
+      "keigo": "てんとうむし (tentoumushi) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_batta",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_batta.png",
-    "meaningEn": "grasshopper"
+    "meaningEn": "grasshopper",
+    "registersEn": {
+      "casual": "ばった (batta)",
+      "formal": "ばった (batta)",
+      "keigo": "ばった (batta) — no special keigo form for insect names"
+    }
   },
   {
     "id": "kotoba_serangga_kuwagata",
@@ -335,6 +395,11 @@
       }
     ],
     "imagePath": "kotoba_images/serangga/kotoba_serangga_kuwagata.png",
-    "meaningEn": "stag beetle"
+    "meaningEn": "stag beetle",
+    "registersEn": {
+      "casual": "くわがた (kuwagata)",
+      "formal": "くわがた (kuwagata)",
+      "keigo": "くわがた (kuwagata) — no special keigo form for insect names"
+    }
   }
 ]

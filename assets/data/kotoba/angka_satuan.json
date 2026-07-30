@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ichi.png",
-    "meaningEn": "one (1)"
+    "meaningEn": "one (1)",
+    "registersEn": {
+      "casual": "一 (ichi)",
+      "formal": "一 (ichi)",
+      "keigo": "一 (ichi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_ni",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ni.png",
-    "meaningEn": "two (2)"
+    "meaningEn": "two (2)",
+    "registersEn": {
+      "casual": "二 (ni)",
+      "formal": "二 (ni)",
+      "keigo": "二 (ni) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_san",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_san.png",
-    "meaningEn": "three (3)"
+    "meaningEn": "three (3)",
+    "registersEn": {
+      "casual": "三 (san)",
+      "formal": "三 (san)",
+      "keigo": "三 (san) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_yon",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_yon.png",
-    "meaningEn": "four (4)"
+    "meaningEn": "four (4)",
+    "registersEn": {
+      "casual": "四 (yon)",
+      "formal": "四 (yon)",
+      "keigo": "四 (yon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_go",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_go.png",
-    "meaningEn": "five (5)"
+    "meaningEn": "five (5)",
+    "registersEn": {
+      "casual": "五 (go)",
+      "formal": "五 (go)",
+      "keigo": "五 (go) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_roku",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_roku.png",
-    "meaningEn": "six (6)"
+    "meaningEn": "six (6)",
+    "registersEn": {
+      "casual": "六 (roku)",
+      "formal": "六 (roku)",
+      "keigo": "六 (roku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_nana",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_nana.png",
-    "meaningEn": "seven (7)"
+    "meaningEn": "seven (7)",
+    "registersEn": {
+      "casual": "七 (nana)",
+      "formal": "七 (nana)",
+      "keigo": "七 (nana) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_hachi",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_hachi.png",
-    "meaningEn": "eight (8)"
+    "meaningEn": "eight (8)",
+    "registersEn": {
+      "casual": "八 (hachi)",
+      "formal": "八 (hachi)",
+      "keigo": "八 (hachi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_kyuu",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_kyuu.png",
-    "meaningEn": "nine (9)"
+    "meaningEn": "nine (9)",
+    "registersEn": {
+      "casual": "九 (kyuu)",
+      "formal": "九 (kyuu)",
+      "keigo": "九 (kyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_juu",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_juu.png",
-    "meaningEn": "ten (10)"
+    "meaningEn": "ten (10)",
+    "registersEn": {
+      "casual": "十 (juu)",
+      "formal": "十 (juu)",
+      "keigo": "十 (juu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_hyaku",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_hyaku.png",
-    "meaningEn": "hundred (100)"
+    "meaningEn": "hundred (100)",
+    "registersEn": {
+      "casual": "百 (hyaku)",
+      "formal": "百 (hyaku)",
+      "keigo": "百 (hyaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_sen",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_sen.png",
-    "meaningEn": "thousand (1,000)"
+    "meaningEn": "thousand (1,000)",
+    "registersEn": {
+      "casual": "千 (sen)",
+      "formal": "千 (sen)",
+      "keigo": "千 (sen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_ichiman",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ichiman.png",
-    "meaningEn": "ten thousand (10,000)"
+    "meaningEn": "ten thousand (10,000)",
+    "registersEn": {
+      "casual": "一万 (ichiman)",
+      "formal": "一万 (ichiman)",
+      "keigo": "一万 (ichiman) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_suuji",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_suuji.png",
-    "meaningEn": "number/digit"
+    "meaningEn": "number/digit",
+    "registersEn": {
+      "casual": "数字 (suuji)",
+      "formal": "数字 (suuji)",
+      "keigo": "数字 (suuji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_ninzuu",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ninzuu.png",
-    "meaningEn": "number of people"
+    "meaningEn": "number of people",
+    "registersEn": {
+      "casual": "人数 (ninzuu)",
+      "formal": "人数 (ninzuu)",
+      "keigo": "人数 (ninzuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_fukusuu",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_fukusuu.png",
-    "meaningEn": "multiple/plural"
+    "meaningEn": "multiple/plural",
+    "registersEn": {
+      "casual": "複数 (fukusuu)",
+      "formal": "複数 (fukusuu)",
+      "keigo": "複数 (fukusuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_ninzuubun",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ninzuubun.png",
-    "meaningEn": "enough for the number of people"
+    "meaningEn": "enough for the number of people",
+    "registersEn": {
+      "casual": "人数分 (ninzuubun)",
+      "formal": "人数分 (ninzuubun)",
+      "keigo": "人数分 (ninzuubun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_kahansuu",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_kahansuu.png",
-    "meaningEn": "majority (more than half)"
+    "meaningEn": "majority (more than half)",
+    "registersEn": {
+      "casual": "過半数 (kahansuu)",
+      "formal": "過半数 (kahansuu)",
+      "keigo": "過半数 (kahansuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_ijou",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ijou.png",
-    "meaningEn": "or more/above"
+    "meaningEn": "or more/above",
+    "registersEn": {
+      "casual": "以上 (ijou)",
+      "formal": "以上 (ijou)",
+      "keigo": "以上 (ijou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_angka_satuan_ika",
@@ -517,6 +612,11 @@
       }
     ],
     "imagePath": "kotoba_images/angka_satuan/kotoba_angka_satuan_ika.png",
-    "meaningEn": "or less/below"
+    "meaningEn": "or less/below",
+    "registersEn": {
+      "casual": "以下 (ika)",
+      "formal": "以下 (ika)",
+      "keigo": "以下 (ika) — no special keigo form for this noun"
+    }
   }
 ]

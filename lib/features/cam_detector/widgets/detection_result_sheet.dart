@@ -249,7 +249,11 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
           const SizedBox(height: 6),
           ...SpeechRegister.values
               .where((r) => result.kotoba!.registers.containsKey(r))
-              .map((r) => _RegisterRow(register: r, value: result.kotoba!.registers[r]!)),
+              .map((r) => _RegisterRow(
+                    register: r,
+                    value: result.kotoba!.localizedRegisters(s.language)[r]!,
+                    language: s.language,
+                  )),
         ],
         if (result.exampleSentence(s.language) != null) ...[
           const SizedBox(height: 20),
@@ -305,8 +309,13 @@ class _SectionLabel extends StatelessWidget {
 class _RegisterRow extends StatelessWidget {
   final SpeechRegister register;
   final String value;
+  final AppLanguage language;
 
-  const _RegisterRow({required this.register, required this.value});
+  const _RegisterRow({
+    required this.register,
+    required this.value,
+    required this.language,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -319,7 +328,7 @@ class _RegisterRow extends StatelessWidget {
           SizedBox(
             width: 60,
             child: Text(
-              register.label,
+              register.localizedLabel(language),
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 12,

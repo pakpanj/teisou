@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_yasai.png",
-    "meaningEn": "vegetable (general)"
+    "meaningEn": "vegetable (general)",
+    "registersEn": {
+      "casual": "やさい (yasai)",
+      "formal": "やさい (yasai)",
+      "keigo": "やさい (yasai) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_ninjin",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_ninjin.png",
-    "meaningEn": "carrot"
+    "meaningEn": "carrot",
+    "registersEn": {
+      "casual": "にんじん (ninjin)",
+      "formal": "にんじん (ninjin)",
+      "keigo": "にんじん (ninjin) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_jagaimo",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_jagaimo.png",
-    "meaningEn": "potato"
+    "meaningEn": "potato",
+    "registersEn": {
+      "casual": "じゃがいも (jagaimo)",
+      "formal": "じゃがいも (jagaimo)",
+      "keigo": "じゃがいも (jagaimo) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_tamanegi",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_tamanegi.png",
-    "meaningEn": "onion"
+    "meaningEn": "onion",
+    "registersEn": {
+      "casual": "たまねぎ (tamanegi)",
+      "formal": "たまねぎ (tamanegi)",
+      "keigo": "たまねぎ (tamanegi) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_kyabetsu",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_kyabetsu.png",
-    "meaningEn": "cabbage"
+    "meaningEn": "cabbage",
+    "registersEn": {
+      "casual": "キャベツ (kyabetsu)",
+      "formal": "キャベツ (kyabetsu)",
+      "keigo": "キャベツ (kyabetsu) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_tomato",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_tomato.png",
-    "meaningEn": "tomato"
+    "meaningEn": "tomato",
+    "registersEn": {
+      "casual": "トマト (tomato)",
+      "formal": "トマト (tomato)",
+      "keigo": "トマト (tomato) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_kyuuri",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_kyuuri.png",
-    "meaningEn": "cucumber"
+    "meaningEn": "cucumber",
+    "registersEn": {
+      "casual": "きゅうり (kyuuri)",
+      "formal": "きゅうり (kyuuri)",
+      "keigo": "きゅうり (kyuuri) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_nasu",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_nasu.png",
-    "meaningEn": "eggplant"
+    "meaningEn": "eggplant",
+    "registersEn": {
+      "casual": "なす (nasu)",
+      "formal": "なす (nasu)",
+      "keigo": "なす (nasu) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_daikon",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_daikon.png",
-    "meaningEn": "daikon radish"
+    "meaningEn": "daikon radish",
+    "registersEn": {
+      "casual": "だいこん (daikon)",
+      "formal": "だいこん (daikon)",
+      "keigo": "だいこん (daikon) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_hourensou",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_hourensou.png",
-    "meaningEn": "spinach"
+    "meaningEn": "spinach",
+    "registersEn": {
+      "casual": "ほうれんそう (hourensou)",
+      "formal": "ほうれんそう (hourensou)",
+      "keigo": "ほうれんそう (hourensou) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_piiman",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_piiman.png",
-    "meaningEn": "green bell pepper"
+    "meaningEn": "green bell pepper",
+    "registersEn": {
+      "casual": "ピーマン (piiman)",
+      "formal": "ピーマン (piiman)",
+      "keigo": "ピーマン (piiman) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_renkon",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_renkon.png",
-    "meaningEn": "lotus root"
+    "meaningEn": "lotus root",
+    "registersEn": {
+      "casual": "れんこん (renkon)",
+      "formal": "れんこん (renkon)",
+      "keigo": "れんこん (renkon) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_negi",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_negi.png",
-    "meaningEn": "green onion/scallion"
+    "meaningEn": "green onion/scallion",
+    "registersEn": {
+      "casual": "ねぎ (negi)",
+      "formal": "ねぎ (negi)",
+      "keigo": "ねぎ (negi) — no special keigo form for vegetable names"
+    }
   },
   {
     "id": "kotoba_sayuran_ninniku",
@@ -361,6 +426,11 @@
       }
     ],
     "imagePath": "kotoba_images/sayuran/kotoba_sayuran_ninniku.png",
-    "meaningEn": "garlic"
+    "meaningEn": "garlic",
+    "registersEn": {
+      "casual": "にんにく (ninniku)",
+      "formal": "にんにく (ninniku)",
+      "keigo": "にんにく (ninniku) — no special keigo form for vegetable names"
+    }
   }
 ]

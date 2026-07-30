@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kazoku.png",
-    "meaningEn": "family"
+    "meaningEn": "family",
+    "registersEn": {
+      "casual": "家族 (kazoku)",
+      "formal": "家族 (kazoku)",
+      "keigo": "家族 (kazoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_chichi",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chichi.png",
-    "meaningEn": "(my) father"
+    "meaningEn": "(my) father",
+    "registersEn": {
+      "casual": "父 (chichi)",
+      "formal": "父 (chichi)",
+      "keigo": "父 (chichi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_haha",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_haha.png",
-    "meaningEn": "(my) mother"
+    "meaningEn": "(my) mother",
+    "registersEn": {
+      "casual": "母 (haha)",
+      "formal": "母 (haha)",
+      "keigo": "母 (haha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_ani",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ani.png",
-    "meaningEn": "(my) older brother"
+    "meaningEn": "(my) older brother",
+    "registersEn": {
+      "casual": "兄 (ani)",
+      "formal": "兄 (ani)",
+      "keigo": "兄 (ani) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_ane",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ane.png",
-    "meaningEn": "(my) older sister"
+    "meaningEn": "(my) older sister",
+    "registersEn": {
+      "casual": "姉 (ane)",
+      "formal": "姉 (ane)",
+      "keigo": "姉 (ane) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_otouto",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_otouto.png",
-    "meaningEn": "younger brother"
+    "meaningEn": "younger brother",
+    "registersEn": {
+      "casual": "弟 (otouto)",
+      "formal": "弟 (otouto)",
+      "keigo": "弟 (otouto) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_imouto",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_imouto.png",
-    "meaningEn": "younger sister"
+    "meaningEn": "younger sister",
+    "registersEn": {
+      "casual": "妹 (imouto)",
+      "formal": "妹 (imouto)",
+      "keigo": "妹 (imouto) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_sofu",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_sofu.png",
-    "meaningEn": "(my) grandfather"
+    "meaningEn": "(my) grandfather",
+    "registersEn": {
+      "casual": "祖父 (sofu)",
+      "formal": "祖父 (sofu)",
+      "keigo": "祖父 (sofu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_sobo",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_sobo.png",
-    "meaningEn": "(my) grandmother"
+    "meaningEn": "(my) grandmother",
+    "registersEn": {
+      "casual": "祖母 (sobo)",
+      "formal": "祖母 (sobo)",
+      "keigo": "祖母 (sobo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_musuko",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_musuko.png",
-    "meaningEn": "(my) son"
+    "meaningEn": "(my) son",
+    "registersEn": {
+      "casual": "息子 (musuko)",
+      "formal": "息子 (musuko)",
+      "keigo": "息子 (musuko) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_musume",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_musume.png",
-    "meaningEn": "(my) daughter"
+    "meaningEn": "(my) daughter",
+    "registersEn": {
+      "casual": "娘 (musume)",
+      "formal": "娘 (musume)",
+      "keigo": "娘 (musume) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_tomodachi",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_tomodachi.png",
-    "meaningEn": "friend"
+    "meaningEn": "friend",
+    "registersEn": {
+      "casual": "友達 (tomodachi)",
+      "formal": "友達 (tomodachi)",
+      "keigo": "友達 (tomodachi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_koibito",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_koibito.png",
-    "meaningEn": "girlfriend/boyfriend"
+    "meaningEn": "girlfriend/boyfriend",
+    "registersEn": {
+      "casual": "恋人 (koibito)",
+      "formal": "恋人 (koibito)",
+      "keigo": "恋人 (koibito) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_fuufu",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_fuufu.png",
-    "meaningEn": "married couple"
+    "meaningEn": "married couple",
+    "registersEn": {
+      "casual": "夫婦 (fuufu)",
+      "formal": "夫婦 (fuufu)",
+      "keigo": "夫婦 (fuufu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_soen",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_soen.png",
-    "meaningEn": "estrangement/losing touch"
+    "meaningEn": "estrangement/losing touch",
+    "registersEn": {
+      "casual": "疎遠 (soen)",
+      "formal": "疎遠 (soen)",
+      "keigo": "疎遠 (soen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_wakai",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_wakai.png",
-    "meaningEn": "reconciliation"
+    "meaningEn": "reconciliation",
+    "registersEn": {
+      "casual": "和解 (wakai)",
+      "formal": "和解 (wakai)",
+      "keigo": "和解 (wakai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_danzetsu",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_danzetsu.png",
-    "meaningEn": "severance (of a relationship)"
+    "meaningEn": "severance (of a relationship)",
+    "registersEn": {
+      "casual": "断絶 (danzetsu)",
+      "formal": "断絶 (danzetsu)",
+      "keigo": "断絶 (danzetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_kyoudai",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kyoudai.png",
-    "meaningEn": "siblings (brothers)"
+    "meaningEn": "siblings (brothers)",
+    "registersEn": {
+      "casual": "兄弟 (kyoudai)",
+      "formal": "兄弟 (kyoudai)",
+      "keigo": "兄弟 (kyoudai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_shimai",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shimai.png",
-    "meaningEn": "sisters"
+    "meaningEn": "sisters",
+    "registersEn": {
+      "casual": "姉妹 (shimai)",
+      "formal": "姉妹 (shimai)",
+      "keigo": "姉妹 (shimai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_ryoushin",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ryoushin.png",
-    "meaningEn": "(both) parents"
+    "meaningEn": "(both) parents",
+    "registersEn": {
+      "casual": "両親 (ryoushin)",
+      "formal": "両親 (ryoushin)",
+      "keigo": "両親 (ryoushin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_kodomo",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kodomo.png",
-    "meaningEn": "child (general)"
+    "meaningEn": "child (general)",
+    "registersEn": {
+      "casual": "子供 (kodomo)",
+      "formal": "子供 (kodomo)",
+      "keigo": "子供 (kodomo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_otona",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_otona.png",
-    "meaningEn": "adult"
+    "meaningEn": "adult",
+    "registersEn": {
+      "casual": "大人 (otona)",
+      "formal": "大人 (otona)",
+      "keigo": "大人 (otona) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_shinseki",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shinseki.png",
-    "meaningEn": "relative"
+    "meaningEn": "relative",
+    "registersEn": {
+      "casual": "親戚 (shinseki)",
+      "formal": "親戚 (shinseki)",
+      "keigo": "親戚 (shinseki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_haiguusha",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_haiguusha.png",
-    "meaningEn": "spouse (legal term)"
+    "meaningEn": "spouse (legal term)",
+    "registersEn": {
+      "casual": "配偶者 (haiguusha)",
+      "formal": "配偶者 (haiguusha)",
+      "keigo": "配偶者 (haiguusha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_ketsuen",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ketsuen.png",
-    "meaningEn": "blood relation"
+    "meaningEn": "blood relation",
+    "registersEn": {
+      "casual": "血縁 (ketsuen)",
+      "formal": "血縁 (ketsuen)",
+      "keigo": "血縁 (ketsuen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_dokushin",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_dokushin.png",
-    "meaningEn": "unmarried/single"
+    "meaningEn": "unmarried/single",
+    "registersEn": {
+      "casual": "独身 (dokushin)",
+      "formal": "独身 (dokushin)",
+      "keigo": "独身 (dokushin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_oyako",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_oyako.png",
-    "meaningEn": "parent and child"
+    "meaningEn": "parent and child",
+    "registersEn": {
+      "casual": "親子 (oyako)",
+      "formal": "親子 (oyako)",
+      "keigo": "親子 (oyako) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_katei",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_katei.png",
-    "meaningEn": "household/family"
+    "meaningEn": "household/family",
+    "registersEn": {
+      "casual": "家庭 (katei)",
+      "formal": "家庭 (katei)",
+      "keigo": "家庭 (katei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_kekkon",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kekkon.png",
-    "meaningEn": "marriage"
+    "meaningEn": "marriage",
+    "registersEn": {
+      "casual": "結婚 (kekkon)",
+      "formal": "結婚 (kekkon)",
+      "keigo": "結婚 (kekkon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_jikka",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_jikka.png",
-    "meaningEn": "parents' home"
+    "meaningEn": "parents' home",
+    "registersEn": {
+      "casual": "実家 (jikka)",
+      "formal": "実家 (jikka)",
+      "keigo": "実家 (jikka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_tanjou",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_tanjou.png",
-    "meaningEn": "birth"
+    "meaningEn": "birth",
+    "registersEn": {
+      "casual": "誕生 (tanjou)",
+      "formal": "誕生 (tanjou)",
+      "keigo": "誕生 (tanjou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_nakama",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_nakama.png",
-    "meaningEn": "companion/fellow member"
+    "meaningEn": "companion/fellow member",
+    "registersEn": {
+      "casual": "仲間 (nakama)",
+      "formal": "仲間 (nakama)",
+      "keigo": "仲間 (nakama) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_yakuwari",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_yakuwari.png",
-    "meaningEn": "role"
+    "meaningEn": "role",
+    "registersEn": {
+      "casual": "役割 (yakuwari)",
+      "formal": "役割 (yakuwari)",
+      "keigo": "役割 (yakuwari) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_yuujou",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_yuujou.png",
-    "meaningEn": "friendship"
+    "meaningEn": "friendship",
+    "registersEn": {
+      "casual": "友情 (yuujou)",
+      "formal": "友情 (yuujou)",
+      "keigo": "友情 (yuujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_yuujin",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_yuujin.png",
-    "meaningEn": "friend (formal term)"
+    "meaningEn": "friend (formal term)",
+    "registersEn": {
+      "casual": "友人 (yuujin)",
+      "formal": "友人 (yuujin)",
+      "keigo": "友人 (yuujin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_wakamono",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_wakamono.png",
-    "meaningEn": "young people"
+    "meaningEn": "young people",
+    "registersEn": {
+      "casual": "若者 (wakamono)",
+      "formal": "若者 (wakamono)",
+      "keigo": "若者 (wakamono) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_sofubo",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_sofubo.png",
-    "meaningEn": "grandparents"
+    "meaningEn": "grandparents",
+    "registersEn": {
+      "casual": "祖父母 (sofubo)",
+      "formal": "祖父母 (sofubo)",
+      "keigo": "祖父母 (sofubo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_aishou",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_aishou.png",
-    "meaningEn": "compatibility (between people)"
+    "meaningEn": "compatibility (between people)",
+    "registersEn": {
+      "casual": "相性 (aishou)",
+      "formal": "相性 (aishou)",
+      "keigo": "相性 (aishou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_ikuji",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ikuji.png",
-    "meaningEn": "childcare"
+    "meaningEn": "childcare",
+    "registersEn": {
+      "casual": "育児 (ikuji)",
+      "formal": "育児 (ikuji)",
+      "keigo": "育児 (ikuji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_chichioya",
@@ -1037,7 +1232,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chichioya.png",
-    "meaningEn": "father (general term)"
+    "meaningEn": "father (general term)",
+    "registersEn": {
+      "casual": "父親 (chichioya)",
+      "formal": "父親 (chichioya)",
+      "keigo": "父親 (chichioya) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_danshi",
@@ -1063,7 +1263,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_danshi.png",
-    "meaningEn": "boy/young man"
+    "meaningEn": "boy/young man",
+    "registersEn": {
+      "casual": "男子 (danshi)",
+      "formal": "男子 (danshi)",
+      "keigo": "男子 (danshi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_hahaoya",
@@ -1089,7 +1294,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_hahaoya.png",
-    "meaningEn": "mother (general term)"
+    "meaningEn": "mother (general term)",
+    "registersEn": {
+      "casual": "母親 (hahaoya)",
+      "formal": "母親 (hahaoya)",
+      "keigo": "母親 (hahaoya) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_ikka",
@@ -1115,7 +1325,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_ikka.png",
-    "meaningEn": "one family"
+    "meaningEn": "one family",
+    "registersEn": {
+      "casual": "一家 (ikka)",
+      "formal": "一家 (ikka)",
+      "keigo": "一家 (ikka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_mikata",
@@ -1141,7 +1356,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_mikata.png",
-    "meaningEn": "ally/supporter"
+    "meaningEn": "ally/supporter",
+    "registersEn": {
+      "casual": "味方 (mikata)",
+      "formal": "味方 (mikata)",
+      "keigo": "味方 (mikata) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_seinen",
@@ -1167,7 +1387,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_seinen.png",
-    "meaningEn": "young man/youth"
+    "meaningEn": "young man/youth",
+    "registersEn": {
+      "casual": "青年 (seinen)",
+      "formal": "青年 (seinen)",
+      "keigo": "青年 (seinen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_shoujo",
@@ -1193,7 +1418,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shoujo.png",
-    "meaningEn": "young girl"
+    "meaningEn": "young girl",
+    "registersEn": {
+      "casual": "少女 (shoujo)",
+      "formal": "少女 (shoujo)",
+      "keigo": "少女 (shoujo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_shounen",
@@ -1219,7 +1449,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_shounen.png",
-    "meaningEn": "boy/young man"
+    "meaningEn": "boy/young man",
+    "registersEn": {
+      "casual": "少年 (shounen)",
+      "formal": "少年 (shounen)",
+      "keigo": "少年 (shounen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_chuujitsu",
@@ -1245,7 +1480,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chuujitsu.png",
-    "meaningEn": "loyal/faithful"
+    "meaningEn": "loyal/faithful",
+    "registersEn": {
+      "casual": "忠実 (chuujitsu)",
+      "formal": "忠実 (chuujitsu)",
+      "keigo": "忠実 (chuujitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_doushi",
@@ -1271,7 +1511,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_doushi.png",
-    "meaningEn": "fellow (people)"
+    "meaningEn": "fellow (people)",
+    "registersEn": {
+      "casual": "同士 (doushi)",
+      "formal": "同士 (doushi)",
+      "keigo": "同士 (doushi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_chounan",
@@ -1297,7 +1542,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_chounan.png",
-    "meaningEn": "eldest son"
+    "meaningEn": "eldest son",
+    "registersEn": {
+      "casual": "長男 (chounan)",
+      "formal": "長男 (chounan)",
+      "keigo": "長男 (chounan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_fubo",
@@ -1323,7 +1573,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_fubo.png",
-    "meaningEn": "father and mother"
+    "meaningEn": "father and mother",
+    "registersEn": {
+      "casual": "父母 (fubo)",
+      "formal": "父母 (fubo)",
+      "keigo": "父母 (fubo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_seishounen",
@@ -1349,7 +1604,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_seishounen.png",
-    "meaningEn": "youth/young people"
+    "meaningEn": "youth/young people",
+    "registersEn": {
+      "casual": "青少年 (seishounen)",
+      "formal": "青少年 (seishounen)",
+      "keigo": "青少年 (seishounen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_dansei",
@@ -1375,7 +1635,12 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_dansei.png",
-    "meaningEn": "man (formal)"
+    "meaningEn": "man (formal)",
+    "registersEn": {
+      "casual": "男性 (dansei)",
+      "formal": "男性 (dansei)",
+      "keigo": "男性 (dansei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_keluarga_hubungan_kanai",
@@ -1401,6 +1666,11 @@
       }
     ],
     "imagePath": "kotoba_images/keluarga_hubungan/kotoba_keluarga_hubungan_kanai.png",
-    "meaningEn": "my wife"
+    "meaningEn": "my wife",
+    "registersEn": {
+      "casual": "家内 (kanai)",
+      "formal": "家内 (kanai)",
+      "keigo": "家内 (kanai) — no special keigo form for this noun"
+    }
   }
 ]

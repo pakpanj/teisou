@@ -1,3 +1,5 @@
+import 'app_language.dart';
+
 enum SpeechRegister { casual, formal, keigo }
 
 extension SpeechRegisterX on SpeechRegister {
@@ -16,6 +18,18 @@ extension SpeechRegisterX on SpeechRegister {
     switch (this) {
       case SpeechRegister.casual:
         return 'Santai';
+      case SpeechRegister.formal:
+        return 'Formal';
+      case SpeechRegister.keigo:
+        return 'Keigo';
+    }
+  }
+
+  String localizedLabel(AppLanguage language) {
+    if (language != AppLanguage.english) return label;
+    switch (this) {
+      case SpeechRegister.casual:
+        return 'Casual';
       case SpeechRegister.formal:
         return 'Formal';
       case SpeechRegister.keigo:

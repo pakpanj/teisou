@@ -2,6 +2,7 @@
   {
     "id": "perkenalan",
     "name": "Perkenalan",
+    "nameEn": "Introductions",
     "icon": "👋",
     "level": "N5",
     "available": true,
@@ -10,6 +11,7 @@
   {
     "id": "restoran",
     "name": "Di Restoran",
+    "nameEn": "At a Restaurant",
     "icon": "🍽️",
     "level": "N5",
     "available": true,
@@ -18,6 +20,7 @@
   {
     "id": "stasiun",
     "name": "Di Stasiun",
+    "nameEn": "At the Station",
     "icon": "🚉",
     "level": "N5",
     "available": true,
@@ -26,6 +29,7 @@
   {
     "id": "belanja",
     "name": "Belanja",
+    "nameEn": "Shopping",
     "icon": "🛍️",
     "level": "N5",
     "available": true,
@@ -34,6 +38,7 @@
   {
     "id": "arah_jalan",
     "name": "Menanyakan Arah",
+    "nameEn": "Asking for Directions",
     "icon": "🧭",
     "level": "N5",
     "available": true,
@@ -42,6 +47,7 @@
   {
     "id": "sekolah",
     "name": "Di Sekolah",
+    "nameEn": "At School",
     "icon": "🏫",
     "level": "N5",
     "available": true,
@@ -50,6 +56,7 @@
   {
     "id": "cuaca_basa_basi",
     "name": "Cuaca & Basa-basi",
+    "nameEn": "Weather & Small Talk",
     "icon": "☁️",
     "level": "N5",
     "available": true,
@@ -58,6 +65,7 @@
   {
     "id": "rumah_sakit",
     "name": "Di Rumah Sakit",
+    "nameEn": "At the Hospital",
     "icon": "🏥",
     "level": "N5",
     "available": true,
@@ -66,6 +74,7 @@
   {
     "id": "hobi",
     "name": "Hobi",
+    "nameEn": "Hobbies",
     "icon": "🎨",
     "level": "N5",
     "available": true,
@@ -74,6 +83,7 @@
   {
     "id": "telepon",
     "name": "Telepon",
+    "nameEn": "Phone Calls",
     "icon": "☎️",
     "level": "N5",
     "available": true,
@@ -82,6 +92,7 @@
   {
     "id": "transportasi",
     "name": "Transportasi",
+    "nameEn": "Transportation",
     "icon": "🚌",
     "level": "N5",
     "available": true,
@@ -90,6 +101,7 @@
   {
     "id": "kantor_pos",
     "name": "Di Kantor Pos",
+    "nameEn": "At the Post Office",
     "icon": "📮",
     "level": "N5",
     "available": true,
@@ -98,6 +110,7 @@
   {
     "id": "liburan",
     "name": "Rencana Liburan",
+    "nameEn": "Vacation Plans",
     "icon": "🏖️",
     "level": "N5",
     "available": true,
@@ -106,6 +119,7 @@
   {
     "id": "keluarga",
     "name": "Keluarga",
+    "nameEn": "Family",
     "icon": "👨‍👩‍👧",
     "level": "N5",
     "available": true,
@@ -114,6 +128,7 @@
   {
     "id": "bank",
     "name": "Di Bank",
+    "nameEn": "At the Bank",
     "icon": "🏦",
     "level": "N5",
     "available": true,
@@ -122,6 +137,7 @@
   {
     "id": "olahraga",
     "name": "Olahraga",
+    "nameEn": "Sports",
     "icon": "⚽",
     "level": "N5",
     "available": true,
@@ -130,6 +146,7 @@
   {
     "id": "bioskop",
     "name": "Di Bioskop",
+    "nameEn": "At the Cinema",
     "icon": "🎬",
     "level": "N5",
     "available": true,
@@ -138,6 +155,7 @@
   {
     "id": "perkenalan_n4",
     "name": "Perkenalan",
+    "nameEn": "Introductions",
     "icon": "👋",
     "level": "N4",
     "available": true,
@@ -146,6 +164,7 @@
   {
     "id": "restoran_n4",
     "name": "Di Restoran",
+    "nameEn": "At a Restaurant",
     "icon": "🍽️",
     "level": "N4",
     "available": true,
@@ -154,6 +173,7 @@
   {
     "id": "stasiun_n4",
     "name": "Di Stasiun",
+    "nameEn": "At the Station",
     "icon": "🚉",
     "level": "N4",
     "available": true,
@@ -162,6 +182,7 @@
   {
     "id": "belanja_n4",
     "name": "Belanja",
+    "nameEn": "Shopping",
     "icon": "🛍️",
     "level": "N4",
     "available": true,
@@ -170,6 +191,7 @@
   {
     "id": "arah_jalan_n4",
     "name": "Menanyakan Arah",
+    "nameEn": "Asking for Directions",
     "icon": "🧭",
     "level": "N4",
     "available": true,
@@ -178,6 +200,7 @@
   {
     "id": "sekolah_n4",
     "name": "Di Sekolah",
+    "nameEn": "At School",
     "icon": "🏫",
     "level": "N4",
     "available": true,
@@ -186,6 +209,7 @@
   {
     "id": "cuaca_basa_basi_n4",
     "name": "Cuaca & Basa-basi",
+    "nameEn": "Weather & Small Talk",
     "icon": "☁️",
     "level": "N4",
     "available": true,
@@ -194,6 +218,7 @@
   {
     "id": "rumah_sakit_n4",
     "name": "Di Rumah Sakit",
+    "nameEn": "At the Hospital",
     "icon": "🏥",
     "level": "N4",
     "available": true,
@@ -202,6 +227,7 @@
   {
     "id": "hobi_n4",
     "name": "Hobi",
+    "nameEn": "Hobbies",
     "icon": "🎨",
     "level": "N4",
     "available": true,
@@ -210,6 +236,7 @@
   {
     "id": "telepon_n4",
     "name": "Telepon",
+    "nameEn": "Phone Calls",
     "icon": "☎️",
     "level": "N4",
     "available": true,
@@ -218,6 +245,7 @@
   {
     "id": "transportasi_n4",
     "name": "Transportasi",
+    "nameEn": "Transportation",
     "icon": "🚌",
     "level": "N4",
     "available": true,
@@ -226,6 +254,7 @@
   {
     "id": "kantor_pos_n4",
     "name": "Di Kantor Pos",
+    "nameEn": "At the Post Office",
     "icon": "📮",
     "level": "N4",
     "available": true,
@@ -234,6 +263,7 @@
   {
     "id": "liburan_n4",
     "name": "Rencana Liburan",
+    "nameEn": "Vacation Plans",
     "icon": "🏖️",
     "level": "N4",
     "available": true,
@@ -242,6 +272,7 @@
   {
     "id": "keluarga_n4",
     "name": "Keluarga",
+    "nameEn": "Family",
     "icon": "👨‍👩‍👧",
     "level": "N4",
     "available": true,
@@ -250,6 +281,7 @@
   {
     "id": "bank_n4",
     "name": "Di Bank",
+    "nameEn": "At the Bank",
     "icon": "🏦",
     "level": "N4",
     "available": true,
@@ -258,6 +290,7 @@
   {
     "id": "olahraga_n4",
     "name": "Olahraga",
+    "nameEn": "Sports",
     "icon": "⚽",
     "level": "N4",
     "available": true,
@@ -266,6 +299,7 @@
   {
     "id": "bioskop_n4",
     "name": "Di Bioskop",
+    "nameEn": "At the Cinema",
     "icon": "🎬",
     "level": "N4",
     "available": true,
@@ -274,6 +308,7 @@
   {
     "id": "perkenalan_n3",
     "name": "Perkenalan",
+    "nameEn": "Introductions",
     "icon": "👋",
     "level": "N3",
     "available": true,
@@ -282,6 +317,7 @@
   {
     "id": "restoran_n3",
     "name": "Di Restoran",
+    "nameEn": "At a Restaurant",
     "icon": "🍽️",
     "level": "N3",
     "available": true,
@@ -290,6 +326,7 @@
   {
     "id": "stasiun_n3",
     "name": "Di Stasiun",
+    "nameEn": "At the Station",
     "icon": "🚉",
     "level": "N3",
     "available": true,
@@ -298,6 +335,7 @@
   {
     "id": "belanja_n3",
     "name": "Belanja",
+    "nameEn": "Shopping",
     "icon": "🛍️",
     "level": "N3",
     "available": true,
@@ -306,6 +344,7 @@
   {
     "id": "arah_jalan_n3",
     "name": "Menanyakan Arah",
+    "nameEn": "Asking for Directions",
     "icon": "🧭",
     "level": "N3",
     "available": true,
@@ -314,6 +353,7 @@
   {
     "id": "sekolah_n3",
     "name": "Di Sekolah",
+    "nameEn": "At School",
     "icon": "🏫",
     "level": "N3",
     "available": true,
@@ -322,6 +362,7 @@
   {
     "id": "cuaca_basa_basi_n3",
     "name": "Cuaca & Basa-basi",
+    "nameEn": "Weather & Small Talk",
     "icon": "☁️",
     "level": "N3",
     "available": true,
@@ -330,6 +371,7 @@
   {
     "id": "rumah_sakit_n3",
     "name": "Di Rumah Sakit",
+    "nameEn": "At the Hospital",
     "icon": "🏥",
     "level": "N3",
     "available": true,
@@ -338,6 +380,7 @@
   {
     "id": "hobi_n3",
     "name": "Hobi",
+    "nameEn": "Hobbies",
     "icon": "🎨",
     "level": "N3",
     "available": true,
@@ -346,6 +389,7 @@
   {
     "id": "telepon_n3",
     "name": "Telepon",
+    "nameEn": "Phone Calls",
     "icon": "☎️",
     "level": "N3",
     "available": true,
@@ -354,6 +398,7 @@
   {
     "id": "transportasi_n3",
     "name": "Transportasi",
+    "nameEn": "Transportation",
     "icon": "🚌",
     "level": "N3",
     "available": true,
@@ -362,6 +407,7 @@
   {
     "id": "kantor_pos_n3",
     "name": "Di Kantor Pos",
+    "nameEn": "At the Post Office",
     "icon": "📮",
     "level": "N3",
     "available": true,
@@ -370,6 +416,7 @@
   {
     "id": "liburan_n3",
     "name": "Rencana Liburan",
+    "nameEn": "Vacation Plans",
     "icon": "🏖️",
     "level": "N3",
     "available": true,
@@ -378,6 +425,7 @@
   {
     "id": "keluarga_n3",
     "name": "Keluarga",
+    "nameEn": "Family",
     "icon": "👨‍👩‍👧",
     "level": "N3",
     "available": true,
@@ -386,6 +434,7 @@
   {
     "id": "bank_n3",
     "name": "Di Bank",
+    "nameEn": "At the Bank",
     "icon": "🏦",
     "level": "N3",
     "available": true,
@@ -394,6 +443,7 @@
   {
     "id": "olahraga_n3",
     "name": "Olahraga",
+    "nameEn": "Sports",
     "icon": "⚽",
     "level": "N3",
     "available": true,
@@ -402,6 +452,7 @@
   {
     "id": "bioskop_n3",
     "name": "Di Bioskop",
+    "nameEn": "At the Cinema",
     "icon": "🎬",
     "level": "N3",
     "available": true,
@@ -410,6 +461,7 @@
   {
     "id": "perkenalan_n2",
     "name": "Perkenalan",
+    "nameEn": "Introductions",
     "icon": "👋",
     "level": "N2",
     "available": true,
@@ -418,6 +470,7 @@
   {
     "id": "restoran_n2",
     "name": "Di Restoran",
+    "nameEn": "At a Restaurant",
     "icon": "🍽️",
     "level": "N2",
     "available": true,
@@ -426,6 +479,7 @@
   {
     "id": "stasiun_n2",
     "name": "Di Stasiun",
+    "nameEn": "At the Station",
     "icon": "🚉",
     "level": "N2",
     "available": true,
@@ -434,6 +488,7 @@
   {
     "id": "belanja_n2",
     "name": "Belanja",
+    "nameEn": "Shopping",
     "icon": "🛍️",
     "level": "N2",
     "available": true,
@@ -442,6 +497,7 @@
   {
     "id": "arah_jalan_n2",
     "name": "Menanyakan Arah",
+    "nameEn": "Asking for Directions",
     "icon": "🧭",
     "level": "N2",
     "available": true,
@@ -450,6 +506,7 @@
   {
     "id": "sekolah_n2",
     "name": "Di Sekolah",
+    "nameEn": "At School",
     "icon": "🏫",
     "level": "N2",
     "available": true,
@@ -458,6 +515,7 @@
   {
     "id": "cuaca_basa_basi_n2",
     "name": "Cuaca & Basa-basi",
+    "nameEn": "Weather & Small Talk",
     "icon": "☁️",
     "level": "N2",
     "available": true,
@@ -466,6 +524,7 @@
   {
     "id": "rumah_sakit_n2",
     "name": "Di Rumah Sakit",
+    "nameEn": "At the Hospital",
     "icon": "🏥",
     "level": "N2",
     "available": true,
@@ -474,6 +533,7 @@
   {
     "id": "hobi_n2",
     "name": "Hobi",
+    "nameEn": "Hobbies",
     "icon": "🎨",
     "level": "N2",
     "available": true,
@@ -482,6 +542,7 @@
   {
     "id": "telepon_n2",
     "name": "Telepon",
+    "nameEn": "Phone Calls",
     "icon": "☎️",
     "level": "N2",
     "available": true,
@@ -490,6 +551,7 @@
   {
     "id": "transportasi_n2",
     "name": "Transportasi",
+    "nameEn": "Transportation",
     "icon": "🚌",
     "level": "N2",
     "available": true,
@@ -498,6 +560,7 @@
   {
     "id": "kantor_pos_n2",
     "name": "Di Kantor Pos",
+    "nameEn": "At the Post Office",
     "icon": "📮",
     "level": "N2",
     "available": true,
@@ -506,6 +569,7 @@
   {
     "id": "liburan_n2",
     "name": "Rencana Liburan",
+    "nameEn": "Vacation Plans",
     "icon": "🏖️",
     "level": "N2",
     "available": true,
@@ -514,6 +578,7 @@
   {
     "id": "keluarga_n2",
     "name": "Keluarga",
+    "nameEn": "Family",
     "icon": "👨‍👩‍👧",
     "level": "N2",
     "available": true,
@@ -522,6 +587,7 @@
   {
     "id": "bank_n2",
     "name": "Di Bank",
+    "nameEn": "At the Bank",
     "icon": "🏦",
     "level": "N2",
     "available": true,
@@ -530,6 +596,7 @@
   {
     "id": "olahraga_n2",
     "name": "Olahraga",
+    "nameEn": "Sports",
     "icon": "⚽",
     "level": "N2",
     "available": true,
@@ -538,6 +605,7 @@
   {
     "id": "bioskop_n2",
     "name": "Di Bioskop",
+    "nameEn": "At the Cinema",
     "icon": "🎬",
     "level": "N2",
     "available": true,
@@ -546,6 +614,7 @@
   {
     "id": "perkenalan_n1",
     "name": "Perkenalan",
+    "nameEn": "Introductions",
     "icon": "👋",
     "level": "N1",
     "available": true,
@@ -554,6 +623,7 @@
   {
     "id": "restoran_n1",
     "name": "Di Restoran",
+    "nameEn": "At a Restaurant",
     "icon": "🍽️",
     "level": "N1",
     "available": true,
@@ -562,6 +632,7 @@
   {
     "id": "stasiun_n1",
     "name": "Di Stasiun",
+    "nameEn": "At the Station",
     "icon": "🚉",
     "level": "N1",
     "available": true,
@@ -570,6 +641,7 @@
   {
     "id": "belanja_n1",
     "name": "Belanja",
+    "nameEn": "Shopping",
     "icon": "🛍️",
     "level": "N1",
     "available": true,
@@ -578,6 +650,7 @@
   {
     "id": "arah_jalan_n1",
     "name": "Menanyakan Arah",
+    "nameEn": "Asking for Directions",
     "icon": "🧭",
     "level": "N1",
     "available": true,
@@ -586,6 +659,7 @@
   {
     "id": "sekolah_n1",
     "name": "Di Sekolah",
+    "nameEn": "At School",
     "icon": "🏫",
     "level": "N1",
     "available": true,
@@ -594,6 +668,7 @@
   {
     "id": "cuaca_basa_basi_n1",
     "name": "Cuaca & Basa-basi",
+    "nameEn": "Weather & Small Talk",
     "icon": "☁️",
     "level": "N1",
     "available": true,
@@ -602,6 +677,7 @@
   {
     "id": "rumah_sakit_n1",
     "name": "Di Rumah Sakit",
+    "nameEn": "At the Hospital",
     "icon": "🏥",
     "level": "N1",
     "available": true,
@@ -610,6 +686,7 @@
   {
     "id": "hobi_n1",
     "name": "Hobi",
+    "nameEn": "Hobbies",
     "icon": "🎨",
     "level": "N1",
     "available": true,
@@ -618,6 +695,7 @@
   {
     "id": "telepon_n1",
     "name": "Telepon",
+    "nameEn": "Phone Calls",
     "icon": "☎️",
     "level": "N1",
     "available": true,
@@ -626,6 +704,7 @@
   {
     "id": "transportasi_n1",
     "name": "Transportasi",
+    "nameEn": "Transportation",
     "icon": "🚌",
     "level": "N1",
     "available": true,
@@ -634,6 +713,7 @@
   {
     "id": "kantor_pos_n1",
     "name": "Di Kantor Pos",
+    "nameEn": "At the Post Office",
     "icon": "📮",
     "level": "N1",
     "available": true,
@@ -642,6 +722,7 @@
   {
     "id": "liburan_n1",
     "name": "Rencana Liburan",
+    "nameEn": "Vacation Plans",
     "icon": "🏖️",
     "level": "N1",
     "available": true,
@@ -650,6 +731,7 @@
   {
     "id": "keluarga_n1",
     "name": "Keluarga",
+    "nameEn": "Family",
     "icon": "👨‍👩‍👧",
     "level": "N1",
     "available": true,
@@ -658,6 +740,7 @@
   {
     "id": "bank_n1",
     "name": "Di Bank",
+    "nameEn": "At the Bank",
     "icon": "🏦",
     "level": "N1",
     "available": true,
@@ -666,6 +749,7 @@
   {
     "id": "olahraga_n1",
     "name": "Olahraga",
+    "nameEn": "Sports",
     "icon": "⚽",
     "level": "N1",
     "available": true,
@@ -674,6 +758,7 @@
   {
     "id": "bioskop_n1",
     "name": "Di Bioskop",
+    "nameEn": "At the Cinema",
     "icon": "🎬",
     "level": "N1",
     "available": true,

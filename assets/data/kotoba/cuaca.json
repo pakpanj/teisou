@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_tenki.png",
-    "meaningEn": "weather"
+    "meaningEn": "weather",
+    "registersEn": {
+      "casual": "てんき (tenki)",
+      "formal": "てんき (tenki)",
+      "keigo": "てんき (tenki) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_hare",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_hare.png",
-    "meaningEn": "sunny/clear"
+    "meaningEn": "sunny/clear",
+    "registersEn": {
+      "casual": "はれ (hare)",
+      "formal": "はれ (hare)",
+      "keigo": "はれ (hare) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_ame",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_ame.png",
-    "meaningEn": "rain"
+    "meaningEn": "rain",
+    "registersEn": {
+      "casual": "あめ (ame)",
+      "formal": "あめ (ame)",
+      "keigo": "あめ (ame) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_kumori",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kumori.png",
-    "meaningEn": "cloudy"
+    "meaningEn": "cloudy",
+    "registersEn": {
+      "casual": "くもり (kumori)",
+      "formal": "くもり (kumori)",
+      "keigo": "くもり (kumori) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_yuki",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_yuki.png",
-    "meaningEn": "snow"
+    "meaningEn": "snow",
+    "registersEn": {
+      "casual": "ゆき (yuki)",
+      "formal": "ゆき (yuki)",
+      "keigo": "ゆき (yuki) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_kaze",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kaze.png",
-    "meaningEn": "wind"
+    "meaningEn": "wind",
+    "registersEn": {
+      "casual": "かぜ (kaze)",
+      "formal": "かぜ (kaze)",
+      "keigo": "かぜ (kaze) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_kaminari",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kaminari.png",
-    "meaningEn": "thunder/lightning"
+    "meaningEn": "thunder/lightning",
+    "registersEn": {
+      "casual": "かみなり (kaminari)",
+      "formal": "かみなり (kaminari)",
+      "keigo": "かみなり (kaminari) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_kiri",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kiri.png",
-    "meaningEn": "fog"
+    "meaningEn": "fog",
+    "registersEn": {
+      "casual": "きり (kiri)",
+      "formal": "きり (kiri)",
+      "keigo": "きり (kiri) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_taifuu",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_taifuu.png",
-    "meaningEn": "typhoon"
+    "meaningEn": "typhoon",
+    "registersEn": {
+      "casual": "たいふう (taifuu)",
+      "formal": "たいふう (taifuu)",
+      "keigo": "たいふう (taifuu) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_niji",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_niji.png",
-    "meaningEn": "rainbow"
+    "meaningEn": "rainbow",
+    "registersEn": {
+      "casual": "にじ (niji)",
+      "formal": "にじ (niji)",
+      "keigo": "にじ (niji) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_tsuyu",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_tsuyu.png",
-    "meaningEn": "rainy season (Japan)"
+    "meaningEn": "rainy season (Japan)",
+    "registersEn": {
+      "casual": "つゆ (tsuyu)",
+      "formal": "つゆ (tsuyu)",
+      "keigo": "つゆ (tsuyu) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_hyou",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_hyou.png",
-    "meaningEn": "hail"
+    "meaningEn": "hail",
+    "registersEn": {
+      "casual": "ひょう (hyou)",
+      "formal": "ひょう (hyou)",
+      "keigo": "ひょう (hyou) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_shitsudo",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_shitsudo.png",
-    "meaningEn": "humidity"
+    "meaningEn": "humidity",
+    "registersEn": {
+      "casual": "しつど (shitsudo)",
+      "formal": "しつど (shitsudo)",
+      "keigo": "しつど (shitsudo) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_kiatsu",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kiatsu.png",
-    "meaningEn": "air pressure"
+    "meaningEn": "air pressure",
+    "registersEn": {
+      "casual": "きあつ (kiatsu)",
+      "formal": "きあつ (kiatsu)",
+      "keigo": "きあつ (kiatsu) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_mousho",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_mousho.png",
-    "meaningEn": "extreme heat"
+    "meaningEn": "extreme heat",
+    "registersEn": {
+      "casual": "もうしょ (mousho)",
+      "formal": "もうしょ (mousho)",
+      "keigo": "もうしょ (mousho) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_kanpa",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kanpa.png",
-    "meaningEn": "cold wave"
+    "meaningEn": "cold wave",
+    "registersEn": {
+      "casual": "かんぱ (kanpa)",
+      "formal": "かんぱ (kanpa)",
+      "keigo": "かんぱ (kanpa) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_tenkiyohou",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_tenkiyohou.png",
-    "meaningEn": "weather forecast"
+    "meaningEn": "weather forecast",
+    "registersEn": {
+      "casual": "てんきよほう (tenkiyohou)",
+      "formal": "てんきよほう (tenkiyohou)",
+      "keigo": "てんきよほう (tenkiyohou) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_aozora",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_aozora.png",
-    "meaningEn": "blue sky"
+    "meaningEn": "blue sky",
+    "registersEn": {
+      "casual": "あおぞら (aozora)",
+      "formal": "あおぞら (aozora)",
+      "keigo": "あおぞら (aozora) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_kansou",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kansou.png",
-    "meaningEn": "drying/dryness"
+    "meaningEn": "drying/dryness",
+    "registersEn": {
+      "casual": "かんそう (kansou)",
+      "formal": "かんそう (kansou)",
+      "keigo": "かんそう (kansou) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_kion",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kion.png",
-    "meaningEn": "air temperature"
+    "meaningEn": "air temperature",
+    "registersEn": {
+      "casual": "きおん (kion)",
+      "formal": "きおん (kion)",
+      "keigo": "きおん (kion) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_kouon",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kouon.png",
-    "meaningEn": "high temperature"
+    "meaningEn": "high temperature",
+    "registersEn": {
+      "casual": "こうおん (kouon)",
+      "formal": "こうおん (kouon)",
+      "keigo": "こうおん (kouon) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_nikkou",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_nikkou.png",
-    "meaningEn": "sunlight"
+    "meaningEn": "sunlight",
+    "registersEn": {
+      "casual": "にっこう (nikkou)",
+      "formal": "にっこう (nikkou)",
+      "keigo": "にっこう (nikkou) — no special keigo form for weather terms"
+    }
   },
   {
     "id": "kotoba_cuaca_kuuki",
@@ -595,6 +705,11 @@
       }
     ],
     "imagePath": "kotoba_images/cuaca/kotoba_cuaca_kuuki.png",
-    "meaningEn": "air"
+    "meaningEn": "air",
+    "registersEn": {
+      "casual": "くうき (kuuki)",
+      "formal": "くうき (kuuki)",
+      "keigo": "くうき (kuuki) — no special keigo form for weather terms"
+    }
   }
 ]

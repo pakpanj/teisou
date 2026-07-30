@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kuruma.png",
-    "meaningEn": "car"
+    "meaningEn": "car",
+    "registersEn": {
+      "casual": "車 (kuruma)",
+      "formal": "車 (kuruma)",
+      "keigo": "車 (kuruma) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_densha",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_densha.png",
-    "meaningEn": "(electric) train"
+    "meaningEn": "(electric) train",
+    "registersEn": {
+      "casual": "電車 (densha)",
+      "formal": "電車 (densha)",
+      "keigo": "電車 (densha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_basu",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_basu.png",
-    "meaningEn": "bus"
+    "meaningEn": "bus",
+    "registersEn": {
+      "casual": "バス (basu)",
+      "formal": "バス (basu)",
+      "keigo": "バス (basu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_jitensha",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jitensha.png",
-    "meaningEn": "bicycle"
+    "meaningEn": "bicycle",
+    "registersEn": {
+      "casual": "自転車 (jitensha)",
+      "formal": "自転車 (jitensha)",
+      "keigo": "自転車 (jitensha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_hikouki",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_hikouki.png",
-    "meaningEn": "airplane"
+    "meaningEn": "airplane",
+    "registersEn": {
+      "casual": "飛行機 (hikouki)",
+      "formal": "飛行機 (hikouki)",
+      "keigo": "飛行機 (hikouki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_fune",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_fune.png",
-    "meaningEn": "ship/boat"
+    "meaningEn": "ship/boat",
+    "registersEn": {
+      "casual": "船 (fune)",
+      "formal": "船 (fune)",
+      "keigo": "船 (fune) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_takushii",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_takushii.png",
-    "meaningEn": "taxi"
+    "meaningEn": "taxi",
+    "registersEn": {
+      "casual": "タクシー (takushii)",
+      "formal": "タクシー (takushii)",
+      "keigo": "タクシー (takushii) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_baiku",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_baiku.png",
-    "meaningEn": "motorcycle"
+    "meaningEn": "motorcycle",
+    "registersEn": {
+      "casual": "バイク (baiku)",
+      "formal": "バイク (baiku)",
+      "keigo": "バイク (baiku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_shinkansen",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shinkansen.png",
-    "meaningEn": "bullet train"
+    "meaningEn": "bullet train",
+    "registersEn": {
+      "casual": "新幹線 (shinkansen)",
+      "formal": "新幹線 (shinkansen)",
+      "keigo": "新幹線 (shinkansen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_torakku",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_torakku.png",
-    "meaningEn": "truck"
+    "meaningEn": "truck",
+    "registersEn": {
+      "casual": "トラック (torakku)",
+      "formal": "トラック (torakku)",
+      "keigo": "トラック (torakku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_unkou",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_unkou.png",
-    "meaningEn": "(transportation) operation/service"
+    "meaningEn": "(transportation) operation/service",
+    "registersEn": {
+      "casual": "運行 (unkou)",
+      "formal": "運行 (unkou)",
+      "keigo": "運行 (unkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_chien",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_chien.png",
-    "meaningEn": "delay"
+    "meaningEn": "delay",
+    "registersEn": {
+      "casual": "遅延 (chien)",
+      "formal": "遅延 (chien)",
+      "keigo": "遅延 (chien) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_oufuku",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_oufuku.png",
-    "meaningEn": "round trip"
+    "meaningEn": "round trip",
+    "registersEn": {
+      "casual": "往復 (oufuku)",
+      "formal": "往復 (oufuku)",
+      "keigo": "往復 (oufuku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_kippu",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kippu.png",
-    "meaningEn": "ticket"
+    "meaningEn": "ticket",
+    "registersEn": {
+      "casual": "切符 (kippu)",
+      "formal": "切符 (kippu)",
+      "keigo": "切符 (kippu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_keiyu",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_keiyu.png",
-    "meaningEn": "via (a route)"
+    "meaningEn": "via (a route)",
+    "registersEn": {
+      "casual": "経由 (keiyu)",
+      "formal": "経由 (keiyu)",
+      "keigo": "経由 (keiyu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_koukuu",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_koukuu.png",
-    "meaningEn": "aviation"
+    "meaningEn": "aviation",
+    "registersEn": {
+      "casual": "航空 (koukuu)",
+      "formal": "航空 (koukuu)",
+      "keigo": "航空 (koukuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_koutsuu",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_koutsuu.png",
-    "meaningEn": "transportation/traffic"
+    "meaningEn": "transportation/traffic",
+    "registersEn": {
+      "casual": "交通 (koutsuu)",
+      "formal": "交通 (koutsuu)",
+      "keigo": "交通 (koutsuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_konzatsu",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_konzatsu.png",
-    "meaningEn": "congestion/crowding"
+    "meaningEn": "congestion/crowding",
+    "registersEn": {
+      "casual": "混雑 (konzatsu)",
+      "formal": "混雑 (konzatsu)",
+      "keigo": "混雑 (konzatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_shihatsu",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shihatsu.png",
-    "meaningEn": "first departure"
+    "meaningEn": "first departure",
+    "registersEn": {
+      "casual": "始発 (shihatsu)",
+      "formal": "始発 (shihatsu)",
+      "keigo": "始発 (shihatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_shanai",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_shanai.png",
-    "meaningEn": "inside the vehicle"
+    "meaningEn": "inside the vehicle",
+    "registersEn": {
+      "casual": "車内 (shanai)",
+      "formal": "車内 (shanai)",
+      "keigo": "車内 (shanai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_juutai",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_juutai.png",
-    "meaningEn": "traffic jam"
+    "meaningEn": "traffic jam",
+    "registersEn": {
+      "casual": "渋滞 (juutai)",
+      "formal": "渋滞 (juutai)",
+      "keigo": "渋滞 (juutai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_jousha",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jousha.png",
-    "meaningEn": "boarding (a vehicle)"
+    "meaningEn": "boarding (a vehicle)",
+    "registersEn": {
+      "casual": "乗車 (jousha)",
+      "formal": "乗車 (jousha)",
+      "keigo": "乗車 (jousha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_teiki",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_teiki.png",
-    "meaningEn": "commuter pass"
+    "meaningEn": "commuter pass",
+    "registersEn": {
+      "casual": "定期 (teiki)",
+      "formal": "定期 (teiki)",
+      "keigo": "定期 (teiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_tetsudou",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_tetsudou.png",
-    "meaningEn": "railway"
+    "meaningEn": "railway",
+    "registersEn": {
+      "casual": "鉄道 (tetsudou)",
+      "formal": "鉄道 (tetsudou)",
+      "keigo": "鉄道 (tetsudou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_touchaku",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_touchaku.png",
-    "meaningEn": "arrival"
+    "meaningEn": "arrival",
+    "registersEn": {
+      "casual": "到着 (touchaku)",
+      "formal": "到着 (touchaku)",
+      "keigo": "到着 (touchaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_toho",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_toho.png",
-    "meaningEn": "on foot"
+    "meaningEn": "on foot",
+    "registersEn": {
+      "casual": "徒歩 (toho)",
+      "formal": "徒歩 (toho)",
+      "keigo": "徒歩 (toho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_manin",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_manin.png",
-    "meaningEn": "full (of passengers)"
+    "meaningEn": "full (of passengers)",
+    "registersEn": {
+      "casual": "満員 (manin)",
+      "formal": "満員 (manin)",
+      "keigo": "満員 (manin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_menkyo",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_menkyo.png",
-    "meaningEn": "driver's license"
+    "meaningEn": "driver's license",
+    "registersEn": {
+      "casual": "免許 (menkyo)",
+      "formal": "免許 (menkyo)",
+      "keigo": "免許 (menkyo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_kaisatsuguchi",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kaisatsuguchi.png",
-    "meaningEn": "ticket gate"
+    "meaningEn": "ticket gate",
+    "registersEn": {
+      "casual": "改札口 (kaisatsuguchi)",
+      "formal": "改札口 (kaisatsuguchi)",
+      "keigo": "改札口 (kaisatsuguchi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_kousoku",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kousoku.png",
-    "meaningEn": "high speed"
+    "meaningEn": "high speed",
+    "registersEn": {
+      "casual": "高速 (kousoku)",
+      "formal": "高速 (kousoku)",
+      "keigo": "高速 (kousoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_sokudo",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_sokudo.png",
-    "meaningEn": "speed"
+    "meaningEn": "speed",
+    "registersEn": {
+      "casual": "速度 (sokudo)",
+      "formal": "速度 (sokudo)",
+      "keigo": "速度 (sokudo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_unten",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_unten.png",
-    "meaningEn": "driving/operating"
+    "meaningEn": "driving/operating",
+    "registersEn": {
+      "casual": "運転 (unten)",
+      "formal": "運転 (unten)",
+      "keigo": "運転 (unten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_jouriku",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jouriku.png",
-    "meaningEn": "landing (making landfall)"
+    "meaningEn": "landing (making landfall)",
+    "registersEn": {
+      "casual": "上陸 (jouriku)",
+      "formal": "上陸 (jouriku)",
+      "keigo": "上陸 (jouriku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_jisoku",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_jisoku.png",
-    "meaningEn": "speed per hour"
+    "meaningEn": "speed per hour",
+    "registersEn": {
+      "casual": "時速 (jisoku)",
+      "formal": "時速 (jisoku)",
+      "keigo": "時速 (jisoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_kasoku",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kasoku.png",
-    "meaningEn": "acceleration"
+    "meaningEn": "acceleration",
+    "registersEn": {
+      "casual": "加速 (kasoku)",
+      "formal": "加速 (kasoku)",
+      "keigo": "加速 (kasoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_kasokudo",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kasokudo.png",
-    "meaningEn": "rate of acceleration"
+    "meaningEn": "rate of acceleration",
+    "registersEn": {
+      "casual": "加速度 (kasokudo)",
+      "formal": "加速度 (kasokudo)",
+      "keigo": "加速度 (kasokudo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_sokuryoku",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_sokuryoku.png",
-    "meaningEn": "speed"
+    "meaningEn": "speed",
+    "registersEn": {
+      "casual": "速力 (sokuryoku)",
+      "formal": "速力 (sokuryoku)",
+      "keigo": "速力 (sokuryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_yusou",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_yusou.png",
-    "meaningEn": "transport (of goods)"
+    "meaningEn": "transport (of goods)",
+    "registersEn": {
+      "casual": "輸送 (yusou)",
+      "formal": "輸送 (yusou)",
+      "keigo": "輸送 (yusou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_kisha",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kisha.png",
-    "meaningEn": "(steam) train"
+    "meaningEn": "(steam) train",
+    "registersEn": {
+      "casual": "汽車 (kisha)",
+      "formal": "汽車 (kisha)",
+      "keigo": "汽車 (kisha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_kyuukou",
@@ -1037,7 +1232,12 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_kyuukou.png",
-    "meaningEn": "express train"
+    "meaningEn": "express train",
+    "registersEn": {
+      "casual": "急行 (kyuukou)",
+      "formal": "急行 (kyuukou)",
+      "keigo": "急行 (kyuukou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_kendaraan_tokkyuu",
@@ -1063,6 +1263,11 @@
       }
     ],
     "imagePath": "kotoba_images/kendaraan/kotoba_kendaraan_tokkyuu.png",
-    "meaningEn": "limited express train"
+    "meaningEn": "limited express train",
+    "registersEn": {
+      "casual": "特急 (tokkyuu)",
+      "formal": "特急 (tokkyuu)",
+      "keigo": "特急 (tokkyuu) — no special keigo form for this noun"
+    }
   }
 ]

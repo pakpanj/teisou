@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_sushi.png",
-    "meaningEn": "sushi"
+    "meaningEn": "sushi",
+    "registersEn": {
+      "casual": "すし (sushi)",
+      "formal": "すし (sushi) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "すし (sushi) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_ramen",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_ramen.png",
-    "meaningEn": "ramen (noodle soup)"
+    "meaningEn": "ramen (noodle soup)",
+    "registersEn": {
+      "casual": "ラーメン (ramen)",
+      "formal": "ラーメン (ramen) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ラーメン (ramen) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_udon",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_udon.png",
-    "meaningEn": "udon (thick wheat noodles)"
+    "meaningEn": "udon (thick wheat noodles)",
+    "registersEn": {
+      "casual": "うどん (udon)",
+      "formal": "うどん (udon) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "うどん (udon) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_soba",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_soba.png",
-    "meaningEn": "soba (buckwheat noodles)"
+    "meaningEn": "soba (buckwheat noodles)",
+    "registersEn": {
+      "casual": "そば (soba)",
+      "formal": "そば (soba) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "そば (soba) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_tenpura",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_tenpura.png",
-    "meaningEn": "tempura"
+    "meaningEn": "tempura",
+    "registersEn": {
+      "casual": "てんぷら (tenpura)",
+      "formal": "てんぷら (tenpura) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "てんぷら (tenpura) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_sashimi",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_sashimi.png",
-    "meaningEn": "sashimi (raw fish)"
+    "meaningEn": "sashimi (raw fish)",
+    "registersEn": {
+      "casual": "さしみ (sashimi)",
+      "formal": "さしみ (sashimi) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "さしみ (sashimi) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_onigiri",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_onigiri.png",
-    "meaningEn": "rice ball (onigiri)"
+    "meaningEn": "rice ball (onigiri)",
+    "registersEn": {
+      "casual": "おにぎり (onigiri)",
+      "formal": "おにぎり (onigiri) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "おにぎり (onigiri) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_misoshiru",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_misoshiru.png",
-    "meaningEn": "miso soup"
+    "meaningEn": "miso soup",
+    "registersEn": {
+      "casual": "みそしる (misoshiru)",
+      "formal": "みそしる (misoshiru) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "みそしる (misoshiru) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_gyouza",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_gyouza.png",
-    "meaningEn": "fried dumplings (gyoza)"
+    "meaningEn": "fried dumplings (gyoza)",
+    "registersEn": {
+      "casual": "ぎょうざ (gyouza)",
+      "formal": "ぎょうざ (gyouza) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ぎょうざ (gyouza) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_okonomiyaki",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_okonomiyaki.png",
-    "meaningEn": "okonomiyaki (savory pancake)"
+    "meaningEn": "okonomiyaki (savory pancake)",
+    "registersEn": {
+      "casual": "おこのみやき (okonomiyaki)",
+      "formal": "おこのみやき (okonomiyaki) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "おこのみやき (okonomiyaki) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_karaage",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_karaage.png",
-    "meaningEn": "Japanese fried chicken"
+    "meaningEn": "Japanese fried chicken",
+    "registersEn": {
+      "casual": "からあげ (karaage)",
+      "formal": "からあげ (karaage) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "からあげ (karaage) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_katsudon",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_katsudon.png",
-    "meaningEn": "pork cutlet rice bowl"
+    "meaningEn": "pork cutlet rice bowl",
+    "registersEn": {
+      "casual": "かつどん (katsudon)",
+      "formal": "かつどん (katsudon) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "かつどん (katsudon) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_nattou",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_nattou.png",
-    "meaningEn": "natto (fermented soybeans)"
+    "meaningEn": "natto (fermented soybeans)",
+    "registersEn": {
+      "casual": "なっとう (nattou)",
+      "formal": "なっとう (nattou) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "なっとう (nattou) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_takoyaki",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_takoyaki.png",
-    "meaningEn": "takoyaki (octopus balls)"
+    "meaningEn": "takoyaki (octopus balls)",
+    "registersEn": {
+      "casual": "たこやき (takoyaki)",
+      "formal": "たこやき (takoyaki) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "たこやき (takoyaki) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_yakitori",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_yakitori.png",
-    "meaningEn": "grilled chicken skewers"
+    "meaningEn": "grilled chicken skewers",
+    "registersEn": {
+      "casual": "やきとり (yakitori)",
+      "formal": "やきとり (yakitori) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "やきとり (yakitori) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_bentou",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_bentou.png",
-    "meaningEn": "boxed lunch (bento)"
+    "meaningEn": "boxed lunch (bento)",
+    "registersEn": {
+      "casual": "べんとう (bentou)",
+      "formal": "べんとう (bentou) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "べんとう (bentou) — no special keigo form for food names"
+    }
   },
   {
     "id": "kotoba_makanan_jepang_washoku",
@@ -439,6 +519,11 @@
       }
     ],
     "imagePath": "kotoba_images/makanan_jepang/kotoba_makanan_jepang_washoku.png",
-    "meaningEn": "Japanese food"
+    "meaningEn": "Japanese food",
+    "registersEn": {
+      "casual": "わしょく (washoku)",
+      "formal": "わしょく (washoku) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "わしょく (washoku) — no special keigo form for food names"
+    }
   }
 ]

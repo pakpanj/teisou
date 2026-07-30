@@ -2,6 +2,7 @@
   {
     "id": "kasus",
     "name": "Partikel Kasus",
+    "nameEn": "Case Particles",
     "icon": "格",
     "available": true,
     "particleCount": 9
@@ -9,6 +10,7 @@
   {
     "id": "keterangan",
     "name": "Partikel Keterangan",
+    "nameEn": "Adverbial Particles",
     "icon": "副",
     "available": true,
     "particleCount": 8
@@ -16,6 +18,7 @@
   {
     "id": "akhir_kalimat",
     "name": "Partikel Akhir Kalimat",
+    "nameEn": "Sentence-Final Particles",
     "icon": "終",
     "available": true,
     "particleCount": 8

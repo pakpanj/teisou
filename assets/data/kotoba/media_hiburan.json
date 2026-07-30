@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_terebi.png",
-    "meaningEn": "television"
+    "meaningEn": "television",
+    "registersEn": {
+      "casual": "テレビ (terebi)",
+      "formal": "テレビ (terebi)",
+      "keigo": "テレビ (terebi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_manga",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_manga.png",
-    "meaningEn": "comic (manga)"
+    "meaningEn": "comic (manga)",
+    "registersEn": {
+      "casual": "漫画 (manga)",
+      "formal": "漫画 (manga)",
+      "keigo": "漫画 (manga) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_anime",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_anime.png",
-    "meaningEn": "animation (anime)"
+    "meaningEn": "animation (anime)",
+    "registersEn": {
+      "casual": "アニメ (anime)",
+      "formal": "アニメ (anime)",
+      "keigo": "アニメ (anime) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_shinbun",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shinbun.png",
-    "meaningEn": "newspaper"
+    "meaningEn": "newspaper",
+    "registersEn": {
+      "casual": "新聞 (shinbun)",
+      "formal": "新聞 (shinbun)",
+      "keigo": "新聞 (shinbun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_zasshi",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_zasshi.png",
-    "meaningEn": "magazine"
+    "meaningEn": "magazine",
+    "registersEn": {
+      "casual": "雑誌 (zasshi)",
+      "formal": "雑誌 (zasshi)",
+      "keigo": "雑誌 (zasshi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_rajio",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rajio.png",
-    "meaningEn": "radio"
+    "meaningEn": "radio",
+    "registersEn": {
+      "casual": "ラジオ (rajio)",
+      "formal": "ラジオ (rajio)",
+      "keigo": "ラジオ (rajio) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_nyuusu",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_nyuusu.png",
-    "meaningEn": "news"
+    "meaningEn": "news",
+    "registersEn": {
+      "casual": "ニュース (nyuusu)",
+      "formal": "ニュース (nyuusu)",
+      "keigo": "ニュース (nyuusu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_dorama",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_dorama.png",
-    "meaningEn": "TV drama"
+    "meaningEn": "TV drama",
+    "registersEn": {
+      "casual": "ドラマ (dorama)",
+      "formal": "ドラマ (dorama)",
+      "keigo": "ドラマ (dorama) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_yuuchuubu",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_yuuchuubu.png",
-    "meaningEn": "YouTube"
+    "meaningEn": "YouTube",
+    "registersEn": {
+      "casual": "ユーチューブ (yuuchuubu)",
+      "formal": "ユーチューブ (yuuchuubu)",
+      "keigo": "ユーチューブ (yuuchuubu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_sns",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_sns.png",
-    "meaningEn": "social media"
+    "meaningEn": "social media",
+    "registersEn": {
+      "casual": "SNS (esu-enu-esu)",
+      "formal": "SNS (esu-enu-esu)",
+      "keigo": "SNS (esu-enu-esu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_ken'etsu",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_ken'etsu.png",
-    "meaningEn": "censorship (media/press)"
+    "meaningEn": "censorship (media/press)",
+    "registersEn": {
+      "casual": "検閲 (ken'etsu)",
+      "formal": "検閲 (ken'etsu)",
+      "keigo": "検閲 (ken'etsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_netsuzou",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_netsuzou.png",
-    "meaningEn": "fabrication (of news)"
+    "meaningEn": "fabrication (of news)",
+    "registersEn": {
+      "casual": "捏造 (netsuzou)",
+      "formal": "捏造 (netsuzou)",
+      "keigo": "捏造 (netsuzou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_inpei",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_inpei.png",
-    "meaningEn": "cover-up/concealment (of facts)"
+    "meaningEn": "cover-up/concealment (of facts)",
+    "registersEn": {
+      "casual": "隠蔽 (inpei)",
+      "formal": "隠蔽 (inpei)",
+      "keigo": "隠蔽 (inpei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_okusoku",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_okusoku.png",
-    "meaningEn": "speculation/conjecture"
+    "meaningEn": "speculation/conjecture",
+    "registersEn": {
+      "casual": "憶測 (okusoku)",
+      "formal": "憶測 (okusoku)",
+      "keigo": "憶測 (okusoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_rotei",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_rotei.png",
-    "meaningEn": "exposure (of a flaw)"
+    "meaningEn": "exposure (of a flaw)",
+    "registersEn": {
+      "casual": "露呈 (rotei)",
+      "formal": "露呈 (rotei)",
+      "keigo": "露呈 (rotei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_koukoku",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_koukoku.png",
-    "meaningEn": "advertisement"
+    "meaningEn": "advertisement",
+    "registersEn": {
+      "casual": "広告 (koukoku)",
+      "formal": "広告 (koukoku)",
+      "keigo": "広告 (koukoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_housou",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_housou.png",
-    "meaningEn": "broadcast"
+    "meaningEn": "broadcast",
+    "registersEn": {
+      "casual": "放送 (housou)",
+      "formal": "放送 (housou)",
+      "keigo": "放送 (housou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_haishin",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_haishin.png",
-    "meaningEn": "streaming/distribution (of content)"
+    "meaningEn": "streaming/distribution (of content)",
+    "registersEn": {
+      "casual": "配信 (haishin)",
+      "formal": "配信 (haishin)",
+      "keigo": "配信 (haishin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_eizou",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_eizou.png",
-    "meaningEn": "video footage/visual"
+    "meaningEn": "video footage/visual",
+    "registersEn": {
+      "casual": "映像 (eizou)",
+      "formal": "映像 (eizou)",
+      "keigo": "映像 (eizou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_kiji",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_kiji.png",
-    "meaningEn": "(news) article"
+    "meaningEn": "(news) article",
+    "registersEn": {
+      "casual": "記事 (kiji)",
+      "formal": "記事 (kiji)",
+      "keigo": "記事 (kiji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_genkou",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_genkou.png",
-    "meaningEn": "manuscript/draft"
+    "meaningEn": "manuscript/draft",
+    "registersEn": {
+      "casual": "原稿 (genkou)",
+      "formal": "原稿 (genkou)",
+      "keigo": "原稿 (genkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_senden",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_senden.png",
-    "meaningEn": "advertising/promotion"
+    "meaningEn": "advertising/promotion",
+    "registersEn": {
+      "casual": "宣伝 (senden)",
+      "formal": "宣伝 (senden)",
+      "keigo": "宣伝 (senden) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_toujou",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_toujou.png",
-    "meaningEn": "appearance/entrance"
+    "meaningEn": "appearance/entrance",
+    "registersEn": {
+      "casual": "登場 (toujou)",
+      "formal": "登場 (toujou)",
+      "keigo": "登場 (toujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_monogatari",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_monogatari.png",
-    "meaningEn": "story/tale"
+    "meaningEn": "story/tale",
+    "registersEn": {
+      "casual": "物語 (monogatari)",
+      "formal": "物語 (monogatari)",
+      "keigo": "物語 (monogatari) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_shuukan",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shuukan.png",
-    "meaningEn": "weekly publication"
+    "meaningEn": "weekly publication",
+    "registersEn": {
+      "casual": "週刊 (shuukan)",
+      "formal": "週刊 (shuukan)",
+      "keigo": "週刊 (shuukan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_shasetsu",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shasetsu.png",
-    "meaningEn": "editorial (newspaper)"
+    "meaningEn": "editorial (newspaper)",
+    "registersEn": {
+      "casual": "社説 (shasetsu)",
+      "formal": "社説 (shasetsu)",
+      "keigo": "社説 (shasetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_bangumi",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_bangumi.png",
-    "meaningEn": "(TV/radio) program"
+    "meaningEn": "(TV/radio) program",
+    "registersEn": {
+      "casual": "番組 (bangumi)",
+      "formal": "番組 (bangumi)",
+      "keigo": "番組 (bangumi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_media_hiburan_shousetsu",
@@ -725,6 +860,11 @@
       }
     ],
     "imagePath": "kotoba_images/media_hiburan/kotoba_media_hiburan_shousetsu.png",
-    "meaningEn": "novel"
+    "meaningEn": "novel",
+    "registersEn": {
+      "casual": "小説 (shousetsu)",
+      "formal": "小説 (shousetsu)",
+      "keigo": "小説 (shousetsu) — no special keigo form for this noun"
+    }
   }
 ]

@@ -1820,6 +1820,114 @@ Dictionary, Kotoba, Bunpou, and now Kanji sentences are all
 found in the app at this point would be a newly authored field, not a
 backlog item from this rollout series.
 
+## Update (2026-07-30): audit found — and closed — 4 more gaps the
+rollout series above never covered
+
+The claim directly above ("closes out every content-translation gap")
+turned out to be too narrow when the user explicitly asked for a
+from-scratch audit ("cek semua, masih ada yang masih bisa di
+terjemahkan ke bahasa inggris gak?") rather than trusting it. The
+seven rollouts above all covered *word-meaning and sentence-example*
+fields specifically — a systematic grep for every model class without
+an `*En`-suffixed field turned up 4 more gaps that were never in any
+of those rollouts' scope, 3 of them actually user-visible (not locked
+behind Cam Detector like the Kaiwa npc-line/Dokkai-translation
+"technically done but never rendered" gaps documented earlier in this
+file):
+
+1. **Kotoba `registers` field (5,046 sub-fields across 1,682 words)**
+   — casual/formal/keigo usage notes, e.g. "まぐろ (maguro) — tidak ada
+   bentuk keigo khusus untuk nama ikan". `registersEn` +
+   `localizedRegisters(AppLanguage)` added to `KotobaEntry`
+   (`lib/data/models/kotoba_entry.dart`), consumed by
+   `DetectionResultSheet._RegisterRow` (Cam Detector — still locked
+   from navigation, so this one specifically isn't visible today
+   either, but the content and code path are both real).
+   `SpeechRegister.label` also gained a `localizedLabel(AppLanguage)`
+   counterpart ("Santai" → "Casual") in the same pass.
+   **Turned out to need far less authoring than the raw field count
+   suggested**: of the 5,046 sub-fields, 3,277 are pure
+   `"{japanese} ({romaji})"` with zero Indonesian text (already
+   language-neutral, confirmed via a full-dataset regex scan finding
+   zero exceptions) — only the remaining 1,769 append an explanatory
+   note after a locked `" — "` separator, and those notes are drawn
+   from exactly **20 unique templates** (the group scripts' shared
+   `_registers()` helper only ever builds from a small fixed set of
+   sentence shapes, never free text — see this file's Kotoba-registers
+   architecture note above). So this shipped as a **template
+   substitution**, not 1,769 individually-authored translations:
+   `scripts/kotoba_registers_note_en.py` locks the 20-entry
+   Indonesian-suffix → English-suffix dict,
+   `scripts/apply_kotoba_registers_en.py` splits each register value
+   on the separator, translates only the suffix, and reassembles —
+   safe to re-run, must be re-run after any `generate_kotoba_*.py`
+   group script regenerates a category file. Per the standing "show
+   samples before bulk apply" practice for dataset-wide algorithmic
+   changes, this ran as a `--dry-run` first (writes a preview file,
+   touches no real data) and was spot-checked before writing to the
+   real 46 category files.
+2. **Particle category names (3 items)** — "Partikel Kasus" etc.,
+   rendered raw in `ParticleHomeScreen`. `nameEn` +
+   `localizedName(AppLanguage)` added to `ParticleCategoryInfo`,
+   authored directly into `generate_particle_seed.py`'s category dict
+   (only 3 items, no locked-dict-plus-applier needed).
+3. **Kaiwa theme names (17 unique names across 85 level×theme
+   category rows)** — "Perkenalan" etc., rendered raw in
+   `KaiwaLevelScreen`. `nameEn` + `localizedName(AppLanguage)` added
+   to `KaiwaCategoryInfo`; rather than editing all 85 `CATEGORY_META`
+   tuples, a separate `THEME_NAME_EN` lookup dict (17 entries, keyed
+   by the Indonesian display name, which repeats identically across
+   all 5 JLPT levels) was added to `kaiwa_lists.py` and consulted by
+   id in `generate_kaiwa_seed.py`'s `main()`.
+4. **`kComingSoonModules` title, in one call site** — smaller than it
+   looked: `modules_section.dart`'s Home-tab card was already correctly
+   routed through `s.pictureLearningTitle`/`s.videoLearningTitle` (an
+   existing switch-case override the original audit's grep missed).
+   The one real gap was `coming_soon_content.dart` passing the raw
+   Indonesian `module.title` into `PaywallScreen`'s `moduleTitle` —
+   fixed with the same per-id switch pattern already used in
+   `modules_section.dart`.
+
+**Real regression caught during this fix, worth remembering**:
+regenerating `generate_particle_seed.py` and `generate_kaiwa_seed.py`
+(needed to write the new `nameEn` category fields) also rewrites
+`particle_data.json`/`kaiwa_data.json` **in full** — silently wiping
+the `overviewEn`/title/description/npc/option English translations
+those two rollouts had already patched in, exactly the "must be
+re-run after the generator regenerates the dataset" rule this file
+documents for every locked-dict-plus-applier pair. Caught immediately
+by `flutter test` (the pre-existing Particle coverage test failed with
+all 25 `overviewEn` fields suddenly empty) rather than shipping
+silently — fixed by re-running `apply_particle_meaning_en.py` and
+`apply_kaiwa_meaning_en.py` right after, restoring both to
+311/311 and 34,019/34,019. **Any future edit to a category-metadata
+generator (`generate_particle_seed.py`, `generate_kaiwa_seed.py`,
+`generate_kotoba_*.py`, `generate_dokkai_seed.py`, etc.) that also
+happens to regenerate the main content file needs the same
+re-apply-translations step immediately after, even if the edit itself
+had nothing to do with translation** — this is easy to miss because
+the two concerns (category metadata vs. word/dialogue content) live
+in the same generator script.
+
+New `test/content_localization_test.dart` cases: "every Kotoba
+register note has an English translation" (full 5,046-field coverage
+check + a language-toggle spot check on まぐろ's keigo note) and
+"Particle and Kaiwa category names have English translations" (full
+coverage + spot checks on kasus/perkenalan). `flutter analyze` clean,
+`flutter test --concurrency=1` 40/40, `flutter build apk --debug`
+succeeded. **No interactive on-device pass done** — same standing gap
+as everywhere else in this file.
+
+**Lesson for future "is X really 100% done" claims in this file**:
+treat them as accurate only for the specific scope named, not the
+whole app — this file has now made and then had to walk back an
+over-broad "100% translated" claim once already (see the Kotoba
+`konsep_umum` correction earlier), and this session is the second
+time. A category/theme/label *name* field is a different kind of
+content than a word *meaning* or *sentence example*, and a
+locked-dict rollout scoped to one doesn't imply the other is covered
+too.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),

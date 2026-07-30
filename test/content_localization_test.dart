@@ -2,11 +2,14 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:kana_master/data/models/app_language.dart';
 import 'package:kana_master/data/models/jlpt_level.dart';
+import 'package:kana_master/data/models/speech_register.dart';
 import 'package:kana_master/data/repositories/bunpou_repository.dart';
 import 'package:kana_master/data/repositories/dictionary_repository.dart';
+import 'package:kana_master/data/repositories/kaiwa_category_repository.dart';
 import 'package:kana_master/data/repositories/kanji_repository.dart';
 import 'package:kana_master/data/repositories/kotoba_category_repository.dart';
 import 'package:kana_master/data/repositories/kotoba_repository.dart';
+import 'package:kana_master/data/repositories/particle_category_repository.dart';
 import 'package:kana_master/data/repositories/particle_repository.dart';
 
 /// Guards the *content* side of the language toggle, as opposed to
@@ -292,5 +295,60 @@ void main() {
         isNotEmpty);
     expect(yuki.sentenceExamples.first.localizedTranslation(AppLanguage.english),
         isNot(yuki.sentenceExamples.first.translation));
+  });
+
+  test('every Kotoba register note has an English translation', () async {
+    final categories = await KotobaCategoryRepository().getAll();
+    final repo = KotobaRepository();
+    final missing = <String>[];
+    var total = 0;
+    for (final category in categories.where((c) => c.available)) {
+      for (final word in await repo.getVocabCategory(category.id)) {
+        if (word.placeholder) continue;
+        for (final key in word.registers.keys) {
+          total++;
+          if ((word.registersEn?[key] ?? '').isEmpty) missing.add(word.id);
+        }
+      }
+    }
+    expect(total, greaterThan(5000));
+    expect(missing.take(10).toList(), isEmpty,
+        reason: '${missing.length} Kotoba register fields have no '
+            'registersEn — add them to scripts/kotoba_registers_note_en.py '
+            'and run the applier');
+
+    final maguro = (await repo.getVocabCategory('ikan'))
+        .firstWhere((w) => w.reading == 'まぐろ');
+    expect(
+        maguro.localizedRegisters(AppLanguage.indonesian)[SpeechRegister.keigo],
+        contains('tidak ada bentuk keigo khusus'));
+    expect(
+        maguro.localizedRegisters(AppLanguage.english)[SpeechRegister.keigo],
+        contains('no special keigo form'));
+  });
+
+  test('Particle and Kaiwa category names have English translations',
+      () async {
+    final particleCategories = await ParticleCategoryRepository().getAll();
+    expect(particleCategories, isNotEmpty);
+    for (final category in particleCategories) {
+      expect(category.nameEn, isNotNull, reason: category.id);
+      expect(category.nameEn, isNotEmpty, reason: category.id);
+    }
+    final kasus = particleCategories.firstWhere((c) => c.id == 'kasus');
+    expect(kasus.localizedName(AppLanguage.indonesian), 'Partikel Kasus');
+    expect(kasus.localizedName(AppLanguage.english), 'Case Particles');
+
+    final kaiwaCategories = await KaiwaCategoryRepository().getAll();
+    expect(kaiwaCategories, isNotEmpty);
+    final missingKaiwaNames = <String>[];
+    for (final category in kaiwaCategories) {
+      if ((category.nameEn ?? '').isEmpty) missingKaiwaNames.add(category.id);
+    }
+    expect(missingKaiwaNames, isEmpty);
+    final perkenalan =
+        kaiwaCategories.firstWhere((c) => c.id == 'perkenalan');
+    expect(perkenalan.localizedName(AppLanguage.indonesian), 'Perkenalan');
+    expect(perkenalan.localizedName(AppLanguage.english), 'Introductions');
   });
 }

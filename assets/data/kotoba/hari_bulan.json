@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_getsuyoubi.png",
-    "meaningEn": "Monday"
+    "meaningEn": "Monday",
+    "registersEn": {
+      "casual": "月曜日 (getsuyoubi)",
+      "formal": "月曜日 (getsuyoubi)",
+      "keigo": "月曜日 (getsuyoubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kayoubi",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kayoubi.png",
-    "meaningEn": "Tuesday"
+    "meaningEn": "Tuesday",
+    "registersEn": {
+      "casual": "火曜日 (kayoubi)",
+      "formal": "火曜日 (kayoubi)",
+      "keigo": "火曜日 (kayoubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_suiyoubi",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_suiyoubi.png",
-    "meaningEn": "Wednesday"
+    "meaningEn": "Wednesday",
+    "registersEn": {
+      "casual": "水曜日 (suiyoubi)",
+      "formal": "水曜日 (suiyoubi)",
+      "keigo": "水曜日 (suiyoubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_mokuyoubi",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_mokuyoubi.png",
-    "meaningEn": "Thursday"
+    "meaningEn": "Thursday",
+    "registersEn": {
+      "casual": "木曜日 (mokuyoubi)",
+      "formal": "木曜日 (mokuyoubi)",
+      "keigo": "木曜日 (mokuyoubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kinyoubi",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kinyoubi.png",
-    "meaningEn": "Friday"
+    "meaningEn": "Friday",
+    "registersEn": {
+      "casual": "金曜日 (kinyoubi)",
+      "formal": "金曜日 (kinyoubi)",
+      "keigo": "金曜日 (kinyoubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_doyoubi",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_doyoubi.png",
-    "meaningEn": "Saturday"
+    "meaningEn": "Saturday",
+    "registersEn": {
+      "casual": "土曜日 (doyoubi)",
+      "formal": "土曜日 (doyoubi)",
+      "keigo": "土曜日 (doyoubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_nichiyoubi",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_nichiyoubi.png",
-    "meaningEn": "Sunday"
+    "meaningEn": "Sunday",
+    "registersEn": {
+      "casual": "日曜日 (nichiyoubi)",
+      "formal": "日曜日 (nichiyoubi)",
+      "keigo": "日曜日 (nichiyoubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kyou",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kyou.png",
-    "meaningEn": "today"
+    "meaningEn": "today",
+    "registersEn": {
+      "casual": "今日 (kyou)",
+      "formal": "今日 (kyou)",
+      "keigo": "今日 (kyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_ashita",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ashita.png",
-    "meaningEn": "tomorrow"
+    "meaningEn": "tomorrow",
+    "registersEn": {
+      "casual": "明日 (ashita)",
+      "formal": "明日 (ashita)",
+      "keigo": "明日 (ashita) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kinou",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kinou.png",
-    "meaningEn": "yesterday"
+    "meaningEn": "yesterday",
+    "registersEn": {
+      "casual": "昨日 (kinou)",
+      "formal": "昨日 (kinou)",
+      "keigo": "昨日 (kinou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_ichigatsu",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ichigatsu.png",
-    "meaningEn": "January"
+    "meaningEn": "January",
+    "registersEn": {
+      "casual": "一月 (ichigatsu)",
+      "formal": "一月 (ichigatsu)",
+      "keigo": "一月 (ichigatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_nigatsu",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_nigatsu.png",
-    "meaningEn": "February"
+    "meaningEn": "February",
+    "registersEn": {
+      "casual": "二月 (nigatsu)",
+      "formal": "二月 (nigatsu)",
+      "keigo": "二月 (nigatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_sangatsu",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_sangatsu.png",
-    "meaningEn": "March"
+    "meaningEn": "March",
+    "registersEn": {
+      "casual": "三月 (sangatsu)",
+      "formal": "三月 (sangatsu)",
+      "keigo": "三月 (sangatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_shigatsu",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_shigatsu.png",
-    "meaningEn": "April"
+    "meaningEn": "April",
+    "registersEn": {
+      "casual": "四月 (shigatsu)",
+      "formal": "四月 (shigatsu)",
+      "keigo": "四月 (shigatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_gogatsu",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_gogatsu.png",
-    "meaningEn": "May"
+    "meaningEn": "May",
+    "registersEn": {
+      "casual": "五月 (gogatsu)",
+      "formal": "五月 (gogatsu)",
+      "keigo": "五月 (gogatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_rokugatsu",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_rokugatsu.png",
-    "meaningEn": "June"
+    "meaningEn": "June",
+    "registersEn": {
+      "casual": "六月 (rokugatsu)",
+      "formal": "六月 (rokugatsu)",
+      "keigo": "六月 (rokugatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_shichigatsu",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_shichigatsu.png",
-    "meaningEn": "July"
+    "meaningEn": "July",
+    "registersEn": {
+      "casual": "七月 (shichigatsu)",
+      "formal": "七月 (shichigatsu)",
+      "keigo": "七月 (shichigatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_hachigatsu",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_hachigatsu.png",
-    "meaningEn": "August"
+    "meaningEn": "August",
+    "registersEn": {
+      "casual": "八月 (hachigatsu)",
+      "formal": "八月 (hachigatsu)",
+      "keigo": "八月 (hachigatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kugatsu",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kugatsu.png",
-    "meaningEn": "September"
+    "meaningEn": "September",
+    "registersEn": {
+      "casual": "九月 (kugatsu)",
+      "formal": "九月 (kugatsu)",
+      "keigo": "九月 (kugatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_juugatsu",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_juugatsu.png",
-    "meaningEn": "October"
+    "meaningEn": "October",
+    "registersEn": {
+      "casual": "十月 (juugatsu)",
+      "formal": "十月 (juugatsu)",
+      "keigo": "十月 (juugatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_juuichigatsu",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_juuichigatsu.png",
-    "meaningEn": "November"
+    "meaningEn": "November",
+    "registersEn": {
+      "casual": "十一月 (juuichigatsu)",
+      "formal": "十一月 (juuichigatsu)",
+      "keigo": "十一月 (juuichigatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_juunigatsu",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_juunigatsu.png",
-    "meaningEn": "December"
+    "meaningEn": "December",
+    "registersEn": {
+      "casual": "十二月 (juunigatsu)",
+      "formal": "十二月 (juunigatsu)",
+      "keigo": "十二月 (juunigatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_ototoi",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ototoi.png",
-    "meaningEn": "the day before yesterday"
+    "meaningEn": "the day before yesterday",
+    "registersEn": {
+      "casual": "一昨日 (ototoi)",
+      "formal": "一昨日 (ototoi)",
+      "keigo": "一昨日 (ototoi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_asatte",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_asatte.png",
-    "meaningEn": "the day after tomorrow"
+    "meaningEn": "the day after tomorrow",
+    "registersEn": {
+      "casual": "明後日 (asatte)",
+      "formal": "明後日 (asatte)",
+      "keigo": "明後日 (asatte) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_konshuu",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_konshuu.png",
-    "meaningEn": "this week"
+    "meaningEn": "this week",
+    "registersEn": {
+      "casual": "今週 (konshuu)",
+      "formal": "今週 (konshuu)",
+      "keigo": "今週 (konshuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kongetsu",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kongetsu.png",
-    "meaningEn": "this month"
+    "meaningEn": "this month",
+    "registersEn": {
+      "casual": "今月 (kongetsu)",
+      "formal": "今月 (kongetsu)",
+      "keigo": "今月 (kongetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kotoshi",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kotoshi.png",
-    "meaningEn": "this year"
+    "meaningEn": "this year",
+    "registersEn": {
+      "casual": "今年 (kotoshi)",
+      "formal": "今年 (kotoshi)",
+      "keigo": "今年 (kotoshi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_raishuu",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_raishuu.png",
-    "meaningEn": "next week"
+    "meaningEn": "next week",
+    "registersEn": {
+      "casual": "来週 (raishuu)",
+      "formal": "来週 (raishuu)",
+      "keigo": "来週 (raishuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_raigetsu",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_raigetsu.png",
-    "meaningEn": "next month"
+    "meaningEn": "next month",
+    "registersEn": {
+      "casual": "来月 (raigetsu)",
+      "formal": "来月 (raigetsu)",
+      "keigo": "来月 (raigetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_rainen",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_rainen.png",
-    "meaningEn": "next year"
+    "meaningEn": "next year",
+    "registersEn": {
+      "casual": "来年 (rainen)",
+      "formal": "来年 (rainen)",
+      "keigo": "来年 (rainen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_senshuu",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_senshuu.png",
-    "meaningEn": "last week"
+    "meaningEn": "last week",
+    "registersEn": {
+      "casual": "先週 (senshuu)",
+      "formal": "先週 (senshuu)",
+      "keigo": "先週 (senshuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_sengetsu",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_sengetsu.png",
-    "meaningEn": "last month"
+    "meaningEn": "last month",
+    "registersEn": {
+      "casual": "先月 (sengetsu)",
+      "formal": "先月 (sengetsu)",
+      "keigo": "先月 (sengetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kyonen",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kyonen.png",
-    "meaningEn": "last year"
+    "meaningEn": "last year",
+    "registersEn": {
+      "casual": "去年 (kyonen)",
+      "formal": "去年 (kyonen)",
+      "keigo": "去年 (kyonen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_gozen",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_gozen.png",
-    "meaningEn": "morning (a.m.)"
+    "meaningEn": "morning (a.m.)",
+    "registersEn": {
+      "casual": "午前 (gozen)",
+      "formal": "午前 (gozen)",
+      "keigo": "午前 (gozen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_gogo",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_gogo.png",
-    "meaningEn": "afternoon (p.m.)"
+    "meaningEn": "afternoon (p.m.)",
+    "registersEn": {
+      "casual": "午後 (gogo)",
+      "formal": "午後 (gogo)",
+      "keigo": "午後 (gogo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_mainichi",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_mainichi.png",
-    "meaningEn": "every day"
+    "meaningEn": "every day",
+    "registersEn": {
+      "casual": "毎日 (mainichi)",
+      "formal": "毎日 (mainichi)",
+      "keigo": "毎日 (mainichi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_maishuu",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_maishuu.png",
-    "meaningEn": "every week"
+    "meaningEn": "every week",
+    "registersEn": {
+      "casual": "毎週 (maishuu)",
+      "formal": "毎週 (maishuu)",
+      "keigo": "毎週 (maishuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_maitsuki",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_maitsuki.png",
-    "meaningEn": "every month"
+    "meaningEn": "every month",
+    "registersEn": {
+      "casual": "毎月 (maitsuki)",
+      "formal": "毎月 (maitsuki)",
+      "keigo": "毎月 (maitsuki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_maitoshi",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_maitoshi.png",
-    "meaningEn": "every year"
+    "meaningEn": "every year",
+    "registersEn": {
+      "casual": "毎年 (maitoshi)",
+      "formal": "毎年 (maitoshi)",
+      "keigo": "毎年 (maitoshi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_jikan",
@@ -1037,7 +1232,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jikan.png",
-    "meaningEn": "time/hour"
+    "meaningEn": "time/hour",
+    "registersEn": {
+      "casual": "時間 (jikan)",
+      "formal": "時間 (jikan)",
+      "keigo": "時間 (jikan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_igo",
@@ -1063,7 +1263,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_igo.png",
-    "meaningEn": "after this/from now on"
+    "meaningEn": "after this/from now on",
+    "registersEn": {
+      "casual": "以後 (igo)",
+      "formal": "以後 (igo)",
+      "keigo": "以後 (igo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_ikou",
@@ -1089,7 +1294,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ikou.png",
-    "meaningEn": "after/since"
+    "meaningEn": "after/since",
+    "registersEn": {
+      "casual": "以降 (ikou)",
+      "formal": "以降 (ikou)",
+      "keigo": "以降 (ikou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_izen",
@@ -1115,7 +1325,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_izen.png",
-    "meaningEn": "before/previously"
+    "meaningEn": "before/previously",
+    "registersEn": {
+      "casual": "以前 (izen)",
+      "formal": "以前 (izen)",
+      "keigo": "以前 (izen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_inai",
@@ -1141,7 +1356,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_inai.png",
-    "meaningEn": "within (a limit)"
+    "meaningEn": "within (a limit)",
+    "registersEn": {
+      "casual": "以内 (inai)",
+      "formal": "以内 (inai)",
+      "keigo": "以内 (inai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kako",
@@ -1167,7 +1387,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kako.png",
-    "meaningEn": "the past"
+    "meaningEn": "the past",
+    "registersEn": {
+      "casual": "過去 (kako)",
+      "formal": "過去 (kako)",
+      "keigo": "過去 (kako) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kikan",
@@ -1193,7 +1418,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kikan.png",
-    "meaningEn": "period/duration"
+    "meaningEn": "period/duration",
+    "registersEn": {
+      "casual": "期間 (kikan)",
+      "formal": "期間 (kikan)",
+      "keigo": "期間 (kikan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_sakuya",
@@ -1219,7 +1449,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_sakuya.png",
-    "meaningEn": "last night"
+    "meaningEn": "last night",
+    "registersEn": {
+      "casual": "昨夜 (sakuya)",
+      "formal": "昨夜 (sakuya)",
+      "keigo": "昨夜 (sakuya) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_shukujitsu",
@@ -1245,7 +1480,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_shukujitsu.png",
-    "meaningEn": "national holiday"
+    "meaningEn": "national holiday",
+    "registersEn": {
+      "casual": "祝日 (shukujitsu)",
+      "formal": "祝日 (shukujitsu)",
+      "keigo": "祝日 (shukujitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_jiki",
@@ -1271,7 +1511,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jiki.png",
-    "meaningEn": "period/season"
+    "meaningEn": "period/season",
+    "registersEn": {
+      "casual": "時期 (jiki)",
+      "formal": "時期 (jiki)",
+      "keigo": "時期 (jiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_jikoku",
@@ -1297,7 +1542,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jikoku.png",
-    "meaningEn": "point in time"
+    "meaningEn": "point in time",
+    "registersEn": {
+      "casual": "時刻 (jikoku)",
+      "formal": "時刻 (jikoku)",
+      "keigo": "時刻 (jikoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_jidai",
@@ -1323,7 +1573,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jidai.png",
-    "meaningEn": "era/age"
+    "meaningEn": "era/age",
+    "registersEn": {
+      "casual": "時代 (jidai)",
+      "formal": "時代 (jidai)",
+      "keigo": "時代 (jidai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_senjitsu",
@@ -1349,7 +1604,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_senjitsu.png",
-    "meaningEn": "the other day"
+    "meaningEn": "the other day",
+    "registersEn": {
+      "casual": "先日 (senjitsu)",
+      "formal": "先日 (senjitsu)",
+      "keigo": "先日 (senjitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_zengo",
@@ -1375,7 +1635,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_zengo.png",
-    "meaningEn": "around/approximately"
+    "meaningEn": "around/approximately",
+    "registersEn": {
+      "casual": "前後 (zengo)",
+      "formal": "前後 (zengo)",
+      "keigo": "前後 (zengo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_souchou",
@@ -1401,7 +1666,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_souchou.png",
-    "meaningEn": "early morning"
+    "meaningEn": "early morning",
+    "registersEn": {
+      "casual": "早朝 (souchou)",
+      "formal": "早朝 (souchou)",
+      "keigo": "早朝 (souchou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_chuujun",
@@ -1427,7 +1697,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_chuujun.png",
-    "meaningEn": "middle of the month"
+    "meaningEn": "middle of the month",
+    "registersEn": {
+      "casual": "中旬 (chuujun)",
+      "formal": "中旬 (chuujun)",
+      "keigo": "中旬 (chuujun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_toujitsu",
@@ -1453,7 +1728,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_toujitsu.png",
-    "meaningEn": "that very day"
+    "meaningEn": "that very day",
+    "registersEn": {
+      "casual": "当日 (toujitsu)",
+      "formal": "当日 (toujitsu)",
+      "keigo": "当日 (toujitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_douji",
@@ -1479,7 +1759,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_douji.png",
-    "meaningEn": "at the same time"
+    "meaningEn": "at the same time",
+    "registersEn": {
+      "casual": "同時 (douji)",
+      "formal": "同時 (douji)",
+      "keigo": "同時 (douji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_nichiji",
@@ -1505,7 +1790,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_nichiji.png",
-    "meaningEn": "date and time"
+    "meaningEn": "date and time",
+    "registersEn": {
+      "casual": "日時 (nichiji)",
+      "formal": "日時 (nichiji)",
+      "keigo": "日時 (nichiji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_nichijou",
@@ -1531,7 +1821,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_nichijou.png",
-    "meaningEn": "everyday/daily"
+    "meaningEn": "everyday/daily",
+    "registersEn": {
+      "casual": "日常 (nichijou)",
+      "formal": "日常 (nichijou)",
+      "keigo": "日常 (nichijou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_nittei",
@@ -1557,7 +1852,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_nittei.png",
-    "meaningEn": "schedule"
+    "meaningEn": "schedule",
+    "registersEn": {
+      "casual": "日程 (nittei)",
+      "formal": "日程 (nittei)",
+      "keigo": "日程 (nittei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_hiruma",
@@ -1583,7 +1883,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_hiruma.png",
-    "meaningEn": "daytime"
+    "meaningEn": "daytime",
+    "registersEn": {
+      "casual": "昼間 (hiruma)",
+      "formal": "昼間 (hiruma)",
+      "keigo": "昼間 (hiruma) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_honjitsu",
@@ -1609,7 +1914,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_honjitsu.png",
-    "meaningEn": "today (formal)"
+    "meaningEn": "today (formal)",
+    "registersEn": {
+      "casual": "本日 (honjitsu)",
+      "formal": "本日 (honjitsu)",
+      "keigo": "本日 (honjitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_yakan",
@@ -1635,7 +1945,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_yakan.png",
-    "meaningEn": "nighttime"
+    "meaningEn": "nighttime",
+    "registersEn": {
+      "casual": "夜間 (yakan)",
+      "formal": "夜間 (yakan)",
+      "keigo": "夜間 (yakan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_yokujitsu",
@@ -1661,7 +1976,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_yokujitsu.png",
-    "meaningEn": "the next day"
+    "meaningEn": "the next day",
+    "registersEn": {
+      "casual": "翌日 (yokujitsu)",
+      "formal": "翌日 (yokujitsu)",
+      "keigo": "翌日 (yokujitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_choujikan",
@@ -1687,7 +2007,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_choujikan.png",
-    "meaningEn": "a long time"
+    "meaningEn": "a long time",
+    "registersEn": {
+      "casual": "長時間 (choujikan)",
+      "formal": "長時間 (choujikan)",
+      "keigo": "長時間 (choujikan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_ichiji",
@@ -1713,7 +2038,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ichiji.png",
-    "meaningEn": "temporarily/one o'clock"
+    "meaningEn": "temporarily/one o'clock",
+    "registersEn": {
+      "casual": "一時 (ichiji)",
+      "formal": "一時 (ichiji)",
+      "keigo": "一時 (ichiji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_isshun",
@@ -1739,7 +2069,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_isshun.png",
-    "meaningEn": "an instant"
+    "meaningEn": "an instant",
+    "registersEn": {
+      "casual": "一瞬 (isshun)",
+      "formal": "一瞬 (isshun)",
+      "keigo": "一瞬 (isshun) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kongo",
@@ -1765,7 +2100,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kongo.png",
-    "meaningEn": "from now on"
+    "meaningEn": "from now on",
+    "registersEn": {
+      "casual": "今後 (kongo)",
+      "formal": "今後 (kongo)",
+      "keigo": "今後 (kongo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_konkai",
@@ -1791,7 +2131,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_konkai.png",
-    "meaningEn": "this time"
+    "meaningEn": "this time",
+    "registersEn": {
+      "casual": "今回 (konkai)",
+      "formal": "今回 (konkai)",
+      "keigo": "今回 (konkai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_shougo",
@@ -1817,7 +2162,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_shougo.png",
-    "meaningEn": "noon"
+    "meaningEn": "noon",
+    "registersEn": {
+      "casual": "正午 (shougo)",
+      "formal": "正午 (shougo)",
+      "keigo": "正午 (shougo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_shuukan",
@@ -1843,7 +2193,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_shuukan.png",
-    "meaningEn": "a week (duration)"
+    "meaningEn": "a week (duration)",
+    "registersEn": {
+      "casual": "週間 (shuukan)",
+      "formal": "週間 (shuukan)",
+      "keigo": "週間 (shuukan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_yonaka",
@@ -1869,7 +2224,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_yonaka.png",
-    "meaningEn": "midnight"
+    "meaningEn": "midnight",
+    "registersEn": {
+      "casual": "夜中 (yonaka)",
+      "formal": "夜中 (yonaka)",
+      "keigo": "夜中 (yonaka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_ikkoku",
@@ -1895,7 +2255,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_ikkoku.png",
-    "meaningEn": "a moment"
+    "meaningEn": "a moment",
+    "registersEn": {
+      "casual": "一刻 (ikkoku)",
+      "formal": "一刻 (ikkoku)",
+      "keigo": "一刻 (ikkoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_jizen",
@@ -1921,7 +2286,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_jizen.png",
-    "meaningEn": "beforehand/in advance"
+    "meaningEn": "beforehand/in advance",
+    "registersEn": {
+      "casual": "事前 (jizen)",
+      "formal": "事前 (jizen)",
+      "keigo": "事前 (jizen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_kondo",
@@ -1947,7 +2317,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_kondo.png",
-    "meaningEn": "this time/next time"
+    "meaningEn": "this time/next time",
+    "registersEn": {
+      "casual": "今度 (kondo)",
+      "formal": "今度 (kondo)",
+      "keigo": "今度 (kondo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_konya",
@@ -1973,7 +2348,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_konya.png",
-    "meaningEn": "tonight"
+    "meaningEn": "tonight",
+    "registersEn": {
+      "casual": "今夜 (konya)",
+      "formal": "今夜 (konya)",
+      "keigo": "今夜 (konya) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_saikin",
@@ -1999,7 +2379,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_saikin.png",
-    "meaningEn": "recently"
+    "meaningEn": "recently",
+    "registersEn": {
+      "casual": "最近 (saikin)",
+      "formal": "最近 (saikin)",
+      "keigo": "最近 (saikin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_saraigetsu",
@@ -2025,7 +2410,12 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_saraigetsu.png",
-    "meaningEn": "the month after next"
+    "meaningEn": "the month after next",
+    "registersEn": {
+      "casual": "再来月 (saraigetsu)",
+      "formal": "再来月 (saraigetsu)",
+      "keigo": "再来月 (saraigetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_hari_bulan_saraishuu",
@@ -2051,6 +2441,11 @@
       }
     ],
     "imagePath": "kotoba_images/hari_bulan/kotoba_hari_bulan_saraishuu.png",
-    "meaningEn": "the week after next"
+    "meaningEn": "the week after next",
+    "registersEn": {
+      "casual": "再来週 (saraishuu)",
+      "formal": "再来週 (saraishuu)",
+      "keigo": "再来週 (saraishuu) — no special keigo form for this noun"
+    }
   }
 ]

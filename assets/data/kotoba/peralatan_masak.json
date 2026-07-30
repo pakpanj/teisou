@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_nabe.png",
-    "meaningEn": "pot"
+    "meaningEn": "pot",
+    "registersEn": {
+      "casual": "なべ (nabe)",
+      "formal": "なべ (nabe) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "なべ (nabe) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_furaipan",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_furaipan.png",
-    "meaningEn": "frying pan"
+    "meaningEn": "frying pan",
+    "registersEn": {
+      "casual": "フライパン (furaipan)",
+      "formal": "フライパン (furaipan) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "フライパン (furaipan) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_houchou",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_houchou.png",
-    "meaningEn": "kitchen knife"
+    "meaningEn": "kitchen knife",
+    "registersEn": {
+      "casual": "ほうちょう (houchou)",
+      "formal": "ほうちょう (houchou) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ほうちょう (houchou) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_manaita",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_manaita.png",
-    "meaningEn": "cutting board"
+    "meaningEn": "cutting board",
+    "registersEn": {
+      "casual": "まないた (manaita)",
+      "formal": "まないた (manaita) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "まないた (manaita) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_oobun",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_oobun.png",
-    "meaningEn": "oven"
+    "meaningEn": "oven",
+    "registersEn": {
+      "casual": "オーブン (oobun)",
+      "formal": "オーブン (oobun) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "オーブン (oobun) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_denshirenji",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_denshirenji.png",
-    "meaningEn": "microwave"
+    "meaningEn": "microwave",
+    "registersEn": {
+      "casual": "でんしレンジ (denshi renji)",
+      "formal": "でんしレンジ (denshi renji) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "でんしレンジ (denshi renji) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_suihanki",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_suihanki.png",
-    "meaningEn": "rice cooker"
+    "meaningEn": "rice cooker",
+    "registersEn": {
+      "casual": "すいはんき (suihanki)",
+      "formal": "すいはんき (suihanki) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "すいはんき (suihanki) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_oosaji",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_oosaji.png",
-    "meaningEn": "tablespoon (measure)"
+    "meaningEn": "tablespoon (measure)",
+    "registersEn": {
+      "casual": "おおさじ (oosaji)",
+      "formal": "おおさじ (oosaji) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "おおさじ (oosaji) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_kosaji",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_kosaji.png",
-    "meaningEn": "teaspoon (measure)"
+    "meaningEn": "teaspoon (measure)",
+    "registersEn": {
+      "casual": "こさじ (kosaji)",
+      "formal": "こさじ (kosaji) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "こさじ (kosaji) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_zaru",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_zaru.png",
-    "meaningEn": "colander/strainer"
+    "meaningEn": "colander/strainer",
+    "registersEn": {
+      "casual": "ざる (zaru)",
+      "formal": "ざる (zaru) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ざる (zaru) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_yakan",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_yakan.png",
-    "meaningEn": "kettle"
+    "meaningEn": "kettle",
+    "registersEn": {
+      "casual": "やかん (yakan)",
+      "formal": "やかん (yakan) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "やかん (yakan) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_sara",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_sara.png",
-    "meaningEn": "plate"
+    "meaningEn": "plate",
+    "registersEn": {
+      "casual": "さら (sara)",
+      "formal": "さら (sara) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "さら (sara) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_shokki",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_shokki.png",
-    "meaningEn": "tableware"
+    "meaningEn": "tableware",
+    "registersEn": {
+      "casual": "しょっき (shokki)",
+      "formal": "しょっき (shokki) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "しょっき (shokki) — no special keigo form for cooking tool names"
+    }
   },
   {
     "id": "kotoba_peralatan_masak_youki",
@@ -361,6 +426,11 @@
       }
     ],
     "imagePath": "kotoba_images/peralatan_masak/kotoba_peralatan_masak_youki.png",
-    "meaningEn": "container"
+    "meaningEn": "container",
+    "registersEn": {
+      "casual": "ようき (youki)",
+      "formal": "ようき (youki) — politeness lives in the sentence, e.g. '~です' / '~があります'",
+      "keigo": "ようき (youki) — no special keigo form for cooking tool names"
+    }
   }
 ]

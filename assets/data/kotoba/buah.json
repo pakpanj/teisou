@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_ringo.png",
-    "meaningEn": "apple"
+    "meaningEn": "apple",
+    "registersEn": {
+      "casual": "りんご (ringo)",
+      "formal": "りんご (ringo)",
+      "keigo": "りんご (ringo) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_banana",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_banana.png",
-    "meaningEn": "banana"
+    "meaningEn": "banana",
+    "registersEn": {
+      "casual": "バナナ (banana)",
+      "formal": "バナナ (banana)",
+      "keigo": "バナナ (banana) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_mikan",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_mikan.png",
-    "meaningEn": "mandarin orange"
+    "meaningEn": "mandarin orange",
+    "registersEn": {
+      "casual": "みかん (mikan)",
+      "formal": "みかん (mikan)",
+      "keigo": "みかん (mikan) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_budou",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_budou.png",
-    "meaningEn": "grape"
+    "meaningEn": "grape",
+    "registersEn": {
+      "casual": "ぶどう (budou)",
+      "formal": "ぶどう (budou)",
+      "keigo": "ぶどう (budou) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_momo",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_momo.png",
-    "meaningEn": "peach"
+    "meaningEn": "peach",
+    "registersEn": {
+      "casual": "もも (momo)",
+      "formal": "もも (momo)",
+      "keigo": "もも (momo) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_suika",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_suika.png",
-    "meaningEn": "watermelon"
+    "meaningEn": "watermelon",
+    "registersEn": {
+      "casual": "すいか (suika)",
+      "formal": "すいか (suika)",
+      "keigo": "すいか (suika) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_ichigo",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_ichigo.png",
-    "meaningEn": "strawberry"
+    "meaningEn": "strawberry",
+    "registersEn": {
+      "casual": "いちご (ichigo)",
+      "formal": "いちご (ichigo)",
+      "keigo": "いちご (ichigo) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_nashi",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_nashi.png",
-    "meaningEn": "Asian pear"
+    "meaningEn": "Asian pear",
+    "registersEn": {
+      "casual": "なし (nashi)",
+      "formal": "なし (nashi)",
+      "keigo": "なし (nashi) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_kaki",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_kaki.png",
-    "meaningEn": "persimmon"
+    "meaningEn": "persimmon",
+    "registersEn": {
+      "casual": "かき (kaki)",
+      "formal": "かき (kaki)",
+      "keigo": "かき (kaki) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_remon",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_remon.png",
-    "meaningEn": "lemon"
+    "meaningEn": "lemon",
+    "registersEn": {
+      "casual": "レモン (remon)",
+      "formal": "レモン (remon)",
+      "keigo": "レモン (remon) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_meron",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_meron.png",
-    "meaningEn": "melon"
+    "meaningEn": "melon",
+    "registersEn": {
+      "casual": "メロン (meron)",
+      "formal": "メロン (meron)",
+      "keigo": "メロン (meron) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_papaiya",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_papaiya.png",
-    "meaningEn": "papaya"
+    "meaningEn": "papaya",
+    "registersEn": {
+      "casual": "パパイヤ (papaiya)",
+      "formal": "パパイヤ (papaiya)",
+      "keigo": "パパイヤ (papaiya) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_anzu",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_anzu.png",
-    "meaningEn": "apricot"
+    "meaningEn": "apricot",
+    "registersEn": {
+      "casual": "あんず (anzu)",
+      "formal": "あんず (anzu)",
+      "keigo": "あんず (anzu) — no special keigo form for fruit names"
+    }
   },
   {
     "id": "kotoba_buah_sakuranbo",
@@ -361,6 +426,11 @@
       }
     ],
     "imagePath": "kotoba_images/buah/kotoba_buah_sakuranbo.png",
-    "meaningEn": "cherry"
+    "meaningEn": "cherry",
+    "registersEn": {
+      "casual": "さくらんぼ (sakuranbo)",
+      "formal": "さくらんぼ (sakuranbo)",
+      "keigo": "さくらんぼ (sakuranbo) — no special keigo form for fruit names"
+    }
   }
 ]

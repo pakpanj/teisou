@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/pohon/kotoba_pohon_ki.png",
-    "meaningEn": "tree"
+    "meaningEn": "tree",
+    "registersEn": {
+      "casual": "き (ki)",
+      "formal": "き (ki)",
+      "keigo": "き (ki) — no special keigo form for tree names"
+    }
   },
   {
     "id": "kotoba_pohon_sakura",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/pohon/kotoba_pohon_sakura.png",
-    "meaningEn": "cherry blossom tree"
+    "meaningEn": "cherry blossom tree",
+    "registersEn": {
+      "casual": "さくら (sakura)",
+      "formal": "さくら (sakura)",
+      "keigo": "さくら (sakura) — no special keigo form for tree names"
+    }
   },
   {
     "id": "kotoba_pohon_matsu",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/pohon/kotoba_pohon_matsu.png",
-    "meaningEn": "pine tree"
+    "meaningEn": "pine tree",
+    "registersEn": {
+      "casual": "まつ (matsu)",
+      "formal": "まつ (matsu)",
+      "keigo": "まつ (matsu) — no special keigo form for tree names"
+    }
   },
   {
     "id": "kotoba_pohon_take",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/pohon/kotoba_pohon_take.png",
-    "meaningEn": "bamboo"
+    "meaningEn": "bamboo",
+    "registersEn": {
+      "casual": "たけ (take)",
+      "formal": "たけ (take)",
+      "keigo": "たけ (take) — no special keigo form for tree names"
+    }
   },
   {
     "id": "kotoba_pohon_momiji",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/pohon/kotoba_pohon_momiji.png",
-    "meaningEn": "maple tree (momiji)"
+    "meaningEn": "maple tree (momiji)",
+    "registersEn": {
+      "casual": "もみじ (momiji)",
+      "formal": "もみじ (momiji)",
+      "keigo": "もみじ (momiji) — no special keigo form for tree names"
+    }
   },
   {
     "id": "kotoba_pohon_yashi",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/pohon/kotoba_pohon_yashi.png",
-    "meaningEn": "palm/coconut tree"
+    "meaningEn": "palm/coconut tree",
+    "registersEn": {
+      "casual": "やし (yashi)",
+      "formal": "やし (yashi)",
+      "keigo": "やし (yashi) — no special keigo form for tree names"
+    }
   },
   {
     "id": "kotoba_pohon_ichou",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/pohon/kotoba_pohon_ichou.png",
-    "meaningEn": "ginkgo tree"
+    "meaningEn": "ginkgo tree",
+    "registersEn": {
+      "casual": "いちょう (ichou)",
+      "formal": "いちょう (ichou)",
+      "keigo": "いちょう (ichou) — no special keigo form for tree names"
+    }
   },
   {
     "id": "kotoba_pohon_sugi",
@@ -205,6 +240,11 @@
       }
     ],
     "imagePath": "kotoba_images/pohon/kotoba_pohon_sugi.png",
-    "meaningEn": "Japanese cedar tree"
+    "meaningEn": "Japanese cedar tree",
+    "registersEn": {
+      "casual": "すぎ (sugi)",
+      "formal": "すぎ (sugi)",
+      "keigo": "すぎ (sugi) — no special keigo form for tree names"
+    }
   }
 ]

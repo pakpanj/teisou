@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaisha.png",
-    "meaningEn": "company/office"
+    "meaningEn": "company/office",
+    "registersEn": {
+      "casual": "会社 (kaisha)",
+      "formal": "会社 (kaisha)",
+      "keigo": "会社 (kaisha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shigoto",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shigoto.png",
-    "meaningEn": "work/job"
+    "meaningEn": "work/job",
+    "registersEn": {
+      "casual": "仕事 (shigoto)",
+      "formal": "仕事 (shigoto)",
+      "keigo": "仕事 (shigoto) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kaigi",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaigi.png",
-    "meaningEn": "meeting"
+    "meaningEn": "meeting",
+    "registersEn": {
+      "casual": "会議 (kaigi)",
+      "formal": "会議 (kaigi)",
+      "keigo": "会議 (kaigi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_meishi",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_meishi.png",
-    "meaningEn": "business card"
+    "meaningEn": "business card",
+    "registersEn": {
+      "casual": "名刺 (meishi)",
+      "formal": "名刺 (meishi)",
+      "keigo": "名刺 (meishi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_joushi",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_joushi.png",
-    "meaningEn": "boss/superior"
+    "meaningEn": "boss/superior",
+    "registersEn": {
+      "casual": "上司 (joushi)",
+      "formal": "上司 (joushi)",
+      "keigo": "上司 (joushi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_buka",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_buka.png",
-    "meaningEn": "subordinate"
+    "meaningEn": "subordinate",
+    "registersEn": {
+      "casual": "部下 (buka)",
+      "formal": "部下 (buka)",
+      "keigo": "部下 (buka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_douryou",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_douryou.png",
-    "meaningEn": "colleague"
+    "meaningEn": "colleague",
+    "registersEn": {
+      "casual": "同僚 (douryou)",
+      "formal": "同僚 (douryou)",
+      "keigo": "同僚 (douryou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kyuuryou",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kyuuryou.png",
-    "meaningEn": "salary"
+    "meaningEn": "salary",
+    "registersEn": {
+      "casual": "給料 (kyuuryou)",
+      "formal": "給料 (kyuuryou)",
+      "keigo": "給料 (kyuuryou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_zangyou",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_zangyou.png",
-    "meaningEn": "overtime work"
+    "meaningEn": "overtime work",
+    "registersEn": {
+      "casual": "残業 (zangyou)",
+      "formal": "残業 (zangyou)",
+      "keigo": "残業 (zangyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kyuujitsu",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kyuujitsu.png",
-    "meaningEn": "day off"
+    "meaningEn": "day off",
+    "registersEn": {
+      "casual": "休日 (kyuujitsu)",
+      "formal": "休日 (kyuujitsu)",
+      "keigo": "休日 (kyuujitsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_sokushin",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sokushin.png",
-    "meaningEn": "promotion/acceleration (of progress)"
+    "meaningEn": "promotion/acceleration (of progress)",
+    "registersEn": {
+      "casual": "促進 (sokushin)",
+      "formal": "促進 (sokushin)",
+      "keigo": "促進 (sokushin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_yokusei",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yokusei.png",
-    "meaningEn": "restraint/control"
+    "meaningEn": "restraint/control",
+    "registersEn": {
+      "casual": "抑制 (yokusei)",
+      "formal": "抑制 (yokusei)",
+      "keigo": "抑制 (yokusei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_zesei",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_zesei.png",
-    "meaningEn": "correction/rectification"
+    "meaningEn": "correction/rectification",
+    "registersEn": {
+      "casual": "是正 (zesei)",
+      "formal": "是正 (zesei)",
+      "keigo": "是正 (zesei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_dakyou",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dakyou.png",
-    "meaningEn": "compromise"
+    "meaningEn": "compromise",
+    "registersEn": {
+      "casual": "妥協 (dakyou)",
+      "formal": "妥協 (dakyou)",
+      "keigo": "妥協 (dakyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_dakai",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dakai.png",
-    "meaningEn": "breakthrough"
+    "meaningEn": "breakthrough",
+    "registersEn": {
+      "casual": "打開 (dakai)",
+      "formal": "打開 (dakai)",
+      "keigo": "打開 (dakai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_yuugou",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yuugou.png",
-    "meaningEn": "fusion/merger"
+    "meaningEn": "fusion/merger",
+    "registersEn": {
+      "casual": "融合 (yuugou)",
+      "formal": "融合 (yuugou)",
+      "keigo": "融合 (yuugou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_tekkai",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tekkai.png",
-    "meaningEn": "withdrawal/retraction"
+    "meaningEn": "withdrawal/retraction",
+    "registersEn": {
+      "casual": "撤回 (tekkai)",
+      "formal": "撤回 (tekkai)",
+      "keigo": "撤回 (tekkai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_suikou",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_suikou.png",
-    "meaningEn": "execution/carrying out"
+    "meaningEn": "execution/carrying out",
+    "registersEn": {
+      "casual": "遂行 (suikou)",
+      "formal": "遂行 (suikou)",
+      "keigo": "遂行 (suikou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_rikou",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_rikou.png",
-    "meaningEn": "fulfilment (of an obligation)"
+    "meaningEn": "fulfilment (of an obligation)",
+    "registersEn": {
+      "casual": "履行 (rikou)",
+      "formal": "履行 (rikou)",
+      "keigo": "履行 (rikou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_yuuyo",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yuuyo.png",
-    "meaningEn": "postponement/grace period"
+    "meaningEn": "postponement/grace period",
+    "registersEn": {
+      "casual": "猶予 (yuuyo)",
+      "formal": "猶予 (yuuyo)",
+      "keigo": "猶予 (yuuyo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_itsudatsu",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_itsudatsu.png",
-    "meaningEn": "deviation"
+    "meaningEn": "deviation",
+    "registersEn": {
+      "casual": "逸脱 (itsudatsu)",
+      "formal": "逸脱 (itsudatsu)",
+      "keigo": "逸脱 (itsudatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_choukou",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_choukou.png",
-    "meaningEn": "sign/indication"
+    "meaningEn": "sign/indication",
+    "registersEn": {
+      "casual": "兆候 (choukou)",
+      "formal": "兆候 (choukou)",
+      "keigo": "兆候 (choukou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_heigai",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_heigai.png",
-    "meaningEn": "harmful effect"
+    "meaningEn": "harmful effect",
+    "registersEn": {
+      "casual": "弊害 (heigai)",
+      "formal": "弊害 (heigai)",
+      "keigo": "弊害 (heigai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_daketsu",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_daketsu.png",
-    "meaningEn": "settlement (of negotiations)"
+    "meaningEn": "settlement (of negotiations)",
+    "registersEn": {
+      "casual": "妥結 (daketsu)",
+      "formal": "妥結 (daketsu)",
+      "keigo": "妥結 (daketsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_sesshou",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sesshou.png",
-    "meaningEn": "tough negotiation"
+    "meaningEn": "tough negotiation",
+    "registersEn": {
+      "casual": "折衝 (sesshou)",
+      "formal": "折衝 (sesshou)",
+      "keigo": "折衝 (sesshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shisa",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shisa.png",
-    "meaningEn": "hint/suggestion"
+    "meaningEn": "hint/suggestion",
+    "registersEn": {
+      "casual": "示唆 (shisa)",
+      "formal": "示唆 (shisa)",
+      "keigo": "示唆 (shisa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_sogai",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sogai.png",
-    "meaningEn": "alienation/exclusion"
+    "meaningEn": "alienation/exclusion",
+    "registersEn": {
+      "casual": "疎外 (sogai)",
+      "formal": "疎外 (sogai)",
+      "keigo": "疎外 (sogai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_jousei",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jousei.png",
-    "meaningEn": "fostering (an atmosphere)"
+    "meaningEn": "fostering (an atmosphere)",
+    "registersEn": {
+      "casual": "醸成 (jousei)",
+      "formal": "醸成 (jousei)",
+      "keigo": "醸成 (jousei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_hakyuu",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hakyuu.png",
-    "meaningEn": "ripple effect/spread"
+    "meaningEn": "ripple effect/spread",
+    "registersEn": {
+      "casual": "波及 (hakyuu)",
+      "formal": "波及 (hakyuu)",
+      "keigo": "波及 (hakyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_enkatsu",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_enkatsu.png",
-    "meaningEn": "smoothness"
+    "meaningEn": "smoothness",
+    "registersEn": {
+      "casual": "円滑 (enkatsu)",
+      "formal": "円滑 (enkatsu)",
+      "keigo": "円滑 (enkatsu) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_koushou",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_koushou.png",
-    "meaningEn": "negotiation"
+    "meaningEn": "negotiation",
+    "registersEn": {
+      "casual": "交渉 (koushou)",
+      "formal": "交渉 (koushou)",
+      "keigo": "交渉 (koushou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_teian",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_teian.png",
-    "meaningEn": "proposal"
+    "meaningEn": "proposal",
+    "registersEn": {
+      "casual": "提案 (teian)",
+      "formal": "提案 (teian)",
+      "keigo": "提案 (teian) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shounin",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shounin.png",
-    "meaningEn": "approval"
+    "meaningEn": "approval",
+    "registersEn": {
+      "casual": "承認 (shounin)",
+      "formal": "承認 (shounin)",
+      "keigo": "承認 (shounin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shoushin",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shoushin.png",
-    "meaningEn": "promotion (in rank)"
+    "meaningEn": "promotion (in rank)",
+    "registersEn": {
+      "casual": "昇進 (shoushin)",
+      "formal": "昇進 (shoushin)",
+      "keigo": "昇進 (shoushin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kaiko",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaiko.png",
-    "meaningEn": "dismissal/firing"
+    "meaningEn": "dismissal/firing",
+    "registersEn": {
+      "casual": "解雇 (kaiko)",
+      "formal": "解雇 (kaiko)",
+      "keigo": "解雇 (kaiko) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_keiei",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_keiei.png",
-    "meaningEn": "management (of a business)"
+    "meaningEn": "management (of a business)",
+    "registersEn": {
+      "casual": "経営 (keiei)",
+      "formal": "経営 (keiei)",
+      "keigo": "経営 (keiei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_gyouseki",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gyouseki.png",
-    "meaningEn": "performance/results (of a company)"
+    "meaningEn": "performance/results (of a company)",
+    "registersEn": {
+      "casual": "業績 (gyouseki)",
+      "formal": "業績 (gyouseki)",
+      "keigo": "業績 (gyouseki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_akaji",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_akaji.png",
-    "meaningEn": "deficit/red ink"
+    "meaningEn": "deficit/red ink",
+    "registersEn": {
+      "casual": "赤字 (akaji)",
+      "formal": "赤字 (akaji)",
+      "keigo": "赤字 (akaji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kuroji",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kuroji.png",
-    "meaningEn": "surplus/profit"
+    "meaningEn": "surplus/profit",
+    "registersEn": {
+      "casual": "黒字 (kuroji)",
+      "formal": "黒字 (kuroji)",
+      "keigo": "黒字 (kuroji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_tousan",
@@ -1037,7 +1232,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tousan.png",
-    "meaningEn": "bankruptcy"
+    "meaningEn": "bankruptcy",
+    "registersEn": {
+      "casual": "倒産 (tousan)",
+      "formal": "倒産 (tousan)",
+      "keigo": "倒産 (tousan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_gappei",
@@ -1063,7 +1263,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gappei.png",
-    "meaningEn": "merger"
+    "meaningEn": "merger",
+    "registersEn": {
+      "casual": "合併 (gappei)",
+      "formal": "合併 (gappei)",
+      "keigo": "合併 (gappei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_insatsu",
@@ -1089,7 +1294,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_insatsu.png",
-    "meaningEn": "printing"
+    "meaningEn": "printing",
+    "registersEn": {
+      "casual": "印刷 (insatsu)",
+      "formal": "印刷 (insatsu)",
+      "keigo": "印刷 (insatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_eigyou",
@@ -1115,7 +1325,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_eigyou.png",
-    "meaningEn": "business operations"
+    "meaningEn": "business operations",
+    "registersEn": {
+      "casual": "営業 (eigyou)",
+      "formal": "営業 (eigyou)",
+      "keigo": "営業 (eigyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_enki",
@@ -1141,7 +1356,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_enki.png",
-    "meaningEn": "postponement"
+    "meaningEn": "postponement",
+    "registersEn": {
+      "casual": "延期 (enki)",
+      "formal": "延期 (enki)",
+      "keigo": "延期 (enki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_oubo",
@@ -1167,7 +1387,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_oubo.png",
-    "meaningEn": "applying/signing up"
+    "meaningEn": "applying/signing up",
+    "registersEn": {
+      "casual": "応募 (oubo)",
+      "formal": "応募 (oubo)",
+      "keigo": "応募 (oubo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kaikei",
@@ -1193,7 +1418,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaikei.png",
-    "meaningEn": "accounting/payment"
+    "meaningEn": "accounting/payment",
+    "registersEn": {
+      "casual": "会計 (kaikei)",
+      "formal": "会計 (kaikei)",
+      "keigo": "会計 (kaikei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kigyou",
@@ -1219,7 +1449,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kigyou.png",
-    "meaningEn": "enterprise/company"
+    "meaningEn": "enterprise/company",
+    "registersEn": {
+      "casual": "企業 (kigyou)",
+      "formal": "企業 (kigyou)",
+      "keigo": "企業 (kigyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kigen",
@@ -1245,7 +1480,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kigen.png",
-    "meaningEn": "deadline"
+    "meaningEn": "deadline",
+    "registersEn": {
+      "casual": "期限 (kigen)",
+      "formal": "期限 (kigen)",
+      "keigo": "期限 (kigen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kouen",
@@ -1271,7 +1511,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kouen.png",
-    "meaningEn": "lecture/speech"
+    "meaningEn": "lecture/speech",
+    "registersEn": {
+      "casual": "講演 (kouen)",
+      "formal": "講演 (kouen)",
+      "keigo": "講演 (kouen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kougyou",
@@ -1297,7 +1542,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kougyou.png",
-    "meaningEn": "industry (manufacturing)"
+    "meaningEn": "industry (manufacturing)",
+    "registersEn": {
+      "casual": "工業 (kougyou)",
+      "formal": "工業 (kougyou)",
+      "keigo": "工業 (kougyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_sagyou",
@@ -1323,7 +1573,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sagyou.png",
-    "meaningEn": "work/task"
+    "meaningEn": "work/task",
+    "registersEn": {
+      "casual": "作業 (sagyou)",
+      "formal": "作業 (sagyou)",
+      "keigo": "作業 (sagyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shiji",
@@ -1349,7 +1604,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shiji.png",
-    "meaningEn": "instruction"
+    "meaningEn": "instruction",
+    "registersEn": {
+      "casual": "指示 (shiji)",
+      "formal": "指示 (shiji)",
+      "keigo": "指示 (shiji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shiten",
@@ -1375,7 +1635,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shiten.png",
-    "meaningEn": "branch office"
+    "meaningEn": "branch office",
+    "registersEn": {
+      "casual": "支店 (shiten)",
+      "formal": "支店 (shiten)",
+      "keigo": "支店 (shiten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shuushoku",
@@ -1401,7 +1666,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shuushoku.png",
-    "meaningEn": "getting a job"
+    "meaningEn": "getting a job",
+    "registersEn": {
+      "casual": "就職 (shuushoku)",
+      "formal": "就職 (shuushoku)",
+      "keigo": "就職 (shuushoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shuunyuu",
@@ -1427,7 +1697,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shuunyuu.png",
-    "meaningEn": "income"
+    "meaningEn": "income",
+    "registersEn": {
+      "casual": "収入 (shuunyuu)",
+      "formal": "収入 (shuunyuu)",
+      "keigo": "収入 (shuunyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shukkin",
@@ -1453,7 +1728,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shukkin.png",
-    "meaningEn": "going to work"
+    "meaningEn": "going to work",
+    "registersEn": {
+      "casual": "出勤 (shukkin)",
+      "formal": "出勤 (shukkin)",
+      "keigo": "出勤 (shukkin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shouhin",
@@ -1479,7 +1759,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shouhin.png",
-    "meaningEn": "merchandise"
+    "meaningEn": "merchandise",
+    "registersEn": {
+      "casual": "商品 (shouhin)",
+      "formal": "商品 (shouhin)",
+      "keigo": "商品 (shouhin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shorui",
@@ -1505,7 +1790,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shorui.png",
-    "meaningEn": "documents"
+    "meaningEn": "documents",
+    "registersEn": {
+      "casual": "書類 (shorui)",
+      "formal": "書類 (shorui)",
+      "keigo": "書類 (shorui) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shiryou",
@@ -1531,7 +1821,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shiryou.png",
-    "meaningEn": "reference material"
+    "meaningEn": "reference material",
+    "registersEn": {
+      "casual": "資料 (shiryou)",
+      "formal": "資料 (shiryou)",
+      "keigo": "資料 (shiryou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shinsei",
@@ -1557,7 +1852,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinsei.png",
-    "meaningEn": "application (formal request)"
+    "meaningEn": "application (formal request)",
+    "registersEn": {
+      "casual": "申請 (shinsei)",
+      "formal": "申請 (shinsei)",
+      "keigo": "申請 (shinsei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_jikyuu",
@@ -1583,7 +1883,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jikyuu.png",
-    "meaningEn": "hourly wage"
+    "meaningEn": "hourly wage",
+    "registersEn": {
+      "casual": "時給 (jikyuu)",
+      "formal": "時給 (jikyuu)",
+      "keigo": "時給 (jikyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_jimu",
@@ -1609,7 +1914,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jimu.png",
-    "meaningEn": "office/clerical work"
+    "meaningEn": "office/clerical work",
+    "registersEn": {
+      "casual": "事務 (jimu)",
+      "formal": "事務 (jimu)",
+      "keigo": "事務 (jimu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_seisou",
@@ -1635,7 +1945,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seisou.png",
-    "meaningEn": "cleaning"
+    "meaningEn": "cleaning",
+    "registersEn": {
+      "casual": "清掃 (seisou)",
+      "formal": "清掃 (seisou)",
+      "keigo": "清掃 (seisou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_senpai",
@@ -1661,7 +1976,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_senpai.png",
-    "meaningEn": "senior (colleague)"
+    "meaningEn": "senior (colleague)",
+    "registersEn": {
+      "casual": "先輩 (senpai)",
+      "formal": "先輩 (senpai)",
+      "keigo": "先輩 (senpai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_senmon",
@@ -1687,7 +2007,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_senmon.png",
-    "meaningEn": "speciality/expertise"
+    "meaningEn": "speciality/expertise",
+    "registersEn": {
+      "casual": "専門 (senmon)",
+      "formal": "専門 (senmon)",
+      "keigo": "専門 (senmon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_daihyou",
@@ -1713,7 +2038,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_daihyou.png",
-    "meaningEn": "representative"
+    "meaningEn": "representative",
+    "registersEn": {
+      "casual": "代表 (daihyou)",
+      "formal": "代表 (daihyou)",
+      "keigo": "代表 (daihyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_chikoku",
@@ -1739,7 +2069,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chikoku.png",
-    "meaningEn": "being late"
+    "meaningEn": "being late",
+    "registersEn": {
+      "casual": "遅刻 (chikoku)",
+      "formal": "遅刻 (chikoku)",
+      "keigo": "遅刻 (chikoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_chousa",
@@ -1765,7 +2100,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chousa.png",
-    "meaningEn": "investigation/survey"
+    "meaningEn": "investigation/survey",
+    "registersEn": {
+      "casual": "調査 (chousa)",
+      "formal": "調査 (chousa)",
+      "keigo": "調査 (chousa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_tsuukin",
@@ -1791,7 +2131,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tsuukin.png",
-    "meaningEn": "commuting to work"
+    "meaningEn": "commuting to work",
+    "registersEn": {
+      "casual": "通勤 (tsuukin)",
+      "formal": "通勤 (tsuukin)",
+      "keigo": "通勤 (tsuukin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_tenkin",
@@ -1817,7 +2162,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_tenkin.png",
-    "meaningEn": "job transfer"
+    "meaningEn": "job transfer",
+    "registersEn": {
+      "casual": "転勤 (tenkin)",
+      "formal": "転勤 (tenkin)",
+      "keigo": "転勤 (tenkin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_haitatsu",
@@ -1843,7 +2193,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haitatsu.png",
-    "meaningEn": "delivery"
+    "meaningEn": "delivery",
+    "registersEn": {
+      "casual": "配達 (haitatsu)",
+      "formal": "配達 (haitatsu)",
+      "keigo": "配達 (haitatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_hatsubai",
@@ -1869,7 +2224,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hatsubai.png",
-    "meaningEn": "release (of a new product)"
+    "meaningEn": "release (of a new product)",
+    "registersEn": {
+      "casual": "発売 (hatsubai)",
+      "formal": "発売 (hatsubai)",
+      "keigo": "発売 (hatsubai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_houkoku",
@@ -1895,7 +2255,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_houkoku.png",
-    "meaningEn": "report"
+    "meaningEn": "report",
+    "registersEn": {
+      "casual": "報告 (houkoku)",
+      "formal": "報告 (houkoku)",
+      "keigo": "報告 (houkoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_houmon",
@@ -1921,7 +2286,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_houmon.png",
-    "meaningEn": "(official) visit"
+    "meaningEn": "(official) visit",
+    "registersEn": {
+      "casual": "訪問 (houmon)",
+      "formal": "訪問 (houmon)",
+      "keigo": "訪問 (houmon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_boueki",
@@ -1947,7 +2317,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_boueki.png",
-    "meaningEn": "trade"
+    "meaningEn": "trade",
+    "registersEn": {
+      "casual": "貿易 (boueki)",
+      "formal": "貿易 (boueki)",
+      "keigo": "貿易 (boueki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_boshuu",
@@ -1973,7 +2348,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_boshuu.png",
-    "meaningEn": "recruitment"
+    "meaningEn": "recruitment",
+    "registersEn": {
+      "casual": "募集 (boshuu)",
+      "formal": "募集 (boshuu)",
+      "keigo": "募集 (boshuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_meirei",
@@ -1999,7 +2379,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_meirei.png",
-    "meaningEn": "order/command"
+    "meaningEn": "order/command",
+    "registersEn": {
+      "casual": "命令 (meirei)",
+      "formal": "命令 (meirei)",
+      "keigo": "命令 (meirei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_mensetsu",
@@ -2025,7 +2410,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_mensetsu.png",
-    "meaningEn": "interview"
+    "meaningEn": "interview",
+    "registersEn": {
+      "casual": "面接 (mensetsu)",
+      "formal": "面接 (mensetsu)",
+      "keigo": "面接 (mensetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_yunyuu",
@@ -2051,7 +2441,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yunyuu.png",
-    "meaningEn": "import"
+    "meaningEn": "import",
+    "registersEn": {
+      "casual": "輸入 (yunyuu)",
+      "formal": "輸入 (yunyuu)",
+      "keigo": "輸入 (yunyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_raiten",
@@ -2077,7 +2472,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_raiten.png",
-    "meaningEn": "visiting a shop"
+    "meaningEn": "visiting a shop",
+    "registersEn": {
+      "casual": "来店 (raiten)",
+      "formal": "来店 (raiten)",
+      "keigo": "来店 (raiten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shouhinmei",
@@ -2103,7 +2503,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shouhinmei.png",
-    "meaningEn": "product name"
+    "meaningEn": "product name",
+    "registersEn": {
+      "casual": "商品名 (shouhinmei)",
+      "formal": "商品名 (shouhinmei)",
+      "keigo": "商品名 (shouhinmei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_fudousan",
@@ -2129,7 +2534,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_fudousan.png",
-    "meaningEn": "real estate"
+    "meaningEn": "real estate",
+    "registersEn": {
+      "casual": "不動産 (fudousan)",
+      "formal": "不動産 (fudousan)",
+      "keigo": "不動産 (fudousan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_genshou",
@@ -2155,7 +2565,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_genshou.png",
-    "meaningEn": "decrease (in quantity)"
+    "meaningEn": "decrease (in quantity)",
+    "registersEn": {
+      "casual": "減少 (genshou)",
+      "formal": "減少 (genshou)",
+      "keigo": "減少 (genshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_gichou",
@@ -2181,7 +2596,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gichou.png",
-    "meaningEn": "chairperson"
+    "meaningEn": "chairperson",
+    "registersEn": {
+      "casual": "議長 (gichou)",
+      "formal": "議長 (gichou)",
+      "keigo": "議長 (gichou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_hanbai",
@@ -2207,7 +2627,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hanbai.png",
-    "meaningEn": "sales"
+    "meaningEn": "sales",
+    "registersEn": {
+      "casual": "販売 (hanbai)",
+      "formal": "販売 (hanbai)",
+      "keigo": "販売 (hanbai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kaigou",
@@ -2233,7 +2658,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kaigou.png",
-    "meaningEn": "gathering/meeting"
+    "meaningEn": "gathering/meeting",
+    "registersEn": {
+      "casual": "会合 (kaigou)",
+      "formal": "会合 (kaigou)",
+      "keigo": "会合 (kaigou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kinyuu",
@@ -2259,7 +2689,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kinyuu.png",
-    "meaningEn": "filling in (a form)"
+    "meaningEn": "filling in (a form)",
+    "registersEn": {
+      "casual": "記入 (kinyuu)",
+      "formal": "記入 (kinyuu)",
+      "keigo": "記入 (kinyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_rieki",
@@ -2285,7 +2720,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_rieki.png",
-    "meaningEn": "profit"
+    "meaningEn": "profit",
+    "registersEn": {
+      "casual": "利益 (rieki)",
+      "formal": "利益 (rieki)",
+      "keigo": "利益 (rieki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_seihin",
@@ -2311,7 +2751,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seihin.png",
-    "meaningEn": "manufactured product"
+    "meaningEn": "manufactured product",
+    "registersEn": {
+      "casual": "製品 (seihin)",
+      "formal": "製品 (seihin)",
+      "keigo": "製品 (seihin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shihon",
@@ -2337,7 +2782,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shihon.png",
-    "meaningEn": "capital (funds)"
+    "meaningEn": "capital (funds)",
+    "registersEn": {
+      "casual": "資本 (shihon)",
+      "formal": "資本 (shihon)",
+      "keigo": "資本 (shihon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shoubai",
@@ -2363,7 +2813,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shoubai.png",
-    "meaningEn": "trade/business"
+    "meaningEn": "trade/business",
+    "registersEn": {
+      "casual": "商売 (shoubai)",
+      "formal": "商売 (shoubai)",
+      "keigo": "商売 (shoubai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_yushutsu",
@@ -2389,7 +2844,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_yushutsu.png",
-    "meaningEn": "export"
+    "meaningEn": "export",
+    "registersEn": {
+      "casual": "輸出 (yushutsu)",
+      "formal": "輸出 (yushutsu)",
+      "keigo": "輸出 (yushutsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_baishuu",
@@ -2415,7 +2875,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_baishuu.png",
-    "meaningEn": "acquisition/buyout"
+    "meaningEn": "acquisition/buyout",
+    "registersEn": {
+      "casual": "買収 (baishuu)",
+      "formal": "買収 (baishuu)",
+      "keigo": "買収 (baishuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_bengo",
@@ -2441,7 +2906,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_bengo.png",
-    "meaningEn": "legal defence"
+    "meaningEn": "legal defence",
+    "registersEn": {
+      "casual": "弁護 (bengo)",
+      "formal": "弁護 (bengo)",
+      "keigo": "弁護 (bengo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_bunsho",
@@ -2467,7 +2937,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_bunsho.png",
-    "meaningEn": "document"
+    "meaningEn": "document",
+    "registersEn": {
+      "casual": "文書 (bunsho)",
+      "formal": "文書 (bunsho)",
+      "keigo": "文書 (bunsho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_chakushu",
@@ -2493,7 +2968,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chakushu.png",
-    "meaningEn": "starting work on something"
+    "meaningEn": "starting work on something",
+    "registersEn": {
+      "casual": "着手 (chakushu)",
+      "formal": "着手 (chakushu)",
+      "keigo": "着手 (chakushu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_chingin",
@@ -2519,7 +2999,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_chingin.png",
-    "meaningEn": "wages"
+    "meaningEn": "wages",
+    "registersEn": {
+      "casual": "賃金 (chingin)",
+      "formal": "賃金 (chingin)",
+      "keigo": "賃金 (chingin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_choutatsu",
@@ -2545,7 +3030,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_choutatsu.png",
-    "meaningEn": "procurement (of funds/goods)"
+    "meaningEn": "procurement (of funds/goods)",
+    "registersEn": {
+      "casual": "調達 (choutatsu)",
+      "formal": "調達 (choutatsu)",
+      "keigo": "調達 (choutatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_dokusen",
@@ -2571,7 +3061,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_dokusen.png",
-    "meaningEn": "monopoly"
+    "meaningEn": "monopoly",
+    "registersEn": {
+      "casual": "独占 (dokusen)",
+      "formal": "独占 (dokusen)",
+      "keigo": "独占 (dokusen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_gyoumu",
@@ -2597,7 +3092,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_gyoumu.png",
-    "meaningEn": "business duties"
+    "meaningEn": "business duties",
+    "registersEn": {
+      "casual": "業務 (gyoumu)",
+      "formal": "業務 (gyoumu)",
+      "keigo": "業務 (gyoumu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_haichi",
@@ -2623,7 +3123,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haichi.png",
-    "meaningEn": "placement/arrangement"
+    "meaningEn": "placement/arrangement",
+    "registersEn": {
+      "casual": "配置 (haichi)",
+      "formal": "配置 (haichi)",
+      "keigo": "配置 (haichi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_haken",
@@ -2649,7 +3154,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_haken.png",
-    "meaningEn": "dispatch (of staff)"
+    "meaningEn": "dispatch (of staff)",
+    "registersEn": {
+      "casual": "派遣 (haken)",
+      "formal": "派遣 (haken)",
+      "keigo": "派遣 (haken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_hoken",
@@ -2675,7 +3185,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_hoken.png",
-    "meaningEn": "insurance"
+    "meaningEn": "insurance",
+    "registersEn": {
+      "casual": "保険 (hoken)",
+      "formal": "保険 (hoken)",
+      "keigo": "保険 (hoken) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_housaku",
@@ -2701,7 +3216,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_housaku.png",
-    "meaningEn": "policy/strategy"
+    "meaningEn": "policy/strategy",
+    "registersEn": {
+      "casual": "方策 (housaku)",
+      "formal": "方策 (housaku)",
+      "keigo": "方策 (housaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_houshuu",
@@ -2727,7 +3247,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_houshuu.png",
-    "meaningEn": "remuneration"
+    "meaningEn": "remuneration",
+    "registersEn": {
+      "casual": "報酬 (houshuu)",
+      "formal": "報酬 (houshuu)",
+      "keigo": "報酬 (houshuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_jigyou",
@@ -2753,7 +3278,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_jigyou.png",
-    "meaningEn": "business/undertaking"
+    "meaningEn": "business/undertaking",
+    "registersEn": {
+      "casual": "事業 (jigyou)",
+      "formal": "事業 (jigyou)",
+      "keigo": "事業 (jigyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_kabushiki",
@@ -2779,7 +3309,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_kabushiki.png",
-    "meaningEn": "stocks/shares"
+    "meaningEn": "stocks/shares",
+    "registersEn": {
+      "casual": "株式 (kabushiki)",
+      "formal": "株式 (kabushiki)",
+      "keigo": "株式 (kabushiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_baibai",
@@ -2805,7 +3340,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_baibai.png",
-    "meaningEn": "buying and selling"
+    "meaningEn": "buying and selling",
+    "registersEn": {
+      "casual": "売買 (baibai)",
+      "formal": "売買 (baibai)",
+      "keigo": "売買 (baibai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_iten",
@@ -2831,7 +3371,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_iten.png",
-    "meaningEn": "relocation (of an office/shop)"
+    "meaningEn": "relocation (of an office/shop)",
+    "registersEn": {
+      "casual": "移転 (iten)",
+      "formal": "移転 (iten)",
+      "keigo": "移転 (iten) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_nyuusha",
@@ -2857,7 +3402,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_nyuusha.png",
-    "meaningEn": "joining a company"
+    "meaningEn": "joining a company",
+    "registersEn": {
+      "casual": "入社 (nyuusha)",
+      "formal": "入社 (nyuusha)",
+      "keigo": "入社 (nyuusha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_ryoushuu",
@@ -2883,7 +3433,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_ryoushuu.png",
-    "meaningEn": "receipt (of money)"
+    "meaningEn": "receipt (of money)",
+    "registersEn": {
+      "casual": "領収 (ryoushuu)",
+      "formal": "領収 (ryoushuu)",
+      "keigo": "領収 (ryoushuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shousha",
@@ -2909,7 +3464,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shousha.png",
-    "meaningEn": "trading company"
+    "meaningEn": "trading company",
+    "registersEn": {
+      "casual": "商社 (shousha)",
+      "formal": "商社 (shousha)",
+      "keigo": "商社 (shousha) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shuukai",
@@ -2935,7 +3495,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shuukai.png",
-    "meaningEn": "assembly/gathering"
+    "meaningEn": "assembly/gathering",
+    "registersEn": {
+      "casual": "集会 (shuukai)",
+      "formal": "集会 (shuukai)",
+      "keigo": "集会 (shuukai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_uriage",
@@ -2961,7 +3526,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_uriage.png",
-    "meaningEn": "sales revenue"
+    "meaningEn": "sales revenue",
+    "registersEn": {
+      "casual": "売上 (uriage)",
+      "formal": "売上 (uriage)",
+      "keigo": "売上 (uriage) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_sangyou",
@@ -2987,7 +3557,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_sangyou.png",
-    "meaningEn": "industry"
+    "meaningEn": "industry",
+    "registersEn": {
+      "casual": "産業 (sangyou)",
+      "formal": "産業 (sangyou)",
+      "keigo": "産業 (sangyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_seisan",
@@ -3013,7 +3588,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_seisan.png",
-    "meaningEn": "production"
+    "meaningEn": "production",
+    "registersEn": {
+      "casual": "生産 (seisan)",
+      "formal": "生産 (seisan)",
+      "keigo": "生産 (seisan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shinamono",
@@ -3039,7 +3619,12 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinamono.png",
-    "meaningEn": "goods"
+    "meaningEn": "goods",
+    "registersEn": {
+      "casual": "品物 (shinamono)",
+      "formal": "品物 (shinamono)",
+      "keigo": "品物 (shinamono) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_pekerjaan_kantor_shinbunsha",
@@ -3065,6 +3650,11 @@
       }
     ],
     "imagePath": "kotoba_images/pekerjaan_kantor/kotoba_pekerjaan_kantor_shinbunsha.png",
-    "meaningEn": "newspaper company"
+    "meaningEn": "newspaper company",
+    "registersEn": {
+      "casual": "新聞社 (shinbunsha)",
+      "formal": "新聞社 (shinbunsha)",
+      "keigo": "新聞社 (shinbunsha) — no special keigo form for this noun"
+    }
   }
 ]

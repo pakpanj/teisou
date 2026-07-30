@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_migi.png",
-    "meaningEn": "right"
+    "meaningEn": "right",
+    "registersEn": {
+      "casual": "右 (migi)",
+      "formal": "右 (migi)",
+      "keigo": "右 (migi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_hidari",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hidari.png",
-    "meaningEn": "left"
+    "meaningEn": "left",
+    "registersEn": {
+      "casual": "左 (hidari)",
+      "formal": "左 (hidari)",
+      "keigo": "左 (hidari) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_mae",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_mae.png",
-    "meaningEn": "front"
+    "meaningEn": "front",
+    "registersEn": {
+      "casual": "前 (mae)",
+      "formal": "前 (mae)",
+      "keigo": "前 (mae) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_ushiro",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ushiro.png",
-    "meaningEn": "behind/back"
+    "meaningEn": "behind/back",
+    "registersEn": {
+      "casual": "後ろ (ushiro)",
+      "formal": "後ろ (ushiro)",
+      "keigo": "後ろ (ushiro) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_ue",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ue.png",
-    "meaningEn": "above/top"
+    "meaningEn": "above/top",
+    "registersEn": {
+      "casual": "上 (ue)",
+      "formal": "上 (ue)",
+      "keigo": "上 (ue) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_shita",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shita.png",
-    "meaningEn": "below/under"
+    "meaningEn": "below/under",
+    "registersEn": {
+      "casual": "下 (shita)",
+      "formal": "下 (shita)",
+      "keigo": "下 (shita) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_naka",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_naka.png",
-    "meaningEn": "inside"
+    "meaningEn": "inside",
+    "registersEn": {
+      "casual": "中 (naka)",
+      "formal": "中 (naka)",
+      "keigo": "中 (naka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_soto",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_soto.png",
-    "meaningEn": "outside"
+    "meaningEn": "outside",
+    "registersEn": {
+      "casual": "外 (soto)",
+      "formal": "外 (soto)",
+      "keigo": "外 (soto) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_tonari",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tonari.png",
-    "meaningEn": "next to"
+    "meaningEn": "next to",
+    "registersEn": {
+      "casual": "隣 (tonari)",
+      "formal": "隣 (tonari)",
+      "keigo": "隣 (tonari) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_chikaku",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chikaku.png",
-    "meaningEn": "nearby"
+    "meaningEn": "nearby",
+    "registersEn": {
+      "casual": "近く (chikaku)",
+      "formal": "近く (chikaku)",
+      "keigo": "近く (chikaku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_tooi",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tooi.png",
-    "meaningEn": "far"
+    "meaningEn": "far",
+    "registersEn": {
+      "casual": "遠い (tooi)",
+      "formal": "遠いです (tooi desu)",
+      "keigo": "遠い (tooi) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_shuuhen",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shuuhen.png",
-    "meaningEn": "surrounding area"
+    "meaningEn": "surrounding area",
+    "registersEn": {
+      "casual": "周辺 (shuuhen)",
+      "formal": "周辺 (shuuhen)",
+      "keigo": "周辺 (shuuhen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_fukin",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_fukin.png",
-    "meaningEn": "nearby/vicinity"
+    "meaningEn": "nearby/vicinity",
+    "registersEn": {
+      "casual": "付近 (fukin)",
+      "formal": "付近 (fukin)",
+      "keigo": "付近 (fukin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_houkou",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_houkou.png",
-    "meaningEn": "direction"
+    "meaningEn": "direction",
+    "registersEn": {
+      "casual": "方向 (houkou)",
+      "formal": "方向 (houkou)",
+      "keigo": "方向 (houkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_chuushin",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chuushin.png",
-    "meaningEn": "center"
+    "meaningEn": "center",
+    "registersEn": {
+      "casual": "中心 (chuushin)",
+      "formal": "中心 (chuushin)",
+      "keigo": "中心 (chuushin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_ichi",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_ichi.png",
-    "meaningEn": "position/location"
+    "meaningEn": "position/location",
+    "registersEn": {
+      "casual": "位置 (ichi)",
+      "formal": "位置 (ichi)",
+      "keigo": "位置 (ichi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_uchigawa",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_uchigawa.png",
-    "meaningEn": "inner side"
+    "meaningEn": "inner side",
+    "registersEn": {
+      "casual": "内側 (uchigawa)",
+      "formal": "内側 (uchigawa)",
+      "keigo": "内側 (uchigawa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_kitagawa",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kitagawa.png",
-    "meaningEn": "north side"
+    "meaningEn": "north side",
+    "registersEn": {
+      "casual": "北側 (kitagawa)",
+      "formal": "北側 (kitagawa)",
+      "keigo": "北側 (kitagawa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_kyori",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kyori.png",
-    "meaningEn": "distance"
+    "meaningEn": "distance",
+    "registersEn": {
+      "casual": "距離 (kyori)",
+      "formal": "距離 (kyori)",
+      "keigo": "距離 (kyori) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_kinjo",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kinjo.png",
-    "meaningEn": "neighborhood"
+    "meaningEn": "neighborhood",
+    "registersEn": {
+      "casual": "近所 (kinjo)",
+      "formal": "近所 (kinjo)",
+      "keigo": "近所 (kinjo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_keshiki",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_keshiki.png",
-    "meaningEn": "scenery"
+    "meaningEn": "scenery",
+    "registersEn": {
+      "casual": "景色 (keshiki)",
+      "formal": "景色 (keshiki)",
+      "keigo": "景色 (keshiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_kouhou",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kouhou.png",
-    "meaningEn": "rear direction"
+    "meaningEn": "rear direction",
+    "registersEn": {
+      "casual": "後方 (kouhou)",
+      "formal": "後方 (kouhou)",
+      "keigo": "後方 (kouhou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_shoumen",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_shoumen.png",
-    "meaningEn": "front (facing side)"
+    "meaningEn": "front (facing side)",
+    "registersEn": {
+      "casual": "正面 (shoumen)",
+      "formal": "正面 (shoumen)",
+      "keigo": "正面 (shoumen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_sotogawa",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sotogawa.png",
-    "meaningEn": "outer side"
+    "meaningEn": "outer side",
+    "registersEn": {
+      "casual": "外側 (sotogawa)",
+      "formal": "外側 (sotogawa)",
+      "keigo": "外側 (sotogawa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_chika",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chika.png",
-    "meaningEn": "underground"
+    "meaningEn": "underground",
+    "registersEn": {
+      "casual": "地下 (chika)",
+      "formal": "地下 (chika)",
+      "keigo": "地下 (chika) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_choujou",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_choujou.png",
-    "meaningEn": "summit/peak"
+    "meaningEn": "summit/peak",
+    "registersEn": {
+      "casual": "頂上 (choujou)",
+      "formal": "頂上 (choujou)",
+      "keigo": "頂上 (choujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_tochuu",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_tochuu.png",
-    "meaningEn": "on the way/midway"
+    "meaningEn": "on the way/midway",
+    "registersEn": {
+      "casual": "途中 (tochuu)",
+      "formal": "途中 (tochuu)",
+      "keigo": "途中 (tochuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_hodou",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hodou.png",
-    "meaningEn": "sidewalk"
+    "meaningEn": "sidewalk",
+    "registersEn": {
+      "casual": "歩道 (hodou)",
+      "formal": "歩道 (hodou)",
+      "keigo": "歩道 (hodou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_chiheisen",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_chiheisen.png",
-    "meaningEn": "horizon"
+    "meaningEn": "horizon",
+    "registersEn": {
+      "casual": "地平線 (chiheisen)",
+      "formal": "地平線 (chiheisen)",
+      "keigo": "地平線 (chiheisen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_sayuu",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sayuu.png",
-    "meaningEn": "left and right"
+    "meaningEn": "left and right",
+    "registersEn": {
+      "casual": "左右 (sayuu)",
+      "formal": "左右 (sayuu)",
+      "keigo": "左右 (sayuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_genchi",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_genchi.png",
-    "meaningEn": "local site/on-site"
+    "meaningEn": "local site/on-site",
+    "registersEn": {
+      "casual": "現地 (genchi)",
+      "formal": "現地 (genchi)",
+      "keigo": "現地 (genchi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_haigo",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_haigo.png",
-    "meaningEn": "behind (someone/something)"
+    "meaningEn": "behind (someone/something)",
+    "registersEn": {
+      "casual": "背後 (haigo)",
+      "formal": "背後 (haigo)",
+      "keigo": "背後 (haigo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_jimoto",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_jimoto.png",
-    "meaningEn": "one's hometown/local area"
+    "meaningEn": "one's hometown/local area",
+    "registersEn": {
+      "casual": "地元 (jimoto)",
+      "formal": "地元 (jimoto)",
+      "keigo": "地元 (jimoto) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_hantou",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_hantou.png",
-    "meaningEn": "peninsula"
+    "meaningEn": "peninsula",
+    "registersEn": {
+      "casual": "半島 (hantou)",
+      "formal": "半島 (hantou)",
+      "keigo": "半島 (hantou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_namiki",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_namiki.png",
-    "meaningEn": "row of trees"
+    "meaningEn": "row of trees",
+    "registersEn": {
+      "casual": "並木 (namiki)",
+      "formal": "並木 (namiki)",
+      "keigo": "並木 (namiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_sekidou",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_sekidou.png",
-    "meaningEn": "equator"
+    "meaningEn": "equator",
+    "registersEn": {
+      "casual": "赤道 (sekidou)",
+      "formal": "赤道 (sekidou)",
+      "keigo": "赤道 (sekidou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_basho",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_basho.png",
-    "meaningEn": "place/location"
+    "meaningEn": "place/location",
+    "registersEn": {
+      "casual": "場所 (basho)",
+      "formal": "場所 (basho)",
+      "keigo": "場所 (basho) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_kaigan",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kaigan.png",
-    "meaningEn": "coast/beach"
+    "meaningEn": "coast/beach",
+    "registersEn": {
+      "casual": "海岸 (kaigan)",
+      "formal": "海岸 (kaigan)",
+      "keigo": "海岸 (kaigan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_kaijou",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kaijou.png",
-    "meaningEn": "venue"
+    "meaningEn": "venue",
+    "registersEn": {
+      "casual": "会場 (kaijou)",
+      "formal": "会場 (kaijou)",
+      "keigo": "会場 (kaijou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_arah_lokasi_kougai",
@@ -1037,6 +1232,11 @@
       }
     ],
     "imagePath": "kotoba_images/arah_lokasi/kotoba_arah_lokasi_kougai.png",
-    "meaningEn": "suburb"
+    "meaningEn": "suburb",
+    "registersEn": {
+      "casual": "郊外 (kougai)",
+      "formal": "郊外 (kougai)",
+      "keigo": "郊外 (kougai) — no special keigo form for this noun"
+    }
   }
 ]

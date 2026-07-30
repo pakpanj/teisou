@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_nihon.png",
-    "meaningEn": "Japan"
+    "meaningEn": "Japan",
+    "registersEn": {
+      "casual": "日本 (nihon)",
+      "formal": "日本 (nihon)",
+      "keigo": "日本 (nihon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_indoneshia",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_indoneshia.png",
-    "meaningEn": "Indonesia"
+    "meaningEn": "Indonesia",
+    "registersEn": {
+      "casual": "インドネシア (indoneshia)",
+      "formal": "インドネシア (indoneshia)",
+      "keigo": "インドネシア (indoneshia) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_amerika",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_amerika.png",
-    "meaningEn": "America/United States"
+    "meaningEn": "America/United States",
+    "registersEn": {
+      "casual": "アメリカ (amerika)",
+      "formal": "アメリカ (amerika)",
+      "keigo": "アメリカ (amerika) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_chuugoku",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_chuugoku.png",
-    "meaningEn": "China"
+    "meaningEn": "China",
+    "registersEn": {
+      "casual": "中国 (chuugoku)",
+      "formal": "中国 (chuugoku)",
+      "keigo": "中国 (chuugoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kankoku",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kankoku.png",
-    "meaningEn": "South Korea"
+    "meaningEn": "South Korea",
+    "registersEn": {
+      "casual": "韓国 (kankoku)",
+      "formal": "韓国 (kankoku)",
+      "keigo": "韓国 (kankoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_tai",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_tai.png",
-    "meaningEn": "Thailand"
+    "meaningEn": "Thailand",
+    "registersEn": {
+      "casual": "タイ (tai)",
+      "formal": "タイ (tai)",
+      "keigo": "タイ (tai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_toukyou",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_toukyou.png",
-    "meaningEn": "Tokyo"
+    "meaningEn": "Tokyo",
+    "registersEn": {
+      "casual": "東京 (toukyou)",
+      "formal": "東京 (toukyou)",
+      "keigo": "東京 (toukyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_oosaka",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_oosaka.png",
-    "meaningEn": "Osaka"
+    "meaningEn": "Osaka",
+    "registersEn": {
+      "casual": "大阪 (oosaka)",
+      "formal": "大阪 (oosaka)",
+      "keigo": "大阪 (oosaka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_jakaruta",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_jakaruta.png",
-    "meaningEn": "Jakarta"
+    "meaningEn": "Jakarta",
+    "registersEn": {
+      "casual": "ジャカルタ (jakaruta)",
+      "formal": "ジャカルタ (jakaruta)",
+      "keigo": "ジャカルタ (jakaruta) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_bari",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_bari.png",
-    "meaningEn": "Bali"
+    "meaningEn": "Bali",
+    "registersEn": {
+      "casual": "バリ (bari)",
+      "formal": "バリ (bari)",
+      "keigo": "バリ (bari) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kyouto",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kyouto.png",
-    "meaningEn": "Kyoto"
+    "meaningEn": "Kyoto",
+    "registersEn": {
+      "casual": "京都 (kyouto)",
+      "formal": "京都 (kyouto)",
+      "keigo": "京都 (kyouto) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_gaikoku",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_gaikoku.png",
-    "meaningEn": "foreign country"
+    "meaningEn": "foreign country",
+    "registersEn": {
+      "casual": "外国 (gaikoku)",
+      "formal": "外国 (gaikoku)",
+      "keigo": "外国 (gaikoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_gaikokujin",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_gaikokujin.png",
-    "meaningEn": "foreigner"
+    "meaningEn": "foreigner",
+    "registersEn": {
+      "casual": "外国人 (gaikokujin)",
+      "formal": "外国人 (gaikokujin)",
+      "keigo": "外国人 (gaikokujin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_chuugokugo",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_chuugokugo.png",
-    "meaningEn": "Mandarin Chinese (language)"
+    "meaningEn": "Mandarin Chinese (language)",
+    "registersEn": {
+      "casual": "中国語 (chuugokugo)",
+      "formal": "中国語 (chuugokugo)",
+      "keigo": "中国語 (chuugokugo) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_taiwan",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_taiwan.png",
-    "meaningEn": "Taiwan"
+    "meaningEn": "Taiwan",
+    "registersEn": {
+      "casual": "台湾 (taiwan)",
+      "formal": "台湾 (taiwan)",
+      "keigo": "台湾 (taiwan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_nagoya",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_nagoya.png",
-    "meaningEn": "Nagoya"
+    "meaningEn": "Nagoya",
+    "registersEn": {
+      "casual": "名古屋 (nagoya)",
+      "formal": "名古屋 (nagoya)",
+      "keigo": "名古屋 (nagoya) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_inaka",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_inaka.png",
-    "meaningEn": "countryside/hometown village"
+    "meaningEn": "countryside/hometown village",
+    "registersEn": {
+      "casual": "田舎 (inaka)",
+      "formal": "田舎 (inaka)",
+      "keigo": "田舎 (inaka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kakuchi",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kakuchi.png",
-    "meaningEn": "various places/regions"
+    "meaningEn": "various places/regions",
+    "registersEn": {
+      "casual": "各地 (kakuchi)",
+      "formal": "各地 (kakuchi)",
+      "keigo": "各地 (kakuchi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kakkoku",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kakkoku.png",
-    "meaningEn": "various countries"
+    "meaningEn": "various countries",
+    "registersEn": {
+      "casual": "各国 (kakkoku)",
+      "formal": "各国 (kakkoku)",
+      "keigo": "各国 (kakkoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kikoku",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kikoku.png",
-    "meaningEn": "returning to one's home country"
+    "meaningEn": "returning to one's home country",
+    "registersEn": {
+      "casual": "帰国 (kikoku)",
+      "formal": "帰国 (kikoku)",
+      "keigo": "帰国 (kikoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kokusai",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokusai.png",
-    "meaningEn": "international"
+    "meaningEn": "international",
+    "registersEn": {
+      "casual": "国際 (kokusai)",
+      "formal": "国際 (kokusai)",
+      "keigo": "国際 (kokusai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_shimin",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_shimin.png",
-    "meaningEn": "citizen"
+    "meaningEn": "citizen",
+    "registersEn": {
+      "casual": "市民 (shimin)",
+      "formal": "市民 (shimin)",
+      "keigo": "市民 (shimin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_shusshin",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_shusshin.png",
-    "meaningEn": "origin (hometown/country)"
+    "meaningEn": "origin (hometown/country)",
+    "registersEn": {
+      "casual": "出身 (shusshin)",
+      "formal": "出身 (shusshin)",
+      "keigo": "出身 (shusshin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_taizai",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_taizai.png",
-    "meaningEn": "temporary stay"
+    "meaningEn": "temporary stay",
+    "registersEn": {
+      "casual": "滞在 (taizai)",
+      "formal": "滞在 (taizai)",
+      "keigo": "滞在 (taizai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_tokai",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_tokai.png",
-    "meaningEn": "city/metropolis"
+    "meaningEn": "city/metropolis",
+    "registersEn": {
+      "casual": "都会 (tokai)",
+      "formal": "都会 (tokai)",
+      "keigo": "都会 (tokai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_ijuu",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_ijuu.png",
-    "meaningEn": "migration/relocation"
+    "meaningEn": "migration/relocation",
+    "registersEn": {
+      "casual": "移住 (ijuu)",
+      "formal": "移住 (ijuu)",
+      "keigo": "移住 (ijuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_gaikou",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_gaikou.png",
-    "meaningEn": "diplomacy"
+    "meaningEn": "diplomacy",
+    "registersEn": {
+      "casual": "外交 (gaikou)",
+      "formal": "外交 (gaikou)",
+      "keigo": "外交 (gaikou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_gikai",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_gikai.png",
-    "meaningEn": "parliament/assembly"
+    "meaningEn": "parliament/assembly",
+    "registersEn": {
+      "casual": "議会 (gikai)",
+      "formal": "議会 (gikai)",
+      "keigo": "議会 (gikai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kaigai",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kaigai.png",
-    "meaningEn": "overseas"
+    "meaningEn": "overseas",
+    "registersEn": {
+      "casual": "海外 (kaigai)",
+      "formal": "海外 (kaigai)",
+      "keigo": "海外 (kaigai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kokka",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokka.png",
-    "meaningEn": "state/nation"
+    "meaningEn": "state/nation",
+    "registersEn": {
+      "casual": "国家 (kokka)",
+      "formal": "国家 (kokka)",
+      "keigo": "国家 (kokka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kokkai",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokkai.png",
-    "meaningEn": "national diet/parliament"
+    "meaningEn": "national diet/parliament",
+    "registersEn": {
+      "casual": "国会 (kokkai)",
+      "formal": "国会 (kokkai)",
+      "keigo": "国会 (kokkai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kokkyou",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokkyou.png",
-    "meaningEn": "national border"
+    "meaningEn": "national border",
+    "registersEn": {
+      "casual": "国境 (kokkyou)",
+      "formal": "国境 (kokkyou)",
+      "keigo": "国境 (kokkyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kokumin",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokumin.png",
-    "meaningEn": "citizens/people of a nation"
+    "meaningEn": "citizens/people of a nation",
+    "registersEn": {
+      "casual": "国民 (kokumin)",
+      "formal": "国民 (kokumin)",
+      "keigo": "国民 (kokumin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_zenkoku",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_zenkoku.png",
-    "meaningEn": "nationwide"
+    "meaningEn": "nationwide",
+    "registersEn": {
+      "casual": "全国 (zenkoku)",
+      "formal": "全国 (zenkoku)",
+      "keigo": "全国 (zenkoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_dokusai",
@@ -907,7 +1077,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_dokusai.png",
-    "meaningEn": "dictatorship"
+    "meaningEn": "dictatorship",
+    "registersEn": {
+      "casual": "独裁 (dokusai)",
+      "formal": "独裁 (dokusai)",
+      "keigo": "独裁 (dokusai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_doumei",
@@ -933,7 +1108,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_doumei.png",
-    "meaningEn": "alliance"
+    "meaningEn": "alliance",
+    "registersEn": {
+      "casual": "同盟 (doumei)",
+      "formal": "同盟 (doumei)",
+      "keigo": "同盟 (doumei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_fuhai",
@@ -959,7 +1139,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_fuhai.png",
-    "meaningEn": "corruption/decay"
+    "meaningEn": "corruption/decay",
+    "registersEn": {
+      "casual": "腐敗 (fuhai)",
+      "formal": "腐敗 (fuhai)",
+      "keigo": "腐敗 (fuhai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_funsou",
@@ -985,7 +1170,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_funsou.png",
-    "meaningEn": "conflict/dispute"
+    "meaningEn": "conflict/dispute",
+    "registersEn": {
+      "casual": "紛争 (funsou)",
+      "formal": "紛争 (funsou)",
+      "keigo": "紛争 (funsou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_fuusa",
@@ -1011,7 +1201,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_fuusa.png",
-    "meaningEn": "blockade/lockdown"
+    "meaningEn": "blockade/lockdown",
+    "registersEn": {
+      "casual": "封鎖 (fuusa)",
+      "formal": "封鎖 (fuusa)",
+      "keigo": "封鎖 (fuusa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_gunji",
@@ -1037,7 +1232,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_gunji.png",
-    "meaningEn": "military affairs"
+    "meaningEn": "military affairs",
+    "registersEn": {
+      "casual": "軍事 (gunji)",
+      "formal": "軍事 (gunji)",
+      "keigo": "軍事 (gunji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_haishi",
@@ -1063,7 +1263,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_haishi.png",
-    "meaningEn": "abolition"
+    "meaningEn": "abolition",
+    "registersEn": {
+      "casual": "廃止 (haishi)",
+      "formal": "廃止 (haishi)",
+      "keigo": "廃止 (haishi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_hanei",
@@ -1089,7 +1294,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_hanei.png",
-    "meaningEn": "prosperity"
+    "meaningEn": "prosperity",
+    "registersEn": {
+      "casual": "繁栄 (hanei)",
+      "formal": "繁栄 (hanei)",
+      "keigo": "繁栄 (hanei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_hanran",
@@ -1115,7 +1325,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_hanran.png",
-    "meaningEn": "rebellion"
+    "meaningEn": "rebellion",
+    "registersEn": {
+      "casual": "反乱 (hanran)",
+      "formal": "反乱 (hanran)",
+      "keigo": "反乱 (hanran) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_imin",
@@ -1141,7 +1356,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_imin.png",
-    "meaningEn": "immigrant/immigration"
+    "meaningEn": "immigrant/immigration",
+    "registersEn": {
+      "casual": "移民 (imin)",
+      "formal": "移民 (imin)",
+      "keigo": "移民 (imin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_jousei",
@@ -1167,7 +1387,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_jousei.png",
-    "meaningEn": "situation/state of affairs"
+    "meaningEn": "situation/state of affairs",
+    "registersEn": {
+      "casual": "情勢 (jousei)",
+      "formal": "情勢 (jousei)",
+      "keigo": "情勢 (jousei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kainyuu",
@@ -1193,7 +1418,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kainyuu.png",
-    "meaningEn": "intervention"
+    "meaningEn": "intervention",
+    "registersEn": {
+      "casual": "介入 (kainyuu)",
+      "formal": "介入 (kainyuu)",
+      "keigo": "介入 (kainyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kokuou",
@@ -1219,7 +1449,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokuou.png",
-    "meaningEn": "king"
+    "meaningEn": "king",
+    "registersEn": {
+      "casual": "国王 (kokuou)",
+      "formal": "国王 (kokuou)",
+      "keigo": "国王 (kokuou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kokuritsu",
@@ -1245,7 +1480,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokuritsu.png",
-    "meaningEn": "national (state-run)"
+    "meaningEn": "national (state-run)",
+    "registersEn": {
+      "casual": "国立 (kokuritsu)",
+      "formal": "国立 (kokuritsu)",
+      "keigo": "国立 (kokuritsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_kokuseki",
@@ -1271,7 +1511,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_kokuseki.png",
-    "meaningEn": "nationality/citizenship"
+    "meaningEn": "nationality/citizenship",
+    "registersEn": {
+      "casual": "国籍 (kokuseki)",
+      "formal": "国籍 (kokuseki)",
+      "keigo": "国籍 (kokuseki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_touyou",
@@ -1297,7 +1542,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_touyou.png",
-    "meaningEn": "the East (Asia)"
+    "meaningEn": "the East (Asia)",
+    "registersEn": {
+      "casual": "東洋 (touyou)",
+      "formal": "東洋 (touyou)",
+      "keigo": "東洋 (touyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_jinkou",
@@ -1323,7 +1573,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_jinkou.png",
-    "meaningEn": "population"
+    "meaningEn": "population",
+    "registersEn": {
+      "casual": "人口 (jinkou)",
+      "formal": "人口 (jinkou)",
+      "keigo": "人口 (jinkou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_seiji",
@@ -1349,7 +1604,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_seiji.png",
-    "meaningEn": "politics"
+    "meaningEn": "politics",
+    "registersEn": {
+      "casual": "政治 (seiji)",
+      "formal": "政治 (seiji)",
+      "keigo": "政治 (seiji) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_seiyou",
@@ -1375,7 +1635,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_seiyou.png",
-    "meaningEn": "the West"
+    "meaningEn": "the West",
+    "registersEn": {
+      "casual": "西洋 (seiyou)",
+      "formal": "西洋 (seiyou)",
+      "keigo": "西洋 (seiyou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_sekai",
@@ -1401,7 +1666,12 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_sekai.png",
-    "meaningEn": "world"
+    "meaningEn": "world",
+    "registersEn": {
+      "casual": "世界 (sekai)",
+      "formal": "世界 (sekai)",
+      "keigo": "世界 (sekai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_negara_kota_sensou",
@@ -1427,6 +1697,11 @@
       }
     ],
     "imagePath": "kotoba_images/negara_kota/kotoba_negara_kota_sensou.png",
-    "meaningEn": "war"
+    "meaningEn": "war",
+    "registersEn": {
+      "casual": "戦争 (sensou)",
+      "formal": "戦争 (sensou)",
+      "keigo": "戦争 (sensou) — no special keigo form for this noun"
+    }
   }
 ]

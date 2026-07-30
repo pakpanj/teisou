@@ -64,14 +64,14 @@ class _CategoryCard extends ConsumerWidget {
     if (!category.available) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text(s.categoryComingSoon(category.name))));
+      ).showSnackBar(SnackBar(content: Text(s.categoryComingSoon(category.localizedName(s.language)))));
       return;
     }
     AppNavigator.slideFromRight(
       context,
       ParticleCategoryScreen(
         category: category.id,
-        categoryName: category.name,
+        categoryName: category.localizedName(s.language),
       ),
     );
   }
@@ -117,7 +117,7 @@ class _CategoryCard extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      category.name,
+                      category.localizedName(s.language),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

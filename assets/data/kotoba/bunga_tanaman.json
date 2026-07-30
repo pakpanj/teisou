@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_hana.png",
-    "meaningEn": "flower"
+    "meaningEn": "flower",
+    "registersEn": {
+      "casual": "はな (hana)",
+      "formal": "はな (hana)",
+      "keigo": "はな (hana) — no special keigo form for flower or plant names"
+    }
   },
   {
     "id": "kotoba_bunga_tanaman_bara",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_bara.png",
-    "meaningEn": "rose"
+    "meaningEn": "rose",
+    "registersEn": {
+      "casual": "バラ (bara)",
+      "formal": "バラ (bara)",
+      "keigo": "バラ (bara) — no special keigo form for flower or plant names"
+    }
   },
   {
     "id": "kotoba_bunga_tanaman_yuri",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_yuri.png",
-    "meaningEn": "lily"
+    "meaningEn": "lily",
+    "registersEn": {
+      "casual": "ゆり (yuri)",
+      "formal": "ゆり (yuri)",
+      "keigo": "ゆり (yuri) — no special keigo form for flower or plant names"
+    }
   },
   {
     "id": "kotoba_bunga_tanaman_himawari",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_himawari.png",
-    "meaningEn": "sunflower"
+    "meaningEn": "sunflower",
+    "registersEn": {
+      "casual": "ひまわり (himawari)",
+      "formal": "ひまわり (himawari)",
+      "keigo": "ひまわり (himawari) — no special keigo form for flower or plant names"
+    }
   },
   {
     "id": "kotoba_bunga_tanaman_tanpopo",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_tanpopo.png",
-    "meaningEn": "dandelion"
+    "meaningEn": "dandelion",
+    "registersEn": {
+      "casual": "たんぽぽ (tanpopo)",
+      "formal": "たんぽぽ (tanpopo)",
+      "keigo": "たんぽぽ (tanpopo) — no special keigo form for flower or plant names"
+    }
   },
   {
     "id": "kotoba_bunga_tanaman_ajisai",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_ajisai.png",
-    "meaningEn": "hydrangea"
+    "meaningEn": "hydrangea",
+    "registersEn": {
+      "casual": "あじさい (ajisai)",
+      "formal": "あじさい (ajisai)",
+      "keigo": "あじさい (ajisai) — no special keigo form for flower or plant names"
+    }
   },
   {
     "id": "kotoba_bunga_tanaman_sumire",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_sumire.png",
-    "meaningEn": "violet"
+    "meaningEn": "violet",
+    "registersEn": {
+      "casual": "すみれ (sumire)",
+      "formal": "すみれ (sumire)",
+      "keigo": "すみれ (sumire) — no special keigo form for flower or plant names"
+    }
   },
   {
     "id": "kotoba_bunga_tanaman_ume",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_ume.png",
-    "meaningEn": "plum blossom/tree (ume)"
+    "meaningEn": "plum blossom/tree (ume)",
+    "registersEn": {
+      "casual": "うめ (ume)",
+      "formal": "うめ (ume)",
+      "keigo": "うめ (ume) — no special keigo form for flower or plant names"
+    }
   },
   {
     "id": "kotoba_bunga_tanaman_shokubutsu",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_shokubutsu.png",
-    "meaningEn": "plant"
+    "meaningEn": "plant",
+    "registersEn": {
+      "casual": "しょくぶつ (shokubutsu)",
+      "formal": "しょくぶつ (shokubutsu)",
+      "keigo": "しょくぶつ (shokubutsu) — no special keigo form for flower or plant names"
+    }
   },
   {
     "id": "kotoba_bunga_tanaman_kusabana",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_kusabana.png",
-    "meaningEn": "flowering plants"
+    "meaningEn": "flowering plants",
+    "registersEn": {
+      "casual": "くさばな (kusabana)",
+      "formal": "くさばな (kusabana)",
+      "keigo": "くさばな (kusabana) — no special keigo form for flower or plant names"
+    }
   },
   {
     "id": "kotoba_bunga_tanaman_shibafu",
@@ -283,6 +333,11 @@
       }
     ],
     "imagePath": "kotoba_images/bunga_tanaman/kotoba_bunga_tanaman_shibafu.png",
-    "meaningEn": "lawn/turf grass"
+    "meaningEn": "lawn/turf grass",
+    "registersEn": {
+      "casual": "しばふ (shibafu)",
+      "formal": "しばふ (shibafu)",
+      "keigo": "しばふ (shibafu) — no special keigo form for flower or plant names"
+    }
   }
 ]

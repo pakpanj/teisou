@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_tori.png",
-    "meaningEn": "bird"
+    "meaningEn": "bird",
+    "registersEn": {
+      "casual": "とり (tori)",
+      "formal": "とり (tori)",
+      "keigo": "とり (tori) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_niwatori",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_niwatori.png",
-    "meaningEn": "chicken"
+    "meaningEn": "chicken",
+    "registersEn": {
+      "casual": "にわとり (niwatori)",
+      "formal": "にわとり (niwatori)",
+      "keigo": "にわとり (niwatori) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_ahiru",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_ahiru.png",
-    "meaningEn": "duck"
+    "meaningEn": "duck",
+    "registersEn": {
+      "casual": "アヒル (ahiru)",
+      "formal": "アヒル (ahiru)",
+      "keigo": "アヒル (ahiru) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_suzume",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_suzume.png",
-    "meaningEn": "sparrow"
+    "meaningEn": "sparrow",
+    "registersEn": {
+      "casual": "すずめ (suzume)",
+      "formal": "すずめ (suzume)",
+      "keigo": "すずめ (suzume) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_karasu",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_karasu.png",
-    "meaningEn": "crow"
+    "meaningEn": "crow",
+    "registersEn": {
+      "casual": "からす (karasu)",
+      "formal": "からす (karasu)",
+      "keigo": "からす (karasu) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_hato",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_hato.png",
-    "meaningEn": "pigeon/dove"
+    "meaningEn": "pigeon/dove",
+    "registersEn": {
+      "casual": "はと (hato)",
+      "formal": "はと (hato)",
+      "keigo": "はと (hato) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_tsuru",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_tsuru.png",
-    "meaningEn": "crane"
+    "meaningEn": "crane",
+    "registersEn": {
+      "casual": "つる (tsuru)",
+      "formal": "つる (tsuru)",
+      "keigo": "つる (tsuru) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_fukurou",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_fukurou.png",
-    "meaningEn": "owl"
+    "meaningEn": "owl",
+    "registersEn": {
+      "casual": "ふくろう (fukurou)",
+      "formal": "ふくろう (fukurou)",
+      "keigo": "ふくろう (fukurou) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_taka",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_taka.png",
-    "meaningEn": "hawk"
+    "meaningEn": "hawk",
+    "registersEn": {
+      "casual": "たか (taka)",
+      "formal": "たか (taka)",
+      "keigo": "たか (taka) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_pengin",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_pengin.png",
-    "meaningEn": "penguin"
+    "meaningEn": "penguin",
+    "registersEn": {
+      "casual": "ペンギン (pengin)",
+      "formal": "ペンギン (pengin)",
+      "keigo": "ペンギン (pengin) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_hakuchou",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_hakuchou.png",
-    "meaningEn": "swan"
+    "meaningEn": "swan",
+    "registersEn": {
+      "casual": "はくちょう (hakuchou)",
+      "formal": "はくちょう (hakuchou)",
+      "keigo": "はくちょう (hakuchou) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_kiji",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_kiji.png",
-    "meaningEn": "pheasant (Japan's national bird)"
+    "meaningEn": "pheasant (Japan's national bird)",
+    "registersEn": {
+      "casual": "きじ (kiji)",
+      "formal": "きじ (kiji)",
+      "keigo": "きじ (kiji) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_inko",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_inko.png",
-    "meaningEn": "parakeet"
+    "meaningEn": "parakeet",
+    "registersEn": {
+      "casual": "インコ (inko)",
+      "formal": "インコ (inko)",
+      "keigo": "インコ (inko) — no special keigo form for bird names"
+    }
   },
   {
     "id": "kotoba_burung_kodori",
@@ -361,6 +426,11 @@
       }
     ],
     "imagePath": "kotoba_images/burung/kotoba_burung_kodori.png",
-    "meaningEn": "small bird"
+    "meaningEn": "small bird",
+    "registersEn": {
+      "casual": "こどり (kodori)",
+      "formal": "こどり (kodori)",
+      "keigo": "こどり (kodori) — no special keigo form for bird names"
+    }
   }
 ]

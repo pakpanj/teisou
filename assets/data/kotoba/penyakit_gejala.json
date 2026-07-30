@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kaze.png",
-    "meaningEn": "cold/flu"
+    "meaningEn": "cold/flu",
+    "registersEn": {
+      "casual": "風邪 (kaze)",
+      "formal": "風邪 (kaze)",
+      "keigo": "風邪 (kaze) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_netsu",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_netsu.png",
-    "meaningEn": "fever"
+    "meaningEn": "fever",
+    "registersEn": {
+      "casual": "熱 (netsu)",
+      "formal": "熱 (netsu)",
+      "keigo": "熱 (netsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_seki",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_seki.png",
-    "meaningEn": "cough"
+    "meaningEn": "cough",
+    "registersEn": {
+      "casual": "咳 (seki)",
+      "formal": "咳 (seki)",
+      "keigo": "咳 (seki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_hanamizu",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hanamizu.png",
-    "meaningEn": "runny nose"
+    "meaningEn": "runny nose",
+    "registersEn": {
+      "casual": "鼻水 (hanamizu)",
+      "formal": "鼻水 (hanamizu)",
+      "keigo": "鼻水 (hanamizu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_itai",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_itai.png",
-    "meaningEn": "painful/hurting"
+    "meaningEn": "painful/hurting",
+    "registersEn": {
+      "casual": "痛い (itai)",
+      "formal": "痛いです (itai desu)",
+      "keigo": "痛い (itai) — no special keigo form for this adjective"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_kega",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kega.png",
-    "meaningEn": "injury/wound"
+    "meaningEn": "injury/wound",
+    "registersEn": {
+      "casual": "怪我 (kega)",
+      "formal": "怪我 (kega)",
+      "keigo": "怪我 (kega) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_arerugii",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_arerugii.png",
-    "meaningEn": "allergy"
+    "meaningEn": "allergy",
+    "registersEn": {
+      "casual": "アレルギー (arerugii)",
+      "formal": "アレルギー (arerugii)",
+      "keigo": "アレルギー (arerugii) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_kafunshou",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kafunshou.png",
-    "meaningEn": "hay fever (pollen allergy)"
+    "meaningEn": "hay fever (pollen allergy)",
+    "registersEn": {
+      "casual": "花粉症 (kafunshou)",
+      "formal": "花粉症 (kafunshou)",
+      "keigo": "花粉症 (kafunshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_geri",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_geri.png",
-    "meaningEn": "diarrhea"
+    "meaningEn": "diarrhea",
+    "registersEn": {
+      "casual": "下痢 (geri)",
+      "formal": "下痢 (geri)",
+      "keigo": "下痢 (geri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_memai",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_memai.png",
-    "meaningEn": "dizziness"
+    "meaningEn": "dizziness",
+    "registersEn": {
+      "casual": "めまい (memai)",
+      "formal": "めまい (memai)",
+      "keigo": "めまい (memai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_tsukare",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_tsukare.png",
-    "meaningEn": "fatigue/tiredness"
+    "meaningEn": "fatigue/tiredness",
+    "registersEn": {
+      "casual": "疲れ (tsukare)",
+      "formal": "疲れ (tsukare)",
+      "keigo": "疲れ (tsukare) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_shindan",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shindan.png",
-    "meaningEn": "diagnosis"
+    "meaningEn": "diagnosis",
+    "registersEn": {
+      "casual": "診断 (shindan)",
+      "formal": "診断 (shindan)",
+      "keigo": "診断 (shindan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_kansen",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kansen.png",
-    "meaningEn": "infection"
+    "meaningEn": "infection",
+    "registersEn": {
+      "casual": "感染 (kansen)",
+      "formal": "感染 (kansen)",
+      "keigo": "感染 (kansen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_men'eki",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_men'eki.png",
-    "meaningEn": "immunity"
+    "meaningEn": "immunity",
+    "registersEn": {
+      "casual": "免疫 (men'eki)",
+      "formal": "免疫 (men'eki)",
+      "keigo": "免疫 (men'eki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_shoujou",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shoujou.png",
-    "meaningEn": "symptom"
+    "meaningEn": "symptom",
+    "registersEn": {
+      "casual": "症状 (shoujou)",
+      "formal": "症状 (shoujou)",
+      "keigo": "症状 (shoujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_akka",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_akka.png",
-    "meaningEn": "worsening (of a condition)"
+    "meaningEn": "worsening (of a condition)",
+    "registersEn": {
+      "casual": "悪化 (akka)",
+      "formal": "悪化 (akka)",
+      "keigo": "悪化 (akka) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_kaifuku",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kaifuku.png",
-    "meaningEn": "recovery"
+    "meaningEn": "recovery",
+    "registersEn": {
+      "casual": "回復 (kaifuku)",
+      "formal": "回復 (kaifuku)",
+      "keigo": "回復 (kaifuku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_chiryou",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_chiryou.png",
-    "meaningEn": "treatment"
+    "meaningEn": "treatment",
+    "registersEn": {
+      "casual": "治療 (chiryou)",
+      "formal": "治療 (chiryou)",
+      "keigo": "治療 (chiryou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_yobou",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_yobou.png",
-    "meaningEn": "prevention"
+    "meaningEn": "prevention",
+    "registersEn": {
+      "casual": "予防 (yobou)",
+      "formal": "予防 (yobou)",
+      "keigo": "予防 (yobou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_zutsuu",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_zutsuu.png",
-    "meaningEn": "headache"
+    "meaningEn": "headache",
+    "registersEn": {
+      "casual": "頭痛 (zutsuu)",
+      "formal": "頭痛 (zutsuu)",
+      "keigo": "頭痛 (zutsuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_fukutsuu",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_fukutsuu.png",
-    "meaningEn": "stomachache"
+    "meaningEn": "stomachache",
+    "registersEn": {
+      "casual": "腹痛 (fukutsuu)",
+      "formal": "腹痛 (fukutsuu)",
+      "keigo": "腹痛 (fukutsuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_kossetsu",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_kossetsu.png",
-    "meaningEn": "bone fracture"
+    "meaningEn": "bone fracture",
+    "registersEn": {
+      "casual": "骨折 (kossetsu)",
+      "formal": "骨折 (kossetsu)",
+      "keigo": "骨折 (kossetsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_shukketsu",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shukketsu.png",
-    "meaningEn": "bleeding"
+    "meaningEn": "bleeding",
+    "registersEn": {
+      "casual": "出血 (shukketsu)",
+      "formal": "出血 (shukketsu)",
+      "keigo": "出血 (shukketsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_taion",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_taion.png",
-    "meaningEn": "body temperature"
+    "meaningEn": "body temperature",
+    "registersEn": {
+      "casual": "体温 (taion)",
+      "formal": "体温 (taion)",
+      "keigo": "体温 (taion) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_hinketsu",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hinketsu.png",
-    "meaningEn": "anemia"
+    "meaningEn": "anemia",
+    "registersEn": {
+      "casual": "貧血 (hinketsu)",
+      "formal": "貧血 (hinketsu)",
+      "keigo": "貧血 (hinketsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_chuudoku",
@@ -673,7 +798,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_chuudoku.png",
-    "meaningEn": "poisoning"
+    "meaningEn": "poisoning",
+    "registersEn": {
+      "casual": "中毒 (chuudoku)",
+      "formal": "中毒 (chuudoku)",
+      "keigo": "中毒 (chuudoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_mahi",
@@ -699,7 +829,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_mahi.png",
-    "meaningEn": "paralysis/numbness"
+    "meaningEn": "paralysis/numbness",
+    "registersEn": {
+      "casual": "麻痺 (mahi)",
+      "formal": "麻痺 (mahi)",
+      "keigo": "麻痺 (mahi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_enshou",
@@ -725,7 +860,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_enshou.png",
-    "meaningEn": "inflammation"
+    "meaningEn": "inflammation",
+    "registersEn": {
+      "casual": "炎症 (enshou)",
+      "formal": "炎症 (enshou)",
+      "keigo": "炎症 (enshou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_benpi",
@@ -751,7 +891,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_benpi.png",
-    "meaningEn": "constipation"
+    "meaningEn": "constipation",
+    "registersEn": {
+      "casual": "便秘 (benpi)",
+      "formal": "便秘 (benpi)",
+      "keigo": "便秘 (benpi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_shokuyoku",
@@ -777,7 +922,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_shokuyoku.png",
-    "meaningEn": "appetite"
+    "meaningEn": "appetite",
+    "registersEn": {
+      "casual": "食欲 (shokuyoku)",
+      "formal": "食欲 (shokuyoku)",
+      "keigo": "食欲 (shokuyoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_suimin",
@@ -803,7 +953,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_suimin.png",
-    "meaningEn": "sleep"
+    "meaningEn": "sleep",
+    "registersEn": {
+      "casual": "睡眠 (suimin)",
+      "formal": "睡眠 (suimin)",
+      "keigo": "睡眠 (suimin) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_mushiba",
@@ -829,7 +984,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_mushiba.png",
-    "meaningEn": "cavity (tooth decay)"
+    "meaningEn": "cavity (tooth decay)",
+    "registersEn": {
+      "casual": "虫歯 (mushiba)",
+      "formal": "虫歯 (mushiba)",
+      "keigo": "虫歯 (mushiba) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_fushou",
@@ -855,7 +1015,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_fushou.png",
-    "meaningEn": "injury"
+    "meaningEn": "injury",
+    "registersEn": {
+      "casual": "負傷 (fushou)",
+      "formal": "負傷 (fushou)",
+      "keigo": "負傷 (fushou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_hirou",
@@ -881,7 +1046,12 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_hirou.png",
-    "meaningEn": "fatigue"
+    "meaningEn": "fatigue",
+    "registersEn": {
+      "casual": "疲労 (hirou)",
+      "formal": "疲労 (hirou)",
+      "keigo": "疲労 (hirou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_penyakit_gejala_guai",
@@ -907,6 +1077,11 @@
       }
     ],
     "imagePath": "kotoba_images/penyakit_gejala/kotoba_penyakit_gejala_guai.png",
-    "meaningEn": "(physical) condition"
+    "meaningEn": "(physical) condition",
+    "registersEn": {
+      "casual": "具合 (guai)",
+      "formal": "具合 (guai)",
+      "keigo": "具合 (guai) — no special keigo form for this noun"
+    }
   }
 ]

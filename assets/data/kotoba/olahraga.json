@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_supootsu.png",
-    "meaningEn": "sports"
+    "meaningEn": "sports",
+    "registersEn": {
+      "casual": "スポーツ (supootsu)",
+      "formal": "スポーツ (supootsu)",
+      "keigo": "スポーツ (supootsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_sakkaa",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_sakkaa.png",
-    "meaningEn": "soccer/football"
+    "meaningEn": "soccer/football",
+    "registersEn": {
+      "casual": "サッカー (sakkaa)",
+      "formal": "サッカー (sakkaa)",
+      "keigo": "サッカー (sakkaa) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_yakyuu",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_yakyuu.png",
-    "meaningEn": "baseball"
+    "meaningEn": "baseball",
+    "registersEn": {
+      "casual": "野球 (yakyuu)",
+      "formal": "野球 (yakyuu)",
+      "keigo": "野球 (yakyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_basukettobooru",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_basukettobooru.png",
-    "meaningEn": "basketball"
+    "meaningEn": "basketball",
+    "registersEn": {
+      "casual": "バスケットボール (basuketto booru)",
+      "formal": "バスケットボール (basuketto booru)",
+      "keigo": "バスケットボール (basuketto booru) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_suiei",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_suiei.png",
-    "meaningEn": "swimming"
+    "meaningEn": "swimming",
+    "registersEn": {
+      "casual": "水泳 (suiei)",
+      "formal": "水泳 (suiei)",
+      "keigo": "水泳 (suiei) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_tenisu",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tenisu.png",
-    "meaningEn": "tennis"
+    "meaningEn": "tennis",
+    "registersEn": {
+      "casual": "テニス (tenisu)",
+      "formal": "テニス (tenisu)",
+      "keigo": "テニス (tenisu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_ranningu",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_ranningu.png",
-    "meaningEn": "running"
+    "meaningEn": "running",
+    "registersEn": {
+      "casual": "ランニング (ranningu)",
+      "formal": "ランニング (ranningu)",
+      "keigo": "ランニング (ranningu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_juudou",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_juudou.png",
-    "meaningEn": "judo"
+    "meaningEn": "judo",
+    "registersEn": {
+      "casual": "柔道 (juudou)",
+      "formal": "柔道 (juudou)",
+      "keigo": "柔道 (juudou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_karate",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_karate.png",
-    "meaningEn": "karate"
+    "meaningEn": "karate",
+    "registersEn": {
+      "casual": "空手 (karate)",
+      "formal": "空手 (karate)",
+      "keigo": "空手 (karate) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_sumou",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_sumou.png",
-    "meaningEn": "sumo"
+    "meaningEn": "sumo",
+    "registersEn": {
+      "casual": "相撲 (sumou)",
+      "formal": "相撲 (sumou)",
+      "keigo": "相撲 (sumou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_taisou",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_taisou.png",
-    "meaningEn": "gymnastics/calisthenics"
+    "meaningEn": "gymnastics/calisthenics",
+    "registersEn": {
+      "casual": "体操 (taisou)",
+      "formal": "体操 (taisou)",
+      "keigo": "体操 (taisou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_undou",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_undou.png",
-    "meaningEn": "exercise/physical activity"
+    "meaningEn": "exercise/physical activity",
+    "registersEn": {
+      "casual": "運動 (undou)",
+      "formal": "運動 (undou)",
+      "keigo": "運動 (undou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_tanren",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tanren.png",
-    "meaningEn": "(physical/mental) training"
+    "meaningEn": "(physical/mental) training",
+    "registersEn": {
+      "casual": "鍛錬 (tanren)",
+      "formal": "鍛錬 (tanren)",
+      "keigo": "鍛錬 (tanren) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_jikyuuryoku",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_jikyuuryoku.png",
-    "meaningEn": "endurance/stamina"
+    "meaningEn": "endurance/stamina",
+    "registersEn": {
+      "casual": "持久力 (jikyuuryoku)",
+      "formal": "持久力 (jikyuuryoku)",
+      "keigo": "持久力 (jikyuuryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_kinryoku",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_kinryoku.png",
-    "meaningEn": "muscle strength"
+    "meaningEn": "muscle strength",
+    "registersEn": {
+      "casual": "筋力 (kinryoku)",
+      "formal": "筋力 (kinryoku)",
+      "keigo": "筋力 (kinryoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_takkyuu",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_takkyuu.png",
-    "meaningEn": "table tennis"
+    "meaningEn": "table tennis",
+    "registersEn": {
+      "casual": "卓球 (takkyuu)",
+      "formal": "卓球 (takkyuu)",
+      "keigo": "卓球 (takkyuu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_rikujou",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_rikujou.png",
-    "meaningEn": "track and field/athletics"
+    "meaningEn": "track and field/athletics",
+    "registersEn": {
+      "casual": "陸上 (rikujou)",
+      "formal": "陸上 (rikujou)",
+      "keigo": "陸上 (rikujou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_yuushou",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_yuushou.png",
-    "meaningEn": "championship/victory"
+    "meaningEn": "championship/victory",
+    "registersEn": {
+      "casual": "優勝 (yuushou)",
+      "formal": "優勝 (yuushou)",
+      "keigo": "優勝 (yuushou) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_shiai",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_shiai.png",
-    "meaningEn": "match/game"
+    "meaningEn": "match/game",
+    "registersEn": {
+      "casual": "試合 (shiai)",
+      "formal": "試合 (shiai)",
+      "keigo": "試合 (shiai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_senshu",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_senshu.png",
-    "meaningEn": "athlete/player"
+    "meaningEn": "athlete/player",
+    "registersEn": {
+      "casual": "選手 (senshu)",
+      "formal": "選手 (senshu)",
+      "keigo": "選手 (senshu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_kouhan",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_kouhan.png",
-    "meaningEn": "second half"
+    "meaningEn": "second half",
+    "registersEn": {
+      "casual": "後半 (kouhan)",
+      "formal": "後半 (kouhan)",
+      "keigo": "後半 (kouhan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_zenhan",
@@ -569,7 +674,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_zenhan.png",
-    "meaningEn": "first half"
+    "meaningEn": "first half",
+    "registersEn": {
+      "casual": "前半 (zenhan)",
+      "formal": "前半 (zenhan)",
+      "keigo": "前半 (zenhan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_tairyoku",
@@ -595,7 +705,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tairyoku.png",
-    "meaningEn": "physical strength/stamina"
+    "meaningEn": "physical strength/stamina",
+    "registersEn": {
+      "casual": "体力 (tairyoku)",
+      "formal": "体力 (tairyoku)",
+      "keigo": "体力 (tairyoku) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_tozan",
@@ -621,7 +736,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_tozan.png",
-    "meaningEn": "mountain climbing"
+    "meaningEn": "mountain climbing",
+    "registersEn": {
+      "casual": "登山 (tozan)",
+      "formal": "登山 (tozan)",
+      "keigo": "登山 (tozan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_taikai",
@@ -647,7 +767,12 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_taikai.png",
-    "meaningEn": "tournament/competition"
+    "meaningEn": "tournament/competition",
+    "registersEn": {
+      "casual": "大会 (taikai)",
+      "formal": "大会 (taikai)",
+      "keigo": "大会 (taikai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_olahraga_hitteki",
@@ -673,6 +798,11 @@
       }
     ],
     "imagePath": "kotoba_images/olahraga/kotoba_olahraga_hitteki.png",
-    "meaningEn": "comparable/rivaling"
+    "meaningEn": "comparable/rivaling",
+    "registersEn": {
+      "casual": "匹敵 (hitteki)",
+      "formal": "匹敵 (hitteki)",
+      "keigo": "匹敵 (hitteki) — no special keigo form for this noun"
+    }
   }
 ]

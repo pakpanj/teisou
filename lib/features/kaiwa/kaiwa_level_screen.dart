@@ -93,12 +93,12 @@ class _ThemeCard extends ConsumerWidget {
     if (!category.available) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text(s.categoryComingSoon(category.name))));
+      ).showSnackBar(SnackBar(content: Text(s.categoryComingSoon(category.localizedName(s.language)))));
       return;
     }
     AppNavigator.slideFromRight(
       context,
-      KaiwaCategoryScreen(category: category.id, categoryName: category.name),
+      KaiwaCategoryScreen(category: category.id, categoryName: category.localizedName(s.language)),
     );
   }
 
@@ -143,7 +143,7 @@ class _ThemeCard extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      category.name,
+                      category.localizedName(s.language),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

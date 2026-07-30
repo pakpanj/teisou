@@ -2027,6 +2027,26 @@ BIOSKOP_N1_TITLES = [
 ]
 
 # category_id -> (display name, icon emoji, JLPT level key)
+THEME_NAME_EN = {
+    "Perkenalan": "Introductions",
+    "Di Restoran": "At a Restaurant",
+    "Di Stasiun": "At the Station",
+    "Belanja": "Shopping",
+    "Menanyakan Arah": "Asking for Directions",
+    "Di Sekolah": "At School",
+    "Cuaca & Basa-basi": "Weather & Small Talk",
+    "Di Rumah Sakit": "At the Hospital",
+    "Hobi": "Hobbies",
+    "Telepon": "Phone Calls",
+    "Transportasi": "Transportation",
+    "Di Kantor Pos": "At the Post Office",
+    "Rencana Liburan": "Vacation Plans",
+    "Keluarga": "Family",
+    "Di Bank": "At the Bank",
+    "Olahraga": "Sports",
+    "Di Bioskop": "At the Cinema",
+}
+
 CATEGORY_META = {
     "perkenalan": ("Perkenalan", "👋", "N5"),
     "restoran": ("Di Restoran", "🍽️", "N5"),

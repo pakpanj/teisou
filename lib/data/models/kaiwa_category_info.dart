@@ -1,3 +1,4 @@
+import 'app_language.dart';
 import 'jlpt_level.dart';
 
 /// One Kaiwa scenario theme (e.g. Perkenalan / Di Restoran), nested under a
@@ -6,6 +7,7 @@ import 'jlpt_level.dart';
 class KaiwaCategoryInfo {
   final String id;
   final String name;
+  final String? nameEn;
   final String icon;
   final JlptLevel level;
   final bool available;
@@ -17,16 +19,23 @@ class KaiwaCategoryInfo {
   KaiwaCategoryInfo({
     required this.id,
     required this.name,
+    this.nameEn,
     required this.icon,
     required this.level,
     required this.available,
     this.dialogueCount,
   });
 
+  String localizedName(AppLanguage language) =>
+      language == AppLanguage.english && nameEn != null && nameEn!.isNotEmpty
+          ? nameEn!
+          : name;
+
   factory KaiwaCategoryInfo.fromJson(Map<String, dynamic> json) =>
       KaiwaCategoryInfo(
         id: json['id'] as String,
         name: json['name'] as String,
+        nameEn: json['nameEn'] as String?,
         icon: json['icon'] as String,
         level: JlptLevelX.fromKey(json['level'] as String?),
         available: json['available'] as bool? ?? false,

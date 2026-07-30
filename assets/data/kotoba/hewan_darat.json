@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_inu.png",
-    "meaningEn": "dog"
+    "meaningEn": "dog",
+    "registersEn": {
+      "casual": "いぬ (inu)",
+      "formal": "いぬ (inu)",
+      "keigo": "いぬ (inu) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_neko",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_neko.png",
-    "meaningEn": "cat"
+    "meaningEn": "cat",
+    "registersEn": {
+      "casual": "ねこ (neko)",
+      "formal": "ねこ (neko)",
+      "keigo": "ねこ (neko) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_usagi",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_usagi.png",
-    "meaningEn": "rabbit"
+    "meaningEn": "rabbit",
+    "registersEn": {
+      "casual": "うさぎ (usagi)",
+      "formal": "うさぎ (usagi)",
+      "keigo": "うさぎ (usagi) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_zou",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_zou.png",
-    "meaningEn": "elephant"
+    "meaningEn": "elephant",
+    "registersEn": {
+      "casual": "ぞう (zou)",
+      "formal": "ぞう (zou)",
+      "keigo": "ぞう (zou) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_raion",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_raion.png",
-    "meaningEn": "lion"
+    "meaningEn": "lion",
+    "registersEn": {
+      "casual": "ライオン (raion)",
+      "formal": "ライオン (raion)",
+      "keigo": "ライオン (raion) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_tora",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_tora.png",
-    "meaningEn": "tiger"
+    "meaningEn": "tiger",
+    "registersEn": {
+      "casual": "とら (tora)",
+      "formal": "とら (tora)",
+      "keigo": "とら (tora) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_kuma",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_kuma.png",
-    "meaningEn": "bear"
+    "meaningEn": "bear",
+    "registersEn": {
+      "casual": "くま (kuma)",
+      "formal": "くま (kuma)",
+      "keigo": "くま (kuma) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_saru",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_saru.png",
-    "meaningEn": "monkey"
+    "meaningEn": "monkey",
+    "registersEn": {
+      "casual": "さる (saru)",
+      "formal": "さる (saru)",
+      "keigo": "さる (saru) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_uma",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_uma.png",
-    "meaningEn": "horse"
+    "meaningEn": "horse",
+    "registersEn": {
+      "casual": "うま (uma)",
+      "formal": "うま (uma)",
+      "keigo": "うま (uma) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_ushi",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_ushi.png",
-    "meaningEn": "cow"
+    "meaningEn": "cow",
+    "registersEn": {
+      "casual": "うし (ushi)",
+      "formal": "うし (ushi)",
+      "keigo": "うし (ushi) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_buta",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_buta.png",
-    "meaningEn": "pig"
+    "meaningEn": "pig",
+    "registersEn": {
+      "casual": "ぶた (buta)",
+      "formal": "ぶた (buta)",
+      "keigo": "ぶた (buta) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_hitsuji",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_hitsuji.png",
-    "meaningEn": "sheep"
+    "meaningEn": "sheep",
+    "registersEn": {
+      "casual": "ひつじ (hitsuji)",
+      "formal": "ひつじ (hitsuji)",
+      "keigo": "ひつじ (hitsuji) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_panda",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_panda.png",
-    "meaningEn": "panda"
+    "meaningEn": "panda",
+    "registersEn": {
+      "casual": "パンダ (panda)",
+      "formal": "パンダ (panda)",
+      "keigo": "パンダ (panda) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_kirin",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_kirin.png",
-    "meaningEn": "giraffe"
+    "meaningEn": "giraffe",
+    "registersEn": {
+      "casual": "キリン (kirin)",
+      "formal": "キリン (kirin)",
+      "keigo": "キリン (kirin) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_nezumi",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_nezumi.png",
-    "meaningEn": "mouse"
+    "meaningEn": "mouse",
+    "registersEn": {
+      "casual": "ねずみ (nezumi)",
+      "formal": "ねずみ (nezumi)",
+      "keigo": "ねずみ (nezumi) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_shika",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_shika.png",
-    "meaningEn": "deer"
+    "meaningEn": "deer",
+    "registersEn": {
+      "casual": "しか (shika)",
+      "formal": "しか (shika)",
+      "keigo": "しか (shika) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_koala",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_koala.png",
-    "meaningEn": "koala"
+    "meaningEn": "koala",
+    "registersEn": {
+      "casual": "コアラ (koala)",
+      "formal": "コアラ (koala)",
+      "keigo": "コアラ (koala) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_kame",
@@ -465,7 +550,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_kame.png",
-    "meaningEn": "turtle"
+    "meaningEn": "turtle",
+    "registersEn": {
+      "casual": "かめ (kame)",
+      "formal": "かめ (kame)",
+      "keigo": "かめ (kame) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_hebi",
@@ -491,7 +581,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_hebi.png",
-    "meaningEn": "snake"
+    "meaningEn": "snake",
+    "registersEn": {
+      "casual": "へび (hebi)",
+      "formal": "へび (hebi)",
+      "keigo": "へび (hebi) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_kaeru",
@@ -517,7 +612,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_kaeru.png",
-    "meaningEn": "frog"
+    "meaningEn": "frog",
+    "registersEn": {
+      "casual": "かえる (kaeru)",
+      "formal": "かえる (kaeru)",
+      "keigo": "かえる (kaeru) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_risu",
@@ -543,7 +643,12 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_risu.png",
-    "meaningEn": "squirrel"
+    "meaningEn": "squirrel",
+    "registersEn": {
+      "casual": "リス (risu)",
+      "formal": "リス (risu)",
+      "keigo": "リス (risu) — no special keigo form for land animal names"
+    }
   },
   {
     "id": "kotoba_hewan_darat_ookami",
@@ -569,6 +674,11 @@
       }
     ],
     "imagePath": "kotoba_images/hewan_darat/kotoba_hewan_darat_ookami.png",
-    "meaningEn": "wolf"
+    "meaningEn": "wolf",
+    "registersEn": {
+      "casual": "おおかみ (ookami)",
+      "formal": "おおかみ (ookami)",
+      "keigo": "おおかみ (ookami) — no special keigo form for land animal names"
+    }
   }
 ]

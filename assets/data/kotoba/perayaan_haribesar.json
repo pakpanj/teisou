@@ -23,7 +23,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_oshougatsu.png",
-    "meaningEn": "Japanese New Year"
+    "meaningEn": "Japanese New Year",
+    "registersEn": {
+      "casual": "お正月 (oshougatsu)",
+      "formal": "お正月 (oshougatsu)",
+      "keigo": "お正月 (oshougatsu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_tanjoubi",
@@ -49,7 +54,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_tanjoubi.png",
-    "meaningEn": "birthday"
+    "meaningEn": "birthday",
+    "registersEn": {
+      "casual": "誕生日 (tanjoubi)",
+      "formal": "誕生日 (tanjoubi)",
+      "keigo": "誕生日 (tanjoubi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_kurisumasu",
@@ -75,7 +85,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kurisumasu.png",
-    "meaningEn": "Christmas"
+    "meaningEn": "Christmas",
+    "registersEn": {
+      "casual": "クリスマス (kurisumasu)",
+      "formal": "クリスマス (kurisumasu)",
+      "keigo": "クリスマス (kurisumasu) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_hinamatsuri",
@@ -101,7 +116,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_hinamatsuri.png",
-    "meaningEn": "Hina Matsuri (doll festival, March 3)"
+    "meaningEn": "Hina Matsuri (doll festival, March 3)",
+    "registersEn": {
+      "casual": "雛祭り (hinamatsuri)",
+      "formal": "雛祭り (hinamatsuri)",
+      "keigo": "雛祭り (hinamatsuri) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_tanabata",
@@ -127,7 +147,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_tanabata.png",
-    "meaningEn": "Tanabata (star festival, July 7)"
+    "meaningEn": "Tanabata (star festival, July 7)",
+    "registersEn": {
+      "casual": "七夕 (tanabata)",
+      "formal": "七夕 (tanabata)",
+      "keigo": "七夕 (tanabata) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_obon",
@@ -153,7 +178,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_obon.png",
-    "meaningEn": "Obon (ancestral spirits festival)"
+    "meaningEn": "Obon (ancestral spirits festival)",
+    "registersEn": {
+      "casual": "お盆 (obon)",
+      "formal": "お盆 (obon)",
+      "keigo": "お盆 (obon) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_kekkonshiki",
@@ -179,7 +209,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kekkonshiki.png",
-    "meaningEn": "wedding ceremony"
+    "meaningEn": "wedding ceremony",
+    "registersEn": {
+      "casual": "結婚式 (kekkonshiki)",
+      "formal": "結婚式 (kekkonshiki)",
+      "keigo": "結婚式 (kekkonshiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_oiwai",
@@ -205,7 +240,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_oiwai.png",
-    "meaningEn": "celebration"
+    "meaningEn": "celebration",
+    "registersEn": {
+      "casual": "お祝い (oiwai)",
+      "formal": "お祝い (oiwai)",
+      "keigo": "お祝い (oiwai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_hanabi",
@@ -231,7 +271,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_hanabi.png",
-    "meaningEn": "fireworks"
+    "meaningEn": "fireworks",
+    "registersEn": {
+      "casual": "花火 (hanabi)",
+      "formal": "花火 (hanabi)",
+      "keigo": "花火 (hanabi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_ramadan",
@@ -257,7 +302,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_ramadan.png",
-    "meaningEn": "Ramadan"
+    "meaningEn": "Ramadan",
+    "registersEn": {
+      "casual": "ラマダン (ramadan)",
+      "formal": "ラマダン (ramadan)",
+      "keigo": "ラマダン (ramadan) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_barentaindee",
@@ -283,7 +333,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_barentaindee.png",
-    "meaningEn": "Valentine's Day"
+    "meaningEn": "Valentine's Day",
+    "registersEn": {
+      "casual": "バレンタインデー (barentaindee)",
+      "formal": "バレンタインデー (barentaindee)",
+      "keigo": "バレンタインデー (barentaindee) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_shukuga",
@@ -309,7 +364,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_shukuga.png",
-    "meaningEn": "celebration/congratulations (formal)"
+    "meaningEn": "celebration/congratulations (formal)",
+    "registersEn": {
+      "casual": "祝賀 (shukuga)",
+      "formal": "祝賀 (shukuga)",
+      "keigo": "祝賀 (shukuga) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_kinenbi",
@@ -335,7 +395,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kinenbi.png",
-    "meaningEn": "anniversary"
+    "meaningEn": "anniversary",
+    "registersEn": {
+      "casual": "記念日 (kinenbi)",
+      "formal": "記念日 (kinenbi)",
+      "keigo": "記念日 (kinenbi) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_seijinshiki",
@@ -361,7 +426,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_seijinshiki.png",
-    "meaningEn": "coming-of-age ceremony"
+    "meaningEn": "coming-of-age ceremony",
+    "registersEn": {
+      "casual": "成人式 (seijinshiki)",
+      "formal": "成人式 (seijinshiki)",
+      "keigo": "成人式 (seijinshiki) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_kinen",
@@ -387,7 +457,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kinen.png",
-    "meaningEn": "commemoration"
+    "meaningEn": "commemoration",
+    "registersEn": {
+      "casual": "記念 (kinen)",
+      "formal": "記念 (kinen)",
+      "keigo": "記念 (kinen) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_shoutai",
@@ -413,7 +488,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_shoutai.png",
-    "meaningEn": "invitation"
+    "meaningEn": "invitation",
+    "registersEn": {
+      "casual": "招待 (shoutai)",
+      "formal": "招待 (shoutai)",
+      "keigo": "招待 (shoutai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_enkai",
@@ -439,7 +519,12 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_enkai.png",
-    "meaningEn": "banquet/party"
+    "meaningEn": "banquet/party",
+    "registersEn": {
+      "casual": "宴会 (enkai)",
+      "formal": "宴会 (enkai)",
+      "keigo": "宴会 (enkai) — no special keigo form for this noun"
+    }
   },
   {
     "id": "kotoba_perayaan_haribesar_kaikai",
@@ -465,6 +550,11 @@
       }
     ],
     "imagePath": "kotoba_images/perayaan_haribesar/kotoba_perayaan_haribesar_kaikai.png",
-    "meaningEn": "opening (of an event)"
+    "meaningEn": "opening (of an event)",
+    "registersEn": {
+      "casual": "開会 (kaikai)",
+      "formal": "開会 (kaikai)",
+      "keigo": "開会 (kaikai) — no special keigo form for this noun"
+    }
   }
 ]
