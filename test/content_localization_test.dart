@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:kana_master/data/models/app_language.dart';
 import 'package:kana_master/data/models/jlpt_level.dart';
+import 'package:kana_master/data/repositories/bunpou_repository.dart';
 import 'package:kana_master/data/repositories/dictionary_repository.dart';
 import 'package:kana_master/data/repositories/kanji_repository.dart';
 import 'package:kana_master/data/repositories/kotoba_category_repository.dart';
@@ -230,5 +231,42 @@ void main() {
         ga.functions.firstWhere((fn) => fn.id == 'ga_subject');
     expect(gaSubject.localizedTitle(AppLanguage.english),
         contains('subject'));
+  });
+
+  test('every Bunpou field has an English translation', () async {
+    final entries = await BunpouRepository().getAll();
+    expect(entries, isNotEmpty);
+    expect(entries.where((e) => e.placeholder).toList(), isEmpty);
+
+    final missingProse = <String>[];
+    final missingExamples = <String>[];
+    for (final entry in entries) {
+      if ((entry.meaningEn ?? '').isEmpty ||
+          (entry.formationEn ?? '').isEmpty ||
+          (entry.usageNotesEn ?? '').isEmpty) {
+        missingProse.add(entry.id);
+      }
+      for (var i = 0; i < entry.sentenceExamples.length; i++) {
+        if ((entry.sentenceExamples[i].translationEn ?? '').isEmpty) {
+          missingExamples.add('${entry.id}/se$i');
+        }
+      }
+    }
+    expect(missingProse.take(10).toList(), isEmpty,
+        reason: '${missingProse.length} Bunpou entries have no '
+            'meaningEn/formationEn/usageNotesEn — add them to '
+            'scripts/bunpou_meaning_en.py and run the applier');
+    expect(missingExamples.take(10).toList(), isEmpty,
+        reason: '${missingExamples.length} Bunpou examples have no '
+            'translationEn — add them to scripts/bunpou_meaning_en.py '
+            'and run the applier');
+
+    final teForm = entries.firstWhere((e) => e.id == 'bunpou_te_kudasai');
+    expect(teForm.localizedMeaning(AppLanguage.indonesian),
+        contains('Tolong'));
+    expect(
+        teForm.localizedMeaning(AppLanguage.english), contains('Please'));
+    expect(teForm.localizedFormation(AppLanguage.english),
+        contains('te-form'));
   });
 }

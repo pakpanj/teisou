@@ -1265,7 +1265,12 @@ screenshot check that covered batches 1-2 didn't happen for this one.
 of it content authoring, none of it blocked on code — **kanji
 word-example meanings are now fully done, see the update above**; the
 gap that remains is all kanji *sentence* translations): all kanji
-sentence translations (4,850); every Bunpou prose field (3,839).
+sentence translations (4,850).
+**Bunpou is also now fully done (5,088/5,088)** — this corrects the
+stale "3,839" figure this paragraph used to quote (that count
+undercounted by missing `formation`, a field with no English path at
+all until this rollout) — see the "Bunpou full English translation"
+update further below (search for `bunpou_meaning_en.py`).
 **The "all of Kaiwa (34,019)" this paragraph used to claim is now
 stale** — a later, separate rollout finished translating Kaiwa's full
 content; see the dedicated "Kaiwa full-content English translation"
@@ -1659,12 +1664,96 @@ would make a weaker test). `flutter analyze` clean, `flutter test
 same standing gap as everywhere else in this file.
 
 **This closes out the entire Kaiwa/Particle/Dokkai/Dictionary/Kotoba
-content-translation effort started this session.** What remains
-Indonesian-only in English mode, per the "What is still Indonesian"
-note above, is now down to two modules: all kanji sentence
-translations (4,850) and every Bunpou prose field (3,839) — Bunpou
-specifically has zero English translation work done on it yet, unlike
-every other module in this list.
+content-translation effort started this session.** What remained
+Indonesian-only in English mode at that point, per the "What is still
+Indonesian" note above, was down to two modules: all kanji sentence
+translations (4,850) and every Bunpou prose field — Bunpou is now also
+done, see the section immediately below.
+
+## Update (2026-07-30): Bunpou full English translation
+
+The sixth content-translation rollout, done in a separate session from
+the Kaiwa/Particle/Dokkai/Dictionary/Kotoba batch above — translates
+`BunpouEntry.meaningEn`/`formationEn`/`usageNotesEn` plus
+`SentenceExample.translationEn` (the shared module-neutral class, same
+one Kanji/Kotoba/Particle use) across all 848 real Bunpou grammar
+entries (N5 84 + N4 132 + N3 182 + N2 197 + N1 253), zero placeholders.
+
+**Two real code gaps found and fixed before any content was
+authored** (same discipline as Particle's `overview` bug earlier in
+this file): (1) `BunpouEntry.formation` — the pattern's
+conjugation/formation rule text, shown in `BunpouDetailScreen` — had
+**no English field or `localized*()` getter at all**, unlike
+`meaning`/`usageNotes`, which already had both from the 2026-07-25
+localization-plumbing session. This meant `formation` would have
+stayed Indonesian-only forever regardless of how much translation
+content existed, since there was nowhere to put it — the same class of
+gap as Particle's `overview`. (2) A second, deeper bug specific to
+this module: `meaningEn`/`usageNotesEn` were already declared as model
+fields with working `localizedMeaning`/`localizedUsageNotes` getters,
+but `BunpouEntry.fromJson` **never actually read them from the JSON**
+— so even if translations had already been authored into the dataset
+at some point, they would have silently never loaded into the app.
+Both gaps were fixed together in `lib/data/models/bunpou_entry.dart`
+(added `formationEn` + `localizedFormation`, added the three missing
+`fromJson` reads) and `lib/features/bunpou/bunpou_detail_screen.dart`
+(swapped the raw `entry.formation` render for
+`entry.localizedFormation(s.language)`), verified with a clean
+`flutter analyze` before any content translation began (commit
+`adce606`).
+
+**Corrected total scope**: this rollout's own counted total — 848
+entries × 3 prose fields (2,544) + 2,544 sentence examples = **5,088
+fields** — replaces the stale "3,839" figure this file quoted in
+several places before this update. That old figure undercounted by
+missing `formation` entirely (which had no English path to count
+until gap (1) above was fixed) and was never re-verified as the
+correct total once the dataset was actually inspected field-by-field.
+
+**Same locked-dict + applier-script pattern as every other rollout**:
+`scripts/bunpou_meaning_en.py` holds `BUNPOU_MEANING_EN` (a flat dict
+keyed `"{id}|meaning"` / `"{id}|formation"` / `"{id}|usageNotes"` /
+`"{id}|se{i}"`, 0-based example index), `scripts/apply_bunpou_meaning_en.py`
+patches `assets/data/bunpou_data.json` — safe to re-run, only ever
+adds `*En` fields, must be re-run after `generate_bunpou_seed.py`
+regenerates the dataset.
+
+Done in 5 batches by JLPT level in one continuous session (dump →
+translate → syntax-check → apply → verify JSON → commit → next level),
+following the same per-level workflow already proven by the Dokkai
+rollout: N5 (84 patterns, 504 fields), N4 (132, 792), N3 (182, 1,092),
+N2 (197, 1,182), N1 (253, 1,518 — the largest single batch in this
+rollout, split across two `Edit` calls purely to stay under a single
+tool call's practical size limit, both landing in the same commit).
+Each batch independently verified: exact key-count match against the
+expected field count for that level, `ast.parse` syntax check, the
+applier's own per-kind coverage printout increasing by exactly the
+batch size, and a direct Python re-scan of the regenerated
+`bunpou_data.json` confirming zero missing `meaningEn`/`formationEn`/
+`usageNotesEn`/`translationEn` for that level's entries before moving
+to the next.
+
+**Status: DONE, 5,088/5,088 (100%)**, verified via
+`apply_bunpou_meaning_en.py`'s own final coverage printout
+(meaning/formation/usageNotes 848/848 each, sentence examples
+2,544/2,544) and a full-dataset Python re-scan confirming zero gaps
+across all 848 entries. New `test/content_localization_test.dart` case
+("every Bunpou field has an English translation") checks full coverage
+plus a language-toggle spot check on `bunpou_te_kudasai`'s meaning and
+formation text. `flutter analyze` clean, `flutter test --concurrency=1`
+passing. **No interactive on-device pass done** — same standing gap as
+everywhere else in this file; worth confirming `BunpouDetailScreen`
+actually renders the translated `formation` section in English mode
+(the specific field the code-gap fix above targeted) before treating
+this as fully verified.
+
+**This closes the last content-translation gap named in the "What is
+still Indonesian" note above except one: all kanji *sentence*
+translations (4,850) remain the sole undone item** — kanji
+word-*example* meanings were already finished in an earlier session
+(see the kanji word-examples update above), the remaining gap is
+specifically the full-sentence translations attached to those
+examples.
 
 ## Architecture
 
