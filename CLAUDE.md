@@ -2210,6 +2210,79 @@ its correctness is inherently about Riverpod's provider lifecycle across
 kept-alive widgets, which is what the on-device pass actually verified),
 `flutter build apk --debug` succeeded.
 
+## Update (2026-07-30, later still): avatar gallery upload stayed
+locked after watching the reward ad
+
+**User report**: "sudah menonton iklan tapi galeri nya tidak ke buka"
+(already watched the ad but the gallery doesn't open) — reported while
+trying to change the profile photo via `AvatarPickerSheet`'s "Upload
+dari Galeri" tile.
+
+**Root cause**: `ProgressRepository.getAdRewards` (reads
+`users/{uid}.adRewards`, written by `unlockAdReward` whenever a
+rewarded ad is watched on `PaywallScreen`) was called from **zero**
+places in the app before this fix — confirmed by grep. `AvatarPickerSheet`
+gated both the premium-preset grid and the gallery-upload tile on
+`isPremium` alone, so `PaywallScreen`'s reward write always landed
+successfully, but nothing downstream ever read it back. Tapping
+"Upload dari Galeri" after watching the ad just reopened
+`PaywallScreen` again (since `isPremium` was still `false`), which
+reads exactly like "the gallery won't open" — the user could watch
+the ad every time and the tile would never unlock. This is the same
+class of gap already documented elsewhere in this file for Partikel's
+`ModuleStatus.previewUnlocked` (a write with no matching read) — a
+third, independently-discovered instance of the same bug shape.
+
+**Fix**: `lib/features/profile/widgets/avatar_picker_sheet.dart` gained
+`_adRewardActive` (refreshed in `initState`, and again after
+`_openPaywall`'s `Navigator.push` returns — this sheet is only ever
+pushed over by `PaywallScreen`, never replaced, so its own state has
+to be explicitly refreshed on return rather than assumed to recompute
+automatically). Both the premium-preset grid's `locked` callback and
+the upload tile now gate on `unlocked = isPremium || _adRewardActive`
+instead of `isPremium` alone. `_openPaywall` became `async` so it can
+`await` the pushed route before refreshing.
+
+**Verified on the physical Moto G52J**: with this account's real,
+previously-earned ad-reward unlock still active (the same one from
+the user's own bug report), reopening `AvatarPickerSheet` after
+installing the fix showed **no lock icon** on any premium preset or on
+the "Upload dari Galeri" tile — confirming `_adRewardActive` now
+correctly detects the existing unlock. Tapping the tile launched
+Android's native Photo Picker (`com.google.android.providers.media.module`,
+confirmed via `uiautomator dump` showing the real `photo_picker_base`
+view hierarchy, not a paywall) — reproduced reliably across several
+reopen attempts. **Completing a full pick → upload → avatar-change
+round trip was not confirmed** — every `adb shell input tap` aimed at
+a thumbnail inside the native picker's grid, even using exact
+`uiautomator dump`-reported bounds tapped dead-center, closed the
+picker without registering a selection (`AvatarUploadService.pickAndUpload`
+resolving `null`, the same as a user-cancelled pick). This didn't
+reproduce for **any** grid cell tried, across multiple picker
+reopenings, which points at a synthetic-touch/gesture-recognition
+quirk specific to this system picker's `RecyclerView` rather than
+anything in this app's code — `pickAndUpload`/`AvatarUploadService`
+were read and confirmed unmodified, standard `image_picker` +
+Firebase Storage boilerplate, not touched by this fix. If this needs
+re-confirming end-to-end, a real fingertip tap (not ADB) is the
+reliable way to select a thumbnail in this specific system picker.
+
+**Deliberately not touched**: `lib/features/modules/widgets/coming_soon_content.dart`
+has the identical `isPremium`-only gating for its own `PaywallScreen`
+call site (the "Belajar dari Gambar"/"Belajar dari Video" coming-soon
+cards). Same bug shape, left unfixed on purpose — those two modules
+have zero content built (see the Batch-9+ status table and the
+"completely untouched" list near the top of this file), so the gate
+is currently unreachable in practice and fixing it now would have no
+observable effect. Worth revisiting together with those modules'
+eventual premium-gating pass, not before.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 46/46
+(unchanged — no new pure-logic branch; this fix's correctness is about
+a previously-dead Firestore read finally being consulted, which is
+what the on-device pass actually verified), `flutter build apk
+--debug` succeeded.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),
