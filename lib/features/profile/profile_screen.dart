@@ -8,8 +8,6 @@ import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/user_avatar.dart';
-import '../../data/models/exam_mode.dart';
-import '../../data/models/exam_result.dart';
 import '../../data/models/kana_status.dart';
 import '../../data/models/kana_type.dart';
 import '../home/home_screen.dart';
@@ -24,6 +22,7 @@ import 'widgets/avatar_picker_sheet.dart';
 import 'widgets/cover_picker_sheet.dart';
 import 'widgets/edit_name_dialog.dart';
 import 'widgets/exam_history_empty_illustration.dart';
+import 'widgets/exam_history_tile.dart';
 import 'widgets/profile_header_illustration.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -628,57 +627,8 @@ class _ExamHistorySection extends ConsumerWidget {
             ),
           )
         else
-          ...history.map((result) => _ExamHistoryTile(result: result)),
+          ...history.map((entry) => ExamHistoryTile(entry: entry)),
       ],
-    );
-  }
-}
-
-class _ExamHistoryTile extends StatelessWidget {
-  final ExamResult result;
-
-  const _ExamHistoryTile({required this.result});
-
-  String _formatDate(DateTime dt) =>
-      '${dt.day.toString().padLeft(2, '0')}/${dt.month.toString().padLeft(2, '0')}/${dt.year}';
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 8),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        color: AppColors.cardWhite,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              result.mode.title,
-              style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                color: AppColors.textNavy,
-              ),
-            ),
-          ),
-          Text(
-            '${result.score}/${result.total}',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryCoral,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Text(
-            _formatDate(result.completedAt),
-            style: TextStyle(
-              fontSize: 12,
-              color: AppColors.textNavy.withValues(alpha: 0.5),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

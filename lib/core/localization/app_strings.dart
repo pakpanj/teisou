@@ -115,6 +115,16 @@ class AppStrings {
   String get examHistory => _t('Riwayat Ujian', 'Exam History');
   String get seeAll => _t('Lihat Semua', 'See All');
   String get noExamHistory => _t('Belum ada riwayat ujian.', 'No exam history yet.');
+  String get examCategoryDokkai => _t('Dokkai', 'Dokkai');
+  String get examCategoryChoukai => _t('Choukai', 'Choukai');
+  String get examCategoryKanjiComboCombination =>
+      _t('Kombinasi Kanji', 'Kanji Combination');
+  String get examCategoryKanjiComboSingle =>
+      _t('Kanji Tunggal', 'Single Kanji');
+  String examResultTitle(String category) =>
+      _t('Hasil $category', '$category Result');
+  String get failedToLoadExamHistory =>
+      _t('Gagal memuat riwayat ujian.', 'Failed to load exam history.');
   String get savedWords => _t('Daftar Belajar', 'Saved Words');
   String get appLanguage => _t('Bahasa App', 'App Language');
   String get notifications => _t('Notifikasi', 'Notifications');

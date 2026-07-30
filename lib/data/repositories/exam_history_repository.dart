@@ -75,4 +75,21 @@ class ExamHistoryRepository {
               .toList(),
         );
   }
+
+  /// One-shot equivalent of [watchRecent] — used by the full "Riwayat
+  /// Ujian" screen, which fetches-and-merges across all four exam
+  /// categories on open/pull-to-refresh rather than holding four live
+  /// listeners open at once.
+  Future<List<SimpleExamResult>> getRecent(String uid, {int limit = 30}) async {
+    final snapshot = await _firestore
+        .collection(FirestorePaths.users)
+        .doc(uid)
+        .collection(collectionName)
+        .orderBy('completedAt', descending: true)
+        .limit(limit)
+        .get();
+    return snapshot.docs
+        .map((doc) => SimpleExamResult.fromMap(doc.data()))
+        .toList();
+  }
 }

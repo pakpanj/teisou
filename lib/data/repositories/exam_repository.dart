@@ -51,6 +51,23 @@ class ExamRepository {
         );
   }
 
+  /// One-shot equivalent of [watchRecentHistory] — used by the full
+  /// "Riwayat Ujian" screen, which fetches-and-merges across all four exam
+  /// categories on open/pull-to-refresh rather than holding four live
+  /// listeners open at once (same one-shot-`.get()` reasoning already
+  /// established for `ExamHistoryRepository.getRecent`/the Clan ranking's
+  /// `getMembersOnce`).
+  Future<List<ExamResult>> getRecentHistory(String uid, {int limit = 30}) async {
+    final snapshot = await _firestore
+        .collection(FirestorePaths.users)
+        .doc(uid)
+        .collection(FirestorePaths.examHistory)
+        .orderBy('completedAt', descending: true)
+        .limit(limit)
+        .get();
+    return snapshot.docs.map((doc) => ExamResult.fromMap(doc.data())).toList();
+  }
+
   /// Builds a 10-question session for [mode], weighting kana that are
   /// `new`/`learning` (~70% chance) over `mastered` (~30%) so exams
   /// reinforce weak spots rather than testing purely at random.

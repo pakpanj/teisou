@@ -53,10 +53,15 @@ class KanjiComboExamScreen extends ConsumerWidget {
       }
     }
     if (!context.mounted) return;
+    final s = ref.read(appStringsProvider);
     AppNavigator.replaceFadeScale(
       context,
       SimpleExamResultScreen(
-        title: combination ? 'Hasil Kombinasi Kanji' : 'Hasil Kanji Tunggal',
+        title: s.examResultTitle(
+          combination
+              ? s.examCategoryKanjiComboCombination
+              : s.examCategoryKanjiComboSingle,
+        ),
         result: result,
       ),
     );

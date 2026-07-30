@@ -53,10 +53,11 @@ class ChoukaiExamScreen extends ConsumerWidget {
       }
     }
     if (!context.mounted) return;
+    final s = ref.read(appStringsProvider);
     AppNavigator.replaceFadeScale(
       context,
       SimpleExamResultScreen(
-        title: 'Hasil Choukai',
+        title: s.examResultTitle(s.examCategoryChoukai),
         result: result,
         reviewContent: _ScriptReview(clip: clip),
       ),

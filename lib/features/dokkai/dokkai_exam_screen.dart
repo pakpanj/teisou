@@ -75,9 +75,13 @@ class DokkaiExamScreen extends ConsumerWidget {
       }
     }
     if (!context.mounted) return;
+    final s = ref.read(appStringsProvider);
     AppNavigator.replaceFadeScale(
       context,
-      SimpleExamResultScreen(title: 'Hasil Dokkai', result: result),
+      SimpleExamResultScreen(
+        title: s.examResultTitle(s.examCategoryDokkai),
+        result: result,
+      ),
     );
   }
 
