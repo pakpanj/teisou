@@ -1963,6 +1963,70 @@ content than a word *meaning* or *sentence example*, and a
 locked-dict rollout scoped to one doesn't imply the other is covered
 too.
 
+## Update (2026-07-30, later same day): independent re-verification before session handoff — zero new gaps found
+
+Follow-up session, prompted by a plain "update the notes, switching
+sessions" request rather than a specific bug report. Before writing
+anything, re-ran the checks this file's own "don't trust 100% claims"
+lesson (immediately above) argues for, instead of just copying the
+prior session's numbers forward:
+
+- **Data-completeness check** (direct JSON inspection, not just
+  reading doc prose): every `*En`-suffixed field the Dart models
+  actually expose was checked for `null`/empty across the full bundled
+  datasets — `kanji_data.json` (`meaningsEn`, `wordExamples[].meaningEn`,
+  `sentenceExamples[].translationEn`, 2425 entries), `bunpou_data.json`
+  (`meaningEn`, 848), `dokkai_data.json` (`titleEn`+
+  `passageTranslationEn`, 500), `dictionary_data.json` (`meaningEn`,
+  908), `particle_data.json` (`functions[].titleEn`+`.explanationEn`,
+  25 particles), `kaiwa_data.json` (`titleEn`/`descriptionEn`/
+  `npcLine.translationEn`/`options[].translationEn`, 1700 dialogues =
+  7,468 npc lines + 23,151 options) and `kaiwa/_categories.json`
+  (`nameEn`, 85 rows), and every `assets/data/kotoba/*.json` category
+  file (`meaningEn`, `sentenceExamples[].translationEn`, `registers`
+  note coverage, 1,682 words across 46 files). **Every single check
+  came back 0 missing.**
+- **Kotoba category/group names specifically re-checked**, since the
+  4-gap audit above fixed Particle's and Kaiwa's category-name gaps but
+  never explicitly re-confirmed Kotoba's own — turned out Kotoba's was
+  never actually a gap: `lib/core/localization/kotoba_category_i18n.dart`
+  (a static Dart lookup table, not a `*En` JSON field — different
+  mechanism, easy to miss when grepping for `*En` fields the way the
+  4-gap audit did) has predated all of this session's rollouts
+  (`git log --follow` traces it to `77b7566`, an early Kotoba-rollout
+  commit) and covers all 46 category names + all 7 group names with no
+  gaps, confirmed by cross-referencing every `name`/`group` string in
+  `_categories.json` against the table's keys. Also confirmed it's
+  actually wired into every render site (`kotoba_home_screen.dart`,
+  `kotoba_category_screen.dart`, `kotoba_quiz_screen.dart`), not just
+  defined and unused.
+- **Test suite re-run independently** (not trusted from the commit
+  message): `flutter analyze` clean, `flutter test --concurrency=1`
+  40/40.
+- **Session-hygiene note, not app content**: this worktree's branch had
+  fallen behind root `master` by ~150 commits (the full Kaiwa/Particle/
+  Dokkai/Bunpou/Kanji-sentence rollouts + the 4-gap audit + the exam
+  bug fix all landed on `master` from other sessions/worktrees while
+  this one was mid-task). Confirmed via `git merge-base --is-ancestor`
+  that this worktree's tip was a pure ancestor of `master` — no unique
+  commits at risk — then fast-forwarded to `master`'s tip before doing
+  any of the above. Worth remembering for next time a worktree feels
+  behind: check ancestry before assuming a merge/rebase is needed, and
+  never assume a worktree is caught up just because its own last
+  commit message sounds recent.
+
+**What this does and doesn't establish**: this confirms every field the
+codebase *designed* for an English counterpart is actually filled in,
+plus re-validates the one plausible "different mechanism, might've been
+missed" case (Kotoba's non-`*En`-suffixed category lookup). It is
+**not** a fresh top-to-bottom search for entirely new untranslated
+surfaces the way the 4-gap audit's "grep every model class for a
+missing `*En` field" pass was — no content or models changed since that
+audit ran (only an unrelated exam-history bug fix landed in between), so
+there was nothing new to structurally re-scan. If new content fields
+are added in a future session, that structural check (not this
+completeness check) is the one to repeat.
+
 ## Architecture
 
 - **Firebase pattern**: anonymous sign-in on first launch (`AuthService`),
