@@ -10,6 +10,7 @@ import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
+import '../profile/exam_history_providers.dart';
 
 /// One (passage, question) pair — the flattened unit [McQuizFlow] steps
 /// through. Kept as a small typedef record rather than a new model class
@@ -68,6 +69,9 @@ class DokkaiExamScreen extends ConsumerWidget {
               avatarType: profile?.avatarType ?? AvatarType.google,
               avatarValue: profile?.avatarValue,
             );
+        // See ExamScreen._handleNext's comment for why this invalidation
+        // is required, not just autoDispose's default behaviour.
+        ref.invalidate(fullExamHistoryProvider);
       } catch (_) {
         // Best-effort mirror only — the score is shown either way, same
         // "don't let a network failure block the result" reasoning as

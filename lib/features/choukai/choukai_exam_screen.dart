@@ -10,6 +10,7 @@ import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
+import '../profile/exam_history_providers.dart';
 
 /// Runs one Choukai clip: [clip.audioText] is only ever spoken via
 /// [ttsServiceProvider], never shown on screen — that's the whole point of
@@ -47,6 +48,7 @@ class ChoukaiExamScreen extends ConsumerWidget {
               avatarType: profile?.avatarType ?? AvatarType.google,
               avatarValue: profile?.avatarValue,
             );
+        ref.invalidate(fullExamHistoryProvider);
       } catch (_) {
         // Best-effort mirror only — see DokkaiExamScreen for the same
         // reasoning.

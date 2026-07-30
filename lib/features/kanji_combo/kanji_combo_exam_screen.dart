@@ -9,6 +9,7 @@ import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
+import '../profile/exam_history_providers.dart';
 import 'kanji_combo_providers.dart';
 
 class KanjiComboExamScreen extends ConsumerWidget {
@@ -47,6 +48,7 @@ class KanjiComboExamScreen extends ConsumerWidget {
               avatarType: profile?.avatarType ?? AvatarType.google,
               avatarValue: profile?.avatarValue,
             );
+        ref.invalidate(fullExamHistoryProvider);
       } catch (_) {
         // Best-effort mirror only — see DokkaiExamScreen for the same
         // reasoning.

@@ -8,6 +8,7 @@ import '../../data/models/exam_mode.dart';
 import '../../data/models/exam_question.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam_result/exam_result_screen.dart';
+import '../profile/exam_history_providers.dart';
 import 'exam_providers.dart';
 
 class ExamScreen extends ConsumerStatefulWidget {
@@ -81,6 +82,16 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
             avatarType: profile?.avatarType ?? AvatarType.google,
             avatarValue: profile?.avatarValue,
           );
+
+      // Invalidate rather than rely on autoDispose alone: Profile's exam
+      // history section stays alive via AutomaticKeepAliveClientMixin (it's
+      // a Home-tab sibling, never truly disposed while the app runs), so
+      // fullExamHistoryProvider's watcher count never drops to zero and it
+      // never naturally refetches on its own — confirmed by an on-device
+      // test where a freshly submitted exam didn't appear in either the
+      // mini-list or the full history screen until this invalidation was
+      // added. See CLAUDE.md's exam-history-screen fix update for detail.
+      ref.invalidate(fullExamHistoryProvider);
 
       if (!mounted) return;
       AppNavigator.replaceFadeScale(context, ExamResultScreen(result: result));
