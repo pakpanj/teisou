@@ -654,10 +654,14 @@ standing local-merge convention:
      into kana's existing `examHistory` shape, which is hard-typed to
      `KanaCharacter`/`WrongAnswerEntry.kanaId` and couldn't represent a
      reading passage or an audio clip without a bigger refactor that
-     wasn't warranted for this pass. There is deliberately no unified
-     "riwayat ujian" view across all four categories yet — `ExamHistoryScreen`
-     (profile) was already an unbuilt placeholder before this change and
-     still is.
+     wasn't warranted for this pass. **Correction (2026-07-30)**: this
+     used to say there's "deliberately no unified riwayat ujian view
+     across all four categories" and that `ExamHistoryScreen` "was
+     already an unbuilt placeholder before this change and still is" —
+     both no longer true. See the "exam-history screen was never
+     actually built — fixed" update further down for the real fix:
+     `ExamHistoryScreen` now merges and renders all four categories via
+     `fullExamHistoryProvider`.
    - **Exam length + re-randomization (2026-07-20)**: per explicit user
      request, both single-kanji and combination exams grew from 5 to 50
      questions per session (`KanjiComboRepository.generateQuestions`'s
@@ -2026,6 +2030,108 @@ audit ran (only an unrelated exam-history bug fix landed in between), so
 there was nothing new to structurally re-scan. If new content fields
 are added in a future session, that structural check (not this
 completeness check) is the one to repeat.
+
+## Update (2026-07-30, later still): exam-history screen was never actually built — fixed
+
+**User report**: "riwayat ujian tidak menampilkan apa apa setelah ujian
+di lakukan" (exam history shows nothing after taking an exam). Two
+distinct, real causes, not one:
+
+1. **`ExamHistoryScreen`** — Profile's "Lihat Semua" full-list screen —
+   was a hard-coded `SimplePlaceholderScreen` left over from Batch 2
+   (the doc comment above it literally said "empty container for now
+   ... this screen will query and paginate it in a later batch," and
+   that later batch never happened). It never touched Firestore at
+   all — unconditionally empty for every exam type, forever, no matter
+   how many exams the user had taken. This is the single most likely
+   thing "riwayat ujian" refers to as a concept, and it was 100%,
+   confidently broken by inspection alone (no reproduction needed).
+2. **Profile's "3 terakhir" mini-list** (`recentExamHistoryProvider`)
+   only ever read Kana's `examHistory` collection via
+   `ExamRepository.watchRecentHistory` — a user whose only attempts
+   were Dokkai/Choukai/Kanji-Kombinasi (which each write to their own
+   `dokkaiExamHistory`/`choukaiExamHistory`/`kanjiComboExamHistory`
+   subcollection, per the Ujian-expansion architecture note above) saw
+   an empty section on Profile too, by design, which reads exactly
+   like this same bug report depending on which exam type the user
+   actually took. This was the gap this file's own "no unified riwayat
+   ujian view across all four categories" note already flagged as
+   known-but-undone.
+
+**Fix**: built a real merge across all four categories rather than
+patching either symptom in isolation.
+- `lib/features/profile/exam_history_providers.dart` (new):
+  `mergeExamHistory()` is a **pure function** — takes already-fetched
+  `List<ExamResult>` (kana) + three `List<SimpleExamResult>`
+  (Dokkai/Choukai/Kanji-Kombinasi), labels each entry, sorts newest-
+  first, truncates to `limit`. Deliberately has zero Firestore/Riverpod
+  dependency, specifically so the merge/sort/label logic is unit-
+  testable with plain constructed lists instead of mocking four
+  Firestore collections — see `test/exam_history_merge_test.dart`,
+  which covers the exact "Dokkai-only history" shape from the bug
+  report, newest-first ordering across a mix of all four categories,
+  language-toggle correctness for kana's mode label, and the
+  Kombinasi-vs-Tunggal label split.
+  - `fullExamHistoryProvider` (`FutureProvider.autoDispose`) is the
+    Riverpod wiring around it: fetches all four collections once (not
+    four live listeners — same one-shot-`.get()`-on-open-and-pull-to-
+    refresh reasoning already established for the Clan ranking's
+    `getMembersOnce`), starting all four fetches concurrently before
+    awaiting any of them (avoids `Future.wait`'s type-inference issue
+    when the futures' element types differ, without losing
+    concurrency).
+  - `ExamRepository.getRecentHistory` and
+    `ExamHistoryRepository.getRecent` (new) are one-shot `.get()`
+    siblings of each repository's existing `watchRecentHistory`/
+    `watchRecent` stream methods, same query, just not live.
+- **`ExamHistoryScreen`** now renders `fullExamHistoryProvider`'s list
+  via `AppRefreshIndicator` + `AsyncValue.when`, following this file's
+  established pull-to-refresh convention exactly (including the
+  empty-state-must-still-be-a-scrollable-`ListView` gotcha documented
+  under the 2026-07-23 pull-to-refresh update above — a bare `Center`
+  doesn't accept the pull gesture).
+- **`recentExamHistoryProvider`** (Profile's mini-list) now derives
+  from `fullExamHistoryProvider`'s top 3 instead of its own separate
+  Kana-only Firestore query — one source of truth, and the mini-list
+  now reflects whichever exam category the user actually took.
+- **`ExamHistoryTile`** (`widgets/exam_history_tile.dart`, new,
+  extracted from the old private `_ExamHistoryTile`) is shared by both
+  Profile's mini-list and the new full screen, so the two don't drift
+  into near-duplicate widgets.
+
+**Two adjacent i18n gaps fixed in passing**, found while building the
+label logic above (both are the same "raw hardcoded Indonesian string
+at a UI call site" class of gap the 4-gap audit already caught
+elsewhere, just two instances that audit's `*En`-field grep couldn't
+have found since neither is a data-model field):
+- `ExamMode.title` (`lib/data/models/exam_mode.dart`) was a plain
+  hardcoded-Indonesian getter with no language awareness at all —
+  still is, deliberately (kept as a model-layer default), but every
+  render site now goes through a new `kanaModeLabel(mode, s)` helper
+  in `exam_history_providers.dart` instead of calling `.title`
+  directly, matching this codebase's convention of keeping localization
+  decisions at the UI/provider layer rather than importing `AppStrings`
+  into `data/models`.
+- All three `SimpleExamResultScreen` call sites
+  (`dokkai_exam_screen.dart`/`choukai_exam_screen.dart`/
+  `kanji_combo_exam_screen.dart`) passed a raw hardcoded title
+  (`'Hasil Dokkai'`, `'Hasil Choukai'`, `'Hasil Kombinasi Kanji'`/
+  `'Hasil Kanji Tunggal'`) instead of reading `AppStrings` — fixed via
+  four new getters (`examCategoryDokkai`/`examCategoryChoukai`/
+  `examCategoryKanjiComboCombination`/`examCategoryKanjiComboSingle`)
+  plus one function getter (`examResultTitle(category)`), reused by
+  both the result-screen titles and the history-list labels so the two
+  surfaces share the same category vocabulary.
+
+**Verification**: `flutter analyze` clean, `flutter test
+--concurrency=1` 46/46 (6 new, all in `exam_history_merge_test.dart`),
+`flutter build apk --debug` succeeded. **No interactive on-device pass
+done** — same standing gap as everywhere else in this file, but worth
+calling out specifically here: confirming pull-to-refresh timing feels
+right, and that a real Dokkai/Choukai/Kanji-Kombinasi submission
+actually shows up in both the mini-list and the full screen afterward
+(not just that the merge logic is correct in isolation), hasn't
+actually happened on a device yet.
 
 ## Architecture
 
