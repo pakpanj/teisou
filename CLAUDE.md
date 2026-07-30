@@ -2125,13 +2125,90 @@ have found since neither is a data-model field):
 
 **Verification**: `flutter analyze` clean, `flutter test
 --concurrency=1` 46/46 (6 new, all in `exam_history_merge_test.dart`),
-`flutter build apk --debug` succeeded. **No interactive on-device pass
-done** — same standing gap as everywhere else in this file, but worth
-calling out specifically here: confirming pull-to-refresh timing feels
-right, and that a real Dokkai/Choukai/Kanji-Kombinasi submission
-actually shows up in both the mini-list and the full screen afterward
-(not just that the merge logic is correct in isolation), hasn't
-actually happened on a device yet.
+`flutter build apk --debug` succeeded. **Correction: this used to say
+no interactive on-device pass had been done — see the update directly
+below, it has now happened, and found a real bug the merge-logic tests
+alone couldn't have caught.**
+
+## Update (2026-07-30, same day, on-device pass): freshly submitted exams didn't appear until an explicit provider invalidation was added
+
+The user asked to connect to the physical Moto G52J and test the
+exam-history fix directly rather than trust the unit tests alone.
+Completing a real Dokkai exam (50 questions, tapped through on-device)
+and returning to Profile showed the **same stale 3 entries as before** —
+the brand-new attempt was nowhere in either the mini-list or the full
+"Riwayat Ujian" screen, even after forcing a fresh `Navigator.push` of
+`ExamHistoryScreen` (which should have triggered a brand new provider
+watch or, per the design, a fresh fetch).
+
+**Root cause**: `fullExamHistoryProvider` is `FutureProvider.autoDispose`
+— correct in isolation, but Profile's `_ExamHistorySection` is a
+Home-tab sibling kept alive via `AutomaticKeepAliveClientMixin` (see the
+2026-07-19 later-session PageView/swipe-nav update above), meaning it is
+**never actually disposed** while the app is running, just kept off-
+screen. Since it holds a persistent `ref.watch(recentExamHistoryProvider)`
+subscription (which itself watches `fullExamHistoryProvider`), that
+provider's watcher count never drops to zero, so `autoDispose` never gets
+the chance to tear it down and refetch. Pushing a fresh
+`ExamHistoryScreen` doesn't help either — it just subscribes to the same
+never-invalidated, resolved-once-at-first-load cached instance. Both
+surfaces were reading stale data indefinitely, no matter how the screen
+was reached.
+
+This is a genuinely different failure mode from the screen-was-a-
+placeholder bug fixed earlier the same day, and the kind of gap that
+`exam_history_merge_test.dart`'s pure-function unit tests structurally
+cannot catch (they test the merge/sort/label logic given already-fetched
+lists — they never touch the Riverpod provider lifecycle that caused
+this). This is exactly the category of gap this file's standing
+"no interactive on-device pass done" caveat exists to flag, and exactly
+why it's worth actually closing that gap instead of leaving it
+permanently open, at least for user-reported bugs.
+
+**Fix**: `ref.invalidate(fullExamHistoryProvider)` added right after each
+of the four exam-submission call sites' write succeeds — Kana's
+`ExamScreen._handleNext` (after `submitExam` returns), and Dokkai/
+Choukai/Kanji-Kombinasi's shared try-block pattern (after
+`ExamHistoryRepository.submit()` returns) in their three respective exam
+screens. Same "invalidate the relevant provider immediately after the
+mutation that changes what it reads" convention already established
+throughout this app (e.g. `ref.invalidate(kanjiLearnedIdsProvider)` after
+toggling a kanji's learned status) — this bug was really just that
+pattern never having been applied to exam submission specifically, since
+exam history never had a real read surface to invalidate until the fix
+earlier today.
+
+**Re-verified end-to-end on the physical device after the fix**:
+completed a fresh Dokkai N4 exam (50/50), returned to Profile with *no*
+extra navigation beyond what a normal user would do, and the new entry
+appeared immediately at the top of the mini-list. Opening "Lihat Semua"
+showed it too, correctly interleaved with the rest. This also
+incidentally confirmed the *first* on-device test attempt (a Dokkai N5
+50/50 completed before the invalidation fix landed) had in fact written
+successfully to Firestore all along — it only became visible once the
+provider was invalidated, confirming the write path was never the
+problem, only the stale read.
+
+**Two on-device debugging gotchas worth remembering if scripting ADB
+taps against this app again**: (1) visually estimating a button's
+position from a downscaled screenshot (this device renders at
+1080×2460, `screencap`'s PNG is full resolution, but eyeballing the
+*displayed*-image position and multiplying by a scale factor is
+unreliable for anything not near the top of the screen — several taps
+missed by 500+ physical pixels this way) — sampling the actual PNG's
+pixel colours with a short Python/Pillow script to find a button's exact
+color-fill bounds is far more reliable than visual estimation, especially
+for elements near the bottom of a tall screen. (2) The bottom nav's app
+back-arrow widget (top-left `IconButton`) intermittently failed to
+register via `adb shell input tap`, while `adb shell input keyevent 4`
+(the hardware/system back button) worked reliably every time — prefer
+the hardware back key for automated navigation on this device.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 46/46 (unchanged
+— this fix has no new pure-logic branch worth a dedicated unit test;
+its correctness is inherently about Riverpod's provider lifecycle across
+kept-alive widgets, which is what the on-device pass actually verified),
+`flutter build apk --debug` succeeded.
 
 ## Architecture
 
