@@ -269,4 +269,28 @@ void main() {
     expect(teForm.localizedFormation(AppLanguage.english),
         contains('te-form'));
   });
+
+  test('every kanji sentence example has an English translation', () async {
+    final entries = await KanjiRepository().getAll();
+    expect(entries, isNotEmpty);
+
+    final missing = <String>[];
+    for (final entry in entries) {
+      for (var i = 0; i < entry.sentenceExamples.length; i++) {
+        if ((entry.sentenceExamples[i].translationEn ?? '').isEmpty) {
+          missing.add('${entry.character}/se$i');
+        }
+      }
+    }
+    expect(missing.take(10).toList(), isEmpty,
+        reason: '${missing.length} kanji sentence examples have no '
+            'translationEn — add them to '
+            'scripts/kanji_sentence_translation_en.py and run the applier');
+
+    final yuki = entries.firstWhere((e) => e.character == '雪');
+    expect(yuki.sentenceExamples.first.localizedTranslation(AppLanguage.english),
+        isNotEmpty);
+    expect(yuki.sentenceExamples.first.localizedTranslation(AppLanguage.english),
+        isNot(yuki.sentenceExamples.first.translation));
+  });
 }

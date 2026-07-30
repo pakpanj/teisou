@@ -1747,13 +1747,78 @@ actually renders the translated `formation` section in English mode
 (the specific field the code-gap fix above targeted) before treating
 this as fully verified.
 
-**This closes the last content-translation gap named in the "What is
-still Indonesian" note above except one: all kanji *sentence*
-translations (4,850) remain the sole undone item** — kanji
-word-*example* meanings were already finished in an earlier session
-(see the kanji word-examples update above), the remaining gap is
-specifically the full-sentence translations attached to those
-examples.
+**This closed the Bunpou gap named in the "What is still Indonesian"
+note above — at that point the only remaining item was all kanji
+*sentence* translations (4,850), now also finished, see the section
+immediately below.**
+
+## Update (2026-07-30): Kanji sentence translation — full rollout, 4,850/4,850
+
+The seventh and final content-translation rollout named in this
+file's "what is still Indonesian" history — translates
+`KanjiEntry.sentenceExamples[i].translationEn` (the shared
+module-neutral `SentenceExample` class, same one Kotoba/Bunpou/
+Particle use) across all 2,425 real kanji (N5 214 + N4 266 + N3 630 +
+N2 734 + N1 3,006 example sentences), zero placeholders. This is
+distinct from — and closes a gap left open by — the earlier "kanji
+word-examples" rollout (see that update further above), which only
+covered `KanjiWordExample.meaningEn` (the compound-word gloss); this
+rollout covers the full illustrative *sentence* attached to each word
+example.
+
+**No code gap this time** (unlike Bunpou's `formation` bug or
+Particle's `overview` bug) — confirmed before starting that both
+render sites already call the shared `localizedTranslation`/
+`localizedSentenceTranslation` methods:
+`KanjiWordDetailScreen` (`lib/features/kanji/kanji_word_detail_screen.dart`)
+calls `example.localizedTranslation(s.language)` directly, and
+`search/kanji_detail_screen.dart` calls
+`example.localizedSentenceTranslation(s.language)` through the
+computed `KanjiEntry.examples` getter, which already reads
+`sentenceTranslationEn` from the paired `SentenceExample`. This was
+pure content authoring from the start.
+
+**Same locked-dict + applier-script pattern as every other rollout**:
+`scripts/kanji_sentence_translation_en.py` holds
+`KANJI_SENTENCE_TRANSLATION_EN` (keyed `"{kanji_id}|se{i}"`, 0-based
+index within that kanji's own `sentenceExamples` list — mirrors
+Bunpou's `se{i}` convention, chosen over the word-examples rollout's
+`"{id}|{word}"` key since a sentence has no natural unique text to key
+on), `scripts/apply_kanji_sentence_translation_en.py` patches
+`assets/data/kanji_data.json` — safe to re-run, only ever adds
+`translationEn`, must be re-run after `generate_kanji_seed.py`
+regenerates the dataset (alongside `split_kanji_meanings_en.py` and
+`apply_kanji_word_meaning_en.py`, now a three-script re-run list for
+this dataset).
+
+Done in 5 main batches by JLPT level (N5 214, N4 266, N3 630, N2 734),
+with N1 — at 3,006 sentences, more than the other four levels
+combined — split into 4 sub-batches of ~750 each (following the exact
+precedent the earlier kanji word-examples N1 rollout set for handling
+a batch this size). Each batch independently verified: exact key-count
+match against the expected field count, `ast.parse` syntax check, the
+applier's own per-level coverage printout increasing by exactly the
+batch size, and a direct Python re-scan of the regenerated
+`kanji_data.json` confirming zero missing `translationEn` for that
+level before moving to the next.
+
+**Status: DONE, 4,850/4,850 (100%)**, verified via
+`apply_kanji_sentence_translation_en.py`'s own final coverage printout
+(N5 214/214, N4 266/266, N3 630/630, N2 734/734, N1 3,006/3,006) and a
+full-dataset Python re-scan confirming zero gaps across all 2,425
+kanji. New `test/content_localization_test.dart` case ("every kanji
+sentence example has an English translation") checks full coverage
+plus a language-toggle spot check on 雪's first sentence example.
+`flutter analyze` clean, `flutter test --concurrency=1` passing.
+**No interactive on-device pass done** — same standing gap as
+everywhere else in this file.
+
+**This closes out every content-translation gap tracked in this
+file's "what is still Indonesian" history — Kaiwa, Particle, Dokkai,
+Dictionary, Kotoba, Bunpou, and now Kanji sentences are all
+100% translated to English.** Any future English-mode Indonesian text
+found in the app at this point would be a newly authored field, not a
+backlog item from this rollout series.
 
 ## Architecture
 
