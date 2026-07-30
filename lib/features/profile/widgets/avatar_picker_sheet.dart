@@ -17,8 +17,41 @@ class AvatarPickerSheet extends ConsumerStatefulWidget {
   ConsumerState<AvatarPickerSheet> createState() => _AvatarPickerSheetState();
 }
 
+/// The `moduleId` watching an ad on [PaywallScreen] grants a 24h unlock
+/// for — shared by the premium-presets grid and the gallery-upload tile
+/// below, since both are the same "Avatar Premium" offer on that screen.
+const _avatarPremiumModuleId = 'avatar_premium';
+
 class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
   bool _uploading = false;
+
+  /// Whether an unexpired ad-reward unlock for [_avatarPremiumModuleId]
+  /// exists. `ProgressRepository.unlockAdReward`/`getAdRewards` already
+  /// existed but were a write with no matching read anywhere in the app —
+  /// this sheet used to gate premium presets/upload on [isPremium] alone,
+  /// so watching the rewarded ad on [PaywallScreen] recorded the unlock
+  /// but nothing ever consulted it: the gallery tile just reopened the
+  /// paywall again, which read as "watched the ad but gallery won't open"
+  /// (the exact bug report this fixed). Refreshed in [initState] (in case
+  /// an earlier session's 24h unlock is still active) and again after
+  /// [_openPaywall] returns, since this sheet is only ever pushed over by
+  /// `PaywallScreen`, never replaced — its own state must be refreshed
+  /// explicitly on return rather than assumed to recompute automatically.
+  bool _adRewardActive = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _refreshAdRewardStatus();
+  }
+
+  Future<void> _refreshAdRewardStatus() async {
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
+    final rewards = await ref.read(progressRepositoryProvider).getAdRewards(uid);
+    final active = rewards[_avatarPremiumModuleId]?.isActive ?? false;
+    if (mounted) setState(() => _adRewardActive = active);
+  }
 
   Future<void> _uploadFromGallery(
     String uid, {
@@ -81,15 +114,20 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     Navigator.of(context).pop();
   }
 
-  void _openPaywall(BuildContext context) {
-    Navigator.of(context).push(
+  Future<void> _openPaywall(BuildContext context) async {
+    await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) => const PaywallScreen(
-          moduleId: 'avatar_premium',
+          moduleId: _avatarPremiumModuleId,
           moduleTitle: 'Avatar Premium',
         ),
       ),
     );
+    // PaywallScreen pops itself the moment the reward is earned, so by the
+    // time this await resolves the write (if any) has already landed —
+    // safe to read it back immediately, no extra delay needed.
+    if (!mounted) return;
+    await _refreshAdRewardStatus();
   }
 
   @override
@@ -97,6 +135,10 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     final user = ref.watch(appStartupProvider).valueOrNull;
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    // A real subscription OR an unexpired ad-reward unlock both count —
+    // see _adRewardActive's doc comment for why the latter needs its own
+    // explicit tracking instead of folding into isPremium at the source.
+    final unlocked = isPremium || _adRewardActive;
     final uid = user?.uid;
     final s = ref.watch(appStringsProvider);
     final displayName = profile?.resolveDisplayName(user) ?? (user?.displayName ?? s.defaultLearnerName);
@@ -176,9 +218,9 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                 isSelected: (preset) =>
                     profile?.avatarType == AvatarType.presetPremium &&
                     profile?.avatarValue == preset.id,
-                locked: (_) => !isPremium,
+                locked: (_) => !unlocked,
                 onTap: (preset) {
-                  if (!isPremium) {
+                  if (!unlocked) {
                     _openPaywall(context);
                     return;
                   }
@@ -194,11 +236,11 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
               ),
               _SectionTitle(s.uploadFromGallerySection),
               _UploadTile(
-                isPremium: isPremium,
+                unlocked: unlocked,
                 uploading: _uploading,
                 label: s.uploadFromGallerySection,
                 onTap: () {
-                  if (!isPremium) {
+                  if (!unlocked) {
                     _openPaywall(context);
                     return;
                   }
@@ -379,13 +421,13 @@ class _PresetTile extends StatelessWidget {
 }
 
 class _UploadTile extends StatelessWidget {
-  final bool isPremium;
+  final bool unlocked;
   final bool uploading;
   final String label;
   final VoidCallback onTap;
 
   const _UploadTile({
-    required this.isPremium,
+    required this.unlocked,
     required this.uploading,
     required this.label,
     required this.onTap,
@@ -419,7 +461,7 @@ class _UploadTile extends StatelessWidget {
                 label,
                 style: const TextStyle(color: AppColors.textNavy, fontWeight: FontWeight.w600),
               ),
-              if (!isPremium) ...[
+              if (!unlocked) ...[
                 const SizedBox(width: 8),
                 const Icon(Icons.lock, size: 16, color: AppColors.freeBadgeGrey),
               ],
