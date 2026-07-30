@@ -69,20 +69,28 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
     }
 
     final profile = ref.read(userProfileProvider).valueOrNull;
-    final result = await ref
-        .read(examRepositoryProvider)
-        .submitExam(
-          uid: user.uid,
-          mode: widget.mode,
-          answers: _answers,
-          displayName: profile?.resolveDisplayName(user) ?? (user.displayName ?? s.defaultLearnerName),
-          photoUrl: user.photoURL,
-          avatarType: profile?.avatarType ?? AvatarType.google,
-          avatarValue: profile?.avatarValue,
-        );
+    try {
+      final result = await ref
+          .read(examRepositoryProvider)
+          .submitExam(
+            uid: user.uid,
+            mode: widget.mode,
+            answers: _answers,
+            displayName: profile?.resolveDisplayName(user) ?? (user.displayName ?? s.defaultLearnerName),
+            photoUrl: user.photoURL,
+            avatarType: profile?.avatarType ?? AvatarType.google,
+            avatarValue: profile?.avatarValue,
+          );
 
-    if (!mounted) return;
-    AppNavigator.replaceFadeScale(context, ExamResultScreen(result: result));
+      if (!mounted) return;
+      AppNavigator.replaceFadeScale(context, ExamResultScreen(result: result));
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _submitting = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(s.failedToSaveExamResult)),
+      );
+    }
   }
 
   @override

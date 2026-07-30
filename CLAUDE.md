@@ -1293,14 +1293,49 @@ Also **exam-history rows store
 their title as a plain string at submit time** ("Ujian Katakana"), so
 old rows stay Indonesian forever — a schema question (store a mode key,
 localize at render) rather than a translation batch, and untouched
-here. **User-reported (2026-07-28): the exam-history function itself
-is erroring**, separate from the Indonesian-only-title issue above —
-not yet investigated, deliberately deferred at the user's explicit
-request ("untuk riwayat nanti kita clearkan, bahkan fungsinya saja
-error") in favor of finishing the remaining translation batches
-first. Don't assume this is just the stale-title cosmetic issue —
-treat it as a distinct, unconfirmed bug report until actually
-diagnosed.
+here (this specific cosmetic gap is still open).
+
+**The separate "exam-history function itself is erroring" bug
+report from 2026-07-28 is now fixed (2026-07-30).** Root cause:
+`ExamScreen._handleNext` (`lib/features/exam/exam_screen.dart`, the
+kana exam's submit-on-last-question path) awaited
+`ExamRepository.submitExam(...)` with **no try/catch at all** — unlike
+every other exam category. Inside `submitExam`
+(`lib/data/repositories/exam_repository.dart`), after the real
+source-of-truth `batch.commit()` (exam history + kana progress)
+succeeded, three more sequential `await`s to `leaderboardRepository`
+(`updateTotalMastered`/`updateExamHighScoreIfHigher`/
+`updateCategoryRecord`) were **also** unguarded — unlike the sibling
+`ExamHistoryRepository.submit()` used by Dokkai/Choukai/
+Kanji-Kombinasi, which already wraps its own leaderboard call in
+try/catch with an explicit "best-effort mirror only" comment (checked
+and confirmed correct for all three of those screens before assuming
+the bug was general). So a transient failure in any of those three
+leaderboard calls — network hiccup, anything — would throw all the
+way up through `submitExam` into `_handleNext`, past `AppNavigator
+.replaceFadeScale(...)`, leaving `_submitting` stuck `true` forever:
+the submit button spins indefinitely, no error shown, no way to
+proceed, right after finishing the exam's last question. Exactly the
+same bug class already fixed once this project for five progress
+repositories (see the Kanji-progress note under Architecture above)
+— just a different, previously-missed instance of it, in the exam-
+submission path rather than a learned/unlearned toggle. Fixed at both
+layers: `submitExam` now wraps its three leaderboard calls in
+try/catch (mirroring `ExamHistoryRepository.submit()`'s established
+pattern exactly) so a leaderboard hiccup can never block returning the
+already-successful exam result; `_handleNext` now also wraps its own
+call in try/catch, resetting `_submitting` and showing
+`s.failedToSaveExamResult` via a SnackBar (the same message/pattern
+already used a few lines above for the `user == null` case) if
+anything still throws, instead of hanging with a silent stuck spinner.
+`flutter analyze` clean, `flutter test --concurrency=1` 40/40,
+`flutter build apk --debug` succeeded. **No interactive on-device
+reproduction was done** — the fix was derived by code-reading (finding
+the one exam-submit path that lacked the try/catch pattern every
+sibling path already had), not by reproducing the original crash, so
+treat this as a strong, well-reasoned fix rather than a confirmed
+root-cause match until it's actually re-tested against the original
+report on a device.
 
 ## Update (2026-07-23): pull-to-refresh (Facebook/X-style) on every main screen
 

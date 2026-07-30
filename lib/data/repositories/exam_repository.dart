@@ -256,36 +256,47 @@ class ExamRepository {
     );
     await batch.commit();
 
-    final totalMastered = progressCache.values
-        .expand((items) => items.values)
-        .where((p) => p.status == KanaStatus.mastered)
-        .length;
+    // Leaderboard mirror is best-effort only — the batch above (exam
+    // history + kana progress) is the source of truth and already
+    // succeeded, so a leaderboard hiccup here must never stop the caller
+    // from getting its result back. Same reasoning/pattern already
+    // established by ExamHistoryRepository.submit() for Dokkai/Choukai/
+    // Kanji-Kombinasi; this call site just never had it.
+    try {
+      final totalMastered = progressCache.values
+          .expand((items) => items.values)
+          .where((p) => p.status == KanaStatus.mastered)
+          .length;
 
-    await leaderboardRepository.updateTotalMastered(
-      uid: uid,
-      displayName: displayName,
-      photoUrl: photoUrl,
-      avatarType: avatarType,
-      avatarValue: avatarValue,
-      totalMastered: totalMastered,
-    );
-    await leaderboardRepository.updateExamHighScoreIfHigher(
-      uid: uid,
-      displayName: displayName,
-      photoUrl: photoUrl,
-      avatarType: avatarType,
-      avatarValue: avatarValue,
-      score: score,
-    );
-    await leaderboardRepository.updateCategoryRecord(
-      uid: uid,
-      displayName: displayName,
-      photoUrl: photoUrl,
-      avatarType: avatarType,
-      avatarValue: avatarValue,
-      category: LeaderboardCategory.kana,
-      percentage: result.percentage,
-    );
+      await leaderboardRepository.updateTotalMastered(
+        uid: uid,
+        displayName: displayName,
+        photoUrl: photoUrl,
+        avatarType: avatarType,
+        avatarValue: avatarValue,
+        totalMastered: totalMastered,
+      );
+      await leaderboardRepository.updateExamHighScoreIfHigher(
+        uid: uid,
+        displayName: displayName,
+        photoUrl: photoUrl,
+        avatarType: avatarType,
+        avatarValue: avatarValue,
+        score: score,
+      );
+      await leaderboardRepository.updateCategoryRecord(
+        uid: uid,
+        displayName: displayName,
+        photoUrl: photoUrl,
+        avatarType: avatarType,
+        avatarValue: avatarValue,
+        category: LeaderboardCategory.kana,
+        percentage: result.percentage,
+      );
+    } catch (_) {
+      // Best-effort mirror only — the history + progress write above
+      // already succeeded and is the source of truth.
+    }
 
     return result;
   }
