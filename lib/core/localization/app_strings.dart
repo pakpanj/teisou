@@ -441,12 +441,14 @@ class AppStrings {
 
   // --- Saved Words / About / Notification / Exam History ---
   String get noSavedWordsMessage => _t(
-        'Belum ada kata tersimpan. Kata yang disimpan dari Cam Detector akan '
-            'muncul di sini — Cam Detector sedang dalam perbaikan, jadi fitur '
-            'ini belum bisa diisi untuk saat ini.',
-        'No saved words yet. Words saved from Cam Detector will show up '
-            "here — Cam Detector is currently under repair, so this list "
-            "can't be filled in just yet.",
+        'Belum ada kata tersimpan. Simpan kata lewat ikon bookmark di '
+            'halaman Kanji/Kotoba (dari Pencarian) untuk melihatnya di sini. '
+            '(Simpan dari Cam Detector belum bisa dipakai — Cam Detector '
+            'sedang dalam perbaikan.)',
+        'No saved words yet. Save a word via the bookmark icon on a '
+            'Kanji/Kotoba page (from Search) to see it here. (Saving from '
+            "Cam Detector isn't available yet — Cam Detector is currently "
+            'under repair.)',
       );
   String get deleteWordConfirmTitle => _t('Hapus kata ini?', 'Delete this word?');
   String get deleteWordConfirmBody =>

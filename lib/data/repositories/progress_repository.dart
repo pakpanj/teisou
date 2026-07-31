@@ -6,6 +6,7 @@ import '../models/kana_progress.dart';
 import '../models/kana_status.dart';
 import '../models/kana_type.dart';
 import '../models/kana_type_progress.dart';
+import '../models/saved_item_pointer.dart';
 import '../models/subscription.dart';
 import '../models/user_profile.dart';
 
@@ -200,6 +201,25 @@ class ProgressRepository {
       'itemId': itemId,
       'savedAt': FieldValue.serverTimestamp(),
     });
+  }
+
+  /// One-shot fetch of every dictionary bookmark for [uid] — pointers only
+  /// ({itemId, type}), not the resolved kanji/kotoba content; callers
+  /// resolve those via `KanjiRepository`/`KotobaRepository`.
+  Future<List<SavedItemPointer>> getSavedItems(String uid) async {
+    final snapshot =
+        await _userDoc(uid).collection(FirestorePaths.savedItems).get();
+    return snapshot.docs
+        .map((doc) => SavedItemPointer.fromFirestore(doc.id, doc.data()))
+        .toList();
+  }
+
+  /// Removes one dictionary bookmark.
+  Future<void> removeSavedItem(String uid, String itemId) {
+    return _userDoc(uid)
+        .collection(FirestorePaths.savedItems)
+        .doc(itemId)
+        .delete();
   }
 
   Future<KanaTypeProgress> getTypeProgress(String uid, KanaType type) async {

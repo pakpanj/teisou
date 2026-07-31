@@ -4,91 +4,35 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/saved_word.dart';
+import 'saved_words_providers.dart';
 
-/// Lists words saved from Cam Detector's "Simpan ke Daftar Belajar"
-/// button. Reads straight from local storage (SharedPreferences, via
-/// SavedWordsRepository) — the Firestore copy is a best-effort mirror,
-/// not the source of truth this screen displays from.
-class SavedWordsScreen extends ConsumerStatefulWidget {
+/// Lists words saved either from Cam Detector's "Simpan ke Daftar Belajar"
+/// button (local, `SavedWordsRepository`) or the bookmark icon on the
+/// search-flow Kanji/Kotoba detail screens (`savedItems` in Firestore) —
+/// see [unifiedSavedWordsProvider] for why both need merging here.
+class SavedWordsScreen extends ConsumerWidget {
   const SavedWordsScreen({super.key});
 
-  @override
-  ConsumerState<SavedWordsScreen> createState() => _SavedWordsScreenState();
-}
-
-class _SavedWordsScreenState extends ConsumerState<SavedWordsScreen> {
-  late Future<List<SavedWord>> _future = _load();
-
-  Future<List<SavedWord>> _load() =>
-      ref.read(savedWordsRepositoryProvider).getLocal();
-
-  Future<void> _delete(SavedWord word) async {
+  Future<void> _delete(BuildContext context, WidgetRef ref, SavedWord word) async {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    await ref.read(savedWordsRepositoryProvider).remove(word.id, uid: uid);
-    setState(() => _future = _load());
+    if (word.source == 'kanji' || word.source == 'kotoba') {
+      if (uid != null) {
+        await ref.read(progressRepositoryProvider).removeSavedItem(uid, word.id);
+      }
+    } else {
+      await ref.read(savedWordsRepositoryProvider).remove(word.id, uid: uid);
+    }
+    ref.invalidate(unifiedSavedWordsProvider);
   }
 
-  void _openDetail(SavedWord word) {
+  void _openDetail(BuildContext context, SavedWord word) {
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (_) => _SavedWordDetailSheet(word: word),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final s = ref.watch(appStringsProvider);
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(title: Text(s.savedWords)),
-      body: FutureBuilder<List<SavedWord>>(
-        future: _future,
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          final words = snapshot.data!;
-          if (words.isEmpty) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Text(
-                  s.noSavedWordsMessage,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: AppColors.textNavy),
-                ),
-              ),
-            );
-          }
-          return ListView.separated(
-            padding: const EdgeInsets.all(16),
-            itemCount: words.length,
-            separatorBuilder: (_, _) => const SizedBox(height: 8),
-            itemBuilder: (context, index) {
-              final word = words[index];
-              return Dismissible(
-                key: ValueKey(word.id),
-                direction: DismissDirection.endToStart,
-                confirmDismiss: (_) => _confirmDelete(context, s),
-                onDismissed: (_) => _delete(word),
-                background: Container(
-                  alignment: Alignment.centerRight,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    color: AppColors.errorRed,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: const Icon(Icons.delete, color: Colors.white),
-                ),
-                child: _SavedWordTile(word: word, onTap: () => _openDetail(word)),
-              );
-            },
-          );
-        },
-      ),
     );
   }
 
@@ -111,6 +55,64 @@ class _SavedWordsScreenState extends ConsumerState<SavedWordsScreen> {
       ),
     );
     return confirmed ?? false;
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
+    final wordsAsync = ref.watch(unifiedSavedWordsProvider);
+
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: AppBar(title: Text(s.savedWords)),
+      body: wordsAsync.when(
+        data: (words) => AppRefreshIndicator(
+          onRefresh: () => ref.refresh(unifiedSavedWordsProvider.future),
+          child: words.isEmpty
+              ? ListView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 120),
+                  children: [
+                    Text(
+                      s.noSavedWordsMessage,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(color: AppColors.textNavy),
+                    ),
+                  ],
+                )
+              : ListView.separated(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(16),
+                  itemCount: words.length,
+                  separatorBuilder: (_, _) => const SizedBox(height: 8),
+                  itemBuilder: (context, index) {
+                    final word = words[index];
+                    return Dismissible(
+                      key: ValueKey('${word.source}_${word.id}'),
+                      direction: DismissDirection.endToStart,
+                      confirmDismiss: (_) => _confirmDelete(context, s),
+                      onDismissed: (_) => _delete(context, ref, word),
+                      background: Container(
+                        alignment: Alignment.centerRight,
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        decoration: BoxDecoration(
+                          color: AppColors.errorRed,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: const Icon(Icons.delete, color: Colors.white),
+                      ),
+                      child: _SavedWordTile(
+                        word: word,
+                        onTap: () => _openDetail(context, word),
+                      ),
+                    );
+                  },
+                ),
+        ),
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (e, _) => Center(child: Text(s.noSavedWordsMessage)),
+      ),
+    );
   }
 }
 
