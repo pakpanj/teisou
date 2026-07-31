@@ -672,42 +672,6 @@ class _SettingsMenu extends ConsumerWidget {
     );
   }
 
-  Future<void> _confirmReset(BuildContext context, WidgetRef ref) async {
-    final s = ref.read(appStringsProvider);
-    final step1 = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text(s.resetProgressConfirmTitle),
-        content: Text(s.resetProgressConfirmBody),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, false),
-            child: Text(s.cancel),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, true),
-            child: Text(s.continueLabel),
-          ),
-        ],
-      ),
-    );
-    if (step1 != true || !context.mounted) return;
-
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => _ResetConfirmDialog(strings: s),
-    );
-    if (confirmed != true) return;
-
-    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    if (uid == null) return;
-    await ref.read(progressRepositoryProvider).resetAllProgress(uid);
-    if (!context.mounted) return;
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(s.resetSuccessSnackbar)));
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
@@ -751,13 +715,6 @@ class _SettingsMenu extends ConsumerWidget {
           ),
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
-            emoji: '🗑️',
-            title: s.resetProgress,
-            titleColor: AppColors.errorRed,
-            onTap: () => _confirmReset(context, ref),
-          ),
-          const Divider(height: 1, indent: 16, endIndent: 16),
-          _MenuTile(
             emoji: '🚪',
             title: s.logout,
             onTap: () => _confirmLogout(context, ref),
@@ -772,85 +729,21 @@ class _MenuTile extends StatelessWidget {
   final String emoji;
   final String title;
   final VoidCallback onTap;
-  final Color? titleColor;
 
   const _MenuTile({
     required this.emoji,
     required this.title,
     required this.onTap,
-    this.titleColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: Text(emoji, style: const TextStyle(fontSize: 20)),
-      title: Text(
-        title,
-        style: TextStyle(color: titleColor ?? AppColors.textNavy),
-      ),
+      title: Text(title, style: const TextStyle(color: AppColors.textNavy)),
       trailing: const Icon(Icons.chevron_right, color: AppColors.textNavy),
       onTap: onTap,
     );
   }
 }
 
-class _ResetConfirmDialog extends StatefulWidget {
-  final AppStrings strings;
-
-  const _ResetConfirmDialog({required this.strings});
-
-  @override
-  State<_ResetConfirmDialog> createState() => _ResetConfirmDialogState();
-}
-
-class _ResetConfirmDialogState extends State<_ResetConfirmDialog> {
-  final _controller = TextEditingController();
-  bool _valid = false;
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final s = widget.strings;
-    return AlertDialog(
-      title: Text(s.resetConfirmTitle),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(s.resetConfirmBody),
-          const SizedBox(height: 12),
-          TextField(
-            controller: _controller,
-            onChanged: (value) => setState(() => _valid = value == 'RESET'),
-            decoration: const InputDecoration(
-              hintText: 'RESET',
-              border: OutlineInputBorder(),
-            ),
-          ),
-        ],
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context, false),
-          child: Text(s.cancel),
-        ),
-        TextButton(
-          onPressed: _valid ? () => Navigator.pop(context, true) : null,
-          child: Text(
-            s.delete,
-            style: const TextStyle(
-              color: AppColors.errorRed,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}

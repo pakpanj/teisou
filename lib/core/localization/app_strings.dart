@@ -129,7 +129,6 @@ class AppStrings {
   String get appLanguage => _t('Bahasa App', 'App Language');
   String get notifications => _t('Notifikasi', 'Notifications');
   String get aboutApp => _t('Tentang App', 'About App');
-  String get resetProgress => _t('Reset Progress', 'Reset Progress');
   String get logout => _t('Keluar', 'Log Out');
   String get cancel => _t('Batal', 'Cancel');
   String get continueLabel => _t('Lanjut', 'Continue');
@@ -141,23 +140,6 @@ class AppStrings {
         "Are you sure you want to log out? Your progress is already saved "
             "to the cloud and can be restored after logging back in.",
       );
-  String get resetProgressConfirmTitle =>
-      _t('Reset progress Hiragana & Katakana?', 'Reset Hiragana & Katakana progress?');
-  String get resetProgressConfirmBody => _t(
-        'Yakin mau reset progress Hiragana & Katakana? Ini tidak '
-            'menghapus streak atau riwayat ujian kamu.',
-        "Are you sure you want to reset your Hiragana & Katakana progress? "
-            "This won't delete your streak or exam history.",
-      );
-  String get resetConfirmTitle => _t('Konfirmasi Reset', 'Confirm Reset');
-  String get resetConfirmBody => _t(
-        'Progress yang dihapus tidak bisa dikembalikan. Ketik RESET '
-            'untuk konfirmasi.',
-        "Deleted progress can't be recovered. Type RESET to confirm.",
-      );
-  String get resetSuccessSnackbar =>
-      _t('Progress berhasil direset.', 'Progress reset successfully.');
-
   // --- Language screen ---
   String get chooseAppLanguage =>
       _t('Pilih bahasa aplikasi', 'Choose app language');

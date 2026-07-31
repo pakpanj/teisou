@@ -202,16 +202,6 @@ class ProgressRepository {
     });
   }
 
-  /// Wipes all hiragana/katakana learning progress back to a blank slate.
-  /// Uses `update()` (not merge-`set`) so each type's map is replaced
-  /// wholesale instead of merging old `items` back in.
-  Future<void> resetAllProgress(String uid) {
-    return _userDoc(uid).update({
-      'progress.hiragana': {'lastIndex': 0, 'items': {}},
-      'progress.katakana': {'lastIndex': 0, 'items': {}},
-    });
-  }
-
   Future<KanaTypeProgress> getTypeProgress(String uid, KanaType type) async {
     final snapshot = await _userDoc(uid).get();
     final progress = snapshot.data()?['progress'] as Map<String, dynamic>?;
