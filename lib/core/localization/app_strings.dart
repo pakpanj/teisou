@@ -587,6 +587,7 @@ class AppStrings {
   String get coverSaveFailed =>
       _t('Gagal menyimpan sampul, coba lagi.', 'Failed to save cover, try again.');
   String get frameSection => _t('Bingkai', 'Frame');
+  String get pickFrameTitle => _t('Pilih Bingkai', 'Choose Frame');
   String get noFrameLabel => _t('Tanpa Bingkai', 'No Frame');
   String get frameSaveFailed =>
       _t('Gagal menyimpan bingkai, coba lagi.', 'Failed to save frame, try again.');

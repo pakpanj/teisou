@@ -24,8 +24,11 @@ class AvatarPickerSheet extends ConsumerStatefulWidget {
 /// screen.
 const _avatarPremiumModuleId = 'avatar_premium';
 
+enum _PickerMode { avatar, frame }
+
 class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
   bool _uploading = false;
+  _PickerMode _mode = _PickerMode.avatar;
 
   /// Whether an unspent ad-reward unlock for [_avatarPremiumModuleId]
   /// exists. `ProgressRepository.unlockAdReward`/`getAdRewards` already
@@ -216,104 +219,158 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                 ),
               ),
               const SizedBox(height: 16),
-              Text(
-                s.pickAvatarTitle,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.textNavy,
-                ),
+              Row(
+                children: [
+                  _PickerModeTab(
+                    label: s.pickAvatarTitle,
+                    active: _mode == _PickerMode.avatar,
+                    onTap: () => setState(() => _mode = _PickerMode.avatar),
+                  ),
+                  const SizedBox(width: 20),
+                  _PickerModeTab(
+                    label: s.pickFrameTitle,
+                    active: _mode == _PickerMode.frame,
+                    onTap: () => setState(() => _mode = _PickerMode.frame),
+                  ),
+                ],
               ),
-              if (user != null && !user.isAnonymous && user.photoURL != null) ...[
-                _SectionTitle(s.accountPhotoSection),
-                _GoogleAvatarTile(
-                  photoUrl: user.photoURL!,
-                  label: s.googleAccountPhotoLabel,
-                  selected: profile != null && profile.avatarType == AvatarType.google,
-                  onTap: uid == null
-                      ? null
-                      : () => _select(
-                            uid,
-                            AvatarType.google,
-                            null,
-                            displayName: displayName,
-                            photoUrl: user.photoURL,
-                          ),
+              if (_mode == _PickerMode.avatar) ...[
+                if (user != null && !user.isAnonymous && user.photoURL != null) ...[
+                  _SectionTitle(s.accountPhotoSection),
+                  _GoogleAvatarTile(
+                    photoUrl: user.photoURL!,
+                    label: s.googleAccountPhotoLabel,
+                    selected: profile != null && profile.avatarType == AvatarType.google,
+                    onTap: uid == null
+                        ? null
+                        : () => _select(
+                              uid,
+                              AvatarType.google,
+                              null,
+                              displayName: displayName,
+                              photoUrl: user.photoURL,
+                            ),
+                  ),
+                ],
+                _SectionTitle(s.freePresetsSection),
+                _PresetGrid(
+                  presets: AvatarPresets.free,
+                  isSelected: (preset) =>
+                      profile?.avatarType == AvatarType.presetFree &&
+                      profile?.avatarValue == preset.id,
+                  locked: (_) => false,
+                  onTap: (preset) {
+                    if (uid == null) return;
+                    _select(
+                      uid,
+                      AvatarType.presetFree,
+                      preset.id,
+                      displayName: displayName,
+                      photoUrl: user?.photoURL,
+                    );
+                  },
+                ),
+                _SectionTitle(s.premiumPresetsSection),
+                _PresetGrid(
+                  presets: AvatarPresets.premium,
+                  isSelected: (preset) =>
+                      profile?.avatarType == AvatarType.presetPremium &&
+                      profile?.avatarValue == preset.id,
+                  locked: (_) => !unlocked,
+                  onTap: (preset) {
+                    if (!unlocked) {
+                      _openPaywall(context);
+                      return;
+                    }
+                    if (uid == null) return;
+                    _select(
+                      uid,
+                      AvatarType.presetPremium,
+                      preset.id,
+                      displayName: displayName,
+                      photoUrl: user?.photoURL,
+                      consumeReward: viaAdReward,
+                    );
+                  },
+                ),
+                _SectionTitle(s.uploadFromGallerySection),
+                _UploadTile(
+                  unlocked: unlocked,
+                  uploading: _uploading,
+                  label: s.uploadFromGallerySection,
+                  onTap: () {
+                    if (!unlocked) {
+                      _openPaywall(context);
+                      return;
+                    }
+                    if (uid == null || _uploading) return;
+                    _uploadFromGallery(
+                      uid,
+                      displayName: displayName,
+                      photoUrl: user?.photoURL,
+                      consumeReward: viaAdReward,
+                    );
+                  },
+                ),
+              ] else ...[
+                const SizedBox(height: 16),
+                _FrameGrid(
+                  selectedId: profile?.frameId,
+                  noFrameLabel: s.noFrameLabel,
+                  onTap: (frameId) {
+                    if (uid == null) return;
+                    _selectFrame(uid, frameId);
+                  },
                 ),
               ],
-              _SectionTitle(s.freePresetsSection),
-              _PresetGrid(
-                presets: AvatarPresets.free,
-                isSelected: (preset) =>
-                    profile?.avatarType == AvatarType.presetFree &&
-                    profile?.avatarValue == preset.id,
-                locked: (_) => false,
-                onTap: (preset) {
-                  if (uid == null) return;
-                  _select(
-                    uid,
-                    AvatarType.presetFree,
-                    preset.id,
-                    displayName: displayName,
-                    photoUrl: user?.photoURL,
-                  );
-                },
-              ),
-              _SectionTitle(s.premiumPresetsSection),
-              _PresetGrid(
-                presets: AvatarPresets.premium,
-                isSelected: (preset) =>
-                    profile?.avatarType == AvatarType.presetPremium &&
-                    profile?.avatarValue == preset.id,
-                locked: (_) => !unlocked,
-                onTap: (preset) {
-                  if (!unlocked) {
-                    _openPaywall(context);
-                    return;
-                  }
-                  if (uid == null) return;
-                  _select(
-                    uid,
-                    AvatarType.presetPremium,
-                    preset.id,
-                    displayName: displayName,
-                    photoUrl: user?.photoURL,
-                    consumeReward: viaAdReward,
-                  );
-                },
-              ),
-              _SectionTitle(s.uploadFromGallerySection),
-              _UploadTile(
-                unlocked: unlocked,
-                uploading: _uploading,
-                label: s.uploadFromGallerySection,
-                onTap: () {
-                  if (!unlocked) {
-                    _openPaywall(context);
-                    return;
-                  }
-                  if (uid == null || _uploading) return;
-                  _uploadFromGallery(
-                    uid,
-                    displayName: displayName,
-                    photoUrl: user?.photoURL,
-                    consumeReward: viaAdReward,
-                  );
-                },
-              ),
-              _SectionTitle(s.frameSection),
-              _FrameGrid(
-                selectedId: profile?.frameId,
-                noFrameLabel: s.noFrameLabel,
-                onTap: (frameId) {
-                  if (uid == null) return;
-                  _selectFrame(uid, frameId);
-                },
-              ),
             ],
           ),
         );
       },
+    );
+  }
+}
+
+/// One of the two labels next to each other at the top of the sheet
+/// ("Pilih Avatar" / "Pilih Bingkai") that switch which section is shown
+/// below, instead of everything being one long scroll.
+class _PickerModeTab extends StatelessWidget {
+  final String label;
+  final bool active;
+  final VoidCallback onTap;
+
+  const _PickerModeTab({
+    required this.label,
+    required this.active,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        padding: const EdgeInsets.only(bottom: 6),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: active ? AppColors.primaryCoral : Colors.transparent,
+              width: 2,
+            ),
+          ),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: active
+                ? AppColors.textNavy
+                : AppColors.textNavy.withValues(alpha: 0.35),
+          ),
+        ),
+      ),
     );
   }
 }
