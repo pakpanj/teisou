@@ -47,6 +47,18 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
     setState(() => _index = _index - 1);
   }
 
+  Future<void> _save(AppStrings s) async {
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
+    await ref
+        .read(progressRepositoryProvider)
+        .saveDictionaryItem(uid, itemId: _entry.id, type: 'bunpou');
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(s.savedToLearningList)),
+    );
+  }
+
   Future<void> _toggleLearned(bool currentlyLearned) async {
     setState(() => _togglingLearned = true);
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
@@ -71,7 +83,16 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(title: Text('${_index + 1} / ${widget.entries.length}')),
+      appBar: AppBar(
+        title: Text('${_index + 1} / ${widget.entries.length}'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.bookmark_border),
+            tooltip: s.saveToLearningList,
+            onPressed: () => _save(s),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
