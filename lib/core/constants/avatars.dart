@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
 /// One selectable avatar preset. Real art is a bundled PNG at [assetPath];
-/// the emoji-over-colored-circle rendering only ever shows if that file
-/// isn't present in the asset bundle yet (see [AvatarPresetArt]), so presets
-/// keep working before art is dropped in and after, with no caller changes.
+/// the emoji placeholder rendering only ever shows if that file isn't
+/// present in the asset bundle yet (see [AvatarPresetArt]), so presets keep
+/// working before art is dropped in and after, with no caller changes.
 class AvatarPreset {
   final String id;
   final String emoji;
-  final Color background;
   final bool premium;
 
   const AvatarPreset({
     required this.id,
     required this.emoji,
-    required this.background,
     required this.premium,
   });
 
@@ -31,12 +29,14 @@ class AvatarPresetArt extends StatelessWidget {
   final AvatarPreset preset;
   final double imageSize;
   final double emojiFontSize;
+  final BoxFit fit;
 
   const AvatarPresetArt({
     super.key,
     required this.preset,
     required this.imageSize,
     required this.emojiFontSize,
+    this.fit = BoxFit.contain,
   });
 
   @override
@@ -45,118 +45,47 @@ class AvatarPresetArt extends StatelessWidget {
       preset.assetPath,
       width: imageSize,
       height: imageSize,
-      fit: BoxFit.contain,
-      errorBuilder: (context, error, stackTrace) =>
-          Text(preset.emoji, style: TextStyle(fontSize: emojiFontSize)),
+      fit: fit,
+      errorBuilder: (context, error, stackTrace) => Center(
+        child: Text(preset.emoji, style: TextStyle(fontSize: emojiFontSize)),
+      ),
     );
   }
 }
 
-/// Definitions for all 16 avatar presets (6 free + 10 premium), keyed by id
+/// Definitions for all 20 avatar presets (8 free + 12 premium), keyed by id
 /// so they can be added to or edited here without touching picker UI code.
+/// Real PNG art for all 20 (`neko_circles` set) lives in `assets/avatars/`
+/// — every image is already a complete circular illustration with its own
+/// backdrop baked in, so presets carry no separate background color; render
+/// sites just size/clip the image itself (see [AvatarPresetArt] callers).
 class AvatarPresets {
   AvatarPresets._();
 
   static const free = [
-    AvatarPreset(
-      id: 'mood_happy',
-      emoji: '😸',
-      background: Color(0xFFFEEDEC),
-      premium: false,
-    ),
-    AvatarPreset(
-      id: 'mood_excited',
-      emoji: '🐱',
-      background: Color(0xFFF4667A),
-      premium: false,
-    ),
-    AvatarPreset(
-      id: 'mood_proud',
-      emoji: '😻',
-      background: Color(0xFFE8B84B),
-      premium: false,
-    ),
-    AvatarPreset(
-      id: 'mood_cheering',
-      emoji: '🙌🐾',
-      background: Color(0xFFE8F5E9),
-      premium: false,
-    ),
-    AvatarPreset(
-      id: 'neko_sakura',
-      emoji: '🌸🐈',
-      background: Color(0xFFFBD9DD),
-      premium: false,
-    ),
-    AvatarPreset(
-      id: 'neko_kimono',
-      emoji: '🎋🐈',
-      background: Color(0xFFF7EDE3),
-      premium: false,
-    ),
+    AvatarPreset(id: 'neko_sensei', emoji: '🧑‍🏫', premium: false),
+    AvatarPreset(id: 'neko_cheerleader', emoji: '📣', premium: false),
+    AvatarPreset(id: 'neko_bookworm', emoji: '📚', premium: false),
+    AvatarPreset(id: 'neko_artist', emoji: '🎨', premium: false),
+    AvatarPreset(id: 'neko_graduate', emoji: '🎓', premium: false),
+    AvatarPreset(id: 'neko_ninja', emoji: '🥷', premium: false),
+    AvatarPreset(id: 'neko_samurai', emoji: '⚔️', premium: false),
+    AvatarPreset(id: 'neko_kimono', emoji: '🎋', premium: false),
   ];
 
   static const premium = [
-    AvatarPreset(
-      id: 'neko_samurai',
-      emoji: '⚔️🐈',
-      background: Color(0xFF1E2A47),
-      premium: true,
-    ),
-    AvatarPreset(
-      id: 'neko_ninja',
-      emoji: '🥷🐈',
-      background: Color(0xFF2B2B2B),
-      premium: true,
-    ),
-    AvatarPreset(
-      id: 'neko_bushi',
-      emoji: '🎌🐈',
-      background: Color(0xFFC62828),
-      premium: true,
-    ),
-    AvatarPreset(
-      id: 'neko_geisha',
-      emoji: '💃🐈',
-      background: Color(0xFFAD1457),
-      premium: true,
-    ),
-    AvatarPreset(
-      id: 'neko_sumo',
-      emoji: '🥋🐈',
-      background: Color(0xFF6D4C41),
-      premium: true,
-    ),
-    AvatarPreset(
-      id: 'neko_onmyoji',
-      emoji: '🔮🐈',
-      background: Color(0xFF6A1B9A),
-      premium: true,
-    ),
-    AvatarPreset(
-      id: 'neko_ronin',
-      emoji: '🗡️🐈',
-      background: Color(0xFF757575),
-      premium: true,
-    ),
-    AvatarPreset(
-      id: 'neko_shogun',
-      emoji: '👑🐈',
-      background: Color(0xFFC9A227),
-      premium: true,
-    ),
-    AvatarPreset(
-      id: 'neko_batik',
-      emoji: '🇮🇩🐈',
-      background: Color(0xFFD2B48C),
-      premium: true,
-    ),
-    AvatarPreset(
-      id: 'neko_astronaut',
-      emoji: '🚀🐈',
-      background: Color(0xFF283593),
-      premium: true,
-    ),
+    AvatarPreset(id: 'neko_matcha', emoji: '🍵', premium: true),
+    AvatarPreset(id: 'neko_chef', emoji: '👨‍🍳', premium: true),
+    AvatarPreset(id: 'neko_sailor', emoji: '⚓', premium: true),
+    AvatarPreset(id: 'neko_detective', emoji: '🔍', premium: true),
+    AvatarPreset(id: 'neko_astronaut', emoji: '🚀', premium: true),
+    AvatarPreset(id: 'neko_musician', emoji: '🎵', premium: true),
+    AvatarPreset(id: 'neko_gamer', emoji: '🎮', premium: true),
+    AvatarPreset(id: 'neko_winter', emoji: '❄️', premium: true),
+    AvatarPreset(id: 'neko_traveler', emoji: '🧳', premium: true),
+    AvatarPreset(id: 'neko_lion', emoji: '🦁', premium: true),
+    AvatarPreset(id: 'neko_forest', emoji: '🌲', premium: true),
+    AvatarPreset(id: 'neko_sleepy', emoji: '😴', premium: true),
   ];
 
   static const all = [...free, ...premium];

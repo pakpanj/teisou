@@ -414,21 +414,27 @@ class _PresetTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: preset.background,
-              borderRadius: BorderRadius.circular(16),
-              border: selected
-                  ? Border.all(color: AppColors.primaryCoral, width: 2)
-                  : null,
-            ),
-            alignment: Alignment.center,
-            child: AvatarPresetArt(
-              preset: preset,
-              imageSize: 40,
-              emojiFontSize: 28,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: AvatarPresetArt(
+                preset: preset,
+                imageSize: double.infinity,
+                emojiFontSize: 28,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
+          if (selected)
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: AppColors.primaryCoral, width: 2),
+                ),
+              ),
+            ),
           if (selected)
             const Positioned(
               right: 4,

@@ -65,13 +65,16 @@ class _PresetCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: radius,
-      backgroundColor: preset.background,
-      child: AvatarPresetArt(
-        preset: preset,
-        imageSize: radius * 1.4,
-        emojiFontSize: radius * 0.8,
+    return ClipOval(
+      child: SizedBox(
+        width: radius * 2,
+        height: radius * 2,
+        child: AvatarPresetArt(
+          preset: preset,
+          imageSize: radius * 2,
+          emojiFontSize: radius * 0.8,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

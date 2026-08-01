@@ -350,13 +350,16 @@ class LeaderboardAvatar extends StatelessWidget {
         entry.avatarType == AvatarType.presetPremium) {
       final preset = AvatarPresets.byId(entry.avatarValue);
       if (preset != null) {
-        return CircleAvatar(
-          radius: size / 2,
-          backgroundColor: preset.background,
-          child: AvatarPresetArt(
-            preset: preset,
-            imageSize: size * 0.7,
-            emojiFontSize: size * 0.4,
+        return ClipOval(
+          child: SizedBox(
+            width: size,
+            height: size,
+            child: AvatarPresetArt(
+              preset: preset,
+              imageSize: size,
+              emojiFontSize: size * 0.4,
+              fit: BoxFit.cover,
+            ),
           ),
         );
       }
