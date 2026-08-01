@@ -120,6 +120,14 @@ class ProgressRepository {
     }, SetOptions(merge: true));
   }
 
+  /// Sets which avatar frame/border the user has selected. [frameId] is
+  /// one of [FramePresets.all]'s ids, or `null` for no frame.
+  Future<void> updateFrame(String uid, String? frameId) {
+    return _userDoc(uid).set({
+      'profile': {'frameId': frameId},
+    }, SetOptions(merge: true));
+  }
+
   /// Raw `profile` map — displayName/isAnonymous/currentStreak/etc.
   Stream<Map<String, dynamic>> watchProfile(String uid) {
     return _userDoc(uid).snapshots().map(

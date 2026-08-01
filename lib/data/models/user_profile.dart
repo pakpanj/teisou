@@ -46,6 +46,7 @@ class UserProfile {
   final AvatarType avatarType;
   final String? avatarValue;
   final String? coverId;
+  final String? frameId;
   final DateTime? lastNameChangeAt;
 
   UserProfile({
@@ -57,6 +58,7 @@ class UserProfile {
     this.avatarType = AvatarType.google,
     this.avatarValue,
     this.coverId,
+    this.frameId,
     this.lastNameChangeAt,
   });
 
@@ -69,6 +71,7 @@ class UserProfile {
         avatarType: AvatarTypeX.fromKey(map['avatarType'] as String?),
         avatarValue: map['avatarValue'] as String?,
         coverId: map['coverId'] as String?,
+        frameId: map['frameId'] as String?,
         lastNameChangeAt: _toDateTime(map['lastNameChangeAt']),
       );
 

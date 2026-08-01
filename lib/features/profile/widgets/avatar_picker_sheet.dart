@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/avatars.dart';
+import '../../../core/constants/frames.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../data/models/user_profile.dart';
@@ -136,6 +137,20 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
             .read(progressRepositoryProvider)
             .consumeAdReward(uid, _avatarPremiumModuleId);
       } catch (_) {}
+    }
+    if (!mounted) return;
+    Navigator.of(context).pop();
+  }
+
+  Future<void> _selectFrame(String uid, String? frameId) async {
+    try {
+      await ref.read(progressRepositoryProvider).updateFrame(uid, frameId);
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(ref.read(appStringsProvider).frameSaveFailed)),
+      );
+      return;
     }
     if (!mounted) return;
     Navigator.of(context).pop();
@@ -284,6 +299,15 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                     photoUrl: user?.photoURL,
                     consumeReward: viaAdReward,
                   );
+                },
+              ),
+              _SectionTitle(s.frameSection),
+              _FrameGrid(
+                selectedId: profile?.frameId,
+                noFrameLabel: s.noFrameLabel,
+                onTap: (frameId) {
+                  if (uid == null) return;
+                  _selectFrame(uid, frameId);
                 },
               ),
             ],
@@ -508,6 +532,90 @@ class _UploadTile extends StatelessWidget {
             ],
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Grid of selectable avatar frames/borders: a "no frame" tile (index 0,
+/// always available) followed by [FramePresets.all] — empty for now until
+/// real frame art is supplied, so this grid currently only ever shows the
+/// "no frame" tile. Mirrors [CoverPickerSheet]'s default-plus-presets grid
+/// shape, not [_PresetGrid]'s (frames aren't premium-gated).
+class _FrameGrid extends StatelessWidget {
+  final String? selectedId;
+  final String noFrameLabel;
+  final void Function(String? frameId) onTap;
+
+  const _FrameGrid({
+    required this.selectedId,
+    required this.noFrameLabel,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final frames = FramePresets.all;
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: frames.length + 1,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 12,
+        mainAxisSpacing: 12,
+      ),
+      itemBuilder: (context, index) {
+        if (index == 0) {
+          return _FrameTile(
+            selected: selectedId == null,
+            child: Text(noFrameLabel, textAlign: TextAlign.center, style: const TextStyle(fontSize: 11, color: AppColors.textNavy)),
+            onTap: () => onTap(null),
+          );
+        }
+        final preset = frames[index - 1];
+        return _FrameTile(
+          selected: selectedId == preset.id,
+          child: FrameOverlay(preset: preset, avatarSize: 40, scale: 1),
+          onTap: () => onTap(preset.id),
+        );
+      },
+    );
+  }
+}
+
+class _FrameTile extends StatelessWidget {
+  final bool selected;
+  final Widget child;
+  final VoidCallback onTap;
+
+  const _FrameTile({required this.selected, required this.child, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.cardWhite,
+              borderRadius: BorderRadius.circular(16),
+              border: selected
+                  ? Border.all(color: AppColors.primaryCoral, width: 2)
+                  : null,
+            ),
+            alignment: Alignment.center,
+            child: child,
+          ),
+          if (selected)
+            const Positioned(
+              right: 4,
+              top: 4,
+              child: Icon(Icons.check_circle, color: AppColors.primaryCoral, size: 18),
+            ),
+        ],
       ),
     );
   }
