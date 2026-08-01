@@ -1,11 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+/// There is deliberately no "uploaded from gallery" variant. One existed
+/// (`customUpload`, stored as `custom_upload`) and was removed along with
+/// the picker entry that produced it — with a public global leaderboard and
+/// no moderation tooling, an arbitrary user-supplied image had no path to
+/// review or takedown. [AvatarTypeX.fromKey] still has to cope with the old
+/// key sitting in existing Firestore documents; see the note there.
 enum AvatarType {
   google, // pakai photoURL Google
   presetFree, // avatar preset gratis
   presetPremium, // avatar preset premium (butuh premium)
-  customUpload, // upload dari galeri (butuh premium)
 }
 
 extension AvatarTypeX on AvatarType {
@@ -17,19 +22,21 @@ extension AvatarTypeX on AvatarType {
         return 'preset_free';
       case AvatarType.presetPremium:
         return 'preset_premium';
-      case AvatarType.customUpload:
-        return 'custom_upload';
     }
   }
 
+  /// Note the missing `custom_upload` case: gallery uploads were removed,
+  /// but documents written before that still carry the key. It falls
+  /// through to [AvatarType.google] on purpose, so an image uploaded back
+  /// then stops being rendered rather than surviving the removal — which
+  /// is the whole point of taking the feature out. Those users land on
+  /// their Google photo, or the default emoji if they have none.
   static AvatarType fromKey(String? key) {
     switch (key) {
       case 'preset_free':
         return AvatarType.presetFree;
       case 'preset_premium':
         return AvatarType.presetPremium;
-      case 'custom_upload':
-        return AvatarType.customUpload;
       case 'google':
       default:
         return AvatarType.google;

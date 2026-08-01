@@ -100,7 +100,7 @@ class ProgressRepository {
   }
 
   /// Sets which avatar the user has selected: [type] is the resolution kind
-  /// (`google`/`preset_free`/`preset_premium`/`custom_upload`) and [value]
+  /// (`google`/`preset_free`/`preset_premium`) and [value]
   /// is the preset id or Storage download URL, as applicable.
   Future<void> updateAvatar(String uid, AvatarType type, String? value) {
     return _userDoc(uid).set({

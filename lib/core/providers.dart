@@ -41,7 +41,6 @@ import 'firebase/firestore_paths.dart';
 import 'localization/app_strings.dart';
 import 'services/ad_service.dart';
 import 'services/auth_service.dart';
-import 'services/avatar_upload_service.dart';
 import 'services/romaji_converter.dart';
 import 'services/tts_service.dart';
 
@@ -67,8 +66,6 @@ final appStringsProvider = Provider<AppStrings>(
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
 final ttsServiceProvider = Provider<TtsService>((ref) => TtsService());
 final adServiceProvider = Provider<AdService>((ref) => AdService());
-final avatarUploadServiceProvider =
-    Provider<AvatarUploadService>((ref) => AvatarUploadService());
 final kanaRepositoryProvider = Provider<KanaRepository>(
   (ref) => KanaRepository(),
 );

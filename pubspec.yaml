@@ -25,7 +25,6 @@ dependencies:
 
   # Avatar upload: pick from gallery (built-in resize/compress via
   # maxWidth/maxHeight/imageQuality — no separate compression package)
-  image_picker: ^1.1.2
 
   # Text-to-speech untuk pengucapan kana & contoh kata
   flutter_tts: ^4.2.0

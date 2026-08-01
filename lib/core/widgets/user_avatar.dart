@@ -5,9 +5,10 @@ import '../../data/models/user_profile.dart';
 import '../constants/avatars.dart';
 import '../constants/frames.dart';
 
-/// Renders a user's avatar following the resolution priority: custom
-/// Storage upload > premium preset > free preset > Google photo > default
-/// placeholder. Centralizing this here means ProfileScreen, leaderboard
+/// Renders a user's avatar following the resolution priority: premium
+/// preset > free preset > Google photo > default placeholder. (A custom
+/// Storage upload used to sit above all of these; that feature is gone —
+/// see [AvatarType].) Centralizing this here means ProfileScreen, leaderboard
 /// rows, etc. never duplicate the priority logic. If [profile.frameId]
 /// resolves to a [FramePreset], its border art is layered on top,
 /// overflowing past the avatar's own edge — see [FrameOverlay].
@@ -51,12 +52,6 @@ class UserAvatar extends StatelessWidget {
   Widget _buildAvatar(BuildContext context) {
     final avatarType = profile?.avatarType;
     final avatarValue = profile?.avatarValue;
-
-    if (avatarType == AvatarType.customUpload &&
-        avatarValue != null &&
-        avatarValue.isNotEmpty) {
-      return CircleAvatar(radius: radius, backgroundImage: NetworkImage(avatarValue));
-    }
 
     if (avatarType == AvatarType.presetPremium) {
       final preset = AvatarPresets.byId(avatarValue);

@@ -568,9 +568,6 @@ class AppStrings {
   String get googleAccountPhotoLabel => _t('Foto akun Google', 'Google account photo');
   String get freePresetsSection => _t('Preset Gratis', 'Free Presets');
   String get premiumPresetsSection => _t('Preset Premium', 'Premium Presets');
-  String get uploadFromGallerySection => _t('Upload dari Galeri', 'Upload from Gallery');
-  String get avatarUploadFailed =>
-      _t('Gagal mengunggah avatar, coba lagi.', 'Failed to upload avatar, try again.');
   String get avatarSaveFailed =>
       _t('Gagal menyimpan avatar, coba lagi.', 'Failed to save avatar, try again.');
   String get displayNameHint => _t('Nama tampilan', 'Display name');

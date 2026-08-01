@@ -9,8 +9,14 @@ import '../../../data/models/user_profile.dart';
 import '../../paywall/paywall_screen.dart';
 
 /// Bottom sheet for picking a profile avatar: Google photo, free presets,
-/// premium presets (locked behind [PaywallScreen] for free users), and a
-/// gallery upload entry (premium only).
+/// and premium presets (locked behind [PaywallScreen] for free users).
+///
+/// There is deliberately no gallery-upload option. It existed once and was
+/// removed: the app has a public global leaderboard and no moderation tools
+/// or admin surface, so an arbitrary user-supplied image had no path to
+/// being reviewed or taken down. Every avatar a user can now choose is
+/// bundled art. Don't reintroduce picking from the device without a
+/// moderation story to go with it.
 class AvatarPickerSheet extends ConsumerStatefulWidget {
   const AvatarPickerSheet({super.key});
 
@@ -19,34 +25,31 @@ class AvatarPickerSheet extends ConsumerStatefulWidget {
 }
 
 /// The `moduleId` watching an ad on [PaywallScreen] grants a one-time
-/// unlock for — shared by the premium-presets grid and the gallery-upload
-/// tile below, since both are the same "Avatar Premium" offer on that
-/// screen.
+/// unlock for — the premium-presets grid below, matching the "Avatar
+/// Premium" offer on that screen.
 const _avatarPremiumModuleId = 'avatar_premium';
 
 enum _PickerMode { avatar, frame }
 
 class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
-  bool _uploading = false;
   _PickerMode _mode = _PickerMode.avatar;
 
   /// Whether an unspent ad-reward unlock for [_avatarPremiumModuleId]
   /// exists. `ProgressRepository.unlockAdReward`/`getAdRewards` already
   /// existed but were a write with no matching read anywhere in the app —
-  /// this sheet used to gate premium presets/upload on [isPremium] alone,
-  /// so watching the rewarded ad on [PaywallScreen] recorded the unlock
-  /// but nothing ever consulted it: the gallery tile just reopened the
-  /// paywall again, which read as "watched the ad but gallery won't open"
-  /// (the exact bug report this fixed). Refreshed in [initState] (in case
+  /// this sheet used to gate its premium entries on [isPremium] alone, so
+  /// watching the rewarded ad on [PaywallScreen] recorded the unlock but
+  /// nothing ever consulted it: the tile just reopened the paywall again,
+  /// which read as "watched the ad but it still won't open" (the exact bug
+  /// report this fixed). Refreshed in [initState] (in case
   /// an earlier session's still-unspent unlock exists) and again after
   /// [_openPaywall] returns, since this sheet is only ever pushed over by
   /// `PaywallScreen`, never replaced — its own state must be refreshed
   /// explicitly on return rather than assumed to recompute automatically.
-  /// One ad grants exactly one avatar change: whichever action spends it
-  /// (a premium preset pick or a gallery upload) calls
-  /// `ProgressRepository.consumeAdReward` right after succeeding, rather
-  /// than leaving it active for its full 24h backstop window — see
-  /// [_select]/[_uploadFromGallery]'s `consumeReward` param.
+  /// One ad grants exactly one avatar change: picking a premium preset
+  /// calls `ProgressRepository.consumeAdReward` right after succeeding,
+  /// rather than leaving it active for its full 24h backstop window — see
+  /// [_select]'s `consumeReward` param.
   bool _adRewardActive = false;
 
   @override
@@ -61,51 +64,6 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     final rewards = await ref.read(progressRepositoryProvider).getAdRewards(uid);
     final active = rewards[_avatarPremiumModuleId]?.isActive ?? false;
     if (mounted) setState(() => _adRewardActive = active);
-  }
-
-  Future<void> _uploadFromGallery(
-    String uid, {
-    required String displayName,
-    String? photoUrl,
-    required bool consumeReward,
-  }) async {
-    setState(() => _uploading = true);
-    try {
-      final url = await ref.read(avatarUploadServiceProvider).pickAndUpload(uid);
-      if (url == null) {
-        if (mounted) setState(() => _uploading = false);
-        return; // user cancelled the gallery picker
-      }
-      await ref
-          .read(progressRepositoryProvider)
-          .updateAvatar(uid, AvatarType.customUpload, url);
-      await ref.read(leaderboardRepositoryProvider).syncProfileInfo(
-            uid: uid,
-            displayName: displayName,
-            photoUrl: photoUrl,
-            avatarType: AvatarType.customUpload,
-            avatarValue: url,
-          );
-      if (consumeReward) {
-        // Best-effort only: the avatar itself already saved successfully
-        // above, so a hiccup here must not surface as an upload failure —
-        // worst case the unlock lingers until its 24h backstop expiry.
-        try {
-          await ref
-              .read(progressRepositoryProvider)
-              .consumeAdReward(uid, _avatarPremiumModuleId);
-        } catch (_) {}
-      }
-      if (!mounted) return;
-      Navigator.of(context).pop();
-    } catch (e) {
-      debugPrint('Avatar upload failed: $e');
-      if (!mounted) return;
-      setState(() => _uploading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(ref.read(appStringsProvider).avatarUploadFailed)),
-      );
-    }
   }
 
   Future<void> _select(
@@ -133,8 +91,8 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
       return;
     }
     if (consumeReward) {
-      // Best-effort only, same reasoning as _uploadFromGallery's — the
-      // avatar itself already saved successfully above.
+      // Best-effort only — the avatar itself already saved successfully
+      // above, so a hiccup here must not surface as a failure.
       try {
         await ref
             .read(progressRepositoryProvider)
@@ -287,25 +245,6 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                       uid,
                       AvatarType.presetPremium,
                       preset.id,
-                      displayName: displayName,
-                      photoUrl: user?.photoURL,
-                      consumeReward: viaAdReward,
-                    );
-                  },
-                ),
-                _SectionTitle(s.uploadFromGallerySection),
-                _UploadTile(
-                  unlocked: unlocked,
-                  uploading: _uploading,
-                  label: s.uploadFromGallerySection,
-                  onTap: () {
-                    if (!unlocked) {
-                      _openPaywall(context);
-                      return;
-                    }
-                    if (uid == null || _uploading) return;
-                    _uploadFromGallery(
-                      uid,
                       displayName: displayName,
                       photoUrl: user?.photoURL,
                       consumeReward: viaAdReward,
@@ -536,59 +475,6 @@ class _PresetTile extends StatelessWidget {
               ),
             ),
         ],
-      ),
-    );
-  }
-}
-
-class _UploadTile extends StatelessWidget {
-  final bool unlocked;
-  final bool uploading;
-  final String label;
-  final VoidCallback onTap;
-
-  const _UploadTile({
-    required this.unlocked,
-    required this.uploading,
-    required this.label,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: uploading ? null : onTap,
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        decoration: BoxDecoration(
-          color: AppColors.cardWhite,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (uploading)
-              const SizedBox(
-                width: 18,
-                height: 18,
-                child: CircularProgressIndicator(strokeWidth: 2),
-              )
-            else ...[
-              const Text('📷', style: TextStyle(fontSize: 20)),
-              const SizedBox(width: 10),
-              Text(
-                label,
-                style: const TextStyle(color: AppColors.textNavy, fontWeight: FontWeight.w600),
-              ),
-              if (!unlocked) ...[
-                const SizedBox(width: 8),
-                const Icon(Icons.lock, size: 16, color: AppColors.freeBadgeGrey),
-              ],
-            ],
-          ],
-        ),
       ),
     );
   }
