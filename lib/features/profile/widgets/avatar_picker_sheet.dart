@@ -633,7 +633,17 @@ class _FrameGrid extends StatelessWidget {
         final preset = frames[index - 1];
         return _FrameTile(
           selected: selectedId == preset.id,
-          child: FrameOverlay(preset: preset, avatarSize: 40, scale: 1),
+          // Sized off the tile rather than a fixed 40 — these are detailed
+          // wreath illustrations, and at 40 inside a ~92 tile they rendered
+          // too small to tell apart. Invisible while FramePresets.all was
+          // empty; only showed up once real art landed.
+          child: LayoutBuilder(
+            builder: (context, constraints) => FrameOverlay(
+              preset: preset,
+              avatarSize: constraints.maxWidth - 12,
+              scale: 1,
+            ),
+          ),
           onTap: () => onTap(preset.id),
         );
       },
