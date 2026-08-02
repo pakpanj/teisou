@@ -11,10 +11,10 @@
 # bab_data.json, so a typo'd id fails the build loudly instead of becoming
 # a silent dead link at runtime.
 #
-# V1 (this batch): 5 proof-of-concept N5 chapters, hand-picked from content
-# already authored in past sessions — not the full curriculum. Expanding to
-# more N5 chapters and then N4-N1 is future-session work, same "batch 1 of
-# many" shape as this project's other content rollouts (Dokkai, Dictionary).
+# 9 proof-of-concept N5 chapters so far, hand-picked from content already
+# authored in past sessions — not the full curriculum. Expanding to more N5
+# chapters and then N4-N1 is future-session work, same "batch 1 of many"
+# shape as this project's other content rollouts (Dokkai, Dictionary).
 #
 # Chapter order is a deliberate teaching sequence, not just a list order —
 # "bab_bentuk_te_dan_minta_tolong" (chapter 3) exists specifically to teach
@@ -23,6 +23,18 @@
 # form. If a future chapter needs a grammar/vocab prerequisite that doesn't
 # exist yet, add the prerequisite as its own chapter earlier in the
 # sequence rather than assuming the learner already knows it.
+#
+# Known deferred gap, NOT fixed yet (deliberately, per explicit user
+# request to keep making Bab progress before reorganizing Bunpou): several
+# real N5 Bunpou patterns (bunpou_masen_ka, bunpou_mashou, bunpou_mashou_ka,
+# bunpou_ni_iku, bunpou_tai, bunpou_kata) require deriving a verb's ~masu
+# stem, and — same as the -te form gap chapter 3 fixed — nothing in this
+# dataset teaches ~masu-form conjugation either. None of chapters 6-9 use
+# these patterns for exactly that reason. Before authoring a future chapter
+# that needs any of them (very likely for invitation/politeness-themed
+# chapters — "Mengajak" or "Rencana Liburan" are the natural next targets),
+# either add a ~masu-form conjugation entry first (mirroring bunpou_te_kei's
+# fix) or keep avoiding these six patterns.
 
 N5_CHAPTERS = [
     dict(
@@ -118,5 +130,81 @@ N5_CHAPTERS = [
         bunpou_ids=["bunpou_o_kudasai", "bunpou_ga_hoshii"],
         particle_ids=["particle_o", "particle_ga"],
         kaiwa_ids=["kaiwa_coba_baju"],
+    ),
+    dict(
+        id="bab_kegiatan_sehari_hari",
+        order=6,
+        level="N5",
+        title="Kegiatan Sehari-hari",
+        title_en="Daily Activities",
+        description=(
+            "Menceritakan kegiatan yang sedang dilakukan, memakai bentuk -te "
+            "dari bab sebelumnya."
+        ),
+        description_en=(
+            "Talking about activities in progress, building on the -te form "
+            "from the previous chapter."
+        ),
+        kotoba_ids=[
+            "kotoba_hobi_aktivitas_sanpo",
+            "kotoba_hobi_aktivitas_ongaku",
+            "kotoba_hobi_aktivitas_eiga",
+        ],
+        bunpou_ids=["bunpou_te_iru", "bunpou_totemo"],
+        particle_ids=["particle_o"],
+        kaiwa_ids=["kaiwa_tanya_hobi"],
+    ),
+    dict(
+        id="bab_di_restoran",
+        order=7,
+        level="N5",
+        title="Di Restoran",
+        title_en="At a Restaurant",
+        description="Kosakata makanan/minuman dan cara memesan di restoran.",
+        description_en="Food/drink vocabulary and how to order at a restaurant.",
+        kotoba_ids=[
+            "kotoba_makanan_jepang_ramen",
+            "kotoba_makanan_barat_piza",
+            "kotoba_minuman_mizu",
+            "kotoba_minuman_koohii",
+        ],
+        bunpou_ids=["bunpou_o_kudasai", "bunpou_ga_arimasu", "bunpou_totemo"],
+        particle_ids=["particle_o", "particle_ga"],
+        kaiwa_ids=["kaiwa_pesan_makanan"],
+    ),
+    dict(
+        id="bab_menanyakan_arah",
+        order=8,
+        level="N5",
+        title="Menanyakan Arah",
+        title_en="Asking for Directions",
+        description="Kata penunjuk arah dan cara bertanya jalan ke suatu tempat.",
+        description_en="Direction words and how to ask the way to a place.",
+        kotoba_ids=[
+            "kotoba_arah_lokasi_migi",
+            "kotoba_arah_lokasi_hidari",
+            "kotoba_arah_lokasi_mae",
+            "kotoba_arah_lokasi_ushiro",
+        ],
+        bunpou_ids=["bunpou_ni_e", "bunpou_made"],
+        particle_ids=["particle_ni", "particle_made"],
+        kaiwa_ids=["kaiwa_jalan_ke_stasiun"],
+    ),
+    dict(
+        id="bab_cuaca_dan_basa_basi",
+        order=9,
+        level="N5",
+        title="Cuaca dan Basa-basi",
+        title_en="Weather and Small Talk",
+        description="Kosakata cuaca dan basa-basi ringan tentang cuaca hari ini.",
+        description_en="Weather vocabulary and light small talk about today's weather.",
+        kotoba_ids=[
+            "kotoba_cuaca_tenki",
+            "kotoba_cuaca_ame",
+            "kotoba_cuaca_kaze",
+        ],
+        bunpou_ids=["bunpou_totemo", "bunpou_ne"],
+        particle_ids=["particle_ne"],
+        kaiwa_ids=["kaiwa_bicara_cuaca"],
     ),
 ]

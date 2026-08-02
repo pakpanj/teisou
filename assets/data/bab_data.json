@@ -136,5 +136,114 @@
       "kaiwa_coba_baju"
     ],
     "dokkaiIds": []
+  },
+  {
+    "id": "bab_kegiatan_sehari_hari",
+    "order": 6,
+    "title": "Kegiatan Sehari-hari",
+    "titleEn": "Daily Activities",
+    "description": "Menceritakan kegiatan yang sedang dilakukan, memakai bentuk -te dari bab sebelumnya.",
+    "descriptionEn": "Talking about activities in progress, building on the -te form from the previous chapter.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_sanpo",
+      "kotoba_hobi_aktivitas_ongaku",
+      "kotoba_hobi_aktivitas_eiga"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_te_iru",
+      "bunpou_totemo"
+    ],
+    "particleIds": [
+      "particle_o"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_hobi"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_di_restoran",
+    "order": 7,
+    "title": "Di Restoran",
+    "titleEn": "At a Restaurant",
+    "description": "Kosakata makanan/minuman dan cara memesan di restoran.",
+    "descriptionEn": "Food/drink vocabulary and how to order at a restaurant.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_makanan_jepang_ramen",
+      "kotoba_makanan_barat_piza",
+      "kotoba_minuman_mizu",
+      "kotoba_minuman_koohii"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_kudasai",
+      "bunpou_ga_arimasu",
+      "bunpou_totemo"
+    ],
+    "particleIds": [
+      "particle_o",
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_pesan_makanan"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_menanyakan_arah",
+    "order": 8,
+    "title": "Menanyakan Arah",
+    "titleEn": "Asking for Directions",
+    "description": "Kata penunjuk arah dan cara bertanya jalan ke suatu tempat.",
+    "descriptionEn": "Direction words and how to ask the way to a place.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_arah_lokasi_migi",
+      "kotoba_arah_lokasi_hidari",
+      "kotoba_arah_lokasi_mae",
+      "kotoba_arah_lokasi_ushiro"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ni_e",
+      "bunpou_made"
+    ],
+    "particleIds": [
+      "particle_ni",
+      "particle_made"
+    ],
+    "kaiwaIds": [
+      "kaiwa_jalan_ke_stasiun"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_cuaca_dan_basa_basi",
+    "order": 9,
+    "title": "Cuaca dan Basa-basi",
+    "titleEn": "Weather and Small Talk",
+    "description": "Kosakata cuaca dan basa-basi ringan tentang cuaca hari ini.",
+    "descriptionEn": "Weather vocabulary and light small talk about today's weather.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_cuaca_tenki",
+      "kotoba_cuaca_ame",
+      "kotoba_cuaca_kaze"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_totemo",
+      "bunpou_ne"
+    ],
+    "particleIds": [
+      "particle_ne"
+    ],
+    "kaiwaIds": [
+      "kaiwa_bicara_cuaca"
+    ],
+    "dokkaiIds": []
   }
 ]

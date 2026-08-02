@@ -4368,3 +4368,75 @@ just the one a human caught by reading the content, not something any
 automated check in this codebase would have flagged (the Python
 generator only validates that ids *exist*, not that they're
 pedagogically reachable).
+
+## Update (2026-08-03, later same day): Bab 6-9 — content progress, Bunpou
+reorganization explicitly deferred
+
+User asked to keep expanding Bab content and postpone auditing/
+reorganizing Bunpou pattern ordering to a later pass — recorded here so
+a future session doesn't assume the prerequisite audit already
+happened just because more chapters shipped after it was raised.
+
+Four new N5 chapters, all inserted at the end (order 6-9, no
+renumbering needed this time since none of them are anyone else's
+prerequisite):
+- **`bab_kegiatan_sehari_hari`** ("Daily Activities") — the first
+  chapter to actually *use* the -te form taught in chapter 3, via
+  `bunpou_te_iru` (ている). Kotoba: 散歩/音楽/映画 (walk/music/movie,
+  from `hobi_aktivitas`). Kaiwa: `kaiwa_tanya_hobi`.
+- **`bab_di_restoran`** ("At a Restaurant") — reuses `bunpou_o_kudasai`/
+  `bunpou_ga_arimasu` (already proven safe in earlier chapters) plus
+  `bunpou_totemo` (とても, no conjugation prerequisite at all — just
+  adverb + adjective). Kotoba pulled from three separate food
+  categories (`makanan_jepang` only has 1 N5 word — ラーメン — on its
+  own, so combined with `makanan_barat`'s ピザ and two `minuman`
+  words). Kaiwa: `kaiwa_pesan_makanan`.
+- **`bab_menanyakan_arah`** ("Asking for Directions") — first chapter
+  to use `particle_ni`/`particle_made` and `bunpou_ni_e`/`bunpou_made`,
+  all plain noun-attaching particles with no verb-form dependency.
+  Kotoba: みぎ/ひだり/まえ/うしろ (`arah_lokasi`). Kaiwa:
+  `kaiwa_jalan_ke_stasiun`.
+- **`bab_cuaca_dan_basa_basi`** ("Weather and Small Talk") — reuses
+  `bunpou_totemo`, adds `bunpou_ne`/`particle_ne` (ね, sentence-final
+  agreement — "hot today, isn't it") for natural small-talk register.
+  Kotoba: てんき/あめ/かぜ (`cuaca`). Kaiwa: `kaiwa_bicara_cuaca`.
+
+**Prerequisite-safety discipline established this pass, worth
+repeating for every future chapter**: before wiring a `bunpou_ids`
+entry, actually read its `formation` field and check whether it says
+"kata kerja bentuk ~ます (hilangkan ます)" (verb ~masu-form, stem
+removed) — that's the exact failure mode `bunpou_te_kei` was created to
+fix for -te form, and it turns out **six more N5 patterns share the
+identical unmet prerequisite**: `bunpou_masen_ka`, `bunpou_mashou`,
+`bunpou_mashou_ka`, `bunpou_ni_iku`, `bunpou_tai`, `bunpou_kata` — none
+of chapters 1-9 use any of them, on purpose. (Patterns requiring
+"kata kerja bentuk kamus" — dictionary/plain form — are fine to use
+freely; that's just the verb's base form as written in any vocab list,
+not a derived conjugation, so there's no equivalent gap there.)
+`bab_lists.py`'s own header comment now documents this six-pattern
+list explicitly so a future session doesn't have to rediscover it by
+re-scanning all 849 formation fields — **the fix (add a proper
+~masu-form conjugation entry, mirroring `bunpou_te_kei`) is exactly
+the "reorganize Bunpou" work the user asked to defer, not forgotten,
+just intentionally not done yet.** Likely needed before authoring an
+invitation/plans-themed chapter ("Mengajak", "Rencana Liburan") — those
+are the natural next N5 themes and `mashou`/`masen_ka` are exactly the
+patterns that fit them.
+
+Bab is now **9/9 N5 chapters** — order stays a deliberate teaching
+sequence throughout, not just append-at-the-end (chapter 6 is
+positioned right after chapter 3 specifically because it's the first
+chapter to *use* chapter 3's grammar).
+
+Verified on the physical Moto G52J again, same as every Bab change so
+far: chapter list shows all 9 in order with correct titles/
+descriptions (content-desc confirmed "9 bab" via `uiautomator dump`
+before even opening the list visually), chapter 1 still showed its
+earlier completed checkmark (SharedPreferences survived another APK
+reinstall), and two of the four new chapters' detail screens (Di
+Restoran, Menanyakan Arah — chosen since they use the most new/
+untested ids: two extra food categories, and the first-ever use of
+`particle_ni`/`particle_made`) were opened and screenshotted, all four
+sections (Kosakata/Tata Bahasa/Partikel/Percakapan) resolving and
+rendering correctly in both. `flutter analyze` clean, `flutter test
+--concurrency=1` 48/48, `flutter build apk --debug` succeeded.
