@@ -767,6 +767,19 @@ N5_GRAMMAR_ENTRIES = [
         ("夏より冬のほうが好きです。", "Natsu yori fuyu no hou ga suki desu.", "Saya lebih suka musim dingin daripada musim panas."),
         ("昨日より今日のほうが暑いです。", "Kinou yori kyou no hou ga atsui desu.", "Hari ini lebih panas daripada kemarin."),
      ]),
+    ("te_kei", "て形（てけい）", "te-kei",
+     "Bentuk -te — bentuk kata kerja yang dipakai untuk menyambung kalimat atau membentuk pola lain",
+     "Kelompok 1 (kata kerja -u): う/つ/る→って, ぬ/ぶ/む→んで, く→いて, ぐ→いで, す→して "
+     "(kecuali 行く→行って). Kelompok 2 (kata kerja -ru): hilangkan る, tambah て. "
+     "Kelompok 3 (tidak beraturan): する→して, 来る（くる）→来て（きて）.",
+     "Bentuk -te sendiri tidak berarti apa-apa, tapi jadi dasar dari banyak pola penting seperti "
+     "~てください (tolong lakukan ~) dan ~ています (sedang melakukan ~). Kuasai perubahannya per "
+     "kelompok kata kerja sebelum mempelajari pola-pola yang memakainya.",
+     ["te_kudasai"], [
+        ("手紙を書いてください。", "Tegami o kaite kudasai.", "Tolong tulis surat."),
+        ("今、ご飯を食べています。", "Ima, gohan o tabete imasu.", "Sekarang sedang makan nasi."),
+        ("宿題をしてください。", "Shukudai o shite kudasai.", "Tolong kerjakan PR."),
+     ]),
 ]
 
 N4_GRAMMAR_ENTRIES = [

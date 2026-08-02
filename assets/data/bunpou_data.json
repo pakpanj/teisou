@@ -2868,6 +2868,41 @@
     "usageNotesEn": "Another variation of the comparison pattern, placing the comparison point ([B]より) first and the superior subject ([A]のほうが) after — the reverse order of the は~より pattern."
   },
   {
+    "id": "bunpou_te_kei",
+    "pattern": "て形（てけい）",
+    "patternRomaji": "te-kei",
+    "jlptLevel": "N5",
+    "meaning": "Bentuk -te — bentuk kata kerja yang dipakai untuk menyambung kalimat atau membentuk pola lain",
+    "formation": "Kelompok 1 (kata kerja -u): う/つ/る→って, ぬ/ぶ/む→んで, く→いて, ぐ→いで, す→して (kecuali 行く→行って). Kelompok 2 (kata kerja -ru): hilangkan る, tambah て. Kelompok 3 (tidak beraturan): する→して, 来る（くる）→来て（きて）.",
+    "usageNotes": "Bentuk -te sendiri tidak berarti apa-apa, tapi jadi dasar dari banyak pola penting seperti ~てください (tolong lakukan ~) dan ~ています (sedang melakukan ~). Kuasai perubahannya per kelompok kata kerja sebelum mempelajari pola-pola yang memakainya.",
+    "similarPatterns": [
+      "bunpou_te_kudasai"
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "手紙を書いてください。",
+        "romaji": "Tegami o kaite kudasai.",
+        "translation": "Tolong tulis surat.",
+        "translationEn": "Please write the letter."
+      },
+      {
+        "japanese": "今、ご飯を食べています。",
+        "romaji": "Ima, gohan o tabete imasu.",
+        "translation": "Sekarang sedang makan nasi.",
+        "translationEn": "I'm eating rice right now."
+      },
+      {
+        "japanese": "宿題をしてください。",
+        "romaji": "Shukudai o shite kudasai.",
+        "translation": "Tolong kerjakan PR.",
+        "translationEn": "Please do your homework."
+      }
+    ],
+    "meaningEn": "The -te form — the verb form used to connect sentences or build other patterns",
+    "formationEn": "Group 1 (-u verbs): u/tsu/ru→tte, nu/bu/mu→nde, ku→ite, gu→ide, su→shite (except iku→itte). Group 2 (-ru verbs): drop ru, add te. Group 3 (irregular): suru→shite, kuru→kite.",
+    "usageNotesEn": "The -te form alone doesn't mean anything on its own, but it's the foundation of many important patterns like ~te kudasai (please do ~) and ~te imasu (doing ~ right now). Master the conjugation per verb group before learning the patterns that use it."
+  },
+  {
     "id": "bunpou_aida",
     "pattern": "間（あいだ）",
     "patternRomaji": "aida",

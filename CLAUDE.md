@@ -4287,3 +4287,84 @@ need to resolve as a real Windows path) to read exact widget
 from a screenshot — reliable, worth using by default for any future
 on-device tap automation in this project rather than eyeballing
 coordinates from an image.
+
+## Update (2026-08-03): Bab 5 — a missing prerequisite, found by the user
+
+User caught a real curriculum-design bug while asking for a 5th N5
+chapter: Bab 4 "Di Sekolah" (chapter 3 at the time) uses
+`bunpou_te_kudasai` (~てください, "please do ~"), but **nothing in the
+entire 849-entry Bunpou dataset ever taught how to conjugate a verb
+into the -te form it depends on** — confirmed by keyword-searching the
+whole dataset for te-form/conjugation-rule content and finding zero
+hits, not just a Bab-sequencing oversight. Verbs are asked to just
+already know -te form, with no lesson anywhere building up to it. This
+is the same class of gap `bab_lists.py`'s own comment already warns
+about: "if a future chapter needs a grammar/vocab prerequisite that
+doesn't exist yet, add the prerequisite as its own chapter earlier in
+the sequence" — except this time the missing prerequisite wasn't even
+in Bunpou at all yet, not just missing from a chapter's reference list.
+
+**Fixed at the dataset level, not just the Bab level**: added a new N5
+Bunpou entry, `bunpou_te_kei` (て形（てけい）, "the -te form"), covering
+the three conjugation groups (Group 1 -u verbs: う/つ/る→って,
+ぬ/ぶ/む→んで, く→いて, ぐ→いで, す→して, except 行く→行って; Group 2 -ru
+verbs: drop る + て; Group 3 irregular: する→して, 来る→来て), with
+`similarPatterns: ["te_kudasai"]` linking forward to the first pattern
+that actually uses it. `N5_GRAMMAR` in `bunpou_grammar_lists.py` grew
+from 84→85 (with a comment noting this one isn't jlptsensei-sourced
+like the rest, it's a deliberate gap-fill), `generate_bunpou_seed.py`'s
+`N5_GRAMMAR_ENTRIES` got the new tuple, and its English translation
+was added to `bunpou_meaning_en.py`/applied via
+`apply_bunpou_meaning_en.py` in the same pass — skipping that step
+would have left the new entry failing
+`content_localization_test.dart`'s "every Bunpou field has an English
+translation" test. **Regenerating `generate_bunpou_seed.py` re-wiped
+all 848 existing entries' English fields again** (same mechanism
+documented in the 2026-07-30 i18n audit entry above — the generator's
+tuple format has no `*En` slots at all, so a full regenerate always
+nukes translations back to Indonesian-only) — re-running
+`apply_bunpou_meaning_en.py` immediately after was not optional here
+either. Bunpou is now 849/849, still zero placeholders, still 100%
+translated.
+
+**New 5th Bab chapter**: `bab_bentuk_te_dan_minta_tolong` ("The -Te
+Form and Asking for Help"), inserted as **chapter 3** (not appended at
+the end) specifically so it teaches -te form *before* "Di Sekolah"
+needs it — "Di Sekolah" and "Belanja" shifted from order 3/4 to 4/5
+accordingly. Content: `bunpou_te_kei` + `bunpou_te_kudasai` (mechanism,
+then its first application), `particle_o` (every example sentence in
+the new grammar entry is a transitive verb + を), two already-existing
+Kotoba nouns that pair naturally with する→して in a request context
+(`kotoba_hobi_aktivitas_souji`/`sentaku`, "cleaning"/"laundry" — chosen
+by grepping for already-authored words that would sit naturally next
+to してください rather than inventing new vocabulary), and
+`kaiwa_bantuan_koper` ("Asking for Help Carrying a Suitcase" — found by
+grepping N5 Kaiwa titles for help/request themes; uses ~てもらえますか,
+a related te-form-based request pattern, reinforcing the mechanism
+rather than just repeating てください verbatim). Bab is now **5/5 N5
+chapters** — still proof-of-concept scale, same as before, just with
+this one dependency ordering issue closed.
+
+**This time verified end-to-end on the physical Moto G52J** (still
+connected from the earlier same-week session) before considering it
+done, not just `analyze`/`test`/`build`: screenshotted the reordered
+5-chapter list (chapter 1 still showing its earlier completed
+checkmark, confirming SharedPreferences progress survived the APK
+reinstall), then chapter 3's detail screen — both そうじ/せんたく
+resolve under Kosakata, both て形（てけい） and てください resolve under
+Tata Bahasa with correct text, を resolves under Partikel, and "Meminta
+Bantuan Membawa Koper" resolves under Percakapan. `flutter analyze`
+clean, `flutter test --concurrency=1` 48/48, `flutter build apk
+--debug` succeeded.
+
+**Lesson worth repeating for any future Bab chapter**: before wiring a
+chapter's `bunpou_ids`, sanity-check whether every grammar pattern
+referenced is actually *reachable* from what earlier chapters (or the
+pattern's own prerequisites) have taught — this dataset was authored
+across many separate sessions by pattern-level meaning/usage, never
+audited for "does the learner already know the mechanics this pattern
+assumes." The `bunpou_te_kei` gap was probably not the only one; it's
+just the one a human caught by reading the content, not something any
+automated check in this codebase would have flagged (the Python
+generator only validates that ids *exist*, not that they're
+pedagogically reachable).

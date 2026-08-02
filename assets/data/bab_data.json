@@ -57,8 +57,33 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_di_sekolah",
+    "id": "bab_bentuk_te_dan_minta_tolong",
     "order": 3,
+    "title": "Bentuk -Te dan Meminta Tolong",
+    "titleEn": "The -Te Form and Asking for Help",
+    "description": "Cara mengubah kata kerja ke bentuk -te, lalu memakainya untuk meminta tolong dengan sopan — dasar yang perlu dikuasai sebelum bab \"Di Sekolah\", yang sudah memakai pola ~てください.",
+    "descriptionEn": "How to conjugate verbs into the -te form, then use it to ask for help politely — the foundation needed before \"At School\", which already uses the ~te kudasai pattern.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_souji",
+      "kotoba_hobi_aktivitas_sentaku"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_te_kei",
+      "bunpou_te_kudasai"
+    ],
+    "particleIds": [
+      "particle_o"
+    ],
+    "kaiwaIds": [
+      "kaiwa_bantuan_koper"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_di_sekolah",
+    "order": 4,
     "title": "Di Sekolah",
     "titleEn": "At School",
     "description": "Alat tulis, mata pelajaran, dan percakapan sehari-hari di sekolah.",
@@ -87,7 +112,7 @@
   },
   {
     "id": "bab_belanja",
-    "order": 4,
+    "order": 5,
     "title": "Belanja",
     "titleEn": "Shopping",
     "description": "Kosakata pakaian dan cara meminta atau membeli barang di toko.",

@@ -5143,4 +5143,18 @@ BUNPOU_MEANING_EN = {
     "bunpou_zukume|se0": "He always dresses all in black.",
     "bunpou_zukume|se1": "This year has been all good things.",
     "bunpou_zukume|se2": "Everyone is happy with the all-satisfying result.",
+    "bunpou_te_kei|meaning": "The -te form — the verb form used to connect sentences or build other patterns",
+    "bunpou_te_kei|formation": (
+        "Group 1 (-u verbs): u/tsu/ru→tte, nu/bu/mu→nde, ku→ite, gu→ide, "
+        "su→shite (except iku→itte). Group 2 (-ru verbs): drop ru, add te. "
+        "Group 3 (irregular): suru→shite, kuru→kite."
+    ),
+    "bunpou_te_kei|usageNotes": (
+        "The -te form alone doesn't mean anything on its own, but it's the foundation of many "
+        "important patterns like ~te kudasai (please do ~) and ~te imasu (doing ~ right now). "
+        "Master the conjugation per verb group before learning the patterns that use it."
+    ),
+    "bunpou_te_kei|se0": "Please write the letter.",
+    "bunpou_te_kei|se1": "I'm eating rice right now.",
+    "bunpou_te_kei|se2": "Please do your homework.",
 }

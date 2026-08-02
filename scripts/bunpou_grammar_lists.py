@@ -108,10 +108,15 @@ N5_GRAMMAR = [
     "や",
     "よ",
     "より～ほうが",
+    # Added later (2026-08-03), not from jlptsensei.com's original list —
+    # a deliberate fix for a real curriculum gap found while building the
+    # Bab module: several existing N5 patterns (te_kudasai, te_iru, ...)
+    # use the -te form but nothing taught how to conjugate to it.
+    "て形（てけい）",
 ]
 
-assert len(N5_GRAMMAR) == 84, len(N5_GRAMMAR)
-assert len(set(N5_GRAMMAR)) == 84, "duplicate pattern in N5_GRAMMAR"
+assert len(N5_GRAMMAR) == 85, len(N5_GRAMMAR)
+assert len(set(N5_GRAMMAR)) == 85, "duplicate pattern in N5_GRAMMAR"
 
 # N4_GRAMMAR is sourced the same way (jlptsensei.com's N4 grammar list,
 # https://jlptsensei.com/jlpt-n4-grammar-list/, fetched across its 4

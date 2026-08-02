@@ -11,10 +11,18 @@
 # bab_data.json, so a typo'd id fails the build loudly instead of becoming
 # a silent dead link at runtime.
 #
-# V1 (this batch): 4 proof-of-concept N5 chapters, hand-picked from content
+# V1 (this batch): 5 proof-of-concept N5 chapters, hand-picked from content
 # already authored in past sessions — not the full curriculum. Expanding to
 # more N5 chapters and then N4-N1 is future-session work, same "batch 1 of
 # many" shape as this project's other content rollouts (Dokkai, Dictionary).
+#
+# Chapter order is a deliberate teaching sequence, not just a list order —
+# "bab_bentuk_te_dan_minta_tolong" (chapter 3) exists specifically to teach
+# -te form conjugation *before* "bab_di_sekolah" (chapter 4), which already
+# used the ~てください pattern without ever explaining how to build a -te
+# form. If a future chapter needs a grammar/vocab prerequisite that doesn't
+# exist yet, add the prerequisite as its own chapter earlier in the
+# sequence rather than assuming the learner already knows it.
 
 N5_CHAPTERS = [
     dict(
@@ -52,8 +60,32 @@ N5_CHAPTERS = [
         kaiwa_ids=["kaiwa_kenalkan_keluarga"],
     ),
     dict(
-        id="bab_di_sekolah",
+        id="bab_bentuk_te_dan_minta_tolong",
         order=3,
+        level="N5",
+        title="Bentuk -Te dan Meminta Tolong",
+        title_en="The -Te Form and Asking for Help",
+        description=(
+            "Cara mengubah kata kerja ke bentuk -te, lalu memakainya untuk meminta "
+            "tolong dengan sopan — dasar yang perlu dikuasai sebelum bab \"Di Sekolah\", "
+            "yang sudah memakai pola ~てください."
+        ),
+        description_en=(
+            "How to conjugate verbs into the -te form, then use it to ask for help "
+            "politely — the foundation needed before \"At School\", which already "
+            "uses the ~te kudasai pattern."
+        ),
+        kotoba_ids=[
+            "kotoba_hobi_aktivitas_souji",
+            "kotoba_hobi_aktivitas_sentaku",
+        ],
+        bunpou_ids=["bunpou_te_kei", "bunpou_te_kudasai"],
+        particle_ids=["particle_o"],
+        kaiwa_ids=["kaiwa_bantuan_koper"],
+    ),
+    dict(
+        id="bab_di_sekolah",
+        order=4,
         level="N5",
         title="Di Sekolah",
         title_en="At School",
@@ -72,7 +104,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_belanja",
-        order=4,
+        order=5,
         level="N5",
         title="Belanja",
         title_en="Shopping",
