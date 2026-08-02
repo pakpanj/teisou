@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/sakura_decoration.dart';
@@ -102,7 +102,7 @@ class _HomeTabBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: context.palette.background,
       body: Stack(
         children: [
           const Positioned.fill(child: SakuraFallWidget()),
@@ -122,7 +122,7 @@ class _HomeTabBody extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               RichText(
-                                text: const TextSpan(
+                                text: TextSpan(
                                   style: TextStyle(
                                     fontSize: 32,
                                     fontWeight: FontWeight.bold,
@@ -132,13 +132,13 @@ class _HomeTabBody extends ConsumerWidget {
                                     TextSpan(
                                       text: 'Kana\n',
                                       style: TextStyle(
-                                        color: AppColors.textNavy,
+                                        color: context.palette.textNavy,
                                       ),
                                     ),
                                     TextSpan(
                                       text: 'Master',
                                       style: TextStyle(
-                                        color: AppColors.primaryCoral,
+                                        color: context.palette.primaryCoral,
                                       ),
                                     ),
                                   ],
@@ -156,9 +156,9 @@ class _HomeTabBody extends ConsumerWidget {
                                               context,
                                               const SearchScreen(),
                                             ),
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.search,
-                                          color: AppColors.textNavy,
+                                          color: context.palette.textNavy,
                                         ),
                                       ),
                                       IconButton(
@@ -185,9 +185,9 @@ class _HomeTabBody extends ConsumerWidget {
                           const SizedBox(height: 8),
                           Text(
                             s.homeTagline,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 14,
-                              color: AppColors.textNavy,
+                              color: context.palette.textNavy,
                             ),
                           ),
                           const SizedBox(height: 20),
@@ -222,7 +222,7 @@ class _HomeTabBody extends ConsumerWidget {
                           ),
                           const SizedBox(height: 24),
                           _MenuCard(
-                            backgroundColor: AppColors.hiraganaCardBg,
+                            backgroundColor: context.palette.hiraganaCardBg,
                             iconBackgroundColor: const Color.fromARGB(
                               255,
                               254,
@@ -239,7 +239,7 @@ class _HomeTabBody extends ConsumerWidget {
                           ),
                           const SizedBox(height: 16),
                           _MenuCard(
-                            backgroundColor: AppColors.katakanaCardBg,
+                            backgroundColor: context.palette.katakanaCardBg,
                             iconBackgroundColor: const Color.fromARGB(
                               255,
                               112,
@@ -256,8 +256,8 @@ class _HomeTabBody extends ConsumerWidget {
                           ),
                           const SizedBox(height: 16),
                           _MenuCard(
-                            backgroundColor: AppColors.tertiaryAmberCardBg,
-                            iconBackgroundColor: AppColors.tertiaryAmber,
+                            backgroundColor: context.palette.tertiaryAmberCardBg,
+                            iconBackgroundColor: context.palette.tertiaryAmber,
                             icon: Icons.assignment_outlined,
                             title: s.exam,
                             subtitle: s.testYourSkills,
@@ -341,10 +341,10 @@ class _MenuCard extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -352,7 +352,7 @@ class _MenuCard extends StatelessWidget {
                       subtitle,
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -387,7 +387,7 @@ class _BottomNavBar extends StatelessWidget {
     ];
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.06),
@@ -402,7 +402,8 @@ class _BottomNavBar extends StatelessWidget {
         children: List.generate(items.length, (index) {
           final item = items[index];
           final active = index == currentIndex;
-          final color = active ? AppColors.primaryCoral : Colors.grey;
+          final color =
+        active ? context.palette.primaryCoral : context.palette.freeBadgeGrey;
           return InkWell(
             onTap: () => onTap(index),
             borderRadius: BorderRadius.circular(12),

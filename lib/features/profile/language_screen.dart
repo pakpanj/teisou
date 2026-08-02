@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/app_language.dart';
 
 /// Picker for the app's UI-chrome language (Bahasa Indonesia / English).
@@ -23,17 +23,17 @@ class LanguageScreen extends ConsumerWidget {
     final current = ref.watch(languageProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(s.appLanguage)),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
           Text(
             s.chooseAppLanguage,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy,
+              color: context.palette.textNavy,
             ),
           ),
           const SizedBox(height: 12),
@@ -50,7 +50,7 @@ class LanguageScreen extends ConsumerWidget {
             s.languageScopeNote,
             style: TextStyle(
               fontSize: 12,
-              color: AppColors.textNavy.withValues(alpha: 0.6),
+              color: context.palette.textNavy.withValues(alpha: 0.6),
             ),
           ),
         ],
@@ -73,7 +73,7 @@ class _LanguageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.cardWhite,
+      color: context.palette.cardWhite,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
@@ -83,7 +83,7 @@ class _LanguageTile extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             border: selected
-                ? Border.all(color: AppColors.primaryCoral, width: 2)
+                ? Border.all(color: context.palette.primaryCoral, width: 2)
                 : null,
           ),
           child: Row(
@@ -93,19 +93,19 @@ class _LanguageTile extends StatelessWidget {
               Expanded(
                 child: Text(
                   language.label,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textNavy,
+                    color: context.palette.textNavy,
                   ),
                 ),
               ),
               if (selected)
-                const Icon(Icons.check_circle, color: AppColors.primaryCoral)
+                Icon(Icons.check_circle, color: context.palette.primaryCoral)
               else
                 Icon(
                   Icons.circle_outlined,
-                  color: AppColors.textNavy.withValues(alpha: 0.3),
+                  color: context.palette.textNavy.withValues(alpha: 0.3),
                 ),
             ],
           ),

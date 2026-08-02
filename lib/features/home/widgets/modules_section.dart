@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/localization/app_strings.dart';
 import '../../../core/navigation/app_navigator.dart';
 import '../../../core/providers.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../data/models/module_info.dart';
 import '../../bunpou/bunpou_home_screen.dart';
 import '../../kaiwa/kaiwa_home_screen.dart';
@@ -39,8 +39,8 @@ class ModulesSection extends ConsumerWidget {
         const SizedBox(height: 12),
         _AvailableModuleCard(
           emoji: '📚',
-          backgroundColor: AppColors.katakanaCardBg,
-          iconColor: AppColors.secondaryBlue,
+          backgroundColor: context.palette.katakanaCardBg,
+          iconColor: context.palette.secondaryBlue,
           title: s.kotobaTitle,
           subtitle: s.kotobaSubtitle,
           onTap: () => AppNavigator.slideFromRight(
@@ -51,8 +51,8 @@ class ModulesSection extends ConsumerWidget {
         const SizedBox(height: 12),
         _AvailableModuleCard(
           emoji: '字',
-          backgroundColor: AppColors.tertiaryAmberCardBg,
-          iconColor: AppColors.tertiaryAmber,
+          backgroundColor: context.palette.tertiaryAmberCardBg,
+          iconColor: context.palette.tertiaryAmber,
           title: s.kanjiTitle,
           subtitle: s.kanjiSubtitle,
           onTap: () => AppNavigator.slideFromRight(
@@ -63,8 +63,8 @@ class ModulesSection extends ConsumerWidget {
         const SizedBox(height: 12),
         _AvailableModuleCard(
           emoji: '文',
-          backgroundColor: AppColors.hiraganaCardBg,
-          iconColor: AppColors.primaryCoral,
+          backgroundColor: context.palette.hiraganaCardBg,
+          iconColor: context.palette.primaryCoral,
           title: s.bunpouTitle,
           subtitle: s.bunpouSubtitle,
           onTap: () => AppNavigator.slideFromRight(
@@ -78,8 +78,8 @@ class ModulesSection extends ConsumerWidget {
         // _PremiumModuleCard + PaywallScreen branch before release.
         _AvailableModuleCard(
           emoji: 'を',
-          backgroundColor: AppColors.tertiaryAmberCardBg,
-          iconColor: AppColors.tertiaryAmber,
+          backgroundColor: context.palette.tertiaryAmberCardBg,
+          iconColor: context.palette.tertiaryAmber,
           title: s.particleTitle,
           subtitle: s.particleSubtitle,
           onTap: () => AppNavigator.slideFromRight(context, const ParticleHomeScreen()),
@@ -87,8 +87,8 @@ class ModulesSection extends ConsumerWidget {
         const SizedBox(height: 12),
         _AvailableModuleCard(
           emoji: '💬',
-          backgroundColor: AppColors.hiraganaCardBg,
-          iconColor: AppColors.primaryCoral,
+          backgroundColor: context.palette.hiraganaCardBg,
+          iconColor: context.palette.primaryCoral,
           title: s.kaiwaTitle,
           subtitle: s.kaiwaSubtitle,
           onTap: () => AppNavigator.slideFromRight(context, const KaiwaHomeScreen()),
@@ -116,10 +116,10 @@ class _SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        color: AppColors.textNavy,
+        color: context.palette.textNavy,
       ),
     );
   }
@@ -175,10 +175,10 @@ class _AvailableModuleCard extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -186,7 +186,7 @@ class _AvailableModuleCard extends StatelessWidget {
                       subtitle,
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -225,7 +225,7 @@ class _LockedModuleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.grey.shade100,
+      color: context.palette.mutedSurface,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
@@ -240,7 +240,7 @@ class _LockedModuleCard extends StatelessWidget {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
+                  color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
@@ -257,10 +257,10 @@ class _LockedModuleCard extends StatelessWidget {
                           child: Text(
                             title,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: AppColors.textNavy,
+                              color: context.palette.textNavy,
                             ),
                           ),
                         ),
@@ -271,15 +271,15 @@ class _LockedModuleCard extends StatelessWidget {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
+                            color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
                             fixingBadge,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
-                              color: AppColors.freeBadgeGrey,
+                              color: context.palette.freeBadgeGrey,
                             ),
                           ),
                         ),
@@ -290,13 +290,13 @@ class _LockedModuleCard extends StatelessWidget {
                       subtitle,
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
                 ),
               ),
-              const Icon(Icons.lock, color: AppColors.freeBadgeGrey, size: 20),
+              Icon(Icons.lock, color: context.palette.freeBadgeGrey, size: 20),
             ],
           ),
         ),
@@ -334,7 +334,7 @@ class _ComingSoonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final (title, description) = _displayText();
     return Material(
-      color: Colors.grey.shade100,
+      color: context.palette.mutedSurface,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
@@ -347,7 +347,7 @@ class _ComingSoonCard extends StatelessWidget {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
+                  color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
@@ -367,10 +367,10 @@ class _ComingSoonCard extends StatelessWidget {
                           child: Text(
                             title,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: AppColors.textNavy,
+                              color: context.palette.textNavy,
                             ),
                           ),
                         ),
@@ -381,15 +381,15 @@ class _ComingSoonCard extends StatelessWidget {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
+                            color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
                             strings.comingSoonBadge,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
-                              color: AppColors.freeBadgeGrey,
+                              color: context.palette.freeBadgeGrey,
                             ),
                           ),
                         ),
@@ -401,7 +401,7 @@ class _ComingSoonCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -409,7 +409,7 @@ class _ComingSoonCard extends StatelessWidget {
               ),
               if (module.requiresPremium) ...[
                 const SizedBox(width: 8),
-                const Icon(Icons.lock, color: AppColors.freeBadgeGrey, size: 20),
+                Icon(Icons.lock, color: context.palette.freeBadgeGrey, size: 20),
               ],
             ],
           ),

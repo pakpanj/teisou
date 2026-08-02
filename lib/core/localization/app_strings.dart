@@ -150,6 +150,27 @@ class AppStrings {
       );
   String get languageSaved => _t('Bahasa disimpan.', 'Language saved.');
 
+  // --- Theme screen ---
+  String get appTheme => _t('Tema App', 'App Theme');
+  String get chooseAppTheme => _t('Pilih tema aplikasi', 'Choose app theme');
+  String get themeLight => _t('Terang', 'Light');
+  String get themeDark => _t('Gelap', 'Dark');
+  String get themeSystem => _t('Ikuti Sistem', 'Follow System');
+  String get themeLightDesc =>
+      _t('Tampilan cerah, seperti biasa.', 'Bright look, as always.');
+  String get themeDarkDesc => _t(
+        'Latar gelap, lebih nyaman di ruangan minim cahaya.',
+        'Dark background, easier on the eyes in low light.',
+      );
+  String get themeSystemDesc => _t(
+        'Ikut pengaturan terang/gelap di HP kamu.',
+        "Follows your phone's light/dark setting.",
+      );
+  String get themeScopeNote => _t(
+        'Catatan: sebagian layar mungkin masih tampil terang untuk saat ini.',
+        'Note: some screens may still appear light for now.',
+      );
+
   // --- Shared across module Home/Level/Category/Detail/Quiz screens ---
   String get soonBadge => _t('Segera', 'Soon');
   String get startQuizTooltip => _t('Mulai Kuis', 'Start Quiz');

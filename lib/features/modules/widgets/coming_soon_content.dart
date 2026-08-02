@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/localization/app_strings.dart';
 import '../../../core/providers.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/mascot_widget.dart';
 import '../../../data/models/module_info.dart';
 import '../../paywall/paywall_screen.dart';
@@ -64,10 +64,10 @@ class ComingSoonContent extends ConsumerWidget {
           Text(
             s.moduleInDevelopment,
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
-              color: AppColors.textNavy,
+              color: context.palette.textNavy,
             ),
           ),
           const SizedBox(height: 24),
@@ -115,7 +115,7 @@ class ComingSoonContent extends ConsumerWidget {
 Future<void> showComingSoonSheet(BuildContext context, {required String moduleId}) {
   return showModalBottomSheet(
     context: context,
-    backgroundColor: AppColors.background,
+    backgroundColor: context.palette.background,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
     ),

@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/covers.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/user_avatar.dart';
 import '../../data/models/kana_status.dart';
@@ -16,6 +16,7 @@ import '../saved_words/saved_words_screen.dart';
 import 'about_screen.dart';
 import 'exam_history_screen.dart';
 import 'language_screen.dart';
+import 'theme_screen.dart';
 import 'notification_screen.dart';
 import 'profile_providers.dart';
 import 'widgets/avatar_picker_sheet.dart';
@@ -34,7 +35,7 @@ class ProfileScreen extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(
         title: Text(s.profile),
         automaticallyImplyLeading: false,
@@ -77,8 +78,8 @@ class _ProfileBody extends ConsumerWidget {
               Expanded(
                 child: _ProgressStatCard(
                   type: KanaType.hiragana,
-                  color: AppColors.primaryCoral,
-                  cardBg: AppColors.hiraganaCardBg,
+                  color: context.palette.primaryCoral,
+                  cardBg: context.palette.hiraganaCardBg,
                   label: 'Hiragana',
                   character: 'あ',
                 ),
@@ -87,8 +88,8 @@ class _ProfileBody extends ConsumerWidget {
               Expanded(
                 child: _ProgressStatCard(
                   type: KanaType.katakana,
-                  color: AppColors.secondaryBlue,
-                  cardBg: AppColors.katakanaCardBg,
+                  color: context.palette.secondaryBlue,
+                  cardBg: context.palette.katakanaCardBg,
                   label: 'Katakana',
                   character: 'ア',
                 ),
@@ -187,12 +188,12 @@ class _HeaderCard extends ConsumerWidget {
             child: _HeaderBackground(coverId: profile?.coverId),
           ),
           // Scrim so avatar/name/text stay legible over any cover photo,
-          // busy or plain.
-          const Positioned.fill(
+          // busy or plain. Comes from the palette because it has to invert:
+          // a white wash under dark mode's pale text would leave the two
+          // fighting each other on the lighter covers.
+          Positioned.fill(
             child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 255, 255, 0.62),
-              ),
+              decoration: BoxDecoration(color: context.palette.headerScrim),
             ),
           ),
           Padding(
@@ -210,8 +211,8 @@ class _HeaderCard extends ConsumerWidget {
                         bottom: 0,
                         child: Container(
                           padding: const EdgeInsets.all(4),
-                          decoration: const BoxDecoration(
-                            color: AppColors.primaryCoral,
+                          decoration: BoxDecoration(
+                            color: context.palette.primaryCoral,
                             shape: BoxShape.circle,
                           ),
                           child: const Icon(
@@ -232,18 +233,18 @@ class _HeaderCard extends ConsumerWidget {
                       child: Text(
                         displayName,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.textNavy,
+                          color: context.palette.textNavy,
                         ),
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.edit,
                         size: 18,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                       tooltip: s.changeNameTooltip,
                       onPressed: () => _editName(context, displayName),
@@ -256,7 +257,7 @@ class _HeaderCard extends ConsumerWidget {
                 Text(
                   s.profileMotivation,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 12.5, color: AppColors.textNavy),
+                  style: TextStyle(fontSize: 12.5, color: context.palette.textNavy),
                 ),
                 if (isAnonymous) ...[
                   const SizedBox(height: 16),
@@ -264,9 +265,9 @@ class _HeaderCard extends ConsumerWidget {
                     width: double.infinity,
                     child: OutlinedButton.icon(
                       style: OutlinedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: AppColors.primaryCoral,
-                        side: const BorderSide(color: AppColors.primaryCoral),
+                        backgroundColor: context.palette.cardWhite,
+                        foregroundColor: context.palette.primaryCoral,
+                        side: BorderSide(color: context.palette.primaryCoral),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -315,8 +316,8 @@ class _HeaderBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     final preset = CoverPresets.byId(coverId);
     if (preset == null) {
-      return const ColoredBox(
-        color: AppColors.hiraganaCardBg,
+      return ColoredBox(
+        color: context.palette.hiraganaCardBg,
         child: Align(
           alignment: Alignment.centerRight,
           child: ProfileHeaderIllustration(),
@@ -344,8 +345,8 @@ class _TierBadge extends StatelessWidget {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [AppColors.premiumGoldStart, AppColors.premiumGoldEnd],
+          gradient: LinearGradient(
+            colors: [context.palette.premiumGoldStart, context.palette.premiumGoldEnd],
           ),
           borderRadius: BorderRadius.circular(20),
         ),
@@ -369,13 +370,13 @@ class _TierBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.6),
+        color: context.palette.cardWhite.withValues(alpha: 0.75),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: const Text(
+      child: Text(
         '🌸 FREE',
         style: TextStyle(
-          color: AppColors.primaryCoral,
+          color: context.palette.primaryCoral,
           fontWeight: FontWeight.bold,
           fontSize: 12,
         ),
@@ -431,9 +432,9 @@ class _ProgressStatCard extends ConsumerWidget {
             children: [
               Text(
                 label,
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textNavy,
+                  color: context.palette.textNavy,
                 ),
               ),
               Container(
@@ -486,7 +487,7 @@ class _StreakCard extends ConsumerWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.tertiaryAmberCardBg,
+        color: context.palette.tertiaryAmberCardBg,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -499,24 +500,24 @@ class _StreakCard extends ConsumerWidget {
               children: [
                 Text(
                   s.streak,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.tertiaryAmber,
+                    color: context.palette.tertiaryAmber,
                   ),
                 ),
                 Text(
                   s.streakDays(streak),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textNavy,
+                    color: context.palette.textNavy,
                   ),
                 ),
                 Text(
                   s.keepYourStreak,
                   style: TextStyle(
                     fontSize: 12,
-                    color: AppColors.textNavy.withValues(alpha: 0.6),
+                    color: context.palette.textNavy.withValues(alpha: 0.6),
                   ),
                 ),
               ],
@@ -541,7 +542,7 @@ class _StreakDayBadge extends StatelessWidget {
     return Container(
       width: 46,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(10),
       ),
       clipBehavior: Clip.antiAlias,
@@ -550,7 +551,7 @@ class _StreakDayBadge extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            color: AppColors.tertiaryAmber,
+            color: context.palette.tertiaryAmber,
             padding: const EdgeInsets.symmetric(vertical: 2),
             alignment: Alignment.center,
             child: Text(
@@ -566,10 +567,10 @@ class _StreakDayBadge extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 3),
             child: Text(
               daysLabel,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 9,
                 fontWeight: FontWeight.bold,
-                color: AppColors.textNavy,
+                color: context.palette.textNavy,
               ),
             ),
           ),
@@ -595,10 +596,10 @@ class _ExamHistorySection extends ConsumerWidget {
           children: [
             Text(
               s.examHistory,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: AppColors.textNavy,
+                color: context.palette.textNavy,
               ),
             ),
             TextButton(
@@ -618,7 +619,7 @@ class _ExamHistorySection extends ConsumerWidget {
                   child: Text(
                     s.noExamHistory,
                     style: TextStyle(
-                      color: AppColors.textNavy.withValues(alpha: 0.6),
+                      color: context.palette.textNavy.withValues(alpha: 0.6),
                     ),
                   ),
                 ),
@@ -652,8 +653,8 @@ class _SettingsMenu extends ConsumerWidget {
             onPressed: () => Navigator.pop(ctx, true),
             child: Text(
               s.logout,
-              style: const TextStyle(
-                color: AppColors.primaryCoral,
+              style: TextStyle(
+                color: context.palette.primaryCoral,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -677,7 +678,7 @@ class _SettingsMenu extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -696,6 +697,14 @@ class _SettingsMenu extends ConsumerWidget {
             onTap: () => Navigator.of(
               context,
             ).push(MaterialPageRoute(builder: (_) => const LanguageScreen())),
+          ),
+          const Divider(height: 1, indent: 16, endIndent: 16),
+          _MenuTile(
+            emoji: '🎨',
+            title: s.appTheme,
+            onTap: () => Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (_) => const ThemeScreen())),
           ),
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
@@ -740,8 +749,8 @@ class _MenuTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Text(emoji, style: const TextStyle(fontSize: 20)),
-      title: Text(title, style: const TextStyle(color: AppColors.textNavy)),
-      trailing: const Icon(Icons.chevron_right, color: AppColors.textNavy),
+      title: Text(title, style: TextStyle(color: context.palette.textNavy)),
+      trailing: Icon(Icons.chevron_right, color: context.palette.textNavy),
       onTap: onTap,
     );
   }

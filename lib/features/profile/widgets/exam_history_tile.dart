@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../exam_history_providers.dart';
 
 /// One row in an exam-history list — category label, score/total, and
@@ -21,7 +21,7 @@ class ExamHistoryTile extends StatelessWidget {
       margin: const EdgeInsets.only(top: 8),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -29,17 +29,17 @@ class ExamHistoryTile extends StatelessWidget {
           Expanded(
             child: Text(
               entry.label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.w600,
-                color: AppColors.textNavy,
+                color: context.palette.textNavy,
               ),
             ),
           ),
           Text(
             '${entry.score}/${entry.total}',
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: AppColors.primaryCoral,
+              color: context.palette.primaryCoral,
             ),
           ),
           const SizedBox(width: 12),
@@ -47,7 +47,7 @@ class ExamHistoryTile extends StatelessWidget {
             _formatDate(entry.completedAt),
             style: TextStyle(
               fontSize: 12,
-              color: AppColors.textNavy.withValues(alpha: 0.5),
+              color: context.palette.textNavy.withValues(alpha: 0.5),
             ),
           ),
         ],

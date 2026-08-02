@@ -8,7 +8,9 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'core/providers.dart';
 import 'core/theme/app_theme.dart';
+import 'data/models/app_theme_mode.dart';
 import 'data/repositories/language_repository.dart';
+import 'data/repositories/theme_repository.dart';
 import 'features/home/home_screen.dart';
 import 'firebase_options.dart';
 
@@ -35,9 +37,13 @@ Future<void> main() async {
   // must not block the first frame.
   unawaited(_initializeMobileAds());
   final initialLanguage = await LanguageRepository().getLanguage();
+  final initialThemeMode = await ThemeRepository().getThemeMode();
   runApp(
     ProviderScope(
-      overrides: [languageProvider.overrideWith((ref) => initialLanguage)],
+      overrides: [
+        languageProvider.overrideWith((ref) => initialLanguage),
+        themeModeProvider.overrideWith((ref) => initialThemeMode),
+      ],
       child: const KanaMasterApp(),
     ),
   );
@@ -51,15 +57,20 @@ Future<void> _initializeMobileAds() async {
   }
 }
 
-class KanaMasterApp extends StatelessWidget {
+class KanaMasterApp extends ConsumerWidget {
   const KanaMasterApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Watched, not read: switching the mode in ThemeScreen has to repaint
+    // the whole app immediately, the same way languageProvider does.
+    final themeMode = ref.watch(themeModeProvider);
     return MaterialApp(
       title: 'Teisou: Kana Master',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: themeMode.material,
       home: const HomeScreen(),
     );
   }

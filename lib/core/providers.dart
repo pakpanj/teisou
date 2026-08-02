@@ -2,12 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/models/app_language.dart';
+import '../data/models/app_theme_mode.dart';
 import '../data/models/kana_character.dart';
 import '../data/models/kana_type.dart';
 import '../data/models/kana_type_progress.dart';
 import '../data/models/subscription.dart';
 import '../data/models/user_profile.dart';
 import '../data/repositories/language_repository.dart';
+import '../data/repositories/theme_repository.dart';
 import '../data/repositories/bunpou_level_repository.dart';
 import '../data/repositories/bunpou_progress_repository.dart';
 import '../data/repositories/bunpou_repository.dart';
@@ -61,6 +63,18 @@ final languageProvider = StateProvider<AppLanguage>(
 /// screens are wired up so far.
 final appStringsProvider = Provider<AppStrings>(
   (ref) => AppStrings(ref.watch(languageProvider)),
+);
+
+final themeRepositoryProvider = Provider<ThemeRepository>(
+  (ref) => ThemeRepository(),
+);
+
+/// Current colour mode, watched by `MaterialApp.themeMode`. Initial value
+/// is overridden in `main.dart` from SharedPreferences before `runApp`, the
+/// same way [languageProvider] is — the default here (light) only applies
+/// if that override is missing, e.g. a test building the app directly.
+final themeModeProvider = StateProvider<AppThemeMode>(
+  (ref) => AppThemeMode.light,
 );
 
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
