@@ -47,6 +47,11 @@ class AppPalette extends ThemeExtension<AppPalette> {
   /// near-black line on a dark surface — hence its own token.
   final Color divider;
 
+  /// The unfilled track behind a [LinearProgressIndicator]. Was
+  /// `context.palette.progressTrack` inline in all ten progress bars, which is a
+  /// bright bar across a dark card.
+  final Color progressTrack;
+
   /// A recessed surface, one step back from [cardWhite] — the locked and
   /// "coming soon" module cards, which read as unavailable rather than
   /// tappable. Was `Colors.grey.shade100` inline, which is a bright panel
@@ -71,6 +76,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     required this.headerScrim,
     required this.divider,
     required this.mutedSurface,
+    required this.progressTrack,
   });
 
   /// Exactly the values [AppColors] has always held, so a migrated screen
@@ -93,6 +99,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     headerScrim: Color(0x9EFFFFFF), // white @ 62%
     divider: Color(0x141E2A47), // textNavy @ 8%
     mutedSurface: Color(0xFFF5F5F5),
+    progressTrack: Color(0xFFEEEEEE),
   );
 
   /// Built around the app's existing navy rather than neutral grey, so dark
@@ -117,6 +124,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     headerScrim: Color(0xB3121620), // background @ 70%
     divider: Color(0x1FE8EAF0), // textNavy @ 12%
     mutedSurface: Color(0xFF181C27),
+    progressTrack: Color(0xFF2A3142),
   );
 
   @override
@@ -138,6 +146,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
     Color? headerScrim,
     Color? divider,
     Color? mutedSurface,
+    Color? progressTrack,
   }) {
     return AppPalette(
       background: background ?? this.background,
@@ -157,6 +166,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
       headerScrim: headerScrim ?? this.headerScrim,
       divider: divider ?? this.divider,
       mutedSurface: mutedSurface ?? this.mutedSurface,
+      progressTrack: progressTrack ?? this.progressTrack,
     );
   }
 
@@ -183,6 +193,7 @@ class AppPalette extends ThemeExtension<AppPalette> {
       headerScrim: Color.lerp(headerScrim, other.headerScrim, t)!,
       divider: Color.lerp(divider, other.divider, t)!,
       mutedSurface: Color.lerp(mutedSurface, other.mutedSurface, t)!,
+      progressTrack: Color.lerp(progressTrack, other.progressTrack, t)!,
     );
   }
 }

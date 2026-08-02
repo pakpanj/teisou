@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/mascot_widget.dart';
 import '../../core/widgets/sakura_decoration.dart';
 import '../../data/models/exam_result.dart';
@@ -64,7 +64,7 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
   Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       body: Stack(
         children: [
           SafeArea(
@@ -95,19 +95,19 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
               Text(
                 _title(s),
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textNavy,
+                  color: context.palette.textNavy,
                 ),
               ),
               const SizedBox(height: 24),
               Text(
                 '${result.score} / ${result.total}',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.primaryCoral,
+                  color: context.palette.primaryCoral,
                 ),
               ),
               const SizedBox(height: 8),
@@ -117,14 +117,14 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.tertiaryAmberCardBg,
+                  color: context.palette.tertiaryAmberCardBg,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
                   '${result.percentage.round()}%',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textNavy,
+                    color: context.palette.textNavy,
                   ),
                 ),
               ),
@@ -135,7 +135,7 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
                     child: _StatCard(
                       label: s.correctLabel,
                       value: result.correctCount,
-                      color: AppColors.successGreen,
+                      color: context.palette.successGreen,
                     ),
                   ),
                   const SizedBox(width: 16),
@@ -143,7 +143,7 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
                     child: _StatCard(
                       label: s.wrongLabel,
                       value: result.wrongCount,
-                      color: AppColors.errorRed,
+                      color: context.palette.errorRed,
                     ),
                   ),
                 ],
@@ -189,10 +189,10 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
               emissionFrequency: 0.05,
               numberOfParticles: 24,
               gravity: 0.3,
-              colors: const [
-                AppColors.primaryCoral,
-                AppColors.secondaryBlue,
-                AppColors.tertiaryAmber,
+              colors: [
+                context.palette.primaryCoral,
+                context.palette.secondaryBlue,
+                context.palette.tertiaryAmber,
               ],
             ),
           ),
@@ -218,7 +218,7 @@ class _StatCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -239,7 +239,7 @@ class _StatCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 4),
-          Text(label, style: const TextStyle(color: AppColors.textNavy)),
+          Text(label, style: TextStyle(color: context.palette.textNavy)),
         ],
       ),
     );

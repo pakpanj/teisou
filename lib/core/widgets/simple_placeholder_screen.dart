@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
+import '../theme/app_palette.dart';
 
 /// Generic "not built yet" screen shell — a proper container with a
 /// consistent look, used for menu destinations that don't have real
@@ -20,7 +20,7 @@ class SimplePlaceholderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(title)),
       body: Center(
         child: Padding(
@@ -28,12 +28,12 @@ class SimplePlaceholderScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, size: 64, color: AppColors.textNavy.withValues(alpha: 0.3)),
+              Icon(icon, size: 64, color: context.palette.textNavy.withValues(alpha: 0.3)),
               const SizedBox(height: 16),
               Text(
                 message,
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: AppColors.textNavy, fontSize: 15),
+                style: TextStyle(color: context.palette.textNavy, fontSize: 15),
               ),
             ],
           ),

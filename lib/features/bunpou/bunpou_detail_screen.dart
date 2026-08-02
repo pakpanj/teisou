@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/bunpou_entry.dart';
 import '../../data/models/jlpt_level.dart';
@@ -82,7 +82,7 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
     final s = ref.watch(appStringsProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(
         title: Text('${_index + 1} / ${widget.entries.length}'),
         actions: [
@@ -134,7 +134,7 @@ class _BunpouDetailScreenState extends ConsumerState<BunpouDetailScreen> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           entry.localizedMeaning(s.language),
-                          style: const TextStyle(color: AppColors.textNavy),
+                          style: TextStyle(color: context.palette.textNavy),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -193,7 +193,7 @@ class _PatternDisplay extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -201,10 +201,10 @@ class _PatternDisplay extends StatelessWidget {
           Text(
             entry.pattern,
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy,
+              color: context.palette.textNavy,
             ),
           ),
           const SizedBox(height: 8),
@@ -212,7 +212,7 @@ class _PatternDisplay extends StatelessWidget {
             entry.patternRomaji,
             style: TextStyle(
               fontSize: 14,
-              color: AppColors.textNavy.withValues(alpha: 0.6),
+              color: context.palette.textNavy.withValues(alpha: 0.6),
             ),
           ),
         ],
@@ -232,14 +232,14 @@ class _InfoCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
           text,
-          style: const TextStyle(color: AppColors.textNavy, height: 1.4),
+          style: TextStyle(color: context.palette.textNavy, height: 1.4),
         ),
       ),
     );
@@ -267,7 +267,7 @@ class _SimilarPatternsRow extends ConsumerWidget {
           children: ids
               .map(
                 (id) =>
-                    _Pill(text: byId[id] ?? id, color: AppColors.primaryCoral),
+                    _Pill(text: byId[id] ?? id, color: context.palette.primaryCoral),
               )
               .toList(),
         );
@@ -324,10 +324,10 @@ class _SectionTitle extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
-          color: AppColors.textNavy,
+          color: context.palette.textNavy,
         ),
       ),
     );
@@ -342,7 +342,7 @@ class _AudioButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.primaryCoral,
+      color: context.palette.primaryCoral,
       shape: const CircleBorder(),
       child: InkWell(
         customBorder: const CircleBorder(),
@@ -372,7 +372,7 @@ class _LearnedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: learned ? AppColors.secondaryBlue : Colors.transparent,
+      color: learned ? context.palette.secondaryBlue : Colors.transparent,
       borderRadius: BorderRadius.circular(24),
       child: InkWell(
         borderRadius: BorderRadius.circular(24),
@@ -381,7 +381,7 @@ class _LearnedButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
-            border: learned ? null : Border.all(color: AppColors.secondaryBlue),
+            border: learned ? null : Border.all(color: context.palette.secondaryBlue),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -396,7 +396,7 @@ class _LearnedButton extends StatelessWidget {
                 Icon(
                   learned ? Icons.check_circle : Icons.check_circle_outline,
                   size: 18,
-                  color: learned ? Colors.white : AppColors.secondaryBlue,
+                  color: learned ? Colors.white : context.palette.secondaryBlue,
                 ),
               const SizedBox(width: 8),
               Text(
@@ -404,7 +404,7 @@ class _LearnedButton extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 13,
-                  color: learned ? Colors.white : AppColors.secondaryBlue,
+                  color: learned ? Colors.white : context.palette.secondaryBlue,
                 ),
               ),
             ],
@@ -428,7 +428,7 @@ class _SentenceExampleCard extends ConsumerWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -439,9 +439,9 @@ class _SentenceExampleCard extends ConsumerWidget {
               children: [
                 Text(
                   example.japanese,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16,
-                    color: AppColors.textNavy,
+                    color: context.palette.textNavy,
                   ),
                 ),
                 if (example.romaji != null) ...[
@@ -450,7 +450,7 @@ class _SentenceExampleCard extends ConsumerWidget {
                     example.romaji!,
                     style: TextStyle(
                       fontSize: 12,
-                      color: AppColors.textNavy.withValues(alpha: 0.5),
+                      color: context.palette.textNavy.withValues(alpha: 0.5),
                     ),
                   ),
                 ],
@@ -460,14 +460,14 @@ class _SentenceExampleCard extends ConsumerWidget {
                       ref.watch(appStringsProvider).language),
                   style: TextStyle(
                     fontSize: 13,
-                    color: AppColors.textNavy.withValues(alpha: 0.7),
+                    color: context.palette.textNavy.withValues(alpha: 0.7),
                   ),
                 ),
               ],
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.volume_up, color: AppColors.primaryCoral),
+            icon: Icon(Icons.volume_up, color: context.palette.primaryCoral),
             onPressed: onSpeak,
           ),
         ],
@@ -499,12 +499,12 @@ class _NavRow extends StatelessWidget {
           _NavButton(
             icon: Icons.arrow_back,
             background: Colors.grey.shade300,
-            iconColor: AppColors.textNavy,
+            iconColor: context.palette.textNavy,
             onTap: hasPrev ? onPrev : null,
           ),
           _NavButton(
             icon: Icons.arrow_forward,
-            background: AppColors.primaryCoral,
+            background: context.palette.primaryCoral,
             iconColor: Colors.white,
             onTap: hasNext ? onNext : null,
           ),

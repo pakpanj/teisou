@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/particle_category_info.dart';
@@ -24,7 +24,7 @@ class ParticleHomeScreen extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(s.particleTitle)),
       body: categoriesAsync.when(
         data: (categories) => Column(
@@ -85,7 +85,7 @@ class _CategoryCard extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
 
     return Material(
-      color: available ? AppColors.cardWhite : Colors.grey.shade100,
+      color: available ? context.palette.cardWhite : Colors.grey.shade100,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
@@ -100,8 +100,8 @@ class _CategoryCard extends ConsumerWidget {
                 decoration: BoxDecoration(
                   color:
                       (available
-                              ? AppColors.primaryCoral
-                              : AppColors.freeBadgeGrey)
+                              ? context.palette.primaryCoral
+                              : context.palette.freeBadgeGrey)
                           .withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
@@ -122,8 +122,8 @@ class _CategoryCard extends ConsumerWidget {
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: available
-                            ? AppColors.textNavy
-                            : AppColors.freeBadgeGrey,
+                            ? context.palette.textNavy
+                            : context.palette.freeBadgeGrey,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -134,7 +134,7 @@ class _CategoryCard extends ConsumerWidget {
                             : s.particleCount(category.particleCount ?? 0),
                         style: TextStyle(
                           fontSize: 12,
-                          color: AppColors.textNavy.withValues(alpha: 0.6),
+                          color: context.palette.textNavy.withValues(alpha: 0.6),
                         ),
                       )
                     else
@@ -144,15 +144,15 @@ class _CategoryCard extends ConsumerWidget {
                           vertical: 1,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
+                          color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
                           s.soonBadge,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 9,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.freeBadgeGrey,
+                            color: context.palette.freeBadgeGrey,
                           ),
                         ),
                       ),
@@ -162,8 +162,8 @@ class _CategoryCard extends ConsumerWidget {
               Icon(
                 Icons.chevron_right,
                 color: available
-                    ? AppColors.primaryCoral
-                    : AppColors.freeBadgeGrey,
+                    ? context.palette.primaryCoral
+                    : context.palette.freeBadgeGrey,
               ),
             ],
           ),

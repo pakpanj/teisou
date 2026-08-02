@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/localization/app_strings.dart';
 import '../../../core/navigation/app_navigator.dart';
 import '../../../core/providers.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/utils/japanese_text_filter.dart';
 import '../../../data/models/app_language.dart';
 import '../../../data/models/kanji_entry.dart';
@@ -167,8 +167,8 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
       maxChildSize: 0.9,
       builder: (context, scrollController) {
         return Container(
-          decoration: const BoxDecoration(
-            color: AppColors.background,
+          decoration: BoxDecoration(
+            color: context.palette.background,
             borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: FutureBuilder<_LookupResult>(
@@ -203,7 +203,7 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
             width: 40,
             height: 4,
             decoration: BoxDecoration(
-              color: AppColors.textNavy.withValues(alpha: 0.2),
+              color: context.palette.textNavy.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -214,22 +214,22 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
             Expanded(
               child: Text(
                 widget.text,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textNavy,
+                  color: context.palette.textNavy,
                 ),
               ),
             ),
             IconButton(
-              icon: const Icon(Icons.volume_up, color: AppColors.primaryCoral, size: 28),
+              icon: Icon(Icons.volume_up, color: context.palette.primaryCoral, size: 28),
               onPressed: () => ref.read(ttsServiceProvider).speak(widget.text),
             ),
           ],
         ),
         Text(
           result.romaji,
-          style: TextStyle(fontSize: 15, color: AppColors.textNavy.withValues(alpha: 0.7)),
+          style: TextStyle(fontSize: 15, color: context.palette.textNavy.withValues(alpha: 0.7)),
         ),
         if (result.kanji != null) ...[
           const SizedBox(height: 8),
@@ -242,7 +242,7 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
         _SectionLabel(s.meaningSectionTitle),
         const SizedBox(height: 6),
         Text(result.meaningSummary(s.language),
-            style: const TextStyle(color: AppColors.textNavy, fontSize: 16)),
+            style: TextStyle(color: context.palette.textNavy, fontSize: 16)),
         if (result.kotoba != null && result.kotoba!.registers.isNotEmpty) ...[
           const SizedBox(height: 20),
           _SectionLabel(s.registerUsageTitle),
@@ -260,7 +260,7 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
           _SectionLabel(s.sentenceExamplesTitle),
           const SizedBox(height: 6),
           Text(result.exampleSentence(s.language)!,
-              style: const TextStyle(color: AppColors.textNavy)),
+              style: TextStyle(color: context.palette.textNavy)),
         ],
         const SizedBox(height: 24),
         if (result.kotoba != null || result.kanji != null)
@@ -297,10 +297,10 @@ class _SectionLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       label,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.bold,
-        color: AppColors.textNavy,
+        color: context.palette.textNavy,
       ),
     );
   }
@@ -329,14 +329,14 @@ class _RegisterRow extends StatelessWidget {
             width: 60,
             child: Text(
               register.localizedLabel(language),
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 12,
-                color: AppColors.textNavy,
+                color: context.palette.textNavy,
               ),
             ),
           ),
-          Expanded(child: Text(value, style: const TextStyle(color: AppColors.textNavy))),
+          Expanded(child: Text(value, style: TextStyle(color: context.palette.textNavy))),
         ],
       ),
     );

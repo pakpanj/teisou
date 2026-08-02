@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../services/kanjivg_parser.dart';
-import '../theme/app_colors.dart';
+import '../theme/app_palette.dart';
 
 /// Animates a kanji's stroke order from a KanjiVG SVG asset, with
 /// play/pause/replay/speed controls and a "show all strokes numbered"
@@ -159,7 +159,7 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
         child: Center(
           child: Text(
             widget.character,
-            style: const TextStyle(fontSize: 96, color: AppColors.textNavy),
+            style: TextStyle(fontSize: 96, color: context.palette.textNavy),
           ),
         ),
       );
@@ -172,10 +172,10 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
           width: widget.size,
           height: widget.size,
           decoration: BoxDecoration(
-            color: AppColors.cardWhite,
+            color: context.palette.cardWhite,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: AppColors.textNavy.withValues(alpha: 0.08),
+              color: context.palette.textNavy.withValues(alpha: 0.08),
             ),
           ),
           child: CustomPaint(
@@ -184,6 +184,9 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
               data: data,
               progress: _controller.value,
               showAllNumbered: _showAllNumbered,
+              guideColor: context.palette.textNavy.withValues(alpha: 0.10),
+              strokeColor: context.palette.secondaryBlue,
+              numberColor: context.palette.primaryCoral,
             ),
           ),
         ),
@@ -193,7 +196,7 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
           children: [
             IconButton(
               onPressed: _replay,
-              icon: const Icon(Icons.replay, color: AppColors.textNavy),
+              icon: Icon(Icons.replay, color: context.palette.textNavy),
               tooltip: 'Ulangi',
             ),
             IconButton(
@@ -202,7 +205,7 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
                 _controller.isAnimating
                     ? Icons.pause_circle_filled
                     : Icons.play_circle_fill,
-                color: AppColors.secondaryBlue,
+                color: context.palette.secondaryBlue,
                 size: 40,
               ),
               tooltip: _controller.isAnimating ? 'Jeda' : 'Putar',
@@ -212,8 +215,8 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
               icon: Icon(
                 Icons.format_list_numbered,
                 color: _showAllNumbered
-                    ? AppColors.secondaryBlue
-                    : AppColors.textNavy,
+                    ? context.palette.secondaryBlue
+                    : context.palette.textNavy,
               ),
               tooltip: 'Tampilkan semua goresan bernomor',
             ),
@@ -221,13 +224,13 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
         ),
         Row(
           children: [
-            const Icon(Icons.speed, size: 18, color: AppColors.textNavy),
+            Icon(Icons.speed, size: 18, color: context.palette.textNavy),
             Expanded(
               child: SliderTheme(
                 data: SliderTheme.of(context).copyWith(
-                  activeTrackColor: AppColors.secondaryBlue,
-                  thumbColor: AppColors.secondaryBlue,
-                  inactiveTrackColor: AppColors.textNavy.withValues(
+                  activeTrackColor: context.palette.secondaryBlue,
+                  thumbColor: context.palette.secondaryBlue,
+                  inactiveTrackColor: context.palette.textNavy.withValues(
                     alpha: 0.12,
                   ),
                 ),
@@ -245,7 +248,7 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
               width: 34,
               child: Text(
                 '${_speed.toStringAsFixed(1)}x',
-                style: const TextStyle(fontSize: 12, color: AppColors.textNavy),
+                style: TextStyle(fontSize: 12, color: context.palette.textNavy),
               ),
             ),
           ],
@@ -260,10 +263,19 @@ class _StrokeOrderPainter extends CustomPainter {
   final double progress;
   final bool showAllNumbered;
 
+  /// Painters sit outside the widget tree, so they cannot reach the theme
+  /// themselves — the colours are resolved in build and handed over.
+  final Color guideColor;
+  final Color strokeColor;
+  final Color numberColor;
+
   _StrokeOrderPainter({
     required this.data,
     required this.progress,
     required this.showAllNumbered,
+    required this.guideColor,
+    required this.strokeColor,
+    required this.numberColor,
   });
 
   @override
@@ -273,7 +285,7 @@ class _StrokeOrderPainter extends CustomPainter {
     canvas.scale(scale, scale);
 
     final guidePaint = Paint()
-      ..color = AppColors.textNavy.withValues(alpha: 0.10)
+      ..color = guideColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3
       ..strokeCap = StrokeCap.round
@@ -283,7 +295,7 @@ class _StrokeOrderPainter extends CustomPainter {
     }
 
     final strokePaint = Paint()
-      ..color = AppColors.secondaryBlue
+      ..color = strokeColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3.5
       ..strokeCap = StrokeCap.round
@@ -325,8 +337,8 @@ class _StrokeOrderPainter extends CustomPainter {
     final painter = TextPainter(
       text: TextSpan(
         text: '${stroke.number}',
-        style: const TextStyle(
-          color: AppColors.primaryCoral,
+        style: TextStyle(
+          color: numberColor,
           fontSize: 8,
           fontWeight: FontWeight.bold,
         ),

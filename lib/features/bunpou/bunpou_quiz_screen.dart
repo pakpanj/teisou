@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/bunpou_entry.dart';
 
 enum BunpouQuizMode { patternToMeaning, meaningToPattern }
@@ -106,7 +106,7 @@ class _BunpouQuizScreenState extends ConsumerState<BunpouQuizScreen> {
     final finished = _index >= _questions.length;
     final s = ref.watch(appStringsProvider);
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(s.bunpouQuizTitle(widget.levelName))),
       body: SafeArea(
         child: finished
@@ -135,7 +135,7 @@ class _BunpouQuizScreenState extends ConsumerState<BunpouQuizScreen> {
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy.withValues(alpha: 0.6),
+              color: context.palette.textNavy.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 8),
@@ -144,21 +144,21 @@ class _BunpouQuizScreenState extends ConsumerState<BunpouQuizScreen> {
             child: LinearProgressIndicator(
               value: (_index) / _questions.length,
               minHeight: 6,
-              backgroundColor: Colors.grey.shade200,
-              valueColor: const AlwaysStoppedAnimation(AppColors.primaryCoral),
+              backgroundColor: context.palette.progressTrack,
+              valueColor: AlwaysStoppedAnimation(context.palette.primaryCoral),
             ),
           ),
           const SizedBox(height: 32),
           Text(
             _isPatternToMeaning ? s.whatIsPatternMeaning : s.whichPatternMeans,
-            style: TextStyle(fontSize: 14, color: AppColors.textNavy.withValues(alpha: 0.7)),
+            style: TextStyle(fontSize: 14, color: context.palette.textNavy.withValues(alpha: 0.7)),
           ),
           const SizedBox(height: 12),
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 12),
             decoration: BoxDecoration(
-              color: AppColors.cardWhite,
+              color: context.palette.cardWhite,
               borderRadius: BorderRadius.circular(20),
             ),
             alignment: Alignment.center,
@@ -172,14 +172,14 @@ class _BunpouQuizScreenState extends ConsumerState<BunpouQuizScreen> {
                   style: TextStyle(
                     fontSize: _isPatternToMeaning ? 32 : 20,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textNavy,
+                    color: context.palette.textNavy,
                   ),
                 ),
                 if (_isPatternToMeaning) ...[
                   const SizedBox(height: 4),
                   Text(
                     question.entry.patternRomaji,
-                    style: TextStyle(fontSize: 14, color: AppColors.textNavy.withValues(alpha: 0.6)),
+                    style: TextStyle(fontSize: 14, color: context.palette.textNavy.withValues(alpha: 0.6)),
                   ),
                 ],
               ],
@@ -210,7 +210,7 @@ class _BunpouQuizScreenState extends ConsumerState<BunpouQuizScreen> {
             child: ElevatedButton(
               onPressed: answered ? _next : null,
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryCoral,
+                backgroundColor: context.palette.primaryCoral,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
@@ -241,24 +241,24 @@ class _OptionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color background;
-    Color textColor = AppColors.textNavy;
+    Color textColor = context.palette.textNavy;
     Color borderColor = Colors.transparent;
     IconData? icon;
 
     switch (state) {
       case _OptionState.neutral:
-        background = AppColors.cardWhite;
+        background = context.palette.cardWhite;
       case _OptionState.correct:
-        background = AppColors.secondaryBlue.withValues(alpha: 0.15);
-        borderColor = AppColors.secondaryBlue;
+        background = context.palette.secondaryBlue.withValues(alpha: 0.15);
+        borderColor = context.palette.secondaryBlue;
         icon = Icons.check_circle;
       case _OptionState.wrong:
-        background = AppColors.errorRed.withValues(alpha: 0.12);
-        borderColor = AppColors.errorRed;
+        background = context.palette.errorRed.withValues(alpha: 0.12);
+        borderColor = context.palette.errorRed;
         icon = Icons.cancel;
       case _OptionState.disabled:
-        background = AppColors.cardWhite;
-        textColor = AppColors.textNavy.withValues(alpha: 0.4);
+        background = context.palette.cardWhite;
+        textColor = context.palette.textNavy.withValues(alpha: 0.4);
     }
 
     return Material(
@@ -285,7 +285,7 @@ class _OptionTile extends StatelessWidget {
                 Icon(
                   icon,
                   size: 20,
-                  color: state == _OptionState.correct ? AppColors.secondaryBlue : AppColors.errorRed,
+                  color: state == _OptionState.correct ? context.palette.secondaryBlue : context.palette.errorRed,
                 ),
             ],
           ),
@@ -326,12 +326,12 @@ class _ResultView extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             message,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.textNavy),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: context.palette.textNavy),
           ),
           const SizedBox(height: 8),
           Text(
             strings.scoreOf(score, total),
-            style: TextStyle(fontSize: 15, color: AppColors.textNavy.withValues(alpha: 0.7)),
+            style: TextStyle(fontSize: 15, color: context.palette.textNavy.withValues(alpha: 0.7)),
           ),
           const SizedBox(height: 32),
           Row(
@@ -351,7 +351,7 @@ class _ResultView extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: onRestart,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryCoral,
+                    backgroundColor: context.palette.primaryCoral,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                   ),

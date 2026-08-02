@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/jlpt_level.dart';
@@ -73,7 +73,7 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
     final s = ref.watch(appStringsProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(
         title: Text(s.kanjiLevelAppBarTitle(widget.levelName)),
         actions: [
@@ -101,7 +101,7 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
                 child: Text(
                   s.noKanjiForLevel,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: AppColors.textNavy),
+                  style: TextStyle(color: context.palette.textNavy),
                 ),
               ),
             );
@@ -138,7 +138,7 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
                                 child: Text(
                                   s.noKanjiMatchesFilter,
                                   style: TextStyle(
-                                    color: AppColors.textNavy.withValues(
+                                    color: context.palette.textNavy.withValues(
                                       alpha: 0.6,
                                     ),
                                   ),
@@ -210,7 +210,7 @@ class _ProgressBar extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy.withValues(alpha: 0.6),
+              color: context.palette.textNavy.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 6),
@@ -219,8 +219,8 @@ class _ProgressBar extends StatelessWidget {
             child: LinearProgressIndicator(
               value: ratio,
               minHeight: 6,
-              backgroundColor: Colors.grey.shade200,
-              valueColor: const AlwaysStoppedAnimation(AppColors.secondaryBlue),
+              backgroundColor: context.palette.progressTrack,
+              valueColor: AlwaysStoppedAnimation(context.palette.secondaryBlue),
             ),
           ),
         ],
@@ -266,14 +266,14 @@ class _ControlsRow extends StatelessWidget {
                     child: ChoiceChip(
                       label: Text(labels[f]!),
                       selected: isSelected,
-                      selectedColor: AppColors.primaryCoral.withValues(
+                      selectedColor: context.palette.primaryCoral.withValues(
                         alpha: 0.2,
                       ),
                       labelStyle: TextStyle(
                         fontSize: 12,
                         color: isSelected
-                            ? AppColors.primaryCoral
-                            : AppColors.textNavy,
+                            ? context.palette.primaryCoral
+                            : context.palette.textNavy,
                         fontWeight: isSelected
                             ? FontWeight.bold
                             : FontWeight.normal,
@@ -289,7 +289,7 @@ class _ControlsRow extends StatelessWidget {
             tooltip: strings.sortTooltip,
             initialValue: sort,
             onSelected: onSortChanged,
-            icon: const Icon(Icons.sort, color: AppColors.textNavy),
+            icon: Icon(Icons.sort, color: context.palette.textNavy),
             itemBuilder: (context) => [
               PopupMenuItem(
                 value: _SortMode.urutan,
@@ -321,7 +321,7 @@ class _KanjiTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.cardWhite,
+      color: context.palette.cardWhite,
       borderRadius: BorderRadius.circular(14),
       child: InkWell(
         borderRadius: BorderRadius.circular(14),
@@ -331,21 +331,21 @@ class _KanjiTile extends StatelessWidget {
             Center(
               child: Text(
                 entry.character,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textNavy,
+                  color: context.palette.textNavy,
                 ),
               ),
             ),
             if (learned)
-              const Positioned(
+              Positioned(
                 top: 4,
                 right: 4,
                 child: Icon(
                   Icons.check_circle,
                   size: 14,
-                  color: AppColors.secondaryBlue,
+                  color: context.palette.secondaryBlue,
                 ),
               ),
           ],
@@ -374,8 +374,8 @@ class _QuizModeSheet extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 28),
-      decoration: const BoxDecoration(
-        color: AppColors.background,
+      decoration: BoxDecoration(
+        color: context.palette.background,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       child: Column(
@@ -388,23 +388,23 @@ class _QuizModeSheet extends ConsumerWidget {
               height: 4,
               margin: const EdgeInsets.only(bottom: 16),
               decoration: BoxDecoration(
-                color: Colors.grey.shade300,
+                color: context.palette.textNavy.withValues(alpha: 0.25),
                 borderRadius: BorderRadius.circular(2),
               ),
             ),
           ),
           Text(
             s.chooseQuizMode,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy,
+              color: context.palette.textNavy,
             ),
           ),
           const SizedBox(height: 16),
           _ModeTile(
             icon: Icons.text_fields,
-            color: AppColors.primaryCoral,
+            color: context.palette.primaryCoral,
             title: s.kanjiToMeaningTitle,
             subtitle: s.kanjiToMeaningSubtitle,
             onTap: () => _start(context, KanjiQuizMode.kanjiToMeaning),
@@ -412,7 +412,7 @@ class _QuizModeSheet extends ConsumerWidget {
           const SizedBox(height: 10),
           _ModeTile(
             icon: Icons.translate,
-            color: AppColors.secondaryBlue,
+            color: context.palette.secondaryBlue,
             title: s.meaningToKanjiTitle,
             subtitle: s.meaningToKanjiSubtitle,
             onTap: () => _start(context, KanjiQuizMode.meaningToKanji),
@@ -464,16 +464,16 @@ class _ModeTile extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     Text(
                       subtitle,
                       style: TextStyle(
                         fontSize: 12,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],

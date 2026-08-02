@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import 'exam_history_providers.dart';
 import 'widgets/exam_history_empty_illustration.dart';
@@ -23,7 +23,7 @@ class ExamHistoryScreen extends ConsumerWidget {
     final historyAsync = ref.watch(fullExamHistoryProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(s.examHistory)),
       body: historyAsync.when(
         data: (entries) => AppRefreshIndicator(
@@ -41,7 +41,7 @@ class ExamHistoryScreen extends ConsumerWidget {
                         s.noExamHistory,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: AppColors.textNavy.withValues(alpha: 0.6),
+                          color: context.palette.textNavy.withValues(alpha: 0.6),
                         ),
                       ),
                     ),

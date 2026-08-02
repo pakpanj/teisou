@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/kotoba_entry.dart';
 import 'widgets/jlpt_badge.dart';
 
@@ -30,7 +30,7 @@ class KotobaDetailScreen extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(
         title: Text(displayWord),
         actions: [
@@ -55,10 +55,10 @@ class KotobaDetailScreen extends ConsumerWidget {
               ),
             Text(
               displayWord,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 40,
                 fontWeight: FontWeight.bold,
-                color: AppColors.textNavy,
+                color: context.palette.textNavy,
               ),
             ),
             const SizedBox(height: 4),
@@ -66,7 +66,7 @@ class KotobaDetailScreen extends ConsumerWidget {
               '${entry.reading} (${entry.romaji})',
               style: TextStyle(
                 fontSize: 15,
-                color: AppColors.textNavy.withValues(alpha: 0.7),
+                color: context.palette.textNavy.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: 12),
@@ -82,7 +82,7 @@ class KotobaDetailScreen extends ConsumerWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 entry.localizedMeaning(s.language),
-                style: const TextStyle(fontSize: 16, color: AppColors.textNavy),
+                style: TextStyle(fontSize: 16, color: context.palette.textNavy),
               ),
             ),
             if (entry.sentenceExample != null) ...[
@@ -115,10 +115,10 @@ class _SectionTitle extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
-          color: AppColors.textNavy,
+          color: context.palette.textNavy,
         ),
       ),
     );
@@ -133,7 +133,7 @@ class _AudioButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.primaryCoral,
+      color: context.palette.primaryCoral,
       shape: const CircleBorder(),
       child: InkWell(
         customBorder: const CircleBorder(),
@@ -164,7 +164,7 @@ class _SentenceCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -173,20 +173,20 @@ class _SentenceCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(japanese, style: const TextStyle(color: AppColors.textNavy, fontSize: 15)),
+                Text(japanese, style: TextStyle(color: context.palette.textNavy, fontSize: 15)),
                 const SizedBox(height: 4),
                 Text(
                   translation,
                   style: TextStyle(
                     fontSize: 13,
-                    color: AppColors.textNavy.withValues(alpha: 0.6),
+                    color: context.palette.textNavy.withValues(alpha: 0.6),
                   ),
                 ),
               ],
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.volume_up, color: AppColors.primaryCoral),
+            icon: Icon(Icons.volume_up, color: context.palette.primaryCoral),
             onPressed: onSpeak,
           ),
         ],

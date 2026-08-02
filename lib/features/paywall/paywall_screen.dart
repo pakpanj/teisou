@@ -4,7 +4,7 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/mascot_widget.dart';
 
 /// Shown when a free user taps a premium-gated module. Offers the (not yet
@@ -107,7 +107,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: const Text('Premium')),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -118,17 +118,17 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               const SizedBox(height: 20),
               Text(
                 s.unlockAllModulesTitle,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textNavy,
+                  color: context.palette.textNavy,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
                 s.unlockAllModulesSubtitle,
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: AppColors.textNavy),
+                style: TextStyle(color: context.palette.textNavy),
               ),
               const SizedBox(height: 24),
               _BenefitList(strings: s),
@@ -144,19 +144,19 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               Row(
                 children: [
                   Expanded(
-                    child: Divider(color: AppColors.textNavy.withValues(alpha: 0.2)),
+                    child: Divider(color: context.palette.textNavy.withValues(alpha: 0.2)),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
                       s.orLabel,
                       style: TextStyle(
-                        color: AppColors.textNavy.withValues(alpha: 0.5),
+                        color: context.palette.textNavy.withValues(alpha: 0.5),
                       ),
                     ),
                   ),
                   Expanded(
-                    child: Divider(color: AppColors.textNavy.withValues(alpha: 0.2)),
+                    child: Divider(color: context.palette.textNavy.withValues(alpha: 0.2)),
                   ),
                 ],
               ),
@@ -207,10 +207,10 @@ class _BenefitList extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 6),
               child: Row(
                 children: [
-                  const Icon(Icons.check_circle, color: AppColors.successGreen, size: 20),
+                  Icon(Icons.check_circle, color: context.palette.successGreen, size: 20),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: Text(benefit, style: const TextStyle(color: AppColors.textNavy)),
+                    child: Text(benefit, style: TextStyle(color: context.palette.textNavy)),
                   ),
                 ],
               ),

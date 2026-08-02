@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/kana_glyph.dart';
 import '../../core/widgets/swipe_navigator.dart';
@@ -64,10 +64,10 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
     final progressAsync = ref.watch(typeProgressProvider(widget.type));
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: context.palette.background,
 
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: context.palette.background,
         title: Text(_isHiragana ? 'Belajar Hiragana' : 'Belajar Katakana'),
       ),
       body: kanaListAsync.when(
@@ -93,8 +93,8 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
     final kana = list[index];
     final currentProgress = progress.progressFor(kana.id);
     final accent = _isHiragana
-        ? AppColors.primaryCoral
-        : AppColors.secondaryBlue;
+        ? context.palette.primaryCoral
+        : context.palette.secondaryBlue;
 
     final cardBackground = _isHiragana
         ? 'assets/images/hiragana_card_bg.png'
@@ -106,7 +106,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(
-            color: AppColors.cardWhite,
+            color: context.palette.cardWhite,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: accent.withValues(alpha: 0.3)),
           ),
@@ -152,9 +152,9 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
             ),
           ),
         ),
-        const Text(
+        Text(
           'tekan kartu untuk melihat arti',
-          style: TextStyle(color: AppColors.textNavy, fontSize: 13),
+          style: TextStyle(color: context.palette.textNavy, fontSize: 13),
         ),
         const SizedBox(height: 16),
         Padding(
@@ -165,7 +165,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
               _NavButton(
                 icon: Icons.arrow_back,
                 background: Colors.grey.shade300,
-                iconColor: AppColors.textNavy,
+                iconColor: context.palette.textNavy,
                 onTap: index > 0 ? _goPrev : null,
               ),
               _NavButton(
@@ -290,16 +290,16 @@ class _BackContent extends ConsumerWidget {
               Text(
                 '${example.word} (${example.reading})',
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.textNavy,
+                  color: context.palette.textNavy,
                 ),
               ),
               const SizedBox(height: 4),
               Text(
                 'Artinya: ${example.meaning}',
-                style: const TextStyle(color: AppColors.textNavy),
+                style: TextStyle(color: context.palette.textNavy),
               ),
               const SizedBox(height: 12),
               _AudioButton(
@@ -307,9 +307,9 @@ class _BackContent extends ConsumerWidget {
                 onTap: () => ref.read(ttsServiceProvider).speak(example.word),
               ),
             ] else
-              const Text(
+              Text(
                 'Belum ada contoh kata',
-                style: TextStyle(color: AppColors.textNavy),
+                style: TextStyle(color: context.palette.textNavy),
               ),
           ],
         ),

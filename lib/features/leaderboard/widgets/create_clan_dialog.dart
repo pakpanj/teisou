@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/providers.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../data/models/user_profile.dart';
 
 /// Dialog for creating a new clan. On success it swaps its own content to
@@ -83,26 +83,26 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
           children: [
             Text(
               s.shareCodeMessage,
-              style: const TextStyle(color: AppColors.textNavy),
+              style: TextStyle(color: context.palette.textNavy),
             ),
             const SizedBox(height: 12),
             Container(
               padding:
                   const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
               decoration: BoxDecoration(
-                color: AppColors.primaryCoral.withValues(alpha: 0.1),
+                color: context.palette.primaryCoral.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: AppColors.primaryCoral.withValues(alpha: 0.3),
+                  color: context.palette.primaryCoral.withValues(alpha: 0.3),
                 ),
               ),
               child: Text(
                 code,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 4,
-                  color: AppColors.primaryCoral,
+                  color: context.palette.primaryCoral,
                 ),
               ),
             ),

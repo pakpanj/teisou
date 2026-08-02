@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/choukai_jlpt_level_info.dart';
 import '../../data/models/jlpt_level.dart';
 import 'choukai_level_screen.dart';
@@ -20,7 +20,7 @@ class ChoukaiHomeScreen extends ConsumerWidget {
     final levelsAsync = ref.watch(choukaiLevelsProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: const Text('Choukai')),
       body: levelsAsync.when(
         data: (levels) => ListView(
@@ -65,7 +65,7 @@ class _LevelCard extends StatelessWidget {
     final available = level.available;
 
     return Material(
-      color: available ? AppColors.cardWhite : Colors.grey.shade100,
+      color: available ? context.palette.cardWhite : Colors.grey.shade100,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
@@ -78,7 +78,7 @@ class _LevelCard extends StatelessWidget {
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: (available ? AppColors.primaryCoral : AppColors.freeBadgeGrey)
+                  color: (available ? context.palette.primaryCoral : context.palette.freeBadgeGrey)
                       .withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
@@ -87,7 +87,7 @@ class _LevelCard extends StatelessWidget {
                   level.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: available ? AppColors.primaryCoral : AppColors.freeBadgeGrey,
+                    color: available ? context.palette.primaryCoral : context.palette.freeBadgeGrey,
                   ),
                 ),
               ),
@@ -101,7 +101,7 @@ class _LevelCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: available ? AppColors.textNavy : AppColors.freeBadgeGrey,
+                        color: available ? context.palette.textNavy : context.palette.freeBadgeGrey,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -110,22 +110,22 @@ class _LevelCard extends StatelessWidget {
                         '${level.clipCount ?? 0} klip',
                         style: TextStyle(
                           fontSize: 12,
-                          color: AppColors.textNavy.withValues(alpha: 0.6),
+                          color: context.palette.textNavy.withValues(alpha: 0.6),
                         ),
                       )
                     else
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
                         decoration: BoxDecoration(
-                          color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
+                          color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Text(
+                        child: Text(
                           'Segera',
                           style: TextStyle(
                             fontSize: 9,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.freeBadgeGrey,
+                            color: context.palette.freeBadgeGrey,
                           ),
                         ),
                       ),
@@ -134,7 +134,7 @@ class _LevelCard extends StatelessWidget {
               ),
               Icon(
                 Icons.chevron_right,
-                color: available ? AppColors.primaryCoral : AppColors.freeBadgeGrey,
+                color: available ? context.palette.primaryCoral : context.palette.freeBadgeGrey,
               ),
             ],
           ),

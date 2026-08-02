@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/app_language.dart';
 import '../../data/models/dictionary_word.dart';
 import '../../data/models/jlpt_level.dart';
@@ -143,7 +143,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(
         title: TextField(
           controller: _controller,
@@ -259,9 +259,9 @@ class _FilterChipsRow<T> extends StatelessWidget {
             child: ChoiceChip(
               label: Text(labelOf(v)),
               selected: isSelected,
-              selectedColor: AppColors.primaryCoral.withValues(alpha: 0.2),
+              selectedColor: context.palette.primaryCoral.withValues(alpha: 0.2),
               labelStyle: TextStyle(
-                color: isSelected ? AppColors.primaryCoral : AppColors.textNavy,
+                color: isSelected ? context.palette.primaryCoral : context.palette.textNavy,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),
               onSelected: (_) => onSelected(v),
@@ -286,7 +286,7 @@ class _HintMessage extends StatelessWidget {
         child: Text(
           message,
           textAlign: TextAlign.center,
-          style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
+          style: TextStyle(color: context.palette.textNavy.withValues(alpha: 0.6)),
         ),
       ),
     );
@@ -311,7 +311,7 @@ class _KanjiResultTile extends StatelessWidget {
         : (entry.onyomi.isNotEmpty ? entry.onyomi.first : '');
 
     return Material(
-      color: AppColors.cardWhite,
+      color: context.palette.cardWhite,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
@@ -325,10 +325,10 @@ class _KanjiResultTile extends StatelessWidget {
                 child: Text(
                   entry.character,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textNavy,
+                    color: context.palette.textNavy,
                   ),
                 ),
               ),
@@ -337,13 +337,13 @@ class _KanjiResultTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(reading, style: const TextStyle(color: AppColors.textNavy)),
+                    Text(reading, style: TextStyle(color: context.palette.textNavy)),
                     Text(
                       entry.localizedMeanings(language).join(', '),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -372,7 +372,7 @@ class _KotobaResultTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.cardWhite,
+      color: context.palette.cardWhite,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
@@ -387,10 +387,10 @@ class _KotobaResultTile extends StatelessWidget {
                   children: [
                     Text(
                       entry.kanji ?? entry.word,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     Text(
@@ -398,7 +398,7 @@ class _KotobaResultTile extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -427,7 +427,7 @@ class _DictionaryResultTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
     return Material(
-      color: AppColors.cardWhite,
+      color: context.palette.cardWhite,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
@@ -442,10 +442,10 @@ class _DictionaryResultTile extends ConsumerWidget {
                   children: [
                     Text(
                       entry.display,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     Text(
@@ -453,7 +453,7 @@ class _DictionaryResultTile extends ConsumerWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -465,15 +465,15 @@ class _DictionaryResultTile extends ConsumerWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.freeBadgeGrey.withValues(alpha: 0.15),
+                  color: context.palette.freeBadgeGrey.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   s.dictionaryTag,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.freeBadgeGrey,
+                    color: context.palette.freeBadgeGrey,
                   ),
                 ),
               ),

@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/kaiwa_expressions.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/kaiwa_answer_option.dart';
 import '../../data/models/kaiwa_entry.dart';
@@ -172,7 +172,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
         _revealedCount >= lines.length && !lastIsUnansweredUserTurn;
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(_entry.localizedTitle(s.language))),
       body: Column(
         children: [
@@ -199,7 +199,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
                       _entry.localizedDescription(s.language),
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.7),
+                        color: context.palette.textNavy.withValues(alpha: 0.7),
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -265,12 +265,12 @@ class _LineBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!line.isUserTurn) return _npcBubble();
-    if (answer != null) return _answeredBubble(answer!);
-    return _promptBubble();
+    if (!line.isUserTurn) return _npcBubble(context);
+    if (answer != null) return _answeredBubble(context, answer!);
+    return _promptBubble(context);
   }
 
-  Widget _npcBubble() {
+  Widget _npcBubble(BuildContext context) {
     final npc = line.npcLine;
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -285,7 +285,7 @@ class _LineBubble extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textNavy.withValues(alpha: 0.5),
+                  color: context.palette.textNavy.withValues(alpha: 0.5),
                 ),
               ),
               const SizedBox(height: 4),
@@ -311,7 +311,7 @@ class _LineBubble extends StatelessWidget {
     );
   }
 
-  Widget _answeredBubble(KaiwaAnswerOption chosen) {
+  Widget _answeredBubble(BuildContext context, KaiwaAnswerOption chosen) {
     final emoji = kaiwaExpressionEmoji[chosen.expressionTag];
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -324,7 +324,7 @@ class _LineBubble extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: AppColors.primaryCoral.withValues(alpha: 0.15),
+                color: context.palette.primaryCoral.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Column(
@@ -339,10 +339,10 @@ class _LineBubble extends StatelessWidget {
                       ],
                       Text(
                         chosen.japanese,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.textNavy,
+                          color: context.palette.textNavy,
                         ),
                       ),
                     ],
@@ -354,7 +354,7 @@ class _LineBubble extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 12,
                         fontStyle: FontStyle.italic,
-                        color: AppColors.textNavy.withValues(alpha: 0.5),
+                        color: context.palette.textNavy.withValues(alpha: 0.5),
                       ),
                     ),
                   ],
@@ -364,7 +364,7 @@ class _LineBubble extends StatelessWidget {
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       fontSize: 13,
-                      color: AppColors.textNavy.withValues(alpha: 0.7),
+                      color: context.palette.textNavy.withValues(alpha: 0.7),
                     ),
                   ),
                   if (chosen.note != null) ...[
@@ -372,9 +372,9 @@ class _LineBubble extends StatelessWidget {
                     Text(
                       chosen.note!,
                       textAlign: TextAlign.right,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 11,
-                        color: AppColors.secondaryBlue,
+                        color: context.palette.secondaryBlue,
                         fontStyle: FontStyle.italic,
                       ),
                     ),
@@ -388,7 +388,7 @@ class _LineBubble extends StatelessWidget {
     );
   }
 
-  Widget _promptBubble() {
+  Widget _promptBubble(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Row(
@@ -397,7 +397,7 @@ class _LineBubble extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
-              color: Colors.grey.shade100,
+              color: context.palette.mutedSurface,
               borderRadius: BorderRadius.circular(14),
             ),
             child: Text(
@@ -405,7 +405,7 @@ class _LineBubble extends StatelessWidget {
               style: TextStyle(
                 fontSize: 13,
                 fontStyle: FontStyle.italic,
-                color: AppColors.textNavy.withValues(alpha: 0.6),
+                color: context.palette.textNavy.withValues(alpha: 0.6),
               ),
             ),
           ),
@@ -424,18 +424,18 @@ class _SpeakButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Material(
-      color: Colors.white,
+      color: context.palette.cardWhite,
       shape: const CircleBorder(),
       elevation: 2,
       child: InkWell(
         customBorder: const CircleBorder(),
         onTap: () => ref.read(ttsServiceProvider).speak(text, gender: gender),
-        child: const Padding(
+        child: Padding(
           padding: EdgeInsets.all(8),
           child: Icon(
             Icons.volume_up,
             size: 20,
-            color: AppColors.secondaryBlue,
+            color: context.palette.secondaryBlue,
           ),
         ),
       ),
@@ -468,7 +468,7 @@ class _AnswerOptions extends StatelessWidget {
         MediaQuery.of(context).padding.bottom + 12,
       ),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),
@@ -486,7 +486,7 @@ class _AnswerOptions extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy.withValues(alpha: 0.6),
+              color: context.palette.textNavy.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 10),
@@ -523,13 +523,13 @@ class _OptionButton extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
           color: isWrongFlash
-              ? AppColors.errorRed.withValues(alpha: 0.15)
-              : AppColors.background,
+              ? context.palette.errorRed.withValues(alpha: 0.15)
+              : context.palette.background,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isWrongFlash
-                ? AppColors.errorRed
-                : AppColors.secondaryBlue.withValues(alpha: 0.3),
+                ? context.palette.errorRed
+                : context.palette.secondaryBlue.withValues(alpha: 0.3),
             width: isWrongFlash ? 2 : 1,
           ),
         ),
@@ -542,10 +542,10 @@ class _OptionButton extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
               child: Text(
                 option.japanese,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.textNavy,
+                  color: context.palette.textNavy,
                 ),
               ),
             ),
@@ -582,7 +582,7 @@ class _CompletionBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),

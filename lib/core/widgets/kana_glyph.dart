@@ -3,7 +3,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../data/models/kana_character.dart';
-import '../theme/app_colors.dart';
+import '../theme/app_palette.dart';
 
 /// Renders a kana's SVG glyph if the asset has been bundled, otherwise
 /// falls back to a plain [Text] with the character so missing art never
@@ -11,13 +11,15 @@ import '../theme/app_colors.dart';
 class KanaGlyph extends StatelessWidget {
   final KanaCharacter kana;
   final double size;
-  final Color fallbackColor;
+  /// Defaults to the theme's primary text colour when omitted; resolved
+  /// in build, since a default value cannot read the theme.
+  final Color? fallbackColor;
 
   const KanaGlyph({
     super.key,
     required this.kana,
     this.size = 120,
-    this.fallbackColor = AppColors.textNavy,
+    this.fallbackColor,
   });
 
   static final Map<String, bool> _existsCache = {};
@@ -48,7 +50,7 @@ class KanaGlyph extends StatelessWidget {
           style: TextStyle(
             fontSize: size * 0.6,
             fontWeight: FontWeight.bold,
-            color: fallbackColor,
+            color: fallbackColor ?? context.palette.textNavy,
           ),
         );
       },

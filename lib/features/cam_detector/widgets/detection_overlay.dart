@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/utils/japanese_text_filter.dart';
 
 /// A single Japanese text block detected in the current camera frame,
@@ -38,7 +38,7 @@ class DetectionOverlay extends StatelessWidget {
         IgnorePointer(
           child: CustomPaint(
             size: Size.infinite,
-            painter: _BoxPainter(detections: detections, prominent: prominent),
+            painter: _BoxPainter(prominentColor: context.palette.primaryCoral, detections: detections, prominent: prominent),
           ),
         ),
         ...detections.map(
@@ -59,7 +59,14 @@ class _BoxPainter extends CustomPainter {
   final List<ScaledDetection> detections;
   final ScaledDetection? prominent;
 
-  _BoxPainter({required this.detections, required this.prominent});
+  /// Resolved by the widget: a painter has no BuildContext of its own.
+  final Color prominentColor;
+
+  _BoxPainter({
+    required this.detections,
+    required this.prominent,
+    required this.prominentColor,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -68,7 +75,9 @@ class _BoxPainter extends CustomPainter {
       final paint = Paint()
         ..style = PaintingStyle.stroke
         ..strokeWidth = isProminent ? 3 : 1.5
-        ..color = isProminent ? AppColors.primaryCoral : Colors.white.withValues(alpha: 0.8);
+        ..color = isProminent
+            ? prominentColor
+            : Colors.white.withValues(alpha: 0.8);
       final rrect = RRect.fromRectAndRadius(detection.rect, const Radius.circular(6));
       canvas.drawRRect(rrect, paint);
     }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/jlpt_level.dart';
 import 'kanji_combo_exam_screen.dart';
 import 'kanji_combo_providers.dart';
@@ -26,7 +26,7 @@ class _KanjiComboHomeScreenState extends ConsumerState<KanjiComboHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: const Text('Ujian Kanji')),
       body: Column(
         children: [
@@ -85,7 +85,7 @@ class _LevelCard extends ConsumerWidget {
     final available = availableAsync.valueOrNull ?? false;
 
     return Material(
-      color: available ? AppColors.cardWhite : Colors.grey.shade100,
+      color: available ? context.palette.cardWhite : Colors.grey.shade100,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
@@ -98,7 +98,7 @@ class _LevelCard extends ConsumerWidget {
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: (available ? AppColors.tertiaryAmber : AppColors.freeBadgeGrey)
+                  color: (available ? context.palette.tertiaryAmber : context.palette.freeBadgeGrey)
                       .withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
@@ -107,7 +107,7 @@ class _LevelCard extends ConsumerWidget {
                   level.key,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: available ? AppColors.tertiaryAmber : AppColors.freeBadgeGrey,
+                    color: available ? context.palette.tertiaryAmber : context.palette.freeBadgeGrey,
                   ),
                 ),
               ),
@@ -118,7 +118,7 @@ class _LevelCard extends ConsumerWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: available ? AppColors.textNavy : AppColors.freeBadgeGrey,
+                    color: available ? context.palette.textNavy : context.palette.freeBadgeGrey,
                   ),
                 ),
               ),
@@ -126,22 +126,22 @@ class _LevelCard extends ConsumerWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
                   decoration: BoxDecoration(
-                    color: AppColors.freeBadgeGrey.withValues(alpha: 0.2),
+                    color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: const Text(
+                  child: Text(
                     'Segera',
                     style: TextStyle(
                       fontSize: 9,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.freeBadgeGrey,
+                      color: context.palette.freeBadgeGrey,
                     ),
                   ),
                 ),
               const SizedBox(width: 8),
               Icon(
                 Icons.chevron_right,
-                color: available ? AppColors.tertiaryAmber : AppColors.freeBadgeGrey,
+                color: available ? context.palette.tertiaryAmber : context.palette.freeBadgeGrey,
               ),
             ],
           ),

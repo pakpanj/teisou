@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../services/kanjivg_parser.dart';
-import '../theme/app_colors.dart';
+import '../theme/app_palette.dart';
 
 /// Renders a kanji as a static, fully-drawn glyph from its KanjiVG stroke
 /// data, otherwise falls back to a plain [Text] with the character.
@@ -16,14 +16,16 @@ class KanjiGlyph extends StatelessWidget {
   final String character;
   final String? svgAsset;
   final double size;
-  final Color fallbackColor;
+  /// Defaults to the theme's primary text colour when omitted; resolved
+  /// in build, since a default value cannot read the theme.
+  final Color? fallbackColor;
 
   const KanjiGlyph({
     super.key,
     required this.character,
     this.svgAsset,
     this.size = 120,
-    this.fallbackColor = AppColors.textNavy,
+    this.fallbackColor,
   });
 
   static final Map<String, Future<KanjiStrokeData?>> _cache = {};
@@ -35,26 +37,29 @@ class KanjiGlyph extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final asset = svgAsset;
-    if (asset == null) return _fallback();
+    if (asset == null) return _fallback(context);
     return FutureBuilder<KanjiStrokeData?>(
       future: _parse(asset),
       builder: (context, snapshot) {
         final data = snapshot.data;
-        if (data == null) return _fallback();
+        if (data == null) return _fallback(context);
         return CustomPaint(
           size: Size(size, size),
-          painter: _GlyphPainter(data: data, color: fallbackColor),
+          painter: _GlyphPainter(
+            data: data,
+            color: fallbackColor ?? context.palette.textNavy,
+          ),
         );
       },
     );
   }
 
-  Widget _fallback() => Text(
+  Widget _fallback(BuildContext context) => Text(
         character,
         style: TextStyle(
           fontSize: size * 0.6,
           fontWeight: FontWeight.bold,
-          color: fallbackColor,
+          color: fallbackColor ?? context.palette.textNavy,
         ),
       );
 }

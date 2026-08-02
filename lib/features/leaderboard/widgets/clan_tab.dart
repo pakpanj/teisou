@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/localization/app_strings.dart';
 import '../../../core/providers.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/app_refresh_indicator.dart';
 import '../../../data/repositories/leaderboard_repository.dart';
 import '../clan_providers.dart';
@@ -121,9 +121,9 @@ class _ClanTabState extends ConsumerState<ClanTab> {
                       context: context,
                       builder: (_) => const CreateClanDialog(),
                     ),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.add_circle_outline,
-                      color: AppColors.primaryCoral,
+                      color: context.palette.primaryCoral,
                     ),
                   ),
                   IconButton(
@@ -132,9 +132,9 @@ class _ClanTabState extends ConsumerState<ClanTab> {
                       context: context,
                       builder: (_) => const JoinClanDialog(),
                     ),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.group_add,
-                      color: AppColors.primaryCoral,
+                      color: context.palette.primaryCoral,
                     ),
                   ),
                 ],
@@ -201,17 +201,17 @@ class _NoClanState extends StatelessWidget {
             const SizedBox(height: 12),
             Text(
               strings.noClanYetTitle,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
-                color: AppColors.textNavy,
+                color: context.palette.textNavy,
               ),
             ),
             const SizedBox(height: 4),
             Text(
               strings.noClanYetBody,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: AppColors.textNavy),
+              style: TextStyle(color: context.palette.textNavy),
             ),
             const SizedBox(height: 20),
             FilledButton.icon(
@@ -260,10 +260,10 @@ class _ClanRanking extends ConsumerWidget {
               margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: AppColors.primaryCoral.withValues(alpha: 0.1),
+                color: context.palette.primaryCoral.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: AppColors.primaryCoral.withValues(alpha: 0.3),
+                  color: context.palette.primaryCoral.withValues(alpha: 0.3),
                 ),
               ),
               child: Row(
@@ -275,16 +275,16 @@ class _ClanRanking extends ConsumerWidget {
                         Text(
                           clan.name,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: AppColors.textNavy,
+                            color: context.palette.textNavy,
                           ),
                         ),
                         Text(
                           strings.codeAndMembers(clan.code, clan.memberCount),
                           style: TextStyle(
                             fontSize: 12,
-                            color: AppColors.textNavy.withValues(alpha: 0.6),
+                            color: context.palette.textNavy.withValues(alpha: 0.6),
                           ),
                         ),
                       ],
@@ -298,10 +298,10 @@ class _ClanRanking extends ConsumerWidget {
                         SnackBar(content: Text(strings.codeCopied)),
                       );
                     },
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.copy,
                       size: 18,
-                      color: AppColors.primaryCoral,
+                      color: context.palette.primaryCoral,
                     ),
                   ),
                   IconButton(
@@ -340,7 +340,7 @@ class _ClanRanking extends ConsumerWidget {
                         child: Center(
                           child: Text(
                             strings.noMembersYet,
-                            style: const TextStyle(color: AppColors.textNavy),
+                            style: TextStyle(color: context.palette.textNavy),
                           ),
                         ),
                       ),

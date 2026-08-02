@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/avatars.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
@@ -21,7 +21,7 @@ class LeaderboardScreen extends ConsumerWidget {
     return DefaultTabController(
       length: 7,
       child: Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: context.palette.background,
         appBar: AppBar(
           title: Row(
             mainAxisSize: MainAxisSize.min,
@@ -32,9 +32,9 @@ class LeaderboardScreen extends ConsumerWidget {
           ),
           bottom: TabBar(
             isScrollable: true,
-            labelColor: AppColors.primaryCoral,
-            unselectedLabelColor: AppColors.textNavy,
-            indicatorColor: AppColors.primaryCoral,
+            labelColor: context.palette.primaryCoral,
+            unselectedLabelColor: context.palette.textNavy,
+            indicatorColor: context.palette.primaryCoral,
             tabs: [
               const Tab(text: 'Kana Mastered'),
               Tab(text: s.tabExamScore),
@@ -140,7 +140,7 @@ class _LeaderboardTab extends ConsumerWidget {
                         child: Center(
                           child: Text(
                             s.noRankingData,
-                            style: const TextStyle(color: AppColors.textNavy),
+                            style: TextStyle(color: context.palette.textNavy),
                           ),
                         ),
                       ),
@@ -192,23 +192,23 @@ class _SelfHeader extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: AppColors.primaryCoral.withValues(alpha: 0.1),
+        color: context.palette.primaryCoral.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppColors.primaryCoral.withValues(alpha: 0.3),
+          color: context.palette.primaryCoral.withValues(alpha: 0.3),
         ),
       ),
       child: Row(
         children: [
           Text(
             rank != null ? strings.rankOf(rank!) : strings.notRankedYet,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: AppColors.primaryCoral,
+              color: context.palette.primaryCoral,
             ),
           ),
           const SizedBox(width: 8),
-          const Text('•', style: TextStyle(color: AppColors.textNavy)),
+          Text('•', style: TextStyle(color: context.palette.textNavy)),
           const SizedBox(width: 8),
           LeaderboardAvatar(entry: entry!, size: 28),
           const SizedBox(width: 8),
@@ -216,14 +216,14 @@ class _SelfHeader extends StatelessWidget {
             child: Text(
               entry!.displayName,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(color: AppColors.textNavy),
+              style: TextStyle(color: context.palette.textNavy),
             ),
           ),
           Text(
             leaderboardValueLabel(metric, entry!, strings),
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy,
+              color: context.palette.textNavy,
             ),
           ),
         ],
@@ -270,7 +270,7 @@ class LeaderboardTile extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -280,9 +280,9 @@ class LeaderboardTile extends StatelessWidget {
             child: Text(
               _rankBadge,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: AppColors.textNavy,
+                color: context.palette.textNavy,
                 fontSize: 16,
               ),
             ),
@@ -302,9 +302,9 @@ class LeaderboardTile extends StatelessWidget {
                       child: Text(
                         entry.displayName,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          color: AppColors.textNavy,
+                          color: context.palette.textNavy,
                         ),
                       ),
                     ),
@@ -314,7 +314,7 @@ class LeaderboardTile extends StatelessWidget {
                   _formatDate(entry.updatedAt),
                   style: TextStyle(
                     fontSize: 11,
-                    color: AppColors.textNavy.withValues(alpha: 0.5),
+                    color: context.palette.textNavy.withValues(alpha: 0.5),
                   ),
                 ),
               ],
@@ -322,9 +322,9 @@ class LeaderboardTile extends StatelessWidget {
           ),
           Text(
             valueLabel,
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: AppColors.primaryCoral,
+              color: context.palette.primaryCoral,
               fontSize: 16,
             ),
           ),
@@ -374,7 +374,7 @@ class LeaderboardAvatar extends StatelessWidget {
     }
     return CircleAvatar(
       radius: size / 2,
-      backgroundColor: AppColors.hiraganaCardBg,
+      backgroundColor: context.palette.hiraganaCardBg,
       child: Text('🐱', style: TextStyle(fontSize: size * 0.5)),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
+import '../theme/app_palette.dart';
 
 /// Pull-to-refresh wrapper used across every main content-listing screen
 /// (Kotoba/Kanji/Bunpou/Partikel/Kaiwa's Home/Level/Category screens,
@@ -23,7 +23,7 @@ class AppRefreshIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: onRefresh,
-      color: AppColors.primaryCoral,
+      color: context.palette.primaryCoral,
       child: child,
     );
   }

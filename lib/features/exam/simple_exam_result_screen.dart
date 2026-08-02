@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/simple_exam_result.dart';
 
 /// Shared score-summary screen for Dokkai/Choukai/Kanji-Kombinasi — unlike
@@ -37,7 +37,7 @@ class SimpleExamResultScreen extends ConsumerWidget {
             : s.simpleExamResultTryAgain;
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(title), automaticallyImplyLeading: false),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -47,10 +47,10 @@ class SimpleExamResultScreen extends ConsumerWidget {
               const SizedBox(height: 16),
               Text(
                 label,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textNavy,
+                  color: context.palette.textNavy,
                 ),
               ),
               const SizedBox(height: 24),
@@ -58,7 +58,7 @@ class SimpleExamResultScreen extends ConsumerWidget {
                 width: 160,
                 height: 160,
                 decoration: BoxDecoration(
-                  color: AppColors.primaryCoral.withValues(alpha: 0.12),
+                  color: context.palette.primaryCoral.withValues(alpha: 0.12),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
@@ -67,17 +67,17 @@ class SimpleExamResultScreen extends ConsumerWidget {
                   children: [
                     Text(
                       '${result.score}/${result.total}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.primaryCoral,
+                        color: context.palette.primaryCoral,
                       ),
                     ),
                     Text(
                       '$percentage%',
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],

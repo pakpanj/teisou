@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/covers.dart';
 import '../../../core/providers.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import 'profile_header_illustration.dart';
 
 /// Bottom sheet for picking the Profile header's cover illustration: the
@@ -47,8 +47,8 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
       maxChildSize: 0.9,
       builder: (context, scrollController) {
         return Container(
-          decoration: const BoxDecoration(
-            color: AppColors.background,
+          decoration: BoxDecoration(
+            color: context.palette.background,
             borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: ListView(
@@ -60,7 +60,7 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
                   width: 40,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: AppColors.textNavy.withValues(alpha: 0.2),
+                    color: context.palette.textNavy.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -68,10 +68,10 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
               const SizedBox(height: 16),
               Text(
                 s.pickCoverTitle,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textNavy,
+                  color: context.palette.textNavy,
                 ),
               ),
               const SizedBox(height: 16),
@@ -129,10 +129,10 @@ class _DefaultCoverTile extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: AppColors.hiraganaCardBg,
+              color: context.palette.hiraganaCardBg,
               borderRadius: BorderRadius.circular(16),
               border: selected
-                  ? Border.all(color: AppColors.primaryCoral, width: 2)
+                  ? Border.all(color: context.palette.primaryCoral, width: 2)
                   : null,
             ),
             alignment: Alignment.center,
@@ -143,20 +143,20 @@ class _DefaultCoverTile extends StatelessWidget {
             ),
           ),
           if (selected)
-            const Positioned(
+            Positioned(
               right: 6,
               top: 6,
-              child: Icon(Icons.check_circle, color: AppColors.primaryCoral, size: 20),
+              child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 20),
             ),
           Positioned(
             left: 8,
             bottom: 6,
             child: Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
-                color: AppColors.textNavy,
+                color: context.palette.textNavy,
               ),
             ),
           ),
@@ -186,7 +186,7 @@ class _CoverTile extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   border: selected
-                      ? Border.all(color: AppColors.primaryCoral, width: 2)
+                      ? Border.all(color: context.palette.primaryCoral, width: 2)
                       : null,
                 ),
                 clipBehavior: Clip.antiAlias,
@@ -197,20 +197,20 @@ class _CoverTile extends StatelessWidget {
                 ),
               ),
               if (selected)
-                const Positioned(
+                Positioned(
                   right: 6,
                   top: 6,
-                  child: Icon(Icons.check_circle, color: AppColors.primaryCoral, size: 20),
+                  child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 20),
                 ),
               Positioned(
                 left: 8,
                 bottom: 6,
                 child: Text(
                   preset.label,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.textNavy,
+                    color: context.palette.textNavy,
                   ),
                 ),
               ),

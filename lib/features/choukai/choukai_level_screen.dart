@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/choukai_clip.dart';
 import '../../data/models/jlpt_level.dart';
 import 'choukai_exam_screen.dart';
@@ -24,17 +24,17 @@ class ChoukaiLevelScreen extends ConsumerWidget {
     final clipsAsync = ref.watch(choukaiByLevelProvider(level));
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text('Choukai $levelName')),
       body: clipsAsync.when(
         data: (clips) => clips.isEmpty
-            ? const Center(
+            ? Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32),
                   child: Text(
                     'Klip untuk level ini belum tersedia.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: AppColors.textNavy),
+                    style: TextStyle(color: context.palette.textNavy),
                   ),
                 ),
               )
@@ -62,7 +62,7 @@ class _ClipCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.cardWhite,
+      color: context.palette.cardWhite,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
@@ -80,10 +80,10 @@ class _ClipCard extends StatelessWidget {
                   children: [
                     Text(
                       clip.title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -91,13 +91,13 @@ class _ClipCard extends StatelessWidget {
                       '${clip.questions.length} soal',
                       style: TextStyle(
                         fontSize: 12,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
                 ),
               ),
-              const Icon(Icons.chevron_right, color: AppColors.primaryCoral),
+              Icon(Icons.chevron_right, color: context.palette.primaryCoral),
             ],
           ),
         ),

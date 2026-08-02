@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/dokkai_passage.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/simple_exam_result.dart';
@@ -93,7 +93,7 @@ class DokkaiExamScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final items = _items;
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text('Dokkai · ${items.length} Soal')),
       body: McQuizFlow(
         totalQuestions: items.length,
@@ -123,7 +123,7 @@ class _PassageHeader extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: AppColors.cardWhite,
+            color: context.palette.cardWhite,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
@@ -135,20 +135,20 @@ class _PassageHeader extends StatelessWidget {
           ),
           child: Text(
             passage.passageJapanese,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
               height: 1.6,
-              color: AppColors.textNavy,
+              color: context.palette.textNavy,
             ),
           ),
         ),
         const SizedBox(height: 20),
         Text(
           prompt,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: AppColors.textNavy,
+            color: context.palette.textNavy,
           ),
         ),
       ],

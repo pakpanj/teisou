@@ -5,7 +5,7 @@ import '../../core/localization/app_strings.dart';
 import '../../core/localization/kotoba_category_i18n.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/app_language.dart';
@@ -32,7 +32,7 @@ class KotobaCategoryScreen extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(
         title: Row(
           mainAxisSize: MainAxisSize.min,
@@ -67,7 +67,7 @@ class KotobaCategoryScreen extends ConsumerWidget {
                 child: Text(
                   s.noWordsForCategory,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: AppColors.textNavy),
+                  style: TextStyle(color: context.palette.textNavy),
                 ),
               ),
             );
@@ -143,7 +143,7 @@ class _ProgressBar extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy.withValues(alpha: 0.6),
+              color: context.palette.textNavy.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 6),
@@ -152,8 +152,8 @@ class _ProgressBar extends StatelessWidget {
             child: LinearProgressIndicator(
               value: ratio,
               minHeight: 6,
-              backgroundColor: Colors.grey.shade200,
-              valueColor: const AlwaysStoppedAnimation(AppColors.secondaryBlue),
+              backgroundColor: context.palette.progressTrack,
+              valueColor: AlwaysStoppedAnimation(context.palette.secondaryBlue),
             ),
           ),
         ],
@@ -182,7 +182,7 @@ class _WordTile extends StatelessWidget {
     final displayWord = entry.kanji ?? entry.word;
 
     return Material(
-      color: AppColors.cardWhite,
+      color: context.palette.cardWhite,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
@@ -204,39 +204,39 @@ class _WordTile extends StatelessWidget {
                   children: [
                     Text(
                       displayWord,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     Text(
                       '${entry.reading} · ${entry.romaji}',
                       style: TextStyle(
                         fontSize: 12,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                     Text(
                       entry.localizedMeaning(language),
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                   ],
                 ),
               ),
               if (learned) ...[
-                const Icon(
+                Icon(
                   Icons.check_circle,
-                  color: AppColors.secondaryBlue,
+                  color: context.palette.secondaryBlue,
                   size: 20,
                 ),
                 const SizedBox(width: 4),
               ],
-              const Icon(Icons.chevron_right, color: AppColors.freeBadgeGrey),
+              Icon(Icons.chevron_right, color: context.palette.freeBadgeGrey),
             ],
           ),
         ),

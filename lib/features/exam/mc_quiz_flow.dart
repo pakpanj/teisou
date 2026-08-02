@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 
 /// Shared "N multiple-choice questions, one at a time, tap to reveal
 /// correct/wrong, Next button, tally a score" flow for Dokkai/Choukai/
@@ -64,15 +64,15 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
       children: [
         LinearProgressIndicator(
           value: (_index + 1) / widget.totalQuestions,
-          backgroundColor: AppColors.primaryCoral.withValues(alpha: 0.15),
-          color: AppColors.primaryCoral,
+          backgroundColor: context.palette.primaryCoral.withValues(alpha: 0.15),
+          color: context.palette.primaryCoral,
           minHeight: 6,
         ),
         const SizedBox(height: 12),
         Text(
           s.questionOf(_index + 1, widget.totalQuestions),
-          style: const TextStyle(
-            color: AppColors.textNavy,
+          style: TextStyle(
+            color: context.palette.textNavy,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -154,20 +154,20 @@ class _OptionTile extends StatelessWidget {
 
     switch (state) {
       case _OptionState.correct:
-        background = AppColors.successGreen;
+        background = context.palette.successGreen;
         foreground = Colors.white;
         trailing = const Icon(Icons.check_circle, color: Colors.white);
         break;
       case _OptionState.wrong:
-        background = AppColors.errorRed;
+        background = context.palette.errorRed;
         foreground = Colors.white;
         trailing = const Icon(Icons.cancel, color: Colors.white);
         break;
       case _OptionState.neutral:
         background = answered
-            ? AppColors.cardWhite.withValues(alpha: 0.6)
-            : AppColors.cardWhite;
-        foreground = AppColors.textNavy;
+            ? context.palette.cardWhite.withValues(alpha: 0.6)
+            : context.palette.cardWhite;
+        foreground = context.palette.textNavy;
         trailing = null;
         break;
     }

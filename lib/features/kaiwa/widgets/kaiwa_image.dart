@@ -3,7 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/services/kaiwa_image_cache.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 
 /// Renders a Kaiwa NPC-line illustration fetched on-demand from Firebase
 /// Storage, cached to disk permanently after the first download via
@@ -96,7 +96,7 @@ class _Placeholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.hiraganaCardBg,
+      color: context.palette.hiraganaCardBg,
       alignment: Alignment.center,
       child: loading
           ? SizedBox(

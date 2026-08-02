@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/exam_mode.dart';
 import 'exam_screen.dart';
 
@@ -24,7 +24,7 @@ class KanaExamModePickerScreen extends ConsumerWidget {
         child: Column(
           children: [
             _ModeCard(
-              color: AppColors.primaryCoral,
+              color: context.palette.primaryCoral,
               icon: Icons.text_fields,
               title: s.examHiraganaTitle,
               subtitle: s.examHiraganaSubtitle,
@@ -32,7 +32,7 @@ class KanaExamModePickerScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             _ModeCard(
-              color: AppColors.secondaryBlue,
+              color: context.palette.secondaryBlue,
               icon: Icons.text_fields,
               title: s.examKatakanaTitle,
               subtitle: s.examKatakanaSubtitle,
@@ -40,7 +40,7 @@ class KanaExamModePickerScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             _ModeCard(
-              color: AppColors.tertiaryAmber,
+              color: context.palette.tertiaryAmber,
               icon: Icons.shuffle,
               title: s.examMixedTitle,
               subtitle: s.examMixedSubtitle,
@@ -98,10 +98,10 @@ class _ModeCard extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -109,7 +109,7 @@ class _ModeCard extends StatelessWidget {
                       subtitle,
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
@@ -75,7 +75,7 @@ class KanjiComboExamScreen extends ConsumerWidget {
         ref.watch(kanjiComboQuestionsProvider((level, combination)));
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(
         title: Text(combination ? 'Kombinasi Kanji ${level.key}' : 'Kanji Tunggal ${level.key}'),
       ),
@@ -114,14 +114,14 @@ class _KanjiPrompt extends StatelessWidget {
       children: [
         Text(
           promptLabel,
-          style: const TextStyle(fontSize: 16, color: AppColors.textNavy),
+          style: TextStyle(fontSize: 16, color: context.palette.textNavy),
         ),
         const SizedBox(height: 16),
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 32),
           decoration: BoxDecoration(
-            color: AppColors.cardWhite,
+            color: context.palette.cardWhite,
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
@@ -134,10 +134,10 @@ class _KanjiPrompt extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 56,
                 fontWeight: FontWeight.bold,
-                color: AppColors.textNavy,
+                color: context.palette.textNavy,
               ),
             ),
           ),

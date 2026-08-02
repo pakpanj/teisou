@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/saved_word.dart';
 import 'saved_words_providers.dart';
@@ -49,7 +49,7 @@ class SavedWordsScreen extends ConsumerWidget {
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: Text(s.delete, style: const TextStyle(color: AppColors.errorRed)),
+            child: Text(s.delete, style: TextStyle(color: context.palette.errorRed)),
           ),
         ],
       ),
@@ -63,7 +63,7 @@ class SavedWordsScreen extends ConsumerWidget {
     final wordsAsync = ref.watch(unifiedSavedWordsProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(s.savedWords)),
       body: wordsAsync.when(
         data: (words) => AppRefreshIndicator(
@@ -76,7 +76,7 @@ class SavedWordsScreen extends ConsumerWidget {
                     Text(
                       s.noSavedWordsMessage,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(color: AppColors.textNavy),
+                      style: TextStyle(color: context.palette.textNavy),
                     ),
                   ],
                 )
@@ -96,7 +96,7 @@ class SavedWordsScreen extends ConsumerWidget {
                         alignment: Alignment.centerRight,
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         decoration: BoxDecoration(
-                          color: AppColors.errorRed,
+                          color: context.palette.errorRed,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: const Icon(Icons.delete, color: Colors.white),
@@ -125,7 +125,7 @@ class _SavedWordTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.cardWhite,
+      color: context.palette.cardWhite,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
@@ -140,10 +140,10 @@ class _SavedWordTile extends StatelessWidget {
                   children: [
                     Text(
                       word.text,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     Text(
@@ -151,13 +151,13 @@ class _SavedWordTile extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
                 ),
               ),
-              const Icon(Icons.chevron_right, color: AppColors.freeBadgeGrey),
+              Icon(Icons.chevron_right, color: context.palette.freeBadgeGrey),
             ],
           ),
         ),
@@ -175,8 +175,8 @@ class _SavedWordDetailSheet extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       padding: const EdgeInsets.all(24),
-      decoration: const BoxDecoration(
-        color: AppColors.background,
+      decoration: BoxDecoration(
+        color: context.palette.background,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       child: Column(
@@ -188,30 +188,30 @@ class _SavedWordDetailSheet extends ConsumerWidget {
               Expanded(
                 child: Text(
                   word.text,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textNavy,
+                    color: context.palette.textNavy,
                   ),
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.volume_up, color: AppColors.primaryCoral, size: 28),
+                icon: Icon(Icons.volume_up, color: context.palette.primaryCoral, size: 28),
                 onPressed: () => ref.read(ttsServiceProvider).speak(word.text),
               ),
             ],
           ),
           Text(
             word.romaji,
-            style: TextStyle(fontSize: 15, color: AppColors.textNavy.withValues(alpha: 0.7)),
+            style: TextStyle(fontSize: 15, color: context.palette.textNavy.withValues(alpha: 0.7)),
           ),
           const SizedBox(height: 16),
-          Text(word.meaning, style: const TextStyle(color: AppColors.textNavy, fontSize: 16)),
+          Text(word.meaning, style: TextStyle(color: context.palette.textNavy, fontSize: 16)),
           if (word.exampleSentence != null) ...[
             const SizedBox(height: 16),
             Text(
               word.exampleSentence!,
-              style: const TextStyle(color: AppColors.textNavy),
+              style: TextStyle(color: context.palette.textNavy),
             ),
           ],
           const SizedBox(height: 12),

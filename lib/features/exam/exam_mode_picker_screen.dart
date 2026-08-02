@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../choukai/choukai_home_screen.dart';
 import '../dokkai/dokkai_home_screen.dart';
 import '../kanji_combo/kanji_combo_home_screen.dart';
@@ -28,7 +28,7 @@ class ExamModePickerScreen extends ConsumerWidget {
         child: Column(
           children: [
             _CategoryCard(
-              color: AppColors.primaryCoral,
+              color: context.palette.primaryCoral,
               icon: Icons.text_fields,
               title: 'Kana',
               subtitle: s.kanaCategorySubtitle,
@@ -39,7 +39,7 @@ class ExamModePickerScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             _CategoryCard(
-              color: AppColors.secondaryBlue,
+              color: context.palette.secondaryBlue,
               icon: Icons.menu_book_rounded,
               title: 'Dokkai',
               subtitle: s.dokkaiCategorySubtitle,
@@ -50,7 +50,7 @@ class ExamModePickerScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             _CategoryCard(
-              color: AppColors.tertiaryAmber,
+              color: context.palette.tertiaryAmber,
               icon: Icons.headphones_rounded,
               title: 'Choukai',
               subtitle: s.choukaiCategorySubtitle,
@@ -61,7 +61,7 @@ class ExamModePickerScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 16),
             _CategoryCard(
-              color: AppColors.primaryCoral,
+              color: context.palette.primaryCoral,
               icon: Icons.translate_rounded,
               title: 'Kanji',
               subtitle: s.kanjiComboCategorySubtitle,
@@ -118,10 +118,10 @@ class _CategoryCard extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -129,7 +129,7 @@ class _CategoryCard extends StatelessWidget {
                       subtitle,
                       style: TextStyle(
                         fontSize: 13,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],

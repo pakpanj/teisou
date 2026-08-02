@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/kaiwa_entry.dart';
 import 'kaiwa_dialogue_screen.dart';
@@ -56,7 +56,7 @@ class _KaiwaCategoryScreenState extends ConsumerState<KaiwaCategoryScreen> {
     final s = ref.watch(appStringsProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(widget.categoryName)),
       body: kaiwaAsync.when(
         data: (all) {
@@ -68,7 +68,7 @@ class _KaiwaCategoryScreenState extends ConsumerState<KaiwaCategoryScreen> {
                 child: Text(
                   s.noDialoguesForCategory,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: AppColors.textNavy),
+                  style: TextStyle(color: context.palette.textNavy),
                 ),
               ),
             );
@@ -103,7 +103,7 @@ class _KaiwaCategoryScreenState extends ConsumerState<KaiwaCategoryScreen> {
                                 child: Text(
                                   s.noDialoguesMatchFilter,
                                   style: TextStyle(
-                                    color: AppColors.textNavy.withValues(
+                                    color: context.palette.textNavy.withValues(
                                       alpha: 0.6,
                                     ),
                                   ),
@@ -167,7 +167,7 @@ class _ProgressBar extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy.withValues(alpha: 0.6),
+              color: context.palette.textNavy.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 6),
@@ -176,8 +176,8 @@ class _ProgressBar extends StatelessWidget {
             child: LinearProgressIndicator(
               value: ratio,
               minHeight: 6,
-              backgroundColor: Colors.grey.shade200,
-              valueColor: const AlwaysStoppedAnimation(AppColors.secondaryBlue),
+              backgroundColor: context.palette.progressTrack,
+              valueColor: AlwaysStoppedAnimation(context.palette.secondaryBlue),
             ),
           ),
         ],
@@ -216,12 +216,12 @@ class _FilterRow extends StatelessWidget {
               child: ChoiceChip(
                 label: Text(labels[f]!),
                 selected: isSelected,
-                selectedColor: AppColors.primaryCoral.withValues(alpha: 0.2),
+                selectedColor: context.palette.primaryCoral.withValues(alpha: 0.2),
                 labelStyle: TextStyle(
                   fontSize: 12,
                   color: isSelected
-                      ? AppColors.primaryCoral
-                      : AppColors.textNavy,
+                      ? context.palette.primaryCoral
+                      : context.palette.textNavy,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 ),
                 onSelected: (_) => onFilterChanged(f),
@@ -248,7 +248,7 @@ class _DialogueTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Material(
-      color: AppColors.cardWhite,
+      color: context.palette.cardWhite,
       borderRadius: BorderRadius.circular(14),
       child: InkWell(
         borderRadius: BorderRadius.circular(14),
@@ -261,14 +261,14 @@ class _DialogueTile extends ConsumerWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: AppColors.primaryCoral.withValues(alpha: 0.15),
+                  color: context.palette.primaryCoral.withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
-                child: const Icon(
+                child: Icon(
                   Icons.chat_bubble_outline,
                   size: 18,
-                  color: AppColors.primaryCoral,
+                  color: context.palette.primaryCoral,
                 ),
               ),
               const SizedBox(width: 12),
@@ -278,10 +278,10 @@ class _DialogueTile extends ConsumerWidget {
                   children: [
                     Text(
                       entry.localizedTitle(ref.watch(appStringsProvider).language),
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.textNavy,
+                        color: context.palette.textNavy,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -291,22 +291,22 @@ class _DialogueTile extends ConsumerWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 12,
-                        color: AppColors.textNavy.withValues(alpha: 0.6),
+                        color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
                 ),
               ),
               if (learned)
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 8),
                   child: Icon(
                     Icons.check_circle,
                     size: 18,
-                    color: AppColors.secondaryBlue,
+                    color: context.palette.secondaryBlue,
                   ),
                 ),
-              const Icon(Icons.chevron_right, color: AppColors.freeBadgeGrey),
+              Icon(Icons.chevron_right, color: context.palette.freeBadgeGrey),
             ],
           ),
         ),

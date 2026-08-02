@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/avatars.dart';
 import '../../../core/constants/frames.dart';
 import '../../../core/providers.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../data/models/user_profile.dart';
 import '../../paywall/paywall_screen.dart';
 
@@ -158,8 +158,8 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
       maxChildSize: 0.95,
       builder: (context, scrollController) {
         return Container(
-          decoration: const BoxDecoration(
-            color: AppColors.background,
+          decoration: BoxDecoration(
+            color: context.palette.background,
             borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: ListView(
@@ -171,7 +171,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                   width: 40,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: AppColors.textNavy.withValues(alpha: 0.2),
+                    color: context.palette.textNavy.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -294,7 +294,7 @@ class _PickerModeTab extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: active ? AppColors.primaryCoral : Colors.transparent,
+              color: active ? context.palette.primaryCoral : Colors.transparent,
               width: 2,
             ),
           ),
@@ -305,8 +305,8 @@ class _PickerModeTab extends StatelessWidget {
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: active
-                ? AppColors.textNavy
-                : AppColors.textNavy.withValues(alpha: 0.35),
+                ? context.palette.textNavy
+                : context.palette.textNavy.withValues(alpha: 0.35),
           ),
         ),
       ),
@@ -325,10 +325,10 @@ class _SectionTitle extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20, bottom: 10),
       child: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.bold,
-          color: AppColors.textNavy,
+          color: context.palette.textNavy,
         ),
       ),
     );
@@ -356,10 +356,10 @@ class _GoogleAvatarTile extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: AppColors.cardWhite,
+          color: context.palette.cardWhite,
           borderRadius: BorderRadius.circular(16),
           border: selected
-              ? Border.all(color: AppColors.primaryCoral, width: 2)
+              ? Border.all(color: context.palette.primaryCoral, width: 2)
               : null,
         ),
         child: Row(
@@ -367,9 +367,9 @@ class _GoogleAvatarTile extends StatelessWidget {
             CircleAvatar(radius: 24, backgroundImage: NetworkImage(photoUrl)),
             const SizedBox(width: 12),
             Expanded(
-              child: Text(label, style: const TextStyle(color: AppColors.textNavy)),
+              child: Text(label, style: TextStyle(color: context.palette.textNavy)),
             ),
-            if (selected) const Icon(Icons.check_circle, color: AppColors.primaryCoral),
+            if (selected) Icon(Icons.check_circle, color: context.palette.primaryCoral),
           ],
         ),
       ),
@@ -451,15 +451,15 @@ class _PresetTile extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppColors.primaryCoral, width: 2),
+                  border: Border.all(color: context.palette.primaryCoral, width: 2),
                 ),
               ),
             ),
           if (selected)
-            const Positioned(
+            Positioned(
               right: 4,
               top: 4,
-              child: Icon(Icons.check_circle, color: AppColors.primaryCoral, size: 18),
+              child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
             ),
           if (locked)
             Positioned(
@@ -467,8 +467,8 @@ class _PresetTile extends StatelessWidget {
               top: 4,
               child: Container(
                 padding: const EdgeInsets.all(3),
-                decoration: const BoxDecoration(
-                  color: AppColors.textNavy,
+                decoration: BoxDecoration(
+                  color: context.palette.textNavy,
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(Icons.lock, color: Colors.white, size: 12),
@@ -512,7 +512,7 @@ class _FrameGrid extends StatelessWidget {
         if (index == 0) {
           return _FrameTile(
             selected: selectedId == null,
-            child: Text(noFrameLabel, textAlign: TextAlign.center, style: const TextStyle(fontSize: 11, color: AppColors.textNavy)),
+            child: Text(noFrameLabel, textAlign: TextAlign.center, style: TextStyle(fontSize: 11, color: context.palette.textNavy)),
             onTap: () => onTap(null),
           );
         }
@@ -553,20 +553,20 @@ class _FrameTile extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: AppColors.cardWhite,
+              color: context.palette.cardWhite,
               borderRadius: BorderRadius.circular(16),
               border: selected
-                  ? Border.all(color: AppColors.primaryCoral, width: 2)
+                  ? Border.all(color: context.palette.primaryCoral, width: 2)
                   : null,
             ),
             alignment: Alignment.center,
             child: child,
           ),
           if (selected)
-            const Positioned(
+            Positioned(
               right: 4,
               top: 4,
-              child: Icon(Icons.check_circle, color: AppColors.primaryCoral, size: 18),
+              child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
             ),
         ],
       ),

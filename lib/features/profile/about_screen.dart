@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 
 class AboutScreen extends ConsumerWidget {
   const AboutScreen({super.key});
@@ -13,7 +13,7 @@ class AboutScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(s.aboutApp)),
       body: ListView(
         padding: const EdgeInsets.all(24),
@@ -22,13 +22,13 @@ class AboutScreen extends ConsumerWidget {
             child: Text('🐱', style: TextStyle(fontSize: 64)),
           ),
           const SizedBox(height: 12),
-          const Center(
+          Center(
             child: Text(
               'Teisou: Kana Master',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: AppColors.textNavy,
+                color: context.palette.textNavy,
               ),
             ),
           ),
@@ -36,7 +36,7 @@ class AboutScreen extends ConsumerWidget {
           Center(
             child: Text(
               s.appVersionLabel(_appVersion),
-              style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
+              style: TextStyle(color: context.palette.textNavy.withValues(alpha: 0.6)),
             ),
           ),
           const SizedBox(height: 32),
@@ -62,16 +62,16 @@ class _Section extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.bold,
-            color: AppColors.textNavy,
+            color: context.palette.textNavy,
           ),
         ),
         const SizedBox(height: 6),
         Text(
           body,
-          style: const TextStyle(color: AppColors.textNavy, height: 1.4),
+          style: TextStyle(color: context.palette.textNavy, height: 1.4),
         ),
       ],
     );

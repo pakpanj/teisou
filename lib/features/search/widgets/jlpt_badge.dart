@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../data/models/jlpt_level.dart';
 
 /// Small pill badge showing a dictionary entry's JLPT level, reused across
@@ -15,15 +15,15 @@ class JlptBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.secondaryBlue.withValues(alpha: 0.12),
+        color: context.palette.secondaryBlue.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Text(
         level.key,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.bold,
-          color: AppColors.secondaryBlue,
+          color: context.palette.secondaryBlue,
         ),
       ),
     );

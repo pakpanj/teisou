@@ -3,7 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/services/kotoba_image_cache.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 
 /// Renders a Kotoba vocab illustration fetched on-demand from Firebase
 /// Storage, cached to disk permanently after the first download via
@@ -16,7 +16,9 @@ class KotobaImage extends StatefulWidget {
   final String categoryIcon;
   final double size;
   final BorderRadius borderRadius;
-  final Color backgroundColor;
+  /// Defaults to the theme's amber card tint when omitted; resolved in
+  /// build, since a default value cannot read the theme.
+  final Color? backgroundColor;
 
   const KotobaImage({
     super.key,
@@ -24,7 +26,7 @@ class KotobaImage extends StatefulWidget {
     required this.categoryIcon,
     this.size = 96,
     this.borderRadius = const BorderRadius.all(Radius.circular(16)),
-    this.backgroundColor = AppColors.tertiaryAmberCardBg,
+    this.backgroundColor,
   });
 
   @override
@@ -70,7 +72,8 @@ class _KotobaImageState extends State<KotobaImage> {
               return _Placeholder(
                 icon: widget.categoryIcon,
                 size: widget.size,
-                backgroundColor: widget.backgroundColor,
+                backgroundColor:
+                    widget.backgroundColor ?? context.palette.tertiaryAmberCardBg,
                 loading: true,
               );
             }
@@ -79,7 +82,8 @@ class _KotobaImageState extends State<KotobaImage> {
               return _Placeholder(
                 icon: widget.categoryIcon,
                 size: widget.size,
-                backgroundColor: widget.backgroundColor,
+                backgroundColor:
+                    widget.backgroundColor ?? context.palette.tertiaryAmberCardBg,
               );
             }
             return CachedNetworkImage(
@@ -91,13 +95,15 @@ class _KotobaImageState extends State<KotobaImage> {
               placeholder: (context, url) => _Placeholder(
                 icon: widget.categoryIcon,
                 size: widget.size,
-                backgroundColor: widget.backgroundColor,
+                backgroundColor:
+                    widget.backgroundColor ?? context.palette.tertiaryAmberCardBg,
                 loading: true,
               ),
               errorWidget: (context, url, error) => _Placeholder(
                 icon: widget.categoryIcon,
                 size: widget.size,
-                backgroundColor: widget.backgroundColor,
+                backgroundColor:
+                    widget.backgroundColor ?? context.palette.tertiaryAmberCardBg,
               ),
             );
           },

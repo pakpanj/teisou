@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/particle_entry.dart';
 import '../../data/models/particle_function.dart';
@@ -88,7 +88,7 @@ class _ParticleDetailScreenState extends ConsumerState<ParticleDetailScreen> {
     final language = ref.watch(languageProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(
         title: Text('${_index + 1} / ${widget.entries.length}'),
         actions: [
@@ -145,7 +145,7 @@ class _ParticleDetailScreenState extends ConsumerState<ParticleDetailScreen> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           entry.localizedOverview(language),
-                          style: const TextStyle(color: AppColors.textNavy),
+                          style: TextStyle(color: context.palette.textNavy),
                         ),
                       ),
                       if (entry.similarParticles.isNotEmpty) ...[
@@ -193,7 +193,7 @@ class _ParticleDisplay extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -201,10 +201,10 @@ class _ParticleDisplay extends StatelessWidget {
           Text(
             entry.particle,
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy,
+              color: context.palette.textNavy,
             ),
           ),
           const SizedBox(height: 8),
@@ -212,7 +212,7 @@ class _ParticleDisplay extends StatelessWidget {
             entry.particleRomaji,
             style: TextStyle(
               fontSize: 14,
-              color: AppColors.textNavy.withValues(alpha: 0.6),
+              color: context.palette.textNavy.withValues(alpha: 0.6),
             ),
           ),
         ],
@@ -244,15 +244,15 @@ class _CategoryBadge extends ConsumerWidget {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
           decoration: BoxDecoration(
-            color: AppColors.tertiaryAmber.withValues(alpha: 0.15),
+            color: context.palette.tertiaryAmber.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
             name,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: AppColors.tertiaryAmber,
+              color: context.palette.tertiaryAmber,
             ),
           ),
         );
@@ -283,7 +283,7 @@ class _SimilarParticlesRow extends ConsumerWidget {
           children: ids
               .map(
                 (id) =>
-                    _Pill(text: byId[id] ?? id, color: AppColors.primaryCoral),
+                    _Pill(text: byId[id] ?? id, color: context.palette.primaryCoral),
               )
               .toList(),
         );
@@ -340,10 +340,10 @@ class _SectionTitle extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
-          color: AppColors.textNavy,
+          color: context.palette.textNavy,
         ),
       ),
     );
@@ -358,7 +358,7 @@ class _AudioButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.primaryCoral,
+      color: context.palette.primaryCoral,
       shape: const CircleBorder(),
       child: InkWell(
         customBorder: const CircleBorder(),
@@ -388,7 +388,7 @@ class _LearnedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: learned ? AppColors.secondaryBlue : Colors.transparent,
+      color: learned ? context.palette.secondaryBlue : Colors.transparent,
       borderRadius: BorderRadius.circular(24),
       child: InkWell(
         borderRadius: BorderRadius.circular(24),
@@ -397,7 +397,7 @@ class _LearnedButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
-            border: learned ? null : Border.all(color: AppColors.secondaryBlue),
+            border: learned ? null : Border.all(color: context.palette.secondaryBlue),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -412,7 +412,7 @@ class _LearnedButton extends StatelessWidget {
                 Icon(
                   learned ? Icons.check_circle : Icons.check_circle_outline,
                   size: 18,
-                  color: learned ? Colors.white : AppColors.secondaryBlue,
+                  color: learned ? Colors.white : context.palette.secondaryBlue,
                 ),
               const SizedBox(width: 8),
               Text(
@@ -420,7 +420,7 @@ class _LearnedButton extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 13,
-                  color: learned ? Colors.white : AppColors.secondaryBlue,
+                  color: learned ? Colors.white : context.palette.secondaryBlue,
                 ),
               ),
             ],
@@ -448,7 +448,7 @@ class _FunctionTile extends ConsumerWidget {
       margin: const EdgeInsets.only(bottom: 12),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Theme(
@@ -461,9 +461,9 @@ class _FunctionTile extends ConsumerWidget {
           childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
           title: Text(
             function.localizedTitle(ref.watch(appStringsProvider).language),
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: AppColors.textNavy,
+              color: context.palette.textNavy,
             ),
           ),
           children: [
@@ -471,7 +471,7 @@ class _FunctionTile extends ConsumerWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 function.localizedExplanation(ref.watch(appStringsProvider).language),
-                style: const TextStyle(color: AppColors.textNavy, height: 1.4),
+                style: TextStyle(color: context.palette.textNavy, height: 1.4),
               ),
             ),
             const SizedBox(height: 12),
@@ -479,7 +479,7 @@ class _FunctionTile extends ConsumerWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: AppColors.background,
+                color: context.palette.background,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Align(
@@ -487,7 +487,7 @@ class _FunctionTile extends ConsumerWidget {
                 child: Text(
                   function.formation,
                   style: TextStyle(
-                    color: AppColors.textNavy.withValues(alpha: 0.8),
+                    color: context.palette.textNavy.withValues(alpha: 0.8),
                     height: 1.4,
                   ),
                 ),
@@ -522,7 +522,7 @@ class _SentenceExampleCard extends ConsumerWidget {
       margin: const EdgeInsets.only(bottom: 8),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppColors.background,
+        color: context.palette.background,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -533,9 +533,9 @@ class _SentenceExampleCard extends ConsumerWidget {
               children: [
                 Text(
                   example.japanese,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 15,
-                    color: AppColors.textNavy,
+                    color: context.palette.textNavy,
                   ),
                 ),
                 if (example.romaji != null) ...[
@@ -544,7 +544,7 @@ class _SentenceExampleCard extends ConsumerWidget {
                     example.romaji!,
                     style: TextStyle(
                       fontSize: 12,
-                      color: AppColors.textNavy.withValues(alpha: 0.5),
+                      color: context.palette.textNavy.withValues(alpha: 0.5),
                     ),
                   ),
                 ],
@@ -554,14 +554,14 @@ class _SentenceExampleCard extends ConsumerWidget {
                       ref.watch(appStringsProvider).language),
                   style: TextStyle(
                     fontSize: 13,
-                    color: AppColors.textNavy.withValues(alpha: 0.7),
+                    color: context.palette.textNavy.withValues(alpha: 0.7),
                   ),
                 ),
               ],
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.volume_up, color: AppColors.primaryCoral),
+            icon: Icon(Icons.volume_up, color: context.palette.primaryCoral),
             onPressed: onSpeak,
           ),
         ],
@@ -593,12 +593,12 @@ class _NavRow extends StatelessWidget {
           _NavButton(
             icon: Icons.arrow_back,
             background: Colors.grey.shade300,
-            iconColor: AppColors.textNavy,
+            iconColor: context.palette.textNavy,
             onTap: hasPrev ? onPrev : null,
           ),
           _NavButton(
             icon: Icons.arrow_forward,
-            background: AppColors.primaryCoral,
+            background: context.palette.primaryCoral,
             iconColor: Colors.white,
             onTap: hasNext ? onNext : null,
           ),

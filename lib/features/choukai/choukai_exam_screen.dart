@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
-import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_palette.dart';
 import '../../data/models/choukai_clip.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/simple_exam_result.dart';
@@ -69,7 +69,7 @@ class ChoukaiExamScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(clip.title)),
       body: McQuizFlow(
         totalQuestions: clip.questions.length,
@@ -96,7 +96,7 @@ class _AudioHeader extends ConsumerWidget {
     return Column(
       children: [
         Material(
-          color: AppColors.primaryCoral,
+          color: context.palette.primaryCoral,
           shape: const CircleBorder(),
           elevation: 3,
           child: InkWell(
@@ -113,16 +113,16 @@ class _AudioHeader extends ConsumerWidget {
           'Ketuk untuk memutar / mengulang',
           style: TextStyle(
             fontSize: 12,
-            color: AppColors.textNavy.withValues(alpha: 0.6),
+            color: context.palette.textNavy.withValues(alpha: 0.6),
           ),
         ),
         const SizedBox(height: 20),
         Text(
           prompt,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: AppColors.textNavy,
+            color: context.palette.textNavy,
           ),
         ),
       ],
@@ -141,22 +141,22 @@ class _ScriptReview extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.cardWhite,
+        color: context.palette.cardWhite,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Naskah Audio',
-            style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.textNavy),
+            style: TextStyle(fontWeight: FontWeight.bold, color: context.palette.textNavy),
           ),
           const SizedBox(height: 8),
-          Text(clip.audioText, style: const TextStyle(color: AppColors.textNavy)),
+          Text(clip.audioText, style: TextStyle(color: context.palette.textNavy)),
           const SizedBox(height: 8),
           Text(
             clip.audioTranslation,
-            style: TextStyle(color: AppColors.textNavy.withValues(alpha: 0.6)),
+            style: TextStyle(color: context.palette.textNavy.withValues(alpha: 0.6)),
           ),
         ],
       ),
