@@ -59,8 +59,24 @@ class CoverArt extends StatelessWidget {
   }
 }
 
-/// Locked list of the 10 selectable covers — add art by dropping a PNG at
+/// Locked list of the 19 selectable covers — add art by dropping a PNG at
 /// `assets/covers/{id}.png`, no other code changes needed.
+///
+/// All 19 have real art. Each is stored at 1280x853 as a 128-colour palette
+/// PNG (~7.5MB total, against ~19MB for full-colour PNGs); the header card
+/// renders at 995x623 on a Moto G52J, so 1280 covers it with headroom, and
+/// the quantisation is invisible once the header's 62% white scrim lands on
+/// top. [background]/[emoji] therefore never actually show — they stay as
+/// [CoverArt]'s never-crash fallback, with [background] sampled from each
+/// image's own centre so a failure degrades to roughly the right tone.
+///
+/// This list replaced an earlier 10 that were pure placeholders — no art was
+/// ever supplied for them, and the art that did arrive covered different
+/// themes. Only `sakura_dawn`, `autumn_leaves` and `starry_night` carried
+/// over by id; `fuji_sunset`, `torii_path`, `summer_festival`,
+/// `winter_snow`, `bamboo_forest`, `ocean_wave` and `sakura_night` are gone.
+/// A profile still holding one of those ids resolves to null in [byId] and
+/// falls back to the default header scene — see `_HeaderBackground`.
 class CoverPresets {
   CoverPresets._();
 
@@ -69,61 +85,115 @@ class CoverPresets {
       id: 'sakura_dawn',
       label: 'Sakura Pagi',
       emoji: '🌸',
-      background: Color(0xFFFBD9DD),
-    ),
-    CoverPreset(
-      id: 'fuji_sunset',
-      label: 'Fuji Senja',
-      emoji: '🗻',
-      background: Color(0xFFF3C6C6),
-    ),
-    CoverPreset(
-      id: 'torii_path',
-      label: 'Jalan Torii',
-      emoji: '⛩️',
-      background: Color(0xFFF6D9DD),
+      background: Color(0xFFFCE0B8),
     ),
     CoverPreset(
       id: 'autumn_leaves',
       label: 'Momiji Musim Gugur',
       emoji: '🍁',
-      background: Color(0xFFFCEEDB),
+      background: Color(0xFFFBD995),
     ),
     CoverPreset(
-      id: 'summer_festival',
-      label: 'Festival Musim Panas',
-      emoji: '🏮',
-      background: Color(0xFFFBD3B0),
+      id: 'spring_meadow',
+      label: 'Padang Bunga',
+      emoji: '🌷',
+      background: Color(0xFFD2ECFC),
     ),
     CoverPreset(
-      id: 'winter_snow',
-      label: 'Salju Musim Dingin',
-      emoji: '❄️',
-      background: Color(0xFFE8F0FE),
+      id: 'coral_reef',
+      label: 'Terumbu Karang',
+      emoji: '🐠',
+      background: Color(0xFF44ADEB),
     ),
     CoverPreset(
-      id: 'bamboo_forest',
-      label: 'Hutan Bambu',
-      emoji: '🎋',
-      background: Color(0xFFE3F1E6),
-    ),
-    CoverPreset(
-      id: 'ocean_wave',
-      label: 'Ombak Laut',
-      emoji: '🌊',
-      background: Color(0xFFDCEBFB),
+      id: 'jungle_canopy',
+      label: 'Rimba Tropis',
+      emoji: '🌴',
+      background: Color(0xFFBCD37A),
     ),
     CoverPreset(
       id: 'starry_night',
       label: 'Malam Berbintang',
       emoji: '🌌',
-      background: Color(0xFFD9D6ED),
+      background: Color(0xFF091D5E),
     ),
     CoverPreset(
-      id: 'sakura_night',
-      label: 'Sakura Malam',
-      emoji: '🌙',
-      background: Color(0xFFE7D6E8),
+      id: 'sunflower_field',
+      label: 'Ladang Bunga Matahari',
+      emoji: '🌻',
+      background: Color(0xFFA1D1F9),
+    ),
+    CoverPreset(
+      id: 'enchanted_forest',
+      label: 'Hutan Ajaib',
+      emoji: '🍄',
+      background: Color(0xFF174C34),
+    ),
+    CoverPreset(
+      id: 'magic_castle',
+      label: 'Istana Sihir',
+      emoji: '🏰',
+      background: Color(0xFF2A1B75),
+    ),
+    CoverPreset(
+      id: 'zodiac_night',
+      label: 'Malam Zodiak',
+      emoji: '🔮',
+      background: Color(0xFF081340),
+    ),
+    CoverPreset(
+      id: 'art_studio',
+      label: 'Studio Seni',
+      emoji: '🎨',
+      background: Color(0xFFFCEEDE),
+    ),
+    CoverPreset(
+      id: 'pixel_game',
+      label: 'Game Piksel',
+      emoji: '🎮',
+      background: Color(0xFF1D195D),
+    ),
+    CoverPreset(
+      id: 'sumi_ink',
+      label: 'Tinta Sumi',
+      emoji: '🖌️',
+      background: Color(0xFFF2EBE5),
+    ),
+    CoverPreset(
+      id: 'sacred_geometry',
+      label: 'Geometri Sakral',
+      emoji: '🔯',
+      background: Color(0xFF0D1543),
+    ),
+    CoverPreset(
+      id: 'cyber_neon',
+      label: 'Neon Siber',
+      emoji: '💻',
+      background: Color(0xFF070128),
+    ),
+    CoverPreset(
+      id: 'library_books',
+      label: 'Perpustakaan',
+      emoji: '📚',
+      background: Color(0xFFFDEBCF),
+    ),
+    CoverPreset(
+      id: 'cat_lover',
+      label: 'Pencinta Kucing',
+      emoji: '🐱',
+      background: Color(0xFFFDECD4),
+    ),
+    CoverPreset(
+      id: 'steampunk_brass',
+      label: 'Steampunk',
+      emoji: '⚙️',
+      background: Color(0xFFF4D6A9),
+    ),
+    CoverPreset(
+      id: 'outer_space',
+      label: 'Antariksa',
+      emoji: '🚀',
+      background: Color(0xFF120E50),
     ),
   ];
 
