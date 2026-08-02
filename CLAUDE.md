@@ -4231,10 +4231,59 @@ contiguous starting at 1), `flutter build apk --debug` succeeded
 (specifically confirms `assets/data/bab_data.json` was correctly added
 to `pubspec.yaml`'s `flutter: assets:` list — this project has been
 bitten before by forgetting that step, which `analyze`/`test` can't
-catch on their own). **No interactive on-device pass was possible in
-this environment** — same standing gap as nearly everything else in this
-file. Worth a physical-device pass before treating this as fully done:
-tapping through Home → Kurikulum → a level → a chapter → each of the 5
-sub-module rows → back → "Tandai Bab Selesai", and specifically
-confirming the mascot bubble's layout doesn't overflow on a small
-screen (never visually verified, only reasoned about).
+catch on their own).
+
+**Update, same day (2026-08-02): verified end-to-end on the physical
+Moto G52J 5G** — the device was actually connected this time
+(`adb devices` showed it), closing the "no on-device pass possible"
+gap this note originally had. `adb install -r` the debug APK, launched
+via `adb shell monkey -p com.teisou.kanamaster -c
+android.intent.category.LAUNCHER 1` (more reliable than waiting on
+`flutter run -d <serial>` per this file's own earlier note on that
+gotcha). Confirmed, with screenshots at each step:
+- Home → "Kurikulum" section card renders `MascotGuideBubble`
+  correctly, no overflow, no layout glitch on the real 1080×2460
+  screen — this was the one thing flagged as "never visually verified"
+  before.
+- `BabHomeScreen` → `BabLevelScreen` (Bab N5) lists all 4 chapters with
+  correct titles/descriptions and a guide bubble at top.
+- `BabDetailScreen` for "Menyapa dan Berkenalan" correctly resolved and
+  rendered all four populated sections (Kosakata: ともだち; Tata Bahasa:
+  だ/です, は, か; Partikel: は, か with full overview text; Percakapan:
+  "Berkenalan dengan Teman Baru") — proves `babDetailProvider`'s
+  cross-module `getById` resolution chain works for real against the
+  actual bundled assets, not just in the Python generator's validation.
+- Tapping "Tandai Bab Selesai" updated the UI **live, with no manual
+  refresh anywhere**: the mascot switched to `cheering` mood, the
+  message changed to the "done" copy, the button became "Bab Selesai"
+  with a check icon: on `BabLevelScreen` chapter 1 immediately showed a
+  green checkmark instead of "1"; on Home, the Kurikulum card's guide
+  message updated from "Ayo mulai Bab 1!" to `Lanjutkan ke "Keluarga
+  dan Teman", kamu pasti bisa!` — confirms `ref.invalidate` on both
+  `babCompletedIdsProvider` and `babNextUpProvider` correctly propagates
+  across three different screens built in three different sessions'
+  worth of provider wiring.
+- Home's "Latihan" section shows the relocated Dokkai card
+  (icon 読, subtitle "Pemahaman bacaan, N5-N1") right below Kaiwa, as
+  designed.
+- The Ujian tab now shows exactly two cards, Kana and Kanji (the
+  existing Kanji-Kombinasi card) — Dokkai and Choukai are gone, per
+  Bagian A's intent.
+
+**ADB tap-automation gotcha hit and fixed this pass, worth remembering**:
+`adb shell input tap` needs coordinates in the device's real pixel
+space (1080×2460 here), not the coordinates of whatever *scaled-down*
+screenshot preview is being looked at — a tap computed by eyeballing a
+downscaled image and forgetting to scale back up landed on the AdMob
+test-ad banner instead of the "Ujian" nav tab, which opened Chrome to
+the AdMob site. Recovered by using `adb shell uiautomator dump` +
+`adb pull` (also hit and fixed a git-bash/MSYS path-conversion gotcha
+here: prefix the command with `MSYS_NO_PATHCONV=1` so a POSIX-looking
+device-side path like `/sdcard/ui.xml` isn't silently rewritten into a
+bogus Windows path before reaching `adb`, but keep the *local*
+destination argument in explicit `C:/...` form since that one *does*
+need to resolve as a real Windows path) to read exact widget
+`bounds="[x1,y1][x2,y2]"` from the UI hierarchy instead of estimating
+from a screenshot — reliable, worth using by default for any future
+on-device tap automation in this project rather than eyeballing
+coordinates from an image.
