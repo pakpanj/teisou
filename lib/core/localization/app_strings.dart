@@ -33,7 +33,6 @@ class AppStrings {
   String get learnKatakana => _t('Belajar Katakana', 'Learn Katakana');
   String get basicChars46 => _t('46 karakter dasar', '46 basic characters');
   String get exam => _t('Ujian', 'Exam');
-  String get testYourSkills => _t('Uji kemampuanmu!', 'Test your skills!');
 
   // --- Bottom nav ---
   String get navHome => _t('Home', 'Home');
@@ -41,7 +40,15 @@ class AppStrings {
   String get navProfile => _t('Profil', 'Profile');
 
   // --- Modules section ---
-  String get otherModules => _t('Modul Lainnya', 'More Modules');
+  // Section headers, ordered the way someone actually learns Japanese:
+  // the two syllabaries first, then the words and characters built from
+  // them, then the grammar that joins those, then putting it to use.
+  // Tools and unbuilt modules sit after the learning path, not inside it.
+  String get sectionBasics => _t('Dasar', 'Basics');
+  String get sectionVocabKanji => _t('Kosakata & Kanji', 'Vocabulary & Kanji');
+  String get sectionGrammar => _t('Tata Bahasa', 'Grammar');
+  String get sectionPractice => _t('Latihan', 'Practice');
+  String get sectionTools => _t('Alat', 'Tools');
   String get comingSoonHeader => _t('Segera Hadir', 'Coming Soon');
   String get fixingBadge => _t('Diperbaiki', 'Fixing');
   String get comingSoonBadge => _t('Segera Hadir', 'Coming Soon');
@@ -165,10 +172,6 @@ class AppStrings {
   String get themeSystemDesc => _t(
         'Ikut pengaturan terang/gelap di HP kamu.',
         "Follows your phone's light/dark setting.",
-      );
-  String get themeScopeNote => _t(
-        'Catatan: sebagian layar mungkin masih tampil terang untuk saat ini.',
-        'Note: some screens may still appear light for now.',
       );
 
   // --- Shared across module Home/Level/Category/Detail/Quiz screens ---

@@ -9,9 +9,7 @@ import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/sakura_decoration.dart';
 import '../../core/widgets/sakura_fall_widget.dart';
-import '../../data/models/kana_type.dart';
 import '../exam/exam_mode_picker_screen.dart';
-import '../flashcard/flashcard_screen.dart';
 import '../leaderboard/leaderboard_screen.dart';
 import '../profile/profile_screen.dart';
 import '../search/search_screen.dart';
@@ -221,52 +219,6 @@ class _HomeTabBody extends ConsumerWidget {
                             ),
                           ),
                           const SizedBox(height: 24),
-                          _MenuCard(
-                            backgroundColor: context.palette.hiraganaCardBg,
-                            iconBackgroundColor: const Color.fromARGB(
-                              255,
-                              254,
-                              129,
-                              146,
-                            ),
-                            iconLabel: 'あ',
-                            title: s.learnHiragana,
-                            subtitle: s.basicChars46,
-                            onTap: () => AppNavigator.slideFromRight(
-                              context,
-                              const FlashcardScreen(type: KanaType.hiragana),
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          _MenuCard(
-                            backgroundColor: context.palette.katakanaCardBg,
-                            iconBackgroundColor: const Color.fromARGB(
-                              255,
-                              112,
-                              174,
-                              255,
-                            ),
-                            iconLabel: 'ア',
-                            title: s.learnKatakana,
-                            subtitle: s.basicChars46,
-                            onTap: () => AppNavigator.slideFromRight(
-                              context,
-                              const FlashcardScreen(type: KanaType.katakana),
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          _MenuCard(
-                            backgroundColor: context.palette.tertiaryAmberCardBg,
-                            iconBackgroundColor: context.palette.tertiaryAmber,
-                            icon: Icons.assignment_outlined,
-                            title: s.exam,
-                            subtitle: s.testYourSkills,
-                            onTap: () => AppNavigator.slideFromBottom(
-                              context,
-                              const ExamModePickerScreen(),
-                            ),
-                          ),
-                          const SizedBox(height: 24),
                           const ModulesSection(),
                           const SizedBox(height: 24),
                         ],
@@ -279,89 +231,6 @@ class _HomeTabBody extends ConsumerWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _MenuCard extends StatelessWidget {
-  final Color backgroundColor;
-  final Color iconBackgroundColor;
-  final String? iconLabel;
-  final IconData? icon;
-  final String title;
-  final String subtitle;
-  final VoidCallback onTap;
-
-  const _MenuCard({
-    required this.backgroundColor,
-    required this.iconBackgroundColor,
-    this.iconLabel,
-    this.icon,
-    required this.title,
-    required this.subtitle,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: backgroundColor,
-      borderRadius: BorderRadius.circular(20),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(20),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  color: iconBackgroundColor,
-                  shape: BoxShape.circle,
-                ),
-                alignment: Alignment.center,
-                child: iconLabel != null
-                    ? Text(
-                        iconLabel!,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                    : Icon(icon, color: Colors.white),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: context.palette.textNavy,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      subtitle,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: context.palette.textNavy.withValues(alpha: 0.6),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(Icons.chevron_right, color: iconBackgroundColor),
-            ],
-          ),
-        ),
       ),
     );
   }

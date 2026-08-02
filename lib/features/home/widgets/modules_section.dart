@@ -6,41 +6,71 @@ import '../../../core/navigation/app_navigator.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/module_info.dart';
+import '../../../data/models/kana_type.dart';
 import '../../bunpou/bunpou_home_screen.dart';
+import '../../flashcard/flashcard_screen.dart';
 import '../../kaiwa/kaiwa_home_screen.dart';
 import '../../kanji/kanji_home_screen.dart';
 import '../../kotoba/kotoba_home_screen.dart';
 import '../../modules/widgets/coming_soon_content.dart';
 import '../../particle/particle_home_screen.dart';
 
-/// The rest of the learning modules (beyond the Hiragana/Katakana/Ujian
-/// shortcuts already on the Home tab's header) — formerly the standalone
-/// "Belajar" tab's [ModulesScreen], folded into Home so the bottom nav
-/// only needs Home/Ujian/Profil. Not a [Scaffold]/[AppBar] — this is meant
-/// to be embedded inside Home's own scroll body.
+/// The whole Home learning menu, grouped by where each module falls in a
+/// beginner's path: the two syllabaries, then the words and characters
+/// built out of them, then the grammar that joins those, then putting it
+/// to use. Tools and unbuilt modules come after that path rather than
+/// sitting inside it.
+///
+/// This used to be only the modules *below* Home's Hiragana/Katakana/Ujian
+/// shortcut cards, under one catch-all "Modul Lainnya" heading that mixed
+/// vocabulary, grammar, conversation and a camera tool together. The kana
+/// cards moved in here so the ordering lives in one place instead of being
+/// split across two files, and the Ujian card was dropped entirely — it
+/// duplicated the Ujian tab in the bottom nav.
+///
+/// Not a [Scaffold]/[AppBar] — this is embedded in Home's own scroll body.
 class ModulesSection extends ConsumerWidget {
   const ModulesSection({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
+    final palette = context.palette;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _SectionHeader(s.otherModules),
+        _SectionHeader(s.sectionBasics),
         const SizedBox(height: 12),
-        _LockedModuleCard(
-          emoji: '📷',
-          title: s.camDetectorTitle,
-          subtitle: s.camDetectorSubtitle,
-          reason: s.camDetectorReason,
-          fixingBadge: s.fixingBadge,
+        _AvailableModuleCard(
+          emoji: 'あ',
+          backgroundColor: palette.hiraganaCardBg,
+          iconColor: palette.primaryCoral,
+          title: s.learnHiragana,
+          subtitle: s.basicChars46,
+          onTap: () => AppNavigator.slideFromRight(
+            context,
+            const FlashcardScreen(type: KanaType.hiragana),
+          ),
         ),
         const SizedBox(height: 12),
         _AvailableModuleCard(
+          emoji: 'ア',
+          backgroundColor: palette.katakanaCardBg,
+          iconColor: palette.secondaryBlue,
+          title: s.learnKatakana,
+          subtitle: s.basicChars46,
+          onTap: () => AppNavigator.slideFromRight(
+            context,
+            const FlashcardScreen(type: KanaType.katakana),
+          ),
+        ),
+        const SizedBox(height: 28),
+        _SectionHeader(s.sectionVocabKanji),
+        const SizedBox(height: 12),
+        _AvailableModuleCard(
           emoji: '📚',
-          backgroundColor: context.palette.katakanaCardBg,
-          iconColor: context.palette.secondaryBlue,
+          backgroundColor: palette.katakanaCardBg,
+          iconColor: palette.secondaryBlue,
           title: s.kotobaTitle,
           subtitle: s.kotobaSubtitle,
           onTap: () => AppNavigator.slideFromRight(
@@ -51,8 +81,8 @@ class ModulesSection extends ConsumerWidget {
         const SizedBox(height: 12),
         _AvailableModuleCard(
           emoji: '字',
-          backgroundColor: context.palette.tertiaryAmberCardBg,
-          iconColor: context.palette.tertiaryAmber,
+          backgroundColor: palette.tertiaryAmberCardBg,
+          iconColor: palette.tertiaryAmber,
           title: s.kanjiTitle,
           subtitle: s.kanjiSubtitle,
           onTap: () => AppNavigator.slideFromRight(
@@ -60,11 +90,13 @@ class ModulesSection extends ConsumerWidget {
             const KanjiHomeScreen(),
           ),
         ),
+        const SizedBox(height: 28),
+        _SectionHeader(s.sectionGrammar),
         const SizedBox(height: 12),
         _AvailableModuleCard(
           emoji: '文',
-          backgroundColor: context.palette.hiraganaCardBg,
-          iconColor: context.palette.primaryCoral,
+          backgroundColor: palette.hiraganaCardBg,
+          iconColor: palette.primaryCoral,
           title: s.bunpouTitle,
           subtitle: s.bunpouSubtitle,
           onTap: () => AppNavigator.slideFromRight(
@@ -78,20 +110,34 @@ class ModulesSection extends ConsumerWidget {
         // _PremiumModuleCard + PaywallScreen branch before release.
         _AvailableModuleCard(
           emoji: 'を',
-          backgroundColor: context.palette.tertiaryAmberCardBg,
-          iconColor: context.palette.tertiaryAmber,
+          backgroundColor: palette.tertiaryAmberCardBg,
+          iconColor: palette.tertiaryAmber,
           title: s.particleTitle,
           subtitle: s.particleSubtitle,
-          onTap: () => AppNavigator.slideFromRight(context, const ParticleHomeScreen()),
+          onTap: () =>
+              AppNavigator.slideFromRight(context, const ParticleHomeScreen()),
         ),
+        const SizedBox(height: 28),
+        _SectionHeader(s.sectionPractice),
         const SizedBox(height: 12),
         _AvailableModuleCard(
           emoji: '💬',
-          backgroundColor: context.palette.hiraganaCardBg,
-          iconColor: context.palette.primaryCoral,
+          backgroundColor: palette.hiraganaCardBg,
+          iconColor: palette.primaryCoral,
           title: s.kaiwaTitle,
           subtitle: s.kaiwaSubtitle,
-          onTap: () => AppNavigator.slideFromRight(context, const KaiwaHomeScreen()),
+          onTap: () =>
+              AppNavigator.slideFromRight(context, const KaiwaHomeScreen()),
+        ),
+        const SizedBox(height: 28),
+        _SectionHeader(s.sectionTools),
+        const SizedBox(height: 12),
+        _LockedModuleCard(
+          emoji: '📷',
+          title: s.camDetectorTitle,
+          subtitle: s.camDetectorSubtitle,
+          reason: s.camDetectorReason,
+          fixingBadge: s.fixingBadge,
         ),
         const SizedBox(height: 28),
         _SectionHeader(s.comingSoonHeader),

@@ -17,9 +17,13 @@ void main() {
     );
 
     expect(find.textContaining('Kana'), findsOneWidget);
+    // The menu is grouped by learning stage now; "Dasar" is the first
+    // heading and holds the two kana cards. There is deliberately no Ujian
+    // card here any more — it duplicated the bottom nav's Ujian tab.
+    expect(find.text('Dasar'), findsOneWidget);
     expect(find.text('Belajar Hiragana'), findsOneWidget);
     expect(find.text('Belajar Katakana'), findsOneWidget);
-    expect(find.text('Uji kemampuanmu!'), findsOneWidget);
+    expect(find.text('Uji kemampuanmu!'), findsNothing);
   });
 
   testWidgets(
@@ -32,10 +36,11 @@ void main() {
         ),
       );
 
+      expect(find.text('Basics'), findsOneWidget);
       expect(find.text('Learn Hiragana'), findsOneWidget);
       expect(find.text('Learn Katakana'), findsOneWidget);
-      expect(find.text('Test your skills!'), findsOneWidget);
       expect(find.text('Belajar Hiragana'), findsNothing);
+      expect(find.text('Dasar'), findsNothing);
     },
   );
 }

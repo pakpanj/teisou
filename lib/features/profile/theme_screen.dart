@@ -86,14 +86,6 @@ class ThemeScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 10),
           ],
-          const SizedBox(height: 8),
-          Text(
-            s.themeScopeNote,
-            style: TextStyle(
-              fontSize: 12,
-              color: palette.textNavy.withValues(alpha: 0.6),
-            ),
-          ),
         ],
       ),
     );
