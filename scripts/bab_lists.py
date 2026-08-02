@@ -11,7 +11,7 @@
 # bab_data.json, so a typo'd id fails the build loudly instead of becoming
 # a silent dead link at runtime.
 #
-# 9 proof-of-concept N5 chapters so far, hand-picked from content already
+# 13 proof-of-concept N5 chapters so far, hand-picked from content already
 # authored in past sessions — not the full curriculum. Expanding to more N5
 # chapters and then N4-N1 is future-session work, same "batch 1 of many"
 # shape as this project's other content rollouts (Dokkai, Dictionary).
@@ -206,5 +206,73 @@ N5_CHAPTERS = [
         bunpou_ids=["bunpou_totemo", "bunpou_ne"],
         particle_ids=["particle_ne"],
         kaiwa_ids=["kaiwa_bicara_cuaca"],
+    ),
+    dict(
+        id="bab_stasiun_dan_transportasi",
+        order=10,
+        level="N5",
+        title="Stasiun dan Transportasi",
+        title_en="Station and Transportation",
+        description="Kosakata kendaraan dan cara membeli tiket di stasiun.",
+        description_en="Vehicle vocabulary and how to buy a ticket at the station.",
+        kotoba_ids=[
+            "kotoba_kendaraan_kuruma",
+            "kotoba_kendaraan_densha",
+            "kotoba_kendaraan_basu",
+            "kotoba_kendaraan_jitensha",
+        ],
+        bunpou_ids=["bunpou_de", "bunpou_kara"],
+        particle_ids=["particle_de", "particle_kara"],
+        kaiwa_ids=["kaiwa_beli_tiket"],
+    ),
+    dict(
+        id="bab_di_rumah_sakit",
+        order=11,
+        level="N5",
+        title="Di Rumah Sakit",
+        title_en="At the Hospital",
+        description="Kosakata bagian tubuh dan cara menjelaskan sakit ke dokter.",
+        description_en="Body-part vocabulary and how to describe pain to a doctor.",
+        kotoba_ids=[
+            "kotoba_obat_obatan_byouin",
+            "kotoba_obat_obatan_isha",
+            "kotoba_penyakit_gejala_itai",
+            "kotoba_anggota_tubuh_atama",
+        ],
+        bunpou_ids=["bunpou_ga", "bunpou_totemo"],
+        particle_ids=["particle_ga"],
+        kaiwa_ids=["kaiwa_jelaskan_sakit"],
+    ),
+    dict(
+        id="bab_olahraga",
+        order=12,
+        level="N5",
+        title="Olahraga",
+        title_en="Sports",
+        description="Kosakata olahraga dan cara mengatakan olahraga favorit.",
+        description_en="Sports vocabulary and how to say your favorite sport.",
+        kotoba_ids=[
+            "kotoba_olahraga_supootsu",
+            "kotoba_olahraga_sakkaa",
+        ],
+        bunpou_ids=["bunpou_no_ga_suki", "bunpou_totemo"],
+        particle_ids=["particle_o"],
+        kaiwa_ids=["kaiwa_olahraga_favorit"],
+    ),
+    dict(
+        id="bab_bioskop",
+        order=13,
+        level="N5",
+        title="Bioskop",
+        title_en="Cinema",
+        description="Membicarakan film dan jenis film favorit.",
+        description_en="Talking about movies and favorite kinds of films.",
+        kotoba_ids=[
+            "kotoba_media_hiburan_terebi",
+            "kotoba_hobi_aktivitas_eiga",
+        ],
+        bunpou_ids=["bunpou_donna", "bunpou_no_ga_suki"],
+        particle_ids=["particle_ga"],
+        kaiwa_ids=["kaiwa_cerita_film"],
     ),
 ]

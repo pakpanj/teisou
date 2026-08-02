@@ -4440,3 +4440,51 @@ untested ids: two extra food categories, and the first-ever use of
 sections (Kosakata/Tata Bahasa/Partikel/Percakapan) resolving and
 rendering correctly in both. `flutter analyze` clean, `flutter test
 --concurrency=1` 48/48, `flutter build apk --debug` succeeded.
+
+## Update (2026-08-03, later still): Bab 10-13 — 13/13 N5 chapters
+
+Continuing the same "keep shipping Bab content, Bunpou reorganization
+still deferred" direction from the update directly above. Four more
+chapters, appended at the end (order 10-13, no reordering needed):
+
+- **`bab_stasiun_dan_transportasi`** ("Station and Transportation") —
+  `bunpou_de`/`bunpou_kara` (both noun-attaching, no conjugation
+  prerequisite — `kara`'s formation text mentions a です/ます-ending
+  clause variant, but its actual `sentenceExamples` only ever attach
+  から to plain nouns/plain-form clauses, so it was read in full before
+  use rather than trusted from the formation-field keyword scan alone).
+  Kotoba: 車/電車/バス/自転車 (`kendaraan`). Kaiwa: `kaiwa_beli_tiket`.
+- **`bab_di_rumah_sakit`** ("At the Hospital") — `bunpou_ga` (plain
+  subject-marking particle) + `bunpou_totemo`, teaching the classic
+  N5 symptom sentence shape "[body part]が[adjective]です" (e.g.
+  頭が痛いです, "my head hurts"). Kotoba combines two thin single-word
+  categories (`obat_obatan`'s 病院/医者, `penyakit_gejala`'s only N5
+  word 痛い) with `anggota_tubuh`'s 頭. Kaiwa: `kaiwa_jelaskan_sakit`.
+- **`bab_olahraga`** ("Sports") — first chapter to use
+  `bunpou_no_ga_suki` (のが好き, confirmed dictionary-form-based, no
+  unmet prerequisite — dictionary/plain form needs no derivation,
+  unlike ~masu-stem). Kotoba: `olahraga` category is thin at N5 (only
+  スポーツ/サッカー) but sufficient. Kaiwa: `kaiwa_olahraga_favorit`.
+- **`bab_bioskop`** ("Cinema") — `bunpou_donna` (どんな, "what kind of
+  ~") + reused `bunpou_no_ga_suki`, natural pairing for "どんな映画が
+  好きですか". Kotoba combines `media_hiburan`'s only N5 word (テレビ)
+  with a reused `hobi_aktivitas_eiga` (already in chapter 6 — repeated
+  reference across chapters is fine, same as `bunpou_totemo` appearing
+  in four chapters now). Kaiwa: `kaiwa_cerita_film`.
+
+Bab is now **13/13 N5 chapters**. Verified on the physical Moto G52J
+again: `uiautomator dump`'s content-desc confirmed "13 bab" before
+opening anything, then Di Rumah Sakit and Bioskop's detail screens
+(chosen as the two chapters combining the thinnest/most-reused vocab
+sources and the two brand-new Bunpou patterns this batch, `bunpou_ga`
+alone as a taught pattern and `bunpou_no_ga_suki`/`bunpou_donna`) were
+opened and screenshotted — all sections resolve and render correctly
+in both. `flutter analyze` clean, `flutter test --concurrency=1`
+48/48, `flutter build apk --debug` succeeded.
+
+The six ~masu-stem-dependent patterns flagged in the previous update
+(`bunpou_masen_ka`/`mashou`/`mashou_ka`/`ni_iku`/`tai`/`kata`) are
+still unused, still documented in `bab_lists.py`'s header comment —
+this batch didn't need any of them either, but an invitation-themed
+chapter ("Mengajak", "Rencana Liburan") will, the next time this is
+picked up.
