@@ -4535,3 +4535,46 @@ Bunpou patterns this batch — の and か～か) opened and screenshotted,
 all sections resolving and rendering correctly in both. `flutter
 analyze` clean, `flutter test --concurrency=1` 48/48, `flutter build
 apk --debug` succeeded.
+
+## Update (2026-08-03, yet another "lanjut"): Bab 18-21 — 21/21 N5
+chapters
+
+Same direction again. Four more chapters, appended at the end (order
+18-21):
+
+- **`bab_pekerjaan`** ("Occupation") — reuses `bunpou_da_desu`/
+  `bunpou_mo` (both already proven safe). Kotoba combines two thin
+  categories (`profesi`'s 先生/学生, `pekerjaan_kantor`'s 会社/仕事).
+  Kaiwa: `kaiwa_tanya_pekerjaan` (from `perkenalan` — still a very deep
+  well of unused N5 dialogues, ~39 entries and counting).
+- **`bab_warna`** ("Colors") — reuses `bunpou_donna`/`bunpou_no_ga_suki`
+  (same pairing as chapter 13's Bioskop, now the third chapter to use
+  `no_ga_suki`). Kotoba: 5 colors from `warna`. Kaiwa:
+  `kaiwa_tanya_warna_favorit` (`perkenalan`).
+- **`bab_hewan_peliharaan`** ("Pets") — reuses `bunpou_ga_imasu`/
+  `bunpou_totemo`. Kotoba: 4 animals from `hewan_darat`. Kaiwa:
+  `kaiwa_tanya_hewan_peliharaan_kenalan` (`perkenalan`).
+- **`bab_buah_dan_sayuran`** ("Fruits and Vegetables") — reuses
+  `bunpou_o_kudasai`/`bunpou_ga_hoshii` (now used in 4 chapters
+  combined). Kotoba combines two thin categories (`buah`'s りんご/バナナ,
+  `sayuran`'s やさい/トマト). Kaiwa: `kaiwa_tanya_harga`, the first
+  `belanja`-category dialogue used since chapter 5 (which used
+  `kaiwa_coba_baju` instead — `belanja` still has `kaiwa_bayar_kasir`/
+  `kaiwa_minta_diskon`/`kaiwa_tukar_barang_rusak` unused).
+
+Bab is now **21/21 N5 chapters**, all still within the safe-pattern
+discipline — zero chapters use any of the six deferred ~masu-stem
+patterns (`masen_ka`/`mashou`/`mashou_ka`/`ni_iku`/`tai`/`kata`), which
+remain the natural next thing to fix whenever an invitation-themed
+chapter is finally built. `perkenalan` alone supplied 3 of this
+batch's 4 Kaiwa dialogues — worth noting it's the single richest
+under-used category in the whole Kaiwa N5 dataset (~39 dialogues, only
+4 used across all 21 chapters so far), a good first place to look for
+future chapters' conversation content before reaching for a
+less-populated category.
+
+Verified on the physical Moto G52J again: content-desc confirmed "21
+bab", then Warna and Hewan Peliharaan's detail screens opened and
+screenshotted, all sections resolving and rendering correctly in both.
+`flutter analyze` clean, `flutter test --concurrency=1` 48/48,
+`flutter build apk --debug` succeeded.

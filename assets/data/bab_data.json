@@ -460,5 +460,116 @@
       "kaiwa_tempat_wisata"
     ],
     "dokkaiIds": []
+  },
+  {
+    "id": "bab_pekerjaan",
+    "order": 18,
+    "title": "Pekerjaan",
+    "titleEn": "Occupation",
+    "description": "Kosakata pekerjaan dan cara menanyakan profesi seseorang.",
+    "descriptionEn": "Occupation vocabulary and how to ask what someone does.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_profesi_sensei",
+      "kotoba_profesi_gakusei",
+      "kotoba_pekerjaan_kantor_kaisha",
+      "kotoba_pekerjaan_kantor_shigoto"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_da_desu",
+      "bunpou_mo"
+    ],
+    "particleIds": [
+      "particle_wa",
+      "particle_mo"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_pekerjaan"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_warna",
+    "order": 19,
+    "title": "Warna",
+    "titleEn": "Colors",
+    "description": "Nama-nama warna dan cara menyebutkan warna favorit.",
+    "descriptionEn": "Color names and how to say your favorite color.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_warna_akai",
+      "kotoba_warna_aoi",
+      "kotoba_warna_kiiroi",
+      "kotoba_warna_shiroi",
+      "kotoba_warna_kuroi"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_donna",
+      "bunpou_no_ga_suki"
+    ],
+    "particleIds": [
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_warna_favorit"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_hewan_peliharaan",
+    "order": 20,
+    "title": "Hewan Peliharaan",
+    "titleEn": "Pets",
+    "description": "Nama-nama hewan dan cara membicarakan hewan peliharaan.",
+    "descriptionEn": "Animal names and how to talk about pets.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_hewan_darat_inu",
+      "kotoba_hewan_darat_neko",
+      "kotoba_hewan_darat_panda",
+      "kotoba_hewan_darat_koala"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ga_imasu",
+      "bunpou_totemo"
+    ],
+    "particleIds": [
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_hewan_peliharaan_kenalan"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_buah_dan_sayuran",
+    "order": 21,
+    "title": "Buah dan Sayuran",
+    "titleEn": "Fruits and Vegetables",
+    "description": "Kosakata buah dan sayuran dan cara menanyakan harga.",
+    "descriptionEn": "Fruit and vegetable vocabulary and how to ask the price.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_buah_ringo",
+      "kotoba_buah_banana",
+      "kotoba_sayuran_yasai",
+      "kotoba_sayuran_tomato"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_kudasai",
+      "bunpou_ga_hoshii"
+    ],
+    "particleIds": [
+      "particle_o",
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_harga"
+    ],
+    "dokkaiIds": []
   }
 ]

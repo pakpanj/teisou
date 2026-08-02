@@ -11,7 +11,7 @@
 # bab_data.json, so a typo'd id fails the build loudly instead of becoming
 # a silent dead link at runtime.
 #
-# 17 proof-of-concept N5 chapters so far, hand-picked from content already
+# 21 proof-of-concept N5 chapters so far, hand-picked from content already
 # authored in past sessions — not the full curriculum. Expanding to more N5
 # chapters and then N4-N1 is future-session work, same "batch 1 of many"
 # shape as this project's other content rollouts (Dokkai, Dictionary).
@@ -345,5 +345,78 @@ N5_CHAPTERS = [
         bunpou_ids=["bunpou_ka_ka", "bunpou_totemo"],
         particle_ids=["particle_ya"],
         kaiwa_ids=["kaiwa_tempat_wisata"],
+    ),
+    dict(
+        id="bab_pekerjaan",
+        order=18,
+        level="N5",
+        title="Pekerjaan",
+        title_en="Occupation",
+        description="Kosakata pekerjaan dan cara menanyakan profesi seseorang.",
+        description_en="Occupation vocabulary and how to ask what someone does.",
+        kotoba_ids=[
+            "kotoba_profesi_sensei",
+            "kotoba_profesi_gakusei",
+            "kotoba_pekerjaan_kantor_kaisha",
+            "kotoba_pekerjaan_kantor_shigoto",
+        ],
+        bunpou_ids=["bunpou_da_desu", "bunpou_mo"],
+        particle_ids=["particle_wa", "particle_mo"],
+        kaiwa_ids=["kaiwa_tanya_pekerjaan"],
+    ),
+    dict(
+        id="bab_warna",
+        order=19,
+        level="N5",
+        title="Warna",
+        title_en="Colors",
+        description="Nama-nama warna dan cara menyebutkan warna favorit.",
+        description_en="Color names and how to say your favorite color.",
+        kotoba_ids=[
+            "kotoba_warna_akai",
+            "kotoba_warna_aoi",
+            "kotoba_warna_kiiroi",
+            "kotoba_warna_shiroi",
+            "kotoba_warna_kuroi",
+        ],
+        bunpou_ids=["bunpou_donna", "bunpou_no_ga_suki"],
+        particle_ids=["particle_ga"],
+        kaiwa_ids=["kaiwa_tanya_warna_favorit"],
+    ),
+    dict(
+        id="bab_hewan_peliharaan",
+        order=20,
+        level="N5",
+        title="Hewan Peliharaan",
+        title_en="Pets",
+        description="Nama-nama hewan dan cara membicarakan hewan peliharaan.",
+        description_en="Animal names and how to talk about pets.",
+        kotoba_ids=[
+            "kotoba_hewan_darat_inu",
+            "kotoba_hewan_darat_neko",
+            "kotoba_hewan_darat_panda",
+            "kotoba_hewan_darat_koala",
+        ],
+        bunpou_ids=["bunpou_ga_imasu", "bunpou_totemo"],
+        particle_ids=["particle_ga"],
+        kaiwa_ids=["kaiwa_tanya_hewan_peliharaan_kenalan"],
+    ),
+    dict(
+        id="bab_buah_dan_sayuran",
+        order=21,
+        level="N5",
+        title="Buah dan Sayuran",
+        title_en="Fruits and Vegetables",
+        description="Kosakata buah dan sayuran dan cara menanyakan harga.",
+        description_en="Fruit and vegetable vocabulary and how to ask the price.",
+        kotoba_ids=[
+            "kotoba_buah_ringo",
+            "kotoba_buah_banana",
+            "kotoba_sayuran_yasai",
+            "kotoba_sayuran_tomato",
+        ],
+        bunpou_ids=["bunpou_o_kudasai", "bunpou_ga_hoshii"],
+        particle_ids=["particle_o", "particle_ga"],
+        kaiwa_ids=["kaiwa_tanya_harga"],
     ),
 ]
