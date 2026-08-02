@@ -350,5 +350,115 @@
       "kaiwa_cerita_film"
     ],
     "dokkaiIds": []
+  },
+  {
+    "id": "bab_hari_dan_jadwal",
+    "order": 14,
+    "title": "Hari dan Jadwal",
+    "titleEn": "Days and Schedule",
+    "description": "Nama-nama hari dan cara membuat janji temu.",
+    "descriptionEn": "Days of the week and how to make an appointment.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_hari_bulan_getsuyoubi",
+      "kotoba_hari_bulan_kayoubi",
+      "kotoba_hari_bulan_doyoubi",
+      "kotoba_hari_bulan_nichiyoubi"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_kara",
+      "bunpou_made"
+    ],
+    "particleIds": [
+      "particle_kara",
+      "particle_made"
+    ],
+    "kaiwaIds": [
+      "kaiwa_janji_temu"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_angka_dan_uang",
+    "order": 15,
+    "title": "Angka dan Uang",
+    "titleEn": "Numbers and Money",
+    "description": "Angka dasar dan cara menukar atau meminta uang.",
+    "descriptionEn": "Basic numbers and how to exchange or ask for money.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_angka_satuan_ichi",
+      "kotoba_angka_satuan_ni",
+      "kotoba_angka_satuan_san",
+      "kotoba_angka_satuan_yon",
+      "kotoba_angka_satuan_go"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_kudasai",
+      "bunpou_ga_arimasu"
+    ],
+    "particleIds": [
+      "particle_o",
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tukar_uang"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_negara_dan_asal",
+    "order": 16,
+    "title": "Negara dan Asal",
+    "titleEn": "Countries and Origin",
+    "description": "Nama-nama negara dan cara menanyakan asal seseorang.",
+    "descriptionEn": "Country names and how to ask where someone is from.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_negara_kota_nihon",
+      "kotoba_negara_kota_indoneshia",
+      "kotoba_negara_kota_amerika",
+      "kotoba_negara_kota_kankoku"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_kara",
+      "bunpou_no"
+    ],
+    "particleIds": [
+      "particle_kara",
+      "particle_no"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_asal_negara"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_rencana_liburan",
+    "order": 17,
+    "title": "Rencana Liburan",
+    "titleEn": "Vacation Plans",
+    "description": "Tempat wisata dan cara membicarakan rencana liburan.",
+    "descriptionEn": "Tourist spots and how to talk about vacation plans.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_kouen",
+      "kotoba_bangunan_fasilitas_doubutsuen"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ka_ka",
+      "bunpou_totemo"
+    ],
+    "particleIds": [
+      "particle_ya"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tempat_wisata"
+    ],
+    "dokkaiIds": []
   }
 ]

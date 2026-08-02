@@ -11,7 +11,7 @@
 # bab_data.json, so a typo'd id fails the build loudly instead of becoming
 # a silent dead link at runtime.
 #
-# 13 proof-of-concept N5 chapters so far, hand-picked from content already
+# 17 proof-of-concept N5 chapters so far, hand-picked from content already
 # authored in past sessions — not the full curriculum. Expanding to more N5
 # chapters and then N4-N1 is future-session work, same "batch 1 of many"
 # shape as this project's other content rollouts (Dokkai, Dictionary).
@@ -274,5 +274,76 @@ N5_CHAPTERS = [
         bunpou_ids=["bunpou_donna", "bunpou_no_ga_suki"],
         particle_ids=["particle_ga"],
         kaiwa_ids=["kaiwa_cerita_film"],
+    ),
+    dict(
+        id="bab_hari_dan_jadwal",
+        order=14,
+        level="N5",
+        title="Hari dan Jadwal",
+        title_en="Days and Schedule",
+        description="Nama-nama hari dan cara membuat janji temu.",
+        description_en="Days of the week and how to make an appointment.",
+        kotoba_ids=[
+            "kotoba_hari_bulan_getsuyoubi",
+            "kotoba_hari_bulan_kayoubi",
+            "kotoba_hari_bulan_doyoubi",
+            "kotoba_hari_bulan_nichiyoubi",
+        ],
+        bunpou_ids=["bunpou_kara", "bunpou_made"],
+        particle_ids=["particle_kara", "particle_made"],
+        kaiwa_ids=["kaiwa_janji_temu"],
+    ),
+    dict(
+        id="bab_angka_dan_uang",
+        order=15,
+        level="N5",
+        title="Angka dan Uang",
+        title_en="Numbers and Money",
+        description="Angka dasar dan cara menukar atau meminta uang.",
+        description_en="Basic numbers and how to exchange or ask for money.",
+        kotoba_ids=[
+            "kotoba_angka_satuan_ichi",
+            "kotoba_angka_satuan_ni",
+            "kotoba_angka_satuan_san",
+            "kotoba_angka_satuan_yon",
+            "kotoba_angka_satuan_go",
+        ],
+        bunpou_ids=["bunpou_o_kudasai", "bunpou_ga_arimasu"],
+        particle_ids=["particle_o", "particle_ga"],
+        kaiwa_ids=["kaiwa_tukar_uang"],
+    ),
+    dict(
+        id="bab_negara_dan_asal",
+        order=16,
+        level="N5",
+        title="Negara dan Asal",
+        title_en="Countries and Origin",
+        description="Nama-nama negara dan cara menanyakan asal seseorang.",
+        description_en="Country names and how to ask where someone is from.",
+        kotoba_ids=[
+            "kotoba_negara_kota_nihon",
+            "kotoba_negara_kota_indoneshia",
+            "kotoba_negara_kota_amerika",
+            "kotoba_negara_kota_kankoku",
+        ],
+        bunpou_ids=["bunpou_kara", "bunpou_no"],
+        particle_ids=["particle_kara", "particle_no"],
+        kaiwa_ids=["kaiwa_tanya_asal_negara"],
+    ),
+    dict(
+        id="bab_rencana_liburan",
+        order=17,
+        level="N5",
+        title="Rencana Liburan",
+        title_en="Vacation Plans",
+        description="Tempat wisata dan cara membicarakan rencana liburan.",
+        description_en="Tourist spots and how to talk about vacation plans.",
+        kotoba_ids=[
+            "kotoba_bangunan_fasilitas_kouen",
+            "kotoba_bangunan_fasilitas_doubutsuen",
+        ],
+        bunpou_ids=["bunpou_ka_ka", "bunpou_totemo"],
+        particle_ids=["particle_ya"],
+        kaiwa_ids=["kaiwa_tempat_wisata"],
     ),
 ]

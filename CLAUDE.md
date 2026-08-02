@@ -4488,3 +4488,50 @@ still unused, still documented in `bab_lists.py`'s header comment —
 this batch didn't need any of them either, but an invitation-themed
 chapter ("Mengajak", "Rencana Liburan") will, the next time this is
 picked up.
+
+## Update (2026-08-03, later still again): Bab 14-17 — 17/17 N5 chapters
+
+Same direction as the two updates above (user: "lanjut"). Four more
+chapters, appended at the end (order 14-17):
+
+- **`bab_hari_dan_jadwal`** ("Days and Schedule") — reuses
+  `bunpou_kara`/`bunpou_made` (already proven safe for the station
+  chapter) for time ranges instead of place ranges. Kotoba: 4 days of
+  the week from `hari_bulan`. Kaiwa: `kaiwa_janji_temu` ("Making an
+  Appointment", from `rumah_sakit` — left unused by chapter 11, which
+  used `kaiwa_jelaskan_sakit` instead, so still available here).
+- **`bab_angka_dan_uang`** ("Numbers and Money") — reuses
+  `bunpou_o_kudasai`/`bunpou_ga_arimasu` again (now used in 3 chapters).
+  Kotoba: numbers 1-5 from `angka_satuan`. Kaiwa: `kaiwa_tukar_uang`
+  ("Exchanging Money", from `bank` — the `bank`/`kantor_pos` Kaiwa
+  categories are still otherwise fully unused).
+- **`bab_negara_dan_asal`** ("Countries and Origin") — first chapter to
+  use `bunpou_no` (の, possessive/attributive — plain noun+の+noun, no
+  prerequisite) alongside reused `bunpou_kara` (origin sense: "日本か
+  ら来ました"). Kotoba: 4 country names from `negara_kota`. Kaiwa:
+  `kaiwa_tanya_asal_negara` ("Asking Where Someone Is From", from
+  `perkenalan` — left unused by chapter 1, which used
+  `kaiwa_kenalan_teman_baru` instead).
+- **`bab_rencana_liburan`** ("Vacation Plans") — first chapter to use
+  `bunpou_ka_ka` (か～か, "either~or~", plain noun/clause-based, no
+  prerequisite) and `particle_ya` (や, "and [non-exhaustive list]").
+  Kotoba: 2 destination words (公園/動物園) from `bangunan_fasilitas`.
+  Kaiwa: `kaiwa_tempat_wisata` ("Discussing Tourist Spots", from
+  `liburan`). **Note despite the title match**: this is NOT the
+  "invitation-themed" liburan chapter the previous update predicted
+  would finally need the six deferred ~masu-stem patterns — this one
+  is about *discussing* vacation spots, not *inviting* someone on one,
+  so it stayed within the same safe-pattern discipline as every other
+  chapter so far. `kaiwa_ajak_liburan`/`kaiwa_rencana_liburan`
+  ("Inviting Someone on Vacation" / "Discussing Vacation Plans" more
+  broadly) remain unused in `liburan` and are the more likely candidates
+  whenever a real invitation-themed chapter is finally built.
+
+Bab is now **17/17 N5 chapters**, still zero chapters using any of the
+six deferred ~masu-stem patterns. Verified on the physical Moto G52J
+again: content-desc confirmed "17 bab", then Hari dan Jadwal and
+Rencana Liburan's detail screens (the two using the most new/unreused
+Bunpou patterns this batch — の and か～か) opened and screenshotted,
+all sections resolving and rendering correctly in both. `flutter
+analyze` clean, `flutter test --concurrency=1` 48/48, `flutter build
+apk --debug` succeeded.
