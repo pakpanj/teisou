@@ -4,17 +4,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
-import '../choukai/choukai_home_screen.dart';
-import '../dokkai/dokkai_home_screen.dart';
 import '../kanji_combo/kanji_combo_home_screen.dart';
 import 'kana_exam_mode_picker_screen.dart';
 
-/// Top of the Ujian tab: a category picker (Kana / Dokkai / Choukai /
-/// Kanji-Kombinasi). Kana has no JLPT levels (it predates the level
-/// concept entirely — Batch 1), so it still opens straight into its own
-/// 3-mode picker; the other three each need a JLPT level first, so they
-/// open their own level-picker home screen instead of being flattened into
-/// one shared list.
+/// Top of the Ujian tab: a category picker (Kana / Kanji-Kombinasi). Kana
+/// has no JLPT levels (it predates the level concept entirely — Batch 1),
+/// so it still opens straight into its own 3-mode picker; Kanji-Kombinasi
+/// needs a JLPT level first, so it opens its own level-picker home screen
+/// instead of being flattened into one shared list.
+///
+/// Dokkai and Choukai used to be picker cards here too. Dokkai is reading-
+/// *practice* material (500 real passages), not an exam — it now lives in
+/// Home's "Latihan" section (`ModulesSection`) alongside Kaiwa instead.
+/// Choukai is removed entirely for now, not just moved — it has zero
+/// authored content (architecture-only, see CLAUDE.md), so showing it here
+/// promised a category that does nothing yet. Re-add it once it has real
+/// clips.
 class ExamModePickerScreen extends ConsumerWidget {
   const ExamModePickerScreen({super.key});
 
@@ -35,28 +40,6 @@ class ExamModePickerScreen extends ConsumerWidget {
               onTap: () => AppNavigator.slideFromBottom(
                 context,
                 const KanaExamModePickerScreen(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            _CategoryCard(
-              color: context.palette.secondaryBlue,
-              icon: Icons.menu_book_rounded,
-              title: 'Dokkai',
-              subtitle: s.dokkaiCategorySubtitle,
-              onTap: () => AppNavigator.slideFromBottom(
-                context,
-                const DokkaiHomeScreen(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            _CategoryCard(
-              color: context.palette.tertiaryAmber,
-              icon: Icons.headphones_rounded,
-              title: 'Choukai',
-              subtitle: s.choukaiCategorySubtitle,
-              onTap: () => AppNavigator.slideFromBottom(
-                context,
-                const ChoukaiHomeScreen(),
               ),
             ),
             const SizedBox(height: 16),

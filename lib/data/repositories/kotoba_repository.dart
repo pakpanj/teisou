@@ -42,10 +42,34 @@ class KotobaRepository {
     return all.where((k) => k.category == category).toList();
   }
 
+  List<String>? _vocabCategoryIdsCache;
+
+  Future<List<String>> _vocabCategoryIds() async {
+    final cached = _vocabCategoryIdsCache;
+    if (cached != null) return cached;
+    final raw = await rootBundle.loadString('assets/data/kotoba/_categories.json');
+    final decoded = json.decode(raw) as List;
+    final ids = decoded.map((e) => (e as Map<String, dynamic>)['id'] as String).toList();
+    _vocabCategoryIdsCache = ids;
+    return ids;
+  }
+
+  /// [_loadAll]'s legacy Batch 4 seed only has ~30 entries — the real
+  /// 1,682-word vocab module lives in the 46 per-category files instead
+  /// (see [getVocabCategory]), so this falls back to scanning those too
+  /// whenever an id isn't found in the small legacy list. Each category's
+  /// results are cached by [getVocabCategory] itself, so repeat lookups
+  /// (e.g. resolving several ids from the same Bab chapter) stay cheap
+  /// after the first full scan.
   Future<KotobaEntry?> getById(String id) async {
     final all = await _loadAll();
     for (final entry in all) {
       if (entry.id == id) return entry;
+    }
+    for (final categoryId in await _vocabCategoryIds()) {
+      for (final entry in await getVocabCategory(categoryId)) {
+        if (entry.id == id) return entry;
+      }
     }
     return null;
   }

@@ -612,4 +612,41 @@ class AppStrings {
   String get noFrameLabel => _t('Tanpa Bingkai', 'No Frame');
   String get frameSaveFailed =>
       _t('Gagal menyimpan bingkai, coba lagi.', 'Failed to save frame, try again.');
+
+  // --- Bab (curriculum) ---
+  String get sectionKurikulum => _t('Kurikulum', 'Curriculum');
+  String get babTitle => 'Bab';
+  String get babSubtitle => _t(
+        'Jalur belajar terpandu, gabungan kosakata, tata bahasa, dan percakapan',
+        'A guided learning path combining vocabulary, grammar, and conversation',
+      );
+  String get babGuideIntro =>
+      _t('Ayo mulai Bab 1!', 'Let\'s start Bab 1!');
+  String babGuideContinue(String chapterTitle) => _t(
+        'Lanjutkan ke "$chapterTitle", kamu pasti bisa!',
+        'Continue with "$chapterTitle", you\'ve got this!',
+      );
+  String babLevelComingSoon(String levelKey) =>
+      _t('Bab $levelKey segera hadir!', 'Bab $levelKey coming soon!');
+  String babLevelCardTitle(String levelKey) => 'Bab $levelKey';
+  String babChapterCount(int n) => _t('$n bab', '$n chapters');
+  String babLevelAppBarTitle(String levelKey) => 'Bab $levelKey';
+  String get babLevelGuideMessage => _t(
+        'Pilih satu bab untuk mulai belajar.',
+        'Pick a chapter to start learning.',
+      );
+  String get babSectionKotoba => _t('Kosakata', 'Vocabulary');
+  String get babSectionKanji => _t('Kanji', 'Kanji');
+  String get babSectionBunpou => _t('Tata Bahasa', 'Grammar');
+  String get babSectionParticle => _t('Partikel', 'Particles');
+  String get babSectionKaiwa => _t('Percakapan', 'Conversation');
+  String get babSectionDokkai => _t('Bacaan Tambahan', 'Extra Reading');
+  String get babGuideDetailMessage => _t(
+        'Pelajari semua bagian di atas, lalu tandai bab ini selesai.',
+        'Work through everything above, then mark this chapter done.',
+      );
+  String get babGuideDoneMessage =>
+      _t('Kerja bagus! Bab ini sudah selesai.', 'Great job! This chapter is done.');
+  String get babMarkComplete => _t('Tandai Bab Selesai', 'Mark Chapter Complete');
+  String get babCompletedLabel => _t('Bab Selesai', 'Chapter Complete');
 }

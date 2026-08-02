@@ -101,7 +101,7 @@ void main() {
       );
 
       expect(find.text('Hiragana, Katakana, or mixed'), findsOneWidget);
-      expect(find.text('Reading comprehension, N5-N1'), findsOneWidget);
+      expect(find.text('Single kanji or word combinations'), findsOneWidget);
       expect(find.text('Hiragana, Katakana, atau campuran'), findsNothing);
     },
   );

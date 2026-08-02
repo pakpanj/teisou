@@ -78,6 +78,7 @@ flutter:
 
   assets:
     - assets/data/kana_data.json
+    - assets/data/bab_data.json
     - assets/data/kanji_data.json
     - assets/data/kanji/
     - assets/data/kotoba_data.json

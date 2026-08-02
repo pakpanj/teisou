@@ -1,0 +1,115 @@
+[
+  {
+    "id": "bab_menyapa_dan_berkenalan",
+    "order": 1,
+    "title": "Menyapa dan Berkenalan",
+    "titleEn": "Greetings and Introductions",
+    "description": "Ucapan dasar dan cara memperkenalkan diri ke teman baru.",
+    "descriptionEn": "Basic phrases and how to introduce yourself to a new friend.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_keluarga_hubungan_tomodachi"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_da_desu",
+      "bunpou_wa",
+      "bunpou_ka"
+    ],
+    "particleIds": [
+      "particle_wa",
+      "particle_ka"
+    ],
+    "kaiwaIds": [
+      "kaiwa_kenalan_teman_baru"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_keluarga_dan_teman",
+    "order": 2,
+    "title": "Keluarga dan Teman",
+    "titleEn": "Family and Friends",
+    "description": "Kosakata anggota keluarga dan cara membicarakannya.",
+    "descriptionEn": "Family-member vocabulary and how to talk about them.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_keluarga_hubungan_kazoku",
+      "kotoba_keluarga_hubungan_chichi",
+      "kotoba_keluarga_hubungan_haha",
+      "kotoba_keluarga_hubungan_ani",
+      "kotoba_keluarga_hubungan_ane",
+      "kotoba_keluarga_hubungan_otouto",
+      "kotoba_keluarga_hubungan_imouto"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ga_imasu",
+      "bunpou_mo"
+    ],
+    "particleIds": [
+      "particle_no",
+      "particle_mo"
+    ],
+    "kaiwaIds": [
+      "kaiwa_kenalkan_keluarga"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_di_sekolah",
+    "order": 3,
+    "title": "Di Sekolah",
+    "titleEn": "At School",
+    "description": "Alat tulis, mata pelajaran, dan percakapan sehari-hari di sekolah.",
+    "descriptionEn": "School supplies, subjects, and everyday classroom conversation.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_alat_tulis_sekolah_enpitsu",
+      "kotoba_alat_tulis_sekolah_nooto",
+      "kotoba_alat_tulis_sekolah_hon",
+      "kotoba_mata_pelajaran_nihongo",
+      "kotoba_mata_pelajaran_eigo"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_te_kudasai",
+      "bunpou_ga_arimasu"
+    ],
+    "particleIds": [
+      "particle_ga",
+      "particle_o"
+    ],
+    "kaiwaIds": [
+      "kaiwa_pinjam_alat_tulis"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_belanja",
+    "order": 4,
+    "title": "Belanja",
+    "titleEn": "Shopping",
+    "description": "Kosakata pakaian dan cara meminta atau membeli barang di toko.",
+    "descriptionEn": "Clothing vocabulary and how to ask for or buy things at a shop.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_pakaian_aksesori_fuku",
+      "kotoba_pakaian_aksesori_kutsu",
+      "kotoba_pakaian_aksesori_saifu"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_kudasai",
+      "bunpou_ga_hoshii"
+    ],
+    "particleIds": [
+      "particle_o",
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_coba_baju"
+    ],
+    "dokkaiIds": []
+  }
+]

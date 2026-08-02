@@ -10,6 +10,8 @@ import '../data/models/subscription.dart';
 import '../data/models/user_profile.dart';
 import '../data/repositories/language_repository.dart';
 import '../data/repositories/theme_repository.dart';
+import '../data/repositories/bab_progress_repository.dart';
+import '../data/repositories/bab_repository.dart';
 import '../data/repositories/bunpou_level_repository.dart';
 import '../data/repositories/bunpou_progress_repository.dart';
 import '../data/repositories/bunpou_repository.dart';
@@ -80,6 +82,12 @@ final themeModeProvider = StateProvider<AppThemeMode>(
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
 final ttsServiceProvider = Provider<TtsService>((ref) => TtsService());
 final adServiceProvider = Provider<AdService>((ref) => AdService());
+final babRepositoryProvider = Provider<BabRepository>(
+  (ref) => BabRepository(),
+);
+final babProgressRepositoryProvider = Provider<BabProgressRepository>(
+  (ref) => BabProgressRepository(),
+);
 final kanaRepositoryProvider = Provider<KanaRepository>(
   (ref) => KanaRepository(),
 );

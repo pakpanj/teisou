@@ -4080,3 +4080,161 @@ physical-device logcat capture before assuming a keep rule is
 unnecessary — a clean `flutter build apk --release` is not sufficient
 proof by itself; (3) above built and installed fine and only showed up
 as a runtime failure.
+
+## Update (2026-08-02): "Bab" curriculum module (V1, 4 N5 chapters) +
+mascot becomes an active guide + Ujian tab pared down
+
+The user sent a scan of "Minna no Nihongo Shokyuu I" as a structural
+reference and asked for the app to gain a proper "learning path" —
+explicitly **the pedagogical pattern, not the content**: bundle
+vocabulary + grammar + a dialogue into one themed, difficulty-escalating
+unit (Minna's own per-lesson shape: Kosakata → Pola Kalimat → Tata
+Bahasa → Latihan → Percakapan), while writing entirely original
+theme/content of the app's own so nothing from Minna itself is ever
+reproduced — plus using the app's existing cat mascot (`MascotWidget`,
+maneki-neko, `lib/core/widgets/mascot_widget.dart`) as an active guide
+through that path, not just the reactive decoration it had been at its 4
+prior call sites (exam result, paywall, coming-soon sheets).
+
+**Two small navigation fixes bundled into the same pass** (the user
+explicitly asked to combine this with an earlier "Tingkat 1" discussion,
+since both touch `modules_section.dart`):
+- **Dokkai moved from the Ujian tab to Home's "Latihan" section**,
+  alongside Kaiwa — it's 500 real reading-practice passages, not an exam,
+  and sat oddly next to Kana/Kanji-Kombinasi in `ExamModePickerScreen`.
+- **Choukai removed from `ExamModePickerScreen` entirely, not just
+  moved** — it has zero authored content (architecture-only), so showing
+  it promised a category that does nothing. Re-add once it has real
+  clips; `dokkaiCategorySubtitle`/`choukaiCategorySubtitle` strings are
+  left in `app_strings.dart` for reuse rather than deleted-then-
+  recreated. `ExamModePickerScreen` is now just Kana + Kanji-Kombinasi.
+
+### `Bab` — the module itself
+
+Follows this codebase's own established per-module pattern exactly (own
+model, own repository, own progress repository, own screens, own
+Python content-authoring pair) — see `lib/data/models/bab_entry.dart`,
+`bab_progress_entry.dart`; `lib/data/repositories/bab_repository.dart`,
+`bab_progress_repository.dart`; `lib/features/bab/` (`bab_providers.dart`,
+`bab_home_screen.dart`, `bab_level_screen.dart`, `bab_detail_screen.dart`).
+
+`BabEntry` carries **no content of its own** — just an original
+Indonesian/English title+description, a `JlptLevel`, a global `order`
+(continuous across the whole curriculum, not per-level, so "Bab 1, Bab
+2..." keeps counting up once N4+ chapters are authored later), and six
+ordered `List<String>` id fields (`kotobaIds`/`kanjiIds`/`bunpouIds`/
+`particleIds`/`kaiwaIds`/`dokkaiIds`) referencing entries that already
+exist in those six modules' own datasets. `BabDetailScreen` resolves
+every id through that module's own repository (`babDetailProvider` in
+`bab_providers.dart`, via `Future.wait` + `getById`, dangling ids
+silently dropped rather than crashing) and renders a **playlist**, not a
+renderer — each row taps straight into the module's own existing detail
+screen (`KotobaWordDetailScreen`/`KanjiWordDetailScreen`/
+`BunpouDetailScreen`/`ParticleDetailScreen`/`KaiwaDialogueScreen`, or
+`DokkaiExamScreen` with a single-passage list for the optional "Bacaan
+Tambahan" section) with that screen's own already-existing
+`entries`/`initialIndex` constructor shape. No module's detail-rendering
+code was touched or duplicated.
+
+**This is the first real cross-module id resolution in this codebase.**
+`KanjiEntry.relatedBunpou` looked like a precedent but isn't one — it's
+display-only (`kanji_word_detail_screen.dart` renders the raw string as
+a pill's text, no `BunpouRepository.getById()` call exists anywhere for
+it). Bab is the first place an id list actually gets resolved into real
+objects from another module's repository.
+
+**Real pre-existing bug found and fixed while building this**:
+`KotobaRepository.getById(id)` only ever searched the small legacy
+Batch-4 `kotoba_data.json` (~30 entries) — it never looked at the 46
+per-category files under `assets/data/kotoba/` where the real
+1,682-word vocab module actually lives (`getVocabCategory` reads those,
+but `getById` never called it). This meant `getById` was silently
+unable to resolve the vast majority of real Kotoba content — invisible
+until Bab tried to look up a word like `kotoba_keluarga_hubungan_tomodachi`
+and got `null`. Fixed by adding a fallback in `getById`: after checking
+the legacy list, scan every category listed in
+`assets/data/kotoba/_categories.json` via the already-cached
+`getVocabCategory`, so repeat lookups stay cheap. `scripts/
+generate_bab_seed.py`'s own id-validation was written to check the exact
+same two-tier resolution (legacy file + all category files) so its
+assertions can't pass on an id the real app would then fail to resolve.
+
+**Progress**: `BabProgressRepository` mirrors the other five modules'
+progress repositories exactly — SharedPreferences (`bab_completed_ids`)
+is the source of truth, Firestore mirror at
+`FirestorePaths.babProgressCollection(uid)` (covered automatically by
+the existing `users/{uid}/{document=**}` wildcard rule in
+`firestore.rules` — no rules change needed, unlike the `clans` top-level
+collection which needed its own explicit match block). **Deliberately
+NOT built**: automatic "chapter done once every referenced item is also
+individually marked learned in its own module" — no cross-module
+aggregation precedent exists anywhere in this codebase, and reconciling
+partial states (4/5 Kotoba learned but 0/2 Bunpou, say) is real added
+complexity. V1 ships a plain manual "Tandai Bab Selesai" button, same
+shape as every other module's progress toggle.
+
+**Content pipeline**: `scripts/bab_lists.py` (locked chapter list) +
+`scripts/generate_bab_seed.py` → `assets/data/bab_data.json`. Unlike
+every other `generate_*_seed.py`, this one authors no new content —
+its one job is validating that every id in every chapter's six lists
+actually resolves against the already-generated
+`kotoba_data.json`+`assets/data/kotoba/*.json` /`kanji_data.json`/
+`bunpou_data.json`/`particle_data.json`/`kaiwa_data.json`/
+`dokkai_data.json`, `assert`-failing loudly on a typo'd id instead of
+shipping a silent dead link. **V1 content scope: 4 hand-picked N5
+chapters** (Menyapa dan Berkenalan / Keluarga dan Teman / Di Sekolah /
+Belanja), each referencing 1-7 already-existing N5 ids per module —
+proof-of-concept scale, matching this project's own "batch 1 of many"
+discipline (Dokkai's 3-passage start, Dictionary's 320-word start).
+Expanding to more N5 chapters and then N4-N1 is future-session content
+work, following the same locked-list-plus-generator workflow.
+
+### Mascot becomes a guide
+
+`lib/core/widgets/mascot_guide_bubble.dart` — new `MascotGuideBubble`
+widget pairs the existing `MascotWidget` with a short message and an
+optional action button. **Deliberately a plain rounded card, not a
+comic-style bubble with a pointer tail** — a hand-drawn tail shape can't
+be visually verified without a physical device (standing gap, see
+below), so it reuses shapes already proven safe elsewhere (rounded
+`Container` + `BoxShadow`, same as every module card in this app).
+**No new `MascotMood` values were added** — the existing 6
+(happy/excited/cheering/proud used contextually; sleepy/sad untouched)
+already cover Bab's happy-path messaging. A 7th "pointing" mood is
+flagged as a good V2 idea to bundle with real SVG mascot art once that
+exists (today every mood is the same emoji-in-a-circle animation with a
+different bounce/duration, so a new mood buys no visual distinction
+yet). Used at: the new "Kurikulum" card on Home, the top of
+`BabLevelScreen`, and the bottom of `BabDetailScreen` (switches to
+`cheering` once a chapter is marked complete).
+
+### Navigation placement
+
+New **"Kurikulum" section in `ModulesSection`**
+(`lib/features/home/widgets/modules_section.dart`), inserted right
+after "Dasar" and before "Kosakata & Kanji" — not a 4th bottom-nav tab.
+The bottom nav was just consolidated to 3 tabs (`098c411`, the same-day
+commit that grouped the whole Home menu by learning stage before this
+session started), and every other module already enters through a
+section card in this same file rather than its own tab; a 4-chapter
+proof of concept doesn't warrant reopening that. `_BabCurriculumCard`
+(new, same file) is taller than `_AvailableModuleCard` since it embeds
+a `MascotGuideBubble` instead of just an emoji+title.
+
+### Verification
+
+`flutter analyze` clean, `flutter test --concurrency=1` 48/48 (2 new:
+`test/bab_content_integrity_test.dart` — defense-in-depth on top of the
+Python generator's own validation, proves every id in `bab_data.json`
+still resolves via each module's real repository, and that `order` stays
+contiguous starting at 1), `flutter build apk --debug` succeeded
+(specifically confirms `assets/data/bab_data.json` was correctly added
+to `pubspec.yaml`'s `flutter: assets:` list — this project has been
+bitten before by forgetting that step, which `analyze`/`test` can't
+catch on their own). **No interactive on-device pass was possible in
+this environment** — same standing gap as nearly everything else in this
+file. Worth a physical-device pass before treating this as fully done:
+tapping through Home → Kurikulum → a level → a chapter → each of the 5
+sub-module rows → back → "Tandai Bab Selesai", and specifically
+confirming the mascot bubble's layout doesn't overflow on a small
+screen (never visually verified, only reasoned about).

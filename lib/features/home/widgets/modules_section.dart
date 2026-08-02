@@ -5,9 +5,14 @@ import '../../../core/localization/app_strings.dart';
 import '../../../core/navigation/app_navigator.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
+import '../../../core/widgets/mascot_guide_bubble.dart';
+import '../../../core/widgets/mascot_widget.dart';
 import '../../../data/models/module_info.dart';
 import '../../../data/models/kana_type.dart';
+import '../../bab/bab_home_screen.dart';
+import '../../bab/bab_providers.dart';
 import '../../bunpou/bunpou_home_screen.dart';
+import '../../dokkai/dokkai_home_screen.dart';
 import '../../flashcard/flashcard_screen.dart';
 import '../../kaiwa/kaiwa_home_screen.dart';
 import '../../kanji/kanji_home_screen.dart';
@@ -64,6 +69,10 @@ class ModulesSection extends ConsumerWidget {
             const FlashcardScreen(type: KanaType.katakana),
           ),
         ),
+        const SizedBox(height: 28),
+        _SectionHeader(s.sectionKurikulum),
+        const SizedBox(height: 12),
+        const _BabCurriculumCard(),
         const SizedBox(height: 28),
         _SectionHeader(s.sectionVocabKanji),
         const SizedBox(height: 12),
@@ -129,6 +138,19 @@ class ModulesSection extends ConsumerWidget {
           onTap: () =>
               AppNavigator.slideFromRight(context, const KaiwaHomeScreen()),
         ),
+        const SizedBox(height: 12),
+        // Moved here from the Ujian tab's category picker — Dokkai is
+        // reading-practice material (500 real passages), not an exam; it
+        // sat oddly next to Kana/Kanji-Kombinasi before.
+        _AvailableModuleCard(
+          emoji: '読',
+          backgroundColor: palette.katakanaCardBg,
+          iconColor: palette.secondaryBlue,
+          title: 'Dokkai',
+          subtitle: s.dokkaiCategorySubtitle,
+          onTap: () =>
+              AppNavigator.slideFromRight(context, const DokkaiHomeScreen()),
+        ),
         const SizedBox(height: 28),
         _SectionHeader(s.sectionTools),
         const SizedBox(height: 12),
@@ -149,6 +171,39 @@ class ModulesSection extends ConsumerWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+/// Entry point into the Bab curriculum — taller than [_AvailableModuleCard]
+/// since it embeds a [MascotGuideBubble] instead of just an emoji+title,
+/// making the mascot's first "active guide" appearance the very first
+/// thing a learner sees about this section.
+class _BabCurriculumCard extends ConsumerWidget {
+  const _BabCurriculumCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
+    final nextUp = ref.watch(babNextUpProvider).valueOrNull;
+
+    return Material(
+      color: context.palette.cardWhite,
+      borderRadius: BorderRadius.circular(20),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: () => AppNavigator.slideFromRight(context, const BabHomeScreen()),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: MascotGuideBubble(
+            mood: nextUp != null ? MascotMood.excited : MascotMood.happy,
+            message: nextUp != null
+                ? s.babGuideContinue(nextUp.localizedTitle(s.language))
+                : s.babGuideIntro,
+            mascotSize: 56,
+          ),
+        ),
+      ),
     );
   }
 }
