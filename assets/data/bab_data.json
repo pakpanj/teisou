@@ -571,5 +571,107 @@
       "kaiwa_tanya_harga"
     ],
     "dokkaiIds": []
+  },
+  {
+    "id": "bab_musim",
+    "order": 22,
+    "title": "Musim",
+    "titleEn": "Seasons",
+    "description": "Nama-nama musim dan cara menyebutkan musim favorit.",
+    "descriptionEn": "Season names and how to say your favorite season.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_musim_haru",
+      "kotoba_musim_natsu",
+      "kotoba_musim_aki",
+      "kotoba_musim_fuyu"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_no_ga_suki",
+      "bunpou_donna"
+    ],
+    "particleIds": [
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_musim_favorit"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_ulang_tahun_dan_umur",
+    "order": 23,
+    "title": "Ulang Tahun dan Umur",
+    "titleEn": "Birthday and Age",
+    "description": "Cara menanyakan umur dan membicarakan ulang tahun.",
+    "descriptionEn": "How to ask someone's age and talk about birthdays.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_perayaan_haribesar_tanjoubi",
+      "kotoba_angka_satuan_ichi",
+      "kotoba_angka_satuan_ni"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_da_desu",
+      "bunpou_ka"
+    ],
+    "particleIds": [
+      "particle_ka"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_umur"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_telepon",
+    "order": 24,
+    "title": "Telepon",
+    "titleEn": "Phone Calls",
+    "description": "Cara menjawab dan meminta sesuatu lewat telepon.",
+    "descriptionEn": "How to answer the phone and ask for things over a call.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_teknologi_gadget_denwa"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_te_kudasai",
+      "bunpou_mo"
+    ],
+    "particleIds": [
+      "particle_mo"
+    ],
+    "kaiwaIds": [
+      "kaiwa_terima_telepon"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_di_rumah",
+    "order": 25,
+    "title": "Di Rumah",
+    "titleEn": "At Home",
+    "description": "Kosakata ruangan rumah dan cara membicarakan rumah keluarga.",
+    "descriptionEn": "Room vocabulary and how to talk about a family home.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_ruangan_rumah_heya",
+      "kotoba_ruangan_rumah_toire"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ga_arimasu",
+      "bunpou_ni"
+    ],
+    "particleIds": [
+      "particle_ni"
+    ],
+    "kaiwaIds": [
+      "kaiwa_rumah_keluarga"
+    ],
+    "dokkaiIds": []
   }
 ]

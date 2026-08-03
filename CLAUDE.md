@@ -4578,3 +4578,53 @@ bab", then Warna and Hewan Peliharaan's detail screens opened and
 screenshotted, all sections resolving and rendering correctly in both.
 `flutter analyze` clean, `flutter test --concurrency=1` 48/48,
 `flutter build apk --debug` succeeded.
+
+## Update (2026-08-03, still more "lanjut"): Bab 22-25 — 25/25 N5
+chapters
+
+Same direction again. Four more chapters, appended at the end (order
+22-25):
+
+- **`bab_musim`** ("Seasons") — reuses `bunpou_no_ga_suki`/
+  `bunpou_donna` (same pairing as Warna/Bioskop, now used in 4
+  chapters). Kotoba: all 4 seasons from `musim` (a genuinely complete
+  closed set, per this file's own Kotoba-word-count note elsewhere).
+  Kaiwa: `kaiwa_musim_favorit` (`cuaca_basa_basi` — chapter 9 used
+  `kaiwa_bicara_cuaca` instead, so this one was still free).
+- **`bab_ulang_tahun_dan_umur`** ("Birthday and Age") — reuses
+  `bunpou_da_desu`/`bunpou_ka` (both long-proven safe) for the
+  realistic "何歳ですか" age-asking shape — no dedicated age-counter
+  grammar point exists in the dataset, so this deliberately stays at
+  the да/です+か level rather than reaching for a counter pattern that
+  doesn't exist yet. Kotoba: 誕生日 (`perayaan_haribesar`, only N5
+  word in that category) + two reused numbers. Kaiwa:
+  `kaiwa_tanya_umur` (`perkenalan`).
+- **`bab_telepon`** ("Phone Calls") — first chapter to use the
+  previously-fully-untouched `telepon` Kaiwa category. Reuses
+  `bunpou_te_kudasai`/`bunpou_mo`. Kotoba: just 電話 (`teknologi_gadget`'s
+  only N5 word — thinnest single-word chapter so far, same precedent as
+  chapter 1's single word). Kaiwa: `kaiwa_terima_telepon`.
+- **`bab_di_rumah`** ("At Home") — reuses `bunpou_ga_arimasu`, first
+  chapter to use plain `bunpou_ni` (に alone, as opposed to the
+  `bunpou_ni_e` combination form used in chapter 8). Kotoba: 部屋/トイレ
+  from `ruangan_rumah`. Kaiwa: `kaiwa_rumah_keluarga` (`keluarga` —
+  chapter 2 used `kaiwa_kenalkan_keluarga` instead, so this one was
+  still free; `keluarga` remains almost entirely untapped otherwise,
+  ~39 dialogues total same as `perkenalan`).
+
+Bab is now **25/25 N5 chapters**, still zero use of the six deferred
+~masu-stem patterns. **Session-hygiene note**: the physical Moto G52J
+disconnected from USB partway through this batch (after the code was
+already built and `flutter analyze`/`test` had passed) — the user was
+asked whether to wait for reconnection or commit on code-verification
+alone, chose to proceed, then reconnected the device moments later
+anyway, so the on-device visual check for this batch did happen after
+all (Musim and Telepon's detail screens, both resolving/rendering
+correctly). Worth remembering: a disconnected physical device
+mid-session is a real possibility now that one is actually connected
+(unlike every earlier session's "no device available" default) — ask
+before skipping the on-device step rather than silently downgrading to
+code-only verification.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 48/48,
+`flutter build apk --debug` succeeded.

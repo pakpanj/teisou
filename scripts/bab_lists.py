@@ -11,7 +11,7 @@
 # bab_data.json, so a typo'd id fails the build loudly instead of becoming
 # a silent dead link at runtime.
 #
-# 21 proof-of-concept N5 chapters so far, hand-picked from content already
+# 25 proof-of-concept N5 chapters so far, hand-picked from content already
 # authored in past sessions — not the full curriculum. Expanding to more N5
 # chapters and then N4-N1 is future-session work, same "batch 1 of many"
 # shape as this project's other content rollouts (Dokkai, Dictionary).
@@ -418,5 +418,71 @@ N5_CHAPTERS = [
         bunpou_ids=["bunpou_o_kudasai", "bunpou_ga_hoshii"],
         particle_ids=["particle_o", "particle_ga"],
         kaiwa_ids=["kaiwa_tanya_harga"],
+    ),
+    dict(
+        id="bab_musim",
+        order=22,
+        level="N5",
+        title="Musim",
+        title_en="Seasons",
+        description="Nama-nama musim dan cara menyebutkan musim favorit.",
+        description_en="Season names and how to say your favorite season.",
+        kotoba_ids=[
+            "kotoba_musim_haru",
+            "kotoba_musim_natsu",
+            "kotoba_musim_aki",
+            "kotoba_musim_fuyu",
+        ],
+        bunpou_ids=["bunpou_no_ga_suki", "bunpou_donna"],
+        particle_ids=["particle_ga"],
+        kaiwa_ids=["kaiwa_musim_favorit"],
+    ),
+    dict(
+        id="bab_ulang_tahun_dan_umur",
+        order=23,
+        level="N5",
+        title="Ulang Tahun dan Umur",
+        title_en="Birthday and Age",
+        description="Cara menanyakan umur dan membicarakan ulang tahun.",
+        description_en="How to ask someone's age and talk about birthdays.",
+        kotoba_ids=[
+            "kotoba_perayaan_haribesar_tanjoubi",
+            "kotoba_angka_satuan_ichi",
+            "kotoba_angka_satuan_ni",
+        ],
+        bunpou_ids=["bunpou_da_desu", "bunpou_ka"],
+        particle_ids=["particle_ka"],
+        kaiwa_ids=["kaiwa_tanya_umur"],
+    ),
+    dict(
+        id="bab_telepon",
+        order=24,
+        level="N5",
+        title="Telepon",
+        title_en="Phone Calls",
+        description="Cara menjawab dan meminta sesuatu lewat telepon.",
+        description_en="How to answer the phone and ask for things over a call.",
+        kotoba_ids=[
+            "kotoba_teknologi_gadget_denwa",
+        ],
+        bunpou_ids=["bunpou_te_kudasai", "bunpou_mo"],
+        particle_ids=["particle_mo"],
+        kaiwa_ids=["kaiwa_terima_telepon"],
+    ),
+    dict(
+        id="bab_di_rumah",
+        order=25,
+        level="N5",
+        title="Di Rumah",
+        title_en="At Home",
+        description="Kosakata ruangan rumah dan cara membicarakan rumah keluarga.",
+        description_en="Room vocabulary and how to talk about a family home.",
+        kotoba_ids=[
+            "kotoba_ruangan_rumah_heya",
+            "kotoba_ruangan_rumah_toire",
+        ],
+        bunpou_ids=["bunpou_ga_arimasu", "bunpou_ni"],
+        particle_ids=["particle_ni"],
+        kaiwa_ids=["kaiwa_rumah_keluarga"],
     ),
 ]
