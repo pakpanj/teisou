@@ -26,8 +26,90 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_keluarga_dan_teman",
+    "id": "bab_pekerjaan",
     "order": 2,
+    "title": "Pekerjaan",
+    "titleEn": "Occupation",
+    "description": "Kosakata pekerjaan dan cara menanyakan profesi seseorang.",
+    "descriptionEn": "Occupation vocabulary and how to ask what someone does.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_profesi_gakusei",
+      "kotoba_pekerjaan_kantor_kaisha",
+      "kotoba_pekerjaan_kantor_shigoto",
+      "kotoba_profesi_kaishain"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_da_desu",
+      "bunpou_mo"
+    ],
+    "particleIds": [
+      "particle_wa",
+      "particle_mo"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_pekerjaan"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_negara_dan_asal",
+    "order": 3,
+    "title": "Negara dan Asal",
+    "titleEn": "Countries and Origin",
+    "description": "Nama-nama negara dan cara menanyakan asal seseorang.",
+    "descriptionEn": "Country names and how to ask where someone is from.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_negara_kota_nihon",
+      "kotoba_negara_kota_indoneshia",
+      "kotoba_mata_pelajaran_nihongo"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_kara",
+      "bunpou_no"
+    ],
+    "particleIds": [
+      "particle_kara",
+      "particle_no"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_asal_negara"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_ulang_tahun_dan_umur",
+    "order": 4,
+    "title": "Ulang Tahun dan Umur",
+    "titleEn": "Birthday and Age",
+    "description": "Cara menanyakan umur dan membicarakan ulang tahun.",
+    "descriptionEn": "How to ask someone's age and talk about birthdays.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_perayaan_haribesar_tanjoubi",
+      "kotoba_angka_satuan_ni",
+      "kotoba_angka_satuan_juu",
+      "kotoba_perayaan_haribesar_oiwai"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_da_desu",
+      "bunpou_ka"
+    ],
+    "particleIds": [
+      "particle_ka"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_umur"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_keluarga_dan_teman",
+    "order": 5,
     "title": "Keluarga dan Teman",
     "titleEn": "Family and Friends",
     "description": "Kosakata anggota keluarga dan cara membicarakannya.",
@@ -57,163 +139,82 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_bentuk_te_dan_minta_tolong",
-    "order": 3,
-    "title": "Bentuk -Te dan Meminta Tolong",
-    "titleEn": "The -Te Form and Asking for Help",
-    "description": "Cara mengubah kata kerja ke bentuk -te, lalu memakainya untuk meminta tolong dengan sopan — dasar yang perlu dikuasai sebelum bab \"Di Sekolah\", yang sudah memakai pola ~てください.",
-    "descriptionEn": "How to conjugate verbs into the -te form, then use it to ask for help politely — the foundation needed before \"At School\", which already uses the ~te kudasai pattern.",
-    "level": "N5",
-    "kotobaIds": [
-      "kotoba_alat_tulis_sekolah_shukudai"
-    ],
-    "kanjiIds": [],
-    "bunpouIds": [
-      "bunpou_te_kei",
-      "bunpou_te_kudasai"
-    ],
-    "particleIds": [
-      "particle_o"
-    ],
-    "kaiwaIds": [
-      "kaiwa_bantuan_koper"
-    ],
-    "dokkaiIds": []
-  },
-  {
-    "id": "bab_di_sekolah",
-    "order": 4,
-    "title": "Di Sekolah",
-    "titleEn": "At School",
-    "description": "Alat tulis, mata pelajaran, dan percakapan sehari-hari di sekolah.",
-    "descriptionEn": "School supplies, subjects, and everyday classroom conversation.",
-    "level": "N5",
-    "kotobaIds": [
-      "kotoba_alat_tulis_sekolah_enpitsu",
-      "kotoba_alat_tulis_sekolah_hon",
-      "kotoba_mata_pelajaran_shiken"
-    ],
-    "kanjiIds": [],
-    "bunpouIds": [
-      "bunpou_te_kudasai",
-      "bunpou_ga_arimasu"
-    ],
-    "particleIds": [
-      "particle_ga",
-      "particle_o"
-    ],
-    "kaiwaIds": [
-      "kaiwa_pinjam_alat_tulis"
-    ],
-    "dokkaiIds": []
-  },
-  {
-    "id": "bab_belanja",
-    "order": 5,
-    "title": "Belanja",
-    "titleEn": "Shopping",
-    "description": "Kosakata pakaian dan cara meminta atau membeli barang di toko.",
-    "descriptionEn": "Clothing vocabulary and how to ask for or buy things at a shop.",
-    "level": "N5",
-    "kotobaIds": [
-      "kotoba_pakaian_aksesori_kutsu",
-      "kotoba_pekerjaan_kantor_ryoushuu"
-    ],
-    "kanjiIds": [],
-    "bunpouIds": [
-      "bunpou_o_kudasai",
-      "bunpou_ga_hoshii"
-    ],
-    "particleIds": [
-      "particle_o",
-      "particle_ga"
-    ],
-    "kaiwaIds": [
-      "kaiwa_coba_baju"
-    ],
-    "dokkaiIds": []
-  },
-  {
-    "id": "bab_kegiatan_sehari_hari",
+    "id": "bab_hewan_peliharaan",
     "order": 6,
-    "title": "Kegiatan Sehari-hari",
-    "titleEn": "Daily Activities",
-    "description": "Menceritakan kegiatan yang sedang dilakukan, memakai bentuk -te dari bab sebelumnya.",
-    "descriptionEn": "Talking about activities in progress, building on the -te form from the previous chapter.",
+    "title": "Hewan Peliharaan",
+    "titleEn": "Pets",
+    "description": "Nama-nama hewan dan cara membicarakan hewan peliharaan.",
+    "descriptionEn": "Animal names and how to talk about pets.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_hobi_aktivitas_shumi",
-      "kotoba_hobi_aktivitas_dokusho",
-      "kotoba_media_hiburan_terebi"
+      "kotoba_hewan_darat_inu",
+      "kotoba_hewan_darat_neko",
+      "kotoba_hewan_darat_panda",
+      "kotoba_hewan_darat_koala"
     ],
     "kanjiIds": [],
     "bunpouIds": [
-      "bunpou_te_iru",
+      "bunpou_ga_imasu",
       "bunpou_totemo"
     ],
     "particleIds": [
-      "particle_o"
-    ],
-    "kaiwaIds": [
-      "kaiwa_tanya_hobi"
-    ],
-    "dokkaiIds": []
-  },
-  {
-    "id": "bab_di_restoran",
-    "order": 7,
-    "title": "Di Restoran",
-    "titleEn": "At a Restaurant",
-    "description": "Kosakata makanan/minuman dan cara memesan di restoran.",
-    "descriptionEn": "Food/drink vocabulary and how to order at a restaurant.",
-    "level": "N5",
-    "kotobaIds": [
-      "kotoba_makanan_jepang_ramen",
-      "kotoba_minuman_mizu",
-      "kotoba_konsep_umum_chuumon",
-      "kotoba_makanan_barat_keeki"
-    ],
-    "kanjiIds": [],
-    "bunpouIds": [
-      "bunpou_o_kudasai",
-      "bunpou_ga_arimasu",
-      "bunpou_totemo"
-    ],
-    "particleIds": [
-      "particle_o",
       "particle_ga"
     ],
     "kaiwaIds": [
-      "kaiwa_pesan_makanan"
+      "kaiwa_tanya_hewan_peliharaan_kenalan"
     ],
     "dokkaiIds": []
   },
   {
-    "id": "bab_menanyakan_arah",
-    "order": 8,
-    "title": "Menanyakan Arah",
-    "titleEn": "Asking for Directions",
-    "description": "Kata penunjuk arah dan cara bertanya jalan ke suatu tempat.",
-    "descriptionEn": "Direction words and how to ask the way to a place.",
+    "id": "bab_di_rumah",
+    "order": 7,
+    "title": "Di Rumah",
+    "titleEn": "At Home",
+    "description": "Kosakata ruangan rumah dan cara membicarakan rumah keluarga.",
+    "descriptionEn": "Room vocabulary and how to talk about a family home.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_arah_lokasi_migi",
-      "kotoba_arah_lokasi_hidari",
-      "kotoba_arah_lokasi_mae",
-      "kotoba_arah_lokasi_ushiro",
-      "kotoba_bangunan_fasilitas_gakkou"
+      "kotoba_ruangan_rumah_heya",
+      "kotoba_ruangan_rumah_niwa",
+      "kotoba_keluarga_hubungan_jikka"
     ],
     "kanjiIds": [],
     "bunpouIds": [
-      "bunpou_ni_e",
-      "bunpou_made"
+      "bunpou_ga_arimasu",
+      "bunpou_ni"
     ],
     "particleIds": [
-      "particle_ni",
-      "particle_made"
+      "particle_ni"
     ],
     "kaiwaIds": [
-      "kaiwa_jalan_ke_stasiun"
+      "kaiwa_rumah_keluarga"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_di_rumah_sakit",
+    "order": 8,
+    "title": "Di Rumah Sakit",
+    "titleEn": "At the Hospital",
+    "description": "Kosakata bagian tubuh dan cara menjelaskan sakit ke dokter.",
+    "descriptionEn": "Body-part vocabulary and how to describe pain to a doctor.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_obat_obatan_byouin",
+      "kotoba_obat_obatan_kusuri",
+      "kotoba_penyakit_gejala_itai",
+      "kotoba_anggota_tubuh_atama"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ga",
+      "bunpou_totemo"
+    ],
+    "particleIds": [
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_jelaskan_sakit"
     ],
     "dokkaiIds": []
   },
@@ -244,8 +245,37 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_stasiun_dan_transportasi",
+    "id": "bab_menanyakan_arah",
     "order": 10,
+    "title": "Menanyakan Arah",
+    "titleEn": "Asking for Directions",
+    "description": "Kata penunjuk arah dan cara bertanya jalan ke suatu tempat.",
+    "descriptionEn": "Direction words and how to ask the way to a place.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_arah_lokasi_migi",
+      "kotoba_arah_lokasi_hidari",
+      "kotoba_arah_lokasi_mae",
+      "kotoba_arah_lokasi_ushiro",
+      "kotoba_bangunan_fasilitas_gakkou"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ni_e",
+      "bunpou_made"
+    ],
+    "particleIds": [
+      "particle_ni",
+      "particle_made"
+    ],
+    "kaiwaIds": [
+      "kaiwa_jalan_ke_stasiun"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_stasiun_dan_transportasi",
+    "order": 11,
     "title": "Stasiun dan Transportasi",
     "titleEn": "Station and Transportation",
     "description": "Kosakata kendaraan dan cara membeli tiket di stasiun.",
@@ -270,85 +300,8 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_di_rumah_sakit",
-    "order": 11,
-    "title": "Di Rumah Sakit",
-    "titleEn": "At the Hospital",
-    "description": "Kosakata bagian tubuh dan cara menjelaskan sakit ke dokter.",
-    "descriptionEn": "Body-part vocabulary and how to describe pain to a doctor.",
-    "level": "N5",
-    "kotobaIds": [
-      "kotoba_obat_obatan_byouin",
-      "kotoba_obat_obatan_kusuri",
-      "kotoba_penyakit_gejala_itai",
-      "kotoba_anggota_tubuh_atama"
-    ],
-    "kanjiIds": [],
-    "bunpouIds": [
-      "bunpou_ga",
-      "bunpou_totemo"
-    ],
-    "particleIds": [
-      "particle_ga"
-    ],
-    "kaiwaIds": [
-      "kaiwa_jelaskan_sakit"
-    ],
-    "dokkaiIds": []
-  },
-  {
-    "id": "bab_olahraga",
-    "order": 12,
-    "title": "Olahraga",
-    "titleEn": "Sports",
-    "description": "Kosakata olahraga dan cara mengatakan olahraga favorit.",
-    "descriptionEn": "Sports vocabulary and how to say your favorite sport.",
-    "level": "N5",
-    "kotobaIds": [
-      "kotoba_olahraga_supootsu",
-      "kotoba_olahraga_basukettobooru"
-    ],
-    "kanjiIds": [],
-    "bunpouIds": [
-      "bunpou_no_ga_suki",
-      "bunpou_totemo"
-    ],
-    "particleIds": [
-      "particle_o"
-    ],
-    "kaiwaIds": [
-      "kaiwa_olahraga_favorit"
-    ],
-    "dokkaiIds": []
-  },
-  {
-    "id": "bab_bioskop",
-    "order": 13,
-    "title": "Bioskop",
-    "titleEn": "Cinema",
-    "description": "Membicarakan film dan jenis film favorit.",
-    "descriptionEn": "Talking about movies and favorite kinds of films.",
-    "level": "N5",
-    "kotobaIds": [
-      "kotoba_hobi_aktivitas_eiga",
-      "kotoba_ekspresi_wajah_egao"
-    ],
-    "kanjiIds": [],
-    "bunpouIds": [
-      "bunpou_donna",
-      "bunpou_no_ga_suki"
-    ],
-    "particleIds": [
-      "particle_ga"
-    ],
-    "kaiwaIds": [
-      "kaiwa_cerita_film"
-    ],
-    "dokkaiIds": []
-  },
-  {
     "id": "bab_hari_dan_jadwal",
-    "order": 14,
+    "order": 12,
     "title": "Hari dan Jadwal",
     "titleEn": "Days and Schedule",
     "description": "Kata keterangan waktu dan cara membuat janji temu.",
@@ -374,65 +327,8 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_angka_dan_uang",
-    "order": 15,
-    "title": "Angka dan Uang",
-    "titleEn": "Numbers and Money",
-    "description": "Angka dasar dan cara menukar atau meminta uang.",
-    "descriptionEn": "Basic numbers and how to exchange or ask for money.",
-    "level": "N5",
-    "kotobaIds": [
-      "kotoba_angka_satuan_ichi",
-      "kotoba_angka_satuan_ni",
-      "kotoba_angka_satuan_san",
-      "kotoba_angka_satuan_yon",
-      "kotoba_angka_satuan_go",
-      "kotoba_angka_satuan_ichiman"
-    ],
-    "kanjiIds": [],
-    "bunpouIds": [
-      "bunpou_o_kudasai",
-      "bunpou_ga_arimasu"
-    ],
-    "particleIds": [
-      "particle_o",
-      "particle_ga"
-    ],
-    "kaiwaIds": [
-      "kaiwa_tukar_uang"
-    ],
-    "dokkaiIds": []
-  },
-  {
-    "id": "bab_negara_dan_asal",
-    "order": 16,
-    "title": "Negara dan Asal",
-    "titleEn": "Countries and Origin",
-    "description": "Nama-nama negara dan cara menanyakan asal seseorang.",
-    "descriptionEn": "Country names and how to ask where someone is from.",
-    "level": "N5",
-    "kotobaIds": [
-      "kotoba_negara_kota_nihon",
-      "kotoba_negara_kota_indoneshia",
-      "kotoba_mata_pelajaran_nihongo"
-    ],
-    "kanjiIds": [],
-    "bunpouIds": [
-      "bunpou_kara",
-      "bunpou_no"
-    ],
-    "particleIds": [
-      "particle_kara",
-      "particle_no"
-    ],
-    "kaiwaIds": [
-      "kaiwa_tanya_asal_negara"
-    ],
-    "dokkaiIds": []
-  },
-  {
     "id": "bab_rencana_liburan",
-    "order": 17,
+    "order": 13,
     "title": "Rencana Liburan",
     "titleEn": "Vacation Plans",
     "description": "Tempat wisata dan cara membicarakan rencana liburan.",
@@ -457,36 +353,33 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_pekerjaan",
-    "order": 18,
-    "title": "Pekerjaan",
-    "titleEn": "Occupation",
-    "description": "Kosakata pekerjaan dan cara menanyakan profesi seseorang.",
-    "descriptionEn": "Occupation vocabulary and how to ask what someone does.",
+    "id": "bab_olahraga",
+    "order": 14,
+    "title": "Olahraga",
+    "titleEn": "Sports",
+    "description": "Kosakata olahraga dan cara mengatakan olahraga favorit.",
+    "descriptionEn": "Sports vocabulary and how to say your favorite sport.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_profesi_gakusei",
-      "kotoba_pekerjaan_kantor_kaisha",
-      "kotoba_pekerjaan_kantor_shigoto",
-      "kotoba_profesi_kaishain"
+      "kotoba_olahraga_supootsu",
+      "kotoba_olahraga_basukettobooru"
     ],
     "kanjiIds": [],
     "bunpouIds": [
-      "bunpou_da_desu",
-      "bunpou_mo"
+      "bunpou_no_ga_suki",
+      "bunpou_totemo"
     ],
     "particleIds": [
-      "particle_wa",
-      "particle_mo"
+      "particle_o"
     ],
     "kaiwaIds": [
-      "kaiwa_tanya_pekerjaan"
+      "kaiwa_olahraga_favorit"
     ],
     "dokkaiIds": []
   },
   {
     "id": "bab_warna",
-    "order": 19,
+    "order": 15,
     "title": "Warna",
     "titleEn": "Colors",
     "description": "Nama-nama warna dan cara menyebutkan warna favorit.",
@@ -513,29 +406,140 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_hewan_peliharaan",
-    "order": 20,
-    "title": "Hewan Peliharaan",
-    "titleEn": "Pets",
-    "description": "Nama-nama hewan dan cara membicarakan hewan peliharaan.",
-    "descriptionEn": "Animal names and how to talk about pets.",
+    "id": "bab_musim",
+    "order": 16,
+    "title": "Musim",
+    "titleEn": "Seasons",
+    "description": "Nama-nama musim dan cara menyebutkan musim favorit.",
+    "descriptionEn": "Season names and how to say your favorite season.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_hewan_darat_inu",
-      "kotoba_hewan_darat_neko",
-      "kotoba_hewan_darat_panda",
-      "kotoba_hewan_darat_koala"
+      "kotoba_musim_haru",
+      "kotoba_musim_natsu",
+      "kotoba_musim_aki",
+      "kotoba_musim_fuyu",
+      "kotoba_musim_kisetsu"
     ],
     "kanjiIds": [],
     "bunpouIds": [
-      "bunpou_ga_imasu",
-      "bunpou_totemo"
+      "bunpou_no_ga_suki",
+      "bunpou_donna"
     ],
     "particleIds": [
       "particle_ga"
     ],
     "kaiwaIds": [
-      "kaiwa_tanya_hewan_peliharaan_kenalan"
+      "kaiwa_musim_favorit"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_bioskop",
+    "order": 17,
+    "title": "Bioskop",
+    "titleEn": "Cinema",
+    "description": "Membicarakan film dan jenis film favorit.",
+    "descriptionEn": "Talking about movies and favorite kinds of films.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_eiga",
+      "kotoba_ekspresi_wajah_egao"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_donna",
+      "bunpou_no_ga_suki"
+    ],
+    "particleIds": [
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_cerita_film"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_belanja",
+    "order": 18,
+    "title": "Belanja",
+    "titleEn": "Shopping",
+    "description": "Kosakata pakaian dan cara meminta atau membeli barang di toko.",
+    "descriptionEn": "Clothing vocabulary and how to ask for or buy things at a shop.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_pakaian_aksesori_kutsu",
+      "kotoba_pekerjaan_kantor_ryoushuu"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_kudasai",
+      "bunpou_ga_hoshii"
+    ],
+    "particleIds": [
+      "particle_o",
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_coba_baju"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_di_restoran",
+    "order": 19,
+    "title": "Di Restoran",
+    "titleEn": "At a Restaurant",
+    "description": "Kosakata makanan/minuman dan cara memesan di restoran.",
+    "descriptionEn": "Food/drink vocabulary and how to order at a restaurant.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_makanan_jepang_ramen",
+      "kotoba_minuman_mizu",
+      "kotoba_konsep_umum_chuumon",
+      "kotoba_makanan_barat_keeki"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_kudasai",
+      "bunpou_ga_arimasu",
+      "bunpou_totemo"
+    ],
+    "particleIds": [
+      "particle_o",
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_pesan_makanan"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_angka_dan_uang",
+    "order": 20,
+    "title": "Angka dan Uang",
+    "titleEn": "Numbers and Money",
+    "description": "Angka dasar dan cara menukar atau meminta uang.",
+    "descriptionEn": "Basic numbers and how to exchange or ask for money.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_angka_satuan_ichi",
+      "kotoba_angka_satuan_ni",
+      "kotoba_angka_satuan_san",
+      "kotoba_angka_satuan_yon",
+      "kotoba_angka_satuan_go",
+      "kotoba_angka_satuan_ichiman"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_kudasai",
+      "bunpou_ga_arimasu"
+    ],
+    "particleIds": [
+      "particle_o",
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tukar_uang"
     ],
     "dokkaiIds": []
   },
@@ -569,57 +573,53 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_musim",
+    "id": "bab_bentuk_te_dan_minta_tolong",
     "order": 22,
-    "title": "Musim",
-    "titleEn": "Seasons",
-    "description": "Nama-nama musim dan cara menyebutkan musim favorit.",
-    "descriptionEn": "Season names and how to say your favorite season.",
+    "title": "Bentuk -Te dan Meminta Tolong",
+    "titleEn": "The -Te Form and Asking for Help",
+    "description": "Cara mengubah kata kerja ke bentuk -te, lalu memakainya untuk meminta tolong dengan sopan — dasar yang perlu dikuasai sebelum bab \"Di Sekolah\", yang sudah memakai pola ~てください.",
+    "descriptionEn": "How to conjugate verbs into the -te form, then use it to ask for help politely — the foundation needed before \"At School\", which already uses the ~te kudasai pattern.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_musim_haru",
-      "kotoba_musim_natsu",
-      "kotoba_musim_aki",
-      "kotoba_musim_fuyu",
-      "kotoba_musim_kisetsu"
+      "kotoba_alat_tulis_sekolah_shukudai"
     ],
     "kanjiIds": [],
     "bunpouIds": [
-      "bunpou_no_ga_suki",
-      "bunpou_donna"
+      "bunpou_te_kei",
+      "bunpou_te_kudasai"
     ],
     "particleIds": [
-      "particle_ga"
+      "particle_o"
     ],
     "kaiwaIds": [
-      "kaiwa_musim_favorit"
+      "kaiwa_bantuan_koper"
     ],
     "dokkaiIds": []
   },
   {
-    "id": "bab_ulang_tahun_dan_umur",
+    "id": "bab_di_sekolah",
     "order": 23,
-    "title": "Ulang Tahun dan Umur",
-    "titleEn": "Birthday and Age",
-    "description": "Cara menanyakan umur dan membicarakan ulang tahun.",
-    "descriptionEn": "How to ask someone's age and talk about birthdays.",
+    "title": "Di Sekolah",
+    "titleEn": "At School",
+    "description": "Alat tulis, mata pelajaran, dan percakapan sehari-hari di sekolah.",
+    "descriptionEn": "School supplies, subjects, and everyday classroom conversation.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_perayaan_haribesar_tanjoubi",
-      "kotoba_angka_satuan_ni",
-      "kotoba_angka_satuan_juu",
-      "kotoba_perayaan_haribesar_oiwai"
+      "kotoba_alat_tulis_sekolah_enpitsu",
+      "kotoba_alat_tulis_sekolah_hon",
+      "kotoba_mata_pelajaran_shiken"
     ],
     "kanjiIds": [],
     "bunpouIds": [
-      "bunpou_da_desu",
-      "bunpou_ka"
+      "bunpou_te_kudasai",
+      "bunpou_ga_arimasu"
     ],
     "particleIds": [
-      "particle_ka"
+      "particle_ga",
+      "particle_o"
     ],
     "kaiwaIds": [
-      "kaiwa_tanya_umur"
+      "kaiwa_pinjam_alat_tulis"
     ],
     "dokkaiIds": []
   },
@@ -649,28 +649,28 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_di_rumah",
+    "id": "bab_kegiatan_sehari_hari",
     "order": 25,
-    "title": "Di Rumah",
-    "titleEn": "At Home",
-    "description": "Kosakata ruangan rumah dan cara membicarakan rumah keluarga.",
-    "descriptionEn": "Room vocabulary and how to talk about a family home.",
+    "title": "Kegiatan Sehari-hari",
+    "titleEn": "Daily Activities",
+    "description": "Menceritakan kegiatan yang sedang dilakukan, memakai bentuk -te yang sudah dipelajari di bab \"Bentuk -Te dan Meminta Tolong\".",
+    "descriptionEn": "Talking about activities in progress, building on the -te form already taught in \"The -Te Form and Asking for Help\".",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_ruangan_rumah_heya",
-      "kotoba_ruangan_rumah_niwa",
-      "kotoba_keluarga_hubungan_jikka"
+      "kotoba_hobi_aktivitas_shumi",
+      "kotoba_hobi_aktivitas_dokusho",
+      "kotoba_media_hiburan_terebi"
     ],
     "kanjiIds": [],
     "bunpouIds": [
-      "bunpou_ga_arimasu",
-      "bunpou_ni"
+      "bunpou_te_iru",
+      "bunpou_totemo"
     ],
     "particleIds": [
-      "particle_ni"
+      "particle_o"
     ],
     "kaiwaIds": [
-      "kaiwa_rumah_keluarga"
+      "kaiwa_tanya_hobi"
     ],
     "dokkaiIds": []
   }

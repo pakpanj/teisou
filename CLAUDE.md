@@ -4703,3 +4703,112 @@ text, not by theme alone, from now on.
 Bab 5) confirmed as described above. Content authoring already went
 through the pre-edit id-existence check plus the post-edit kanji-aware
 sync audit above — no gaps known.
+
+## Update (2026-08-03, later same day): all 25 Bab chapters reordered
+against the real Minna no Nihongo 1 lesson sequence
+
+Right after the sync fix above, the user asked a direct question: is the
+Bab chapter order actually based on Minna no Nihongo 1's real table of
+contents? The honest answer was no — only the general per-lesson
+*pattern* (vocab + grammar + dialogue bundled into one themed,
+escalating unit) came from Minna; the specific 25 chapter topics and
+their order were invented independently, driven by what content already
+existed plus ad-hoc grammar-prerequisite checks (only the -te-form-
+before-te-kudasai dependency was ever actually verified against a real
+source). The user then asked for a proper pass: research the real
+step-by-step order beginner Japanese should be taught in, weighted 70%
+on the actual Minna no Nihongo 1 book and 30% on outside references,
+specifically so children learn in a correct sequence — before any more
+chapters or vocabulary get added.
+
+**Research method**: the user had already sent a full 359-page scan of
+Minna no Nihongo 1 ("Minna nihongo 1.pdf", found in their Downloads
+folder) earlier in the project's history. `pdftoppm`/`pdf2image` aren't
+installed in this environment, but `pymupdf` (already available) can
+render pages directly, so the actual scan was read page-by-page (not
+relied on from memory) — a script rendered a ~90pt header strip off
+every one of the 359 pages into 9 composite images, which was enough to
+locate all 25 "Pelajaran N" (Lesson N) boundaries and read each lesson's
+"IV. Keterangan Tatabahasa" (grammar notes) heading text directly off
+the scan. This is structural/factual information (which grammar point
+each numbered lesson covers, in what order) — no sentence, dialogue, or
+paragraph content from the book was ever copied into this app, same
+copyright boundary the user set from day one of the Bab feature. The
+real 25-lesson sequence (L = Minna lesson number): L1 copula (da/desu,
+wa, mo, no, ~san) -> L2 demonstratives (kore/sore/are) -> L3 location
+words (koko/soko/asoko) -> L4 time (nan-ji, kara/made) -> L5 dates
+(itsu) -> L6 counters/age -> L7 agemasu/moraimasu -> L8 adjectives (i/na
++ totemo/amari) -> L9 wakarimasu + jouzu/heta -> L10 arimasu/imasu +
+ue/shita -> L11 counting -> L12 comparison -> L13 purpose of movement ->
+L14 -te + -te kudasai -> L15 -te imasu -> L16-19 more -te patterns ->
+L20-25 plain/casual form and beyond (N4-adjacent). The 30% outside
+reference (`nihongo-career.com`, `migaku.com` — see
+[bab_lists.py](scripts/bab_lists.py) for the exact URLs, kept out of
+this doc to avoid an external link going stale here) confirmed general
+SLA sequencing guidance — sentence structure before particles before
+basic verb/adjective forms before compound patterns, vocab and grammar
+taught together rather than vocab-first — which matches Minna's own
+order, validating it as the right thing to weight heavily.
+
+**What this surfaced**: two of the 25 existing Bab chapters turned out
+to already be correctly sequenced by accident — "Bentuk -Te dan Meminta
+Tolong" mirrors Minna's real L14 exactly, and "Kegiatan Sehari-hari"
+(~te imasu) mirrors L15, and both were already adjacent in the old
+order the same way Minna teaches them adjacent. But the *rest* of the
+old order was a real mismatch: Minna teaches existence (arimasu/imasu),
+time (kara/made), and counters/age within its first 10 lessons — while
+this app's old order didn't introduce kara/made until chapter 10/14 and
+didn't touch age until chapter 23. The -te-form cluster itself (the
+old chapters 3, 4, and 6) sat at position 3 — far too early, since -te
+conjugation is genuinely one of the *more* advanced structures in
+Minna's own sequence (L14-15 of 25), not an opening one. Real content
+gaps also surfaced that this pass explicitly did **not** fix, since the
+user's ask was reorder-only, and none of these grammar points exist in
+`bunpou_data.json` yet so no existing chapter could point at them
+anyway: demonstratives (kore/sore/are), dedicated location words
+(koko/soko/asoko), the -nai negative form, agemasu/moraimasu, and
+comparison. These are recorded as real future work, not lost — see the
+"REORDER PASS" comment block at the top of
+[bab_lists.py](scripts/bab_lists.py).
+
+**The fix**: every chapter's `order` field was reassigned based on the
+*hardest* `bunpou_ids` entry it uses (not the easiest), matched against
+the closest real Minna lesson number above, and chapters within the
+same tier were ordered by theme proximity to their neighbors. New
+sequence: copula tier first (Menyapa, Pekerjaan, Negara dan Asal, Ulang
+Tahun dan Umur) -> existence tier (Keluarga, Hewan Peliharaan, Di
+Rumah, Di Rumah Sakit) -> adjective/particle tier (Cuaca, Menanyakan
+Arah, Stasiun, Hari dan Jadwal, Rencana Liburan) -> suki/donna
+preference cluster (Olahraga, Warna, Musim, Bioskop) -> desire/request
+cluster (Belanja, Di Restoran, Angka dan Uang, Buah dan Sayuran) -> the
+-te-form cluster last (Bentuk -Te dan Meminta Tolong, Di Sekolah,
+Telepon, Kegiatan Sehari-hari). The internal -te-form dependency
+survived unchanged — "Bentuk -Te" (now chapter 22) is still immediately
+before "Di Sekolah" (23), same as before the reorder, just 19 positions
+later overall. Two description strings needed a fix because they
+referenced *relative* position rather than naming the chapter directly:
+"Bentuk -Te"'s description already named "Di Sekolah" by title so it
+needed no change, but "Kegiatan Sehari-hari"'s description said "bentuk
+-te dari bab sebelumnya" (the -te form from the previous chapter) —
+which stopped being true once "Telepon" (not "Bentuk -Te") became its
+immediate predecessor — fixed to name "Bentuk -Te dan Meminta Tolong"
+directly instead of relying on adjacency.
+
+This was purely a re-sequencing pass — no `kotoba_ids`/`bunpou_ids`/
+`particle_ids`/`kaiwa_ids` content changed for any chapter, only each
+chapter's `order` integer and the two description strings above. Since
+`BabProgressRepository` tracks completion by `babId` rather than by
+`order`, the existing "Menyapa dan Berkenalan" completion checkmark
+correctly followed the chapter to its new (unchanged, still #1)
+position with no data migration needed — confirmed on-device, see
+below.
+
+Verified: `flutter analyze` clean, `flutter test --concurrency=1`
+48/48, `flutter build apk --debug` succeeded. On-device (Moto G52J,
+reinstalled): `BabLevelScreen`'s N5 list renders the full new order
+correctly end to end (Menyapa/Pekerjaan/Negara dan Asal/Ulang Tahun dan
+Umur/Keluarga/Hewan Peliharaan/Di Rumah/Di Rumah Sakit/Cuaca... through
+.../Belanja/Di Restoran/Angka dan Uang/Buah dan Sayuran/Bentuk
+-Te/Di Sekolah/Telepon/Kegiatan Sehari-hari at 22-25), and "Menyapa dan
+Berkenalan"'s green completion checkmark correctly stayed on chapter 1
+after the reorder.
