@@ -6,52 +6,30 @@ import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/mascot_guide_bubble.dart';
 import '../../core/widgets/mascot_widget.dart';
-import '../../data/models/jlpt_level.dart';
 import '../bunpou/bunpou_detail_screen.dart';
 import '../dokkai/dokkai_exam_screen.dart';
 import '../kaiwa/kaiwa_dialogue_screen.dart';
 import '../kanji/kanji_word_detail_screen.dart';
 import '../kotoba/kotoba_word_detail_screen.dart';
 import '../particle/particle_detail_screen.dart';
+import 'bab_gate_quiz_screen.dart';
 import 'bab_providers.dart';
 
 /// One Bab chapter — a curated "playlist" over already-resolved items from
 /// six other modules (see [ResolvedBab]/`babDetailProvider`). Renders only
 /// section headers and compact rows; tapping a row opens that module's own
 /// existing detail screen, so no content is ever re-rendered here.
-class BabDetailScreen extends ConsumerStatefulWidget {
+class BabDetailScreen extends ConsumerWidget {
   final String babId;
 
   const BabDetailScreen({super.key, required this.babId});
 
   @override
-  ConsumerState<BabDetailScreen> createState() => _BabDetailScreenState();
-}
-
-class _BabDetailScreenState extends ConsumerState<BabDetailScreen> {
-  bool _marking = false;
-
-  Future<void> _toggleCompleted(bool currentlyDone, String jlptLevel) async {
-    setState(() => _marking = true);
-    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    final repo = ref.read(babProgressRepositoryProvider);
-    if (currentlyDone) {
-      await repo.unmarkCompleted(widget.babId, uid: uid);
-    } else {
-      await repo.markCompleted(widget.babId, jlptLevel, uid: uid);
-    }
-    ref.invalidate(babCompletedIdsProvider);
-    ref.invalidate(babNextUpProvider);
-    if (!mounted) return;
-    setState(() => _marking = false);
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
-    final resolvedAsync = ref.watch(babDetailProvider(widget.babId));
+    final resolvedAsync = ref.watch(babDetailProvider(babId));
     final completed = ref.watch(babCompletedIdsProvider).valueOrNull ?? {};
-    final done = completed.contains(widget.babId);
+    final done = completed.contains(babId);
 
     return Scaffold(
       backgroundColor: context.palette.background,
@@ -183,24 +161,47 @@ class _BabDetailScreenState extends ConsumerState<BabDetailScreen> {
             const SizedBox(height: 24),
             MascotGuideBubble(
               mood: done ? MascotMood.cheering : MascotMood.happy,
-              message: done ? s.babGuideDoneMessage : s.babGuideDetailMessage,
+              message: done
+                  ? s.babGuideDoneMessage
+                  : s.babGuideQuizMessage(resolved.bab.order),
             ),
             const SizedBox(height: 16),
             SizedBox(
               width: double.infinity,
-              child: FilledButton.icon(
-                onPressed: _marking
-                    ? null
-                    : () => _toggleCompleted(done, resolved.bab.level.key),
-                icon: _marking
-                    ? const SizedBox(
-                        width: 16,
-                        height: 16,
-                        child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
-                      )
-                    : Icon(done ? Icons.check_circle : Icons.check_circle_outline),
-                label: Text(done ? s.babCompletedLabel : s.babMarkComplete),
-              ),
+              child: done
+                  ? Container(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      decoration: BoxDecoration(
+                        color: context.palette.successGreen.withValues(alpha: 0.15),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.check_circle, color: context.palette.successGreen),
+                          const SizedBox(width: 8),
+                          Text(
+                            s.babCompletedLabel,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: context.palette.successGreen,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : FilledButton.icon(
+                      onPressed: () => AppNavigator.slideFromRight(
+                        context,
+                        BabGateQuizScreen(
+                          level: resolved.bab.level,
+                          upToOrder: resolved.bab.order,
+                          babId: babId,
+                        ),
+                      ),
+                      icon: const Icon(Icons.quiz),
+                      label: Text(s.babStartGateQuiz),
+                    ),
             ),
           ],
         ),

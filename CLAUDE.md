@@ -5000,3 +5000,136 @@ if this research method is reused again: header-strip crops are fast
 for *locating* lesson boundaries but not reliable for *characterizing*
 a lesson's full content — pull full pages before asserting what a
 lesson teaches, not just what its first visible grammar item is.
+
+## Update (2026-08-03, later still): Bab curriculum lock — cumulative
+gate quiz, 100% required, between every chapter
+
+The user's next request, right after the cross-check pass above: lock
+each Bab chapter behind a quiz over everything before it — Bab 1→2
+quizzes Bab 1, Bab 2→3 quizzes Bab 1-2, ..., Bab 24→25 quizzes Bab
+1-24 — with a "kompleks" (complex) question mix, not trivial recall.
+Three scope decisions were asked of the user up front (via
+`AskUserQuestion`, since none of these could be inferred from the
+existing code): **passing threshold — 100%** (every question correct,
+no partial credit); **question shape — mixed multiple-choice pulled
+from kotoba/bunpou/partikel together**, not hand-authored sentence-
+combination questions (would need new content per gate, this doesn't);
+**existing manually-marked completions — reset entirely**, no
+grandfathering, every learner starts the gate-locked curriculum fresh
+from chapter 1.
+
+**Architecture — no new content dataset, mirrors Kanji-Kombinasi's
+"mine existing data at runtime" pattern**: `lib/features/bab/
+bab_gate_quiz_generator.dart`'s `buildGateQuestions()` is a pure
+function taking every chapter's already-resolved `ResolvedBab` (see
+the new `babAllResolvedProvider` in `bab_providers.dart`, which
+resolves the whole level once via `Future.wait` over `babDetailProvider`
+so repeat attempts don't re-walk the id lookups) plus `upToOrder`. It
+builds three id→(prompt, answer) maps (kotoba word/kanji→meaning,
+bunpou pattern→meaning, particle function→title) from **every**
+chapter (needed for a large, reliable distractor pool), but only
+treats chapters with `order <= upToOrder` as **question candidates** —
+this is why unlocking chapter 2 (whose own pool is one kotoba word,
+three bunpou entries, and a couple of particle functions) still has
+plenty of plausible wrong answers to draw from: they come from chapters
+the learner hasn't reached yet, not just the in-scope ones. Candidates
+are shuffled and capped at `min(10, candidates.length)`, so early
+chapters get a shorter quiz than the pool eventually supports once the
+curriculum has grown, exactly like Dokkai's "shuffle the whole pool,
+cap the session" pattern already established for its 50-question
+sessions. Question/distractor phrasing branches on `AppLanguage` the
+same way `AppStrings._t()` does, keeping this consistent with the rest
+of the app's bilingual discipline rather than hardcoding Indonesian
+into generated question text.
+
+**`BabGateQuizScreen`** (`lib/features/bab/bab_gate_quiz_screen.dart`)
+wires the generated `List<GateQuestion>` into the existing shared
+`McQuizFlow`/`SimpleExamResultScreen` pair (`lib/features/exam/`) —
+same integration shape as `DokkaiExamScreen`: `optionsOf`/
+`correctIndexOf` are simple index lookups into a list computed **once**
+per screen instance (`_questions ??= buildGateQuestions(...)` inside
+`build()`, guarded so Riverpod rebuilds don't reshuffle the quiz
+mid-attempt). `onComplete` checks `score == total` — passing marks the
+current chapter complete via the existing `BabProgressRepository` and
+invalidates `babCompletedIdsProvider`/`babNextUpProvider`; failing
+does neither, so the next chapter stays locked and re-entering this
+screen (there's no dedicated "retry" button — going back and tapping
+the quiz button again is enough) draws a freshly-shuffled attempt from
+the same pool. `SimpleExamResultScreen`'s `reviewContent` slot carries
+an explicit pass/fail message (`babGatePassedMessage`/
+`babGateFailedMessage`) since a merely-good score (e.g. 8/10) still
+means the gate wasn't passed, and that needs to be unambiguous, not
+left to the score circle alone to imply.
+
+**Locking, `BabLevelScreen`**: `_ChapterCard` gained a `locked` bool —
+`chapters[i-1]` not being in the completed set (chapters are already
+`order`-sorted by `BabRepository.getByLevel`, so this is a plain
+previous-list-item check, not an id lookup) locks chapter `i`; chapter
+1 (`i == 0`) is never locked, since there's nothing before it to quiz
+on. Locked cards render grey with a lock icon and
+`babLockedReason(previousOrder)` as both the subtitle and the tap
+target's `SnackBar` — mirrors the existing `_LockedModuleCard` pattern
+built for Cam Detector in `modules_section.dart` (same
+`mutedSurface`/`freeBadgeGrey` palette tokens), though that widget
+itself is private to its own file and wasn't reusable, so this is a
+parallel implementation of the same visual language, not a shared
+widget.
+
+**`BabDetailScreen`**: the old manual "Tandai Bab Selesai" toggle
+button is gone entirely — replaced by a button that navigates to
+`BabGateQuizScreen(level, upToOrder: bab.order, babId)`. Once a chapter
+is completed, that button becomes a static (non-interactive) green
+"Bab Selesai" indicator rather than a disabled `FilledButton` — an
+actually-disabled button read as an error state visually, not a
+proud/positive one, so this is a plain styled `Container` instead. The
+screen dropped from `ConsumerStatefulWidget` to `ConsumerWidget` in the
+same pass, since removing the manual-toggle flow removed its only
+local state (`_marking`).
+
+**The "reset entirely" decision, implemented as a key rename, not a
+migration**: `BabProgressRepository`'s SharedPreferences key changed
+from `bab_completed_ids` to `bab_gate_completed_ids`. Every learner's
+existing manual completions become invisible (not deleted, just
+orphaned under the old key) the moment this ships — confirmed on-device
+(Moto G52J): before this change, the mascot's "next up" message read
+"Lanjutkan ke 'Pekerjaan'" (chapter 2, from an earlier manual
+completion of chapter 1 during this session's own testing); after
+reinstalling with the new key, it correctly reverted to "Lanjutkan ke
+'Menyapa dan Berkenalan'" (chapter 1), and the level list showed
+chapter 1 unlocked, every other chapter locked with the correct
+`babLockedReason` chapter number.
+
+**Bug found and fixed during on-device testing, not in the mechanism
+itself**: the first on-device pass showed a kotoba question rendering
+as `「がくせい」(がくせい)」` — the same kana string twice. `KotobaEntry.word`
+holds the **kana** reading; `.kanji` (nullable) holds the kanji form —
+the generator's original prompt used `k.word` where it should have
+used `k.kanji ?? k.word`. Fixed to prefer kanji when present, and to
+skip the redundant `(reading)` parenthetical entirely when the
+headword already equals the reading (true for kana-only words like
+これ/それ/あれ, which have no kanji form at all).
+
+**Verified end-to-end on-device (Moto G52J)**, not just
+analyze/test/build: opened the fresh Bab 1 gate quiz (8 questions —
+1 kotoba + 3 bunpou + 4 particle-function candidates, all of Bab 1's
+own pool, none held back), answered all 8 correctly, confirmed the
+"Sempurna! Bab berikutnya sudah terbuka." pass screen, and confirmed
+chapter 2 unlocked (green checkmark on 1, coral/tappable on 2) while
+3+ stayed locked. Then opened chapter 2's gate quiz (now 10 questions,
+correctly capped once the Bab 1+2 pool exceeded 10 candidates),
+deliberately answered one particle-function question wrong, rode it
+out to the end, and confirmed the "Jangan menyerah, coba lagi! 💪"
+fail screen plus "Butuh jawaban benar semua..." messaging — and
+confirmed chapter 3 correctly stayed locked afterward, chapter 2's
+own completion state unchanged (not marked done on a failed attempt).
+Distractors were visibly pulled from chapters well beyond the current
+scope (e.g. a Bab 1 question's wrong answers included te-form and
+demonstrative-pronoun meanings from chapters 22 and 5), confirming the
+full-curriculum distractor pool works as designed even for the
+smallest early-chapter quizzes.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 48/48 (no test
+needed updating — none of the existing suite touches Bab screens
+directly), `flutter build apk --debug` succeeded (twice — once before
+and once after the kotoba display fix, both installed and re-tested on
+the physical device rather than assumed correct from the diff alone).

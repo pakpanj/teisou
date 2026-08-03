@@ -9,8 +9,16 @@ import '../models/bab_progress_entry.dart';
 /// "Bab Selesai" marks. Same local-first shape as [KanjiProgressRepository]
 /// and the other four progress repositories: SharedPreferences is the
 /// source of truth, Firestore is a best-effort mirror.
+///
+/// A chapter only lands here once its cumulative gate quiz (see
+/// `bab_gate_quiz_screen.dart`) has been passed with a perfect score — the
+/// key was deliberately renamed from the earlier `bab_completed_ids`
+/// (used back when this was a plain manual "mark as done" toggle, no quiz
+/// gate at all) so that every learner starts the gate-locked curriculum
+/// fresh from chapter 1, rather than having old manual completions count
+/// toward chapters they were never actually quizzed on.
 class BabProgressRepository {
-  static const _prefsKey = 'bab_completed_ids';
+  static const _prefsKey = 'bab_gate_completed_ids';
 
   final FirebaseFirestore _firestore;
 

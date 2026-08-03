@@ -39,8 +39,18 @@ class BabLevelScreen extends ConsumerWidget {
                 message: s.babLevelGuideMessage,
               ),
               const SizedBox(height: 20),
-              for (final bab in chapters) ...[
-                _ChapterCard(bab: bab, done: completed.contains(bab.id)),
+              for (var i = 0; i < chapters.length; i++) ...[
+                _ChapterCard(
+                  bab: chapters[i],
+                  done: completed.contains(chapters[i].id),
+                  // Chapter 1 never needs a gate quiz behind it (nothing
+                  // came before it); every other chapter stays locked
+                  // until its immediate predecessor's gate quiz has been
+                  // passed. `chapters` is already sorted by `order`
+                  // (BabRepository.getByLevel), so the predecessor is
+                  // always the previous list item, not a lookup by id.
+                  locked: i > 0 && !completed.contains(chapters[i - 1].id),
+                ),
                 const SizedBox(height: 12),
               ],
             ],
@@ -56,19 +66,25 @@ class BabLevelScreen extends ConsumerWidget {
 class _ChapterCard extends ConsumerWidget {
   final BabEntry bab;
   final bool done;
+  final bool locked;
 
-  const _ChapterCard({required this.bab, required this.done});
+  const _ChapterCard({required this.bab, required this.done, required this.locked});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
+    final greyed = context.palette.freeBadgeGrey;
 
     return Material(
-      color: context.palette.cardWhite,
+      color: locked ? context.palette.mutedSurface : context.palette.cardWhite,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () => AppNavigator.slideFromRight(context, BabDetailScreen(babId: bab.id)),
+        onTap: () => locked
+            ? ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(s.babLockedReason(bab.order - 1))),
+              )
+            : AppNavigator.slideFromRight(context, BabDetailScreen(babId: bab.id)),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -77,20 +93,26 @@ class _ChapterCard extends ConsumerWidget {
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: (done ? context.palette.successGreen : context.palette.primaryCoral)
+                  color: (done
+                          ? context.palette.successGreen
+                          : locked
+                              ? greyed
+                              : context.palette.primaryCoral)
                       .withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
                 child: done
                     ? Icon(Icons.check, color: context.palette.successGreen)
-                    : Text(
-                        '${bab.order}',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: context.palette.primaryCoral,
-                        ),
-                      ),
+                    : locked
+                        ? Icon(Icons.lock, color: greyed, size: 20)
+                        : Text(
+                            '${bab.order}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: context.palette.primaryCoral,
+                            ),
+                          ),
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -102,21 +124,25 @@ class _ChapterCard extends ConsumerWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: context.palette.textNavy,
+                        color: locked ? greyed : context.palette.textNavy,
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      bab.localizedDescription(s.language),
+                      locked ? s.babLockedReason(bab.order - 1) : bab.localizedDescription(s.language),
                       style: TextStyle(
                         fontSize: 12,
-                        color: context.palette.textNavy.withValues(alpha: 0.6),
+                        color: locked ? greyed : context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right, color: context.palette.primaryCoral),
+              Icon(
+                locked ? Icons.lock : Icons.chevron_right,
+                color: locked ? greyed : context.palette.primaryCoral,
+                size: locked ? 20 : 24,
+              ),
             ],
           ),
         ),

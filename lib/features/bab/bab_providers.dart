@@ -65,6 +65,19 @@ class ResolvedBab {
   });
 }
 
+/// Every chapter in [level], fully resolved — the raw material the gate
+/// quiz generator draws from (see `bab_gate_quiz_generator.dart`).
+/// Resolving the whole level once and caching it here means retrying a
+/// failed gate quiz doesn't repeat the same id-lookup pass over every
+/// chapter each time.
+final babAllResolvedProvider =
+    FutureProvider.family<List<ResolvedBab>, JlptLevel>((ref, level) async {
+  final chapters = await ref.watch(babByLevelProvider(level).future);
+  return Future.wait(
+    chapters.map((c) => ref.watch(babDetailProvider(c.id).future)),
+  );
+});
+
 final babDetailProvider = FutureProvider.family<ResolvedBab, String>((ref, babId) async {
   final bab = await ref.watch(babRepositoryProvider).getById(babId);
   if (bab == null) {

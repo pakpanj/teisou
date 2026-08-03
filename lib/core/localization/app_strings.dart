@@ -641,12 +641,33 @@ class AppStrings {
   String get babSectionParticle => _t('Partikel', 'Particles');
   String get babSectionKaiwa => _t('Percakapan', 'Conversation');
   String get babSectionDokkai => _t('Bacaan Tambahan', 'Extra Reading');
-  String get babGuideDetailMessage => _t(
-        'Pelajari semua bagian di atas, lalu tandai bab ini selesai.',
-        'Work through everything above, then mark this chapter done.',
-      );
+  String babGuideQuizMessage(int order) {
+    final range = order == 1 ? 'Bab 1' : 'Bab 1-$order';
+    return _t(
+      'Pelajari semua bagian di atas, lalu kerjakan kuis $range untuk membuka bab berikutnya.',
+      'Work through everything above, then take the $range quiz to unlock the next chapter.',
+    );
+  }
   String get babGuideDoneMessage =>
       _t('Kerja bagus! Bab ini sudah selesai.', 'Great job! This chapter is done.');
-  String get babMarkComplete => _t('Tandai Bab Selesai', 'Mark Chapter Complete');
+  String get babStartGateQuiz =>
+      _t('Kerjakan Kuis untuk Lanjut', 'Take the Quiz to Continue');
   String get babCompletedLabel => _t('Bab Selesai', 'Chapter Complete');
+  String babLockedReason(int previousOrder) => _t(
+        'Selesaikan kuis Bab $previousOrder dulu untuk membuka bab ini.',
+        'Finish the Bab $previousOrder quiz first to unlock this chapter.',
+      );
+  String get babGateQuizTitle => _t('Kuis Pembuka Bab', 'Chapter Unlock Quiz');
+  String get babGatePassedMessage => _t(
+        'Sempurna! Bab berikutnya sudah terbuka.',
+        'Perfect! The next chapter is now unlocked.',
+      );
+  String get babGateFailedMessage => _t(
+        'Butuh jawaban benar semua untuk membuka bab berikutnya. Coba lagi, ya!',
+        'You need every answer correct to unlock the next chapter. Try again!',
+      );
+  String get babGateNoQuestions => _t(
+        'Belum ada soal yang bisa dibuat untuk bab ini.',
+        'No questions could be generated for this chapter yet.',
+      );
 }
