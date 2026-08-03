@@ -4737,10 +4737,12 @@ copyright boundary the user set from day one of the Bab feature. The
 real 25-lesson sequence (L = Minna lesson number): L1 copula (da/desu,
 wa, mo, no, ~san) -> L2 demonstratives (kore/sore/are) -> L3 location
 words (koko/soko/asoko) -> L4 time (nan-ji, kara/made) -> L5 dates
-(itsu) -> L6 counters/age -> L7 agemasu/moraimasu -> L8 adjectives (i/na
-+ totemo/amari) -> L9 wakarimasu + jouzu/heta -> L10 arimasu/imasu +
-ue/shita -> L11 counting -> L12 comparison -> L13 purpose of movement ->
-L14 -te + -te kudasai -> L15 -te imasu -> L16-19 more -te patterns ->
+(itsu) -> L6 transitive verbs + the を object particle (tabemasu/
+nomimasu/kaimasu, K.Benda o K.Kerja) -> L7 agemasu/moraimasu -> L8
+adjectives (i/na + totemo/amari) -> L9 wakarimasu + jouzu/heta -> L10
+arimasu/imasu + ue/shita -> L11 counting -> L12 comparison -> L13
+purpose of movement -> L14 -te + -te kudasai -> L15 -te imasu -> L16-19
+more -te patterns ->
 L20-25 plain/casual form and beyond (N4-adjacent). The 30% outside
 reference (`nihongo-career.com`, `migaku.com` — see
 [bab_lists.py](scripts/bab_lists.py) for the exact URLs, kept out of
@@ -4925,3 +4927,76 @@ and ue/shita position words paired with ここ／そこ／あそこ (the second
 half of Minna L10, only the arimasu/imasu half of which this app's
 existence-tier chapters cover). N4-N1 Bab expansion is unstarted
 entirely, same as before this pass.
+
+## Update (2026-08-03, later still): independent re-verification of the
+syllabus-fix pass's factual claims — one real error found and fixed
+
+The user's explicit concern after the syllabus-fix pass above: this is
+"teori" (theory/content), not a code bug, and if the underlying content
+claims are wrong, that's a much more serious problem than a typical bug
+— asked for a real cross-check, not just re-running tests. Fair
+concern: the earlier Minna-lesson-mapping research had relied on
+~90pt header-strip crops of each page (enough to locate lesson
+boundaries and catch the *first* grammar item, but not necessarily the
+*complete* picture of what each lesson covers), so it was genuinely
+possible some characterizations were incomplete or wrong despite
+passing every automated check.
+
+**Method**: re-opened the same real "Minna nihongo 1.pdf" scan and this
+time rendered **full pages** (not header strips) for the "IV.
+Keterangan Tatabahasa" grammar section of every lesson this app's
+Minna-tier claims depend on — L1 through L15 — and read each one in
+full rather than trusting the earlier partial crop. Also
+independently re-verified every sentence in the 4 newly-authored
+Bunpou entries (`kore_sore_are`/`koko_soko_asoko`/`masen`/
+`agemasu_moraimasu`) is grammatically valid, natural Japanese with
+correct romaji and translation — checked each one by hand (particle
+choice, verb conjugation, te-form correctness, the あげます/もらいます
+direction-of-giving logic specifically since that's the classic point
+where learners and even course materials get it backwards).
+
+**Result: 12 of 15 lesson-content claims confirmed word-for-word
+accurate against the real scan** (L1, L2, L3, L4, L7, L9, L10, L11,
+L12, L13, L14, L15 all matched exactly what the actual textbook page
+shows — including details not previously double-checked, like L10's
+existence grammar explicitly confirming あります is for inanimate/
+immobile things and います for animate/mobile ones, matching this
+app's pre-existing `bunpou_ga_arimasu`/`bunpou_ga_imasu` split; L12's
+grammar page literally showing "電車のほうが速いです" as its own example,
+almost the same sentence structure as this pass's own
+`bunpou_yori_hou_ga` examples; and L14's grammar page explicitly
+citing "Pel.14" for the -te form conjugation table, directly
+confirming the original `bunpou_te_kei` gap-fix from earlier this
+project was correctly diagnosed). **One real error found**: the
+research summary claimed "L6 = counters/age" — actually wrong. The
+real Minna Lesson 6 (confirmed via its own kosakata page, 食べます/
+飲みます/買います/します etc., and its own grammar page, "K.Bendaを
+K.Kerja" / "K.Bendaを します") teaches **transitive verbs with the を
+object particle**, not counters or age. The "counters/age" content
+that had been misattributed to L6 actually belongs to L9 (confirmed
+on L9's real grammar page, which groups あります/わかります/好き/嫌い/
+上手/下手 together under one が-marking rule, and includes an age
+example as an illustration of that rule, not as its own topic).
+
+**Why this didn't turn out to be "fatal"**: the error was isolated to
+a *summary/reference comment* in `scripts/bab_lists.py`'s header and
+this file's own prose — it was never load-bearing for any actual
+taught content. No Bunpou entry, no Bab chapter, and no in-app text
+ever asserted "this is Minna's Lesson 6" to a learner; the mislabel
+only existed in developer-facing documentation describing the general
+shape of Minna's syllabus. Still, since the user's whole point was
+"if content is wrong here, it's fatal" — the standard applied was
+"wrong is wrong regardless of blast radius" — so it was corrected
+immediately in both `scripts/bab_lists.py` and this file rather than
+left as a known-harmless inaccuracy. The 4 authored Bunpou entries
+themselves, the 6 new Bab chapters' grammar/theme pairings, and the
+tier-based reorder logic all survive this re-verification unchanged —
+none of them depended on the L6 mischaracterization.
+
+No code or data files changed in this pass — this was a documentation
+correction only (`scripts/bab_lists.py`'s header comment and this
+section), so no regeneration or re-test was needed. Worth remembering
+if this research method is reused again: header-strip crops are fast
+for *locating* lesson boundaries but not reliable for *characterizing*
+a lesson's full content — pull full pages before asserting what a
+lesson teaches, not just what its first visible grammar item is.

@@ -26,8 +26,9 @@
 # real lessons was identified from the scan:
 # L1 copula (da/desu, wa, mo, no, san) -> L2 demonstratives (kore/sore/are)
 # -> L3 location words (koko/soko/asoko) -> L4 time (nan-ji, kara/made) ->
-# L5 dates (itsu) -> L6 counters/age -> L7 agemasu/moraimasu -> L8
-# adjectives (i/na + totemo/amari) -> L9 wakarimasu + jouzu/heta -> L10
+# L5 dates (itsu) -> L6 transitive verbs + the o object particle
+# (tabemasu/nomimasu/kaimasu, K.Benda o K.Kerja) -> L7 agemasu/moraimasu ->
+# L8 adjectives (i/na + totemo/amari) -> L9 wakarimasu + jouzu/heta -> L10
 # arimasu/imasu + ue/shita -> L11 counting -> L12 comparison -> L13 purpose
 # of movement -> L14 -te + -te kudasai -> L15 -te imasu -> L16-19 more -te
 # patterns -> L20-25 plain/casual form and beyond (N4-adjacent, out of this
