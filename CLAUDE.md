@@ -5181,3 +5181,78 @@ this pass only changed how each question is *phrased*, not the
 underlying pooling/distractor/pass-threshold mechanics documented in
 the update above. `flutter analyze` clean, `flutter test
 --concurrency=1` 48/48, `flutter build apk --debug` succeeded.
+
+**In progress, uncommitted in root `master` as of this writing**: a
+follow-up widening `bab_gate_quiz_generator.dart`'s example-sentence
+pool (`git status` in root shows this file modified, plus leftover
+`scratch_wide*.png` on-device screenshots) — pick up from there rather
+than re-deriving from scratch; don't assume it's finished or matches
+what's described above until confirmed with a fresh `git diff`/`git log`.
+
+## Update (2026-08-03, separate parallel session): menu/exam structure
+discussion — mostly resolved by the Bab work above, one thread still open
+
+While the Bab curriculum + gate-quiz work above was happening in root
+`master`, a **different session** (this worktree,
+`motorola-g52j-connection-390534`) was independently having a design
+discussion with the user about the exact same underlying complaint:
+"Ujian" mixed real exams (Kana, Kanji-Kombinasi) with what were really
+study modules (Dokkai, Choukai) wearing an exam costume, and
+Kanji/Kotoba/Bunpou/Partikel/Kaiwa each had their own disconnected
+quiz with no relationship to "Ujian" at all. That session had no
+visibility into the Bab work landing in parallel, so it built its own
+independent analysis — worth recording here because **most of what it
+proposed already happened**, just under a different name than either
+side expected.
+
+The user's request was "kasih struktur yang bagus" (give it good
+structure) — not literally "build a Minna-style curriculum," but that
+session, digging for a concrete reference, asked the user for
+Japanese-textbook PDFs to ground the discussion instead of guessing.
+The user supplied a zip at `C:\CV WATER PROFING\e book pdf\` —
+containing `Minna nihongo 1.pdf` (the official Indonesian translation
+of Minna no Nihongo Shokyuu I, 3A Corporation, ISBN
+978-4-88319-164-2), `Minna No Nihongo Beginner II` (textbook +
+translation/grammar notes), `Basic Kanji Book 1/2`, and an unrelated
+elderly-care textbook (ignored, not Japanese-learning content). **All
+of these are scanned-image PDFs with zero extractable text** —
+`pypdf`'s `extract_text()` returns empty even in layout mode; getting
+anything out of them requires rendering pages to images
+(`pip install pymupdf`, `page.get_pixmap(dpi=150)` — poppler/
+`pdftoppm` is not installed in this environment, so the `Read` tool's
+native PDF-page support doesn't work here either) and reading them
+visually. Confirmed via rendered pages that `Minna nihongo 1.pdf`
+matches the well-known standard Minna I structure exactly per lesson:
+Kosakata → Bunkei (patterns) → Reibun (examples) → numbered grammar
+notes → Renshuu A/B/C (drills) → Kaiwa (conversation) — useful to know
+if a future session wants to cross-check the Bab chapters' ordering
+or content against the source instead of just trusting the "reordered
+against real Minna no Nihongo 1 sequence" commit's own claim.
+
+That session's proposed three-tier plan, and what actually happened:
+- **Tingkat 1** (move Dokkai out of Ujian into a study section since
+  it's practice material not an exam; hide Choukai until it has
+  content) — **already done**, independently, in commit `6f2fc66`
+  ("Ujian cleanup"), the same commit that introduced the first 4 Bab
+  chapters. `ExamModePickerScreen` is now just Kana + Kanji-Kombinasi.
+- **Tingkat 3** (a Minna-style combined curriculum unit bundling
+  kosakata+kanji+grammar+conversation per stage, gated by passing a
+  checkpoint) — **already done, and further along than what that
+  session was even proposing**: the Bab module (see the update above)
+  doesn't just bundle content per chapter, it locks progression behind
+  a cumulative 100%-pass gate quiz per chapter, which is *more*
+  structured than anything discussed in that parallel conversation.
+- **Tingkat 2** (a single place to see/take every module's own
+  embedded quiz — Kanji/Kotoba/Bunpou/Partikel/Kaiwa each still have
+  their own separate quiz screen, none surfaced anywhere near Ujian or
+  Bab) — **still genuinely open**, not touched by either session. Given
+  the Bab gate-quiz now pulls cross-module questions at each chapter
+  checkpoint anyway, it's worth asking the user whether this is still
+  wanted at all before building it — the original motivation ("two
+  disconnected practice systems") is weaker now that Bab exists as a
+  third, more structured practice path layered on top of both.
+
+If a future session picks this up: **don't re-run the tiered analysis
+from scratch** — start from "Tingkat 1 and 3 shipped, Tingkat 2 is the
+only open question, and it may not even be wanted anymore" and confirm
+with the user from there instead of re-deriving the whole discussion.
