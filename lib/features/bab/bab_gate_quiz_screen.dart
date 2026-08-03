@@ -100,6 +100,7 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen> {
             child: McQuizFlow(
               totalQuestions: questions.length,
               headerBuilder: (context, index) => _QuestionCard(
+                context: questions[index].context,
                 prompt: questions[index].prompt,
               ),
               optionsOf: (index) => questions[index].options,
@@ -115,18 +116,20 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen> {
   }
 }
 
-class _QuestionCard extends StatelessWidget {
+class _QuestionCard extends ConsumerWidget {
+  final String? context;
   final String prompt;
 
-  const _QuestionCard({required this.prompt});
+  const _QuestionCard({required this.context, required this.prompt});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext buildContext, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: context.palette.cardWhite,
+        color: buildContext.palette.cardWhite,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -136,13 +139,37 @@ class _QuestionCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Text(
-        prompt,
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
-          color: context.palette.textNavy,
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (context != null) ...[
+            Text(
+              s.sentenceExamplesTitle,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: buildContext.palette.textNavy.withValues(alpha: 0.5),
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              context!,
+              style: TextStyle(
+                fontSize: 18,
+                color: buildContext.palette.textNavy,
+              ),
+            ),
+            const SizedBox(height: 16),
+          ],
+          Text(
+            prompt,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: buildContext.palette.textNavy,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -5133,3 +5133,51 @@ needed updating — none of the existing suite touches Bab screens
 directly), `flutter build apk --debug` succeeded (twice — once before
 and once after the kotoba display fix, both installed and re-tested on
 the physical device rather than assumed correct from the diff alone).
+
+## Update (2026-08-03, later still): gate-quiz questions gained example-
+sentence context
+
+Right after the gate-quiz feature above shipped, the user asked for one
+more thing: show a real example sentence above each question instead of
+asking about a word/pattern/particle in total isolation, so a learner
+can actually reason out the answer from context instead of guessing
+cold from four options.
+
+`GateQuestion` gained a nullable `context` field. `buildGateQuestions()`
+now pulls a real sentence from the same entry's own `sentenceExamples`
+— `KotobaEntry`/`BunpouEntry`/`ParticleFunction` all already carry
+these (authored for their own module's detail screens, nothing new to
+write) — picking one at random via the same `Random` instance already
+threaded through the function, so repeated attempts can surface a
+different example sentence for the same word/pattern, not just a
+different question order. When an entry has no example at all
+(shouldn't happen given this dataset's authoring bar, but not assumed),
+`context` stays null and the question falls back to the original
+context-free phrasing rather than crashing or showing an empty card.
+Prompts changed to reference the sentence explicitly when context is
+present — "「word」(reading) **pada kalimat ini** artinya?" instead of
+just "artinya?" — in both Indonesian and English, matching the rest of
+the module's bilingual-string discipline (`AppLanguage`-branched
+phrasing inside the generator, same pattern `AppStrings._t()` uses).
+
+`BabGateQuizScreen`'s `_QuestionCard` now renders the context sentence
+above the question when present, labeled with the already-existing
+`s.sentenceExamplesTitle` ("Contoh Kalimat") string reused from the
+per-module detail screens rather than adding a new one. Deliberately
+**not** shown alongside it: the example's own romaji or Indonesian
+translation — showing the translation would trivially give away kotoba
+meaning-questions (and often the particle-function ones too, since the
+function is usually obvious from how the translation is phrased),
+undermining the entire point of asking the learner to work it out from
+context.
+
+Verified on-device (Moto G52J): opened Bab 2's gate quiz and confirmed
+both a kotoba question ("Contoh Kalimat: 会社で働きます。" / 「会社」
+(かいしゃ) pada kalimat ini artinya?") and a particle question ("Contoh
+Kalimat: 土曜日か日曜日に行きます。" / Partikel「か」pada kalimat ini
+berfungsi sebagai...") render the sentence context correctly, with
+distractors still pulled from across the whole curriculum as before —
+this pass only changed how each question is *phrased*, not the
+underlying pooling/distractor/pass-threshold mechanics documented in
+the update above. `flutter analyze` clean, `flutter test
+--concurrency=1` 48/48, `flutter build apk --debug` succeeded.

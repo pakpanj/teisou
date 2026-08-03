@@ -7,12 +7,20 @@ import 'bab_providers.dart';
 /// runtime from real, already-authored Kotoba/Bunpou/Partikel content, the
 /// same "mine existing data, ship no new dataset" approach
 /// `KanjiComboRepository` already uses for Ujian's Kanji-Kombinasi category.
+///
+/// [context] is a real example sentence the word/pattern/particle already
+/// appears in (from that entry's own `sentenceExamples`) — shown above
+/// [prompt] so the learner answers from reading real usage, not from
+/// isolated multiple-choice recall. Null only for the rare candidate whose
+/// entry has no authored example sentence to draw from.
 class GateQuestion {
+  final String? context;
   final String prompt;
   final List<String> options;
   final int correctIndex;
 
   GateQuestion({
+    required this.context,
     required this.prompt,
     required this.options,
     required this.correctIndex,
@@ -39,13 +47,16 @@ List<GateQuestion> buildGateQuestions({
 }) {
   final rng = random ?? Random();
 
-  final kotobaById = <String, ({String prompt, String answer})>{};
-  final bunpouById = <String, ({String prompt, String answer})>{};
-  final particleFnById = <String, ({String prompt, String answer})>{};
+  final kotobaById = <String, ({String prompt, String answer, String? context})>{};
+  final bunpouById = <String, ({String prompt, String answer, String? context})>{};
+  final particleFnById = <String, ({String prompt, String answer, String? context})>{};
 
   final scopedKotobaIds = <String>{};
   final scopedBunpouIds = <String>{};
   final scopedParticleFnIds = <String>{};
+
+  String? pickContext(List<String> sentences) =>
+      sentences.isEmpty ? null : sentences[rng.nextInt(sentences.length)];
 
   for (final resolved in allResolved) {
     final inScope = resolved.bab.order <= upToOrder;
@@ -54,6 +65,7 @@ List<GateQuestion> buildGateQuestions({
       kotobaById[k.id] = (
         prompt: headword == k.reading ? '「$headword」' : '「$headword」(${k.reading})',
         answer: k.localizedMeaning(language),
+        context: pickContext(k.sentenceExamples.map((e) => e.japanese).toList()),
       );
       if (inScope) scopedKotobaIds.add(k.id);
     }
@@ -61,6 +73,7 @@ List<GateQuestion> buildGateQuestions({
       bunpouById[b.id] = (
         prompt: '「${b.pattern}」(${b.patternRomaji})',
         answer: b.localizedMeaning(language),
+        context: pickContext(b.sentenceExamples.map((e) => e.japanese).toList()),
       );
       if (inScope) scopedBunpouIds.add(b.id);
     }
@@ -69,6 +82,7 @@ List<GateQuestion> buildGateQuestions({
         particleFnById[fn.id] = (
           prompt: '「${p.particle}」',
           answer: fn.localizedTitle(language),
+          context: pickContext(fn.sentenceExamples.map((e) => e.japanese).toList()),
         );
         if (inScope) scopedParticleFnIds.add(fn.id);
       }
@@ -83,11 +97,16 @@ List<GateQuestion> buildGateQuestions({
       particleFnById.values.map((e) => e.answer).toSet().toList();
 
   final isEnglish = language == AppLanguage.english;
-  final meansWhat = isEnglish ? 'means?' : 'artinya?';
+  final meansWhatPlain = isEnglish ? 'means?' : 'artinya?';
+  final meansWhatInContext =
+      isEnglish ? 'in this sentence means?' : 'pada kalimat ini artinya?';
   final patternPrefix = isEnglish ? 'The pattern' : 'Pola';
-  final particleFnTemplate = isEnglish
+  final particleFnPlain = isEnglish
       ? (String p) => 'One function of the particle $p is...'
       : (String p) => 'Salah satu fungsi partikel $p adalah...';
+  final particleFnInContext = isEnglish
+      ? (String p) => 'The particle $p in this sentence functions as...'
+      : (String p) => 'Partikel $p pada kalimat ini berfungsi sebagai...';
 
   List<String> distractorsFor(List<String> pool, String correct) {
     final options = pool.where((m) => m != correct).toList()..shuffle(rng);
@@ -95,6 +114,7 @@ List<GateQuestion> buildGateQuestions({
   }
 
   GateQuestion buildQuestion(
+    String? context,
     String prompt,
     String correct,
     List<String> distractorPool,
@@ -102,6 +122,7 @@ List<GateQuestion> buildGateQuestions({
     final distractors = distractorsFor(distractorPool, correct);
     final options = {correct, ...distractors}.toList()..shuffle(rng);
     return GateQuestion(
+      context: context,
       prompt: prompt,
       options: options,
       correctIndex: options.indexOf(correct),
@@ -110,23 +131,39 @@ List<GateQuestion> buildGateQuestions({
 
   final candidates = <GateQuestion Function()>[
     for (final id in scopedKotobaIds)
-      () => buildQuestion(
-            '${kotobaById[id]!.prompt} $meansWhat',
-            kotobaById[id]!.answer,
-            allKotobaMeanings,
-          ),
+      () {
+        final e = kotobaById[id]!;
+        return buildQuestion(
+          e.context,
+          e.context != null
+              ? '${e.prompt} $meansWhatInContext'
+              : '${e.prompt} $meansWhatPlain',
+          e.answer,
+          allKotobaMeanings,
+        );
+      },
     for (final id in scopedBunpouIds)
-      () => buildQuestion(
-            '$patternPrefix ${bunpouById[id]!.prompt} $meansWhat',
-            bunpouById[id]!.answer,
-            allBunpouMeanings,
-          ),
+      () {
+        final e = bunpouById[id]!;
+        return buildQuestion(
+          e.context,
+          e.context != null
+              ? '$patternPrefix ${e.prompt} $meansWhatInContext'
+              : '$patternPrefix ${e.prompt} $meansWhatPlain',
+          e.answer,
+          allBunpouMeanings,
+        );
+      },
     for (final id in scopedParticleFnIds)
-      () => buildQuestion(
-            particleFnTemplate(particleFnById[id]!.prompt),
-            particleFnById[id]!.answer,
-            allParticleTitles,
-          ),
+      () {
+        final e = particleFnById[id]!;
+        return buildQuestion(
+          e.context,
+          e.context != null ? particleFnInContext(e.prompt) : particleFnPlain(e.prompt),
+          e.answer,
+          allParticleTitles,
+        );
+      },
   ];
 
   candidates.shuffle(rng);
