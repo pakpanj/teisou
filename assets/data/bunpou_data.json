@@ -2903,6 +2903,144 @@
     "usageNotesEn": "The -te form alone doesn't mean anything on its own, but it's the foundation of many important patterns like ~te kudasai (please do ~) and ~te imasu (doing ~ right now). Master the conjugation per verb group before learning the patterns that use it."
   },
   {
+    "id": "bunpou_kore_sore_are",
+    "pattern": "これ／それ／あれ・この／その／あの",
+    "patternRomaji": "kore / sore / are, kono / sono / ano",
+    "jlptLevel": "N5",
+    "meaning": "Ini, itu, itu (di sana) — kata tunjuk benda",
+    "formation": "これ/それ/あれ berdiri sendiri sebagai kata benda (menunjuk tanpa menyebut namanya); この/その/あの + kata benda (menunjuk sambil menyebut nama bendanya, tidak bisa berdiri sendiri)",
+    "usageNotes": "これ = dekat pembicara, それ = dekat lawan bicara, あれ = jauh dari keduanya. この/その/あの mengikuti pembagian jarak yang sama tapi selalu harus diikuti langsung oleh kata benda (この本, bukan berdiri sendiri sebagai この). Jangan tertukar dengan ここ/そこ/あそこ, yang menunjuk TEMPAT, bukan BENDA.",
+    "similarPatterns": [
+      "bunpou_koko_soko_asoko"
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "これは私の家族の写真です。",
+        "romaji": "Kore wa watashi no kazoku no shashin desu.",
+        "translation": "Ini foto keluarga saya.",
+        "translationEn": "This is a photo of my family."
+      },
+      {
+        "japanese": "それは何ですか。",
+        "romaji": "Sore wa nan desu ka.",
+        "translation": "Itu apa?",
+        "translationEn": "What is that?"
+      },
+      {
+        "japanese": "あの本は面白いです。",
+        "romaji": "Ano hon wa omoshiroi desu.",
+        "translation": "Buku yang di sana itu menarik.",
+        "translationEn": "That book over there is interesting."
+      }
+    ],
+    "meaningEn": "This, that, that over there — demonstrative pronouns",
+    "formationEn": "kore/sore/are stand alone as nouns (pointing without naming the object); kono/sono/ano + noun (pointing while naming the object, can't stand alone)",
+    "usageNotesEn": "kore = near the speaker, sore = near the listener, are = far from both. kono/sono/ano follow the same distance split but must always be directly followed by a noun (kono hon, never standing alone as kono). Don't confuse these with koko/soko/asoko, which point at PLACES, not THINGS."
+  },
+  {
+    "id": "bunpou_koko_soko_asoko",
+    "pattern": "ここ／そこ／あそこ",
+    "patternRomaji": "koko / soko / asoko",
+    "jlptLevel": "N5",
+    "meaning": "Di sini, di situ, di sana — kata tunjuk tempat",
+    "formation": "ここ/そこ/あそこ + です (menyatakan lokasi) atau + に + kata kerja keberadaan/gerakan",
+    "usageNotes": "ここ = dekat pembicara, そこ = dekat lawan bicara, あそこ = jauh dari keduanya — pembagian jarak yang sama seperti これ/それ/あれ, tapi untuk TEMPAT, bukan benda. Bentuk sopannya こちら/そちら/あちら (juga dipakai untuk arah).",
+    "similarPatterns": [
+      "bunpou_kore_sore_are"
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "ここはワイファイがありますか。",
+        "romaji": "Koko wa waifai ga arimasu ka.",
+        "translation": "Apakah di sini ada wifi?",
+        "translationEn": "Is there wifi here?"
+      },
+      {
+        "japanese": "そこに座ってください。",
+        "romaji": "Soko ni suwatte kudasai.",
+        "translation": "Tolong duduk di situ.",
+        "translationEn": "Please sit there."
+      },
+      {
+        "japanese": "あそこに図書館があります。",
+        "romaji": "Asoko ni toshokan ga arimasu.",
+        "translation": "Perpustakaan ada di sana.",
+        "translationEn": "The library is over there."
+      }
+    ],
+    "meaningEn": "Here, there, over there — demonstrative location words",
+    "formationEn": "koko/soko/asoko + desu (stating a location) or + ni + an existence/movement verb",
+    "usageNotesEn": "koko = near the speaker, soko = near the listener, asoko = far from both — the same distance split as kore/sore/are, but for PLACES, not things. Their polite form is kochira/sochira/achira (also used for directions)."
+  },
+  {
+    "id": "bunpou_masen",
+    "pattern": "ません",
+    "patternRomaji": "~masen",
+    "jlptLevel": "N5",
+    "meaning": "Tidak ~ (bentuk negatif sopan dari kata kerja)",
+    "formation": "Kata kerja bentuk ~masu, ganti akhiran ~masu menjadi ~masen",
+    "usageNotes": "Bentuk negatif sopan dari kata kerja apa pun yang sudah dalam bentuk ~masu — lawan kata dari ~masu (afirmatif), bukan lawan kata dari だ/です (yang negatifnya じゃない・ではない, pola terpisah karena だ/です bukan kata kerja).",
+    "similarPatterns": [
+      "bunpou_ja_nai"
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "電話番号はありません。",
+        "romaji": "Denwa bangou wa arimasen.",
+        "translation": "Saya tidak punya nomor telepon.",
+        "translationEn": "I don't have a phone number."
+      },
+      {
+        "japanese": "肉を食べません。",
+        "romaji": "Niku o tabemasen.",
+        "translation": "Saya tidak makan daging.",
+        "translationEn": "I don't eat meat."
+      },
+      {
+        "japanese": "明日は学校に行きません。",
+        "romaji": "Ashita wa gakkou ni ikimasen.",
+        "translation": "Besok saya tidak pergi ke sekolah.",
+        "translationEn": "I'm not going to school tomorrow."
+      }
+    ],
+    "meaningEn": "Not ~ (polite negative verb form)",
+    "formationEn": "Take a verb's ~masu form and replace the ~masu ending with ~masen",
+    "usageNotesEn": "The polite negative form of any verb already in ~masu form — the opposite of ~masu (affirmative), not the opposite of da/desu (whose negative is ja nai/de wa nai, a separate pattern since da/desu isn't a verb)."
+  },
+  {
+    "id": "bunpou_agemasu_moraimasu",
+    "pattern": "あげます／もらいます",
+    "patternRomaji": "agemasu / moraimasu",
+    "jlptLevel": "N5",
+    "meaning": "Memberi / menerima",
+    "formation": "[Penerima]に[Benda]をあげます (memberi ~ kepada ~); [Pemberi]に/から[Benda]をもらいます (menerima ~ dari ~)",
+    "usageNotes": "あげます dan もらいます menggambarkan arah pemberian yang berlawanan — perhatikan baik-baik siapa yang ditandai partikel に: pada あげます, に menandai PENERIMA (orang yang diberi); pada もらいます, に (atau から) menandai PEMBERI (orang yang memberi). Menukar keduanya akan membalik arti kalimat sepenuhnya.",
+    "similarPatterns": [],
+    "sentenceExamples": [
+      {
+        "japanese": "宿題を届けてあげてください。",
+        "romaji": "Shukudai o todokete agete kudasai.",
+        "translation": "Tolong antarkan PR itu untuknya.",
+        "translationEn": "Please deliver the homework for them."
+      },
+      {
+        "japanese": "母にプレゼントをあげます。",
+        "romaji": "Haha ni purezento o agemasu.",
+        "translation": "Saya memberi hadiah kepada ibu saya.",
+        "translationEn": "I'm giving a present to my mother."
+      },
+      {
+        "japanese": "友達からケーキをもらいました。",
+        "romaji": "Tomodachi kara keeki o moraimashita.",
+        "translation": "Saya menerima kue dari teman saya.",
+        "translationEn": "I received a cake from my friend."
+      }
+    ],
+    "meaningEn": "To give / to receive",
+    "formationEn": "[recipient] ni [thing] o agemasu (give ~ to ~); [giver] ni/kara [thing] o moraimasu (receive ~ from ~)",
+    "usageNotesEn": "agemasu and moraimasu describe opposite directions of giving — watch closely who ni marks: in agemasu, ni marks the RECIPIENT (the person being given to); in moraimasu, ni (or kara) marks the GIVER (the person doing the giving). Swapping them completely reverses the sentence's meaning."
+  },
+  {
     "id": "bunpou_aida",
     "pattern": "間（あいだ）",
     "patternRomaji": "aida",

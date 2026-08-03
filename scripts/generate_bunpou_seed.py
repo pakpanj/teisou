@@ -780,6 +780,54 @@ N5_GRAMMAR_ENTRIES = [
         ("今、ご飯を食べています。", "Ima, gohan o tabete imasu.", "Sekarang sedang makan nasi."),
         ("宿題をしてください。", "Shukudai o shite kudasai.", "Tolong kerjakan PR."),
      ]),
+    ("kore_sore_are", "これ／それ／あれ・この／その／あの", "kore / sore / are, kono / sono / ano",
+     "Ini, itu, itu (di sana) — kata tunjuk benda",
+     "これ/それ/あれ berdiri sendiri sebagai kata benda (menunjuk tanpa menyebut namanya); "
+     "この/その/あの + kata benda (menunjuk sambil menyebut nama bendanya, tidak bisa berdiri sendiri)",
+     "これ = dekat pembicara, それ = dekat lawan bicara, あれ = jauh dari keduanya. この/その/あの "
+     "mengikuti pembagian jarak yang sama tapi selalu harus diikuti langsung oleh kata benda "
+     "(この本, bukan berdiri sendiri sebagai この). Jangan tertukar dengan ここ/そこ/あそこ, yang "
+     "menunjuk TEMPAT, bukan BENDA.",
+     ["koko_soko_asoko"], [
+        ("これは私の家族の写真です。", "Kore wa watashi no kazoku no shashin desu.", "Ini foto keluarga saya."),
+        ("それは何ですか。", "Sore wa nan desu ka.", "Itu apa?"),
+        ("あの本は面白いです。", "Ano hon wa omoshiroi desu.", "Buku yang di sana itu menarik."),
+     ]),
+    ("koko_soko_asoko", "ここ／そこ／あそこ", "koko / soko / asoko",
+     "Di sini, di situ, di sana — kata tunjuk tempat",
+     "ここ/そこ/あそこ + です (menyatakan lokasi) atau + に + kata kerja keberadaan/gerakan",
+     "ここ = dekat pembicara, そこ = dekat lawan bicara, あそこ = jauh dari keduanya — pembagian "
+     "jarak yang sama seperti これ/それ/あれ, tapi untuk TEMPAT, bukan benda. Bentuk sopannya "
+     "こちら/そちら/あちら (juga dipakai untuk arah).",
+     ["kore_sore_are"], [
+        ("ここはワイファイがありますか。", "Koko wa waifai ga arimasu ka.", "Apakah di sini ada wifi?"),
+        ("そこに座ってください。", "Soko ni suwatte kudasai.", "Tolong duduk di situ."),
+        ("あそこに図書館があります。", "Asoko ni toshokan ga arimasu.", "Perpustakaan ada di sana."),
+     ]),
+    ("masen", "ません", "~masen",
+     "Tidak ~ (bentuk negatif sopan dari kata kerja)",
+     "Kata kerja bentuk ~masu, ganti akhiran ~masu menjadi ~masen",
+     "Bentuk negatif sopan dari kata kerja apa pun yang sudah dalam bentuk ~masu — lawan kata dari "
+     "~masu (afirmatif), bukan lawan kata dari だ/です (yang negatifnya じゃない・ではない, "
+     "pola terpisah karena だ/です bukan kata kerja).",
+     ["ja_nai"], [
+        ("電話番号はありません。", "Denwa bangou wa arimasen.", "Saya tidak punya nomor telepon."),
+        ("肉を食べません。", "Niku o tabemasen.", "Saya tidak makan daging."),
+        ("明日は学校に行きません。", "Ashita wa gakkou ni ikimasen.", "Besok saya tidak pergi ke sekolah."),
+     ]),
+    ("agemasu_moraimasu", "あげます／もらいます", "agemasu / moraimasu",
+     "Memberi / menerima",
+     "[Penerima]に[Benda]をあげます (memberi ~ kepada ~); [Pemberi]に/から[Benda]をもらいます "
+     "(menerima ~ dari ~)",
+     "あげます dan もらいます menggambarkan arah pemberian yang berlawanan — perhatikan baik-baik "
+     "siapa yang ditandai partikel に: pada あげます, に menandai PENERIMA (orang yang diberi); "
+     "pada もらいます, に (atau から) menandai PEMBERI (orang yang memberi). Menukar keduanya akan "
+     "membalik arti kalimat sepenuhnya.",
+     [], [
+        ("宿題を届けてあげてください。", "Shukudai o todokete agete kudasai.", "Tolong antarkan PR itu untuknya."),
+        ("母にプレゼントをあげます。", "Haha ni purezento o agemasu.", "Saya memberi hadiah kepada ibu saya."),
+        ("友達からケーキをもらいました。", "Tomodachi kara keeki o moraimashita.", "Saya menerima kue dari teman saya."),
+     ]),
 ]
 
 N4_GRAMMAR_ENTRIES = [

@@ -4812,3 +4812,116 @@ Umur/Keluarga/Hewan Peliharaan/Di Rumah/Di Rumah Sakit/Cuaca... through
 -Te/Di Sekolah/Telepon/Kegiatan Sehari-hari at 22-25), and "Menyapa dan
 Berkenalan"'s green completion checkmark correctly stayed on chapter 1
 after the reorder.
+
+## Update (2026-08-03, later still same day): syllabus content gap fix —
+4 new N5 Bunpou entries + 6 new Bab chapters (25 -> 31)
+
+Right after the reorder above, the user's next instruction was direct:
+fix the syllabus for real (not just resequence it), author any grammar
+dataset that's genuinely missing, and for anything that only needs image
+assets (not new data), just wire up the correct path — they'd generate
+and upload the actual images themselves via their existing external
+pipeline.
+
+**Checked before assuming anything was missing**: dumped the full
+85-entry real N5 Bunpou list and grepped it precisely (id-exact, not
+fuzzy substring — a first fuzzy pass produced false positives against
+unrelated N2/N1 compound patterns like `kono_ue_nai`/`sono_tame_ni`).
+Comparison (`bunpou_wa_yori_desu`/`bunpou_yori_hou_ga`) and skill
+(`bunpou_no_ga_jouzu`/`bunpou_no_ga_heta`) **already existed** — nobody
+had ever built a Bab chapter around them, so these needed a new chapter
+only, zero new grammar. Four patterns genuinely didn't exist anywhere in
+the dataset: demonstrative pronouns/adjectives (これ/それ/あれ・
+この/その/あの, Minna L2), demonstrative location words (ここ/そこ/あそこ,
+L3), the basic polite verb negative ~ません (the dataset had plenty of
+*compound* patterns built on top of a negative stem —
+naide/naide_kudasai/nakute_wa_ikenai/nakucha/etc. — but nothing taught
+the base ~masu→~masen swap itself, same "compound patterns exist, the
+foundational one doesn't" shape as the earlier `bunpou_te_kei` gap), and
+giving/receiving (あげます/もらいます, L7).
+
+**New Bunpou entries**: `bunpou_kore_sore_are`, `bunpou_koko_soko_asoko`,
+`bunpou_masen`, `bunpou_agemasu_moraimasu` added to
+`N5_GRAMMAR_ENTRIES` in `scripts/generate_bunpou_seed.py`, their pattern
+text appended to the locked `N5_GRAMMAR` list in
+`scripts/bunpou_grammar_lists.py` (85 -> 89, explicitly commented as NOT
+sourced from jlptsensei.com — a second deliberate gap-fill, same
+precedent as `bunpou_te_kei`), and English translations added to
+`scripts/bunpou_meaning_en.py` **before** running the test suite (the
+regenerating-wipes-English gotcha documented elsewhere in this file
+applies every single time `N5_GRAMMAR_ENTRIES` changes — caught and
+avoided this time by doing the English patch immediately after
+regenerating, not as an afterthought). `python scripts/generate_bunpou_
+seed.py` then `python scripts/apply_bunpou_meaning_en.py` confirmed
+5118/5118 English fields covered across all 853 entries.
+
+**Zero new Kotoba words, zero new Kaiwa dialogues, zero new images
+needed** — this is the part worth remembering if this pattern comes up
+again. Rather than writing brand-new dialogue for each of the 6 new
+chapters, the entire N5 Kaiwa dataset (680 dialogues) was grepped for
+ones that **already, incidentally** use each target grammar point in
+their existing text (これ/それ/あれ alone appears in 219 of 680 N5
+dialogues, ~ません in 606 — extremely common words that were always
+there, just never paired with a matching Bunpou entry or Bab chapter
+before). A genuine, not-already-claimed-by-another-chapter dialogue was
+picked for each of the 6 new grammar points, its real line was reused
+verbatim as that new Bunpou entry's *first* sentence example (e.g.
+`kaiwa_kenalan_keluarga`'s own "これは私の家族の写真です。" became
+`bunpou_kore_sore_are`'s first example), and `kotoba_ids` were picked
+the same way — an existing, real Kotoba entry whose word/kanji field
+already appears in that same text (写真/shashin for the demonstratives
+chapter, ワイファイ/wifi for the location-words chapter reusing
+`kaiwa_tanya_wifi_restoran`'s own "ここはワイファイがありますか。", 電車/
+densha for the comparison chapter reusing `kaiwa_liburan_backpacker`'s
+"電車より夜行バスの方が安いですよ。", 絵/e for the skill chapter reusing
+`kaiwa_melukis`, and so on — full mapping in the `scripts/bab_lists.py`
+"SYLLABUS FIX PASS" comment block). One nice side effect: ともだち
+(swapped OUT of the greetings chapter during the earlier sync-fix pass
+because it didn't belong there) found a genuine home in the new
+giving/receiving chapter, whose `kaiwa_jenguk_teman_sakit_sekolah`
+(visiting a sick friend) dialogue actually says 友達 — resolved
+properly instead of just discarded.
+
+**The 6 new chapters**, inserted at their correct Minna-tier position
+(not appended at the end) — 25 chapters became 31, renumbering
+everything after each insertion point: `bab_kore_sore_are` (5),
+`bab_koko_soko_asoko` (6) — both right after the copula tier and before
+existence; `bab_memberi_dan_menerima` (11), `bab_mengatakan_tidak` (12)
+— both right after the existence tier; `bab_bisa_dan_tidak_bisa` (18) —
+right before the suki/donna preference cluster; `bab_perbandingan` (23)
+— right after that same cluster, since comparison naturally follows
+stating a preference. Every other existing chapter's `order` shifted to
+make room; the -te-form cluster's internal ordering and its dependency
+on `bab_bentuk_te_dan_minta_tolong` preceding `bab_di_sekolah` survived
+unchanged, now at positions 28-31 instead of 22-25.
+
+**Verification, kanji-aware sync audit re-run against the full 31**:
+every single chapter has 100% of its `kotoba_ids` genuinely appearing
+in its own `bunpou_ids` sentence examples or `kaiwa_ids` dialogue text
+— all 6 new chapters landed at a perfect match (1/1 or 2/2) by
+construction, and the zero-match count across all 31 chapters is 0
+(same standing check first built during the earlier cross-content sync
+pass, just re-run against the larger set). `flutter analyze` clean,
+`flutter test --concurrency=1` 48/48, `flutter build apk --debug`
+succeeded. On-device (Moto G52J, reinstalled): confirmed the mascot's
+"next up" message correctly reads "Pekerjaan" (the new chapter 2, not
+whatever used to be there), the N5 list renders all 31 chapters
+end-to-end with the new ones inserted in the right spots, and opened
+`bab_kore_sore_are` chapter 5 directly — Kosakata/Tata Bahasa/Partikel/
+Percakapan sections all resolve correctly, the new grammar entry's
+detail screen renders its full pattern/romaji/meaning/formation/
+usageNotes, "Pola Serupa" correctly cross-resolves to ここ／そこ／あそこ
+(not a raw id, confirming `bunpouAllProvider`'s cross-level resolution
+— built for exactly this kind of case — still works for freshly-added
+entries), and the first example sentence matches the Kaiwa dialogue
+verbatim as designed.
+
+Real gaps still open, explicitly not attempted in this pass (recorded
+in `scripts/bab_lists.py`'s header comment, not lost): the six ~masu-
+stem-dependent Bunpou patterns (still nothing teaches ~masu-form
+conjugation itself, only the ~masu->~masen swap this pass added, which
+assumes ~masu is already known); full counting/counters (Minna L11);
+and ue/shita position words paired with ここ／そこ／あそこ (the second
+half of Minna L10, only the arimasu/imasu half of which this app's
+existence-tier chapters cover). N4-N1 Bab expansion is unstarted
+entirely, same as before this pass.

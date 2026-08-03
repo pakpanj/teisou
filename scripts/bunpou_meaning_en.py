@@ -5157,4 +5157,54 @@ BUNPOU_MEANING_EN = {
     "bunpou_te_kei|se0": "Please write the letter.",
     "bunpou_te_kei|se1": "I'm eating rice right now.",
     "bunpou_te_kei|se2": "Please do your homework.",
+    "bunpou_kore_sore_are|meaning": "This, that, that over there — demonstrative pronouns",
+    "bunpou_kore_sore_are|formation": (
+        "kore/sore/are stand alone as nouns (pointing without naming the object); "
+        "kono/sono/ano + noun (pointing while naming the object, can't stand alone)"
+    ),
+    "bunpou_kore_sore_are|usageNotes": (
+        "kore = near the speaker, sore = near the listener, are = far from both. kono/sono/ano "
+        "follow the same distance split but must always be directly followed by a noun (kono hon, "
+        "never standing alone as kono). Don't confuse these with koko/soko/asoko, which point at "
+        "PLACES, not THINGS."
+    ),
+    "bunpou_kore_sore_are|se0": "This is a photo of my family.",
+    "bunpou_kore_sore_are|se1": "What is that?",
+    "bunpou_kore_sore_are|se2": "That book over there is interesting.",
+    "bunpou_koko_soko_asoko|meaning": "Here, there, over there — demonstrative location words",
+    "bunpou_koko_soko_asoko|formation": (
+        "koko/soko/asoko + desu (stating a location) or + ni + an existence/movement verb"
+    ),
+    "bunpou_koko_soko_asoko|usageNotes": (
+        "koko = near the speaker, soko = near the listener, asoko = far from both — the same "
+        "distance split as kore/sore/are, but for PLACES, not things. Their polite form is "
+        "kochira/sochira/achira (also used for directions)."
+    ),
+    "bunpou_koko_soko_asoko|se0": "Is there wifi here?",
+    "bunpou_koko_soko_asoko|se1": "Please sit there.",
+    "bunpou_koko_soko_asoko|se2": "The library is over there.",
+    "bunpou_masen|meaning": "Not ~ (polite negative verb form)",
+    "bunpou_masen|formation": "Take a verb's ~masu form and replace the ~masu ending with ~masen",
+    "bunpou_masen|usageNotes": (
+        "The polite negative form of any verb already in ~masu form — the opposite of ~masu "
+        "(affirmative), not the opposite of da/desu (whose negative is ja nai/de wa nai, a "
+        "separate pattern since da/desu isn't a verb)."
+    ),
+    "bunpou_masen|se0": "I don't have a phone number.",
+    "bunpou_masen|se1": "I don't eat meat.",
+    "bunpou_masen|se2": "I'm not going to school tomorrow.",
+    "bunpou_agemasu_moraimasu|meaning": "To give / to receive",
+    "bunpou_agemasu_moraimasu|formation": (
+        "[recipient] ni [thing] o agemasu (give ~ to ~); [giver] ni/kara [thing] o moraimasu "
+        "(receive ~ from ~)"
+    ),
+    "bunpou_agemasu_moraimasu|usageNotes": (
+        "agemasu and moraimasu describe opposite directions of giving — watch closely who ni "
+        "marks: in agemasu, ni marks the RECIPIENT (the person being given to); in moraimasu, ni "
+        "(or kara) marks the GIVER (the person doing the giving). Swapping them completely "
+        "reverses the sentence's meaning."
+    ),
+    "bunpou_agemasu_moraimasu|se0": "Please deliver the homework for them.",
+    "bunpou_agemasu_moraimasu|se1": "I'm giving a present to my mother.",
+    "bunpou_agemasu_moraimasu|se2": "I received a cake from my friend.",
 }

@@ -11,20 +11,19 @@
 # bab_data.json, so a typo'd id fails the build loudly instead of becoming
 # a silent dead link at runtime.
 #
-# 25 proof-of-concept N5 chapters so far, hand-picked from content already
-# authored in past sessions — not the full curriculum. Expanding to more N5
-# chapters and then N4-N1 is future-session work, same "batch 1 of many"
-# shape as this project's other content rollouts (Dokkai, Dictionary).
+# 31 N5 chapters so far, hand-picked from content already authored in past
+# sessions (plus 4 brand-new N5 grammar entries added in the SYLLABUS FIX
+# PASS below) — not the full curriculum. Expanding to more N5 chapters and
+# then N4-N1 is future-session work, same "batch 1 of many" shape as this
+# project's other content rollouts (Dokkai, Dictionary).
 #
 # REORDER PASS (2026-08-03), grammar-difficulty tiers sourced from the real
 # Minna no Nihongo Shokyuu I book (359-page scan, "Minna nihongo 1.pdf" in
 # the user's Downloads folder — read directly, page by page, structure only,
 # nothing reproduced) plus general SLA sequencing guidance (sentence
 # structure -> particles -> basic verb/adjective forms -> compound patterns;
-# vocab+grammar learned together, not vocab-first). The user asked for this
-# explicitly: 70% weight on Minna's own lesson order, 30% on outside
-# references, used only to confirm Minna's order is sound, not to override
-# it. Every one of Minna's 25 real lessons was identified from the scan:
+# vocab+grammar learned together, not vocab-first). Every one of Minna's 25
+# real lessons was identified from the scan:
 # L1 copula (da/desu, wa, mo, no, san) -> L2 demonstratives (kore/sore/are)
 # -> L3 location words (koko/soko/asoko) -> L4 time (nan-ji, kara/made) ->
 # L5 dates (itsu) -> L6 counters/age -> L7 agemasu/moraimasu -> L8
@@ -34,93 +33,161 @@
 # patterns -> L20-25 plain/casual form and beyond (N4-adjacent, out of this
 # app's current N5 Bab scope).
 #
-# This pass ONLY reordered the 25 existing chapters (changed `order`, moved
-# dict blocks to match, fixed two description strings that referenced
-# relative position) — it did NOT author any new grammar content. Real
-# content gaps surfaced by comparing against Minna's actual lesson list
-# (demonstratives kore/sore/are, location words koko/soko/asoko, the -nai
-# negative form, agemasu/moraimasu, comparison, full counters) are NOT
-# fixed here — none of those grammar points exist in bunpou_data.json yet,
-# so no existing chapter could be pointed at them. That's real, larger,
-# future work (new Bunpou entries first, then new Bab chapters) — noted
-# here so it isn't lost, not attempted in this pass.
+# SYLLABUS FIX PASS (2026-08-03, later the same day as the reorder above):
+# the reorder pass above only resequenced the *existing* 25 chapters — it
+# explicitly did NOT fix the real content gaps that comparison against
+# Minna's real lesson list surfaced (demonstratives, location words, the
+# basic verb negative, giving/receiving, comparison, and jouzu/heta skill
+# expressions), because at the time none of that grammar existed in
+# bunpou_data.json, so no chapter could point at it. The user asked
+# directly afterward to close these gaps: author new grammar where the
+# dataset was missing it, and where a chapter only needed image assets
+# (not a new dataset), just wire up the correct `imagePath` convention and
+# leave the actual asset generation/upload to the user's own external
+# pipeline (same Firebase Storage convention every other Kotoba/Kaiwa image
+# already uses — nothing new to build there, it already works this way).
 #
-# Each of the 25 chapters below was assigned a tier by its OWN hardest
+# Checked bunpou_data.json before assuming anything was missing (don't
+# guess — verify): comparison (bunpou_wa_yori_desu, bunpou_yori_hou_ga) and
+# skill (bunpou_no_ga_jouzu, bunpou_no_ga_heta) already existed in the real
+# 85-entry N5 set, just never used by any Bab chapter — no new grammar
+# needed for those two, only new chapters to feature them. Four genuinely
+# did not exist anywhere in the dataset (checked with a precise id grep,
+# not a fuzzy substring match, which produced false positives against
+# unrelated N2/N1 compound patterns like kono_ue_nai/sono_tame_ni on the
+# first pass): kore/sore/are + kono/sono/ano (demonstratives, Minna L2),
+# koko/soko/asoko (location words, L3), the basic polite verb negative
+# ~masen (nothing in the dataset covered plain verb negation — only
+# compound patterns built ON TOP of the negative stem, like naide_kudasai/
+# nakute_wa_ikenai, existed), and agemasu/moraimasu (giving/receiving,
+# L7). All four were authored as new N5 entries in generate_bunpou_seed.py
+# (`bunpou_kore_sore_are`/`bunpou_koko_soko_asoko`/`bunpou_masen`/
+# `bunpou_agemasu_moraimasu`), added to the locked `N5_GRAMMAR` list in
+# bunpou_grammar_lists.py (85 -> 89, explicitly marked as NOT sourced from
+# jlptsensei.com's list, same deliberate-gap-fill precedent as the earlier
+# `bunpou_te_kei` fix), and given English translations in
+# bunpou_meaning_en.py immediately after regenerating (the same
+# regenerating-wipes-English gotcha documented elsewhere in this project
+# applies every time N5_GRAMMAR_ENTRIES changes).
+#
+# For each of these 4 new grammar points plus the 2 existing-but-unused
+# ones, a real N5 Kaiwa dialogue that *already* genuinely uses that
+# grammar was found by grepping the whole N5 dialogue set (all 680, not
+# just what's already claimed by other Bab chapters) rather than
+# authoring a brand-new dialogue from scratch — e.g. `kaiwa_kenalan_
+# keluarga`'s own line "これは私の家族の写真です。" already uses これ
+# naturally, so the new demonstratives chapter's own bunpou sentence
+# example reuses that exact phrase verbatim, guaranteeing kotoba/bunpou/
+# kaiwa sync from the very first commit rather than needing a follow-up
+# fix like the one documented below for the original 25 chapters. Every
+# one of the 6 new chapters' kotoba_ids was chosen the same way: a real,
+# already-existing Kotoba entry (never a new one — none needed authoring)
+# whose word/kanji field literally appears in that chapter's own
+# bunpou_ids sentence examples or kaiwa_ids dialogue text. Where a useful
+# word happened to be one that had been swapped OUT of an earlier chapter
+# during the original sync-fix pass (ともだち/tomodachi, swapped out of
+# the greetings chapter because it didn't fit there) — it found a genuine
+# home here instead (the giving/receiving chapter's `kaiwa_jenguk_teman_
+# sakit_sekolah`, about visiting a sick friend, where 友達 actually
+# appears in the dialogue) rather than being reintroduced somewhere it
+# still wouldn't sync.
+#
+# No new Kotoba words, no new Kaiwa dialogues, and no new images were
+# needed for this pass — every one of the 6 new chapters was built purely
+# by combining newly-written Bunpou grammar with vocabulary and dialogue
+# that already existed. If a future chapter genuinely needs a Kotoba word
+# that doesn't exist yet, follow the same imagePath convention every other
+# Kotoba entry already uses (`kotoba_images/{category}/{entry_id}.png`,
+# see the Kotoba image note elsewhere in CLAUDE.md) — the app already
+# renders a graceful placeholder until the real asset is uploaded to
+# Firebase Storage, so authoring the entry and wiring its imagePath is a
+# complete, working chapter on its own; generating and uploading the
+# actual illustration is a separate, later step, same as this project's
+# standing Kotoba/Kaiwa image backlog.
+#
+# Each of the 25 original chapters was assigned a tier by its OWN hardest
 # bunpou_ids entry (not its easiest), matched to the closest real Minna
-# lesson number above, then ordered within each tier by theme proximity to
-# neighboring chapters:
+# lesson number above; the 6 new chapters were slotted into the same tier
+# scheme at their own correct Minna-lesson position:
 #   tier L1  (copula)              -> menyapa, pekerjaan, negara_dan_asal,
 #                                      ulang_tahun_dan_umur
+#   tier L2  (demonstratives) NEW  -> kore_sore_are
+#   tier L3  (location words) NEW  -> koko_soko_asoko
 #   tier L10 (arimasu/imasu)       -> keluarga, hewan_peliharaan, di_rumah,
 #                                      di_rumah_sakit
-#   tier L8  (totemo, standalone)  -> cuaca_dan_basa_basi
+#   tier L7  (agemasu/moraimasu) NEW -> memberi_dan_menerima
+#   tier ~L6 (basic verb negative) NEW -> mengatakan_tidak
 #   tier L4  (kara/made/ni_e/de)   -> menanyakan_arah, stasiun_dan_
 #                                      transportasi, hari_dan_jadwal,
-#                                      rencana_liburan
+#                                      rencana_liburan, cuaca_dan_basa_basi
+#   tier L9  (jouzu/heta skill)    -> bisa_dan_tidak_bisa (existing bunpou,
+#                                      first chapter to use it)
 #   tier L8+ (donna/no_ga_suki)    -> olahraga, warna, musim, bioskop
+#   tier L12 (comparison)          -> perbandingan (existing bunpou, first
+#                                      chapter to use it)
 #   tier ~L13 (o_kudasai/ga_hoshii)-> belanja, di_restoran, angka_dan_uang,
 #                                      buah_dan_sayuran
 #   tier L14  (-te / -te kudasai)  -> bentuk_te_dan_minta_tolong,
 #                                      di_sekolah, telepon
 #   tier L15  (-te imasu)          -> kegiatan_sehari_hari (last: needs the
-#                                      -te form chapter above it, same as
-#                                      before this pass, just now much
-#                                      later overall since -te forms are
-#                                      genuinely one of the more advanced
-#                                      structures in the beginner tier, not
-#                                      an early one — the original order had
-#                                      this cluster at position 3, far too
-#                                      early relative to existence/time/
-#                                      particle chapters that a real
-#                                      beginner course covers first)
+#                                      -te form chapter above it — -te
+#                                      forms are genuinely one of the more
+#                                      advanced structures in the beginner
+#                                      tier, not an early one)
 #
 # Chapter order is still a deliberate teaching sequence, not just a list
 # order — "bab_bentuk_te_dan_minta_tolong" exists specifically to teach -te
 # form conjugation *before* "bab_di_sekolah", which already uses the
 # ~てください pattern without ever explaining how to build a -te form (that
-# dependency survived the reorder unchanged: the two chapters are still
-# consecutive). If a future chapter needs a grammar/vocab prerequisite that
-# doesn't exist yet, add the prerequisite as its own chapter earlier in the
-# sequence rather than assuming the learner already knows it.
+# dependency survived both the reorder and this syllabus-fix pass
+# unchanged: the two chapters are still consecutive). If a future chapter
+# needs a grammar/vocab prerequisite that doesn't exist yet, add the
+# prerequisite as its own chapter earlier in the sequence rather than
+# assuming the learner already knows it.
 #
 # Known deferred gap, NOT fixed yet (deliberately, per explicit user
-# request to keep making Bab progress before reorganizing Bunpou): several
-# real N5 Bunpou patterns (bunpou_masen_ka, bunpou_mashou, bunpou_mashou_ka,
-# bunpou_ni_iku, bunpou_tai, bunpou_kata) require deriving a verb's ~masu
-# stem, and — same as the -te form gap chapter fixed — nothing in this
-# dataset teaches ~masu-form conjugation either. None of the 25 chapters
-# use these patterns for exactly that reason. Before authoring a future
-# chapter that needs any of them (very likely for invitation/politeness-
-# themed chapters — "Mengajak" is a natural future target), either add a
-# ~masu-form conjugation entry first (mirroring bunpou_te_kei's fix) or
-# keep avoiding these six patterns.
+# request to keep making Bab progress before reorganizing Bunpou further):
+# several real N5 Bunpou patterns (bunpou_masen_ka, bunpou_mashou,
+# bunpou_mashou_ka, bunpou_ni_iku, bunpou_tai, bunpou_kata) require
+# deriving a verb's ~masu stem, and — same as the -te form gap fixed
+# earlier — nothing in this dataset teaches ~masu-form conjugation itself
+# either (only the ~masu -> ~masen swap this pass just added, which
+# assumes the ~masu form is already known, same as bunpou_te_kei assumed
+# the dictionary form was already known). None of the 31 chapters use
+# these six patterns for exactly that reason. Also still not built:
+# counting/counters (Minna L11, e.g. -tsu/-nin/-dai) and full "N wa N
+# desu" location words paired with ue/shita (Minna L10's second half) —
+# both real, both smaller in scope than what this pass closed, both
+# candidates for a future pass rather than lost/forgotten.
 #
 # CROSS-CONTENT SYNC PASS (2026-08-03, earlier the same day as the reorder
-# above): the user caught a real design flaw by hand — tapping ともだち
-# (the original vocab pick for the greetings chapter) opened its own
-# pre-authored example sentence ("友達と遊びます。"), which uses と and a
-# ~ます verb, NEITHER of which that chapter actually teaches, and the word
-# never appeared in that chapter's だ/です・は・か examples or its Kaiwa
-# dialogue either — three lists sitting side by side with zero lexical
-# overlap, not an integrated lesson. Every chapter's `kotoba_ids` below was
-# re-audited against that same test: does this word's own `word`/`kanji`
-# literally appear inside the chapter's chosen `bunpou_ids`' sentenceExamples
-# or `kaiwa_ids`' dialogue lines? Words that failed were swapped for a
-# different real, already-existing Kotoba entry that DOES appear in that
-# same text (found by searching the *entire* Kotoba dataset for a literal
-# substring match, not just the original source category) — e.g. the
-# greetings chapter's ともだち became 学生, since 学生 is literally what both
-# だ/です's own example ("私は学生です。") and the Kaiwa dialogue itself
-# already say. For tightly closed sets that are pedagogically worth
-# teaching as a whole (numbers, colors, days, seasons, cardinal
-# directions), the full set was kept and a genuinely-matching word added on
-# top rather than gutting the set for sync's sake — a deliberate judgment
-# call, not an oversight if a handful of members in those sets still don't
-# literally appear verbatim. Re-run this same audit (see the sync-check
-# scripts used for this pass, not checked in — regenerate by extracting
-# sentenceExamples/dialogue text per chapter and substring-matching against
-# the full Kotoba dataset) after adding any future chapter, rather than
-# picking vocab by theme alone.
+# and syllabus-fix passes above): the user caught a real design flaw by
+# hand — tapping ともだち (the original vocab pick for the greetings
+# chapter) opened its own pre-authored example sentence ("友達と遊びます。"),
+# which uses と and a ~ます verb, NEITHER of which that chapter actually
+# teaches, and the word never appeared in that chapter's だ/です・は・か
+# examples or its Kaiwa dialogue either — three lists sitting side by side
+# with zero lexical overlap, not an integrated lesson. Every one of the
+# original 25 chapters' `kotoba_ids` was re-audited against that same
+# test: does this word's own `word`/`kanji` literally appear inside the
+# chapter's chosen `bunpou_ids`' sentenceExamples or `kaiwa_ids`' dialogue
+# lines? Words that failed were swapped for a different real,
+# already-existing Kotoba entry that DOES appear in that same text (found
+# by searching the *entire* Kotoba dataset for a literal substring match,
+# not just the original source category) — e.g. the greetings chapter's
+# ともだち became 学生, since 学生 is literally what both だ/です's own
+# example ("私は学生です。") and the Kaiwa dialogue itself already say. For
+# tightly closed sets that are pedagogically worth teaching as a whole
+# (numbers, colors, days, seasons, cardinal directions), the full set was
+# kept and a genuinely-matching word added on top rather than gutting the
+# set for sync's sake — a deliberate judgment call, not an oversight if a
+# handful of members in those sets still don't literally appear verbatim.
+# Re-run this same audit (see the sync-check scripts used for this pass,
+# not checked in — regenerate by extracting sentenceExamples/dialogue text
+# per chapter and substring-matching against the full Kotoba dataset) after
+# adding any future chapter, rather than picking vocab by theme alone —
+# the 6 new chapters in this file's syllabus-fix pass were built with this
+# check in mind from the start (see above), not retrofitted afterward.
 
 N5_CHAPTERS = [
     dict(
@@ -190,8 +257,34 @@ N5_CHAPTERS = [
         kaiwa_ids=["kaiwa_tanya_umur"],
     ),
     dict(
-        id="bab_keluarga_dan_teman",
+        id="bab_kore_sore_are",
         order=5,
+        level="N5",
+        title="Ini, Itu, dan Itu (di Sana)",
+        title_en="This, That, and That Over There",
+        description="Cara menunjuk benda dengan これ/それ/あれ dan この/その/あの.",
+        description_en="How to point at things using kore/sore/are and kono/sono/ano.",
+        kotoba_ids=["kotoba_hobi_aktivitas_shashin"],
+        bunpou_ids=["bunpou_kore_sore_are"],
+        particle_ids=["particle_wa"],
+        kaiwa_ids=["kaiwa_kenalan_keluarga"],
+    ),
+    dict(
+        id="bab_koko_soko_asoko",
+        order=6,
+        level="N5",
+        title="Di Sini, Di Situ, dan Di Sana",
+        title_en="Here, There, and Over There",
+        description="Cara menunjuk tempat dengan ここ/そこ/あそこ.",
+        description_en="How to point at places using koko/soko/asoko.",
+        kotoba_ids=["kotoba_teknologi_gadget_waifai"],
+        bunpou_ids=["bunpou_koko_soko_asoko"],
+        particle_ids=["particle_ga"],
+        kaiwa_ids=["kaiwa_tanya_wifi_restoran"],
+    ),
+    dict(
+        id="bab_keluarga_dan_teman",
+        order=7,
         level="N5",
         title="Keluarga dan Teman",
         title_en="Family and Friends",
@@ -212,7 +305,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_hewan_peliharaan",
-        order=6,
+        order=8,
         level="N5",
         title="Hewan Peliharaan",
         title_en="Pets",
@@ -230,7 +323,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_di_rumah",
-        order=7,
+        order=9,
         level="N5",
         title="Di Rumah",
         title_en="At Home",
@@ -247,7 +340,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_di_rumah_sakit",
-        order=8,
+        order=10,
         level="N5",
         title="Di Rumah Sakit",
         title_en="At the Hospital",
@@ -264,8 +357,37 @@ N5_CHAPTERS = [
         kaiwa_ids=["kaiwa_jelaskan_sakit"],
     ),
     dict(
+        id="bab_memberi_dan_menerima",
+        order=11,
+        level="N5",
+        title="Memberi dan Menerima",
+        title_en="Giving and Receiving",
+        description="Cara memberi sesuatu ke orang lain dan menerima sesuatu dari orang lain.",
+        description_en="How to give something to someone and receive something from someone.",
+        kotoba_ids=[
+            "kotoba_keluarga_hubungan_tomodachi",
+            "kotoba_alat_tulis_sekolah_shukudai",
+        ],
+        bunpou_ids=["bunpou_agemasu_moraimasu"],
+        particle_ids=["particle_ni"],
+        kaiwa_ids=["kaiwa_jenguk_teman_sakit_sekolah"],
+    ),
+    dict(
+        id="bab_mengatakan_tidak",
+        order=12,
+        level="N5",
+        title="Mengatakan Tidak",
+        title_en="Saying No",
+        description="Cara mengatakan tidak melakukan atau tidak memiliki sesuatu dengan bentuk ~ません.",
+        description_en="How to say you don't do or don't have something using the ~masen form.",
+        kotoba_ids=["kotoba_teknologi_gadget_denwa"],
+        bunpou_ids=["bunpou_masen"],
+        particle_ids=["particle_wa"],
+        kaiwa_ids=["kaiwa_tukar_nomor"],
+    ),
+    dict(
         id="bab_cuaca_dan_basa_basi",
-        order=9,
+        order=13,
         level="N5",
         title="Cuaca dan Basa-basi",
         title_en="Weather and Small Talk",
@@ -282,7 +404,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_menanyakan_arah",
-        order=10,
+        order=14,
         level="N5",
         title="Menanyakan Arah",
         title_en="Asking for Directions",
@@ -301,7 +423,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_stasiun_dan_transportasi",
-        order=11,
+        order=15,
         level="N5",
         title="Stasiun dan Transportasi",
         title_en="Station and Transportation",
@@ -317,7 +439,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_hari_dan_jadwal",
-        order=12,
+        order=16,
         level="N5",
         title="Hari dan Jadwal",
         title_en="Days and Schedule",
@@ -334,7 +456,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_rencana_liburan",
-        order=13,
+        order=17,
         level="N5",
         title="Rencana Liburan",
         title_en="Vacation Plans",
@@ -350,8 +472,21 @@ N5_CHAPTERS = [
         kaiwa_ids=["kaiwa_tempat_wisata"],
     ),
     dict(
+        id="bab_bisa_dan_tidak_bisa",
+        order=18,
+        level="N5",
+        title="Bisa dan Tidak Bisa",
+        title_en="Good At and Not Good At",
+        description="Cara mengatakan mahir atau tidak mahir melakukan sesuatu dengan 上手/下手.",
+        description_en="How to say you're good or not good at something using jouzu/heta.",
+        kotoba_ids=["kotoba_hobi_aktivitas_e"],
+        bunpou_ids=["bunpou_no_ga_jouzu", "bunpou_no_ga_heta"],
+        particle_ids=["particle_ga"],
+        kaiwa_ids=["kaiwa_melukis"],
+    ),
+    dict(
         id="bab_olahraga",
-        order=14,
+        order=19,
         level="N5",
         title="Olahraga",
         title_en="Sports",
@@ -367,7 +502,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_warna",
-        order=15,
+        order=20,
         level="N5",
         title="Warna",
         title_en="Colors",
@@ -386,7 +521,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_musim",
-        order=16,
+        order=21,
         level="N5",
         title="Musim",
         title_en="Seasons",
@@ -405,7 +540,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_bioskop",
-        order=17,
+        order=22,
         level="N5",
         title="Bioskop",
         title_en="Cinema",
@@ -420,8 +555,21 @@ N5_CHAPTERS = [
         kaiwa_ids=["kaiwa_cerita_film"],
     ),
     dict(
+        id="bab_perbandingan",
+        order=23,
+        level="N5",
+        title="Perbandingan",
+        title_en="Comparison",
+        description="Cara membandingkan dua hal dengan pola より dan ほうが.",
+        description_en="How to compare two things using the yori and hou ga patterns.",
+        kotoba_ids=["kotoba_kendaraan_densha"],
+        bunpou_ids=["bunpou_wa_yori_desu", "bunpou_yori_hou_ga"],
+        particle_ids=[],
+        kaiwa_ids=["kaiwa_liburan_backpacker"],
+    ),
+    dict(
         id="bab_belanja",
-        order=18,
+        order=24,
         level="N5",
         title="Belanja",
         title_en="Shopping",
@@ -437,7 +585,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_di_restoran",
-        order=19,
+        order=25,
         level="N5",
         title="Di Restoran",
         title_en="At a Restaurant",
@@ -455,7 +603,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_angka_dan_uang",
-        order=20,
+        order=26,
         level="N5",
         title="Angka dan Uang",
         title_en="Numbers and Money",
@@ -475,7 +623,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_buah_dan_sayuran",
-        order=21,
+        order=27,
         level="N5",
         title="Buah dan Sayuran",
         title_en="Fruits and Vegetables",
@@ -494,7 +642,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_bentuk_te_dan_minta_tolong",
-        order=22,
+        order=28,
         level="N5",
         title="Bentuk -Te dan Meminta Tolong",
         title_en="The -Te Form and Asking for Help",
@@ -517,7 +665,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_di_sekolah",
-        order=23,
+        order=29,
         level="N5",
         title="Di Sekolah",
         title_en="At School",
@@ -534,7 +682,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_telepon",
-        order=24,
+        order=30,
         level="N5",
         title="Telepon",
         title_en="Phone Calls",
@@ -550,7 +698,7 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_kegiatan_sehari_hari",
-        order=25,
+        order=31,
         level="N5",
         title="Kegiatan Sehari-hari",
         title_en="Daily Activities",

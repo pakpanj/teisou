@@ -113,10 +113,21 @@ N5_GRAMMAR = [
     # Bab module: several existing N5 patterns (te_kudasai, te_iru, ...)
     # use the -te form but nothing taught how to conjugate to it.
     "て形（てけい）",
+    # Added later still (2026-08-03), same day, also not from
+    # jlptsensei.com — a second deliberate gap-fill, this time found by
+    # comparing this dataset against the real Minna no Nihongo 1 lesson
+    # sequence (see the "REORDER PASS" comment in scripts/bab_lists.py):
+    # these four are core absolute-beginner patterns (Minna lessons
+    # 2/3/6-7) that jlptsensei's N5 list simply doesn't carry as their own
+    # numbered rows, but a real N5 curriculum cannot skip them.
+    "これ／それ／あれ・この／その／あの",
+    "ここ／そこ／あそこ",
+    "ません",
+    "あげます／もらいます",
 ]
 
-assert len(N5_GRAMMAR) == 85, len(N5_GRAMMAR)
-assert len(set(N5_GRAMMAR)) == 85, "duplicate pattern in N5_GRAMMAR"
+assert len(N5_GRAMMAR) == 89, len(N5_GRAMMAR)
+assert len(set(N5_GRAMMAR)) == 89, "duplicate pattern in N5_GRAMMAR"
 
 # N4_GRAMMAR is sourced the same way (jlptsensei.com's N4 grammar list,
 # https://jlptsensei.com/jlpt-n4-grammar-list/, fetched across its 4

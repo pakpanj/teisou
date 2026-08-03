@@ -108,8 +108,54 @@
     "dokkaiIds": []
   },
   {
-    "id": "bab_keluarga_dan_teman",
+    "id": "bab_kore_sore_are",
     "order": 5,
+    "title": "Ini, Itu, dan Itu (di Sana)",
+    "titleEn": "This, That, and That Over There",
+    "description": "Cara menunjuk benda dengan これ/それ/あれ dan この/その/あの.",
+    "descriptionEn": "How to point at things using kore/sore/are and kono/sono/ano.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_shashin"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_kore_sore_are"
+    ],
+    "particleIds": [
+      "particle_wa"
+    ],
+    "kaiwaIds": [
+      "kaiwa_kenalan_keluarga"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_koko_soko_asoko",
+    "order": 6,
+    "title": "Di Sini, Di Situ, dan Di Sana",
+    "titleEn": "Here, There, and Over There",
+    "description": "Cara menunjuk tempat dengan ここ/そこ/あそこ.",
+    "descriptionEn": "How to point at places using koko/soko/asoko.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_teknologi_gadget_waifai"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_koko_soko_asoko"
+    ],
+    "particleIds": [
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tanya_wifi_restoran"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_keluarga_dan_teman",
+    "order": 7,
     "title": "Keluarga dan Teman",
     "titleEn": "Family and Friends",
     "description": "Kosakata anggota keluarga dan cara membicarakannya.",
@@ -140,7 +186,7 @@
   },
   {
     "id": "bab_hewan_peliharaan",
-    "order": 6,
+    "order": 8,
     "title": "Hewan Peliharaan",
     "titleEn": "Pets",
     "description": "Nama-nama hewan dan cara membicarakan hewan peliharaan.",
@@ -167,7 +213,7 @@
   },
   {
     "id": "bab_di_rumah",
-    "order": 7,
+    "order": 9,
     "title": "Di Rumah",
     "titleEn": "At Home",
     "description": "Kosakata ruangan rumah dan cara membicarakan rumah keluarga.",
@@ -193,7 +239,7 @@
   },
   {
     "id": "bab_di_rumah_sakit",
-    "order": 8,
+    "order": 10,
     "title": "Di Rumah Sakit",
     "titleEn": "At the Hospital",
     "description": "Kosakata bagian tubuh dan cara menjelaskan sakit ke dokter.",
@@ -219,8 +265,55 @@
     "dokkaiIds": []
   },
   {
+    "id": "bab_memberi_dan_menerima",
+    "order": 11,
+    "title": "Memberi dan Menerima",
+    "titleEn": "Giving and Receiving",
+    "description": "Cara memberi sesuatu ke orang lain dan menerima sesuatu dari orang lain.",
+    "descriptionEn": "How to give something to someone and receive something from someone.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_keluarga_hubungan_tomodachi",
+      "kotoba_alat_tulis_sekolah_shukudai"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_agemasu_moraimasu"
+    ],
+    "particleIds": [
+      "particle_ni"
+    ],
+    "kaiwaIds": [
+      "kaiwa_jenguk_teman_sakit_sekolah"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_mengatakan_tidak",
+    "order": 12,
+    "title": "Mengatakan Tidak",
+    "titleEn": "Saying No",
+    "description": "Cara mengatakan tidak melakukan atau tidak memiliki sesuatu dengan bentuk ~ません.",
+    "descriptionEn": "How to say you don't do or don't have something using the ~masen form.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_teknologi_gadget_denwa"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_masen"
+    ],
+    "particleIds": [
+      "particle_wa"
+    ],
+    "kaiwaIds": [
+      "kaiwa_tukar_nomor"
+    ],
+    "dokkaiIds": []
+  },
+  {
     "id": "bab_cuaca_dan_basa_basi",
-    "order": 9,
+    "order": 13,
     "title": "Cuaca dan Basa-basi",
     "titleEn": "Weather and Small Talk",
     "description": "Kosakata cuaca dan basa-basi ringan tentang cuaca hari ini.",
@@ -246,7 +339,7 @@
   },
   {
     "id": "bab_menanyakan_arah",
-    "order": 10,
+    "order": 14,
     "title": "Menanyakan Arah",
     "titleEn": "Asking for Directions",
     "description": "Kata penunjuk arah dan cara bertanya jalan ke suatu tempat.",
@@ -275,7 +368,7 @@
   },
   {
     "id": "bab_stasiun_dan_transportasi",
-    "order": 11,
+    "order": 15,
     "title": "Stasiun dan Transportasi",
     "titleEn": "Station and Transportation",
     "description": "Kosakata kendaraan dan cara membeli tiket di stasiun.",
@@ -301,7 +394,7 @@
   },
   {
     "id": "bab_hari_dan_jadwal",
-    "order": 12,
+    "order": 16,
     "title": "Hari dan Jadwal",
     "titleEn": "Days and Schedule",
     "description": "Kata keterangan waktu dan cara membuat janji temu.",
@@ -328,7 +421,7 @@
   },
   {
     "id": "bab_rencana_liburan",
-    "order": 13,
+    "order": 17,
     "title": "Rencana Liburan",
     "titleEn": "Vacation Plans",
     "description": "Tempat wisata dan cara membicarakan rencana liburan.",
@@ -353,8 +446,32 @@
     "dokkaiIds": []
   },
   {
+    "id": "bab_bisa_dan_tidak_bisa",
+    "order": 18,
+    "title": "Bisa dan Tidak Bisa",
+    "titleEn": "Good At and Not Good At",
+    "description": "Cara mengatakan mahir atau tidak mahir melakukan sesuatu dengan 上手/下手.",
+    "descriptionEn": "How to say you're good or not good at something using jouzu/heta.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_e"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_no_ga_jouzu",
+      "bunpou_no_ga_heta"
+    ],
+    "particleIds": [
+      "particle_ga"
+    ],
+    "kaiwaIds": [
+      "kaiwa_melukis"
+    ],
+    "dokkaiIds": []
+  },
+  {
     "id": "bab_olahraga",
-    "order": 14,
+    "order": 19,
     "title": "Olahraga",
     "titleEn": "Sports",
     "description": "Kosakata olahraga dan cara mengatakan olahraga favorit.",
@@ -379,7 +496,7 @@
   },
   {
     "id": "bab_warna",
-    "order": 15,
+    "order": 20,
     "title": "Warna",
     "titleEn": "Colors",
     "description": "Nama-nama warna dan cara menyebutkan warna favorit.",
@@ -407,7 +524,7 @@
   },
   {
     "id": "bab_musim",
-    "order": 16,
+    "order": 21,
     "title": "Musim",
     "titleEn": "Seasons",
     "description": "Nama-nama musim dan cara menyebutkan musim favorit.",
@@ -435,7 +552,7 @@
   },
   {
     "id": "bab_bioskop",
-    "order": 17,
+    "order": 22,
     "title": "Bioskop",
     "titleEn": "Cinema",
     "description": "Membicarakan film dan jenis film favorit.",
@@ -459,8 +576,30 @@
     "dokkaiIds": []
   },
   {
+    "id": "bab_perbandingan",
+    "order": 23,
+    "title": "Perbandingan",
+    "titleEn": "Comparison",
+    "description": "Cara membandingkan dua hal dengan pola より dan ほうが.",
+    "descriptionEn": "How to compare two things using the yori and hou ga patterns.",
+    "level": "N5",
+    "kotobaIds": [
+      "kotoba_kendaraan_densha"
+    ],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_wa_yori_desu",
+      "bunpou_yori_hou_ga"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_liburan_backpacker"
+    ],
+    "dokkaiIds": []
+  },
+  {
     "id": "bab_belanja",
-    "order": 18,
+    "order": 24,
     "title": "Belanja",
     "titleEn": "Shopping",
     "description": "Kosakata pakaian dan cara meminta atau membeli barang di toko.",
@@ -486,7 +625,7 @@
   },
   {
     "id": "bab_di_restoran",
-    "order": 19,
+    "order": 25,
     "title": "Di Restoran",
     "titleEn": "At a Restaurant",
     "description": "Kosakata makanan/minuman dan cara memesan di restoran.",
@@ -515,7 +654,7 @@
   },
   {
     "id": "bab_angka_dan_uang",
-    "order": 20,
+    "order": 26,
     "title": "Angka dan Uang",
     "titleEn": "Numbers and Money",
     "description": "Angka dasar dan cara menukar atau meminta uang.",
@@ -545,7 +684,7 @@
   },
   {
     "id": "bab_buah_dan_sayuran",
-    "order": 21,
+    "order": 27,
     "title": "Buah dan Sayuran",
     "titleEn": "Fruits and Vegetables",
     "description": "Kosakata buah dan sayuran dan cara menanyakan harga.",
@@ -574,7 +713,7 @@
   },
   {
     "id": "bab_bentuk_te_dan_minta_tolong",
-    "order": 22,
+    "order": 28,
     "title": "Bentuk -Te dan Meminta Tolong",
     "titleEn": "The -Te Form and Asking for Help",
     "description": "Cara mengubah kata kerja ke bentuk -te, lalu memakainya untuk meminta tolong dengan sopan — dasar yang perlu dikuasai sebelum bab \"Di Sekolah\", yang sudah memakai pola ~てください.",
@@ -598,7 +737,7 @@
   },
   {
     "id": "bab_di_sekolah",
-    "order": 23,
+    "order": 29,
     "title": "Di Sekolah",
     "titleEn": "At School",
     "description": "Alat tulis, mata pelajaran, dan percakapan sehari-hari di sekolah.",
@@ -625,7 +764,7 @@
   },
   {
     "id": "bab_telepon",
-    "order": 24,
+    "order": 30,
     "title": "Telepon",
     "titleEn": "Phone Calls",
     "description": "Cara menjawab dan meminta sesuatu lewat telepon.",
@@ -650,7 +789,7 @@
   },
   {
     "id": "bab_kegiatan_sehari_hari",
-    "order": 25,
+    "order": 31,
     "title": "Kegiatan Sehari-hari",
     "titleEn": "Daily Activities",
     "description": "Menceritakan kegiatan yang sedang dilakukan, memakai bentuk -te yang sudah dipelajari di bab \"Bentuk -Te dan Meminta Tolong\".",
