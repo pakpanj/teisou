@@ -35,6 +35,31 @@
 # chapters — "Mengajak" or "Rencana Liburan" are the natural next targets),
 # either add a ~masu-form conjugation entry first (mirroring bunpou_te_kei's
 # fix) or keep avoiding these six patterns.
+#
+# CROSS-CONTENT SYNC PASS (2026-08-03): the user caught a real design flaw
+# by hand — tapping ともだち (chapter 1's original vocab pick) opened its
+# own pre-authored example sentence ("友達と遊びます。"), which uses と and a
+# ~ます verb, NEITHER of which chapter 1 actually teaches, and the word
+# never appeared in chapter 1's だ/です・は・か examples or its Kaiwa dialogue
+# either — three lists sitting side by side with zero lexical overlap, not
+# an integrated lesson. Every chapter's `kotoba_ids` below was re-audited
+# against that same test: does this word's own `word`/`kanji` literally
+# appear inside the chapter's chosen `bunpou_ids`' sentenceExamples or
+# `kaiwa_ids`' dialogue lines? Words that failed were swapped for a
+# different real, already-existing Kotoba entry that DOES appear in that
+# same text (found by searching the *entire* Kotoba dataset for a literal
+# substring match, not just the original source category) — e.g. chapter
+# 1's ともだち became 学生, since 学生 is literally what both だ/です's own
+# example ("私は学生です。") and the Kaiwa dialogue itself already say. For
+# tightly closed sets that are pedagogically worth teaching as a whole
+# (numbers, colors, days, seasons, cardinal directions), the full set was
+# kept and a genuinely-matching word added on top rather than gutting the
+# set for sync's sake — a deliberate judgment call, not an oversight if a
+# handful of members in those sets still don't literally appear verbatim.
+# Re-run this same audit (see the sync-check scripts used for this pass,
+# not checked in — regenerate by extracting sentenceExamples/dialogue text
+# per chapter and substring-matching against the full Kotoba dataset) after
+# adding any future chapter, rather than picking vocab by theme alone.
 
 N5_CHAPTERS = [
     dict(
@@ -45,7 +70,7 @@ N5_CHAPTERS = [
         title_en="Greetings and Introductions",
         description="Ucapan dasar dan cara memperkenalkan diri ke teman baru.",
         description_en="Basic phrases and how to introduce yourself to a new friend.",
-        kotoba_ids=["kotoba_keluarga_hubungan_tomodachi"],
+        kotoba_ids=["kotoba_profesi_gakusei"],
         bunpou_ids=["bunpou_da_desu", "bunpou_wa", "bunpou_ka"],
         particle_ids=["particle_wa", "particle_ka"],
         kaiwa_ids=["kaiwa_kenalan_teman_baru"],
@@ -63,9 +88,9 @@ N5_CHAPTERS = [
             "kotoba_keluarga_hubungan_chichi",
             "kotoba_keluarga_hubungan_haha",
             "kotoba_keluarga_hubungan_ani",
-            "kotoba_keluarga_hubungan_ane",
             "kotoba_keluarga_hubungan_otouto",
-            "kotoba_keluarga_hubungan_imouto",
+            "kotoba_keluarga_hubungan_kyoudai",
+            "kotoba_keluarga_hubungan_kodomo",
         ],
         bunpou_ids=["bunpou_ga_imasu", "bunpou_mo"],
         particle_ids=["particle_no", "particle_mo"],
@@ -88,8 +113,7 @@ N5_CHAPTERS = [
             "uses the ~te kudasai pattern."
         ),
         kotoba_ids=[
-            "kotoba_hobi_aktivitas_souji",
-            "kotoba_hobi_aktivitas_sentaku",
+            "kotoba_alat_tulis_sekolah_shukudai",
         ],
         bunpou_ids=["bunpou_te_kei", "bunpou_te_kudasai"],
         particle_ids=["particle_o"],
@@ -105,10 +129,8 @@ N5_CHAPTERS = [
         description_en="School supplies, subjects, and everyday classroom conversation.",
         kotoba_ids=[
             "kotoba_alat_tulis_sekolah_enpitsu",
-            "kotoba_alat_tulis_sekolah_nooto",
             "kotoba_alat_tulis_sekolah_hon",
-            "kotoba_mata_pelajaran_nihongo",
-            "kotoba_mata_pelajaran_eigo",
+            "kotoba_mata_pelajaran_shiken",
         ],
         bunpou_ids=["bunpou_te_kudasai", "bunpou_ga_arimasu"],
         particle_ids=["particle_ga", "particle_o"],
@@ -123,9 +145,8 @@ N5_CHAPTERS = [
         description="Kosakata pakaian dan cara meminta atau membeli barang di toko.",
         description_en="Clothing vocabulary and how to ask for or buy things at a shop.",
         kotoba_ids=[
-            "kotoba_pakaian_aksesori_fuku",
             "kotoba_pakaian_aksesori_kutsu",
-            "kotoba_pakaian_aksesori_saifu",
+            "kotoba_pekerjaan_kantor_ryoushuu",
         ],
         bunpou_ids=["bunpou_o_kudasai", "bunpou_ga_hoshii"],
         particle_ids=["particle_o", "particle_ga"],
@@ -146,9 +167,9 @@ N5_CHAPTERS = [
             "from the previous chapter."
         ),
         kotoba_ids=[
-            "kotoba_hobi_aktivitas_sanpo",
-            "kotoba_hobi_aktivitas_ongaku",
-            "kotoba_hobi_aktivitas_eiga",
+            "kotoba_hobi_aktivitas_shumi",
+            "kotoba_hobi_aktivitas_dokusho",
+            "kotoba_media_hiburan_terebi",
         ],
         bunpou_ids=["bunpou_te_iru", "bunpou_totemo"],
         particle_ids=["particle_o"],
@@ -164,9 +185,9 @@ N5_CHAPTERS = [
         description_en="Food/drink vocabulary and how to order at a restaurant.",
         kotoba_ids=[
             "kotoba_makanan_jepang_ramen",
-            "kotoba_makanan_barat_piza",
             "kotoba_minuman_mizu",
-            "kotoba_minuman_koohii",
+            "kotoba_konsep_umum_chuumon",
+            "kotoba_makanan_barat_keeki",
         ],
         bunpou_ids=["bunpou_o_kudasai", "bunpou_ga_arimasu", "bunpou_totemo"],
         particle_ids=["particle_o", "particle_ga"],
@@ -185,6 +206,7 @@ N5_CHAPTERS = [
             "kotoba_arah_lokasi_hidari",
             "kotoba_arah_lokasi_mae",
             "kotoba_arah_lokasi_ushiro",
+            "kotoba_bangunan_fasilitas_gakkou",
         ],
         bunpou_ids=["bunpou_ni_e", "bunpou_made"],
         particle_ids=["particle_ni", "particle_made"],
@@ -216,10 +238,8 @@ N5_CHAPTERS = [
         description="Kosakata kendaraan dan cara membeli tiket di stasiun.",
         description_en="Vehicle vocabulary and how to buy a ticket at the station.",
         kotoba_ids=[
-            "kotoba_kendaraan_kuruma",
-            "kotoba_kendaraan_densha",
             "kotoba_kendaraan_basu",
-            "kotoba_kendaraan_jitensha",
+            "kotoba_negara_kota_toukyou",
         ],
         bunpou_ids=["bunpou_de", "bunpou_kara"],
         particle_ids=["particle_de", "particle_kara"],
@@ -235,7 +255,7 @@ N5_CHAPTERS = [
         description_en="Body-part vocabulary and how to describe pain to a doctor.",
         kotoba_ids=[
             "kotoba_obat_obatan_byouin",
-            "kotoba_obat_obatan_isha",
+            "kotoba_obat_obatan_kusuri",
             "kotoba_penyakit_gejala_itai",
             "kotoba_anggota_tubuh_atama",
         ],
@@ -253,7 +273,7 @@ N5_CHAPTERS = [
         description_en="Sports vocabulary and how to say your favorite sport.",
         kotoba_ids=[
             "kotoba_olahraga_supootsu",
-            "kotoba_olahraga_sakkaa",
+            "kotoba_olahraga_basukettobooru",
         ],
         bunpou_ids=["bunpou_no_ga_suki", "bunpou_totemo"],
         particle_ids=["particle_o"],
@@ -268,8 +288,8 @@ N5_CHAPTERS = [
         description="Membicarakan film dan jenis film favorit.",
         description_en="Talking about movies and favorite kinds of films.",
         kotoba_ids=[
-            "kotoba_media_hiburan_terebi",
             "kotoba_hobi_aktivitas_eiga",
+            "kotoba_ekspresi_wajah_egao",
         ],
         bunpou_ids=["bunpou_donna", "bunpou_no_ga_suki"],
         particle_ids=["particle_ga"],
@@ -281,13 +301,12 @@ N5_CHAPTERS = [
         level="N5",
         title="Hari dan Jadwal",
         title_en="Days and Schedule",
-        description="Nama-nama hari dan cara membuat janji temu.",
-        description_en="Days of the week and how to make an appointment.",
+        description="Kata keterangan waktu dan cara membuat janji temu.",
+        description_en="Time-reference vocabulary and how to make an appointment.",
         kotoba_ids=[
-            "kotoba_hari_bulan_getsuyoubi",
-            "kotoba_hari_bulan_kayoubi",
-            "kotoba_hari_bulan_doyoubi",
-            "kotoba_hari_bulan_nichiyoubi",
+            "kotoba_hari_bulan_raishuu",
+            "kotoba_hari_bulan_gogo",
+            "kotoba_bangunan_fasilitas_yoyaku",
         ],
         bunpou_ids=["bunpou_kara", "bunpou_made"],
         particle_ids=["particle_kara", "particle_made"],
@@ -307,6 +326,7 @@ N5_CHAPTERS = [
             "kotoba_angka_satuan_san",
             "kotoba_angka_satuan_yon",
             "kotoba_angka_satuan_go",
+            "kotoba_angka_satuan_ichiman",
         ],
         bunpou_ids=["bunpou_o_kudasai", "bunpou_ga_arimasu"],
         particle_ids=["particle_o", "particle_ga"],
@@ -323,8 +343,7 @@ N5_CHAPTERS = [
         kotoba_ids=[
             "kotoba_negara_kota_nihon",
             "kotoba_negara_kota_indoneshia",
-            "kotoba_negara_kota_amerika",
-            "kotoba_negara_kota_kankoku",
+            "kotoba_mata_pelajaran_nihongo",
         ],
         bunpou_ids=["bunpou_kara", "bunpou_no"],
         particle_ids=["particle_kara", "particle_no"],
@@ -339,8 +358,9 @@ N5_CHAPTERS = [
         description="Tempat wisata dan cara membicarakan rencana liburan.",
         description_en="Tourist spots and how to talk about vacation plans.",
         kotoba_ids=[
-            "kotoba_bangunan_fasilitas_kouen",
-            "kotoba_bangunan_fasilitas_doubutsuen",
+            "kotoba_hobi_aktivitas_ryokou",
+            "kotoba_negara_kota_kyouto",
+            "kotoba_hari_bulan_raigetsu",
         ],
         bunpou_ids=["bunpou_ka_ka", "bunpou_totemo"],
         particle_ids=["particle_ya"],
@@ -355,10 +375,10 @@ N5_CHAPTERS = [
         description="Kosakata pekerjaan dan cara menanyakan profesi seseorang.",
         description_en="Occupation vocabulary and how to ask what someone does.",
         kotoba_ids=[
-            "kotoba_profesi_sensei",
             "kotoba_profesi_gakusei",
             "kotoba_pekerjaan_kantor_kaisha",
             "kotoba_pekerjaan_kantor_shigoto",
+            "kotoba_profesi_kaishain",
         ],
         bunpou_ids=["bunpou_da_desu", "bunpou_mo"],
         particle_ids=["particle_wa", "particle_mo"],
@@ -373,10 +393,10 @@ N5_CHAPTERS = [
         description="Nama-nama warna dan cara menyebutkan warna favorit.",
         description_en="Color names and how to say your favorite color.",
         kotoba_ids=[
-            "kotoba_warna_akai",
-            "kotoba_warna_aoi",
+            "kotoba_aka",
+            "kotoba_ao",
+            "kotoba_warna_midori",
             "kotoba_warna_kiiroi",
-            "kotoba_warna_shiroi",
             "kotoba_warna_kuroi",
         ],
         bunpou_ids=["bunpou_donna", "bunpou_no_ga_suki"],
@@ -414,6 +434,7 @@ N5_CHAPTERS = [
             "kotoba_buah_banana",
             "kotoba_sayuran_yasai",
             "kotoba_sayuran_tomato",
+            "kotoba_minuman_mizu",
         ],
         bunpou_ids=["bunpou_o_kudasai", "bunpou_ga_hoshii"],
         particle_ids=["particle_o", "particle_ga"],
@@ -432,6 +453,7 @@ N5_CHAPTERS = [
             "kotoba_musim_natsu",
             "kotoba_musim_aki",
             "kotoba_musim_fuyu",
+            "kotoba_musim_kisetsu",
         ],
         bunpou_ids=["bunpou_no_ga_suki", "bunpou_donna"],
         particle_ids=["particle_ga"],
@@ -447,8 +469,9 @@ N5_CHAPTERS = [
         description_en="How to ask someone's age and talk about birthdays.",
         kotoba_ids=[
             "kotoba_perayaan_haribesar_tanjoubi",
-            "kotoba_angka_satuan_ichi",
             "kotoba_angka_satuan_ni",
+            "kotoba_angka_satuan_juu",
+            "kotoba_perayaan_haribesar_oiwai",
         ],
         bunpou_ids=["bunpou_da_desu", "bunpou_ka"],
         particle_ids=["particle_ka"],
@@ -464,6 +487,7 @@ N5_CHAPTERS = [
         description_en="How to answer the phone and ask for things over a call.",
         kotoba_ids=[
             "kotoba_teknologi_gadget_denwa",
+            "kotoba_hari_bulan_jikan",
         ],
         bunpou_ids=["bunpou_te_kudasai", "bunpou_mo"],
         particle_ids=["particle_mo"],
@@ -479,7 +503,8 @@ N5_CHAPTERS = [
         description_en="Room vocabulary and how to talk about a family home.",
         kotoba_ids=[
             "kotoba_ruangan_rumah_heya",
-            "kotoba_ruangan_rumah_toire",
+            "kotoba_ruangan_rumah_niwa",
+            "kotoba_keluarga_hubungan_jikka",
         ],
         bunpou_ids=["bunpou_ga_arimasu", "bunpou_ni"],
         particle_ids=["particle_ni"],

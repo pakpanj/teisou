@@ -8,7 +8,7 @@
     "descriptionEn": "Basic phrases and how to introduce yourself to a new friend.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_keluarga_hubungan_tomodachi"
+      "kotoba_profesi_gakusei"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -38,9 +38,9 @@
       "kotoba_keluarga_hubungan_chichi",
       "kotoba_keluarga_hubungan_haha",
       "kotoba_keluarga_hubungan_ani",
-      "kotoba_keluarga_hubungan_ane",
       "kotoba_keluarga_hubungan_otouto",
-      "kotoba_keluarga_hubungan_imouto"
+      "kotoba_keluarga_hubungan_kyoudai",
+      "kotoba_keluarga_hubungan_kodomo"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -65,8 +65,7 @@
     "descriptionEn": "How to conjugate verbs into the -te form, then use it to ask for help politely — the foundation needed before \"At School\", which already uses the ~te kudasai pattern.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_hobi_aktivitas_souji",
-      "kotoba_hobi_aktivitas_sentaku"
+      "kotoba_alat_tulis_sekolah_shukudai"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -91,10 +90,8 @@
     "level": "N5",
     "kotobaIds": [
       "kotoba_alat_tulis_sekolah_enpitsu",
-      "kotoba_alat_tulis_sekolah_nooto",
       "kotoba_alat_tulis_sekolah_hon",
-      "kotoba_mata_pelajaran_nihongo",
-      "kotoba_mata_pelajaran_eigo"
+      "kotoba_mata_pelajaran_shiken"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -119,9 +116,8 @@
     "descriptionEn": "Clothing vocabulary and how to ask for or buy things at a shop.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_pakaian_aksesori_fuku",
       "kotoba_pakaian_aksesori_kutsu",
-      "kotoba_pakaian_aksesori_saifu"
+      "kotoba_pekerjaan_kantor_ryoushuu"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -146,9 +142,9 @@
     "descriptionEn": "Talking about activities in progress, building on the -te form from the previous chapter.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_hobi_aktivitas_sanpo",
-      "kotoba_hobi_aktivitas_ongaku",
-      "kotoba_hobi_aktivitas_eiga"
+      "kotoba_hobi_aktivitas_shumi",
+      "kotoba_hobi_aktivitas_dokusho",
+      "kotoba_media_hiburan_terebi"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -173,9 +169,9 @@
     "level": "N5",
     "kotobaIds": [
       "kotoba_makanan_jepang_ramen",
-      "kotoba_makanan_barat_piza",
       "kotoba_minuman_mizu",
-      "kotoba_minuman_koohii"
+      "kotoba_konsep_umum_chuumon",
+      "kotoba_makanan_barat_keeki"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -204,7 +200,8 @@
       "kotoba_arah_lokasi_migi",
       "kotoba_arah_lokasi_hidari",
       "kotoba_arah_lokasi_mae",
-      "kotoba_arah_lokasi_ushiro"
+      "kotoba_arah_lokasi_ushiro",
+      "kotoba_bangunan_fasilitas_gakkou"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -255,10 +252,8 @@
     "descriptionEn": "Vehicle vocabulary and how to buy a ticket at the station.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_kendaraan_kuruma",
-      "kotoba_kendaraan_densha",
       "kotoba_kendaraan_basu",
-      "kotoba_kendaraan_jitensha"
+      "kotoba_negara_kota_toukyou"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -284,7 +279,7 @@
     "level": "N5",
     "kotobaIds": [
       "kotoba_obat_obatan_byouin",
-      "kotoba_obat_obatan_isha",
+      "kotoba_obat_obatan_kusuri",
       "kotoba_penyakit_gejala_itai",
       "kotoba_anggota_tubuh_atama"
     ],
@@ -311,7 +306,7 @@
     "level": "N5",
     "kotobaIds": [
       "kotoba_olahraga_supootsu",
-      "kotoba_olahraga_sakkaa"
+      "kotoba_olahraga_basukettobooru"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -335,8 +330,8 @@
     "descriptionEn": "Talking about movies and favorite kinds of films.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_media_hiburan_terebi",
-      "kotoba_hobi_aktivitas_eiga"
+      "kotoba_hobi_aktivitas_eiga",
+      "kotoba_ekspresi_wajah_egao"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -356,14 +351,13 @@
     "order": 14,
     "title": "Hari dan Jadwal",
     "titleEn": "Days and Schedule",
-    "description": "Nama-nama hari dan cara membuat janji temu.",
-    "descriptionEn": "Days of the week and how to make an appointment.",
+    "description": "Kata keterangan waktu dan cara membuat janji temu.",
+    "descriptionEn": "Time-reference vocabulary and how to make an appointment.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_hari_bulan_getsuyoubi",
-      "kotoba_hari_bulan_kayoubi",
-      "kotoba_hari_bulan_doyoubi",
-      "kotoba_hari_bulan_nichiyoubi"
+      "kotoba_hari_bulan_raishuu",
+      "kotoba_hari_bulan_gogo",
+      "kotoba_bangunan_fasilitas_yoyaku"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -392,7 +386,8 @@
       "kotoba_angka_satuan_ni",
       "kotoba_angka_satuan_san",
       "kotoba_angka_satuan_yon",
-      "kotoba_angka_satuan_go"
+      "kotoba_angka_satuan_go",
+      "kotoba_angka_satuan_ichiman"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -419,8 +414,7 @@
     "kotobaIds": [
       "kotoba_negara_kota_nihon",
       "kotoba_negara_kota_indoneshia",
-      "kotoba_negara_kota_amerika",
-      "kotoba_negara_kota_kankoku"
+      "kotoba_mata_pelajaran_nihongo"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -445,8 +439,9 @@
     "descriptionEn": "Tourist spots and how to talk about vacation plans.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_bangunan_fasilitas_kouen",
-      "kotoba_bangunan_fasilitas_doubutsuen"
+      "kotoba_hobi_aktivitas_ryokou",
+      "kotoba_negara_kota_kyouto",
+      "kotoba_hari_bulan_raigetsu"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -470,10 +465,10 @@
     "descriptionEn": "Occupation vocabulary and how to ask what someone does.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_profesi_sensei",
       "kotoba_profesi_gakusei",
       "kotoba_pekerjaan_kantor_kaisha",
-      "kotoba_pekerjaan_kantor_shigoto"
+      "kotoba_pekerjaan_kantor_shigoto",
+      "kotoba_profesi_kaishain"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -498,10 +493,10 @@
     "descriptionEn": "Color names and how to say your favorite color.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_warna_akai",
-      "kotoba_warna_aoi",
+      "kotoba_aka",
+      "kotoba_ao",
+      "kotoba_warna_midori",
       "kotoba_warna_kiiroi",
-      "kotoba_warna_shiroi",
       "kotoba_warna_kuroi"
     ],
     "kanjiIds": [],
@@ -556,7 +551,8 @@
       "kotoba_buah_ringo",
       "kotoba_buah_banana",
       "kotoba_sayuran_yasai",
-      "kotoba_sayuran_tomato"
+      "kotoba_sayuran_tomato",
+      "kotoba_minuman_mizu"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -584,7 +580,8 @@
       "kotoba_musim_haru",
       "kotoba_musim_natsu",
       "kotoba_musim_aki",
-      "kotoba_musim_fuyu"
+      "kotoba_musim_fuyu",
+      "kotoba_musim_kisetsu"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -609,8 +606,9 @@
     "level": "N5",
     "kotobaIds": [
       "kotoba_perayaan_haribesar_tanjoubi",
-      "kotoba_angka_satuan_ichi",
-      "kotoba_angka_satuan_ni"
+      "kotoba_angka_satuan_ni",
+      "kotoba_angka_satuan_juu",
+      "kotoba_perayaan_haribesar_oiwai"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -634,7 +632,8 @@
     "descriptionEn": "How to answer the phone and ask for things over a call.",
     "level": "N5",
     "kotobaIds": [
-      "kotoba_teknologi_gadget_denwa"
+      "kotoba_teknologi_gadget_denwa",
+      "kotoba_hari_bulan_jikan"
     ],
     "kanjiIds": [],
     "bunpouIds": [
@@ -659,7 +658,8 @@
     "level": "N5",
     "kotobaIds": [
       "kotoba_ruangan_rumah_heya",
-      "kotoba_ruangan_rumah_toire"
+      "kotoba_ruangan_rumah_niwa",
+      "kotoba_keluarga_hubungan_jikka"
     ],
     "kanjiIds": [],
     "bunpouIds": [

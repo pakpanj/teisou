@@ -4628,3 +4628,78 @@ code-only verification.
 
 `flutter analyze` clean, `flutter test --concurrency=1` 48/48,
 `flutter build apk --debug` succeeded.
+
+## Update (2026-08-03, same day): all 25 Bab chapters' `kotoba_ids`
+re-synced to actually appear in their own chapter's grammar/dialogue text
+
+The user found a real design flaw by hand, on-device: opening Bab 1
+("Menyapa dan Berkenalan") and tapping its vocab pick Tomodachi showed
+that word's own pre-authored example sentence, which uses a different
+particle and a plain -masu verb, neither of which chapter 1 actually
+teaches (chapter 1 teaches da/desu, wa, ka). Tomodachi also never
+appeared anywhere in chapter 1's own Bunpou examples or its Kaiwa
+dialogue either. Every `kotoba_ids` pick since Bab's inception
+(2026-08-02) had been chosen by loose topical association with the
+chapter's theme, not by checking whether the word's own text (kanji or
+kana) literally appears inside that chapter's `bunpou_ids`'
+`sentenceExamples` or `kaiwa_ids`' dialogue lines — three lists sitting
+side by side sharing a theme, not an integrated lesson. The user's own
+framing: they had zero synchronization at all.
+
+**Fix scope, per explicit user choice** (offered a scoped-vs-full
+choice via `AskUserQuestion`, chose to fix all 25 existing chapters,
+not just chapter 1): re-audited every chapter's `kotoba_ids` in
+`scripts/bab_lists.py` against a literal-substring test (word/kanji
+field appears verbatim inside that chapter's own Bunpou+Kaiwa text),
+searching the *entire* ~1700-word Kotoba dataset (not just the word's
+original source category) for a genuine replacement wherever the
+existing pick failed. False-positive noise from short readings
+colliding by accident inside unrelated longer words was filtered by
+requiring kanji matches >=2 characters or kana-only matches >=3
+characters before trusting a candidate. All 83 unique replacement ids
+were existence-checked against the real repositories before any edit
+was applied.
+
+**Policy for tightly closed sets** (numbers, colors, days, seasons,
+cardinal directions) — kept the full set for pedagogical completeness
+(a "Warna" chapter genuinely should teach all the primary colors, not
+just whichever one happens to appear in a sentence) rather than
+gutting it for sync's sake alone, but always with at least one member
+of the set genuinely appearing in the chapter's own text. One outright
+exception: **Bab 14 "Hari dan Jadwal"** had its days-of-the-week set
+fully replaced with schedule vocabulary (next week / afternoon /
+reservation) since *none* of the specific days matched anything in
+that chapter's grammar/dialogue but several schedule words did — a
+case-by-case call, not the general policy.
+
+**Post-edit verification (kanji-aware, run against the regenerated
+`bab_data.json`/`bunpou_data.json`/`kaiwa_data.json`, not just
+eyeballed): every single one of the 25 chapters now has at least one
+`kotoba_ids` entry whose `word` or `kanji` field literally appears
+inside that chapter's own Bunpou `sentenceExamples` or Kaiwa dialogue
+text** — up from chapter 1's original 0/1. 17 of 25 chapters are fully
+100% synced member-for-member; the remaining 8 are the deliberate
+closed-set cases above, each still anchored by at least one genuine
+match (e.g. Bab 8 "Menanyakan Arah" keeps all 4 direction words but
+only "migi"/right literally appears in the grammar examples; Bab 19
+"Warna" keeps all 5 colors but only 3 literally appear). Confirmed
+on-device (Moto G52J, debug APK reinstalled): Bab 1's kotoba pick is
+now Gakusei (student), and tapping it shows an example sentence
+literally using both the da/desu copula and wa — the two grammar
+points chapter 1 actually teaches. Bab 5 ("Belanja")'s two picks
+(shoes, receipt) were also spot-checked and confirmed genuinely
+appearing in the o-kudasai and ga-hoshii Bunpou entries' own sentence
+examples respectively.
+
+This audit methodology (extract chapter's Bunpou+Kaiwa text,
+substring-match every candidate Kotoba word's `word`/`kanji` field
+against it, require >=2 kanji chars or >=3 kana-only chars to filter
+noise) is worth reusing verbatim for any future Bab chapter — pick
+vocab by literal co-occurrence with the chapter's own grammar/dialogue
+text, not by theme alone, from now on.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 48/48,
+`flutter build apk --debug` succeeded, on-device spot-check (Bab 1 +
+Bab 5) confirmed as described above. Content authoring already went
+through the pre-edit id-existence check plus the post-edit kanji-aware
+sync audit above — no gaps known.
