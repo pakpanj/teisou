@@ -5256,3 +5256,61 @@ If a future session picks this up: **don't re-run the tiered analysis
 from scratch** — start from "Tingkat 1 and 3 shipped, Tingkat 2 is the
 only open question, and it may not even be wanted anymore" and confirm
 with the user from there instead of re-deriving the whole discussion.
+
+## Update (2026-08-03, later still): gate-quiz context sentences widened
+to the whole curriculum, not just each entry's own 2-3 examples
+
+Follow-up to the example-sentence-context update above: the user
+pointed out that relying only on each Kotoba/Bunpou/Partikel entry's
+own 2-3 authored `sentenceExamples` meant the same handful of
+sentences would repeat every time a chapter's gate quiz was retried —
+asked for the context sentences to be pulled from a bigger, different
+pool so retries feel genuinely fresh ("bisa di acak terus menerus"),
+while staying precisely tied to the actual word/pattern/particle being
+asked about ("pin point pertanyaan yang tepat" — not loosely related).
+
+Confirmed the intended approach via `AskUserQuestion` before building:
+search the **whole 31-chapter Bab curriculum** (every Kaiwa dialogue
+line plus every Kotoba/Bunpou/Partikel example already collected) for
+sentences that literally contain the target — not an unfiltered
+"anything from anywhere in the app" search, which could have pulled in
+N4-N1 grammar the learner hasn't reached yet.
+
+**Precision safeguard, the "pin point" half of the request**:
+`bab_gate_quiz_generator.dart` only widens the search for match tokens
+at least 2 characters long (`_minWidenLength`) — the same bar the
+earlier cross-content sync-fix pass used, for the same reason. A bare
+single-hiragana particle (は/か/を/で/に/...) appears inside countless
+unrelated words, so blindly substring-matching on one character would
+attach genuinely wrong "example" sentences to a question far more
+often than not. Below that length, a candidate falls back to just its
+own authored `sentenceExamples`, unchanged from the update above.
+Bunpou patterns that bundle several literal forms with ／, /, or ・
+(e.g. "だ／です", "これ／それ／あれ・この／その／あの") are split into
+individual tokens first (`_patternTokens`) and each is checked
+independently, since the whole slash-joined string would never appear
+in a real sentence together.
+
+Implementation stayed a pure, synchronous function — no new async
+data fetching. One `Set<String>` of every real sentence in
+`allResolved` (Kaiwa NPC lines + user-turn options, Kotoba/Bunpou/
+Partikel-function `sentenceExamples`) is built once per quiz load;
+each candidate's final context pool is its own examples unioned with
+whatever curriculum sentences contain its match token(s), deduplicated
+via a `Set` before `pickContext` draws from it with the same `Random`
+instance already threaded through the rest of the generator.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 48/48,
+`flutter build apk --debug` succeeded, reinstalled and reopened on the
+Moto G52J — confirmed the lock/unlock mechanics from the base gate-quiz
+feature still hold with the widened pool in place (Bab 1 and 2 both
+already completed from earlier verification passes, Bab 3 correctly
+unlocked and its quiz launched showing "Bab 1-3" scope). Did not
+re-verify the specific claim that a wider variety of sentences now
+appears per candidate — the user asked to stop testing mid-session
+before that spot-check happened. Worth a quick on-device confirmation
+next time this area is touched: open the same chapter's gate quiz
+twice in a row and check whether a kotoba/bunpou/particle question's
+context sentence differs between attempts (it should, for any
+candidate whose match token is ≥2 characters and appears in more than
+one curriculum sentence).
