@@ -1035,4 +1035,113 @@ N4_CHAPTERS = [
         bunpou_ids=["bunpou_itashimasu", "bunpou_de_gozaimasu"],
         kaiwa_ids=["kaiwa_kenalan_pasangan_bisnis_n4"],
     ),
+    # --- Second pass (2026-08-04, same day), order 51-56, below ---
+    # Continues past the first pass's Minna-lesson-sequenced 32-50 with 6
+    # more chapters, built the same way — an N4-tagged bunpou pair,
+    # matched to a real N4 kaiwa dialogue by searching the *entire* N4
+    # dialogue pool for the pattern's own literal token, then kotoba/
+    # kanji picked from whatever literally appears in that same chosen
+    # dialogue.
+    #
+    # These 6 are not sequenced against a specific further Minna II
+    # lesson — the first pass already covered every L26-50 lesson that
+    # had a usable N4-tagged anchor. Instead this batch picks 6 more
+    # high-frequency N4 patterns from the 104 still-unused N4-tagged
+    # bunpou entries (132 total, 28 used by the first pass): こと can/
+    # sometimes, こと deciding/decided, なければ obligation, たら
+    # conditional, はず certainty, and みたい/らしい casual impression +
+    # hearsay — all genuinely core N4 grammar that just didn't happen to
+    # land inside Lessons 26-50's own sequence (Minna spreads some of
+    # these earlier, in Shokyuu II's first few lessons that overlap the
+    # tail of Shokyuu I, or via drills rather than a dedicated lesson).
+    #
+    # Five of these twelve bunpou ids (koto_ga_dekiru, koto_ni_naru,
+    # nakereba_ikenai, tara_dou, hazu_ga_nai) have zero literal token
+    # match anywhere across all 255 N4 kaiwa dialogues — confirmed by
+    # searching the whole pool, not just each pattern's own 3 canned
+    # examples. Each is still included, paired with a sibling pattern
+    # from the same family that DOES have a real match (koto_ga_aru,
+    # koto_ni_suru, nakereba_naranai, tara, hazu_da respectively) — the
+    # chapter's kaiwa_ids comes from the sibling with a real hit, same
+    # "one dialogue can anchor a whole closely-related pair" precedent
+    # the first pass already used for のに's two senses and そうだ
+    # （様態）+てくる.
+    dict(
+        id="bab_n4_bisa_dan_kadang_terjadi",
+        order=51,
+        level="N4",
+        title="Bisa Melakukan dan Kadang Terjadi",
+        title_en="Being Able To, and Sometimes Happening",
+        description="Pola ことができる (bisa/dapat melakukan) dan ことがある (kadang-kadang terjadi, atau pernah mengalami).",
+        description_en="The ことができる pattern (being able to do something) and ことがある (sometimes happens, or has happened before).",
+        kotoba_ids=["kotoba_konsep_umum_seikatsu"],
+        kanji_ids=["kanji_omou", "kanji_kawaru"],
+        bunpou_ids=["bunpou_koto_ga_dekiru", "bunpou_koto_ga_aru"],
+        kaiwa_ids=["kaiwa_cerita_pengalaman_luar_negeri_n4"],
+    ),
+    dict(
+        id="bab_n4_memutuskan_dan_ditetapkan",
+        order=52,
+        level="N4",
+        title="Memutuskan dan Ditetapkan",
+        title_en="Deciding, and Being Decided",
+        description="Pola ことにする (memutuskan sendiri untuk ~) dan ことになる (telah ditetapkan/diputuskan bahwa ~).",
+        description_en="The ことにする pattern (deciding for yourself to ~) and ことになる (it has been decided/settled that ~).",
+        kotoba_ids=["kotoba_hari_bulan_kondo", "kotoba_konsep_umum_juubun", "kotoba_olahraga_undou"],
+        kanji_ids=["kanji_karada", "kanji_ugoku", "kanji_hajimeru"],
+        bunpou_ids=["bunpou_koto_ni_suru", "bunpou_koto_ni_naru"],
+        kaiwa_ids=["kaiwa_pentingnya_pemanasan_n4"],
+    ),
+    dict(
+        id="bab_n4_kewajiban_harus_melakukan",
+        order=53,
+        level="N4",
+        title="Kewajiban: Harus Melakukan",
+        title_en="Obligation: Having to Do Something",
+        description="Pola なければいけない dan なければならない, dua cara menyatakan 'harus ~' (sinonim, yang kedua sedikit lebih formal).",
+        description_en="The なければいけない and なければならない patterns, both meaning 'must ~' (near-synonyms, the second slightly more formal).",
+        kotoba_ids=[],
+        kanji_ids=["kanji_oshieru", "kanji_tooru"],
+        bunpou_ids=["bunpou_nakereba_ikenai", "bunpou_nakereba_naranai"],
+        kaiwa_ids=["kaiwa_proses_kartu_kredit_n4"],
+    ),
+    dict(
+        id="bab_n4_pengandaian_dengan_tara",
+        order=54,
+        level="N4",
+        title="Pengandaian dengan Tara",
+        title_en="Conditionals with Tara",
+        description="Bentuk kondisional たら ('jika/setelah ~'), dan たらどう untuk memberi saran.",
+        description_en="The たら conditional form ('if/once ~'), and たらどう for giving a suggestion.",
+        kotoba_ids=["kotoba_arah_lokasi_chikaku", "kotoba_ruangan_rumah_niwa"],
+        kanji_ids=["kanji_hataraku", "kanji_chikai"],
+        bunpou_ids=["bunpou_tara", "bunpou_tara_dou"],
+        kaiwa_ids=["kaiwa_jelaskan_rencana_menikah_n4"],
+    ),
+    dict(
+        id="bab_n4_seharusnya_dan_tidak_mungkin",
+        order=55,
+        level="N4",
+        title="Seharusnya dan Tidak Mungkin",
+        title_en="Should Be the Case, and Can't Possibly Be",
+        description="Pola はずだ (seharusnya/pasti ~, berdasar logika) dan はずがない (tidak mungkin ~).",
+        description_en="The はずだ pattern (should/must be ~, based on logic) and はずがない (there's no way ~).",
+        kotoba_ids=["kotoba_bangunan_fasilitas_yoyaku", "kotoba_teknologi_gadget_meeru"],
+        kanji_ids=["kanji_tsukau", "kanji_jibun"],
+        bunpou_ids=["bunpou_hazu_da", "bunpou_hazu_ga_nai"],
+        kaiwa_ids=["kaiwa_pesan_tiket_online_n4"],
+    ),
+    dict(
+        id="bab_n4_kesan_dan_dugaan_dari_luar",
+        order=56,
+        level="N4",
+        title="Kesan Kasual dan Kabar dari Luar",
+        title_en="Casual Impressions and Outside Information",
+        description="Pola みたいだ (kesan santai, mirip ようだ) dan らしい (dugaan berdasar apa yang didengar/dibaca dari luar).",
+        description_en="The みたいだ pattern (a casual impression, similar to ようだ) and らしい (a guess based on outside information).",
+        kotoba_ids=["kotoba_bangunan_fasilitas_uketsuke", "kotoba_hari_bulan_kondo"],
+        kanji_ids=["kanji_karada", "kanji_motsu"],
+        bunpou_ids=["bunpou_mitai_da", "bunpou_rashii"],
+        kaiwa_ids=["kaiwa_gabung_klub_olahraga_n4"],
+    ),
 ]

@@ -1277,5 +1277,159 @@
       "kaiwa_kenalan_pasangan_bisnis_n4"
     ],
     "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_bisa_dan_kadang_terjadi",
+    "order": 51,
+    "title": "Bisa Melakukan dan Kadang Terjadi",
+    "titleEn": "Being Able To, and Sometimes Happening",
+    "description": "Pola ことができる (bisa/dapat melakukan) dan ことがある (kadang-kadang terjadi, atau pernah mengalami).",
+    "descriptionEn": "The ことができる pattern (being able to do something) and ことがある (sometimes happens, or has happened before).",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_konsep_umum_seikatsu"
+    ],
+    "kanjiIds": [
+      "kanji_omou",
+      "kanji_kawaru"
+    ],
+    "bunpouIds": [
+      "bunpou_koto_ga_dekiru",
+      "bunpou_koto_ga_aru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_cerita_pengalaman_luar_negeri_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_memutuskan_dan_ditetapkan",
+    "order": 52,
+    "title": "Memutuskan dan Ditetapkan",
+    "titleEn": "Deciding, and Being Decided",
+    "description": "Pola ことにする (memutuskan sendiri untuk ~) dan ことになる (telah ditetapkan/diputuskan bahwa ~).",
+    "descriptionEn": "The ことにする pattern (deciding for yourself to ~) and ことになる (it has been decided/settled that ~).",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_hari_bulan_kondo",
+      "kotoba_konsep_umum_juubun",
+      "kotoba_olahraga_undou"
+    ],
+    "kanjiIds": [
+      "kanji_karada",
+      "kanji_ugoku",
+      "kanji_hajimeru"
+    ],
+    "bunpouIds": [
+      "bunpou_koto_ni_suru",
+      "bunpou_koto_ni_naru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_pentingnya_pemanasan_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_kewajiban_harus_melakukan",
+    "order": 53,
+    "title": "Kewajiban: Harus Melakukan",
+    "titleEn": "Obligation: Having to Do Something",
+    "description": "Pola なければいけない dan なければならない, dua cara menyatakan 'harus ~' (sinonim, yang kedua sedikit lebih formal).",
+    "descriptionEn": "The なければいけない and なければならない patterns, both meaning 'must ~' (near-synonyms, the second slightly more formal).",
+    "level": "N4",
+    "kotobaIds": [],
+    "kanjiIds": [
+      "kanji_oshieru",
+      "kanji_tooru"
+    ],
+    "bunpouIds": [
+      "bunpou_nakereba_ikenai",
+      "bunpou_nakereba_naranai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_proses_kartu_kredit_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_pengandaian_dengan_tara",
+    "order": 54,
+    "title": "Pengandaian dengan Tara",
+    "titleEn": "Conditionals with Tara",
+    "description": "Bentuk kondisional たら ('jika/setelah ~'), dan たらどう untuk memberi saran.",
+    "descriptionEn": "The たら conditional form ('if/once ~'), and たらどう for giving a suggestion.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_arah_lokasi_chikaku",
+      "kotoba_ruangan_rumah_niwa"
+    ],
+    "kanjiIds": [
+      "kanji_hataraku",
+      "kanji_chikai"
+    ],
+    "bunpouIds": [
+      "bunpou_tara",
+      "bunpou_tara_dou"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_jelaskan_rencana_menikah_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_seharusnya_dan_tidak_mungkin",
+    "order": 55,
+    "title": "Seharusnya dan Tidak Mungkin",
+    "titleEn": "Should Be the Case, and Can't Possibly Be",
+    "description": "Pola はずだ (seharusnya/pasti ~, berdasar logika) dan はずがない (tidak mungkin ~).",
+    "descriptionEn": "The はずだ pattern (should/must be ~, based on logic) and はずがない (there's no way ~).",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_yoyaku",
+      "kotoba_teknologi_gadget_meeru"
+    ],
+    "kanjiIds": [
+      "kanji_tsukau",
+      "kanji_jibun"
+    ],
+    "bunpouIds": [
+      "bunpou_hazu_da",
+      "bunpou_hazu_ga_nai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_pesan_tiket_online_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_kesan_dan_dugaan_dari_luar",
+    "order": 56,
+    "title": "Kesan Kasual dan Kabar dari Luar",
+    "titleEn": "Casual Impressions and Outside Information",
+    "description": "Pola みたいだ (kesan santai, mirip ようだ) dan らしい (dugaan berdasar apa yang didengar/dibaca dari luar).",
+    "descriptionEn": "The みたいだ pattern (a casual impression, similar to ようだ) and らしい (a guess based on outside information).",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_uketsuke",
+      "kotoba_hari_bulan_kondo"
+    ],
+    "kanjiIds": [
+      "kanji_karada",
+      "kanji_motsu"
+    ],
+    "bunpouIds": [
+      "bunpou_mitai_da",
+      "bunpou_rashii"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_gabung_klub_olahraga_n4"
+    ],
+    "dokkaiIds": []
   }
 ]
