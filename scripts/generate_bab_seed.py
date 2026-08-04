@@ -12,9 +12,9 @@
 import glob
 import json
 
-from bab_lists import N4_CHAPTERS, N5_CHAPTERS
+from bab_lists import N3_CHAPTERS, N4_CHAPTERS, N5_CHAPTERS
 
-ALL_CHAPTERS = N5_CHAPTERS + N4_CHAPTERS  # extend with N3_CHAPTERS etc. as authored
+ALL_CHAPTERS = N5_CHAPTERS + N4_CHAPTERS + N3_CHAPTERS  # extend with N2_CHAPTERS etc. as authored
 
 
 def _ids(path):
@@ -88,7 +88,7 @@ def main():
 
     print(
         f"Wrote {len(entries)} Bab chapters "
-        f"(N5: {len(N5_CHAPTERS)}, N4: {len(N4_CHAPTERS)})."
+        f"(N5: {len(N5_CHAPTERS)}, N4: {len(N4_CHAPTERS)}, N3: {len(N3_CHAPTERS)})."
     )
 
 

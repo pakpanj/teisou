@@ -1431,5 +1431,655 @@
       "kaiwa_gabung_klub_olahraga_n4"
     ],
     "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_selagi_dan_berkat",
+    "order": 57,
+    "title": "Selagi Masih dan Berkat Bantuan",
+    "titleEn": "While It's Still, and Thanks To",
+    "description": "Pola うちに (melakukan sesuatu selagi kondisi masih sama) dan おかげで (berkat bantuan/sebab baik).",
+    "descriptionEn": "The うちに pattern (doing something while a condition still holds) and おかげで (thanks to a helpful cause).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_hari_bulan_jikan",
+      "kotoba_kendaraan_basu"
+    ],
+    "kanjiIds": [
+      "kanji_tsukau",
+      "kanji_wakareru"
+    ],
+    "bunpouIds": [
+      "bunpou_uchi_ni",
+      "bunpou_okage_de"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_rute_alternatif_gangguan_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_penekanan_dan_peraturan",
+    "order": 58,
+    "title": "Penekanan Kuat dan Peraturan Tertulis",
+    "titleEn": "Strong Emphasis and Written Rules",
+    "description": "Partikel penekanan こそ (justru ~lah) dan こと sebagai peraturan tertulis (harus/dilarang ~).",
+    "descriptionEn": "The emphasis particle こそ (it's precisely ~) and こと as a written rule (must/must not ~).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_hari_bulan_honjitsu",
+      "kotoba_konsep_umum_kitai"
+    ],
+    "kanjiIds": [
+      "kanji_kata2",
+      "kanji_shi2"
+    ],
+    "bunpouIds": [
+      "bunpou_koso",
+      "bunpou_koto2"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_karyawan_baru_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_tak_perlu_dan_sebisa_mungkin",
+    "order": 59,
+    "title": "Tidak Perlu dan Sebisa Mungkin",
+    "titleEn": "No Need To, and As Much As Possible",
+    "description": "Pola ことはない (tidak perlu ~) dan だけ setelah できる (sebisa/semampu mungkin).",
+    "descriptionEn": "The ことはない pattern (no need to ~) and だけ after できる (as much as one is able).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_gaishoku",
+      "kotoba_konsep_umum_ishiki"
+    ],
+    "kanjiIds": [
+      "kanji_karada",
+      "kanji_kawaru"
+    ],
+    "bunpouIds": [
+      "bunpou_koto_wa_nai",
+      "bunpou_dake2"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_alasan_vegetarian_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_tanpa_sadar_dan_baru_setelah",
+    "order": 60,
+    "title": "Tanpa Sadar dan Baru Setelah Mengalami",
+    "titleEn": "Without Meaning To, and Only After Experiencing",
+    "description": "Pola つい (melakukan sesuatu tanpa sengaja) dan てはじめて (baru menyadari sesuatu setelah mengalaminya).",
+    "descriptionEn": "The つい pattern (doing something unintentionally) and てはじめて (only realizing something after experiencing it).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_konsep_umum_rikai",
+      "kotoba_konsep_umum_bunya"
+    ],
+    "kanjiIds": [
+      "kanji_omou",
+      "kanji_fukai"
+    ],
+    "bunpouIds": [
+      "bunpou_tsui",
+      "bunpou_te_hajimete"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_latar_belakang_pendidikan_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_bukannya_tidak_dan_tentang",
+    "order": 61,
+    "title": "Bukannya Tidak Mungkin, dan Tentang Sesuatu",
+    "titleEn": "It's Not That It's Impossible, and About Something",
+    "description": "Pola ないことはない (penyangkalan ganda, menyiratkan sedikit kemungkinan) dan について (tentang/mengenai ~).",
+    "descriptionEn": "The ないことはない pattern (a double negative implying a slight possibility) and について (about/regarding ~).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_konsep_umum_hikaku",
+      "kotoba_konsep_umum_ryouhou"
+    ],
+    "kanjiIds": [
+      "kanji_do",
+      "kanji_tsukau"
+    ],
+    "bunpouIds": [
+      "bunpou_nai_koto_wa_nai",
+      "bunpou_ni_tsuite"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_beda_belanja_offline_online_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_bagi_seseorang_dan_sepadan",
+    "order": 62,
+    "title": "Bagi Seseorang, dan Sepadan Jumlahnya",
+    "titleEn": "For Someone, and About As Much As",
+    "description": "Pola にとって (bagi ~, dari sudut pandang tertentu) dan ほど (sekitar/sepadan ~, perbandingan derajat/jumlah).",
+    "descriptionEn": "The にとって pattern (for ~, from a certain viewpoint) and ほど (about/as much as ~, a degree/quantity comparison).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_konsep_umum_tsugou",
+      "kotoba_konsep_umum_fukuzatsu"
+    ],
+    "kanjiIds": [
+      "kanji_koe",
+      "kanji_tsukau"
+    ],
+    "bunpouIds": [
+      "bunpou_ni_totte",
+      "bunpou_hodo"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_beda_telepon_pesan_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_tak_ada_cara_dan_berusaha",
+    "order": 63,
+    "title": "Tidak Ada Cara, dan Berusaha untuk",
+    "titleEn": "No Way To, and Trying To",
+    "description": "Pola ようがない (tidak ada cara untuk ~) dan ようとする (berusaha/mencoba untuk ~).",
+    "descriptionEn": "The ようがない pattern (there's no way to ~) and ようとする (trying/attempting to ~).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_konsep_umum_keiken",
+      "kotoba_konsep_umum_kaiketsu"
+    ],
+    "kanjiIds": [
+      "kanji_karada",
+      "kanji_in"
+    ],
+    "bunpouIds": [
+      "bunpou_you_ga_nai",
+      "bunpou_you_to_suru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_ketua_kelas_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_semoga_dan_pantas_saja",
+    "order": 64,
+    "title": "Semoga dan Pantas Saja",
+    "titleEn": "May It Be, and No Wonder",
+    "description": "Pola ように di akhir kalimat (semoga/harapan) dan わけだ (pantas saja ~, kesimpulan logis).",
+    "descriptionEn": "The sentence-final ように pattern (a hope/wish) and わけだ (no wonder ~, a logical conclusion).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_juujitsu",
+      "kotoba_konsep_umum_kitai"
+    ],
+    "kanjiIds": [
+      "kanji_tanoshii",
+      "kanji_zen2"
+    ],
+    "bunpouIds": [
+      "bunpou_youni2",
+      "bunpou_wake_da"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_mahasiswa_pertukaran_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_tapi_kasual_dan_mengingat",
+    "order": 65,
+    "title": "Tapi (Kasual) dan Mengingat Kembali",
+    "titleEn": "But (Casual), and Recalling Something",
+    "description": "Pola だけど (tetapi, versi kasual) dan っけ (bertanya pada diri sendiri untuk mengingat/mengonfirmasi sesuatu).",
+    "descriptionEn": "The だけど pattern (but, casual) and っけ (asking oneself to recall or confirm something).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_annai",
+      "kotoba_hari_bulan_jikan"
+    ],
+    "kanjiIds": [
+      "kanji_tsukau",
+      "kanji_omou"
+    ],
+    "bunpouIds": [
+      "bunpou_dakedo",
+      "bunpou_kke"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_sistem_transfer_kereta_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_sebagai_dan_harus",
+    "order": 66,
+    "title": "Sebagai Peran, dan Harus (Kasual)",
+    "titleEn": "As a Role, and Must (Casual)",
+    "description": "Pola として (sebagai ~) dan ないと (harus ~, kontraksi santai dari ないといけない).",
+    "descriptionEn": "The として pattern (as ~) and ないと (must ~, a casual contraction of ないといけない).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_konsep_umum_ketsudan",
+      "kotoba_konsep_umum_kaizen"
+    ],
+    "kanjiIds": [
+      "kanji_do",
+      "kanji_kimeru"
+    ],
+    "bunpouIds": [
+      "bunpou_to_shite",
+      "bunpou_nai_to"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kepribadian_jujur_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_cukup_saja_dan_berdasarkan",
+    "order": 67,
+    "title": "Cukup Begitu Saja, dan Berdasarkan Sesuatu",
+    "titleEn": "It's Enough Just To, and Based On Something",
+    "description": "Pola ばいい (cukup/asalkan ~ saja, saran minimal) dan ことから (berdasarkan/karena adanya ~, penyebab suatu kesimpulan).",
+    "descriptionEn": "The ばいい pattern (a minimal 'it's enough to just ~' suggestion) and ことから (based on/because of ~, the cause of a conclusion).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_konsep_umum_shouhi",
+      "kotoba_konsep_umum_keiken"
+    ],
+    "kanjiIds": [
+      "kanji_do",
+      "kanji_mono"
+    ],
+    "bunpouIds": [
+      "bunpou_ba_ii",
+      "bunpou_koto_kara"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_ditipu_saat_belanja_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_seperti_dan_untuk_tujuan",
+    "order": 68,
+    "title": "Seperti Sekali, dan Untuk Tujuan Tertentu",
+    "titleEn": "Just Like, and For a Specific Purpose",
+    "description": "Pola まるで (perumpamaan kuat, seperti/bagaikan ~) dan には (untuk ~, tujuan; juga penekanan topik+waktu/tempat).",
+    "descriptionEn": "The まるで pattern (a strong comparison, just like ~) and には (for ~, a purpose; also emphasizing topic + time/place).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_hari_bulan_jiki",
+      "kotoba_hari_bulan_saikin"
+    ],
+    "kanjiIds": [
+      "kanji_otouto",
+      "kanji_ani"
+    ],
+    "bunpouIds": [
+      "bunpou_marude",
+      "bunpou_ni_wa"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_jadi_wali_adik_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_demi_tujuan_dan_termasuk",
+    "order": 69,
+    "title": "Demi Suatu Tujuan, dan Termasuk di Dalamnya",
+    "titleEn": "For the Sake Of, and Including",
+    "description": "Pola ために (demi/untuk ~ tujuan, atau karena ~ sebab formal) dan をはじめ (termasuk ~ dan lain-lain, contoh utama dari suatu kelompok).",
+    "descriptionEn": "The ために pattern (for the sake of ~, or a formal because-of-~) and をはじめ (including ~ and others, a group's main example).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_anggota_tubuh_shisei",
+      "kotoba_hobi_aktivitas_chousen"
+    ],
+    "kanjiIds": [
+      "kanji_omou",
+      "kanji_tsuyoi"
+    ],
+    "bunpouIds": [
+      "bunpou_tame_ni",
+      "bunpou_o_hajime"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_rencana_jangka_panjang_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_seharusnya_dan_seharusnya_tidak",
+    "order": 70,
+    "title": "Seharusnya Melakukan, dan Seharusnya Tidak",
+    "titleEn": "Should Do, and Should Not Do",
+    "description": "Pola べきだ (seharusnya ~, kewajiban moral) dan べきではない (seharusnya tidak ~).",
+    "descriptionEn": "The べきだ pattern (should ~, a moral obligation) and べきではない (should not ~).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_kendaraan_densha",
+      "kotoba_kendaraan_manin"
+    ],
+    "kanjiIds": [
+      "kanji_oto",
+      "kanji_in"
+    ],
+    "bunpouIds": [
+      "bunpou_beki_da",
+      "bunpou_beki_dewa_nai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_etika_kereta_padat_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_sementara_dan_aturan_berlaku",
+    "order": 71,
+    "title": "Untuk Sementara, dan Sudah Menjadi Aturan",
+    "titleEn": "For the Time Being, and It's the Established Rule",
+    "description": "Kata keterangan しばらく (sebentar, untuk sementara waktu) dan pola ことになっている (sudah ditetapkan/menjadi aturan bahwa ~).",
+    "descriptionEn": "The adverb しばらく (for a while, for the time being) and ことになっている (it's an established rule/arrangement that ~).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_kouji",
+      "kotoba_hari_bulan_kyou"
+    ],
+    "kanjiIds": [
+      "kanji_tsukau",
+      "kanji_omou"
+    ],
+    "bunpouIds": [
+      "bunpou_shibaraku",
+      "bunpou_koto_ni_natte_iru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_rute_biasa_ditutup_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_berniat_tapi_gagal_dan_dengan_anggapan",
+    "order": 72,
+    "title": "Sudah Berniat tapi Gagal, dan Berpura-pura",
+    "titleEn": "Had Intended To But Didn't, and Pretending To",
+    "description": "Pola つもりだった (sebenarnya berniat ~ tapi tidak terlaksana) dan つもりで (dengan niat/anggapan seolah-olah ~).",
+    "descriptionEn": "The つもりだった pattern (had intended to ~ but it didn't happen) and つもりで (with the mindset/pretense of ~).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_hari_bulan_kondo",
+      "kotoba_konsep_umum_hontou"
+    ],
+    "kanjiIds": [
+      "kanji_do",
+      "kanji_kimeru"
+    ],
+    "bunpouIds": [
+      "bunpou_tsumori_datta",
+      "bunpou_tsumori_de"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_tidak_angkat_telepon_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_setiap_kali_dan_karena_terlalu",
+    "order": 73,
+    "title": "Setiap Kali, dan Karena Terlalu Berlebihan",
+    "titleEn": "Every Time, and Because of Too Much",
+    "description": "Pola たびに (setiap kali ~) dan あまり (karena terlalu ~, menyatakan akibat berlebihan).",
+    "descriptionEn": "The たびに pattern (every time ~) and あまり (because of too much ~, an excessive result).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_hari_bulan_jikan",
+      "kotoba_konsep_umum_settoku"
+    ],
+    "kanjiIds": [
+      "kanji_kokoro",
+      "kanji_motsu"
+    ],
+    "bunpouIds": [
+      "bunpou_tabi_ni",
+      "bunpou_amari"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_pindah_jurusan_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_mulai_melakukan_dan_dalam_hal",
+    "order": 74,
+    "title": "Mulai Melakukan, dan Dalam Hal Keahlian",
+    "titleEn": "Starting To Do, and When It Comes To",
+    "description": "Pola かける (mulai melakukan ~ tapi belum selesai) dan にかけて (dalam hal ~, keahlian/bidang tertentu).",
+    "descriptionEn": "The かける pattern (starting to ~ but not finished) and にかけて (when it comes to ~, a specific skill/field).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_hari_bulan_kondo",
+      "kotoba_konsep_umum_kansha"
+    ],
+    "kanjiIds": [
+      "kanji_do",
+      "kanji_kokoro"
+    ],
+    "bunpouIds": [
+      "bunpou_kakeru",
+      "bunpou_nikakete2"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_bantu_orang_stasiun_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_definisi_dan_gara_gara",
+    "order": 75,
+    "title": "Maksudnya Adalah, dan Gara-gara Sesuatu",
+    "titleEn": "What It Means Is, and Because Of (Negative)",
+    "description": "Pola というのは (yang dimaksud dengan ~ adalah, definisi/penjelasan) dan せいで (gara-gara ~, akibat negatif).",
+    "descriptionEn": "The というのは pattern (what ~ means is, a definition/explanation) and せいで (because of ~, a negative result).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_hari_bulan_jiki",
+      "kotoba_hari_bulan_saikin"
+    ],
+    "kanjiIds": [
+      "kanji_otouto",
+      "kanji_ani"
+    ],
+    "bunpouIds": [
+      "bunpou_to_iu_no_wa",
+      "bunpou_sei_de"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_jadi_wali_adik_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_bukan_berarti_dan_sekalipun",
+    "order": 76,
+    "title": "Bukan Berarti, dan Sekalipun Begitu",
+    "titleEn": "It Doesn't Mean, and Even If",
+    "description": "Pola わけではない (bukan berarti ~, penyangkalan parsial) dan たって (sekalipun/meskipun ~, versi kasual).",
+    "descriptionEn": "The わけではない pattern (it doesn't mean ~, a partial denial) and たって (even if/though ~, casual).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_agama_budaya_bunka",
+      "kotoba_cuaca_tenki"
+    ],
+    "kanjiIds": [
+      "kanji_do",
+      "kanji_kaze"
+    ],
+    "bunpouIds": [
+      "bunpou_wake_dewa_nai",
+      "bunpou_tatte"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kepercayaan_tradisional_cuaca_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_meski_disebut_dan_lebih_lanjut",
+    "order": 77,
+    "title": "Meski Disebut Begitu, dan Lebih Lanjut Lagi",
+    "titleEn": "Even Though It's Called That, and Furthermore",
+    "description": "Pola といっても (meski dikatakan ~, tapi kenyataannya tidak seberapa) dan さらに (lebih lanjut, semakin).",
+    "descriptionEn": "The といっても pattern (even though it's called ~, but in reality it's not much) and さらに (further, even more).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_hari_bulan_jiki",
+      "kotoba_hari_bulan_kondo"
+    ],
+    "kanjiIds": [
+      "kanji_do",
+      "kanji_tsukau"
+    ],
+    "bunpouIds": [
+      "bunpou_to_ittemo",
+      "bunpou_sarani"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_jenis_tiket_kereta_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_bukan_hanya_dan_sesuai_dengan",
+    "order": 78,
+    "title": "Bukan Hanya Itu, dan Sesuai dengan Yang Ada",
+    "titleEn": "Not Only That, and Just As It Is",
+    "description": "Pola だけでなく (bukan hanya ~ tapi juga) dan とおりに (sesuai dengan ~, seperti yang ~).",
+    "descriptionEn": "The だけでなく pattern (not only ~ but also) and とおりに (as, according to ~).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_bunga_tanaman_bara",
+      "kotoba_konsep_umum_ishiki"
+    ],
+    "kanjiIds": [
+      "kanji_do",
+      "kanji_karada"
+    ],
+    "bunpouIds": [
+      "bunpou_dake_denaku",
+      "bunpou_toori_ni"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_pentingnya_nutrisi_atlet_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_baru_saja_selesai_dan_tak_mau_berusaha",
+    "order": 79,
+    "title": "Baru Saja Selesai Dibuat, dan Enggan Berusaha",
+    "titleEn": "Freshly Made, and Refusing to Try",
+    "description": "Pola たて (baru saja selesai ~, segar/baru) dan ようとしない (tidak mau berusaha untuk ~, menolak/enggan).",
+    "descriptionEn": "The たて pattern (freshly ~, just finished) and ようとしない (won't even try to ~, refuses/reluctant).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_arah_lokasi_basho",
+      "kotoba_cara_memasak_kiru"
+    ],
+    "kanjiIds": [
+      "kanji_omou",
+      "kanji_oboeru"
+    ],
+    "bunpouIds": [
+      "bunpou_tate",
+      "bunpou_doushitemo"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_etika_telepon_tempat_umum_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_mencari_persetujuan_dan_bagaimanapun_juga",
+    "order": 80,
+    "title": "Mencari Persetujuan, dan Bagaimanapun Juga",
+    "titleEn": "Seeking Agreement, and No Matter What",
+    "description": "Pola じゃない (bukankah begitu?, mencari persetujuan yang lebih lembut) dan ようとしない (tidak mau berusaha untuk ~, menolak/enggan).",
+    "descriptionEn": "The じゃない pattern (isn't it?, a gentler way to seek agreement) and ようとしない (won't even try to ~, refuses/reluctant).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_konsep_umum_kankyou",
+      "kotoba_konsep_umum_saisho"
+    ],
+    "kanjiIds": [
+      "kanji_omou",
+      "kanji_suki2"
+    ],
+    "bunpouIds": [
+      "bunpou_ja_nai2",
+      "bunpou_you_to_shinai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_alasan_pindah_kota_n3"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n3_sebisa_mungkin_dan_kenangan_lama",
+    "order": 81,
+    "title": "Sebisa Mungkin, dan Kenangan Kebiasaan Lama",
+    "titleEn": "As Much As Possible, and Nostalgic Old Habits",
+    "description": "Kata keterangan なるべく (sebisa mungkin) dan pola たものだ (dulu sering ~, kenangan/kebiasaan masa lalu).",
+    "descriptionEn": "The adverb なるべく (as much as possible) and たものだ (used to ~, a nostalgic past memory/habit).",
+    "level": "N3",
+    "kotobaIds": [
+      "kotoba_ekspresi_wajah_naku",
+      "kotoba_hari_bulan_hiruma"
+    ],
+    "kanjiIds": [
+      "kanji_hiru",
+      "kanji_omou"
+    ],
+    "bunpouIds": [
+      "bunpou_narubeku",
+      "bunpou_ta_mono_da"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_nonton_sendirian_n3"
+    ],
+    "dokkaiIds": []
   }
 ]
