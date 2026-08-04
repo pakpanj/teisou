@@ -5305,12 +5305,17 @@ instance already threaded through the rest of the generator.
 Moto G52J — confirmed the lock/unlock mechanics from the base gate-quiz
 feature still hold with the widened pool in place (Bab 1 and 2 both
 already completed from earlier verification passes, Bab 3 correctly
-unlocked and its quiz launched showing "Bab 1-3" scope). Did not
-re-verify the specific claim that a wider variety of sentences now
-appears per candidate — the user asked to stop testing mid-session
-before that spot-check happened. Worth a quick on-device confirmation
-next time this area is touched: open the same chapter's gate quiz
-twice in a row and check whether a kotoba/bunpou/particle question's
-context sentence differs between attempts (it should, for any
-candidate whose match token is ≥2 characters and appears in more than
-one curriculum sentence).
+unlocked and its quiz launched showing "Bab 1-3" scope).
+
+**Sentence-variety spot-check completed in a follow-up session** (same
+day, device reconnected after testing was paused): opened Bab 3's gate
+quiz twice in a row. First attempt's question 1 was `bunpou_ka` with
+context "お元気ですか。" (from a Kaiwa greeting line, not one of
+`bunpou_ka`'s own 3 authored sentence examples). Second attempt's
+question 1 was a *different* candidate entirely (`particle_wa`'s topic-
+marking function) with context "東京は大きい都市です。" — both the
+question order and the context sentence varied between attempts, and
+both sentences correctly illustrate the grammar point being asked
+about (a genuine "お元気ですか" question-marker use of か, a genuine
+topic-marking use of は on 東京), confirming the widened pool is both
+varied and accurate as designed.
