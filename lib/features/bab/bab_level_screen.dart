@@ -12,6 +12,20 @@ import '../../data/models/jlpt_level.dart';
 import 'bab_detail_screen.dart';
 import 'bab_providers.dart';
 
+/// TEMPORARY DEV FLAG (2026-08-04) — set back to `true` before release.
+///
+/// When true, a chapter stays locked until its immediate predecessor's
+/// gate quiz has been passed, which is the intended product behaviour.
+/// It is off right now so the whole 358-chapter curriculum can be tapped
+/// through freely for testing; with 250+ chapters never yet opened on a
+/// device, having to pass a quiz per chapter would make that impossible.
+///
+/// This only removes the *requirement*. The gate quiz itself is
+/// untouched: the "Mulai Kuis Bab" button on `BabDetailScreen` still
+/// works and still marks a chapter complete, so progress, the completed
+/// checkmarks and the mascot's "what's next" all behave normally.
+const bool kBabGateQuizRequired = false;
+
 /// Ordered chapter list for one JLPT level.
 class BabLevelScreen extends ConsumerWidget {
   final JlptLevel level;
@@ -49,7 +63,11 @@ class BabLevelScreen extends ConsumerWidget {
                   // passed. `chapters` is already sorted by `order`
                   // (BabRepository.getByLevel), so the predecessor is
                   // always the previous list item, not a lookup by id.
-                  locked: i > 0 && !completed.contains(chapters[i - 1].id),
+                  // Gated on kBabGateQuizRequired, currently off for
+                  // testing — see that constant's doc comment above.
+                  locked: kBabGateQuizRequired &&
+                      i > 0 &&
+                      !completed.contains(chapters[i - 1].id),
                 ),
                 const SizedBox(height: 12),
               ],

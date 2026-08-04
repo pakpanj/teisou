@@ -3424,6 +3424,18 @@ what the on-device pass actually verified), `flutter build apk
   4. No physical/simulator iOS run has happened — same standing
      verification-gap pattern as everything else in this file, just
      starting from zero for this platform.
+- **Bab's gate-quiz requirement is switched off** (2026-08-04), at the
+  user's request so they can tap through the 358-chapter curriculum
+  freely for testing — with 250+ chapters never yet opened on a device,
+  needing to pass a quiz per chapter would have made that impossible.
+  The switch is the single top-level constant `kBabGateQuizRequired` in
+  `lib/features/bab/bab_level_screen.dart`; **set it back to `true`
+  before release.** It removes only the *requirement*: the gate quiz
+  itself is untouched, the "Mulai Kuis Bab" button on `BabDetailScreen`
+  still works and still marks a chapter complete, and progress,
+  completed checkmarks and `babNextUpProvider`'s "what's next"
+  recommendation all behave normally. Same shape as the Partikel premium
+  gate note below — a deliberate temporary state, not a regression.
 - **Monetization is mid-transition, not final** (as of 2026-07-17): the
   eventual plan is Kanji N3-N1, Bunpou N4-N1, Partikel, Choukai, Kaiwa,
   Belajar dari Gambar, and Belajar dari Video all premium; everything else
