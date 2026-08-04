@@ -5786,3 +5786,58 @@ coverage understates them; it needs its own kind of pass, not more
 grammar grouping. N1 is now the lowest real coverage at 45%. And **no
 on-device pass has happened for any level's Bab since the N4 first
 pass** — 60 new chapters have never been tapped through.
+*(Coverage closed in the next entry.)*
+
+## Update (2026-08-04, final): every level at 100% — 249 → 358 chapters
+
+All five levels now cover **856/856 grammar patterns**. Chapter counts:
+N5 52, N4 59, N3 77, N2 77, N1 93.
+
+| level | chapters | patterns |
+|---|---|---|
+| N5 | 31 → **52** | 35% → **100%** |
+| N4 | 45 → **59** | 72% → **100%** |
+| N3 | 45 → **77** | 55% → **100%** |
+| N2 | 48 → **77** | 55% → **100%** |
+| N1 | 45 → **93** | 45% → **100%** |
+
+**An automatic clusterer was written for this and thrown away.** It
+grouped the remaining patterns by shared morpheme, which sounds
+reasonable and is not: the tail of every level is adverbs, conjunctions
+and particles with no shared surface, so it fell back to grouping by the
+first word of the Indonesian gloss and produced chapters like
+「でも, または, ところ」 — three unrelated items stapled together, teaching
+nothing. **A script cannot infer function from surface form.** All 144
+completion chapters are hand-grouped instead: the four ways to say
+"must", the prohibition set, verb-suffix families (切る/切れない/通す/上げる),
+the "no point in doing it" set, formal-written particles, and so on.
+
+**These chapters deliberately carry `kaiwa_ids=[]`, `kotoba_ids=[]` and
+`kanji_ids=[]`.** The automatic kaiwa matcher's false-positive rate held
+at ~35% across every pass it was ever run (16 of 46 rejected in the
+previous entry alone), and each candidate needs its surrounding text read
+by hand. At 144 chapters that verification was not affordable, and an
+unverified link is worse than none — a chapter claiming a dialogue that
+does not contain its grammar actively misleads. Adding real links to
+these is a well-defined future pass: run the guarded matcher, print
+context, accept only what survives.
+
+Also fixed: the chapter writer emitted raw double quotes from titles,
+producing invalid Python (a title containing `"Harus"` broke the
+generator). It now substitutes typographic quotes, which read better
+anyway.
+
+Checks passing across all 358: no chapter holds an off-level pattern, no
+non-N5 pattern appears in two chapters, no duplicate chapter ids, order
+contiguous 1-358, each level one unbroken run. `flutter analyze` clean,
+`flutter test --concurrency=1` all 48 pass, `flutter build apk --debug`
+clean.
+
+**What 100% does and does not mean.** It means every grammar pattern in
+the dataset now belongs to exactly one Bab chapter, so a learner who
+finishes the path has met all of them. It does **not** mean the
+curriculum is finished: 144 of the 358 chapters have no vocabulary,
+kanji or conversation attached, N5's chapter set is now a mix of rich
+thematic units and bare grammar groupings, and **nothing here has been
+tested on a device** — the last on-device Bab pass was the N4 first
+pass, 250+ chapters ago.
