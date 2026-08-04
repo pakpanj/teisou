@@ -5989,6 +5989,29 @@ passed `kBabGateQuizRequired`, so with the gate off the mascot says the
 quiz "menandai bab ini selesai" instead of promising an unlock that no
 longer happens.
 
+**Extended the same day: N4 and N3, 20 clips each — 60 total.** Opening
+two more levels was judged more useful than deepening N5, since an N4
+learner previously had nothing at all. N4 clips run longer than N5's and
+mix plain and polite speech (following a change of plan across turns);
+N3 clips ask the learner to infer a reason or a speaker's attitude rather
+than retrieve a stated fact, which is what the real 概要理解 section tests.
+
+**A content bug worth remembering: stray Cyrillic and Hangul leaked into
+the authored Japanese.** Three N3 clips and one answer option shipped
+text like 「連…いや、connectionが悪くて」, 「안…いや、」 and
+「новую…カードを買う」 from the authoring pass. **Nothing downstream would
+have caught it** — the JSON was valid, the app rendered it fine, and the
+TTS would simply have read gibberish aloud to a child. Found only by
+scanning the generated JSON for characters outside the Japanese ranges.
+`generate_choukai_seed.py` now has an `assert_japanese()` guard applied
+to every `audioText`, prompt and option, so the class cannot recur.
+**Any future module whose content is spoken or displayed as Japanese
+should carry the same guard** — Kaiwa and Dokkai currently do not.
+
+Verified on device again after this batch: the level screen shows N5/N4/N3
+at "20 klip" each with N2/N1 "Segera", and an N3 clip opens with its
+inference-style question and four plausible options.
+
 ### Image manifests handed to the user
 
 The 9,150 missing Storage images are itemised at

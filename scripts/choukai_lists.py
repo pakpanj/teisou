@@ -48,8 +48,52 @@ N5_TITLES = [
     "Kelas Dimulai Jam Berapa",
 ]
 
-N4_TITLES = []
-N3_TITLES = []
+N4_TITLES = [
+    "Batal Pergi karena Hujan",
+    "Salah Turun Halte",
+    "Meminta Tolong Menjaga Adik",
+    "Barang Tertinggal di Kereta",
+    "Memilih Hadiah untuk Guru",
+    "Janji yang Harus Diundur",
+    "Cara ke Perpustakaan Kota",
+    "Lupa Membawa Dompet",
+    "Memesan Meja di Restoran",
+    "Mengembalikan Buku Terlambat",
+    "Kelas Tambahan Sepulang Sekolah",
+    "Menanyakan Jam Buka Toko",
+    "Teman yang Pindah Sekolah",
+    "Membantu Ibu Berbelanja",
+    "Kehujanan di Tengah Jalan",
+    "Menyiapkan Acara Kelas",
+    "Sepeda yang Rusak",
+    "Memilih Klub di Sekolah",
+    "Menelepon karena Terlambat",
+    "Rencana Piknik Bersama",
+]
+
+N3_TITLES = [
+    "Alasan Memilih Jurusan",
+    "Keluhan tentang Tetangga Berisik",
+    "Menawar Harga di Pasar",
+    "Kesalahpahaman dengan Teman",
+    "Wawancara Kerja Paruh Waktu",
+    "Membandingkan Dua Apartemen",
+    "Pengumuman Perubahan Jadwal",
+    "Meminta Maaf atas Kelalaian",
+    "Memilih Tempat Liburan",
+    "Diskusi Tugas Kelompok",
+    "Mengurus Kartu yang Hilang",
+    "Menolak Ajakan dengan Sopan",
+    "Membicarakan Rencana Masa Depan",
+    "Komplain Barang Rusak",
+    "Menjelaskan Cara Memakai Alat",
+    "Perubahan Kebiasaan Makan",
+    "Pindah ke Kota Lain",
+    "Menanyakan Syarat Pendaftaran",
+    "Kesulitan Mengatur Waktu",
+    "Menyampaikan Pesan dari Orang Lain",
+]
+
 N2_TITLES = []
 N1_TITLES = []
 
