@@ -51,14 +51,24 @@ def main():
     dokkai_ids = _ids("assets/data/dokkai_data.json")
 
     seen_ids = set()
-    seen_orders = set()
     entries = []
 
-    for ch in ALL_CHAPTERS:
+    # `order` is assigned from position in ALL_CHAPTERS rather than being
+    # written by hand on each chapter. It used to be hand-written, which
+    # made inserting a chapter into an earlier level mean renumbering
+    # every chapter after it — 73 of them, the first time N3 needed
+    # extending. Deriving it here makes insertion free and makes the
+    # contiguity assertion below true by construction. Progress is stored
+    # per `babId` (see BabProgressRepository), never per order, so a
+    # learner's completions follow their chapter when numbers shift.
+    for i, ch in enumerate(ALL_CHAPTERS, start=1):
         assert ch["id"] not in seen_ids, f"duplicate bab id: {ch['id']}"
-        assert ch["order"] not in seen_orders, f"duplicate bab order: {ch['order']}"
+        assert "order" not in ch, (
+            f"{ch['id']}: remove the hand-written order=; it is derived from "
+            "position in ALL_CHAPTERS"
+        )
+        ch = {**ch, "order": i}
         seen_ids.add(ch["id"])
-        seen_orders.add(ch["order"])
 
         for field, pool, name in [
             ("kotoba_ids", kotoba_ids, "kotoba"),
@@ -87,8 +97,18 @@ def main():
             "dokkaiIds": ch.get("dokkai_ids", []),
         })
 
-    assert seen_orders == set(range(1, len(ALL_CHAPTERS) + 1)), (
+    assert [e["order"] for e in entries] == list(range(1, len(entries) + 1)), (
         "bab order must be contiguous, starting at 1"
+    )
+    # Levels must appear in one unbroken run each, easiest-first: a level
+    # interleaved with another would make the mascot's cross-level
+    # "what's next" recommendation jump back and forth.
+    levels_seen = []
+    for e in entries:
+        if not levels_seen or levels_seen[-1] != e["level"]:
+            levels_seen.append(e["level"])
+    assert levels_seen == ["N5", "N4", "N3", "N2", "N1"][:len(levels_seen)], (
+        f"levels must run in one block each, easiest first; got {levels_seen}"
     )
 
     with open("assets/data/bab_data.json", "w", encoding="utf-8") as f:

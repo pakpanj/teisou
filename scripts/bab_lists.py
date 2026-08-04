@@ -193,7 +193,6 @@
 N5_CHAPTERS = [
     dict(
         id="bab_menyapa_dan_berkenalan",
-        order=1,
         level="N5",
         title="Menyapa dan Berkenalan",
         title_en="Greetings and Introductions",
@@ -206,7 +205,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_pekerjaan",
-        order=2,
         level="N5",
         title="Pekerjaan",
         title_en="Occupation",
@@ -224,7 +222,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_negara_dan_asal",
-        order=3,
         level="N5",
         title="Negara dan Asal",
         title_en="Countries and Origin",
@@ -241,7 +238,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_ulang_tahun_dan_umur",
-        order=4,
         level="N5",
         title="Ulang Tahun dan Umur",
         title_en="Birthday and Age",
@@ -259,7 +255,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_kore_sore_are",
-        order=5,
         level="N5",
         title="Ini, Itu, dan Itu (di Sana)",
         title_en="This, That, and That Over There",
@@ -272,7 +267,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_koko_soko_asoko",
-        order=6,
         level="N5",
         title="Di Sini, Di Situ, dan Di Sana",
         title_en="Here, There, and Over There",
@@ -285,7 +279,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_keluarga_dan_teman",
-        order=7,
         level="N5",
         title="Keluarga dan Teman",
         title_en="Family and Friends",
@@ -306,7 +299,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_hewan_peliharaan",
-        order=8,
         level="N5",
         title="Hewan Peliharaan",
         title_en="Pets",
@@ -324,7 +316,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_di_rumah",
-        order=9,
         level="N5",
         title="Di Rumah",
         title_en="At Home",
@@ -341,7 +332,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_di_rumah_sakit",
-        order=10,
         level="N5",
         title="Di Rumah Sakit",
         title_en="At the Hospital",
@@ -359,7 +349,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_memberi_dan_menerima",
-        order=11,
         level="N5",
         title="Memberi dan Menerima",
         title_en="Giving and Receiving",
@@ -375,7 +364,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_mengatakan_tidak",
-        order=12,
         level="N5",
         title="Mengatakan Tidak",
         title_en="Saying No",
@@ -388,7 +376,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_cuaca_dan_basa_basi",
-        order=13,
         level="N5",
         title="Cuaca dan Basa-basi",
         title_en="Weather and Small Talk",
@@ -405,7 +392,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_menanyakan_arah",
-        order=14,
         level="N5",
         title="Menanyakan Arah",
         title_en="Asking for Directions",
@@ -424,7 +410,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_stasiun_dan_transportasi",
-        order=15,
         level="N5",
         title="Stasiun dan Transportasi",
         title_en="Station and Transportation",
@@ -440,7 +425,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_hari_dan_jadwal",
-        order=16,
         level="N5",
         title="Hari dan Jadwal",
         title_en="Days and Schedule",
@@ -457,7 +441,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_rencana_liburan",
-        order=17,
         level="N5",
         title="Rencana Liburan",
         title_en="Vacation Plans",
@@ -474,7 +457,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_bisa_dan_tidak_bisa",
-        order=18,
         level="N5",
         title="Bisa dan Tidak Bisa",
         title_en="Good At and Not Good At",
@@ -487,7 +469,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_olahraga",
-        order=19,
         level="N5",
         title="Olahraga",
         title_en="Sports",
@@ -503,7 +484,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_warna",
-        order=20,
         level="N5",
         title="Warna",
         title_en="Colors",
@@ -522,7 +502,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_musim",
-        order=21,
         level="N5",
         title="Musim",
         title_en="Seasons",
@@ -541,7 +520,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_bioskop",
-        order=22,
         level="N5",
         title="Bioskop",
         title_en="Cinema",
@@ -557,7 +535,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_perbandingan",
-        order=23,
         level="N5",
         title="Perbandingan",
         title_en="Comparison",
@@ -570,7 +547,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_belanja",
-        order=24,
         level="N5",
         title="Belanja",
         title_en="Shopping",
@@ -586,7 +562,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_di_restoran",
-        order=25,
         level="N5",
         title="Di Restoran",
         title_en="At a Restaurant",
@@ -604,7 +579,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_angka_dan_uang",
-        order=26,
         level="N5",
         title="Angka dan Uang",
         title_en="Numbers and Money",
@@ -624,7 +598,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_buah_dan_sayuran",
-        order=27,
         level="N5",
         title="Buah dan Sayuran",
         title_en="Fruits and Vegetables",
@@ -643,7 +616,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_bentuk_te_dan_minta_tolong",
-        order=28,
         level="N5",
         title="Bentuk -Te dan Meminta Tolong",
         title_en="The -Te Form and Asking for Help",
@@ -666,7 +638,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_di_sekolah",
-        order=29,
         level="N5",
         title="Di Sekolah",
         title_en="At School",
@@ -683,7 +654,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_telepon",
-        order=30,
         level="N5",
         title="Telepon",
         title_en="Phone Calls",
@@ -699,7 +669,6 @@ N5_CHAPTERS = [
     ),
     dict(
         id="bab_kegiatan_sehari_hari",
-        order=31,
         level="N5",
         title="Kegiatan Sehari-hari",
         title_en="Daily Activities",
@@ -786,7 +755,6 @@ N5_CHAPTERS = [
 N4_CHAPTERS = [
     dict(
         id="bab_n4_melihat_dan_terdengar",
-        order=32,
         level="N4",
         title="Melihat dan Terdengar",
         title_en="Seeing and Hearing",
@@ -799,7 +767,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_sambil_melakukan_dan_sekaligus",
-        order=33,
         level="N4",
         title="Sambil Melakukan dan Sekaligus",
         title_en="Doing at the Same Time, and Listing Reasons",
@@ -812,7 +779,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_menominalkan_dengan_koto",
-        order=34,
         level="N4",
         title="Menominalkan dengan Koto",
         title_en="Turning a Verb into a Noun with Koto",
@@ -825,7 +791,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_terlanjur_dan_menyesal",
-        order=35,
         level="N4",
         title="Terlanjur dan Menyesal",
         title_en="Ending Up Doing Something, and Regret",
@@ -838,7 +803,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_bersiap_siap_sebelumnya",
-        order=36,
         level="N4",
         title="Bersiap-siap Sebelumnya",
         title_en="Preparing in Advance",
@@ -851,7 +815,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_ajakan_dan_niat",
-        order=37,
         level="N4",
         title="Ajakan dan Niat",
         title_en="Suggestions and Intentions",
@@ -864,7 +827,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_mungkin_saja_terjadi",
-        order=38,
         level="N4",
         title="Mungkin Saja Terjadi",
         title_en="It Might Happen",
@@ -877,7 +839,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_pengandaian_dengan_ba",
-        order=39,
         level="N4",
         title="Pengandaian dengan Ba",
         title_en="Conditionals with Ba",
@@ -890,7 +851,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_bentuk_pasif",
-        order=40,
         level="N4",
         title="Bentuk Pasif",
         title_en="The Passive Form",
@@ -903,7 +863,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_apakah_atau_tidak",
-        order=41,
         level="N4",
         title="Apakah ~ Atau Tidak",
         title_en="Whether or Not",
@@ -916,7 +875,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_kebaikan_diberi_dan_diterima",
-        order=42,
         level="N4",
         title="Kebaikan yang Diberi dan Diterima",
         title_en="Doing Favors For, and Receiving Favors From",
@@ -929,7 +887,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_tujuan_dan_penyesalan_dengan_noni",
-        order=43,
         level="N4",
         title="Tujuan dan Penyesalan dengan Noni",
         title_en="Purpose and Contrast with Noni",
@@ -946,7 +903,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_kesan_dan_perkiraan",
-        order=44,
         level="N4",
         title="Kesan dan Perkiraan",
         title_en="Impressions and Guesses",
@@ -959,7 +915,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_mudah_dan_sulit_dilakukan",
-        order=45,
         level="N4",
         title="Mudah dan Sulit Dilakukan",
         title_en="Easy and Hard to Do",
@@ -972,7 +927,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_dalam_kasus_tertentu",
-        order=46,
         level="N4",
         title="Dalam Kasus Tertentu",
         title_en="In That Case",
@@ -985,7 +939,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_baru_saja_terjadi",
-        order=47,
         level="N4",
         title="Baru Saja Terjadi",
         title_en="Just Happened",
@@ -998,7 +951,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_kabar_dengar_dan_dugaan",
-        order=48,
         level="N4",
         title="Kabar Dengar dan Dugaan",
         title_en="Hearsay and Inference",
@@ -1016,7 +968,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_bentuk_kausatif",
-        order=49,
         level="N4",
         title="Bentuk Kausatif",
         title_en="The Causative Form",
@@ -1029,7 +980,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_bahasa_sangat_sopan",
-        order=50,
         level="N4",
         title="Bahasa Sangat Sopan (Kenjougo)",
         title_en="Very Polite Language (Kenjougo)",
@@ -1073,7 +1023,6 @@ N4_CHAPTERS = [
     # （様態）+てくる.
     dict(
         id="bab_n4_bisa_dan_kadang_terjadi",
-        order=51,
         level="N4",
         title="Bisa Melakukan dan Kadang Terjadi",
         title_en="Being Able To, and Sometimes Happening",
@@ -1086,7 +1035,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_memutuskan_dan_ditetapkan",
-        order=52,
         level="N4",
         title="Memutuskan dan Ditetapkan",
         title_en="Deciding, and Being Decided",
@@ -1099,7 +1047,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_kewajiban_harus_melakukan",
-        order=53,
         level="N4",
         title="Kewajiban: Harus Melakukan",
         title_en="Obligation: Having to Do Something",
@@ -1112,7 +1059,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_pengandaian_dengan_tara",
-        order=54,
         level="N4",
         title="Pengandaian dengan Tara",
         title_en="Conditionals with Tara",
@@ -1125,7 +1071,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_seharusnya_dan_tidak_mungkin",
-        order=55,
         level="N4",
         title="Seharusnya dan Tidak Mungkin",
         title_en="Should Be the Case, and Can't Possibly Be",
@@ -1138,7 +1083,6 @@ N4_CHAPTERS = [
     ),
     dict(
         id="bab_n4_kesan_dan_dugaan_dari_luar",
-        order=56,
         level="N4",
         title="Kesan Kasual dan Kabar dari Luar",
         title_en="Casual Impressions and Outside Information",
@@ -1148,6 +1092,261 @@ N4_CHAPTERS = [
         kanji_ids=["kanji_karada", "kanji_motsu"],
         bunpou_ids=["bunpou_mitai_da", "bunpou_rashii"],
         kaiwa_ids=["kaiwa_gabung_klub_olahraga_n4"],
+    ),
+    # ---- N4 phase 2 (2026-08-04): +20 chapters, 57 patterns ----
+    #
+    # The first N4 pass took its 25 chapters straight from Minna no
+    # Nihongo II's 25 lessons, which left 94 of the level's 134 patterns
+    # untouched. These 20 chapters group functionally from that remainder
+    # (the ように family, polite-request ladder, sonkeigo, causative,
+    # third-person feelings, verb-phase compounds, question particles,
+    # quoting, and so on) and include しか〜ない and てくださいませんか, the two
+    # N4 points the So-matome cross-check found missing from the dataset.
+    #
+    # Kaiwa: 18 of 20 matched automatically; a hand-check of the
+    # surrounding text rejected 5 as substring false positives (「指導教員に
+    # なります」 is plain になる not お～になる; 「そうなんですね」 is not そうな;
+    # 「広がっていく」 is 広がる not the がる suffix; 「間に合った」 is 間に合う;
+    # 「予定が変わって」 is the bare noun). 13 verified links remain.
+    dict(
+        id="bab_n4_p2_batas",
+        level="N4",
+        title="Batas Waktu, Jumlah Sedikit, dan Hanya Segitu",
+        title_en="Deadlines, Small Amounts, and Only That Much",
+        description="Pola しか～ない, までに dan あまり～ない.",
+        description_en="The しか～ない, までに and あまり～ない patterns.",
+        kotoba_ids=["kotoba_jikan", "kotoba_hari_bulan_jikan"],
+        kanji_ids=["kanji_ichi", "kanji_hito"],
+        bunpou_ids=["bunpou_shika", "bunpou_made_ni", "bunpou_amari_nai"],
+        kaiwa_ids=["kaiwa_pesan_acara_kantor_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_sedang_proses",
+        level="N4",
+        title="Sedang Berlangsung dan Baru Saja Selesai",
+        title_en="In Progress, and Just Finished",
+        description="Pola ているところ, たところ dan ていた.",
+        description_en="The ているところ, たところ and ていた patterns.",
+        kotoba_ids=["kotoba_kyou", "kotoba_jikan"],
+        kanji_ids=["kanji_hi", "kanji_ji"],
+        bunpou_ids=["bunpou_te_iru_tokoro", "bunpou_ta_tokoro", "bunpou_te_ita"],
+        kaiwa_ids=["kaiwa_ajak_nonton_bioskop_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_youni",
+        level="N4",
+        title="Keluarga ように: Berusaha dan Menjadi Bisa",
+        title_en="The ように Family: Trying To, and Coming To Be Able",
+        description="Pola ようにする, ようになる dan ように / ような.",
+        description_en="The ようにする, ようになる and ように / ような patterns.",
+        kotoba_ids=["kotoba_hari_bulan_konkai", "kotoba_hari_bulan_kondo"],
+        kanji_ids=["kanji_ji", "kanji_fun"],
+        bunpou_ids=["bunpou_you_ni_suru", "bunpou_you_ni_naru", "bunpou_youni_youna"],
+        kaiwa_ids=["kaiwa_cerita_kesalahan_dipelajari_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_minta_sopan",
+        level="N4",
+        title="Meminta dengan Sangat Sopan",
+        title_en="Making a Very Polite Request",
+        description="Pola てくださいませんか, ていただけませんか dan お～ください.",
+        description_en="The てくださいませんか, ていただけませんか and お～ください patterns.",
+        kotoba_ids=["kotoba_konsep_umum_kakunin", "kotoba_konsep_umum_chuumon"],
+        kanji_ids=["kanji_ji", "kanji_fun"],
+        bunpou_ids=["bunpou_te_kudasaimasen_ka", "bunpou_te_itadakemasen_ka", "bunpou_o_verb_kudasai"],
+        kaiwa_ids=["kaiwa_pesan_alergi_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_sonkeigo",
+        level="N4",
+        title="Bahasa Hormat untuk Lawan Bicara",
+        title_en="Honorific Language for the Listener",
+        description="Pola お～になる dan なさる.",
+        description_en="The お～になる and なさる patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_o_ni_naru", "bunpou_nasaru"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n4_p2_sopan_khusus",
+        level="N4",
+        title="Kata Sopan Khusus: いらっしゃる dan ございます",
+        title_en="Special Polite Verbs: irassharu and gozaimasu",
+        description="Pola いらっしゃる dan ございます.",
+        description_en="The いらっしゃる and ございます patterns.",
+        kotoba_ids=["kotoba_kazoku", "kotoba_kyoudai"],
+        kanji_ids=["kanji_ichi", "kanji_hito"],
+        bunpou_ids=["bunpou_irassharu", "bunpou_gozaimasu"],
+        kaiwa_ids=["kaiwa_jelaskan_latar_keluarga_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_kausatif",
+        level="N4",
+        title="Dipaksa Melakukan, dan Meminta Izin",
+        title_en="Being Made To Do, and Asking Permission",
+        description="Pola させられる dan させてください.",
+        description_en="The させられる and させてください patterns.",
+        kotoba_ids=["kotoba_kinou", "kotoba_hari_bulan_kinou"],
+        kanji_ids=["kanji_hi", "kanji_ji"],
+        bunpou_ids=["bunpou_saserareru", "bunpou_sasete_kudasai"],
+        kaiwa_ids=["kaiwa_komplain_produk_sopan_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_kelihatan",
+        level="N4",
+        title="Kelihatannya Begitu",
+        title_en="It Looks That Way",
+        description="Pola そうに / そうな, みたいな dan みたいに.",
+        description_en="The そうに / そうな, みたいな and みたいに patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_souni_souna", "bunpou_mitai_na", "bunpou_mitai_ni"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n4_p2_perasaan_orang",
+        level="N4",
+        title="Menyebut Perasaan Orang Lain",
+        title_en="Describing Someone Else’s Feelings",
+        description="Pola がる / がっている, がり dan たがる.",
+        description_en="The がる / がっている, がり and たがる patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_garu", "bunpou_gari", "bunpou_tagaru"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n4_p2_memberi_menerima",
+        level="N4",
+        title="Mencoba, Memberi, dan Menerima Kebaikan",
+        title_en="Trying, Giving, and Receiving a Favour",
+        description="Pola てみる, てもらう dan てやる.",
+        description_en="The てみる, てもらう and てやる patterns.",
+        kotoba_ids=["kotoba_kendaraan_densha", "kotoba_konsep_umum_seichou"],
+        kanji_ids=["kanji_ichi", "kanji_hito"],
+        bunpou_ids=["bunpou_te_miru", "bunpou_te_morau", "bunpou_te_yaru"],
+        kaiwa_ids=["kaiwa_cerita_naik_sendiri_pertama_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_mulai_selesai",
+        level="N4",
+        title="Mulai dan Berhenti Melakukan",
+        title_en="Starting and Finishing an Action",
+        description="Pola 始める（はじめる）, 出す（だす）, 続ける（つづける） dan 終わる（おわる）.",
+        description_en="The 始める（はじめる）, 出す（だす）, 続ける（つづける） and 終わる（おわる） patterns.",
+        kotoba_ids=["kotoba_jikan", "kotoba_hari_bulan_mainichi"],
+        kanji_ids=["kanji_ni", "kanji_hi"],
+        bunpou_ids=["bunpou_hajimeru", "bunpou_dasu", "bunpou_tsuzukeru", "bunpou_owaru"],
+        kaiwa_ids=["kaiwa_berhenti_hobi_lama_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_sulit",
+        level="N4",
+        title="Dua Macam Kesulitan: にくい dan づらい",
+        title_en="Two Kinds of Difficulty: nikui and zurai",
+        description="Pola にくい dan づらい.",
+        description_en="The にくい and づらい patterns.",
+        kotoba_ids=["kotoba_bangunan_fasilitas_annai", "kotoba_konsep_umum_kitai"],
+        kanji_ids=["kanji_ji", "kanji_fun"],
+        bunpou_ids=["bunpou_nikui", "bunpou_zurai"],
+        kaiwa_ids=["kaiwa_saran_papan_informasi_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_rentang_waktu",
+        level="N4",
+        title="Selama, Di Suatu Saat, dan Sekitar",
+        title_en="During, At Some Point Within, and Around",
+        description="Pola 間（あいだ）, 間に（あいだに） dan 頃（ころ / ごろ）.",
+        description_en="The 間（あいだ）, 間に（あいだに） and 頃（ころ / ごろ） patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_aida", "bunpou_aida_ni", "bunpou_koro_goro"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n4_p2_pengandaian",
+        level="N4",
+        title="Tiga Cara Mengandaikan",
+        title_en="Three Ways to Suppose",
+        description="Pola なら, と dan ても.",
+        description_en="The なら, と and ても patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_nara", "bunpou_to2", "bunpou_temo"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n4_p2_partikel_tanya",
+        level="N4",
+        title="Partikel Tanya yang Lembut",
+        title_en="Softer Question Particles",
+        description="Pola かな, かしら dan かい.",
+        description_en="The かな, かしら and かい patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_kana", "bunpou_kashira", "bunpou_kai"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n4_p2_menyampaikan",
+        level="N4",
+        title="Menyampaikan Pikiran dan Kabar",
+        title_en="Reporting a Thought or What You Heard",
+        description="Pola と思う（とおもう）, と聞いた（ときいた） dan と言われている（といわれている）.",
+        description_en="The と思う（とおもう）, と聞いた（ときいた） and と言われている（といわれている） patterns.",
+        kotoba_ids=["kotoba_hari_bulan_kondo", "kotoba_hari_bulan_saikin"],
+        kanji_ids=["kanji_ji", "kanji_fun"],
+        bunpou_ids=["bunpou_to_omou", "bunpou_to_kiita", "bunpou_to_iwarete_iru"],
+        kaiwa_ids=["kaiwa_temu_teman_berubah_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_mengutip",
+        level="N4",
+        title="Mengutip dan Menamai",
+        title_en="Quoting and Naming",
+        description="Pola という, ということ dan って.",
+        description_en="The という, ということ and って patterns.",
+        kotoba_ids=["kotoba_hobi_aktivitas_ryouri", "kotoba_konsep_umum_ichibu"],
+        kanji_ids=["kanji_ichi", "kanji_ji"],
+        bunpou_ids=["bunpou_to_iu", "bunpou_to_iu_koto", "bunpou_tte"],
+        kaiwa_ids=["kaiwa_komentar_perubahan_menu_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_keterangan",
+        level="N4",
+        title="Pasti, Tolong Sekali, dan Akhirnya",
+        title_en="Surely, Do Please, and At Last",
+        description="Pola きっと, ぜひ dan やっと.",
+        description_en="The きっと, ぜひ and やっと patterns.",
+        kotoba_ids=["kotoba_hobi_aktivitas_ryouri"],
+        kanji_ids=["kanji_ji", "kanji_fun"],
+        bunpou_ids=["bunpou_kitto", "bunpou_zehi", "bunpou_yatto"],
+        kaiwa_ids=["kaiwa_rekomendasi_menu_ragu_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_penyangkalan",
+        level="N4",
+        title="Sama Sekali Tidak dan Tidak Kunjung",
+        title_en="Not At All, and Not Yet Despite Trying",
+        description="Pola 全然～ない（ぜんぜん～ない）, なかなか～ない dan そんなに.",
+        description_en="The 全然～ない（ぜんぜん～ない）, なかなか～ない and そんなに patterns.",
+        kotoba_ids=["kotoba_hobi_aktivitas_chousen", "kotoba_konsep_umum_ketsudan"],
+        kanji_ids=["kanji_ji", "kanji_fun"],
+        bunpou_ids=["bunpou_zenzen_nai", "bunpou_nakanaka_nai", "bunpou_sonna_ni"],
+        kaiwa_ids=["kaiwa_jelaskan_alasan_berhenti_kerja_n4"],
+    ),
+    dict(
+        id="bab_n4_p2_rencana",
+        level="N4",
+        title="Rencana, Meminta Saran, dan Menyadari",
+        title_en="Plans, Asking for Advice, and Realising",
+        description="Pola 予定だ（よていだ）, たらいいですか dan に気がつく.",
+        description_en="The 予定だ（よていだ）, たらいいですか and に気がつく patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_yotei_da", "bunpou_tara_ii_desu_ka", "bunpou_ni_ki_ga_tsuku"],
+        kaiwa_ids=[],
     ),
 ]
 
@@ -1198,7 +1397,6 @@ N4_CHAPTERS = [
 N3_CHAPTERS = [
     dict(
         id="bab_n3_selagi_dan_berkat",
-        order=57,
         level="N3",
         title="Selagi Masih dan Berkat Bantuan",
         title_en="While It's Still, and Thanks To",
@@ -1211,7 +1409,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_penekanan_dan_peraturan",
-        order=58,
         level="N3",
         title="Penekanan Kuat dan Peraturan Tertulis",
         title_en="Strong Emphasis and Written Rules",
@@ -1224,7 +1421,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_tak_perlu_dan_sebisa_mungkin",
-        order=59,
         level="N3",
         title="Tidak Perlu dan Sebisa Mungkin",
         title_en="No Need To, and As Much As Possible",
@@ -1237,7 +1433,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_tanpa_sadar_dan_baru_setelah",
-        order=60,
         level="N3",
         title="Tanpa Sadar dan Baru Setelah Mengalami",
         title_en="Without Meaning To, and Only After Experiencing",
@@ -1250,7 +1445,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_bukannya_tidak_dan_tentang",
-        order=61,
         level="N3",
         title="Bukannya Tidak Mungkin, dan Tentang Sesuatu",
         title_en="It's Not That It's Impossible, and About Something",
@@ -1263,7 +1457,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_bagi_seseorang_dan_sepadan",
-        order=62,
         level="N3",
         title="Bagi Seseorang, dan Sepadan Jumlahnya",
         title_en="For Someone, and About As Much As",
@@ -1276,7 +1469,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_tak_ada_cara_dan_berusaha",
-        order=63,
         level="N3",
         title="Tidak Ada Cara, dan Berusaha untuk",
         title_en="No Way To, and Trying To",
@@ -1289,7 +1481,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_semoga_dan_pantas_saja",
-        order=64,
         level="N3",
         title="Semoga dan Pantas Saja",
         title_en="May It Be, and No Wonder",
@@ -1302,7 +1493,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_tapi_kasual_dan_mengingat",
-        order=65,
         level="N3",
         title="Tapi (Kasual) dan Mengingat Kembali",
         title_en="But (Casual), and Recalling Something",
@@ -1315,7 +1505,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_sebagai_dan_harus",
-        order=66,
         level="N3",
         title="Sebagai Peran, dan Harus (Kasual)",
         title_en="As a Role, and Must (Casual)",
@@ -1328,7 +1517,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_cukup_saja_dan_berdasarkan",
-        order=67,
         level="N3",
         title="Cukup Begitu Saja, dan Berdasarkan Sesuatu",
         title_en="It's Enough Just To, and Based On Something",
@@ -1341,7 +1529,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_seperti_dan_untuk_tujuan",
-        order=68,
         level="N3",
         title="Seperti Sekali, dan Untuk Tujuan Tertentu",
         title_en="Just Like, and For a Specific Purpose",
@@ -1354,7 +1541,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_demi_tujuan_dan_termasuk",
-        order=69,
         level="N3",
         title="Demi Suatu Tujuan, dan Termasuk di Dalamnya",
         title_en="For the Sake Of, and Including",
@@ -1367,7 +1553,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_seharusnya_dan_seharusnya_tidak",
-        order=70,
         level="N3",
         title="Seharusnya Melakukan, dan Seharusnya Tidak",
         title_en="Should Do, and Should Not Do",
@@ -1380,7 +1565,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_sementara_dan_aturan_berlaku",
-        order=71,
         level="N3",
         title="Untuk Sementara, dan Sudah Menjadi Aturan",
         title_en="For the Time Being, and It's the Established Rule",
@@ -1393,7 +1577,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_berniat_tapi_gagal_dan_dengan_anggapan",
-        order=72,
         level="N3",
         title="Sudah Berniat tapi Gagal, dan Berpura-pura",
         title_en="Had Intended To But Didn't, and Pretending To",
@@ -1406,7 +1589,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_setiap_kali_dan_karena_terlalu",
-        order=73,
         level="N3",
         title="Setiap Kali, dan Karena Terlalu Berlebihan",
         title_en="Every Time, and Because of Too Much",
@@ -1419,7 +1601,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_mulai_melakukan_dan_dalam_hal",
-        order=74,
         level="N3",
         title="Mulai Melakukan, dan Dalam Hal Keahlian",
         title_en="Starting To Do, and When It Comes To",
@@ -1432,7 +1613,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_definisi_dan_gara_gara",
-        order=75,
         level="N3",
         title="Maksudnya Adalah, dan Gara-gara Sesuatu",
         title_en="What It Means Is, and Because Of (Negative)",
@@ -1445,7 +1625,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_bukan_berarti_dan_sekalipun",
-        order=76,
         level="N3",
         title="Bukan Berarti, dan Sekalipun Begitu",
         title_en="It Doesn't Mean, and Even If",
@@ -1458,7 +1637,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_meski_disebut_dan_lebih_lanjut",
-        order=77,
         level="N3",
         title="Meski Disebut Begitu, dan Lebih Lanjut Lagi",
         title_en="Even Though It's Called That, and Furthermore",
@@ -1471,7 +1649,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_bukan_hanya_dan_sesuai_dengan",
-        order=78,
         level="N3",
         title="Bukan Hanya Itu, dan Sesuai dengan Yang Ada",
         title_en="Not Only That, and Just As It Is",
@@ -1484,7 +1661,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_baru_saja_selesai_dan_tak_mau_berusaha",
-        order=79,
         level="N3",
         title="Baru Saja Selesai Dibuat, dan Enggan Berusaha",
         title_en="Freshly Made, and Refusing to Try",
@@ -1497,7 +1673,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_mencari_persetujuan_dan_bagaimanapun_juga",
-        order=80,
         level="N3",
         title="Mencari Persetujuan, dan Bagaimanapun Juga",
         title_en="Seeking Agreement, and No Matter What",
@@ -1510,7 +1685,6 @@ N3_CHAPTERS = [
     ),
     dict(
         id="bab_n3_sebisa_mungkin_dan_kenangan_lama",
-        order=81,
         level="N3",
         title="Sebisa Mungkin, dan Kenangan Kebiasaan Lama",
         title_en="As Much As Possible, and Nostalgic Old Habits",
@@ -1520,6 +1694,268 @@ N3_CHAPTERS = [
         kanji_ids=["kanji_hiru", "kanji_omou"],
         bunpou_ids=["bunpou_narubeku", "bunpou_ta_mono_da"],
         kaiwa_ids=["kaiwa_nonton_sendirian_n3"],
+    ),
+    # ---- N3 phase 2 (2026-08-04): +20 chapters, 53 patterns ----
+    #
+    # N3 was the weakest level in the curriculum (27% of its patterns
+    # covered) for a self-inflicted reason: the first pass read only pages
+    # 13-55 of Speed Master and stopped there. With the full So-matome N3
+    # book now available, chapters 1-15 below follow **its** six-week
+    # syllabus for the 20 of its grammar points that were not yet in any
+    # chapter, and 16-20 group functionally from the rest of the unused
+    # pool (tendency suffixes, formal topic markers, "as X changes",
+    # through/centred-on, and timing).
+    #
+    # This also lands the five patterns re-levelled or authored in the
+    # So-matome cross-check earlier today (ことだ, ばかりか, ところだった,
+    # その上, そのかわり) into real chapters, closing the gap that entry
+    # explicitly left open.
+    #
+    # Kaiwa: 16 of 20 chapters matched automatically, but a hand-check of
+    # the surrounding text rejected 7 as substring false positives — see
+    # the REJECTED tuple in the session's run_n3.py for exactly what each
+    # one actually matched (「昨日始まったばかりです」 is たばかり, 「すっきり」
+    # is not っきり, 「実際に」 is not 際に, and so on). 9 verified links
+    # remain; the other 11 chapters ship kaiwa_ids=[] on purpose.
+    dict(
+        id="bab_n3_p2_bakari",
+        level="N3",
+        title="Keluarga ばかり: Melulu dan Bukan Hanya",
+        title_en="The ばかり Family: Nothing But, and Not Only",
+        description="Pola ばかりで, ばかりでなく dan てばかりいる.",
+        description_en="The ばかりで, ばかりでなく and てばかりいる patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_bakari_de", "bunpou_bakari_denaku", "bunpou_te_bakari_iru"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n3_p2_niyoru",
+        level="N3",
+        title="Oleh, Tergantung, dan Menurut Sumber",
+        title_en="By, Depending On, and According To",
+        description="Pola によって / による dan によると /によれば.",
+        description_en="The によって / による and によると /によれば patterns.",
+        kotoba_ids=["kotoba_hari_bulan_shuukan", "kotoba_hobi_aktivitas_shashin"],
+        kanji_ids=["kanji_omou", "kanji_wakareru"],
+        bunpou_ids=["bunpou_ni_yotte_niyoru", "bunpou_ni_yoru_to_ni_yoreba"],
+        kaiwa_ids=["kaiwa_klaim_asuransi_barang_rusak_n3"],
+    ),
+    dict(
+        id="bab_n3_p2_to_iu",
+        level="N3",
+        title="Menyebut Ulang dengan Kata Lain",
+        title_en="Rephrasing and Reintroducing a Topic",
+        description="Pola というより, と言えば（といえば） dan と言うと（というと）.",
+        description_en="The というより, と言えば（といえば） and と言うと（というと） patterns.",
+        kotoba_ids=["kotoba_hobi_aktivitas_gaishoku", "kotoba_konsep_umum_ishiki"],
+        kanji_ids=["kanji_karada", "kanji_kawaru"],
+        bunpou_ids=["bunpou_to_iu_yori", "bunpou_to_ieba", "bunpou_to_iu_to"],
+        kaiwa_ids=["kaiwa_alasan_vegetarian_n3"],
+    ),
+    dict(
+        id="bab_n3_p2_sebanyakpun",
+        level="N3",
+        title="Sebanyak Apa Pun, Tetap Saja",
+        title_en="However Much, It Still Stands",
+        description="Pola いくら～ても, どんなに～ても dan たとえ～ても.",
+        description_en="The いくら～ても, どんなに～ても and たとえ～ても patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ikura_temo", "bunpou_donnani_temo", "bunpou_tatoe_temo"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n3_p2_untuk_ukuran",
+        level="N3",
+        title="Untuk Ukurannya, di Luar Dugaan",
+        title_en="For What It Is, Unexpectedly So",
+        description="Pola にしては dan 割に（わりに）.",
+        description_en="The にしては and 割に（わりに） patterns.",
+        kotoba_ids=["kotoba_arah_lokasi_chuushin", "kotoba_bangunan_fasilitas_ekimae"],
+        kanji_ids=["kanji_do", "kanji_kokoro"],
+        bunpou_ids=["bunpou_ni_shite_wa", "bunpou_wari_ni"],
+        kaiwa_ids=["kaiwa_rekomendasi_restoran_teman_n3"],
+    ),
+    dict(
+        id="bab_n3_p2_mencela",
+        level="N3",
+        title="Padahal Begitu, Nada Mencela",
+        title_en="Even Though, With a Critical Tone",
+        description="Pola くせに dan ながらも.",
+        description_en="The くせに and ながらも patterns.",
+        kotoba_ids=["kotoba_kendaraan_touchaku", "kotoba_konsep_umum_taiou"],
+        kanji_ids=["kanji_do", "kanji_atama"],
+        bunpou_ids=["bunpou_kuse_ni", "bunpou_nagara_mo"],
+        kaiwa_ids=["kaiwa_telepon_darurat_n3"],
+    ),
+    dict(
+        id="bab_n3_p2_nasihat",
+        level="N3",
+        title="Nasihat Tegas dan Tidak Ada Pilihan",
+        title_en="Firm Advice, and Having No Choice",
+        description="Pola ことだ, しかない dan わけにはいかない.",
+        description_en="The ことだ, しかない and わけにはいかない patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_koto_da", "bunpou_shika_nai", "bunpou_wake_ni_wa_ikanai"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n3_p2_menjelaskan",
+        level="N3",
+        title="Menyimpulkan dan Menjelaskan",
+        title_en="Summing Up and Explaining",
+        description="Pola つまり, すなわち dan なぜなら.",
+        description_en="The つまり, すなわち and なぜなら patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_tsumari", "bunpou_sunawachi", "bunpou_nazenara"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n3_p2_bukan_hanya",
+        level="N3",
+        title="Bukan Hanya Itu, Ada Tambahannya",
+        title_en="Not Only That, There Is More",
+        description="Pola ばかりか, その上（そのうえ） dan はもちろん.",
+        description_en="The ばかりか, その上（そのうえ） and はもちろん patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_bakari_ka", "bunpou_sono_ue", "bunpou_wa_mochiron"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n3_p2_sebaliknya",
+        level="N3",
+        title="Sebagai Gantinya, dan Ternyata Sebaliknya",
+        title_en="In Exchange, and Yet Contrary to That",
+        description="Pola そのかわり dan ところが.",
+        description_en="The そのかわり and ところが patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_sono_kawari", "bunpou_tokoroga"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n3_p2_nyaris",
+        level="N3",
+        title="Nyaris Terjadi, dan Sepertinya Tidak Akan",
+        title_en="A Near Miss, and an Unlikely Outcome",
+        description="Pola ところだった dan そうもない /そうにない.",
+        description_en="The ところだった and そうもない /そうにない patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_tokoro_datta", "bunpou_sou_mo_nai"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n3_p2_mustahil",
+        level="N3",
+        title="Tidak Mungkin, dan Belum Tentu",
+        title_en="Impossible, and Not Necessarily",
+        description="Pola わけがない, とは限らない（とはかぎらない） dan とても～ない.",
+        description_en="The わけがない, とは限らない（とはかぎらない） and とても～ない patterns.",
+        kotoba_ids=["kotoba_hobi_aktivitas_eiga", "kotoba_konsep_umum_kitai"],
+        kanji_ids=["kanji_kokoro", "kanji_tsukuru"],
+        bunpou_ids=["bunpou_wake_ga_nai", "bunpou_to_wa_kagiranai", "bunpou_totemo_nai"],
+        kaiwa_ids=["kaiwa_adaptasi_novel_ke_film_n3"],
+    ),
+    dict(
+        id="bab_n3_p2_jarang",
+        level="N3",
+        title="Jarang, Sama Sekali Tidak, dan Tidak Khususnya",
+        title_en="Rarely, Never, and Not Particularly",
+        description="Pola めったに～ない, 決して～ない（けっして～ない） dan 別に～ない（べつに～ない）.",
+        description_en="The めったに～ない, 決して～ない（けっして～ない） and 別に～ない（べつに～ない） patterns.",
+        kotoba_ids=["kotoba_konsep_umum_kekka", "kotoba_konsep_umum_shinrai"],
+        kanji_ids=["kanji_kokoro", "kanji_yamai"],
+        bunpou_ids=["bunpou_metta_ni_nai", "bunpou_kesshite_nai", "bunpou_betsuni_nai"],
+        kaiwa_ids=["kaiwa_alasan_second_opinion_n3"],
+    ),
+    dict(
+        id="bab_n3_p2_dibiarkan",
+        level="N3",
+        title="Hanya Sekali Itu, dan Dibiarkan Begitu Saja",
+        title_en="Just That Once, and Left As It Is",
+        description="Pola きり dan っぱなし.",
+        description_en="The きり and っぱなし patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_kiri", "bunpou_ppanashi"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n3_p2_ganti_topik",
+        level="N3",
+        title="Mengalihkan Pembicaraan",
+        title_en="Changing the Subject",
+        description="Pola ところで dan さて.",
+        description_en="The ところで and さて patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_tokorode", "bunpou_sate"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n3_p2_kecenderungan",
+        level="N3",
+        title="Cenderung, Agak, dan Terkesan",
+        title_en="Prone To, Slightly, and Seeming",
+        description="Pola がち, 気味（ぎみ） dan っぽい.",
+        description_en="The がち, 気味（ぎみ） and っぽい patterns.",
+        kotoba_ids=["kotoba_hari_bulan_inai", "kotoba_kendaraan_teiki"],
+        kanji_ids=["kanji_do", "kanji_tsukau"],
+        bunpou_ids=["bunpou_gachi", "bunpou_gimi", "bunpou_ppoi"],
+        kaiwa_ids=["kaiwa_sistem_poin_member_n3"],
+    ),
+    dict(
+        id="bab_n3_p2_topik_formal",
+        level="N3",
+        title="Menandai Topik secara Formal",
+        title_en="Marking a Topic Formally",
+        description="Pola に対して（にたいして）, に関する / に関して（にかんする / にかんして） dan において / における.",
+        description_en="The に対して（にたいして）, に関する / に関して（にかんする / にかんして） and において / における patterns.",
+        kotoba_ids=["kotoba_hari_bulan_kako", "kotoba_konsep_umum_kansha"],
+        kanji_ids=["kanji_hikari", "kanji_omou"],
+        bunpou_ids=["bunpou_ni_taishite", "bunpou_ni_kansuru", "bunpou_nioite_niokeru"],
+        kaiwa_ids=["kaiwa_nilai_nilai_hidup_n3"],
+    ),
+    dict(
+        id="bab_n3_p2_seiring",
+        level="N3",
+        title="Seiring Berubahnya Sesuatu",
+        title_en="As One Thing Changes With Another",
+        description="Pola につれて, にしたがって dan と共に（とともに）.",
+        description_en="The につれて, にしたがって and と共に（とともに） patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ni_tsurete", "bunpou_ni_shitagatte", "bunpou_to_tomo_ni"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n3_p2_melalui",
+        level="N3",
+        title="Melalui, Berpusat Pada, dan Dengan Sepenuh Hati",
+        title_en="Through, Centred On, and Wholeheartedly",
+        description="Pola を通じて / を通して（をつうじて / をとおして）, を中心に（をちゅうしんに） dan を込めて（をこめて）.",
+        description_en="The を通じて / を通して（をつうじて / をとおして）, を中心に（をちゅうしんに） and を込めて（をこめて） patterns.",
+        kotoba_ids=["kotoba_arah_lokasi_chuushin", "kotoba_hari_bulan_kikan"],
+        kanji_ids=["kanji_kokoro", "kanji_tsukau"],
+        bunpou_ids=["bunpou_o_tsuujite_o_tooshite", "bunpou_o_chuushin_ni", "bunpou_o_komete"],
+        kaiwa_ids=["kaiwa_rencana_jr_pass_n3"],
+    ),
+    dict(
+        id="bab_n3_p2_waktu_tepat",
+        level="N3",
+        title="Tepat Pada Saat Itu",
+        title_en="At That Very Moment",
+        description="Pola たとたん, 最中に（さいちゅうに） dan 際に（さいに）.",
+        description_en="The たとたん, 最中に（さいちゅうに） and 際に（さいに） patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ta_totan", "bunpou_saichuu_ni", "bunpou_sai_ni"],
+        kaiwa_ids=[],
     ),
 ]
 
@@ -1574,7 +2010,6 @@ N3_CHAPTERS = [
 N2_CHAPTERS = [
     dict(
         id="bab_n2_alasan_manja_dan_mengesampingkan",
-        order=82,
         level="N2",
         title="Alasan Bernada Manja, dan Mengesampingkan Sesuatu",
         title_en="A Whiny Excuse, and Setting Something Aside",
@@ -1592,7 +2027,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_tak_tertahankan_dan_situasi_mendesak",
-        order=83,
         level="N2",
         title="Tak Tertahankan, dan Situasi Mendesak",
         title_en="Unbearably So, and an Urgent Situation",
@@ -1605,7 +2039,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_sepadan_hasilnya_dan_tak_bisa",
-        order=84,
         level="N2",
         title="Sepadan Hasilnya, dan Tidak Bisa Melakukan",
         title_en="Worth the Effort, and Unable To",
@@ -1624,7 +2057,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_selama_kondisi_dan_secara_teori",
-        order=85,
         level="N2",
         title="Selama Kondisi Ini, dan Secara Teori",
         title_en="As Long As, and On Paper",
@@ -1637,7 +2069,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_menanggapi_harapan_dan_sambil",
-        order=86,
         level="N2",
         title="Menanggapi Harapan, dan Melakukan Sambil",
         title_en="Responding to Expectations, and Doing While",
@@ -1650,7 +2081,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_terpaksa_harus_dan_dalam_rangka",
-        order=87,
         level="N2",
         title="Terpaksa Harus, dan Dalam Rangka Sesuatu",
         title_en="Have No Choice But To, and In Preparation For",
@@ -1663,7 +2093,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_tentu_saja_begitu_dan_untung_masih",
-        order=88,
         level="N2",
         title="Tentu Saja Begitu, dan Untung Masih Mendingan",
         title_en="Of Course, That's How They Are, and At Least It's Not Worse",
@@ -1676,7 +2105,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_justru_karena_dan_berdasarkan",
-        order=89,
         level="N2",
         title="Justru Karena Itu, dan Berdasarkan Sesuatu",
         title_en="Precisely Because Of, and Based On",
@@ -1689,7 +2117,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_karena_sudah_dan_dari_sudut_pandang",
-        order=90,
         level="N2",
         title="Karena Sudah Terlanjur, dan Dari Sudut Pandang",
         title_en="Now That It's Done, and From a Certain Viewpoint",
@@ -1702,7 +2129,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_ragu_dua_pilihan_dan_sudah_pasti",
-        order=91,
         level="N2",
         title="Ragu Antara Dua Pilihan, dan Sudah Pasti",
         title_en="Torn Between Two Choices, and Certainly So",
@@ -1715,7 +2141,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_seputar_topik_dan_tanpa_memandang",
-        order=92,
         level="N2",
         title="Seputar Suatu Topik, dan Tanpa Memandang",
         title_en="Surrounding a Topic, and Regardless Of",
@@ -1728,7 +2153,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_memang_seharusnya_dan_kesan_mendalam",
-        order=93,
         level="N2",
         title="Memang Seharusnya Begitu, dan Kesan Mendalam",
         title_en="That's How It Should Be, and a Deep Impression",
@@ -1747,7 +2171,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_berdasarkan_acuan_dan_padahal_begitu",
-        order=94,
         level="N2",
         title="Berdasarkan Suatu Acuan, dan Padahal Begitu",
         title_en="Based On a Reference, and Despite That",
@@ -1760,7 +2183,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_jadi_teringat_dan_alasan_informal",
-        order=95,
         level="N2",
         title="Jadi Teringat, dan Alasan Bernada Informal",
         title_en="That Reminds Me, and a Casual Reason",
@@ -1780,7 +2202,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_menyimpulkan_dan_pengecualian_kecil",
-        order=96,
         level="N2",
         title="Menyimpulkan Sesuatu, dan Pengecualian Kecil",
         title_en="Drawing a Conclusion, and a Small Exception",
@@ -1793,7 +2214,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_ditambah_lagi",
-        order=97,
         level="N2",
         title="Ditambah Lagi Hal yang Tidak Diinginkan",
         title_en="On Top of That",
@@ -1806,7 +2226,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_01",
-        order=98,
         level="N2",
         title="Pada Akhirnya Setelah Proses Panjang",
         title_en="At Last After a Long Process",
@@ -1819,7 +2238,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_02",
-        order=99,
         level="N2",
         title="ばかり: Terus-menerus/Hanya",
         title_en="ばかり: Continuously/Only",
@@ -1838,7 +2256,6 @@ N2_CHAPTERS = [
         # using two unused N2 entries, so the chapter stays level-pure and
         # still hangs together.
         id="bab_n2_phase2_03",
-        order=100,
         level="N2",
         title="Alasan dan Akibat yang Ditimbulkannya",
         title_en="A Reason and the Result It Brings",
@@ -1851,7 +2268,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_04",
-        order=101,
         level="N2",
         title="Sama Sekali Tidak ~",
         title_en="Not at All ~",
@@ -1864,7 +2280,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_05",
-        order=102,
         level="N2",
         title="どころ Variants: Tidak Layak/Malah",
         title_en="どころ Variants: Not Suitable/Rather",
@@ -1877,7 +2292,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_06",
-        order=103,
         level="N2",
         title="Sementara/Untuk Jaga-jaga",
         title_en="Seems/For Now",
@@ -1890,7 +2304,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_07",
-        order=104,
         level="N2",
         title="Likelihood: Pasrah/Mungkin",
         title_en="Likelihood: Resigned/Might",
@@ -1903,7 +2316,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_08",
-        order=105,
         level="N2",
         title="から: Justru Karena/Karena Sudah",
         title_en="から: Precisely Because/Since",
@@ -1916,7 +2328,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_09",
-        order=106,
         level="N2",
         title="Kontras: Meski/Malah",
         title_en="Contrast: Despite/Rather",
@@ -1929,7 +2340,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_10",
-        order=107,
         level="N2",
         title="ない Variants: Jika Tidak/Tanpa Perlu",
         title_en="ない Variants: If Not/Without",
@@ -1942,7 +2352,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_11",
-        order=108,
         level="N2",
         title="Tidak Lain Hanyalah/Tidak Lebih Dari",
         title_en="Nothing But/No More Than",
@@ -1955,7 +2364,6 @@ N2_CHAPTERS = [
     ),
     dict(
         id="bab_n2_phase2_12",
-        order=109,
         level="N2",
         title="かぎり: Bukan Hanya/Paling Baik",
         title_en="かぎり: Not Limited To/Best",
@@ -1965,6 +2373,258 @@ N2_CHAPTERS = [
         kanji_ids=["kanji_you_n3"],
         bunpou_ids=["bunpou_ni_kagirazu", "bunpou_ni_kagiru"],
         kaiwa_ids=[],
+    ),
+    # ---- N2 phase 3 (2026-08-04): +20 chapters, 51 patterns ----
+    #
+    # Dataset-internal like phase 2, grouped by shared function: the
+    # trigger/turning-point set, formal "in accordance with" markers,
+    # regardless-of, viewpoint markers, concessives, "it does not mean
+    # that far", norms and prohibitions, and the summarising connectives.
+    #
+    # Kaiwa: 12 of 20 matched automatically, 4 rejected by hand as
+    # substring false positives (「何かきっかけがあったの？」 is the bare noun;
+    # 「交換に応じてもらえた」 is the verb 応じる; 「長距離移動に限っては」 is a
+    # different sense of 限って; 「大事にすればいい」 is にする + ば). 8 verified
+    # links remain.
+    dict(
+        id="bab_n2_p3_sejak_momen",
+        level="N2",
+        title="Berawal dari Satu Momen",
+        title_en="Starting From One Moment",
+        description="Pola がきっかけで / をきっかけに, を契機に（をけいきに） dan て以来（ていらい）.",
+        description_en="The がきっかけで / をきっかけに, を契機に（をけいきに） and て以来（ていらい） patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_kikkake_de", "bunpou_o_keiki_ni", "bunpou_te_irai"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_menjelang",
+        level="N2",
+        title="Menjelang dan Mendahului Peristiwa Penting",
+        title_en="On the Eve Of, and Ahead Of",
+        description="Pola に際して（にさいして） dan に先立ち（にさきだち）.",
+        description_en="The に際して（にさいして） and に先立ち（にさきだち） patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ni_saishite", "bunpou_ni_sakidachi"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_seiring_luas",
+        level="N2",
+        title="Seiring Berjalannya dan Sepanjang Rentangnya",
+        title_en="Along With, and Across the Whole Span",
+        description="Pola に伴って（にともなって） dan にわたって.",
+        description_en="The に伴って（にともなって） and にわたって patterns.",
+        kotoba_ids=["kotoba_kazoku", "kotoba_hari_bulan_izen"],
+        kanji_ids=["kanji_ren_n3", "kanji_tai_n3"],
+        bunpou_ids=["bunpou_ni_tomonatte", "bunpou_ni_watatte"],
+        kaiwa_ids=["kaiwa_dampak_smartphone_komunikasi_n2"],
+    ),
+    dict(
+        id="bab_n2_p3_sesuai",
+        level="N2",
+        title="Sesuai dengan Aturan dan Keadaan",
+        title_en="In Accordance With Rules and Circumstances",
+        description="Pola に応じて（におうじて） dan に沿って（にそって）.",
+        description_en="The に応じて（におうじて） and に沿って（にそって） patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ni_oujite", "bunpou_ni_sotte"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_tanpa_pandang",
+        level="N2",
+        title="Tanpa Memandang dan Tidak Terbatas Pada",
+        title_en="Regardless Of, and Not Limited To",
+        description="Pola に関わらず（にかかわらず）, にも関わらず（にもかかわらず） dan を除いて（をのぞいて）.",
+        description_en="The に関わらず（にかかわらず）, にも関わらず（にもかかわらず） and を除いて（をのぞいて） patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ni_kakawarazu", "bunpou_ni_mo_kakawarazu", "bunpou_o_nozoite"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_justru_saat",
+        level="N2",
+        title="Justru Pada Saat Itu, dan Berkaitan Dengannya",
+        title_en="Precisely at That Time, and Bearing On It",
+        description="Pola に限って（にかぎって） dan に関わる（にかかわる）.",
+        description_en="The に限って（にかぎって） and に関わる（にかかわる） patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ni_kagitte", "bunpou_ni_kakawaru"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_penegasan_kuat",
+        level="N2",
+        title="Penegasan yang Tidak Terbantahkan",
+        title_en="Assertions That Admit No Doubt",
+        description="Pola に相違ない（にそういない） dan でしかない.",
+        description_en="The に相違ない（にそういない） and でしかない patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ni_soui_nai", "bunpou_de_shika_nai"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_sebaiknya",
+        level="N2",
+        title="Tidak Ada yang Lebih Baik, dan Paling Baik Begitu",
+        title_en="Nothing Better Than, and Best Of All",
+        description="Pola に越したことはない（にこしたことはない）, よりほかない dan はもとより.",
+        description_en="The に越したことはない（にこしたことはない）, よりほかない and はもとより patterns.",
+        kotoba_ids=["kotoba_konsep_umum_kachi", "kotoba_konsep_umum_hontou"],
+        kanji_ids=["kanji_tou_n3", "kanji_hou_n3"],
+        bunpou_ids=["bunpou_ni_koshita_koto_wa_nai", "bunpou_yori_hoka_nai", "bunpou_wa_motoyori"],
+        kaiwa_ids=["kaiwa_asuransi_pengiriman_n2"],
+    ),
+    dict(
+        id="bab_n2_p3_ditambah",
+        level="N2",
+        title="Ditambah Lagi, dan Bukan Hanya Itu",
+        title_en="In Addition, and Not Merely That",
+        description="Pola に加えて（にくわえて）, のみならず dan しかも.",
+        description_en="The に加えて（にくわえて）, のみならず and しかも patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ni_kuwaete", "bunpou_nomi_narazu", "bunpou_shikamo"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_menolak_halus",
+        level="N2",
+        title="Menolak dengan Halus, dan Berpotensi Buruk",
+        title_en="Declining Gently, and Risking the Worst",
+        description="Pola かねる dan 恐れがある（おそれがある）.",
+        description_en="The かねる and 恐れがある（おそれがある） patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_kaneru", "bunpou_osore_ga_aru"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_tak_tertahan",
+        level="N2",
+        title="Tak Tertahankan dan Tak Bisa Tidak",
+        title_en="Unbearable, and Impossible Not To",
+        description="Pola てならない dan ないではいられない.",
+        description_en="The てならない and ないではいられない patterns.",
+        kotoba_ids=["kotoba_hari_bulan_saikin", "kotoba_hobi_aktivitas_ryokou"],
+        kanji_ids=["kanji_tei_n3", "kanji_sai_n3"],
+        bunpou_ids=["bunpou_te_naranai", "bunpou_nai_dewa_irarenai"],
+        kaiwa_ids=["kaiwa_tekanan_sosmed_berlibur_n2"],
+    ),
+    dict(
+        id="bab_n2_p3_sudut_pandang",
+        level="N2",
+        title="Dilihat dari Sudut Pandang Tertentu",
+        title_en="Seen From a Particular Standpoint",
+        description="Pola から言うと（からいうと）, からすると / からすれば dan にしたら / にすれば.",
+        description_en="The から言うと（からいうと）, からすると / からすれば and にしたら / にすれば patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_kara_iu_to", "bunpou_kara_suru_to", "bunpou_ni_shitara_ni_sureba"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_satu_contoh",
+        level="N2",
+        title="Cukup dari Satu Contoh Saja",
+        title_en="Judging From a Single Example",
+        description="Pola からして dan ところを見ると.",
+        description_en="The からして and ところを見ると patterns.",
+        kotoba_ids=["kotoba_bangunan_fasilitas_gakkou", "kotoba_konsep_umum_keikou"],
+        kanji_ids=["kanji_shi_n3", "kanji_tou_n3"],
+        bunpou_ids=["bunpou_kara_shite", "bunpou_tokoro_o_miru_to"],
+        kaiwa_ids=["kaiwa_kesenjangan_pendidikan_kota_desa_n2"],
+    ),
+    dict(
+        id="bab_n2_p3_sekalipun",
+        level="N2",
+        title="Sekalipun Begitu, Hasilnya Sama",
+        title_en="Even So, the Result Is the Same",
+        description="Pola にせよ/ にしろ, としても dan にしても～にしても.",
+        description_en="The にせよ/ にしろ, としても and にしても～にしても patterns.",
+        kotoba_ids=["kotoba_anggota_tubuh_onaka", "kotoba_kendaraan_densha"],
+        kanji_ids=["kanji_yuu_n3", "kanji_seki_n3"],
+        bunpou_ids=["bunpou_ni_seyo_ni_shiro", "bunpou_to_shitemo", "bunpou_ni_shitemo_ni_shitemo"],
+        kaiwa_ids=["kaiwa_etika_di_dalam_kereta_n2"],
+    ),
+    dict(
+        id="bab_n2_p3_bukan_berarti",
+        level="N2",
+        title="Bukan Berarti Sejauh Itu",
+        title_en="It Does Not Mean That Far",
+        description="Pola ことにはならない, というものではない dan なくはない / なくもない.",
+        description_en="The ことにはならない, というものではない and なくはない / なくもない patterns.",
+        kotoba_ids=["kotoba_konsep_umum_rikai", "kotoba_konsep_umum_hontou"],
+        kanji_ids=["kanji_tou_n3", "kanji_you_n3"],
+        bunpou_ids=["bunpou_koto_niwa_naranai", "bunpou_to_iu_mono_dewa_nai", "bunpou_naku_wa_nai"],
+        kaiwa_ids=["kaiwa_tidak_suka_voice_note_n2"],
+    ),
+    dict(
+        id="bab_n2_p3_semestinya",
+        level="N2",
+        title="Memang Sudah Semestinya Begitu",
+        title_en="That Is Only Natural",
+        description="Pola も当然だ（もとうぜんだ）, て当然だ dan のももっともだ.",
+        description_en="The も当然だ（もとうぜんだ）, て当然だ and のももっともだ patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_mo_touzen_da", "bunpou_te_touzen_da", "bunpou_no_mo_mottomo_da"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_tidak_boleh",
+        level="N2",
+        title="Larangan dan Norma yang Berlaku",
+        title_en="Prohibitions and Social Norms",
+        description="Pola てはならない dan ものではない.",
+        description_en="The てはならない and ものではない patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_te_wa_naranai", "bunpou_mono_dewa_nai"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_kalau_terus",
+        level="N2",
+        title="Kalau Terus Begitu, Akibatnya Buruk",
+        title_en="If This Keeps Up, It Ends Badly",
+        description="Pola ていては, ては / では dan ようでは.",
+        description_en="The ていては, ては / では and ようでは patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_te_ite_wa", "bunpou_tewa_dewa", "bunpou_you_dewa"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_p3_sampai_rela",
+        level="N2",
+        title="Sampai Rela Melakukan Sejauh Itu",
+        title_en="Going So Far As To",
+        description="Pola てまで, てでも dan てこそ.",
+        description_en="The てまで, てでも and てこそ patterns.",
+        kotoba_ids=["kotoba_angka_satuan_ijou", "kotoba_hobi_aktivitas_ryouri"],
+        kanji_ids=["kanji_tai_n3", "kanji_tou_n3"],
+        bunpou_ids=["bunpou_te_made", "bunpou_te_demo", "bunpou_te_koso"],
+        kaiwa_ids=["kaiwa_restoran_mewah_overpriced_n2"],
+    ),
+    dict(
+        id="bab_n2_p3_merangkum",
+        level="N2",
+        title="Merangkum dan Menambahkan Keterangan",
+        title_en="Summing Up and Adding a Note",
+        description="Pola 要するに, ちなみに dan なお.",
+        description_en="The 要するに, ちなみに and なお patterns.",
+        kotoba_ids=["kotoba_arah_lokasi_houkou", "kotoba_hari_bulan_jizen"],
+        kanji_ids=["kanji_tai_n3", "kanji_tou_n3"],
+        bunpou_ids=["bunpou_you_suru_ni", "bunpou_chinami_ni", "bunpou_nao"],
+        kaiwa_ids=["kaiwa_sering_tersesat_meski_gps_n2"],
     ),
 ]
 
@@ -2023,7 +2683,6 @@ N2_CHAPTERS = [
 N1_CHAPTERS = [
     dict(
         id="bab_n1_w1_a",
-        order=110,
         level="N1",
         title="Justru Menegaskan, dan Dengan Anggapan Tertentu",
         title_en="Emphatic Affirmation, and On the Premise That",
@@ -2036,7 +2695,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w1_b",
-        order=111,
         level="N1",
         title="Menurut Saya, Melihat Tanda, dan Sekalipun Sudah",
         title_en="In My View, Judging by Signs, and Even If Done",
@@ -2049,7 +2707,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w2_a",
-        order=112,
         level="N1",
         title="Sesuai Kemampuan Sendiri, dan Terlepas Apa Pun",
         title_en="In One's Own Way, and No Matter What",
@@ -2062,7 +2719,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w2_b",
-        order=113,
         level="N1",
         title="Menyebut Beberapa Aspek, Bergantian, dan Ketidakpastian",
         title_en="Listing Aspects, Alternating, and Uncertainty",
@@ -2078,7 +2734,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w3_a",
-        order=114,
         level="N1",
         title="Meski Tidak Sampai, dan Sebagai Batas Akhir",
         title_en="Even If Not Fully, and As the Final Limit",
@@ -2091,7 +2746,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w3_b",
-        order=115,
         level="N1",
         title="Konsesi Formal, dan Dengan Cara Resmi",
         title_en="Formal Concession, and By Formal Means",
@@ -2104,7 +2758,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w3_c",
-        order=116,
         level="N1",
         title="Dugaan Meleset, Sekalian, dan Tak Perlu Dikatakan",
         title_en="A Wrong Guess, While At It, and Needless to Say",
@@ -2117,7 +2770,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w4_a",
-        order=117,
         level="N1",
         title="Penyesalan Padahal Seharusnya, dan Bahkan Pun",
         title_en="Regret Over What Should Have Been, and Even",
@@ -2132,7 +2784,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w4_b",
-        order=118,
         level="N1",
         title="Mencakup Seluruhnya, dan Dalam Situasi Khusus",
         title_en="Encompassing All, and In a Particular Situation",
@@ -2145,7 +2796,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w4_c",
-        order=119,
         level="N1",
         title="Keunikan Khas, Harapan Kuat, dan Prasyarat Mutlak",
         title_en="Distinctive Uniqueness, Strong Hope, and an Essential Prerequisite",
@@ -2158,7 +2808,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w5_a",
-        order=120,
         level="N1",
         title="Tidak Cukup Hanya Dengan, dan Perumpamaan Klasik",
         title_en="Not Settled by That Alone, and a Classical Simile",
@@ -2171,7 +2820,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w5_b",
-        order=121,
         level="N1",
         title="Tanpa Memandang Bagaimanapun, dan Tidak Bergantung Pada",
         title_en="Regardless of How, and Not Depending On",
@@ -2184,7 +2832,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w5_c",
-        order=122,
         level="N1",
         title="Larangan Tegas, dan Kewajiban Tak Terhindarkan",
         title_en="A Firm Prohibition, and an Unavoidable Obligation",
@@ -2197,7 +2844,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w6_a",
-        order=123,
         level="N1",
         title="Sesuai Kondisi Nyata, dan Sebab Formal",
         title_en="In Line With Reality, and a Formal Cause",
@@ -2210,7 +2856,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w6_b",
-        order=124,
         level="N1",
         title="Dua Tujuan Sekaligus, Berlandaskan Premis, dan Melebihi",
         title_en="Two Aims at Once, On a Premise, and Surpassing",
@@ -2223,7 +2868,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w7_a",
-        order=125,
         level="N1",
         title="Penekanan Lewat Pengulangan, dan Bahkan Sekadar",
         title_en="Emphasis by Repetition, and Not Even",
@@ -2236,7 +2880,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w7_b",
-        order=126,
         level="N1",
         title="Cara dan Gaya, dan Tidak Tahan Untuk",
         title_en="Manner and Style, and Unbearable To",
@@ -2251,7 +2894,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w7_c",
-        order=127,
         level="N1",
         title="Sama Sekali Bukan, Tidak Perlu Sampai, dan Usaha Berulang",
         title_en="Not At All, No Need To, and Repeated Effort",
@@ -2266,7 +2908,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w8_a",
-        order=128,
         level="N1",
         title="Kalau Itu Lain Cerita, dan Harapan Tak Henti",
         title_en="That Would Be Another Story, and Unceasing Wishes",
@@ -2279,7 +2920,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_w8_b",
-        order=129,
         level="N1",
         title="Terpaksa Keadaan, Perasaan Mendalam, dan Menyangkal Premis",
         title_en="Forced by Circumstance, Deep Feeling, and Denying a Premise",
@@ -2337,7 +2977,6 @@ N1_CHAPTERS = [
     # patterns. 139 patterns remain for a later phase 3.
     dict(
         id="bab_n1_p2_beku",
-        order=130,
         level="N1",
         title="Tujuan dan Kemustahilan Bergaya Formal",
         title_en="Formal Purpose and Impossibility",
@@ -2350,7 +2989,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_kesan_luar",
-        order=131,
         level="N1",
         title="Terlihat Seperti: びる, ぶる, めく",
         title_en="Looking the Part: biru, buru, meku",
@@ -2363,7 +3001,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_kesan_negatif",
-        order=132,
         level="N1",
         title="Kesan Negatif dari Luar: じみた dan がましい",
         title_en="Negative Impressions: jimita and gamashii",
@@ -2376,7 +3013,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_begitu_langsung",
-        order=133,
         level="N1",
         title="Begitu Terjadi, Langsung Saja",
         title_en="The Moment It Happens",
@@ -2389,7 +3025,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_reaksi_cepat",
-        order=134,
         level="N1",
         title="Reaksi Seketika Setelah Melihat",
         title_en="Reacting Instantly on Sight",
@@ -2402,7 +3037,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_menyebut_keluhan",
-        order=135,
         level="N1",
         title="Menyebutkan Beberapa Hal dengan Nada Mengeluh",
         title_en="Listing Things With a Complaint",
@@ -2415,7 +3049,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_menyebut_semua",
-        order=136,
         level="N1",
         title="Menyebutkan Semuanya Tanpa Kecuali",
         title_en="Listing Everything Without Exception",
@@ -2428,7 +3061,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_de_are",
-        order=137,
         level="N1",
         title="Apa Pun Itu: であれ",
         title_en="Whatever It May Be: de are",
@@ -2441,7 +3073,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_apapun_jenisnya",
-        order=138,
         level="N1",
         title="Apa Pun Jenisnya, dan Bagaimanapun Juga",
         title_en="Whatever the Kind, and In Any Case",
@@ -2454,7 +3085,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_terlepas_pilihan",
-        order=139,
         level="N1",
         title="Terlepas dari Pilihan Apa Pun",
         title_en="Regardless of the Choice",
@@ -2467,7 +3097,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_puncak_tingkat",
-        order=140,
         level="N1",
         title="Mencapai Puncak Tingkatan",
         title_en="Reaching the Utmost Degree",
@@ -2480,7 +3109,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_luar_biasa_emosi",
-        order=141,
         level="N1",
         title="Ungkapan Emosi yang Luar Biasa Kuat",
         title_en="Expressing Overwhelming Emotion",
@@ -2493,7 +3121,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_sampai_mencapai",
-        order=142,
         level="N1",
         title="Sampai Mencapai, dan Sampai ke Detail Terkecil",
         title_en="Culminating In, and Down to the Last Detail",
@@ -2506,7 +3133,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_bahkan_sampai",
-        order=143,
         level="N1",
         title="Bahkan Sampai Tahap Itu Pun",
         title_en="Even at That Stage",
@@ -2519,7 +3145,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_layak_pantas",
-        order=144,
         level="N1",
         title="Layak dan Pantas Mendapatkan",
         title_en="Worthy and Deserving",
@@ -2532,7 +3157,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_tak_perlu_dibesarkan",
-        order=145,
         level="N1",
         title="Tidak Perlu Dibesar-besarkan",
         title_en="Not Worth Making a Fuss Over",
@@ -2549,7 +3173,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_titik_balik",
-        order=146,
         level="N1",
         title="Titik Awal dan Titik Balik",
         title_en="Starting Points and Turning Points",
@@ -2562,7 +3185,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_melalui_menjelang",
-        order=147,
         level="N1",
         title="Melalui Proses, dan Menjelang Peristiwa",
         title_en="Through a Process, and On the Eve Of",
@@ -2575,7 +3197,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_tanpa_peduli",
-        order=148,
         level="N1",
         title="Tanpa Memedulikan Rintangan",
         title_en="Undeterred by Obstacles",
@@ -2588,7 +3209,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_menerobos",
-        order=149,
         level="N1",
         title="Menerobos Halangan, dan Mengabaikan Sepenuhnya",
         title_en="Pushing Through, and Setting Aside Entirely",
@@ -2601,7 +3221,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_berdalih",
-        order=150,
         level="N1",
         title="Berdalih dan Menyalahgunakan Alasan",
         title_en="Using a Pretext and Abusing an Excuse",
@@ -2614,7 +3233,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_berlandaskan",
-        order=151,
         level="N1",
         title="Berlandaskan Aturan dan Pertimbangan",
         title_en="Grounded in Rules and Considerations",
@@ -2627,7 +3245,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_akhir_buruk",
-        order=152,
         level="N1",
         title="Berakhir dengan Keadaan Buruk",
         title_en="Ending Up in a Bad State",
@@ -2640,7 +3257,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_kesempatan_hilang",
-        order=153,
         level="N1",
         title="Kesempatan yang Terlewat Begitu Saja",
         title_en="Opportunities Missed Entirely",
@@ -2653,7 +3269,6 @@ N1_CHAPTERS = [
     ),
     dict(
         id="bab_n1_p2_tak_ada_cara",
-        order=154,
         level="N1",
         title="Tidak Ada Cara Sama Sekali",
         title_en="No Way Out At All",

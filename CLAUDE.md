@@ -5716,3 +5716,73 @@ chapter**. The Bab curriculum is a curated path that covers 85 of N3's
 187 patterns; slotting these five in would mean either renumbering every
 chapter after N3 or overloading an existing one. Treat it as part of the
 same future pass that covers N3's other ~100 uncovered patterns.
+*(Done in the next entry — the renumbering problem was removed rather
+than worked around.)*
+
+## Update (2026-08-04, final): `order` auto-assigned, and +60 chapters
+## across N4/N3/N2 — 154 → 214
+
+The user asked why N5 and N1 had many chapters while N4-N2 had ~25. The
+honest answer was that **chapter count measured how many sessions each
+level had received, not the level's size or importance**: N5's 31 came
+from however many everyday topics got authored, N4's 25 was one per
+Minna no Nihongo II lesson, N3's 25 was where a *partial* read of Speed
+Master (pages 13-55 only) ran out, and N1's 45 was simply two expansion
+passes on the same day. Measured by coverage every level was 27-45%
+done — none was "finished".
+
+**First, the structural blocker was removed.** `order` was hand-written
+on every chapter and had to be globally contiguous, so inserting one N3
+chapter meant renumbering 73 N2/N1 chapters. It is now **derived from
+position in `ALL_CHAPTERS`** by `generate_bab_seed.py`; the hand-written
+`order=` was stripped from all 154 chapters and an assertion rejects it
+if reintroduced. Verified byte-identical output for the pre-existing 154
+before adding anything. Progress is stored per `babId`
+(`BabProgressRepository`), never per order, so a learner's completions
+follow their chapter when displayed numbers shift. A second assertion now
+requires each level to occupy **one unbroken run, easiest first**, since
+interleaved levels would make the mascot's cross-level "what's next"
+recommendation jump around.
+
+Then three expansion passes, +20 chapters each:
+
+| level | before | after | coverage |
+|---|---|---|---|
+| N4 | 25 | **45** | 30% → **72%** |
+| N3 | 25 | **45** | 27% → **55%** |
+| N2 | 28 | **48** | 29% → **55%** |
+
+N3's chapters 1-15 follow So-matome N3's own six-week syllabus for the
+20 of its points not yet in a chapter (closing the self-inflicted gap
+from the partial Speed Master read, and landing the five re-levelled/
+authored patterns from the previous entry); the rest of all three passes
+group functionally from each level's unused pool. **214 chapters total,
+N5 31 / N4 45 / N3 45 / N2 48 / N1 45.**
+
+**The false-positive rate did not improve, and that is the point.** The
+guarded matcher was reused, and hand-checking the context of every
+automatic kaiwa match still rejected **16 of 46** across the three
+passes — 7 of 16 in N3, 5 of 18 in N4, 4 of 12 in N2. A representative
+sample of what a substring test happily accepts: 「昨日始まったばかりです」
+matching ばかりで (it is たばかり, an N4 pattern), 「部屋がすっきりして」
+matching っきり, 「実際に」 matching 際に, 「指導教員になります」 matching
+お～になる, 「電車、間に合った？」 matching 間に, 「大事にすればいい」 matching
+にすれば. Each rejection is recorded with what it actually matched in the
+`REJECTED` tuple of the session's `run_n3.py`/`run_n4.py`/`run_n2.py`.
+**Never accept an automatic match without printing its surrounding
+text** — that step has caught real errors in every single pass it has
+been run.
+
+Checks that pass across all 214: no chapter holds an off-level pattern,
+no non-N5 pattern appears in two chapters (N5 deliberately reuses its
+foundational particles across its thematic chapters), no duplicate
+chapter ids, order contiguous 1-214, levels in one run each.
+`flutter analyze` clean, `flutter test --concurrency=1` all 48 pass,
+`flutter build apk --debug` clean.
+
+**Still open:** N5 sits at 35% but is measured unfairly — its chapters
+are thematic units anchored on vocabulary and conversation, so grammar
+coverage understates them; it needs its own kind of pass, not more
+grammar grouping. N1 is now the lowest real coverage at 45%. And **no
+on-device pass has happened for any level's Bab since the N4 first
+pass** — 60 new chapters have never been tapped through.
