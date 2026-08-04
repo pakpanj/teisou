@@ -5915,5 +5915,51 @@ Besar". N1 language is inherently adult, but the *themes* could be school,
 sport, science or story-driven without lowering the register.
 
 Remaining order of value: fill Choukai, thicken N5/N4 vocabulary before
-N1's, attach vocabulary/kanji/dialogue to the 211 bare chapters. And
-still: **no on-device pass** for any of this.
+N1's, attach vocabulary/kanji/dialogue to the 211 bare chapters.
+
+### On-device verification (Moto G52J 5G, 2026-08-04) — first since N4
+
+Reconnected and checked the resequencing end to end. Bab home shows the
+right counts (N5 52 / N4 59 / N3 77 / N2 77 / N1 93); **N5 chapter 8 is
+now "Partikel Dasar: を, と, や"** with じゃない at 7 and the sentence-final
+particles at 9, exactly as sequenced; chapters 42-47 match too; the
+typographic quotes introduced for the titles render correctly. No chapter
+shows a lock and the "Selesaikan Bab N dulu" copy appears nowhere, so
+`kBabGateQuizRequired = false` works as intended. A bare completion
+chapter (47, んです/のです) renders title, description and a single "Tata
+Bahasa" section — confirming the 211-chapter gap is real and visible, not
+just a number in a table.
+
+**Two corrections to earlier notes in this file:**
+
+1. **The `adb shell input tap` density gotcha did not reproduce.** The
+   device still reports `Physical density: 400, Override density: 340`,
+   but taps at raw `uiautomator dump` bounds landed correctly every time
+   across five screens. The earlier note said to multiply by 400/340;
+   that was not needed here. Don't apply the correction blindly — try raw
+   coordinates first and only adjust if a tap actually misses.
+2. **A stale APK wasted a cycle again.** The first install was built
+   before the resequencing commit, so the device showed the *old* N5
+   order and it looked as though the reorder had failed. Same shape as
+   the Kaiwa "empty theme list" false alarm already recorded above.
+   **Always `flutter build apk --debug` immediately before installing**
+   when verifying a data change — the asset JSON is baked into the APK.
+
+**New minor finding:** with the gate off, `BabDetailScreen`'s mascot
+still says "kerjakan kuis Bab 1-N untuk membuka bab berikutnya" even
+though nothing is locked. The copy promises an unlock that no longer
+happens. Harmless during testing, but it should be conditioned on
+`kBabGateQuizRequired` when that constant is restored — or sooner, since
+it currently misleads.
+
+### Image manifests handed to the user
+
+The 9,150 missing Storage images are itemised at
+`C:\Teisou asset\daftar gambar\` — `1_gambar_kotoba.csv` (1,682 vocab
+illustrations, with word/reading/meaning/category per row),
+`2_gambar_kaiwa.csv` (7,468 dialogue-scene images, with the Japanese
+line, its translation, theme, level and speaker), and `0_BACA_DULU.txt`
+explaining the format. The Kaiwa set is the more urgent half: on
+`KaiwaDialogueScreen` the image is the *only* thing an NPC turn shows —
+the line is deliberately never written on screen, only spoken — so
+without it a learner has no visual cue at all.
