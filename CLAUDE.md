@@ -5853,3 +5853,67 @@ kanji or conversation attached, N5's chapter set is now a mix of rich
 thematic units and bare grammar groupings, and **nothing here has been
 tested on a device** — the last on-device Bab pass was the N4 first
 pass, 250+ chapters ago.
+*(The ordering problem this created is fixed in the next entry.)*
+
+## Update (2026-08-04, final): curriculum resequenced, and a syllabus audit
+
+The user asked whether the material is properly ordered and fit to take a
+child to fluency on a standard syllabus. Auditing it turned up four real
+problems; the worst was self-inflicted by the 100%-coverage push above.
+
+**1. Ordering was broken — fixed.** The completion chapters were appended
+at the *end* of each level, but they hold the most foundational material.
+In N5 that put the particle **を at chapter 46 of 52** and the い/な
+adjectives at 39, while chapters 1-31 already used both. Every standard
+syllabus (Minna no Nihongo, Genki, So-matome) teaches を in lesson one.
+
+All five levels are resequenced. Because `order` is derived from position
+in the list (see the entry above), this was purely a matter of reordering
+the list entries — **verified against git that not one chapter's content
+changed**, only 344 of 358 order numbers. Now:
+
+| | before | after |
+|---|---|---|
+| を | ch. 46 | **ch. 8** |
+| い/な adjectives | ch. 39 | **ch. 14** |
+| たい | ch. 36 | ch. 24 |
+| て-form gateway | ch. 28 | ch. 36 |
+
+N5 follows the standard beginner shape (nouns and copula → core particles
+→ adjectives → masu-form verbs → て-form as the gateway → everything that
+depends on it). N4 follows Minna II's shape with keigo last, as in its
+lessons 49-50. Assertions now confirm nothing depending on the て-form
+comes before it, and nothing using を comes before を.
+
+**N3/N2/N1 were only interleaved, not difficulty-ordered**, and the
+distinction is deliberate: at those levels the patterns are peers with no
+prerequisite chain to derive an order from. What was wrong there was the
+*rhythm* — a run of 32/29/48 grammar-only chapters after the richer
+curated ones — so the completion chapters are now spaced evenly between
+them. Do not mistake that for a difficulty sequence.
+
+**2. Choukai (listening) is empty — 0 entries.** Listening is roughly a
+quarter of every JLPT paper. As it stands **no learner can pass any level
+using this app alone**, however good the grammar path is. This is the
+single biggest gap against the stated goal.
+
+**3. 211 of 358 chapters (59%) hold only grammar** — no vocabulary, kanji
+or conversation. For a child especially, three grammar patterns with no
+picture, word or dialogue is a list, not a lesson.
+
+**4. Vocabulary is far below syllabus and skewed the wrong way.** 1,712
+words total: N5 213, N4 296, N3 337, N2 626, N1 240. Commonly cited JLPT
+targets are roughly 800 / 1,500 / 3,750 / 6,000 / 10,000 cumulative (the
+JLPT publishes no official word list). The beginner levels a child starts
+with are the thinnest, and N1 is thinner than N2.
+
+Also worth noting for the "for children" framing: N5's dialogue themes fit
+it well (Berkenalan, Menyapa di Pagi Hari), but the upper levels drift
+into adult existential territory — N1 has "Filosofi bahwa Identitas
+Seseorang Selalu Berproses", "Membangun Ulang Diri Setelah Kehilangan
+Besar". N1 language is inherently adult, but the *themes* could be school,
+sport, science or story-driven without lowering the register.
+
+Remaining order of value: fill Choukai, thicken N5/N4 vocabulary before
+N1's, attach vocabulary/kanji/dialogue to the 211 bare chapters. And
+still: **no on-device pass** for any of this.
