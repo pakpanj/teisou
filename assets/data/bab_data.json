@@ -2081,5 +2081,398 @@
       "kaiwa_nonton_sendirian_n3"
     ],
     "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_alasan_manja_dan_mengesampingkan",
+    "order": 82,
+    "title": "Alasan Bernada Manja, dan Mengesampingkan Sesuatu",
+    "titleEn": "A Whiny Excuse, and Setting Something Aside",
+    "description": "Pola もの/もん di akhir kalimat (alasan bernada manja/kekanakan) dan はともかく (terlepas dari ~, mengesampingkan untuk sementara).",
+    "descriptionEn": "The sentence-final もの/もん pattern (a whiny, childish excuse) and はともかく (setting ~ aside for now).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_juujitsu",
+      "kotoba_keluarga_hubungan_kazoku"
+    ],
+    "kanjiIds": [
+      "kanji_sou_n3",
+      "kanji_tei_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_mono_mon",
+      "bunpou_wa_tomokaku"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_pindah_karier_dewasa_n2"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_tak_tertahankan_dan_situasi_mendesak",
+    "order": 83,
+    "title": "Tak Tertahankan, dan Situasi Mendesak",
+    "titleEn": "Unbearably So, and an Urgent Situation",
+    "description": "Pola てたまらない (sangat ~ sampai tak tertahankan) dan てはいられない (tidak bisa terus-menerus ~, harus segera bertindak).",
+    "descriptionEn": "The てたまらない pattern (unbearably ~) and てはいられない (can't keep on ~, must act now).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_media_hiburan_manga"
+    ],
+    "kanjiIds": [
+      "kanji_hi4_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_te_tamaranai",
+      "bunpou_te_wa_irarenai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_sepadan_hasilnya_dan_tak_bisa",
+    "order": 84,
+    "title": "Sepadan Hasilnya, dan Tidak Bisa Melakukan",
+    "titleEn": "Worth the Effort, and Unable To",
+    "description": "Pola 甲斐がある (ada gunanya/sepadan hasilnya untuk ~) dan 得ない (tidak bisa ~, gaya formal/tertulis).",
+    "descriptionEn": "The 甲斐がある pattern (worth the effort for ~) and 得ない (unable to ~, a formal/written style).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_konsep_umum_doryoku",
+      "kotoba_mata_pelajaran_goukaku"
+    ],
+    "kanjiIds": [
+      "kanji_kan_n3",
+      "kanji_kei_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_kai_ga_aru",
+      "bunpou_enai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_arti_kesuksesan_n2"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_selama_kondisi_dan_secara_teori",
+    "order": 85,
+    "title": "Selama Kondisi Ini, dan Secara Teori",
+    "titleEn": "As Long As, and On Paper",
+    "description": "Pola 限り (selama ~, sepanjang ~, batasan kondisi) dan の上では (secara ~, di atas kertas/teori meski kenyataannya beda).",
+    "descriptionEn": "The 限り pattern (as long as ~, a condition's limit) and の上では (on paper/in theory, even if reality differs).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_arah_lokasi_tochuu",
+      "kotoba_hobi_aktivitas_ongaku"
+    ],
+    "kanjiIds": [
+      "kanji_kei_n3",
+      "kanji_chou_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_kagiri",
+      "bunpou_no_ue_dewa"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kepadatan_jam_sibuk_n2"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_menanggapi_harapan_dan_sambil",
+    "order": 86,
+    "title": "Menanggapi Harapan, dan Melakukan Sambil",
+    "titleEn": "Responding to Expectations, and Doing While",
+    "description": "Pola に応えて (menanggapi/memenuhi ~, harapan/permintaan/dukungan) dan つつ (sambil ~, dua tindakan bersamaan, gaya formal).",
+    "descriptionEn": "The に応えて pattern (responding to ~, an expectation or request) and つつ (while ~, two simultaneous actions, formal style).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_yoyaku",
+      "kotoba_hobi_aktivitas_ryouri"
+    ],
+    "kanjiIds": [
+      "kanji_sou_n3",
+      "kanji_sen_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_ni_kotaete",
+      "bunpou_tsutsu"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_rayakan_momen_spesial_n2"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_terpaksa_harus_dan_dalam_rangka",
+    "order": 87,
+    "title": "Terpaksa Harus, dan Dalam Rangka Sesuatu",
+    "titleEn": "Have No Choice But To, and In Preparation For",
+    "description": "Pola ざるを得ない (terpaksa harus ~, tidak bisa tidak ~) dan にあたって (dalam rangka ~, menjelang momen penting).",
+    "descriptionEn": "The ざるを得ない pattern (have no choice but to ~) and にあたって (in preparation for/on the occasion of ~).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_konsep_umum_keiken",
+      "kotoba_obat_obatan_byouin"
+    ],
+    "kanjiIds": [
+      "kanji_kei_n3",
+      "kanji_ka_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_zaru_o_enai",
+      "bunpou_ni_atatte"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_keracunan_makanan_n2"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_tentu_saja_begitu_dan_untung_masih",
+    "order": 88,
+    "title": "Tentu Saja Begitu, dan Untung Masih Mendingan",
+    "titleEn": "Of Course, That's How They Are, and At Least It's Not Worse",
+    "description": "Pola ことだから (karena orangnya memang begitu, tentu saja ~) dan だけましだ (untung masih ~, dibanding kemungkinan lebih buruk).",
+    "descriptionEn": "The ことだから pattern (of course, that's just how they are) and だけましだ (at least it's not as bad as it could be).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_pekerjaan_kantor_chikoku"
+    ],
+    "kanjiIds": [
+      "kanji_men_n3",
+      "kanji_yuu_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_koto_dakara",
+      "bunpou_dake_mashi_da"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_justru_karena_dan_berdasarkan",
+    "order": 89,
+    "title": "Justru Karena Itu, dan Berdasarkan Sesuatu",
+    "titleEn": "Precisely Because Of, and Based On",
+    "description": "Pola だけに (justru karena ~, sehingga wajar atau hasilnya lebih terasa) dan に基づいて (berdasarkan ~).",
+    "descriptionEn": "The だけに pattern (precisely because ~, making the result more pronounced) and に基づいて (based on ~).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_annai",
+      "kotoba_kendaraan_densha"
+    ],
+    "kanjiIds": [
+      "kanji_nai_n3",
+      "kanji_sai_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_dake_ni",
+      "bunpou_ni_motozuite"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_sistem_tiket_rumit_n2"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_karena_sudah_dan_dari_sudut_pandang",
+    "order": 90,
+    "title": "Karena Sudah Terlanjur, dan Dari Sudut Pandang",
+    "titleEn": "Now That It's Done, and From a Certain Viewpoint",
+    "description": "Pola 以上は (karena sudah ~, maka wajar/harus) dan から見ると (kalau dilihat dari ~).",
+    "descriptionEn": "The 以上は pattern (now that ~, so it follows that) and から見ると (looking at it from ~).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_angka_satuan_ijou",
+      "kotoba_konsep_umum_saigo"
+    ],
+    "kanjiIds": [
+      "kanji_sai_n3",
+      "kanji_yaku_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_ijou_wa",
+      "bunpou_kara_miru_to"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_ragu_dua_pilihan_dan_sudah_pasti",
+    "order": 91,
+    "title": "Ragu Antara Dua Pilihan, dan Sudah Pasti",
+    "titleEn": "Torn Between Two Choices, and Certainly So",
+    "description": "Pola ようか〜まいか (apakah akan ~ atau tidak, keraguan dua pilihan) dan に決まっている (sudah pasti ~, keyakinan kuat penutur).",
+    "descriptionEn": "The ようか〜まいか pattern (torn between doing ~ or not) and に決まっている (it's certainly ~, a strong conviction).",
+    "level": "N2",
+    "kotobaIds": [],
+    "kanjiIds": [
+      "kanji_hi4_n3",
+      "kanji_mei2_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_you_ka_mai_ka",
+      "bunpou_ni_kimatte_iru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_seputar_topik_dan_tanpa_memandang",
+    "order": 92,
+    "title": "Seputar Suatu Topik, dan Tanpa Memandang",
+    "titleEn": "Surrounding a Topic, and Regardless Of",
+    "description": "Pola をめぐって (seputar ~, topik perdebatan/perselisihan) dan を問わず (tanpa memandang ~, usia/gender/dsb).",
+    "descriptionEn": "The をめぐって pattern (surrounding ~, a topic of debate) and を問わず (regardless of ~, age/gender/etc.).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_tochi",
+      "kotoba_konsep_umum_seisaku"
+    ],
+    "kanjiIds": [
+      "kanji_sei_n3",
+      "kanji_gi_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_o_megutte",
+      "bunpou_o_towazu"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_memang_seharusnya_dan_kesan_mendalam",
+    "order": 93,
+    "title": "Memang Seharusnya Begitu, dan Kesan Mendalam",
+    "titleEn": "That's How It Should Be, and a Deep Impression",
+    "description": "Pola ものだ (memang seharusnya ~, norma umum/kebiasaan lampau) dan ものがある (ada sesuatu yang ~, kesan mendalam sulit dijelaskan).",
+    "descriptionEn": "The ものだ pattern (that's just how it should be, a general norm) and ものがある (there's a certain ~ quality, hard to put into words).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_hari_bulan_saikin",
+      "kotoba_keluarga_hubungan_otona"
+    ],
+    "kanjiIds": [
+      "kanji_tai_n3",
+      "kanji_kai_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_mono_da",
+      "bunpou_mono_ga_aru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_keluhkan_pelayanan_sopan_n2"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_berdasarkan_acuan_dan_padahal_begitu",
+    "order": 94,
+    "title": "Berdasarkan Suatu Acuan, dan Padahal Begitu",
+    "titleEn": "Based On a Reference, and Despite That",
+    "description": "Pola をもとに (berdasarkan pada ~, sebagai bahan/acuan dasar) dan それなのに (padahal begitu, tapi tetap saja ~).",
+    "descriptionEn": "The をもとに pattern (based on ~, as a reference) and それなのに (despite that, yet still ~).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_konsep_umum_kekka",
+      "kotoba_konsep_umum_keikaku"
+    ],
+    "kanjiIds": [
+      "kanji_sai3_n3",
+      "kanji_ken2_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_o_moto_ni",
+      "bunpou_sore_na_noni"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_jadi_teringat_dan_alasan_informal",
+    "order": 95,
+    "title": "Jadi Teringat, dan Alasan Bernada Informal",
+    "titleEn": "That Reminds Me, and a Casual Reason",
+    "description": "Pola そう言えば (ngomong-ngomong, jadi teringat sesuatu terkait topik) dan だって (habisnya~/soalnya~, alasan informal).",
+    "descriptionEn": "The そう言えば pattern (that reminds me, speaking of which) and だって (because~, a casual excuse).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_hari_bulan_saikin",
+      "kotoba_hobi_aktivitas_katsudou"
+    ],
+    "kanjiIds": [
+      "kanji_sai_n3",
+      "kanji_katsu_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_sou_ieba",
+      "bunpou_datte"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kritikus_kuliner_amatir_n2"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_menyimpulkan_dan_pengecualian_kecil",
+    "order": 96,
+    "title": "Menyimpulkan Sesuatu, dan Pengecualian Kecil",
+    "titleEn": "Drawing a Conclusion, and a Small Exception",
+    "description": "Pola ということは (berarti ~, menyimpulkan dari informasi yang diberikan) dan もっとも (meski begitu, menambahkan pengecualian kecil).",
+    "descriptionEn": "The ということは pattern (that means ~, drawing a conclusion) and もっとも (that said, adding a small exception).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_konsep_umum_henji",
+      "kotoba_perabot_rumah_denki"
+    ],
+    "kanjiIds": [
+      "kanji_hi4_n3",
+      "kanji_yaku_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_to_iu_koto_wa",
+      "bunpou_mottomo"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_ditambah_lagi",
+    "order": 97,
+    "title": "Ditambah Lagi Hal yang Tidak Diinginkan",
+    "titleEn": "On Top of That",
+    "description": "Pola おまけに (ditambah lagi, apalagi — menambahkan hal buruk/mengejutkan pada apa yang sudah terjadi).",
+    "descriptionEn": "The おまけに pattern (on top of that — adding a bad or surprising extra on top of what already happened).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_pakaian_aksesori_saifu",
+      "kotoba_teknologi_gadget_keitai"
+    ],
+    "kanjiIds": [
+      "kanji_zai_n3",
+      "kanji_mei2_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_omake_ni"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
   }
 ]

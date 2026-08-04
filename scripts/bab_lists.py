@@ -1517,3 +1517,262 @@ N3_CHAPTERS = [
         kaiwa_ids=["kaiwa_nonton_sendirian_n3"],
     ),
 ]
+
+# N2_CHAPTERS (order 82-97), first pass.
+#
+# Source: two user-supplied PDFs were checked. "394081276-JLPT-Gokaku-
+# Dekiru-N2.pdf" (合格できる日本語能力試験N2) turned out to be a pure
+# mock-exam/practice-question book (言語知識・読解 + 聴解 sections, 問題
+# 1-5 exam formats) with no linear grammar teaching order, so it wasn't
+# usable as an ordering reference. "ebook-learn-and-practice-grammar-
+# n2.pdf" is the one actually used: a "1日1文型" style book with a clean
+# linear structure — 8 週 (weeks), each with 6 日目 (days) teaching one
+# named grammar pattern each (48 patterns total) plus a 7th
+# 実戦問題/practice day, page-numbered and explicitly listed in its 目次
+# (p.4-5). Both PDFs are pure image scans (0 extractable characters via
+# pymupdf) — read by rendering pages to PNG and reading them visually,
+# same fallback already used for Speed Master's front matter.
+#
+# Ordering method: each of the 48 day-title phrases (e.g. "見た目はとも
+# かく", "選手だっただけに") was checked against all 197 N2-tagged bunpou
+# entries already in bunpou_data.json, first by literal substring search
+# and then, for entries stored as "漢字表記（かな表記）" (parenthetical
+# reading notation, common in this dataset's more formal N2/N1 patterns),
+# by also trying the kanji-only and kana-only halves separately — the
+# plain-substring pass alone under-matched badly on this level. 31 of the
+# 48 days matched a genuine N2-tagged entry this way; the other 17 days'
+# grammar point turned out to already exist in bunpou_data.json but
+# tagged N3 (e.g. っぽい, さえ〜ば, としたら, にしたがって, どおり, わけだ,
+# たとたん, だらけ, 一方だ, 向け, にかけて, がたい, ようがない, もあれば
+# 〜もある, をこめて) — this particular book re-teaches several patterns
+# Bab already covers at N3 depth, so those 17 were deliberately left out
+# of the N2 pool rather than attaching an N3-tagged bunpou id to an N2
+# chapter. The 31 real N2-tagged matches were paired 2-per-chapter in
+# strict day order (one chapter, order 97, ends up a single-pattern
+# chapter since 31 is odd) — the same "don't force it" rule as
+# elsewhere, not a scope cut.
+#
+# Cross-content kaiwa matching used the same literal-search method as
+# N3/N4 (all 17 N2-tagged kaiwa themes, 255 dialogues) but the yield was
+# much lower here — only 9 of the 31 patterns' literal text turned up
+# inside any N2 kaiwa dialogue, versus 38/50 for N3. N2 grammar here
+# skews more formal/written (がたい, にあたって, ものがある, ざるを得ない)
+# while the kaiwa dialogues are conversational, so the two don't overlap
+# as naturally as N3/N4's more colloquial patterns did. Rather than force
+# a mismatch, chapters without a real kaiwa hit ship with kaiwa_ids=[]
+# (BabDetailScreen already hides the Percakapan section when empty), and
+# their kotoba_ids/kanji_ids instead come from words/kanji that literally
+# appear in the *bunpou entry's own* sentenceExamples — still real
+# dataset content, just not cross-linked to a specific dialogue. 7 of the
+# 16 chapters below are in this fallback state; documented here rather
+# than silently thin.
+N2_CHAPTERS = [
+    dict(
+        id="bab_n2_alasan_manja_dan_mengesampingkan",
+        order=82,
+        level="N2",
+        title="Alasan Bernada Manja, dan Mengesampingkan Sesuatu",
+        title_en="A Whiny Excuse, and Setting Something Aside",
+        description="Pola もの/もん di akhir kalimat (alasan bernada manja/kekanakan) dan はともかく (terlepas dari ~, mengesampingkan untuk sementara).",
+        description_en="The sentence-final もの/もん pattern (a whiny, childish excuse) and はともかく (setting ~ aside for now).",
+        kotoba_ids=["kotoba_hobi_aktivitas_juujitsu", "kotoba_keluarga_hubungan_kazoku"],
+        kanji_ids=["kanji_sou_n3", "kanji_tei_n3"],
+        bunpou_ids=["bunpou_mono_mon", "bunpou_wa_tomokaku"],
+        kaiwa_ids=["kaiwa_pindah_karier_dewasa_n2"],
+    ),
+    dict(
+        id="bab_n2_tak_tertahankan_dan_situasi_mendesak",
+        order=83,
+        level="N2",
+        title="Tak Tertahankan, dan Situasi Mendesak",
+        title_en="Unbearably So, and an Urgent Situation",
+        description="Pola てたまらない (sangat ~ sampai tak tertahankan) dan てはいられない (tidak bisa terus-menerus ~, harus segera bertindak).",
+        description_en="The てたまらない pattern (unbearably ~) and てはいられない (can't keep on ~, must act now).",
+        kotoba_ids=["kotoba_media_hiburan_manga"],
+        kanji_ids=["kanji_hi4_n3"],
+        bunpou_ids=["bunpou_te_tamaranai", "bunpou_te_wa_irarenai"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_sepadan_hasilnya_dan_tak_bisa",
+        order=84,
+        level="N2",
+        title="Sepadan Hasilnya, dan Tidak Bisa Melakukan",
+        title_en="Worth the Effort, and Unable To",
+        description="Pola 甲斐がある (ada gunanya/sepadan hasilnya untuk ~) dan 得ない (tidak bisa ~, gaya formal/tertulis).",
+        description_en="The 甲斐がある pattern (worth the effort for ~) and 得ない (unable to ~, a formal/written style).",
+        kotoba_ids=["kotoba_konsep_umum_doryoku", "kotoba_mata_pelajaran_goukaku"],
+        kanji_ids=["kanji_kan_n3", "kanji_kei_n3"],
+        bunpou_ids=["bunpou_kai_ga_aru", "bunpou_enai"],
+        kaiwa_ids=["kaiwa_arti_kesuksesan_n2"],
+    ),
+    dict(
+        id="bab_n2_selama_kondisi_dan_secara_teori",
+        order=85,
+        level="N2",
+        title="Selama Kondisi Ini, dan Secara Teori",
+        title_en="As Long As, and On Paper",
+        description="Pola 限り (selama ~, sepanjang ~, batasan kondisi) dan の上では (secara ~, di atas kertas/teori meski kenyataannya beda).",
+        description_en="The 限り pattern (as long as ~, a condition's limit) and の上では (on paper/in theory, even if reality differs).",
+        kotoba_ids=["kotoba_arah_lokasi_tochuu", "kotoba_hobi_aktivitas_ongaku"],
+        kanji_ids=["kanji_kei_n3", "kanji_chou_n3"],
+        bunpou_ids=["bunpou_kagiri", "bunpou_no_ue_dewa"],
+        kaiwa_ids=["kaiwa_kepadatan_jam_sibuk_n2"],
+    ),
+    dict(
+        id="bab_n2_menanggapi_harapan_dan_sambil",
+        order=86,
+        level="N2",
+        title="Menanggapi Harapan, dan Melakukan Sambil",
+        title_en="Responding to Expectations, and Doing While",
+        description="Pola に応えて (menanggapi/memenuhi ~, harapan/permintaan/dukungan) dan つつ (sambil ~, dua tindakan bersamaan, gaya formal).",
+        description_en="The に応えて pattern (responding to ~, an expectation or request) and つつ (while ~, two simultaneous actions, formal style).",
+        kotoba_ids=["kotoba_bangunan_fasilitas_yoyaku", "kotoba_hobi_aktivitas_ryouri"],
+        kanji_ids=["kanji_sou_n3", "kanji_sen_n3"],
+        bunpou_ids=["bunpou_ni_kotaete", "bunpou_tsutsu"],
+        kaiwa_ids=["kaiwa_rayakan_momen_spesial_n2"],
+    ),
+    dict(
+        id="bab_n2_terpaksa_harus_dan_dalam_rangka",
+        order=87,
+        level="N2",
+        title="Terpaksa Harus, dan Dalam Rangka Sesuatu",
+        title_en="Have No Choice But To, and In Preparation For",
+        description="Pola ざるを得ない (terpaksa harus ~, tidak bisa tidak ~) dan にあたって (dalam rangka ~, menjelang momen penting).",
+        description_en="The ざるを得ない pattern (have no choice but to ~) and にあたって (in preparation for/on the occasion of ~).",
+        kotoba_ids=["kotoba_konsep_umum_keiken", "kotoba_obat_obatan_byouin"],
+        kanji_ids=["kanji_kei_n3", "kanji_ka_n3"],
+        bunpou_ids=["bunpou_zaru_o_enai", "bunpou_ni_atatte"],
+        kaiwa_ids=["kaiwa_keracunan_makanan_n2"],
+    ),
+    dict(
+        id="bab_n2_tentu_saja_begitu_dan_untung_masih",
+        order=88,
+        level="N2",
+        title="Tentu Saja Begitu, dan Untung Masih Mendingan",
+        title_en="Of Course, That's How They Are, and At Least It's Not Worse",
+        description="Pola ことだから (karena orangnya memang begitu, tentu saja ~) dan だけましだ (untung masih ~, dibanding kemungkinan lebih buruk).",
+        description_en="The ことだから pattern (of course, that's just how they are) and だけましだ (at least it's not as bad as it could be).",
+        kotoba_ids=["kotoba_pekerjaan_kantor_chikoku"],
+        kanji_ids=["kanji_men_n3", "kanji_yuu_n3"],
+        bunpou_ids=["bunpou_koto_dakara", "bunpou_dake_mashi_da"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_justru_karena_dan_berdasarkan",
+        order=89,
+        level="N2",
+        title="Justru Karena Itu, dan Berdasarkan Sesuatu",
+        title_en="Precisely Because Of, and Based On",
+        description="Pola だけに (justru karena ~, sehingga wajar atau hasilnya lebih terasa) dan に基づいて (berdasarkan ~).",
+        description_en="The だけに pattern (precisely because ~, making the result more pronounced) and に基づいて (based on ~).",
+        kotoba_ids=["kotoba_bangunan_fasilitas_annai", "kotoba_kendaraan_densha"],
+        kanji_ids=["kanji_nai_n3", "kanji_sai_n3"],
+        bunpou_ids=["bunpou_dake_ni", "bunpou_ni_motozuite"],
+        kaiwa_ids=["kaiwa_sistem_tiket_rumit_n2"],
+    ),
+    dict(
+        id="bab_n2_karena_sudah_dan_dari_sudut_pandang",
+        order=90,
+        level="N2",
+        title="Karena Sudah Terlanjur, dan Dari Sudut Pandang",
+        title_en="Now That It's Done, and From a Certain Viewpoint",
+        description="Pola 以上は (karena sudah ~, maka wajar/harus) dan から見ると (kalau dilihat dari ~).",
+        description_en="The 以上は pattern (now that ~, so it follows that) and から見ると (looking at it from ~).",
+        kotoba_ids=["kotoba_angka_satuan_ijou", "kotoba_konsep_umum_saigo"],
+        kanji_ids=["kanji_sai_n3", "kanji_yaku_n3"],
+        bunpou_ids=["bunpou_ijou_wa", "bunpou_kara_miru_to"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_ragu_dua_pilihan_dan_sudah_pasti",
+        order=91,
+        level="N2",
+        title="Ragu Antara Dua Pilihan, dan Sudah Pasti",
+        title_en="Torn Between Two Choices, and Certainly So",
+        description="Pola ようか〜まいか (apakah akan ~ atau tidak, keraguan dua pilihan) dan に決まっている (sudah pasti ~, keyakinan kuat penutur).",
+        description_en="The ようか〜まいか pattern (torn between doing ~ or not) and に決まっている (it's certainly ~, a strong conviction).",
+        kotoba_ids=[],
+        kanji_ids=["kanji_hi4_n3", "kanji_mei2_n3"],
+        bunpou_ids=["bunpou_you_ka_mai_ka", "bunpou_ni_kimatte_iru"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_seputar_topik_dan_tanpa_memandang",
+        order=92,
+        level="N2",
+        title="Seputar Suatu Topik, dan Tanpa Memandang",
+        title_en="Surrounding a Topic, and Regardless Of",
+        description="Pola をめぐって (seputar ~, topik perdebatan/perselisihan) dan を問わず (tanpa memandang ~, usia/gender/dsb).",
+        description_en="The をめぐって pattern (surrounding ~, a topic of debate) and を問わず (regardless of ~, age/gender/etc.).",
+        kotoba_ids=["kotoba_bangunan_fasilitas_tochi", "kotoba_konsep_umum_seisaku"],
+        kanji_ids=["kanji_sei_n3", "kanji_gi_n3"],
+        bunpou_ids=["bunpou_o_megutte", "bunpou_o_towazu"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_memang_seharusnya_dan_kesan_mendalam",
+        order=93,
+        level="N2",
+        title="Memang Seharusnya Begitu, dan Kesan Mendalam",
+        title_en="That's How It Should Be, and a Deep Impression",
+        description="Pola ものだ (memang seharusnya ~, norma umum/kebiasaan lampau) dan ものがある (ada sesuatu yang ~, kesan mendalam sulit dijelaskan).",
+        description_en="The ものだ pattern (that's just how it should be, a general norm) and ものがある (there's a certain ~ quality, hard to put into words).",
+        kotoba_ids=["kotoba_hari_bulan_saikin", "kotoba_keluarga_hubungan_otona"],
+        kanji_ids=["kanji_tai_n3", "kanji_kai_n3"],
+        bunpou_ids=["bunpou_mono_da", "bunpou_mono_ga_aru"],
+        kaiwa_ids=["kaiwa_keluhkan_pelayanan_sopan_n2"],
+    ),
+    dict(
+        id="bab_n2_berdasarkan_acuan_dan_padahal_begitu",
+        order=94,
+        level="N2",
+        title="Berdasarkan Suatu Acuan, dan Padahal Begitu",
+        title_en="Based On a Reference, and Despite That",
+        description="Pola をもとに (berdasarkan pada ~, sebagai bahan/acuan dasar) dan それなのに (padahal begitu, tapi tetap saja ~).",
+        description_en="The をもとに pattern (based on ~, as a reference) and それなのに (despite that, yet still ~).",
+        kotoba_ids=["kotoba_konsep_umum_kekka", "kotoba_konsep_umum_keikaku"],
+        kanji_ids=["kanji_sai3_n3", "kanji_ken2_n3"],
+        bunpou_ids=["bunpou_o_moto_ni", "bunpou_sore_na_noni"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_jadi_teringat_dan_alasan_informal",
+        order=95,
+        level="N2",
+        title="Jadi Teringat, dan Alasan Bernada Informal",
+        title_en="That Reminds Me, and a Casual Reason",
+        description="Pola そう言えば (ngomong-ngomong, jadi teringat sesuatu terkait topik) dan だって (habisnya~/soalnya~, alasan informal).",
+        description_en="The そう言えば pattern (that reminds me, speaking of which) and だって (because~, a casual excuse).",
+        kotoba_ids=["kotoba_hari_bulan_saikin", "kotoba_hobi_aktivitas_katsudou"],
+        kanji_ids=["kanji_sai_n3", "kanji_katsu_n3"],
+        bunpou_ids=["bunpou_sou_ieba", "bunpou_datte"],
+        kaiwa_ids=["kaiwa_kritikus_kuliner_amatir_n2"],
+    ),
+    dict(
+        id="bab_n2_menyimpulkan_dan_pengecualian_kecil",
+        order=96,
+        level="N2",
+        title="Menyimpulkan Sesuatu, dan Pengecualian Kecil",
+        title_en="Drawing a Conclusion, and a Small Exception",
+        description="Pola ということは (berarti ~, menyimpulkan dari informasi yang diberikan) dan もっとも (meski begitu, menambahkan pengecualian kecil).",
+        description_en="The ということは pattern (that means ~, drawing a conclusion) and もっとも (that said, adding a small exception).",
+        kotoba_ids=["kotoba_konsep_umum_henji", "kotoba_perabot_rumah_denki"],
+        kanji_ids=["kanji_hi4_n3", "kanji_yaku_n3"],
+        bunpou_ids=["bunpou_to_iu_koto_wa", "bunpou_mottomo"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n2_ditambah_lagi",
+        order=97,
+        level="N2",
+        title="Ditambah Lagi Hal yang Tidak Diinginkan",
+        title_en="On Top of That",
+        description="Pola おまけに (ditambah lagi, apalagi — menambahkan hal buruk/mengejutkan pada apa yang sudah terjadi).",
+        description_en="The おまけに pattern (on top of that — adding a bad or surprising extra on top of what already happened).",
+        kotoba_ids=["kotoba_pakaian_aksesori_saifu", "kotoba_teknologi_gadget_keitai"],
+        kanji_ids=["kanji_zai_n3", "kanji_mei2_n3"],
+        bunpou_ids=["bunpou_omake_ni"],
+        kaiwa_ids=[],
+    ),
+]
