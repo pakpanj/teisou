@@ -2743,5 +2743,460 @@
     "particleIds": [],
     "kaiwaIds": [],
     "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w1_a",
+    "order": 110,
+    "title": "Justru Menegaskan, dan Dengan Anggapan Tertentu",
+    "titleEn": "Emphatic Affirmation, and On the Premise That",
+    "description": "Pola こそすれ dan ものとして.",
+    "descriptionEn": "The こそすれ and ものとして patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_koso_sure",
+      "bunpou_mono_to_shite"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w1_b",
+    "order": 111,
+    "title": "Menurut Saya, Melihat Tanda, dan Sekalipun Sudah",
+    "titleEn": "In My View, Judging by Signs, and Even If Done",
+    "description": "Pola に言わせれば（にいわせれば）, とみると, dan たところで.",
+    "descriptionEn": "The に言わせれば（にいわせれば）, とみると, and たところで patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_jikan",
+      "kotoba_angka_satuan_ijou"
+    ],
+    "kanjiIds": [
+      "kanji_hei2_n2",
+      "kanji_kai3_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_ni_iwasereba",
+      "bunpou_to_miru_to",
+      "bunpou_ta_tokoro_de"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_jati_diri_sulit_dijawab_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w2_a",
+    "order": 112,
+    "title": "Sesuai Kemampuan Sendiri, dan Terlepas Apa Pun",
+    "titleEn": "In One's Own Way, and No Matter What",
+    "description": "Pola なりに / なりの dan ようが / ようと.",
+    "descriptionEn": "The なりに / なりの and ようが / ようと patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_jikan",
+      "kotoba_hari_bulan_jikan"
+    ],
+    "kanjiIds": [
+      "kanji_gan_n2",
+      "kanji_nou3_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_nari_ni",
+      "bunpou_you_ga"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_berdamai_versi_diri_masa_lalu_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w2_b",
+    "order": 113,
+    "title": "Menyebut Beberapa Aspek, Bergantian, dan Ketidakpastian",
+    "titleEn": "Listing Aspects, Alternating, and Uncertainty",
+    "description": "Pola といい～といい, つ～つ, dan のやら / ものやら / ことやら.",
+    "descriptionEn": "The といい～といい, つ～つ, and のやら / ものやら / ことやら patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_hari_bulan_saikin",
+      "kotoba_hobi_aktivitas_shashin"
+    ],
+    "kanjiIds": [
+      "kanji_on_n2",
+      "kanji_ka_n1"
+    ],
+    "bunpouIds": [
+      "bunpou_to_ii_to_ii",
+      "bunpou_tsu_tsu",
+      "bunpou_no_yara"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kejar_pengakuan_ulasan_kuliner_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w3_a",
+    "order": 114,
+    "title": "Meski Tidak Sampai, dan Sebagai Batas Akhir",
+    "titleEn": "Even If Not Fully, and As the Final Limit",
+    "description": "Pola ないまでも dan を限りに（をかぎりに）.",
+    "descriptionEn": "The ないまでも and を限りに（をかぎりに） patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_keluarga_hubungan_chounan",
+      "kotoba_konsep_umum_kitai"
+    ],
+    "kanjiIds": [
+      "kanji_i3_n2",
+      "kanji_kan6_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_nai_mademo",
+      "bunpou_o_kagiri_ni"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_beban_ekspektasi_nama_gelar_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w3_b",
+    "order": 115,
+    "title": "Konsesi Formal, dan Dengan Cara Resmi",
+    "titleEn": "Formal Concession, and By Formal Means",
+    "description": "Pola といえども dan をもって / をもちまして.",
+    "descriptionEn": "The といえども and をもって / をもちまして patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_arah_lokasi_keshiki",
+      "kotoba_hari_bulan_jiki"
+    ],
+    "kanjiIds": [
+      "kanji_jun2_n2",
+      "kanji_zou3_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_to_iedomo",
+      "bunpou_o_motte"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_filosofi_hidup_lewat_penderitaan_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w3_c",
+    "order": 116,
+    "title": "Dugaan Meleset, Sekalian, dan Tak Perlu Dikatakan",
+    "titleEn": "A Wrong Guess, While At It, and Needless to Say",
+    "description": "Pola かと思いきや（かとおもいきや）, がてら, dan までもない / までもなく.",
+    "descriptionEn": "The かと思いきや（かとおもいきや）, がてら, and までもない / までもなく patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ka_to_omoikiya",
+      "bunpou_gatera",
+      "bunpou_made_mo_nai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w4_a",
+    "order": 117,
+    "title": "Penyesalan Padahal Seharusnya, dan Bahkan Pun",
+    "titleEn": "Regret Over What Should Have Been, and Even",
+    "description": "Pola ものを dan すら / ですら.",
+    "descriptionEn": "The ものを and すら / ですら patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_arah_lokasi_keshiki",
+      "kotoba_hari_bulan_izen"
+    ],
+    "kanjiIds": [
+      "kanji_ka_n1",
+      "kanji_gi2_n1"
+    ],
+    "bunpouIds": [
+      "bunpou_mono_o",
+      "bunpou_sura"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_bangun_ulang_diri_setelah_kehilangan_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w4_b",
+    "order": 118,
+    "title": "Mencakup Seluruhnya, dan Dalam Situasi Khusus",
+    "titleEn": "Encompassing All, and In a Particular Situation",
+    "description": "Pola ぐるみ dan にあって.",
+    "descriptionEn": "The ぐるみ and にあって patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_gurumi",
+      "bunpou_ni_atte"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w4_c",
+    "order": 119,
+    "title": "Keunikan Khas, Harapan Kuat, dan Prasyarat Mutlak",
+    "titleEn": "Distinctive Uniqueness, Strong Hope, and an Essential Prerequisite",
+    "description": "Pola ならでは, ないものか / ないものだろうか, dan なくしては.",
+    "descriptionEn": "The ならでは, ないものか / ないものだろうか, and なくしては patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_konsep_umum_eikyou",
+      "kotoba_konsep_umum_hyougen"
+    ],
+    "kanjiIds": [
+      "kanji_shou4_n2",
+      "kanji_ko_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_naradewa",
+      "bunpou_nai_mono_ka",
+      "bunpou_nakushite_wa"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_peran_bahasa_bentuk_pikiran_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w5_a",
+    "order": 120,
+    "title": "Tidak Cukup Hanya Dengan, dan Perumpamaan Klasik",
+    "titleEn": "Not Settled by That Alone, and a Classical Simile",
+    "description": "Pola では済まない（ではすまない） dan ごとき / ごとく / ごとし.",
+    "descriptionEn": "The では済まない（ではすまない） and ごとき / ごとく / ごとし patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_dewa_sumanai",
+      "bunpou_gotoki"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w5_b",
+    "order": 121,
+    "title": "Tanpa Memandang Bagaimanapun, dan Tidak Bergantung Pada",
+    "titleEn": "Regardless of How, and Not Depending On",
+    "description": "Pola いかんにかかわらず / いかんによらず / いかんをとわず dan によらず.",
+    "descriptionEn": "The いかんにかかわらず / いかんによらず / いかんをとわず and によらず patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ikan_ni_kakawarazu",
+      "bunpou_ni_yorazu"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w5_c",
+    "order": 122,
+    "title": "Larangan Tegas, dan Kewajiban Tak Terhindarkan",
+    "titleEn": "A Firm Prohibition, and an Unavoidable Obligation",
+    "description": "Pola べからず / べからざる dan ずには済まない / ないでは済まない.",
+    "descriptionEn": "The べからず / べからざる and ずには済まない / ないでは済まない patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_bekarazu",
+      "bunpou_zu_niwa_sumanai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w6_a",
+    "order": 123,
+    "title": "Sesuai Kondisi Nyata, dan Sebab Formal",
+    "titleEn": "In Line With Reality, and a Formal Cause",
+    "description": "Pola に即して（にそくして） dan ゆえに.",
+    "descriptionEn": "The に即して（にそくして） and ゆえに patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_keluarga_hubungan_chounan",
+      "kotoba_konsep_umum_kitai"
+    ],
+    "kanjiIds": [
+      "kanji_i3_n2",
+      "kanji_kan6_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_ni_sokushite",
+      "bunpou_yue_ni"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_beban_ekspektasi_nama_gelar_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w6_b",
+    "order": 124,
+    "title": "Dua Tujuan Sekaligus, Berlandaskan Premis, dan Melebihi",
+    "titleEn": "Two Aims at Once, On a Premise, and Surpassing",
+    "description": "Pola を兼ねて（をかねて）, を前提として（をぜんていとして）, dan にも増して（にもまして）.",
+    "descriptionEn": "The を兼ねて（をかねて）, を前提として（をぜんていとして）, and にも増して（にもまして） patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_kanete",
+      "bunpou_o_zentei_to_shite",
+      "bunpou_ni_mo_mashite"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w7_a",
+    "order": 125,
+    "title": "Penekanan Lewat Pengulangan, dan Bahkan Sekadar",
+    "titleEn": "Emphasis by Repetition, and Not Even",
+    "description": "Pola に (pengulangan kata kerja yang sama) dan だに / だにしない.",
+    "descriptionEn": "The に pattern (repeating the same verb) and だに / だにしない.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ni2",
+      "bunpou_dani"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w7_b",
+    "order": 126,
+    "title": "Cara dan Gaya, dan Tidak Tahan Untuk",
+    "titleEn": "Manner and Style, and Unbearable To",
+    "description": "Pola ぶり / っぷり dan に耐える / に耐えない（にたえる / にたえない）.",
+    "descriptionEn": "The ぶり / っぷり and に耐える / に耐えない（にたえる / にたえない） patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_tochi",
+      "kotoba_konsep_umum_keikaku"
+    ],
+    "kanjiIds": [
+      "kanji_gyaku_n2",
+      "kanji_sai4_n1"
+    ],
+    "bunpouIds": [
+      "bunpou_buri_ppuri",
+      "bunpou_ni_taeru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_nikmati_tersesat_tempat_asing_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w7_c",
+    "order": 127,
+    "title": "Sama Sekali Bukan, Tidak Perlu Sampai, dan Usaha Berulang",
+    "titleEn": "Not At All, No Need To, and Repeated Effort",
+    "description": "Pola でも何でもない / くも何ともない, には及ばない（にはおよばない）, dan に～を重ねて（に～をかさねて）.",
+    "descriptionEn": "The でも何でもない / くも何ともない, には及ばない（にはおよばない）, and に～を重ねて（に～をかさねて） patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_annai",
+      "kotoba_konsep_umum_keiken"
+    ],
+    "kanjiIds": [
+      "kanji_an_n2",
+      "kanji_gi_n1"
+    ],
+    "bunpouIds": [
+      "bunpou_demo_nandemo_nai",
+      "bunpou_niwa_oyobanai",
+      "bunpou_ni_o_kasanete"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_makna_petunjuk_arah_kepedulian_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w8_a",
+    "order": 128,
+    "title": "Kalau Itu Lain Cerita, dan Harapan Tak Henti",
+    "titleEn": "That Would Be Another Story, and Unceasing Wishes",
+    "description": "Pola ならいざしらず / はいざしらず dan てやまない.",
+    "descriptionEn": "The ならいざしらず / はいざしらず and てやまない patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_nara_iza_shirazu",
+      "bunpou_te_yamanai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_w8_b",
+    "order": 129,
+    "title": "Terpaksa Keadaan, Perasaan Mendalam, dan Menyangkal Premis",
+    "titleEn": "Forced by Circumstance, Deep Feeling, and Denying a Premise",
+    "description": "Pola を余儀なくされる（をよぎなくされる）, の至り（のいたり）, dan ではあるまいし.",
+    "descriptionEn": "The を余儀なくされる（をよぎなくされる）, の至り（のいたり）, and ではあるまいし patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_arah_lokasi_keshiki",
+      "kotoba_hari_bulan_izen"
+    ],
+    "kanjiIds": [
+      "kanji_ka_n1",
+      "kanji_gi2_n1"
+    ],
+    "bunpouIds": [
+      "bunpou_o_yogi_naku_sareru",
+      "bunpou_no_itari",
+      "bunpou_dewa_arumaishi"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_bangun_ulang_diri_setelah_kehilangan_n1"
+    ],
+    "dokkaiIds": []
   }
 ]

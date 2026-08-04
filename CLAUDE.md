@@ -5427,3 +5427,87 @@ device, check `wm density` before assuming a UI/hit-test bug — multiply
 intended screenshot-space coordinates by (physical/override) before
 sending `input tap`. Did not reset the override itself (a system display
 setting, not this session's to change without being asked).
+
+## Update (2026-08-04, later same day): Bab N4 -> 25, plus N3, N2 and N1
+
+Four more Bab passes landed the same day as the N4 first pass above.
+N3's and N2's were committed without a CLAUDE.md section at the time —
+this entry covers all four, so the earlier gap is closed here rather
+than left implicit in git history.
+
+**Order stays globally monotonic across every level** — N5 1-31, N4
+32-56, N3 57-81, N2 82-109, N1 110-129, currently **129 chapters**.
+This was re-confirmed against `bab_providers.dart` rather than assumed:
+`babNextUpProvider` sorts ALL chapters across every level by `order` to
+drive the mascot's cross-level "what's next" recommendation, so a
+per-level restart at 1 would collide and break it.
+`generate_bab_seed.py`'s contiguity assertion is correspondingly global
+(`1..len(ALL_CHAPTERS)`), and each new level must be added to that
+script's `ALL_CHAPTERS` and its summary `print` — N1 needed both.
+`BabHomeScreen` iterates `JlptLevel.values`, so a newly-populated level
+appears with no UI change at all.
+
+- **N4 extended 19 -> 25** (order 51-56 added), closing the six lessons
+  the first pass had skipped.
+- **N3, 25 chapters (order 57-81)**, sequenced against Speed Master
+  N3-Bunpou (pages 13-55, roughly Part 1's scenes 1-6). 85 of the
+  project's 182 N3 patterns were found in that range; the remaining 97
+  are a later expansion pass.
+- **N2, 16 chapters (order 82-97)** sequenced against the
+  learn-and-practice-grammar-n2 ebook (8 weeks x 6 days = 48 day-title
+  patterns, of which 31 were N2-tagged here — the other 17 are already
+  N3 in this dataset), then **expanded to 28 (order 98-109)** using 12
+  more pairs drawn from the remaining N2 patterns with **no external
+  source at all**, per an explicit user instruction to keep expanding
+  without risking a copyright claim. 43 of 197 N2 patterns are covered;
+  154 remain.
+- **N1, 20 chapters (order 110-129)**, sequenced against 『日本語総まとめ
+  N1 文法』 (So-matome N1 Bunpo), which is organised the same 8 weeks x 6
+  grammar days = 48 points as the N2 ebook. See the long comment block
+  above `N1_CHAPTERS` in `scripts/bab_lists.py` for the full derivation
+  (which 6 book points were skipped as already-N5-N2-tagged, which 5
+  extra patterns came from the week *titles*, why chapters group 2-3
+  patterns within a single book week). 47 of 253 N1 patterns covered;
+  206 remain.
+
+**Copyright discipline for all four reference books** (this is the
+standing rule the user restated explicitly, not a one-off): only the
+*teaching sequence* is taken from a textbook — the factual list of
+which grammar point is introduced in which lesson/week/day. No example
+sentence, explanation, table, or exercise is copied. Every chapter's
+actual teaching content comes from this project's own already-authored
+`bunpou_data.json` / `kotoba_*` / `kanji_data.json` / `kaiwa_data.json`.
+A Bab chapter is an id-list, so there is structurally nothing of the
+book's expression in the output.
+
+**All four So-matome N1 PDFs and both N2 PDFs are pure image scans** —
+`pymupdf`'s `get_text()` returns nothing. Render pages with
+`fitz.Matrix(2,2)` and read them visually instead. Two Windows-specific
+traps hit repeatedly this session: (1) `pix.save()` can appear to fail
+with `UnicodeEncodeError: 'charmap' ... '→'` — that is *fitz's own
+warning text* failing to print to a cp1252 console, not the save; wrap
+stdout in a UTF-8 `TextIOWrapper` first. (2) A heredoc'd `python3 <<EOF`
+does not inherit a shell variable set on the same line, and `/tmp` is
+not writable the way it looks — write to an absolute scratchpad path.
+
+**Cross-content matching gets thinner as the level rises, by nature.**
+The literal-overlap rule (pick `kotoba_ids`/`kanji_ids` whose
+word/character actually appears in the chapter's matched kaiwa dialogue)
+holds throughout, but the kaiwa hit rate falls: N2 managed 9/31 on its
+first pass, N1 11/20. N1 grammar is overwhelmingly formal and written
+(べからず, いかんにかかわらず, を前提として) while the kaiwa pool is
+conversational, so those patterns genuinely never occur there. Chapters
+with no match ship `kaiwa_ids=[]` deliberately and the detail screen
+falls back to the bunpou entry's own `sentenceExamples` — the same
+"don't force it" precedent N5 and N4 already set. A kaiwa id repeating
+across two chapters is likewise accepted when no second dialogue matched
+(N1 orders 114/123 and 117/129; N3 already had 68/75).
+
+Verified after each pass: `flutter analyze` clean, `flutter test
+--concurrency=1` all 48 pass, `flutter build apk --debug` clean, and the
+generator's own assertions (no duplicate id/order, every referenced
+cross-module id resolves in one of the six datasets, order contiguous
+from 1). **Not verified: any on-device pass for N3, N2 or N1** — the
+N4 first pass above is the last one that got real device testing. The
+generator proves every id resolves, which is the failure mode that
+actually matters here, but nobody has tapped through an N1 chapter.

@@ -1932,3 +1932,318 @@ N2_CHAPTERS = [
         kaiwa_ids=[],
     ),
 ]
+
+# N1 chapters, first pass (2026-08-04). Continues the global `order`
+# sequence from N2's 109 (order=110..129) — see the N4 comment above for
+# why `order` is global across levels rather than per-level.
+#
+# Sequenced against 『日本語総まとめ N1 文法』(Nihongo So-matome N1 Bunpo,
+# 155-page scan supplied by the user). Like the N2 ebook, it is organised
+# 第N週 (week) x N日目 (day): 8 weeks x 6 grammar days = 48 grammar points,
+# with day 7 of each week being a practice test rather than new grammar.
+# Only the *teaching sequence* was taken from the book — i.e. the factual
+# list of which grammar point is introduced on which week/day. No example
+# sentence, explanation, or exercise from the book was copied; every
+# entry's teaching content comes from this project's own already-authored
+# `bunpou_data.json`. Same discipline used for the N3 (Speed Master) and
+# N2 (learn-and-practice ebook) passes above.
+#
+# 6 of the book's 48 points are already tagged at an earlier level in this
+# project's dataset and were therefore skipped here rather than pulled
+# into an N1 chapter (same "don't force it" / level-purity rule the N4
+# comment documents): ことだから (W1D3) and ようか～まいか (W2D3) are N2;
+# そうもない (W5D2), つもりで (W6D2) and ながらも (W6D3) are N3;
+# に越したことはない (W8D3) is N2. So-matome re-teaches them at N1 as
+# revision, which is a textbook choice, not a re-levelling of the pattern.
+#
+# 5 further N1 patterns were added from the *week titles* themselves,
+# which in this book are themed sentences that each demonstrate one more
+# grammar point beyond the six day-titles: までもなく (W3), なくして (W4),
+# ずにはすまない (W5), にも増して (W6), に～を重ねて (W7). W1's てこそ is
+# N2-tagged and W8's はどうあれ has no dataset entry, so neither was used.
+#
+# 42 day-title + 5 week-title = 47 N1-tagged patterns, grouped 2-3 per
+# chapter *within* each book week so a chapter never straddles two weeks
+# of the source sequence. That yields 20 chapters with no orphan
+# single-pattern chapter (pairing 2-by-2 would have left 6 of them).
+#
+# kaiwa_ids were resolved by scanning all 255 N1 dialogues for one whose
+# text literally contains one of the chapter's patterns, then picking
+# kotoba/kanji whose word/character literally appears in that same
+# dialogue — the literal-overlap discipline documented for N4/N3/N2.
+# Only 11 of 20 chapters found a match: N1 grammar is heavily formal and
+# written (べからず, いかんにかかわらず, を前提として), while the kaiwa pool is
+# conversational, so most of these patterns genuinely never occur there.
+# The other 9 ship with kaiwa_ids=[] deliberately — the detail screen
+# falls back to the bunpou entry's own sentenceExamples, same as the 7
+# N2 chapters in the same situation. Two kaiwa ids repeat across
+# chapters (kaiwa_beban_ekspektasi_nama_gelar_n1 on 114/123,
+# kaiwa_bangun_ulang_diri_setelah_kehilangan_n1 on 117/129) because no
+# second dialogue matched those patterns at all; N3 already has the same
+# repeat (kaiwa_jadi_wali_adik_n3 on orders 68 and 75).
+#
+# This covers So-matome's full 8-week N1 grammar syllabus but only 47 of
+# the project's 253 N1 bunpou patterns — the remaining 206 are a later
+# expansion pass, the same shape as N2's 16 -> 28 phase 2.
+N1_CHAPTERS = [
+    dict(
+        id="bab_n1_w1_a",
+        order=110,
+        level="N1",
+        title="Justru Menegaskan, dan Dengan Anggapan Tertentu",
+        title_en="Emphatic Affirmation, and On the Premise That",
+        description="Pola こそすれ dan ものとして.",
+        description_en="The こそすれ and ものとして patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_koso_sure", "bunpou_mono_to_shite"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n1_w1_b",
+        order=111,
+        level="N1",
+        title="Menurut Saya, Melihat Tanda, dan Sekalipun Sudah",
+        title_en="In My View, Judging by Signs, and Even If Done",
+        description="Pola に言わせれば（にいわせれば）, とみると, dan たところで.",
+        description_en="The に言わせれば（にいわせれば）, とみると, and たところで patterns.",
+        kotoba_ids=["kotoba_jikan", "kotoba_angka_satuan_ijou"],
+        kanji_ids=["kanji_hei2_n2", "kanji_kai3_n2"],
+        bunpou_ids=["bunpou_ni_iwasereba", "bunpou_to_miru_to", "bunpou_ta_tokoro_de"],
+        kaiwa_ids=["kaiwa_jati_diri_sulit_dijawab_n1"],
+    ),
+    dict(
+        id="bab_n1_w2_a",
+        order=112,
+        level="N1",
+        title="Sesuai Kemampuan Sendiri, dan Terlepas Apa Pun",
+        title_en="In One's Own Way, and No Matter What",
+        description="Pola なりに / なりの dan ようが / ようと.",
+        description_en="The なりに / なりの and ようが / ようと patterns.",
+        kotoba_ids=["kotoba_jikan", "kotoba_hari_bulan_jikan"],
+        kanji_ids=["kanji_gan_n2", "kanji_nou3_n2"],
+        bunpou_ids=["bunpou_nari_ni", "bunpou_you_ga"],
+        kaiwa_ids=["kaiwa_berdamai_versi_diri_masa_lalu_n1"],
+    ),
+    dict(
+        id="bab_n1_w2_b",
+        order=113,
+        level="N1",
+        title="Menyebut Beberapa Aspek, Bergantian, dan Ketidakpastian",
+        title_en="Listing Aspects, Alternating, and Uncertainty",
+        description="Pola といい～といい, つ～つ, dan のやら / ものやら / ことやら.",
+        description_en="The といい～といい, つ～つ, and のやら / ものやら / ことやら patterns.",
+        kotoba_ids=["kotoba_hari_bulan_saikin", "kotoba_hobi_aktivitas_shashin"],
+        kanji_ids=["kanji_on_n2", "kanji_ka_n1"],
+        bunpou_ids=["bunpou_to_ii_to_ii", "bunpou_tsu_tsu", "bunpou_no_yara"],
+        kaiwa_ids=["kaiwa_kejar_pengakuan_ulasan_kuliner_n1"],
+    ),
+    dict(
+        id="bab_n1_w3_a",
+        order=114,
+        level="N1",
+        title="Meski Tidak Sampai, dan Sebagai Batas Akhir",
+        title_en="Even If Not Fully, and As the Final Limit",
+        description="Pola ないまでも dan を限りに（をかぎりに）.",
+        description_en="The ないまでも and を限りに（をかぎりに） patterns.",
+        kotoba_ids=["kotoba_keluarga_hubungan_chounan", "kotoba_konsep_umum_kitai"],
+        kanji_ids=["kanji_i3_n2", "kanji_kan6_n2"],
+        bunpou_ids=["bunpou_nai_mademo", "bunpou_o_kagiri_ni"],
+        kaiwa_ids=["kaiwa_beban_ekspektasi_nama_gelar_n1"],
+    ),
+    dict(
+        id="bab_n1_w3_b",
+        order=115,
+        level="N1",
+        title="Konsesi Formal, dan Dengan Cara Resmi",
+        title_en="Formal Concession, and By Formal Means",
+        description="Pola といえども dan をもって / をもちまして.",
+        description_en="The といえども and をもって / をもちまして patterns.",
+        kotoba_ids=["kotoba_arah_lokasi_keshiki", "kotoba_hari_bulan_jiki"],
+        kanji_ids=["kanji_jun2_n2", "kanji_zou3_n2"],
+        bunpou_ids=["bunpou_to_iedomo", "bunpou_o_motte"],
+        kaiwa_ids=["kaiwa_filosofi_hidup_lewat_penderitaan_n1"],
+    ),
+    dict(
+        id="bab_n1_w3_c",
+        order=116,
+        level="N1",
+        title="Dugaan Meleset, Sekalian, dan Tak Perlu Dikatakan",
+        title_en="A Wrong Guess, While At It, and Needless to Say",
+        description="Pola かと思いきや（かとおもいきや）, がてら, dan までもない / までもなく.",
+        description_en="The かと思いきや（かとおもいきや）, がてら, and までもない / までもなく patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ka_to_omoikiya", "bunpou_gatera", "bunpou_made_mo_nai"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n1_w4_a",
+        order=117,
+        level="N1",
+        title="Penyesalan Padahal Seharusnya, dan Bahkan Pun",
+        title_en="Regret Over What Should Have Been, and Even",
+        description="Pola ものを dan すら / ですら.",
+        description_en="The ものを and すら / ですら patterns.",
+        kotoba_ids=["kotoba_arah_lokasi_keshiki", "kotoba_hari_bulan_izen"],
+        kanji_ids=["kanji_ka_n1", "kanji_gi2_n1"],
+        bunpou_ids=["bunpou_mono_o", "bunpou_sura"],
+        kaiwa_ids=["kaiwa_bangun_ulang_diri_setelah_kehilangan_n1"],
+    ),
+    dict(
+        id="bab_n1_w4_b",
+        order=118,
+        level="N1",
+        title="Mencakup Seluruhnya, dan Dalam Situasi Khusus",
+        title_en="Encompassing All, and In a Particular Situation",
+        description="Pola ぐるみ dan にあって.",
+        description_en="The ぐるみ and にあって patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_gurumi", "bunpou_ni_atte"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n1_w4_c",
+        order=119,
+        level="N1",
+        title="Keunikan Khas, Harapan Kuat, dan Prasyarat Mutlak",
+        title_en="Distinctive Uniqueness, Strong Hope, and an Essential Prerequisite",
+        description="Pola ならでは, ないものか / ないものだろうか, dan なくしては.",
+        description_en="The ならでは, ないものか / ないものだろうか, and なくしては patterns.",
+        kotoba_ids=["kotoba_konsep_umum_eikyou", "kotoba_konsep_umum_hyougen"],
+        kanji_ids=["kanji_shou4_n2", "kanji_ko_n2"],
+        bunpou_ids=["bunpou_naradewa", "bunpou_nai_mono_ka", "bunpou_nakushite_wa"],
+        kaiwa_ids=["kaiwa_peran_bahasa_bentuk_pikiran_n1"],
+    ),
+    dict(
+        id="bab_n1_w5_a",
+        order=120,
+        level="N1",
+        title="Tidak Cukup Hanya Dengan, dan Perumpamaan Klasik",
+        title_en="Not Settled by That Alone, and a Classical Simile",
+        description="Pola では済まない（ではすまない） dan ごとき / ごとく / ごとし.",
+        description_en="The では済まない（ではすまない） and ごとき / ごとく / ごとし patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_dewa_sumanai", "bunpou_gotoki"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n1_w5_b",
+        order=121,
+        level="N1",
+        title="Tanpa Memandang Bagaimanapun, dan Tidak Bergantung Pada",
+        title_en="Regardless of How, and Not Depending On",
+        description="Pola いかんにかかわらず / いかんによらず / いかんをとわず dan によらず.",
+        description_en="The いかんにかかわらず / いかんによらず / いかんをとわず and によらず patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ikan_ni_kakawarazu", "bunpou_ni_yorazu"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n1_w5_c",
+        order=122,
+        level="N1",
+        title="Larangan Tegas, dan Kewajiban Tak Terhindarkan",
+        title_en="A Firm Prohibition, and an Unavoidable Obligation",
+        description="Pola べからず / べからざる dan ずには済まない / ないでは済まない.",
+        description_en="The べからず / べからざる and ずには済まない / ないでは済まない patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_bekarazu", "bunpou_zu_niwa_sumanai"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n1_w6_a",
+        order=123,
+        level="N1",
+        title="Sesuai Kondisi Nyata, dan Sebab Formal",
+        title_en="In Line With Reality, and a Formal Cause",
+        description="Pola に即して（にそくして） dan ゆえに.",
+        description_en="The に即して（にそくして） and ゆえに patterns.",
+        kotoba_ids=["kotoba_keluarga_hubungan_chounan", "kotoba_konsep_umum_kitai"],
+        kanji_ids=["kanji_i3_n2", "kanji_kan6_n2"],
+        bunpou_ids=["bunpou_ni_sokushite", "bunpou_yue_ni"],
+        kaiwa_ids=["kaiwa_beban_ekspektasi_nama_gelar_n1"],
+    ),
+    dict(
+        id="bab_n1_w6_b",
+        order=124,
+        level="N1",
+        title="Dua Tujuan Sekaligus, Berlandaskan Premis, dan Melebihi",
+        title_en="Two Aims at Once, On a Premise, and Surpassing",
+        description="Pola を兼ねて（をかねて）, を前提として（をぜんていとして）, dan にも増して（にもまして）.",
+        description_en="The を兼ねて（をかねて）, を前提として（をぜんていとして）, and にも増して（にもまして） patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_o_kanete", "bunpou_o_zentei_to_shite", "bunpou_ni_mo_mashite"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n1_w7_a",
+        order=125,
+        level="N1",
+        title="Penekanan Lewat Pengulangan, dan Bahkan Sekadar",
+        title_en="Emphasis by Repetition, and Not Even",
+        description="Pola に (pengulangan kata kerja yang sama) dan だに / だにしない.",
+        description_en="The に pattern (repeating the same verb) and だに / だにしない.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_ni2", "bunpou_dani"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n1_w7_b",
+        order=126,
+        level="N1",
+        title="Cara dan Gaya, dan Tidak Tahan Untuk",
+        title_en="Manner and Style, and Unbearable To",
+        description="Pola ぶり / っぷり dan に耐える / に耐えない（にたえる / にたえない）.",
+        description_en="The ぶり / っぷり and に耐える / に耐えない（にたえる / にたえない） patterns.",
+        kotoba_ids=["kotoba_bangunan_fasilitas_tochi", "kotoba_konsep_umum_keikaku"],
+        kanji_ids=["kanji_gyaku_n2", "kanji_sai4_n1"],
+        bunpou_ids=["bunpou_buri_ppuri", "bunpou_ni_taeru"],
+        kaiwa_ids=["kaiwa_nikmati_tersesat_tempat_asing_n1"],
+    ),
+    dict(
+        id="bab_n1_w7_c",
+        order=127,
+        level="N1",
+        title="Sama Sekali Bukan, Tidak Perlu Sampai, dan Usaha Berulang",
+        title_en="Not At All, No Need To, and Repeated Effort",
+        description="Pola でも何でもない / くも何ともない, には及ばない（にはおよばない）, dan に～を重ねて（に～をかさねて）.",
+        description_en="The でも何でもない / くも何ともない, には及ばない（にはおよばない）, and に～を重ねて（に～をかさねて） patterns.",
+        kotoba_ids=["kotoba_bangunan_fasilitas_annai", "kotoba_konsep_umum_keiken"],
+        kanji_ids=["kanji_an_n2", "kanji_gi_n1"],
+        bunpou_ids=["bunpou_demo_nandemo_nai", "bunpou_niwa_oyobanai", "bunpou_ni_o_kasanete"],
+        kaiwa_ids=["kaiwa_makna_petunjuk_arah_kepedulian_n1"],
+    ),
+    dict(
+        id="bab_n1_w8_a",
+        order=128,
+        level="N1",
+        title="Kalau Itu Lain Cerita, dan Harapan Tak Henti",
+        title_en="That Would Be Another Story, and Unceasing Wishes",
+        description="Pola ならいざしらず / はいざしらず dan てやまない.",
+        description_en="The ならいざしらず / はいざしらず and てやまない patterns.",
+        kotoba_ids=[],
+        kanji_ids=[],
+        bunpou_ids=["bunpou_nara_iza_shirazu", "bunpou_te_yamanai"],
+        kaiwa_ids=[],
+    ),
+    dict(
+        id="bab_n1_w8_b",
+        order=129,
+        level="N1",
+        title="Terpaksa Keadaan, Perasaan Mendalam, dan Menyangkal Premis",
+        title_en="Forced by Circumstance, Deep Feeling, and Denying a Premise",
+        description="Pola を余儀なくされる（をよぎなくされる）, の至り（のいたり）, dan ではあるまいし.",
+        description_en="The を余儀なくされる（をよぎなくされる）, の至り（のいたり）, and ではあるまいし patterns.",
+        kotoba_ids=["kotoba_arah_lokasi_keshiki", "kotoba_hari_bulan_izen"],
+        kanji_ids=["kanji_ka_n1", "kanji_gi2_n1"],
+        bunpou_ids=["bunpou_o_yogi_naku_sareru", "bunpou_no_itari", "bunpou_dewa_arumaishi"],
+        kaiwa_ids=["kaiwa_bangun_ulang_diri_setelah_kehilangan_n1"],
+    ),
+]
