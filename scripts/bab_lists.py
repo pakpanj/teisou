@@ -721,3 +721,318 @@ N5_CHAPTERS = [
         kaiwa_ids=["kaiwa_tanya_hobi"],
     ),
 ]
+
+# N4 chapters, first pass (2026-08-04). Continues the global `order`
+# sequence from N5's 31 (order=32..50) rather than restarting at 1 —
+# `bab_providers.dart`'s `babNextUpProvider` sorts ALL chapters across
+# every level by `order` to drive the mascot's cross-level "what's next"
+# recommendation, by design (see that provider's own doc comment). If N4
+# restarted at order=1 it would collide with N5's own order=1 in that
+# global sort and break the recommendation the moment both levels exist —
+# checked before assuming a fresh per-level count was safe.
+# `generate_bab_seed.py`'s order-contiguity assertion is correspondingly
+# global (1..len(ALL_CHAPTERS)), not per-level, so this is the only valid
+# scheme without a Dart-side change.
+#
+# Sequenced against the real Minna no Nihongo Shokyuu II textbook (322-page
+# scan, "Minna No Nihongo Beginner II - Textbook.pdf" in the user's
+# C:\CV WATER PROFING\e book pdf\ folder — zero extractable text, rendered
+# to images with pymupdf and read page by page; only the 目次 (table of
+# contents) pages 26-50 were read for their per-lesson grammar list,
+# structure only, nothing reproduced), Lessons 26-50 (Lessons 1-25 are
+# Minna I / this app's N5 scope). Real lesson-by-lesson grammar found:
+# L26 んです / ていただけませんか, L27 potential form + 見える/聞こえる,
+# L28 ながら + し, L29 ている(state) + てしまう, L30 てある + ておく,
+# L31 volitional + ようと思う + つもり, L32 ほうがいい/でしょう/かもしれない,
+# L33 imperative + な + という意味 + と言っていた, L34 とおりに/たあとで/
+# ないで, L35 ば, L36 ように/ようになる, L37 受身形, L38 の/こと + のは〜だ,
+# L39 て(cause)+ので, L40 かどうか + てみたい, L41 いただく/くださる/やる
+# (advanced giving-receiving), L42 ために/のに(purpose), L43 そうだ(様態)+
+# 買ってくる(compound てくる), L44 すぎる/やすい/くする, L45 場合は/
+# のに(contrast), L46 ところです/たばかり, L47 そうだ(伝聞)/ようだ,
+# L48 使役形, L49 尊敬語, L50 謙譲語.
+#
+# Not every lesson got a chapter this pass — only lessons whose core
+# grammar has a real N4-tagged bunpou_data.json entry did (same
+# "don't force it" rule N5's own history documents). Genuinely missing
+# from the dataset, same deferred-gap shape as N5's masen_ka/mashou/tai/
+# kata gap: んです (explanatory nda — n_desu exists but is N5-tagged,
+# would break this level's purity), potential form itself (話せる-style
+# conjugation, only individual outcomes like ni_mieru exist), ほうがいい/
+# でしょう (both exist but are N5-tagged for the same reason as n_desu),
+# imperative form (命令形), とおりに, てある (resultant state with
+# intention, distinct from ておく), ないで, て+cause/ので, すぎる, ために.
+# L34's とおりに/ないで and L49's imperative were skipped entirely (no
+# usable anchor at all); L26/L32/L33/L39/L42/L44 kept their other,
+# N4-tagged half instead of being dropped outright.
+#
+# kotoba_ids / kanji_ids are picked from a real N4-tagged entry whose word/
+# character literally appears inside the chapter's own kaiwa_ids dialogue
+# text (same literal-overlap discipline N5's CROSS-CONTENT SYNC PASS
+# added retroactively — done from the start here instead). Coverage is
+# real but thinner than N5's: the 296-word N4 kotoba pool is spread across
+# many unrelated categories, so several chapters below have kotoba_ids=[]
+# rather than a forced, non-matching word — left empty deliberately, not
+# forgotten. dokkai_ids is left empty across the board this pass (matching
+# N5's own starting state); N5 also still has kanji_ids/dokkai_ids empty
+# on all 31 of its chapters, so wiring dokkai up for N4 first would create
+# an inconsistent pattern before either level has ever populated it — a
+# separate future pass should do both levels together.
+#
+# 19 chapters so far (order 32-50) — a first batch, same "not the full
+# curriculum yet" shape as N5's initial 4-chapter and later 10/20/31-chapter
+# passes. Expanding further into N4 (Lessons 26, 32-34, 39, 42, 44, 49 gaps
+# above; N3-N1 beyond that) is future-session work.
+N4_CHAPTERS = [
+    dict(
+        id="bab_n4_melihat_dan_terdengar",
+        order=32,
+        level="N4",
+        title="Melihat dan Terdengar",
+        title_en="Seeing and Hearing",
+        description="Cara menyatakan sesuatu yang terlihat atau terkesan, seperti ～に見える.",
+        description_en="How to say something looks or appears a certain way, using ～に見える.",
+        kotoba_ids=["kotoba_bangunan_fasilitas_annai"],
+        kanji_ids=["kanji_tokoro", "kanji_tateru"],
+        bunpou_ids=["bunpou_ni_mieru"],
+        kaiwa_ids=["kaiwa_tersesat_minta_bantuan_sopan_n4"],
+    ),
+    dict(
+        id="bab_n4_sambil_melakukan_dan_sekaligus",
+        order=33,
+        level="N4",
+        title="Sambil Melakukan dan Sekaligus",
+        title_en="Doing at the Same Time, and Listing Reasons",
+        description="Pola ながら (melakukan dua hal sekaligus) dan し (menyebut beberapa alasan/sifat sekaligus).",
+        description_en="The ながら pattern (doing two things at once) and し (listing several reasons/qualities together).",
+        kotoba_ids=["kotoba_konsep_umum_muri", "kotoba_olahraga_undou"],
+        kanji_ids=["kanji_karada", "kanji_ugoku"],
+        bunpou_ids=["bunpou_nagara", "bunpou_shi"],
+        kaiwa_ids=["kaiwa_target_kebugaran_pribadi_n4"],
+    ),
+    dict(
+        id="bab_n4_menominalkan_dengan_koto",
+        order=34,
+        level="N4",
+        title="Menominalkan dengan Koto",
+        title_en="Turning a Verb into a Noun with Koto",
+        description="Memakai こと untuk mengubah kata kerja menjadi hal/perkara, dan menekankan bagian kalimat dengan のは〜だ.",
+        description_en="Using こと to turn a verb into a noun-like idea, and highlighting part of a sentence with のは〜だ.",
+        kotoba_ids=["kotoba_media_hiburan_anime"],
+        kanji_ids=["kanji_narau", "kanji_tsuyoi"],
+        bunpou_ids=["bunpou_koto", "bunpou_no_wa_da"],
+        kaiwa_ids=["kaiwa_kenalan_alasan_belajar_n4"],
+    ),
+    dict(
+        id="bab_n4_terlanjur_dan_menyesal",
+        order=35,
+        level="N4",
+        title="Terlanjur dan Menyesal",
+        title_en="Ending Up Doing Something, and Regret",
+        description="Pola てしまう untuk menyatakan sesuatu selesai sepenuhnya, atau terjadi tanpa sengaja/disesalkan.",
+        description_en="The てしまう pattern, for something finished completely, or done accidentally/regretfully.",
+        kotoba_ids=[],
+        kanji_ids=["kanji_suki2", "kanji_ga2"],
+        bunpou_ids=["bunpou_te_shimau"],
+        kaiwa_ids=["kaiwa_suka_nonton_di_rumah_n4"],
+    ),
+    dict(
+        id="bab_n4_bersiap_siap_sebelumnya",
+        order=36,
+        level="N4",
+        title="Bersiap-siap Sebelumnya",
+        title_en="Preparing in Advance",
+        description="Pola ておく untuk menyatakan sesuatu dilakukan sebagai persiapan untuk nanti.",
+        description_en="The ておく pattern, for doing something now to prepare for later.",
+        kotoba_ids=["kotoba_hobi_aktivitas_ryokou", "kotoba_konsep_umum_youi"],
+        kanji_ids=["kanji_you3", "kanji_i2"],
+        bunpou_ids=["bunpou_te_oku"],
+        kaiwa_ids=["kaiwa_persiapan_dokumen_perjalanan_n4"],
+    ),
+    dict(
+        id="bab_n4_ajakan_dan_niat",
+        order=37,
+        level="N4",
+        title="Ajakan dan Niat",
+        title_en="Suggestions and Intentions",
+        description="Bentuk kehendak/ajakan (意向形, mis. 行こう) dan cara menyatakan niat dengan ～ようと思う.",
+        description_en="The volitional/suggestion form (意向形, e.g. 行こう) and stating an intention with ～ようと思う.",
+        kotoba_ids=["kotoba_hari_bulan_kondo", "kotoba_konsep_umum_futsuu"],
+        kanji_ids=["kanji_do", "kanji_ga2"],
+        bunpou_ids=["bunpou_ikoukei", "bunpou_you_to_omou"],
+        kaiwa_ids=["kaiwa_festival_film_dikunjungi_n4"],
+    ),
+    dict(
+        id="bab_n4_mungkin_saja_terjadi",
+        order=38,
+        level="N4",
+        title="Mungkin Saja Terjadi",
+        title_en="It Might Happen",
+        description="Pola かもしれません untuk menyatakan kemungkinan yang tidak terlalu yakin.",
+        description_en="The かもしれません pattern, for a possibility the speaker isn't very sure about.",
+        kotoba_ids=["kotoba_olahraga_shiai"],
+        kanji_ids=["kanji_hayai", "kanji_kokoro"],
+        bunpou_ids=["bunpou_kamoshirenai"],
+        kaiwa_ids=["kaiwa_persiapan_pertandingan_n4"],
+    ),
+    dict(
+        id="bab_n4_pengandaian_dengan_ba",
+        order=39,
+        level="N4",
+        title="Pengandaian dengan Ba",
+        title_en="Conditionals with Ba",
+        description="Bentuk kondisional ば untuk menyatakan 'jika ~, maka ~'.",
+        description_en="The ば conditional form, for 'if ~, then ~'.",
+        kotoba_ids=["kotoba_profesi_kaishain"],
+        kanji_ids=["kanji_komaru", "kanji_kokoro"],
+        bunpou_ids=["bunpou_ba"],
+        kaiwa_ids=["kaiwa_kenalan_senior_kerja_n4"],
+    ),
+    dict(
+        id="bab_n4_bentuk_pasif",
+        order=40,
+        level="N4",
+        title="Bentuk Pasif",
+        title_en="The Passive Form",
+        description="Bentuk pasif (受身形) られる, untuk menyatakan sesuatu dilakukan terhadap subjek kalimat.",
+        description_en="The passive form (受身形) られる, for something being done to the sentence's subject.",
+        kotoba_ids=["kotoba_konsep_umum_dougu", "kotoba_konsep_umum_kantan"],
+        kanji_ids=["kanji_hajimeru", "kanji_tanoshii"],
+        bunpou_ids=["bunpou_rareru", "bunpou_ukemikei"],
+        kaiwa_ids=["kaiwa_ajak_hobi_menantang_n4"],
+    ),
+    dict(
+        id="bab_n4_apakah_atau_tidak",
+        order=41,
+        level="N4",
+        title="Apakah ~ Atau Tidak",
+        title_en="Whether or Not",
+        description="Pola かどうか untuk menyatakan ketidakpastian akan sesuatu, 'apakah ~ atau tidak'.",
+        description_en="The かどうか pattern, expressing uncertainty about something — 'whether or not ~'.",
+        kotoba_ids=["kotoba_konsep_umum_kankyou", "kotoba_mata_pelajaran_sotsugyou"],
+        kanji_ids=["kanji_gyou", "kanji_chikai"],
+        bunpou_ids=["bunpou_ka_dou_ka"],
+        kaiwa_ids=["kaiwa_khawatir_sebelum_lulus_n4"],
+    ),
+    dict(
+        id="bab_n4_kebaikan_diberi_dan_diterima",
+        order=42,
+        level="N4",
+        title="Kebaikan yang Diberi dan Diterima",
+        title_en="Doing Favors For, and Receiving Favors From",
+        description="Pola てくれる (orang lain melakukan sesuatu untuk saya) dan てあげる (melakukan sesuatu untuk orang lain).",
+        description_en="The てくれる pattern (someone does something for me) and てあげる (doing something for someone else).",
+        kotoba_ids=[],
+        kanji_ids=["kanji_suki2", "kanji_kirai"],
+        bunpou_ids=["bunpou_te_kureru", "bunpou_te_ageru"],
+        kaiwa_ids=["kaiwa_minta_rekomendasi_hadiah_ortu_n4"],
+    ),
+    dict(
+        id="bab_n4_tujuan_dan_penyesalan_dengan_noni",
+        order=43,
+        level="N4",
+        title="Tujuan dan Penyesalan dengan Noni",
+        title_en="Purpose and Contrast with Noni",
+        description="Dua fungsi のに yang berbeda: menyatakan tujuan/kegunaan, dan menyatakan kontras yang mengecewakan.",
+        description_en="Two different uses of のに: stating a purpose/use, and expressing a disappointing contrast.",
+        kotoba_ids=[
+            "kotoba_hobi_aktivitas_ryouri",
+            "kotoba_perasaan_emosi_zannen",
+            "kotoba_profesi_tenin",
+        ],
+        kanji_ids=["kanji_mon2", "kanji_dai3"],
+        bunpou_ids=["bunpou_noni_mokuteki", "bunpou_noni_gyakusetsu"],
+        kaiwa_ids=["kaiwa_cerita_pengalaman_buruk_restoran_n4"],
+    ),
+    dict(
+        id="bab_n4_kesan_dan_perkiraan",
+        order=44,
+        level="N4",
+        title="Kesan dan Perkiraan",
+        title_en="Impressions and Guesses",
+        description="Pola そうだ（様態） untuk menyatakan kesan visual ('kelihatannya ~'), dan てくる untuk kata kerja majemuk.",
+        description_en="The そうだ（様態） pattern for a visual impression ('looks like ~'), and てくる for compound verbs.",
+        kotoba_ids=["kotoba_kendaraan_takushii"],
+        kanji_ids=["kanji_hayai", "kanji_osoi", "kanji_noru"],
+        bunpou_ids=["bunpou_souda_youtai", "bunpou_te_kuru"],
+        kaiwa_ids=["kaiwa_negosiasi_rute_cepat_murah_n4"],
+    ),
+    dict(
+        id="bab_n4_mudah_dan_sulit_dilakukan",
+        order=45,
+        level="N4",
+        title="Mudah dan Sulit Dilakukan",
+        title_en="Easy and Hard to Do",
+        description="Pola やすい (mudah untuk ~), dipakai untuk menilai seberapa mudah melakukan sesuatu.",
+        description_en="The やすい pattern (easy to ~), used to judge how easy something is to do.",
+        kotoba_ids=["kotoba_konsep_umum_soudan"],
+        kanji_ids=["kanji_tsukuru", "kanji_komaru"],
+        bunpou_ids=["bunpou_yasui"],
+        kaiwa_ids=["kaiwa_jelaskan_alasan_pindah_kota_n4"],
+    ),
+    dict(
+        id="bab_n4_dalam_kasus_tertentu",
+        order=46,
+        level="N4",
+        title="Dalam Kasus Tertentu",
+        title_en="In That Case",
+        description="Pola 場合は untuk menyatakan 'dalam kasus ~' atau 'jika terjadi ~'.",
+        description_en="The 場合は pattern, for 'in the case of ~' or 'if ~ happens'.",
+        kotoba_ids=["kotoba_teknologi_gadget_koshou"],
+        kanji_ids=["kanji_tsukau", "kanji_hin"],
+        bunpou_ids=["bunpou_baai_wa"],
+        kaiwa_ids=["kaiwa_tanya_garansi_elektronik_n4"],
+    ),
+    dict(
+        id="bab_n4_baru_saja_terjadi",
+        order=47,
+        level="N4",
+        title="Baru Saja Terjadi",
+        title_en="Just Happened",
+        description="Pola たばかり untuk menyatakan sesuatu baru saja terjadi.",
+        description_en="The たばかり pattern, for something that just happened.",
+        kotoba_ids=["kotoba_arah_lokasi_basho"],
+        kanji_ids=["kanji_tokoro", "kanji_sama"],
+        bunpou_ids=["bunpou_ta_bakari"],
+        kaiwa_ids=["kaiwa_kenalan_tetangga_pindah_n4"],
+    ),
+    dict(
+        id="bab_n4_kabar_dengar_dan_dugaan",
+        order=48,
+        level="N4",
+        title="Kabar Dengar dan Dugaan",
+        title_en="Hearsay and Inference",
+        description="Pola そうだ（伝聞） untuk mengutip kabar dari sumber lain, dan ようだ untuk dugaan berdasar bukti.",
+        description_en="The そうだ（伝聞） pattern for quoting news from another source, and ようだ for an evidence-based guess.",
+        kotoba_ids=["kotoba_cuaca_hare", "kotoba_hari_bulan_saikin"],
+        kanji_ids=["kanji_asa", "kanji_oriru"],
+        bunpou_ids=["bunpou_souda_denbun", "bunpou_you_da"],
+        kaiwa_ids=["kaiwa_keluh_cuaca_tidak_menentu_n4"],
+    ),
+    dict(
+        id="bab_n4_bentuk_kausatif",
+        order=49,
+        level="N4",
+        title="Bentuk Kausatif",
+        title_en="The Causative Form",
+        description="Bentuk kausatif させる, untuk menyatakan menyuruh atau mengizinkan seseorang melakukan sesuatu.",
+        description_en="The causative form させる, for making or letting someone do something.",
+        kotoba_ids=[],
+        kanji_ids=["kanji_jibun", "kanji_susumu"],
+        bunpou_ids=["bunpou_saseru"],
+        kaiwa_ids=["kaiwa_kenalan_impian_masa_kecil_n4"],
+    ),
+    dict(
+        id="bab_n4_bahasa_sangat_sopan",
+        order=50,
+        level="N4",
+        title="Bahasa Sangat Sopan (Kenjougo)",
+        title_en="Very Polite Language (Kenjougo)",
+        description="Bahasa merendah (謙譲語) いたします dan でございます, dipakai untuk situasi bisnis/resmi.",
+        description_en="Humble language (謙譲語) いたします and でございます, used in business/formal situations.",
+        kotoba_ids=[],
+        kanji_ids=["kanji_shiru"],
+        bunpou_ids=["bunpou_itashimasu", "bunpou_de_gozaimasu"],
+        kaiwa_ids=["kaiwa_kenalan_pasangan_bisnis_n4"],
+    ),
+]

@@ -812,5 +812,470 @@
       "kaiwa_tanya_hobi"
     ],
     "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_melihat_dan_terdengar",
+    "order": 32,
+    "title": "Melihat dan Terdengar",
+    "titleEn": "Seeing and Hearing",
+    "description": "Cara menyatakan sesuatu yang terlihat atau terkesan, seperti ～に見える.",
+    "descriptionEn": "How to say something looks or appears a certain way, using ～に見える.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_annai"
+    ],
+    "kanjiIds": [
+      "kanji_tokoro",
+      "kanji_tateru"
+    ],
+    "bunpouIds": [
+      "bunpou_ni_mieru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_tersesat_minta_bantuan_sopan_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_sambil_melakukan_dan_sekaligus",
+    "order": 33,
+    "title": "Sambil Melakukan dan Sekaligus",
+    "titleEn": "Doing at the Same Time, and Listing Reasons",
+    "description": "Pola ながら (melakukan dua hal sekaligus) dan し (menyebut beberapa alasan/sifat sekaligus).",
+    "descriptionEn": "The ながら pattern (doing two things at once) and し (listing several reasons/qualities together).",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_konsep_umum_muri",
+      "kotoba_olahraga_undou"
+    ],
+    "kanjiIds": [
+      "kanji_karada",
+      "kanji_ugoku"
+    ],
+    "bunpouIds": [
+      "bunpou_nagara",
+      "bunpou_shi"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_target_kebugaran_pribadi_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_menominalkan_dengan_koto",
+    "order": 34,
+    "title": "Menominalkan dengan Koto",
+    "titleEn": "Turning a Verb into a Noun with Koto",
+    "description": "Memakai こと untuk mengubah kata kerja menjadi hal/perkara, dan menekankan bagian kalimat dengan のは〜だ.",
+    "descriptionEn": "Using こと to turn a verb into a noun-like idea, and highlighting part of a sentence with のは〜だ.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_media_hiburan_anime"
+    ],
+    "kanjiIds": [
+      "kanji_narau",
+      "kanji_tsuyoi"
+    ],
+    "bunpouIds": [
+      "bunpou_koto",
+      "bunpou_no_wa_da"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kenalan_alasan_belajar_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_terlanjur_dan_menyesal",
+    "order": 35,
+    "title": "Terlanjur dan Menyesal",
+    "titleEn": "Ending Up Doing Something, and Regret",
+    "description": "Pola てしまう untuk menyatakan sesuatu selesai sepenuhnya, atau terjadi tanpa sengaja/disesalkan.",
+    "descriptionEn": "The てしまう pattern, for something finished completely, or done accidentally/regretfully.",
+    "level": "N4",
+    "kotobaIds": [],
+    "kanjiIds": [
+      "kanji_suki2",
+      "kanji_ga2"
+    ],
+    "bunpouIds": [
+      "bunpou_te_shimau"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_suka_nonton_di_rumah_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_bersiap_siap_sebelumnya",
+    "order": 36,
+    "title": "Bersiap-siap Sebelumnya",
+    "titleEn": "Preparing in Advance",
+    "description": "Pola ておく untuk menyatakan sesuatu dilakukan sebagai persiapan untuk nanti.",
+    "descriptionEn": "The ておく pattern, for doing something now to prepare for later.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_ryokou",
+      "kotoba_konsep_umum_youi"
+    ],
+    "kanjiIds": [
+      "kanji_you3",
+      "kanji_i2"
+    ],
+    "bunpouIds": [
+      "bunpou_te_oku"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_persiapan_dokumen_perjalanan_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_ajakan_dan_niat",
+    "order": 37,
+    "title": "Ajakan dan Niat",
+    "titleEn": "Suggestions and Intentions",
+    "description": "Bentuk kehendak/ajakan (意向形, mis. 行こう) dan cara menyatakan niat dengan ～ようと思う.",
+    "descriptionEn": "The volitional/suggestion form (意向形, e.g. 行こう) and stating an intention with ～ようと思う.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_hari_bulan_kondo",
+      "kotoba_konsep_umum_futsuu"
+    ],
+    "kanjiIds": [
+      "kanji_do",
+      "kanji_ga2"
+    ],
+    "bunpouIds": [
+      "bunpou_ikoukei",
+      "bunpou_you_to_omou"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_festival_film_dikunjungi_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_mungkin_saja_terjadi",
+    "order": 38,
+    "title": "Mungkin Saja Terjadi",
+    "titleEn": "It Might Happen",
+    "description": "Pola かもしれません untuk menyatakan kemungkinan yang tidak terlalu yakin.",
+    "descriptionEn": "The かもしれません pattern, for a possibility the speaker isn't very sure about.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_olahraga_shiai"
+    ],
+    "kanjiIds": [
+      "kanji_hayai",
+      "kanji_kokoro"
+    ],
+    "bunpouIds": [
+      "bunpou_kamoshirenai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_persiapan_pertandingan_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_pengandaian_dengan_ba",
+    "order": 39,
+    "title": "Pengandaian dengan Ba",
+    "titleEn": "Conditionals with Ba",
+    "description": "Bentuk kondisional ば untuk menyatakan 'jika ~, maka ~'.",
+    "descriptionEn": "The ば conditional form, for 'if ~, then ~'.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_profesi_kaishain"
+    ],
+    "kanjiIds": [
+      "kanji_komaru",
+      "kanji_kokoro"
+    ],
+    "bunpouIds": [
+      "bunpou_ba"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kenalan_senior_kerja_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_bentuk_pasif",
+    "order": 40,
+    "title": "Bentuk Pasif",
+    "titleEn": "The Passive Form",
+    "description": "Bentuk pasif (受身形) られる, untuk menyatakan sesuatu dilakukan terhadap subjek kalimat.",
+    "descriptionEn": "The passive form (受身形) られる, for something being done to the sentence's subject.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_konsep_umum_dougu",
+      "kotoba_konsep_umum_kantan"
+    ],
+    "kanjiIds": [
+      "kanji_hajimeru",
+      "kanji_tanoshii"
+    ],
+    "bunpouIds": [
+      "bunpou_rareru",
+      "bunpou_ukemikei"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_ajak_hobi_menantang_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_apakah_atau_tidak",
+    "order": 41,
+    "title": "Apakah ~ Atau Tidak",
+    "titleEn": "Whether or Not",
+    "description": "Pola かどうか untuk menyatakan ketidakpastian akan sesuatu, 'apakah ~ atau tidak'.",
+    "descriptionEn": "The かどうか pattern, expressing uncertainty about something — 'whether or not ~'.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_konsep_umum_kankyou",
+      "kotoba_mata_pelajaran_sotsugyou"
+    ],
+    "kanjiIds": [
+      "kanji_gyou",
+      "kanji_chikai"
+    ],
+    "bunpouIds": [
+      "bunpou_ka_dou_ka"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_khawatir_sebelum_lulus_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_kebaikan_diberi_dan_diterima",
+    "order": 42,
+    "title": "Kebaikan yang Diberi dan Diterima",
+    "titleEn": "Doing Favors For, and Receiving Favors From",
+    "description": "Pola てくれる (orang lain melakukan sesuatu untuk saya) dan てあげる (melakukan sesuatu untuk orang lain).",
+    "descriptionEn": "The てくれる pattern (someone does something for me) and てあげる (doing something for someone else).",
+    "level": "N4",
+    "kotobaIds": [],
+    "kanjiIds": [
+      "kanji_suki2",
+      "kanji_kirai"
+    ],
+    "bunpouIds": [
+      "bunpou_te_kureru",
+      "bunpou_te_ageru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_minta_rekomendasi_hadiah_ortu_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_tujuan_dan_penyesalan_dengan_noni",
+    "order": 43,
+    "title": "Tujuan dan Penyesalan dengan Noni",
+    "titleEn": "Purpose and Contrast with Noni",
+    "description": "Dua fungsi のに yang berbeda: menyatakan tujuan/kegunaan, dan menyatakan kontras yang mengecewakan.",
+    "descriptionEn": "Two different uses of のに: stating a purpose/use, and expressing a disappointing contrast.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_ryouri",
+      "kotoba_perasaan_emosi_zannen",
+      "kotoba_profesi_tenin"
+    ],
+    "kanjiIds": [
+      "kanji_mon2",
+      "kanji_dai3"
+    ],
+    "bunpouIds": [
+      "bunpou_noni_mokuteki",
+      "bunpou_noni_gyakusetsu"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_cerita_pengalaman_buruk_restoran_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_kesan_dan_perkiraan",
+    "order": 44,
+    "title": "Kesan dan Perkiraan",
+    "titleEn": "Impressions and Guesses",
+    "description": "Pola そうだ（様態） untuk menyatakan kesan visual ('kelihatannya ~'), dan てくる untuk kata kerja majemuk.",
+    "descriptionEn": "The そうだ（様態） pattern for a visual impression ('looks like ~'), and てくる for compound verbs.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_kendaraan_takushii"
+    ],
+    "kanjiIds": [
+      "kanji_hayai",
+      "kanji_osoi",
+      "kanji_noru"
+    ],
+    "bunpouIds": [
+      "bunpou_souda_youtai",
+      "bunpou_te_kuru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_negosiasi_rute_cepat_murah_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_mudah_dan_sulit_dilakukan",
+    "order": 45,
+    "title": "Mudah dan Sulit Dilakukan",
+    "titleEn": "Easy and Hard to Do",
+    "description": "Pola やすい (mudah untuk ~), dipakai untuk menilai seberapa mudah melakukan sesuatu.",
+    "descriptionEn": "The やすい pattern (easy to ~), used to judge how easy something is to do.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_konsep_umum_soudan"
+    ],
+    "kanjiIds": [
+      "kanji_tsukuru",
+      "kanji_komaru"
+    ],
+    "bunpouIds": [
+      "bunpou_yasui"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_jelaskan_alasan_pindah_kota_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_dalam_kasus_tertentu",
+    "order": 46,
+    "title": "Dalam Kasus Tertentu",
+    "titleEn": "In That Case",
+    "description": "Pola 場合は untuk menyatakan 'dalam kasus ~' atau 'jika terjadi ~'.",
+    "descriptionEn": "The 場合は pattern, for 'in the case of ~' or 'if ~ happens'.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_teknologi_gadget_koshou"
+    ],
+    "kanjiIds": [
+      "kanji_tsukau",
+      "kanji_hin"
+    ],
+    "bunpouIds": [
+      "bunpou_baai_wa"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_tanya_garansi_elektronik_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_baru_saja_terjadi",
+    "order": 47,
+    "title": "Baru Saja Terjadi",
+    "titleEn": "Just Happened",
+    "description": "Pola たばかり untuk menyatakan sesuatu baru saja terjadi.",
+    "descriptionEn": "The たばかり pattern, for something that just happened.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_arah_lokasi_basho"
+    ],
+    "kanjiIds": [
+      "kanji_tokoro",
+      "kanji_sama"
+    ],
+    "bunpouIds": [
+      "bunpou_ta_bakari"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kenalan_tetangga_pindah_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_kabar_dengar_dan_dugaan",
+    "order": 48,
+    "title": "Kabar Dengar dan Dugaan",
+    "titleEn": "Hearsay and Inference",
+    "description": "Pola そうだ（伝聞） untuk mengutip kabar dari sumber lain, dan ようだ untuk dugaan berdasar bukti.",
+    "descriptionEn": "The そうだ（伝聞） pattern for quoting news from another source, and ようだ for an evidence-based guess.",
+    "level": "N4",
+    "kotobaIds": [
+      "kotoba_cuaca_hare",
+      "kotoba_hari_bulan_saikin"
+    ],
+    "kanjiIds": [
+      "kanji_asa",
+      "kanji_oriru"
+    ],
+    "bunpouIds": [
+      "bunpou_souda_denbun",
+      "bunpou_you_da"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_keluh_cuaca_tidak_menentu_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_bentuk_kausatif",
+    "order": 49,
+    "title": "Bentuk Kausatif",
+    "titleEn": "The Causative Form",
+    "description": "Bentuk kausatif させる, untuk menyatakan menyuruh atau mengizinkan seseorang melakukan sesuatu.",
+    "descriptionEn": "The causative form させる, for making or letting someone do something.",
+    "level": "N4",
+    "kotobaIds": [],
+    "kanjiIds": [
+      "kanji_jibun",
+      "kanji_susumu"
+    ],
+    "bunpouIds": [
+      "bunpou_saseru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kenalan_impian_masa_kecil_n4"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n4_bahasa_sangat_sopan",
+    "order": 50,
+    "title": "Bahasa Sangat Sopan (Kenjougo)",
+    "titleEn": "Very Polite Language (Kenjougo)",
+    "description": "Bahasa merendah (謙譲語) いたします dan でございます, dipakai untuk situasi bisnis/resmi.",
+    "descriptionEn": "Humble language (謙譲語) いたします and でございます, used in business/formal situations.",
+    "level": "N4",
+    "kotobaIds": [],
+    "kanjiIds": [
+      "kanji_shiru"
+    ],
+    "bunpouIds": [
+      "bunpou_itashimasu",
+      "bunpou_de_gozaimasu"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kenalan_pasangan_bisnis_n4"
+    ],
+    "dokkaiIds": []
   }
 ]

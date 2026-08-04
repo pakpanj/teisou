@@ -5319,3 +5319,111 @@ both sentences correctly illustrate the grammar point being asked
 about (a genuine "お元気ですか" question-marker use of か, a genuine
 topic-marking use of は on 東京), confirming the widened pool is both
 varied and accurate as designed.
+
+## Update (2026-08-04): Bab N4, first pass — 19 chapters (order 32-50)
+
+Extends the Bab curriculum (see the earlier "Bab curriculum lock" update)
+into N4 for the first time. `N4_CHAPTERS` in `scripts/bab_lists.py`,
+generated the same way N5 was: `python scripts/generate_bab_seed.py`
+cross-validates every id against the six real datasets before writing
+`assets/data/bab_data.json`, so a typo'd id fails the build instead of
+becoming a silent dead link.
+
+**Sourced from the real textbook, not guessed.** Same as N5's own reorder
+pass, this was sequenced against Minna no Nihongo Shokyuu II (the user
+supplied the file at `C:\CV WATER PROFING\e book pdf\Minna No Nihongo
+Beginner II - Textbook.pdf`, 322 pages, zero extractable text since it's
+a scan — rendered to images with `pymupdf` and read page by page). Only
+the 目次 (table of contents) pages for Lessons 26-50 were read for their
+per-lesson grammar list — structure only, nothing reproduced. Lessons
+1-25 are Minna I / this app's existing N5 scope.
+
+**Not every Minna lesson got a chapter.** Only lessons whose core grammar
+has a real N4-tagged entry in `bunpou_data.json` (132 total) were used —
+same "don't force it" discipline N5's own history documents. Genuinely
+missing from the dataset and left for a future pass, the same shape as
+N5's own deferred masen_ka/mashou/tai/kata gap: んです (an `n_desu` entry
+exists but is N5-tagged, would break this level's purity), the potential
+verb form itself (only individual outcomes like `ni_mieru` exist),
+ほうがいい/でしょう (both exist, also N5-tagged), imperative form, とおりに,
+てある, ないで, て+cause/ので, すぎる, ために. Full lesson-by-lesson grammar
+list and exactly which half of each mixed lesson got used is recorded in
+`bab_lists.py`'s own comment block — read that before extending N4
+further rather than re-deriving the mapping from scratch.
+
+**A real architecture question got resolved before authoring started:**
+does `order` restart at 1 for each JLPT level, or keep counting globally?
+Checked `bab_providers.dart`'s `babNextUpProvider` first — it sorts
+*every* chapter across *every* level by `order` to drive the mascot's
+cross-level "what's next" recommendation, by design (own doc comment
+says so explicitly). Restarting at 1 would have collided with N5's own
+order=1 in that global sort and broken the recommendation the moment
+both levels existed. `generate_bab_seed.py`'s order-contiguity assertion
+is correspondingly global, not per-level, confirming this was the
+intended scheme — so N4 continues at order=32..50 rather than 1..19. The
+visible chapter number badge is the raw global `order` value (confirmed
+by reading `bab_level_screen.dart` before assuming otherwise), so the
+first N4 chapter displays as "Bab 32" — this was checked on-device and
+reads naturally, not confusingly, as a running count of the whole
+curriculum rather than a per-level restart.
+
+**First Bab chapters ever to populate `kanjiIds`.** All 31 N5 chapters
+still have `kanjiIds: []` and `dokkaiIds: []` — empty since Bab shipped,
+despite both fields existing in the schema. N4's 19 chapters populate
+`kanjiIds` (1-3 real N4-tagged kanji per chapter, matched the same way
+`kotobaIds` always has been: the character literally appears inside that
+chapter's own `kaiwaIds` dialogue text) for the first time, confirmed
+rendering as a real "Kanji" section on `BabDetailScreen` — that section
+was built when Bab first shipped but had literally never had data to
+show before this. `dokkaiIds` is left empty on all 19 N4 chapters too,
+deliberately deferred alongside N5's own gap rather than fixed
+inconsistently on only one level — a future pass should close both
+together.
+
+**Cross-content matching used a broader search than N5's original
+first-pass discipline.** Rather than requiring a bunpou pattern's own 3
+canned example sentences to literally contain a kotoba/kaiwa hit (which
+produced almost no matches — N4's 296-word kotoba pool is spread across
+many unrelated categories), the match searched the *entire* N4-tagged
+kaiwa dialogue set for the pattern's own token (お～になる → search all
+255 N4 dialogues for 見える, not just its 3 examples) — the same "widen"
+idea `bab_gate_quiz_generator.dart`'s distractor pool already uses. Hit
+rate went from near-zero to a genuine match for nearly every chapter.
+Several chapters still ship `kotoba_ids=[]` rather than a forced,
+non-matching word (`bab_n4_terlanjur_dan_menyesal`,
+`bab_n4_kebaikan_diberi_dan_diterima`, `bab_n4_bentuk_kausatif`,
+`bab_n4_bahasa_sangat_sopan`) — left empty deliberately, not forgotten,
+matching N5's own "don't force it" precedent.
+
+Verified end-to-end on a physical device (Moto G52J 5G): `flutter
+analyze` clean, `flutter test --concurrency=1` all 48 tests pass, debug
+APK builds and installs. On-device: Bab home shows "Bab N4 / 19 bab"
+correctly, opening it shows chapter 32 unlocked and 33-50 sequentially
+locked with the correct "Selesaikan Bab N dulu" message each, chapter
+32's detail screen renders real Kosakata/Kanji/Tata Bahasa/Percakapan
+sections (confirming `kanjiIds` renders correctly, its first-ever real
+use), and the gate-quiz button correctly reads "kuis Bab 1-32" (the
+cumulative range, matching the global-order design). The mascot's
+Home-screen "next up" message still correctly pointed at an unfinished
+N5 chapter throughout, confirming N4's presence doesn't disrupt N5's own
+in-progress recommendation.
+
+**Unrelated device-testing gotcha hit and resolved during this
+session, worth recording for the next physical-device session on this
+same Moto G52J:** this device has a display density override active
+(`wm density` reports `Physical density: 400, Override density: 340`),
+which was NOT changed by this session — it was already set going in.
+`adb shell input tap X Y` coordinates land shifted from where a
+screenshot (`adb exec-out screencap`, which captures at the physical
+1080x2460 resolution) shows the same content, by roughly the
+400/340 ≈ 1.176 ratio, consistently in the same direction every time.
+This cost a long, confusing debugging detour tonight — every tap aimed
+at the Bab card on Home instead landed on the Belajar Katakana card
+above it, reproducibly, across multiple full app kill+relaunch cycles,
+before the density override was checked and the pattern connected. If a
+future session hits "adb taps keep landing on the wrong element despite
+coordinates that look correct against a fresh screenshot" on this
+device, check `wm density` before assuming a UI/hit-test bug — multiply
+intended screenshot-space coordinates by (physical/override) before
+sending `input tap`. Did not reset the override itself (a system display
+setting, not this session's to change without being asked).
