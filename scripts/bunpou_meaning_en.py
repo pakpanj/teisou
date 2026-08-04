@@ -5207,4 +5207,42 @@ BUNPOU_MEANING_EN = {
     "bunpou_agemasu_moraimasu|se0": "Please deliver the homework for them.",
     "bunpou_agemasu_moraimasu|se1": "I'm giving a present to my mother.",
     "bunpou_agemasu_moraimasu|se2": "I received a cake from my friend.",
+
+    # Added 2026-08-04 alongside the three entries the So-matome syllabus
+    # cross-check found missing from the dataset entirely.
+    "bunpou_shika|meaning": "Only ~ (always paired with a negative verb)",
+    "bunpou_shika|formation": "Noun/quantity + shika + verb in the negative form",
+    "bunpou_shika|usageNotes": (
+        "Stresses that the amount or choice available feels small, less than "
+        "hoped for. Unlike the neutral dake, shika must be paired with a "
+        "negative verb and carries an \"only that much\" nuance. Do not "
+        "confuse it with shika nai (N3), which means \"there is no choice but "
+        "to ~\"."
+    ),
+    "bunpou_shika|se0": "There's only a hundred yen in my wallet.",
+    "bunpou_shika|se1": "I only slept one hour today.",
+    "bunpou_shika|se2": "This shop is only open on Sundays.",
+    "bunpou_te_kudasaimasen_ka|meaning":
+        "Would you ~? (a polite request, softer than te kudasai)",
+    "bunpou_te_kudasaimasen_ka|formation": "Verb in the -te form + kudasaimasen ka",
+    "bunpou_te_kudasaimasen_ka|usageNotes": (
+        "Phrasing the request as a negative question makes it gentler, since it "
+        "leaves the listener room to decline. More polite than te kudasai; it "
+        "belongs to the same family as te itadakemasen ka, which is humbler "
+        "still on the speaker's side."
+    ),
+    "bunpou_te_kudasaimasen_ka|se0": "Would you wait a moment?",
+    "bunpou_te_kudasaimasen_ka|se1": "Would you explain that once more?",
+    "bunpou_te_kudasaimasen_ka|se2": "Would you open the window?",
+    "bunpou_sono_kawari|meaning":
+        "In exchange, but on the other hand ~ (a trade-off or compensation)",
+    "bunpou_sono_kawari|formation": "Sono kawari + sentence",
+    "bunpou_sono_kawari|usageNotes": (
+        "Links two sentences: the first states a drawback or a benefit, the "
+        "second balances it out. Unlike kawari ni, which attaches to a noun or "
+        "verb inside a single sentence, sono kawari opens a new sentence."
+    ),
+    "bunpou_sono_kawari|se0": "The rent is high. In exchange, it's close to the station.",
+    "bunpou_sono_kawari|se1": "I'll help today. In exchange, let me take tomorrow off.",
+    "bunpou_sono_kawari|se2": "This job is tough. On the other hand, the pay is good.",
 }

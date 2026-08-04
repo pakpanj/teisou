@@ -281,10 +281,13 @@ N4_GRAMMAR = [
     "ぜひ",
     "全然～ない（ぜんぜん～ない）",
     "づらい",
+    "しか～ない",  # added 2026-08-04 (So-matome N4 wk1 d2); was absent
+    "てくださいませんか",  # added 2026-08-04; was absent
 ]
 
-assert len(N4_GRAMMAR) == 132, len(N4_GRAMMAR)
-assert len(set(N4_GRAMMAR)) == 132, "duplicate pattern in N4_GRAMMAR"
+assert len(N4_GRAMMAR) == 134, len(N4_GRAMMAR)  # +2 newly authored; was 132 before the
+# So-matome syllabus cross-check of 2026-08-04.
+assert len(set(N4_GRAMMAR)) == 134, "duplicate pattern in N4_GRAMMAR"
 
 # N3_GRAMMAR is sourced the same way (jlptsensei.com's N3 grammar list,
 # https://jlptsensei.com/jlpt-n3-grammar-list/, fetched across its 5
@@ -473,10 +476,19 @@ N3_GRAMMAR = [
     "ずに",
     "ずにはいられない",
     "ずつ",
+    # Moved down from N2_GRAMMAR (2026-08-04): So-matome teaches these
+    # four in its N3 book; jlptsensei, this list's source, put them at N2.
+    # See the matching note in generate_bunpou_seed.py.
+    "ばかりか",
+    "ことだ",
+    "その上（そのうえ）",
+    "ところだった",
+    "そのかわり",  # added 2026-08-04, absent from both sources' lists
 ]
 
-assert len(N3_GRAMMAR) == 182, len(N3_GRAMMAR)
-assert len(set(N3_GRAMMAR)) == 182, "duplicate pattern in N3_GRAMMAR"
+assert len(N3_GRAMMAR) == 187, len(N3_GRAMMAR)  # +4 moved down from N2, +1 newly authored; was 182 before the
+# So-matome syllabus cross-check of 2026-08-04.
+assert len(set(N3_GRAMMAR)) == 187, "duplicate pattern in N3_GRAMMAR"
 
 # N2_GRAMMAR is sourced the same way (jlptsensei.com's N2 grammar list,
 # https://jlptsensei.com/jlpt-n2-grammar-list/, fetched across its 5
@@ -500,7 +512,6 @@ N2_GRAMMAR = [
     "あるいは",
     "ばかり",
     "ばかりだ",
-    "ばかりか",
     "ばかりに",
     "ちなみに",
     "ちっとも～ない",
@@ -550,7 +561,6 @@ N2_GRAMMAR = [
     "からすると / からすれば",
     "からと言って（からといって）",
     "っこない",
-    "ことだ",
     "ことだから",
     "ことか",
     "ことなく",
@@ -637,7 +647,6 @@ N2_GRAMMAR = [
     "次第で（しだいで）",
     "次第に（しだいに）",
     "しかも",
-    "その上（そのうえ）",
     "それなのに",
     "それなら",
     "それにしても",
@@ -670,7 +679,6 @@ N2_GRAMMAR = [
     "と考えられる",
     "とか（で）",
     "とっくに",
-    "ところだった",
     "ところに",
     "ところを見ると",
     "とも",
@@ -695,8 +703,9 @@ N2_GRAMMAR = [
     "ずに済む",
 ]
 
-assert len(N2_GRAMMAR) == 197, len(N2_GRAMMAR)
-assert len(set(N2_GRAMMAR)) == 197, "duplicate pattern in N2_GRAMMAR"
+assert len(N2_GRAMMAR) == 193, len(N2_GRAMMAR)  # -4 moved down to N3; was 197 before the
+# So-matome syllabus cross-check of 2026-08-04.
+assert len(set(N2_GRAMMAR)) == 193, "duplicate pattern in N2_GRAMMAR"
 
 # N1_GRAMMAR is sourced the same way (jlptsensei.com's N1 grammar list,
 # https://jlptsensei.com/jlpt-n1-grammar-list/, fetched across its 7

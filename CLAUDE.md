@@ -5642,3 +5642,77 @@ expression**: no example sentences, explanations, exercises, tables or
 illustrations. A grammar pattern such as 〜ざるを得ない is the Japanese
 language, not the publisher's property; the sentence they wrote to
 illustrate it is theirs.
+
+## Update (2026-08-04, later still): So-matome syllabus cross-check —
+## 4 patterns re-levelled, 3 authored, and two latent bugs found
+
+Read the tables of contents of So-matome N4/N3/N2 (N1 was already done)
+and compared **which level teaches which grammar point** against this
+dataset's `jlptLevel` tags. 136 book points checked, 35 disagreed — but
+most of that number is noise, and the breakdown matters more than the
+total:
+
+- **~25 are "we teach it earlier than the book"** (we say N3, book says
+  N2: っぽい, がたい, ようがない, だらけ, 一方だ, 向け…; we say N4, book says
+  N3: させる, ておく, らしい, ようになる, ばかり, てほしい). **Left alone
+  deliberately.** Seeing a pattern early costs a learner nothing.
+- **Several were matching artefacts, not disagreements** — my needle
+  `しか` hit しかし, `をこめて` missed を込めて, `ていられない` missed
+  てはいられない, and the N1 `といい` line matched N3's といい/たらいい rather
+  than N1's といい〜といい (which is correctly tagged). Verify before
+  believing a count.
+- **4 are "we teach it later than the book"**, and that is the only
+  direction that makes a learner *miss* exam material: **ことだ, ばかりか,
+  ところだった, その上** were N2 here, N3 in So-matome. **These moved to
+  N3.** Ids are `bunpou_{suffix}` with no level component, so nothing
+  referencing them broke; only `jlptLevel` changed.
+- **3 were genuinely absent from the dataset** and were authored fresh
+  (our own wording, not the book's): **しか〜ない** (N4 — the most
+  consequential gap; note its id is `bunpou_shika`, since
+  `bunpou_shika_nai` already exists at N3 as the *different* "no choice
+  but to" pattern), **てくださいませんか** (N4), **そのかわり** (N3).
+
+Counts moved 848 → **856**: N5 89, N4 134, N3 187, N2 193, N1 253. The
+locked lists in `bunpou_grammar_lists.py` and their `assert len(...)`
+guards were updated to match, so the pipeline still self-checks.
+`bab_n2_phase2_03` (order 100) was re-themed — it paired ばかりか with
+ばかりに, and ばかりか leaving for N3 would have put an N3 pattern inside an
+N2 chapter, so it now pairs ばかりに with ものだから and せいか around
+"a reason and the result it brings". A check that **no Bab chapter holds
+an off-level pattern** now passes across all 154 chapters and is worth
+re-running after any future re-levelling.
+
+**Two latent bugs surfaced while doing this, both worth remembering:**
+
+1. **`assets/data/bunpou/_levels.json` was hand-maintained and had
+   silently drifted** — it claimed 84 N5 patterns while the dataset held
+   89, so the Bunpou home screen had been showing a stale count for some
+   time, unrelated to this session's changes. Kanji, Kaiwa and Dokkai all
+   *generate* their `_levels.json`; Bunpou alone did not. This is exactly
+   the generated-vs-hand-edited drift documented above for Kotoba's
+   `_categories.json`. **Fixed at the root**: `generate_bunpou_seed.py`
+   now emits `_levels.json` with counts derived from the data it just
+   wrote, so the two can no longer disagree.
+2. **Regenerating `bunpou_data.json` wipes every English translation.**
+   `generate_bunpou_seed.py` writes only the Indonesian fields;
+   `apply_bunpou_meaning_en.py` then patches in `meaningEn`/
+   `formationEn`/`usageNotesEn`/`translationEn` from
+   `bunpou_meaning_en.py`. Running the generator alone left 853 entries
+   without English and broke
+   `content_localization_test.dart`. The apply script's own docstring
+   says "must be re-run after generate_bunpou_seed.py" — **it means it.
+   The two are one operation; never run the first without the second.**
+   (The same shape exists for Kaiwa via `apply_kaiwa_meaning_en.py`.)
+
+Verified: `flutter analyze` clean, `flutter test --concurrency=1` all 48
+pass, `flutter build apk --debug` clean, both seed generators' assertions
+pass, English coverage back to 856/856 entries and 2568/2568 sentence
+examples.
+
+**Not done, and deliberately so:** the four re-levelled patterns plus
+そのかわり are now correctly placed in the **Bunpou module** (an N3 learner
+browsing Bunpou N3 will see them), but none were added to an **N3 Bab
+chapter**. The Bab curriculum is a curated path that covers 85 of N3's
+187 patterns; slotting these five in would mean either renumbering every
+chapter after N3 or overloading an existing one. Treat it as part of the
+same future pass that covers N3's other ~100 uncovered patterns.

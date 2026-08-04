@@ -1831,16 +1831,22 @@ N2_CHAPTERS = [
         kaiwa_ids=[],
     ),
     dict(
+        # Reworked 2026-08-04: this chapter used to pair ばかりか with
+        # ばかりに, but ばかりか moved down to N3 in the So-matome syllabus
+        # cross-check, which would have left an N3 pattern inside an N2
+        # chapter. Re-themed around "a reason and the result it brings"
+        # using two unused N2 entries, so the chapter stays level-pure and
+        # still hangs together.
         id="bab_n2_phase2_03",
         order=100,
         level="N2",
-        title="ばかり Kontras: Bukan Hanya/Hanya Karena",
-        title_en="ばかり Contrast: Not Only/Only Because",
-        description="Pola ばかりか (bukan hanya ~, bahkan juga ~) dan ばかりに (hanya gara-gara ~, akibat buruk).",
-        description_en="The ばかりか pattern (not only ~ but also) and ばかりに (only because of ~, a bad result).",
+        title="Alasan dan Akibat yang Ditimbulkannya",
+        title_en="A Reason and the Result It Brings",
+        description="Pola ばかりに (hanya gara-gara ~, akibat buruk tak terduga), ものだから (habisnya ~, alasan yang agak membela diri), dan せいか (mungkin karena ~, dugaan penyebab).",
+        description_en="The ばかりに pattern (only because of ~, an unexpected bad result), ものだから (because ~, a slightly defensive excuse), and せいか (perhaps because ~, a tentative cause).",
         kotoba_ids=["kotoba_konsep_umum_kangei", "kotoba_bangunan_fasilitas_annai"],
         kanji_ids=["kanji_gei_n3"],
-        bunpou_ids=["bunpou_bakari_ka", "bunpou_bakari_ni"],
+        bunpou_ids=["bunpou_bakari_ni", "bunpou_mono_dakara", "bunpou_sei_ka"],
         kaiwa_ids=[],
     ),
     dict(

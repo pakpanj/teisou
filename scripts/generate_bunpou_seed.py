@@ -2019,6 +2019,30 @@ N4_GRAMMAR_ENTRIES = [
         ("この話は聞きづらいです。", "Kono hanashi wa kikizurai desu.", "Cerita ini berat untuk didengar."),
         ("頼みづらいお願いです。", "Tanomizurai onegai desu.", "Ini permintaan yang sulit untuk diminta."),
      ]),
+    # Added 2026-08-04 after a syllabus cross-check against So-matome
+    # found both missing from this dataset entirely. しか～ない is a
+    # genuinely basic N4 point and its absence was the most consequential
+    # gap the check turned up. Note the id is `shika`, not `shika_nai`,
+    # because bunpou_shika_nai already exists at N3 as the *different*
+    # しかない "no choice but to" pattern.
+    ("shika", "しか～ない", "shika ~ nai",
+     "Hanya ~ saja (selalu diikuti bentuk negatif)",
+     "Kata benda/jumlah + しか + kata kerja bentuk negatif",
+     "Menekankan bahwa jumlah atau pilihan yang ada terasa sedikit, kurang dari yang diharapkan. Berbeda dari だけ yang netral: しか wajib berpasangan dengan kata kerja negatif dan membawa nuansa \"cuma segitu\". Jangan tertukar dengan しかない (N3) yang berarti \"tidak ada pilihan lain selain ~\".",
+     ["dake", "shika_nai"], [
+        ("財布に百円しかありません。", "Saifu ni hyaku-en shika arimasen.", "Di dompet cuma ada seratus yen."),
+        ("今日は一時間しか寝ていない。", "Kyou wa ichi-jikan shika nete inai.", "Hari ini saya cuma tidur satu jam."),
+        ("この店は日曜日しか開いていません。", "Kono mise wa nichiyoubi shika aite imasen.", "Toko ini cuma buka hari Minggu."),
+     ]),
+    ("te_kudasaimasen_ka", "てくださいませんか", "te kudasaimasen ka",
+     "Maukah Anda ~? (permintaan sopan, lebih halus dari てください)",
+     "Kata kerja bentuk-te + くださいませんか",
+     "Bentuk pertanyaan negatif membuat permintaan terasa lebih halus, karena memberi ruang bagi lawan bicara untuk menolak. Lebih sopan dari てください; masih satu keluarga dengan ていただけませんか, yang lebih merendahkan diri penutur lagi.",
+     ["te_kudasai"], [
+        ("少し待ってくださいませんか。", "Sukoshi matte kudasaimasen ka.", "Maukah Anda menunggu sebentar?"),
+        ("もう一度説明してくださいませんか。", "Mou ichido setsumei shite kudasaimasen ka.", "Maukah Anda menjelaskan sekali lagi?"),
+        ("窓を開けてくださいませんか。", "Mado o akete kudasaimasen ka.", "Maukah Anda membuka jendelanya?"),
+     ]),
 ]
 
 PLACEHOLDER_COUNTS = {}
@@ -3703,6 +3727,62 @@ N3_GRAMMAR_ENTRIES = [
         ("少しずつ食べてください。", "Sukoshi zutsu tabete kudasai.", "Tolong makan sedikit demi sedikit."),
         ("毎日五分ずつ練習します。", "Mainichi gofun zutsu renshuu shimasu.", "Berlatih lima menit setiap hari (secara bertahap)."),
      ]),
+    # Moved down from N2 (2026-08-04): So-matome teaches these four in
+    # its N3 book (week 4 day 4, week 5 day 1, week 6 day 3, week 6 day 6),
+    # while jlptsensei — where this dataset's levels came from — puts them
+    # at N2. Tagging a pattern harder than the exam expects is the one
+    # direction that makes a learner miss it entirely, so these moved and
+    # the ~25 disagreements in the opposite direction did not. Ids are
+    # unchanged (`bunpou_{suffix}` carries no level), so no Bab or
+    # similarPatterns reference breaks.
+    ("bakari_ka", "ばかりか", "bakari ka",
+     "Bukan hanya ~, bahkan juga ~",
+     "Kalimat/kata benda + ばかりか + pernyataan tambahan (sering dengan も/さえ)",
+     "Mirip ばかりでなく, menambahkan informasi yang lebih mengejutkan/di luar dugaan setelah pernyataan pertama.",
+     ["bakari_denaku"], [
+        ("彼は英語ばかりか、フランス語も話せる。", "Kare wa eigo bakari ka, furansugo mo hanaseru.", "Dia bukan hanya (bisa) bahasa Inggris, bahkan bahasa Prancis juga bisa."),
+        ("雨ばかりか、雷まで鳴り始めた。", "Ame bakari ka, kaminari made naki hajimeta.", "Bukan hanya hujan, bahkan petir pun mulai menggelegar."),
+        ("彼女は歌が上手いばかりか、ダンスも得意だ。", "Kanojo wa uta ga umai bakari ka, dansu mo tokui da.", "Dia bukan hanya jago menyanyi, menari pun jago."),
+     ]),
+    ("koto_da", "ことだ", "koto da",
+     "Sebaiknya ~ (nasihat/anjuran tegas)",
+     "Kata kerja bentuk kamus/ない形 + ことだ",
+     "Dipakai untuk memberi nasihat/anjuran secara tegas, seolah menyatakan itu adalah solusi terbaik/paling masuk akal.",
+     [], [
+        ("健康でいたいなら、運動することだ。", "Kenkou de itai nara, undou suru koto da.", "Kalau ingin tetap sehat, sebaiknya berolahraga."),
+        ("心配なら、直接聞いてみることだ。", "Shinpai nara, chokusetsu kiite miru koto da.", "Kalau khawatir, sebaiknya tanya langsung."),
+        ("早く上手になりたいなら、毎日練習することだ。", "Hayaku jouzu ni naritai nara, mainichi renshuu suru koto da.", "Kalau ingin cepat mahir, sebaiknya berlatih setiap hari."),
+     ]),
+    ("sono_ue", "その上（そのうえ）", "sono ue",
+     "Selain itu, di samping itu (menambahkan informasi)",
+     "その上 + kalimat",
+     "Menambahkan informasi tambahan ke atas apa yang sudah disebutkan, mirip しかも tapi sedikit lebih netral.",
+     ["shikamo"], [
+        ("彼は優しい。その上、頭もいい。", "Kare wa yasashii. Sono ue, atama mo ii.", "Dia baik hati. Selain itu, pintar juga."),
+        ("給料がいい。その上、休みも多い。", "Kyuuryou ga ii. Sono ue, yasumi mo ooi.", "Gajinya bagus. Di samping itu, liburnya juga banyak."),
+        ("道が混んでいた。その上、事故もあった。", "Michi ga konde ita. Sono ue, jiko mo atta.", "Jalanan macet. Selain itu, ada kecelakaan juga."),
+     ]),
+    ("tokoro_datta", "ところだった", "tokoro datta",
+     "Hampir saja ~ (nyaris terjadi sesuatu yang tidak diinginkan)",
+     "Kata kerja bentuk kamus + ところだった",
+     "Menyatakan sesuatu hampir terjadi tapi berhasil dihindari di saat-saat terakhir, sering dengan nada lega.",
+     ["mou_sukoshi_de"], [
+        ("危うく事故になるところだった。", "Ayauku jiko ni naru tokoro datta.", "Hampir saja terjadi kecelakaan."),
+        ("遅刻するところだった。", "Chikoku suru tokoro datta.", "Hampir saja terlambat."),
+        ("もう少しで忘れるところだった。", "Mou sukoshi de wasureru tokoro datta.", "Hampir saja lupa."),
+     ]),
+    # Added 2026-08-04 by the same syllabus cross-check. 代わりに and
+    # にかわって were already here, but そのかわり as a sentence-opening
+    # connective ("in exchange for that") was not.
+    ("sono_kawari", "そのかわり", "sono kawari",
+     "Sebagai gantinya, tapi sebaliknya ~ (imbalan atau kompensasi)",
+     "そのかわり + kalimat",
+     "Menghubungkan dua kalimat: yang pertama merugikan/menguntungkan, yang kedua menyeimbangkannya. Berbeda dari 代わりに yang menempel pada kata benda/kata kerja di dalam satu kalimat, そのかわり berdiri di awal kalimat baru.",
+     ["kawari_ni"], [
+        ("家賃は高い。そのかわり、駅から近い。", "Yachin wa takai. Sono kawari, eki kara chikai.", "Sewanya mahal. Sebagai gantinya, dekat dari stasiun."),
+        ("今日は手伝うよ。そのかわり、明日は休ませて。", "Kyou wa tetsudau yo. Sono kawari, ashita wa yasumasete.", "Hari ini saya bantu. Sebagai gantinya, besok izinkan saya libur."),
+        ("この仕事は大変だ。そのかわり、給料はいい。", "Kono shigoto wa taihen da. Sono kawari, kyuuryou wa ii.", "Pekerjaan ini berat. Tapi sebagai gantinya, gajinya bagus."),
+     ]),
 ]
 
 
@@ -3767,15 +3847,6 @@ N2_GRAMMAR_ENTRIES = [
         ("状況は悪くなるばかりだ。", "Joukyou wa waruku naru bakari da.", "Keadaan hanya semakin memburuk saja."),
         ("物価は上がるばかりだ。", "Bukka wa agaru bakari da.", "Harga barang hanya naik terus saja."),
         ("彼の帰りを待つばかりだ。", "Kare no kaeri o matsu bakari da.", "Tinggal menunggu kepulangannya saja."),
-     ]),
-    ("bakari_ka", "ばかりか", "bakari ka",
-     "Bukan hanya ~, bahkan juga ~",
-     "Kalimat/kata benda + ばかりか + pernyataan tambahan (sering dengan も/さえ)",
-     "Mirip ばかりでなく, menambahkan informasi yang lebih mengejutkan/di luar dugaan setelah pernyataan pertama.",
-     ["bakari_denaku"], [
-        ("彼は英語ばかりか、フランス語も話せる。", "Kare wa eigo bakari ka, furansugo mo hanaseru.", "Dia bukan hanya (bisa) bahasa Inggris, bahkan bahasa Prancis juga bisa."),
-        ("雨ばかりか、雷まで鳴り始めた。", "Ame bakari ka, kaminari made naki hajimeta.", "Bukan hanya hujan, bahkan petir pun mulai menggelegar."),
-        ("彼女は歌が上手いばかりか、ダンスも得意だ。", "Kanojo wa uta ga umai bakari ka, dansu mo tokui da.", "Dia bukan hanya jago menyanyi, menari pun jago."),
      ]),
     ("bakari_ni", "ばかりに", "bakari ni",
      "Hanya gara-gara ~ (akibat buruk/tak terduga dari sebab sepele)",
@@ -4217,15 +4288,6 @@ N2_GRAMMAR_ENTRIES = [
         ("こんな難しい問題、できっこない。", "Konna muzukashii mondai, dekikkonai.", "Soal sesulit ini, tidak mungkin bisa dikerjakan."),
         ("あの二人が結婚するなんて、あり得っこない。", "Ano futari ga kekkon suru nante, arie kkonai.", "Kedua orang itu menikah, tidak mungkin terjadi."),
         ("一日でそんなにたくさん食べられっこない。", "Ichinichi de sonna ni takusan taberare kkonai.", "Tidak mungkin bisa makan sebanyak itu dalam sehari."),
-     ]),
-    ("koto_da", "ことだ", "koto da",
-     "Sebaiknya ~ (nasihat/anjuran tegas)",
-     "Kata kerja bentuk kamus/ない形 + ことだ",
-     "Dipakai untuk memberi nasihat/anjuran secara tegas, seolah menyatakan itu adalah solusi terbaik/paling masuk akal.",
-     [], [
-        ("健康でいたいなら、運動することだ。", "Kenkou de itai nara, undou suru koto da.", "Kalau ingin tetap sehat, sebaiknya berolahraga."),
-        ("心配なら、直接聞いてみることだ。", "Shinpai nara, chokusetsu kiite miru koto da.", "Kalau khawatir, sebaiknya tanya langsung."),
-        ("早く上手になりたいなら、毎日練習することだ。", "Hayaku jouzu ni naritai nara, mainichi renshuu suru koto da.", "Kalau ingin cepat mahir, sebaiknya berlatih setiap hari."),
      ]),
     ("koto_dakara", "ことだから", "koto dakara",
      "Karena (orangnya) memang begitu, tentu saja ~",
@@ -5001,15 +5063,6 @@ N2_GRAMMAR_ENTRIES = [
         ("彼は頭がいい。しかも、努力家だ。", "Kare wa atama ga ii. Shikamo, doryokuka da.", "Dia pintar. Apalagi, dia pekerja keras."),
         ("雨が降ってきた。しかも、かなり強い。", "Ame ga futte kita. Shikamo, kanari tsuyoi.", "Hujan turun. Terlebih lagi, cukup deras."),
      ]),
-    ("sono_ue", "その上（そのうえ）", "sono ue",
-     "Selain itu, di samping itu (menambahkan informasi)",
-     "その上 + kalimat",
-     "Menambahkan informasi tambahan ke atas apa yang sudah disebutkan, mirip しかも tapi sedikit lebih netral.",
-     ["shikamo"], [
-        ("彼は優しい。その上、頭もいい。", "Kare wa yasashii. Sono ue, atama mo ii.", "Dia baik hati. Selain itu, pintar juga."),
-        ("給料がいい。その上、休みも多い。", "Kyuuryou ga ii. Sono ue, yasumi mo ooi.", "Gajinya bagus. Di samping itu, liburnya juga banyak."),
-        ("道が混んでいた。その上、事故もあった。", "Michi ga konde ita. Sono ue, jiko mo atta.", "Jalanan macet. Selain itu, ada kecelakaan juga."),
-     ]),
     ("sore_na_noni", "それなのに", "sore na noni",
      "Padahal begitu, tapi tetap saja ~ (kekecewaan/keheranan kuat)",
      "それなのに + kalimat",
@@ -5297,15 +5350,6 @@ N2_GRAMMAR_ENTRIES = [
         ("彼はとっくに帰った。", "Kare wa tokku ni kaetta.", "Dia sudah lama pulang."),
         ("そんなこと、とっくに知っている。", "Sonna koto, tokku ni shitte iru.", "Hal seperti itu, sudah lama saya tahu."),
         ("宿題はとっくに終わらせた。", "Shukudai wa tokku ni owaraseta.", "PR sudah lama saya selesaikan."),
-     ]),
-    ("tokoro_datta", "ところだった", "tokoro datta",
-     "Hampir saja ~ (nyaris terjadi sesuatu yang tidak diinginkan)",
-     "Kata kerja bentuk kamus + ところだった",
-     "Menyatakan sesuatu hampir terjadi tapi berhasil dihindari di saat-saat terakhir, sering dengan nada lega.",
-     ["mou_sukoshi_de"], [
-        ("危うく事故になるところだった。", "Ayauku jiko ni naru tokoro datta.", "Hampir saja terjadi kecelakaan."),
-        ("遅刻するところだった。", "Chikoku suru tokoro datta.", "Hampir saja terlambat."),
-        ("もう少しで忘れるところだった。", "Mou sukoshi de wasureru tokoro datta.", "Hampir saja lupa."),
      ]),
     ("tokoro_ni", "ところに", "tokoro ni",
      "Tepat pada saat ~ (interupsi kejadian lain)",
@@ -7860,6 +7904,24 @@ def main():
     )
     with open("assets/data/bunpou_data.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
+    # Emit _levels.json from the data we just wrote, rather than leaving
+    # it hand-maintained. It had silently drifted: it claimed 84 N5
+    # patterns while the dataset held 89, so the Bunpou home screen was
+    # showing a stale count. Every other module with a `_levels.json`
+    # (kanji, kaiwa, dokkai) already generates it; this one did not, which
+    # is the same generated-vs-hand-edited drift CLAUDE.md documents for
+    # Kotoba's `_categories.json`.
+    counts = {}
+    for e in data:
+        counts[e["jlptLevel"]] = counts.get(e["jlptLevel"], 0) + 1
+    levels = [
+        {"id": lv, "name": lv, "available": True, "bunpouCount": counts.get(lv, 0)}
+        for lv in ("N5", "N4", "N3", "N2", "N1")
+    ]
+    with open("assets/data/bunpou/_levels.json", "w", encoding="utf-8") as f:
+        json.dump(levels, f, ensure_ascii=False, indent=2)
+
     print(f"Wrote {len(data)} bunpou entries ({len(N5_GRAMMAR_ENTRIES)} real N5 (of "
           f"{len(N5_GRAMMAR)} locked) + {len(N4_GRAMMAR_ENTRIES)} real N4 (of "
           f"{len(N4_GRAMMAR)} locked) + {len(N3_GRAMMAR_ENTRIES)} real N3 (of "

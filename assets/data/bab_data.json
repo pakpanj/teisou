@@ -2502,10 +2502,10 @@
   {
     "id": "bab_n2_phase2_03",
     "order": 100,
-    "title": "ばかり Kontras: Bukan Hanya/Hanya Karena",
-    "titleEn": "ばかり Contrast: Not Only/Only Because",
-    "description": "Pola ばかりか (bukan hanya ~, bahkan juga ~) dan ばかりに (hanya gara-gara ~, akibat buruk).",
-    "descriptionEn": "The ばかりか pattern (not only ~ but also) and ばかりに (only because of ~, a bad result).",
+    "title": "Alasan dan Akibat yang Ditimbulkannya",
+    "titleEn": "A Reason and the Result It Brings",
+    "description": "Pola ばかりに (hanya gara-gara ~, akibat buruk tak terduga), ものだから (habisnya ~, alasan yang agak membela diri), dan せいか (mungkin karena ~, dugaan penyebab).",
+    "descriptionEn": "The ばかりに pattern (only because of ~, an unexpected bad result), ものだから (because ~, a slightly defensive excuse), and せいか (perhaps because ~, a tentative cause).",
     "level": "N2",
     "kotobaIds": [
       "kotoba_konsep_umum_kangei",
@@ -2515,8 +2515,9 @@
       "kanji_gei_n3"
     ],
     "bunpouIds": [
-      "bunpou_bakari_ka",
-      "bunpou_bakari_ni"
+      "bunpou_bakari_ni",
+      "bunpou_mono_dakara",
+      "bunpou_sei_ka"
     ],
     "particleIds": [],
     "kaiwaIds": [],

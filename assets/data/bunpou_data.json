@@ -7605,6 +7605,77 @@
     "usageNotesEn": "Similar to にくい but emphasizing a difficulty that's emotional/an uncomfortable feeling (not purely technical/physical difficulty), e.g. 言いづらい (hard to say because it's awkward)."
   },
   {
+    "id": "bunpou_shika",
+    "pattern": "しか～ない",
+    "patternRomaji": "shika ~ nai",
+    "jlptLevel": "N4",
+    "meaning": "Hanya ~ saja (selalu diikuti bentuk negatif)",
+    "formation": "Kata benda/jumlah + しか + kata kerja bentuk negatif",
+    "usageNotes": "Menekankan bahwa jumlah atau pilihan yang ada terasa sedikit, kurang dari yang diharapkan. Berbeda dari だけ yang netral: しか wajib berpasangan dengan kata kerja negatif dan membawa nuansa \"cuma segitu\". Jangan tertukar dengan しかない (N3) yang berarti \"tidak ada pilihan lain selain ~\".",
+    "similarPatterns": [
+      "bunpou_dake",
+      "bunpou_shika_nai"
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "財布に百円しかありません。",
+        "romaji": "Saifu ni hyaku-en shika arimasen.",
+        "translation": "Di dompet cuma ada seratus yen.",
+        "translationEn": "There's only a hundred yen in my wallet."
+      },
+      {
+        "japanese": "今日は一時間しか寝ていない。",
+        "romaji": "Kyou wa ichi-jikan shika nete inai.",
+        "translation": "Hari ini saya cuma tidur satu jam.",
+        "translationEn": "I only slept one hour today."
+      },
+      {
+        "japanese": "この店は日曜日しか開いていません。",
+        "romaji": "Kono mise wa nichiyoubi shika aite imasen.",
+        "translation": "Toko ini cuma buka hari Minggu.",
+        "translationEn": "This shop is only open on Sundays."
+      }
+    ],
+    "meaningEn": "Only ~ (always paired with a negative verb)",
+    "formationEn": "Noun/quantity + shika + verb in the negative form",
+    "usageNotesEn": "Stresses that the amount or choice available feels small, less than hoped for. Unlike the neutral dake, shika must be paired with a negative verb and carries an \"only that much\" nuance. Do not confuse it with shika nai (N3), which means \"there is no choice but to ~\"."
+  },
+  {
+    "id": "bunpou_te_kudasaimasen_ka",
+    "pattern": "てくださいませんか",
+    "patternRomaji": "te kudasaimasen ka",
+    "jlptLevel": "N4",
+    "meaning": "Maukah Anda ~? (permintaan sopan, lebih halus dari てください)",
+    "formation": "Kata kerja bentuk-te + くださいませんか",
+    "usageNotes": "Bentuk pertanyaan negatif membuat permintaan terasa lebih halus, karena memberi ruang bagi lawan bicara untuk menolak. Lebih sopan dari てください; masih satu keluarga dengan ていただけませんか, yang lebih merendahkan diri penutur lagi.",
+    "similarPatterns": [
+      "bunpou_te_kudasai"
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "少し待ってくださいませんか。",
+        "romaji": "Sukoshi matte kudasaimasen ka.",
+        "translation": "Maukah Anda menunggu sebentar?",
+        "translationEn": "Would you wait a moment?"
+      },
+      {
+        "japanese": "もう一度説明してくださいませんか。",
+        "romaji": "Mou ichido setsumei shite kudasaimasen ka.",
+        "translation": "Maukah Anda menjelaskan sekali lagi?",
+        "translationEn": "Would you explain that once more?"
+      },
+      {
+        "japanese": "窓を開けてくださいませんか。",
+        "romaji": "Mado o akete kudasaimasen ka.",
+        "translation": "Maukah Anda membuka jendelanya?",
+        "translationEn": "Would you open the window?"
+      }
+    ],
+    "meaningEn": "Would you ~? (a polite request, softer than te kudasai)",
+    "formationEn": "Verb in the -te form + kudasaimasen ka",
+    "usageNotesEn": "Phrasing the request as a negative question makes it gentler, since it leaves the listener room to decline. More polite than te kudasai; it belongs to the same family as te itadakemasen ka, which is humbler still on the speaker's side."
+  },
+  {
     "id": "bunpou_ageru",
     "pattern": "上げる（あげる）",
     "patternRomaji": "ageru",
@@ -13796,6 +13867,179 @@
     "usageNotesEn": "Expresses an amount divided/distributed evenly to each unit/person."
   },
   {
+    "id": "bunpou_bakari_ka",
+    "pattern": "ばかりか",
+    "patternRomaji": "bakari ka",
+    "jlptLevel": "N3",
+    "meaning": "Bukan hanya ~, bahkan juga ~",
+    "formation": "Kalimat/kata benda + ばかりか + pernyataan tambahan (sering dengan も/さえ)",
+    "usageNotes": "Mirip ばかりでなく, menambahkan informasi yang lebih mengejutkan/di luar dugaan setelah pernyataan pertama.",
+    "similarPatterns": [
+      "bunpou_bakari_denaku"
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "彼は英語ばかりか、フランス語も話せる。",
+        "romaji": "Kare wa eigo bakari ka, furansugo mo hanaseru.",
+        "translation": "Dia bukan hanya (bisa) bahasa Inggris, bahkan bahasa Prancis juga bisa.",
+        "translationEn": "He can not only speak English, but even French too."
+      },
+      {
+        "japanese": "雨ばかりか、雷まで鳴り始めた。",
+        "romaji": "Ame bakari ka, kaminari made naki hajimeta.",
+        "translation": "Bukan hanya hujan, bahkan petir pun mulai menggelegar.",
+        "translationEn": "Not only is it raining, even thunder has started rumbling."
+      },
+      {
+        "japanese": "彼女は歌が上手いばかりか、ダンスも得意だ。",
+        "romaji": "Kanojo wa uta ga umai bakari ka, dansu mo tokui da.",
+        "translation": "Dia bukan hanya jago menyanyi, menari pun jago.",
+        "translationEn": "She's not only good at singing, even dancing too."
+      }
+    ],
+    "meaningEn": "Not only ~, even ~ as well",
+    "formationEn": "Sentence/noun + ばかりか + an additional statement (often with も/さえ)",
+    "usageNotesEn": "Similar to ばかりでなく, adding more surprising/unexpected information after the first statement."
+  },
+  {
+    "id": "bunpou_koto_da",
+    "pattern": "ことだ",
+    "patternRomaji": "koto da",
+    "jlptLevel": "N3",
+    "meaning": "Sebaiknya ~ (nasihat/anjuran tegas)",
+    "formation": "Kata kerja bentuk kamus/ない形 + ことだ",
+    "usageNotes": "Dipakai untuk memberi nasihat/anjuran secara tegas, seolah menyatakan itu adalah solusi terbaik/paling masuk akal.",
+    "similarPatterns": [],
+    "sentenceExamples": [
+      {
+        "japanese": "健康でいたいなら、運動することだ。",
+        "romaji": "Kenkou de itai nara, undou suru koto da.",
+        "translation": "Kalau ingin tetap sehat, sebaiknya berolahraga.",
+        "translationEn": "If you want to stay healthy, you should exercise."
+      },
+      {
+        "japanese": "心配なら、直接聞いてみることだ。",
+        "romaji": "Shinpai nara, chokusetsu kiite miru koto da.",
+        "translation": "Kalau khawatir, sebaiknya tanya langsung.",
+        "translationEn": "If you're worried, you should ask directly."
+      },
+      {
+        "japanese": "早く上手になりたいなら、毎日練習することだ。",
+        "romaji": "Hayaku jouzu ni naritai nara, mainichi renshuu suru koto da.",
+        "translation": "Kalau ingin cepat mahir, sebaiknya berlatih setiap hari.",
+        "translationEn": "If you want to get skilled quickly, you should practice every day."
+      }
+    ],
+    "meaningEn": "You should ~ (firm advice/recommendation)",
+    "formationEn": "Verb dictionary/ない-form + ことだ",
+    "usageNotesEn": "Used to give firm advice/recommendation, as if asserting that it's the best/most sensible solution."
+  },
+  {
+    "id": "bunpou_sono_ue",
+    "pattern": "その上（そのうえ）",
+    "patternRomaji": "sono ue",
+    "jlptLevel": "N3",
+    "meaning": "Selain itu, di samping itu (menambahkan informasi)",
+    "formation": "その上 + kalimat",
+    "usageNotes": "Menambahkan informasi tambahan ke atas apa yang sudah disebutkan, mirip しかも tapi sedikit lebih netral.",
+    "similarPatterns": [
+      "bunpou_shikamo"
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "彼は優しい。その上、頭もいい。",
+        "romaji": "Kare wa yasashii. Sono ue, atama mo ii.",
+        "translation": "Dia baik hati. Selain itu, pintar juga.",
+        "translationEn": "She's kind. Besides that, she's smart too."
+      },
+      {
+        "japanese": "給料がいい。その上、休みも多い。",
+        "romaji": "Kyuuryou ga ii. Sono ue, yasumi mo ooi.",
+        "translation": "Gajinya bagus. Di samping itu, liburnya juga banyak.",
+        "translationEn": "The pay is good. In addition, there are many holidays too."
+      },
+      {
+        "japanese": "道が混んでいた。その上、事故もあった。",
+        "romaji": "Michi ga konde ita. Sono ue, jiko mo atta.",
+        "translation": "Jalanan macet. Selain itu, ada kecelakaan juga.",
+        "translationEn": "The road is jammed. Besides that, there was an accident too."
+      }
+    ],
+    "meaningEn": "Besides that, in addition (adding information)",
+    "formationEn": "その上 + sentence",
+    "usageNotesEn": "Adds extra information on top of what's already mentioned, similar to しかも but a bit more neutral."
+  },
+  {
+    "id": "bunpou_tokoro_datta",
+    "pattern": "ところだった",
+    "patternRomaji": "tokoro datta",
+    "jlptLevel": "N3",
+    "meaning": "Hampir saja ~ (nyaris terjadi sesuatu yang tidak diinginkan)",
+    "formation": "Kata kerja bentuk kamus + ところだった",
+    "usageNotes": "Menyatakan sesuatu hampir terjadi tapi berhasil dihindari di saat-saat terakhir, sering dengan nada lega.",
+    "similarPatterns": [
+      "bunpou_mou_sukoshi_de"
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "危うく事故になるところだった。",
+        "romaji": "Ayauku jiko ni naru tokoro datta.",
+        "translation": "Hampir saja terjadi kecelakaan.",
+        "translationEn": "There was almost an accident."
+      },
+      {
+        "japanese": "遅刻するところだった。",
+        "romaji": "Chikoku suru tokoro datta.",
+        "translation": "Hampir saja terlambat.",
+        "translationEn": "I almost was late."
+      },
+      {
+        "japanese": "もう少しで忘れるところだった。",
+        "romaji": "Mou sukoshi de wasureru tokoro datta.",
+        "translation": "Hampir saja lupa.",
+        "translationEn": "I almost forgot."
+      }
+    ],
+    "meaningEn": "Was about to ~ (something unwanted nearly happened)",
+    "formationEn": "Verb dictionary form + ところだった",
+    "usageNotesEn": "Expresses something almost happening but was avoided at the last moment, often with a relieved tone."
+  },
+  {
+    "id": "bunpou_sono_kawari",
+    "pattern": "そのかわり",
+    "patternRomaji": "sono kawari",
+    "jlptLevel": "N3",
+    "meaning": "Sebagai gantinya, tapi sebaliknya ~ (imbalan atau kompensasi)",
+    "formation": "そのかわり + kalimat",
+    "usageNotes": "Menghubungkan dua kalimat: yang pertama merugikan/menguntungkan, yang kedua menyeimbangkannya. Berbeda dari 代わりに yang menempel pada kata benda/kata kerja di dalam satu kalimat, そのかわり berdiri di awal kalimat baru.",
+    "similarPatterns": [
+      "bunpou_kawari_ni"
+    ],
+    "sentenceExamples": [
+      {
+        "japanese": "家賃は高い。そのかわり、駅から近い。",
+        "romaji": "Yachin wa takai. Sono kawari, eki kara chikai.",
+        "translation": "Sewanya mahal. Sebagai gantinya, dekat dari stasiun.",
+        "translationEn": "The rent is high. In exchange, it's close to the station."
+      },
+      {
+        "japanese": "今日は手伝うよ。そのかわり、明日は休ませて。",
+        "romaji": "Kyou wa tetsudau yo. Sono kawari, ashita wa yasumasete.",
+        "translation": "Hari ini saya bantu. Sebagai gantinya, besok izinkan saya libur.",
+        "translationEn": "I'll help today. In exchange, let me take tomorrow off."
+      },
+      {
+        "japanese": "この仕事は大変だ。そのかわり、給料はいい。",
+        "romaji": "Kono shigoto wa taihen da. Sono kawari, kyuuryou wa ii.",
+        "translation": "Pekerjaan ini berat. Tapi sebagai gantinya, gajinya bagus.",
+        "translationEn": "This job is tough. On the other hand, the pay is good."
+      }
+    ],
+    "meaningEn": "In exchange, but on the other hand ~ (a trade-off or compensation)",
+    "formationEn": "Sono kawari + sentence",
+    "usageNotesEn": "Links two sentences: the first states a drawback or a benefit, the second balances it out. Unlike kawari ni, which attaches to a noun or verb inside a single sentence, sono kawari opens a new sentence."
+  },
+  {
     "id": "bunpou_ageku",
     "pattern": "あげく",
     "patternRomaji": "ageku",
@@ -13928,41 +14172,6 @@
     "meaningEn": "Just keeps getting more ~ (a tendency continuing in one direction)",
     "formationEn": "Verb dictionary form + ばかりだ",
     "usageNotesEn": "Expresses a condition continuously developing/worsening/improving in one direction without stopping, usually for an unwanted trend."
-  },
-  {
-    "id": "bunpou_bakari_ka",
-    "pattern": "ばかりか",
-    "patternRomaji": "bakari ka",
-    "jlptLevel": "N2",
-    "meaning": "Bukan hanya ~, bahkan juga ~",
-    "formation": "Kalimat/kata benda + ばかりか + pernyataan tambahan (sering dengan も/さえ)",
-    "usageNotes": "Mirip ばかりでなく, menambahkan informasi yang lebih mengejutkan/di luar dugaan setelah pernyataan pertama.",
-    "similarPatterns": [
-      "bunpou_bakari_denaku"
-    ],
-    "sentenceExamples": [
-      {
-        "japanese": "彼は英語ばかりか、フランス語も話せる。",
-        "romaji": "Kare wa eigo bakari ka, furansugo mo hanaseru.",
-        "translation": "Dia bukan hanya (bisa) bahasa Inggris, bahkan bahasa Prancis juga bisa.",
-        "translationEn": "He can not only speak English, but even French too."
-      },
-      {
-        "japanese": "雨ばかりか、雷まで鳴り始めた。",
-        "romaji": "Ame bakari ka, kaminari made naki hajimeta.",
-        "translation": "Bukan hanya hujan, bahkan petir pun mulai menggelegar.",
-        "translationEn": "Not only is it raining, even thunder has started rumbling."
-      },
-      {
-        "japanese": "彼女は歌が上手いばかりか、ダンスも得意だ。",
-        "romaji": "Kanojo wa uta ga umai bakari ka, dansu mo tokui da.",
-        "translation": "Dia bukan hanya jago menyanyi, menari pun jago.",
-        "translationEn": "She's not only good at singing, even dancing too."
-      }
-    ],
-    "meaningEn": "Not only ~, even ~ as well",
-    "formationEn": "Sentence/noun + ばかりか + an additional statement (often with も/さえ)",
-    "usageNotesEn": "Similar to ばかりでなく, adding more surprising/unexpected information after the first statement."
   },
   {
     "id": "bunpou_bakari_ni",
@@ -15630,39 +15839,6 @@
     "meaningEn": "There's no way ~ (a firm, informal denial)",
     "formationEn": "Verb ます-form (drop ます) + っこない",
     "usageNotesEn": "An informal expression asserting that something is truly impossible, used in casual conversation."
-  },
-  {
-    "id": "bunpou_koto_da",
-    "pattern": "ことだ",
-    "patternRomaji": "koto da",
-    "jlptLevel": "N2",
-    "meaning": "Sebaiknya ~ (nasihat/anjuran tegas)",
-    "formation": "Kata kerja bentuk kamus/ない形 + ことだ",
-    "usageNotes": "Dipakai untuk memberi nasihat/anjuran secara tegas, seolah menyatakan itu adalah solusi terbaik/paling masuk akal.",
-    "similarPatterns": [],
-    "sentenceExamples": [
-      {
-        "japanese": "健康でいたいなら、運動することだ。",
-        "romaji": "Kenkou de itai nara, undou suru koto da.",
-        "translation": "Kalau ingin tetap sehat, sebaiknya berolahraga.",
-        "translationEn": "If you want to stay healthy, you should exercise."
-      },
-      {
-        "japanese": "心配なら、直接聞いてみることだ。",
-        "romaji": "Shinpai nara, chokusetsu kiite miru koto da.",
-        "translation": "Kalau khawatir, sebaiknya tanya langsung.",
-        "translationEn": "If you're worried, you should ask directly."
-      },
-      {
-        "japanese": "早く上手になりたいなら、毎日練習することだ。",
-        "romaji": "Hayaku jouzu ni naritai nara, mainichi renshuu suru koto da.",
-        "translation": "Kalau ingin cepat mahir, sebaiknya berlatih setiap hari.",
-        "translationEn": "If you want to get skilled quickly, you should practice every day."
-      }
-    ],
-    "meaningEn": "You should ~ (firm advice/recommendation)",
-    "formationEn": "Verb dictionary/ない-form + ことだ",
-    "usageNotesEn": "Used to give firm advice/recommendation, as if asserting that it's the best/most sensible solution."
   },
   {
     "id": "bunpou_koto_dakara",
@@ -18575,41 +18751,6 @@
     "usageNotesEn": "Adds extra information that reinforces/highlights the previous point, usable for both positive and negative matters."
   },
   {
-    "id": "bunpou_sono_ue",
-    "pattern": "その上（そのうえ）",
-    "patternRomaji": "sono ue",
-    "jlptLevel": "N2",
-    "meaning": "Selain itu, di samping itu (menambahkan informasi)",
-    "formation": "その上 + kalimat",
-    "usageNotes": "Menambahkan informasi tambahan ke atas apa yang sudah disebutkan, mirip しかも tapi sedikit lebih netral.",
-    "similarPatterns": [
-      "bunpou_shikamo"
-    ],
-    "sentenceExamples": [
-      {
-        "japanese": "彼は優しい。その上、頭もいい。",
-        "romaji": "Kare wa yasashii. Sono ue, atama mo ii.",
-        "translation": "Dia baik hati. Selain itu, pintar juga.",
-        "translationEn": "She's kind. Besides that, she's smart too."
-      },
-      {
-        "japanese": "給料がいい。その上、休みも多い。",
-        "romaji": "Kyuuryou ga ii. Sono ue, yasumi mo ooi.",
-        "translation": "Gajinya bagus. Di samping itu, liburnya juga banyak.",
-        "translationEn": "The pay is good. In addition, there are many holidays too."
-      },
-      {
-        "japanese": "道が混んでいた。その上、事故もあった。",
-        "romaji": "Michi ga konde ita. Sono ue, jiko mo atta.",
-        "translation": "Jalanan macet. Selain itu, ada kecelakaan juga.",
-        "translationEn": "The road is jammed. Besides that, there was an accident too."
-      }
-    ],
-    "meaningEn": "Besides that, in addition (adding information)",
-    "formationEn": "その上 + sentence",
-    "usageNotesEn": "Adds extra information on top of what's already mentioned, similar to しかも but a bit more neutral."
-  },
-  {
     "id": "bunpou_sore_na_noni",
     "pattern": "それなのに",
     "patternRomaji": "sore na noni",
@@ -19701,41 +19842,6 @@
     "meaningEn": "Long ago already ~ (well before now)",
     "formationEn": "とっくに + verb past form",
     "usageNotesEn": "Expresses something that already happened well before now, emphasizing that a lot of time has passed."
-  },
-  {
-    "id": "bunpou_tokoro_datta",
-    "pattern": "ところだった",
-    "patternRomaji": "tokoro datta",
-    "jlptLevel": "N2",
-    "meaning": "Hampir saja ~ (nyaris terjadi sesuatu yang tidak diinginkan)",
-    "formation": "Kata kerja bentuk kamus + ところだった",
-    "usageNotes": "Menyatakan sesuatu hampir terjadi tapi berhasil dihindari di saat-saat terakhir, sering dengan nada lega.",
-    "similarPatterns": [
-      "bunpou_mou_sukoshi_de"
-    ],
-    "sentenceExamples": [
-      {
-        "japanese": "危うく事故になるところだった。",
-        "romaji": "Ayauku jiko ni naru tokoro datta.",
-        "translation": "Hampir saja terjadi kecelakaan.",
-        "translationEn": "There was almost an accident."
-      },
-      {
-        "japanese": "遅刻するところだった。",
-        "romaji": "Chikoku suru tokoro datta.",
-        "translation": "Hampir saja terlambat.",
-        "translationEn": "I almost was late."
-      },
-      {
-        "japanese": "もう少しで忘れるところだった。",
-        "romaji": "Mou sukoshi de wasureru tokoro datta.",
-        "translation": "Hampir saja lupa.",
-        "translationEn": "I almost forgot."
-      }
-    ],
-    "meaningEn": "Was about to ~ (something unwanted nearly happened)",
-    "formationEn": "Verb dictionary form + ところだった",
-    "usageNotesEn": "Expresses something almost happening but was avoided at the last moment, often with a relieved tone."
   },
   {
     "id": "bunpou_tokoro_ni",
