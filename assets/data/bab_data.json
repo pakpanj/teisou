@@ -2474,5 +2474,274 @@
     "particleIds": [],
     "kaiwaIds": [],
     "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_01",
+    "order": 98,
+    "title": "Pada Akhirnya Setelah Proses Panjang",
+    "titleEn": "At Last After a Long Process",
+    "description": "Pola あげく (pada akhirnya, setelah proses panjang/melelahkan) dan 末に (pada akhirnya, setelah melalui proses).",
+    "descriptionEn": "The あげく pattern (at last, after a long process) and 末に (finally, after going through).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_konsep_umum_saigo",
+      "kotoba_hari_bulan_ashita"
+    ],
+    "kanjiIds": [
+      "kanji_sai_n3",
+      "kanji_hi_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_ageku",
+      "bunpou_sue_ni"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_02",
+    "order": 99,
+    "title": "ばかり: Terus-menerus/Hanya",
+    "titleEn": "ばかり: Continuously/Only",
+    "description": "Pola ばかり2 (melulu/hanya melakukan ~ saja) dan ばかりだ (hanya tinggal semakin ~ saja).",
+    "descriptionEn": "The ばかり2 pattern (keeps only doing ~) and ばかりだ (just keeps getting more ~).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_hobi_aktivitas_katsudou",
+      "kotoba_konsep_umum_joudan"
+    ],
+    "kanjiIds": [
+      "kanji_katsu_n3",
+      "kanji_dan_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_bakari2",
+      "bunpou_bakari_da"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_03",
+    "order": 100,
+    "title": "ばかり Kontras: Bukan Hanya/Hanya Karena",
+    "titleEn": "ばかり Contrast: Not Only/Only Because",
+    "description": "Pola ばかりか (bukan hanya ~, bahkan juga ~) dan ばかりに (hanya gara-gara ~, akibat buruk).",
+    "descriptionEn": "The ばかりか pattern (not only ~ but also) and ばかりに (only because of ~, a bad result).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_konsep_umum_kangei",
+      "kotoba_bangunan_fasilitas_annai"
+    ],
+    "kanjiIds": [
+      "kanji_gei_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_bakari_ka",
+      "bunpou_bakari_ni"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_04",
+    "order": 101,
+    "title": "Sama Sekali Tidak ~",
+    "titleEn": "Not at All ~",
+    "description": "Pola ちっとも～ない (sama sekali tidak ~, penekanan kuat) dan 全く～ない (sama sekali tidak ~, netral/formal).",
+    "descriptionEn": "The ちっとも～ない pattern (not one bit ~, strong emphasis) and 全く～ない (not at all ~, neutral/formal).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_hari_bulan_ashita"
+    ],
+    "kanjiIds": [
+      "kanji_shi_n3",
+      "kanji_tei_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_chittomo_nai",
+      "bunpou_mattaku_nai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_05",
+    "order": 102,
+    "title": "どころ Variants: Tidak Layak/Malah",
+    "titleEn": "どころ Variants: Not Suitable/Rather",
+    "description": "Pola どころではない (bukan saatnya untuk ~) dan どころか (jangankan ~, bahkan malah ~).",
+    "descriptionEn": "The どころではない pattern (it's not the time to ~) and どころか (let alone ~, rather the opposite).",
+    "level": "N2",
+    "kotobaIds": [],
+    "kanjiIds": [
+      "kanji_nou_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_dokoro_dewa_nai",
+      "bunpou_dokoro_ka"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_06",
+    "order": 103,
+    "title": "Sementara/Untuk Jaga-jaga",
+    "titleEn": "Seems/For Now",
+    "description": "Pola どうやら (sepertinya, kelihatannya berdasarkan tanda) dan 一応 (sementara ini, untuk jaga-jaga).",
+    "descriptionEn": "The どうやら pattern (apparently, it seems) and 一応 (tentatively, for safety's sake).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_hari_bulan_ichiji"
+    ],
+    "kanjiIds": [
+      "kanji_kyou_n3",
+      "kanji_ji_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_douyara",
+      "bunpou_ichiou"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_07",
+    "order": 104,
+    "title": "Likelihood: Pasrah/Mungkin",
+    "titleEn": "Likelihood: Resigned/Might",
+    "description": "Pola どうせ (toh, bagaimanapun juga, nada pasrah) dan かねない (bisa jadi, berpotensi hal negatif).",
+    "descriptionEn": "The どうせ pattern (anyway, resigned tone) and かねない (might, could potentially happen).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_konsep_umum_riyuu"
+    ],
+    "kanjiIds": [
+      "kanji_ren_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_douse",
+      "bunpou_kanenai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_08",
+    "order": 105,
+    "title": "から: Justru Karena/Karena Sudah",
+    "titleEn": "から: Precisely Because/Since",
+    "description": "Pola からこそ (justru karena ~, penekanan kuat) dan からには (karena sudah ~, maka tentu).",
+    "descriptionEn": "The からこそ pattern (precisely because ~, strong emphasis) and からには (since we already ~, then surely).",
+    "level": "N2",
+    "kotobaIds": [],
+    "kanjiIds": [
+      "kanji_kou_n3",
+      "kanji_gi_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_kara_koso",
+      "bunpou_kara_niwa"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_09",
+    "order": 106,
+    "title": "Kontras: Meski/Malah",
+    "titleEn": "Contrast: Despite/Rather",
+    "description": "Pola からと言って (meski begitu, bukan berarti ~) dan かえって (malah, sebaliknya).",
+    "descriptionEn": "The からと言って pattern (despite that, doesn't mean ~) and かえって (rather, on the contrary).",
+    "level": "N2",
+    "kotobaIds": [],
+    "kanjiIds": [
+      "kanji_han_n3",
+      "kanji_hou_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_kara_to_itte",
+      "bunpou_kaette"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_10",
+    "order": 107,
+    "title": "ない Variants: Jika Tidak/Tanpa Perlu",
+    "titleEn": "ない Variants: If Not/Without",
+    "description": "Pola ないことには～ない (kalau tidak ~ dulu, maka tidak akan ~) dan なくて済む (tidak perlu ~, cukup tanpa ~).",
+    "descriptionEn": "The ないことには～ない pattern (if not ~ first, then can't ~) and なくて済む (don't need to ~, can get by without).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_konsep_umum_kyouryoku"
+    ],
+    "kanjiIds": [
+      "kanji_kyou_n3",
+      "kanji_koku_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_nai_koto_niwa_nai",
+      "bunpou_nakute_sumu"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_11",
+    "order": 108,
+    "title": "Tidak Lain Hanyalah/Tidak Lebih Dari",
+    "titleEn": "Nothing But/No More Than",
+    "description": "Pola にほかならない (tidak lain adalah ~, penegasan kuat) dan に過ぎない (tidak lebih dari sekadar ~).",
+    "descriptionEn": "The にほかならない pattern (nothing but ~, strong assertion) and に過ぎない (no more than ~).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_bangunan_fasilitas_kaigishitsu"
+    ],
+    "kanjiIds": [
+      "kanji_kai_n3",
+      "kanji_shi_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_ni_hoka_naranai",
+      "bunpou_ni_suginai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n2_phase2_12",
+    "order": 109,
+    "title": "かぎり: Bukan Hanya/Paling Baik",
+    "titleEn": "かぎり: Not Limited To/Best",
+    "description": "Pola に限らず (bukan hanya terbatas pada ~, tidak hanya) dan に限る (paling baik adalah ~, rekomendasi terbaik).",
+    "descriptionEn": "The に限らず pattern (not just limited to ~) and に限る (the best is ~, top recommendation).",
+    "level": "N2",
+    "kotobaIds": [
+      "kotoba_konsep_umum_ketsudan"
+    ],
+    "kanjiIds": [
+      "kanji_you_n3"
+    ],
+    "bunpouIds": [
+      "bunpou_ni_kagirazu",
+      "bunpou_ni_kagiru"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
   }
 ]
