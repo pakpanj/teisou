@@ -5511,3 +5511,63 @@ from 1). **Not verified: any on-device pass for N3, N2 or N1** — the
 N4 first pass above is the last one that got real device testing. The
 generator proves every id resolves, which is the failure mode that
 actually matters here, but nobody has tapped through an N1 chapter.
+
+## Update (2026-08-04, later still): N1 phase 2 (order 130-154), and a
+## substring false-positive class found in the cross-content matcher
+
+N1 grew 20 -> **45 chapters** (order 110-154), 114 of 253 N1 patterns,
+**154 Bab chapters total**. So-matome's 8-week syllabus was fully
+consumed by phase 1, so phase 2 uses **no external reference at all** —
+67 patterns drawn from the project's own remaining N1 pool and grouped
+by shared grammatical function (the べく trio, the "the moment X happens"
+trio, the four に至る forms split across two chapters by sense, and so
+on), the same dataset-internal method as N2's 16 -> 28 expansion.
+
+**The important finding is a bug, not the content.** Every
+cross-content pass since N4 has matched a chapter to a kaiwa dialogue
+with a plain `pattern_surface in dialogue_text` substring test. That is
+**unsafe for Japanese**: a great many grammar surfaces are also
+substrings of ordinary conjugations. On phase 2's first run, 4 of 8
+"matches" were spurious:
+
+| needle | what actually matched | why it is wrong |
+|---|---|---|
+| びた | 選び**たかった** | 選ぶ + たい, not the びる suffix |
+| だの | た**だの**料理 | ただ + の |
+| であれ | 便利**であれば** | conditional であれば, not concessive であれ |
+| ようが | 言い**ようがない** | ようがない — an **N3** pattern |
+
+Re-auditing phase 1 (already committed) the same way found 4 of its 11
+matches were spurious too — 「思い出せる**といい**ね」 (と + いい, not
+といい～といい), 「大きな**ものを**失った」 (object particle, not the ものを
+regret pattern), 「絶対**に耐え**られない」 (に belongs to 絶対に), and
+「親切**を重ねて**こそ」 (no に～ frame). Those four chapters (orders 113,
+117, 126, 127) had `kaiwa_ids`, `kotoba_ids` and `kanji_ids` cleared in
+place — the kotoba/kanji picks were derived from the bogus dialogue, so
+their literal-overlap justification died with it. **Phase 1's real hit
+rate was 7/20, not the 11/20 originally recorded.**
+
+The matcher in `build_n1_p2.py` now (a) refuses needles shorter than 3
+characters unless they carry an explicit guard rule, (b) supports
+per-needle forbidden preceding/following characters (`BAD_BEFORE` /
+`BAD_AFTER`), and (c) **prints the surrounding text of every surviving
+match** so it gets eyeballed before being committed. All 4 phase-2
+matches were verified that way. **If you write another cross-content
+matcher for any module, do the context print — a substring hit on a
+2-3 kana needle is not evidence, and this shipped undetected across
+four levels.** N4/N3/N2's own kaiwa matches were built with the same
+naive test and have **not** been re-audited; they use longer, more
+distinctive needles on average, but that is an assumption, not a check.
+
+Only 4 of the 25 new chapters found a kaiwa match, and 9 search nothing
+at all because no unambiguous needle exists for their patterns
+(びる/ぶる/めく being the clearest case — one- and two-kana verb
+suffixes). That is expected for this batch, which is deliberately the
+most literary end of N1. Those ship `kaiwa_ids=[]` and fall back to each
+bunpou entry's own `sentenceExamples`.
+
+Verified: generator assertions pass, no N1 pattern used twice across
+the 45 chapters, every pattern in an N1 chapter is genuinely N1-tagged,
+`flutter analyze` clean, `flutter test --concurrency=1` all 48 pass,
+`flutter build apk --debug` clean. Still no on-device pass for N1.
+139 N1 patterns remain for a phase 3.

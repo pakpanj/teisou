@@ -2823,23 +2823,15 @@
     "description": "Pola といい～といい, つ～つ, dan のやら / ものやら / ことやら.",
     "descriptionEn": "The といい～といい, つ～つ, and のやら / ものやら / ことやら patterns.",
     "level": "N1",
-    "kotobaIds": [
-      "kotoba_hari_bulan_saikin",
-      "kotoba_hobi_aktivitas_shashin"
-    ],
-    "kanjiIds": [
-      "kanji_on_n2",
-      "kanji_ka_n1"
-    ],
+    "kotobaIds": [],
+    "kanjiIds": [],
     "bunpouIds": [
       "bunpou_to_ii_to_ii",
       "bunpou_tsu_tsu",
       "bunpou_no_yara"
     ],
     "particleIds": [],
-    "kaiwaIds": [
-      "kaiwa_kejar_pengakuan_ulasan_kuliner_n1"
-    ],
+    "kaiwaIds": [],
     "dokkaiIds": []
   },
   {
@@ -2921,22 +2913,14 @@
     "description": "Pola ものを dan すら / ですら.",
     "descriptionEn": "The ものを and すら / ですら patterns.",
     "level": "N1",
-    "kotobaIds": [
-      "kotoba_arah_lokasi_keshiki",
-      "kotoba_hari_bulan_izen"
-    ],
-    "kanjiIds": [
-      "kanji_ka_n1",
-      "kanji_gi2_n1"
-    ],
+    "kotobaIds": [],
+    "kanjiIds": [],
     "bunpouIds": [
       "bunpou_mono_o",
       "bunpou_sura"
     ],
     "particleIds": [],
-    "kaiwaIds": [
-      "kaiwa_bangun_ulang_diri_setelah_kehilangan_n1"
-    ],
+    "kaiwaIds": [],
     "dokkaiIds": []
   },
   {
@@ -3109,22 +3093,14 @@
     "description": "Pola ぶり / っぷり dan に耐える / に耐えない（にたえる / にたえない）.",
     "descriptionEn": "The ぶり / っぷり and に耐える / に耐えない（にたえる / にたえない） patterns.",
     "level": "N1",
-    "kotobaIds": [
-      "kotoba_bangunan_fasilitas_tochi",
-      "kotoba_konsep_umum_keikaku"
-    ],
-    "kanjiIds": [
-      "kanji_gyaku_n2",
-      "kanji_sai4_n1"
-    ],
+    "kotobaIds": [],
+    "kanjiIds": [],
     "bunpouIds": [
       "bunpou_buri_ppuri",
       "bunpou_ni_taeru"
     ],
     "particleIds": [],
-    "kaiwaIds": [
-      "kaiwa_nikmati_tersesat_tempat_asing_n1"
-    ],
+    "kaiwaIds": [],
     "dokkaiIds": []
   },
   {
@@ -3135,23 +3111,15 @@
     "description": "Pola でも何でもない / くも何ともない, には及ばない（にはおよばない）, dan に～を重ねて（に～をかさねて）.",
     "descriptionEn": "The でも何でもない / くも何ともない, には及ばない（にはおよばない）, and に～を重ねて（に～をかさねて） patterns.",
     "level": "N1",
-    "kotobaIds": [
-      "kotoba_bangunan_fasilitas_annai",
-      "kotoba_konsep_umum_keiken"
-    ],
-    "kanjiIds": [
-      "kanji_an_n2",
-      "kanji_gi_n1"
-    ],
+    "kotobaIds": [],
+    "kanjiIds": [],
     "bunpouIds": [
       "bunpou_demo_nandemo_nai",
       "bunpou_niwa_oyobanai",
       "bunpou_ni_o_kasanete"
     ],
     "particleIds": [],
-    "kaiwaIds": [
-      "kaiwa_makna_petunjuk_arah_kepedulian_n1"
-    ],
+    "kaiwaIds": [],
     "dokkaiIds": []
   },
   {
@@ -3196,6 +3164,505 @@
     "particleIds": [],
     "kaiwaIds": [
       "kaiwa_bangun_ulang_diri_setelah_kehilangan_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_beku",
+    "order": 130,
+    "title": "Tujuan dan Kemustahilan Bergaya Formal",
+    "titleEn": "Formal Purpose and Impossibility",
+    "description": "Pola べく, べくもない, dan べくして.",
+    "descriptionEn": "The べく, べくもない, and べくして patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_beku",
+      "bunpou_beku_mo_nai",
+      "bunpou_bekushite"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_kesan_luar",
+    "order": 131,
+    "title": "Terlihat Seperti: びる, ぶる, めく",
+    "titleEn": "Looking the Part: biru, buru, meku",
+    "description": "Pola びる / びて / びた, ぶる / ぶって / ぶった, dan めく.",
+    "descriptionEn": "The びる / びて / びた, ぶる / ぶって / ぶった, and めく patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_biru",
+      "bunpou_buru",
+      "bunpou_meku"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_kesan_negatif",
+    "order": 132,
+    "title": "Kesan Negatif dari Luar: じみた dan がましい",
+    "titleEn": "Negative Impressions: jimita and gamashii",
+    "description": "Pola じみた dan がましい.",
+    "descriptionEn": "The じみた and がましい patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_jimita",
+      "bunpou_gamashii"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_begitu_langsung",
+    "order": 133,
+    "title": "Begitu Terjadi, Langsung Saja",
+    "titleEn": "The Moment It Happens",
+    "description": "Pola が早いか（がはやいか）, や否や（やいなや）, dan なり.",
+    "descriptionEn": "The が早いか（がはやいか）, や否や（やいなや）, and なり patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ga_hayai_ka",
+      "bunpou_ya_ina_ya",
+      "bunpou_nari"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_reaksi_cepat",
+    "order": 134,
+    "title": "Reaksi Seketika Setelah Melihat",
+    "titleEn": "Reacting Instantly on Sight",
+    "description": "Pola そばから dan と見るや（とみるや）.",
+    "descriptionEn": "The そばから and と見るや（とみるや） patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_soba_kara",
+      "bunpou_to_miru_ya"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_menyebut_keluhan",
+    "order": 135,
+    "title": "Menyebutkan Beberapa Hal dengan Nada Mengeluh",
+    "titleEn": "Listing Things With a Complaint",
+    "description": "Pola だの～だの, なり～なり, dan やれ～やれ.",
+    "descriptionEn": "The だの～だの, なり～なり, and やれ～やれ patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_dano_dano",
+      "bunpou_nari_nari",
+      "bunpou_yare_yare"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_menyebut_semua",
+    "order": 136,
+    "title": "Menyebutkan Semuanya Tanpa Kecuali",
+    "titleEn": "Listing Everything Without Exception",
+    "description": "Pola といわず～といわず, わ〜わで, dan わ.",
+    "descriptionEn": "The といわず～といわず, わ〜わで, and わ patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_to_iwazu_to_iwazu",
+      "bunpou_wa_wa_de",
+      "bunpou_wa2"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_de_are",
+    "order": 137,
+    "title": "Apa Pun Itu: であれ",
+    "titleEn": "Whatever It May Be: de are",
+    "description": "Pola であれ / であろうと dan であれ～であれ.",
+    "descriptionEn": "The であれ / であろうと and であれ～であれ patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_de_are",
+      "bunpou_de_are_de_are"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_apapun_jenisnya",
+    "order": 138,
+    "title": "Apa Pun Jenisnya, dan Bagaimanapun Juga",
+    "titleEn": "Whatever the Kind, and In Any Case",
+    "description": "Pola いかなる dan いずれにしても / いずれにしろ / いずれにせよ.",
+    "descriptionEn": "The いかなる and いずれにしても / いずれにしろ / いずれにせよ patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ikanaru",
+      "bunpou_izure_ni_shitemo"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_terlepas_pilihan",
+    "order": 139,
+    "title": "Terlepas dari Pilihan Apa Pun",
+    "titleEn": "Regardless of the Choice",
+    "description": "Pola ようが～ようが / ようと～ようと, ようと～まいと / ようが～まいが, dan はどうであれ.",
+    "descriptionEn": "The ようが～ようが / ようと～ようと, ようと～まいと / ようが～まいが, and はどうであれ patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_you_ga_you_ga",
+      "bunpou_you_to_mai_to",
+      "bunpou_wa_dou_de_are"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_puncak_tingkat",
+    "order": 140,
+    "title": "Mencapai Puncak Tingkatan",
+    "titleEn": "Reaching the Utmost Degree",
+    "description": "Pola 極まる / 極まりない（きわまる / きわまりない）, の極み（のきわみ）, dan この上ない（このうえない）.",
+    "descriptionEn": "The 極まる / 極まりない, の極み, and この上ない patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_kiwamaru",
+      "bunpou_no_kiwami",
+      "bunpou_kono_ue_nai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_luar_biasa_emosi",
+    "order": 141,
+    "title": "Ungkapan Emosi yang Luar Biasa Kuat",
+    "titleEn": "Expressing Overwhelming Emotion",
+    "description": "Pola 限りだ（かぎりだ）, といったらない, dan のなんのって.",
+    "descriptionEn": "The 限りだ（かぎりだ）, といったらない, and のなんのって patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_kagiri_da",
+      "bunpou_to_ittara_nai",
+      "bunpou_no_nan_no_tte"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_sampai_mencapai",
+    "order": 142,
+    "title": "Sampai Mencapai, dan Sampai ke Detail Terkecil",
+    "titleEn": "Culminating In, and Down to the Last Detail",
+    "description": "Pola に至る / に至った（にいたる / にいたった） dan に至るまで（にいたるまで）.",
+    "descriptionEn": "The に至る / に至った and に至るまで patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_angka_satuan_ijou",
+      "kotoba_konsep_umum_kekka"
+    ],
+    "kanjiIds": [
+      "kanji_ketsu_n2",
+      "kanji_hi_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_ni_itaru",
+      "bunpou_ni_itaru_made"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_kesenjangan_pencapaian_puas_batin_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_bahkan_sampai",
+    "order": 143,
+    "title": "Bahkan Sampai Tahap Itu Pun",
+    "titleEn": "Even at That Stage",
+    "description": "Pola に至っても（にいたっても） dan に至っては（にいたっては）.",
+    "descriptionEn": "The に至っても and に至っては patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ni_itattemo",
+      "bunpou_ni_itatte_wa"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_layak_pantas",
+    "order": 144,
+    "title": "Layak dan Pantas Mendapatkan",
+    "titleEn": "Worthy and Deserving",
+    "description": "Pola に値する（にあたいする）, に足る（にたる）, dan に足らない（にたらない）.",
+    "descriptionEn": "The に値する, に足る, and に足らない patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_ni_atai_suru",
+      "bunpou_ni_taru",
+      "bunpou_ni_taranai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_tak_perlu_dibesarkan",
+    "order": 145,
+    "title": "Tidak Perlu Dibesar-besarkan",
+    "titleEn": "Not Worth Making a Fuss Over",
+    "description": "Pola には当たらない（にはあたらない）, ほどのことではない, dan うちに入らない（うちにはいらない）.",
+    "descriptionEn": "The には当たらない, ほどのことではない, and うちに入らない patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_niwa_ataranai",
+      "bunpou_hodo_no_koto_dewa_nai",
+      "bunpou_uchi_ni_hairanai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_titik_balik",
+    "order": 146,
+    "title": "Titik Awal dan Titik Balik",
+    "titleEn": "Starting Points and Turning Points",
+    "description": "Pola を皮切りに（をかわきりに）, を機に（をきに）, dan を境に（をさかいに）.",
+    "descriptionEn": "The を皮切りに, を機に, and を境に patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_kawakiri_ni",
+      "bunpou_o_ki_ni",
+      "bunpou_o_sakai_ni"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_melalui_menjelang",
+    "order": 147,
+    "title": "Melalui Proses, dan Menjelang Peristiwa",
+    "titleEn": "Through a Process, and On the Eve Of",
+    "description": "Pola を経て（をへて） dan を控えて（をひかえて）.",
+    "descriptionEn": "The を経て and を控えて patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_arah_lokasi_keshiki",
+      "kotoba_hari_bulan_jiki"
+    ],
+    "kanjiIds": [
+      "kanji_jun2_n2",
+      "kanji_zou3_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_o_hete",
+      "bunpou_o_hikaete"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_filosofi_hidup_lewat_penderitaan_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_tanpa_peduli",
+    "order": 148,
+    "title": "Tanpa Memedulikan Rintangan",
+    "titleEn": "Undeterred by Obstacles",
+    "description": "Pola をよそに, を顧みず（をかえりみず）, dan をものともせずに.",
+    "descriptionEn": "The をよそに, を顧みず, and をものともせずに patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_angka_satuan_ijou",
+      "kotoba_hari_bulan_izen"
+    ],
+    "kanjiIds": [
+      "kanji_kyou2_n2",
+      "kanji_shuu2_n2"
+    ],
+    "bunpouIds": [
+      "bunpou_o_yoso_ni",
+      "bunpou_o_kaerimizu",
+      "bunpou_o_mono_tomo_sezu_ni"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_dilema_etis_pilihan_makanan_n1"
+    ],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_menerobos",
+    "order": 149,
+    "title": "Menerobos Halangan, dan Mengabaikan Sepenuhnya",
+    "titleEn": "Pushing Through, and Setting Aside Entirely",
+    "description": "Pola を押して / を押し切って（をおして / をおしきって） dan はそっちのけで / をそっちのけで.",
+    "descriptionEn": "The を押して / を押し切って and はそっちのけで / をそっちのけで patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_oshite",
+      "bunpou_wa_socchinoke_de"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_berdalih",
+    "order": 150,
+    "title": "Berdalih dan Menyalahgunakan Alasan",
+    "titleEn": "Using a Pretext and Abusing an Excuse",
+    "description": "Pola をいいことに, にかこつけて, dan にかまけて.",
+    "descriptionEn": "The をいいことに, にかこつけて, and にかまけて patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_ii_koto_ni",
+      "bunpou_ni_kakotsukete",
+      "bunpou_ni_kamakete"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_berlandaskan",
+    "order": 151,
+    "title": "Berlandaskan Aturan dan Pertimbangan",
+    "titleEn": "Grounded in Rules and Considerations",
+    "description": "Pola を踏まえて（をふまえて）, に則って（にのっとって）, dan に照らして（にてらして）.",
+    "descriptionEn": "The を踏まえて, に則って, and に照らして patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_o_fumaete",
+      "bunpou_ni_nottotte",
+      "bunpou_ni_terashite"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_akhir_buruk",
+    "order": 152,
+    "title": "Berakhir dengan Keadaan Buruk",
+    "titleEn": "Ending Up in a Bad State",
+    "description": "Pola 羽目になる（はめになる）, 始末だ（しまつだ）, dan たら最後（たらさいご）.",
+    "descriptionEn": "The 羽目になる, 始末だ, and たら最後 patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_hame_ni_naru",
+      "bunpou_shimatsu_da",
+      "bunpou_tara_saigo"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_kesempatan_hilang",
+    "order": 153,
+    "title": "Kesempatan yang Terlewat Begitu Saja",
+    "titleEn": "Opportunities Missed Entirely",
+    "description": "Pola そびれる, 損なう / 損ねる（そこなう / そこねる）, dan ずじまい.",
+    "descriptionEn": "The そびれる, 損なう / 損ねる, and ずじまい patterns.",
+    "level": "N1",
+    "kotobaIds": [],
+    "kanjiIds": [],
+    "bunpouIds": [
+      "bunpou_sobireru",
+      "bunpou_sokonau",
+      "bunpou_zu_jimai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [],
+    "dokkaiIds": []
+  },
+  {
+    "id": "bab_n1_p2_tak_ada_cara",
+    "order": 154,
+    "title": "Tidak Ada Cara Sama Sekali",
+    "titleEn": "No Way Out At All",
+    "description": "Pola 術がない（すべがない）, どうにも～ない, dan ようにも～ない.",
+    "descriptionEn": "The 術がない, どうにも～ない, and ようにも～ない patterns.",
+    "level": "N1",
+    "kotobaIds": [
+      "kotoba_hari_bulan_kako",
+      "kotoba_hobi_aktivitas_eiga"
+    ],
+    "kanjiIds": [
+      "kanji_shi7_n2",
+      "kanji_kyou_n1"
+    ],
+    "bunpouIds": [
+      "bunpou_sube_ga_nai",
+      "bunpou_dou_nimo_nai",
+      "bunpou_you_ni_mo_nai"
+    ],
+    "particleIds": [],
+    "kaiwaIds": [
+      "kaiwa_belajar_maafkan_diri_lewat_film_n1"
     ],
     "dokkaiIds": []
   }
