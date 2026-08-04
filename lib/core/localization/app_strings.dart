@@ -641,8 +641,18 @@ class AppStrings {
   String get babSectionParticle => _t('Partikel', 'Particles');
   String get babSectionKaiwa => _t('Percakapan', 'Conversation');
   String get babSectionDokkai => _t('Bacaan Tambahan', 'Extra Reading');
-  String babGuideQuizMessage(int order) {
+  /// [gated] mirrors `kBabGateQuizRequired`. While that switch is off
+  /// nothing is actually locked, so promising an unlock would be a lie —
+  /// the quiz is still worth taking, it just marks the chapter done
+  /// rather than opening the next one.
+  String babGuideQuizMessage(int order, {bool gated = true}) {
     final range = order == 1 ? 'Bab 1' : 'Bab 1-$order';
+    if (!gated) {
+      return _t(
+        'Pelajari semua bagian di atas, lalu kerjakan kuis $range untuk menandai bab ini selesai.',
+        'Work through everything above, then take the $range quiz to mark this chapter done.',
+      );
+    }
     return _t(
       'Pelajari semua bagian di atas, lalu kerjakan kuis $range untuk membuka bab berikutnya.',
       'Work through everything above, then take the $range quiz to unlock the next chapter.',

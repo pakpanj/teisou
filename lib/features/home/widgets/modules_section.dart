@@ -12,6 +12,7 @@ import '../../../data/models/kana_type.dart';
 import '../../bab/bab_home_screen.dart';
 import '../../bab/bab_providers.dart';
 import '../../bunpou/bunpou_home_screen.dart';
+import '../../choukai/choukai_home_screen.dart';
 import '../../dokkai/dokkai_home_screen.dart';
 import '../../flashcard/flashcard_screen.dart';
 import '../../kaiwa/kaiwa_home_screen.dart';
@@ -150,6 +151,21 @@ class ModulesSection extends ConsumerWidget {
           subtitle: s.dokkaiCategorySubtitle,
           onTap: () =>
               AppNavigator.slideFromRight(context, const DokkaiHomeScreen()),
+        ),
+        const SizedBox(height: 12),
+        // Choukai had full screens but no entry point anywhere in the app —
+        // nothing navigated to ChoukaiHomeScreen, and it was in neither the
+        // module list nor the coming-soon list, so the module was orphaned.
+        // Listening is roughly a quarter of every JLPT paper, so it belongs
+        // next to Dokkai as practice material rather than hidden.
+        _AvailableModuleCard(
+          emoji: '聴',
+          backgroundColor: palette.hiraganaCardBg,
+          iconColor: palette.primaryCoral,
+          title: 'Choukai',
+          subtitle: s.choukaiCategorySubtitle,
+          onTap: () =>
+              AppNavigator.slideFromRight(context, const ChoukaiHomeScreen()),
         ),
         const SizedBox(height: 28),
         _SectionHeader(s.sectionTools),

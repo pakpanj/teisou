@@ -5952,6 +5952,43 @@ happens. Harmless during testing, but it should be conditioned on
 `kBabGateQuizRequired` when that constant is restored — or sooner, since
 it currently misleads.
 
+### Choukai is alive (2026-08-04) — module un-orphaned, first 20 clips
+
+The listening module had full screens (`choukai_home/level/exam_screen`,
+providers, repository, `_levels.json`, pubspec registration) but **no
+entry point anywhere** — nothing navigated to `ChoukaiHomeScreen`, and it
+was in neither the module list nor the coming-soon list. Fixed by adding
+an `_AvailableModuleCard` next to Dokkai in `modules_section.dart`.
+
+Content pipeline added, mirroring Dokkai's: `scripts/choukai_lists.py`
+(locked titles per level) + `scripts/generate_choukai_seed.py`
+(hand-authored tuples → `choukai_data.json` + `choukai/_levels.json`,
+with assertions for title-list match, ≥2 options, no duplicate option,
+correctIndex in range, unique clip and question ids). **N5: 20 clips, 28
+questions.** N4-N1 remain empty lists — the generator marks a level
+`available` only when it has clips, so they show "Segera" until authored.
+
+**No audio asset is needed from anyone.** `ChoukaiClip.audioText` is
+spoken by `ttsServiceProvider`; there is no recorded-audio pipeline. The
+script is deliberately never shown during the exam — only played — and
+revealed on the result screen. That means clips are pure text authoring,
+which is why this was the one big gap that could be closed without the
+user. Author `audioText` as speech: no stage directions, nothing the ear
+cannot recover; speaker turns are written 「男：…」「女：…」 so TTS reads them
+as dialogue.
+
+Verified on the Moto G52J: Choukai appears in the module list, its level
+screen shows "N5 / 20 klip" with N4-N1 as "Segera", the clip list renders
+with per-clip question counts, and the exam screen shows the play button
+and options **without the script text**, as designed. Answering advanced
+correctly from "Soal 1 / 2" to "Soal 2 / 2" with the right second
+question and a "Selesai" button.
+
+Also fixed while there: `babGuideQuizMessage` now takes `gated:` and is
+passed `kBabGateQuizRequired`, so with the gate off the mascot says the
+quiz "menandai bab ini selesai" instead of promising an unlock that no
+longer happens.
+
 ### Image manifests handed to the user
 
 The 9,150 missing Storage images are itemised at

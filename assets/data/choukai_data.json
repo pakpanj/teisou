@@ -1,1 +1,490 @@
-[]
+[
+  {
+    "id": "choukai_n5_jam_berapa",
+    "title": "Jam Berapa Sekarang",
+    "jlptLevel": "N5",
+    "audioText": "男：すみません、今何時ですか。女：今、三時半です。男：ありがとうございます。四時にバスが来ますね。女：はい、あと三十分です。",
+    "audioTranslation": "Pria: Permisi, sekarang jam berapa? Wanita: Sekarang jam setengah empat. Pria: Terima kasih. Busnya datang jam empat, ya? Wanita: Ya, tiga puluh menit lagi.",
+    "questions": [
+      {
+        "id": "choukai_n5_jam_berapa_q1",
+        "prompt": "今、何時ですか。",
+        "options": [
+          "三時半",
+          "四時",
+          "三時",
+          "四時半"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "id": "choukai_n5_jam_berapa_q2",
+        "prompt": "バスは何時に来ますか。",
+        "options": [
+          "三時",
+          "三時半",
+          "四時",
+          "四時半"
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_cari_buku",
+    "title": "Mencari Buku di Kelas",
+    "jlptLevel": "N5",
+    "audioText": "女：先生、わたしの本がありません。男：机の上を見ましたか。女：はい、見ました。ありませんでした。男：かばんの中は。女：あ、ありました。すみません。",
+    "audioTranslation": "Wanita: Bu Guru, buku saya tidak ada. Pria: Sudah lihat di atas meja? Wanita: Sudah. Tidak ada. Pria: Di dalam tas? Wanita: Ah, ada. Maaf.",
+    "questions": [
+      {
+        "id": "choukai_n5_cari_buku_q1",
+        "prompt": "本はどこにありましたか。",
+        "options": [
+          "机の上",
+          "かばんの中",
+          "いすの下",
+          "先生の机"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_sarapan",
+    "title": "Sarapan Pagi Ini",
+    "jlptLevel": "N5",
+    "audioText": "男：今朝、何を食べましたか。女：パンと卵を食べました。男：牛乳は飲みましたか。女：いいえ、お茶を飲みました。",
+    "audioTranslation": "Pria: Tadi pagi makan apa? Wanita: Saya makan roti dan telur. Pria: Minum susu? Wanita: Tidak, saya minum teh.",
+    "questions": [
+      {
+        "id": "choukai_n5_sarapan_q1",
+        "prompt": "女の人は何を飲みましたか。",
+        "options": [
+          "牛乳",
+          "お茶",
+          "水",
+          "コーヒー"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_sarapan_q2",
+        "prompt": "女の人は何を食べましたか。",
+        "options": [
+          "パンとご飯",
+          "パンと卵",
+          "卵とご飯",
+          "パンだけ"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_berapa_harga",
+    "title": "Berapa Harganya",
+    "jlptLevel": "N5",
+    "audioText": "女：すみません、このノートはいくらですか。男：百五十円です。女：じゃあ、二冊ください。男：三百円になります。",
+    "audioTranslation": "Wanita: Permisi, buku catatan ini berapa? Pria: Seratus lima puluh yen. Wanita: Kalau begitu, minta dua. Pria: Jadi tiga ratus yen.",
+    "questions": [
+      {
+        "id": "choukai_n5_berapa_harga_q1",
+        "prompt": "ノートを何冊買いましたか。",
+        "options": [
+          "一冊",
+          "二冊",
+          "三冊",
+          "四冊"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_berapa_harga_q2",
+        "prompt": "全部でいくらですか。",
+        "options": [
+          "百五十円",
+          "二百円",
+          "三百円",
+          "三百五十円"
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_ulang_tahun",
+    "title": "Hari Apa Ulang Tahunmu",
+    "jlptLevel": "N5",
+    "audioText": "男：誕生日はいつですか。女：七月十日です。男：わたしは七月二十日です。近いですね。女：ほんとうですね。",
+    "audioTranslation": "Pria: Ulang tahunmu kapan? Wanita: Sepuluh Juli. Pria: Saya dua puluh Juli. Dekat, ya. Wanita: Iya, benar.",
+    "questions": [
+      {
+        "id": "choukai_n5_ulang_tahun_q1",
+        "prompt": "女の人の誕生日はいつですか。",
+        "options": [
+          "七月十日",
+          "七月二十日",
+          "十月七日",
+          "二十日七月"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_di_mana_tas",
+    "title": "Di Mana Tasnya",
+    "jlptLevel": "N5",
+    "audioText": "女：お母さん、わたしのかばんはどこですか。男：いすの下にありますよ。女：いすの下にありません。男：じゃあ、テーブルの上を見てください。女：ありました。ありがとう。",
+    "audioTranslation": "Wanita: Ibu, tas saya di mana? Pria: Ada di bawah kursi. Wanita: Tidak ada di bawah kursi. Pria: Kalau begitu, coba lihat di atas meja. Wanita: Ada. Terima kasih.",
+    "questions": [
+      {
+        "id": "choukai_n5_di_mana_tas_q1",
+        "prompt": "かばんはどこにありましたか。",
+        "options": [
+          "いすの下",
+          "テーブルの上",
+          "机の中",
+          "ドアの前"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_naik_apa",
+    "title": "Pergi ke Sekolah Naik Apa",
+    "jlptLevel": "N5",
+    "audioText": "男：毎日、何で学校へ行きますか。女：自転車で行きます。男：雨の日も自転車ですか。女：いいえ、雨の日はバスで行きます。",
+    "audioTranslation": "Pria: Setiap hari ke sekolah naik apa? Wanita: Naik sepeda. Pria: Hari hujan juga naik sepeda? Wanita: Tidak, kalau hujan naik bus.",
+    "questions": [
+      {
+        "id": "choukai_n5_naik_apa_q1",
+        "prompt": "雨の日は何で学校へ行きますか。",
+        "options": [
+          "自転車",
+          "バス",
+          "電車",
+          "歩いて"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_cuaca_hari_ini",
+    "title": "Cuaca Hari Ini",
+    "jlptLevel": "N5",
+    "audioText": "女：今日は寒いですね。男：そうですね。昨日は暖かかったですが。女：明日は雪が降るそうですよ。男：えっ、本当ですか。",
+    "audioTranslation": "Wanita: Hari ini dingin, ya. Pria: Iya. Padahal kemarin hangat. Wanita: Katanya besok akan turun salju. Pria: Eh, benarkah?",
+    "questions": [
+      {
+        "id": "choukai_n5_cuaca_hari_ini_q1",
+        "prompt": "昨日の天気はどうでしたか。",
+        "options": [
+          "寒かった",
+          "暖かかった",
+          "雪だった",
+          "雨だった"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_cuaca_hari_ini_q2",
+        "prompt": "明日はどうなりますか。",
+        "options": [
+          "雨が降る",
+          "雪が降る",
+          "暖かくなる",
+          "晴れる"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_berapa_keluarga",
+    "title": "Berapa Orang Keluargamu",
+    "jlptLevel": "N5",
+    "audioText": "男：ご家族は何人ですか。女：四人です。父と母と弟がいます。男：お姉さんはいませんか。女：はい、いません。",
+    "audioTranslation": "Pria: Keluargamu berapa orang? Wanita: Empat orang. Ada ayah, ibu, dan adik laki-laki. Pria: Tidak punya kakak perempuan? Wanita: Tidak punya.",
+    "questions": [
+      {
+        "id": "choukai_n5_berapa_keluarga_q1",
+        "prompt": "女の人の家族は何人ですか。",
+        "options": [
+          "三人",
+          "四人",
+          "五人",
+          "六人"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_berapa_keluarga_q2",
+        "prompt": "女の人には誰がいますか。",
+        "options": [
+          "姉と弟",
+          "父と母と弟",
+          "父と母と姉",
+          "母と弟だけ"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_warna_payung",
+    "title": "Warna Payung Siapa",
+    "jlptLevel": "N5",
+    "audioText": "女：この赤いかさは誰のですか。男：わたしのです。女：じゃあ、青いかさは。男：それは田中さんのです。",
+    "audioTranslation": "Wanita: Payung merah ini punya siapa? Pria: Punya saya. Wanita: Kalau payung biru? Pria: Itu punya Tanaka.",
+    "questions": [
+      {
+        "id": "choukai_n5_warna_payung_q1",
+        "prompt": "青いかさは誰のですか。",
+        "options": [
+          "男の人",
+          "女の人",
+          "田中さん",
+          "先生"
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_bertemu_stasiun",
+    "title": "Bertemu di Depan Stasiun",
+    "jlptLevel": "N5",
+    "audioText": "男：明日、何時に会いましょうか。女：十時はどうですか。男：いいですね。どこで会いますか。女：駅の前で会いましょう。",
+    "audioTranslation": "Pria: Besok mau bertemu jam berapa? Wanita: Bagaimana kalau jam sepuluh? Pria: Boleh. Bertemu di mana? Wanita: Kita bertemu di depan stasiun.",
+    "questions": [
+      {
+        "id": "choukai_n5_bertemu_stasiun_q1",
+        "prompt": "二人はどこで会いますか。",
+        "options": [
+          "駅の中",
+          "駅の前",
+          "学校の前",
+          "公園"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_bertemu_stasiun_q2",
+        "prompt": "何時に会いますか。",
+        "options": [
+          "九時",
+          "十時",
+          "十一時",
+          "十二時"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_makanan_tidak_suka",
+    "title": "Makanan yang Tidak Disukai",
+    "jlptLevel": "N5",
+    "audioText": "女：何か嫌いな食べ物がありますか。男：はい、にんじんが嫌いです。女：野菜は全部だめですか。男：いいえ、トマトは好きです。",
+    "audioTranslation": "Wanita: Ada makanan yang tidak kamu suka? Pria: Ada, saya tidak suka wortel. Wanita: Semua sayur tidak bisa? Pria: Tidak, kalau tomat saya suka.",
+    "questions": [
+      {
+        "id": "choukai_n5_makanan_tidak_suka_q1",
+        "prompt": "男の人が嫌いな食べ物は何ですか。",
+        "options": [
+          "トマト",
+          "にんじん",
+          "野菜全部",
+          "何もない"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_pinjam_pensil",
+    "title": "Meminjam Pensil",
+    "jlptLevel": "N5",
+    "audioText": "男：すみません、えんぴつを貸してください。女：はい、どうぞ。男：ありがとうございます。あとで返します。女：ゆっくりでいいですよ。",
+    "audioTranslation": "Pria: Permisi, tolong pinjamkan pensil. Wanita: Ya, silakan. Pria: Terima kasih. Nanti saya kembalikan. Wanita: Santai saja.",
+    "questions": [
+      {
+        "id": "choukai_n5_pinjam_pensil_q1",
+        "prompt": "男の人は何を借りましたか。",
+        "options": [
+          "ノート",
+          "えんぴつ",
+          "けしゴム",
+          "本"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_nomor_telepon",
+    "title": "Nomor Telepon Teman",
+    "jlptLevel": "N5",
+    "audioText": "女：電話番号を教えてください。男：はい、ゼロ九ゼロの一二三四の五六七八です。女：もう一度お願いします。男：ゼロ九ゼロの一二三四の五六七八です。",
+    "audioTranslation": "Wanita: Tolong beri tahu nomor teleponmu. Pria: Ya, kosong sembilan kosong, satu dua tiga empat, lima enam tujuh delapan. Wanita: Tolong sekali lagi. Pria: Kosong sembilan kosong, satu dua tiga empat, lima enam tujuh delapan.",
+    "questions": [
+      {
+        "id": "choukai_n5_nomor_telepon_q1",
+        "prompt": "女の人は何をお願いしましたか。",
+        "options": [
+          "番号をもう一度言うこと",
+          "電話をかけること",
+          "名前を書くこと",
+          "住所を教えること"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_hewan_peliharaan",
+    "title": "Hewan Peliharaan di Rumah",
+    "jlptLevel": "N5",
+    "audioText": "男：家で何か動物を飼っていますか。女：はい、猫が二匹います。男：犬はいませんか。女：犬はいません。猫だけです。",
+    "audioTranslation": "Pria: Di rumah memelihara hewan? Wanita: Ya, ada dua ekor kucing. Pria: Tidak ada anjing? Wanita: Tidak ada anjing. Hanya kucing.",
+    "questions": [
+      {
+        "id": "choukai_n5_hewan_peliharaan_q1",
+        "prompt": "女の人は何を飼っていますか。",
+        "options": [
+          "犬が二匹",
+          "猫が二匹",
+          "犬と猫",
+          "何もいない"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_pr_belum_selesai",
+    "title": "Pekerjaan Rumah Belum Selesai",
+    "jlptLevel": "N5",
+    "audioText": "女：宿題はもう終わりましたか。男：いいえ、まだです。女：いつまでにしなければなりませんか。男：明日の朝までです。今晩やります。",
+    "audioTranslation": "Wanita: PR-nya sudah selesai? Pria: Belum. Wanita: Harus selesai kapan? Pria: Sampai besok pagi. Nanti malam saya kerjakan.",
+    "questions": [
+      {
+        "id": "choukai_n5_pr_belum_selesai_q1",
+        "prompt": "男の人はいつ宿題をしますか。",
+        "options": [
+          "今朝",
+          "今晩",
+          "明日の朝",
+          "明日の夜"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_beli_minuman",
+    "title": "Membeli Minuman",
+    "jlptLevel": "N5",
+    "audioText": "男：何が飲みたいですか。女：わたしはジュースがいいです。男：じゃあ、わたしは水にします。女：すみません、ジュースを一つと水を一つください。",
+    "audioTranslation": "Pria: Mau minum apa? Wanita: Saya mau jus. Pria: Kalau begitu saya pilih air putih. Wanita: Permisi, minta satu jus dan satu air putih.",
+    "questions": [
+      {
+        "id": "choukai_n5_beli_minuman_q1",
+        "prompt": "男の人は何を飲みますか。",
+        "options": [
+          "ジュース",
+          "水",
+          "お茶",
+          "牛乳"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_sakit_perut",
+    "title": "Sakit Perut di Sekolah",
+    "jlptLevel": "N5",
+    "audioText": "女：先生、おなかが痛いです。男：いつからですか。女：朝からです。男：じゃあ、保健室へ行きましょう。",
+    "audioTranslation": "Wanita: Bu Guru, perut saya sakit. Pria: Sejak kapan? Wanita: Sejak pagi. Pria: Kalau begitu, ayo ke ruang kesehatan.",
+    "questions": [
+      {
+        "id": "choukai_n5_sakit_perut_q1",
+        "prompt": "女の人はどこが痛いですか。",
+        "options": [
+          "頭",
+          "おなか",
+          "のど",
+          "足"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_sakit_perut_q2",
+        "prompt": "二人はどこへ行きますか。",
+        "options": [
+          "教室",
+          "保健室",
+          "病院",
+          "家"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_rencana_minggu",
+    "title": "Rencana Hari Minggu",
+    "jlptLevel": "N5",
+    "audioText": "男：日曜日は何をしますか。女：友だちと映画を見に行きます。男：いいですね。何時からですか。女：午後二時からです。",
+    "audioTranslation": "Pria: Hari Minggu mau apa? Wanita: Pergi menonton film dengan teman. Pria: Bagus, ya. Mulai jam berapa? Wanita: Mulai jam dua siang.",
+    "questions": [
+      {
+        "id": "choukai_n5_rencana_minggu_q1",
+        "prompt": "女の人は日曜日に何をしますか。",
+        "options": [
+          "買い物",
+          "映画を見る",
+          "勉強",
+          "散歩"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_rencana_minggu_q2",
+        "prompt": "何時からですか。",
+        "options": [
+          "午前二時",
+          "午後二時",
+          "午後四時",
+          "午前十時"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_kelas_mulai",
+    "title": "Kelas Dimulai Jam Berapa",
+    "jlptLevel": "N5",
+    "audioText": "女：授業は何時に始まりますか。男：八時半に始まります。女：何時に終わりますか。男：三時に終わります。",
+    "audioTranslation": "Wanita: Pelajaran mulai jam berapa? Pria: Mulai jam setengah sembilan. Wanita: Selesai jam berapa? Pria: Selesai jam tiga.",
+    "questions": [
+      {
+        "id": "choukai_n5_kelas_mulai_q1",
+        "prompt": "授業は何時に始まりますか。",
+        "options": [
+          "八時",
+          "八時半",
+          "九時",
+          "九時半"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  }
+]

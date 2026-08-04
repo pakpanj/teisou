@@ -13,6 +13,7 @@ import '../kanji/kanji_word_detail_screen.dart';
 import '../kotoba/kotoba_word_detail_screen.dart';
 import '../particle/particle_detail_screen.dart';
 import 'bab_gate_quiz_screen.dart';
+import 'bab_level_screen.dart' show kBabGateQuizRequired;
 import 'bab_providers.dart';
 
 /// One Bab chapter — a curated "playlist" over already-resolved items from
@@ -163,7 +164,8 @@ class BabDetailScreen extends ConsumerWidget {
               mood: done ? MascotMood.cheering : MascotMood.happy,
               message: done
                   ? s.babGuideDoneMessage
-                  : s.babGuideQuizMessage(resolved.bab.order),
+                  : s.babGuideQuizMessage(resolved.bab.order,
+                      gated: kBabGateQuizRequired),
             ),
             const SizedBox(height: 16),
             SizedBox(
