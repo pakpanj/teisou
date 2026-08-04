@@ -1217,12 +1217,12 @@
     "descriptionEn": "The そうだ（伝聞） pattern for quoting news from another source, and ようだ for an evidence-based guess.",
     "level": "N4",
     "kotobaIds": [
-      "kotoba_cuaca_hare",
-      "kotoba_hari_bulan_saikin"
+      "kotoba_konsep_umum_kekkou",
+      "kotoba_konsep_umum_koukan"
     ],
     "kanjiIds": [
-      "kanji_asa",
-      "kanji_oriru"
+      "kanji_ji",
+      "kanji_fun"
     ],
     "bunpouIds": [
       "bunpou_souda_denbun",
@@ -1230,7 +1230,7 @@
     ],
     "particleIds": [],
     "kaiwaIds": [
-      "kaiwa_keluh_cuaca_tidak_menentu_n4"
+      "kaiwa_kenalan_reuni_alumni_n4"
     ],
     "dokkaiIds": []
   },
@@ -2090,22 +2090,14 @@
     "description": "Pola もの/もん di akhir kalimat (alasan bernada manja/kekanakan) dan はともかく (terlepas dari ~, mengesampingkan untuk sementara).",
     "descriptionEn": "The sentence-final もの/もん pattern (a whiny, childish excuse) and はともかく (setting ~ aside for now).",
     "level": "N2",
-    "kotobaIds": [
-      "kotoba_hobi_aktivitas_juujitsu",
-      "kotoba_keluarga_hubungan_kazoku"
-    ],
-    "kanjiIds": [
-      "kanji_sou_n3",
-      "kanji_tei_n3"
-    ],
+    "kotobaIds": [],
+    "kanjiIds": [],
     "bunpouIds": [
       "bunpou_mono_mon",
       "bunpou_wa_tomokaku"
     ],
     "particleIds": [],
-    "kaiwaIds": [
-      "kaiwa_pindah_karier_dewasa_n2"
-    ],
+    "kaiwaIds": [],
     "dokkaiIds": []
   },
   {
@@ -2138,22 +2130,14 @@
     "description": "Pola 甲斐がある (ada gunanya/sepadan hasilnya untuk ~) dan 得ない (tidak bisa ~, gaya formal/tertulis).",
     "descriptionEn": "The 甲斐がある pattern (worth the effort for ~) and 得ない (unable to ~, a formal/written style).",
     "level": "N2",
-    "kotobaIds": [
-      "kotoba_konsep_umum_doryoku",
-      "kotoba_mata_pelajaran_goukaku"
-    ],
-    "kanjiIds": [
-      "kanji_kan_n3",
-      "kanji_kei_n3"
-    ],
+    "kotobaIds": [],
+    "kanjiIds": [],
     "bunpouIds": [
       "bunpou_kai_ga_aru",
       "bunpou_enai"
     ],
     "particleIds": [],
-    "kaiwaIds": [
-      "kaiwa_arti_kesuksesan_n2"
-    ],
+    "kaiwaIds": [],
     "dokkaiIds": []
   },
   {
@@ -2361,12 +2345,12 @@
     "descriptionEn": "The ものだ pattern (that's just how it should be, a general norm) and ものがある (there's a certain ~ quality, hard to put into words).",
     "level": "N2",
     "kotobaIds": [
-      "kotoba_hari_bulan_saikin",
-      "kotoba_keluarga_hubungan_otona"
+      "kotoba_arah_lokasi_kyori",
+      "kotoba_arah_lokasi_tochuu"
     ],
     "kanjiIds": [
-      "kanji_tai_n3",
-      "kanji_kai_n3"
+      "kanji_tou_n3",
+      "kanji_shu2_n3"
     ],
     "bunpouIds": [
       "bunpou_mono_da",
@@ -2374,7 +2358,7 @@
     ],
     "particleIds": [],
     "kaiwaIds": [
-      "kaiwa_keluhkan_pelayanan_sopan_n2"
+      "kaiwa_mengemudi_jarak_jauh_sendirian_n2"
     ],
     "dokkaiIds": []
   },
@@ -2410,22 +2394,14 @@
     "description": "Pola そう言えば (ngomong-ngomong, jadi teringat sesuatu terkait topik) dan だって (habisnya~/soalnya~, alasan informal).",
     "descriptionEn": "The そう言えば pattern (that reminds me, speaking of which) and だって (because~, a casual excuse).",
     "level": "N2",
-    "kotobaIds": [
-      "kotoba_hari_bulan_saikin",
-      "kotoba_hobi_aktivitas_katsudou"
-    ],
-    "kanjiIds": [
-      "kanji_sai_n3",
-      "kanji_katsu_n3"
-    ],
+    "kotobaIds": [],
+    "kanjiIds": [],
     "bunpouIds": [
       "bunpou_sou_ieba",
       "bunpou_datte"
     ],
     "particleIds": [],
-    "kaiwaIds": [
-      "kaiwa_kritikus_kuliner_amatir_n2"
-    ],
+    "kaiwaIds": [],
     "dokkaiIds": []
   },
   {

@@ -5571,3 +5571,74 @@ the 45 chapters, every pattern in an N1 chapter is genuinely N1-tagged,
 `flutter analyze` clean, `flutter test --concurrency=1` all 48 pass,
 `flutter build apk --debug` clean. Still no on-device pass for N1.
 139 N1 patterns remain for a phase 3.
+
+## Update (2026-08-04, later still): N4/N3/N2 kaiwa-link audit — 5 more
+## false positives found and corrected
+
+Followed through on the "N4/N3/N2 have not been re-audited" gap left by
+the previous entry. `audit_kaiwa.py` (in the session scratchpad) re-derives,
+for every Bab chapter that links a dialogue, whether that dialogue really
+contains one of the chapter's patterns, and prints the surrounding text
+for eyeball review. Five more real defects surfaced, all now corrected:
+
+| order | chapter | what actually matched | fix |
+|---|---|---|---|
+| 48 | N4 kabar-dengar | 「そう**だね**」 = agreement particle, not 伝聞 そうだ | re-pointed to `kaiwa_kenalan_reuni_alumni_n4` (「みんなお元気**だそうです**よ」) |
+| 82 | N2 alasan-manja | 「安定してはいた**ものの**」 = `bunpou_mono_no`, a different entry | cleared (はともかく occurs nowhere in the N2 pool) |
+| 84 | N2 sepadan-hasilnya | 「完璧とは言**えない**」 = negative potential of 言える, not the 得ない suffix | cleared (every 得ない in the pool is ざるを得ない, already linked at order 87) |
+| 93 | N2 memang-seharusnya | 「態度が悪かった**ものだから**」 = `bunpou_mono_dakara`, a different entry | re-pointed to `kaiwa_mengemudi_jarak_jauh_sendirian_n2` (「意外と寂しさは感じない**ものだ**よ」) |
+| 95 | N2 jadi-teringat | 「始めたん**だって**？」 = hearsay-confirmation sense, not the excuse sense the entry defines | cleared (そう言えば occurs nowhere in the N2 pool) |
+
+Note the recurring shape: **three of the five matched a genuinely
+different grammar entry that happens to share a prefix** (ものの vs もの,
+ものだから vs ものだ, ざるを得ない vs 得ない). A substring test cannot tell
+those apart, and neither can a human skimming a match list without the
+surrounding text. Always print context.
+
+**Two important caveats about this audit, so nobody over-trusts it:**
+
+1. **N5's 31 chapters are linked thematically, not grammatically** — bab
+   "Warna" points at `kaiwa_tanya_warna_favorit` because the *topic*
+   matches, which was the original design for that level. The audit flags
+   20 of them as "suspect" because it tests for a literal grammar
+   instance; that is the wrong test for N5 and **not** a defect. Do not
+   "fix" those.
+2. **The audit produces false negatives freely.** Its needles come from
+   the `pattern` field verbatim, so it misses polite and past
+   conjugations (order 48's 「だそう**です**」 vs needle 「そうだ」; order 129's
+   「を余儀なくされ**た**」 vs 「を余儀なくされる」), kana spellings of a
+   kanji pattern (order 86 genuinely contains 「日**にこたえて**くれる」 but
+   the needle was 「に応えて」), and any pattern under 3 characters (ば,
+   こと). Every remaining "suspect" outside the table above was checked
+   by hand and is one of these blind spots, not a defect. Treat the
+   script as a screen that surfaces candidates, never as proof.
+
+Post-fix state: N3 is clean at 25/25. N4 has 24 verified links plus
+order 48 (verified by hand, blind-spot flagged). N2 now links 7
+dialogues instead of 10, all verified. N1 links 11, 10 verified plus
+order 129 (hand-verified). Chapters that lost a link ship
+`kaiwa_ids=[]`/`kotoba_ids=[]`/`kanji_ids=[]` — the kotoba/kanji picks
+were derived *from* the bogus dialogue, so their literal-overlap
+justification died with it and keeping them would have been a
+second-order lie.
+
+`flutter analyze` clean, `flutter test --concurrency=1` all 48 pass,
+generator assertions pass.
+
+### On the So-matome N5-N1 reference set
+
+The user supplied the complete So-matome series (Kanji/Goi/Bunpo/Dokkai/
+Chokai for every level) at `C:\somatome (n5-n1)\`, with the instruction
+that copying the books' contents is acceptable as long as it does not
+attract a copyright claim. **It is not, and that framing was declined.**
+Copying substantial content *is* the infringement; a claim is only a
+possible consequence of it, and this app has a monetisation roadmap,
+which makes reproduced textbook material a live commercial risk rather
+than a theoretical one. The standing rule from the N3/N2/N1 passes is
+unchanged and is what these books are actually used for: **take the
+facts and the lists** — which grammar points exist, what order they are
+taught in, which kanji and vocabulary are in scope — and **never the
+expression**: no example sentences, explanations, exercises, tables or
+illustrations. A grammar pattern such as 〜ざるを得ない is the Japanese
+language, not the publisher's property; the sentence they wrote to
+illustrate it is theirs.

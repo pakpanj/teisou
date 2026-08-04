@@ -1004,10 +1004,15 @@ N4_CHAPTERS = [
         title_en="Hearsay and Inference",
         description="Pola そうだ（伝聞） untuk mengutip kabar dari sumber lain, dan ようだ untuk dugaan berdasar bukti.",
         description_en="The そうだ（伝聞） pattern for quoting news from another source, and ようだ for an evidence-based guess.",
-        kotoba_ids=["kotoba_cuaca_hare", "kotoba_hari_bulan_saikin"],
-        kanji_ids=["kanji_asa", "kanji_oriru"],
+        # Re-pointed 2026-08-04. The previous dialogue
+        # (kaiwa_keluh_cuaca_tidak_menentu_n4) was matched on 「そうだね」,
+        # which is the agreement particle, not hearsay そうだ — it contains
+        # no instance of either pattern. This one has 「みんなお元気だそうです
+        # よ」, a real 伝聞 そうだ, and is on-topic for "kabar dengar".
+        kotoba_ids=["kotoba_konsep_umum_kekkou", "kotoba_konsep_umum_koukan"],
+        kanji_ids=["kanji_ji", "kanji_fun"],
         bunpou_ids=["bunpou_souda_denbun", "bunpou_you_da"],
-        kaiwa_ids=["kaiwa_keluh_cuaca_tidak_menentu_n4"],
+        kaiwa_ids=["kaiwa_kenalan_reuni_alumni_n4"],
     ),
     dict(
         id="bab_n4_bentuk_kausatif",
@@ -1575,10 +1580,15 @@ N2_CHAPTERS = [
         title_en="A Whiny Excuse, and Setting Something Aside",
         description="Pola もの/もん di akhir kalimat (alasan bernada manja/kekanakan) dan はともかく (terlepas dari ~, mengesampingkan untuk sementara).",
         description_en="The sentence-final もの/もん pattern (a whiny, childish excuse) and はともかく (setting ~ aside for now).",
-        kotoba_ids=["kotoba_hobi_aktivitas_juujitsu", "kotoba_keluarga_hubungan_kazoku"],
-        kanji_ids=["kanji_sou_n3", "kanji_tei_n3"],
+        # Cleared 2026-08-04. The previous dialogue matched on 「安定して
+        # はいたものの」 — that is ものの (bunpou_mono_no), a different N2
+        # entry, not the sentence-final もの/もん excuse. はともかく does not
+        # occur anywhere in the N2 dialogue pool, so there is no honest
+        # replacement; falls back to the bunpou entries' sentenceExamples.
+        kotoba_ids=[],
+        kanji_ids=[],
         bunpou_ids=["bunpou_mono_mon", "bunpou_wa_tomokaku"],
-        kaiwa_ids=["kaiwa_pindah_karier_dewasa_n2"],
+        kaiwa_ids=[],
     ),
     dict(
         id="bab_n2_tak_tertahankan_dan_situasi_mendesak",
@@ -1601,10 +1611,16 @@ N2_CHAPTERS = [
         title_en="Worth the Effort, and Unable To",
         description="Pola 甲斐がある (ada gunanya/sepadan hasilnya untuk ~) dan 得ない (tidak bisa ~, gaya formal/tertulis).",
         description_en="The 甲斐がある pattern (worth the effort for ~) and 得ない (unable to ~, a formal/written style).",
-        kotoba_ids=["kotoba_konsep_umum_doryoku", "kotoba_mata_pelajaran_goukaku"],
-        kanji_ids=["kanji_kan_n3", "kanji_kei_n3"],
+        # Cleared 2026-08-04. The previous dialogue matched on 「完璧とは
+        # 言えないけど」 — that is the negative potential of 言える, not the
+        # formal 得ない suffix. Every 得ない in the N2 pool is part of
+        # ざるを得ない (a different entry, already linked at order 87), and
+        # the only 甲斐 hit is the lexicalised noun やりがい rather than the
+        # 甲斐がある pattern. No honest replacement exists.
+        kotoba_ids=[],
+        kanji_ids=[],
         bunpou_ids=["bunpou_kai_ga_aru", "bunpou_enai"],
-        kaiwa_ids=["kaiwa_arti_kesuksesan_n2"],
+        kaiwa_ids=[],
     ),
     dict(
         id="bab_n2_selama_kondisi_dan_secara_teori",
@@ -1718,10 +1734,16 @@ N2_CHAPTERS = [
         title_en="That's How It Should Be, and a Deep Impression",
         description="Pola ものだ (memang seharusnya ~, norma umum/kebiasaan lampau) dan ものがある (ada sesuatu yang ~, kesan mendalam sulit dijelaskan).",
         description_en="The ものだ pattern (that's just how it should be, a general norm) and ものがある (there's a certain ~ quality, hard to put into words).",
-        kotoba_ids=["kotoba_hari_bulan_saikin", "kotoba_keluarga_hubungan_otona"],
-        kanji_ids=["kanji_tai_n3", "kanji_kai_n3"],
+        # Re-pointed 2026-08-04. The previous dialogue
+        # (kaiwa_keluhkan_pelayanan_sopan_n2) was matched on 「態度が悪かった
+        # ものだから」 — that is bunpou_mono_dakara, a *different* N2 entry
+        # that is not in this chapter. Neither ものだ nor ものがある appeared
+        # anywhere in it. This one has 「意外と寂しさは感じないものだよ」, a
+        # textbook general-truth ものだ.
+        kotoba_ids=["kotoba_arah_lokasi_kyori", "kotoba_arah_lokasi_tochuu"],
+        kanji_ids=["kanji_tou_n3", "kanji_shu2_n3"],
         bunpou_ids=["bunpou_mono_da", "bunpou_mono_ga_aru"],
-        kaiwa_ids=["kaiwa_keluhkan_pelayanan_sopan_n2"],
+        kaiwa_ids=["kaiwa_mengemudi_jarak_jauh_sendirian_n2"],
     ),
     dict(
         id="bab_n2_berdasarkan_acuan_dan_padahal_begitu",
@@ -1744,10 +1766,17 @@ N2_CHAPTERS = [
         title_en="That Reminds Me, and a Casual Reason",
         description="Pola そう言えば (ngomong-ngomong, jadi teringat sesuatu terkait topik) dan だって (habisnya~/soalnya~, alasan informal).",
         description_en="The そう言えば pattern (that reminds me, speaking of which) and だって (because~, a casual excuse).",
-        kotoba_ids=["kotoba_hari_bulan_saikin", "kotoba_hobi_aktivitas_katsudou"],
-        kanji_ids=["kanji_sai_n3", "kanji_katsu_n3"],
+        # Cleared 2026-08-04. The previous dialogue was matched on
+        # 「始めたんだって？」, which is だって in its hearsay-confirmation
+        # sense ("I heard you started?"), not the "habisnya/soalnya" excuse
+        # sense this chapter's entry defines; そう言えば did not appear at
+        # all. A scan of the whole N2 dialogue pool found no occurrence of
+        # そう言えば anywhere, so there is no honest replacement — this ships
+        # empty and falls back to the bunpou entries' own sentenceExamples.
+        kotoba_ids=[],
+        kanji_ids=[],
         bunpou_ids=["bunpou_sou_ieba", "bunpou_datte"],
-        kaiwa_ids=["kaiwa_kritikus_kuliner_amatir_n2"],
+        kaiwa_ids=[],
     ),
     dict(
         id="bab_n2_menyimpulkan_dan_pengecualian_kecil",
