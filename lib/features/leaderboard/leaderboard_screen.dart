@@ -8,7 +8,6 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
-import '../../data/repositories/leaderboard_repository.dart';
 import 'leaderboard_providers.dart';
 import 'widgets/clan_tab.dart';
 
@@ -19,7 +18,7 @@ class LeaderboardScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
     return DefaultTabController(
-      length: 7,
+      length: 2,
       child: Scaffold(
         backgroundColor: context.palette.background,
         appBar: AppBar(
@@ -31,29 +30,18 @@ class LeaderboardScreen extends ConsumerWidget {
             ],
           ),
           bottom: TabBar(
-            isScrollable: true,
             labelColor: context.palette.primaryCoral,
             unselectedLabelColor: context.palette.textNavy,
             indicatorColor: context.palette.primaryCoral,
             tabs: [
-              const Tab(text: 'Kana Mastered'),
-              Tab(text: s.tabExamScore),
-              Tab(text: s.tabKanaRecord),
-              Tab(text: s.tabDokkaiRecord),
-              Tab(text: s.tabChoukaiRecord),
-              Tab(text: s.tabKanjiComboRecord),
-              const Tab(text: 'Clan'),
+              Tab(text: s.tabGlobalScore),
+              Tab(text: s.tabClan),
             ],
           ),
         ),
         body: const TabBarView(
           children: [
-            _LeaderboardTab(metric: LeaderboardMetric.totalMastered),
-            _LeaderboardTab(metric: LeaderboardMetric.examHighScore),
-            _LeaderboardTab(metric: LeaderboardMetric.kanaRecord),
-            _LeaderboardTab(metric: LeaderboardMetric.dokkaiRecord),
-            _LeaderboardTab(metric: LeaderboardMetric.choukaiRecord),
-            _LeaderboardTab(metric: LeaderboardMetric.kanjiComboRecord),
+            _GlobalScoreTab(),
             ClanTab(),
           ],
         ),
@@ -62,54 +50,43 @@ class LeaderboardScreen extends ConsumerWidget {
   }
 }
 
-/// Renders one metric's value for [entry] as a display string. The two
-/// original metrics stay bare numbers (unchanged from before the "Rekor"
-/// feature); the four per-category record metrics render as "XX.X% (Nx)"
-/// — literally the "Poin Nilai / berapa kali ujian" formula the record is
-/// built from, average and attempt count both visible in one line — or
-/// "Belum ada" when the user has never attempted that category (rather
-/// than a potentially-confusing "0.0% (0x)"). Public so the Clan tab's
-/// ranking (which reuses the same six metrics, just scoped to clan
-/// members) can render identically.
-String leaderboardValueLabel(
-  LeaderboardMetric metric,
-  LeaderboardEntry entry,
-  AppStrings strings,
-) {
-  switch (metric) {
-    case LeaderboardMetric.totalMastered:
-      return '${entry.totalMastered}';
-    case LeaderboardMetric.examHighScore:
-      return '${entry.examHighScore}';
-    case LeaderboardMetric.kanaRecord:
-      return entry.kanaRecordCount == 0
-          ? strings.noRecordYet
-          : '${entry.kanaRecordAvg.toStringAsFixed(1)}% (${entry.kanaRecordCount}x)';
-    case LeaderboardMetric.dokkaiRecord:
-      return entry.dokkaiRecordCount == 0
-          ? strings.noRecordYet
-          : '${entry.dokkaiRecordAvg.toStringAsFixed(1)}% (${entry.dokkaiRecordCount}x)';
-    case LeaderboardMetric.choukaiRecord:
-      return entry.choukaiRecordCount == 0
-          ? strings.noRecordYet
-          : '${entry.choukaiRecordAvg.toStringAsFixed(1)}% (${entry.choukaiRecordCount}x)';
-    case LeaderboardMetric.kanjiComboRecord:
-      return entry.kanjiComboRecordCount == 0
-          ? strings.noRecordYet
-          : '${entry.kanjiComboRecordAvg.toStringAsFixed(1)}% (${entry.kanjiComboRecordCount}x)';
-  }
+/// The headline number for [entry]: every exam category's Rekor summed, as
+/// "N poin" — or "Belum ada" when nothing has been attempted at all, which
+/// a bare "0 poin" would otherwise be indistinguishable from. Public so the
+/// Clan tab's scoped ranking renders identically. Rounded to whole points:
+/// the underlying averages carry decimals, but a leaderboard aimed at
+/// children reads better without them, and ties are harmless here.
+String globalScoreLabel(LeaderboardEntry entry, AppStrings strings) {
+  if (!entry.hasAnyRecord) return strings.noRecordYet;
+  return strings.globalScorePoints(
+    entry.computedGlobalScore.toStringAsFixed(0),
+  );
 }
 
-class _LeaderboardTab extends ConsumerWidget {
-  final LeaderboardMetric metric;
+/// The four Rekor values that add up to [globalScoreLabel]'s total, as one
+/// compact line — so the score reads as an accumulation the learner can
+/// break down, not an opaque number. Empty when nothing's been attempted
+/// (the row shows "Belum ada" as its value instead).
+String globalScoreBreakdown(LeaderboardEntry entry, AppStrings strings) {
+  if (!entry.hasAnyRecord) return '';
+  String part(String label, double value) =>
+      '$label ${value.toStringAsFixed(0)}';
+  return [
+    part(strings.scorePartKana, entry.kanaRecordAvg),
+    part(strings.scorePartDokkai, entry.dokkaiRecordAvg),
+    part(strings.scorePartChoukai, entry.choukaiRecordAvg),
+    part(strings.scorePartKanjiCombo, entry.kanjiComboRecordAvg),
+  ].join(' · ');
+}
 
-  const _LeaderboardTab({required this.metric});
+class _GlobalScoreTab extends ConsumerWidget {
+  const _GlobalScoreTab();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final topAsync = ref.watch(leaderboardTopProvider(metric));
-    final selfEntryAsync = ref.watch(selfLeaderboardEntryProvider(metric));
-    final selfRankAsync = ref.watch(selfRankProvider(metric));
+    final topAsync = ref.watch(leaderboardTopProvider);
+    final selfEntryAsync = ref.watch(selfLeaderboardEntryProvider);
+    final selfRankAsync = ref.watch(selfRankProvider);
     final s = ref.watch(appStringsProvider);
 
     return Column(
@@ -117,17 +94,28 @@ class _LeaderboardTab extends ConsumerWidget {
         _SelfHeader(
           entry: selfEntryAsync.valueOrNull,
           rank: selfRankAsync.valueOrNull,
-          metric: metric,
           strings: s,
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+          child: Text(
+            s.globalScoreExplainer,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 11,
+              color: context.palette.textNavy.withValues(alpha: 0.6),
+            ),
+          ),
         ),
         Expanded(
           child: AppRefreshIndicator(
-            onRefresh: () async {
-              ref.invalidate(leaderboardTopProvider(metric));
-              await Future.wait([
-                ref.refresh(selfLeaderboardEntryProvider(metric).future),
-                ref.refresh(selfRankProvider(metric).future),
-              ]);
+            onRefresh: () {
+              // Invalidating the shared entry is enough to refetch it — the
+              // rank provider watches it, so refreshing rank last picks up
+              // the fresh entry and returns a consumable result (a bare
+              // awaited `refresh` would trip `unused_result`).
+              ref.invalidate(selfLeaderboardEntryProvider);
+              return ref.refresh(selfRankProvider.future);
             },
             child: topAsync.when(
               data: (entries) {
@@ -155,7 +143,8 @@ class _LeaderboardTab extends ConsumerWidget {
                   itemBuilder: (context, index) => LeaderboardTile(
                     rank: index + 1,
                     entry: entries[index],
-                    valueLabel: leaderboardValueLabel(metric, entries[index], s),
+                    valueLabel: globalScoreLabel(entries[index], s),
+                    subtitle: globalScoreBreakdown(entries[index], s),
                   ),
                 );
               },
@@ -173,13 +162,11 @@ class _LeaderboardTab extends ConsumerWidget {
 class _SelfHeader extends StatelessWidget {
   final LeaderboardEntry? entry;
   final int? rank;
-  final LeaderboardMetric metric;
   final AppStrings strings;
 
   const _SelfHeader({
     required this.entry,
     required this.rank,
-    required this.metric,
     required this.strings,
   });
 
@@ -198,47 +185,67 @@ class _SelfHeader extends StatelessWidget {
           color: context.palette.primaryCoral.withValues(alpha: 0.3),
         ),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            rank != null ? strings.rankOf(rank!) : strings.notRankedYet,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: context.palette.primaryCoral,
-            ),
+          Row(
+            children: [
+              Text(
+                rank != null ? strings.rankOf(rank!) : strings.notRankedYet,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: context.palette.primaryCoral,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text('•', style: TextStyle(color: context.palette.textNavy)),
+              const SizedBox(width: 8),
+              LeaderboardAvatar(entry: entry!, size: 28),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  entry!.displayName,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: context.palette.textNavy),
+                ),
+              ),
+              Text(
+                globalScoreLabel(entry!, strings),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: context.palette.textNavy,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(width: 8),
-          Text('•', style: TextStyle(color: context.palette.textNavy)),
-          const SizedBox(width: 8),
-          LeaderboardAvatar(entry: entry!, size: 28),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              entry!.displayName,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: context.palette.textNavy),
+          if (entry!.hasAnyRecord) ...[
+            const SizedBox(height: 6),
+            Text(
+              globalScoreBreakdown(entry!, strings),
+              style: TextStyle(
+                fontSize: 11,
+                color: context.palette.textNavy.withValues(alpha: 0.7),
+              ),
             ),
-          ),
-          Text(
-            leaderboardValueLabel(metric, entry!, strings),
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: context.palette.textNavy,
-            ),
-          ),
+          ],
         ],
       ),
     );
   }
 }
 
-/// A single ranked row — reused by both the global leaderboard tabs and
-/// the Clan tab's scoped ranking (`ClanTab`), which is why this and
+/// A single ranked row — reused by both the global leaderboard tab and the
+/// Clan tab's scoped ranking (`ClanTab`), which is why this and
 /// [LeaderboardAvatar] are public rather than private to this file.
+///
+/// [subtitle] carries the per-category score breakdown. It replaced the
+/// row's old "last updated" date, which said little on a leaderboard and
+/// cost the one line now spent showing what the total is actually made of.
 class LeaderboardTile extends StatelessWidget {
   final int rank;
   final LeaderboardEntry entry;
   final String valueLabel;
+  final String subtitle;
   final bool isHost;
 
   const LeaderboardTile({
@@ -246,6 +253,7 @@ class LeaderboardTile extends StatelessWidget {
     required this.rank,
     required this.entry,
     required this.valueLabel,
+    this.subtitle = '',
     this.isHost = false,
   });
 
@@ -261,9 +269,6 @@ class LeaderboardTile extends StatelessWidget {
         return '$rank';
     }
   }
-
-  String _formatDate(DateTime dt) =>
-      '${dt.day.toString().padLeft(2, '0')}/${dt.month.toString().padLeft(2, '0')}/${dt.year}';
 
   @override
   Widget build(BuildContext context) {
@@ -310,13 +315,15 @@ class LeaderboardTile extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(
-                  _formatDate(entry.updatedAt),
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: context.palette.textNavy.withValues(alpha: 0.5),
+                if (subtitle.isNotEmpty)
+                  Text(
+                    subtitle,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: context.palette.textNavy.withValues(alpha: 0.5),
+                    ),
                   ),
-                ),
               ],
             ),
           ),

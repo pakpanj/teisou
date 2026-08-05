@@ -6,19 +6,22 @@ import '../../../core/localization/app_strings.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/app_refresh_indicator.dart';
-import '../../../data/repositories/leaderboard_repository.dart';
 import '../clan_providers.dart';
-import '../leaderboard_screen.dart' show LeaderboardTile, leaderboardValueLabel;
+import '../leaderboard_screen.dart'
+    show LeaderboardTile, globalScoreBreakdown, globalScoreLabel;
 import 'create_clan_dialog.dart';
 import 'join_clan_dialog.dart';
 
-/// Tab 7 of `LeaderboardScreen` — a leaderboard scoped to whichever clan
-/// the user picks from their own memberships, ranked by whichever of the
-/// six existing [LeaderboardMetric]s they pick. Membership itself
-/// (`myClansProvider`) is read live so the clan picker updates instantly
-/// after create/join/leave; the ranking (`clanRankingProvider`) is a
-/// one-shot fetch refreshed on re-entry rather than N realtime listeners
-/// — see the "Sistem Clan/Host" plan for the full reasoning.
+/// Tab 2 of `LeaderboardScreen` — a leaderboard scoped to whichever clan
+/// the user picks from their own memberships, ranked by the same global
+/// score the main tab uses (it used to carry its own dropdown over six
+/// different metrics; one shared ranking is simpler for the students and
+/// teachers this is built for, and keeps both tabs telling the same story).
+/// Membership itself (`myClansProvider`) is read live so the clan picker
+/// updates instantly after create/join/leave; the ranking
+/// (`clanRankingProvider`) is a one-shot fetch refreshed on re-entry rather
+/// than N realtime listeners — see the "Sistem Clan/Host" plan for the full
+/// reasoning.
 class ClanTab extends ConsumerStatefulWidget {
   const ClanTab({super.key});
 
@@ -28,7 +31,6 @@ class ClanTab extends ConsumerStatefulWidget {
 
 class _ClanTabState extends ConsumerState<ClanTab> {
   String? _selectedCode;
-  LeaderboardMetric _selectedMetric = LeaderboardMetric.totalMastered;
 
   Future<void> _leaveClan(String code, String name) async {
     final s = ref.read(appStringsProvider);
@@ -140,31 +142,10 @@ class _ClanTabState extends ConsumerState<ClanTab> {
                 ],
               ),
             ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: DropdownButtonFormField<LeaderboardMetric>(
-                initialValue: _selectedMetric,
-                decoration: InputDecoration(
-                  labelText: s.sortByLabel,
-                  border: const OutlineInputBorder(),
-                  isDense: true,
-                ),
-                items: LeaderboardMetric.values
-                    .map(
-                      (m) => DropdownMenuItem(value: m, child: Text(m.label)),
-                    )
-                    .toList(),
-                onChanged: (value) {
-                  if (value != null) setState(() => _selectedMetric = value);
-                },
-              ),
-            ),
             const SizedBox(height: 12),
             Expanded(
               child: _ClanRanking(
                 code: activeCode,
-                metric: _selectedMetric,
                 strings: s,
                 onLeave: (name) => _leaveClan(activeCode, name),
               ),
@@ -234,13 +215,11 @@ class _NoClanState extends StatelessWidget {
 
 class _ClanRanking extends ConsumerWidget {
   final String code;
-  final LeaderboardMetric metric;
   final AppStrings strings;
   final void Function(String clanName) onLeave;
 
   const _ClanRanking({
     required this.code,
-    required this.metric,
     required this.strings,
     required this.onLeave,
   });
@@ -248,7 +227,7 @@ class _ClanRanking extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final clanAsync = ref.watch(clanDetailsProvider(code));
-    final rankingAsync = ref.watch(clanRankingProvider((code, metric)));
+    final rankingAsync = ref.watch(clanRankingProvider(code));
 
     return Column(
       children: [
@@ -325,7 +304,7 @@ class _ClanRanking extends ConsumerWidget {
             onRefresh: () async {
               await Future.wait([
                 ref.refresh(clanDetailsProvider(code).future),
-                ref.refresh(clanRankingProvider((code, metric)).future),
+                ref.refresh(clanRankingProvider(code).future),
               ]);
             },
             child: rankingAsync.when(
@@ -355,7 +334,8 @@ class _ClanRanking extends ConsumerWidget {
                   itemBuilder: (context, index) => LeaderboardTile(
                     rank: index + 1,
                     entry: entries[index],
-                    valueLabel: leaderboardValueLabel(metric, entries[index], strings),
+                    valueLabel: globalScoreLabel(entries[index], strings),
+                    subtitle: globalScoreBreakdown(entries[index], strings),
                     isHost: entries[index].uid == hostUid,
                   ),
                 );

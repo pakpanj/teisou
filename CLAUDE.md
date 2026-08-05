@@ -6195,3 +6195,107 @@ explaining the format. The Kaiwa set is the more urgent half: on
 `KaiwaDialogueScreen` the image is the *only* thing an NPC turn shows —
 the line is deliberately never written on screen, only spoken — so
 without it a learner has no visual cue at all.
+
+## Update (2026-08-04): Leaderboard collapsed from 7 tabs to 2 — "Skor
+Global" + "Clan"
+
+The user's read on the leaderboard was blunt: the tab bar was a "picker
+yang bejibun" (an overloaded picker). Seven scrollable tabs — Kana
+Dikuasai, Skor Ujian, four separate "Rekor" tabs, and Clan — asked a
+child to understand six different ranking systems before finding out
+where they stood. Replaced with two tabs: **Skor Global** and **Clan**.
+
+**Skor Global** ranks by one number: the four exam categories' Rekor
+averages **added together**, so 0-400 rather than 0-100. Three product
+decisions, all confirmed with the user before building rather than
+assumed:
+- **Summed, not averaged.** Summing rewards breadth — a learner scoring
+  decently across all four categories outranks one who only ever
+  attempts a single category perfectly. Averaging over four would also
+  have penalized everyone for **Choukai, which still ships with zero
+  content** (see the Ujian expansion note above): every user would carry
+  a permanent 25% dead weight for a category they cannot take.
+- **`totalMastered`/`examHighScore` dropped from the UI, not from the
+  data.** `ExamRepository.submitExam` still writes both, and
+  `updateTotalMastered`/`updateExamHighScoreIfHigher` are untouched — so
+  re-surfacing them later is a UI change, not a backfill. They're simply
+  no longer ranked on.
+- **The Clan tab's own metric dropdown is gone**, ranking by the same
+  global score. One shared ranking keeps both tabs telling the same
+  story, and a teacher comparing students no longer has to first pick
+  which of six yardsticks they meant.
+
+**`LeaderboardMetric` (and `LeaderboardMetricX`) were deleted outright**,
+not reduced to a single value — with one ranking left, every
+`family<..., LeaderboardMetric>` provider collapsed to a plain provider
+(`leaderboardTopProvider`, `selfRankProvider`) and
+`clanRankingProvider`'s key went from `(String, LeaderboardMetric)` to
+just `String`. `sortByMetric` became `sortByGlobalScore`; `rankOf` lost
+its metric parameter. `LeaderboardCategory` is untouched — it was always
+a different concept ("which exam type is this attempt", not "which tab
+is showing").
+
+**The `globalScore` field, and why a backfill exists.** Firestore can't
+`orderBy` a computed sum of four fields — the same constraint that
+already forced `{category}RecordAvg` to be stored alongside its own
+sum/count. So `globalScore` is denormalized onto `leaderboard/{uid}`,
+written inside `updateCategoryRecord`'s **existing transaction** (it
+already reads the doc to compute the running average, so the sort key
+can never lag the averages it's built from).
+
+That leaves every pre-existing doc without the field — and Firestore's
+`orderBy` **silently omits documents missing the sorted field**, so
+without repair every current user would vanish from the ranking until
+their next exam. `LeaderboardRepository.backfillGlobalScore` fixes this
+lazily: `selfLeaderboardEntryProvider` calls it on load, so simply
+opening the leaderboard heals your own row. It's best-effort
+(try/catch — a failed backfill must not take down a screen whose data
+loaded fine) and no-ops once in sync, costing one write per user, once.
+
+**Gotcha this pass had to design around, worth remembering for any
+future denormalized sort key**: `LeaderboardEntry.globalScore` is
+`double?`, not `double`, specifically so *absent* stays distinguishable
+from *stored 0*. A user whose only activity is kana mastery has a real
+global score of 0 and no `globalScore` field at all; with the field
+defaulted to 0, the backfill's `stored != computed` test would call them
+already-in-sync and leave them permanently unrankable. There's a
+regression test for exactly this
+(`test/leaderboard_global_score_test.dart`, "an absent stored sort key is
+distinguishable from a stored zero"), alongside ones asserting the sum is
+genuinely the four records added up, and that "never attempted" ("Belum
+ada") stays distinct from a genuine 0-point score.
+
+**Display**: every *displayed* number comes from the computed getter
+`LeaderboardEntry.computedGlobalScore`, never the stored copy — so a row
+reads correctly even before its backfill has run. Only the *ordering*
+depends on the stored field. Each ranked row now shows a breakdown line
+("Kana 80 · Dokkai 70 · Choukai 0 · Kanji 60") in place of the old
+"last updated" date, which said little on a leaderboard and cost the one
+line now spent making the total legible as an accumulation. Scores are
+rounded to whole points; ties are harmless here and decimals read badly
+for this app's audience.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 82/82 (the file
+was renamed `leaderboard_metric_label_test.dart` ->
+`leaderboard_global_score_test.dart` to match what it now covers),
+`flutter build apk --debug` succeeded.
+
+**Verified on-device (Moto G52J)** — including, usefully, the backfill
+path against a *real* pre-existing doc: the test account's row had no
+`globalScore` field at all, and after opening the leaderboard it appeared
+correctly in the ranked list at "142 poin" with the breakdown "Kana 0 ·
+Dokkai 0 · Choukai 50 · Kanji 92" (50 + 92 = 142). Two tabs render, the
+self-header shows rank + total + breakdown, and the explainer line reads
+"Skor Global = Rekor Kana + Dokkai + Choukai + Kanji-Kombinasi".
+
+**One verification gap, deliberately left**: the Clan tab's *ranking*
+list wasn't exercised, only its empty state ("Belum punya clan"), since
+the test account is in no clan and creating one writes a permanent
+`clans/{code}` document to the live Firestore project that "leave clan"
+does not delete — not worth leaving orphaned test data behind for this.
+The risk is low: the clan ranking renders through the exact same
+`LeaderboardTile` + `globalScoreLabel`/`globalScoreBreakdown` path
+already confirmed working on the Skor Global tab, and the only other
+change there was dropping the metric dropdown and re-keying
+`clanRankingProvider` from `(String, LeaderboardMetric)` to `String`.
+Still worth a look next time a clan exists on a test device.

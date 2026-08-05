@@ -23,6 +23,22 @@ class LeaderboardEntry {
   final double kanjiComboRecordSum;
   final int kanjiComboRecordCount;
   final double kanjiComboRecordAvg;
+
+  /// Denormalized copy of [computedGlobalScore], stored purely so Firestore
+  /// can `orderBy` it — the same reason `{category}RecordAvg` is stored
+  /// alongside its own sum/count. Never read for *display*: use
+  /// [computedGlobalScore] there, since a doc written before this field
+  /// existed (or by an older client) carries a stale value while its four
+  /// per-category averages are always current.
+  ///
+  /// Null specifically means *absent from the document*, which is not the
+  /// same as a stored 0: Firestore's `orderBy` omits docs missing the field
+  /// entirely, so "absent" is the state [LeaderboardRepository.
+  /// backfillGlobalScore] has to repair. Collapsing it to 0 would leave a
+  /// genuinely-zero-scoring user permanently invisible in the ranking,
+  /// since their stored-vs-computed comparison would look already in sync.
+  final double? globalScore;
+
   final DateTime updatedAt;
 
   LeaderboardEntry({
@@ -45,6 +61,7 @@ class LeaderboardEntry {
     this.kanjiComboRecordSum = 0,
     this.kanjiComboRecordCount = 0,
     this.kanjiComboRecordAvg = 0,
+    this.globalScore,
     required this.updatedAt,
   });
 
@@ -69,6 +86,7 @@ class LeaderboardEntry {
       kanjiComboRecordSum: (map['kanjiComboRecordSum'] as num?)?.toDouble() ?? 0,
       kanjiComboRecordCount: (map['kanjiComboRecordCount'] as num?)?.toInt() ?? 0,
       kanjiComboRecordAvg: (map['kanjiComboRecordAvg'] as num?)?.toDouble() ?? 0,
+      globalScore: (map['globalScore'] as num?)?.toDouble(),
       updatedAt: _toDateTime(map['updatedAt']) ?? DateTime.now(),
     );
   }
@@ -92,8 +110,29 @@ class LeaderboardEntry {
         'kanjiComboRecordSum': kanjiComboRecordSum,
         'kanjiComboRecordCount': kanjiComboRecordCount,
         'kanjiComboRecordAvg': kanjiComboRecordAvg,
+        'globalScore': globalScore ?? computedGlobalScore,
         'updatedAt': Timestamp.fromDate(updatedAt),
       };
+
+  /// The single number the leaderboard ranks by: every exam category's
+  /// "Rekor" average added together, so 0-400 rather than 0-100. Summing
+  /// (instead of averaging) is deliberate — it rewards breadth, since a
+  /// learner who scores decently across all four categories outranks one
+  /// who only ever attempts a single category perfectly. A never-attempted
+  /// category contributes 0, which is also why this isn't averaged over
+  /// four: Choukai currently ships with no content at all, so dividing by
+  /// four would penalize every user for a category they can't even take.
+  double get computedGlobalScore =>
+      kanaRecordAvg + dokkaiRecordAvg + choukaiRecordAvg + kanjiComboRecordAvg;
+
+  /// True once at least one exam category has been attempted — lets the UI
+  /// distinguish "genuinely scored 0" from "hasn't started", which a bare
+  /// 0.0 [computedGlobalScore] can't.
+  bool get hasAnyRecord =>
+      kanaRecordCount > 0 ||
+      dokkaiRecordCount > 0 ||
+      choukaiRecordCount > 0 ||
+      kanjiComboRecordCount > 0;
 
   /// Sum/count/avg accessors keyed by [LeaderboardCategory] — used by
   /// [LeaderboardRepository.updateCategoryRecord] (read the previous

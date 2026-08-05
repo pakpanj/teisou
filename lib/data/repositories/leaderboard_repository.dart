@@ -4,61 +4,11 @@ import '../../core/firebase/firestore_paths.dart';
 import '../models/leaderboard_entry.dart';
 import '../models/user_profile.dart' show AvatarType, AvatarTypeX;
 
-enum LeaderboardMetric {
-  totalMastered,
-  examHighScore,
-  kanaRecord,
-  dokkaiRecord,
-  choukaiRecord,
-  kanjiComboRecord,
-}
-
-extension LeaderboardMetricX on LeaderboardMetric {
-  String get field {
-    switch (this) {
-      case LeaderboardMetric.totalMastered:
-        return 'totalMastered';
-      case LeaderboardMetric.examHighScore:
-        return 'examHighScore';
-      case LeaderboardMetric.kanaRecord:
-        return 'kanaRecordAvg';
-      case LeaderboardMetric.dokkaiRecord:
-        return 'dokkaiRecordAvg';
-      case LeaderboardMetric.choukaiRecord:
-        return 'choukaiRecordAvg';
-      case LeaderboardMetric.kanjiComboRecord:
-        return 'kanjiComboRecordAvg';
-    }
-  }
-
-  /// Human-readable label — used by the Clan tab's metric picker dropdown
-  /// (`LeaderboardScreen`'s own tabs still spell these out directly as
-  /// `Tab(text: ...)`, so this getter isn't a duplicate of those, just a
-  /// reusable source for anywhere else a metric needs a display name).
-  String get label {
-    switch (this) {
-      case LeaderboardMetric.totalMastered:
-        return 'Kana Dikuasai';
-      case LeaderboardMetric.examHighScore:
-        return 'Skor Ujian';
-      case LeaderboardMetric.kanaRecord:
-        return 'Rekor Kana';
-      case LeaderboardMetric.dokkaiRecord:
-        return 'Rekor Dokkai';
-      case LeaderboardMetric.choukaiRecord:
-        return 'Rekor Choukai';
-      case LeaderboardMetric.kanjiComboRecord:
-        return 'Rekor Kanji-Kombinasi';
-    }
-  }
-}
-
 /// The four exam categories that each earn their own "Rekor" (average
 /// score-percentage across every attempt) — see [LeaderboardRepository.
-/// updateCategoryRecord]. Kept separate from [LeaderboardMetric] since a
-/// metric is a *leaderboard tab selector* (includes non-exam metrics like
-/// `totalMastered`) while a category is specifically "which exam type is
-/// this attempt for".
+/// updateCategoryRecord]. Their four averages are what
+/// [LeaderboardEntry.computedGlobalScore] sums into the single ranking
+/// number the leaderboard shows.
 enum LeaderboardCategory { kana, dokkai, choukai, kanjiCombo }
 
 extension LeaderboardCategoryX on LeaderboardCategory {
@@ -87,12 +37,15 @@ class LeaderboardRepository {
   CollectionReference<Map<String, dynamic>> get _collection =>
       _firestore.collection(FirestorePaths.leaderboard);
 
-  Stream<List<LeaderboardEntry>> watchTop(
-    LeaderboardMetric metric, {
-    int limit = 20,
-  }) {
+  /// Field name of the denormalized sort key. Only the *ordering* comes from
+  /// this stored copy; every displayed number is recomputed client-side via
+  /// [LeaderboardEntry.computedGlobalScore] — see [backfillGlobalScore] for
+  /// how docs predating the field get pulled back into the ranking.
+  static const globalScoreField = 'globalScore';
+
+  Stream<List<LeaderboardEntry>> watchTop({int limit = 20}) {
     return _collection
-        .orderBy(metric.field, descending: true)
+        .orderBy(globalScoreField, descending: true)
         .limit(limit)
         .snapshots()
         .map(
@@ -136,46 +89,58 @@ class LeaderboardRepository {
     return results;
   }
 
-  /// Sorts a pre-fetched list of entries by [metric], descending — reuses
-  /// [_valueFor] so the metric-to-field mapping stays one source of truth
-  /// whether the ranking comes from a live Firestore `orderBy` (`watchTop`)
-  /// or a locally-assembled list (e.g. a clan's combined roster).
-  List<LeaderboardEntry> sortByMetric(
-    List<LeaderboardEntry> entries,
-    LeaderboardMetric metric,
-  ) {
+  /// Sorts a pre-fetched list by global score, descending — for rankings
+  /// assembled locally rather than by Firestore's own `orderBy` (a clan's
+  /// combined roster). Sorts on [LeaderboardEntry.computedGlobalScore], not
+  /// the stored copy, so a member whose doc predates the field still ranks
+  /// correctly here even before [backfillGlobalScore] has run for them.
+  List<LeaderboardEntry> sortByGlobalScore(List<LeaderboardEntry> entries) {
     final sorted = List<LeaderboardEntry>.from(entries);
     sorted.sort(
-      (a, b) => _valueFor(b, metric).compareTo(_valueFor(a, metric)),
+      (a, b) => b.computedGlobalScore.compareTo(a.computedGlobalScore),
     );
     return sorted;
   }
 
-  num _valueFor(LeaderboardEntry entry, LeaderboardMetric metric) {
-    switch (metric) {
-      case LeaderboardMetric.totalMastered:
-        return entry.totalMastered;
-      case LeaderboardMetric.examHighScore:
-        return entry.examHighScore;
-      case LeaderboardMetric.kanaRecord:
-        return entry.kanaRecordAvg;
-      case LeaderboardMetric.dokkaiRecord:
-        return entry.dokkaiRecordAvg;
-      case LeaderboardMetric.choukaiRecord:
-        return entry.choukaiRecordAvg;
-      case LeaderboardMetric.kanjiComboRecord:
-        return entry.kanjiComboRecordAvg;
-    }
+  /// Ranks an already-fetched [entry] (1-based). Takes the entry rather than
+  /// a uid so the caller can reuse the single [getSelf] read the screen's
+  /// header already does, leaving only the count query below.
+  Future<int> rankOf(LeaderboardEntry entry) async {
+    final higher = await _collection
+        .where(globalScoreField, isGreaterThan: entry.computedGlobalScore)
+        .count()
+        .get();
+    return (higher.count ?? 0) + 1;
   }
 
-  /// Ranks [uid] within [metric]'s ordering (1-based). Returns null if the
-  /// user has no leaderboard entry yet.
-  Future<int?> getRank(String uid, LeaderboardMetric metric) async {
-    final self = await getSelf(uid);
-    if (self == null) return null;
-    final value = _valueFor(self, metric);
-    final higher = await _collection.where(metric.field, isGreaterThan: value).count().get();
-    return (higher.count ?? 0) + 1;
+  /// Writes [globalScoreField] for [entry] when the stored copy is absent or
+  /// has drifted from the entry's real
+  /// [LeaderboardEntry.computedGlobalScore].
+  ///
+  /// Exists because Firestore's `orderBy` silently *omits* documents missing
+  /// the sorted field: every leaderboard doc written before this field
+  /// existed would vanish from the ranking entirely until its owner happened
+  /// to submit another exam. Rather than a one-off migration script (which
+  /// this project has no mechanism to run against live data), each user
+  /// self-heals the moment they open the leaderboard.
+  ///
+  /// The absent-vs-zero distinction matters: a user whose only activity is
+  /// kana mastery has a real score of 0 and a doc with no `globalScore` at
+  /// all, so a plain `stored != computed` test would call them in sync and
+  /// leave them permanently unrankable. Hence the explicit null check
+  /// rather than defaulting the stored value to 0.
+  ///
+  /// No-ops once in sync, so it costs one write per user, once — and nothing
+  /// at all for docs written by this version or later.
+  Future<void> backfillGlobalScore(LeaderboardEntry entry) async {
+    final stored = entry.globalScore;
+    if (stored != null &&
+        (stored - entry.computedGlobalScore).abs() < 0.001) {
+      return;
+    }
+    await _collection.doc(entry.uid).set({
+      globalScoreField: entry.computedGlobalScore,
+    }, SetOptions(merge: true));
   }
 
   /// Updates `totalMastered` for [uid] if [totalMastered] is higher than
@@ -234,9 +199,25 @@ class LeaderboardRepository {
   /// derived `avg` (the only field actually queried/sorted by, since
   /// Firestore can't `orderBy` a computed ratio of two fields) so the
   /// average can be recomputed here without re-reading the full attempt
-  /// history. Read-then-write like [updateTotalMastered]/
-  /// [updateExamHighScoreIfHigher] above — not transactional, same accepted
-  /// trade-off already made for those two.
+  /// history.
+  ///
+  /// Transactional, unlike [updateTotalMastered]/
+  /// [updateExamHighScoreIfHigher] above, because the failure mode is
+  /// genuinely worse here. Those two write a *maximum* — a lost update just
+  /// misses a record, and `totalMastered` self-heals anyway since the next
+  /// exam recomputes it from the authoritative progress map. This one
+  /// accumulates: a lost update permanently drops one attempt out of both
+  /// the sum and the count, so the average stays wrong forever with no
+  /// later write to correct it.
+  ///
+  /// The trade-off is that transactions need connectivity, so this now
+  /// fails offline where the old read-then-write would have queued. That's
+  /// the better failure: offline, the old path read a stale cached
+  /// sum/count and queued a write computed from it, silently corrupting the
+  /// average on sync. Failing outright loses the same single attempt
+  /// without poisoning the aggregate — and every caller already treats this
+  /// as a best-effort mirror wrapped in try/catch, with exam history (the
+  /// real source of truth) written separately beforehand.
   Future<void> updateCategoryRecord({
     required String uid,
     required String displayName,
@@ -246,19 +227,39 @@ class LeaderboardRepository {
     required LeaderboardCategory category,
     required double percentage,
   }) async {
-    final existing = await getSelf(uid);
-    final newSum = (existing?.recordSumFor(category) ?? 0.0) + percentage;
-    final newCount = (existing?.recordCountFor(category) ?? 0) + 1;
-    await _collection.doc(uid).set({
-      'displayName': displayName,
-      'photoUrl': photoUrl,
-      'avatarType': avatarType.key,
-      'avatarValue': avatarValue,
-      '${category.key}RecordSum': newSum,
-      '${category.key}RecordCount': newCount,
-      '${category.key}RecordAvg': newSum / newCount,
-      'updatedAt': FieldValue.serverTimestamp(),
-    }, SetOptions(merge: true));
+    final docRef = _collection.doc(uid);
+    await _firestore.runTransaction((transaction) async {
+      final snapshot = await transaction.get(docRef);
+      final data = snapshot.data();
+      final existing = data == null
+          ? null
+          : LeaderboardEntry.fromMap(snapshot.id, data);
+      final newSum = (existing?.recordSumFor(category) ?? 0.0) + percentage;
+      final newCount = (existing?.recordCountFor(category) ?? 0) + 1;
+      final newAvg = newSum / newCount;
+
+      // The global score is this category's fresh average plus the other
+      // three's existing ones — recomputed here (inside the same
+      // transaction that produced newAvg) rather than derived later, so the
+      // stored sort key can never lag the averages it's built from.
+      final newGlobalScore = LeaderboardCategory.values.fold<double>(
+        0,
+        (total, c) =>
+            total + (c == category ? newAvg : (existing?.recordAvgFor(c) ?? 0)),
+      );
+
+      transaction.set(docRef, {
+        'displayName': displayName,
+        'photoUrl': photoUrl,
+        'avatarType': avatarType.key,
+        'avatarValue': avatarValue,
+        '${category.key}RecordSum': newSum,
+        '${category.key}RecordCount': newCount,
+        '${category.key}RecordAvg': newAvg,
+        globalScoreField: newGlobalScore,
+        'updatedAt': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
+    });
   }
 
   /// Refreshes just the display metadata (name + avatar) for [uid] without

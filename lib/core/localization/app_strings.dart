@@ -365,11 +365,24 @@ class AppStrings {
 
   // --- Leaderboard ---
   String get leaderboardTitle => _t('Papan Peringkat', 'Leaderboard');
-  String get tabExamScore => _t('Skor Ujian', 'Exam Score');
-  String get tabKanaRecord => _t('Rekor Kana', 'Kana Record');
-  String get tabDokkaiRecord => _t('Rekor Dokkai', 'Dokkai Record');
-  String get tabChoukaiRecord => _t('Rekor Choukai', 'Choukai Record');
-  String get tabKanjiComboRecord => _t('Rekor Kanji-Kombinasi', 'Kanji Combo Record');
+  String get tabGlobalScore => _t('Skor Global', 'Global Score');
+  String get tabClan => _t('Clan', 'Clan');
+
+  /// Short labels for the four Rekor categories that make up the global
+  /// score — rendered as a compact breakdown line under each ranked name,
+  /// so the total is visibly "these four added up" rather than an opaque
+  /// number. Deliberately terser than the old tab labels ("Rekor Kana"),
+  /// which had a whole tab's width to breathe in.
+  String get scorePartKana => _t('Kana', 'Kana');
+  String get scorePartDokkai => _t('Dokkai', 'Dokkai');
+  String get scorePartChoukai => _t('Choukai', 'Choukai');
+  String get scorePartKanjiCombo => _t('Kanji', 'Kanji');
+
+  String globalScorePoints(String points) => _t('$points poin', '$points pts');
+  String get globalScoreExplainer => _t(
+        'Skor Global = Rekor Kana + Dokkai + Choukai + Kanji-Kombinasi',
+        'Global Score = Kana + Dokkai + Choukai + Kanji Combo records',
+      );
   String get noRankingData => _t('Belum ada data peringkat.', 'No ranking data yet.');
   String failedToLoadLeaderboard(Object e) =>
       _t('Gagal memuat papan peringkat: $e', 'Failed to load leaderboard: $e');
@@ -377,12 +390,11 @@ class AppStrings {
   String get notRankedYet => _t('Belum berperingkat', 'Not ranked yet');
   String get noRecordYet => _t('Belum ada', 'No record yet');
 
-  // --- Clan (Leaderboard tab 7) ---
+  // --- Clan (Leaderboard tab 2) ---
   String failedToLoadClan(Object e) =>
       _t('Gagal memuat clan: $e', 'Failed to load clan: $e');
   String get createClan => _t('Buat Clan', 'Create Clan');
   String get joinWithCode => _t('Gabung dengan Kode', 'Join with Code');
-  String get sortByLabel => _t('Urutkan berdasarkan', 'Sort by');
   String get noClanYetTitle => _t('Belum punya clan', "You don't have a clan yet");
   String get noClanYetBody => _t(
         'Buat clan untuk sekolah/kelasmu, atau gabung dengan kode dari guru/temanmu.',

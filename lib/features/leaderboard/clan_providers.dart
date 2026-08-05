@@ -4,7 +4,6 @@ import '../../core/providers.dart';
 import '../../data/models/clan.dart';
 import '../../data/models/clan_membership.dart';
 import '../../data/models/leaderboard_entry.dart';
-import '../../data/repositories/leaderboard_repository.dart';
 
 /// Live — one user's own clan memberships, small enough to keep streaming
 /// so the "pilih clan" picker updates instantly after create/join/leave.
@@ -22,17 +21,13 @@ final clanDetailsProvider = FutureProvider.family<Clan?, String>((ref, code) {
 });
 
 /// Combines a clan's full member roster with whatever leaderboard data
-/// exists for each member, ranked by [metric]. Every roster member always
-/// appears — even a student with zero attempts and no `leaderboard/{uid}`
-/// doc at all — because the whole point of this feature is letting a
-/// teacher see every student, not just the ones who've already scored
-/// something.
-final clanRankingProvider = FutureProvider.family<
-    List<LeaderboardEntry>, (String code, LeaderboardMetric metric)>((
-  ref,
-  params,
-) async {
-  final (code, metric) = params;
+/// exists for each member, ranked by the same global score the main
+/// leaderboard uses. Every roster member always appears — even a student
+/// with zero attempts and no `leaderboard/{uid}` doc at all — because the
+/// whole point of this feature is letting a teacher see every student, not
+/// just the ones who've already scored something.
+final clanRankingProvider =
+    FutureProvider.family<List<LeaderboardEntry>, String>((ref, code) async {
   final clanRepository = ref.watch(clanRepositoryProvider);
   final leaderboardRepository = ref.watch(leaderboardRepositoryProvider);
 
@@ -60,5 +55,5 @@ final clanRankingProvider = FutureProvider.family<
       )
       .toList();
 
-  return leaderboardRepository.sortByMetric(combined, metric);
+  return leaderboardRepository.sortByGlobalScore(combined);
 });
