@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:kana_master/core/services/ad_service.dart';
@@ -39,6 +41,55 @@ void main() {
         reason: 'banner, interstitial and rewarded each need their own unit; '
             'reusing one across formats breaks reporting and can breach '
             'AdMob policy');
+  });
+
+  group('app ids', () {
+    // The account behind this publisher id also holds an unrelated app
+    // called Cash Teisou, and AdMob lists all four rows (two apps x two
+    // platforms) together. Pasting the wrong row is the easy mistake, and
+    // it is invisible: ads simply attribute to the other app.
+    const publisher = 'ca-app-pub-7168330620893919';
+    const androidAppId = '$publisher~3107201564';
+    const iosAppId = '$publisher~8289431398';
+
+    String manifest() =>
+        File('android/app/src/main/AndroidManifest.xml').readAsStringSync();
+    String infoPlist() => File('ios/Runner/Info.plist').readAsStringSync();
+
+    test('Android carries its own real app id', () {
+      expect(manifest(), contains(androidAppId));
+      expect(manifest().contains(iosAppId), isFalse,
+          reason: 'that is the iOS app id — the two are different apps');
+    });
+
+    test('iOS carries its own real app id', () {
+      expect(infoPlist(), contains(iosAppId));
+      expect(infoPlist().contains(androidAppId), isFalse,
+          reason: 'that is the Android app id — the two are different apps');
+    });
+
+    test('neither platform still ships the test app id', () {
+      // Google's sample publisher. Leaving it in place means real ad units
+      // would be requested under an app id that is not yours.
+      const testPublisher = 'ca-app-pub-3940256099942544';
+      expect(manifest().contains('$testPublisher~'), isFalse);
+      expect(infoPlist().contains('$testPublisher~'), isFalse);
+    });
+
+    test('once real, ad units must belong to the same publisher', () {
+      // Inert while the test units are in place, and self-arming the day
+      // they are replaced: a unit id from another AdMob account, or from
+      // Cash Teisou's app, would earn into the wrong place silently.
+      if (AdService.usingTestAdUnits) return;
+      for (final id in [
+        AdService.bannerAdUnitId,
+        AdService.interstitialAdUnitId,
+        AdService.rewardedAdUnitId,
+      ]) {
+        expect(id.startsWith('$publisher/'), isTrue,
+            reason: '"$id" does not belong to this publisher');
+      }
+    });
   });
 
   test('test inventory is still flagged as such', () {

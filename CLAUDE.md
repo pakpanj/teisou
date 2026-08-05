@@ -3604,10 +3604,22 @@ what the on-device pass actually verified), `flutter build apk
   notes below for what's already been chased down vs. still unverified.
 - `lib/firebase_options.dart` has real Firebase project values now (Batch
   3), but **AdMob is still entirely on Google's public test inventory**.
-  Eight values have to be replaced before release, and they live in three
-  places: the app id in `AndroidManifest.xml` and in
-  `ios/Runner/Info.plist` (`GADApplicationIdentifier`), and three unit ids
-  per platform in `lib/core/services/ad_service.dart`.
+  **The two app ids are real as of 2026-08-05** —
+  `ca-app-pub-7168330620893919~3107201564` (Android, in
+  `AndroidManifest.xml`) and `...~8289431398` (iOS, in
+  `ios/Runner/Info.plist`). The **six unit ids** in
+  `lib/core/services/ad_service.dart` are still Google's test ones, and
+  should stay that way until release: firing real units during
+  development counts as invalid traffic and can get the account
+  suspended.
+  **The same AdMob account also holds an unrelated app called Cash
+  Teisou**, so the console lists four rows — two apps x two platforms —
+  and pasting the wrong one is both easy and invisible, since ads simply
+  attribute elsewhere. `test/ad_service_config_test.dart` reads the
+  manifest and the plist directly and fails if either carries the other
+  platform's id or the test publisher's, and it has a check that stays
+  inert until real unit ids land and then asserts they share the
+  publisher id above.
   `AdService.usingTestAdUnits` exists so a release check can assert on it
   instead of relying on someone re-reading the file;
   `test/ad_service_config_test.dart` also pins the id format, because an

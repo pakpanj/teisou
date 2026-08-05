@@ -63,15 +63,19 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<!-- AdMob. Required: google_mobile_ads throws on initialize() if this
-	     key is missing, so a build without it crashes at startup rather
-	     than merely showing no ads. This is Google's public *test* app id,
-	     matching the placeholder in AndroidManifest.xml — replace both with
-	     the real ids from the AdMob console before release. Note the id
-	     here uses a tilde, while ad *unit* ids in ad_service.dart use a
-	     slash; they are different things and are not interchangeable. -->
+	<!-- Real AdMob App ID for "Teisou Kana Master" (iOS). Required:
+	     google_mobile_ads throws on initialize() if this key is missing, so
+	     a build without it crashes at startup rather than merely showing no
+	     ads.
+
+	     This is a *different* id from the Android one in
+	     AndroidManifest.xml — AdMob treats each platform as its own app —
+	     and the same account also holds an unrelated app called Cash
+	     Teisou, so check both the platform and the app name before pasting.
+	     Note the tilde: ad *unit* ids use a slash and are not the same
+	     thing. -->
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<string>ca-app-pub-7168330620893919~8289431398</string>
 	<!-- SKAdNetworkItems is deliberately absent. It affects install
 	     attribution, not whether ads serve, and the buyer list is long,
 	     changes over time, and must be copied verbatim from Google's own

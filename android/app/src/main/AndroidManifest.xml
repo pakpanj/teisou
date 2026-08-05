@@ -48,11 +48,19 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <!-- AdMob test App ID (Google's public sample) — replace with the
-             real AdMob App ID before release. -->
+        <!-- Real AdMob App ID for "Teisou Kana Master" (Android). The iOS
+             app is a *different* app in the console with its own id, in
+             ios/Runner/Info.plist — this account also holds an unrelated
+             app called Cash Teisou, so check the platform and the app name
+             before pasting anything here.
+
+             Ad *unit* ids in ad_service.dart are still Google's test ones,
+             and should stay that way until release: real units fired during
+             development count as invalid traffic and can get the account
+             suspended. -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-7168330620893919~3107201564" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
