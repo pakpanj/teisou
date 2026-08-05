@@ -83,7 +83,7 @@ class _ClipCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      clip.title,
+                      clip.localizedTitle(strings.language),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

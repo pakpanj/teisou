@@ -1,3 +1,4 @@
+import 'app_language.dart';
 import 'jlpt_level.dart';
 
 class ChoukaiQuestion {
@@ -35,6 +36,12 @@ class ChoukaiClip {
   final JlptLevel jlptLevel;
   final String audioText;
   final String audioTranslation;
+
+  /// English renderings of [title]/[audioTranslation]. The script itself
+  /// ([audioText]) is Japanese and needs no translating — same split as
+  /// [DokkaiPassage]'s titleEn/passageTranslationEn.
+  final String? titleEn;
+  final String? audioTranslationEn;
   final List<ChoukaiQuestion> questions;
 
   ChoukaiClip({
@@ -44,7 +51,17 @@ class ChoukaiClip {
     required this.audioText,
     required this.audioTranslation,
     required this.questions,
+    this.titleEn,
+    this.audioTranslationEn,
   });
+
+  String localizedTitle(AppLanguage language) => _pick(language, title, titleEn);
+
+  String localizedAudioTranslation(AppLanguage language) =>
+      _pick(language, audioTranslation, audioTranslationEn);
+
+  static String _pick(AppLanguage language, String id, String? en) =>
+      language == AppLanguage.english && en != null && en.isNotEmpty ? en : id;
 
   factory ChoukaiClip.fromJson(Map<String, dynamic> json) => ChoukaiClip(
         id: json['id'] as String,
@@ -52,6 +69,8 @@ class ChoukaiClip {
         jlptLevel: JlptLevelX.fromKey(json['jlptLevel'] as String?),
         audioText: json['audioText'] as String,
         audioTranslation: json['audioTranslation'] as String,
+        titleEn: json['titleEn'] as String?,
+        audioTranslationEn: json['audioTranslationEn'] as String?,
         questions: (json['questions'] as List)
             .map((e) => ChoukaiQuestion.fromJson(e as Map<String, dynamic>))
             .toList(),

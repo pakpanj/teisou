@@ -4,6 +4,8 @@ import 'package:kana_master/data/models/app_language.dart';
 import 'package:kana_master/data/models/jlpt_level.dart';
 import 'package:kana_master/data/models/speech_register.dart';
 import 'package:kana_master/data/repositories/bunpou_repository.dart';
+import 'package:kana_master/data/repositories/choukai_repository.dart';
+import 'package:kana_master/data/repositories/dokkai_repository.dart';
 import 'package:kana_master/data/repositories/dictionary_repository.dart';
 import 'package:kana_master/data/repositories/kaiwa_category_repository.dart';
 import 'package:kana_master/data/repositories/kanji_repository.dart';
@@ -350,5 +352,80 @@ void main() {
         kaiwaCategories.firstWhere((c) => c.id == 'perkenalan');
     expect(perkenalan.localizedName(AppLanguage.indonesian), 'Perkenalan');
     expect(perkenalan.localizedName(AppLanguage.english), 'Introductions');
+  });
+
+  // Choukai and Dokkai were the two modules this file never covered, and
+  // that gap cost real work: `generate_dokkai_seed.py` rewrites
+  // `dokkai_data.json` from scratch, so a regeneration silently dropped
+  // all 1,000 already-authored English fields, and nothing failed. They
+  // were absent from the shipped asset until an on-device pass happened
+  // to show an English screen wrapped around an Indonesian passage title.
+  // Re-run `apply_dokkai_meaning_en.py` / `apply_choukai_meaning_en.py`
+  // after any regeneration; these tests make forgetting loud.
+  test('every Dokkai passage has an English title and translation', () async {
+    final passages = await DokkaiRepository().getAll();
+    expect(passages, isNotEmpty);
+
+    final missing = <String>[];
+    for (final p in passages) {
+      if ((p.titleEn ?? '').trim().isEmpty) missing.add('${p.id}|title');
+      if ((p.passageTranslationEn ?? '').trim().isEmpty) {
+        missing.add('${p.id}|passageTranslation');
+      }
+    }
+    expect(missing, isEmpty,
+        reason: '${missing.length} field(s) lost — run '
+            'python scripts/apply_dokkai_meaning_en.py');
+
+    final first = passages.firstWhere((p) => p.id == 'dokkai_surat_sahabat_pena');
+    expect(first.localizedTitle(AppLanguage.indonesian), 'Surat dari Sahabat Pena');
+    expect(first.localizedTitle(AppLanguage.english), 'A Letter from a Pen Pal');
+  });
+
+  test('every Choukai clip has an English title and script translation',
+      () async {
+    final clips = await ChoukaiRepository().getAll();
+    expect(clips, isNotEmpty);
+
+    final missing = <String>[];
+    for (final c in clips) {
+      if ((c.titleEn ?? '').trim().isEmpty) missing.add('${c.id}|title');
+      if ((c.audioTranslationEn ?? '').trim().isEmpty) {
+        missing.add('${c.id}|audioTranslation');
+      }
+    }
+    expect(missing, isEmpty,
+        reason: '${missing.length} field(s) lost — run '
+            'python scripts/apply_choukai_meaning_en.py');
+
+    final first = clips.firstWhere((c) => c.id == 'choukai_n5_jam_berapa');
+    expect(first.localizedTitle(AppLanguage.indonesian), 'Jam Berapa Sekarang');
+    expect(first.localizedTitle(AppLanguage.english), 'What Time Is It Now');
+  });
+
+  test('no Indonesian is left inside a Choukai or Dokkai English field',
+      () async {
+    // A field can be present and still be a copy-paste of the Indonesian.
+    // These words do not occur in ordinary English prose.
+    final indonesian = RegExp(
+      r'\b(yang|dengan|untuk|tidak|adalah|karena|sudah|akan|dari|pada|'
+      r'saya|kami|mereka|bisa|harus|lebih|juga)\b',
+      caseSensitive: false,
+    );
+
+    final leaks = <String>[];
+    for (final c in await ChoukaiRepository().getAll()) {
+      if (indonesian.hasMatch(c.titleEn ?? '')) leaks.add('${c.id}|title');
+      if (indonesian.hasMatch(c.audioTranslationEn ?? '')) {
+        leaks.add('${c.id}|audioTranslation');
+      }
+    }
+    for (final p in await DokkaiRepository().getAll()) {
+      if (indonesian.hasMatch(p.titleEn ?? '')) leaks.add('${p.id}|title');
+      if (indonesian.hasMatch(p.passageTranslationEn ?? '')) {
+        leaks.add('${p.id}|passageTranslation');
+      }
+    }
+    expect(leaks, isEmpty, reason: 'Indonesian text in an English field');
   });
 }

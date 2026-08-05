@@ -69,9 +69,10 @@ class ChoukaiExamScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: Text(clip.title)),
+      appBar: AppBar(title: Text(clip.localizedTitle(s.language))),
       body: McQuizFlow(
         totalQuestions: clip.questions.length,
         headerBuilder: (context, index) => _AudioHeader(
@@ -158,7 +159,7 @@ class _ScriptReview extends StatelessWidget {
           Text(clip.audioText, style: TextStyle(color: context.palette.textNavy)),
           const SizedBox(height: 8),
           Text(
-            clip.audioTranslation,
+            clip.localizedAudioTranslation(strings.language),
             style: TextStyle(color: context.palette.textNavy.withValues(alpha: 0.6)),
           ),
         ],

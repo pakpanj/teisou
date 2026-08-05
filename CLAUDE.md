@@ -4015,20 +4015,36 @@ what the on-device pass actually verified), `flutter build apk
   bookmarks from `KanjiDetailScreen`/`KotobaDetailScreen`) — the write
   works, there's just no browse UI yet. Don't confuse this with
   `savedWords` (Cam Detector's list, which *does* have a screen).
-- **Choukai and Dokkai content has no English at all** (found 2026-08-05
-  during an on-device pass, after the UI-chrome i18n fix below). This is
-  authoring debt, not a bug: `ChoukaiClip` has no English fields on the
-  model whatsoever (150 clips — title, `audioText` translation), and
-  `DokkaiPassage` *has* `titleEn`/`passageTranslationEn` but **0 of 500**
-  passages populate either. So an English user browsing Choukai sees
-  English chrome ("30 clips", "Tap to play / replay") wrapped around an
-  Indonesian clip title. `test/content_localization_test.dart` covers
-  Kanji, Kotoba, the dictionary, Particle, Bunpou and Kaiwa — Choukai and
-  Dokkai were never added to it, which is why nothing flagged this.
-  Closing it means authoring 150 + 500 English strings, plus adding the
-  two fields to `ChoukaiClip` and its generator; do it as a content pass,
-  and extend `content_localization_test.dart` at the same time so it
-  cannot regress.
+- **Choukai and Dokkai English content — found missing 2026-08-05, now
+  closed.** Worth reading because the two halves had completely different
+  causes and only one was what it looked like.
+  **Dokkai was never authoring debt** — an initial reading of this said
+  500 passages needed writing, which was wrong. All 1,000 English fields
+  had been authored long before, in `scripts/dokkai_meaning_en.py`; they
+  were absent from `dokkai_data.json` purely because
+  `generate_dokkai_seed.py` rewrites that file from scratch and
+  `apply_dokkai_meaning_en.py` was never re-run afterwards. This is
+  exactly the regeneration gotcha already documented for Bunpou, and it
+  had silently wiped a finished 1,000-field rollout. One command fixed
+  it. **Before concluding a translation set was never written, grep
+  `scripts/` for a `*_meaning_en.py` — the work may already exist and
+  simply not be applied.**
+  Choukai was the real gap: `ChoukaiClip` had no English fields at all.
+  Added `titleEn`/`audioTranslationEn` + `localizedTitle` /
+  `localizedAudioTranslation` mirroring `DokkaiPassage`, wired the two
+  screens to them, and authored all 300 fields (150 titles + 150 script
+  translations) in `scripts/choukai_meaning_en.py` with
+  `apply_choukai_meaning_en.py` to match the established pair-of-scripts
+  pattern. Translated from the Japanese `audioText`, not from the
+  Indonesian, since going through a second language compounds drift.
+  `audioText` itself, and every question and option, stay Japanese —
+  that is the material being tested.
+  `test/content_localization_test.dart` now covers both modules with
+  three tests: every field present (naming the exact apply script to
+  re-run), the Indonesian/English toggle resolving correctly, and no
+  Indonesian left sitting inside an English field. That last one guards
+  the failure the first two miss — a field that is populated but is a
+  copy-paste of the Indonesian.
 
 ## Verifying changes
 
@@ -4207,6 +4223,17 @@ entire time they were broken:
    them, because `Text(` and its literal usually sit on different lines —
    read each file whole. The same sweep is what surfaced the
    Choukai/Dokkai content-translation gap noted above.
+
+**Writing a regex into a Dart file through a shell heredoc will silently
+corrupt it.** The `\b` word boundaries in the check above went in as
+literal 0x08 backspace *bytes*, not the two characters `\` + `b`. The
+pattern then printed completely normally in debug output (backspace is
+invisible), compiled without complaint, and simply never matched — the
+test passed against data that had a deliberate defect injected into it,
+which is the one failure mode a regression test must not have. It took
+dumping the file's actual bytes to find. If a test seems not to fire on
+a defect you know is present, check for non-printing characters in the
+pattern before doubting the data.
 
 `test/dokkai_content_integrity_test.dart` was added in the same pass:
 Dokkai ships 500 passages and, unlike Choukai and Kaiwa, had no
