@@ -4015,6 +4015,20 @@ what the on-device pass actually verified), `flutter build apk
   bookmarks from `KanjiDetailScreen`/`KotobaDetailScreen`) — the write
   works, there's just no browse UI yet. Don't confuse this with
   `savedWords` (Cam Detector's list, which *does* have a screen).
+- **Choukai and Dokkai content has no English at all** (found 2026-08-05
+  during an on-device pass, after the UI-chrome i18n fix below). This is
+  authoring debt, not a bug: `ChoukaiClip` has no English fields on the
+  model whatsoever (150 clips — title, `audioText` translation), and
+  `DokkaiPassage` *has* `titleEn`/`passageTranslationEn` but **0 of 500**
+  passages populate either. So an English user browsing Choukai sees
+  English chrome ("30 clips", "Tap to play / replay") wrapped around an
+  Indonesian clip title. `test/content_localization_test.dart` covers
+  Kanji, Kotoba, the dictionary, Particle, Bunpou and Kaiwa — Choukai and
+  Dokkai were never added to it, which is why nothing flagged this.
+  Closing it means authoring 150 + 500 English strings, plus adding the
+  two fields to `ChoukaiClip` and its generator; do it as a content pass,
+  and extend `content_localization_test.dart` at the same time so it
+  cannot regress.
 
 ## Verifying changes
 
@@ -4150,6 +4164,58 @@ physical-device logcat capture before assuming a keep rule is
 unnecessary — a clean `flutter build apk --release` is not sufficient
 proof by itself; (3) above built and installed fine and only showed up
 as a runtime failure.
+
+**Two whole classes of bug that no local check catches.** Both were
+found on 2026-08-05 by reading source rather than by running anything,
+and both had been green in `flutter analyze` and the full test suite the
+entire time they were broken:
+
+1. **Japanese speech outliving its screen.** `ttsServiceProvider` is a
+   plain `Provider`, so one TTS engine is shared app-wide, and no screen
+   stopped it on navigation — a sentence started on a detail screen kept
+   playing over the home screen, over the next chapter, and over a
+   Choukai listening-exam result (Choukai ends with
+   `AppNavigator.replaceFadeScale`, so finishing mid-clip swapped the
+   screen and kept talking). Pressing home left the phone reading
+   Japanese aloud with the app off screen. Eleven screens speak and four
+   are `ConsumerWidget`s with no `dispose()`, so this is fixed once at
+   the navigator — `TtsStopObserver`
+   (`lib/core/navigation/tts_stop_observer.dart`) on
+   push/pop/replace/remove, plus a `WidgetsBindingObserver` on the app
+   root for backgrounding. **Verified on the Moto G52J** by sampling
+   `adb shell dumpsys audio` for a live `AudioPlaybackConfiguration` with
+   `CONTENT_TYPE_SPEECH`: still speaking at +1.5s and +6.5s on a long N1
+   clip (so the audio had not simply ended), silent 1.2s after back, and
+   silent 1.5s after the home key. If you add a twelfth speaking screen,
+   it needs no `stop()` call of its own — but do not route navigation
+   around `Navigator` in a way the observer never sees.
+2. **Hardcoded Indonesian in the English build.** An i18n audit closed
+   every gap and verified zero remained; Choukai, Dokkai, Kanji Combo,
+   the flashcard screen, the stroke-order animator and the cover picker
+   each introduced fresh ones afterwards, and nothing failed. 30 literals
+   were routed through `AppStrings`. Note the four *false* positives a
+   naive grep produces, so nobody "fixes" them again:
+   `bab_gate_quiz_generator` and `kanji_combo_repository` already take
+   localized text by injection, `clan_repository`'s Indonesian strings
+   are `StateError` messages the dialogs never surface, and
+   `FramePreset.label` is not rendered anywhere. Cover labels got a
+   `labelEn` + `labelFor(language)` pair beside their art id rather than
+   19 decorative getters in a bundle documented as UI chrome only.
+   `test/no_hardcoded_ui_strings_test.dart` now scans `lib/` for literals
+   in text-rendering slots and fails with file, line and string.
+   **Scanner gotcha worth keeping**: a per-line regex misses most of
+   them, because `Text(` and its literal usually sit on different lines —
+   read each file whole. The same sweep is what surfaced the
+   Choukai/Dokkai content-translation gap noted above.
+
+`test/dokkai_content_integrity_test.dart` was added in the same pass:
+Dokkai ships 500 passages and, unlike Choukai and Kaiwa, had no
+integrity test at all, while `McQuizFlow` (shared by Dokkai, Choukai and
+Kanji Combo) trusts its inputs completely — a passage with no questions
+hands it `totalQuestions: 0`, and its first build indexes an empty list
+and divides by zero. All 500 are clean today; the test was verified by
+injecting a zero-question passage and an out-of-range `correctIndex`,
+both caught, then reverted via `git checkout`.
 
 ## Update (2026-08-02): "Bab" curriculum module (V1, 4 N5 chapters) +
 mascot becomes an active guide + Ujian tab pared down

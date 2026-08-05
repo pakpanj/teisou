@@ -20,9 +20,11 @@ class ModuleInfo {
 
 /// Static registry of learning modules. Hiragana/Katakana are already
 /// shipped; everything else is a "Segera Hadir" placeholder until its
-/// screen is built out. Choukai is deliberately NOT here — listening
-/// comprehension now lives as an exam type inside the Ujian tab instead of
-/// being its own standalone module (see lib/features/choukai/).
+/// screen is built out. Choukai is deliberately NOT here, but not for the
+/// reason this comment used to give: it does not live in the Ujian tab
+/// either. `ExamModePickerScreen` offers only Kana and Kanji; Choukai and
+/// Dokkai are practice material, so both are `_AvailableModuleCard`s under
+/// the Home tab's "Latihan" section (see `modules_section.dart`).
 const kComingSoonModules = <ModuleInfo>[
   ModuleInfo(
     id: 'picture_learning',
