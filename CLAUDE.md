@@ -3463,6 +3463,45 @@ what the on-device pass actually verified), `flutter build apk
   selesai", N4-N1 grey with a padlock and a "Terkunci" badge, and
   tapping a locked level showing "Selesaikan semua bab N5 dulu untuk
   membuka level ini." without navigating.
+- **The Bab gate quiz cannot be screenshotted** (2026-08-05, requested).
+  `MainActivity.kt` gained one hand-written `MethodChannel`
+  (`teisou/secure_screen`) that adds and clears Android's
+  `FLAG_SECURE`; `SecureScreenService` +
+  `SecureScreenMixin` (`lib/core/services/secure_screen_service.dart`)
+  drive it, and `_BabGateQuizScreenState` mixes the latter in. Only that
+  one screen is protected: it is the quiz whose answers decide whether
+  the next chapter opens, and its questions come from a small fixed pool
+  per chapter, so a shared screenshot is genuinely reusable in a way a
+  practice screen's is not.
+  Written as a channel rather than a plugin deliberately — it needs two
+  lines of Android API, and every native dependency this project has
+  added cost it an R8 keep-rule hunt or a `compileOnly` surprise.
+  **The service is reference counted**, which is the whole design: a
+  screen that just set the flag on and cleared it on dispose would
+  unlock the window early as soon as two protected screens overlap.
+  `release()` also refuses to go below zero, so a double dispose cannot
+  wedge the counter negative and leave protection permanently off.
+  Every platform call is best-effort — a screen must never fail to open,
+  or fail to close, because a window flag would not move.
+  **Android only, and honestly so.** iOS has no equivalent window flag;
+  the usual trick there fires *after* the capture, so implementing it
+  would look like protection without being any. Left unprotected rather
+  than faked.
+  Verified on the Moto G52J, both exit paths: `adb shell screencap`
+  during the quiz produced a **0-byte** file, backing out produced
+  183,591 bytes, and completing the quiz — which exits through
+  `AppNavigator.replaceFadeScale`, replacing the route rather than
+  popping it — produced 69,300 bytes on the result screen. The flag is
+  released either way. `test/secure_screen_service_test.dart` pins the
+  counter behaviour, including the failure that would be worst and
+  quietest: the flag left *on* after the quiz closes, making the rest of
+  the app uncapturable and surfacing weeks later as an unrelated bug.
+  **Not verified: a release (R8) build.** The debug build compiled,
+  installed and ran the Kotlin on-device, so the channel itself is
+  proven, but minification has not been exercised over it. Nothing here
+  is reflective and `MainActivity` is kept via the manifest, so no keep
+  rule should be needed — let Codemagic's release build confirm that
+  rather than assuming it.
 - **The public profile's curriculum counters had no reconciliation**
   (found and fixed 2026-08-05, reported from a device). The public
   profile showed "Belum mulai kurikulum" while the learner's own Profile

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
+import '../../core/services/secure_screen_service.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/leaderboard_entry.dart';
@@ -38,7 +39,19 @@ class BabGateQuizScreen extends ConsumerStatefulWidget {
   ConsumerState<BabGateQuizScreen> createState() => _BabGateQuizScreenState();
 }
 
-class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen> {
+/// Screenshots and screen recording are blocked for as long as this screen
+/// is alive ([SecureScreenMixin]). This is the one quiz in the app whose
+/// answers decide whether the next chapter opens, so a captured question
+/// sheet is worth more than a captured practice screen — and the questions
+/// are generated from a small, fixed pool per chapter, which makes a shared
+/// screenshot genuinely reusable.
+///
+/// The mixin releases in `dispose`, and every exit from here goes through
+/// it: `AppNavigator.replaceFadeScale` to the result screen tears this
+/// route down, and so does backing out. Nothing needs to remember to
+/// unlock.
+class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
+    with SecureScreenMixin {
   List<GateQuestion>? _questions;
 
   /// Publishes the learner's curriculum progress to their public
