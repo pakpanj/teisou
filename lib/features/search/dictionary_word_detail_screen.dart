@@ -112,10 +112,21 @@ class _KanjiChip extends ConsumerWidget {
 
   const _KanjiChip({required this.character});
 
+  // Cached per character, the same way `KanjiGlyph` caches its parsed
+  // strokes. Building the future inside `build` handed `FutureBuilder` a
+  // new one on every rebuild, which reset `snapshot.data` to null for a
+  // frame — the chip greyed out and stopped responding to taps each time
+  // an ancestor rebuilt, even though the lookup itself is an in-memory
+  // hit after the repository's first load.
+  static final Map<String, Future<KanjiEntry?>> _lookupCache = {};
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FutureBuilder<KanjiEntry?>(
-      future: ref.read(kanjiRepositoryProvider).findByCharacter(character),
+      future: _lookupCache.putIfAbsent(
+        character,
+        () => ref.read(kanjiRepositoryProvider).findByCharacter(character),
+      ),
       builder: (context, snapshot) {
         final found = snapshot.data;
         final tappable = found != null;
