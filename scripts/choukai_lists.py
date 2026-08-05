@@ -112,6 +112,16 @@ N3_TITLES = [
     "Menanyakan Syarat Pendaftaran",
     "Kesulitan Mengatur Waktu",
     "Menyampaikan Pesan dari Orang Lain",
+    "Memilih Kursus Tambahan",
+    "Menjelaskan Keterlambatan Proyek",
+    "Menawar Sewa Ruangan",
+    "Kebiasaan Belajar yang Berubah",
+    "Menanggapi Undangan Reuni",
+    "Memilih Alat Transportasi",
+    "Menjelaskan Aturan Asrama",
+    "Membicarakan Pekerjaan Impian",
+    "Mengurus Paket Salah Kirim",
+    "Diskusi Jam Tidur",
 ]
 
 N2_TITLES = [
@@ -135,6 +145,16 @@ N2_TITLES = [
     "Wawancara Petani Lokal",
     "Perubahan Sistem Antrean",
     "Diskusi Anggaran Tahunan",
+    "Evaluasi Sistem Absensi",
+    "Menanggapi Usulan Karyawan",
+    "Laporan Uji Coba Produk",
+    "Diskusi Beban Kerja",
+    "Pengumuman Perubahan Tarif",
+    "Wawancara Pemilik Toko Lama",
+    "Kebijakan Ruang Merokok",
+    "Menjelaskan Hasil Audit",
+    "Perdebatan Jam Kerja Fleksibel",
+    "Laporan Kepadatan Wisata",
 ]
 
 N1_TITLES = [
@@ -158,6 +178,16 @@ N1_TITLES = [
     "Diskusi Kesehatan Masyarakat",
     "Ceramah tentang Seni Kontemporer",
     "Analisis Kebijakan Transportasi",
+    "Kuliah tentang Kepercayaan Publik",
+    "Debat Kebebasan Berekspresi",
+    "Analisis Pasar Tenaga Kerja",
+    "Wawancara Arsiparis",
+    "Ceramah tentang Waktu dan Ingatan",
+    "Diskusi Otonomi Daerah",
+    "Kajian Perilaku Kerumunan",
+    "Perdebatan Nilai Kerja",
+    "Ceramah tentang Penerjemahan",
+    "Analisis Kesenjangan Digital",
 ]
 
 for _name, _titles in [
