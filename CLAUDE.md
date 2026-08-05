@@ -3607,13 +3607,15 @@ what the on-device pass actually verified), `flutter build apk
   **Both app ids are real as of 2026-08-05** —
   `ca-app-pub-7168330620893919~3107201564` (Android, in
   `AndroidManifest.xml`) and `...~8289431398` (iOS, in
-  `ios/Runner/Info.plist`). **Android's three unit ids are real too**
-  (created 2026-08-05): banner `.../9469429932`, interstitial
-  `.../1043044924`, rewarded `.../3809909145`. **iOS still has no
-  units** — the app is registered in AdMob but empty — so an iOS release
-  right now would serve demo ads and earn nothing.
-  `test/ad_service_config_test.dart` asserts that state outright, so its
-  failure is the reminder when real iOS units land.
+  `ios/Runner/Info.plist`), and so are **all six unit ids** (created
+  2026-08-05). Android: banner `.../9469429932`, interstitial
+  `.../1043044924`, rewarded `.../3809909145`. iOS: banner
+  `.../1590939911`, interstitial `.../5119121389`, rewarded
+  `.../3939122841`. AdMob treats each platform as its own app, so the two
+  sets are entirely different and a unit used on the wrong platform never
+  fills — silently, with no error. `test/ad_service_config_test.dart`
+  checks all six belong to this publisher, that no unit is shared across
+  formats, and that the two platforms share none.
   Which set is used is **not** a constant anyone has to remember to swap:
   `AdService._live` picks by `kReleaseMode`, so debug and profile builds
   always request Google's test inventory and only a release build touches

@@ -40,27 +40,33 @@ void main() {
             '${AdService.releaseAdUnitIds}');
   });
 
-  test('Android release units belong to this publisher', () {
-    for (final slot in ['banner', 'interstitial', 'rewarded']) {
-      final id = AdService.releaseAdUnitIds['android/$slot']!;
+  test('every release unit belongs to this publisher, on both platforms',
+      () {
+    // Both platforms went live 2026-08-05. A unit belonging to another
+    // AdMob account — or to the Cash Teisou app that shares this one —
+    // would still serve ads, just into the wrong place, so nothing about
+    // the running app would look wrong.
+    AdService.releaseAdUnitIds.forEach((slot, id) {
       expect(id.startsWith('$publisher/'), isTrue,
-          reason: 'android/$slot is "$id" — a unit from another AdMob '
-              'account, or from the Cash Teisou app, would earn into the '
-              'wrong place silently');
-    }
+          reason: '$slot is "$id", which is not this publisher — a leftover '
+              'test id looks like this too');
+    });
   });
 
-  test('iOS release units are still Google test inventory', () {
-    // Stated rather than hidden: the iOS app exists in AdMob but has no
-    // units yet, so an iOS release right now would serve demo ads and earn
-    // nothing. When the real units land, update this test in the same
-    // commit — its failure is the reminder.
-    for (final slot in ['banner', 'interstitial', 'rewarded']) {
-      final id = AdService.releaseAdUnitIds['ios/$slot']!;
-      expect(id.startsWith('$testPublisher/'), isTrue,
-          reason: 'if this fails, real iOS units have landed — good; move '
-              'the assertion over to the publisher check above');
-    }
+  test('the two platforms share no unit', () {
+    // The failure this guards against is silent: AdMob returns no ad for a
+    // wrong-platform unit rather than an error, so the only symptom is one
+    // platform quietly earning nothing.
+    Set<String> unitsFor(String platform) => {
+          for (final e in AdService.releaseAdUnitIds.entries)
+            if (e.key.startsWith('$platform/')) e.value,
+        };
+
+    final android = unitsFor('android');
+    final ios = unitsFor('ios');
+    expect(android.length, 3);
+    expect(ios.length, 3);
+    expect(android.intersection(ios), isEmpty);
   });
 
   test('development builds never request real inventory', () {
@@ -80,34 +86,11 @@ void main() {
     }
   });
 
-  test('every ad unit id is well formed', () {
-    // AdMob unit ids are `ca-app-pub-<16 digits>/<10 digits>`. The app id
-    // uses a tilde instead of the slash and is a different thing entirely —
-    // pasting one where the other belongs is an easy and silent mistake.
-    final unitId = RegExp(r'^ca-app-pub-\d{16}/\d{10}$');
-
-    for (final id in [
-      AdService.bannerAdUnitId,
-      AdService.interstitialAdUnitId,
-      AdService.rewardedAdUnitId,
-    ]) {
-      expect(unitId.hasMatch(id), isTrue,
-          reason: '"$id" is not a valid ad unit id — an app id (with ~) or a '
-              'truncated paste would look like this');
-    }
-  });
-
-  test('the three formats do not share a unit', () {
-    final ids = {
-      AdService.bannerAdUnitId,
-      AdService.interstitialAdUnitId,
-      AdService.rewardedAdUnitId,
-    };
-    expect(ids.length, 3,
-        reason: 'banner, interstitial and rewarded each need their own unit; '
-            'reusing one across formats breaks reporting and can breach '
-            'AdMob policy');
-  });
+  // The same three checks against the ids this build actually resolves are
+  // deliberately absent: in a test run those are Google's own test units,
+  // so asserting they are well formed and distinct tests Google's
+  // constants rather than this app's configuration. What matters here is
+  // the release set above, plus the debug/release switch just checked.
 
   group('app ids', () {
     // The account behind this publisher id also holds an unrelated app
@@ -142,13 +125,10 @@ void main() {
 
   });
 
-  test('test inventory is still flagged as such', () {
-    // Not an assertion that test ids are correct to ship — the opposite.
-    // This is the hook a release check can hang on, so shipping Google's
-    // demo ads to real users fails loudly instead of quietly earning zero.
-    expect(AdService.usingTestAdUnits, isTrue,
-        reason: 'if this now fails, real ad units have landed — good, but '
-            'update this test and the release checklist in CLAUDE.md '
-            'together so the flag keeps meaning something');
-  });
+  // `usingTestAdUnits` used to be asserted here as a "have the real ids
+  // landed yet" flag. Both platforms are live now and the ids no longer
+  // depend on anyone swapping a constant, so that meaning is gone — what
+  // the flag reports today is simply which build this is, which
+  // 'development builds never request real inventory' above already covers
+  // from the angle that matters.
 }

@@ -39,13 +39,13 @@ class AdService {
       'ca-app-pub-7168330620893919/1043044924';
   static const _liveAndroidRewarded = 'ca-app-pub-7168330620893919/3809909145';
 
-  // iOS units do not exist yet — the app is registered in AdMob but has no
-  // units. Test ids stand in, which means an iOS *release* would earn
-  // nothing; `test/ad_service_config_test.dart` states that outright so it
-  // cannot be forgotten quietly.
-  static const _liveIosBanner = _testIosBanner;
-  static const _liveIosInterstitial = _testIosInterstitial;
-  static const _liveIosRewarded = _testIosRewarded;
+  // Real units, created 2026-08-05 under app id
+  // ca-app-pub-7168330620893919~8289431398 ("Teisou Kana Master", iOS).
+  // Different ids from Android's above: AdMob treats each platform as its
+  // own app, and a unit from the wrong one silently never fills.
+  static const _liveIosBanner = 'ca-app-pub-7168330620893919/1590939911';
+  static const _liveIosInterstitial = 'ca-app-pub-7168330620893919/5119121389';
+  static const _liveIosRewarded = 'ca-app-pub-7168330620893919/3939122841';
 
   /// The ids a release build would use, regardless of which build this is.
   ///
