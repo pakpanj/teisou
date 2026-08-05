@@ -4253,6 +4253,51 @@ what the on-device pass actually verified), `flutter build apk
   the failure the first two miss — a field that is populated but is a
   copy-paste of the Indonesian.
 
+## UI audit (2026-08-05)
+
+A pass over the whole app in both colour modes, on the Moto G52J. Two
+real bugs, both invisible in the mode a developer normally works in.
+
+**Dark mode was broken in 20 places, all hardcoded colours.** The pattern
+repeated three times: `Colors.grey.shade300` behind prev/next buttons on
+five screens (against a `textNavy` icon that is `#E8EAF0` in dark — a
+near-white icon on a near-white circle, so the buttons vanished),
+`Colors.grey.shade100` for locked cards on ten module screens (a glaring
+white block on the `#121620` background), and `Colors.red` for errors in
+the three clan widgets. The dark palette already carried a correct token
+for every one: `progressTrack`, `mutedSurface`, `errorRed`.
+`test/theme_consistency_test.dart` now sweeps `lib/` and names the
+file:line, allowing only white, black and transparent — the colours that
+carry no theme meaning. **Adding a colour literal to a screen is the one
+change this codebase cannot review by eye**, because it looks right in
+light mode; let the test catch it.
+
+**The app hung completely with no working connection.**
+`appStartupProvider` awaited `ensureUserProfile()` and
+`recordDailyActivity()`, both ending in a Firestore `set()`. A Firestore
+write's Future does not complete until it reaches the server — the write
+queues safely and syncs later, but awaiting it offline waits forever. So
+the provider never resolved and the thirty screens gated on it were stuck
+behind a spinner. Worst of all the settings menu, which lives inside the
+profile body: offline, the learner could not change theme or language,
+neither of which touches the network. Both calls are now started without
+being awaited, matching the rule every progress repository already
+follows. **Never `await` a Firestore write on a path that has to render
+something** — mirror writes here are best-effort by design.
+
+Verified clean in dark on device afterwards: Home, Bab (locked levels),
+Flashcard (nav buttons), the kana exam, Profile and the theme picker.
+No overflow anywhere, and no `maxLines` without an ellipsis.
+
+Two cosmetic items left, neither a bug:
+- `assets/mascot/` is empty, so `MascotWidget` is still an emoji in a
+  coloured circle. It appears on Home and throughout Bab, which makes it
+  the most visible remaining placeholder. Avatar, cover and frame art
+  have all been supplied since; only the mascot has not.
+- `AgeQuestionScreen` is the first thing a new user ever sees and carries
+  no branding at all — no logo, no mascot, just a form. Cold for a
+  children's app.
+
 ## Verifying changes
 
 **Content integrity now has real tests (2026-08-05): 48 → 65.** Almost
