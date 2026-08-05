@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/covers.dart';
+import '../../../data/models/app_language.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import 'profile_header_illustration.dart';
@@ -96,6 +97,7 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
                   final preset = CoverPresets.all[index - 1];
                   return _CoverTile(
                     preset: preset,
+                    language: s.language,
                     selected: selectedId == preset.id,
                     onTap: uid == null ? null : () => _select(uid, preset.id),
                   );
@@ -167,11 +169,17 @@ class _DefaultCoverTile extends StatelessWidget {
 }
 
 class _CoverTile extends StatelessWidget {
+  final AppLanguage language;
   final CoverPreset preset;
   final bool selected;
   final VoidCallback? onTap;
 
-  const _CoverTile({required this.preset, required this.selected, required this.onTap});
+  const _CoverTile({
+    required this.preset,
+    required this.language,
+    required this.selected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -206,7 +214,7 @@ class _CoverTile extends StatelessWidget {
                 left: 8,
                 bottom: 6,
                 child: Text(
-                  preset.label,
+                  preset.labelFor(language),
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w600,

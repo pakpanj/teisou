@@ -92,9 +92,10 @@ class DokkaiExamScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final items = _items;
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: Text('Dokkai · ${items.length} Soal')),
+      appBar: AppBar(title: Text(s.dokkaiSessionTitle(items.length))),
       body: McQuizFlow(
         totalQuestions: items.length,
         headerBuilder: (context, index) => _PassageHeader(

@@ -73,16 +73,19 @@ class KanjiComboExamScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final questionsAsync =
         ref.watch(kanjiComboQuestionsProvider((level, combination)));
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: context.palette.background,
       appBar: AppBar(
-        title: Text(combination ? 'Kombinasi Kanji ${level.key}' : 'Kanji Tunggal ${level.key}'),
+        title: Text(
+          '${combination ? s.examCategoryKanjiComboCombination : s.examCategoryKanjiComboSingle} ${level.key}',
+        ),
       ),
       body: questionsAsync.when(
         data: (questions) {
           if (questions.isEmpty) {
-            return const Center(child: Text('Soal tidak tersedia'));
+            return Center(child: Text(s.noQuestionsAvailable));
           }
           return McQuizFlow(
             totalQuestions: questions.length,
@@ -96,7 +99,7 @@ class KanjiComboExamScreen extends ConsumerWidget {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat soal: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadQuestions(e))),
       ),
     );
   }

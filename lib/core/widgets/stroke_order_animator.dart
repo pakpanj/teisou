@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../providers.dart';
 import '../services/kanjivg_parser.dart';
 import '../theme/app_palette.dart';
 
@@ -10,7 +12,7 @@ import '../theme/app_palette.dart';
 /// Falls back to a plain [character] display when [svgAssetPath] is null
 /// or fails to parse (missing asset, malformed SVG) — same fallback
 /// philosophy as `KanjiGlyph`.
-class StrokeOrderAnimator extends StatefulWidget {
+class StrokeOrderAnimator extends ConsumerStatefulWidget {
   final String character;
   final String? svgAssetPath;
   final double size;
@@ -23,10 +25,11 @@ class StrokeOrderAnimator extends StatefulWidget {
   });
 
   @override
-  State<StrokeOrderAnimator> createState() => _StrokeOrderAnimatorState();
+  ConsumerState<StrokeOrderAnimator> createState() =>
+      _StrokeOrderAnimatorState();
 }
 
-class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
+class _StrokeOrderAnimatorState extends ConsumerState<StrokeOrderAnimator>
     with SingleTickerProviderStateMixin {
   static const _msPerStroke = 500;
 
@@ -143,6 +146,7 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
 
   @override
   Widget build(BuildContext context) {
+    final s = ref.watch(appStringsProvider);
     if (_loading) {
       return SizedBox(
         width: widget.size,
@@ -197,7 +201,7 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
             IconButton(
               onPressed: _replay,
               icon: Icon(Icons.replay, color: context.palette.textNavy),
-              tooltip: 'Ulangi',
+              tooltip: s.replayStrokes,
             ),
             IconButton(
               onPressed: _showAllNumbered ? null : _togglePlayPause,
@@ -208,7 +212,7 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
                 color: context.palette.secondaryBlue,
                 size: 40,
               ),
-              tooltip: _controller.isAnimating ? 'Jeda' : 'Putar',
+              tooltip: _controller.isAnimating ? s.pauseStrokes : s.playStrokes,
             ),
             IconButton(
               onPressed: _toggleShowAllNumbered,
@@ -218,7 +222,7 @@ class _StrokeOrderAnimatorState extends State<StrokeOrderAnimator>
                     ? context.palette.secondaryBlue
                     : context.palette.textNavy,
               ),
-              tooltip: 'Tampilkan semua goresan bernomor',
+              tooltip: s.showAllStrokesNumbered,
             ),
           ],
         ),

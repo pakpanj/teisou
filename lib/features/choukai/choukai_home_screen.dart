@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/choukai_jlpt_level_info.dart';
 import '../../data/models/jlpt_level.dart';
@@ -18,6 +20,7 @@ class ChoukaiHomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final levelsAsync = ref.watch(choukaiLevelsProvider);
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: context.palette.background,
@@ -33,21 +36,21 @@ class ChoukaiHomeScreen extends ConsumerWidget {
           ],
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat level: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );
   }
 }
 
-class _LevelCard extends StatelessWidget {
+class _LevelCard extends ConsumerWidget {
   final ChoukaiJlptLevelInfo level;
 
   const _LevelCard({required this.level});
 
-  void _open(BuildContext context) {
+  void _open(BuildContext context, AppStrings s) {
     if (!level.available) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Choukai ${level.name} segera hadir!')),
+        SnackBar(content: Text(s.choukaiLevelComingSoon(level.name))),
       );
       return;
     }
@@ -61,7 +64,8 @@ class _LevelCard extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     final available = level.available;
 
     return Material(
@@ -69,7 +73,7 @@ class _LevelCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () => _open(context),
+        onTap: () => _open(context, s),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -97,7 +101,7 @@ class _LevelCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Choukai ${level.name}',
+                      s.choukaiLevelTitle(level.name),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -107,7 +111,7 @@ class _LevelCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     if (available)
                       Text(
-                        '${level.clipCount ?? 0} klip',
+                        s.clipCount(level.clipCount ?? 0),
                         style: TextStyle(
                           fontSize: 12,
                           color: context.palette.textNavy.withValues(alpha: 0.6),
@@ -121,7 +125,7 @@ class _LevelCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
-                          'Segera',
+                          s.soonBadge,
                           style: TextStyle(
                             fontSize: 9,
                             fontWeight: FontWeight.bold,

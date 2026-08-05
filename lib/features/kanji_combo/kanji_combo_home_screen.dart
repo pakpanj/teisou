@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/jlpt_level.dart';
 import 'kanji_combo_exam_screen.dart';
@@ -25,17 +27,24 @@ class _KanjiComboHomeScreenState extends ConsumerState<KanjiComboHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: const Text('Ujian Kanji')),
+      appBar: AppBar(title: Text(s.kanjiComboExamTitle)),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(20),
             child: SegmentedButton<bool>(
-              segments: const [
-                ButtonSegment(value: false, label: Text('Kanji Tunggal')),
-                ButtonSegment(value: true, label: Text('Kombinasi Kanji')),
+              segments: [
+                ButtonSegment(
+                  value: false,
+                  label: Text(s.examCategoryKanjiComboSingle),
+                ),
+                ButtonSegment(
+                  value: true,
+                  label: Text(s.examCategoryKanjiComboCombination),
+                ),
               ],
               selected: {_combination},
               onSelectionChanged: (selection) =>
@@ -65,10 +74,10 @@ class _LevelCard extends ConsumerWidget {
 
   const _LevelCard({required this.level, required this.combination});
 
-  void _open(BuildContext context, bool available) {
+  void _open(BuildContext context, AppStrings s, bool available) {
     if (!available) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${level.key} belum cukup data untuk mode ini.')),
+        SnackBar(content: Text(s.kanjiComboNotEnoughData(level.key))),
       );
       return;
     }
@@ -83,13 +92,14 @@ class _LevelCard extends ConsumerWidget {
     final availableAsync =
         ref.watch(kanjiComboAvailabilityProvider((level, combination)));
     final available = availableAsync.valueOrNull ?? false;
+    final s = ref.watch(appStringsProvider);
 
     return Material(
       color: available ? context.palette.cardWhite : Colors.grey.shade100,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () => _open(context, available),
+        onTap: () => _open(context, s, available),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -130,7 +140,7 @@ class _LevelCard extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    'Segera',
+                    s.soonBadge,
                     style: TextStyle(
                       fontSize: 9,
                       fontWeight: FontWeight.bold,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../data/models/app_language.dart';
+
 /// One selectable Profile-header cover/background. Real art is a bundled
 /// PNG at [assetPath] (filename must match [id], e.g. `sakura_dawn` ->
 /// `assets/covers/sakura_dawn.png`) — same "drop the file in, no mapping
@@ -9,15 +11,24 @@ import 'package:flutter/material.dart';
 class CoverPreset {
   final String id;
   final String label;
+
+  /// English name, shown by the picker when the app language is English.
+  /// Kept here beside the art id rather than as 19 decorative getters in
+  /// `AppStrings`, which is documented as UI chrome only.
+  final String labelEn;
   final String emoji;
   final Color background;
 
   const CoverPreset({
     required this.id,
     required this.label,
+    required this.labelEn,
     required this.emoji,
     required this.background,
   });
+
+  String labelFor(AppLanguage language) =>
+      language == AppLanguage.english ? labelEn : label;
 
   String get assetPath => 'assets/covers/$id.png';
 }
@@ -84,114 +95,133 @@ class CoverPresets {
     CoverPreset(
       id: 'sakura_dawn',
       label: 'Sakura Pagi',
+      labelEn: 'Sakura Dawn',
       emoji: '🌸',
       background: Color(0xFFFCE0B8),
     ),
     CoverPreset(
       id: 'autumn_leaves',
       label: 'Momiji Musim Gugur',
+      labelEn: 'Autumn Momiji',
       emoji: '🍁',
       background: Color(0xFFFBD995),
     ),
     CoverPreset(
       id: 'spring_meadow',
       label: 'Padang Bunga',
+      labelEn: 'Flower Meadow',
       emoji: '🌷',
       background: Color(0xFFD2ECFC),
     ),
     CoverPreset(
       id: 'coral_reef',
       label: 'Terumbu Karang',
+      labelEn: 'Coral Reef',
       emoji: '🐠',
       background: Color(0xFF44ADEB),
     ),
     CoverPreset(
       id: 'jungle_canopy',
       label: 'Rimba Tropis',
+      labelEn: 'Tropical Jungle',
       emoji: '🌴',
       background: Color(0xFFBCD37A),
     ),
     CoverPreset(
       id: 'starry_night',
       label: 'Malam Berbintang',
+      labelEn: 'Starry Night',
       emoji: '🌌',
       background: Color(0xFF091D5E),
     ),
     CoverPreset(
       id: 'sunflower_field',
       label: 'Ladang Bunga Matahari',
+      labelEn: 'Sunflower Field',
       emoji: '🌻',
       background: Color(0xFFA1D1F9),
     ),
     CoverPreset(
       id: 'enchanted_forest',
       label: 'Hutan Ajaib',
+      labelEn: 'Enchanted Forest',
       emoji: '🍄',
       background: Color(0xFF174C34),
     ),
     CoverPreset(
       id: 'magic_castle',
       label: 'Istana Sihir',
+      labelEn: 'Magic Castle',
       emoji: '🏰',
       background: Color(0xFF2A1B75),
     ),
     CoverPreset(
       id: 'zodiac_night',
       label: 'Malam Zodiak',
+      labelEn: 'Zodiac Night',
       emoji: '🔮',
       background: Color(0xFF081340),
     ),
     CoverPreset(
       id: 'art_studio',
       label: 'Studio Seni',
+      labelEn: 'Art Studio',
       emoji: '🎨',
       background: Color(0xFFFCEEDE),
     ),
     CoverPreset(
       id: 'pixel_game',
       label: 'Game Piksel',
+      labelEn: 'Pixel Game',
       emoji: '🎮',
       background: Color(0xFF1D195D),
     ),
     CoverPreset(
       id: 'sumi_ink',
       label: 'Tinta Sumi',
+      labelEn: 'Sumi Ink',
       emoji: '🖌️',
       background: Color(0xFFF2EBE5),
     ),
     CoverPreset(
       id: 'sacred_geometry',
       label: 'Geometri Sakral',
+      labelEn: 'Sacred Geometry',
       emoji: '🔯',
       background: Color(0xFF0D1543),
     ),
     CoverPreset(
       id: 'cyber_neon',
       label: 'Neon Siber',
+      labelEn: 'Cyber Neon',
       emoji: '💻',
       background: Color(0xFF070128),
     ),
     CoverPreset(
       id: 'library_books',
       label: 'Perpustakaan',
+      labelEn: 'Library',
       emoji: '📚',
       background: Color(0xFFFDEBCF),
     ),
     CoverPreset(
       id: 'cat_lover',
       label: 'Pencinta Kucing',
+      labelEn: 'Cat Lover',
       emoji: '🐱',
       background: Color(0xFFFDECD4),
     ),
     CoverPreset(
       id: 'steampunk_brass',
       label: 'Steampunk',
+      labelEn: 'Steampunk',
       emoji: '⚙️',
       background: Color(0xFFF4D6A9),
     ),
     CoverPreset(
       id: 'outer_space',
       label: 'Antariksa',
+      labelEn: 'Outer Space',
       emoji: '🚀',
       background: Color(0xFF120E50),
     ),

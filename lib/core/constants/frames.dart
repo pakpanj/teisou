@@ -67,9 +67,10 @@ class FrameOverlay extends StatelessWidget {
 ///
 /// [FramePreset.label] is not rendered anywhere today — `_FrameGrid` shows
 /// each frame as art only, and just the "no frame" tile carries text — so
-/// these are plain Indonesian strings rather than `AppStrings` lookups. If a
-/// label ever becomes visible, route it through `AppStrings` first; don't
-/// ship it as-is into the English UI.
+/// these stay plain Indonesian strings. If a label ever becomes visible,
+/// give [FramePreset] a `labelEn` + `labelFor(language)` pair the way
+/// [CoverPreset] does (its labels *are* rendered, and shipped untranslated
+/// into the English picker until that was added); don't ship these as-is.
 class FramePresets {
   FramePresets._();
 

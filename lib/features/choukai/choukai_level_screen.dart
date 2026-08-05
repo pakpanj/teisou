@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/choukai_clip.dart';
 import '../../data/models/jlpt_level.dart';
@@ -22,17 +24,18 @@ class ChoukaiLevelScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final clipsAsync = ref.watch(choukaiByLevelProvider(level));
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: Text('Choukai $levelName')),
+      appBar: AppBar(title: Text(s.choukaiLevelTitle(levelName))),
       body: clipsAsync.when(
         data: (clips) => clips.isEmpty
             ? Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32),
                   child: Text(
-                    'Klip untuk level ini belum tersedia.',
+                    s.noClipsForLevel,
                     textAlign: TextAlign.center,
                     style: TextStyle(color: context.palette.textNavy),
                   ),
@@ -42,13 +45,13 @@ class ChoukaiLevelScreen extends ConsumerWidget {
                 padding: const EdgeInsets.all(20),
                 children: [
                   for (final clip in clips) ...[
-                    _ClipCard(clip: clip),
+                    _ClipCard(clip: clip, strings: s),
                     const SizedBox(height: 12),
                   ],
                 ],
               ),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat klip: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadClips(e))),
       ),
     );
   }
@@ -56,8 +59,9 @@ class ChoukaiLevelScreen extends ConsumerWidget {
 
 class _ClipCard extends StatelessWidget {
   final ChoukaiClip clip;
+  final AppStrings strings;
 
-  const _ClipCard({required this.clip});
+  const _ClipCard({required this.clip, required this.strings});
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +92,7 @@ class _ClipCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${clip.questions.length} soal',
+                      strings.questionCount(clip.questions.length),
                       style: TextStyle(
                         fontSize: 12,
                         color: context.palette.textNavy.withValues(alpha: 0.6),

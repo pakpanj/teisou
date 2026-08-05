@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
@@ -61,7 +62,7 @@ class ChoukaiExamScreen extends ConsumerWidget {
       SimpleExamResultScreen(
         title: s.examResultTitle(s.examCategoryChoukai),
         result: result,
-        reviewContent: _ScriptReview(clip: clip),
+        reviewContent: _ScriptReview(clip: clip, strings: s),
       ),
     );
   }
@@ -93,6 +94,7 @@ class _AudioHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     return Column(
       children: [
         Material(
@@ -110,7 +112,7 @@ class _AudioHeader extends ConsumerWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          'Ketuk untuk memutar / mengulang',
+          s.tapToPlayAudio,
           style: TextStyle(
             fontSize: 12,
             color: context.palette.textNavy.withValues(alpha: 0.6),
@@ -132,8 +134,9 @@ class _AudioHeader extends ConsumerWidget {
 
 class _ScriptReview extends StatelessWidget {
   final ChoukaiClip clip;
+  final AppStrings strings;
 
-  const _ScriptReview({required this.clip});
+  const _ScriptReview({required this.clip, required this.strings});
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +151,7 @@ class _ScriptReview extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Naskah Audio',
+            strings.audioScriptTitle,
             style: TextStyle(fontWeight: FontWeight.bold, color: context.palette.textNavy),
           ),
           const SizedBox(height: 8),

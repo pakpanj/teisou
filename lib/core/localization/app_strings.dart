@@ -680,4 +680,71 @@ class AppStrings {
         'Belum ada soal yang bisa dibuat untuk bab ini.',
         'No questions could be generated for this chapter yet.',
       );
+
+  // --- Flashcard ---
+  String get kanaDataNotFound =>
+      _t('Data kana tidak ditemukan', 'Kana data not found');
+  String failedToLoadData(Object e) =>
+      _t('Gagal memuat data: $e', 'Failed to load data: $e');
+  String get tapCardForMeaning => _t(
+        'tekan kartu untuk melihat arti',
+        'tap the card to see its meaning',
+      );
+  String get wordExampleBadge => _t('Contoh Kata', 'Word Example');
+  String meaningIs(String meaning) =>
+      _t('Artinya: $meaning', 'Meaning: $meaning');
+  String get noWordExample =>
+      _t('Belum ada contoh kata', 'No word example yet');
+
+  // --- Kanji Combo (Ujian) ---
+  // The mode labels reuse [examCategoryKanjiComboSingle]/[...Combination]
+  // rather than declaring a second copy of the same two words, and the
+  // question prompts already live above as [kanjiComboReadingPrompt] /
+  // [kanjiComboCompoundPrompt].
+  String get kanjiComboExamTitle => _t('Ujian Kanji', 'Kanji Exam');
+  String kanjiComboNotEnoughData(String levelKey) => _t(
+        '$levelKey belum cukup data untuk mode ini.',
+        'Not enough $levelKey data for this mode yet.',
+      );
+
+  // --- Stroke order animator ---
+  String get replayStrokes => _t('Ulangi', 'Replay');
+  String get pauseStrokes => _t('Jeda', 'Pause');
+  String get playStrokes => _t('Putar', 'Play');
+  String get showAllStrokesNumbered => _t(
+        'Tampilkan semua goresan bernomor',
+        'Show all strokes, numbered',
+      );
+
+  // --- Choukai (listening) ---
+  String choukaiLevelComingSoon(String levelName) =>
+      _t('Choukai $levelName segera hadir!', 'Choukai $levelName coming soon!');
+  String choukaiLevelTitle(String levelName) => 'Choukai $levelName';
+  String failedToLoadClips(Object e) =>
+      _t('Gagal memuat klip: $e', 'Failed to load clips: $e');
+  String get noClipsForLevel => _t(
+        'Klip untuk level ini belum tersedia.',
+        'No clips available for this level yet.',
+      );
+  String clipCount(int n) => _t('$n klip', n == 1 ? '$n clip' : '$n clips');
+  String questionCount(int n) =>
+      _t('$n soal', n == 1 ? '$n question' : '$n questions');
+  String get tapToPlayAudio =>
+      _t('Ketuk untuk memutar / mengulang', 'Tap to play / replay');
+  String get audioScriptTitle => _t('Naskah Audio', 'Audio Script');
+
+  // --- Dokkai (reading) ---
+  String dokkaiLevelComingSoon(String levelName) =>
+      _t('Dokkai $levelName segera hadir!', 'Dokkai $levelName coming soon!');
+  String dokkaiLevelTitle(String levelName) => 'Dokkai $levelName';
+  String dokkaiSessionTitle(int questions) =>
+      _t('Dokkai · $questions Soal', 'Dokkai · $questions Questions');
+  String noPassagesForLevel(String levelName) => _t(
+        'Bacaan untuk Dokkai $levelName belum tersedia.',
+        'No reading passages available for Dokkai $levelName yet.',
+      );
+  String dokkaiLevelSubtitle(int passages, int questionsPerSession) => _t(
+        '$passages bacaan · $questionsPerSession soal acak setiap sesi',
+        '$passages passages · $questionsPerSession random questions per session',
+      );
 }

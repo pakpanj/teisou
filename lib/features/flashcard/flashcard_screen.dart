@@ -61,6 +61,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
   @override
   Widget build(BuildContext context) {
     final kanaListAsync = ref.watch(kanaListProvider(widget.type));
+    final s = ref.watch(appStringsProvider);
     final progressAsync = ref.watch(typeProgressProvider(widget.type));
 
     return Scaffold(
@@ -68,12 +69,12 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
 
       appBar: AppBar(
         backgroundColor: context.palette.background,
-        title: Text(_isHiragana ? 'Belajar Hiragana' : 'Belajar Katakana'),
+        title: Text(_isHiragana ? s.learnHiragana : s.learnKatakana),
       ),
       body: kanaListAsync.when(
         data: (list) {
           if (list.isEmpty) {
-            return const Center(child: Text('Data kana tidak ditemukan'));
+            return Center(child: Text(s.kanaDataNotFound));
           }
           return progressAsync.when(
             data: (progress) => _buildBody(list, progress),
@@ -82,7 +83,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat data: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadData(e))),
       ),
     );
   }
@@ -153,7 +154,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
           ),
         ),
         Text(
-          'tekan kartu untuk melihat arti',
+          ref.watch(appStringsProvider).tapCardForMeaning,
           style: TextStyle(color: context.palette.textNavy, fontSize: 13),
         ),
         const SizedBox(height: 16),
@@ -248,6 +249,7 @@ class _BackContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final example = kana.examples.isNotEmpty ? kana.examples.first : null;
+    final s = ref.watch(appStringsProvider);
 
     return Padding(
       padding: const EdgeInsets.all(24),
@@ -278,7 +280,7 @@ class _BackContent extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  'Contoh Kata',
+                  s.wordExampleBadge,
                   style: TextStyle(
                     color: accent,
                     fontWeight: FontWeight.bold,
@@ -298,7 +300,7 @@ class _BackContent extends ConsumerWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                'Artinya: ${example.meaning}',
+                s.meaningIs(example.meaning),
                 style: TextStyle(color: context.palette.textNavy),
               ),
               const SizedBox(height: 12),
@@ -308,7 +310,7 @@ class _BackContent extends ConsumerWidget {
               ),
             ] else
               Text(
-                'Belum ada contoh kata',
+                s.noWordExample,
                 style: TextStyle(color: context.palette.textNavy),
               ),
           ],

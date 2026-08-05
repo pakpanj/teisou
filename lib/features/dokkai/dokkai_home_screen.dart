@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/navigation/app_navigator.dart';
+import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/dokkai_jlpt_level_info.dart';
 import '../../data/models/jlpt_level.dart';
@@ -23,6 +24,7 @@ class DokkaiHomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final levelsAsync = ref.watch(dokkaiLevelsProvider);
+    final s = ref.watch(appStringsProvider);
 
     return Scaffold(
       backgroundColor: context.palette.background,
@@ -38,7 +40,7 @@ class DokkaiHomeScreen extends ConsumerWidget {
           ],
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Gagal memuat level: $e')),
+        error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );
   }
@@ -50,9 +52,10 @@ class _LevelCard extends ConsumerWidget {
   const _LevelCard({required this.level});
 
   Future<void> _open(BuildContext context, WidgetRef ref) async {
+    final s = ref.read(appStringsProvider);
     if (!level.available) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Dokkai ${level.name} segera hadir!')),
+        SnackBar(content: Text(s.dokkaiLevelComingSoon(level.name))),
       );
       return;
     }
@@ -63,7 +66,7 @@ class _LevelCard extends ConsumerWidget {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Bacaan untuk Dokkai ${level.name} belum tersedia.'),
+          content: Text(s.noPassagesForLevel(level.name)),
         ),
       );
       return;
@@ -83,6 +86,7 @@ class _LevelCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
     final available = level.available;
 
     return Material(
@@ -123,7 +127,7 @@ class _LevelCard extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Dokkai ${level.name}',
+                      s.dokkaiLevelTitle(level.name),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -135,7 +139,10 @@ class _LevelCard extends ConsumerWidget {
                     const SizedBox(height: 4),
                     if (available)
                       Text(
-                        '${level.passageCount ?? 0} bacaan · ${DokkaiExamScreen.sessionQuestionTarget} soal acak setiap sesi',
+                        s.dokkaiLevelSubtitle(
+                          level.passageCount ?? 0,
+                          DokkaiExamScreen.sessionQuestionTarget,
+                        ),
                         style: TextStyle(
                           fontSize: 12,
                           color: context.palette.textNavy.withValues(alpha: 0.6),
@@ -152,7 +159,7 @@ class _LevelCard extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
-                          'Segera',
+                          s.soonBadge,
                           style: TextStyle(
                             fontSize: 9,
                             fontWeight: FontWeight.bold,
