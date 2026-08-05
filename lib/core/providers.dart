@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/models/app_language.dart';
@@ -217,18 +220,45 @@ final kanjiComboExamHistoryRepositoryProvider = Provider<ExamHistoryRepository>(
     leaderboardRepository: ref.watch(leaderboardRepositoryProvider),
   ),
 );
-/// Ensures anonymous sign-in and the user profile doc exist. Screens should
-/// gate progress reads/writes on this resolving.
+/// Ensures anonymous sign-in, then starts the user's profile bookkeeping
+/// without waiting for it. Screens should gate progress reads/writes on this
+/// resolving.
+///
+/// **The bookkeeping is deliberately not awaited.** A Firestore write's
+/// Future does not complete until the write reaches the server, so with no
+/// connection it stays pending indefinitely — the write is safely queued and
+/// syncs later, but anything awaiting it hangs. Awaiting these two calls
+/// meant that offline this provider never resolved, and every screen gated
+/// on it spun forever. That included the entire settings menu, which lives
+/// inside the profile body, so an offline learner could not change the app's
+/// theme or language — neither of which needs a network at all. Found on a
+/// device whose wifi had no working DNS (2026-08-05).
+///
+/// Both calls are best-effort by nature, the same rule every progress
+/// repository here already follows: local state is the source of truth and
+/// Firestore is a mirror. Errors are logged rather than surfaced, because
+/// there is nothing a learner could do about a failed profile touch and it
+/// must not stop the app from opening.
 final appStartupProvider = FutureProvider<User>((ref) async {
   final auth = ref.watch(authServiceProvider);
   final user = await auth.ensureSignedIn();
   final progressRepository = ref.watch(progressRepositoryProvider);
-  await progressRepository.ensureUserProfile(
-    user.uid,
-    isAnonymous: user.isAnonymous,
-    displayName: user.displayName,
+
+  unawaited(
+    progressRepository
+        .ensureUserProfile(
+          user.uid,
+          isAnonymous: user.isAnonymous,
+          displayName: user.displayName,
+        )
+        .catchError((Object e) => debugPrint('ensureUserProfile failed: $e')),
   );
-  await progressRepository.recordDailyActivity(user.uid);
+  unawaited(
+    progressRepository
+        .recordDailyActivity(user.uid)
+        .catchError((Object e) => debugPrint('recordDailyActivity failed: $e')),
+  );
+
   return user;
 });
 
