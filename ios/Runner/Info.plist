@@ -63,6 +63,21 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<!-- AdMob. Required: google_mobile_ads throws on initialize() if this
+	     key is missing, so a build without it crashes at startup rather
+	     than merely showing no ads. This is Google's public *test* app id,
+	     matching the placeholder in AndroidManifest.xml — replace both with
+	     the real ids from the AdMob console before release. Note the id
+	     here uses a tilde, while ad *unit* ids in ad_service.dart use a
+	     slash; they are different things and are not interchangeable. -->
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<!-- SKAdNetworkItems is deliberately absent. It affects install
+	     attribution, not whether ads serve, and the buyer list is long,
+	     changes over time, and must be copied verbatim from Google's own
+	     AdMob iOS documentation — inventing entries from memory would be
+	     worse than leaving it out. Paste the current list here before
+	     release. -->
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
