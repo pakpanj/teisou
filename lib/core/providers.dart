@@ -10,6 +10,8 @@ import '../data/models/subscription.dart';
 import '../data/models/user_profile.dart';
 import '../data/repositories/language_repository.dart';
 import '../data/repositories/theme_repository.dart';
+import '../data/models/ad_audience.dart';
+import '../data/repositories/ad_audience_repository.dart';
 import '../data/repositories/bab_progress_repository.dart';
 import '../data/repositories/bab_repository.dart';
 import '../data/repositories/bunpou_level_repository.dart';
@@ -82,6 +84,17 @@ final themeModeProvider = StateProvider<AppThemeMode>(
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
 final ttsServiceProvider = Provider<TtsService>((ref) => TtsService());
 final adServiceProvider = Provider<AdService>((ref) => AdService());
+
+final adAudienceRepositoryProvider =
+    Provider<AdAudienceRepository>((ref) => AdAudienceRepository());
+
+/// The learner's stored age answer, or the unknown — and therefore
+/// restricted — state. Watched at the app root, which both shows the age
+/// question when it is missing and re-applies the AdMob configuration when
+/// it is answered.
+final adAudienceProvider = FutureProvider<AdAudience>((ref) {
+  return ref.watch(adAudienceRepositoryProvider).getAudience();
+});
 final babRepositoryProvider = Provider<BabRepository>(
   (ref) => BabRepository(),
 );

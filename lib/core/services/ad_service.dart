@@ -3,6 +3,8 @@ import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../../data/models/ad_audience.dart';
+
 /// Wraps google_mobile_ads: preloads/shows interstitial + rewarded ads and
 /// hands out banner ad instances. Callers must check `subscription.tier`
 /// themselves before loading/showing anything — this service doesn't know
@@ -64,6 +66,46 @@ class AdService {
   int _examsSinceLastInterstitial = 0;
 
   Future<void> initialize() => MobileAds.instance.initialize();
+
+  /// Tells AdMob how this learner may be served, before any ad is
+  /// requested.
+  ///
+  /// The app is mixed-audience — children and adults share one build — so
+  /// this is per-user rather than a build-time constant. [AdAudience]
+  /// answers restrictively while the age is still unknown, which is the
+  /// state every fresh install starts in and the state an ad can very
+  /// plausibly be requested in.
+  ///
+  /// Best-effort: failing to narrow the configuration must not stop the app
+  /// from working. It does mean ads would be served unrestricted, so the
+  /// failure is logged rather than swallowed silently — if this ever starts
+  /// failing in the field it needs to be seen.
+  Future<void> applyAudience(AdAudience audience, {DateTime? now}) async {
+    final at = now ?? DateTime.now();
+    final isChild = audience.isChildDirectedAt(at);
+    final isUnderConsentAge = audience.isUnderAgeOfConsentAt(at);
+
+    try {
+      await MobileAds.instance.updateRequestConfiguration(
+        RequestConfiguration(
+          tagForChildDirectedTreatment: isChild
+              ? TagForChildDirectedTreatment.yes
+              : TagForChildDirectedTreatment.no,
+          tagForUnderAgeOfConsent: isUnderConsentAge
+              ? TagForUnderAgeOfConsent.yes
+              : TagForUnderAgeOfConsent.no,
+          // Capped for anyone under the age of consent, not only for
+          // under-13s: a 14-year-old is not child-directed under COPPA but
+          // still should not be shown mature inventory in a school app.
+          maxAdContentRating: isUnderConsentAge
+              ? MaxAdContentRating.g
+              : MaxAdContentRating.pg,
+        ),
+      );
+    } catch (error) {
+      debugPrint('AdService.applyAudience failed: $error');
+    }
+  }
 
   /// Starts loading an interstitial in the background so it's ready by the
   /// time [maybeShowInterstitialAfterExam] wants to show it. Safe to call

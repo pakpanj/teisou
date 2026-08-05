@@ -3603,9 +3603,52 @@ what the on-device pass actually verified), `flutter build apk
   the known issues are actually fixed — see the OCR/camera-lifecycle
   notes below for what's already been chased down vs. still unverified.
 - `lib/firebase_options.dart` has real Firebase project values now (Batch
-  3), but AdMob uses Google's public **test** ad unit IDs
-  (`lib/core/services/ad_service.dart`, `AndroidManifest.xml`) — swap for
-  production IDs before release (Batch 12+).
+  3), but **AdMob is still entirely on Google's public test inventory**.
+  Eight values have to be replaced before release, and they live in three
+  places: the app id in `AndroidManifest.xml` and in
+  `ios/Runner/Info.plist` (`GADApplicationIdentifier`), and three unit ids
+  per platform in `lib/core/services/ad_service.dart`.
+  `AdService.usingTestAdUnits` exists so a release check can assert on it
+  instead of relying on someone re-reading the file;
+  `test/ad_service_config_test.dart` also pins the id format, because an
+  app id (tilde) pasted where a unit id (slash) belongs fails silently.
+  Two things fixed while preparing this (2026-08-05):
+  - **Unit ids are now chosen per platform.** They were one shared set.
+    AdMob issues a separate unit per format per platform and a wrong-platform
+    unit does not error, it just never fills — so real ids would have left
+    iOS earning nothing with no error to point at.
+  - **iOS had no AdMob configuration at all.** Missing
+    `GADApplicationIdentifier` does not merely disable ads:
+    `google_mobile_ads` throws during `initialize()`, so an iOS build
+    would have crashed at launch. `SKAdNetworkItems` is still absent on
+    purpose — it affects install attribution rather than serving, and its
+    buyer list must be copied verbatim from Google's docs rather than
+    reconstructed from memory.
+- **The app is mixed-audience, and AdMob is told so per user** (2026-08-05,
+  explicit product decision — children and adults share one build).
+  `AdAudience` (`lib/data/models/ad_audience.dart`) turns a stored birth
+  year into the two flags AdMob wants, and `AdService.applyAudience` sets
+  them via `RequestConfiguration` from `_AudienceGate` in `main.dart` —
+  one place, before the home screen and therefore before any ad request.
+  The design rests on one asymmetry: over-restricting an adult costs a
+  little revenue, under-restricting a child breaches COPPA and Google
+  Play's Families policy and costs the AdMob account. So:
+  - **An unknown age is treated as a child**, which is the state every
+    fresh install begins in.
+  - A birth *year* cannot say whether the birthday has passed, so the
+    **younger** of the two possible ages is used.
+  - A corrupt stored year is discarded back to unknown rather than
+    trusted, so nonsense can never look like an adult.
+  - `tagForChildDirectedTreatment` (under 13, COPPA) and
+    `tagForUnderAgeOfConsent` (under 16, GDPR default) are **separate
+    flags**; a 14-year-old is the case that shows why collapsing them
+    would be wrong in both directions. `maxAdContentRating` is capped at
+    G for anyone under the age of consent, not only under-13s.
+  `AgeQuestionScreen` is worded neutrally and is not skippable, per
+  Google's requirement for an age screen: it never mentions ads or that a
+  younger answer restricts anything, because a screen that hints at the
+  "better" reply collects a worthless answer. `test/ad_audience_test.dart`
+  pins every boundary above.
 - **Banner ad placement (2026-07-24)**: `const FreeTierBannerAd()` (already
   used on `home_screen.dart`/`flashcard_screen.dart`) was extended to all
   10 remaining module browse screens per explicit user request — every

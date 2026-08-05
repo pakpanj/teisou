@@ -707,6 +707,19 @@ class AppStrings {
         'Selesaikan kuis Bab $previousOrder dulu untuk membuka bab ini.',
         'Finish the Bab $previousOrder quiz first to unlock this chapter.',
       );
+  // --- Age question (AdMob audience) ---
+  // Worded neutrally on purpose: Google requires an age screen that does
+  // not hint which answer unlocks more, so nothing here mentions ads,
+  // restrictions, or what changes based on the reply.
+  String get ageQuestionTitle => _t('Tahun berapa kamu lahir?', 'What year were you born?');
+  String get ageQuestionBody => _t(
+        'Kami menanyakan ini satu kali saja, supaya isi aplikasi sesuai '
+            'untuk umurmu.',
+        'We ask this once, so the app can be suitable for your age.',
+      );
+  String get ageQuestionChooseYear => _t('Pilih tahun', 'Choose a year');
+  String get ageQuestionContinue => _t('Lanjut', 'Continue');
+
   String get babGateQuizTitle => _t('Kuis Pembuka Bab', 'Chapter Unlock Quiz');
   /// Shown only on iOS, which reports the screenshot gesture rather than
   /// its result — so this appears even when the captured image came out

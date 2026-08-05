@@ -13,6 +13,7 @@ import 'data/models/app_theme_mode.dart';
 import 'data/repositories/language_repository.dart';
 import 'data/repositories/theme_repository.dart';
 import 'features/home/home_screen.dart';
+import 'features/onboarding/age_question_screen.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -117,7 +118,39 @@ class _KanaMasterAppState extends ConsumerState<KanaMasterApp>
       darkTheme: AppTheme.dark,
       themeMode: themeMode.material,
       navigatorObservers: _navigatorObservers,
-      home: const HomeScreen(),
+      home: const _AudienceGate(),
+    );
+  }
+}
+
+/// Holds the app at the age question until it has an answer, then pushes
+/// that answer to AdMob before the rest of the app — and its first ad
+/// request — appears.
+///
+/// Ads are configured here rather than at each ad site so there is exactly
+/// one place that can get it wrong. While the answer is still loading the
+/// app shows nothing rather than the home screen: a banner rendering during
+/// that gap would be an unconfigured request, which is the single case this
+/// whole mechanism exists to prevent.
+class _AudienceGate extends ConsumerWidget {
+  const _AudienceGate();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final audience = ref.watch(adAudienceProvider);
+
+    return audience.when(
+      data: (value) {
+        if (!value.isKnown) return const AgeQuestionScreen();
+        // Fire-and-forget: the configuration applies to requests made after
+        // it lands, and every ad site is behind at least one more tap.
+        unawaited(ref.read(adServiceProvider).applyAudience(value));
+        return const HomeScreen();
+      },
+      loading: () => const ColoredBox(color: Colors.white),
+      // A failed read leaves the audience unknown, which AdAudience already
+      // treats as a child — so ask rather than assume an adult.
+      error: (_, _) => const AgeQuestionScreen(),
     );
   }
 }
