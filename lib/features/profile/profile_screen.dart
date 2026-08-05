@@ -8,6 +8,8 @@ import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/user_avatar.dart';
+import '../../data/models/bab_entry.dart';
+import '../../data/models/jlpt_level.dart';
 import '../../data/models/kana_status.dart';
 import '../../data/models/kana_type.dart';
 import '../bab/bab_providers.dart';
@@ -498,14 +500,21 @@ class _MyScoreAndCurriculumCard extends ConsumerWidget {
     final entry = ref.watch(selfLeaderboardEntryProvider).valueOrNull;
     final allBab = ref.watch(babAllProvider).valueOrNull;
     final completed = ref.watch(babCompletedIdsProvider).valueOrNull;
+    final levels = ref.watch(babLevelProgressProvider).valueOrNull;
 
-    final done = (allBab == null || completed == null)
-        ? const []
-        : allBab.where((b) => completed.contains(b.id)).toList();
+    // Both sources have to be in before anything is drawn. Rendering as
+    // soon as `allBab` arrived showed "belum mulai" to a learner who
+    // simply had progress still loading — a wrong answer, not a slow one.
+    final ready = allBab != null && completed != null;
+    final done = ready
+        ? allBab.where((b) => completed.contains(b.id)).toList()
+        : const <BabEntry>[];
     final highestOrder = done.fold<int>(
       0,
       (highest, b) => b.order > highest ? b.order : highest,
     );
+    final current = levels?.lastWhere((l) => l.reachedByProgress);
+    final allComplete = levels != null && levels.every((l) => l.isComplete);
 
     return Container(
       width: double.infinity,
@@ -556,8 +565,25 @@ class _MyScoreAndCurriculumCard extends ConsumerWidget {
               color: context.palette.textNavy,
             ),
           ),
+          if (current != null) ...[
+            const SizedBox(height: 6),
+            Text(
+              allComplete
+                  ? s.babAllLevelsComplete
+                  : s.babLevelStandingSummary(
+                      current.level.key,
+                      current.completed,
+                      current.total,
+                    ),
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: context.palette.primaryCoral,
+              ),
+            ),
+          ],
           const SizedBox(height: 12),
-          if (allBab == null)
+          if (!ready)
             const Center(child: CircularProgressIndicator())
           else
             BabProgressBody(
@@ -569,6 +595,7 @@ class _MyScoreAndCurriculumCard extends ConsumerWidget {
                   : allBab
                       .firstWhere((b) => b.order == highestOrder)
                       .localizedTitle(s.language),
+              levels: levels,
             ),
         ],
       ),

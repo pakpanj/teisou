@@ -3424,18 +3424,59 @@ what the on-device pass actually verified), `flutter build apk
   4. No physical/simulator iOS run has happened — same standing
      verification-gap pattern as everything else in this file, just
      starting from zero for this platform.
-- **Bab's gate-quiz requirement is switched off** (2026-08-04), at the
-  user's request so they can tap through the 358-chapter curriculum
-  freely for testing — with 250+ chapters never yet opened on a device,
-  needing to pass a quiz per chapter would have made that impossible.
-  The switch is the single top-level constant `kBabGateQuizRequired` in
-  `lib/features/bab/bab_level_screen.dart`; **set it back to `true`
-  before release.** It removes only the *requirement*: the gate quiz
-  itself is untouched, the "Mulai Kuis Bab" button on `BabDetailScreen`
-  still works and still marks a chapter complete, and progress,
-  completed checkmarks and `babNextUpProvider`'s "what's next"
-  recommendation all behave normally. Same shape as the Partikel premium
-  gate note below — a deliberate temporary state, not a regression.
+- **Bab gating now runs at two levels, both behind one switch**
+  (chapter gate re-enabled 2026-08-04; level gate added 2026-08-05).
+  `kBabGateQuizRequired` in `lib/features/bab/bab_level_screen.dart` is
+  currently `true`, which is the intended product behaviour; it was
+  briefly `false` during the 358-chapter content rollout so the whole
+  curriculum could be tapped through without passing a quiz per chapter.
+  - **Chapter gate** (existing): a chapter stays locked until its
+    immediate predecessor's gate quiz is passed. `BabLevelScreen` reads
+    the predecessor straight off the previous list item, since
+    `BabRepository.getByLevel` already returns chapters sorted by
+    `order`.
+  - **Level gate** (new): a JLPT level opens only once *every* chapter of
+    *every* earlier level is complete — finish all 52 N5 chapters and N4
+    unlocks, and so on through N1. The rule lives in
+    `babLevelProgressProvider` (`bab_providers.dart`) as
+    `BabLevelProgress.reachedByProgress`, computed cumulatively in
+    `JlptLevel.values` order. A level with zero authored chapters is
+    deliberately never "complete", so an empty level can't silently
+    unlock everything behind it.
+  The provider stays free of `kBabGateQuizRequired` on purpose — screens
+  apply that flag at the tap site, exactly as chapter locking already
+  did, so the toggle remains one switch that opens chapters and levels
+  together instead of leaving half the gating on. Flipping it removes
+  only the *requirement*: the gate quiz, the completed checkmarks, the
+  per-level counts and `babNextUpProvider`'s "what's next" all behave
+  identically either way.
+  `test/bab_level_gating_test.dart` pins the level rule (fresh account,
+  one chapter short, exactly-complete, current-level tracking, and
+  progress inside a locked level not counting as reaching it). It injects
+  completed ids by overriding `babCompletedIdsProvider` rather than
+  seeding SharedPreferences, because `BabProgressRepository`'s
+  constructor reaches for `FirebaseFirestore.instance` eagerly and so
+  cannot be built in a test without a live Firebase app — fine in the
+  running app, which only reads that provider after
+  `Firebase.initializeApp`, but it does put the storage layer out of
+  reach there. Verified on the Moto G52J: N5 open showing "2/52 bab
+  selesai", N4-N1 grey with a padlock and a "Terkunci" badge, and
+  tapping a locked level showing "Selesaikan semua bab N5 dulu untuk
+  membuka level ini." without navigating.
+- **The profile's curriculum card shows level standing, not just a
+  total** (2026-08-05). `_MyScoreAndCurriculumCard` now renders a
+  "Sedang mengerjakan Bab N5 — 2 dari 52 bab." line above the overall
+  bar, plus a per-level breakdown (bar + `done/total`, or a padlock for
+  a level not yet reached) via `BabProgressBody`'s new optional `levels`
+  argument. That argument stays null on `PublicProfileScreen`, and must:
+  `leaderboard/{uid}` publishes only two aggregate counters because the
+  per-chapter list lives in `users/{uid}/babProgress`, which
+  `firestore.rules` keeps readable by its owner alone — a level
+  breakdown inferred from an aggregate would be wrong for any learner
+  sitting mid-level. Fixed a real display bug in the same pass: the card
+  drew as soon as `babAllProvider` resolved, so a learner whose progress
+  was still loading was told "belum mulai" — a wrong answer rather than
+  a slow one. It now waits on both sources.
 - **Monetization is mid-transition, not final** (as of 2026-07-17): the
   eventual plan is Kanji N3-N1, Bunpou N4-N1, Partikel, Choukai, Kaiwa,
   Belajar dari Gambar, and Belajar dari Video all premium; everything else

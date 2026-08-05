@@ -653,6 +653,23 @@ class AppStrings {
       _t('Bab $levelKey segera hadir!', 'Bab $levelKey coming soon!');
   String babLevelCardTitle(String levelKey) => 'Bab $levelKey';
   String babChapterCount(int n) => _t('$n bab', '$n chapters');
+  String babLevelLockedReason(String previousLevelKey) => _t(
+        'Selesaikan semua bab $previousLevelKey dulu untuk membuka level ini.',
+        'Finish every $previousLevelKey chapter first to unlock this level.',
+      );
+  String babLevelChapterProgress(int done, int total) =>
+      _t('$done/$total bab selesai', '$done/$total chapters done');
+  String get babLevelLockedBadge => _t('Terkunci', 'Locked');
+  String get babLevelCompleteBadge => _t('Selesai', 'Complete');
+  String get babCurrentLevelTitle => _t('Level Saat Ini', 'Current Level');
+  String babLevelStandingSummary(String levelKey, int done, int total) => _t(
+        'Sedang mengerjakan Bab $levelKey — $done dari $total bab.',
+        'Working through Bab $levelKey — $done of $total chapters.',
+      );
+  String get babAllLevelsComplete => _t(
+        'Seluruh kurikulum N5-N1 sudah selesai. Luar biasa!',
+        'The whole N5-N1 curriculum is done. Outstanding!',
+      );
   String babLevelAppBarTitle(String levelKey) => 'Bab $levelKey';
   String get babLevelGuideMessage => _t(
         'Pilih satu bab untuk mulai belajar.',

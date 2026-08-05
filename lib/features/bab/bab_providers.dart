@@ -39,6 +39,69 @@ final babNextUpProvider = FutureProvider<BabEntry?>((ref) async {
   return null;
 });
 
+/// How far the learner stands in one JLPT level of the curriculum, plus
+/// whether they have earned the right to open it at all.
+///
+/// [reachedByProgress] is the pure progress rule — a level opens only once
+/// every earlier level is finished end to end — deliberately kept free of
+/// the `kBabGateQuizRequired` dev toggle. Screens apply that flag at the
+/// tap site, exactly as `BabLevelScreen` already does for chapter-to-
+/// chapter locking, so the toggle stays one switch and this provider stays
+/// a statement about progress rather than about build configuration.
+class BabLevelProgress {
+  final JlptLevel level;
+  final int total;
+  final int completed;
+  final bool reachedByProgress;
+
+  const BabLevelProgress({
+    required this.level,
+    required this.total,
+    required this.completed,
+    required this.reachedByProgress,
+  });
+
+  /// A level with no authored chapters is never "finished" — otherwise an
+  /// empty level would silently unlock everything behind it.
+  bool get isComplete => total > 0 && completed == total;
+
+  double get fraction => total == 0 ? 0 : completed / total;
+}
+
+/// Per-level standing across the whole curriculum, in JLPT order
+/// (N5 first). Drives the level locks on [BabHomeScreen] and the level
+/// breakdown on the profile.
+final babLevelProgressProvider =
+    FutureProvider<List<BabLevelProgress>>((ref) async {
+  final all = await ref.watch(babAllProvider.future);
+  final completed = await ref.watch(babCompletedIdsProvider.future);
+
+  final result = <BabLevelProgress>[];
+  // N5 has nothing in front of it, so it always starts open.
+  var previousLevelsAllComplete = true;
+  for (final level in JlptLevel.values) {
+    final chapters = all.where((b) => b.level == level).toList();
+    final done = chapters.where((b) => completed.contains(b.id)).length;
+    final entry = BabLevelProgress(
+      level: level,
+      total: chapters.length,
+      completed: done,
+      reachedByProgress: previousLevelsAllComplete,
+    );
+    result.add(entry);
+    previousLevelsAllComplete = previousLevelsAllComplete && entry.isComplete;
+  }
+  return result;
+});
+
+/// The level the learner is currently working in: the last one they have
+/// unlocked. Never null — N5 is always reachable — so the profile always
+/// has something honest to show, including for a brand-new account.
+final babCurrentLevelProvider = FutureProvider<BabLevelProgress>((ref) async {
+  final levels = await ref.watch(babLevelProgressProvider.future);
+  return levels.lastWhere((l) => l.reachedByProgress);
+});
+
 /// One Bab chapter with every referenced id resolved into its real object
 /// from that module's own repository — the actual cross-module link this
 /// project didn't have before Bab (see `KanjiEntry.relatedBunpou`, which is

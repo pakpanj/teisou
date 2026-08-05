@@ -62,11 +62,40 @@ class _LevelCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final chapters = ref.watch(babByLevelProvider(level)).valueOrNull;
-    final available = (chapters?.isNotEmpty ?? false);
+    final levels = ref.watch(babLevelProgressProvider).valueOrNull;
     final s = ref.watch(appStringsProvider);
 
+    final authored = (chapters?.isNotEmpty ?? false);
+    final standing = levels?.firstWhere((l) => l.level == level);
+
+    // A level opens only once every earlier level is finished end to end —
+    // the same rule chapters already follow one step down, applied one
+    // step up. Gated on the same kBabGateQuizRequired toggle so flipping
+    // that for a content rollout opens chapters *and* levels together
+    // rather than leaving half the gating on.
+    //
+    // While the standing is still loading, treat the level as locked
+    // rather than open: a card that is briefly tappable and then locks
+    // under the learner's finger is worse than one that resolves from
+    // locked to open.
+    final reached = standing?.reachedByProgress ?? (level == JlptLevel.n5);
+    final locked = kBabGateQuizRequired && !reached;
+    final available = authored && !locked;
+
+    final previousLevel = level == JlptLevel.n5
+        ? null
+        : JlptLevel.values[JlptLevel.values.indexOf(level) - 1];
+
     void open() {
-      if (!available) {
+      if (locked) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(s.babLevelLockedReason(previousLevel!.key)),
+          ),
+        );
+        return;
+      }
+      if (!authored) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(s.babLevelComingSoon(level.key))),
         );
@@ -96,15 +125,21 @@ class _LevelCard extends ConsumerWidget {
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
-                child: Text(
-                  level.key,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: available
-                        ? context.palette.primaryCoral
-                        : context.palette.freeBadgeGrey,
-                  ),
-                ),
+                child: locked
+                    ? Icon(
+                        Icons.lock,
+                        size: 22,
+                        color: context.palette.freeBadgeGrey,
+                      )
+                    : Text(
+                        level.key,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: available
+                              ? context.palette.primaryCoral
+                              : context.palette.freeBadgeGrey,
+                        ),
+                      ),
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -122,28 +157,30 @@ class _LevelCard extends ConsumerWidget {
                       ),
                     ),
                     const SizedBox(height: 4),
-                    if (available)
+                    if (locked)
+                      _Badge(
+                        label: s.babLevelLockedBadge,
+                        color: context.palette.freeBadgeGrey,
+                      )
+                    else if (!authored)
+                      _Badge(
+                        label: s.soonBadge,
+                        color: context.palette.freeBadgeGrey,
+                      )
+                    else
+                      // Once a level is open, showing progress inside it
+                      // is more useful than its raw chapter count — the
+                      // learner already knows how long it is.
                       Text(
-                        s.babChapterCount(chapters!.length),
+                        standing == null
+                            ? s.babChapterCount(chapters!.length)
+                            : s.babLevelChapterProgress(
+                                standing.completed,
+                                standing.total,
+                              ),
                         style: TextStyle(
                           fontSize: 12,
                           color: context.palette.textNavy.withValues(alpha: 0.6),
-                        ),
-                      )
-                    else
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-                        decoration: BoxDecoration(
-                          color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          s.soonBadge,
-                          style: TextStyle(
-                            fontSize: 9,
-                            fontWeight: FontWeight.bold,
-                            color: context.palette.freeBadgeGrey,
-                          ),
                         ),
                       ),
                   ],
@@ -155,6 +192,32 @@ class _LevelCard extends ConsumerWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _Badge extends StatelessWidget {
+  final String label;
+  final Color color;
+
+  const _Badge({required this.label, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.2),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          fontSize: 9,
+          fontWeight: FontWeight.bold,
+          color: color,
         ),
       ),
     );

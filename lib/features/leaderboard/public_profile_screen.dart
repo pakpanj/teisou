@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/bab_entry.dart';
+import '../../data/models/jlpt_level.dart';
 import '../../data/models/leaderboard_entry.dart';
 import '../bab/bab_providers.dart';
 import 'leaderboard_screen.dart' show LeaderboardAvatar, globalScoreLabel;
@@ -108,12 +109,24 @@ class BabProgressBody extends ConsumerWidget {
   final int totalChapters;
   final String? furthestTitle;
 
+  /// Per-level breakdown, shown only on the learner's own profile.
+  ///
+  /// A public profile deliberately cannot supply this: `leaderboard/{uid}`
+  /// publishes two aggregate counters and nothing else, because the
+  /// per-chapter list lives in `users/{uid}/babProgress`, which
+  /// `firestore.rules` keeps readable only by its owner (see this file's
+  /// header). So this stays null there rather than being faked from the
+  /// aggregate — a level breakdown guessed from a total would be wrong the
+  /// moment a learner skipped nothing but sat mid-level.
+  final List<BabLevelProgress>? levels;
+
   const BabProgressBody({
     super.key,
     required this.completedCount,
     required this.highestOrder,
     required this.totalChapters,
     required this.furthestTitle,
+    this.levels,
   });
 
   @override
@@ -157,9 +170,86 @@ class BabProgressBody extends ConsumerWidget {
             ),
           ),
         ],
+        if (levels != null) ...[
+          const SizedBox(height: 16),
+          for (final level in levels!) ...[
+            _LevelProgressRow(standing: level),
+            const SizedBox(height: 8),
+          ],
+        ],
       ],
     );
   }
+}
+
+/// One JLPT level's line in the profile breakdown: its key, how far
+/// through it the learner is, and whether they have reached it at all.
+class _LevelProgressRow extends ConsumerWidget {
+  final BabLevelProgress standing;
+
+  const _LevelProgressRow({required this.standing});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final reached = standing.reachedByProgress;
+    final complete = standing.isComplete;
+
+    final accent = complete
+        ? context.palette.successGreen
+        : reached
+            ? context.palette.primaryCoral
+            : context.palette.freeBadgeGrey;
+
+    return Row(
+      children: [
+        SizedBox(
+          width: 28,
+          child: Text(
+            standing.level.key,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: accent,
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(6),
+            child: LinearProgressIndicator(
+              // A locked level reads as an empty bar, not as its real
+              // (always zero) progress dressed up in the active colour.
+              value: reached ? standing.fraction : 0,
+              minHeight: 6,
+              backgroundColor: accent.withValues(alpha: 0.15),
+              color: accent,
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+        if (!reached)
+          Icon(Icons.lock, size: 13, color: context.palette.freeBadgeGrey)
+        else
+          Text(
+            '${standing.completed}/${standing.total}',
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: complete ? FontWeight.bold : FontWeight.normal,
+              color: complete
+                  ? context.palette.successGreen
+                  : context.palette.textNavy.withValues(alpha: 0.7),
+            ),
+          ),
+        if (complete) ...[
+          const SizedBox(width: 4),
+          Icon(Icons.check_circle,
+              size: 13, color: context.palette.successGreen),
+        ],
+      ],
+    );
+  }
+
 }
 
 class _IdentityCard extends ConsumerWidget {
