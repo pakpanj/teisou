@@ -14,6 +14,72 @@ import 'package:kana_master/core/services/ad_service.dart';
 /// worth catching: a malformed id, and the two platforms silently sharing
 /// one unit again.
 void main() {
+  const publisher = 'ca-app-pub-7168330620893919';
+  const testPublisher = 'ca-app-pub-3940256099942544';
+
+  test('every release ad unit id is well formed', () {
+    // AdMob unit ids are `ca-app-pub-<16 digits>/<10 digits>`. The app id
+    // uses a tilde instead of the slash and is a different thing entirely —
+    // pasting one where the other belongs is an easy and silent mistake.
+    final unitId = RegExp(r'^ca-app-pub-\d{16}/\d{10}$');
+
+    AdService.releaseAdUnitIds.forEach((slot, id) {
+      expect(unitId.hasMatch(id), isTrue,
+          reason: '$slot: "$id" is not a valid ad unit id — an app id '
+              '(with ~) or a truncated paste would look like this');
+    });
+  });
+
+  test('no release unit is reused across formats or platforms', () {
+    // Two slots sharing an id breaks reporting and can breach AdMob policy.
+    // The iOS slots are currently the *test* ids, and those must still be
+    // three distinct units, so this holds either way.
+    final ids = AdService.releaseAdUnitIds.values.toSet();
+    expect(ids.length, AdService.releaseAdUnitIds.length,
+        reason: 'duplicate ad unit id across slots: '
+            '${AdService.releaseAdUnitIds}');
+  });
+
+  test('Android release units belong to this publisher', () {
+    for (final slot in ['banner', 'interstitial', 'rewarded']) {
+      final id = AdService.releaseAdUnitIds['android/$slot']!;
+      expect(id.startsWith('$publisher/'), isTrue,
+          reason: 'android/$slot is "$id" — a unit from another AdMob '
+              'account, or from the Cash Teisou app, would earn into the '
+              'wrong place silently');
+    }
+  });
+
+  test('iOS release units are still Google test inventory', () {
+    // Stated rather than hidden: the iOS app exists in AdMob but has no
+    // units yet, so an iOS release right now would serve demo ads and earn
+    // nothing. When the real units land, update this test in the same
+    // commit — its failure is the reminder.
+    for (final slot in ['banner', 'interstitial', 'rewarded']) {
+      final id = AdService.releaseAdUnitIds['ios/$slot']!;
+      expect(id.startsWith('$testPublisher/'), isTrue,
+          reason: 'if this fails, real iOS units have landed — good; move '
+              'the assertion over to the publisher check above');
+    }
+  });
+
+  test('development builds never request real inventory', () {
+    // The whole point of the kReleaseMode switch: requesting a real unit
+    // while developing is invalid traffic, and repeated invalid traffic
+    // suspends the account. Tests run in debug, so this asserts the branch
+    // a developer actually runs.
+    expect(AdService.usingTestAdUnits, isTrue);
+    for (final id in [
+      AdService.bannerAdUnitId,
+      AdService.interstitialAdUnitId,
+      AdService.rewardedAdUnitId,
+    ]) {
+      expect(id.startsWith('$testPublisher/'), isTrue,
+          reason: '"$id" is live inventory being requested from a debug '
+              'build');
+    }
+  });
+
   test('every ad unit id is well formed', () {
     // AdMob unit ids are `ca-app-pub-<16 digits>/<10 digits>`. The app id
     // uses a tilde instead of the slash and is a different thing entirely —
@@ -48,7 +114,6 @@ void main() {
     // called Cash Teisou, and AdMob lists all four rows (two apps x two
     // platforms) together. Pasting the wrong row is the easy mistake, and
     // it is invisible: ads simply attribute to the other app.
-    const publisher = 'ca-app-pub-7168330620893919';
     const androidAppId = '$publisher~3107201564';
     const iosAppId = '$publisher~8289431398';
 
@@ -71,25 +136,10 @@ void main() {
     test('neither platform still ships the test app id', () {
       // Google's sample publisher. Leaving it in place means real ad units
       // would be requested under an app id that is not yours.
-      const testPublisher = 'ca-app-pub-3940256099942544';
       expect(manifest().contains('$testPublisher~'), isFalse);
       expect(infoPlist().contains('$testPublisher~'), isFalse);
     });
 
-    test('once real, ad units must belong to the same publisher', () {
-      // Inert while the test units are in place, and self-arming the day
-      // they are replaced: a unit id from another AdMob account, or from
-      // Cash Teisou's app, would earn into the wrong place silently.
-      if (AdService.usingTestAdUnits) return;
-      for (final id in [
-        AdService.bannerAdUnitId,
-        AdService.interstitialAdUnitId,
-        AdService.rewardedAdUnitId,
-      ]) {
-        expect(id.startsWith('$publisher/'), isTrue,
-            reason: '"$id" does not belong to this publisher');
-      }
-    });
   });
 
   test('test inventory is still flagged as such', () {

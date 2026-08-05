@@ -32,30 +32,72 @@ class AdService {
   static const _testIosInterstitial = 'ca-app-pub-3940256099942544/4411468910';
   static const _testIosRewarded = 'ca-app-pub-3940256099942544/1712485313';
 
+  // Real units, created 2026-08-05 under app id
+  // ca-app-pub-7168330620893919~3107201564 ("Teisou Kana Master", Android).
+  static const _liveAndroidBanner = 'ca-app-pub-7168330620893919/9469429932';
+  static const _liveAndroidInterstitial =
+      'ca-app-pub-7168330620893919/1043044924';
+  static const _liveAndroidRewarded = 'ca-app-pub-7168330620893919/3809909145';
+
+  // iOS units do not exist yet — the app is registered in AdMob but has no
+  // units. Test ids stand in, which means an iOS *release* would earn
+  // nothing; `test/ad_service_config_test.dart` states that outright so it
+  // cannot be forgotten quietly.
+  static const _liveIosBanner = _testIosBanner;
+  static const _liveIosInterstitial = _testIosInterstitial;
+  static const _liveIosRewarded = _testIosRewarded;
+
+  /// The ids a release build would use, regardless of which build this is.
+  ///
+  /// Exposed so tests can check the real ids without having to run in
+  /// release mode, which they never do.
+  @visibleForTesting
+  static const releaseAdUnitIds = <String, String>{
+    'android/banner': _liveAndroidBanner,
+    'android/interstitial': _liveAndroidInterstitial,
+    'android/rewarded': _liveAndroidRewarded,
+    'ios/banner': _liveIosBanner,
+    'ios/interstitial': _liveIosInterstitial,
+    'ios/rewarded': _liveIosRewarded,
+  };
+
   /// Android first because that is the platform this app actually ships on
   /// today; iOS has never been built (see CLAUDE.md).
   static String _perPlatform({required String android, required String ios}) {
     return Platform.isIOS ? ios : android;
   }
 
+  /// Real inventory in release builds, Google's test inventory everywhere
+  /// else.
+  ///
+  /// This is not a convenience. Requesting a real ad unit during
+  /// development is invalid traffic as far as Google is concerned, and
+  /// repeated invalid traffic gets the AdMob account suspended — so the
+  /// choice must not depend on anyone remembering to swap a constant back
+  /// before running from the IDE. `kReleaseMode` makes it structural.
+  static String _live({required String test, required String live}) {
+    return kReleaseMode ? live : test;
+  }
+
   static String get bannerAdUnitId => _perPlatform(
-        android: _testAndroidBanner,
-        ios: _testIosBanner,
+        android: _live(test: _testAndroidBanner, live: _liveAndroidBanner),
+        ios: _live(test: _testIosBanner, live: _liveIosBanner),
       );
   static String get interstitialAdUnitId => _perPlatform(
-        android: _testAndroidInterstitial,
-        ios: _testIosInterstitial,
+        android: _live(
+          test: _testAndroidInterstitial,
+          live: _liveAndroidInterstitial,
+        ),
+        ios: _live(test: _testIosInterstitial, live: _liveIosInterstitial),
       );
   static String get rewardedAdUnitId => _perPlatform(
-        android: _testAndroidRewarded,
-        ios: _testIosRewarded,
+        android: _live(test: _testAndroidRewarded, live: _liveAndroidRewarded),
+        ios: _live(test: _testIosRewarded, live: _liveIosRewarded),
       );
 
-  /// Whether the app is still serving Google's test inventory.
-  ///
-  /// Exposed so a release checklist can assert on it rather than someone
-  /// having to remember to re-read this file — test ads shipped to
-  /// production earn nothing and look broken to a real user.
+  /// Whether *this* build is serving Google's test inventory. True in
+  /// debug and profile by design; in a release build it means real units
+  /// are still missing for this platform.
   static bool get usingTestAdUnits =>
       bannerAdUnitId.startsWith('ca-app-pub-3940256099942544/');
 

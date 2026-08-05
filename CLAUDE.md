@@ -3603,15 +3603,24 @@ what the on-device pass actually verified), `flutter build apk
   the known issues are actually fixed — see the OCR/camera-lifecycle
   notes below for what's already been chased down vs. still unverified.
 - `lib/firebase_options.dart` has real Firebase project values now (Batch
-  3), but **AdMob is still entirely on Google's public test inventory**.
-  **The two app ids are real as of 2026-08-05** —
+  3). **AdMob is now partly live.**
+  **Both app ids are real as of 2026-08-05** —
   `ca-app-pub-7168330620893919~3107201564` (Android, in
   `AndroidManifest.xml`) and `...~8289431398` (iOS, in
-  `ios/Runner/Info.plist`). The **six unit ids** in
-  `lib/core/services/ad_service.dart` are still Google's test ones, and
-  should stay that way until release: firing real units during
-  development counts as invalid traffic and can get the account
-  suspended.
+  `ios/Runner/Info.plist`). **Android's three unit ids are real too**
+  (created 2026-08-05): banner `.../9469429932`, interstitial
+  `.../1043044924`, rewarded `.../3809909145`. **iOS still has no
+  units** — the app is registered in AdMob but empty — so an iOS release
+  right now would serve demo ads and earn nothing.
+  `test/ad_service_config_test.dart` asserts that state outright, so its
+  failure is the reminder when real iOS units land.
+  Which set is used is **not** a constant anyone has to remember to swap:
+  `AdService._live` picks by `kReleaseMode`, so debug and profile builds
+  always request Google's test inventory and only a release build touches
+  real units. Structural on purpose — requesting a real unit during
+  development is invalid traffic, repeated invalid traffic suspends the
+  AdMob account, and simply running the app from the IDE would otherwise
+  be enough to trigger it.
   **The same AdMob account also holds an unrelated app called Cash
   Teisou**, so the console lists four rows — two apps x two platforms —
   and pasting the wrong one is both easy and invisible, since ads simply
