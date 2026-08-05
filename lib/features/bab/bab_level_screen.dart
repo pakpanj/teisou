@@ -12,19 +12,21 @@ import '../../data/models/jlpt_level.dart';
 import 'bab_detail_screen.dart';
 import 'bab_providers.dart';
 
-/// TEMPORARY DEV FLAG (2026-08-04) — set back to `true` before release.
+/// Whether a chapter stays locked until its immediate predecessor's gate
+/// quiz has been passed — the intended product behaviour.
 ///
-/// When true, a chapter stays locked until its immediate predecessor's
-/// gate quiz has been passed, which is the intended product behaviour.
-/// It is off right now so the whole 358-chapter curriculum can be tapped
-/// through freely for testing; with 250+ chapters never yet opened on a
-/// device, having to pass a quiz per chapter would make that impossible.
+/// Was temporarily `false` during the 358-chapter content rollout so the
+/// whole curriculum could be tapped through freely for testing (with 250+
+/// chapters never yet opened on a device, a quiz per chapter would have
+/// made that impossible). **Switched back on 2026-08-04 for the release
+/// build**, which is what this flag was always meant to be reset to.
 ///
-/// This only removes the *requirement*. The gate quiz itself is
-/// untouched: the "Mulai Kuis Bab" button on `BabDetailScreen` still
-/// works and still marks a chapter complete, so progress, the completed
-/// checkmarks and the mascot's "what's next" all behave normally.
-const bool kBabGateQuizRequired = false;
+/// Kept as a named constant rather than inlined so the same
+/// dev-vs-release trade-off stays a one-line toggle if a future content
+/// rollout needs the same freedom again. Flipping it only removes the
+/// *requirement*: the gate quiz itself, the completed checkmarks, and the
+/// mascot's "what's next" all behave identically either way.
+const bool kBabGateQuizRequired = true;
 
 /// Ordered chapter list for one JLPT level.
 class BabLevelScreen extends ConsumerWidget {

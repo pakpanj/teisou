@@ -262,6 +262,36 @@ class LeaderboardRepository {
     });
   }
 
+  /// Publishes [uid]'s Bab curriculum progress so other learners (and a
+  /// teacher watching a clan) can see it — the private
+  /// `users/{uid}/babProgress` subcollection that actually drives the
+  /// in-app lock stays the source of truth and stays unreadable to anyone
+  /// else. See [LeaderboardEntry.babCompletedCount] for why this is
+  /// denormalized instead of read directly.
+  ///
+  /// Best-effort like every other leaderboard write: callers wrap it in
+  /// try/catch, because a chapter is already marked complete locally by the
+  /// time this runs and a failed publish must never undo that.
+  Future<void> updateBabProgress({
+    required String uid,
+    required String displayName,
+    String? photoUrl,
+    AvatarType avatarType = AvatarType.google,
+    String? avatarValue,
+    required int completedCount,
+    required int highestOrder,
+  }) {
+    return _collection.doc(uid).set({
+      'displayName': displayName,
+      'photoUrl': photoUrl,
+      'avatarType': avatarType.key,
+      'avatarValue': avatarValue,
+      'babCompletedCount': completedCount,
+      'babHighestOrder': highestOrder,
+      'updatedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+  }
+
   /// Refreshes just the display metadata (name + avatar) for [uid] without
   /// touching `totalMastered`/`examHighScore` — used when the user changes
   /// their name or avatar in ProfileScreen, independent of exam/mastery

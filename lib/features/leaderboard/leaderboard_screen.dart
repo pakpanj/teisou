@@ -9,6 +9,7 @@ import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import 'leaderboard_providers.dart';
+import 'public_profile_screen.dart' show openPublicProfile;
 import 'widgets/clan_tab.dart';
 
 class LeaderboardScreen extends ConsumerWidget {
@@ -272,12 +273,20 @@ class LeaderboardTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        color: context.palette.cardWhite,
+    return Material(
+      color: context.palette.cardWhite,
+      borderRadius: BorderRadius.circular(16),
+      child: InkWell(
         borderRadius: BorderRadius.circular(16),
+        onTap: () => openPublicProfile(context, entry),
+        child: _content(context),
       ),
+    );
+  }
+
+  Widget _content(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Row(
         children: [
           SizedBox(

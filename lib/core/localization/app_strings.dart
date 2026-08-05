@@ -384,6 +384,17 @@ class AppStrings {
         'Global Score = Kana + Dokkai + Choukai + Kanji Combo records',
       );
   String get noRankingData => _t('Belum ada data peringkat.', 'No ranking data yet.');
+
+  // --- Public profile (tapping a ranked row) ---
+  String get publicProfileTitle => _t('Profil', 'Profile');
+  String get curriculumProgressTitle => _t('Progres Kurikulum', 'Curriculum Progress');
+  String babProgressOf(int done, int total) =>
+      _t('$done dari $total bab selesai', '$done of $total chapters done');
+  String babFurthestChapter(String title) =>
+      _t('Terakhir: $title', 'Furthest: $title');
+  String get babNotStartedYet =>
+      _t('Belum mulai kurikulum.', "Hasn't started the curriculum yet.");
+  String get scoreBreakdownTitle => _t('Rincian Skor', 'Score Breakdown');
   String failedToLoadLeaderboard(Object e) =>
       _t('Gagal memuat papan peringkat: $e', 'Failed to load leaderboard: $e');
   String rankOf(int rank) => _t('Peringkat ke-$rank', 'Rank #$rank');

@@ -10,8 +10,11 @@ import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/user_avatar.dart';
 import '../../data/models/kana_status.dart';
 import '../../data/models/kana_type.dart';
+import '../bab/bab_providers.dart';
 import '../home/home_screen.dart';
+import '../leaderboard/leaderboard_providers.dart';
 import '../leaderboard/leaderboard_screen.dart';
+import '../leaderboard/public_profile_screen.dart' show BabProgressBody;
 import '../saved_words/saved_words_screen.dart';
 import 'about_screen.dart';
 import 'exam_history_screen.dart';
@@ -98,6 +101,8 @@ class _ProfileBody extends ConsumerWidget {
           ),
           const SizedBox(height: 16),
           const _StreakCard(),
+          const SizedBox(height: 16),
+          const _MyScoreAndCurriculumCard(),
           const SizedBox(height: 24),
           const _ExamHistorySection(),
           const SizedBox(height: 24),
@@ -468,6 +473,103 @@ class _ProgressStatCard extends ConsumerWidget {
               minHeight: 8,
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The learner's own global score and curriculum progress, mirroring what
+/// [PublicProfileScreen] shows other people about them — so "how am I
+/// doing" is answerable from the Profile tab without a trip to the
+/// leaderboard.
+///
+/// Progress is read from the **local** `babCompletedIdsProvider`, not the
+/// `babCompletedCount` published to `leaderboard/{uid}`: local
+/// SharedPreferences is the source of truth for one's own progress (same
+/// rule as every other progress repository in this app), so this stays
+/// correct offline and never lags a failed best-effort publish.
+class _MyScoreAndCurriculumCard extends ConsumerWidget {
+  const _MyScoreAndCurriculumCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
+    final entry = ref.watch(selfLeaderboardEntryProvider).valueOrNull;
+    final allBab = ref.watch(babAllProvider).valueOrNull;
+    final completed = ref.watch(babCompletedIdsProvider).valueOrNull;
+
+    final done = (allBab == null || completed == null)
+        ? const []
+        : allBab.where((b) => completed.contains(b.id)).toList();
+    final highestOrder = done.fold<int>(
+      0,
+      (highest, b) => b.order > highest ? b.order : highest,
+    );
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: context.palette.cardWhite,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  s.tabGlobalScore,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: context.palette.textNavy,
+                  ),
+                ),
+              ),
+              Text(
+                entry == null ? s.noRecordYet : globalScoreLabel(entry, s),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: context.palette.primaryCoral,
+                ),
+              ),
+            ],
+          ),
+          if (entry != null && entry.hasAnyRecord) ...[
+            const SizedBox(height: 4),
+            Text(
+              globalScoreBreakdown(entry, s),
+              style: TextStyle(
+                fontSize: 11,
+                color: context.palette.textNavy.withValues(alpha: 0.6),
+              ),
+            ),
+          ],
+          const Divider(height: 24),
+          Text(
+            s.curriculumProgressTitle,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: context.palette.textNavy,
+            ),
+          ),
+          const SizedBox(height: 12),
+          if (allBab == null)
+            const Center(child: CircularProgressIndicator())
+          else
+            BabProgressBody(
+              completedCount: done.length,
+              highestOrder: highestOrder,
+              totalChapters: allBab.length,
+              furthestTitle: highestOrder == 0
+                  ? null
+                  : allBab
+                      .firstWhere((b) => b.order == highestOrder)
+                      .localizedTitle(s.language),
+            ),
         ],
       ),
     );

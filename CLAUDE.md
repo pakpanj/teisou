@@ -6299,3 +6299,101 @@ already confirmed working on the Skor Global tab, and the only other
 change there was dropping the metric dropdown and re-keying
 `clanRankingProvider` from `(String, LeaderboardMetric)` to `String`.
 Still worth a look next time a clan exists on a test device.
+
+## Update (2026-08-04): release prep — gate lock switched on, public
+profiles, and an honest account of what iOS/TestFlight still needs
+
+Three things the user asked for ahead of a release build.
+
+### 1. Bab curriculum lock switched on
+
+`kBabGateQuizRequired` (`lib/features/bab/bab_level_screen.dart`) was
+`false` — a deliberate dev flag from the 358-chapter content rollout, so
+the whole curriculum could be tapped through without passing a quiz per
+chapter. **Now `true`, which is the intended product behaviour**: a
+chapter stays locked until its predecessor's gate quiz is passed. Kept as
+a named constant rather than inlined, so the same dev-vs-release
+trade-off stays a one-line toggle if another big content rollout needs
+the same freedom.
+
+### 2. Profiles are now viewable — including other learners'
+
+Tapping any row in the global leaderboard or a clan ranking opens
+`PublicProfileScreen` (`lib/features/leaderboard/public_profile_screen.dart`):
+avatar + name, global score, a per-category score breakdown ("XX.X%
+(N×)" — the detail that used to live in the four Rekor tabs, preserved
+here rather than lost when those tabs collapsed), and curriculum
+progress (count, progress bar, furthest chapter reached). The learner's
+own Profile tab grew the same two sections via
+`_MyScoreAndCurriculumCard`, sharing the `BabProgressBody` widget so both
+render progress identically.
+
+**The Firestore problem this had to solve, and why it wasn't solved by
+loosening rules.** Bab progress lives in `users/{uid}/babProgress`, which
+`firestore.rules` restricts to its owner (`request.auth.uid == uid`) —
+so a teacher opening a student's profile could never read it. Rather
+than widening read access to the private user document, two aggregate
+integers (`babCompletedCount`, `babHighestOrder`) are denormalized onto
+the already-world-readable `leaderboard/{uid}` row, published
+best-effort by `LeaderboardRepository.updateBabProgress` after each gate
+quiz is passed. That publishes strictly less than opening up the private
+doc would, needs **no `firestore.rules` change at all** (so none of the
+deploy caveats documented elsewhere in this file apply), and costs no
+extra read since the profile renders from the `LeaderboardEntry` the
+ranking already fetched.
+
+Only counts are published, never the chapter *title*: the title is
+resolved locally from the bundled `bab_data.json` by `order`, so
+renaming a chapter can't leave stale copies scattered across user
+documents. And the learner's **own** profile reads the local
+`babCompletedIdsProvider`, not the published count — SharedPreferences
+stays the source of truth for one's own progress (the same rule as every
+other progress repository here), so it's correct offline and never lags
+a failed best-effort publish.
+
+### 3. Release builds — Android is real, iOS/TestFlight is not yet possible
+
+**Android**: `flutter build apk --release` verified green (R8 included —
+see the three-round R8 history in "Verifying changes" for why a release
+build is not optional after touching native deps).
+
+**Two blockers stand between this and an actual Play Store upload, both
+requiring the user, not this environment:**
+- **The release build is signed with the debug keystore.**
+  `android/app/build.gradle.kts` still carries Flutter's scaffold `//
+  TODO: Add your own signing config` with `signingConfig =
+  signingConfigs.getByName("debug")`. Play rejects debug-signed uploads.
+  Generating the upload keystore is deliberately left to the user: it is
+  a credential they must own and back up — **lose it and the app can
+  never be updated again** under the same listing.
+- **AdMob still uses Google's public test ad unit IDs** (see the
+  long-standing note under "Known placeholders"). Shipping those to real
+  users shows test ads and earns nothing; shipping real ones without a
+  policy review risks the AdMob account.
+
+**iOS/TestFlight cannot be produced from this machine, at all.** Not a
+tooling gap to work around — Apple requires macOS + Xcode to compile,
+archive, and upload an iOS build, and this is a Windows 11 machine. On
+top of the OS requirement, the project itself is Android-only today:
+- `lib/firebase_options.dart` defines **only** `android`;
+  `currentPlatform` throws `UnsupportedError` on iOS. Fixing it needs an
+  iOS app registered in the Firebase console — which mints an `appId`
+  and `GoogleService-Info.plist` that **cannot be invented here** and
+  must come from the console. (Deliberately not stubbed with placeholder
+  values: a fake appId would turn a clear startup error into a confusing
+  runtime auth failure.)
+- No `ios/Runner/GoogleService-Info.plist` exists.
+- Cam Detector's ML Kit Japanese OCR dependency is declared in
+  `android/app/build.gradle.kts` only — the iOS pod equivalent is
+  unconfigured (though Cam Detector is currently locked out of
+  navigation anyway, see "Known placeholders").
+- AdMob's app ID is registered in `AndroidManifest.xml` only.
+- Apple Developer Program membership ($99/yr) is required before
+  TestFlight is reachable at all.
+
+**The realistic beta path from Windows today** is Firebase App
+Distribution or Google Play Internal Testing — both do what TestFlight
+does (invite testers, push builds) for Android, and both take the same
+AAB/APK produced above. Neither needs a Mac.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 82/82.

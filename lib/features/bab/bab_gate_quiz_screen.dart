@@ -5,7 +5,9 @@ import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/jlpt_level.dart';
+import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/simple_exam_result.dart';
+import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 import 'bab_gate_quiz_generator.dart';
@@ -39,6 +41,43 @@ class BabGateQuizScreen extends ConsumerStatefulWidget {
 class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen> {
   List<GateQuestion>? _questions;
 
+  /// Publishes the learner's curriculum progress to their public
+  /// `leaderboard/{uid}` row so it shows on their profile — including when
+  /// someone else opens it, which the private `users/{uid}/babProgress`
+  /// subcollection driving the lock can never support (see
+  /// [LeaderboardEntry.babCompletedCount]).
+  ///
+  /// Entirely best-effort: the chapter is already marked complete locally
+  /// before this runs, so a network failure here must not surface as an
+  /// error or block the result screen. The next completed chapter
+  /// republishes the whole summary anyway, so a skipped publish
+  /// self-corrects rather than compounding.
+  Future<void> _publishBabProgress(String uid) async {
+    try {
+      final all = await ref.read(babAllProvider.future);
+      final completed = await ref.read(babCompletedIdsProvider.future);
+      final done = all.where((b) => completed.contains(b.id));
+      final profile = ref.read(userProfileProvider).valueOrNull;
+      final user = ref.read(appStartupProvider).valueOrNull;
+
+      await ref.read(leaderboardRepositoryProvider).updateBabProgress(
+            uid: uid,
+            displayName: profile?.resolveDisplayName(user) ??
+                (user?.displayName ?? 'Pelajar Kana'),
+            photoUrl: user?.photoURL,
+            avatarType: profile?.avatarType ?? AvatarType.google,
+            avatarValue: profile?.avatarValue,
+            completedCount: done.length,
+            highestOrder: done.fold<int>(
+              0,
+              (highest, b) => b.order > highest ? b.order : highest,
+            ),
+          );
+    } catch (_) {
+      // See the doc comment: local progress already succeeded.
+    }
+  }
+
   Future<void> _onComplete(int score, int total) async {
     final passed = total > 0 && score == total;
     if (passed) {
@@ -50,6 +89,7 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen> {
           );
       ref.invalidate(babCompletedIdsProvider);
       ref.invalidate(babNextUpProvider);
+      if (uid != null) await _publishBabProgress(uid);
     }
     if (!mounted) return;
     final s = ref.read(appStringsProvider);

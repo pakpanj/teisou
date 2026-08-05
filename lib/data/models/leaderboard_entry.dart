@@ -39,6 +39,23 @@ class LeaderboardEntry {
   /// since their stored-vs-computed comparison would look already in sync.
   final double? globalScore;
 
+  /// Public summary of the learner's Bab curriculum progress: how many
+  /// chapters they've completed, and the `order` of the furthest one.
+  ///
+  /// Denormalized here rather than read from `users/{uid}/babProgress`
+  /// because that subcollection is strictly private per `firestore.rules`
+  /// (only its owner can read it), and a teacher checking a student's
+  /// progress from the clan ranking has to be able to see this. Publishing
+  /// two aggregate integers is a much smaller disclosure than loosening
+  /// read access to the whole private user document — and it costs no
+  /// extra read either, since the profile view already fetches this row.
+  ///
+  /// Only the counts live here; the chapter's *title* is resolved locally
+  /// from the bundled `bab_data.json` by `order`, so renaming a chapter
+  /// never leaves stale copies scattered across user documents.
+  final int babCompletedCount;
+  final int babHighestOrder;
+
   final DateTime updatedAt;
 
   LeaderboardEntry({
@@ -62,6 +79,8 @@ class LeaderboardEntry {
     this.kanjiComboRecordCount = 0,
     this.kanjiComboRecordAvg = 0,
     this.globalScore,
+    this.babCompletedCount = 0,
+    this.babHighestOrder = 0,
     required this.updatedAt,
   });
 
@@ -87,6 +106,8 @@ class LeaderboardEntry {
       kanjiComboRecordCount: (map['kanjiComboRecordCount'] as num?)?.toInt() ?? 0,
       kanjiComboRecordAvg: (map['kanjiComboRecordAvg'] as num?)?.toDouble() ?? 0,
       globalScore: (map['globalScore'] as num?)?.toDouble(),
+      babCompletedCount: (map['babCompletedCount'] as num?)?.toInt() ?? 0,
+      babHighestOrder: (map['babHighestOrder'] as num?)?.toInt() ?? 0,
       updatedAt: _toDateTime(map['updatedAt']) ?? DateTime.now(),
     );
   }
@@ -111,6 +132,8 @@ class LeaderboardEntry {
         'kanjiComboRecordCount': kanjiComboRecordCount,
         'kanjiComboRecordAvg': kanjiComboRecordAvg,
         'globalScore': globalScore ?? computedGlobalScore,
+        'babCompletedCount': babCompletedCount,
+        'babHighestOrder': babHighestOrder,
         'updatedAt': Timestamp.fromDate(updatedAt),
       };
 
