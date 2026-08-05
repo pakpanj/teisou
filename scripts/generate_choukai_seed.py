@@ -3062,21 +3062,36 @@ N1_ENTRIES = [
 ]
 
 
-# Everything the TTS speaks, and every option the learner reads, must be
-# Japanese: kana, kanji, Japanese punctuation, digits, spaces. This guard
-# exists because a first authoring pass leaked stray Cyrillic and Hangul
-# into three clips and one answer option (「связ…いや、connection」,「안…」,
-# 「новую…カードを買う」). Nothing downstream would have caught it — the JSON
-# was valid, the app rendered it, and the TTS would simply have read
-# gibberish aloud to a child.
-_JP_OK = re.compile(r'^[　-〿぀-ヿ一-鿿'
-                    r'＀-￯0-9\s]*$')
+# This guard exists because authoring leaked stray Cyrillic and Hangul into
+# clips six separate times across four sessions — 「связ…いや、connection」,
+# 「안…いや、」, 「новую…カードを買う」, 「written…いえ、」, 「данные…失礼、」 and
+# 「медсестра…いえ、」. The shape is identical every time: a foreign word
+# followed by a self-correction, as if spoken mid-sentence. Nothing
+# downstream catches it — the JSON is valid, the app renders it, and the
+# TTS reads the gibberish aloud to a child.
+#
+# **It must not reject Latin that legitimately belongs in Japanese.** The
+# first version of this rule allowed only kana, kanji, Japanese punctuation
+# and digits, which is wrong: a scan of Kaiwa's 30,619 and Dokkai's 8,000
+# Japanese strings found zero real leaks but 164 hits on perfectly correct
+# text — 「血液型はO型」, 「SNS」, 「CD」, half-width commas. That version would
+# have blocked any future clip mentioning SNS or a blood type.
+#
+# So the rule is narrowed to what is actually always wrong here: Cyrillic,
+# Hangul, or a run of three or more lowercase Latin letters (a foreign
+# word). Uppercase acronyms and ASCII punctuation pass.
+_CYRILLIC = re.compile(r'[Ѐ-ӿ]')
+_HANGUL = re.compile(r'[가-힯ᄀ-ᇿ]')
+_LATIN_WORD = re.compile(r'[a-z]{3,}')
 
 
 def assert_japanese(text, where):
-    assert _JP_OK.match(text), (
-        "%s contains non-Japanese characters: %r"
-        % (where, sorted({c for c in text if not _JP_OK.match(c)})))
+    for label, pattern in (('Cyrillic', _CYRILLIC), ('Hangul', _HANGUL),
+                           ('a lowercase Latin word', _LATIN_WORD)):
+        m = pattern.search(text)
+        assert not m, (
+            "%s contains %s: ...%s..."
+            % (where, label, text[max(0, m.start() - 14):m.end() + 14]))
 
 
 def build(entries, level, titles):
