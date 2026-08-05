@@ -10,6 +10,7 @@
 # Run from repo root: python scripts/generate_dokkai_seed.py
 
 import json
+import re
 
 from dokkai_lists import (
     LEVEL_META,
@@ -6816,59 +6817,267 @@ N1_ENTRIES = [
         "soushitsu_essei",
         "Esai tentang Kehilangan",
         "母を亡くしてから一年が経った。悲しみは時とともに薄れるものだと"
-        "言われていたが、ふとした瞬間に涙があふれ、いまだに母の不在を"
-        "実感せずにはいられない。しかし、母が遺してくれた言葉の数々は、"
-        "今も私の心を支え続けている。喪失とは、決して忘れることでは"
-        "なく、共に生き続けることなのかもしれない。",
-        "Sudah setahun sejak ibu saya meninggal. Dikatakan bahwa "
-        "kesedihan akan memudar seiring waktu, tapi di saat-saat tak "
-        "terduga air mata mengalir, dan hingga kini saya tak bisa tidak "
-        "merasakan ketiadaan ibu. Namun, kata-kata yang ditinggalkan ibu "
-        "masih terus menopang hati saya hingga sekarang. Kehilangan "
-        "mungkin bukan berarti melupakan, melainkan terus hidup bersama.",
+        "周囲には言われ、自分でもそう信じていた。しかし実際に訪れたのは、"
+        "薄れるという穏やかな変化ではなく、悲しみの現れ方が変わっていく"
+        "という、もっと落ち着かない経過だった。"
+        "最初の数か月、私は母の不在を絶えず意識していた。台所に立てば"
+        "母の手つきを思い出し、電話が鳴れば一瞬だけ母かと思った。"
+        "そうした反応は次第に減っていった。減っていったこと自体は"
+        "自然なのだろう。だが私が戸惑ったのは、忘れかけている自分に"
+        "気づいたときの、後ろめたさに似た感情である。"
+        "一年目の命日が近づくころ、私は母の日記を読み返した。"
+        "そこには、私が知らなかった母の迷いや、口に出さなかった不満が"
+        "淡々と記されていた。読み進めるうちに、私が悼んでいたのは"
+        "母そのものというより、私が知っていた範囲の母だったのだと"
+        "思い知らされた。娘としての私が見ていた母は、母という人の"
+        "一部にすぎない。"
+        "そう気づいてから、悲しみの質が変わった。失ったものが"
+        "小さくなったわけではない。むしろ、自分が失ったものの"
+        "全体をまだ把握できていないと分かったのだから、"
+        "喪失はかえって大きくなったとも言える。"
+        "けれども、その大きさは私を押しつぶさなかった。"
+        "知らなかった母がいたということは、これから知りうる母が"
+        "まだ残っているということでもあるからだ。"
+        "悲しみが癒えるとは、感情が消えることではないのだろう。"
+        "故人を過去の完成した像としてではなく、"
+        "今も更新されうる存在として抱え続けられるようになること。"
+        "一年かけて私がたどり着いたのは、その程度の理解である。"
+        "それでも、去年の私には手が届かなかった場所だと思う。",
+        "Setahun telah berlalu sejak ibu saya meninggal. Orang di sekitar "
+        "mengatakan kesedihan akan memudar seiring waktu, dan saya pun "
+        "mempercayainya. Namun yang benar-benar datang bukanlah perubahan "
+        "tenang bernama memudar, melainkan proses yang jauh lebih menggelisahkan: "
+        "berubahnya cara kesedihan itu menampakkan diri.\n\n"
+        "Beberapa bulan pertama, saya terus-menerus menyadari ketiadaan ibu. "
+        "Berdiri di dapur, saya teringat gerak tangannya; telepon berdering, "
+        "sesaat saya mengira itu ibu. Reaksi semacam itu lambat laun berkurang. "
+        "Berkurangnya sendiri mungkin wajar. Tetapi yang membuat saya bingung "
+        "adalah perasaan menyerupai rasa bersalah ketika saya sadar diri saya "
+        "mulai melupakan.\n\n"
+        "Menjelang peringatan setahun kematiannya, saya membaca ulang buku "
+        "harian ibu. Di sana tercatat dengan datar keraguan-keraguan ibu yang "
+        "tidak saya ketahui, dan ketidakpuasan yang tak pernah ia ucapkan. "
+        "Semakin saya membaca, semakin saya disadarkan bahwa yang saya ratapi "
+        "bukanlah ibu itu sendiri, melainkan ibu sebatas yang saya kenal. "
+        "Ibu yang dilihat saya sebagai anak perempuannya hanyalah sebagian "
+        "dari sosok bernama ibu.\n\n"
+        "Sejak menyadari itu, mutu kesedihan saya berubah. Bukan berarti yang "
+        "hilang menjadi lebih kecil. Justru sebaliknya, karena saya jadi tahu "
+        "bahwa saya belum menangkap keseluruhan dari apa yang saya kehilangan, "
+        "bisa dibilang kehilangan itu malah membesar. Namun besarnya tidak "
+        "meremukkan saya. Sebab adanya ibu yang tidak saya kenal berarti masih "
+        "tersisa ibu yang bisa saya kenali mulai sekarang.\n\n"
+        "Sembuh dari kesedihan agaknya bukan berarti perasaan itu lenyap. "
+        "Melainkan menjadi mampu terus memikul mendiang bukan sebagai gambar "
+        "masa lalu yang sudah selesai, melainkan sebagai keberadaan yang masih "
+        "bisa diperbarui hingga kini. Setahun saya tempuh untuk sampai pada "
+        "pemahaman sesederhana itu. Meski begitu, saya rasa itu tempat yang "
+        "tahun lalu tak terjangkau oleh saya.",
         [
-            ("母を亡くしてからどのくらい経ちましたか。", ["一年", "半年", "三年", "一か月"], 0),
-            ("筆者は今も何を実感せずにはいられませんか。", ["母の不在", "母の元気な姿", "母の若さ", "母の声"], 0),
-            ("筆者にとって喪失とはどういうことかもしれませんか。", ["共に生き続けること", "完全に忘れること", "悲しみ続けること", "何も感じないこと"], 0),
+            (
+                "筆者が一年を経て到達した理解はどれか。",
+                [
+                    "悲しみは時間が経てば自然に消えるものだ",
+                    "故人を更新されうる存在として抱え続けること",
+                    "故人の日記は読まないほうがよい",
+                    "喪失は忘れることでしか乗り越えられない",
+                ],
+                1,
+            ),
+            (
+                "日記を読んだあと、筆者の悲しみはどう変化したか。",
+                [
+                    "小さくなり、楽になった",
+                    "大きくなったが、押しつぶされはしなかった",
+                    "完全に消えた",
+                    "怒りに変わった",
+                ],
+                1,
+            ),
+            (
+                "筆者が「後ろめたさに似た感情」を抱いたのはなぜか。",
+                [
+                    "母の日記を無断で読んだから",
+                    "母の不在を思い出す反応が減っていく自分に気づいたから",
+                    "命日を忘れそうになったから",
+                    "周囲の言葉を信じられなかったから",
+                ],
+                1,
+            ),
         ],
     ),
     (
         "jikan_no_mujou",
         "Esai tentang Ketidakkekalan Waktu",
-        "桜の花が散る様子を見るたびに、時の流れの儚さを感じずにはいら"
-        "れない。美しいものほど、その瞬間は短い。だからこそ、私たちは今"
-        "この瞬間を大切にすべく、日々を丁寧に生きる必要があるのでは"
-        "ないだろうか。永遠に続くものなど、この世には存在しないの"
-        "だから。",
-        "Setiap kali melihat bunga sakura berguguran, saya tak bisa "
-        "tidak merasakan kefanaan aliran waktu. Semakin indah sesuatu, "
-        "semakin singkat momennya. Justru karena itulah, bukankah kita "
-        "perlu menjalani hari-hari dengan cermat demi menghargai momen "
-        "ini? Karena tidak ada yang abadi selamanya di dunia ini.",
+        "旅先で古い橋を見た。三百年前に架けられ、幾度も洪水に流され、"
+        "そのたびに架け直されてきたという。案内板には「創建三百年」と"
+        "書かれていたが、今そこにある木材のうち、三百年前のものは"
+        "一本もないそうだ。それでも人々はこれを同じ橋と呼ぶ。"
+        "何をもって同じと見なすのか。材料が入れ替わっても"
+        "同じであるなら、同一性を支えているのは物ではないことになる。"
+        "形だろうか。しかし架け直すたびに設計は少しずつ変わってきた。"
+        "場所だろうか。だが流された際に、数十メートル上流へ移したことも"
+        "あるという。"
+        "結局のところ、この橋を同じ橋たらしめているのは、"
+        "架け直し続けてきたという行為の連なりではないか。"
+        "壊れたら直すという営みが途切れなかったこと、"
+        "そのつど「あの橋を戻そう」と人々が考えたこと。"
+        "同一性は物にではなく、関わり方の継続に宿っている。"
+        "この見方を取れば、無常とは同一性の否定ではなくなる。"
+        "変わらないものなどないという事実と、"
+        "それでもこれは同じものだと言えるという事実は、"
+        "矛盾せずに両立する。"
+        "変化を止めることによってではなく、"
+        "変化を引き受け続けることによって、"
+        "何かは同じであり続けるのだ。"
+        "私たちが自分を同じ人間だと感じるのも、"
+        "おそらく同じ理屈による。"
+        "細胞も考えも境遇も入れ替わっていく。"
+        "それでも昨日の自分を引き受け、"
+        "明日の自分へ渡そうとする営みが続く限り、"
+        "その連なりを人は自分と呼ぶのだろう。",
+        "Di perjalanan saya melihat sebuah jembatan tua. Katanya dibangun tiga "
+        "ratus tahun lalu, berkali-kali hanyut diterjang banjir, dan setiap kali "
+        "dibangun kembali. Papan penanda menulis \"Didirikan tiga ratus tahun\", "
+        "namun dari kayu yang kini ada di sana, konon tak satu pun berasal dari "
+        "tiga ratus tahun lalu. Meski begitu orang menyebutnya jembatan yang sama.\n\n"
+        "Atas dasar apa sesuatu dianggap sama? Jika bahannya berganti pun tetap "
+        "sama, berarti yang menopang identitas bukanlah bendanya. Bentuknya? "
+        "Tetapi setiap kali dibangun ulang rancangannya sedikit berubah. "
+        "Tempatnya? Namun katanya pernah pula, ketika hanyut, ia dipindahkan "
+        "beberapa puluh meter ke hulu.\n\n"
+        "Pada akhirnya, bukankah yang menjadikan jembatan ini jembatan yang sama "
+        "adalah rangkaian tindakan membangunnya kembali terus-menerus? Bahwa "
+        "usaha memperbaiki ketika rusak tidak pernah terputus; bahwa setiap kali "
+        "itu orang berpikir \"mari kembalikan jembatan itu\". Identitas bersemayam "
+        "bukan pada bendanya, melainkan pada berlanjutnya cara orang terlibat "
+        "dengannya.\n\n"
+        "Dengan pandangan ini, ketidakkekalan tidak lagi berarti penyangkalan "
+        "identitas. Kenyataan bahwa tak ada yang tidak berubah, dan kenyataan "
+        "bahwa kita tetap bisa menyebut ini benda yang sama, dapat berdiri "
+        "bersama tanpa bertentangan. Bukan dengan menghentikan perubahan, "
+        "melainkan dengan terus memikul perubahan itulah sesuatu tetap menjadi "
+        "dirinya.\n\n"
+        "Bahwa kita merasa diri kita manusia yang sama pun agaknya karena logika "
+        "yang serupa. Sel, pikiran, maupun keadaan silih berganti. Meski begitu, "
+        "selama usaha memikul diri kemarin dan menyerahkannya kepada diri esok "
+        "terus berlangsung, rangkaian itulah yang orang sebut dirinya.",
         [
-            ("筆者は桜が散る様子を見るたびに何を感じますか。", ["時の流れの儚さ", "喜び", "怒り", "退屈さ"], 0),
-            ("美しいものについて、筆者はどう述べていますか。", ["その瞬間は短い", "ずっと続く", "誰も気づかない", "価値がない"], 0),
-            ("筆者は私たちが何をすべきだと考えていますか。", ["今この瞬間を大切にすること", "未来だけを考えること", "過去を忘れること", "何もしないこと"], 0),
+            (
+                "筆者によると、橋の同一性を支えているのは何か。",
+                [
+                    "三百年前の木材が残っていること",
+                    "架け直し続けてきた行為の連なり",
+                    "設計が変わっていないこと",
+                    "同じ場所にあり続けること",
+                ],
+                1,
+            ),
+            (
+                "筆者は無常と同一性の関係をどう捉えているか。",
+                [
+                    "無常は同一性を否定する",
+                    "変化を引き受け続けることで同一性は保たれる",
+                    "同一性は幻想にすぎない",
+                    "変化を止めれば同一性が保てる",
+                ],
+                1,
+            ),
+            (
+                "最後の段落で筆者は橋の話を何に結びつけているか。",
+                [
+                    "建築技術の進歩",
+                    "自分が同じ人間であると感じる根拠",
+                    "洪水対策の必要性",
+                    "観光地の保存問題",
+                ],
+                1,
+            ),
         ],
     ),
     (
         "shakai_hihyou",
         "Kritik Sosial",
-        "情報が氾濫する現代社会において、真実と虚偽を見分けることは、"
-        "以前にも増して困難になっている。人々はまるで正しい情報である"
-        "かのように言わんばかりに、根拠のない噂を拡散させてしまう。この"
-        "状況を憂うがゆえに、私たちには情報を批判的に読み解く力が求め"
-        "られているのである。",
-        "Dalam masyarakat modern di mana informasi membanjir, "
-        "membedakan kebenaran dan kepalsuan menjadi lebih sulit dari "
-        "sebelumnya. Orang-orang menyebarkan rumor tanpa dasar seolah-"
-        "olah mengatakan itu adalah informasi yang benar. Karena "
-        "mengkhawatirkan situasi ini, kita dituntut memiliki kemampuan "
-        "membaca informasi secara kritis.",
+        "効率という言葉が、いつのまにか価値そのものを指すようになった。"
+        "本来これは手段の性質を測る物差しにすぎない。"
+        "何のために、という問いを立てて初めて、"
+        "効率は良い悪いを判断できる。"
+        "ところが現在の議論では、"
+        "効率が高いこと自体が正しさの根拠として扱われる場面が少なくない。"
+        "たとえば行政手続きの簡素化はしばしば効率の名の下に進められる。"
+        "手続きが速くなること自体は歓迎すべきだろう。"
+        "だが、その手続きが本来何のために設けられたのかを問わないまま"
+        "省略が進めば、確認の機会そのものが失われる。"
+        "遅さの中に含まれていた検討の時間が、"
+        "無駄として一括りにされてしまうのである。"
+        "ここで注意したいのは、"
+        "効率化に反対することが目的ではないという点だ。"
+        "問題は、効率が目的の位置に繰り上がったとき、"
+        "目的についての議論が不要になってしまうことにある。"
+        "何を達成したいのかを語らずに、"
+        "どれだけ速くできたかだけを競うようになる。"
+        "そして速さの比較は数字で示せるため、"
+        "議論は容易に決着したように見えてしまう。"
+        "数値で表せるものが、"
+        "表せないものより重要だと見なされる傾向は、"
+        "測定の技術が進むほど強まる。"
+        "だからこそ、測れないものを議論の場に留めておく努力が要る。"
+        "その努力を怠れば、私たちは"
+        "「速く達成された、ろくでもない目的」に囲まれることになるだろう。",
+        "Kata efisiensi entah sejak kapan berubah menjadi penunjuk nilai itu "
+        "sendiri. Aslinya ia tak lebih dari tolok ukur untuk menilai sifat sebuah "
+        "cara. Baru setelah pertanyaan \"untuk apa\" diajukan, efisiensi bisa "
+        "dinilai baik atau buruk. Namun dalam perdebatan sekarang, tidak sedikit "
+        "keadaan di mana tingginya efisiensi itu sendiri diperlakukan sebagai "
+        "dasar kebenaran.\n\n"
+        "Misalnya, penyederhanaan prosedur administrasi kerap dijalankan atas "
+        "nama efisiensi. Prosedur menjadi cepat itu sendiri tentu patut disambut. "
+        "Tetapi jika penghapusan terus berjalan tanpa mempertanyakan untuk apa "
+        "sebenarnya prosedur itu dulu diadakan, kesempatan memeriksa itu sendiri "
+        "akan lenyap. Waktu penelaahan yang terkandung di dalam kelambatan "
+        "digeneralisasi begitu saja sebagai pemborosan.\n\n"
+        "Yang ingin saya tekankan di sini: menentang efisiensi bukanlah tujuannya. "
+        "Masalahnya terletak pada saat efisiensi naik menempati posisi tujuan, "
+        "perdebatan mengenai tujuan itu sendiri menjadi tidak diperlukan lagi. "
+        "Orang berlomba hanya pada seberapa cepat sesuatu bisa dikerjakan, tanpa "
+        "membicarakan apa yang hendak dicapai. Dan karena perbandingan kecepatan "
+        "bisa ditunjukkan dengan angka, perdebatan tampak mudah selesai.\n\n"
+        "Kecenderungan menganggap yang bisa dinyatakan dengan angka lebih penting "
+        "daripada yang tidak, justru menguat seiring majunya teknologi pengukuran. "
+        "Justru karena itulah dibutuhkan usaha untuk menahan hal-hal yang tak "
+        "terukur agar tetap berada di meja perdebatan. Jika usaha itu diabaikan, "
+        "kita akan dikelilingi oleh \"tujuan-tujuan buruk yang dicapai dengan cepat\".",
         [
-            ("現代社会で何が困難になっていますか。", ["真実と虚偽を見分けること", "お金を稼ぐこと", "友達を作ること", "仕事を見つけること"], 0),
-            ("人々はどのように根拠のない噂を扱っていますか。", ["まるで正しい情報であるかのように拡散させる", "すぐに否定する", "無視する", "警察に報告する"], 0),
-            ("筆者が求めていることは何ですか。", ["情報を批判的に読み解く力", "もっと多くの情報", "政府の規制", "テレビの禁止"], 0),
+            (
+                "筆者が効率について最も問題視しているのはどの点か。",
+                [
+                    "効率化が遅すぎること",
+                    "効率が目的の位置に繰り上がり、目的の議論が消えること",
+                    "効率を測る技術が未熟なこと",
+                    "行政手続きが複雑すぎること",
+                ],
+                1,
+            ),
+            (
+                "筆者は効率化そのものについてどう述べているか。",
+                [
+                    "常に反対すべきである",
+                    "反対することが目的ではない",
+                    "数値で測れないので無意味だ",
+                    "行政には適用できない",
+                ],
+                1,
+            ),
+            (
+                "測定技術が進むと何が起きると筆者は言うか。",
+                [
+                    "測れないものが軽視される傾向が強まる",
+                    "議論が丁寧になる",
+                    "効率の定義が明確になる",
+                    "手続きが複雑になる",
+                ],
+                0,
+            ),
         ],
     ),
     (
@@ -8692,6 +8901,32 @@ N1_ENTRIES = [
 ]
 
 
+# Authoring has leaked stray Cyrillic and Hangul into Japanese text eight
+# times now, always the same shape: a foreign word followed by a
+# self-correction, as if the writer slipped mid-sentence. Choukai has
+# carried this guard for a while; Dokkai did not, and the very first
+# rewrite pass here produced two more leaks (「그…そうした」, 「материал…いや、」)
+# that nothing else would have caught — the JSON stays valid and the app
+# renders the garbage without complaint.
+#
+# Latin belongs in Japanese often enough (「血液型はO型」, 「SNS」, 「CD」) that
+# only three things are ever wrong here: Cyrillic, Hangul, or a run of
+# three or more lowercase Latin letters.
+_CYRILLIC = re.compile(r'[Ѐ-ӿ]')
+_HANGUL = re.compile(r'[가-힯ᄀ-ᇿ]')
+_LATIN_WORD = re.compile(r'[a-z]{3,}')
+
+
+def assert_japanese(text, where):
+    for label, pattern in (('Cyrillic', _CYRILLIC), ('Hangul', _HANGUL),
+                           ('a lowercase Latin word', _LATIN_WORD)):
+        m = pattern.search(text)
+        assert not m, (
+            f"{where} contains {label}: "
+            f"...{text[max(0, m.start() - 14):m.end() + 14]}..."
+        )
+
+
 def build_entries(entries, level_key, titles):
     assert [e[1] for e in entries] == titles, (
         f"{level_key}: authored titles don't match the locked list, in order"
@@ -8699,8 +8934,12 @@ def build_entries(entries, level_key, titles):
     result = []
     for id_suffix, title, passage_ja, passage_tr, questions in entries:
         entry_id = f"dokkai_{id_suffix}"
+        assert_japanese(passage_ja, f"{entry_id} passage")
         built_questions = []
         for i, (prompt, options, correct_index) in enumerate(questions):
+            assert_japanese(prompt, f"{entry_id}/{i} prompt")
+            for opt in options:
+                assert_japanese(opt, f"{entry_id}/{i} option {opt!r}")
             assert 0 <= correct_index < len(options), (
                 f"{entry_id}/{i}: correct_index out of range"
             )

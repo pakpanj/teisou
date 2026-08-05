@@ -3827,6 +3827,32 @@ what the on-device pass actually verified), `flutter build apk
   — worth scoping deliberately (e.g. shared/reusable images per scene
   type rather than one bespoke illustration per NPC line) rather than
   assuming 7468 unique uploads.
+- **Dokkai passages are far shorter than the exam they prepare for.**
+  Measured 2026-08-05 against the lengths a real JLPT paper uses:
+
+  | level | ours (mean) | real paper | short by |
+  |---|---|---|---|
+  | N5 | 69 | 80-150 | ~1x (fine) |
+  | N4 | 85 | 150-300 | 2x |
+  | N3 | 94 | 350-450 | 4x |
+  | N2 | 97 | 500-900 | 5x |
+  | N1 | 109 → 123 | 1000-1400 | 9x |
+
+  This is not a cosmetic gap. At real length the answer stops being
+  findable by scanning for a keyword and starts requiring the reader to
+  hold an argument across paragraphs — which is precisely the skill the
+  upper-level papers test. A learner drilled only on 109-character texts
+  is not being prepared for the paper they will sit, however many
+  passages they complete.
+
+  **Three N1 passages have been rewritten at real length so far**
+  (`soushitsu_essei` 689, `jikan_no_mujou` 580, `shakai_hihyou` 547),
+  with questions deliberately written so no single sentence answers them.
+  That leaves 97 N1, and all of N2/N3/N4, still short. Rewriting them is
+  straightforward but genuinely large — roughly 100,000 characters of
+  Japanese for N1 alone — so treat it as a standing content debt, not a
+  task that finishes in one pass.
+
 - Word counts per category are curated, not padded to a target — they
   range from 5 (`musim`, a genuinely small closed set) to 22
   (`hari_bulan`, which deliberately includes all 7 days + all 12 months
