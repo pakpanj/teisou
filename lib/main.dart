@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'core/navigation/tts_stop_observer.dart';
 import 'core/providers.dart';
 import 'core/theme/app_theme.dart';
 import 'data/models/app_theme_mode.dart';
@@ -57,11 +58,55 @@ Future<void> _initializeMobileAds() async {
   }
 }
 
-class KanaMasterApp extends ConsumerWidget {
+class KanaMasterApp extends ConsumerStatefulWidget {
   const KanaMasterApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<KanaMasterApp> createState() => _KanaMasterAppState();
+}
+
+/// Stateful only to own the two things that have to outlive a rebuild and
+/// stop Japanese speech the app would otherwise keep reading aloud after
+/// the learner has moved on: the navigator observer, and the app
+/// lifecycle hook. See [TtsStopObserver] for why this is handled here
+/// rather than in each of the eleven speaking screens.
+class _KanaMasterAppState extends ConsumerState<KanaMasterApp>
+    with WidgetsBindingObserver {
+  // Built once and kept: a fresh list on every theme rebuild would make
+  // Navigator detach and re-attach its observers for no reason.
+  late final List<NavigatorObserver> _navigatorObservers = [
+    TtsStopObserver(_stopSpeech),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  void _stopSpeech() {
+    // Navigation and lifecycle transitions must not be able to fail
+    // because a TTS engine misbehaved, and there is nothing useful to do
+    // about it here anyway.
+    ref.read(ttsServiceProvider).stop().catchError((_) {});
+  }
+
+  /// Pressing home mid-sentence used to leave the phone reading Japanese
+  /// out loud with the app off screen.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed) _stopSpeech();
+    super.didChangeAppLifecycleState(state);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     // Watched, not read: switching the mode in ThemeScreen has to repaint
     // the whole app immediately, the same way languageProvider does.
     final themeMode = ref.watch(themeModeProvider);
@@ -71,6 +116,7 @@ class KanaMasterApp extends ConsumerWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeMode.material,
+      navigatorObservers: _navigatorObservers,
       home: const HomeScreen(),
     );
   }
