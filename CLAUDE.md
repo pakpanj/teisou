@@ -6012,6 +6012,27 @@ Verified on device again after this batch: the level screen shows N5/N4/N3
 at "20 klip" each with N2/N1 "Segera", and an N3 clip opens with its
 inference-style question and four plausible options.
 
+**Completed to all five levels (2026-08-05): 100 clips, 186 questions,
+20 per level.** N2 works in workplace, public-announcement and news
+registers and asks what a speaker *concluded* or *decided*; N1 uses
+lecture, interview and panel registers and asks for the speaker's
+underlying position or the argument's structure — the level where "what
+was said" and "what was meant" come apart. Script length rises with
+level as intended (mean characters: N5 59, N4 86, N3 110, N2 118,
+N1 134).
+
+**The `assert_japanese()` guard immediately earned itself.** Authoring
+N2/N1 leaked foreign text twice more — 「written…いえ、」 into an N2 clip and
+「данные…失礼、」 into an N1 clip — and the generator refused to build both
+times, naming the clip and the offending characters. Without it these
+would have shipped exactly like the first three did. **This is the value
+of a guard written the moment a class of bug is found, not later.**
+
+**Not device-verified:** the phone was disconnected from USB when this
+batch finished, so N2/N1 have not been tapped through. Nothing structural
+changed from the N4/N3 batch that *was* verified — only data was added
+through the same generator — but that is an inference, not a check.
+
 ### Image manifests handed to the user
 
 The 9,150 missing Storage images are itemised at

@@ -94,8 +94,51 @@ N3_TITLES = [
     "Menyampaikan Pesan dari Orang Lain",
 ]
 
-N2_TITLES = []
-N1_TITLES = []
+N2_TITLES = [
+    "Pengumuman Perubahan Rute Bus",
+    "Rapat Evaluasi Proyek",
+    "Menanggapi Keluhan Pelanggan",
+    "Kebijakan Kerja Jarak Jauh",
+    "Presentasi Hasil Survei",
+    "Negosiasi Tenggat Waktu",
+    "Wawancara tentang Pindah Karier",
+    "Penjelasan Prosedur Asuransi",
+    "Laporan Cuaca Ekstrem",
+    "Konsultasi Rencana Keuangan",
+    "Ulasan Buku di Radio",
+    "Menjelaskan Alasan Penundaan",
+    "Program Daur Ulang Lingkungan",
+    "Pengarahan Keselamatan Kerja",
+    "Menanggapi Kritik Atasan",
+    "Pengumuman Penarikan Produk",
+    "Rencana Renovasi Gedung",
+    "Wawancara Petani Lokal",
+    "Perubahan Sistem Antrean",
+    "Diskusi Anggaran Tahunan",
+]
+
+N1_TITLES = [
+    "Kuliah tentang Perubahan Demografi",
+    "Debat soal Kecerdasan Buatan",
+    "Ulasan Kebijakan Pendidikan",
+    "Wawancara Peneliti Iklim",
+    "Analisis Tren Konsumsi",
+    "Diskusi Etika Jurnalistik",
+    "Ceramah tentang Memori Kolektif",
+    "Perdebatan Pelestarian Warisan",
+    "Laporan Ekonomi Triwulan",
+    "Wawancara Sutradara Film",
+    "Kuliah tentang Bahasa yang Punah",
+    "Diskusi Reformasi Hukum",
+    "Analisis Perilaku Konsumen Digital",
+    "Ceramah tentang Arsitektur Kota",
+    "Perdebatan Sumber Energi",
+    "Wawancara Penulis Veteran",
+    "Kajian Dampak Otomatisasi",
+    "Diskusi Kesehatan Masyarakat",
+    "Ceramah tentang Seni Kontemporer",
+    "Analisis Kebijakan Transportasi",
+]
 
 for _name, _titles in [
     ("N5", N5_TITLES), ("N4", N4_TITLES), ("N3", N3_TITLES),

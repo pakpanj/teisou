@@ -1158,8 +1158,885 @@ N3_ENTRIES = [
         ],
     ),
 ]
-N2_ENTRIES = []
-N1_ENTRIES = []
+# N2 moves into workplace, public-announcement and news registers, and
+# starts asking what a speaker *concluded* or *decided* rather than what
+# was literally said — the shift the real N2 paper makes.
+N2_ENTRIES = [
+    (
+        "rute_bus",
+        "Pengumuman Perubahan Rute Bus",
+        "女：ご利用のお客様にお知らせいたします。来月一日より、五番系統の経路が"
+        "一部変更となります。市役所前を経由せず、中央病院を通る経路に変わります。"
+        "所要時間はこれまでより五分ほど短縮される見込みです。"
+        "なお、運賃の変更はございません。",
+        "Wanita: Pemberitahuan bagi para pengguna. Mulai tanggal satu bulan depan, "
+        "rute jalur nomor lima berubah sebagian. Tidak lagi melewati depan balai "
+        "kota, melainkan melalui Rumah Sakit Pusat. Waktu tempuh diperkirakan "
+        "berkurang sekitar lima menit. Adapun tarif tidak berubah.",
+        [
+            ("経路はどう変わりますか。",
+             ["市役所前を通るようになる", "中央病院を通るようになる",
+              "駅を通らなくなる", "変更はない"], 1),
+            ("運賃はどうなりますか。",
+             ["高くなる", "安くなる", "変わらない", "来月決まる"], 2),
+        ],
+    ),
+    (
+        "evaluasi_proyek",
+        "Rapat Evaluasi Proyek",
+        "男：今回の企画、売上は目標に届きませんでした。"
+        "女：ただ、若い層の反応は想定以上でしたよね。"
+        "男：ええ。数字だけ見れば失敗ですが、次につながる材料は得られたと思います。"
+        "女：では、方向性は維持したまま、宣伝の方法を見直すということで。"
+        "男：はい、その線で進めましょう。",
+        "Pria: Untuk proyek kali ini, penjualan tidak mencapai target. "
+        "Wanita: Tapi respons kalangan muda melebihi perkiraan, kan. "
+        "Pria: Ya. Kalau hanya melihat angka ini kegagalan, tapi saya rasa kita "
+        "dapat bahan untuk langkah berikutnya. "
+        "Wanita: Kalau begitu, arah tetap dipertahankan, cara promosinya ditinjau ulang. "
+        "Pria: Ya, mari lanjut dengan garis itu.",
+        [
+            ("二人は今回の企画をどう評価していますか。",
+             ["完全な失敗", "数字は届かないが収穫はあった",
+              "目標を大きく超えた", "評価できない"], 1),
+            ("次に何を変えますか。",
+             ["企画の方向性", "宣伝の方法", "担当者", "価格"], 1),
+        ],
+    ),
+    (
+        "keluhan_pelanggan",
+        "Menanggapi Keluhan Pelanggan",
+        "女：先ほどのお客様、かなりお怒りでしたね。"
+        "男：ええ。ただ、話を伺うと、対応が遅かったことより、"
+        "連絡がなかったことに不満を持たれていたようです。"
+        "女：確かに、途中経過をお伝えしていませんでした。"
+        "男：今後は、解決前でも状況をこまめにお知らせするようにしましょう。",
+        "Wanita: Pelanggan tadi cukup marah, ya. "
+        "Pria: Ya. Tapi setelah mendengarkan, tampaknya beliau tidak puas bukan "
+        "karena penanganannya lambat, melainkan karena tidak ada kabar. "
+        "Wanita: Benar, kita tidak menyampaikan perkembangannya. "
+        "Pria: Ke depan, mari kabari situasinya secara berkala meski belum selesai.",
+        [
+            ("お客様は何に一番不満でしたか。",
+             ["対応が遅かったこと", "連絡がなかったこと",
+              "値段が高かったこと", "態度が悪かったこと"], 1),
+            ("これからどうしますか。",
+             ["対応を速くする", "解決前でも状況を知らせる",
+              "担当者を替える", "返金する"], 1),
+        ],
+    ),
+    (
+        "kerja_jarak_jauh",
+        "Kebijakan Kerja Jarak Jauh",
+        "男：在宅勤務、続けたほうがいいと思いますか。"
+        "女：全面的に戻すのは現実的ではないでしょう。"
+        "ただ、新人の育成という点では、対面のほうが明らかに効率がいい。"
+        "男：では、週の半分は出社という形が妥当でしょうか。"
+        "女：そのあたりが落としどころだと思います。",
+        "Pria: Menurut Anda kerja dari rumah sebaiknya dilanjutkan? "
+        "Wanita: Mengembalikan sepenuhnya rasanya tidak realistis. "
+        "Namun dari sisi pembinaan karyawan baru, tatap muka jelas lebih efisien. "
+        "Pria: Kalau begitu, setengah minggu masuk kantor apakah wajar? "
+        "Wanita: Saya rasa di sekitar situlah titik temunya.",
+        [
+            ("女の人の意見はどれですか。",
+             ["全面的に在宅にする", "全面的に出社に戻す",
+              "半分ずつが妥当", "決められない"], 2),
+            ("対面が有利なのはどんな点ですか。",
+             ["費用", "新人の育成", "会議の速さ", "顧客対応"], 1),
+        ],
+    ),
+    (
+        "hasil_survei",
+        "Presentasi Hasil Survei",
+        "女：調査の結果をご報告します。利用者の満足度は昨年より三ポイント上昇しました。"
+        "一方、二十代の回答だけを見ると、わずかに低下しています。"
+        "自由記述では、操作が分かりにくいという指摘が最も多く見られました。"
+        "改善の優先順位は、この点に置くべきだと考えます。",
+        "Wanita: Saya laporkan hasil survei. Tingkat kepuasan pengguna naik tiga "
+        "poin dibanding tahun lalu. Sebaliknya, jika hanya melihat responden usia "
+        "dua puluhan, justru turun sedikit. Pada isian bebas, keluhan paling banyak "
+        "adalah pengoperasian yang sulit dipahami. Saya rasa prioritas perbaikan "
+        "harus diletakkan pada titik ini.",
+        [
+            ("二十代の満足度はどうでしたか。",
+             ["三ポイント上がった", "少し下がった", "変わらなかった", "大きく上がった"], 1),
+            ("何を優先して改善しますか。",
+             ["価格", "操作の分かりやすさ", "宣伝", "対応の速さ"], 1),
+        ],
+    ),
+    (
+        "negosiasi_tenggat",
+        "Negosiasi Tenggat Waktu",
+        "男：納期を一週間延ばしていただくことはできませんか。"
+        "女：うちも先方との約束がありますので、一週間は厳しいですね。"
+        "男：では、三日ではいかがでしょう。"
+        "女：三日でしたら、なんとか調整できると思います。"
+        "ただし、それ以上は難しいとお考えください。",
+        "Pria: Bisakah tenggat diperpanjang satu minggu? "
+        "Wanita: Kami juga punya janji dengan pihak sana, jadi satu minggu berat. "
+        "Pria: Kalau tiga hari bagaimana? "
+        "Wanita: Kalau tiga hari, rasanya bisa diatur. "
+        "Namun mohon dipahami lebih dari itu sulit.",
+        [
+            ("納期は何日延びますか。", ["三日", "五日", "一週間", "延びない"], 0),
+            ("女の人の立場はどうですか。",
+             ["自由に決められる", "先方との約束がある",
+              "延長に反対している", "興味がない"], 1),
+        ],
+    ),
+    (
+        "pindah_karier",
+        "Wawancara tentang Pindah Karier",
+        "女：長年勤めた会社を辞めるのは、迷いませんでしたか。"
+        "男：正直、給料のことを考えると不安はありました。"
+        "ただ、このまま定年まで同じ仕事を続ける自分を想像したときに、"
+        "後悔するほうが怖いと感じたんです。"
+        "女：決め手はご自身の気持ちだったんですね。",
+        "Wanita: Meninggalkan perusahaan tempat Anda lama bekerja, tidak ragu? "
+        "Pria: Terus terang, memikirkan gaji ada rasa cemas. "
+        "Tapi ketika membayangkan diri saya terus mengerjakan hal yang sama sampai "
+        "pensiun, saya merasa lebih takut menyesal. "
+        "Wanita: Jadi penentunya adalah perasaan Anda sendiri.",
+        [
+            ("男の人が転職を決めた理由は何ですか。",
+             ["給料が上がるから", "後悔するほうが怖かったから",
+              "会社が倒産したから", "家族に言われたから"], 1),
+            ("男の人の不安は何でしたか。",
+             ["人間関係", "収入", "住む場所", "健康"], 1),
+        ],
+    ),
+    (
+        "prosedur_asuransi",
+        "Penjelasan Prosedur Asuransi",
+        "男：保険金の請求には、まず所定の用紙をご提出いただきます。"
+        "その際、医師の診断書を添えてください。"
+        "書類がそろってから、審査に通常二週間ほどかかります。"
+        "不備があった場合は、その都度ご連絡いたしますので、"
+        "審査期間はさらに延びることになります。",
+        "Pria: Untuk klaim asuransi, pertama serahkan formulir yang ditentukan. "
+        "Saat itu, mohon lampirkan surat keterangan dokter. "
+        "Setelah dokumen lengkap, penelaahan biasanya memakan sekitar dua minggu. "
+        "Jika ada kekurangan, kami akan menghubungi setiap kali, sehingga masa "
+        "penelaahan akan bertambah lama.",
+        [
+            ("用紙と一緒に何が必要ですか。",
+             ["領収書", "医師の診断書", "身分証明書", "写真"], 1),
+            ("不備があるとどうなりますか。",
+             ["請求が無効になる", "審査期間が延びる",
+              "手数料がかかる", "すぐ支払われる"], 1),
+        ],
+    ),
+    (
+        "cuaca_ekstrem",
+        "Laporan Cuaca Ekstrem",
+        "女：今夜から明日未明にかけて、記録的な大雨が予想されます。"
+        "特に山沿いの地域では、土砂災害の危険が高まる見込みです。"
+        "河川の増水も懸念されますので、川の近くにお住まいの方は"
+        "早めの避難をご検討ください。不要不急の外出はお控えください。",
+        "Wanita: Dari malam ini hingga dini hari besok, diperkirakan hujan sangat "
+        "lebat yang memecahkan rekor. Terutama di wilayah sepanjang pegunungan, "
+        "bahaya tanah longsor diperkirakan meningkat. Kenaikan air sungai juga "
+        "dikhawatirkan, jadi warga yang tinggal di dekat sungai mohon "
+        "mempertimbangkan mengungsi lebih awal. Hindari bepergian yang tidak mendesak.",
+        [
+            ("どの地域が特に危険ですか。",
+             ["海の近く", "山沿い", "都市の中心", "駅の周辺"], 1),
+            ("川の近くの人はどうするべきですか。",
+             ["家にとどまる", "早めに避難する", "水を用意する", "窓を閉める"], 1),
+        ],
+    ),
+    (
+        "rencana_keuangan",
+        "Konsultasi Rencana Keuangan",
+        "男：老後に向けて、何から始めればいいでしょうか。"
+        "女：まず、毎月の支出を把握することです。"
+        "投資の話はその後で構いません。"
+        "男：やはり貯金より投資のほうがいいのでしょうか。"
+        "女：どちらが良いかではなく、目的と期間によって選ぶものです。",
+        "Pria: Untuk masa tua, sebaiknya mulai dari mana? "
+        "Wanita: Pertama, pahami pengeluaran bulanan Anda. "
+        "Soal investasi bisa setelah itu. "
+        "Pria: Apakah investasi memang lebih baik daripada menabung? "
+        "Wanita: Bukan soal mana yang lebih baik, melainkan dipilih menurut tujuan "
+        "dan jangka waktunya.",
+        [
+            ("女の人は最初に何をすすめましたか。",
+             ["投資を始める", "支出を把握する", "保険に入る", "銀行を変える"], 1),
+            ("投資と貯金について女の人はどう言っていますか。",
+             ["投資のほうが良い", "貯金のほうが良い",
+              "目的と期間で選ぶ", "どちらも必要ない"], 2),
+        ],
+    ),
+    (
+        "ulasan_buku",
+        "Ulasan Buku di Radio",
+        "女：今週ご紹介する一冊は、地方の食文化を追った記録です。"
+        "文章は決して読みやすいとは言えません。"
+        "しかし、著者が十年かけて集めた聞き書きの厚みは、"
+        "他の本では味わえないものがあります。"
+        "手軽さを求める方には向きませんが、腰を据えて読む価値はあります。",
+        "Wanita: Satu buku yang saya perkenalkan minggu ini adalah catatan yang "
+        "menelusuri budaya kuliner daerah. Tulisannya sama sekali tidak bisa "
+        "dibilang mudah dibaca. Namun ketebalan hasil wawancara yang dikumpulkan "
+        "penulis selama sepuluh tahun punya sesuatu yang tidak bisa dirasakan di "
+        "buku lain. Tidak cocok bagi yang mencari bacaan ringan, tapi layak dibaca "
+        "dengan serius.",
+        [
+            ("この本の文章はどうですか。",
+             ["とても読みやすい", "読みやすいとは言えない",
+              "短くて簡単", "写真が中心"], 1),
+            ("どんな人に向いていますか。",
+             ["手軽さを求める人", "じっくり読む人", "子ども", "料理を作る人"], 1),
+        ],
+    ),
+    (
+        "alasan_penundaan",
+        "Menjelaskan Alasan Penundaan",
+        "男：開催を延期することになった経緯をご説明します。"
+        "当初は会場の都合が理由だと考えておりましたが、"
+        "実際には出演者の日程調整がつかなかったことが決定的でした。"
+        "会場は確保できていましたので、その点は問題ではありません。",
+        "Pria: Saya jelaskan latar belakang keputusan menunda penyelenggaraan. "
+        "Semula kami mengira alasannya adalah kondisi tempat, tetapi sebenarnya "
+        "yang menentukan adalah tidak tercapainya penyesuaian jadwal para pengisi "
+        "acara. Tempat sudah berhasil diamankan, jadi hal itu bukan masalah.",
+        [
+            ("延期の決定的な理由は何でしたか。",
+             ["会場が取れなかった", "出演者の日程が合わなかった",
+              "参加者が少なかった", "天気が悪かった"], 1),
+            ("会場についてはどうでしたか。",
+             ["確保できていた", "確保できなかった", "変更した", "まだ探している"], 0),
+        ],
+    ),
+    (
+        "daur_ulang",
+        "Program Daur Ulang Lingkungan",
+        "女：分別の徹底を呼びかけていますが、なかなか浸透しませんね。"
+        "男：ルールが細かすぎるという声もあります。"
+        "女：ただ、簡単にすれば再利用できる資源が減ってしまう。"
+        "男：住民説明会を増やして、理由まで伝えることが先だと思います。",
+        "Wanita: Kami mengimbau pemilahan yang ketat, tapi sulit meresap ya. "
+        "Pria: Ada juga suara yang bilang aturannya terlalu rinci. "
+        "Wanita: Tapi kalau disederhanakan, sumber daya yang bisa didaur ulang berkurang. "
+        "Pria: Menurut saya yang didahulukan adalah memperbanyak sosialisasi warga "
+        "dan menyampaikan sampai ke alasannya.",
+        [
+            ("男の人は何をすべきだと言っていますか。",
+             ["ルールを簡単にする", "説明会を増やして理由を伝える",
+              "罰金を取る", "分別をやめる"], 1),
+            ("ルールを簡単にすると何が起きますか。",
+             ["費用が増える", "再利用できる資源が減る",
+              "住民が怒る", "何も変わらない"], 1),
+        ],
+    ),
+    (
+        "keselamatan_kerja",
+        "Pengarahan Keselamatan Kerja",
+        "男：作業前の点検を必ず行ってください。"
+        "特に、高所での作業では、命綱の取り付けを二人で確認することが原則です。"
+        "一人での確認は認められません。"
+        "また、体調がすぐれない場合は、無理をせず申し出てください。"
+        "作業を止める判断は、誰が行っても構いません。",
+        "Pria: Mohon selalu lakukan pemeriksaan sebelum bekerja. "
+        "Khususnya untuk pekerjaan di ketinggian, prinsipnya pemasangan tali "
+        "pengaman diperiksa oleh dua orang. Pemeriksaan seorang diri tidak diizinkan. "
+        "Selain itu, jika kondisi badan kurang baik, jangan memaksakan diri, laporkan. "
+        "Keputusan menghentikan pekerjaan boleh diambil oleh siapa pun.",
+        [
+            ("命綱の確認は何人で行いますか。",
+             ["一人", "二人", "三人", "決まりはない"], 1),
+            ("作業を止める判断はだれができますか。",
+             ["責任者だけ", "誰でもできる", "二人以上のとき", "医師だけ"], 1),
+        ],
+    ),
+    (
+        "kritik_atasan",
+        "Menanggapi Kritik Atasan",
+        "女：さっき部長に指摘されたこと、落ち込んでる。"
+        "男：内容は厳しかったけど、人格を否定されたわけじゃないよ。"
+        "女：そうだけど、みんなの前で言われたのがつらくて。"
+        "男：その点は確かに配慮が足りなかったと思う。"
+        "でも、指摘そのものは的を射ていたんじゃないかな。",
+        "Wanita: Soal yang ditegur manajer tadi, saya jadi murung. "
+        "Pria: Isinya memang keras, tapi bukan berarti kepribadianmu disangkal. "
+        "Wanita: Iya sih, tapi berat karena dikatakan di depan semua orang. "
+        "Pria: Untuk hal itu memang saya rasa kurang pertimbangan. "
+        "Tapi tegurannya sendiri bukankah tepat sasaran?",
+        [
+            ("男の人は指摘の内容についてどう思っていますか。",
+             ["間違っている", "的を射ている", "どうでもいい", "厳しすぎる"], 1),
+            ("男の人が問題だと認めたのはどの点ですか。",
+             ["指摘の内容", "みんなの前で言ったこと",
+              "部長の態度全体", "女の人の仕事"], 1),
+        ],
+    ),
+    (
+        "penarikan_produk",
+        "Pengumuman Penarikan Produk",
+        "女：このたび、一部の商品に不具合が見つかりましたのでお知らせいたします。"
+        "対象となるのは、三月から五月までに製造されたものです。"
+        "健康への影響は確認されておりませんが、念のため使用を中止し、"
+        "お手元の品をご返送ください。送料は当社が負担いたします。",
+        "Wanita: Kali ini kami umumkan bahwa ditemukan cacat pada sebagian produk. "
+        "Yang menjadi sasaran adalah yang diproduksi antara Maret hingga Mei. "
+        "Dampak terhadap kesehatan belum terkonfirmasi, namun demi kehati-hatian "
+        "mohon hentikan pemakaian dan kembalikan barang yang ada pada Anda. "
+        "Ongkos kirim ditanggung perusahaan kami.",
+        [
+            ("対象の商品はいつ作られたものですか。",
+             ["一月から三月", "三月から五月", "五月から七月", "全部"], 1),
+            ("送料はだれが払いますか。",
+             ["客", "会社", "半分ずつ", "店"], 1),
+        ],
+    ),
+    (
+        "renovasi_gedung",
+        "Rencana Renovasi Gedung",
+        "男：改修工事の期間中、業務はどうなりますか。"
+        "女：全面的に休むのではなく、階ごとに順番に進める予定です。"
+        "男：では、利用者への影響は限定的ということですね。"
+        "女：ええ。ただ、エレベーターが一基使えなくなる期間があるため、"
+        "混雑が予想されます。",
+        "Pria: Selama masa renovasi, bagaimana dengan operasional? "
+        "Wanita: Bukan berhenti total, rencananya dikerjakan bergiliran per lantai. "
+        "Pria: Jadi dampak ke pengguna terbatas ya. "
+        "Wanita: Ya. Hanya saja, ada periode satu lift tidak bisa dipakai, "
+        "sehingga diperkirakan padat.",
+        [
+            ("工事はどのように行いますか。",
+             ["全面的に休む", "階ごとに順番に", "夜だけ", "一気に終わらせる"], 1),
+            ("何が問題になりそうですか。",
+             ["騒音", "エレベーターの混雑", "費用", "駐車場"], 1),
+        ],
+    ),
+    (
+        "petani_lokal",
+        "Wawancara Petani Lokal",
+        "女：後継者不足が言われていますが、実感はありますか。"
+        "男：ええ。ただ、若い人が来ないというより、"
+        "来ても続けられる仕組みがないことが問題だと思っています。"
+        "収入が安定しなければ、いくら意欲があっても難しい。"
+        "女：受け入れる側の準備が問われているということですね。",
+        "Wanita: Katanya kekurangan penerus, apakah Anda merasakannya? "
+        "Pria: Ya. Tapi menurut saya masalahnya bukan anak muda tidak datang, "
+        "melainkan tidak ada sistem yang membuat mereka bisa bertahan setelah datang. "
+        "Kalau pendapatan tidak stabil, sekuat apa pun niatnya tetap sulit. "
+        "Wanita: Jadi yang dipertanyakan adalah kesiapan pihak yang menerima.",
+        [
+            ("男の人が考える問題は何ですか。",
+             ["若い人が来ないこと", "来ても続けられる仕組みがないこと",
+              "土地が足りないこと", "技術がないこと"], 1),
+            ("何が安定しないと難しいですか。",
+             ["天気", "収入", "人間関係", "設備"], 1),
+        ],
+    ),
+    (
+        "sistem_antrean",
+        "Perubahan Sistem Antrean",
+        "男：受付方法が変わったそうですね。"
+        "女：はい。これまでは並んでいただいていましたが、"
+        "今後は番号札をお取りいただく形になります。"
+        "男：待ち時間は短くなりますか。"
+        "女：待ち時間そのものは変わりません。"
+        "ただ、席を離れてお待ちいただけるようになります。",
+        "Pria: Katanya cara pendaftaran berubah. "
+        "Wanita: Ya. Selama ini Anda mengantre berdiri, mulai sekarang menjadi "
+        "mengambil nomor antrean. "
+        "Pria: Apakah waktu tunggu jadi lebih singkat? "
+        "Wanita: Waktu tunggunya sendiri tidak berubah. "
+        "Hanya saja, Anda bisa menunggu sambil meninggalkan tempat duduk.",
+        [
+            ("待ち時間はどうなりますか。",
+             ["短くなる", "長くなる", "変わらない", "予約制になる"], 2),
+            ("新しい方法の利点は何ですか。",
+             ["料金が安い", "席を離れて待てる", "予約できる", "優先される"], 1),
+        ],
+    ),
+    (
+        "anggaran_tahunan",
+        "Diskusi Anggaran Tahunan",
+        "女：来年度の予算ですが、広報費を削るという案が出ています。"
+        "男：短期的には効果が見えにくい費用ですからね。"
+        "女：ただ、削った翌年に問い合わせが激減した例もあります。"
+        "男：であれば、一律に削るのではなく、"
+        "効果が測れるものを残す形が現実的でしょう。",
+        "Wanita: Soal anggaran tahun depan, muncul usulan memangkas biaya humas. "
+        "Pria: Memang biaya yang efeknya sulit terlihat dalam jangka pendek. "
+        "Wanita: Tapi ada juga contoh di mana setahun setelah dipangkas, "
+        "pertanyaan masuk anjlok drastis. "
+        "Pria: Kalau begitu, bukan memangkas rata, tapi menyisakan yang efeknya "
+        "terukur rasanya lebih realistis.",
+        [
+            ("男の人の提案はどれですか。",
+             ["広報費を全部削る", "効果が測れるものを残す",
+              "予算を増やす", "来年決める"], 1),
+            ("削った場合、過去に何が起きましたか。",
+             ["売上が上がった", "問い合わせが激減した",
+              "何も起きなかった", "費用が増えた"], 1),
+        ],
+    ),
+]
+
+# N1 uses lecture, interview and panel registers, and asks for the
+# speaker's underlying position or the argument's structure — the level
+# where "what was said" and "what was meant" come apart.
+N1_ENTRIES = [
+    (
+        "demografi",
+        "Kuliah tentang Perubahan Demografi",
+        "男：人口減少をめぐる議論は、しばしば労働力の不足に集中しがちです。"
+        "しかし、真に検討すべきは、社会の前提そのものが揺らいでいる点でしょう。"
+        "たとえば、右肩上がりの成長を前提に設計された制度は、"
+        "人口が縮小する局面では機能しにくい。"
+        "数を補うことばかりを論じても、制度の設計思想を見直さなければ、"
+        "同じ問題が形を変えて現れるだけです。",
+        "Pria: Perdebatan seputar penurunan populasi kerap terpusat pada kekurangan "
+        "tenaga kerja. Namun yang sesungguhnya perlu ditelaah adalah goyahnya premis "
+        "masyarakat itu sendiri. Misalnya, sistem yang dirancang dengan premis "
+        "pertumbuhan yang terus menanjak sulit berfungsi pada fase populasi menyusut. "
+        "Sebanyak apa pun kita membahas soal menambal jumlah, jika filosofi rancangan "
+        "sistemnya tidak ditinjau ulang, masalah yang sama hanya akan muncul dalam "
+        "bentuk lain.",
+        [
+            ("話し手が最も重要だと考えているのは何ですか。",
+             ["労働力を増やすこと", "制度の設計思想を見直すこと",
+              "出生率を上げること", "移民を受け入れること"], 1),
+            ("話し手は現在の議論をどう見ていますか。",
+             ["十分である", "論点が偏っている",
+              "早すぎる", "終わっている"], 1),
+        ],
+    ),
+    (
+        "kecerdasan_buatan",
+        "Debat soal Kecerdasan Buatan",
+        "女：技術の進歩を止めることはできません。規制よりも活用を急ぐべきです。"
+        "男：私は逆に、急ぐことのほうが危ういと考えます。"
+        "問題は技術そのものではなく、責任の所在が曖昧なまま普及することです。"
+        "女：しかし、慎重になりすぎて機会を失う損失も無視できないでしょう。"
+        "男：それは承知の上です。ただ、失敗の代償が個人に降りかかる構造は"
+        "先に正すべきだと申し上げている。",
+        "Wanita: Kemajuan teknologi tidak bisa dihentikan. Daripada regulasi, "
+        "pemanfaatannya harus dipercepat. "
+        "Pria: Saya justru menganggap tergesa-gesa itulah yang berbahaya. "
+        "Masalahnya bukan teknologinya, melainkan penyebarannya sementara letak "
+        "tanggung jawab masih kabur. "
+        "Wanita: Tapi kerugian karena kehilangan kesempatan akibat terlalu hati-hati "
+        "juga tidak bisa diabaikan. "
+        "Pria: Itu saya pahami. Hanya saja saya menyatakan bahwa struktur di mana "
+        "harga kegagalan jatuh ke individu harus dibereskan lebih dulu.",
+        [
+            ("男の人が問題視しているのは何ですか。",
+             ["技術そのもの", "責任の所在が曖昧なこと",
+              "普及の速さだけ", "費用"], 1),
+            ("二人の意見の違いはどこにありますか。",
+             ["技術の価値", "何を優先して整えるか",
+              "規制の内容", "対象となる分野"], 1),
+        ],
+    ),
+    (
+        "kebijakan_pendidikan",
+        "Ulasan Kebijakan Pendidikan",
+        "女：今回の改革は、評価方法の多様化をうたっています。"
+        "理念としては歓迎すべきものです。"
+        "ただ、現場の教員数が変わらないまま評価項目だけが増えれば、"
+        "結局は形式的な処理に陥りかねません。"
+        "理念の正しさと、それを支える条件の整備は、別の問題として論じる必要があります。",
+        "Wanita: Reformasi kali ini mengusung diversifikasi metode penilaian. "
+        "Sebagai gagasan, itu patut disambut. "
+        "Namun jika jumlah guru di lapangan tidak berubah sementara butir penilaian "
+        "bertambah, ujungnya bisa jatuh menjadi pemrosesan yang formalitas belaka. "
+        "Kebenaran gagasan dan penyiapan syarat yang menopangnya perlu dibahas "
+        "sebagai dua hal yang berbeda.",
+        [
+            ("話し手は改革の理念をどう評価していますか。",
+             ["間違っている", "歓迎すべきである",
+              "判断できない", "時代遅れである"], 1),
+            ("話し手が懸念しているのは何ですか。",
+             ["理念が誤っていること", "条件が整わないまま項目が増えること",
+              "教員の反対", "費用の増加"], 1),
+        ],
+    ),
+    (
+        "peneliti_iklim",
+        "Wawancara Peneliti Iklim",
+        "男：予測の不確実性を理由に対策を先延ばしする議論をどうご覧になりますか。"
+        "女：不確実であることと、何も分からないことは同義ではありません。"
+        "幅を持った予測であっても、取るべき方向は十分に示されています。"
+        "むしろ、確実になるまで待つという姿勢自体が、"
+        "選択肢を狭めていくという点を見落としてはならないでしょう。",
+        "Pria: Bagaimana Anda memandang argumen yang menunda penanggulangan dengan "
+        "alasan ketidakpastian prediksi? "
+        "Wanita: Tidak pasti dan tidak tahu apa-apa bukanlah hal yang sama. "
+        "Sekalipun prediksinya berupa rentang, arah yang harus diambil sudah cukup "
+        "ditunjukkan. Justru sikap menunggu sampai pasti itu sendiri, kita tidak "
+        "boleh mengabaikan bahwa ia mempersempit pilihan.",
+        [
+            ("女の人の主張はどれですか。",
+             ["予測が確実になるまで待つべきだ", "不確実でも方向は示されている",
+              "予測は役に立たない", "対策は不要である"], 1),
+            ("待つ姿勢の問題点は何だと言っていますか。",
+             ["費用が増える", "選択肢が狭まる",
+              "信頼を失う", "研究が止まる"], 1),
+        ],
+    ),
+    (
+        "tren_konsumsi",
+        "Analisis Tren Konsumsi",
+        "男：所有から利用へ、という言葉が広く使われています。"
+        "ただ、統計を見ると、全世代で一様に進んでいるわけではない。"
+        "特に地方では、移動手段の制約から所有の優位は依然として大きい。"
+        "都市部の現象を全体の潮流と読み替えることには、慎重であるべきです。",
+        "Pria: Ungkapan dari memiliki ke memakai dipakai secara luas. "
+        "Namun jika melihat statistik, pergeseran itu tidak berlangsung seragam di "
+        "semua generasi. Khususnya di daerah, karena keterbatasan sarana transportasi, "
+        "keunggulan memiliki masih besar. Kita harus berhati-hati membaca fenomena "
+        "perkotaan sebagai arus keseluruhan.",
+        [
+            ("話し手は何に注意を促していますか。",
+             ["統計が古いこと", "都市部の現象を全体と見なすこと",
+              "所有が消えること", "地方の人口減少"], 1),
+            ("地方で所有が優位な理由は何ですか。",
+             ["価格が安いから", "移動手段の制約があるから",
+              "習慣が古いから", "情報が少ないから"], 1),
+        ],
+    ),
+    (
+        "etika_jurnalistik",
+        "Diskusi Etika Jurnalistik",
+        "女：速報性を重んじるあまり、確認が後回しになる例が目立ちます。"
+        "男：ただ、遅らせれば正確になるという単純な話でもない。"
+        "女：もちろんです。問題は、誤りが判明したあとの扱いでしょう。"
+        "訂正が元の記事と同じ重さで届かなければ、"
+        "読者の理解は最初の印象のまま残ってしまう。",
+        "Wanita: Karena terlalu mementingkan kecepatan, contoh di mana verifikasi "
+        "dikesampingkan makin menonjol. "
+        "Pria: Tapi bukan berarti sesederhana menunda lalu jadi akurat. "
+        "Wanita: Tentu saja. Masalahnya adalah penanganan setelah kekeliruan diketahui. "
+        "Jika ralat tidak sampai dengan bobot yang sama seperti artikel aslinya, "
+        "pemahaman pembaca akan tertinggal pada kesan pertama.",
+        [
+            ("女の人が最も問題視しているのは何ですか。",
+             ["速報を出すこと", "訂正が十分に届かないこと",
+              "記者の数", "読者の態度"], 1),
+            ("男の人はどんな指摘をしましたか。",
+             ["遅らせれば正確になるとは限らない", "速報をやめるべきだ",
+              "訂正は不要だ", "読者に責任がある"], 0),
+        ],
+    ),
+    (
+        "memori_kolektif",
+        "Ceramah tentang Memori Kolektif",
+        "男：ある出来事がどう記憶されるかは、起きた事実だけで決まるわけではありません。"
+        "誰がそれを語り継ぐ立場にあったかが、輪郭を形づくります。"
+        "記録が残っているから記憶されるのではなく、"
+        "記憶しようとする力が働いた結果として記録が残る。"
+        "この順序を取り違えると、沈黙している領域を見落とすことになります。",
+        "Pria: Bagaimana suatu peristiwa diingat tidak ditentukan hanya oleh fakta "
+        "yang terjadi. Siapa yang berada pada posisi mewariskan ceritanya itulah yang "
+        "membentuk garis besarnya. Bukan karena catatan tersisa lalu diingat, "
+        "melainkan catatan tersisa sebagai hasil bekerjanya daya untuk mengingat. "
+        "Jika urutan ini tertukar, kita akan melewatkan wilayah yang membisu.",
+        [
+            ("話し手の主張はどれですか。",
+             ["記録があるから記憶される", "記憶しようとする力が記録を残す",
+              "事実だけが重要である", "記憶は個人のものである"], 1),
+            ("順序を取り違えるとどうなりますか。",
+             ["記録が失われる", "沈黙している領域を見落とす",
+              "事実が変わる", "議論が終わる"], 1),
+        ],
+    ),
+    (
+        "pelestarian_warisan",
+        "Perdebatan Pelestarian Warisan",
+        "女：建物を当時のまま残すことが保存だと考えられがちです。"
+        "男：しかし、使われなくなった建物は急速に傷みます。"
+        "女：ええ。ですから、用途を変えてでも使い続けるほうが、"
+        "結果として長く残ることがある。"
+        "男：保存と活用を対立させる見方こそ、"
+        "見直されるべきなのかもしれません。",
+        "Wanita: Kerap dianggap bahwa melestarikan berarti membiarkan bangunan tetap "
+        "seperti aslinya. "
+        "Pria: Padahal bangunan yang tidak lagi dipakai rusak dengan cepat. "
+        "Wanita: Ya. Karena itu, terus memakainya meski dengan mengubah fungsi "
+        "kadang justru membuatnya bertahan lebih lama. "
+        "Pria: Justru cara pandang yang mempertentangkan pelestarian dan pemanfaatan "
+        "itulah yang mungkin perlu ditinjau ulang.",
+        [
+            ("二人の結論はどれですか。",
+             ["当時のまま残すべきだ", "保存と活用は対立しない",
+              "建物は壊すべきだ", "結論は出ていない"], 1),
+            ("使われない建物はどうなりますか。",
+             ["価値が上がる", "急速に傷む", "変わらない", "安全になる"], 1),
+        ],
+    ),
+    (
+        "ekonomi_triwulan",
+        "Laporan Ekonomi Triwulan",
+        "女：今期の成長率は前期を上回りました。"
+        "ただし、内訳を見ると、伸びの大半は一時的な要因によるものです。"
+        "設備投資は横ばいにとどまり、企業の先行き判断は依然として慎重です。"
+        "数字の改善をそのまま基調の転換と受け取るのは、時期尚早でしょう。",
+        "Wanita: Tingkat pertumbuhan periode ini melampaui periode sebelumnya. "
+        "Namun jika dilihat rinciannya, sebagian besar kenaikan berasal dari faktor "
+        "sementara. Investasi peralatan hanya mendatar, dan penilaian perusahaan "
+        "terhadap prospek masih berhati-hati. Menerima perbaikan angka begitu saja "
+        "sebagai pembalikan tren rasanya masih terlalu dini.",
+        [
+            ("成長の主な要因は何ですか。",
+             ["設備投資", "一時的な要因", "輸出", "消費の拡大"], 1),
+            ("話し手の判断はどれですか。",
+             ["基調が転換した", "転換と見るのは早い",
+              "悪化している", "判断できない"], 1),
+        ],
+    ),
+    (
+        "sutradara_film",
+        "Wawancara Sutradara Film",
+        "男：観客に分かりやすく伝えることを意識されますか。"
+        "女：分かりやすさを目的にすると、作品が説明に寄っていくんです。"
+        "私はむしろ、見終わったあとに残る違和感を大切にしたい。"
+        "その場で理解されなくても、何年か経って腑に落ちることがある。"
+        "そういう時間の幅を持てるのが映像の強みだと思っています。",
+        "Pria: Apakah Anda memikirkan penyampaian yang mudah dipahami penonton? "
+        "Wanita: Kalau kemudahan dijadikan tujuan, karyanya jadi condong ke penjelasan. "
+        "Saya justru ingin menjaga rasa janggal yang tersisa setelah menonton. "
+        "Meski tidak dipahami saat itu juga, beberapa tahun kemudian bisa saja mengena. "
+        "Bisa memiliki rentang waktu seperti itulah yang saya anggap kekuatan film.",
+        [
+            ("女の人は分かりやすさをどう考えていますか。",
+             ["最も重要である", "目的にすると説明的になる",
+              "全く不要である", "観客が決めること"], 1),
+            ("女の人が大切にしているのは何ですか。",
+             ["すぐ理解されること", "あとに残る違和感",
+              "興行成績", "批評家の評価"], 1),
+        ],
+    ),
+    (
+        "bahasa_punah",
+        "Kuliah tentang Bahasa yang Punah",
+        "男：言語が消えるとき、失われるのは単語の一覧ではありません。"
+        "その言語でしか区別されてこなかった世界の切り分け方が消えるのです。"
+        "翻訳できる部分だけを移し替えて保存したと考えるなら、"
+        "それは記録であって継承ではない。"
+        "話者の生活の中で使われ続けることと、"
+        "資料として残ることは、まったく別の事柄です。",
+        "Pria: Ketika sebuah bahasa lenyap, yang hilang bukanlah daftar kosakata. "
+        "Yang lenyap adalah cara memilah dunia yang selama ini hanya dibedakan dalam "
+        "bahasa itu. Jika kita menganggap telah melestarikan dengan memindahkan hanya "
+        "bagian yang bisa diterjemahkan, itu adalah pencatatan, bukan pewarisan. "
+        "Terus dipakai dalam kehidupan penuturnya dan tersisa sebagai bahan dokumentasi "
+        "adalah dua hal yang sama sekali berbeda.",
+        [
+            ("話し手によると、言語が消えると何が失われますか。",
+             ["単語の一覧", "世界の切り分け方", "文字", "音の記録"], 1),
+            ("記録と継承の違いは何ですか。",
+             ["費用がかかるかどうか", "生活の中で使われ続けるかどうか",
+              "誰が行うか", "量の多さ"], 1),
+        ],
+    ),
+    (
+        "reformasi_hukum",
+        "Diskusi Reformasi Hukum",
+        "女：条文を細かくすれば公正になる、という前提には疑問があります。"
+        "男：解釈の余地を残すと、恣意的な運用を招くという指摘もありますが。"
+        "女：ええ。ただ、想定外の事例が必ず生じる以上、"
+        "余地をなくすことは不可能です。"
+        "重要なのは、判断の理由が公開され、検証できることではないでしょうか。",
+        "Wanita: Saya meragukan premis bahwa merinci pasal akan membuatnya adil. "
+        "Pria: Ada juga yang menunjukkan bahwa menyisakan ruang tafsir mengundang "
+        "penerapan yang sewenang-wenang. "
+        "Wanita: Ya. Tapi selama kasus di luar dugaan pasti muncul, menghapus ruang "
+        "itu mustahil. Yang penting bukankah alasan putusannya dipublikasikan dan "
+        "dapat diperiksa?",
+        [
+            ("女の人が最も重視しているのは何ですか。",
+             ["条文を細かくすること", "判断の理由が検証できること",
+              "解釈をなくすこと", "罰を重くすること"], 1),
+            ("女の人はなぜ余地をなくせないと言いますか。",
+             ["費用がかかるから", "想定外の事例が必ず生じるから",
+              "国民が反対するから", "前例がないから"], 1),
+        ],
+    ),
+    (
+        "konsumen_digital",
+        "Analisis Perilaku Konsumen Digital",
+        "男：選択肢が増えれば満足度も上がると考えられてきました。"
+        "しかし実際には、比較に費やす労力が増えるほど、"
+        "決定後の満足は下がる傾向が見られます。"
+        "つまり、豊富さそのものが価値なのではなく、"
+        "選び終えられる設計になっているかどうかが問われている。",
+        "Pria: Selama ini dianggap bahwa bertambahnya pilihan menaikkan kepuasan. "
+        "Namun kenyataannya, makin besar tenaga yang dihabiskan untuk membandingkan, "
+        "makin terlihat kecenderungan kepuasan setelah memutuskan justru menurun. "
+        "Artinya, bukan kelimpahan itu sendiri yang bernilai, melainkan yang "
+        "dipertanyakan adalah apakah rancangannya memungkinkan orang selesai memilih.",
+        [
+            ("話し手の結論はどれですか。",
+             ["選択肢は多いほどよい", "選び終えられる設計が重要",
+              "選択肢をなくすべき", "価格が最も重要"], 1),
+            ("比較の労力が増えると何が起きますか。",
+             ["満足が上がる", "満足が下がる", "購入が増える", "変化はない"], 1),
+        ],
+    ),
+    (
+        "arsitektur_kota",
+        "Ceramah tentang Arsitektur Kota",
+        "女：広場をつくれば人が集まる、という発想は素朴すぎます。"
+        "人が滞在するかどうかを決めるのは、面積ではなく、"
+        "腰を下ろせる場所が影の中にあるかといった、きわめて具体的な条件です。"
+        "設計図の上で美しい空間が、実際には誰にも使われないという例は"
+        "枚挙にいとまがありません。",
+        "Wanita: Gagasan bahwa membuat alun-alun akan mengumpulkan orang terlalu naif. "
+        "Yang menentukan orang betah atau tidak bukanlah luasnya, melainkan syarat "
+        "yang sangat konkret seperti apakah ada tempat duduk yang berada di bawah "
+        "bayangan. Contoh ruang yang indah di atas gambar rancangan tapi nyatanya "
+        "tidak dipakai siapa pun tak terhitung banyaknya.",
+        [
+            ("人の滞在を決めるのは何だと言っていますか。",
+             ["広さ", "具体的な条件", "デザインの美しさ", "費用"], 1),
+            ("話し手は設計図中心の発想をどう見ていますか。",
+             ["正しい", "不十分である", "新しい", "費用が高い"], 1),
+        ],
+    ),
+    (
+        "sumber_energi",
+        "Perdebatan Sumber Energi",
+        "男：安定供給を重視するなら、選択肢を絞るべきではありません。"
+        "女：ただ、分散させれば安心という発想も危うい。"
+        "それぞれの供給網が同じ弱点を抱えていれば、"
+        "数を増やしても同時に止まります。"
+        "男：確かに、独立性の低い分散は分散とは言えませんね。",
+        "Pria: Kalau mementingkan pasokan yang stabil, seharusnya pilihan tidak "
+        "dipersempit. "
+        "Wanita: Namun gagasan bahwa menyebarkan berarti aman juga berbahaya. "
+        "Jika masing-masing jaringan pasokan menyimpan kelemahan yang sama, "
+        "sebanyak apa pun jumlahnya akan berhenti bersamaan. "
+        "Pria: Benar, penyebaran yang rendah kemandiriannya memang tidak bisa "
+        "disebut penyebaran.",
+        [
+            ("女の人が指摘した危険は何ですか。",
+             ["選択肢が少ないこと", "供給網が同じ弱点を持つこと",
+              "費用が高いこと", "技術が古いこと"], 1),
+            ("二人が最終的に一致したのはどの点ですか。",
+             ["数を増やせばよい", "独立性が伴わない分散は意味が薄い",
+              "一つに絞るべき", "議論を続ける"], 1),
+        ],
+    ),
+    (
+        "penulis_veteran",
+        "Wawancara Penulis Veteran",
+        "女：長く書き続けてこられた原動力は何でしょうか。"
+        "男：書きたいことがあるから書く、という段階はとうに過ぎました。"
+        "今は、書かないと分からないから書いている。"
+        "考えがまとまってから書くのではなく、"
+        "書くことでしか届かない場所があると知ってしまったんです。",
+        "Wanita: Apa yang menjadi tenaga penggerak Anda terus menulis sekian lama? "
+        "Pria: Tahap menulis karena ada yang ingin ditulis sudah lama saya lewati. "
+        "Sekarang saya menulis karena kalau tidak menulis saya tidak mengerti. "
+        "Bukan menulis setelah pikiran tersusun, melainkan saya terlanjur tahu bahwa "
+        "ada tempat yang hanya bisa dicapai dengan menulis.",
+        [
+            ("男の人は今なぜ書いていますか。",
+             ["書きたいことがあるから", "書かないと分からないから",
+              "頼まれるから", "生活のため"], 1),
+            ("男の人の考え方はどれですか。",
+             ["考えをまとめてから書く", "書くことで初めて届く場所がある",
+              "書くことに意味はない", "才能が全てである"], 1),
+        ],
+    ),
+    (
+        "dampak_otomatisasi",
+        "Kajian Dampak Otomatisasi",
+        "男：自動化によって職が失われるという議論は繰り返されてきました。"
+        "しかし歴史を振り返れば、消えたのは職業というより、"
+        "職業を構成していた作業の束です。"
+        "残された作業と新たに生じた作業がどう再編されるか、"
+        "そこに関与できるかどうかが、影響の大きさを左右してきました。",
+        "Pria: Perdebatan bahwa otomatisasi menghilangkan pekerjaan telah berulang. "
+        "Namun jika menengok sejarah, yang lenyap lebih tepat bukan profesinya, "
+        "melainkan kumpulan tugas yang menyusun profesi itu. Bagaimana tugas yang "
+        "tersisa dan tugas yang baru muncul disusun ulang, dan bisa-tidaknya seseorang "
+        "terlibat di situ, itulah yang selama ini menentukan besarnya dampak.",
+        [
+            ("話し手によると、実際に消えるのは何ですか。",
+             ["職業そのもの", "作業の束", "企業", "技能"], 1),
+            ("影響の大きさを左右するのは何ですか。",
+             ["技術の速さ", "再編に関与できるかどうか",
+              "政府の政策", "教育の年数"], 1),
+        ],
+    ),
+    (
+        "kesehatan_masyarakat",
+        "Diskusi Kesehatan Masyarakat",
+        "女：個人の心がけを説く啓発は、一定の効果はあります。"
+        "男：ただ、行動を変えられる余裕がある層にしか届かないという限界もある。"
+        "女：ええ。労働時間や食品価格といった条件を動かさずに"
+        "意識だけを問うのは、責任の置き場所を誤っているとも言えます。"
+        "男：構造に触れない啓発は、格差を広げかねません。",
+        "Wanita: Kampanye yang menyerukan kesadaran pribadi memang punya efek tertentu. "
+        "Pria: Tapi ada juga batasnya, ia hanya sampai pada lapisan yang punya kelonggaran "
+        "untuk mengubah perilaku. "
+        "Wanita: Ya. Menuntut kesadaran saja tanpa menggerakkan syarat seperti jam kerja "
+        "dan harga pangan bisa dibilang salah menempatkan tanggung jawab. "
+        "Pria: Kampanye yang tidak menyentuh struktur berpotensi melebarkan kesenjangan.",
+        [
+            ("二人の共通した見方はどれですか。",
+             ["啓発だけで十分である", "構造に触れない啓発には限界がある",
+              "啓発は無意味である", "個人の責任が全てである"], 1),
+            ("啓発が届きにくいのはどんな層ですか。",
+             ["情報を持たない層", "行動を変える余裕がない層",
+              "高齢の層", "都市の層"], 1),
+        ],
+    ),
+    (
+        "seni_kontemporer",
+        "Ceramah tentang Seni Kontemporer",
+        "男：難解だと言われる作品の多くは、"
+        "実は答えを隠しているわけではありません。"
+        "答えという形式そのものを前提にしていないのです。"
+        "何を意味するのかと問い続ける限り、"
+        "その問いに合う答えがないという事実だけが返ってくる。"
+        "問いの立て方を変えることが、鑑賞の入口になります。",
+        "Pria: Sebagian besar karya yang disebut sulit dipahami sebenarnya bukan "
+        "menyembunyikan jawaban. Karya itu memang tidak berangkat dari bentuk yang "
+        "bernama jawaban. Selama kita terus bertanya apa maknanya, yang kembali hanyalah "
+        "kenyataan bahwa tidak ada jawaban yang cocok dengan pertanyaan itu. "
+        "Mengubah cara menyusun pertanyaan itulah yang menjadi pintu masuk menikmatinya.",
+        [
+            ("話し手によると、難解な作品の特徴は何ですか。",
+             ["答えを隠している", "答えという形式を前提にしていない",
+              "技術が高い", "説明が長い"], 1),
+            ("鑑賞の入口は何だと言っていますか。",
+             ["解説を読むこと", "問いの立て方を変えること",
+              "何度も見ること", "作者に聞くこと"], 1),
+        ],
+    ),
+    (
+        "kebijakan_transportasi",
+        "Analisis Kebijakan Transportasi",
+        "女：道路を広げれば渋滞が緩和するという想定は、"
+        "しばしば裏切られてきました。"
+        "容量が増えると、それまで移動を控えていた需要が現れるためです。"
+        "男：つまり、渋滞は供給不足ではなく、"
+        "価格づけの問題だという見方もできますね。"
+        "女：ええ。何を無料で提供しているのかを問い直す必要があります。",
+        "Wanita: Asumsi bahwa memperlebar jalan akan meredakan kemacetan kerap "
+        "dikhianati kenyataan. Sebab ketika kapasitas bertambah, muncul permintaan "
+        "yang selama ini menahan diri bepergian. "
+        "Pria: Artinya, bisa juga dipandang bahwa kemacetan bukan soal kekurangan "
+        "pasokan, melainkan soal penetapan harga. "
+        "Wanita: Ya. Perlu dipertanyakan ulang apa yang selama ini kita sediakan gratis.",
+        [
+            ("道路を広げるとなぜ渋滞が残りますか。",
+             ["工事が長引くから", "控えていた需要が現れるから",
+              "車が大きくなるから", "人口が増えるから"], 1),
+            ("二人はどんな見方を示しましたか。",
+             ["供給を増やすべきだ", "価格づけの問題として捉える",
+              "道路を減らすべきだ", "結論は出ない"], 1),
+        ],
+    ),
+]
 
 
 # Everything the TTS speaks, and every option the learner reads, must be
