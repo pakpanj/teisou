@@ -286,10 +286,10 @@ class _ClanRanking extends ConsumerWidget {
                   IconButton(
                     tooltip: strings.leaveClanTooltip,
                     onPressed: () => onLeave(clan.name),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.logout,
                       size: 18,
-                      color: Colors.redAccent,
+                      color: context.palette.errorRed,
                     ),
                   ),
                 ],

@@ -86,7 +86,7 @@ class _LevelCard extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
 
     return Material(
-      color: available ? context.palette.cardWhite : Colors.grey.shade100,
+      color: available ? context.palette.cardWhite : context.palette.mutedSurface,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),

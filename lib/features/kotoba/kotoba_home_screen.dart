@@ -127,7 +127,7 @@ class _CategoryCard extends ConsumerWidget {
         : null;
     final s = ref.watch(appStringsProvider);
     return Material(
-      color: available ? context.palette.cardWhite : Colors.grey.shade100,
+      color: available ? context.palette.cardWhite : context.palette.mutedSurface,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),

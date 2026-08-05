@@ -165,7 +165,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
             children: [
               _NavButton(
                 icon: Icons.arrow_back,
-                background: Colors.grey.shade300,
+                background: context.palette.progressTrack,
                 iconColor: context.palette.textNavy,
                 onTap: index > 0 ? _goPrev : null,
               ),

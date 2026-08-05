@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/providers.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../data/models/user_profile.dart';
 
 /// Dialog for joining an existing clan by its join code. A code that
@@ -93,7 +94,7 @@ class _JoinClanDialogState extends ConsumerState<JoinClanDialog> {
             const SizedBox(height: 4),
             Text(
               _error!,
-              style: const TextStyle(color: Colors.red, fontSize: 13),
+              style: TextStyle(color: context.palette.errorRed, fontSize: 13),
             ),
           ],
         ],

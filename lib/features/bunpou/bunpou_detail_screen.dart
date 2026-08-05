@@ -498,7 +498,7 @@ class _NavRow extends StatelessWidget {
         children: [
           _NavButton(
             icon: Icons.arrow_back,
-            background: Colors.grey.shade300,
+            background: context.palette.progressTrack,
             iconColor: context.palette.textNavy,
             onTap: hasPrev ? onPrev : null,
           ),

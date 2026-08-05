@@ -147,7 +147,7 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
             const SizedBox(height: 4),
             Text(
               _error!,
-              style: const TextStyle(color: Colors.red, fontSize: 13),
+              style: TextStyle(color: context.palette.errorRed, fontSize: 13),
             ),
           ],
         ],

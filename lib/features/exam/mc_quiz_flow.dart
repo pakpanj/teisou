@@ -185,7 +185,7 @@ class _OptionTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: state == _OptionState.neutral
-                  ? Colors.grey.shade300
+                  ? context.palette.progressTrack
                   : Colors.transparent,
             ),
           ),
