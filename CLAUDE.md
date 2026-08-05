@@ -3992,6 +3992,38 @@ what the on-device pass actually verified), `flutter build apk
 
 ## Verifying changes
 
+**Content integrity now has real tests (2026-08-05): 48 → 65.** Almost
+every check in this file's history was run once as a throwaway Python
+script and then lost — the Bunpou `_levels.json` drift, the Bab
+off-level check, the foreign-character scan. They are now permanent Dart
+tests that run with `flutter test`, so the same defect cannot ship twice:
+
+- `test/level_metadata_consistency_test.dart` — every module's
+  `_levels.json` count must equal the real dataset count, and a level may
+  only be `available` when it actually has content. This is the exact bug
+  that shipped unnoticed (Bunpou said 84 N5 patterns, the dataset held
+  89) and the exact bug that would have shipped again if Choukai's N2/N1
+  had been marked available while empty.
+- `test/choukai_content_integrity_test.dart` — no Cyrillic, Hangul or
+  lowercase-Latin word in any script, prompt or option (six real leaks in
+  four sessions); every question answerable; unique ids; every clip has a
+  translation for the review screen; and **scripts get longer as the
+  level rises**, so difficulty is in the material and not only the label.
+- `test/kaiwa_content_integrity_test.dart` — the largest module (1,700
+  dialogues) previously had no test at all. Every user turn needs ≥2
+  options and *exactly one* correct, or the dialogue is unwinnable and a
+  child just taps every button with nothing explaining why; every NPC
+  turn needs both a line and an `imagePath`, since the Japanese is never
+  written on screen and a missing image leaves the turn blank.
+- `bab_content_integrity_test.dart` gained off-level-pattern detection,
+  the levels-run-in-one-block rule, and a no-pattern-taught-twice check
+  (N5 excluded — it reuses its foundational particles by design).
+
+**These were verified by breaking things on purpose**, not just by going
+green: injecting a foreign word, an out-of-range `correctIndex`, and a
+wrong `_levels.json` count each produced a clear failure naming the exact
+entry. A test that has never failed has not been shown to work.
+
 `flutter analyze` and `flutter test` after any change; `flutter build apk
 --debug` before considering camera/native-dependency work done — that's
 the cheapest way to catch native Android build breaks (Gradle dependency
