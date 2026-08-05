@@ -3463,6 +3463,42 @@ what the on-device pass actually verified), `flutter build apk
   selesai", N4-N1 grey with a padlock and a "Terkunci" badge, and
   tapping a locked level showing "Selesaikan semua bab N5 dulu untuk
   membuka level ini." without navigating.
+- **The public profile's curriculum counters had no reconciliation**
+  (found and fixed 2026-08-05, reported from a device). The public
+  profile showed "Belum mulai kurikulum" while the learner's own Profile
+  tab correctly showed 2/358 — because the two are read from different
+  places, by design: your own tab reads local SharedPreferences (source
+  of truth, correct offline), while everyone else sees the denormalized
+  `babCompletedCount`/`babHighestOrder` on `leaderboard/{uid}`, since the
+  per-chapter list is owner-readable only.
+  The bug was that those counters were written at exactly one moment —
+  `_publishBabProgress` on passing a gate quiz — and reconciled nowhere.
+  One missed publish (offline at that instant, or chapters completed
+  before the counters existed) made the public profile permanently wrong,
+  with nothing anywhere able to notice or repair it.
+  Fixed with `_backfillBabProgress` in `leaderboard_providers.dart`,
+  deliberately shaped like the `backfillGlobalScore` call already sitting
+  next to it in `selfLeaderboardEntryProvider`: a write from a
+  read-shaped provider, so opening the leaderboard or the profile heals
+  your own row, a no-op once in sync, and best-effort. It re-reads the
+  doc after publishing rather than patching the in-memory copy, so what
+  the provider returns is what other people will actually see, and it
+  copies identity fields off the existing row so a repair can never
+  clobber a display name or avatar with a fallback. Because
+  `babCompletedIdsProvider` is now a dependency, completing a chapter
+  invalidates it and the republish happens on its own — the gate quiz's
+  own publish stays as the fast path, not the only path.
+  Verified on the Moto G52J by reopening the same public profile that
+  showed the bug, **without taking another quiz**: it went from "Belum
+  mulai kurikulum" to "2 dari 358 bab selesai / Terakhir: 2. Pekerjaan".
+  That is also what confirmed the diagnosis — the local data had been
+  right the whole time.
+  `test/leaderboard_bab_backfill_test.dart` pins the republish decision
+  (matching row left alone, the reported zeroed row repaired, a stale
+  count repaired, an equal count with a stale furthest chapter still
+  republished, a genuinely-unstarted learner not written to, and a doc
+  predating the fields being repairable). The Firestore write itself
+  needs a live backend and is covered by the device pass instead.
 - **The profile's curriculum card shows level standing, not just a
   total** (2026-08-05). `_MyScoreAndCurriculumCard` now renders a
   "Sedang mengerjakan Bab N5 — 2 dari 52 bab." line above the overall
