@@ -1,31 +1,90 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/physics.dart';
+import 'package:flutter/services.dart';
 
 /// Emotional state for the maneki-neko mascot shown across the app
 /// (exam results, paywall, coming-soon sheets, profile header).
 enum MascotMood { happy, excited, sleepy, proud, sad, cheering }
 
-/// Placeholder mascot rendering: an emoji + colored circle + simple looping
-/// animation, standing in for real per-mood SVG art. Once that art exists,
-/// swap the `Text(emoji)` below for `SvgPicture.asset(...)` per mood —
-/// callers don't need to change since they only see [MascotWidget].
+/// The mascot, with weight.
+///
+/// Two motions run at once. An idle loop per mood gives it a resting
+/// presence, and a **spring** answers every tap: it squashes on impact and
+/// springs back past its resting size before settling, the way a character
+/// in Clash of Clans reacts when you poke it.
+///
+/// The squash is real squash-and-stretch, not a uniform shrink — the body
+/// flattens vertically and spreads horizontally by the inverse, so its
+/// volume looks roughly conserved. It is anchored at the bottom so the
+/// mascot compresses **into the ground** instead of shrinking toward its own
+/// centre, which is what makes it read as something with weight standing on
+/// a surface rather than a picture being resized.
+///
+/// A [SpringSimulation] drives it rather than a curve: overshoot and settle
+/// then come from the physics, so poking it repeatedly compounds naturally
+/// instead of restarting a canned animation.
+///
+/// Still emoji art. The body is a single [Text] widget, and the whole point
+/// of keeping that in one place is that real per-mood art drops into
+/// [_buildBody] alone — every motion above already applies to whatever is
+/// returned there, so nothing else changes when the art arrives.
 class MascotWidget extends StatefulWidget {
   final MascotMood mood;
   final double size;
 
-  const MascotWidget({super.key, required this.mood, this.size = 140});
+  /// Called after the tap reaction fires. The reaction itself is not
+  /// optional — a mascot that ignores being touched is the thing this
+  /// widget exists to stop being.
+  final VoidCallback? onTap;
+
+  const MascotWidget({
+    super.key,
+    required this.mood,
+    this.size = 140,
+    this.onTap,
+  });
 
   @override
   State<MascotWidget> createState() => _MascotWidgetState();
 }
 
 class _MascotWidgetState extends State<MascotWidget>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
     vsync: this,
     duration: _durationFor(widget.mood),
   )..repeat(reverse: true);
+
+  /// Vertical scale of the body: 1.0 at rest, below 1 while squashed, and
+  /// briefly above 1 as the spring overshoots on the way back.
+  late final AnimationController _squash = AnimationController.unbounded(
+    vsync: this,
+    value: 1,
+  );
+
+  /// Tuned by feel rather than by physical units. Stiff enough that the
+  /// answer is immediate, damped enough that it settles in one visible
+  /// bounce instead of wobbling like jelly — a couple of oscillations reads
+  /// as playful, more reads as broken.
+  static final _spring = SpringDescription.withDampingRatio(
+    mass: 1,
+    stiffness: 420,
+    ratio: 0.42,
+  );
+
+  void _poke() {
+    // Snap to the compressed state first: the impact should be instant, and
+    // only the recovery is springy. Easing into the squash as well would
+    // make it feel like rubber rather than a knock.
+    _squash.value = 0.82;
+    _squash.animateWith(
+      SpringSimulation(_spring, _squash.value, 1, -2.4),
+    );
+    HapticFeedback.lightImpact();
+    widget.onTap?.call();
+  }
 
   static Duration _durationFor(MascotMood mood) {
     switch (mood) {
@@ -76,6 +135,7 @@ class _MascotWidgetState extends State<MascotWidget>
   @override
   void dispose() {
     _controller.dispose();
+    _squash.dispose();
     super.dispose();
   }
 
@@ -129,44 +189,91 @@ class _MascotWidgetState extends State<MascotWidget>
     final background = _background[widget.mood]!;
 
     return RepaintBoundary(
-      child: SizedBox(
-        width: widget.size,
-        height: widget.size,
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (context, child) {
-            final t = _controller.value;
-            return Stack(
-              alignment: Alignment.center,
-              clipBehavior: Clip.none,
-              children: [
-                Container(
-                  width: widget.size,
-                  height: widget.size,
-                  decoration: BoxDecoration(
-                    color: background,
-                    shape: BoxShape.circle,
+      child: GestureDetector(
+        // Opaque so the whole circle answers, not just the glyph's own
+        // bounds — a character you have to hit precisely does not feel
+        // touchable.
+        behavior: HitTestBehavior.opaque,
+        onTap: _poke,
+        child: SizedBox(
+          width: widget.size,
+          height: widget.size,
+          child: AnimatedBuilder(
+            animation: Listenable.merge([_controller, _squash]),
+            builder: (context, child) {
+              final t = _controller.value;
+              // Volume roughly conserved: flatten vertically and the body
+              // spreads sideways by the inverse. Without this the squash
+              // reads as the whole mascot moving away from the viewer.
+              final squashY = _squash.value;
+              final squashX = 1 / squashY;
+              return Stack(
+                alignment: Alignment.center,
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    width: widget.size,
+                    height: widget.size,
+                    decoration: BoxDecoration(
+                      color: background,
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                ),
-                if (widget.mood == MascotMood.proud) ..._sparkles(t),
-                Transform.translate(
-                  offset: _offsetFor(t),
-                  child: Transform.rotate(
-                    angle: _angleFor(t),
-                    child: Transform.scale(
-                      scale: _scaleFor(t),
-                      child: Text(
-                        emoji,
-                        style: TextStyle(fontSize: widget.size * 0.5),
+                  if (widget.mood == MascotMood.proud) ..._sparkles(t),
+                  Transform.translate(
+                    offset: _offsetFor(t),
+                    child: Transform.rotate(
+                      angle: _angleFor(t),
+                      child: Transform.scale(
+                        scale: _scaleFor(t),
+                        // Bottom-anchored: the mascot compresses into the
+                        // ground rather than toward its own centre, which
+                        // is what sells it as having weight.
+                        child: Transform(
+                          alignment: Alignment.bottomCenter,
+                          transform: Matrix4.diagonal3Values(
+                            squashX,
+                            squashY,
+                            1,
+                          ),
+                          child: _buildBody(emoji),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                if (widget.mood == MascotMood.sleepy) _buildZzz(t),
-              ],
-            );
-          },
+                  if (widget.mood == MascotMood.sleepy) _buildZzz(t),
+                ],
+              );
+            },
+          ),
         ),
+      ),
+    );
+  }
+
+  /// The mascot's body: real art when it exists, the emoji otherwise.
+  ///
+  /// Every motion above applies to whatever this returns, so supplying art
+  /// is purely a matter of dropping `assets/mascot/{mood}.png` into place —
+  /// no code change, and no risk of a half-finished set breaking a screen,
+  /// because each mood falls back on its own.
+  ///
+  /// Same never-crash contract as [AvatarPresetArt] and [KotobaImage]: a
+  /// missing or unreadable file shows the emoji rather than Flutter's broken
+  /// image icon. Art is expected to arrive one mood at a time, so a mixed
+  /// state has to look deliberate rather than broken.
+  Widget _buildBody(String emoji) {
+    return Image.asset(
+      'assets/mascot/${widget.mood.name}.png',
+      width: widget.size * 0.72,
+      height: widget.size * 0.72,
+      fit: BoxFit.contain,
+      // Art is drawn at the size it will be shown, so let Flutter decode it
+      // that way instead of holding a full-resolution bitmap per mood.
+      cacheWidth: (widget.size * 0.72 * 3).round(),
+      errorBuilder: (context, error, stack) => Text(
+        emoji,
+        style: TextStyle(fontSize: widget.size * 0.5),
       ),
     );
   }
