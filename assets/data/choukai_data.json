@@ -488,6 +488,305 @@
     ]
   },
   {
+    "id": "choukai_n5_cari_toilet",
+    "title": "Mencari Toilet di Stasiun",
+    "jlptLevel": "N5",
+    "audioText": "女：すみません、トイレはどこですか。男：あの階段の右にありますよ。女：ありがとうございます。男：でも今、掃除中かもしれません。二階にもありますよ。",
+    "audioTranslation": "Wanita: Permisi, toilet di mana? Pria: Ada di sebelah kanan tangga itu. Wanita: Terima kasih. Pria: Tapi sekarang mungkin sedang dibersihkan. Di lantai dua juga ada.",
+    "questions": [
+      {
+        "id": "choukai_n5_cari_toilet_q1",
+        "prompt": "トイレはどこにありますか。",
+        "options": [
+          "階段の左",
+          "階段の右",
+          "改札の前",
+          "出口の外"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_cari_toilet_q2",
+        "prompt": "男の人は何と言いましたか。",
+        "options": [
+          "二階にもある",
+          "今日は使えない",
+          "遠い",
+          "有料である"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_lama_kereta",
+    "title": "Berapa Lama Naik Kereta",
+    "jlptLevel": "N5",
+    "audioText": "男：東京まで何分ぐらいかかりますか。女：急行で四十分です。男：普通だと。女：一時間ぐらいかかります。男：じゃあ、急行に乗ります。",
+    "audioTranslation": "Pria: Ke Tokyo perlu berapa menit? Wanita: Dengan kereta ekspres empat puluh menit. Pria: Kalau kereta biasa? Wanita: Sekitar satu jam. Pria: Kalau begitu saya naik ekspres.",
+    "questions": [
+      {
+        "id": "choukai_n5_lama_kereta_q1",
+        "prompt": "急行で何分かかりますか。",
+        "options": [
+          "三十分",
+          "四十分",
+          "五十分",
+          "一時間"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_lama_kereta_q2",
+        "prompt": "男の人はどれに乗りますか。",
+        "options": [
+          "普通",
+          "急行",
+          "バス",
+          "決めていない"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_guru_baru",
+    "title": "Menanyakan Nama Guru Baru",
+    "jlptLevel": "N5",
+    "audioText": "女：新しい先生の名前を知っていますか。男：はい、山本先生です。女：何を教えますか。男：音楽です。来週から始まります。",
+    "audioTranslation": "Wanita: Kamu tahu nama guru baru? Pria: Tahu, Pak Yamamoto. Wanita: Mengajar apa? Pria: Musik. Mulai minggu depan.",
+    "questions": [
+      {
+        "id": "choukai_n5_guru_baru_q1",
+        "prompt": "新しい先生は何を教えますか。",
+        "options": [
+          "数学",
+          "音楽",
+          "英語",
+          "体育"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_guru_baru_q2",
+        "prompt": "いつから始まりますか。",
+        "options": [
+          "今日",
+          "明日",
+          "来週",
+          "来月"
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_kucing_tetangga",
+    "title": "Kucing Tetangga Masuk Rumah",
+    "jlptLevel": "N5",
+    "audioText": "男：また隣の猫が来ていますよ。女：本当ですね。窓が開いていましたから。男：どうしますか。女：おとなりに電話します。心配しているでしょう。",
+    "audioTranslation": "Pria: Kucing sebelah datang lagi. Wanita: Benar juga. Karena jendelanya terbuka. Pria: Bagaimana? Wanita: Saya telepon tetangga. Pasti sedang khawatir.",
+    "questions": [
+      {
+        "id": "choukai_n5_kucing_tetangga_q1",
+        "prompt": "猫はどうして入りましたか。",
+        "options": [
+          "ドアが開いていた",
+          "窓が開いていた",
+          "呼んだから",
+          "食べ物があった"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_kucing_tetangga_q2",
+        "prompt": "女の人は何をしますか。",
+        "options": [
+          "猫を外に出す",
+          "隣に電話する",
+          "何もしない",
+          "餌をあげる"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_pilih_duduk",
+    "title": "Memilih Tempat Duduk",
+    "jlptLevel": "N5",
+    "audioText": "女：どこに座りますか。男：窓の近くがいいです。女：あそこは日が当たりますよ。男：じゃあ、後ろの席にします。",
+    "audioTranslation": "Wanita: Mau duduk di mana? Pria: Dekat jendela enak. Wanita: Di sana kena sinar matahari lho. Pria: Kalau begitu, saya pilih kursi belakang.",
+    "questions": [
+      {
+        "id": "choukai_n5_pilih_duduk_q1",
+        "prompt": "男の人はどこに座りますか。",
+        "options": [
+          "窓の近く",
+          "後ろの席",
+          "前の席",
+          "真ん中"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_pilih_duduk_q2",
+        "prompt": "窓の近くはどうしてだめですか。",
+        "options": [
+          "うるさいから",
+          "日が当たるから",
+          "せまいから",
+          "こわれているから"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_musim_favorit",
+    "title": "Musim yang Paling Disukai",
+    "jlptLevel": "N5",
+    "audioText": "男：どの季節が一番好きですか。女：秋です。すずしいですから。男：夏は。女：夏は暑すぎます。冬も寒すぎます。",
+    "audioTranslation": "Pria: Musim apa yang paling kamu suka? Wanita: Musim gugur. Karena sejuk. Pria: Kalau musim panas? Wanita: Musim panas terlalu panas. Musim dingin juga terlalu dingin.",
+    "questions": [
+      {
+        "id": "choukai_n5_musim_favorit_q1",
+        "prompt": "女の人はどの季節が好きですか。",
+        "options": [
+          "春",
+          "夏",
+          "秋",
+          "冬"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "choukai_n5_musim_favorit_q2",
+        "prompt": "その理由は何ですか。",
+        "options": [
+          "暖かいから",
+          "すずしいから",
+          "花がきれいだから",
+          "休みが長いから"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_hitung_buku",
+    "title": "Menghitung Buku di Rak",
+    "jlptLevel": "N5",
+    "audioText": "女：本は全部で何冊ありますか。男：上の棚に十冊、下の棚に八冊です。女：じゃあ、十八冊ですね。男：はい、そうです。",
+    "audioTranslation": "Wanita: Bukunya seluruhnya ada berapa? Pria: Di rak atas sepuluh, di rak bawah delapan. Wanita: Jadi delapan belas ya. Pria: Ya, betul.",
+    "questions": [
+      {
+        "id": "choukai_n5_hitung_buku_q1",
+        "prompt": "本は全部で何冊ですか。",
+        "options": [
+          "十冊",
+          "八冊",
+          "十八冊",
+          "二十冊"
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_tugas_piket",
+    "title": "Tugas Piket Hari Ini",
+    "jlptLevel": "N5",
+    "audioText": "男：今日の掃除は誰ですか。女：田中さんと私です。男：何を掃除しますか。女：教室と廊下です。二十分ぐらいで終わります。",
+    "audioTranslation": "Pria: Piket hari ini siapa? Wanita: Tanaka dan saya. Pria: Membersihkan apa? Wanita: Kelas dan koridor. Selesai sekitar dua puluh menit.",
+    "questions": [
+      {
+        "id": "choukai_n5_tugas_piket_q1",
+        "prompt": "どこを掃除しますか。",
+        "options": [
+          "教室だけ",
+          "教室と廊下",
+          "廊下だけ",
+          "教室と階段"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_tugas_piket_q2",
+        "prompt": "どのぐらいかかりますか。",
+        "options": [
+          "十分",
+          "二十分",
+          "三十分",
+          "一時間"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_tiket_bioskop",
+    "title": "Membeli Tiket Bioskop",
+    "jlptLevel": "N5",
+    "audioText": "女：大人二枚ください。男：三千六百円です。女：学生ですが、安くなりますか。男：学生証があれば、一枚千二百円になります。",
+    "audioTranslation": "Wanita: Minta dua tiket dewasa. Pria: Tiga ribu enam ratus yen. Wanita: Saya pelajar, bisa lebih murah? Pria: Kalau ada kartu pelajar, satu tiket jadi seribu dua ratus yen.",
+    "questions": [
+      {
+        "id": "choukai_n5_tiket_bioskop_q1",
+        "prompt": "大人二枚はいくらですか。",
+        "options": [
+          "二千四百円",
+          "三千六百円",
+          "千二百円",
+          "千八百円"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_tiket_bioskop_q2",
+        "prompt": "学生証があるといくらになりますか。",
+        "options": [
+          "一枚千二百円",
+          "一枚千八百円",
+          "無料",
+          "変わらない"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "choukai_n5_kabar_teman_sakit",
+    "title": "Menanyakan Kabar Teman Sakit",
+    "jlptLevel": "N5",
+    "audioText": "男：山田さんは今日も休みですか。女：はい、まだ熱があるそうです。男：いつ来ますか。女：明後日から来ると言っていました。",
+    "audioTranslation": "Pria: Yamada hari ini libur lagi? Wanita: Ya, katanya masih demam. Pria: Kapan datang? Wanita: Katanya datang mulai lusa.",
+    "questions": [
+      {
+        "id": "choukai_n5_kabar_teman_sakit_q1",
+        "prompt": "山田さんはどうして休んでいますか。",
+        "options": [
+          "旅行に行った",
+          "熱がある",
+          "引っ越した",
+          "忙しい"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n5_kabar_teman_sakit_q2",
+        "prompt": "いつ来ますか。",
+        "options": [
+          "明日",
+          "明後日",
+          "来週",
+          "分からない"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
     "id": "choukai_n4_batal_hujan",
     "title": "Batal Pergi karena Hujan",
     "jlptLevel": "N4",
@@ -1102,6 +1401,316 @@
           "九時に駅",
           "九時に公園",
           "十時に駅"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n4_ganti_kelas",
+    "title": "Mengganti Kelas Bahasa",
+    "jlptLevel": "N4",
+    "audioText": "女：初級から中級に変えたいんですが。男：一度テストを受けていただくことになります。女：難しいでしょうか。男：初級を終えた方なら大丈夫だと思いますよ。結果は三日後にお知らせします。",
+    "audioTranslation": "Wanita: Saya ingin pindah dari kelas dasar ke menengah. Pria: Anda perlu mengikuti tes dulu. Wanita: Apakah sulit? Pria: Kalau sudah menyelesaikan kelas dasar, saya rasa tidak apa-apa. Hasilnya kami beri tahu tiga hari kemudian.",
+    "questions": [
+      {
+        "id": "choukai_n4_ganti_kelas_q1",
+        "prompt": "クラスを変えるには何が必要ですか。",
+        "options": [
+          "先生の許可",
+          "テストを受けること",
+          "お金を払うこと",
+          "書類だけ"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n4_ganti_kelas_q2",
+        "prompt": "結果はいつ分かりますか。",
+        "options": [
+          "その日",
+          "次の日",
+          "三日後",
+          "一週間後"
+        ],
+        "correctIndex": 2
+      }
+    ]
+  },
+  {
+    "id": "choukai_n4_cari_barang_toko",
+    "title": "Mencari Barang di Toko Serba Ada",
+    "jlptLevel": "N4",
+    "audioText": "男：すみません、ノートはどこにありますか。女：三階の文具売り場です。男：ペンも同じところですか。女：はい、同じ階です。ただ、今は改装中で二階に移っています。",
+    "audioTranslation": "Pria: Permisi, buku catatan ada di mana? Wanita: Di bagian alat tulis lantai tiga. Pria: Pena juga di tempat yang sama? Wanita: Ya, lantai yang sama. Hanya saja sekarang sedang renovasi jadi dipindah ke lantai dua.",
+    "questions": [
+      {
+        "id": "choukai_n4_cari_barang_toko_q1",
+        "prompt": "今、文具売り場はどこにありますか。",
+        "options": [
+          "一階",
+          "二階",
+          "三階",
+          "四階"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n4_cari_barang_toko_q2",
+        "prompt": "どうして場所が変わりましたか。",
+        "options": [
+          "人が多いから",
+          "改装中だから",
+          "閉店するから",
+          "新しい店だから"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n4_izin_pulang",
+    "title": "Meminta Izin Pulang Awal",
+    "jlptLevel": "N4",
+    "audioText": "女：すみません、今日は早く帰らせていただけませんか。男：どうかしましたか。女：子どもの学校から連絡がありまして。男：それは大変ですね。今の仕事だけ終わらせてから帰ってください。女：ありがとうございます。すぐ終わります。",
+    "audioTranslation": "Wanita: Permisi, bolehkah hari ini saya pulang lebih awal? Pria: Ada apa? Wanita: Ada kabar dari sekolah anak saya. Pria: Wah, itu berat. Selesaikan pekerjaan yang sekarang dulu baru pulang. Wanita: Terima kasih. Sebentar lagi selesai.",
+    "questions": [
+      {
+        "id": "choukai_n4_izin_pulang_q1",
+        "prompt": "女の人はどうして早く帰りますか。",
+        "options": [
+          "体調が悪い",
+          "子どもの学校から連絡があった",
+          "用事がある",
+          "電車が止まる"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n4_izin_pulang_q2",
+        "prompt": "男の人は何と言いましたか。",
+        "options": [
+          "すぐ帰っていい",
+          "今の仕事を終わらせてから帰る",
+          "帰ってはいけない",
+          "明日にする"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n4_resep_teman",
+    "title": "Menjelaskan Resep ke Teman",
+    "jlptLevel": "N4",
+    "audioText": "男：このスープ、どうやって作るの。女：野菜を切って、水から煮るだけよ。男：肉は入れないの。女：入れてもいいけど、野菜だけのほうが甘くなるの。男：へえ、今度作ってみる。",
+    "audioTranslation": "Pria: Sup ini cara membuatnya bagaimana? Wanita: Sayurnya dipotong, lalu direbus dari air dingin, itu saja. Pria: Tidak pakai daging? Wanita: Boleh saja pakai, tapi kalau sayur saja rasanya lebih manis. Pria: Oh begitu, lain kali saya coba buat.",
+    "questions": [
+      {
+        "id": "choukai_n4_resep_teman_q1",
+        "prompt": "女の人はどうして肉を入れませんか。",
+        "options": [
+          "高いから",
+          "野菜だけのほうが甘くなるから",
+          "嫌いだから",
+          "時間がかかるから"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n4_resep_teman_q2",
+        "prompt": "作り方はどうですか。",
+        "options": [
+          "とても複雑",
+          "野菜を切って煮るだけ",
+          "焼いてから煮る",
+          "一晩かかる"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n4_warna_cat",
+    "title": "Memilih Warna Cat Kamar",
+    "jlptLevel": "N4",
+    "audioText": "女：部屋の色、白と青とどっちがいいと思う。男：青は落ち着くけど、部屋が暗く見えるかもしれないね。女：じゃあ白のほうがいいかな。男：白にして、カーテンを青にしたらどう。女：それ、いい考えね。",
+    "audioTranslation": "Wanita: Warna kamar, menurutmu putih atau biru? Pria: Biru menenangkan, tapi mungkin membuat kamar terlihat gelap. Wanita: Kalau begitu putih lebih baik ya. Pria: Bagaimana kalau dindingnya putih, tirainya biru? Wanita: Itu ide bagus.",
+    "questions": [
+      {
+        "id": "choukai_n4_warna_cat_q1",
+        "prompt": "二人はどうすることにしましたか。",
+        "options": [
+          "全部青にする",
+          "壁を白、カーテンを青にする",
+          "全部白にする",
+          "まだ決めていない"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n4_warna_cat_q2",
+        "prompt": "青の問題点は何ですか。",
+        "options": [
+          "高い",
+          "部屋が暗く見える",
+          "汚れやすい",
+          "売っていない"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n4_kartu_perpustakaan",
+    "title": "Mengurus Kartu Perpustakaan",
+    "jlptLevel": "N4",
+    "audioText": "男：利用カードを作りたいのですが。女：住所が分かるものをお持ちですか。男：運転免許証があります。女：けっこうです。その場でお作りできます。五分ほどお待ちください。",
+    "audioTranslation": "Pria: Saya ingin membuat kartu anggota. Wanita: Apakah Anda membawa sesuatu yang menunjukkan alamat? Pria: Saya punya SIM. Wanita: Cukup. Bisa kami buatkan di tempat. Mohon tunggu sekitar lima menit.",
+    "questions": [
+      {
+        "id": "choukai_n4_kartu_perpustakaan_q1",
+        "prompt": "カードを作るのに何が必要ですか。",
+        "options": [
+          "写真",
+          "住所が分かるもの",
+          "お金",
+          "紹介状"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n4_kartu_perpustakaan_q2",
+        "prompt": "どのぐらい待ちますか。",
+        "options": [
+          "五分",
+          "十分",
+          "三十分",
+          "次の日"
+        ],
+        "correctIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "choukai_n4_bantu_tetangga",
+    "title": "Menawarkan Bantuan ke Tetangga",
+    "jlptLevel": "N4",
+    "audioText": "女：荷物が多いですね。持ちましょうか。男：いえ、大丈夫です。女：遠慮しないでください。二階まででしょう。男：じゃあ、この箱だけお願いします。助かります。",
+    "audioTranslation": "Wanita: Barangnya banyak ya. Saya bantu bawa? Pria: Tidak, tidak apa-apa. Wanita: Jangan sungkan. Sampai lantai dua kan? Pria: Kalau begitu, tolong kotak ini saja. Terbantu sekali.",
+    "questions": [
+      {
+        "id": "choukai_n4_bantu_tetangga_q1",
+        "prompt": "男の人は最初どう答えましたか。",
+        "options": [
+          "お願いした",
+          "断った",
+          "怒った",
+          "何も言わなかった"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n4_bantu_tetangga_q2",
+        "prompt": "結局どうなりましたか。",
+        "options": [
+          "全部持ってもらった",
+          "箱を一つ持ってもらった",
+          "自分で全部運んだ",
+          "あとで頼むことにした"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n4_film_ditonton",
+    "title": "Membicarakan Film yang Ditonton",
+    "jlptLevel": "N4",
+    "audioText": "男：昨日の映画、どうだった。女：話は分かりやすかったけど、最後が急に終わった感じがした。男：ぼくもそう思った。音楽はよかったよね。女：うん、あれは印象に残った。",
+    "audioTranslation": "Pria: Film kemarin bagaimana? Wanita: Ceritanya mudah dipahami, tapi terasa akhirnya tiba-tiba selesai. Pria: Saya juga berpikir begitu. Musiknya bagus ya. Wanita: Iya, itu berkesan.",
+    "questions": [
+      {
+        "id": "choukai_n4_film_ditonton_q1",
+        "prompt": "女の人が気になった点は何ですか。",
+        "options": [
+          "話が難しい",
+          "最後が急に終わった",
+          "音楽が悪い",
+          "長すぎる"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n4_film_ditonton_q2",
+        "prompt": "二人がよかったと言ったのは何ですか。",
+        "options": [
+          "演技",
+          "音楽",
+          "映像",
+          "話"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n4_atur_tempat_duduk",
+    "title": "Mengatur Tempat Duduk Acara",
+    "jlptLevel": "N4",
+    "audioText": "女：席は五十人分でいいでしょうか。男：申し込みは四十五人ですが、当日来る人もいますから。女：じゃあ、五十五にしておきます。男：そうですね。足りないより余るほうがいいです。",
+    "audioTranslation": "Wanita: Kursinya untuk lima puluh orang cukup? Pria: Pendaftar empat puluh lima orang, tapi ada juga yang datang mendadak. Wanita: Kalau begitu saya siapkan lima puluh lima. Pria: Ya. Lebih baik berlebih daripada kurang.",
+    "questions": [
+      {
+        "id": "choukai_n4_atur_tempat_duduk_q1",
+        "prompt": "席をいくつ用意しますか。",
+        "options": [
+          "四十五",
+          "五十",
+          "五十五",
+          "六十"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "id": "choukai_n4_atur_tempat_duduk_q2",
+        "prompt": "その理由は何ですか。",
+        "options": [
+          "会場が広いから",
+          "当日来る人もいるから",
+          "安いから",
+          "決まりだから"
+        ],
+        "correctIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "choukai_n4_arah_kantor_pos",
+    "title": "Menanyakan Arah ke Kantor Pos",
+    "jlptLevel": "N4",
+    "audioText": "男：この近くに郵便局はありますか。女：ええ、この道をまっすぐ行って、信号を左です。男：歩いてどのぐらいですか。女：五分ぐらいですね。でも今日は土曜日だから、窓口は昼までですよ。",
+    "audioTranslation": "Pria: Di dekat sini ada kantor pos? Wanita: Ada, lurus di jalan ini, lalu di lampu merah belok kiri. Pria: Jalan kaki berapa lama? Wanita: Sekitar lima menit. Tapi hari ini Sabtu, jadi loketnya hanya sampai siang.",
+    "questions": [
+      {
+        "id": "choukai_n4_arah_kantor_pos_q1",
+        "prompt": "郵便局はどちらですか。",
+        "options": [
+          "信号を右",
+          "信号を左",
+          "まっすぐだけ",
+          "駅の前"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "id": "choukai_n4_arah_kantor_pos_q2",
+        "prompt": "今日は何が問題ですか。",
+        "options": [
+          "遠いこと",
+          "窓口が昼までであること",
+          "休みであること",
+          "道が工事中"
         ],
         "correctIndex": 1
       }

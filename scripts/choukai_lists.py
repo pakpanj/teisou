@@ -46,6 +46,16 @@ N5_TITLES = [
     "Sakit Perut di Sekolah",
     "Rencana Hari Minggu",
     "Kelas Dimulai Jam Berapa",
+    "Mencari Toilet di Stasiun",
+    "Berapa Lama Naik Kereta",
+    "Menanyakan Nama Guru Baru",
+    "Kucing Tetangga Masuk Rumah",
+    "Memilih Tempat Duduk",
+    "Musim yang Paling Disukai",
+    "Menghitung Buku di Rak",
+    "Tugas Piket Hari Ini",
+    "Membeli Tiket Bioskop",
+    "Menanyakan Kabar Teman Sakit",
 ]
 
 N4_TITLES = [
@@ -69,6 +79,16 @@ N4_TITLES = [
     "Memilih Klub di Sekolah",
     "Menelepon karena Terlambat",
     "Rencana Piknik Bersama",
+    "Mengganti Kelas Bahasa",
+    "Mencari Barang di Toko Serba Ada",
+    "Meminta Izin Pulang Awal",
+    "Menjelaskan Resep ke Teman",
+    "Memilih Warna Cat Kamar",
+    "Mengurus Kartu Perpustakaan",
+    "Menawarkan Bantuan ke Tetangga",
+    "Membicarakan Film yang Ditonton",
+    "Mengatur Tempat Duduk Acara",
+    "Menanyakan Arah ke Kantor Pos",
 ]
 
 N3_TITLES = [

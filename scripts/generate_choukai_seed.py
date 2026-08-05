@@ -357,11 +357,192 @@ N5_ENTRIES = [
              ["八時", "八時半", "九時", "九時半"], 1),
         ],
     ),
+    (
+        "cari_toilet",
+        "Mencari Toilet di Stasiun",
+        "女：すみません、トイレはどこですか。"
+        "男：あの階段の右にありますよ。"
+        "女：ありがとうございます。"
+        "男：でも今、掃除中かもしれません。二階にもありますよ。",
+        "Wanita: Permisi, toilet di mana? "
+        "Pria: Ada di sebelah kanan tangga itu. "
+        "Wanita: Terima kasih. "
+        "Pria: Tapi sekarang mungkin sedang dibersihkan. Di lantai dua juga ada.",
+        [
+            ("トイレはどこにありますか。",
+             ["階段の左", "階段の右", "改札の前", "出口の外"], 1),
+            ("男の人は何と言いましたか。",
+             ["二階にもある", "今日は使えない", "遠い", "有料である"], 0),
+        ],
+    ),
+    (
+        "lama_kereta",
+        "Berapa Lama Naik Kereta",
+        "男：東京まで何分ぐらいかかりますか。"
+        "女：急行で四十分です。"
+        "男：普通だと。"
+        "女：一時間ぐらいかかります。"
+        "男：じゃあ、急行に乗ります。",
+        "Pria: Ke Tokyo perlu berapa menit? "
+        "Wanita: Dengan kereta ekspres empat puluh menit. "
+        "Pria: Kalau kereta biasa? "
+        "Wanita: Sekitar satu jam. "
+        "Pria: Kalau begitu saya naik ekspres.",
+        [
+            ("急行で何分かかりますか。",
+             ["三十分", "四十分", "五十分", "一時間"], 1),
+            ("男の人はどれに乗りますか。",
+             ["普通", "急行", "バス", "決めていない"], 1),
+        ],
+    ),
+    (
+        "guru_baru",
+        "Menanyakan Nama Guru Baru",
+        "女：新しい先生の名前を知っていますか。"
+        "男：はい、山本先生です。"
+        "女：何を教えますか。"
+        "男：音楽です。来週から始まります。",
+        "Wanita: Kamu tahu nama guru baru? "
+        "Pria: Tahu, Pak Yamamoto. "
+        "Wanita: Mengajar apa? "
+        "Pria: Musik. Mulai minggu depan.",
+        [
+            ("新しい先生は何を教えますか。",
+             ["数学", "音楽", "英語", "体育"], 1),
+            ("いつから始まりますか。",
+             ["今日", "明日", "来週", "来月"], 2),
+        ],
+    ),
+    (
+        "kucing_tetangga",
+        "Kucing Tetangga Masuk Rumah",
+        "男：また隣の猫が来ていますよ。"
+        "女：本当ですね。窓が開いていましたから。"
+        "男：どうしますか。"
+        "女：おとなりに電話します。心配しているでしょう。",
+        "Pria: Kucing sebelah datang lagi. "
+        "Wanita: Benar juga. Karena jendelanya terbuka. "
+        "Pria: Bagaimana? "
+        "Wanita: Saya telepon tetangga. Pasti sedang khawatir.",
+        [
+            ("猫はどうして入りましたか。",
+             ["ドアが開いていた", "窓が開いていた", "呼んだから", "食べ物があった"], 1),
+            ("女の人は何をしますか。",
+             ["猫を外に出す", "隣に電話する", "何もしない", "餌をあげる"], 1),
+        ],
+    ),
+    (
+        "pilih_duduk",
+        "Memilih Tempat Duduk",
+        "女：どこに座りますか。"
+        "男：窓の近くがいいです。"
+        "女：あそこは日が当たりますよ。"
+        "男：じゃあ、後ろの席にします。",
+        "Wanita: Mau duduk di mana? "
+        "Pria: Dekat jendela enak. "
+        "Wanita: Di sana kena sinar matahari lho. "
+        "Pria: Kalau begitu, saya pilih kursi belakang.",
+        [
+            ("男の人はどこに座りますか。",
+             ["窓の近く", "後ろの席", "前の席", "真ん中"], 1),
+            ("窓の近くはどうしてだめですか。",
+             ["うるさいから", "日が当たるから", "せまいから", "こわれているから"], 1),
+        ],
+    ),
+    (
+        "musim_favorit",
+        "Musim yang Paling Disukai",
+        "男：どの季節が一番好きですか。"
+        "女：秋です。すずしいですから。"
+        "男：夏は。"
+        "女：夏は暑すぎます。冬も寒すぎます。",
+        "Pria: Musim apa yang paling kamu suka? "
+        "Wanita: Musim gugur. Karena sejuk. "
+        "Pria: Kalau musim panas? "
+        "Wanita: Musim panas terlalu panas. Musim dingin juga terlalu dingin.",
+        [
+            ("女の人はどの季節が好きですか。",
+             ["春", "夏", "秋", "冬"], 2),
+            ("その理由は何ですか。",
+             ["暖かいから", "すずしいから", "花がきれいだから", "休みが長いから"], 1),
+        ],
+    ),
+    (
+        "hitung_buku",
+        "Menghitung Buku di Rak",
+        "女：本は全部で何冊ありますか。"
+        "男：上の棚に十冊、下の棚に八冊です。"
+        "女：じゃあ、十八冊ですね。"
+        "男：はい、そうです。",
+        "Wanita: Bukunya seluruhnya ada berapa? "
+        "Pria: Di rak atas sepuluh, di rak bawah delapan. "
+        "Wanita: Jadi delapan belas ya. "
+        "Pria: Ya, betul.",
+        [
+            ("本は全部で何冊ですか。",
+             ["十冊", "八冊", "十八冊", "二十冊"], 2),
+        ],
+    ),
+    (
+        "tugas_piket",
+        "Tugas Piket Hari Ini",
+        "男：今日の掃除は誰ですか。"
+        "女：田中さんと私です。"
+        "男：何を掃除しますか。"
+        "女：教室と廊下です。二十分ぐらいで終わります。",
+        "Pria: Piket hari ini siapa? "
+        "Wanita: Tanaka dan saya. "
+        "Pria: Membersihkan apa? "
+        "Wanita: Kelas dan koridor. Selesai sekitar dua puluh menit.",
+        [
+            ("どこを掃除しますか。",
+             ["教室だけ", "教室と廊下", "廊下だけ", "教室と階段"], 1),
+            ("どのぐらいかかりますか。",
+             ["十分", "二十分", "三十分", "一時間"], 1),
+        ],
+    ),
+    (
+        "tiket_bioskop",
+        "Membeli Tiket Bioskop",
+        "女：大人二枚ください。"
+        "男：三千六百円です。"
+        "女：学生ですが、安くなりますか。"
+        "男：学生証があれば、一枚千二百円になります。",
+        "Wanita: Minta dua tiket dewasa. "
+        "Pria: Tiga ribu enam ratus yen. "
+        "Wanita: Saya pelajar, bisa lebih murah? "
+        "Pria: Kalau ada kartu pelajar, satu tiket jadi seribu dua ratus yen.",
+        [
+            ("大人二枚はいくらですか。",
+             ["二千四百円", "三千六百円", "千二百円", "千八百円"], 1),
+            ("学生証があるといくらになりますか。",
+             ["一枚千二百円", "一枚千八百円", "無料", "変わらない"], 0),
+        ],
+    ),
+    (
+        "kabar_teman_sakit",
+        "Menanyakan Kabar Teman Sakit",
+        "男：山田さんは今日も休みですか。"
+        "女：はい、まだ熱があるそうです。"
+        "男：いつ来ますか。"
+        "女：明後日から来ると言っていました。",
+        "Pria: Yamada hari ini libur lagi? "
+        "Wanita: Ya, katanya masih demam. "
+        "Pria: Kapan datang? "
+        "Wanita: Katanya datang mulai lusa.",
+        [
+            ("山田さんはどうして休んでいますか。",
+             ["旅行に行った", "熱がある", "引っ越した", "忙しい"], 1),
+            ("いつ来ますか。",
+             ["明日", "明後日", "来週", "分からない"], 1),
+        ],
+    ),
 ]
 
 # N4 clips run longer than N5's and mix plain and polite speech, since the
 # real N4 paper starts expecting a learner to follow a change of plan
 # across several turns rather than catch one stated fact.
+
 N4_ENTRIES = [
     (
         "batal_hujan",
@@ -754,6 +935,203 @@ N4_ENTRIES = [
              ["みんなで作る", "各自で用意する", "店で買う", "持って行かない"], 1),
             ("何時にどこに集まりますか。",
              ["八時に公園", "九時に駅", "九時に公園", "十時に駅"], 1),
+        ],
+    ),
+    (
+        "ganti_kelas",
+        "Mengganti Kelas Bahasa",
+        "女：初級から中級に変えたいんですが。"
+        "男：一度テストを受けていただくことになります。"
+        "女：難しいでしょうか。"
+        "男：初級を終えた方なら大丈夫だと思いますよ。"
+        "結果は三日後にお知らせします。",
+        "Wanita: Saya ingin pindah dari kelas dasar ke menengah. "
+        "Pria: Anda perlu mengikuti tes dulu. "
+        "Wanita: Apakah sulit? "
+        "Pria: Kalau sudah menyelesaikan kelas dasar, saya rasa tidak apa-apa. "
+        "Hasilnya kami beri tahu tiga hari kemudian.",
+        [
+            ("クラスを変えるには何が必要ですか。",
+             ["先生の許可", "テストを受けること", "お金を払うこと", "書類だけ"], 1),
+            ("結果はいつ分かりますか。",
+             ["その日", "次の日", "三日後", "一週間後"], 2),
+        ],
+    ),
+    (
+        "cari_barang_toko",
+        "Mencari Barang di Toko Serba Ada",
+        "男：すみません、ノートはどこにありますか。"
+        "女：三階の文具売り場です。"
+        "男：ペンも同じところですか。"
+        "女：はい、同じ階です。ただ、今は改装中で二階に移っています。",
+        "Pria: Permisi, buku catatan ada di mana? "
+        "Wanita: Di bagian alat tulis lantai tiga. "
+        "Pria: Pena juga di tempat yang sama? "
+        "Wanita: Ya, lantai yang sama. Hanya saja sekarang sedang renovasi jadi "
+        "dipindah ke lantai dua.",
+        [
+            ("今、文具売り場はどこにありますか。",
+             ["一階", "二階", "三階", "四階"], 1),
+            ("どうして場所が変わりましたか。",
+             ["人が多いから", "改装中だから", "閉店するから", "新しい店だから"], 1),
+        ],
+    ),
+    (
+        "izin_pulang",
+        "Meminta Izin Pulang Awal",
+        "女：すみません、今日は早く帰らせていただけませんか。"
+        "男：どうかしましたか。"
+        "女：子どもの学校から連絡がありまして。"
+        "男：それは大変ですね。今の仕事だけ終わらせてから帰ってください。"
+        "女：ありがとうございます。すぐ終わります。",
+        "Wanita: Permisi, bolehkah hari ini saya pulang lebih awal? "
+        "Pria: Ada apa? "
+        "Wanita: Ada kabar dari sekolah anak saya. "
+        "Pria: Wah, itu berat. Selesaikan pekerjaan yang sekarang dulu baru pulang. "
+        "Wanita: Terima kasih. Sebentar lagi selesai.",
+        [
+            ("女の人はどうして早く帰りますか。",
+             ["体調が悪い", "子どもの学校から連絡があった",
+              "用事がある", "電車が止まる"], 1),
+            ("男の人は何と言いましたか。",
+             ["すぐ帰っていい", "今の仕事を終わらせてから帰る",
+              "帰ってはいけない", "明日にする"], 1),
+        ],
+    ),
+    (
+        "resep_teman",
+        "Menjelaskan Resep ke Teman",
+        "男：このスープ、どうやって作るの。"
+        "女：野菜を切って、水から煮るだけよ。"
+        "男：肉は入れないの。"
+        "女：入れてもいいけど、野菜だけのほうが甘くなるの。"
+        "男：へえ、今度作ってみる。",
+        "Pria: Sup ini cara membuatnya bagaimana? "
+        "Wanita: Sayurnya dipotong, lalu direbus dari air dingin, itu saja. "
+        "Pria: Tidak pakai daging? "
+        "Wanita: Boleh saja pakai, tapi kalau sayur saja rasanya lebih manis. "
+        "Pria: Oh begitu, lain kali saya coba buat.",
+        [
+            ("女の人はどうして肉を入れませんか。",
+             ["高いから", "野菜だけのほうが甘くなるから",
+              "嫌いだから", "時間がかかるから"], 1),
+            ("作り方はどうですか。",
+             ["とても複雑", "野菜を切って煮るだけ", "焼いてから煮る", "一晩かかる"], 1),
+        ],
+    ),
+    (
+        "warna_cat",
+        "Memilih Warna Cat Kamar",
+        "女：部屋の色、白と青とどっちがいいと思う。"
+        "男：青は落ち着くけど、部屋が暗く見えるかもしれないね。"
+        "女：じゃあ白のほうがいいかな。"
+        "男：白にして、カーテンを青にしたらどう。"
+        "女：それ、いい考えね。",
+        "Wanita: Warna kamar, menurutmu putih atau biru? "
+        "Pria: Biru menenangkan, tapi mungkin membuat kamar terlihat gelap. "
+        "Wanita: Kalau begitu putih lebih baik ya. "
+        "Pria: Bagaimana kalau dindingnya putih, tirainya biru? "
+        "Wanita: Itu ide bagus.",
+        [
+            ("二人はどうすることにしましたか。",
+             ["全部青にする", "壁を白、カーテンを青にする",
+              "全部白にする", "まだ決めていない"], 1),
+            ("青の問題点は何ですか。",
+             ["高い", "部屋が暗く見える", "汚れやすい", "売っていない"], 1),
+        ],
+    ),
+    (
+        "kartu_perpustakaan",
+        "Mengurus Kartu Perpustakaan",
+        "男：利用カードを作りたいのですが。"
+        "女：住所が分かるものをお持ちですか。"
+        "男：運転免許証があります。"
+        "女：けっこうです。その場でお作りできます。五分ほどお待ちください。",
+        "Pria: Saya ingin membuat kartu anggota. "
+        "Wanita: Apakah Anda membawa sesuatu yang menunjukkan alamat? "
+        "Pria: Saya punya SIM. "
+        "Wanita: Cukup. Bisa kami buatkan di tempat. Mohon tunggu sekitar lima menit.",
+        [
+            ("カードを作るのに何が必要ですか。",
+             ["写真", "住所が分かるもの", "お金", "紹介状"], 1),
+            ("どのぐらい待ちますか。",
+             ["五分", "十分", "三十分", "次の日"], 0),
+        ],
+    ),
+    (
+        "bantu_tetangga",
+        "Menawarkan Bantuan ke Tetangga",
+        "女：荷物が多いですね。持ちましょうか。"
+        "男：いえ、大丈夫です。"
+        "女：遠慮しないでください。二階まででしょう。"
+        "男：じゃあ、この箱だけお願いします。助かります。",
+        "Wanita: Barangnya banyak ya. Saya bantu bawa? "
+        "Pria: Tidak, tidak apa-apa. "
+        "Wanita: Jangan sungkan. Sampai lantai dua kan? "
+        "Pria: Kalau begitu, tolong kotak ini saja. Terbantu sekali.",
+        [
+            ("男の人は最初どう答えましたか。",
+             ["お願いした", "断った", "怒った", "何も言わなかった"], 1),
+            ("結局どうなりましたか。",
+             ["全部持ってもらった", "箱を一つ持ってもらった",
+              "自分で全部運んだ", "あとで頼むことにした"], 1),
+        ],
+    ),
+    (
+        "film_ditonton",
+        "Membicarakan Film yang Ditonton",
+        "男：昨日の映画、どうだった。"
+        "女：話は分かりやすかったけど、最後が急に終わった感じがした。"
+        "男：ぼくもそう思った。音楽はよかったよね。"
+        "女：うん、あれは印象に残った。",
+        "Pria: Film kemarin bagaimana? "
+        "Wanita: Ceritanya mudah dipahami, tapi terasa akhirnya tiba-tiba selesai. "
+        "Pria: Saya juga berpikir begitu. Musiknya bagus ya. "
+        "Wanita: Iya, itu berkesan.",
+        [
+            ("女の人が気になった点は何ですか。",
+             ["話が難しい", "最後が急に終わった", "音楽が悪い", "長すぎる"], 1),
+            ("二人がよかったと言ったのは何ですか。",
+             ["演技", "音楽", "映像", "話"], 1),
+        ],
+    ),
+    (
+        "atur_tempat_duduk",
+        "Mengatur Tempat Duduk Acara",
+        "女：席は五十人分でいいでしょうか。"
+        "男：申し込みは四十五人ですが、当日来る人もいますから。"
+        "女：じゃあ、五十五にしておきます。"
+        "男：そうですね。足りないより余るほうがいいです。",
+        "Wanita: Kursinya untuk lima puluh orang cukup? "
+        "Pria: Pendaftar empat puluh lima orang, tapi ada juga yang datang mendadak. "
+        "Wanita: Kalau begitu saya siapkan lima puluh lima. "
+        "Pria: Ya. Lebih baik berlebih daripada kurang.",
+        [
+            ("席をいくつ用意しますか。",
+             ["四十五", "五十", "五十五", "六十"], 2),
+            ("その理由は何ですか。",
+             ["会場が広いから", "当日来る人もいるから",
+              "安いから", "決まりだから"], 1),
+        ],
+    ),
+    (
+        "arah_kantor_pos",
+        "Menanyakan Arah ke Kantor Pos",
+        "男：この近くに郵便局はありますか。"
+        "女：ええ、この道をまっすぐ行って、信号を左です。"
+        "男：歩いてどのぐらいですか。"
+        "女：五分ぐらいですね。でも今日は土曜日だから、"
+        "窓口は昼までですよ。",
+        "Pria: Di dekat sini ada kantor pos? "
+        "Wanita: Ada, lurus di jalan ini, lalu di lampu merah belok kiri. "
+        "Pria: Jalan kaki berapa lama? "
+        "Wanita: Sekitar lima menit. Tapi hari ini Sabtu, jadi loketnya hanya sampai "
+        "siang.",
+        [
+            ("郵便局はどちらですか。",
+             ["信号を右", "信号を左", "まっすぐだけ", "駅の前"], 1),
+            ("今日は何が問題ですか。",
+             ["遠いこと", "窓口が昼までであること", "休みであること", "道が工事中"], 1),
         ],
     ),
 ]
@@ -1158,6 +1536,7 @@ N3_ENTRIES = [
         ],
     ),
 ]
+
 # N2 moves into workplace, public-announcement and news registers, and
 # starts asking what a speaker *concluded* or *decided* rather than what
 # was literally said — the shift the real N2 paper makes.
