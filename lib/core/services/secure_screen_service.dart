@@ -16,18 +16,47 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// fail to close, because a window flag would not move: on a platform with
 /// no such flag the calls simply do nothing.
 ///
-/// **Android only.** iOS has no equivalent window flag — the usual trick
-/// there is hiding content on `UIApplicationUserDidTakeScreenshot`, which
-/// notifies *after* the capture and so cannot prevent it. Rather than
-/// implement something that looks like protection but is not, iOS is left
-/// unprotected and honest about it. See CLAUDE.md's iOS section: no iOS
-/// build has ever been run for this project anyway.
+/// **The two platforms protect different things, and the difference is
+/// real rather than an implementation gap.**
+///
+/// - Android blocks screenshots *and* recording outright, via
+///   `FLAG_SECURE`. Nothing is reported back, because nothing gets
+///   through.
+/// - iOS blocks recording and mirroring with a documented API, and blanks
+///   screenshots with an undocumented one (see `AppDelegate.swift`): the
+///   window's layer is moved under a secure text field's capture-exempt
+///   layer, so the image comes out empty. That part is deliberately
+///   fail-open — if a future iOS rearranges those internals it undoes
+///   itself and leaves the screen alone — so it must not be relied on the
+///   way `FLAG_SECURE` can be.
+///
+/// iOS also reports every screenshot gesture through
+/// [onScreenshotDetected], whether or not the resulting image came out
+/// blank: the system tells us the buttons were pressed, not what was
+/// captured.
 class SecureScreenService {
   SecureScreenService({MethodChannel? channel})
-      : _channel = channel ?? const MethodChannel('teisou/secure_screen');
+      : _channel = channel ?? const MethodChannel('teisou/secure_screen') {
+    _channel.setMethodCallHandler(_handlePlatformCall);
+  }
 
   final MethodChannel _channel;
   int _holders = 0;
+
+  /// Called when the platform reports a screenshot gesture.
+  ///
+  /// Only ever fires on iOS, which reports the gesture rather than the
+  /// result — so this arrives even when the captured image was blanked
+  /// successfully. On Android it stays silent, because the capture is
+  /// refused outright and there is nothing to report. A screen showing a
+  /// notice here must expect that silence to be the protection working,
+  /// not the callback failing.
+  void Function()? onScreenshotDetected;
+
+  Future<dynamic> _handlePlatformCall(MethodCall call) async {
+    if (call.method == 'screenshotTaken') onScreenshotDetected?.call();
+    return null;
+  }
 
   /// Visible for tests: how many screens currently want the window secured.
   @visibleForTesting
@@ -74,19 +103,36 @@ final secureScreenServiceProvider = Provider<SecureScreenService>(
 /// reachable while the element is being torn down.
 mixin SecureScreenMixin<T extends ConsumerStatefulWidget> on ConsumerState<T> {
   SecureScreenService? _secureScreen;
+  void Function()? _previousListener;
+
+  /// Override to react to a capture the platform could not prevent.
+  ///
+  /// Stays silent on Android, where the screenshot simply does not happen.
+  /// Only iOS reaches this — see
+  /// [SecureScreenService.onScreenshotDetected].
+  void onScreenshotDetected() {}
 
   @override
   void initState() {
     super.initState();
     final service = ref.read(secureScreenServiceProvider);
     _secureScreen = service;
+    // Restored rather than cleared on dispose, so a protected screen opened
+    // over another one hands the listener back instead of leaving the
+    // screen underneath deaf for the rest of the session.
+    _previousListener = service.onScreenshotDetected;
+    service.onScreenshotDetected = () {
+      if (mounted) onScreenshotDetected();
+    };
     service.acquire();
   }
 
   @override
   void dispose() {
+    _secureScreen?.onScreenshotDetected = _previousListener;
     _secureScreen?.release();
     _secureScreen = null;
+    _previousListener = null;
     super.dispose();
   }
 }

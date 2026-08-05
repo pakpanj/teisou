@@ -54,6 +54,16 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
     with SecureScreenMixin {
   List<GateQuestion>? _questions;
 
+  /// Reached on iOS only, which cannot stop a screenshot and can merely
+  /// report one afterwards. On Android this never fires, because the
+  /// capture never happens — silence here is the protection working.
+  @override
+  void onScreenshotDetected() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(ref.read(appStringsProvider).screenshotDetectedNotice)),
+    );
+  }
+
   /// Publishes the learner's curriculum progress to their public
   /// `leaderboard/{uid}` row so it shows on their profile — including when
   /// someone else opens it, which the private `users/{uid}/babProgress`

@@ -89,6 +89,77 @@ void main() {
     expect(service.holders, 0);
   });
 
+  test('a platform screenshot report reaches the listener', () async {
+    // iOS cannot block the capture, so it tells Dart afterwards. Android
+    // never sends this, which is why the listener must be optional rather
+    // than something screens are required to handle.
+    final service = SecureScreenService(channel: channel);
+    var reported = 0;
+    service.onScreenshotDetected = () => reported++;
+
+    await TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .handlePlatformMessage(
+      channel.name,
+      channel.codec.encodeMethodCall(const MethodCall('screenshotTaken')),
+      (_) {},
+    );
+
+    expect(reported, 1);
+  });
+
+  test('an unknown platform call is ignored rather than thrown at', () async {
+    final service = SecureScreenService(channel: channel);
+    var reported = 0;
+    service.onScreenshotDetected = () => reported++;
+
+    await expectLater(
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .handlePlatformMessage(
+        channel.name,
+        channel.codec.encodeMethodCall(const MethodCall('somethingElse')),
+        (_) {},
+      ),
+      completes,
+    );
+    expect(reported, 0);
+  });
+
+  testWidgets('a screenshot report reaches the screen that is showing',
+      (tester) async {
+    final service = SecureScreenService(channel: channel);
+    final container = ProviderContainer(
+      overrides: [secureScreenServiceProvider.overrideWithValue(service)],
+    );
+    addTearDown(container.dispose);
+
+    await tester.pumpWidget(
+      UncontrolledProviderScope(
+        container: container,
+        child: const Directionality(
+          textDirection: TextDirection.ltr,
+          child: _SecureProbe(),
+        ),
+      ),
+    );
+    service.onScreenshotDetected?.call();
+    expect(_SecureProbeState.screenshotReports, 1);
+
+    // Once the screen is gone the listener must go with it, or a later
+    // report would fire against a dead element.
+    await tester.pumpWidget(
+      UncontrolledProviderScope(
+        container: container,
+        child: const Directionality(
+          textDirection: TextDirection.ltr,
+          child: SizedBox.shrink(),
+        ),
+      ),
+    );
+    service.onScreenshotDetected?.call();
+    expect(_SecureProbeState.screenshotReports, 1,
+        reason: 'a disposed screen must stop hearing reports');
+  });
+
   testWidgets('the mixin secures for exactly the lifetime of its screen',
       (tester) async {
     final service = SecureScreenService(channel: channel);
@@ -137,6 +208,17 @@ class _SecureProbe extends ConsumerStatefulWidget {
 
 class _SecureProbeState extends ConsumerState<_SecureProbe>
     with SecureScreenMixin {
+  static int screenshotReports = 0;
+
+  @override
+  void initState() {
+    screenshotReports = 0;
+    super.initState();
+  }
+
+  @override
+  void onScreenshotDetected() => screenshotReports++;
+
   @override
   Widget build(BuildContext context) => const SizedBox.shrink();
 }

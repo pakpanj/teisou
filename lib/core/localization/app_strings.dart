@@ -708,6 +708,15 @@ class AppStrings {
         'Finish the Bab $previousOrder quiz first to unlock this chapter.',
       );
   String get babGateQuizTitle => _t('Kuis Pembuka Bab', 'Chapter Unlock Quiz');
+  /// Shown only on iOS, which reports the screenshot gesture rather than
+  /// its result — so this appears even when the captured image came out
+  /// blank. Worded as "terdeteksi" rather than as a claim about whether
+  /// anything was actually saved, since the platform does not tell us.
+  /// Android never reaches this: there the capture is refused outright.
+  String get screenshotDetectedNotice => _t(
+        'Tangkapan layar terdeteksi. Soal kuis ini tidak untuk dibagikan, ya.',
+        'Screenshot detected. These quiz questions are not for sharing.',
+      );
   String get babGatePassedMessage => _t(
         'Sempurna! Bab berikutnya sudah terbuka.',
         'Perfect! The next chapter is now unlocked.',

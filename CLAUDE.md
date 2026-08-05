@@ -3483,10 +3483,35 @@ what the on-device pass actually verified), `flutter build apk
   wedge the counter negative and leave protection permanently off.
   Every platform call is best-effort — a screen must never fail to open,
   or fail to close, because a window flag would not move.
-  **Android only, and honestly so.** iOS has no equivalent window flag;
-  the usual trick there fires *after* the capture, so implementing it
-  would look like protection without being any. Left unprotected rather
-  than faked.
+  **iOS is aligned but not identical** (added the same day, on request).
+  `ios/Runner/AppDelegate.swift` implements the same channel and does
+  three things: covers the window while `UIScreen.isCaptured` holds, which
+  genuinely blocks recording and AirPlay mirroring; blanks screenshots by
+  moving the window's layer under a secure `UITextField`'s capture-exempt
+  layer, the technique banking apps use; and reports every screenshot
+  gesture to Dart via `onScreenshotDetected`, which `BabGateQuizScreen`
+  surfaces as a notice.
+  Three things to know before trusting it:
+  1. The blanking leans on an **undocumented UIKit layer arrangement**. It
+     is written fail-open — if the secure layer is not where it expects,
+     it undoes what it did and returns, degrading to recording-blocking
+     only rather than breaking rendering. Do not treat it as equivalent
+     to `FLAG_SECURE`.
+  2. It moves **layers, not views**, specifically so touch handling — which
+     walks the view hierarchy — is untouched. Reparenting the FlutterView
+     itself would risk input breaking, which is why that variant was not
+     used.
+  3. The screenshot notice fires **whether or not the image came out
+     blank**, because iOS reports the gesture and not the result. The
+     Indonesian string says "terdeteksi" rather than claiming anything was
+     saved.
+  **None of the iOS side has ever been compiled or run** — no iOS build
+  has ever happened for this project (see the iOS section), and it cannot
+  happen from this Windows machine. The Swift uses only long-stable APIs
+  and gets its messenger through `registrar(forPlugin:)` for that reason,
+  but treat all of it as unproven until someone runs it on real hardware.
+  The lines most likely to need adjusting are the two guards in
+  `startBlankingScreenshots()`.
   Verified on the Moto G52J, both exit paths: `adb shell screencap`
   during the quiz produced a **0-byte** file, backing out produced
   183,591 bytes, and completing the quiz — which exits through
