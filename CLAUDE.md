@@ -3405,6 +3405,52 @@ what the on-device pass actually verified), `flutter build apk
     clock instead (the bubble is gone 240ms after the tap). An earlier
     diagnosis blamed the scrollable underneath for this — that was wrong,
     measured at 240ms with and without a list.
+- **MascotCoach + MascotCompanion** (`lib/core/services/mascot_coach.dart`,
+  `lib/core/widgets/mascot_companion.dart`) are the mascot *inside* a
+  lesson, reacting to each answer — distinct from `MascotAdvisor`, which
+  greets on a browse screen, and from `MascotGuideBubble`, which explains a
+  control. `MascotCoach` is deliberately plain logic with no widgets in it:
+  the part that can actually be wrong is the *choosing*, and none of that
+  shows in a screenshot of one question.
+  - **Two rules it is built around, both enforced by tests.** It never
+    scolds — a wrong answer gets an encouraging face and the right answer
+    named, never `MascotMood.sad`, because the audience is children and the
+    app already made this call in Kaiwa (a wrong option costs nothing).
+    And it does not repeat itself back to back: each `CoachMoment` keeps
+    its own pool and remembers its last pick, since ten questions carrying
+    the same "Bagus!" reads as a sticker rather than a companion.
+  - **Naming the right answer is the only teaching it does**, and that is
+    deliberate. A real per-question explanation would have to be authored
+    per question; generating one here would mean inventing grammar. If a
+    module's dataset ever carries genuine teaching text (Bunpou's
+    `usageNotes`, a `ParticleFunction`'s `explanation`), threading that
+    through is the honest way to go deeper — do that rather than widening
+    the canned lines.
+  - **Wired into `McQuizFlow`** (`lib/features/exam/mc_quiz_flow.dart`),
+    which is shared by the Bab gate quiz, Choukai, Dokkai and Kanji
+    Kombinasi — so one wiring covers four screens. The coach is held in the
+    flow's `State`, not built in `build`: it remembers the run of correct
+    answers, and creating it per frame would reset that silently. The
+    reaction is cleared in `_next` alongside the question, or it would be
+    praising the previous answer over the next one.
+  - `MascotCompanion` is laid out **inline**, between the options and the
+    Next button — not floating like the advisor. On a quiz screen every
+    pixel is either an option to tap or the way forward, so there is
+    nowhere to float that is not in the way; a test asserts the companion's
+    rect does not overlap the Next button's.
+  - **Verified on device** (Moto G52J, Dokkai N5): wrong answer names the
+    correct option, correct answer praises, three in a row switches to the
+    cheering pose. **The Bab gate quiz could not be screenshotted** — it
+    sets `FLAG_SECURE`, so `adb screencap` returns an empty file. That is
+    the anti-screenshot feature working, not a failure; verify that screen
+    through a different route (or temporarily on another `McQuizFlow`
+    caller, which is what was done here).
+  - **Not yet wired**: the quizzes that do not use `McQuizFlow` —
+    `kanji_quiz_screen`, `kotoba_quiz_screen`, `bunpou_quiz_screen`,
+    `particle_quiz_screen`, `exam_screen` (kana) and `flashcard_screen`
+    each own their answer handling. Extending them is mechanical (hold a
+    `MascotCoach`, call `onAnswer`, render a `MascotCompanion`), but it has
+    not been done, so do not assume the mascot reacts everywhere.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).

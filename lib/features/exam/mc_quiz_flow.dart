@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../../core/services/mascot_coach.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/mascot_companion.dart';
 
 /// Shared "N multiple-choice questions, one at a time, tap to reveal
 /// correct/wrong, Next button, tally a score" flow for Dokkai/Choukai/
@@ -36,10 +38,35 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   int? _selected;
   int _score = 0;
 
+  /// Held by the state, not rebuilt per frame: it remembers the run of
+  /// correct answers and what it said last, and both would reset on every
+  /// rebuild if it were created in `build`.
+  final MascotCoach _coach = MascotCoach();
+
+  /// What the mascot is saying about the answer just given, or null while
+  /// the question is still unanswered.
+  CoachLine? _reaction;
+
   void _select(int optionIndex) {
     if (_selected != null) return;
-    setState(() => _selected = optionIndex);
-    if (optionIndex == widget.correctIndexOf(_index)) _score++;
+    final correctIndex = widget.correctIndexOf(_index);
+    final correct = optionIndex == correctIndex;
+    if (correct) _score++;
+
+    final options = widget.optionsOf(_index);
+    setState(() {
+      _selected = optionIndex;
+      _reaction = _coach.onAnswer(
+        ref.read(appStringsProvider),
+        correct: correct,
+        // Guarded rather than indexed straight: a caller whose
+        // correctIndexOf disagrees with its own options list would
+        // otherwise take the whole quiz down mid-question.
+        correctAnswer: correctIndex >= 0 && correctIndex < options.length
+            ? options[correctIndex]
+            : '',
+      );
+    });
   }
 
   void _next() {
@@ -51,6 +78,9 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
     setState(() {
       _index++;
       _selected = null;
+      // Cleared with the question: a reaction left standing would be
+      // praising the previous answer over the next question.
+      _reaction = null;
     });
   }
 
@@ -100,8 +130,14 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
             ),
           ),
         ),
+        // Between the options and the Next button, where it is next to
+        // the thing it is reacting to and still cannot cover either.
         Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: MascotCompanion(line: _reaction),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
           child: SizedBox(
             width: double.infinity,
             child: ElevatedButton(

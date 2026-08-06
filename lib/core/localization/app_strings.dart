@@ -471,6 +471,50 @@ class AppStrings {
   String get whatIsThisCharacterReading =>
       _t('Apa bacaan dari huruf ini?', "What's the reading of this character?");
   String get nextQuestionButton => _t('Soal Berikutnya', 'Next Question');
+
+  // --- Mascot coach -------------------------------------------------------
+  // What the mascot says while a learner works through a lesson. Written
+  // for children: short, warm, and — for the wrong-answer lines — never
+  // scolding. Each moment has several so ten questions do not carry the
+  // same sentence ten times; see `MascotCoach` for the picking rule.
+  String get coachCorrect1 => _t('Benar! Lanjut ya.', 'Correct! Keep going.');
+  String get coachCorrect2 => _t('Tepat sekali!', 'Spot on!');
+  String get coachCorrect3 => _t('Kamu paham ini.', 'You know this one.');
+  String get coachCorrect4 => _t('Bagus, terus begitu.', 'Nice, just like that.');
+
+  String coachStreak1(int run) =>
+      _t('$run benar berturut-turut!', '$run right in a row!');
+  String coachStreak2(int run) =>
+      _t('Wah, $run kali benar. Keren!', 'Wow, $run correct. Amazing!');
+  String coachStreak3(int run) =>
+      _t('Lancar banget, $run berturut-turut!', 'On a roll — $run straight!');
+
+  // The right answer is named in every one of these: it is the one piece
+  // of teaching that is honest for any question, since a real explanation
+  // would have to be written per question rather than guessed here.
+  String coachWrong1(String answer) =>
+      _t('Belum tepat. Jawabannya $answer.', 'Not quite. The answer is $answer.');
+  String coachWrong2(String answer) =>
+      _t('Hampir! Yang benar $answer.', 'So close! It is $answer.');
+  String coachWrong3(String answer) =>
+      _t('Tidak apa-apa, ini $answer. Ingat ya!',
+          'That is okay — it is $answer. Remember it!');
+  String coachWrong4(String answer) =>
+      _t('Kita catat: $answer. Coba lagi nanti.',
+          'Let us note it: $answer. Try again later.');
+
+  String coachFinishedStrong1(int score, int total) =>
+      _t('Selesai! $score dari $total benar. Hebat!',
+          'Done! $score of $total correct. Excellent!');
+  String coachFinishedStrong2(int score, int total) =>
+      _t('$score dari $total. Aku bangga sama kamu!',
+          '$score out of $total. I am proud of you!');
+  String coachFinishedWeak1(int score, int total) =>
+      _t('Selesai! $score dari $total. Ayo coba lagi, pasti bisa.',
+          'Done! $score of $total. Try again — you will get there.');
+  String coachFinishedWeak2(int score, int total) =>
+      _t('$score dari $total. Belajar lagi sebentar, yuk!',
+          '$score out of $total. Let us go over it once more!');
   String failedToLoadQuestions(Object e) =>
       _t('Gagal memuat soal: $e', 'Failed to load questions: $e');
   String get examResultTitleGreat => _t('Hebat! Ujian Selesai 🎉', 'Great! Exam Complete 🎉');
