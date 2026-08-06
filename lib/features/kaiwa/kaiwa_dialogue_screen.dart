@@ -11,6 +11,7 @@ import '../../data/models/kaiwa_entry.dart';
 import '../../data/models/kaiwa_line.dart';
 import 'kaiwa_providers.dart';
 import 'widgets/kaiwa_image.dart';
+import '../../core/services/japanese_voices.dart';
 
 /// Interactive practice screen for one Kaiwa dialogue — reveals NPC lines
 /// (image + speak button only, no visible text) automatically and pauses
@@ -205,6 +206,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
                     const SizedBox(height: 16),
                     for (var i = 0; i < _revealedCount; i++)
                       _LineBubble(
+                        dialogueId: _entry.id,
                         key: ValueKey(lines[i].id),
                         line: lines[i],
                         answer: _answered[i],
@@ -256,11 +258,16 @@ class _LineBubble extends StatelessWidget {
   final KaiwaAnswerOption? answer;
   final AppStrings strings;
 
+  /// Only used to keep a genderless speaker's voice stable — see
+  /// [voiceForSpeaker].
+  final String dialogueId;
+
   const _LineBubble({
     super.key,
     required this.line,
     this.answer,
     required this.strings,
+    required this.dialogueId,
   });
 
   @override
@@ -298,7 +305,15 @@ class _LineBubble extends StatelessWidget {
                       padding: const EdgeInsets.all(6),
                       child: _SpeakButton(
                         text: npc.japanese,
-                        gender: line.gender,
+                        // Never null: most speakers here are roles the
+                        // content deliberately leaves genderless, and
+                        // passing that through meant every one of them
+                        // came out of the same default female voice.
+                        gender: voiceForSpeaker(
+                          dialogueId: dialogueId,
+                          speaker: line.speaker,
+                          authored: line.gender,
+                        ),
                       ),
                     ),
                 ],

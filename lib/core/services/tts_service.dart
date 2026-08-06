@@ -1,6 +1,7 @@
 import 'package:flutter_tts/flutter_tts.dart';
 
 import '../../data/models/kaiwa_line.dart';
+import 'japanese_voices.dart';
 
 /// Wraps [FlutterTts] configured for Japanese pronunciation of kana
 /// characters and example words. MVP uses on-device TTS, not real audio
@@ -9,16 +10,14 @@ class TtsService {
   final FlutterTts _tts = FlutterTts();
   bool _initialized = false;
 
-  // Per-gender ja-JP voice, resolved once via getVoices() and cached —
-  // never re-queried on every speak() call. Android's flutter_tts doesn't
-  // expose a gender field on voices (only name/locale — see the package's
-  // own getVoices doc comment, iOS-only for gender), so this is a
-  // best-effort name-string heuristic ("...female...")/("...male..."):
-  // many OEM voice packs do encode gender in the voice name, but not all,
-  // so both may end up null on a given device — that's an expected,
-  // gracefully-handled outcome, not an error.
-  Map<String, String>? _maleVoice;
-  Map<String, String>? _femaleVoice;
+  /// One male and one female ja-JP voice, resolved once from the device's
+  /// installed voices and cached — never re-queried per `speak()`. Either
+  /// may be null on an engine that ships a single Japanese voice, which is
+  /// an expected outcome, not an error: [speak] then shifts pitch instead.
+  ///
+  /// See [JapaneseVoices] for how they are chosen, and for the pitch
+  /// measurements the choice is based on.
+  JapaneseVoices _voices = const JapaneseVoices();
   bool _voiceLookupAttempted = false;
 
   Future<void> _ensureInitialized() async {
@@ -35,54 +34,46 @@ class TtsService {
     _voiceLookupAttempted = true;
     try {
       final raw = await _tts.getVoices;
-      final jaVoices = <Map<String, String>>[];
+      final jaVoices = <VoiceMap>[];
       for (final v in (raw as List? ?? const [])) {
         if (v is! Map) continue;
         final locale = v['locale']?.toString() ?? '';
         if (!locale.toLowerCase().startsWith('ja')) continue;
         jaVoices.add(v.map((k, val) => MapEntry(k.toString(), val.toString())));
       }
-      for (final v in jaVoices) {
-        final name = (v['name'] ?? '').toLowerCase();
-        if (_femaleVoice == null && name.contains('female')) {
-          _femaleVoice = v;
-        } else if (_maleVoice == null &&
-            name.contains('male') &&
-            !name.contains('female')) {
-          _maleVoice = v;
-        }
-      }
+      _voices = JapaneseVoices.from(jaVoices);
     } catch (_) {
-      // getVoices unsupported/empty on this device/engine — both stay
-      // null, speak() below falls back to the default voice + pitch nudge.
+      // getVoices unsupported or empty on this engine — both stay null and
+      // speak() falls back to the default voice plus a pitch nudge.
     }
   }
 
-  /// Speaks [text] in Japanese. [gender], when given (Kaiwa NPC lines
-  /// only), picks a distinct-sounding voice if this device has one for
-  /// ja-JP; otherwise falls back to the single default voice with a pitch
-  /// nudge so male/female lines still sound at least somewhat different.
+  /// Speaks [text] in Japanese, in [gender]'s voice where the device has
+  /// one.
   ///
-  /// Every voice/pitch reset below is wrapped in try/catch and always
+  /// **[gender] is resolved for every call, not just Kaiwa's.** It used to
+  /// be optional and effectively unused, so every line in the app — kana
+  /// readings, Choukai clips, Kaiwa NPCs of both sexes — came out of the
+  /// single default voice, which on Google's engine is female. Callers
+  /// that genuinely have no character behind the audio (a kana reading is
+  /// not a person) pass nothing and keep the default.
+  ///
+  /// Every voice and pitch call below is wrapped in try/catch and always
   /// falls through to [FlutterTts.speak] regardless of outcome —
-  /// `clearVoice`/`setVoice` aren't universally supported across
-  /// devices/TTS engines, and an unguarded failure here used to abort
-  /// the whole call before `speak()` ever ran, going silent on any
-  /// screen (not just Kaiwa, since every call — gendered or not — went
-  /// through this same reset). When no specific gendered voice is being
-  /// set, `setLanguage('ja-JP')` is explicitly re-asserted every time
-  /// (not just once in [_ensureInitialized]) so a previous call leaving
-  /// the engine on some other default voice/language self-heals on the
-  /// very next call instead of staying wrong for the rest of the app
-  /// session.
+  /// `clearVoice`/`setVoice` are not universally supported, and an
+  /// unguarded failure here used to abort before `speak()` ever ran, going
+  /// silent on every screen rather than just the gendered ones. When no
+  /// specific voice is being set, `setLanguage('ja-JP')` is re-asserted
+  /// every time so a previous call that left the engine elsewhere
+  /// self-heals on the next one instead of staying wrong all session.
   Future<void> speak(String text, {KaiwaGender? gender}) async {
     await _ensureInitialized();
     await _tts.stop();
 
-    Map<String, String>? voice;
+    VoiceMap? voice;
     if (gender != null) {
       await _ensureVoicesResolved();
-      voice = gender == KaiwaGender.female ? _femaleVoice : _maleVoice;
+      voice = gender == KaiwaGender.female ? _voices.female : _voices.male;
     }
 
     try {
@@ -92,12 +83,16 @@ class TtsService {
       } else {
         await _tts.clearVoice();
         await _tts.setLanguage('ja-JP');
+        // Only a consolation prize: a shifted female voice does not sound
+        // like a man, it sounds like a slowed recording. Worth doing so
+        // two speakers are at least distinguishable, not worth mistaking
+        // for the real thing.
         await _tts.setPitch(gender == KaiwaGender.male ? 0.85 : 1.0);
       }
     } catch (_) {
-      // Voice/pitch switching failed on this device — fall through and
-      // still speak with whatever state the engine is already in,
-      // rather than dropping audio entirely.
+      // Voice or pitch switching failed on this device — fall through and
+      // still speak with whatever state the engine is in, rather than
+      // dropping the audio entirely.
     }
 
     await _tts.speak(text);

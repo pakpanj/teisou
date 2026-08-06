@@ -3571,6 +3571,58 @@ what the on-device pass actually verified), `flutter build apk
     Home, and a relaunch goes straight to Home. **Note the last step uses
     `cheering`, one of the six moods that has art** — the earlier steps
     show emoji until their PNGs land.
+- **Japanese TTS voices** (`lib/core/services/japanese_voices.dart`,
+  used by `TtsService`): the app speaks with one male and one female ja-JP
+  voice where the device has them.
+  - **The bug this replaced was invisible from the code.** `TtsService`
+    used to look for the substring "male"/"female" in each voice's name.
+    Google's Japanese voices — what nearly every Android device actually
+    has — are named `ja-jp-x-jab-local`, `ja-jp-x-htm-network` and so on,
+    with nothing about gender in them. So the search silently found
+    neither, both stayed null, and **every line in the app** spoke in the
+    single default voice. Nothing threw, nothing logged; it just sounded
+    like one woman reading the whole app, which is exactly what was
+    reported.
+  - **Voice genders were measured, not assumed.** The same sentence was
+    synthesised with each voice via `synthesizeToFile`, pulled off the
+    device, and its fundamental frequency measured by autocorrelation
+    (55-450 Hz search, so octave errors would have shown):
+
+    | voice | median F0 | 10th pct |
+    |---|---|---|
+    | `ja-jp-x-htm` | 304 Hz | 214 Hz |
+    | `ja-jp-x-jab` | 270 Hz | 214 Hz |
+    | `ja-jp-x-jad` | 180 Hz | 117 Hz |
+    | `ja-jp-x-jac` | 163 Hz | 109 Hz |
+
+    The 10th percentile is what settles it: jac/jad reach the male chest
+    register, jab/htm never go below ~214 Hz. `ja-JP-language`, the legacy
+    default, produced a **byte-identical file** to `ja-jp-x-jab-local` —
+    it is jab under another name, which is why "the default plus one
+    other" was never two voices.
+  - Families are consulted **in preference order** (deepest male, highest
+    female) rather than in the order the engine lists them: picking by
+    list order gave jad, a musical third closer to the female voice than
+    jac. `-local` beats `-network` — a network voice needs a connection
+    per line and this app is used on the bus. Falls back to a
+    name-substring check for non-Google engines, then to a pitch shift,
+    which is a consolation prize and documented as one: a pitch-shifted
+    female voice sounds like a slowed recording, not like a man.
+  - **Most Kaiwa speakers have no authored gender and that is deliberate.**
+    Only 284 of 7,468 NPC lines name one; the rest are roles — "Dokter",
+    "Guru", "Petugas Bank", and "Teman" alone accounts for 4,645. Writing
+    a gender into the dataset for those would be a claim the content has
+    no business making. Instead `voiceForSpeaker` derives a voice from a
+    stable FNV-1a hash of `dialogueId/speaker`, so a given speaker never
+    changes voice mid-conversation, two different doctors in two different
+    dialogues can differ (correct — they are two different doctors), and
+    the split across the real dataset comes out 50/49.
+  - Choukai passes its clip id the same way. Listening practice against a
+    single voice teaches that voice.
+  - `test/japanese_voices_test.dart` uses the nine voices actually
+    installed on the test device as its fixture. Confirmed to bite by
+    restoring the old substring heuristic (4 failures), by preferring
+    `-network` (1), and by making the speaker hash unstable (1).
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
