@@ -13,6 +13,7 @@ import 'kanji_level_screen.dart';
 import 'kanji_providers.dart';
 import '../../core/widgets/mascot_advisor.dart';
 import '../../core/widgets/mascot_widget.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Entry point for the Kanji module: JLPT level picker (N5-N1). Only
 /// levels with a real dataset are tappable; the rest show a "Segera"
@@ -56,7 +57,7 @@ class KanjiHomeScreen extends ConsumerWidget {
             const FreeTierBannerAd(),
           ],
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );

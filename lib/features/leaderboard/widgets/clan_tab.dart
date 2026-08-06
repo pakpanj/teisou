@@ -11,6 +11,7 @@ import '../leaderboard_screen.dart'
     show LeaderboardTile, globalScoreBreakdown, globalScoreLabel;
 import 'create_clan_dialog.dart';
 import 'join_clan_dialog.dart';
+import '../../../core/widgets/app_loading.dart';
 
 /// Tab 2 of `LeaderboardScreen` — a leaderboard scoped to whichever clan
 /// the user picks from their own memberships, ranked by the same global
@@ -153,7 +154,7 @@ class _ClanTabState extends ConsumerState<ClanTab> {
           ],
         );
       },
-      loading: () => const Center(child: CircularProgressIndicator()),
+      loading: () => const AppLoading(),
       error: (e, _) => Center(child: Text(s.failedToLoadClan(e))),
     );
   }
@@ -340,7 +341,7 @@ class _ClanRanking extends ConsumerWidget {
                   ),
                 );
               },
-              loading: () => const Center(child: CircularProgressIndicator()),
+              loading: () => const AppLoading(),
               error: (e, _) => Center(child: Text(strings.failedToLoadMembers(e))),
             ),
           ),

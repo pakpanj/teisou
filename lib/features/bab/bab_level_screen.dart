@@ -11,6 +11,7 @@ import '../../data/models/bab_entry.dart';
 import '../../data/models/jlpt_level.dart';
 import 'bab_detail_screen.dart';
 import 'bab_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Whether a chapter stays locked until its immediate predecessor's gate
 /// quiz has been passed — the intended product behaviour.
@@ -87,7 +88,7 @@ class BabLevelScreen extends ConsumerWidget {
             ),
           ),
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );

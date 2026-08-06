@@ -14,6 +14,7 @@ import '../exam/simple_exam_result_screen.dart';
 import 'bab_gate_quiz_generator.dart';
 import 'bab_providers.dart';
 import '../../core/widgets/mascot_widget.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// The cumulative "gerbang" (gate) quiz standing between one Bab chapter
 /// and the next. Passing it — with a perfect score, no partial credit —
@@ -189,7 +190,7 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
             ),
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );

@@ -10,6 +10,7 @@ import '../../data/models/dokkai_jlpt_level_info.dart';
 import '../../data/models/jlpt_level.dart';
 import 'dokkai_exam_screen.dart';
 import 'dokkai_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Entry point for Dokkai (reading comprehension) within Ujian: JLPT level
 /// picker, mirrors `KaiwaHomeScreen`/`BunpouHomeScreen`. Only levels with a
@@ -39,7 +40,7 @@ class DokkaiHomeScreen extends ConsumerWidget {
             ],
           ],
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );

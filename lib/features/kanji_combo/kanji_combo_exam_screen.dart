@@ -11,6 +11,7 @@ import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 import '../profile/exam_history_providers.dart';
 import 'kanji_combo_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 class KanjiComboExamScreen extends ConsumerWidget {
   final JlptLevel level;
@@ -98,7 +99,7 @@ class KanjiComboExamScreen extends ConsumerWidget {
             onComplete: (score, total) => _onComplete(context, ref, score, total),
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadQuestions(e))),
       ),
     );

@@ -11,6 +11,7 @@ import '../../data/models/jlpt_level.dart';
 import '../../data/models/kaiwa_jlpt_level_info.dart';
 import 'kaiwa_level_screen.dart';
 import 'kaiwa_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Entry point for the Kaiwa module: JLPT level picker (N5-N1), mirroring
 /// `BunpouHomeScreen`. Only levels with a real dataset are tappable; the
@@ -49,7 +50,7 @@ class KaiwaHomeScreen extends ConsumerWidget {
             const FreeTierBannerAd(),
           ],
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );

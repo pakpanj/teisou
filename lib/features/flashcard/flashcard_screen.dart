@@ -10,6 +10,7 @@ import '../../data/models/kana_progress.dart';
 import '../../data/models/kana_type.dart';
 import '../../data/models/kana_type_progress.dart';
 import 'widgets/flip_card.dart';
+import '../../core/widgets/app_loading.dart';
 
 class FlashcardScreen extends ConsumerStatefulWidget {
   final KanaType type;
@@ -82,7 +83,7 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
             error: (e, _) => _buildBody(list, KanaTypeProgress.empty()),
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadData(e))),
       ),
     );

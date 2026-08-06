@@ -9,6 +9,7 @@ import '../../data/models/choukai_clip.dart';
 import '../../data/models/jlpt_level.dart';
 import 'choukai_exam_screen.dart';
 import 'choukai_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Clip list for one Choukai JLPT level.
 class ChoukaiLevelScreen extends ConsumerWidget {
@@ -50,7 +51,7 @@ class ChoukaiLevelScreen extends ConsumerWidget {
                   ],
                 ],
               ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadClips(e))),
       ),
     );

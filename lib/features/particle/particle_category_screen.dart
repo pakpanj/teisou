@@ -11,6 +11,7 @@ import '../../data/models/particle_entry.dart';
 import 'particle_detail_screen.dart';
 import 'particle_providers.dart';
 import 'particle_quiz_screen.dart';
+import '../../core/widgets/app_loading.dart';
 
 enum _LearnFilter { semua, belum, sudah }
 
@@ -170,7 +171,7 @@ class _ParticleCategoryScreenState
             ],
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadParticles(e))),
       ),
     );

@@ -15,6 +15,7 @@ import 'kotoba_providers.dart';
 import 'kotoba_quiz_screen.dart';
 import 'kotoba_word_detail_screen.dart';
 import 'widgets/kotoba_image.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Word list for one Kotoba category. Tapping a word opens
 /// [KotobaWordDetailScreen] with the whole list + tapped index, so
@@ -112,7 +113,7 @@ class KotobaCategoryScreen extends ConsumerWidget {
             ],
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadWords(e))),
       ),
     );

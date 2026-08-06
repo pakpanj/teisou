@@ -3467,6 +3467,48 @@ what the on-device pass actually verified), `flutter build apk
     Particles". All three categories in `particle/_categories.json` start
     with the word, so it was never a one-off. Fixed by dropping the word
     from the format string; guarded in `mascot_coach_test.dart`.
+- **Loading states** (`lib/core/widgets/app_loading.dart`,
+  `app_startup_splash.dart`): the 26 identical
+  `loading: () => const Center(child: CircularProgressIndicator())` lines
+  are now `const AppLoading()` — placeholder rows shaped like the list
+  that is coming, lit by a travelling sheen. The app's blank white
+  startup frame is now `AppStartupSplash`: the mascot waving, with three
+  bouncing dots.
+  - **The timing is the part that matters and the part a screenshot
+    cannot show.** Nearly everything loads from the asset bundle in a few
+    tens of milliseconds, so a loader that appeared instantly would mostly
+    appear *and vanish* inside one blink — a flicker, worse than nothing.
+    `AppLoading` draws nothing for 180ms and then fades in over 260ms.
+  - **Not covered, honestly**: a load finishing just after that delay
+    still gets a brief partial fade. Removing it entirely would need the
+    loading view held for a minimum *after* the data lands, which this
+    widget cannot do — `AsyncValue.when` swaps it out the instant the
+    future completes and never tells it. That needs a wrapper owning the
+    swap at all 26 sites.
+  - **Two bugs found here that the tests had already blessed**, both
+    worth remembering:
+    1. The first "shows nothing for a fast load" test passed with the
+       delay removed *entirely*. A single `pump(duration)` advances the
+       clock and then builds one frame, so a fade that has only just been
+       triggered has not ticked yet and still reads 0. It needs a second
+       pump to give a wrongly-triggered fade somewhere to go. Only
+       injecting the defect exposed it.
+    2. The sheen was a `ShaderMask` over the whole row, which repainted
+       card and blocks alike in one gradient — the badge and text bars
+       vanished into a plain grey slab, losing the only thing a skeleton
+       has over a spinner. The test counted `ShaderMask`s and was
+       perfectly happy; only looking at a device caught it. It is now a
+       translucent white band laid on top, which lightens rather than
+       replaces, and the test counts the bars.
+  - `AppLoading` holds its delay in a cancellable `Timer`, not a bare
+    `Future.delayed`. The widget is disposed early *by design* — a fast
+    load tears it down before it ever appears — and an uncancellable
+    delay leaves a callback alive after the screen is gone, which the
+    test binding rightly refuses to let pass.
+  - **Do not run `dart format lib/` after an edit here.** It reformatted
+    162 unrelated files in one go and introduced lint warnings in files
+    this work never touched; the change had to be reverted and redone.
+    Format only the files actually edited.
 - **Mascot sizing and placement** (2026-08-07): the character is bigger
   everywhere, and most of that came from the art rather than from taking
   more screen. `prepare_mascot.py` used to fit each character into 85% of

@@ -11,6 +11,7 @@ import '../../data/models/jlpt_level.dart';
 import '../../data/models/kaiwa_category_info.dart';
 import 'kaiwa_category_screen.dart';
 import 'kaiwa_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Theme picker for one Kaiwa JLPT level (Perkenalan / Di Restoran / ...).
 /// Only themes with a real dataset are tappable; the rest show a "Segera"
@@ -77,7 +78,7 @@ class KaiwaLevelScreen extends ConsumerWidget {
             const FreeTierBannerAd(),
           ],
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadThemes(e))),
       ),
     );

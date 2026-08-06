@@ -12,6 +12,7 @@ import '../../data/models/jlpt_level.dart';
 import 'bunpou_detail_screen.dart';
 import 'bunpou_providers.dart';
 import 'bunpou_quiz_screen.dart';
+import '../../core/widgets/app_loading.dart';
 
 enum _LearnFilter { semua, belum, sudah }
 
@@ -168,7 +169,7 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
             ],
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadBunpou(e))),
       ),
     );

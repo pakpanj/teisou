@@ -15,6 +15,7 @@ import '../particle/particle_detail_screen.dart';
 import 'bab_gate_quiz_screen.dart';
 import 'bab_level_screen.dart' show kBabGateQuizRequired;
 import 'bab_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// One Bab chapter — a curated "playlist" over already-resolved items from
 /// six other modules (see [ResolvedBab]/`babDetailProvider`). Renders only
@@ -211,7 +212,7 @@ class BabDetailScreen extends ConsumerWidget {
             ),
           ],
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );

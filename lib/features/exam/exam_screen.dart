@@ -12,6 +12,7 @@ import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam_result/exam_result_screen.dart';
 import '../profile/exam_history_providers.dart';
 import 'exam_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 class ExamScreen extends ConsumerStatefulWidget {
   final ExamMode mode;
@@ -242,7 +243,7 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
             ],
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadQuestions(e))),
       ),
     );

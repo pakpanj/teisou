@@ -11,6 +11,7 @@ import '../../data/models/user_profile.dart' show AvatarType;
 import 'leaderboard_providers.dart';
 import 'public_profile_screen.dart' show openPublicProfile;
 import 'widgets/clan_tab.dart';
+import '../../core/widgets/app_loading.dart';
 
 class LeaderboardScreen extends ConsumerWidget {
   const LeaderboardScreen({super.key});
@@ -149,7 +150,7 @@ class _GlobalScoreTab extends ConsumerWidget {
                   ),
                 );
               },
-              loading: () => const Center(child: CircularProgressIndicator()),
+              loading: () => const AppLoading(),
               error: (e, _) =>
                   Center(child: Text(s.failedToLoadLeaderboard(e))),
             ),

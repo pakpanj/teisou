@@ -7,6 +7,7 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/saved_word.dart';
 import 'saved_words_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Lists words saved either from Cam Detector's "Simpan ke Daftar Belajar"
 /// button (local, `SavedWordsRepository`) or the bookmark icon on the
@@ -109,7 +110,7 @@ class SavedWordsScreen extends ConsumerWidget {
                   },
                 ),
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.noSavedWordsMessage)),
       ),
     );

@@ -9,6 +9,7 @@ import '../../data/models/choukai_jlpt_level_info.dart';
 import '../../data/models/jlpt_level.dart';
 import 'choukai_level_screen.dart';
 import 'choukai_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Entry point for Choukai (listening comprehension) within Ujian: JLPT
 /// level picker, mirrors `DokkaiHomeScreen`. Every level currently shows
@@ -35,7 +36,7 @@ class ChoukaiHomeScreen extends ConsumerWidget {
             ],
           ],
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );

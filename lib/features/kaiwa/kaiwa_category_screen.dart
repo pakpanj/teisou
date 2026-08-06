@@ -9,6 +9,7 @@ import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/kaiwa_entry.dart';
 import 'kaiwa_dialogue_screen.dart';
 import 'kaiwa_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 enum _LearnFilter { semua, belum, sudah }
 
@@ -136,7 +137,7 @@ class _KaiwaCategoryScreenState extends ConsumerState<KaiwaCategoryScreen> {
             ],
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadDialogues(e))),
       ),
     );

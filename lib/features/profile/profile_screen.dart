@@ -31,6 +31,7 @@ import 'widgets/exam_history_empty_illustration.dart';
 import 'widgets/exam_history_tile.dart';
 import 'widgets/profile_header_illustration.dart';
 import '../onboarding/onboarding_screen.dart';
+import '../../core/widgets/app_loading.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -57,7 +58,7 @@ class ProfileScreen extends ConsumerWidget {
       ),
       body: userAsync.when(
         data: (user) => _ProfileBody(user: user),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadProfile(e))),
       ),
     );

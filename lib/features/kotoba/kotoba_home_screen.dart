@@ -11,6 +11,7 @@ import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/kotoba_category.dart';
 import 'kotoba_category_screen.dart';
 import 'kotoba_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Entry point for the Kotoba (vocabulary) module: all 45 planned
 /// categories grouped by theme, grid-style. Only categories with a real
@@ -52,7 +53,7 @@ class KotobaHomeScreen extends ConsumerWidget {
             const FreeTierBannerAd(),
           ],
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadCategories(e))),
       ),
     );

@@ -11,6 +11,7 @@ import '../../data/models/bunpou_level.dart';
 import '../../data/models/jlpt_level.dart';
 import 'bunpou_level_screen.dart';
 import 'bunpou_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Entry point for the Bunpou module: JLPT level picker (N5-N1). Only
 /// levels with a real dataset are tappable; the rest show a "Segera"
@@ -47,7 +48,7 @@ class BunpouHomeScreen extends ConsumerWidget {
             const FreeTierBannerAd(),
           ],
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );

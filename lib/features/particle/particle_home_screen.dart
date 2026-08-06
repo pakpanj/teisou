@@ -10,6 +10,7 @@ import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/particle_category_info.dart';
 import 'particle_category_screen.dart';
 import 'particle_providers.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Entry point for the Partikel module: category picker (Kasus /
 /// Keterangan / Akhir Kalimat). Only categories with a real dataset are
@@ -48,7 +49,7 @@ class ParticleHomeScreen extends ConsumerWidget {
             const FreeTierBannerAd(),
           ],
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadCategories(e))),
       ),
     );

@@ -7,6 +7,7 @@ import '../../core/widgets/app_refresh_indicator.dart';
 import 'exam_history_providers.dart';
 import 'widgets/exam_history_empty_illustration.dart';
 import 'widgets/exam_history_tile.dart';
+import '../../core/widgets/app_loading.dart';
 
 /// Full "Riwayat Ujian" list — merges and shows the most recent attempts
 /// across all four exam categories (Kana, Dokkai, Choukai,
@@ -55,7 +56,7 @@ class ExamHistoryScreen extends ConsumerWidget {
                       ExamHistoryTile(entry: entries[index]),
                 ),
         ),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadExamHistory)),
       ),
     );

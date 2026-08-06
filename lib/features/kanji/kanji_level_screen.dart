@@ -12,6 +12,7 @@ import '../../data/models/kanji_entry.dart';
 import 'kanji_providers.dart';
 import 'kanji_quiz_screen.dart';
 import 'kanji_word_detail_screen.dart';
+import '../../core/widgets/app_loading.dart';
 
 enum _SortMode { urutan, goresan }
 
@@ -177,7 +178,7 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
             ],
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const AppLoading(),
         error: (e, _) => Center(
           child: Text(ref.read(appStringsProvider).failedToLoadKanji(e)),
         ),
