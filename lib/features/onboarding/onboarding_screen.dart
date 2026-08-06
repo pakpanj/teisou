@@ -108,8 +108,12 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     MascotWidget(
                       key: ValueKey(step.mood),
                       mood: step.mood,
-                      size: 190,
+                      // The largest in the app, and it should be: this is
+                      // a screen with one character, one sentence and
+                      // nothing else on it.
+                      size: 240,
                       showBackdrop: false,
+                      groundShadow: true,
                     ),
                     const SizedBox(height: 20),
                     SpeechBubble(

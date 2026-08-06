@@ -25,7 +25,7 @@ class AboutScreen extends ConsumerWidget {
           const Center(
             child: MascotWidget(
               mood: MascotMood.bowing,
-              size: 120,
+              size: 160,
               showBackdrop: false,
             ),
           ),

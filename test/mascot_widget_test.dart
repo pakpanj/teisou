@@ -36,6 +36,80 @@ void main() {
     );
   }
 
+  /// The soft ellipse under the feet, when it is switched on.
+  Finder groundShadow() => find.descendant(
+        of: find.byType(MascotWidget),
+        matching: find.byWidgetPredicate(
+          (w) =>
+              w is Container &&
+              w.decoration is BoxDecoration &&
+              (w.decoration as BoxDecoration).borderRadius != null,
+        ),
+      );
+
+  group('the ground shadow', () {
+    testWidgets('is off unless the caller asks for it', (tester) async {
+      // It only makes sense for a character standing on a surface. Beside
+      // a line of text it reads as grime, so it must not arrive by
+      // default on the dozen call sites that never asked.
+      await pumpMascot(tester);
+      expect(groundShadow(), findsNothing);
+    });
+
+    testWidgets('appears under the character when enabled', (tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: Center(
+              child: MascotWidget(
+                mood: MascotMood.happy,
+                showBackdrop: false,
+                groundShadow: true,
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pump();
+
+      expect(groundShadow(), findsOneWidget);
+      final shadow = tester.getRect(groundShadow());
+      final mascot = tester.getRect(find.byType(MascotWidget));
+      expect(shadow.center.dy, greaterThan(mascot.center.dy),
+          reason: 'a shadow above the middle is not under the feet');
+      expect(shadow.width, lessThan(mascot.width),
+          reason: 'a shadow wider than the character is a puddle');
+    });
+
+    testWidgets('shrinks as the character bounces up', (tester) async {
+      // The part that does real work: without it the bounce reads as the
+      // whole picture sliding rather than the character leaving the
+      // ground. Cheering has the largest hop of any mood.
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: Center(
+              child: MascotWidget(
+                mood: MascotMood.cheering,
+                showBackdrop: false,
+                groundShadow: true,
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pump();
+
+      final widths = <double>{};
+      for (var i = 0; i < 30; i++) {
+        await tester.pump(const Duration(milliseconds: 16));
+        widths.add(tester.getRect(groundShadow()).width);
+      }
+      expect(widths.length, greaterThan(1),
+          reason: 'a shadow that never changes is a sticker');
+    });
+  });
+
   testWidgets('resting mascot sits at its natural size', (tester) async {
     await pumpMascot(tester);
     expect(squashOf(tester), closeTo(1, 0.001));

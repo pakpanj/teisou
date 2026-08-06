@@ -21,15 +21,17 @@ class MascotCompanion extends StatelessWidget {
   const MascotCompanion({
     super.key,
     required this.line,
-    this.size = 76,
+    this.size = 92,
   });
 
   /// What to say, or null between questions.
   final CoachLine? line;
 
-  /// Smaller than the advisor's 150: this one shares a screen with the
-  /// question, the options and the Next button, and on a short phone every
-  /// one of those matters more than the character does.
+  /// Small on purpose. This one shares a screen with the question, the
+  /// options and the Next button, and on a short phone every one of those
+  /// matters more than the character does — so it grew only from 76 to
+  /// 92, most of which came free from the art filling its canvas rather
+  /// than from taking more of the screen.
   final double size;
 
   @override

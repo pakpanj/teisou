@@ -3467,6 +3467,37 @@ what the on-device pass actually verified), `flutter build apk
     Particles". All three categories in `particle/_categories.json` start
     with the word, so it was never a one-off. Fixed by dropping the word
     from the format string; guarded in `mascot_coach_test.dart`.
+- **Mascot sizing and placement** (2026-08-07): the character is bigger
+  everywhere, and most of that came from the art rather than from taking
+  more screen. `prepare_mascot.py` used to fit each character into 85% of
+  its canvas, chosen so it cleared `MascotWidget`'s circular backdrop —
+  but that widget already shrinks the art to 0.72 of the box when the disc
+  is on, so the margin was being paid twice and every screen that draws
+  the character without a disc rendered it 15% smaller than the space it
+  was given. Now 96%. Re-run `prepare_mascot.py` over
+  `C:/Teisou asset/mascot/*.png` if the assets ever need rebuilding.
+  - `MascotWidget.groundShadow` (off by default) draws a soft ellipse
+    under the feet that shrinks and fades as the character bounces. It is
+    the cheapest thing that makes a cut-out look like it is standing
+    somewhere, and it does real work for the animation — without it a
+    bounce reads as the whole picture sliding. Only the advisor and the
+    onboarding screen switch it on; beside a line of text it reads as
+    grime, which is what the "off unless asked" test guards.
+  - **`MascotAdvisor` is a Stack, not a Row, and the character is painted
+    last** so it stands in front of its own speech bubble — the Clash of
+    Clans arrangement. A Row could not close the gap: the art is square
+    while the character is tall and narrow, and how much transparent side
+    margin a pose carries varies from 8% of the box (`encouraging`) to 22%
+    (`proud`), so one fixed nudge either leaves a gap on the narrow poses
+    or collides on the wide ones. Overlapping removes the question.
+    **The panel goes behind the character; the words must not** — the
+    first attempt put the body straight across the first word. The panel
+    starts at 0.70 of the character's width and the text at 0.24 of it,
+    which clears even the widest pose's 0.915 reach.
+  - Sizes now: advisor 184 (was 150), onboarding 240 (190), search hints
+    and gate-quiz result 150 (110), About 160 (120), quiz companion 92
+    (76 — deliberately the smallest bump, since it shares a screen with
+    the question, the options and the Next button).
 - **Mascot expressions**: `MascotMood` carries **18** moods — the original
   six plus twelve added for the coaching work. Art is
   `assets/mascot/{mood}.png`; a mood with no PNG falls back to its emoji

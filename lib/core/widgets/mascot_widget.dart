@@ -111,6 +111,10 @@ class MascotWidget extends StatefulWidget {
   /// from the surface it is on. Wrong for one standing at the edge of the
   /// screen as a character in the room with you — a disc there reads as a
   /// sticker pinned to the corner. Hence [MascotAdvisor] turns it off.
+
+  /// Whether to draw a soft ellipse under the character's feet, so it
+  /// reads as standing on something. See [_buildGroundShadow].
+  final bool groundShadow;
   final bool showBackdrop;
 
   const MascotWidget({
@@ -119,6 +123,7 @@ class MascotWidget extends StatefulWidget {
     this.size = 140,
     this.onTap,
     this.showBackdrop = true,
+    this.groundShadow = false,
   });
 
   @override
@@ -356,6 +361,49 @@ class _MascotWidgetState extends State<MascotWidget>
     }
   }
 
+  /// Draws a soft ellipse under the character's feet.
+  ///
+  /// The single cheapest thing that makes a cut-out character look like it
+  /// is standing somewhere rather than pasted on. It also does real work
+  /// for the animation: the shadow shrinks and fades as the mascot bounces
+  /// up, which is what tells the eye the movement is a jump rather than
+  /// the whole picture sliding.
+  ///
+  /// Off by default, because it only makes sense where the character
+  /// stands on a surface — an advisor at the foot of the screen. Inside a
+  /// circular backdrop, or beside a line of text, it reads as grime.
+  Widget _buildGroundShadow(double t) {
+    // How far off the ground the idle loop currently has it. Only the
+    // upward part counts; a mood that sways sideways keeps its shadow.
+    final lift = (-_offsetFor(t).dy).clamp(0.0, widget.size);
+    final rise = (lift / (widget.size * 0.14)).clamp(0.0, 1.0);
+    // Squashing spreads the body, so the contact patch spreads with it.
+    final spread = 1 / _squash.value;
+
+    return Positioned(
+      bottom: widget.size * 0.015,
+      child: Opacity(
+        opacity: (0.22 - 0.12 * rise).clamp(0.0, 1.0),
+        child: Container(
+          width: widget.size * (0.44 - 0.10 * rise) * spread,
+          height: widget.size * 0.075,
+          decoration: BoxDecoration(
+            color: const Color(0xFF3A2A38),
+            borderRadius: BorderRadius.all(
+              Radius.elliptical(widget.size * 0.22, widget.size * 0.04),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF3A2A38).withValues(alpha: 0.35),
+                blurRadius: widget.size * 0.06,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final emoji = _emoji[widget.mood]!;
@@ -393,6 +441,7 @@ class _MascotWidgetState extends State<MascotWidget>
                         shape: BoxShape.circle,
                       ),
                     ),
+                  if (widget.groundShadow) _buildGroundShadow(t),
                   if (widget.mood == MascotMood.proud) ..._sparkles(t),
                   Transform.translate(
                     offset: _offsetFor(t),

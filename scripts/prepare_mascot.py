@@ -218,9 +218,17 @@ def trim_and_fit(image):
     if bounds:
         image = image.crop(bounds)
 
-    # Fit inside 85% of the canvas, leaving the margin the widget's circular
-    # slot needs so the character never touches the edge.
-    inner = int(TARGET * 0.85)
+    # Fit the canvas almost exactly. It used to be 85%, chosen so the
+    # character cleared the circular backdrop MascotWidget can draw — but
+    # that widget already shrinks the art to 0.72 of the box when the disc
+    # is on, so the 15% margin was being paid twice. On the screens where
+    # the character stands on its own it simply made it render 15% smaller
+    # than the space it was given.
+    #
+    # A sliver of margin remains: the art is soft-edged, and trimming to
+    # the exact bounding box makes the outline sit flush against the edge
+    # of the widget, which reads as clipped even when it is not.
+    inner = int(TARGET * 0.96)
     image.thumbnail((inner, inner), Image.LANCZOS)
 
     canvas = Image.new("RGBA", (TARGET, TARGET), (0, 0, 0, 0))

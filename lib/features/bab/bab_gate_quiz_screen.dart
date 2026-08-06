@@ -137,7 +137,7 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
             // down by them is the last thing that moment needs.
             MascotWidget(
               mood: passed ? MascotMood.cheering : MascotMood.worried,
-              size: 110,
+              size: 150,
               showBackdrop: false,
             ),
             const SizedBox(height: 12),

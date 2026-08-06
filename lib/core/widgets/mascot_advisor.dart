@@ -51,7 +51,7 @@ class MascotAdvisor extends StatefulWidget {
     required this.child,
     this.ctaLabel,
     this.onCtaTap,
-    this.size = 150,
+    this.size = 184,
     this.bottomInset = 0,
   });
 
@@ -65,8 +65,14 @@ class MascotAdvisor extends StatefulWidget {
   final String? ctaLabel;
   final VoidCallback? onCtaTap;
 
-  /// Height of the character. Large enough to read as a character rather
-  /// than an icon; the bubble sizes itself around it.
+  /// Height of the character.
+  ///
+  /// 184, up from 150. The advisor is the one place the mascot is meant
+  /// to read as somebody standing in the room rather than an illustration
+  /// beside some text, and at 150 against a full-width phone screen it
+  /// read as the latter. The art itself also grew: it used to occupy 85%
+  /// of its own canvas and now fills 96%, so the visible character is
+  /// about a third larger than before at the same nominal size.
   final double size;
 
   /// Extra space to lift the advisor above whatever sits at the bottom of
@@ -76,7 +82,7 @@ class MascotAdvisor extends StatefulWidget {
   /// Bottom padding a scrolling child should leave for the character.
   /// Named here rather than written as a number at each call site, so it
   /// cannot drift away from [size] as the character is resized.
-  static const double reservedBottomSpace = 170;
+  static const double reservedBottomSpace = 200;
 
   @override
   State<MascotAdvisor> createState() => _MascotAdvisorState();
@@ -154,58 +160,64 @@ class _MascotAdvisorState extends State<MascotAdvisor>
               opacity: _fade,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(8, 0, 16, 8),
-                child: Row(
-                  // Beside the head, not the feet: a bubble level with the
-                  // character's legs reads as floating past it.
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                // Stacked, not a Row — and the character is painted last,
+                // so it stands in front of its own speech bubble the way
+                // the Clash of Clans advisor does.
+                //
+                // A Row cannot close the gap. The art is square while the
+                // character is tall and narrow, so every mood carries
+                // transparent space at its sides — and how much varies
+                // enormously, from 8% of the box on the widest pose to 22%
+                // on the narrowest. One fixed nudge either leaves a gap on
+                // the narrow poses or collides on the wide ones. Letting
+                // the bubble start *underneath* the character removes the
+                // question: there is nothing to align, because there is no
+                // gap to align away.
+                child: Stack(
+                  alignment: Alignment.bottomLeft,
                   children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        // Tucked behind the shoulder rather than beside it.
+                        left: widget.size * 0.70,
+                        // Lifted clear of the legs so it sits by the head.
+                        bottom: widget.size * 0.40,
+                      ),
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 220),
+                        // AnimatedSwitcher stacks its children centred by
+                        // default and passes loose constraints, so a short
+                        // bubble drifts to the middle of the remaining
+                        // width and its tail ends up pointing at empty
+                        // space rather than at the character.
+                        layoutBuilder: (current, previous) => Stack(
+                          alignment: Alignment.centerLeft,
+                          children: [...previous, ?current],
+                        ),
+                        transitionBuilder: (child, animation) =>
+                            FadeTransition(
+                              opacity: animation,
+                              child: ScaleTransition(
+                                scale: animation,
+                                alignment: Alignment.centerLeft,
+                                child: child,
+                              ),
+                            ),
+                        child: _speaking
+                            ? _buildBubble(palette)
+                            : const SizedBox.shrink(),
+                      ),
+                    ),
                     MascotWidget(
                       mood: widget.mood,
                       size: widget.size,
                       showBackdrop: false,
-                      // Poking a quiet advisor is how the message comes back,
-                      // so the character is never a dead end.
+                      // It is standing at the bottom of the screen, so
+                      // give it something to stand on.
+                      groundShadow: true,
+                      // Poking a quiet advisor is how the message comes
+                      // back, so the character is never a dead end.
                       onTap: () => setState(() => _speaking = true),
-                    ),
-                    Expanded(
-                      // Slid back over the character's own empty margin. The
-                      // art is square while the character is tall and narrow,
-                      // so every mood carries transparent space at its sides —
-                      // from 0.10 of the box width on the widest pose (sad) to
-                      // 0.22 on the narrowest (proud). Reclaiming 0.08 closes
-                      // most of the visible gap and still stays inside even the
-                      // widest pose's margin, so the bubble cannot collide with
-                      // the character. Translating rather than resizing keeps
-                      // the character's box square, which is what holds its
-                      // height steady as the mood changes.
-                      child: Transform.translate(
-                        offset: Offset(-widget.size * 0.08, 0),
-                        child: AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 220),
-                          // AnimatedSwitcher stacks its children centred by
-                          // default and passes loose constraints, so a short
-                          // bubble drifts to the middle of the remaining width
-                          // and its tail ends up pointing at empty space rather
-                          // than at the character. Left-aligning keeps the tail
-                          // where the head is, and lets the bubble hug its text.
-                          layoutBuilder: (current, previous) => Stack(
-                            alignment: Alignment.centerLeft,
-                            children: [...previous, ?current],
-                          ),
-                          transitionBuilder: (child, animation) =>
-                              FadeTransition(
-                                opacity: animation,
-                                child: ScaleTransition(
-                                  scale: animation,
-                                  alignment: Alignment.centerLeft,
-                                  child: child,
-                                ),
-                              ),
-                          child: _speaking
-                              ? _buildBubble(palette)
-                              : const SizedBox.shrink(),
-                        ),
-                      ),
                     ),
                   ],
                 ),
@@ -222,11 +234,20 @@ class _MascotAdvisorState extends State<MascotAdvisor>
       onTap: () => setState(() => _speaking = false),
       child: SpeechBubble(
         color: palette.cardWhite,
-        // Aimed low, because the character stands on the ground beside
-        // the bubble rather than sitting level with its middle — the
-        // tail has to reach across to a head that is near the bubble's
-        // bottom edge.
-        tailTopOffset: 40,
+        // No tail. It used to reach across a gap to the character's head;
+        // now the character stands in front of the bubble, so a tail would
+        // be drawn underneath it and never seen — while still costing the
+        // bubble its width in wasted inner padding. The overlap does the
+        // job a tail was doing: a panel somebody is standing in front of
+        // reads as theirs.
+        tailSize: 0,
+        // The panel slides behind the character, but the words must not.
+        // The first attempt at this overlap put the body straight across
+        // the first word, which is worse than any gap. The widest pose
+        // reaches 0.915 of its box and the panel starts at 0.70, so the
+        // text has to begin past 0.215 of the character's width; 0.24
+        // leaves a little air rather than sitting flush against the fur.
+        padding: EdgeInsets.fromLTRB(widget.size * 0.24, 14, 16, 14),
         shadow: BoxShadow(
           color: Colors.black.withValues(alpha: 0.12),
           blurRadius: 14,

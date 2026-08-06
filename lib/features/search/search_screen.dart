@@ -292,7 +292,7 @@ class _HintMessage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            MascotWidget(mood: mood, size: 110, showBackdrop: false),
+            MascotWidget(mood: mood, size: 150, showBackdrop: false),
             const SizedBox(height: 12),
             Text(
               message,
