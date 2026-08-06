@@ -3471,9 +3471,10 @@ what the on-device pass actually verified), `flutter build apk
   six plus twelve added for the coaching work. Art is
   `assets/mascot/{mood}.png`; a mood with no PNG falls back to its emoji
   via `Image.asset`'s `errorBuilder`, so moods can be declared before their
-  drawings exist. **Only the original six have art**; the twelve new ones
-  currently render as emoji, which looks obviously unfinished at
-  advisor size (150dp) — that is the fallback working, not a bug.
+  drawings exist. **All eighteen have art** as of 2026-08-06, keyed from
+  magenta-backed 1024x1024 generations and confirmed clean against a dark
+  background — no halo, no checkerboard, and the decorative sparkles the
+  generator added were removed as stray islands by `keep_main_subject`.
   - `scripts/mascot_prompts.md` holds the generation prompt for each, plus
     the shared character sheet. **Two things in it are hard-won, do not
     drop them.** Never ask a generator for a transparent background —
@@ -3483,6 +3484,26 @@ what the on-device pass actually verified), `flutter build apk
     character description is derived from `happy.png` and `sad.png` as
     they actually are, not from memory — an earlier guess produced art
     that did not look like the mascot at all.
+  - **Two art bugs shipped during the drawing pass, both silent**, and
+    `test/mascot_art_test.dart` now guards each. A missing PNG falls back
+    to an emoji: nothing breaks, a 👋 just sits where a character should
+    be until somebody opens that exact screen. Worse, `encouraging.png`
+    arrived as a **byte-for-byte copy of `sad.png`** — so the face meant
+    to reassure a child who answered wrong was the sad face, the one
+    thing that mood exists to avoid, and every screen looked fine. The
+    test compares file bytes across moods for exactly that.
+  - **`prepare_mascot.py` reads the mood list out of the Dart enum**
+    rather than keeping its own copy. Its hand-kept copy went stale the
+    moment the twelve moods landed and it rejected all of them — the
+    same stale-duplicate failure already documented above for Kotoba's
+    `_categories.json`. `assets/mascot/README.txt` deliberately lists no
+    mood names for the same reason.
+  - **A leftover-magenta scan gives false positives** — worth knowing
+    before running one. The mascot's own outline is a dark plum around
+    `#A02080`, which any "is this pixel magenta-ish" classifier flags on
+    every file drawn in the flat-outline style: ten files looked
+    contaminated and all ten were clean. Composite onto a dark
+    background and look, rather than classifying pixel colour.
   - **Every mood must be selected somewhere in `lib/`.** A mood's real
     cost is a drawing somebody makes by hand, so one the app never picks
     is that work thrown away — and nothing else would ever flag it, since
