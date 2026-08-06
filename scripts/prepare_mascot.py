@@ -25,7 +25,9 @@ the match on a background that generated unevenly.
 """
 
 import argparse
+import io
 import os
+import re
 import sys
 
 try:
@@ -33,7 +35,31 @@ try:
 except ImportError:
     sys.exit("Pillow is required: python -m pip install Pillow")
 
-MOODS = {"happy", "excited", "sleepy", "proud", "sad", "cheering"}
+MOOD_ENUM = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "lib", "core", "widgets", "mascot_widget.dart",
+)
+
+
+def known_moods():
+    """Reads the mood names out of the Dart enum they come from.
+
+    Not a copy of the list. A hand-kept duplicate had already gone stale
+    once — twelve moods were added to the enum and this script still
+    rejected all of them — and a stale copy of a list that lives somewhere
+    else is a failure this repo has shipped before.
+    """
+    source = io.open(MOOD_ENUM, encoding="utf-8").read()
+    match = re.search(r"enum MascotMood \{(.*?)^\}", source, re.S | re.M)
+    if not match:
+        sys.exit("could not find `enum MascotMood` in %s" % MOOD_ENUM)
+    # Strip the doc comments first, or every lowercase word in them —
+    # "the", "mascot", "app" — comes back looking like a mood name.
+    text = re.sub(r"//.*", "", match.group(1))
+    return set(re.findall(r"([a-z][A-Za-z0-9]*)", text))
+
+
+MOODS = known_moods()
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(REPO, "assets", "mascot")
