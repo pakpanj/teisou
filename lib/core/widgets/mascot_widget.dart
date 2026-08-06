@@ -22,9 +22,15 @@ enum MascotMood { happy, excited, sleepy, proud, sad, cheering }
 /// centre, which is what makes it read as something with weight standing on
 /// a surface rather than a picture being resized.
 ///
-/// A [SpringSimulation] drives it rather than a curve: overshoot and settle
-/// then come from the physics, so poking it repeatedly compounds naturally
-/// instead of restarting a canned animation.
+/// A [SpringSimulation] drives it rather than a curve, so the overshoot and
+/// the settle fall out of the physics instead of being drawn into an easing
+/// curve by hand.
+///
+/// Each poke applies the same compression rather than stacking onto
+/// whatever squash is already in flight. Compounding would look livelier
+/// for two taps and then drive an impatient child's mascot down to nothing,
+/// so a poke always re-launches the spring from the same place — the
+/// *velocity* it launches with is what carries the previous motion.
 ///
 /// Still emoji art. The body is a single [Text] widget, and the whole point
 /// of keeping that in one place is that real per-mood art drops into

@@ -82,12 +82,20 @@ class _SpeechBubblePainter extends CustomPainter {
       Radius.circular(borderRadius),
     );
 
-    // Clamped so a very short bubble still gets a tail that touches its
-    // side instead of floating off the top or bottom edge.
-    final tip = tailTopOffset.clamp(
-      borderRadius + tailSize,
-      (size.height - borderRadius - tailSize).clamp(0.0, double.infinity),
-    );
+    // Keep the tail clear of the rounded corners, so it meets a straight
+    // edge rather than sprouting from a curve.
+    final lowest = borderRadius + tailSize;
+    final highest = size.height - borderRadius - tailSize;
+
+    // A one-line bubble is shorter than both margins combined, which
+    // leaves no straight edge at all — and asking clamp for a range whose
+    // maximum is below its minimum throws. That is not theoretical: it
+    // took out the entire guide bubble on every screen, silently, because
+    // a painter that throws simply paints nothing. Centre the tail
+    // instead; on a bubble that small it is the only place it fits.
+    final tip = highest <= lowest
+        ? size.height / 2
+        : tailTopOffset.clamp(lowest, highest);
 
     return Path()
       ..addRRect(body)

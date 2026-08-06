@@ -43,33 +43,140 @@ OUT_DIR = os.path.join(REPO, "assets", "mascot")
 TARGET = 512
 
 
-def key_out(image, bg, tolerance):
-    """Makes every pixel near `bg` transparent, and softens the edge.
+def detect_background(image):
+    """Reads the background colour off the image's own border.
 
-    A hard threshold alone leaves a fringe of background colour on the
-    antialiased outline, which reads as a coloured halo once the art sits
-    on a dark background — the exact failure the dark-mode audit was about.
-    So pixels near the boundary get partial alpha instead of a binary
-    keep/drop.
+    Generated backgrounds are never the exact hex that was asked for, and
+    they are not even uniform: the six mascot images came back ranging from
+    #F002DC to #F906EE, drifting by up to 28 within a single image. A fixed
+    key colour leaves magenta specks behind on the ones that drifted
+    furthest, so each image reports its own.
+
+    The median rather than the mean, because a paw or an ear touching the
+    border would drag an average toward the artwork and pull the key colour
+    away from the background it is meant to remove.
+    """
+    image = image.convert("RGB")
+    width, height = image.size
+    step = max(1, min(width, height) // 128)
+
+    samples = []
+    for x in range(0, width, step):
+        samples.append(image.getpixel((x, 1)))
+        samples.append(image.getpixel((x, height - 2)))
+    for y in range(0, height, step):
+        samples.append(image.getpixel((1, y)))
+        samples.append(image.getpixel((width - 2, y)))
+
+    channels = [sorted(c[i] for c in samples) for i in range(3)]
+    return tuple(channel[len(channel) // 2] for channel in channels)
+
+
+def key_out(image, bg, tolerance):
+    """Removes `bg`, recovering the true colour of every edge pixel.
+
+    Lowering alpha on edge pixels is not enough on its own, and getting
+    that wrong is subtle. An antialiased outline pixel is a *mixture* of
+    artwork and background, so making it half-transparent while keeping its
+    mixed RGB leaves the background's colour in it. Against white nobody
+    notices; against a dark screen it reads as a coloured halo tracing the
+    character. A first version of this script did exactly that and left
+    266-536 magenta pixels around each mood.
+
+    So each edge pixel is unmixed instead. The observed colour is
+    `C = a*F + (1-a)*B` for foreground F over background B, which gives
+    `F = (C - (1-a)*B) / a` — the artwork's own colour, with the magenta
+    taken back out.
     """
     image = image.convert("RGBA")
     pixels = image.load()
     width, height = image.size
     br, bg_, bb = bg
 
-    # Beyond this the pixel is certainly artwork; below `tolerance` it is
-    # certainly background; between the two it is an antialiased edge.
+    # Below `tolerance` the pixel is background; above `soft` it is
+    # artwork; between the two it is a mixture to be unmixed.
     soft = tolerance * 2
+    span = soft - tolerance
 
     for y in range(height):
         for x in range(width):
             r, g, b, a = pixels[x, y]
             distance = abs(r - br) + abs(g - bg_) + abs(b - bb)
+
             if distance <= tolerance:
-                pixels[x, y] = (r, g, b, 0)
-            elif distance < soft:
-                fade = (distance - tolerance) / (soft - tolerance)
-                pixels[x, y] = (r, g, b, int(a * fade))
+                pixels[x, y] = (0, 0, 0, 0)
+                continue
+            if distance >= soft:
+                continue
+
+            alpha = (distance - tolerance) / span
+            # Below this the division blows tiny rounding errors up into
+            # wild colours, and the pixel is nearly invisible anyway.
+            if alpha < 0.08:
+                pixels[x, y] = (0, 0, 0, 0)
+                continue
+
+            unmixed = []
+            for channel, back in ((r, br), (g, bg_), (b, bb)):
+                value = (channel - (1 - alpha) * back) / alpha
+                unmixed.append(int(max(0, min(255, value))))
+            pixels[x, y] = (unmixed[0], unmixed[1], unmixed[2],
+                            int(a * alpha))
+    return image
+
+
+def keep_main_subject(image, keep_ratio=0.05):
+    """Drops stray islands, keeping the character and anything sizeable.
+
+    Generators like to scatter decorations — the mascot set came back with
+    little violet sparkles floating in the background, in a colour close
+    enough to the artwork to survive keying. They do two kinds of damage:
+    they show as debris beside the mascot, and because they sit far from
+    the character they inflate the bounding box, so trimming shrinks the
+    character to make room for a speck in the corner.
+
+    Anything at least `keep_ratio` of the largest region survives, rather
+    than only the single biggest, so a genuinely detached piece of artwork
+    is not thrown away with the specks.
+    """
+    image = image.convert("RGBA")
+    width, height = image.size
+    alpha = image.split()[3].load()
+
+    labels = [0] * (width * height)
+    sizes = [0]
+
+    for start in range(width * height):
+        if labels[start] or alpha[start % width, start // width] <= 24:
+            continue
+        label = len(sizes)
+        stack = [start]
+        labels[start] = label
+        count = 0
+        while stack:
+            index = stack.pop()
+            count += 1
+            x, y = index % width, index // width
+            for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
+                if 0 <= nx < width and 0 <= ny < height:
+                    neighbour = ny * width + nx
+                    if not labels[neighbour] and alpha[nx, ny] > 24:
+                        labels[neighbour] = label
+                        stack.append(neighbour)
+        sizes.append(count)
+
+    if len(sizes) <= 1:
+        return image
+
+    threshold = max(sizes) * keep_ratio
+    doomed = {i for i, size in enumerate(sizes) if i and size < threshold}
+    if not doomed:
+        return image
+
+    pixels = image.load()
+    for index, label in enumerate(labels):
+        if label in doomed:
+            pixels[index % width, index // width] = (0, 0, 0, 0)
     return image
 
 
@@ -106,11 +213,17 @@ def main():
         nargs="?",
         help="mood name; omit to take it from each filename",
     )
-    parser.add_argument("--bg", default="FF00FF", help="background hex to key out")
+    parser.add_argument(
+        "--bg",
+        default="auto",
+        help="background hex, or 'auto' to read it off each image's border",
+    )
     parser.add_argument("--tolerance", type=int, default=90)
     args = parser.parse_args()
 
-    bg = tuple(int(args.bg[i:i + 2], 16) for i in (0, 2, 4))
+    fixed_bg = None
+    if args.bg != "auto":
+        fixed_bg = tuple(int(args.bg[i:i + 2], 16) for i in (0, 2, 4))
     os.makedirs(OUT_DIR, exist_ok=True)
 
     for path in args.inputs:
@@ -121,7 +234,11 @@ def main():
                 % (mood, ", ".join(sorted(MOODS)))
             )
 
-        image = trim_and_fit(key_out(Image.open(path), bg, args.tolerance))
+        source = Image.open(path)
+        bg = fixed_bg or detect_background(source)
+        image = trim_and_fit(
+            keep_main_subject(key_out(source, bg, args.tolerance))
+        )
         out = os.path.join(OUT_DIR, "%s.png" % mood)
         image.save(out)
 
@@ -131,7 +248,10 @@ def main():
         opaque = sum(1 for p in image.getdata() if p[3] > 200)
         share = opaque / (TARGET * TARGET)
         note = "  <-- suspiciously empty, wrong --bg?" if share < 0.05 else ""
-        print("[ok] %-9s -> %s  (%.0f%% opaque)%s" % (mood, out, share * 100, note))
+        print(
+            "[ok] %-9s bg=#%02X%02X%02X -> %s  (%.0f%% opaque)%s"
+            % (mood, bg[0], bg[1], bg[2], out, share * 100, note)
+        )
 
 
 if __name__ == "__main__":
