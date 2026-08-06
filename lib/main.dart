@@ -15,7 +15,7 @@ import 'data/repositories/theme_repository.dart';
 import 'features/home/home_screen.dart';
 import 'features/onboarding/age_question_screen.dart';
 import 'firebase_options.dart';
-import 'core/widgets/app_startup_splash.dart';
+import 'core/widgets/mascot_loading_screen.dart';
 import 'features/onboarding/onboarding_screen.dart';
 
 Future<void> main() async {
@@ -149,7 +149,9 @@ class _AudienceGate extends ConsumerWidget {
         unawaited(ref.read(adServiceProvider).applyAudience(value));
         return const _TutorialGate();
       },
-      loading: () => const AppStartupSplash(),
+      loading: () => MascotLoadingScreen(
+        label: ref.read(appStringsProvider).loadingPreparing,
+      ),
       // A failed read leaves the audience unknown, which AdAudience already
       // treats as a child — so ask rather than assume an adult.
       error: (_, _) => const AgeQuestionScreen(),
@@ -184,7 +186,9 @@ class _TutorialGate extends ConsumerWidget {
           },
         );
       },
-      loading: () => const AppStartupSplash(),
+      loading: () => MascotLoadingScreen(
+        label: ref.read(appStringsProvider).loadingPreparing,
+      ),
       error: (_, _) => const HomeScreen(),
     );
   }

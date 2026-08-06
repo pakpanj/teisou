@@ -3474,6 +3474,30 @@ what the on-device pass actually verified), `flutter build apk
   that is coming, lit by a travelling sheen. The app's blank white
   startup frame is now `AppStartupSplash`: the mascot waving, with three
   bouncing dots.
+  - **The full-screen wait is `MascotLoadingScreen`** — the mascot cycling
+    through its working poses (reading/thinking/writing/curious, never a
+    celebratory one), a bar, and a percentage. It replaced
+    `AppStartupSplash`.
+    **The percentage is an estimate of elapsed time, not a measurement.**
+    `rootBundle.loadString` reports nothing until it hands back the whole
+    string; there is no half-loaded state to read, and a bar claiming
+    otherwise would be inventing a number. So it rises fast then flattens,
+    capping at `1 - exp(-_rate)` = **93%** — it can never sit at 100% while
+    the app is still working. One knob (`_rate`) sets both feel and cap;
+    there used to be a separate `_ceiling`, and injecting `_ceiling = 1.0`
+    changed nothing any test could see, because the exponential was doing
+    all the work.
+  - **Three bugs found on the device that the code and tests both passed**,
+    in one screen:
+    1. Returned straight into `home:` with no Material ancestor, so every
+       `Text` got Flutter's debug fallback — **yellow underlines under
+       every word**. Fixed by making it a `Scaffold`.
+    2. The progress bar's `Stack` had no unpositioned child of its own
+       (track was `Positioned.fill`, fill was a `FractionallySizedBox`),
+       so it **collapsed onto whatever fraction was filled** — no visible
+       track, and the whole column shrank and dragged the mascot
+       off-centre. Fixed with an explicit `width: double.infinity`.
+    3. The travelling highlight was documented before it was written.
   - **The timing is the part that matters and the part a screenshot
     cannot show.** Nearly everything loads from the asset bundle in a few
     tens of milliseconds, so a loader that appeared instantly would mostly

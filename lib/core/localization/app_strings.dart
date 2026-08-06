@@ -476,6 +476,9 @@ class AppStrings {
       _t('Apa bacaan dari huruf ini?', "What's the reading of this character?");
   String get nextQuestionButton => _t('Soal Berikutnya', 'Next Question');
 
+  String get loadingPreparing =>
+      _t('Menyiapkan pelajaranmu...', 'Getting your lessons ready...');
+
   // --- First-run tutorial -------------------------------------------------
   // The mascot speaking, in first person, to a child who has just opened
   // the app and knows nothing about it. Each line names one real part of
