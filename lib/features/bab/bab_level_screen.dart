@@ -45,7 +45,9 @@ class BabLevelScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(s.babLevelAppBarTitle(level.key))),
       body: chaptersAsync.when(
         data: (chapters) => MascotAdvisor(
-          mood: MascotMood.happy,
+          // Explaining, not just cheerful: this message tells the
+          // learner how the screen works rather than reacting to them.
+          mood: MascotMood.explaining,
           message: s.babLevelGuideMessage,
           child: AppRefreshIndicator(
             onRefresh: () => ref.refresh(babByLevelProvider(level).future),

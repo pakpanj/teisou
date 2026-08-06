@@ -3467,6 +3467,53 @@ what the on-device pass actually verified), `flutter build apk
     Particles". All three categories in `particle/_categories.json` start
     with the word, so it was never a one-off. Fixed by dropping the word
     from the format string; guarded in `mascot_coach_test.dart`.
+- **Mascot expressions**: `MascotMood` carries **18** moods — the original
+  six plus twelve added for the coaching work. Art is
+  `assets/mascot/{mood}.png`; a mood with no PNG falls back to its emoji
+  via `Image.asset`'s `errorBuilder`, so moods can be declared before their
+  drawings exist. **Only the original six have art**; the twelve new ones
+  currently render as emoji, which looks obviously unfinished at
+  advisor size (150dp) — that is the fallback working, not a bug.
+  - `scripts/mascot_prompts.md` holds the generation prompt for each, plus
+    the shared character sheet. **Two things in it are hard-won, do not
+    drop them.** Never ask a generator for a transparent background —
+    they draw the checkerboard as pixels and it ships into the app, which
+    is exactly what happened the first time; ask for flat magenta
+    `#FF00DC` and cut it with `scripts/prepare_mascot.py`. And the
+    character description is derived from `happy.png` and `sad.png` as
+    they actually are, not from memory — an earlier guess produced art
+    that did not look like the mascot at all.
+  - **Every mood must be selected somewhere in `lib/`.** A mood's real
+    cost is a drawing somebody makes by hand, so one the app never picks
+    is that work thrown away — and nothing else would ever flag it, since
+    the enum compiles and the switches stay exhaustive.
+    `test/mascot_mood_coverage_test.dart` fails on any unused mood, and
+    on any mood missing from the prompt sheet. Both were confirmed to
+    bite. If you add a mood, wire it in the same change.
+  - Homes for the twelve: `encouraging`/`determined`/`explaining` in
+    `MascotCoach`'s wrong-answer lines (encouraging replaced `happy`,
+    which reads as pleased about the mistake); `surprised` for a perfect
+    score in both the coach and `ExamResultScreen`; `waving` for the Home
+    and Bab greetings when nothing is in progress; `reading`/`relaxed` on
+    `BabDetailScreen` (open vs. finished chapter); `curious`/`thinking` on
+    `SearchScreen`'s two hint states, which were bare grey text before;
+    `bowing` on `AboutScreen`, retiring a literal `Text('🐱')` placeholder;
+    `worried` on the gate-quiz result when the learner did not pass —
+    concerned rather than `sad`, which reads as the mascot being let down
+    by a child; `writing` on a new `MascotAdvisor` in `KanjiHomeScreen`,
+    the module that had no mascot at all despite being about handwriting.
+- **Quiz option colours are one language across all six quizzes.**
+  Correct is `secondaryBlue` at 15% with a solid-blue outline; wrong is
+  `errorRed` at 12% with a red outline; unpicked options dim to 40% once
+  the question is settled. `McQuizFlow` and `exam_screen` used to fill the
+  option **solid green and solid red with white text**, which was the odd
+  one out against the four module quizzes — and worse, solid red against
+  solid green is the one pair a red-green colourblind learner cannot
+  separate, with white-on-solid text leaving no second cue. Blue against
+  red stays distinguishable, and the outline plus the check/cross icon
+  read even in greyscale. `test/quiz_option_colours_test.dart` fails if
+  `successGreen` reappears in any quiz screen or if a screen stops
+  washing/outlining; confirmed to bite.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).

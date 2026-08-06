@@ -186,24 +186,42 @@ class _OptionTile extends StatelessWidget {
 
     Color background;
     Color foreground;
+    Color borderColor;
     Widget? trailing;
 
+    // A wash of colour behind the answer with a matching outline, rather
+    // than a solid fill — the same treatment the Kanji/Kotoba/Bunpou/
+    // Partikel quizzes already use, so the four flows that come through
+    // here stop being the odd ones out.
+    //
+    // Blue for the right answer, not green. A solid red-vs-green pair is
+    // the one contrast a red-green colourblind learner cannot separate,
+    // and with white-on-solid text there was nothing else to go on. Blue
+    // against red stays distinguishable, and the icons and the outline
+    // give a second cue that does not rely on hue at all.
     switch (state) {
       case _OptionState.correct:
-        background = context.palette.successGreen;
-        foreground = Colors.white;
-        trailing = const Icon(Icons.check_circle, color: Colors.white);
+        background = context.palette.secondaryBlue.withValues(alpha: 0.15);
+        borderColor = context.palette.secondaryBlue;
+        foreground = context.palette.textNavy;
+        trailing = Icon(Icons.check_circle,
+            color: context.palette.secondaryBlue, size: 20);
         break;
       case _OptionState.wrong:
-        background = context.palette.errorRed;
-        foreground = Colors.white;
-        trailing = const Icon(Icons.cancel, color: Colors.white);
+        background = context.palette.errorRed.withValues(alpha: 0.12);
+        borderColor = context.palette.errorRed;
+        foreground = context.palette.textNavy;
+        trailing =
+            Icon(Icons.cancel, color: context.palette.errorRed, size: 20);
         break;
       case _OptionState.neutral:
-        background = answered
-            ? context.palette.cardWhite.withValues(alpha: 0.6)
-            : context.palette.cardWhite;
-        foreground = context.palette.textNavy;
+        background = context.palette.cardWhite;
+        borderColor = context.palette.progressTrack;
+        // Dimmed once the question is settled, so the options nobody
+        // picked recede instead of competing with the two that matter.
+        foreground = answered
+            ? context.palette.textNavy.withValues(alpha: 0.4)
+            : context.palette.textNavy;
         trailing = null;
         break;
     }
@@ -220,9 +238,8 @@ class _OptionTile extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: state == _OptionState.neutral
-                  ? context.palette.progressTrack
-                  : Colors.transparent,
+              color: borderColor,
+              width: state == _OptionState.neutral ? 1 : 1.5,
             ),
           ),
           child: Row(

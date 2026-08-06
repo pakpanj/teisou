@@ -13,6 +13,7 @@ import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 import 'bab_gate_quiz_generator.dart';
 import 'bab_providers.dart';
+import '../../core/widgets/mascot_widget.dart';
 
 /// The cumulative "gerbang" (gate) quiz standing between one Bab chapter
 /// and the next. Passing it — with a perfect score, no partial credit —
@@ -128,13 +129,29 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
       SimpleExamResultScreen(
         title: s.babGateQuizTitle,
         result: result,
-        reviewContent: Text(
-          passed ? s.babGatePassedMessage : s.babGateFailedMessage,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: passed ? context.palette.successGreen : context.palette.errorRed,
-          ),
+        reviewContent: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Concerned, not disappointed: failing the gate leaves the
+            // learner stuck on this chapter, and a mascot that looks let
+            // down by them is the last thing that moment needs.
+            MascotWidget(
+              mood: passed ? MascotMood.cheering : MascotMood.worried,
+              size: 110,
+              showBackdrop: false,
+            ),
+            const SizedBox(height: 12),
+            Text(
+              passed ? s.babGatePassedMessage : s.babGateFailedMessage,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: passed
+                    ? context.palette.successGreen
+                    : context.palette.errorRed,
+              ),
+            ),
+          ],
         ),
       ),
     );

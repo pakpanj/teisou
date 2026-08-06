@@ -32,6 +32,9 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
   }
 
   MascotMood get _mood {
+    // A clean sweep is the rarest result in the app and used to look
+    // exactly like an 80%.
+    if (result.percentage >= 100) return MascotMood.surprised;
     if (result.percentage >= 80) return MascotMood.happy;
     if (result.percentage >= 60) return MascotMood.cheering;
     return MascotMood.sad;

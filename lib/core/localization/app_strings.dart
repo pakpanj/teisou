@@ -513,6 +513,10 @@ class AppStrings {
   String coachFinishedStrong2(int score, int total) =>
       _t('$score dari $total. Aku bangga sama kamu!',
           '$score out of $total. I am proud of you!');
+  String coachPerfect1(int total) => _t(
+      'Sempurna! $total dari $total benar!', 'Perfect! $total out of $total!');
+  String coachPerfect2(int total) => _t('Tidak ada yang salah sama sekali!',
+      'Not a single one missed!');
   String coachFinishedWeak1(int score, int total) =>
       _t('Selesai! $score dari $total. Ayo coba lagi, pasti bisa.',
           'Done! $score of $total. Try again — you will get there.');
@@ -719,6 +723,10 @@ class AppStrings {
         'The whole N5-N1 curriculum is done. Outstanding!',
       );
   String babLevelAppBarTitle(String levelKey) => 'Bab $levelKey';
+  String get kanjiGuideMessage => _t(
+        'Pilih level JLPT, lalu pelajari urutan goresan tiap kanji.',
+        'Pick a JLPT level, then learn each kanji stroke by stroke.',
+      );
   String get babLevelGuideMessage => _t(
         'Pilih satu bab untuk mulai belajar.',
         'Pick a chapter to start learning.',

@@ -28,7 +28,9 @@ class BabHomeScreen extends ConsumerWidget {
       backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(s.babTitle)),
       body: MascotAdvisor(
-        mood: nextUp != null ? MascotMood.excited : MascotMood.happy,
+        // Waving when there is nothing in progress — it is a greeting,
+        // not a reaction. Excited once there is somewhere to carry on to.
+        mood: nextUp != null ? MascotMood.excited : MascotMood.waving,
         message: nextUp != null
             ? s.babGuideContinue(nextUp.localizedTitle(s.language))
             : s.babGuideIntro,

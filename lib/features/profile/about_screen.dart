@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/mascot_widget.dart';
 
 class AboutScreen extends ConsumerWidget {
   const AboutScreen({super.key});
@@ -18,8 +19,15 @@ class AboutScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
+          // A bow on the credits page: this is the one screen whose
+          // job is to thank people. Also retires a bare emoji that was
+          // standing in for the mascot.
           const Center(
-            child: Text('🐱', style: TextStyle(fontSize: 64)),
+            child: MascotWidget(
+              mood: MascotMood.bowing,
+              size: 120,
+              showBackdrop: false,
+            ),
           ),
           const SizedBox(height: 12),
           Center(

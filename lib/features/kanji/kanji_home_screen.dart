@@ -11,6 +11,8 @@ import '../../data/models/jlpt_level.dart';
 import '../../data/models/kanji_level.dart';
 import 'kanji_level_screen.dart';
 import 'kanji_providers.dart';
+import '../../core/widgets/mascot_advisor.dart';
+import '../../core/widgets/mascot_widget.dart';
 
 /// Entry point for the Kanji module: JLPT level picker (N5-N1). Only
 /// levels with a real dataset are tappable; the rest show a "Segera"
@@ -30,17 +32,24 @@ class KanjiHomeScreen extends ConsumerWidget {
         data: (levels) => Column(
           children: [
             Expanded(
-              child: AppRefreshIndicator(
-                onRefresh: () => ref.refresh(kanjiLevelsProvider.future),
-                child: ListView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(20),
-                  children: [
-                    for (final level in levels) ...[
-                      _LevelCard(level: level),
-                      const SizedBox(height: 12),
+              // Brush in paw: this is the module about writing characters
+              // by hand, and it was the one that had no mascot at all.
+              child: MascotAdvisor(
+                mood: MascotMood.writing,
+                message: s.kanjiGuideMessage,
+                child: AppRefreshIndicator(
+                  onRefresh: () => ref.refresh(kanjiLevelsProvider.future),
+                  child: ListView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    padding: const EdgeInsets.fromLTRB(
+                        20, 20, 20, MascotAdvisor.reservedBottomSpace),
+                    children: [
+                      for (final level in levels) ...[
+                        _LevelCard(level: level),
+                        const SizedBox(height: 12),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),

@@ -212,7 +212,9 @@ class _BabCurriculumCard extends ConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: MascotGuideBubble(
-            mood: nextUp != null ? MascotMood.excited : MascotMood.happy,
+            // A greeting when nothing is in progress, rather than a
+            // grin about nothing in particular.
+            mood: nextUp != null ? MascotMood.excited : MascotMood.waving,
             message: nextUp != null
                 ? s.babGuideContinue(nextUp.localizedTitle(s.language))
                 : s.babGuideIntro,

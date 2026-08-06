@@ -17,6 +17,9 @@ enum CoachMoment {
   /// The learner finished, and got most of it right.
   finishedStrong,
 
+  /// The learner finished without a single mistake.
+  finishedPerfect,
+
   /// The learner finished, but struggled. Deliberately still warm.
   finishedWeak,
 }
@@ -101,8 +104,12 @@ class MascotCoach {
   /// What the mascot says once the last question is answered.
   CoachLine onFinished(AppStrings s, {required int score, required int total}) {
     _run = 0;
+    if (total > 0 && score == total) {
+      return _pick(CoachMoment.finishedPerfect, _perfectLines(s, total));
+    }
     // Two thirds, not "all correct": a bar only a perfect run clears turns
-    // the warm ending into something most learners never see.
+    // the warm ending into something most learners never see. Perfect gets
+    // its own moment above rather than raising this one.
     final strong = total > 0 && score * 3 >= total * 2;
     return strong
         ? _pick(CoachMoment.finishedStrong, _strongLines(s, score, total))
@@ -147,11 +154,16 @@ class MascotCoach {
   /// Every one of these is encouraging and names the right answer. If a
   /// line is ever added here that a child could read as being told off,
   /// it belongs somewhere else — see this class's own doc comment.
+  ///
+  /// [MascotMood.encouraging] rather than [MascotMood.happy]: a plainly
+  /// happy face over "that was wrong" reads as pleased about the slip.
+  /// The encouraging pose is the one that means "it is fine, try again",
+  /// which is what these words are actually saying.
   List<CoachLine> _wrongLines(AppStrings s, String answer) => [
-        CoachLine(mood: MascotMood.happy, message: s.coachWrong1(answer)),
-        CoachLine(mood: MascotMood.happy, message: s.coachWrong2(answer)),
-        CoachLine(mood: MascotMood.excited, message: s.coachWrong3(answer)),
-        CoachLine(mood: MascotMood.happy, message: s.coachWrong4(answer)),
+        CoachLine(mood: MascotMood.encouraging, message: s.coachWrong1(answer)),
+        CoachLine(mood: MascotMood.encouraging, message: s.coachWrong2(answer)),
+        CoachLine(mood: MascotMood.determined, message: s.coachWrong3(answer)),
+        CoachLine(mood: MascotMood.explaining, message: s.coachWrong4(answer)),
       ];
 
   List<CoachLine> _strongLines(AppStrings s, int score, int total) => [
@@ -165,13 +177,20 @@ class MascotCoach {
         ),
       ];
 
+  /// A clean sweep gets a face nothing else uses, so the rarest result in
+  /// the app does not look the same as a merely good one.
+  List<CoachLine> _perfectLines(AppStrings s, int total) => [
+        CoachLine(mood: MascotMood.surprised, message: s.coachPerfect1(total)),
+        CoachLine(mood: MascotMood.cheering, message: s.coachPerfect2(total)),
+      ];
+
   List<CoachLine> _weakLines(AppStrings s, int score, int total) => [
         CoachLine(
-          mood: MascotMood.happy,
+          mood: MascotMood.encouraging,
           message: s.coachFinishedWeak1(score, total),
         ),
         CoachLine(
-          mood: MascotMood.excited,
+          mood: MascotMood.determined,
           message: s.coachFinishedWeak2(score, total),
         ),
       ];

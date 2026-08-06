@@ -16,6 +16,7 @@ import 'dictionary_word_detail_screen.dart';
 import 'kanji_detail_screen.dart';
 import 'kotoba_detail_screen.dart';
 import 'widgets/jlpt_badge.dart';
+import '../../core/widgets/mascot_widget.dart';
 
 enum _TypeFilter { all, kanji, kotoba }
 
@@ -189,7 +190,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Widget _buildResults(AppStrings s) {
     final future = _resultsFuture;
     if (future == null) {
-      return _HintMessage(s.searchHintMessage);
+      // Curious: nothing has been typed yet, so the mascot is asking
+      // rather than reporting.
+      return _HintMessage(s.searchHintMessage, mood: MascotMood.curious);
     }
 
     return FutureBuilder<List<_SearchResult>>(
@@ -200,7 +203,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         }
         final results = snapshot.data ?? [];
         if (results.isEmpty) {
-          return _HintMessage(s.searchNoResults);
+          // Thinking: a search that found nothing is a puzzle, not a
+          // failure to apologise for.
+          return _HintMessage(s.searchNoResults, mood: MascotMood.thinking);
         }
         return ListView.separated(
           padding: const EdgeInsets.all(16),
@@ -275,18 +280,28 @@ class _FilterChipsRow<T> extends StatelessWidget {
 
 class _HintMessage extends StatelessWidget {
   final String message;
+  final MascotMood mood;
 
-  const _HintMessage(this.message);
+  const _HintMessage(this.message, {required this.mood});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
-        child: Text(
-          message,
-          textAlign: TextAlign.center,
-          style: TextStyle(color: context.palette.textNavy.withValues(alpha: 0.6)),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            MascotWidget(mood: mood, size: 110, showBackdrop: false),
+            const SizedBox(height: 12),
+            Text(
+              message,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: context.palette.textNavy.withValues(alpha: 0.6),
+              ),
+            ),
+          ],
         ),
       ),
     );

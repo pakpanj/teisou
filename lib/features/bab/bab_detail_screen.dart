@@ -161,7 +161,11 @@ class BabDetailScreen extends ConsumerWidget {
               ),
             const SizedBox(height: 24),
             MascotGuideBubble(
-              mood: done ? MascotMood.cheering : MascotMood.happy,
+              // Reading while the chapter is still open — this screen
+              // is the material itself, not a reaction to an answer — and
+              // relaxed once it is finished and nothing more is being
+              // asked.
+              mood: done ? MascotMood.relaxed : MascotMood.reading,
               message: done
                   ? s.babGuideDoneMessage
                   : s.babGuideQuizMessage(resolved.bab.order,
