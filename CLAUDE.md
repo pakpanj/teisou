@@ -3571,6 +3571,36 @@ what the on-device pass actually verified), `flutter build apk
     Home, and a relaunch goes straight to Home. **Note the last step uses
     `cheering`, one of the six moods that has art** — the earlier steps
     show emoji until their PNGs land.
+- **Choukai clips are scripts, not sentences**
+  (`lib/core/services/spoken_script.dart`). Every one of the 150 clips is
+  written with speaker markers — `男：すみません、今何時ですか。女：今、
+  三時半です。` — and the whole string used to go to the TTS engine as a
+  single utterance. So the engine **pronounced the markers as words**: a
+  learner heard "otoko" and "onna" spoken between the lines, in one voice,
+  for what are mostly two-person dialogues.
+  - The markers are also the answer to who is speaking, which no amount of
+    guessing from a clip id could have got right: **122 of 150 clips have
+    both speakers in them**, so there is no single correct voice for a
+    clip at all. `parseSpokenScript` splits on the markers and
+    `TtsService.speakScript` plays each turn in its own voice.
+  - Splitting is safe because the data was checked before writing the
+    parser: all 150 clips begin with a marker, there are 552 markers
+    (274 男 + 278 女, all fullwidth colon), and 男/女 appear **nowhere
+    else** in any clip's text — so nothing that is genuinely part of the
+    speech can be mistaken for a stage direction. A bare 男 not followed
+    by a colon is left in the speech, and there is a test for it.
+  - Sequential playback needs `awaitSpeakCompletion(true)`, or every turn
+    talks over the last. It is interruptible via a generation token — a
+    five-turn clip runs half a minute and must not follow a learner who
+    taps again or leaves the screen.
+  - **Verified on device by the audio timeline, not by ear**: playing
+    `choukai_n5_jam_berapa` produced four separate `AudioTrack` sessions
+    (distinct `piid`/`sessionId`), each starting only after the previous
+    stopped, matching that clip's four script turns exactly.
+  - `test/spoken_script_test.dart` parses the real
+    `choukai_data.json` as a fixture. Confirmed to bite by disabling the
+    split (4 failures), by leaving the colon in, and by treating any 男/女
+    as a marker.
 - **Japanese TTS voices** (`lib/core/services/japanese_voices.dart`,
   used by `TtsService`): the app speaks with one male and one female ja-JP
   voice where the device has them.

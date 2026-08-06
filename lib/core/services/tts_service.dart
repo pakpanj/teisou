@@ -2,6 +2,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 
 import '../../data/models/kaiwa_line.dart';
 import 'japanese_voices.dart';
+import 'spoken_script.dart';
 
 /// Wraps [FlutterTts] configured for Japanese pronunciation of kana
 /// characters and example words. MVP uses on-device TTS, not real audio
@@ -98,5 +99,76 @@ class TtsService {
     await _tts.speak(text);
   }
 
-  Future<void> stop() => _tts.stop();
+  /// Reads a multi-speaker script, each turn in its own voice.
+  ///
+  /// Choukai clips are scripts with `男：`/`女：` markers in them. Passing
+  /// the whole string to [speak] made the engine pronounce those markers
+  /// as words, in one voice, for what are mostly two-person dialogues.
+  ///
+  /// Turns play in order, each awaiting the previous one — which needs
+  /// `awaitSpeakCompletion`, since `speak()` otherwise returns the moment
+  /// the utterance is queued and every turn would talk over the last.
+  ///
+  /// **Interruptible.** A five-turn clip takes half a minute, and a
+  /// learner who taps again, or leaves the screen, must not be followed
+  /// by the rest of it. Each run takes a token; a newer run or a [stop]
+  /// invalidates the older one, which then abandons its remaining turns
+  /// rather than fighting for the speaker.
+  Future<void> speakScript(String script) async {
+    final turns = parseSpokenScript(script);
+    if (turns.isEmpty) return;
+    if (turns.length == 1 && turns.first.gender == null) {
+      // No markers: nothing gained by the sequential path.
+      return speak(turns.first.text);
+    }
+
+    await _ensureInitialized();
+    await _ensureVoicesResolved();
+    final token = ++_scriptGeneration;
+    await _tts.stop();
+
+    try {
+      await _tts.awaitSpeakCompletion(true);
+    } catch (_) {
+      // Unsupported here — the turns will overlap, which is worse than
+      // ideal but still better than reading the markers aloud.
+    }
+
+    for (final turn in turns) {
+      if (token != _scriptGeneration) return;
+      await _speakTurn(turn.text, turn.gender);
+    }
+  }
+
+  /// One turn, with the voice already chosen. Deliberately does not call
+  /// `_tts.stop()` the way [speak] does — stopping between turns of the
+  /// same script would cut off the turn that is still playing.
+  Future<void> _speakTurn(String text, KaiwaGender? gender) async {
+    final voice = gender == null
+        ? null
+        : (gender == KaiwaGender.female ? _voices.female : _voices.male);
+    try {
+      if (voice != null) {
+        await _tts.setVoice(voice);
+        await _tts.setPitch(1.0);
+      } else {
+        await _tts.clearVoice();
+        await _tts.setLanguage('ja-JP');
+        await _tts.setPitch(gender == KaiwaGender.male ? 0.85 : 1.0);
+      }
+    } catch (_) {
+      // Same reasoning as speak(): never let voice switching silence the
+      // line entirely.
+    }
+    await _tts.speak(text);
+  }
+
+  /// Bumped by every new script and by [stop], so an in-flight script
+  /// knows it has been superseded.
+  int _scriptGeneration = 0;
+
+  Future<void> stop() {
+    _scriptGeneration++;
+    return _tts.stop();
+  }
 }

@@ -12,7 +12,6 @@ import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 import '../profile/exam_history_providers.dart';
-import '../../core/services/japanese_voices.dart';
 
 /// Runs one Choukai clip: [clip.audioText] is only ever spoken via
 /// [ttsServiceProvider], never shown on screen — that's the whole point of
@@ -105,16 +104,11 @@ class _AudioHeader extends ConsumerWidget {
           elevation: 3,
           child: InkWell(
             customBorder: const CircleBorder(),
-            // Listening practice against one voice teaches that voice.
-            // The clip's own id picks the speaker, so a given clip always
-            // sounds the same while the set as a whole is mixed.
-            onTap: () => ref.read(ttsServiceProvider).speak(
-                  clip.audioText,
-                  gender: voiceForSpeaker(
-                    dialogueId: clip.id,
-                    speaker: 'choukai',
-                  ),
-                ),
+            // The clip text is a script with 男：/女： markers, so the
+            // speakers are stated outright — no guessing needed, and the
+            // markers stop being read out as words.
+            onTap: () =>
+                ref.read(ttsServiceProvider).speakScript(clip.audioText),
             child: const Padding(
               padding: EdgeInsets.all(24),
               child: Icon(Icons.volume_up, color: Colors.white, size: 40),
