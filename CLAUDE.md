@@ -3360,6 +3360,51 @@ what the on-device pass actually verified), `flutter build apk
     actually happened yet. Kaiwa remains free app-wide (see the
     monetization-roadmap note above) — this rollout didn't touch
     premium gating either way.
+- **MascotAdvisor** (`lib/core/widgets/mascot_advisor.dart`) is the mascot
+  standing at the bottom edge of a screen talking to the learner — the
+  Clash of Clans advisor arrangement the user asked for by name. It is
+  **not** interchangeable with `MascotGuideBubble`
+  (`mascot_guide_bubble.dart`), which stays alive and is still the right
+  widget in two places: `bab_detail_screen.dart`, where the bubble's
+  message *is* the instruction for the "Mulai Kuis" button 16px below it
+  (an advisor floating in the corner would either cover that button or
+  divorce the instruction from its action), and `_BabCurriculumCard` in
+  `home/widgets/modules_section.dart`, which is a card inside a scrolling
+  list, not a screen. Use the advisor when a screen has one standing piece
+  of guidance; use the bubble when the message belongs to a specific
+  control or lives inside a card.
+  - **It wraps the screen's scrollable rather than sitting beside it in a
+    caller-built `Stack`** — it has to hear that list's
+    `ScrollNotification`s, and owning the arrangement keeps the
+    bottom-padding contract (`MascotAdvisor.reservedBottomSpace`, 170) in
+    one place instead of trusting every caller to remember a magic number.
+  - **The behaviour that matters is that it steps aside.** The first
+    version simply floated over the page. On `BabHomeScreen` (5 cards,
+    empty space below) that looked perfect; on `BabLevelScreen`'s 52-row
+    chapter list it sat squarely on top of two tappable chapters and
+    greyed out their text — bottom padding does not help there, since it
+    only clears the *end* of a list the learner spends their time in the
+    middle of. So the advisor is present while the list is at rest at its
+    top, fades out the moment scrolling starts, and returns on the way
+    back up. A screen with nothing to scroll never fires a notification,
+    so the same widget serves both without a flag. While faded it is also
+    `IgnorePointer`-ed — a fade alone still lets an invisible character
+    eat the tap meant for the row underneath. That is the one place a
+    blanket ignore is correct here (the advisor ignoring *itself*);
+    applying one while visible would make the advisor untappable, since a
+    descendant cannot un-ignore a parent that ignores pointers.
+  - `test/mascot_advisor_test.dart` covers all of this, and each assertion
+    was confirmed to bite by re-injecting the defect it guards (pin
+    `atRest` true → the step-aside and pass-through tests fail; hardcode
+    `ignoring: false` → only the pass-through test fails; make the
+    at-rest flag one-way → only the "comes back" test fails).
+    **Testing gotcha**: do not advance a dismissal with one long
+    `pump(400ms)` plus a zero-duration `pump()`. `AnimatedSwitcher` drops
+    its outgoing child from a status listener, and that combination does
+    not reliably deliver the rebuild that performs the removal; step the
+    clock instead (the bubble is gone 240ms after the tap). An earlier
+    diagnosis blamed the scrollable underneath for this — that was wrong,
+    measured at 240ms with and without a list.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).

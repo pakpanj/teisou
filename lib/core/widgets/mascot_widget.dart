@@ -45,11 +45,20 @@ class MascotWidget extends StatefulWidget {
   /// widget exists to stop being.
   final VoidCallback? onTap;
 
+  /// The mood-tinted disc behind the character.
+  ///
+  /// Right for a mascot sitting inside a card, where the disc separates it
+  /// from the surface it is on. Wrong for one standing at the edge of the
+  /// screen as a character in the room with you — a disc there reads as a
+  /// sticker pinned to the corner. Hence [MascotAdvisor] turns it off.
+  final bool showBackdrop;
+
   const MascotWidget({
     super.key,
     required this.mood,
     this.size = 140,
     this.onTap,
+    this.showBackdrop = true,
   });
 
   @override
@@ -217,14 +226,15 @@ class _MascotWidgetState extends State<MascotWidget>
                 alignment: Alignment.center,
                 clipBehavior: Clip.none,
                 children: [
-                  Container(
-                    width: widget.size,
-                    height: widget.size,
-                    decoration: BoxDecoration(
-                      color: background,
-                      shape: BoxShape.circle,
+                  if (widget.showBackdrop)
+                    Container(
+                      width: widget.size,
+                      height: widget.size,
+                      decoration: BoxDecoration(
+                        color: background,
+                        shape: BoxShape.circle,
+                      ),
                     ),
-                  ),
                   if (widget.mood == MascotMood.proud) ..._sparkles(t),
                   Transform.translate(
                     offset: _offsetFor(t),
@@ -269,17 +279,20 @@ class _MascotWidgetState extends State<MascotWidget>
   /// image icon. Art is expected to arrive one mood at a time, so a mixed
   /// state has to look deliberate rather than broken.
   Widget _buildBody(String emoji) {
+    // Without a disc the character owns the whole box; inside one it has to
+    // leave a ring of the disc visible around itself.
+    final extent = widget.size * (widget.showBackdrop ? 0.72 : 1.0);
     return Image.asset(
       'assets/mascot/${widget.mood.name}.png',
-      width: widget.size * 0.72,
-      height: widget.size * 0.72,
+      width: extent,
+      height: extent,
       fit: BoxFit.contain,
       // Art is drawn at the size it will be shown, so let Flutter decode it
       // that way instead of holding a full-resolution bitmap per mood.
-      cacheWidth: (widget.size * 0.72 * 3).round(),
+      cacheWidth: (extent * 3).round(),
       errorBuilder: (context, error, stack) => Text(
         emoji,
-        style: TextStyle(fontSize: widget.size * 0.5),
+        style: TextStyle(fontSize: extent * 0.7),
       ),
     );
   }

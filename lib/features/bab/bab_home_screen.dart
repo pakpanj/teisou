@@ -5,7 +5,7 @@ import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
-import '../../core/widgets/mascot_guide_bubble.dart';
+import '../../core/widgets/mascot_advisor.dart';
 import '../../core/widgets/mascot_widget.dart';
 import '../../data/models/jlpt_level.dart';
 import 'bab_level_screen.dart';
@@ -27,27 +27,34 @@ class BabHomeScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(s.babTitle)),
-      body: AppRefreshIndicator(
-        onRefresh: () async {
-          ref.invalidate(babAllProvider);
-          ref.invalidate(babNextUpProvider);
-        },
-        child: ListView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(20),
-          children: [
-            MascotGuideBubble(
-              mood: nextUp != null ? MascotMood.excited : MascotMood.happy,
-              message: nextUp != null
-                  ? s.babGuideContinue(nextUp.localizedTitle(s.language))
-                  : s.babGuideIntro,
+      body: MascotAdvisor(
+        mood: nextUp != null ? MascotMood.excited : MascotMood.happy,
+        message: nextUp != null
+            ? s.babGuideContinue(nextUp.localizedTitle(s.language))
+            : s.babGuideIntro,
+        child: AppRefreshIndicator(
+          onRefresh: () async {
+            ref.invalidate(babAllProvider);
+            ref.invalidate(babNextUpProvider);
+          },
+          child: ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            // Bottom padding clears the advisor standing over this list,
+            // so the last level card can always be scrolled out from
+            // under it.
+            padding: const EdgeInsets.fromLTRB(
+              20,
+              20,
+              20,
+              MascotAdvisor.reservedBottomSpace,
             ),
-            const SizedBox(height: 24),
-            for (final level in JlptLevel.values) ...[
-              _LevelCard(level: level),
-              const SizedBox(height: 12),
+            children: [
+              for (final level in JlptLevel.values) ...[
+                _LevelCard(level: level),
+                const SizedBox(height: 12),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
@@ -89,9 +96,7 @@ class _LevelCard extends ConsumerWidget {
     void open() {
       if (locked) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(s.babLevelLockedReason(previousLevel!.key)),
-          ),
+          SnackBar(content: Text(s.babLevelLockedReason(previousLevel!.key))),
         );
         return;
       }
@@ -105,7 +110,9 @@ class _LevelCard extends ConsumerWidget {
     }
 
     return Material(
-      color: available ? context.palette.cardWhite : context.palette.mutedSurface,
+      color: available
+          ? context.palette.cardWhite
+          : context.palette.mutedSurface,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
@@ -118,10 +125,11 @@ class _LevelCard extends ConsumerWidget {
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: (available
-                          ? context.palette.primaryCoral
-                          : context.palette.freeBadgeGrey)
-                      .withValues(alpha: 0.15),
+                  color:
+                      (available
+                              ? context.palette.primaryCoral
+                              : context.palette.freeBadgeGrey)
+                          .withValues(alpha: 0.15),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
@@ -180,7 +188,9 @@ class _LevelCard extends ConsumerWidget {
                               ),
                         style: TextStyle(
                           fontSize: 12,
-                          color: context.palette.textNavy.withValues(alpha: 0.6),
+                          color: context.palette.textNavy.withValues(
+                            alpha: 0.6,
+                          ),
                         ),
                       ),
                   ],
@@ -188,7 +198,9 @@ class _LevelCard extends ConsumerWidget {
               ),
               Icon(
                 Icons.chevron_right,
-                color: available ? context.palette.primaryCoral : context.palette.freeBadgeGrey,
+                color: available
+                    ? context.palette.primaryCoral
+                    : context.palette.freeBadgeGrey,
               ),
             ],
           ),
