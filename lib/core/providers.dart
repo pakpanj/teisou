@@ -52,6 +52,7 @@ import 'services/ad_service.dart';
 import 'services/auth_service.dart';
 import 'services/romaji_converter.dart';
 import 'services/tts_service.dart';
+import '../data/repositories/onboarding_repository.dart';
 
 final languageRepositoryProvider = Provider<LanguageRepository>(
   (ref) => LanguageRepository(),
@@ -87,6 +88,19 @@ final themeModeProvider = StateProvider<AppThemeMode>(
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
 final ttsServiceProvider = Provider<TtsService>((ref) => TtsService());
 final adServiceProvider = Provider<AdService>((ref) => AdService());
+
+/// Whether this device has already been shown the tutorial.
+///
+/// A [FutureProvider] rather than a plain read so the entry point can wait
+/// on it the same way it waits on the ad audience, and so replaying the
+/// tutorial from Profile is one `ref.invalidate` away.
+final onboardingRepositoryProvider = Provider<OnboardingRepository>(
+  (ref) => OnboardingRepository(),
+);
+
+final hasSeenTutorialProvider = FutureProvider<bool>(
+  (ref) => ref.watch(onboardingRepositoryProvider).hasSeenTutorial(),
+);
 
 final adAudienceRepositoryProvider =
     Provider<AdAudienceRepository>((ref) => AdAudienceRepository());

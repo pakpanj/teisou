@@ -3514,6 +3514,42 @@ what the on-device pass actually verified), `flutter build apk
   read even in greyscale. `test/quiz_option_colours_test.dart` fails if
   `successGreen` reappears in any quiz screen or if a screen stops
   washing/outlining; confirmed to bite.
+- **First-run tutorial** (`lib/features/onboarding/onboarding_screen.dart`,
+  `OnboardingRepository`): six steps of the mascot introducing the app,
+  shown once per device. `onboardingSteps(AppStrings)` is a plain function
+  returning data, kept out of the widget so the wording and order can be
+  read and tested without pumping a screen.
+  - **Its own screen, not a coach-mark tour over the real UI.** A spotlight
+    tour has to know where each widget is — global keys, scroll-into-view,
+    and a tutorial that silently points at the wrong thing every time a
+    Home card moves. On a home screen still gaining sections before
+    release, that is a tutorial that would be quietly wrong within a month.
+  - **`_TutorialGate` sits after `_AudienceGate` in `main.dart`**, not
+    before: the age answer configures ads and must settle before anything
+    renders. A failed read of the seen-flag shows Home, deliberately — if
+    SharedPreferences is unreadable the flag can never be written either,
+    so erring the other way would trap the learner in a tutorial that
+    replays forever.
+  - **`OnboardingRepository` is local-only, with no Firestore mirror** —
+    the one progress-ish repository in the app that is. Learning progress
+    belongs to the person and should follow them to a new phone; "has been
+    shown how this works" belongs to the device. Mirroring it would drop a
+    learner installing on a second phone straight onto Home with no
+    explanation. The key is versioned (`onboarding_seen_v1`) — bump the
+    suffix when the tutorial is rewritten, or nobody who already has the
+    app will ever see the new one.
+  - Reachable again from Profile ("Lihat Tutorial Lagi"), which is also the
+    only way to test it without `adb shell pm clear`. The replay
+    deliberately does **not** clear the seen flag.
+  - `test/onboarding_test.dart` covers the walkthrough and the flag. Four
+    defects were injected and each was caught: an unskippable tutorial, a
+    double-tap on the last button finishing twice, a seen-flag that never
+    persists (the tutorial returning on every launch), and every step
+    reusing one expression.
+  - Verified on device from a cleared install: age question → tutorial →
+    Home, and a relaunch goes straight to Home. **Note the last step uses
+    `cheering`, one of the six moods that has art** — the earlier steps
+    show emoji until their PNGs land.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).

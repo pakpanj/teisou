@@ -15,6 +15,7 @@ import 'data/repositories/theme_repository.dart';
 import 'features/home/home_screen.dart';
 import 'features/onboarding/age_question_screen.dart';
 import 'firebase_options.dart';
+import 'features/onboarding/onboarding_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -145,12 +146,45 @@ class _AudienceGate extends ConsumerWidget {
         // Fire-and-forget: the configuration applies to requests made after
         // it lands, and every ad site is behind at least one more tap.
         unawaited(ref.read(adServiceProvider).applyAudience(value));
-        return const HomeScreen();
+        return const _TutorialGate();
       },
       loading: () => const ColoredBox(color: Colors.white),
       // A failed read leaves the audience unknown, which AdAudience already
       // treats as a child — so ask rather than assume an adult.
       error: (_, _) => const AgeQuestionScreen(),
+    );
+  }
+}
+
+/// Shows the tutorial once per device, then the app.
+///
+/// Sits *after* the age question rather than before it: the age answer
+/// configures ads and has to be settled before anything renders, and a
+/// tutorial in front of it would delay that for no reason.
+///
+/// A failed read of the flag shows the home screen, not the tutorial. If
+/// SharedPreferences is unreadable the flag can never be written either,
+/// so erring the other way would trap the learner in a tutorial that
+/// replays on every launch.
+class _TutorialGate extends ConsumerWidget {
+  const _TutorialGate();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final seen = ref.watch(hasSeenTutorialProvider);
+
+    return seen.when(
+      data: (value) {
+        if (value) return const HomeScreen();
+        return OnboardingScreen(
+          onFinished: () async {
+            await ref.read(onboardingRepositoryProvider).markTutorialSeen();
+            ref.invalidate(hasSeenTutorialProvider);
+          },
+        );
+      },
+      loading: () => const ColoredBox(color: Colors.white),
+      error: (_, _) => const HomeScreen(),
     );
   }
 }

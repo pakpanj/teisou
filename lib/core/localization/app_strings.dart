@@ -476,6 +476,47 @@ class AppStrings {
       _t('Apa bacaan dari huruf ini?', "What's the reading of this character?");
   String get nextQuestionButton => _t('Soal Berikutnya', 'Next Question');
 
+  // --- First-run tutorial -------------------------------------------------
+  // The mascot speaking, in first person, to a child who has just opened
+  // the app and knows nothing about it. Each line names one real part of
+  // the app and says what it is for — no marketing, no jargon.
+  String get tutorialGreeting => _t(
+        'Halo! Aku akan menemanimu belajar bahasa Jepang di sini.',
+        "Hello! I'll be learning Japanese with you here.",
+      );
+  String get tutorialKana => _t(
+        'Kita mulai dari Hiragana dan Katakana — huruf dasar Jepang. '
+            'Kamu bisa belajar dan latihan menulisnya.',
+        'We start with Hiragana and Katakana — the basic Japanese letters. '
+            'You can learn them and practise writing them.',
+      );
+  String get tutorialCurriculum => _t(
+        'Di Kurikulum ada bab-bab berurutan. Selesaikan kuis di akhir bab '
+            'untuk membuka bab berikutnya.',
+        'The Curriculum has chapters in order. Finish the quiz at the end '
+            'of a chapter to open the next one.',
+      );
+  String get tutorialKanji => _t(
+        'Di Kanji kamu bisa lihat urutan goresan tiap huruf, dan di '
+            'Kosakata ada ribuan kata dengan contoh kalimat.',
+        'In Kanji you can watch each character being drawn stroke by '
+            'stroke, and Vocabulary has thousands of words with examples.',
+      );
+  String get tutorialPractice => _t(
+        'Ada juga latihan percakapan, mendengar, dan membaca. Kalau mau '
+            'diuji, buka tab Ujian di bawah.',
+        'There is speaking, listening and reading practice too. For a real '
+            'test, open the Exam tab below.',
+      );
+  String get tutorialReady => _t(
+        'Kalau ada yang salah, tidak apa-apa — aku akan bantu. Siap mulai?',
+        "If you get something wrong, that's fine — I'll help. Ready?",
+      );
+  String get tutorialSkip => _t('Lewati', 'Skip');
+  String get tutorialNext => _t('Lanjut', 'Next');
+  String get tutorialStart => _t('Mulai Belajar', 'Start Learning');
+  String get tutorialReplay => _t('Lihat Tutorial Lagi', 'Watch Tutorial Again');
+
   // --- Mascot coach -------------------------------------------------------
   // What the mascot says while a learner works through a lesson. Written
   // for children: short, warm, and — for the wrong-answer lines — never

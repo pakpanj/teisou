@@ -30,6 +30,7 @@ import 'widgets/edit_name_dialog.dart';
 import 'widgets/exam_history_empty_illustration.dart';
 import 'widgets/exam_history_tile.dart';
 import 'widgets/profile_header_illustration.dart';
+import '../onboarding/onboarding_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -841,6 +842,25 @@ class _SettingsMenu extends ConsumerWidget {
             title: s.notifications,
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const NotificationScreen()),
+            ),
+          ),
+          const Divider(height: 1, indent: 16, endIndent: 16),
+          _MenuTile(
+            emoji: '🐱',
+            // The tutorial only ever shows itself once, so without this it
+            // would be unreachable after the first launch — including for
+            // anyone testing it, who would otherwise have to reinstall.
+            title: s.tutorialReplay,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => OnboardingScreen(
+                  // A replay only closes itself. It deliberately does not
+                  // touch the seen flag: this is not the first run, and
+                  // clearing it would put the tutorial back in front of
+                  // the next launch.
+                  onFinished: () => Navigator.of(context).pop(),
+                ),
+              ),
             ),
           ),
           const Divider(height: 1, indent: 16, endIndent: 16),
