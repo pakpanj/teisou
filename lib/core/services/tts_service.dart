@@ -67,7 +67,11 @@ class TtsService {
   /// specific voice is being set, `setLanguage('ja-JP')` is re-asserted
   /// every time so a previous call that left the engine elsewhere
   /// self-heals on the next one instead of staying wrong all session.
-  Future<void> speak(String text, {KaiwaGender? gender}) async {
+  Future<void> speak(
+    String text, {
+    KaiwaGender? gender,
+    VoiceRegister register = VoiceRegister.peer,
+  }) async {
     await _ensureInitialized();
     await _tts.stop();
 
@@ -80,7 +84,7 @@ class TtsService {
     try {
       if (voice != null) {
         await _tts.setVoice(voice);
-        await _tts.setPitch(1.0);
+        await _tts.setPitch(_pitchFor(gender, register));
       } else {
         await _tts.clearVoice();
         await _tts.setLanguage('ja-JP');
@@ -97,6 +101,18 @@ class TtsService {
     }
 
     await _tts.speak(text);
+  }
+
+  /// How far to drop the chosen voice for an older-sounding speaker.
+  ///
+  /// The engine has one usable voice per gender, so age has to come from
+  /// pitch. The drops are deliberately unequal: the female voice starts at
+  /// 270 Hz and has room to come down into a warmer register, while the
+  /// male voice is already at 163 Hz and taking it much lower stops
+  /// sounding like a person and starts sounding like a slowed tape.
+  static double _pitchFor(KaiwaGender? gender, VoiceRegister register) {
+    if (register == VoiceRegister.peer) return 1.0;
+    return gender == KaiwaGender.male ? 0.94 : 0.82;
   }
 
   /// Reads a multi-speaker script, each turn in its own voice.
@@ -144,6 +160,8 @@ class TtsService {
   /// `_tts.stop()` the way [speak] does — stopping between turns of the
   /// same script would cut off the turn that is still playing.
   Future<void> _speakTurn(String text, KaiwaGender? gender) async {
+    // Choukai scripts name a sex but never a role, so every turn is a
+    // peer — there is nothing in the text that would justify ageing one.
     final voice = gender == null
         ? null
         : (gender == KaiwaGender.female ? _voices.female : _voices.male);

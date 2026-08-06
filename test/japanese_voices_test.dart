@@ -33,14 +33,15 @@ void main() {
           reason: 'the whole point: this list is what a real device has');
     });
 
-    test('picks the deepest male and highest female of the four', () {
-      // Measured medians: htm 304, jab 270, jad 180, jac 163. Picking by
-      // whichever the engine happened to list first gave jad, a whole
-      // musical third closer to the female voice than jac is — a pair a
-      // child is meant to tell apart on a phone speaker.
+    test('takes the deepest male and the cleaner of the two women', () {
+      // Measured medians: htm 304, jab 270, jad 180, jac 163. htm is the
+      // shrillest voice the engine has, and using it for every woman is
+      // what "cempreng banget" was describing — so the female pick is
+      // deliberately jab, not the highest.
       final voices = JapaneseVoices.from(googleVoices());
       expect(voices.male!['name'], contains('-jac-'));
-      expect(voices.female!['name'], contains('-htm-'));
+      expect(voices.female!['name'], contains('-jab-'));
+      expect(voices.female!['name'], isNot(contains('-htm-')));
     });
 
     test('preference order beats the order the device lists voices in', () {
@@ -48,7 +49,7 @@ void main() {
       final shuffled = googleVoices().reversed.toList();
       final voices = JapaneseVoices.from(shuffled);
       expect(voices.male!['name'], contains('-jac-'));
-      expect(voices.female!['name'], contains('-htm-'));
+      expect(voices.female!['name'], contains('-jab-'));
     });
 
     test('the female voice is not secretly the same voice', () {
@@ -99,6 +100,38 @@ void main() {
     test('an empty list does not throw', () {
       expect(() => JapaneseVoices.from([]), returnsNormally);
       expect(JapaneseVoices.from([]).hasBoth, isFalse);
+    });
+  });
+
+  group('how old a speaker sounds', () {
+    test('a friend sounds like a peer', () {
+      expect(registerForSpeaker('Teman'), VoiceRegister.peer);
+      expect(registerForSpeaker('Teman Sekelas'), VoiceRegister.peer);
+      expect(registerForSpeaker('Rekan Kerja'), VoiceRegister.peer);
+    });
+
+    test('a teacher does not', () {
+      // The request that started this: teachers and their like should
+      // sound like an adult with some standing.
+      expect(registerForSpeaker('Guru'), VoiceRegister.mature);
+      expect(registerForSpeaker('Bu Guru'), VoiceRegister.mature);
+      expect(registerForSpeaker('Pak Dokter'), VoiceRegister.mature);
+      expect(registerForSpeaker('Atasan'), VoiceRegister.mature);
+    });
+
+    test('a Pak or Bu is enough on its own', () {
+      // Nobody calls a peer "Pak", so a named elder is caught without
+      // having to list every name in the dataset.
+      expect(registerForSpeaker('Pak Tanaka'), VoiceRegister.mature);
+      expect(registerForSpeaker('Bu Sato'), VoiceRegister.mature);
+    });
+
+    test('counter staff are left as peers', () {
+      // A cashier is as likely to be twenty as fifty, and ageing every
+      // service worker would be its own kind of wrong.
+      expect(registerForSpeaker('Kasir'), VoiceRegister.peer);
+      expect(registerForSpeaker('Pelayan'), VoiceRegister.peer);
+      expect(registerForSpeaker('Petugas Bank'), VoiceRegister.peer);
     });
   });
 

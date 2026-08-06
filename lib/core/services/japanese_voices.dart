@@ -43,7 +43,13 @@ typedef VoiceMap = Map<String, String>;
 /// speaker. Only the three-letter family code is matched, so both the
 /// `-local` and `-network` variant of each is recognised.
 const _googleMaleFamilies = ['jac', 'jad'];
-const _googleFemaleFamilies = ['htm', 'jab'];
+
+/// **`jab` before `htm`, deliberately the opposite of "highest first".**
+/// htm is the shrillest voice the engine has at 304 Hz, and using it for
+/// every woman in the app is what "cempreng banget" was describing. jab
+/// at 270 Hz is the cleaner of the two and now carries both female
+/// registers, with htm kept only as the fallback if jab is missing.
+const _googleFemaleFamilies = ['jab', 'htm'];
 
 /// Chooses one voice per gender, or null where the device has nothing
 /// suitable — a normal outcome on an engine with a single Japanese voice,
@@ -104,6 +110,60 @@ class JapaneseVoices {
   }
 
   static String _nameOf(VoiceMap v) => (v['name'] ?? '').toLowerCase();
+}
+
+/// How old the speaker sounds.
+///
+/// Two women in this app are not the same woman: a classmate and a school
+/// teacher should not share one voice, and the engine offers no second
+/// female voice worth using (see [_googleFemaleFamilies] — the other one
+/// is the shrill one this split exists to stop using). So the register is
+/// carried by pitch on top of the chosen voice.
+enum VoiceRegister {
+  /// A friend, a classmate, someone your own age.
+  peer,
+
+  /// A teacher, a doctor, a boss, a parent — anyone the learner would
+  /// address with a title. Heavier and slower-sounding.
+  mature,
+}
+
+/// Roles that should sound like an adult with some standing, rather than
+/// like the learner's friend.
+///
+/// Matched on the **bare role**, after any Pak/Bu has been stripped, so
+/// "Bu Guru" and "Guru" land in the same place. Shop and counter staff are
+/// deliberately absent: a cashier or a waiter is as likely to be twenty as
+/// fifty, and making every service worker sound middle-aged would be its
+/// own kind of wrong.
+const _matureRoles = <String>{
+  'Guru', 'Dokter', 'Dosen', 'Perawat', 'Instruktur', 'Pelatih',
+  'Atasan', 'Senior', 'Rekan Bisnis', 'Klien',
+  'Orang Tua', 'Ibu', 'Ayah', 'Kakek', 'Nenek', 'Tetangga',
+  'Apoteker', 'Resepsionis', 'Pemilik Toko',
+};
+
+/// Strips a Pak/Bu so the role underneath can be recognised.
+String _bareRole(String speaker) {
+  for (final title in const ['Pak ', 'Bu ', 'Ibu ', 'Kak ']) {
+    if (speaker.startsWith(title)) return speaker.substring(title.length);
+  }
+  return speaker;
+}
+
+/// Whether this speaker should sound older than the learner.
+///
+/// A Pak/Bu title is taken as sufficient on its own — an Indonesian
+/// speaker does not call a peer "Pak" — which also means a named elder
+/// like "Pak Tanaka" is caught without having to list every name.
+VoiceRegister registerForSpeaker(String speaker) {
+  final titled = speaker.startsWith('Pak ') ||
+      speaker.startsWith('Bu ') ||
+      speaker.startsWith('Ibu ');
+  if (titled) return VoiceRegister.mature;
+  return _matureRoles.contains(_bareRole(speaker))
+      ? VoiceRegister.mature
+      : VoiceRegister.peer;
 }
 
 /// Which voice to speak a line in when the content does not say.

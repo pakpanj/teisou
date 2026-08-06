@@ -35,6 +35,7 @@ from kaiwa_lists import (
     PLANNED_CATEGORIES,
     THEME_NAME_EN,
     infer_gender,
+    titled_speaker,
 )
 
 PERKENALAN_ENTRIES = [
@@ -66910,6 +66911,10 @@ ENTRIES_BY_CATEGORY = {
 def build_line(raw, category, entry_id):
     if raw[0] == "npc":
         _, suffix, speaker, japanese, romaji, translation = raw
+        # A titled role carries its own gender, so this is also the step
+        # that turns "we had to guess who Guru is" into "the learner was
+        # told".
+        speaker = titled_speaker(speaker, entry_id)
         return {
             "id": suffix,
             "speaker": speaker,

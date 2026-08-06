@@ -55,6 +55,37 @@ SPEAKER_GENDER = {
 }
 
 
+# Roles an Indonesian speaker would naturally address as Pak or Bu.
+#
+# Deliberately short. "Bu Guru" and "Pak Dokter" are how these people are
+# actually addressed; "Pak Petugas Bank" and "Bu Tetangga" are not, and a
+# title nobody would say reads worse than no title at all. Roles left out
+# here keep their bare name.
+#
+# The title is not decoration: it is the only place in the whole dataset
+# where a role's gender can be stated honestly, because it is stated in
+# the same breath the learner reads. "Guru" alone could be anyone, and the
+# app had to guess; "Bu Guru" could not be clearer.
+TITLED_ROLES = ("Guru", "Dokter", "Dosen", "Perawat", "Instruktur", "Pelatih")
+
+
+def titled_speaker(speaker: str, entry_id: str) -> str:
+    """Prefixes Pak or Bu, alternating stably per dialogue.
+
+    Which of the two is arbitrary — there is nothing in the content that
+    says whether a given teacher is a man or a woman — so it is decided by
+    a hash of the dialogue id. That keeps one teacher consistent within
+    their own dialogue, gives a genuine mix of men and women across the
+    set, and never changes between runs the way `hash()` would.
+    """
+    if speaker not in TITLED_ROLES:
+        return speaker
+    h = 0x811C9DC5
+    for ch in entry_id:
+        h = ((h ^ ord(ch)) * 0x01000193) & 0xFFFFFFFF
+    return f"{'Bu' if h % 2 == 0 else 'Pak'} {speaker}"
+
+
 def infer_gender(speaker: str) -> str | None:
     if speaker in SPEAKER_GENDER:
         return SPEAKER_GENDER[speaker]

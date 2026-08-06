@@ -3601,6 +3601,33 @@ what the on-device pass actually verified), `flutter build apk
     `choukai_data.json` as a fixture. Confirmed to bite by disabling the
     split (4 failures), by leaving the colon in, and by treating any 男/女
     as a marker.
+- **Kaiwa speaker titles** (`titled_speaker` in `scripts/kaiwa_lists.py`):
+  six roles — Guru, Dokter, Dosen, Perawat, Instruktur, Pelatih — are
+  generated as "Bu Guru"/"Pak Dokter" and so on, which is also the only
+  place in the dataset where those roles' gender is stated honestly: it
+  is stated in the same breath the learner reads it. Which of Pak/Bu is
+  arbitrary (nothing in the content says whether a given teacher is a man
+  or a woman) so it comes from a stable FNV-1a hash of the dialogue id —
+  consistent within a dialogue, mixed across the set. This took authored
+  gender from 284 to 607 NPC lines. The list is deliberately short:
+  "Pak Petugas Bank" and "Bu Tetangga" are not things an Indonesian
+  speaker says, and a title nobody would use reads worse than none.
+- **Kaiwa N3-N1 have one conversation partner, and it is a content
+  matter rather than a bug.** Speaker variety collapses by level — N5 has
+  174 distinct speakers with "Teman" at 18%, N4 has 52 at 45%, N3 has 16
+  at 83%, and **N2 and N1 have exactly one speaker each: 100% "Teman"**.
+  The instinct is to relabel them, and that would be wrong: those lines
+  are casual Japanese (よね, ある？, だろ) and the descriptions all read
+  "Kamu dan teman mendiskusikan…", so labelling one "Petugas Bank" would
+  put keigo-free speech in a bank clerk's mouth. Checked before
+  concluding: across all 3,615 N3-N1 "Teman" lines there are **zero**
+  keigo markers. What actually happened is that N3-N1 were authored as
+  opinion/discussion pieces where the theme supplies only the topic —
+  `bank_n1` is "you and a friend discuss whether money buys freedom",
+  not a visit to a bank. Defensible for N1 listening practice, but
+  monotonous at 255 dialogues per level. Fixing it means **re-authoring**
+  with other counterparts and registers, a content pass the size of the
+  earlier expansion phases — not a relabel.
 - **Japanese TTS voices** (`lib/core/services/japanese_voices.dart`,
   used by `TtsService`): the app speaks with one male and one female ja-JP
   voice where the device has them.
@@ -3647,6 +3674,18 @@ what the on-device pass actually verified), `flutter build apk
     changes voice mid-conversation, two different doctors in two different
     dialogues can differ (correct — they are two different doctors), and
     the split across the real dataset comes out 50/49.
+  - **Two female registers, not one.** The female pick is deliberately
+    `jab` (270 Hz) rather than the higher `htm` (304 Hz): htm is the
+    shrillest voice the engine has and using it for every woman was what
+    "cempreng banget" described. On top of that, `VoiceRegister.mature`
+    drops the pitch to 0.82 for anyone a learner would address with a
+    title — a teacher and a classmate are not the same person and should
+    not share a voice. Measured on device: peer 270 Hz, mature 231 Hz
+    (14% lower); male peer 163 Hz, mature 154 Hz. A Pak/Bu prefix is
+    taken as sufficient on its own, since nobody calls a peer "Pak", so
+    named elders like "Pak Tanaka" are caught without listing every name.
+    Counter staff (Kasir, Pelayan, Petugas Bank) are deliberately left as
+    peers — a cashier is as likely to be twenty as fifty.
   - Choukai passes its clip id the same way. Listening practice against a
     single voice teaches that voice.
   - `test/japanese_voices_test.dart` uses the nine voices actually

@@ -314,6 +314,9 @@ class _LineBubble extends StatelessWidget {
                           speaker: line.speaker,
                           authored: line.gender,
                         ),
+                        // A teacher and a classmate are not the same
+                        // person and should not share a voice.
+                        register: registerForSpeaker(line.speaker),
                       ),
                     ),
                 ],
@@ -433,8 +436,13 @@ class _LineBubble extends StatelessWidget {
 class _SpeakButton extends ConsumerWidget {
   final String text;
   final KaiwaGender? gender;
+  final VoiceRegister register;
 
-  const _SpeakButton({required this.text, this.gender});
+  const _SpeakButton({
+    required this.text,
+    this.gender,
+    this.register = VoiceRegister.peer,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -444,7 +452,9 @@ class _SpeakButton extends ConsumerWidget {
       elevation: 2,
       child: InkWell(
         customBorder: const CircleBorder(),
-        onTap: () => ref.read(ttsServiceProvider).speak(text, gender: gender),
+        onTap: () => ref
+            .read(ttsServiceProvider)
+            .speak(text, gender: gender, register: register),
         child: Padding(
           padding: EdgeInsets.all(8),
           child: Icon(
