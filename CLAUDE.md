@@ -3529,6 +3529,16 @@ what the on-device pass actually verified), `flutter build apk
     load tears it down before it ever appears — and an uncancellable
     delay leaves a callback alive after the screen is gone, which the
     test binding rightly refuses to let pass.
+  - **After removing temporary debugging code, rebuild and reinstall
+    before saying anything works.** This is not hypothetical: a line
+    forcing the loading screen to always show was added to check its
+    design, deleted from the source, and then `flutter analyze` and the
+    full suite were run — but the APK was never rebuilt, so the device
+    kept the forced build and the app sat on its loading screen. The
+    source was clean the whole time; nothing in the repo was wrong.
+    `test/no_debug_leftovers_test.dart` catches the *adjacent* failure —
+    temporary code that never got deleted — but no source test can see a
+    stale build on a phone.
   - **Do not run `dart format lib/` after an edit here.** It reformatted
     162 unrelated files in one go and introduced lint warnings in files
     this work never touched; the change had to be reverted and redone.
