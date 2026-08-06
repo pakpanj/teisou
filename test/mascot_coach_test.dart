@@ -128,6 +128,16 @@ void main() {
     expect(indonesian, isNot(english));
   });
 
+  test('the particle quiz title does not repeat the word "particle"', () {
+    // Found on a device while checking the mascot: the title format added
+    // "Partikel" to a category already called "Partikel Kasus", so the app
+    // bar read "Kuis · Partikel Partikel Kasus". Category names come
+    // from `_categories.json` and all three begin with the word, so this
+    // was not a one-off.
+    expect(id.particleQuizTitle('Partikel Kasus'), 'Kuis · Partikel Kasus');
+    expect(en.particleQuizTitle('Case Particles'), 'Quiz · Case Particles');
+  });
+
   test('a fresh lesson does not inherit the last one\'s run', () {
     final coach = MascotCoach(random: Random(9));
     for (var i = 0; i < 5; i++) {

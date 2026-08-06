@@ -3445,12 +3445,28 @@ what the on-device pass actually verified), `flutter build apk
     the anti-screenshot feature working, not a failure; verify that screen
     through a different route (or temporarily on another `McQuizFlow`
     caller, which is what was done here).
-  - **Not yet wired**: the quizzes that do not use `McQuizFlow` —
-    `kanji_quiz_screen`, `kotoba_quiz_screen`, `bunpou_quiz_screen`,
-    `particle_quiz_screen`, `exam_screen` (kana) and `flashcard_screen`
-    each own their answer handling. Extending them is mechanical (hold a
-    `MascotCoach`, call `onAnswer`, render a `MascotCompanion`), but it has
-    not been done, so do not assume the mascot reacts everywhere.
+  - **Now wired everywhere a screen grades an answer**: `McQuizFlow` (Bab
+    gate quiz, Choukai, Dokkai, Kanji Kombinasi), plus `exam_screen` (the
+    kana Ujian) and the four module quizzes — `kanji_quiz_screen`,
+    `kotoba_quiz_screen`, `bunpou_quiz_screen`, `particle_quiz_screen`,
+    which are near-identical to each other and took one scripted patch.
+    `flashcard_screen` is deliberately **not** wired: flashcards only step
+    forward and back, so there is no right or wrong for the coach to react
+    to — that is an absence of a hook, not an oversight.
+    `test/coach_wiring_test.dart` guards this as a **source check**, not a
+    widget test, because the failure mode is not a screen breaking loudly:
+    it is a future quiz screen written by copying an older one and quietly
+    shipping with no mascot, which nothing else would notice. Its sweep
+    walks `lib/features` for screens that name a `correctIndex`/
+    `correctAnswer` and are not on the wired list, and it was confirmed to
+    bite by removing one screen's wiring — it named the file.
+  - **Bug found on device while verifying this**: `particleQuizTitle` added
+    the word "Partikel" to a category name that already began with it, so
+    the Partikel quiz app bar read **"Kuis · Partikel Partikel Kasus"** —
+    and in English, differently but just as wrongly, "Quiz · Particle Case
+    Particles". All three categories in `particle/_categories.json` start
+    with the word, so it was never a one-off. Fixed by dropping the word
+    from the format string; guarded in `mascot_coach_test.dart`.
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).

@@ -7,6 +7,8 @@ import '../../core/localization/app_strings.dart';
 import '../../core/localization/kotoba_category_i18n.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/services/mascot_coach.dart';
+import '../../core/widgets/mascot_companion.dart';
 import '../../data/models/kotoba_category.dart';
 import '../../data/models/kotoba_entry.dart';
 
@@ -40,6 +42,14 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
   int _score = 0;
   int? _selected;
 
+  /// Held here rather than built in `build`: it remembers the run of
+  /// correct answers, which a per-frame instance would silently reset.
+  final MascotCoach _coach = MascotCoach();
+
+  /// What the mascot is saying about the answer just given, or null while
+  /// the question is unanswered.
+  CoachLine? _reaction;
+
   List<_QuizQuestion> _buildQuestions() {
     final language = ref.read(appStringsProvider).language;
     final random = Random();
@@ -62,9 +72,22 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
 
   void _select(int optionIndex) {
     if (_selected != null) return;
+    final question = _questions[_index];
+    final correct = optionIndex == question.correctIndex;
     setState(() {
       _selected = optionIndex;
-      if (optionIndex == _questions[_index].correctIndex) _score++;
+      if (correct) _score++;
+      _reaction = _coach.onAnswer(
+        ref.read(appStringsProvider),
+        correct: correct,
+        // Guarded rather than indexed straight, so a question whose
+        // correctIndex disagreed with its own options list could not take
+        // the quiz down mid-answer.
+        correctAnswer: question.correctIndex >= 0 &&
+                question.correctIndex < question.options.length
+            ? question.options[question.correctIndex]
+            : '',
+      );
     });
   }
 
@@ -76,6 +99,9 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
     setState(() {
       _index++;
       _selected = null;
+      // Cleared with the question: a reaction left standing would be
+      // praising the previous answer over the next one.
+      _reaction = null;
     });
   }
 
@@ -87,6 +113,8 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
       _index = 0;
       _score = 0;
       _selected = null;
+      _reaction = null;
+      _coach.reset();
     });
   }
 
@@ -191,6 +219,9 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
               ),
             ),
           ),
+          // Between the options and the way forward, where it is beside
+          // what it is reacting to and cannot cover either.
+          MascotCompanion(line: _reaction),
           const SizedBox(height: 12),
           SizedBox(
             width: double.infinity,

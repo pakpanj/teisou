@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/services/mascot_coach.dart';
+import '../../core/widgets/mascot_companion.dart';
 import '../../data/models/exam_mode.dart';
 import '../../data/models/exam_question.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
@@ -26,6 +28,14 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
   final List<AnsweredQuestion> _answers = [];
   bool _submitting = false;
 
+  /// Held here, not built in `build`, so the run of correct answers
+  /// survives rebuilds.
+  final MascotCoach _coach = MascotCoach();
+
+  /// What the mascot is saying about the answer just given, or null while
+  /// the question is unanswered.
+  CoachLine? _reaction;
+
   @override
   void initState() {
     super.initState();
@@ -34,9 +44,19 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
     ref.read(adServiceProvider).preloadInterstitial();
   }
 
-  void _selectAnswer(String answer) {
+  void _selectAnswer(String answer, ExamQuestion question) {
     if (_selectedAnswer != null) return;
-    setState(() => _selectedAnswer = answer);
+    setState(() {
+      _selectedAnswer = answer;
+      // The screen already reveals which option was right the moment one
+      // is tapped, so the mascot adds encouragement here, not information
+      // the exam was withholding.
+      _reaction = _coach.onAnswer(
+        ref.read(appStringsProvider),
+        correct: answer == question.correctAnswer,
+        correctAnswer: question.correctAnswer,
+      );
+    });
   }
 
   Future<void> _handleNext(List<ExamQuestion> questions) async {
@@ -54,6 +74,9 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
       setState(() {
         _currentIndex++;
         _selectedAnswer = null;
+        // Cleared with the question, or it would be praising the previous
+        // answer over the next one.
+        _reaction = null;
       });
       return;
     }
@@ -182,7 +205,7 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                             label: option,
                             selectedAnswer: _selectedAnswer,
                             correctAnswer: question.correctAnswer,
-                            onTap: () => _selectAnswer(option),
+                            onTap: () => _selectAnswer(option, question),
                           ),
                         ),
                       ),
@@ -192,7 +215,11 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(24),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: MascotCompanion(line: _reaction),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(

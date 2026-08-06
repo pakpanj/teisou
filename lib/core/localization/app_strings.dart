@@ -300,8 +300,12 @@ class AppStrings {
         'Tidak ada partikel yang cocok dengan filter.',
         'No particles match this filter.',
       );
+  // No "Partikel"/"Particle" of its own: every category is already named
+  // "Partikel Kasus" / "Case Particles", so adding the word here produced
+  // "Kuis · Partikel Partikel Kasus" on screen — and, differently but just
+  // as wrongly, "Quiz · Particle Case Particles" in English.
   String particleQuizTitle(String categoryName) =>
-      _t('Kuis · Partikel $categoryName', 'Quiz · Particle $categoryName');
+      _t('Kuis · $categoryName', 'Quiz · $categoryName');
   String get whichParticleFits => _t(
         'Partikel mana yang tepat untuk mengisi kalimat ini?',
         'Which particle correctly fills this sentence?',
