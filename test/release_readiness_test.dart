@@ -135,6 +135,32 @@ void main() {
           contains('ITSAppUsesNonExemptEncryption'));
     });
 
+    test('the deployment target is high enough for the plugins in use', () {
+      // CocoaPods refuses to resolve at all when a plugin needs a newer
+      // iOS than the app targets, and its message names the plugin
+      // rather than the setting: "google_mlkit_commons requires a higher
+      // minimum iOS deployment version". The setting was 13.0 — the
+      // Flutter template's default, never touched — while ML Kit has
+      // wanted 15.5 for some time.
+      //
+      // Invisible locally in every way that matters. There is no Podfile
+      // in this project (it builds through Swift Package Manager, and
+      // CocoaPods only runs for the three plugins that have not adopted
+      // it), so nothing on a Windows machine ever resolves a pod. It
+      // surfaced on Codemagic's macOS runner and nowhere else.
+      final project = read('ios/Runner.xcodeproj/project.pbxproj');
+      final targets = RegExp(r'IPHONEOS_DEPLOYMENT_TARGET = ([\d.]+);')
+          .allMatches(project)
+          .map((match) => double.parse(match.group(1)!))
+          .toList();
+
+      expect(targets, isNotEmpty);
+      for (final target in targets) {
+        expect(target, greaterThanOrEqualTo(15.5),
+            reason: 'pod install fails outright below this');
+      }
+    });
+
     test('the app icon set is filled in', () {
       final icon = File('ios/Runner/Assets.xcassets/AppIcon.appiconset/'
           'Icon-App-1024x1024@1x.png');
