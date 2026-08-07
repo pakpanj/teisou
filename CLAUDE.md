@@ -3467,6 +3467,43 @@ what the on-device pass actually verified), `flutter build apk
     Particles". All three categories in `particle/_categories.json` start
     with the word, so it was never a one-off. Fixed by dropping the word
     from the format string; guarded in `mascot_coach_test.dart`.
+- **Startup preload** (`lib/core/services/startup_preloader.dart`): the
+  app reads its datasets before the home screen appears, and the loading
+  screen's percentage counts them.
+  - **The work is moved, not invented.** Every repository parses its JSON
+    on first use and caches it, so the cost was always paid — silently, on
+    whichever frame a learner tapped into a module. Kaiwa alone is 10MB
+    across 1,700 dialogues (measured decode: 185ms on desktop, so
+    noticeably worse on a phone). Nine steps, ordered smallest to largest
+    so the bar moves immediately, each swallowing its own error so a
+    broken dataset cannot hold the whole app at a loading screen.
+  - **Three bugs, each of which looked fine in code and in tests.** Worth
+    reading before touching this:
+    1. **The preload threw on every launch and never ran.** Riverpod
+       forbids a provider modifying another *during its own
+       initialisation*, and a `FutureProvider` body runs synchronously up
+       to its first `await` — so writing the first progress value
+       immediately threw. The app fell through this provider's error
+       branch straight to Home, so nothing looked broken; the loading
+       screen simply never appeared. Only logcat showed it. One `await`
+       before touching the other provider is the fix.
+    2. **The loading screen drew its ground shadow and no cat.**
+       `Image.asset` decodes on the main isolate, and the dataset steps
+       hold that isolate solidly, so the PNG never got a slice. Warming
+       the art first fixes it.
+    3. **The first warming fix warmed the wrong cache key and changed
+       nothing on the device.** `MascotWidget` passes `cacheWidth`, which
+       makes the cache key a `ResizeImage` — precaching a plain
+       `AssetImage` warms a key nothing ever asks for. It tested green.
+       `MascotWidget.imageProviderFor` now returns the exact provider the
+       widget uses, so the formula cannot drift.
+  - **Test with plain `test`, not `testWidgets`.** `testWidgets` runs
+    under a fake clock and the preloader yields with `Future.delayed`,
+    which under a fake clock never fires — the suite hangs rather than
+    fails, which cost a seven-minute run to work out.
+  - **Still on the main isolate.** Each parse blocks the UI thread, so the
+    bar steps rather than animating smoothly during the big reads. Moving
+    the parsing into `compute()` is the proper fix and is not done.
 - **Loading states** (`lib/core/widgets/app_loading.dart`,
   `app_startup_splash.dart`): the 26 identical
   `loading: () => const Center(child: CircularProgressIndicator())` lines

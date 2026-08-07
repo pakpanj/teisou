@@ -29,11 +29,25 @@ class MascotLoadingScreen extends StatefulWidget {
   const MascotLoadingScreen({
     super.key,
     this.label,
-    this.mascotSize = 200,
+    this.progress,
+    this.mascotSize = defaultMascotSize,
   });
+
+  /// Named so the startup preloader can warm exactly this size's bitmap.
+  /// `cacheWidth` is part of the image cache key, so warming any other
+  /// size warms a key this screen never asks for.
+  static const double defaultMascotSize = 200;
 
   /// Optional line under the bar, e.g. what is being prepared.
   final String? label;
+
+  /// Real progress, 0 to 1, when the caller genuinely knows — the startup
+  /// preload counts discrete datasets, so it does.
+  ///
+  /// Given one, the bar shows it and reaches 100% honestly. Left null, the
+  /// bar falls back to the elapsed-time curve described above, which never
+  /// claims to finish.
+  final double? progress;
 
   final double mascotSize;
 
@@ -109,7 +123,9 @@ class _MascotLoadingScreenState extends State<MascotLoadingScreen>
           animation: _clock,
           builder: (context, _) {
             final mood = _workingMoods[_poseIndex % _workingMoods.length];
-            final progress = _progress;
+            // Measured progress wins over the estimate whenever there is
+            // any. The estimate exists only for waits nothing can count.
+            final progress = widget.progress ?? _progress;
 
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -476,6 +476,25 @@ class AppStrings {
       _t('Apa bacaan dari huruf ini?', "What's the reading of this character?");
   String get nextQuestionButton => _t('Soal Berikutnya', 'Next Question');
 
+  // What the loading screen names while each dataset is read. Short —
+  // they flick past in well under a second each.
+  String get preloadKana => _t('Menyiapkan huruf kana...', 'Loading kana...');
+  String get preloadCurriculum =>
+      _t('Menyusun kurikulum...', 'Loading the curriculum...');
+  String get preloadParticles =>
+      _t('Menyiapkan partikel...', 'Loading particles...');
+  String get preloadDictionary =>
+      _t('Membuka kamus...', 'Loading the dictionary...');
+  String get preloadListening =>
+      _t('Menyiapkan latihan mendengar...', 'Loading listening practice...');
+  String get preloadReading =>
+      _t('Menyiapkan bacaan...', 'Loading reading practice...');
+  String get preloadGrammar =>
+      _t('Menyiapkan tata bahasa...', 'Loading grammar...');
+  String get preloadKanji => _t('Memuat kanji...', 'Loading kanji...');
+  String get preloadConversation =>
+      _t('Menyiapkan percakapan...', 'Loading conversations...');
+
   String get loadingPreparing =>
       _t('Menyiapkan pelajaranmu...', 'Getting your lessons ready...');
 

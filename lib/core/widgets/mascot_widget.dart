@@ -126,6 +126,33 @@ class MascotWidget extends StatefulWidget {
     this.groundShadow = false,
   });
 
+  /// How wide the decoded bitmap is for a mascot of [size].
+  ///
+  /// Shared with anything that wants to warm the image cache ahead of
+  /// time, because `cacheWidth` changes the cache key: a caller that
+  /// precached the plain `AssetImage` would warm a key this widget never
+  /// asks for, and the character would still be missing. That is not
+  /// theoretical — it is exactly what happened on the loading screen.
+  static int decodeWidthFor({
+    required double size,
+    required bool showBackdrop,
+  }) {
+    final extent = size * (showBackdrop ? 0.72 : 1.0);
+    return (extent * 3).round();
+  }
+
+  /// The exact image key this widget will ask the cache for.
+  static ImageProvider imageProviderFor(
+    MascotMood mood, {
+    required double size,
+    required bool showBackdrop,
+  }) {
+    return ResizeImage(
+      AssetImage('assets/mascot/${mood.name}.png'),
+      width: decodeWidthFor(size: size, showBackdrop: showBackdrop),
+    );
+  }
+
   @override
   State<MascotWidget> createState() => _MascotWidgetState();
 }
@@ -496,7 +523,10 @@ class _MascotWidgetState extends State<MascotWidget>
       fit: BoxFit.contain,
       // Art is drawn at the size it will be shown, so let Flutter decode it
       // that way instead of holding a full-resolution bitmap per mood.
-      cacheWidth: (extent * 3).round(),
+      cacheWidth: MascotWidget.decodeWidthFor(
+        size: widget.size,
+        showBackdrop: widget.showBackdrop,
+      ),
       errorBuilder: (context, error, stack) => Text(
         emoji,
         style: TextStyle(fontSize: extent * 0.7),

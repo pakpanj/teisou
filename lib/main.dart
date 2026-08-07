@@ -15,6 +15,7 @@ import 'data/repositories/theme_repository.dart';
 import 'features/home/home_screen.dart';
 import 'features/onboarding/age_question_screen.dart';
 import 'firebase_options.dart';
+import 'core/services/startup_preloader.dart';
 import 'core/widgets/mascot_loading_screen.dart';
 import 'features/onboarding/onboarding_screen.dart';
 
@@ -147,11 +148,9 @@ class _AudienceGate extends ConsumerWidget {
         // Fire-and-forget: the configuration applies to requests made after
         // it lands, and every ad site is behind at least one more tap.
         unawaited(ref.read(adServiceProvider).applyAudience(value));
-        return const _TutorialGate();
+        return const _PreloadGate();
       },
-      loading: () => MascotLoadingScreen(
-        label: ref.read(appStringsProvider).loadingPreparing,
-      ),
+      loading: () => const _StartupLoading(),
       // A failed read leaves the audience unknown, which AdAudience already
       // treats as a child — so ask rather than assume an adult.
       error: (_, _) => const AgeQuestionScreen(),
@@ -186,10 +185,54 @@ class _TutorialGate extends ConsumerWidget {
           },
         );
       },
-      loading: () => MascotLoadingScreen(
-        label: ref.read(appStringsProvider).loadingPreparing,
-      ),
+      loading: () => const _StartupLoading(),
       error: (_, _) => const HomeScreen(),
+    );
+  }
+}
+
+/// Reads the app's datasets before the home screen appears.
+///
+/// **The work is not invented for the sake of a loading screen.** Every
+/// repository parses its JSON on first use and caches it, so this cost was
+/// always paid — silently, on whichever frame a learner tapped into a
+/// module. Kaiwa alone is 10MB across 1,700 dialogues. Doing it here
+/// trades an unexplained stall mid-session for an explained wait at the
+/// start, and every module screen then opens instantly.
+///
+/// A failed preload still lets the app in: the steps swallow their own
+/// errors, and a screen whose dataset is broken surfaces that itself
+/// rather than holding everything else hostage.
+class _PreloadGate extends ConsumerWidget {
+  const _PreloadGate();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final preload = ref.watch(appPreloadProvider);
+    return preload.when(
+      data: (_) => const _TutorialGate(),
+      loading: () => const _StartupLoading(),
+      error: (_, _) => const _TutorialGate(),
+    );
+  }
+}
+
+/// The loading screen, fed by whatever the preloader has counted so far.
+///
+/// Split out so the percentage comes from real steps rather than the
+/// elapsed-time estimate. Before the preloader has started there is
+/// nothing to count, and [MascotLoadingScreen] falls back to the estimate
+/// on its own.
+class _StartupLoading extends ConsumerWidget {
+  const _StartupLoading();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final progress = ref.watch(startupProgressProvider);
+    final strings = ref.watch(appStringsProvider);
+    return MascotLoadingScreen(
+      progress: progress.total == 0 ? null : progress.value,
+      label: progress.label ?? strings.loadingPreparing,
     );
   }
 }
