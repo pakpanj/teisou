@@ -14,8 +14,15 @@
 #      the debug key and Play Console rejects the upload; the Gradle
 #      script prints a warning when that happens, so check the log.
 #
-#   2. iOS code signing — an App Store Connect API key and a distribution
-#      certificate, again under "Code signing identities".
+#   2. iOS code signing — an App Store Connect API key, under "Account
+#      settings → Integrations" (not "Code signing identities", which is
+#      where the Android keystore goes). With automatic signing the
+#      certificate and provisioning profile are issued from that key, so
+#      there is nothing else to upload.
+#
+# Note that the workflow settings in Codemagic's UI editor are ignored
+# entirely once this file exists — pick the workflow from codemagic.yaml
+# when starting a build, or none of the above applies.
 #
 # The iOS workflow will build but the app will run without Firebase until
 # ios/Runner/GoogleService-Info.plist exists. That file comes from adding
@@ -85,8 +92,12 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
     integrations:
-      # Create this in Codemagic → Teams → Integrations.
-      app_store_connect: teisou_app_store_connect
+      # The *name* of the App Store Connect API key exactly as it appears
+      # in Codemagic → Account settings → Integrations. "Codemagic" is
+      # the name Codemagic gives a key it generates for you, and it is
+      # what this account has. A name that does not match is not a
+      # warning — the build fails before a line is compiled.
+      app_store_connect: Codemagic
     environment:
       flutter: stable
       xcode: latest
