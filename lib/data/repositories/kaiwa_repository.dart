@@ -1,8 +1,28 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart' show compute;
 import 'package:flutter/services.dart' show rootBundle;
 
 import '../models/kaiwa_entry.dart';
+
+/// Decodes the dialogue file and builds its models.
+///
+/// Top-level because [compute] can only be handed a top-level or static
+/// function — it runs this in a background isolate, and a closure would
+/// not be sendable.
+///
+/// **Why it is worth an isolate here.** This is the app's largest asset by
+/// a wide margin: 10MB across 1,700 dialogues, measured at 185ms just to
+/// decode on a desktop and several times that on a phone. Run on the main
+/// isolate it stops every animation dead — which is exactly what the
+/// startup loading screen looked like, a progress bar jumping between
+/// frozen states instead of moving.
+List<KaiwaEntry> parseKaiwaEntries(String raw) {
+  final decoded = json.decode(raw) as List;
+  return decoded
+      .map((e) => KaiwaEntry.fromJson(e as Map<String, dynamic>))
+      .toList();
+}
 
 /// Loads the bundled Kaiwa dialogue dataset once and serves it from an
 /// in-memory cache, same pattern as ParticleRepository — static content,
@@ -14,11 +34,10 @@ class KaiwaRepository {
 
   Future<List<KaiwaEntry>> _loadAll() async {
     if (_cache != null) return _cache!;
+    // The string has to be read here — rootBundle goes through a platform
+    // channel and is main-isolate only — but the parsing does not.
     final raw = await rootBundle.loadString(_assetPath);
-    final decoded = json.decode(raw) as List;
-    final all = decoded
-        .map((e) => KaiwaEntry.fromJson(e as Map<String, dynamic>))
-        .toList();
+    final all = await compute(parseKaiwaEntries, raw);
     _cache = all;
     return all;
   }

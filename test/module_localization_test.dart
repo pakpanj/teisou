@@ -52,13 +52,23 @@ void main() {
           ),
         ),
       );
-      // kanji_data.json (2425 entries) is large enough that loading it
-      // doesn't settle via plain pump() calls inside testWidgets' fake-async
-      // zone — runAsync briefly escapes that zone so the real asset-load
-      // future actually completes.
-      await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 500)));
-      await tester.pump();
-      await tester.pump();
+      // kanji_data.json (2425 entries) does not settle via plain pump()
+      // inside testWidgets' fake-async zone — runAsync briefly escapes
+      // that zone so the real asset-load future can complete.
+      //
+      // **Polled rather than slept.** A flat 500ms wait was enough while
+      // the parse ran inline; it stopped being enough the moment the
+      // parse moved to a background isolate, because spawning one in a
+      // test is slow, and the failure looked like a missing widget
+      // rather than a timeout. Waiting for the thing itself does not
+      // need re-tuning the next time the load gets slower or faster.
+      for (var attempt = 0; attempt < 40; attempt++) {
+        await tester.runAsync(
+          () => Future<void>.delayed(const Duration(milliseconds: 100)),
+        );
+        await tester.pump();
+        if (find.text('All').evaluate().isNotEmpty) break;
+      }
 
       expect(find.text('All'), findsOneWidget);
       expect(find.text('Not Learned'), findsOneWidget);

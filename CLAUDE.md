@@ -3501,9 +3501,35 @@ what the on-device pass actually verified), `flutter build apk
     under a fake clock and the preloader yields with `Future.delayed`,
     which under a fake clock never fires — the suite hangs rather than
     fails, which cost a seven-minute run to work out.
-  - **Still on the main isolate.** Each parse blocks the UI thread, so the
-    bar steps rather than animating smoothly during the big reads. Moving
-    the parsing into `compute()` is the proper fix and is not done.
+  - **The four heavy repositories parse in a background isolate.** Kaiwa,
+    Kanji, Bunpou and Dokkai each hand their `json.decode` + `fromJson`
+    to `compute` via a **top-level** `parse*Entries` function — `compute`
+    cannot take a closure. `rootBundle.loadString` stays on the main
+    isolate because it goes through a platform channel. The other six
+    datasets are 4ms or less to decode, where spawning an isolate costs
+    more than the parse it saves, so they are deliberately left inline;
+    the list in `test/repository_isolate_test.dart` is not "every
+    repository" and should not become one.
+  - **Two costs worth knowing before extending this.** `compute` needs
+    real async, so any `testWidgets` that renders a screen backed by one
+    of these now has to poll inside `tester.runAsync` — a fixed
+    `Future.delayed(500ms)` in `module_localization_test` was enough for
+    an inline parse and silently stopped being enough, failing as a
+    missing widget rather than a timeout. And the isolate deep-copies its
+    result, so a model that does not survive the copy comes back wrong
+    rather than throwing; `repository_isolate_test` checks nested models,
+    enums and nullables specifically.
+  - **The obvious test for "does not block" cannot be written here**, and
+    two attempts proved it. Timers under `TestWidgetsFlutterBinding` are
+    driven by the binding rather than wall time, so a parse that blocked
+    the isolate for hundreds of milliseconds measured a stall of **0ms**.
+    Counting ticks failed too, because the `await rootBundle.loadString`
+    before the parse hands the loop a turn on its own. Both versions
+    passed with the defect deliberately restored. What is tested instead
+    is that the heavy repositories call `compute` with a top-level
+    function; the non-blocking behaviour was confirmed on a device, where
+    three consecutive frames captured during the 10MB read differ from
+    each other.
 - **Loading states** (`lib/core/widgets/app_loading.dart`,
   `app_startup_splash.dart`): the 26 identical
   `loading: () => const Center(child: CircularProgressIndicator())` lines
