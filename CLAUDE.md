@@ -4800,6 +4800,78 @@ Two cosmetic items left, neither a bug:
   no branding at all — no logo, no mascot, just a form. Cold for a
   children's app.
 
+## Release readiness
+
+Audited before the first store upload (2026-08-07). Everything here was
+invisible to `flutter analyze`, to the test suite, and to a debug build
+on a device — a release blocker does not look like a bug, it looks like a
+default nobody changed. `test/release_readiness_test.dart` guards each
+one, and each was confirmed by putting the defect back.
+
+**Fixed**
+
+- **The release build was signed with the debug key** — the `flutter
+  create` default, untouched. Play answers that with "You uploaded an APK
+  or Android App Bundle that was signed in debug mode", after the upload.
+  Now read from git-ignored `android/key.properties` (template at
+  `android/key.properties.example`), falling back to the debug key so
+  `flutter run --release` still works on a machine with no keystore — but
+  the Gradle script logs a loud warning when it does.
+- **Five permissions the app never uses reached the shipped manifest.**
+  None are declared by the app; they arrive through manifest merging from
+  the `camera` and `google_mobile_ads` plugins. RECORD_AUDIO in
+  particular survived the deletion of the whole speech feature, and
+  `com.google.android.gms.permission.AD_ID` is forbidden outright by
+  Play's Families policy. All removed with `tools:node="remove"`. From 14
+  permissions down to 7, verified on device with `dumpsys package`.
+  **The CAMERA removal must be undone when Cam Detector is unlocked** —
+  the line says so.
+- **The launcher icon was Flutter's blue logo**, and the Android app name
+  was `kana_master`. `scripts/generate_app_icon.py` builds both platforms'
+  icons from the mascot art (`--mood` to pick a pose), including the
+  Android adaptive pair — without those a modern launcher draws a white
+  plate around the square icon. Gotcha inside that script: `Image.thumbnail`
+  only ever shrinks, so a 512px source asked for 820px comes back at 512
+  and the first run produced a cat filling half the frame.
+- **iOS had no privacy manifest.** Required since May 2024 and an
+  automatic rejection; `shared_preferences` uses UserDefaults, which is a
+  "required reason" API. `ios/Runner/PrivacyInfo.xcprivacy` is written
+  **and registered in Copy Bundle Resources** — a manifest sitting in the
+  folder but missing from that phase is not in the .ipa and is rejected
+  exactly as if it had never been written.
+- **`ITSAppUsesNonExemptEncryption`** added, so App Store Connect stops
+  asking the export-compliance question by hand on every upload.
+- **`codemagic.yaml` written** for both stores, with two guards that fail
+  the build early rather than wasting an upload: no `key.properties`, and
+  no privacy manifest in the bundle. It runs `flutter test --concurrency=1`
+  deliberately — see the gotcha below about bare `flutter test`.
+
+**Still open, and needs someone with the accounts**
+
+- **iOS has no Firebase configuration at all.** `firebase_options.dart`
+  holds Android only and `GoogleService-Info.plist` is absent, so on iOS
+  `Firebase.initializeApp` throws — caught and logged, so the app runs,
+  but auth, Firestore progress, the leaderboard and clans are all dead.
+  Fix by adding an iOS app in the Firebase console and running
+  `flutterfire configure`; it cannot be done from this repository. Google
+  Sign-In will also need its `REVERSED_CLIENT_ID` URL scheme in
+  `Info.plist`.
+- **R8 has not been proven against the current dependency set.** Release
+  builds are Codemagic's alone here, and none of this project's three
+  past R8 failures showed up in a debug build. Defensive keep rules for
+  ads, billing, Firebase and Play Core were added ahead of time, but the
+  first real release build is still the test. If it fails, read
+  `build/app/outputs/mapping/release/configuration.txt` — the codemagic
+  workflow keeps it as an artifact for exactly that reason.
+- **AGP 9.0.1 with Gradle 9.1.0** is very new; a Codemagic image without
+  a matching JDK is the commonest cause of a first-build failure there.
+- `SKAdNetworkItems` is still deliberately absent from `Info.plist` — it
+  affects install attribution, not approval, and the list must be copied
+  verbatim from Google's own documentation.
+- Store-side paperwork lives outside this repo: privacy policy URL, Play's
+  Data safety form, and the App Store privacy questionnaire. The data
+  types declared in `PrivacyInfo.xcprivacy` must match what those say.
+
 ## Verifying changes
 
 **Content integrity now has real tests (2026-08-05): 48 → 65.** Almost

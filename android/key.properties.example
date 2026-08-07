@@ -1,0 +1,15 @@
+# Copy to android/key.properties and fill in. Git-ignored — a password
+# must never reach the repository.
+#
+# Make the keystore once and keep it somewhere safe: lose it and you can
+# never update the app on Play under the same listing again.
+#
+#   keytool -genkey -v -keystore upload-keystore.jks \
+#           -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+#
+# On Codemagic, upload the same .jks under Code signing identities
+# instead; the build writes this file for you.
+storePassword=
+keyPassword=
+keyAlias=upload
+storeFile=/absolute/path/to/upload-keystore.jks

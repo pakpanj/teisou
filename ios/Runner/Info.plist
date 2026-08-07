@@ -74,6 +74,14 @@
 	     Teisou, so check both the platform and the app name before pasting.
 	     Note the tilde: ad *unit* ids use a slash and are not the same
 	     thing. -->
+	<!-- Answers the export-compliance question once here instead of once
+	     per submission. False is the right answer for an app whose only
+	     encryption is the HTTPS its networking libraries do for it, which
+	     is exempt; nothing here implements or bundles its own crypto.
+	     Without this key App Store Connect asks the same question by hand
+	     on every upload and holds the build until it is answered. -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-7168330620893919~8289431398</string>
 	<!-- SKAdNetworkItems is deliberately absent. It affects install

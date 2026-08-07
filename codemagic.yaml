@@ -1,0 +1,131 @@
+# Codemagic build recipe.
+#
+# There was none before this: builds were configured through Codemagic's
+# UI, which works but leaves nothing in the repository to read, review or
+# roll back. Everything below is checked in so a build is reproducible
+# from a commit rather than from someone's browser tab.
+#
+# **Two things must be set up in Codemagic itself**, because they are
+# secrets and do not belong here:
+#
+#   1. Android code signing — upload the upload-keystore.jks under
+#      "Code signing identities". The reference name below must match
+#      what you call it there. Without it the release build falls back to
+#      the debug key and Play Console rejects the upload; the Gradle
+#      script prints a warning when that happens, so check the log.
+#
+#   2. iOS code signing — an App Store Connect API key and a distribution
+#      certificate, again under "Code signing identities".
+#
+# The iOS workflow will build but the app will run without Firebase until
+# ios/Runner/GoogleService-Info.plist exists. That file comes from adding
+# an iOS app in the Firebase console and running `flutterfire configure`;
+# it cannot be generated from this repository.
+
+workflows:
+  android-release:
+    name: Android release (AAB for Play Console)
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      flutter: stable
+      java: 17
+      android_signing:
+        # Rename to match the identity you created in Codemagic.
+        - teisou_upload_keystore
+      vars:
+        PACKAGE_NAME: com.teisou.kanamaster
+    scripts:
+      - name: Fetch packages
+        script: flutter pub get
+
+      - name: Analyze
+        script: flutter analyze
+
+      - name: Test
+        # --concurrency=1 deliberately. On this project a plain
+        # `flutter test` silently drops kanjivg_parser_test from the
+        # report — no error, no loading line, just four fewer passes.
+        # A CI run that quietly skips tests is worse than a slow one.
+        script: flutter test --concurrency=1
+
+      - name: Confirm the release will not be debug-signed
+        # The single failure that wastes a whole upload attempt. Play
+        # rejects a debug-signed bundle after you have waited for the
+        # build, so it is worth failing here instead.
+        script: |
+          if [ ! -f "android/key.properties" ]; then
+            echo "android/key.properties is missing — the release build"
+            echo "would be signed with the debug key and Play Console"
+            echo "would reject it. Check the android_signing identity."
+            exit 1
+          fi
+
+      - name: Build AAB
+        script: flutter build appbundle --release
+
+    artifacts:
+      - build/app/outputs/bundle/release/*.aab
+      - build/app/outputs/mapping/release/mapping.txt
+      # Worth keeping: R8's fully merged rule set. Every R8 problem this
+      # project has had was diagnosed by reading it.
+      - build/app/outputs/mapping/release/configuration.txt
+      - flutter_drive.log
+
+    publishing:
+      email:
+        recipients:
+          - gilanggarind1975@gmail.com
+        notify:
+          success: true
+          failure: true
+
+  ios-release:
+    name: iOS release (IPA for App Store Connect)
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    integrations:
+      # Create this in Codemagic → Teams → Integrations.
+      app_store_connect: teisou_app_store_connect
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.teisou.kanamaster
+    scripts:
+      - name: Fetch packages
+        script: flutter pub get
+
+      - name: Install pods
+        script: |
+          find . -name "Podfile" -execdir pod install \;
+
+      - name: Confirm the privacy manifest is in the bundle
+        # App Store Connect rejects an upload with no privacy manifest,
+        # and the failure mode is quiet: the file can sit in the folder
+        # while being absent from Copy Bundle Resources, which produces
+        # exactly the same rejection as never writing it.
+        script: |
+          if ! grep -q "PrivacyInfo.xcprivacy in Resources" \
+              ios/Runner.xcodeproj/project.pbxproj; then
+            echo "PrivacyInfo.xcprivacy is not in Copy Bundle Resources —"
+            echo "App Store Connect will reject this build."
+            exit 1
+          fi
+
+      - name: Build IPA
+        script: flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+
+    publishing:
+      email:
+        recipients:
+          - gilanggarind1975@gmail.com
+        notify:
+          success: true
+          failure: true

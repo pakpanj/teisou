@@ -1,8 +1,25 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
+
+// Release signing, read from android/key.properties.
+//
+// That file holds a password and is git-ignored, so it exists only on a
+// developer's machine or is written by the build machine — Codemagic
+// creates it from the keystore uploaded to its own settings. Nothing
+// secret lives in this repository.
+val keystorePropertiesFile = rootProject.file("key.properties")
+val keystoreProperties = Properties().apply {
+    if (keystorePropertiesFile.exists()) {
+        load(FileInputStream(keystorePropertiesFile))
+    }
+}
+val hasReleaseKeystore = keystorePropertiesFile.exists()
 
 android {
     namespace = "com.teisou.kanamaster"
@@ -25,11 +42,42 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        if (hasReleaseKeystore) {
+            create("release") {
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            // Signed with the real key when there is one, and with the
+            // debug key otherwise so `flutter run --release` still works
+            // on a machine that has no keystore.
+            //
+            // **The debug fallback is what shipped here for months**, left
+            // over from `flutter create`, and it is not a harmless
+            // default: Play Console refuses the upload outright with "You
+            // uploaded an APK or Android App Bundle that was signed in
+            // debug mode", and there is nothing in a local build that
+            // hints at it. Hence the message below — a store-bound build
+            // that quietly falls back should be impossible to miss.
+            if (!hasReleaseKeystore) {
+                logger.warn(
+                    "*** android/key.properties not found — this release " +
+                        "build is signed with the DEBUG key and Play Console " +
+                        "will reject it. ***"
+                )
+            }
+            signingConfig = if (hasReleaseKeystore) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

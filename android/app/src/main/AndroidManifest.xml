@@ -1,12 +1,48 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- Cam Detector (Batch 5): scans Japanese text via the camera. -->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <!-- required="false" so devices/emulators without a camera can still
-         install the app; CamDetectorScreen shows an error state instead. -->
+
+    <!-- Permissions pulled in by plugins and taken back out again.
+         ============================================================
+         These are not declared here; they arrive through manifest merging
+         from the `camera` and `google_mobile_ads` plugins, and every one
+         of them was in the shipped manifest without a single line of app
+         code using it. For an app aimed at children that is worth more
+         than tidiness: a reviewer sees a kana-learning app asking to
+         record audio, and Google's Families policy forbids the
+         advertising ID outright.
+
+         RECORD_AUDIO / storage: dragged in by the `camera` plugin. The
+         microphone feature was deleted when Kaiwa moved to
+         image-and-multiple-choice, and nothing has picked or written a
+         file since — there is no image picker in the dependency list at
+         all.
+
+         AD_ID and the ad-services pair: dragged in by google_mobile_ads.
+         The app already configures AdMob as child-directed at runtime
+         (see AdAudience); carrying the permission as well is the thing
+         Play's Advertising ID declaration asks about, and the answer for
+         a children's app has to be that it is not used.
+
+         CAMERA: the only one the app has code for — but Cam Detector is
+         locked out of navigation while its bugs are open, so today
+         nothing can reach it. **Delete the CAMERA line below when Cam
+         Detector is switched back on in ModulesScreen**, or the screen
+         will be denied the permission it asks for. -->
+    <uses-permission android:name="android.permission.CAMERA" tools:node="remove"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" tools:node="remove"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" tools:node="remove"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="remove"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" tools:node="remove"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" tools:node="remove"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_TOPICS" tools:node="remove"/>
+
+    <!-- required="false" so devices without a camera can still install;
+         CamDetectorScreen shows an error state instead. -->
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
     <application
-        android:label="kana_master"
+        android:label="Kana Master"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
