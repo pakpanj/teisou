@@ -15,9 +15,12 @@ through dictionary lookup and camera-based scanning. State management is
 | 4 | Search & Dictionary (Kanji/Kotoba lookup) | ✅ |
 | 5 | Cam Detector (offline Japanese OCR scanning) | ✅ built, but 🔒 locked from navigation since — real bugs, not gone; see "Known placeholders" below |
 | 6 | Kotoba vocab module (Home/Category/Detail, on-demand images, progress + quiz) | ✅ |
-| 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ |
+| 7 | Full Kotoba dataset — all 45 categories across 7 groups, 519 words | ✅ (that was this batch's scope; the dataset has since grown to **1682 words across 46 categories** — see snapshot) |
 | 8 | Kanji module Fase 1 — StrokeOrderAnimator, browse (Home/Level/Detail/Quiz) screens, full N5 (107) + N4 (133) dataset | ✅ |
-| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa modules, Ujian expansion (Dokkai/Choukai/Kanji-Kombinasi), AdMob/IAP production, release polish | 🔶 in progress — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy) and **fully authored across all 5 JLPT levels — 17/17 themes and 255/255 (680 for N5) dialogues at every level, 1700/1700 grand total, zero placeholders** — and free. Bunpou/Partikel/Kaiwa are all content-complete for their current scope. **Dokkai (reading comprehension, one of Ujian's four exam categories) is also now content-complete — 500/500 passages, exactly 100 per JLPT level (N5-N1), reached via a 9-phase same-day rollout** (2026-07-20); see the dedicated Dokkai rollout section below for the full history. **Choukai is no longer a standalone module** — per an explicit scope decision (2026-07-19), it was folded into Ujian as a listening-exam category instead; see the "Ujian expansion" note in the status snapshot below. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
+| 9+ | Kanji N3-N1 content (Fase 2), full Bunpou/Partikel/Kaiwa modules, Ujian expansion (Dokkai/Choukai/Kanji-Kombinasi), AdMob/IAP production, release polish | ✅ content-complete (Choukai now has 150 clips, 30/level — the "zero content" note below is outdated); 🔶 only AdMob/IAP/release polish remain. Historical detail follows — kanji dataset fully real (N5-N1, 2425/2425, no placeholders); Bunpou module fully real across all 5 JLPT levels (84/132/182/197/253 = 848/848 grammar points, no placeholders); Partikel module fully real across all 3 categories (25/25 particles, 48 nested functions, no placeholders); Kaiwa module built (interactive image + multiple-choice dialogue practice, Level(N5-N1)→Theme→Dialogue hierarchy) and **fully authored across all 5 JLPT levels — 17/17 themes and 255/255 (680 for N5) dialogues at every level, 1700/1700 grand total, zero placeholders** — and free. Bunpou/Partikel/Kaiwa are all content-complete for their current scope. **Dokkai (reading comprehension, one of Ujian's four exam categories) is also now content-complete — 500/500 passages, exactly 100 per JLPT level (N5-N1), reached via a 9-phase same-day rollout** (2026-07-20); see the dedicated Dokkai rollout section below for the full history. **Choukai is no longer a standalone module** — per an explicit scope decision (2026-07-19), it was folded into Ujian as a listening-exam category instead; see the "Ujian expansion" note in the status snapshot below. **Premium gating for Partikel/Kaiwa is currently disabled app-wide for dev testing** — see the monetization-roadmap note under "Known placeholders" below, this is not the final state |
+| 10 | **Bab curriculum** — 358 chapters across N5-N1, each bundling kosakata+kanji+grammar+particle+dialogue, gated behind a cumulative 100%-pass quiz (lock is live) | ✅ |
+| 11 | Mascot art (18 expressions) + onboarding + quiz coaching, light/dark/system theming, loading screens, leaderboard collapsed to 2 tabs + public profiles | ✅ |
+| 12 | Release logistics — AdMob production IDs, Play upload keystore, iOS Firebase registration, IAP billing | 🔶 blocked on user-owned credentials, see snapshot below |
 
 Note: "Profile Enhancement" isn't a numbered batch in the original roadmap
 doc — it was scoped as part of the same work session as Batch 4 (Search &
@@ -28,86 +31,112 @@ already taken (full Kotoba dataset, previous row), so it's recorded here
 as Batch 8. If told to work on "Batch 7" going forward, confirm which is
 meant.
 
-## Current status snapshot (session handoff, 2026-07-19)
+## Current status snapshot (session handoff, 2026-08-05)
 
 Read this first if you're picking up this project cold — it's a fast
 index into what's actually done vs. still open, with pointers into the
-detailed sections below for specifics. Everything here is cross-checked
-against the codebase/data as of commit `71f7596`, not just asserted from
-memory.
+detailed sections below for specifics. Every number here was re-counted
+from the data files and codebase at commit `30bd0b8`, not carried
+forward from the previous snapshot's prose — several figures below had
+drifted badly (Kotoba was still written as 519 words when it is 1682,
+and Choukai as "zero content" when it has 150 clips).
 
-**Fully complete, content-wise (no placeholders, verified against the
-data files, not just "code exists")**:
-- Kana Master, Profile/Ads/Premium/Leaderboard scaffold, Firebase
-  anonymous+Google auth, Profile Enhancement, Search & Dictionary
-  (Batches 1-4).
-- Kotoba vocab module + full dataset: 519 words across all 45
-  categories/7 groups (Batches 6-7).
-- Kanji module (browse/detail/quiz screens, `StrokeOrderAnimator`) +
-  full dataset: **2425/2425 kanji real across N5-N1**, zero
-  placeholders (Batch 8 + Fase 2).
-- Bunpou (grammar) module + full dataset: **848/848 grammar points
-  real across all 5 JLPT levels** (N5 84, N4 132, N3 182, N2 197, N1
-  253), zero placeholders.
-- Partikel (particle) module + full dataset: **25/25 particles, 48
-  nested functions real** across all 3 categories, zero placeholders.
-- Kaiwa (dialogue practice) module + full dataset: **1700/1700
-  dialogues real across all 5 JLPT levels** (N5 680, N4/N3/N2/N1 255
-  each, 17 themes per level), zero placeholders — this was the subject
-  of the multi-session rollout that just finished; see the dedicated
-  Kaiwa section below for full design/workflow detail. Final
-  verification (`flutter analyze`, `flutter test --concurrency=1`,
-  `flutter build apk --debug`) all passed clean against this state.
+**The app is feature-complete and content-complete for its current
+scope.** What remains is release logistics (store credentials, real ad
+units, an iOS Firebase registration) plus two deliberately-deferred
+modules — not core learning features. `flutter analyze` clean, `flutter
+test --concurrency=1` **282/282 across 42 test files**.
 
-**Built but with real, open gaps — don't assume "built" means
-"finished"**:
-- **Cam Detector** (offline Japanese OCR camera scanning) is fully
-  built and still compiles/tests clean, but is **deliberately locked
-  out of navigation** (the module list — `ModulesSection`, embedded in
-  Home's tab body since the 2026-07-19 later-session update above,
-  formerly its own `ModulesScreen` tab — shows a grey "Diperbaiki"
-  card, not the module itself) because of real bugs — see "Known
-  placeholders" below for the full ProGuard/R8, camera-lifecycle, and
-  Impeller-rendering history. Several of those specific issues *have*
-  been fixed and confirmed on a physical device; one theory (Play
-  Services download vs. ProGuard as the root cause of a warning
-  banner) was never conclusively resolved either way. Re-enabling
-  needs a fresh confirmation pass, not just flipping the lock off.
-- **Monetization is unfinished and not representative of the intended
-  final product.** Kanji and Bunpou have *no* premium-gating code at
-  all — every level is open regardless of the eventual plan. Partikel
-  *had* a working premium gate but it was explicitly removed for dev
-  testing (deliberate, not a bug). Kaiwa was built free from day one
-  and this rollout didn't touch that. The actual intended split
-  (Kanji N3-N1, Bunpou N4-N1, Partikel, Choukai, Kaiwa, and two
-  entirely unbuilt modules — see below — all eventually premium) is
-  documented but essentially unimplemented right now.
-- **No illustration images exist in Firebase Storage for either
-  Kotoba or Kaiwa** — both modules render real content with graceful
-  pastel-emoji placeholders instead of art. Kotoba needs 519 images;
-  Kaiwa now needs **7468** (one per NPC line, across all 1700
-  dialogues — see the updated note below, this number grew ~350x
-  during the N4-N1 rollout and is worth scoping as a deliberate
-  project of its own, not a quick upload).
-- `KanjiEntry.relatedBunpou` is empty for all 2425 kanji — the
-  cross-link curation pass (deciding which of the 848 grammar points
-  relate to which kanji) has never been done; the schema and UI are
-  ready and waiting.
-- AdMob uses Google's public test ad unit IDs, not production ones.
-- Avatar art PNGs haven't been supplied yet, but the code is ready for
-  them: `AvatarPreset.assetPath` + `AvatarPresetArt` (emoji-fallback
-  `Image.asset`) are wired into every render site — drop 16 files into
-  `assets/avatars/` named to match each preset id and they'll render
-  automatically, no further code changes needed.
-- `SavedWordsScreen` is local-only (no cross-device sync via
-  Firestore); there's no browse UI for `savedItems` bookmarks at all
-  (the write path works, nothing reads it back yet).
+### Content — every learning dataset is fully authored, zero placeholders
 
-**Completely untouched — no code, no content, nothing started**:
-- **Choukai's actual dialogue/audio content** — the architecture exists
-  (see the 2026-07-19 later-session update above, Ujian expansion) but
-  every level ships with zero clips authored. No longer "no code at
-  all" the way it was earlier the same day; still "no content at all."
+| Module | Content | Breakdown |
+|---|---|---|
+| Kana | 46 + 46 | hiragana/katakana |
+| **Bab** (curriculum) | **358 chapters** | N5 52 · N4 59 · N3 77 · N2 77 · N1 93 |
+| Kanji | 2425 | N5 107 · N4 133 · N3 315 · N2 367 · N1 1503 |
+| Kotoba | 1682 words | 46 categories |
+| Bunpou | 856 patterns | all 5 JLPT levels |
+| Partikel | 25 particles | 48 nested functions, 3 categories |
+| Kaiwa | 1700 dialogues | 17 themes × 5 levels |
+| Dokkai | 500 passages | 100 per level |
+| Choukai | 150 clips | 30 per level |
+| Kamus (search) | 908 words | — |
+
+Art is in too: **20 avatars, 20 frames, 19 covers, 18 mascot
+expressions** — all real PNGs, no emoji placeholders left in those four
+pickers.
+
+### Structure — Bab is the spine now, not a side module
+
+The flagship is the **Bab curriculum**: 358 chapters that bundle
+kosakata + kanji + grammar + particle + dialogue per chapter (the
+Minna no Nihongo pattern), each gated behind a **cumulative 100%-pass
+quiz** covering every chapter before it. `kBabGateQuizRequired`
+(`bab_level_screen.dart`) is **`true`** — the lock is live, not a dev
+flag. Ujian is now just real exams (Kana + Kanji-Kombinasi); Dokkai and
+Choukai live under Home's practice section instead.
+
+Leaderboard was collapsed from 7 tabs to **"Skor Global" + "Clan"**,
+with tappable `PublicProfileScreen` rows showing per-category
+breakdowns and Bab progress. Light/dark/system theming is done
+app-wide (`app_palette.dart`, `theme_screen.dart`). Onboarding, a
+full-screen loading page, and mascot coaching through quizzes all
+shipped.
+
+### What is actually still open
+
+**Blocking a store release — all need the user, not this environment:**
+- **AdMob still uses Google's public test ad unit IDs**
+  (`ad_service.dart`). Real users would see test ads and earn nothing;
+  swapping in real units needs an AdMob policy review first.
+- **Play upload credentials.** Release signing itself is now wired
+  properly — `android/app/build.gradle.kts` reads
+  `android/key.properties` and falls back to debug with a loud warning
+  if it's missing — but the keystore is a credential the user must own
+  and back up (**lose it and the listing can never be updated again**).
+- **iOS cannot be built from this Windows machine at all** (Apple
+  requires macOS + Xcode). Beyond the OS: `lib/firebase_options.dart`
+  defines **only** Android — `currentPlatform` throws on iOS — and
+  fixing that needs an iOS app registered in the Firebase console,
+  which mints an `appId` and `GoogleService-Info.plist` that cannot be
+  invented here. Deliberately not stubbed: a fake appId turns a clear
+  startup error into a confusing runtime auth failure. `codemagic.yaml`
+  has both workflows ready for when those land. Realistic beta path
+  from Windows today: Firebase App Distribution or Play Internal
+  Testing.
+
+**Built but deliberately switched off:**
+- **Cam Detector** (offline Japanese OCR) is fully built and still
+  compiles/tests clean, but is **locked out of navigation** — a grey
+  "Diperbaiki" card in `ModulesSection`. Real bugs, not abandonment:
+  see "Known placeholders" for the ProGuard/R8, camera-lifecycle and
+  Impeller history. Several were fixed and confirmed on-device; one
+  theory (Play Services download vs. ProGuard behind a warning banner)
+  was never settled. Re-enabling needs a fresh confirmation pass, not
+  just flipping the lock.
+- **Premium gating is removed app-wide for dev testing** — Partikel
+  *had* a working gate; Kanji/Bunpou never had one. The intended split
+  (Kanji N3-N1, Bunpou N4-N1, Partikel, Choukai, Kaiwa, plus the two
+  unbuilt modules) is documented in the monetization-roadmap memory but
+  essentially unimplemented. `_PremiumModuleCard` + the `PaywallScreen`
+  branch must be restored before release.
+
+**Content backlogs that don't block anything:**
+- **No illustration images in Firebase Storage for Kotoba or Kaiwa** —
+  both render real content behind graceful pastel-emoji placeholders.
+  Kotoba needs 1682; Kaiwa needs ~7468 (one per NPC line). Worth
+  scoping as its own project — consider shared per-scene art rather
+  than one bespoke image per line.
+- **`KanjiEntry.relatedBunpou` is empty for all 2425 kanji** (verified:
+  0 populated). The schema and UI are ready; the curation pass deciding
+  which of the 856 grammar points relate to which kanji has never been
+  done.
+- `SavedWordsScreen` is local-first (SharedPreferences source of truth,
+  Firestore a best-effort mirror), so saved words don't sync across
+  devices. Dictionary bookmarks (`savedItems`) *do* have a browse UI
+  now, merged into the same screen.
+
+**Completely untouched — no code, no content, nothing started:**
 - **Belajar dari Gambar** and **Belajar dari Video** (two more
   planned modules, referenced only in the monetization roadmap note
   below — no screens, models, or scope decisions exist for either
@@ -129,31 +158,29 @@ data files, not just "code exists")**:
   can follow quickly once those are answered, mirroring how every other
   module in this app was built (own model/repository/screens trio) once
   its content shape was actually known.
-- AdMob/IAP production setup (still on test IDs, no store billing
-  wiring).
-- General release polish (the batch-9+ row's own description of what
-  "release polish" would cover hasn't been scoped in detail yet).
+- IAP / store billing wiring (no purchase flow exists; `PaywallScreen`
+  shows a "coming soon" message against a placeholder SKU).
 
-**Verification gaps worth knowing about** (things that pass every
-automated check — `flutter analyze`/`test`/`build`, and this project's
-various Python cross-check scripts — but have never had a human or an
-on-device pass): the entire Kaiwa N4-N1 rollout (1020 of the 1700
-dialogues), Bunpou's N3/N2 levels specifically, and Partikel's full
-interactive flow (premium gate → Home → Category → Detail → Quiz) all
-fall into this bucket — see each module's own section below for why
-(mostly: the physical test device was locked behind a real credential
-whenever verification was attempted, which is treated as out of bounds
-regardless of task urgency).
+**Verification gaps worth knowing about** — things that pass every
+automated check (`flutter analyze`/`test`/`build` plus this project's
+Python cross-check scripts) but have never had a human or on-device
+pass. The bulk of the authored content falls here: no one has tapped
+through most of the 358 Bab chapters, the 1700 Kaiwa dialogues, the 500
+Dokkai passages or the 150 Choukai clips. That's expected at this
+volume and not alarming on its own — the generators assert schema
+invariants and the cross-check scripts catch dangling ids — but it does
+mean "tests pass" is weaker evidence here than "a person opened it".
+On-device passes *have* happened for the flows most likely to break
+silently: the Bab gate quiz (lock → pass → unlock → fail → stay
+locked), avatar/frame pickers, exam history, and the leaderboard's
+language toggle.
 
 If your task is "keep going" without a more specific pointer: the
-Batch-9+ row above and this snapshot together are the full list of
-what's left — monetization gating is the largest piece of *started-but-
-unfinished* work, and the two image-upload backlogs (Kotoba 519 +
-Kaiwa 7468) are large, well-defined, non-code tasks that don't require
-figuring out what to build next. (Choukai used to be listed here as
-the largest fully-unstarted piece of scope — as of the same-day update
-directly below, it's no longer unstarted, though its *content* still
-is.)
+release blockers above are the real critical path, and they need the
+user's own credentials rather than code. The largest piece of
+*started-but-unfinished* work is restoring premium gating; the largest
+well-defined non-code task is the two image backlogs (Kotoba 1682 +
+Kaiwa ~7468).
 
 ## Update (2026-07-19, later session): UX polish + Ujian expansion
 
