@@ -50,3 +50,9 @@ app.*.map.json
 # Gradle build output — `/build/` above only covers the Flutter root.
 /android/build/
 /android/.gradle/
+
+# Release-signing credentials — never commit these.
+*.jks
+*.keystore
+key.properties
+android/key.properties

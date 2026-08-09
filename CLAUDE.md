@@ -7250,3 +7250,62 @@ does (invite testers, push builds) for Android, and both take the same
 AAB/APK produced above. Neither needs a Mac.
 
 `flutter analyze` clean, `flutter test --concurrency=1` 82/82.
+
+## Update (2026-08-09): iOS Firebase configured — the `[core/no-app]`
+crash the first TestFlight build hit
+
+The user built for iOS via Codemagic and hit, on the Profile tab:
+`Gagal memuat profil: [core/no-app] No Firebase App '[DEFAULT]' has been
+created - call Firebase.initializeApp()`. This is exactly the gap the
+release-prep note above predicted, so the diagnosis was quick — but the
+*shape* of the failure is worth recording, because it hid the real cause.
+
+**Why it presented as a Profile bug and not a startup crash.**
+`lib/firebase_options.dart` had only `android`, so on iOS
+`currentPlatform` fell to its `default:` branch and threw
+`UnsupportedError`. `main.dart` wraps `Firebase.initializeApp()` in a
+try/catch that only `debugPrint`s, so **the app launched normally** with
+Firebase never initialized. Every Firebase-dependent screen then failed
+individually with `[core/no-app]`; Profile was simply the first one
+tapped. Leaderboard, Google Sign-In and progress sync were equally
+broken, they just hadn't been opened yet.
+
+**What was added** (all values copied verbatim from the
+`GoogleService-Info.plist` the user downloaded — nothing invented):
+- `DefaultFirebaseOptions.ios` in `lib/firebase_options.dart`, plus the
+  `TargetPlatform.iOS` case. Note its `apiKey` and `appId` are genuinely
+  different from Android's — Firebase issues one per platform, they are
+  not interchangeable.
+- `ios/Runner/GoogleService-Info.plist`.
+- Registered that file in `ios/Runner.xcodeproj/project.pbxproj` — four
+  coordinated entries (PBXBuildFile, PBXFileReference, the Runner
+  PBXGroup, and the Resources build phase). Hand-edited, following the
+  id convention a previous session established for
+  `PrivacyInfo.xcprivacy` (`A1B2C3D4...0001`/`...0002`, so the new pair
+  is `A1B2C3D40002000000000001`/`...0002`). **Without the Resources
+  build-phase entry the file exists in the repo but never lands in the
+  built app** — which fails silently rather than loudly.
+- `CFBundleURLTypes` in `ios/Runner/Info.plist` carrying the plist's
+  `REVERSED_CLIENT_ID`. This is Google Sign-In's callback: without it
+  the sign-in sheet opens, the user signs in, and control never returns
+  to the app. Android needs no equivalent (it matches on package name +
+  SHA fingerprint), which is exactly why this is easy to forget when
+  adding iOS to an Android-first project. It must stay in step with
+  `iosClientId` in `firebase_options.dart`.
+
+Both plists were validated as parseable (`plistlib`) rather than assumed
+well-formed after hand-editing.
+
+**Still open, deliberately not changed here**: `main.dart`'s
+swallow-and-continue try/catch around `Firebase.initializeApp()`. It
+turned a single clear configuration error into confusing per-screen
+failures, and would do so again for any future platform/config mistake.
+Making it surface a real startup error is a behaviour change worth doing
+on purpose rather than slipping into a config fix — offered to the user,
+not yet actioned.
+
+**Verification honesty**: `flutter analyze` is the only check that can
+run here. Whether the iOS build now initializes Firebase correctly can
+only be confirmed by an actual iOS build (Codemagic) on a device — this
+is a Windows machine, so nothing about the iOS toolchain is exercised
+locally. The Android build is untouched by all of the above.

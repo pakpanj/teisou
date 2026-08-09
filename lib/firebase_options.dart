@@ -2,9 +2,9 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-/// Generated from `android/app/google-services.json` (project
-/// teisou-kana-master). Regenerate via `flutterfire configure` if the
-/// Firebase project changes.
+/// Generated from `android/app/google-services.json` and
+/// `ios/Runner/GoogleService-Info.plist` (project teisou-kana-master).
+/// Regenerate via `flutterfire configure` if the Firebase project changes.
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -16,6 +16,8 @@ class DefaultFirebaseOptions {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
+      case TargetPlatform.iOS:
+        return ios;
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform. '
@@ -30,5 +32,26 @@ class DefaultFirebaseOptions {
     messagingSenderId: '329692614759',
     projectId: 'teisou-kana-master',
     storageBucket: 'teisou-kana-master.firebasestorage.app',
+  );
+
+  /// Values copied verbatim from `ios/Runner/GoogleService-Info.plist`
+  /// (API_KEY, GOOGLE_APP_ID, GCM_SENDER_ID, PROJECT_ID, STORAGE_BUCKET,
+  /// BUNDLE_ID, CLIENT_ID respectively). Note the apiKey and appId are
+  /// genuinely *different* from Android's — each platform gets its own
+  /// from Firebase, so they are not interchangeable.
+  ///
+  /// [iosClientId] is what Google Sign-In needs; it must stay in step with
+  /// the `REVERSED_CLIENT_ID` URL scheme registered in
+  /// `ios/Runner/Info.plist`, or the sign-in sheet opens and then fails to
+  /// hand control back to the app.
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCZ5uLd-5BCIeElGuBiRb6skKSwF__itRw',
+    appId: '1:329692614759:ios:e5675bc27b55ef8f0e44c2',
+    messagingSenderId: '329692614759',
+    projectId: 'teisou-kana-master',
+    storageBucket: 'teisou-kana-master.firebasestorage.app',
+    iosBundleId: 'com.teisou.kanamaster',
+    iosClientId:
+        '329692614759-kohqu6a6mvs39jg7fi9maj30usdiqdrl.apps.googleusercontent.com',
   );
 }

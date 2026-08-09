@@ -24,6 +24,24 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<!-- Google Sign-In callback. This is REVERSED_CLIENT_ID copied verbatim
+	     from GoogleService-Info.plist, and it must stay in step with
+	     `iosClientId` in lib/firebase_options.dart: iOS hands control back
+	     to whichever app claims this URL scheme, so without it the Google
+	     sign-in sheet opens, the user signs in, and then nothing happens —
+	     it never returns to the app. Android needs no equivalent; it
+	     matches by package name + SHA fingerprint instead. -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.329692614759-kohqu6a6mvs39jg7fi9maj30usdiqdrl</string>
+			</array>
+		</dict>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
