@@ -4,8 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/furigana_text.dart';
 import '../../core/widgets/mascot_guide_bubble.dart';
 import '../../core/widgets/mascot_widget.dart';
+import '../../data/models/kanji_entry.dart';
 import '../bunpou/bunpou_detail_screen.dart';
 import '../dokkai/dokkai_exam_screen.dart';
 import '../kaiwa/kaiwa_dialogue_screen.dart';
@@ -37,7 +39,9 @@ class BabDetailScreen extends ConsumerWidget {
       backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(s.babTitle)),
       body: resolvedAsync.when(
-        data: (resolved) => ListView(
+        data: (resolved) {
+          final showFurigana = showFuriganaFor(resolved.bab.level);
+          return ListView(
           padding: const EdgeInsets.all(20),
           children: [
             Text(
@@ -60,7 +64,12 @@ class BabDetailScreen extends ConsumerWidget {
                 children: [
                   for (var i = 0; i < resolved.kotoba.length; i++)
                     _Row(
-                      text: resolved.kotoba[i].word,
+                      // `word` is always kana in this dataset, so showing it
+                      // meant the curriculum never displayed a word's kanji
+                      // at all. Show the kanji when there is one, and put the
+                      // reading above it for the levels that need it.
+                      text: resolved.kotoba[i].kanji ?? resolved.kotoba[i].word,
+                      reading: showFurigana ? resolved.kotoba[i].reading : null,
                       subtitle: resolved.kotoba[i].localizedMeaning(s.language),
                       onTap: () => AppNavigator.slideFromRight(
                         context,
@@ -76,6 +85,8 @@ class BabDetailScreen extends ConsumerWidget {
                   for (var i = 0; i < resolved.kanji.length; i++)
                     _Row(
                       text: resolved.kanji[i].character,
+                      reading:
+                          showFurigana ? _primaryReading(resolved.kanji[i]) : null,
                       subtitle: resolved.kanji[i].localizedMeanings(s.language).join(', '),
                       onTap: () => AppNavigator.slideFromRight(
                         context,
@@ -211,7 +222,8 @@ class BabDetailScreen extends ConsumerWidget {
                     ),
             ),
           ],
-        ),
+          );
+        },
         loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
@@ -248,12 +260,33 @@ class _Section extends StatelessWidget {
   }
 }
 
+/// One reading to show above a lone kanji in the chapter's kanji list.
+///
+/// A kanji has several readings and which one applies depends on the word
+/// it sits in, so a single character genuinely has no one "correct" furigana.
+/// Kun'yomi is preferred because that is the reading a beginner meets first —
+/// it's how the character is read standing on its own — falling back to
+/// on'yomi for characters that have no kun'yomi. The okurigana marker is
+/// stripped (`ひと-つ` -> `ひとつ`) since it's authoring notation, not
+/// something to display.
+String? _primaryReading(KanjiEntry entry) {
+  final source = entry.kunyomi.isNotEmpty ? entry.kunyomi : entry.onyomi;
+  if (source.isEmpty) return null;
+  return source.first.replaceAll('-', '');
+}
+
 class _Row extends StatelessWidget {
   final String text;
   final String? subtitle;
+  final String? reading;
   final VoidCallback onTap;
 
-  const _Row({required this.text, required this.subtitle, required this.onTap});
+  const _Row({
+    required this.text,
+    required this.subtitle,
+    required this.onTap,
+    this.reading,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -271,8 +304,9 @@ class _Row extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      text,
+                    FuriganaText(
+                      text: text,
+                      reading: reading,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: context.palette.textNavy,
