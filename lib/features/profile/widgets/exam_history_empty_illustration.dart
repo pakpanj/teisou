@@ -1,68 +1,29 @@
 import 'package:flutter/material.dart';
 
-/// Decorative "cat napping under a sakura tree" scene shown when the user
-/// has no exam history yet. Layered shapes/emoji, same convention as
-/// [ProfileHeaderIllustration] — no image asset.
+import '../../../core/widgets/mascot_widget.dart';
+
+/// Shown when the user has no exam history yet.
+///
+/// This used to be a "cat napping under a sakura tree" drawn from layered
+/// shapes — a brown rounded rectangle for the trunk, three pink circles for
+/// the canopy, and 🐱/😴 emoji for the cat. On a real device it did not read
+/// as a scene at all; it read as a stick, some plums, and a cat's head, which
+/// is exactly how it was reported. The shape-drawing convention it followed
+/// made sense when the app had no artwork, but the mascot now has real art in
+/// eighteen expressions, so the honest fix is to use it rather than to keep
+/// nudging primitives around.
+///
+/// [MascotMood.sleepy] keeps the original intent — nothing has happened here
+/// yet — while looking like the rest of the app.
 class ExamHistoryEmptyIllustration extends StatelessWidget {
   const ExamHistoryEmptyIllustration({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 90,
-      height: 80,
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        clipBehavior: Clip.none,
-        children: [
-          // Trunk
-          Positioned(
-            bottom: 0,
-            left: 40,
-            child: Container(
-              width: 8,
-              height: 30,
-              decoration: BoxDecoration(
-                color: const Color(0xFFB08968),
-                borderRadius: BorderRadius.circular(3),
-              ),
-            ),
-          ),
-          // Canopy (clustered blossom circles)
-          const Positioned(top: 0, left: 14, child: _Canopy(size: 34)),
-          const Positioned(top: 10, left: 40, child: _Canopy(size: 38)),
-          const Positioned(top: 4, left: 54, child: _Canopy(size: 30)),
-          // Napping cat
-          const Positioned(bottom: 2, left: 4, child: Text('😴', style: TextStyle(fontSize: 20))),
-          const Positioned(
-            bottom: 0,
-            left: 0,
-            child: Text('🐱', style: TextStyle(fontSize: 30)),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _Canopy extends StatelessWidget {
-  final double size;
-
-  const _Canopy({required this.size});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFFFBD3D9), Color(0xFFF6B8C1)],
-        ),
-      ),
+    return const MascotWidget(
+      mood: MascotMood.sleepy,
+      size: 96,
+      showBackdrop: false,
     );
   }
 }
