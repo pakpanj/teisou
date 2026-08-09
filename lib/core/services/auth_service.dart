@@ -50,18 +50,47 @@ class AuthService {
     if (current != null && current.isAnonymous) {
       try {
         final result = await current.linkWithCredential(credential);
-        return result.user;
+        return _withGoogleName(result.user, googleUser.displayName);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'credential-already-in-use') {
           final result = await _auth.signInWithCredential(credential);
-          return result.user;
+          return _withGoogleName(result.user, googleUser.displayName);
         }
         rethrow;
       }
     }
 
     final result = await _auth.signInWithCredential(credential);
-    return result.user;
+    return _withGoogleName(result.user, googleUser.displayName);
+  }
+
+  /// Copies the Google account's name onto the Firebase user when Firebase
+  /// didn't set it itself.
+  ///
+  /// Linking a credential onto an *anonymous* user leaves `displayName`
+  /// null: the name arrives in the new provider entry, but Firebase doesn't
+  /// promote it to the top-level user profile the way a fresh Google
+  /// sign-in does. `UserProfile.resolveDisplayName` reads that top-level
+  /// field, so every linked account fell through to the "Pelajar Kana"
+  /// fallback and looked as though signing in had lost the user's name.
+  ///
+  /// Best-effort by design: failing here costs a display name, not the
+  /// sign-in that already succeeded, so it must never propagate. A name the
+  /// user sets later is unaffected — `resolveDisplayName` still prefers
+  /// `customDisplayName` over this.
+  Future<User?> _withGoogleName(User? user, String? googleName) async {
+    if (user == null) return null;
+    final existing = user.displayName;
+    if (existing != null && existing.isNotEmpty) return user;
+    final name = googleName?.trim();
+    if (name == null || name.isEmpty) return user;
+    try {
+      await user.updateDisplayName(name);
+      await user.reload();
+      return _auth.currentUser ?? user;
+    } catch (_) {
+      return user;
+    }
   }
 
   Future<void> signOut() async {
