@@ -4,6 +4,60 @@ Flutter app (Android-first) teaching Japanese from absolute beginner (kana)
 through dictionary lookup and camera-based scanning. State management is
 **Riverpod** throughout — don't introduce Bloc/Provider/GetX.
 
+## Handoff (2026-08-09) — read this first if picking up cold
+
+**Just finished**: iOS Firebase was completely unconfigured —
+`lib/firebase_options.dart` had no `ios` case, so `Firebase.initializeApp()`
+threw `UnsupportedError` on iOS. Because `main.dart` only `debugPrint`s on
+init failure (never rethrows), the app "launched" anyway with Firebase
+silently uninitialized, and every Firebase-touching screen (Profile first,
+but also Leaderboard/auth/progress sync) failed individually with
+`[core/no-app] No Firebase App '[DEFAULT]' has been created`. Fixed and
+**committed to `master` at `8bebeff`**:
+- `lib/firebase_options.dart`: added the real `ios` `FirebaseOptions` case.
+- `ios/Runner/GoogleService-Info.plist`: added (from Firebase Console).
+- `ios/Runner.xcodeproj/project.pbxproj`: hand-registered the plist across
+  all 4 required sections (PBXBuildFile/PBXFileReference/group children/
+  Resources build phase) — done by hand-editing since this environment has
+  no Xcode/Mac.
+- `ios/Runner/Info.plist`: added `CFBundleURLTypes` with the
+  `REVERSED_CLIENT_ID` URL scheme, required for Google Sign-In to hand
+  control back to the app after the sign-in sheet closes.
+- `.gitignore`: added `*.jks`/`*.keystore`/`key.properties` — found an
+  untracked `teisou-upload.jks` (Android release-signing keystore) sitting
+  unprotected in the working tree. Confirmed via `git log`/`git ls-files`
+  it had never been committed (safe), now guarded going forward. **Never
+  stage or commit this file.**
+
+**Verification done**: `flutter analyze` clean. That's it — **no Mac/Xcode
+available in this environment, so the iOS Firebase init itself has never
+actually been exercised**, only reasoned through and statically verified
+(plist parses correctly, all 4 pbxproj sections present, values match the
+downloaded `GoogleService-Info.plist` verbatim).
+
+**What's still pending / next steps**:
+1. **A fresh iOS release build via Codemagic is required** to actually
+   prove this fix works — the user builds release themselves there (see
+   the standing "Debug builds yes, release no" rule below); do not attempt
+   a local release build. Confirm Codemagic is building from `master` at
+   commit `8bebeff` or later.
+2. After that TestFlight build lands, open Profile on a real iOS device —
+   the `[core/no-app]` error should be gone. If it still appears, the next
+   thing to check is whether `ios/Runner/GoogleService-Info.plist` actually
+   made it into the built app bundle (re-verify the 4 pbxproj sections
+   weren't dropped by some other tooling pass) before assuming a new bug.
+3. **Not yet fixed, flagged but not actioned**: `main.dart`'s
+   `Firebase.initializeApp()` call is wrapped in a try/catch that only
+   `debugPrint`s on failure — this is *why* a clear config error presented
+   as several confusing unrelated per-screen bugs instead of one obvious
+   startup failure. Worth hardening (rethrow, or show a real error screen)
+   next time this area is touched, but wasn't done this pass since it
+   wasn't asked for.
+4. Google Sign-In on iOS specifically hasn't been end-to-end verified
+   either (needs the same Codemagic/device round-trip) — the URL scheme
+   is in place and matches `iosClientId`, but nobody has actually tapped
+   through a real iOS sign-in yet.
+
 ## Batch status
 
 | Batch | Scope | Status |
