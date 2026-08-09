@@ -58,6 +58,85 @@ downloaded `GoogleService-Info.plist` verbatim).
    is in place and matches `iosClientId`, but nobody has actually tapped
    through a real iOS sign-in yet.
 
+## Handoff (2026-08-09, second session) — Google Sign-In fails on the released Android build
+
+**Open bug, diagnosed but NOT fixed.** Separate from the iOS handoff
+above — this is Android, on the build users actually install from Play.
+
+**Symptom**: on the app installed from Play (internal testing track,
+v1.0.0), tapping Google Sign-In fails with *"Gagal masuk dengan Google.
+Periksa koneksi internet kamu dan coba lagi."*
+
+**That message is a red herring — ignore the "internet" wording.** It's
+`AppStrings.googleSignInFailed`, the catch-all returned by
+`_friendlyGoogleSignInError` in `profile_screen.dart`, which maps
+*everything* except `credential-already-in-use` to this one string. The
+real exception is **swallowed entirely** — not rethrown, not even
+`debugPrint`ed (see `_linkGoogle`'s `catch (e)` block). So the wording
+carries zero diagnostic information. Do not chase network problems.
+
+**Leading hypothesis: SHA-1 fingerprint mismatch caused by Play App
+Signing.** Google Sign-In validates the signing certificate of the
+installed APK against the OAuth client registered in Firebase/Google
+Cloud. Play re-signs every uploaded AAB with **Google's own app signing
+key**, so what lands on a user's phone is *not* signed with the upload
+keystore (`teisou-upload.jks`) nor the debug key. If only the debug
+and/or upload SHA-1 are registered in Firebase, sign-in works in debug
+builds and fails on every Play install — which matches the report
+exactly.
+
+**Already gathered** (Play Console → Uji dan rilis → Integritas aplikasi
+→ tab "Penandatanganan aplikasi", direct URL:
+`https://play.google.com/console/u/0/developers/9191160677924578451/app/4975743886265168424/keymanagement`):
+
+- **Upload key** SHA-1 `45:39:A4:42:75:9A:1E:16:55:29:C7:F3:B5:E2:66:93:DF:0A:64:3A`,
+  MD5 `17:DC:11:BC:03:2E:47:4D:EC:AE:E8:64:FC:9C:2C:71`, SHA-256 begins
+  `88:C5:25:9D:E5:CE:76:F3:7B:36:CC:0F:34:DE:BA:E2:...` (truncated
+  on screen). Useful but **not** the one that matters here.
+- **App signing key SHA-1 — still unread.** On that page it is *not*
+  plain text like the upload key is; it's a **button** ("Sidik jari
+  sertifikat SHA-1") that copies to clipboard. Note the page now shows
+  two columns, "Kunci klasik" and "Kunci post-quantum cryptography" —
+  **take the classic one**; Google Sign-In does not use the PQC key.
+
+**Next steps, in order:**
+1. Copy the **app signing key** SHA-1 (classic) from the page above.
+2. Register it in Firebase Console → Project settings → the Android app
+   `com.teisou.kanamaster` → Add fingerprint. Register the upload key
+   SHA-1 too — harmless, and it covers locally-built release APKs.
+3. Re-download `google-services.json` after adding fingerprints and
+   replace `android/app/google-services.json`, then rebuild. (Adding a
+   fingerprint mints a new OAuth client; the bundled json must include
+   it.)
+4. Re-test on a Play-installed build, not a local debug build — a debug
+   build cannot reproduce or disprove this, since it's signed with a
+   different key entirely.
+
+**Verification path that needs no device** (useful because ADB was
+blocked, see below): open
+[Google Cloud Console → Credentials](https://console.cloud.google.com/apis/credentials)
+with project `teisou-kana-master` selected, and inspect the **OAuth 2.0
+Client IDs** of type *Android*. Each registered SHA-1 appears as its own
+entry. If the app signing key's SHA-1 is absent there, the hypothesis is
+confirmed without ever touching the phone.
+
+**Blocker hit this session**: the Moto G52J could not be reached over
+ADB at all (`adb devices` empty even after `kill-server`/`start-server`),
+so no logcat was captured and the actual exception was never observed.
+Suspected cable/USB-mode/authorization issue on the device side, not
+resolved. If a future session gets ADB working, `adb logcat` during a
+sign-in attempt would confirm the diagnosis outright — look for
+`ApiException: 10` (DEVELOPER_ERROR), which is precisely the
+signature-mismatch code.
+
+**Worth fixing regardless of the root cause**: `_friendlyGoogleSignInError`
+discarding the real exception is what made this a guessing game. At
+minimum log it (`debugPrint`) before mapping to the friendly string, and
+consider mapping `ApiException: 10` to its own message — that specific
+failure is a developer misconfiguration, and telling the user to "check
+your internet" for it is actively wrong. Deliberately left untouched
+this pass since the user asked for diagnosis, not a code change.
+
 ## Batch status
 
 | Batch | Scope | Status |
