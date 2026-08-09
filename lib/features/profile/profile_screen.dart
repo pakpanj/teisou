@@ -29,7 +29,6 @@ import 'widgets/cover_picker_sheet.dart';
 import 'widgets/edit_name_dialog.dart';
 import 'widgets/exam_history_empty_illustration.dart';
 import 'widgets/exam_history_tile.dart';
-import 'widgets/profile_header_illustration.dart';
 import '../onboarding/onboarding_screen.dart';
 import '../../core/widgets/app_loading.dart';
 
@@ -189,10 +188,8 @@ class _HeaderCard extends ConsumerWidget {
       borderRadius: BorderRadius.circular(24),
       child: Stack(
         children: [
-          // Full-bleed cover background — either the selected preset's art
-          // (or its emoji placeholder) or, with no cover chosen, the plain
-          // brand-color background with the original decorative scene
-          // anchored in a corner.
+          // Full-bleed cover background — the selected preset's art, or
+          // CoverPresets.fallback when the user has never picked one.
           Positioned.fill(
             child: _HeaderBackground(coverId: profile?.coverId),
           ),
@@ -323,16 +320,10 @@ class _HeaderBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final preset = CoverPresets.byId(coverId);
-    if (preset == null) {
-      return ColoredBox(
-        color: context.palette.hiraganaCardBg,
-        child: Align(
-          alignment: Alignment.centerRight,
-          child: ProfileHeaderIllustration(),
-        ),
-      );
-    }
+    // Falls back to a real cover rather than the old hand-drawn scene — see
+    // CoverPresets.fallback. byId also returns null for a coverId left over
+    // from a preset that no longer exists, which lands here too.
+    final preset = CoverPresets.byId(coverId) ?? CoverPresets.fallback;
     return LayoutBuilder(
       builder: (context, constraints) => CoverArt(
         preset: preset,

@@ -227,6 +227,19 @@ class CoverPresets {
     ),
   ];
 
+  /// What the Profile header shows for a user who has never picked a cover.
+  ///
+  /// There used to be a separate "Default" tile in the picker that rendered
+  /// a hand-drawn torii/Fuji/sakura scene assembled from layered
+  /// `Container`s. It predates the real cover art and looked out of place
+  /// beside 19 painted covers, so it was removed; every user now sees a real
+  /// cover, and this one stands in until they choose otherwise.
+  ///
+  /// Stored `coverId` stays nullable — nothing is written to Firestore on
+  /// the user's behalf. This is purely a render-time fallback, so a user who
+  /// never opens the picker keeps an empty field and simply sees this.
+  static CoverPreset get fallback => all.first;
+
   static CoverPreset? byId(String? id) {
     if (id == null) return null;
     for (final preset in all) {

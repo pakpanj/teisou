@@ -113,7 +113,7 @@ class ProgressRepository {
 
   /// Sets which Profile-header cover the user has selected. [coverId] is
   /// one of [CoverPresets.all]'s ids, or `null` to fall back to the
-  /// default hand-drawn [ProfileHeaderIllustration].
+  /// fallback cover ([CoverPresets.fallback]).
   Future<void> updateCover(String uid, String? coverId) {
     return _userDoc(uid).set({
       'profile': {'coverId': coverId},
