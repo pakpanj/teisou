@@ -104,7 +104,7 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
   }
 
   Future<void> _onComplete(int score, int total) async {
-    final passed = total > 0 && score == total;
+    final passed = total > 0 && score >= gatePassMark(total);
     if (passed) {
       final uid = ref.read(appStartupProvider).valueOrNull?.uid;
       await ref.read(babProgressRepositoryProvider).markCompleted(
@@ -143,7 +143,9 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
             ),
             const SizedBox(height: 12),
             Text(
-              passed ? s.babGatePassedMessage : s.babGateFailedMessage,
+              passed
+                  ? s.babGatePassedMessage
+                  : s.babGateFailedMessage(gatePassMark(total), total),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,

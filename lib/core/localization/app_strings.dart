@@ -742,7 +742,6 @@ class AppStrings {
   String get nameSaveFailed => _t('Gagal menyimpan nama, coba lagi.', 'Failed to save name, try again.');
   String get adLoadFailed => _t('Gagal memuat iklan, coba lagi.', 'Failed to load ad, try again.');
   String get pickCoverTitle => _t('Pilih Sampul', 'Choose Cover');
-  String get defaultLabel => _t('Default', 'Default');
   String get coverSaveFailed =>
       _t('Gagal menyimpan sampul, coba lagi.', 'Failed to save cover, try again.');
   String get frameSection => _t('Bingkai', 'Frame');
@@ -850,12 +849,14 @@ class AppStrings {
         'Screenshot detected. These quiz questions are not for sharing.',
       );
   String get babGatePassedMessage => _t(
-        'Sempurna! Bab berikutnya sudah terbuka.',
-        'Perfect! The next chapter is now unlocked.',
+        'Hebat! Bab berikutnya sudah terbuka.',
+        'Great work! The next chapter is now unlocked.',
       );
-  String get babGateFailedMessage => _t(
-        'Butuh jawaban benar semua untuk membuka bab berikutnya. Coba lagi, ya!',
-        'You need every answer correct to unlock the next chapter. Try again!',
+  String babGateFailedMessage(int passMark, int total) => _t(
+        'Perlu minimal $passMark dari $total jawaban benar untuk membuka bab '
+            'berikutnya. Coba lagi, ya!',
+        'You need at least $passMark of $total correct to unlock the next '
+            'chapter. Try again!',
       );
   String get babGateNoQuestions => _t(
         'Belum ada soal yang bisa dibuat untuk bab ini.',

@@ -50,8 +50,24 @@ List<String> _patternTokens(String pattern) => pattern
     .where((t) => t.isNotEmpty)
     .toList();
 
-/// Builds the question pool for the gate quiz that must be passed (100%,
-/// see [BabGateQuizScreen]) to unlock the chapter right after [upToOrder] —
+/// How many questions a gate quiz asks, given how many chapters it covers.
+/// Grows with the curriculum so a late chapter isn't gated by the same
+/// 10-question sample an early one is — but capped, because the quiz demands
+/// a near-perfect score and the curriculum runs to 358 chapters, where an
+/// uncapped curve would be unsittable. Bab 1 -> 10, Bab 25 -> 20, Bab 50 and
+/// beyond -> 30.
+int gateQuestionCount(int upToOrder) =>
+    min(10 + (upToOrder * 2) ~/ 5, 30);
+
+/// How many correct answers a gate quiz needs to pass: 90%, rounded up.
+/// It used to be all of them. That was already harsh at 10 questions, and
+/// with the count now scaling to 30 it would mean a single slip anywhere
+/// restarts the whole thing — the kind of wall a child stops climbing.
+/// Rounding up keeps it strict: 10 -> 9, 20 -> 18, 30 -> 27.
+int gatePassMark(int totalQuestions) => (totalQuestions * 0.9).ceil();
+
+/// Builds the question pool for the gate quiz that must be passed (see
+/// [gatePassMark]) to unlock the chapter right after [upToOrder] —
 /// i.e. the quiz covers every chapter from order 1 through [upToOrder]
 /// inclusive, exactly matching the "Bab N -> Bab N+1 needs Bab 1..N"
 /// progression the curriculum lock is built around.
@@ -75,7 +91,7 @@ List<GateQuestion> buildGateQuestions({
   required List<ResolvedBab> allResolved,
   required int upToOrder,
   required AppLanguage language,
-  int targetCount = 10,
+  int? targetCount,
   Random? random,
 }) {
   final rng = random ?? Random();
@@ -125,12 +141,22 @@ List<GateQuestion> buildGateQuestions({
   final bunpouById = <String, ({String prompt, String answer, List<String> contextPool})>{};
   final particleFnById = <String, ({String prompt, String answer, List<String> contextPool})>{};
 
-  final scopedKotobaIds = <String>{};
-  final scopedBunpouIds = <String>{};
-  final scopedParticleFnIds = <String>{};
+  // id -> the *highest* chapter order (within scope) that teaches it. Highest
+  // rather than lowest on purpose: a word reused by the chapter being
+  // unlocked is legitimately that chapter's material, and the stratified
+  // draw below needs to see it as recent, not as leftovers from chapter 3.
+  final kotobaOrder = <String, int>{};
+  final bunpouOrder = <String, int>{};
+  final particleFnOrder = <String, int>{};
+
+  void note(Map<String, int> orders, String id, int order) {
+    final existing = orders[id];
+    if (existing == null || order > existing) orders[id] = order;
+  }
 
   for (final resolved in allResolved) {
-    final inScope = resolved.bab.order <= upToOrder;
+    final order = resolved.bab.order;
+    final inScope = order <= upToOrder;
     for (final k in resolved.kotoba) {
       final headword = k.kanji ?? k.word;
       kotobaById[k.id] = (
@@ -141,7 +167,7 @@ List<GateQuestion> buildGateQuestions({
           k.sentenceExamples.map((e) => e.japanese).toList(),
         ),
       );
-      if (inScope) scopedKotobaIds.add(k.id);
+      if (inScope) note(kotobaOrder, k.id, order);
     }
     for (final b in resolved.bunpou) {
       bunpouById[b.id] = (
@@ -152,7 +178,7 @@ List<GateQuestion> buildGateQuestions({
           b.sentenceExamples.map((e) => e.japanese).toList(),
         ),
       );
-      if (inScope) scopedBunpouIds.add(b.id);
+      if (inScope) note(bunpouOrder, b.id, order);
     }
     for (final p in resolved.particles) {
       for (final fn in p.functions) {
@@ -164,7 +190,7 @@ List<GateQuestion> buildGateQuestions({
             fn.sentenceExamples.map((e) => e.japanese).toList(),
           ),
         );
-        if (inScope) scopedParticleFnIds.add(fn.id);
+        if (inScope) note(particleFnOrder, fn.id, order);
       }
     }
   }
@@ -212,9 +238,10 @@ List<GateQuestion> buildGateQuestions({
     );
   }
 
-  final candidates = <GateQuestion Function()>[
-    for (final id in scopedKotobaIds)
-      () {
+  final candidates = <({int order, GateQuestion Function() build})>[
+    for (final entry in kotobaOrder.entries)
+      (order: entry.value, build: () {
+        final id = entry.key;
         final e = kotobaById[id]!;
         final hasContext = e.contextPool.isNotEmpty;
         return buildQuestion(
@@ -225,10 +252,10 @@ List<GateQuestion> buildGateQuestions({
           e.answer,
           allKotobaMeanings,
         );
-      },
-    for (final id in scopedBunpouIds)
-      () {
-        final e = bunpouById[id]!;
+      }),
+    for (final entry in bunpouOrder.entries)
+      (order: entry.value, build: () {
+        final e = bunpouById[entry.key]!;
         final hasContext = e.contextPool.isNotEmpty;
         return buildQuestion(
           e.contextPool,
@@ -238,10 +265,10 @@ List<GateQuestion> buildGateQuestions({
           e.answer,
           allBunpouMeanings,
         );
-      },
-    for (final id in scopedParticleFnIds)
-      () {
-        final e = particleFnById[id]!;
+      }),
+    for (final entry in particleFnOrder.entries)
+      (order: entry.value, build: () {
+        final e = particleFnById[entry.key]!;
         final hasContext = e.contextPool.isNotEmpty;
         return buildQuestion(
           e.contextPool,
@@ -249,10 +276,42 @@ List<GateQuestion> buildGateQuestions({
           e.answer,
           allParticleTitles,
         );
-      },
+      }),
   ];
 
-  candidates.shuffle(rng);
-  final count = min(targetCount, candidates.length);
-  return [for (final build in candidates.take(count)) build()];
+  final count = min(targetCount ?? gateQuestionCount(upToOrder), candidates.length);
+
+  // Stratified draw, not a flat shuffle. A flat `shuffle().take(10)` over the
+  // whole 1..upToOrder pool is what made a Bab 25 gate quiz sometimes ask
+  // nothing at all about Bab 25: by chapter 25 the earlier chapters
+  // outnumber the newest one roughly 24:1, so uniform sampling almost never
+  // reaches it. Passing a gate that never tested the chapter just studied
+  // proves nothing, so the newest chapter gets a reserved share first and
+  // the remainder is filled from everything before it.
+  final recent = <GateQuestion Function()>[];
+  final earlier = <GateQuestion Function()>[];
+  for (final c in candidates) {
+    (c.order == upToOrder ? recent : earlier).add(c.build);
+  }
+  recent.shuffle(rng);
+  earlier.shuffle(rng);
+
+  // Reserve ~40% for the newest chapter — enough that it's always genuinely
+  // represented, low enough that the quiz stays cumulative rather than
+  // turning into a single-chapter test. Chapters with fewer candidates than
+  // their share simply contribute all they have; `earlier` covers the rest.
+  final recentTarget = min(max(1, (count * 0.4).round()), recent.length);
+  final picked = <GateQuestion Function()>[
+    ...recent.take(recentTarget),
+    ...earlier.take(count - recentTarget),
+  ];
+  // A short `earlier` pool (early chapters, or a level whose first chapters
+  // are thin) can leave the quiz under target — top it up from whatever
+  // recent candidates weren't already reserved.
+  if (picked.length < count) {
+    picked.addAll(recent.skip(recentTarget).take(count - picked.length));
+  }
+
+  picked.shuffle(rng);
+  return [for (final build in picked) build()];
 }
