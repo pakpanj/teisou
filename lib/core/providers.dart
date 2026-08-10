@@ -50,6 +50,7 @@ import 'firebase/firestore_paths.dart';
 import 'localization/app_strings.dart';
 import 'services/ad_service.dart';
 import 'services/auth_service.dart';
+import 'services/furigana_dictionary.dart';
 import 'services/romaji_converter.dart';
 import 'services/tts_service.dart';
 import '../data/repositories/onboarding_repository.dart';
@@ -162,6 +163,15 @@ final kaiwaProgressRepositoryProvider = Provider<KaiwaProgressRepository>(
 );
 final kotobaRepositoryProvider = Provider<KotobaRepository>(
   (ref) => KotobaRepository(),
+);
+
+/// Built once per app session and reused — see [FuriganaDictionary]'s own
+/// doc comment for why it draws only from Kotoba/Kanji's kana fields.
+final furiganaDictionaryProvider = FutureProvider<FuriganaDictionary>(
+  (ref) => FuriganaDictionary.build(
+    kotoba: ref.watch(kotobaRepositoryProvider),
+    kanji: ref.watch(kanjiRepositoryProvider),
+  ),
 );
 final kotobaCategoryRepositoryProvider = Provider<KotobaCategoryRepository>(
   (ref) => KotobaCategoryRepository(),

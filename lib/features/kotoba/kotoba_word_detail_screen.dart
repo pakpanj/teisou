@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/furigana_text.dart';
 import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/kotoba_entry.dart';
 import '../../data/models/sentence_example.dart';
@@ -18,11 +19,19 @@ class KotobaWordDetailScreen extends ConsumerStatefulWidget {
   final int initialIndex;
   final String categoryIcon;
 
+  /// Whether example sentences show furigana above their kanji — set by
+  /// the Bab curriculum for N5-N3 chapters only (see `showFuriganaFor`);
+  /// false everywhere else this screen is reached (Kotoba's own Home ->
+  /// Category browse path), so the reading crutch stays a Bab-specific
+  /// teaching aid rather than changing how the module behaves generally.
+  final bool showFurigana;
+
   const KotobaWordDetailScreen({
     super.key,
     required this.entries,
     required this.initialIndex,
     this.categoryIcon = '📚',
+    this.showFurigana = false,
   });
 
   @override
@@ -153,6 +162,7 @@ class _KotobaWordDetailScreenState
                         ...entry.sentenceExamples.map(
                           (example) => _ExampleCard(
                             example: example,
+                            showFurigana: widget.showFurigana,
                             onSpeak: () => ref
                                 .read(ttsServiceProvider)
                                 .speak(example.japanese),
@@ -324,12 +334,23 @@ class _LearnedButton extends StatelessWidget {
 
 class _ExampleCard extends ConsumerWidget {
   final SentenceExample example;
+  final bool showFurigana;
   final VoidCallback onSpeak;
 
-  const _ExampleCard({required this.example, required this.onSpeak});
+  const _ExampleCard({
+    required this.example,
+    required this.onSpeak,
+    this.showFurigana = false,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final japaneseStyle = TextStyle(
+      fontSize: 16,
+      color: context.palette.textNavy,
+    );
+    final dictionary =
+        showFurigana ? ref.watch(furiganaDictionaryProvider).valueOrNull : null;
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 12),
@@ -344,13 +365,13 @@ class _ExampleCard extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  example.japanese,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: context.palette.textNavy,
-                  ),
-                ),
+                dictionary != null
+                    ? FuriganaSentence(
+                        text: example.japanese,
+                        dictionary: dictionary,
+                        style: japaneseStyle,
+                      )
+                    : Text(example.japanese, style: japaneseStyle),
                 if (example.romaji != null) ...[
                   const SizedBox(height: 2),
                   Text(

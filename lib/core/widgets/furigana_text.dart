@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../data/models/jlpt_level.dart';
+import '../services/furigana_dictionary.dart';
 
 /// Which JLPT levels get furigana in the Bab curriculum.
 ///
@@ -61,6 +62,42 @@ class FuriganaText extends StatelessWidget {
           ),
         ),
         Text(text, style: baseStyle),
+      ],
+    );
+  }
+}
+
+/// Renders a full sentence with furigana over each kanji run it recognizes,
+/// via [FuriganaDictionary.segment]. Wraps segment-by-segment (a [Wrap], not
+/// one [Text]) so a reading sitting above a two-character run doesn't force
+/// the whole sentence onto one unbroken line — each segment is its own
+/// mini ruby unit and can break independently, the same as real furigana
+/// typesetting.
+class FuriganaSentence extends StatelessWidget {
+  final String text;
+  final FuriganaDictionary dictionary;
+  final TextStyle? style;
+
+  const FuriganaSentence({
+    super.key,
+    required this.text,
+    required this.dictionary,
+    this.style,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final baseStyle = style ?? DefaultTextStyle.of(context).style;
+    final segments = dictionary.segment(text);
+    return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.end,
+      children: [
+        for (final segment in segments)
+          FuriganaText(
+            text: segment.text,
+            reading: segment.reading,
+            style: baseStyle,
+          ),
       ],
     );
   }

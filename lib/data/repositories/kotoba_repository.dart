@@ -74,6 +74,24 @@ class KotobaRepository {
     return null;
   }
 
+  List<KotobaEntry>? _allVocabCache;
+
+  /// Every real vocab-module word across all 46 categories, concatenated —
+  /// used by `FuriganaDictionary` to build a word->kana-reading lookup for
+  /// annotating example sentences. Not used by [getAll]/[getById]'s
+  /// per-category fallback scan, which stays lazy on purpose; this one is
+  /// meant to be called once and kept, so it eagerly loads every category.
+  Future<List<KotobaEntry>> getAllVocab() async {
+    final cached = _allVocabCache;
+    if (cached != null) return cached;
+    final all = <KotobaEntry>[];
+    for (final categoryId in await _vocabCategoryIds()) {
+      all.addAll(await getVocabCategory(categoryId));
+    }
+    _allVocabCache = all;
+    return all;
+  }
+
   /// Case-insensitive search across word, reading, romaji, and meaning.
   Future<List<KotobaEntry>> search(String query) async {
     final trimmed = query.trim().toLowerCase();

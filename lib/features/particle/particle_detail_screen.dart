@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/furigana_text.dart';
 import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/particle_entry.dart';
 import '../../data/models/particle_function.dart';
@@ -24,11 +25,16 @@ class ParticleDetailScreen extends ConsumerStatefulWidget {
   final int initialIndex;
   final String categoryName;
 
+  /// See `KotobaWordDetailScreen.showFurigana` — same Bab-only,
+  /// N5-N3-only teaching aid, applied here to the sentence examples.
+  final bool showFurigana;
+
   const ParticleDetailScreen({
     super.key,
     required this.entries,
     required this.initialIndex,
     required this.categoryName,
+    this.showFurigana = false,
   });
 
   @override
@@ -161,6 +167,7 @@ class _ParticleDetailScreenState extends ConsumerState<ParticleDetailScreen> {
                         _FunctionTile(
                           function: entry.functions[i],
                           initiallyExpanded: i == 0,
+                          showFurigana: widget.showFurigana,
                           onSpeak: (text) =>
                               ref.read(ttsServiceProvider).speak(text),
                         ),
@@ -434,12 +441,14 @@ class _LearnedButton extends StatelessWidget {
 class _FunctionTile extends ConsumerWidget {
   final ParticleFunction function;
   final bool initiallyExpanded;
+  final bool showFurigana;
   final ValueChanged<String> onSpeak;
 
   const _FunctionTile({
     required this.function,
     required this.initiallyExpanded,
     required this.onSpeak,
+    this.showFurigana = false,
   });
 
   @override
@@ -498,6 +507,7 @@ class _FunctionTile extends ConsumerWidget {
               ...function.sentenceExamples.map(
                 (example) => _SentenceExampleCard(
                   example: example,
+                  showFurigana: showFurigana,
                   onSpeak: () => onSpeak(example.japanese),
                 ),
               ),
@@ -511,12 +521,23 @@ class _FunctionTile extends ConsumerWidget {
 
 class _SentenceExampleCard extends ConsumerWidget {
   final SentenceExample example;
+  final bool showFurigana;
   final VoidCallback onSpeak;
 
-  const _SentenceExampleCard({required this.example, required this.onSpeak});
+  const _SentenceExampleCard({
+    required this.example,
+    required this.onSpeak,
+    this.showFurigana = false,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final japaneseStyle = TextStyle(
+      fontSize: 15,
+      color: context.palette.textNavy,
+    );
+    final dictionary =
+        showFurigana ? ref.watch(furiganaDictionaryProvider).valueOrNull : null;
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 8),
@@ -531,13 +552,13 @@ class _SentenceExampleCard extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  example.japanese,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: context.palette.textNavy,
-                  ),
-                ),
+                dictionary != null
+                    ? FuriganaSentence(
+                        text: example.japanese,
+                        dictionary: dictionary,
+                        style: japaneseStyle,
+                      )
+                    : Text(example.japanese, style: japaneseStyle),
                 if (example.romaji != null) ...[
                   const SizedBox(height: 2),
                   Text(
