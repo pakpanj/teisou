@@ -8054,3 +8054,84 @@ the clan-roles rules were before that on-device pass caught the
 account, confirm messages round-trip, confirm unfriending actually locks
 out the old conversation, and confirm a picked cover/frame shows up on
 that account's `PublicProfileScreen` from the other side.
+
+## Update (2026-08-10, later same day): two follow-ups from testing the
+friend feature — a real layout bug, and a real "why do I have to rename
+myself first" design gap
+
+**1. Search-result rows collapsing into one-character-per-line text.**
+Reported with a screenshot of `SearchFriendScreen`: instead of a normal
+row, the name/subtitle rendered as an extremely tall single-column stack
+with one letter per line. Root cause: `SearchFriendScreen`'s "Tambah
+Teman" button was wide enough that on a narrower device it squeezed the
+`Expanded` name/subtitle column toward zero width — Flutter doesn't throw
+an overflow error in that case, it just wraps every character onto its
+own line, since even one glyph technically "fits" a near-zero width
+better than not wrapping at all. `search_invite_screen.dart`'s identical
+row layout never hit this because its button ("Undang") is roughly half
+the width.
+
+Fixed three ways, all in the two search screens' result rows: shortened
+`sendFriendRequestButton` from "Tambah Teman"/"Add Friend" to
+"Tambah"/"Add" (mirrors "Undang"/"Invite"'s brevity); capped both
+`OutlinedButton`s to a compact `minimumSize: Size.zero` +
+`tapTargetSize: shrinkWrap` style instead of their default padding; and
+added `maxLines: 1` + `overflow: TextOverflow.ellipsis` to every `Text`
+in the row (displayName and the score/id subtitle in both
+`search_invite_screen.dart` and `search_friend_screen.dart`) as a
+backstop — so a long display name or a longer translated button label
+can't reproduce the same squeeze later. `flutter analyze`/`flutter test
+--concurrency=1` both clean (288/288) after the fix.
+
+**2. A brand-new account was invisible to search/invite/friend-request
+until they explicitly renamed themselves (or took an exam, or finished a
+Bab chapter) — closed, not just explained.** The user's actual question,
+paraphrased: why does changing your name and hitting save have anything
+to do with whether your account shows up on the leaderboard at all?
+
+The honest answer was a real gap: `leaderboard/{uid}` was **never**
+created on sign-in. It only ever got written by
+`updateTotalMastered`/`updateExamHighScoreIfHigher`/
+`updateCategoryRecord` (after an exam), `updateBabProgress` (after a Bab
+chapter), or `syncProfileInfo` (`EditNameDialog`/`AvatarPickerSheet`'s
+save — the flow the user was pointing at). A learner who'd only ever
+opened the app and browsed had none of those doc-creating events happen
+yet, so they had no `leaderboard/{uid}` row at all — and
+`LeaderboardRepository.searchPublicUsers` only ever queries that
+collection, so such a learner was unfindable for a clan invite or a
+friend request, for a reason nothing in the UI explained.
+
+Fixed with `LeaderboardRepository.ensurePublished` (uid, displayName,
+photoUrl), called best-effort from `appStartupProvider`
+(`core/providers.dart`) alongside its two existing unawaited startup
+calls (`ensureUserProfile`/`recordDailyActivity`) — same
+"don't-block-startup, log-don't-surface" contract those two already
+follow. **Deliberately create-only, not an ongoing sync**: it reads
+`getSelf(uid)` first and only writes if the doc doesn't exist at all yet;
+an existing doc — including one already carrying a name a learner
+customized via `EditNameDialog` — is never touched. Getting this backwards
+(re-writing `displayName` on every login) would have silently reverted a
+custom name back to the Google-account/anonymous fallback the next time
+the app started, which is exactly the class of bug this exists to
+prevent, not reintroduce. No `UserProfile` read is needed to bootstrap it
+either: a brand-new account has no `customDisplayName` yet, so the same
+fallback `UserProfile.resolveDisplayName` would compute (Auth
+`displayName`, else "Pelajar Kana") is already sitting on the Firebase
+`User` object `appStartupProvider` already has in hand — avoiding a
+chicken-and-egg dependency on `userProfileProvider`, which itself depends
+on `appStartupProvider`.
+
+The rewarded-ad gate on `EditNameDialog` itself was explicitly asked
+about and explicitly kept as-is per the user's own instruction — this fix
+is scoped only to "does an account exist on the leaderboard at all",
+never to the ad-vs-premium gate on changing a name after that.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 288/288 (no test
+added — this is a one-shot Firestore bootstrap on a live backend, the
+same category of change `backfillGlobalScore`/`backfillDisplayNameLower`/
+`backfillUserId` already document as verified by the on-device pass that
+found the gap, not by a local test double). **No interactive on-device
+pass done for this fix specifically** — worth confirming on a fresh
+account (or by deleting an existing `leaderboard/{uid}` doc in the
+console) that opening the app alone, with no exam/rename/Bab chapter,
+makes that account searchable within one launch.

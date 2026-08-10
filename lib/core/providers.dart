@@ -270,7 +270,7 @@ final kanjiComboExamHistoryRepositoryProvider = Provider<ExamHistoryRepository>(
 /// theme or language — neither of which needs a network at all. Found on a
 /// device whose wifi had no working DNS (2026-08-05).
 ///
-/// Both calls are best-effort by nature, the same rule every progress
+/// All three calls are best-effort by nature, the same rule every progress
 /// repository here already follows: local state is the source of truth and
 /// Firestore is a mirror. Errors are logged rather than surfaced, because
 /// there is nothing a learner could do about a failed profile touch and it
@@ -293,6 +293,24 @@ final appStartupProvider = FutureProvider<User>((ref) async {
     progressRepository
         .recordDailyActivity(user.uid)
         .catchError((Object e) => debugPrint('recordDailyActivity failed: $e')),
+  );
+  // Bootstraps leaderboard/{uid} the first time this account is ever seen,
+  // so it exists (and is findable via searchPublicUsers) before the user
+  // has taken any exam or explicitly renamed themselves — see
+  // LeaderboardRepository.ensurePublished's own doc comment for why this
+  // is a one-time create, not an ongoing sync. No UserProfile read is
+  // needed here: a brand-new account has no customDisplayName yet, so the
+  // same fallback resolveDisplayName would use (Auth displayName, else
+  // "Pelajar Kana") is already sitting right on `user`.
+  unawaited(
+    ref
+        .read(leaderboardRepositoryProvider)
+        .ensurePublished(
+          uid: user.uid,
+          displayName: user.displayName ?? 'Pelajar Kana',
+          photoUrl: user.photoURL,
+        )
+        .catchError((Object e) => debugPrint('ensurePublished failed: $e')),
   );
 
   return user;

@@ -175,6 +175,46 @@ class LeaderboardRepository {
     }, SetOptions(merge: true));
   }
 
+  /// Publishes a bare-minimum row for [uid] the very first time this runs
+  /// for them — until now, a brand-new account had **no**
+  /// `leaderboard/{uid}` doc at all until they took an exam, finished a Bab
+  /// chapter, or explicitly opened `EditNameDialog`/`AvatarPickerSheet` and
+  /// saved (every one of those is what actually calls
+  /// [updateTotalMastered]/[updateExamHighScoreIfHigher]/
+  /// [updateCategoryRecord]/[updateBabProgress]/[syncProfileInfo]). So a
+  /// learner who had simply opened the app and done nothing else yet was
+  /// invisible to [searchPublicUsers] — unfindable for a clan invite or a
+  /// friend request — for no reason a user would ever guess ("why do I have
+  /// to rename myself before anyone can find me?"). Called best-effort from
+  /// `appStartupProvider` on every launch, so this closes on its own the
+  /// moment the user is next online.
+  ///
+  /// **Deliberately create-only, not an ongoing sync**: it writes only when
+  /// no doc exists yet at all ([getSelf] returns null), never touching one
+  /// that's already there. If this instead re-wrote [displayName] on every
+  /// login, it would silently revert a name a learner had since customized
+  /// via `EditNameDialog` back to [displayName]'s fallback value the very
+  /// next time they opened the app — exactly the kind of bug this method
+  /// exists to avoid, not reintroduce. Keeping identity fields current
+  /// after that first bootstrap is still [syncProfileInfo]'s job alone.
+  Future<void> ensurePublished({
+    required String uid,
+    required String displayName,
+    String? photoUrl,
+  }) async {
+    final existing = await getSelf(uid);
+    if (existing != null) return;
+    await _collection.doc(uid).set({
+      'displayName': displayName,
+      'displayNameLower': displayName.toLowerCase(),
+      'photoUrl': photoUrl,
+      'avatarType': AvatarType.google.key,
+      'totalMastered': 0,
+      'examHighScore': 0,
+      'updatedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+  }
+
   /// Publishes the profile header cover the learner picked in
   /// `CoverPickerSheet` so `PublicProfileScreen`/`LeaderboardAvatar` can
   /// show it — see [LeaderboardEntry.coverId]'s own doc comment. Called
