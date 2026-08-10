@@ -2688,6 +2688,165 @@ what the on-device pass actually verified), `flutter build apk
   confirming on a real multi-clan account that changing your name
   actually updates how you appear in every clan you're in, not just the
   main leaderboard, before treating this as fully verified.
+- **Clan leader/co-leader roles, search-and-invite, kick, Top Clan
+  leaderboard, and clan-only chat — added 2026-08-10**, three explicit
+  user requests bundled into one session ("buat agar ada sistem leader
+  dan co leader...", "aku ingin ada yang nama nya top clan...", "bisa
+  mengirimkan private massage, dan bisa mengirim kan clan massage").
+  **A fourth request — open direct messaging to any public user — was
+  declined, not built**; see the dedicated note below this one for why,
+  which is the more important thing to read here if you're extending
+  this feature.
+
+  **Roles.** `ClanRole` (`leader`/`coLeader`/`member`) lives on
+  `ClanMember.role`. `leader` is fixed to whoever created the clan
+  (`Clan.hostUid`) for its whole lifetime — this project has no
+  host-transfer feature, a scope line already drawn before this session
+  and left in place — so the only role transition is promoting/demoting
+  `coLeader`, leader-only. A row written before this field existed
+  resolves to `leader` if its uid matches `hostUid`, `member` otherwise
+  (`ClanMember.fromMap`'s `hostUid` param, and `firestore.rules`'
+  `actorRole` function do the identical fallback independently, so a
+  pre-existing clan doesn't lose its leader the moment this shipped).
+  `ClanMembersScreen` renders the roster with role badges and, for
+  whoever has permission, promote/demote/kick actions — separate from
+  the Clan tab's own ranking list, which stays score-focused and
+  unaware of roles (`LeaderboardEntry`, what that list renders, has no
+  role field; `ClanMember`, which does, needed its own provider,
+  `clanMembersProvider`).
+
+  **Kick.** A leader can kick anyone but themself; a co-leader can only
+  kick a plain member (never the leader, never another co-leader) —
+  enforced both in the UI (`_MemberRow`'s `_canKick`, so a button that
+  would fail isn't shown) and, the one that actually matters,
+  server-side by `firestore.rules`' `canKick`. `ClanRepository
+  .kickMember` mirrors `leaveClan`'s exact batch shape (roster row +
+  the target's own `clanMemberships` reverse-index row + the
+  member-count decrement) since a kick is functionally "someone else
+  initiates your leaveClan" — without deleting the target's own
+  reverse-index row too, a kicked learner would keep seeing the clan in
+  their own "pilih clan" picker forever with no membership left to back
+  it. That specific delete needed a new rules block
+  (`users/{targetUid}/clanMemberships/{code}`) since the existing
+  `users/{uid}/{document=**}` wildcard only ever covers the *owner*
+  acting on their own subcollection, not a kicker acting on someone
+  else's.
+
+  **Search & invite.** "Mengundang user public" was scoped (confirmed
+  via `AskUserQuestion`) to searching the public leaderboard by name and
+  sending a real invite, not just handing out the join code (which
+  still works exactly as before). `LeaderboardRepository
+  .searchPublicUsers` is a case-insensitive prefix match on a new
+  `displayNameLower` field — added to every one of the five leaderboard
+  write call sites (`updateTotalMastered`/`updateExamHighScoreIfHigher`/
+  `updateCategoryRecord`/`updateBabProgress`/`syncProfileInfo`) — since
+  Firestore has no real substring search and this is the standard
+  `orderBy` + `startAt`/`endAt` prefix-range idiom (the U+F8FF high
+  Unicode sentinel bound, written via `String.fromCharCode(0xf8ff)`
+  rather than the raw invisible character, after that literal character
+  was accidentally typed in once and turned out to display as nothing
+  at all in this environment's own file-reading tools — worth remembering
+  if a similar sentinel is ever needed again). `ClanInvite`
+  (`users/{targetUid}/clanInvites/{id}`, mirrors `ClanMembership`'s
+  "read your own subcollection" shape) is written by
+  `ClanRepository.sendInvite`, gated server-side to a leader/co-leader
+  of the named clan via the same `actorRole` check kick and role-change
+  use. `_PendingInvitesStrip` (top of the Clan tab, above both the
+  clan-picker and the no-clan-yet state, since an invite can arrive for
+  an *additional* clan) shows every pending invite with accept/decline;
+  accepting reuses `joinClan` itself rather than duplicating its
+  no-op-if-already-a-member logic.
+
+  **Top Clan.** A 3rd `LeaderboardScreen` tab, the cross-clan
+  counterpart to tab 1's top-20-individuals ranking — top 100 clans by
+  `Clan.totalScore` (sum of every member's `computedGlobalScore`, the
+  ranking metric confirmed via `AskUserQuestion` over "reward
+  breadth/activity" vs. per-member average). **Deliberately not kept
+  live** — recomputing it on every single exam would mean fanning out a
+  write to every clan a user belongs to on every completion, a much
+  bigger cost than a number nobody needs millisecond-fresh. Instead it
+  self-heals the same way `LeaderboardEntry.globalScore` and
+  `babCompletedCount` already do in this codebase: `clanRankingProvider`
+  recomputes and writes it back (best-effort, try/catch) as a side
+  effect of already having fetched every member's live score to build
+  the ranking — so `Clan.totalScore` is only ever as fresh as the last
+  time *someone* opened that clan's own ranking tab, which is an
+  accepted, documented trade-off, not an oversight. `firestore.rules`'
+  `clans/{code}` update rule extended its existing permissive
+  `hasOnly([...])` allowance (previously `memberCount` alone, writable
+  by any signed-in user regardless of membership — a pre-existing trust
+  gap, same as `leaderboard/{uid}.globalScore` never being
+  server-validated either) to also cover `totalScore`, deliberately
+  matching that existing trust level rather than introducing
+  inconsistent strictness for the new field alone.
+
+  **Clan chat.** `ClanMessageRepository`/`ClanMessage`
+  (`clans/{code}/messages/{id}`) — group chat scoped to one clan's own
+  roster. `firestore.rules` gates both read and create on
+  `isClanMember(code, uid)`, a real membership check (unlike the looser
+  `memberCount`/`totalScore` trust model) since this is message
+  *content*, not a number. Messages are immutable — no update, no
+  delete rule at all — so a reported message can't quietly change
+  after the fact. Safety rails, all real but honestly scoped for a
+  project with zero moderation tooling: a 300-character cap enforced
+  both client-side (`ClanMessageRepository.maxMessageLength`) and in
+  `firestore.rules` (a raw write bypassing the client can't exceed it
+  either); a 2-second client-side send cooldown (not server-enforced —
+  this project has no Cloud Functions to run rate-limiting logic
+  server-side, so a determined bad actor writing directly to Firestore
+  could bypass it, the same accepted client-trust ceiling as
+  `totalScore`/`globalScore`); per-user block (`blockUser`/
+  `unblockUser`, hides a sender's messages client-side without
+  stopping them from posting — the standard shape of a "block," not a
+  removal); and report-with-reason (`reportMessage`, write-only —
+  `messageReports` has no read/update/delete rule for regular users at
+  all, since there is no admin UI anywhere in this app to review them;
+  the record exists purely so a report is on file for manual review via
+  the Firebase console, which is the honest ceiling of what this
+  project can support today, not a stand-in for a review workflow that
+  doesn't exist).
+
+  **Open public DM — explicitly declined, not deferred.** The original
+  ask ("bisa mengirimkan private massage" to any user) was raised as a
+  real concern before any code was written: this app has no moderation
+  tooling anywhere, no admin surface, no content review pipeline, and
+  its audience includes children — the same reasoning that already got
+  gallery avatar upload removed outright earlier in this project's
+  history ("no path to being reviewed or taken down"). Free-text
+  messaging between strangers on a public leaderboard is a materially
+  bigger exposure than that. Asked via `AskUserQuestion`; the user chose
+  the maximal-scope option ("teks bebas penuh, termasuk DM ke siapa
+  saja") anyway. That choice was not built. A clan's members already
+  share a real join code — usually a teacher/class or a group of
+  friends who know each other — which is a meaningfully different trust
+  boundary than a public leaderboard full of strangers, so clan-only
+  chat shipped instead as the responsible version of the same request.
+  Building real open DM safely would need actual moderation (human
+  review, or at minimum server-side filtering this project has no
+  Cloud Functions to run) that does not exist in this codebase yet —
+  see `ClanMessageRepository`'s own doc comment for the full reasoning,
+  written where the next session will actually see it before extending
+  this feature.
+
+  **Verification.** `flutter analyze` clean, full `flutter test
+  --concurrency=1` suite (288 tests, unchanged — none of this session's
+  new Firestore-backed logic has a test double to run against without a
+  live project or emulator, which this environment doesn't have either).
+  `firestore.rules` gained its **first-ever cross-document `get()`/
+  `exists()` calls** (`actorRole`/`canKick`/`isClanMember`) — every
+  earlier rule in this file only ever checked the document being written
+  against itself. Written carefully against documented Firestore rules
+  semantics, but **genuinely unverified**: this project's Firebase CLI is
+  broken in this environment (crashes on its own first-run welcome
+  script, a pre-existing gap documented elsewhere in this file) and
+  deploying to the live project needs the user's own action regardless —
+  same standing caveat as every other `firestore.rules` change in this
+  file's history. **No interactive on-device pass done for any of this**
+  — roles/kick/invite/chat all touch real Firestore writes this
+  environment cannot exercise end-to-end; worth a real device pass
+  (create a clan, promote a co-leader, have them kick a member, search
+  and invite a real second account, send a chat message, block/report
+  it) before trusting this beyond the code review it's had so far.
 - **Avatar resolution priority** (see `UserAvatar` widget, and its
   leaderboard-row counterpart `LeaderboardAvatar` in
   `leaderboard_screen.dart` — renamed from private `_Avatar` when the Clan

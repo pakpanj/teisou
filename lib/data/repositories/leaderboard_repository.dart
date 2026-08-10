@@ -160,6 +160,7 @@ class LeaderboardRepository {
     }
     await _collection.doc(uid).set({
       'displayName': displayName,
+      'displayNameLower': displayName.toLowerCase(),
       'photoUrl': photoUrl,
       'avatarType': avatarType.key,
       'avatarValue': avatarValue,
@@ -185,6 +186,7 @@ class LeaderboardRepository {
     }
     await _collection.doc(uid).set({
       'displayName': displayName,
+      'displayNameLower': displayName.toLowerCase(),
       'photoUrl': photoUrl,
       'avatarType': avatarType.key,
       'avatarValue': avatarValue,
@@ -250,6 +252,7 @@ class LeaderboardRepository {
 
       transaction.set(docRef, {
         'displayName': displayName,
+        'displayNameLower': displayName.toLowerCase(),
         'photoUrl': photoUrl,
         'avatarType': avatarType.key,
         'avatarValue': avatarValue,
@@ -283,6 +286,7 @@ class LeaderboardRepository {
   }) {
     return _collection.doc(uid).set({
       'displayName': displayName,
+      'displayNameLower': displayName.toLowerCase(),
       'photoUrl': photoUrl,
       'avatarType': avatarType.key,
       'avatarValue': avatarValue,
@@ -305,10 +309,36 @@ class LeaderboardRepository {
   }) {
     return _collection.doc(uid).set({
       'displayName': displayName,
+      'displayNameLower': displayName.toLowerCase(),
       'photoUrl': photoUrl,
       'avatarType': avatarType.key,
       'avatarValue': avatarValue,
       'updatedAt': FieldValue.serverTimestamp(),
     }, SetOptions(merge: true));
+  }
+
+  /// Case-insensitive prefix search over every public `leaderboard/{uid}`
+  /// row's name, for a clan leader/co-leader inviting a specific learner
+  /// (see `ClanRepository.sendInvite`). Firestore has no substring search,
+  /// so this is a prefix match on [displayNameLower] — good enough to find
+  /// someone by typing the start of their name, the same limitation any
+  /// simple "search a name field" feature has without a dedicated search
+  /// index. U+F8FF is a high Unicode sentinel that sorts after any
+  /// realistic input, the standard Firestore idiom for a prefix range.
+  Future<List<LeaderboardEntry>> searchPublicUsers(
+    String query, {
+    int limit = 20,
+  }) async {
+    final trimmed = query.trim().toLowerCase();
+    if (trimmed.isEmpty) return [];
+    final snapshot = await _collection
+        .orderBy('displayNameLower')
+        .startAt([trimmed])
+        .endAt(['$trimmed${String.fromCharCode(0xf8ff)}'])
+        .limit(limit)
+        .get();
+    return snapshot.docs
+        .map((doc) => LeaderboardEntry.fromMap(doc.id, doc.data()))
+        .toList();
   }
 }

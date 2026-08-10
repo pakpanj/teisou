@@ -444,6 +444,115 @@ class AppStrings {
       _t('Gagal bergabung, coba lagi.', 'Failed to join, try again.');
   String get joinButton => _t('Gabung', 'Join');
 
+  // --- Clan roles / kick / invite ---
+  String get roleLeader => _t('Leader', 'Leader');
+  String get roleCoLeader => _t('Co-Leader', 'Co-Leader');
+  String get manageMembers => _t('Kelola Anggota', 'Manage Members');
+  String get promoteToCoLeader =>
+      _t('Jadikan Co-Leader', 'Promote to Co-Leader');
+  String get demoteToMember => _t('Turunkan ke Anggota', 'Demote to Member');
+  String get roleChangeFailed => _t(
+        'Gagal mengubah peran, coba lagi.',
+        'Failed to change role, try again.',
+      );
+  String get kickMember => _t('Tendang', 'Kick');
+  String kickConfirmTitle(String name) =>
+      _t('Tendang $name?', 'Kick $name?');
+  String get kickConfirmBody => _t(
+        'Anggota ini akan dikeluarkan dari clan dan perlu kode gabung lagi untuk kembali.',
+        'This member will be removed from the clan and needs the join code again to come back.',
+      );
+  String get kickFailed =>
+      _t('Gagal menendang anggota, coba lagi.', 'Failed to kick member, try again.');
+  String get inviteMember => _t('Cari & Undang', 'Search & Invite');
+  String get searchUserHint =>
+      _t('Cari nama learner...', "Search a learner's name...");
+  String get searchUserEmpty => _t(
+        'Ketik nama untuk mencari learner.',
+        "Type a name to search for a learner.",
+      );
+  String get searchUserNoResults =>
+      _t('Tidak ada learner ditemukan.', 'No learner found.');
+  String get inviteButton => _t('Undang', 'Invite');
+  String get inviteSent => _t('Undangan terkirim.', 'Invite sent.');
+  String get inviteSendFailed => _t(
+        'Gagal mengirim undangan, coba lagi.',
+        'Failed to send invite, try again.',
+      );
+  String get alreadyMemberError =>
+      _t('Learner ini sudah ada di dalam clan.', 'This learner is already in the clan.');
+  String pendingInvitesTitle(int count) => _t(
+        'Kamu punya $count undangan clan',
+        'You have $count clan invite${count == 1 ? '' : 's'}',
+      );
+  String invitedToClan(String clanName, String hostName) => _t(
+        'Diundang ke "$clanName" oleh $hostName',
+        'Invited to "$clanName" by $hostName',
+      );
+  String get acceptInvite => _t('Terima', 'Accept');
+  String get declineInvite => _t('Tolak', 'Decline');
+  String get inviteRespondFailed => _t(
+        'Gagal merespons undangan, coba lagi.',
+        'Failed to respond to invite, try again.',
+      );
+  String get tabTopClan => _t('Top Clan', 'Top Clan');
+  String get noTopClansYet =>
+      _t('Belum ada clan dengan skor.', 'No clans with a score yet.');
+  String failedToLoadTopClans(Object e) =>
+      _t('Gagal memuat top clan: $e', 'Failed to load top clans: $e');
+  String topClanMembers(int count) =>
+      _t('$count anggota', '$count members');
+  String topClanScorePoints(String score) =>
+      _t('$score poin', '$score points');
+
+  // --- Clan chat ---
+  String get clanChat => _t('Chat Clan', 'Clan Chat');
+  String get clanChatEmpty => _t(
+        'Belum ada pesan. Mulai obrolan clan-mu!',
+        'No messages yet. Start your clan chat!',
+      );
+  String get messageHint => _t('Tulis pesan...', 'Write a message...');
+  String get messageTooLong => _t(
+        'Pesan terlalu panjang (maks 300 karakter).',
+        'Message too long (max 300 characters).',
+      );
+  String get messageSendFailed => _t(
+        'Gagal mengirim pesan, coba lagi.',
+        'Failed to send message, try again.',
+      );
+  String get messageSendTooFast => _t(
+        'Tunggu sebentar sebelum kirim pesan lagi.',
+        'Wait a moment before sending another message.',
+      );
+  String get blockUser => _t('Blokir', 'Block');
+  String get unblockUser => _t('Buka Blokir', 'Unblock');
+  String blockConfirmTitle(String name) =>
+      _t('Blokir $name?', 'Block $name?');
+  String get blockConfirmBody => _t(
+        'Pesan dari orang ini tidak akan lagi muncul di chat-mu. Ini tidak menendangnya dari clan.',
+        "This person's messages will stop appearing in your chat. It does not remove them from the clan.",
+      );
+  String get blockActionFailed => _t(
+        'Gagal memproses, coba lagi.',
+        'Failed to process, try again.',
+      );
+  String get reportMessage => _t('Laporkan', 'Report');
+  String get reportMessageTitle =>
+      _t('Laporkan Pesan', 'Report Message');
+  String get reportMessageHint => _t(
+        'Ceritakan kenapa pesan ini dilaporkan...',
+        'Tell us why this message is being reported...',
+      );
+  String get reportMessageSubmit => _t('Kirim Laporan', 'Submit Report');
+  String get reportMessageSent =>
+      _t('Laporan terkirim. Terima kasih.', 'Report sent. Thank you.');
+  String get reportMessageFailed => _t(
+        'Gagal mengirim laporan, coba lagi.',
+        'Failed to send report, try again.',
+      );
+  String get blockedMessagePlaceholder =>
+      _t('Pesan disembunyikan (diblokir)', 'Message hidden (blocked)');
+
   // --- Exam / Ujian ---
   String get kanaCategorySubtitle =>
       _t('Hiragana, Katakana, atau campuran', 'Hiragana, Katakana, or mixed');

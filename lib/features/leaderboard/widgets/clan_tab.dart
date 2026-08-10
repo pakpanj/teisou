@@ -6,9 +6,13 @@ import '../../../core/localization/app_strings.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/app_refresh_indicator.dart';
+import '../../../data/models/clan_invite.dart';
+import '../../../data/models/user_profile.dart' show AvatarType;
 import '../clan_providers.dart';
 import '../leaderboard_screen.dart'
     show LeaderboardTile, globalScoreBreakdown, globalScoreLabel;
+import 'clan_chat_screen.dart';
+import 'clan_members_screen.dart';
 import 'create_clan_dialog.dart';
 import 'join_clan_dialog.dart';
 import '../../../core/widgets/app_loading.dart';
@@ -64,6 +68,15 @@ class _ClanTabState extends ConsumerState<ClanTab> {
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const _PendingInvitesStrip(),
+        Expanded(child: _buildBody(context)),
+      ],
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
     final myClansAsync = ref.watch(myClansProvider);
     final s = ref.watch(appStringsProvider);
 
@@ -156,6 +169,127 @@ class _ClanTabState extends ConsumerState<ClanTab> {
       },
       loading: () => const AppLoading(),
       error: (e, _) => Center(child: Text(s.failedToLoadClan(e))),
+    );
+  }
+}
+
+/// Pending clan invites for the signed-in learner — shown above the clan
+/// picker/ranking regardless of whether they already have a clan, since an
+/// invite can arrive for an *additional* one. Collapsed to nothing when
+/// there are none, so it never costs a permanent slice of the tab for the
+/// common case of no pending invites.
+class _PendingInvitesStrip extends ConsumerWidget {
+  const _PendingInvitesStrip();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final invitesAsync = ref.watch(myPendingInvitesProvider);
+    final invites = invitesAsync.valueOrNull ?? const [];
+    if (invites.isEmpty) return const SizedBox.shrink();
+
+    final s = ref.watch(appStringsProvider);
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: context.palette.primaryCoral.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            s.pendingInvitesTitle(invites.length),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: context.palette.textNavy,
+            ),
+          ),
+          for (final invite in invites)
+            _InviteRow(invite: invite, strings: s),
+        ],
+      ),
+    );
+  }
+}
+
+class _InviteRow extends ConsumerStatefulWidget {
+  final ClanInvite invite;
+  final AppStrings strings;
+
+  const _InviteRow({required this.invite, required this.strings});
+
+  @override
+  ConsumerState<_InviteRow> createState() => _InviteRowState();
+}
+
+class _InviteRowState extends ConsumerState<_InviteRow> {
+  bool _responding = false;
+
+  Future<void> _respond(bool accept) async {
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
+    setState(() => _responding = true);
+
+    final profile = ref.read(userProfileProvider).valueOrNull;
+    final user = ref.read(appStartupProvider).valueOrNull;
+    try {
+      await ref.read(clanRepositoryProvider).respondToInvite(
+            uid: uid,
+            invite: widget.invite,
+            accept: accept,
+            displayName: profile?.resolveDisplayName(user) ??
+                (user?.displayName ?? widget.strings.defaultLearnerName),
+            photoUrl: user?.photoURL,
+            avatarType: profile?.avatarType ?? AvatarType.google,
+            avatarValue: profile?.avatarValue,
+          );
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(widget.strings.inviteRespondFailed)),
+      );
+      setState(() => _responding = false);
+    }
+    // On success there's nothing to reset — the invite leaves the pending
+    // list via watchMyInvites' own live status filter, and this row is
+    // gone with it.
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              widget.strings.invitedToClan(
+                widget.invite.clanName,
+                widget.invite.invitedByName,
+              ),
+              style: TextStyle(color: context.palette.textNavy, fontSize: 13),
+            ),
+          ),
+          if (_responding)
+            const SizedBox(
+              width: 18,
+              height: 18,
+              child: CircularProgressIndicator(strokeWidth: 2),
+            )
+          else ...[
+            TextButton(
+              onPressed: () => _respond(false),
+              child: Text(widget.strings.declineInvite),
+            ),
+            FilledButton(
+              onPressed: () => _respond(true),
+              child: Text(widget.strings.acceptInvite),
+            ),
+          ],
+        ],
+      ),
     );
   }
 }
@@ -268,6 +402,38 @@ class _ClanRanking extends ConsumerWidget {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  IconButton(
+                    tooltip: strings.clanChat,
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => ClanChatScreen(
+                          code: clan.code,
+                          clanName: clan.name,
+                        ),
+                      ),
+                    ),
+                    icon: Icon(
+                      Icons.chat_bubble_outline,
+                      size: 18,
+                      color: context.palette.primaryCoral,
+                    ),
+                  ),
+                  IconButton(
+                    tooltip: strings.manageMembers,
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => ClanMembersScreen(
+                          code: clan.code,
+                          clanName: clan.name,
+                        ),
+                      ),
+                    ),
+                    icon: Icon(
+                      Icons.manage_accounts,
+                      size: 18,
+                      color: context.palette.primaryCoral,
                     ),
                   ),
                   IconButton(

@@ -11,6 +11,7 @@ import '../../data/models/user_profile.dart' show AvatarType;
 import 'leaderboard_providers.dart';
 import 'public_profile_screen.dart' show openPublicProfile;
 import 'widgets/clan_tab.dart';
+import 'widgets/top_clan_tab.dart';
 import '../../core/widgets/app_loading.dart';
 
 class LeaderboardScreen extends ConsumerWidget {
@@ -20,7 +21,7 @@ class LeaderboardScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         backgroundColor: context.palette.background,
         appBar: AppBar(
@@ -32,12 +33,14 @@ class LeaderboardScreen extends ConsumerWidget {
             ],
           ),
           bottom: TabBar(
+            isScrollable: true,
             labelColor: context.palette.primaryCoral,
             unselectedLabelColor: context.palette.textNavy,
             indicatorColor: context.palette.primaryCoral,
             tabs: [
               Tab(text: s.tabGlobalScore),
               Tab(text: s.tabClan),
+              Tab(text: s.tabTopClan),
             ],
           ),
         ),
@@ -45,6 +48,7 @@ class LeaderboardScreen extends ConsumerWidget {
           children: [
             _GlobalScoreTab(),
             ClanTab(),
+            TopClanTab(),
           ],
         ),
       ),

@@ -21,6 +21,10 @@ class FirestorePaths {
   static const clans = 'clans';
   static const clanMembers = 'members';
   static const clanMemberships = 'clanMemberships';
+  static const clanInvites = 'clanInvites';
+  static const clanMessages = 'messages';
+  static const blockedClanUsers = 'blockedClanUsers';
+  static const messageReports = 'messageReports';
 
   static const fieldProfile = 'profile';
   static const fieldProgress = 'progress';
@@ -57,4 +61,10 @@ class FirestorePaths {
       '$clans/$code/$clanMembers';
   static String clanMembershipsCollection(String uid) =>
       '$users/$uid/$clanMemberships';
+  static String clanInvitesCollection(String uid) =>
+      '$users/$uid/$clanInvites';
+  static String clanMessagesCollection(String code) =>
+      '$clans/$code/$clanMessages';
+  static String blockedClanUsersCollection(String uid) =>
+      '$users/$uid/$blockedClanUsers';
 }

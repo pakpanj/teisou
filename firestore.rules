@@ -32,25 +32,120 @@ service cloud.firestore {
     // ranking anggota). Membuat clan hanya boleh kalau hostUid == diri
     // sendiri. Mengubah dokumen clan setelah dibuat hanya boleh oleh host
     // (mis. nanti kalau ada fitur rename), KECUALI perubahan yang hanya
-    // menyentuh `memberCount` — itu yang dilakukan siapa pun saat
-    // join/leaveClan menaikkan/menurunkan hitungan anggota.
+    // menyentuh `memberCount`/`totalScore` — keduanya boleh ditulis siapa
+    // saja yang login (bukan cuma anggota clan itu), mengikuti pola yang
+    // sudah ada untuk `memberCount` sebelum fitur ini: kepercayaan yang
+    // sama seperti `leaderboard/{uid}.globalScore`, yang juga bisa ditulis
+    // apa saja oleh pemiliknya tanpa validasi server-side atas angka yang
+    // ditulis. Tidak ada Cloud Functions di proyek ini untuk memvalidasi
+    // agregat semacam ini, jadi ini kelonggaran yang sudah diterima
+    // desainnya, bukan celah baru.
     match /clans/{code} {
       allow read: if request.auth != null;
       allow create: if request.auth != null
           && request.resource.data.hostUid == request.auth.uid;
       allow update: if request.auth != null
           && (resource.data.hostUid == request.auth.uid
-              || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['memberCount']));
+              || request.resource.data.diff(resource.data).affectedKeys()
+                  .hasOnly(['memberCount', 'totalScore']));
       allow delete: if request.auth != null && resource.data.hostUid == request.auth.uid;
 
-      // Roster — siapa saja yang login bisa baca daftar anggota, tapi
-      // setiap orang hanya bisa menulis/menghapus baris miliknya sendiri
-      // (uid dokumen == uid yang login) — mencegah orang lain mendaftarkan
-      // atau mengeluarkan anggota atas nama orang lain.
+      // Roster — siapa saja yang login bisa baca daftar anggota. Menulis
+      // baris sendiri selalu boleh (join, atau sinkron nama/avatar).
+      // Mengubah baris ORANG LAIN hanya boleh leader, dan hanya field
+      // `role` (promosi/turunkan co-leader) — leadership sendiri (siapa
+      // host) tidak bisa diubah lewat sini. Menghapus baris orang lain
+      // (tendang) boleh leader (siapa saja kecuali dirinya sendiri) atau
+      // co-leader (hanya anggota biasa, bukan leader/co-leader lain).
       match /members/{memberUid} {
         allow read: if request.auth != null;
         allow write: if request.auth != null && request.auth.uid == memberUid;
+        allow update: if request.auth != null
+            && request.auth.uid != memberUid
+            && actorRole(code, request.auth.uid) == 'leader'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role']);
+        allow delete: if request.auth != null
+            && request.auth.uid != memberUid
+            && canKick(code, request.auth.uid, memberUid);
       }
+
+      // Chat clan — beda dari roster/leaderboard di atas, ini SENGAJA
+      // dibatasi ketat: hanya anggota clan itu sendiri yang boleh baca
+      // atau menulis (bukan siapa saja yang login), karena ini isi pesan
+      // sungguhan, bukan sekadar angka skor. Tidak ada update/delete sama
+      // sekali — pesan tidak bisa diedit atau dihapus setelah terkirim,
+      // supaya pesan yang sudah dilaporkan tidak bisa diam-diam diubah.
+      match /messages/{messageId} {
+        allow read: if request.auth != null && isClanMember(code, request.auth.uid);
+        allow create: if request.auth != null
+            && isClanMember(code, request.auth.uid)
+            && request.resource.data.senderUid == request.auth.uid
+            && request.resource.data.text is string
+            && request.resource.data.text.size() > 0
+            && request.resource.data.text.size() <= 300;
+      }
+    }
+
+    // Undangan clan — hanya pemiliknya (target undangan) yang bisa baca/
+    // menjawabnya, lewat wildcard `users/{uid}/{document=**}` di atas.
+    // Blok ini menambah SATU izin baru: leader/co-leader boleh MEMBUAT
+    // undangan di bawah user lain (bukan dirinya sendiri), yang tidak
+    // dicakup wildcard itu karena `request.auth.uid != targetUid` di sini.
+    match /users/{targetUid}/clanInvites/{inviteId} {
+      allow create: if request.auth != null
+          && request.resource.data.invitedByUid == request.auth.uid
+          && (actorRole(request.resource.data.code, request.auth.uid) == 'leader'
+              || actorRole(request.resource.data.code, request.auth.uid) == 'coLeader');
+    }
+
+    // Sama seperti undangan di atas: wildcard `users/{uid}/{document=**}`
+    // sudah mengizinkan pemilik menghapus keanggotaannya sendiri (keluar
+    // clan). Blok ini menambah izin bagi leader/co-leader yang MENENDANG
+    // orang lain untuk juga menghapus baris reverse-index milik target —
+    // tanpa ini, target yang ditendang tetap melihat clan itu di daftar
+    // "clan saya" sendiri walau baris rosternya sudah dihapus.
+    match /users/{targetUid}/clanMemberships/{code} {
+      allow delete: if request.auth != null
+          && canKick(code, request.auth.uid, targetUid);
+    }
+
+    // Peran (role) satu anggota di satu clan — 'leader'/'coLeader'/'member'.
+    // Baris lama yang ditulis sebelum field `role` ada dianggap 'leader'
+    // kalau uid-nya cocok dengan `hostUid` clan itu, 'member' kalau tidak —
+    // supaya clan yang sudah ada sebelum fitur ini tidak mendadak
+    // kehilangan siapa leadernya.
+    function isClanMember(code, uid) {
+      return exists(/databases/$(database)/documents/clans/$(code)/members/$(uid));
+    }
+
+    function actorRole(code, uid) {
+      let memberPath = /databases/$(database)/documents/clans/$(code)/members/$(uid);
+      let memberData = get(memberPath).data;
+      return ('role' in memberData)
+          ? memberData.role
+          : (uid == get(/databases/$(database)/documents/clans/$(code)).data.hostUid
+              ? 'leader' : 'member');
+    }
+
+    // Leader boleh menendang siapa saja kecuali dirinya sendiri (menendang
+    // diri sendiri berarti keluar clan, jalur yang berbeda). Co-leader
+    // hanya boleh menendang anggota biasa — tidak leader, tidak co-leader
+    // lain — supaya sesama co-leader tidak bisa saling menendang.
+    function canKick(code, actorUid, targetUid) {
+      let actor = actorRole(code, actorUid);
+      let target = actorRole(code, targetUid);
+      return (actor == 'leader' && actorUid != targetUid)
+          || (actor == 'coLeader' && target == 'member');
+    }
+
+    // Laporan pesan chat clan — tulis-saja dari sisi user, sengaja tidak
+    // ada allow read/update/delete untuk user biasa sama sekali. Aplikasi
+    // ini tidak punya panel admin, jadi laporan hanya bisa ditinjau manual
+    // lewat Firebase Console — ini batas jujur dari apa yang bisa didukung
+    // proyek ini sekarang, bukan fitur peninjauan yang belum selesai.
+    match /messageReports/{reportId} {
+      allow create: if request.auth != null
+          && request.resource.data.reporterUid == request.auth.uid;
     }
 
     function isAllowedAvatarWrite() {

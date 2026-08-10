@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../core/firebase/firestore_paths.dart';
 import '../models/clan.dart';
+import '../models/clan_invite.dart';
 import '../models/clan_member.dart';
 import '../models/clan_membership.dart';
 import '../models/user_profile.dart' show AvatarType, AvatarTypeX;
@@ -38,6 +39,12 @@ class ClanRepository {
           .collection(FirestorePaths.users)
           .doc(uid)
           .collection(FirestorePaths.clanMemberships);
+
+  CollectionReference<Map<String, dynamic>> _invitesOf(String uid) =>
+      _firestore
+          .collection(FirestorePaths.users)
+          .doc(uid)
+          .collection(FirestorePaths.clanInvites);
 
   String _generateCode() => List.generate(
         _codeLength,
@@ -78,6 +85,7 @@ class ClanRepository {
         photoUrl: photoUrl,
         avatarType: avatarType,
         avatarValue: avatarValue,
+        role: ClanRole.leader,
         joinedAt: now,
       );
       final membership =
@@ -172,10 +180,19 @@ class ClanRepository {
   /// One-shot fetch, not a live stream — a clan's roster can run into the
   /// dozens/hundreds for a whole school, and the ranking screen re-fetches
   /// on tab visit rather than holding that many realtime listeners open.
+  ///
+  /// Reads the clan doc first purely to pass `hostUid` into
+  /// `ClanMember.fromMap`'s legacy-role fallback — a row written before the
+  /// `role` field existed still resolves to `leader` correctly for the
+  /// host, `member` for everyone else, instead of every pre-existing row
+  /// silently defaulting to `member`.
   Future<List<ClanMember>> getMembersOnce(String code) async {
-    final snapshot = await _membersOf(code.trim().toUpperCase()).get();
+    final normalizedCode = code.trim().toUpperCase();
+    final clanDoc = await _clans.doc(normalizedCode).get();
+    final hostUid = clanDoc.data()?['hostUid'] as String?;
+    final snapshot = await _membersOf(normalizedCode).get();
     return snapshot.docs
-        .map((doc) => ClanMember.fromMap(doc.id, doc.data()))
+        .map((doc) => ClanMember.fromMap(doc.id, doc.data(), hostUid: hostUid))
         .toList();
   }
 
@@ -223,5 +240,149 @@ class ClanRepository {
       );
     }
     await batch.commit();
+  }
+
+  /// Promotes [targetUid] to co-leader or demotes them back to a plain
+  /// member. Only the clan's leader may call this — enforced server-side
+  /// by `firestore.rules`' `isClanLeader`, not just by the UI only showing
+  /// the button to a leader, since a raw Firestore write could otherwise
+  /// bypass a client-only check. The leader role itself is never granted
+  /// or removed this way; it's fixed to `Clan.hostUid` for this clan's
+  /// lifetime (no host-transfer feature — see the class doc comment).
+  Future<void> setMemberRole({
+    required String code,
+    required String targetUid,
+    required ClanRole role,
+  }) {
+    assert(role != ClanRole.leader, 'leadership is not reassignable');
+    return _membersOf(code.trim().toUpperCase())
+        .doc(targetUid)
+        .set({'role': role.key}, SetOptions(merge: true));
+  }
+
+  /// Removes [targetUid] from [code] on someone else's behalf — a leader
+  /// may kick anyone but themself, a co-leader may kick only a plain
+  /// member (never the leader or another co-leader). Both rules are
+  /// re-checked server-side by `firestore.rules`' `canKick`; this method
+  /// does not itself decide who's allowed, only performs the removal once
+  /// the write is permitted.
+  ///
+  /// Mirrors [leaveClan]'s batch shape exactly (roster row + the target's
+  /// own reverse-index entry + the member-count decrement) since a kick is
+  /// functionally "someone else initiates your leaveClan" — the target's
+  /// `clanMemberships/{code}` row would otherwise survive the kick and
+  /// keep showing this clan in their own "pilih clan" picker forever, with
+  /// no membership left to back it.
+  Future<void> kickMember({
+    required String code,
+    required String targetUid,
+  }) async {
+    final normalizedCode = code.trim().toUpperCase();
+    final batch = _firestore.batch();
+    batch.delete(_membersOf(normalizedCode).doc(targetUid));
+    batch.delete(_membershipsOf(targetUid).doc(normalizedCode));
+    batch.update(_clans.doc(normalizedCode), {
+      'memberCount': FieldValue.increment(-1),
+    });
+    await batch.commit();
+  }
+
+  /// Sends a clan invite to [targetUid], found via
+  /// `LeaderboardRepository.searchPublicUsers`. Refuses a target who's
+  /// already a member (no point inviting them again) — everything past
+  /// that is left to `firestore.rules`' `isClanLeaderOrCoLeader` check on
+  /// the actual write, which is the one that matters since this method's
+  /// own guard is just a client-side head start, not the real gate.
+  Future<void> sendInvite({
+    required String code,
+    required String clanName,
+    required String targetUid,
+    required String invitedByUid,
+    required String invitedByName,
+  }) async {
+    final normalizedCode = code.trim().toUpperCase();
+    final alreadyMember =
+        await _membersOf(normalizedCode).doc(targetUid).get();
+    if (alreadyMember.exists) {
+      throw StateError('Learner ini sudah ada di dalam clan.');
+    }
+
+    final invite = ClanInvite(
+      id: '',
+      code: normalizedCode,
+      clanName: clanName,
+      invitedByUid: invitedByUid,
+      invitedByName: invitedByName,
+      createdAt: DateTime.now(),
+    );
+    await _invitesOf(targetUid).add(invite.toMap());
+  }
+
+  /// Live, and deliberately scoped to `status == pending` server-side —
+  /// once a learner has answered an invite there's nothing left to act on,
+  /// so there's no reason to keep streaming resolved ones down to a screen
+  /// that only ever renders the pending list.
+  Stream<List<ClanInvite>> watchMyInvites(String uid) {
+    return _invitesOf(uid)
+        .where('status', isEqualTo: ClanInviteStatus.pending.key)
+        .orderBy('createdAt', descending: true)
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => ClanInvite.fromMap(doc.id, doc.data()))
+              .toList(),
+        );
+  }
+
+  /// Accepts or declines [invite]. Accepting reuses [joinClan] itself
+  /// (same no-op-if-already-a-member guard, same batch shape) rather than
+  /// duplicating its join logic — an invite is just one more way to learn
+  /// a join code, not a different membership mechanism.
+  Future<void> respondToInvite({
+    required String uid,
+    required ClanInvite invite,
+    required bool accept,
+    required String displayName,
+    String? photoUrl,
+    AvatarType avatarType = AvatarType.google,
+    String? avatarValue,
+  }) async {
+    if (accept) {
+      await joinClan(
+        code: invite.code,
+        uid: uid,
+        displayName: displayName,
+        photoUrl: photoUrl,
+        avatarType: avatarType,
+        avatarValue: avatarValue,
+      );
+    }
+    await _invitesOf(uid).doc(invite.id).set({
+      'status': (accept ? ClanInviteStatus.accepted : ClanInviteStatus.declined)
+          .key,
+    }, SetOptions(merge: true));
+  }
+
+  /// Refreshes [code]'s [Clan.totalScore] to [value] — see that field's own
+  /// doc comment for why this is a self-heal-on-read update (called from
+  /// `clanRankingProvider` after it already fetched every member's live
+  /// score) rather than a live increment on every exam.
+  Future<void> updateTotalScore(String code, double value) {
+    return _clans
+        .doc(code.trim().toUpperCase())
+        .set({'totalScore': value}, SetOptions(merge: true));
+  }
+
+  /// Top 100 clans by [Clan.totalScore] — the cross-clan counterpart to
+  /// `leaderboardTopProvider`'s top-20-individuals ranking.
+  Stream<List<Clan>> watchTopClans({int limit = 100}) {
+    return _clans
+        .orderBy('totalScore', descending: true)
+        .limit(limit)
+        .snapshots()
+        .map(
+          (snapshot) =>
+              snapshot.docs.map((doc) => Clan.fromMap(doc.id, doc.data())).toList(),
+        );
   }
 }

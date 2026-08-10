@@ -2,7 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../data/models/clan.dart';
+import '../../data/models/clan_invite.dart';
+import '../../data/models/clan_member.dart';
 import '../../data/models/clan_membership.dart';
+import '../../data/models/clan_message.dart';
 import '../../data/models/leaderboard_entry.dart';
 
 /// Live — one user's own clan memberships, small enough to keep streaming
@@ -55,5 +58,70 @@ final clanRankingProvider =
       )
       .toList();
 
+  // Self-heals Clan.totalScore (the Top Clan sort key) the same way
+  // selfLeaderboardEntryProvider self-heals globalScore — a write from a
+  // read-shaped provider, best-effort, so simply opening a clan's own
+  // ranking keeps its Top Clan standing current without a live increment
+  // on every single exam across every member's every clan.
+  try {
+    final totalScore = combined.fold<double>(
+      0,
+      (sum, entry) => sum + entry.computedGlobalScore,
+    );
+    await clanRepository.updateTotalScore(code, totalScore);
+  } catch (_) {
+    // Ranking itself is still perfectly usable; the next open retries.
+  }
+
   return leaderboardRepository.sortByGlobalScore(combined);
+});
+
+/// Raw roster with each member's [ClanRole] — unlike [clanRankingProvider],
+/// which merges in live leaderboard data for scoring, this is what
+/// role-aware UI (promote/demote/kick) needs, since `LeaderboardEntry`
+/// carries no role at all. One-shot, refreshed the same way the ranking
+/// screen refreshes: on tab re-entry or pull-to-refresh.
+final clanMembersProvider =
+    FutureProvider.family<List<ClanMember>, String>((ref, code) {
+  return ref.watch(clanRepositoryProvider).getMembersOnce(code);
+});
+
+/// The signed-in user's own [ClanRole] in [code], or `null` if they're not
+/// a member at all (shouldn't normally happen for a clan they can see the
+/// ranking of, but a role check has to handle it rather than assume).
+final myRoleInClanProvider =
+    FutureProvider.family<ClanRole?, String>((ref, code) async {
+  final user = await ref.watch(appStartupProvider.future);
+  final members = await ref.watch(clanMembersProvider(code).future);
+  for (final member in members) {
+    if (member.uid == user.uid) return member.role;
+  }
+  return null;
+});
+
+/// Live — small (one user's own pending invites), so the "kamu punya N
+/// undangan" strip and the Join dialog's alternative path both update the
+/// instant someone accepts/declines/receives a new one.
+final myPendingInvitesProvider = StreamProvider<List<ClanInvite>>((ref) async* {
+  final user = await ref.watch(appStartupProvider.future);
+  yield* ref.watch(clanRepositoryProvider).watchMyInvites(user.uid);
+});
+
+/// Top 100 clans by [Clan.totalScore] — the cross-clan counterpart to
+/// `leaderboardTopProvider`'s top-20-individuals ranking.
+final topClansProvider = StreamProvider<List<Clan>>((ref) {
+  return ref.watch(clanRepositoryProvider).watchTopClans();
+});
+
+/// Live — the signed-in user's own block list, across every clan (a block
+/// is a per-person decision, not scoped to one clan chat).
+final myBlockedUsersProvider = StreamProvider<Set<String>>((ref) async* {
+  final user = await ref.watch(appStartupProvider.future);
+  yield* ref.watch(clanMessageRepositoryProvider).watchBlockedUsers(user.uid);
+});
+
+/// Live — the last 100 messages in [code]'s clan chat, oldest first.
+final clanMessagesProvider =
+    StreamProvider.family<List<ClanMessage>, String>((ref, code) {
+  return ref.watch(clanMessageRepositoryProvider).watchMessages(code);
 });
