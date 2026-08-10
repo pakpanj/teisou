@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/constants/covers.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/bab_entry.dart';
@@ -252,6 +253,14 @@ class _LevelProgressRow extends ConsumerWidget {
 
 }
 
+/// Header of [PublicProfileScreen] — the other learner's own picked
+/// [entry.coverId] behind everything (falling back to [CoverPresets.
+/// fallback] the same way their own Profile header does when they've
+/// never picked one), a scrim so text stays legible over any cover, and
+/// [LeaderboardAvatar] carrying their frame on top — connecting what a
+/// visitor sees here to the exact cover/frame [entry]'s owner set on their
+/// own Profile tab (`ProfileScreen`'s `_HeaderCard`), instead of the flat
+/// coral card this used to be.
 class _IdentityCard extends ConsumerWidget {
   final LeaderboardEntry entry;
 
@@ -260,53 +269,68 @@ class _IdentityCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
+    final cover = CoverPresets.byId(entry.coverId) ?? CoverPresets.fallback;
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: context.palette.primaryCoral.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: context.palette.primaryCoral.withValues(alpha: 0.3),
-        ),
-      ),
-      child: Column(
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Stack(
         children: [
-          LeaderboardAvatar(entry: entry, size: 72),
-          const SizedBox(height: 12),
-          Text(
-            entry.displayName,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: context.palette.textNavy,
-            ),
-          ),
-          if (entry.userId != null)
-            Text(
-              s.userIdLabel(entry.userId!),
-              style: TextStyle(
-                fontSize: 12,
-                letterSpacing: 1,
-                color: context.palette.textNavy.withValues(alpha: 0.5),
+          Positioned.fill(
+            child: LayoutBuilder(
+              builder: (context, constraints) => CoverArt(
+                preset: cover,
+                width: constraints.maxWidth,
+                height: constraints.maxHeight,
               ),
             ),
-          const SizedBox(height: 4),
-          Text(
-            globalScoreLabel(entry, s),
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: context.palette.primaryCoral,
+          ),
+          Positioned.fill(
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: context.palette.headerScrim),
             ),
           ),
-          Text(
-            s.tabGlobalScore,
-            style: TextStyle(
-              fontSize: 12,
-              color: context.palette.textNavy.withValues(alpha: 0.6),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                LeaderboardAvatar(entry: entry, size: 72),
+                const SizedBox(height: 12),
+                Text(
+                  entry.displayName,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: context.palette.textNavy,
+                  ),
+                ),
+                if (entry.userId != null)
+                  Text(
+                    s.userIdLabel(entry.userId!),
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1,
+                      color: context.palette.textNavy.withValues(alpha: 0.6),
+                    ),
+                  ),
+                const SizedBox(height: 4),
+                Text(
+                  globalScoreLabel(entry, s),
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: context.palette.primaryCoral,
+                  ),
+                ),
+                Text(
+                  s.tabGlobalScore,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: context.palette.textNavy.withValues(alpha: 0.6),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

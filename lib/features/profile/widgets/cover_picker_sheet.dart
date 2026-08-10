@@ -52,6 +52,13 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
       );
       return;
     }
+    // Best-effort — the cover itself already saved successfully above, so
+    // a hiccup publishing it to the leaderboard must not surface as a
+    // failure. Lets other learners' PublicProfileScreen show the same
+    // cover this account's own Profile header now does.
+    try {
+      await ref.read(leaderboardRepositoryProvider).updateCoverId(uid, coverId);
+    } catch (_) {}
     if (consumeReward) {
       // Best-effort only — the cover itself already saved successfully
       // above, so a hiccup here must not surface as a failure.

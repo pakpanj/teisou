@@ -121,6 +121,74 @@ service cloud.firestore {
           && canKick(code, request.auth.uid, targetUid);
     }
 
+    // Permintaan pertemanan — hanya pemiliknya (target) yang bisa membaca/
+    // menjawabnya, lewat wildcard `users/{uid}/{document=**}` di atas. Blok
+    // ini menambah SATU izin baru: siapa saja yang login boleh MEMBUAT
+    // permintaan di bawah user lain (bukan dirinya sendiri), asalkan
+    // `fromUid` di dalam datanya cocok dengan identitas si pengirim —
+    // itulah yang mencegah seseorang membuat permintaan atas nama orang
+    // lain. Tidak ada validasi "belum berteman"/"belum ada permintaan
+    // pending" di sini secara sengaja — itu cuma pengecekan awal di sisi
+    // client (`FriendRepository.sendFriendRequest`); yang paling buruk
+    // kalau dilewati cuma dokumen permintaan ganda, bukan celah keamanan.
+    match /users/{targetUid}/friendRequests/{requestId} {
+      allow create: if request.auth != null
+          && request.auth.uid != targetUid
+          && request.resource.data.fromUid == request.auth.uid;
+    }
+
+    // Daftar teman — setiap baris `friends/{friendUid}` merepresentasikan
+    // SATU orang (uid dokumennya). Siapa saja yang login boleh menulis
+    // barisnya SENDIRI di dalam koleksi `friends` milik SIAPA SAJA (bukan
+    // cuma miliknya sendiri) — inilah yang memungkinkan dua alur: (1) saat
+    // menerima permintaan pertemanan, penerima menulis baris dirinya
+    // sendiri ke dalam `friends` milik si pengirim (begitu juga
+    // sebaliknya, dua tulisan sekaligus dalam satu batch); (2) saat
+    // menghapus pertemanan, masing-masing pihak menghapus barisnya sendiri
+    // dari koleksi `friends` milik pihak lain. Baris milik SENDIRI di
+    // dalam koleksi `friends` milik diri sendiri sudah dicakup wildcard
+    // `users/{uid}/{document=**}` di atas — blok ini murni menambah izin
+    // untuk menyentuh koleksi `friends` milik ORANG LAIN, dan hanya baris
+    // yang mewakili diri sendiri, tidak pernah baris pihak ketiga.
+    match /users/{otherUid}/friends/{friendUid} {
+      allow write: if request.auth != null && request.auth.uid == friendUid;
+    }
+
+    // Chat pribadi 1:1 antar teman — beda dari chat clan (yang cukup
+    // sama-sama anggota clan), ini mensyaratkan pertemanan yang sudah
+    // disetujui KEDUA belah pihak (lihat isFriend di bawah), dicek ulang
+    // setiap kali baca/tulis, bukan cuma sekali saat percakapan dibuat.
+    // Jadi begitu salah satu pihak menghapus pertemanan, percakapan lama
+    // langsung tidak bisa diakses lagi oleh siapa pun — bukan cuma
+    // disembunyikan di sisi client seperti blokir di chat clan.
+    match /directMessages/{conversationId} {
+      allow read: if request.auth != null
+          && request.auth.uid in resource.data.participants;
+      allow create: if request.auth != null
+          && request.resource.data.participants is list
+          && request.resource.data.participants.size() == 2
+          && request.auth.uid in request.resource.data.participants
+          && isFriend(request.resource.data.participants[0],
+              request.resource.data.participants[1]);
+      allow update: if request.auth != null
+          && request.auth.uid in resource.data.participants;
+
+      match /messages/{messageId} {
+        allow read: if request.auth != null
+            && request.auth.uid in get(/databases/$(database)/documents/directMessages/$(conversationId)).data.participants;
+        allow create: if request.auth != null
+            && request.auth.uid in get(/databases/$(database)/documents/directMessages/$(conversationId)).data.participants
+            && request.resource.data.senderUid == request.auth.uid
+            && request.resource.data.text is string
+            && request.resource.data.text.size() > 0
+            && request.resource.data.text.size() <= 300;
+      }
+    }
+
+    function isFriend(a, b) {
+      return exists(/databases/$(database)/documents/users/$(a)/friends/$(b));
+    }
+
     // Peran (role) satu anggota di satu clan — 'leader'/'coLeader'/'member'.
     // Baris lama yang ditulis sebelum field `role` ada dianggap 'leader'
     // kalau uid-nya cocok dengan `hostUid` clan itu, 'member' kalau tidak —

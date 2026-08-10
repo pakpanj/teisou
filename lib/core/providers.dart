@@ -25,10 +25,12 @@ import '../data/repositories/choukai_repository.dart';
 import '../data/repositories/clan_message_repository.dart';
 import '../data/repositories/clan_repository.dart';
 import '../data/repositories/dictionary_repository.dart';
+import '../data/repositories/direct_message_repository.dart';
 import '../data/repositories/dokkai_level_repository.dart';
 import '../data/repositories/dokkai_repository.dart';
 import '../data/repositories/exam_history_repository.dart';
 import '../data/repositories/exam_repository.dart';
+import '../data/repositories/friend_repository.dart';
 import '../data/repositories/kanji_combo_repository.dart';
 import '../data/repositories/kaiwa_category_repository.dart';
 import '../data/repositories/kaiwa_level_repository.dart';
@@ -200,6 +202,12 @@ final clanRepositoryProvider = Provider<ClanRepository>(
 );
 final clanMessageRepositoryProvider = Provider<ClanMessageRepository>(
   (ref) => ClanMessageRepository(),
+);
+final friendRepositoryProvider = Provider<FriendRepository>(
+  (ref) => FriendRepository(),
+);
+final directMessageRepositoryProvider = Provider<DirectMessageRepository>(
+  (ref) => DirectMessageRepository(),
 );
 final examRepositoryProvider = Provider<ExamRepository>(
   (ref) => ExamRepository(

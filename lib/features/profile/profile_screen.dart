@@ -367,8 +367,9 @@ class _UserIdChip extends StatelessWidget {
             strings.userIdLabel(userId),
             style: TextStyle(
               fontSize: 12,
+              fontWeight: FontWeight.bold,
               letterSpacing: 1,
-              color: context.palette.textNavy.withValues(alpha: 0.6),
+              color: context.palette.textNavy.withValues(alpha: 0.75),
             ),
           ),
         ),

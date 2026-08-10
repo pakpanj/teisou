@@ -61,6 +61,20 @@ class LeaderboardEntry {
   /// pattern already exists for exactly this shape of gap.
   final String? userId;
 
+  /// Mirror of `UserProfile.coverId`/`frameId` — the profile header cover
+  /// and avatar frame the learner picked in `CoverPickerSheet`/
+  /// `AvatarPickerSheet`. Published here (via
+  /// `LeaderboardRepository.updateCoverId`/`updateFrameId`, called
+  /// best-effort right after each picker saves) so `PublicProfileScreen`
+  /// and `LeaderboardAvatar` can show them without needing read access to
+  /// the private `users/{uid}` document — same reasoning as [userId] and
+  /// [babCompletedCount] below. Unlike those, both can change repeatedly
+  /// over an account's lifetime (a picked cover/frame isn't permanent the
+  /// way an id is), so they're written directly rather than through a
+  /// once-only backfill.
+  final String? coverId;
+  final String? frameId;
+
   /// Public summary of the learner's Bab curriculum progress: how many
   /// chapters they've completed, and the `order` of the furthest one.
   ///
@@ -103,6 +117,8 @@ class LeaderboardEntry {
     this.globalScore,
     this.displayNameLower,
     this.userId,
+    this.coverId,
+    this.frameId,
     this.babCompletedCount = 0,
     this.babHighestOrder = 0,
     required this.updatedAt,
@@ -132,6 +148,8 @@ class LeaderboardEntry {
       globalScore: (map['globalScore'] as num?)?.toDouble(),
       displayNameLower: map['displayNameLower'] as String?,
       userId: map['userId'] as String?,
+      coverId: map['coverId'] as String?,
+      frameId: map['frameId'] as String?,
       babCompletedCount: (map['babCompletedCount'] as num?)?.toInt() ?? 0,
       babHighestOrder: (map['babHighestOrder'] as num?)?.toInt() ?? 0,
       updatedAt: _toDateTime(map['updatedAt']) ?? DateTime.now(),
@@ -160,6 +178,8 @@ class LeaderboardEntry {
         'kanjiComboRecordCount': kanjiComboRecordCount,
         'kanjiComboRecordAvg': kanjiComboRecordAvg,
         'globalScore': globalScore ?? computedGlobalScore,
+        'coverId': coverId,
+        'frameId': frameId,
         'babCompletedCount': babCompletedCount,
         'babHighestOrder': babHighestOrder,
         'updatedAt': Timestamp.fromDate(updatedAt),

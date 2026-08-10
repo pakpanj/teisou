@@ -5,37 +5,30 @@ import '../../../core/localization/app_strings.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/leaderboard_entry.dart';
+import '../../../data/models/user_profile.dart' show AvatarType;
 import '../leaderboard_screen.dart' show LeaderboardAvatar, globalScoreLabel;
 
-/// Search the public leaderboard by name and send a clan invite — the
-/// leader/co-leader path for "mengundang user public" (inviting a specific
-/// learner directly, as opposed to just handing out the join code, which
-/// stays available too via `CreateClanDialog`'s share-code flow).
+/// Search the public leaderboard by name or exact unique id and send a
+/// friend request — the "personal friend" counterpart to
+/// `SearchInviteScreen`'s clan-invite flow, same search
+/// (`LeaderboardRepository.searchPublicUsers`), different action.
 ///
-/// Deliberately a plain name search, not a live-invite-status list — an
-/// invite's own success/failure is reported per tap via a SnackBar, and
-/// `myPendingInvitesProvider` is what the *invited* learner watches to see
-/// it; this screen has no reason to track who's already been invited.
-class SearchInviteScreen extends ConsumerStatefulWidget {
-  final String code;
-  final String clanName;
-
-  const SearchInviteScreen({
-    super.key,
-    required this.code,
-    required this.clanName,
-  });
+/// Requiring the target to actively accept a request before any chat opens
+/// is what keeps this different from open messaging — see
+/// `DirectMessageRepository`'s doc comment for the full reasoning.
+class SearchFriendScreen extends ConsumerStatefulWidget {
+  const SearchFriendScreen({super.key});
 
   @override
-  ConsumerState<SearchInviteScreen> createState() =>
-      _SearchInviteScreenState();
+  ConsumerState<SearchFriendScreen> createState() =>
+      _SearchFriendScreenState();
 }
 
-class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
+class _SearchFriendScreenState extends ConsumerState<SearchFriendScreen> {
   final _controller = TextEditingController();
   List<LeaderboardEntry>? _results;
   bool _searching = false;
-  final Set<String> _invitedUids = {};
+  final Set<String> _sentUids = {};
 
   @override
   void dispose() {
@@ -56,39 +49,45 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
         .searchPublicUsers(trimmed);
     if (!mounted) return;
     setState(() {
-      // Can't invite yourself.
+      // Can't friend yourself.
       _results = results.where((e) => e.uid != myUid).toList();
       _searching = false;
     });
   }
 
-  Future<void> _invite(LeaderboardEntry target) async {
+  Future<void> _sendRequest(LeaderboardEntry target) async {
     final s = ref.read(appStringsProvider);
     final user = ref.read(appStartupProvider).valueOrNull;
     final profile = ref.read(userProfileProvider).valueOrNull;
     if (user == null) return;
 
     try {
-      await ref.read(clanRepositoryProvider).sendInvite(
-            code: widget.code,
-            clanName: widget.clanName,
-            targetUid: target.uid,
-            invitedByUid: user.uid,
-            invitedByName: profile?.resolveDisplayName(user) ??
+      await ref.read(friendRepositoryProvider).sendFriendRequest(
+            fromUid: user.uid,
+            fromName: profile?.resolveDisplayName(user) ??
                 (user.displayName ?? s.defaultLearnerName),
+            fromPhotoUrl: user.photoURL,
+            fromAvatarType: profile?.avatarType ?? AvatarType.google,
+            fromAvatarValue: profile?.avatarValue,
+            targetUid: target.uid,
           );
       if (!mounted) return;
-      setState(() => _invitedUids.add(target.uid));
+      setState(() => _sentUids.add(target.uid));
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(s.inviteSent)));
-    } on StateError {
+          .showSnackBar(SnackBar(content: Text(s.friendRequestSent)));
+    } on StateError catch (e) {
       if (!mounted) return;
+      final message = e.message == 'already_friend'
+          ? s.alreadyFriendError
+          : e.message == 'already_pending'
+              ? s.friendRequestAlreadySentError
+              : s.friendRequestSendFailed;
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(s.alreadyMemberError)));
+          .showSnackBar(SnackBar(content: Text(message)));
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(s.inviteSendFailed)));
+          .showSnackBar(SnackBar(content: Text(s.friendRequestSendFailed)));
     }
   }
 
@@ -99,7 +98,7 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: Text(s.inviteMember)),
+      appBar: AppBar(title: Text(s.searchFriendTitle)),
       body: Column(
         children: [
           Padding(
@@ -112,7 +111,7 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
                 if (value.trim().isEmpty) setState(() => _results = null);
               },
               decoration: InputDecoration(
-                hintText: s.searchUserHint,
+                hintText: s.searchFriendHint,
                 border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.search),
@@ -128,7 +127,7 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(24),
                       child: Text(
-                        s.searchUserEmpty,
+                        s.searchFriendEmpty,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: context.palette.textNavy.withValues(alpha: 0.6),
@@ -149,7 +148,7 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
                         separatorBuilder: (_, _) => const SizedBox(height: 8),
                         itemBuilder: (context, index) {
                           final entry = results[index];
-                          final invited = _invitedUids.contains(entry.uid);
+                          final sent = _sentUids.contains(entry.uid);
                           return Material(
                             color: context.palette.cardWhite,
                             borderRadius: BorderRadius.circular(16),
@@ -175,16 +174,19 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
                                             color: context.palette.textNavy,
                                           ),
                                         ),
-                                        _ResultSubtitle(entry: entry, strings: s),
+                                        _SearchResultSubtitle(
+                                          entry: entry,
+                                          strings: s,
+                                        ),
                                       ],
                                     ),
                                   ),
-                                  invited
+                                  sent
                                       ? Icon(Icons.check_circle,
                                           color: context.palette.successGreen)
                                       : OutlinedButton(
-                                          onPressed: () => _invite(entry),
-                                          child: Text(s.inviteButton),
+                                          onPressed: () => _sendRequest(entry),
+                                          child: Text(s.sendFriendRequestButton),
                                         ),
                                 ],
                               ),
@@ -199,17 +201,15 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
   }
 }
 
-/// A search result's second line: the global score, plus the unique id in
-/// **bold** when present — many accounts share the exact same display name
-/// (every learner who never set a custom one defaults to "Pelajar Kana"),
-/// so the id is the one thing that actually disambiguates them and is
-/// worth making visually obvious rather than blending into the rest of the
-/// line at the same weight.
-class _ResultSubtitle extends StatelessWidget {
+/// Mirrors `search_invite_screen.dart`'s own `_ResultSubtitle` — kept as a
+/// separate small copy rather than a shared export, since the two screens'
+/// result rows are otherwise unrelated and this is the only piece either
+/// would need from the other.
+class _SearchResultSubtitle extends StatelessWidget {
   final LeaderboardEntry entry;
   final AppStrings strings;
 
-  const _ResultSubtitle({required this.entry, required this.strings});
+  const _SearchResultSubtitle({required this.entry, required this.strings});
 
   @override
   Widget build(BuildContext context) {

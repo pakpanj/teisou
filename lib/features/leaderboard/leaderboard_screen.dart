@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/avatars.dart';
+import '../../core/constants/frames.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
@@ -11,6 +12,7 @@ import '../../data/models/user_profile.dart' show AvatarType;
 import 'leaderboard_providers.dart';
 import 'public_profile_screen.dart' show openPublicProfile;
 import 'widgets/clan_tab.dart';
+import 'widgets/friends_tab.dart';
 import 'widgets/top_clan_tab.dart';
 import '../../core/widgets/app_loading.dart';
 
@@ -21,7 +23,7 @@ class LeaderboardScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         backgroundColor: context.palette.background,
         appBar: AppBar(
@@ -41,6 +43,7 @@ class LeaderboardScreen extends ConsumerWidget {
               Tab(text: s.tabGlobalScore),
               Tab(text: s.tabClan),
               Tab(text: s.tabTopClan),
+              Tab(text: s.tabFriends),
             ],
           ),
         ),
@@ -49,6 +52,7 @@ class LeaderboardScreen extends ConsumerWidget {
             _GlobalScoreTab(),
             ClanTab(),
             TopClanTab(),
+            FriendsTab(),
           ],
         ),
       ),
@@ -359,14 +363,42 @@ class LeaderboardTile extends StatelessWidget {
 /// (not via `UserAvatar`, which needs a live Firebase `User`) since
 /// leaderboard/clan-member entries only carry the resolved
 /// avatarType/avatarValue/photoUrl.
+///
+/// Layers [entry.frameId]'s border art on top when present, mirroring
+/// `UserAvatar`'s own frame handling — see [LeaderboardEntry.frameId]'s doc
+/// comment for why the entry carries this at all (published from
+/// `AvatarPickerSheet`'s frame tab so it shows up everywhere this widget
+/// renders someone else's row, not just on their own device).
 class LeaderboardAvatar extends StatelessWidget {
   final LeaderboardEntry entry;
   final double size;
 
   const LeaderboardAvatar({super.key, required this.entry, required this.size});
 
+  static const _frameScale = 1.25;
+
   @override
   Widget build(BuildContext context) {
+    final avatarWidget = _buildAvatar(context);
+    final frame = FramePresets.byId(entry.frameId);
+    if (frame == null) return avatarWidget;
+
+    final frameSize = size * _frameScale;
+    return SizedBox(
+      width: frameSize,
+      height: frameSize,
+      child: Stack(
+        alignment: Alignment.center,
+        clipBehavior: Clip.none,
+        children: [
+          avatarWidget,
+          FrameOverlay(preset: frame, avatarSize: size, scale: _frameScale),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAvatar(BuildContext context) {
     if (entry.avatarType == AvatarType.presetFree ||
         entry.avatarType == AvatarType.presetPremium) {
       final preset = AvatarPresets.byId(entry.avatarValue);

@@ -557,6 +557,64 @@ class AppStrings {
   String get blockedMessagePlaceholder =>
       _t('Pesan disembunyikan (diblokir)', 'Message hidden (blocked)');
 
+  // --- Friends (Leaderboard tab 4) + Direct Message ---
+  String get tabFriends => _t('Teman', 'Friends');
+  String get findFriend => _t('Cari Teman', 'Find Friend');
+  String get noFriendsYetTitle => _t('Belum punya teman', "You don't have any friends yet");
+  String get noFriendsYetBody => _t(
+        'Cari teman lewat ID unik mereka untuk mulai mengobrol berdua.',
+        "Search for a friend by their unique ID to start a one-on-one chat.",
+      );
+  String failedToLoadFriends(Object e) =>
+      _t('Gagal memuat daftar teman: $e', 'Failed to load friends: $e');
+  String get removeFriend => _t('Hapus Teman', 'Remove Friend');
+  String removeFriendConfirmTitle(String name) =>
+      _t('Hapus $name dari teman?', 'Remove $name as a friend?');
+  String removeFriendConfirmBody(String name) => _t(
+        'Kamu dan $name tidak akan bisa saling mengirim pesan lagi sampai berteman ulang.',
+        'You and $name will no longer be able to message each other until you become friends again.',
+      );
+  String get removeFriendFailed => _t(
+        'Gagal menghapus teman, coba lagi.',
+        'Failed to remove friend, try again.',
+      );
+  String get searchFriendTitle => _t('Cari Teman', 'Find Friend');
+  String get searchFriendHint =>
+      _t('Cari nama atau ID unik...', "Search a name or unique ID...");
+  String get searchFriendEmpty => _t(
+        'Ketik nama atau ID unik untuk mencari.',
+        'Type a name or unique ID to search.',
+      );
+  String get sendFriendRequestButton => _t('Tambah Teman', 'Add Friend');
+  String get friendRequestSent =>
+      _t('Permintaan pertemanan terkirim.', 'Friend request sent.');
+  String get friendRequestSendFailed => _t(
+        'Gagal mengirim permintaan, coba lagi.',
+        'Failed to send request, try again.',
+      );
+  String get alreadyFriendError =>
+      _t('Kalian sudah berteman.', "You're already friends.");
+  String get friendRequestAlreadySentError => _t(
+        'Permintaan pertemanan sudah terkirim, tunggu jawabannya.',
+        'A friend request is already pending, wait for their answer.',
+      );
+  String pendingFriendRequestsTitle(int count) => _t(
+        'Kamu punya $count permintaan pertemanan',
+        'You have $count friend request${count == 1 ? '' : 's'}',
+      );
+  String friendRequestFrom(String name) =>
+      _t('Permintaan pertemanan dari $name', 'Friend request from $name');
+  String get acceptFriendRequest => _t('Terima', 'Accept');
+  String get declineFriendRequest => _t('Tolak', 'Decline');
+  String get friendRequestRespondFailed => _t(
+        'Gagal merespons permintaan, coba lagi.',
+        'Failed to respond to the request, try again.',
+      );
+  String get directMessageEmpty => _t(
+        'Belum ada pesan. Sapa temanmu duluan!',
+        'No messages yet. Say hi to your friend first!',
+      );
+
   // --- Exam / Ujian ---
   String get kanaCategorySubtitle =>
       _t('Hiragana, Katakana, atau campuran', 'Hiragana, Katakana, or mixed');

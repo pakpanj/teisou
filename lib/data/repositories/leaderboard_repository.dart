@@ -175,6 +175,25 @@ class LeaderboardRepository {
     }, SetOptions(merge: true));
   }
 
+  /// Publishes the profile header cover the learner picked in
+  /// `CoverPickerSheet` so `PublicProfileScreen`/`LeaderboardAvatar` can
+  /// show it — see [LeaderboardEntry.coverId]'s own doc comment. Called
+  /// best-effort right after `ProgressRepository.updateCover` succeeds; a
+  /// failure here must not undo that already-successful save.
+  Future<void> updateCoverId(String uid, String? coverId) {
+    return _collection
+        .doc(uid)
+        .set({'coverId': coverId}, SetOptions(merge: true));
+  }
+
+  /// Same as [updateCoverId], for the avatar frame picked in
+  /// `AvatarPickerSheet`'s frame tab.
+  Future<void> updateFrameId(String uid, String? frameId) {
+    return _collection
+        .doc(uid)
+        .set({'frameId': frameId}, SetOptions(merge: true));
+  }
+
   /// Updates `totalMastered` for [uid] if [totalMastered] is higher than
   /// what's currently stored (never regresses the leaderboard on a
   /// mastery -> learning demotion elsewhere).

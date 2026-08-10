@@ -148,6 +148,14 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
       );
       return;
     }
+    // Best-effort — the frame itself already saved successfully above, so
+    // a hiccup publishing it to the leaderboard must not surface as a
+    // failure. Lets other learners see the same frame everywhere
+    // LeaderboardAvatar renders this account (leaderboard rows, clan
+    // roster, public profile), not just on this account's own device.
+    try {
+      await ref.read(leaderboardRepositoryProvider).updateFrameId(uid, frameId);
+    } catch (_) {}
     if (consumeReward) {
       // Best-effort only — the frame itself already saved successfully
       // above, so a hiccup here must not surface as a failure.
