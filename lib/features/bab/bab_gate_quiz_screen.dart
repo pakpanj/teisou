@@ -5,6 +5,7 @@ import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/services/secure_screen_service.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/furigana_text.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/simple_exam_result.dart';
@@ -185,6 +186,7 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
               headerBuilder: (context, index) => _QuestionCard(
                 context: questions[index].context,
                 prompt: questions[index].prompt,
+                showFurigana: showFuriganaFor(widget.level),
               ),
               optionsOf: (index) => questions[index].options,
               correctIndexOf: (index) => questions[index].correctIndex,
@@ -202,12 +204,23 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
 class _QuestionCard extends ConsumerWidget {
   final String? context;
   final String prompt;
+  final bool showFurigana;
 
-  const _QuestionCard({required this.context, required this.prompt});
+  const _QuestionCard({
+    required this.context,
+    required this.prompt,
+    this.showFurigana = false,
+  });
 
   @override
   Widget build(BuildContext buildContext, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
+    final contextStyle = TextStyle(
+      fontSize: 18,
+      color: buildContext.palette.textNavy,
+    );
+    final dictionary =
+        showFurigana ? ref.watch(furiganaDictionaryProvider).valueOrNull : null;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -235,13 +248,13 @@ class _QuestionCard extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 4),
-            Text(
-              context!,
-              style: TextStyle(
-                fontSize: 18,
-                color: buildContext.palette.textNavy,
-              ),
-            ),
+            dictionary != null
+                ? FuriganaSentence(
+                    text: context!,
+                    dictionary: dictionary,
+                    style: contextStyle,
+                  )
+                : Text(context!, style: contextStyle),
             const SizedBox(height: 16),
           ],
           Text(

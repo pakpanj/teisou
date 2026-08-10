@@ -6625,6 +6625,33 @@ about (a genuine "お元気ですか" question-marker use of か, a genuine
 topic-marking use of は on 東京), confirming the widened pool is both
 varied and accurate as designed.
 
+**Update (2026-08-10): the gate quiz's own context sentence had no
+furigana, a separate gap from the one already fixed** — user report,
+"ujian gate kurikulum, dia contoh kalimat ujian masih tidak ada
+furigana untuk kanji nya". The N5-N3 furigana feature (`showFuriganaFor`,
+`FuriganaDictionary`, `FuriganaSentence` in `lib/core/widgets/
+furigana_text.dart`) had been wired into the shared Kotoba/Kanji/Bunpou/
+Particle detail screens' own sentence-example cards, reached by tapping
+a row on `BabDetailScreen` — but the gate quiz screen
+(`BabGateQuizScreen`) renders its own separate `_QuestionCard` for the
+`context` sentence described in the section above, a widget that never
+went through that wiring pass at all since it didn't exist as a target
+yet when the furigana feature first shipped. Fixed by giving
+`_QuestionCard` the same `showFurigana` flag (computed once in
+`BabGateQuizScreen.build()` via `showFuriganaFor(widget.level)`, since
+the screen already has the chapter's `JlptLevel` as a constructor
+argument) and rendering `context` through `FuriganaSentence` +
+`furiganaDictionaryProvider` instead of a plain `Text`, mirroring the
+exact pattern the four module detail screens already use. Deliberately
+scoped to `context` only, not `prompt` — the question prompt sometimes
+names the very kanji/word being tested, and annotating that with its
+reading would hand the learner the answer. `flutter analyze` clean,
+full `flutter test --concurrency=1` suite (288 tests) passes. **No
+interactive on-device pass done** — worth confirming the gate quiz's
+context sentence actually shows furigana for an N5-N3 chapter (and
+correctly doesn't for N2/N1) on a real device before treating this as
+fully verified, same standing gap as the rest of this feature.
+
 ## Update (2026-08-04): Bab N4, first pass — 19 chapters (order 32-50)
 
 Extends the Bab curriculum (see the earlier "Bab curriculum lock" update)
