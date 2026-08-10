@@ -5,11 +5,19 @@ import '../../../core/constants/covers.dart';
 import '../../../data/models/app_language.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
+import '../../paywall/paywall_screen.dart';
 
-/// Bottom sheet for picking the Profile header's cover illustration: the
-/// default hand-drawn torii/Fuji/sakura scene, or one of [CoverPresets.all].
-/// Mirrors AvatarPickerSheet's grid-of-tiles shape, minus the free/premium
-/// split and gallery upload — covers are plain, ungated presets.
+/// The `moduleId` watching an ad on [PaywallScreen] grants a one-time
+/// unlock for — the 4 [CoverPresets.lockedIds] below.
+const _coverPremiumModuleId = 'cover_premium';
+
+/// Bottom sheet for picking the Profile header's cover illustration: one of
+/// [CoverPresets.all]. Mirrors [AvatarPickerSheet]'s grid-of-tiles shape,
+/// including its ad-reward-unlock pattern for [CoverPresets.lockedIds] — see
+/// that sheet's `_adRewardActive` doc comment for the full mechanism this
+/// one reuses (one ad grants exactly one locked-cover change, consumed via
+/// `ProgressRepository.consumeAdReward` right after it's spent, not left
+/// active for its full 24h backstop).
 class CoverPickerSheet extends ConsumerStatefulWidget {
   const CoverPickerSheet({super.key});
 
@@ -18,7 +26,23 @@ class CoverPickerSheet extends ConsumerStatefulWidget {
 }
 
 class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
-  Future<void> _select(String uid, String? coverId) async {
+  bool _adRewardActive = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _refreshAdRewardStatus();
+  }
+
+  Future<void> _refreshAdRewardStatus() async {
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
+    final rewards = await ref.read(progressRepositoryProvider).getAdRewards(uid);
+    final active = rewards[_coverPremiumModuleId]?.isActive ?? false;
+    if (mounted) setState(() => _adRewardActive = active);
+  }
+
+  Future<void> _select(String uid, String? coverId, {bool consumeReward = false}) async {
     try {
       await ref.read(progressRepositoryProvider).updateCover(uid, coverId);
     } catch (_) {
@@ -28,14 +52,44 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
       );
       return;
     }
+    if (consumeReward) {
+      // Best-effort only — the cover itself already saved successfully
+      // above, so a hiccup here must not surface as a failure.
+      try {
+        await ref
+            .read(progressRepositoryProvider)
+            .consumeAdReward(uid, _coverPremiumModuleId);
+      } catch (_) {}
+    }
     if (!mounted) return;
     Navigator.of(context).pop();
+  }
+
+  Future<void> _openPaywall(BuildContext context) async {
+    final s = ref.read(appStringsProvider);
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => PaywallScreen(
+          moduleId: _coverPremiumModuleId,
+          moduleTitle: s.coverPremiumTitle,
+          singleUse: true,
+        ),
+      ),
+    );
+    // PaywallScreen pops itself the moment the reward is earned, so by the
+    // time this await resolves the write (if any) has already landed —
+    // safe to read it back immediately, no extra delay needed.
+    if (!mounted) return;
+    await _refreshAdRewardStatus();
   }
 
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(appStartupProvider).valueOrNull;
     final profile = ref.watch(userProfileProvider).valueOrNull;
+    final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    final unlocked = isPremium || _adRewardActive;
+    final viaAdReward = !isPremium && _adRewardActive;
     final uid = user?.uid;
     final selectedId = profile?.coverId;
     final s = ref.watch(appStringsProvider);
@@ -87,6 +141,7 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
                 ),
                 itemBuilder: (context, index) {
                   final preset = CoverPresets.all[index];
+                  final isLocked = CoverPresets.isLocked(preset.id) && !unlocked;
                   return _CoverTile(
                     preset: preset,
                     language: s.language,
@@ -95,7 +150,21 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
                     // instead of a separate "Default" tile — see
                     // CoverPresets.fallback.
                     selected: (selectedId ?? CoverPresets.fallback.id) == preset.id,
-                    onTap: uid == null ? null : () => _select(uid, preset.id),
+                    locked: isLocked,
+                    onTap: uid == null
+                        ? null
+                        : () {
+                            if (isLocked) {
+                              _openPaywall(context);
+                              return;
+                            }
+                            _select(
+                              uid,
+                              preset.id,
+                              consumeReward:
+                                  viaAdReward && CoverPresets.isLocked(preset.id),
+                            );
+                          },
                   );
                 },
               ),
@@ -111,12 +180,14 @@ class _CoverTile extends StatelessWidget {
   final AppLanguage language;
   final CoverPreset preset;
   final bool selected;
+  final bool locked;
   final VoidCallback? onTap;
 
   const _CoverTile({
     required this.preset,
     required this.language,
     required this.selected,
+    required this.locked,
     required this.onTap,
   });
 
@@ -137,10 +208,20 @@ class _CoverTile extends StatelessWidget {
                       : null,
                 ),
                 clipBehavior: Clip.antiAlias,
-                child: CoverArt(
-                  preset: preset,
-                  width: constraints.maxWidth,
-                  height: constraints.maxHeight,
+                child: Stack(
+                  children: [
+                    CoverArt(
+                      preset: preset,
+                      width: constraints.maxWidth,
+                      height: constraints.maxHeight,
+                    ),
+                    if (locked)
+                      Container(
+                        width: constraints.maxWidth,
+                        height: constraints.maxHeight,
+                        color: Colors.black.withValues(alpha: 0.35),
+                      ),
+                  ],
                 ),
               ),
               if (selected)
@@ -148,6 +229,19 @@ class _CoverTile extends StatelessWidget {
                   right: 6,
                   top: 6,
                   child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 20),
+                ),
+              if (locked)
+                Positioned(
+                  right: 6,
+                  top: 6,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
+                      color: Colors.black54,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.lock, color: Colors.white, size: 14),
+                  ),
                 ),
               Positioned(
                 left: 8,
@@ -157,7 +251,7 @@ class _CoverTile extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w600,
-                    color: context.palette.textNavy,
+                    color: locked ? Colors.white : context.palette.textNavy,
                   ),
                 ),
               ),

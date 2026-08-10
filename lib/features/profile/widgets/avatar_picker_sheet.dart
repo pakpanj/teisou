@@ -29,6 +29,11 @@ class AvatarPickerSheet extends ConsumerStatefulWidget {
 /// Premium" offer on that screen.
 const _avatarPremiumModuleId = 'avatar_premium';
 
+/// Same idea as [_avatarPremiumModuleId], scoped to [FramePresets.lockedIds]
+/// instead — a separate module id so watching an ad for one never spends
+/// the other's unlock.
+const _framePremiumModuleId = 'frame_premium';
+
 enum _PickerMode { avatar, frame }
 
 class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
@@ -52,6 +57,12 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
   /// [_select]'s `consumeReward` param.
   bool _adRewardActive = false;
 
+  /// Same mechanism as [_adRewardActive], scoped to [_framePremiumModuleId]
+  /// — kept as its own flag rather than folded together, since watching an
+  /// ad for a premium avatar must not also unlock a locked frame and vice
+  /// versa.
+  bool _frameAdRewardActive = false;
+
   @override
   void initState() {
     super.initState();
@@ -61,9 +72,17 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
   Future<void> _refreshAdRewardStatus() async {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (uid == null) return;
+    // One fetch covers both flags — getAdRewards already returns every
+    // module's reward state in one map.
     final rewards = await ref.read(progressRepositoryProvider).getAdRewards(uid);
-    final active = rewards[_avatarPremiumModuleId]?.isActive ?? false;
-    if (mounted) setState(() => _adRewardActive = active);
+    final avatarActive = rewards[_avatarPremiumModuleId]?.isActive ?? false;
+    final frameActive = rewards[_framePremiumModuleId]?.isActive ?? false;
+    if (mounted) {
+      setState(() {
+        _adRewardActive = avatarActive;
+        _frameAdRewardActive = frameActive;
+      });
+    }
   }
 
   Future<void> _select(
@@ -103,7 +122,11 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     Navigator.of(context).pop();
   }
 
-  Future<void> _selectFrame(String uid, String? frameId) async {
+  Future<void> _selectFrame(
+    String uid,
+    String? frameId, {
+    bool consumeReward = false,
+  }) async {
     try {
       await ref.read(progressRepositoryProvider).updateFrame(uid, frameId);
     } catch (_) {
@@ -112,6 +135,15 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
         SnackBar(content: Text(ref.read(appStringsProvider).frameSaveFailed)),
       );
       return;
+    }
+    if (consumeReward) {
+      // Best-effort only — the frame itself already saved successfully
+      // above, so a hiccup here must not surface as a failure.
+      try {
+        await ref
+            .read(progressRepositoryProvider)
+            .consumeAdReward(uid, _framePremiumModuleId);
+      } catch (_) {}
     }
     if (!mounted) return;
     Navigator.of(context).pop();
@@ -130,6 +162,21 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     // PaywallScreen pops itself the moment the reward is earned, so by the
     // time this await resolves the write (if any) has already landed —
     // safe to read it back immediately, no extra delay needed.
+    if (!mounted) return;
+    await _refreshAdRewardStatus();
+  }
+
+  Future<void> _openFramePaywall(BuildContext context) async {
+    final s = ref.read(appStringsProvider);
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => PaywallScreen(
+          moduleId: _framePremiumModuleId,
+          moduleTitle: s.framePremiumTitle,
+          singleUse: true,
+        ),
+      ),
+    );
     if (!mounted) return;
     await _refreshAdRewardStatus();
   }
@@ -256,9 +303,24 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                 _FrameGrid(
                   selectedId: profile?.frameId,
                   noFrameLabel: s.noFrameLabel,
+                  frameUnlocked: isPremium || _frameAdRewardActive,
                   onTap: (frameId) {
                     if (uid == null) return;
-                    _selectFrame(uid, frameId);
+                    final locked = frameId != null &&
+                        FramePresets.isLocked(frameId) &&
+                        !(isPremium || _frameAdRewardActive);
+                    if (locked) {
+                      _openFramePaywall(context);
+                      return;
+                    }
+                    final viaFrameAdReward = !isPremium && _frameAdRewardActive;
+                    _selectFrame(
+                      uid,
+                      frameId,
+                      consumeReward: viaFrameAdReward &&
+                          frameId != null &&
+                          FramePresets.isLocked(frameId),
+                    );
                   },
                 ),
               ],
@@ -481,18 +543,21 @@ class _PresetTile extends StatelessWidget {
 }
 
 /// Grid of selectable avatar frames/borders: a "no frame" tile (index 0,
-/// always available) followed by [FramePresets.all] — empty for now until
-/// real frame art is supplied, so this grid currently only ever shows the
-/// "no frame" tile. Mirrors [CoverPickerSheet]'s default-plus-presets grid
-/// shape, not [_PresetGrid]'s (frames aren't premium-gated).
+/// always available) followed by [FramePresets.all]. Mirrors
+/// [CoverPickerSheet]'s default-plus-presets grid shape, including its
+/// lock-behind-a-single-use-ad pattern for [FramePresets.lockedIds] — the
+/// "no frame" tile is never locked, same reasoning as
+/// [CoverPresets.fallback] staying unlocked.
 class _FrameGrid extends StatelessWidget {
   final String? selectedId;
   final String noFrameLabel;
+  final bool frameUnlocked;
   final void Function(String? frameId) onTap;
 
   const _FrameGrid({
     required this.selectedId,
     required this.noFrameLabel,
+    required this.frameUnlocked,
     required this.onTap,
   });
 
@@ -512,13 +577,16 @@ class _FrameGrid extends StatelessWidget {
         if (index == 0) {
           return _FrameTile(
             selected: selectedId == null,
+            locked: false,
             child: Text(noFrameLabel, textAlign: TextAlign.center, style: TextStyle(fontSize: 11, color: context.palette.textNavy)),
             onTap: () => onTap(null),
           );
         }
         final preset = frames[index - 1];
+        final locked = FramePresets.isLocked(preset.id) && !frameUnlocked;
         return _FrameTile(
           selected: selectedId == preset.id,
+          locked: locked,
           // Sized off the tile rather than a fixed 40 — these are detailed
           // wreath illustrations, and at 40 inside a ~92 tile they rendered
           // too small to tell apart. Invisible while FramePresets.all was
@@ -539,10 +607,16 @@ class _FrameGrid extends StatelessWidget {
 
 class _FrameTile extends StatelessWidget {
   final bool selected;
+  final bool locked;
   final Widget child;
   final VoidCallback onTap;
 
-  const _FrameTile({required this.selected, required this.child, required this.onTap});
+  const _FrameTile({
+    required this.selected,
+    required this.locked,
+    required this.child,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -560,13 +634,26 @@ class _FrameTile extends StatelessWidget {
                   : null,
             ),
             alignment: Alignment.center,
-            child: child,
+            child: Opacity(opacity: locked ? 0.35 : 1, child: child),
           ),
           if (selected)
             Positioned(
               right: 4,
               top: 4,
               child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
+            ),
+          if (locked)
+            Positioned(
+              right: 4,
+              top: 4,
+              child: Container(
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  color: context.palette.textNavy,
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(Icons.lock, color: Colors.white, size: 12),
+              ),
             ),
         ],
       ),

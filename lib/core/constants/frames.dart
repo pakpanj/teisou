@@ -104,4 +104,17 @@ class FramePresets {
     }
     return null;
   }
+
+  /// A sample of 4 frames locked behind a single-use rewarded ad (see
+  /// `AvatarPickerSheet`'s `frame_premium` module id) — same "a few sample
+  /// locked ones" request as [CoverPresets.lockedIds], not a curated tier;
+  /// add more ids here later the same way if the sample needs to grow.
+  static const lockedIds = {
+    'frame_moon_crystal',
+    'frame_space',
+    'frame_witch',
+    'frame_fairytale',
+  };
+
+  static bool isLocked(String id) => lockedIds.contains(id);
 }

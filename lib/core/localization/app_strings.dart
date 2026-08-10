@@ -744,11 +744,13 @@ class AppStrings {
   String get pickCoverTitle => _t('Pilih Sampul', 'Choose Cover');
   String get coverSaveFailed =>
       _t('Gagal menyimpan sampul, coba lagi.', 'Failed to save cover, try again.');
+  String get coverPremiumTitle => _t('Sampul Premium', 'Cover Premium');
   String get frameSection => _t('Bingkai', 'Frame');
   String get pickFrameTitle => _t('Pilih Bingkai', 'Choose Frame');
   String get noFrameLabel => _t('Tanpa Bingkai', 'No Frame');
   String get frameSaveFailed =>
       _t('Gagal menyimpan bingkai, coba lagi.', 'Failed to save frame, try again.');
+  String get framePremiumTitle => _t('Bingkai Premium', 'Frame Premium');
 
   // --- Bab (curriculum) ---
   String get sectionKurikulum => _t('Kurikulum', 'Curriculum');

@@ -4415,6 +4415,45 @@ what the on-device pass actually verified), `flutter build apk
   separately. That's what "semua ujian apapun" (every exam, whatever
   kind) was asked for, but flag it if the gate quiz specifically ever
   needs its own cadence.
+- **4 covers + 4 frames locked behind a single-use rewarded ad
+  (2026-08-10)**, per explicit user request ("beberapa sampul dan
+  frame di gembok... kalau mau ganti 1 kali harus nonton iklan 1
+  kali") — reuses `AvatarPickerSheet`'s already-existing avatar-premium
+  ad-unlock mechanism (`ProgressRepository.unlockAdReward`/
+  `consumeAdReward`/`getAdRewards`, `PaywallScreen(singleUse: true)`)
+  rather than inventing a new one: `CoverPresets.lockedIds`
+  (`zodiac_night`/`magic_castle`/`cyber_neon`/`outer_space`) and
+  `FramePresets.lockedIds` (`frame_moon_crystal`/`frame_space`/
+  `frame_witch`/`frame_fairytale`) are a deliberately arbitrary sample
+  of 4 each, not a themed tier — the request was for "a few sample
+  locked ones", not a curated split, so add more ids to either set the
+  same way if the sample needs to grow later. Each gets its own
+  `moduleId` (`cover_premium`/`frame_premium`, alongside the
+  pre-existing `avatar_premium`) so watching an ad for one can never
+  spend another's unlock. `CoverPresets.fallback` (`sakura_dawn`, what
+  every user with no saved `coverId` sees) is deliberately excluded
+  from `lockedIds` — locking the cover shown before any choice is ever
+  made would be a confusing thing to gate. `CoverPickerSheet` gained
+  the exact `_adRewardActive`/`isPremium`/`viaAdReward`/
+  `consumeReward`-on-success shape `AvatarPickerSheet`'s premium-avatar
+  grid already used (locked tile → dark scrim + lock badge → tap opens
+  `PaywallScreen` → watching the ad unlocks exactly one change, consumed
+  right after it's spent rather than left active for its full 24h
+  backstop). `AvatarPickerSheet`'s own `_FrameGrid`/`_FrameTile` — which
+  had no lock concept at all before this, since every frame shipped
+  free once real art landed — gained the same treatment via a sibling
+  `_frameAdRewardActive` flag and `frame_premium` module id;
+  `_refreshAdRewardStatus` now reads both flags off one
+  `getAdRewards` call instead of two, since that method already returns
+  every module's reward state in one map. Two new `AppStrings` getters
+  (`coverPremiumTitle`/`framePremiumTitle`) feed `PaywallScreen`'s
+  `moduleTitle`, matching the existing `'Avatar Premium'` precedent
+  rather than leaving raw Indonesian text embedded in an English-mode
+  unlock message. `flutter analyze` clean. **No interactive on-device
+  pass done** — same standing gap as most UI work in this file; worth
+  confirming the lock badge/scrim actually render correctly over real
+  cover/frame art and that a watched ad genuinely unlocks exactly one
+  change before treating this as fully verified.
 - **Cover photo picker (2026-07-24)**: `_HeaderCard` in
   `profile_screen.dart` now renders the selected cover as a full-bleed
   background behind the whole header card (not just a small side

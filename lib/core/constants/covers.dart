@@ -227,6 +227,23 @@ class CoverPresets {
     ),
   ];
 
+  /// A sample of 4 covers locked behind a single-use rewarded ad (see
+  /// `CoverPickerSheet`'s `cover_premium` module id) — an explicit user
+  /// request for "a few sample locked covers", not a curated tier with a
+  /// particular theme; add more ids here later the same way if the sample
+  /// needs to grow. Deliberately excludes [fallback] (`sakura_dawn`) —
+  /// that's what every user with no saved `coverId` sees by default, and
+  /// locking the one cover shown before any choice is ever made would be a
+  /// confusing thing to gate.
+  static const lockedIds = {
+    'zodiac_night',
+    'magic_castle',
+    'cyber_neon',
+    'outer_space',
+  };
+
+  static bool isLocked(String id) => lockedIds.contains(id);
+
   /// What the Profile header shows for a user who has never picked a cover.
   ///
   /// There used to be a separate "Default" tile in the picker that rendered
