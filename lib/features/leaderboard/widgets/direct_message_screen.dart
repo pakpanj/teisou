@@ -12,9 +12,10 @@ import '../friend_providers.dart';
 /// comment for the child-safety reasoning behind why this only opens
 /// between accepted friends. Structurally a near-copy of `ClanChatScreen`
 /// (same send-cooldown/length-cap/report flow), minus the block feature:
-/// unfriending (`FriendRepository.removeFriend`, reached from the Friends
-/// tab, not from inside this screen) is the equivalent action here, and it
-/// does something clan chat's block can't — it actually revokes both
+/// unfriending (`FriendRepository.removeFriend`, an app-bar action right on
+/// this screen — there's no separate friend-list screen anymore, chat is
+/// reached via `ChatHubScreen`'s picker) is the equivalent action here, and
+/// it does something clan chat's block can't — it actually revokes both
 /// sides' read/write access at the `firestore.rules` level, not just hides
 /// messages client-side.
 class DirectMessageScreen extends ConsumerStatefulWidget {
@@ -157,6 +158,44 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
     }
   }
 
+  Future<void> _removeFriend(String myUid) async {
+    final s = ref.read(appStringsProvider);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(s.removeFriendConfirmTitle(widget.friendName)),
+        content: Text(s.removeFriendConfirmBody(widget.friendName)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(s.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(s.removeFriend),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+
+    try {
+      await ref
+          .read(friendRepositoryProvider)
+          .removeFriend(uid: myUid, friendUid: widget.friendUid);
+      if (!mounted) return;
+      // Unfriending revokes both sides' read/write access to this
+      // conversation at the firestore.rules level (see this class's own
+      // doc comment) — staying on the chat screen would just show a
+      // permission-denied stream error, so leave it instead.
+      Navigator.of(context).pop();
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(s.removeFriendFailed)));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
@@ -175,7 +214,16 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: Text(widget.friendName)),
+      appBar: AppBar(
+        title: Text(widget.friendName),
+        actions: [
+          IconButton(
+            tooltip: s.removeFriend,
+            icon: const Icon(Icons.person_remove_outlined),
+            onPressed: () => _removeFriend(myUid),
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Expanded(

@@ -8259,3 +8259,90 @@ a pending request shows the badge in all three places, and that it
 disappears immediately from all three the moment it's accepted/declined
 (the provider is shared, so this should be automatic, but hasn't
 actually been watched happen on the device yet).
+
+## Update (2026-08-10, still later): Chat and Add Friend split out of
+the Leaderboard's "Teman" tab into their own Profile app-bar icons
+
+Explicit follow-up request: give chat and friend-adding their own
+"mapped" menus instead of both living inside one Leaderboard tab —
+specifically, a **Chat** menu with a Clan/Pribadi picker (dropdown of
+clan names for clan chat, dropdown of friend names for personal chat),
+and a separate **Add Friend** menu with a search mode plus a place to
+confirm incoming requests. This replaces, not adds to, the "Teman" tab
+from the two updates above — that tab is gone.
+
+**Profile's app bar now has 3 icons**, not 1: 🏆 (unchanged, opens
+`LeaderboardScreen`, now back to 3 tabs — Skor Global/Clan/Top Clan,
+`Teman` removed), 💬 (new, opens `ChatHubScreen`), ➕ (new, opens
+`AddFriendScreen`, carrying the pending-request `CountBadge` that used
+to sit on the 🏆 icon — the badge belongs on the icon that actually
+leads to something to confirm, and that's no longer the trophy).
+
+**`ChatHubScreen`** (`lib/features/leaderboard/chat_hub_screen.dart`,
+new) is deliberately a **picker, not a chat surface of its own** — a
+Clan/Pribadi mode toggle (visually mirrors `AvatarPickerSheet`'s
+Avatar/Bingkai `_PickerModeTab`, the established pattern in this
+codebase for "two modes sharing one screen"), then a
+`DropdownButtonFormField` of whichever list the mode implies
+(`myClansProvider` for Clan, `myFriendsProvider` for Pribadi) plus an
+explicit "Buka Chat" button that navigates to the real, unchanged
+`ClanChatScreen`/`DirectMessageScreen`. The button is deliberate, not
+auto-navigate-on-select: picking from a dropdown is already one
+deliberate tap, but auto-navigating on `onChanged` would make idly
+opening the dropdown to browse options risky (any tap on an option
+immediately leaves the screen), where a second explicit tap doesn't
+have that failure mode. Both empty states (no clan yet / no friend yet)
+point the learner at where to fix that instead of just showing a
+disabled dropdown.
+
+**`AddFriendScreen`** (`lib/features/leaderboard/add_friend_screen.dart`,
+new) is a 2-tab `TabBar`: **Cari** (unchanged search-by-id/name-then-
+send-request logic, now `SearchFriendTab` — the old `SearchFriendScreen`
+stripped of its own `Scaffold`/`AppBar` so it can be embedded as a tab
+body instead of pushed as its own route) and **Permintaan** (the
+incoming-requests list with Accept/Decline, previously
+`FriendsTab`'s `_PendingFriendRequestsStrip` — rebuilt here as a full
+tab body, not a small strip, since it now has a whole screen to itself).
+The Permintaan tab itself carries the same `CountBadge` the ➕ icon does,
+so once inside the screen it's still obvious which of the two tabs has
+something waiting.
+
+**`FriendsTab` (the old "Teman" tab, and its standalone friend-list-with-
+remove-button) is deleted outright**, not left dormant — its two jobs
+split cleanly: opening a chat with a friend now happens through
+`ChatHubScreen`'s Pribadi dropdown, and removing a friend moved to
+`DirectMessageScreen` itself as a new app-bar action (👤➖ icon, reusing
+the exact confirm-dialog strings the old friend-list row used) — the
+natural place to unfriend someone is from inside the conversation with
+them, the same pattern the search invite icons don't need but a 1:1 chat
+naturally affords. `DirectMessageScreen`'s own doc comment was corrected
+to match: it used to say unfriending was "reached from the Friends tab,
+not from inside this screen" — that's backwards now.
+
+**Cleanup that came along with the restructure**: `tabFriends`,
+`noFriendsYetTitle`/`noFriendsYetBody`, `findFriend`, and the
+already-unused `friendRequestAlreadySentError` (dead since the
+`PERMISSION_DENIED` fix two updates above) were removed from
+`AppStrings` — all four were only ever read by the now-deleted
+`FriendsTab`/old-tab-bar code, confirmed via grep before removing, not
+assumed.
+
+`flutter analyze` clean (one `unused_import` caught and fixed —
+`chat_hub_screen.dart` imported `AppStrings` for a type it never
+actually named, since `ref.watch(appStringsProvider)`'s return type is
+always inferred), `flutter test --concurrency=1` 288/288, debug APK
+rebuilt and installed. **Verification note**: installed onto a second,
+different physical device this round (`0E65315G34100731`, a realme
+RMX3933) rather than the Moto G52J used throughout the rest of this
+session — that device's lock screen briefly surfaced personal
+notification content (a Facebook message preview, a carrier promo) in a
+screenshot taken to confirm the app launched; that screenshot was
+deleted immediately and no further screenshots of that device were
+taken once its lock screen state was noticed, out of the same respect
+for what is and isn't this session's business to look at that governs
+every other device interaction in this project. **No interactive
+on-device confirmation of the new Chat/Add Friend icons or the
+Clan/Pribadi picker flow specifically** — the install completed and the
+app launched (confirmed process-alive, not crashed), but the UI itself
+was left for the user's own unlock-and-look rather than pushed through
+via further ADB automation against a personal, actively-in-use phone.

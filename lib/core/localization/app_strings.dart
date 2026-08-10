@@ -557,14 +557,7 @@ class AppStrings {
   String get blockedMessagePlaceholder =>
       _t('Pesan disembunyikan (diblokir)', 'Message hidden (blocked)');
 
-  // --- Friends (Leaderboard tab 4) + Direct Message ---
-  String get tabFriends => _t('Teman', 'Friends');
-  String get findFriend => _t('Cari Teman', 'Find Friend');
-  String get noFriendsYetTitle => _t('Belum punya teman', "You don't have any friends yet");
-  String get noFriendsYetBody => _t(
-        'Cari teman lewat ID unik mereka untuk mulai mengobrol berdua.',
-        "Search for a friend by their unique ID to start a one-on-one chat.",
-      );
+  // --- Friends + Direct Message ---
   String failedToLoadFriends(Object e) =>
       _t('Gagal memuat daftar teman: $e', 'Failed to load friends: $e');
   String get removeFriend => _t('Hapus Teman', 'Remove Friend');
@@ -594,10 +587,6 @@ class AppStrings {
       );
   String get alreadyFriendError =>
       _t('Kalian sudah berteman.', "You're already friends.");
-  String get friendRequestAlreadySentError => _t(
-        'Permintaan pertemanan sudah terkirim, tunggu jawabannya.',
-        'A friend request is already pending, wait for their answer.',
-      );
   String pendingFriendRequestsTitle(int count) => _t(
         'Kamu punya $count permintaan pertemanan',
         'You have $count friend request${count == 1 ? '' : 's'}',
@@ -609,6 +598,38 @@ class AppStrings {
   String get friendRequestRespondFailed => _t(
         'Gagal merespons permintaan, coba lagi.',
         'Failed to respond to the request, try again.',
+      );
+
+  // --- Add Friend menu (dedicated Profile app-bar icon) ---
+  String get addFriendMenuTitle => _t('Tambah Teman', 'Add Friend');
+  String get addFriendTabSearch => _t('Cari', 'Search');
+  String get addFriendTabIncoming => _t('Permintaan', 'Requests');
+  String get noIncomingRequestsTitle =>
+      _t('Belum ada permintaan', 'No requests yet');
+  String get noIncomingRequestsBody => _t(
+        'Permintaan pertemanan yang masuk untukmu akan muncul di sini.',
+        'Friend requests sent to you will show up here.',
+      );
+
+  // --- Chat menu (dedicated Profile app-bar icon) ---
+  String get chatMenuTitle => 'Chat';
+  String get chatModeClan => _t('Chat Clan', 'Clan Chat');
+  String get chatModePersonal => _t('Chat Pribadi', 'Personal Chat');
+  String get selectClanToChatHint => _t('Pilih clan...', 'Choose a clan...');
+  String get selectFriendToChatHint =>
+      _t('Pilih teman...', 'Choose a friend...');
+  String get openChatButton => _t('Buka Chat', 'Open Chat');
+  String get noClansForChatTitle =>
+      _t('Belum punya clan', "You don't have a clan yet");
+  String get noClansForChatBody => _t(
+        'Buat atau gabung clan dulu lewat tab Clan di Papan Peringkat.',
+        'Create or join a clan first from the Clan tab on the leaderboard.',
+      );
+  String get noFriendsForChatTitle =>
+      _t('Belum punya teman', "You don't have any friends yet");
+  String get noFriendsForChatBody => _t(
+        'Tambahkan teman dulu lewat menu Tambah Teman untuk mulai chat pribadi.',
+        'Add a friend first from the Add Friend menu to start a personal chat.',
       );
   String get directMessageEmpty => _t(
         'Belum ada pesan. Sapa temanmu duluan!',

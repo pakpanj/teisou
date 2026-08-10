@@ -16,6 +16,8 @@ import '../../data/models/kana_status.dart';
 import '../../data/models/kana_type.dart';
 import '../bab/bab_providers.dart';
 import '../home/home_screen.dart';
+import '../leaderboard/add_friend_screen.dart';
+import '../leaderboard/chat_hub_screen.dart';
 import '../leaderboard/friend_providers.dart';
 import '../leaderboard/leaderboard_providers.dart';
 import '../leaderboard/leaderboard_screen.dart';
@@ -51,13 +53,27 @@ class ProfileScreen extends ConsumerWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            icon: CountBadge(
-              count: pendingFriendRequests,
-              child: const Text('🏆', style: TextStyle(fontSize: 22)),
-            ),
+            icon: const Text('🏆', style: TextStyle(fontSize: 22)),
             tooltip: s.leaderboardTooltip,
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const LeaderboardScreen()),
+            ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.chat_bubble_outline),
+            tooltip: s.chatMenuTitle,
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const ChatHubScreen()),
+            ),
+          ),
+          IconButton(
+            icon: CountBadge(
+              count: pendingFriendRequests,
+              child: const Icon(Icons.person_add_alt_1),
+            ),
+            tooltip: s.addFriendMenuTitle,
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const AddFriendScreen()),
             ),
           ),
         ],

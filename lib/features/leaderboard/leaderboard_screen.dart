@@ -7,26 +7,26 @@ import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
-import '../../core/widgets/count_badge.dart';
 import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
-import 'friend_providers.dart';
 import 'leaderboard_providers.dart';
 import 'public_profile_screen.dart' show openPublicProfile;
 import 'widgets/clan_tab.dart';
-import 'widgets/friends_tab.dart';
 import 'widgets/top_clan_tab.dart';
 import '../../core/widgets/app_loading.dart';
 
+/// Tabs cover score/clan ranking only — chat and friend requests moved to
+/// their own dedicated `ChatHubScreen`/`AddFriendScreen`, each with its own
+/// icon on `ProfileScreen`'s app bar, per an explicit request to give them
+/// separate mapped menus instead of living inside a 4th tab here.
 class LeaderboardScreen extends ConsumerWidget {
   const LeaderboardScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
-    final pendingFriendRequests = ref.watch(pendingFriendRequestCountProvider);
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         backgroundColor: context.palette.background,
         appBar: AppBar(
@@ -46,12 +46,6 @@ class LeaderboardScreen extends ConsumerWidget {
               Tab(text: s.tabGlobalScore),
               Tab(text: s.tabClan),
               Tab(text: s.tabTopClan),
-              Tab(
-                child: CountBadge(
-                  count: pendingFriendRequests,
-                  child: Text(s.tabFriends),
-                ),
-              ),
             ],
           ),
         ),
@@ -60,7 +54,6 @@ class LeaderboardScreen extends ConsumerWidget {
             _GlobalScoreTab(),
             ClanTab(),
             TopClanTab(),
-            FriendsTab(),
           ],
         ),
       ),
