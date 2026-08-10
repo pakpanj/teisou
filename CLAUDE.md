@@ -909,6 +909,55 @@ standing local-merge convention:
      ん/ン/を/ヲ guard, and graceful degradation (returns fewer than
      requested rather than an invalid result) for a structurally limited
      reading.
+   - **Distractor script mixing — single-kanji reading questions could show
+     katakana options for a hiragana correct answer, and vice versa
+     (2026-08-10, user report: "beberapa jawaban pilihan ganda itu berupa
+     katakana padahal yang seharusnya hiragana")**. Root cause:
+     `_buildSingleKanjiQuestions`'s reading-question path picked the
+     correct answer via `_randomReading`, which drew from
+     `[...entry.onyomi, ...entry.kunyomi]` combined — onyomi is katakana
+     and kunyomi is hiragana throughout this dataset, never mixed within
+     one kanji's own entry — but then built the distractor pool from
+     `otherEntries.expand((k) => [...k.onyomi, ...k.kunyomi])`, the same
+     combined pool for *every other* kanji too. `generateMutationDistractors`
+     itself was never the problem (it mutates the correct reading's own
+     mora and correctly preserves script per-mora), but its fallback
+     top-up (`_pickCloseDistractors`, character-level Levenshtein) ranks
+     purely by raw edit distance with no script awareness — and for a
+     single-mora reading (て/た/き/め and similarly common one-character
+     kunyomi/onyomi), *every* other single-character reading in the pool
+     is exactly edit-distance 1 away regardless of which two characters
+     differ, so a same-length katakana reading ties for "closest" as
+     often as a real hiragana neighbor and can easily get shuffled into
+     the top pick. Fixed at the source rather than by filtering
+     afterward: `_randomReading` became `_randomReadingWithKind`,
+     returning `({String reading, bool isOnyomi})` so the caller knows
+     which list the correct answer actually came from, and
+     `_buildSingleKanjiQuestions` now builds the distractor pool from
+     `otherEntries.expand((k) => picked.isOnyomi ? k.onyomi : k.kunyomi)`
+     — onyomi-only or kunyomi-only, never both. Compound-mode reading
+     questions (`_buildQuestions`, Kotoba word readings) were checked and
+     left untouched: those readings are real dictionary words' actual
+     readings, not two different reading *systems* for the same
+     character, so a katakana distractor there (a genuine katakana
+     loanword) isn't a bug the way mixing onyomi/kunyomi is. Verified
+     the pool stays large enough after the split to never starve the
+     3-distractor requirement — even N5, the smallest level, has ~142
+     onyomi and ~142 kunyomi entries pooled across its 107 kanji, far
+     more than the 3 needed. `test/kanji_combo_distractor_test.dart`
+     gained a new case generating real single-kanji reading questions
+     across N5/N4/N1 (5 runs of 50 questions each, against the real
+     bundled `KanjiRepository`/`KotobaRepository` data, not a mock) and
+     asserting every option in every reading question shares the correct
+     answer's script — this is the regression test that would have
+     caught the original bug, and does catch it when the fix is
+     reverted. `flutter analyze` clean, full `flutter test
+     --concurrency=1` suite (288 tests) passes. **No interactive
+     on-device pass done** — same standing gap as most content-logic
+     fixes in this file; worth a manual pass through a few single-kanji
+     reading questions on a real device before treating this as fully
+     verified, since the bug was originally caught that way (a user
+     playing the exam), not by any automated check.
 
 Verification for the first three (exam-restructure, staleness, and the
 take-one pool-search distractor fix): `flutter analyze` clean, `flutter

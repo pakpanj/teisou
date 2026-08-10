@@ -400,12 +400,22 @@ class KanjiComboRepository {
     });
   }
 
-  /// One random reading (onyomi or kunyomi) for [entry] — every real
+  /// One random reading for [entry], reporting whether it came from
+  /// [KanjiEntry.onyomi] or [KanjiEntry.kunyomi] — every real
   /// (non-placeholder) kanji in the dataset has at least one of either, so
-  /// this never returns null for pool entries.
-  String _randomReading(KanjiEntry entry) {
-    final readings = [...entry.onyomi, ...entry.kunyomi];
-    return readings[_random.nextInt(readings.length)];
+  /// this never throws for pool entries.
+  ///
+  /// The kind matters to the caller because onyomi is written in katakana
+  /// and kunyomi in hiragana throughout this dataset (イチ vs ひと, never
+  /// mixed within one kanji's own entry) — a real, reported bug was a
+  /// hiragana correct answer showing katakana options, traced to
+  /// [_buildSingleKanjiQuestions] drawing distractors from *both* pooled
+  /// together. Keeping distractors confined to the same kind as the
+  /// correct answer fixes it at the source, not by filtering afterward.
+  ({String reading, bool isOnyomi}) _randomReadingWithKind(KanjiEntry entry) {
+    final combined = [...entry.onyomi, ...entry.kunyomi];
+    final index = _random.nextInt(combined.length);
+    return (reading: combined[index], isOnyomi: index < entry.onyomi.length);
   }
 
   List<KanjiComboQuestion> _buildSingleKanjiQuestions(
@@ -420,26 +430,32 @@ class KanjiComboRepository {
     return List.generate(selected.length, (i) {
       final item = selected[i];
       final askReading = _random.nextBool();
-      final String Function(KanjiEntry) answerOf = askReading
-          ? _randomReading
-          : (k) => k.localizedMeaning(labels.language);
-      final correctAnswer = answerOf(item);
 
       // Excludes item itself - one of its *other* on'yomi/kun'yomi
       // readings (or meanings) would otherwise leak in as a "wrong"
       // answer that's technically still valid for this exact kanji.
       final otherEntries = pool.where((k) => !identical(k, item));
-      final distractors = askReading
-          ? _pickReadingDistractors(
-              correctAnswer,
-              otherEntries.expand((k) => [...k.onyomi, ...k.kunyomi]),
-              3,
-            )
-          : _pickRandomDistractors(
-              correctAnswer,
-              otherEntries.map((k) => k.localizedMeaning(labels.language)),
-              3,
-            );
+
+      final String correctAnswer;
+      Set<String> distractors;
+      if (askReading) {
+        final picked = _randomReadingWithKind(item);
+        correctAnswer = picked.reading;
+        // Same kind only (onyomi vs kunyomi) — see _randomReadingWithKind's
+        // doc comment for why mixing them produced wrong-script options.
+        distractors = _pickReadingDistractors(
+          correctAnswer,
+          otherEntries.expand((k) => picked.isOnyomi ? k.onyomi : k.kunyomi),
+          3,
+        );
+      } else {
+        correctAnswer = item.localizedMeaning(labels.language);
+        distractors = _pickRandomDistractors(
+          correctAnswer,
+          otherEntries.map((k) => k.localizedMeaning(labels.language)),
+          3,
+        );
+      }
       final options = [correctAnswer, ...distractors]..shuffle(_random);
       return KanjiComboQuestion(
         id: 'kombo_$i',
