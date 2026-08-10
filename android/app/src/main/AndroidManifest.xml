@@ -112,9 +112,23 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="chat_messages" />
+        <!-- A flat white silhouette (drawable-*dpi/ic_notification.png,
+             scripts/generate_notification_icon.py), not the full-color
+             launcher icon that used to sit here — Android force-flattens
+             a status-bar icon into a plain white blob regardless, and the
+             *launcher* icon has no transparency to flatten cleanly, so it
+             rendered as an ugly solid square. Matches the icon
+             FcmService.init() also passes to flutter_local_notifications
+             for the foreground-shown path, so all three notification
+             paths (foreground/Dart-shown, backgrounded/Android-shown via
+             the explicit channel, backgrounded/Android-shown via this
+             manifest default) look identical. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@mipmap/ic_launcher" />
+            android:resource="@drawable/ic_notification" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/notification_color" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

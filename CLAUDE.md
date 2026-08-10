@@ -8797,3 +8797,59 @@ independently confirmed that a notification now actually arrives** — the
 fix directly addresses the exact error `functions:log` showed, but per
 this file's own standing discipline, that's a strong diagnosis, not yet
 a confirmed fix until re-tested against the original report.
+
+## Update (2026-08-10, same day): notification polish, after the user
+confirmed one actually arrived
+
+Once a real push was confirmed working, the user asked to make it look
+nicer. Four changes, all client-side (no Cloud Function/rules change
+needed):
+
+- **A real monochrome status-bar icon.** `AndroidManifest.xml`'s
+  `default_notification_icon` and `FcmService`'s
+  `AndroidInitializationSettings` were both still pointing at
+  `@mipmap/ic_launcher` — the full-color app icon. Android force-
+  flattens whatever it's given into a plain white silhouette for the
+  status bar regardless, and the launcher icon has no transparency to
+  flatten cleanly, so it was rendering as an ugly solid white square.
+  `scripts/generate_notification_icon.py` (new, Pillow) draws a simple
+  white chat-bubble silhouette on transparent at all five Android
+  densities (`drawable-{m,h,xh,xxh,xxxh}dpi/ic_notification.png`) —
+  matches this project's existing precedent of small Python/Pillow
+  generator scripts for app assets (`generate_app_icon.py`,
+  `prepare_mascot.py`).
+- **Brand color.** New `android/app/src/main/res/values/colors.xml`
+  (`notification_color`, `#F4667A`) — the exact same hex as `lib/core/
+  theme/app_colors.dart`'s `primaryCoral`. Wired into both the manifest
+  (`default_notification_color`, for the backgrounded/terminated path
+  Android renders on its own) and `FcmService`'s `AndroidNotificationDetails.
+  color` (foreground path). No shared source between the Dart and
+  Android copies of this one color value — noted in both places so a
+  future brand-color change doesn't silently miss one.
+- **Real bug fixed in passing, not just cosmetic**: every message used
+  to post as a *brand-new* notification
+  (`DateTime.now().millisecondsSinceEpoch.remainder(100000)` as the id),
+  so a short back-and-forth conversation stacked a growing pile of
+  separate tray entries instead of updating one. Fixed with a stable
+  FNV-1a hash of the conversation key (`'dm:{conversationId}'`/
+  `'clan:{code}'`) as the notification id — the same "derive a
+  consistent value from a string id" pattern this codebase already uses
+  elsewhere (e.g. picking a consistent TTS voice per Kaiwa speaker) —
+  so a second message from the same chat updates the existing entry.
+- **`BigTextStyleInformation`** instead of a plain collapsed line, so a
+  longer clan message (server-capped at ~80 characters, still sometimes
+  more than fits one line) can be pulled down to read in full. A
+  `groupKey` (the same conversation key) was also added as a purely
+  cosmetic clustering hint for Android's own notification grouping — no
+  summary notification is posted alongside it, so this can't create an
+  extra tray entry on its own.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 288/288
+(`theme_consistency_test.dart`'s literal-color sweep doesn't flag the
+new `Color(0xFFF4667A)` constant — it only matches `Colors.xxx` named
+constants, not raw hex literals, so this needed no palette-token
+detour), debug APK rebuilt and reinstalled on the Moto G52J. **Not yet
+independently confirmed on-device that the icon/color/BigText/stable-id
+changes actually render as intended** — worth a fresh message to check
+the tray shows the coral-tinted bubble icon, and that sending two
+messages in a row updates one entry instead of creating two.

@@ -23,6 +23,33 @@ const _chatChannelName = 'Pesan Chat';
 const _chatChannelDescription =
     'Notifikasi pesan baru dari chat clan atau chat pribadi.';
 
+/// Matches `lib/core/theme/app_colors.dart`'s `primaryCoral` — no shared
+/// source between Dart and the notification tray for a single color
+/// value like this, so keep this, `android/app/src/main/res/values/
+/// colors.xml`'s `notification_color`, and `app_colors.dart` in sync by
+/// hand if the brand color ever changes.
+const _notificationColor = Color(0xFFF4667A);
+
+/// FNV-1a 32-bit — a plain, dependency-free stable hash, the same
+/// approach this codebase already uses elsewhere for "derive a
+/// consistent X from a string id" (e.g. picking a consistent TTS voice
+/// per Kaiwa speaker). A notification id has to be the *same* value
+/// every time for the *same* conversation, or Android stacks a brand new
+/// tray entry per message instead of updating the existing one — Dart's
+/// built-in `String.hashCode` happens to work for this in practice but
+/// isn't a documented cross-version guarantee, and a proper hash costs
+/// only a few lines.
+int _stableNotificationId(String key) {
+  var hash = 0x811c9dc5;
+  for (final unit in key.codeUnits) {
+    hash ^= unit;
+    hash = (hash * 0x01000193) & 0xFFFFFFFF;
+  }
+  // Android notification ids are a Java `int` (32-bit signed) — mask down
+  // to a safe positive range.
+  return hash & 0x7FFFFFFF;
+}
+
 /// Must be a **top-level** function annotated `@pragma('vm:entry-point')`
 /// — `FirebaseMessaging.onBackgroundMessage` runs it on a separate
 /// isolate with no access to anything `main()` built up, which is why
@@ -66,7 +93,13 @@ class FcmService {
 
     await _localNotifications.initialize(
       const InitializationSettings(
-        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        // A flat white silhouette (drawable-*dpi/ic_notification.png,
+        // scripts/generate_notification_icon.py) — not the full-color
+        // launcher icon this used to point at. Android force-flattens a
+        // status-bar icon regardless of what's passed, and the launcher
+        // icon has no transparency to flatten cleanly, so it rendered as
+        // a plain solid square before this.
+        android: AndroidInitializationSettings('@drawable/ic_notification'),
       ),
       onDidReceiveNotificationResponse: (response) {
         final payload = response.payload;
@@ -134,19 +167,46 @@ class FcmService {
   void _showForegroundNotification(RemoteMessage message) {
     final notification = message.notification;
     if (notification == null) return;
-    if (_keyFor(message.data) == currentOpenChatKey) return;
+    final key = _keyFor(message.data);
+    if (key == currentOpenChatKey) return;
+
+    // A stable id (derived from the conversation, not the current
+    // timestamp) means a second message from the same chat *updates* the
+    // existing tray entry instead of stacking a new one underneath it —
+    // the previous version used a millisecond timestamp here, which made
+    // every single message its own permanent notification and cluttered
+    // the tray after just a few messages.
+    final id = key != null
+        ? _stableNotificationId(key)
+        : DateTime.now().millisecondsSinceEpoch.remainder(100000);
 
     _localNotifications.show(
-      DateTime.now().millisecondsSinceEpoch.remainder(100000),
+      id,
       notification.title,
       notification.body,
-      const NotificationDetails(
+      NotificationDetails(
         android: AndroidNotificationDetails(
           _chatChannelId,
           _chatChannelName,
           channelDescription: _chatChannelDescription,
           importance: Importance.high,
           priority: Priority.high,
+          icon: 'ic_notification',
+          color: _notificationColor,
+          // Expandable (pull down to see the full message) instead of a
+          // single truncated line — most useful for a longer clan
+          // message, which the server already caps at ~80 characters but
+          // still doesn't always fit the collapsed one-line view.
+          styleInformation: BigTextStyleInformation(
+            notification.body ?? '',
+            contentTitle: notification.title,
+          ),
+          // Purely cosmetic clustering hint for Android's own grouping —
+          // notifications from the same conversation are visually kept
+          // together if the system chooses to group them; no summary
+          // notification is posted, so this never creates an extra entry
+          // on its own.
+          groupKey: key,
         ),
       ),
       payload: jsonEncode(message.data),

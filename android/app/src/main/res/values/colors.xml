@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App brand coral — lib/core/theme/app_colors.dart's primaryCoral.
+         Keep these in sync by hand; there is no shared source between
+         Dart and Android resources for a single color value like this. -->
+    <color name="notification_color">#F4667A</color>
+</resources>
