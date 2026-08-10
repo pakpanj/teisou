@@ -7,8 +7,10 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_loading.dart';
 import '../../core/widgets/count_badge.dart';
 import '../../data/models/friend_request.dart';
+import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import 'friend_providers.dart';
+import 'leaderboard_screen.dart' show LeaderboardAvatar;
 import 'widgets/search_friend_tab.dart';
 
 /// Dedicated "Tambah Teman" entry point — its own icon on `ProfileScreen`'s
@@ -160,37 +162,90 @@ class _IncomingRequestRowState extends ConsumerState<_IncomingRequestRow> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: context.palette.cardWhite,
-      borderRadius: BorderRadius.circular(16),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                widget.strings.friendRequestFrom(widget.request.fromName),
-                style: TextStyle(color: context.palette.textNavy),
-              ),
+    final avatarEntry = LeaderboardEntry(
+      uid: widget.request.fromUid,
+      displayName: widget.request.fromName,
+      photoUrl: widget.request.fromPhotoUrl,
+      avatarType: widget.request.fromAvatarType,
+      avatarValue: widget.request.fromAvatarValue,
+      totalMastered: 0,
+      examHighScore: 0,
+      updatedAt: widget.request.createdAt,
+    );
+
+    return Container(
+      decoration: BoxDecoration(
+        color: context.palette.cardWhite,
+        borderRadius: BorderRadius.circular(18),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.all(14),
+      child: Row(
+        children: [
+          LeaderboardAvatar(entry: avatarEntry, size: 44),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.request.fromName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: context.palette.textNavy,
+                  ),
+                ),
+                Text(
+                  widget.strings.friendRequestSubtitle,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: context.palette.textNavy.withValues(alpha: 0.6),
+                  ),
+                ),
+              ],
             ),
-            if (_responding)
-              const SizedBox(
-                width: 18,
-                height: 18,
-                child: CircularProgressIndicator(strokeWidth: 2),
-              )
-            else ...[
-              TextButton(
-                onPressed: () => _respond(false),
-                child: Text(widget.strings.declineFriendRequest),
-              ),
-              FilledButton(
-                onPressed: () => _respond(true),
-                child: Text(widget.strings.acceptFriendRequest),
-              ),
-            ],
-          ],
-        ),
+          ),
+          const SizedBox(width: 8),
+          if (_responding)
+            const SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(strokeWidth: 2),
+            )
+          else
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  tooltip: widget.strings.declineFriendRequest,
+                  style: IconButton.styleFrom(
+                    backgroundColor: context.palette.errorRed.withValues(alpha: 0.1),
+                    shape: const CircleBorder(),
+                  ),
+                  onPressed: () => _respond(false),
+                  icon: Icon(Icons.close, color: context.palette.errorRed, size: 18),
+                ),
+                const SizedBox(width: 6),
+                IconButton(
+                  tooltip: widget.strings.acceptFriendRequest,
+                  style: IconButton.styleFrom(
+                    backgroundColor: context.palette.successGreen.withValues(alpha: 0.12),
+                    shape: const CircleBorder(),
+                  ),
+                  onPressed: () => _respond(true),
+                  icon: Icon(Icons.check, color: context.palette.successGreen, size: 18),
+                ),
+              ],
+            ),
+        ],
       ),
     );
   }

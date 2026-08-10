@@ -35,3 +35,38 @@ final directMessagesProvider =
       .watch(directMessageRepositoryProvider)
       .watchMessages(conversationId);
 });
+
+/// Live — a conversation's single most recent message (or `null` — most
+/// friends have no conversation doc at all yet), for the "Chat Pribadi"
+/// list's preview line and [directChatUnreadProvider]'s unread check.
+final directLastMessageProvider =
+    StreamProvider.family<DirectMessage?, String>((ref, conversationId) {
+  return ref
+      .watch(directMessageRepositoryProvider)
+      .watchLastMessage(conversationId);
+});
+
+/// Live — both participants' last-read timestamps for a conversation.
+final directLastReadAtProvider =
+    StreamProvider.family<Map<String, DateTime>, String>(
+        (ref, conversationId) {
+  return ref
+      .watch(directMessageRepositoryProvider)
+      .watchLastReadAt(conversationId);
+});
+
+/// Whether conversation [conversationId] has a message the signed-in
+/// learner hasn't read yet — same derivation shape as
+/// `clan_providers.dart`'s `clanChatUnreadProvider`.
+final directChatUnreadProvider = Provider.family<bool, String>((ref, conversationId) {
+  final myUid = ref.watch(appStartupProvider).valueOrNull?.uid;
+  final lastMessage =
+      ref.watch(directLastMessageProvider(conversationId)).valueOrNull;
+  if (myUid == null || lastMessage == null) return false;
+  if (lastMessage.senderUid == myUid) return false;
+  final lastReadAt =
+      ref.watch(directLastReadAtProvider(conversationId)).valueOrNull;
+  final readAt = lastReadAt?[myUid];
+  if (readAt == null) return true;
+  return lastMessage.createdAt.isAfter(readAt);
+});

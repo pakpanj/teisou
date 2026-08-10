@@ -44,12 +44,18 @@ service cloud.firestore {
     // ranking anggota). Membuat clan hanya boleh kalau hostUid == diri
     // sendiri. Mengubah dokumen clan setelah dibuat hanya boleh oleh host
     // (mis. nanti kalau ada fitur rename), KECUALI perubahan yang hanya
-    // menyentuh `memberCount`/`totalScore` — keduanya boleh ditulis siapa
-    // saja yang login (bukan cuma anggota clan itu), mengikuti pola yang
-    // sudah ada untuk `memberCount` sebelum fitur ini: kepercayaan yang
-    // sama seperti `leaderboard/{uid}.globalScore`, yang juga bisa ditulis
-    // apa saja oleh pemiliknya tanpa validasi server-side atas angka yang
-    // ditulis. Tidak ada Cloud Functions di proyek ini untuk memvalidasi
+    // menyentuh `memberCount`/`totalScore`/`lastReadAt` — ketiganya boleh
+    // ditulis siapa saja yang login (bukan cuma anggota clan itu),
+    // mengikuti pola yang sudah ada untuk `memberCount` sebelum fitur ini:
+    // kepercayaan yang sama seperti `leaderboard/{uid}.globalScore`, yang
+    // juga bisa ditulis apa saja oleh pemiliknya tanpa validasi server-side
+    // atas angka yang ditulis. `lastReadAt` sengaja hanya menyimpan
+    // penanda waktu "kapan user X terakhir baca chat", bukan isi pesan
+    // sama sekali — chat clan yang sesungguhnya tetap hanya bisa dibaca
+    // anggota clan itu lewat rule `isClanMember` di subcollection
+    // `messages` di bawah, supaya batas privasi chat clan yang sudah ada
+    // sejak awal tidak melebar hanya karena dokumen clan-nya sendiri
+    // publik. Tidak ada Cloud Functions di proyek ini untuk memvalidasi
     // agregat semacam ini, jadi ini kelonggaran yang sudah diterima
     // desainnya, bukan celah baru.
     match /clans/{code} {
@@ -59,7 +65,7 @@ service cloud.firestore {
       allow update: if request.auth != null
           && (resource.data.hostUid == request.auth.uid
               || request.resource.data.diff(resource.data).affectedKeys()
-                  .hasOnly(['memberCount', 'totalScore']));
+                  .hasOnly(['memberCount', 'totalScore', 'lastReadAt']));
       allow delete: if request.auth != null && resource.data.hostUid == request.auth.uid;
 
       // Roster — siapa saja yang login bisa baca daftar anggota. Menulis

@@ -8459,3 +8459,126 @@ re-confirmed on-device that a first-time personal chat open now works**
 — logcat named the exact race this fix closes, but the fresh install was
 handed back for a real retry rather than trusting the diagnosis alone,
 same discipline as every other fix this session.
+
+## Update (2026-08-10, final for the day): unread-message notifications
++ a real chat-list redesign
+
+Two asks: a WhatsApp-style "you have a new message" signal (this app has
+no push-notification pipeline — no `firebase_messaging`, no Cloud
+Functions — so this is the honest in-app equivalent, same reasoning
+already used for the friend-request `CountBadge`), and a visual redesign
+of the Chat/Add-Friend screens so they read as a real chat product
+instead of a form.
+
+**Unread tracking — a per-user read-marker, not a maintained counter.**
+Neither `ClanMessage` nor `DirectMessage` gained an `isRead` field —
+messages are immutable once sent (a deliberate moderation-adjacent
+property documented elsewhere in this file) and retroactively marking N
+of them read would mean N writes per open. Instead, each chat's *parent*
+doc gets one `lastReadAt` map (`{uid: Timestamp}`), and "unread" is
+computed client-side: `lastMessage.createdAt.isAfter(lastReadAt[myUid])
+&& lastMessage.senderUid != myUid`. This is a boolean per conversation
+("something new is here"), not an exact unread *count* the way WhatsApp
+shows — an exact count needs either a server-maintained integer (Cloud
+Functions this project doesn't have) or scanning full message history
+per render (wasteful), so a dot/highlight was the honest choice, not a
+number. The *aggregate* badge on the 💬 icon and the bottom-nav Profil
+icon does show a count, but it's "how many conversations have unread",
+not "how many unread messages total".
+
+- **`ClanMessageRepository.watchLastMessage`/`markRead`/`watchLastReadAt`**
+  (new): `lastReadAt` lives on the **clan doc itself**
+  (`clans/{code}.lastReadAt.{uid}`), not on a message — deliberately, so
+  it never exposes chat *content*. `clans/{code}` is public-readable by
+  any signed-in user (by design, for search/join-by-code), and this
+  project's whole clan-chat privacy stance (see `ClanMessageRepository`'s
+  original doc comment) is that message content stays member-gated via
+  `isClanMember` on the `messages` subcollection — a bare "user X last
+  read the chat at time Y" timestamp carries none of that, so it was
+  safe to put on the already-public doc; the message *text*/*sender*
+  preview shown in the chat list is instead read live from the same
+  member-gated `messages` subcollection (`.orderBy(createdAt
+  desc).limit(1)`), never denormalized onto the public doc.
+  `firestore.rules`' `clans/{code}` update allowlist widened from
+  `['memberCount', 'totalScore']` to add `'lastReadAt'` — the one rules
+  change this update needed; still open to any signed-in user, matching
+  the pre-existing trust level for `memberCount`/`totalScore` (no
+  Cloud Functions to validate these fields server-side, an accepted
+  trade-off already documented for the other two).
+- **`DirectMessageRepository.watchLastMessage`/`markRead`/
+  `watchLastReadAt`** (new): mirrors the clan shape, but since
+  `directMessages/{conversationId}` is already private to its two
+  participants (`firestore.rules`' existing `allow update: auth.uid in
+  participants`, no restriction on which fields), no rules change was
+  needed there at all.
+- **Both `watchLastMessage`/`watchLastReadAt` gracefully treat
+  `permission-denied` as empty state, not an error** — a friend with no
+  conversation doc yet (the common case; `ensureConversation` only ever
+  runs once `DirectMessageScreen` itself opens) has no parent doc for
+  `firestore.rules`' `get()` to succeed against, which errors exactly
+  like the listener race fixed in the update above — except this time
+  it's a genuinely absent doc, not a race, so listing every friend's
+  chat-list row can't proactively create N conversation docs just to
+  avoid it. Implemented as `async*` generators with a `try`/`on
+  FirebaseException catch` around the `await for` — **not**
+  `Stream.handleError`, which was tried first and doesn't actually work
+  for this: `handleError`'s callback can't inject a replacement value
+  into the stream, it can only swallow silently, so the provider would
+  have stayed stuck in `AsyncLoading` forever instead of resolving to
+  "no messages yet". Caught by re-reading what `handleError` actually
+  does before shipping it, not by a failed test.
+- **Providers**: `clanLastMessageProvider`/`clanLastReadAtProvider`/
+  `clanChatUnreadProvider` (`clan_providers.dart`) and their direct-
+  message mirrors (`friend_providers.dart`) are plain `.family`
+  providers; a new `chat_providers.dart` hosts
+  `totalUnreadChatCountProvider`, which watches every clan/friend's own
+  unread provider and sums how many are true — Riverpod re-runs it the
+  moment any one flips, no separate aggregate to keep in sync, fine at
+  this app's classroom-sized scale.
+- **`markRead` call sites**: both `ClanChatScreen`/`DirectMessageScreen`
+  track the latest message id they've already told the server was read
+  (`_lastMarkedMessageId`) and only fire the merge write when that id
+  actually changes — on first open, and again if a new message arrives
+  while the screen stays open — rather than re-issuing the same write on
+  every rebuild.
+
+**Redesign.** `ChatHubScreen` went from a dropdown-plus-button picker to
+an actual chat list: avatar, name, one-line message preview (clan rows
+prefix the sender's name, personal rows don't need to), a relative
+timestamp, and an unread dot — tapping a row opens
+`ClanChatScreen`/`DirectMessageScreen` directly, no intermediate
+"confirm" tap. The Clan/Pribadi toggle became a rounded two-segment pill
+(`_ModeSwitch`) instead of the underlined-text tab pair, reading as one
+control rather than two form labels. Both chat screens got a shared
+`ChatComposer` (`widgets/chat_composer.dart`, extracted the moment a
+second real call site needed the identical rounded-pill-input-plus-
+circular-send-button row, not speculatively ahead of one), message
+bubbles gained a small timestamp and Telegram/WhatsApp-style asymmetric
+corner rounding (the "tail" corner stays sharp), and clan bubbles only
+repeat the sender's name when it actually changes from the previous
+message instead of on every single bubble. `AddFriendScreen`'s incoming-
+request rows gained an avatar (via a throwaway `LeaderboardEntry`, the
+same pattern `ClanMembersScreen`/`FriendsTab` already established) and
+round accept/decline icon buttons instead of text buttons; both that
+screen's cards and the search-results cards picked up a soft shadow
+(`Container` + `BoxShadow`, not `Material` elevation, to match the flat-
+but-shadowed look already established elsewhere in this app) and the
+search field became a filled rounded-pill input instead of a sharp-
+cornered outline box.
+
+**Palette discipline maintained, not an afterthought**: every new
+literal color is `Colors.white`/`Colors.black`/`Colors.transparent`
+(`theme_consistency_test.dart`'s exact allow-list) — checked with a grep
+across every new/edited file *before* running the suite, not discovered
+by a failing test.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 288/288, debug
+APK rebuilt and reinstalled on the Moto G52J (clean launch). **No
+interactive on-device confirmation of the new chat list, unread dots, or
+redesigned cards specifically** — same standing gap as every other
+sizeable UI change in this file; worth confirming the unread dot
+actually appears on an unread conversation and clears within a beat of
+opening it, and that the redesigned cards render correctly in dark mode
+too (not just spot-checked against the palette's literal-color rule,
+which catches hardcoded colors but not e.g. contrast/legibility of a
+new shadow against a dark background).

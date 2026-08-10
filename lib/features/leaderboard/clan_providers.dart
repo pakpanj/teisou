@@ -125,3 +125,33 @@ final clanMessagesProvider =
     StreamProvider.family<List<ClanMessage>, String>((ref, code) {
   return ref.watch(clanMessageRepositoryProvider).watchMessages(code);
 });
+
+/// Live — [code]'s single most recent message (or `null`), for the "Chat
+/// Clan" list's preview line and [clanChatUnreadProvider]'s unread check.
+final clanLastMessageProvider =
+    StreamProvider.family<ClanMessage?, String>((ref, code) {
+  return ref.watch(clanMessageRepositoryProvider).watchLastMessage(code);
+});
+
+/// Live — every member's last-read timestamp for [code]'s chat.
+final clanLastReadAtProvider =
+    StreamProvider.family<Map<String, DateTime>, String>((ref, code) {
+  return ref.watch(clanMessageRepositoryProvider).watchLastReadAt(code);
+});
+
+/// Whether [code]'s clan chat has a message the signed-in learner hasn't
+/// read yet — combines [clanLastMessageProvider]/[clanLastReadAtProvider]
+/// with the signed-in uid rather than being its own stream, since it's a
+/// pure derivation of two values this file already watches independently
+/// (both providers stay shared/live regardless of how many places derive
+/// from them, so this costs nothing extra).
+final clanChatUnreadProvider = Provider.family<bool, String>((ref, code) {
+  final myUid = ref.watch(appStartupProvider).valueOrNull?.uid;
+  final lastMessage = ref.watch(clanLastMessageProvider(code)).valueOrNull;
+  if (myUid == null || lastMessage == null) return false;
+  if (lastMessage.senderUid == myUid) return false;
+  final lastReadAt = ref.watch(clanLastReadAtProvider(code)).valueOrNull;
+  final readAt = lastReadAt?[myUid];
+  if (readAt == null) return true;
+  return lastMessage.createdAt.isAfter(readAt);
+});

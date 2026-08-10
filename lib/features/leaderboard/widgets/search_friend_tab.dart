@@ -111,7 +111,14 @@ class _SearchFriendTabState extends ConsumerState<SearchFriendTab> {
             },
             decoration: InputDecoration(
               hintText: s.searchFriendHint,
-              border: const OutlineInputBorder(),
+              filled: true,
+              fillColor: context.palette.cardWhite,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(24),
+                borderSide: BorderSide.none,
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               suffixIcon: IconButton(
                 icon: const Icon(Icons.search),
                 onPressed: () => _search(_controller.text),
@@ -142,23 +149,35 @@ class _SearchFriendTabState extends ConsumerState<SearchFriendTab> {
                       ),
                     )
                   : ListView.separated(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
                       itemCount: results.length,
-                      separatorBuilder: (_, _) => const SizedBox(height: 8),
+                      separatorBuilder: (_, _) => const SizedBox(height: 10),
                       itemBuilder: (context, index) {
                         final entry = results[index];
                         final sent = _sentUids.contains(entry.uid);
-                        return Material(
-                          color: context.palette.cardWhite,
-                          borderRadius: BorderRadius.circular(16),
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: context.palette.cardWhite,
+                            borderRadius: BorderRadius.circular(18),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.04),
+                                blurRadius: 10,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 14,
-                              vertical: 8,
+                              vertical: 10,
                             ),
                             child: Row(
                               children: [
-                                LeaderboardAvatar(entry: entry, size: 36),
+                                LeaderboardAvatar(entry: entry, size: 40),
                                 const SizedBox(width: 12),
                                 Expanded(
                                   child: Column(

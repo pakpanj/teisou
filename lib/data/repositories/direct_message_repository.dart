@@ -92,6 +92,81 @@ class DirectMessageRepository {
         );
   }
 
+  /// The single most recent message, or `null` — powers both the chat
+  /// list's preview line in `ChatHubScreen` and the unread check in
+  /// [DirectMessageRepository]'s sibling providers (see
+  /// `friend_providers.dart`'s `directChatUnreadProvider`).
+  ///
+  /// **Deliberately swallows a `permission-denied` into `null` instead of
+  /// propagating it as a stream error.** A friend with no conversation
+  /// doc yet (never opened — `ensureConversation` only ever runs once
+  /// `DirectMessageScreen` itself opens) has no `directMessages/
+  /// {conversationId}` parent doc at all, and `firestore.rules`' read
+  /// rule errors trying to evaluate `participants` on a document that
+  /// doesn't exist — the exact same shape of failure the `messages`
+  /// subcollection race fix elsewhere in this file's history had to
+  /// account for, just triggered by a genuinely-absent doc this time
+  /// instead of a race. "No conversation started yet" is an expected,
+  /// common state for most friends in a chat list — not a real error —
+  /// so it's treated as one here rather than surfacing a scary
+  /// permission message on every never-messaged friend's row.
+  Stream<DirectMessage?> watchLastMessage(String conversationId) async* {
+    try {
+      await for (final snapshot in _messagesOf(conversationId)
+          .orderBy('createdAt', descending: true)
+          .limit(1)
+          .snapshots()) {
+        yield snapshot.docs.isEmpty
+            ? null
+            : DirectMessage.fromMap(
+                snapshot.docs.first.id,
+                snapshot.docs.first.data(),
+              );
+      }
+    } on FirebaseException catch (e) {
+      if (e.code != 'permission-denied') rethrow;
+      yield null;
+    }
+  }
+
+  /// Records that [uid] has read up to now — a plain per-user timestamp
+  /// merged onto the conversation doc, the same `lastReadAt.{uid}` shape
+  /// `ClanRepository.markRead` uses for clan chat. Safe to call even if
+  /// the conversation doc doesn't exist yet in principle, but every real
+  /// call site only ever calls this from inside `DirectMessageScreen`
+  /// after `ensureConversation` has already resolved, so the doc is
+  /// always there by the time this runs.
+  Future<void> markRead(String conversationId, String uid) {
+    return _conversationDoc(conversationId).set({
+      'lastReadAt': {uid: FieldValue.serverTimestamp()},
+    }, SetOptions(merge: true));
+  }
+
+  /// Live per-user read markers for [conversationId] — `null`/absent for
+  /// a uid means "never read", same absent-vs-set distinction this
+  /// codebase already relies on elsewhere (e.g. `LeaderboardEntry.
+  /// globalScore`). Same graceful-empty-on-permission-denied handling as
+  /// [watchLastMessage], for the same reason (no conversation doc yet is
+  /// an expected state, not an error).
+  Stream<Map<String, DateTime>> watchLastReadAt(String conversationId) async* {
+    try {
+      await for (final doc in _conversationDoc(conversationId).snapshots()) {
+        final raw = doc.data()?['lastReadAt'] as Map<String, dynamic>?;
+        if (raw == null) {
+          yield <String, DateTime>{};
+        } else {
+          yield raw.map((uid, value) {
+            final ts = value is Timestamp ? value.toDate() : DateTime.now();
+            return MapEntry(uid, ts);
+          });
+        }
+      }
+    } on FirebaseException catch (e) {
+      if (e.code != 'permission-denied') rethrow;
+      yield <String, DateTime>{};
+    }
+  }
+
   Future<void> sendMessage({
     required String conversationId,
     required String senderUid,

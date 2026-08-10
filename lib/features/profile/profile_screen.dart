@@ -18,6 +18,7 @@ import '../bab/bab_providers.dart';
 import '../home/home_screen.dart';
 import '../leaderboard/add_friend_screen.dart';
 import '../leaderboard/chat_hub_screen.dart';
+import '../leaderboard/chat_providers.dart';
 import '../leaderboard/friend_providers.dart';
 import '../leaderboard/leaderboard_providers.dart';
 import '../leaderboard/leaderboard_screen.dart';
@@ -45,6 +46,7 @@ class ProfileScreen extends ConsumerWidget {
     final userAsync = ref.watch(appStartupProvider);
     final s = ref.watch(appStringsProvider);
     final pendingFriendRequests = ref.watch(pendingFriendRequestCountProvider);
+    final unreadChats = ref.watch(totalUnreadChatCountProvider);
 
     return Scaffold(
       backgroundColor: context.palette.background,
@@ -60,7 +62,10 @@ class ProfileScreen extends ConsumerWidget {
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.chat_bubble_outline),
+            icon: CountBadge(
+              count: unreadChats,
+              child: const Icon(Icons.chat_bubble_outline),
+            ),
             tooltip: s.chatMenuTitle,
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const ChatHubScreen()),

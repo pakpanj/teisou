@@ -11,6 +11,7 @@ import '../../core/widgets/count_badge.dart';
 import '../../core/widgets/sakura_decoration.dart';
 import '../../core/widgets/sakura_fall_widget.dart';
 import '../exam/exam_mode_picker_screen.dart';
+import '../leaderboard/chat_providers.dart';
 import '../leaderboard/friend_providers.dart';
 import '../leaderboard/leaderboard_screen.dart';
 import '../profile/profile_screen.dart';
@@ -251,18 +252,20 @@ class _BottomNavBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Only the Profil item ever carries a badge — it's the path to the
-    // Leaderboard's "Teman" tab, the one place a pending friend request is
-    // otherwise invisible until this app has some real way to push a
-    // notification for it. See CountBadge's own doc comment.
+    // Only the Profil item ever carries a badge — it's the path to both
+    // the Add Friend and Chat icons, the two places a pending friend
+    // request or an unread chat message are otherwise invisible until
+    // this app has some real way to push a notification for either. See
+    // CountBadge's own doc comment.
     final pendingFriendRequests = ref.watch(pendingFriendRequestCountProvider);
+    final unreadChats = ref.watch(totalUnreadChatCountProvider);
     final items = [
       (icon: Icons.home_rounded, label: strings.navHome, badge: 0),
       (icon: Icons.assignment_rounded, label: strings.navExam, badge: 0),
       (
         icon: Icons.person_rounded,
         label: strings.navProfile,
-        badge: pendingFriendRequests,
+        badge: pendingFriendRequests + unreadChats,
       ),
     ];
     return Container(

@@ -7,6 +7,7 @@ import '../../../core/theme/app_palette.dart';
 import '../../../data/models/clan_message.dart';
 import '../../../data/repositories/clan_message_repository.dart';
 import '../clan_providers.dart';
+import 'chat_composer.dart';
 
 /// Group chat for one clan's own members. See
 /// `ClanMessageRepository`'s doc comment for the scope/safety reasoning —
@@ -28,11 +29,30 @@ class _ClanChatScreenState extends ConsumerState<ClanChatScreen> {
   static const _sendCooldown = Duration(seconds: 2);
   bool _sending = false;
 
+  /// The id of the latest message this screen has already told the
+  /// server was read — tracked so [_maybeMarkRead] only fires a write
+  /// when the visible latest message actually changes (on open, and
+  /// again whenever a new one arrives while this screen stays open),
+  /// instead of re-issuing the same merge write on every rebuild.
+  String? _lastMarkedMessageId;
+
   @override
   void dispose() {
     _controller.dispose();
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void _maybeMarkRead(List<ClanMessage> messages) {
+    if (messages.isEmpty) return;
+    final latestId = messages.last.id;
+    if (latestId == _lastMarkedMessageId) return;
+    _lastMarkedMessageId = latestId;
+    final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (myUid == null) return;
+    // Best-effort — a missed read-marker just means the unread badge
+    // stays on a beat longer, never a blocking failure.
+    ref.read(clanMessageRepositoryProvider).markRead(widget.code, myUid).catchError((_) {});
   }
 
   Future<void> _send() async {
@@ -151,12 +171,39 @@ class _ClanChatScreenState extends ConsumerState<ClanChatScreen> {
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: Text('${s.clanChat} · ${widget.clanName}')),
+      appBar: AppBar(
+        titleSpacing: 0,
+        title: Row(
+          children: [
+            CircleAvatar(
+              radius: 18,
+              backgroundColor: context.palette.primaryCoral.withValues(alpha: 0.15),
+              child: Text(
+                widget.clanName.isEmpty ? '👥' : widget.clanName[0].toUpperCase(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: context.palette.primaryCoral,
+                ),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                widget.clanName,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 16),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Column(
         children: [
           Expanded(
             child: messagesAsync.when(
               data: (messages) {
+                WidgetsBinding.instance
+                    .addPostFrameCallback((_) => _maybeMarkRead(messages));
                 if (messages.isEmpty) {
                   return Center(
                     child: Padding(
@@ -173,13 +220,17 @@ class _ClanChatScreenState extends ConsumerState<ClanChatScreen> {
                 }
                 return ListView.builder(
                   controller: _scrollController,
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   itemCount: messages.length,
                   itemBuilder: (context, index) {
                     final message = messages[index];
+                    final previous = index > 0 ? messages[index - 1] : null;
+                    final showSenderName = message.senderUid != myUid &&
+                        previous?.senderUid != message.senderUid;
                     return _MessageBubble(
                       message: message,
                       isMine: message.senderUid == myUid,
+                      showSenderName: showSenderName,
                       isBlocked: blockedUids.contains(message.senderUid),
                       strings: s,
                       onBlock: () => _toggleBlock(
@@ -196,48 +247,12 @@ class _ClanChatScreenState extends ConsumerState<ClanChatScreen> {
               error: (e, _) => Center(child: Text('$e')),
             ),
           ),
-          SafeArea(
-            top: false,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      maxLength: ClanMessageRepository.maxMessageLength,
-                      minLines: 1,
-                      maxLines: 4,
-                      decoration: InputDecoration(
-                        hintText: s.messageHint,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(24),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 10,
-                        ),
-                      ),
-                      onSubmitted: (_) => _send(),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  IconButton.filled(
-                    onPressed: _sending ? null : _send,
-                    icon: _sending
-                        ? const SizedBox(
-                            width: 18,
-                            height: 18,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: Colors.white,
-                            ),
-                          )
-                        : const Icon(Icons.send),
-                  ),
-                ],
-              ),
-            ),
+          ChatComposer(
+            controller: _controller,
+            sending: _sending,
+            onSend: _send,
+            hint: s.messageHint,
+            maxLength: ClanMessageRepository.maxMessageLength,
           ),
         ],
       ),
@@ -248,6 +263,7 @@ class _ClanChatScreenState extends ConsumerState<ClanChatScreen> {
 class _MessageBubble extends StatelessWidget {
   final ClanMessage message;
   final bool isMine;
+  final bool showSenderName;
   final bool isBlocked;
   final AppStrings strings;
   final VoidCallback onBlock;
@@ -256,6 +272,7 @@ class _MessageBubble extends StatelessWidget {
   const _MessageBubble({
     required this.message,
     required this.isMine,
+    required this.showSenderName,
     required this.isBlocked,
     required this.strings,
     required this.onBlock,
@@ -266,7 +283,7 @@ class _MessageBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = strings;
     final bubbleColor = isMine
-        ? context.palette.primaryCoral.withValues(alpha: 0.15)
+        ? context.palette.primaryCoral.withValues(alpha: 0.16)
         : context.palette.cardWhite;
 
     return Align(
@@ -303,26 +320,34 @@ class _MessageBubble extends StatelessWidget {
                   ),
                 ),
         child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 4),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          margin: const EdgeInsets.symmetric(vertical: 2),
+          padding: const EdgeInsets.fromLTRB(14, 8, 10, 6),
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width * 0.75,
+            maxWidth: MediaQuery.of(context).size.width * 0.78,
           ),
           decoration: BoxDecoration(
             color: bubbleColor,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.only(
+              topLeft: const Radius.circular(16),
+              topRight: const Radius.circular(16),
+              bottomLeft: Radius.circular(isMine ? 16 : 4),
+              bottomRight: Radius.circular(isMine ? 4 : 16),
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (!isMine)
-                Text(
-                  message.senderName,
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
-                    color: context.palette.primaryCoral,
+              if (showSenderName)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 2),
+                  child: Text(
+                    message.senderName,
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                      color: context.palette.primaryCoral,
+                    ),
                   ),
                 ),
               Text(
@@ -334,10 +359,27 @@ class _MessageBubble extends StatelessWidget {
                   fontStyle: isBlocked ? FontStyle.italic : FontStyle.normal,
                 ),
               ),
+              const SizedBox(height: 2),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  _formatTime(message.createdAt),
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: context.palette.textNavy.withValues(alpha: 0.4),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  String _formatTime(DateTime time) {
+    final hour = time.hour.toString().padLeft(2, '0');
+    final minute = time.minute.toString().padLeft(2, '0');
+    return '$hour.$minute';
   }
 }

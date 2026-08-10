@@ -7,17 +7,18 @@ import '../../../core/theme/app_palette.dart';
 import '../../../data/models/direct_message.dart';
 import '../../../data/repositories/direct_message_repository.dart';
 import '../friend_providers.dart';
+import 'chat_composer.dart';
 
 /// Private 1:1 chat with [friendUid] — see `DirectMessageRepository`'s doc
 /// comment for the child-safety reasoning behind why this only opens
 /// between accepted friends. Structurally a near-copy of `ClanChatScreen`
-/// (same send-cooldown/length-cap/report flow), minus the block feature:
-/// unfriending (`FriendRepository.removeFriend`, an app-bar action right on
-/// this screen — there's no separate friend-list screen anymore, chat is
-/// reached via `ChatHubScreen`'s picker) is the equivalent action here, and
-/// it does something clan chat's block can't — it actually revokes both
-/// sides' read/write access at the `firestore.rules` level, not just hides
-/// messages client-side.
+/// (same send-cooldown/length-cap/report flow, same `ChatComposer`), minus
+/// the block feature: unfriending (`FriendRepository.removeFriend`, an
+/// app-bar action right on this screen — there's no separate friend-list
+/// screen anymore, chat is reached via `ChatHubScreen`'s picker) is the
+/// equivalent action here, and it does something clan chat's block can't —
+/// it actually revokes both sides' read/write access at the
+/// `firestore.rules` level, not just hides messages client-side.
 class DirectMessageScreen extends ConsumerStatefulWidget {
   final String friendUid;
   final String friendName;
@@ -39,6 +40,10 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
   static const _sendCooldown = Duration(seconds: 2);
   bool _sending = false;
   String? _myUid;
+
+  /// Same "only write when the visible latest message actually changes"
+  /// guard `ClanChatScreen` uses — see its own doc comment.
+  String? _lastMarkedMessageId;
 
   @override
   void initState() {
@@ -80,6 +85,19 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  void _maybeMarkRead(String conversationId, List<DirectMessage> messages) {
+    if (messages.isEmpty) return;
+    final latestId = messages.last.id;
+    if (latestId == _lastMarkedMessageId) return;
+    _lastMarkedMessageId = latestId;
+    final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (myUid == null) return;
+    ref
+        .read(directMessageRepositoryProvider)
+        .markRead(conversationId, myUid)
+        .catchError((_) {});
   }
 
   Future<void> _send() async {
@@ -233,7 +251,32 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
     return Scaffold(
       backgroundColor: context.palette.background,
       appBar: AppBar(
-        title: Text(widget.friendName),
+        titleSpacing: 0,
+        title: Row(
+          children: [
+            CircleAvatar(
+              radius: 18,
+              backgroundColor: context.palette.primaryCoral.withValues(alpha: 0.15),
+              child: Text(
+                widget.friendName.isEmpty
+                    ? '🐱'
+                    : widget.friendName[0].toUpperCase(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: context.palette.primaryCoral,
+                ),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                widget.friendName,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 16),
+              ),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
             tooltip: s.removeFriend,
@@ -247,6 +290,9 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
           Expanded(
             child: messagesAsync.when(
               data: (messages) {
+                WidgetsBinding.instance.addPostFrameCallback(
+                  (_) => _maybeMarkRead(conversationId, messages),
+                );
                 if (messages.isEmpty) {
                   return Center(
                     child: Padding(
@@ -262,7 +308,7 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
                   );
                 }
                 return ListView.builder(
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   itemCount: messages.length,
                   itemBuilder: (context, index) {
                     final message = messages[index];
@@ -279,48 +325,12 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
               error: (e, _) => Center(child: Text('$e')),
             ),
           ),
-          SafeArea(
-            top: false,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      maxLength: DirectMessageRepository.maxMessageLength,
-                      minLines: 1,
-                      maxLines: 4,
-                      decoration: InputDecoration(
-                        hintText: s.messageHint,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(24),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 10,
-                        ),
-                      ),
-                      onSubmitted: (_) => _send(),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  IconButton.filled(
-                    onPressed: _sending ? null : _send,
-                    icon: _sending
-                        ? const SizedBox(
-                            width: 18,
-                            height: 18,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: Colors.white,
-                            ),
-                          )
-                        : const Icon(Icons.send),
-                  ),
-                ],
-              ),
-            ),
+          ChatComposer(
+            controller: _controller,
+            sending: _sending,
+            onSend: _send,
+            hint: s.messageHint,
+            maxLength: DirectMessageRepository.maxMessageLength,
           ),
         ],
       ),
@@ -344,7 +354,7 @@ class _MessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bubbleColor = isMine
-        ? context.palette.primaryCoral.withValues(alpha: 0.15)
+        ? context.palette.primaryCoral.withValues(alpha: 0.16)
         : context.palette.cardWhite;
 
     return Align(
@@ -366,21 +376,49 @@ class _MessageBubble extends StatelessWidget {
                   ),
                 ),
         child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 4),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          margin: const EdgeInsets.symmetric(vertical: 2),
+          padding: const EdgeInsets.fromLTRB(14, 8, 10, 6),
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width * 0.75,
+            maxWidth: MediaQuery.of(context).size.width * 0.78,
           ),
           decoration: BoxDecoration(
             color: bubbleColor,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.only(
+              topLeft: const Radius.circular(16),
+              topRight: const Radius.circular(16),
+              bottomLeft: Radius.circular(isMine ? 16 : 4),
+              bottomRight: Radius.circular(isMine ? 4 : 16),
+            ),
           ),
-          child: Text(
-            message.text,
-            style: TextStyle(color: context.palette.textNavy),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                message.text,
+                style: TextStyle(color: context.palette.textNavy),
+              ),
+              const SizedBox(height: 2),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  _formatTime(message.createdAt),
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: context.palette.textNavy.withValues(alpha: 0.4),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
+  }
+
+  String _formatTime(DateTime time) {
+    final hour = time.hour.toString().padLeft(2, '0');
+    final minute = time.minute.toString().padLeft(2, '0');
+    return '$hour.$minute';
   }
 }

@@ -41,11 +41,11 @@ class ClanMessageRepository {
   ClanMessageRepository({FirebaseFirestore? firestore})
       : _firestore = firestore ?? FirebaseFirestore.instance;
 
+  DocumentReference<Map<String, dynamic>> _clanDoc(String code) =>
+      _firestore.collection(FirestorePaths.clans).doc(code);
+
   CollectionReference<Map<String, dynamic>> _messagesOf(String code) =>
-      _firestore
-          .collection(FirestorePaths.clans)
-          .doc(code)
-          .collection(FirestorePaths.clanMessages);
+      _clanDoc(code).collection(FirestorePaths.clanMessages);
 
   CollectionReference<Map<String, dynamic>> _blockedBy(String uid) =>
       _firestore
@@ -68,6 +68,67 @@ class ClanMessageRepository {
               .reversed
               .toList(),
         );
+  }
+
+  /// The single most recent message, or `null` — powers both the "Chat
+  /// Clan" list's preview line in `ChatHubScreen` and the unread check in
+  /// `clan_providers.dart`'s `clanChatUnreadProvider`. Defensively falls
+  /// back to `null` on a `permission-denied` (e.g. a clan the learner was
+  /// just kicked from, whose list entry hasn't refreshed yet) the same
+  /// way `DirectMessageRepository.watchLastMessage` does, even though a
+  /// clan member should always pass `isClanMember` in the normal case.
+  Stream<ClanMessage?> watchLastMessage(String code) async* {
+    try {
+      await for (final snapshot in _messagesOf(code)
+          .orderBy('createdAt', descending: true)
+          .limit(1)
+          .snapshots()) {
+        yield snapshot.docs.isEmpty
+            ? null
+            : ClanMessage.fromMap(
+                snapshot.docs.first.id,
+                snapshot.docs.first.data(),
+              );
+      }
+    } on FirebaseException catch (e) {
+      if (e.code != 'permission-denied') rethrow;
+      yield null;
+    }
+  }
+
+  /// Records that [uid] has read [code]'s chat up to now — a plain
+  /// per-user timestamp merged onto the *clan* doc itself (not a message,
+  /// so no chat content is exposed by it — `clans/{code}` is
+  /// public-readable by any signed-in user, unlike the message
+  /// subcollection, which is why only this innocuous read-marker lives
+  /// there and never message text/sender). `firestore.rules`' `clans/
+  /// {code}` update rule allowlists `lastReadAt` alongside `memberCount`/
+  /// `totalScore` for exactly this write.
+  Future<void> markRead(String code, String uid) {
+    return _clanDoc(code).set({
+      'lastReadAt': {uid: FieldValue.serverTimestamp()},
+    }, SetOptions(merge: true));
+  }
+
+  /// Live per-user read markers for [code] — same absent-means-never-read
+  /// shape as `DirectMessageRepository.watchLastReadAt`.
+  Stream<Map<String, DateTime>> watchLastReadAt(String code) async* {
+    try {
+      await for (final doc in _clanDoc(code).snapshots()) {
+        final raw = doc.data()?['lastReadAt'] as Map<String, dynamic>?;
+        if (raw == null) {
+          yield <String, DateTime>{};
+        } else {
+          yield raw.map((uid, value) {
+            final ts = value is Timestamp ? value.toDate() : DateTime.now();
+            return MapEntry(uid, ts);
+          });
+        }
+      }
+    } on FirebaseException catch (e) {
+      if (e.code != 'permission-denied') rethrow;
+      yield <String, DateTime>{};
+    }
   }
 
   /// Trims and length-caps client-side as a fast, friendly rejection —

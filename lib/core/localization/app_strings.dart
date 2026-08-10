@@ -593,6 +593,8 @@ class AppStrings {
       );
   String friendRequestFrom(String name) =>
       _t('Permintaan pertemanan dari $name', 'Friend request from $name');
+  String get friendRequestSubtitle =>
+      _t('Ingin berteman denganmu', 'Wants to be your friend');
   String get acceptFriendRequest => _t('Terima', 'Accept');
   String get declineFriendRequest => _t('Tolak', 'Decline');
   String get friendRequestRespondFailed => _t(
