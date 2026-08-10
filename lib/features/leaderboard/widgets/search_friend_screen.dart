@@ -168,6 +168,7 @@ class _SearchFriendScreenState extends ConsumerState<SearchFriendScreen> {
                                       children: [
                                         Text(
                                           entry.displayName,
+                                          maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -181,10 +182,20 @@ class _SearchFriendScreenState extends ConsumerState<SearchFriendScreen> {
                                       ],
                                     ),
                                   ),
+                                  const SizedBox(width: 8),
                                   sent
                                       ? Icon(Icons.check_circle,
                                           color: context.palette.successGreen)
                                       : OutlinedButton(
+                                          style: OutlinedButton.styleFrom(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 12,
+                                              vertical: 4,
+                                            ),
+                                            minimumSize: Size.zero,
+                                            tapTargetSize:
+                                                MaterialTapTargetSize.shrinkWrap,
+                                          ),
                                           onPressed: () => _sendRequest(entry),
                                           child: Text(s.sendFriendRequestButton),
                                         ),
@@ -219,7 +230,12 @@ class _SearchResultSubtitle extends StatelessWidget {
     );
     final userId = entry.userId;
     if (userId == null) {
-      return Text(globalScoreLabel(entry, strings), style: baseStyle);
+      return Text(
+        globalScoreLabel(entry, strings),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: baseStyle,
+      );
     }
     return Text.rich(
       TextSpan(
@@ -232,6 +248,8 @@ class _SearchResultSubtitle extends StatelessWidget {
           ),
         ],
       ),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
     );
   }
 }

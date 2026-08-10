@@ -585,7 +585,7 @@ class AppStrings {
         'Ketik nama atau ID unik untuk mencari.',
         'Type a name or unique ID to search.',
       );
-  String get sendFriendRequestButton => _t('Tambah Teman', 'Add Friend');
+  String get sendFriendRequestButton => _t('Tambah', 'Add');
   String get friendRequestSent =>
       _t('Permintaan pertemanan terkirim.', 'Friend request sent.');
   String get friendRequestSendFailed => _t(

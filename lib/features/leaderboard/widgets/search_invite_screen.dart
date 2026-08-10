@@ -169,6 +169,7 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
                                       children: [
                                         Text(
                                           entry.displayName,
+                                          maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -179,10 +180,20 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
                                       ],
                                     ),
                                   ),
+                                  const SizedBox(width: 8),
                                   invited
                                       ? Icon(Icons.check_circle,
                                           color: context.palette.successGreen)
                                       : OutlinedButton(
+                                          style: OutlinedButton.styleFrom(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 12,
+                                              vertical: 4,
+                                            ),
+                                            minimumSize: Size.zero,
+                                            tapTargetSize:
+                                                MaterialTapTargetSize.shrinkWrap,
+                                          ),
                                           onPressed: () => _invite(entry),
                                           child: Text(s.inviteButton),
                                         ),
@@ -219,7 +230,12 @@ class _ResultSubtitle extends StatelessWidget {
     );
     final userId = entry.userId;
     if (userId == null) {
-      return Text(globalScoreLabel(entry, strings), style: baseStyle);
+      return Text(
+        globalScoreLabel(entry, strings),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: baseStyle,
+      );
     }
     return Text.rich(
       TextSpan(
@@ -232,6 +248,8 @@ class _ResultSubtitle extends StatelessWidget {
           ),
         ],
       ),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
     );
   }
 }
