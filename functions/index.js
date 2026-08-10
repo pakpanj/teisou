@@ -32,7 +32,7 @@
 
 const {onDocumentCreated} = require("firebase-functions/v2/firestore");
 const {initializeApp} = require("firebase-admin/app");
-const {getFirestore} = require("firebase-admin/firestore");
+const {getFirestore, FieldValue} = require("firebase-admin/firestore");
 const {getMessaging} = require("firebase-admin/messaging");
 
 initializeApp();
@@ -173,6 +173,50 @@ exports.onClanMessageCreated = onDocumentCreated(
           },
         });
       }));
+    },
+);
+
+/**
+ * A leader's clan announcement, fanned out to every OTHER member as a
+ * `users/{uid}/notifications` document — writing those documents is enough
+ * on its own, since `onUserNotificationCreated` below already turns any
+ * write to that collection into a real push; this function's only job is
+ * the fan-out itself; it doesn't call `sendToUid` directly.
+ *
+ * Loops `clans/{code}/members` the same way `onClanMessageCreated` above
+ * does, but has no per-recipient block check — `blockedClanUsers` exists so
+ * a member can mute an abusive *peer*'s chat messages, not so they can opt
+ * out of the clan leader's own official announcements, which is a
+ * different trust relationship.
+ */
+exports.onClanAnnouncementCreated = onDocumentCreated(
+    "clans/{code}/announcements/{announcementId}",
+    async (event) => {
+      const announcement = event.data.data();
+      if (!announcement) return;
+      const code = event.params.code;
+
+      const clanSnap = await db().collection("clans").doc(code).get();
+      const clanName = (clanSnap.data() || {}).name || "Clan";
+
+      const membersSnap = await db().collection("clans").doc(code).collection("members").get();
+      const recipientUids = membersSnap.docs
+          .map((doc) => doc.id)
+          .filter((uid) => uid !== announcement.authorUid);
+      if (recipientUids.length === 0) return;
+
+      const batch = db().batch();
+      for (const uid of recipientUids) {
+        const ref = db().collection("users").doc(uid).collection("notifications").doc();
+        batch.set(ref, {
+          category: "clanAnnouncement",
+          title: clanName,
+          body: `${announcement.authorName || DEFAULT_SENDER_NAME}: ${truncate(announcement.text)}`,
+          read: false,
+          createdAt: FieldValue.serverTimestamp(),
+        });
+      }
+      await batch.commit();
     },
 );
 

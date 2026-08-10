@@ -2,17 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/constants/clan_icons.dart';
 import '../../../core/localization/app_strings.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/app_refresh_indicator.dart';
 import '../../../data/models/clan_invite.dart';
+import '../../../data/models/clan_member.dart';
 import '../../../data/models/user_profile.dart' show AvatarType;
 import '../clan_providers.dart';
 import '../leaderboard_screen.dart'
     show LeaderboardTile, globalScoreBreakdown, globalScoreLabel;
+import 'clan_announcements_screen.dart';
 import 'clan_chat_screen.dart';
 import 'clan_members_screen.dart';
+import 'clan_settings_screen.dart';
 import 'create_clan_dialog.dart';
 import 'join_clan_dialog.dart';
 import '../../../core/widgets/app_loading.dart';
@@ -363,6 +367,8 @@ class _ClanRanking extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final clanAsync = ref.watch(clanDetailsProvider(code));
     final rankingAsync = ref.watch(clanRankingProvider(code));
+    final myRole = ref.watch(myRoleInClanProvider(code)).valueOrNull;
+    final announcementUnread = ref.watch(clanAnnouncementUnreadProvider(code));
 
     return Column(
       children: [
@@ -380,84 +386,174 @@ class _ClanRanking extends ConsumerWidget {
                   color: context.palette.primaryCoral.withValues(alpha: 0.3),
                 ),
               ),
-              child: Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          clan.name,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: context.palette.textNavy,
+                  Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          color: context.palette.primaryCoral.withValues(
+                            alpha: 0.5,
+                          ),
+                          child: ClanIconArt(
+                            preset: ClanIconPresets.byId(clan.iconValue),
+                            size: 40,
+                            emojiFontSize: 22,
                           ),
                         ),
-                        Text(
-                          strings.codeAndMembers(clan.code, clan.memberCount),
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: context.palette.textNavy.withValues(alpha: 0.6),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              clan.name,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: context.palette.textNavy,
+                              ),
+                            ),
+                            Text(
+                              strings.codeAndMembers(clan.code, clan.memberCount),
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: context.palette.textNavy.withValues(alpha: 0.6),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (clan.description != null && clan.description!.isNotEmpty) ...[
+                    const SizedBox(height: 8),
+                    Text(
+                      clan.description!,
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: context.palette.textNavy.withValues(alpha: 0.75),
+                      ),
+                    ),
+                  ],
+                  const SizedBox(height: 4),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        tooltip: strings.clanChat,
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => ClanChatScreen(
+                              code: clan.code,
+                              clanName: clan.name,
+                            ),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  IconButton(
-                    tooltip: strings.clanChat,
-                    onPressed: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => ClanChatScreen(
-                          code: clan.code,
-                          clanName: clan.name,
+                        icon: Icon(
+                          Icons.chat_bubble_outline,
+                          size: 18,
+                          color: context.palette.primaryCoral,
                         ),
                       ),
-                    ),
-                    icon: Icon(
-                      Icons.chat_bubble_outline,
-                      size: 18,
-                      color: context.palette.primaryCoral,
-                    ),
-                  ),
-                  IconButton(
-                    tooltip: strings.manageMembers,
-                    onPressed: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => ClanMembersScreen(
-                          code: clan.code,
-                          clanName: clan.name,
+                      Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          IconButton(
+                            tooltip: strings.clanAnnouncements,
+                            onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) => ClanAnnouncementsScreen(
+                                  code: clan.code,
+                                  clanName: clan.name,
+                                ),
+                              ),
+                            ),
+                            icon: Icon(
+                              Icons.campaign_outlined,
+                              size: 18,
+                              color: context.palette.primaryCoral,
+                            ),
+                          ),
+                          if (announcementUnread)
+                            Positioned(
+                              right: 6,
+                              top: 6,
+                              child: Container(
+                                width: 8,
+                                height: 8,
+                                decoration: BoxDecoration(
+                                  color: context.palette.errorRed,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                      IconButton(
+                        tooltip: strings.manageMembers,
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => ClanMembersScreen(
+                              code: clan.code,
+                              clanName: clan.name,
+                            ),
+                          ),
+                        ),
+                        icon: Icon(
+                          Icons.manage_accounts,
+                          size: 18,
+                          color: context.palette.primaryCoral,
                         ),
                       ),
-                    ),
-                    icon: Icon(
-                      Icons.manage_accounts,
-                      size: 18,
-                      color: context.palette.primaryCoral,
-                    ),
-                  ),
-                  IconButton(
-                    tooltip: strings.copyCode,
-                    onPressed: () {
-                      Clipboard.setData(ClipboardData(text: clan.code));
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(strings.codeCopied)),
-                      );
-                    },
-                    icon: Icon(
-                      Icons.copy,
-                      size: 18,
-                      color: context.palette.primaryCoral,
-                    ),
-                  ),
-                  IconButton(
-                    tooltip: strings.leaveClanTooltip,
-                    onPressed: () => onLeave(clan.name),
-                    icon: Icon(
-                      Icons.logout,
-                      size: 18,
-                      color: context.palette.errorRed,
-                    ),
+                      if (myRole == ClanRole.leader)
+                        IconButton(
+                          tooltip: strings.clanSettings,
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  ClanSettingsScreen(code: clan.code),
+                            ),
+                          ),
+                          icon: Icon(
+                            Icons.settings_outlined,
+                            size: 18,
+                            color: context.palette.primaryCoral,
+                          ),
+                        ),
+                      IconButton(
+                        tooltip: strings.copyCode,
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: clan.code));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(strings.codeCopied)),
+                          );
+                        },
+                        icon: Icon(
+                          Icons.copy,
+                          size: 18,
+                          color: context.palette.primaryCoral,
+                        ),
+                      ),
+                      IconButton(
+                        tooltip: strings.leaveClanTooltip,
+                        onPressed: () => onLeave(clan.name),
+                        icon: Icon(
+                          Icons.logout,
+                          size: 18,
+                          color: context.palette.errorRed,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

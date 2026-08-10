@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../data/models/clan.dart';
+import '../../data/models/clan_announcement.dart';
 import '../../data/models/clan_invite.dart';
 import '../../data/models/clan_member.dart';
 import '../../data/models/clan_membership.dart';
@@ -154,4 +155,50 @@ final clanChatUnreadProvider = Provider.family<bool, String>((ref, code) {
   final readAt = lastReadAt?[myUid];
   if (readAt == null) return true;
   return lastMessage.createdAt.isAfter(readAt);
+});
+
+/// Live — the last 50 announcements in [code], newest first (see
+/// `ClanAnnouncementRepository.watchAnnouncements`'s own doc comment for why
+/// this stays newest-first rather than reversing like [clanMessagesProvider]
+/// does).
+final clanAnnouncementsProvider =
+    StreamProvider.family<List<ClanAnnouncement>, String>((ref, code) {
+  return ref
+      .watch(clanAnnouncementRepositoryProvider)
+      .watchAnnouncements(code);
+});
+
+/// Live — [code]'s single most recent announcement (or `null`).
+final clanLastAnnouncementProvider =
+    StreamProvider.family<ClanAnnouncement?, String>((ref, code) {
+  return ref
+      .watch(clanAnnouncementRepositoryProvider)
+      .watchLastAnnouncement(code);
+});
+
+/// Live — every member's last-read timestamp for [code]'s announcements —
+/// a separate field from [clanLastReadAtProvider] (chat), so the two track
+/// independently.
+final clanAnnouncementLastReadAtProvider =
+    StreamProvider.family<Map<String, DateTime>, String>((ref, code) {
+  return ref.watch(clanAnnouncementRepositoryProvider).watchLastReadAt(code);
+});
+
+/// Whether [code] has an announcement the signed-in learner hasn't read yet
+/// — same derivation shape as [clanChatUnreadProvider], just against the
+/// announcement pair of providers instead of the chat pair. The author
+/// themself never sees their own post as unread, same reasoning as chat.
+final clanAnnouncementUnreadProvider = Provider.family<bool, String>((
+  ref,
+  code,
+) {
+  final myUid = ref.watch(appStartupProvider).valueOrNull?.uid;
+  final last = ref.watch(clanLastAnnouncementProvider(code)).valueOrNull;
+  if (myUid == null || last == null) return false;
+  if (last.authorUid == myUid) return false;
+  final lastReadAt =
+      ref.watch(clanAnnouncementLastReadAtProvider(code)).valueOrNull;
+  final readAt = lastReadAt?[myUid];
+  if (readAt == null) return true;
+  return last.createdAt.isAfter(readAt);
 });

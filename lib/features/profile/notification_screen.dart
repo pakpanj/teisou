@@ -78,6 +78,8 @@ IconData _iconForCategory(String category) {
       return Icons.emoji_events_outlined;
     case 'streak':
       return Icons.local_fire_department_outlined;
+    case 'clanAnnouncement':
+      return Icons.campaign_outlined;
     default:
       return Icons.notifications_outlined;
   }

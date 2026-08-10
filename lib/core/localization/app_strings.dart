@@ -557,6 +557,63 @@ class AppStrings {
   String get blockedMessagePlaceholder =>
       _t('Pesan disembunyikan (diblokir)', 'Message hidden (blocked)');
 
+  // --- Clan settings (icon/description) — leader only ---
+  String get clanSettings => _t('Pengaturan Clan', 'Clan Settings');
+  String get clanIconSectionTitle => _t('Ikon Clan', 'Clan Icon');
+  String get clanDescriptionSectionTitle =>
+      _t('Deskripsi Clan', 'Clan Description');
+  String get clanDescriptionHint => _t(
+        'Ceritakan tentang clan ini (opsional)...',
+        'Tell members about this clan (optional)...',
+      );
+  String get clanDescriptionEmpty =>
+      _t('Belum ada deskripsi.', 'No description yet.');
+  String get clanIconSaved => _t('Ikon clan disimpan.', 'Clan icon saved.');
+  String get clanIconSaveFailed => _t(
+        'Gagal menyimpan ikon clan, coba lagi.',
+        'Failed to save clan icon, try again.',
+      );
+  String get clanDescriptionSaved =>
+      _t('Deskripsi clan disimpan.', 'Clan description saved.');
+  String get clanDescriptionSaveFailed => _t(
+        'Gagal menyimpan deskripsi clan, coba lagi.',
+        'Failed to save clan description, try again.',
+      );
+  String get leaderOnlySectionNote => _t(
+        'Hanya leader clan yang bisa mengubah ini.',
+        'Only the clan leader can change this.',
+      );
+
+  // --- Clan announcements ---
+  String get clanAnnouncements => _t('Pengumuman Clan', 'Clan Announcements');
+  String get clanAnnouncementsEmpty => _t(
+        'Belum ada pengumuman dari leader.',
+        'No announcements from the leader yet.',
+      );
+  String get composeAnnouncement =>
+      _t('Buat Pengumuman', 'Compose Announcement');
+  String get announcementHint => _t(
+        'Tulis pengumuman untuk semua anggota...',
+        'Write an announcement for every member...',
+      );
+  String get postAnnouncementButton => _t('Kirim Pengumuman', 'Post Announcement');
+  String get announcementTooLong => _t(
+        'Pengumuman terlalu panjang (maks 500 karakter).',
+        'Announcement too long (max 500 characters).',
+      );
+  String get announcementPosted => _t(
+        'Pengumuman terkirim ke semua anggota.',
+        'Announcement sent to every member.',
+      );
+  String get announcementSendFailed => _t(
+        'Gagal mengirim pengumuman, coba lagi.',
+        'Failed to send announcement, try again.',
+      );
+  String failedToLoadAnnouncements(Object e) => _t(
+        'Gagal memuat pengumuman: $e',
+        'Failed to load announcements: $e',
+      );
+
   // --- Friends + Direct Message ---
   String failedToLoadFriends(Object e) =>
       _t('Gagal memuat daftar teman: $e', 'Failed to load friends: $e');

@@ -22,6 +22,7 @@ import '../data/repositories/bunpou_progress_repository.dart';
 import '../data/repositories/bunpou_repository.dart';
 import '../data/repositories/choukai_level_repository.dart';
 import '../data/repositories/choukai_repository.dart';
+import '../data/repositories/clan_announcement_repository.dart';
 import '../data/repositories/clan_message_repository.dart';
 import '../data/repositories/clan_repository.dart';
 import '../data/repositories/dictionary_repository.dart';
@@ -205,6 +206,10 @@ final clanRepositoryProvider = Provider<ClanRepository>(
 );
 final clanMessageRepositoryProvider = Provider<ClanMessageRepository>(
   (ref) => ClanMessageRepository(),
+);
+final clanAnnouncementRepositoryProvider =
+    Provider<ClanAnnouncementRepository>(
+  (ref) => ClanAnnouncementRepository(),
 );
 final friendRepositoryProvider = Provider<FriendRepository>(
   (ref) => FriendRepository(),

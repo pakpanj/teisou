@@ -65,7 +65,7 @@ service cloud.firestore {
       allow update: if request.auth != null
           && (resource.data.hostUid == request.auth.uid
               || request.resource.data.diff(resource.data).affectedKeys()
-                  .hasOnly(['memberCount', 'totalScore', 'lastReadAt']));
+                  .hasOnly(['memberCount', 'totalScore', 'lastReadAt', 'announcementLastReadAt']));
       allow delete: if request.auth != null && resource.data.hostUid == request.auth.uid;
 
       // Roster — siapa saja yang login bisa baca daftar anggota. Menulis
@@ -101,6 +101,24 @@ service cloud.firestore {
             && request.resource.data.text is string
             && request.resource.data.text.size() > 0
             && request.resource.data.text.size() <= 300;
+      }
+
+      // Pengumuman clan — beda dari chat di atas: hanya LEADER yang boleh
+      // membuat (bukan sekadar anggota, dan sengaja bukan co-leader juga —
+      // "actorRole == leader", bukan "isClanMember" atau ikut daftar
+      // co-leader yang dipakai undangan), tapi semua anggota boleh membaca.
+      // Tidak ada update/delete, sama seperti chat: sekali diumumkan, tidak
+      // bisa diam-diam diubah. Push notification ke setiap anggota dikirim
+      // dari Cloud Function `onClanAnnouncementCreated` (Admin SDK, lewat
+      // users/{uid}/notifications), bukan dari sini.
+      match /announcements/{announcementId} {
+        allow read: if request.auth != null && isClanMember(code, request.auth.uid);
+        allow create: if request.auth != null
+            && actorRole(code, request.auth.uid) == 'leader'
+            && request.resource.data.authorUid == request.auth.uid
+            && request.resource.data.text is string
+            && request.resource.data.text.size() > 0
+            && request.resource.data.text.size() <= 500;
       }
     }
 

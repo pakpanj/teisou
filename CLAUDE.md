@@ -9113,3 +9113,141 @@ the abandoned Cloud Function and the `AlertDialog` one that shipped the
 finding) were fully removed before committing — confirmed via `git
 diff` showing zero changes to `functions/index.js` or
 `profile_screen.dart`, only `leaderboard_providers.dart`.
+
+## Update (2026-08-11): clan icon, description, and leader announcements
+(with push)
+
+Explicit user request: let a clan's leader set a profile photo, write a
+description, and post announcements that also arrive as a push
+notification.
+
+**Icon, not photo upload — a deliberate product decision, confirmed with
+the user before building.** This app already removed gallery avatar
+upload entirely once, for child-safety/COPPA reasons ("no path to being
+reviewed or taken down" — see `ClanMessageRepository`'s own doc comment).
+A leader-chosen photo every member then sees is the same risk at group
+scale. Offered the user a choice (`AskUserQuestion`) between a curated
+preset picker and free photo upload; they chose the preset picker,
+matching the existing precedent rather than reopening it. `ClanIconPreset`/
+`ClanIconPresets`/`ClanIconArt` (`lib/core/constants/clan_icons.dart`)
+mirror `AvatarPreset`'s own shape exactly — emoji placeholder until real
+PNG art lands at `assets/clan_icons/{id}.png`, no caller changes needed
+once it does. 12 presets, deliberately team/crest-themed (shield, flag,
+star, trophy, book, torii, sakura, fox, owl, dragon, lantern, wave) —
+distinct from `AvatarPresets`' individual-learner "neko_..." character
+personas, so a clan icon never reads as impersonating one specific
+member. `scripts/clan_icon_prompts.md` + `scripts/prepare_clan_icon.py`
+(new) give the user everything needed to generate the real art with
+Gemini later: a shared style/theme sheet (kawaii circular badge, this
+app's own pastel palette and mascot outline colour, magenta `#FF00DC`
+background to key out — the same lesson `scripts/mascot_prompts.md`
+already documents about never asking a generator for literal
+transparency), one prompt per preset, and a processing script that
+reuses `prepare_mascot.py`'s proven median-background-detection +
+edge-unmixing + stray-island-removal pixel logic, simplified since a
+clan icon is one self-contained badge design per image rather than a
+pose that has to match a whole character-sheet set's height.
+
+**`Clan` gained `iconValue` (a preset id) and `description` (free
+text)**, both nullable, both written via `ClanRepository.updateClanIcon`/
+`updateClanDescription` — plain `.set({...}, SetOptions(merge: true))`,
+same pattern `setMemberRole`/`updateTotalScore` already use. **Needed no
+`firestore.rules` change at all**: the existing `clans/{code}` update
+rule already requires an exact `hostUid` match for any field outside its
+public `hasOnly` allowlist (`memberCount`/`totalScore`/`lastReadAt`), so
+both new fields were leader-only from the moment they were added to
+`toMap()`/`fromMap()` — confirmed by reading the rule before assuming a
+change was needed, not after finding a bug.
+
+**Announcements are a new subcollection, `clans/{code}/announcements`,
+deliberately not a flag on `ClanMessage`.** `ClanAnnouncement`
+(`lib/data/models/clan_announcement.dart`) mirrors `ClanMessage`'s shape
+(immutable once posted, same reasoning: a reported/read message must
+never silently change). `ClanAnnouncementRepository`
+(`lib/data/repositories/clan_announcement_repository.dart`) mirrors
+`ClanMessageRepository`'s watch/markRead/lastReadAt shape as a *sibling*
+class, not a shared one with a branching "kind" parameter — the two have
+genuinely different write permissions (leader-only vs. any member), and
+this project's own convention is one repository per collection. Read
+marker uses its own field, `announcementLastReadAt`, separate from chat's
+`lastReadAt`, so catching up on one doesn't silently mark the other read
+too — needed adding `announcementLastReadAt` to the existing rule's
+`hasOnly` allowlist alongside `lastReadAt`. The new `announcements`
+subcollection rule gates `create` on `actorRole(code, request.auth.uid)
+== 'leader'` — deliberately not `isClanMember` (chat's own check) and
+deliberately not extended to co-leaders either, matching the user's own
+"leader can... make announcements" framing exactly rather than assuming
+co-leaders should share that power.
+
+**Push delivery reuses the generic notification pipeline built earlier
+this session, rather than calling FCM directly.** `onClanAnnouncementCreated`
+(`functions/index.js`) triggers on a new announcement, loops
+`clans/{code}/members` (same pattern `onClanMessageCreated` already
+uses), and — for every member except the author — writes a document to
+`users/{uid}/notifications` with `category: 'clanAnnouncement'`. That
+write is the entire job; `onUserNotificationCreated` (already deployed,
+see the earlier notification-infrastructure update) picks it up from
+there and sends the actual push, so this function never calls `sendToUid`
+itself. This is a direct, intended use of the "any future feature ...
+needs only to write a document" pipeline that update's own doc comment
+promised — the first real feature to exercise it. Deliberately **no**
+per-recipient block check (unlike `onClanMessageCreated`'s):
+`blockedClanUsers` exists so a member can mute an abusive *peer*'s chat,
+not so they can opt out of the clan leader's own official announcements,
+a different trust relationship. `notification_screen.dart`'s
+`_iconForCategory` gained a `'clanAnnouncement'` case (`Icons.campaign_outlined`)
+so these render distinctly from a generic system notification in the
+feed.
+
+**Two new screens, both leader-gating done the same way
+`ClanMembersScreen`'s invite button already does it** (client-side
+`myRole == ClanRole.leader` check hiding a button the server would
+refuse anyway, never the only enforcement): `ClanSettingsScreen`
+(`lib/features/leaderboard/widgets/clan_settings_screen.dart`) — icon
+grid + description field, only ever reachable from a leader-gated
+gear icon; `ClanAnnouncementsScreen`
+(`lib/features/leaderboard/widgets/clan_announcements_screen.dart`) —
+readable by every member, with a leader-only compose FAB. `clan_tab.dart`'s
+header card gained the icon circle (rendering `Clan.iconValue` via
+`ClanIconArt`), the description line when set, a 📢 button (visible to
+everyone, small unread dot driven by the new `clanAnnouncementUnreadProvider`
+— same derivation shape as the existing `clanChatUnreadProvider`, just
+against the announcement pair of providers), and a ⚙️ button gated on
+`myRoleInClanProvider(code) == ClanRole.leader`.
+
+**A real bug caught by `flutter analyze`, not shipped**: the new
+`clanDescriptionSectionTitle`/`clanIconSaved`/etc. strings were first
+added under a `saveButton` getter that collided with one already defined
+elsewhere in `app_strings.dart` (`duplicate_definition`) — caught
+immediately, removed the duplicate, reused the existing shared getter.
+
+**A real Cloud Functions deploy hiccup, resolved by retrying, not by
+changing code**: the first `onClanAnnouncementCreated` deploy attempt
+failed with the same "User code failed to load ... Timeout after 10000"
+class of error this project's history already documents for the very
+first `onUserNotificationCreated` deploy — except this time a local
+`node -e "require('./index.js')"` timing check (491ms, all four exports
+present) confirmed the module itself loads fine well under the 10s
+budget, so this was correctly treated as deploy-infrastructure jitter
+(cold Cloud Build/Artifact Registry warm-up for a brand-new function, the
+same class of one-off flakiness already documented for the first-ever
+2nd-gen function's Eventarc IAM propagation) rather than a code problem —
+confirmed right: the retry succeeded with no code changes.
+
+**Verification status, honestly**: `flutter analyze` clean, `flutter
+test --concurrency=1` 288/288, `firestore.rules` and the new Cloud
+Function both deployed clean, debug APK built and installed successfully
+on the Moto G52J. **On-device interactive verification could not
+happen this pass** — the physical test device was found locked behind a
+real PIN/pattern credential (confirmed via the same `adb shell
+locksettings get-disabled` → "Credential can't be null or empty" error
+this file already documents as the standing signal for this exact
+situation, e.g. the Bunpou N3/N2 and Partikel verification gaps above).
+Per this project's own standing rule, bypassing or guessing a device
+credential is out of bounds regardless of task urgency, so this was left
+unattempted rather than worked around. **The icon picker, description
+save, announcement compose/read, the header's new button row not
+overflowing on a real 1080px screen, and the actual push notification
+arriving on a second device or account are all still unconfirmed on
+real hardware** — worth a fresh on-device pass the next time this device
+is unlocked, before treating this feature as fully verified.

@@ -383,6 +383,28 @@ class ClanRepository {
         .set({'totalScore': value}, SetOptions(merge: true));
   }
 
+  /// Sets [code]'s [Clan.iconValue] — a `ClanIconPresets` key, never a
+  /// free-form uploaded image (see [Clan.iconValue]'s own doc comment).
+  /// Leader-only, enforced by `firestore.rules`' existing `clans/{code}`
+  /// update rule (any field outside its `hasOnly` allowlist already
+  /// requires an exact `hostUid` match) — no rules change was needed for
+  /// this method or [updateClanDescription] below, unlike the new
+  /// `announcements` subcollection, which did need one.
+  Future<void> updateClanIcon(String code, String? iconValue) {
+    return _clans
+        .doc(code.trim().toUpperCase())
+        .set({'iconValue': iconValue}, SetOptions(merge: true));
+  }
+
+  /// Sets [code]'s [Clan.description]. Same leader-only enforcement as
+  /// [updateClanIcon] — see that method's doc comment.
+  Future<void> updateClanDescription(String code, String? description) {
+    final trimmed = description?.trim();
+    return _clans.doc(code.trim().toUpperCase()).set({
+      'description': (trimmed == null || trimmed.isEmpty) ? null : trimmed,
+    }, SetOptions(merge: true));
+  }
+
   /// Top 100 clans by [Clan.totalScore] — the cross-clan counterpart to
   /// `leaderboardTopProvider`'s top-20-individuals ranking.
   Stream<List<Clan>> watchTopClans({int limit = 100}) {
