@@ -4189,6 +4189,42 @@ what the on-device pass actually verified), `flutter build apk
   is reflective and `MainActivity` is kept via the manifest, so no keep
   rule should be needed — let Codemagic's release build confirm that
   rather than assuming it.
+
+  **Update (2026-08-10): diagnosed and fixed a real iOS crash right
+  after finishing a Bab gate quiz** (user report from a TestFlight
+  build). `BabGateQuizScreen` is the only exam screen using
+  `SecureScreenMixin`; finishing the quiz calls
+  `AppNavigator.replaceFadeScale` (350ms fade+scale, `_route`'s
+  `transitionDuration`), which both animates the outgoing route's layer
+  tree *and* disposes it — and `SecureScreenMixin.dispose()` release
+  fires synchronously with that dispose, invoking iOS's `disable()` ->
+  `stopBlankingScreenshots()`, which reparents the `UIWindow`'s own
+  `CALayer` back under its original superlayer (see the class doc
+  comment above `SecureScreenController` for why that layer swap is
+  undocumented UIKit surgery in the first place). Mutating a window's
+  layer tree while Flutter's own transition on that same window is
+  still committing is exactly the kind of concurrent `CALayer` surgery
+  that crashes CoreAnimation/UIKit — this matches the report precisely
+  (only reproduces on the curriculum gate quiz, only right after
+  finishing, never on the regular Ujian screens, which never touch this
+  mixin at all). **Derived by code-reading, not by reproducing the
+  crash** — this project has still never been built for iOS, so treat
+  this as a strong, reasoned fix rather than a confirmed root-cause
+  match until it's verified against a real crash log or a device.
+
+  Fixed by splitting `disable()`: the recording/mirroring observers and
+  the black `cover` view are torn down immediately (neither touches the
+  window's layer tree, so neither carries the race), but
+  `stopBlankingScreenshots()` — the one risky call — is deferred 0.5s
+  via `DispatchWorkItem` + `DispatchQueue.main.asyncAfter`, safely past
+  the 350ms transition. `enable()` cancels any still-pending deferred
+  teardown first, so re-securing before the delay fires (a second gate
+  quiz opened quickly) can't have its blanking undone out from under it
+  a moment later. The trade-off is deliberately one-sided: the next
+  screen's screenshots stay blanked for up to half a second longer than
+  strictly needed — harmless — instead of racing an in-flight
+  `CATransaction` — not harmless. Android is untouched; `FLAG_SECURE`
+  is a single flag flip with no layer surgery to race.
 - **The public profile's curriculum counters had no reconciliation**
   (found and fixed 2026-08-05, reported from a device). The public
   profile showed "Belum mulai kurikulum" while the learner's own Profile

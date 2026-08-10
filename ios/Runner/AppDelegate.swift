@@ -91,6 +91,19 @@ private final class SecureScreenController {
   private var protectedWindow: UIWindow?
   private var originalWindowSuperlayer: CALayer?
 
+  /// `disable()` fires from `SecureScreenMixin.dispose()`, which for the
+  /// Bab gate quiz runs synchronously with `AppNavigator.replaceFadeScale`
+  /// tearing this route down — both mutating this same window's layer tree
+  /// in the same beat. A user report of a crash right after finishing the
+  /// gate quiz on iOS is diagnosed to this race: undoing the layer swap
+  /// while Flutter's own transition (350ms, see `AppNavigator._duration`)
+  /// is still committing. **Derived by code-reading, not by reproducing
+  /// the crash** — this build has never run on iOS hardware — so treat
+  /// this as a strong, reasoned fix, not a confirmed root-cause match,
+  /// until it's actually verified against a real crash log or a device.
+  private static let teardownDelay: TimeInterval = 0.5
+  private var pendingTeardown: DispatchWorkItem?
+
   init(channel: FlutterMethodChannel) {
     self.channel = channel
   }
@@ -99,6 +112,12 @@ private final class SecureScreenController {
   /// `enable` while already active must not stack another set of observers
   /// that a single `disable` would then fail to remove.
   func enable() {
+    // A screen re-securing before the previous one's delayed teardown
+    // fired must keep the window blanked, not let it get undone out from
+    // under it a moment later.
+    pendingTeardown?.cancel()
+    pendingTeardown = nil
+
     guard observers.isEmpty else { return }
 
     let center = NotificationCenter.default
@@ -126,12 +145,30 @@ private final class SecureScreenController {
     startBlankingScreenshots()
   }
 
+  /// Recording/mirroring protection and the screenshot-gesture report stop
+  /// immediately — neither touches the window's layer tree, so neither
+  /// carries the crash risk below. Only the screenshot-blanking layer swap
+  /// is deferred: it's genuinely undocumented UIKit surgery (see the class
+  /// doc comment), and unwinding it mid-transition is what crashed. Leaving
+  /// it in place for [teardownDelay] a little longer than necessary just
+  /// means the next screen's screenshots come out blank for an extra
+  /// moment — harmless — versus racing CoreAnimation's in-flight
+  /// transaction, which was not.
   func disable() {
     let center = NotificationCenter.default
     observers.forEach { center.removeObserver($0) }
     observers.removeAll()
     removeCover()
-    stopBlankingScreenshots()
+
+    let workItem = DispatchWorkItem { [weak self] in
+      self?.stopBlankingScreenshots()
+      self?.pendingTeardown = nil
+    }
+    pendingTeardown = workItem
+    DispatchQueue.main.asyncAfter(
+      deadline: .now() + Self.teardownDelay,
+      execute: workItem
+    )
   }
 
   /// Moves the window's layer under a secure text field's capture-exempt
