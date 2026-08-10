@@ -21,6 +21,13 @@ final myPendingFriendRequestsProvider =
   yield* ref.watch(friendRepositoryProvider).watchMyRequests(user.uid);
 });
 
+/// Just the count, derived from [myPendingFriendRequestsProvider] — the
+/// one thing `CountBadge` call sites need, without each of them re-reading
+/// a whole `List<FriendRequest>` just to call `.length` on it.
+final pendingFriendRequestCountProvider = Provider<int>((ref) {
+  return ref.watch(myPendingFriendRequestsProvider).valueOrNull?.length ?? 0;
+});
+
 /// Live — the last 100 messages in a 1:1 conversation, oldest first.
 final directMessagesProvider =
     StreamProvider.family<List<DirectMessage>, String>((ref, conversationId) {

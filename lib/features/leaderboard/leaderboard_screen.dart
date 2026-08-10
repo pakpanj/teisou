@@ -7,8 +7,10 @@ import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
+import '../../core/widgets/count_badge.dart';
 import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
+import 'friend_providers.dart';
 import 'leaderboard_providers.dart';
 import 'public_profile_screen.dart' show openPublicProfile;
 import 'widgets/clan_tab.dart';
@@ -22,6 +24,7 @@ class LeaderboardScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
+    final pendingFriendRequests = ref.watch(pendingFriendRequestCountProvider);
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -43,7 +46,12 @@ class LeaderboardScreen extends ConsumerWidget {
               Tab(text: s.tabGlobalScore),
               Tab(text: s.tabClan),
               Tab(text: s.tabTopClan),
-              Tab(text: s.tabFriends),
+              Tab(
+                child: CountBadge(
+                  count: pendingFriendRequests,
+                  child: Text(s.tabFriends),
+                ),
+              ),
             ],
           ),
         ),

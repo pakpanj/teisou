@@ -7,9 +7,11 @@ import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
+import '../../core/widgets/count_badge.dart';
 import '../../core/widgets/sakura_decoration.dart';
 import '../../core/widgets/sakura_fall_widget.dart';
 import '../exam/exam_mode_picker_screen.dart';
+import '../leaderboard/friend_providers.dart';
 import '../leaderboard/leaderboard_screen.dart';
 import '../profile/profile_screen.dart';
 import '../search/search_screen.dart';
@@ -236,7 +238,7 @@ class _HomeTabBody extends ConsumerWidget {
   }
 }
 
-class _BottomNavBar extends StatelessWidget {
+class _BottomNavBar extends ConsumerWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
   final AppStrings strings;
@@ -248,11 +250,20 @@ class _BottomNavBar extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Only the Profil item ever carries a badge — it's the path to the
+    // Leaderboard's "Teman" tab, the one place a pending friend request is
+    // otherwise invisible until this app has some real way to push a
+    // notification for it. See CountBadge's own doc comment.
+    final pendingFriendRequests = ref.watch(pendingFriendRequestCountProvider);
     final items = [
-      (icon: Icons.home_rounded, label: strings.navHome),
-      (icon: Icons.assignment_rounded, label: strings.navExam),
-      (icon: Icons.person_rounded, label: strings.navProfile),
+      (icon: Icons.home_rounded, label: strings.navHome, badge: 0),
+      (icon: Icons.assignment_rounded, label: strings.navExam, badge: 0),
+      (
+        icon: Icons.person_rounded,
+        label: strings.navProfile,
+        badge: pendingFriendRequests,
+      ),
     ];
     return Container(
       decoration: BoxDecoration(
@@ -281,7 +292,10 @@ class _BottomNavBar extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(item.icon, color: color),
+                  CountBadge(
+                    count: item.badge,
+                    child: Icon(item.icon, color: color),
+                  ),
                   const SizedBox(height: 2),
                   Text(
                     item.label,

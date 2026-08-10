@@ -8190,3 +8190,72 @@ install was handed back to the user to retry immediately after this
 landed; still worth a positive confirmation (request sent, arrives on
 the second account, accept/decline both work) rather than assuming the
 logcat diagnosis alone is proof.
+
+## Update (2026-08-10, still later again): pending friend requests were
+already confirmable — just invisible until you happened to open the
+right tab
+
+After the fix above, sending a friend request worked, but the user asked
+why there was no confirmation/notification system for the *recipient* at
+all. There actually already was one — `FriendsTab`'s
+`_PendingFriendRequestsStrip` (built in the original "personal friend"
+feature) shows every pending request with Accept/Decline right at the
+top of the "Teman" tab. The real gap was **discoverability**: nothing
+anywhere else in the app hinted a request was waiting, so a recipient
+had no reason to go open that specific tab unless they already knew to
+check.
+
+**This project has no push-notification pipeline at all** — no
+`firebase_messaging`, no Cloud Functions (confirmed by grep; the "Tidak
+ada Cloud Functions di proyek ini" line already appears several times
+elsewhere in this file for other features). A real background
+notification would need both, plus a Blaze-plan decision that's the
+user's to make, not something to add silently as a side effect of a
+"why can't I see requests" complaint. So this ships the honest
+in-app substitute: a small red count badge (`CountBadge`,
+`lib/core/widgets/count_badge.dart`) wherever the path to the pending-
+requests strip starts, driven by a new
+`pendingFriendRequestCountProvider` (`friend_providers.dart`, just
+`.length` on the existing `myPendingFriendRequestsProvider` list) —
+
+- the bottom nav's **Profil** icon (`HomeScreen`'s `_BottomNavBar`,
+  converted `StatelessWidget` → `ConsumerWidget` to watch the provider;
+  Home/Ujian items always pass `badge: 0`, only Profil's tuple carries
+  the live count),
+- Profile's 🏆 leaderboard button in the app bar,
+- the "Teman" tab label itself inside `LeaderboardScreen`'s `TabBar`
+  (`Tab(child: CountBadge(...))` instead of `Tab(text: ...)`, so it's
+  still obvious which tab has something once you're already inside
+  Leaderboard).
+
+So the actual signal path now runs: badge on Profil in the bottom nav
+(visible from Home/Ujian/Profil, i.e. almost always) → badge on the 🏆
+button once on Profile → badge on the Teman tab once inside Leaderboard
+→ the strip itself with Accept/Decline. `CountBadge` renders nothing at
+all when the count is 0, so it costs nothing on every other screen.
+
+**Deliberately scoped to friend requests only, not also pending clan
+invites** — `ClanTab`'s `_PendingInvitesStrip` has the exact same
+discoverability gap and could take the identical badge treatment
+trivially (`myPendingInvitesProvider.valueOrNull?.length`), but the user
+asked specifically about friend requests; extending this to clan invites
+too was left undone on purpose rather than assumed, per this project's
+own standing "match the scope of what was actually asked" discipline —
+worth doing as a quick follow-up if asked.
+
+**Palette gotcha, avoided rather than hit**: `CountBadge`'s background
+uses `context.palette.errorRed`, not `Colors.red` —
+`theme_consistency_test.dart`'s sweep only allows
+`Colors.white`/`Colors.black`/`Colors.transparent` as literals anywhere
+in `lib/`, so a bare `Colors.red` would have failed that test
+immediately; checked the test's own allowed-list before writing the
+widget instead of after.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 288/288, debug
+APK rebuilt and reinstalled on the Moto G52J. **No interactive on-device
+confirmation yet that the badges actually render/clear correctly** — the
+fresh install was handed back for the user's own retry; worth confirming
+a pending request shows the badge in all three places, and that it
+disappears immediately from all three the moment it's accepted/declined
+(the provider is shared, so this should be automatic, but hasn't
+actually been watched happen on the device yet).

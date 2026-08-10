@@ -8,6 +8,7 @@ import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
+import '../../core/widgets/count_badge.dart';
 import '../../core/widgets/user_avatar.dart';
 import '../../data/models/bab_entry.dart';
 import '../../data/models/jlpt_level.dart';
@@ -15,6 +16,7 @@ import '../../data/models/kana_status.dart';
 import '../../data/models/kana_type.dart';
 import '../bab/bab_providers.dart';
 import '../home/home_screen.dart';
+import '../leaderboard/friend_providers.dart';
 import '../leaderboard/leaderboard_providers.dart';
 import '../leaderboard/leaderboard_screen.dart';
 import '../leaderboard/public_profile_screen.dart' show BabProgressBody;
@@ -40,6 +42,7 @@ class ProfileScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final userAsync = ref.watch(appStartupProvider);
     final s = ref.watch(appStringsProvider);
+    final pendingFriendRequests = ref.watch(pendingFriendRequestCountProvider);
 
     return Scaffold(
       backgroundColor: context.palette.background,
@@ -48,7 +51,10 @@ class ProfileScreen extends ConsumerWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            icon: const Text('🏆', style: TextStyle(fontSize: 22)),
+            icon: CountBadge(
+              count: pendingFriendRequests,
+              child: const Text('🏆', style: TextStyle(fontSize: 22)),
+            ),
             tooltip: s.leaderboardTooltip,
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const LeaderboardScreen()),
