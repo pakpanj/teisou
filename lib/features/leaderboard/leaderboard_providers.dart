@@ -12,8 +12,8 @@ final leaderboardTopProvider = StreamProvider<List<LeaderboardEntry>>((ref) {
   return ref.watch(leaderboardRepositoryProvider).watchTop();
 });
 
-/// The signed-in user's own leaderboard row, or null if they've never
-/// earned one.
+/// The signed-in user's own leaderboard row, or null if the doc genuinely
+/// can't be created right now (offline on the very first-ever open).
 ///
 /// Also repairs the denormalized `globalScore` sort key when it has drifted
 /// (or never existed, for docs written before that field did) — a write from
@@ -23,11 +23,48 @@ final leaderboardTopProvider = StreamProvider<List<LeaderboardEntry>>((ref) {
 /// Doing it here means simply opening the leaderboard heals your own row.
 /// It's a no-op once in sync, and best-effort — a failed backfill must not
 /// take down the screen, since the entry itself is still perfectly readable.
+///
+/// **Creates the doc itself if missing, rather than only relying on
+/// `appStartupProvider`'s separate `ensurePublished` call.** That call is
+/// `unawaited` (has to be — see `appStartupProvider`'s own doc comment on why
+/// startup can't block on Firestore writes), so it races this provider: on a
+/// real device, the very first read here regularly beats that write to the
+/// server, resolves to `entry: null`, and — because this used to be a plain
+/// (non-`autoDispose`) `FutureProvider` — stayed cached at `null` for the
+/// rest of the app session even after `ensurePublished`'s write landed a
+/// moment later. Confirmed on-device: a direct `getSelf` call showed the doc
+/// already existed with a real `globalScore`, while this provider's cached
+/// value was still `null` and the UI kept showing "Belum ada" — this is
+/// exactly the "must save your name first" bug report, since `EditNameDialog`
+/// happened to be the one action that wrote the doc through a *different,
+/// unraced* path (`syncProfileInfo`, called directly, not gated behind
+/// reading this provider first). Awaiting the create-if-missing step here
+/// closes the race outright — the doc is guaranteed to exist (network
+/// permitting) by the time this provider resolves, not just "usually does".
+/// `.autoDispose` is added on top as a second line of defense for the rarer
+/// genuinely-offline-on-first-open case, though it only actually retries once
+/// every listener (Profile's card *and* the Leaderboard screen) has
+/// unsubscribed — Profile's own tab is kept alive across tab switches, so in
+/// practice a fresh Leaderboard-screen open is the more reliable retry
+/// trigger than merely revisiting the Profile tab.
 final selfLeaderboardEntryProvider =
-    FutureProvider<LeaderboardEntry?>((ref) async {
+    FutureProvider.autoDispose<LeaderboardEntry?>((ref) async {
   final user = await ref.watch(appStartupProvider.future);
   final repository = ref.watch(leaderboardRepositoryProvider);
   var entry = await repository.getSelf(user.uid);
+  if (entry == null) {
+    try {
+      await repository.ensurePublished(
+        uid: user.uid,
+        displayName: user.displayName ?? 'Pelajar Kana',
+        photoUrl: user.photoURL,
+      );
+      entry = await repository.getSelf(user.uid);
+    } catch (_) {
+      // Genuinely offline on the very first open — nothing to back into;
+      // the next open (autoDispose) retries.
+    }
+  }
   if (entry != null) {
     try {
       await repository.backfillGlobalScore(entry);

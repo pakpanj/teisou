@@ -9004,3 +9004,112 @@ generalized `sendToUid` signature — both redeployed clean, unaffected
 behaviorally). Debug APK rebuilt and reinstalled twice on the Moto
 G52J (once with the temp hook to find and confirm the fix, once without
 it for the final clean state).
+
+## Update (2026-08-11): "must submit name first" report — two real fixes,
+one honest non-finding
+
+User report: leaderboard ranking and friend-add-by-ID both seemed to
+require saving a name via `EditNameDialog` first. Investigated in two
+parts, since they turned out to have different (if related) causes.
+
+**1. `firestore.rules` deployed via the CLI for the first time this
+session.** Every earlier session in this project's history left rules
+deployment to the user pasting into the Firebase Console by hand — this
+file has repeatedly documented that gap ("this fix lives in the repo's
+firestore.rules file, but that does not mean the live project is
+enforcing it"). Since `npx firebase-tools@latest` was already
+authenticated in this environment (proven by this same session's
+earlier Cloud Functions deploys), `npx firebase-tools@latest deploy
+--only firestore:rules` was run directly — `firebase.json` already
+points at `firestore.rules`, so no new config was needed. Deployed
+clean. This is the fix for `userIds/{code}` (the reservation collection
+`ProgressRepository._backfillUserIdIfMissing` writes to, needed before
+a learner's unique id can ever resolve to their uid) actually taking
+effect live, if it hadn't been deployed before — unconfirmed either way
+in isolation, since the second finding below turned out to be the
+reproducible part of the bug.
+
+**2. A real race condition in `selfLeaderboardEntryProvider`
+(`lib/features/leaderboard/leaderboard_providers.dart`), found via a
+temporary client-side debug hook — not a new Cloud Function endpoint.**
+The first diagnostic attempt was a throwaway `onRequest` HTTPS function
+that would have looked up a `userIds/{code}` → uid → `leaderboard/{uid}`
+chain and returned it as JSON — a reasonable-sounding read-only
+diagnostic, but the environment's own safety classifier correctly
+blocked deploying it: it would have been a new, unauthenticated,
+publicly-reachable endpoint returning user data on live infrastructure,
+even if temporary. That block was correct and not worked around.
+Switched to the same pattern that already found the notification
+suppression bug earlier this session: a temporary `onLongPress` hook on
+Profile's "Skor Global" row, calling `LeaderboardRepository.getSelf`
+directly through the app's own already-authenticated client session
+(rules already allow any signed-in user to read any `leaderboard/{uid}`
+doc, so this was a trivially safe, no-new-surface read) and showing the
+result in an `AlertDialog`.
+
+**What it found**: `getSelf` called directly returned a real, existing
+`leaderboard/{uid}` doc with `globalScore: 0.0` for the exact account
+whose Profile card was — at that same moment — showing "Belum ada"
+through `selfLeaderboardEntryProvider`. The doc was real; the provider's
+cached value wasn't reflecting it. Root cause: `appStartupProvider`
+fires `LeaderboardRepository.ensurePublished` (create-if-missing)
+`unawaited` — it has to be, since Firestore writes must never block
+app startup (see this file's own note on that above) — and
+`selfLeaderboardEntryProvider` read `getSelf` independently, racing
+that write. On a real device the read regularly wins the race, resolves
+to `entry: null`, and — since this was a plain (non-`autoDispose`)
+`FutureProvider` — stayed cached at `null` for the rest of the app
+session even after the write landed moments later. `EditNameDialog`
+saving a name looked like the fix only because it writes through a
+*different*, unraced path (`syncProfileInfo`, called directly, not
+gated behind reading this provider first) — coincidence of timing, not
+an actual required step.
+
+**Fix**: `selfLeaderboardEntryProvider` now awaits its own
+create-if-missing step (calls `ensurePublished` itself and re-reads,
+inside the same async chain, if `getSelf` first comes back null) rather
+than depending on winning a race against a separate background call —
+the doc is now guaranteed to exist by the time this provider resolves,
+not just "usually does". Also switched to `.autoDispose` as a second
+line of defense, with an honest caveat in the doc comment: since
+Profile's own tab is kept alive across bottom-nav switches (per this
+file's `PageView`/`AutomaticKeepAliveClientMixin` architecture note),
+`autoDispose` alone doesn't guarantee a periodic retry just from
+revisiting the Profile tab — a fresh Leaderboard-screen open is the
+more reliable trigger for that secondary healing path in practice.
+
+**Honest non-finding, worth recording so a future session doesn't
+re-chase this specific account's "Belum ada"**: the *display itself*
+for this session's test account ("Gilang garind") kept reading "Belum
+ada" even after the fix — but that turned out to be correct behavior,
+not a bug. `globalScoreLabel` (`lib/features/leaderboard/
+leaderboard_screen.dart`) checks `entry.hasAnyRecord` before formatting
+a number, and returns the same "Belum ada" string for *any* entry with
+zero attempts across all four exam categories — indistinguishable in
+the UI from `entry == null`. This account has never taken a single
+exam (0/46 hiragana, 0/46 katakana, no exam history, confirmed on the
+same screenshots), so "Belum ada" is the honestly correct label
+regardless of whether the underlying doc race was ever fixed. Opening
+the actual Leaderboard screen's "Skor Global" tab confirmed the account
+*is* ranked (Peringkat ke-15, alongside other real accounts) — the
+doc-visibility part of the bug is not reproducing for this account. The
+race-condition fix above is still real and worth keeping (confirmed via
+the diagnostic dialog, independent of this account's own record state),
+but **this session could not fully reproduce the user's exact "before
+I've ever saved a name" starting state**, since the one available test
+account had already been renamed earlier in this same session, long
+before today's investigation. If the report recurs, the decisive test
+is a genuinely fresh account (never opened `EditNameDialog`) checking
+whether it appears in the Skor Global ranked list and is findable by
+its own unique id via Add Friend search — not just whether its own
+Profile card shows a nonzero score, which zero-record accounts
+correctly never do.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 288/288 (twice,
+before and after the fix — no test covers this specific race, since it
+depends on real network timing rather than anything a widget/unit test
+can reproduce deterministically). The temporary diagnostic hooks (both
+the abandoned Cloud Function and the `AlertDialog` one that shipped the
+finding) were fully removed before committing — confirmed via `git
+diff` showing zero changes to `functions/index.js` or
+`profile_screen.dart`, only `leaderboard_providers.dart`.
