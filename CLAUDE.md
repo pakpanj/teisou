@@ -8400,3 +8400,62 @@ accepted/declined** — logcat named the exact failing query and the fix
 removes exactly what that error named, but the fresh install was handed
 back for the user's own retry rather than the diagnosis being treated
 as proof on its own.
+
+## Update (2026-08-10, still later once more): opening a personal chat
+for the first time always showed `permission-denied` — a listener race,
+not the rules themselves
+
+User asked to check the Moto G52J directly and the app was already
+sitting on the error, rendered right in the chat body:
+`[cloud_firestore/permission-denied] The caller does not have
+permission to execute the specified operation.` — on a real
+`DirectMessageScreen` for an actual, already-accepted friend, which
+made the earlier `PERMISSION_DENIED`-on-`friendRequests` fix look
+suspect. `adb logcat` named the exact failing listen this time:
+
+```
+Listen for Query(target=Query(directMessages/{conversationId}/messages
+order by -createdAt, -__name__)) failed: PERMISSION_DENIED
+```
+
+**Root cause was a race, not a rules gap.** `firestore.rules`' `messages`
+subcollection read rule does `get()` on the parent
+`directMessages/{conversationId}` doc to check `participants` — correct,
+and unchanged, since a security rule can't decode uids out of a bare
+subcollection path. But `DirectMessageScreen`'s `_init()` called
+`ensureConversation()` (which creates that parent doc) as a fire-and-
+forget `unawaited`-shaped async call, while `build()` set `_myUid`
+immediately from the already-resolved `appStartupProvider` and started
+the live `messages` listener on that very first frame — before
+`ensureConversation` had actually finished. `get()` on a document that
+doesn't exist yet errors inside the rule, so the very first listen
+attempt was denied. The bug this exposed: **a Firestore snapshot
+listener that starts out denied does not retry itself once permission
+later becomes valid** — the parent doc exists a moment later, but the
+already-erred stream just sits in that error state for the rest of the
+screen's life, which is exactly what the screenshot caught. This is a
+different bug class from the earlier `sendFriendRequest`
+`PERMISSION_DENIED` (a query the rules unconditionally rejected) and the
+`watchMyRequests`/`watchMyInvites` `FAILED_PRECONDITION` (a missing
+index) — worth keeping the three apart, since "the app shows
+permission-denied" turned out to have three genuinely different causes
+across one session, not one recurring rules problem to keep patching.
+
+**Fixed by removing the race, not by touching `firestore.rules` again**:
+`_init()` now only sets `_myUid` (the value `build()` gates the
+`messages` listener's start on) *after* `ensureConversation()` resolves
+— `build()`'s stale `_myUid ?? ref.watch(appStartupProvider)...` fallback
+was deleted too, since that fallback was exactly what let the listener
+start on the very first frame regardless of whether `_init` had finished
+yet, quietly defeating any gating on `_myUid` alone. Confirmed
+`ClanChatScreen` has no equivalent race — its parent doc (`clans/{code}`)
+already exists by the time that screen can ever open (created at
+clan-creation time, not lazily on first chat open), so there was nothing
+to fix there.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 288/288, debug
+APK rebuilt and reinstalled on the Moto G52J (clean launch). **Not yet
+re-confirmed on-device that a first-time personal chat open now works**
+— logcat named the exact race this fix closes, but the fresh install was
+handed back for a real retry rather than trusting the diagnosis alone,
+same discipline as every other fix this session.

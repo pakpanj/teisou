@@ -46,19 +46,34 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
     _init();
   }
 
+  /// **Deliberately does not set [_myUid] until `ensureConversation` has
+  /// resolved.** `_myUid` is what `build()` waits on before starting the
+  /// live `messages` listen — an earlier version set it immediately, on
+  /// the (wrong) assumption that a `messages` read attempted before the
+  /// parent `directMessages/{conversationId}` doc existed would just "come
+  /// back empty" until the doc showed up. It doesn't: `firestore.rules`'
+  /// `messages` read rule does a `get()` on that parent doc, which errors
+  /// when the doc is missing, so the very first frame's listener attached
+  /// with `PERMISSION_DENIED` — confirmed via on-device logcat showing
+  /// exactly that Listen failing — and a Firestore snapshot listener that
+  /// starts denied does not retry itself once the doc shows up moments
+  /// later; it stays in that error state for the rest of the screen's
+  /// life. Waiting here means `build()`'s first `messages` listen only
+  /// ever starts once the parent doc is confirmed to exist, so there's no
+  /// window for that race.
   Future<void> _init() async {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (uid == null) return;
-    if (mounted) setState(() => _myUid = uid);
-    // Best-effort — a failed ensure just means the conversation doc gets
-    // created lazily on the next open/send attempt instead; the messages
-    // read below will simply come back empty until it exists.
+    // Best-effort — if this fails, the messages listen right after will
+    // legitimately fail too (the parent doc never got created), which is
+    // at least a real, diagnosable permission error rather than a race.
     try {
       await ref.read(directMessageRepositoryProvider).ensureConversation(
             uidA: uid,
             uidB: widget.friendUid,
           );
     } catch (_) {}
+    if (mounted) setState(() => _myUid = uid);
   }
 
   @override
@@ -199,7 +214,10 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
   @override
   Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
-    final myUid = _myUid ?? ref.watch(appStartupProvider).valueOrNull?.uid;
+    // Strictly _myUid, no fallback to appStartupProvider directly — see
+    // _init's own doc comment for why gating on it (not just "some uid is
+    // known") is what actually prevents the messages listener race.
+    final myUid = _myUid;
 
     if (myUid == null) {
       return Scaffold(
