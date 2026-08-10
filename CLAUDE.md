@@ -2650,6 +2650,44 @@ what the on-device pass actually verified), `flutter build apk
   kind of gap that's invisible to `flutter analyze`/`test`/`build` (which
   is exactly why it slipped through the Clan feature's original
   verification pass).
+- **`ClanMember` snapshots never resynced after join — fixed 2026-08-10**,
+  user report ("sistem top global dan clan, menggunakan connector name
+  dari google, harus nya kan di situ connector nya adalah nama dari
+  profile"). A thorough audit of every `leaderboard/{uid}` write path
+  (`ExamRepository.submitExam`, `ExamHistoryRepository.submit`,
+  `EditNameDialog`, `AvatarPickerSheet`, both clan dialogs) found they
+  already all correctly call `UserProfile.resolveDisplayName(user)` —
+  custom name first, Google's Auth `displayName` only as a fallback — so
+  the top-level leaderboard doc's `displayName` was not the bug. The real
+  gap was one level down: `ClanMember` (`clans/{code}/members/{uid}`) is
+  deliberately denormalized *at join time* so the clan ranking can render
+  a member with no `leaderboard/{uid}` doc yet — but nothing ever
+  resynced that snapshot afterward. A member who joined before setting a
+  custom name (or before their Google name even resolved correctly, pre-
+  the 2026-08-09 `_withGoogleName` fix) kept showing that stale name in
+  any clan whose ranking fell back to it — `clanRankingProvider` already
+  prefers a live `leaderboard/{uid}` entry when one exists, so this only
+  ever surfaced for members whose leaderboard doc genuinely doesn't exist
+  yet, but for those it was permanently stuck at whatever it captured on
+  join.
+  Fixed with `ClanRepository.syncMemberInfo(uid, displayName, photoUrl,
+  avatarType, avatarValue)`: reads `users/{uid}/clanMemberships` (a user
+  can belong to more than one clan) and batch-updates that uid's own
+  `ClanMember` row in every one of them — permitted by the existing
+  `firestore.rules` roster rule (`request.auth.uid == memberUid`), no
+  rules change needed. Wired in alongside the existing
+  `LeaderboardRepository.syncProfileInfo` calls in `EditNameDialog`
+  (name changes) and `AvatarPickerSheet._select` (avatar changes) —
+  frame changes don't touch `ClanMember` at all, since it has no
+  `frameId` field. Best-effort, wrapped in its own try/catch: the
+  leaderboard sync right before it is the one that actually matters for
+  ranking correctness, so a clan-doc write hiccup must never surface as
+  a save failure on a screen that already succeeded.
+  `flutter analyze` clean, full `flutter test --concurrency=1` suite
+  (288 tests) passes. **No interactive on-device pass done** — worth
+  confirming on a real multi-clan account that changing your name
+  actually updates how you appear in every clan you're in, not just the
+  main leaderboard, before treating this as fully verified.
 - **Avatar resolution priority** (see `UserAvatar` widget, and its
   leaderboard-row counterpart `LeaderboardAvatar` in
   `leaderboard_screen.dart` — renamed from private `_Avatar` when the Clan

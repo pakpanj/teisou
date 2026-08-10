@@ -6,7 +6,7 @@ import '../../core/firebase/firestore_paths.dart';
 import '../models/clan.dart';
 import '../models/clan_member.dart';
 import '../models/clan_membership.dart';
-import '../models/user_profile.dart' show AvatarType;
+import '../models/user_profile.dart' show AvatarType, AvatarTypeX;
 
 /// Manages clan/host creation, joining, leaving, and membership lookups.
 /// Every write mirrors the read-then-write / batch style already
@@ -177,5 +177,51 @@ class ClanRepository {
     return snapshot.docs
         .map((doc) => ClanMember.fromMap(doc.id, doc.data()))
         .toList();
+  }
+
+  /// Refreshes [uid]'s identity fields (name/avatar) across every clan
+  /// they're currently a member of.
+  ///
+  /// `ClanMember` is denormalized at join time on purpose (the ranking must
+  /// render a member who has no `leaderboard/{uid}` doc at all yet), but
+  /// that snapshot was never resynced afterward — a user who joined before
+  /// ever setting a custom name, then set one later, kept showing their old
+  /// (often Google-derived) name in any clan whose ranking fell back to this
+  /// copy instead of a live `leaderboard/{uid}` entry. Call this alongside
+  /// `LeaderboardRepository.syncProfileInfo` wherever a user changes their
+  /// name or avatar, the same way that call already keeps the top-level
+  /// leaderboard doc current.
+  ///
+  /// Reads the membership list first since a user can belong to more than
+  /// one clan simultaneously — every membership gets the same update in one
+  /// batch. Best-effort by design: the caller's own leaderboard sync is the
+  /// one that matters for ranking correctness (see `clanRankingProvider`,
+  /// which already prefers a live leaderboard entry over this snapshot), so
+  /// a failure here must not surface as an error to a screen that already
+  /// saved successfully.
+  Future<void> syncMemberInfo({
+    required String uid,
+    required String displayName,
+    String? photoUrl,
+    required AvatarType avatarType,
+    String? avatarValue,
+  }) async {
+    final memberships = await _membershipsOf(uid).get();
+    if (memberships.docs.isEmpty) return;
+
+    final batch = _firestore.batch();
+    for (final membership in memberships.docs) {
+      batch.set(
+        _membersOf(membership.id).doc(uid),
+        {
+          'displayName': displayName,
+          'photoUrl': photoUrl,
+          'avatarType': avatarType.key,
+          'avatarValue': avatarValue,
+        },
+        SetOptions(merge: true),
+      );
+    }
+    await batch.commit();
   }
 }

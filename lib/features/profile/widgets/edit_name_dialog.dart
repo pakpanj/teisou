@@ -32,16 +32,33 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
     return trimmed;
   }
 
-  Future<void> _syncLeaderboard(String uid, String name) {
+  Future<void> _syncLeaderboard(String uid, String name) async {
     final profile = ref.read(userProfileProvider).valueOrNull;
     final user = ref.read(appStartupProvider).valueOrNull;
-    return ref.read(leaderboardRepositoryProvider).syncProfileInfo(
+    final avatarType = profile?.avatarType ?? AvatarType.google;
+    final avatarValue = profile?.avatarValue;
+    await ref.read(leaderboardRepositoryProvider).syncProfileInfo(
           uid: uid,
           displayName: name,
           photoUrl: user?.photoURL,
-          avatarType: profile?.avatarType ?? AvatarType.google,
-          avatarValue: profile?.avatarValue,
+          avatarType: avatarType,
+          avatarValue: avatarValue,
         );
+    // Best-effort — the leaderboard sync above already succeeded, so a
+    // hiccup here (a clan doc write failing) must not surface as a save
+    // failure. See ClanRepository.syncMemberInfo's doc comment for why
+    // this needs its own call: a clan's ranking can fall back to a stale
+    // ClanMember snapshot for a member with no leaderboard doc yet, and
+    // that snapshot is never touched by the write above.
+    try {
+      await ref.read(clanRepositoryProvider).syncMemberInfo(
+            uid: uid,
+            displayName: name,
+            photoUrl: user?.photoURL,
+            avatarType: avatarType,
+            avatarValue: avatarValue,
+          );
+    } catch (_) {}
   }
 
   Future<void> _saveDirectly(String uid, String name) async {

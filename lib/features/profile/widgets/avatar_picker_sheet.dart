@@ -109,6 +109,18 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
       );
       return;
     }
+    // Best-effort — the leaderboard sync above already succeeded. See
+    // ClanRepository.syncMemberInfo's doc comment for why an avatar change
+    // needs its own clan-roster sync, not just the leaderboard one.
+    try {
+      await ref.read(clanRepositoryProvider).syncMemberInfo(
+            uid: uid,
+            displayName: displayName,
+            photoUrl: photoUrl,
+            avatarType: type,
+            avatarValue: value,
+          );
+    } catch (_) {}
     if (consumeReward) {
       // Best-effort only — the avatar itself already saved successfully
       // above, so a hiccup here must not surface as a failure.
