@@ -5,14 +5,14 @@ import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/simple_exam_result.dart';
 
-/// Shared score-summary screen for Dokkai/Choukai/Kanji-Kombinasi — unlike
-/// the kana `ExamResultScreen` (confetti, mastery tracking, ads), these
-/// three exam types share an identical simple "score/total + try again"
-/// shape, so one screen replaces three near-duplicates. [reviewContent],
+/// Shared score-summary screen for Dokkai/Choukai/Kanji-Kombinasi/the Bab
+/// gate quiz — unlike the kana `ExamResultScreen` (confetti, mastery
+/// tracking), these share an identical simple "score/total + try again"
+/// shape, so one screen replaces four near-duplicates. [reviewContent],
 /// when given, is shown below the score (e.g. Choukai's audio script
 /// reveal for post-listening review) — null for exam types with nothing
 /// extra to show.
-class SimpleExamResultScreen extends ConsumerWidget {
+class SimpleExamResultScreen extends ConsumerStatefulWidget {
   final String title;
   final SimpleExamResult result;
   final Widget? reviewContent;
@@ -25,7 +25,29 @@ class SimpleExamResultScreen extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SimpleExamResultScreen> createState() =>
+      _SimpleExamResultScreenState();
+}
+
+class _SimpleExamResultScreenState
+    extends ConsumerState<SimpleExamResultScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Same gate and shared counter as the kana ExamResultScreen — see
+    // AdService.maybeShowInterstitialAfterExam, which now fires from every
+    // exam type that reaches a result screen, not just kana.
+    final isPremium =
+        ref.read(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    if (!isPremium) {
+      ref.read(adServiceProvider).maybeShowInterstitialAfterExam();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final result = widget.result;
+    final reviewContent = widget.reviewContent;
     final s = ref.watch(appStringsProvider);
     final percentage = result.total == 0
         ? 0
@@ -38,7 +60,8 @@ class SimpleExamResultScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: Text(title), automaticallyImplyLeading: false),
+      appBar:
+          AppBar(title: Text(widget.title), automaticallyImplyLeading: false),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
@@ -85,7 +108,7 @@ class SimpleExamResultScreen extends ConsumerWidget {
               ),
               if (reviewContent != null) ...[
                 const SizedBox(height: 24),
-                reviewContent!,
+                reviewContent,
               ],
               const SizedBox(height: 32),
               SizedBox(

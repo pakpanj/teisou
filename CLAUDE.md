@@ -4392,6 +4392,29 @@ what the on-device pass actually verified), `flutter build apk
   banner. Interstitial frequency (every 3rd exam,
   `AdService._interstitialFrequency`) and rewarded-ad call sites were
   untouched — this pass was placement-only, not frequency tuning.
+
+  **Update (2026-08-10): interstitial frequency widened, and extended to
+  every exam type.** Two changes, per explicit user request: (1)
+  `AdService._interstitialFrequency` dropped from 3 to **2** — an
+  interstitial now shows every 2nd exam completion instead of every 3rd,
+  same shared in-memory counter as before. (2) The trigger, previously
+  only wired into the kana `ExamResultScreen`, now also fires from
+  `SimpleExamResultScreen` — the shared result screen for Dokkai,
+  Choukai, Kanji-Kombinasi, **and the Bab gate quiz** (all four reach
+  this one screen). `SimpleExamResultScreen` converted from a
+  `ConsumerWidget` to `ConsumerStatefulWidget` specifically to gain an
+  `initState()`, mirroring `ExamResultScreen`'s exact call site: read
+  `subscriptionProvider`, skip entirely for premium users (unchanged —
+  premium's pitch still includes "Tanpa iklan"), call
+  `AdService.maybeShowInterstitialAfterExam()` once per screen instance.
+  Worth knowing if this needs revisiting: the Bab gate quiz is a
+  curriculum checkpoint, not a plain practice exam — a curriculum-gate
+  count and a plain-exam count are indistinguishable in this single
+  shared counter, meaning a learner alternating between the two hits an
+  ad every 2 completions total across both, not every 2 of each
+  separately. That's what "semua ujian apapun" (every exam, whatever
+  kind) was asked for, but flag it if the gate quiz specifically ever
+  needs its own cadence.
 - **Cover photo picker (2026-07-24)**: `_HeaderCard` in
   `profile_screen.dart` now renders the selected cover as a full-bleed
   background behind the whole header card (not just a small side

@@ -101,7 +101,7 @@ class AdService {
   static bool get usingTestAdUnits =>
       bannerAdUnitId.startsWith('ca-app-pub-3940256099942544/');
 
-  static const _interstitialFrequency = 3;
+  static const _interstitialFrequency = 2;
 
   InterstitialAd? _interstitialAd;
   bool _interstitialLoading = false;
@@ -173,7 +173,8 @@ class AdService {
   }
 
   /// Bumps the exam-completion counter and shows a preloaded interstitial
-  /// every 3rd completion. No-op if nothing is loaded yet.
+  /// every 2nd completion, across every exam type that calls this — not
+  /// just the kana Ujian. No-op if nothing is loaded yet.
   void maybeShowInterstitialAfterExam() {
     _examsSinceLastInterstitial++;
     if (_examsSinceLastInterstitial < _interstitialFrequency) return;
