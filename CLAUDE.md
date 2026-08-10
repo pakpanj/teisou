@@ -4415,26 +4415,33 @@ what the on-device pass actually verified), `flutter build apk
   separately. That's what "semua ujian apapun" (every exam, whatever
   kind) was asked for, but flag it if the gate quiz specifically ever
   needs its own cadence.
-- **4 covers + 4 frames locked behind a single-use rewarded ad
-  (2026-08-10)**, per explicit user request ("beberapa sampul dan
-  frame di gembok... kalau mau ganti 1 kali harus nonton iklan 1
-  kali") — reuses `AvatarPickerSheet`'s already-existing avatar-premium
-  ad-unlock mechanism (`ProgressRepository.unlockAdReward`/
-  `consumeAdReward`/`getAdRewards`, `PaywallScreen(singleUse: true)`)
-  rather than inventing a new one: `CoverPresets.lockedIds`
-  (`zodiac_night`/`magic_castle`/`cyber_neon`/`outer_space`) and
-  `FramePresets.lockedIds` (`frame_moon_crystal`/`frame_space`/
-  `frame_witch`/`frame_fairytale`) are a deliberately arbitrary sample
-  of 4 each, not a themed tier — the request was for "a few sample
-  locked ones", not a curated split, so add more ids to either set the
-  same way if the sample needs to grow later. Each gets its own
-  `moduleId` (`cover_premium`/`frame_premium`, alongside the
-  pre-existing `avatar_premium`) so watching an ad for one can never
-  spend another's unlock. `CoverPresets.fallback` (`sakura_dawn`, what
-  every user with no saved `coverId` sees) is deliberately excluded
-  from `lockedIds` — locking the cover shown before any choice is ever
-  made would be a confusing thing to gate. `CoverPickerSheet` gained
-  the exact `_adRewardActive`/`isPremium`/`viaAdReward`/
+- **Only 4 covers and 4 frames stay free; every other one is locked
+  behind a single-use rewarded ad (2026-08-10)**, per explicit user
+  request ("beberapa sampul dan frame di gembok... kalau mau ganti 1
+  kali harus nonton iklan 1 kali") — reuses `AvatarPickerSheet`'s
+  already-existing avatar-premium ad-unlock mechanism
+  (`ProgressRepository.unlockAdReward`/`consumeAdReward`/
+  `getAdRewards`, `PaywallScreen(singleUse: true)`) rather than
+  inventing a new one. **Correction to this entry's own first version**:
+  it originally had this backwards — 4 *locked*, the rest free — until
+  the user clarified the intent was the opposite (4 free, everything
+  else locked). `CoverPresets.freeIds` (`sakura_dawn`/`autumn_leaves`/
+  `spring_meadow`/`starry_night`, 4 of 19) and `FramePresets.freeIds`
+  (`frame_sakura_fuji`/`frame_sakura`/`frame_autumn`/`frame_winter`, 4
+  of 20) are expressed as the *free* set rather than the locked one —
+  `isLocked(id) => !freeIds.contains(id)` — specifically so a cover or
+  frame added to either list later is locked by default unless someone
+  deliberately adds its id to `freeIds` too, instead of silently
+  shipping free until someone remembers to lock it. Both sets are a
+  deliberately arbitrary sample of 4, not a themed selection — add or
+  swap ids the same way if the free set needs to change. Each locked
+  category gets its own `moduleId` (`cover_premium`/`frame_premium`,
+  alongside the pre-existing `avatar_premium`) so watching an ad for
+  one can never spend another's unlock. `CoverPresets.fallback`
+  (`sakura_dawn`, what every user with no saved `coverId` sees) is
+  deliberately in `freeIds` — locking the cover shown before any choice
+  is ever made would be a confusing thing to gate. `CoverPickerSheet`
+  gained the exact `_adRewardActive`/`isPremium`/`viaAdReward`/
   `consumeReward`-on-success shape `AvatarPickerSheet`'s premium-avatar
   grid already used (locked tile → dark scrim + lock badge → tap opens
   `PaywallScreen` → watching the ad unlocks exactly one change, consumed
@@ -4442,7 +4449,9 @@ what the on-device pass actually verified), `flutter build apk
   backstop). `AvatarPickerSheet`'s own `_FrameGrid`/`_FrameTile` — which
   had no lock concept at all before this, since every frame shipped
   free once real art landed — gained the same treatment via a sibling
-  `_frameAdRewardActive` flag and `frame_premium` module id;
+  `_frameAdRewardActive` flag and `frame_premium` module id (the "no
+  frame" tile itself stays free unconditionally, outside `freeIds`
+  entirely, since it isn't part of `FramePresets.all`);
   `_refreshAdRewardStatus` now reads both flags off one
   `getAdRewards` call instead of two, since that method already returns
   every module's reward state in one map. Two new `AppStrings` getters

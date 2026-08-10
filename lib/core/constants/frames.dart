@@ -105,16 +105,20 @@ class FramePresets {
     return null;
   }
 
-  /// A sample of 4 frames locked behind a single-use rewarded ad (see
-  /// `AvatarPickerSheet`'s `frame_premium` module id) — same "a few sample
-  /// locked ones" request as [CoverPresets.lockedIds], not a curated tier;
-  /// add more ids here later the same way if the sample needs to grow.
-  static const lockedIds = {
-    'frame_moon_crystal',
-    'frame_space',
-    'frame_witch',
-    'frame_fairytale',
+  /// The 4 frames that stay free — every other one of the 20 is locked
+  /// behind a single-use rewarded ad (see `AvatarPickerSheet`'s
+  /// `frame_premium` module id). Expressed as the free set rather than the
+  /// locked one, same reasoning as [CoverPresets.freeIds]: a frame added
+  /// to [all] later is locked by default unless it's added here too. The
+  /// "no frame" tile itself isn't part of [all] at all and stays free
+  /// unconditionally — handled separately in `AvatarPickerSheet`'s
+  /// `_FrameGrid`, not by this set.
+  static const freeIds = {
+    'frame_sakura_fuji',
+    'frame_sakura',
+    'frame_autumn',
+    'frame_winter',
   };
 
-  static bool isLocked(String id) => lockedIds.contains(id);
+  static bool isLocked(String id) => !freeIds.contains(id);
 }

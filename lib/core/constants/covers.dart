@@ -227,22 +227,24 @@ class CoverPresets {
     ),
   ];
 
-  /// A sample of 4 covers locked behind a single-use rewarded ad (see
-  /// `CoverPickerSheet`'s `cover_premium` module id) — an explicit user
-  /// request for "a few sample locked covers", not a curated tier with a
-  /// particular theme; add more ids here later the same way if the sample
-  /// needs to grow. Deliberately excludes [fallback] (`sakura_dawn`) —
-  /// that's what every user with no saved `coverId` sees by default, and
-  /// locking the one cover shown before any choice is ever made would be a
-  /// confusing thing to gate.
-  static const lockedIds = {
-    'zodiac_night',
-    'magic_castle',
-    'cyber_neon',
-    'outer_space',
+  /// The 4 covers that stay free — every other one of the 19 is locked
+  /// behind a single-use rewarded ad (see `CoverPickerSheet`'s
+  /// `cover_premium` module id). Expressed as the free set rather than the
+  /// locked one specifically so it doesn't drift as [all] grows: a new
+  /// cover added to the list above is locked by default unless it's added
+  /// here too, instead of silently free until someone remembers to lock
+  /// it. Includes [fallback] (`sakura_dawn`) on purpose — that's what
+  /// every user with no saved `coverId` sees by default, and locking the
+  /// one cover shown before any choice is ever made would be a confusing
+  /// thing to gate.
+  static const freeIds = {
+    'sakura_dawn',
+    'autumn_leaves',
+    'spring_meadow',
+    'starry_night',
   };
 
-  static bool isLocked(String id) => lockedIds.contains(id);
+  static bool isLocked(String id) => !freeIds.contains(id);
 
   /// What the Profile header shows for a user who has never picked a cover.
   ///
