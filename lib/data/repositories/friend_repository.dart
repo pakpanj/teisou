@@ -79,18 +79,28 @@ class FriendRepository {
     await _requestsOf(targetUid).add(request.toMap());
   }
 
-  /// Live, scoped to `status == pending` server-side — same reasoning as
-  /// `ClanRepository.watchMyInvites`.
+  /// Live, scoped to `status == pending` server-side. **Deliberately no
+  /// server-side `orderBy`** — combining a `where` on one field with an
+  /// `orderBy` on a different one needs a Firestore composite index, and
+  /// this collection had none: confirmed on-device via
+  /// `FAILED_PRECONDITION: The query requires an index`, which meant this
+  /// stream never emitted anything at all and every incoming friend
+  /// request was invisible to its recipient (read as "confirmation is
+  /// broken", not "the query crashed"). Sorted here instead, client-side —
+  /// safe for what's always one person's own short pending-request list,
+  /// and it sidesteps needing an index deploy this environment has no way
+  /// to perform on the user's behalf anyway.
   Stream<List<FriendRequest>> watchMyRequests(String uid) {
     return _requestsOf(uid)
         .where('status', isEqualTo: FriendRequestStatus.pending.key)
-        .orderBy('createdAt', descending: true)
         .snapshots()
-        .map(
-          (snapshot) => snapshot.docs
+        .map((snapshot) {
+          final requests = snapshot.docs
               .map((doc) => FriendRequest.fromMap(doc.id, doc.data()))
-              .toList(),
-        );
+              .toList();
+          requests.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+          return requests;
+        });
   }
 
   /// Accepting writes both sides of the friendship in one batch — a friend

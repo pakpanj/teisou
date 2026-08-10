@@ -8346,3 +8346,57 @@ Clan/Pribadi picker flow specifically** — the install completed and the
 app launched (confirmed process-alive, not crashed), but the UI itself
 was left for the user's own unlock-and-look rather than pushed through
 via further ADB automation against a personal, actively-in-use phone.
+
+## Update (2026-08-10, still later again): incoming friend requests never
+loaded — a missing Firestore composite index, not a rules problem
+
+User reported "rules di firestore tidak menerima untuk konfirmasi
+pertemanan" (rules don't accept confirming a friendship) after sending a
+request from one account and finding it never showed up to accept on
+the other. Reasonable guess given the day's earlier `PERMISSION_DENIED`
+bug, but `adb logcat` this time showed something different:
+
+```
+FAILED_PRECONDITION: The query requires an index. You can create it
+here: https://console.firebase.google.com/.../indexes?create_composite=...
+```
+
+**Root cause**: `FriendRepository.watchMyRequests` combined
+`.where('status', isEqualTo: pending)` with
+`.orderBy('createdAt', descending: true)` — a `where` on one field plus
+an `orderBy` on a *different* field needs a Firestore composite index,
+and this project's live Firestore has none for `friendRequests`. So the
+stream never emitted anything at all, silently — no error surfaced to
+the UI, the "Permintaan" tab and its `CountBadge` just stayed
+permanently empty, which reads exactly like "confirmation doesn't
+work".
+
+**`ClanRepository.watchMyInvites` had the byte-for-byte identical query
+shape** (`where('status', ...)` + `orderBy('createdAt', ...)` on
+`clanInvites`) and was fixed in the same pass, on the theory that it was
+one on-device test away from hitting the exact same wall — this wasn't
+confirmed broken independently, but the query shape gives no reason to
+expect it to behave differently.
+
+**Fixed by dropping the server-side `orderBy` and sorting client-side
+after fetching**, in both methods — not by creating the index. Both
+lists are always one user's own short pending set (requests/invites
+sitting in front of them), so client-side sort costs nothing
+meaningful, and it means this doesn't depend on a Firestore index that
+would otherwise need the user to click through the Firebase Console
+link themselves (same category of thing this environment has no way to
+do on the user's behalf, like every other "needs the user's own
+Firestore Console action" item already documented elsewhere in this
+file). Searched the rest of `lib/data/repositories/` for any other
+`.where(...)` immediately followed by `.orderBy(...)` on a different
+field — these two were the only matches.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 288/288, debug
+APK rebuilt and reinstalled on the Moto G52J (clean launch, no
+tombstones this time, unlike the other physical device installed
+earlier the same session). **Not yet independently confirmed on-device
+that a friend request now actually arrives and can be
+accepted/declined** — logcat named the exact failing query and the fix
+removes exactly what that error named, but the fresh install was handed
+back for the user's own retry rather than the diagnosis being treated
+as proof on its own.

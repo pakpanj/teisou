@@ -322,16 +322,26 @@ class ClanRepository {
   /// once a learner has answered an invite there's nothing left to act on,
   /// so there's no reason to keep streaming resolved ones down to a screen
   /// that only ever renders the pending list.
+  ///
+  /// **No server-side `orderBy`, on purpose** — see
+  /// `FriendRepository.watchMyRequests`'s doc comment, which documents the
+  /// exact same query shape hitting a real `FAILED_PRECONDITION: The query
+  /// requires an index` on-device (this collection has the identical
+  /// `where`-on-one-field-plus-`orderBy`-on-another shape a Firestore
+  /// composite index is required for, and none exists here either). Fixed
+  /// the same way before this ever shipped broken: sorted client-side
+  /// instead, safe for a single learner's own short pending-invite list.
   Stream<List<ClanInvite>> watchMyInvites(String uid) {
     return _invitesOf(uid)
         .where('status', isEqualTo: ClanInviteStatus.pending.key)
-        .orderBy('createdAt', descending: true)
         .snapshots()
-        .map(
-          (snapshot) => snapshot.docs
+        .map((snapshot) {
+          final invites = snapshot.docs
               .map((doc) => ClanInvite.fromMap(doc.id, doc.data()))
-              .toList(),
-        );
+              .toList();
+          invites.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+          return invites;
+        });
   }
 
   /// Accepts or declines [invite]. Accepting reuses [joinClan] itself
