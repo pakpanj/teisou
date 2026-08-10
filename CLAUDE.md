@@ -9234,20 +9234,60 @@ same class of one-off flakiness already documented for the first-ever
 2nd-gen function's Eventarc IAM propagation) rather than a code problem —
 confirmed right: the retry succeeded with no code changes.
 
-**Verification status, honestly**: `flutter analyze` clean, `flutter
-test --concurrency=1` 288/288, `firestore.rules` and the new Cloud
-Function both deployed clean, debug APK built and installed successfully
-on the Moto G52J. **On-device interactive verification could not
-happen this pass** — the physical test device was found locked behind a
-real PIN/pattern credential (confirmed via the same `adb shell
-locksettings get-disabled` → "Credential can't be null or empty" error
-this file already documents as the standing signal for this exact
-situation, e.g. the Bunpou N3/N2 and Partikel verification gaps above).
-Per this project's own standing rule, bypassing or guessing a device
-credential is out of bounds regardless of task urgency, so this was left
-unattempted rather than worked around. **The icon picker, description
-save, announcement compose/read, the header's new button row not
-overflowing on a real 1080px screen, and the actual push notification
-arriving on a second device or account are all still unconfirmed on
-real hardware** — worth a fresh on-device pass the next time this device
-is unlocked, before treating this feature as fully verified.
+**Verification status**: `flutter analyze` clean, `flutter test
+--concurrency=1` 288/288, `firestore.rules` and the new Cloud Function
+both deployed clean, debug APK built and installed on the Moto G52J.
+
+**On-device pass completed later the same day, once the device was
+unlocked** (the physical test device had been found locked behind a real
+PIN/pattern credential earlier this session — per this project's
+standing rule, that was left unattempted rather than worked around; see
+the Bunpou N3/N2 and Partikel verification gaps elsewhere in this file
+for the same precedent). The account signed in on-device turned out to
+be a member, not leader, of its only existing clan — confirming the
+leader-gating itself (`ClanSettingsScreen`'s gear icon and the
+announcement compose FAB both correctly stayed hidden for that account)
+but leaving nothing to exercise the leader-only write paths with. Rather
+than stop there, created a genuinely new throwaway clan (auto-leader per
+`createClan`'s own logic) to close the gap properly:
+
+- Header row renders all 6 buttons (chat/announcements/manage/settings/
+  copy/leave) with no horizontal overflow on the real 1080px screen —
+  confirmed both as a member (5 buttons, settings hidden) and as leader
+  (6 buttons).
+- `ClanSettingsScreen`: all 12 icon presets render their emoji fallback
+  correctly in the grid; selecting one shows the save confirmation
+  snackbar, persists (survived a screen re-entry), and immediately shows
+  in the clan header's icon circle. The description field: typed text,
+  saved, confirmation snackbar, and the text appeared in the header below
+  the clan name.
+- `ClanAnnouncementsScreen`: empty state with no compose control for a
+  non-leader member; for the leader, composed and posted a real
+  announcement — success snackbar, and the entry appeared in the list
+  with correct author name and timestamp.
+- Left the throwaway test clan afterward via the existing "keluar"
+  (leave) flow to avoid leaving clutter in the live `clans` collection.
+
+**Genuinely still unconfirmed**: the test clan had only one member (its
+creator), so `onClanAnnouncementCreated`'s per-member push fan-out loop
+correctly found zero *other* recipients and sent nothing — this pass
+could not observe a push actually arriving on a second account/device
+for an announcement specifically. That said, the delivery mechanism
+itself (writing to `users/{uid}/notifications`, picked up by
+`onUserNotificationCreated`) is the exact same pipeline already
+confirmed working end-to-end for chat and generic notifications earlier
+this session, so this is a low-risk gap, not an open question about
+whether the mechanism works at all.
+
+Two ADB tap-coordinate lessons from this pass, worth keeping in mind for
+future on-device automation: screenshots pulled via `adb shell screencap`
+are captured at the device's real native resolution (1080×2460 here),
+not the downscaled preview a screenshot is displayed at — estimating tap
+coordinates from the preview without scaling by the preview/native ratio
+reliably misses small targets (this cost several retries on the
+description field and the dialog's send button before switching to
+cropping the actual saved PNG at native resolution with Pillow to read
+exact pixel positions). And `adb shell input text "..."` silently drops
+everything after the first space in a plain quoted string — the
+reliable fix is substituting spaces with the literal `%s` token in the
+text argument, not adding quoting workarounds.
