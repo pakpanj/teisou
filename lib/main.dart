@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'core/navigation/root_navigator_key.dart';
 import 'core/navigation/tts_stop_observer.dart';
 import 'core/providers.dart';
 import 'core/theme/app_theme.dart';
@@ -15,6 +17,7 @@ import 'data/repositories/theme_repository.dart';
 import 'features/home/home_screen.dart';
 import 'features/onboarding/age_question_screen.dart';
 import 'firebase_options.dart';
+import 'core/services/fcm_service.dart';
 import 'core/services/startup_preloader.dart';
 import 'core/widgets/mascot_loading_screen.dart';
 import 'features/onboarding/onboarding_screen.dart';
@@ -33,6 +36,12 @@ Future<void> main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    // Must be registered before runApp, and only makes sense once Firebase
+    // itself is up — a message arriving while the app is fully
+    // backgrounded/terminated runs this on a separate isolate with none of
+    // this function's own state, which is exactly why it's a top-level
+    // function in fcm_service.dart rather than something defined here.
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   } catch (e) {
     debugPrint('Firebase.initializeApp failed: $e');
   }
@@ -120,6 +129,7 @@ class _KanaMasterAppState extends ConsumerState<KanaMasterApp>
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeMode.material,
+      navigatorKey: rootNavigatorKey,
       navigatorObservers: _navigatorObservers,
       home: const _AudienceGate(),
     );

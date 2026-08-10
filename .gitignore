@@ -56,3 +56,7 @@ app.*.map.json
 *.keystore
 key.properties
 android/key.properties
+
+# Cloud Functions — installed, not authored; `npm install` inside
+# functions/ regenerates this from package.json/package-lock.json.
+functions/node_modules/

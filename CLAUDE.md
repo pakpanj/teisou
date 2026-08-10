@@ -8582,3 +8582,161 @@ opening it, and that the redesigned cards render correctly in dark mode
 too (not just spot-checked against the palette's literal-color rule,
 which catches hardcoded colors but not e.g. contrast/legibility of a
 new shadow against a dark background).
+
+## Update (2026-08-10, real push notifications): Cloud Functions + FCM —
+the project's first server-side code, and its first live deploy from
+this environment
+
+Follow-up to the in-app `CountBadge` unread system above: the user
+explicitly asked for real, WhatsApp-style push notifications — a chat/
+clan message should reach a learner whose app is closed or backgrounded,
+not just show a badge next time they open it. This needed infrastructure
+that genuinely did not exist anywhere in this project before today: no
+Cloud Functions, no `firebase_messaging`, no Blaze plan. **The Blaze
+plan activation itself was the user's own action** (a billing/account
+decision — not something this environment can or should do on someone's
+behalf); once they confirmed it was active, everything else below was
+built and deployed from here.
+
+### Server side — `functions/` (Cloud Functions, Node.js 22, 2nd gen)
+
+Two Firestore-triggered functions, kept separate rather than one generic
+"a message was written somewhere" trigger, since recipients are found
+completely differently for each:
+- **`onDirectMessageCreated`** (`directMessages/{conversationId}/
+  messages/{messageId}`) — reads the parent doc's `participants` array,
+  finds whichever one isn't the sender, sends to them.
+- **`onClanMessageCreated`** (`clans/{code}/messages/{messageId}`) —
+  reads every member of `clans/{code}/members`, sends to everyone except
+  the sender, and **skips anyone who has the sender in their own
+  `blockedClanUsers`** — mirrors `ClanMessageRepository`'s existing
+  client-side block feature, so a blocked sender's messages don't
+  generate a push either, not just stay hidden in the chat itself.
+
+Both funnel through a shared `sendToUid` helper: reads every token in
+`users/{uid}/fcmTokens/{token}` (written by the Flutter-side `FcmService`
+below), sends via `sendEachForMulticast`, and **deletes whichever tokens
+FCM reports as `registration-token-not-registered`** — otherwise a stale
+token list (uninstalled app, rotated token) only grows, and every future
+send keeps paying to fail against it forever.
+
+**Runs with Admin SDK privileges**, so `firestore.rules` doesn't apply to
+any of this — reading another user's `fcmTokens`/`blockedClanUsers`
+subcollection from a Cloud Function is exactly the trusted server-side
+context those rules were written assuming would exist once real push
+notifications were built (both subcollections are otherwise private,
+owner-only reads from the client's own side).
+
+### Client side — `lib/core/services/fcm_service.dart` + wiring
+
+`FcmService.init(uid)` (called best-effort from `appStartupProvider`,
+same "don't block startup, log-don't-surface" contract every other call
+there follows): creates the `chat_messages` Android notification channel,
+requests notification permission, saves/refreshes this device's FCM token
+to `users/{uid}/fcmTokens/{token}`, and wires up all three message-arrival
+paths —
+- **Foreground** (`FirebaseMessaging.onMessage`): Android does *not*
+  auto-display a system notification while the app is foregrounded, so
+  `flutter_local_notifications` shows one manually — **unless the
+  learner is already looking at that exact conversation**
+  (`FcmService.currentOpenChatKey`, a static field
+  `DirectMessageScreen`/`ClanChatScreen` set in `initState` and clear in
+  `dispose`, keyed `'dm:{conversationId}'`/`'clan:{code}'`) — a banner
+  over a message they can already see arrive live in the list would be
+  redundant, not helpful.
+- **Background tap** (`FirebaseMessaging.onMessageOpenedApp`) and
+  **cold-start tap** (`getInitialMessage()`): both decode the push's
+  `data` payload (`type: 'dm'|'clan'` plus the ids needed to open the
+  right screen) and push the matching `DirectMessageScreen`/
+  `ClanChatScreen` via a new **`rootNavigatorKey`**
+  (`lib/core/navigation/root_navigator_key.dart`) — the one thing a
+  notification tap can rely on existing regardless of whether there's a
+  `BuildContext` anywhere nearby, which a cold start genuinely has none
+  of.
+- A minimal top-level `firebaseMessagingBackgroundHandler` is registered
+  (required by `firebase_messaging`) but does nothing on purpose:
+  Android already auto-displays the notification while backgrounded/
+  terminated using the push's own `notification` payload, so there's
+  nothing left for Dart code to do there.
+
+### Three real bugs found getting this deployed, in the order they
+appeared — worth reading before touching this again
+
+1. **`initializeApp()`/`getFirestore()`/`getMessaging()` called at
+   module top level made every deploy fail outright**: `Error: User code
+   failed to load. Cannot determine backend specification. Timeout after
+   10000`. `firebase-tools` loads `functions/index.js` once at deploy
+   time just to discover which functions it exports, under a hard
+   10-second timeout — reproduced locally (`node -e "require('./index.js')"`
+   measurably took **longer than 20 seconds** with eager init, ~2.5s once
+   deferred). Fixed by making all three lazy (`ensureAppInitialized()` +
+   `db()`/`messaging()` getter functions, called only from inside the
+   actual event handlers) — this is Firebase's own documented fix for
+   this exact failure (linked directly in the error message), not a
+   workaround invented here. **Also bumped `firebase-functions`/
+   `firebase-admin` to current majors and the Node runtime from 20 to
+   22** in the same pass — Node 20 was flagged as deprecated
+   (decommissioned 2026-10-30) by the CLI itself, worth doing regardless
+   of whether it was the actual cause of the timeout.
+2. **`flutter_local_notifications` broke the Android build outright**:
+   `Dependency ':flutter_local_notifications' requires core library
+   desugaring to be enabled for :app` — this project's minSdk (24)
+   predates several `java.time` APIs the plugin needs backported.
+   Fixed in `android/app/build.gradle.kts`:
+   `isCoreLibraryDesugaringEnabled = true` in `compileOptions`, plus
+   `coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")`
+   in `dependencies`. Neither line existed before this feature — no
+   plugin in this project needed desugaring until now.
+3. **The very first deploy attempt (after fix #1) failed with a
+   different, expected error**: `Permission denied while using the
+   Eventarc Service Agent` — the CLI's own message explains it:
+   `Since this is your first time using 2nd gen functions, we need a
+   little bit longer to finish setting everything up. Retry the
+   deployment in a few minutes.` This is a one-time IAM-propagation delay
+   every project hits the first time it ever creates a 2nd-gen
+   (Eventarc-triggered) function — not a config mistake. Waiting ~5
+   minutes and retrying the identical `firebase deploy --only functions`
+   command succeeded with no code changes at all.
+
+### The deploy tooling itself needed a workaround too
+
+**The `firebase` CLI already documented elsewhere in this file as
+broken in this environment** (crashes on its own first-run "welcome"
+script, a `firepit`-bundled binary issue, not a project config problem)
+**is still broken** — but `npx firebase-tools@latest <command>` works
+completely normally, including auth (an existing cached login,
+`gilanggarind1975@gmail.com`, was already present and valid) and actual
+deploys. **This is the way to run any future `firebase` CLI command from
+this environment** — never the bare `firebase` binary on `PATH`. Added
+`.firebaserc` (pins the default project to `teisou-kana-master`, so
+`--project` doesn't have to be passed by hand every time, though it was
+during this session's deploys anyway to be explicit) and a `functions`
+block in `firebase.json`.
+
+**Both functions are live**: `onDirectMessageCreated` and
+`onClanMessageCreated`, region `asia-southeast1`. One harmless follow-up
+left open: Firebase warned about no cleanup policy for the container
+images Cloud Build produces on each deploy (a small, slowly-accumulating
+storage cost, not a functional issue) — `firebase functions:artifacts:
+setpolicy --force` was attempted but failed with "repository does not
+exist in Artifact Registry" for `us-central1` specifically, seemingly
+checking the wrong region against where these functions actually
+deployed (`asia-southeast1`). Not chased further since it's cosmetic
+cost-hygiene, not a blocker — worth revisiting if a future session has
+time, or the user can set it manually in the Artifact Registry console
+under the correct region.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 288/288, debug
+APK built successfully (after the desugaring fix) — **not yet installed
+or tested on a physical device**, since no device was connected to adb
+at the point this landed; the built APK is sitting ready at
+`build/app/outputs/flutter-apk/app-debug.apk` for whenever the Moto G52J
+(or any device) reconnects. **Nothing about the actual notification
+delivery path has been confirmed end-to-end on a real device yet** —
+functions deploying successfully and the client code compiling are both
+necessary but not sufficient proof; worth confirming, in order: a
+foreground message shows the in-app banner (and is suppressed while
+already viewing that chat), a backgrounded/terminated app shows the
+system notification and tapping it opens the right screen from cold
+start, and a token actually lands in `users/{uid}/fcmTokens` after first
+launch.

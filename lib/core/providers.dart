@@ -53,6 +53,7 @@ import 'firebase/firestore_paths.dart';
 import 'localization/app_strings.dart';
 import 'services/ad_service.dart';
 import 'services/auth_service.dart';
+import 'services/fcm_service.dart';
 import 'services/furigana_dictionary.dart';
 import 'services/romaji_converter.dart';
 import 'services/tts_service.dart';
@@ -92,6 +93,7 @@ final themeModeProvider = StateProvider<AppThemeMode>(
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
 final ttsServiceProvider = Provider<TtsService>((ref) => TtsService());
 final adServiceProvider = Provider<AdService>((ref) => AdService());
+final fcmServiceProvider = Provider<FcmService>((ref) => FcmService());
 
 /// Whether this device has already been shown the tutorial.
 ///
@@ -311,6 +313,17 @@ final appStartupProvider = FutureProvider<User>((ref) async {
           photoUrl: user.photoURL,
         )
         .catchError((Object e) => debugPrint('ensurePublished failed: $e')),
+  );
+  // Requests notification permission and saves this device's FCM token —
+  // best-effort like everything else here, and deliberately not blocking
+  // startup on a permission prompt: a learner who denies it (or a device
+  // with no Play Services) just never gets a push, which is not a reason
+  // to hold up the whole app.
+  unawaited(
+    ref
+        .read(fcmServiceProvider)
+        .init(user.uid)
+        .catchError((Object e) => debugPrint('FcmService.init failed: $e')),
   );
 
   return user;

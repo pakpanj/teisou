@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/localization/app_strings.dart';
 import '../../../core/providers.dart';
+import '../../../core/services/fcm_service.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/clan_message.dart';
 import '../../../data/repositories/clan_message_repository.dart';
@@ -37,7 +38,18 @@ class _ClanChatScreenState extends ConsumerState<ClanChatScreen> {
   String? _lastMarkedMessageId;
 
   @override
+  void initState() {
+    super.initState();
+    // See FcmService.currentOpenChatKey's own doc comment: suppresses the
+    // foreground push banner for the exact clan chat already on screen.
+    FcmService.currentOpenChatKey = 'clan:${widget.code}';
+  }
+
+  @override
   void dispose() {
+    if (FcmService.currentOpenChatKey == 'clan:${widget.code}') {
+      FcmService.currentOpenChatKey = null;
+    }
     _controller.dispose();
     _scrollController.dispose();
     super.dispose();

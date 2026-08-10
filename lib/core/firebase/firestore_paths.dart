@@ -30,6 +30,7 @@ class FirestorePaths {
   static const friendRequests = 'friendRequests';
   static const directMessages = 'directMessages';
   static const dmMessages = 'messages';
+  static const fcmTokens = 'fcmTokens';
 
   static const fieldProfile = 'profile';
   static const fieldProgress = 'progress';
@@ -79,4 +80,5 @@ class FirestorePaths {
       '$directMessages/$conversationId';
   static String dmMessagesCollection(String conversationId) =>
       '$directMessages/$conversationId/$dmMessages';
+  static String fcmTokensCollection(String uid) => '$users/$uid/$fcmTokens';
 }

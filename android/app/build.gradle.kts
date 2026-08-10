@@ -29,6 +29,12 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        // flutter_local_notifications (chat/clan-message push) needs
+        // java.time APIs backported to API levels below 26 — this
+        // project's minSdk is 24. Without it, assembleDebug fails outright
+        // with "requires core library desugaring to be enabled" before a
+        // single test of the feature is possible.
+        isCoreLibraryDesugaringEnabled = true
     }
 
     defaultConfig {
@@ -102,6 +108,9 @@ dependencies {
     // the bundled variant (~4MB, fully offline from install), matching
     // the exact artifact the plugin was compiled against.
     implementation("com.google.mlkit:text-recognition-japanese:16.0.1")
+    // Required by isCoreLibraryDesugaringEnabled above — flutter_local_notifications
+    // depends on it directly for its java.time backport.
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }
 
 flutter {

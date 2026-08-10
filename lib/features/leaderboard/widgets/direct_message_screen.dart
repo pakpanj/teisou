@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/localization/app_strings.dart';
 import '../../../core/providers.dart';
+import '../../../core/services/fcm_service.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/direct_message.dart';
 import '../../../data/repositories/direct_message_repository.dart';
@@ -78,11 +79,22 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
             uidB: widget.friendUid,
           );
     } catch (_) {}
-    if (mounted) setState(() => _myUid = uid);
+    if (!mounted) return;
+    setState(() => _myUid = uid);
+    // See FcmService.currentOpenChatKey's own doc comment: suppresses the
+    // foreground push banner for the exact conversation already on
+    // screen, since a redundant notification over a message the learner
+    // can already see arrive live would be more annoying than helpful.
+    FcmService.currentOpenChatKey =
+        'dm:${DirectMessageRepository.conversationId(uid, widget.friendUid)}';
   }
 
   @override
   void dispose() {
+    if (FcmService.currentOpenChatKey ==
+        'dm:${DirectMessageRepository.conversationId(_myUid ?? '', widget.friendUid)}') {
+      FcmService.currentOpenChatKey = null;
+    }
     _controller.dispose();
     super.dispose();
   }

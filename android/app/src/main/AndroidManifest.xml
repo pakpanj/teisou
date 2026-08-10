@@ -1,6 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Runtime-requested on Android 13+ via FirebaseMessaging.requestPermission()
+         (see FcmService) — needed to show a chat/clan-message notification
+         at all. Declaring it here is what makes the runtime prompt
+         possible; it does not grant it by itself. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <!-- Permissions pulled in by plugins and taken back out again.
          ============================================================
@@ -97,6 +102,19 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-7168330620893919~3107201564" />
+        <!-- The channel id functions/index.js's `android.notification.channelId`
+             sends, and FcmService creates on the Dart side too (Android
+             requires the channel to exist before any notification using it
+             can post, foreground or not) — declaring the default here
+             covers the one path neither of those reaches: a data-only
+             fallback with no explicit channel while the app is fully
+             backgrounded/terminated. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="chat_messages" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
