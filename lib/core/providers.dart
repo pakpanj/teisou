@@ -26,6 +26,7 @@ import '../data/repositories/clan_message_repository.dart';
 import '../data/repositories/clan_repository.dart';
 import '../data/repositories/dictionary_repository.dart';
 import '../data/repositories/direct_message_repository.dart';
+import '../data/repositories/notification_repository.dart';
 import '../data/repositories/dokkai_level_repository.dart';
 import '../data/repositories/dokkai_repository.dart';
 import '../data/repositories/exam_history_repository.dart';
@@ -210,6 +211,9 @@ final friendRepositoryProvider = Provider<FriendRepository>(
 );
 final directMessageRepositoryProvider = Provider<DirectMessageRepository>(
   (ref) => DirectMessageRepository(),
+);
+final notificationRepositoryProvider = Provider<NotificationRepository>(
+  (ref) => NotificationRepository(),
 );
 final examRepositoryProvider = Provider<ExamRepository>(
   (ref) => ExamRepository(

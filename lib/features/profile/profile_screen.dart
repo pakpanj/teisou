@@ -28,6 +28,7 @@ import 'about_screen.dart';
 import 'exam_history_screen.dart';
 import 'language_screen.dart';
 import 'theme_screen.dart';
+import 'notification_providers.dart';
 import 'notification_screen.dart';
 import 'profile_providers.dart';
 import 'widgets/avatar_picker_sheet.dart';
@@ -903,6 +904,7 @@ class _SettingsMenu extends ConsumerWidget {
           _MenuTile(
             emoji: '🔔',
             title: s.notifications,
+            badgeCount: ref.watch(unreadNotificationCountProvider),
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const NotificationScreen()),
             ),
@@ -950,17 +952,22 @@ class _MenuTile extends StatelessWidget {
   final String emoji;
   final String title;
   final VoidCallback onTap;
+  final int badgeCount;
 
   const _MenuTile({
     required this.emoji,
     required this.title,
     required this.onTap,
+    this.badgeCount = 0,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Text(emoji, style: const TextStyle(fontSize: 20)),
+      leading: CountBadge(
+        count: badgeCount,
+        child: Text(emoji, style: const TextStyle(fontSize: 20)),
+      ),
       title: Text(title, style: TextStyle(color: context.palette.textNavy)),
       trailing: Icon(Icons.chevron_right, color: context.palette.textNavy),
       onTap: onTap,

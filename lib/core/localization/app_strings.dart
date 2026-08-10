@@ -638,6 +638,20 @@ class AppStrings {
         'No messages yet. Say hi to your friend first!',
       );
 
+  // --- Notification feed (Profile > Notifikasi) ---
+  String get notificationsEmptyTitle =>
+      _t('Belum ada notifikasi', 'No notifications yet');
+  String get notificationsEmptyBody => _t(
+        'Pemberitahuan dari aplikasi akan muncul di sini.',
+        'Notifications from the app will show up here.',
+      );
+  String failedToLoadNotifications(Object e) => _t(
+        'Gagal memuat notifikasi: $e',
+        'Failed to load notifications: $e',
+      );
+  String get markAllNotificationsRead =>
+      _t('Tandai semua dibaca', 'Mark all as read');
+
   // --- Exam / Ujian ---
   String get kanaCategorySubtitle =>
       _t('Hiragana, Katakana, atau campuran', 'Hiragana, Katakana, or mixed');
@@ -827,10 +841,6 @@ class AppStrings {
         'Character stroke-order illustrations use data from the '
             'KanjiVG project (© Ulrich Apel), licensed under '
             'Creative Commons Attribution-Share Alike 3.0.',
-      );
-  String get notificationsPlaceholderMessage => _t(
-        'Pengaturan pengingat belajar harian akan tersedia di sini.',
-        'Daily study reminder settings will be available here.',
       );
   String get examHistoryPlaceholderMessage => _t(
         'Daftar lengkap riwayat ujianmu akan tersedia di sini.',

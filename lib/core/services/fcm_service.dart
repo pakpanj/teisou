@@ -8,6 +8,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import '../../features/leaderboard/widgets/clan_chat_screen.dart';
 import '../../features/leaderboard/widgets/direct_message_screen.dart';
+import '../../features/profile/notification_screen.dart';
 import '../firebase/firestore_paths.dart';
 import '../navigation/root_navigator_key.dart';
 
@@ -22,6 +23,21 @@ const _chatChannelId = 'chat_messages';
 const _chatChannelName = 'Pesan Chat';
 const _chatChannelDescription =
     'Notifikasi pesan baru dari chat clan atau chat pribadi.';
+
+/// The other channel — everything that isn't a chat/clan message: system
+/// announcements today, whatever future feature writes to `users/{uid}/
+/// notifications` next (see `functions/index.js`'s
+/// `onUserNotificationCreated`). Kept separate from [_chatChannelId] so a
+/// learner can mute one category in Android's own notification settings
+/// without losing the other, and so it can carry its own icon — the app's
+/// own silhouette (`ic_notification_app.png`,
+/// `scripts/generate_notification_icon_app.py`) rather than the chat
+/// bubble, per explicit user preference that a non-chat notification
+/// should look like *this app*, not a generic symbol.
+const _appChannelId = 'app_notifications';
+const _appChannelName = 'Notifikasi Aplikasi';
+const _appChannelDescription =
+    'Pemberitahuan umum dari aplikasi (bukan pesan chat).';
 
 /// Matches `lib/core/theme/app_colors.dart`'s `primaryCoral` — no shared
 /// source between Dart and the notification tray for a single color
@@ -107,15 +123,25 @@ class FcmService {
         _handleData(Map<String, dynamic>.from(jsonDecode(payload) as Map));
       },
     );
-    await _localNotifications
+    final androidPlugin = _localNotifications
         .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(const AndroidNotificationChannel(
-          _chatChannelId,
-          _chatChannelName,
-          description: _chatChannelDescription,
-          importance: Importance.high,
-        ));
+            AndroidFlutterLocalNotificationsPlugin>();
+    await androidPlugin?.createNotificationChannel(
+      const AndroidNotificationChannel(
+        _chatChannelId,
+        _chatChannelName,
+        description: _chatChannelDescription,
+        importance: Importance.high,
+      ),
+    );
+    await androidPlugin?.createNotificationChannel(
+      const AndroidNotificationChannel(
+        _appChannelId,
+        _appChannelName,
+        description: _appChannelDescription,
+        importance: Importance.high,
+      ),
+    );
 
     // Best-effort — a learner who denies this simply never sees a push,
     // the same as one on a device with no Google Play Services at all;
@@ -167,15 +193,26 @@ class FcmService {
   void _showForegroundNotification(RemoteMessage message) {
     final notification = message.notification;
     if (notification == null) return;
+    final type = message.data['type'] as String?;
+    final isChat = type == 'dm' || type == 'clan';
     final key = _keyFor(message.data);
-    if (key == currentOpenChatKey) return;
+    // Only suppress when this push genuinely belongs to the chat currently
+    // on screen — `key` is null for anything that isn't a dm/clan message
+    // (see `_keyFor`), and `currentOpenChatKey` is also null by default
+    // (nothing chat-related open). Comparing them unconditionally made
+    // `null == null` true whenever no chat screen was open, which silently
+    // swallowed *every* non-chat push — the exact bug this fixes.
+    if (key != null && key == currentOpenChatKey) return;
 
-    // A stable id (derived from the conversation, not the current
-    // timestamp) means a second message from the same chat *updates* the
-    // existing tray entry instead of stacking a new one underneath it —
-    // the previous version used a millisecond timestamp here, which made
-    // every single message its own permanent notification and cluttered
-    // the tray after just a few messages.
+    // A stable id (derived from the conversation/notification, not the
+    // current timestamp) means a second message/notification for the same
+    // key *updates* the existing tray entry instead of stacking a new one
+    // underneath it — the previous version used a millisecond timestamp
+    // here, which made every single message its own permanent
+    // notification and cluttered the tray after just a few messages. A
+    // non-chat push (no conversation key) still gets a fresh id per
+    // notification, since each one is its own distinct event, not part of
+    // an ongoing thread.
     final id = key != null
         ? _stableNotificationId(key)
         : DateTime.now().millisecondsSinceEpoch.remainder(100000);
@@ -186,12 +223,17 @@ class FcmService {
       notification.body,
       NotificationDetails(
         android: AndroidNotificationDetails(
-          _chatChannelId,
-          _chatChannelName,
-          channelDescription: _chatChannelDescription,
+          isChat ? _chatChannelId : _appChannelId,
+          isChat ? _chatChannelName : _appChannelName,
+          channelDescription:
+              isChat ? _chatChannelDescription : _appChannelDescription,
           importance: Importance.high,
           priority: Priority.high,
-          icon: 'ic_notification',
+          // Chat/clan messages keep the generic bubble; anything else
+          // shows the app's own silhouette (ic_notification_app.png) —
+          // per explicit user preference that a non-chat notification
+          // should read as *this app*, not a generic symbol.
+          icon: isChat ? 'ic_notification' : 'ic_notification_app',
           color: _notificationColor,
           // Expandable (pull down to see the full message) instead of a
           // single truncated line — most useful for a longer clan
@@ -235,6 +277,10 @@ class FcmService {
           code: code,
           clanName: (data['clanName'] as String?) ?? 'Clan',
         ),
+      ));
+    } else if (type == 'app') {
+      navigator.push(MaterialPageRoute(
+        builder: (_) => const NotificationScreen(),
       ));
     }
   }

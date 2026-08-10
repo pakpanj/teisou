@@ -69,8 +69,21 @@ async function tokensFor(uid) {
  * deletes whichever tokens FCM reports as no-longer-registered (the
  * device uninstalled the app, or the token rotated) — otherwise a stale
  * token list only grows, and every future send keeps paying for
- * doomed-to-fail deliveries to it. */
-async function sendToUid(uid, {title, body, data}) {
+ * doomed-to-fail deliveries to it.
+ *
+ * `channelId`/`icon` default to the chat channel/bubble so the two
+ * existing chat triggers below didn't need to change — `
+ * onUserNotificationCreated` is the one caller that overrides both, to
+ * the `app_notifications` channel and the app's own silhouette icon
+ * (`ic_notification_app.png`), matching `FcmService`'s client-side
+ * channel split exactly. */
+async function sendToUid(uid, {
+  title,
+  body,
+  data,
+  channelId = "chat_messages",
+  icon = "ic_notification",
+}) {
   const tokens = await tokensFor(uid);
   if (tokens.length === 0) return;
 
@@ -80,7 +93,7 @@ async function sendToUid(uid, {title, body, data}) {
     data,
     android: {
       priority: "high",
-      notification: {channelId: "chat_messages"},
+      notification: {channelId, icon},
     },
   });
 
@@ -160,5 +173,43 @@ exports.onClanMessageCreated = onDocumentCreated(
           },
         });
       }));
+    },
+);
+
+/**
+ * The generic, non-chat delivery path — see `AppNotification`'s own doc
+ * comment (Flutter side, `lib/data/models/app_notification.dart`) for why
+ * this is a separate collection from the chat pipeline above. Any future
+ * feature (streak reminder, achievement unlock, admin announcement, ...)
+ * needs only to write a document to `users/{uid}/notifications` — from
+ * this project's client via `NotificationRepository.create`, or from a
+ * future server-side trigger of its own using the Admin SDK — and this
+ * single function handles turning it into both a real push and an
+ * in-app feed entry (the write itself already *is* the feed entry;
+ * `NotificationScreen`/`myNotificationsProvider` read this same
+ * collection directly).
+ *
+ * Deliberately `onDocumentCreated`, not `onDocumentWritten` — a later
+ * `read: true` update (from `NotificationRepository.markRead`) must never
+ * re-fire a push for something the learner has already seen.
+ */
+exports.onUserNotificationCreated = onDocumentCreated(
+    "users/{uid}/notifications/{notificationId}",
+    async (event) => {
+      const notif = event.data.data();
+      if (!notif) return;
+      const uid = event.params.uid;
+
+      await sendToUid(uid, {
+        title: notif.title || "Teisou",
+        body: truncate(notif.body),
+        data: {
+          type: "app",
+          category: notif.category || "system",
+          notificationId: event.params.notificationId,
+        },
+        channelId: "app_notifications",
+        icon: "ic_notification_app",
+      });
     },
 );
