@@ -79,9 +79,7 @@ class _SearchFriendScreenState extends ConsumerState<SearchFriendScreen> {
       if (!mounted) return;
       final message = e.message == 'already_friend'
           ? s.alreadyFriendError
-          : e.message == 'already_pending'
-              ? s.friendRequestAlreadySentError
-              : s.friendRequestSendFailed;
+          : s.friendRequestSendFailed;
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));
     } catch (_) {

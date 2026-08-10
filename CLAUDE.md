@@ -8135,3 +8135,58 @@ pass done for this fix specifically** — worth confirming on a fresh
 account (or by deleting an existing `leaderboard/{uid}` doc in the
 console) that opening the app alone, with no exam/rename/Bab chapter,
 makes that account searchable within one launch.
+
+## Update (2026-08-10, still later): sending a friend request always
+failed — confirmed via logcat, found in minutes because rules were
+verified correct first
+
+User reported "gagal mengirim permintaan pertemanan" (friend request
+always fails) right after confirming — with a copy-pasted rules dump from
+Firebase Console — that the rules from the previous update were correctly
+deployed and matched this repo's `firestore.rules` byte-for-byte. That
+ruled out the obvious first suspect immediately, so the next step was
+`adb logcat` on the connected Moto G52J while reproducing the tap, which
+named the exact query:
+
+```
+PERMISSION_DENIED: Listen for Query(target=Query(users/{targetUid}/
+friendRequests where fromUid==... and status==pending ...
+```
+
+**Root cause**: `FriendRepository.sendFriendRequest` (added in the
+"personal friend" update above) had an "already pending?" duplicate-check
+that queried `targetUid`'s `friendRequests` collection filtered by
+`fromUid`/`status` — but `firestore.rules` only grants read access to a
+`friendRequests` collection to **its own owner** (deliberately: a pending
+request is private until the recipient answers it, the same rule already
+applied to `clanInvites`). That query was rejected on *every single call*
+— not an edge case, an unconditional failure — so no friend request could
+ever be sent, full stop.
+
+**Fixed by removing the check**, not by loosening the rule: the method's
+own doc comment already argued this exact check was a client-side
+convenience whose worst failure mode is a harmless duplicate pending
+document, never a security concern — and `ClanRepository.sendInvite`,
+the sibling method this one was modeled on, never had an equivalent
+"already invited?" check to begin with. Removing it makes
+`sendFriendRequest` consistent with its own precedent rather than adding
+a new rule (and a new `list`-query exception) to defend a check that was
+optional by its own design. `search_friend_screen.dart`'s now-unreachable
+`'already_pending'` error-message branch was cleaned up alongside it.
+
+**Debugging note worth repeating**: getting a categorical "is this the
+rules, or is this the code" answer *before* diving into logcat — by
+having the user paste back exactly what's live — turned what could have
+been a guessing match between "rules not deployed" and "bug in the
+Firestore query itself" into a five-minute, log-confirmed diagnosis. When
+a live Firestore permission error is reported, verifying the deployed
+rules text is at least as fast as reading logcat and rules out (or
+confirms) half the hypothesis space for free.
+
+`flutter analyze` clean, `flutter test --concurrency=1` 288/288, debug
+APK rebuilt and reinstalled on the Moto G52J. **Not yet independently
+re-confirmed on-device that the fix actually resolves it** — the fresh
+install was handed back to the user to retry immediately after this
+landed; still worth a positive confirmation (request sent, arrives on
+the second account, accept/decline both work) rather than assuming the
+logcat diagnosis alone is proof.

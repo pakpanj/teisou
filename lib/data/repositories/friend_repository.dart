@@ -34,10 +34,23 @@ class FriendRepository {
           .collection(FirestorePaths.friendRequests);
 
   /// Sends a friend request to [targetUid]. Refuses a target who's already
-  /// a friend, or who already has a pending request from [fromUid] sitting
-  /// unanswered — both are just a client-side head start (the real gate is
-  /// `firestore.rules`), so a stale read here only means a duplicate
-  /// request might occasionally slip through, never a security hole.
+  /// a friend — a client-side head start read from [fromUid]'s **own**
+  /// `friends` collection, which `firestore.rules`' `users/{uid}/
+  /// {document=**}` wildcard already lets its owner read.
+  ///
+  /// **Deliberately does not also check for an already-pending request**,
+  /// unlike an earlier version of this method — that check queried
+  /// `targetUid`'s `friendRequests` collection filtered by `fromUid`, and
+  /// `firestore.rules` only grants read access to a `friendRequests`
+  /// collection to its own owner (by design: pending requests are private
+  /// until answered, the same as `clanInvites`). That query was rejected
+  /// with `PERMISSION_DENIED` on every single call — not an occasional
+  /// edge case, an unconditional failure — which silently broke sending
+  /// *any* friend request at all, confirmed via on-device logcat. Removed
+  /// rather than special-cased with a new rule: `ClanRepository.sendInvite`
+  /// never had an equivalent "already invited" check either, so a
+  /// duplicate pending request is an accepted, pre-existing trade-off in
+  /// this codebase, not a gap unique to this method.
   Future<void> sendFriendRequest({
     required String fromUid,
     required String fromName,
@@ -52,14 +65,6 @@ class FriendRepository {
     final alreadyFriend = await _friendsOf(fromUid).doc(targetUid).get();
     if (alreadyFriend.exists) {
       throw StateError('already_friend');
-    }
-    final existingPending = await _requestsOf(targetUid)
-        .where('fromUid', isEqualTo: fromUid)
-        .where('status', isEqualTo: FriendRequestStatus.pending.key)
-        .limit(1)
-        .get();
-    if (existingPending.docs.isNotEmpty) {
-      throw StateError('already_pending');
     }
 
     final request = FriendRequest(
