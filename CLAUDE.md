@@ -8740,3 +8740,60 @@ already viewing that chat), a backgrounded/terminated app shows the
 system notification and tapping it opens the right screen from cold
 start, and a token actually lands in `users/{uid}/fcmTokens` after first
 launch.
+
+## Update (2026-08-10, same day): the "fully lazy" fix above was wrong —
+`initializeApp()` itself must stay eager
+
+User reported no notification arrived after the deploy above. Rather
+than guess, checked both ends: `dumpsys notification` on the Moto G52J
+confirmed the `chat_messages` channel existed with high importance (so
+permission and channel setup were both fine client-side), then
+`firebase functions:log` showed the real problem — a genuinely-triggered
+`onClanMessageCreated` invocation (a real clan message had been sent)
+threw:
+
+```
+Error: The default Firebase app does not exist. Make sure you call
+initializeApp() before using any of the Firebase services.
+    at getFirestore (.../firebase-admin/lib/firestore/index.js:51:90)
+    at db (/workspace/index.js:43:10)
+```
+
+**The previous fix over-corrected.** Bug #1 in the update above was real
+(eager `getFirestore()`/`getMessaging()` made the deploy-time module load
+exceed a 10-second timeout), but the fix made *all three* — including
+`initializeApp()` itself — lazy, guarded by
+`if (getApps().length === 0)`. That guard never actually got exercised
+correctly in the deployed environment, so `getFirestore()` ran with no
+app ever registered. **`initializeApp()` alone was never the slow part**:
+it's a synchronous, no-I/O call that just constructs an App object,
+which is exactly why Firebase's own function samples call it
+unconditionally at top level — confirmed by timing the fix locally
+(`node -e "require('./index.js')"` dropped from ~2.5s already-fixed-once
+to ~0.7s split-fixed, both comfortably under the timeout either way, so
+there was no local signal this split even mattered — the actual
+production runtime error was the only thing that caught it).
+
+**Fixed by splitting the two concerns properly**: `initializeApp()` now
+runs unconditionally at module top level (cheap, correct, matches every
+Firebase sample); `db()`/`messaging()` stay as plain functions calling
+`getFirestore()`/`getMessaging()` fresh each time, with the `getApps()`
+guard removed entirely — it was solving a problem
+(`initializeApp()`-is-slow) that never actually existed, while causing
+the real one (app-never-initialized).
+
+**Lesson worth keeping**: a local module-load timing test proved the
+deploy-time symptom was fixed, but said nothing about whether the
+function would actually *work* once invoked — those are different
+failure modes at different times (deploy-time introspection vs.
+runtime execution), and only `firebase functions:log` against a real
+triggered invocation caught the second one. Verify both, not just the
+one with an obvious repro.
+
+`flutter analyze`/tests unaffected (server-only change). Both functions
+redeployed successfully (`onDirectMessageCreated`/`onClanMessageCreated`,
+`asia-southeast1`, both "Successful update operation"). **Still not
+independently confirmed that a notification now actually arrives** — the
+fix directly addresses the exact error `functions:log` showed, but per
+this file's own standing discipline, that's a strong diagnosis, not yet
+a confirmed fix until re-tested against the original report.

@@ -15,36 +15,33 @@
  * server-side context those rules were written assuming would exist
  * once real push notifications were built.
  *
- * **`initializeApp()`/`getFirestore()`/`getMessaging()` are lazy on
- * purpose, not called at module top level.** `firebase-tools` loads this
- * file once at deploy time just to discover which functions it exports,
- * with a hard 10-second timeout on that load — eagerly calling them at
- * import time made the very first deploy attempt fail outright with
- * "User code failed to load ... Timeout after 10000", confirmed by
- * reproducing it locally (a bare `require('./index.js')` measurably took
- * longer than 10s with eager init, near-instant once deferred). This is
- * Firebase's own documented fix for exactly this failure, not a
- * workaround invented here — see the link in that error message.
+ * **`initializeApp()` runs eagerly at module top level; `getFirestore()`/
+ * `getMessaging()` do not.** An earlier version made all three lazy,
+ * guarded by `if (getApps().length === 0)` — that actually shipped and
+ * broke every real invocation in production with "The default Firebase
+ * app does not exist", confirmed via `firebase functions:log` against a
+ * genuinely-triggered `onClanMessageCreated` call. `initializeApp()`
+ * itself is cheap (no network I/O, just registers the app object) and is
+ * exactly what Firebase's own function samples call unconditionally at
+ * top level — it was never the slow part. The 10-second deploy-time
+ * "User code failed to load" timeout this project hit earlier (see this
+ * file's git history) was `getFirestore()`/`getMessaging()` themselves —
+ * confirmed by keeping `initializeApp()` eager here while those two stay
+ * deferred to be called fresh inside each handler.
  */
 
 const {onDocumentCreated} = require("firebase-functions/v2/firestore");
-const {initializeApp, getApps} = require("firebase-admin/app");
+const {initializeApp} = require("firebase-admin/app");
 const {getFirestore} = require("firebase-admin/firestore");
 const {getMessaging} = require("firebase-admin/messaging");
 
-function ensureAppInitialized() {
-  if (getApps().length === 0) {
-    initializeApp();
-  }
-}
+initializeApp();
 
 function db() {
-  ensureAppInitialized();
   return getFirestore();
 }
 
 function messaging() {
-  ensureAppInitialized();
   return getMessaging();
 }
 
