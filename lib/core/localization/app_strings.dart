@@ -103,6 +103,10 @@ class AppStrings {
       );
   String get signInWithGoogle => _t('Masuk dengan Google', 'Sign in with Google');
   String get defaultLearnerName => _t('Pelajar Kana', 'Kana Learner');
+  String userIdLabel(String id) => _t('ID: $id', 'ID: $id');
+  String get userIdCopied => _t('ID disalin.', 'ID copied.');
+  String get userIdTooltip =>
+      _t('Ketuk untuk salin ID', 'Tap to copy ID');
   String get googleAccountAlreadyLinked =>
       _t('Akun Google ini sudah terhubung ke akun lain.',
           'This Google account is already linked to another account.');

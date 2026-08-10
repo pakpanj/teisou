@@ -2847,6 +2847,89 @@ what the on-device pass actually verified), `flutter build apk
   (create a clan, promote a co-leader, have them kick a member, search
   and invite a real second account, send a chat message, block/report
   it) before trusting this beyond the code review it's had so far.
+
+  **Update (2026-08-10), first real on-device pass — two more real bugs
+  found and fixed.** Uninstalled the device's release build (signature
+  mismatch blocked a debug install over it — a user call, confirmed
+  before doing it) and ran the whole flow for real: created a clan,
+  confirmed the leader crown/role badge, opened Kelola Anggota, and
+  opened Cari & Undang to search the public leaderboard.
+
+  1. **Search found nobody, including real accounts visibly present in
+     the main leaderboard** ("Naon Sia" at #1, right there on screen).
+     Root cause: `searchPublicUsers`' `displayNameLower` field is only
+     written by this session's *own* five write-method edits — every
+     `leaderboard/{uid}` doc from before this session predates the
+     field entirely, and Firestore's `orderBy` silently omits documents
+     missing the sorted field, the exact same failure mode this file's
+     `backfillGlobalScore` doc comment already documents for a different
+     field. Fixed with `LeaderboardRepository.backfillDisplayNameLower`,
+     the identical shape, wired into `selfLeaderboardEntryProvider`'s
+     existing self-heal-on-read pass. Confirmed live on-device after
+     rebuilding: this closes the gap for whichever account opens the
+     leaderboard next, not retroactively for every existing account —
+     an account that never opens the app again stays unsearchable
+     until it does, the same honest limitation `backfillGlobalScore`
+     already has.
+
+  2. **A second, unrelated finding from the same testing session**
+     prompted a follow-up request ("buat agar setiap user memiliki id
+     unik masing masing") once it became clear during search testing
+     that many accounts share the exact same name — every learner who
+     never set a custom one defaults to the identical "Pelajar Kana",
+     making name search alone unable to tell them apart. Added a short
+     (8-char) unique `userId` per account
+     (`ProgressRepository._reserveUserId`, same alphabet/uniqueness
+     pattern as `ClanRepository`'s join code — a `userIds/{code}`
+     reservation doc whose *existence* is the uniqueness check),
+     mirrored onto `leaderboard/{uid}.userId` via a `backfillUserId`
+     self-heal (same shape as #1 above, *not* threaded through every
+     leaderboard write method since the id never changes once
+     assigned), searchable via an exact-match query in
+     `searchPublicUsers` alongside the name-prefix search. Shown on
+     `ProfileScreen` (tap to copy), search results, and
+     `PublicProfileScreen`.
+
+     **Real deployment-ordering bug found the same on-device pass, before
+     it could ship broken**: the id reservation was originally bundled
+     into the *same atomic batch* as `ensureUserProfile`'s core profile
+     write. `userIds/{code}`'s own `firestore.rules` block is new — added
+     in the same edit — and this project's live Firestore rules had not
+     been redeployed yet, so every write to that collection came back
+     `permission-denied`, confirmed via `adb logcat`
+     ("`ensureUserProfile failed:
+     [cloud_firestore/permission-denied]`"). Because Firestore batches
+     are all-or-nothing, this meant a not-yet-deployed rules file would
+     have silently broken **brand-new account creation entirely** — not
+     merely left new users without an id — the first time this shipped
+     to a device whose rules hadn't caught up yet. Fixed by splitting
+     `ensureUserProfile` into the core profile write (unaffected,
+     already covered by existing rules) followed by a *separate*
+     best-effort `_backfillUserIdIfMissing` call wrapped in its own
+     try/catch — a missing/stale rules deploy now only costs the id
+     (self-healed on the next launch once rules land), never the
+     profile. Re-verified on-device after the fix: a fresh launch with
+     rules still not deployed shows the full profile (score, streak,
+     exam history) with no crash and no chip — exactly the intended
+     degradation.
+
+     **`firestore.rules` needs a fresh deploy before either the id
+     feature or the roles/kick/invite/chat feature immediately above it
+     can actually work** — the `userIds/{code}` block is new since the
+     last deploy, on top of the `actorRole`/`canKick`/`isClanMember`
+     functions and the `clans/{code}/members`/`messages`/
+     `messageReports` blocks from that same session. Search-by-name
+     (item 1 above) needs no new rule and already works today; search
+     is otherwise not something this environment can deploy — same
+     standing caveat as every other `firestore.rules` change in this
+     file's history.
+
+  `flutter analyze` clean, full `flutter test --concurrency=1` suite
+  (288 tests) passes after both fixes, confirmed via two separate
+  rebuild-and-reinstall cycles on the physical Moto G52J rather than
+  code review alone — the second bug specifically would not have been
+  caught any other way, since nothing in this project's test suite or
+  static analysis can see a live Firestore rules deployment state.
 - **Avatar resolution priority** (see `UserAvatar` widget, and its
   leaderboard-row counterpart `LeaderboardAvatar` in
   `leaderboard_screen.dart` — renamed from private `_Avatar` when the Clan

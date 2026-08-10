@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/covers.dart';
@@ -258,6 +259,10 @@ class _HeaderCard extends ConsumerWidget {
                     ),
                   ],
                 ),
+                if (profile?.userId != null) ...[
+                  const SizedBox(height: 2),
+                  _UserIdChip(userId: profile!.userId!, strings: s),
+                ],
                 _TierBadge(isPremium: isPremium),
                 const SizedBox(height: 8),
                 Text(
@@ -329,6 +334,44 @@ class _HeaderBackground extends StatelessWidget {
         preset: preset,
         width: constraints.maxWidth,
         height: constraints.maxHeight,
+      ),
+    );
+  }
+}
+
+/// The learner's own short, unique id (see `ProgressRepository
+/// ._reserveUserId`) — shown so a user can find and share it, since many
+/// accounts share the exact same display name and the id is what actually
+/// disambiguates them in `SearchInviteScreen`.
+class _UserIdChip extends StatelessWidget {
+  final String userId;
+  final AppStrings strings;
+
+  const _UserIdChip({required this.userId, required this.strings});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(12),
+      onTap: () {
+        Clipboard.setData(ClipboardData(text: userId));
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(strings.userIdCopied)));
+      },
+      child: Tooltip(
+        message: strings.userIdTooltip,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+          child: Text(
+            strings.userIdLabel(userId),
+            style: TextStyle(
+              fontSize: 12,
+              letterSpacing: 1,
+              color: context.palette.textNavy.withValues(alpha: 0.6),
+            ),
+          ),
+        ),
       ),
     );
   }

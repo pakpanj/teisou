@@ -284,6 +284,15 @@ class _IdentityCard extends ConsumerWidget {
               color: context.palette.textNavy,
             ),
           ),
+          if (entry.userId != null)
+            Text(
+              s.userIdLabel(entry.userId!),
+              style: TextStyle(
+                fontSize: 12,
+                letterSpacing: 1,
+                color: context.palette.textNavy.withValues(alpha: 0.5),
+              ),
+            ),
           const SizedBox(height: 4),
           Text(
             globalScoreLabel(entry, s),

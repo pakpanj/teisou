@@ -143,6 +143,38 @@ class LeaderboardRepository {
     }, SetOptions(merge: true));
   }
 
+  /// Writes `displayNameLower` for [entry] when absent or stale — the exact
+  /// same shape as [backfillGlobalScore] immediately above, for the exact
+  /// same reason: a doc written before this field existed is invisible to
+  /// [searchPublicUsers]' `orderBy('displayNameLower')` query, since
+  /// Firestore's `orderBy` omits documents missing the sorted field
+  /// entirely rather than sorting them last. Found by an actual on-device
+  /// search for a real pre-existing account turning up nothing — the same
+  /// failure mode [backfillGlobalScore]'s own doc comment already
+  /// documents, recurring for a different field added later.
+  Future<void> backfillDisplayNameLower(LeaderboardEntry entry) async {
+    final expected = entry.displayName.toLowerCase();
+    if (entry.displayNameLower == expected) return;
+    await _collection.doc(entry.uid).set({
+      'displayNameLower': expected,
+    }, SetOptions(merge: true));
+  }
+
+  /// Mirrors `UserProfile.userId` onto `entry`'s leaderboard doc when
+  /// missing or stale — unlike [backfillGlobalScore]/
+  /// [backfillDisplayNameLower], which recompute their field from data the
+  /// leaderboard doc already has, this one copies in a value from a
+  /// *different* document (the private `users/{uid}` profile), which is
+  /// why it takes [userId] as a parameter rather than deriving it from
+  /// [entry] alone. A no-op once `userId` never changes after first
+  /// assignment, so this costs one write per user, once.
+  Future<void> backfillUserId(LeaderboardEntry entry, String? userId) async {
+    if (userId == null || entry.userId == userId) return;
+    await _collection.doc(entry.uid).set({
+      'userId': userId,
+    }, SetOptions(merge: true));
+  }
+
   /// Updates `totalMastered` for [uid] if [totalMastered] is higher than
   /// what's currently stored (never regresses the leaderboard on a
   /// mastery -> learning demotion elsewhere).
@@ -325,20 +357,39 @@ class LeaderboardRepository {
   /// simple "search a name field" feature has without a dedicated search
   /// index. U+F8FF is a high Unicode sentinel that sorts after any
   /// realistic input, the standard Firestore idiom for a prefix range.
+  ///
+  /// Also tries an exact match on [LeaderboardEntry.userId] and merges it
+  /// in — many accounts share the exact same name (every learner who never
+  /// set a custom one defaults to the identical "Pelajar Kana"), which
+  /// otherwise makes the name search alone unable to tell them apart; the
+  /// id exists specifically so a precise, unambiguous invite is possible.
+  /// The id query is exact rather than a prefix range since ids are meant
+  /// to be typed or pasted in full, not partially guessed.
   Future<List<LeaderboardEntry>> searchPublicUsers(
     String query, {
     int limit = 20,
   }) async {
-    final trimmed = query.trim().toLowerCase();
+    final trimmed = query.trim();
     if (trimmed.isEmpty) return [];
-    final snapshot = await _collection
+    final lower = trimmed.toLowerCase();
+
+    final byName = await _collection
         .orderBy('displayNameLower')
-        .startAt([trimmed])
-        .endAt(['$trimmed${String.fromCharCode(0xf8ff)}'])
+        .startAt([lower])
+        .endAt(['$lower${String.fromCharCode(0xf8ff)}'])
         .limit(limit)
         .get();
-    return snapshot.docs
-        .map((doc) => LeaderboardEntry.fromMap(doc.id, doc.data()))
-        .toList();
+    final byId = await _collection
+        .where('userId', isEqualTo: trimmed.toUpperCase())
+        .limit(1)
+        .get();
+
+    final seen = <String>{};
+    final results = <LeaderboardEntry>[];
+    for (final doc in [...byId.docs, ...byName.docs]) {
+      if (!seen.add(doc.id)) continue;
+      results.add(LeaderboardEntry.fromMap(doc.id, doc.data()));
+    }
+    return results;
   }
 }

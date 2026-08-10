@@ -39,6 +39,28 @@ class LeaderboardEntry {
   /// since their stored-vs-computed comparison would look already in sync.
   final double? globalScore;
 
+  /// Denormalized lowercase copy of [displayName], stored purely so
+  /// `LeaderboardRepository.searchPublicUsers` can `orderBy` + prefix-range
+  /// it (Firestore has no case-insensitive query). Same absent-vs-stale
+  /// distinction as [globalScore], and the same fix: a doc written before
+  /// this field existed is invisible to that query entirely (Firestore's
+  /// `orderBy` omits docs missing the sorted field) until
+  /// `LeaderboardRepository.backfillDisplayNameLower` repairs it — found by
+  /// an actual on-device search for a real pre-existing account turning up
+  /// nothing, not caught by any automated check.
+  final String? displayNameLower;
+
+  /// Mirror of `UserProfile.userId` — the private `users/{uid}` document's
+  /// short shareable id copied here so it's visible without needing read
+  /// access to that private doc (the same reasoning `babCompletedCount`
+  /// below documents for Bab progress). Backfilled the same way as
+  /// [displayNameLower]/[globalScore], via `LeaderboardRepository
+  /// .backfillUserId` inside `selfLeaderboardEntryProvider` — deliberately
+  /// *not* threaded as a parameter through every leaderboard write method,
+  /// since the id itself never changes once assigned and the self-heal
+  /// pattern already exists for exactly this shape of gap.
+  final String? userId;
+
   /// Public summary of the learner's Bab curriculum progress: how many
   /// chapters they've completed, and the `order` of the furthest one.
   ///
@@ -79,6 +101,8 @@ class LeaderboardEntry {
     this.kanjiComboRecordCount = 0,
     this.kanjiComboRecordAvg = 0,
     this.globalScore,
+    this.displayNameLower,
+    this.userId,
     this.babCompletedCount = 0,
     this.babHighestOrder = 0,
     required this.updatedAt,
@@ -106,6 +130,8 @@ class LeaderboardEntry {
       kanjiComboRecordCount: (map['kanjiComboRecordCount'] as num?)?.toInt() ?? 0,
       kanjiComboRecordAvg: (map['kanjiComboRecordAvg'] as num?)?.toDouble() ?? 0,
       globalScore: (map['globalScore'] as num?)?.toDouble(),
+      displayNameLower: map['displayNameLower'] as String?,
+      userId: map['userId'] as String?,
       babCompletedCount: (map['babCompletedCount'] as num?)?.toInt() ?? 0,
       babHighestOrder: (map['babHighestOrder'] as num?)?.toInt() ?? 0,
       updatedAt: _toDateTime(map['updatedAt']) ?? DateTime.now(),
@@ -114,6 +140,8 @@ class LeaderboardEntry {
 
   Map<String, dynamic> toMap() => {
         'displayName': displayName,
+        'displayNameLower': displayNameLower ?? displayName.toLowerCase(),
+        'userId': userId,
         'photoUrl': photoUrl,
         'avatarType': avatarType.key,
         'avatarValue': avatarValue,

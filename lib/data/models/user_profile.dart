@@ -56,6 +56,16 @@ class UserProfile {
   final String? frameId;
   final DateTime? lastNameChangeAt;
 
+  /// Short, unique, human-shareable id (`ProgressRepository._reserveUserId`)
+  /// — distinct from the Firebase Auth uid, which is long and opaque. Lets
+  /// two learners who share the same display name (very common: everyone
+  /// who never set a custom name defaults to the identical "Pelajar Kana")
+  /// be told apart in search results and invites. Nullable purely for
+  /// accounts whose self-heal backfill hasn't run yet — see
+  /// `ensureUserProfile`'s `else` branch — not a state any *new* account
+  /// can be created in.
+  final String? userId;
+
   UserProfile({
     this.displayName,
     required this.isAnonymous,
@@ -67,6 +77,7 @@ class UserProfile {
     this.coverId,
     this.frameId,
     this.lastNameChangeAt,
+    this.userId,
   });
 
   factory UserProfile.fromMap(Map<String, dynamic> map) => UserProfile(
@@ -80,6 +91,7 @@ class UserProfile {
         coverId: map['coverId'] as String?,
         frameId: map['frameId'] as String?,
         lastNameChangeAt: _toDateTime(map['lastNameChangeAt']),
+        userId: map['userId'] as String?,
       );
 
   static DateTime? _toDateTime(dynamic value) {

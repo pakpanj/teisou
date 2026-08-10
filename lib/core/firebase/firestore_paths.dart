@@ -18,6 +18,7 @@ class FirestorePaths {
   static const dokkaiExamHistory = 'dokkaiExamHistory';
   static const choukaiExamHistory = 'choukaiExamHistory';
   static const kanjiComboExamHistory = 'kanjiComboExamHistory';
+  static const userIds = 'userIds';
   static const clans = 'clans';
   static const clanMembers = 'members';
   static const clanMemberships = 'clanMemberships';

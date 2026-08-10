@@ -34,6 +34,17 @@ final selfLeaderboardEntryProvider =
     } catch (_) {
       // Ranking may briefly omit this user; the next open retries.
     }
+    try {
+      await repository.backfillDisplayNameLower(entry);
+    } catch (_) {
+      // Search may briefly miss this user; the next open retries.
+    }
+    try {
+      final profile = await ref.watch(userProfileProvider.future);
+      await repository.backfillUserId(entry, profile.userId);
+    } catch (_) {
+      // Search-by-id may briefly miss this user; the next open retries.
+    }
     entry = await _backfillBabProgress(ref, repository, user.uid, entry);
   }
   return entry;

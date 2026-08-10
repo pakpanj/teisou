@@ -175,7 +175,9 @@ class _SearchInviteScreenState extends ConsumerState<SearchInviteScreen> {
                                           ),
                                         ),
                                         Text(
-                                          globalScoreLabel(entry, s),
+                                          entry.userId != null
+                                              ? '${globalScoreLabel(entry, s)} · ${s.userIdLabel(entry.userId!)}'
+                                              : globalScoreLabel(entry, s),
                                           style: TextStyle(
                                             fontSize: 12,
                                             color: context.palette.textNavy

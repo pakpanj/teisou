@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../core/firebase/firestore_paths.dart';
@@ -14,15 +16,65 @@ import '../models/user_profile.dart';
 /// stored on the `users/{uid}` document.
 class ProgressRepository {
   final FirebaseFirestore _firestore;
+  final Random _random;
 
-  ProgressRepository({FirebaseFirestore? firestore})
-      : _firestore = firestore ?? FirebaseFirestore.instance;
+  ProgressRepository({FirebaseFirestore? firestore, Random? random})
+      : _firestore = firestore ?? FirebaseFirestore.instance,
+        _random = random ?? Random();
 
   DocumentReference<Map<String, dynamic>> _userDoc(String uid) =>
       _firestore.collection(FirestorePaths.users).doc(uid);
 
+  static const _userIdLength = 8;
+  static const _userIdAlphabet =
+      'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no 0/O/1/I — same reasoning as ClanRepository's join code
+  static const _maxUserIdAttempts = 5;
+
+  String _generateUserIdCandidate() => List.generate(
+        _userIdLength,
+        (_) => _userIdAlphabet[_random.nextInt(_userIdAlphabet.length)],
+      ).join();
+
+  /// A short, unique, human-shareable id for [uid] — separate from the
+  /// Firebase Auth uid itself (long, opaque, never meant to be typed by a
+  /// hand). Exists because many accounts share the exact same display name
+  /// (every user who never customized one defaults to the same "Pelajar
+  /// Kana"), which made `LeaderboardRepository.searchPublicUsers` unable to
+  /// tell two same-named learners apart — a real gap found by actually
+  /// searching on a device, not a hypothetical one.
+  ///
+  /// Uniqueness is enforced the same way `ClanRepository.createClan`
+  /// enforces its join code being unique: a reservation document at
+  /// `userIds/{code}` whose *existence* is the uniqueness check, created in
+  /// the same batch as the profile write so the two can never disagree —
+  /// there is no separate index to keep in sync.
+  Future<String> _reserveUserId(WriteBatch batch, String uid) async {
+    final userIds = _firestore.collection(FirestorePaths.userIds);
+    for (var attempt = 0; attempt < _maxUserIdAttempts; attempt++) {
+      final candidate = _generateUserIdCandidate();
+      final reservation = userIds.doc(candidate);
+      final existing = await reservation.get();
+      if (existing.exists) continue;
+      batch.set(reservation, {'uid': uid});
+      return candidate;
+    }
+    throw StateError('Gagal membuat ID unik, coba lagi.');
+  }
+
   /// Creates the user doc profile on first launch, or refreshes
   /// `lastLoginAt`/`linkedGoogle` on subsequent launches.
+  ///
+  /// The `userId` reservation is deliberately a *separate* best-effort step
+  /// after the core profile write, not bundled into the same atomic batch —
+  /// found the hard way on a device: `userIds/{code}`'s own `firestore.rules`
+  /// block is new (added alongside this feature) and, until it's actually
+  /// deployed to the live project, every write to that collection comes back
+  /// `permission-denied`. Firestore batches are all-or-nothing, so bundling
+  /// the reservation into the profile-creation batch meant a not-yet-deployed
+  /// rules file silently broke account creation *entirely* for every new
+  /// user — not just left them without an id. Splitting the two means a
+  /// missing/stale rules deploy only costs the id (self-healed on the next
+  /// launch once rules do land), never the profile itself.
   Future<void> ensureUserProfile(
     String uid, {
     required bool isAnonymous,
@@ -58,6 +110,35 @@ class ProgressRepository {
         },
       }, SetOptions(merge: true));
     }
+
+    try {
+      await _backfillUserIdIfMissing(uid, snapshot);
+    } catch (_) {
+      // Best-effort, see the doc comment above — the next launch retries.
+    }
+  }
+
+  /// Reserves and writes a `userId` for [uid] if its profile doesn't already
+  /// have one — covers both a brand-new account (whose `snapshot` predates
+  /// this call, so it never has `userId`) and an existing account that
+  /// predates the field entirely, the same "backfill on the next natural
+  /// touchpoint" shape already used for `LeaderboardEntry.globalScore`/
+  /// `displayNameLower` elsewhere in this app, rather than a one-off
+  /// migration script this project has no way to run against live data.
+  Future<void> _backfillUserIdIfMissing(
+    String uid,
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+  ) async {
+    final existingProfile =
+        snapshot.data()?['profile'] as Map<String, dynamic>?;
+    if ((existingProfile?['userId'] as String?) != null) return;
+
+    final batch = _firestore.batch();
+    final userId = await _reserveUserId(batch, uid);
+    batch.set(_userDoc(uid), {
+      'profile': {'userId': userId},
+    }, SetOptions(merge: true));
+    await batch.commit();
   }
 
   /// Bumps the daily learning streak: +1 if the user was last active
