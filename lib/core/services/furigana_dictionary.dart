@@ -108,8 +108,30 @@ class FuriganaDictionary {
   ///   first and wrong.
   /// - 非: only kunyomi is あら-ず (classical negation, "is not") — real
   ///   use ("自分の非を認めて", "fault/wrongdoing") is onyomi ひ.
+  ///
+  /// Two more found the same day via real teacher/student reports rather
+  /// than the corpus audit above — both genuinely can't be fixed by
+  /// reordering which kunyomi comes first, unlike the twelve above, because
+  /// the *correct* reading changes with how the word is actually used:
+  /// - 降: kunyomi is [お-りる, ふ-る] — "落ちてくる/降水" senses ("雨が降る",
+  ///   "雪が降る", rain/snow falling) need ふる, but "乗り物から降りる"
+  ///   (getting off a train/car) needs おりる. Picking either kunyomi first
+  ///   is right for one sense and confidently wrong for the other — a
+  ///   genuine homograph, not a selection-order bug.
+  ///   Reported: `雨が降る`/`雪が降る` in a Kotoba cuaca (weather) example
+  ///   showed おりる's お instead of ふる's ふ.
+  /// - 来: kunyomi is [く-る, きた-る] — 来る is one of only two genuinely
+  ///   irregular verbs in Japanese, and its stem changes with conjugation:
+  ///   来る=くる, 来ます/来た=き, 来ない/来い=こ. A single static reading is
+  ///   wrong for every conjugated form except the bare dictionary form —
+  ///   which is rare in real sentences compared to 来ます/来た/来て. Showing
+  ///   く (or nothing) over 来 in "彼も来ます"/"日本から来ました" is exactly
+  ///   this: the dictionary-form reading applied to a ます/た-conjugated
+  ///   verb, where the real reading is き. Reported from real Bunpou も/
+  ///   から example sentences.
   static const _excludedWords = {
     '市場', '気味', '件', '字', '室', '市', '入', '弾', '摂', '敢', '関', '非',
+    '降', '来',
   };
 
   static String? _primaryKanjiReading(KanjiEntry entry) {

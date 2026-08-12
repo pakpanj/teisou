@@ -459,6 +459,10 @@ class AppStrings {
         'Kamu akan keluar dari "$name". Kamu bisa gabung lagi nanti dengan kode yang sama.',
         'You will leave "$name". You can rejoin later with the same code.',
       );
+  String get leaveClanFailed => _t(
+        'Gagal keluar dari clan, coba lagi.',
+        'Failed to leave the clan, try again.',
+      );
   String get clanCreatedTitle => _t('Clan Dibuat!', 'Clan Created!');
   String get shareCodeMessage => _t(
         'Bagikan kode ini ke murid supaya bisa bergabung:',

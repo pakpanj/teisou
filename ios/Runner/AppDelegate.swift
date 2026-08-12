@@ -51,31 +51,31 @@ import UIKit
 /// is true while the screen is being recorded or sent to AirPlay, and the
 /// system reports every change, so covering the window keeps the quiz out
 /// of the recording. That is the real counterpart to Android's
-/// `FLAG_SECURE`.
+/// `FLAG_SECURE`, built from a plain `UIView` covering the window — no
+/// layer surgery, nothing that can crash.
 ///
-/// **Screenshots come out blank, by borrowing what UIKit already does to
-/// password fields.** iOS has no window flag for screenshots, so this uses
-/// the technique banking apps use: a `UITextField` with `isSecureTextEntry`
-/// owns a layer the system deliberately omits from screen captures, and the
-/// window's own layer is moved underneath it. The screen still renders and
-/// still responds normally — only the captured image comes out empty.
+/// **Screenshots are reported, not blanked.** An earlier version of this
+/// class also tried to blank the screenshot image itself, by moving the
+/// window's own `CALayer` underneath a secure `UITextField`'s
+/// capture-exempt layer — the trick banking apps use, but applied to the
+/// whole window rather than to one sensitive subview. That is much riskier
+/// than the usual version of the trick: a `UIWindow`'s backing layer is
+/// treated specially by the system compositor, and real users hit a crash
+/// right after finishing the Bab gate quiz on iOS with it in place. A first
+/// fix tried deferring the teardown to dodge a race with the exit
+/// transition; the crash was still reported afterwards. With no iOS device
+/// or crash log reachable from this environment to narrow it down further,
+/// removing the layer reparenting entirely is the responsible call — a
+/// screenshot that shows real content is a far smaller problem than an app
+/// that crashes right after a learner passes an exam. If this is ever
+/// revisited, the safer version of the technique embeds the *sensitive
+/// content view* inside the secure field's own layer tree instead of
+/// moving the window's layer into it.
 ///
-/// This moves **layers, not views**. Touch handling walks the view
-/// hierarchy, which is left exactly as it was, so input cannot break the
-/// way it could if the Flutter view itself were reparented.
-///
-/// It leans on an undocumented UIKit layer arrangement, so every step is
-/// guarded and the whole thing is optional: if the secure layer cannot be
-/// found — a future iOS changing its internals, most likely — it undoes
-/// what it did and leaves the screen exactly as it found it. Protection
-/// then degrades to recording-blocking plus after-the-fact reporting rather
-/// than breaking the app. **Not verified on a device: this project has
-/// never been built for iOS, so treat the blanking as unproven until
-/// someone runs it on real hardware.**
-///
-/// `userDidTakeScreenshotNotification` still fires either way — iOS reports
-/// the gesture, not whether the image had anything in it — so the quiz's
-/// notice appears whether or not the capture came out blank.
+/// `userDidTakeScreenshotNotification` still fires and is still reported
+/// through [onScreenshotDetected] on the Dart side, so the quiz's "a
+/// screenshot was taken" notice keeps working even though the image itself
+/// is no longer blanked.
 ///
 /// Lives in AppDelegate.swift rather than its own file on purpose — a new
 /// Swift file must be added to the Xcode target in `project.pbxproj`, and
@@ -85,25 +85,6 @@ private final class SecureScreenController {
   private var observers: [NSObjectProtocol] = []
   private var cover: UIView?
 
-  /// Retained for as long as the blanking is in force: dropping the field
-  /// would take its secure layer — and the window's layer with it — away.
-  private var secureField: UITextField?
-  private var protectedWindow: UIWindow?
-  private var originalWindowSuperlayer: CALayer?
-
-  /// `disable()` fires from `SecureScreenMixin.dispose()`, which for the
-  /// Bab gate quiz runs synchronously with `AppNavigator.replaceFadeScale`
-  /// tearing this route down — both mutating this same window's layer tree
-  /// in the same beat. A user report of a crash right after finishing the
-  /// gate quiz on iOS is diagnosed to this race: undoing the layer swap
-  /// while Flutter's own transition (350ms, see `AppNavigator._duration`)
-  /// is still committing. **Derived by code-reading, not by reproducing
-  /// the crash** — this build has never run on iOS hardware — so treat
-  /// this as a strong, reasoned fix, not a confirmed root-cause match,
-  /// until it's actually verified against a real crash log or a device.
-  private static let teardownDelay: TimeInterval = 0.5
-  private var pendingTeardown: DispatchWorkItem?
-
   init(channel: FlutterMethodChannel) {
     self.channel = channel
   }
@@ -112,12 +93,6 @@ private final class SecureScreenController {
   /// `enable` while already active must not stack another set of observers
   /// that a single `disable` would then fail to remove.
   func enable() {
-    // A screen re-securing before the previous one's delayed teardown
-    // fired must keep the window blanked, not let it get undone out from
-    // under it a moment later.
-    pendingTeardown?.cancel()
-    pendingTeardown = nil
-
     guard observers.isEmpty else { return }
 
     let center = NotificationCenter.default
@@ -142,83 +117,13 @@ private final class SecureScreenController {
 
     // Recording may already have been running before the quiz opened.
     applyCaptureState()
-    startBlankingScreenshots()
   }
 
-  /// Recording/mirroring protection and the screenshot-gesture report stop
-  /// immediately — neither touches the window's layer tree, so neither
-  /// carries the crash risk below. Only the screenshot-blanking layer swap
-  /// is deferred: it's genuinely undocumented UIKit surgery (see the class
-  /// doc comment), and unwinding it mid-transition is what crashed. Leaving
-  /// it in place for [teardownDelay] a little longer than necessary just
-  /// means the next screen's screenshots come out blank for an extra
-  /// moment — harmless — versus racing CoreAnimation's in-flight
-  /// transaction, which was not.
   func disable() {
     let center = NotificationCenter.default
     observers.forEach { center.removeObserver($0) }
     observers.removeAll()
     removeCover()
-
-    let workItem = DispatchWorkItem { [weak self] in
-      self?.stopBlankingScreenshots()
-      self?.pendingTeardown = nil
-    }
-    pendingTeardown = workItem
-    DispatchQueue.main.asyncAfter(
-      deadline: .now() + Self.teardownDelay,
-      execute: workItem
-    )
-  }
-
-  /// Moves the window's layer under a secure text field's capture-exempt
-  /// layer. Every failure path restores what it touched and returns, so the
-  /// worst outcome is no screenshot protection rather than a broken screen.
-  private func startBlankingScreenshots() {
-    guard secureField == nil, let window = keyWindow() else { return }
-
-    let field = UITextField()
-    field.isSecureTextEntry = true
-    // Purely a carrier for its layer: it must never take a touch or draw
-    // anything over the quiz.
-    field.isUserInteractionEnabled = false
-    field.backgroundColor = .clear
-    field.frame = window.bounds
-    window.addSubview(field)
-    // The secure layer is created during layout, so it does not exist yet
-    // on a field that has only just been added.
-    window.layoutIfNeeded()
-
-    guard let host = window.layer.superlayer,
-          let secureLayer = field.layer.sublayers?.last else {
-      // UIKit did not lay this out the way this technique expects.
-      field.removeFromSuperview()
-      return
-    }
-
-    host.addSublayer(field.layer)
-    secureLayer.addSublayer(window.layer)
-
-    secureField = field
-    protectedWindow = window
-    originalWindowSuperlayer = host
-  }
-
-  private func stopBlankingScreenshots() {
-    guard let field = secureField else { return }
-
-    // Put the window's layer back where it was before unwinding the field,
-    // so the screen is never left with its layer parented to something that
-    // is about to be removed.
-    if let window = protectedWindow, let host = originalWindowSuperlayer {
-      host.addSublayer(window.layer)
-    }
-    field.layer.removeFromSuperlayer()
-    field.removeFromSuperview()
-
-    secureField = nil
-    protectedWindow = nil
-    originalWindowSuperlayer = nil
   }
 
   private func applyCaptureState() {

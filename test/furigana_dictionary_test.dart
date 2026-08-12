@@ -184,4 +184,26 @@ void main() {
       }
     }
   });
+
+  test('known reading-changes-with-usage kanji reported by real users are '
+      'never annotated at all', () {
+    // 降: kunyomi [お-りる, ふ-る] — "雨/雪が降る" (falling) needs ふ, but the
+    // dictionary's first kunyomi is おりる's お, which is only right for
+    // "getting off/down". Reported against a real Kotoba cuaca (weather)
+    // example sentence.
+    final furuSegments = dictionary.segment('雪が降る。');
+    for (final s in furuSegments.where((s) => s.text == '降')) {
+      expect(s.reading, isNull);
+    }
+
+    // 来: kunyomi [く-る, きた-る] — 来る is one of Japanese's two truly
+    // irregular verbs, so its reading changes with conjugation: くる but
+    // きます/きた, こない/こい. The dictionary's static く is wrong for the
+    // very common ます/た-conjugated forms. Reported against real Bunpou
+    // も/から example sentences (彼も来ます, 日本から来ました).
+    final kuruSegments = dictionary.segment('彼も来ます。');
+    for (final s in kuruSegments.where((s) => s.text == '来')) {
+      expect(s.reading, isNull);
+    }
+  });
 }

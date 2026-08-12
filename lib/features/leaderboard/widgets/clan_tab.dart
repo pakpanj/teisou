@@ -71,7 +71,24 @@ class _ClanTabState extends ConsumerState<ClanTab> {
 
     final user = ref.read(appStartupProvider).valueOrNull;
     if (user == null) return;
-    await ref.read(clanRepositoryProvider).leaveClan(code: code, uid: user.uid);
+    try {
+      await ref
+          .read(clanRepositoryProvider)
+          .leaveClan(code: code, uid: user.uid);
+    } catch (_) {
+      // Previously unguarded: a rejected/failed write here left the clan
+      // exactly where it was in `myClansProvider`'s live stream (nothing
+      // ever committed), the confirmation dialog had already closed, and
+      // nothing told the user it didn't work — reported as "I left this
+      // clan but it's still there." Surface it instead of leaving the
+      // failure indistinguishable from a working leave.
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(ref.read(appStringsProvider).leaveClanFailed)),
+        );
+      }
+      return;
+    }
     if (mounted && _selectedCode == code) {
       setState(() => _selectedCode = null);
     }
