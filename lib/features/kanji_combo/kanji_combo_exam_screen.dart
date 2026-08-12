@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
-import '../../core/widgets/furigana_text.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
@@ -93,18 +92,14 @@ class KanjiComboExamScreen extends ConsumerWidget {
           }
           return McQuizFlow(
             totalQuestions: questions.length,
-            // Only meaning options get furigana via McQuizFlow's own
-            // showFurigana — a reading question's *options* are the
-            // reading itself, but McQuizFlow has no per-question
-            // granularity, so this stays off here and _KanjiPrompt below
-            // makes its own per-question call for the header instead
-            // (never furigana-ing a reading question's prompt, which
-            // would leak that same answer).
+            // No furigana anywhere in this screen, on either question
+            // type — a reading question's prompt would leak the answer,
+            // and a meaning question's prompt would let a learner skip
+            // recognizing the kanji itself, which is exactly the skill
+            // this exam is meant to test.
             headerBuilder: (context, index) => _KanjiPrompt(
               text: questions[index].prompt,
               promptLabel: questions[index].promptLabel,
-              level: level,
-              showFurigana: !questions[index].isReadingQuestion,
             ),
             optionsOf: (index) => questions[index].options,
             correctIndexOf: (index) => questions[index].correctIndex,
@@ -118,24 +113,17 @@ class KanjiComboExamScreen extends ConsumerWidget {
   }
 }
 
-class _KanjiPrompt extends ConsumerWidget {
+class _KanjiPrompt extends StatelessWidget {
   final String text;
   final String promptLabel;
-  final JlptLevel level;
-  final bool showFurigana;
 
   const _KanjiPrompt({
     required this.text,
     required this.promptLabel,
-    required this.level,
-    required this.showFurigana,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final dictionary = showFurigana && showFuriganaFor(level)
-        ? ref.watch(furiganaDictionaryProvider).valueOrNull
-        : null;
+  Widget build(BuildContext context) {
     final promptStyle = TextStyle(
       fontSize: 56,
       fontWeight: FontWeight.bold,
@@ -163,13 +151,7 @@ class _KanjiPrompt extends ConsumerWidget {
             ],
           ),
           child: Center(
-            child: dictionary != null
-                ? FuriganaSentence(
-                    text: text,
-                    dictionary: dictionary,
-                    style: promptStyle,
-                  )
-                : Text(text, style: promptStyle),
+            child: Text(text, style: promptStyle),
           ),
         ),
       ],
