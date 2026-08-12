@@ -16,7 +16,62 @@ ROWS = [
     (8, ["ra", "ri", "ru", "re", "ro"], ["ら", "り", "る", "れ", "ろ"], ["ラ", "リ", "ル", "レ", "ロ"], [0, 1, 2, 3, 4]),
     (9, ["wa", "wo"], ["わ", "を"], ["ワ", "ヲ"], [0, 4]),
     (10, ["n"], ["ん"], ["ン"], [0]),
+    # Dakuten (゛) rows 11-14 and handakuten (゜) row 15 — voiced/semi-voiced
+    # variants of か/さ/た/は, none of which existed in this dataset before
+    # (Batch 1 only ever covered the plain 46+46 gojuon set). ぢ/づ are
+    # given the romaji "di"/"du" rather than "ji"/"zu" — modern standard
+    # Japanese pronounces them identically to じ/ず (the yotsugana merger),
+    # but this dataset's `id` is derived from `romaji`
+    # (`{type}_{romaji}`), so a literal "ji"/"zu" would collide with じ/ず's
+    # own id and — worse — silently share one KanaProgress mastery record
+    # between two different characters. "di"/"du" is a real, still-used
+    # convention for exactly this disambiguation in beginner material, not
+    # an invented one.
+    (11, ["ga", "gi", "gu", "ge", "go"], ["が", "ぎ", "ぐ", "げ", "ご"], ["ガ", "ギ", "グ", "ゲ", "ゴ"], [0, 1, 2, 3, 4]),
+    (12, ["za", "ji", "zu", "ze", "zo"], ["ざ", "じ", "ず", "ぜ", "ぞ"], ["ザ", "ジ", "ズ", "ゼ", "ゾ"], [0, 1, 2, 3, 4]),
+    (13, ["da", "di", "du", "de", "do"], ["だ", "ぢ", "づ", "で", "ど"], ["ダ", "ヂ", "ヅ", "デ", "ド"], [0, 1, 2, 3, 4]),
+    (14, ["ba", "bi", "bu", "be", "bo"], ["ば", "び", "ぶ", "べ", "ぼ"], ["バ", "ビ", "ブ", "ベ", "ボ"], [0, 1, 2, 3, 4]),
+    (15, ["pa", "pi", "pu", "pe", "po"], ["ぱ", "ぴ", "ぷ", "ぺ", "ぽ"], ["パ", "ピ", "プ", "ペ", "ポ"], [0, 1, 2, 3, 4]),
+    # Youon (small-ya/yu/yo combination mora) rows 16-26 — the 11 rows that
+    # actually combine in modern Japanese (seion き/し/ち/に/ひ/み/り plus
+    # dakuten/handakuten ぎ/じ/び/ぴ). ぢゃ/ぢゅ/ぢょ are deliberately left
+    # out — essentially unused in modern vocabulary (unlike ぢ/づ alone,
+    # which at least appear in real words like ちぢむ/つづく). Columns
+    # 0/1/2 stand for ゃ/ゅ/ょ, reusing the same column axis the base rows
+    # use for あ/い/う/え/お — it's just "which of this row's 3 members".
+    (16, ["kya", "kyu", "kyo"], ["きゃ", "きゅ", "きょ"], ["キャ", "キュ", "キョ"], [0, 1, 2]),
+    (17, ["sha", "shu", "sho"], ["しゃ", "しゅ", "しょ"], ["シャ", "シュ", "ショ"], [0, 1, 2]),
+    (18, ["cha", "chu", "cho"], ["ちゃ", "ちゅ", "ちょ"], ["チャ", "チュ", "チョ"], [0, 1, 2]),
+    (19, ["nya", "nyu", "nyo"], ["にゃ", "にゅ", "にょ"], ["ニャ", "ニュ", "ニョ"], [0, 1, 2]),
+    (20, ["hya", "hyu", "hyo"], ["ひゃ", "ひゅ", "ひょ"], ["ヒャ", "ヒュ", "ヒョ"], [0, 1, 2]),
+    (21, ["mya", "myu", "myo"], ["みゃ", "みゅ", "みょ"], ["ミャ", "ミュ", "ミョ"], [0, 1, 2]),
+    (22, ["rya", "ryu", "ryo"], ["りゃ", "りゅ", "りょ"], ["リャ", "リュ", "リョ"], [0, 1, 2]),
+    (23, ["gya", "gyu", "gyo"], ["ぎゃ", "ぎゅ", "ぎょ"], ["ギャ", "ギュ", "ギョ"], [0, 1, 2]),
+    (24, ["ja", "ju", "jo"], ["じゃ", "じゅ", "じょ"], ["ジャ", "ジュ", "ジョ"], [0, 1, 2]),
+    (25, ["bya", "byu", "byo"], ["びゃ", "びゅ", "びょ"], ["ビャ", "ビュ", "ビョ"], [0, 1, 2]),
+    (26, ["pya", "pyu", "pyo"], ["ぴゃ", "ぴゅ", "ぴょ"], ["ピャ", "ピュ", "ピョ"], [0, 1, 2]),
 ]
+
+# Youon glyphs are two Unicode characters (base kana + small ゃ/ゅ/ょ), so
+# there is no single KanjiVG codepoint to fetch a combined stroke-order SVG
+# from. Reusing the base consonant's own already-bundled SVG is honest
+# (it's still that mora's real dominant stroke content) and needs zero new
+# asset fetching — only dakuten/handakuten (single new codepoints) get
+# freshly fetched SVGs. Maps a youon romaji to the base romaji whose
+# existing `assets/svg/{type}/{romaji}.svg` should be reused.
+SVG_ASSET_OVERRIDE = {
+    "kya": "ki", "kyu": "ki", "kyo": "ki",
+    "sha": "shi", "shu": "shi", "sho": "shi",
+    "cha": "chi", "chu": "chi", "cho": "chi",
+    "nya": "ni", "nyu": "ni", "nyo": "ni",
+    "hya": "hi", "hyu": "hi", "hyo": "hi",
+    "mya": "mi", "myu": "mi", "myo": "mi",
+    "rya": "ri", "ryu": "ri", "ryo": "ri",
+    "gya": "gi", "gyu": "gi", "gyo": "gi",
+    "ja": "ji", "ju": "ji", "jo": "ji",
+    "bya": "bi", "byu": "bi", "byo": "bi",
+    "pya": "pi", "pyu": "pi", "pyo": "pi",
+}
 
 HIRAGANA_EXAMPLES = {
     "a": ("あさ", "asa", "Pagi"),
@@ -65,6 +120,69 @@ HIRAGANA_EXAMPLES = {
     "wa": ("わたし", "watashi", "Saya"),
     "wo": None,
     "n": None,
+    # Dakuten/handakuten
+    "ga": ("がっこう", "gakkou", "Sekolah"),
+    "gi": ("ぎんこう", "ginkou", "Bank"),
+    "gu": ("ぐあい", "guai", "Kondisi (badan)"),
+    "ge": ("げんき", "genki", "Sehat, bersemangat"),
+    "go": ("ごはん", "gohan", "Nasi, makanan"),
+    "za": ("ざっし", "zasshi", "Majalah"),
+    "ji": ("じかん", "jikan", "Waktu"),
+    "zu": ("ずつう", "zutsuu", "Sakit kepala"),
+    "ze": ("ぜんぶ", "zenbu", "Semua"),
+    "zo": ("ぞう", "zou", "Gajah"),
+    "da": ("だいがく", "daigaku", "Universitas"),
+    # ぢ almost never opens a real word (a yotsugana), so — unlike every
+    # other entry here — this one doesn't start with its own kana. ちぢむ
+    # ("to shrink") is one of the few common words that use it at all.
+    "di": ("ちぢむ", "chijimu", "Menyusut/mengerut"),
+    "du": ("つづく", "tsuzuku", "Berlanjut/berlangsung"),
+    "de": ("でんわ", "denwa", "Telepon"),
+    "do": ("どうぶつ", "doubutsu", "Hewan"),
+    "ba": ("ばしょ", "basho", "Tempat"),
+    "bi": ("びょういん", "byouin", "Rumah sakit"),
+    "bu": ("ぶた", "buta", "Babi"),
+    "be": ("べんきょう", "benkyou", "Belajar"),
+    "bo": ("ぼうし", "boushi", "Topi"),
+    "pa": ("ぱん", "pan", "Roti"),
+    "pi": ("えんぴつ", "enpitsu", "Pensil"),
+    "pu": ("きっぷ", "kippu", "Tiket"),
+    "pe": ("ぺらぺら", "perapera", "Fasih (berbicara lancar)"),
+    "po": ("たんぽぽ", "tanpopo", "Bunga dandelion"),
+    # Youon
+    "kya": ("きゃく", "kyaku", "Tamu, pelanggan"),
+    "kyu": ("きゅうり", "kyuuri", "Timun"),
+    "kyo": ("きょう", "kyou", "Hari ini"),
+    "sha": ("しゃしん", "shashin", "Foto"),
+    "shu": ("しゅくだい", "shukudai", "Pekerjaan rumah"),
+    "sho": ("しょうがっこう", "shougakkou", "Sekolah dasar"),
+    "cha": ("ちゃいろ", "chairo", "Warna coklat"),
+    "chu": ("ちゅうがっこう", "chuugakkou", "Sekolah menengah pertama"),
+    "cho": ("ちょうちょう", "choucho", "Kupu-kupu"),
+    "nya": ("にゃんこ", "nyanko", "Kucing (panggilan akrab)"),
+    "nyu": ("にゅうがく", "nyuugaku", "Masuk sekolah"),
+    "nyo": ("にょろにょろ", "nyoronyoro", "Meliuk-liuk (spt. ular)"),
+    "hya": ("ひゃく", "hyaku", "Seratus"),
+    "hyu": ("ひゅうひゅう", "hyuuhyuu", "Suara angin bertiup kencang"),
+    "hyo": ("ひょう", "hyou", "Macan tutul"),
+    "mya": ("みゃく", "myaku", "Denyut nadi"),
+    "myu": ("みゅーじかる", "myuujikaru", "Pertunjukan musikal"),
+    "myo": ("みょうじ", "myouji", "Nama keluarga/marga"),
+    "rya": ("りゃくご", "ryakugo", "Singkatan (kata)"),
+    "ryu": ("りゅう", "ryuu", "Naga"),
+    "ryo": ("りょこう", "ryokou", "Perjalanan wisata"),
+    "gya": ("ぎゃく", "gyaku", "Kebalikan"),
+    "gyu": ("ぎゅうにゅう", "gyuunyuu", "Susu sapi"),
+    "gyo": ("ぎょうざ", "gyouza", "Pangsit goreng"),
+    "ja": ("じゃがいも", "jagaimo", "Kentang"),
+    "ju": ("じゅぎょう", "jugyou", "Pelajaran, kelas"),
+    "jo": ("じょうず", "jouzu", "Pandai, mahir"),
+    "bya": ("さんびゃく", "sanbyaku", "Tiga ratus"),
+    "byu": ("びゅうびゅう", "byuubyuu", "Suara angin kencang"),
+    "byo": ("びょうき", "byouki", "Sakit"),
+    "pya": ("はっぴゃく", "happyaku", "Delapan ratus"),
+    "pyu": ("ぴゅうぴゅう", "pyuupyuu", "Suara angin bersiul"),
+    "pyo": ("ぴょんぴょん", "pyonpyon", "Melompat-lompat"),
 }
 
 KATAKANA_EXAMPLES = {
@@ -89,7 +207,12 @@ KATAKANA_EXAMPLES = {
     "te": ("テレビ", "terebi", "Televisi"),
     "to": ("トマト", "tomato", "Tomat"),
     "na": ("ナイフ", "naifu", "Pisau"),
-    "ni": ("ニュース", "nyuusu", "Berita"),
+    # Pre-existing content bug, found while authoring the new ニュ (nyu)
+    # youon entry below: this example was ニュース ("nyuusu", news), which
+    # doesn't actually start with ニ (ni) at all — it starts with ニュ
+    # (nyu). Every other entry in this table genuinely starts with its own
+    # kana; this one never did. Fixed to a real ニ-starting word.
+    "ni": ("ニンジン", "ninjin", "Wortel"),
     "nu": ("ヌードル", "nuudoru", "Mi"),
     "ne": ("ネクタイ", "nekutai", "Dasi"),
     "no": ("ノート", "nooto", "Buku catatan"),
@@ -114,6 +237,81 @@ KATAKANA_EXAMPLES = {
     "wa": ("ワイン", "wain", "Anggur"),
     "wo": None,
     "n": None,
+    # Dakuten/handakuten
+    "ga": ("ガム", "gamu", "Permen karet"),
+    "gi": ("ギター", "gitaa", "Gitar"),
+    "gu": ("グラス", "gurasu", "Gelas"),
+    "ge": ("ゲーム", "geemu", "Permainan, game"),
+    "go": ("ゴム", "gomu", "Karet"),
+    "za": ("ザリガニ", "zarigani", "Udang karang"),
+    "ji": ("ジーンズ", "jiinzu", "Celana jins"),
+    "zu": ("ズボン", "zubon", "Celana panjang"),
+    "ze": ("ゼロ", "zero", "Nol"),
+    "zo": ("ゾーン", "zoon", "Zona, area"),
+    "da": ("ダンス", "dansu", "Tari, dansa"),
+    # ヂ/ヅ are essentially unused in modern katakana — every loanword that
+    # would phonetically need them is written with ジ/ズ instead (the same
+    # yotsugana merger that shaped this dataset's "di"/"du" romaji choice
+    # above). No real example word exists, same as を/ん in the base 46.
+    "di": None,
+    "du": None,
+    "de": ("デパート", "depaato", "Toko serba ada"),
+    "do": ("ドア", "doa", "Pintu"),
+    "ba": ("バス", "basu", "Bus"),
+    "bi": ("ビル", "biru", "Gedung"),
+    "bu": ("ブラシ", "burashi", "Sikat"),
+    "be": ("ベッド", "beddo", "Tempat tidur"),
+    "bo": ("ボール", "booru", "Bola"),
+    "pa": ("パーティー", "paatii", "Pesta"),
+    "pi": ("ピアノ", "piano", "Piano"),
+    "pu": ("プール", "puuru", "Kolam renang"),
+    "pe": ("ペン", "pen", "Pulpen"),
+    "po": ("ポケット", "poketto", "Kantong, saku"),
+    # Youon
+    "kya": ("キャンプ", "kyanpu", "Berkemah"),
+    "kyu": ("キュート", "kyuuto", "Lucu, imut"),
+    "kyo": ("キョロキョロ", "kyorokyoro", "Melihat sekeliling dengan gelisah"),
+    "sha": ("シャツ", "shatsu", "Kemeja"),
+    "shu": ("シュート", "shuuto", "Tembakan (olahraga)"),
+    "sho": ("ショップ", "shoppu", "Toko"),
+    "cha": ("チャンス", "chansu", "Kesempatan"),
+    "chu": ("チューリップ", "chuurippu", "Bunga tulip"),
+    "cho": ("チョコレート", "chokoreeto", "Coklat"),
+    "nya": ("ニャー", "nyaa", "Suara kucing (meong)"),
+    "nyu": ("ニュース", "nyuusu", "Berita"),
+    # ニョ is genuinely rare in katakana — no common real word.
+    "nyo": None,
+    "hya": ("ヒャッホー", "hyahhoo", "Seruan gembira"),
+    "hyu": ("ヒューマン", "hyuuman", "Manusia"),
+    # ヒョ is genuinely rare in katakana — no common real word.
+    "hyo": None,
+    "mya": ("ミャンマー", "myanmaa", "Myanmar (nama negara)"),
+    "myu": ("ミュージック", "myuujikku", "Musik"),
+    # ミョ is genuinely rare in katakana — no common real word.
+    "myo": None,
+    # リャ is genuinely rare in katakana — no common real word.
+    "rya": None,
+    "ryu": ("リュック", "ryukku", "Tas ransel"),
+    # リョ is genuinely rare in katakana — no common real word.
+    "ryo": None,
+    "gya": ("ギャラリー", "gyararii", "Galeri"),
+    # ギュ/ギョ are genuinely rare in katakana (native ぎゅうにゅう/ぎょうざ
+    # cover them in hiragana instead) — no common katakana-native word.
+    "gyu": None,
+    "gyo": None,
+    "ja": ("ジャム", "jamu", "Selai"),
+    "ju": ("ジュース", "juusu", "Jus"),
+    "jo": ("ジョギング", "jogingu", "Jogging"),
+    # ビャ is genuinely rare in katakana — no common real word.
+    "bya": None,
+    "byu": ("ビュッフェ", "byuffe", "Prasmanan (buffet)"),
+    # ビョ is genuinely rare in katakana — no common real word.
+    "byo": None,
+    # ピャ is genuinely rare in katakana — no common real word.
+    "pya": None,
+    "pyu": ("ピュア", "pyua", "Murni, polos"),
+    # ピョ is genuinely rare in katakana — no common real word.
+    "pyo": None,
 }
 
 
@@ -129,6 +327,7 @@ def build_entries(kana_type, chars_by_romaji_index, examples_map):
             if example:
                 word, reading, meaning = example
                 examples = [{"word": word, "reading": reading, "meaning": meaning}]
+            svg_romaji = SVG_ASSET_OVERRIDE.get(romaji, romaji)
             entries.append({
                 "id": f"{kana_type}_{romaji}",
                 "character": char,
@@ -136,7 +335,7 @@ def build_entries(kana_type, chars_by_romaji_index, examples_map):
                 "type": kana_type,
                 "row": row_index,
                 "column": column,
-                "svgAsset": f"assets/svg/{kana_type}/{romaji}.svg",
+                "svgAsset": f"assets/svg/{kana_type}/{svg_romaji}.svg",
                 "examples": examples,
             })
     return entries
@@ -146,11 +345,20 @@ all_entries = []
 all_entries.extend(build_entries("hiragana", ROWS, HIRAGANA_EXAMPLES))
 all_entries.extend(build_entries("katakana", ROWS, KATAKANA_EXAMPLES))
 
-assert len(all_entries) == 92, f"Expected 92 entries, got {len(all_entries)}"
+assert len(all_entries) == 208, f"Expected 208 entries, got {len(all_entries)}"
 hira_count = sum(1 for e in all_entries if e["type"] == "hiragana")
 kata_count = sum(1 for e in all_entries if e["type"] == "katakana")
-assert hira_count == 46, f"Expected 46 hiragana, got {hira_count}"
-assert kata_count == 46, f"Expected 46 katakana, got {kata_count}"
+assert hira_count == 104, f"Expected 104 hiragana, got {hira_count}"
+assert kata_count == 104, f"Expected 104 katakana, got {kata_count}"
+ids = [e["id"] for e in all_entries]
+assert len(ids) == len(set(ids)), "Duplicate kana id found"
+chars_by_type = {}
+for e in all_entries:
+    chars_by_type.setdefault(e["type"], set())
+    assert e["character"] not in chars_by_type[e["type"]], (
+        f"Duplicate {e['type']} character {e['character']}"
+    )
+    chars_by_type[e["type"]].add(e["character"])
 
 with open("assets/data/kana_data.json", "w", encoding="utf-8") as f:
     json.dump(all_entries, f, ensure_ascii=False, indent=2)

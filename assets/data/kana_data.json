@@ -724,6 +724,934 @@
     "examples": []
   },
   {
+    "id": "hiragana_ga",
+    "character": "が",
+    "romaji": "ga",
+    "type": "hiragana",
+    "row": 11,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/ga.svg",
+    "examples": [
+      {
+        "word": "がっこう",
+        "reading": "gakkou",
+        "meaning": "Sekolah"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_gi",
+    "character": "ぎ",
+    "romaji": "gi",
+    "type": "hiragana",
+    "row": 11,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/gi.svg",
+    "examples": [
+      {
+        "word": "ぎんこう",
+        "reading": "ginkou",
+        "meaning": "Bank"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_gu",
+    "character": "ぐ",
+    "romaji": "gu",
+    "type": "hiragana",
+    "row": 11,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/gu.svg",
+    "examples": [
+      {
+        "word": "ぐあい",
+        "reading": "guai",
+        "meaning": "Kondisi (badan)"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_ge",
+    "character": "げ",
+    "romaji": "ge",
+    "type": "hiragana",
+    "row": 11,
+    "column": 3,
+    "svgAsset": "assets/svg/hiragana/ge.svg",
+    "examples": [
+      {
+        "word": "げんき",
+        "reading": "genki",
+        "meaning": "Sehat, bersemangat"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_go",
+    "character": "ご",
+    "romaji": "go",
+    "type": "hiragana",
+    "row": 11,
+    "column": 4,
+    "svgAsset": "assets/svg/hiragana/go.svg",
+    "examples": [
+      {
+        "word": "ごはん",
+        "reading": "gohan",
+        "meaning": "Nasi, makanan"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_za",
+    "character": "ざ",
+    "romaji": "za",
+    "type": "hiragana",
+    "row": 12,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/za.svg",
+    "examples": [
+      {
+        "word": "ざっし",
+        "reading": "zasshi",
+        "meaning": "Majalah"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_ji",
+    "character": "じ",
+    "romaji": "ji",
+    "type": "hiragana",
+    "row": 12,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/ji.svg",
+    "examples": [
+      {
+        "word": "じかん",
+        "reading": "jikan",
+        "meaning": "Waktu"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_zu",
+    "character": "ず",
+    "romaji": "zu",
+    "type": "hiragana",
+    "row": 12,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/zu.svg",
+    "examples": [
+      {
+        "word": "ずつう",
+        "reading": "zutsuu",
+        "meaning": "Sakit kepala"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_ze",
+    "character": "ぜ",
+    "romaji": "ze",
+    "type": "hiragana",
+    "row": 12,
+    "column": 3,
+    "svgAsset": "assets/svg/hiragana/ze.svg",
+    "examples": [
+      {
+        "word": "ぜんぶ",
+        "reading": "zenbu",
+        "meaning": "Semua"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_zo",
+    "character": "ぞ",
+    "romaji": "zo",
+    "type": "hiragana",
+    "row": 12,
+    "column": 4,
+    "svgAsset": "assets/svg/hiragana/zo.svg",
+    "examples": [
+      {
+        "word": "ぞう",
+        "reading": "zou",
+        "meaning": "Gajah"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_da",
+    "character": "だ",
+    "romaji": "da",
+    "type": "hiragana",
+    "row": 13,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/da.svg",
+    "examples": [
+      {
+        "word": "だいがく",
+        "reading": "daigaku",
+        "meaning": "Universitas"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_di",
+    "character": "ぢ",
+    "romaji": "di",
+    "type": "hiragana",
+    "row": 13,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/di.svg",
+    "examples": [
+      {
+        "word": "ちぢむ",
+        "reading": "chijimu",
+        "meaning": "Menyusut/mengerut"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_du",
+    "character": "づ",
+    "romaji": "du",
+    "type": "hiragana",
+    "row": 13,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/du.svg",
+    "examples": [
+      {
+        "word": "つづく",
+        "reading": "tsuzuku",
+        "meaning": "Berlanjut/berlangsung"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_de",
+    "character": "で",
+    "romaji": "de",
+    "type": "hiragana",
+    "row": 13,
+    "column": 3,
+    "svgAsset": "assets/svg/hiragana/de.svg",
+    "examples": [
+      {
+        "word": "でんわ",
+        "reading": "denwa",
+        "meaning": "Telepon"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_do",
+    "character": "ど",
+    "romaji": "do",
+    "type": "hiragana",
+    "row": 13,
+    "column": 4,
+    "svgAsset": "assets/svg/hiragana/do.svg",
+    "examples": [
+      {
+        "word": "どうぶつ",
+        "reading": "doubutsu",
+        "meaning": "Hewan"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_ba",
+    "character": "ば",
+    "romaji": "ba",
+    "type": "hiragana",
+    "row": 14,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/ba.svg",
+    "examples": [
+      {
+        "word": "ばしょ",
+        "reading": "basho",
+        "meaning": "Tempat"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_bi",
+    "character": "び",
+    "romaji": "bi",
+    "type": "hiragana",
+    "row": 14,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/bi.svg",
+    "examples": [
+      {
+        "word": "びょういん",
+        "reading": "byouin",
+        "meaning": "Rumah sakit"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_bu",
+    "character": "ぶ",
+    "romaji": "bu",
+    "type": "hiragana",
+    "row": 14,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/bu.svg",
+    "examples": [
+      {
+        "word": "ぶた",
+        "reading": "buta",
+        "meaning": "Babi"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_be",
+    "character": "べ",
+    "romaji": "be",
+    "type": "hiragana",
+    "row": 14,
+    "column": 3,
+    "svgAsset": "assets/svg/hiragana/be.svg",
+    "examples": [
+      {
+        "word": "べんきょう",
+        "reading": "benkyou",
+        "meaning": "Belajar"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_bo",
+    "character": "ぼ",
+    "romaji": "bo",
+    "type": "hiragana",
+    "row": 14,
+    "column": 4,
+    "svgAsset": "assets/svg/hiragana/bo.svg",
+    "examples": [
+      {
+        "word": "ぼうし",
+        "reading": "boushi",
+        "meaning": "Topi"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_pa",
+    "character": "ぱ",
+    "romaji": "pa",
+    "type": "hiragana",
+    "row": 15,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/pa.svg",
+    "examples": [
+      {
+        "word": "ぱん",
+        "reading": "pan",
+        "meaning": "Roti"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_pi",
+    "character": "ぴ",
+    "romaji": "pi",
+    "type": "hiragana",
+    "row": 15,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/pi.svg",
+    "examples": [
+      {
+        "word": "えんぴつ",
+        "reading": "enpitsu",
+        "meaning": "Pensil"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_pu",
+    "character": "ぷ",
+    "romaji": "pu",
+    "type": "hiragana",
+    "row": 15,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/pu.svg",
+    "examples": [
+      {
+        "word": "きっぷ",
+        "reading": "kippu",
+        "meaning": "Tiket"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_pe",
+    "character": "ぺ",
+    "romaji": "pe",
+    "type": "hiragana",
+    "row": 15,
+    "column": 3,
+    "svgAsset": "assets/svg/hiragana/pe.svg",
+    "examples": [
+      {
+        "word": "ぺらぺら",
+        "reading": "perapera",
+        "meaning": "Fasih (berbicara lancar)"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_po",
+    "character": "ぽ",
+    "romaji": "po",
+    "type": "hiragana",
+    "row": 15,
+    "column": 4,
+    "svgAsset": "assets/svg/hiragana/po.svg",
+    "examples": [
+      {
+        "word": "たんぽぽ",
+        "reading": "tanpopo",
+        "meaning": "Bunga dandelion"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_kya",
+    "character": "きゃ",
+    "romaji": "kya",
+    "type": "hiragana",
+    "row": 16,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/ki.svg",
+    "examples": [
+      {
+        "word": "きゃく",
+        "reading": "kyaku",
+        "meaning": "Tamu, pelanggan"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_kyu",
+    "character": "きゅ",
+    "romaji": "kyu",
+    "type": "hiragana",
+    "row": 16,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/ki.svg",
+    "examples": [
+      {
+        "word": "きゅうり",
+        "reading": "kyuuri",
+        "meaning": "Timun"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_kyo",
+    "character": "きょ",
+    "romaji": "kyo",
+    "type": "hiragana",
+    "row": 16,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/ki.svg",
+    "examples": [
+      {
+        "word": "きょう",
+        "reading": "kyou",
+        "meaning": "Hari ini"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_sha",
+    "character": "しゃ",
+    "romaji": "sha",
+    "type": "hiragana",
+    "row": 17,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/shi.svg",
+    "examples": [
+      {
+        "word": "しゃしん",
+        "reading": "shashin",
+        "meaning": "Foto"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_shu",
+    "character": "しゅ",
+    "romaji": "shu",
+    "type": "hiragana",
+    "row": 17,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/shi.svg",
+    "examples": [
+      {
+        "word": "しゅくだい",
+        "reading": "shukudai",
+        "meaning": "Pekerjaan rumah"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_sho",
+    "character": "しょ",
+    "romaji": "sho",
+    "type": "hiragana",
+    "row": 17,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/shi.svg",
+    "examples": [
+      {
+        "word": "しょうがっこう",
+        "reading": "shougakkou",
+        "meaning": "Sekolah dasar"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_cha",
+    "character": "ちゃ",
+    "romaji": "cha",
+    "type": "hiragana",
+    "row": 18,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/chi.svg",
+    "examples": [
+      {
+        "word": "ちゃいろ",
+        "reading": "chairo",
+        "meaning": "Warna coklat"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_chu",
+    "character": "ちゅ",
+    "romaji": "chu",
+    "type": "hiragana",
+    "row": 18,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/chi.svg",
+    "examples": [
+      {
+        "word": "ちゅうがっこう",
+        "reading": "chuugakkou",
+        "meaning": "Sekolah menengah pertama"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_cho",
+    "character": "ちょ",
+    "romaji": "cho",
+    "type": "hiragana",
+    "row": 18,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/chi.svg",
+    "examples": [
+      {
+        "word": "ちょうちょう",
+        "reading": "choucho",
+        "meaning": "Kupu-kupu"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_nya",
+    "character": "にゃ",
+    "romaji": "nya",
+    "type": "hiragana",
+    "row": 19,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/ni.svg",
+    "examples": [
+      {
+        "word": "にゃんこ",
+        "reading": "nyanko",
+        "meaning": "Kucing (panggilan akrab)"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_nyu",
+    "character": "にゅ",
+    "romaji": "nyu",
+    "type": "hiragana",
+    "row": 19,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/ni.svg",
+    "examples": [
+      {
+        "word": "にゅうがく",
+        "reading": "nyuugaku",
+        "meaning": "Masuk sekolah"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_nyo",
+    "character": "にょ",
+    "romaji": "nyo",
+    "type": "hiragana",
+    "row": 19,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/ni.svg",
+    "examples": [
+      {
+        "word": "にょろにょろ",
+        "reading": "nyoronyoro",
+        "meaning": "Meliuk-liuk (spt. ular)"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_hya",
+    "character": "ひゃ",
+    "romaji": "hya",
+    "type": "hiragana",
+    "row": 20,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/hi.svg",
+    "examples": [
+      {
+        "word": "ひゃく",
+        "reading": "hyaku",
+        "meaning": "Seratus"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_hyu",
+    "character": "ひゅ",
+    "romaji": "hyu",
+    "type": "hiragana",
+    "row": 20,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/hi.svg",
+    "examples": [
+      {
+        "word": "ひゅうひゅう",
+        "reading": "hyuuhyuu",
+        "meaning": "Suara angin bertiup kencang"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_hyo",
+    "character": "ひょ",
+    "romaji": "hyo",
+    "type": "hiragana",
+    "row": 20,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/hi.svg",
+    "examples": [
+      {
+        "word": "ひょう",
+        "reading": "hyou",
+        "meaning": "Macan tutul"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_mya",
+    "character": "みゃ",
+    "romaji": "mya",
+    "type": "hiragana",
+    "row": 21,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/mi.svg",
+    "examples": [
+      {
+        "word": "みゃく",
+        "reading": "myaku",
+        "meaning": "Denyut nadi"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_myu",
+    "character": "みゅ",
+    "romaji": "myu",
+    "type": "hiragana",
+    "row": 21,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/mi.svg",
+    "examples": [
+      {
+        "word": "みゅーじかる",
+        "reading": "myuujikaru",
+        "meaning": "Pertunjukan musikal"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_myo",
+    "character": "みょ",
+    "romaji": "myo",
+    "type": "hiragana",
+    "row": 21,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/mi.svg",
+    "examples": [
+      {
+        "word": "みょうじ",
+        "reading": "myouji",
+        "meaning": "Nama keluarga/marga"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_rya",
+    "character": "りゃ",
+    "romaji": "rya",
+    "type": "hiragana",
+    "row": 22,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/ri.svg",
+    "examples": [
+      {
+        "word": "りゃくご",
+        "reading": "ryakugo",
+        "meaning": "Singkatan (kata)"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_ryu",
+    "character": "りゅ",
+    "romaji": "ryu",
+    "type": "hiragana",
+    "row": 22,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/ri.svg",
+    "examples": [
+      {
+        "word": "りゅう",
+        "reading": "ryuu",
+        "meaning": "Naga"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_ryo",
+    "character": "りょ",
+    "romaji": "ryo",
+    "type": "hiragana",
+    "row": 22,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/ri.svg",
+    "examples": [
+      {
+        "word": "りょこう",
+        "reading": "ryokou",
+        "meaning": "Perjalanan wisata"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_gya",
+    "character": "ぎゃ",
+    "romaji": "gya",
+    "type": "hiragana",
+    "row": 23,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/gi.svg",
+    "examples": [
+      {
+        "word": "ぎゃく",
+        "reading": "gyaku",
+        "meaning": "Kebalikan"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_gyu",
+    "character": "ぎゅ",
+    "romaji": "gyu",
+    "type": "hiragana",
+    "row": 23,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/gi.svg",
+    "examples": [
+      {
+        "word": "ぎゅうにゅう",
+        "reading": "gyuunyuu",
+        "meaning": "Susu sapi"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_gyo",
+    "character": "ぎょ",
+    "romaji": "gyo",
+    "type": "hiragana",
+    "row": 23,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/gi.svg",
+    "examples": [
+      {
+        "word": "ぎょうざ",
+        "reading": "gyouza",
+        "meaning": "Pangsit goreng"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_ja",
+    "character": "じゃ",
+    "romaji": "ja",
+    "type": "hiragana",
+    "row": 24,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/ji.svg",
+    "examples": [
+      {
+        "word": "じゃがいも",
+        "reading": "jagaimo",
+        "meaning": "Kentang"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_ju",
+    "character": "じゅ",
+    "romaji": "ju",
+    "type": "hiragana",
+    "row": 24,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/ji.svg",
+    "examples": [
+      {
+        "word": "じゅぎょう",
+        "reading": "jugyou",
+        "meaning": "Pelajaran, kelas"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_jo",
+    "character": "じょ",
+    "romaji": "jo",
+    "type": "hiragana",
+    "row": 24,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/ji.svg",
+    "examples": [
+      {
+        "word": "じょうず",
+        "reading": "jouzu",
+        "meaning": "Pandai, mahir"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_bya",
+    "character": "びゃ",
+    "romaji": "bya",
+    "type": "hiragana",
+    "row": 25,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/bi.svg",
+    "examples": [
+      {
+        "word": "さんびゃく",
+        "reading": "sanbyaku",
+        "meaning": "Tiga ratus"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_byu",
+    "character": "びゅ",
+    "romaji": "byu",
+    "type": "hiragana",
+    "row": 25,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/bi.svg",
+    "examples": [
+      {
+        "word": "びゅうびゅう",
+        "reading": "byuubyuu",
+        "meaning": "Suara angin kencang"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_byo",
+    "character": "びょ",
+    "romaji": "byo",
+    "type": "hiragana",
+    "row": 25,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/bi.svg",
+    "examples": [
+      {
+        "word": "びょうき",
+        "reading": "byouki",
+        "meaning": "Sakit"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_pya",
+    "character": "ぴゃ",
+    "romaji": "pya",
+    "type": "hiragana",
+    "row": 26,
+    "column": 0,
+    "svgAsset": "assets/svg/hiragana/pi.svg",
+    "examples": [
+      {
+        "word": "はっぴゃく",
+        "reading": "happyaku",
+        "meaning": "Delapan ratus"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_pyu",
+    "character": "ぴゅ",
+    "romaji": "pyu",
+    "type": "hiragana",
+    "row": 26,
+    "column": 1,
+    "svgAsset": "assets/svg/hiragana/pi.svg",
+    "examples": [
+      {
+        "word": "ぴゅうぴゅう",
+        "reading": "pyuupyuu",
+        "meaning": "Suara angin bersiul"
+      }
+    ]
+  },
+  {
+    "id": "hiragana_pyo",
+    "character": "ぴょ",
+    "romaji": "pyo",
+    "type": "hiragana",
+    "row": 26,
+    "column": 2,
+    "svgAsset": "assets/svg/hiragana/pi.svg",
+    "examples": [
+      {
+        "word": "ぴょんぴょん",
+        "reading": "pyonpyon",
+        "meaning": "Melompat-lompat"
+      }
+    ]
+  },
+  {
     "id": "katakana_a",
     "character": "ア",
     "romaji": "a",
@@ -1069,9 +1997,9 @@
     "svgAsset": "assets/svg/katakana/ni.svg",
     "examples": [
       {
-        "word": "ニュース",
-        "reading": "nyuusu",
-        "meaning": "Berita"
+        "word": "ニンジン",
+        "reading": "ninjin",
+        "meaning": "Wortel"
       }
     ]
   },
@@ -1445,6 +2373,856 @@
     "row": 10,
     "column": 0,
     "svgAsset": "assets/svg/katakana/n.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_ga",
+    "character": "ガ",
+    "romaji": "ga",
+    "type": "katakana",
+    "row": 11,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/ga.svg",
+    "examples": [
+      {
+        "word": "ガム",
+        "reading": "gamu",
+        "meaning": "Permen karet"
+      }
+    ]
+  },
+  {
+    "id": "katakana_gi",
+    "character": "ギ",
+    "romaji": "gi",
+    "type": "katakana",
+    "row": 11,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/gi.svg",
+    "examples": [
+      {
+        "word": "ギター",
+        "reading": "gitaa",
+        "meaning": "Gitar"
+      }
+    ]
+  },
+  {
+    "id": "katakana_gu",
+    "character": "グ",
+    "romaji": "gu",
+    "type": "katakana",
+    "row": 11,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/gu.svg",
+    "examples": [
+      {
+        "word": "グラス",
+        "reading": "gurasu",
+        "meaning": "Gelas"
+      }
+    ]
+  },
+  {
+    "id": "katakana_ge",
+    "character": "ゲ",
+    "romaji": "ge",
+    "type": "katakana",
+    "row": 11,
+    "column": 3,
+    "svgAsset": "assets/svg/katakana/ge.svg",
+    "examples": [
+      {
+        "word": "ゲーム",
+        "reading": "geemu",
+        "meaning": "Permainan, game"
+      }
+    ]
+  },
+  {
+    "id": "katakana_go",
+    "character": "ゴ",
+    "romaji": "go",
+    "type": "katakana",
+    "row": 11,
+    "column": 4,
+    "svgAsset": "assets/svg/katakana/go.svg",
+    "examples": [
+      {
+        "word": "ゴム",
+        "reading": "gomu",
+        "meaning": "Karet"
+      }
+    ]
+  },
+  {
+    "id": "katakana_za",
+    "character": "ザ",
+    "romaji": "za",
+    "type": "katakana",
+    "row": 12,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/za.svg",
+    "examples": [
+      {
+        "word": "ザリガニ",
+        "reading": "zarigani",
+        "meaning": "Udang karang"
+      }
+    ]
+  },
+  {
+    "id": "katakana_ji",
+    "character": "ジ",
+    "romaji": "ji",
+    "type": "katakana",
+    "row": 12,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/ji.svg",
+    "examples": [
+      {
+        "word": "ジーンズ",
+        "reading": "jiinzu",
+        "meaning": "Celana jins"
+      }
+    ]
+  },
+  {
+    "id": "katakana_zu",
+    "character": "ズ",
+    "romaji": "zu",
+    "type": "katakana",
+    "row": 12,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/zu.svg",
+    "examples": [
+      {
+        "word": "ズボン",
+        "reading": "zubon",
+        "meaning": "Celana panjang"
+      }
+    ]
+  },
+  {
+    "id": "katakana_ze",
+    "character": "ゼ",
+    "romaji": "ze",
+    "type": "katakana",
+    "row": 12,
+    "column": 3,
+    "svgAsset": "assets/svg/katakana/ze.svg",
+    "examples": [
+      {
+        "word": "ゼロ",
+        "reading": "zero",
+        "meaning": "Nol"
+      }
+    ]
+  },
+  {
+    "id": "katakana_zo",
+    "character": "ゾ",
+    "romaji": "zo",
+    "type": "katakana",
+    "row": 12,
+    "column": 4,
+    "svgAsset": "assets/svg/katakana/zo.svg",
+    "examples": [
+      {
+        "word": "ゾーン",
+        "reading": "zoon",
+        "meaning": "Zona, area"
+      }
+    ]
+  },
+  {
+    "id": "katakana_da",
+    "character": "ダ",
+    "romaji": "da",
+    "type": "katakana",
+    "row": 13,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/da.svg",
+    "examples": [
+      {
+        "word": "ダンス",
+        "reading": "dansu",
+        "meaning": "Tari, dansa"
+      }
+    ]
+  },
+  {
+    "id": "katakana_di",
+    "character": "ヂ",
+    "romaji": "di",
+    "type": "katakana",
+    "row": 13,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/di.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_du",
+    "character": "ヅ",
+    "romaji": "du",
+    "type": "katakana",
+    "row": 13,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/du.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_de",
+    "character": "デ",
+    "romaji": "de",
+    "type": "katakana",
+    "row": 13,
+    "column": 3,
+    "svgAsset": "assets/svg/katakana/de.svg",
+    "examples": [
+      {
+        "word": "デパート",
+        "reading": "depaato",
+        "meaning": "Toko serba ada"
+      }
+    ]
+  },
+  {
+    "id": "katakana_do",
+    "character": "ド",
+    "romaji": "do",
+    "type": "katakana",
+    "row": 13,
+    "column": 4,
+    "svgAsset": "assets/svg/katakana/do.svg",
+    "examples": [
+      {
+        "word": "ドア",
+        "reading": "doa",
+        "meaning": "Pintu"
+      }
+    ]
+  },
+  {
+    "id": "katakana_ba",
+    "character": "バ",
+    "romaji": "ba",
+    "type": "katakana",
+    "row": 14,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/ba.svg",
+    "examples": [
+      {
+        "word": "バス",
+        "reading": "basu",
+        "meaning": "Bus"
+      }
+    ]
+  },
+  {
+    "id": "katakana_bi",
+    "character": "ビ",
+    "romaji": "bi",
+    "type": "katakana",
+    "row": 14,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/bi.svg",
+    "examples": [
+      {
+        "word": "ビル",
+        "reading": "biru",
+        "meaning": "Gedung"
+      }
+    ]
+  },
+  {
+    "id": "katakana_bu",
+    "character": "ブ",
+    "romaji": "bu",
+    "type": "katakana",
+    "row": 14,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/bu.svg",
+    "examples": [
+      {
+        "word": "ブラシ",
+        "reading": "burashi",
+        "meaning": "Sikat"
+      }
+    ]
+  },
+  {
+    "id": "katakana_be",
+    "character": "ベ",
+    "romaji": "be",
+    "type": "katakana",
+    "row": 14,
+    "column": 3,
+    "svgAsset": "assets/svg/katakana/be.svg",
+    "examples": [
+      {
+        "word": "ベッド",
+        "reading": "beddo",
+        "meaning": "Tempat tidur"
+      }
+    ]
+  },
+  {
+    "id": "katakana_bo",
+    "character": "ボ",
+    "romaji": "bo",
+    "type": "katakana",
+    "row": 14,
+    "column": 4,
+    "svgAsset": "assets/svg/katakana/bo.svg",
+    "examples": [
+      {
+        "word": "ボール",
+        "reading": "booru",
+        "meaning": "Bola"
+      }
+    ]
+  },
+  {
+    "id": "katakana_pa",
+    "character": "パ",
+    "romaji": "pa",
+    "type": "katakana",
+    "row": 15,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/pa.svg",
+    "examples": [
+      {
+        "word": "パーティー",
+        "reading": "paatii",
+        "meaning": "Pesta"
+      }
+    ]
+  },
+  {
+    "id": "katakana_pi",
+    "character": "ピ",
+    "romaji": "pi",
+    "type": "katakana",
+    "row": 15,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/pi.svg",
+    "examples": [
+      {
+        "word": "ピアノ",
+        "reading": "piano",
+        "meaning": "Piano"
+      }
+    ]
+  },
+  {
+    "id": "katakana_pu",
+    "character": "プ",
+    "romaji": "pu",
+    "type": "katakana",
+    "row": 15,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/pu.svg",
+    "examples": [
+      {
+        "word": "プール",
+        "reading": "puuru",
+        "meaning": "Kolam renang"
+      }
+    ]
+  },
+  {
+    "id": "katakana_pe",
+    "character": "ペ",
+    "romaji": "pe",
+    "type": "katakana",
+    "row": 15,
+    "column": 3,
+    "svgAsset": "assets/svg/katakana/pe.svg",
+    "examples": [
+      {
+        "word": "ペン",
+        "reading": "pen",
+        "meaning": "Pulpen"
+      }
+    ]
+  },
+  {
+    "id": "katakana_po",
+    "character": "ポ",
+    "romaji": "po",
+    "type": "katakana",
+    "row": 15,
+    "column": 4,
+    "svgAsset": "assets/svg/katakana/po.svg",
+    "examples": [
+      {
+        "word": "ポケット",
+        "reading": "poketto",
+        "meaning": "Kantong, saku"
+      }
+    ]
+  },
+  {
+    "id": "katakana_kya",
+    "character": "キャ",
+    "romaji": "kya",
+    "type": "katakana",
+    "row": 16,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/ki.svg",
+    "examples": [
+      {
+        "word": "キャンプ",
+        "reading": "kyanpu",
+        "meaning": "Berkemah"
+      }
+    ]
+  },
+  {
+    "id": "katakana_kyu",
+    "character": "キュ",
+    "romaji": "kyu",
+    "type": "katakana",
+    "row": 16,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/ki.svg",
+    "examples": [
+      {
+        "word": "キュート",
+        "reading": "kyuuto",
+        "meaning": "Lucu, imut"
+      }
+    ]
+  },
+  {
+    "id": "katakana_kyo",
+    "character": "キョ",
+    "romaji": "kyo",
+    "type": "katakana",
+    "row": 16,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/ki.svg",
+    "examples": [
+      {
+        "word": "キョロキョロ",
+        "reading": "kyorokyoro",
+        "meaning": "Melihat sekeliling dengan gelisah"
+      }
+    ]
+  },
+  {
+    "id": "katakana_sha",
+    "character": "シャ",
+    "romaji": "sha",
+    "type": "katakana",
+    "row": 17,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/shi.svg",
+    "examples": [
+      {
+        "word": "シャツ",
+        "reading": "shatsu",
+        "meaning": "Kemeja"
+      }
+    ]
+  },
+  {
+    "id": "katakana_shu",
+    "character": "シュ",
+    "romaji": "shu",
+    "type": "katakana",
+    "row": 17,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/shi.svg",
+    "examples": [
+      {
+        "word": "シュート",
+        "reading": "shuuto",
+        "meaning": "Tembakan (olahraga)"
+      }
+    ]
+  },
+  {
+    "id": "katakana_sho",
+    "character": "ショ",
+    "romaji": "sho",
+    "type": "katakana",
+    "row": 17,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/shi.svg",
+    "examples": [
+      {
+        "word": "ショップ",
+        "reading": "shoppu",
+        "meaning": "Toko"
+      }
+    ]
+  },
+  {
+    "id": "katakana_cha",
+    "character": "チャ",
+    "romaji": "cha",
+    "type": "katakana",
+    "row": 18,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/chi.svg",
+    "examples": [
+      {
+        "word": "チャンス",
+        "reading": "chansu",
+        "meaning": "Kesempatan"
+      }
+    ]
+  },
+  {
+    "id": "katakana_chu",
+    "character": "チュ",
+    "romaji": "chu",
+    "type": "katakana",
+    "row": 18,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/chi.svg",
+    "examples": [
+      {
+        "word": "チューリップ",
+        "reading": "chuurippu",
+        "meaning": "Bunga tulip"
+      }
+    ]
+  },
+  {
+    "id": "katakana_cho",
+    "character": "チョ",
+    "romaji": "cho",
+    "type": "katakana",
+    "row": 18,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/chi.svg",
+    "examples": [
+      {
+        "word": "チョコレート",
+        "reading": "chokoreeto",
+        "meaning": "Coklat"
+      }
+    ]
+  },
+  {
+    "id": "katakana_nya",
+    "character": "ニャ",
+    "romaji": "nya",
+    "type": "katakana",
+    "row": 19,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/ni.svg",
+    "examples": [
+      {
+        "word": "ニャー",
+        "reading": "nyaa",
+        "meaning": "Suara kucing (meong)"
+      }
+    ]
+  },
+  {
+    "id": "katakana_nyu",
+    "character": "ニュ",
+    "romaji": "nyu",
+    "type": "katakana",
+    "row": 19,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/ni.svg",
+    "examples": [
+      {
+        "word": "ニュース",
+        "reading": "nyuusu",
+        "meaning": "Berita"
+      }
+    ]
+  },
+  {
+    "id": "katakana_nyo",
+    "character": "ニョ",
+    "romaji": "nyo",
+    "type": "katakana",
+    "row": 19,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/ni.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_hya",
+    "character": "ヒャ",
+    "romaji": "hya",
+    "type": "katakana",
+    "row": 20,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/hi.svg",
+    "examples": [
+      {
+        "word": "ヒャッホー",
+        "reading": "hyahhoo",
+        "meaning": "Seruan gembira"
+      }
+    ]
+  },
+  {
+    "id": "katakana_hyu",
+    "character": "ヒュ",
+    "romaji": "hyu",
+    "type": "katakana",
+    "row": 20,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/hi.svg",
+    "examples": [
+      {
+        "word": "ヒューマン",
+        "reading": "hyuuman",
+        "meaning": "Manusia"
+      }
+    ]
+  },
+  {
+    "id": "katakana_hyo",
+    "character": "ヒョ",
+    "romaji": "hyo",
+    "type": "katakana",
+    "row": 20,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/hi.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_mya",
+    "character": "ミャ",
+    "romaji": "mya",
+    "type": "katakana",
+    "row": 21,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/mi.svg",
+    "examples": [
+      {
+        "word": "ミャンマー",
+        "reading": "myanmaa",
+        "meaning": "Myanmar (nama negara)"
+      }
+    ]
+  },
+  {
+    "id": "katakana_myu",
+    "character": "ミュ",
+    "romaji": "myu",
+    "type": "katakana",
+    "row": 21,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/mi.svg",
+    "examples": [
+      {
+        "word": "ミュージック",
+        "reading": "myuujikku",
+        "meaning": "Musik"
+      }
+    ]
+  },
+  {
+    "id": "katakana_myo",
+    "character": "ミョ",
+    "romaji": "myo",
+    "type": "katakana",
+    "row": 21,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/mi.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_rya",
+    "character": "リャ",
+    "romaji": "rya",
+    "type": "katakana",
+    "row": 22,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/ri.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_ryu",
+    "character": "リュ",
+    "romaji": "ryu",
+    "type": "katakana",
+    "row": 22,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/ri.svg",
+    "examples": [
+      {
+        "word": "リュック",
+        "reading": "ryukku",
+        "meaning": "Tas ransel"
+      }
+    ]
+  },
+  {
+    "id": "katakana_ryo",
+    "character": "リョ",
+    "romaji": "ryo",
+    "type": "katakana",
+    "row": 22,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/ri.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_gya",
+    "character": "ギャ",
+    "romaji": "gya",
+    "type": "katakana",
+    "row": 23,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/gi.svg",
+    "examples": [
+      {
+        "word": "ギャラリー",
+        "reading": "gyararii",
+        "meaning": "Galeri"
+      }
+    ]
+  },
+  {
+    "id": "katakana_gyu",
+    "character": "ギュ",
+    "romaji": "gyu",
+    "type": "katakana",
+    "row": 23,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/gi.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_gyo",
+    "character": "ギョ",
+    "romaji": "gyo",
+    "type": "katakana",
+    "row": 23,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/gi.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_ja",
+    "character": "ジャ",
+    "romaji": "ja",
+    "type": "katakana",
+    "row": 24,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/ji.svg",
+    "examples": [
+      {
+        "word": "ジャム",
+        "reading": "jamu",
+        "meaning": "Selai"
+      }
+    ]
+  },
+  {
+    "id": "katakana_ju",
+    "character": "ジュ",
+    "romaji": "ju",
+    "type": "katakana",
+    "row": 24,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/ji.svg",
+    "examples": [
+      {
+        "word": "ジュース",
+        "reading": "juusu",
+        "meaning": "Jus"
+      }
+    ]
+  },
+  {
+    "id": "katakana_jo",
+    "character": "ジョ",
+    "romaji": "jo",
+    "type": "katakana",
+    "row": 24,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/ji.svg",
+    "examples": [
+      {
+        "word": "ジョギング",
+        "reading": "jogingu",
+        "meaning": "Jogging"
+      }
+    ]
+  },
+  {
+    "id": "katakana_bya",
+    "character": "ビャ",
+    "romaji": "bya",
+    "type": "katakana",
+    "row": 25,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/bi.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_byu",
+    "character": "ビュ",
+    "romaji": "byu",
+    "type": "katakana",
+    "row": 25,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/bi.svg",
+    "examples": [
+      {
+        "word": "ビュッフェ",
+        "reading": "byuffe",
+        "meaning": "Prasmanan (buffet)"
+      }
+    ]
+  },
+  {
+    "id": "katakana_byo",
+    "character": "ビョ",
+    "romaji": "byo",
+    "type": "katakana",
+    "row": 25,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/bi.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_pya",
+    "character": "ピャ",
+    "romaji": "pya",
+    "type": "katakana",
+    "row": 26,
+    "column": 0,
+    "svgAsset": "assets/svg/katakana/pi.svg",
+    "examples": []
+  },
+  {
+    "id": "katakana_pyu",
+    "character": "ピュ",
+    "romaji": "pyu",
+    "type": "katakana",
+    "row": 26,
+    "column": 1,
+    "svgAsset": "assets/svg/katakana/pi.svg",
+    "examples": [
+      {
+        "word": "ピュア",
+        "reading": "pyua",
+        "meaning": "Murni, polos"
+      }
+    ]
+  },
+  {
+    "id": "katakana_pyo",
+    "character": "ピョ",
+    "romaji": "pyo",
+    "type": "katakana",
+    "row": 26,
+    "column": 2,
+    "svgAsset": "assets/svg/katakana/pi.svg",
     "examples": []
   }
 ]

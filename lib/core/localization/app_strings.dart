@@ -31,7 +31,10 @@ class AppStrings {
           'Learn Kana, Your First Step Towards Japan!');
   String get learnHiragana => _t('Belajar Hiragana', 'Learn Hiragana');
   String get learnKatakana => _t('Belajar Katakana', 'Learn Katakana');
-  String get basicChars46 => _t('46 karakter dasar', '46 basic characters');
+  String get basicChars46 => _t(
+        '104 karakter (dasar, tenten, maru, kombinasi)',
+        '104 characters (basic, dakuten, handakuten, combinations)',
+      );
   String get exam => _t('Ujian', 'Exam');
 
   // --- Home level/XP card ---
@@ -765,11 +768,15 @@ class AppStrings {
       _t('Bagaimana bacaan kata ini?', 'How is this word read?');
   String get kanaExamTitle => _t('Ujian Kana', 'Kana Exam');
   String get examHiraganaTitle => _t('Ujian Hiragana', 'Hiragana Exam');
-  String get examHiraganaSubtitle =>
-      _t('Soal dari 46 karakter hiragana', 'Questions from 46 hiragana characters');
+  String get examHiraganaSubtitle => _t(
+        'Soal dari 104 karakter hiragana',
+        'Questions from 104 hiragana characters',
+      );
   String get examKatakanaTitle => _t('Ujian Katakana', 'Katakana Exam');
-  String get examKatakanaSubtitle =>
-      _t('Soal dari 46 karakter katakana', 'Questions from 46 katakana characters');
+  String get examKatakanaSubtitle => _t(
+        'Soal dari 104 karakter katakana',
+        'Questions from 104 katakana characters',
+      );
   String get examMixedTitle => _t('Ujian Campuran', 'Mixed Exam');
   String get examMixedSubtitle =>
       _t('Gabungan hiragana & katakana', 'Combination of hiragana & katakana');

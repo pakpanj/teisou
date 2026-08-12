@@ -31,11 +31,16 @@ void main() {
 
       // Kana JSON + bundled SVG glyph load for real; Firebase-backed
       // progress stream errors out in the test harness and should fall
-      // back gracefully.
+      // back gracefully. Wrapped in runAsync — same reasoning as the large
+      // Kanji dataset elsewhere in this suite: a real asset-bundle
+      // round-trip doesn't reliably complete under the fake-async zone
+      // pumpAndSettle otherwise runs in, and this got slower to load once
+      // the kana dataset grew from 92 to 208 entries.
+      await tester.runAsync(() => Future.delayed(const Duration(milliseconds: 300)));
       await tester.pumpAndSettle();
 
       expect(find.text('Belajar Hiragana'), findsOneWidget);
-      expect(find.text('1 / 46'), findsOneWidget);
+      expect(find.text('1 / 104'), findsOneWidget);
       expect(find.byType(SvgPicture), findsOneWidget);
 
       // Tapping the card should flip it to reveal the romaji + example.
