@@ -255,6 +255,9 @@ class _FrontContent extends ConsumerWidget {
             svgAssetPath: kana.svgAsset,
             size: 190,
             showControls: false,
+            // Slower than the kanji screen's 500ms, because there is no
+            // speed control here to slow it down with.
+            msPerStroke: 1000,
           ),
         ),
         Positioned(

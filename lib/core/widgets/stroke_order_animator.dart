@@ -30,12 +30,24 @@ class StrokeOrderAnimator extends ConsumerStatefulWidget {
   /// a one-to-four-stroke kana needs anyway.
   final bool showControls;
 
+  /// How long one stroke takes to draw, before the speed control is applied.
+  ///
+  /// The kana card asks for a slower pace than the kanji screen's 500ms.
+  /// Not a stylistic preference: that screen has a speed slider, so a
+  /// learner who finds it too quick can slow it down themselves, while the
+  /// kana card deliberately has no controls at all — whatever this is set
+  /// to is the only speed a child ever sees there, and a stroke that
+  /// finishes in half a second is something to watch rather than something
+  /// to follow with a pencil.
+  final int msPerStroke;
+
   const StrokeOrderAnimator({
     super.key,
     required this.character,
     required this.svgAssetPath,
     this.size = 220,
     this.showControls = true,
+    this.msPerStroke = 500,
   });
 
   @override
@@ -45,8 +57,6 @@ class StrokeOrderAnimator extends ConsumerStatefulWidget {
 
 class _StrokeOrderAnimatorState extends ConsumerState<StrokeOrderAnimator>
     with SingleTickerProviderStateMixin {
-  static const _msPerStroke = 500;
-
   late final AnimationController _controller;
   KanjiStrokeData? _strokeData;
   bool _loading = true;
@@ -128,7 +138,7 @@ class _StrokeOrderAnimatorState extends ConsumerState<StrokeOrderAnimator>
   }
 
   void _applyDuration(int strokeCount) {
-    final ms = (_msPerStroke * strokeCount / _speed).round();
+    final ms = (widget.msPerStroke * strokeCount / _speed).round();
     _controller.duration = Duration(milliseconds: ms.clamp(200, 60000));
   }
 
