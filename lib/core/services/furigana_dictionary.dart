@@ -129,9 +129,94 @@ class FuriganaDictionary {
   ///   this: the dictionary-form reading applied to a ます/た-conjugated
   ///   verb, where the real reading is き. Reported from real Bunpou も/
   ///   から example sentences.
+  /// A second, much larger pass (2026-08-12, same day, after real teacher/
+  /// student reports said the first pass above still missed a lot) — this
+  /// time not by eyeballing sentences one at a time, but by dumping every
+  /// isolated single-kanji occurrence across the *entire* bundled corpus
+  /// (Kotoba/Kanji/Bunpou/Partikel/Kaiwa/Dokkai/Choukai — 49,484 sentences,
+  /// 1,457 distinct characters) and running a small conjugation-aware
+  /// checker over every one: does the kana actually following the kanji in
+  /// the real sentence match *any* of its kunyomi's okurigana tails
+  /// (including godan/ichidan/i-adjective conjugated forms — きる/きます/
+  /// きた/きて, not just the bare dictionary form), or only a kunyomi other
+  /// than the one `_primaryKanjiReading` would show today. That checker is
+  /// a triage aid only (`scripts/_audit_furigana_heuristic.py`, not part of
+  /// the app) — every one of its ~77 flags was still read by hand against
+  /// the real sentence before being trusted, since it has known blind
+  /// spots (it can't tell a shared stem from a real mismatch, so most of
+  /// its flags turned out to be false positives where every candidate
+  /// happens to reduce to the same displayed reading anyway).
+  ///
+  /// Every character below is a *confirmed* case, not a heuristic guess —
+  /// each one has at least one real sentence in this app's own content
+  /// where the reading `_primaryKanjiReading` would show today is
+  /// genuinely a different word/sense than what that sentence needs. They
+  /// fall into three shapes:
+  ///
+  /// **Wrong kunyomi picked** (a later kunyomi, not the first, is what the
+  /// real sentence's okurigana actually calls for): 治 (おさめる picked,
+  /// but "治りました" needs なおる), 増 (ます picked, but "増えました" needs
+  /// ふえる), 悔 (くいる picked, but "悔しい" needs くやしい), 懐 (ふところ
+  /// picked, but "懐かしい" needs なつかしい), 剥 (はぐ picked, but "剥き
+  /// ました" needs むく), 細 (ほそい picked, but "細かく" needs こまかい),
+  /// 笑 (わらう picked, but "笑みを湛えて" needs えむ), 干 (ひる picked, but
+  /// every real use — "洗濯物を干します" — needs ほす), 通 (とおる picked,
+  /// but every real use — "学校に通っています" — needs かよう), 跳 (とぶ
+  /// picked, but "跳ね上がる" needs はねる), 捕 (とらえる picked, but every
+  /// real use — "犯人を捕まえました" — needs つかまえる), 苦 (くるしい
+  /// picked, but "苦いです" [bitter] needs にがい), 消 (きえる picked, but
+  /// "消しゴムで消します" needs けす), 少 (すくない picked, but "少し" needs
+  /// すこし), 全 (まったく picked, but "全ての人" needs すべて), 恐 (おそれる
+  /// picked, but "恐いです" [scary, casual] needs こわい), 逃 (にげる
+  /// picked, but "電車を逃して" [missed the train] needs のがす), 占 (しめる
+  /// picked, but "占いを信じますか" needs うらなう), 担 (かつぐ picked, but
+  /// "役割を担っていた" needs になう), 焦 (こげる picked, but "焦らないで"
+  /// needs あせる), 潜 (ひそむ picked, but "海に潜りました" needs もぐる),
+  /// 怠 (なまける picked, but "努力を怠れば" needs おこたる), 和 (なごむ
+  /// picked, but every real use — "気持ちを和らげる" — needs やわらぐ), 生
+  /// (いきる picked, but "生まれました" needs うまれる, and "生えています"
+  /// needs an はえる reading missing from this kanji's kunyomi list
+  /// entirely — a data gap, not just a selection-order problem), 盛 (もる
+  /// picked, but most real use — "貿易が盛んです" — needs さかん).
+  ///
+  /// **Counter/idiom sense needs onyomi, kunyomi was picked**: 回 (まわる
+  /// picked, but "1回だけ" needs the counter かい), 人 (ひと picked, but
+  /// "30人です" needs the counter にん), 月 (つき picked, but "3月" needs
+  /// がつ and "3か月" needs げつ), 泊 (とまる picked, but "1泊3万円" needs
+  /// the counter はく), 巻 (まく picked, but "20巻まで" needs the counter
+  /// かん), 教 (おしえる picked, but every religion-name use — "イスラム
+  /// 教" — needs the suffix きょう), 定 (さだめる picked, but the idiom
+  /// "案の定" doesn't use either kunyomi at all — it's read あんのじょう).
+  ///
+  /// **A noun/idiomatic sense needs the *whole* non-hyphenated kunyomi,
+  /// but only its kanji-fallback stem showed** (would visibly look
+  /// truncated, e.g. わ instead of わり): 割 ("安い割に" needs the full
+  /// わり, not る-stripped わ), 係 ("私の係です" [my duty] needs the full
+  /// かかり, not かか), 偽 ("偽のレビュー" [fake review] needs にせ, not
+  /// いつわる's stem).
+  ///
+  /// **Everyday grammatical-particle-adjacent homographs, each with at
+  /// least one common real use needing the *other* sense**: 分 (わかる
+  /// picked, but "5分です" [5 minutes] needs the counter ふん), 後 (あと
+  /// picked, but "家の後ろに" [behind the house] needs うしろ), 上 (うえ
+  /// picked, but "階段を上ります" [climb the stairs] needs のぼる), 着 (きる
+  /// picked, but most real use — "空港に着きました" [arrived] — needs つく),
+  /// 外 (そと picked, but "予測は外れた" [the prediction missed] needs an
+  /// はずれる reading missing from this kanji's kunyomi list entirely),
+  /// 間 (あいだ picked, but the idiom "間に合いました" [made it in time]
+  /// needs ま), 主 (ぬし picked, but "主な理由" [main reason] needs おも),
+  /// 何 (なに picked, but most real use before です/だ — "趣味は何ですか"
+  /// — needs なん), 訪 (おとずれる picked, but "古い寺院を訪ねました" needs
+  /// たずねる), 閉 (とじる picked, but most real use — "戸を閉めて
+  /// ください" — needs しめる), 汚 (きたない picked, but "泥で汚れました"
+  /// needs よごれる).
   static const _excludedWords = {
     '市場', '気味', '件', '字', '室', '市', '入', '弾', '摂', '敢', '関', '非',
     '降', '来',
+    '治', '増', '悔', '懐', '剥', '細', '笑', '干', '通', '跳', '捕', '苦',
+    '消', '少', '全', '恐', '逃', '占', '担', '焦', '潜', '怠', '和', '生',
+    '盛', '回', '人', '月', '泊', '巻', '教', '定', '割', '係', '偽', '分',
+    '後', '上', '着', '外', '間', '主', '何', '訪', '閉', '汚',
   };
 
   static String? _primaryKanjiReading(KanjiEntry entry) {

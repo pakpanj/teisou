@@ -206,4 +206,79 @@ void main() {
       expect(s.reading, isNull);
     }
   });
+
+  test('the second, corpus-wide audit pass (44 more characters) are never '
+      'annotated at all', () {
+    // Each pair: (a real sentence from this app's own content, the
+    // character whose shown reading is wrong in it). Found by dumping
+    // every isolated single-kanji occurrence across the whole bundled
+    // corpus and cross-checking with a conjugation-aware heuristic, then
+    // confirming every flag by hand — see the class-level _excludedWords
+    // doc comment for the full per-character reasoning.
+    final cases = <String, String>{
+      '風邪が治りました。': '治', // おさめる picked, real use needs なおる
+      '白髪が増えました。': '増', // ます picked, real use needs ふえる
+      '悔しい思いをしました。': '悔', // くいる picked, real use needs くやしい
+      '懐かしい思い出です。': '懐', // ふところ picked, real use needs なつかしい
+      '皮を剥きました。': '剥', // はぐ picked, real use needs むく
+      'この道は細いです。細かく説明してください。': '細', // ほそい picked here, real use also needs こまかい
+      '笑みを湛えています。': '笑', // わらう picked, real use needs えむ
+      'ベランダで洗濯物を干します。': '干', // ひる picked, real use needs ほす
+      '中学校に通っています。': '通', // とおる picked, real use needs かよう
+      'うん、着信音が鳴るだけで、心臓が跳ね上がるんだ。': '跳', // とぶ picked, real use needs はねる
+      '警察が犯人を捕まえました。': '捕', // とらえる picked, real use needs つかまえる
+      'ピーマンは苦いです。': '苦', // くるしい picked, real use needs にがい
+      '消しゴムで消します。': '消', // きえる picked, real use needs けす
+      '酢を少し入れます。': '少', // すくない picked, real use needs すこし
+      '全ての人に人権があります。': '全', // まったく picked, real use needs すべて
+      'このお化け屋敷は恐いです。': '恐', // おそれる picked, real use needs こわい
+      '電車を逃して、タクシーで帰る羽目になった。': '逃', // にげる picked, real use needs のがす
+      '占いを信じますか。': '占', // しめる picked, real use needs うらなう
+      'うん、まるで親代わりのような役割を担っていたんだ。': '担', // かつぐ picked, real use needs になう
+      '焦らないでください。': '焦', // こげる picked, real use needs あせる
+      '海に潜りました。': '潜', // ひそむ picked, real use needs もぐる
+      '努力を怠れば、私たちは目的に囲まれることになるだろう。': '怠', // なまける picked, real use needs おこたる
+      '場の空気を和らげる役割があると思う。': '和', // なごむ picked, real use needs やわらぐ
+      '東京で生まれました。': '生', // いきる picked, real use needs うまれる
+      'スポーツが盛んです。': '盛', // もる picked, real use needs さかん
+      '1回だけ飲みます。': '回', // まわる picked, counter use needs onyomi かい
+      '定員は30人です。': '人', // ひと picked, counter use needs onyomi にん
+      '期間は3か月です。': '月', // つき picked, counter use needs onyomi げつ
+      '1泊3万円です。': '泊', // とまる picked, counter use needs onyomi はく
+      '20巻まで持っています。': '巻', // まく picked, counter use needs onyomi かん
+      '私はイスラム教です。': '教', // おしえる picked, religion-suffix use needs onyomi きょう
+      '案の定、バスは遅れた。': '定', // さだめる picked, idiom is read あんのじょう
+      '安い割に、質がいいです。': '割', // わる's stem わ picked, idiom needs whole わり
+      '毎日水をあげるのが私の係です。': '係', // かかる's stem かか picked, needs whole かかり
+      '偽のレビューも問題になってるよね。': '偽', // いつわる picked, real use needs whole にせ
+      '駅まで徒歩5分です。': '分', // わかる picked, counter use needs onyomi ふん
+      '家の後ろに公園があります。': '後', // あと picked, real use also needs うしろ
+      '階段を上ります。': '上', // うえ picked, real use needs のぼる
+      '空港に着きました。': '着', // きる picked, most real use needs つく
+      '彼の予測はことごとく外れた。': '外', // そと picked, real use needs an はずれる reading missing entirely
+      '締め切りに間に合いました。': '間', // あいだ picked, idiom needs ま
+      '主な理由は何ですか。': '主', // ぬし picked, real use needs おも
+      '趣味は何ですか。': '何', // なに picked, most real use before です needs なん
+      '古い寺院を訪ねました。': '訪', // おとずれる picked, real use also needs たずねる
+      '戸を閉めてください。': '閉', // とじる picked, most real use needs しめる
+      '泥で汚れました。': '汚', // きたない picked, real use also needs よごれる
+    };
+    for (final entry in cases.entries) {
+      final segments = dictionary.segment(entry.key);
+      final matches = segments.where((s) => s.text == entry.value);
+      expect(
+        matches,
+        isNotEmpty,
+        reason:
+            '${entry.value} should appear as its own isolated segment in "${entry.key}"',
+      );
+      for (final m in matches) {
+        expect(
+          m.reading,
+          isNull,
+          reason: '${entry.value} in "${entry.key}" should show no furigana',
+        );
+      }
+    }
+  });
 }
