@@ -51,6 +51,8 @@ class ChoukaiExamScreen extends ConsumerWidget {
               avatarValue: profile?.avatarValue,
             );
         ref.invalidate(fullExamHistoryProvider);
+        await ref.read(progressRepositoryProvider).addXp(user.uid, 10);
+        ref.invalidate(xpProgressProvider);
       } catch (_) {
         // Best-effort mirror only — see DokkaiExamScreen for the same
         // reasoning.

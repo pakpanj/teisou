@@ -73,6 +73,8 @@ class DokkaiExamScreen extends ConsumerWidget {
         // See ExamScreen._handleNext's comment for why this invalidation
         // is required, not just autoDispose's default behaviour.
         ref.invalidate(fullExamHistoryProvider);
+        await ref.read(progressRepositoryProvider).addXp(user.uid, 10);
+        ref.invalidate(xpProgressProvider);
       } catch (_) {
         // Best-effort mirror only — the score is shown either way, same
         // "don't let a network failure block the result" reasoning as

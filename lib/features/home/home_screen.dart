@@ -16,6 +16,8 @@ import '../leaderboard/friend_providers.dart';
 import '../leaderboard/leaderboard_screen.dart';
 import '../profile/profile_screen.dart';
 import '../search/search_screen.dart';
+import 'widgets/home_hero_scene.dart';
+import 'widgets/level_card.dart';
 import 'widgets/modules_section.dart';
 
 /// Root tab shell: Home / Ujian / Profil share one bottom nav bar. A
@@ -194,33 +196,10 @@ class _HomeTabBody extends ConsumerWidget {
                           const SizedBox(height: 20),
                           ClipRRect(
                             borderRadius: BorderRadius.circular(20),
-                            child: Stack(
-                              children: [
-                                SizedBox(
-                                  height: 120,
-                                  width: double.infinity,
-                                  child: Image.asset(
-                                    'assets/images/japan_station.png',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-
-                                Container(
-                                  height: 120,
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        const Color.fromARGB(0, 155, 68, 138),
-                                        const Color.fromARGB(53, 248, 90, 248),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            child: const HomeHeroScene(),
                           ),
+                          const SizedBox(height: 16),
+                          const HomeLevelCard(),
                           const SizedBox(height: 24),
                           const ModulesSection(),
                           const SizedBox(height: 24),
@@ -268,51 +247,70 @@ class _BottomNavBar extends ConsumerWidget {
         badge: pendingFriendRequests + unreadChats,
       ),
     ];
-    return Container(
-      decoration: BoxDecoration(
-        color: context.palette.cardWhite,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.06),
-            blurRadius: 12,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: List.generate(items.length, (index) {
-          final item = items[index];
-          final active = index == currentIndex;
-          final color =
-        active ? context.palette.primaryCoral : context.palette.freeBadgeGrey;
-          return InkWell(
-            onTap: () => onTap(index),
-            borderRadius: BorderRadius.circular(12),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CountBadge(
-                    count: item.badge,
-                    child: Icon(item.icon, color: color),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    item.label,
-                    style: TextStyle(
-                      color: color,
-                      fontSize: 12,
-                      fontWeight: active ? FontWeight.bold : FontWeight.normal,
-                    ),
-                  ),
-                ],
-              ),
+    // A floating pill rather than an edge-to-edge bar — margin on all
+    // sides so the card reads as sitting above the page instead of being
+    // part of its frame, matching the rest of this app's soft-pastel-card
+    // language instead of a flat Material bottom bar.
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+      child: Container(
+        decoration: BoxDecoration(
+          color: context.palette.hiraganaCardBg,
+          borderRadius: BorderRadius.circular(28),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.08),
+              blurRadius: 14,
+              offset: const Offset(0, 4),
             ),
-          );
-        }),
+          ],
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: List.generate(items.length, (index) {
+            final item = items[index];
+            final active = index == currentIndex;
+            final color = active
+                ? context.palette.primaryCoral
+                : context.palette.freeBadgeGrey;
+            return InkWell(
+              onTap: () => onTap(index),
+              borderRadius: BorderRadius.circular(20),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CountBadge(
+                      count: item.badge,
+                      child: Icon(item.icon, color: color),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      item.label,
+                      style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: active ? FontWeight.bold : FontWeight.normal,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    AnimatedContainer(
+                      duration: const Duration(milliseconds: 180),
+                      width: active ? 16 : 0,
+                      height: 3,
+                      decoration: BoxDecoration(
+                        color: context.palette.primaryCoral,
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }),
+        ),
       ),
     );
   }

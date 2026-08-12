@@ -11,6 +11,7 @@ import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import 'leaderboard_providers.dart';
 import 'public_profile_screen.dart' show openPublicProfile;
+import 'widgets/clan_leaderboard_banner.dart';
 import 'widgets/clan_tab.dart';
 import 'widgets/top_clan_tab.dart';
 import '../../core/widgets/app_loading.dart';
@@ -29,7 +30,11 @@ class LeaderboardScreen extends ConsumerWidget {
       length: 3,
       child: Scaffold(
         backgroundColor: context.palette.background,
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          foregroundColor: context.palette.textNavy,
           title: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -37,16 +42,14 @@ class LeaderboardScreen extends ConsumerWidget {
               Text(s.leaderboardTitle),
             ],
           ),
-          bottom: TabBar(
-            isScrollable: true,
-            labelColor: context.palette.primaryCoral,
-            unselectedLabelColor: context.palette.textNavy,
-            indicatorColor: context.palette.primaryCoral,
-            tabs: [
-              Tab(text: s.tabGlobalScore),
-              Tab(text: s.tabClan),
-              Tab(text: s.tabTopClan),
-            ],
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(56),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 4, 16, 10),
+              child: _TabPickerRow(
+                labels: [s.tabGlobalScore, s.tabClan, s.tabTopClan],
+              ),
+            ),
           ),
         ),
         body: const TabBarView(
@@ -57,6 +60,91 @@ class LeaderboardScreen extends ConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// The Skor Global / Clan / Top Clan picker — three separate solid pills,
+/// not one shared translucent bar. A single tinted [TabBar] indicator was
+/// tried first and rejected: it read as one merged strip rather than three
+/// distinct choices, and its low-alpha fill looked washed out rather than
+/// like a real control. Built directly on [TabController] instead of
+/// [TabBar] so each pill can carry its own full-opacity background.
+class _TabPickerRow extends StatefulWidget {
+  final List<String> labels;
+
+  const _TabPickerRow({required this.labels});
+
+  @override
+  State<_TabPickerRow> createState() => _TabPickerRowState();
+}
+
+class _TabPickerRowState extends State<_TabPickerRow> {
+  TabController? _controller;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final controller = DefaultTabController.of(context);
+    if (controller != _controller) {
+      _controller?.animation?.removeListener(_onChange);
+      _controller = controller..animation?.addListener(_onChange);
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller?.animation?.removeListener(_onChange);
+    super.dispose();
+  }
+
+  void _onChange() => setState(() {});
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    final controller = _controller!;
+    final liveIndex =
+        (controller.animation?.value ?? controller.index.toDouble()).round();
+
+    return Row(
+      children: [
+        for (var i = 0; i < widget.labels.length; i++) ...[
+          if (i > 0) const SizedBox(width: 8),
+          Expanded(
+            child: GestureDetector(
+              onTap: () => controller.animateTo(i),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                decoration: BoxDecoration(
+                  color: liveIndex == i
+                      ? palette.successGreen
+                      : palette.cardWhite,
+                  borderRadius: BorderRadius.circular(18),
+                  border: Border.all(
+                    color: liveIndex == i
+                        ? palette.successGreen
+                        : palette.successGreen.withValues(alpha: 0.4),
+                  ),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  widget.labels[i],
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: liveIndex == i ? Colors.white : palette.textNavy,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ],
     );
   }
 }
@@ -102,6 +190,8 @@ class _GlobalScoreTab extends ConsumerWidget {
 
     return Column(
       children: [
+        const LeaderboardBannerHeader(),
+        const SizedBox(height: 14),
         _SelfHeader(
           entry: selfEntryAsync.valueOrNull,
           rank: selfRankAsync.valueOrNull,
@@ -281,15 +371,42 @@ class LeaderboardTile extends StatelessWidget {
     }
   }
 
+  /// Tints the top 3 rows gold/silver/bronze, matching the reference
+  /// design's medal-podium treatment — mapped onto tokens this app's
+  /// palette already has (there's no dedicated "bronze" token) rather
+  /// than a new hardcoded colour, so it stays theme-consistent and
+  /// [test/theme_consistency_test.dart] keeps passing.
+  (Color bg, Color accent)? _podiumColors(AppPalette palette) {
+    switch (rank) {
+      case 1:
+        return (palette.tertiaryAmberCardBg, palette.tertiaryAmber);
+      case 2:
+        return (palette.katakanaCardBg, palette.secondaryBlue);
+      case 3:
+        return (palette.hiraganaCardBg, palette.primaryCoral);
+      default:
+        return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final podium = _podiumColors(context.palette);
     return Material(
-      color: context.palette.cardWhite,
+      color: podium?.$1 ?? context.palette.cardWhite,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
         onTap: () => openPublicProfile(context, entry),
-        child: _content(context),
+        child: podium != null
+            ? DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: podium.$2.withValues(alpha: 0.5)),
+                ),
+                child: _content(context),
+              )
+            : _content(context),
       ),
     );
   }

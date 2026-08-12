@@ -34,6 +34,25 @@ class AppStrings {
   String get basicChars46 => _t('46 karakter dasar', '46 basic characters');
   String get exam => _t('Ujian', 'Exam');
 
+  // --- Home level/XP card ---
+  String homeLevelLabel(int level) => _t('Level $level', 'Level $level');
+  String get homeLevelSubtitle =>
+      _t('Terus belajar dan kumpulkan poin!', 'Keep learning and earn points!');
+  String homeLevelPointsLabel(int xpIntoLevel, int xpPerLevel) =>
+      _t('$xpIntoLevel / $xpPerLevel poin', '$xpIntoLevel / $xpPerLevel points');
+  String get xpClaimRewardTooltip => _t('Klaim hadiah', 'Claim reward');
+  String get xpRewardClaimedTitle => _t('Selamat! 🎉', 'Congratulations! 🎉');
+  String xpRewardClaimedBody(String label) =>
+      _t('Kamu membuka $label!', 'You unlocked $label!');
+  String get xpRewardNoneTitle => _t('Naik Level!', 'Level Up!');
+  String get xpRewardNoneBody => _t(
+      'Semua hadiah sudah kamu miliki. Terus belajar untuk naik level lagi!',
+      'You already own every reward. Keep learning to level up again!');
+  String get xpRewardKindAvatar => _t('Avatar', 'Avatar');
+  String get xpRewardKindFrame => _t('Bingkai profil', 'Profile frame');
+  String get xpRewardKindCover => _t('Sampul profil', 'Profile cover');
+  String get close => _t('Tutup', 'Close');
+
   // --- Bottom nav ---
   String get navHome => _t('Home', 'Home');
   String get navExam => _t('Ujian', 'Exam');

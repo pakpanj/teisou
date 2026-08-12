@@ -63,6 +63,14 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
   /// versa.
   bool _frameAdRewardActive = false;
 
+  /// Specific presets earned permanently via `ProgressRepository
+  /// .claimLevelReward` — unlike [_adRewardActive]/[_frameAdRewardActive]
+  /// (which unlock the *whole* premium grid for one pick, then re-lock),
+  /// each id here stays unlocked forever, so this is a per-preset test
+  /// rather than a blanket flag.
+  Set<String> _unlockedAvatarIds = {};
+  Set<String> _unlockedFrameIds = {};
+
   @override
   void initState() {
     super.initState();
@@ -77,10 +85,15 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     final rewards = await ref.read(progressRepositoryProvider).getAdRewards(uid);
     final avatarActive = rewards[_avatarPremiumModuleId]?.isActive ?? false;
     final frameActive = rewards[_framePremiumModuleId]?.isActive ?? false;
+    final repo = ref.read(progressRepositoryProvider);
+    final unlockedAvatars = await repo.getUnlockedAvatarIds(uid);
+    final unlockedFrames = await repo.getUnlockedFrameIds(uid);
     if (mounted) {
       setState(() {
         _adRewardActive = avatarActive;
         _frameAdRewardActive = frameActive;
+        _unlockedAvatarIds = unlockedAvatars;
+        _unlockedFrameIds = unlockedFrames;
       });
     }
   }
@@ -214,6 +227,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     // (not a real subscription) — if so, the caller must consume it right
     // after succeeding so one ad only ever buys one change.
     final viaAdReward = !isPremium && _adRewardActive;
+    bool avatarIdUnlocked(String id) => unlocked || _unlockedAvatarIds.contains(id);
     final uid = user?.uid;
     final s = ref.watch(appStringsProvider);
     final displayName = profile?.resolveDisplayName(user) ?? (user?.displayName ?? s.defaultLearnerName);
@@ -301,9 +315,9 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                   isSelected: (preset) =>
                       profile?.avatarType == AvatarType.presetPremium &&
                       profile?.avatarValue == preset.id,
-                  locked: (_) => !unlocked,
+                  locked: (preset) => !avatarIdUnlocked(preset.id),
                   onTap: (preset) {
-                    if (!unlocked) {
+                    if (!avatarIdUnlocked(preset.id)) {
                       _openPaywall(context);
                       return;
                     }
@@ -324,11 +338,13 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
                   selectedId: profile?.frameId,
                   noFrameLabel: s.noFrameLabel,
                   frameUnlocked: isPremium || _frameAdRewardActive,
+                  extraUnlockedIds: _unlockedFrameIds,
                   onTap: (frameId) {
                     if (uid == null) return;
                     final locked = frameId != null &&
                         FramePresets.isLocked(frameId) &&
-                        !(isPremium || _frameAdRewardActive);
+                        !(isPremium || _frameAdRewardActive) &&
+                        !_unlockedFrameIds.contains(frameId);
                     if (locked) {
                       _openFramePaywall(context);
                       return;
@@ -572,12 +588,19 @@ class _FrameGrid extends StatelessWidget {
   final String? selectedId;
   final String noFrameLabel;
   final bool frameUnlocked;
+
+  /// Frame ids unlocked individually via a level-up reward — unlike
+  /// [frameUnlocked], which unlocks every locked frame at once for one
+  /// pick (ad reward), these stay unlocked forever, one id at a time.
+  final Set<String> extraUnlockedIds;
+
   final void Function(String? frameId) onTap;
 
   const _FrameGrid({
     required this.selectedId,
     required this.noFrameLabel,
     required this.frameUnlocked,
+    required this.extraUnlockedIds,
     required this.onTap,
   });
 
@@ -603,7 +626,9 @@ class _FrameGrid extends StatelessWidget {
           );
         }
         final preset = frames[index - 1];
-        final locked = FramePresets.isLocked(preset.id) && !frameUnlocked;
+        final locked = FramePresets.isLocked(preset.id) &&
+            !frameUnlocked &&
+            !extraUnlockedIds.contains(preset.id);
         return _FrameTile(
           selected: selectedId == preset.id,
           locked: locked,

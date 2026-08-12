@@ -11,6 +11,7 @@ import '../../../data/models/module_info.dart';
 import '../../../data/models/kana_type.dart';
 import '../../bab/bab_home_screen.dart';
 import '../../bab/bab_providers.dart';
+import '../../bab/widgets/bab_ring_badge.dart';
 import '../../bunpou/bunpou_home_screen.dart';
 import '../../choukai/choukai_home_screen.dart';
 import '../../dokkai/dokkai_home_screen.dart';
@@ -45,63 +46,181 @@ class ModulesSection extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _SectionHeader(s.sectionBasics),
-        const SizedBox(height: 12),
-        _AvailableModuleCard(
-          emoji: 'あ',
-          backgroundColor: palette.hiraganaCardBg,
-          iconColor: palette.primaryCoral,
-          title: s.learnHiragana,
-          subtitle: s.basicChars46,
-          onTap: () => AppNavigator.slideFromRight(
-            context,
-            const FlashcardScreen(type: KanaType.hiragana),
-          ),
+        _SectionHeader(
+          s.sectionBasics,
+          emoji: '🌸',
+          color: palette.primaryCoral,
+          iconAsset: 'icon_dasar_kurikulum',
         ),
         const SizedBox(height: 12),
-        _AvailableModuleCard(
-          emoji: 'ア',
-          backgroundColor: palette.katakanaCardBg,
-          iconColor: palette.secondaryBlue,
-          title: s.learnKatakana,
-          subtitle: s.basicChars46,
-          onTap: () => AppNavigator.slideFromRight(
-            context,
-            const FlashcardScreen(type: KanaType.katakana),
-          ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: _KanaHeroCard(
+                emoji: 'あ',
+                backgroundColor: palette.hiraganaCardBg,
+                accent: palette.primaryCoral,
+                title: s.learnHiragana,
+                subtitle: s.basicChars46,
+                torii: true,
+                onTap: () => AppNavigator.slideFromRight(
+                  context,
+                  const FlashcardScreen(type: KanaType.hiragana),
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: _KanaHeroCard(
+                emoji: 'ア',
+                backgroundColor: palette.katakanaCardBg,
+                accent: palette.secondaryBlue,
+                title: s.learnKatakana,
+                subtitle: s.basicChars46,
+                torii: false,
+                onTap: () => AppNavigator.slideFromRight(
+                  context,
+                  const FlashcardScreen(type: KanaType.katakana),
+                ),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 28),
-        _SectionHeader(s.sectionKurikulum),
+        _SectionHeader(
+          s.sectionKurikulum,
+          emoji: '🌸',
+          color: palette.primaryCoral,
+          iconAsset: 'icon_dasar_kurikulum',
+        ),
         const SizedBox(height: 12),
         const _BabCurriculumCard(),
         const SizedBox(height: 28),
-        _SectionHeader(s.sectionVocabKanji),
-        const SizedBox(height: 12),
-        _AvailableModuleCard(
-          emoji: '📚',
-          backgroundColor: palette.katakanaCardBg,
-          iconColor: palette.secondaryBlue,
-          title: s.kotobaTitle,
-          subtitle: s.kotobaSubtitle,
-          onTap: () => AppNavigator.slideFromRight(
-            context,
-            const KotobaHomeScreen(),
-          ),
-        ),
-        const SizedBox(height: 12),
-        _AvailableModuleCard(
-          emoji: '字',
-          backgroundColor: palette.tertiaryAmberCardBg,
-          iconColor: palette.tertiaryAmber,
-          title: s.kanjiTitle,
-          subtitle: s.kanjiSubtitle,
-          onTap: () => AppNavigator.slideFromRight(
-            context,
-            const KanjiHomeScreen(),
-          ),
+        // Vocabulary/kanji and practice modules side by side, matching how
+        // often a learner reaches for one right after the other — not just
+        // a cosmetic 2-column grid, the two columns group by the same
+        // "build blocks, then use them" split the section headers name.
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _SectionHeader(
+                    s.sectionVocabKanji,
+                    emoji: '📖',
+                    color: palette.secondaryBlue,
+                    iconAsset: 'icon_kosakata_kanji_header',
+                  ),
+                  const SizedBox(height: 12),
+                  _AvailableModuleCard(
+                    dense: true,
+                    emoji: '📚',
+                    iconAsset: 'icon_kosakata',
+                    backgroundColor: palette.katakanaCardBg,
+                    iconColor: palette.secondaryBlue,
+                    title: s.kotobaTitle,
+                    subtitle: s.kotobaSubtitle,
+                    onTap: () => AppNavigator.slideFromRight(
+                      context,
+                      const KotobaHomeScreen(),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  _AvailableModuleCard(
+                    dense: true,
+                    emoji: '字',
+                    backgroundColor: palette.tertiaryAmberCardBg,
+                    iconColor: palette.tertiaryAmber,
+                    title: s.kanjiTitle,
+                    subtitle: s.kanjiSubtitle,
+                    onTap: () => AppNavigator.slideFromRight(
+                      context,
+                      const KanjiHomeScreen(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: 25,
+              child: Center(
+                child: Container(
+                  width: 1,
+                  height: 170,
+                  color: palette.textNavy.withValues(alpha: 0.08),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _SectionHeader(
+                    s.sectionPractice,
+                    emoji: '💬',
+                    color: palette.primaryCoral,
+                    iconAsset: 'icon_kaiwa_latihan',
+                  ),
+                  const SizedBox(height: 12),
+                  _AvailableModuleCard(
+                    dense: true,
+                    emoji: '💬',
+                    iconAsset: 'icon_kaiwa_latihan',
+                    backgroundColor: palette.hiraganaCardBg,
+                    iconColor: palette.primaryCoral,
+                    title: s.kaiwaTitle,
+                    subtitle: s.kaiwaSubtitle,
+                    onTap: () => AppNavigator.slideFromRight(
+                      context,
+                      const KaiwaHomeScreen(),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  // Moved here from the Ujian tab's category picker — Dokkai
+                  // is reading-practice material (500 real passages), not
+                  // an exam; it sat oddly next to Kana/Kanji-Kombinasi
+                  // before.
+                  _AvailableModuleCard(
+                    dense: true,
+                    emoji: '読',
+                    backgroundColor: palette.katakanaCardBg,
+                    iconColor: palette.secondaryBlue,
+                    title: 'Dokkai',
+                    subtitle: s.dokkaiCategorySubtitle,
+                    onTap: () => AppNavigator.slideFromRight(
+                      context,
+                      const DokkaiHomeScreen(),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  // Choukai had full screens but no entry point anywhere in
+                  // the app — nothing navigated to ChoukaiHomeScreen, and it
+                  // was in neither the module list nor the coming-soon
+                  // list, so the module was orphaned. Listening is roughly
+                  // a quarter of every JLPT paper, so it belongs next to
+                  // Dokkai as practice material rather than hidden.
+                  _AvailableModuleCard(
+                    dense: true,
+                    emoji: '聴',
+                    backgroundColor: palette.hiraganaCardBg,
+                    iconColor: palette.primaryCoral,
+                    title: 'Choukai',
+                    subtitle: s.choukaiCategorySubtitle,
+                    onTap: () => AppNavigator.slideFromRight(
+                      context,
+                      const ChoukaiHomeScreen(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 28),
-        _SectionHeader(s.sectionGrammar),
+        _SectionHeader(s.sectionGrammar, emoji: '文', color: palette.primaryCoral),
         const SizedBox(height: 12),
         _AvailableModuleCard(
           emoji: '文',
@@ -128,47 +247,12 @@ class ModulesSection extends ConsumerWidget {
               AppNavigator.slideFromRight(context, const ParticleHomeScreen()),
         ),
         const SizedBox(height: 28),
-        _SectionHeader(s.sectionPractice),
-        const SizedBox(height: 12),
-        _AvailableModuleCard(
-          emoji: '💬',
-          backgroundColor: palette.hiraganaCardBg,
-          iconColor: palette.primaryCoral,
-          title: s.kaiwaTitle,
-          subtitle: s.kaiwaSubtitle,
-          onTap: () =>
-              AppNavigator.slideFromRight(context, const KaiwaHomeScreen()),
+        _SectionHeader(
+          s.sectionTools,
+          emoji: '🔧',
+          color: palette.freeBadgeGrey,
+          iconAsset: 'icon_alat',
         ),
-        const SizedBox(height: 12),
-        // Moved here from the Ujian tab's category picker — Dokkai is
-        // reading-practice material (500 real passages), not an exam; it
-        // sat oddly next to Kana/Kanji-Kombinasi before.
-        _AvailableModuleCard(
-          emoji: '読',
-          backgroundColor: palette.katakanaCardBg,
-          iconColor: palette.secondaryBlue,
-          title: 'Dokkai',
-          subtitle: s.dokkaiCategorySubtitle,
-          onTap: () =>
-              AppNavigator.slideFromRight(context, const DokkaiHomeScreen()),
-        ),
-        const SizedBox(height: 12),
-        // Choukai had full screens but no entry point anywhere in the app —
-        // nothing navigated to ChoukaiHomeScreen, and it was in neither the
-        // module list nor the coming-soon list, so the module was orphaned.
-        // Listening is roughly a quarter of every JLPT paper, so it belongs
-        // next to Dokkai as practice material rather than hidden.
-        _AvailableModuleCard(
-          emoji: '聴',
-          backgroundColor: palette.hiraganaCardBg,
-          iconColor: palette.primaryCoral,
-          title: 'Choukai',
-          subtitle: s.choukaiCategorySubtitle,
-          onTap: () =>
-              AppNavigator.slideFromRight(context, const ChoukaiHomeScreen()),
-        ),
-        const SizedBox(height: 28),
-        _SectionHeader(s.sectionTools),
         const SizedBox(height: 12),
         _LockedModuleCard(
           emoji: '📷',
@@ -178,13 +262,27 @@ class ModulesSection extends ConsumerWidget {
           fixingBadge: s.fixingBadge,
         ),
         const SizedBox(height: 28),
-        _SectionHeader(s.comingSoonHeader),
+        _SectionHeader(
+          s.comingSoonHeader,
+          emoji: '⏳',
+          color: palette.freeBadgeGrey,
+          iconAsset: 'icon_segera_hadir',
+        ),
         const SizedBox(height: 12),
-        ...kComingSoonModules.map(
-          (module) => Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: _ComingSoonCard(module: module, strings: s),
-          ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            for (var i = 0; i < kComingSoonModules.length; i++) ...[
+              if (i > 0) const SizedBox(width: 12),
+              Expanded(
+                child: _ComingSoonCard(
+                  dense: true,
+                  module: kComingSoonModules[i],
+                  strings: s,
+                ),
+              ),
+            ],
+          ],
         ),
       ],
     );
@@ -228,20 +326,241 @@ class _BabCurriculumCard extends ConsumerWidget {
 
 class _SectionHeader extends StatelessWidget {
   final String title;
+  final String emoji;
+  final Color color;
 
-  const _SectionHeader(this.title);
+  /// A real illustrated glyph (`assets/icons/{name}.png`) in place of the
+  /// plain-emoji [emoji] fallback — every section header uses one of
+  /// these now except "Tata Bahasa", which keeps 文 as real Japanese
+  /// script (see `icon_asset_prompts.md`'s own note that meaningful
+  /// characters like あ/字/文 were deliberately left out of that prompt
+  /// set, only decorative emoji were replaced).
+  final String? iconAsset;
+
+  const _SectionHeader(
+    this.title, {
+    required this.emoji,
+    required this.color,
+    this.iconAsset,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: context.palette.textNavy,
+    return Row(
+      children: [
+        if (iconAsset != null)
+          Image.asset(
+            'assets/icons/$iconAsset.png',
+            width: 18,
+            height: 18,
+            errorBuilder: (context, error, stackTrace) =>
+                Text(emoji, style: TextStyle(fontSize: 14, color: color)),
+          )
+        else
+          Text(emoji, style: TextStyle(fontSize: 14, color: color)),
+        const SizedBox(width: 6),
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: context.palette.textNavy,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// The Hiragana/Katakana entry point — taller than a plain
+/// [_AvailableModuleCard] and carrying its own scene behind the text, so
+/// the two syllabaries read as the app's front door rather than just the
+/// first two rows of a list. [torii] picks which real illustration sits
+/// behind the card in light mode (`assets/banners/hiragana_card.png`'s
+/// sakura branch + torii, or `katakana_card.png`'s pagoda) — both cropped
+/// from the reference mockup with its icon/title/chevron chrome removed
+/// via inpainting, the same real-asset treatment [HomeHeroScene] and
+/// [ModuleSkylineBanner] use. Dark mode falls back to
+/// [_KanaSceneryPainter]'s code-drawn silhouette for the same reason those
+/// two fall back to a painter — a flat illustration can't be relit by a
+/// runtime filter.
+class _KanaHeroCard extends StatelessWidget {
+  final String emoji;
+  final Color backgroundColor;
+  final Color accent;
+  final String title;
+  final String subtitle;
+  final bool torii;
+  final VoidCallback onTap;
+
+  const _KanaHeroCard({
+    required this.emoji,
+    required this.backgroundColor,
+    required this.accent,
+    required this.title,
+    required this.subtitle,
+    required this.torii,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Material(
+        color: backgroundColor,
+        child: InkWell(
+          onTap: onTap,
+          child: SizedBox(
+            height: 210,
+            child: Stack(
+              children: [
+                if (isDark)
+                  Positioned.fill(
+                    child: IgnorePointer(
+                      child: CustomPaint(
+                        painter: _KanaSceneryPainter(
+                          color: accent.withValues(alpha: 0.22),
+                          torii: torii,
+                        ),
+                      ),
+                    ),
+                  )
+                else
+                  Positioned.fill(
+                    child: Image.asset(
+                      torii
+                          ? 'assets/banners/hiragana_card.png'
+                          : 'assets/banners/katakana_card.png',
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => CustomPaint(
+                        painter: _KanaSceneryPainter(
+                          color: accent.withValues(alpha: 0.22),
+                          torii: torii,
+                        ),
+                      ),
+                    ),
+                  ),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 44,
+                        height: 44,
+                        decoration:
+                            BoxDecoration(color: accent, shape: BoxShape.circle),
+                        alignment: Alignment.center,
+                        child: Text(
+                          emoji,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: context.palette.textNavy,
+                        ),
+                      ),
+                      Text(
+                        subtitle,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: context.palette.textNavy.withValues(alpha: 0.6),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  right: 14,
+                  bottom: 14,
+                  child: BabChevronButton(color: accent, size: 34),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
+}
+
+/// A single mountain hump plus one landmark, sitting low in the card so the
+/// icon/title/subtitle above always stay legible — the low-alpha,
+/// flat-shape restraint this app's decorative painters share (see
+/// [BabDecorativeBackground]'s skyline, [SakuraDecoration]'s petals).
+class _KanaSceneryPainter extends CustomPainter {
+  final Color color;
+  final bool torii;
+
+  const _KanaSceneryPainter({required this.color, required this.torii});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    final fill = Paint()..color = color;
+    final stroke = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3;
+
+    final mountain = Path()
+      ..moveTo(0, h)
+      ..lineTo(0, h * 0.82)
+      ..quadraticBezierTo(w * 0.3, h * 0.55, w * 0.55, h * 0.78)
+      ..quadraticBezierTo(w * 0.78, h * 0.95, w, h * 0.7)
+      ..lineTo(w, h)
+      ..close();
+    canvas.drawPath(mountain, fill);
+
+    if (torii) {
+      final x = w * 0.28;
+      final baseY = h * 0.94;
+      final topY = h * 0.72;
+      canvas.drawLine(Offset(x - 12, baseY), Offset(x - 12, topY), stroke);
+      canvas.drawLine(Offset(x + 12, baseY), Offset(x + 12, topY), stroke);
+      canvas.drawLine(Offset(x - 18, topY), Offset(x + 18, topY), stroke);
+      canvas.drawLine(
+        Offset(x - 22, topY - 7),
+        Offset(x + 22, topY - 7),
+        stroke,
+      );
+    } else {
+      final x = w * 0.68;
+      final baseY = h * 0.94;
+      for (var tier = 0; tier < 3; tier++) {
+        final tierWidth = 26.0 - tier * 6;
+        final tierY = baseY - tier * 15;
+        canvas.drawRect(
+          Rect.fromCenter(center: Offset(x, tierY), width: tierWidth, height: 4),
+          fill,
+        );
+        canvas.drawRect(
+          Rect.fromCenter(
+            center: Offset(x, tierY - 7),
+            width: tierWidth * 0.45,
+            height: 10,
+          ),
+          fill,
+        );
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _KanaSceneryPainter oldDelegate) =>
+      oldDelegate.color != color || oldDelegate.torii != torii;
 }
 
 class _AvailableModuleCard extends StatelessWidget {
@@ -252,6 +571,18 @@ class _AvailableModuleCard extends StatelessWidget {
   final String subtitle;
   final VoidCallback onTap;
 
+  /// A real illustrated icon (`assets/icons/{name}.png`) shown in place of
+  /// [emoji] inside the coloured circle — only set for the modules covered
+  /// by `icon_asset_prompts.md`'s Set A. Modules that show a real Japanese
+  /// character (字/文/を/読/聴) keep [emoji] as plain text; those are
+  /// meaningful script, not decorative emoji, and were deliberately left
+  /// out of that prompt set.
+  final String? iconAsset;
+
+  /// Tighter padding/icon/type for the two-column "Kosakata & Kanji" /
+  /// "Latihan" grid, where each card only owns half the row's width.
+  final bool dense;
+
   const _AvailableModuleCard({
     required this.emoji,
     required this.backgroundColor,
@@ -259,10 +590,13 @@ class _AvailableModuleCard extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.onTap,
+    this.iconAsset,
+    this.dense = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final iconSize = dense ? 38.0 : 48.0;
     return Material(
       color: backgroundColor,
       borderRadius: BorderRadius.circular(20),
@@ -270,32 +604,49 @@ class _AvailableModuleCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(dense ? 12 : 16),
           child: Row(
             children: [
               Container(
-                width: 48,
-                height: 48,
+                width: iconSize,
+                height: iconSize,
                 decoration: BoxDecoration(color: iconColor, shape: BoxShape.circle),
                 alignment: Alignment.center,
-                child: Text(
-                  emoji,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: iconAsset != null
+                    ? Padding(
+                        padding: EdgeInsets.all(iconSize * 0.14),
+                        child: Image.asset(
+                          'assets/icons/$iconAsset.png',
+                          errorBuilder: (context, error, stackTrace) => Text(
+                            emoji,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: dense ? 15 : 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      )
+                    : Text(
+                        emoji,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: dense ? 15 : 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
               ),
-              const SizedBox(width: 16),
+              SizedBox(width: dense ? 10 : 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: dense ? 13 : 16,
                         fontWeight: FontWeight.bold,
                         color: context.palette.textNavy,
                       ),
@@ -303,15 +654,17 @@ class _AvailableModuleCard extends StatelessWidget {
                     const SizedBox(height: 2),
                     Text(
                       subtitle,
+                      maxLines: dense ? 1 : 2,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: dense ? 11 : 13,
                         color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right, color: iconColor),
+              Icon(Icons.chevron_right, color: iconColor, size: dense ? 18 : 24),
             ],
           ),
         ),
@@ -427,12 +780,22 @@ class _LockedModuleCard extends StatelessWidget {
 class _ComingSoonCard extends StatelessWidget {
   final ModuleInfo module;
   final AppStrings strings;
+  final bool dense;
 
-  const _ComingSoonCard({required this.module, required this.strings});
+  const _ComingSoonCard({
+    required this.module,
+    required this.strings,
+    this.dense = false,
+  });
 
   static const _icons = {
     'picture_learning': '🖼️',
     'video_learning': '🎬',
+  };
+
+  static const _iconAssets = {
+    'picture_learning': 'icon_belajar_gambar',
+    'video_learning': 'icon_belajar_video',
   };
 
   /// [ModuleInfo.title]/[description] are the dataset's Indonesian-authored
@@ -452,6 +815,33 @@ class _ComingSoonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final (title, description) = _displayText();
+    final iconSize = dense ? 38.0 : 48.0;
+    final badge = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+      decoration: BoxDecoration(
+        color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Text(
+        strings.comingSoonBadge,
+        style: TextStyle(
+          fontSize: 9,
+          fontWeight: FontWeight.bold,
+          color: context.palette.freeBadgeGrey,
+        ),
+      ),
+    );
+    final titleText = Text(
+      title,
+      maxLines: dense ? 2 : 1,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+        fontSize: dense ? 13 : 15,
+        fontWeight: FontWeight.bold,
+        color: context.palette.textNavy,
+      ),
+    );
+
     return Material(
       color: context.palette.mutedSurface,
       borderRadius: BorderRadius.circular(20),
@@ -459,67 +849,62 @@ class _ComingSoonCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         onTap: () => showComingSoonSheet(context, moduleId: module.id),
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(dense ? 12 : 16),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                width: 48,
-                height: 48,
+                width: iconSize,
+                height: iconSize,
                 decoration: BoxDecoration(
                   color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
                   shape: BoxShape.circle,
                 ),
                 alignment: Alignment.center,
-                child: Text(
-                  _icons[module.id] ?? '❓',
-                  style: const TextStyle(fontSize: 20),
-                ),
+                child: _iconAssets[module.id] != null
+                    ? Padding(
+                        padding: EdgeInsets.all(iconSize * 0.14),
+                        child: Image.asset(
+                          'assets/icons/${_iconAssets[module.id]}.png',
+                          errorBuilder: (context, error, stackTrace) => Text(
+                            _icons[module.id] ?? '❓',
+                            style: TextStyle(fontSize: dense ? 15 : 20),
+                          ),
+                        ),
+                      )
+                    : Text(
+                        _icons[module.id] ?? '❓',
+                        style: TextStyle(fontSize: dense ? 15 : 20),
+                      ),
               ),
-              const SizedBox(width: 16),
+              SizedBox(width: dense ? 10 : 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Flexible(
-                          child: Text(
-                            title,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: context.palette.textNavy,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            strings.comingSoonBadge,
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: context.palette.freeBadgeGrey,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    // A dense (two-column) card stacks the badge under the
+                    // title instead of squeezing both onto one line — at
+                    // half the row's width an inline badge either clips
+                    // the title or overflows the card.
+                    if (dense) ...[
+                      titleText,
+                      const SizedBox(height: 4),
+                      badge,
+                    ] else
+                      Row(
+                        children: [
+                          Flexible(child: titleText),
+                          const SizedBox(width: 8),
+                          badge,
+                        ],
+                      ),
                     const SizedBox(height: 2),
                     Text(
                       description,
+                      maxLines: dense ? 2 : 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: dense ? 11 : 13,
                         color: context.palette.textNavy.withValues(alpha: 0.6),
                       ),
                     ),
@@ -527,8 +912,12 @@ class _ComingSoonCard extends StatelessWidget {
                 ),
               ),
               if (module.requiresPremium) ...[
-                const SizedBox(width: 8),
-                Icon(Icons.lock, color: context.palette.freeBadgeGrey, size: 20),
+                SizedBox(width: dense ? 4 : 8),
+                Icon(
+                  Icons.lock,
+                  color: context.palette.freeBadgeGrey,
+                  size: dense ? 16 : 20,
+                ),
               ],
             ],
           ),

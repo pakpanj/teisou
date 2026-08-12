@@ -2,6 +2,9 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../core/constants/avatars.dart';
+import '../../core/constants/covers.dart';
+import '../../core/constants/frames.dart';
 import '../../core/firebase/firestore_paths.dart';
 import '../models/ad_reward.dart';
 import '../models/kana_progress.dart';
@@ -11,6 +14,7 @@ import '../models/kana_type_progress.dart';
 import '../models/saved_item_pointer.dart';
 import '../models/subscription.dart';
 import '../models/user_profile.dart';
+import '../models/xp_progress.dart';
 
 /// Reads and writes per-user progress (profile + per-kana learning state)
 /// stored on the `users/{uid}` document.
@@ -164,6 +168,12 @@ class ProgressRepository {
         'currentStreak': newStreak,
       },
     }, SetOptions(merge: true));
+
+    // Once per calendar day the user is actually active — not gated on
+    // whether the streak specifically continued vs. reset, since "opened
+    // the app and did something today" is the thing being rewarded, not
+    // the streak counter itself.
+    await addXp(uid, 5);
   }
 
   String _dateKey(DateTime date) =>
@@ -360,4 +370,96 @@ class ProgressRepository {
       },
     }, SetOptions(merge: true));
   }
+
+  Future<XpProgress> getXpProgress(String uid) async {
+    final snapshot = await _userDoc(uid).get();
+    return XpProgress.fromMap(snapshot.data()?['xp'] as Map<String, dynamic>?);
+  }
+
+  Stream<XpProgress> watchXpProgress(String uid) {
+    return _userDoc(uid).snapshots().map(
+          (snapshot) =>
+              XpProgress.fromMap(snapshot.data()?['xp'] as Map<String, dynamic>?),
+        );
+  }
+
+  /// Adds [amount] XP for one completed learning action. Best-effort and
+  /// silent on failure, same reasoning as every other Firestore mirror in
+  /// this repository: by the time this is called the real action (marking
+  /// something learned, submitting an exam) has already succeeded, so a
+  /// network hiccup awarding XP must never surface as an error on top of
+  /// it.
+  Future<void> addXp(String uid, int amount) async {
+    try {
+      await _userDoc(uid).set({
+        'xp': {'totalXp': FieldValue.increment(amount)},
+      }, SetOptions(merge: true));
+    } catch (_) {}
+  }
+
+  /// Claims the reward for the next unclaimed level: one random still-
+  /// locked avatar/frame/cover preset, permanently unlocked (recorded
+  /// separately from [Subscription] — earned, not rented, so it survives
+  /// a lapsed premium subscription rather than being tied to it).
+  ///
+  /// Returns null when there is nothing to claim ([XpProgress.pendingRewards]
+  /// is 0) or the reward pool is exhausted (every premium preset already
+  /// unlocked) — the second case still spends the pending reward, so a
+  /// claim that can't be filled doesn't stay stuck offering one forever.
+  Future<XpReward?> claimLevelReward(String uid) async {
+    final snapshot = await _userDoc(uid).get();
+    final xpMap = snapshot.data()?['xp'] as Map<String, dynamic>?;
+    final progress = XpProgress.fromMap(xpMap);
+    if (progress.pendingRewards <= 0) return null;
+
+    final unlockedAvatars = _stringList(xpMap?['unlockedAvatarIds']);
+    final unlockedFrames = _stringList(xpMap?['unlockedFrameIds']);
+    final unlockedCovers = _stringList(xpMap?['unlockedCoverIds']);
+
+    final pool = <XpReward>[
+      for (final p in AvatarPresets.premium)
+        if (!unlockedAvatars.contains(p.id))
+          XpReward(kind: XpRewardKind.avatar, id: p.id, label: p.emoji),
+      for (final f in FramePresets.all)
+        if (FramePresets.isLocked(f.id) && !unlockedFrames.contains(f.id))
+          XpReward(kind: XpRewardKind.frame, id: f.id, label: f.label),
+      for (final c in CoverPresets.all)
+        if (CoverPresets.isLocked(c.id) && !unlockedCovers.contains(c.id))
+          XpReward(kind: XpRewardKind.cover, id: c.id, label: c.label),
+    ];
+
+    if (pool.isEmpty) {
+      await _userDoc(uid).set({
+        'xp': {'claimedLevel': progress.claimedLevel + 1},
+      }, SetOptions(merge: true));
+      return null;
+    }
+
+    final reward = pool[_random.nextInt(pool.length)];
+    const fieldByKind = {
+      XpRewardKind.avatar: 'unlockedAvatarIds',
+      XpRewardKind.frame: 'unlockedFrameIds',
+      XpRewardKind.cover: 'unlockedCoverIds',
+    };
+    await _userDoc(uid).set({
+      'xp': {
+        'claimedLevel': progress.claimedLevel + 1,
+        fieldByKind[reward.kind]!: FieldValue.arrayUnion([reward.id]),
+      },
+    }, SetOptions(merge: true));
+    return reward;
+  }
+
+  Future<Set<String>> getUnlockedAvatarIds(String uid) => _getXpIdSet(uid, 'unlockedAvatarIds');
+  Future<Set<String>> getUnlockedFrameIds(String uid) => _getXpIdSet(uid, 'unlockedFrameIds');
+  Future<Set<String>> getUnlockedCoverIds(String uid) => _getXpIdSet(uid, 'unlockedCoverIds');
+
+  Future<Set<String>> _getXpIdSet(String uid, String field) async {
+    final snapshot = await _userDoc(uid).get();
+    final xpMap = snapshot.data()?['xp'] as Map<String, dynamic>?;
+    return _stringList(xpMap?[field]).toSet();
+  }
+
+  List<String> _stringList(dynamic value) =>
+      (value as List<dynamic>?)?.cast<String>() ?? const [];
 }

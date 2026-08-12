@@ -28,6 +28,12 @@ class CoverPickerSheet extends ConsumerStatefulWidget {
 class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
   bool _adRewardActive = false;
 
+  /// Cover ids earned permanently via a level-up reward — see
+  /// `AvatarPickerSheet`'s `_unlockedAvatarIds` doc comment for why this
+  /// is a per-id set rather than folded into the blanket [_adRewardActive]
+  /// flag.
+  Set<String> _unlockedCoverIds = {};
+
   @override
   void initState() {
     super.initState();
@@ -37,9 +43,16 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
   Future<void> _refreshAdRewardStatus() async {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (uid == null) return;
-    final rewards = await ref.read(progressRepositoryProvider).getAdRewards(uid);
+    final repo = ref.read(progressRepositoryProvider);
+    final rewards = await repo.getAdRewards(uid);
     final active = rewards[_coverPremiumModuleId]?.isActive ?? false;
-    if (mounted) setState(() => _adRewardActive = active);
+    final unlockedCovers = await repo.getUnlockedCoverIds(uid);
+    if (mounted) {
+      setState(() {
+        _adRewardActive = active;
+        _unlockedCoverIds = unlockedCovers;
+      });
+    }
   }
 
   Future<void> _select(String uid, String? coverId, {bool consumeReward = false}) async {
@@ -97,6 +110,7 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
     final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
     final unlocked = isPremium || _adRewardActive;
     final viaAdReward = !isPremium && _adRewardActive;
+    bool coverIdUnlocked(String id) => unlocked || _unlockedCoverIds.contains(id);
     final uid = user?.uid;
     final selectedId = profile?.coverId;
     final s = ref.watch(appStringsProvider);
@@ -148,7 +162,8 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
                 ),
                 itemBuilder: (context, index) {
                   final preset = CoverPresets.all[index];
-                  final isLocked = CoverPresets.isLocked(preset.id) && !unlocked;
+                  final isLocked =
+                      CoverPresets.isLocked(preset.id) && !coverIdUnlocked(preset.id);
                   return _CoverTile(
                     preset: preset,
                     language: s.language,

@@ -116,6 +116,8 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
       // mini-list or the full history screen until this invalidation was
       // added. See CLAUDE.md's exam-history-screen fix update for detail.
       ref.invalidate(fullExamHistoryProvider);
+      await ref.read(progressRepositoryProvider).addXp(user.uid, 10);
+      ref.invalidate(xpProgressProvider);
 
       if (!mounted) return;
       AppNavigator.replaceFadeScale(context, ExamResultScreen(result: result));

@@ -10,6 +10,7 @@ import '../data/models/kana_character.dart';
 import '../data/models/kana_type.dart';
 import '../data/models/kana_type_progress.dart';
 import '../data/models/subscription.dart';
+import '../data/models/xp_progress.dart';
 import '../data/models/user_profile.dart';
 import '../data/repositories/language_repository.dart';
 import '../data/repositories/theme_repository.dart';
@@ -366,4 +367,13 @@ final userProfileProvider = StreamProvider<UserProfile>((ref) async* {
 final subscriptionProvider = StreamProvider<Subscription>((ref) async* {
   final user = await ref.watch(appStartupProvider.future);
   yield* ref.watch(progressRepositoryProvider).watchSubscription(user.uid);
+});
+
+/// Total XP + level + pending level-up rewards — see [XpProgress]. Watched
+/// live (not a one-shot fetch) so the Home level card updates the moment
+/// any screen calls `ProgressRepository.addXp`, without that call site
+/// needing to know this provider exists to invalidate it.
+final xpProgressProvider = StreamProvider<XpProgress>((ref) async* {
+  final user = await ref.watch(appStartupProvider.future);
+  yield* ref.watch(progressRepositoryProvider).watchXpProgress(user.uid);
 });

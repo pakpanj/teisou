@@ -1,0 +1,52 @@
+TEISOU CLAN LEADERBOARD BANNER PROMPTS - SAKURA, DAY + NIGHT
+================================================================
+2 prompts, one per theme mode. Each is complete and self-contained -
+copy one whole block into Gemini.
+
+Where these go: assets/leaderboard/clan_banner_light.png and
+assets/leaderboard/clan_banner_dark.png (paths TBD when this is wired
+up in code - not built yet, prompts only for now). The app will swap
+between them automatically based on the user's light/dark theme.
+
+Size: request 1600x900 (16:9). Don't worry about exact final crop -
+Flutter will fit/crop it into the actual banner area in code.
+
+After generating: just hand both PNGs back and they'll get a small
+edge-colour touch-up (nudging the very top/bottom pixels to exactly
+match the app's real background colour, #FFFFFF for light / #121620
+for dark) so the seam against the surrounding screen is invisible -
+no background removal needed this time, unlike the circular clan
+icons, since this is a full rectangular scene meant to sit flush
+against the page background rather than a cutout badge.
+
+
+==============================================
+1. clan_banner_light.png (day / light theme)
+==============================================
+A wide, gentle illustrated banner scene for a Japanese-learning app, in a soft kawaii pastel style - flat cel-shaded illustration with soft simple shading, no photorealism, no busy fine detail (this sits behind UI text and controls, so it needs to stay calm and uncluttered, not compete with them).
+
+Scene: a peaceful daytime sakura (cherry blossom) landscape, seen as a wide horizontal strip. In the foreground, on the left, a few cherry blossom branches reach in from the edge with soft pink blossoms and a handful of petals drifting through the air. In the background, gentle layered misty mountains recede into the distance (each layer a slightly lighter, softer blue-grey than the one in front of it, classic soft atmospheric perspective). On the right side, a small, simple silhouette of a traditional Japanese pagoda sits on a distant hill, rendered as a soft flat silhouette, not with fine architectural detail.
+
+Sky: a soft pale blue, warm and gentle, like a calm clear late-morning - no harsh sun glare, no dramatic clouds.
+
+Colour and mood: warm, soft, and friendly pastel palette throughout (dusty pink blossoms, soft sage-green foliage, powder-blue misty mountains, soft gold-cream light) - the same gentle, never-harsh pastel language used throughout this app's other art, never neon, never high-contrast.
+
+Critical requirement - the top and bottom edges of the image: the scene must fade/blend into a perfectly flat, solid, uniform white (#FFFFFF) at the very top edge and the very bottom edge of the image - like the illustration is gently emerging from a plain white page at both ends, not a hard rectangular frame or vignette border. The flat white band at the very top and bottom should be genuinely solid and uniform right at the edge (a clean, calm fade, not a gradient that never quite reaches pure white) - this image will sit directly on a plain white app background with no further masking, so the blend has to be seamless on its own.
+
+Composition: 1600x900 landscape, horizontal scene, calm and readable at a glance. No text, no letters, no watermark, no hard border or frame around the canvas, no drop shadow.
+
+
+==============================================
+2. clan_banner_dark.png (night / dark theme)
+==============================================
+A wide, gentle illustrated banner scene for a Japanese-learning app, in a soft kawaii pastel style - flat cel-shaded illustration with soft simple shading, no photorealism, no busy fine detail (this sits behind UI text and controls, so it needs to stay calm and uncluttered, not compete with them).
+
+Scene: the same peaceful sakura (cherry blossom) landscape as its daytime counterpart, but at night. In the foreground, on the left, a few cherry blossom branches reach in from the edge with soft pale-pink blossoms (cooler and more muted than in daylight, as if lit by moonlight) and a handful of petals drifting through the air. In the background, gentle layered misty mountains recede into the distance (each layer a slightly lighter, softer indigo-blue than the one in front of it, classic soft atmospheric perspective, but in a night palette). On the right side, a small, simple silhouette of a traditional Japanese pagoda sits on a distant hill, rendered as a soft flat silhouette, with one or two small warm lantern-glow dots of light along its rooftops. A soft, gentle full moon sits in the sky, glowing softly without harsh rays.
+
+Sky: a deep, soft indigo-navy night sky, calm and gentle rather than pitch black - a few small soft stars scattered sparsely, not busy.
+
+Colour and mood: the same warm, gentle pastel language as the daytime version, just shifted into a cool night register - muted rose-pink blossoms, deep sage-indigo foliage, soft indigo-blue misty mountains, warm small pinpricks of lantern and moon glow for contrast - never neon, never harsh, still soft and kawaii, just after dark.
+
+Critical requirement - the top and bottom edges of the image: the scene must fade/blend into a perfectly flat, solid, uniform dark navy (#121620) at the very top edge and the very bottom edge of the image - like the illustration is gently emerging from a plain dark page at both ends, not a hard rectangular frame or vignette border. The flat dark band at the very top and bottom should be genuinely solid and uniform right at the edge (a clean, calm fade, not a gradient that never quite reaches that exact dark navy) - this image will sit directly on a plain dark navy (#121620) app background with no further masking, so the blend has to be seamless on its own.
+
+Composition: 1600x900 landscape, horizontal scene, calm and readable at a glance. No text, no letters, no watermark, no hard border or frame around the canvas, no drop shadow.

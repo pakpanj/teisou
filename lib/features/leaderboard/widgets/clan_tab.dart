@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,14 +9,19 @@ import '../../../core/localization/app_strings.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/app_refresh_indicator.dart';
+import '../../../core/widgets/seigaiha_wave.dart';
+import '../../../data/models/clan.dart';
 import '../../../data/models/clan_invite.dart';
 import '../../../data/models/clan_member.dart';
+import '../../../data/models/leaderboard_entry.dart';
 import '../../../data/models/user_profile.dart' show AvatarType;
 import '../clan_providers.dart';
 import '../leaderboard_screen.dart'
-    show LeaderboardTile, globalScoreBreakdown, globalScoreLabel;
+    show LeaderboardAvatar, LeaderboardTile, globalScoreBreakdown, globalScoreLabel;
+import '../public_profile_screen.dart' show openPublicProfile;
 import 'clan_announcements_screen.dart';
 import 'clan_chat_screen.dart';
+import 'clan_leaderboard_banner.dart';
 import 'clan_members_screen.dart';
 import 'clan_settings_screen.dart';
 import 'create_clan_dialog.dart';
@@ -106,6 +113,8 @@ class _ClanTabState extends ConsumerState<ClanTab> {
 
         return Column(
           children: [
+            const LeaderboardBannerHeader(),
+            const SizedBox(height: 14),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
               child: Row(
@@ -375,240 +384,611 @@ class _ClanRanking extends ConsumerWidget {
         clanAsync.when(
           data: (clan) {
             if (clan == null) return const SizedBox.shrink();
-            return Container(
-              width: double.infinity,
-              margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(
-                color: context.palette.primaryCoral.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                  color: context.palette.primaryCoral.withValues(alpha: 0.3),
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          width: 40,
-                          height: 40,
-                          color: context.palette.primaryCoral.withValues(
-                            alpha: 0.5,
-                          ),
-                          child: ClanIconArt(
-                            preset: ClanIconPresets.byId(clan.iconValue),
-                            size: 40,
-                            emojiFontSize: 22,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              clan.name,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: context.palette.textNavy,
-                              ),
-                            ),
-                            Text(
-                              strings.codeAndMembers(clan.code, clan.memberCount),
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: context.palette.textNavy.withValues(alpha: 0.6),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  if (clan.description != null && clan.description!.isNotEmpty) ...[
-                    const SizedBox(height: 8),
-                    Text(
-                      clan.description!,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: context.palette.textNavy.withValues(alpha: 0.75),
-                      ),
-                    ),
-                  ],
-                  const SizedBox(height: 4),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                        tooltip: strings.clanChat,
-                        onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => ClanChatScreen(
-                              code: clan.code,
-                              clanName: clan.name,
-                            ),
-                          ),
-                        ),
-                        icon: Icon(
-                          Icons.chat_bubble_outline,
-                          size: 18,
-                          color: context.palette.primaryCoral,
-                        ),
-                      ),
-                      Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          IconButton(
-                            tooltip: strings.clanAnnouncements,
-                            onPressed: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (_) => ClanAnnouncementsScreen(
-                                  code: clan.code,
-                                  clanName: clan.name,
-                                ),
-                              ),
-                            ),
-                            icon: Icon(
-                              Icons.campaign_outlined,
-                              size: 18,
-                              color: context.palette.primaryCoral,
-                            ),
-                          ),
-                          if (announcementUnread)
-                            Positioned(
-                              right: 6,
-                              top: 6,
-                              child: Container(
-                                width: 8,
-                                height: 8,
-                                decoration: BoxDecoration(
-                                  color: context.palette.errorRed,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: Colors.white,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                      IconButton(
-                        tooltip: strings.manageMembers,
-                        onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => ClanMembersScreen(
-                              code: clan.code,
-                              clanName: clan.name,
-                            ),
-                          ),
-                        ),
-                        icon: Icon(
-                          Icons.manage_accounts,
-                          size: 18,
-                          color: context.palette.primaryCoral,
-                        ),
-                      ),
-                      if (myRole == ClanRole.leader)
-                        IconButton(
-                          tooltip: strings.clanSettings,
-                          onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) =>
-                                  ClanSettingsScreen(code: clan.code),
-                            ),
-                          ),
-                          icon: Icon(
-                            Icons.settings_outlined,
-                            size: 18,
-                            color: context.palette.primaryCoral,
-                          ),
-                        ),
-                      IconButton(
-                        tooltip: strings.copyCode,
-                        onPressed: () {
-                          Clipboard.setData(ClipboardData(text: clan.code));
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(strings.codeCopied)),
-                          );
-                        },
-                        icon: Icon(
-                          Icons.copy,
-                          size: 18,
-                          color: context.palette.primaryCoral,
-                        ),
-                      ),
-                      IconButton(
-                        tooltip: strings.leaveClanTooltip,
-                        onPressed: () => onLeave(clan.name),
-                        icon: Icon(
-                          Icons.logout,
-                          size: 18,
-                          color: context.palette.errorRed,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+            return _ClanHeaderCard(
+              clan: clan,
+              strings: strings,
+              isLeader: myRole == ClanRole.leader,
+              announcementUnread: announcementUnread,
+              onLeave: () => onLeave(clan.name),
             );
           },
           loading: () => const SizedBox.shrink(),
           error: (_, _) => const SizedBox.shrink(),
         ),
         Expanded(
-          child: AppRefreshIndicator(
-            onRefresh: () async {
-              await Future.wait([
-                ref.refresh(clanDetailsProvider(code).future),
-                ref.refresh(clanRankingProvider(code).future),
-              ]);
-            },
-            child: rankingAsync.when(
-              data: (entries) {
-                final hostUid = clanAsync.valueOrNull?.hostUid;
-                if (entries.isEmpty) {
-                  return ListView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 80),
-                        child: Center(
-                          child: Text(
-                            strings.noMembersYet,
-                            style: TextStyle(color: context.palette.textNavy),
+          child: Stack(
+            children: [
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: 90,
+                child: SeigaihaWave(
+                  color: context.palette.primaryCoral.withValues(alpha: 0.08),
+                ),
+              ),
+              AppRefreshIndicator(
+                onRefresh: () async {
+                  await Future.wait([
+                    ref.refresh(clanDetailsProvider(code).future),
+                    ref.refresh(clanRankingProvider(code).future),
+                  ]);
+                },
+                child: rankingAsync.when(
+                  data: (entries) {
+                    final hostUid = clanAsync.valueOrNull?.hostUid;
+                    if (entries.isEmpty) {
+                      return ListView(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 80),
+                            child: Center(
+                              child: Text(
+                                strings.noMembersYet,
+                                style: TextStyle(color: context.palette.textNavy),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ],
-                  );
-                }
-                return ListView.separated(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                  itemCount: entries.length,
-                  separatorBuilder: (_, _) => const SizedBox(height: 8),
-                  itemBuilder: (context, index) => LeaderboardTile(
-                    rank: index + 1,
-                    entry: entries[index],
-                    valueLabel: globalScoreLabel(entries[index], strings),
-                    subtitle: globalScoreBreakdown(entries[index], strings),
-                    isHost: entries[index].uid == hostUid,
-                  ),
-                );
-              },
-              loading: () => const AppLoading(),
-              error: (e, _) => Center(child: Text(strings.failedToLoadMembers(e))),
-            ),
+                        ],
+                      );
+                    }
+                    // Ranks 1-3 move into the podium above the list; the
+                    // list itself starts at rank 4, same data, just a
+                    // different rendering for the first three positions.
+                    final podiumEntries = entries.take(3).toList();
+                    final restEntries = entries.skip(3).toList();
+                    return ListView.separated(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
+                      itemCount: restEntries.length + 1,
+                      separatorBuilder: (_, index) =>
+                          index == 0 ? const SizedBox.shrink() : const SizedBox(height: 8),
+                      itemBuilder: (context, index) {
+                        if (index == 0) {
+                          return _ClanPodium(
+                            entries: podiumEntries,
+                            strings: strings,
+                          );
+                        }
+                        final entry = restEntries[index - 1];
+                        return LeaderboardTile(
+                          rank: index + 3,
+                          entry: entry,
+                          valueLabel: globalScoreLabel(entry, strings),
+                          subtitle: globalScoreBreakdown(entry, strings),
+                          isHost: entry.uid == hostUid,
+                        );
+                      },
+                    );
+                  },
+                  loading: () => const AppLoading(),
+                  error: (e, _) => Center(child: Text(strings.failedToLoadMembers(e))),
+                ),
+              ),
+            ],
           ),
         ),
       ],
     );
   }
 }
+
+/// The solid-coral clan summary card — icon, name, code (tap to copy),
+/// description, and the four everyday actions (chat/announcements/
+/// members/leave). Settings is leader-only and deliberately kept as a
+/// small corner icon rather than a fifth slot in that row, since only one
+/// role ever sees it and a row that changes width per-role reads as
+/// unstable UI.
+class _ClanHeaderCard extends StatelessWidget {
+  final Clan clan;
+  final AppStrings strings;
+  final bool isLeader;
+  final bool announcementUnread;
+  final VoidCallback onLeave;
+
+  const _ClanHeaderCard({
+    required this.clan,
+    required this.strings,
+    required this.isLeader,
+    required this.announcementUnread,
+    required this.onLeave,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final coral = context.palette.primaryCoral;
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+      padding: const EdgeInsets.fromLTRB(16, 16, 12, 16),
+      decoration: BoxDecoration(
+        color: coral,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: coral.withValues(alpha: 0.35),
+            blurRadius: 14,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _HexagonIconFrame(
+                preset: ClanIconPresets.byId(clan.iconValue),
+                size: 56,
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      clan.name,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    InkWell(
+                      onTap: () {
+                        Clipboard.setData(ClipboardData(text: clan.code));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(strings.codeCopied)),
+                        );
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              strings.codeAndMembers(clan.code, clan.memberCount),
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white.withValues(alpha: 0.85),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          Icon(
+                            Icons.copy,
+                            size: 13,
+                            color: Colors.white.withValues(alpha: 0.85),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              if (isLeader)
+                Tooltip(
+                  message: strings.clanSettings,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => ClanSettingsScreen(code: clan.code),
+                      ),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Icon(Icons.settings_outlined,
+                          size: 18, color: Colors.white),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+          if (clan.description != null && clan.description!.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            Text(
+              clan.description!,
+              style: TextStyle(
+                fontSize: 13,
+                height: 1.35,
+                color: Colors.white.withValues(alpha: 0.92),
+              ),
+            ),
+          ],
+          const SizedBox(height: 14),
+          Row(
+            children: [
+              _HeaderActionButton(
+                icon: Icons.chat_bubble_outline,
+                label: strings.clanChat,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => ClanChatScreen(
+                      code: clan.code,
+                      clanName: clan.name,
+                    ),
+                  ),
+                ),
+              ),
+              _HeaderActionButton(
+                icon: Icons.campaign_outlined,
+                label: strings.clanAnnouncements,
+                showDot: announcementUnread,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => ClanAnnouncementsScreen(
+                      code: clan.code,
+                      clanName: clan.name,
+                    ),
+                  ),
+                ),
+              ),
+              _HeaderActionButton(
+                icon: Icons.manage_accounts,
+                label: strings.manageMembers,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => ClanMembersScreen(
+                      code: clan.code,
+                      clanName: clan.name,
+                    ),
+                  ),
+                ),
+              ),
+              _HeaderActionButton(
+                icon: Icons.logout,
+                label: strings.leave,
+                onTap: onLeave,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// One icon-circle-and-label button in the header card's action row —
+/// white on the solid coral card, matching this app's established
+/// "wash, not a solid fill" restraint even here (the circle is a soft
+/// white wash, not opaque white, so it reads as part of the card rather
+/// than a separate button floating on top of it).
+class _HeaderActionButton extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+  final bool showDot;
+
+  const _HeaderActionButton({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    this.showDot = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: InkWell(
+        borderRadius: BorderRadius.circular(14),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.22),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(icon, size: 18, color: Colors.white),
+                  ),
+                  if (showDot)
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      child: Container(
+                        width: 9,
+                        height: 9,
+                        decoration: BoxDecoration(
+                          color: context.palette.errorRed,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white, width: 1.2),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 6),
+              Text(
+                label,
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Draws a regular hexagon (pointy-top) as the clan icon's frame — cream
+/// field, gold ring — with the existing circular crest icon centred
+/// inside it. Deliberately code, not a generated asset: it's a plain
+/// geometric shape, and building it this way means it wraps any of the
+/// 20 [ClanIconPresets] (or the emoji fallback) with zero extra art.
+class _HexagonIconFrame extends StatelessWidget {
+  final ClanIconPreset? preset;
+  final double size;
+
+  const _HexagonIconFrame({required this.preset, required this.size});
+
+  @override
+  Widget build(BuildContext context) {
+    final iconSize = size * 0.62;
+    return SizedBox(
+      width: size,
+      height: size,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          CustomPaint(
+            size: Size(size, size),
+            painter: _HexagonPainter(
+              fill: context.palette.tertiaryAmberCardBg,
+              border: context.palette.premiumGoldEnd,
+            ),
+          ),
+          ClanIconArt(
+            preset: preset,
+            size: iconSize,
+            emojiFontSize: iconSize * 0.5,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _HexagonPainter extends CustomPainter {
+  final Color fill;
+  final Color border;
+
+  const _HexagonPainter({required this.fill, required this.border});
+
+  Path _hexagonPath(Size size) {
+    final path = Path();
+    final cx = size.width / 2;
+    final cy = size.height / 2;
+    final r = math.min(cx, cy) - 2;
+    for (var i = 0; i < 6; i++) {
+      final angle = (math.pi / 180) * (60 * i - 90);
+      final x = cx + r * math.cos(angle);
+      final y = cy + r * math.sin(angle);
+      if (i == 0) {
+        path.moveTo(x, y);
+      } else {
+        path.lineTo(x, y);
+      }
+    }
+    path.close();
+    return path;
+  }
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final path = _hexagonPath(size);
+    canvas.drawPath(path, Paint()..color = fill);
+    canvas.drawPath(
+      path,
+      Paint()
+        ..color = border
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 3,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _HexagonPainter oldDelegate) =>
+      oldDelegate.fill != fill || oldDelegate.border != border;
+}
+
+/// Top-3 podium — [entries] is already sorted by rank and holds at most 3
+/// (fewer for a clan that small, rendered gracefully rather than padded
+/// out with placeholders). Laid out 2nd/1st/3rd left-to-right, the
+/// standard podium reading order, with the first-place column taller.
+class _ClanPodium extends StatelessWidget {
+  final List<LeaderboardEntry> entries;
+  final AppStrings strings;
+
+  const _ClanPodium({required this.entries, required this.strings});
+
+  @override
+  Widget build(BuildContext context) {
+    if (entries.isEmpty) return const SizedBox.shrink();
+    final first = entries[0];
+    final second = entries.length > 1 ? entries[1] : null;
+    final third = entries.length > 2 ? entries[2] : null;
+
+    final gold = context.palette.premiumGoldEnd;
+    final silver = context.palette.freeBadgeGrey;
+    final bronze = context.palette.tertiaryAmber;
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 20),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (second != null)
+            _PodiumColumn(
+              entry: second,
+              rank: 2,
+              accent: silver,
+              avatarSize: 52,
+              cardHeight: 124,
+              valueLabel: globalScoreLabel(second, strings),
+            ),
+          const SizedBox(width: 8),
+          _PodiumColumn(
+            entry: first,
+            rank: 1,
+            accent: gold,
+            avatarSize: 64,
+            cardHeight: 146,
+            valueLabel: globalScoreLabel(first, strings),
+          ),
+          const SizedBox(width: 8),
+          if (third != null)
+            _PodiumColumn(
+              entry: third,
+              rank: 3,
+              accent: bronze,
+              avatarSize: 52,
+              cardHeight: 124,
+              valueLabel: globalScoreLabel(third, strings),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _PodiumColumn extends StatelessWidget {
+  final LeaderboardEntry entry;
+  final int rank;
+  final Color accent;
+  final double avatarSize;
+  final double cardHeight;
+  final String valueLabel;
+
+  const _PodiumColumn({
+    required this.entry,
+    required this.rank,
+    required this.accent,
+    required this.avatarSize,
+    required this.cardHeight,
+    required this.valueLabel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => openPublicProfile(context, entry),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _RankPin(rank: rank, color: accent),
+          Transform.translate(
+            offset: const Offset(0, -6),
+            child: Container(
+              width: 96,
+              height: cardHeight,
+              padding: const EdgeInsets.fromLTRB(6, 16, 6, 10),
+              decoration: BoxDecoration(
+                color: context.palette.cardWhite,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: accent.withValues(alpha: 0.6)),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  LeaderboardAvatar(entry: entry, size: avatarSize),
+                  const SizedBox(height: 6),
+                  Text(
+                    entry.displayName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                      color: context.palette.textNavy,
+                    ),
+                  ),
+                  Text(
+                    valueLabel,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                      color: accent,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The pentagon "pin" tag sitting above each podium avatar, flat top /
+/// tapered point at the bottom.
+class _RankPin extends StatelessWidget {
+  final int rank;
+  final Color color;
+
+  const _RankPin({required this.rank, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipPath(
+      clipper: const _PinClipper(),
+      child: Container(
+        width: 32,
+        height: 38,
+        color: color,
+        alignment: const Alignment(0, -0.35),
+        child: Text(
+          '$rank',
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PinClipper extends CustomClipper<Path> {
+  const _PinClipper();
+
+  @override
+  Path getClip(Size size) {
+    final w = size.width;
+    final h = size.height;
+    return Path()
+      ..moveTo(0, 0)
+      ..lineTo(w, 0)
+      ..lineTo(w, h * 0.55)
+      ..lineTo(w / 2, h)
+      ..lineTo(0, h * 0.55)
+      ..close();
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
+}
+

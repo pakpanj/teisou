@@ -40,9 +40,29 @@ service cloud.firestore {
           && request.resource.data.uid == request.auth.uid;
     }
 
+    // Penanda permanen "akun ini sudah pernah membuat clan" — id dokumen
+    // adalah uid pembuatnya. SENGAJA di level teratas, BUKAN di bawah
+    // users/{uid}, supaya lolos dari wildcard users/{uid}/{document=**}
+    // yang mengizinkan pemilik akun menulis (dan MENGHAPUS) apa saja di
+    // bawah dokumennya sendiri — kalau penanda ini ada di sana, akun yang
+    // sama bisa menghapusnya lalu membuat clan gratis lagi. Hanya boleh
+    // `create`, tidak pernah `update`/`delete` (default ditolak karena
+    // tidak dituliskan) — begitu ada, keberadaannya sendiri sudah cukup
+    // sebagai bukti "jatah gratis sudah dipakai", permanen selama akun itu
+    // ada, dan tidak bisa dicabut siapa pun termasuk pemiliknya sendiri.
+    match /clanFreeSlotUsed/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow create: if request.auth != null && request.auth.uid == uid;
+    }
+
     // Clans — siapa saja yang login bisa baca (cari lewat kode join, lihat
     // ranking anggota). Membuat clan hanya boleh kalau hostUid == diri
-    // sendiri. Mengubah dokumen clan setelah dibuat hanya boleh oleh host
+    // sendiri, DAN hanya kalau canCreateClan mengizinkan — 1 clan pertama
+    // gratis untuk setiap akun (lihat clanFreeSlotUsed di atas), clan
+    // berikutnya butuh langganan premium aktif atau satu tontonan iklan
+    // reward yang belum dipakai (adRewards.clan_extra, pola yang sama
+    // dengan gate premium avatar/sampul/bingkai — lihat isAllowedAvatarWrite
+    // di bawah). Mengubah dokumen clan setelah dibuat hanya boleh oleh host
     // (mis. nanti kalau ada fitur rename), KECUALI perubahan yang hanya
     // menyentuh `memberCount`/`totalScore`/`lastReadAt` — ketiganya boleh
     // ditulis siapa saja yang login (bukan cuma anggota clan itu),
@@ -61,7 +81,8 @@ service cloud.firestore {
     match /clans/{code} {
       allow read: if request.auth != null;
       allow create: if request.auth != null
-          && request.resource.data.hostUid == request.auth.uid;
+          && request.resource.data.hostUid == request.auth.uid
+          && canCreateClan(request.auth.uid);
       allow update: if request.auth != null
           && (resource.data.hostUid == request.auth.uid
               || request.resource.data.diff(resource.data).affectedKeys()
@@ -213,6 +234,32 @@ service cloud.firestore {
       return exists(/databases/$(database)/documents/users/$(a)/friends/$(b));
     }
 
+    // Boleh membuat clan baru kalau: belum pernah membuat clan sama sekali
+    // (belum ada clanFreeSlotUsed/{uid}), ATAU langganannya premium, ATAU
+    // sedang punya reward iklan aktif untuk modul 'clan_extra' yang belum
+    // dipakai. Ketiganya di-OR-kan, bukan disyaratkan sekaligus — jatah
+    // gratis hanya dicek kalau memang belum pernah dipakai; begitu sudah
+    // dipakai sekali, baru dua kondisi lain yang menentukan.
+    function canCreateClan(uid) {
+      return !exists(/databases/$(database)/documents/clanFreeSlotUsed/$(uid))
+          || isPremiumUser(uid)
+          || hasActiveClanAdReward(uid);
+    }
+
+    function isPremiumUser(uid) {
+      return get(/databases/$(database)/documents/users/$(uid)).data
+          .get('subscription', {}).get('tier', 'free') == 'premium';
+    }
+
+    // Meniru AdReward.isActive (lib/data/models/ad_reward.dart) di sisi
+    // server: reward dianggap aktif kalau field 'clan_extra' ada di dalam
+    // map adRewards DAN expiresAt-nya masih di masa depan.
+    function hasActiveClanAdReward(uid) {
+      let rewards =
+          get(/databases/$(database)/documents/users/$(uid)).data.get('adRewards', {});
+      return ('clan_extra' in rewards) && rewards.clan_extra.expiresAt > request.time;
+    }
+
     // Peran (role) satu anggota di satu clan — 'leader'/'coLeader'/'member'.
     // Baris lama yang ditulis sebelum field `role` ada dianggap 'leader'
     // kalau uid-nya cocok dengan `hostUid` clan itu, 'member' kalau tidak —
@@ -262,7 +309,14 @@ service cloud.firestore {
       let currentTier = resource == null
           ? 'free'
           : resource.data.get('subscription', {}).get('tier', 'free');
-      return !changingToGated || currentTier == 'premium';
+      // A preset earned as a level-up reward (ProgressRepository.claimLevelReward,
+      // recorded under xp.unlockedAvatarIds) is allowed through the same gate
+      // as a real premium subscription — earned permanently, not rented, so
+      // this must check the *value* being set, not just the tier.
+      let newValue = request.resource.data.get('profile', {}).get('avatarValue', '');
+      let unlockedByXp = resource != null
+          && newValue in resource.data.get('xp', {}).get('unlockedAvatarIds', []);
+      return !changingToGated || currentTier == 'premium' || unlockedByXp;
     }
   }
 }
