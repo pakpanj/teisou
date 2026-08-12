@@ -4,6 +4,7 @@ import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/kana_glyph.dart';
+import '../../core/widgets/stroke_order_animator.dart';
 import '../../core/widgets/swipe_navigator.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kana_progress.dart';
@@ -237,7 +238,25 @@ class _FrontContent extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Stack(
       children: [
-        Center(child: KanaGlyph(kana: kana, size: 140)),
+        // The animator, not KanaGlyph: it draws each stroke from its start
+        // to its end, so which way the pen travels is visible instead of
+        // only what order the strokes come in. KanaGlyph renders the
+        // KanjiVG file through SvgPicture, and that file has its stroke
+        // numbers baked in as a text layer — which is all a learner used to
+        // get here, static and directionless. The kana assets are the same
+        // KanjiVG format the kanji module already parses, so this is
+        // wiring, not new machinery.
+        //
+        // Controls off: this card sits inside a SwipeNavigator and the
+        // animator's speed control is a Slider. See StrokeOrderAnimator.
+        Center(
+          child: StrokeOrderAnimator(
+            character: kana.character,
+            svgAssetPath: kana.svgAsset,
+            size: 190,
+            showControls: false,
+          ),
+        ),
         Positioned(
           top: 16,
           right: 16,

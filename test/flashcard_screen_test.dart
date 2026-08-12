@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:kana_master/data/models/kana_type.dart';
 import 'package:kana_master/features/flashcard/flashcard_screen.dart';
+import 'package:kana_master/core/widgets/stroke_order_animator.dart';
 import 'package:kana_master/features/flashcard/widgets/flip_card.dart';
 
 void main() {
@@ -41,7 +42,11 @@ void main() {
 
       expect(find.text('Belajar Hiragana'), findsOneWidget);
       expect(find.text('1 / 104'), findsOneWidget);
-      expect(find.byType(SvgPicture), findsOneWidget);
+      // The front face draws the stroke animation, not a flat SVG. It used
+      // to be an SvgPicture, which rendered the KanjiVG file complete with
+      // its baked-in stroke-number layer — order but never direction.
+      expect(find.byType(StrokeOrderAnimator), findsOneWidget);
+      expect(find.byType(SvgPicture), findsNothing);
 
       // Tapping the card should flip it to reveal the romaji + example.
       await tester.tap(find.byType(FlipCard));
@@ -49,6 +54,9 @@ void main() {
 
       expect(find.text('A'), findsOneWidget);
       expect(find.text('Contoh Kata'), findsOneWidget);
+      // The back face keeps the flat glyph: it is a thumbnail beside the
+      // romaji, not a practice surface.
+      expect(find.byType(SvgPicture), findsOneWidget);
     },
   );
 }

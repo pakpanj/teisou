@@ -1,3 +1,6 @@
+import 'dart:async' show Timer;
+import 'dart:ui' show PathMetric;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,11 +20,22 @@ class StrokeOrderAnimator extends ConsumerStatefulWidget {
   final String? svgAssetPath;
   final double size;
 
+  /// Whether to show the play/replay/numbered buttons and the speed slider.
+  ///
+  /// Off on the kana flashcard, and not merely to save room: that card
+  /// lives inside a [SwipeNavigator], and the speed control is a [Slider] —
+  /// two horizontal-drag recognisers competing for the same pointer, which
+  /// is exactly the conflict already flagged for the kanji detail screen.
+  /// Without controls the animation simply loops on its own, which is what
+  /// a one-to-four-stroke kana needs anyway.
+  final bool showControls;
+
   const StrokeOrderAnimator({
     super.key,
     required this.character,
     required this.svgAssetPath,
     this.size = 220,
+    this.showControls = true,
   });
 
   @override
@@ -55,10 +69,22 @@ class _StrokeOrderAnimatorState extends ConsumerState<StrokeOrderAnimator>
   /// repeated practice than snapping straight back to stroke 1), then
   /// restart from the beginning — unless "show all numbered" static mode
   /// was switched on in the meantime, or the widget's gone.
+  /// Held as a cancellable [Timer] rather than a bare `Future.delayed`.
+  ///
+  /// The pause between loops outlives the widget whenever a learner swipes
+  /// to the next card mid-cycle, and an uncancellable delay leaves a
+  /// callback alive after the screen is gone. The `mounted` check kept that
+  /// harmless in the running app, which is why it survived unnoticed — but
+  /// the test binding refuses to let a pending timer pass, so this only
+  /// surfaced once the animator was first put under a widget test. Same
+  /// defect, and same fix, as the one already documented for AppLoading.
+  Timer? _loopTimer;
+
   void _handleStatusChange(AnimationStatus status) {
     if (status != AnimationStatus.completed) return;
     if (_showAllNumbered) return;
-    Future.delayed(const Duration(milliseconds: 700), () {
+    _loopTimer?.cancel();
+    _loopTimer = Timer(const Duration(milliseconds: 700), () {
       if (!mounted) return;
       if (_showAllNumbered) return;
       if (_controller.status != AnimationStatus.completed) return;
@@ -140,6 +166,7 @@ class _StrokeOrderAnimatorState extends ConsumerState<StrokeOrderAnimator>
 
   @override
   void dispose() {
+    _loopTimer?.cancel();
     _controller.dispose();
     super.dispose();
   }
@@ -191,9 +218,11 @@ class _StrokeOrderAnimatorState extends ConsumerState<StrokeOrderAnimator>
               guideColor: context.palette.textNavy.withValues(alpha: 0.10),
               strokeColor: context.palette.secondaryBlue,
               numberColor: context.palette.primaryCoral,
+              directionColor: context.palette.primaryCoral,
             ),
           ),
         ),
+        if (widget.showControls) ...[
         const SizedBox(height: 12),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -257,6 +286,7 @@ class _StrokeOrderAnimatorState extends ConsumerState<StrokeOrderAnimator>
             ),
           ],
         ),
+        ],
       ],
     );
   }
@@ -273,6 +303,11 @@ class _StrokeOrderPainter extends CustomPainter {
   final Color strokeColor;
   final Color numberColor;
 
+  /// Colour of the start dot and the arrowhead. Deliberately not
+  /// [strokeColor]: the cues have to read as annotation on top of the
+  /// stroke, not as part of the letter's shape.
+  final Color directionColor;
+
   _StrokeOrderPainter({
     required this.data,
     required this.progress,
@@ -280,6 +315,7 @@ class _StrokeOrderPainter extends CustomPainter {
     required this.guideColor,
     required this.strokeColor,
     required this.numberColor,
+    required this.directionColor,
   });
 
   @override
@@ -309,6 +345,13 @@ class _StrokeOrderPainter extends CustomPainter {
     if (showAllNumbered) {
       for (final stroke in data.strokes) {
         canvas.drawPath(stroke.path, strokePaint);
+        // Every stroke gets an arrowhead here, so the static mode answers
+        // "which way?" for the whole character at once instead of only
+        // "in what order?". No start dot: the number already sits at the
+        // start, and both together just crowd the same few pixels.
+        for (final metric in stroke.path.computeMetrics()) {
+          _paintArrowAt(canvas, metric, metric.length);
+        }
       }
     } else {
       final cumulative = progress * strokeCount;
@@ -320,10 +363,14 @@ class _StrokeOrderPainter extends CustomPainter {
       }
       if (complete < strokeCount && partial > 0) {
         for (final metric in data.strokes[complete].path.computeMetrics()) {
-          canvas.drawPath(
-            metric.extractPath(0, metric.length * partial),
-            strokePaint,
-          );
+          final drawn = metric.length * partial;
+          canvas.drawPath(metric.extractPath(0, drawn), strokePaint);
+          // Where the pen went down, and where it is now. The motion alone
+          // shows direction while it plays, but a learner who looks at a
+          // paused or half-drawn frame gets nothing from motion — these two
+          // cues are what make a still frame readable.
+          _paintStartDot(canvas, metric);
+          _paintArrowAt(canvas, metric, drawn);
         }
       }
     }
@@ -335,6 +382,55 @@ class _StrokeOrderPainter extends CustomPainter {
     }
 
     canvas.restore();
+  }
+
+  /// A filled dot where the stroke begins.
+  void _paintStartDot(Canvas canvas, PathMetric metric) {
+    final start = metric.getTangentForOffset(0);
+    if (start == null) return;
+    canvas.drawCircle(
+      start.position,
+      2.6,
+      Paint()
+        ..color = directionColor
+        ..style = PaintingStyle.fill,
+    );
+  }
+
+  /// A triangle at [distance] along the stroke, pointing the way the pen is
+  /// travelling.
+  ///
+  /// Built from the tangent's own unit vector rather than from
+  /// `Tangent.angle` and a canvas rotation. `angle` is measured with the y
+  /// axis flipped relative to canvas coordinates, which is a sign error
+  /// waiting to happen and would show up as arrowheads pointing backwards
+  /// on exactly half the strokes. The vector needs no such convention.
+  ///
+  /// Sizes are in KanjiVG's own 109-unit view box, since the canvas is
+  /// already scaled by the caller.
+  void _paintArrowAt(Canvas canvas, PathMetric metric, double distance) {
+    final tangent = metric.getTangentForOffset(distance);
+    if (tangent == null) return;
+
+    const length = 8.0;
+    const halfWidth = 4.2;
+    final tip = tangent.position;
+    final along = tangent.vector;
+    final back = tip - along * length;
+    // Perpendicular to the direction of travel.
+    final side = Offset(-along.dy, along.dx) * halfWidth;
+
+    final head = Path()
+      ..moveTo(tip.dx, tip.dy)
+      ..lineTo(back.dx + side.dx, back.dy + side.dy)
+      ..lineTo(back.dx - side.dx, back.dy - side.dy)
+      ..close();
+    canvas.drawPath(
+      head,
+      Paint()
+        ..color = directionColor
+        ..style = PaintingStyle.fill,
+    );
   }
 
   void _paintNumber(Canvas canvas, KanjiStroke stroke) {
@@ -359,6 +455,7 @@ class _StrokeOrderPainter extends CustomPainter {
   bool shouldRepaint(covariant _StrokeOrderPainter oldDelegate) {
     return oldDelegate.data != data ||
         oldDelegate.progress != progress ||
-        oldDelegate.showAllNumbered != showAllNumbered;
+        oldDelegate.showAllNumbered != showAllNumbered ||
+        oldDelegate.directionColor != directionColor;
   }
 }
