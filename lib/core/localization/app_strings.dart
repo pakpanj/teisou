@@ -1025,6 +1025,10 @@ class AppStrings {
         'Ganti nama gratis dengan menonton iklan sebentar.',
         'Change your name for free by watching a short ad.',
       );
+  String get firstNameChangeFreeHint => _t(
+        'Ganti nama pertama kali gratis, tanpa iklan.',
+        'Your first name change is free, no ad needed.',
+      );
   String get saveButton => _t('Simpan', 'Save');
   String get watchAdAndSaveButton => _t('Nonton Iklan & Simpan', 'Watch Ad & Save');
   String get nameSaveFailed => _t('Gagal menyimpan nama, coba lagi.', 'Failed to save name, try again.');

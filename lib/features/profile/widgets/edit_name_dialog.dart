@@ -5,8 +5,13 @@ import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/user_profile.dart';
 
-/// Dialog for changing `customDisplayName`. Premium users save instantly;
-/// free users must watch a rewarded ad first (gated via [AdService]).
+/// Dialog for changing `customDisplayName`. Premium users always save
+/// instantly. Free users save instantly too, but only the *first* time
+/// ever (`UserProfile.lastNameChangeAt` still null — this reuses that
+/// existing field rather than adding a new one, since it was already
+/// stamped by every successful change and simply never had a reader
+/// before this) — every change after that needs a rewarded ad, same as
+/// before this change.
 class EditNameDialog extends ConsumerStatefulWidget {
   final String currentName;
 
@@ -117,6 +122,9 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
   Widget build(BuildContext context) {
     final uid = ref.watch(appStartupProvider).valueOrNull?.uid;
     final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    final hasNeverChangedName =
+        ref.watch(userProfileProvider).valueOrNull?.lastNameChangeAt == null;
+    final canSaveFree = isPremium || hasNeverChangedName;
     final name = _trimmedOrNull;
     final s = ref.watch(appStringsProvider);
 
@@ -139,7 +147,7 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
           if (!isPremium) ...[
             const SizedBox(height: 4),
             Text(
-              s.freeNameChangeHint,
+              hasNeverChangedName ? s.firstNameChangeFreeHint : s.freeNameChangeHint,
               style: TextStyle(fontSize: 13, color: context.palette.textNavy),
             ),
           ],
@@ -150,7 +158,7 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
           onPressed: _watchingAd ? null : () => Navigator.of(context).pop(),
           child: Text(s.cancel),
         ),
-        if (isPremium)
+        if (canSaveFree)
           FilledButton(
             onPressed: (name == null || uid == null)
                 ? null
