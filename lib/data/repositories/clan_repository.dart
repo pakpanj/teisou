@@ -31,6 +31,17 @@ class ClanRepository {
   CollectionReference<Map<String, dynamic>> get _clans =>
       _firestore.collection(FirestorePaths.clans);
 
+  /// `clanFreeSlotUsed/{uid}` — the permanent, create-only marker proving
+  /// an account has already spent its one free clan. Lives at the top
+  /// level (not under `users/{uid}`) specifically so it falls outside the
+  /// owner's own `users/{uid}/{document=**}` write wildcard: if it lived
+  /// under the user's own doc, the same account that created it could also
+  /// delete it and mint itself a fresh free slot. `firestore.rules` grants
+  /// `create` only, never `update`/`delete`, to anyone (including the
+  /// owner) — the doc's mere existence is the whole check.
+  CollectionReference<Map<String, dynamic>> get _clanFreeSlotUsed =>
+      _firestore.collection(FirestorePaths.clanFreeSlotUsed);
+
   CollectionReference<Map<String, dynamic>> _membersOf(String code) =>
       _clans.doc(code).collection(FirestorePaths.clanMembers);
 
@@ -51,11 +62,34 @@ class ClanRepository {
         (_) => _codeAlphabet[_random.nextInt(_codeAlphabet.length)],
       ).join();
 
+  /// Whether [hostUid] has already spent its one free clan creation — see
+  /// [_clanFreeSlotUsed]'s own doc comment. Callers (e.g.
+  /// `CreateClanDialog`) use this to decide whether to show the plain
+  /// creation form or route through `PaywallScreen` first; `createClan`
+  /// itself re-derives the same thing server-side via `firestore.rules`,
+  /// so this client-side check is a UX head start, not the real gate.
+  Future<bool> hasUsedFreeClanSlot(String hostUid) async {
+    final doc = await _clanFreeSlotUsed.doc(hostUid).get();
+    return doc.exists;
+  }
+
   /// Creates a new clan, auto-joining [hostUid] as its first member. The
   /// clan's Firestore document id doubles as the join code, so retrying
   /// with a fresh random code on collision (checked via a plain `.get()`,
   /// the same non-transactional accepted trade-off used throughout this
   /// app) is the only "uniqueness" step needed — no separate lookup index.
+  ///
+  /// One account gets exactly one free clan. Every clan after that requires
+  /// either an active premium subscription or a spent single-use rewarded
+  /// ad unlock (`adRewards.clan_extra`) — enforced for real by
+  /// `firestore.rules`' `canCreateClan`, not just by whatever the caller
+  /// already checked via [hasUsedFreeClanSlot] and the subscription/ad-
+  /// reward checks in `CreateClanDialog`, since a raw Firestore write could
+  /// otherwise bypass a client-only check. The very first successful call
+  /// for an account writes the permanent `clanFreeSlotUsed/{hostUid}` marker as
+  /// part of the same batch; every call after that leaves it untouched
+  /// (the rule only ever grants `create`, never `update`, on that doc, so
+  /// re-writing it on a 2nd+ clan would fail the whole batch).
   Future<String> createClan({
     required String hostUid,
     required String name,
@@ -64,6 +98,8 @@ class ClanRepository {
     AvatarType avatarType = AvatarType.google,
     String? avatarValue,
   }) async {
+    final freeSlotUsed = await hasUsedFreeClanSlot(hostUid);
+
     for (var attempt = 0; attempt < _maxCodeAttempts; attempt++) {
       final code = _generateCode();
       final doc = _clans.doc(code);
@@ -95,6 +131,11 @@ class ClanRepository {
       batch.set(doc, clan.toMap());
       batch.set(_membersOf(code).doc(hostUid), member.toMap());
       batch.set(_membershipsOf(hostUid).doc(code), membership.toMap());
+      if (!freeSlotUsed) {
+        batch.set(_clanFreeSlotUsed.doc(hostUid), {
+          'usedAt': Timestamp.fromDate(now),
+        });
+      }
       await batch.commit();
       return code;
     }

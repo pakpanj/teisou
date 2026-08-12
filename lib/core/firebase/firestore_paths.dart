@@ -20,6 +20,7 @@ class FirestorePaths {
   static const kanjiComboExamHistory = 'kanjiComboExamHistory';
   static const userIds = 'userIds';
   static const clans = 'clans';
+  static const clanFreeSlotUsed = 'clanFreeSlotUsed';
   static const clanMembers = 'members';
   static const clanMemberships = 'clanMemberships';
   static const clanInvites = 'clanInvites';

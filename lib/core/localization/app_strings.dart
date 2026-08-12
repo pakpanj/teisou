@@ -469,6 +469,14 @@ class AppStrings {
   String get createClanFailed =>
       _t('Gagal membuat clan, coba lagi.', 'Failed to create clan, try again.');
   String get createButton => _t('Buat', 'Create');
+  String get clanExtraPremiumTitle => _t('Clan Tambahan', 'Extra Clan');
+  String get clanCreationLimitTitle =>
+      _t('Jatah Gratis Sudah Terpakai', "You've Used Your Free Clan");
+  String get clanCreationLimitBody => _t(
+        'Setiap akun hanya bisa membuat 1 clan gratis. Upgrade premium atau tonton iklan untuk membuat clan tambahan.',
+        "Every account gets 1 free clan. Upgrade to premium or watch an ad to create another one.",
+      );
+  String get clanCreationLimitButton => _t('Buka Penawaran', 'View Offer');
   String get clanCodeHint => _t('Kode clan', 'Clan code');
   String get codeNotFound => _t('Kode tidak ditemukan.', 'Code not found.');
   String get joinClanFailed =>

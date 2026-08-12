@@ -32,7 +32,17 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
           }
           setState(() => _bannerAd = ad as BannerAd);
         },
-        onAdFailedToLoad: (ad, error) => ad.dispose(),
+        onAdFailedToLoad: (ad, error) {
+          // Was silently swallowed before — the one call site in this app
+          // that logged nothing at all on failure, unlike the interstitial/
+          // rewarded paths in AdService. Without this there is no way to
+          // tell "no fill yet" (GADErrorCode 3 / kGADErrorNoFill, expected
+          // and harmless for a brand-new AdMob app/unit still ramping up)
+          // apart from a real config problem (wrong unit id, app not
+          // linked, network error) from a device log alone.
+          debugPrint('Banner ad failed to load: $error');
+          ad.dispose();
+        },
       ),
     );
     ad.load();

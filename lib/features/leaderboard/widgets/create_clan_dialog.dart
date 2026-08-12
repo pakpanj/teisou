@@ -5,11 +5,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/user_profile.dart';
+import '../../paywall/paywall_screen.dart';
 
-/// Dialog for creating a new clan. On success it swaps its own content to
-/// a "here's your join code" view instead of closing immediately — sharing
-/// that code with students is the entire point of creating one, so it
-/// needs to stay on screen long enough to actually copy/read.
+/// The `moduleId` watching an ad on [PaywallScreen] grants a one-time
+/// unlock for — creating one clan past the free first one. See
+/// `ClanRepository.createClan`'s doc comment for the full mechanism
+/// (`firestore.rules`' `canCreateClan` is the real gate; this dialog's own
+/// eligibility check is just a UX head start).
+const _clanExtraModuleId = 'clan_extra';
+
+/// Dialog for creating a new clan. Every account gets exactly one free
+/// clan — past that, creating another one requires an active premium
+/// subscription or a spent single-use rewarded-ad unlock, checked on open
+/// (`_checkEligibility`) before the name form ever shows. On success it
+/// swaps its own content to a "here's your join code" view instead of
+/// closing immediately — sharing that code with students is the entire
+/// point of creating one, so it needs to stay on screen long enough to
+/// actually copy/read.
 class CreateClanDialog extends ConsumerStatefulWidget {
   const CreateClanDialog({super.key});
 
@@ -23,10 +35,83 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
   String? _error;
   String? _createdCode;
 
+  bool _checkingEligibility = true;
+  bool _eligible = false;
+  // True only when eligibility came from a spent single-use ad reward (not
+  // the free slot, not premium) — tells `_create` whether it must consume
+  // that reward right after a successful creation.
+  bool _viaAdReward = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkEligibility();
+  }
+
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  Future<void> _checkEligibility() async {
+    if (mounted) setState(() => _checkingEligibility = true);
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) {
+      if (mounted) setState(() => _checkingEligibility = false);
+      return;
+    }
+
+    final freeSlotUsed =
+        await ref.read(clanRepositoryProvider).hasUsedFreeClanSlot(uid);
+    if (!freeSlotUsed) {
+      if (!mounted) return;
+      setState(() {
+        _checkingEligibility = false;
+        _eligible = true;
+        _viaAdReward = false;
+      });
+      return;
+    }
+
+    final isPremium =
+        ref.read(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    if (isPremium) {
+      if (!mounted) return;
+      setState(() {
+        _checkingEligibility = false;
+        _eligible = true;
+        _viaAdReward = false;
+      });
+      return;
+    }
+
+    final rewards = await ref.read(progressRepositoryProvider).getAdRewards(uid);
+    final adActive = rewards[_clanExtraModuleId]?.isActive ?? false;
+    if (!mounted) return;
+    setState(() {
+      _checkingEligibility = false;
+      _eligible = adActive;
+      _viaAdReward = adActive;
+    });
+  }
+
+  Future<void> _openPaywall() async {
+    final s = ref.read(appStringsProvider);
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => PaywallScreen(
+          moduleId: _clanExtraModuleId,
+          moduleTitle: s.clanExtraPremiumTitle,
+          singleUse: true,
+        ),
+      ),
+    );
+    // PaywallScreen pops itself the moment the reward is earned, so by the
+    // time this await resolves the write (if any) has already landed —
+    // safe to re-check eligibility immediately, no extra delay needed.
+    if (!mounted) return;
+    await _checkEligibility();
   }
 
   String? get _trimmedOrNull {
@@ -57,6 +142,15 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
             avatarType: profile?.avatarType ?? AvatarType.google,
             avatarValue: profile?.avatarValue,
           );
+      if (_viaAdReward) {
+        // Best-effort only — the clan itself already exists at this point,
+        // so a hiccup revoking the reward must not surface as a failure.
+        try {
+          await ref
+              .read(progressRepositoryProvider)
+              .consumeAdReward(user.uid, _clanExtraModuleId);
+        } catch (_) {}
+      }
       if (!mounted) return;
       setState(() {
         _creating = false;
@@ -75,6 +169,38 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
   Widget build(BuildContext context) {
     final code = _createdCode;
     final s = ref.watch(appStringsProvider);
+
+    if (_checkingEligibility) {
+      return const AlertDialog(
+        content: SizedBox(
+          height: 80,
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
+      );
+    }
+
+    if (!_eligible) {
+      return AlertDialog(
+        title: Text(s.clanCreationLimitTitle),
+        content: Text(
+          s.clanCreationLimitBody,
+          style: TextStyle(color: context.palette.textNavy),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text(s.cancel),
+          ),
+          FilledButton(
+            onPressed: _openPaywall,
+            child: Text(s.clanCreationLimitButton),
+          ),
+        ],
+      );
+    }
+
     if (code != null) {
       return AlertDialog(
         title: Text(s.clanCreatedTitle),
