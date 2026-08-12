@@ -14,11 +14,19 @@
       },
       "oauth_client": [
         {
-          "client_id": "329692614759-fh5nhmaufs4cutfa0bphure6pei2hhnt.apps.googleusercontent.com",
+          "client_id": "329692614759-9g2pmotdgm2ajd9vtf0tf42aqpdek6rk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.teisou.kanamaster",
-            "certificate_hash": "b4f26381dd99ca53d59643d2d0d03db3d6699a0e"
+            "certificate_hash": "d46e5d9d64d5c5a697f749e877cae875d720ee55"
+          }
+        },
+        {
+          "client_id": "329692614759-btjdcd2mnjvqavuoe7j8f7oatrm5i1i6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teisou.kanamaster",
+            "certificate_hash": "25aac0b453c76ffe572851999ed6af9e207dc4e0"
           }
         },
         {
