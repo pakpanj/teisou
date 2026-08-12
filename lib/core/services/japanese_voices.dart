@@ -65,16 +65,19 @@ class JapaneseVoices {
   /// [voices] is the raw list from `FlutterTts.getVoices`, already
   /// filtered to Japanese locales.
   factory JapaneseVoices.from(List<VoiceMap> voices) {
-    VoiceMap? pick(bool Function(String name) matches) {
+    VoiceMap? pickWhere(bool Function(VoiceMap voice) matches) {
       // Offline first: a `-network` voice needs a live connection for
       // every single line, and this app is used on the bus.
-      final hits = voices.where((v) => matches(_nameOf(v))).toList();
+      final hits = voices.where(matches).toList();
       if (hits.isEmpty) return null;
       return hits.firstWhere(
         (v) => !_nameOf(v).contains('network'),
         orElse: () => hits.first,
       );
     }
+
+    VoiceMap? pick(bool Function(String name) matches) =>
+        pickWhere((v) => matches(_nameOf(v)));
 
     // Family by family, in the order declared above rather than in
     // whatever order the device happens to list its voices — otherwise
@@ -94,9 +97,24 @@ class JapaneseVoices {
     var male = pickFamily(_googleMaleFamilies);
     var female = pickFamily(_googleFemaleFamilies);
 
-    // Some OEM and third-party engines do spell it out. Only consulted
-    // when the Google families are absent, so a device with both never
-    // gets a worse answer from a vaguer signal.
+    // **iOS states the gender outright, so stop guessing from the name.**
+    // Apple's Japanese voices are called Kyoko, Otoya, Hattori and O-Ren —
+    // no family code, and nothing resembling "male"/"female" — so every
+    // check above and below this one misses on an iPhone, both voices came
+    // back null, and the whole app spoke in one default voice. That is the
+    // same bug the Google families were added to fix, still intact on the
+    // other platform.
+    //
+    // `getVoices` carries a `gender` key of "male"/"female"/"unspecified"
+    // on iOS 13+ (this app's floor is 15.5). Android's implementation
+    // returns only `name` and `locale`, so this pass can never fire there
+    // and the measured Google choice above is untouched.
+    male ??= pickWhere((v) => _genderOf(v) == 'male');
+    female ??= pickWhere((v) => _genderOf(v) == 'female');
+
+    // Some OEM and third-party engines do spell it out in the name. Last
+    // resort, so a device with any better signal never gets a worse answer
+    // from a vaguer one.
     male ??= pick((n) => n.contains('male') && !n.contains('female'));
     female ??= pick((n) => n.contains('female'));
 
@@ -110,6 +128,9 @@ class JapaneseVoices {
   }
 
   static String _nameOf(VoiceMap v) => (v['name'] ?? '').toLowerCase();
+
+  /// "male" / "female" / "unspecified" on iOS 13+; absent on Android.
+  static String _genderOf(VoiceMap v) => (v['gender'] ?? '').toLowerCase();
 }
 
 /// How old the speaker sounds.

@@ -69,6 +69,84 @@ void main() {
     });
   });
 
+  /// What an iPhone's `getVoices` returns for ja-JP: real names, no family
+  /// code, and — the part that matters — an explicit `gender` key, which
+  /// Android's implementation of the same call does not send at all.
+  List<VoiceMap> appleVoices() => [
+        {
+          'name': 'Kyoko',
+          'locale': 'ja-JP',
+          'quality': 'default',
+          'gender': 'female',
+          'identifier': 'com.apple.voice.compact.ja-JP.Kyoko',
+        },
+        {
+          'name': 'Otoya',
+          'locale': 'ja-JP',
+          'quality': 'default',
+          'gender': 'male',
+          'identifier': 'com.apple.voice.compact.ja-JP.Otoya',
+        },
+        {
+          'name': 'Hattori',
+          'locale': 'ja-JP',
+          'quality': 'default',
+          'gender': 'male',
+          'identifier': 'com.apple.voice.enhanced.ja-JP.Hattori',
+        },
+      ];
+
+  group("Apple's Japanese voices", () {
+    test('finds a male and a female voice on an iPhone', () {
+      // The regression this guards: every check in the picker was written
+      // against Google's naming, so an iPhone matched none of them, both
+      // voices stayed null, and the entire app spoke in one default voice
+      // — the exact complaint the Google work had already fixed once.
+      final voices = JapaneseVoices.from(appleVoices());
+      expect(voices.hasBoth, isTrue);
+      expect(voices.female!['name'], 'Kyoko');
+      expect(voices.male!['name'], 'Otoya');
+    });
+
+    test('no Apple voice name carries a signal the older checks look for',
+        () {
+      // Proves the gender key is genuinely needed rather than belt and
+      // braces: if any of these names happened to contain a family code
+      // or the word "male", the bug would never have shown up.
+      for (final v in appleVoices()) {
+        final name = (v['name'] ?? '').toLowerCase();
+        expect(name, isNot(contains('male')));
+        for (final family in ['jab', 'jac', 'jad', 'htm']) {
+          expect(name, isNot(contains('-$family-')));
+        }
+      }
+    });
+
+    test('an unspecified gender is not mistaken for an answer', () {
+      final voices = JapaneseVoices.from([
+        {'name': 'Kyoko', 'locale': 'ja-JP', 'gender': 'female'},
+        {'name': 'Nanami', 'locale': 'ja-JP', 'gender': 'unspecified'},
+      ]);
+      expect(voices.female!['name'], 'Kyoko');
+      expect(voices.male, isNull,
+          reason: 'unspecified is not male; pitch shifting is the fallback');
+    });
+
+    test('Android is untouched — the gender pass never outranks Google', () {
+      // Android sends no gender key, so this cannot fire there in
+      // practice. Pinned anyway so a future engine that sends both still
+      // gets the measured Google choice rather than a vaguer one.
+      final hybrid = [
+        {'name': 'ja-jp-x-jac-local', 'locale': 'ja-JP', 'gender': 'female'},
+        {'name': 'ja-jp-x-jab-local', 'locale': 'ja-JP', 'gender': 'male'},
+      ];
+      final voices = JapaneseVoices.from(hybrid);
+      expect(voices.male!['name'], 'ja-jp-x-jac-local',
+          reason: 'jac was measured at 163 Hz — it is the male voice');
+      expect(voices.female!['name'], 'ja-jp-x-jab-local');
+    });
+  });
+
   group('other engines', () {
     test('still reads a name that spells the gender out', () {
       final voices = JapaneseVoices.from([

@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter_tts/flutter_tts.dart';
 
 import '../../data/models/kaiwa_line.dart';
@@ -23,11 +25,48 @@ class TtsService {
 
   Future<void> _ensureInitialized() async {
     if (_initialized) return;
+    await _claimIosAudioSession();
     await _tts.setLanguage('ja-JP');
     await _tts.setSpeechRate(0.4);
     await _tts.setVolume(1.0);
     await _tts.setPitch(1.0);
     _initialized = true;
+  }
+
+  /// Claims an audio session on iOS, without which the app is **silent**.
+  ///
+  /// flutter_tts's iOS `speak()` only builds an `AVSpeechUtterance` and
+  /// hands it to the synthesiser — it never touches `AVAudioSession`. An
+  /// app that does not configure one therefore runs under iOS's process
+  /// default, `.soloAmbient`, and `.soloAmbient` is muted by the physical
+  /// Ring/Silent switch. Android has no equivalent, which is exactly why
+  /// this went unnoticed for the whole life of the app: every device it
+  /// was ever tested on was an Android one, and the symptom on an iPhone
+  /// is total silence with no error raised anywhere to point at it.
+  ///
+  /// `.playback` is the category for audio that *is* the point of the
+  /// screen rather than decoration, which is the honest description here —
+  /// a listening exercise with no audio is not an exercise.
+  ///
+  /// `duckOthers` lowers other apps' audio rather than stopping it, so a
+  /// learner with music on gets it back afterwards. It also opts into the
+  /// plugin's own `setActive(false)` on `didFinish`, so the ducking is
+  /// released after each line instead of persisting for the session.
+  ///
+  /// Best-effort, like every other engine call in this class: a device
+  /// that refuses the category must still speak, just without the mute
+  /// switch defeated.
+  Future<void> _claimIosAudioSession() async {
+    if (!Platform.isIOS) return;
+    try {
+      await _tts.setSharedInstance(true);
+      await _tts.setIosAudioCategory(
+        IosTextToSpeechAudioCategory.playback,
+        const [IosTextToSpeechAudioCategoryOptions.duckOthers],
+      );
+    } catch (_) {
+      // Category refused or unsupported — fall through and speak anyway.
+    }
   }
 
   Future<void> _ensureVoicesResolved() async {
