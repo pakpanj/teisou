@@ -15,7 +15,7 @@ import '../../bab/widgets/bab_ring_badge.dart';
 import '../../bunpou/bunpou_home_screen.dart';
 import '../../choukai/choukai_home_screen.dart';
 import '../../dokkai/dokkai_home_screen.dart';
-import '../../flashcard/flashcard_screen.dart';
+import '../../flashcard/kana_table_screen.dart';
 import '../../kaiwa/kaiwa_home_screen.dart';
 import '../../kanji/kanji_home_screen.dart';
 import '../../kotoba/kotoba_home_screen.dart';
@@ -66,7 +66,7 @@ class ModulesSection extends ConsumerWidget {
                 torii: true,
                 onTap: () => AppNavigator.slideFromRight(
                   context,
-                  const FlashcardScreen(type: KanaType.hiragana),
+                  const KanaTableScreen(type: KanaType.hiragana),
                 ),
               ),
             ),
@@ -81,7 +81,7 @@ class ModulesSection extends ConsumerWidget {
                 torii: false,
                 onTap: () => AppNavigator.slideFromRight(
                   context,
-                  const FlashcardScreen(type: KanaType.katakana),
+                  const KanaTableScreen(type: KanaType.katakana),
                 ),
               ),
             ),

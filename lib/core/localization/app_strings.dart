@@ -37,6 +37,21 @@ class AppStrings {
       );
   String get exam => _t('Ujian', 'Exam');
 
+  // --- Kana table (the gojuon picker in front of the flashcards) ---
+  String get kanaTableHint =>
+      _t('Pilih huruf yang ingin kamu pelajari', 'Pick a character to study');
+
+  /// The three blocks a kana chart is taught in. Rows 0-10, 11-15 and 16-26
+  /// of the dataset respectively -- see [KanaTableScreen].
+  String get kanaSectionBasic => _t('Huruf Dasar', 'Basic Characters');
+  String get kanaSectionDakuten =>
+      _t('Tenten & Maru', 'Dakuten & Handakuten');
+  String get kanaSectionYouon => _t('Huruf Gabungan', 'Combined Characters');
+
+  /// Shown under each section heading so a child knows how big it is.
+  String kanaSectionCount(int count) =>
+      _t('$count huruf', '$count characters');
+
   // --- Home level/XP card ---
   String homeLevelLabel(int level) => _t('Level $level', 'Level $level');
   String get homeLevelSubtitle =>

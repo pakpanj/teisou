@@ -15,7 +15,16 @@ import '../../core/widgets/app_loading.dart';
 class FlashcardScreen extends ConsumerStatefulWidget {
   final KanaType type;
 
-  const FlashcardScreen({super.key, required this.type});
+  /// Which character to open on, as an index into this script's list.
+  ///
+  /// Set by [KanaTableScreen] to the character the learner tapped. Left null
+  /// anywhere else, and the deck then resumes at the saved position as it
+  /// always has — the stored index is still written on every move, so
+  /// nothing about that behaviour changed, it simply is not the way in any
+  /// more now that the chart is.
+  final int? initialIndex;
+
+  const FlashcardScreen({super.key, required this.type, this.initialIndex});
 
   @override
   ConsumerState<FlashcardScreen> createState() => _FlashcardScreenState();
@@ -90,7 +99,8 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
   }
 
   Widget _buildBody(List<KanaCharacter> list, KanaTypeProgress progress) {
-    _index ??= progress.lastIndex.clamp(0, list.length - 1);
+    _index ??= (widget.initialIndex ?? progress.lastIndex)
+        .clamp(0, list.length - 1);
     final index = _index!;
     final kana = list[index];
     final currentProgress = progress.progressFor(kana.id);
