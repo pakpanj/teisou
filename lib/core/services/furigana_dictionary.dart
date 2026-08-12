@@ -51,13 +51,110 @@ class FuriganaDictionary {
       words.putIfAbsent(entry.character, () => reading);
     }
 
+    words.removeWhere((key, _) => _excludedWords.contains(key));
+
     return FuriganaDictionary._(words);
   }
+
+  /// Words whose single stored reading is wrong often enough, across this
+  /// app's real content, that showing it is worse than showing nothing —
+  /// found via a full audit of every real sentence in Kaiwa/Dokkai/Choukai/
+  /// Bab (2026-08-12), not guessed at:
+  ///
+  /// - 市場: the Kotoba dataset only records いちば (a physical market
+  ///   stall/bazaar), but real N2/N1 content ("労働市場", "市場調査", "海外
+  ///   市場") uses it in the economic sense しじょう ("market" as in
+  ///   labor market / market research / overseas market) — a genuine
+  ///   homograph this flat one-reading-per-word dictionary has no way to
+  ///   disambiguate by context.
+  /// - 気味: きみ is correct standalone ("気味が悪い" = creepy), but wrong
+  ///   whenever it's the 〜気味 suffix ("a touch of") — that always
+  ///   rendaku-voices to ぎみ (confirmed against this app's own Bunpou
+  ///   entry for the pattern: `bunpou_gimi`, romaji "Kazegimi desu.",
+  ///   for 風邪気味 — the segmenter matched it as 風邪(かぜ)+気味(きみ),
+  ///   silently wrong by exactly the voicing this dictionary was built to
+  ///   read from real data instead of guessing).
+  ///
+  /// The remaining nine are all the same shape — a lone kunyomi, or the
+  /// first of several, that's an obscure/archaic reading or the wrong verb
+  /// sense for how this app's real sentences actually use the character,
+  /// while the reading a modern learner would expect (usually the onyomi,
+  /// or a *different* kunyomi than whichever happened to be listed first)
+  /// never gets a chance. Each was checked against real occurrences in
+  /// Kaiwa/Dokkai/Choukai/Bunpou, not assumed from the character alone:
+  /// - 件: only kunyomi is くだん (classical "the aforementioned") — every
+  ///   real use ("この件は", "お見積もりの件で") is the everyday onyomi けん
+  ///   ("matter/case").
+  /// - 字: only kunyomi is あざ (an archaic land-division term) — every
+  ///   real use ("字が汚い", "どんな字") is onyomi じ ("character").
+  /// - 室: only kunyomi is むろ (archaic "cellar/cave") — every real use
+  ///   ("コンピューター室", "音楽室") is onyomi しつ ("room").
+  /// - 市: only kunyomi is いち ("marketplace") — real use ("市の図書館")
+  ///   is onyomi し ("city"), the same homograph shape as 市場 above.
+  /// - 入: kunyomi list is [い-る, はい-る] — real use ("今日から入りました",
+  ///   "サークルに入りたい", joining an organization) needs はいる; い alone
+  ///   (from い-る, a rarer sense as in 気に入る) is picked first and wrong.
+  /// - 弾: kunyomi list is [たま, ひ-く, はず-む] — real use ("ギターを弾く",
+  ///   playing an instrument) needs ひく; たま ("bullet", a noun sense) is
+  ///   picked first and wrong.
+  /// - 摂/敢: both have an *empty* kunyomi list in this app's own Kanji
+  ///   dataset even though real usage is clearly kunyomi (摂る "to take/
+  ///   ingest", 敢えて "dare to") — falls through to onyomi せつ/かん,
+  ///   which is wrong for how either actually appears here. A data gap in
+  ///   kanji_data.json, not a selection-order problem, but the fix at this
+  ///   layer is the same: don't show the wrong reading that's all there is.
+  /// - 関: kunyomi list is [せき, かか-わる] — real use ("関わりたくない")
+  ///   needs かかわる; せき ("barrier/checkpoint", a noun sense) is picked
+  ///   first and wrong.
+  /// - 非: only kunyomi is あら-ず (classical negation, "is not") — real
+  ///   use ("自分の非を認めて", "fault/wrongdoing") is onyomi ひ.
+  static const _excludedWords = {
+    '市場', '気味', '件', '字', '室', '市', '入', '弾', '摂', '敢', '関', '非',
+  };
 
   static String? _primaryKanjiReading(KanjiEntry entry) {
     final source = entry.kunyomi.isNotEmpty ? entry.kunyomi : entry.onyomi;
     if (source.isEmpty) return null;
-    return source.first.replaceAll('-', '');
+    final raw = source.first;
+    // A kunyomi with okurigana is dictionary-formatted as "kanji-okurigana"
+    // (遠 -> "とお-い"): the part before the hyphen is the kanji's own
+    // reading, the part after is inflectional kana that's already written
+    // out separately in any real sentence — the isolated-kanji fallback
+    // only ever fires when this kanji is flanked by non-kanji, which for a
+    // verb/adjective means its own okurigana is exactly what follows. Kept
+    // whole (だけ replaceAll-ing the hyphen), 遠 flanked by its own い would
+    // render furigana "とおい" over 遠 alone, immediately followed by that
+    // same い again as plain text — showing い twice for one character.
+    // Splitting at the hyphen and keeping only the kanji's own portion
+    // (とお) matches how real printed furigana handles okurigana, and a
+    // kunyomi with no okurigana at all (山 -> "やま", no hyphen) is
+    // untouched either way.
+    final reading = raw.contains('-') ? raw.split('-').first : raw;
+    // KanjiEntry.onyomi is stored in katakana (the standard dictionary
+    // convention for distinguishing it from kunyomi) — real furigana in
+    // this app is otherwise uniformly hiragana (every Kotoba reading and
+    // every kunyomi already is), so a kanji with no kunyomi at all (falls
+    // through to onyomi here) would otherwise show as the only katakana
+    // furigana anywhere in the app, which reads as visually inconsistent
+    // rather than a deliberate convention.
+    return entry.kunyomi.isEmpty ? _katakanaToHiragana(reading) : reading;
+  }
+
+  /// Converts katakana to hiragana one character at a time via their fixed
+  /// Unicode offset (0x60 apart across the whole syllable range) — leaves
+  /// anything outside that range (already hiragana, the long-vowel mark ー,
+  /// punctuation) untouched, since only the syllable range has a direct
+  /// hiragana counterpart.
+  static String _katakanaToHiragana(String text) {
+    final buffer = StringBuffer();
+    for (final rune in text.runes) {
+      if (rune >= 0x30A1 && rune <= 0x30F6) {
+        buffer.writeCharCode(rune - 0x60);
+      } else {
+        buffer.writeCharCode(rune);
+      }
+    }
+    return buffer.toString();
   }
 
   static const _maxWordLength = 4;

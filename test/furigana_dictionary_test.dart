@@ -90,4 +90,98 @@ void main() {
     final soleWariSegment = segments.where((s) => s.text == '割');
     expect(soleWariSegment, isEmpty);
   });
+
+  test('an onyomi-only kanji shows hiragana furigana, not katakana', () {
+    // KanjiEntry.onyomi is stored katakana (万's is ['マン','バン'], no
+    // kunyomi at all) — every other reading source in this app (Kotoba
+    // words, kunyomi) is hiragana, so falling straight through without
+    // converting made 万 (and 78 other onyomi-only kanji found by a full
+    // audit) the only katakana furigana anywhere in the app.
+    // 万 flanked by が (hiragana) on both sides of the run boundary, so it
+    // stays a true isolated single-kanji run rather than getting absorbed
+    // into a longer compound like 一万 (which is itself a real Kotoba
+    // word and would swallow 万 into a whole-word match instead).
+    final segments = dictionary.segment('万が一に備えます。');
+    final man = segments.firstWhere((s) => s.text == '万');
+    expect(man.reading, 'まん');
+    expect(man.reading, isNot('マン'));
+  });
+
+  test('known homograph/rendaku words with no safe single reading are '
+      'never annotated at all', () {
+    // 市場: Kotoba only records いちば (a physical market stall), but real
+    // N2/N1 content uses it as しじょう ("market" in the economic sense —
+    // 労働市場/市場調査/海外市場). A flat one-reading-per-word map can't
+    // pick the right one by context, so — per this class's own "show
+    // nothing over something wrong" rule — it's excluded rather than
+    // guessed.
+    final marketSegments = dictionary.segment('労働市場の変化について。');
+    final market = marketSegments.where((s) => s.text.contains('市場'));
+    for (final s in market) {
+      expect(s.reading, isNull);
+    }
+
+    // 気味: きみ is correct standalone ("気味が悪い"), but the very common
+    // 〜気味 suffix ("a touch of") always rendaku-voices to ぎみ — this
+    // app's own Bunpou entry for that pattern spells it "Kazegimi desu."
+    // for 風邪気味, not "Kazekimi desu."
+    final gimiSegments = dictionary.segment('最近、風邪気味です。');
+    final gimi = gimiSegments.where((s) => s.text.contains('気味'));
+    for (final s in gimi) {
+      expect(s.reading, isNull);
+    }
+  });
+
+  test('a kunyomi-with-okurigana reading is trimmed to just the kanji\'s '
+      'own portion, not the whole word', () {
+    // 遠 -> "とお-い": とお is 遠's own reading, い is okurigana that's
+    // already written out as its own character right after 遠 in any real
+    // sentence. Showing the whole "とおい" as furigana over 遠 alone would
+    // put い twice — once folded into the ruby text, once again as the
+    // real character right below it.
+    final segments = dictionary.segment('ここから遠いですか。');
+    final tooi = segments.firstWhere((s) => s.text == '遠');
+    expect(tooi.reading, 'とお');
+    expect(tooi.reading, isNot('とおい'));
+  });
+
+  test('a kunyomi with no okurigana is unaffected by the hyphen split', () {
+    // 山 -> "やま" has no hyphen at all (it's a plain noun, no inflectional
+    // tail) — splitting must be a no-op here, not accidentally truncate a
+    // real reading that never had an okurigana boundary to begin with.
+    final segments = dictionary.segment('山に登ります。');
+    final yama = segments.firstWhere((s) => s.text == '山');
+    expect(yama.reading, 'やま');
+  });
+
+  test('known words whose one recorded reading is wrong for how this app '
+      'actually uses them are never annotated at all', () {
+    // Each pair here: (sentence, the wrong reading that must never appear).
+    // Found by checking real occurrences across Kaiwa/Dokkai/Choukai/Bunpou
+    // — see the class-level _excludedWords doc comment for the full
+    // reasoning behind each one.
+    final cases = <String, String>{
+      'それでは、この件はこれで大丈夫ですね。': '件', // くだん, real use needs けん
+      '字が汚くてごめんね。': '字', // あざ, real use needs じ
+      'コンピューター室を使う時は、飲食禁止です。': '室', // むろ, real use needs しつ
+      '女：市の図書館へはどうやって行きますか。': '市', // いち, real use needs し
+      'サークルには入りますか。': '入', // い, real use needs はい
+      '最近、ギターを弾いていないよね。': '弾', // たま, real use needs ひ
+      'たんぱく質を多く摂るようにしているんだ。': '摂', // せつ, real use needs とる
+      '敢えて厳しいことを言わせてもらいます。': '敢', // かん, real use needs あえて
+      'あまり関わりたくありません。': '関', // せき, real use needs かかわる
+      '自分の非を認めて謝ることは、簡単なようで実は勇気がいる行為だ。': '非', // あら, real use needs ひ
+    };
+    for (final entry in cases.entries) {
+      final segments = dictionary.segment(entry.key);
+      final matches = segments.where((s) => s.text == entry.value);
+      for (final m in matches) {
+        expect(
+          m.reading,
+          isNull,
+          reason: '${entry.value} in "${entry.key}" should show no furigana',
+        );
+      }
+    }
+  });
 }
