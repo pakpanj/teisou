@@ -8,8 +8,25 @@ import '../bab/bab_providers.dart';
 /// Top 20 by global score. No longer keyed by a metric: the leaderboard
 /// ranks by one number now (every exam category's Rekor added together),
 /// so there's a single ranking to watch instead of one stream per tab.
-final leaderboardTopProvider = StreamProvider<List<LeaderboardEntry>>((ref) {
-  return ref.watch(leaderboardRepositoryProvider).watchTop();
+///
+/// **Waits for `appStartupProvider` before subscribing.** Without this, the
+/// `.snapshots()` listener can fire before Firebase anonymous sign-in
+/// resolves — the very first request goes out with no `auth`, Firestore's
+/// rules correctly reject it with `permission-denied`, and a `.snapshots()`
+/// stream that has already failed a security-rule check does not silently
+/// retry on its own once auth becomes valid a moment later. This provider
+/// is a plain (non-`autoDispose`) `StreamProvider`, so that failed state
+/// stuck around for the rest of the app session — reproduced as "Peringkat
+/// ke-18" rendering fine (via `selfLeaderboardEntryProvider`, which already
+/// awaits startup first) while the ranked list below it stayed on a
+/// permission-denied error forever. Same bug shape already fixed elsewhere
+/// in this codebase for the same reason; this provider had never been
+/// updated to match.
+final leaderboardTopProvider = StreamProvider<List<LeaderboardEntry>>((
+  ref,
+) async* {
+  await ref.watch(appStartupProvider.future);
+  yield* ref.watch(leaderboardRepositoryProvider).watchTop();
 });
 
 /// The signed-in user's own leaderboard row, or null if the doc genuinely
