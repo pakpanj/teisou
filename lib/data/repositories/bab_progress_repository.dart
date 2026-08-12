@@ -18,36 +18,53 @@ import '../models/bab_progress_entry.dart';
 /// fresh from chapter 1, rather than having old manual completions count
 /// toward chapters they were never actually quizzed on.
 class BabProgressRepository {
-  static const _prefsKey = 'bab_gate_completed_ids';
+  static const _legacyPrefsKey = 'bab_gate_completed_ids';
 
   final FirebaseFirestore _firestore;
 
   BabProgressRepository({FirebaseFirestore? firestore})
       : _firestore = firestore ?? FirebaseFirestore.instance;
 
-  Future<List<BabProgressEntry>> getLocal() async {
+  /// **Scoped per uid** — see `KanjiProgressRepository`'s doc comment for
+  /// why: an unscoped key let progress (and the cumulative chapter gate)
+  /// leak between accounts sharing a device. [_migrateLegacyIfNeeded]
+  /// carries the old shared list forward to whichever uid reads first,
+  /// once, then clears it.
+  String _prefsKey(String uid) => '${_legacyPrefsKey}_$uid';
+
+  Future<void> _migrateLegacyIfNeeded(SharedPreferences prefs, String uid) async {
+    final legacy = prefs.getStringList(_legacyPrefsKey);
+    if (legacy == null) return;
+    if (prefs.getStringList(_prefsKey(uid)) == null) {
+      await prefs.setStringList(_prefsKey(uid), legacy);
+    }
+    await prefs.remove(_legacyPrefsKey);
+  }
+
+  Future<List<BabProgressEntry>> getLocal(String uid) async {
     final prefs = await SharedPreferences.getInstance();
-    final raw = prefs.getStringList(_prefsKey) ?? [];
+    await _migrateLegacyIfNeeded(prefs, uid);
+    final raw = prefs.getStringList(_prefsKey(uid)) ?? [];
     return raw
         .map((s) => BabProgressEntry.fromJson(json.decode(s) as Map<String, dynamic>))
         .toList();
   }
 
-  Future<Set<String>> getCompletedIds() async {
-    final entries = await getLocal();
+  Future<Set<String>> getCompletedIds(String uid) async {
+    final entries = await getLocal(uid);
     return entries.map((e) => e.babId).toSet();
   }
 
-  Future<void> _saveLocalList(List<BabProgressEntry> entries) async {
+  Future<void> _saveLocalList(String uid, List<BabProgressEntry> entries) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setStringList(
-      _prefsKey,
+      _prefsKey(uid),
       entries.map((e) => json.encode(e.toJson())).toList(),
     );
   }
 
-  Future<void> markCompleted(String babId, String jlptLevel, {String? uid}) async {
-    final current = await getLocal();
+  Future<void> markCompleted(String uid, String babId, String jlptLevel) async {
+    final current = await getLocal(uid);
     if (current.any((e) => e.babId == babId)) return;
     final entry = BabProgressEntry(
       babId: babId,
@@ -55,36 +72,32 @@ class BabProgressRepository {
       completedAt: DateTime.now(),
     );
     current.add(entry);
-    await _saveLocalList(current);
+    await _saveLocalList(uid, current);
 
-    if (uid != null) {
-      try {
-        await _firestore
-            .collection(FirestorePaths.babProgressCollection(uid))
-            .doc(babId)
-            .set(entry.toFirestoreMap());
-      } catch (_) {
-        // Best-effort mirror only — the local write above is the source of
-        // truth and already succeeded, so a network/Firestore failure here
-        // must not propagate and get the caller's UI state stuck.
-      }
+    try {
+      await _firestore
+          .collection(FirestorePaths.babProgressCollection(uid))
+          .doc(babId)
+          .set(entry.toFirestoreMap());
+    } catch (_) {
+      // Best-effort mirror only — the local write above is the source of
+      // truth and already succeeded, so a network/Firestore failure here
+      // must not propagate and get the caller's UI state stuck.
     }
   }
 
-  Future<void> unmarkCompleted(String babId, {String? uid}) async {
-    final current = await getLocal();
+  Future<void> unmarkCompleted(String uid, String babId) async {
+    final current = await getLocal(uid);
     current.removeWhere((e) => e.babId == babId);
-    await _saveLocalList(current);
+    await _saveLocalList(uid, current);
 
-    if (uid != null) {
-      try {
-        await _firestore
-            .collection(FirestorePaths.babProgressCollection(uid))
-            .doc(babId)
-            .delete();
-      } catch (_) {
-        // Best-effort mirror only — see markCompleted above.
-      }
+    try {
+      await _firestore
+          .collection(FirestorePaths.babProgressCollection(uid))
+          .doc(babId)
+          .delete();
+    } catch (_) {
+      // Best-effort mirror only — see markCompleted above.
     }
   }
 }

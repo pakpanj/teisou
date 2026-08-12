@@ -108,14 +108,18 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
     final passed = total > 0 && score >= gatePassMark(total);
     if (passed) {
       final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-      await ref.read(babProgressRepositoryProvider).markCompleted(
-            widget.babId,
-            widget.level.key,
-            uid: uid,
-          );
-      ref.invalidate(babCompletedIdsProvider);
-      ref.invalidate(babNextUpProvider);
-      if (uid != null) await _publishBabProgress(uid);
+      if (uid != null) {
+        await ref.read(babProgressRepositoryProvider).markCompleted(
+              uid,
+              widget.babId,
+              widget.level.key,
+            );
+        ref.invalidate(babCompletedIdsProvider);
+        ref.invalidate(babNextUpProvider);
+        await _publishBabProgress(uid);
+        await ref.read(progressRepositoryProvider).addXp(uid, 15);
+        ref.invalidate(xpProgressProvider);
+      }
     }
     if (!mounted) return;
     final s = ref.read(appStringsProvider);

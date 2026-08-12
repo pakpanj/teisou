@@ -4,8 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/kaiwa_expressions.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
+import '../../core/services/furigana_dictionary.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/furigana_text.dart';
 import '../../core/widgets/swipe_navigator.dart';
+import '../../data/models/jlpt_level.dart';
 import '../../data/models/kaiwa_answer_option.dart';
 import '../../data/models/kaiwa_entry.dart';
 import '../../data/models/kaiwa_line.dart';
@@ -27,12 +30,14 @@ class KaiwaDialogueScreen extends ConsumerStatefulWidget {
   final List<KaiwaEntry> entries;
   final int initialIndex;
   final String categoryName;
+  final JlptLevel level;
 
   const KaiwaDialogueScreen({
     super.key,
     required this.entries,
     required this.initialIndex,
     required this.categoryName,
+    required this.level,
   });
 
   @override
@@ -128,15 +133,20 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
   }
 
   Future<void> _toggleLearned() async {
-    setState(() => _togglingLearned = true);
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
+    setState(() => _togglingLearned = true);
     final repo = ref.read(kaiwaProgressRepositoryProvider);
     final learnedIds =
         ref.read(kaiwaLearnedIdsProvider).valueOrNull ?? const <String>{};
     if (learnedIds.contains(_entry.id)) {
-      await repo.unmarkLearned(_entry.id, uid: uid);
+      await repo.unmarkLearned(uid, _entry.id);
     } else {
-      await repo.markLearned(_entry.id, _entry.category, uid: uid);
+      await repo.markLearned(uid, _entry.id, _entry.category);
+      // Only on the way to learned, never on unmark — toggling back and
+      // forth must not farm XP.
+      await ref.read(progressRepositoryProvider).addXp(uid, 2);
+      ref.invalidate(xpProgressProvider);
     }
     ref.invalidate(kaiwaLearnedIdsProvider);
     if (mounted) setState(() => _togglingLearned = false);
@@ -171,6 +181,10 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
         !_answered.containsKey(_revealedCount - 1);
     final dialogueComplete =
         _revealedCount >= lines.length && !lastIsUnansweredUserTurn;
+    final showFurigana = showFuriganaFor(widget.level);
+    final furiganaDictionary = showFurigana
+        ? ref.watch(furiganaDictionaryProvider).valueOrNull
+        : null;
 
     return Scaffold(
       backgroundColor: context.palette.background,
@@ -211,6 +225,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
                         line: lines[i],
                         answer: _answered[i],
                         strings: s,
+                        furiganaDictionary: furiganaDictionary,
                       ),
                   ],
                 ),
@@ -225,6 +240,7 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
               strings: s,
               onSelect: (originalIndex, option) =>
                   _selectOption(_revealedCount - 1, originalIndex, option),
+              furiganaDictionary: furiganaDictionary,
             )
           else if (dialogueComplete)
             _CompletionBar(
@@ -257,6 +273,7 @@ class _LineBubble extends StatelessWidget {
   final KaiwaLine line;
   final KaiwaAnswerOption? answer;
   final AppStrings strings;
+  final FuriganaDictionary? furiganaDictionary;
 
   /// Only used to keep a genderless speaker's voice stable — see
   /// [voiceForSpeaker].
@@ -268,6 +285,7 @@ class _LineBubble extends StatelessWidget {
     this.answer,
     required this.strings,
     required this.dialogueId,
+    this.furiganaDictionary,
   });
 
   @override
@@ -355,13 +373,25 @@ class _LineBubble extends StatelessWidget {
                         Text(emoji, style: const TextStyle(fontSize: 16)),
                         const SizedBox(width: 4),
                       ],
-                      Text(
-                        chosen.japanese,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: context.palette.textNavy,
-                        ),
+                      Flexible(
+                        child: furiganaDictionary != null
+                            ? FuriganaSentence(
+                                text: chosen.japanese,
+                                dictionary: furiganaDictionary!,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: context.palette.textNavy,
+                                ),
+                              )
+                            : Text(
+                                chosen.japanese,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: context.palette.textNavy,
+                                ),
+                              ),
                       ),
                     ],
                   ),
@@ -474,6 +504,7 @@ class _AnswerOptions extends StatelessWidget {
   final int? wrongOptionIndex;
   final AppStrings strings;
   final void Function(int originalIndex, KaiwaAnswerOption option) onSelect;
+  final FuriganaDictionary? furiganaDictionary;
 
   const _AnswerOptions({
     required this.options,
@@ -481,6 +512,7 @@ class _AnswerOptions extends StatelessWidget {
     required this.wrongOptionIndex,
     required this.strings,
     required this.onSelect,
+    this.furiganaDictionary,
   });
 
   @override
@@ -520,6 +552,7 @@ class _AnswerOptions extends StatelessWidget {
               option: options[originalIndex],
               isWrongFlash: wrongOptionIndex == originalIndex,
               onTap: () => onSelect(originalIndex, options[originalIndex]),
+              furiganaDictionary: furiganaDictionary,
             ),
             const SizedBox(height: 8),
           ],
@@ -533,11 +566,13 @@ class _OptionButton extends StatelessWidget {
   final KaiwaAnswerOption option;
   final bool isWrongFlash;
   final VoidCallback onTap;
+  final FuriganaDictionary? furiganaDictionary;
 
   const _OptionButton({
     required this.option,
     required this.isWrongFlash,
     required this.onTap,
+    this.furiganaDictionary,
   });
 
   @override
@@ -565,14 +600,24 @@ class _OptionButton extends StatelessWidget {
             onTap: onTap,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              child: Text(
-                option.japanese,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: context.palette.textNavy,
-                ),
-              ),
+              child: furiganaDictionary != null
+                  ? FuriganaSentence(
+                      text: option.japanese,
+                      dictionary: furiganaDictionary!,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: context.palette.textNavy,
+                      ),
+                    )
+                  : Text(
+                      option.japanese,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: context.palette.textNavy,
+                      ),
+                    ),
             ),
           ),
         ),

@@ -17,8 +17,9 @@ final kotobaVocabCategoryProvider =
 /// Ids of every word marked "Sudah Dipelajari", across all categories.
 /// Invalidate this after marking/unmarking so Category/Home screens (which
 /// derive their progress badges from it) pick up the change.
-final kotobaLearnedIdsProvider = FutureProvider<Set<String>>((ref) {
-  return ref.watch(kotobaProgressRepositoryProvider).getLearnedIds();
+final kotobaLearnedIdsProvider = FutureProvider<Set<String>>((ref) async {
+  final user = await ref.watch(appStartupProvider.future);
+  return ref.watch(kotobaProgressRepositoryProvider).getLearnedIds(user.uid);
 });
 
 /// (learned, total) word count for one category — used for progress badges

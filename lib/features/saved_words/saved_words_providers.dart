@@ -19,10 +19,9 @@ import '../../data/repositories/kotoba_repository.dart';
 /// paired with a read path that never looked at it.
 final unifiedSavedWordsProvider =
     FutureProvider.autoDispose<List<SavedWord>>((ref) async {
-  final local = await ref.watch(savedWordsRepositoryProvider).getLocal();
-
-  final uid = ref.watch(appStartupProvider).valueOrNull?.uid;
-  if (uid == null) return local;
+  final user = await ref.watch(appStartupProvider.future);
+  final uid = user.uid;
+  final local = await ref.watch(savedWordsRepositoryProvider).getLocal(uid);
 
   final pointers = await ref.watch(progressRepositoryProvider).getSavedItems(uid);
   final kanjiRepo = ref.watch(kanjiRepositoryProvider);

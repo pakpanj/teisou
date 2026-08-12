@@ -3956,6 +3956,60 @@ what the on-device pass actually verified), `flutter build apk
     Particles". All three categories in `particle/_categories.json` start
     with the word, so it was never a one-off. Fixed by dropping the word
     from the format string; guarded in `mascot_coach_test.dart`.
+  - **Update (2026-08-11): the correct answer was always in the same
+    on-screen position, reported directly by the user against Dokkai N5**.
+    `McQuizFlow` (shared by Dokkai/Choukai/Kanji-Kombinasi/the Bab gate
+    quiz) rendered `optionsOf(index)` in exactly the order the caller
+    handed it, with no shuffle of its own — fine for a caller that already
+    randomizes its own option order at generation time, silently wrong for
+    one that doesn't. A full scan of `dokkai_data.json` found the real
+    scale of it: **1492 of 1500 Dokkai questions (99.5%) have
+    `correctIndex == 0`** — every session's authoring pass apparently wrote
+    the correct answer first and the distractors after, and nothing ever
+    shuffled that order back out. `choukai_data.json` has the same shape,
+    just skewed to a different fixed slot (241 of 285, 85%, at
+    `correctIndex == 1`) rather than always-first — still exploitable, just
+    less obviously so. Checked every other quiz in the app for the same
+    class of bug before assuming it was isolated: Kanji-Kombinasi (which
+    also renders through `McQuizFlow`) already shuffles at generation time
+    (`[correctAnswer, ...distractors]..shuffle(_random)` then
+    `correctIndex: options.indexOf(correctAnswer)`
+    in `kanji_combo_repository.dart`), and so do
+    `kotoba_quiz_screen.dart`/`kanji_quiz_screen.dart`/
+    `bunpou_quiz_screen.dart`/`particle_quiz_screen.dart`,
+    `bab_gate_quiz_generator.dart`, and the kana `ExamRepository` — all six
+    build their own options list with a fresh shuffle every time, so none
+    of them were affected. Only Dokkai and Choukai were exposed, and only
+    because both route static, pre-authored `options`/`correctIndex` pairs
+    straight into `McQuizFlow` with no shuffle step anywhere in between.
+    **Fixed once, at the shared widget, not at the two call sites** —
+    `_McQuizFlowState` now computes a per-question display permutation
+    (`_orderFor`, a `Map<int, List<int>>` keyed by question index, each
+    entry shuffled once via `List<int>.generate(optionCount, (i) =>
+    i)..shuffle(_random)` the first time that question is shown and cached
+    from then on — same "shuffle once per turn, don't reshuffle on every
+    rebuild" reasoning already established for
+    `KaiwaDialogueScreen._optionOrder`, otherwise the tiles would visibly
+    jump position after every tap). The option **tiles are rendered in
+    that shuffled order**, but each tile still carries its original,
+    canonical index for `label`/`index`/`onTap` — `correctIndex` and
+    `_selected` never had to change at all, so `_select`'s scoring logic,
+    the correct/wrong tile colouring, and the mascot's "names the right
+    answer" reaction are all untouched; only the on-screen order of the
+    four `for (final i in order)` tiles changed. This also automatically
+    covers Kanji-Kombinasi and the Bab gate quiz too (both already
+    correctly randomized, so shuffling an already-random list a second
+    time changes nothing observable) and any future `McQuizFlow` caller,
+    rather than being a fix two callers could each forget to inherit.
+    Deliberately **not** touched: the 1500+ authored Dokkai entries and
+    285 Choukai entries themselves — the data's internal
+    `options`/`correctIndex` pairing was never wrong, only the display
+    order was predictable, so there was no dataset to edit, just the one
+    shared render path. Verified: `flutter analyze` clean, `flutter test
+    --concurrency=1` all green (including
+    `mc_quiz_companion_test.dart`, which drives the flow by tapping
+    `find.text('benar 0')`/`find.text('salah 0')` rather than by tile
+    position, so it needed no changes and still passes unchanged).
 - **Startup preload** (`lib/core/services/startup_preloader.dart`): the
   app reads its datasets before the home screen appears, and the loading
   screen's percentage counts them.
@@ -4357,6 +4411,45 @@ what the on-device pass actually verified), `flutter build apk
   Not every navigation uses it — leaderboard/profile sub-screens still use
   plain `MaterialPageRoute`, which is fine, just don't assume 100%
   consistency.
+- **Local-first progress is now scoped per uid (2026-08-12), fixing a real
+  cross-account leak**: `KanjiProgressRepository`/`KotobaProgressRepository`/
+  `BunpouProgressRepository`/`ParticleProgressRepository`/
+  `KaiwaProgressRepository`/`BabProgressRepository`/`SavedWordsRepository`
+  used to read/write one SharedPreferences key shared by *every* account
+  that ever signed in on the device (`kanji_learned_ids`,
+  `kotoba_learned_words`, etc. — no uid in the key at all).
+  `AuthService.signOut()` never clears SharedPreferences, so switching
+  accounts on the same device (a `credential-already-in-use` fallback
+  landing on a different uid inside `linkWithGoogle`, or simply signing out
+  and a different tester signing in — e.g. a shared QA device) silently
+  carried the previous account's progress into the new one. Worse, the
+  sequential level/chapter gates (`kanjiLevelGateProvider`,
+  `kaiwaLevelGateProvider`, `babLevelProgressProvider`, and Bunpou/
+  Partikel's per-level progress) are computed straight from that same
+  local list, so a level one account unlocked showed unlocked for the next
+  account too, despite that account never having touched it. Fixed by
+  namespacing every key with the uid (`'${legacyKey}_$uid'`) — every
+  `getLocal`/`getLearnedIds`/`getCompletedIds`/`markLearned`/
+  `unmarkLearned`/`markCompleted`/`unmarkCompleted` now takes `uid` as a
+  required parameter instead of an optional one used only for the
+  Firestore mirror. A one-time `_migrateLegacyIfNeeded` per repository
+  carries whatever sat under the old shared key forward to whichever uid
+  reads first after this shipped (the common case — one account per
+  device — loses nothing), then deletes the legacy key so a second account
+  can never inherit it too. Every call site
+  (`*_word_detail_screen.dart`/`*_detail_screen.dart`/
+  `kaiwa_dialogue_screen.dart`/`bab_gate_quiz_screen.dart`/
+  `detection_result_sheet.dart`/`saved_words_screen.dart`) and every
+  `*LearnedIdsProvider`/`babCompletedIdsProvider` now resolves the current
+  uid via `appStartupProvider` first. `flutter analyze` and
+  `flutter test --concurrency=1` both stayed clean after the change
+  (293/293), including the pre-existing `KanjiLevelScreen` widget test that
+  exercises `kanjiLearnedIdsProvider` with no Firebase mock at all — the
+  extra `appStartupProvider` dependency fails gracefully to `.valueOrNull`
+  the same way the repository's own unmocked Firestore access already did,
+  it doesn't hang or throw into the widget tree. Not yet verified on a
+  physical device with two real accounts switching on the same install —
+  worth doing before relying on this for a multi-tester QA device.
 
 ## Known placeholders / deferred work
 

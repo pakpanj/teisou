@@ -24,8 +24,9 @@ final bunpouByLevelProvider = FutureProvider.family<List<BunpouEntry>, JlptLevel
 /// Ids of every grammar pattern marked "Sudah Dipelajari", across all
 /// levels. Invalidate this after marking/unmarking so Home/Level screens
 /// (which derive their progress badges from it) pick up the change.
-final bunpouLearnedIdsProvider = FutureProvider<Set<String>>((ref) {
-  return ref.watch(bunpouProgressRepositoryProvider).getLearnedIds();
+final bunpouLearnedIdsProvider = FutureProvider<Set<String>>((ref) async {
+  final user = await ref.watch(appStartupProvider.future);
+  return ref.watch(bunpouProgressRepositoryProvider).getLearnedIds(user.uid);
 });
 
 /// (learned, total) pattern count for one level — used for progress badges

@@ -140,7 +140,9 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
       createdAt: DateTime.now(),
     );
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    await ref.read(savedWordsRepositoryProvider).add(word, uid: uid);
+    if (uid != null) {
+      await ref.read(savedWordsRepositoryProvider).add(uid, word);
+    }
     if (!mounted) return;
     setState(() => _saving = false);
     ScaffoldMessenger.of(context).showSnackBar(

@@ -20,8 +20,9 @@ final babByLevelProvider = FutureProvider.family<List<BabEntry>, JlptLevel>((ref
 
 /// Ids of every Bab marked "Selesai". Invalidate this after marking/
 /// unmarking so Home/Level/Detail screens pick up the change.
-final babCompletedIdsProvider = FutureProvider<Set<String>>((ref) {
-  return ref.watch(babProgressRepositoryProvider).getCompletedIds();
+final babCompletedIdsProvider = FutureProvider<Set<String>>((ref) async {
+  final user = await ref.watch(appStartupProvider.future);
+  return ref.watch(babProgressRepositoryProvider).getCompletedIds(user.uid);
 });
 
 /// Next chapter the learner hasn't completed yet, ordered globally across

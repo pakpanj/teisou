@@ -26,8 +26,9 @@ final particleByCategoryProvider =
 /// Ids of every particle marked "Sudah Dipelajari", across all categories.
 /// Invalidate this after marking/unmarking so Home/Category screens (which
 /// derive their progress badges from it) pick up the change.
-final particleLearnedIdsProvider = FutureProvider<Set<String>>((ref) {
-  return ref.watch(particleProgressRepositoryProvider).getLearnedIds();
+final particleLearnedIdsProvider = FutureProvider<Set<String>>((ref) async {
+  final user = await ref.watch(appStartupProvider.future);
+  return ref.watch(particleProgressRepositoryProvider).getLearnedIds(user.uid);
 });
 
 /// (learned, total) particle count for one category — used for progress

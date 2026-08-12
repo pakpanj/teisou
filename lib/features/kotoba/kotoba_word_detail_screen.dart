@@ -69,13 +69,18 @@ class _KotobaWordDetailScreenState
   }
 
   Future<void> _toggleLearned(bool currentlyLearned) async {
-    setState(() => _togglingLearned = true);
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
+    setState(() => _togglingLearned = true);
     final repo = ref.read(kotobaProgressRepositoryProvider);
     if (currentlyLearned) {
-      await repo.unmarkLearned(_entry.id, uid: uid);
+      await repo.unmarkLearned(uid, _entry.id);
     } else {
-      await repo.markLearned(_entry.id, _entry.category, uid: uid);
+      await repo.markLearned(uid, _entry.id, _entry.category);
+      // Only on the way to learned, never on unmark — toggling back and
+      // forth must not farm XP.
+      await ref.read(progressRepositoryProvider).addXp(uid, 2);
+      ref.invalidate(xpProgressProvider);
     }
     ref.invalidate(kotobaLearnedIdsProvider);
     if (!mounted) return;

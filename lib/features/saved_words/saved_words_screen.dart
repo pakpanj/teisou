@@ -18,9 +18,10 @@ class SavedWordsScreen extends ConsumerWidget {
 
   Future<void> _delete(BuildContext context, WidgetRef ref, SavedWord word) async {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
     if (word.source == 'cam_detector') {
-      await ref.read(savedWordsRepositoryProvider).remove(word.id, uid: uid);
-    } else if (uid != null) {
+      await ref.read(savedWordsRepositoryProvider).remove(uid, word.id);
+    } else {
       // 'kanji' / 'kotoba' / 'bunpou' / 'particle' — all dictionary
       // bookmarks, all stored the same way regardless of type.
       await ref.read(progressRepositoryProvider).removeSavedItem(uid, word.id);

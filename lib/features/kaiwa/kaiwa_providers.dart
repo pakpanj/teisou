@@ -30,8 +30,9 @@ final kaiwaByCategoryProvider =
 /// Ids of every dialogue marked "Sudah Dipelajari", across all levels and
 /// themes. Invalidate this after marking/unmarking so Home/Level/Category
 /// screens (which derive their progress badges from it) pick up the change.
-final kaiwaLearnedIdsProvider = FutureProvider<Set<String>>((ref) {
-  return ref.watch(kaiwaProgressRepositoryProvider).getLearnedIds();
+final kaiwaLearnedIdsProvider = FutureProvider<Set<String>>((ref) async {
+  final user = await ref.watch(appStartupProvider.future);
+  return ref.watch(kaiwaProgressRepositoryProvider).getLearnedIds(user.uid);
 });
 
 /// (learned, total) dialogue count for one theme — used for progress
@@ -63,4 +64,45 @@ final kaiwaLevelProgressProvider =
     learned += real.where((e) => learnedIds.contains(e.id)).length;
   }
   return (learned, total);
+});
+
+/// Standing for one JLPT level of the sequential level lock — same "opens
+/// once every earlier level is 100% learned" rule Bab/Kanji already use,
+/// one layer down (per Kaiwa dialogue rather than per chapter/kanji).
+class KaiwaLevelGate {
+  final JlptLevel level;
+  final int learned;
+  final int total;
+  final bool reachedByProgress;
+
+  const KaiwaLevelGate({
+    required this.level,
+    required this.learned,
+    required this.total,
+    required this.reachedByProgress,
+  });
+
+  /// A level with no real dialogues yet is never "finished" — otherwise an
+  /// unauthored level would silently unlock everything behind it.
+  bool get isComplete => total > 0 && learned == total;
+}
+
+/// Per-level lock standing across all five JLPT levels, in N5-first order.
+/// Drives the level lock on [KaiwaHomeScreen].
+final kaiwaLevelGateProvider = FutureProvider<List<KaiwaLevelGate>>((ref) async {
+  final result = <KaiwaLevelGate>[];
+  // N5 has nothing in front of it, so it always starts open.
+  var previousLevelsAllComplete = true;
+  for (final level in JlptLevel.values) {
+    final (learned, total) = await ref.watch(kaiwaLevelProgressProvider(level).future);
+    final gate = KaiwaLevelGate(
+      level: level,
+      learned: learned,
+      total: total,
+      reachedByProgress: previousLevelsAllComplete,
+    );
+    result.add(gate);
+    previousLevelsAllComplete = previousLevelsAllComplete && gate.isComplete;
+  }
+  return result;
 });
