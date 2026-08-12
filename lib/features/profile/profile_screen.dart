@@ -14,6 +14,7 @@ import '../../data/models/bab_entry.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/kana_status.dart';
 import '../../data/models/kana_type.dart';
+import '../../data/models/user_profile.dart' show AvatarType;
 import '../bab/bab_providers.dart';
 import '../home/home_screen.dart';
 import '../leaderboard/add_friend_screen.dart';
@@ -156,6 +157,29 @@ class _HeaderCard extends ConsumerWidget {
       final result = await ref.read(authServiceProvider).linkWithGoogle();
       if (result == null) return; // user cancelled the account picker
       if (!context.mounted) return;
+      // leaderboard/{uid} was created back on the very first, still-
+      // anonymous launch (appStartupProvider's own ensurePublished call),
+      // permanently as "Pelajar Kana" since Auth had no displayName yet at
+      // that point — that write is create-only and never revisited on its
+      // own. Google linking is exactly the moment a real name/photo first
+      // becomes available, so it's re-synced here the same way EditName/
+      // AvatarPicker already do, rather than leaving the leaderboard row
+      // stuck on the anonymous fallback forever. Best-effort: a hiccup
+      // here must not undo the sign-in that already succeeded.
+      try {
+        final profile = ref.read(userProfileProvider).valueOrNull;
+        await ref.read(leaderboardRepositoryProvider).syncProfileInfo(
+              uid: result.uid,
+              displayName: profile?.resolveDisplayName(result) ??
+                  (result.displayName ?? 'Pelajar Kana'),
+              photoUrl: result.photoURL,
+              avatarType: profile?.avatarType ?? AvatarType.google,
+              avatarValue: profile?.avatarValue,
+            );
+      } catch (_) {
+        // Leaderboard sync is a mirror, not the source of truth — the sign-in
+        // itself already succeeded above.
+      }
       ref.invalidate(appStartupProvider);
     } catch (e) {
       if (!context.mounted) return;

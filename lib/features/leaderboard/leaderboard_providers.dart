@@ -83,23 +83,33 @@ final selfLeaderboardEntryProvider =
     }
   }
   if (entry != null) {
+    // A separate non-nullable local: `entry` is reassigned inside the try
+    // blocks below, which loses Dart's null-promotion across a try/catch
+    // boundary — this avoids re-fighting that on every line that follows.
+    var current = entry;
     try {
-      await repository.backfillGlobalScore(entry);
+      await repository.backfillGlobalScore(current);
     } catch (_) {
       // Ranking may briefly omit this user; the next open retries.
     }
     try {
-      await repository.backfillDisplayNameLower(entry);
+      await repository.backfillDisplayNameLower(current);
     } catch (_) {
       // Search may briefly miss this user; the next open retries.
     }
     try {
       final profile = await ref.watch(userProfileProvider.future);
-      await repository.backfillUserId(entry, profile.userId);
+      await repository.backfillUserId(current, profile.userId);
+      final resolvedName = profile.resolveDisplayName(user);
+      await repository.backfillDisplayName(current, resolvedName);
+      if (current.displayName != resolvedName) {
+        final refreshed = await repository.getSelf(user.uid);
+        if (refreshed != null) current = refreshed;
+      }
     } catch (_) {
-      // Search-by-id may briefly miss this user; the next open retries.
+      // Search-by-id/name may briefly miss this user; the next open retries.
     }
-    entry = await _backfillBabProgress(ref, repository, user.uid, entry);
+    entry = await _backfillBabProgress(ref, repository, user.uid, current);
   }
   return entry;
 });

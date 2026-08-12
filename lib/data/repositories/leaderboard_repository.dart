@@ -175,6 +175,32 @@ class LeaderboardRepository {
     }, SetOptions(merge: true));
   }
 
+  /// Re-syncs `displayName` onto `entry`'s leaderboard doc when it no longer
+  /// matches [resolvedName] (`UserProfile.resolveDisplayName`'s own custom >
+  /// Auth displayName > "Pelajar Kana" priority). Same shape as
+  /// [backfillUserId] — a value derived from data outside the leaderboard
+  /// doc itself, so it's passed in rather than recomputed from [entry]
+  /// alone.
+  ///
+  /// This is the retroactive half of the fix for linking a still-anonymous
+  /// account to Google: `ensurePublished` writes "Pelajar Kana" once, on
+  /// the very first (still-anonymous) launch, and never revisits it —
+  /// linking now re-syncs going forward (`ProfileScreen._linkGoogle`), but
+  /// an account that had already linked before that existed stayed stuck
+  /// on the anonymous fallback with no path back to a correct name. This
+  /// closes that gap the same way `backfillGlobalScore` et al. already
+  /// close theirs — opening the leaderboard heals the row.
+  Future<void> backfillDisplayName(
+    LeaderboardEntry entry,
+    String resolvedName,
+  ) async {
+    if (entry.displayName == resolvedName) return;
+    await _collection.doc(entry.uid).set({
+      'displayName': resolvedName,
+      'displayNameLower': resolvedName.toLowerCase(),
+    }, SetOptions(merge: true));
+  }
+
   /// Publishes a bare-minimum row for [uid] the very first time this runs
   /// for them — until now, a brand-new account had **no**
   /// `leaderboard/{uid}` doc at all until they took an exam, finished a Bab
