@@ -10,6 +10,7 @@ import '../../data/models/kana_character.dart';
 import '../../data/models/kana_progress.dart';
 import '../../data/models/kana_type.dart';
 import '../../data/models/kana_type_progress.dart';
+import '../../data/models/stroke_speed.dart';
 import 'widgets/flip_card.dart';
 import '../../core/widgets/app_loading.dart';
 
@@ -169,7 +170,12 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
           ref.watch(appStringsProvider).tapCardForMeaning,
           style: TextStyle(color: context.palette.textNavy, fontSize: 13),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
+        // Deliberately outside the card. Inside it, a tap would flip the
+        // card before it ever reached these buttons, and a slider would be
+        // fighting the swipe that changes cards.
+        const _StrokeSpeedPicker(),
+        const SizedBox(height: 8),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Row(
@@ -228,6 +234,90 @@ class _CardFace extends StatelessWidget {
   }
 }
 
+/// Three taps that set how fast the strokes are drawn, and persist it.
+///
+/// Written straight onto [strokeSpeedProvider] so the animation changes
+/// while the learner is still looking at it, then saved best-effort — a
+/// SharedPreferences failure must not undo a setting the screen has already
+/// visibly applied.
+class _StrokeSpeedPicker extends ConsumerWidget {
+  const _StrokeSpeedPicker();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
+    final current = ref.watch(strokeSpeedProvider);
+    final palette = context.palette;
+
+    String labelOf(StrokeSpeed speed) => switch (speed) {
+          StrokeSpeed.slow => s.strokeSpeedSlow,
+          StrokeSpeed.normal => s.strokeSpeedNormal,
+          StrokeSpeed.fast => s.strokeSpeedFast,
+        };
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          s.strokeSpeedLabel,
+          style: TextStyle(
+            fontSize: 12,
+            color: palette.textNavy.withValues(alpha: 0.6),
+          ),
+        ),
+        const SizedBox(width: 8),
+        for (final speed in StrokeSpeed.values) ...[
+          if (speed != StrokeSpeed.values.first) const SizedBox(width: 6),
+          _SpeedChip(
+            label: labelOf(speed),
+            selected: speed == current,
+            onTap: () {
+              ref.read(strokeSpeedProvider.notifier).state = speed;
+              ref.read(strokeSpeedRepositoryProvider).setSpeed(speed);
+            },
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+class _SpeedChip extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _SpeedChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    return Material(
+      color: selected ? palette.primaryCoral : palette.progressTrack,
+      borderRadius: BorderRadius.circular(20),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: selected ? FontWeight.bold : FontWeight.normal,
+              color: selected ? Colors.white : palette.textNavy,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _FrontContent extends ConsumerWidget {
   final KanaCharacter kana;
   final Color accent;
@@ -255,9 +345,8 @@ class _FrontContent extends ConsumerWidget {
             svgAssetPath: kana.svgAsset,
             size: 190,
             showControls: false,
-            // Slower than the kanji screen's 500ms, because there is no
-            // speed control here to slow it down with.
-            msPerStroke: 1000,
+            showFrame: false,
+            msPerStroke: ref.watch(strokeSpeedProvider).msPerStroke,
           ),
         ),
         Positioned(

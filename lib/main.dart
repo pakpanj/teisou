@@ -13,6 +13,7 @@ import 'core/providers.dart';
 import 'core/theme/app_theme.dart';
 import 'data/models/app_theme_mode.dart';
 import 'data/repositories/language_repository.dart';
+import 'data/repositories/stroke_speed_repository.dart';
 import 'data/repositories/theme_repository.dart';
 import 'features/home/home_screen.dart';
 import 'features/onboarding/age_question_screen.dart';
@@ -52,11 +53,13 @@ Future<void> main() async {
   unawaited(_initializeMobileAds());
   final initialLanguage = await LanguageRepository().getLanguage();
   final initialThemeMode = await ThemeRepository().getThemeMode();
+  final initialStrokeSpeed = await StrokeSpeedRepository().getSpeed();
   runApp(
     ProviderScope(
       overrides: [
         languageProvider.overrideWith((ref) => initialLanguage),
         themeModeProvider.overrideWith((ref) => initialThemeMode),
+        strokeSpeedProvider.overrideWith((ref) => initialStrokeSpeed),
       ],
       child: const KanaMasterApp(),
     ),

@@ -41,6 +41,14 @@ class StrokeOrderAnimator extends ConsumerStatefulWidget {
   /// to follow with a pencil.
   final int msPerStroke;
 
+  /// Whether to draw the panel behind the character.
+  ///
+  /// On the kanji screen it separates the glyph from a plain background. On
+  /// the kana flashcard there is already an illustrated card behind it, and
+  /// a second bordered box floating on top of that reads as a seam in the
+  /// artwork rather than as a frame.
+  final bool showFrame;
+
   const StrokeOrderAnimator({
     super.key,
     required this.character,
@@ -48,6 +56,7 @@ class StrokeOrderAnimator extends ConsumerStatefulWidget {
     this.size = 220,
     this.showControls = true,
     this.msPerStroke = 500,
+    this.showFrame = true,
   });
 
   @override
@@ -105,6 +114,13 @@ class _StrokeOrderAnimatorState extends ConsumerState<StrokeOrderAnimator>
   @override
   void didUpdateWidget(covariant StrokeOrderAnimator oldWidget) {
     super.didUpdateWidget(oldWidget);
+    // A speed change has to be applied to the controller by hand: the
+    // duration was computed once at load, so without this the new setting
+    // would not take effect until the next character.
+    if (oldWidget.msPerStroke != widget.msPerStroke) {
+      final strokeCount = _strokeData?.strokes.length;
+      if (strokeCount != null) _applyDuration(strokeCount);
+    }
     if (oldWidget.svgAssetPath != widget.svgAssetPath) {
       _controller.stop();
       _controller.value = 0;
@@ -212,13 +228,15 @@ class _StrokeOrderAnimatorState extends ConsumerState<StrokeOrderAnimator>
         Container(
           width: widget.size,
           height: widget.size,
-          decoration: BoxDecoration(
-            color: context.palette.cardWhite,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: context.palette.textNavy.withValues(alpha: 0.08),
-            ),
-          ),
+          decoration: widget.showFrame
+              ? BoxDecoration(
+                  color: context.palette.cardWhite,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: context.palette.textNavy.withValues(alpha: 0.08),
+                  ),
+                )
+              : null,
           child: CustomPaint(
             size: Size(widget.size, widget.size),
             painter: _StrokeOrderPainter(

@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/models/app_language.dart';
+import '../data/models/stroke_speed.dart';
 import '../data/models/app_theme_mode.dart';
 import '../data/models/kana_character.dart';
 import '../data/models/kana_type.dart';
@@ -13,6 +14,7 @@ import '../data/models/subscription.dart';
 import '../data/models/xp_progress.dart';
 import '../data/models/user_profile.dart';
 import '../data/repositories/language_repository.dart';
+import '../data/repositories/stroke_speed_repository.dart';
 import '../data/repositories/theme_repository.dart';
 import '../data/models/ad_audience.dart';
 import '../data/repositories/ad_audience_repository.dart';
@@ -79,6 +81,18 @@ final languageProvider = StateProvider<AppLanguage>(
 /// screens are wired up so far.
 final appStringsProvider = Provider<AppStrings>(
   (ref) => AppStrings(ref.watch(languageProvider)),
+);
+
+final strokeSpeedRepositoryProvider = Provider<StrokeSpeedRepository>(
+  (ref) => StrokeSpeedRepository(),
+);
+
+/// How fast the kana flashcard draws each stroke. Overridden in `main.dart`
+/// from SharedPreferences before `runApp`, the same way [languageProvider]
+/// is, so the deck opens at the chosen speed instead of visibly switching
+/// to it on the first card.
+final strokeSpeedProvider = StateProvider<StrokeSpeed>(
+  (ref) => StrokeSpeed.normal,
 );
 
 final themeRepositoryProvider = Provider<ThemeRepository>(

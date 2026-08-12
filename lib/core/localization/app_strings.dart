@@ -37,6 +37,12 @@ class AppStrings {
       );
   String get exam => _t('Ujian', 'Exam');
 
+  // --- Stroke animation speed, on the kana flashcard ---
+  String get strokeSpeedLabel => _t('Kecepatan', 'Speed');
+  String get strokeSpeedSlow => _t('Pelan', 'Slow');
+  String get strokeSpeedNormal => _t('Sedang', 'Medium');
+  String get strokeSpeedFast => _t('Cepat', 'Fast');
+
   // --- Kana table (the gojuon picker in front of the flashcards) ---
   String get kanaTableHint =>
       _t('Pilih huruf yang ingin kamu pelajari', 'Pick a character to study');
