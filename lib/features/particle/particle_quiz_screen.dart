@@ -10,6 +10,8 @@ import '../../core/services/mascot_coach.dart';
 import '../../core/widgets/mascot_companion.dart';
 import '../../data/models/cloze_example.dart';
 import '../../data/models/particle_entry.dart';
+import '../../data/models/quiz_review_entry.dart';
+import '../exam/quiz_review_screen.dart';
 
 /// Fill-in-the-blank ("cloze") mini-game over one category's particles:
 /// shown a sentence with the particle blanked out, pick the correct
@@ -53,6 +55,7 @@ class _ParticleQuizScreenState extends ConsumerState<ParticleQuizScreen> {
   int _index = 0;
   int _score = 0;
   int? _selected;
+  final List<QuizReviewEntry> _wrongAnswers = [];
 
   /// Held here rather than built in `build`: it remembers the run of
   /// correct answers, which a per-frame instance would silently reset.
@@ -97,19 +100,29 @@ class _ParticleQuizScreenState extends ConsumerState<ParticleQuizScreen> {
     if (_selected != null) return;
     final question = _questions[_index];
     final correct = optionIndex == question.correctIndex;
+    // Guarded rather than indexed straight, so a question whose
+    // correctIndex disagreed with its own options list could not take the
+    // quiz down mid-answer.
+    final correctAnswer = question.correctIndex >= 0 &&
+            question.correctIndex < question.options.length
+        ? question.options[question.correctIndex]
+        : '';
     setState(() {
       _selected = optionIndex;
-      if (correct) _score++;
+      if (correct) {
+        _score++;
+      } else {
+        _wrongAnswers.add(QuizReviewEntry(
+          question:
+              '${question.cloze.sentenceBefore} ___ ${question.cloze.sentenceAfter}',
+          userAnswer: question.options[optionIndex],
+          correctAnswer: correctAnswer,
+        ));
+      }
       _reaction = _coach.onAnswer(
         ref.read(appStringsProvider),
         correct: correct,
-        // Guarded rather than indexed straight, so a question whose
-        // correctIndex disagreed with its own options list could not take
-        // the quiz down mid-answer.
-        correctAnswer: question.correctIndex >= 0 &&
-                question.correctIndex < question.options.length
-            ? question.options[question.correctIndex]
-            : '',
+        correctAnswer: correctAnswer,
       );
     });
   }
@@ -137,6 +150,7 @@ class _ParticleQuizScreenState extends ConsumerState<ParticleQuizScreen> {
       _score = 0;
       _selected = null;
       _reaction = null;
+      _wrongAnswers.clear();
       _coach.reset();
     });
   }
@@ -155,6 +169,7 @@ class _ParticleQuizScreenState extends ConsumerState<ParticleQuizScreen> {
                 total: _questions.length,
                 strings: s,
                 onRestart: _restart,
+                wrongAnswers: _wrongAnswers,
               )
             : _buildQuestion(s),
       ),
@@ -368,12 +383,14 @@ class _ResultView extends StatelessWidget {
   final int total;
   final AppStrings strings;
   final VoidCallback onRestart;
+  final List<QuizReviewEntry> wrongAnswers;
 
   const _ResultView({
     required this.score,
     required this.total,
     required this.strings,
     required this.onRestart,
+    required this.wrongAnswers,
   });
 
   @override
@@ -401,6 +418,20 @@ class _ResultView extends StatelessWidget {
             strings.scoreOf(score, total),
             style: TextStyle(fontSize: 15, color: context.palette.textNavy.withValues(alpha: 0.7)),
           ),
+          if (wrongAnswers.isNotEmpty) ...[
+            const SizedBox(height: 16),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => QuizReviewScreen(entries: wrongAnswers),
+                  ),
+                ),
+                child: Text(strings.reviewMistakesButton),
+              ),
+            ),
+          ],
           const SizedBox(height: 32),
           Row(
             children: [

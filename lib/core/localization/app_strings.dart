@@ -901,6 +901,16 @@ class AppStrings {
   String get retryExamButton => _t('Ulangi Ujian', 'Retry Exam');
   String get backToMenuButton => _t('Kembali ke Menu', 'Back to Menu');
 
+  // --- Quiz/exam wrong-answer review ---
+  String get reviewMistakesButton => _t('Lihat Kesalahan', 'Review Mistakes');
+  String get reviewMistakesTitle => _t('Riwayat Kesalahan', 'Mistake Review');
+  String get yourAnswerLabel => _t('Jawaban Anda', 'Your answer');
+  String get correctAnswerLabel => _t('Jawaban benar', 'Correct answer');
+  String reviewMistakesCount(int count) => _t(
+        '$count soal yang salah',
+        '$count question${count == 1 ? '' : 's'} answered wrong',
+      );
+
   // --- Saved Words / About / Notification / Exam History ---
   String get noSavedWordsMessage => _t(
         'Belum ada kata tersimpan. Simpan kata lewat ikon bookmark di '

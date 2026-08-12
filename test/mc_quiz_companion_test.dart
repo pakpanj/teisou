@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kana_master/core/theme/app_theme.dart';
 import 'package:kana_master/core/widgets/mascot_companion.dart';
 import 'package:kana_master/core/widgets/mascot_widget.dart';
+import 'package:kana_master/data/models/quiz_review_entry.dart';
 import 'package:kana_master/features/exam/mc_quiz_flow.dart';
 
 /// The mascot sitting inside a lesson, reacting to each answer.
@@ -16,7 +17,9 @@ import 'package:kana_master/features/exam/mc_quiz_flow.dart';
 void main() {
   /// Three questions with an obvious right answer, so the flow can be
   /// driven by tapping text rather than by index bookkeeping.
-  Widget wrap({void Function(int score, int total)? onComplete}) =>
+  Widget wrap(
+          {void Function(int score, int total, List<QuizReviewEntry> wrong)?
+              onComplete}) =>
       ProviderScope(
         child: MaterialApp(
           theme: AppTheme.light,
@@ -26,7 +29,8 @@ void main() {
               headerBuilder: (context, i) => Text('soal $i'),
               optionsOf: (i) => ['benar $i', 'salah $i'],
               correctIndexOf: (i) => 0,
-              onComplete: onComplete ?? (_, _) {},
+              questionLabelOf: (i) => 'soal $i',
+              onComplete: onComplete ?? (_, _, _) {},
             ),
           ),
         ),
@@ -108,7 +112,7 @@ void main() {
     // _select that tallies the score.
     int? score;
     int? total;
-    await tester.pumpWidget(wrap(onComplete: (s, t) {
+    await tester.pumpWidget(wrap(onComplete: (s, t, _) {
       score = s;
       total = t;
     }));

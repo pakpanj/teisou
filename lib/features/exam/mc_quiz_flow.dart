@@ -9,6 +9,7 @@ import '../../core/services/mascot_coach.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/furigana_text.dart';
 import '../../core/widgets/mascot_companion.dart';
+import '../../data/models/quiz_review_entry.dart';
 
 /// Shared "N multiple-choice questions, one at a time, tap to reveal
 /// correct/wrong, Next button, tally a score" flow for Dokkai/Choukai/
@@ -22,7 +23,19 @@ class McQuizFlow extends ConsumerStatefulWidget {
   final Widget Function(BuildContext context, int index) headerBuilder;
   final List<String> Function(int index) optionsOf;
   final int Function(int index) correctIndexOf;
-  final void Function(int score, int total) onComplete;
+  final void Function(
+    int score,
+    int total,
+    List<QuizReviewEntry> wrongAnswers,
+  ) onComplete;
+
+  /// A plain-text version of whatever [headerBuilder] renders for one
+  /// question, used only to build the "what was asked" line in the
+  /// post-quiz mistake review — [headerBuilder] returns a `Widget`, which
+  /// a review list can't reuse as a label without re-rendering the whole
+  /// header (a passage card, an audio-replay button, ...) for every wrong
+  /// answer.
+  final String Function(int index) questionLabelOf;
 
   /// Whether options should be annotated with furigana — the caller
   /// decides this from its own JLPT level via `showFuriganaFor` (see
@@ -40,6 +53,7 @@ class McQuizFlow extends ConsumerStatefulWidget {
     required this.optionsOf,
     required this.correctIndexOf,
     required this.onComplete,
+    required this.questionLabelOf,
     this.showFurigana = false,
   });
 
@@ -51,6 +65,11 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   int _index = 0;
   int? _selected;
   int _score = 0;
+
+  /// Every question answered wrong this session, in order — handed to
+  /// [widget.onComplete] so the result screen can offer a review, without
+  /// this widget needing to know anything about how that's displayed.
+  final List<QuizReviewEntry> _wrongAnswers = [];
 
   /// Held by the state, not rebuilt per frame: it remembers the run of
   /// correct answers and what it said last, and both would reset on every
@@ -89,17 +108,30 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
     if (correct) _score++;
 
     final options = widget.optionsOf(_index);
+    // Guarded rather than indexed straight, same reasoning as the coach's
+    // correctAnswer just below: a caller whose correctIndexOf/optionIndex
+    // disagrees with its own options list must not take the whole quiz
+    // down mid-question.
+    final correctAnswer = correctIndex >= 0 && correctIndex < options.length
+        ? options[correctIndex]
+        : '';
+    if (!correct) {
+      _wrongAnswers.add(
+        QuizReviewEntry(
+          question: widget.questionLabelOf(_index),
+          userAnswer: optionIndex >= 0 && optionIndex < options.length
+              ? options[optionIndex]
+              : '',
+          correctAnswer: correctAnswer,
+        ),
+      );
+    }
     setState(() {
       _selected = optionIndex;
       _reaction = _coach.onAnswer(
         ref.read(appStringsProvider),
         correct: correct,
-        // Guarded rather than indexed straight: a caller whose
-        // correctIndexOf disagrees with its own options list would
-        // otherwise take the whole quiz down mid-question.
-        correctAnswer: correctIndex >= 0 && correctIndex < options.length
-            ? options[correctIndex]
-            : '',
+        correctAnswer: correctAnswer,
       );
     });
   }
@@ -107,7 +139,7 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   void _next() {
     final isLast = _index >= widget.totalQuestions - 1;
     if (isLast) {
-      widget.onComplete(_score, widget.totalQuestions);
+      widget.onComplete(_score, widget.totalQuestions, _wrongAnswers);
       return;
     }
     setState(() {

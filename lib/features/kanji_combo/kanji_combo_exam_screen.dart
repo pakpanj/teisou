@@ -5,6 +5,7 @@ import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/jlpt_level.dart';
+import '../../data/models/quiz_review_entry.dart';
 import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
@@ -28,6 +29,7 @@ class KanjiComboExamScreen extends ConsumerWidget {
     WidgetRef ref,
     int score,
     int total,
+    List<QuizReviewEntry> wrongAnswers,
   ) async {
     final user = ref.read(appStartupProvider).valueOrNull;
     final result = SimpleExamResult(
@@ -68,6 +70,7 @@ class KanjiComboExamScreen extends ConsumerWidget {
               : s.examCategoryKanjiComboSingle,
         ),
         result: result,
+        wrongAnswers: wrongAnswers,
       ),
     );
   }
@@ -103,7 +106,9 @@ class KanjiComboExamScreen extends ConsumerWidget {
             ),
             optionsOf: (index) => questions[index].options,
             correctIndexOf: (index) => questions[index].correctIndex,
-            onComplete: (score, total) => _onComplete(context, ref, score, total),
+            questionLabelOf: (index) => questions[index].prompt,
+            onComplete: (score, total, wrongAnswers) =>
+                _onComplete(context, ref, score, total, wrongAnswers),
           );
         },
         loading: () => const AppLoading(),

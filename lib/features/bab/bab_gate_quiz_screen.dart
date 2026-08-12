@@ -8,6 +8,7 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/furigana_text.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/leaderboard_entry.dart';
+import '../../data/models/quiz_review_entry.dart';
 import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
@@ -104,7 +105,11 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
     }
   }
 
-  Future<void> _onComplete(int score, int total) async {
+  Future<void> _onComplete(
+    int score,
+    int total,
+    List<QuizReviewEntry> wrongAnswers,
+  ) async {
     final passed = total > 0 && score >= gatePassMark(total);
     if (passed) {
       final uid = ref.read(appStartupProvider).valueOrNull?.uid;
@@ -161,6 +166,12 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
             ),
           ],
         ),
+        wrongAnswers: wrongAnswers,
+        // Same reasoning as this screen's own SecureScreenMixin: the
+        // question pool per chapter is small and reused across attempts,
+        // so a captured mistake list is just as reusable as a captured
+        // question sheet.
+        reviewSecure: true,
       ),
     );
   }
@@ -194,6 +205,7 @@ class _BabGateQuizScreenState extends ConsumerState<BabGateQuizScreen>
               ),
               optionsOf: (index) => questions[index].options,
               correctIndexOf: (index) => questions[index].correctIndex,
+              questionLabelOf: (index) => questions[index].prompt,
               onComplete: _onComplete,
             ),
           );

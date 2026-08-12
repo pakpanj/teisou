@@ -8,6 +8,7 @@ import '../../core/services/mascot_coach.dart';
 import '../../core/widgets/mascot_companion.dart';
 import '../../data/models/exam_mode.dart';
 import '../../data/models/exam_question.dart';
+import '../../data/models/quiz_review_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam_result/exam_result_screen.dart';
 import '../profile/exam_history_providers.dart';
@@ -120,7 +121,18 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
       ref.invalidate(xpProgressProvider);
 
       if (!mounted) return;
-      AppNavigator.replaceFadeScale(context, ExamResultScreen(result: result));
+      final wrongAnswers = _answers
+          .where((a) => !a.isCorrect)
+          .map((a) => QuizReviewEntry(
+                question: a.question.kana.character,
+                userAnswer: a.selectedAnswer,
+                correctAnswer: a.question.correctAnswer,
+              ))
+          .toList();
+      AppNavigator.replaceFadeScale(
+        context,
+        ExamResultScreen(result: result, wrongAnswers: wrongAnswers),
+      );
     } catch (_) {
       if (!mounted) return;
       setState(() => _submitting = false);

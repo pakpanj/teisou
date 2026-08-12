@@ -7,6 +7,7 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/furigana_text.dart';
 import '../../data/models/dokkai_passage.dart';
 import '../../data/models/jlpt_level.dart';
+import '../../data/models/quiz_review_entry.dart';
 import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
@@ -49,6 +50,7 @@ class DokkaiExamScreen extends ConsumerWidget {
     WidgetRef ref,
     int score,
     int total,
+    List<QuizReviewEntry> wrongAnswers,
   ) async {
     final user = ref.read(appStartupProvider).valueOrNull;
     final result = SimpleExamResult(
@@ -88,6 +90,7 @@ class DokkaiExamScreen extends ConsumerWidget {
       SimpleExamResultScreen(
         title: s.examResultTitle(s.examCategoryDokkai),
         result: result,
+        wrongAnswers: wrongAnswers,
       ),
     );
   }
@@ -108,7 +111,9 @@ class DokkaiExamScreen extends ConsumerWidget {
         ),
         optionsOf: (index) => items[index].question.options,
         correctIndexOf: (index) => items[index].question.correctIndex,
-        onComplete: (score, total) => _onComplete(context, ref, score, total),
+        questionLabelOf: (index) => items[index].question.prompt,
+        onComplete: (score, total, wrongAnswers) =>
+            _onComplete(context, ref, score, total, wrongAnswers),
       ),
     );
   }

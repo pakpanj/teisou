@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../data/models/quiz_review_entry.dart';
 import '../../data/models/simple_exam_result.dart';
+import 'quiz_review_screen.dart';
 
 /// Shared score-summary screen for Dokkai/Choukai/Kanji-Kombinasi/the Bab
 /// gate quiz — unlike the kana `ExamResultScreen` (confetti, mastery
@@ -17,11 +19,24 @@ class SimpleExamResultScreen extends ConsumerStatefulWidget {
   final SimpleExamResult result;
   final Widget? reviewContent;
 
+  /// Every question answered wrong this session — when non-empty, shows a
+  /// "Lihat Kesalahan" button that opens [QuizReviewScreen]. Kept separate
+  /// from [reviewContent], which already has its own single purpose per
+  /// caller (e.g. Choukai's audio-script reveal, Bab's pass/fail mascot
+  /// message) — both can be present at once.
+  final List<QuizReviewEntry>? wrongAnswers;
+
+  /// Forwarded to [QuizReviewScreen.secure] — see that field's doc comment.
+  /// Only the Bab gate quiz sets this.
+  final bool reviewSecure;
+
   const SimpleExamResultScreen({
     super.key,
     required this.title,
     required this.result,
     this.reviewContent,
+    this.wrongAnswers,
+    this.reviewSecure = false,
   });
 
   @override
@@ -110,7 +125,26 @@ class _SimpleExamResultScreenState
                 const SizedBox(height: 24),
                 reviewContent,
               ],
-              const SizedBox(height: 32),
+              if (widget.wrongAnswers != null &&
+                  widget.wrongAnswers!.isNotEmpty) ...[
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton(
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) =>
+                            QuizReviewScreen(
+                              entries: widget.wrongAnswers!,
+                              secure: widget.reviewSecure,
+                            ),
+                      ),
+                    ),
+                    child: Text(s.reviewMistakesButton),
+                  ),
+                ),
+              ],
+              const SizedBox(height: 16),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

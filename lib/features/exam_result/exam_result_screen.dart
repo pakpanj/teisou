@@ -10,13 +10,19 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/mascot_widget.dart';
 import '../../core/widgets/sakura_decoration.dart';
 import '../../data/models/exam_result.dart';
+import '../../data/models/quiz_review_entry.dart';
 import '../exam/exam_screen.dart';
+import '../exam/quiz_review_screen.dart';
 import '../home/home_screen.dart';
 
 class ExamResultScreen extends ConsumerStatefulWidget {
   final ExamResult result;
 
-  const ExamResultScreen({super.key, required this.result});
+  /// Every question answered wrong this session — see
+  /// `SimpleExamResultScreen.wrongAnswers` for the same field's reasoning.
+  final List<QuizReviewEntry>? wrongAnswers;
+
+  const ExamResultScreen({super.key, required this.result, this.wrongAnswers});
 
   @override
   ConsumerState<ExamResultScreen> createState() => _ExamResultScreenState();
@@ -151,6 +157,22 @@ class _ExamResultScreenState extends ConsumerState<ExamResultScreen> {
                   ),
                 ],
               ),
+              if (widget.wrongAnswers != null &&
+                  widget.wrongAnswers!.isNotEmpty) ...[
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton(
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) =>
+                            QuizReviewScreen(entries: widget.wrongAnswers!),
+                      ),
+                    ),
+                    child: Text(s.reviewMistakesButton),
+                  ),
+                ),
+              ],
               const SizedBox(height: 32),
               SizedBox(
                 width: double.infinity,

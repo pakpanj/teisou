@@ -8,6 +8,7 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/furigana_text.dart';
 import '../../data/models/choukai_clip.dart';
 import '../../data/models/jlpt_level.dart';
+import '../../data/models/quiz_review_entry.dart';
 import '../../data/models/simple_exam_result.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
@@ -29,6 +30,7 @@ class ChoukaiExamScreen extends ConsumerWidget {
     WidgetRef ref,
     int score,
     int total,
+    List<QuizReviewEntry> wrongAnswers,
   ) async {
     final user = ref.read(appStartupProvider).valueOrNull;
     final result = SimpleExamResult(
@@ -66,6 +68,7 @@ class ChoukaiExamScreen extends ConsumerWidget {
         title: s.examResultTitle(s.examCategoryChoukai),
         result: result,
         reviewContent: _ScriptReview(clip: clip, strings: s),
+        wrongAnswers: wrongAnswers,
       ),
     );
   }
@@ -85,7 +88,9 @@ class ChoukaiExamScreen extends ConsumerWidget {
         ),
         optionsOf: (index) => clip.questions[index].options,
         correctIndexOf: (index) => clip.questions[index].correctIndex,
-        onComplete: (score, total) => _onComplete(context, ref, score, total),
+        questionLabelOf: (index) => clip.questions[index].prompt,
+        onComplete: (score, total, wrongAnswers) =>
+            _onComplete(context, ref, score, total, wrongAnswers),
       ),
     );
   }
