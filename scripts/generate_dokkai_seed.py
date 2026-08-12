@@ -10,6 +10,7 @@
 # Run from repo root: python scripts/generate_dokkai_seed.py
 
 import json
+import random
 import re
 
 from dokkai_lists import (
@@ -8944,11 +8945,24 @@ def build_entries(entries, level_key, titles):
                 f"{entry_id}/{i}: correct_index out of range"
             )
             assert len(options) >= 2, f"{entry_id}/{i}: need at least 2 options"
+            # Authored tuples overwhelmingly wrote the correct option
+            # first (correct_index=0) since that's the natural way to
+            # write a question by hand — found on a live device pass
+            # 2026-08-12: 1200 of 1500 questions across the whole dataset
+            # had correct_index==0, meaning "always tap the first option"
+            # scored close to 100% on every exam. Shuffled here, at build
+            # time, with a seed derived from the question's own id so the
+            # result is stable across regenerations (a fresh random shuffle
+            # on every run would make every regen a full-file diff).
+            shuffled = options[:]
+            random.Random(f"{entry_id}_q{i}").shuffle(shuffled)
+            correct_text = options[correct_index]
+            shuffled_index = shuffled.index(correct_text)
             built_questions.append({
                 "id": f"{entry_id}_q{i}",
                 "prompt": prompt,
-                "options": options,
-                "correctIndex": correct_index,
+                "options": shuffled,
+                "correctIndex": shuffled_index,
             })
         result.append({
             "id": entry_id,

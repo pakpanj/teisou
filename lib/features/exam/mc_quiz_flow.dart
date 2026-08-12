@@ -1,9 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../../core/services/furigana_dictionary.dart';
 import '../../core/services/mascot_coach.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/furigana_text.dart';
 import '../../core/widgets/mascot_companion.dart';
 
 /// Shared "N multiple-choice questions, one at a time, tap to reveal
@@ -20,6 +24,15 @@ class McQuizFlow extends ConsumerStatefulWidget {
   final int Function(int index) correctIndexOf;
   final void Function(int score, int total) onComplete;
 
+  /// Whether options should be annotated with furigana — the caller
+  /// decides this from its own JLPT level via `showFuriganaFor` (see
+  /// `furigana_text.dart`), since this widget has no level of its own.
+  /// Harmless when the options aren't kanji-bearing Japanese text (e.g.
+  /// Kanji-Kombinasi's Indonesian meaning options, or pure-kana reading
+  /// options) — `FuriganaSentence` only annotates kanji runs it
+  /// recognizes, so a run with none just renders as plain text either way.
+  final bool showFurigana;
+
   const McQuizFlow({
     super.key,
     required this.totalQuestions,
@@ -27,6 +40,7 @@ class McQuizFlow extends ConsumerStatefulWidget {
     required this.optionsOf,
     required this.correctIndexOf,
     required this.onComplete,
+    this.showFurigana = false,
   });
 
   @override
@@ -46,6 +60,27 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   /// What the mascot is saying about the answer just given, or null while
   /// the question is still unanswered.
   CoachLine? _reaction;
+
+  final Random _random = Random();
+
+  /// Per-question display order for [optionsOf]'s options — a permutation
+  /// of their original indices, computed once the first time that question
+  /// is shown and cached here, not recomputed on every rebuild (same
+  /// "shuffle once per turn" reasoning as `KaiwaDialogueScreen._optionOrder`
+  /// — recomputing on every `setState` would make the tiles visibly jump
+  /// position after every tap). Needed because several content sources
+  /// wired through this widget (Dokkai, Choukai) always author the correct
+  /// answer at the same fixed position — `optionsOf`/`correctIndexOf` are
+  /// rendered exactly as given, so without this the on-screen answer order
+  /// would just replay that authoring bias back to the learner.
+  final Map<int, List<int>> _displayOrder = {};
+
+  List<int> _orderFor(int questionIndex, int optionCount) {
+    return _displayOrder.putIfAbsent(
+      questionIndex,
+      () => List<int>.generate(optionCount, (i) => i)..shuffle(_random),
+    );
+  }
 
   void _select(int optionIndex) {
     if (_selected != null) return;
@@ -88,7 +123,11 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   Widget build(BuildContext context) {
     final options = widget.optionsOf(_index);
     final correctIndex = widget.correctIndexOf(_index);
+    final order = _orderFor(_index, options.length);
     final s = ref.watch(appStringsProvider);
+    final furiganaDictionary = widget.showFurigana
+        ? ref.watch(furiganaDictionaryProvider).valueOrNull
+        : null;
 
     return Column(
       children: [
@@ -114,7 +153,12 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
                 const SizedBox(height: 16),
                 widget.headerBuilder(context, _index),
                 const SizedBox(height: 24),
-                for (var i = 0; i < options.length; i++)
+                // Rendered in the shuffled display order, but each tile
+                // still carries its ORIGINAL index (for `label`, `index`,
+                // and `onTap`) — that's what `correctIndex`/`_selected`
+                // compare against, so the correct/wrong logic below needs
+                // no changes at all, only the on-screen order changes.
+                for (final i in order)
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: _OptionTile(
@@ -123,6 +167,7 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
                       selectedIndex: _selected,
                       correctIndex: correctIndex,
                       onTap: () => _select(i),
+                      furiganaDictionary: furiganaDictionary,
                     ),
                   ),
                 const SizedBox(height: 16),
@@ -163,6 +208,7 @@ class _OptionTile extends StatelessWidget {
   final int? selectedIndex;
   final int correctIndex;
   final VoidCallback onTap;
+  final FuriganaDictionary? furiganaDictionary;
 
   const _OptionTile({
     required this.label,
@@ -170,6 +216,7 @@ class _OptionTile extends StatelessWidget {
     required this.selectedIndex,
     required this.correctIndex,
     required this.onTap,
+    this.furiganaDictionary,
   });
 
   _OptionState get _state {
@@ -246,14 +293,24 @@ class _OptionTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    color: foreground,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
+                child: furiganaDictionary != null
+                    ? FuriganaSentence(
+                        text: label,
+                        dictionary: furiganaDictionary!,
+                        style: TextStyle(
+                          color: foreground,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      )
+                    : Text(
+                        label,
+                        style: TextStyle(
+                          color: foreground,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
               ),
               ?trailing,
             ],

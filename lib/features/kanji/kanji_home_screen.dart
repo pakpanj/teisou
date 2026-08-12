@@ -7,6 +7,9 @@ import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
+import '../../core/widgets/module_level_card.dart';
+import '../../core/widgets/module_skyline_banner.dart';
+import '../../core/widgets/module_title_plaque.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/kanji_level.dart';
 import 'kanji_level_screen.dart';
@@ -28,7 +31,13 @@ class KanjiHomeScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: const Text('Kanji')),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        foregroundColor: context.palette.textNavy,
+        title: const ModuleTitlePlaque(title: 'Kanji'),
+      ),
       body: levelsAsync.when(
         data: (levels) => Column(
           children: [
@@ -42,13 +51,25 @@ class KanjiHomeScreen extends ConsumerWidget {
                   onRefresh: () => ref.refresh(kanjiLevelsProvider.future),
                   child: ListView(
                     physics: const AlwaysScrollableScrollPhysics(),
-                    padding: const EdgeInsets.fromLTRB(
-                        20, 20, 20, MascotAdvisor.reservedBottomSpace),
+                    padding: EdgeInsets.zero,
                     children: [
-                      for (final level in levels) ...[
-                        _LevelCard(level: level),
-                        const SizedBox(height: 12),
-                      ],
+                      const ModuleSkylineBanner(),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          20,
+                          20,
+                          20,
+                          MascotAdvisor.reservedBottomSpace,
+                        ),
+                        child: Column(
+                          children: [
+                            for (final level in levels) ...[
+                              _LevelCard(level: level),
+                              const SizedBox(height: 12),
+                            ],
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -69,10 +90,19 @@ class _LevelCard extends ConsumerWidget {
 
   const _LevelCard({required this.level});
 
-  void _open(BuildContext context, AppStrings s) {
+  void _open(BuildContext context, AppStrings s, bool gateReached) {
     if (!level.available) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(s.kanjiLevelComingSoon(level.name))),
+      );
+      return;
+    }
+    if (!gateReached) {
+      final thisLevel = JlptLevelX.fromKey(level.id);
+      final previousLevel =
+          JlptLevel.values[JlptLevel.values.indexOf(thisLevel) - 1];
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(s.kanjiLevelLockedReason(previousLevel.key))),
       );
       return;
     }
@@ -87,104 +117,34 @@ class _LevelCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final available = level.available;
+    final thisLevel = JlptLevelX.fromKey(level.id);
+    final gates = ref.watch(kanjiLevelGateProvider).valueOrNull;
+    // While the gate is still loading, treat every level but N5 as locked
+    // rather than briefly open — a card that's tappable and then locks
+    // under the learner's finger is worse than one that resolves from
+    // locked to open, same reasoning Bab's own level gate documents.
+    final gateReached = gates
+            ?.firstWhere((g) => g.level == thisLevel)
+            .reachedByProgress ??
+        (thisLevel == JlptLevel.n5);
+    final available = level.available && gateReached;
     final progress = available
-        ? ref
-              .watch(kanjiLevelProgressProvider(JlptLevelX.fromKey(level.id)))
-              .valueOrNull
+        ? ref.watch(kanjiLevelProgressProvider(thisLevel)).valueOrNull
         : null;
     final s = ref.watch(appStringsProvider);
+    final total = progress?.$2 ?? level.kanjiCount ?? 0;
+    final learned = progress?.$1 ?? 0;
+    final percent = total > 0 ? ((learned / total) * 100).round() : 0;
 
-    return Material(
-      color: available ? context.palette.cardWhite : context.palette.mutedSurface,
-      borderRadius: BorderRadius.circular(20),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(20),
-        onTap: () => _open(context, s),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  color:
-                      (available
-                              ? context.palette.primaryCoral
-                              : context.palette.freeBadgeGrey)
-                          .withValues(alpha: 0.15),
-                  shape: BoxShape.circle,
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  level.name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: available
-                        ? context.palette.primaryCoral
-                        : context.palette.freeBadgeGrey,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      s.kanjiLevelCardTitle(level.name),
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: available
-                            ? context.palette.textNavy
-                            : context.palette.freeBadgeGrey,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    if (available)
-                      Text(
-                        progress != null && progress.$1 > 0
-                            ? s.progressLearned(progress.$1, progress.$2)
-                            : s.kanjiCount(level.kanjiCount ?? 0),
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: context.palette.textNavy.withValues(alpha: 0.6),
-                        ),
-                      )
-                    else
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 6,
-                          vertical: 1,
-                        ),
-                        decoration: BoxDecoration(
-                          color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          s.soonBadge,
-                          style: TextStyle(
-                            fontSize: 9,
-                            fontWeight: FontWeight.bold,
-                            color: context.palette.freeBadgeGrey,
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-              Icon(
-                Icons.chevron_right,
-                color: available
-                    ? context.palette.primaryCoral
-                    : context.palette.freeBadgeGrey,
-              ),
-            ],
-          ),
-        ),
-      ),
+    return ModuleLevelCard(
+      badgeLabel: level.name,
+      title: s.kanjiLevelCardTitle(level.name),
+      subtitle: s.kanjiCount(level.kanjiCount ?? 0),
+      percent: available ? percent : null,
+      available: available,
+      soonLabel: level.available ? s.babLevelLockedBadge : s.soonBadge,
+      accent: context.palette.primaryCoral,
+      onTap: () => _open(context, s, gateReached),
     );
   }
 }

@@ -7,6 +7,9 @@ import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
+import '../../core/widgets/module_level_card.dart';
+import '../../core/widgets/module_skyline_banner.dart';
+import '../../core/widgets/module_title_plaque.dart';
 import '../../data/models/particle_category_info.dart';
 import 'particle_category_screen.dart';
 import 'particle_providers.dart';
@@ -26,7 +29,13 @@ class ParticleHomeScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: Text(s.particleTitle)),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        foregroundColor: context.palette.textNavy,
+        title: ModuleTitlePlaque(title: s.particleTitle),
+      ),
       body: categoriesAsync.when(
         data: (categories) => Column(
           children: [
@@ -36,12 +45,20 @@ class ParticleHomeScreen extends ConsumerWidget {
                     ref.refresh(particleCategoriesProvider.future),
                 child: ListView(
                   physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(20),
+                  padding: EdgeInsets.zero,
                   children: [
-                    for (final category in categories) ...[
-                      _CategoryCard(category: category),
-                      const SizedBox(height: 12),
-                    ],
+                    const ModuleSkylineBanner(),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          for (final category in categories) ...[
+                            _CategoryCard(category: category),
+                            const SizedBox(height: 12),
+                          ],
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -84,92 +101,19 @@ class _CategoryCard extends ConsumerWidget {
         ? ref.watch(particleCategoryProgressProvider(category.id)).valueOrNull
         : null;
     final s = ref.watch(appStringsProvider);
+    final total = progress?.$2 ?? category.particleCount ?? 0;
+    final learned = progress?.$1 ?? 0;
+    final percent = total > 0 ? ((learned / total) * 100).round() : 0;
 
-    return Material(
-      color: available ? context.palette.cardWhite : context.palette.mutedSurface,
-      borderRadius: BorderRadius.circular(20),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(20),
-        onTap: () => _open(context, s),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  color:
-                      (available
-                              ? context.palette.primaryCoral
-                              : context.palette.freeBadgeGrey)
-                          .withValues(alpha: 0.15),
-                  shape: BoxShape.circle,
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  category.icon,
-                  style: const TextStyle(fontSize: 22),
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      category.localizedName(s.language),
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: available
-                            ? context.palette.textNavy
-                            : context.palette.freeBadgeGrey,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    if (available)
-                      Text(
-                        progress != null && progress.$1 > 0
-                            ? s.progressLearned(progress.$1, progress.$2)
-                            : s.particleCount(category.particleCount ?? 0),
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: context.palette.textNavy.withValues(alpha: 0.6),
-                        ),
-                      )
-                    else
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 6,
-                          vertical: 1,
-                        ),
-                        decoration: BoxDecoration(
-                          color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          s.soonBadge,
-                          style: TextStyle(
-                            fontSize: 9,
-                            fontWeight: FontWeight.bold,
-                            color: context.palette.freeBadgeGrey,
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-              Icon(
-                Icons.chevron_right,
-                color: available
-                    ? context.palette.primaryCoral
-                    : context.palette.freeBadgeGrey,
-              ),
-            ],
-          ),
-        ),
-      ),
+    return ModuleLevelCard(
+      badgeLabel: category.icon,
+      title: category.localizedName(s.language),
+      subtitle: s.particleCount(category.particleCount ?? 0),
+      percent: available ? percent : null,
+      available: available,
+      soonLabel: s.soonBadge,
+      accent: context.palette.primaryCoral,
+      onTap: () => _open(context, s),
     );
   }
 }

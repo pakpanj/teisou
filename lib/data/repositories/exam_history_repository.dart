@@ -92,4 +92,22 @@ class ExamHistoryRepository {
         .map((doc) => SimpleExamResult.fromMap(doc.data()))
         .toList();
   }
+
+  /// Every attempt at one JLPT level, unordered — used to check "has this
+  /// user ever passed this level" for the sequential level-lock gate
+  /// (see `dokkaiLevelGateProvider`/`choukaiLevelGateProvider`), which
+  /// only needs to know whether *any* attempt cleared the pass threshold,
+  /// not the most recent ones specifically, so this skips `watchRecent`/
+  /// `getRecent`'s ordering and limit.
+  Future<List<SimpleExamResult>> getByLevel(String uid, String jlptLevel) async {
+    final snapshot = await _firestore
+        .collection(FirestorePaths.users)
+        .doc(uid)
+        .collection(collectionName)
+        .where('jlptLevel', isEqualTo: jlptLevel)
+        .get();
+    return snapshot.docs
+        .map((doc) => SimpleExamResult.fromMap(doc.data()))
+        .toList();
+  }
 }

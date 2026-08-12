@@ -396,6 +396,9 @@ class KanjiComboRepository {
         options: options,
         correctIndex: options.indexOf(correctAnswer),
         promptLabel: promptLabel,
+        // This helper is only ever called for compound-word reading
+        // questions (answerOf always draws from .reading) — never meaning.
+        isReadingQuestion: true,
       );
     });
   }
@@ -463,6 +466,7 @@ class KanjiComboRepository {
         options: options,
         correctIndex: options.indexOf(correctAnswer),
         promptLabel: askReading ? labels.reading : labels.meaning,
+        isReadingQuestion: askReading,
       );
     });
   }

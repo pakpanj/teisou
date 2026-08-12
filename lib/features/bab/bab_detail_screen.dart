@@ -158,6 +158,7 @@ class BabDetailScreen extends ConsumerWidget {
                           entries: resolved.kaiwa,
                           initialIndex: i,
                           categoryName: resolved.bab.localizedTitle(s.language),
+                          level: resolved.bab.level,
                         ),
                       ),
                     ),

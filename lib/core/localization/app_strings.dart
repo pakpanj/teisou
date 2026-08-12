@@ -209,6 +209,10 @@ class AppStrings {
       _t('Gagal memuat level: $e', 'Failed to load levels: $e');
   String kanjiLevelComingSoon(String levelName) =>
       _t('Kanji $levelName segera hadir!', 'Kanji $levelName coming soon!');
+  String kanjiLevelLockedReason(String previousLevelKey) => _t(
+        'Pelajari semua kanji $previousLevelKey dulu untuk membuka level ini.',
+        'Learn every $previousLevelKey kanji first to unlock this level.',
+      );
   String kanjiLevelCardTitle(String levelName) => 'Kanji $levelName';
   String kanjiCount(int n) => _t('$n kanji', '$n kanji');
   String kanjiLevelAppBarTitle(String levelName) => 'Kanji $levelName';
@@ -325,6 +329,10 @@ class AppStrings {
   // --- Kaiwa module ---
   String kaiwaLevelComingSoon(String levelName) =>
       _t('Kaiwa $levelName segera hadir!', 'Kaiwa $levelName coming soon!');
+  String kaiwaLevelLockedReason(String previousLevelKey) => _t(
+        'Pelajari semua dialog $previousLevelKey dulu untuk membuka level ini.',
+        'Learn every $previousLevelKey dialogue first to unlock this level.',
+      );
   String kaiwaLevelTitle(String levelName) => 'Kaiwa $levelName';
   String themeCount(int n) => _t('$n tema', '$n themes');
   String failedToLoadThemes(Object e) =>
@@ -1049,8 +1057,28 @@ class AppStrings {
       );
   String babLevelAppBarTitle(String levelKey) => 'Bab $levelKey';
   String get kanjiGuideMessage => _t(
-        'Pilih level JLPT, lalu pelajari urutan goresan tiap kanji.',
-        'Pick a JLPT level, then learn each kanji stroke by stroke.',
+        'Pilih level JLPT, lalu pelajari urutan goresan tiap kanji. '
+            'Tandai semua kanji "Sudah Dipelajari" untuk membuka level berikutnya.',
+        'Pick a JLPT level, then learn each kanji stroke by stroke. '
+            'Mark every kanji "Learned" to unlock the next level.',
+      );
+  String get kaiwaGuideMessage => _t(
+        'Pilih level JLPT, lalu pelajari tiap dialog percakapan. '
+            'Tandai semua dialog "Sudah Dipelajari" untuk membuka level berikutnya.',
+        'Pick a JLPT level, then learn each conversation dialogue. '
+            'Mark every dialogue "Learned" to unlock the next level.',
+      );
+  String get choukaiGuideMessage => _t(
+        'Pilih level JLPT, lalu kerjakan ujian mendengarnya. '
+            'Lulus dengan skor 70% ke atas untuk membuka level berikutnya.',
+        'Pick a JLPT level, then take its listening exam. '
+            'Score 70% or higher to unlock the next level.',
+      );
+  String get dokkaiGuideMessage => _t(
+        'Pilih level JLPT, lalu kerjakan ujian bacaannya. '
+            'Lulus dengan skor 70% ke atas untuk membuka level berikutnya.',
+        'Pick a JLPT level, then take its reading exam. '
+            'Score 70% or higher to unlock the next level.',
       );
   String get babLevelGuideMessage => _t(
         'Pilih satu bab untuk mulai belajar.',
@@ -1164,6 +1192,10 @@ class AppStrings {
   // --- Choukai (listening) ---
   String choukaiLevelComingSoon(String levelName) =>
       _t('Choukai $levelName segera hadir!', 'Choukai $levelName coming soon!');
+  String choukaiLevelLockedReason(String previousLevelKey) => _t(
+        'Lulus ujian Choukai $previousLevelKey (skor minimal 70%) dulu untuk membuka level ini.',
+        'Pass the $previousLevelKey Choukai exam (70% or higher) first to unlock this level.',
+      );
   String choukaiLevelTitle(String levelName) => 'Choukai $levelName';
   String failedToLoadClips(Object e) =>
       _t('Gagal memuat klip: $e', 'Failed to load clips: $e');
@@ -1181,6 +1213,10 @@ class AppStrings {
   // --- Dokkai (reading) ---
   String dokkaiLevelComingSoon(String levelName) =>
       _t('Dokkai $levelName segera hadir!', 'Dokkai $levelName coming soon!');
+  String dokkaiLevelLockedReason(String previousLevelKey) => _t(
+        'Lulus ujian Dokkai $previousLevelKey (skor minimal 70%) dulu untuk membuka level ini.',
+        'Pass the $previousLevelKey Dokkai exam (70% or higher) first to unlock this level.',
+      );
   String dokkaiLevelTitle(String levelName) => 'Dokkai $levelName';
   String dokkaiSessionTitle(int questions) =>
       _t('Dokkai · $questions Soal', 'Dokkai · $questions Questions');

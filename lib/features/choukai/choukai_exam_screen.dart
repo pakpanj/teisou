@@ -5,6 +5,7 @@ import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/furigana_text.dart';
 import '../../data/models/choukai_clip.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/simple_exam_result.dart';
@@ -75,6 +76,7 @@ class ChoukaiExamScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(clip.localizedTitle(s.language))),
       body: McQuizFlow(
         totalQuestions: clip.questions.length,
+        showFurigana: showFuriganaFor(clip.jlptLevel),
         headerBuilder: (context, index) => _AudioHeader(
           clip: clip,
           prompt: clip.questions[index].prompt,
@@ -96,6 +98,15 @@ class _AudioHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
+    final showFurigana = showFuriganaFor(clip.jlptLevel);
+    final dictionary = showFurigana
+        ? ref.watch(furiganaDictionaryProvider).valueOrNull
+        : null;
+    final promptStyle = TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      color: context.palette.textNavy,
+    );
     return Column(
       children: [
         Material(
@@ -124,27 +135,31 @@ class _AudioHeader extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 20),
-        Text(
-          prompt,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: context.palette.textNavy,
-          ),
-        ),
+        dictionary != null
+            ? FuriganaSentence(
+                text: prompt,
+                dictionary: dictionary,
+                style: promptStyle,
+              )
+            : Text(prompt, style: promptStyle),
       ],
     );
   }
 }
 
-class _ScriptReview extends StatelessWidget {
+class _ScriptReview extends ConsumerWidget {
   final ChoukaiClip clip;
   final AppStrings strings;
 
   const _ScriptReview({required this.clip, required this.strings});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final showFurigana = showFuriganaFor(clip.jlptLevel);
+    final dictionary = showFurigana
+        ? ref.watch(furiganaDictionaryProvider).valueOrNull
+        : null;
+    final scriptStyle = TextStyle(color: context.palette.textNavy);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
@@ -160,7 +175,13 @@ class _ScriptReview extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold, color: context.palette.textNavy),
           ),
           const SizedBox(height: 8),
-          Text(clip.audioText, style: TextStyle(color: context.palette.textNavy)),
+          dictionary != null
+              ? FuriganaSentence(
+                  text: clip.audioText,
+                  dictionary: dictionary,
+                  style: scriptStyle,
+                )
+              : Text(clip.audioText, style: scriptStyle),
           const SizedBox(height: 8),
           Text(
             clip.localizedAudioTranslation(strings.language),

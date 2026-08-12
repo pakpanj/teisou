@@ -6,6 +6,7 @@ import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
+import '../../data/models/jlpt_level.dart';
 import '../../data/models/kaiwa_entry.dart';
 import 'kaiwa_dialogue_screen.dart';
 import 'kaiwa_providers.dart';
@@ -21,11 +22,13 @@ enum _LearnFilter { semua, belum, sudah }
 class KaiwaCategoryScreen extends ConsumerStatefulWidget {
   final String category;
   final String categoryName;
+  final JlptLevel level;
 
   const KaiwaCategoryScreen({
     super.key,
     required this.category,
     required this.categoryName,
+    required this.level,
   });
 
   @override
@@ -128,6 +131,7 @@ class _KaiwaCategoryScreenState extends ConsumerState<KaiwaCategoryScreen> {
                                 entries: filtered,
                                 initialIndex: index,
                                 categoryName: widget.categoryName,
+                                level: widget.level,
                               ),
                             ),
                           ),

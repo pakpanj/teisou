@@ -7,10 +7,15 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/mascot_advisor.dart';
 import '../../core/widgets/mascot_widget.dart';
+import '../../core/widgets/module_card_frame.dart';
+import '../../core/widgets/module_skyline_banner.dart';
+import '../../core/widgets/module_title_plaque.dart';
 import '../../data/models/bab_entry.dart';
 import '../../data/models/jlpt_level.dart';
 import 'bab_detail_screen.dart';
 import 'bab_providers.dart';
+import 'widgets/bab_decorative_background.dart';
+import 'widgets/bab_ring_badge.dart';
 import '../../core/widgets/app_loading.dart';
 
 /// Whether a chapter stays locked until its immediate predecessor's gate
@@ -43,48 +48,74 @@ class BabLevelScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: Text(s.babLevelAppBarTitle(level.key))),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        foregroundColor: context.palette.textNavy,
+        title: ModuleTitlePlaque(title: s.babLevelAppBarTitle(level.key)),
+      ),
       body: chaptersAsync.when(
-        data: (chapters) => MascotAdvisor(
-          // Explaining, not just cheerful: this message tells the
-          // learner how the screen works rather than reacting to them.
-          mood: MascotMood.explaining,
-          message: s.babLevelGuideMessage,
-          child: AppRefreshIndicator(
-            onRefresh: () => ref.refresh(babByLevelProvider(level).future),
-            child: ListView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              // Bottom padding, not a gap widget: the advisor is anchored
-              // to the screen rather than to the list, so the list has to
-              // leave room under itself or the last chapter scrolls to a
-              // stop underneath the character.
-              padding: const EdgeInsets.fromLTRB(
-                20,
-                20,
-                20,
-                MascotAdvisor.reservedBottomSpace,
-              ),
-              children: [
-                for (var i = 0; i < chapters.length; i++) ...[
-                  _ChapterCard(
-                    bab: chapters[i],
-                    done: completed.contains(chapters[i].id),
-                    // Chapter 1 never needs a gate quiz behind it (nothing
-                    // came before it); every other chapter stays locked
-                    // until its immediate predecessor's gate quiz has been
-                    // passed. `chapters` is already sorted by `order`
-                    // (BabRepository.getByLevel), so the predecessor is
-                    // always the previous list item, not a lookup by id.
-                    // Gated on kBabGateQuizRequired, currently off for
-                    // testing — see that constant's doc comment above.
-                    locked:
-                        kBabGateQuizRequired &&
-                        i > 0 &&
-                        !completed.contains(chapters[i - 1].id),
+        data: (chapters) => BabDecorativeBackground(
+          child: MascotAdvisor(
+            // Explaining, not just cheerful: this message tells the
+            // learner how the screen works rather than reacting to them.
+            mood: MascotMood.explaining,
+            message: s.babLevelGuideMessage,
+            child: AppRefreshIndicator(
+              onRefresh: () => ref.refresh(babByLevelProvider(level).future),
+              child: ListView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
+                children: [
+                  const ModuleSkylineBanner(),
+                  Padding(
+                    // Bottom padding, not a gap widget: the advisor is
+                    // anchored to the screen rather than to the list, so
+                    // the list has to leave room under itself or the last
+                    // chapter scrolls to a stop underneath the character.
+                    padding: const EdgeInsets.fromLTRB(
+                      20,
+                      20,
+                      20,
+                      MascotAdvisor.reservedBottomSpace,
+                    ),
+                    child: Column(
+                      children: [
+                        for (var i = 0; i < chapters.length; i++) ...[
+                          if (i > 0)
+                            Padding(
+                              padding: const EdgeInsets.only(left: 42),
+                              child: BabPathConnector(
+                                color: context.palette.freeBadgeGrey
+                                    .withValues(alpha: 0.5),
+                              ),
+                            ),
+                          _ChapterCard(
+                            bab: chapters[i],
+                            done: completed.contains(chapters[i].id),
+                            // Chapter 1 never needs a gate quiz behind it
+                            // (nothing came before it); every other chapter
+                            // stays locked until its immediate
+                            // predecessor's gate quiz has been passed.
+                            // `chapters` is already sorted by `order`
+                            // (BabRepository.getByLevel), so the
+                            // predecessor is always the previous list item,
+                            // not a lookup by id. Gated on
+                            // kBabGateQuizRequired, see that constant's doc
+                            // comment above.
+                            locked:
+                                kBabGateQuizRequired &&
+                                i > 0 &&
+                                !completed.contains(chapters[i - 1].id),
+                          ),
+                          const SizedBox(height: 12),
+                        ],
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 12),
                 ],
-              ],
+              ),
             ),
           ),
         ),
@@ -109,10 +140,21 @@ class _ChapterCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
-    final greyed = context.palette.freeBadgeGrey;
+    final palette = context.palette;
+    final greyed = palette.freeBadgeGrey;
+    final active = !locked;
 
-    return Material(
-      color: locked ? context.palette.mutedSurface : context.palette.cardWhite,
+    final accent = done
+        ? palette.successGreen
+        : locked
+        ? greyed
+        : palette.primaryCoral;
+
+    final card = Material(
+      // Active cards get the sakura nine-patch frame's own flat pink fill
+      // behind them instead of a flat colour — same convention as
+      // ModuleLevelCard's own available/locked split.
+      color: active ? Colors.transparent : palette.cardWhite,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
@@ -124,73 +166,69 @@ class _ChapterCard extends ConsumerWidget {
                 context,
                 BabDetailScreen(babId: bab.id),
               ),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  color:
-                      (done
-                              ? context.palette.successGreen
-                              : locked
-                              ? greyed
-                              : context.palette.primaryCoral)
-                          .withValues(alpha: 0.15),
-                  shape: BoxShape.circle,
+        child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: [
+                BabRingBadge(
+                  size: 60,
+                  color: accent,
+                  showPetals: active,
+                  child: done
+                      ? Icon(Icons.check, color: accent)
+                      : locked
+                      ? Icon(Icons.lock, color: accent, size: 20)
+                      : Text(
+                          '${bab.order}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: accent,
+                          ),
+                        ),
                 ),
-                alignment: Alignment.center,
-                child: done
-                    ? Icon(Icons.check, color: context.palette.successGreen)
-                    : locked
-                    ? Icon(Icons.lock, color: greyed, size: 20)
-                    : Text(
-                        '${bab.order}',
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        bab.localizedTitle(s.language),
                         style: TextStyle(
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: context.palette.primaryCoral,
+                          color: locked ? greyed : palette.textNavy,
                         ),
                       ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      bab.localizedTitle(s.language),
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: locked ? greyed : context.palette.textNavy,
+                      const SizedBox(height: 4),
+                      Text(
+                        locked
+                            ? s.babLockedReason(bab.order - 1)
+                            : bab.localizedDescription(s.language),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: locked
+                              ? greyed
+                              : palette.textNavy.withValues(alpha: 0.6),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      locked
-                          ? s.babLockedReason(bab.order - 1)
-                          : bab.localizedDescription(s.language),
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: locked
-                            ? greyed
-                            : context.palette.textNavy.withValues(alpha: 0.6),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Icon(
-                locked ? Icons.lock : Icons.chevron_right,
-                color: locked ? greyed : context.palette.primaryCoral,
-                size: locked ? 20 : 24,
-              ),
-            ],
+                const SizedBox(width: 8),
+                locked
+                    ? Icon(Icons.lock, color: greyed, size: 20)
+                    : BabChevronButton(color: palette.primaryCoral),
+              ],
+            ),
           ),
         ),
       ),
     );
+
+    return active ? ModuleCardFrame(child: card) : card;
   }
 }

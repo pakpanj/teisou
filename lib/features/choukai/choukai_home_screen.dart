@@ -5,6 +5,11 @@ import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/mascot_advisor.dart';
+import '../../core/widgets/mascot_widget.dart';
+import '../../core/widgets/module_level_card.dart';
+import '../../core/widgets/module_skyline_banner.dart';
+import '../../core/widgets/module_title_plaque.dart';
 import '../../data/models/choukai_jlpt_level_info.dart';
 import '../../data/models/jlpt_level.dart';
 import 'choukai_level_screen.dart';
@@ -25,16 +30,42 @@ class ChoukaiHomeScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: const Text('Choukai')),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        foregroundColor: context.palette.textNavy,
+        title: const ModuleTitlePlaque(title: 'Choukai'),
+      ),
       body: levelsAsync.when(
-        data: (levels) => ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            for (final level in levels) ...[
-              _LevelCard(level: level),
-              const SizedBox(height: 12),
+        data: (levels) => MascotAdvisor(
+          // Explaining, not reacting — this message tells the learner how
+          // the screen (and the score-based level lock) works, same
+          // MascotMood.explaining convention BabLevelScreen already uses.
+          mood: MascotMood.explaining,
+          message: s.choukaiGuideMessage,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              const ModuleSkylineBanner(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  20,
+                  20,
+                  20,
+                  MascotAdvisor.reservedBottomSpace,
+                ),
+                child: Column(
+                  children: [
+                    for (final level in levels) ...[
+                      _LevelCard(level: level),
+                      const SizedBox(height: 12),
+                    ],
+                  ],
+                ),
+              ),
             ],
-          ],
+          ),
         ),
         loading: () => const AppLoading(),
         error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
@@ -48,10 +79,21 @@ class _LevelCard extends ConsumerWidget {
 
   const _LevelCard({required this.level});
 
-  void _open(BuildContext context, AppStrings s) {
+  void _open(BuildContext context, AppStrings s, bool gateReached) {
     if (!level.available) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(s.choukaiLevelComingSoon(level.name))),
+      );
+      return;
+    }
+    if (!gateReached) {
+      final thisLevel = JlptLevelX.fromKey(level.id);
+      final previousLevel =
+          JlptLevel.values[JlptLevel.values.indexOf(thisLevel) - 1];
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(s.choukaiLevelLockedReason(previousLevel.key)),
+        ),
       );
       return;
     }
@@ -67,84 +109,27 @@ class _LevelCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
-    final available = level.available;
+    final thisLevel = JlptLevelX.fromKey(level.id);
+    final gates = ref.watch(choukaiLevelGateProvider).valueOrNull;
+    // While the gate is still loading, treat every level but N5 as locked
+    // rather than briefly open, same reasoning Bab's own level gate
+    // documents.
+    final gateReached = gates
+            ?.firstWhere((g) => g.level == thisLevel)
+            .reachedByProgress ??
+        (thisLevel == JlptLevel.n5);
+    final available = level.available && gateReached;
 
-    return Material(
-      color: available ? context.palette.cardWhite : context.palette.mutedSurface,
-      borderRadius: BorderRadius.circular(20),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(20),
-        onTap: () => _open(context, s),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  color: (available ? context.palette.primaryCoral : context.palette.freeBadgeGrey)
-                      .withValues(alpha: 0.15),
-                  shape: BoxShape.circle,
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  level.name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: available ? context.palette.primaryCoral : context.palette.freeBadgeGrey,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      s.choukaiLevelTitle(level.name),
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: available ? context.palette.textNavy : context.palette.freeBadgeGrey,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    if (available)
-                      Text(
-                        s.clipCount(level.clipCount ?? 0),
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: context.palette.textNavy.withValues(alpha: 0.6),
-                        ),
-                      )
-                    else
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-                        decoration: BoxDecoration(
-                          color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          s.soonBadge,
-                          style: TextStyle(
-                            fontSize: 9,
-                            fontWeight: FontWeight.bold,
-                            color: context.palette.freeBadgeGrey,
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-              Icon(
-                Icons.chevron_right,
-                color: available ? context.palette.primaryCoral : context.palette.freeBadgeGrey,
-              ),
-            ],
-          ),
-        ),
-      ),
+    return ModuleLevelCard(
+      badgeLabel: level.name,
+      title: s.choukaiLevelTitle(level.name),
+      subtitle: s.clipCount(level.clipCount ?? 0),
+      // Same as Dokkai — no per-level completion concept to show a bar for.
+      percent: null,
+      available: available,
+      soonLabel: level.available ? s.babLevelLockedBadge : s.soonBadge,
+      accent: context.palette.primaryCoral,
+      onTap: () => _open(context, s, gateReached),
     );
   }
 }

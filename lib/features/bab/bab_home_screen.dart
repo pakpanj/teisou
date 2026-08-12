@@ -7,9 +7,14 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/mascot_advisor.dart';
 import '../../core/widgets/mascot_widget.dart';
+import '../../core/widgets/module_card_frame.dart';
+import '../../core/widgets/module_skyline_banner.dart';
+import '../../core/widgets/module_title_plaque.dart';
 import '../../data/models/jlpt_level.dart';
 import 'bab_level_screen.dart';
 import 'bab_providers.dart';
+import 'widgets/bab_decorative_background.dart';
+import 'widgets/bab_ring_badge.dart';
 
 /// Entry point for the Bab curriculum: a JLPT level picker, mirroring
 /// [KanjiHomeScreen]'s shape. Unlike Kanji/Kotoba/Bunpou/Kaiwa, Bab has no
@@ -26,36 +31,52 @@ class BabHomeScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar: AppBar(title: Text(s.babTitle)),
-      body: MascotAdvisor(
-        // Waving when there is nothing in progress — it is a greeting,
-        // not a reaction. Excited once there is somewhere to carry on to.
-        mood: nextUp != null ? MascotMood.excited : MascotMood.waving,
-        message: nextUp != null
-            ? s.babGuideContinue(nextUp.localizedTitle(s.language))
-            : s.babGuideIntro,
-        child: AppRefreshIndicator(
-          onRefresh: () async {
-            ref.invalidate(babAllProvider);
-            ref.invalidate(babNextUpProvider);
-          },
-          child: ListView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            // Bottom padding clears the advisor standing over this list,
-            // so the last level card can always be scrolled out from
-            // under it.
-            padding: const EdgeInsets.fromLTRB(
-              20,
-              20,
-              20,
-              MascotAdvisor.reservedBottomSpace,
-            ),
-            children: [
-              for (final level in JlptLevel.values) ...[
-                _LevelCard(level: level),
-                const SizedBox(height: 12),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        foregroundColor: context.palette.textNavy,
+        title: ModuleTitlePlaque(title: s.babTitle),
+      ),
+      body: BabDecorativeBackground(
+        child: MascotAdvisor(
+          // Waving when there is nothing in progress — it is a greeting,
+          // not a reaction. Excited once there is somewhere to carry on to.
+          mood: nextUp != null ? MascotMood.excited : MascotMood.waving,
+          message: nextUp != null
+              ? s.babGuideContinue(nextUp.localizedTitle(s.language))
+              : s.babGuideIntro,
+          child: AppRefreshIndicator(
+            onRefresh: () async {
+              ref.invalidate(babAllProvider);
+              ref.invalidate(babNextUpProvider);
+            },
+            child: ListView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: EdgeInsets.zero,
+              children: [
+                const ModuleSkylineBanner(),
+                Padding(
+                  // Bottom padding clears the advisor standing over this
+                  // list, so the last level card can always be scrolled
+                  // out from under it.
+                  padding: const EdgeInsets.fromLTRB(
+                    20,
+                    20,
+                    20,
+                    MascotAdvisor.reservedBottomSpace,
+                  ),
+                  child: Column(
+                    children: [
+                      for (final level in JlptLevel.values) ...[
+                        _LevelCard(level: level),
+                        const SizedBox(height: 12),
+                      ],
+                    ],
+                  ),
+                ),
               ],
-            ],
+            ),
           ),
         ),
       ),
@@ -73,6 +94,7 @@ class _LevelCard extends ConsumerWidget {
     final chapters = ref.watch(babByLevelProvider(level)).valueOrNull;
     final levels = ref.watch(babLevelProgressProvider).valueOrNull;
     final s = ref.watch(appStringsProvider);
+    final palette = context.palette;
 
     final authored = (chapters?.isNotEmpty ?? false);
     final standing = levels?.firstWhere((l) => l.level == level);
@@ -111,104 +133,128 @@ class _LevelCard extends ConsumerWidget {
       AppNavigator.slideFromRight(context, BabLevelScreen(level: level));
     }
 
-    return Material(
-      color: available
-          ? context.palette.cardWhite
-          : context.palette.mutedSurface,
+    final accent = available ? palette.primaryCoral : palette.freeBadgeGrey;
+    final percent = (standing != null && standing.total > 0)
+        ? ((standing.completed / standing.total) * 100).round()
+        : 0;
+
+    final card = Material(
+      // Available cards get the sakura nine-patch frame's own flat pink
+      // fill behind them instead of a flat colour — same convention as
+      // ModuleLevelCard's own available/locked split.
+      color: available ? Colors.transparent : palette.cardWhite,
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         onTap: open,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
+        child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+          ),
+          child: Stack(
             children: [
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  color:
-                      (available
-                              ? context.palette.primaryCoral
-                              : context.palette.freeBadgeGrey)
-                          .withValues(alpha: 0.15),
-                  shape: BoxShape.circle,
-                ),
-                alignment: Alignment.center,
-                child: locked
-                    ? Icon(
-                        Icons.lock,
-                        size: 22,
-                        color: context.palette.freeBadgeGrey,
-                      )
-                    : Text(
-                        level.key,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: available
-                              ? context.palette.primaryCoral
-                              : context.palette.freeBadgeGrey,
-                        ),
-                      ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
                   children: [
-                    Text(
-                      s.babLevelCardTitle(level.key),
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: available
-                            ? context.palette.textNavy
-                            : context.palette.freeBadgeGrey,
+                    BabRingBadge(
+                      size: 60,
+                      color: accent,
+                      showPetals: available,
+                      child: locked
+                          ? Icon(Icons.lock, size: 20, color: accent)
+                          : Text(
+                              level.key,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: accent,
+                              ),
+                            ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            s.babLevelCardTitle(level.key),
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: available
+                                  ? palette.textNavy
+                                  : palette.freeBadgeGrey,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          if (locked)
+                            _Badge(
+                              label: s.babLevelLockedBadge,
+                              color: palette.freeBadgeGrey,
+                            )
+                          else if (!authored)
+                            _Badge(
+                              label: s.soonBadge,
+                              color: palette.freeBadgeGrey,
+                            )
+                          else ...[
+                            Text(
+                              standing == null
+                                  ? s.babChapterCount(chapters!.length)
+                                  : s.babLevelChapterProgress(
+                                      standing.completed,
+                                      standing.total,
+                                    ),
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: palette.textNavy.withValues(alpha: 0.6),
+                              ),
+                            ),
+                            if (standing != null) ...[
+                              const SizedBox(height: 6),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: LinearProgressIndicator(
+                                        value: standing.total > 0
+                                            ? standing.completed /
+                                                standing.total
+                                            : 0,
+                                        minHeight: 6,
+                                        backgroundColor:
+                                            palette.progressTrack,
+                                        color: palette.primaryCoral,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  BabPercentPill(
+                                    percent: percent,
+                                    color: palette.primaryCoral,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ],
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    if (locked)
-                      _Badge(
-                        label: s.babLevelLockedBadge,
-                        color: context.palette.freeBadgeGrey,
-                      )
-                    else if (!authored)
-                      _Badge(
-                        label: s.soonBadge,
-                        color: context.palette.freeBadgeGrey,
-                      )
-                    else
-                      // Once a level is open, showing progress inside it
-                      // is more useful than its raw chapter count — the
-                      // learner already knows how long it is.
-                      Text(
-                        standing == null
-                            ? s.babChapterCount(chapters!.length)
-                            : s.babLevelChapterProgress(
-                                standing.completed,
-                                standing.total,
-                              ),
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: context.palette.textNavy.withValues(
-                            alpha: 0.6,
-                          ),
-                        ),
-                      ),
+                    const SizedBox(width: 8),
+                    available
+                        ? BabChevronButton(color: palette.primaryCoral)
+                        : Icon(Icons.chevron_right, color: accent),
                   ],
                 ),
-              ),
-              Icon(
-                Icons.chevron_right,
-                color: available
-                    ? context.palette.primaryCoral
-                    : context.palette.freeBadgeGrey,
               ),
             ],
           ),
         ),
       ),
     );
+
+    return available ? ModuleCardFrame(child: card) : card;
   }
 }
 

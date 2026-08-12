@@ -68,7 +68,7 @@ class KaiwaLevelScreen extends ConsumerWidget {
                         padding: const EdgeInsets.all(20),
                         children: [
                           for (final category in categories) ...[
-                            _ThemeCard(category: category),
+                            _ThemeCard(category: category, level: level),
                             const SizedBox(height: 12),
                           ],
                         ],
@@ -87,8 +87,9 @@ class KaiwaLevelScreen extends ConsumerWidget {
 
 class _ThemeCard extends ConsumerWidget {
   final KaiwaCategoryInfo category;
+  final JlptLevel level;
 
-  const _ThemeCard({required this.category});
+  const _ThemeCard({required this.category, required this.level});
 
   void _open(BuildContext context, AppStrings s) {
     if (!category.available) {
@@ -99,7 +100,11 @@ class _ThemeCard extends ConsumerWidget {
     }
     AppNavigator.slideFromRight(
       context,
-      KaiwaCategoryScreen(category: category.id, categoryName: category.localizedName(s.language)),
+      KaiwaCategoryScreen(
+        category: category.id,
+        categoryName: category.localizedName(s.language),
+        level: level,
+      ),
     );
   }
 

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/furigana_text.dart';
 import '../../data/models/dokkai_passage.dart';
 import '../../data/models/jlpt_level.dart';
 import '../../data/models/simple_exam_result.dart';
@@ -98,6 +99,7 @@ class DokkaiExamScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(s.dokkaiSessionTitle(items.length))),
       body: McQuizFlow(
         totalQuestions: items.length,
+        showFurigana: showFuriganaFor(passages.first.jlptLevel),
         headerBuilder: (context, index) => _PassageHeader(
           passage: items[index].passage,
           prompt: items[index].question.prompt,
@@ -110,14 +112,28 @@ class DokkaiExamScreen extends ConsumerWidget {
   }
 }
 
-class _PassageHeader extends StatelessWidget {
+class _PassageHeader extends ConsumerWidget {
   final DokkaiPassage passage;
   final String prompt;
 
   const _PassageHeader({required this.passage, required this.prompt});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final showFurigana = showFuriganaFor(passage.jlptLevel);
+    final dictionary = showFurigana
+        ? ref.watch(furiganaDictionaryProvider).valueOrNull
+        : null;
+    final passageStyle = TextStyle(
+      fontSize: 16,
+      height: 1.6,
+      color: context.palette.textNavy,
+    );
+    final promptStyle = TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      color: context.palette.textNavy,
+    );
     return Column(
       children: [
         Container(
@@ -134,24 +150,22 @@ class _PassageHeader extends StatelessWidget {
               ),
             ],
           ),
-          child: Text(
-            passage.passageJapanese,
-            style: TextStyle(
-              fontSize: 16,
-              height: 1.6,
-              color: context.palette.textNavy,
-            ),
-          ),
+          child: dictionary != null
+              ? FuriganaSentence(
+                  text: passage.passageJapanese,
+                  dictionary: dictionary,
+                  style: passageStyle,
+                )
+              : Text(passage.passageJapanese, style: passageStyle),
         ),
         const SizedBox(height: 20),
-        Text(
-          prompt,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: context.palette.textNavy,
-          ),
-        ),
+        dictionary != null
+            ? FuriganaSentence(
+                text: prompt,
+                dictionary: dictionary,
+                style: promptStyle,
+              )
+            : Text(prompt, style: promptStyle),
       ],
     );
   }
