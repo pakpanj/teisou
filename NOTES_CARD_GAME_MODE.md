@@ -22,8 +22,11 @@ kartu dan lawan menulis bacaannya.
 | Cara mengetik hiragana | **Keyboard kana bawaan aplikasi** |
 | Alur pertandingan | **Serentak**, dua pemain online bersamaan |
 | Kondisi selesai | **Berakhir di 10 kartu**, poin terbanyak menang |
-| Batas waktu | **Kartu 1–10: 30 detik per kartu** |
-| Kalau seri | **Kartu 11–20: waktunya dipercepat tiap kartu** |
+| Giliran | **Bergantian**, bukan menjawab bersamaan |
+| Batas waktu | **Kartu 1–10: maksimal 30 detik**, lanjut begitu dijawab |
+| Kalau seri | **Kartu 11–20: dipangkas 2 detik tiap kartu** |
+| Habis waktu | **Kartu itu dihitung kalah** |
+| Masih imbang di kartu 20 | **Seri** — keduanya dapat poin yang seharusnya |
 | Lawan | Teman, clan, atau publik |
 | Poin | Diakumulasi ke rank / papan peringkat |
 | Harga | Gratis |
@@ -56,23 +59,39 @@ selisih poin, bukan tersingkir di giliran ketiga.
 masih sama, pertandingan **tidak berhenti seri** — lanjut ke **kartu 11–20
 dengan waktu yang dipercepat tiap kartu** sampai salah satu unggul.
 
-> **Angka 30 detik menentukan panjang pertandingan, dan hasilnya sangat
-> berbeda tergantung satu hal yang belum diputuskan:**
->
-> - Kalau **kedua pemain menjawab bersamaan**, satu kartu = 30 detik, jadi
->   10 kartu ≈ **5 menit**. Masuk akal.
-> - Kalau **bergantian** (A mengeluarkan kartu, B menjawab, lalu sebaliknya),
->   satu kartu memakan 2×30 detik, jadi 10 kartu ≈ **10 menit** — justru
->   lebih lama daripada 7 menit yang tadi dihindari.
->
-> Karena mode ini serentak, menjawab bersamaan yang paling masuk akal. Tapi
-> ini perlu diputuskan sadar, bukan kebetulan.
+**30 detik itu batas atas, bukan durasi tetap** — begitu dijawab, giliran
+langsung berganti. Ini penting, dan dua keputusan tadi saling menyelamatkan:
 
-**Saran: perlakukan 30 detik sebagai batas atas, bukan durasi tetap** —
-kartu lanjut begitu kedua pemain sudah menjawab. Tanpa itu, kartu kana yang
-jawabannya cuma "a" tetap memakan 30 detik penuh dan pertandingan terasa
-banyak menunggu. Ini juga menghapus perlunya timer berbeda untuk kartu kana
+> Gilirannya **bergantian**, jadi satu kartu memakan dua jatah waktu. Kalau
+> 30 detik itu durasi tetap, 10 kartu = 10 menit — justru lebih lama
+> daripada 7 menit yang dihindari waktu konsep 40 jawaban dibatalkan.
+>
+> Karena 30 detik hanya batas atas, yang menentukan panjang pertandingan
+> adalah kecepatan pemain, bukan timernya. Kalau rata-rata menjawab 5–8
+> detik, 10 kartu selesai sekitar **2–3 menit**. Batas 30 detik hanya
+> menangkap pemain yang benar-benar mandek.
+
+Efek sampingnya juga bagus: kartu kana yang jawabannya cuma "a" tidak lagi
+memakan 30 detik penuh, jadi tidak perlu timer terpisah untuk kartu kana
 dan kartu kanji.
+
+**Habis waktu dihitung kalah untuk kartu itu** — bukan langsung kalah
+pertandingan.
+
+### Kalau tetap imbang, hasilnya seri
+
+Kartu 11–20 dipangkas 2 detik tiap kartu: kartu 11 dapat 28 detik, dan
+kartu 20 dapat 10 detik. **Lantainya 10 detik**, tidak pernah jadi mustahil.
+
+Itu artinya percepatan ini **tidak dijamin memaksa hasil**, dan aturan seri
+memang dibutuhkan — bukan sekadar jaring pengaman untuk keadaan yang tak
+mungkin terjadi. Dua pemain yang sama-sama lancar biasanya menjawab jauh di
+bawah 10 detik, jadi tekanan waktunya baru terasa di kartu-kartu terakhir
+saja. Kalau nanti terasa terlalu sering seri, pangkasannya bisa dibuat
+lebih tajam; sekarang cukup disadari saja.
+
+Kalau sampai kartu ke-20 masih imbang, hasilnya **seri dan kedua pemain
+mendapat poin yang seharusnya mereka dapat**.
 
 Dua hal yang menyenangkan dari bentuk ini, dan keduanya kebetulan cocok
 dengan keputusan yang sudah diambil sebelumnya:
@@ -161,19 +180,49 @@ Konsekuensi bentuknya, dan ini penting untuk rasa mainnya:
 
 Ini juga lompatan arsitektur terbesar yang pernah diambil aplikasi ini.
 
+## Usulan yang belum diputuskan: mempertaruhkan poin
+
+Sempat dilempar ide **entry fee** — kedua pemain mempertaruhkan poin, dan
+kalau seri taruhannya kembali.
+
+**Alasan yang disebut sudah terjawab tanpa taruhan.** Motivasinya tadi
+"biar kalau seri poinnya bisa balik", padahal aturan seri sudah
+memutuskan kedua pemain mendapat poin yang seharusnya. Jadi kasus seri
+sudah beres.
+
+**Tapi taruhan menjawab masalah lain yang nyata:** tanpa risiko, kalah
+tidak berbiaya apa pun. Artinya main sebanyak-banyaknya selalu untung, dan
+peringkat perlahan berubah jadi ukuran *siapa paling sering main*, bukan
+siapa paling bisa.
+
+**Yang membuat saya ragu**, dan ini pola yang sudah kita tolak sekali:
+mengambil kembali poin yang sudah didapat itu bentuknya sama dengan mode
+nyawa — yang paling terpukul adalah anak yang masih lemah, dan efeknya
+membuat ia berhenti main. Untuk aplikasi belajar itu kebalikan dari yang
+diinginkan. Dua efek ikutan lain yang biasa muncul di sistem bertaruh:
+pemain menghindari pertandingan saat mendekati batas rank, dan cenderung
+hanya menantang lawan yang lebih lemah.
+
+**Jalan tengah yang layak dipertimbangkan:**
+
+- **Pemenang dapat banyak, yang kalah dapat sedikit — tapi tidak pernah
+  minus.** Tetap ada jarak yang bikin menang terasa berarti, tanpa
+  menghukum. Seri otomatis dapat nilai tengah, dan itu sudah persis
+  perilaku "poinnya balik" yang diinginkan.
+- **Taruhan hanya di mode publik**, tidak di lawan teman dan clan — supaya
+  main santai bareng teman tidak pernah merugikan.
+
+Belum diputuskan; dicatat supaya tidak hilang.
+
 ## Yang masih harus diputuskan
 
 Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
 
 **Aturan main**
-- **Kedua pemain menjawab bersamaan atau bergantian?** Ini yang paling
-  mendesak — menentukan pertandingan jadi 5 menit atau 10 menit (lihat
-  catatan timer di atas).
-- 30 detik itu batas atas atau durasi tetap? (saran: batas atas)
-- Kartu 11–20 dipercepat sebanyak apa tiap kartu? Misalnya turun 3 detik
-  (30 → 27 → … → 3) atau dipangkas separuh tiap kartu.
-- Habisnya waktu dihitung jawaban salah, atau sekadar lewat tanpa poin?
-- Kalau kartu ke-20 habis dan masih imbang juga, hasilnya apa?
+- 10 kartu itu 10 ronde (tiap pemain mengeluarkan satu kartu, jadi 20
+  jawaban), atau 10 jawaban total? Dengan giliran bergantian, keduanya
+  masuk akal.
+- Deck 20 kartu dipilih sendiri, atau dibagikan otomatis dari level JLPT?
 - Kedua pemain menjawab bersamaan, atau bergantian?
 - Deck 20 kartu dipilih sendiri, atau dibagikan otomatis dari level JLPT
   yang dipilih?
