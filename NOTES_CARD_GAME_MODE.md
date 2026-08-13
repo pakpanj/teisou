@@ -220,20 +220,31 @@ kedua HP, bukan sesuatu yang pernah ditulis ke server.
 
 ### Bentuk data
 
+**Koreksi dari versi sebelumnya**: bentuk `cards: [cardId, ...]` yang
+ditulis kemarin salah asumsi — itu mengira ada satu deck bersama yang
+dibagi dua pemain. Aturan yang sudah diputuskan sejak awal justru
+sebaliknya: **"tiap pemain memegang deck [sendiri], lalu saling
+mengeluarkan kartu dan lawan menulis bacaannya."** Jadi ada dua deck
+terpisah (20 kartu A, 20 kartu B), dan giliran menentukan **deck siapa
+yang dikeluarkan kartunya** — penjawabnya selalu pemain yang **lain**,
+bukan pemilik deck itu sendiri.
+
 ```
 battleMatches/{matchId}
   players: [uidA, uidB]
   status: "active" | "finished"
-  currentTurnUid
-  currentCardIndex        // 0-based; bisa sampai 19 kalau masuk babak tambahan
-  cards: [cardId, ...]     // urutan kartu untuk pertandingan ini, ditentukan saat mulai
-  turnStartedAt            // stempel waktu server, jangkar timer giliran ini
-  clientResult              // dihitung cepat di HP, buat layar "selesai" instan
+  currentTurnUid            // deck siapa yang dikeluarkan giliran ini
+                             // (penjawabnya = pemain satunya, bukan ini)
+  currentRound              // 0-based, 0-9 di babak utama, 10-19 di tambahan
+  cardsByPlayer: {uidA: [cardId x10], uidB: [cardId x10]}   // lihat "Undian kartu" di bawah
+  turnStartedAt              // stempel waktu server, jangkar timer giliran ini
+  clientResult                // dihitung cepat di HP, buat layar "selesai" instan
   officialScore: {uidA: n, uidB: n}   // HANYA Cloud Function yang menulis
-  result                     // dihitung ulang Cloud Function setelah semua kartu masuk
+  result                       // dihitung ulang Cloud Function setelah semua kartu masuk
 
-battleMatches/{matchId}/answers/{cardIndex}
-  byUid, text, submittedAt
+battleMatches/{matchId}/answers/{round}
+  byUid              // yang MENJAWAB (bukan pemilik deck kartu itu)
+  text, submittedAt
 ```
 
 `answers` sengaja jadi subkoleksi, bukan array di dokumen induk — supaya
@@ -243,14 +254,20 @@ dokumen induk berubah.
 
 ### Alur satu giliran
 
-1. Pemain yang gilirannya mengetik jawaban, menekan kirim.
-2. Klien menulis ke `answers/{cardIndex}` (teks mentah saja), lalu di
-   tulisan yang sama memajukan `currentCardIndex`, memindahkan
-   `currentTurnUid` ke lawan, dan mengatur ulang `turnStartedAt`.
-3. Lawan (listener Firestore) langsung lihat gilirannya terbuka, dan
-   menampilkan benar/salah untuk jawaban yang baru masuk — dihitung
-   sendiri secara lokal dari dataset yang sudah ada di HP-nya.
-4. Cloud Function terpicu oleh dokumen `answers` baru, memvalidasi ulang
+1. Kartu ke-`currentRound` dari deck `currentTurnUid` ditampilkan ke
+   **pemain satunya** (dia yang menjawab, bukan pemilik deck).
+2. Pemain penjawab mengetik jawaban, menekan kirim.
+3. Klien menulis ke `answers/{currentRound}` (teks mentah saja, dengan
+   `byUid` = dirinya sendiri), lalu di tulisan yang sama memajukan
+   `currentRound`, memindahkan `currentTurnUid` ke pemain yang **barusan
+   menjawab** (supaya giliran berikutnya kartunya keluar dari deck dia,
+   sesuai pola "saling mengeluarkan kartu"), dan mengatur ulang
+   `turnStartedAt`.
+4. Pemilik deck yang barusan kartunya keluar (listener Firestore)
+   langsung lihat jawabannya masuk, dan menampilkan benar/salah untuk
+   jawaban itu — dihitung sendiri secara lokal dari dataset yang sudah
+   ada di HP-nya.
+5. Cloud Function terpicu oleh dokumen `answers` baru, memvalidasi ulang
    secara independen, menulis ke `officialScore`. Begitu jumlah jawaban
    yang masuk sama dengan panjang pertandingan, Cloud Function menghitung
    `result` final dan itulah yang menggerakkan bintang.
@@ -282,17 +299,51 @@ masuk di detik-detik terakhir.
 > benar-benar pergi), presence-nya tetap online dan aturan lama (kalah
 > satu kartu, lanjut) yang berlaku.
 
-### Yang masih terbuka
+### Tiga pertanyaan yang tersisa — sekarang terjawab
 
-Tidak menghalangi arsitektur di atas — bisa dijawab belakangan tanpa
-mengubah bentuk data:
+**Siapa keluar kartu duluan: acak.** Tidak ada alasan kuat untuk memihak
+salah satu pemain (penantang vs yang diundang, atau pemain publik vs
+lawannya), dan kartu pertama tidak berarti keuntungan apa pun dalam
+aturan yang sudah ada — jadi pilihan yang paling sederhana sekaligus
+paling adil adalah lempar koin, ditentukan begitu `battleMatches/{matchId}`
+dibuat. `currentTurnUid` awal cukup diisi hasil `Random` biasa saat
+dokumen ditulis.
 
-- Siapa yang mengeluarkan kartu duluan (penantang, acak, atau lainnya)?
-- Kartu diambil acak dari deck atau berurutan? Boleh kartu yang sama
-  muncul dua kali dalam satu pertandingan?
-- Sinkronisasi jam server-vs-HP untuk menghitung `turnStartedAt +
-  batas waktu` di sisi klien — perlu diukur selisihnya sekali di awal
-  sesi, bukan diasumsikan nol.
+**Kartu diambil acak, tanpa pengembalian — dan ini sebenarnya sudah
+terjawab dari keputusan lama, cuma belum pernah disambungkan.** Bagian
+"Kenapa deck 20 tapi main hanya 10" sudah bilang "setengah deck tidak
+terpakai tiap match, jadi kartu yang keluar berbeda-beda" — itu cuma
+masuk akal kalau pengambilannya acak, bukan berurutan (kalau berurutan,
+10 kartu pertama akan selalu sama persis tiap pertandingan). Dan bagian
+"Kalau tetap imbang, hasilnya seri" sudah bilang **10 kartu sisa dari
+deck 20 itulah bahan babak tambahan** — itu juga cuma konsisten kalau 10
+yang dipakai duluan adalah **10 dari 20 yang diacak**, menyisakan tepat
+10 sisanya. Jadi: `cardsByPlayer` diisi dengan mengacak seluruh 20 kartu
+pemain itu lalu mengambil 10 pertama untuk `currentRound` 0-9; 10
+sisanya menyusul kalau pertandingan lanjut ke babak tambahan
+(`currentRound` 10-19). **Tidak ada kartu yang dobel dalam satu
+pertandingan**, karena diambil dari 20 kartu yang memang berbeda-beda,
+tanpa pengembalian.
+
+**Sinkronisasi jam server-HP: pakai Realtime Database, bukan Firestore
+— dan kebetulan infrastrukturnya sudah mau dibangun juga untuk
+presence.** Firestore tidak punya cara membaca waktu server tanpa
+menulis dulu (`FieldValue.serverTimestamp()` cuma muncul lewat tulisan
+sungguhan, mahal kalau dipakai tiap detik untuk hitung mundur). Realtime
+Database punya jalur bawaan persis untuk ini:
+[`.info/serverTimeOffset`](https://firebase.google.com/docs/database/android/offline-capabilities#clock-skew) —
+selisih antara jam HP dan jam server, dibaca sekali (misalnya begitu
+pertandingan dimulai), lalu dipakai untuk menghitung "sekarang menurut
+server" secara lokal (`DateTime.now() + selisih`) tanpa perlu tanya
+server lagi tiap kali hitung mundur di layar diperbarui. `turnStartedAt`
+yang sesungguhnya tetap ditulis lewat `FieldValue.serverTimestamp()`
+Firestore seperti rencana semula — offset RTDB ini cuma dipakai supaya
+hitung mundur di layar HP tidak meleset dari jam server yang jadi acuan
+sesungguhnya.
+
+Ketiganya menutup seluruh pertanyaan arsitektur pertandingan yang
+sempat tersisa — tidak ada lagi yang menghalangi bentuk datanya untuk
+mulai dikerjakan.
 
 ## Rank pakai bintang, terpisah dari poin
 
