@@ -1393,4 +1393,30 @@ class AppStrings {
         '$fromName menantangmu — $tierLabel',
         '$fromName challenged you — $tierLabel',
       );
+
+  // Tahap 3 butir 10 — matchmaking publik (see NOTES_CARD_GAME_MODE.md).
+  String get battleMatchmakingTitle =>
+      _t('Cari Lawan Publik (dev)', 'Find Public Opponent (dev)');
+  String battleMatchmakingDescription(String tierLabel) => _t(
+        'Kamu akan dicari lawan di tingkatmu sendiri ($tierLabel). Kalau '
+            'tidak ada lawan dalam 20 detik, kamu otomatis melawan bot.',
+        'You\'ll be matched with an opponent at your own tier ($tierLabel). '
+            'If nobody\'s found within 20 seconds, you\'ll automatically '
+            'play a bot instead.',
+      );
+  String get battleMatchmakingSearchButton =>
+      _t('Cari Lawan', 'Find Opponent');
+  String battleMatchmakingWaiting(int secondsLeft) => _t(
+        'Menunggu lawan... ${secondsLeft}s',
+        'Waiting for opponent... ${secondsLeft}s',
+      );
+  String get battleMatchmakingCancelButton => _t('Batal', 'Cancel');
+  String get battleMatchmakingFallingBackToBot => _t(
+        'Tidak ada lawan, melawan bot...',
+        'No opponent found, playing a bot...',
+      );
+  String get battleMatchmakingFailed => _t(
+        'Gagal mencari lawan, coba lagi.',
+        'Failed to find an opponent, try again.',
+      );
 }

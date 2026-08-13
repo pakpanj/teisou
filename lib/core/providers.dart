@@ -33,6 +33,7 @@ import '../data/repositories/clan_announcement_repository.dart';
 import '../data/repositories/clan_message_repository.dart';
 import '../data/repositories/battle_repository.dart';
 import '../data/repositories/battle_invite_repository.dart';
+import '../data/repositories/matchmaking_repository.dart';
 import '../data/repositories/clan_repository.dart';
 import '../data/repositories/dictionary_repository.dart';
 import '../data/repositories/direct_message_repository.dart';
@@ -121,6 +122,9 @@ final adServiceProvider = Provider<AdService>((ref) => AdService());
 final fcmServiceProvider = Provider<FcmService>((ref) => FcmService());
 final presenceServiceProvider = Provider<PresenceService>(
   (ref) => PresenceService(),
+);
+final matchmakingRepositoryProvider = Provider<MatchmakingRepository>(
+  (ref) => MatchmakingRepository(),
 );
 
 /// Whether this device has already been shown the tutorial.

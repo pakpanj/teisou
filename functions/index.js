@@ -269,3 +269,11 @@ exports.onBattleAnswerCreated = require("./battle_scoring").onBattleAnswerCreate
 // writes a bot answer, which onBattleAnswerCreated above then scores
 // through the exact same pipeline as a human answer.
 exports.onBattleMatchWritten = require("./battle_bot").onBattleMatchWritten;
+
+// Card Game Mode's public matchmaking queue — see
+// battle_matchmaking.js. Fires whenever a player joins
+// matchmakingQueue/{tier}/{uid}; pairs them with another waiting
+// player in the same tier if one exists, atomically, via a Realtime
+// Database transaction.
+exports.onMatchmakingQueueJoined =
+  require("./battle_matchmaking").onMatchmakingQueueJoined;

@@ -36,8 +36,15 @@ berakhir dengan hasil "Menang! Kamu: 3, Lawan: 2" — lihat butir 8 di
 bawah untuk detail lengkapnya. **Tahap 3 butir 9 (undangan teman/clan)
 sudah dibangun dan sudah di-deploy** (firestore.rules dengan aturan
 `battleInvites` sudah dirilis ke produksi), tapi **belum diverifikasi
-di perangkat fisik** — lihat butir 9 di bawah. Sisanya: matchmaking
-publik (#10) — belum ada kode.
+di perangkat fisik** — lihat butir 9 di bawah. **Tahap 3 butir 10
+(matchmaking publik) — SELURUH 10 BUTIR "Urutan mengerjakan" SEKARANG
+SUDAH DIBANGUN, DIUJI, DAN DI-DEPLOY** (`onMatchmakingQueueJoined`
+tampil di `firebase functions:list`, `database.rules.json` dengan
+aturan `matchmakingQueue`/`matchmakingResults` sudah dirilis), tapi
+sama seperti butir 9, **belum diverifikasi di perangkat fisik** — lihat
+butir 10 di bawah. **Yang masih genuinely belum dibangun, di luar
+daftar 10 butir itu sendiri**: logika gerak bintang sungguhan
+(naik/turun tingkat) — lihat catatan penutup di butir 10.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -770,9 +777,166 @@ paling rumit**
      target, coba terima (masuk ke match yang sama, kartu yang sama
      di kedua sisi) dan coba tolak (pastikan penantang akhirnya
      menang lewat timeout, bukan macet selamanya).
-10. Matchmaking publik — sengaja terakhir, butuh semuanya sudah berdiri
-    (tingkat, pembuatan pertandingan, bot sebagai jalan keluar antrian
-    sepi) dan paling rumit (antrian RTDB, klaim atomik).
+10. ✅ **Selesai dibangun, diuji, dan di-deploy — belum diverifikasi di
+    perangkat fisik** (2026-08-14). Persis mengikuti rumusan
+    "Pemasangan lawan publik" di bawah: antrian RTDB per tingkat,
+    Cloud Function terpicu tiap ada yang bergabung, klaim atomik lewat
+    transaksi RTDB, 20 detik lalu jatuh ke bot di sisi klien.
+
+    **`functions/battle_matchmaking.js`** (baru) — `onMatchmakingQueueJoined`,
+    terpicu `onValueCreated` di `matchmakingQueue/{tier}/{uid}` (bukan
+    `onValueWritten`, supaya penghapusan entri lewat klaim milik fungsi
+    ini sendiri tidak memicu ulang dirinya sendiri). Isi:
+    1. `claimWaitingOpponent` — transaksi RTDB pada NODE INDUK
+       `matchmakingQueue/{tier}` (bukan pada entri anak satu per satu),
+       supaya klaimnya benar-benar atomik terhadap SEMUA anak sekaligus:
+       mencari uid lain (bukan diri sendiri) dengan `joinedAt` paling
+       awal, lalu menghapus KEDUA entri dari node itu dalam satu nilai
+       transaksi yang sama. Kalau tidak ada yang lain menunggu, transaksi
+       cuma mengembalikan nilai yang sama tanpa perubahan (`matchedUid`
+       tetap `null`) — pemain yang baru bergabung ini akan menunggu
+       sampai pemain BERIKUTNYA yang bergabung memicu pemasangannya,
+       persis seperti yang sudah diputuskan.
+    2. Begitu klaim berhasil: `createRankedMatch` membangun `battleMatches`
+       baru — lempar koin siapa duluan, dua deck dibangun via `buildDeckIds`
+       (porting JS dari `battle_deck_builder.dart`), `turnOrder` lewat
+       `buildTurnOrder` (porting JS dari `battle_turn_order_builder.dart`,
+       algoritma selang-seling yang sama persis) — lalu menulis dokumen
+       lewat Admin Firestore SDK, `rankedMatch: true`.
+    3. `matchId` yang dihasilkan ditulis ke `matchmakingResults/{uid}`
+       untuk KEDUA pemain — sinyal yang ditunggu masing-masing klien
+       (lihat poin berikutnya).
+
+    **Kenapa matchId ditulis ke node RTDB terpisah, bukan ke entri
+    antrian yang sama**: entri antrian dihapus habis saat diklaim (bukan
+    diubah isinya), supaya query `claimWaitingOpponent` berikutnya tidak
+    perlu menyaring entri "sudah dipasangkan tapi belum dibersihkan".
+    Konsekuensinya, klien yang menunggu tidak bisa mengandalkan
+    perubahan pada entrinya sendiri sebagai sinyal — makanya ditambah
+    node kecil terpisah `matchmakingResults/{uid}` yang cuma pernah
+    ditulis Cloud Function ini (lewat Admin SDK, melewati semua aturan),
+    dan klien mendengarkannya lewat `onValue` selagi menunggu.
+
+    **Dua dataset baru dibundel ke `functions/data/`** — deck kanji per
+    tingkat butuh tahu level JLPT tiap kanji, sesuatu yang
+    `kanji_word_readings.json` (dibangun untuk penilaian, bukan untuk
+    membangun deck) tidak menyimpan sama sekali; dicek dulu: 720 dari
+    7.274 entri (semua N5/N4) ternyata TIDAK punya akhiran `_n{level}`
+    di id-nya (cuma N3-N1 yang punya), jadi menebak level dari id semata
+    tidak bisa diandalkan. `scripts/generate_functions_battle_data.py`
+    diperluas menghasilkan `kanji_ids_by_level.json` (baru,
+    `{n5:[...], n4:[...], n3:[...], n2:[...], n1:[...]}`, cardId penuh
+    per entri) langsung dari `jlptLevel` kanji aslinya, terpisah dari
+    `kanji_word_readings.json` yang sudah ada supaya `battle_scoring.js`
+    (satu-satunya pemakai file itu) tidak perlu disentuh. Harus
+    dijalankan ulang bersamaan dengan file lain di folder ini setiap kali
+    `kanji_data.json` beregenerasi — sama seperti disiplin re-run yang
+    sudah didokumentasikan berkali-kali di `CLAUDE.md` untuk dataset lain.
+
+    **Skema `MatchmakingRepository` (Dart, baru)**: `joinQueue`/
+    `leaveQueue` (tulis/hapus `matchmakingQueue/{tier.key}/{uid}`),
+    `watchMatchResult`/`getMatchResult` (baca `matchmakingResults/{uid}`
+    secara live/sekali), `clearMatchResult` (bersih-bersih setelah
+    dipakai). `BattleMatchmakingScreen` (baru, alat uji manual — status
+    sama dengan `BattleTestStartScreen`, lihat catatan di bawah) memakai
+    tingkat `CardGameRank` pemain sendiri (tidak bisa dipilih bebas,
+    beda dari tantangan teman/clan — sesuai "Isi kartu dikunci rank
+    hanya untuk lawan publik"), menulis diri ke antrian, mendengarkan
+    `watchMatchResult`, jalan timer 20 detik lokal. Kalau timer habis:
+    cek sekali lagi `getMatchResult` (menutup sebagian celah balapan di
+    detik terakhir — bukan menutup seluruhnya, lihat trade-off di
+    bawah), kalau masih kosong keluar dari antrian dan buat pertandingan
+    lawan `battleBotUid` lewat jalur yang identik dengan tombol "Lawan
+    Bot" di `BattleTestStartScreen`.
+
+    **`database.rules.json`** dapat dua blok baru — `matchmakingQueue/
+    $tier/$uid` dan `matchmakingResults/$uid` — keduanya baca-tulis milik
+    sendiri saja (`auth.uid === $uid`), dengan `.validate` memastikan
+    bentuknya benar (`joinedAt` angka, `matchId` string). Cloud Function
+    (Admin SDK) melewati aturan ini sepenuhnya, jadi tetap bisa
+    menghapus entri antrian milik ORANG LAIN saat mengklaim pasangan —
+    bukan celah, memang begitu cara kerjanya.
+
+    **Gotcha deploy yang baru ditemukan sesi ini**: percobaan deploy
+    pertama gagal — `onValueCreated` dipanggil dengan string path polos
+    (sama seperti tiga trigger Firestore lain di folder ini memanggil
+    triggernya sendiri), tapi ternyata **trigger RTDB tidak menurunkan
+    region dari lokasi instans Realtime Database-nya sendiri** seperti
+    yang dilakukan trigger Firestore — defaultnya jatuh ke `us-central1`,
+    dan deploy gagal dengan "pattern cannot match any databases in
+    region us-central1" karena instans sungguhan ada di
+    `asia-southeast1`. Diperbaiki dengan memanggil `onValueCreated`
+    memakai objek opsi eksplisit (`{ref, region: "asia-southeast1",
+    instance: "teisou-kana-master-default-rtdb"}`) alih-alih string
+    polos — berhasil di percobaan kedua,
+    `onMatchmakingQueueJoined(asia-southeast1)` tampil di `firebase
+    functions:list`. **Terpisah**, `firebase.json` juga belum pernah
+    punya target `database` sama sekali (aturan RTDB yang sudah ada dari
+    Tahap 1 dipasang manual lewat Console, bukan CLI) — ditambahkan
+    sesi ini supaya `deploy --only database` bisa dipakai ke depannya,
+    bukan cuma paste manual.
+
+    **Diuji**: `functions/battle_matchmaking.test.js` (baru, 12 test) —
+    `poolFor` untuk kelima isi kartu (termasuk gabungan N4+N3/N2+N1
+    tanpa duplikat dan fallback ke hiragana untuk kunci tak dikenal),
+    `shuffle` sebagai permutasi murni (array asli tidak tersentuh) dan
+    hasil deterministik yang benar-benar dihitung tangan untuk sumber
+    acak yang dipatok, `buildDeckIds` menghasilkan 20 id unik dari pool
+    nyata untuk kelima tingkat, `buildTurnOrder` berselang-seling benar
+    dan cuma memakai 10 kartu pertama tiap pemain. Sengaja **tidak**
+    menguji `claimWaitingOpponent`/`createRankedMatch`/trigger itu
+    sendiri secara unit — ketiganya butuh Firestore + Realtime Database
+    sungguhan, sama seperti `battle_bot.js`'s `onBattleMatchWritten`
+    sendiri yang juga tidak diuji unit, diverifikasi lewat produksi/
+    perangkat fisik sebagai gantinya. `flutter analyze` bersih, 416 test
+    Dart hijau (tidak ada test baru di sisi Dart — `MatchmakingRepository`
+    murni Firestore/RTDB, mengikuti pola yang sama seperti
+    `BattleRepository`/`FriendRepository`/`ClanRepository` yang juga
+    tidak diuji unit tersendiri), 38 test JS hijau (12 baru).
+
+    **Sudah di-deploy ke produksi** (2026-08-14): `onMatchmakingQueueJoined`
+    tampil di `firebase functions:list`, `database.rules.json` dengan
+    dua blok baru sudah dirilis (`teisou-kana-master-default-rtdb`).
+
+    **Trade-off yang sengaja dibiarkan terbuka, bukan lupa**:
+    - **Balapan di detik ke-20 tidak tertutup sepenuhnya** — klien
+      mengecek `getMatchResult` sekali sebelum menyerah ke bot, tapi
+      kalau Cloud Function mengklaim pemain ini TEPAT setelah
+      pengecekan itu (sebelum pertandingan lawan bot sempat dibuat),
+      pemain ini akan berakhir di DUA pertandingan sekaligus — satu
+      lawan bot yang baru dibuat, satu lagi lawan manusia yang
+      seharusnya dipasangkan. Peluangnya kecil (jendela balapannya
+      cuma milidetik) dan konsekuensinya ringan (pertandingan lawan bot
+      yang "salah" ini tetap berjalan normal, cuma jadi pertandingan
+      ekstra yang tidak diminta) — dicatat di sini sebagai batasan yang
+      disadari, bukan celah tersembunyi.
+    - **Belum ada penanganan "berapa banyak yang sedang menunggu di
+      tingkat ini"** — klien tidak tahu apakah antriannya sepi (langsung
+      ke bot masuk akal) atau ramai (mungkin cuma perlu menunggu
+      beberapa detik lagi). Ini bukan bug, cuma UX yang bisa
+      ditingkatkan nanti kalau perlu.
+    - **Belum ada verifikasi interaktif di perangkat fisik** — sama
+      seperti butir 9, kode ini belum pernah benar-benar dicoba dua
+      akun sungguhan saling menunggu dan dipasangkan. Langkah
+      berikutnya: buka `BattleMatchmakingScreen` di dua device/akun
+      berbeda pada tingkat yang sama, pastikan keduanya dipasangkan
+      dalam beberapa detik (bukan menunggu 20 detik penuh), lalu coba
+      satu device sendirian (device lain tidak dibuka) dan pastikan
+      setelah 20 detik jatuh ke bot dengan benar.
+
+    **Ini menutup seluruh 10 butir "Urutan mengerjakan" di
+    `NOTES_CARD_GAME_MODE.md`.** Yang masih terbuka di luar daftar
+    bernomor itu (lihat "Rank pakai bintang" di bawah): logika gerak
+    bintang sungguhan (naik/turun tingkat, divisi, bonus beruntun,
+    pergantian musim) **belum dibangun sama sekali di mana pun** —
+    dicek ulang di `functions/`, tidak ada satu baris kode pun yang
+    menyentuh `cardGameRank` selain menyimpannya. `rankedMatch` (lihat
+    butir 9) sudah menyiapkan fondasinya (tahu match mana yang
+    seharusnya menggerakkan bintang), tapi logika penggerak bintangnya
+    sendiri — dan seluruh "Papan peringkat bintang berdiri sendiri" di
+    bawah — masih pekerjaan terpisah yang belum pernah masuk daftar
+    bernomor "Urutan mengerjakan" sama sekali, bukan sesuatu yang lupa
+    dikerjakan di butir 1-10.
 
 ---
 
