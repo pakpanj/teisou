@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/models/app_language.dart';
+import '../data/models/battle_match.dart';
 import '../data/models/card_game_rank.dart';
 import '../data/models/presence_status.dart';
 import '../data/models/stroke_speed.dart';
@@ -29,6 +30,7 @@ import '../data/repositories/choukai_level_repository.dart';
 import '../data/repositories/choukai_repository.dart';
 import '../data/repositories/clan_announcement_repository.dart';
 import '../data/repositories/clan_message_repository.dart';
+import '../data/repositories/battle_repository.dart';
 import '../data/repositories/clan_repository.dart';
 import '../data/repositories/dictionary_repository.dart';
 import '../data/repositories/direct_message_repository.dart';
@@ -225,6 +227,9 @@ final leaderboardRepositoryProvider = Provider<LeaderboardRepository>(
 );
 final clanRepositoryProvider = Provider<ClanRepository>(
   (ref) => ClanRepository(),
+);
+final battleRepositoryProvider = Provider<BattleRepository>(
+  (ref) => BattleRepository(),
 );
 final clanMessageRepositoryProvider = Provider<ClanMessageRepository>(
   (ref) => ClanMessageRepository(),
@@ -433,6 +438,17 @@ final presenceProvider = StreamProvider.family<PresenceStatus, String>((
   uid,
 ) {
   return ref.watch(presenceServiceProvider).watchPresence(uid);
+});
+
+/// Live view of one `battleMatches/{matchId}` doc — not consumed
+/// anywhere yet (no match screen exists to watch it from), same
+/// "infrastructure ready ahead of the screen that needs it" shape as
+/// [presenceProvider]/[kanaKeyboardInputProvider].
+final battleMatchProvider = StreamProvider.family<BattleMatch, String>((
+  ref,
+  matchId,
+) {
+  return ref.watch(battleRepositoryProvider).watchMatch(matchId);
 });
 
 /// Total XP + level + pending level-up rewards — see [XpProgress]. Watched

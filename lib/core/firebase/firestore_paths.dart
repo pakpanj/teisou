@@ -34,6 +34,8 @@ class FirestorePaths {
   static const dmMessages = 'messages';
   static const fcmTokens = 'fcmTokens';
   static const notifications = 'notifications';
+  static const battleMatches = 'battleMatches';
+  static const battleAnswers = 'answers';
 
   static const fieldProfile = 'profile';
   static const fieldProgress = 'progress';
@@ -89,4 +91,7 @@ class FirestorePaths {
   static String fcmTokensCollection(String uid) => '$users/$uid/$fcmTokens';
   static String notificationsCollection(String uid) =>
       '$users/$uid/$notifications';
+  static String battleMatchDoc(String matchId) => '$battleMatches/$matchId';
+  static String battleAnswersCollection(String matchId) =>
+      '$battleMatches/$matchId/$battleAnswers';
 }

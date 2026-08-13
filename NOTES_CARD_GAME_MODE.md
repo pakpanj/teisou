@@ -136,7 +136,73 @@ fitur "peringkat" dikerjakan (biasanya di akhir).
    tidak ada masalah Gradle/native — sukses.
 
 **Tahap 2 — inti pertandingan**
-4. `battleMatches` + aturan Firestore.
+4. ✅ **Selesai (kode) — ⚠️ rules Firestore belum di-deploy** —
+   `battleMatches` + aturan Firestore. `TurnOrderEntry`
+   (`lib/data/models/turn_order_entry.dart`) adalah satu kartu dalam
+   `turnOrder`; `buildTurnOrder`
+   (`lib/core/services/battle_turn_order_builder.dart`) adalah fungsi
+   murni yang membangun 20 ronde itu sekali di awal — deck tiap pemain
+   diacak, 10 pertama dari hasil acak dipakai (5 ke babak utama ronde
+   0-9, 5 ke babak tambahan ronde 10-19), 10 sisanya sengaja tidak
+   terpakai (sesuai "setengah deck tidak terpakai tiap match"), giliran
+   bergantian ketat mulai dari `firstUid` (siapa duluan diputuskan lewat
+   `Random` di pemanggil, bukan di fungsi ini).
+
+   **Satu titik ambigu di rumusan yang perlu dicatat, bukan ditebak diam-
+   diam**: kalimat "10 pertama dipakai untuk ronde 0-9 milik pemain itu,
+   10 sisanya mengisi ronde 10-19" — dibaca sepersis mungkin — sebenarnya
+   tidak bisa benar bersamaan dengan "giliran bergantian" (karena tiap
+   pemain cuma memiliki 5 dari 10 slot di ronde 0-9, bukan 10). Kode ini
+   memilih pembacaan yang membuat SEMUA angka lain yang sudah dikunci
+   tetap konsisten sekaligus (deck 20, maksimal 10 kartu/pemain, separuh
+   deck tidak terpakai, ronde 0-9/10-19, giliran bergantian) — dijelaskan
+   lengkap di komentar `buildTurnOrder` sendiri. Kalau ternyata maksud
+   aslinya beda, cuma fungsi ini yang perlu diubah.
+
+   `cardTimeLimit` (`lib/core/services/battle_timer.dart`) mengunci angka
+   timer per ronde global (30 detik untuk ronde 0-9, menyusut 2 detik
+   tiap kartu untuk ronde 10-19, lantai 10 detik).
+
+   `BattleMatch`/`BattleAnswer` (`lib/data/models/`) mem-parsing skema
+   `battleMatches/{matchId}` dan `.../answers/{round}` persis seperti
+   yang sudah dikunci — `officialScore`/`result` sengaja **read-only
+   dari sisi klien**, tidak ada satu pun method yang menulisnya (itu
+   jatah Cloud Function, butir 7). `BattleRepository`
+   (`lib/data/repositories/battle_repository.dart`) menyediakan
+   `createMatch` (lempar koin, panggil `buildTurnOrder`, tulis dokumen),
+   `watchMatch`/`getMatch`, `submitAnswer` (transaksi: tulis jawaban +
+   majukan `currentRound`/`turnStartedAt` dalam satu tulisan, dijaga
+   supaya jawaban yang telat karena ronde sudah dimajukan lawat lain
+   diam-diam dibuang, bukan memajukan giliran dua kali), dan
+   `setClientResult` untuk layar "selesai" instan nanti.
+
+   **Sengaja belum dikerjakan di sini** (menunggu butir 5/7): pemilihan
+   20 kartu sungguhan per pemain (repository menerima deck yang sudah
+   dipilih, bukan memutuskan isinya sendiri — `cardId` tetap string
+   opak sesuai cara rumusan menyebutnya, belum pernah dipatok ke sumber
+   konkret), dan jalur "lawan menutup aplikasi di tengah pertandingan"
+   (butuh timer UI layar pertandingan yang belum ada).
+
+   `firestore.rules` dapat blok baru untuk `battleMatches` + subkoleksi
+   `answers`: hanya dua pemain di match itu yang boleh baca/tulis,
+   `officialScore`/`result`/`status`/`players`/`turnOrder` dikunci tidak
+   bisa diubah klien sama sekali (Cloud Function pakai Admin SDK yang
+   melewati rules ini sepenuhnya, jadi tidak perlu pengecualian khusus),
+   dan satu jawaban di `answers/{round}` cuma bisa dibuat sekali oleh
+   pemilik jawabannya sendiri.
+
+   **Sama seperti presence, ini butuh satu langkah manual sebelum benar-
+   benar berlaku**: `firestore.rules` yang sudah berubah di repo belum
+   ter-deploy ke proyek Firebase sungguhan — CLI Firebase di lingkungan
+   ini tetap macet di skrip sambutannya (masalah lama yang sudah dicatat
+   di `CLAUDE.md`), jadi perlu di-paste manual ke tab Rules Firestore di
+   Console, sama seperti langkah yang baru saja dilakukan untuk
+   `database.rules.json`.
+
+   `flutter analyze` bersih, 382 test hijau (20 test baru — 8 untuk
+   `buildTurnOrder`, 4 untuk `cardTimeLimit`, 8 untuk model
+   `BattleMatch`/`BattleAnswer`/`TurnOrderEntry`), `flutter build apk
+   --debug` sukses.
 5. Layar pertandingan (pakai keyboard #1, baca tingkat dari #2 untuk
    pilih kartu).
 6. Uji jalur cepatnya dulu secara manual — dua emulator/device saling
