@@ -2,49 +2,82 @@
 
 Catatan rumusan untuk mode permainan kartu di Teisou — Kana Master.
 
-**Status: rumusannya sudah menutup seluruh alur (undangan → arsitektur
-pertandingan → penilaian Cloud Function → bot → matchmaking publik →
-keyboard kana). Implementasi kode sungguhan sudah jalan jauh — seluruh
-Tahap 1 (keyboard kana, field rank minimal, presence RTDB) sudah
-selesai DAN sudah hidup** (instans Realtime Database sudah dibuat lewat
-Firebase Console 2026-08-13, `asia-southeast1`/Singapore, rules-nya
-sudah dipasang, `databaseURL` sudah masuk ke `firebase_options.dart`,
-dan tulisan `presence/{uid}` sudah dikonfirmasi muncul sungguhan di
-Console setelah aplikasi dibuka di device fisik). **Tahap 2 SELESAI
-SEPENUHNYA (butir 4-7), dan semuanya sudah hidup di produksi** —
-pertandingan bisa benar-benar dimainkan kartu demi kartu, disinkronkan
-real-time lewat Firestore antara dua akun berbeda di dua perangkat
-berbeda (device fisik + emulator), lengkap dengan timer, keyboard kana
-untuk kartu kanji, skor lokal, mekanisme timeout-forfeit, kesimpulan
-pertandingan yang dihitung identik dan independen di kedua sisi (jalur
-cepat), dan sekarang juga penilaian resmi lewat Cloud Function
-(`onBattleAnswerCreated`, sudah ter-deploy dan tampil di
-`firebase functions:list`) — lihat "Tahap 2" di bawah untuk detail
-lengkapnya. **Penemuan penting di sesi ini**: CLI Firebase yang
-sebelumnya dicatat "broken" ternyata cuma masalah binary bawaan —
-`npx firebase-tools` bekerja normal dan sudah terautentikasi, jadi
-deploy Cloud Functions/Firestore/RTDB rules ke depan tidak perlu lagi
-paste manual ke Console. **Tahap 3 butir 8 (bot AI) SELESAI
-SEPENUHNYA** — dibangun, diuji dua sisi, sudah di-deploy ke produksi
-(`onBattleMatchWritten` tampil di `firebase functions:list`,
-`firestore.rules` dengan kunci `cardTierContent` sudah dirilis), DAN
-sudah diverifikasi ujung-ke-ujung di perangkat fisik sungguhan (Moto
-G52J) — pertandingan lawan bot sungguhan dimainkan sampai selesai,
-bot menjawab giliran sendiri secara otomatis, skor tersinkron benar
-lewat Cloud Function yang sama dengan lawan manusia, dan pertandingan
-berakhir dengan hasil "Menang! Kamu: 3, Lawan: 2" — lihat butir 8 di
-bawah untuk detail lengkapnya. **Tahap 3 butir 9 (undangan teman/clan)
-sudah dibangun dan sudah di-deploy** (firestore.rules dengan aturan
-`battleInvites` sudah dirilis ke produksi), tapi **belum diverifikasi
-di perangkat fisik** — lihat butir 9 di bawah. **Tahap 3 butir 10
-(matchmaking publik) — SELURUH 10 BUTIR "Urutan mengerjakan" SEKARANG
-SUDAH DIBANGUN, DIUJI, DAN DI-DEPLOY** (`onMatchmakingQueueJoined`
-tampil di `firebase functions:list`, `database.rules.json` dengan
-aturan `matchmakingQueue`/`matchmakingResults` sudah dirilis), tapi
-sama seperti butir 9, **belum diverifikasi di perangkat fisik** — lihat
-butir 10 di bawah. **Yang masih genuinely belum dibangun, di luar
-daftar 10 butir itu sendiri**: logika gerak bintang sungguhan
-(naik/turun tingkat) — lihat catatan penutup di butir 10.
+## Ringkasan serah-terima sesi (2026-08-14) — baca ini dulu kalau
+## mengambil alih sesi ini dari awal
+
+**Seluruh 10 butir "Urutan mengerjakan" (di bawah) sudah dibangun,
+diuji, dan di-deploy ke produksi `teisou-kana-master`.** Ini BUKAN
+berarti fitur ini 100% selesai secara produk — lihat "Yang masih benar-
+benar terbuka" di bawah, dua hal besar masih kurang.
+
+### Sudah selesai + hidup di produksi
+
+| Tahap/butir | Status |
+|---|---|
+| Tahap 1 (keyboard kana, field rank, presence RTDB) | ✅ selesai, hidup, diverifikasi di perangkat fisik |
+| Tahap 2 butir 4-7 (battleMatches, layar pertandingan, penilaian Cloud Function) | ✅ selesai, hidup, diverifikasi lintas 2 device fisik |
+| Tahap 3 butir 8 (bot AI) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung di perangkat fisik** (Moto G52J, match nyata sampai selesai) |
+| Tahap 3 butir 9 (undangan teman/clan) | ✅ dibangun+diuji+di-deploy, **belum dicoba di perangkat fisik** |
+| Tahap 3 butir 10 (matchmaking publik) | ✅ dibangun+diuji+di-deploy, **belum dicoba di perangkat fisik** |
+
+Semua Cloud Function (`onBattleAnswerCreated`, `onBattleMatchWritten`,
+`onMatchmakingQueueJoined`) tampil di `firebase functions:list`
+(`asia-southeast1`). `firestore.rules` dan `database.rules.json`
+keduanya sudah dirilis lewat `npx firebase-tools@latest deploy` — CLI
+ini (bukan binary `/c/flutter/bin/firebase` yang macet) adalah jalur
+deploy yang benar ke depannya, lihat "Penemuan penting" di butir 7.
+
+### Yang masih benar-benar terbuka (2 hal besar)
+
+1. **Verifikasi perangkat fisik untuk butir 9 dan 10.** Kode sudah
+   lulus `flutter analyze`/test suite/`node --test`, tapi belum pernah
+   benar-benar dicoba dua akun sungguhan saling menantang (butir 9)
+   atau saling menunggu di antrian publik (butir 10). Ini yang paling
+   murah untuk dicoba lebih dulu di sesi berikutnya — langkah konkret
+   ada di penutup masing-masing butir (cari "Belum ada verifikasi
+   interaktif" di butir 9 dan 10 di bawah).
+2. **Logika gerak bintang (naik/turun tingkat) belum dibangun sama
+   sekali, di mana pun** — dicek langsung ke kode: tidak ada satu baris
+   pun di `functions/` yang menyentuh `cardGameRank` selain membaca/
+   menyimpannya apa adanya. `rankedMatch` (butir 9) sudah menyiapkan
+   fondasinya (field yang membedakan match mana yang seharusnya
+   menggerakkan bintang), tapi promosi/demosi/divisi/bonus beruntun/
+   pergantian musim (semua yang dijelaskan di bagian "Rank pakai
+   bintang, terpisah dari poin" jauh di bawah) masih murni rumusan,
+   belum kode. **Penting disadari**: ini bukan salah satu dari 10 butir
+   "Urutan mengerjakan" — daftar itu tidak pernah menjadwalkan
+   pekerjaan ini secara eksplisit, jadi selesainya butir 1-10 tidak
+   berarti bintang sudah bergerak. Kalau sesi berikutnya ingin membuat
+   Card Game Mode benar-benar bisa dimainkan dari awal sampai naik
+   tingkat, inilah pekerjaan besar yang sebenarnya tersisa.
+
+### Hal kecil lain yang perlu diingat
+
+- **Navigasi produksinya setengah ada** — dicek ulang ke kode, dan ini
+  koreksi terhadap catatan sebelumnya yang menulis "belum ada sama
+  sekali":
+  - **Jalur undangan SUDAH bisa dijangkau pengguna sungguhan.** Tombol
+    Tantang hidup di `ChatHubScreen` (dibuka dari Profil) dan
+    `ClanMembersScreen` (dibuka dari tab Clan), dan menerima undangan
+    membuka `BattleScreen` langsung (`chat_hub_screen.dart:173`).
+    **Artinya butir 9 sebenarnya bisa diuji di perangkat fisik hari ini
+    juga, tanpa menyentuh `main.dart` sama sekali** — cukup dua akun
+    yang berteman.
+  - **Yang benar-benar belum punya pintu masuk cuma memulai sendiri**:
+    `BattleTestStartScreen`/`BattleMatchmakingScreen` masih perlu
+    `main.dart` diubah sementara (lihat teknik verifikasi butir 8 —
+    ubah `_TutorialGate`, build, install, lalu
+    `git checkout -- lib/main.dart` sebelum commit). Jadi butir 10 yang
+    masih butuh cara itu untuk diuji.
+  - Tidak ada tombol di Home/Modules yang membuka mode ini. Ini bukan
+    bagian dari 10 butir — belum pernah diminta, jadi belum dikerjakan.
+- **Trade-off yang sengaja dibiarkan terbuka** (dicatat lengkap di
+  masing-masing butir, bukan lupa): kedaluwarsa undangan 2 menit murni
+  kosmetik di sisi tampilan (butir 9); menolak undangan tidak
+  membatalkan match yang sudah terlanjur dibuat (butir 9); balapan
+  kecil di detik ke-20 saat jatuh ke bot bisa (jarang) membuat dua
+  match sekaligus (butir 10).
+
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
