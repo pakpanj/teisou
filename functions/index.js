@@ -277,3 +277,10 @@ exports.onBattleMatchWritten = require("./battle_bot").onBattleMatchWritten;
 // Database transaction.
 exports.onMatchmakingQueueJoined =
   require("./battle_matchmaking").onMatchmakingQueueJoined;
+
+// Card Game Mode's star ladder — see battle_stars.js. Fires whenever a
+// battleMatches doc gains a `result`, and is the only writer anywhere of
+// `users/{uid}.cardGameRank` (firestore.rules rejects client writes to
+// it, so the ladder cannot be climbed by editing the document).
+exports.onBattleMatchConcluded =
+  require("./battle_stars").onBattleMatchConcluded;

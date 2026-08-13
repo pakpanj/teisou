@@ -12,10 +12,29 @@ service cloud.firestore {
     // tergated (bukan tiap kali dokumen ditulis) — supaya user yang sudah
     // pernah pasang avatar premium lalu langganannya berakhir tidak
     // mendadak gagal menulis hal lain yang tidak berkaitan sama sekali.
+    //
+    // Pengecekan kedua: `cardGameRank` (tingkat/divisi/bintang Mode Game
+    // Card) TIDAK BOLEH diubah oleh client sama sekali — satu-satunya
+    // penulisnya adalah Cloud Function `onBattleMatchConcluded`
+    // (functions/battle_stars.js), yang jalan dengan hak Admin SDK
+    // sehingga tidak tunduk pada aturan ini. Tanpa kunci ini seluruh
+    // tangga bintang cuma hiasan: siapa pun bisa menulis langsung ke
+    // dokumennya sendiri dan jadi Emerald tanpa bertanding sekali pun.
+    // Sengaja dibandingkan nilai sebelum vs. sesudah (bukan melarang
+    // field-nya muncul), karena penulisan lain ke dokumen ini memakai
+    // set(merge:true) — field yang tidak disebut tetap ikut terbawa di
+    // request.resource.data, jadi larangan "tidak boleh ada" akan
+    // memblokir penyimpanan nama/avatar yang tidak ada hubungannya.
     match /users/{uid} {
       allow read: if request.auth != null && request.auth.uid == uid;
-      allow write: if request.auth != null && request.auth.uid == uid
-          && isAllowedAvatarWrite();
+      allow create: if request.auth != null && request.auth.uid == uid
+          && isAllowedAvatarWrite()
+          && !('cardGameRank' in request.resource.data);
+      allow update: if request.auth != null && request.auth.uid == uid
+          && isAllowedAvatarWrite()
+          && request.resource.data.get('cardGameRank', null)
+              == resource.data.get('cardGameRank', null);
+      allow delete: if request.auth != null && request.auth.uid == uid;
 
       match /{document=**} {
         allow read, write: if request.auth != null && request.auth.uid == uid;

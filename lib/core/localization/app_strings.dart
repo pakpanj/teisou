@@ -1419,4 +1419,18 @@ class AppStrings {
         'Gagal mencari lawan, coba lagi.',
         'Failed to find an opponent, try again.',
       );
+
+  // Tangga bintang. The tier names themselves (Bronze/Silver/Gold/
+  // Diamond/Emerald) are deliberately not translated — they're the same
+  // words in both languages here, and every ranked game an Indonesian
+  // player has seen uses them untranslated.
+  String get battleRankStandingLabel => _t('Peringkatmu', 'Your standing');
+  String battleRankStars(int stars, int perDivision) =>
+      _t('$stars/$perDivision bintang', '$stars/$perDivision stars');
+  String battleRankStarsUncapped(int stars) =>
+      _t('$stars bintang', '$stars stars');
+  String battleRankWinStreak(int wins) => _t(
+        'Menang $wins kali beruntun — kemenangan berikutnya +2 bintang',
+        '$wins wins in a row — the next win is worth +2 stars',
+      );
 }

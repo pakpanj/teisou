@@ -111,6 +111,59 @@ void main() {
       expect(rank.division, 5);
       expect(rank.stars, 0);
       expect(rank.season, 1);
+      expect(rank.winStreak, 0);
+    });
+
+    // The standing is written by `functions/battle_stars.js` and only
+    // ever read here — these cover the reading and the display, not the
+    // ladder, which has no Dart implementation on purpose (see the class
+    // doc comment).
+    test('a division is shown as a Roman numeral, counting down as the '
+        'player climbs', () {
+      expect(
+        CardGameRank(
+          tier: CardGameTier.gold,
+          division: 5,
+          stars: 0,
+          season: 1,
+        ).displayName,
+        'Gold V',
+      );
+      expect(
+        CardGameRank(
+          tier: CardGameTier.bronze,
+          division: 1,
+          stars: 2,
+          season: 1,
+        ).displayName,
+        'Bronze I',
+      );
+    });
+
+    test('Emerald shows no division, because it has none', () {
+      // Its stored division is a meaningless 1; printing "Emerald I"
+      // would imply a IV and a V above it that do not exist.
+      expect(
+        CardGameRank(
+          tier: CardGameTier.emerald,
+          division: 1,
+          stars: 47,
+          season: 1,
+        ).displayName,
+        'Emerald',
+      );
+    });
+
+    test('a win streak survives a round trip, since the result screen '
+        'explains the +2 with it', () {
+      final rank = CardGameRank(
+        tier: CardGameTier.gold,
+        division: 2,
+        stars: 1,
+        season: 3,
+        winStreak: 4,
+      );
+      expect(CardGameRank.fromMap(rank.toMap()).winStreak, 4);
     });
   });
 }

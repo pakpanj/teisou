@@ -11,6 +11,7 @@ import '../../data/models/card_game_rank.dart';
 import '../../data/repositories/battle_repository.dart' show battleBotUid;
 import 'battle_challenge.dart' show cardTierContentLabel;
 import 'battle_screen.dart';
+import 'widgets/rank_standing.dart';
 
 /// Card Game Mode's public-opponent matchmaking — Tahap 3 butir 10 in
 /// `NOTES_CARD_GAME_MODE.md`, "Pemasangan lawan publik". A manual test
@@ -207,6 +208,8 @@ class _BattleMatchmakingScreenState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              RankStanding(rank: rank, strings: s),
+              const SizedBox(height: 16),
               Text(
                 s.battleMatchmakingDescription(
                   cardTierContentLabel(rank.tier.cardContent, s),

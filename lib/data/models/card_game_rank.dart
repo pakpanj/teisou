@@ -46,6 +46,16 @@ extension CardGameTierX on CardGameTier {
     CardGameTier.emerald => null,
   };
 
+  /// Shown as-is in both languages — see `battleRankStandingLabel`'s
+  /// comment in `AppStrings` for why these aren't translated.
+  String get displayName => switch (this) {
+    CardGameTier.bronze => 'Bronze',
+    CardGameTier.silver => 'Silver',
+    CardGameTier.gold => 'Gold',
+    CardGameTier.diamond => 'Diamond',
+    CardGameTier.emerald => 'Emerald',
+  };
+
   /// Bronze and Silver never lose stars on a loss — the ladder that
   /// actually bites only starts at Gold. See "Bronze dan Silver diberi
   /// perlindungan" in `NOTES_CARD_GAME_MODE.md`.
@@ -100,14 +110,19 @@ extension CardTierContentX on CardTierContent {
 /// that tier, stars within the current division, and the season this
 /// standing belongs to.
 ///
-/// This is deliberately just the *field* — no promotion/demotion, streak
-/// bonus, loss-protection, or season-rollover logic lives here yet (see
-/// `NOTES_CARD_GAME_MODE.md`'s "Tahap 1 butir 2": that logic only
-/// matters once real matches exist to trigger it, and belongs with the
-/// Cloud Function scoring work in Tahap 2). What's here is enough for
-/// anything built in the meantime to read "which tier is this player in
-/// right now, so which card content applies" — [CardGameTierX.cardContent]
-/// is the reason this needed to exist before the match screen does.
+/// **Read-only from this app's point of view.** Promotion, demotion,
+/// loss protection, the streak bonus and the season's 70% carry all live
+/// in `functions/battle_stars.js`, which is the only writer of this
+/// field anywhere — `firestore.rules` rejects any client write that
+/// changes it. That is not a layering preference: a ladder a player can
+/// edit from their own device is decoration, and this one decides a
+/// public leaderboard's order.
+///
+/// There is deliberately **no Dart copy of the ladder rules**. Nothing
+/// here needs to *decide* a movement, only to display the standing the
+/// server wrote, so a second implementation would buy nothing and could
+/// drift — the cost `battle_scoring.js` already pays once for
+/// RomajiConverter, which genuinely is needed on both sides.
 class CardGameRank {
   final CardGameTier tier;
 
@@ -119,12 +134,29 @@ class CardGameRank {
 
   final int season;
 
+  /// Consecutive wins so far — a win from the third onward is worth 2
+  /// stars instead of 1. Kept on the model (rather than left as a
+  /// server-side detail) so the match-result screen can say *why* a win
+  /// paid double instead of the number appearing to change at random.
+  final int winStreak;
+
   CardGameRank({
     required this.tier,
     required this.division,
     required this.stars,
     required this.season,
+    this.winStreak = 0,
   });
+
+  /// "Bronze V", or just "Emerald" for the one tier with no divisions.
+  /// Roman numerals because that's how every ranked game writes them,
+  /// and how the mockups already drew them — note they count *down* as
+  /// the player climbs, so V is the bottom of a tier and I the top.
+  String get displayName => tier.hasDivisions
+      ? '${tier.displayName} ${_romanNumerals[division] ?? '$division'}'
+      : tier.displayName;
+
+  static const _romanNumerals = {1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V'};
 
   /// Bronze V, 0 stars, season 1 — where every new player starts.
   factory CardGameRank.initial() => CardGameRank(
@@ -141,13 +173,18 @@ class CardGameRank {
       division: map['division'] as int? ?? 5,
       stars: map['stars'] as int? ?? 0,
       season: map['season'] as int? ?? 1,
+      winStreak: map['winStreak'] as int? ?? 0,
     );
   }
 
+  /// Kept for round-tripping in tests and for reading a standing back
+  /// out — **not** a write path. See this class's own doc comment: the
+  /// app has no way to save a rank, by design.
   Map<String, dynamic> toMap() => {
     'tier': tier.key,
     'division': division,
     'stars': stars,
     'season': season,
+    'winStreak': winStreak,
   };
 }

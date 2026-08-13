@@ -270,11 +270,11 @@ class ProgressRepository {
     );
   }
 
-  Future<void> setCardGameRank(String uid, CardGameRank rank) {
-    return _userDoc(uid).set({
-      FirestorePaths.fieldCardGameRank: rank.toMap(),
-    }, SetOptions(merge: true));
-  }
+  // There is deliberately no setCardGameRank. Stars are moved only by
+  // `functions/battle_stars.js` when a ranked match concludes, and
+  // `firestore.rules` now rejects any client write that changes
+  // `cardGameRank` — a setter here could only ever fail, which is worse
+  // than not offering one. (One existed and was never called.)
 
   Future<Map<String, AdReward>> getAdRewards(String uid) async {
     final snapshot = await _userDoc(uid).get();

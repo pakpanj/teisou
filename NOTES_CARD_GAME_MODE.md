@@ -19,9 +19,10 @@ benar terbuka" di bawah, dua hal besar masih kurang.
 | Tahap 3 butir 8 (bot AI) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung di perangkat fisik** (Moto G52J, match nyata sampai selesai) |
 | Tahap 3 butir 9 (undangan teman/clan) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung** (G52J vs emulator, dua akun, match tuntas 1-0) |
 | Tahap 3 butir 10 (matchmaking publik) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung** (dipasangkan ~12 dtk, kartu identik di dua layar, match tuntas 4-3) |
+| Tangga bintang (di luar 10 butir) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung** (3 kemenangan beruntun: Bronze V 0/3 → V 1/3 → V 2/3 → IV 1/3; yang kalah tetap 0/3) |
 
 Semua Cloud Function (`onBattleAnswerCreated`, `onBattleMatchWritten`,
-`onMatchmakingQueueJoined`) tampil di `firebase functions:list`
+`onMatchmakingQueueJoined`, `onBattleMatchConcluded`) tampil di `firebase functions:list`
 (`asia-southeast1`). `firestore.rules` dan `database.rules.json`
 keduanya sudah dirilis lewat `npx firebase-tools@latest deploy` — CLI
 ini (bukan binary `/c/flutter/bin/firebase` yang macet) adalah jalur
@@ -36,20 +37,22 @@ deploy yang benar ke depannya, lihat "Penemuan penting" di butir 7.
    Sisa yang belum dicoba tinggal jalur-jalur pinggir: menolak undangan,
    menantang lewat clan, jatuh ke bot saat benar-benar sendirian, dan
    memastikan dua tingkat berbeda tidak saling dipasangkan.
-2. **Logika gerak bintang (naik/turun tingkat) belum dibangun sama
-   sekali, di mana pun** — dicek langsung ke kode: tidak ada satu baris
-   pun di `functions/` yang menyentuh `cardGameRank` selain membaca/
-   menyimpannya apa adanya. `rankedMatch` (butir 9) sudah menyiapkan
-   fondasinya (field yang membedakan match mana yang seharusnya
-   menggerakkan bintang), tapi promosi/demosi/divisi/bonus beruntun/
-   pergantian musim (semua yang dijelaskan di bagian "Rank pakai
-   bintang, terpisah dari poin" jauh di bawah) masih murni rumusan,
-   belum kode. **Penting disadari**: ini bukan salah satu dari 10 butir
-   "Urutan mengerjakan" — daftar itu tidak pernah menjadwalkan
-   pekerjaan ini secara eksplisit, jadi selesainya butir 1-10 tidak
-   berarti bintang sudah bergerak. Kalau sesi berikutnya ingin membuat
-   Card Game Mode benar-benar bisa dimainkan dari awal sampai naik
-   tingkat, inilah pekerjaan besar yang sebenarnya tersisa.
+2. ✅ **SELESAI (2026-08-14): tangga bintang sudah hidup** —
+   `functions/battle_stars.js` (baru) berisi seluruh aturan yang selama
+   ini cuma rumusan: menang +1, seri 0, kalah −1, perlindungan Bronze/
+   Silver, bonus beruntun +2, naik/turun divisi, lantai per tingkat, dan
+   pergantian musim dengan bawaan 70%. Dipicu oleh
+   `onBattleMatchConcluded`, trigger baru yang menyala begitu sebuah
+   match punya `result`. Sudah di-deploy dan **sudah diverifikasi di dua
+   perangkat sungguhan** — rinciannya di bagian "Tangga bintang sudah
+   jalan" di bawah.
+
+   Yang **belum** dikerjakan dari bagian bintang: layar hasil
+   pertandingan belum menampilkan perubahan bintang (masih cuma skor),
+   dan papan peringkat bintangnya sendiri belum dibuat — Cloud Function
+   sudah menulis field-nya (`cardGameTier`/`cardGameStars`/
+   `cardGameStarTotal`/`cardGameSeason` di `leaderboard/{uid}`), tapi
+   belum ada layar yang membacanya.
 
 ### Hal kecil lain yang perlu diingat
 
@@ -1656,6 +1659,80 @@ sini: peringkat tetap bergerak tiap musim sehingga pemain baru punya
 peluang, tapi pemain lama tidak dilempar balik ke Bronze V setelah dua
 bulan bermain. Untuk anak, kehilangan seluruh tingkat sekaligus adalah
 alasan berhenti main, bukan alasan main lagi.
+
+### Tangga bintang sudah jalan (2026-08-14)
+
+Seluruh aturan di dua bagian di atas sekarang benar-benar berjalan, bukan
+rumusan lagi. Kodenya di `functions/battle_stars.js`, dipicu oleh trigger
+baru `onBattleMatchConcluded` yang menyala setiap kali sebuah match punya
+`result`.
+
+**Kenapa di server, dan kenapa tidak ada salinannya di Dart.** Tangga ini
+menentukan urutan papan peringkat publik, jadi kalau client boleh
+menulisnya, seluruh tangganya cuma hiasan — siapa pun bisa menulis
+langsung ke dokumennya sendiri dan jadi Emerald tanpa bertanding sekali
+pun. Karena itu `firestore.rules` sekarang **menolak setiap penulisan
+client yang mengubah `cardGameRank`**, dan Cloud Function (jalan dengan
+hak Admin SDK, tidak tunduk pada rules) adalah satu-satunya penulisnya.
+`ProgressRepository.setCardGameRank` ikut dihapus — tidak pernah dipanggil
+siapa pun, dan sekarang hanya akan selalu gagal.
+
+Berbeda dengan RomajiConverter yang memang harus ada di dua bahasa (Dart
+dan Node sama-sama perlu mengubah kana), **tidak ada implementasi tangga
+ini di Dart sama sekali** — aplikasi cuma perlu *menampilkan* peringkat
+yang ditulis server, tidak perlu *memutuskan* pergerakannya, jadi salinan
+kedua tidak membeli apa pun dan hanya menambah risiko melenceng.
+
+**Dua hal yang rumusannya tidak menentukan, dan diputuskan di sini** —
+keduanya ditulis di komentar kodenya juga, supaya tidak perlu ditebak
+ulang nanti:
+- **Bonus beruntun berlaku dari kemenangan ketiga dan seterusnya**, bukan
+  cuma tepat di kemenangan ketiga. Rumusan cuma menulis "beruntun 3
+  kemenangan memberi +2 bintang" tanpa menyebut kemenangan keempat
+  bernilai berapa. Dibaca seperti Mobile Legends (perbandingan yang
+  dipakai rumusan itu sendiri), karena alternatifnya — bonus hanya tiap
+  kemenangan ketiga — membuat bonusnya nyaris tak terasa persis di tangga
+  atas, tempat bonus itu ada justru untuk membuka kemacetan.
+- **Seri tidak memutus rangkaian kemenangan.** Seri bukan kekalahan, dan
+  format ini memang sering berakhir seri, jadi menghitungnya sebagai
+  putusnya momentum akan menghukum formatnya, bukan pemainnya.
+
+**Detail kecil yang penting**: kalah di dasar sebuah tingkat melaporkan
+perubahan **0**, bukan −1. Bintangnya memang tidak berkurang (tertahan
+lantai tingkat), jadi layar hasil tidak boleh mengaku ada bintang yang
+hilang. Ada tesnya sendiri.
+
+**Musimnya dihitung dari tanggal, bukan disimpan.** Season 1 = Jan-Feb
+2026, dua bulan sekali. Pergantiannya "malas": baru berlaku saat pemain
+main lagi, bukan tepat tengah malam. Ini disengaja — proyek ini tidak
+punya Cloud Scheduler, dan dari sudut pandang pemain kedua cara itu tidak
+bisa dibedakan.
+
+**Verifikasi di perangkat sungguhan** (Moto G52J vs emulator Pixel 8, dua
+akun berbeda, tiga pertandingan berturut-turut, HP selalu menang 5-0):
+
+| | HP (menang terus) | Emulator (kalah terus) |
+|---|---|---|
+| awal | Bronze V, 0/3 | Bronze V, 0/3 |
+| setelah menang 1 | Bronze V, **1/3** | Bronze V, 0/3 |
+| setelah menang 2 | Bronze V, **2/3** + notis beruntun | Bronze V, 0/3 |
+| setelah menang 3 | **Bronze IV, 1/3** | Bronze V, 0/3 |
+
+Kemenangan ketiga menaikkan **dua** bintang sekaligus (2 → 4), melewati
+batas divisi Bronze (3 bintang) dan naik dari V ke IV — jadi bonus
+beruntun **dan** naik divisi terbukti dalam satu langkah. Sisi yang kalah
+tiga kali berturut-turut tetap di 0/3, membuktikan perlindungan Bronze
+juga jalan di jalur sungguhan, bukan cuma di unit test. `functions:log`
+bersih, tanpa satu pun error.
+
+**Yang belum diuji**: pergantian musim (butuh menunggu batas dua bulan
+atau memalsukan jam server), kalah di Gold ke atas (butuh 35 kemenangan
+dulu untuk sampai Gold), dan bahwa rules benar-benar menolak penulisan
+`cardGameRank` dari client — rules-nya ter-deploy dan ter-compile, tapi
+belum pernah dicoba ditembus sungguhan. Semua sudah tertutup unit test
+(63 tes di `functions/battle_stars.test.js`, tiap aturannya dicek gigit
+dengan cara sengaja merusak kodenya satu per satu), tapi tes bukan
+perangkat sungguhan.
 
 ### Isi kartu ditentukan oleh rank
 
