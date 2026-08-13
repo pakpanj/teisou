@@ -18,7 +18,7 @@ benar terbuka" di bawah, dua hal besar masih kurang.
 | Tahap 2 butir 4-7 (battleMatches, layar pertandingan, penilaian Cloud Function) | ✅ selesai, hidup, diverifikasi lintas 2 device fisik |
 | Tahap 3 butir 8 (bot AI) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung di perangkat fisik** (Moto G52J, match nyata sampai selesai) |
 | Tahap 3 butir 9 (undangan teman/clan) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung** (G52J vs emulator, dua akun, match tuntas 1-0) |
-| Tahap 3 butir 10 (matchmaking publik) | ✅ dibangun+diuji+di-deploy, **belum dicoba di perangkat fisik** |
+| Tahap 3 butir 10 (matchmaking publik) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung** (dipasangkan ~12 dtk, kartu identik di dua layar, match tuntas 4-3) |
 
 Semua Cloud Function (`onBattleAnswerCreated`, `onBattleMatchWritten`,
 `onMatchmakingQueueJoined`) tampil di `firebase functions:list`
@@ -29,13 +29,13 @@ deploy yang benar ke depannya, lihat "Penemuan penting" di butir 7.
 
 ### Yang masih benar-benar terbuka (2 hal besar)
 
-1. **Verifikasi perangkat fisik untuk butir 9 dan 10.** Kode sudah
-   lulus `flutter analyze`/test suite/`node --test`, tapi belum pernah
-   benar-benar dicoba dua akun sungguhan saling menantang (butir 9)
-   atau saling menunggu di antrian publik (butir 10). Ini yang paling
-   murah untuk dicoba lebih dulu di sesi berikutnya — langkah konkret
-   ada di penutup masing-masing butir (cari "Belum ada verifikasi
-   interaktif" di butir 9 dan 10 di bawah).
+1. ✅ **SELESAI (2026-08-14): butir 9 dan 10 sudah diverifikasi di
+   perangkat sungguhan** — Moto G52J melawan emulator Pixel 8, dua akun
+   Firebase berbeda, keduanya main sampai pertandingan tuntas dengan
+   skor yang cocok di kedua layar. Detailnya di penutup butir 9 dan 10.
+   Sisa yang belum dicoba tinggal jalur-jalur pinggir: menolak undangan,
+   menantang lewat clan, jatuh ke bot saat benar-benar sendirian, dan
+   memastikan dua tingkat berbeda tidak saling dipasangkan.
 2. **Logika gerak bintang (naik/turun tingkat) belum dibangun sama
    sekali, di mana pun** — dicek langsung ke kode: tidak ada satu baris
    pun di `functions/` yang menyentuh `cardGameRank` selain membaca/
@@ -970,14 +970,25 @@ paling rumit**
       ke bot masuk akal) atau ramai (mungkin cuma perlu menunggu
       beberapa detik lagi). Ini bukan bug, cuma UX yang bisa
       ditingkatkan nanti kalau perlu.
-    - **Belum ada verifikasi interaktif di perangkat fisik** — sama
-      seperti butir 9, kode ini belum pernah benar-benar dicoba dua
-      akun sungguhan saling menunggu dan dipasangkan. Langkah
-      berikutnya: buka `BattleMatchmakingScreen` di dua device/akun
-      berbeda pada tingkat yang sama, pastikan keduanya dipasangkan
-      dalam beberapa detik (bukan menunggu 20 detik penuh), lalu coba
-      satu device sendirian (device lain tidak dibuka) dan pastikan
-      setelah 20 detik jatuh ke bot dengan benar.
+    - ✅ **SUDAH diverifikasi di perangkat sungguhan** (2026-08-14).
+      Moto G52J melawan emulator Pixel 8, dua akun Firebase berbeda,
+      keduanya di tingkat Hiragana Dasar. "Cari Lawan" ditekan hampir
+      bersamaan, dan **keduanya masuk pertandingan dalam ~12 detik —
+      lebih cepat daripada ambang jatuh-ke-bot 20 detik**, jadi
+      pemasangannya memang lewat Cloud Function, bukan lewat bot.
+    - **Bukti keduanya di match yang sama** (bukan dua match bot
+      terpisah): tangkapan layar serentak dari kedua perangkat
+      menunjukkan **nomor kartu yang sama (Kartu 3/20) dan huruf yang
+      sama (ふ)** pada saat yang sama, satu sisi memegang kolom
+      jawaban, sisi lain menampilkan "Menunggu jawaban lawan…". Kalau
+      masing-masing melawan bot, kartunya akan berbeda.
+    - **Penilaiannya benar sampai akhir**: 7 jawaban dikirim
+      bergantian dari kedua sisi, dan pertandingan berakhir dengan
+      skor cermin sempurna — HP "Kalah, Kamu 3 Lawan 4", emulator
+      "Menang!, Kamu 4 Lawan 3".
+    - Belum diuji: jalur **jatuh ke bot** saat benar-benar sendirian
+      (buka satu device saja, biarkan 20 detik penuh), dan bahwa dua
+      tingkat berbeda **tidak** saling dipasangkan.
 
     **Ini menutup seluruh 10 butir "Urutan mengerjakan" di
     `NOTES_CARD_GAME_MODE.md`.** Yang masih terbuka di luar daftar
