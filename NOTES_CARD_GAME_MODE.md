@@ -573,6 +573,77 @@ daftar kartu tertentu yang selalu ia lewatkan.
 
 Poin belajar dan EXP juga tetap didapat dari lawan bot.
 
+### Bentuk konkret bot — dikonfirmasi: server yang memutuskan
+
+**Bot lewat arsitektur pertandingan yang sama persis** dengan lawan
+manusia — `battleMatches` yang sama, `answers` subkoleksi yang sama,
+Cloud Function penilaian yang sama. Salah satu dari dua `players` cuma
+diisi penanda tetap (mis. `"BOT"`) alih-alih uid sungguhan. Ini penting
+supaya bintang/poin/EXP dari lawan bot lewat **satu** sumber kebenaran
+yang sama dengan lawan manusia, bukan sistem penilaian kedua yang bisa
+berbeda hasil.
+
+**Dikonfirmasi: gerakan bot diputuskan server, bukan HP pemain** —
+supaya tidak ada celah klien yang di-modifikasi bisa memaksa bot selalu
+salah demi menang mudah, setara ketatnya dengan lawan manusia sungguhan.
+
+**Cara menjeda tanpa Cloud Tasks**: jeda "bot mikir dulu" itu murni
+kosmetik — bagian yang menentukan (benar/salah, kapan resminya) sudah
+diputuskan server seketika itu juga, tidak perlu benar-benar ditunda di
+sisi server. Begitu giliran bot menjawab tiba, Cloud Function langsung
+(tanpa nunggu apa pun) menggelindingkan peluang benar/salah sesuai
+tingkat, memilih jawabannya, dan menulis ke `answers/{round}` — tapi
+menyertakan satu field tambahan, `revealAt` (waktu tulis + jeda acak
+sesuai rentang tingkat). Klien pemain manusia melihat dokumen jawaban
+ini lewat listener seketika juga, tapi **sengaja menahan tampilannya**
+sampai jam lokal (yang sudah disesuaikan offset RTDB) melewati
+`revealAt` — barulah "bot menjawab: ..., benar!/salah!" ditampilkan dan
+giliran berikutnya terbuka.
+
+Kenapa ini tetap aman walau bagian penundaannya ada di klien: **yang
+bisa dimanipulasi klien cuma ilusi kecepatannya, bukan hasilnya.**
+Seandainya klien yang di-modifikasi mengabaikan `revealAt` dan langsung
+menampilkan jawaban bot detik itu juga, `officialScore` tidak berubah
+sedikit pun — datanya sudah ditulis lengkap oleh Cloud Function
+sebelumnya. Paling buruk yang bisa didapat curang di sini cuma "bot
+terasa menjawab instan", bukan "bot dipaksa salah".
+
+**Kurva kesulitan** (usulan, gampang disetel ulang):
+
+| Tingkat | Peluang bot jawab benar | Rentang jeda `revealAt` |
+|---|---|---|
+| Bronze | 50% | 15–30 detik |
+| Silver | 65% | 10–25 detik |
+| Gold | 80% | 6–18 detik |
+| Diamond | 92% | 3–12 detik |
+| Emerald | 97% | 2–8 detik |
+
+Kedua angka digelindingkan ulang **tiap kartu**, tidak disimpan/
+dipatok ke kartu tertentu — supaya "bot selalu salah di 学生" tidak
+pernah bisa dihafal, sesuai aturan yang sudah diputuskan. Rentang jeda
+juga sengaja selalu di bawah 30 detik supaya bot tidak pernah kena
+timeout — itu bukan gaya kesulitan yang dimaksud di sini.
+
+**Yang masih perlu diputuskan saat membangun (bukan arsitektur, cuma
+konten)**: kalau bot menjawab salah, teks yang ditulis harus jawaban
+yang *plausibel* salah, bukan sekadar kosong atau acak sembarangan —
+pengecoh seperti ini sudah ada polanya di `kanji_combo_repository.dart`
+(pengecoh berbasis mutasi dakuten/vokal untuk soal bacaan), layak dipakai
+ulang polanya, bukan dibangun dari nol.
+
+**Dikonfirmasi: bot otomatis muncul kalau lawan publik sedang sepi**,
+sesuai bunyi catatan yang sudah ada dari awal — **bukan** dipilih
+langsung sebagai jenis lawan sendiri. Konsekuensinya jujur perlu
+dicatat: ini artinya bot **tidak bisa dibangun sendirian** dulu — perlu
+tahu dulu bagaimana pemasangan lawan publik bekerja (siapa dipasangkan
+dengan siapa, berapa lama menunggu sebelum dianggap "sepi") supaya ada
+titik pasti kapan sistem jatuh ke bot. Itu masih pertanyaan terbuka di
+bagian lain dokumen ini ("Lawan publik dipasangkan berdasarkan apa").
+Mekanisme bot di atas (kurva kesulitan, `revealAt`, arsitektur
+`battleMatches` yang sama) tetap bisa dikerjakan sekarang — yang
+menunggu cuma bagian "kapan tepatnya sistem memutuskan untuk
+menawarkannya".
+
 ### Papan peringkat bintang berdiri sendiri
 
 Terpisah dari papan `globalScore` yang sudah ada. Keduanya mengukur hal
