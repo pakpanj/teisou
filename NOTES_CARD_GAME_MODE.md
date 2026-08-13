@@ -301,6 +301,67 @@ terasa jauh lebih menyakitkan daripada nilai bintang yang hilang, dan
 lantai per tingkat sudah cukup membuat kekalahan terasa tanpa menghapus
 pencapaian.
 
+### Musim
+
+**Dua bulan sekali.** Saat musim berganti, bintang tidak dihapus habis —
+pemain memulai musim baru dengan **70% bintang terakhirnya** (dibulatkan).
+
+Bentuk reset separuh jalan seperti ini memang yang paling masuk akal di
+sini: peringkat tetap bergerak tiap musim sehingga pemain baru punya
+peluang, tapi pemain lama tidak dilempar balik ke Bronze V setelah dua
+bulan bermain. Untuk anak, kehilangan seluruh tingkat sekaligus adalah
+alasan berhenti main, bukan alasan main lagi.
+
+### Isi kartu ditentukan oleh rank
+
+**Kesulitannya tidak dipilih pemain — mengikuti tingkat yang sedang
+dinaunginya.** Naik peringkat berarti naik tahap belajar, jadi tangganya
+sekaligus menjadi kurikulum.
+
+Usulan pemetaannya:
+
+| Tingkat | Isi kartu |
+|---|---|
+| Bronze | Hiragana dasar |
+| Silver | Katakana dasar + huruf gabungan (tenten, maru, youon) |
+| Gold | Kanji N5 |
+| Diamond | Kanji N4–N3 |
+| Emerald | Kanji N2–N1 |
+
+Kenapa kanji sudah masuk di Gold, bukan ditahan sampai Diamond: kanji
+justru bagian yang paling ingin diuji pemain, dan menaruhnya di Diamond
+berarti butuh 60 kemenangan sebelum kartu kanji pertama muncul — sebagian
+besar pemain tidak akan pernah sampai ke sana. Di Gold, kartu kanji
+pertama datang setelah 35 kemenangan, dan itu terasa sebagai hadiah,
+bukan sebagai pintu terkunci.
+
+#### Ini sekaligus menyelesaikan masalah dua keyboard
+
+Dulu saya tandai bahwa satu pertandingan bisa butuh dua cara mengetik —
+romaji untuk kartu kana, hiragana untuk kartu kanji — sehingga kotak
+jawaban harus berganti wujud di tengah permainan.
+
+Dengan isi kartu dikunci oleh tingkat, **satu pertandingan tidak akan
+pernah mencampur kana dan kanji.** Jadi cara mengetiknya tetap sama dari
+awal sampai akhir:
+
+- **Bronze, Silver** → ketik romaji, cukup keyboard bawaan HP.
+- **Gold ke atas** → ketik hiragana, memakai keyboard kana aplikasi.
+
+Keyboard kana bahkan baru dibutuhkan mulai Gold, jadi bisa dikerjakan
+setelah versi pertama jalan.
+
+#### Akibat lain yang perlu disadari
+
+- **Layar "Pilih Deck" di mockup jadi tidak berlaku.** Tidak ada lagi
+  pilihan Kana atau Kanji — yang tampil adalah isi kartu tingkat saat ini.
+  Layar 1 tinggal memilih lawan.
+- Pemain yang sudah lancar kana tetap harus melewati Bronze dan Silver.
+  Tidak apa-apa: keduanya berperlindungan, jadi ia akan menang beruntun
+  dan naik cepat — 35 kemenangan itu lewat dengan sendirinya.
+- Filter "Mode" di papan peringkat berubah makna, karena mode tidak lagi
+  dipilih.
+
 ### Lawan bot saat sepi
 
 Kalau tidak ada pemain online, lawannya bot. Tiga hal yang menyertainya:
@@ -327,12 +388,12 @@ daftar kartu tertentu yang selalu ia lewatkan.
 
 Poin belajar dan EXP juga tetap didapat dari lawan bot.
 
-**Yang masih perlu diputuskan untuk sistem bintangnya:**
+**Yang masih perlu diputuskan:**
 
-- Musimnya berapa lama, dan saat musim berganti bintangnya direset penuh
-  atau ditarik turun beberapa tingkat saja?
 - Bintangnya cuma untuk pertandingan publik, atau lawan teman dan clan
   juga menghitung? (Main santai bareng teman sebaiknya tidak merugikan.)
+- Kalau dua pemain beda tingkat bertanding — misalnya Gold melawan
+  Diamond lewat undangan teman — kartu siapa yang dipakai?
 - Papan peringkat `globalScore` yang sudah ada tetap terpisah, atau
   peringkat bintang jadi papan sendiri?
 

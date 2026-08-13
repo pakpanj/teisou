@@ -9474,9 +9474,31 @@ The thing to protect when building it: the bot must have no memorisable
 pattern — difficulty belongs in answer speed and error rate, not in a
 fixed set of cards it always misses.
 
-Still open: season length and whether a reset is full or partial, whether
-friend and clan matches move stars at all, and whether the star ranking is
-its own board or joins the existing one.
+**Seasons run two months** and reset softly: a new season starts at **70%
+of the stars held at the end of the last one**. Rank keeps moving so newer
+players have a chance, without throwing a long-standing player back to
+Bronze V — for a child, losing every tier at once is a reason to stop
+playing rather than to play again.
+
+**Card content follows rank rather than being chosen**, so the ladder
+doubles as a curriculum: Bronze hiragana, Silver katakana plus
+dakuten/handakuten/youon, Gold kanji N5, Diamond N4-N3, Emerald N2-N1.
+Kanji enters at Gold rather than Diamond deliberately — it is the part
+learners most want tested, and putting it at Diamond would mean 60 wins
+before the first kanji card, which most players would never reach.
+
+That decision quietly **removes the two-keyboard problem** flagged
+earlier: since a match can no longer mix kana and kanji, the input method
+is fixed for its whole length — romaji on the system keyboard through
+Bronze and Silver, the in-app kana keyboard from Gold up. It also means
+the kana keyboard is not needed until Gold exists, so it can follow the
+first working version rather than block it. Two consequences to remember:
+the mockup's "Pilih Deck" screen no longer applies, and the leaderboard's
+mode filter changes meaning.
+
+Still open: whether friend and clan matches move stars at all, whose
+cards are used when two different tiers meet through an invite, and
+whether the star ranking is its own board or joins the existing one.
 
 **Four mockup screens exist** (made by the user with ChatGPT) and are
 **visual reference only — the rules stay the ones decided above.** What is
