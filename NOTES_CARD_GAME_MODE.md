@@ -469,6 +469,57 @@ Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
 - Karena gratis, iklan banner tetap muncul. Perlu dipastikan tidak
   mengganggu di layar pertandingan.
 
+## Desain putaran kedua (7 layar + kartu aturan)
+
+Dibuat ulang memakai prompt di bawah. **Jauh lebih tepat** — keempat hal
+yang bermasalah di putaran pertama hilang semua: tidak ada HP/damage,
+peringkat sudah memakai bintang bertingkat (Pemula III → Pemula II, +1
+bintang), tidak ada chat teks bebas (hanya stiker), dan tidak ada bonus
+poin untuk deck level tinggi.
+
+Aturan main tercermin dengan benar di mana-mana: 10 kartu per pemain, 30
+detik sebagai batas atas, kana romaji dan kanji hiragana, skor = jumlah
+jawaban benar, imbang lanjut ke kartu 11–20 dengan potongan 2 detik, dan
+seri kalau masih imbang. Layar hasil bahkan memecah skornya jadi "Ronde
+1–10: 5–5 (Imbang)" dan "Ronde 11–15: 2–0", jadi babak tambahannya
+terbaca.
+
+Keyboard kana-nya juga ada, lengkap dengan **っ**, tenten, maru, huruf
+kecil ゃゅょ, tombol hapus, dan tombol kirim.
+
+### Satu kesalahan yang membatalkan permainannya
+
+**Kartu menampilkan furigana di atas kanjinya.** Di layar 3, 学生 digambar
+dengan がくせい tertulis di atasnya — sementara pemain diminta mengetik
+bacaan kata itu. Jawabannya terpampang di soal. Hal yang sama terjadi di
+layar 5 (電車 dengan でんしゃ).
+
+Ini bukan detail visual, ini membatalkan seluruh mekanik permainan. **Kartu
+soal hanya boleh menampilkan kanjinya saja.** Furiganya baru muncul setelah
+dijawab — dan di layar hasil, tempatnya memang sudah benar.
+
+### Hal kecil lainnya
+
+- **Papan keyboard punya kolom ganda.** Beberapa huruf muncul dua kali (や,
+  ゆ, よ, ろ, っ). Kemungkinan besar cuma kesalahan gambar, tapi tata
+  letak sebenarnya perlu mengikuti gojūon: 5 baris vokal × kolom konsonan,
+  dengan lubang di tempat yang memang kosong — sama seperti tabel kana yang
+  sudah ada di aplikasi.
+- **Bottom nav 5 tab** (Beranda, Belajar, Kartu, Battle, Profil).
+  Aplikasinya sekarang 3 tab. Sudah turun dari 6, tapi tetap perlu
+  diputuskan apakah Battle memang layak jadi tab utama atau cukup masuk
+  lewat Beranda.
+
+### Yang justru ikut terputuskan lewat gambar ini
+
+- **Pemain memilih sendiri kartu mana yang dikeluarkan** tiap giliran
+  (layar 4), bukan diambil acak oleh sistem. Ini menjawab pertanyaan yang
+  sebelumnya terbuka, dan pilihannya bagus: ada unsur siasat, dan pemain
+  bisa menyimpan kartu sulit untuk saat genting.
+- **Ada musim** ("Musim ini" di papan peringkat).
+- Papan peringkat diperbarui berkala, bukan seketika — masuk akal dan
+  murah.
+
 ## Prompt untuk membuat ulang desainnya
 
 Disimpan di sini supaya tidak hilang, dan supaya kalau desainnya dibuat
@@ -539,6 +590,10 @@ dan sopan — bukan garang seperti game pertarungan pada umumnya.
 
 ## Yang TIDAK boleh ada
 
+- JANGAN menampilkan furigana (bacaan kana) di atas kanji pada kartu soal.
+  Pemain justru sedang diminta menebak bacaan itu — menampilkannya sama
+  saja membocorkan jawaban. Kartu soal hanya berisi kanjinya saja.
+  Furigana baru boleh muncul setelah dijawab dan di layar hasil.
 - Jangan pakai HP / nyawa / damage. Pertandingan selesai karena kartu
   habis, bukan karena nyawa habis.
 - Jangan pakai angka rating berjalan (misalnya 1200 → 1250). Pakai
