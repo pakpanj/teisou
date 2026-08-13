@@ -4,14 +4,16 @@ Catatan rumusan untuk mode permainan kartu di Teisou — Kana Master.
 
 **Status: rumusannya sudah menutup seluruh alur (undangan → arsitektur
 pertandingan → penilaian Cloud Function → bot → matchmaking publik →
-keyboard kana), tapi fitur ini sendiri masih belum ada satu baris kode
-pun** — tidak ada model, layar, Cloud Function, maupun `battleMatches`
-untuk fitur ini. Dua hal yang jadi *prasyarat*-nya sudah dikerjakan
-duluan (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
+keyboard kana). Implementasi kode sungguhan sudah mulai jalan — Tahap 1
+butir 1 (keyboard kana) sudah selesai**, lihat "Tahap 1" di bawah untuk
+detail file-nya. Sisanya (rank field, presence, `battleMatches`, layar
+pertandingan, Cloud Function, bot, matchmaking) masih belum ada kode.
+Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
+juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
-menangani っ/youon dengan benar. Keduanya kode sungguhan yang sudah
-jalan, bukan cuma catatan — tapi keduanya infrastruktur umum aplikasi,
-bukan bagian dari fitur permainan kartu itu sendiri.
+menangani っ/youon dengan benar. Ketiganya kode sungguhan yang sudah
+jalan (`flutter analyze` bersih, test suite hijau), bukan cuma
+catatan.
 
 ## Urutan mengerjakan (disusun dari ketergantungan, bukan sembarang)
 
@@ -22,9 +24,32 @@ termasuk bot. Jadi field rank harus ada lebih dulu daripada biasanya
 fitur "peringkat" dikerjakan (biasanya di akhir).
 
 **Tahap 1 — fondasi, tidak saling bergantung, bisa paralel**
-1. Keyboard kana — paling cepat, bisa didemokan sendiri tanpa nunggu
-   apa pun. Kalau butuh perbaikan UX, ketahuan di sini, bukan setelah
-   tertanam di layar pertandingan.
+1. ✅ **Selesai** — Keyboard kana. `KanaKeyboardInput`
+   (`lib/core/services/kana_keyboard_input.dart`) adalah kelas logika
+   murni (tanpa widget) yang menangani tenten/maru/small-ya-yu-yo/
+   sokuon/backspace — semua pemetaan hurufnya diturunkan langsung dari
+   `row`/`column` dataset kana yang sudah ada, bukan tabel kedua yang
+   ditulis tangan, jadi tidak ada risiko drift antara dataset dan
+   keyboard. `KanaKeyboard` (`lib/core/widgets/kana_keyboard.dart`)
+   adalah widget-nya — grid gojūon 46 karakter dasar + baris modifier
+   (゛ ゜ ゃ ゅ ょ っ ⌫), murni controlled component (`value`/
+   `onChanged`, tanpa tombol submit sendiri) sesuai keputusan "mandiri,
+   tidak terikat konteks pertandingan" di atas. Tombol modifier otomatis
+   nonaktif (abu-abu, tidak bisa ditekan) kalau karakter terakhir di
+   buffer tidak punya bentuk itu (mis. ゛ nonaktif setelah "あ", yang
+   tidak punya bentuk tenten). Diuji lewat dua file test: satu untuk
+   logikanya sendiri (`test/kana_keyboard_input_test.dart`, terhadap
+   dataset kana sungguhan) dan satu untuk widget-nya
+   (`test/kana_keyboard_test.dart`, terhadap data hiragana sungguhan
+   yang di-override lewat provider — bukan lewat asset loading
+   langsung, karena dua widget test berurutan yang sama-sama menunggu
+   `rootBundle.loadString` lewat `FutureProvider` terbukti flaky:
+   test pertama selesai, test kedua tidak pernah selesai walau sudah
+   ditunggu lama — jadi datanya di-fetch sekali di `setUpAll` lalu
+   di-inject lewat `overrideWith`, menghindari race itu sepenuhnya).
+   `flutter analyze` bersih, seluruh test suite (344 test) hijau.
+   Belum dipasang ke layar mana pun — baru komponennya saja, sesuai
+   urutan "bisa didemokan sendiri tanpa nunggu apa pun".
 2. Field rank minimal (`tier`/`division`/`stars`/`season`, default
    Bronze) — belum perlu logika naik-turun lengkap, cuma perlu ADA
    supaya tahap berikutnya bisa membaca "kartu tingkat apa yang

@@ -60,6 +60,7 @@ import 'services/ad_service.dart';
 import 'services/auth_service.dart';
 import 'services/fcm_service.dart';
 import 'services/furigana_dictionary.dart';
+import 'services/kana_keyboard_input.dart';
 import 'services/romaji_converter.dart';
 import 'services/tts_service.dart';
 import '../data/repositories/onboarding_repository.dart';
@@ -358,6 +359,18 @@ final kanaListProvider = FutureProvider.family<List<KanaCharacter>, KanaType>((
   type,
 ) {
   return ref.watch(kanaRepositoryProvider).getByType(type);
+});
+
+/// Cached so [KanaKeyboardInput.fromAll]'s tenten/maru/youon maps are built
+/// once per app session, not rebuilt on every keystroke a [KanaKeyboard]
+/// widget renders.
+final kanaKeyboardInputProvider = FutureProvider<KanaKeyboardInput>((
+  ref,
+) async {
+  final hiragana = await ref.watch(
+    kanaListProvider(KanaType.hiragana).future,
+  );
+  return KanaKeyboardInput.fromAll(hiragana);
 });
 
 /// Live progress (status per kana + resume index) for one kana type, kept
