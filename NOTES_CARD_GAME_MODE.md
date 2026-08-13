@@ -351,6 +351,30 @@ awal sampai akhir:
 Keyboard kana bahkan baru dibutuhkan mulai Gold, jadi bisa dikerjakan
 setelah versi pertama jalan.
 
+#### Kecuali lawan teman dan clan — di sana kartunya bebas dipilih
+
+Isi kartu dikunci rank **hanya untuk lawan publik.** Untuk lawan teman dan
+anggota clan, pemain bisa memilih sendiri kartu apa yang dipakai.
+
+Ini sekaligus menjawab pertanyaan yang tadi terbuka: kalau Gold menantang
+Diamond lewat undangan, tidak perlu aturan siapa yang menang — kartunya
+memang dipilih, tinggal disepakati. Yang mengundang memilih, dan yang
+diundang melihat pilihannya sebelum menerima.
+
+**Konsekuensinya: pertandingan teman dan clan sebaiknya tidak
+menggerakkan bintang sama sekali.** Kalau isinya bebas dipilih dan
+bintangnya tetap bergerak, jalan pintasnya terlalu mudah — pilih
+hiragana, tantang teman berulang kali, naik ke Emerald tanpa pernah
+menyentuh kanji. Seluruh gagasan "tangga sekaligus kurikulum" runtuh di
+situ.
+
+Untungnya itu juga yang paling enak dimainkan: main santai bareng teman
+jadi benar-benar santai, tidak ada yang perlu takut merusak rank-nya.
+Poin belajar dan EXP tetap didapat.
+
+Belum diputuskan resmi, tapi ini kesimpulan yang paling wajar dari
+keputusan tadi.
+
 #### Akibat lain yang perlu disadari
 
 - **Layar "Pilih Deck" di mockup jadi tidak berlaku.** Tidak ada lagi
@@ -390,10 +414,8 @@ Poin belajar dan EXP juga tetap didapat dari lawan bot.
 
 **Yang masih perlu diputuskan:**
 
-- Bintangnya cuma untuk pertandingan publik, atau lawan teman dan clan
-  juga menghitung? (Main santai bareng teman sebaiknya tidak merugikan.)
-- Kalau dua pemain beda tingkat bertanding — misalnya Gold melawan
-  Diamond lewat undangan teman — kartu siapa yang dipakai?
+- Konfirmasi: pertandingan teman dan clan tidak menggerakkan bintang sama
+  sekali? (Lihat alasannya di bagian pemilihan kartu di atas.)
 - Papan peringkat `globalScore` yang sudah ada tetap terpisah, atau
   peringkat bintang jadi papan sendiri?
 
