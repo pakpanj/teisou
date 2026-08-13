@@ -687,21 +687,41 @@ konversi per-huruf — 東京 ditulis `toukyou` (bukan `tōkyō`), 来週 dituli
 `raishuu`. Jadi jalurnya: pemain mengetik がくせい → diubah jadi `gakusei`
 → dibandingkan.
 
-### 2. っ tidak ada di dataset kana — dan ini memblokir
+### 2. っ tidak ada di dataset kana — **sisi konverter sudah beres**
 
 Dataset kana berisi 104 huruf per aksara: 46 dasar + 25 tenten/maru + 33
-gabungan. **っ kecil tidak termasuk**, begitu juga ッ dan ー.
+gabungan. **っ kecil sengaja tidak dijadikan entri dataset** — beda dari
+huruf gojūon biasa, っ tidak punya bacaan romaji tetap sendiri (bacaannya
+tergantung huruf sesudahnya), jadi kalau dipaksa jadi entri kana biasa dia
+akan aneh muncul di kartu flashcard/ujian tanpa jawaban benar yang jelas.
 
-Akibatnya nyata: **学校 dibaca がっこう, dan がっこう tidak bisa diketik**
-dengan keyboard yang dibangun dari dataset itu, juga tidak bisa dikonversi
-karena konverter tidak punya entri untuk っ.
+**`RomajiConverter` sekarang menangani っ/ッ langsung lewat logika, bukan
+lewat tabel**: begitu ketemu っ, ia mengintip romaji dari posisi
+sesudahnya (misalnya こ → `ko`) dan mengulang huruf pertamanya saja (`k`)
+— がっこう → `gakkou`, きっぷ → `kippu`, いっしょ → `issho` (termasuk kasus
+っ diikuti youon, bukan cuma huruf tunggal). Diverifikasi lewat
+`test/romaji_converter_test.dart`.
 
-Jadi dua hal wajib, dan keduanya kecil tapi tidak boleh terlewat:
+**Bug lain ketemu sekalian saat memperbaiki ini, dan ikut dibenahi**: youon
+(きゃ, dst.) disimpan sebagai kunci dua-karakter di dataset, tapi
+`RomajiConverter` sebelumnya membaca satu rune per satu rune — jadi kunci
+dua-karakter itu **tidak pernah bisa cocok sama sekali**. Setiap kata
+berisi youon (きょう, しゃしん, dst.) sebenarnya sudah rusak konversinya
+sejak baris youon ditambahkan ke dataset, cuma belum pernah kelihatan
+karena belum ada yang benar-benar memakai jalur ini untuk youon.
+Sekarang `convert()` selalu coba cocokkan dua karakter dulu (mengikuti
+cara `FuriganaDictionary.segment` mencocokkan kompoun), baru turun ke satu
+karakter kalau tidak ketemu.
 
-- **Keyboard kana harus punya っ** selain tenten, maru, dan huruf kecil
-  ゃゅょ.
-- **Konverter harus menangani sokuon**: っ menggandakan konsonan
-  berikutnya (がっこう → `gakkou`).
+**Yang masih terbuka**: keyboard kana-nya sendiri belum dibangun sama
+sekali (lihat bagian "Keyboard kana di dalam aplikasi" di atas) — begitu
+dibangun, っ tetap perlu jadi tombol di baris pengubah (bersama tenten,
+maru, ゃゅょ), sama seperti yang sudah digambar di mockup. Dan **ー
+(chōonpu, tanda vokal panjang) masih belum tersentuh** — beda masalah
+dari っ (ー bukan modifier, tapi belum ada entrinya sama sekali di dataset
+maupun di konverter), jadi kata seperti ロボット yang punya ー di dalamnya
+belum bisa dikonversi sempurna. Baru ketahuan saat menulis tes untuk っ;
+belum diperbaiki, dicatat di sini supaya tidak hilang.
 
 ### 3. Kata berokurigana: jawabannya sampai mana?
 
