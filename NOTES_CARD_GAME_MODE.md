@@ -1,119 +1,123 @@
 # Mode Game Card
 
-Catatan proyek untuk mode permainan kartu di Teisou — Kana Master.
+Catatan rumusan untuk mode permainan kartu di Teisou — Kana Master.
 
-**Status: konsep sudah ditetapkan, belum ada kode sama sekali.** Belum ada
-model, layar, Cloud Function, maupun dataset untuk fitur ini.
+**Status: masih perumusan. Belum ada satu baris kode pun** — tidak ada
+model, layar, Cloud Function, maupun dataset untuk fitur ini. Catatan ini
+sengaja dibuat lebih dulu.
 
 ---
 
-## Konsep yang sudah diputuskan
+## Keputusan yang sudah diambil
 
-Bergaya kartu Yu-Gi-Oh: tiap pemain memegang **deck**, lalu saling
-mengeluarkan kartu.
+Bergaya kartu Yu-Gi-Oh: tiap pemain memegang deck, lalu saling mengeluarkan
+kartu dan lawan menulis bacaannya.
 
-- Setiap pemain memegang **20 kartu** berisi hiragana / katakana / kanji
-  (N5 sampai N1).
-- Pemain mengeluarkan kartu, **lawan menulis cara bacanya**.
-- Poin diakumulasi ke **rank / papan peringkat**.
-- Lawan bisa dipilih: **teman, clan, atau publik**.
-- Ada pilihan **mode pertarungan** (bentuknya belum ditentukan).
-- **Gratis** — tidak masuk skema premium.
+| Hal | Keputusan |
+|---|---|
+| Isi deck | 20 kartu hiragana / katakana / kanji, N5–N1 |
+| Kartu kanji | **Berisi kata, bukan kanji tunggal** |
+| Jawaban kartu kana | Diketik **romaji** |
+| Jawaban kartu kanji | Diketik **hiragana** |
+| Cara mengetik hiragana | **Keyboard kana bawaan aplikasi** |
+| Alur pertandingan | **Serentak**, dua pemain online bersamaan |
+| Kondisi selesai | **Sampai salah satu kehabisan nyawa** |
+| Lawan | Teman, clan, atau publik |
+| Poin | Diakumulasi ke rank / papan peringkat |
+| Harga | Gratis |
 
-## Modal yang sudah ada di aplikasi
+### Kenapa kartu kanji berisi kata
 
-Tidak semuanya dimulai dari nol:
+Dihitung langsung dari `kanji_data.json`, bukan perkiraan: **1.508 dari
+2.425 kanji (62%) punya lebih dari satu bacaan** — 生 saja punya lima (セイ,
+ショウ, い-きる, う-まれる, なま). Kartu berisi kanji tunggal berarti mayoritas
+soal tidak punya jawaban benar yang tunggal.
 
-- **Dataset kartunya sudah lengkap dan tinggal dipakai** — 208 kana dan
-  2.425 kanji N5-N1, semuanya sudah punya bacaan. Tidak perlu menulis
-  konten baru untuk ini.
-- **`RomajiConverter`** (`lib/core/services/romaji_converter.dart`) sudah
-  ada dan mengubah kana ke romaji dari `KanaRepository`. Ini bahan langsung
-  untuk memeriksa jawaban ketikan.
+Dengan kartu berisi kata, 生 muncul sebagai 学生 dan jawabannya pasti:
+がくせい. Dataset **sudah menyimpan contoh kata beserta bacaannya** untuk
+tiap kanji, jadi ini tidak menambah pekerjaan konten sama sekali.
+
+## Modal yang sudah ada
+
+Fitur ini tidak dimulai dari nol:
+
+- **Dataset kartu lengkap** — 208 kana dan 2.425 kanji N5–N1, semuanya
+  sudah punya bacaan dan contoh kata. Tidak perlu konten baru.
+- **Clan dan sistem teman sudah jalan**, jadi "lawan teman / clan" sudah
+  punya daftar pemain. Yang belum ada hanya pencarian lawan publik.
+- **Papan peringkat sudah punya pola denormalisasi yang cocok** — nilai
+  pengurut disimpan sebagai satu field (`globalScore`) karena Firestore
+  tidak bisa `orderBy` hasil hitungan.
 - **Cloud Functions sudah hidup** (`functions/index.js`) — tapi keempatnya
-  murni pemicu notifikasi (`onClanMessageCreated`, `onDirectMessageCreated`,
-  dan dua lainnya). Belum ada satu pun logika permainan di server.
-- **Clan dan sistem teman sudah jalan**, jadi "lawan teman / clan" punya
-  daftar pemain yang bisa dipakai. Yang belum ada cuma pencarian lawan
-  publik.
-- **Papan peringkat sudah punya pola denormalisasi** yang cocok — nilai
-  urutan disimpan sebagai satu field (`globalScore`) karena Firestore tidak
-  bisa `orderBy` hasil hitungan. Mode ini bisa mengikuti pola yang sama.
+  murni pemicu notifikasi dan tidak memutuskan apa pun.
 
-## Tiga hal yang perlu diputuskan sebelum menulis kode
+## Dua hal yang harus dibangun baru, dan tidak kecil
 
-Ketiganya menentukan bentuk fitur, bukan detail yang bisa disusul.
+### 1. Keyboard kana di dalam aplikasi
 
-### 1. Kanji tidak punya satu jawaban benar
+Tidak bisa mengandalkan keyboard HP: mengetik hiragana di Android menuntut
+keyboard Jepang terpasang dan pengguna berganti keyboard. Hampir tidak ada
+anak Indonesia yang punya itu — dan hambatan seperti ini membuat fitur
+tidak pernah dipakai, bukan sekadar merepotkan.
 
-Ini masalah terbesar, dan bukan perkiraan — sudah saya hitung dari
-`kanji_data.json`: **1.508 dari 2.425 kanji (62%) punya lebih dari satu
-bacaan.** Contohnya 生 punya lima: セイ, ショウ, い-きる, う-まれる, なま.
+Yang perlu diperhatikan saat membangunnya:
 
-Jadi "lawan menulis cara baca kartu ini" jelas untuk kana, tapi **tidak
-punya jawaban tunggal untuk mayoritas kanji**. Pilihannya:
+- **Hiragana saja sudah cukup.** Kartu kana dijawab dengan romaji, jadi
+  keyboard ini hanya dipakai untuk bacaan kanji, dan bacaan selalu hiragana.
+  Tidak perlu mode katakana.
+- **Tenten, maru, dan huruf kecil wajib ada.** がくせい butuh が, dan bacaan
+  seperti きょう butuh ょ kecil. Tanpa ketiganya sebagian besar bacaan kanji
+  tidak bisa diketik sama sekali.
+- Datanya sudah ada — 104 hiragana lengkap dengan barisan gojūon-nya, sama
+  seperti yang dipakai tabel kana.
+- Layak dibuat sebagai widget mandiri, karena kemungkinan besar berguna di
+  modul lain nanti.
 
-- **Terima bacaan mana pun** yang terdaftar untuk kanji itu. Paling mudah,
-  tapi pemain bisa selalu menjawab dengan bacaan yang paling ia hafal.
-- **Kartunya berisi kata, bukan kanji tunggal.** Dataset sudah menyimpan
-  contoh kata beserta bacaannya untuk tiap kanji, jadi 生 muncul sebagai
-  学生 dengan satu bacaan benar. Ini yang paling saya sarankan — jawabannya
-  tunggal, dan yang diuji jadi lebih dekat ke kemampuan membaca sungguhan.
-- **Batasi ke kanji berbacaan tunggal** — hanya menyisakan 38% dataset.
+### 2. Penilaian di server, bukan di HP
 
-### 2. Jawaban diketik atau dipilih?
+**Begitu poin masuk peringkat publik, hasil pertandingan tidak boleh
+dihitung di HP.** Klien yang mengirim skornya sendiri bisa mengarang angka,
+dan `firestore.rules` hanya bisa memeriksa *siapa* yang menulis, bukan
+apakah logika permainannya benar.
 
-Aplikasi ini **pernah gagal di jalan ini**. Kaiwa Fase 1 memakai input teks
-bebas dan pencocokan jawaban, lalu diganti total jadi pilihan ganda karena
-jadi sumber bug terbesar aplikasi (lihat CLAUDE.md).
+Konsekuensi bentuknya, dan ini penting untuk rasa mainnya:
 
-Tapi preseden itu belum tentu berlaku di sini, dan alasannya penting:
-Kaiwa mencocokkan **kalimat Jepang utuh**, sedangkan bacaan kana adalah
-string romaji pendek yang deterministik — dan `RomajiConverter` sudah ada.
-Untuk kana, mengetik itu wajar dan aman.
+> **Umpan balik cepat di HP, skor resmi dari server.** Firestore trigger
+> punya jeda cold start sampai beberapa detik — terlalu lambat untuk
+> menilai tiap giliran. Jadi benar/salah ditampilkan langsung di HP supaya
+> pertandingan terasa hidup, sementara Cloud Function menghitung skor
+> resmi yang masuk peringkat.
 
-Yang membuatnya kembali berbahaya adalah kanji (masalah nomor 1). Kalau
-kartunya berisi kata, mengetik tetap aman. Kalau kanji tunggal dengan
-banyak bacaan, pencocokan teks bebas mulai menebak-nebak lagi.
+Ini juga lompatan arsitektur terbesar yang pernah diambil aplikasi ini.
 
-### 3. Serentak atau bergiliran santai?
+## Yang masih harus diputuskan
 
-"Lawan publik" mengandaikan **dua pemain online bersamaan** — butuh antrean
-pencarian lawan, penanganan pemain yang kabur di tengah permainan, dan
-batas waktu per giliran.
+Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
 
-Alternatifnya permainan **asinkron**: kartu dikeluarkan, lawan menjawab
-kapan pun ia membuka aplikasi. Untuk aplikasi belajar yang dipakai anak di
-perjalanan, ini jauh lebih realistis dan menghapus seluruh kerumitan
-antrean. Ini percabangan produk yang besar — memilihnya belakangan berarti
-membongkar ulang.
+**Aturan main**
+- Berapa nyawa tiap pemain? Perlu diingat konsekuensi yang sudah disadari
+  saat memilih mode nyawa: anak yang masih lemah bisa kalah sangat cepat.
+  Jumlah nyawa adalah satu-satunya tombol untuk melunakkan itu.
+- Ada batas waktu per giliran? Kalau ada, habisnya waktu mengurangi nyawa
+  atau sekadar lewat?
+- Kedua pemain menjawab bersamaan, atau bergantian?
+- Deck 20 kartu dipilih sendiri, atau dibagikan otomatis dari level JLPT
+  yang dipilih?
+- "Mode pertarungan" yang bisa dipilih itu apa saja bedanya?
 
-## Satu risiko teknis yang harus dipegang sejak awal
+**Pertandingan serentak**
+- Bagaimana kalau lawan menutup aplikasi di tengah pertandingan? Dihitung
+  kalah, dibatalkan, atau ditunggu?
+- Lawan publik dipasangkan berdasarkan apa — level JLPT, rank, atau acak?
+- Butuh status online untuk menantang teman dan anggota clan.
 
-**Poin yang masuk papan peringkat tidak boleh dihitung di HP.** Begitu skor
-dari pertandingan ikut menentukan peringkat publik, klien yang mengirim
-skornya sendiri bisa mengarang angka. Aturan `firestore.rules` tidak bisa
-memeriksa logika permainan — hanya bisa memeriksa siapa yang menulis.
+**Peringkat**
+- Poinnya masuk `globalScore` yang sudah ada, atau punya rank sendiri?
+- Rumus poinnya seperti apa — jumlah jawaban benar, kecepatan, atau
+  keduanya?
 
-Artinya penilaian pertandingan harus dijalankan di **Cloud Function**, dan
-itu memang lompatan arsitektur terbesar yang pernah diambil aplikasi ini:
-keempat function yang ada sekarang hanya mengirim notifikasi, tidak pernah
-memutuskan apa pun.
-
-Ini juga alasan bagus untuk memutuskan nomor 3 lebih dulu — mode asinkron
-jauh lebih sederhana diamankan di server daripada pertandingan serentak.
-
-## Yang masih kosong
-
-Belum dibahas sama sekali:
-
-- Bentuk "mode pertarungan" yang bisa dipilih itu apa saja.
-- Kondisi menang — habisnya 20 kartu, poin tertinggi, atau nyawa.
-- Apakah poinnya masuk `globalScore` yang sudah ada, atau punya peringkat
-  sendiri.
-- Apakah kartunya dikumpulkan/dibuka bertahap seperti Yu-Gi-Oh, atau deck
-  dibagikan otomatis dari level yang dipilih.
-- Karena gratis, iklan banner tetap muncul — perlu dipastikan tidak
+**Lain-lain**
+- Karena gratis, iklan banner tetap muncul. Perlu dipastikan tidak
   mengganggu di layar pertandingan.
 
 ## Catatan awal

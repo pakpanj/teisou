@@ -9394,22 +9394,30 @@ screens, no Cloud Function. The concept is settled and written up in
 players lay a card and the opponent writes its reading, points feed the
 leaderboard, opponents chosen from friends / clan / public, free.
 
-Three decisions are called out there as blocking, and one is a measured
-data problem rather than a preference: **1,508 of 2,425 kanji (62%) have
-more than one reading** (生 has five), so "write this card's reading" has
-no single correct answer for most kanji cards. Putting a *word* on the
-card instead of a bare kanji is the suggested way out — the dataset
-already carries word examples with their readings.
+Decided so far: **kanji cards carry a word, not a bare kanji** — measured,
+not a preference, since 1,508 of 2,425 kanji (62%) have more than one
+reading and 生 alone has five, so a bare-kanji card has no single correct
+answer; the dataset already carries word examples with their readings, so
+this costs no new content. Kana cards are answered in typed romaji, kanji
+cards in typed hiragana, matches are **live** (both players online), and a
+match runs **until one side is out of lives**.
 
-The other two: whether answers are typed or chosen (Kaiwa already
-abandoned free-text matching once, though a short romaji reading is a far
-easier target than a whole sentence, and `RomajiConverter` exists), and
-whether matches are live or asynchronous.
+Two things that have to be built and are not small:
 
-One hard constraint recorded there too: **match scoring cannot be computed
-on the client** once it feeds a public leaderboard, and `firestore.rules`
-cannot validate game logic. That needs a Cloud Function — the four that
-exist today are notification triggers that decide nothing.
+- **An in-app kana keyboard.** Typing hiragana on Android needs a Japanese
+  IME installed and the user switching keyboards, which is a barrier that
+  stops a feature being used at all rather than merely annoying. Hiragana
+  only (kana cards are answered in romaji), but tenten, maru and small
+  kana are all mandatory — がくせい and きょう are unreachable without them.
+- **Server-side scoring.** Once points feed a public leaderboard the
+  result cannot be computed on the client, and `firestore.rules` can only
+  check who wrote a document, not whether the game logic was honest. The
+  shape that follows: immediate local feedback so the match feels alive,
+  with a Cloud Function computing the score that actually reaches the
+  leaderboard — Firestore trigger cold starts are seconds, far too slow to
+  arbitrate a turn. The four functions that exist today are notification
+  triggers that decide nothing, so this is the largest architectural step
+  the app has taken.
 
 ## Update (2026-08-13): Google Sign-In was broken for every Play tester; iOS TTS was silent; the kana flashcard was rebuilt around a chart
 
