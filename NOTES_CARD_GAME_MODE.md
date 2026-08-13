@@ -5,9 +5,10 @@ Catatan rumusan untuk mode permainan kartu di Teisou — Kana Master.
 **Status: rumusannya sudah menutup seluruh alur (undangan → arsitektur
 pertandingan → penilaian Cloud Function → bot → matchmaking publik →
 keyboard kana). Implementasi kode sungguhan sudah mulai jalan — Tahap 1
-butir 1 (keyboard kana) sudah selesai**, lihat "Tahap 1" di bawah untuk
-detail file-nya. Sisanya (rank field, presence, `battleMatches`, layar
-pertandingan, Cloud Function, bot, matchmaking) masih belum ada kode.
+butir 1 (keyboard kana) dan butir 2 (field rank minimal) sudah
+selesai**, lihat "Tahap 1" di bawah untuk detail file-nya. Sisanya
+(presence, `battleMatches`, layar pertandingan, Cloud Function, bot,
+matchmaking) masih belum ada kode.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -50,10 +51,32 @@ fitur "peringkat" dikerjakan (biasanya di akhir).
    `flutter analyze` bersih, seluruh test suite (344 test) hijau.
    Belum dipasang ke layar mana pun — baru komponennya saja, sesuai
    urutan "bisa didemokan sendiri tanpa nunggu apa pun".
-2. Field rank minimal (`tier`/`division`/`stars`/`season`, default
-   Bronze) — belum perlu logika naik-turun lengkap, cuma perlu ADA
-   supaya tahap berikutnya bisa membaca "kartu tingkat apa yang
-   ditampilkan".
+2. ✅ **Selesai** — Field rank minimal. `CardGameRank`
+   (`lib/data/models/card_game_rank.dart`) menyimpan `tier`/`division`/
+   `stars`/`season`, default `CardGameRank.initial()` (Bronze V, 0
+   bintang, musim 1) untuk pemain yang field-nya belum pernah ditulis
+   — sengaja **belum ada logika naik-turun tingkat sama sekali** (tidak
+   ada method "menang"/"kalah", tidak ada perlindungan Bronze/Silver,
+   tidak ada bonus beruntun, tidak ada pergantian musim) sesuai
+   cakupan yang disepakati; logika itu baru masuk akal begitu
+   `battleMatches` sungguhan ada yang memicunya, jadi menyatu dengan
+   pekerjaan Cloud Function penilaian di Tahap 2.
+   `CardGameTier` (enum Bronze..Emerald) membawa semua angka dan
+   pemetaan yang sudah dikunci di bagian "Tangga bintang" dan "Isi
+   kartu ditentukan oleh rank" di bawah — `starsPerDivision` (3/4/5/6),
+   `hasDivisions` (Emerald: tidak), `lossProtected` (Bronze/Silver),
+   `cardContent` (Bronze→hiragana ... Emerald→N2-N1), dan
+   `answersWithKanaKeyboard` (Gold ke atas) — supaya Tahap 2 nanti
+   tinggal membaca properti ini, bukan menghafal ulang tabelnya.
+   `ProgressRepository` dapat tiga method baru
+   (`watchCardGameRank`/`getCardGameRank`/`setCardGameRank`), mengikuti
+   pola persis yang sudah ada untuk `Subscription` (field map di
+   `users/{uid}.cardGameRank`, bukan koleksi terpisah), dan
+   `cardGameRankProvider` (StreamProvider) ditambahkan ke
+   `providers.dart` mengikuti pola `subscriptionProvider`. Belum ada
+   satu pun layar atau kode lain yang membacanya — murni "field-nya
+   ADA", sesuai cakupan Tahap 1 butir 2. `flutter analyze` bersih,
+   355 test hijau (11 test baru di `test/card_game_rank_test.dart`).
 3. Presence (RTDB) — mandiri, tidak bergantung pertandingan sama
    sekali.
 

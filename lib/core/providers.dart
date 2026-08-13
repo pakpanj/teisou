@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/models/app_language.dart';
+import '../data/models/card_game_rank.dart';
 import '../data/models/stroke_speed.dart';
 import '../data/models/app_theme_mode.dart';
 import '../data/models/kana_character.dart';
@@ -394,6 +395,16 @@ final userProfileProvider = StreamProvider<UserProfile>((ref) async* {
 final subscriptionProvider = StreamProvider<Subscription>((ref) async* {
   final user = await ref.watch(appStartupProvider.future);
   yield* ref.watch(progressRepositoryProvider).watchSubscription(user.uid);
+});
+
+/// Card Game Mode standing — see `NOTES_CARD_GAME_MODE.md`'s "Tahap 1
+/// butir 2". Not read from anywhere yet (no match screen exists to read
+/// "which tier, so which card content" from it), but live-watched the
+/// same way [subscriptionProvider] is so a future match screen doesn't
+/// need a one-shot fetch of its own.
+final cardGameRankProvider = StreamProvider<CardGameRank>((ref) async* {
+  final user = await ref.watch(appStartupProvider.future);
+  yield* ref.watch(progressRepositoryProvider).watchCardGameRank(user.uid);
 });
 
 /// Total XP + level + pending level-up rewards — see [XpProgress]. Watched

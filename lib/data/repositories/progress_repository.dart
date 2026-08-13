@@ -7,6 +7,7 @@ import '../../core/constants/covers.dart';
 import '../../core/constants/frames.dart';
 import '../../core/firebase/firestore_paths.dart';
 import '../models/ad_reward.dart';
+import '../models/card_game_rank.dart';
 import '../models/kana_progress.dart';
 import '../models/kana_status.dart';
 import '../models/kana_type.dart';
@@ -246,6 +247,33 @@ class ProgressRepository {
     return _userDoc(
       uid,
     ).set({'subscription': subscription.toMap()}, SetOptions(merge: true));
+  }
+
+  /// Card Game Mode standing (tier/division/stars/season) — defaults to
+  /// [CardGameRank.initial] (Bronze V) for a player who has never had the
+  /// field written, same fallback shape as [watchSubscription]/
+  /// [getSubscription] default to [Subscription.free].
+  Stream<CardGameRank> watchCardGameRank(String uid) {
+    return _userDoc(uid).snapshots().map(
+      (snapshot) => CardGameRank.fromMap(
+        snapshot.data()?[FirestorePaths.fieldCardGameRank]
+            as Map<String, dynamic>?,
+      ),
+    );
+  }
+
+  Future<CardGameRank> getCardGameRank(String uid) async {
+    final snapshot = await _userDoc(uid).get();
+    return CardGameRank.fromMap(
+      snapshot.data()?[FirestorePaths.fieldCardGameRank]
+          as Map<String, dynamic>?,
+    );
+  }
+
+  Future<void> setCardGameRank(String uid, CardGameRank rank) {
+    return _userDoc(uid).set({
+      FirestorePaths.fieldCardGameRank: rank.toMap(),
+    }, SetOptions(merge: true));
   }
 
   Future<Map<String, AdReward>> getAdRewards(String uid) async {

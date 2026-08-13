@@ -39,6 +39,7 @@ class FirestorePaths {
   static const fieldProgress = 'progress';
   static const fieldSubscription = 'subscription';
   static const fieldAdRewards = 'adRewards';
+  static const fieldCardGameRank = 'cardGameRank';
 
   static String userDoc(String uid) => '$users/$uid';
   static String examHistoryCollection(String uid) =>
