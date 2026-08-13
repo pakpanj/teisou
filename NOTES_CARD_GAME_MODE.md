@@ -829,9 +829,15 @@ paling rumit**
      sengaja di atas, tapi baru kelihatan biayanya di sini. Perlu
      diputuskan: mulai timer hanya setelah diterima, atau beri
      tenggang di kartu-kartu awal.
-   - **Timernya 20 detik, bukan 30** seperti yang tertulis di aturan
-     hasil rumusan. Jumlah kartunya sendiri sudah benar (20 kartu
-     total = 10 per pemain, sesuai keputusan). Perlu disamakan.
+   - ~~**Timernya 20 detik, bukan 30**~~ — **catatan ini salah, dan
+     dikoreksi 2026-08-14 setelah dicek langsung ke kode.**
+     `cardTimeLimit` (`lib/core/services/battle_timer.dart`) memang
+     30 detik untuk kartu 1-10, lalu turun 2 detik per kartu mulai
+     kartu 11 — persis aturan hasil rumusan. Angka 20 detik yang
+     terlihat saat pengujian adalah **tenggang jatuh-ke-bot di layar
+     matchmaking**, hal yang sama sekali berbeda. Tidak ada yang perlu
+     disamakan. Jumlah kartunya juga sudah benar (20 kartu total = 10
+     per pemain).
    - Belum diuji: jalur **tolak** (memastikan penantang akhirnya
      menang lewat timeout, bukan macet), dan tantangan lewat clan
      (yang diuji baru lewat daftar teman).
