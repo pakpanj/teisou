@@ -361,19 +361,16 @@ Diamond lewat undangan, tidak perlu aturan siapa yang menang — kartunya
 memang dipilih, tinggal disepakati. Yang mengundang memilih, dan yang
 diundang melihat pilihannya sebelum menerima.
 
-**Konsekuensinya: pertandingan teman dan clan sebaiknya tidak
-menggerakkan bintang sama sekali.** Kalau isinya bebas dipilih dan
-bintangnya tetap bergerak, jalan pintasnya terlalu mudah — pilih
-hiragana, tantang teman berulang kali, naik ke Emerald tanpa pernah
-menyentuh kanji. Seluruh gagasan "tangga sekaligus kurikulum" runtuh di
-situ.
+**Karena itu, pertandingan teman dan clan tidak menggerakkan bintang sama
+sekali.** (Diputuskan.) Kalau isinya bebas dipilih dan bintangnya tetap
+bergerak, jalan pintasnya terlalu mudah — pilih hiragana, tantang teman
+berulang kali, naik ke Emerald tanpa pernah menyentuh kanji.
 
 Untungnya itu juga yang paling enak dimainkan: main santai bareng teman
 jadi benar-benar santai, tidak ada yang perlu takut merusak rank-nya.
 Poin belajar dan EXP tetap didapat.
 
-Belum diputuskan resmi, tapi ini kesimpulan yang paling wajar dari
-keputusan tadi.
+**Artinya bintang hanya bergerak di pertandingan publik dan lawan bot.**
 
 #### Akibat lain yang perlu disadari
 
@@ -412,12 +409,22 @@ daftar kartu tertentu yang selalu ia lewatkan.
 
 Poin belajar dan EXP juga tetap didapat dari lawan bot.
 
-**Yang masih perlu diputuskan:**
+### Papan peringkat bintang berdiri sendiri
 
-- Konfirmasi: pertandingan teman dan clan tidak menggerakkan bintang sama
-  sekali? (Lihat alasannya di bagian pemilihan kartu di atas.)
-- Papan peringkat `globalScore` yang sudah ada tetap terpisah, atau
-  peringkat bintang jadi papan sendiri?
+Terpisah dari papan `globalScore` yang sudah ada. Keduanya mengukur hal
+yang berbeda — `globalScore` itu rata-rata nilai ujian, bintang itu hasil
+bertanding — jadi menggabungkannya memang cuma akan mengaburkan keduanya.
+
+**Catatan teknis: "papan sendiri" tidak berarti koleksi Firestore baru.**
+Cukup menambah field di dokumen `leaderboard/{uid}` yang sudah ada
+(tingkat, jumlah bintang, id musim) lalu mengurutkannya sendiri. Cara ini
+langsung mewarisi sesuatu yang sudah jadi: nama dan avatar di dokumen itu
+sudah disinkronkan otomatis lewat `syncProfileInfo` setiap kali pemain
+mengganti nama atau foto. Koleksi baru berarti membangun ulang seluruh
+penyelarasan identitas itu tanpa alasan.
+
+Yang perlu dipikir terpisah hanya riwayat musim — kalau peringkat musim
+lama mau bisa dilihat lagi, itu baru butuh subkoleksi tersendiri.
 
 ## Mockup "TEISOU BATTLE" — acuan tampilan, bukan acuan aturan
 

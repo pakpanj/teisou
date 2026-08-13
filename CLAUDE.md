@@ -9501,16 +9501,24 @@ let the players choose the cards, which also answers what happens when two
 tiers meet through an invite: the inviter picks and the invited sees the
 choice before accepting.
 
-That choice strongly implies the other half — **friend and clan matches
-should not move stars at all.** Free content plus moving stars is an open
-door: pick hiragana, beat a friend repeatedly, reach Emerald without ever
-seeing a kanji, and the ladder-as-curriculum idea collapses. It also
-happens to be the nicer game, since a casual match with a friend then
-cannot damage anyone's rank. Recorded as the natural conclusion rather
-than a decision.
+**Friend and clan matches therefore move no stars at all** — free content
+plus a moving ladder is an open door, and it is also the nicer game, since
+a casual match with a friend cannot then cost anyone their rank. Stars move
+only in public matches and against bots. Points and EXP apply everywhere.
 
-Still open: confirming that, and whether the star ranking is its own board
-or joins the existing one.
+**The star board stands alone**, separate from `globalScore` — the two
+measure different things, an exam average against a match record, and
+merging them would blur both. Worth knowing when it is built: *its own
+board* does not mean its own collection. Adding tier, star count and season
+id to the existing `leaderboard/{uid}` document and sorting on those
+inherits something already solved — the name and avatar there are kept in
+step by `syncProfileInfo` whenever a player renames or changes their photo,
+and a fresh collection would mean rebuilding all of that identity syncing
+for no reason. Only season *history* would need a subcollection of its own.
+
+**The rules are now closed.** What remains is implementation detail rather
+than design: disconnect handling, what public matchmaking pairs on, and
+whether an okurigana word is typed in full.
 
 **Four mockup screens exist** (made by the user with ChatGPT) and are
 **visual reference only — the rules stay the ones decided above.** What is
