@@ -547,6 +547,60 @@ Poin belajar dan EXP tetap didapat.
 - Filter "Mode" di papan peringkat berubah makna, karena mode tidak lagi
   dipilih.
 
+## Pemasangan lawan publik
+
+**Wawasan kunci: pertanyaan "dipasangkan berdasarkan apa" sebenarnya
+sudah terjawab sebagian dari keputusan lama.** Karena isi deck sudah
+dikunci per tingkat (Bronze→hiragana, ..., Emerald→N2-N1), memasangkan
+lintas tingkat tidak masuk akal secara konten — Bronze lawan Emerald
+berarti deck Emerald menanyakan kanji yang belum pernah dipelajari
+pemain Bronze sama sekali (mustahil dijawab), sementara deck Bronze cuma
+hiragana buat pemain Emerald (tidak ada tantangan). Jadi bukan lagi
+"berdasarkan apa", tapi "seberapa ketat" — satu divisi persis, atau satu
+tingkat saja lintas divisi?
+
+**Satu tingkat saja, tidak perlu sampai divisi.** Isi kartu tidak
+berbeda antar divisi dalam satu tingkat (tabelnya memetakan per
+*tingkat*, bukan per divisi), jadi menyempitkan sampai divisi cuma
+memperlambat antrian tanpa menambah kecocokan konten. Perbedaan skill
+antar divisi biar diselesaikan tangga bintangnya sendiri secara alami.
+
+### Antrian: Realtime Database lagi, bukan koleksi Firestore baru
+
+Bukan menambah sistem ketiga — memakai ulang infrastruktur yang sama
+yang sudah direncanakan untuk presence. Alasannya konkret: memasangkan
+dua pemain yang sama-sama menunggu butuh **klaim atomik** ("ambil dua
+yang paling awal menunggu, hapus keduanya dari antrian sekaligus") —
+persis jenis operasi yang transaksi RTDB memang dirancang untuk. Kalau
+dipaksakan ke Firestore, ada risiko dua Cloud Function yang jalan
+bersamaan sama-sama mencoba memasangkan pasangan yang sama.
+
+```
+matchmakingQueue/{tier}/{uid}: { joinedAt: <server time> }
+```
+
+Begitu pemain mau lawan publik, dia menulis dirinya ke antrian
+tingkatnya sendiri. Cloud Function terpicu tiap ada yang bergabung —
+kalau di node tingkat itu sudah ada penunggu lain (bukan dirinya
+sendiri), klaim keduanya dalam satu transaksi RTDB, hapus dari antrian,
+lalu buat `battleMatches/{matchId}` (kartu diacak per pemain, giliran
+awal dilempar koin — persis seperti yang sudah diputuskan di bagian
+arsitektur pertandingan). Kalau belum ada yang lain, dia cuma menunggu —
+pemain **berikutnya** yang bergabung ke tingkat yang sama nanti yang
+memicu pemasangannya.
+
+### Ini juga menutup pertanyaan bot dari bagian sebelumnya
+
+Kalau setelah beberapa detik menunggu (usulan: 20 detik) tidak ada yang
+bergabung, klien sendiri yang menyerah menunggu, menghapus dirinya dari
+antrian, dan memanggil Cloud Function pembuat pertandingan yang sama
+tapi dengan lawan `"BOT"` — pakai jalur pembuatan `battleMatches` yang
+identik dengan matchmaking publik, cuma bedanya siapa pemain keduanya.
+
+**Sengaja tidak melebar ke tingkat tetangga saat menunggu** — menghindari
+pertanyaan tanpa jawaban bersih "kalau lintas tingkat, deck siapa yang
+dipakai". Cukup tunggu dalam tingkat sendiri, lalu jatuh ke bot.
+
 ### Lawan bot saat sepi
 
 Kalau tidak ada pemain online, lawannya bot. Tiga hal yang menyertainya:
@@ -633,16 +687,10 @@ ulang polanya, bukan dibangun dari nol.
 
 **Dikonfirmasi: bot otomatis muncul kalau lawan publik sedang sepi**,
 sesuai bunyi catatan yang sudah ada dari awal — **bukan** dipilih
-langsung sebagai jenis lawan sendiri. Konsekuensinya jujur perlu
-dicatat: ini artinya bot **tidak bisa dibangun sendirian** dulu — perlu
-tahu dulu bagaimana pemasangan lawan publik bekerja (siapa dipasangkan
-dengan siapa, berapa lama menunggu sebelum dianggap "sepi") supaya ada
-titik pasti kapan sistem jatuh ke bot. Itu masih pertanyaan terbuka di
-bagian lain dokumen ini ("Lawan publik dipasangkan berdasarkan apa").
-Mekanisme bot di atas (kurva kesulitan, `revealAt`, arsitektur
-`battleMatches` yang sama) tetap bisa dikerjakan sekarang — yang
-menunggu cuma bagian "kapan tepatnya sistem memutuskan untuk
-menawarkannya".
+langsung sebagai jenis lawan sendiri. Titik pastinya sekarang sudah
+terjawab di bagian "Pemasangan lawan publik" di atas — 20 detik
+menunggu di antrian tingkat sendiri, lalu klien menyerah dan memanggil
+jalur pembuatan pertandingan yang sama dengan lawan `"BOT"`.
 
 ### Papan peringkat bintang berdiri sendiri
 
