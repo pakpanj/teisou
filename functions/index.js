@@ -257,3 +257,9 @@ exports.onUserNotificationCreated = onDocumentCreated(
       });
     },
 );
+
+// Card Game Mode's answer-scoring trigger — see battle_scoring.js for
+// the implementation. Kept in its own file (unlike every trigger above)
+// because it also bundles two real data files and a ported
+// RomajiConverter, which would otherwise bloat this one considerably.
+exports.onBattleAnswerCreated = require("./battle_scoring").onBattleAnswerCreated;

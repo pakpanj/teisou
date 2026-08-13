@@ -10,16 +10,22 @@ selesai DAN sudah hidup** (instans Realtime Database sudah dibuat lewat
 Firebase Console 2026-08-13, `asia-southeast1`/Singapore, rules-nya
 sudah dipasang, `databaseURL` sudah masuk ke `firebase_options.dart`,
 dan tulisan `presence/{uid}` sudah dikonfirmasi muncul sungguhan di
-Console setelah aplikasi dibuka di device fisik). **Tahap 2 butir 4-6
-semuanya sudah selesai DAN sudah diuji sungguhan lintas dua device** —
+Console setelah aplikasi dibuka di device fisik). **Tahap 2 SELESAI
+SEPENUHNYA (butir 4-7), dan semuanya sudah hidup di produksi** —
 pertandingan bisa benar-benar dimainkan kartu demi kartu, disinkronkan
 real-time lewat Firestore antara dua akun berbeda di dua perangkat
 berbeda (device fisik + emulator), lengkap dengan timer, keyboard kana
-untuk kartu kanji, skor lokal, mekanisme timeout-forfeit, dan
-kesimpulan pertandingan yang dihitung identik dan independen di kedua
-sisi — lihat "Tahap 2" di bawah untuk detail lengkapnya. Sisanya (Cloud
-Function penilaian — butir 7 — lalu bot, matchmaking, undangan di
-Tahap 3) masih belum ada kode.
+untuk kartu kanji, skor lokal, mekanisme timeout-forfeit, kesimpulan
+pertandingan yang dihitung identik dan independen di kedua sisi (jalur
+cepat), dan sekarang juga penilaian resmi lewat Cloud Function
+(`onBattleAnswerCreated`, sudah ter-deploy dan tampil di
+`firebase functions:list`) — lihat "Tahap 2" di bawah untuk detail
+lengkapnya. **Penemuan penting di sesi ini**: CLI Firebase yang
+sebelumnya dicatat "broken" ternyata cuma masalah binary bawaan —
+`npx firebase-tools` bekerja normal dan sudah terautentikasi, jadi
+deploy Cloud Functions/Firestore/RTDB rules ke depan tidak perlu lagi
+paste manual ke Console. Sisanya: bot, matchmaking, undangan di
+Tahap 3 — belum ada kode.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -339,8 +345,95 @@ fitur "peringkat" dikerjakan (biasanya di akhir).
    konfirmasi visual "skor bertambah setelah jawaban benar" di layar
    sungguhan — layak dicoba lagi kalau ada kesempatan menjawab lebih
    cepat dari batas waktu 30 detik.
-7. Cloud Function penilaian (`RomajiConverter` versi JS, `officialScore`,
-   `result`) — sambungkan ke field rank dari #2 begitu ini jalan.
+7. ✅ **Selesai — dibangun, diuji, dan sudah di-deploy ke produksi**
+   (2026-08-13). `functions/battle_scoring.js` menambah trigger baru
+   `onBattleAnswerCreated`, terpicu tiap kali dokumen
+   `battleMatches/{matchId}/answers/{round}` baru dibuat, dan menulis
+   `officialScore`/`result`/`status` — satu-satunya penulis ketiga field
+   itu, sesuai yang sudah dikunci di `firestore.rules`.
+
+   **`RomajiConverter` di-porting ke JavaScript**, bukan dibangun ulang
+   dari nol — logikanya (peta karakter→romaji dari `kana_data.json`,
+   pencarian dua-karakter untuk youon dicoba duluan di tiap posisi,
+   sokuon mengulang huruf pertama dari mora berikutnya) disalin
+   sepersis mungkin dari `lib/core/services/romaji_converter.dart`,
+   supaya kedua sisi tidak diam-diam beda perilaku. Sumber datanya:
+   `functions/data/kana_data.json` (salinan utuh, ~70KB) dan
+   `functions/data/kanji_word_readings.json` (peta ramping
+   `"{kanjiId}|{word}": "reading"`, 7.274 entri — bukan salinan utuh
+   `kanji_data.json` yang 3.3MB, karena penilaian cuma butuh bacaannya
+   saja). Keduanya dihasilkan dari sumber Flutter yang sama lewat
+   `scripts/generate_functions_battle_data.py` — **harus dijalankan
+   ulang** setiap kali `kana_data.json`/`kanji_data.json` berubah,
+   sama seperti pola "regenerate lalu re-apply" yang sudah berkali-kali
+   didokumentasikan di `CLAUDE.md` untuk dataset lain.
+
+   **Dua celah nyata di rumusan sendiri ditemukan dan diperbaiki saat
+   membangun ini, bukan sekadar detail implementasi**:
+   1. Rumusan lama bilang cek kelengkapan pemrosesan ronde dengan
+      "apakah `officialScore.uidA + officialScore.uidB` sama dengan
+      `round + 1`?" — ternyata **tidak valid dua kali lipat**: menjumlah
+      SKOR meleset setiap kali ada jawaban SALAH yang sudah diproses
+      (jawaban salah menyumbang 0 ke skor, tidak bisa dibedakan dari
+      "belum diproses sama sekali"), dan bahkan sekadar menghitung
+      JUMLAH ronde yang sudah diproses pun bisa kebetulan cocok dengan
+      `round + 1` padahal ada ronde LEBIH AWAL yang terlewat (ronde
+      lain yang lebih belakangan kebetulan sudah selesai duluan dan
+      menggenapi hitungannya). Diperbaiki dengan `scoredRounds`, field
+      baru (map `{"0": true, "1": true, ...}`) yang jadi penanda per-
+      ronde SEKALIGUS pengaman idempoten (Cloud Function generasi ke-2
+      bisa terpicu lebih dari sekali untuk event yang sama), dan
+      pengecekan kelengkapannya benar-benar menelusuri ronde 0 sampai
+      `round` satu per satu memastikan semuanya bertanda, bukan
+      percaya satu angka agregat.
+   2. `scoredRounds` sendiri butuh dikunci di `firestore.rules` seperti
+      `officialScore`/`result`/`status`/`players`/`turnOrder` — kalau
+      tidak, klien bisa mengubahnya dan mengacaukan pengecekan
+      kelengkapan Cloud Function-nya sendiri.
+
+   `BattleMatch` (Dart) dapat field baru `scoredRounds` (read-only dari
+   sisi klien, murni untuk pembukuan internal Cloud Function — tidak
+   ada kode Flutter yang membacanya untuk keperluan apa pun) dan
+   `toCreateMap()` menginisialisasinya kosong.
+
+   **Diuji dua sisi**: `functions/battle_scoring.test.js` (10 test,
+   `node --test` — bawaan Node, tidak nambah dependency; ini test JS
+   pertama yang pernah ada di folder `functions/`) meniru persis
+   kasus-kasus `test/romaji_converter_test.dart` supaya kedua porting
+   tetap sejalan, plus resolusi `cardId` kana dan kanji. `flutter
+   analyze` bersih, 401 test Dart hijau (1 baru untuk parsing
+   `scoredRounds`).
+
+   **Sudah benar-benar di-deploy ke `teisou-kana-master`** (dikonfirmasi
+   lewat `firebase functions:list` — `onBattleAnswerCreated` tampil di
+   `asia-southeast1`, `nodejs22`), plus `firestore.rules` versi terbaru
+   (dengan kunci `scoredRounds`) ikut ter-deploy di sesi yang sama.
+
+   **Penemuan penting yang tidak berkaitan langsung tapi berharga**:
+   CLI Firebase yang selama ini didokumentasikan macet
+   (`CLAUDE.md`: "Firebase CLI di lingkungan ini broken — crashes on
+   its own first-run welcome script") ternyata cuma masalah **binary
+   bawaan** di `/c/flutter/bin/firebase` (skrip sambutannya sendiri
+   error parse JSON). `npx firebase-tools@latest` — mengunduh CLI
+   segar lewat npm, bukan binary snapshot itu — bekerja normal dan
+   **sudah terautentikasi** ke akun yang sama (kemungkinan dari sesi
+   sebelumnya). Deploy pertama sempat gagal sekali dengan timeout 10
+   detik yang sama seperti yang pernah dicatat di `functions/index.js`
+   ("User code failed to load"), tapi percobaan kedua berhasil normal —
+   sepertinya gangguan sesaat, bukan masalah struktural pada kodenya
+   (pola `initializeApp()` eager + `getFirestore()`/`getMessaging()`
+   lazy yang sudah ada di `index.js` tetap dipertahankan di
+   `battle_scoring.js`). **Ini artinya deploy Cloud Functions dan
+   Firestore/RTDB rules ke depan bisa lewat `npx firebase-tools`
+   langsung, tidak perlu lagi paste manual ke Console** — perbaikan
+   yang berlaku untuk seluruh proyek, bukan cuma fitur ini.
+
+   Satu hal kecil yang sengaja tidak diurus: peringatan "No cleanup
+   policy detected for repositories in asia-southeast1" dari Artifact
+   Registry (gambar container lama bisa menumpuk dan sedikit menambah
+   biaya bulanan) — bisa diberesi lewat `firebase
+   functions:artifacts:setpolicy` kapan saja, tidak mendesak dan tidak
+   menghalangi fungsi ini berjalan.
 
 **Tahap 3 — lawan, dari yang paling mudah diuji sendirian ke yang
 paling rumit**

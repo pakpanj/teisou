@@ -93,6 +93,18 @@ void main() {
       expect(map['result'], isNull);
       expect(map['clientResult'], isNull);
       expect(map['turnStartedAt'], isA<FieldValue>());
+      expect(map['scoredRounds'], <String, bool>{});
+    });
+
+    test('fromMap parses scoredRounds, defaulting to empty when absent',
+        () {
+      final withRounds = BattleMatch.fromMap('m', {
+        'scoredRounds': {'0': true, '1': true},
+      });
+      expect(withRounds.scoredRounds, {'0': true, '1': true});
+
+      final withoutRounds = BattleMatch.fromMap('m', {});
+      expect(withoutRounds.scoredRounds, isEmpty);
     });
 
     test('currentAnswererUid is always the player who does NOT own the '

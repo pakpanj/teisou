@@ -301,13 +301,15 @@ service cloud.firestore {
 
     // Card Game Mode (see NOTES_CARD_GAME_MODE.md). Only the two players
     // in a match can read or write it — a match is never a public
-    // spectacle. `officialScore`/`result`/`status`/`players`/`turnOrder`
-    // are locked to Cloud-Function-or-creation-only: a client update that
-    // touches any of them is rejected outright, since those are exactly
-    // the fields that decide star movement and must never be settable by
-    // a client that could lie about a win. The Cloud Function itself runs
-    // via the Admin SDK, which bypasses these rules entirely, so it needs
-    // no special-casing here.
+    // spectacle. `officialScore`/`result`/`status`/`players`/`turnOrder`/
+    // `scoredRounds` are locked to Cloud-Function-or-creation-only: a
+    // client update that touches any of them is rejected outright, since
+    // those are exactly the fields that decide star movement (or the
+    // scoring Cloud Function's own bookkeeping) and must never be
+    // settable by a client that could lie about a win. The Cloud
+    // Function itself (functions/battle_scoring.js) runs via the Admin
+    // SDK, which bypasses these rules entirely, so it needs no
+    // special-casing here.
     match /battleMatches/{matchId} {
       allow read: if request.auth != null
           && request.auth.uid in resource.data.players;
@@ -325,7 +327,8 @@ service cloud.firestore {
           && request.resource.data.result == resource.data.result
           && request.resource.data.status == resource.data.status
           && request.resource.data.players == resource.data.players
-          && request.resource.data.turnOrder == resource.data.turnOrder;
+          && request.resource.data.turnOrder == resource.data.turnOrder
+          && request.resource.data.get('scoredRounds', {}) == resource.data.get('scoredRounds', {});
 
       // Write-once — no update/delete, so a submitted answer can never
       // be edited after the fact. Deliberately NOT restricted to
