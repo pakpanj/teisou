@@ -6,12 +6,14 @@ Catatan rumusan untuk mode permainan kartu di Teisou — Kana Master.
 pertandingan → penilaian Cloud Function → bot → matchmaking publik →
 keyboard kana). Implementasi kode sungguhan sudah mulai jalan — seluruh
 Tahap 1 (keyboard kana, field rank minimal, presence RTDB) sudah
-selesai**, lihat "Tahap 1" di bawah untuk detail file-nya. Sisanya
-(`battleMatches`, layar pertandingan, Cloud Function, bot, matchmaking
-— Tahap 2 dan 3) masih belum ada kode. **Presence butuh satu langkah
-Firebase Console yang belum dilakukan** sebelum benar-benar hidup —
-lihat penjelasannya di bawah, ini bukan sesuatu yang bisa diselesaikan
-lewat kode saja.
+selesai DAN sudah hidup** (instans Realtime Database sudah dibuat lewat
+Firebase Console 2026-08-13, `asia-southeast1`/Singapore, rules-nya
+sudah dipasang, `databaseURL` sudah masuk ke `firebase_options.dart`,
+dan tulisan `presence/{uid}` sudah dikonfirmasi muncul sungguhan di
+Console setelah aplikasi dibuka di device fisik) — lihat "Tahap 1" di
+bawah untuk detail file-nya. Sisanya (`battleMatches`, layar
+pertandingan, Cloud Function, bot, matchmaking — Tahap 2 dan 3) masih
+belum ada kode.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -80,7 +82,7 @@ fitur "peringkat" dikerjakan (biasanya di akhir).
    satu pun layar atau kode lain yang membacanya — murni "field-nya
    ADA", sesuai cakupan Tahap 1 butir 2. `flutter analyze` bersih,
    355 test hijau (11 test baru di `test/card_game_rank_test.dart`).
-3. ✅ **Selesai (kode), ⚠️ belum hidup (perlu langkah Console)** —
+3. ✅ **Selesai dan sudah hidup (bukan cuma kode)** —
    Presence. `PresenceService` (`lib/core/services/presence_service.dart`)
    menulis `presence/{uid}: { state, lastChanged }` ke Realtime Database
    begitu aplikasi dibuka (`goOnline`, dipanggil dari `appStartupProvider`
@@ -98,21 +100,30 @@ fitur "peringkat" dikerjakan (biasanya di akhir).
    yang sudah login boleh membaca node presence siapa pun, tapi cuma
    pemilik uid yang boleh menulis miliknya sendiri.
 
-   **Yang belum bisa diselesaikan lewat kode**: proyek Firebase ini
-   (`teisou-kana-master`) **belum punya instans Realtime Database sama
-   sekali** — `firebase_options.dart` tidak punya `databaseURL`. Ini
-   perlu satu tindakan Firebase Console (buat database, lalu deploy
-   `database.rules.json`) yang tidak bisa dilakukan dari sini, sama
-   persis dengan alasan pendaftaran Firebase iOS didokumentasikan
-   sebagai hal yang butuh tindakan pemilik akun di `CLAUDE.md` —
-   sengaja **tidak** dikarang-karang nilai `databaseURL`-nya, karena
-   nilai palsu akan mengubah error "belum dikonfigurasi" yang jelas
-   menjadi kegagalan runtime yang membingungkan. Setiap panggilan
-   `PresenceService` dibungkus supaya gagal diam-diam (ditangkap,
-   dicatat lewat `debugPrint`, tidak pernah membuat startup aplikasi
-   crash) — jadi kodenya aman dikirim duluan sebelum langkah Console itu
-   dilakukan, dan begitu database-nya ada, fitur ini langsung hidup
-   tanpa perubahan kode lagi.
+   **Langkah Console yang tadinya jadi penghalang sudah selesai
+   dilakukan (2026-08-13)**: instans Realtime Database dibuat lewat
+   Firebase Console (region `asia-southeast1`/Singapore, mode "locked"),
+   `database.rules.json` di-paste ke tab Rules lalu di-publish, dan URL
+   database-nya (`https://teisou-kana-master-default-rtdb.asia-southeast1.firebasedatabase.app`)
+   ditambahkan sebagai `databaseURL` ke kedua blok `FirebaseOptions`
+   (Android dan iOS) di `firebase_options.dart` — nilai ini **bukan
+   karangan**, dicatat langsung dari Console setelah database-nya benar-
+   benar ada, sesuai kehati-hatian yang sama dengan gap Firebase iOS di
+   `CLAUDE.md` (jangan karang, tunggu nilai sungguhan). Setiap panggilan
+   `PresenceService` tetap dibungkus try/catch supaya gagal diam-diam
+   kalau suatu saat database-nya bermasalah, bukan cuma sampai langkah
+   ini selesai — pola defensifnya tetap dipertahankan, bukan dilepas
+   begitu database-nya sudah ada.
+
+   **Diverifikasi hidup sungguhan di device fisik**: build debug baru
+   dipasang, aplikasi dibuka fresh (force-stop lalu launch ulang), dan
+   node `presence/{uid}` muncul di tab Data Firebase Console dengan
+   `state: "online"` dan `lastChanged` terisi angka timestamp asli —
+   bukan cuma "kode-nya tidak error", tapi tulisannya benar-benar sampai
+   ke server. Sempat perlu refresh manual halaman Console sekali (listener
+   real-time-nya tidak langsung menampilkan tanpa reload) sebelum
+   terlihat — kalau ini dicek lagi nanti dan sempat terlihat kosong,
+   coba refresh dulu sebelum menyimpulkan ada yang gagal.
 
    `flutter analyze` bersih, 362 test hijau (7 test baru untuk
    `PresenceStatus.fromSnapshotValue` di
