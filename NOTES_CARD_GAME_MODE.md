@@ -469,6 +469,89 @@ Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
 - Karena gratis, iklan banner tetap muncul. Perlu dipastikan tidak
   mengganggu di layar pertandingan.
 
-## Catatan awal
+## Prompt untuk membuat ulang desainnya
 
-_(kosong)_
+Disimpan di sini supaya tidak hilang, dan supaya kalau desainnya dibuat
+ulang lagi nanti, aturannya tetap sama. Salin blok di bawah apa adanya.
+
+````
+Kamu adalah desainer UI game mobile. Buatkan mockup layar untuk sebuah mode
+permainan kartu bernama "TEISOU BATTLE" di dalam aplikasi belajar bahasa
+Jepang bernama Teisou — Kana Master.
+
+## Tentang aplikasinya
+
+Aplikasi belajar bahasa Jepang untuk anak dan pemula berbahasa Indonesia.
+Seluruh teks antarmuka dalam Bahasa Indonesia. Nuansanya ramah, hangat,
+dan sopan — bukan garang seperti game pertarungan pada umumnya.
+
+## Gaya visual yang harus diikuti
+
+- Palet: koral/pink lembut sebagai warna utama, biru langit lembut sebagai
+  warna kedua, teks biru tua (navy), kartu putih krem. Latar bergradasi
+  sangat lembut.
+- Ornamen khas Jepang yang lembut: kelopak sakura beterbangan, gerbang
+  torii, Gunung Fuji, pagoda — semuanya samar sebagai latar, tidak ramai.
+- Maskot kucing maneki-neko putih berkalung merah dan lonceng emas sebagai
+  pemain kita; anjing shiba sebagai lawan. Keduanya bergaya kartun bulat,
+  ramah, mata besar.
+- Sudut membulat besar, bayangan lembut, jarak antar elemen lega.
+- Ikon sederhana dan jelas. Hindari kesan mewah/metalik/gelap.
+
+## Aturan main yang WAJIB tercermin di desain
+
+- Tiap pemain punya deck 20 kartu. Satu pertandingan berhenti di 10 kartu
+  per pemain (10 ronde, 20 jawaban).
+- Pemain bergantian mengeluarkan kartu. Lawan menjawab bacaan kartu itu.
+- Batas waktu 30 detik per giliran, TAPI ini batas atas — begitu dijawab,
+  giliran langsung berganti. Tampilkan sebagai hitung mundur.
+- Kartu kana dijawab dengan mengetik ROMAJI.
+- Kartu kanji berisi KATA (misalnya 学生, 電車, 友達), dijawab dengan
+  mengetik HIRAGANA.
+- Skor pertandingan = jumlah jawaban benar. Poin terbanyak menang.
+- Kalau imbang di kartu ke-10, lanjut ke kartu 11–20 dengan waktu
+  dipangkas 2 detik tiap kartu. Kalau masih imbang juga, hasilnya seri.
+- Peringkat memakai BINTANG BERTINGKAT seperti Mobile Legends (tingkatan
+  bernama + jumlah bintang), bukan angka rating berjalan.
+- Mode gratis. Boleh ada iklan banner kecil di layar non-pertandingan.
+
+## Layar yang diminta
+
+1. Pilih mode: jenis deck (Kana / Kanji N5–N1) dan jenis lawan (Teman,
+   Clan, Publik).
+2. Mencari lawan.
+3. **Layar bertanding — giliran MENJAWAB.** Ini yang paling penting.
+   Harus menampilkan keyboard kana buatan aplikasi secara lengkap:
+   - Papan hiragana gojūon (あ sampai ん).
+   - Tombol tenten (゛) dan maru (゜).
+   - Tombol huruf kecil ゃ ゅ ょ.
+   - Tombol huruf kecil っ — WAJIB ada, tanpa ini kata seperti 学校
+     (がっこう) tidak bisa diketik sama sekali.
+   - Tombol hapus dan tombol kirim.
+   - Kolom jawaban yang menampilkan kana yang sudah diketik.
+   Sisakan ruang lebar di bagian bawah layar untuk keyboard ini.
+4. Layar bertanding — giliran MENGELUARKAN kartu (memilih kartu dari deck).
+5. Babak tambahan kartu 11–20, dengan penanda bahwa waktunya menyusut.
+6. Hasil pertandingan: skor akhir, daftar semua kartu yang dimainkan
+   beserta bacaannya dan tanda benar/salah, perubahan bintang, tombol
+   main lagi.
+7. Papan peringkat bintang: tingkatan, jumlah bintang, posisi pemain.
+
+## Yang TIDAK boleh ada
+
+- Jangan pakai HP / nyawa / damage. Pertandingan selesai karena kartu
+  habis, bukan karena nyawa habis.
+- Jangan pakai angka rating berjalan (misalnya 1200 → 1250). Pakai
+  bintang bertingkat.
+- Jangan ada fitur chat teks bebas dengan lawan. Stiker atau emoji siap
+  pakai saja — aplikasi ini dipakai anak-anak.
+- Jangan tampilkan bonus poin karena memakai deck level tinggi.
+- Jangan mengubah navigasi utama aplikasi menjadi banyak tab.
+
+## Format keluaran
+
+Satu gambar per layar, rasio potret untuk ponsel, resolusi tinggi. Semua
+teks dalam Bahasa Indonesia. Sertakan teks placeholder yang masuk akal
+(nama pemain, angka skor, contoh kartu kanji nyata seperti 学生 / 電車 /
+友達).
+````
