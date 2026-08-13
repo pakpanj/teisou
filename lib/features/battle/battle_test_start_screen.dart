@@ -36,13 +36,24 @@ class BattleTestStartScreen extends ConsumerStatefulWidget {
 
 class _BattleTestStartScreenState extends ConsumerState<BattleTestStartScreen> {
   final _opponentUidController = TextEditingController();
+  final _joinMatchIdController = TextEditingController();
   bool _creating = false;
   String? _error;
+  String? _createdMatchId;
 
   @override
   void dispose() {
     _opponentUidController.dispose();
+    _joinMatchIdController.dispose();
     super.dispose();
+  }
+
+  void _joinMatch() {
+    final matchId = _joinMatchIdController.text.trim();
+    if (matchId.isEmpty) return;
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => BattleScreen(matchId: matchId)));
   }
 
   Future<void> _createMatch() async {
@@ -73,6 +84,7 @@ class _BattleTestStartScreenState extends ConsumerState<BattleTestStartScreen> {
             secondCandidateDeck: deck,
           );
       if (!mounted) return;
+      setState(() => _createdMatchId = matchId);
       Navigator.of(
         context,
       ).push(MaterialPageRoute(builder: (_) => BattleScreen(matchId: matchId)));
@@ -86,14 +98,17 @@ class _BattleTestStartScreenState extends ConsumerState<BattleTestStartScreen> {
   @override
   Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
+    final myUid = ref.watch(appStartupProvider).valueOrNull?.uid;
     return Scaffold(
       appBar: AppBar(title: Text(s.battleTestTitle)),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(s.battleTestDescription),
+            const SizedBox(height: 16),
+            SelectableText('Uid saya: ${myUid ?? '...'}'),
             const SizedBox(height: 16),
             TextField(
               controller: _opponentUidController,
@@ -119,6 +134,25 @@ class _BattleTestStartScreenState extends ConsumerState<BattleTestStartScreen> {
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
                   : Text(s.battleTestCreateButton),
+            ),
+            if (_createdMatchId != null) ...[
+              const SizedBox(height: 8),
+              SelectableText('Match dibuat: $_createdMatchId'),
+            ],
+            const Divider(height: 48),
+            Text(s.battleTestJoinDescription),
+            const SizedBox(height: 16),
+            TextField(
+              controller: _joinMatchIdController,
+              decoration: InputDecoration(
+                labelText: s.battleTestMatchIdLabel,
+                border: const OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            FilledButton(
+              onPressed: _joinMatch,
+              child: Text(s.battleTestJoinButton),
             ),
           ],
         ),

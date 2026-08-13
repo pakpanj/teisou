@@ -1344,4 +1344,16 @@ class AppStrings {
   String get battleTestOpponentUidLabel => _t('UID lawan', 'Opponent UID');
   String get battleTestCreateButton =>
       _t('Buat Pertandingan', 'Create Match');
+  String get battleTestJoinDescription => _t(
+        'Gabung ke match yang sudah dibuat perangkat lain (masukkan matchId '
+        'yang ditampilkan di atas pada device yang membuatnya).',
+        "Join a match another device already created (enter the matchId "
+        "shown above on the device that created it).",
+      );
+  String get battleTestMatchIdLabel => _t('Match ID', 'Match ID');
+  String get battleTestJoinButton => _t('Gabung ke Match', 'Join Match');
+  String get battleDebugTooltip => _t(
+        'DEBUG uji coba pertandingan',
+        'DEBUG battle test',
+      );
 }

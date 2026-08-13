@@ -10,16 +10,16 @@ selesai DAN sudah hidup** (instans Realtime Database sudah dibuat lewat
 Firebase Console 2026-08-13, `asia-southeast1`/Singapore, rules-nya
 sudah dipasang, `databaseURL` sudah masuk ke `firebase_options.dart`,
 dan tulisan `presence/{uid}` sudah dikonfirmasi muncul sungguhan di
-Console setelah aplikasi dibuka di device fisik). **Tahap 2 butir 4
-(`battleMatches` + aturan Firestore) dan butir 5 (layar pertandingan)
-juga sudah selesai** — pertandingan bisa benar-benar dimainkan kartu
-demi kartu di satu device, lengkap dengan timer, keyboard kana untuk
-kartu kanji, dan skor lokal — lihat "Tahap 2" di bawah untuk detail
-file-nya. **Satu langkah manual masih menggantung**: perbaikan aturan
-`answers/{round}` (melonggarkan `byUid`, dijelaskan di butir 5) belum
-di-deploy ke Firestore Console. Sisanya (Cloud Function penilaian, bot,
-matchmaking, undangan — sisa Tahap 2 dan seluruh Tahap 3) masih belum
-ada kode.
+Console setelah aplikasi dibuka di device fisik). **Tahap 2 butir 4-6
+semuanya sudah selesai DAN sudah diuji sungguhan lintas dua device** —
+pertandingan bisa benar-benar dimainkan kartu demi kartu, disinkronkan
+real-time lewat Firestore antara dua akun berbeda di dua perangkat
+berbeda (device fisik + emulator), lengkap dengan timer, keyboard kana
+untuk kartu kanji, skor lokal, mekanisme timeout-forfeit, dan
+kesimpulan pertandingan yang dihitung identik dan independen di kedua
+sisi — lihat "Tahap 2" di bawah untuk detail lengkapnya. Sisanya (Cloud
+Function penilaian — butir 7 — lalu bot, matchmaking, undangan di
+Tahap 3) masih belum ada kode.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -249,11 +249,10 @@ fitur "peringkat" dikerjakan (biasanya di akhir).
    situ cuma kenyamanan tampilan jalur cepat, bukan sumber kebenaran;
    Cloud Function (butir 7) harus menurunkan sendiri siapa yang
    seharusnya menjawab dari `turnOrder[round]`, tidak boleh percaya
-   field `byUid` begitu saja. **Ini perubahan KEDUA ke blok
-   `battleMatches` di `firestore.rules`, dan belum di-deploy** — versi
-   pertama (dari butir 4) sudah live, tapi perbaikan `byUid` ini masih
-   cuma di repo. Perlu paste ulang ke Console sebelum jalur timeout
-   benar-benar berfungsi di server sungguhan.
+   field `byUid` begitu saja. ✅ **Perbaikan `byUid` ini sudah di-deploy
+   juga** (2026-08-13) — kedua perubahan ke blok `battleMatches` di
+   `firestore.rules` (versi awal butir 4, lalu pelonggaran `byUid` ini)
+   sudah live di Firestore sungguhan.
 
    `BattleRepository` dapat dua method baru: `forfeitRoundOnTimeout`
    (dipanggil HANYA oleh pemain yang menunggu/pemilik deck ronde itu,
@@ -287,10 +286,59 @@ fitur "peringkat" dikerjakan (biasanya di akhir).
    --debug` sukses. **Belum ada uji dua-device sungguhan** — itu
    pekerjaan butir 6 di bawah, dan baru bisa dilakukan kalau ada dua
    akun/device untuk saling menguji.
-6. Uji jalur cepatnya dulu secara manual — dua emulator/device saling
-   baca-tulis `battleMatches` langsung, **tanpa Cloud Function sama
-   sekali**. Titik paling murah untuk memastikan rasanya benar sebelum
-   menaruh biaya di Cloud Function.
+6. ✅ **Selesai — diuji sungguhan di dua device fisik/emulator berbeda**
+   (2026-08-13). Device fisik (Moto G52J) + emulator Pixel 8 lokal,
+   masing-masing login dengan akun anonim berbeda (uid diambil dari
+   berkas `shared_prefs` FirebaseAuth via `adb shell run-as`, bukan
+   dikarang). `BattleTestStartScreen` dipasang sementara ke app bar Home
+   lewat satu tombol debug (⚔️) untuk mencapainya, lalu **dilepas
+   kembali setelah pengujian selesai** — sesuai catatan sendiri di
+   widget itu bahwa entry point-nya harus sementara. Fitur "Gabung ke
+   Match" (masukkan `matchId` yang sudah dibuat perangkat lain) juga
+   ditambahkan ke `BattleTestStartScreen` pada saat ini — celah nyata
+   yang ketahuan begitu benar-benar dicoba: alat ujinya tadinya cuma
+   bisa MEMBUAT match, tidak ada cara bagi perangkat kedua untuk
+   BERGABUNG ke match yang sama, padahal keduanya jelas dibutuhkan
+   untuk uji dua-device.
+
+   **Hasil pengujian sungguhan lewat Firestore langsung** (bukan
+   emulator lokal/fixture): match dibuat dari device fisik, device
+   kedua bergabung lewat matchId yang sama, dan dari titik itu kedua
+   layar `BattleScreen` yang berjalan independen di dua perangkat
+   berbeda saling menyinkronkan giliran secara real-time — device yang
+   sedang menunggu benar-benar melihat "Menunggu jawaban lawan...",
+   device yang menjawab benar-benar melihat kotak jawaban, dan giliran
+   berpindah dalam hitungan detik setelah salah satu sisi menulis.
+   Jawaban romaji manual ("na" untuk な) berhasil dikirim dan giliran
+   maju sesuai desain. **Mekanisme timeout-forfeit juga terverifikasi
+   secara alami, bukan sengaja diskenariokan**: begitu device yang
+   sempat berpindah layar (untuk membaca `matchId`) kembali ke
+   `BattleScreen`, `_ensureTimerFor` langsung mendeteksi jatah waktu
+   ronde itu sudah lewat dan otomatis memanggil
+   `forfeitRoundOnTimeout` — persis perilaku yang dirancang di butir 5,
+   dan pengecekan "cuma pemilik deck ronde itu yang boleh memaksa maju"
+   terbukti benar (device yang bukan pemilik deck ronde itu tidak
+   pernah menulis apa pun). Pertandingan lalu dibiarkan berjalan
+   sendiri lewat rentetan timeout otomatis di kedua sisi (masing-masing
+   perangkat memproses ronde miliknya sendiri secara independen) sampai
+   ronde 19 — **dan kedua device sampai pada kesimpulan yang PERSIS
+   SAMA secara independen**: "Seri!" (skor 0-0 di kedua sisi), layar
+   "selesai" tampil benar dengan tombol "Selesai" di keduanya. Ini
+   membuktikan `clientConclusion` (fungsi murni, deterministik) memang
+   menghasilkan jawaban yang identik dari data `answers` yang sama,
+   walau dihitung sepenuhnya independen di dua perangkat berbeda tanpa
+   koordinasi langsung — persis prinsip "jalur cepat, tanpa Cloud
+   Function sama sekali" yang jadi tujuan butir ini.
+
+   **Satu hal yang TIDAK sempat dikonfirmasi secara bersih**: jawaban
+   BENAR yang menambah skor — dua percobaan manual keburu kehabisan
+   waktu ronde (karena jeda antar perintah ADB), jadi skor akhir 0-0
+   berasal dari rentetan timeout, bukan jawaban benar yang tercatat.
+   Jalur kodenya (`resolveCard` → bandingkan romaji → `tallyScores`)
+   sudah diuji unit secara terpisah dan meyakinkan, tapi belum ada
+   konfirmasi visual "skor bertambah setelah jawaban benar" di layar
+   sungguhan — layak dicoba lagi kalau ada kesempatan menjawab lebih
+   cepat dari batas waktu 30 detik.
 7. Cloud Function penilaian (`RomajiConverter` versi JS, `officialScore`,
    `result`) — sambungkan ke field rank dari #2 begitu ini jalan.
 
