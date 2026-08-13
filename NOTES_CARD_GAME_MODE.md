@@ -2,9 +2,16 @@
 
 Catatan rumusan untuk mode permainan kartu di Teisou — Kana Master.
 
-**Status: masih perumusan. Belum ada satu baris kode pun** — tidak ada
-model, layar, Cloud Function, maupun dataset untuk fitur ini. Catatan ini
-sengaja dibuat lebih dulu.
+**Status: rumusannya sudah menutup seluruh alur (undangan → arsitektur
+pertandingan → penilaian Cloud Function → bot → matchmaking publik →
+keyboard kana), tapi fitur ini sendiri masih belum ada satu baris kode
+pun** — tidak ada model, layar, Cloud Function, maupun `battleMatches`
+untuk fitur ini. Dua hal yang jadi *prasyarat*-nya sudah dikerjakan
+duluan (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
+karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
+menangani っ/youon dengan benar. Keduanya kode sungguhan yang sudah
+jalan, bukan cuma catatan — tapi keduanya infrastruktur umum aplikasi,
+bukan bagian dari fitur permainan kartu itu sendiri.
 
 ---
 
@@ -1138,7 +1145,13 @@ penyimpanan seluruh langkah tiap pertandingan beserta pemutarnya.
 
 Dicek langsung ke data dan kode, bukan perkiraan.
 
-### 1. Bacaan di dataset disimpan sebagai romaji, bukan kana
+**Catatan (2026-08-13)**: judul bagian ini sudah tidak seluruhnya akurat
+— #1, #4, dan #5 sudah terjawab lewat diskusi arsitektur pertandingan/
+bot/matchmaking di bagian lain dokumen ini, ditandai di tempatnya
+masing-masing di bawah. Dibiarkan di sini apa adanya (bukan dihapus)
+supaya jejak "kenapa ini pernah jadi masalah" tetap ada.
+
+### 1. Bacaan di dataset disimpan sebagai romaji, bukan kana — **terjawab**
 
 ```json
 {"word": "学生", "reading": "gakusei"}
@@ -1152,6 +1165,10 @@ Kabar baiknya dua-duanya sudah setengah jalan: `RomajiConverter` sudah ada
 konversi per-huruf — 東京 ditulis `toukyou` (bukan `tōkyō`), 来週 ditulis
 `raishuu`. Jadi jalurnya: pemain mengetik がくせい → diubah jadi `gakusei`
 → dibandingkan.
+
+**Jalannya sekarang sudah dirinci penuh** di bagian "Detail penilaian
+Cloud Function" — termasuk keputusan untuk mem-port `RomajiConverter`
+ke JavaScript alih-alih menyimpan bentuk kana baru di dataset.
 
 ### 2. っ tidak ada di dataset kana — **sisi konverter sudah beres**
 
@@ -1196,7 +1213,7 @@ belum diperbaiki, dicatat di sini supaya tidak hilang.
 seluruhnya (うまれる) atau hanya bagian kanjinya (う). Mengetik seluruhnya
 lebih sederhana dan lebih jujur sebagai latihan membaca.
 
-### 4. Kalau tidak ada lawan, fiturnya mati
+### 4. Kalau tidak ada lawan, fiturnya mati — **terjawab**
 
 Ini risiko paling praktis dan belum dibahas sama sekali. Mode PvP serentak
 menuntut **dua pemain online di saat yang sama**, sementara aplikasi ini
@@ -1207,7 +1224,12 @@ akan ditinggalkan.
 Perlu rencana untuk keadaan sepi — misalnya lawan bot, atau lawan "hantu"
 yang memainkan ulang rekaman jawaban pemain lain.
 
-### 5. Klien tidak boleh mengirim vonis, hanya teks jawaban
+**Jawabannya: bot**, bukan lawan hantu — dirinci penuh di bagian "Lawan
+bot saat sepi" dan "Pemasangan lawan publik" (antrian per tingkat, 20
+detik menunggu, lalu jatuh ke bot lewat jalur pembuatan pertandingan
+yang sama).
+
+### 5. Klien tidak boleh mengirim vonis, hanya teks jawaban — **terjawab**
 
 Ini turunan dari aturan skor dihitung di server, tapi belum pernah ditulis
 tegas. Kalau HP mengirim "aku benar", curang jadi sepele — tinggal selalu
@@ -1215,6 +1237,14 @@ mengirim benar. Yang dikirim harus **teks jawabannya**, dan server yang
 memutuskan benar atau salah.
 
 Konsekuensinya: kunci jawaban harus ada di sisi server juga.
+
+**Ternyata tertegakkan secara struktural, bukan cuma konvensi** — lihat
+bagian "Bentuk konkret jalurnya" di "Penilaian di server, bukan di HP".
+Klien memang tidak pernah punya alasan mengirim vonis sama sekali:
+giliran maju berdasarkan teks jawaban mentah, benar/salahnya dihitung
+independen di kedua sisi (tampilan lokal di HP, resmi di Cloud
+Function) dari dataset yang sama — tidak ada field "vonis" yang bisa
+dikirim bahkan kalau mau.
 
 ### 6. Butuh koneksi stabil — bertentangan dengan cara aplikasi ini dipakai
 
@@ -1238,36 +1268,41 @@ per pertandingan perlu disadari sebelum ramai, bukan sesudah.
 
 ## Yang masih harus diputuskan
 
-Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
+**Dibersihkan (2026-08-13)** — daftar ini sudah lama tidak diperbarui,
+dan sebagian besar isinya ternyata sudah terjawab di bagian lain
+dokumen sepanjang diskusi arsitektur pertandingan/bot/matchmaking/
+keyboard. Yang tersisa di bawah ini genuinely belum dibahas sama sekali:
 
-**Aturan main**
-- 10 kartu itu 10 ronde (tiap pemain mengeluarkan satu kartu, jadi 20
-  jawaban), atau 10 jawaban total? Dengan giliran bergantian, keduanya
-  masuk akal.
-- Deck 20 kartu dipilih sendiri, atau dibagikan otomatis dari level JLPT?
-- Siapa yang mengeluarkan kartu duluan?
-- Kartu diambil acak dari deck atau berurutan? Boleh kartu yang sama
-  muncul dua kali dalam satu pertandingan?
-- Kalau koneksi putus lalu pemain kembali, bisa menyambung pertandingan
-  yang sama atau dianggap selesai?
-- Kedua pemain menjawab bersamaan, atau bergantian?
-- Deck 20 kartu dipilih sendiri, atau dibagikan otomatis dari level JLPT
-  yang dipilih?
-- "Mode pertarungan" yang bisa dipilih itu apa saja bedanya?
+- **Rumus poin per pertandingan** — `officialScore` sejauh ini murni
+  jumlah jawaban benar per ronde. Apakah kecepatan menjawab ikut jadi
+  faktor (mis. bonus kalau jauh di bawah batas waktu), atau memang
+  murni benar/salah tanpa bobot kecepatan? Belum pernah dibahas.
+- **Iklan banner di layar pertandingan** — mode ini gratis, jadi iklan
+  tetap tampil di bagian lain aplikasi. Perlu dipastikan tidak
+  mengganggu khususnya di layar pertarungan yang sudah padat (kartu,
+  keyboard, timer).
 
-**Pertandingan serentak**
-- Bagaimana kalau lawan menutup aplikasi di tengah pertandingan? Dihitung
-  kalah, dibatalkan, atau ditunggu?
-- Lawan publik dipasangkan berdasarkan apa — level JLPT, rank, atau acak?
+Semua pertanyaan lain yang dulu ada di sini sudah terjawab, dicatat di
+bagian masing-masing: 10 kartu = 10 ronde/20 jawaban (bagian mockup),
+isi deck dikunci rank untuk publik/bebas dipilih untuk teman-clan
+(bagian "Isi kartu ditentukan oleh rank"), giliran bergantian (tabel
+keputusan paling atas), siapa duluan + kartu diambil acak (bagian
+"Tiga pertanyaan yang tersisa"), lawan menutup aplikasi (bagian "Kalau
+lawan menutup aplikasi di tengah pertandingan"), lawan publik
+dipasangkan berdasarkan tingkat (bagian "Pemasangan lawan publik"),
+peringkat berdiri sendiri (bagian "Papan peringkat bintang berdiri
+sendiri"). "Mode pertarungan" sebagai pertanyaan sendiri sudah tidak
+relevan lagi — begitu isi kartu dikunci rank, tidak ada lagi "mode"
+yang dipilih terpisah.
 
-**Peringkat**
-- Poinnya masuk `globalScore` yang sudah ada, atau punya rank sendiri?
-- Rumus poinnya seperti apa — jumlah jawaban benar, kecepatan, atau
-  keduanya?
-
-**Lain-lain**
-- Karena gratis, iklan banner tetap muncul. Perlu dipastikan tidak
-  mengganggu di layar pertandingan.
+**Reconnect ke pertandingan yang sama**: sebenarnya sudah terjawab
+secara implisit dari bentuk arsitekturnya, cuma belum pernah ditulis
+tegas — karena seluruh state pertandingan hidup di `battleMatches`
+(Firestore), bukan di memori HP, pemain yang tersambung ulang cukup
+berlangganan ulang ke dokumen yang sama dan langsung melihat keadaan
+terkini. Tidak ada "sesi" yang bisa hilang di sisi klien. Satu-satunya
+cara pertandingan benar-benar berakhir untuknya adalah forfeit
+timeout+offline yang sudah dirancang di bagian lawan terputus.
 
 ## Desain putaran kedua (7 layar + kartu aturan)
 
