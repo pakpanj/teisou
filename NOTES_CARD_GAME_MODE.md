@@ -308,16 +308,46 @@ orang akhirnya memakai N1 dan tidak ada yang berlatih di levelnya sendiri.
 Kalau maksudnya menghargai tantangan, yang tepat adalah poin lebih besar
 untuk **menjawab benar kartu sulit**, bukan untuk memegangnya.
 
-### Yang belum digambar, dan justru paling menentukan
+### Layar menjawab (mockup kelima)
 
-**Belum ada satu pun layar orang sedang menjawab.** Keempatnya berhenti di
-"Battle Dimulai". Padahal di situlah letak keputusan tersulit kita —
-**keyboard kana bawaan aplikasi** untuk mengetik bacaan hiragana. Itu layar
-yang paling menentukan rasa main sekaligus paling banyak kerjanya, jadi
-justru itu yang paling berguna digambar berikutnya.
+Menyusul kemudian, dan menutup kekosongan yang paling penting. Yang
+berguna dari sini:
 
-Layar babak tambahan (kartu 11–20, waktu dipangkas 2 detik tiap kartu)
-juga belum ada.
+- **Ruang untuk mengetik dapat jatah besar** — satu pita lebar di bawah,
+  kira-kira sepertiga tinggi layar. Itu kabar baik: papan gojūon 5×10
+  ditambah tombol tenten, maru, huruf kecil, dan っ butuh ruang, dan
+  ternyata jatahnya cukup.
+- **Aturannya ditulis langsung ke pemain**: "(Romaji untuk Kana, Hiragana
+  untuk Kanji)". Bagus — aturan yang harus dijelaskan di layar bantuan
+  biasanya aturan yang salah.
+- Slot kartu diberi label jelas — kartu lawan muncul di sisi kita saat
+  giliran kita. Alur gilirannya jadi terbaca tanpa penjelasan.
+
+**Isi keyboard-nya sendiri masih kosong** (baru kotak putus-putus dengan
+ikon). Jadi yang sudah diputuskan barulah *tempatnya*, bukan bentuknya.
+
+### Satu hal baru yang baru kelihatan setelah layar ini digambar
+
+**Ada dua cara mengetik dalam satu pertandingan.** Kartu kana dijawab
+dengan romaji — butuh huruf latin. Kartu kanji dijawab dengan hiragana —
+butuh keyboard kana. Deck kanji N5–N1 isinya kanji semua, jadi dalam satu
+pertandingan mungkin konsisten; tapi begitu ada mode deck campuran, **kotak
+jawaban harus berganti wujud tergantung jenis kartu yang sedang dijawab**.
+
+Jalan paling sederhana: kartu kana memakai keyboard bawaan HP (semua HP
+punya huruf latin, tidak ada hambatan sama sekali), kartu kanji memakai
+keyboard kana bawaan aplikasi. Perpindahannya perlu terasa mulus, bukan
+mengagetkan.
+
+Alternatifnya: keyboard bawaan aplikasi menyediakan dua tata letak dan
+berganti sendiri mengikuti jenis kartu — lebih rapi dilihat, lebih banyak
+kerjanya.
+
+### Yang masih belum digambar
+
+- **Isi keyboard kana**-nya sendiri.
+- Ada tombol kirim, atau jawaban otomatis terkirim begitu cocok?
+- Layar babak tambahan (kartu 11–20, waktu dipangkas 2 detik tiap kartu).
 
 Fitur baru yang ikut tergambar dan belum pernah dibahas: **Koin**, mata
 uang bunga (5.430), dan **Tonton Ulang** — yang terakhir menuntut

@@ -9480,8 +9480,20 @@ them and pays you more, pushing everyone to N1 and nobody to their own
 level. Rewarding a correct answer on a hard card gets what that rule was
 reaching for.
 
-Not drawn yet, and the most useful thing to draw next: **a player actually
-answering**, which is where the in-app kana keyboard lives.
+A fifth screen since covers **answering**. It gives the input a wide band
+across the bottom, roughly a third of the screen — enough for a 5x10
+gojuon grid plus tenten, maru, small kana and っ — and prints the rule to
+the player directly: "Romaji untuk Kana, Hiragana untuk Kanji". The
+keyboard itself is still an empty placeholder, so what is settled is the
+space, not the layout.
+
+Drawing it surfaced something not previously noticed: **a match can need
+two ways of typing.** Kana cards are answered in romaji, which wants Latin
+keys; kanji cards in hiragana, which wants the kana keyboard. A pure kanji
+deck is consistent, but any mixed deck means the input area changes
+identity between cards. Simplest route recorded: the system keyboard for
+romaji (every phone has Latin) and the in-app kana keyboard for hiragana,
+with the switch made to feel deliberate rather than abrupt.
 
 Three findings from checking the data rather than assuming it, all of
 which the answer-checking path depends on:
