@@ -127,6 +127,26 @@ class BattleRepository {
     });
   }
 
+  /// Called by the **waiting** player (never the one who was actually
+  /// supposed to answer) once a round's timer runs out with nothing
+  /// submitted — see `NOTES_CARD_GAME_MODE.md`'s "Kalau lawan menutup
+  /// aplikasi di tengah pertandingan". Writes an empty answer (counted
+  /// as a loss for [answererUid]) and advances the turn — same
+  /// transaction and race-guard as [submitAnswer], since this is really
+  /// just that method called on someone else's behalf.
+  Future<void> forfeitRoundOnTimeout({
+    required String matchId,
+    required int round,
+    required String answererUid,
+  }) {
+    return submitAnswer(
+      matchId: matchId,
+      round: round,
+      byUid: answererUid,
+      text: '',
+    );
+  }
+
   /// Computed locally the moment a client notices the match conclude
   /// (see `BattleMatch.clientResult`'s own doc comment) — purely for an
   /// instant "match over" screen, never read for anything that moves
@@ -140,6 +160,21 @@ class BattleRepository {
     final data = snapshot.data();
     if (data == null) return null;
     return BattleAnswer.fromMap(data);
+  }
+
+  /// Every answer submitted so far, keyed by round — used to build a
+  /// running local score tally (see `battle_score_tally.dart`) as the
+  /// match progresses, without watching each round's doc one at a time.
+  Stream<Map<int, BattleAnswer>> watchAllAnswers(String matchId) {
+    return _answers(matchId).snapshots().map((snapshot) {
+      final map = <int, BattleAnswer>{};
+      for (final doc in snapshot.docs) {
+        final round = int.tryParse(doc.id);
+        if (round == null) continue;
+        map[round] = BattleAnswer.fromMap(doc.data());
+      }
+      return map;
+    });
   }
 
   Stream<BattleAnswer?> watchAnswer(String matchId, int round) {

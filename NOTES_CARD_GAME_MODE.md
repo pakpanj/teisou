@@ -4,16 +4,22 @@ Catatan rumusan untuk mode permainan kartu di Teisou — Kana Master.
 
 **Status: rumusannya sudah menutup seluruh alur (undangan → arsitektur
 pertandingan → penilaian Cloud Function → bot → matchmaking publik →
-keyboard kana). Implementasi kode sungguhan sudah mulai jalan — seluruh
+keyboard kana). Implementasi kode sungguhan sudah jalan jauh — seluruh
 Tahap 1 (keyboard kana, field rank minimal, presence RTDB) sudah
 selesai DAN sudah hidup** (instans Realtime Database sudah dibuat lewat
 Firebase Console 2026-08-13, `asia-southeast1`/Singapore, rules-nya
 sudah dipasang, `databaseURL` sudah masuk ke `firebase_options.dart`,
 dan tulisan `presence/{uid}` sudah dikonfirmasi muncul sungguhan di
-Console setelah aplikasi dibuka di device fisik) — lihat "Tahap 1" di
-bawah untuk detail file-nya. Sisanya (`battleMatches`, layar
-pertandingan, Cloud Function, bot, matchmaking — Tahap 2 dan 3) masih
-belum ada kode.
+Console setelah aplikasi dibuka di device fisik). **Tahap 2 butir 4
+(`battleMatches` + aturan Firestore) dan butir 5 (layar pertandingan)
+juga sudah selesai** — pertandingan bisa benar-benar dimainkan kartu
+demi kartu di satu device, lengkap dengan timer, keyboard kana untuk
+kartu kanji, dan skor lokal — lihat "Tahap 2" di bawah untuk detail
+file-nya. **Satu langkah manual masih menggantung**: perbaikan aturan
+`answers/{round}` (melonggarkan `byUid`, dijelaskan di butir 5) belum
+di-deploy ke Firestore Console. Sisanya (Cloud Function penilaian, bot,
+matchmaking, undangan — sisa Tahap 2 dan seluruh Tahap 3) masih belum
+ada kode.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -191,20 +197,96 @@ fitur "peringkat" dikerjakan (biasanya di akhir).
    dan satu jawaban di `answers/{round}` cuma bisa dibuat sekali oleh
    pemilik jawabannya sendiri.
 
-   **Sama seperti presence, ini butuh satu langkah manual sebelum benar-
-   benar berlaku**: `firestore.rules` yang sudah berubah di repo belum
-   ter-deploy ke proyek Firebase sungguhan — CLI Firebase di lingkungan
-   ini tetap macet di skrip sambutannya (masalah lama yang sudah dicatat
-   di `CLAUDE.md`), jadi perlu di-paste manual ke tab Rules Firestore di
-   Console, sama seperti langkah yang baru saja dilakukan untuk
-   `database.rules.json`.
+   ✅ **Update**: sudah di-deploy ke Firestore sungguhan (di-paste manual
+   ke tab Rules Console, sama seperti `database.rules.json` untuk
+   presence — CLI Firebase di lingkungan ini tetap macet di skrip
+   sambutannya, masalah lama yang sudah dicatat di `CLAUDE.md`).
 
    `flutter analyze` bersih, 382 test hijau (20 test baru — 8 untuk
    `buildTurnOrder`, 4 untuk `cardTimeLimit`, 8 untuk model
    `BattleMatch`/`BattleAnswer`/`TurnOrderEntry`), `flutter build apk
    --debug` sukses.
-5. Layar pertandingan (pakai keyboard #1, baca tingkat dari #2 untuk
-   pilih kartu).
+5. ✅ **Selesai (kode) — ⚠️ satu perubahan rules lagi belum di-deploy** —
+   Layar pertandingan. `BattleScreen`
+   (`lib/features/battle/battle_screen.dart`) merender satu dokumen
+   `battleMatches/{matchId}` dan benar-benar bisa dimainkan: kartu
+   berjalan tampil, penjawab mengetik (romaji lewat keyboard bawaan HP
+   untuk kartu kana, hiragana lewat `KanaKeyboard` — butir 1 — untuk
+   kartu kanji), timer mundur per kartu (`cardTimeLimit`, butir 4),
+   skor berjalan dihitung lokal, dan begitu babak utama (ronde 0-9)
+   selesai dengan skor beda — atau ronde 19 masih imbang — layar
+   "selesai" langsung tampil dengan `clientResult` (tebakan klien,
+   bukan `officialScore`/`result` yang masih menunggu Cloud Function di
+   butir 7).
+
+   **Dua potongan logika murni baru, keduanya diuji terhadap dataset
+   sungguhan/kasus buatan**: `buildDeckIds`/`resolveCard`
+   (`lib/core/services/battle_deck_builder.dart`) menutup celah yang
+   sengaja ditinggalkan di butir 4 — "`cardId` cuma string opak, belum
+   dipatok ke sumber sungguhan". Sekarang dipatok: Bronze menarik
+   hiragana dasar, Silver menarik katakana + bentuk gabungan hiragana
+   (tenten/maru/youon), tiga tingkat kanji menarik satu contoh kata per
+   kartu (bukan kanji tunggal, sesuai keputusan yang sudah dikunci),
+   id-nya `"{kanjiId}|{word}"` — pola kunci yang sama persis yang sudah
+   dipakai rollout terjemahan contoh-kata kanji sebelumnya, dipakai
+   ulang bukan diciptakan baru. `buildDeckIds` diuji terhadap
+   `KanaRepository`/`KanjiRepository` sungguhan (bukan data buatan) —
+   membuktikan setiap tingkat benar-benar punya cukup kartu asli, bukan
+   cuma lolos di teori. `battle_score_tally.dart` (`tallyScores`/
+   `clientConclusion`) mem-fungsi-murnikan aturan "Aturan kesimpulannya"
+   dari butir 4 supaya bisa diuji tanpa Firestore sama sekali.
+
+   **Bug desain nyata ditemukan dan diperbaiki saat menyusun jalur
+   timeout**: aturan `answers/{round}` dari butir 4 mensyaratkan
+   `byUid == request.auth.uid` (cuma pemilik jawaban yang boleh
+   menulis) — tapi rumusan "Kalau lawan menutup aplikasi di tengah
+   pertandingan" secara eksplisit bilang pemain yang MENUNGGU (bukan
+   yang menjawab) yang menulis transaksi begitu waktu habis. Dua aturan
+   ini bertabrakan — kalau tetap dipakai, `forfeitRoundOnTimeout` yang
+   baru dibangun akan selalu ditolak Firestore. Diperbaiki dengan
+   melonggarkan aturan `answers/{round}` jadi "siapa saja dari dua
+   pemain di match itu boleh menulis" — aman karena `byUid`/`text` di
+   situ cuma kenyamanan tampilan jalur cepat, bukan sumber kebenaran;
+   Cloud Function (butir 7) harus menurunkan sendiri siapa yang
+   seharusnya menjawab dari `turnOrder[round]`, tidak boleh percaya
+   field `byUid` begitu saja. **Ini perubahan KEDUA ke blok
+   `battleMatches` di `firestore.rules`, dan belum di-deploy** — versi
+   pertama (dari butir 4) sudah live, tapi perbaikan `byUid` ini masih
+   cuma di repo. Perlu paste ulang ke Console sebelum jalur timeout
+   benar-benar berfungsi di server sungguhan.
+
+   `BattleRepository` dapat dua method baru: `forfeitRoundOnTimeout`
+   (dipanggil HANYA oleh pemain yang menunggu/pemilik deck ronde itu,
+   dicek dari `TurnOrderEntry.deckOwnerUid`) dan `watchAllAnswers`
+   (stream seluruh jawaban yang sudah masuk, dipakai untuk menghitung
+   skor berjalan tanpa mengawasi tiap ronde satu-satu).
+
+   **Sengaja disederhanakan dari rancangan penuh di satu hal**: pemain
+   yang menunggu tidak dapat animasi sekilas "lawan menjawab: benar!"
+   persis saat jawabannya masuk — menampilkan itu dengan benar butuh
+   melacak ronde yang sudah keburu digantikan ronde berikutnya (tulisan
+   yang sama yang mencatat jawaban juga langsung memajukan
+   `currentRound`), kompleksitas waktu yang nyata untuk versi pertama.
+   Sebagai gantinya setiap ronde yang selesai langsung masuk ke skor
+   berjalan di header, jadi hasilnya tetap kelihatan, cuma bukan
+   sebagai momen beranimasi.
+
+   **`BattleTestStartScreen`** (`lib/features/battle/battle_test_start_screen.dart`)
+   adalah alat uji manual untuk butir 6 di bawah — bukan alur produk
+   sungguhan, sengaja **tidak** dipasang ke navigasi asli mana pun
+   (belum ada sistem undangan/matchmaking, Tahap 3, jadi ini satu-
+   satunya cara memasukkan dua akun sungguhan ke satu dokumen
+   `battleMatches` sekarang: ketik uid akun kedua secara manual). Kedua
+   deck dibangun dari tingkat akun yang sedang login saat itu untuk
+   kedua pemain — satu pengecekan lebih sedikit untuk uji jalur cepat
+   itu sendiri.
+
+   `flutter analyze` bersih, 400 test hijau (18 test baru — 10 untuk
+   `buildDeckIds`/`resolveCard` terhadap dataset kana/kanji sungguhan,
+   8 untuk `tallyScores`/`clientConclusion`), `flutter build apk
+   --debug` sukses. **Belum ada uji dua-device sungguhan** — itu
+   pekerjaan butir 6 di bawah, dan baru bisa dilakukan kalau ada dua
+   akun/device untuk saling menguji.
 6. Uji jalur cepatnya dulu secara manual — dua emulator/device saling
    baca-tulis `battleMatches` langsung, **tanpa Cloud Function sama
    sekali**. Titik paling murah untuk memastikan rasanya benar sebelum

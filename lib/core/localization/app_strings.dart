@@ -1301,4 +1301,47 @@ class AppStrings {
         '$passages bacaan · $questionsPerSession soal acak setiap sesi',
         '$passages passages · $questionsPerSession random questions per session',
       );
+
+  // --- Card Game Mode (see NOTES_CARD_GAME_MODE.md) ---
+  String get battleTitle => _t('Pertandingan', 'Match');
+  String battleLoadCardDataError(Object error) =>
+      _t('Gagal memuat data kartu: $error', 'Failed to load card data: $error');
+  String battleLoadMatchError(Object error) =>
+      _t('Gagal memuat pertandingan: $error', 'Failed to load match: $error');
+  String get battleNotSignedIn => _t('Belum masuk akun.', 'Not signed in.');
+  String get battleCardNotFound =>
+      _t('Kartu tidak ditemukan.', 'Card not found.');
+  String battleCardProgress(int current, int total) =>
+      _t('Kartu $current / $total', 'Card $current / $total');
+  String get battleWaitingForOpponent => _t(
+        'Menunggu jawaban lawan...',
+        "Waiting for opponent's answer...",
+      );
+  String battleMyScore(int score) => _t('Kamu: $score', 'You: $score');
+  String battleOpponentScore(int score) =>
+      _t('Lawan: $score', 'Opponent: $score');
+  String get battleSendAnswer => _t('Kirim', 'Send');
+  String get battleRomajiHint => _t('Ketik romaji...', 'Type romaji...');
+  String get battleResultWin => _t('Menang!', 'You win!');
+  String get battleResultLose => _t('Kalah', 'You lose');
+  String get battleResultDraw => _t('Seri!', 'Draw!');
+  String get battleResultDone => _t('Selesai', 'Done');
+
+  // Dev-only manual test screen — see BattleTestStartScreen's own doc
+  // comment for why this exists and isn't wired into real navigation.
+  String get battleTestTitle =>
+      _t('Uji Coba Pertandingan (dev)', 'Test Match (dev)');
+  String get battleTestDescription => _t(
+        'Alat uji manual — bukan alur produk sungguhan. Masukkan uid akun '
+        'kedua (device/akun lain yang sudah login) untuk membuat '
+        'pertandingan uji coba. Isi kartu memakai tingkat akun ini untuk '
+        'kedua pemain.',
+        'Manual test tool — not a real product flow. Enter a second '
+        'account\'s uid (another device/account already signed in) to '
+        'create a test match. Card content uses this account\'s own tier '
+        'for both players.',
+      );
+  String get battleTestOpponentUidLabel => _t('UID lawan', 'Opponent UID');
+  String get battleTestCreateButton =>
+      _t('Buat Pertandingan', 'Create Match');
 }

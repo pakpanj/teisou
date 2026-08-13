@@ -327,16 +327,24 @@ service cloud.firestore {
           && request.resource.data.players == resource.data.players
           && request.resource.data.turnOrder == resource.data.turnOrder;
 
-      // Write-once, and only by whoever is actually submitting their own
-      // answer — no update/delete, so a submitted answer can never be
-      // edited after the fact.
+      // Write-once — no update/delete, so a submitted answer can never
+      // be edited after the fact. Deliberately NOT restricted to
+      // `byUid == request.auth.uid`: a timeout is written by the
+      // WAITING player forcing the turn to advance (see
+      // NOTES_CARD_GAME_MODE.md's "Kalau lawan menutup aplikasi di
+      // tengah pertandingan"), not by whoever the answer conceptually
+      // belongs to. Safe to allow either player to write any round's
+      // answer because `byUid`/`text` here are fast-path display
+      // convenience only — the authoritative Cloud Function score
+      // (Tahap 2 butir 7, not built yet) must derive who was supposed
+      // to answer from `turnOrder[round]` itself, never trust this
+      // field.
       match /answers/{round} {
         allow read: if request.auth != null
             && request.auth.uid in get(/databases/$(database)/documents/battleMatches/$(matchId)).data.players;
 
         allow create: if request.auth != null
-            && request.auth.uid in get(/databases/$(database)/documents/battleMatches/$(matchId)).data.players
-            && request.resource.data.byUid == request.auth.uid;
+            && request.auth.uid in get(/databases/$(database)/documents/battleMatches/$(matchId)).data.players;
       }
     }
 

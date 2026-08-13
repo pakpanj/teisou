@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/models/app_language.dart';
 import '../data/models/battle_match.dart';
 import '../data/models/card_game_rank.dart';
+import '../data/models/kanji_entry.dart';
 import '../data/models/presence_status.dart';
 import '../data/models/stroke_speed.dart';
 import '../data/models/app_theme_mode.dart';
@@ -394,6 +395,17 @@ final kanaKeyboardInputProvider = FutureProvider<KanaKeyboardInput>((
   );
   return KanaKeyboardInput.fromAll(hiragana);
 });
+
+/// The full kana + kanji datasets bundled together, cached once — what
+/// `battle_deck_builder.dart`'s `buildDeckIds`/`resolveCard` need. Kept
+/// as one provider (a record) rather than two separate ones so a
+/// consumer that needs both never has to juggle two AsyncValues.
+final battleCardDataProvider =
+    FutureProvider<(List<KanaCharacter>, List<KanjiEntry>)>((ref) async {
+      final kana = await ref.watch(kanaRepositoryProvider).getAll();
+      final kanji = await ref.watch(kanjiRepositoryProvider).getAll();
+      return (kana, kanji);
+    });
 
 /// Live progress (status per kana + resume index) for one kana type, kept
 /// in sync via a Firestore snapshot stream once the user is signed in.
