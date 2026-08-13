@@ -520,6 +520,70 @@ dijawab — dan di layar hasil, tempatnya memang sudah benar.
 - Papan peringkat diperbarui berkala, bukan seketika — masuk akal dan
   murah.
 
+## Prompt perbaikan untuk desain putaran kedua
+
+Dipakai kalau desain putaran kedua mau diperbaiki, bukan digambar ulang
+dari nol — supaya bagian yang sudah benar tidak ikut berubah.
+
+````
+Desain 7 layar TEISOU BATTLE ini sudah bagus. Pertahankan seluruh gaya
+visual, tata letak, warna, maskot, dan semua layar yang sudah ada.
+Perbaiki HANYA tiga hal berikut.
+
+## 1. Hapus furigana dari kartu soal (paling penting)
+
+Di layar "3. Bertanding — Menjawab", kartu 学生 digambar dengan bacaan
+がくせい tertulis di atas kanjinya. Di layar "5. Babak Tambahan", kartu
+電車 digambar dengan でんしゃ di atasnya.
+
+Itu jawaban yang justru sedang ditanyakan ke pemain — jadi soalnya
+membocorkan jawabannya sendiri.
+
+Perbaikan: kartu soal HANYA menampilkan kanjinya saja (学生, 電車), tanpa
+bacaan kana apa pun di atas, di bawah, maupun di sampingnya. Label level
+(N5) boleh tetap ada.
+
+Jangan diubah di layar "6. Hasil Pertandingan" — di sana bacaan memang
+sudah seharusnya ditampilkan, dan itu sudah benar.
+
+## 2. Rapikan tata letak keyboard kana
+
+Sekarang ada huruf yang muncul dua kali (や, ゆ, よ, ろ, っ) dan ada
+kolom yang tidak jelas.
+
+Susun ulang mengikuti tabel gojūon: 5 kolom vokal (a, i, u, e, o) dan
+baris per konsonan, berurutan dari atas ke bawah:
+
+  あ い う え お
+  か き く け こ
+  さ し す せ そ
+  た ち つ て と
+  な に ぬ ね の
+  は ひ ふ へ ほ
+  ま み む め も
+  や ・ ゆ ・ よ
+  ら り る れ ろ
+  わ ・ ・ ・ を
+  ん
+
+Bagian yang kosong (baris や di kolom i dan e, baris わ di kolom i, u, e)
+dibiarkan KOSONG sebagai celah, jangan diisi huruf lain dan jangan
+dirapatkan — kesejajaran tiap kolom vokal itu yang membuat papan ini
+mudah dibaca anak.
+
+Di bawah papan itu, satu baris tombol pengubah:
+  ゛(tenten)   ゜(maru)   ゃ   ゅ   ょ   っ   ⌫ (hapus)
+
+Lalu tombol "KIRIM JAWABAN" di paling bawah.
+
+## 3. Navigasi bawah
+
+Hilangkan saja navigasi bawah dari layar-layar pertarungan (layar 3, 4,
+5). Saat bertanding, layarnya harus penuh tanpa gangguan.
+
+Selain tiga hal itu, jangan ubah apa pun.
+````
+
 ## Prompt untuk membuat ulang desainnya
 
 Disimpan di sini supaya tidak hilang, dan supaya kalau desainnya dibuat
@@ -572,15 +636,22 @@ dan sopan — bukan garang seperti game pertarungan pada umumnya.
    Clan, Publik).
 2. Mencari lawan.
 3. **Layar bertanding — giliran MENJAWAB.** Ini yang paling penting.
+   Kartu soal HANYA menampilkan kanjinya (misalnya 学生) — tanpa furigana
+   sama sekali, karena bacaan itulah yang sedang ditanyakan.
    Harus menampilkan keyboard kana buatan aplikasi secara lengkap:
-   - Papan hiragana gojūon (あ sampai ん).
-   - Tombol tenten (゛) dan maru (゜).
-   - Tombol huruf kecil ゃ ゅ ょ.
-   - Tombol huruf kecil っ — WAJIB ada, tanpa ini kata seperti 学校
-     (がっこう) tidak bisa diketik sama sekali.
-   - Tombol hapus dan tombol kirim.
+   - Papan gojūon 5 kolom vokal (a, i, u, e, o) dengan baris per konsonan:
+     あ/か/さ/た/な/は/ま/や/ら/わ/ん. Bagian yang memang kosong (baris や
+     di kolom i dan e, baris わ di kolom i, u, e) dibiarkan kosong sebagai
+     celah — jangan diisi dan jangan dirapatkan. Jangan ada huruf yang
+     muncul dua kali.
+   - Satu baris tombol pengubah di bawahnya: ゛(tenten), ゜(maru), ゃ, ゅ,
+     ょ, っ, dan tombol hapus.
+   - Tombol kirim jawaban.
    - Kolom jawaban yang menampilkan kana yang sudah diketik.
-   Sisakan ruang lebar di bagian bawah layar untuk keyboard ini.
+   っ WAJIB ada — tanpa itu kata seperti 学校 (がっこう) tidak bisa diketik
+   sama sekali.
+   Sisakan ruang lebar di bagian bawah layar untuk keyboard ini, dan
+   jangan tampilkan navigasi bawah aplikasi di layar pertarungan.
 4. Layar bertanding — giliran MENGELUARKAN kartu (memilih kartu dari deck).
 5. Babak tambahan kartu 11–20, dengan penanda bahwa waktunya menyusut.
 6. Hasil pertandingan: skor akhir, daftar semua kartu yang dimainkan
