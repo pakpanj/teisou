@@ -233,14 +233,15 @@ bukan pemilik deck itu sendiri.
 battleMatches/{matchId}
   players: [uidA, uidB]
   status: "active" | "finished"
-  currentTurnUid            // deck siapa yang dikeluarkan giliran ini
-                             // (penjawabnya = pemain satunya, bukan ini)
-  currentRound              // 0-based, 0-9 di babak utama, 10-19 di tambahan
-  cardsByPlayer: {uidA: [cardId x10], uidB: [cardId x10]}   // lihat "Undian kartu" di bawah
-  turnStartedAt              // stempel waktu server, jangkar timer giliran ini
-  clientResult                // dihitung cepat di HP, buat layar "selesai" instan
+  currentRound               // 0-based; turnOrder[currentRound] bilang deck
+                              // siapa + kartu apa (0-9 babak utama, 10-19 tambahan)
+  turnOrder: [{round, deckOwnerUid, cardId}, ...]   // panjang 20, dibuat sekali
+                                                      // saat match dibuat — lihat
+                                                      // "Detail penilaian" di bawah
+  turnStartedAt               // stempel waktu server, jangkar timer giliran ini
+  clientResult                 // dihitung cepat di HP, buat layar "selesai" instan
   officialScore: {uidA: n, uidB: n}   // HANYA Cloud Function yang menulis
-  result                       // dihitung ulang Cloud Function setelah semua kartu masuk
+  result                        // dihitung ulang Cloud Function setelah semua kartu masuk
 
 battleMatches/{matchId}/answers/{round}
   byUid              // yang MENJAWAB (bukan pemilik deck kartu itu)
@@ -252,17 +253,24 @@ Cloud Function bisa `onCreate` per jawaban langsung (memicu per dokumen
 baru), bukan harus membandingkan isi array sebelum/sesudah tiap kali
 dokumen induk berubah.
 
+**Penyederhanaan dari draf sebelumnya**: `currentTurnUid` sebagai field
+terpisah dihapus — dulu dua kali mewakili hal yang sama (deck siapa yang
+dikeluarkan), sekarang cukup dibaca dari
+`turnOrder[currentRound].deckOwnerUid`. Satu sumber kebenaran, tidak ada
+dua field yang bisa diam-diam beda isi.
+
 ### Alur satu giliran
 
-1. Kartu ke-`currentRound` dari deck `currentTurnUid` ditampilkan ke
-   **pemain satunya** (dia yang menjawab, bukan pemilik deck).
+1. Kartu `turnOrder[currentRound].cardId`, milik deck
+   `turnOrder[currentRound].deckOwnerUid`, ditampilkan ke **pemain
+   satunya** (dia yang menjawab, bukan pemilik deck).
 2. Pemain penjawab mengetik jawaban, menekan kirim.
 3. Klien menulis ke `answers/{currentRound}` (teks mentah saja, dengan
    `byUid` = dirinya sendiri), lalu di tulisan yang sama memajukan
-   `currentRound`, memindahkan `currentTurnUid` ke pemain yang **barusan
-   menjawab** (supaya giliran berikutnya kartunya keluar dari deck dia,
-   sesuai pola "saling mengeluarkan kartu"), dan mengatur ulang
-   `turnStartedAt`.
+   `currentRound` dan mengatur ulang `turnStartedAt`. Giliran berikutnya
+   otomatis milik deck yang sesuai — `turnOrder` sudah menyelang-
+   nyelingkan urutannya sejak dibuat, tidak perlu ada field yang
+   "dipindahkan" secara terpisah.
 4. Pemilik deck yang barusan kartunya keluar (listener Firestore)
    langsung lihat jawabannya masuk, dan menampilkan benar/salah untuk
    jawaban itu — dihitung sendiri secara lokal dari dataset yang sudah
@@ -271,6 +279,85 @@ dokumen induk berubah.
    secara independen, menulis ke `officialScore`. Begitu jumlah jawaban
    yang masuk sama dengan panjang pertandingan, Cloud Function menghitung
    `result` final dan itulah yang menggerakkan bintang.
+
+### Detail penilaian Cloud Function
+
+**Sumber kebenarannya**: salinan dataset bacaan (kana + kata kanji) ikut
+dibundel ke folder `functions/`, dari sumber yang sama dengan yang
+dipakai aplikasi Flutter — Cloud Function berjalan di Node.js, jadi tidak
+bisa langsung memakai kelas Dart yang sama, cuma datanya yang disalin.
+
+**Dikonfirmasi: `RomajiConverter` di-port ke JavaScript**, bukan
+menyimpan bentuk hiragana baru di dataset. Alasannya: kartu kana
+dijawab romaji, jadi Cloud Function tinggal bandingkan langsung ke
+`kana.romaji` — tidak perlu konversi apa pun. Tapi kartu kanji dijawab
+**hiragana**, sementara dataset menyimpan bacaannya sebagai romaji
+(`{"word": "学生", "reading": "gakusei"}`, dicek langsung — tidak ada
+bentuk kananya sama sekali). Jadi jawaban hiragana pemain harus diubah
+ke romaji dulu sebelum dibandingkan — dan mengubah ke arah situ (kana →
+romaji) itu mekanis, tidak ambigu, sudah terbukti benar lewat 7 tes yang
+baru ditulis untuk `RomajiConverter`. Arah sebaliknya (menyimpan bentuk
+kana lewat konversi otomatis romaji → kana) ditolak karena ambigu — "ji"
+bisa berarti じ atau ぢ, "o" bisa berarti お atau を — dan berisiko
+menghasilkan kunci jawaban yang salah untuk ribuan entri, kelas bug yang
+sama persis dengan yang baru saja diaudit habis-habisan di sistem
+furigana. Konsekuensi jujur dari pilihan ini: ada dua salinan logika
+konverter di dua bahasa, jadi perbaikan di satu sisi (seperti bug youon
+yang baru ditemukan) harus diingat untuk ikut diperbaiki di sisi
+satunya.
+
+**Urutan kartu ditentukan sekali, bukan diturunkan ulang tiap kali
+diperlukan.** Alih-alih `cardsByPlayer` dua deck terpisah yang harus
+disilangkan saat runtime untuk tahu "kartu round ke berapa milik siapa",
+dokumen pertandingan menyimpan satu array gabungan yang sudah diselang-
+seling begitu pertandingan dibuat:
+
+```
+battleMatches/{matchId}
+  turnOrder: [
+    { round: 0, deckOwnerUid, cardId },
+    { round: 1, deckOwnerUid, cardId },
+    ...  // sampai 19, dari 10+10 kartu tiap pemain yang sudah diacak
+  ]
+```
+
+Baik klien maupun Cloud Function tinggal membaca `turnOrder[round]` yang
+sama — tidak ada logika "kartu ini milik siapa" yang perlu ditulis dua
+kali dan berisiko beda hasil.
+
+**Penambahan skor lewat transaksi Firestore**, bukan baca-lalu-tulis
+biasa — supaya dua jawaban yang divalidasi hampir bersamaan (bisa
+terjadi karena jalur cepat/giliran tidak menunggu Cloud Function sama
+sekali, jadi pemain bisa saja sudah lanjut ke beberapa giliran berikutnya
+sebelum Cloud Function sempat memproses yang pertama) tidak saling
+menimpa hasil.
+
+**Menentukan kapan pertandingan selesai, tanpa terjebak jawaban yang
+diproses tidak berurutan**: karena jalur cepat tidak menunggu Cloud
+Function, jawaban ronde 5 bisa saja divalidasi Cloud Function *sebelum*
+ronde 3 selesai diproses. Supaya pengecekan "sudah waktunya selesai
+belum" tidak salah ambil kesimpulan dari data yang belum lengkap, tiap
+kali `officialScore` diperbarui, Cloud Function mengecek: **apakah
+jumlah `officialScore.uidA + officialScore.uidB` sama dengan
+`round + 1`?** Kalau sama, berarti semua ronde dari 0 sampai ronde ini
+sungguh sudah diproses (tidak ada yang terlewat), dan aman untuk
+melangkah ke pengecekan kesimpulan. Kalau belum sama, ronde yang lebih
+awal masih tertunda — invokasi ini berhenti di situ saja, dan begitu
+ronde yang tertunda itu akhirnya diproses, transaksinya sendiri yang
+akan menemukan jumlahnya sudah cocok dan melanjutkan pengecekan.
+Trik ini tidak butuh penghitung urutan terpisah — cukup dari
+`officialScore` yang memang sudah ada.
+
+**Aturan kesimpulannya**, dicek tiap kali lolos pemeriksaan di atas dan
+`round >= 9`:
+- Skornya beda → pertandingan selesai, `result` = pemenang dengan skor
+  lebih tinggi.
+- `round == 19` dan masih sama → `result` = seri.
+- Selain itu (masih sama, belum ronde 19) → belum selesai, lanjut ke
+  babak tambahan berikutnya.
+
+`result` inilah yang memicu pembaruan bintang — bukan `clientResult`
+yang cuma untuk layar "selesai" instan di HP.
 
 ### Kalau lawan menutup aplikasi di tengah pertandingan
 
@@ -306,8 +393,8 @@ salah satu pemain (penantang vs yang diundang, atau pemain publik vs
 lawannya), dan kartu pertama tidak berarti keuntungan apa pun dalam
 aturan yang sudah ada — jadi pilihan yang paling sederhana sekaligus
 paling adil adalah lempar koin, ditentukan begitu `battleMatches/{matchId}`
-dibuat. `currentTurnUid` awal cukup diisi hasil `Random` biasa saat
-dokumen ditulis.
+dibuat. Deck siapa yang masuk ke `turnOrder[0]` cukup diputuskan lewat
+`Random` biasa saat dokumen ditulis.
 
 **Kartu diambil acak, tanpa pengembalian — dan ini sebenarnya sudah
 terjawab dari keputusan lama, cuma belum pernah disambungkan.** Bagian
@@ -318,12 +405,11 @@ masuk akal kalau pengambilannya acak, bukan berurutan (kalau berurutan,
 "Kalau tetap imbang, hasilnya seri" sudah bilang **10 kartu sisa dari
 deck 20 itulah bahan babak tambahan** — itu juga cuma konsisten kalau 10
 yang dipakai duluan adalah **10 dari 20 yang diacak**, menyisakan tepat
-10 sisanya. Jadi: `cardsByPlayer` diisi dengan mengacak seluruh 20 kartu
-pemain itu lalu mengambil 10 pertama untuk `currentRound` 0-9; 10
-sisanya menyusul kalau pertandingan lanjut ke babak tambahan
-(`currentRound` 10-19). **Tidak ada kartu yang dobel dalam satu
-pertandingan**, karena diambil dari 20 kartu yang memang berbeda-beda,
-tanpa pengembalian.
+10 sisanya. Jadi: deck tiap pemain diacak seluruh 20 kartunya, 10
+pertama dipakai untuk mengisi ronde 0-9 milik pemain itu di `turnOrder`,
+10 sisanya mengisi ronde 10-19 kalau pertandingan lanjut ke babak
+tambahan. **Tidak ada kartu yang dobel dalam satu pertandingan**, karena
+diambil dari 20 kartu yang memang berbeda-beda, tanpa pengembalian.
 
 **Sinkronisasi jam server-HP: pakai Realtime Database, bukan Firestore
 — dan kebetulan infrastrukturnya sudah mau dibangun juga untuk
