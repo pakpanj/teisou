@@ -178,13 +178,14 @@ and Choukai as "zero content" when it has 150 clips).
 scope.** What remains is release logistics (store credentials, real ad
 units, an iOS Firebase registration) plus two deliberately-deferred
 modules — not core learning features. `flutter analyze` clean, `flutter
-test --concurrency=1` **282/282 across 42 test files**.
+test --concurrency=1` **320/320** (2026-08-13; the 282/42-files figure
+this line carried before was from 2026-08-05).
 
 ### Content — every learning dataset is fully authored, zero placeholders
 
 | Module | Content | Breakdown |
 |---|---|---|
-| Kana | 46 + 46 | hiragana/katakana |
+| Kana | **104 + 104** | per script: 46 basic · 25 tenten/maru · 33 youon |
 | **Bab** (curriculum) | **358 chapters** | N5 52 · N4 59 · N3 77 · N2 77 · N1 93 |
 | Kanji | 2425 | N5 107 · N4 133 · N3 315 · N2 367 · N1 1503 |
 | Kotoba | 1682 words | 46 categories |
@@ -9384,3 +9385,169 @@ exact pixel positions). And `adb shell input text "..."` silently drops
 everything after the first space in a plain quoted string — the
 reliable fix is substituting spaces with the literal `%s` token in the
 text argument, not adding quoting workarounds.
+
+## Planned: Mode Game Card
+
+A card-game mode is planned but **not started** — no code, no model, no
+screens, and no product decisions. The note lives at
+`NOTES_CARD_GAME_MODE.md` and is deliberately a title plus the questions
+that have to be answered first, following the same rule already applied to
+"Belajar dari Gambar"/"Belajar dari Video": start from the product
+questions, not the architecture, because writing models and screens before
+the shape of the game is decided reliably means writing them twice.
+
+## Update (2026-08-13): Google Sign-In was broken for every Play tester; iOS TTS was silent; the kana flashcard was rebuilt around a chart
+
+Five pieces in one session. The first was a real user-facing outage; the
+rest is kana-module work that grew out of it.
+
+### Google Sign-In failed for every internal tester — a SHA-1 problem
+
+Reported as "tidak bisa log in" on the Play internal-testing build.
+**Anonymous auth was fine throughout; only Google Sign-In was dead**, so
+progress was never at risk.
+
+The only Android OAuth client the project had was registered against the
+**debug keystore** (`b4f26381...`), which means Google Sign-In had only
+ever worked on a locally built APK. Play App Signing re-signs the
+uploaded bundle with Google's own key, and the binary that reaches a
+tester is signed
+`25:AA:C0:B4:53:C7:6F:FE:57:28:51:99:9E:D6:AF:9E:20:7D:C4:E0` — read off
+the installed APK with `apksigner`, not guessed. That fingerprint was
+registered nowhere, so GMS refused with `GoogleSignatureVerifier:
+package info is not set correctly` and a `DEVELOPER_ERROR`, and the
+app's own catch-all turned it into a generic message with nothing to
+diagnose from.
+
+**The fix is server-side and needed no rebuild.** Adding the fingerprint
+in the Firebase console made the *already-installed* build work:
+verified on the G52J with `lastUpdateTime` unchanged, sign-in
+succeeding, the session surviving a restart, and the UID staying the
+same (so `linkWithCredential` preserved progress). Worth remembering if
+this class of bug reappears — the reflex to cut a new release is wrong
+here.
+
+Two things that cost time:
+
+- **A near-miss fingerprint is easy to accept by eye.** Two wrong ones
+  were added first, one starting `25:D2:6D:1A...` against the real
+  `25:AA:C0:B4...`. Compare more than the first byte.
+- **`apksigner` fails on a Play-signed APK by default** — the v3.2 block
+  holds a hybrid PQC signer this JDK cannot parse. Pass
+  `--max-sdk-version 33` to read the v2/v3 certificate instead.
+  `keytool -printcert -jarfile` does not work at all: Play-signed APKs
+  carry no v1 JAR signature.
+
+`android/app/google-services.json` was updated afterwards (`0472dfb`).
+**The regenerated file no longer contains the debug fingerprint**, so
+Google Sign-In on a locally built debug APK may now fail; re-add
+`B4:F2:63:81:...:9A:0E` in the console if that ever matters. Also still
+true: the `com.google.gms.google-services` Gradle plugin is **not
+applied anywhere**, so that file is inert — proven by login working
+without it. Applying it is AdMob–Firebase hygiene, not a login fix.
+
+### iOS TTS: silent, and stuck on one voice
+
+Both found by reading `flutter_tts` 4.2.5's own iOS source rather than by
+reproducing them — there is no iPhone or Mac in this environment, so
+treat both as well-reasoned rather than confirmed.
+
+1. **The app is silent on iPhone.** flutter_tts's iOS `speak()` only
+   builds an `AVSpeechUtterance` and hands it to the synthesiser; it
+   never touches `AVAudioSession`. An app that configures none runs under
+   the process default `.soloAmbient`, which **the physical Ring/Silent
+   switch mutes**. Android has no equivalent, which is exactly why this
+   went unnoticed. `TtsService` now claims a shared session with
+   `.playback` + `duckOthers`, best-effort.
+2. **Gender voice selection never worked on iOS.** `JapaneseVoices`
+   matched Google's measured family codes (`-jac-`/`-jad-`/`-jab-`/
+   `-htm-`) and fell back to names containing male/female. Apple's
+   Japanese voices are Kyoko, Otoya and Hattori, so every check missed
+   and the whole app spoke in one voice. `getVoices` carries an explicit
+   `gender` key on iOS 13+ (this app's floor is 15.5); **Android's
+   implementation sends only `name` and `locale`**, so the new pass
+   cannot fire there and the measured Google choice is untouched.
+
+**Ten-second confirmation once an iOS build exists**: have a tester flip
+the Ring/Silent switch. If sound appears, (1) is confirmed.
+
+### The kana flashcard, rebuilt
+
+- **A gojuon chart now stands in front of the deck**
+  (`kana_table_screen.dart`), and is what the Home cards open. At 104
+  characters per script, reaching pyo meant ~80 swipes. Laid out by the
+  dataset's own `row`/`column` with the **holes kept as holes** — ya sits
+  under a with a gap where i would be. Packing the rows would save space
+  and quietly teach the wrong shape; a test fails by name if anyone tidies
+  it away. Three blocks (46 basic / 25 tenten-maru / 33 combined), all
+  sized to the widest so tiles stay identical. Per an explicit product
+  decision there is **no "continue" shortcut** — picking a character is
+  the way in. `lastIndex` is still written on every move and still used
+  when no index is passed.
+- **Stroke direction, not just stroke order.** The card used `KanaGlyph`
+  -> `SvgPicture`, which renders the KanjiVG file *including its baked-in
+  stroke-number layer* — the same bug already fixed once for
+  `KanjiGlyph`. It now uses `StrokeOrderAnimator`, plus a start dot and
+  an arrowhead riding the tip. **Both cues are built from the tangent's
+  unit vector, not `Tangent.angle`** — that angle is measured with the y
+  axis flipped relative to canvas coordinates, which would point roughly
+  half the arrowheads backwards.
+- **The learner sets the speed** (`StrokeSpeed`, `StrokeSpeedRepository`,
+  `strokeSpeedProvider`): Pelan/Sedang/Cepat = 1800/1000/500ms, persisted
+  device-local like language and theme, overridden in `main.dart` before
+  `runApp`. **Taps, not a slider, and below the card rather than on it** —
+  both gesture decisions: a slider duplicates the swipe recogniser that
+  changes cards, and anything inside the card gets flipped away before the
+  press lands.
+- **Youon draw both halves.** `generate_kana_data.py` used to point a
+  youon at its base consonant and stop, calling it "honest" in a comment;
+  it was not — kyo animated three strokes of the six a learner writes, and
+  the small yo never appeared. There is no combined KanjiVG file, but
+  **each half exists on its own**, so `fetch_kana_small_svg.py` fetches
+  the six small kana and `KanjiVgParser.parseAll` merges glyphs into one
+  wider sequence with numbers running straight through. Merging rather
+  than rendering two animators side by side is what keeps the order right.
+  Second glyph scaled `secondaryGlyphScale` = 0.8, bottom-anchored
+  (KanjiVG draws a small kana at nearly full size — measured identical in
+  width to a full kana, 0.77 of the height).
+- **Sizes and the card transition were settled by the user on the
+  device**, not chosen here: glyph 190 -> 285, youon scale 0.8, and an
+  `AnimatedSwitcher` slide between cards.
+
+### Test-harness traps that cost real time here
+
+All three bite silently and are now documented in the test files:
+
+- **`rootBundle` caches one Future per asset, globally.** Any test file
+  where more than one test reads the same asset needs
+  `setUp(rootBundle.clear)`, or every test after the first awaits a
+  Future created inside an earlier test's fake-async zone — already
+  complete, but unable to deliver that completion. **The symptom is a
+  hang, or a widget that appears not to exist**, which sends you hunting
+  through the widget instead of the harness. Now applied in
+  `flashcard_screen_test`, `kanjivg_parser_test`,
+  `kana_table_screen_test`.
+- **The ads plugin cannot be stubbed by returning `null`.** It uses its
+  own codec, so a mock handler returning null fails to decode and every
+  test in the file dies with "Message corrupted". Either avoid mounting
+  far enough to load a banner, or take the exception.
+- **A `ListView` only builds what fits**, so `find.text` cannot see
+  content below the fold — the element does not exist rather than merely
+  not matching. `kana_table_screen_test` uses an 800x6000 surface for
+  this.
+
+### Git hygiene done this session
+
+The stray `claude/kaiwa-docs-git-cleanup-28eb5a` branch (one commit from
+24 July) was merged into `master` with every conflict resolved in
+master's favour — verified by diffing the merged tree against master's
+previous tip, which came back empty. Its
+`profile_header_illustration.dart` was **deliberately not carried over**:
+the profile header has since moved to the user-selectable cover-photo
+system, so the widget would have been 162 lines nothing constructs.
+
+One commit was also amended and force-pushed to correct a "not verified
+on a device" note that had gone stale. Checked first, and worth checking
+again before any rewrite: that the commit is the tip of both `master` and
+`origin/master`, that no other branch or worktree contains it, and that
+the working tree is clean — then `--force-with-lease`, never `--force`.
