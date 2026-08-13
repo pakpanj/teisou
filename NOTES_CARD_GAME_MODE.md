@@ -445,7 +445,7 @@ fitur ini butuh infrastruktur baru, bukan sekadar tabel undangan baru.
 | Hal | Keputusan |
 |---|---|
 | Status online | **Sungguhan, real-time** — bukan "terakhir aktif" |
-| Tantangan tidak direspons | **Expired setelah 5 menit** |
+| Tantangan tidak direspons | **Expired setelah 2 menit** |
 | Cara mengundang | Tombol "Tantang" dari daftar teman / daftar anggota clan yang sudah ada |
 | Isi undangan | Nama+avatar penantang, deck/level yang **sudah dipilih penantang** |
 | Sasaran | Satu orang, bukan siaran ke seluruh clan sekaligus |
@@ -496,17 +496,20 @@ orang itu sedang online.** Ini lebih baik daripada mengirim tantangan
 membabi buta lalu menunggu — pemain langsung tahu siapa yang bisa
 ditantang sekarang, tidak ada tantangan yang dikirim ke kekosongan.
 
-### Kenapa 5 menit, dan apa yang terjadi setelah itu
+### Kenapa 2 menit, dan apa yang terjadi setelah itu
 
-Lima menit itu cukup panjang untuk pemain yang sedang di tengah layar
-lain (membaca materi, menjawab kuis) tapi cukup pendek supaya daftar
-tantangan tidak menumpuk dengan ajakan basi. Karena tombolnya sudah
-digerbangi status online, target hampir selalu melihat notifikasinya
-dalam hitungan detik — 5 menit itu jauh lebih dari cukup untuk kasus
-wajar, dan sengaja pendek untuk kasus yang tidak wajar (mis. aplikasi
-ditutup tepat setelah tantangan terkirim).
+Diturunkan dari usulan awal 5 menit — pertimbangannya berubah begitu
+diingat bahwa tombol "Tantang" **sudah digerbangi status online**: target
+baru saja dikonfirmasi sedang online tepat sebelum tantangan terkirim,
+jadi asumsi "dia lihat notifikasinya dalam hitungan detik" itu kuat, dan
+2 menit sudah lebih dari cukup untuk kasus wajar. Yang hilang di angka
+lebih pendek ini adalah ruang untuk kasus "target online lalu tepat saat
+itu berpindah ke layar lain (menjawab kuis, dsb.) dan tidak sempat lihat
+notifikasi" — kalau ini ternyata sering terjadi setelah dipakai
+sungguhan, angkanya gampang dinaikkan lagi, tidak ada bagian lain yang
+bergantung pada nilai pastinya.
 
-`BattleInvite` menyimpan `expiresAt` (waktu kirim + 5 menit). **Tidak
+`BattleInvite` menyimpan `expiresAt` (waktu kirim + 2 menit). **Tidak
 perlu Cloud Function terjadwal untuk menegakkannya** — setiap layar yang
 menampilkan daftar tantangan (baik punya penantang maupun yang ditantang)
 menyaring `expiresAt < sekarang` di sisi klien, sama seperti pola
