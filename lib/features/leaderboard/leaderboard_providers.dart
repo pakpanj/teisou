@@ -182,3 +182,24 @@ final selfRankProvider = FutureProvider<int?>((ref) async {
   if (self == null) return null;
   return ref.watch(leaderboardRepositoryProvider).rankOf(self);
 });
+
+/// Top 20 by Card Game Mode star total — the "Bintang" tab's own
+/// ranking, separate from [leaderboardTopProvider]'s exam-score ranking.
+/// Same startup-wait reasoning as that provider (a `.snapshots()` fired
+/// before anonymous sign-in resolves gets stuck on a permission-denied
+/// error forever, since it never retries on its own).
+final cardGameStarsTopProvider = StreamProvider<List<LeaderboardEntry>>((
+  ref,
+) async* {
+  await ref.watch(appStartupProvider.future);
+  yield* ref.watch(leaderboardRepositoryProvider).watchTopByCardGameStars();
+});
+
+/// The signed-in user's own 1-based rank on the star ladder, or `null`
+/// if they've never finished a ranked match — mirrors [selfRankProvider]
+/// exactly, against [LeaderboardRepository.rankOfCardGameStars] instead.
+final selfCardGameStarsRankProvider = FutureProvider<int?>((ref) async {
+  final self = await ref.watch(selfLeaderboardEntryProvider.future);
+  if (self == null || !self.hasPlayedCardGame) return null;
+  return ref.watch(leaderboardRepositoryProvider).rankOfCardGameStars(self);
+});

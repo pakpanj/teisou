@@ -7,6 +7,7 @@ import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
+import '../../data/models/card_game_rank.dart' show CardGameTierX;
 import '../../data/models/leaderboard_entry.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
 import 'leaderboard_providers.dart';
@@ -16,10 +17,11 @@ import 'widgets/clan_tab.dart';
 import 'widgets/top_clan_tab.dart';
 import '../../core/widgets/app_loading.dart';
 
-/// Tabs cover score/clan ranking only — chat and friend requests moved to
-/// their own dedicated `ChatHubScreen`/`AddFriendScreen`, each with its own
-/// icon on `ProfileScreen`'s app bar, per an explicit request to give them
-/// separate mapped menus instead of living inside a 4th tab here.
+/// Tabs cover score/clan ranking, plus Card Game Mode's own star ranking
+/// — chat and friend requests moved to their own dedicated
+/// `ChatHubScreen`/`AddFriendScreen`, each with its own icon on
+/// `ProfileScreen`'s app bar, per an explicit request to give them
+/// separate mapped menus instead of living inside a tab here.
 class LeaderboardScreen extends ConsumerWidget {
   const LeaderboardScreen({super.key});
 
@@ -27,7 +29,7 @@ class LeaderboardScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         backgroundColor: context.palette.background,
         extendBodyBehindAppBar: true,
@@ -47,7 +49,12 @@ class LeaderboardScreen extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 4, 16, 10),
               child: _TabPickerRow(
-                labels: [s.tabGlobalScore, s.tabClan, s.tabTopClan],
+                labels: [
+                  s.tabGlobalScore,
+                  s.tabCardGameStars,
+                  s.tabClan,
+                  s.tabTopClan,
+                ],
               ),
             ),
           ),
@@ -55,6 +62,7 @@ class LeaderboardScreen extends ConsumerWidget {
         body: const TabBarView(
           children: [
             _GlobalScoreTab(),
+            _CardGameStarsTab(),
             ClanTab(),
             TopClanTab(),
           ],
@@ -64,12 +72,14 @@ class LeaderboardScreen extends ConsumerWidget {
   }
 }
 
-/// The Skor Global / Clan / Top Clan picker — three separate solid pills,
-/// not one shared translucent bar. A single tinted [TabBar] indicator was
-/// tried first and rejected: it read as one merged strip rather than three
-/// distinct choices, and its low-alpha fill looked washed out rather than
-/// like a real control. Built directly on [TabController] instead of
-/// [TabBar] so each pill can carry its own full-opacity background.
+/// The tab picker — one separate solid pill per tab, not one shared
+/// translucent bar. A single tinted [TabBar] indicator was tried first
+/// and rejected: it read as one merged strip rather than distinct
+/// choices, and its low-alpha fill looked washed out rather than like a
+/// real control. Built directly on [TabController] instead of [TabBar]
+/// so each pill can carry its own full-opacity background; renders
+/// however many [labels] it's given, so adding a tab is just adding one
+/// more label + [TabBarView] child above, no change needed here.
 class _TabPickerRow extends StatefulWidget {
   final List<String> labels;
 
@@ -195,6 +205,13 @@ class _GlobalScoreTab extends ConsumerWidget {
         _SelfHeader(
           entry: selfEntryAsync.valueOrNull,
           rank: selfRankAsync.valueOrNull,
+          valueLabel: selfEntryAsync.valueOrNull == null
+              ? ''
+              : globalScoreLabel(selfEntryAsync.valueOrNull!, s),
+          subtitle: selfEntryAsync.valueOrNull == null ||
+                  !selfEntryAsync.valueOrNull!.hasAnyRecord
+              ? ''
+              : globalScoreBreakdown(selfEntryAsync.valueOrNull!, s),
           strings: s,
         ),
         Padding(
@@ -260,14 +277,140 @@ class _GlobalScoreTab extends ConsumerWidget {
   }
 }
 
+/// The headline number for [entry] on the Card Game Mode star tab: total
+/// stars accumulated this season, or [AppStrings.cardGameNeverPlayed]
+/// when [LeaderboardEntry.hasPlayedCardGame] is false — a bare "0
+/// bintang" would otherwise be indistinguishable from having never
+/// played a ranked match at all, the same "Belum ada" reasoning
+/// [globalScoreLabel] already applies to exam scores.
+String cardGameStarValueLabel(LeaderboardEntry entry, AppStrings strings) {
+  if (!entry.hasPlayedCardGame) return strings.cardGameNeverPlayed;
+  return strings.cardGameStarTotalLabel(entry.cardGameStarTotal!);
+}
+
+/// The tier/division/stars-within-division line under [entry]'s name —
+/// "Bronze IV · 2/3 bintang" (or the uncapped Emerald form, mirroring
+/// exactly what the Home entry card and match-result screen already
+/// show for one's own standing). Empty when the player has never
+/// played, so the row shows only [cardGameStarValueLabel] with no
+/// second line — the same "hasAnyRecord" pattern
+/// [globalScoreBreakdown] uses.
+String cardGameStarSubtitle(LeaderboardEntry entry, AppStrings strings) {
+  if (!entry.hasPlayedCardGame) return '';
+  final standing = entry.cardGameRankStanding;
+  final starsLabel = standing.tier.hasDivisions
+      ? strings.battleRankStars(standing.stars, standing.tier.starsPerDivision)
+      : strings.battleRankStarsUncapped(standing.stars);
+  return '${standing.displayName} · $starsLabel';
+}
+
+class _CardGameStarsTab extends ConsumerWidget {
+  const _CardGameStarsTab();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final topAsync = ref.watch(cardGameStarsTopProvider);
+    final selfEntryAsync = ref.watch(selfLeaderboardEntryProvider);
+    final selfRankAsync = ref.watch(selfCardGameStarsRankProvider);
+    final s = ref.watch(appStringsProvider);
+    final selfEntry = selfEntryAsync.valueOrNull;
+
+    return Column(
+      children: [
+        const LeaderboardBannerHeader(),
+        const SizedBox(height: 14),
+        _SelfHeader(
+          entry: selfEntry,
+          rank: selfRankAsync.valueOrNull,
+          valueLabel:
+              selfEntry == null ? '' : cardGameStarValueLabel(selfEntry, s),
+          subtitle:
+              selfEntry == null ? '' : cardGameStarSubtitle(selfEntry, s),
+          strings: s,
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+          child: Text(
+            s.cardGameStarsExplainer,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 11,
+              color: context.palette.textNavy.withValues(alpha: 0.6),
+            ),
+          ),
+        ),
+        Expanded(
+          child: AppRefreshIndicator(
+            onRefresh: () {
+              // Same shape as _GlobalScoreTab's own refresh: invalidating
+              // the shared entry is enough, since the rank provider
+              // watches it and refreshing rank last leaves a consumable
+              // result (a bare awaited `refresh` would trip
+              // `unused_result`).
+              ref.invalidate(selfLeaderboardEntryProvider);
+              return ref.refresh(selfCardGameStarsRankProvider.future);
+            },
+            child: topAsync.when(
+              data: (entries) {
+                if (entries.isEmpty) {
+                  return ListView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 120),
+                        child: Center(
+                          child: Text(
+                            s.noRankingData,
+                            style: TextStyle(color: context.palette.textNavy),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                return ListView.separated(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(16),
+                  itemCount: entries.length,
+                  separatorBuilder: (_, _) => const SizedBox(height: 8),
+                  itemBuilder: (context, index) => LeaderboardTile(
+                    rank: index + 1,
+                    entry: entries[index],
+                    valueLabel: cardGameStarValueLabel(entries[index], s),
+                    subtitle: cardGameStarSubtitle(entries[index], s),
+                  ),
+                );
+              },
+              loading: () => const AppLoading(),
+              error: (e, _) =>
+                  Center(child: Text(s.failedToLoadLeaderboard(e))),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// The signed-in learner's own rank/name/avatar card, shown above the
+/// ranked list on every tab that has one. [valueLabel]/[subtitle] are
+/// passed in pre-computed rather than derived from [entry] here — each
+/// tab ranks by a different number ([globalScoreLabel]/
+/// [cardGameStarValueLabel]), so this widget stays agnostic to which one
+/// it's showing, the same shape [LeaderboardTile] already uses.
+/// [subtitle] empty hides that line entirely.
 class _SelfHeader extends StatelessWidget {
   final LeaderboardEntry? entry;
   final int? rank;
+  final String valueLabel;
+  final String subtitle;
   final AppStrings strings;
 
   const _SelfHeader({
     required this.entry,
     required this.rank,
+    required this.valueLabel,
+    this.subtitle = '',
     required this.strings,
   });
 
@@ -311,7 +454,7 @@ class _SelfHeader extends StatelessWidget {
                 ),
               ),
               Text(
-                globalScoreLabel(entry!, strings),
+                valueLabel,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: context.palette.textNavy,
@@ -319,10 +462,10 @@ class _SelfHeader extends StatelessWidget {
               ),
             ],
           ),
-          if (entry!.hasAnyRecord) ...[
+          if (subtitle.isNotEmpty) ...[
             const SizedBox(height: 6),
             Text(
-              globalScoreBreakdown(entry!, strings),
+              subtitle,
               style: TextStyle(
                 fontSize: 11,
                 color: context.palette.textNavy.withValues(alpha: 0.7),

@@ -426,6 +426,7 @@ class AppStrings {
   // --- Leaderboard ---
   String get leaderboardTitle => _t('Papan Peringkat', 'Leaderboard');
   String get tabGlobalScore => _t('Skor Global', 'Global Score');
+  String get tabCardGameStars => _t('Bintang', 'Stars');
   String get tabClan => _t('Clan', 'Clan');
 
   /// Short labels for the four Rekor categories that make up the global
@@ -1471,5 +1472,19 @@ class AppStrings {
   String battleRankWinStreak(int wins) => _t(
         'Menang $wins kali beruntun — kemenangan berikutnya +2 bintang',
         '$wins wins in a row — the next win is worth +2 stars',
+      );
+
+  // --- Leaderboard: Card Game Mode star ranking tab ---
+  String cardGameStarTotalLabel(int total) =>
+      _t('$total bintang', '$total stars');
+  String get cardGameStarsExplainer => _t(
+        'Peringkat Mode Kartu — cuma pertandingan publik dan lawan bot yang '
+            'menggerakkan bintang, lawan teman/clan santai tanpa risiko.',
+        'Card Mode ranking — only public and bot matches move stars; '
+            'friend/clan matches stay risk-free.',
+      );
+  String get cardGameNeverPlayed => _t(
+        'Belum pernah bertanding Mode Kartu.',
+        'Hasn\'t played Card Mode yet.',
       );
 }

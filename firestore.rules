@@ -41,10 +41,41 @@ service cloud.firestore {
       }
     }
 
-    // Leaderboard — semua bisa baca, hanya bisa tulis data sendiri
+    // Leaderboard — semua bisa baca, hanya bisa tulis data sendiri.
+    //
+    // Lima field `cardGame*` (tingkat/divisi/bintang/musim/total bintang
+    // Mode Game Card, dimirror dari `users/{uid}.cardGameRank` oleh
+    // `functions/battle_stars.js`) TIDAK BOLEH diubah oleh client —
+    // persis alasan yang sama seperti kunci `cardGameRank` di
+    // `users/{uid}` di atas: tanpa ini, papan peringkat bintang cuma
+    // hiasan, siapa saja bisa menulis langsung ke dokumen leaderboard
+    // miliknya sendiri dan naik ke puncak tanpa bertanding sekali pun.
+    // Dipecah jadi create/update terpisah (bukan satu `write`) meniru
+    // pola yang sama di `users/{uid}` — create melarang field itu MUNCUL
+    // sama sekali (`ensurePublished` memang tidak pernah menyertakannya),
+    // update membandingkan nilai sebelum vs. sesudah, sama-sama supaya
+    // penulisan lain yang tidak berkaitan (nama, avatar, skor ujian)
+    // tetap bisa lewat `set(merge:true)` tanpa terblokir.
     match /leaderboard/{uid} {
       allow read: if request.auth != null;
-      allow write: if request.auth != null && request.auth.uid == uid;
+      allow create: if request.auth != null && request.auth.uid == uid
+          && !('cardGameTier' in request.resource.data)
+          && !('cardGameDivision' in request.resource.data)
+          && !('cardGameStars' in request.resource.data)
+          && !('cardGameSeason' in request.resource.data)
+          && !('cardGameStarTotal' in request.resource.data);
+      allow update: if request.auth != null && request.auth.uid == uid
+          && request.resource.data.get('cardGameTier', null)
+              == resource.data.get('cardGameTier', null)
+          && request.resource.data.get('cardGameDivision', null)
+              == resource.data.get('cardGameDivision', null)
+          && request.resource.data.get('cardGameStars', null)
+              == resource.data.get('cardGameStars', null)
+          && request.resource.data.get('cardGameSeason', null)
+              == resource.data.get('cardGameSeason', null)
+          && request.resource.data.get('cardGameStarTotal', null)
+              == resource.data.get('cardGameStarTotal', null);
+      allow delete: if request.auth != null && request.auth.uid == uid;
     }
 
     // Reservasi ID unik per user (ProgressRepository._reserveUserId) — id

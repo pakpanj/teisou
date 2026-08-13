@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'card_game_rank.dart';
 import '../repositories/leaderboard_repository.dart' show LeaderboardCategory;
 import 'user_profile.dart' show AvatarType, AvatarTypeX;
 
@@ -92,6 +93,29 @@ class LeaderboardEntry {
   final int babCompletedCount;
   final int babHighestOrder;
 
+  /// Card Game Mode's own standing, mirrored here by
+  /// `functions/battle_stars.js` — see "Papan peringkat bintang berdiri
+  /// sendiri" in `NOTES_CARD_GAME_MODE.md`: deliberately extra fields on
+  /// this already-existing document rather than a new collection, so
+  /// name/avatar sync comes along for free. **Written only by that
+  /// Cloud Function** — nothing in this Dart model's [toMap] includes
+  /// these fields, so no client-side write path can ever clobber them
+  /// (mirrors `CardGameRank`'s own "read-only from this app's point of
+  /// view" doc comment, which describes the same standing before it's
+  /// mirrored here).
+  ///
+  /// [cardGameStarTotal] doubles as the "has this player ever finished a
+  /// ranked match" flag: `null` means the field has genuinely never been
+  /// written (Firestore's `orderBy` already excludes such docs from the
+  /// star ranking on its own, which is the correct behavior — unlike
+  /// [globalScore], 0 total stars from a real match is a valid ranked
+  /// standing, not indistinguishable from never having played).
+  final CardGameTier cardGameTier;
+  final int cardGameDivision;
+  final int cardGameStars;
+  final int cardGameSeason;
+  final int? cardGameStarTotal;
+
   final DateTime updatedAt;
 
   LeaderboardEntry({
@@ -121,6 +145,11 @@ class LeaderboardEntry {
     this.frameId,
     this.babCompletedCount = 0,
     this.babHighestOrder = 0,
+    this.cardGameTier = CardGameTier.bronze,
+    this.cardGameDivision = 5,
+    this.cardGameStars = 0,
+    this.cardGameSeason = 1,
+    this.cardGameStarTotal,
     required this.updatedAt,
   });
 
@@ -152,6 +181,11 @@ class LeaderboardEntry {
       frameId: map['frameId'] as String?,
       babCompletedCount: (map['babCompletedCount'] as num?)?.toInt() ?? 0,
       babHighestOrder: (map['babHighestOrder'] as num?)?.toInt() ?? 0,
+      cardGameTier: CardGameTierX.fromKey(map['cardGameTier'] as String?),
+      cardGameDivision: (map['cardGameDivision'] as num?)?.toInt() ?? 5,
+      cardGameStars: (map['cardGameStars'] as num?)?.toInt() ?? 0,
+      cardGameSeason: (map['cardGameSeason'] as num?)?.toInt() ?? 1,
+      cardGameStarTotal: (map['cardGameStarTotal'] as num?)?.toInt(),
       updatedAt: _toDateTime(map['updatedAt']) ?? DateTime.now(),
     );
   }
@@ -248,6 +282,23 @@ class LeaderboardEntry {
         return kanjiComboRecordAvg;
     }
   }
+
+  /// Whether this player has ever finished a ranked Card Game Mode match
+  /// — see [cardGameStarTotal]'s own doc comment for why `null` (not `0`)
+  /// is what distinguishes "never played" from "played and stands at 0".
+  bool get hasPlayedCardGame => cardGameStarTotal != null;
+
+  /// The same [CardGameRank] shape `Profile`/the Home card already
+  /// render via [CardGameRank.displayName] — reconstructed from this
+  /// entry's own mirrored fields rather than adding a second "Bronze
+  /// IV"-style formatter here, so a division-label change only ever
+  /// needs to happen in one place.
+  CardGameRank get cardGameRankStanding => CardGameRank(
+        tier: cardGameTier,
+        division: cardGameDivision,
+        stars: cardGameStars,
+        season: cardGameSeason,
+      );
 
   static DateTime? _toDateTime(dynamic value) {
     if (value == null) return null;

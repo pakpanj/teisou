@@ -6,113 +6,76 @@ Catatan rumusan untuk mode permainan kartu di Teisou — Kana Master.
 ## mengambil alih sesi ini dari awal
 
 **Seluruh 10 butir "Urutan mengerjakan" (di bawah) sudah dibangun,
-diuji, dan di-deploy ke produksi `teisou-kana-master`.** Ini BUKAN
-berarti fitur ini 100% selesai secara produk — lihat "Yang masih benar-
-benar terbuka" di bawah, dua hal besar masih kurang.
+diuji, dan di-deploy ke produksi `teisou-kana-master`. Tangga bintang,
+pintu masuk dari Home, layar hasil yang menampilkan bintang, dan papan
+peringkat bintangnya sendiri — keempatnya di luar 10 butir itu, dan
+semuanya juga sudah selesai.** Yang benar-benar tersisa sekarang ada
+tiga hal kecil, semuanya dirinci di "Yang masih terbuka" di bawah — dua
+soal verifikasi perangkat fisik yang belum sempat dicoba, satu soal
+deploy yang belum dijalankan.
 
 ### Sudah selesai + hidup di produksi
 
-| Tahap/butir | Status |
+| Bagian | Status |
 |---|---|
-| Tahap 1 (keyboard kana, field rank, presence RTDB) | ✅ selesai, hidup, diverifikasi di perangkat fisik |
-| Tahap 2 butir 4-7 (battleMatches, layar pertandingan, penilaian Cloud Function) | ✅ selesai, hidup, diverifikasi lintas 2 device fisik |
-| Tahap 3 butir 8 (bot AI) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung di perangkat fisik** (Moto G52J, match nyata sampai selesai) |
-| Tahap 3 butir 9 (undangan teman/clan) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung** (G52J vs emulator, dua akun, match tuntas 1-0) |
-| Tahap 3 butir 10 (matchmaking publik) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung** (dipasangkan ~12 dtk, kartu identik di dua layar, match tuntas 4-3) |
-| Tangga bintang (di luar 10 butir) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung** (3 kemenangan beruntun: Bronze V 0/3 → V 1/3 → V 2/3 → IV 1/3; yang kalah tetap 0/3) |
+| Tahap 1 (keyboard kana, field rank, presence RTDB) | ✅ diverifikasi di perangkat fisik |
+| Tahap 2 butir 4-7 (battleMatches, layar pertandingan, penilaian Cloud Function) | ✅ diverifikasi lintas 2 device fisik |
+| Tahap 3 butir 8 (bot AI) | ✅ diverifikasi ujung-ke-ujung (Moto G52J, match nyata sampai selesai) |
+| Tahap 3 butir 9 (undangan teman/clan) | ✅ diverifikasi ujung-ke-ujung (G52J vs emulator, match tuntas 1-0) |
+| Tahap 3 butir 10 (matchmaking publik) | ✅ diverifikasi ujung-ke-ujung (dipasangkan ~12 dtk, match tuntas 4-3) |
+| Tangga bintang (`functions/battle_stars.js`) | ✅ diverifikasi ujung-ke-ujung (3 kemenangan beruntun, divisi naik, kalah tidak rugi di Bronze) |
+| Pintu masuk Home (`_CardGameCard`) | ✅ dicoba di perangkat, subjudul menampilkan tingkat+bintang sungguhan |
+| Layar hasil menampilkan bintang (`StarResultCard`) | ✅ dicoba di dua perangkat, termasuk kasus "sedang dihitung" dan kegagalan-lalu-pulih |
+| Papan peringkat bintang (tab "Bintang" di `LeaderboardScreen`) | ⚠️ dibangun+diuji, **belum di-deploy, belum dicoba di perangkat** |
 
 Semua Cloud Function (`onBattleAnswerCreated`, `onBattleMatchWritten`,
-`onMatchmakingQueueJoined`, `onBattleMatchConcluded`) tampil di `firebase functions:list`
-(`asia-southeast1`). `firestore.rules` dan `database.rules.json`
-keduanya sudah dirilis lewat `npx firebase-tools@latest deploy` — CLI
-ini (bukan binary `/c/flutter/bin/firebase` yang macet) adalah jalur
-deploy yang benar ke depannya, lihat "Penemuan penting" di butir 7.
+`onMatchmakingQueueJoined`, `onBattleMatchConcluded`) tampil di
+`firebase functions:list` (`asia-southeast1`). Deploy lewat `npx
+firebase-tools@latest deploy` — CLI ini (bukan binary
+`/c/flutter/bin/firebase` yang macet) adalah jalur yang benar ke
+depannya.
 
-### Yang masih benar-benar terbuka (2 hal besar)
+### Yang masih terbuka
 
-1. ✅ **SELESAI (2026-08-14): butir 9 dan 10 sudah diverifikasi di
-   perangkat sungguhan** — Moto G52J melawan emulator Pixel 8, dua akun
-   Firebase berbeda, keduanya main sampai pertandingan tuntas dengan
-   skor yang cocok di kedua layar. Detailnya di penutup butir 9 dan 10.
-   Sisa yang belum dicoba tinggal jalur-jalur pinggir: menolak undangan,
-   menantang lewat clan, jatuh ke bot saat benar-benar sendirian, dan
-   memastikan dua tingkat berbeda tidak saling dipasangkan.
-2. ✅ **SELESAI (2026-08-14): tangga bintang sudah hidup** —
-   `functions/battle_stars.js` (baru) berisi seluruh aturan yang selama
-   ini cuma rumusan: menang +1, seri 0, kalah −1, perlindungan Bronze/
-   Silver, bonus beruntun +2, naik/turun divisi, lantai per tingkat, dan
-   pergantian musim dengan bawaan 70%. Dipicu oleh
-   `onBattleMatchConcluded`, trigger baru yang menyala begitu sebuah
-   match punya `result`. Sudah di-deploy dan **sudah diverifikasi di dua
-   perangkat sungguhan** — rinciannya di bagian "Tangga bintang sudah
-   jalan" di bawah.
+1. **Tab "Bintang" belum di-deploy.** Kodenya (`LeaderboardEntry`'s
+   lima field baru, `LeaderboardRepository.watchTopByCardGameStars`/
+   `rankOfCardGameStars`, `_CardGameStarsTab`) sudah lulus `flutter
+   analyze` dan 437 test, termasuk kunci `firestore.rules` baru untuk
+   `leaderboard/{uid}` yang menutup celah nyata (client bisa menulis
+   `cardGameStarTotal` sembarangan sebelum perbaikan ini). **Belum
+   dijalankan**: `npx firebase-tools@latest deploy --only
+   firestore:rules`. Setelah itu, coba di device sungguhan: selesaikan
+   satu pertandingan publik/bot, buka tab Bintang, pastikan diri
+   sendiri muncul dengan tingkat+bintang yang benar. Detail lengkap di
+   penutup butir 2 pada daftar bernomor "Urutan mengerjakan" di bawah,
+   cari "papan peringkat bintangnya sendiri".
+2. **Jalur-jalur pinggir butir 9/10 belum dicoba**: menolak undangan,
+   menantang lewat clan (bukan cuma teman), jatuh ke bot saat benar-
+   benar sendirian di antrian, dan memastikan dua tingkat berbeda tidak
+   saling dipasangkan di matchmaking publik. Alur utamanya sudah
+   diverifikasi (lihat tabel di atas); ini sisa kasus yang belum
+   sempat dicoba, bukan sesuatu yang diketahui rusak.
+3. **Trade-off yang sengaja dibiarkan terbuka** (dicatat lengkap di
+   masing-masing butir, bukan lupa): kedaluwarsa undangan 2 menit murni
+   kosmetik di sisi tampilan (butir 9); menolak undangan tidak
+   membatalkan match yang sudah terlanjur dibuat (butir 9); balapan
+   kecil di detik ke-20 saat jatuh ke bot bisa (jarang) membuat dua
+   match sekaligus (butir 10).
 
-   Yang **belum** dikerjakan dari bagian bintang: papan peringkat
-   bintangnya sendiri belum dibuat — Cloud Function
-   sudah menulis field-nya (`cardGameTier`/`cardGameStars`/
-   `cardGameStarTotal`/`cardGameSeason` di `leaderboard/{uid}`), tapi
-   belum ada layar yang membacanya.
+### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
+### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
+### memikirkan rilis)
 
-3. ✅ **SELESAI (2026-08-14): pintu masuk dari Home sudah ada.** Sampai
-   hari ini seluruh mesin mode ini — matchmaking, bot, penilaian di
-   server, tangga bintang — sudah jadi dan ter-deploy tapi **tidak bisa
-   dibuka pengguna sungguhan sama sekali**: satu-satunya jalan masuk
-   adalah tombol Tantang di `ChatHubScreen` (khusus lawan teman), dan
-   lawan publik cuma bisa dicoba dengan menyunting `main.dart` sementara.
-   Sekarang ada bagian **"Bertanding"** di Home berisi kartu **"Mode
-   Kartu"** (`_CardGameCard` di `modules_section.dart`) yang langsung
-   membuka `BattleMatchmakingScreen`.
+- Premium gating masih dimatikan app-wide untuk tes dev — Partikel/
+  Kanji N3-N1/Bunpou N4-N1 semua terbuka gratis, padahal rencananya
+  premium.
+- Backlog gambar (Kotoba 1.682, Kaiwa ~7.468) masih terbuka — tidak
+  memblokir apa pun, murni konten yang belum digambar.
 
-   Kartunya sekaligus jadi satu-satunya tempat pemain bisa melihat
-   peringkatnya tanpa memulai apa pun — subjudulnya menampilkan
-   tingkat + bintang sungguhan ("Bronze IV · 1/3 bintang"), diambil dari
-   `cardGameRankProvider`. Kalau peringkatnya belum termuat, subjudulnya
-   jatuh ke deskripsi biasa, bukan memblokir pintunya — masuk
-   pertandingan sama sekali tidak bergantung pada tahu peringkat lebih
-   dulu.
-
-   Judul layar matchmaking-nya juga dilepas dari "(dev)" karena sekarang
-   benar-benar dilihat pengguna, dan **tombol back-nya muncul dengan
-   sendirinya** begitu layar itu di-push dari Home (sebelumnya tidak ada
-   karena ia jadi akar navigasi di build tes).
-
-   Dijaga oleh `test/widget_test.dart` ("HomeScreen has a way into Card
-   Game Mode") — dicek benar-benar menggigit dengan menghapus kartunya.
-   Ini justru kegagalan yang tidak bisa dilihat pemeriksaan lain: semua
-   layarnya meng-compile, merender, dan lulus tesnya sendiri sambil tetap
-   tidak bisa dijangkau.
-
-### Hal kecil lain yang perlu diingat
-
-- **Navigasi produksinya setengah ada** — dicek ulang ke kode, dan ini
-  koreksi terhadap catatan sebelumnya yang menulis "belum ada sama
-  sekali":
-  - **Jalur undangan SUDAH bisa dijangkau pengguna sungguhan.** Tombol
-    Tantang hidup di `ChatHubScreen` (dibuka dari Profil) dan
-    `ClanMembersScreen` (dibuka dari tab Clan), dan menerima undangan
-    membuka `BattleScreen` langsung (`chat_hub_screen.dart:173`).
-    **Artinya butir 9 sebenarnya bisa diuji di perangkat fisik hari ini
-    juga, tanpa menyentuh `main.dart` sama sekali** — cukup dua akun
-    yang berteman.
-  - **Yang benar-benar belum punya pintu masuk cuma memulai sendiri**:
-    `BattleTestStartScreen`/`BattleMatchmakingScreen` masih perlu
-    `main.dart` diubah sementara (lihat teknik verifikasi butir 8 —
-    ubah `_TutorialGate`, build, install, lalu
-    `git checkout -- lib/main.dart` sebelum commit). Jadi butir 10 yang
-    masih butuh cara itu untuk diuji.
-  - Tidak ada tombol di Home/Modules yang membuka mode ini. Ini bukan
-    bagian dari 10 butir — belum pernah diminta, jadi belum dikerjakan.
-- **Trade-off yang sengaja dibiarkan terbuka** (dicatat lengkap di
-  masing-masing butir, bukan lupa): kedaluwarsa undangan 2 menit murni
-  kosmetik di sisi tampilan (butir 9); menolak undangan tidak
-  membatalkan match yang sudah terlanjur dibuat (butir 9); balapan
-  kecil di detik ke-20 saat jatuh ke bot bisa (jarang) membuat dua
-  match sekaligus (butir 10).
-
-Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
+Dua hal lain yang jadi *prasyarat* Mode Kartu sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
-menangani っ/youon dengan benar. Ketiganya kode sungguhan yang sudah
+menangani っ/youon dengan benar. Semuanya kode sungguhan yang sudah
 jalan (`flutter analyze` bersih, test suite hijau), bukan cuma
 catatan.
 
@@ -1826,6 +1789,131 @@ bisa menulisnya.
 
 `test/star_result_card_test.dart` (9 kasus) menutup semua keadaan di
 atas, dan dicek benar-benar menggigit dengan merusak dua di antaranya.
+
+### Pintu masuk dari Home (2026-08-14)
+
+Sampai titik ini seluruh mesin Mode Kartu — matchmaking, bot, penilaian
+di server, tangga bintang — sudah jadi dan ter-deploy tapi **tidak bisa
+dibuka pengguna sungguhan sama sekali**: satu-satunya jalan masuk
+adalah tombol Tantang di `ChatHubScreen` (khusus lawan teman), dan
+lawan publik cuma bisa dicoba dengan menyunting `main.dart` sementara
+(teknik yang sama dipakai buat verifikasi butir 8: ubah `_TutorialGate`
+agar langsung membuka layar tes, build, install, lalu `git checkout --
+lib/main.dart` sebelum commit).
+
+Sekarang ada bagian **"Bertanding"** di Home, tepat di bawah Kurikulum,
+berisi kartu **"Mode Kartu"** (`_CardGameCard` di
+`lib/features/home/widgets/modules_section.dart`) yang langsung membuka
+`BattleMatchmakingScreen`.
+
+Kartunya sekaligus jadi satu-satunya tempat pemain bisa melihat
+peringkatnya tanpa memulai apa pun — subjudulnya bukan deskripsi tetap,
+melainkan tingkat dan bintang sungguhan dari `cardGameRankProvider`
+("Bronze IV · 1/3 bintang"). Kalau peringkatnya belum sempat termuat,
+subjudulnya turun ke deskripsi biasa — bukan memblokir pintunya, karena
+masuk pertandingan memang tidak butuh tahu peringkat lebih dulu.
+
+Layar matchmaking-nya sendiri juga dirapikan sekalian, karena sekarang
+benar-benar dilihat pengguna, bukan alat tes lagi: judulnya dilepas
+dari "(dev)", dan **tombol back-nya muncul dengan sendirinya** begitu
+layar itu di-push dari Home — sebelumnya tidak ada, karena di build tes
+layar ini jadi akar navigasi (menggantikan Home lewat `main.dart`),
+bukan layar yang di-push di atas sesuatu.
+
+Dijaga oleh `test/widget_test.dart` ("HomeScreen has a way into Card
+Game Mode") — dicek benar-benar menggigit dengan menghapus kartunya
+dulu dan memastikan tesnya memang gagal. Ini jenis kegagalan yang tidak
+bisa dilihat pemeriksaan lain: semua layarnya meng-compile, merender,
+dan lulus tesnya sendiri sambil tetap tidak bisa dijangkau siapa pun —
+persis begitu cara Choukai dulu juga sempat jadi modul yatim.
+
+**Koreksi terhadap catatan yang sempat salah tulis di sesi ini**:
+sebelumnya tercatat "belum ada tombol Tantang sama sekali" dan "layar
+tes butuh `main.dart` diubah" untuk **semua** cara masuk — dicek ulang
+ke kode dan itu keliru untuk sebagian. Jalur undangan (butir 9) sudah
+bisa dijangkau pengguna sungguhan sejak sebelumnya lewat tombol Tantang
+di `ChatHubScreen`/`ClanMembersScreen`; yang benar-benar cuma bisa
+dicoba lewat `main.dart` adalah memulai pertandingan **sendiri** tanpa
+diundang siapa pun — dan itu pun sekarang sudah selesai lewat kartu
+Home ini.
+
+### Papan peringkat bintang punya layar (2026-08-14, sesi berikutnya)
+
+Sebelum ini, `functions/battle_stars.js` sudah menulis field bintang ke
+`leaderboard/{uid}` (`cardGameTier`/`cardGameDivision`/`cardGameStars`/
+`cardGameSeason`/`cardGameStarTotal`), tapi tidak ada satu layar pun
+yang membacanya — persis seperti "layar hasil menampilkan bintang" tadi
+sebelum dikerjakan, cuma kali ini yang hilang bukan satu angka di satu
+layar, tapi seluruh papan peringkatnya. `LeaderboardScreen` sekarang
+dapat tab ke-4, **"Bintang"** (`_CardGameStarsTab` di
+`leaderboard_screen.dart`), tepat di sebelah "Skor Global" — berdiri
+sendiri seperti yang sudah diputuskan (lihat "Papan peringkat bintang
+berdiri sendiri" di bawah), bukan digabung ke `globalScore`.
+
+**`LeaderboardEntry` dapat lima field baru** (`cardGameTier`/
+`cardGameDivision`/`cardGameStars`/`cardGameSeason`/
+`cardGameStarTotal`), plus `hasPlayedCardGame` dan
+`cardGameRankStanding` — yang terakhir membangun ulang objek
+`CardGameRank` yang sama supaya `displayName` "Bronze IV" tidak perlu
+diformat ulang di tempat kedua (Home card, layar hasil, dan papan
+peringkat kini semuanya memformat lewat satu getter yang sama).
+**Sengaja tidak ditulis lewat `toMap()`** — field-field ini murni
+bacaan, satu-satunya penulisnya tetap `functions/battle_stars.js`,
+persis alasan yang sama dengan `CardGameRank` di `users/{uid}` sendiri.
+
+`LeaderboardRepository` dapat `watchTopByCardGameStars`/
+`rankOfCardGameStars`, mengurutkan pada `cardGameStarTotal`. **Sengaja
+tidak butuh langkah "self-heal" seperti `globalScore`**: `orderBy`
+Firestore yang mengecualikan dokumen tanpa field itu justru perilaku
+yang BENAR di sini — pemain yang belum pernah bertanding Mode Kartu
+memang tidak punya peringkat untuk ditampilkan, beda dari `globalScore`
+di mana skor 0 sungguhan tetap harus tampil. `hasPlayedCardGame` (keyed
+off `cardGameStarTotal != null`, bukan tier) adalah pembeda "belum
+pernah main" vs. "sudah main dan berdiri di 0 bintang" — tier sendiri
+selalu resolve ke nilai nyata (default Bronze) lewat `fromKey`, jadi
+tidak bisa dipakai sebagai penanda "belum pernah main".
+
+**Celah nyata ditemukan sambil membangun ini, diperbaiki di tempat**:
+`firestore.rules`'s aturan `leaderboard/{uid}` ternyata **tidak pernah
+mengunci field apa pun** — bunyinya cuma `allow write: if
+request.auth.uid == uid`, titik. Beda dari `users/{uid}.cardGameRank`
+yang sudah dikunci ketat sejak tangga bintang dibangun (lihat "Tangga
+bintang sudah jalan" di atas). Artinya sebelum perbaikan ini, klien
+yang menulis langsung ke Firestore (bukan lewat aplikasi) bisa saja
+menulis `cardGameStarTotal: 999999` ke dokumen `leaderboard` miliknya
+sendiri dan langsung naik ke puncak papan peringkat baru ini tanpa
+bertanding sekali pun — persis alasan yang sudah menjelaskan kenapa
+`cardGameRank` di `users/{uid}` dikunci, cuma belum pernah diterapkan
+ke salinannya di `leaderboard/{uid}`. Diperbaiki dengan pola yang sama
+persis: dipecah jadi `allow create`/`allow update` terpisah (bukan satu
+`write`), create melarang kelima field itu muncul sama sekali (`ensurePublished`
+memang tidak pernah menyertakannya), update membandingkan nilai
+sebelum vs. sesudah — supaya penulisan lain yang tidak berkaitan (nama,
+avatar, skor ujian) tetap bisa lewat `set(merge:true)` tanpa terblokir.
+
+**`_SelfHeader` dirapikan sekalian**, dipakai bersama oleh tab Skor
+Global dan tab Bintang sekarang — sebelumnya menghitung
+`globalScoreLabel`/`globalScoreBreakdown` sendiri di dalam widget-nya
+(khusus untuk skor global), sekarang menerima `valueLabel`/`subtitle`
+sebagai parameter, mengikuti pola yang sudah dipakai `LeaderboardTile`.
+Widget yang sama jadi bisa dipakai ulang tanpa tahu metrik mana yang
+sedang ditampilkan.
+
+**Diuji**: `test/leaderboard_card_game_stars_test.dart` (baru, 8 test)
+— "belum pernah bertanding" tetap beda dari "0 bintang sungguhan"
+(sama seperti pembedaan `globalScore`'s "Belum ada" vs. 0 poin), label
+total bintang dan subjudul tingkat+divisi ikut ganti bahasa, subjudul
+memakai bentuk "N/M bintang" untuk tingkat berdivisi dan bentuk tanpa
+batas untuk Emerald, `cardGameRankStanding` membangun ulang
+`CardGameRank` yang benar. `flutter analyze` bersih, 437 test Dart
+hijau (8 baru).
+
+**Belum di-deploy dan belum dicoba di perangkat fisik** — langkah
+berikutnya: `npx firebase-tools@latest deploy --only firestore:rules`,
+lalu buka tab "Bintang" di device sungguhan setelah menyelesaikan
+minimal satu pertandingan publik/bot, pastikan diri sendiri muncul di
+kartu ringkasan dengan tingkat+bintang yang benar dan di daftar
+peringkat pada posisi yang masuk akal.
 
 ### Isi kartu ditentukan oleh rank
 

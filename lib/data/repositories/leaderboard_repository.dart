@@ -55,6 +55,41 @@ class LeaderboardRepository {
         );
   }
 
+  /// Field name of Card Game Mode's own denormalized sort key — see
+  /// [LeaderboardEntry.cardGameStarTotal]'s own doc comment. Written only
+  /// by `functions/battle_stars.js`.
+  static const cardGameStarTotalField = 'cardGameStarTotal';
+
+  /// The Card Game Mode star ranking — "Papan peringkat bintang berdiri
+  /// sendiri" in `NOTES_CARD_GAME_MODE.md`. Unlike [watchTop], there is
+  /// no self-heal/backfill step needed here: Firestore's `orderBy`
+  /// omitting a doc with no [cardGameStarTotalField] is exactly the
+  /// correct behavior for a player who has never finished a ranked
+  /// match, not a gap to repair.
+  Stream<List<LeaderboardEntry>> watchTopByCardGameStars({int limit = 20}) {
+    return _collection
+        .orderBy(cardGameStarTotalField, descending: true)
+        .limit(limit)
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => LeaderboardEntry.fromMap(doc.id, doc.data()))
+              .toList(),
+        );
+  }
+
+  /// Ranks an already-fetched [entry] on the Card Game Mode star ladder
+  /// (1-based) — mirrors [rankOf] exactly, just against the other sort
+  /// key. Callers should only call this once [entry.hasPlayedCardGame]
+  /// is true; a player with no ranked matches has no rank to compute.
+  Future<int> rankOfCardGameStars(LeaderboardEntry entry) async {
+    final higher = await _collection
+        .where(cardGameStarTotalField, isGreaterThan: entry.cardGameStarTotal)
+        .count()
+        .get();
+    return (higher.count ?? 0) + 1;
+  }
+
   Future<LeaderboardEntry?> getSelf(String uid) async {
     final doc = await _collection.doc(uid).get();
     if (!doc.exists) return null;
