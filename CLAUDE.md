@@ -9386,10 +9386,31 @@ everything after the first space in a plain quoted string — the
 reliable fix is substituting spaces with the literal `%s` token in the
 text argument, not adding quoting workarounds.
 
-## Planned: Mode Game Card
+## Mode Game Card
 
-A card-game mode is planned but **not started** — no code, no model, no
-screens, no Cloud Function. The concept is settled and written up in
+**No longer "planned" — the engine is built, deployed and verified on
+real devices** (see `NOTES_CARD_GAME_MODE.md` for the whole history; the
+design paragraphs below are kept because they explain *why* each rule is
+what it is). What exists: the match screen, server-side answer scoring,
+a bot opponent, friend/clan challenges, public matchmaking, and — as of
+2026-08-14 — the star ladder that moves a player's rank when a ranked
+match ends (`functions/battle_stars.js`).
+
+**Two gaps stand between this and something a learner can use.** There
+is **no entry point from Home at all** for public matchmaking (only the
+friend-challenge path is reachable, from `ChatHubScreen`), and the
+**star leaderboard has no screen** — the Cloud Function writes
+`cardGameTier`/`cardGameStars`/`cardGameStarTotal`/`cardGameSeason` onto
+`leaderboard/{uid}`, and nothing reads them yet.
+
+**`cardGameRank` is server-written only.** `firestore.rules` rejects any
+client write that changes it, so `battle_stars.js` (Admin SDK, exempt
+from rules) is its only writer — without that the ladder would be
+decoration, since it orders a public board. There is deliberately no
+Dart copy of the ladder rules: the app displays a standing, it never
+decides one.
+
+The concept is settled and written up in
 `NOTES_CARD_GAME_MODE.md`: Yu-Gi-Oh-style decks of 20 kana/kanji cards,
 players lay a card and the opponent writes its reading, points feed the
 leaderboard, opponents chosen from friends / clan / public, free.
