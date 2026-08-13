@@ -426,6 +426,145 @@ penyelarasan identitas itu tanpa alasan.
 Yang perlu dipikir terpisah hanya riwayat musim — kalau peringkat musim
 lama mau bisa dilihat lagi, itu baru butuh subkoleksi tersendiri.
 
+## Cara mengundang teman/clan bertanding
+
+Dicek dulu ke kode sebelum diusulkan, bukan reka-reka: `FriendRepository`
+(pertemanan mutual lewat handshake permintaan/terima) dan `ClanRepository`
+(roster clan) sudah ada, begitu juga `NotificationRepository` generik —
+satu `create()` langsung memberi entri di feed notifikasi **dan** push
+notification asli lewat Cloud Function `onUserNotificationCreated`.
+
+**Yang tidak ada sama sekali: status online.** Dicek langsung —
+`isOnline`, `lastSeenAt`, atau apa pun sejenisnya tidak ada satu pun di
+`lib/data/`. Ini penting karena dua keputusan berikut memang menuntut
+status online *sungguhan* (bukan sekadar "terakhir aktif kapan"), jadi
+fitur ini butuh infrastruktur baru, bukan sekadar tabel undangan baru.
+
+### Keputusan
+
+| Hal | Keputusan |
+|---|---|
+| Status online | **Sungguhan, real-time** — bukan "terakhir aktif" |
+| Tantangan tidak direspons | **Expired setelah 5 menit** |
+| Cara mengundang | Tombol "Tantang" dari daftar teman / daftar anggota clan yang sudah ada |
+| Isi undangan | Nama+avatar penantang, deck/level yang **sudah dipilih penantang** |
+| Sasaran | Satu orang, bukan siaran ke seluruh clan sekaligus |
+
+### Kenapa status online butuh infrastruktur baru, bukan sekadar field
+
+Firestore tidak punya cara mendeteksi koneksi terputus. Kalau statusnya
+disimpan sebagai field biasa (mis. `isOnline: true`), field itu **cuma
+berubah kalau ada kode yang sengaja menulisnya jadi `false`** — dan kode
+itu tidak pernah sempat jalan kalau aplikasi ditutup paksa, HP kehabisan
+baterai, atau sinyal hilang mendadak. Hasilnya: status "online" yang
+macet selamanya di `true` untuk pemain yang sebenarnya sudah lama pergi —
+persis kebalikan dari yang dibutuhkan untuk menantang orang sungguhan.
+
+**Firebase Realtime Database punya jawaban bawaan untuk masalah ini:**
+`onDisconnect()`. Klien mendaftarkan "kalau koneksi soket saya putus,
+server yang menuliskan `offline` atas nama saya" — ini terjadi di sisi
+server, jadi berlaku juga saat aplikasi mati paksa, bukan cuma saat
+pengguna menutup aplikasi dengan baik-baik. Firestore tidak punya
+mekanisme setara sama sekali. Ini alasan kenapa presence adalah satu dari
+sedikit hal di aplikasi ini yang layak keluar dari Firestore, bukan
+dipaksakan ke sana.
+
+Bentuknya kecil dan terpisah dari data pertandingan:
+
+```
+presence/{uid}: { state: "online" | "offline", lastChanged: <server timestamp> }
+```
+
+Begitu aplikasi dibuka, klien menulis `state: "online"` dan langsung
+mendaftarkan `onDisconnect()` untuk menulis `state: "offline"`. Efek
+sampingnya bagus: begitu path ini ada, daftar teman dan daftar anggota
+clan bisa langsung menampilkan penanda "online" di mana pun mereka
+muncul, bukan cuma di layar tantang — jadi kerjanya tidak habis untuk
+satu fitur sempit saja.
+
+> **Konsekuensi teknis yang harus diingat kalau ini dibangun:** Realtime
+> Database punya berkas aturan sendiri (`database.rules.json`), terpisah
+> dari `firestore.rules`, dan perlu di-deploy sendiri lewat Firebase
+> Console — sama seperti aturan Firestore yang sudah ada, ini tidak bisa
+> dipastikan sudah aktif hanya karena berkasnya benar di repo.
+
+### Tombol "Tantang" hanya aktif kalau target online
+
+Karena presence-nya sudah nyata, gerbangnya bisa dipasang di tempat yang
+paling murah: **tombol "Tantang" di daftar teman/clan hanya aktif kalau
+orang itu sedang online.** Ini lebih baik daripada mengirim tantangan
+membabi buta lalu menunggu — pemain langsung tahu siapa yang bisa
+ditantang sekarang, tidak ada tantangan yang dikirim ke kekosongan.
+
+### Kenapa 5 menit, dan apa yang terjadi setelah itu
+
+Lima menit itu cukup panjang untuk pemain yang sedang di tengah layar
+lain (membaca materi, menjawab kuis) tapi cukup pendek supaya daftar
+tantangan tidak menumpuk dengan ajakan basi. Karena tombolnya sudah
+digerbangi status online, target hampir selalu melihat notifikasinya
+dalam hitungan detik — 5 menit itu jauh lebih dari cukup untuk kasus
+wajar, dan sengaja pendek untuk kasus yang tidak wajar (mis. aplikasi
+ditutup tepat setelah tantangan terkirim).
+
+`BattleInvite` menyimpan `expiresAt` (waktu kirim + 5 menit). **Tidak
+perlu Cloud Function terjadwal untuk menegakkannya** — setiap layar yang
+menampilkan daftar tantangan (baik punya penantang maupun yang ditantang)
+menyaring `expiresAt < sekarang` di sisi klien, sama seperti pola
+"self-heal saat dibaca" yang sudah dipakai di beberapa tempat lain di
+aplikasi ini (mis. `backfillGlobalScore`). Dokumen yang sudah kedaluwarsa
+boleh menumpuk secara fisik sebentar — kebersihan penyimpanan itu urusan
+terpisah (kandidat: kebijakan TTL bawaan Firestore), bukan sesuatu yang
+perlu menghalangi jalannya fitur.
+
+### Bentuk data undangan
+
+Mengikuti pola `ClanInvite` persis, ditulis ke koleksi milik target
+(sama seperti undangan clan dan permintaan pertemanan) supaya aturan
+`firestore.rules` yang sudah ada untuk pola ini tinggal dipakai ulang,
+bukan dirancang dari nol:
+
+```
+users/{targetUid}/battleInvites/{id}
+  fromUid, fromName, fromPhotoUrl, fromAvatarType, fromAvatarValue
+  source: "friend" | "clan"
+  deckLevel   // dipilih penantang SEBELUM undangan dikirim
+  status: "pending" | "accepted" | "declined" | "expired"
+  createdAt, expiresAt
+```
+
+`deckLevel` wajib sudah terisi saat undangan dibuat — bukan setelah
+diterima — karena aturan yang sudah diputuskan bilang **yang diundang
+melihat kartunya sebelum menerima**. Kalau dipilih setelah diterima,
+target menerima tantangan tanpa tahu isinya, dan itu melanggar aturan itu
+sendiri.
+
+Menerima memicu pertandingan mulai, sama seperti `respondToInvite` untuk
+clan — bedanya, "menerima" di sini bukan cuma menulis status, tapi juga
+titik awal dari sesi pertandingan real-time yang sudah dibahas di bagian
+"Penilaian di server, bukan di HP" di atas.
+
+### Yang ikut terjawab
+
+Baris "Butuh status online untuk menantang teman dan anggota clan" di
+bagian "Yang masih harus diputuskan" sekarang terjawab — dihapus dari
+sana, dipindah jadi bagian ini.
+
+### Yang masih terbuka dari keputusan ini
+
+- **Apa yang ditampilkan ke penantang kalau targetnya offline sebelum
+  sempat menekan Tantang?** Kemungkinan besar tombolnya sekadar
+  nonaktif/abu-abu dengan keterangan "sedang tidak online" — belum
+  diputuskan bentuk pastinya.
+- **Notifikasi push untuk undangan yang keburu kedaluwarsa** — apakah
+  penantang perlu diberi tahu tantangannya tidak dijawab, atau cukup
+  hilang diam-diam dari daftar?
+- **Biaya presence**: `onDisconnect()` andal untuk deteksi putus, tapi
+  menulis presence tiap kali aplikasi dibuka/ditutup menambah trafik
+  Realtime Database kecil-kecilan di luar Firestore yang selama ini jadi
+  satu-satunya backend. Bukan alasan membatalkan, tapi baris biaya baru
+  yang perlu disadari sebelum fitur ini ramai dipakai — sama seperti
+  catatan "Biaya per pertandingan" di bagian lain dokumen ini.
+
 ## Mockup "TEISOU BATTLE" — acuan tampilan, bukan acuan aturan
 
 Empat layar dibuat user bersama ChatGPT: pencarian lawan, mulai
@@ -631,7 +770,6 @@ Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
 - Bagaimana kalau lawan menutup aplikasi di tengah pertandingan? Dihitung
   kalah, dibatalkan, atau ditunggu?
 - Lawan publik dipasangkan berdasarkan apa — level JLPT, rank, atau acak?
-- Butuh status online untuk menantang teman dan anggota clan.
 
 **Peringkat**
 - Poinnya masuk `globalScore` yang sudah ada, atau punya rank sendiri?
