@@ -323,6 +323,88 @@ Fitur baru yang ikut tergambar dan belum pernah dibahas: **Koin**, mata
 uang bunga (5.430), dan **Tonton Ulang** — yang terakhir menuntut
 penyimpanan seluruh langkah tiap pertandingan beserta pemutarnya.
 
+## Yang belum tersentuh sama sekali
+
+Dicek langsung ke data dan kode, bukan perkiraan.
+
+### 1. Bacaan di dataset disimpan sebagai romaji, bukan kana
+
+```json
+{"word": "学生", "reading": "gakusei"}
+```
+
+Padahal jawaban kartu kanji diketik dalam **hiragana**. Jadi harus ada
+konversi sebelum dibandingkan.
+
+Kabar baiknya dua-duanya sudah setengah jalan: `RomajiConverter` sudah ada
+(kana → romaji), dan **gaya romaji di dataset ternyata cocok** dengan
+konversi per-huruf — 東京 ditulis `toukyou` (bukan `tōkyō`), 来週 ditulis
+`raishuu`. Jadi jalurnya: pemain mengetik がくせい → diubah jadi `gakusei`
+→ dibandingkan.
+
+### 2. っ tidak ada di dataset kana — dan ini memblokir
+
+Dataset kana berisi 104 huruf per aksara: 46 dasar + 25 tenten/maru + 33
+gabungan. **っ kecil tidak termasuk**, begitu juga ッ dan ー.
+
+Akibatnya nyata: **学校 dibaca がっこう, dan がっこう tidak bisa diketik**
+dengan keyboard yang dibangun dari dataset itu, juga tidak bisa dikonversi
+karena konverter tidak punya entri untuk っ.
+
+Jadi dua hal wajib, dan keduanya kecil tapi tidak boleh terlewat:
+
+- **Keyboard kana harus punya っ** selain tenten, maru, dan huruf kecil
+  ゃゅょ.
+- **Konverter harus menangani sokuon**: っ menggandakan konsonan
+  berikutnya (がっこう → `gakkou`).
+
+### 3. Kata berokurigana: jawabannya sampai mana?
+
+**1.235 dari 7.275 contoh kata (16%) mengandung okurigana** — misalnya
+生まれる dengan bacaan `umareru`. Perlu diputuskan apakah pemain mengetik
+seluruhnya (うまれる) atau hanya bagian kanjinya (う). Mengetik seluruhnya
+lebih sederhana dan lebih jujur sebagai latihan membaca.
+
+### 4. Kalau tidak ada lawan, fiturnya mati
+
+Ini risiko paling praktis dan belum dibahas sama sekali. Mode PvP serentak
+menuntut **dua pemain online di saat yang sama**, sementara aplikasi ini
+baru di tahap internal testing. Antrean yang kosong membuat "Mencari
+Lawan…" berputar selamanya, dan fitur yang tidak pernah berhasil dimulai
+akan ditinggalkan.
+
+Perlu rencana untuk keadaan sepi — misalnya lawan bot, atau lawan "hantu"
+yang memainkan ulang rekaman jawaban pemain lain.
+
+### 5. Klien tidak boleh mengirim vonis, hanya teks jawaban
+
+Ini turunan dari aturan skor dihitung di server, tapi belum pernah ditulis
+tegas. Kalau HP mengirim "aku benar", curang jadi sepele — tinggal selalu
+mengirim benar. Yang dikirim harus **teks jawabannya**, dan server yang
+memutuskan benar atau salah.
+
+Konsekuensinya: kunci jawaban harus ada di sisi server juga.
+
+### 6. Butuh koneksi stabil — bertentangan dengan cara aplikasi ini dipakai
+
+Catatan proyek ini berkali-kali menyebut aplikasi dipakai anak "di
+perjalanan". Pertandingan serentak justru jenis fitur yang paling tidak
+tahan sinyal jelek. Bukan alasan membatalkan, tapi menegaskan kenapa
+penanganan pemain terputus perlu dipikirkan sejak awal, bukan belakangan.
+
+### 7. Menyontek
+
+Dengan 30 detik, pemain punya waktu berlimpah untuk pindah aplikasi dan
+mencari bacaannya. Tidak ada cara benar-benar mencegahnya di HP.
+Pertahanan alaminya cuma tekanan waktu — dan itu baru terasa di babak
+tambahan yang waktunya memendek.
+
+### 8. Biaya per pertandingan
+
+Tiap pertandingan berarti sejumlah tulisan Firestore ditambah pemanggilan
+Cloud Function. Aplikasinya gratis dan bersandar pada iklan, jadi biaya
+per pertandingan perlu disadari sebelum ramai, bukan sesudah.
+
 ## Yang masih harus diputuskan
 
 Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
@@ -332,6 +414,11 @@ Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
   jawaban), atau 10 jawaban total? Dengan giliran bergantian, keduanya
   masuk akal.
 - Deck 20 kartu dipilih sendiri, atau dibagikan otomatis dari level JLPT?
+- Siapa yang mengeluarkan kartu duluan?
+- Kartu diambil acak dari deck atau berurutan? Boleh kartu yang sama
+  muncul dua kali dalam satu pertandingan?
+- Kalau koneksi putus lalu pemain kembali, bisa menyambung pertandingan
+  yang sama atau dianggap selesai?
 - Kedua pemain menjawab bersamaan, atau bergantian?
 - Deck 20 kartu dipilih sendiri, atau dibagikan otomatis dari level JLPT
   yang dipilih?

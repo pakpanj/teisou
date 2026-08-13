@@ -9483,6 +9483,31 @@ reaching for.
 Not drawn yet, and the most useful thing to draw next: **a player actually
 answering**, which is where the in-app kana keyboard lives.
 
+Three findings from checking the data rather than assuming it, all of
+which the answer-checking path depends on:
+
+- `wordExamples[].reading` is stored **in romaji**, not kana (`学生` ->
+  `gakusei`), while kanji cards are answered in hiragana. Workable, and
+  the styling happens to line up with a per-character conversion — 東京 is
+  `toukyou`, not `tōkyō`, and 来週 is `raishuu` — so `RomajiConverter`
+  can carry it.
+- **っ is not in the kana dataset at all** (104 per script = 46 basic + 25
+  tenten/maru + 33 youon; ッ and ー are absent too). 学校 is がっこう, so
+  the word cannot be typed on a keyboard built from that dataset and
+  cannot be converted either. The in-app keyboard needs っ, and the
+  converter needs sokuon handling.
+- **1,235 of 7,275 word examples (16%) carry okurigana** (生まれる →
+  `umareru`), so it has to be decided whether the whole reading is typed
+  or only the kanji's part.
+
+Also newly noted in the note: an empty matchmaking queue would make live
+PvP unusable in an app still in internal testing, so a quiet-hours plan
+(bot, or a ghost replaying a recorded run) is needed; the client must send
+**the answer text, not a verdict**, or cheating is trivial; live matches
+sit awkwardly against this app's own stated "used on the bus" assumption;
+and each match carries a Firestore-write and function-invocation cost
+worth knowing before it is popular.
+
 Two things that have to be built and are not small:
 
 - **An in-app kana keyboard.** Typing hiragana on Android needs a Japanese
