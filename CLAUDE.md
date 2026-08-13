@@ -9446,9 +9446,13 @@ demotion, and probably seasons over a flat up-and-down figure that would
 have sorted just as well. The learning points stay up-only, so a lost match
 never erases evidence that the child studied; only the star moves.
 
-The ladder is **Bronze, Silver, Gold, Diamond, Emerald**, three divisions
-each (III/II/I) at 2/3/3/4 stars per division, with Emerald open-ended:
-win +1, draw 0, lose -1.
+The ladder is **Bronze, Silver, Gold, Diamond, Emerald**, five divisions
+each (V-I) at 3/4/5/6 stars per division — 90 stars from Bronze V to
+Emerald, which is open-ended. Win +1, draw 0, lose -1, and **three wins in
+a row pays +2**. The streak bonus is not decoration: across 90 stars a
+flat +1/-1 leaves even a strong player stalled for months at Gold, and the
+bonus lets genuine strength show without lowering the bar for anyone
+else.
 
 **Bronze and Silver do not lose stars on a defeat**, and that is the load
 -bearing part rather than a kindness. A flat +1/-1 ladder barely moves: at
@@ -9456,14 +9460,19 @@ a 55% win rate a player nets 0.1 stars a match, so 36 stars is roughly 360
 matches — a wall, not a challenge. Protecting the first two tiers means
 Gold is 15 wins away regardless of losses, and the real ladder starts
 there, where losing costs something. Demotion never leaves a tier once
-reached: after Gold, the floor is Gold III.
+reached: after Gold, the floor is Gold V. (Recorded as Bronze and Silver
+protected; if "up to Gold" was meant to include Gold, it is a one-tier
+shift and nothing else depends on it.)
 
-**Empty queue plays a bot**, which must be labelled as one — children
-should not be left thinking they beat a person — and **bots only award
-stars in Bronze and Silver**, exactly the protected tiers. That solves the
-cold-start problem while a small population makes real opponents rare,
-and keeps the upper ladder meaning what it says. Learning points and EXP
-still come from bot matches; only stars are capped.
+**Empty queue plays a bot**, labelled as one — children should not be left
+thinking they beat a person — and **bots award stars at every tier**.
+Capping them at Silver was proposed and turned down; what makes that hold
+up is the other decision alongside it, that **bot difficulty tracks the
+player's tier**. A Diamond bot answering fast and almost always correctly
+is not a shortcut, so the curve does the work a restriction would have.
+The thing to protect when building it: the bot must have no memorisable
+pattern — difficulty belongs in answer speed and error rate, not in a
+fixed set of cards it always misses.
 
 Still open: season length and whether a reset is full or partial, whether
 friend and clan matches move stars at all, and whether the star ranking is

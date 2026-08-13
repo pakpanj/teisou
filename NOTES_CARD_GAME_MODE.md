@@ -249,15 +249,26 @@ alasannya. Semua angkanya gampang disetel ulang nanti.
 
 | Tingkat | Divisi | Bintang per divisi | Total naik |
 |---|---|---|---|
-| Bronze | III, II, I | 2 | 6 |
-| Silver | III, II, I | 3 | 9 |
-| Gold | III, II, I | 3 | 9 |
-| Diamond | III, II, I | 4 | 12 |
+| Bronze | V, IV, III, II, I | 3 | 15 |
+| Silver | V, IV, III, II, I | 4 | 20 |
+| Gold | V, IV, III, II, I | 5 | 25 |
+| Diamond | V, IV, III, II, I | 6 | 30 |
 | Emerald | — | bintang terus terkumpul | — |
+
+Lima divisi per tingkat, sesuai permintaan agar jumlahnya sampai puluhan —
+dan kebetulan ini juga cocok dengan mockup, yang memang sudah menggambar
+divisi bergaya V sampai I. Total dari Bronze V ke Emerald: **90 bintang.**
 
 Aturannya: **menang +1 bintang, seri 0, kalah −1.** Bintang penuh di satu
 divisi berarti naik divisi; penuh di divisi I berarti naik tingkat dan
-mulai lagi dari divisi III tingkat berikutnya.
+mulai lagi dari divisi V tingkat berikutnya.
+
+**Beruntun 3 kemenangan memberi +2 bintang, bukan +1.** Ini bukan hiasan —
+tanpanya tangga atas praktis tidak bisa didaki. Dengan 90 bintang dan
+selisih menang-kalah yang tipis, pemain bagus sekalipun akan mandek
+berbulan-bulan di Gold. Bonus beruntun membuat pemain yang benar-benar
+lebih kuat naik dengan kecepatan yang terasa, tanpa menurunkan syaratnya
+bagi yang lain. Mobile Legends memakai cara yang sama persis.
 
 #### Jebakan yang membuat angka polos tidak bisa dipakai
 
@@ -267,13 +278,18 @@ per pertandingan — artinya butuh **sekitar 360 pertandingan** untuk naik 36
 bintang. Untuk aplikasi belajar anak, itu bukan tantangan, itu tembok.
 
 **Jadi Bronze dan Silver diberi perlindungan: kalah tidak mengurangi
-bintang.** Konsekuensinya bagus:
+bintang.** (Disetujui.) Konsekuensinya bagus:
 
-- Naik ke Gold cuma butuh **15 kemenangan**, berapa pun kalahnya. Anak yang
+- Naik ke Gold cuma butuh **35 kemenangan**, berapa pun kalahnya. Anak yang
   masih lemah tetap maju selama ia terus main — persis semangat yang sama
   dengan alasan kita membatalkan mode nyawa dulu.
 - **Tangga yang sesungguhnya baru mulai di Gold**, tempat kalah benar-benar
   ada harganya. Puncaknya tetap berarti.
+
+> Dicatat sebagai perlindungan di **Bronze dan Silver**, jadi kehilangan
+> bintang mulai berlaku begitu masuk Gold. Kalau yang dimaksud "sampai
+> Gold" itu termasuk Gold, tinggal geser satu tingkat — tidak ada bagian
+> lain yang bergantung padanya.
 
 #### Turun tingkat
 
@@ -292,15 +308,24 @@ Kalau tidak ada pemain online, lawannya bot. Tiga hal yang menyertainya:
 - **Bot harus dilabeli jelas sebagai bot.** Anak tidak boleh dibiarkan
   mengira ia mengalahkan orang sungguhan. Ini aplikasi belajar untuk anak,
   dan kejujuran di sini murah harganya.
-- **Bot hanya memberi bintang di Bronze dan Silver** — yaitu persis dua
-  tingkat berperlindungan tadi. Ini menyelesaikan dua masalah sekaligus:
-  saat pemainnya masih sedikit, pemain baru tetap bisa naik; dan begitu
-  masuk Gold, peringkat kembali berarti karena harus melawan orang.
-- **Kesulitan bot mengikuti tingkat pemain**, kalau tidak ia cuma jadi
-  lawan yang mustahil atau lawan yang tak berguna.
+- **Bot tetap memberi bintang, di semua tingkat.** Saya sempat mengusulkan
+  membatasinya sampai Silver karena khawatir peringkat bisa didaki tanpa
+  pernah melawan orang — tapi keputusannya bintang tetap diberikan penuh.
+- **Kesulitan bot mengikuti tingkat pemain.**
 
-Poin belajar dan EXP tetap didapat dari lawan bot — yang dibatasi hanya
-bintangnya.
+Dua keputusan itu sebenarnya saling menopang, dan itu yang membuat
+kekhawatiran tadi jauh berkurang: kalau bot Diamond memang menjawab cepat
+dan nyaris selalu benar, mengalahkannya bukan jalan pintas — itu prestasi
+yang setara. Yang menjaga peringkat tetap berarti bukan larangan, tapi
+kurva kesulitannya.
+
+Satu hal yang perlu dijaga saat membangunnya: **bot tidak boleh punya pola
+yang bisa dihafal.** Kalau kesalahannya selalu jatuh di tempat yang sama,
+pemain akan menemukannya dan kurva kesulitan itu runtuh. Kesulitan
+sebaiknya diatur lewat kecepatan menjawab dan peluang salah, bukan lewat
+daftar kartu tertentu yang selalu ia lewatkan.
+
+Poin belajar dan EXP juga tetap didapat dari lawan bot.
 
 **Yang masih perlu diputuskan untuk sistem bintangnya:**
 
