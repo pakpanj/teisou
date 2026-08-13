@@ -253,6 +253,89 @@ bukan karena lebih murah.
 - Papan peringkat `globalScore` yang sudah ada tetap terpisah, atau
   peringkat bintang jadi papan sendiri?
 
+## Mockup "TEISOU BATTLE" (dibuat user + ChatGPT)
+
+Empat layar: pencarian lawan, mulai pertarungan, hasil, dan papan
+peringkat. Arah visualnya sudah cocok dengan aplikasi — maskot, sakura,
+torii, palet yang sama.
+
+### Yang cocok dan bisa langsung dipakai
+
+- Deck 20 kartu, **target 10 kartu per pemain** — ini sekaligus menjawab
+  pertanyaan yang sempat tergantung: 10 kartu berarti **10 ronde, 20
+  jawaban**, bukan 10 jawaban total.
+- 30 detik per giliran.
+- VS Teman / VS Clan / VS Publik.
+- **Kartu kanji berisi kata**, persis keputusan kita — 学生, 時間, 電車,
+  友達, 勉強, dengan bacaannya muncul di layar hasil.
+- "Mode: Kanji (N5–N1)" memperjelas satu istilah: **mode = jenis deck**
+  (kana atau kanji), terpisah dari pilihan lawan.
+
+### Yang bentrok dengan keputusan kita
+
+**1. HP 5 muncul lagi — padahal konsep nyawa sudah dibatalkan.**
+Layar pertarungan menampilkan `HP 5` dengan aturan "Benar = Damage ke
+lawan, Salah = Damage ke kamu", sekaligus "selesai setelah 10 kartu per
+pemain". Itu **dua kondisi selesai yang berjalan bersamaan**. Perlu
+diputuskan mana yang menang, dan kalau HP dipakai, kekhawatiran yang dulu
+membuat kita membatalkannya kembali berlaku: dengan 5 HP, anak yang lemah
+bisa habis di kartu ke-5 dan tidak pernah mendapat 5 soal sisanya.
+
+**2. Peringkatnya angka berjalan, bukan bintang bertingkat.**
+Mockup memakai 🏆 1200 → 1250 (+50) dan lawannya 1130 (−20), plus lencana
+tingkat (Rookie, Beginner). Itu bentuk **rating**, bukan bintang. Layar
+hasil malah menampilkan dua angka sekaligus: 🏆 +50 dan "+5 Poin Rank" —
+belum jelas mana mata uang peringkat yang sebenarnya.
+
+**3. Papan peringkat direset mingguan** ("Periode: Minggu Ini", hitung
+mundur 02:45:12), sementara ratingnya terlihat kumulatif. Dua hal ini
+tidak bisa keduanya benar tanpa aturan musim yang jelas.
+
+**4. Bottom nav jadi 6 tab** (Beranda, Belajar, Kartu, Battle, Clan,
+Profil). Sekarang aplikasinya **3 tab**, hasil penyederhanaan yang
+disengaja dari 4. Menambah jadi 6 itu perubahan navigasi besar dan
+membatalkan keputusan yang sudah diambil.
+
+### Dua hal yang menurut saya berisiko
+
+**Chat bebas dengan orang asing.** Layar pertarungan punya tombol Chat dan
+Stiker. Untuk VS Teman dan VS Clan itu wajar. Untuk **VS Publik** artinya
+anak bertukar teks bebas dengan orang yang tidak dikenal — ini masalah
+keselamatan anak, dan aplikasi ini sudah menangani audiens campuran secara
+serius lewat `AdAudience` (COPPA, Families). Chat bebas dengan orang asing
+adalah jenis hal yang bisa membuat aplikasi dikeluarkan dari program
+Families di Play. **Stiker saja jauh lebih aman**, dan tetap terasa hidup.
+Tombol "Laporkan" di layar hasil bagus, tapi pelaporan menuntut sistem
+moderasi yang belum ada sama sekali.
+
+**"Semakin tinggi level JLPT deckmu, semakin banyak poin."** Karena deck
+kita adalah yang *dijawab lawan*, aturan ini memberi hadiah ganda untuk
+memilih deck tersulit: lawan lebih sering salah **dan** poin kita lebih
+besar. Akibatnya semua orang memakai deck N1, pemula digilas, dan tidak
+ada yang berlatih di levelnya sendiri. Kalau tujuannya menghargai
+tantangan, yang lebih masuk akal adalah memberi poin lebih besar untuk
+**menjawab benar kartu sulit**, bukan untuk memegangnya.
+
+### Fitur baru yang belum pernah dibahas
+
+Semuanya menambah cakupan, jadi perlu disadari sebagai pilihan:
+
+- **Koin dan mata uang bunga (5.430)** — ini ekonomi dalam aplikasi.
+  Belum ada apa pun soal untuk apa koinnya dipakai.
+- **EXP +50** — kemungkinan bisa memakai sistem XP yang sudah ada.
+- **"Tonton Ulang"** — menuntut penyimpanan seluruh langkah tiap
+  pertandingan plus pemutar ulangnya. Fitur tersendiri, tidak kecil.
+
+### Yang belum digambar, dan justru paling penting
+
+**Layar menjawab belum ada.** Keempat mockup berhenti di "Battle Dimulai";
+tidak ada satu pun yang menunjukkan pemain sedang mengetik jawaban. Padahal
+di situlah letak keputusan tersulit kita: **keyboard kana bawaan aplikasi**
+untuk mengetik bacaan hiragana. Itu layar yang paling menentukan rasa main
+dan paling banyak kerjanya — layak digambar berikutnya.
+
+Layar babak tambahan (kartu 11–20 dengan waktu dipangkas) juga belum ada.
+
 ## Yang masih harus diputuskan
 
 Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
