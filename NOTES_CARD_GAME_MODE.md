@@ -13,6 +13,48 @@ menangani っ/youon dengan benar. Keduanya kode sungguhan yang sudah
 jalan, bukan cuma catatan — tapi keduanya infrastruktur umum aplikasi,
 bukan bagian dari fitur permainan kartu itu sendiri.
 
+## Urutan mengerjakan (disusun dari ketergantungan, bukan sembarang)
+
+Satu hal yang baru kelihatan saat menyusun urutan ini: **bahkan
+pertandingan lawan bot butuh tahu tingkat/rank pemain saat ini duluan**
+— "isi kartu ditentukan oleh rank" berlaku untuk semua jenis lawan,
+termasuk bot. Jadi field rank harus ada lebih dulu daripada biasanya
+fitur "peringkat" dikerjakan (biasanya di akhir).
+
+**Tahap 1 — fondasi, tidak saling bergantung, bisa paralel**
+1. Keyboard kana — paling cepat, bisa didemokan sendiri tanpa nunggu
+   apa pun. Kalau butuh perbaikan UX, ketahuan di sini, bukan setelah
+   tertanam di layar pertandingan.
+2. Field rank minimal (`tier`/`division`/`stars`/`season`, default
+   Bronze) — belum perlu logika naik-turun lengkap, cuma perlu ADA
+   supaya tahap berikutnya bisa membaca "kartu tingkat apa yang
+   ditampilkan".
+3. Presence (RTDB) — mandiri, tidak bergantung pertandingan sama
+   sekali.
+
+**Tahap 2 — inti pertandingan**
+4. `battleMatches` + aturan Firestore.
+5. Layar pertandingan (pakai keyboard #1, baca tingkat dari #2 untuk
+   pilih kartu).
+6. Uji jalur cepatnya dulu secara manual — dua emulator/device saling
+   baca-tulis `battleMatches` langsung, **tanpa Cloud Function sama
+   sekali**. Titik paling murah untuk memastikan rasanya benar sebelum
+   menaruh biaya di Cloud Function.
+7. Cloud Function penilaian (`RomajiConverter` versi JS, `officialScore`,
+   `result`) — sambungkan ke field rank dari #2 begitu ini jalan.
+
+**Tahap 3 — lawan, dari yang paling mudah diuji sendirian ke yang
+paling rumit**
+8. **Bot dulu**, bukan publik atau teman — pakai kembali seluruh pipa
+   Tahap 2, bisa diuji sendirian tanpa koordinasi dengan orang lain.
+   Kalau ada yang salah di penilaian/skor/bintang, ketahuan di sini
+   dulu, sebelum ada pemain sungguhan terdampak.
+9. Undangan teman/clan — butuh presence (#3), dan `FriendRepository`/
+   `ClanRepository` memang sudah jalan dari fitur lain.
+10. Matchmaking publik — sengaja terakhir, butuh semuanya sudah berdiri
+    (tingkat, pembuatan pertandingan, bot sebagai jalan keluar antrian
+    sepi) dan paling rumit (antrian RTDB, klaim atomik).
+
 ---
 
 ## Keputusan yang sudah diambil
