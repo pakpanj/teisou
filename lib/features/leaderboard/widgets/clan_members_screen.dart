@@ -4,8 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/app_loading.dart';
+import '../../../data/models/battle_invite.dart' show BattleInviteSource;
 import '../../../data/models/clan_member.dart';
 import '../../../data/models/leaderboard_entry.dart';
+import '../../battle/battle_challenge.dart' show ChallengeButton;
 import '../clan_providers.dart';
 import '../leaderboard_screen.dart' show LeaderboardAvatar;
 import 'search_invite_screen.dart';
@@ -236,6 +238,12 @@ class _MemberRow extends ConsumerWidget {
                 tooltip: s.kickMember,
                 icon: Icon(Icons.person_remove, color: context.palette.errorRed),
                 onPressed: () => _kick(context, ref),
+              ),
+            if (!_isSelf)
+              ChallengeButton(
+                targetUid: member.uid,
+                targetName: member.displayName,
+                source: BattleInviteSource.clan,
               ),
           ],
         ),

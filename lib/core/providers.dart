@@ -32,6 +32,7 @@ import '../data/repositories/choukai_repository.dart';
 import '../data/repositories/clan_announcement_repository.dart';
 import '../data/repositories/clan_message_repository.dart';
 import '../data/repositories/battle_repository.dart';
+import '../data/repositories/battle_invite_repository.dart';
 import '../data/repositories/clan_repository.dart';
 import '../data/repositories/dictionary_repository.dart';
 import '../data/repositories/direct_message_repository.dart';
@@ -231,6 +232,9 @@ final clanRepositoryProvider = Provider<ClanRepository>(
 );
 final battleRepositoryProvider = Provider<BattleRepository>(
   (ref) => BattleRepository(),
+);
+final battleInviteRepositoryProvider = Provider<BattleInviteRepository>(
+  (ref) => BattleInviteRepository(),
 );
 final clanMessageRepositoryProvider = Provider<ClanMessageRepository>(
   (ref) => ClanMessageRepository(),

@@ -1357,4 +1357,40 @@ class AppStrings {
         'DEBUG uji coba pertandingan',
         'DEBUG battle test',
       );
+
+  // Tahap 3 butir 9 — undangan teman/clan (see NOTES_CARD_GAME_MODE.md).
+  String get battleTierHiragana => _t('Hiragana Dasar', 'Basic Hiragana');
+  String get battleTierKatakanaCombo =>
+      _t('Katakana + Gabungan', 'Katakana + Combos');
+  String get battleTierKanjiN5 => _t('Kanji N5', 'Kanji N5');
+  String get battleTierKanjiN4N3 => _t('Kanji N4–N3', 'Kanji N4–N3');
+  String get battleTierKanjiN2N1 => _t('Kanji N2–N1', 'Kanji N2–N1');
+  String battleChallengeTitle(String targetName) =>
+      _t('Tantang $targetName Bertanding Kartu', 'Challenge $targetName to a Card Match');
+  String get battleChallengePickTier =>
+      _t('Pilih tingkat kartu:', 'Pick a card tier:');
+  String get battleChallengeSending =>
+      _t('Mengirim tantangan...', 'Sending challenge...');
+  String get battleChallengeFailed => _t(
+        'Gagal mengirim tantangan, coba lagi.',
+        'Failed to send challenge, try again.',
+      );
+  String get battleChallengeOfflineTooltip => _t(
+        'Sedang tidak online',
+        'Currently offline',
+      );
+  String battleChallengeNotificationTitle(String fromName) =>
+      _t('$fromName menantangmu!', '$fromName challenged you!');
+  String battleChallengeNotificationBody(String tierLabel) => _t(
+        'Ayo bertanding kartu $tierLabel sekarang.',
+        'Play a $tierLabel card match right now.',
+      );
+  String pendingBattleInvitesTitle(int count) => _t(
+        'Kamu punya $count tantangan pertandingan',
+        'You have $count battle challenge${count == 1 ? '' : 's'}',
+      );
+  String battleInvitedBy(String fromName, String tierLabel) => _t(
+        '$fromName menantangmu — $tierLabel',
+        '$fromName challenged you — $tierLabel',
+      );
 }

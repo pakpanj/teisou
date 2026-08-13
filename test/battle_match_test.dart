@@ -108,6 +108,29 @@ void main() {
       expect(withoutRounds.scoredRounds, isEmpty);
     });
 
+    test('fromMap parses rankedMatch, defaulting to true when absent', () {
+      final unranked = BattleMatch.fromMap('m', {'rankedMatch': false});
+      expect(unranked.rankedMatch, isFalse);
+
+      final defaulted = BattleMatch.fromMap('m', {});
+      expect(defaulted.rankedMatch, isTrue);
+    });
+
+    test('toCreateMap carries rankedMatch as a plain bool', () {
+      final match = BattleMatch(
+        id: '',
+        players: ['uid-a', 'uid-b'],
+        status: BattleMatchStatus.active,
+        currentRound: 0,
+        turnOrder: [
+          TurnOrderEntry(round: 0, deckOwnerUid: 'uid-a', cardId: 'k1'),
+        ],
+        officialScore: {'uid-a': 0, 'uid-b': 0},
+        rankedMatch: false,
+      );
+      expect(match.toCreateMap()['rankedMatch'], false);
+    });
+
     test('currentAnswererUid is always the player who does NOT own the '
         'current round\'s deck', () {
       final match = BattleMatch(

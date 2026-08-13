@@ -33,8 +33,11 @@ G52J) — pertandingan lawan bot sungguhan dimainkan sampai selesai,
 bot menjawab giliran sendiri secara otomatis, skor tersinkron benar
 lewat Cloud Function yang sama dengan lawan manusia, dan pertandingan
 berakhir dengan hasil "Menang! Kamu: 3, Lawan: 2" — lihat butir 8 di
-bawah untuk detail lengkapnya. Sisanya: matchmaking publik (#10),
-undangan teman/clan (#9) — belum ada kode.
+bawah untuk detail lengkapnya. **Tahap 3 butir 9 (undangan teman/clan)
+sudah dibangun dan sudah di-deploy** (firestore.rules dengan aturan
+`battleInvites` sudah dirilis ke produksi), tapi **belum diverifikasi
+di perangkat fisik** — lihat butir 9 di bawah. Sisanya: matchmaking
+publik (#10) — belum ada kode.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -617,8 +620,156 @@ paling rumit**
    **Butir 8 sekarang benar-benar tuntas** — dibangun, diuji unit dua
    sisi, di-deploy ke produksi, DAN diverifikasi ujung-ke-ujung di
    perangkat fisik dengan hasil yang benar.
-9. Undangan teman/clan — butuh presence (#3), dan `FriendRepository`/
-   `ClanRepository` memang sudah jalan dari fitur lain.
+9. ✅ **Selesai dibangun, diuji, dan di-deploy — belum diverifikasi di
+   perangkat fisik** (2026-08-14). Mengikuti persis rumusan "Cara
+   mengundang teman/clan bertanding" di bawah, dengan satu penyimpangan
+   sengaja dari kalimat literalnya (lihat poin 2).
+
+   **`BattleInvite`** (`lib/data/models/battle_invite.dart`) di
+   `users/{targetUid}/battleInvites/{id}` mengikuti persis bentuk
+   `ClanInvite`/`FriendRequest` — `fromUid`/`fromName`/`fromPhotoUrl`/
+   `fromAvatarType`/`fromAvatarValue`, `source` ("friend"|"clan"),
+   `cardTierContent`, `status` ("pending"|"accepted"|"declined"),
+   `createdAt`, `expiresAt` (createdAt + 2 menit, sesuai "Kenapa 2
+   menit"). `BattleInviteRepository` (baru) menulis lewat `sendInvite`,
+   membaca lewat `watchMyInvites` (di-filter `status == pending` di
+   server, dan `expiresAt < sekarang` di sisi klien — self-heal-on-read
+   yang sama seperti `backfillGlobalScore`, bukan Cloud Function
+   terjadwal, persis seperti yang sudah diputuskan), dan
+   `respondToInvite` (tulis status saja).
+
+   **Satu penyimpangan sengaja dari kalimat rumusan, dan kenapa**:
+   rumusan bilang "menerima memicu pertandingan mulai". Yang dibangun
+   di sini justru **membuat pertandingan LEBIH DULU, sebelum undangan
+   ditulis** — `BattleInvite.matchId` menunjuk ke `battleMatches` yang
+   sudah ada begitu penantang menekan tombol Tantang, bukan dibuat
+   nanti begitu target menerima. Alasannya: tanpa ini, si penantang
+   butuh cara mengetahui matchId begitu target menerima — dan tidak ada
+   jalur itu di infrastruktur yang sudah ada (`firestore.rules`nya
+   `battleInvites` hanya bisa dibaca pemiliknya sendiri, yaitu target,
+   bukan penantang; menambah `data` payload ke `AppNotification` untuk
+   deep-link juga berarti menyentuh model/Cloud Function/layar
+   notifikasi yang sudah ada, jauh di luar cakupan "kirim undangan").
+   Dengan membuat match lebih dulu, "menerima" jadi sesederhana
+   `BattleScreen(matchId: invite.matchId)` — jalur "Gabung ke Match"
+   yang sudah ada dan sudah diverifikasi sejak Tahap 2 butir 6, dipakai
+   ulang seutuhnya. **Efek sampingnya justru elegan**: kalau target
+   tidak pernah menekan Terima sama sekali (menolak, atau diam saja
+   sampai undangan kedaluwarsa), match yang sudah dibuat tadi tetap ada
+   dan penantang tetap menunggu di dalamnya — persis skenario "lawan
+   menutup aplikasi di tengah pertandingan" yang mekanisme timeout-
+   forfeit-nya sudah dibangun dan diverifikasi di Tahap 2. Tidak perlu
+   kode baru sama sekali untuk menangani "diundang tapi tidak
+   direspons" — giliran target akan habis waktu satu per satu sampai
+   penantang menang lewat forfeit, sama seperti lawan yang menghilang.
+
+   **`rankedMatch` (baru) di `BattleMatch`**: rumusan sudah mengunci
+   "bintang hanya bergerak di pertandingan publik dan lawan bot" (lihat
+   "Kecuali lawan teman dan clan"). Dicek dulu ke kode: logika gerak
+   bintang **belum ada sama sekali** di Cloud Function manapun (baik
+   untuk publik, bot, maupun apa pun) — jadi keputusan ini saat ini
+   masih 100% laten di mana-mana, bukan sesuatu yang butuh diaktifkan
+   sekarang. Tetap ditambahkan field `rankedMatch: bool` (default
+   `true`, ditulis `false` khusus untuk match dari undangan
+   teman/clan) di titik ini karena biayanya kecil (satu field, mengikuti
+   pola persis `cardTierContent`) dan menghindari jebakan yang lebih
+   mahal nanti: tanpa field ini, sesi masa depan yang membangun gerak
+   bintang harus membedakan match hasil antrian publik vs. match hasil
+   undangan lewat *collection-group query* ke `battleInvites` semua
+   user — query yang mahal dan janggal — padahal cukup satu field
+   boolean yang ditulis sekali saat pembuatan. Dikunci sama seperti
+   `cardTierContent` di `firestore.rules` (create-only, tidak berubah
+   oleh update klien manapun).
+
+   **Isi kartu bebas dipilih penantang** ("Kecuali lawan teman dan
+   clan — di sana kartunya bebas dipilih") — `sendBattleChallenge`
+   (`lib/features/battle/battle_challenge.dart`) menampilkan
+   `_TierPickerSheet`, bottom sheet berisi kelima `CardTierContent`
+   (Hiragana Dasar / Katakana + Gabungan / Kanji N5 / Kanji N4–N3 /
+   Kanji N2–N1), bukan mengikuti tingkat akun penantang sendiri seperti
+   pertandingan publik/bot. Setelah dipilih: dua deck dibangun
+   (`buildDeckIds` dipanggil dua kali, sekali per pemain, dari isi yang
+   sama tapi acakan berbeda), match dibuat lewat
+   `battleRepository.createMatch(..., rankedMatch: false)`, undangan
+   ditulis lewat `battleInviteRepository.sendInvite`, notifikasi
+   dikirim lewat `notificationRepository.create` (jalur generik yang
+   sudah ada, otomatis memicu push asli lewat
+   `onUserNotificationCreated` — tidak ada Cloud Function baru yang
+   perlu ditulis untuk fitur ini), lalu penantang langsung masuk ke
+   `BattleScreen(matchId: ...)`.
+
+   **Tombol "Tantang"** (`ChallengeButton`, juga di
+   `battle_challenge.dart`, dipakai ulang oleh dua tempat) muncul di
+   dua permukaan yang sudah ada: baris teman di `ChatHubScreen`'s
+   daftar chat pribadi (`_PersonalChatRow`, ikon 🎮 di sebelah kanan,
+   tidak menggantikan tap-untuk-chat yang sudah ada), dan baris
+   anggota di `ClanMembersScreen` (dikecualikan untuk diri sendiri).
+   Digerbangi status online sungguhan (`presenceProvider(targetUid)`,
+   yang sudah dibangun sejak Tahap 1 butir 3 tapi baru sekarang benar-
+   benar dipakai/dikonsumsi) — abu-abu dan tidak bisa ditekan kalau
+   target sedang offline, sesuai "Tombol Tantang hanya aktif kalau
+   target online".
+
+   **Menerima/menolak**: `_PendingBattleInvitesStrip` (baru, di atas
+   `ChatHubScreen`, terlihat di kedua mode clan/personal karena
+   undangan bisa datang dari mana saja dan sensitif waktu) mengikuti
+   persis bentuk `_PendingInvitesStrip`/`_InviteRow` milik `ClanTab` —
+   kolaps jadi tidak ada apa-apa kalau tidak ada undangan pending.
+   Menerima langsung `Navigator.push(BattleScreen(matchId:
+   invite.matchId))`; penulisan status `accepted` dilakukan
+   fire-and-forget (`unawaited`) di baliknya karena kegagalannya cuma
+   berarti baris ini nongkrong sedikit lebih lama di daftar pending,
+   bukan kegagalan bergabung ke pertandingan yang sesungguhnya.
+
+   **`firestore.rules`**: blok baru `users/{targetUid}/battleInvites/
+   {inviteId}` mengikuti pola `friendRequests` persis (siapa saja yang
+   login boleh membuat di bawah koleksi milik orang lain, asalkan
+   `fromUid` cocok dengan identitasnya) plus satu pengecekan tambahan
+   yang tidak dimiliki `clanInvites`/`friendRequests`: `matchHasBothPlayers`
+   memverifikasi lewat `get()` bahwa `matchId` yang ditulis benar-benar
+   menunjuk ke `battleMatches` yang sudah punya kedua uid (pengirim dan
+   target) di `players`-nya — mencegah undangan yang menggantung atau
+   menunjuk ke pertandingan orang lain yang tidak terkait. Sudah
+   di-deploy ke `teisou-kana-master` (2026-08-14).
+
+   **Diuji**: `test/battle_invite_test.dart` (baru) — round-trip
+   `key`/`fromKey` untuk `BattleInviteStatus`/`BattleInviteSource`,
+   parsing/serialisasi `BattleInvite` penuh termasuk default saat field
+   hilang, `isExpired` untuk kedua arah waktu, dan `cardTierContentLabel`
+   menghasilkan label berbeda-dan-tidak-kosong untuk kelima tingkat di
+   kedua bahasa. `test/battle_match_test.dart` dapat 2 kasus baru untuk
+   `rankedMatch` (parsing default `true`, serialisasi eksplisit
+   `false`). `flutter analyze` bersih, 416 test Dart hijau (11 baru).
+
+   **Trade-off yang sengaja dibiarkan terbuka, bukan lupa**:
+   - **Kedaluwarsa 2 menit murni kosmetik di sisi tampilan** — sama
+     seperti `ClanInvite`/`FriendRequest`, tidak ada penegakan di
+     server. `watchMyInvites` cuma menyaring `expiresAt < sekarang`
+     setiap kali stream Firestore memancarkan sesuatu (yaitu setiap
+     kali ada TULISAN baru ke koleksi itu) — kalau tidak ada tulisan
+     baru sama sekali selama lebih dari 2 menit, baris yang sudah
+     "kedaluwarsa" secara visual bisa saja masih tampil sampai
+     pemicu berikutnya datang. Match yang sudah dibuat tetap berjalan
+     dengan timer 30 detiknya sendiri terlepas dari ini, jadi tidak
+     ada bug fungsional — cuma baris undangan yang bisa telat hilang
+     dari daftar.
+   - **Menolak tidak membatalkan match yang sudah dibuat** — match
+     tetap ada dan berjalan lewat mekanisme timeout-forfeit yang sudah
+     dijelaskan di atas, bukan dihentikan aktif. Ini disengaja (lihat
+     alasan di atas), tapi berarti seorang penantang yang menunggu
+     lawan yang sudah jelas menolak tetap harus melalui beberapa
+     ronde timeout (masing-masing sampai 30 detik) sebelum menang —
+     bukan langsung tahu detik itu juga bahwa lawannya menolak.
+   - **Belum ada verifikasi interaktif di perangkat fisik** — beda
+     dari butir 7 dan 8, fitur ini belum pernah benar-benar dicoba
+     kirim-terima-main di device sungguhan. Langkah berikutnya kalau
+     ingin menuntaskan butir ini: pasang APK debug di dua akun/device
+     berbeda yang sudah berteman (atau satu clan), kirim tantangan,
+     pastikan tombol Tantang menyala/mati sesuai status online,
+     pastikan notifikasi push dan baris undangan muncul di sisi
+     target, coba terima (masuk ke match yang sama, kartu yang sama
+     di kedua sisi) dan coba tolak (pastikan penantang akhirnya
+     menang lewat timeout, bukan macet selamanya).
 10. Matchmaking publik — sengaja terakhir, butuh semuanya sudah berdiri
     (tingkat, pembuatan pertandingan, bot sebagai jalan keluar antrian
     sepi) dan paling rumit (antrian RTDB, klaim atomik).

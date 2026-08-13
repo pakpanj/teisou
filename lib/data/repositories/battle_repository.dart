@@ -55,12 +55,18 @@ class BattleRepository {
   /// `functions/battle_bot.js` recognizes that sentinel and plays every
   /// turn it owns automatically; nothing else about match creation
   /// changes for a bot opponent.
+  ///
+  /// [rankedMatch] defaults to `true` (public/bot matches) — pass
+  /// `false` for a friend/clan challenge started via `BattleInvite`,
+  /// per `NOTES_CARD_GAME_MODE.md`'s "Kecuali lawan teman dan clan" —
+  /// see `BattleMatch.rankedMatch`'s own doc comment for why.
   Future<String> createMatch({
     required String firstCandidateUid,
     required List<String> firstCandidateDeck,
     required String secondCandidateUid,
     required List<String> secondCandidateDeck,
     required CardTierContent cardTierContent,
+    bool rankedMatch = true,
   }) async {
     final firstGoesFirst = _random.nextBool();
     final firstUid = firstGoesFirst ? firstCandidateUid : secondCandidateUid;
@@ -88,6 +94,7 @@ class BattleRepository {
       turnOrder: turnOrder,
       officialScore: {firstCandidateUid: 0, secondCandidateUid: 0},
       cardTierContent: cardTierContent,
+      rankedMatch: rankedMatch,
     );
 
     final docRef = await _matches.add(match.toCreateMap());

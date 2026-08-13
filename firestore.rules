@@ -182,6 +182,34 @@ service cloud.firestore {
           && request.resource.data.fromUid == request.auth.uid;
     }
 
+    // Card Game Mode "Tantang" challenge (see NOTES_CARD_GAME_MODE.md's
+    // "Cara mengundang teman/clan bertanding"). Same shape as
+    // `friendRequests` above — only the target can read/answer it, via
+    // the `users/{uid}/{document=**}` wildcard, so this block only adds
+    // the one permission that wildcard doesn't cover: creating a
+    // document under someone else's subcollection. Unlike
+    // `clanInvites`/`friendRequests`, this also checks that `matchId`
+    // really does point at a `battleMatches` doc that already has both
+    // the sender and the target in its `players` — the invite is a
+    // pointer to an already-created match (see `BattleInvite.matchId`'s
+    // own doc comment for why), so this is what stops a signed-in user
+    // from writing an invite that dangles or points at somebody else's
+    // unrelated match.
+    match /users/{targetUid}/battleInvites/{inviteId} {
+      allow create: if request.auth != null
+          && request.auth.uid != targetUid
+          && request.resource.data.fromUid == request.auth.uid
+          && request.resource.data.matchId is string
+          && matchHasBothPlayers(
+              request.resource.data.matchId, request.auth.uid, targetUid);
+    }
+
+    function matchHasBothPlayers(matchId, a, b) {
+      let players =
+          get(/databases/$(database)/documents/battleMatches/$(matchId)).data.players;
+      return a in players && b in players;
+    }
+
     // Daftar teman — setiap baris `friends/{friendUid}` merepresentasikan
     // SATU orang (uid dokumennya). Siapa saja yang login boleh menulis
     // barisnya SENDIRI di dalam koleksi `friends` milik SIAPA SAJA (bukan
@@ -302,12 +330,12 @@ service cloud.firestore {
     // Card Game Mode (see NOTES_CARD_GAME_MODE.md). Only the two players
     // in a match can read or write it — a match is never a public
     // spectacle. `officialScore`/`result`/`status`/`players`/`turnOrder`/
-    // `scoredRounds`/`cardTierContent` are locked to Cloud-Function-or-
-    // creation-only: a client update that touches any of them is
-    // rejected outright, since those are exactly the fields that decide
-    // star movement (or the scoring/bot Cloud Functions' own
-    // bookkeeping) and must never be settable by a client that could lie
-    // about a win. The Cloud Functions themselves
+    // `scoredRounds`/`cardTierContent`/`rankedMatch` are locked to
+    // Cloud-Function-or-creation-only: a client update that touches any
+    // of them is rejected outright, since those are exactly the fields
+    // that decide star movement (or the scoring/bot Cloud Functions'
+    // own bookkeeping) and must never be settable by a client that
+    // could lie about a win. The Cloud Functions themselves
     // (functions/battle_scoring.js, functions/battle_bot.js) run via the
     // Admin SDK, which bypasses these rules entirely, so they need no
     // special-casing here.
@@ -321,7 +349,8 @@ service cloud.firestore {
           && request.resource.data.status == 'active'
           && request.resource.data.currentRound == 0
           && request.resource.data.result == null
-          && request.resource.data.cardTierContent is string;
+          && request.resource.data.cardTierContent is string
+          && request.resource.data.get('rankedMatch', true) is bool;
 
       allow update: if request.auth != null
           && request.auth.uid in resource.data.players
@@ -331,7 +360,8 @@ service cloud.firestore {
           && request.resource.data.players == resource.data.players
           && request.resource.data.turnOrder == resource.data.turnOrder
           && request.resource.data.get('scoredRounds', {}) == resource.data.get('scoredRounds', {})
-          && request.resource.data.get('cardTierContent', '') == resource.data.get('cardTierContent', '');
+          && request.resource.data.get('cardTierContent', '') == resource.data.get('cardTierContent', '')
+          && request.resource.data.get('rankedMatch', true) == resource.data.get('rankedMatch', true);
 
       // Write-once — no update/delete, so a submitted answer can never
       // be edited after the fact. Deliberately NOT restricted to

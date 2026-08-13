@@ -36,6 +36,7 @@ class FirestorePaths {
   static const notifications = 'notifications';
   static const battleMatches = 'battleMatches';
   static const battleAnswers = 'answers';
+  static const battleInvites = 'battleInvites';
 
   static const fieldProfile = 'profile';
   static const fieldProgress = 'progress';

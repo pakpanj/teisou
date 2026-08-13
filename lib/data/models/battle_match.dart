@@ -72,6 +72,22 @@ class BattleMatch {
   /// re-deriving a tier from `turnOrder`'s card ids on every turn.
   final CardTierContent cardTierContent;
 
+  /// Whether this match is eligible to move stars — see
+  /// `NOTES_CARD_GAME_MODE.md`'s "Kecuali lawan teman dan clan — di sana
+  /// kartunya bebas dipilih": public and bot matches are ranked (cards
+  /// locked to the player's own tier); friend/clan matches, started via
+  /// a `BattleInvite`, are never ranked (the challenger picks any card
+  /// tier freely, which would make rank an easy shortcut otherwise
+  /// ranked play would need to earn honestly). No Cloud Function reads
+  /// this yet — star movement itself hasn't been built (that's later in
+  /// Tahap 3) — but the field is written now, at creation, so a future
+  /// star-movement pass doesn't need a schema migration or an expensive
+  /// collection-group query across every `battleInvites` subcollection
+  /// just to tell which already-played matches were ranked. Set once at
+  /// creation, never changes — same immutable-after-creation treatment
+  /// as [cardTierContent].
+  final bool rankedMatch;
+
   BattleMatch({
     required this.id,
     required this.players,
@@ -84,6 +100,7 @@ class BattleMatch {
     this.result,
     this.scoredRounds = const {},
     this.cardTierContent = CardTierContent.hiragana,
+    this.rankedMatch = true,
   });
 
   /// The uid of whichever player is expected to answer
@@ -125,14 +142,15 @@ class BattleMatch {
       cardTierContent: CardTierContentX.fromKey(
         map['cardTierContent'] as String?,
       ),
+      rankedMatch: map['rankedMatch'] as bool? ?? true,
     );
   }
 
   /// Only what's needed to create a fresh match — `officialScore`
   /// starts at 0 for both players, `result` starts absent, and
   /// `scoredRounds` starts empty; none of the three is ever included in
-  /// a later client update. `cardTierContent` is written once here and
-  /// never touched again.
+  /// a later client update. `cardTierContent`/`rankedMatch` are written
+  /// once here and never touched again.
   Map<String, dynamic> toCreateMap() => {
     'players': players,
     'status': status.key,
@@ -144,6 +162,7 @@ class BattleMatch {
     'result': null,
     'scoredRounds': <String, bool>{},
     'cardTierContent': cardTierContent.key,
+    'rankedMatch': rankedMatch,
   };
 
   static DateTime? _toDateTime(dynamic value) {
