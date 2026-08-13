@@ -9389,12 +9389,27 @@ text argument, not adding quoting workarounds.
 ## Planned: Mode Game Card
 
 A card-game mode is planned but **not started** — no code, no model, no
-screens, and no product decisions. The note lives at
-`NOTES_CARD_GAME_MODE.md` and is deliberately a title plus the questions
-that have to be answered first, following the same rule already applied to
-"Belajar dari Gambar"/"Belajar dari Video": start from the product
-questions, not the architecture, because writing models and screens before
-the shape of the game is decided reliably means writing them twice.
+screens, no Cloud Function. The concept is settled and written up in
+`NOTES_CARD_GAME_MODE.md`: Yu-Gi-Oh-style decks of 20 kana/kanji cards,
+players lay a card and the opponent writes its reading, points feed the
+leaderboard, opponents chosen from friends / clan / public, free.
+
+Three decisions are called out there as blocking, and one is a measured
+data problem rather than a preference: **1,508 of 2,425 kanji (62%) have
+more than one reading** (生 has five), so "write this card's reading" has
+no single correct answer for most kanji cards. Putting a *word* on the
+card instead of a bare kanji is the suggested way out — the dataset
+already carries word examples with their readings.
+
+The other two: whether answers are typed or chosen (Kaiwa already
+abandoned free-text matching once, though a short romaji reading is a far
+easier target than a whole sentence, and `RomajiConverter` exists), and
+whether matches are live or asynchronous.
+
+One hard constraint recorded there too: **match scoring cannot be computed
+on the client** once it feeds a public leaderboard, and `firestore.rules`
+cannot validate game logic. That needs a Cloud Function — the four that
+exist today are notification triggers that decide nothing.
 
 ## Update (2026-08-13): Google Sign-In was broken for every Play tester; iOS TTS was silent; the kana flashcard was rebuilt around a chart
 
