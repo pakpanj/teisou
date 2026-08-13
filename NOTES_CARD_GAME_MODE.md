@@ -24,13 +24,17 @@ lengkapnya. **Penemuan penting di sesi ini**: CLI Firebase yang
 sebelumnya dicatat "broken" ternyata cuma masalah binary bawaan —
 `npx firebase-tools` bekerja normal dan sudah terautentikasi, jadi
 deploy Cloud Functions/Firestore/RTDB rules ke depan tidak perlu lagi
-paste manual ke Console. **Tahap 3 butir 8 (bot AI) sudah dibangun,
-diuji, DAN sudah di-deploy ke produksi** (`onBattleMatchWritten`
-tampil di `firebase functions:list`, `firestore.rules` dengan kunci
-`cardTierContent` sudah dirilis) — lihat butir 8 di bawah untuk detail
-lengkapnya. Belum diverifikasi ujung-ke-ujung di perangkat sungguhan.
-Sisanya: matchmaking publik (#10), undangan teman/clan (#9) — belum
-ada kode.
+paste manual ke Console. **Tahap 3 butir 8 (bot AI) SELESAI
+SEPENUHNYA** — dibangun, diuji dua sisi, sudah di-deploy ke produksi
+(`onBattleMatchWritten` tampil di `firebase functions:list`,
+`firestore.rules` dengan kunci `cardTierContent` sudah dirilis), DAN
+sudah diverifikasi ujung-ke-ujung di perangkat fisik sungguhan (Moto
+G52J) — pertandingan lawan bot sungguhan dimainkan sampai selesai,
+bot menjawab giliran sendiri secara otomatis, skor tersinkron benar
+lewat Cloud Function yang sama dengan lawan manusia, dan pertandingan
+berakhir dengan hasil "Menang! Kamu: 3, Lawan: 2" — lihat butir 8 di
+bawah untuk detail lengkapnya. Sisanya: matchmaking publik (#10),
+undangan teman/clan (#9) — belum ada kode.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -578,12 +582,41 @@ paling rumit**
    `onBattleAnswerCreated` yang memicu dari `...created`, karena bot
    perlu bereaksi ke setiap PERUBAHAN dokumen `battleMatches`, bukan
    cuma pembuatan dokumen `answers` baru), dan `firestore.rules`
-   dengan kunci `cardTierContent` sudah ter-release. **Belum ada
-   verifikasi ujung-ke-ujung di perangkat sungguhan** (buat
-   pertandingan bot lewat tombol "Lawan Bot" yang baru, pastikan bot
-   benar-benar menjawab otomatis dengan teks yang masuk akal, dan
-   pertandingan selesai dengan skor yang benar) — langkah berikutnya
-   sebelum butir ini benar-benar dianggap tuntas.
+   dengan kunci `cardTierContent` sudah ter-release.
+
+   **Sudah diverifikasi ujung-ke-ujung di perangkat fisik sungguhan**
+   (Moto G52J, sesi yang sama): `main.dart`'s `_TutorialGate` diubah
+   sementara supaya langsung membuka `BattleTestStartScreen` (bukan
+   `HomeScreen`), APK debug dipasang, tombol "Lawan Bot" ditekan lewat
+   `adb shell input tap` — pertandingan sungguhan langsung terbentuk
+   di `teisou-kana-master` (uid lawan `"BOT"`). Sempat terhambat
+   sebentar oleh koneksi WiFi hotspot perangkat yang putus-nyambung
+   (`logcat` menunjukkan `UnknownHostException` untuk
+   `firestore.googleapis.com` — dikonfirmasi lewat `dumpsys
+   connectivity`/`wifi`, bukan masalah kode), tapi begitu koneksi
+   pulih (dikonfirmasi lewat `ping 8.8.8.8` berhasil), pertandingan
+   langsung terbentuk normal. Dimainkan sungguhan lewat keyboard fisik
+   ADB (`input text "ne"` dst., bukan `KanaKeyboard` bawaan — kartu
+   tier Bronze/hiragana dijawab lewat romaji apa pun caranya, jadi ini
+   representatif) — tiap kali satu kartu dijawab manusia, kartu
+   berikutnya (giliran bot) langsung terlewati OTOMATIS tanpa input
+   apa pun dari saya, dan skor "Lawan" bertambah tiap kali — bukti
+   langsung bahwa `onBattleMatchWritten` bereaksi, menulis jawaban
+   bot, dan `onBattleAnswerCreated` (butir 7) menilainya lewat jalur
+   yang sama persis dengan jawaban manusia. Progresi skor nyata yang
+   terekam: 0-0 → 1-0 → 2-1 → 3-2, dan pertandingan berakhir wajar di
+   kondisi selesai 10 kartu (bukan 20 — koreksi ke "Kondisi selesai"
+   di tabel keputusan di bawah tetap benar) dengan layar **"Menang!
+   Kamu: 3, Lawan: 2"** — mengonfirmasi kesimpulan pertandingan juga
+   bekerja benar untuk lawan bot, bukan cuma sesi menjawab per-ronde
+   saja. Perubahan sementara di `main.dart` dan seluruh file screenshot
+   sisa pengujian sudah dikembalikan/dibersihkan (`git checkout --
+   lib/main.dart`) sebelum sesi ini ditutup — tidak ada jejak kode uji
+   coba yang ikut ter-commit.
+
+   **Butir 8 sekarang benar-benar tuntas** — dibangun, diuji unit dua
+   sisi, di-deploy ke produksi, DAN diverifikasi ujung-ke-ujung di
+   perangkat fisik dengan hasil yang benar.
 9. Undangan teman/clan — butuh presence (#3), dan `FriendRepository`/
    `ClanRepository` memang sudah jalan dari fitur lain.
 10. Matchmaking publik — sengaja terakhir, butuh semuanya sudah berdiri
