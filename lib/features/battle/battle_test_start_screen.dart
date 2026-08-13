@@ -5,6 +5,7 @@ import '../../core/providers.dart';
 import '../../core/services/battle_deck_builder.dart';
 import '../../core/theme/app_palette.dart';
 import '../../data/models/card_game_rank.dart';
+import '../../data/repositories/battle_repository.dart' show battleBotUid;
 import 'battle_screen.dart';
 
 /// A manual test aid for Tahap 2 butir 6 in `NOTES_CARD_GAME_MODE.md`
@@ -56,9 +57,8 @@ class _BattleTestStartScreenState extends ConsumerState<BattleTestStartScreen> {
     ).push(MaterialPageRoute(builder: (_) => BattleScreen(matchId: matchId)));
   }
 
-  Future<void> _createMatch() async {
+  Future<void> _createMatch(String opponentUid) async {
     final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
-    final opponentUid = _opponentUidController.text.trim();
     if (myUid == null || opponentUid.isEmpty) return;
 
     setState(() {
@@ -82,6 +82,7 @@ class _BattleTestStartScreenState extends ConsumerState<BattleTestStartScreen> {
             firstCandidateDeck: deck,
             secondCandidateUid: opponentUid,
             secondCandidateDeck: deck,
+            cardTierContent: rank.tier.cardContent,
           );
       if (!mounted) return;
       setState(() => _createdMatchId = matchId);
@@ -125,15 +126,32 @@ class _BattleTestStartScreenState extends ConsumerState<BattleTestStartScreen> {
               ),
             ],
             const SizedBox(height: 16),
-            FilledButton(
-              onPressed: _creating ? null : _createMatch,
-              child: _creating
-                  ? const SizedBox(
-                      height: 16,
-                      width: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : Text(s.battleTestCreateButton),
+            Row(
+              children: [
+                Expanded(
+                  child: FilledButton(
+                    onPressed: _creating
+                        ? null
+                        : () => _createMatch(_opponentUidController.text.trim()),
+                    child: _creating
+                        ? const SizedBox(
+                            height: 16,
+                            width: 16,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        : Text(s.battleTestCreateButton),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: _creating
+                        ? null
+                        : () => _createMatch(battleBotUid),
+                    child: Text(s.battleTestBotButton),
+                  ),
+                ),
+              ],
             ),
             if (_createdMatchId != null) ...[
               const SizedBox(height: 8),

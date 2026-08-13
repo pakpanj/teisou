@@ -52,6 +52,18 @@ void main() {
       expect(CardGameTier.emerald.cardContent, CardTierContent.kanjiN2N1);
     });
 
+    test('CardTierContentX key/fromKey round-trip for every tier', () {
+      for (final content in CardTierContent.values) {
+        expect(CardTierContentX.fromKey(content.key), content);
+      }
+    });
+
+    test('CardTierContentX.fromKey falls back to hiragana for null or '
+        'unknown keys', () {
+      expect(CardTierContentX.fromKey(null), CardTierContent.hiragana);
+      expect(CardTierContentX.fromKey('nonsense'), CardTierContent.hiragana);
+    });
+
     test('only gold and up answer with the kana keyboard', () {
       expect(CardGameTier.bronze.answersWithKanaKeyboard, isFalse);
       expect(CardGameTier.silver.answersWithKanaKeyboard, isFalse);

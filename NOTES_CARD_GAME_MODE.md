@@ -24,8 +24,10 @@ lengkapnya. **Penemuan penting di sesi ini**: CLI Firebase yang
 sebelumnya dicatat "broken" ternyata cuma masalah binary bawaan —
 `npx firebase-tools` bekerja normal dan sudah terautentikasi, jadi
 deploy Cloud Functions/Firestore/RTDB rules ke depan tidak perlu lagi
-paste manual ke Console. Sisanya: bot, matchmaking, undangan di
-Tahap 3 — belum ada kode.
+paste manual ke Console. **Tahap 3 butir 8 (bot AI) sudah dibangun dan
+diuji, tapi belum di-deploy ke produksi** — lihat butir 8 di bawah
+untuk detail lengkapnya. Sisanya: matchmaking publik (#10), undangan
+teman/clan (#9) — belum ada kode.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -437,10 +439,144 @@ fitur "peringkat" dikerjakan (biasanya di akhir).
 
 **Tahap 3 — lawan, dari yang paling mudah diuji sendirian ke yang
 paling rumit**
-8. **Bot dulu**, bukan publik atau teman — pakai kembali seluruh pipa
-   Tahap 2, bisa diuji sendirian tanpa koordinasi dengan orang lain.
-   Kalau ada yang salah di penilaian/skor/bintang, ketahuan di sini
-   dulu, sebelum ada pemain sungguhan terdampak.
+8. ✅ **Selesai — dibangun dan diuji, belum di-deploy ke produksi**
+   (2026-08-13). `functions/battle_bot.js` (baru) menambah trigger
+   kedua, `onBattleMatchWritten`, terpicu tiap kali dokumen
+   `battleMatches/{matchId}` ditulis. Bentuknya persis seperti yang
+   dikonfirmasi di bagian "Bentuk konkret bot" di bawah — pertandingan
+   bot adalah `battleMatches` biasa, satu slot `players` diisi sentinel
+   `"BOT"` (`battleBotUid` di Dart/`BOT_UID` di JS, tidak pernah bisa
+   bentrok dengan uid Firebase Auth asli yang selalu 28 karakter acak)
+   — begitu giliran menjawab jatuh ke bot, trigger ini langsung menulis
+   jawaban ke `answers/{round}`, lalu `onBattleAnswerCreated` (butir 7)
+   menilainya lewat **satu jalur penilaian yang sama** dengan lawan
+   manusia — sesuai alasan yang sudah dikunci: "supaya bintang/poin/EXP
+   dari lawan bot lewat SATU sumber kebenaran yang sama dengan lawan
+   manusia".
+
+   **Keputusan/temuan nyata selama membangun, bukan sekadar detail**:
+   1. **Kurva kesulitan** dikunci per `cardTierContent` (lihat tabel
+      "Kurva kesulitan" di bawah) — `BattleMatch` dapat field baru
+      `cardTierContent` (dikirim `BattleRepository.createMatch` saat
+      pertandingan dibuat, dikunci di `firestore.rules` seperti
+      `officialScore`/`scoredRounds`), supaya bot tidak perlu
+      menurunkan ulang tingkat kesulitan dari isi `turnOrder` di tiap
+      giliran. `CardTierContentX.key`/`fromKey`
+      (`card_game_rank.dart`) jadi jembatan string antara enum Dart dan
+      key JS di `battle_bot.js`'s `DIFFICULTY` map — satu sumber
+      penamaan, tidak ada tabel terjemahan terpisah.
+   2. **`revealAt` sengaja kosmetik, bukan pengaman keamanan** — jawaban
+      bot (benar/salah + teksnya) diputuskan dan ditulis SAAT ITU JUGA
+      begitu giliran bot tiba; `officialScore` sudah final di titik
+      itu. `revealAt` (waktu tulis + jeda acak sesuai rentang tingkat)
+      cuma penanda opsional buat klien "kapan boleh menampilkan
+      jawaban bot", supaya terasa seperti bot sedang berpikir. Klien
+      Flutter **belum** memakai `revealAt` (masih menampilkan jawaban
+      bot secepat data sampai) — sengaja ditunda, bukan lupa, karena
+      menambah UI penundaan buatan bukan bagian dari "verifikasi
+      penilaian bot benar", yang jadi fokus utama butir ini.
+   3. **Sintesis romaji→hiragana untuk jawaban kartu kanji bot** adalah
+      bagian paling rumit. Aturan baku proyek ini adalah "jangan pernah
+      bangun konversi romaji→kana otomatis, ambigu secara linguistik"
+      — tapi di sini dipakai sengaja dengan alasan yang berbeda: hasil
+      sintesis bot **tidak perlu cocok dengan ejaan kamus yang "benar"
+      secara linguistik**, cuma perlu **round-trip lewat fungsi
+      `toRomaji` maju yang sama** yang sudah dipakai penilai (butir 7)
+      — jadi kekhawatiran ambiguitas biasa (じ vs ぢ, お vs を) tidak
+      berlaku, karena arah pembandingnya hanya satu fungsi tunggal,
+      bukan "bahasa Jepang yang benar" secara umum. Dikonfirmasi lewat
+      skrip Python: **tidak ada dua entri hiragana di `kana_data.json`
+      yang berbagi string romaji sama**, jadi tabel pencarian
+      terbaliknya tidak ambigu secara konstruksi.
+
+      Diverifikasi bukan cuma dengan beberapa contoh tangan, tapi
+      **seluruh 7.274 bacaan nyata** di
+      `functions/data/kanji_word_readings.json` lewat skrip
+      round-trip penuh (`hiraganaForRomaji(romaji)` lalu `toRomaji()`
+      hasilnya harus kembali sama) — proses ini sendiri menemukan dan
+      memperbaiki beberapa bug nyata secara berurutan:
+      - Set konsonan pemicu gemination (っ) awalnya lupa memasukkan
+        `'c'`, jadi "icchi" gagal terparse — set dibangun ulang dari
+        pengecekan nyata semua huruf konsonan awal romaji hiragana di
+        dataset, bukan tebakan.
+      - 317 kegagalan sisa ternyata semuanya apostrof/strip/spasi yang
+        dipakai Hepburn sebagai penanda batas suku kata ("ren'ai",
+        "ken-eki", "keiken ga asai") — diperbaiki dengan memecah input
+        di tiga tanda itu dulu, memparsing tiap segmen sendiri-sendiri,
+        baru digabung.
+      - Sempat dicoba menambah kasus khusus "tch" sebelum ち/ちゃ/ちゅ/
+        ちょ (ejaan gemination Hepburn yang lebih baku untuk kata
+        seperti "botchan") — **tapi ini dibatalkan lagi**, karena
+        `toRomaji` (fungsi maju yang sama, hasil porting dari
+        `romaji_converter.dart`) selalu meng-encode っ+ちゃ sebagai
+        "ccha" (menggandakan huruf pertama dari romaji mora
+        berikutnya, "cha"), tidak pernah "tcha" — menambah "tch" di
+        sisi pembalik justru MERUSAK konsistensi-diri yang jadi syarat
+        sebenarnya, walau lebih "benar" secara linguistik umum.
+        Dibiarkan `null` untuk 2 entri ini ("botchan", "setchuu") —
+        `buildBotAnswer` sudah menangani `null` dengan baik (jatuh ke
+        jawaban string kosong, dinilai salah, tidak pernah crash).
+
+      **Temuan sampingan yang berharga**: ketidakcocokan "tch" vs
+      "cch" ini sebenarnya membuka celah nyata yang **sudah ada
+      sebelum bot dibangun**, di `battle_scoring.js` yang sudah
+      di-deploy (butir 7) — kalau ada PEMAIN MANUSIA yang mengetik
+      hiragana yang benar-benar tepat untuk kata seperti 坊っちゃん
+      (ぼっちゃん), `toRomaji`-nya scorer akan menghasilkan "bocchan",
+      bukan "botchan" yang tersimpan sebagai `correctRomaji` — pemain
+      itu akan dinilai SALAH walau jawabannya benar. Ini bukan bug
+      yang diperkenalkan oleh bot, dan cuma memengaruhi 2 dari 7.274
+      bacaan (0,03%) — dicatat di sini sebagai celah data/penilaian
+      yang sudah ada, berprioritas rendah karena sangat jarang, bukan
+      sesuatu yang diperbaiki diam-diam di sesi ini. Perbaikan yang
+      tepat (mengoreksi ejaan `correctRomaji` di dataset supaya cocok
+      dengan yang benar-benar dihitung `toRomaji`, bukan mengubah kode
+      penilai) adalah pekerjaan koreksi data terpisah, di luar cakupan
+      "bangun bot".
+
+      4 kegagalan `null` lain yang tersisa (total jadi 6) adalah kasus
+      pinggiran nyata, bukan bug: "kouhu" (kemungkinan selisih ejaan
+      "hu" vs "fu" di dataset sumber), "Wang" (nama keluarga pinyin
+      Tionghoa, bukan Hepburn Jepang sama sekali), dan dua "Yō .../"
+      (mengandung makron non-ASCII, tidak ada di tabel romaji manapun)
+      — semuanya kata benda asing/pinjaman langka, bukan kosakata
+      umum, dan `buildBotAnswer` menangani semuanya dengan aman.
+   4. **Pengecoh jawaban salah** meniru pola (bukan kode) yang sudah
+      ada di `kanji_combo_repository.dart` — persis seperti yang
+      disarankan rumusan ini sendiri: satu mora dibalik dakuten/
+      handakuten-nya (か↔が dst.), atau kalau tidak ada pasangan
+      dakuten, dua mora bertetangga ditukar posisinya. `mutateHiragana`
+      dijamin tidak pernah mengembalikan input yang persis sama.
+
+   **Diuji dua sisi lagi**: `functions/battle_bot.test.js` (baru, 16
+   test, `node --test`) — mencakup round-trip penuh dataset (dengan 6
+   pengecualian yang didaftar eksplisit, jadi kalau ada bacaan BARU
+   yang gagal round-trip, test-nya gagal keras, bukan diam-diam
+   ditambahkan ke daftar pengecualian), gemination, youon, ketiga
+   pemisah batas suku kata, `mutateHiragana` tidak pernah no-op,
+   `difficultyFor` mengetat sesuai tingkat, `buildBotAnswer` null untuk
+   `cardId` yang tidak ada, rasio benar/salah kasar-kasar cocok
+   `correctProbability` lewat banyak percobaan, `revealAt` selalu di
+   rentang tingkatnya, dan satu kartu kanji nyata (学生, "gakusei")
+   dipaksa benar untuk memastikan pipa sintesis-lalu-nilai bekerja
+   ujung ke ujung. `flutter analyze` bersih, seluruh test Dart hijau
+   (405 test — 2 baru: `CardTierContentX.key`/`fromKey`, dan
+   `BattleMatch.cardTierContent` parse/serialize).
+
+   **`BattleTestStartScreen`** (alat uji manual yang sama dari butir 6)
+   dapat tombol kedua "Lawan Bot" di sebelah tombol buat-pertandingan
+   biasa — memanggil `createMatch(opponentUid: battleBotUid)`, jalur
+   yang sama persis dengan lawan manusia, cuma uid lawannya beda.
+
+   **Belum di-deploy ke produksi** — `functions/index.js` sudah
+   diperbarui mengekspor `onBattleMatchWritten`, tapi `npx
+   firebase-tools deploy` belum dijalankan untuk perubahan ini, dan
+   `firestore.rules` versi terbaru (dengan kunci `cardTierContent`)
+   juga belum di-deploy. Belum ada verifikasi ujung-ke-ujung di
+   perangkat sungguhan (buat pertandingan bot lewat tombol baru,
+   pastikan bot menjawab otomatis dengan teks yang masuk akal, dan
+   pertandingan selesai dengan benar) — langkah berikutnya sebelum
+   butir ini benar-benar dianggap tuntas.
 9. Undangan teman/clan — butuh presence (#3), dan `FriendRepository`/
    `ClanRepository` memang sudah jalan dari fitur lain.
 10. Matchmaking publik — sengaja terakhir, butuh semuanya sudah berdiri

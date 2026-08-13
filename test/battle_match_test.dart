@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:kana_master/data/models/battle_answer.dart';
 import 'package:kana_master/data/models/battle_match.dart';
+import 'package:kana_master/data/models/card_game_rank.dart';
 import 'package:kana_master/data/models/turn_order_entry.dart';
 
 void main() {
@@ -121,6 +122,32 @@ void main() {
         officialScore: {'uid-a': 0, 'uid-b': 0},
       );
       expect(match.currentAnswererUid, 'uid-b');
+    });
+
+    test('fromMap parses cardTierContent, defaulting to hiragana when '
+        'absent', () {
+      final withTier = BattleMatch.fromMap('m', {
+        'cardTierContent': 'kanjiN4N3',
+      });
+      expect(withTier.cardTierContent, CardTierContent.kanjiN4N3);
+
+      final withoutTier = BattleMatch.fromMap('m', {});
+      expect(withoutTier.cardTierContent, CardTierContent.hiragana);
+    });
+
+    test('toCreateMap carries cardTierContent as its string key', () {
+      final match = BattleMatch(
+        id: '',
+        players: ['uid-a', 'uid-b'],
+        status: BattleMatchStatus.active,
+        currentRound: 0,
+        turnOrder: [
+          TurnOrderEntry(round: 0, deckOwnerUid: 'uid-a', cardId: 'k1'),
+        ],
+        officialScore: {'uid-a': 0, 'uid-b': 0},
+        cardTierContent: CardTierContent.kanjiN2N1,
+      );
+      expect(match.toCreateMap()['cardTierContent'], 'kanjiN2N1');
     });
 
     test('currentAnswererUid is null once currentRound runs past the end '

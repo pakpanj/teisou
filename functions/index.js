@@ -263,3 +263,9 @@ exports.onUserNotificationCreated = onDocumentCreated(
 // because it also bundles two real data files and a ported
 // RomajiConverter, which would otherwise bloat this one considerably.
 exports.onBattleAnswerCreated = require("./battle_scoring").onBattleAnswerCreated;
+
+// Card Game Mode's bot opponent — see battle_bot.js. Fires whenever a
+// battleMatches doc changes and it's the BOT sentinel's turn to answer;
+// writes a bot answer, which onBattleAnswerCreated above then scores
+// through the exact same pipeline as a human answer.
+exports.onBattleMatchWritten = require("./battle_bot").onBattleMatchWritten;

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'card_game_rank.dart';
 import 'turn_order_entry.dart';
 
 enum BattleMatchStatus { active, finished }
@@ -65,6 +66,12 @@ class BattleMatch {
   /// for anything.
   final Map<String, bool> scoredRounds;
 
+  /// Which tier's content this match's cards were drawn from — set once
+  /// at creation, never changes. The bot AI (`functions/battle_bot.js`)
+  /// reads this directly to pick its difficulty curve, rather than
+  /// re-deriving a tier from `turnOrder`'s card ids on every turn.
+  final CardTierContent cardTierContent;
+
   BattleMatch({
     required this.id,
     required this.players,
@@ -76,6 +83,7 @@ class BattleMatch {
     required this.officialScore,
     this.result,
     this.scoredRounds = const {},
+    this.cardTierContent = CardTierContent.hiragana,
   });
 
   /// The uid of whichever player is expected to answer
@@ -114,13 +122,17 @@ class BattleMatch {
             ) ??
             const {},
       ),
+      cardTierContent: CardTierContentX.fromKey(
+        map['cardTierContent'] as String?,
+      ),
     );
   }
 
   /// Only what's needed to create a fresh match — `officialScore`
   /// starts at 0 for both players, `result` starts absent, and
   /// `scoredRounds` starts empty; none of the three is ever included in
-  /// a later client update.
+  /// a later client update. `cardTierContent` is written once here and
+  /// never touched again.
   Map<String, dynamic> toCreateMap() => {
     'players': players,
     'status': status.key,
@@ -131,6 +143,7 @@ class BattleMatch {
     'officialScore': {for (final uid in players) uid: 0},
     'result': null,
     'scoredRounds': <String, bool>{},
+    'cardTierContent': cardTierContent.key,
   };
 
   static DateTime? _toDateTime(dynamic value) {

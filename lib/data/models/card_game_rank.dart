@@ -75,6 +75,27 @@ extension CardGameTierX on CardGameTier {
 /// a choice; see [CardGameTierX.cardContent].
 enum CardTierContent { hiragana, katakanaAndKanaCombo, kanjiN5, kanjiN4N3, kanjiN2N1 }
 
+extension CardTierContentX on CardTierContent {
+  /// Stored on `BattleMatch.cardTierContent` at creation — lets the bot
+  /// AI (`functions/battle_bot.js`) read a match's difficulty tier
+  /// directly instead of re-deriving it from `turnOrder`'s card ids.
+  String get key => switch (this) {
+    CardTierContent.hiragana => 'hiragana',
+    CardTierContent.katakanaAndKanaCombo => 'katakanaAndKanaCombo',
+    CardTierContent.kanjiN5 => 'kanjiN5',
+    CardTierContent.kanjiN4N3 => 'kanjiN4N3',
+    CardTierContent.kanjiN2N1 => 'kanjiN2N1',
+  };
+
+  static CardTierContent fromKey(String? key) => switch (key) {
+    'katakanaAndKanaCombo' => CardTierContent.katakanaAndKanaCombo,
+    'kanjiN5' => CardTierContent.kanjiN5,
+    'kanjiN4N3' => CardTierContent.kanjiN4N3,
+    'kanjiN2N1' => CardTierContent.kanjiN2N1,
+    _ => CardTierContent.hiragana,
+  };
+}
+
 /// A player's current Card Game Mode standing: tier, division within
 /// that tier, stars within the current division, and the season this
 /// standing belongs to.

@@ -6,6 +6,12 @@ import '../../core/firebase/firestore_paths.dart';
 import '../../core/services/battle_turn_order_builder.dart';
 import '../models/battle_answer.dart';
 import '../models/battle_match.dart';
+import '../models/card_game_rank.dart';
+
+/// The sentinel opponent uid for a bot match — never a real Firebase Auth
+/// uid (those are always 28-character random strings), so this can never
+/// collide. See `functions/battle_bot.js` for the server-side half.
+const battleBotUid = 'BOT';
 
 /// Reads and writes `battleMatches/{matchId}` and its `answers`
 /// subcollection — see `NOTES_CARD_GAME_MODE.md`'s "Bentuk data" /
@@ -43,12 +49,18 @@ class BattleRepository {
 
   /// Creates a fresh match: flips a coin for who plays round 0, builds
   /// the 20-round `turnOrder` via [buildTurnOrder], and writes the
-  /// document. Returns the new match's id.
+  /// document. Returns the new match's id. Pass [battleBotUid] as
+  /// [secondCandidateUid] (with any deck built from the same tier the
+  /// human is at) for a bot match — the trigger in
+  /// `functions/battle_bot.js` recognizes that sentinel and plays every
+  /// turn it owns automatically; nothing else about match creation
+  /// changes for a bot opponent.
   Future<String> createMatch({
     required String firstCandidateUid,
     required List<String> firstCandidateDeck,
     required String secondCandidateUid,
     required List<String> secondCandidateDeck,
+    required CardTierContent cardTierContent,
   }) async {
     final firstGoesFirst = _random.nextBool();
     final firstUid = firstGoesFirst ? firstCandidateUid : secondCandidateUid;
@@ -75,6 +87,7 @@ class BattleRepository {
       currentRound: 0,
       turnOrder: turnOrder,
       officialScore: {firstCandidateUid: 0, secondCandidateUid: 0},
+      cardTierContent: cardTierContent,
     );
 
     final docRef = await _matches.add(match.toCreateMap());

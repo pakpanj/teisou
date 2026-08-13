@@ -1344,6 +1344,7 @@ class AppStrings {
   String get battleTestOpponentUidLabel => _t('UID lawan', 'Opponent UID');
   String get battleTestCreateButton =>
       _t('Buat Pertandingan', 'Create Match');
+  String get battleTestBotButton => _t('Lawan Bot', 'Play vs Bot');
   String get battleTestJoinDescription => _t(
         'Gabung ke match yang sudah dibuat perangkat lain (masukkan matchId '
         'yang ditampilkan di atas pada device yang membuatnya).',
