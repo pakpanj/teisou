@@ -9495,6 +9495,27 @@ identity between cards. Simplest route recorded: the system keyboard for
 romaji (every phone has Latin) and the in-app kana keyboard for hiragana,
 with the switch made to feel deliberate rather than abrupt.
 
+A **second design round** (7 screens plus a rules card) then landed the
+decided rules correctly: no HP or damage, tiered stars (Pemula III →
+Pemula II, +1 star), stickers with no free-text chat, no deck-level bonus,
+and a result screen that splits the score into "Ronde 1-10: 5-5 (Imbang)"
+and "Ronde 11-15: 2-0" so the overtime reads. The kana keyboard is drawn
+with っ, tenten, maru and small ya/yu/yo.
+
+It settled two more things by drawing them: **the player chooses which card
+to play each turn** rather than the system dealing it — which adds a little
+strategy and lets a hard card be held for a tight moment — and there are
+**seasons**.
+
+One error in it matters far more than it looks: **the question card prints
+furigana above the kanji** (学生 with がくせい over it) while asking the
+player to type that reading. That is the answer shown on the question, and
+it voids the mechanic rather than merely looking wrong. The question card
+carries the kanji alone; the reading belongs after the answer, where the
+result screen already puts it. The prompt in the note now forbids it
+explicitly. Minor and also noted: the drawn keyboard has duplicate columns,
+and the bottom nav is five tabs against the app's three.
+
 Three findings from checking the data rather than assuming it, all of
 which the answer-checking path depends on:
 
