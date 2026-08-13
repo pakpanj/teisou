@@ -22,8 +22,8 @@ kartu dan lawan menulis bacaannya.
 | Cara mengetik hiragana | **Keyboard kana bawaan aplikasi** |
 | Alur pertandingan | **Serentak**, dua pemain online bersamaan |
 | Kondisi selesai | **Berakhir di 10 kartu**, poin terbanyak menang |
-| Batas waktu | **Ada timer per giliran** |
-| Kalau seri | **Lanjut dengan timer dipercepat** sampai ada yang unggul |
+| Batas waktu | **Kartu 1–10: 30 detik per kartu** |
+| Kalau seri | **Kartu 11–20: waktunya dipercepat tiap kartu** |
 | Lawan | Teman, clan, atau publik |
 | Poin | Diakumulasi ke rank / papan peringkat |
 | Harga | Gratis |
@@ -52,9 +52,27 @@ selisih poin, bukan tersingkir di giliran ketiga.
 
 ### Timer, dan cara seri diselesaikan
 
-Tiap giliran punya batas waktu. Kalau setelah 10 kartu poinnya masih sama,
-pertandingan **tidak berhenti seri** — permainan lanjut dengan **timer
-dipercepat** sampai salah satu unggul.
+**Kartu 1–10 diberi 30 detik per kartu.** Kalau setelah kartu ke-10 poinnya
+masih sama, pertandingan **tidak berhenti seri** — lanjut ke **kartu 11–20
+dengan waktu yang dipercepat tiap kartu** sampai salah satu unggul.
+
+> **Angka 30 detik menentukan panjang pertandingan, dan hasilnya sangat
+> berbeda tergantung satu hal yang belum diputuskan:**
+>
+> - Kalau **kedua pemain menjawab bersamaan**, satu kartu = 30 detik, jadi
+>   10 kartu ≈ **5 menit**. Masuk akal.
+> - Kalau **bergantian** (A mengeluarkan kartu, B menjawab, lalu sebaliknya),
+>   satu kartu memakan 2×30 detik, jadi 10 kartu ≈ **10 menit** — justru
+>   lebih lama daripada 7 menit yang tadi dihindari.
+>
+> Karena mode ini serentak, menjawab bersamaan yang paling masuk akal. Tapi
+> ini perlu diputuskan sadar, bukan kebetulan.
+
+**Saran: perlakukan 30 detik sebagai batas atas, bukan durasi tetap** —
+kartu lanjut begitu kedua pemain sudah menjawab. Tanpa itu, kartu kana yang
+jawabannya cuma "a" tetap memakan 30 detik penuh dan pertandingan terasa
+banyak menunggu. Ini juga menghapus perlunya timer berbeda untuk kartu kana
+dan kartu kanji.
 
 Dua hal yang menyenangkan dari bentuk ini, dan keduanya kebetulan cocok
 dengan keputusan yang sudah diambil sebelumnya:
@@ -148,15 +166,14 @@ Ini juga lompatan arsitektur terbesar yang pernah diambil aplikasi ini.
 Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
 
 **Aturan main**
-- 10 kartu itu per pemain atau total? (lihat catatan di atas)
-- Timer normalnya berapa detik? Perlu diingat kartu kanji dijawab dengan
-  mengetik hiragana lewat keyboard bawaan aplikasi — itu jelas lebih lama
-  daripada mengetik romaji untuk kartu kana, jadi mungkin keduanya tidak
-  pantas diberi waktu yang sama.
+- **Kedua pemain menjawab bersamaan atau bergantian?** Ini yang paling
+  mendesak — menentukan pertandingan jadi 5 menit atau 10 menit (lihat
+  catatan timer di atas).
+- 30 detik itu batas atas atau durasi tetap? (saran: batas atas)
+- Kartu 11–20 dipercepat sebanyak apa tiap kartu? Misalnya turun 3 detik
+  (30 → 27 → … → 3) atau dipangkas separuh tiap kartu.
 - Habisnya waktu dihitung jawaban salah, atau sekadar lewat tanpa poin?
-- Di babak tambahan, timernya dipercepat sekali lalu tetap, atau makin
-  cepat tiap kartu?
-- Kalau 10 kartu babak tambahan habis dan masih imbang juga, hasilnya apa?
+- Kalau kartu ke-20 habis dan masih imbang juga, hasilnya apa?
 - Kedua pemain menjawab bersamaan, atau bergantian?
 - Deck 20 kartu dipilih sendiri, atau dibagikan otomatis dari level JLPT
   yang dipilih?

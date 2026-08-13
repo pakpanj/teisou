@@ -9406,8 +9406,9 @@ each match and the cards differ between games; and unlike a lives format
 the weaker player still plays all 10 and still gets 10 questions to learn
 from, losing on points rather than being knocked out on the third turn.
 
-Turns are timed, and a draw at 10 cards is not a draw: play continues with
-the timer accelerated until someone pulls ahead. Two things fall out of
+Turns are timed at **30 seconds for cards 1-10**, and a draw at card 10 is
+not a draw: play continues through **cards 11-20 with the clock shortening
+each card** until someone pulls ahead. Two things fall out of
 that neatly — the unused half of the 20-card deck is exactly the material
 for the extra round, and a shortening timer forces a result on its own. It
 also caps: overtime cannot exceed 10 cards before the deck runs out.
@@ -9416,6 +9417,16 @@ also caps: overtime cannot exceed 10 cards before the deck runs out.
 can slow or stop it, which goes straight into a public leaderboard, so the
 timer has to be anchored to a server timestamp — the same reasoning that
 already puts scoring in a Cloud Function.
+
+Two consequences of the 30-second figure are flagged in the note rather
+than left to be discovered. It decides match length only in combination
+with a question still open — simultaneous answering makes 10 cards about
+five minutes, strict alternation makes it ten, which is *longer* than the
+seven-minute case the 10-card limit was chosen to avoid. And 30 seconds is
+sensible for a kanji word typed on an in-app kana keyboard but enormous for
+a kana card whose answer is "a", so the suggestion recorded is to treat it
+as a **ceiling** — the card advances once both players have answered —
+which also removes any need for separate timers per card type.
 
 Two things that have to be built and are not small:
 
