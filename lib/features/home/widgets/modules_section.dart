@@ -9,9 +9,11 @@ import '../../../core/widgets/mascot_guide_bubble.dart';
 import '../../../core/widgets/mascot_widget.dart';
 import '../../../data/models/module_info.dart';
 import '../../../data/models/kana_type.dart';
+import '../../../data/models/card_game_rank.dart';
 import '../../bab/bab_home_screen.dart';
 import '../../bab/bab_providers.dart';
 import '../../bab/widgets/bab_ring_badge.dart';
+import '../../battle/battle_matchmaking_screen.dart';
 import '../../bunpou/bunpou_home_screen.dart';
 import '../../choukai/choukai_home_screen.dart';
 import '../../dokkai/dokkai_home_screen.dart';
@@ -96,6 +98,14 @@ class ModulesSection extends ConsumerWidget {
         ),
         const SizedBox(height: 12),
         const _BabCurriculumCard(),
+        const SizedBox(height: 28),
+        _SectionHeader(
+          s.sectionBattle,
+          emoji: '⚔',
+          color: palette.secondaryBlue,
+        ),
+        const SizedBox(height: 12),
+        const _CardGameCard(),
         const SizedBox(height: 28),
         // Vocabulary/kanji and practice modules side by side, matching how
         // often a learner reaches for one right after the other — not just
@@ -285,6 +295,55 @@ class ModulesSection extends ConsumerWidget {
           ],
         ),
       ],
+    );
+  }
+}
+
+/// Entry point into Card Game Mode, and — until a dedicated screen for it
+/// exists — the only place in the app that shows a player their standing
+/// without starting anything.
+///
+/// The mode's whole engine (matchmaking, bot, server-side scoring, the
+/// star ladder) was finished and deployed while remaining unreachable
+/// from Home: the only way in was a friend challenge from `ChatHubScreen`,
+/// so public play existed on the server and nowhere in the app. This card
+/// is that missing door.
+///
+/// A [ConsumerWidget] rather than a plain card because the subtitle names
+/// the current tier — a card that reads "Bronze V · 1/3 bintang" is an
+/// invitation to climb, where a fixed description is just another module.
+/// The standing is allowed to be absent (still loading, or a failed read):
+/// it falls back to the generic subtitle rather than blocking the door,
+/// since nothing about *entering* a match depends on knowing the rank
+/// first — the matchmaking screen re-reads it anyway.
+class _CardGameCard extends ConsumerWidget {
+  const _CardGameCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
+    final palette = context.palette;
+    final rank = ref.watch(cardGameRankProvider).valueOrNull;
+
+    final subtitle = rank == null
+        ? s.cardGameSubtitle
+        : s.cardGameSubtitleWithRank(
+            rank.displayName,
+            rank.tier.hasDivisions
+                ? s.battleRankStars(rank.stars, rank.tier.starsPerDivision)
+                : s.battleRankStarsUncapped(rank.stars),
+          );
+
+    return _AvailableModuleCard(
+      emoji: '⚔',
+      backgroundColor: palette.katakanaCardBg,
+      iconColor: palette.secondaryBlue,
+      title: s.cardGameTitle,
+      subtitle: subtitle,
+      onTap: () => AppNavigator.slideFromRight(
+        context,
+        const BattleMatchmakingScreen(),
+      ),
     );
   }
 }

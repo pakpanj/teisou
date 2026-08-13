@@ -91,6 +91,7 @@ class AppStrings {
   String get sectionVocabKanji => _t('Kosakata & Kanji', 'Vocabulary & Kanji');
   String get sectionGrammar => _t('Tata Bahasa', 'Grammar');
   String get sectionPractice => _t('Latihan', 'Practice');
+  String get sectionBattle => _t('Bertanding', 'Battle');
   String get sectionTools => _t('Alat', 'Tools');
   String get comingSoonHeader => _t('Segera Hadir', 'Coming Soon');
   String get fixingBadge => _t('Diperbaiki', 'Fixing');
@@ -1395,8 +1396,10 @@ class AppStrings {
       );
 
   // Tahap 3 butir 10 — matchmaking publik (see NOTES_CARD_GAME_MODE.md).
+  // Dropped the "(dev)" this carried while the screen was reachable only
+  // through a hand-edited main.dart — it is on the Home page now.
   String get battleMatchmakingTitle =>
-      _t('Cari Lawan Publik (dev)', 'Find Public Opponent (dev)');
+      _t('Cari Lawan', 'Find an Opponent');
   String battleMatchmakingDescription(String tierLabel) => _t(
         'Kamu akan dicari lawan di tingkatmu sendiri ($tierLabel). Kalau '
             'tidak ada lawan dalam 20 detik, kamu otomatis melawan bot.',
@@ -1425,6 +1428,15 @@ class AppStrings {
   // words in both languages here, and every ranked game an Indonesian
   // player has seen uses them untranslated.
   String get battleRankStandingLabel => _t('Peringkatmu', 'Your standing');
+  String get cardGameTitle => _t('Mode Kartu', 'Card Mode');
+  String get cardGameSubtitle => _t(
+        'Adu cepat baca kana & kanji lawan pemain lain',
+        'Race another player to read kana & kanji',
+      );
+  /// Shown once the player's standing has loaded, so the card itself
+  /// answers "where am I?" without opening anything.
+  String cardGameSubtitleWithRank(String standing, String stars) =>
+      _t('$standing · $stars', '$standing · $stars');
   String battleRankStars(int stars, int perDivision) =>
       _t('$stars/$perDivision bintang', '$stars/$perDivision stars');
   String battleRankStarsUncapped(int stars) =>

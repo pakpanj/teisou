@@ -54,6 +54,35 @@ deploy yang benar ke depannya, lihat "Penemuan penting" di butir 7.
    `cardGameStarTotal`/`cardGameSeason` di `leaderboard/{uid}`), tapi
    belum ada layar yang membacanya.
 
+3. ✅ **SELESAI (2026-08-14): pintu masuk dari Home sudah ada.** Sampai
+   hari ini seluruh mesin mode ini — matchmaking, bot, penilaian di
+   server, tangga bintang — sudah jadi dan ter-deploy tapi **tidak bisa
+   dibuka pengguna sungguhan sama sekali**: satu-satunya jalan masuk
+   adalah tombol Tantang di `ChatHubScreen` (khusus lawan teman), dan
+   lawan publik cuma bisa dicoba dengan menyunting `main.dart` sementara.
+   Sekarang ada bagian **"Bertanding"** di Home berisi kartu **"Mode
+   Kartu"** (`_CardGameCard` di `modules_section.dart`) yang langsung
+   membuka `BattleMatchmakingScreen`.
+
+   Kartunya sekaligus jadi satu-satunya tempat pemain bisa melihat
+   peringkatnya tanpa memulai apa pun — subjudulnya menampilkan
+   tingkat + bintang sungguhan ("Bronze IV · 1/3 bintang"), diambil dari
+   `cardGameRankProvider`. Kalau peringkatnya belum termuat, subjudulnya
+   jatuh ke deskripsi biasa, bukan memblokir pintunya — masuk
+   pertandingan sama sekali tidak bergantung pada tahu peringkat lebih
+   dulu.
+
+   Judul layar matchmaking-nya juga dilepas dari "(dev)" karena sekarang
+   benar-benar dilihat pengguna, dan **tombol back-nya muncul dengan
+   sendirinya** begitu layar itu di-push dari Home (sebelumnya tidak ada
+   karena ia jadi akar navigasi di build tes).
+
+   Dijaga oleh `test/widget_test.dart` ("HomeScreen has a way into Card
+   Game Mode") — dicek benar-benar menggigit dengan menghapus kartunya.
+   Ini justru kegagalan yang tidak bisa dilihat pemeriksaan lain: semua
+   layarnya meng-compile, merender, dan lulus tesnya sendiri sambil tetap
+   tidak bisa dijangkau.
+
 ### Hal kecil lain yang perlu diingat
 
 - **Navigasi produksinya setengah ada** — dicek ulang ke kode, dan ini

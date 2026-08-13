@@ -9396,10 +9396,12 @@ a bot opponent, friend/clan challenges, public matchmaking, and — as of
 2026-08-14 — the star ladder that moves a player's rank when a ranked
 match ends (`functions/battle_stars.js`).
 
-**Two gaps stand between this and something a learner can use.** There
-is **no entry point from Home at all** for public matchmaking (only the
-friend-challenge path is reachable, from `ChatHubScreen`), and the
-**star leaderboard has no screen** — the Cloud Function writes
+**One gap stands between this and something a learner can use.** Home
+now has a "Bertanding" section whose "Mode Kartu" card opens matchmaking
+and shows the player's live standing in its subtitle, so the mode is
+reachable at last — but the **star leaderboard has no screen**, and the
+match-result screen still shows only the score, never the stars won. The
+Cloud Function writes
 `cardGameTier`/`cardGameStars`/`cardGameStarTotal`/`cardGameSeason` onto
 `leaderboard/{uid}`, and nothing reads them yet.
 
