@@ -9400,7 +9400,11 @@ reading and 生 alone has five, so a bare-kanji card has no single correct
 answer; the dataset already carries word examples with their readings, so
 this costs no new content. Kana cards are answered in typed romaji, kanji
 cards in typed hiragana, matches are **live** (both players online), and a
-match runs **until one side is out of lives**.
+match **ends at 10 cards** with the higher score winning — a lives format
+was considered and dropped. The deck stays 20, so half of it goes unused
+each match and the cards differ between games; and unlike a lives format
+the weaker player still plays all 10 and still gets 10 questions to learn
+from, losing on points rather than being knocked out on the third turn.
 
 Two things that have to be built and are not small:
 

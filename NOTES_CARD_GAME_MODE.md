@@ -21,10 +21,32 @@ kartu dan lawan menulis bacaannya.
 | Jawaban kartu kanji | Diketik **hiragana** |
 | Cara mengetik hiragana | **Keyboard kana bawaan aplikasi** |
 | Alur pertandingan | **Serentak**, dua pemain online bersamaan |
-| Kondisi selesai | **Sampai salah satu kehabisan nyawa** |
+| Kondisi selesai | **Berakhir di 10 kartu**, poin terbanyak menang |
 | Lawan | Teman, clan, atau publik |
 | Poin | Diakumulasi ke rank / papan peringkat |
 | Harga | Gratis |
+
+### Kenapa deck 20 tapi main hanya 10
+
+Konsep nyawa sempat dipilih lalu dibatalkan; yang dipakai adalah bentuk
+awal. Deck tetap 20 kartu, tapi satu pertandingan berhenti di 10.
+
+Dua akibat yang bagus dan sebaiknya dipertahankan:
+
+- **Panjangnya masuk akal.** Kalau ke-20 kartu tiap pemain dimainkan
+  semua, itu 40 jawaban, sekitar 7 menit — terlalu lama untuk anak, dan
+  makin lama makin besar peluang satu pemain kabur di tengah jalan.
+- **Setengah deck tidak terpakai tiap match**, jadi kartu yang keluar
+  berbeda-beda dan pertandingan berikutnya tidak terasa mengulang.
+
+Berbeda dengan mode nyawa, di sini **anak yang masih lemah tetap main
+sampai habis** dan tetap dapat 10 soal untuk dipelajari — kalah dengan
+selisih poin, bukan tersingkir di giliran ketiga.
+
+> **Perlu dipastikan:** "berakhir di 10 kartu" dicatat di sini sebagai
+> **10 kartu per pemain** (jadi 20 jawaban, sekitar 3–4 menit). Kalau yang
+> dimaksud 10 kartu total (5 per pemain, sekitar 2 menit), tinggal ubah
+> angka ini — tidak ada yang bergantung padanya selain durasi.
 
 ### Kenapa kartu kanji berisi kata
 
@@ -95,11 +117,11 @@ Ini juga lompatan arsitektur terbesar yang pernah diambil aplikasi ini.
 Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
 
 **Aturan main**
-- Berapa nyawa tiap pemain? Perlu diingat konsekuensi yang sudah disadari
-  saat memilih mode nyawa: anak yang masih lemah bisa kalah sangat cepat.
-  Jumlah nyawa adalah satu-satunya tombol untuk melunakkan itu.
-- Ada batas waktu per giliran? Kalau ada, habisnya waktu mengurangi nyawa
-  atau sekadar lewat?
+- 10 kartu itu per pemain atau total? (lihat catatan di atas)
+- Ada batas waktu per giliran? Kalau ada, habisnya waktu dihitung jawaban
+  salah atau sekadar lewat?
+- Kalau poin imbang setelah 10 kartu, hasilnya seri atau ada penentu —
+  misalnya siapa yang lebih cepat menjawab?
 - Kedua pemain menjawab bersamaan, atau bergantian?
 - Deck 20 kartu dipilih sendiri, atau dibagikan otomatis dari level JLPT
   yang dipilih?
