@@ -180,39 +180,76 @@ Konsekuensi bentuknya, dan ini penting untuk rasa mainnya:
 
 Ini juga lompatan arsitektur terbesar yang pernah diambil aplikasi ini.
 
-## Usulan yang belum diputuskan: mempertaruhkan poin
+## Rank pakai bintang, terpisah dari poin
 
-Sempat dilempar ide **entry fee** — kedua pemain mempertaruhkan poin, dan
-kalau seri taruhannya kembali.
+Ide awalnya mempertaruhkan poin. Diganti jadi **sistem bintang seperti
+Mobile Legends**: menang naik bintang, kalah turun bintang.
 
-**Alasan yang disebut sudah terjawab tanpa taruhan.** Motivasinya tadi
-"biar kalau seri poinnya bisa balik", padahal aturan seri sudah
-memutuskan kedua pemain mendapat poin yang seharusnya. Jadi kasus seri
-sudah beres.
+**Ini memakai dua mata uang yang terpisah, dan justru itu kuncinya:**
 
-**Tapi taruhan menjawab masalah lain yang nyata:** tanpa risiko, kalah
-tidak berbiaya apa pun. Artinya main sebanyak-banyaknya selalu untung, dan
-peringkat perlahan berubah jadi ukuran *siapa paling sering main*, bukan
-siapa paling bisa.
+| | Poin | Bintang |
+|---|---|---|
+| Gunanya | Catatan hasil belajar | Peringkat kompetitif |
+| Arah | Hanya bertambah | Bisa naik dan turun |
+| Kalah | Tetap dapat poin dari jawaban benar | Bintang berkurang |
 
-**Yang membuat saya ragu**, dan ini pola yang sudah kita tolak sekali:
-mengambil kembali poin yang sudah didapat itu bentuknya sama dengan mode
-nyawa — yang paling terpukul adalah anak yang masih lemah, dan efeknya
-membuat ia berhenti main. Untuk aplikasi belajar itu kebalikan dari yang
-diinginkan. Dua efek ikutan lain yang biasa muncul di sistem bertaruh:
-pemain menghindari pertandingan saat mendekati batas rank, dan cenderung
-hanya menantang lawan yang lebih lemah.
+**Ini tetap taruhan, dan memang disengaja.** Anak main untuk mengejar
+peringkat, jadi bintang yang bisa hilang itu persis sesuatu yang
+dipertaruhkan tiap pertandingan — kalau tidak begitu, kalah tidak ada
+harganya dan peringkat cuma jadi ukuran siapa paling sering main.
 
-**Jalan tengah yang layak dipertimbangkan:**
+Yang berubah bukan *ada atau tidaknya* taruhan, tapi **apa yang
+dipertaruhkan**:
 
-- **Pemenang dapat banyak, yang kalah dapat sedikit — tapi tidak pernah
-  minus.** Tetap ada jarak yang bikin menang terasa berarti, tanpa
-  menghukum. Seri otomatis dapat nilai tengah, dan itu sudah persis
-  perilaku "poinnya balik" yang diinginkan.
-- **Taruhan hanya di mode publik**, tidak di lawan teman dan clan — supaya
-  main santai bareng teman tidak pernah merugikan.
+- **Mempertaruhkan poin** berarti catatan belajarnya sendiri yang menyusut.
+  Menjawab 6 kartu benar lalu kalah bisa berakhir dengan poin lebih sedikit
+  daripada sebelum main. Bentuknya sama dengan mode nyawa yang sudah kita
+  tolak — paling memukul anak yang masih lemah, lalu membuatnya berhenti.
+- **Mempertaruhkan bintang** berarti hanya kedudukan kompetitifnya yang
+  turun. Jawaban benar tetap tercatat sebagai jawaban benar; yang hilang
+  adalah lencana, bukan hasil belajarnya.
 
-Belum diputuskan; dicatat supaya tidak hilang.
+Jadi risikonya tetap ada, dan tetap terasa — cuma tidak menghapus bukti
+bahwa anak itu sudah belajar.
+
+### Kenapa "pakai poin yang sudah ada saja" ternyata tidak tersedia
+
+Muncul pertanyaan wajar: kenapa tidak mempertaruhkan poin yang sudah ada,
+supaya tidak menambah sistem baru? Jawabannya ada di kodenya:
+
+```dart
+double get computedGlobalScore =>
+    kanaRecordAvg + dokkaiRecordAvg + choukaiRecordAvg + kanjiComboRecordAvg;
+```
+
+**Poin di papan peringkat bukan saldo yang bisa dikurangi** — itu jumlah
+empat *rata-rata* nilai ujian (Kana, Dokkai, Choukai, Kanji-Kombinasi),
+masing-masing 0–100. Tidak ada tabungan poin di mana pun.
+
+Artinya "mengurangi 10 poin" harus dilakukan dengan merusak salah satu
+rata-rata nilai ujian — dan begitu itu terjadi, angkanya berhenti berarti
+"rata-rata nilai ujianku", yang sekaligus merusak keempat tab Rekor.
+
+**Jadi pilihannya bukan antara memakai ulang dan membuat baru.** Angka baru
+tetap dibutuhkan, apa pun namanya. Yang tersisa hanya bentuknya:
+
+- **Satu angka datar yang naik-turun.** Paling murah, satu field, langsung
+  bisa diurutkan. Boleh saja disebut "poin game kartu" — secara mekanik
+  ini sama persis dengan bintang, hanya beda nama dan tampilan.
+- **Bintang bertingkat ala ML.** Lebih terasa seperti game, tapi menambah
+  definisi tingkatan, aturan naik/turun tingkat, dan mungkin musim.
+
+**Yang perlu diputuskan kalau memilih bintang bertingkat:**
+
+- Tingkatannya apa saja, dan berapa bintang per tingkat.
+- Seri berarti bintang tidak berubah? (paling masuk akal)
+- Kalau bintang habis, turun tingkat atau berhenti di dasar tingkat itu?
+  ML menurunkan tingkat; untuk anak, lantai per tingkat lebih lembut.
+- Ada musim yang mereset bintang, atau berjalan terus?
+- Bintangnya cuma untuk pertandingan publik, atau lawan teman dan clan
+  juga menghitung? (Main santai bareng teman sebaiknya tidak merugikan.)
+- Papan peringkat `globalScore` yang sudah ada tetap terpisah, atau
+  peringkat bintang jadi papan sendiri?
 
 ## Yang masih harus diputuskan
 

@@ -9406,27 +9406,46 @@ each match and the cards differ between games; and unlike a lives format
 the weaker player still plays all 10 and still gets 10 questions to learn
 from, losing on points rather than being knocked out on the third turn.
 
-Turns are timed at **30 seconds for cards 1-10**, and a draw at card 10 is
-not a draw: play continues through **cards 11-20 with the clock shortening
-each card** until someone pulls ahead. Two things fall out of
-that neatly — the unused half of the 20-card deck is exactly the material
-for the extra round, and a shortening timer forces a result on its own. It
-also caps: overtime cannot exceed 10 cards before the deck runs out.
+Turns **alternate**, capped at **30 seconds** for cards 1-10 — the card
+advances the moment it is answered, so the cap only catches someone who
+stalls. That pairing matters: alternating turns with a *fixed* 30 seconds
+would run ten minutes a match, longer than the case the 10-card limit was
+chosen to avoid; as a ceiling, length is set by how fast players actually
+answer, more like two or three minutes. It also removes any need for a
+separate timer per card type, since a kana card answered in one letter no
+longer holds the match open for half a minute.
+
+A draw at card 10 continues through **cards 11-20, two seconds shorter each
+card**, and a timeout loses that card rather than the match. The unused half
+of the 20-card deck is exactly the material that extra round needs.
 
 **The countdown cannot live on the device.** A client running its own clock
 can slow or stop it, which goes straight into a public leaderboard, so the
 timer has to be anchored to a server timestamp — the same reasoning that
 already puts scoring in a Cloud Function.
 
-Two consequences of the 30-second figure are flagged in the note rather
-than left to be discovered. It decides match length only in combination
-with a question still open — simultaneous answering makes 10 cards about
-five minutes, strict alternation makes it ten, which is *longer* than the
-seven-minute case the 10-card limit was chosen to avoid. And 30 seconds is
-sensible for a kanji word typed on an in-app kana keyboard but enormous for
-a kana card whose answer is "a", so the suggestion recorded is to treat it
-as a **ceiling** — the card advances once both players have answered —
-which also removes any need for separate timers per card type.
+The 2-second step floors at 10 seconds on card 20, so the acceleration is
+**not guaranteed to force a result** — two fluent players answer well
+inside that. The draw rule is therefore load-bearing rather than a safety
+net for something unreachable: a draw at card 20 stands, and both players
+keep the points they earned. If draws turn out to be common the step can be
+steepened later.
+
+**Ranking is staked, deliberately** — losing has to cost something or rank
+just measures who played most. What is still being settled is the shape,
+and one finding narrows it: `computedGlobalScore` is
+`kanaRecordAvg + dokkaiRecordAvg + choukaiRecordAvg + kanjiComboRecordAvg`,
+i.e. **a sum of four exam averages, not a balance**. Nothing there can be
+staked without corrupting an exam average and breaking the four Rekor tabs
+with it.
+
+So "reuse the existing points" is not actually on the table: a new number
+is needed either way, and the remaining choice is only its shape — a flat
+up-and-down figure (cheapest, and mechanically identical to stars whatever
+it is called) or ML-style tiered stars (more game-like, but adds tiers,
+promotion and demotion, and possibly seasons). The learning points stay
+up-only in every version, so a lost match never erases evidence that the
+child studied.
 
 Two things that have to be built and are not small:
 
