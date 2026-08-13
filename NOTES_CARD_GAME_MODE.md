@@ -24,10 +24,13 @@ lengkapnya. **Penemuan penting di sesi ini**: CLI Firebase yang
 sebelumnya dicatat "broken" ternyata cuma masalah binary bawaan —
 `npx firebase-tools` bekerja normal dan sudah terautentikasi, jadi
 deploy Cloud Functions/Firestore/RTDB rules ke depan tidak perlu lagi
-paste manual ke Console. **Tahap 3 butir 8 (bot AI) sudah dibangun dan
-diuji, tapi belum di-deploy ke produksi** — lihat butir 8 di bawah
-untuk detail lengkapnya. Sisanya: matchmaking publik (#10), undangan
-teman/clan (#9) — belum ada kode.
+paste manual ke Console. **Tahap 3 butir 8 (bot AI) sudah dibangun,
+diuji, DAN sudah di-deploy ke produksi** (`onBattleMatchWritten`
+tampil di `firebase functions:list`, `firestore.rules` dengan kunci
+`cardTierContent` sudah dirilis) — lihat butir 8 di bawah untuk detail
+lengkapnya. Belum diverifikasi ujung-ke-ujung di perangkat sungguhan.
+Sisanya: matchmaking publik (#10), undangan teman/clan (#9) — belum
+ada kode.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -568,15 +571,19 @@ paling rumit**
    biasa — memanggil `createMatch(opponentUid: battleBotUid)`, jalur
    yang sama persis dengan lawan manusia, cuma uid lawannya beda.
 
-   **Belum di-deploy ke produksi** — `functions/index.js` sudah
-   diperbarui mengekspor `onBattleMatchWritten`, tapi `npx
-   firebase-tools deploy` belum dijalankan untuk perubahan ini, dan
-   `firestore.rules` versi terbaru (dengan kunci `cardTierContent`)
-   juga belum di-deploy. Belum ada verifikasi ujung-ke-ujung di
-   perangkat sungguhan (buat pertandingan bot lewat tombol baru,
-   pastikan bot menjawab otomatis dengan teks yang masuk akal, dan
-   pertandingan selesai dengan benar) — langkah berikutnya sebelum
-   butir ini benar-benar dianggap tuntas.
+   **Sudah di-deploy ke produksi** (2026-08-13, sesi yang sama):
+   `onBattleMatchWritten` tampil di `firebase functions:list`
+   (`asia-southeast1`, `nodejs22`, generasi ke-2, memicu dari
+   `google.cloud.firestore.document.v1.written` — beda dari
+   `onBattleAnswerCreated` yang memicu dari `...created`, karena bot
+   perlu bereaksi ke setiap PERUBAHAN dokumen `battleMatches`, bukan
+   cuma pembuatan dokumen `answers` baru), dan `firestore.rules`
+   dengan kunci `cardTierContent` sudah ter-release. **Belum ada
+   verifikasi ujung-ke-ujung di perangkat sungguhan** (buat
+   pertandingan bot lewat tombol "Lawan Bot" yang baru, pastikan bot
+   benar-benar menjawab otomatis dengan teks yang masuk akal, dan
+   pertandingan selesai dengan skor yang benar) — langkah berikutnya
+   sebelum butir ini benar-benar dianggap tuntas.
 9. Undangan teman/clan — butuh presence (#3), dan `FriendRepository`/
    `ClanRepository` memang sudah jalan dari fitur lain.
 10. Matchmaking publik — sengaja terakhir, butuh semuanya sudah berdiri
