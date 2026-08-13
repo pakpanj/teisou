@@ -37,15 +37,26 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
 
   bool get _isHiragana => widget.type == KanaType.hiragana;
 
+  /// Which way the deck last moved, so the outgoing card leaves on the side
+  /// the incoming one is not arriving from. Without it every change would
+  /// slide the same way and going back would feel like going forward.
+  bool _forward = true;
+
   void _goNext(int total) {
     if (_index == null || _index! >= total - 1) return;
-    setState(() => _index = _index! + 1);
+    setState(() {
+      _forward = true;
+      _index = _index! + 1;
+    });
     _persistIndex();
   }
 
   void _goPrev() {
     if (_index == null || _index! <= 0) return;
-    setState(() => _index = _index! - 1);
+    setState(() {
+      _forward = false;
+      _index = _index! - 1;
+    });
     _persistIndex();
   }
 
@@ -145,19 +156,50 @@ class _FlashcardScreenState extends ConsumerState<FlashcardScreen> {
                         ? () => _goNext(list.length)
                         : null,
                     onSwipeRight: index > 0 ? _goPrev : null,
-                    child: FlipCard(
-                      key: ValueKey(kana.id),
-                      onFlipped: (isFront) =>
-                          _handleFlip(isFront, kana, currentProgress),
+                    // The card used to be replaced outright, so moving
+                    // through the deck was a hard cut with nothing to
+                    // suggest a direction — 104 of those in a row is what
+                    // made it monotonous.
+                    //
+                    // Both children exist during the crossfade, and the
+                    // outgoing one still holds the previous character, so
+                    // the incoming child is identified by comparing keys
+                    // rather than assumed. `animation` runs 1 -> 0 for the
+                    // one leaving, so the same tween shape carries it out
+                    // to `begin` instead of in from it.
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 280),
+                      switchInCurve: Curves.easeOutCubic,
+                      switchOutCurve: Curves.easeInCubic,
+                      transitionBuilder: (child, animation) {
+                        final key = child.key as ValueKey<String>;
+                        final incoming = key.value == kana.id;
+                        final dx = _forward ? 1.0 : -1.0;
+                        return SlideTransition(
+                          position: Tween<Offset>(
+                            begin: Offset(incoming ? dx : -dx, 0),
+                            end: Offset.zero,
+                          ).animate(animation),
+                          child: FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          ),
+                        );
+                      },
+                      child: FlipCard(
+                        key: ValueKey(kana.id),
+                        onFlipped: (isFront) =>
+                            _handleFlip(isFront, kana, currentProgress),
 
-                      front: _CardFace(
-                        background: cardBackground,
-                        child: _FrontContent(kana: kana, accent: accent),
-                      ),
+                        front: _CardFace(
+                          background: cardBackground,
+                          child: _FrontContent(kana: kana, accent: accent),
+                        ),
 
-                      back: _CardFace(
-                        background: cardBackground,
-                        child: _BackContent(kana: kana, accent: accent),
+                        back: _CardFace(
+                          background: cardBackground,
+                          child: _BackContent(kana: kana, accent: accent),
+                        ),
                       ),
                     ),
                   ),
@@ -346,7 +388,12 @@ class _FrontContent extends ConsumerWidget {
             // Youon carry a second glyph; everything else is a one-element
             // list and this is empty.
             extraSvgAssetPaths: kana.svgAssets.skip(1).toList(),
-            size: 190,
+            // Half again as big as it was. The animator fits by width, so a
+            // youon — whose combined box is 1.8 boxes wide — still comes out
+            // proportionally smaller than a single kana at the same number,
+            // exactly as before. Raising one value keeps that relationship
+            // intact; scaling the two cases separately would not.
+            size: 285,
             showControls: false,
             showFrame: false,
             msPerStroke: ref.watch(strokeSpeedProvider).msPerStroke,
