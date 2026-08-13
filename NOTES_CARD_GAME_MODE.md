@@ -164,6 +164,103 @@ Yang perlu diperhatikan saat membangunnya:
 - Layak dibuat sebagai widget mandiri, karena kemungkinan besar berguna di
   modul lain nanti.
 
+### Bentuk konkret keyboard-nya
+
+**Model interaksinya sebenarnya sudah tergambar dari mockup putaran
+kedua dan ketiga** — tenten/maru/huruf kecil bukan tombol yang langsung
+menghasilkan karakternya sendiri, tapi **pengubah karakter terakhir yang
+sudah diketik**. Menekan か lalu ゛ mengubah karakter terakhir di kotak
+jawaban dari か jadi が, bukan menambahkan karakter が baru. Ini sesuai
+cara keyboard Jepang sungguhan bekerja, dan itu juga alasan papan
+utamanya cuma 46 tombol dasar, bukan 104 — sisanya diakses lewat baris
+pengubah di bawah.
+
+- **Tenten (゛) / maru (゜)**: mengganti karakter terakhir dengan versi
+  bertitik/berlingkaran-nya, kalau ada. か→が, は→ば (tenten) atau は→ぱ
+  (maru). Kelompok mana yang punya pasangan ini **sudah ada di kode**,
+  tidak perlu dipetakan ulang — `_dakutenGroups` di
+  `kanji_combo_repository.dart` (dipakai untuk pengecoh soal bacaan)
+  persis daftar yang sama yang dibutuhkan di sini.
+- **ゃゅょ (huruf kecil)**: **menambahkan** karakter kecil baru setelah
+  karakter terakhir (き → きゃ, dua karakter, bukan mengganti) — cuma
+  berlaku kalau karakter terakhir salah satu dari 11 baris yang memang
+  bisa membentuk youon (き/し/ち/に/ひ/み/り/ぎ/じ/び/ぴ). **Koreksi kecil**:
+  daftar 11 ini bukan sesuatu yang bisa langsung dipakai ulang dari
+  `_dakutenGroups` seperti tenten/maru di atas — isi `_dakutenGroups`
+  untuk youon itu pasangan dakuten ANTAR kombinasi yang sudah terbentuk
+  (きゃ↔ぎゃ), bukan daftar "huruf mana saja yang bisa dilanjutkan ゃゅょ".
+  Daftar yang benar-benar dipakai di sini persis 11 baris youon yang
+  sudah didefinisikan saat menyusun dataset kana
+  (`generate_kana_data.py`, row 16-26) — sumbernya beda, tapi datanya
+  sudah ada juga, tidak perlu dibuat baru dari nol.
+- **っ (sokuon)**: beda dari tiga di atas — っ tidak mengubah/menambah
+  berdasarkan karakter SEBELUMnya, dia cuma perlu karakter SESUDAHnya
+  untuk berarti sesuatu (がっこう). Jadi tombol っ selalu aktif, bisa
+  disisipkan kapan saja secara mekanis — apakah kombinasinya masuk akal
+  secara bahasa itu urusan `RomajiConverter` saat jawabannya dibandingkan
+  nanti, bukan sesuatu yang perlu dicegah keyboard-nya sendiri.
+- **⌫ (hapus)**: menghapus satu karakter terakhir dari kotak jawaban.
+- **Tombol pengubah yang tidak berlaku untuk karakter terakhir
+  dinonaktifkan/diredupkan** (mis. menekan あ lalu mencoba tenten —
+  あ tidak punya pasangan bertitik). Supaya anak tidak bingung kenapa
+  ditekan tapi tidak terjadi apa-apa, bukan supaya terasa seperti bug.
+
+### Tidak perlu tombol ー — dan ini nemu satu aturan konten kecil
+
+Hiragana tidak pernah memakai chōonpu (ー) untuk vokal panjang — itu
+konvensi katakana. Bacaan asli hiragana menuliskannya lewat pengulangan
+vokal (とうきょう, bukan とーきょう), jadi keyboard yang memang dibatasi
+hiragana saja tidak butuh tombol ini sama sekali.
+
+**Tapi dicek langsung ke data, dan ketemu 2 pengecualian**: `データ分析`
+dan `椅子取りゲーム` — kata majemuk yang mengandung komponen pinjaman
+katakana (データ, ゲーム). Kalau kartu semacam ini tetap masuk pool untuk
+tingkat Gold ke atas, "ketik bacaannya dalam hiragana" jadi tidak punya
+jawaban yang bersih (bacaan データ butuh ー untuk diucapkan lengkap, dan
+ー tidak ada bentuk hiragananya). **Usulan: kata yang mengandung karakter
+katakana disaring keluar dari pool kartu** — pemeriksaannya murah (cek
+apakah `word` mengandung karakter di rentang Unicode katakana), dan cuma
+menyingkirkan 2 dari ribuan entri.
+
+### Bentuk widget: mandiri, tidak terikat konteks pertandingan
+
+Sesuai catatan lama ("layak dibuat sebagai widget mandiri") — antarmuka
+yang masuk akal cuma butuh dua hal: nilai kotak jawaban saat ini (String)
+dan sebuah callback saat berubah. Widget ini tidak perlu tahu apa pun
+soal kartu, pertandingan, atau mode — cuma alat ketik hiragana biasa,
+persis kenapa dia bisa dipakai ulang di modul lain nanti (mis. tempat
+lain di aplikasi yang butuh input hiragana bebas).
+
+### Tata letak — sudah selesai dari mockup putaran ketiga
+
+Bukan lagi terbuka, sudah dikonfirmasi lewat tiga putaran perbaikan
+gambar:
+
+```
+あ い う え お
+か き く け こ
+さ し す せ そ
+た ち つ て と
+な に ぬ ね の
+は ひ ふ へ ほ
+ま み む め も
+や ・ ゆ ・ よ
+ら り る れ ろ
+わ ・ ・ ・ を
+ん
+```
+
+Celah kosong (baris や di kolom i/e, baris わ di kolom i/u/e)
+**dipertahankan**, tidak dirapatkan — kesejajaran tiap kolom vokal itu
+yang membuat papan mudah dibaca anak. Di bawahnya satu baris tombol
+pengubah: ゛ ゜ ゃ ゅ ょ っ ⌫, lalu tombol "KIRIM JAWABAN" paling bawah.
+Ruang keyboard dapat jatah besar (kira-kira sepertiga tinggi layar).
+
+Hurufnya sendiri diambil langsung dari dataset kana yang sudah ada
+(bukan disalin ulang dari gambar mockup — mockup cuma acuan tata letak,
+bukan acuan glif, karena alat gambarnya memang tidak bisa diandalkan
+menuliskan CJK dengan benar).
+
 ### 2. Penilaian di server, bukan di HP
 
 **Begitu poin masuk peringkat publik, hasil pertandingan tidak boleh
