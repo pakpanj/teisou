@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/models/app_language.dart';
 import '../data/models/card_game_rank.dart';
+import '../data/models/presence_status.dart';
 import '../data/models/stroke_speed.dart';
 import '../data/models/app_theme_mode.dart';
 import '../data/models/kana_character.dart';
@@ -62,6 +63,7 @@ import 'services/auth_service.dart';
 import 'services/fcm_service.dart';
 import 'services/furigana_dictionary.dart';
 import 'services/kana_keyboard_input.dart';
+import 'services/presence_service.dart';
 import 'services/romaji_converter.dart';
 import 'services/tts_service.dart';
 import '../data/repositories/onboarding_repository.dart';
@@ -113,6 +115,9 @@ final authServiceProvider = Provider<AuthService>((ref) => AuthService());
 final ttsServiceProvider = Provider<TtsService>((ref) => TtsService());
 final adServiceProvider = Provider<AdService>((ref) => AdService());
 final fcmServiceProvider = Provider<FcmService>((ref) => FcmService());
+final presenceServiceProvider = Provider<PresenceService>(
+  (ref) => PresenceService(),
+);
 
 /// Whether this device has already been shown the tutorial.
 ///
@@ -351,6 +356,17 @@ final appStartupProvider = FutureProvider<User>((ref) async {
         .init(user.uid)
         .catchError((Object e) => debugPrint('FcmService.init failed: $e')),
   );
+  // Card Game Mode presence (see NOTES_CARD_GAME_MODE.md) — best-effort
+  // like everything else in this block, and doubly so right now: the
+  // Realtime Database instance this needs hasn't been provisioned for
+  // this Firebase project yet, so every call here fails silently until
+  // that console step happens (see PresenceService's own doc comment).
+  unawaited(
+    ref
+        .read(presenceServiceProvider)
+        .goOnline(user.uid)
+        .catchError((Object e) => debugPrint('PresenceService.goOnline failed: $e')),
+  );
 
   return user;
 });
@@ -405,6 +421,18 @@ final subscriptionProvider = StreamProvider<Subscription>((ref) async* {
 final cardGameRankProvider = StreamProvider<CardGameRank>((ref) async* {
   final user = await ref.watch(appStartupProvider.future);
   yield* ref.watch(progressRepositoryProvider).watchCardGameRank(user.uid);
+});
+
+/// Live online/offline status for any single [uid] — not the signed-in
+/// user's own status (that's just written, never read back), but whoever
+/// a future friend/clan list needs a badge for. Not consumed anywhere
+/// yet, same "infrastructure ready ahead of the screen that needs it"
+/// shape as [kanaKeyboardInputProvider].
+final presenceProvider = StreamProvider.family<PresenceStatus, String>((
+  ref,
+  uid,
+) {
+  return ref.watch(presenceServiceProvider).watchPresence(uid);
 });
 
 /// Total XP + level + pending level-up rewards — see [XpProgress]. Watched

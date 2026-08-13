@@ -29,6 +29,10 @@ dependencies:
   # auto-displays FCM notifications on its own otherwise).
   firebase_messaging: ^15.1.3
   flutter_local_notifications: ^18.0.1
+  # Card Game Mode presence (see NOTES_CARD_GAME_MODE.md) — the only
+  # thing in this app that needs onDisconnect()'s server-side detection
+  # of a dropped connection, which Firestore has no equivalent for.
+  firebase_database: ^11.3.0
 
   # Avatar upload: pick from gallery (built-in resize/compress via
   # maxWidth/maxHeight/imageQuality — no separate compression package)

@@ -4,11 +4,14 @@ Catatan rumusan untuk mode permainan kartu di Teisou — Kana Master.
 
 **Status: rumusannya sudah menutup seluruh alur (undangan → arsitektur
 pertandingan → penilaian Cloud Function → bot → matchmaking publik →
-keyboard kana). Implementasi kode sungguhan sudah mulai jalan — Tahap 1
-butir 1 (keyboard kana) dan butir 2 (field rank minimal) sudah
+keyboard kana). Implementasi kode sungguhan sudah mulai jalan — seluruh
+Tahap 1 (keyboard kana, field rank minimal, presence RTDB) sudah
 selesai**, lihat "Tahap 1" di bawah untuk detail file-nya. Sisanya
-(presence, `battleMatches`, layar pertandingan, Cloud Function, bot,
-matchmaking) masih belum ada kode.
+(`battleMatches`, layar pertandingan, Cloud Function, bot, matchmaking
+— Tahap 2 dan 3) masih belum ada kode. **Presence butuh satu langkah
+Firebase Console yang belum dilakukan** sebelum benar-benar hidup —
+lihat penjelasannya di bawah, ini bukan sesuatu yang bisa diselesaikan
+lewat kode saja.
 Dua hal lain yang jadi *prasyarat* fitur ini sudah dikerjakan duluan
 juga (lihat "Modal yang sudah ada"): dataset kana diperluas ke 104
 karakter (tenten/maru/youon), dan `RomajiConverter` sudah bisa
@@ -77,8 +80,49 @@ fitur "peringkat" dikerjakan (biasanya di akhir).
    satu pun layar atau kode lain yang membacanya — murni "field-nya
    ADA", sesuai cakupan Tahap 1 butir 2. `flutter analyze` bersih,
    355 test hijau (11 test baru di `test/card_game_rank_test.dart`).
-3. Presence (RTDB) — mandiri, tidak bergantung pertandingan sama
-   sekali.
+3. ✅ **Selesai (kode), ⚠️ belum hidup (perlu langkah Console)** —
+   Presence. `PresenceService` (`lib/core/services/presence_service.dart`)
+   menulis `presence/{uid}: { state, lastChanged }` ke Realtime Database
+   begitu aplikasi dibuka (`goOnline`, dipanggil dari `appStartupProvider`
+   sama seperti `FcmService.init`), dan mendaftarkan `onDisconnect()`
+   **sebelum** menulis status online — urutannya sengaja begitu, supaya
+   ada jeda waktu di antara keduanya tetap meninggalkan nilai yang benar
+   kalau koneksi putus tepat di celah itu. `PresenceStatus`
+   (`lib/data/models/presence_status.dart`) mem-parsing node mentahnya;
+   `watchPresence`/`presenceProvider` (family, dikunci per uid) sudah ada
+   untuk membaca status pemain lain, walau belum dipanggil dari mana pun
+   — sama seperti `kanaKeyboardInputProvider`, infrastrukturnya disiapkan
+   duluan sebelum layar yang membutuhkannya.
+   Berkas aturannya, `database.rules.json` (baru, terpisah dari
+   `firestore.rules`), mengikuti skema yang sudah dikunci: siapa saja
+   yang sudah login boleh membaca node presence siapa pun, tapi cuma
+   pemilik uid yang boleh menulis miliknya sendiri.
+
+   **Yang belum bisa diselesaikan lewat kode**: proyek Firebase ini
+   (`teisou-kana-master`) **belum punya instans Realtime Database sama
+   sekali** — `firebase_options.dart` tidak punya `databaseURL`. Ini
+   perlu satu tindakan Firebase Console (buat database, lalu deploy
+   `database.rules.json`) yang tidak bisa dilakukan dari sini, sama
+   persis dengan alasan pendaftaran Firebase iOS didokumentasikan
+   sebagai hal yang butuh tindakan pemilik akun di `CLAUDE.md` —
+   sengaja **tidak** dikarang-karang nilai `databaseURL`-nya, karena
+   nilai palsu akan mengubah error "belum dikonfigurasi" yang jelas
+   menjadi kegagalan runtime yang membingungkan. Setiap panggilan
+   `PresenceService` dibungkus supaya gagal diam-diam (ditangkap,
+   dicatat lewat `debugPrint`, tidak pernah membuat startup aplikasi
+   crash) — jadi kodenya aman dikirim duluan sebelum langkah Console itu
+   dilakukan, dan begitu database-nya ada, fitur ini langsung hidup
+   tanpa perubahan kode lagi.
+
+   `flutter analyze` bersih, 362 test hijau (7 test baru untuk
+   `PresenceStatus.fromSnapshotValue` di
+   `test/presence_status_test.dart` — `PresenceService` sendiri tidak
+   diuji unit, mengikuti pola yang sudah ada di aplikasi ini bahwa kelas
+   servis yang bergantung pada koneksi Firebase sungguhan tidak
+   diuji-unit, cuma logika murni di sekitarnya yang diuji). Paket
+   `firebase_database` ditambahkan ke `pubspec.yaml`, `flutter build
+   apk --debug` dicoba lagi setelah penambahan ini untuk memastikan
+   tidak ada masalah Gradle/native — sukses.
 
 **Tahap 2 — inti pertandingan**
 4. `battleMatches` + aturan Firestore.
