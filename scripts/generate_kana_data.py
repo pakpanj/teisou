@@ -54,11 +54,17 @@ ROWS = [
 
 # Youon glyphs are two Unicode characters (base kana + small ゃ/ゅ/ょ), so
 # there is no single KanjiVG codepoint to fetch a combined stroke-order SVG
-# from. Reusing the base consonant's own already-bundled SVG is honest
-# (it's still that mora's real dominant stroke content) and needs zero new
-# asset fetching — only dakuten/handakuten (single new codepoints) get
-# freshly fetched SVGs. Maps a youon romaji to the base romaji whose
-# existing `assets/svg/{type}/{romaji}.svg` should be reused.
+# from. This maps a youon romaji to the base romaji whose existing
+# `assets/svg/{type}/{romaji}.svg` supplies the first half.
+#
+# The second half comes from SMALL_KANA_SVG below, and that is a correction
+# to what this comment used to claim. Pointing a youon at its base consonant
+# alone was described here as "honest"; it was not. きょ was drawn as three
+# strokes when the mora has six, and the ょ a learner actually has to write
+# was never shown at all. There is no combined file, true — but each half
+# exists on its own, so the pair is fetched separately (see
+# scripts/fetch_kana_small_svg.py) and the card draws them side by side as
+# one continuous stroke sequence.
 SVG_ASSET_OVERRIDE = {
     "kya": "ki", "kyu": "ki", "kyo": "ki",
     "sha": "shi", "shu": "shi", "sho": "shi",
@@ -72,6 +78,11 @@ SVG_ASSET_OVERRIDE = {
     "bya": "bi", "byu": "bi", "byo": "bi",
     "pya": "pi", "pyu": "pi", "pyo": "pi",
 }
+
+# The small half of every youon, keyed by the romaji's final vowel — every
+# youon ends in one of ya/yu/yo, including the ones whose romaji hides it
+# ("ja"/"ju"/"jo", "sha"/"shu"/"sho", "cha"/"chu"/"cho").
+SMALL_KANA_SVG = {"a": "small_ya", "u": "small_yu", "o": "small_yo"}
 
 HIRAGANA_EXAMPLES = {
     "a": ("あさ", "asa", "Pagi"),
@@ -328,7 +339,7 @@ def build_entries(kana_type, chars_by_romaji_index, examples_map):
                 word, reading, meaning = example
                 examples = [{"word": word, "reading": reading, "meaning": meaning}]
             svg_romaji = SVG_ASSET_OVERRIDE.get(romaji, romaji)
-            entries.append({
+            entry = {
                 "id": f"{kana_type}_{romaji}",
                 "character": char,
                 "romaji": romaji,
@@ -337,7 +348,15 @@ def build_entries(kana_type, chars_by_romaji_index, examples_map):
                 "column": column,
                 "svgAsset": f"assets/svg/{kana_type}/{svg_romaji}.svg",
                 "examples": examples,
-            })
+            }
+            # Only youon carry a second glyph, and they are exactly the
+            # entries that needed an override to find their first one.
+            if romaji in SVG_ASSET_OVERRIDE:
+                small = SMALL_KANA_SVG[romaji[-1]]
+                entry["svgAssetSecondary"] = (
+                    f"assets/svg/{kana_type}/{small}.svg"
+                )
+            entries.append(entry)
     return entries
 
 

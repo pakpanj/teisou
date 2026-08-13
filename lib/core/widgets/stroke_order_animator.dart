@@ -18,6 +18,14 @@ import '../theme/app_palette.dart';
 class StrokeOrderAnimator extends ConsumerStatefulWidget {
   final String character;
   final String? svgAssetPath;
+
+  /// Further glyphs drawn after [svgAssetPath], in writing order.
+  ///
+  /// Used by youon, which are two characters with no combined KanjiVG file.
+  /// The parser merges them into one wider sequence, so everything below
+  /// still deals with a single character — see `KanjiVgParser.parseAll`.
+  final List<String> extraSvgAssetPaths;
+
   final double size;
 
   /// Whether to show the play/replay/numbered buttons and the speed slider.
@@ -53,6 +61,7 @@ class StrokeOrderAnimator extends ConsumerStatefulWidget {
     super.key,
     required this.character,
     required this.svgAssetPath,
+    this.extraSvgAssetPaths = const [],
     this.size = 220,
     this.showControls = true,
     this.msPerStroke = 500,
@@ -141,7 +150,9 @@ class _StrokeOrderAnimatorState extends ConsumerState<StrokeOrderAnimator>
       });
       return;
     }
-    final data = await KanjiVgParser.parse(assetPath);
+    final data = await KanjiVgParser.parseAll(
+      [assetPath, ...widget.extraSvgAssetPaths],
+    );
     if (!mounted) return;
     setState(() {
       _strokeData = data;
@@ -348,8 +359,14 @@ class _StrokeOrderPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    // Fit by width and centre vertically. A single glyph's view box is
+    // square so the translate is zero, but a youon's is twice as wide as it
+    // is tall — without this the pair would sit pinned to the top of the
+    // box with all the empty space below it.
     final scale = size.width / data.viewBox.width;
+    final dy = (size.height - data.viewBox.height * scale) / 2;
     canvas.save();
+    canvas.translate(0, dy);
     canvas.scale(scale, scale);
 
     final guidePaint = Paint()

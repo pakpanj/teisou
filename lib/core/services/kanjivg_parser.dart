@@ -45,6 +45,52 @@ class KanjiVgParser {
   static final _commandPattern = RegExp(r'([McsSCm])([^McsSCm]*)');
   static final _numberPattern = RegExp(r'-?\d+\.?\d*');
 
+  /// Parses several glyphs and lays them out left to right as one sequence.
+  ///
+  /// This exists for youon: きょ is two codepoints, KanjiVG has no combined
+  /// file for the pair, and drawing them as two independent animations
+  /// would play both at once — the wrong order for something written き
+  /// first, ょ second. Merging into a single [KanjiStrokeData] instead means
+  /// the animator needs no notion of "several glyphs" at all: it sees one
+  /// six-stroke character in a wider view box.
+  ///
+  /// Stroke numbers are reassigned across the whole run, so the second
+  /// glyph continues 4, 5, 6 rather than restarting at 1.
+  ///
+  /// Returns null only if every path failed; one unreadable glyph out of
+  /// two still yields the other, which is better than a blank card.
+  static Future<KanjiStrokeData?> parseAll(List<String> assetPaths) async {
+    if (assetPaths.length == 1) return parse(assetPaths.first);
+
+    final parsed = <KanjiStrokeData>[];
+    for (final path in assetPaths) {
+      final data = await parse(path);
+      if (data != null) parsed.add(data);
+    }
+    if (parsed.isEmpty) return null;
+    if (parsed.length == 1) return parsed.first;
+
+    final strokes = <KanjiStroke>[];
+    var offsetX = 0.0;
+    var height = 0.0;
+    for (final data in parsed) {
+      final shift = Offset(offsetX, 0);
+      for (final stroke in data.strokes) {
+        strokes.add(KanjiStroke(
+          path: stroke.path.shift(shift),
+          numberPosition: stroke.numberPosition.translate(offsetX, 0),
+          number: strokes.length + 1,
+        ));
+      }
+      offsetX += data.viewBox.width;
+      height = height > data.viewBox.height ? height : data.viewBox.height;
+    }
+    return KanjiStrokeData(
+      strokes: strokes,
+      viewBox: Size(offsetX, height),
+    );
+  }
+
   static Future<KanjiStrokeData?> parse(String assetPath) async {
     try {
       final raw = await rootBundle.loadString(assetPath);

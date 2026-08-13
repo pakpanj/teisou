@@ -343,6 +343,9 @@ class _FrontContent extends ConsumerWidget {
           child: StrokeOrderAnimator(
             character: kana.character,
             svgAssetPath: kana.svgAsset,
+            // Youon carry a second glyph; everything else is a one-element
+            // list and this is empty.
+            extraSvgAssetPaths: kana.svgAssets.skip(1).toList(),
             size: 190,
             showControls: false,
             showFrame: false,

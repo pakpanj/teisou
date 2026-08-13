@@ -1,8 +1,16 @@
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:kana_master/core/services/kanjivg_parser.dart';
 
 void main() {
+  // rootBundle caches one Future per asset, globally. These tests load
+  // the same file more than once, and the second read would otherwise
+  // await a Future created inside an earlier test's fake-async zone --
+  // already complete, but unable to deliver that completion here, so the
+  // test hangs rather than fails. Same trap as kana_table_screen_test.
+  setUp(rootBundle.clear);
+
   testWidgets('parses a single-stroke kanji (一)', (tester) async {
     final data = await KanjiVgParser.parse('assets/kanjivg/04e00.svg');
 
@@ -71,9 +79,69 @@ void main() {
     final strokes = data!.strokes;
     expect(strokes.length, 14);
 
-    final stroke4 = strokes[3].path.computeMetrics().first;
-    final stroke4End = stroke4.getTangentForOffset(stroke4.length)!.position;
+    final stroke4b = strokes[3].path.computeMetrics().first;
+    final stroke4End = stroke4b.getTangentForOffset(stroke4b.length)!.position;
     expect(stroke4End.dx, closeTo(82.19, 0.5));
     expect(stroke4End.dy, closeTo(36.22, 0.5));
+  });
+
+  /// Youon are two codepoints with no combined KanjiVG file, so the halves
+  /// are merged here into one sequence. きょ is the worked example: き is 3
+  /// strokes, ょ is 3, and a learner writes all six in that order.
+  group('combining two glyphs into one sequence (youon)', () {
+    const ki = 'assets/svg/hiragana/ki.svg';
+    const smallYo = 'assets/svg/hiragana/small_yo.svg';
+
+    testWidgets('strokes of both glyphs, numbered straight through',
+        (tester) async {
+      final data = await KanjiVgParser.parseAll([ki, smallYo]);
+      expect(data, isNotNull);
+
+      final single = await KanjiVgParser.parse(ki);
+      final smaller = await KanjiVgParser.parse(smallYo);
+      final expected = single!.strokes.length + smaller!.strokes.length;
+
+      expect(data!.strokes.length, expected);
+      // Restarting at 1 for the second glyph would tell a learner to write
+      // the small kana first, which is the thing this exists to get right.
+      expect(
+        data.strokes.map((s) => s.number).toList(),
+        List.generate(expected, (i) => i + 1),
+      );
+    });
+
+    testWidgets('the second glyph is moved clear of the first',
+        (tester) async {
+      final single = await KanjiVgParser.parse(ki);
+      final data = await KanjiVgParser.parseAll([ki, smallYo]);
+      final width = single!.viewBox.width;
+
+      // Without the shift both glyphs would be drawn on top of each other
+      // inside the same 109-unit box, which reads as one scribble.
+      for (final stroke in data!.strokes.skip(single.strokes.length)) {
+        expect(stroke.path.getBounds().left, greaterThanOrEqualTo(width));
+      }
+      for (final stroke in data.strokes.take(single.strokes.length)) {
+        expect(stroke.path.getBounds().left, lessThan(width));
+      }
+      expect(data.viewBox.width, width * 2);
+      expect(data.viewBox.height, single.viewBox.height);
+    });
+
+    testWidgets('one asset is left exactly as parse() returns it',
+        (tester) async {
+      final viaParse = await KanjiVgParser.parse(ki);
+      final viaParseAll = await KanjiVgParser.parseAll([ki]);
+      expect(viaParseAll!.strokes.length, viaParse!.strokes.length);
+      expect(viaParseAll.viewBox, viaParse.viewBox);
+    });
+
+    testWidgets('a broken half still yields the readable one', (tester) async {
+      // Better a half-drawn character than a blank card.
+      final data = await KanjiVgParser.parseAll([ki, 'assets/svg/nope.svg']);
+      final single = await KanjiVgParser.parse(ki);
+      expect(data, isNotNull);
+      expect(data!.strokes.length, single!.strokes.length);
+    });
   });
 }

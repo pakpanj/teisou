@@ -9,6 +9,18 @@ class KanaCharacter {
   final int row;
   final int column;
   final String svgAsset;
+
+  /// The small ゃ/ゅ/ょ of a youon, whose strokes come after [svgAsset]'s.
+  ///
+  /// Null for the 71 single-codepoint kana per script. A youon is two
+  /// characters and KanjiVG has no combined file for the pair, so the two
+  /// halves are bundled separately and drawn side by side — without this
+  /// きょ animated only き, three strokes of the six a learner writes.
+  final String? svgAssetSecondary;
+
+  /// Every stroke-order asset for this character, in writing order.
+  List<String> get svgAssets => [svgAsset, ?svgAssetSecondary];
+
   final List<ExampleWord> examples;
 
   KanaCharacter({
@@ -19,6 +31,7 @@ class KanaCharacter {
     required this.row,
     required this.column,
     required this.svgAsset,
+    this.svgAssetSecondary,
     required this.examples,
   });
 
@@ -30,6 +43,7 @@ class KanaCharacter {
         row: json['row'] as int,
         column: json['column'] as int,
         svgAsset: json['svgAsset'] as String,
+        svgAssetSecondary: json['svgAssetSecondary'] as String?,
         examples: (json['examples'] as List)
             .map((e) => ExampleWord.fromJson(e as Map<String, dynamic>))
             .toList(),
