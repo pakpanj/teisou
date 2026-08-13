@@ -181,6 +181,119 @@ Konsekuensi bentuknya, dan ini penting untuk rasa mainnya:
 
 Ini juga lompatan arsitektur terbesar yang pernah diambil aplikasi ini.
 
+### Bentuk konkretnya: dua jalur yang sengaja saling lepas
+
+Wawasan yang baru kelihatan saat merumuskan ini: **benar/salah tidak
+butuh server sama sekali.** Bacaan yang benar untuk tiap kartu sudah ada
+di dataset yang sudah dibundel di HP — sama seperti yang dipakai
+Kotoba/Kanji/Bunpou di seluruh aplikasi ini. Jadi kedua pemain bisa
+langsung tahu benar/salah secara lokal, tanpa menunggu apa pun dari
+server sama sekali.
+
+Yang **benar-benar** butuh disinkronkan real-time antara dua HP cuma
+empat hal: giliran siapa, kartu apa yang sedang tampil, teks yang baru
+diketik (supaya lawan lihat apa yang dijawab), dan jangkar waktu giliran.
+Tidak satu pun dari empat ini butuh Cloud Function untuk berjalan cepat.
+
+| Jalur | Cepat, buat rasa main | Lambat, buat yang dihitung |
+|---|---|---|
+| Tempatnya | Firestore, listener biasa | Cloud Function |
+| Isinya | Giliran maju, kartu berikutnya, teks jawaban tersimpan | `officialScore`, divalidasi ulang independen |
+| Kecepatan | Sub-detik | Beberapa detik (jeda cold start, sudah diterima) |
+| Yang menulis | Klien yang baru menjawab | Cloud Function saja |
+
+**(Dikonfirmasi: ini memang yang dimaksud.)** Klien yang baru menjawab
+langsung menulis "giliran pindah" — tidak menunggu apa pun, karena
+kebenaran jawabannya tidak perlu ditulis, cukup teksnya. Lawan yang
+sedang menunggu (listener Firestore biasa) langsung lihat giliran
+berpindah dalam hitungan milidetik, dan menghitung sendiri secara lokal
+apakah jawaban itu benar, dari teks yang baru masuk dicocokkan ke dataset
+yang sudah ada di HP-nya juga. Cloud Function jalan di belakang, murni
+untuk `officialScore` — kalau ada klien nakal yang menampilkan "benar"
+secara lokal padahal salah, bintangnya tetap tidak bergerak karena yang
+dipakai untuk rank cuma angka dari Cloud Function.
+
+Ini juga **otomatis menegakkan** aturan "klien tidak boleh mengirim
+vonis" yang sudah diputuskan di atas — klien memang tidak pernah perlu
+mengirim vonis sama sekali. Benar/salahnya cuma perhitungan tampilan di
+kedua HP, bukan sesuatu yang pernah ditulis ke server.
+
+### Bentuk data
+
+```
+battleMatches/{matchId}
+  players: [uidA, uidB]
+  status: "active" | "finished"
+  currentTurnUid
+  currentCardIndex        // 0-based; bisa sampai 19 kalau masuk babak tambahan
+  cards: [cardId, ...]     // urutan kartu untuk pertandingan ini, ditentukan saat mulai
+  turnStartedAt            // stempel waktu server, jangkar timer giliran ini
+  clientResult              // dihitung cepat di HP, buat layar "selesai" instan
+  officialScore: {uidA: n, uidB: n}   // HANYA Cloud Function yang menulis
+  result                     // dihitung ulang Cloud Function setelah semua kartu masuk
+
+battleMatches/{matchId}/answers/{cardIndex}
+  byUid, text, submittedAt
+```
+
+`answers` sengaja jadi subkoleksi, bukan array di dokumen induk — supaya
+Cloud Function bisa `onCreate` per jawaban langsung (memicu per dokumen
+baru), bukan harus membandingkan isi array sebelum/sesudah tiap kali
+dokumen induk berubah.
+
+### Alur satu giliran
+
+1. Pemain yang gilirannya mengetik jawaban, menekan kirim.
+2. Klien menulis ke `answers/{cardIndex}` (teks mentah saja), lalu di
+   tulisan yang sama memajukan `currentCardIndex`, memindahkan
+   `currentTurnUid` ke lawan, dan mengatur ulang `turnStartedAt`.
+3. Lawan (listener Firestore) langsung lihat gilirannya terbuka, dan
+   menampilkan benar/salah untuk jawaban yang baru masuk — dihitung
+   sendiri secara lokal dari dataset yang sudah ada di HP-nya.
+4. Cloud Function terpicu oleh dokumen `answers` baru, memvalidasi ulang
+   secara independen, menulis ke `officialScore`. Begitu jumlah jawaban
+   yang masuk sama dengan panjang pertandingan, Cloud Function menghitung
+   `result` final dan itulah yang menggerakkan bintang.
+
+### Kalau lawan menutup aplikasi di tengah pertandingan
+
+**Dikonfirmasi: HP lawan yang mendeteksi, bukan Cloud Function** — cara
+paling sederhana untuk versi pertama, memakai timer yang memang sudah
+ada (30 detik, atau versi dipangkas di babak tambahan) tanpa perlu
+membangun apa pun yang baru.
+
+Begitu jangka waktu giliran lewat (dihitung dari `turnStartedAt`
+ditambah batas waktu kartu itu, bukan jam HP sendiri), pemain yang
+**menunggu** — bukan yang gilirannya — yang menulis transaksi Firestore
+untuk memajukan giliran, dengan kartu itu dihitung kalah sesuai aturan
+yang sudah ada ("habis waktu dihitung kalah untuk kartu itu"). Transaksi
+memastikan cuma satu tulisan yang berhasil kalau jawabannya ternyata
+masuk di detik-detik terakhir.
+
+> **Satu penyempurnaan kecil yang perlu ditambahkan supaya tidak terasa
+> aneh**: kalau cuma "habis waktu = kalah satu kartu", pemain yang benar-
+> benar menutup aplikasinya akan membuat lawannya menunggu 30 detik
+> kosong berulang-ulang sampai seluruh sisa kartu habis — bisa beberapa
+> menit menonton kekosongan. Karena sistem presence sudah ada dari
+> rumusan undangan, syarat forfeit dini bisa ditambahkan murah: **kalau
+> giliran yang sama habis waktu DAN presence lawan menunjukkan offline**,
+> pertandingan langsung ditutup sebagai kemenangan WO, bukan lanjut
+> menghitung kalah per kartu. Kalau lawan cuma lambat mengetik (bukan
+> benar-benar pergi), presence-nya tetap online dan aturan lama (kalah
+> satu kartu, lanjut) yang berlaku.
+
+### Yang masih terbuka
+
+Tidak menghalangi arsitektur di atas — bisa dijawab belakangan tanpa
+mengubah bentuk data:
+
+- Siapa yang mengeluarkan kartu duluan (penantang, acak, atau lainnya)?
+- Kartu diambil acak dari deck atau berurutan? Boleh kartu yang sama
+  muncul dua kali dalam satu pertandingan?
+- Sinkronisasi jam server-vs-HP untuk menghitung `turnStartedAt +
+  batas waktu` di sisi klien — perlu diukur selisihnya sekali di awal
+  sesi, bukan diasumsikan nol.
+
 ## Rank pakai bintang, terpisah dari poin
 
 Ide awalnya mempertaruhkan poin. Diganti jadi **sistem bintang seperti
