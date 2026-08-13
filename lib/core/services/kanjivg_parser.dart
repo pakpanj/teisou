@@ -1,3 +1,4 @@
+import 'dart:typed_data' show Float64List;
 import 'dart:ui';
 
 import 'package:flutter/services.dart' show rootBundle;
@@ -70,25 +71,60 @@ class KanjiVgParser {
     if (parsed.isEmpty) return null;
     if (parsed.length == 1) return parsed.first;
 
+    final height = parsed
+        .map((d) => d.viewBox.height)
+        .reduce((a, b) => a > b ? a : b);
+
     final strokes = <KanjiStroke>[];
     var offsetX = 0.0;
-    var height = 0.0;
-    for (final data in parsed) {
-      final shift = Offset(offsetX, 0);
+    for (var i = 0; i < parsed.length; i++) {
+      final data = parsed[i];
+      final scale = i == 0 ? 1.0 : secondaryGlyphScale;
+      // Anchored at the bottom, so shrinking moves the glyph down onto the
+      // line rather than leaving it floating at the height a full-size kana
+      // would occupy — which is where a small kana actually sits.
+      final dy = height * (1 - scale);
       for (final stroke in data.strokes) {
         strokes.add(KanjiStroke(
-          path: stroke.path.shift(shift),
-          numberPosition: stroke.numberPosition.translate(offsetX, 0),
+          path: stroke.path.transform(_scaleThenShift(scale, offsetX, dy)),
+          numberPosition: Offset(
+            stroke.numberPosition.dx * scale + offsetX,
+            stroke.numberPosition.dy * scale + dy,
+          ),
           number: strokes.length + 1,
         ));
       }
-      offsetX += data.viewBox.width;
-      height = height > data.viewBox.height ? height : data.viewBox.height;
+      offsetX += data.viewBox.width * scale;
     }
     return KanjiStrokeData(
       strokes: strokes,
       viewBox: Size(offsetX, height),
     );
+  }
+
+  /// How much smaller every glyph after the first is drawn.
+  ///
+  /// KanjiVG draws each codepoint to fill its own box, so a small ゃ/ゅ/ょ
+  /// arrives very nearly the size of a full kana — measured against the
+  /// bundled files, identical in width (59.9 vs chi's 59.8) and 0.77 of the
+  /// height. Rendered as-is the pair reads as two full-size characters
+  /// rather than a kana and its small partner, so the second is taken down
+  /// a step here.
+  static const double secondaryGlyphScale = 0.8;
+
+  /// Column-major 4x4 for `x' = scale*x + dx`, `y' = scale*y + dy`.
+  ///
+  /// Written out rather than built with Matrix4: that lives in
+  /// `vector_math`, which this package does not depend on directly, and
+  /// pulling in a transitive dependency for one translation-and-scale is a
+  /// worse trade than sixteen explicit numbers.
+  static Float64List _scaleThenShift(double scale, double dx, double dy) {
+    return Float64List.fromList([
+      scale, 0, 0, 0, //
+      0, scale, 0, 0, //
+      0, 0, 1, 0, //
+      dx, dy, 0, 1, //
+    ]);
   }
 
   static Future<KanjiStrokeData?> parse(String assetPath) async {

@@ -1,3 +1,5 @@
+import 'dart:ui' show Rect;
+
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_test/flutter_test.dart';
 
@@ -124,8 +126,35 @@ void main() {
       for (final stroke in data.strokes.take(single.strokes.length)) {
         expect(stroke.path.getBounds().left, lessThan(width));
       }
-      expect(data.viewBox.width, width * 2);
+      expect(
+        data.viewBox.width,
+        closeTo(width * (1 + KanjiVgParser.secondaryGlyphScale), 0.01),
+      );
       expect(data.viewBox.height, single.viewBox.height);
+    });
+
+    testWidgets('the small half is drawn smaller, and sits lower',
+        (tester) async {
+      final smaller = await KanjiVgParser.parse(smallYo);
+      final single = await KanjiVgParser.parse(ki);
+      final data = await KanjiVgParser.parseAll([ki, smallYo]);
+
+      Rect boundsOf(Iterable<KanjiStroke> strokes) => strokes
+          .map((s) => s.path.getBounds())
+          .reduce((a, b) => a.expandToInclude(b));
+
+      final alone = boundsOf(smaller!.strokes);
+      final combined = boundsOf(data!.strokes.skip(single!.strokes.length));
+
+      // KanjiVG draws a small kana at very nearly the size of a full one,
+      // so without this the pair reads as two full-size characters.
+      expect(
+        combined.height,
+        closeTo(alone.height * KanjiVgParser.secondaryGlyphScale, 0.5),
+      );
+      // Anchored at the bottom, so shrinking drops it onto the line instead
+      // of leaving it hanging where a full-size kana's top would be.
+      expect(combined.top, greaterThan(alone.top));
     });
 
     testWidgets('one asset is left exactly as parse() returns it',
