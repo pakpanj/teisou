@@ -241,13 +241,71 @@ tingkatan, aturan naik dan turun tingkat, dan kemungkinan musim. Dipilih
 karena rasanya jauh lebih dekat ke game yang memang jadi acuan konsep ini,
 bukan karena lebih murah.
 
-**Yang perlu diputuskan untuk sistem bintangnya:**
+### Tangga bintang — usulan angka
 
-- Tingkatannya apa saja, dan berapa bintang per tingkat.
-- Seri berarti bintang tidak berubah? (paling masuk akal)
-- Kalau bintang habis, turun tingkat atau berhenti di dasar tingkat itu?
-  ML menurunkan tingkat; untuk anak, lantai per tingkat lebih lembut.
-- Ada musim yang mereset bintang, atau berjalan terus?
+Tingkatannya sudah ditetapkan: **Bronze, Silver, Gold, Diamond, Emerald.**
+Jumlah bintangnya diserahkan ke saya, jadi ini usulan lengkap dengan
+alasannya. Semua angkanya gampang disetel ulang nanti.
+
+| Tingkat | Divisi | Bintang per divisi | Total naik |
+|---|---|---|---|
+| Bronze | III, II, I | 2 | 6 |
+| Silver | III, II, I | 3 | 9 |
+| Gold | III, II, I | 3 | 9 |
+| Diamond | III, II, I | 4 | 12 |
+| Emerald | — | bintang terus terkumpul | — |
+
+Aturannya: **menang +1 bintang, seri 0, kalah −1.** Bintang penuh di satu
+divisi berarti naik divisi; penuh di divisi I berarti naik tingkat dan
+mulai lagi dari divisi III tingkat berikutnya.
+
+#### Jebakan yang membuat angka polos tidak bisa dipakai
+
+Kalau menang +1 dan kalah −1 berlaku di semua tingkat, kemajuannya nyaris
+berhenti. Pemain dengan tingkat kemenangan 55% hanya untung 0,1 bintang
+per pertandingan — artinya butuh **sekitar 360 pertandingan** untuk naik 36
+bintang. Untuk aplikasi belajar anak, itu bukan tantangan, itu tembok.
+
+**Jadi Bronze dan Silver diberi perlindungan: kalah tidak mengurangi
+bintang.** Konsekuensinya bagus:
+
+- Naik ke Gold cuma butuh **15 kemenangan**, berapa pun kalahnya. Anak yang
+  masih lemah tetap maju selama ia terus main — persis semangat yang sama
+  dengan alasan kita membatalkan mode nyawa dulu.
+- **Tangga yang sesungguhnya baru mulai di Gold**, tempat kalah benar-benar
+  ada harganya. Puncaknya tetap berarti.
+
+#### Turun tingkat
+
+Kalah saat bintang 0 menurunkan satu divisi — tapi **tidak pernah keluar
+dari tingkat yang sudah dicapai.** Sekali Gold, selamanya minimal Gold III.
+
+Alasannya: naik tingkat itu momen yang diingat anak. Mengambilnya kembali
+terasa jauh lebih menyakitkan daripada nilai bintang yang hilang, dan
+lantai per tingkat sudah cukup membuat kekalahan terasa tanpa menghapus
+pencapaian.
+
+### Lawan bot saat sepi
+
+Kalau tidak ada pemain online, lawannya bot. Tiga hal yang menyertainya:
+
+- **Bot harus dilabeli jelas sebagai bot.** Anak tidak boleh dibiarkan
+  mengira ia mengalahkan orang sungguhan. Ini aplikasi belajar untuk anak,
+  dan kejujuran di sini murah harganya.
+- **Bot hanya memberi bintang di Bronze dan Silver** — yaitu persis dua
+  tingkat berperlindungan tadi. Ini menyelesaikan dua masalah sekaligus:
+  saat pemainnya masih sedikit, pemain baru tetap bisa naik; dan begitu
+  masuk Gold, peringkat kembali berarti karena harus melawan orang.
+- **Kesulitan bot mengikuti tingkat pemain**, kalau tidak ia cuma jadi
+  lawan yang mustahil atau lawan yang tak berguna.
+
+Poin belajar dan EXP tetap didapat dari lawan bot — yang dibatasi hanya
+bintangnya.
+
+**Yang masih perlu diputuskan untuk sistem bintangnya:**
+
+- Musimnya berapa lama, dan saat musim berganti bintangnya direset penuh
+  atau ditarik turun beberapa tingkat saja?
 - Bintangnya cuma untuk pertandingan publik, atau lawan teman dan clan
   juga menghitung? (Main santai bareng teman sebaiknya tidak merugikan.)
 - Papan peringkat `globalScore` yang sudah ada tetap terpisah, atau
