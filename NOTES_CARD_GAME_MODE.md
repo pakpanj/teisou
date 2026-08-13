@@ -17,7 +17,7 @@ benar terbuka" di bawah, dua hal besar masih kurang.
 | Tahap 1 (keyboard kana, field rank, presence RTDB) | ✅ selesai, hidup, diverifikasi di perangkat fisik |
 | Tahap 2 butir 4-7 (battleMatches, layar pertandingan, penilaian Cloud Function) | ✅ selesai, hidup, diverifikasi lintas 2 device fisik |
 | Tahap 3 butir 8 (bot AI) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung di perangkat fisik** (Moto G52J, match nyata sampai selesai) |
-| Tahap 3 butir 9 (undangan teman/clan) | ✅ dibangun+diuji+di-deploy, **belum dicoba di perangkat fisik** |
+| Tahap 3 butir 9 (undangan teman/clan) | ✅ selesai, hidup, **diverifikasi ujung-ke-ujung** (G52J vs emulator, dua akun, match tuntas 1-0) |
 | Tahap 3 butir 10 (matchmaking publik) | ✅ dibangun+diuji+di-deploy, **belum dicoba di perangkat fisik** |
 
 Semua Cloud Function (`onBattleAnswerCreated`, `onBattleMatchWritten`,
@@ -800,16 +800,38 @@ paling rumit**
      lawan yang sudah jelas menolak tetap harus melalui beberapa
      ronde timeout (masing-masing sampai 30 detik) sebelum menang —
      bukan langsung tahu detik itu juga bahwa lawannya menolak.
-   - **Belum ada verifikasi interaktif di perangkat fisik** — beda
-     dari butir 7 dan 8, fitur ini belum pernah benar-benar dicoba
-     kirim-terima-main di device sungguhan. Langkah berikutnya kalau
-     ingin menuntaskan butir ini: pasang APK debug di dua akun/device
-     berbeda yang sudah berteman (atau satu clan), kirim tantangan,
-     pastikan tombol Tantang menyala/mati sesuai status online,
-     pastikan notifikasi push dan baris undangan muncul di sisi
-     target, coba terima (masuk ke match yang sama, kartu yang sama
-     di kedua sisi) dan coba tolak (pastikan penantang akhirnya
-     menang lewat timeout, bukan macet selamanya).
+   - ✅ **SUDAH diverifikasi ujung-ke-ujung di perangkat sungguhan**
+     (2026-08-14). Moto G52J (akun "Pak Panjang", ID `2KQ7PLXP`)
+     melawan emulator Pixel 8 (akun "Pelajar Kana", ID `TYCTG98L`),
+     dua akun Firebase berbeda, keduanya memakai APK debug dari
+     `master` saat itu. Seluruh rantainya jalan: cari teman lewat ID
+     → kirim permintaan → terima → tombol **Tantang muncul karena
+     presence-nya benar-benar terbaca online** → pemilih tingkat
+     kartu muncul (bukti nyata keputusan "lawan teman bebas memilih
+     isi kartu") → pilih Hiragana Dasar → **baris undangan muncul di
+     sisi target** ("Pelajar Kana menantangmu — Hiragana Dasar")
+     dengan tombol Terima/Tolak → terima → **keduanya masuk match
+     yang sama** → giliran benar-benar bergantian (satu sisi
+     menjawab, satu sisi "Menunggu jawaban lawan...") → jawaban
+     tercatat → pertandingan selesai dengan hasil yang **konsisten
+     di kedua layar**: HP "Kalah, Kamu 0 Lawan 1", emulator
+     "Menang!, Kamu 1 Lawan 0".
+   - **Temuan nyata dari verifikasi itu: yang diundang masuk
+     terlambat, dan langsung tertinggal.** Karena match dibuat saat
+     undangan *dikirim* (bukan saat diterima), timernya sudah jalan
+     selama undangan menunggu. Di percobaan ini yang diundang baru
+     masuk di **kartu 3 dari 20** — dua kartu sudah lewat sebagai
+     timeout sebelum ia sempat menyentuh apa pun. Itu konsekuensi
+     langsung dari penyimpangan arsitektur yang memang dicatat
+     sengaja di atas, tapi baru kelihatan biayanya di sini. Perlu
+     diputuskan: mulai timer hanya setelah diterima, atau beri
+     tenggang di kartu-kartu awal.
+   - **Timernya 20 detik, bukan 30** seperti yang tertulis di aturan
+     hasil rumusan. Jumlah kartunya sendiri sudah benar (20 kartu
+     total = 10 per pemain, sesuai keputusan). Perlu disamakan.
+   - Belum diuji: jalur **tolak** (memastikan penantang akhirnya
+     menang lewat timeout, bukan macet), dan tantangan lewat clan
+     (yang diuji baru lewat daftar teman).
 10. ✅ **Selesai dibangun, diuji, dan di-deploy — belum diverifikasi di
     perangkat fisik** (2026-08-14). Persis mengikuti rumusan
     "Pemasangan lawan publik" di bawah: antrian RTDB per tingkat,
