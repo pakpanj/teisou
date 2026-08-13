@@ -9452,27 +9452,35 @@ a draw leaves stars untouched, whether running out of stars demotes a tier
 whether friend and clan matches count towards it, and whether the star
 ranking is its own board or joins the existing one.
 
-**Four mockup screens exist** (made by the user with ChatGPT), reviewed in
-the note. They settle one open question — "10 cards" means 10 rounds each,
-20 answers — and confirm kanji cards carrying words. They also conflict
-with decisions in four places worth knowing before anyone builds from
-them: an `HP 5` bar reintroduces the lives format that was deliberately
-dropped and now sits alongside the 10-card end condition, the ranking is
-drawn as a running rating (1200 → 1250) rather than tiered stars and shows
-two different currencies changing at once, the leaderboard resets weekly
-against an apparently cumulative rating, and the bottom nav grows to six
-tabs from the three it was deliberately consolidated to.
+**Four mockup screens exist** (made by the user with ChatGPT) and are
+**visual reference only — the rules stay the ones decided above.** What is
+worth taking from them is the layout language: two players facing across
+the screen with decks left and right, face-down cards fanned along the
+bottom, a compact score panel between them, and the result screen listing
+every card played with a tick or a cross, which turns the outcome into
+study material. They also sharpen two terms worth keeping: "target 10 per
+player" (so 10 cards means 10 rounds, 20 answers) and "Mode: Kanji
+(N5-N1)", which separates *mode* as the deck type from the choice of
+opponent.
 
-Two risks are flagged there rather than left in the art. Free-text **chat
-with strangers** in public matches is a child-safety problem for an app
-that already handles a mixed audience through `AdAudience`, and is the
-kind of thing that loses a Families listing; stickers alone carry most of
-the warmth. And "a higher-JLPT deck earns more points" double-rewards
-picking the hardest deck — your deck is what the *opponent* answers, so it
-both beats them and pays you more, which pushes everyone to N1 and nobody
-to their own level.
+The note marks which drawn elements must not quietly become rules —
+`HP 5` and damage (the lives format was dropped), a running rating with
+two currencies moving at once (tiered stars was chosen), a weekly reset
+(seasons undecided) — plus the one piece of layout not to copy, a
+six-tab bottom nav against the three the app was deliberately
+consolidated to.
 
-Not drawn yet, and the most important screen of all: **a player actually
+Two elements carry a real cost if adopted. Free-text **chat with
+strangers** in public matches is a child-safety problem for an app that
+already handles a mixed audience through `AdAudience`, and is the kind of
+thing that loses a Families listing; stickers alone carry the same warmth.
+And "a higher-JLPT deck earns more points" double-rewards picking the
+hardest deck — your deck is what the *opponent* answers, so it both beats
+them and pays you more, pushing everyone to N1 and nobody to their own
+level. Rewarding a correct answer on a hard card gets what that rule was
+reaching for.
+
+Not drawn yet, and the most useful thing to draw next: **a player actually
 answering**, which is where the in-app kana keyboard lives.
 
 Two things that have to be built and are not small:

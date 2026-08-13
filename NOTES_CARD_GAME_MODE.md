@@ -253,88 +253,75 @@ bukan karena lebih murah.
 - Papan peringkat `globalScore` yang sudah ada tetap terpisah, atau
   peringkat bintang jadi papan sendiri?
 
-## Mockup "TEISOU BATTLE" (dibuat user + ChatGPT)
+## Mockup "TEISOU BATTLE" — acuan tampilan, bukan acuan aturan
 
-Empat layar: pencarian lawan, mulai pertarungan, hasil, dan papan
-peringkat. Arah visualnya sudah cocok dengan aplikasi — maskot, sakura,
-torii, palet yang sama.
+Empat layar dibuat user bersama ChatGPT: pencarian lawan, mulai
+pertarungan, hasil, dan papan peringkat.
 
-### Yang cocok dan bisa langsung dipakai
+> **Statusnya acuan visual saja.** Arah tampilan diambil dari sini; aturan
+> mainnya tetap yang sudah diputuskan di tabel atas. Jadi angka dan
+> mekanik yang tergambar di mockup **tidak mengikat**.
 
-- Deck 20 kartu, **target 10 kartu per pemain** — ini sekaligus menjawab
-  pertanyaan yang sempat tergantung: 10 kartu berarti **10 ronde, 20
-  jawaban**, bukan 10 jawaban total.
-- 30 detik per giliran.
-- VS Teman / VS Clan / VS Publik.
-- **Kartu kanji berisi kata**, persis keputusan kita — 学生, 時間, 電車,
-  友達, 勉強, dengan bacaannya muncul di layar hasil.
-- "Mode: Kanji (N5–N1)" memperjelas satu istilah: **mode = jenis deck**
-  (kana atau kanji), terpisah dari pilihan lawan.
+Yang layak diambil dari sisi tampilan: susunan dua pemain berhadapan
+dengan deck di kiri-kanan, kartu tertutup berjejer di bawah, panel skor
+ringkas di tengah, maskot yang memberi semangat, dan gaya sakura/torii
+yang memang sudah jadi bahasa visual aplikasi ini. Layar hasil dengan
+deretan kartu yang dimainkan beserta tanda benar/salah juga bagus — itu
+menjadikan hasil pertandingan sekaligus bahan belajar.
 
-### Yang bentrok dengan keputusan kita
+Dua hal dari mockup yang justru **memperjelas** keputusan kita, dan
+sebaiknya dipertahankan sebagai istilah:
 
-**1. HP 5 muncul lagi — padahal konsep nyawa sudah dibatalkan.**
-Layar pertarungan menampilkan `HP 5` dengan aturan "Benar = Damage ke
-lawan, Salah = Damage ke kamu", sekaligus "selesai setelah 10 kartu per
-pemain". Itu **dua kondisi selesai yang berjalan bersamaan**. Perlu
-diputuskan mana yang menang, dan kalau HP dipakai, kekhawatiran yang dulu
-membuat kita membatalkannya kembali berlaku: dengan 5 HP, anak yang lemah
-bisa habis di kartu ke-5 dan tidak pernah mendapat 5 soal sisanya.
+- **"Target: 10 per pemain"** menjawab pertanyaan yang sempat tergantung:
+  10 kartu berarti **10 ronde, 20 jawaban**.
+- **"Mode: Kanji (N5–N1)"** memisahkan istilah dengan rapi: *mode* =
+  jenis deck, terpisah dari pilihan lawan.
 
-**2. Peringkatnya angka berjalan, bukan bintang bertingkat.**
-Mockup memakai 🏆 1200 → 1250 (+50) dan lawannya 1130 (−20), plus lencana
-tingkat (Rookie, Beginner). Itu bentuk **rating**, bukan bintang. Layar
-hasil malah menampilkan dua angka sekaligus: 🏆 +50 dan "+5 Poin Rank" —
-belum jelas mana mata uang peringkat yang sebenarnya.
+### Elemen gambar yang jangan ikut disalin jadi aturan
 
-**3. Papan peringkat direset mingguan** ("Periode: Minggu Ini", hitung
-mundur 02:45:12), sementara ratingnya terlihat kumulatif. Dua hal ini
-tidak bisa keduanya benar tanpa aturan musim yang jelas.
+Bukan kritik terhadap desainnya — cuma penanda supaya tidak diam-diam
+berubah jadi spesifikasi waktu nanti dibangun:
 
-**4. Bottom nav jadi 6 tab** (Beranda, Belajar, Kartu, Battle, Clan,
-Profil). Sekarang aplikasinya **3 tab**, hasil penyederhanaan yang
-disengaja dari 4. Menambah jadi 6 itu perubahan navigasi besar dan
-membatalkan keputusan yang sudah diambil.
+- **`HP 5` dan "Damage"** — konsep nyawa sudah dibatalkan; yang berlaku
+  adalah berakhir di 10 kartu, poin terbanyak menang.
+- **🏆 1250 (+50) / 1130 (−20)** — itu bentuk rating berjalan, sedangkan
+  yang dipilih adalah bintang bertingkat. Di layar hasil bahkan ada dua
+  angka bergerak sekaligus (🏆 +50 dan "+5 Poin Rank").
+- **Papan direset mingguan** — aturan musim belum diputuskan.
+- **Bottom nav 6 tab** — aplikasi sekarang 3 tab, hasil penyederhanaan
+  yang disengaja dari 4. Ini satu-satunya elemen *tampilan* yang sebaiknya
+  tidak diikuti.
 
-### Dua hal yang menurut saya berisiko
+### Dua elemen yang kalau diambil, ada harganya
 
-**Chat bebas dengan orang asing.** Layar pertarungan punya tombol Chat dan
-Stiker. Untuk VS Teman dan VS Clan itu wajar. Untuk **VS Publik** artinya
-anak bertukar teks bebas dengan orang yang tidak dikenal — ini masalah
-keselamatan anak, dan aplikasi ini sudah menangani audiens campuran secara
-serius lewat `AdAudience` (COPPA, Families). Chat bebas dengan orang asing
-adalah jenis hal yang bisa membuat aplikasi dikeluarkan dari program
-Families di Play. **Stiker saja jauh lebih aman**, dan tetap terasa hidup.
-Tombol "Laporkan" di layar hasil bagus, tapi pelaporan menuntut sistem
-moderasi yang belum ada sama sekali.
+**Chat bebas di VS Publik.** Untuk teman dan clan wajar. Untuk lawan acak,
+artinya anak bertukar teks bebas dengan orang tak dikenal — dan aplikasi
+ini sudah menangani audiens campuran secara serius lewat `AdAudience`.
+Ini jenis hal yang bisa membuat aplikasi kehilangan status Families di
+Play, dan pelaporan menuntut moderasi yang belum ada sama sekali.
+**Stiker saja sudah memberi kehangatan yang sama tanpa risiko itu.**
 
-**"Semakin tinggi level JLPT deckmu, semakin banyak poin."** Karena deck
-kita adalah yang *dijawab lawan*, aturan ini memberi hadiah ganda untuk
-memilih deck tersulit: lawan lebih sering salah **dan** poin kita lebih
-besar. Akibatnya semua orang memakai deck N1, pemula digilas, dan tidak
-ada yang berlatih di levelnya sendiri. Kalau tujuannya menghargai
-tantangan, yang lebih masuk akal adalah memberi poin lebih besar untuk
-**menjawab benar kartu sulit**, bukan untuk memegangnya.
+**"Deck JLPT lebih tinggi = poin lebih banyak."** Deck kita adalah yang
+*dijawab lawan*, jadi aturan ini memberi hadiah ganda untuk memilih deck
+tersulit: lawan lebih sering salah **dan** poin kita lebih besar. Semua
+orang akhirnya memakai N1 dan tidak ada yang berlatih di levelnya sendiri.
+Kalau maksudnya menghargai tantangan, yang tepat adalah poin lebih besar
+untuk **menjawab benar kartu sulit**, bukan untuk memegangnya.
 
-### Fitur baru yang belum pernah dibahas
+### Yang belum digambar, dan justru paling menentukan
 
-Semuanya menambah cakupan, jadi perlu disadari sebagai pilihan:
+**Belum ada satu pun layar orang sedang menjawab.** Keempatnya berhenti di
+"Battle Dimulai". Padahal di situlah letak keputusan tersulit kita —
+**keyboard kana bawaan aplikasi** untuk mengetik bacaan hiragana. Itu layar
+yang paling menentukan rasa main sekaligus paling banyak kerjanya, jadi
+justru itu yang paling berguna digambar berikutnya.
 
-- **Koin dan mata uang bunga (5.430)** — ini ekonomi dalam aplikasi.
-  Belum ada apa pun soal untuk apa koinnya dipakai.
-- **EXP +50** — kemungkinan bisa memakai sistem XP yang sudah ada.
-- **"Tonton Ulang"** — menuntut penyimpanan seluruh langkah tiap
-  pertandingan plus pemutar ulangnya. Fitur tersendiri, tidak kecil.
+Layar babak tambahan (kartu 11–20, waktu dipangkas 2 detik tiap kartu)
+juga belum ada.
 
-### Yang belum digambar, dan justru paling penting
-
-**Layar menjawab belum ada.** Keempat mockup berhenti di "Battle Dimulai";
-tidak ada satu pun yang menunjukkan pemain sedang mengetik jawaban. Padahal
-di situlah letak keputusan tersulit kita: **keyboard kana bawaan aplikasi**
-untuk mengetik bacaan hiragana. Itu layar yang paling menentukan rasa main
-dan paling banyak kerjanya — layak digambar berikutnya.
-
-Layar babak tambahan (kartu 11–20 dengan waktu dipangkas) juga belum ada.
+Fitur baru yang ikut tergambar dan belum pernah dibahas: **Koin**, mata
+uang bunga (5.430), dan **Tonton Ulang** — yang terakhir menuntut
+penyimpanan seluruh langkah tiap pertandingan beserta pemutarnya.
 
 ## Yang masih harus diputuskan
 
