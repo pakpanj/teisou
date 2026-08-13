@@ -9399,8 +9399,8 @@ match ends (`functions/battle_stars.js`).
 **One gap stands between this and something a learner can use.** Home
 now has a "Bertanding" section whose "Mode Kartu" card opens matchmaking
 and shows the player's live standing in its subtitle, so the mode is
-reachable at last — but the **star leaderboard has no screen**, and the
-match-result screen still shows only the score, never the stars won. The
+reachable at last, and the match-result screen now shows the star change
+it earned. What is still missing is the **star leaderboard screen**. The
 Cloud Function writes
 `cardGameTier`/`cardGameStars`/`cardGameStarTotal`/`cardGameSeason` onto
 `leaderboard/{uid}`, and nothing reads them yet.

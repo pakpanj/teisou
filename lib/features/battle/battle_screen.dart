@@ -14,6 +14,7 @@ import '../../data/models/battle_answer.dart';
 import '../../data/models/battle_match.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kanji_entry.dart';
+import 'widgets/star_result_card.dart';
 
 /// Card Game Mode's live match screen — Tahap 2 butir 5 in
 /// `NOTES_CARD_GAME_MODE.md`. Renders one `battleMatches/{matchId}` doc
@@ -440,6 +441,8 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           const SizedBox(height: 16),
           Text(s.battleMyScore(tally.scoreOf(myUid))),
           Text(s.battleOpponentScore(tally.scoreOf(opponentUid))),
+          const SizedBox(height: 20),
+          StarResultCard(match: match, myUid: myUid, strings: s),
           const SizedBox(height: 24),
           FilledButton(
             onPressed: () => Navigator.of(context).maybePop(),

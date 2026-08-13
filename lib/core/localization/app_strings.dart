@@ -1428,6 +1428,33 @@ class AppStrings {
   // words in both languages here, and every ranked game an Indonesian
   // player has seen uses them untranslated.
   String get battleRankStandingLabel => _t('Peringkatmu', 'Your standing');
+  // Perubahan bintang di layar hasil.
+  String get battleStarsCounting =>
+      _t('Menghitung bintang...', 'Counting stars...');
+  String get battleStarsPending => _t(
+        'Bintangmu sedang diperbarui — cek lagi sebentar lagi.',
+        'Your stars are still updating — check again shortly.',
+      );
+  String get battleStarsCasual => _t(
+        'Pertandingan santai — bintang tidak bergerak.',
+        'Friendly match — stars do not move.',
+      );
+  String battleStarsGained(int delta) =>
+      _t('+$delta bintang', '+$delta stars');
+  String battleStarsLostAmount(int delta) =>
+      _t('$delta bintang', '$delta stars');
+  String get battleStarsUnchanged =>
+      _t('Bintang tidak berubah', 'Stars unchanged');
+  String get battleStarsProtected => _t(
+        'Di Bronze & Silver kamu tidak kehilangan bintang.',
+        'At Bronze & Silver you never lose stars.',
+      );
+  String battleStarsPromotedTier(String standing) =>
+      _t('Naik tingkat — $standing!', 'Promoted — $standing!');
+  String battleStarsPromotedDivision(String standing) =>
+      _t('Naik divisi — $standing!', 'Division up — $standing!');
+  String battleStarsDroppedDivision(String standing) =>
+      _t('Turun ke $standing', 'Dropped to $standing');
   String get cardGameTitle => _t('Mode Kartu', 'Card Mode');
   String get cardGameSubtitle => _t(
         'Adu cepat baca kana & kanji lawan pemain lain',

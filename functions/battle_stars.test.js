@@ -26,6 +26,7 @@ const {
   applyOutcome,
   readRank,
   outcomeFor,
+  summarize,
 } = require("./battle_stars")._internal;
 
 function rank(tier, division, stars, extra) {
@@ -240,6 +241,56 @@ test("outcome is read from the match result, per player", () => {
   assert.strictEqual(outcomeFor("a", "a"), "win");
   assert.strictEqual(outcomeFor("b", "a"), "loss");
   assert.strictEqual(outcomeFor("a", "draw"), "draw");
+});
+
+// --- What the result screen is told ---
+
+/** applyToPlayer's return shape, without needing Firestore. */
+function applied(rank, outcome) {
+  const result = applyOutcome(rank, outcome);
+  return Object.assign({before: rank, outcome}, result);
+}
+
+test("a win that crosses a division is reported as a promotion", () => {
+  const summary = summarize(applied(rank("bronze", 5, 2), "win"));
+  assert.strictEqual(summary.delta, 1);
+  assert.strictEqual(summary.divisionChanged, true);
+  assert.strictEqual(summary.tierChanged, false);
+  assert.strictEqual(summary.division, 4);
+});
+
+test("a win that promotes a tier says so, not just the division", () => {
+  const summary = summarize(applied(rank("bronze", 1, 2), "win"));
+  assert.strictEqual(summary.tierChanged, true);
+  assert.strictEqual(summary.tier, "silver");
+});
+
+test("a win inside a division is not reported as a promotion", () => {
+  const summary = summarize(applied(rank("gold", 3, 1), "win"));
+  assert.strictEqual(summary.divisionChanged, false);
+  assert.strictEqual(summary.tierChanged, false);
+});
+
+test("a loss that cost nothing is flagged, so the screen can explain it",
+    () => {
+      // Without this a protected player sees a loss and no change, and
+      // concludes the feature is broken.
+      const protectedLoss = summarize(applied(rank("bronze", 3, 1), "loss"));
+      assert.strictEqual(protectedLoss.delta, 0);
+      assert.strictEqual(protectedLoss.lossAbsorbed, true);
+
+      const flooredLoss = summarize(applied(rank("gold", 5, 0), "loss"));
+      assert.strictEqual(flooredLoss.lossAbsorbed, true);
+
+      const realLoss = summarize(applied(rank("gold", 5, 2), "loss"));
+      assert.strictEqual(realLoss.delta, -1);
+      assert.strictEqual(realLoss.lossAbsorbed, false);
+    });
+
+test("a draw is not reported as an absorbed loss", () => {
+  const summary = summarize(applied(rank("gold", 5, 0), "draw"));
+  assert.strictEqual(summary.delta, 0);
+  assert.strictEqual(summary.lossAbsorbed, false);
 });
 
 test("every tier the app knows about has a place on the ladder", () => {

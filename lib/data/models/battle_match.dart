@@ -88,6 +88,21 @@ class BattleMatch {
   /// as [cardTierContent].
   final bool rankedMatch;
 
+  /// What the star ladder did to each player when this match concluded,
+  /// keyed by uid — written only by `functions/battle_stars.js`, and
+  /// absent until it runs (the result screen shows "counting..." in that
+  /// gap).
+  ///
+  /// **The delta comes from the server rather than being worked out
+  /// here.** Only the Cloud Function knows the standing *before* the
+  /// match, and computing it locally would mean a second copy of the
+  /// ladder's arithmetic in Dart — the exact duplication
+  /// `card_game_rank.dart` explains this codebase is avoiding. It lives
+  /// on the match, not on the player, because it describes one match: a
+  /// player who finishes a second match before opening the first one's
+  /// result would otherwise be shown the wrong number.
+  final Map<String, BattleStarResult> starResult;
+
   BattleMatch({
     required this.id,
     required this.players,
@@ -101,6 +116,7 @@ class BattleMatch {
     this.scoredRounds = const {},
     this.cardTierContent = CardTierContent.hiragana,
     this.rankedMatch = true,
+    this.starResult = const {},
   });
 
   /// The uid of whichever player is expected to answer
@@ -143,6 +159,13 @@ class BattleMatch {
         map['cardTierContent'] as String?,
       ),
       rankedMatch: map['rankedMatch'] as bool? ?? true,
+      starResult: (map['starResult'] as Map?)?.map(
+            (k, v) => MapEntry(
+              k as String,
+              BattleStarResult.fromMap(Map<String, dynamic>.from(v as Map)),
+            ),
+          ) ??
+          const {},
     );
   }
 
@@ -164,6 +187,8 @@ class BattleMatch {
     'cardTierContent': cardTierContent.key,
     'rankedMatch': rankedMatch,
   };
+  // `starResult` is deliberately absent from the create map: it does not
+  // exist until the match is over.
 
   static DateTime? _toDateTime(dynamic value) {
     if (value == null) return null;
@@ -171,4 +196,65 @@ class BattleMatch {
     if (value is DateTime) return value;
     return null;
   }
+}
+
+/// One player's star movement from a concluded match — see
+/// [BattleMatch.starResult]. Read-only; `firestore.rules` rejects any
+/// client write that changes it, because this is the only thing the
+/// player is shown about their climb and a client able to write it could
+/// claim any number it liked.
+class BattleStarResult {
+  /// Stars actually gained or lost. **Not always the nominal +1/-1**: a
+  /// loss at a tier's floor, or any loss at Bronze/Silver, is 0 — the
+  /// screen must not claim a star was lost when the standing did not
+  /// move.
+  final int delta;
+
+  final CardGameTier tier;
+  final int division;
+  final int stars;
+  final int winStreak;
+
+  /// True when this match moved the player up (or down) a division —
+  /// including a tier change, which is always also a division change.
+  final bool divisionChanged;
+
+  final bool tierChanged;
+
+  /// A loss that cost nothing. Worth saying out loud: a protected player
+  /// who loses and sees no change otherwise concludes it is broken.
+  final bool lossAbsorbed;
+
+  BattleStarResult({
+    required this.delta,
+    required this.tier,
+    required this.division,
+    required this.stars,
+    required this.winStreak,
+    required this.divisionChanged,
+    required this.tierChanged,
+    required this.lossAbsorbed,
+  });
+
+  factory BattleStarResult.fromMap(Map<String, dynamic> map) {
+    return BattleStarResult(
+      delta: (map['delta'] as num?)?.toInt() ?? 0,
+      tier: CardGameTierX.fromKey(map['tier'] as String?),
+      division: (map['division'] as num?)?.toInt() ?? 5,
+      stars: (map['stars'] as num?)?.toInt() ?? 0,
+      winStreak: (map['winStreak'] as num?)?.toInt() ?? 0,
+      divisionChanged: map['divisionChanged'] as bool? ?? false,
+      tierChanged: map['tierChanged'] as bool? ?? false,
+      lossAbsorbed: map['lossAbsorbed'] as bool? ?? false,
+    );
+  }
+
+  /// The standing this match ended at, for display.
+  CardGameRank get rank => CardGameRank(
+    tier: tier,
+    division: division,
+    stars: stars,
+    season: 0,
+    winStreak: winStreak,
+  );
 }

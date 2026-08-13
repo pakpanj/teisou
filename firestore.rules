@@ -380,7 +380,19 @@ service cloud.firestore {
           && request.resource.data.turnOrder == resource.data.turnOrder
           && request.resource.data.get('scoredRounds', {}) == resource.data.get('scoredRounds', {})
           && request.resource.data.get('cardTierContent', '') == resource.data.get('cardTierContent', '')
-          && request.resource.data.get('rankedMatch', true) == resource.data.get('rankedMatch', true);
+          && request.resource.data.get('rankedMatch', true) == resource.data.get('rankedMatch', true)
+          // Ditulis hanya oleh Cloud Function battle_stars.js (pergerakan
+          // bintang hasil pertandingan ini). Kalau client boleh
+          // menulisnya, layar hasil bisa dibuat mengaku naik bintang
+          // sebanyak apa pun — dan karena itu satu-satunya yang dilihat
+          // pemain, bohongnya tidak akan ketahuan.
+          && request.resource.data.get('starResult', {}) == resource.data.get('starResult', {})
+          // Penanda internal battle_stars.js (sudah/belum dibayar, dan
+          // sudah berapa kali dicoba). Client tidak punya urusan dengan
+          // keduanya, dan kalau bisa menulisnya, bintang satu
+          // pertandingan bisa dibayar berkali-kali.
+          && request.resource.data.get('starsApplied', false) == resource.data.get('starsApplied', false)
+          && request.resource.data.get('starsAttempts', 0) == resource.data.get('starsAttempts', 0);
 
       // Write-once — no update/delete, so a submitted answer can never
       // be edited after the fact. Deliberately NOT restricted to

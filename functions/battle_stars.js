@@ -46,6 +46,10 @@ const DIVISIONS_PER_TIER = 5;
  * rate a flat +1/-1 needs roughly 360 matches to climb 36 stars. */
 const LOSS_PROTECTED = new Set(["bronze", "silver"]);
 
+/** How many times a single match may try to award its stars before it
+ * is left alone — see the claim in `onBattleMatchConcluded`. */
+const MAX_STAR_ATTEMPTS = 3;
+
 /** Consecutive wins from which a win is worth +2 instead of +1. */
 const STREAK_BONUS_AT = 3;
 
@@ -223,11 +227,44 @@ async function applyToPlayer(uid, result, season) {
   return db().runTransaction(async (transaction) => {
     const snap = await transaction.get(userRef);
     const current = rollOverIfNewSeason(readRank(snap.data()), season);
-    const applied = applyOutcome(current, outcomeFor(uid, result));
+    const outcome = outcomeFor(uid, result);
+    const applied = applyOutcome(current, outcome);
 
     transaction.set(userRef, {cardGameRank: applied.rank}, {merge: true});
-    return applied;
+    return Object.assign({before: current, outcome}, applied);
   });
+}
+
+/**
+ * What the result screen needs to say what just happened, computed here
+ * because only this function knows the standing *before* the match.
+ *
+ * The client could not work the delta out for itself without a second
+ * copy of the ladder's arithmetic — the very duplication this file
+ * exists to avoid — so it is handed the answer instead. Written onto the
+ * match rather than the player: it describes one match, and a player who
+ * finishes a second match before opening the first one's result would
+ * otherwise see the wrong number.
+ */
+function summarize(applied) {
+  const before = applied.before;
+  const after = applied.rank;
+  return {
+    delta: applied.delta,
+    tier: after.tier,
+    division: after.division,
+    stars: after.stars,
+    winStreak: after.winStreak,
+    // Distinguishes "promoted" from "moved within a division", so the
+    // screen can celebrate the first and merely report the second.
+    tierChanged: after.tier !== before.tier,
+    divisionChanged: after.division !== before.division ||
+      after.tier !== before.tier,
+    // A loss that cost nothing, either because the tier is protected or
+    // because the tier floor absorbed it — worth saying out loud, or a
+    // player who lost and sees no change assumes it is broken.
+    lossAbsorbed: applied.outcome === "loss" && applied.delta === 0,
+  };
 }
 
 /**
@@ -292,11 +329,28 @@ exports.onBattleMatchConcluded = onDocumentWritten(
       // Claim the match before touching any rank, so a duplicate
       // delivery that overlaps this one loses the race instead of
       // paying out twice.
+      //
+      // `starsAttempts` is what makes the claim recoverable. Claiming
+      // first is necessary (two overlapping deliveries must not both pay
+      // out) but it means a failure *after* the claim would otherwise
+      // strand the match forever: every retry sees `starsApplied` and
+      // returns, so the stars are never awarded and `starResult` never
+      // appears — the result screen waits and then gives up. Observed
+      // exactly once during testing before this guard existed. So a
+      // failure clears the flag to let the next delivery try again,
+      // bounded by the attempt count because clearing it is itself a
+      // write to this document, which re-triggers this function: without
+      // a bound, a persistently failing match would retry forever.
       const claimed = await db().runTransaction(async (transaction) => {
         const snap = await transaction.get(matchRef);
         const data = snap.data();
         if (!data || !data.result || data.starsApplied) return false;
-        transaction.update(matchRef, {starsApplied: true});
+        const attempts = data.starsAttempts || 0;
+        if (attempts >= MAX_STAR_ATTEMPTS) return false;
+        transaction.update(matchRef, {
+          starsApplied: true,
+          starsAttempts: attempts + 1,
+        });
         return true;
       });
       if (!claimed) return;
@@ -311,9 +365,22 @@ exports.onBattleMatchConcluded = onDocumentWritten(
       const season = seasonForDate(new Date());
       const players = (match.players || []).filter((uid) => uid !== BOT_UID);
 
-      for (const uid of players) {
-        const applied = await applyToPlayer(uid, match.result, season);
-        await mirrorToLeaderboard(uid, applied.rank);
+      try {
+        const starResult = {};
+        for (const uid of players) {
+          const applied = await applyToPlayer(uid, match.result, season);
+          starResult[uid] = summarize(applied);
+          await mirrorToLeaderboard(uid, applied.rank);
+        }
+
+        // Written last, after every rank is safely committed, so a
+        // screen that sees this field can trust the standing behind it.
+        // Its absence is what the result screen shows "counting..." for.
+        await matchRef.set({starResult}, {merge: true});
+      } catch (error) {
+        console.error("stars: failed, releasing claim", error);
+        await matchRef.set({starsApplied: false}, {merge: true});
+        throw error;
       }
     },
 );
@@ -331,4 +398,5 @@ exports._internal = {
   applyOutcome,
   readRank,
   outcomeFor,
+  summarize,
 };

@@ -47,9 +47,8 @@ deploy yang benar ke depannya, lihat "Penemuan penting" di butir 7.
    perangkat sungguhan** — rinciannya di bagian "Tangga bintang sudah
    jalan" di bawah.
 
-   Yang **belum** dikerjakan dari bagian bintang: layar hasil
-   pertandingan belum menampilkan perubahan bintang (masih cuma skor),
-   dan papan peringkat bintangnya sendiri belum dibuat — Cloud Function
+   Yang **belum** dikerjakan dari bagian bintang: papan peringkat
+   bintangnya sendiri belum dibuat — Cloud Function
    sudah menulis field-nya (`cardGameTier`/`cardGameStars`/
    `cardGameStarTotal`/`cardGameSeason` di `leaderboard/{uid}`), tapi
    belum ada layar yang membacanya.
@@ -1768,6 +1767,65 @@ belum pernah dicoba ditembus sungguhan. Semua sudah tertutup unit test
 (63 tes di `functions/battle_stars.test.js`, tiap aturannya dicek gigit
 dengan cara sengaja merusak kodenya satu per satu), tapi tes bukan
 perangkat sungguhan.
+
+### Layar hasil menampilkan perubahan bintang (2026-08-14)
+
+Sebelum ini bintang bergerak diam-diam: pemain menang lalu hanya melihat
+"Kamu: 5, Lawan: 0", tanpa tahu naik berapa atau bahwa divisinya naik —
+untuk mode yang seluruh daya tariknya mengejar peringkat, itu hadiah yang
+tidak pernah diberikan. Sekarang `StarResultCard`
+(`lib/features/battle/widgets/star_result_card.dart`) menampilkan
+perubahannya di layar hasil.
+
+**Angkanya datang dari server, bukan dihitung ulang di aplikasi.** Cloud
+Function menulis `starResult` ke dokumen match — satu entri per pemain
+berisi `delta`, tingkat/divisi/bintang sesudahnya, dan penanda
+`tierChanged`/`divisionChanged`/`lossAbsorbed`. Hanya dia yang tahu
+peringkat **sebelum** pertandingan, dan menghitung selisihnya di Dart
+berarti menyalin aritmetika tangganya untuk kedua kali — persis duplikasi
+yang file ini hindari. Ditulis di dokumen match, bukan di dokumen pemain,
+karena ia menjelaskan **satu** pertandingan: pemain yang menyelesaikan
+pertandingan kedua sebelum membuka hasil yang pertama akan melihat angka
+yang salah kalau disimpan di profilnya.
+
+**Tiga keadaan yang kalau dibiarkan kosong akan terbaca sebagai rusak**,
+dan semuanya wajar terjadi:
+- **Bintangnya belum sampai.** Hasil muncul begitu klien melihat
+  pertandingan berakhir, sedangkan bintangnya digerakkan Cloud Function
+  yang bereaksi pada kejadian yang sama — jadi ada satu-dua detik yang
+  memang belum ada jawabannya. Kartunya bilang "Menghitung bintang...",
+  lalu berganti sendiri. Kalau 12 detik tidak datang juga, ia berhenti
+  menunggu dan bilang bintangnya sedang diperbarui — bukan memutar
+  spinner selamanya.
+- **Kalah tapi bintang tidak berkurang** (Bronze/Silver, atau tertahan
+  lantai tingkat). Ditulis apa adanya plus alasannya.
+- **Pertandingan teman/clan**, yang memang tidak menggerakkan bintang.
+  Dikatakan langsung, bukan dibiarkan kosong.
+
+**Cacat nyata yang ketahuan justru karena diuji di perangkat, dan sudah
+diperbaiki**: percobaan pertama menampilkan "Bintangmu sedang
+diperbarui" dan tidak pernah berubah. Sebabnya ada di rancangan saya
+sendiri — fungsinya "mengklaim" match (menulis `starsApplied: true`)
+**sebelum** menghitung, supaya pengiriman ganda tidak membayar dua kali.
+Klaim duluan itu memang perlu, tapi artinya kalau ada kegagalan
+**sesudah** klaim, match itu tersangkut selamanya: setiap pengiriman
+ulang melihat `starsApplied` lalu berhenti, jadi bintangnya tidak pernah
+dibayar dan `starResult` tidak pernah ada. Sekarang kegagalan setelah
+klaim **melepas** klaimnya lagi, dibatasi penghitung `starsAttempts`
+(maksimal 3 kali) — karena melepas klaim itu sendiri adalah penulisan ke
+dokumen match, yang memicu ulang fungsi ini; tanpa batas, match yang
+gagal terus akan mengulang selamanya. `starsApplied`/`starsAttempts`/
+`starResult` ketiganya dikunci di `firestore.rules` supaya client tidak
+bisa menulisnya.
+
+**Diverifikasi di perangkat sungguhan, kedua sisinya:**
+- Menang beruntun: **"+2 bintang · Bronze III · 0/3 bintang · Naik divisi
+  — Bronze III!"**
+- Kalah di Bronze: **"Bintang tidak berubah · Bronze V · 0/3 bintang · Di
+  Bronze & Silver kamu tidak kehilangan bintang."**
+
+`test/star_result_card_test.dart` (9 kasus) menutup semua keadaan di
+atas, dan dicek benar-benar menggigit dengan merusak dua di antaranya.
 
 ### Isi kartu ditentukan oleh rank
 
