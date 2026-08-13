@@ -9406,6 +9406,17 @@ each match and the cards differ between games; and unlike a lives format
 the weaker player still plays all 10 and still gets 10 questions to learn
 from, losing on points rather than being knocked out on the third turn.
 
+Turns are timed, and a draw at 10 cards is not a draw: play continues with
+the timer accelerated until someone pulls ahead. Two things fall out of
+that neatly — the unused half of the 20-card deck is exactly the material
+for the extra round, and a shortening timer forces a result on its own. It
+also caps: overtime cannot exceed 10 cards before the deck runs out.
+
+**The countdown cannot live on the device.** A client running its own clock
+can slow or stop it, which goes straight into a public leaderboard, so the
+timer has to be anchored to a server timestamp — the same reasoning that
+already puts scoring in a Cloud Function.
+
 Two things that have to be built and are not small:
 
 - **An in-app kana keyboard.** Typing hiragana on Android needs a Japanese

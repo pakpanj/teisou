@@ -22,6 +22,8 @@ kartu dan lawan menulis bacaannya.
 | Cara mengetik hiragana | **Keyboard kana bawaan aplikasi** |
 | Alur pertandingan | **Serentak**, dua pemain online bersamaan |
 | Kondisi selesai | **Berakhir di 10 kartu**, poin terbanyak menang |
+| Batas waktu | **Ada timer per giliran** |
+| Kalau seri | **Lanjut dengan timer dipercepat** sampai ada yang unggul |
 | Lawan | Teman, clan, atau publik |
 | Poin | Diakumulasi ke rank / papan peringkat |
 | Harga | Gratis |
@@ -47,6 +49,35 @@ selisih poin, bukan tersingkir di giliran ketiga.
 > **10 kartu per pemain** (jadi 20 jawaban, sekitar 3–4 menit). Kalau yang
 > dimaksud 10 kartu total (5 per pemain, sekitar 2 menit), tinggal ubah
 > angka ini — tidak ada yang bergantung padanya selain durasi.
+
+### Timer, dan cara seri diselesaikan
+
+Tiap giliran punya batas waktu. Kalau setelah 10 kartu poinnya masih sama,
+pertandingan **tidak berhenti seri** — permainan lanjut dengan **timer
+dipercepat** sampai salah satu unggul.
+
+Dua hal yang menyenangkan dari bentuk ini, dan keduanya kebetulan cocok
+dengan keputusan yang sudah diambil sebelumnya:
+
+- **Sisa deck-nya sudah tersedia.** Deck 20 kartu dengan 10 dipakai
+  menyisakan tepat 10 kartu — itulah bahan untuk babak tambahannya. Tidak
+  perlu aturan pengambilan kartu yang baru.
+- **Timer yang makin cepat memaksa hasil.** Semakin pendek waktunya,
+  semakin kecil kemungkinan keduanya sama-sama benar, jadi seri
+  berkepanjangan selesai dengan sendirinya tanpa aturan tambahan.
+
+**Batas alaminya: babak tambahan paling banyak 10 kartu**, karena setelah
+itu deck habis. Perlu diputuskan apa yang terjadi kalau sampai titik itu
+masih imbang juga — kemungkinan besar tidak akan pernah terjadi kalau
+timernya terus dipercepat, tapi tetap butuh jawaban supaya kode tidak
+menggantung di keadaan yang tidak diantisipasi.
+
+**Akibat teknis yang harus dipegang: timernya tidak boleh bersandar pada
+jam HP.** Kalau hitungan mundur dijalankan sepenuhnya di perangkat, pemain
+bisa memperlambat atau menghentikan waktunya sendiri, dan itu langsung
+merusak peringkat publik. Waktunya harus berpatokan pada **stempel waktu
+server** — sejalan dengan aturan bahwa skor resmi dihitung di Cloud
+Function, bukan di HP.
 
 ### Kenapa kartu kanji berisi kata
 
@@ -118,10 +149,14 @@ Belum dijawab. Sebagian menentukan bentuk, sebagian tinggal angka:
 
 **Aturan main**
 - 10 kartu itu per pemain atau total? (lihat catatan di atas)
-- Ada batas waktu per giliran? Kalau ada, habisnya waktu dihitung jawaban
-  salah atau sekadar lewat?
-- Kalau poin imbang setelah 10 kartu, hasilnya seri atau ada penentu —
-  misalnya siapa yang lebih cepat menjawab?
+- Timer normalnya berapa detik? Perlu diingat kartu kanji dijawab dengan
+  mengetik hiragana lewat keyboard bawaan aplikasi — itu jelas lebih lama
+  daripada mengetik romaji untuk kartu kana, jadi mungkin keduanya tidak
+  pantas diberi waktu yang sama.
+- Habisnya waktu dihitung jawaban salah, atau sekadar lewat tanpa poin?
+- Di babak tambahan, timernya dipercepat sekali lalu tetap, atau makin
+  cepat tiap kartu?
+- Kalau 10 kartu babak tambahan habis dan masih imbang juga, hasilnya apa?
 - Kedua pemain menjawab bersamaan, atau bergantian?
 - Deck 20 kartu dipilih sendiri, atau dibagikan otomatis dari level JLPT
   yang dipilih?
