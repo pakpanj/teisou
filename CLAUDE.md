@@ -9516,6 +9516,20 @@ result screen already puts it. The prompt in the note now forbids it
 explicitly. Minor and also noted: the drawn keyboard has duplicate columns,
 and the bottom nav is five tabs against the app's three.
 
+A **third round fixed all three** — the question card carries the kanji
+alone while the result screen keeps its readings, the keyboard is 11 rows
+by 5 vowel columns *with the gaps preserved* (や empty at i and e, わ at
+i/u/e, ん alone) plus a modifier row including small tsu, and the bottom
+nav is gone from the battle screens.
+
+Some kana on the drawn keyboard are still wrong — row one renders as
+あ か か ヒ け rather than あいうえお, katakana and all. **That is the
+image generator's limit, not a design fault, and it is not worth another
+round:** what the mockups had to settle was the layout, the gap positions
+and the modifier keys, and they do. The characters come from the app's own
+kana dataset when this is built. The design is a good enough reference to
+stop drawing and start deciding the remaining rules.
+
 Three findings from checking the data rather than assuming it, all of
 which the answer-checking path depends on:
 

@@ -520,6 +520,37 @@ dijawab — dan di layar hasil, tempatnya memang sudah benar.
 - Papan peringkat diperbarui berkala, bukan seketika — masuk akal dan
   murah.
 
+## Putaran ketiga — desain dianggap selesai
+
+Ketiga perbaikan masuk semua:
+
+1. **Furigana hilang dari kartu soal.** 学生 dan 電車 kini tampil sebagai
+   kanji saja dengan label N5. Layar hasil tetap menampilkan bacaannya —
+   persis seperti yang diminta.
+2. **Struktur keyboard sudah benar.** 11 baris × 5 kolom vokal, dan yang
+   paling penting: **celahnya dipertahankan** — baris や kosong di kolom i
+   dan e, baris わ kosong di i/u/e, ん sendirian di bawah. Baris pengubah
+   lengkap dan diberi label Indonesia: tenten, maru, kecil ya, kecil yu,
+   kecil yo, **kecil tsu**, hapus.
+3. **Navigasi bawah hilang** dari layar pertarungan.
+
+### Sisa kesalahan yang sebaiknya TIDAK dikejar lagi
+
+Beberapa huruf di papan keyboard masih salah — baris pertama tergambar
+あ か か ヒ け (seharusnya あ い う え お), bahkan ada katakana ヒ
+menyelip, dan beberapa baris lain ikut tertukar.
+
+**Ini batas alat gambarnya, bukan kesalahan desain.** Model gambar tidak
+bisa diandalkan menuliskan glif CJK tertentu, dan menyuruhnya mengulang
+biasanya cuma menukar kesalahan dengan kesalahan lain.
+
+Yang penting sudah didapat: **tata letak, jumlah baris/kolom, posisi
+celah, dan daftar tombol pengubah.** Huruf-hurufnya nanti datang dari
+dataset kana aplikasi sendiri saat dikodekan, bukan disalin dari gambar.
+
+Jadi desainnya sudah cukup sebagai acuan. Putaran berikutnya sebaiknya
+bukan gambar lagi.
+
 ## Prompt perbaikan untuk desain putaran kedua
 
 Dipakai kalau desain putaran kedua mau diperbaiki, bukan digambar ulang
