@@ -9439,13 +9439,18 @@ i.e. **a sum of four exam averages, not a balance**. Nothing there can be
 staked without corrupting an exam average and breaking the four Rekor tabs
 with it.
 
-So "reuse the existing points" is not actually on the table: a new number
-is needed either way, and the remaining choice is only its shape — a flat
-up-and-down figure (cheapest, and mechanically identical to stars whatever
-it is called) or ML-style tiered stars (more game-like, but adds tiers,
-promotion and demotion, and possibly seasons). The learning points stay
-up-only in every version, so a lost match never erases evidence that the
-child studied.
+So "reuse the existing points" was never on the table: a new number is
+needed either way. **Tiered stars, ML-style, is the decision** — chosen for
+feel rather than cost, since it adds tier definitions, promotion and
+demotion, and probably seasons over a flat up-and-down figure that would
+have sorted just as well. The learning points stay up-only, so a lost match
+never erases evidence that the child studied; only the star moves.
+
+Still open on the star system: the tier ladder and stars per tier, whether
+a draw leaves stars untouched, whether running out of stars demotes a tier
+(ML does; a floor per tier is gentler for children), seasons or not,
+whether friend and clan matches count towards it, and whether the star
+ranking is its own board or joins the existing one.
 
 Two things that have to be built and are not small:
 

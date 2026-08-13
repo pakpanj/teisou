@@ -27,6 +27,7 @@ kartu dan lawan menulis bacaannya.
 | Kalau seri | **Kartu 11–20: dipangkas 2 detik tiap kartu** |
 | Habis waktu | **Kartu itu dihitung kalah** |
 | Masih imbang di kartu 20 | **Seri** — keduanya dapat poin yang seharusnya |
+| Peringkat | **Bintang bertingkat ala Mobile Legends** |
 | Lawan | Teman, clan, atau publik |
 | Poin | Diakumulasi ke rank / papan peringkat |
 | Harga | Gratis |
@@ -231,15 +232,16 @@ rata-rata nilai ujian — dan begitu itu terjadi, angkanya berhenti berarti
 "rata-rata nilai ujianku", yang sekaligus merusak keempat tab Rekor.
 
 **Jadi pilihannya bukan antara memakai ulang dan membuat baru.** Angka baru
-tetap dibutuhkan, apa pun namanya. Yang tersisa hanya bentuknya:
+tetap dibutuhkan, apa pun namanya — dan setelah itu jelas, **bintang
+bertingkat yang dipilih**, bukan sekadar satu angka datar.
 
-- **Satu angka datar yang naik-turun.** Paling murah, satu field, langsung
-  bisa diurutkan. Boleh saja disebut "poin game kartu" — secara mekanik
-  ini sama persis dengan bintang, hanya beda nama dan tampilan.
-- **Bintang bertingkat ala ML.** Lebih terasa seperti game, tapi menambah
-  definisi tingkatan, aturan naik/turun tingkat, dan mungkin musim.
+Konsekuensinya jujur saja: bintang bertingkat memang lebih banyak
+kerjanya. Selain satu angka yang bisa diurutkan, ia menuntut definisi
+tingkatan, aturan naik dan turun tingkat, dan kemungkinan musim. Dipilih
+karena rasanya jauh lebih dekat ke game yang memang jadi acuan konsep ini,
+bukan karena lebih murah.
 
-**Yang perlu diputuskan kalau memilih bintang bertingkat:**
+**Yang perlu diputuskan untuk sistem bintangnya:**
 
 - Tingkatannya apa saja, dan berapa bintang per tingkat.
 - Seri berarti bintang tidak berubah? (paling masuk akal)
