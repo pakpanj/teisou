@@ -126,10 +126,33 @@ class _BattleMatchmakingScreenState
     // (see MatchmakingRepository's own doc comments).
     ref.read(matchmakingRepositoryProvider).leaveQueue(tier: tier, uid: myUid);
     ref.read(matchmakingRepositoryProvider).clearMatchResult(myUid);
+    _openMatch(matchId);
+  }
+
+  /// Opens the match and — this is the part that matters — puts this
+  /// screen back to idle once the learner comes out of it.
+  ///
+  /// Both entry points used to push without awaiting and never reset
+  /// `_state`, so finishing a match revealed this screen still frozen on
+  /// "Menunggu lawan..." or "Tidak ada lawan, melawan bot...", spinner
+  /// and all. Nothing was actually being searched — the timer and the
+  /// listener were both already cancelled — but there was no way to tell
+  /// that apart from the app having started a second match on its own,
+  /// which is exactly how it was reported. Worse, the only control on
+  /// screen in that state is "Batal", so a learner who just won had to
+  /// press Cancel to get back to a button that starts a game.
+  Future<void> _openMatch(String matchId) async {
     if (!mounted) return;
-    Navigator.of(context).push(
+    await Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => BattleScreen(matchId: matchId)),
     );
+    if (!mounted) return;
+    setState(() {
+      _state = _MatchmakingState.idle;
+      _secondsLeft = _searchSeconds;
+      _error = null;
+      _queuedTier = null;
+    });
   }
 
   /// After 20 seconds with no pairing, check once more for a match that
@@ -170,10 +193,7 @@ class _BattleMatchmakingScreenState
             secondCandidateDeck: deck,
             cardTierContent: tier.cardContent,
           );
-      if (!mounted) return;
-      Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => BattleScreen(matchId: matchId)),
-      );
+      await _openMatch(matchId);
     } catch (e) {
       if (!mounted) return;
       setState(() {

@@ -221,6 +221,42 @@ dek), hasilnya menampilkan maskot cheering, skor 4-3, "+1 bintang ·
 Bronze I · Naik divisi", dan deretan tujuh kartu dengan tanda dan
 bacaannya.
 
+### Bug: layar cari lawan membeku di keadaan lamanya setelah bertanding
+### (ditemukan dan diperbaiki 2026-08-14)
+
+Dilaporkan user setelah tampilan barunya dipasang: **"kenapa dia
+langsung otomatis matchmaking setelah selesai pertandingan, tanpa
+konfirmasi ke player?"** Dicek dengan screenshot langsung — betul,
+setelah pertandingan selesai layarnya menampilkan maskot dan tulisan
+"Tidak ada lawan, melawan bot..." lengkap dengan spinner, seolah
+aplikasi memulai pertandingan kedua sendiri.
+
+**Yang sebenarnya terjadi berbeda dari yang terlihat, dan bedanya
+penting**: tidak ada pencarian apa pun yang berjalan. Timer dan
+listener-nya sudah dibatalkan sebelum masuk pertandingan. Yang terjadi
+adalah `_state` tidak pernah dikembalikan ke `idle` — kedua jalan masuk
+ke pertandingan (`_joinMatch` dan `_giveUpAndFallBackToBot`) memanggil
+`Navigator.push` **tanpa `await`** dan tidak pernah menyentuh `_state`
+lagi. Jadi begitu pertandingan ditutup, layar di bawahnya terungkap
+masih membeku persis di keadaan terakhirnya.
+
+Dari sisi pemain keduanya tidak bisa dibedakan — dan lebih buruk lagi,
+satu-satunya tombol di keadaan itu adalah **"Batal"**, jadi pemain yang
+baru saja menang harus menekan Batal dulu untuk sampai ke tombol yang
+memulai permainan.
+
+Diperbaiki dengan satu jalur bersama `_openMatch`: `await` push-nya,
+lalu kembalikan ke `idle` begitu pemain keluar dari pertandingan.
+Sekarang selesai bertanding selalu mendarat di layar dek + tombol "Cari
+Lawan" — pemain yang memutuskan kapan main lagi, bukan aplikasi. Ini
+juga yang membuat tombol "Main Lagi" di layar hasil jadi jujur: ia
+mendarat tepat di tempat permainan berikutnya dimulai.
+
+Diverifikasi di Moto G52J: main lawan bot sampai menang 5-4, tekan
+Selesai, dan layarnya kembali ke keadaan diam dengan tiga kartu
+mengipas dan tombol "Cari Lawan" — tidak ada spinner, tidak ada
+pencarian yang berjalan sendiri.
+
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
 ### memikirkan rilis)
