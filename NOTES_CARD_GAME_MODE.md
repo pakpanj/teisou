@@ -141,14 +141,23 @@ disentuh sama sekali. Jadi lintas-tingkat bukan "jarang", tapi tidak
 bisa terjadi. Tetap layak dicoba sungguhan kalau suatu saat ada akun
 di tingkat berbeda.
 
-**Sampah uji yang tertinggal, sengaja disebut**: pengujian clan butuh
-dua akun di clan yang sama, dan memakai clan asli berisi 23 murid
-sungguhan jelas tidak pantas — jadi akun uji membuat clan sendiri,
-**"Uji Jalur Pinggir" (kode 437CSN)**. HP-nya sudah keluar dari clan
-itu; clan-nya sendiri masih ada dengan 1 anggota (akun uji). Tidak
-dihapus karena layar Pengaturan Clan tidak punya tombol hapus, dan
-menebak-nebak dengan aksi yang merusak bukan hal yang pantas dilakukan
-diam-diam. Hapus lewat konsol Firebase kalau mengganggu.
+**Soal data uji — sudah bersih, tidak ada yang tertinggal.** Pengujian
+clan butuh dua akun di clan yang sama, dan memakai clan asli berisi 23
+murid sungguhan jelas tidak pantas, jadi akun uji membuat clan sendiri
+("Uji Jalur Pinggir", kode 437CSN). Kedua akun sudah keluar lewat
+aplikasi (menghapus baris roster dan reverse-index masing-masing), lalu
+dokumen clan-nya dihapus pemilik proyek lewat konsol Firebase.
+
+Satu hal yang **tidak** ikut terhapus dan memang tidak bisa: penanda
+`clanFreeSlotUsed/{uid}` pada akun uji — jatah "clan gratis pertama"
+akun itu sudah terpakai permanen. Kalau suatu saat akun uji perlu
+membuat clan gratis lagi, dokumen itu harus dihapus lebih dulu.
+
+**Catatan untuk pengujian clan berikutnya**: `ClanRepository` tidak
+punya `deleteClan` sama sekali — keluar dari clan hanya menghapus
+keanggotaan dan mengurangi `memberCount`, dokumen clan-nya sendiri
+tetap tinggal. Jadi setiap clan yang dibuat untuk uji coba selalu
+menyisakan satu dokumen yang cuma bisa dibereskan dari konsol.
 
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
