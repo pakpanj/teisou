@@ -9,10 +9,10 @@ Catatan rumusan untuk mode permainan kartu di Teisou — Kana Master.
 diuji, dan di-deploy ke produksi `teisou-kana-master`. Tangga bintang,
 pintu masuk dari Home, layar hasil yang menampilkan bintang, dan papan
 peringkat bintangnya sendiri — keempatnya di luar 10 butir itu, dan
-semuanya juga sudah selesai.** Yang benar-benar tersisa sekarang ada
-tiga hal kecil, semuanya dirinci di "Yang masih terbuka" di bawah — dua
-soal verifikasi perangkat fisik yang belum sempat dicoba, satu soal
-deploy yang belum dijalankan.
+semuanya juga sudah selesai, ter-deploy, dan sudah dicoba di perangkat
+sungguhan.** Yang benar-benar tersisa tinggal dua hal, keduanya dirinci
+di "Yang masih terbuka" di bawah: beberapa jalur pinggir yang belum
+sempat dicoba, dan sejumlah trade-off yang memang sengaja dibiarkan.
 
 ### Sudah selesai + hidup di produksi
 
@@ -26,7 +26,7 @@ deploy yang belum dijalankan.
 | Tangga bintang (`functions/battle_stars.js`) | ✅ diverifikasi ujung-ke-ujung (3 kemenangan beruntun, divisi naik, kalah tidak rugi di Bronze) |
 | Pintu masuk Home (`_CardGameCard`) | ✅ dicoba di perangkat, subjudul menampilkan tingkat+bintang sungguhan |
 | Layar hasil menampilkan bintang (`StarResultCard`) | ✅ dicoba di dua perangkat, termasuk kasus "sedang dihitung" dan kegagalan-lalu-pulih |
-| Papan peringkat bintang (tab "Bintang" di `LeaderboardScreen`) | ⚠️ dibangun+diuji, **belum di-deploy, belum dicoba di perangkat** |
+| Papan peringkat bintang (tab "Bintang" di `LeaderboardScreen`) | ✅ rules ter-deploy, **dicoba di perangkat** (peringkat ke-1, 10 bintang, Bronze II · 1/3 — cocok dengan hitungan tangga) |
 
 Semua Cloud Function (`onBattleAnswerCreated`, `onBattleMatchWritten`,
 `onMatchmakingQueueJoined`, `onBattleMatchConcluded`) tampil di
@@ -37,30 +37,45 @@ depannya.
 
 ### Yang masih terbuka
 
-1. **Tab "Bintang" belum di-deploy.** Kodenya (`LeaderboardEntry`'s
-   lima field baru, `LeaderboardRepository.watchTopByCardGameStars`/
-   `rankOfCardGameStars`, `_CardGameStarsTab`) sudah lulus `flutter
-   analyze` dan 437 test, termasuk kunci `firestore.rules` baru untuk
-   `leaderboard/{uid}` yang menutup celah nyata (client bisa menulis
-   `cardGameStarTotal` sembarangan sebelum perbaikan ini). **Belum
-   dijalankan**: `npx firebase-tools@latest deploy --only
-   firestore:rules`. Setelah itu, coba di device sungguhan: selesaikan
-   satu pertandingan publik/bot, buka tab Bintang, pastikan diri
-   sendiri muncul dengan tingkat+bintang yang benar. Detail lengkap di
-   penutup butir 2 pada daftar bernomor "Urutan mengerjakan" di bawah,
-   cari "papan peringkat bintangnya sendiri".
-2. **Jalur-jalur pinggir butir 9/10 belum dicoba**: menolak undangan,
+1. **Jalur-jalur pinggir butir 9/10 belum dicoba**: menolak undangan,
    menantang lewat clan (bukan cuma teman), jatuh ke bot saat benar-
    benar sendirian di antrian, dan memastikan dua tingkat berbeda tidak
    saling dipasangkan di matchmaking publik. Alur utamanya sudah
    diverifikasi (lihat tabel di atas); ini sisa kasus yang belum
    sempat dicoba, bukan sesuatu yang diketahui rusak.
-3. **Trade-off yang sengaja dibiarkan terbuka** (dicatat lengkap di
+2. **Trade-off yang sengaja dibiarkan terbuka** (dicatat lengkap di
    masing-masing butir, bukan lupa): kedaluwarsa undangan 2 menit murni
    kosmetik di sisi tampilan (butir 9); menolak undangan tidak
    membatalkan match yang sudah terlanjur dibuat (butir 9); balapan
    kecil di detik ke-20 saat jatuh ke bot bisa (jarang) membuat dua
    match sekaligus (butir 10).
+
+### Catatan progres — apa yang dikerjakan 2026-08-14, urut commit
+
+Ditulis supaya sesi berikutnya tidak perlu membaca `git log` satu per
+satu. Dua sesi Claude berjalan berbarengan hari ini di repo yang sama
+(satu mengerjakan fitur, satu melakukan code review + uji fisik), jadi
+urutannya di bawah campur dari keduanya — semuanya sudah ada di
+`master` dan sudah dipush.
+
+| Commit | Isi |
+|---|---|
+| `d5267ac` | Catatan verifikasi butir 10 (matchmaking publik) di dua klien sungguhan |
+| `436f877` | **Tangga bintang** — `functions/battle_stars.js` + trigger `onBattleMatchConcluded`; `cardGameRank` dikunci jadi server-only di rules |
+| `9b470b6` | Koreksi CLAUDE.md: mode ini sudah dibangun, bukan "planned" |
+| `d59517f` | Koreksi catatan: timer 30 detik **tidak pernah salah** (yang 20 detik itu tenggang jatuh-ke-bot, hal berbeda) |
+| `6e83b4b` | **Pintu masuk dari Home** — bagian "Bertanding" + kartu "Mode Kartu" yang menampilkan tingkat+bintang hidup |
+| `b783b1d` | **Layar hasil menampilkan perubahan bintang** (`StarResultCard`), termasuk keadaan "sedang dihitung" dan pemulihan klaim yang gagal |
+| `e2964d1` | **Tab "Bintang" di papan peringkat**, berdiri sendiri di samping "Skor Global" |
+| `38b42a2` | 5 bug hasil code review — yang terpenting: rules menutup celah membuat match "ranked" dengan tingkat kartu termudah |
+| `3ab073a` | Match lawan bot bisa macet selamanya kalau ronde yang dijawab manusia kehabisan waktu sementara BOT pemilik deck |
+
+**Angka verifikasi terakhir (dicek ulang sendiri, bukan disalin dari
+laporan sesi lain)**: `flutter analyze` bersih, `flutter test
+--concurrency=1` **438/438**, `node --test` di `functions/` **68/68**,
+`firestore.rules` + `database.rules.json` dirilis ulang ke proyek hidup,
+dan tab "Bintang" dibuka di Moto G52J — peringkat ke-1, 10 bintang,
+Bronze II · 1/3, cocok persis dengan hitungan tangga (3 divisi × 3 + 1).
 
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya

@@ -9396,14 +9396,19 @@ a bot opponent, friend/clan challenges, public matchmaking, and — as of
 2026-08-14 — the star ladder that moves a player's rank when a ranked
 match ends (`functions/battle_stars.js`).
 
-**One gap stands between this and something a learner can use.** Home
-now has a "Bertanding" section whose "Mode Kartu" card opens matchmaking
-and shows the player's live standing in its subtitle, so the mode is
-reachable at last, and the match-result screen now shows the star change
-it earned. What is still missing is the **star leaderboard screen**. The
-Cloud Function writes
-`cardGameTier`/`cardGameStars`/`cardGameStarTotal`/`cardGameSeason` onto
-`leaderboard/{uid}`, and nothing reads them yet.
+**The loop a learner actually sees is now complete**, and every part of
+it has been run on a real device: Home has a "Bertanding" section whose
+"Mode Kartu" card opens matchmaking and carries the player's live
+standing in its subtitle; the match-result screen shows the stars the
+match earned or explains why it earned none; and the leaderboard has its
+own "Bintang" tab ranking by the ladder, separate from "Skor Global"
+(which measures exam averages — a different thing, and mixing them would
+blur both).
+
+**What is left is edge cases, not features**: the reject-invite path,
+challenging through a clan rather than a friend, the bot fallback with a
+single client waiting alone, and confirming two different tiers are
+never paired. None is known broken; none has been exercised.
 
 **`cardGameRank` is server-written only.** `firestore.rules` rejects any
 client write that changes it, so `battle_stars.js` (Admin SDK, exempt
