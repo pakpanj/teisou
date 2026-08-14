@@ -14,7 +14,6 @@ import '../../data/models/battle_answer.dart';
 import '../../data/models/battle_match.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kanji_entry.dart';
-import '../../data/repositories/battle_repository.dart' show battleBotUid;
 import 'widgets/star_result_card.dart';
 
 /// Card Game Mode's live match screen — Tahap 2 butir 5 in
@@ -172,18 +171,28 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
 
     final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (myUid == null) return;
-    // Only the WAITING player (this round's deck owner) forces the
-    // advance — see the class doc comment / NOTES_CARD_GAME_MODE.md's
-    // "Kalau lawan menutup aplikasi di tengah pertandingan". **Except
-    // against BOT**: `battleBotUid` never runs a real client of its
-    // own, so a round where BOT is the deck owner (the human is the
-    // answerer) would never get its timeout handled by anyone —
-    // confirmed on a physical device, where a missed answer against a
-    // BOT-owned round left the match frozen on that card forever, with
-    // no way forward. The human's own client is the only real
-    // participant in a BOT match, so it has to cover both roles there.
-    final isBotMatch = match.players.contains(battleBotUid);
-    if (!isBotMatch && match.turnOrder[round].deckOwnerUid != myUid) return;
+    // **Whoever is looking at an expired round pushes it along**, no
+    // matter which side of it they are on.
+    //
+    // This used to be "only the WAITING player (this round's deck owner)
+    // forces the advance" — see NOTES_CARD_GAME_MODE.md's "Kalau lawan
+    // menutup aplikasi di tengah pertandingan" — which covers an
+    // opponent who closes the app mid-match and leaves a hole wherever
+    // the *other* player is the one who never shows up at all. Two of
+    // those, both reproduced on a device, both freezing the match on one
+    // card forever:
+    //
+    // - against BOT, which never runs a client, on any round BOT owns;
+    // - against a human who was invited and never joined (declined the
+    //   invitation, or never opened it), on any round they own.
+    //
+    // The first was patched by special-casing BOT. The second has the
+    // same shape and no such sentinel to test for, so the special case
+    // is gone and both are closed by dropping the restriction instead.
+    // Double-advancing is not a risk: `submitAnswer` writes inside a
+    // transaction that only proceeds while `currentRound` still equals
+    // this round, so a simultaneous force from both sides leaves the
+    // second one a no-op.
     final answerer = match.currentAnswererUid;
     if (answerer == null) return;
 

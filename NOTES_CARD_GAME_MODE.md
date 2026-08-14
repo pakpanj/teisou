@@ -37,12 +37,13 @@ depannya.
 
 ### Yang masih terbuka
 
-1. **Jalur-jalur pinggir butir 9/10 belum dicoba**: menolak undangan,
-   menantang lewat clan (bukan cuma teman), jatuh ke bot saat benar-
-   benar sendirian di antrian, dan memastikan dua tingkat berbeda tidak
-   saling dipasangkan di matchmaking publik. Alur utamanya sudah
-   diverifikasi (lihat tabel di atas); ini sisa kasus yang belum
-   sempat dicoba, bukan sesuatu yang diketahui rusak.
+1. ✅ **SELESAI (2026-08-14): jalur-jalur pinggir sudah diuji** — tiga
+   dari empat dicoba langsung di perangkat, dan **satu bug nyata
+   ketemu di antaranya** (lihat bagian "Uji jalur pinggir" di bawah).
+   Yang tersisa cuma satu: memastikan dua tingkat berbeda tidak saling
+   dipasangkan, yang tidak bisa diuji sungguhan sekarang karena kedua
+   akun uji sama-sama Bronze — dijamin secara struktur (antrian per
+   tingkat adalah node RTDB terpisah), bukan lewat perangkat.
 2. **Trade-off yang sengaja dibiarkan terbuka** (dicatat lengkap di
    masing-masing butir, bukan lupa): kedaluwarsa undangan 2 menit murni
    kosmetik di sisi tampilan (butir 9); menolak undangan tidak
@@ -76,6 +77,78 @@ laporan sesi lain)**: `flutter analyze` bersih, `flutter test
 `firestore.rules` + `database.rules.json` dirilis ulang ke proyek hidup,
 dan tab "Bintang" dibuka di Moto G52J — peringkat ke-1, 10 bintang,
 Bronze II · 1/3, cocok persis dengan hitungan tangga (3 divisi × 3 + 1).
+
+### Uji jalur pinggir (2026-08-14) — dan satu bug yang ketemu
+
+Empat kasus yang selama ini tercatat "belum dicoba". Tiga diuji di
+perangkat sungguhan (Moto G52J + emulator Pixel 8, dua akun berbeda);
+yang keempat tidak bisa diuji sungguhan sekarang dan dikatakan apa
+adanya.
+
+**1. Jatuh ke bot saat sendirian di antrian — ✅ lolos.** Satu klien
+menekan "Cari Lawan" tanpa ada siapa pun di antrian: hitungan mundur
+jalan 20 → 0, lalu masuk pertandingan lawan bot. Persis seperti
+rancangannya.
+
+**2. Menolak undangan — ✅ lolos, tapi menyingkap bug nyata di sisi
+penantang.** Di sisi yang diundang semuanya benar: strip "Kamu punya 1
+tantangan pertandingan" muncul, tombol Tolak menghapusnya, tidak ada
+error.
+
+Yang salah ada di sisi **penantang**: pertandingannya **membeku
+selamanya** di kartu 1 — 88 detik diam di "0s" tanpa bisa maju.
+Sebabnya sama persis dengan bug bot yang baru diperbaiki di `3ab073a`,
+cuma pemicunya berbeda. Aturan lamanya "hanya pemain yang **menunggu**
+(pemilik dek ronde itu) yang boleh memaksa ronde lanjut" — bagus untuk
+lawan yang menutup aplikasi di tengah jalan, tapi bolong setiap kali
+**lawannya tidak pernah datang sama sekali**: ronde yang dimiliki
+lawan tak punya siapa pun yang bisa memajukannya. `3ab073a` menambal
+kasus BOT dengan pengecualian khusus; kasus "diundang lalu menolak"
+bentuknya sama tapi tidak punya sentinel semacam `battleBotUid` untuk
+dites.
+
+Diperbaiki dengan membuang pembatasannya, bukan menambah pengecualian
+kedua: **siapa pun yang sedang melihat ronde yang kehabisan waktu
+memajukannya.** Aman dari maju ganda karena `submitAnswer` menulis di
+dalam transaksi yang hanya jalan selama `currentRound` masih sama
+dengan ronde itu — pihak kedua otomatis jadi no-op. Diuji ulang di
+perangkat: pertandingannya jalan terus dari kartu 1 sampai 20 lalu
+selesai.
+
+**Koreksi catatan lama sekaligus**: butir 9 menulis "penantang
+akhirnya menang lewat timeout". Salah. Kalau penantang juga tidak
+menjawab apa-apa, hasilnya **seri 0-0** — persis yang terjadi di uji
+ini. Penantang cuma menang kalau ia menjawab kartunya sendiri.
+
+**3. Menantang lewat clan — ✅ lolos.** Lewat Kelola Anggota di tab
+Clan, bukan daftar teman. Yang dikonfirmasi bukan cuma "tombolnya
+jalan": tingkat kartunya **dipilih bebas** (dipilih Katakana +
+Gabungan padahal penantangnya Bronze/hiragana), undangannya sampai
+dengan label tingkat yang benar, diterima → keduanya masuk
+pertandingan yang sama, dan setelah selesai layar hasilnya berbunyi
+**"Pertandingan santai — bintang tidak bergerak"**. Itu bukti jalur
+`rankedMatch: false` bekerja untuk clan, yang justru alasan field itu
+ada.
+
+**4. Dua tingkat berbeda tidak saling dipasangkan — ⚠️ tidak diuji di
+perangkat, dijamin struktur.** Kedua akun uji sama-sama Bronze, dan
+naik ke Silver butuh 15 kemenangan, jadi tidak ada cara jujur
+mengujinya sekarang. Yang bisa dipastikan: klien menulis dirinya ke
+`matchmakingQueue/{tier}/{uid}`, Cloud Function-nya terpicu di path
+itu, dan `claimWaitingOpponent(tier, myUid)` hanya pernah membaca
+`matchmakingQueue/{tier}` — tingkat lain adalah node yang tidak
+disentuh sama sekali. Jadi lintas-tingkat bukan "jarang", tapi tidak
+bisa terjadi. Tetap layak dicoba sungguhan kalau suatu saat ada akun
+di tingkat berbeda.
+
+**Sampah uji yang tertinggal, sengaja disebut**: pengujian clan butuh
+dua akun di clan yang sama, dan memakai clan asli berisi 23 murid
+sungguhan jelas tidak pantas — jadi akun uji membuat clan sendiri,
+**"Uji Jalur Pinggir" (kode 437CSN)**. HP-nya sudah keluar dari clan
+itu; clan-nya sendiri masih ada dengan 1 anggota (akun uji). Tidak
+dihapus karena layar Pengaturan Clan tidak punya tombol hapus, dan
+menebak-nebak dengan aksi yang merusak bukan hal yang pantas dilakukan
+diam-diam. Hapus lewat konsol Firebase kalau mengganggu.
 
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
