@@ -1475,6 +1475,20 @@ class AppStrings {
       _t('Pilih kartu untuk lawan', 'Pick a card for your opponent');
   String get battleOpponentChoosing =>
       _t('Lawan sedang memilih kartu...', 'Opponent is picking a card...');
+  // Skin kartu — satu-satunya kosmetik yang dilihat lawan.
+  String get cardSkinTitle => _t('Skin Kartu', 'Card Skins');
+  String get cardSkinExplanation => _t(
+        'Punggung kartu ini yang dilihat lawanmu setiap kali kamu '
+            'mengeluarkan kartu. Yang terkunci bisa dibuka dengan premium '
+            'atau menonton satu iklan.',
+        'This card back is what your opponent sees every time you play a '
+            'card. Locked ones open with premium, or by watching one ad.',
+      );
+  String get cardSkinSaved => _t('Skin kartu dipakai.', 'Card skin applied.');
+  String get cardSkinSaveFailed => _t(
+        'Gagal menyimpan skin, coba lagi.',
+        'Could not save the skin, try again.',
+      );
   String get battleRankStandingLabel => _t('Peringkatmu', 'Your standing');
   // Perubahan bintang di layar hasil.
   String get battleStarsCounting =>

@@ -76,6 +76,11 @@ class LeaderboardEntry {
   final String? coverId;
   final String? frameId;
 
+  /// Mirror of `UserProfile.cardSkinId`. Published here, on the only
+  /// world-readable profile row, because an opponent has to be able to
+  /// see it: a card back nobody else can load is not a flex.
+  final String? cardSkinId;
+
   /// Public summary of the learner's Bab curriculum progress: how many
   /// chapters they've completed, and the `order` of the furthest one.
   ///
@@ -143,6 +148,7 @@ class LeaderboardEntry {
     this.userId,
     this.coverId,
     this.frameId,
+    this.cardSkinId,
     this.babCompletedCount = 0,
     this.babHighestOrder = 0,
     this.cardGameTier = CardGameTier.bronze,
@@ -178,6 +184,7 @@ class LeaderboardEntry {
       displayNameLower: map['displayNameLower'] as String?,
       userId: map['userId'] as String?,
       coverId: map['coverId'] as String?,
+      cardSkinId: map['cardSkinId'] as String?,
       frameId: map['frameId'] as String?,
       babCompletedCount: (map['babCompletedCount'] as num?)?.toInt() ?? 0,
       babHighestOrder: (map['babHighestOrder'] as num?)?.toInt() ?? 0,

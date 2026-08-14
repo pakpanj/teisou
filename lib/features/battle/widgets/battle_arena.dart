@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/battle_rules.dart';
+import '../../../core/constants/card_skins.dart';
 import '../../../core/localization/app_strings.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/mascot_widget.dart';
@@ -272,6 +273,7 @@ class BattleCardFace extends StatelessWidget {
     required this.caption,
     required this.flashColor,
     this.faceDown = false,
+    this.skin,
   });
 
   final String prompt;
@@ -282,6 +284,11 @@ class BattleCardFace extends StatelessWidget {
   /// "the app doesn't know", a patterned back reads as "not your
   /// business yet", which is what is actually true.
   final bool faceDown;
+
+  /// The card back of whoever *owns* this card — so the skin a player
+  /// bought is shown to the person they are playing, which is the whole
+  /// point of owning one. Null falls back to the free default.
+  final CardSkinPreset? skin;
 
   /// Briefly tints the whole card after an answer — the only feedback
   /// that arrives fast enough to feel connected to the tap, since the
@@ -323,7 +330,7 @@ class BattleCardFace extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: faceDown
-                  ? [palette.secondaryBlue, palette.primaryCoral]
+                  ? [Colors.transparent, Colors.transparent]
                   : [
                       palette.cardWhite,
                       flashColor?.withValues(alpha: 0.28) ??
@@ -348,10 +355,7 @@ class BattleCardFace extends StatelessWidget {
           ),
           alignment: Alignment.center,
           child: faceDown
-              ? CustomPaint(
-                  size: const Size(214, 292),
-                  painter: _CardBackPainter(palette),
-                )
+              ? CardSkinBack(skin: skin ?? CardSkinPresets.classic)
               : Stack(
                   // Must fill the card: a Stack sized to its children
                   // shrinks to the glyph, and then the "inset" rule and
@@ -818,52 +822,3 @@ class _CornerMark extends StatelessWidget {
 
 /// A card back: seigaiha-style arcs, the wave pattern that is already
 /// this app's visual shorthand for "Japanese" on the home screen.
-class _CardBackPainter extends CustomPainter {
-  _CardBackPainter(this.palette);
-
-  final AppPalette palette;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final stroke = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.6
-      ..color = palette.cardWhite.withValues(alpha: 0.45);
-    const step = 26.0;
-    for (var y = step; y < size.height; y += step) {
-      for (var x = 0.0; x < size.width + step; x += step) {
-        canvas.drawArc(
-          Rect.fromCircle(center: Offset(x, y), radius: step * 0.62),
-          math.pi,
-          math.pi,
-          false,
-          stroke,
-        );
-      }
-    }
-    // A calm centre so the pattern reads as a back, not as noise.
-    canvas.drawCircle(
-      Offset(size.width / 2, size.height / 2),
-      44,
-      Paint()..color = palette.cardWhite.withValues(alpha: 0.22),
-    );
-    final tp = TextPainter(
-      text: TextSpan(
-        text: 'あ',
-        style: TextStyle(
-          fontSize: 40,
-          fontWeight: FontWeight.bold,
-          color: palette.cardWhite.withValues(alpha: 0.9),
-        ),
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout();
-    tp.paint(
-      canvas,
-      Offset((size.width - tp.width) / 2, (size.height - tp.height) / 2),
-    );
-  }
-
-  @override
-  bool shouldRepaint(_CardBackPainter oldDelegate) => false;
-}

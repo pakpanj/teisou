@@ -295,6 +295,15 @@ class LeaderboardRepository {
         .set({'frameId': frameId}, SetOptions(merge: true));
   }
 
+  /// Publishes the card back [uid] wears, so their opponent's device can
+  /// draw it. Same shape as [updateCoverId]/[updateFrameId], but this one
+  /// is the only cosmetic another player actually sees during play.
+  Future<void> updateCardSkinId(String uid, String? cardSkinId) {
+    return _collection
+        .doc(uid)
+        .set({'cardSkinId': cardSkinId}, SetOptions(merge: true));
+  }
+
   /// Updates `totalMastered` for [uid] if [totalMastered] is higher than
   /// what's currently stored (never regresses the leaderboard on a
   /// mastery -> learning demotion elsewhere).

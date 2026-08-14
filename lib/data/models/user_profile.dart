@@ -54,6 +54,10 @@ class UserProfile {
   final String? avatarValue;
   final String? coverId;
   final String? frameId;
+
+  /// The card back this player wears in Card Game Mode — the one
+  /// cosmetic an opponent actually sees. Null means the free default.
+  final String? cardSkinId;
   final DateTime? lastNameChangeAt;
 
   /// Short, unique, human-shareable id (`ProgressRepository._reserveUserId`)
@@ -76,6 +80,7 @@ class UserProfile {
     this.avatarValue,
     this.coverId,
     this.frameId,
+    this.cardSkinId,
     this.lastNameChangeAt,
     this.userId,
   });
@@ -90,6 +95,7 @@ class UserProfile {
         avatarValue: map['avatarValue'] as String?,
         coverId: map['coverId'] as String?,
         frameId: map['frameId'] as String?,
+        cardSkinId: map['cardSkinId'] as String?,
         lastNameChangeAt: _toDateTime(map['lastNameChangeAt']),
         userId: map['userId'] as String?,
       );

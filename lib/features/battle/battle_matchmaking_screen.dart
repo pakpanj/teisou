@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
+import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/services/battle_deck_builder.dart';
 import '../../core/theme/app_palette.dart';
@@ -12,6 +13,7 @@ import '../../data/models/card_game_rank.dart';
 import '../../data/repositories/battle_repository.dart' show battleBotUid;
 import 'battle_challenge.dart' show cardTierContentLabel;
 import 'battle_screen.dart';
+import 'card_skin_picker_screen.dart';
 import 'widgets/rank_standing.dart';
 
 /// Card Game Mode's public-opponent matchmaking — Tahap 3 butir 10 in
@@ -235,7 +237,22 @@ class _BattleMatchmakingScreenState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RankStanding(rank: rank, strings: s),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
+              // Reachable from the screen you sit on before every match,
+              // which is where wanting a nicer card back actually
+              // happens — not buried in the profile with the avatars.
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(
+                  onPressed: () => AppNavigator.slideFromRight(
+                    context,
+                    const CardSkinPickerScreen(),
+                  ),
+                  icon: const Icon(Icons.style, size: 18),
+                  label: Text(s.cardSkinTitle),
+                ),
+              ),
+              const SizedBox(height: 6),
               Text(
                 s.battleMatchmakingDescription(
                   cardTierContentLabel(rank.tier.cardContent, s),

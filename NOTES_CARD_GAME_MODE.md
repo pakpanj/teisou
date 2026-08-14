@@ -370,6 +370,54 @@ justru merenggangkan Text-nya sampai hurufnya menempel di tepi atas
 kartu, dan harus dibungkus `Center` lagi. Keduanya lolos `flutter
 analyze` dan seluruh test.
 
+### Skin kartu — kosmetik pertama yang benar-benar dilihat orang lain
+### (2026-08-14)
+
+Permintaan user: punggung kartu yang bisa dipakai pamer ke lawan, dan
+bisa dijual.
+
+**Kenapa ini kosmetik yang tepat untuk dijual, dan avatar bukan**:
+avatar, sampul, dan bingkai semuanya tampil di profil sendiri — tempat
+yang praktis tidak ada yang melihat. Punggung kartu tampil di setiap
+kartu yang kamu keluarkan, tepat di depan orang yang sedang main
+denganmu. Itu yang membuatnya pantas diinginkan, dan pantas dijual.
+
+`lib/core/constants/card_skins.dart` berisi 7 skin (3 gratis, 4
+terkunci), semuanya **digambar dari bentuk** — pola seigaiha, asanoha,
+sakura, garis miring, bintang, dan polos — jadi menambah skin baru tidak
+menambah satu byte pun aset, dan tidak perlu menunggu ilustrator. Skin
+default gratis selamanya: pemain yang kartunya terlihat rusak sampai ia
+membayar bukan pemain yang bertahan lama.
+
+**Jalur "dilihat lawan" itu bagian yang gampang terlewat**: skin
+disimpan di `users/{uid}.profile.cardSkinId` (privat), lalu **dimirror
+ke `leaderboard/{uid}`** — satu-satunya baris profil yang bisa dibaca
+semua orang. Tanpa mirror itu, skin yang dibeli tidak akan pernah bisa
+dimuat perangkat lawan, dan kosmetik yang tidak bisa dilihat siapa pun
+bukan pamer, cuma pengeluaran. Layar pertandingan menggambar skin
+**pemilik kartunya**, jadi yang kamu lihat saat menunggu adalah milik
+lawan, dan yang ia lihat saat kamu memilih adalah milikmu.
+
+Pintu masuknya di layar cari lawan, bukan di profil — di situlah
+keinginan "kartuku jelek amat" muncul, tepat sebelum bertanding.
+
+**Yang jujur soal "bisa dijual": belum ada uangnya.** Yang terkunci
+dibuka lewat premium atau satu iklan reward — persis mekanisme yang
+sudah dipakai avatar premium, dan satu-satunya mesin pembelian yang
+benar-benar ada di aplikasi ini. Menjual satu skin dengan uang sungguhan
+butuh `in_app_purchase` yang sampai sekarang belum pernah dipasang (lihat
+"Release readiness" di CLAUDE.md — IAP memang masih tercatat sebagai
+penghalang rilis). Waktu itu datang, yang berubah cuma satu: gerbangnya
+memeriksa "sudah dimiliki" alih-alih `CardSkinPreset.premium`, dan harga
+ditaruh di preset-nya. Struktur lainnya tidak perlu bergerak.
+
+**Diverifikasi di Moto G52J**: pemilih skin menampilkan 7 kartu (3
+terbuka, 4 bergembok), memilih "Sakura Pagi" langsung berpindah centang
+dan tersimpan, dan menekan skin terkunci membuka layar Premium. **Belum
+diverifikasi**: melihat skin lawan dari perangkat kedua (butuh dua akun
+online bersamaan; emulator sedang kehilangan DNS ke Firestore saat ini
+dikerjakan).
+
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
 ### memikirkan rilis)

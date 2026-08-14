@@ -220,6 +220,14 @@ class ProgressRepository {
     }, SetOptions(merge: true));
   }
 
+  /// Sets the card back this player wears in Card Game Mode. [cardSkinId]
+  /// is one of [CardSkinPresets.all]'s ids, or `null` for the default.
+  Future<void> updateCardSkin(String uid, String? cardSkinId) {
+    return _userDoc(uid).set({
+      'profile': {'cardSkinId': cardSkinId},
+    }, SetOptions(merge: true));
+  }
+
   /// Raw `profile` map — displayName/isAnonymous/currentStreak/etc.
   Stream<Map<String, dynamic>> watchProfile(String uid) {
     return _userDoc(uid).snapshots().map(

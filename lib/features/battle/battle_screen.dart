@@ -15,6 +15,7 @@ import '../../data/models/battle_match.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kanji_entry.dart';
 import '../../data/repositories/battle_repository.dart' show battleBotUid;
+import '../../core/constants/card_skins.dart';
 import '../../core/widgets/mascot_widget.dart';
 import 'battle_invite_providers.dart';
 import 'widgets/star_result_card.dart';
@@ -354,6 +355,12 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
                       // that may never be played.
                       prompt: '',
                       faceDown: true,
+                      // The skin belongs to whoever owns this card, so
+                      // what you see while waiting is your opponent's,
+                      // and what they see while you choose is yours.
+                      skin: CardSkinPresets.byId(
+                        identities?[entry.deckOwnerUid]?.cardSkinId,
+                      ),
                       caption: iChoose
                           ? s.battleChooseYourCard
                           : s.battleOpponentChoosing,
