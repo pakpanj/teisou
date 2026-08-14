@@ -95,6 +95,12 @@ class BattleRepository {
       officialScore: {firstCandidateUid: 0, secondCandidateUid: 0},
       cardTierContent: cardTierContent,
       rankedMatch: rankedMatch,
+      // Both full hands travel with the match so each device can show
+      // its own player what they still hold to choose from.
+      decks: {
+        firstCandidateUid: firstCandidateDeck,
+        secondCandidateUid: secondCandidateDeck,
+      },
     );
 
     final docRef = await _matches.add(match.toCreateMap());
@@ -112,6 +118,35 @@ class BattleRepository {
     final data = snapshot.data();
     if (data == null) return null;
     return BattleMatch.fromMap(matchId, data);
+  }
+
+  /// Records the card its owner chose to play for [round].
+  ///
+  /// Only ever *adds* to `playedCards`; the round's dealt card stays in
+  /// `turnOrder` untouched as the fallback for an owner who runs out of
+  /// choosing time. Guarded by the same "has the turn already moved on"
+  /// transaction check every other write here uses, so a choice that
+  /// arrives a moment too late is dropped rather than landing on the
+  /// wrong round.
+  Future<void> playCard({
+    required String matchId,
+    required int round,
+    required String cardId,
+  }) async {
+    final matchRef = _matchDoc(matchId);
+    await _firestore.runTransaction((transaction) async {
+      final snapshot = await transaction.get(matchRef);
+      final data = snapshot.data();
+      if (data == null) return;
+      if ((data['currentRound'] as int? ?? 0) != round) return;
+      final played = Map<String, dynamic>.from(
+        data['playedCards'] as Map? ?? const {},
+      );
+      // First choice wins: without this a second write could swap the
+      // card after the opponent has already seen it.
+      if (played.containsKey('$round')) return;
+      transaction.update(matchRef, {'playedCards.$round': cardId});
+    });
   }
 
   /// Submits [byUid]'s answer for [round] and advances the turn in one

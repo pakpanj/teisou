@@ -103,6 +103,22 @@ class BattleMatch {
   /// result would otherwise be shown the wrong number.
   final Map<String, BattleStarResult> starResult;
 
+  /// Each player's full 20-card hand, keyed by uid — written once at
+  /// creation so both devices can draw the same hand, and never changed.
+  ///
+  /// A player *plays* a card from this hand on their own rounds; what
+  /// they have left is this list minus whatever has already gone out.
+  final Map<String, List<String>> decks;
+
+  /// The card its owner actually chose for a round, keyed by round.
+  ///
+  /// **`turnOrder` still carries a card per round and is still fixed at
+  /// creation — it is the card that goes out if its owner does not
+  /// choose in time.** Choosing writes here instead of rewriting
+  /// `turnOrder`, which `firestore.rules` freezes: a client that could
+  /// edit the turn order could rewrite a round it had already lost.
+  final Map<int, String> playedCards;
+
   BattleMatch({
     required this.id,
     required this.players,
@@ -117,7 +133,30 @@ class BattleMatch {
     this.cardTierContent = CardTierContent.hiragana,
     this.rankedMatch = true,
     this.starResult = const {},
+    this.decks = const {},
+    this.playedCards = const {},
   });
+
+  /// The card actually in play for [round]: the owner's choice if they
+  /// made one, otherwise the card dealt to that round at creation.
+  String? effectiveCardId(int round) {
+    if (round < 0 || round >= turnOrder.length) return null;
+    return playedCards[round] ?? turnOrder[round].cardId;
+  }
+
+  /// Which cards [uid] still holds — their hand minus everything of
+  /// theirs already played, whether chosen or dealt by default.
+  List<String> remainingHand(String uid) {
+    final spent = <String>{
+      for (var round = 0; round < currentRound; round++)
+        if (round < turnOrder.length && turnOrder[round].deckOwnerUid == uid)
+          ?effectiveCardId(round),
+    };
+    return [
+      for (final card in decks[uid] ?? const <String>[])
+        if (!spent.contains(card)) card,
+    ];
+  }
 
   /// The uid of whichever player is expected to answer
   /// `turnOrder[currentRound]` — always the player who does *not* own
@@ -159,6 +198,14 @@ class BattleMatch {
         map['cardTierContent'] as String?,
       ),
       rankedMatch: map['rankedMatch'] as bool? ?? true,
+      decks: (map['decks'] as Map?)?.map(
+            (k, v) => MapEntry(k as String, List<String>.from(v as List)),
+          ) ??
+          const {},
+      playedCards: (map['playedCards'] as Map?)?.map(
+            (k, v) => MapEntry(int.parse(k as String), v as String),
+          ) ??
+          const {},
       starResult: (map['starResult'] as Map?)?.map(
             (k, v) => MapEntry(
               k as String,
@@ -186,6 +233,8 @@ class BattleMatch {
     'scoredRounds': <String, bool>{},
     'cardTierContent': cardTierContent.key,
     'rankedMatch': rankedMatch,
+    'decks': decks,
+    'playedCards': <String, String>{},
   };
   // `starResult` is deliberately absent from the create map: it does not
   // exist until the match is over.

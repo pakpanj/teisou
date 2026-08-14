@@ -1,44 +1,26 @@
 import 'dart:math';
 
+import '../constants/battle_rules.dart';
+
 import '../../data/models/turn_order_entry.dart';
 
-/// Builds the full 20-round `turnOrder` for a fresh match, once, at
-/// creation — see `NOTES_CARD_GAME_MODE.md`'s "Detail penilaian Cloud
-/// Function" ("Urutan kartu ditentukan sekali, bukan diturunkan ulang
-/// tiap kali diperlukan") and "Tiga pertanyaan yang tersisa".
+/// Builds the whole `turnOrder` for a fresh match, once, at creation —
+/// see `NOTES_CARD_GAME_MODE.md`'s "Detail penilaian Cloud Function"
+/// ("Urutan kartu ditentukan sekali, bukan diturunkan ulang tiap kali
+/// diperlukan").
 ///
-/// [firstDeck]/[secondDeck] must each have at least 20 cards (a player's
-/// full deck) — only the first 10 of each player's own shuffle are
-/// actually used this match, split 5 into the main phase (rounds 0-9)
-/// and 5 into the extension (rounds 10-19) in shuffle order. The other
-/// 10 per player are deliberately left unused, so which cards come up
-/// varies match to match — see "Kenapa deck 20 tapi main hanya 10"
-/// ("setengah deck tidak terpakai tiap match").
+/// [firstDeck]/[secondDeck] must each hold a player's full 20-card deck,
+/// and **all of it is now reachable**: ten cards each decide the main
+/// phase, and if that ends level the rest are played out to the end. See
+/// `kBattleMainPhaseRounds` for the correction that made that true — the
+/// first version dealt each player only ten of their twenty cards and
+/// spent five of those before the match could already be over, so half
+/// of every deck could never be drawn at all.
 ///
 /// [firstUid] always plays round 0 — the coin flip for who goes first
 /// happens at the call site (`Random` at match-creation time), not in
-/// here. Turns then strictly alternate, so with an even 20 rounds this
-/// always gives each player exactly 10 rounds if the match goes the
-/// full distance, matching the "10 kartu per pemain, 20 jawaban"
-/// figure quoted for a fully-extended match.
-///
-/// **A judgment call worth flagging**: the notes' prose ("10 pertama
-/// dipakai untuk ronde 0-9 milik pemain itu, 10 sisanya mengisi ronde
-/// 10-19 kalau lanjut ke babak tambahan") reads, taken completely
-/// literally, as if a player's first 10 shuffled cards fill *all* of
-/// rounds 0-9 and their second 10 fill *all* of rounds 10-19 — but
-/// turns alternate between two players, so each player only actually
-/// owns 5 of the 10 slots in each phase, not 10. Taking the prose
-/// literally is therefore inconsistent with "turns alternate" and
-/// "turnOrder has length 20" holding at the same time. This
-/// implementation resolves the conflict by taking a player's first 10
-/// shuffled cards as their entire pool for the match (5 spent in the
-/// main phase, 5 in the extension, in shuffle order) — the only reading
-/// that satisfies every other explicitly locked number (deck size 20,
-/// max 10 cards/player, half the deck unused, alternating turns,
-/// main/extension split at round 9) simultaneously. If a future
-/// clarification says otherwise, only this function needs to change —
-/// nothing else derives its own copy of this logic.
+/// here. Turns then strictly alternate, so each player owns exactly half
+/// the rounds.
 List<TurnOrderEntry> buildTurnOrder({
   required String firstUid,
   required List<String> firstDeck,
@@ -46,19 +28,26 @@ List<TurnOrderEntry> buildTurnOrder({
   required List<String> secondDeck,
   Random? random,
 }) {
-  assert(firstDeck.length >= 20, 'firstDeck must have at least 20 cards');
-  assert(secondDeck.length >= 20, 'secondDeck must have at least 20 cards');
+  assert(
+    firstDeck.length >= kBattleTotalRounds ~/ 2,
+    'firstDeck must hold a full deck',
+  );
+  assert(
+    secondDeck.length >= kBattleTotalRounds ~/ 2,
+    'secondDeck must hold a full deck',
+  );
 
   final rng = random ?? Random();
+  final cardsPerPlayer = kBattleTotalRounds ~/ 2;
   final firstPool = (List<String>.from(firstDeck)..shuffle(rng))
-      .take(10)
+      .take(cardsPerPlayer)
       .toList();
   final secondPool = (List<String>.from(secondDeck)..shuffle(rng))
-      .take(10)
+      .take(cardsPerPlayer)
       .toList();
 
-  final entries = List<TurnOrderEntry?>.filled(20, null);
-  for (var i = 0; i < 10; i++) {
+  final entries = List<TurnOrderEntry?>.filled(kBattleTotalRounds, null);
+  for (var i = 0; i < cardsPerPlayer; i++) {
     entries[i * 2] = TurnOrderEntry(
       round: i * 2,
       deckOwnerUid: firstUid,

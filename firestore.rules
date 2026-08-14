@@ -480,7 +480,13 @@ service cloud.firestore {
           // keduanya, dan kalau bisa menulisnya, bintang satu
           // pertandingan bisa dibayar berkali-kali.
           && request.resource.data.get('starsApplied', false) == resource.data.get('starsApplied', false)
-          && request.resource.data.get('starsAttempts', 0) == resource.data.get('starsAttempts', 0);
+          && request.resource.data.get('starsAttempts', 0) == resource.data.get('starsAttempts', 0)
+          // Kartu di tangan tiap pemain, ditulis sekali saat match
+          // dibuat. `playedCards` (kartu yang dipilih tiap ronde) SENGAJA
+          // tidak dibekukan — itu justru yang ditulis pemain tiap
+          // giliran. Yang dibekukan adalah isi tangannya, supaya tidak
+          // ada yang menukar kartunya di tengah pertandingan.
+          && request.resource.data.get('decks', {}) == resource.data.get('decks', {});
 
       // Write-once — no update/delete, so a submitted answer can never
       // be edited after the fact. Deliberately NOT restricted to

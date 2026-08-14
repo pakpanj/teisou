@@ -60,6 +60,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   Duration _remaining = Duration.zero;
   int? _timerRoundGuard;
   int? _timeoutHandledForRound;
+  int? _choiceTimeoutHandledForRound;
 
   final Map<int, bool> _correctByRound = {};
   DateTime? _flashUntil;
@@ -97,7 +98,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       if (_correctByRound.containsKey(round)) continue;
       if (round < 0 || round >= match.turnOrder.length) continue;
       final card = resolveCard(
-        match.turnOrder[round].cardId,
+        match.effectiveCardId(round) ?? match.turnOrder[round].cardId,
         cardData.$1,
         cardData.$2,
       );
@@ -154,7 +155,11 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     _timerRoundGuard = match.currentRound;
     _timer?.cancel();
 
-    final limit = cardTimeLimit(match.currentRound);
+    final limit = roundBudget(
+      match.currentRound,
+      ownerIsBot: match.turnOrder[match.currentRound].deckOwnerUid ==
+          battleBotUid,
+    );
     final anchor = match.turnStartedAt ?? DateTime.now();
 
     void tick() {
@@ -272,14 +277,27 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     }
 
     final entry = match.turnOrder[match.currentRound];
-    final card = resolveCard(entry.cardId, cardData.$1, cardData.$2);
+    final ownerIsBot = entry.deckOwnerUid == battleBotUid;
+    final chosen = match.playedCards[match.currentRound];
+    // The choosing window is over the moment its owner picks, and
+    // otherwise when the clock runs out — after which the card dealt to
+    // this round is what goes out.
+    final choosing = chosen == null && !ownerIsBot && _sinceTurnStart(match) <
+        cardChoiceWindow(ownerIsBot: ownerIsBot);
+    final card = resolveCard(
+      match.effectiveCardId(match.currentRound) ?? entry.cardId,
+      cardData.$1,
+      cardData.$2,
+    );
     if (card == null) {
       return Center(child: Text(s.battleCardNotFound));
     }
+    final iChoose = entry.deckOwnerUid == myUid;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) _ensureTimerFor(match);
     });
+    if (choosing) _scheduleChoiceDeadline(match, ownerIsBot: ownerIsBot);
 
     final isAnswerer = match.currentAnswererUid == myUid;
     final palette = context.palette;
@@ -303,7 +321,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
             round: match.currentRound + 1,
             totalRounds: match.turnOrder.length,
             remaining: _remaining,
-            limit: cardTimeLimit(match.currentRound),
+            limit: roundBudget(match.currentRound, ownerIsBot: ownerIsBot),
             me: BattlePlayerChip(
               entry: identities?[myUid],
               fallbackName: s.battleYouLabel,
@@ -324,13 +342,24 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           ),
           Expanded(
             child: Center(
-              child: BattleCardFace(
-                prompt: card.prompt,
-                caption: isAnswerer
-                    ? s.battleCardFromOpponent
-                    : s.battleCardFromYou,
-                flashColor: _flashColor(context),
-              ),
+              child: choosing
+                  ? BattleCardFace(
+                      // Face down while its owner decides: revealing the
+                      // dealt card here would show the answerer a card
+                      // that may never be played.
+                      prompt: '?',
+                      caption: iChoose
+                          ? s.battleChooseYourCard
+                          : s.battleOpponentChoosing,
+                      flashColor: null,
+                    )
+                  : BattleCardFace(
+                      prompt: card.prompt,
+                      caption: isAnswerer
+                          ? s.battleCardFromOpponent
+                          : s.battleCardFromYou,
+                      flashColor: _flashColor(context),
+                    ),
             ),
           ),
           Padding(
@@ -338,7 +367,28 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
             child: BattleDeckStrip(slots: _deckSlots(match)),
           ),
           const SizedBox(height: 12),
-          if (isAnswerer)
+          if (choosing && iChoose)
+            BattleHand(
+              title: s.battleChooseYourCard,
+              secondsLeft: _choiceSecondsLeft(match, ownerIsBot: ownerIsBot),
+              cards: _handCards(match, myUid, cardData),
+              onPlay: (cardId) => ref.read(battleRepositoryProvider).playCard(
+                matchId: widget.matchId,
+                round: match.currentRound,
+                cardId: cardId,
+              ),
+            )
+          else if (choosing)
+            Padding(
+              padding: const EdgeInsets.all(24),
+              child: Text(
+                s.battleOpponentChoosing,
+                style: TextStyle(
+                  color: palette.textNavy.withValues(alpha: 0.6),
+                ),
+              ),
+            )
+          else if (isAnswerer)
             _buildAnswerInput(context, s, match, card)
           else
             Padding(
@@ -353,6 +403,65 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
         ],
       ),
     );
+  }
+
+  /// Puts the dealt card on the table when nobody chose in time.
+  ///
+  /// Making the reveal an explicit write, rather than something each
+  /// device works out from the clock on its own, is what lets everything
+  /// else react to it — the bot in particular waits for this write
+  /// before answering, and without it a round whose owner said nothing
+  /// would sit there with no card ever appearing.
+  ///
+  /// Whichever device is watching does it, not just the owner: an owner
+  /// who has closed the app is exactly the case that needs covering, and
+  /// `playCard` ignores a second write for a round that already has a
+  /// card.
+  void _scheduleChoiceDeadline(BattleMatch match, {required bool ownerIsBot}) {
+    final round = match.currentRound;
+    if (_choiceTimeoutHandledForRound == round) return;
+    _choiceTimeoutHandledForRound = round;
+    final left = cardChoiceWindow(ownerIsBot: ownerIsBot) -
+        _sinceTurnStart(match);
+    Timer(left.isNegative ? Duration.zero : left, () {
+      if (!mounted) return;
+      final current = ref.read(battleMatchProvider(widget.matchId)).valueOrNull;
+      if (current == null) return;
+      if (current.currentRound != round) return;
+      if (current.playedCards.containsKey(round)) return;
+      ref.read(battleRepositoryProvider).playCard(
+        matchId: widget.matchId,
+        round: round,
+        cardId: current.turnOrder[round].cardId,
+      );
+    });
+  }
+
+  /// How long this round has been running, from the server anchor.
+  Duration _sinceTurnStart(BattleMatch match) {
+    final anchor = match.turnStartedAt;
+    if (anchor == null) return Duration.zero;
+    return DateTime.now().difference(anchor);
+  }
+
+  int _choiceSecondsLeft(BattleMatch match, {required bool ownerIsBot}) {
+    final left = cardChoiceWindow(ownerIsBot: ownerIsBot) -
+        _sinceTurnStart(match);
+    return left.isNegative ? 0 : left.inSeconds + 1;
+  }
+
+  /// The player's remaining cards, resolved to what each one shows.
+  List<({String cardId, String prompt})> _handCards(
+    BattleMatch match,
+    String myUid,
+    (List<KanaCharacter>, List<KanjiEntry>) cardData,
+  ) {
+    final out = <({String cardId, String prompt})>[];
+    for (final cardId in match.remainingHand(myUid)) {
+      final card = resolveCard(cardId, cardData.$1, cardData.$2);
+      if (card != null) out.add((cardId: cardId, prompt: card.prompt));
+    }
+    return out;
   }
 
   /// One slot per round: how each has come out, for [BattleDeckStrip].
@@ -588,7 +697,11 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       final correct = _correctByRound[round];
       if (correct == null) continue; // never played (match ended early)
       final entry = match.turnOrder[round];
-      final card = resolveCard(entry.cardId, cardData.$1, cardData.$2);
+      final card = resolveCard(
+        match.effectiveCardId(round) ?? entry.cardId,
+        cardData.$1,
+        cardData.$2,
+      );
       if (card == null) continue;
       cards.add(
         BattleReviewCard(

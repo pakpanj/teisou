@@ -257,6 +257,85 @@ Selesai, dan layarnya kembali ke keadaan diam dengan tiga kartu
 mengipas dan tombol "Cari Lawan" — tidak ada spinner, tidak ada
 pencarian yang berjalan sendiri.
 
+### Koreksi aturan main: 10 kartu PER PEMAIN, dan pemain memilih
+### kartunya sendiri (2026-08-14)
+
+Dua koreksi dari user setelah memainkan versi yang sudah jadi. Keduanya
+mengubah mesin, bukan tampilan.
+
+**1. "10 kartu" itu 10 kartu *per pemain*, bukan 10 kartu total.**
+Rumusan yang dikonfirmasi user: tiap pemain dibagi **20 kartu** dan
+boleh mengeluarkan **10**; kalau skornya masih imbang, semuanya
+di-*all-in* sampai kedua dek habis, dengan waktu tetap berkurang 2 detik
+per kartu.
+
+Implementasi pertama membaca "10 kartu" sebagai 10 kartu total, jadi
+tiap fase terpotong setengah: pertandingan bisa selesai setelah **lima**
+kartu per orang, dan separuh dek tidak pernah bisa keluar sama sekali.
+Menariknya, `battle_turn_order_builder.dart` sendiri sudah menandai
+ambiguitas ini di komentarnya waktu itu dan mengambil keputusan sadar —
+ternyata keputusannya yang salah, bukan pertanyaannya yang keliru.
+
+Sekarang: fase utama **20 ronde** (10 kartu tiap pemain), perpanjangan
+sampai **40 ronde** (sisa dek keduanya). Angkanya dikunci di
+`lib/core/constants/battle_rules.dart` karena empat tempat berbeda
+mengkodekannya — pembangun urutan, timer, kesimpulan di klien, dan
+Cloud Function yang menulis hasil resmi — dan yang keempat beda bahasa,
+jadi **`functions/battle_scoring.js` memegang salinannya sendiri dan
+harus ikut diubah**.
+
+Satu hal yang tidak bisa diambil harfiah: "berkurang 2 detik per kartu
+sampai kartu habis". Dua puluh kartu perpanjangan × 2 detik melewati nol
+jauh sebelum deknya habis — itu bukan pertanyaan yang lebih sulit, tapi
+pertanyaan yang tidak mungkin dijawab. Jadi pengurangannya berhenti di
+**10 detik** (`kBattleMinimumSeconds`), sesuai prinsip yang sudah ada
+sejak awal bahwa percepatan itu katup tekanan, bukan jaminan hasil.
+
+**2. Pemain memilih kartunya sendiri, 10 detik tiap giliran.**
+Ditanyakan user: "kok aku tidak memilih kartu?" — dan memang tidak: dulu
+seluruh urutan kartu ditentukan sekali saat match dibuat, pemain hanya
+menjawab apa pun yang muncul. Rumusan yang dikonfirmasi: **tiap giliran
+pemilik kartu diberi 10 detik untuk memilih kartu mana yang dikeluarkan**
+untuk dijawab lawan.
+
+Ini satu-satunya keputusan taktis di mode ini — kamu memilih apa yang
+harus dibaca lawanmu — jadi hilangnya bukan detail kecil.
+
+Bentuk datanya sengaja **menambah**, bukan mengganti: `turnOrder` tetap
+membawa satu kartu per ronde dan tetap dikunci saat pembuatan, tapi
+sekarang perannya adalah **kartu cadangan** yang keluar kalau pemiliknya
+tidak sempat memilih. Pilihan ditulis ke `playedCards` (map ronde →
+kartu), bukan dengan menulis ulang `turnOrder` — yang memang dibekukan
+`firestore.rules`, karena klien yang bisa mengedit urutan kartu bisa
+menulis ulang ronde yang sudah kalah. Tangan tiap pemain (`decks`) ikut
+disimpan di dokumen match supaya tiap perangkat bisa menampilkan sisa
+kartunya, dan **dibekukan di rules** supaya tidak ada yang menukar isi
+tangannya di tengah pertandingan.
+
+**Bug yang langsung ketahuan saat diuji di perangkat**: bot menjawab
+seketika begitu ronde dibuka, jadi di setiap ronde milik manusia bot
+sudah menjawab kartu cadangan **sebelum** manusianya sempat memilih —
+pemilihannya tidak pernah benar-benar terjadi. Diperbaiki: bot sekarang
+menunggu kartunya benar-benar ada di meja (`playedCards` terisi), dan
+"kartu keluar" selalu ditulis eksplisit — kalau jendela 10 detik habis,
+perangkat yang sedang menonton menuliskan kartu cadangannya sendiri,
+yang sekaligus memicu ulang bot. Prinsipnya sama dengan aturan timeout
+jawaban: **siapa pun yang melihat ronde yang kedaluwarsa mendorongnya
+maju**.
+
+**Diverifikasi di Moto G52J**: pertandingan berjalan sebagai "Kartu 1 /
+40", giliran memilih menampilkan kartu tertutup "?" dengan tangan berisi
+sisa kartu dan hitungan mundur, kartu yang sudah keluar hilang dari
+tangan, dan jendela yang habis menampilkan kartu cadangan lalu bot
+menjawabnya. **Yang belum tertangkap di perangkat**: menekan satu kartu
+di tangan dan melihat kartu itu persis yang keluar — jendela 10 detik
+terlalu pendek untuk dikejar lewat adb (satu putaran dump-lalu-tap
+menghabiskan sebagian besar jendelanya). Ditutup dengan widget test
+sebagai gantinya (`test/battle_hand_test.dart`, dicek benar-benar
+menggigit): menekan kartu kedua mengirim id kartu kedua, bukan yang
+lain. Jalur tulisnya sendiri (`playCard`) sudah terbukti di perangkat,
+karena jalur kedaluwarsa memakai metode yang sama persis.
+
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
 ### memikirkan rilis)

@@ -1,3 +1,4 @@
+import '../constants/battle_rules.dart';
 import '../../data/models/turn_order_entry.dart';
 
 /// A running tally of each player's correct answers, built purely from
@@ -50,11 +51,11 @@ String? clientConclusion({
   required BattleScoreTally tally,
   required int highestResolvedRound,
 }) {
-  if (highestResolvedRound < 9) return null;
+  if (highestResolvedRound < kBattleMainPhaseRounds - 1) return null;
   if (players.length < 2) return null;
   final scoreA = tally.scoreOf(players[0]);
   final scoreB = tally.scoreOf(players[1]);
   if (scoreA != scoreB) return scoreA > scoreB ? players[0] : players[1];
-  if (highestResolvedRound >= 19) return 'draw';
+  if (highestResolvedRound >= kBattleTotalRounds - 1) return 'draw';
   return null;
 }

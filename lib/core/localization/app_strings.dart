@@ -1471,6 +1471,10 @@ class AppStrings {
         'Cards played — the bold ones were yours',
       );
   String get battlePlayAgain => _t('Main Lagi', 'Play Again');
+  String get battleChooseYourCard =>
+      _t('Pilih kartu untuk lawan', 'Pick a card for your opponent');
+  String get battleOpponentChoosing =>
+      _t('Lawan sedang memilih kartu...', 'Opponent is picking a card...');
   String get battleRankStandingLabel => _t('Peringkatmu', 'Your standing');
   // Perubahan bintang di layar hasil.
   String get battleStarsCounting =>

@@ -328,7 +328,19 @@ exports.onBattleMatchWritten = onDocumentWritten(
       const existing = await answerRef.get();
       if (existing.exists) return; // already played (retry safety)
 
-      await playBotTurn(matchId, round, entry.cardId, match.cardTierContent);
+      // **Wait for the card to actually be on the table.** Its owner has
+      // ten seconds to choose which of their cards to send, and the bot
+      // used to answer the instant the round opened — so on every round a
+      // human owned, the bot answered the dealt card before the human
+      // could pick anything, and the choice never happened. The reveal is
+      // always written (the owner's own client writes the dealt card if
+      // the window runs out), and that write re-triggers this function.
+      const playedCards = match.playedCards || {};
+      const cardId = playedCards[String(round)];
+      if (entry.deckOwnerUid !== BOT_UID && !cardId) return;
+
+      await playBotTurn(
+          matchId, round, cardId || entry.cardId, match.cardTierContent);
     },
 );
 

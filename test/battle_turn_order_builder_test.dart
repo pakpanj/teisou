@@ -2,13 +2,14 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:kana_master/core/constants/battle_rules.dart';
 import 'package:kana_master/core/services/battle_turn_order_builder.dart';
 
 void main() {
   List<String> deck(String prefix) =>
       List.generate(20, (i) => '$prefix$i');
 
-  test('turnOrder has exactly 20 rounds, indexed 0-19 in order', () {
+  test('turnOrder covers both decks in full, indexed in order', () {
     final entries = buildTurnOrder(
       firstUid: 'a',
       firstDeck: deck('a'),
@@ -16,8 +17,8 @@ void main() {
       secondDeck: deck('b'),
       random: Random(1),
     );
-    expect(entries.length, 20);
-    for (var i = 0; i < 20; i++) {
+    expect(entries.length, kBattleTotalRounds);
+    for (var i = 0; i < kBattleTotalRounds; i++) {
       expect(entries[i].round, i);
     }
   });
@@ -31,12 +32,12 @@ void main() {
       random: Random(1),
     );
     expect(entries[0].deckOwnerUid, 'a');
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < kBattleTotalRounds; i++) {
       expect(entries[i].deckOwnerUid, i.isEven ? 'a' : 'b');
     }
   });
 
-  test('each player ends up with exactly 10 rounds', () {
+  test('each player owns exactly half the rounds', () {
     final entries = buildTurnOrder(
       firstUid: 'a',
       firstDeck: deck('a'),
@@ -44,8 +45,10 @@ void main() {
       secondDeck: deck('b'),
       random: Random(1),
     );
-    expect(entries.where((e) => e.deckOwnerUid == 'a').length, 10);
-    expect(entries.where((e) => e.deckOwnerUid == 'b').length, 10);
+    expect(entries.where((e) => e.deckOwnerUid == 'a').length,
+        kBattleTotalRounds ~/ 2);
+    expect(entries.where((e) => e.deckOwnerUid == 'b').length,
+        kBattleTotalRounds ~/ 2);
   });
 
   test('no card id repeats within the match, for either player', () {
@@ -60,8 +63,12 @@ void main() {
     expect(cardIds.toSet().length, cardIds.length);
   });
 
-  test('only 10 of each player\'s 20-card deck are used — half sits '
-      'out, per "setengah deck tidak terpakai"', () {
+  // Corrected 2026-08-14: this used to assert the opposite — that only
+  // half of each deck was ever drawn from. That followed from reading
+  // the main phase as ten cards in total rather than ten each, which
+  // also left the whole extension unreachable. Every card a player is
+  // dealt can now actually come up.
+  test('a full match draws on every card in both decks', () {
     final entries = buildTurnOrder(
       firstUid: 'a',
       firstDeck: deck('a'),
@@ -77,9 +84,9 @@ void main() {
         .where((e) => e.deckOwnerUid == 'b')
         .map((e) => e.cardId)
         .toSet();
-    expect(aCards.length, 10);
+    expect(aCards.length, kBattleTotalRounds ~/ 2);
     expect(aCards.every((c) => deck('a').contains(c)), isTrue);
-    expect(bCards.length, 10);
+    expect(bCards.length, kBattleTotalRounds ~/ 2);
     expect(bCards.every((c) => deck('b').contains(c)), isTrue);
   });
 
@@ -98,7 +105,7 @@ void main() {
       secondDeck: deck('b'),
       random: Random(42),
     );
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < kBattleTotalRounds; i++) {
       expect(first[i].cardId, second[i].cardId);
     }
   });
@@ -124,15 +131,14 @@ void main() {
     expect(firstCards, isNot(equals(secondCards)));
   });
 
-  test('works with a deck larger than 20 (extra cards are simply never '
-      'drawn from)', () {
+  test('works with a deck larger than the match needs', () {
     final entries = buildTurnOrder(
       firstUid: 'a',
-      firstDeck: List.generate(30, (i) => 'a$i'),
+      firstDeck: List.generate(60, (i) => 'a$i'),
       secondUid: 'b',
       secondDeck: deck('b'),
       random: Random(1),
     );
-    expect(entries.length, 20);
+    expect(entries.length, kBattleTotalRounds);
   });
 }

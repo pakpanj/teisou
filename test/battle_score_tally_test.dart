@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:kana_master/core/constants/battle_rules.dart';
 import 'package:kana_master/core/services/battle_score_tally.dart';
 import 'package:kana_master/data/models/turn_order_entry.dart';
 
@@ -59,7 +60,7 @@ void main() {
   });
 
   group('clientConclusion', () {
-    test('never concludes before the main phase (round 9) has resolved',
+    test('never concludes before the main phase (ten cards each) has resolved',
         () {
       final tally = tallyScores(
         players: players,
@@ -70,13 +71,13 @@ void main() {
         clientConclusion(
           players: players,
           tally: tally,
-          highestResolvedRound: 8,
+          highestResolvedRound: kBattleMainPhaseRounds - 2,
         ),
         isNull,
       );
     });
 
-    test('concludes with the higher-scoring player once round 9 has '
+    test('concludes with the higher-scoring player once the main phase has '
         'resolved and scores differ', () {
       final tally = tallyScores(
         players: players,
@@ -87,14 +88,14 @@ void main() {
         clientConclusion(
           players: players,
           tally: tally,
-          highestResolvedRound: 9,
+          highestResolvedRound: kBattleMainPhaseRounds - 1,
         ),
         'b',
       );
     });
 
     test('stays undecided (continues to extension) if tied and not yet '
-        'at round 19', () {
+        'at the end of both decks', () {
       final tally = tallyScores(
         players: players,
         turnOrder: turnOrder,
@@ -104,13 +105,13 @@ void main() {
         clientConclusion(
           players: players,
           tally: tally,
-          highestResolvedRound: 9,
+          highestResolvedRound: kBattleMainPhaseRounds - 1,
         ),
         isNull,
       );
     });
 
-    test('is a draw if still tied once round 19 has resolved', () {
+    test('is a draw if still tied once both decks are spent', () {
       final tally = tallyScores(
         players: players,
         turnOrder: turnOrder,
@@ -120,7 +121,7 @@ void main() {
         clientConclusion(
           players: players,
           tally: tally,
-          highestResolvedRound: 19,
+          highestResolvedRound: kBattleTotalRounds - 1,
         ),
         'draw',
       );

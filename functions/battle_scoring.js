@@ -31,6 +31,20 @@ function db() {
   return getFirestore();
 }
 
+/**
+ * Match length, mirroring `lib/core/constants/battle_rules.dart` — one
+ * round is one card answered by one player, so these are twice the
+ * per-player card counts. Ten cards each decide it; a level score plays
+ * both decks out to the end.
+ *
+ * **Kept in step by hand**, like the RomajiConverter port below: this
+ * runs on Node and the app runs on Dart, and there is no way to share
+ * one definition. Changing either without the other is how a match ends
+ * at a different card on the server than on the phone.
+ */
+const MAIN_PHASE_ROUNDS = 20;
+const TOTAL_ROUNDS = 40;
+
 // --- RomajiConverter port (see lib/core/services/romaji_converter.dart
 // for the Dart original this must stay in step with) ---
 
@@ -147,7 +161,15 @@ async function scoreAnswer(matchId, round, answerText) {
     const turnEntry = (match.turnOrder || []).find((e) => e.round === round);
     if (!turnEntry) return;
 
-    const resolved = resolveCorrectRomaji(turnEntry.cardId);
+    // The card its owner chose, falling back to the one dealt to this
+    // round when they let the choosing window run out. Mirrors
+    // `BattleMatch.effectiveCardId` on the client — scoring the dealt
+    // card instead would mark the answer against a card the player
+    // never saw.
+    const playedCards = match.playedCards || {};
+    const cardId = playedCards[String(round)] || turnEntry.cardId;
+
+    const resolved = resolveCorrectRomaji(cardId);
     if (!resolved) return;
 
     let typedRomaji = (answerText || "").trim();
@@ -183,12 +205,12 @@ async function scoreAnswer(matchId, round, answerText) {
       }
     }
 
-    if (allPriorRoundsProcessed && round >= 9) {
+    if (allPriorRoundsProcessed && round >= MAIN_PHASE_ROUNDS - 1) {
       const scores = players.map((p) => officialScore[p] || 0);
       if (scores.length === 2 && scores[0] !== scores[1]) {
         updates.result = scores[0] > scores[1] ? players[0] : players[1];
         updates.status = "finished";
-      } else if (round === 19) {
+      } else if (round === TOTAL_ROUNDS - 1) {
         updates.result = "draw";
         updates.status = "finished";
       }
