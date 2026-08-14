@@ -1458,6 +1458,19 @@ class AppStrings {
   // Diamond/Emerald) are deliberately not translated — they're the same
   // words in both languages here, and every ranked game an Indonesian
   // player has seen uses them untranslated.
+  // Arena pertandingan (tampilan kartu).
+  String get battleYouLabel => _t('Kamu', 'You');
+  String get battleOpponentLabel => _t('Lawan', 'Opponent');
+  String get battleBotName => _t('Bot', 'Bot');
+  String get battleCardFromOpponent =>
+      _t('Kartu dari lawan — jawab!', 'Their card — answer it!');
+  String get battleCardFromYou =>
+      _t('Kartumu, lawan sedang menjawab', 'Your card, opponent is answering');
+  String get battleReviewTitle => _t(
+        'Kartu yang dimainkan — yang bergaris tebal kartumu',
+        'Cards played — the bold ones were yours',
+      );
+  String get battlePlayAgain => _t('Main Lagi', 'Play Again');
   String get battleRankStandingLabel => _t('Peringkatmu', 'Your standing');
   // Perubahan bintang di layar hasil.
   String get battleStarsCounting =>

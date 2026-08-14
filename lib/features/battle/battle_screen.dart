@@ -14,7 +14,11 @@ import '../../data/models/battle_answer.dart';
 import '../../data/models/battle_match.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kanji_entry.dart';
+import '../../data/repositories/battle_repository.dart' show battleBotUid;
+import '../../core/widgets/mascot_widget.dart';
+import 'battle_invite_providers.dart';
 import 'widgets/star_result_card.dart';
+import 'widgets/battle_arena.dart';
 
 /// Card Game Mode's live match screen — Tahap 2 butir 5 in
 /// `NOTES_CARD_GAME_MODE.md`. Renders one `battleMatches/{matchId}` doc
@@ -58,6 +62,8 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   int? _timeoutHandledForRound;
 
   final Map<int, bool> _correctByRound = {};
+  DateTime? _flashUntil;
+  bool _flashWasCorrect = false;
   StreamSubscription<Map<int, BattleAnswer>>? _answersSub;
   String? _localClientResult;
 
@@ -110,6 +116,8 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           romaji.isNotEmpty &&
           romaji == card.correctRomaji.trim().toLowerCase();
       _correctByRound[round] = correct;
+      _flashWasCorrect = correct;
+      _flashUntil = DateTime.now().add(const Duration(milliseconds: 900));
       changed = true;
     }
     if (!mounted) return;
@@ -275,67 +283,6 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
 
     final isAnswerer = match.currentAnswererUid == myUid;
     final palette = context.palette;
-
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                s.battleCardProgress(
-                  match.currentRound + 1,
-                  match.turnOrder.length,
-                ),
-                style: TextStyle(color: palette.textNavy, fontWeight: FontWeight.w600),
-              ),
-              Text(
-                '${_remaining.inSeconds}s',
-                style: TextStyle(
-                  color: _remaining.inSeconds <= 5
-                      ? palette.errorRed
-                      : palette.textNavy,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
-        ),
-        _buildScoreRow(context, s, match, myUid),
-        Expanded(
-          child: Center(
-            child: Text(
-              card.prompt,
-              style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
-                color: palette.textNavy,
-              ),
-            ),
-          ),
-        ),
-        if (isAnswerer)
-          _buildAnswerInput(context, s, match, card)
-        else
-          Padding(
-            padding: const EdgeInsets.all(24),
-            child: Text(
-              s.battleWaitingForOpponent,
-              style: TextStyle(color: palette.textNavy.withValues(alpha: 0.6)),
-            ),
-          ),
-      ],
-    );
-  }
-
-  Widget _buildScoreRow(
-    BuildContext context,
-    AppStrings s,
-    BattleMatch match,
-    String myUid,
-  ) {
     final tally = tallyScores(
       players: match.players,
       turnOrder: match.turnOrder,
@@ -345,16 +292,95 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       (p) => p != myUid,
       orElse: () => myUid,
     );
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    final identities =
+        ref.watch(battleOpponentsProvider(match.players)).valueOrNull;
+
+    return BattleBackdrop(
+      child: Column(
         children: [
-          Text(s.battleMyScore(tally.scoreOf(myUid))),
-          Text(s.battleOpponentScore(tally.scoreOf(opponentUid))),
+          BattleScorePanel(
+            strings: s,
+            round: match.currentRound + 1,
+            totalRounds: match.turnOrder.length,
+            remaining: _remaining,
+            limit: cardTimeLimit(match.currentRound),
+            me: BattlePlayerChip(
+              entry: identities?[myUid],
+              fallbackName: s.battleYouLabel,
+              score: tally.scoreOf(myUid),
+              isMe: true,
+              isTheirTurn: isAnswerer,
+            ),
+            opponent: BattlePlayerChip(
+              entry: identities?[opponentUid],
+              fallbackName: opponentUid == battleBotUid
+                  ? s.battleBotName
+                  : s.battleOpponentLabel,
+              score: tally.scoreOf(opponentUid),
+              isMe: false,
+              isTheirTurn: !isAnswerer,
+              isBot: opponentUid == battleBotUid,
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: BattleCardFace(
+                prompt: card.prompt,
+                caption: isAnswerer
+                    ? s.battleCardFromOpponent
+                    : s.battleCardFromYou,
+                flashColor: _flashColor(context),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: BattleDeckStrip(slots: _deckSlots(match)),
+          ),
+          const SizedBox(height: 12),
+          if (isAnswerer)
+            _buildAnswerInput(context, s, match, card)
+          else
+            Padding(
+              padding: const EdgeInsets.all(24),
+              child: Text(
+                s.battleWaitingForOpponent,
+                style: TextStyle(
+                  color: palette.textNavy.withValues(alpha: 0.6),
+                ),
+              ),
+            ),
         ],
       ),
     );
+  }
+
+  /// One slot per round: how each has come out, for [BattleDeckStrip].
+  List<BattleSlotState> _deckSlots(BattleMatch match) {
+    return [
+      for (var i = 0; i < match.turnOrder.length; i++)
+        if (i == match.currentRound)
+          BattleSlotState.current
+        else if (_correctByRound[i] == true)
+          BattleSlotState.correct
+        else if (_correctByRound[i] == false)
+          BattleSlotState.wrong
+        else
+          BattleSlotState.upcoming,
+    ];
+  }
+
+  /// Tints the card for a moment after the round just gone resolved.
+  /// Deliberately driven by the *previous* round's result: by the time
+  /// this rebuild happens the turn has already moved on, so keying it to
+  /// the current round would never show anything.
+  Color? _flashColor(BuildContext context) {
+    if (_flashUntil == null || DateTime.now().isAfter(_flashUntil!)) {
+      return null;
+    }
+    return _flashWasCorrect
+        ? context.palette.secondaryBlue
+        : context.palette.errorRed;
   }
 
   Widget _buildAnswerInput(
@@ -446,28 +472,133 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       orElse: () => myUid,
     );
 
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+    final identities =
+        ref.watch(battleOpponentsProvider(match.players)).valueOrNull;
+    final palette = context.palette;
+
+    return BattleBackdrop(
+      child: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 20),
         children: [
-          Text(
-            isDraw
-                ? s.battleResultDraw
-                : (iWon ? s.battleResultWin : s.battleResultLose),
-            style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          Center(
+            child: MascotWidget(
+              // Never `sad`, even on a loss — the same rule MascotCoach
+              // already follows for wrong answers: the audience is
+              // children, and a mascot that looks let down by them is
+              // the thing this app decided not to do.
+              mood: isDraw
+                  ? MascotMood.curious
+                  : (iWon ? MascotMood.cheering : MascotMood.encouraging),
+              size: 120,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Center(
+            child: Text(
+              isDraw
+                  ? s.battleResultDraw
+                  : (iWon ? s.battleResultWin : s.battleResultLose),
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: iWon ? palette.primaryCoral : palette.textNavy,
+              ),
+            ),
           ),
           const SizedBox(height: 16),
-          Text(s.battleMyScore(tally.scoreOf(myUid))),
-          Text(s.battleOpponentScore(tally.scoreOf(opponentUid))),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              BattlePlayerChip(
+                entry: identities?[myUid],
+                fallbackName: s.battleYouLabel,
+                score: tally.scoreOf(myUid),
+                isMe: true,
+                isTheirTurn: false,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'VS',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: palette.textNavy.withValues(alpha: 0.4),
+                  ),
+                ),
+              ),
+              BattlePlayerChip(
+                entry: identities?[opponentUid],
+                fallbackName: opponentUid == battleBotUid
+                    ? s.battleBotName
+                    : s.battleOpponentLabel,
+                score: tally.scoreOf(opponentUid),
+                isMe: false,
+                isTheirTurn: false,
+                isBot: opponentUid == battleBotUid,
+              ),
+            ],
+          ),
           const SizedBox(height: 20),
           StarResultCard(match: match, myUid: myUid, strings: s),
+          const SizedBox(height: 22),
+          BattleResultReview(
+            title: s.battleReviewTitle,
+            cards: _reviewCards(match, myUid),
+          ),
           const SizedBox(height: 24),
-          FilledButton(
-            onPressed: () => Navigator.of(context).maybePop(),
-            child: Text(s.battleResultDone),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Row(
+              children: [
+                if (match.rankedMatch) ...[
+                  Expanded(
+                    child: OutlinedButton(
+                      // Pops back to whichever screen started this match,
+                      // which for a ranked match is the search screen —
+                      // so "play again" lands exactly where playing again
+                      // begins. Deliberately not a true rematch against
+                      // the same opponent: that needs an invite the other
+                      // player may never answer.
+                      onPressed: () => Navigator.of(context).maybePop(),
+                      child: Text(s.battlePlayAgain),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                ],
+                Expanded(
+                  child: FilledButton(
+                    onPressed: () => Navigator.of(context).maybePop(),
+                    child: Text(s.battleResultDone),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
+  }
+
+  /// Every round that actually resolved, in order, for the review row.
+  List<BattleReviewCard> _reviewCards(BattleMatch match, String myUid) {
+    final cardData = ref.read(battleCardDataProvider).valueOrNull;
+    if (cardData == null) return const [];
+    final cards = <BattleReviewCard>[];
+    for (var round = 0; round < match.turnOrder.length; round++) {
+      final correct = _correctByRound[round];
+      if (correct == null) continue; // never played (match ended early)
+      final entry = match.turnOrder[round];
+      final card = resolveCard(entry.cardId, cardData.$1, cardData.$2);
+      if (card == null) continue;
+      cards.add(
+        BattleReviewCard(
+          prompt: card.prompt,
+          reading: card.correctRomaji,
+          correct: correct,
+          mine: entry.deckOwnerUid != myUid,
+        ),
+      );
+    }
+    return cards;
   }
 }

@@ -161,6 +161,66 @@ penambahan fiturnya — lihat `ClanRepository.disbandClan` dan bagian
 "Bubarkan Clan" di `ClanSettingsScreen` (leader-only). Clan uji
 berikutnya cukup dibubarkan dari dalam aplikasi.
 
+### Tampilan dikerjakan mengikuti mockup (2026-08-14)
+
+Sampai hari ini mesinnya lengkap tapi layarnya masih kerangka: satu
+kolom teks, angka detik telanjang, dan satu huruf mengambang di tengah
+tanpa kartu sama sekali. Tiga layar dirombak mengikuti mockup buatan
+user, dengan batas yang sudah dikunci sejak awal — **tata letaknya
+diambil, mekaniknya tidak** (tidak ada HP/damage, tidak ada angka
+rating berjalan; lihat "Mockup TEISOU BATTLE" di bawah).
+
+**Semua digambar dari bentuk, bukan aset gambar** — sama seperti
+`ProfileHeaderIllustration` dan seni sampul yang sudah ada. Artinya
+mode ini tidak menunggu satu pun ilustrasi kartu dipesan dulu sebelum
+bisa dirilis.
+
+**Layar pertandingan** (`widgets/battle_arena.dart`): dua pemain
+berhadapan dengan avatar dan skor masing-masing, cincin waktu di
+tengah yang menipis (angkanya tetap ada — cincin saja tidak bisa
+membedakan 4 detik dari 9 bagi anak), kartu sungguhan yang terangkat
+dengan bayangan, dan dek 20 slot di bawahnya yang menandai tiap ronde
+benar/salah. Dek itu yang membuat pertandingan terasa ada ujungnya:
+"Kartu 3 / 20" berupa teks memberi informasi yang sama tanpa satu pun
+rasanya.
+
+Dua hal kecil yang sebenarnya menjawab kebingungan nyata: keterangan
+**"Kartu dari lawan — jawab!"** di atas kartu (aturan bahwa kamu
+selalu menjawab kartu dari dek lawan tidak tertulis di mana pun
+sebelumnya), dan **cincin di sekeliling avatar yang sedang giliran**.
+
+**Lawan bot memakai wajah maskot**, bukan ikon orang abu-abu. Bot tidak
+punya baris `leaderboard/{uid}` dan tidak akan pernah punya, jadi tanpa
+ini dialah satu-satunya lawan yang selalu terlihat seperti avatar gagal
+dimuat.
+
+**Layar hasil**: maskot bereaksi (menang → cheering, kalah →
+encouraging, **tidak pernah sad** — aturan yang sama yang sudah dipakai
+`MascotCoach` untuk jawaban salah), kedua pemain berhadapan dengan
+skornya, kartu bintang yang sudah ada, lalu **deretan kartu yang tadi
+dimainkan lengkap dengan tanda benar/salah dan bacaannya**. Yang
+terakhir itu ide terbaik dari mockup: anak yang kalah 3-7 tetap pulang
+membawa tujuh bacaan yang tadi ia lewatkan. Kartu miliknya sendiri
+bergaris tebal, kartu lawan diredupkan — jadi "mana yang tadi giliranku"
+terbaca tanpa perlu legenda.
+
+Tombol **"Main Lagi"** hanya muncul di pertandingan berperingkat, dan
+sengaja **bukan** tanding ulang melawan lawan yang sama: itu butuh
+undangan yang mungkin tidak pernah dijawab. Ia kembali ke layar cari
+lawan — tempat "main lagi" memang dimulai.
+
+**Layar cari lawan**: tiga kartu tertutup yang mengipas sebagai
+undangan, tombol besar, dan saat menunggu — maskot menemani plus bar
+yang menipis mengikuti hitungan 20 detik yang sama. Sebelumnya ini
+spinner polos selama dua puluh detik, dan itu waktu terlama mode ini
+pernah meminta anak diam tanpa melakukan apa pun.
+
+**Diverifikasi di Moto G52J** lewat satu pertandingan lawan bot dari
+awal sampai hasil: arena tampil benar (avatar, cincin waktu, kartu,
+dek), hasilnya menampilkan maskot cheering, skor 4-3, "+1 bintang ·
+Bronze I · Naik divisi", dan deretan tujuh kartu dengan tanda dan
+bacaannya.
+
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
 ### memikirkan rilis)

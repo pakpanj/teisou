@@ -7,6 +7,7 @@ import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/services/battle_deck_builder.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/mascot_widget.dart';
 import '../../data/models/card_game_rank.dart';
 import '../../data/repositories/battle_repository.dart' show battleBotUid;
 import 'battle_challenge.dart' show cardTierContentLabel;
@@ -38,8 +39,13 @@ enum _MatchmakingState { idle, searching, fallingBackToBot }
 
 class _BattleMatchmakingScreenState
     extends ConsumerState<BattleMatchmakingScreen> {
+  /// How long to wait for a human before falling back to a bot. Named
+  /// because the progress bar divides by it — an inline 20 in two places
+  /// is how a bar ends up out of step with the countdown it draws.
+  static const _searchSeconds = 20;
+
   _MatchmakingState _state = _MatchmakingState.idle;
-  int _secondsLeft = 20;
+  int _secondsLeft = _searchSeconds;
   String? _error;
 
   StreamSubscription<String?>? _resultSubscription;
@@ -69,7 +75,7 @@ class _BattleMatchmakingScreenState
 
     setState(() {
       _state = _MatchmakingState.searching;
-      _secondsLeft = 20;
+      _secondsLeft = _searchSeconds;
       _error = null;
       _queuedTier = tier;
     });
@@ -219,8 +225,13 @@ class _BattleMatchmakingScreenState
                 const SizedBox(height: 8),
                 Text(_error!, style: TextStyle(color: context.palette.errorRed)),
               ],
-              const SizedBox(height: 24),
-              Center(child: _buildStateWidget(context, s, rank)),
+              // Centred in what is left rather than pinned under the
+              // description: the deck and the button are the point of
+              // this screen, and pinned to the top they sat above a
+              // screen's worth of nothing.
+              Expanded(
+                child: Center(child: _buildStateWidget(context, s, rank)),
+              ),
             ],
           ),
         ),
@@ -233,18 +244,60 @@ class _BattleMatchmakingScreenState
   Widget _buildStateWidget(BuildContext context, AppStrings s, CardGameRank rank) {
     switch (_state) {
       case _MatchmakingState.idle:
-        return FilledButton(
-          onPressed: () => _startSearching(rank.tier),
-          child: Text(s.battleMatchmakingSearchButton),
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // The deck you are about to play, face down — the mockup's
+            // opening image, and the one thing that tells a learner what
+            // this button is going to hand them.
+            const FannedDeck(),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: 220,
+              height: 52,
+              child: FilledButton(
+                onPressed: () => _startSearching(rank.tier),
+                child: Text(
+                  s.battleMatchmakingSearchButton,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
         );
       case _MatchmakingState.searching:
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const CircularProgressIndicator(),
-            const SizedBox(height: 16),
-            Text(s.battleMatchmakingWaiting(_secondsLeft)),
-            const SizedBox(height: 16),
+            // The mascot waits with you. A bare spinner for twenty
+            // seconds is the longest this mode ever asks a child to sit
+            // still doing nothing.
+            const MascotWidget(mood: MascotMood.curious, size: 120),
+            const SizedBox(height: 12),
+            Text(
+              s.battleMatchmakingWaiting(_secondsLeft),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: context.palette.textNavy,
+              ),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              width: 200,
+              child: LinearProgressIndicator(
+                // Counts down against the same 20 seconds the fallback
+                // uses, so the wait has a visible end rather than an
+                // indefinite spinner.
+                value: (_secondsLeft / _searchSeconds).clamp(0.0, 1.0),
+                minHeight: 6,
+                backgroundColor: context.palette.progressTrack,
+              ),
+            ),
+            const SizedBox(height: 20),
             OutlinedButton(
               onPressed: _cancel,
               child: Text(s.battleMatchmakingCancelButton),
@@ -255,11 +308,83 @@ class _BattleMatchmakingScreenState
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const MascotWidget(mood: MascotMood.excited, size: 120),
+            const SizedBox(height: 12),
+            Text(
+              s.battleMatchmakingFallingBackToBot,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: context.palette.textNavy,
+              ),
+            ),
+            const SizedBox(height: 12),
             const CircularProgressIndicator(),
-            const SizedBox(height: 16),
-            Text(s.battleMatchmakingFallingBackToBot),
           ],
         );
     }
+  }
+}
+
+/// Three face-down cards fanned out, drawn from shapes.
+///
+/// Purely an invitation — it carries no state and never changes with the
+/// match. It exists because the search screen was a sentence and a
+/// button, which is a form, not the front door of a card game.
+class FannedDeck extends StatelessWidget {
+  const FannedDeck({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    Widget card(double angle, double dx, Color color) {
+      return Transform.translate(
+        offset: Offset(dx, 0),
+        child: Transform.rotate(
+          angle: angle,
+          child: Container(
+            width: 84,
+            height: 116,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [color, color.withValues(alpha: 0.75)],
+              ),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: palette.cardWhite, width: 3),
+              boxShadow: [
+                BoxShadow(
+                  color: palette.textNavy.withValues(alpha: 0.15),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              'あ',
+              style: TextStyle(
+                fontSize: 34,
+                fontWeight: FontWeight.bold,
+                color: palette.cardWhite.withValues(alpha: 0.85),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    return SizedBox(
+      height: 140,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          card(-0.26, -54, palette.secondaryBlue),
+          card(0.26, 54, palette.tertiaryAmber),
+          card(0, 0, palette.primaryCoral),
+        ],
+      ),
+    );
   }
 }
