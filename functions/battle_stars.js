@@ -319,10 +319,18 @@ exports.onBattleMatchConcluded = onDocumentWritten(
       if (!match.result) return; // still running
       if (match.starsApplied) return; // already handled
 
-      const before = event.data.before;
-      const wasConcluded = before && before.exists && before.data().result;
-      if (wasConcluded) return; // concluded by an earlier write
-
+      // No `wasConcluded`-style "before already had result" guard here —
+      // there used to be one, and it was a real bug: this function's own
+      // recovery write below (clearing `starsApplied` back to false after
+      // a partial failure) also has `result` already set in *its* before
+      // snapshot, since `result` was set long before that point. A guard
+      // keyed on "did result already exist" can't tell that write apart
+      // from a genuinely unrelated one, so it silently discarded every
+      // retry attempt — the match got permanently stuck with a stranded
+      // player never paid and `starResult` never written, since nothing
+      // else ever writes to a concluded match again. The `starsApplied`
+      // check above and the claim transaction below are what actually
+      // guarantee no-double-payout; nothing else needs to.
       const matchRef = db().collection("battleMatches")
           .doc(event.params.matchId);
 

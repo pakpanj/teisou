@@ -1450,6 +1450,10 @@ class AppStrings {
         'Di Bronze & Silver kamu tidak kehilangan bintang.',
         'At Bronze & Silver you never lose stars.',
       );
+  String get battleStarsFloorAbsorbed => _t(
+        'Kamu sudah di dasar divisi ini — bintang tidak berkurang.',
+        'You are already at this division\'s floor — no stars lost.',
+      );
   String battleStarsPromotedTier(String standing) =>
       _t('Naik tingkat — $standing!', 'Promoted — $standing!');
   String battleStarsPromotedDivision(String standing) =>

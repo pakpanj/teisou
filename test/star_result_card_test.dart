@@ -164,4 +164,30 @@ void main() {
     // The protection note belongs only where protection applies.
     expect(find.textContaining('tidak kehilangan bintang'), findsNothing);
   });
+
+  testWidgets('a loss absorbed by the division floor above Silver still '
+      'gets an explanation, just not the Bronze/Silver one', (
+    tester,
+  ) async {
+    await pump(
+      tester,
+      match(
+        stars: {
+          'me': star(
+            delta: 0,
+            tier: CardGameTier.gold,
+            stars: 0,
+            lossAbsorbed: true,
+          ),
+        },
+      ),
+    );
+    expect(find.text('Bintang tidak berubah'), findsOneWidget);
+    // Bronze/Silver's wording would be factually wrong at Gold — it
+    // must not appear here...
+    expect(find.textContaining('tidak kehilangan bintang'), findsNothing);
+    // ...but the player still deserves *some* explanation for why a
+    // loss left their stars unchanged, or this reads as a bug.
+    expect(find.textContaining('dasar divisi'), findsOneWidget);
+  });
 }

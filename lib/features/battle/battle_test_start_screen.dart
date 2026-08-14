@@ -83,6 +83,14 @@ class _BattleTestStartScreenState extends ConsumerState<BattleTestStartScreen> {
             secondCandidateUid: opponentUid,
             secondCandidateDeck: deck,
             cardTierContent: rank.tier.cardContent,
+            // This screen is a manual dev aid for the fast-path answer
+            // flow, never a real ranked encounter — real ranked matches
+            // are only ever created server-side (matchmaking) or via the
+            // "give up and fight the bot" fallback, both of which
+            // firestore.rules now verifies provenance for. Keeping this
+            // unranked also means poking around this screen can never
+            // quietly move a real account's stars.
+            rankedMatch: false,
           );
       if (!mounted) return;
       setState(() => _createdMatchId = matchId);

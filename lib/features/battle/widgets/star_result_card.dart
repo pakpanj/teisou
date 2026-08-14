@@ -165,11 +165,17 @@ class _StarResultCardState extends State<StarResultCard> {
           ),
         ],
         // Only when it explains something the player can see: a loss
-        // that took nothing.
-        if (result.lossAbsorbed && rank.tier.lossProtected) ...[
+        // that took nothing. `lossAbsorbed` covers two different
+        // reasons — Bronze/Silver's blanket loss protection, or simply
+        // already sitting at the division floor above those tiers —
+        // and each needs its own wording, or a Gold+ player at floor
+        // would silently see nothing explaining their unchanged stars.
+        if (result.lossAbsorbed) ...[
           const SizedBox(height: 6),
           Text(
-            s.battleStarsProtected,
+            rank.tier.lossProtected
+                ? s.battleStarsProtected
+                : s.battleStarsFloorAbsorbed,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 12,

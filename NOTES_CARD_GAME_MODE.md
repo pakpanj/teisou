@@ -2796,3 +2796,154 @@ teks dalam Bahasa Indonesia. Sertakan teks placeholder yang masuk akal
 (nama pemain, angka skor, contoh kartu kanji nyata seperti 学生 / 電車 /
 友達).
 ````
+
+## Code review pass atas seluruh diff Card Game Mode (2026-08-14)
+
+Setelah premium sengaja ditunda ("paling terakhir saat aplikasi benar
+benar akan rilis") dan fokus dialihkan ke mengoptimalkan Card Game Mode
+itu sendiri, seluruh diff `b88daa5^..HEAD` (semua butir Card Game Mode
+sampai matchmaking) direview lewat skill `code-review` di level `high`
+— 8 finder angle paralel, tiap kandidat diverifikasi 1-vote
+(CONFIRMED/PLAUSIBLE/REFUTED). Ditemukan 5 bug korektnes/keamanan
+nyata (4 CONFIRMED, 1 PLAUSIBLE) plus 3 saran perapihan. Kelima bug
+sudah diperbaiki di sesi yang sama; 2 dari 3 saran perapihan
+(duplikasi `db()`, duplikasi scaffold tab leaderboard) sengaja
+ditunda — risikonya lebih tinggi untuk manfaat yang lebih kecil, dan
+tidak ada perangkat fisik tersambung untuk memverifikasi ulang layar
+yang tersentuh.
+
+**1. `functions/battle_stars.js` — retry pemulihan pembayaran bintang
+yang gagal separuh ternyata tidak pernah benar-benar berjalan.**
+`onBattleMatchConcluded` punya guard `wasConcluded` yang membaca
+`event.data.before` dan berhenti kalau dokumen sebelum tulisan ini
+sudah punya `result` — niatnya mencegah fungsi memproses ulang
+pertandingan yang sudah selesai. Tapi tulisan pemulihannya sendiri
+(mengembalikan `starsApplied` ke `false` setelah `applyToPlayer` gagal
+untuk salah satu pemain) *juga* punya `result` yang sudah terisi di
+snapshot sebelumnya — `result` ditulis jauh sebelum titik itu, bukan
+saat pemulihan. Guard yang hanya melihat "apakah `result` sudah ada"
+tidak bisa membedakan tulisan pemulihan dari tulisan lain yang
+benar-benar tidak berkaitan, jadi setiap percobaan ulang langsung
+`return` tanpa memproses apa pun. Pemain yang gagal dibayar di
+percobaan pertama akan terjebak selamanya — tidak ada `starResult`,
+tidak ada pembaruan `cardGameRank`, dan tidak ada penulisan lain yang
+pernah menyentuh dokumen pertandingan yang sudah selesai lagi, jadi
+tidak akan pernah pulih sendiri. **Diperbaiki dengan menghapus guard
+itu sepenuhnya** — perlindungan anti-bayar-ganda yang sesungguhnya
+sudah ada di dua tempat lain yang tidak punya masalah yang sama: flag
+`starsApplied` di level dokumen (dicek di awal fungsi) dan transaksi
+klaim per pemain di dalam `applyToPlayer` sendiri. Penjelasan lengkap
+ditinggalkan sebagai komentar di lokasi bekas guard tadi.
+
+**2. `firestore.rules` — pertandingan `rankedMatch: true` bisa dibuat
+langsung oleh client dengan `cardTierContent` apa saja, tidak
+benar-benar terkait tingkat pemain sesungguhnya.** Rule `create` lama
+untuk `battleMatches` mempercayai begitu saja apa pun yang
+diklaim client — tidak ada yang mengaitkan `cardTierContent` dengan
+bagaimana pertandingan itu sebenarnya dibentuk. Artinya pemain mana
+pun yang sudah masuk bisa menulis dokumen `battleMatches` langsung
+(lewat luar aplikasi) dengan `cardTierContent: 'hiragana'` dan
+`rankedMatch: true` melawan `"BOT"`, berapa pun tingkat sesungguhnya —
+dan `battle_stars.js` akan memberi bintang ranked sungguhan untuk
+menang di kesulitan termudah. Ini persis jalan pintas "pilih hiragana,
+naik ke Emerald tanpa pernah menyentuh kanji" yang catatan ini sudah
+tegaskan dilarang untuk konten *pilihan* pemain — hanya lewat pintu
+yang berbeda. Satu-satunya jalur pembuatan match ranked yang sah dari
+sisi client adalah "menyerah menunggu, lawan bot" di
+`battle_matchmaking_screen.dart`, yang selalu melawan `"BOT"` dan
+selalu memakai tingkat pemain sendiri saat itu (match ranked
+pemain-vs-pemain yang sesungguhnya selalu dibuat di server oleh
+`functions/battle_matchmaking.js` lewat Admin SDK, yang melewati rules
+ini sepenuhnya). **Diperbaiki** dengan menambah dua helper baru
+(`cardGameTierOf(uid)` membaca tingkat langsung dari `users/{uid}`,
+`cardContentForTier(tier)` mencerminkan
+`CardGameTierX.cardContent`/`DIFFICULTY` di `battle_bot.js`) dan
+mengubah rule `create` `battleMatches`: klaim `rankedMatch: true` dari
+client sekarang hanya diizinkan lewat bentuk persis satu itu — lawan
+`"BOT"` dan `cardTierContent` yang cocok dengan tingkat pemain yang
+sesungguhnya tersimpan di server. `battle_test_start_screen.dart`
+(layar bantu developer, tidak pernah dipasang ke navigasi produksi)
+disesuaikan sekalian — sekarang selalu mengirim `rankedMatch: false`,
+karena layar itu memang tidak pernah dimaksudkan menggerakkan bintang
+sungguhan.
+
+**3. `firestore.rules` — `users/{uid}` kebobolan izin hapus-sendiri
+tanpa syarat, akibat sampingan dari memecah `allow write` lama jadi
+create/update/delete.** Rule lama satu baris `allow write: if ... &&
+isAllowedAvatarWrite()` sebetulnya *sudah* memblokir delete secara
+tidak sengaja — `isAllowedAvatarWrite()` menyentuh
+`request.resource.data`, yang bernilai null pada permintaan delete,
+jadi evaluasinya selalu gagal. Saat dipecah jadi
+create/update/delete terpisah untuk keperluan mengunci field
+`cardGameRank`, `allow delete`-nya ditulis polos tanpa syarat apa
+pun — regresi nyata, bukan disengaja. **Diperbaiki** dengan menghapus
+`allow delete` itu sepenuhnya (bukan menulis ulang jadi kondisional —
+tidak ada fitur aplikasi yang pernah memanggil `.delete()` pada
+dokumen `users/{uid}` miliknya sendiri), sehingga Firestore kembali
+menolak secara default seperti sebelumnya, kali ini secara sengaja.
+**`leaderboard/{uid}` punya celah yang sama tapi sudah ada sejak
+sebelum diff Card Game Mode ini** (rule lamanya `allow write` polos
+tanpa `isAllowedAvatarWrite()` sama sekali, jadi hapus-sendiri memang
+sudah diizinkan sejak awal) — bukan regresi dari perubahan ini, tapi
+ditutup sekalian karena sedang berada di file yang sama: tidak ada
+fitur yang pernah menghapus dokumen leaderboard sendiri, dan
+menghapusnya berarti hilang dari papan peringkat tanpa jejak.
+
+**4. `database.rules.json` — antrian matchmaking tidak memvalidasi
+bahwa `joinedAt` benar-benar mendekati waktu sekarang.** Rule
+`.validate` untuk `matchmakingQueue/{tier}/{uid}` hanya memeriksa
+`joinedAt` itu ada dan berupa angka — tidak ada batas atas. Client yang
+dimodifikasi bisa menulis `joinedAt` yang jauh lebih lama dari
+sekarang (bukan lewat `ServerValue.timestamp` yang sesungguhnya
+dipakai `MatchmakingRepository.joinQueue`), yang membuat mereka selalu
+menang klaim "joinedAt paling awal" di `battle_matchmaking.js` —
+selalu dipasangkan lebih dulu dari siapa pun di antrian, berapa pun
+urutan sesungguhnya. **Diperbaiki** dengan menambah
+`&& newData.child('joinedAt').val() <= now` ke rule validasinya —
+aman untuk jalur sah karena `ServerValue.timestamp` selalu disubstitusi
+server sebelum validasi dijalankan, jadi nilainya tidak akan pernah
+melebihi `now` pada penulisan yang sah.
+
+**5. `lib/features/battle/widgets/star_result_card.dart` — kekalahan
+yang diserap batas divisi di atas Silver tidak dapat penjelasan sama
+sekali.** `result.lossAbsorbed` (dari server) menandakan dua alasan
+berbeda kenapa bintang tidak berubah meski kalah: perlindungan
+Bronze/Silver (rugi apa pun tidak pernah mengurangi bintang), atau
+sekadar sudah berada di dasar divisi untuk tingkat Gold ke atas. Baris
+penjelas satu-satunya (`s.battleStarsProtected`, teksnya memang
+spesifik "Di Bronze & Silver...") hanya dirender kalau
+`rank.tier.lossProtected` — jadi pemain Gold+ yang kalah tepat di
+dasar divisi hanya melihat "Bintang tidak berubah" tanpa alasan sama
+sekali, terbaca seperti bug. **Diperbaiki** dengan menambah string
+baru `battleStarsFloorAbsorbed` (`AppStrings`) dan mengubah kondisi
+render: baris penjelas sekarang selalu muncul saat `lossAbsorbed`
+benar, memilih antara `battleStarsProtected` (kalau
+`rank.tier.lossProtected`) atau `battleStarsFloorAbsorbed` (selainnya)
+— bukan menghapus syarat `lossProtected`-nya begitu saja, yang akan
+menampilkan teks Bronze/Silver yang salah secara faktual ke pemain
+Gold+. Kasus baru ini ditambahkan sebagai test di
+`test/star_result_card_test.dart`.
+
+**Sengaja ditunda (bukan dilupakan)** — 3 saran perapihan dari angle
+reuse/simplification, dicatat di `ReportFindings` dengan
+`outcome: skipped`:
+- Helper `db()` (inisialisasi Admin SDK Firestore) diduplikasi identik
+  di 4 file Cloud Function alih-alih satu modul bersama.
+- `_CardGameStarsTab` di `leaderboard_screen.dart` menduplikasi
+  scaffold `_GlobalScoreTab` (struktur loading/error/list) nyaris
+  persis, alih-alih satu widget ranked-list generik yang dipakai
+  bersama.
+- `_state`/`_queuedTier` di `battle_matchmaking_screen.dart` — dua
+  field terpisah alih-alih satu tipe union, disebutkan agent finder
+  tapi tidak sampai masuk 8 temuan teratas setelah verifikasi.
+
+**Verifikasi**: `flutter analyze` bersih, `flutter test
+--concurrency=1` 438/438 (termasuk 1 test baru untuk temuan #5 di atas),
+`node --test` di `functions/` 68/68 (tidak ada test baru ditambahkan
+untuk perbaikan trigger — pola project ini memang tidak menguji logika
+trigger Cloud Functions secara unit; `starsApplied` dan transaksi klaim
+di `applyToPlayer` yang jadi jaminan anti-bayar-ganda sudah tercakup
+test yang ada). **Belum ada pengujian fisik untuk perubahan ini** —
+tidak ada perangkat tersambung selama sesi ini; tab bintang leaderboard
+dan jalur tepi butir 9/10 masih menunggu verifikasi perangkat fisik
+seperti tercatat di butir-butir sebelumnya.

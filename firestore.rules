@@ -34,7 +34,14 @@ service cloud.firestore {
           && isAllowedAvatarWrite()
           && request.resource.data.get('cardGameRank', null)
               == resource.data.get('cardGameRank', null);
-      allow delete: if request.auth != null && request.auth.uid == uid;
+      // Sengaja tidak ada `allow delete` — tidak ada fitur aplikasi yang
+      // pernah menghapus dokumen `users/{uid}` sendiri, dan sebelum rule
+      // Mode Game Card ditambahkan di atas, ini memang sudah terblokir
+      // secara tidak sengaja (rule lama satu `allow write` yang menyentuh
+      // `request.resource.data` lewat `isAllowedAvatarWrite()`, yang
+      // bernilai null pada delete sehingga selalu gagal). Menulis ulang
+      // sebagai create/update/tanpa-delete di sini menjaga perilaku itu
+      // secara sengaja, bukan lagi kebetulan.
 
       match /{document=**} {
         allow read, write: if request.auth != null && request.auth.uid == uid;
@@ -75,7 +82,13 @@ service cloud.firestore {
               == resource.data.get('cardGameSeason', null)
           && request.resource.data.get('cardGameStarTotal', null)
               == resource.data.get('cardGameStarTotal', null);
-      allow delete: if request.auth != null && request.auth.uid == uid;
+      // Sengaja tidak ada `allow delete` juga — beda dari `users/{uid}`
+      // di atas, rule lama di sini (satu `allow write` polos) memang
+      // sudah membolehkan hapus-sendiri sejak awal, jadi ini bukan
+      // regresi dari perubahan Mode Game Card, tapi celah lama yang
+      // baru ditutup sekalian saat berada di file ini: tidak ada fitur
+      // yang pernah menghapus dokumen leaderboard sendiri, dan
+      // menghapusnya berarti hilang dari papan peringkat tanpa jejak.
     }
 
     // Reservasi ID unik per user (ProgressRepository._reserveUserId) — id
@@ -260,6 +273,28 @@ service cloud.firestore {
       return a in players && b in players;
     }
 
+    // [uid]'s current Card Game Mode tier, straight from `users/{uid}`
+    // (the same field `functions/battle_stars.js` reads/writes) — used
+    // by `battleMatches`' create rule to verify a client-asserted ranked
+    // match's `cardTierContent` actually matches the tier it claims.
+    function cardGameTierOf(uid) {
+      return get(/databases/$(database)/documents/users/$(uid)).data
+          .get('cardGameRank', {}).get('tier', 'bronze');
+    }
+
+    // Mirrors card_game_rank.dart's CardGameTierX.cardContent /
+    // functions/battle_bot.js's DIFFICULTY keys — "Isi kartu ditentukan
+    // oleh rank" as a lookup, kept here so `battleMatches`' create rule
+    // can enforce it server-side instead of trusting a client's own
+    // `cardTierContent` string.
+    function cardContentForTier(tier) {
+      return tier == 'silver' ? 'katakanaAndKanaCombo'
+          : tier == 'gold' ? 'kanjiN5'
+          : tier == 'diamond' ? 'kanjiN4N3'
+          : tier == 'emerald' ? 'kanjiN2N1'
+          : 'hiragana';
+    }
+
     // Daftar teman — setiap baris `friends/{friendUid}` merepresentasikan
     // SATU orang (uid dokumennya). Siapa saja yang login boleh menulis
     // barisnya SENDIRI di dalam koleksi `friends` milik SIAPA SAJA (bukan
@@ -393,6 +428,24 @@ service cloud.firestore {
       allow read: if request.auth != null
           && request.auth.uid in resource.data.players;
 
+      // A client-created match asserting `rankedMatch: true` used to be
+      // trusted at face value, with nothing tying `cardTierContent` to
+      // how the match was actually formed. That meant any signed-in
+      // player could write a `battleMatches` doc directly — bypassing
+      // the app entirely — with `cardTierContent: 'hiragana'` and
+      // `rankedMatch: true` against `"BOT"`, regardless of their real
+      // tier, and battle_stars.js would award real ranked stars for
+      // winning at the easiest possible difficulty: exactly the "pilih
+      // hiragana, naik ke Emerald tanpa pernah menyentuh kanji" shortcut
+      // the notes already ruled out for *chosen* content, just reached
+      // through a different door. A real player-vs-player ranked match
+      // is only ever created server-side by
+      // functions/battle_matchmaking.js (Admin SDK, bypasses these rules
+      // entirely) — the only *client*-created ranked match is the "give
+      // up waiting, fight the bot" fallback, which is always against the
+      // `"BOT"` sentinel and always at the player's own current tier. So
+      // a client asserting `rankedMatch: true` is only ever allowed
+      // through that one exact shape.
       allow create: if request.auth != null
           && request.auth.uid in request.resource.data.players
           && request.resource.data.players.size() == 2
@@ -400,7 +453,11 @@ service cloud.firestore {
           && request.resource.data.currentRound == 0
           && request.resource.data.result == null
           && request.resource.data.cardTierContent is string
-          && request.resource.data.get('rankedMatch', true) is bool;
+          && request.resource.data.get('rankedMatch', true) is bool
+          && (request.resource.data.get('rankedMatch', true) == false
+              || ('BOT' in request.resource.data.players
+                  && request.resource.data.cardTierContent ==
+                      cardContentForTier(cardGameTierOf(request.auth.uid))));
 
       allow update: if request.auth != null
           && request.auth.uid in resource.data.players
