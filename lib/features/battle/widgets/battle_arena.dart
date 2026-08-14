@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/battle_rules.dart';
 import '../../../core/localization/app_strings.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/mascot_widget.dart';
@@ -193,10 +194,45 @@ class BattleDeckStrip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final palette = context.palette;
+    // Forty slivers in one row is a barcode, not a scoreboard. Split at
+    // the phase boundary instead: the top row is the ten cards each that
+    // decide it, the bottom row the all-in that only happens on a draw —
+    // so the shape of the match is visible, not just its length.
+    final split = slots.length > kBattleMainPhaseRounds
+        ? kBattleMainPhaseRounds
+        : slots.length;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _SlotRow(slots: slots.take(split).toList()),
+        if (slots.length > split) ...[
+          const SizedBox(height: 4),
+          Opacity(
+            // Dimmed until it is actually in play: the extension is a
+            // tie-breaker most matches never reach.
+            opacity: slots.skip(split).any(
+                      (s) => s != BattleSlotState.upcoming,
+                    )
+                ? 1
+                : 0.35,
+            child: _SlotRow(slots: slots.skip(split).toList()),
+          ),
+        ],
+      ],
+    );
+  }
+}
 
+class _SlotRow extends StatelessWidget {
+  const _SlotRow({required this.slots});
+
+  final List<BattleSlotState> slots;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
     return SizedBox(
-      height: 26,
+      height: 14,
       child: Row(
         children: [
           for (var i = 0; i < slots.length; i++) ...[
@@ -204,7 +240,7 @@ class BattleDeckStrip extends StatelessWidget {
             Expanded(
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                height: slots[i] == BattleSlotState.current ? 26 : 18,
+                height: slots[i] == BattleSlotState.current ? 14 : 9,
                 decoration: BoxDecoration(
                   color: switch (slots[i]) {
                     BattleSlotState.correct => palette.secondaryBlue,
@@ -235,10 +271,17 @@ class BattleCardFace extends StatelessWidget {
     required this.prompt,
     required this.caption,
     required this.flashColor,
+    this.faceDown = false,
   });
 
   final String prompt;
   final String caption;
+
+  /// Face down while its owner is still choosing. Drawn as a real card
+  /// back rather than a card with "?" on it: a question mark reads as
+  /// "the app doesn't know", a patterned back reads as "not your
+  /// business yet", which is what is actually true.
+  final bool faceDown;
 
   /// Briefly tints the whole card after an answer — the only feedback
   /// that arrives fast enough to feel connected to the tap, since the
@@ -250,7 +293,9 @@ class BattleCardFace extends StatelessWidget {
     final palette = context.palette;
     // Long prompts are compound words, not single kana: shrink rather
     // than overflow, and keep single characters as large as possible.
-    final fontSize = switch (prompt.characters.length) {
+    final fontSize = switch (prompt.characters.isEmpty
+        ? 1
+        : prompt.characters.length) {
       1 => 76.0,
       2 => 64.0,
       3 => 52.0,
@@ -271,41 +316,98 @@ class BattleCardFace extends StatelessWidget {
         const SizedBox(height: 8),
         AnimatedContainer(
           duration: const Duration(milliseconds: 160),
-          width: 200,
-          height: 268,
+          width: 214,
+          height: 292,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [
-                palette.cardWhite,
-                flashColor?.withValues(alpha: 0.28) ??
-                    palette.hiraganaCardBg.withValues(alpha: 0.6),
-              ],
+              colors: faceDown
+                  ? [palette.secondaryBlue, palette.primaryCoral]
+                  : [
+                      palette.cardWhite,
+                      flashColor?.withValues(alpha: 0.28) ??
+                          palette.hiraganaCardBg.withValues(alpha: 0.6),
+                    ],
             ),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: flashColor ?? palette.primaryCoral.withValues(alpha: 0.45),
+              color: flashColor ??
+                  (faceDown
+                      ? palette.cardWhite
+                      : palette.primaryCoral.withValues(alpha: 0.45)),
               width: 3,
             ),
             boxShadow: [
               BoxShadow(
-                color: palette.textNavy.withValues(alpha: 0.14),
-                blurRadius: 14,
-                offset: const Offset(0, 6),
+                color: palette.textNavy.withValues(alpha: 0.18),
+                blurRadius: 18,
+                offset: const Offset(0, 8),
               ),
             ],
           ),
           alignment: Alignment.center,
-          child: Text(
-            prompt,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: palette.textNavy,
-            ),
-          ),
+          child: faceDown
+              ? CustomPaint(
+                  size: const Size(214, 292),
+                  painter: _CardBackPainter(palette),
+                )
+              : Stack(
+                  // Must fill the card: a Stack sized to its children
+                  // shrinks to the glyph, and then the "inset" rule and
+                  // the corner marks land around the character instead
+                  // of around the card. That is exactly how it first
+                  // rendered on the device.
+                  fit: StackFit.expand,
+                  alignment: Alignment.center,
+                  children: [
+                    // An inner rule and two corner marks: the cheapest
+                    // way to make a rectangle read as a playing card
+                    // rather than a box with a letter in it.
+                    Positioned.fill(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(13),
+                            border: Border.all(
+                              color: palette.primaryCoral.withValues(
+                                alpha: 0.25,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 18,
+                      left: 20,
+                      child: _CornerMark(prompt: prompt, palette: palette),
+                    ),
+                    Positioned(
+                      bottom: 18,
+                      right: 20,
+                      child: RotatedBox(
+                        quarterTurns: 2,
+                        child: _CornerMark(prompt: prompt, palette: palette),
+                      ),
+                    ),
+                    // Centred explicitly: `StackFit.expand` stretches a
+                    // non-positioned child to the whole card, which left
+                    // the character sitting against the top edge.
+                    Center(
+                      child: Text(
+                        prompt,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: fontSize,
+                          fontWeight: FontWeight.bold,
+                          color: palette.textNavy,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
         ),
       ],
     );
@@ -398,12 +500,30 @@ class _PetalPainter extends CustomPainter {
     // this screen constantly.
     final random = math.Random(7);
     final paint = Paint()
-      ..color = palette.primaryCoral.withValues(alpha: 0.12);
-    for (var i = 0; i < 18; i++) {
+      ..color = palette.primaryCoral.withValues(alpha: 0.16);
+
+    for (var i = 0; i < 22; i++) {
       final dx = random.nextDouble() * size.width;
-      final dy = random.nextDouble() * size.height;
-      final r = 4 + random.nextDouble() * 7;
-      canvas.drawCircle(Offset(dx, dy), r, paint);
+      // Kept to the top and bottom margins. Petals drifting across the
+      // middle sit behind the card, where they read as dirt on the
+      // screen rather than atmosphere.
+      final band = random.nextBool();
+      final dy = band
+          ? random.nextDouble() * size.height * 0.22
+          : size.height * (0.78 + random.nextDouble() * 0.22);
+      final scale = 5 + random.nextDouble() * 6;
+      canvas.save();
+      canvas.translate(dx, dy);
+      canvas.rotate(random.nextDouble() * math.pi * 2);
+      // A petal, not a dot: two arcs meeting at a point, which is what
+      // separates falling sakura from bubbles.
+      final path = Path()
+        ..moveTo(0, -scale)
+        ..quadraticBezierTo(scale * 0.9, -scale * 0.2, 0, scale)
+        ..quadraticBezierTo(-scale * 0.9, -scale * 0.2, 0, -scale)
+        ..close();
+      canvas.drawPath(path, paint);
+      canvas.restore();
     }
   }
 
@@ -634,7 +754,6 @@ class _HandCard extends StatelessWidget {
         onTap: onTap,
         child: Container(
           width: 74,
-          alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
@@ -642,18 +761,109 @@ class _HandCard extends StatelessWidget {
               width: 2,
             ),
           ),
-          child: Text(
-            prompt,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: prompt.characters.length > 2 ? 22 : 30,
-              fontWeight: FontWeight.bold,
-              color: palette.textNavy,
-            ),
+          child: Column(
+            children: [
+              // A coloured edge along the top, so a row of hand cards
+              // reads as cards rather than as buttons with letters on.
+              Container(
+                height: 8,
+                decoration: BoxDecoration(
+                  color: palette.secondaryBlue.withValues(alpha: 0.55),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(10),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    prompt,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: prompt.characters.length > 2 ? 22 : 30,
+                      fontWeight: FontWeight.bold,
+                      color: palette.textNavy,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
+}
+
+/// The small repeat of the card's character in its corners.
+class _CornerMark extends StatelessWidget {
+  const _CornerMark({required this.prompt, required this.palette});
+
+  final String prompt;
+  final AppPalette palette;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      prompt.characters.isEmpty ? '' : prompt.characters.first,
+      style: TextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight.bold,
+        color: palette.primaryCoral.withValues(alpha: 0.55),
+      ),
+    );
+  }
+}
+
+/// A card back: seigaiha-style arcs, the wave pattern that is already
+/// this app's visual shorthand for "Japanese" on the home screen.
+class _CardBackPainter extends CustomPainter {
+  _CardBackPainter(this.palette);
+
+  final AppPalette palette;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final stroke = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.6
+      ..color = palette.cardWhite.withValues(alpha: 0.45);
+    const step = 26.0;
+    for (var y = step; y < size.height; y += step) {
+      for (var x = 0.0; x < size.width + step; x += step) {
+        canvas.drawArc(
+          Rect.fromCircle(center: Offset(x, y), radius: step * 0.62),
+          math.pi,
+          math.pi,
+          false,
+          stroke,
+        );
+      }
+    }
+    // A calm centre so the pattern reads as a back, not as noise.
+    canvas.drawCircle(
+      Offset(size.width / 2, size.height / 2),
+      44,
+      Paint()..color = palette.cardWhite.withValues(alpha: 0.22),
+    );
+    final tp = TextPainter(
+      text: TextSpan(
+        text: 'あ',
+        style: TextStyle(
+          fontSize: 40,
+          fontWeight: FontWeight.bold,
+          color: palette.cardWhite.withValues(alpha: 0.9),
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+    tp.paint(
+      canvas,
+      Offset((size.width - tp.width) / 2, (size.height - tp.height) / 2),
+    );
+  }
+
+  @override
+  bool shouldRepaint(_CardBackPainter oldDelegate) => false;
 }

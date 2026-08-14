@@ -336,6 +336,40 @@ menggigit): menekan kartu kedua mengirim id kartu kedua, bukan yang
 lain. Jalur tulisnya sendiri (`playCard`) sudah terbukti di perangkat,
 karena jalur kedaluwarsa memakai metode yang sama persis.
 
+### Perapian desain arena (2026-08-14)
+
+Lanjutan dari perombakan tampilan, setelah aturan mainnya benar.
+
+- **Kartunya kini terbaca sebagai kartu**: garis dalam sebagai bingkai,
+  dan huruf yang sama diulang kecil di dua sudut berlawanan — dua hal
+  termurah yang mengubah persegi panjang berisi huruf menjadi kartu
+  main.
+- **Punggung kartu digambar sungguhan** (pola gelombang seigaiha
+  bergradasi biru→koral dengan あ di tengah), bukan tanda tanya. Tanda
+  tanya terbaca sebagai "aplikasinya tidak tahu"; punggung kartu
+  terbaca sebagai "belum urusanmu" — dan itu yang sebenarnya benar saat
+  lawan sedang memilih.
+- **Dek 40 slot dipecah dua baris** di batas fasenya: baris atas 10
+  kartu-per-orang yang menentukan, baris bawah babak all-in yang
+  diredupkan sampai benar-benar terpakai. Empat puluh sliver dalam satu
+  baris itu barcode, bukan papan skor — dan pemecahannya sekaligus
+  memperlihatkan bentuk pertandingannya, bukan cuma panjangnya.
+- **Kelopak sakura digambar sebagai kelopak** (dua busur bertemu di
+  ujung), bukan lingkaran, dan **dijauhkan dari tengah layar** — di
+  belakang kartu, bulatan-bulatan itu terbaca seperti kotoran di layar,
+  bukan suasana.
+- Kartu digeser ke atas dari tengah ruang kosongnya, karena tangan
+  kartu/keyboard memakan sepertiga bawah dan menaruhnya persis di tengah
+  menyisakan satu layar penuh latar kosong.
+
+**Dua bug tata letak yang cuma kelihatan di perangkat, bukan di kode**:
+`Stack` tanpa `StackFit.expand` menyusut mengikuti glifnya, jadi
+"bingkai dalam" dan sudut kartunya menempel di sekeliling huruf alih-
+alih di sekeliling kartu; lalu setelah diperbaiki, `StackFit.expand`
+justru merenggangkan Text-nya sampai hurufnya menempel di tepi atas
+kartu, dan harus dibungkus `Center` lagi. Keduanya lolos `flutter
+analyze` dan seluruh test.
+
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
 ### memikirkan rilis)

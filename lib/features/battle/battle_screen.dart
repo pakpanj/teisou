@@ -341,13 +341,19 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
             ),
           ),
           Expanded(
-            child: Center(
+            // Pinned near the top of the space rather than floating in
+            // the middle of it: with the hand or the keyboard taking the
+            // bottom third, centring left a screen's worth of empty
+            // background between the scores and the card.
+            child: Align(
+              alignment: const Alignment(0, -0.55),
               child: choosing
                   ? BattleCardFace(
                       // Face down while its owner decides: revealing the
                       // dealt card here would show the answerer a card
                       // that may never be played.
-                      prompt: '?',
+                      prompt: '',
+                      faceDown: true,
                       caption: iChoose
                           ? s.battleChooseYourCard
                           : s.battleOpponentChoosing,
