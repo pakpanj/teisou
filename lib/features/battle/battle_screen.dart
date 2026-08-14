@@ -14,6 +14,7 @@ import '../../data/models/battle_answer.dart';
 import '../../data/models/battle_match.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kanji_entry.dart';
+import '../../data/repositories/battle_repository.dart' show battleBotUid;
 import 'widgets/star_result_card.dart';
 
 /// Card Game Mode's live match screen — Tahap 2 butir 5 in
@@ -173,8 +174,16 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     if (myUid == null) return;
     // Only the WAITING player (this round's deck owner) forces the
     // advance — see the class doc comment / NOTES_CARD_GAME_MODE.md's
-    // "Kalau lawan menutup aplikasi di tengah pertandingan".
-    if (match.turnOrder[round].deckOwnerUid != myUid) return;
+    // "Kalau lawan menutup aplikasi di tengah pertandingan". **Except
+    // against BOT**: `battleBotUid` never runs a real client of its
+    // own, so a round where BOT is the deck owner (the human is the
+    // answerer) would never get its timeout handled by anyone —
+    // confirmed on a physical device, where a missed answer against a
+    // BOT-owned round left the match frozen on that card forever, with
+    // no way forward. The human's own client is the only real
+    // participant in a BOT match, so it has to cover both roles there.
+    final isBotMatch = match.players.contains(battleBotUid);
+    if (!isBotMatch && match.turnOrder[round].deckOwnerUid != myUid) return;
     final answerer = match.currentAnswererUid;
     if (answerer == null) return;
 

@@ -2943,7 +2943,86 @@ reuse/simplification, dicatat di `ReportFindings` dengan
 untuk perbaikan trigger — pola project ini memang tidak menguji logika
 trigger Cloud Functions secara unit; `starsApplied` dan transaksi klaim
 di `applyToPlayer` yang jadi jaminan anti-bayar-ganda sudah tercakup
-test yang ada). **Belum ada pengujian fisik untuk perubahan ini** —
-tidak ada perangkat tersambung selama sesi ini; tab bintang leaderboard
-dan jalur tepi butir 9/10 masih menunggu verifikasi perangkat fisik
-seperti tercatat di butir-butir sebelumnya.
+test yang ada).
+
+## Uji fisik atas kelima perbaikan di atas, plus satu bug lagi yang
+## ditemukan langsung dari perangkat (2026-08-14)
+
+Setelah kelima perbaikan di atas selesai dan lolos verifikasi kode,
+diuji langsung di Moto G52J 5G fisik (device sempat berulang kali
+kehilangan koneksi internet selama sesi ini — bukan masalah aplikasi,
+hanya hotspot yang naik-turun; setiap kali itu terjadi, `Menunggu
+lawan... 20s`/`Ns` di layar matchmaking berhenti berjalan sama sekali,
+dan `adb shell ping` ke luar mengonfirmasi `Network is unreachable` —
+pola ini cukup jelas untuk dikenali cepat di sesi mendatang kalau
+timer matchmaking terlihat "beku").
+
+**Percobaan pertama mengungkap bug baru, di luar kelima perbaikan di
+atas**: saat menjawab satu match lawan bot dengan tempo sangat cepat
+(jauh lebih cepat dari manusia normal, sebagai bagian dari otomatisasi
+pengujian), match akhirnya "selesai" di layar (menampilkan Kalah 1-4)
+tapi kartu peringkat (`cardGameRank`) tidak pernah berubah — bahkan
+`winStreak` yang seharusnya reset ke 0 setelah kalah tetap menunjukkan
+6 walau aplikasi sudah di-restart penuh (jadi bukan sekadar provider
+yang stale, datanya sendiri di Firestore memang tidak berubah).
+Ditelusuri lewat `lib/features/battle/battle_screen.dart`: layar hasil
+("Kalah"/"Menang") dihitung dari `_localClientResult`, sebuah
+kesimpulan **client-side** yang dihitung `_maybeConclude` dari
+`_correctByRound` milik klien sendiri — terpisah sepenuhnya dari
+`match.result`, field otoritatif yang hanya pernah ditulis oleh
+`functions/battle_scoring.js` setelah syarat
+`allPriorRoundsProcessed && round >= 9` terpenuhi. Submission yang
+terlalu cepat (sebelum ronde sebelumnya benar-benar selesai diproses
+server) membuat kesimpulan lokal ini bisa muncul lebih dulu tanpa
+`match.result` sungguhan pernah tertulis — sehingga
+`onBattleMatchConcluded` (Fix 1 di atas) tidak pernah punya alasan
+untuk berjalan sama sekali (`if (!match.result) return;`), bukan
+karena rusak, karena memang belum ada yang perlu diproses. **Ini bukan
+bug** — ini cuma bukti bahwa otomatisasi pengujian saya sendiri terlalu
+cepat dari yang bisa diikuti alur skor server; disebut di sini supaya
+sesi mendatang tidak salah menyimpulkan `battle_stars.js` gagal hanya
+karena melihat gejala serupa dari input yang sangat cepat/tidak wajar.
+
+**Bug nyata yang benar-benar ditemukan, di luar cakupan kelima
+perbaikan di atas**: saat mencoba match kedua dengan tempo wajar
+(menjawab satu per satu, menunggu ronde berikutnya muncul), timer satu
+ronde sempat habis (`0s`) tanpa terjawab — dan match **macet permanen
+di ronde itu**, tidak pernah lanjut ke kartu berikutnya walau
+kotak jawaban ditekan berkali-kali dengan input valid. Ditelusuri:
+`_handleTimeout` di `battle_screen.dart` hanya memaksa lanjut ronde
+dari sisi **pemilik dek** (`deckOwnerUid`) — logika ini benar untuk PvP
+sungguhan ("pemain yang menunggu memaksa maju kalau lawan AFK", lihat
+komentar `forfeitRoundOnTimeout` di `battle_repository.dart`), **tapi
+salah untuk match lawan BOT**: `battleBotUid` (`'BOT'`) tidak pernah
+punya klien Flutter sungguhan yang berjalan, jadi begitu manusia
+(bukan BOT) yang harus menjawab dan waktu habis, tidak ada siapa pun
+yang pernah memanggil `forfeitRoundOnTimeout` — ronde itu macet
+selamanya. **Diperbaiki**: `_handleTimeout` sekarang mengecek apakah
+match ini lawan BOT (`match.players.contains(battleBotUid)`) — kalau
+ya, klien manusia menangani timeout apa pun peran deck-nya, bukan
+hanya saat dia kebetulan jadi pemilik dek. Perilaku PvP asli (hanya
+pemilik dek yang memaksa maju) tidak berubah.
+
+**Verifikasi ulang setelah perbaikan bug timeout ini** (`flutter
+analyze` bersih, `flutter test --concurrency=1` 438/438, APK debug baru
+dibuild dan diinstal ulang): match baru lawan bot dimainkan dengan
+tempo wajar sampai selesai secara alami (server yang menyimpulkan,
+bukan client-side fallback) — layar hasil langsung menampilkan
+`starResult` yang sudah ter-resolve ("Bintang tidak berubah, Bronze II
+· 1/3 bintang, Di Bronze & Silver kamu tidak kehilangan bintang"),
+bukan pesan "sedang diperbarui" yang macet seperti percobaan
+pertama — mengonfirmasi seluruh pipa `battle_scoring.js` →
+`battle_stars.js` (termasuk Fix 1) bekerja end-to-end di jalur normal.
+Setelah kembali ke layar Cari Lawan, teks "Menang 6 kali beruntun"
+sudah hilang (winStreak benar-benar ter-reset ke 0 di Firestore, bukan
+cache), dan tab **Bintang** di Papan Peringkat (butir 9/10, item yang
+sejak awal menunggu pengujian fisik) menampilkan peringkat ke-1 dengan
+benar: "Bronze II · 1/3 bintang, 10 bintang" — cocok dengan perhitungan
+`totalStars` manual (3×3+1=10), mengonfirmasi `mirrorToLeaderboard` di
+`battle_stars.js` juga menulis dengan benar ke `leaderboard/{uid}`.
+
+Dengan ini, **kelima perbaikan dari code-review plus bug timeout yang
+baru ditemukan semuanya sudah terverifikasi di perangkat fisik** — item
+"belum ada pengujian fisik" dan "tab bintang leaderboard/butir 9-10
+menunggu perangkat fisik" yang tercatat di seluruh dokumen ini sebelum
+titik ini sekarang selesai.
