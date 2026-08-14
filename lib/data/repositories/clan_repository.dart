@@ -205,6 +205,64 @@ class ClanRepository {
     await batch.commit();
   }
 
+  /// Disbands [code] entirely: every member removed, then the clan
+  /// document itself deleted. Leader-only, and `firestore.rules` enforces
+  /// that independently (`allow delete` on `clans/{code}` checks
+  /// `hostUid`), so a client calling this without being the leader fails
+  /// server-side rather than half-succeeding.
+  ///
+  /// **Firestore does not cascade**, so this walks the roster by hand.
+  /// Two things about the order are load-bearing:
+  ///
+  /// - The **leader's own roster row goes last**, because `canKick` in
+  ///   `firestore.rules` reads the *actor's* row to decide whether they
+  ///   are the leader. Deleting it first would revoke the permission
+  ///   needed to remove everyone else, mid-disband.
+  /// - The **clan document goes last of all**, so a failure part-way
+  ///   through leaves a clan that still exists and can simply be
+  ///   disbanded again. The other order would leave members holding
+  ///   `clanMemberships` rows pointing at a clan that is gone, which
+  ///   nothing in the app can clean up afterwards.
+  ///
+  /// **What this deliberately does not do**: it does not delete
+  /// `clanFreeSlotUsed/{hostUid}`. That marker exists so one account
+  /// cannot mint unlimited free clans, and returning the slot on disband
+  /// would make it exactly that — create, disband, create again. It also
+  /// cannot delete the clan's chat messages or announcements:
+  /// `firestore.rules` allows no delete on those at all, on purpose (so a
+  /// leader cannot erase what was said), which means they survive as
+  /// unreachable orphans. Nobody can read them afterwards — the rules
+  /// gate reads on clan membership, and there are no members left — but
+  /// they are still stored. Deleting them would mean weakening that rule
+  /// for everyone, which is a worse trade than leaving data nobody can
+  /// reach.
+  Future<void> disbandClan({
+    required String code,
+    required String hostUid,
+  }) async {
+    final normalizedCode = code.trim().toUpperCase();
+    final members = await getMembersOnce(normalizedCode);
+    final others = members.where((m) => m.uid != hostUid).toList();
+
+    // Two writes per member (roster row + their own reverse index), so
+    // 250 members per batch against Firestore's 500-write ceiling.
+    const perBatch = 250;
+    for (var i = 0; i < others.length; i += perBatch) {
+      final batch = _firestore.batch();
+      for (final member in others.skip(i).take(perBatch)) {
+        batch.delete(_membersOf(normalizedCode).doc(member.uid));
+        batch.delete(_membershipsOf(member.uid).doc(normalizedCode));
+      }
+      await batch.commit();
+    }
+
+    final finalBatch = _firestore.batch();
+    finalBatch.delete(_membersOf(normalizedCode).doc(hostUid));
+    finalBatch.delete(_membershipsOf(hostUid).doc(normalizedCode));
+    finalBatch.delete(_clans.doc(normalizedCode));
+    await finalBatch.commit();
+  }
+
   /// Live — kept small (one user's own clan list) so it can update
   /// instantly on create/join/leave without a manual refresh.
   Stream<List<ClanMembership>> watchMyClans(String uid) {

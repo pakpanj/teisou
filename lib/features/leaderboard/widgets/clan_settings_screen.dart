@@ -28,6 +28,7 @@ class _ClanSettingsScreenState extends ConsumerState<ClanSettingsScreen> {
   String? _loadedForCode;
   bool _savingIcon = false;
   bool _savingDescription = false;
+  bool _disbanding = false;
 
   @override
   void dispose() {
@@ -81,6 +82,56 @@ class _ClanSettingsScreenState extends ConsumerState<ClanSettingsScreen> {
           .showSnackBar(SnackBar(content: Text(s.clanDescriptionSaveFailed)));
     } finally {
       if (mounted) setState(() => _savingDescription = false);
+    }
+  }
+
+  /// Asks first, then disbands. The confirmation names the clan and the
+  /// number of people it is about to remove, because "Bubarkan Clan"
+  /// alone does not convey that it reaches other accounts too.
+  Future<void> _disband(Clan clan) async {
+    final s = ref.read(appStringsProvider);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(s.clanDisbandConfirmTitle(clan.name)),
+        content: Text(s.clanDisbandConfirmBody(clan.memberCount)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(s.cancel),
+          ),
+          FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: context.palette.errorRed,
+            ),
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(s.clanDisbandConfirmAction),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
+
+    setState(() => _disbanding = true);
+    try {
+      await ref
+          .read(clanRepositoryProvider)
+          .disbandClan(code: widget.code, hostUid: uid);
+      ref.invalidate(clanDetailsProvider(widget.code));
+      if (!mounted) return;
+      // Straight out of the settings screen: staying would leave the
+      // learner looking at the settings of a clan that no longer exists.
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(s.clanDisbanded)));
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _disbanding = false);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(s.clanDisbandFailed)));
     }
   }
 
@@ -168,6 +219,41 @@ class _ClanSettingsScreenState extends ConsumerState<ClanSettingsScreen> {
                   child: Text(s.saveButton),
                 ),
               ),
+              const SizedBox(height: 36),
+              Text(
+                s.clanDisbandSectionTitle,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: context.palette.errorRed,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                s.clanDisbandExplanation,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: context.palette.textNavy.withValues(alpha: 0.7),
+                ),
+              ),
+              const SizedBox(height: 12),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: OutlinedButton.icon(
+                  onPressed: _disbanding ? null : () => _disband(clan),
+                  icon: Icon(
+                    Icons.group_off,
+                    color: context.palette.errorRed,
+                  ),
+                  label: Text(
+                    s.clanDisbandButton,
+                    style: TextStyle(color: context.palette.errorRed),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: context.palette.errorRed),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
             ],
           );
         },

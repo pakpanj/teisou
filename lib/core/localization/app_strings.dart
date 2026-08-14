@@ -625,6 +625,36 @@ class AppStrings {
   // --- Clan settings (icon/description) — leader only ---
   String get clanSettings => _t('Pengaturan Clan', 'Clan Settings');
   String get clanIconSectionTitle => _t('Ikon Clan', 'Clan Icon');
+  // Bubarkan clan (leader-only). Sengaja pakai kata "bubarkan", bukan
+  // "hapus" — yang hilang adalah clan-nya sebagai kelompok, bukan
+  // progres belajar anggotanya, dan "hapus" gampang dibaca lebih ngeri
+  // daripada yang sebenarnya terjadi.
+  String get clanDisbandSectionTitle => _t('Bubarkan Clan', 'Disband Clan');
+  String get clanDisbandExplanation => _t(
+        'Semua anggota dikeluarkan dan clan ini hilang dari daftar semua '
+            'orang. Progres belajar tiap anggota tidak terpengaruh sama '
+            'sekali. Jatah clan gratismu tidak kembali, dan riwayat chat '
+            'clan tidak bisa dibuka lagi.',
+        'Every member is removed and this clan disappears from every '
+            'list. No learning progress is affected for anyone. Your free '
+            'clan slot is not returned, and the clan chat history can no '
+            'longer be opened.',
+      );
+  String get clanDisbandButton => _t('Bubarkan Clan', 'Disband Clan');
+  String clanDisbandConfirmTitle(String clanName) =>
+      _t('Bubarkan "$clanName"?', 'Disband "$clanName"?');
+  String clanDisbandConfirmBody(int memberCount) => _t(
+        'Tindakan ini permanen. $memberCount anggota akan dikeluarkan, dan '
+            'clan ini tidak bisa dikembalikan.',
+        'This cannot be undone. $memberCount members will be removed, and '
+            'this clan cannot be restored.',
+      );
+  String get clanDisbandConfirmAction => _t('Bubarkan', 'Disband');
+  String get clanDisbanded => _t('Clan dibubarkan.', 'Clan disbanded.');
+  String get clanDisbandFailed => _t(
+        'Gagal membubarkan clan, coba lagi.',
+        'Could not disband the clan, try again.',
+      );
   String get clanDescriptionSectionTitle =>
       _t('Deskripsi Clan', 'Clan Description');
   String get clanDescriptionHint => _t(

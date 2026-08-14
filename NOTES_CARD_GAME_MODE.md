@@ -153,11 +153,13 @@ Satu hal yang **tidak** ikut terhapus dan memang tidak bisa: penanda
 akun itu sudah terpakai permanen. Kalau suatu saat akun uji perlu
 membuat clan gratis lagi, dokumen itu harus dihapus lebih dulu.
 
-**Catatan untuk pengujian clan berikutnya**: `ClanRepository` tidak
-punya `deleteClan` sama sekali — keluar dari clan hanya menghapus
-keanggotaan dan mengurangi `memberCount`, dokumen clan-nya sendiri
-tetap tinggal. Jadi setiap clan yang dibuat untuk uji coba selalu
-menyisakan satu dokumen yang cuma bisa dibereskan dari konsol.
+**Sudah tidak berlaku lagi (2026-08-14): sekarang ada "Bubarkan
+Clan".** Catatan ini sebelumnya bilang `ClanRepository` tidak punya
+cara membubarkan clan sama sekali, jadi tiap clan uji menyisakan
+dokumen yang cuma bisa dibereskan dari konsol. Itu yang memicu
+penambahan fiturnya — lihat `ClanRepository.disbandClan` dan bagian
+"Bubarkan Clan" di `ClanSettingsScreen` (leader-only). Clan uji
+berikutnya cukup dibubarkan dari dalam aplikasi.
 
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
