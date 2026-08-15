@@ -107,24 +107,35 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
     };
     final input = inputAsync.requireValue;
 
-    // The 4x4 block, laid out like the phone keyboard it copies: the ten
-    // gojūon groups down the left three columns, the keys that act on
-    // what you have already typed down the right.
+    // Laid out like the phone keyboard it copies: the ten gojūon groups
+    // in the **middle three columns**, the keys that act on what you have
+    // already typed down the outer two.
+    //
+    // Centring the kana is not cosmetic. A flick preview appears one key
+    // away in the direction of the flick, so a group key hard against the
+    // left edge has nowhere to put its い — it lands back on top of the
+    // key you are pressing, hidden under your own thumb. That is exactly
+    // what happened to あ, た and ま while they were in column zero. With
+    // a column of modifiers either side, every direction has a key's
+    // width of room to open into.
     final layout = <List<_Key>>[
-      [_group(0, baseGrid), _group(1, baseGrid), _group(2, baseGrid),
+      [_KeyModifier('゛', input.applyTenten(widget.value)),
+        _group(0, baseGrid), _group(1, baseGrid), _group(2, baseGrid),
         _KeyBackspace()],
-      [_group(3, baseGrid), _group(4, baseGrid), _group(5, baseGrid),
-        _KeyModifier('゛', input.applyTenten(widget.value))],
-      [_group(6, baseGrid), _group(7, baseGrid), _group(8, baseGrid),
-        _KeyModifier('゜', input.applyMaru(widget.value))],
-      [_smallYKey(input), _group(9, baseGrid),
-        _KeyModifier('っ', input.applySokuon(widget.value)), _KeyBlank()],
+      [_KeyModifier('゜', input.applyMaru(widget.value)),
+        _group(3, baseGrid), _group(4, baseGrid), _group(5, baseGrid),
+        _KeyBlank()],
+      [_smallYKey(input),
+        _group(6, baseGrid), _group(7, baseGrid), _group(8, baseGrid),
+        _KeyBlank()],
+      [_KeyModifier('っ', input.applySokuon(widget.value)),
+        _KeyBlank(), _group(9, baseGrid), _KeyBlank(), _KeyBlank()],
     ];
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final keyWidth = constraints.maxWidth / 4;
-        final keyHeight = constraints.maxHeight / 4;
+        final keyWidth = constraints.maxWidth / layout.first.length;
+        final keyHeight = constraints.maxHeight / layout.length;
         return Stack(
           clipBehavior: Clip.none,
           children: [
@@ -172,11 +183,19 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
   /// thing to learn, and it stays disabled until the buffer actually ends
   /// in a character that forms youon — が or ん cannot take a small ゃ,
   /// and offering it there would teach the wrong thing.
+  ///
+  /// Its three characters sit on centre/up/right rather than the usual
+  /// centre/left/up/right/down, because this key lives in the outermost
+  /// left column: a left-flick here would open its preview off the edge
+  /// of the keyboard, where it can only land back on the key under the
+  /// thumb.
   _Key _smallYKey(KanaKeyboardInput input) {
     final enabled = input.applySmallY(widget.value, 'ゃ') != null;
     return _KeyFlick(
       id: -1,
-      chars: enabled ? ['ゃ', 'ゅ', 'ょ', null, null] : [null, null, null, null, null],
+      chars: enabled
+          ? ['ゃ', null, 'ゅ', 'ょ', null]
+          : [null, null, null, null, null],
       label: '小',
       muted: true,
     );

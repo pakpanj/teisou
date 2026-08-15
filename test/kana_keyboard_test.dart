@@ -166,6 +166,39 @@ void main() {
     expect(find.text('き'), findsNothing);
   });
 
+  /// Found on a device, and worth a permanent guard because it is
+  /// invisible from the code: あ, た and ま were in the leftmost column,
+  /// so their left-flick preview had nowhere to open and was clamped back
+  /// on top of the key being pressed — い, ち and み sat under the user's
+  /// own thumb. The keyboard "worked": it typed the right character, the
+  /// tests passed, and only someone actually flicking on a phone could
+  /// see that the option was unreachable to the eye.
+  ///
+  /// Asserting on the rect rather than on the layout means this stays
+  /// true however the columns are rearranged later.
+  testWidgets('a left flick opens where it can be seen, not under the '
+      'thumb', (tester) async {
+    for (final (key, flicked) in const [('あ', 'い'), ('た', 'ち'), ('ま', 'み')]) {
+      await pumpKeyboard(tester, onChanged: (_) {});
+      final keyRect = tester.getRect(find.text(key));
+
+      final gesture = await tester.startGesture(keyRect.center);
+      await gesture.moveBy(const Offset(-40, 0));
+      await tester.pump();
+
+      expect(find.text(flicked), findsOneWidget);
+      final previewRect = tester.getRect(find.text(flicked));
+      expect(
+        previewRect.overlaps(keyRect),
+        isFalse,
+        reason: '$flicked is hidden behind the $key key',
+      );
+
+      await gesture.up();
+      await tester.pump();
+    }
+  });
+
   testWidgets('tenten key is disabled when the buffer has no tenten form', (
     tester,
   ) async {
