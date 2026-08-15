@@ -413,10 +413,35 @@ ditaruh di preset-nya. Struktur lainnya tidak perlu bergerak.
 
 **Diverifikasi di Moto G52J**: pemilih skin menampilkan 7 kartu (3
 terbuka, 4 bergembok), memilih "Sakura Pagi" langsung berpindah centang
-dan tersimpan, dan menekan skin terkunci membuka layar Premium. **Belum
-diverifikasi**: melihat skin lawan dari perangkat kedua (butuh dua akun
-online bersamaan; emulator sedang kehilangan DNS ke Firestore saat ini
-dikerjakan).
+dan tersimpan, dan menekan skin terkunci membuka layar Premium.
+
+**Dan sudah diverifikasi dua arah lintas perangkat** (2026-08-14): HP
+memakai "Sakura Pagi" (merah muda), emulator memakai "Nila Malam" (nila
+gelap), lalu keduanya bertanding lewat undangan teman. Saat lawan
+memilih kartu, **HP menampilkan punggung nila milik emulator** dan
+**emulator menampilkan punggung sakura milik HP** — bukan skin
+masing-masing sendiri. Itu persis jalur yang bikin fitur ini ada
+artinya, dan itu yang paling gampang diam-diam rusak (kalau mirror ke
+`leaderboard/{uid}` gagal, tiap orang cuma akan melihat skin bawaan dan
+tidak ada yang menyadari).
+
+**Dua hal yang ikut ketahuan saat pengujian ini, keduanya berguna:**
+- **Percobaan pertama gagal** — emulator masih melihat skin bawaan
+  untuk HP. Setelah skin dipilih ulang, barulah muncul. Kemungkinan
+  besar mirror pertama ke `leaderboard/{uid}` tidak sampai (penulisan
+  itu memang dibungkus `try/catch` tanpa log, sesuai pola "mirror
+  best-effort" di aplikasi ini). **Artinya ada kemungkinan nyata skin
+  tersimpan di profil tapi tidak pernah terlihat lawan, tanpa gejala
+  apa pun di layar pemiliknya** — layak diberi percobaan-ulang atau
+  penulisan ulang saat masuk pertandingan, bukan sekali saat memilih.
+- **Pemisahan tingkat di matchmaking akhirnya terbukti sungguhan**
+  (butir yang sebelumnya cuma bisa dijamin secara struktur): HP sudah
+  naik ke **Silver V** sementara emulator masih **Bronze V**, keduanya
+  menekan "Cari Lawan" bersamaan, dan **tidak dipasangkan** — masing-
+  masing jatuh ke bot setelah 20 detik, dengan isi kartu sesuai
+  tingkatnya sendiri (HP dapat katakana+gabungan, emulator hiragana).
+
+
 
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
