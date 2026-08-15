@@ -9405,6 +9405,16 @@ own "Bintang" tab ranking by the ladder, separate from "Skor Global"
 (which measures exam averages — a different thing, and mixing them would
 blur both).
 
+**A redesign is formulated but unbuilt** (2026-08-15): a second mockup
+round settled the six screens, a three-family skin system (free /
+achievement / paid, achievement unlocked by star totals at 35/60/90 and
+re-locked when a season reset drops you below), skins moving from the
+card back to its face, and a five-tab bottom nav. All of it is written
+up in `NOTES_CARD_GAME_MODE.md` with nothing implemented yet. **18 art
+assets are pending**, itemised there and in
+`C:\Teisou asset\Re desain card game\` — none of them block the code,
+which can be built against the shape-drawn skins that already exist.
+
 **What is left is edge cases, not features**: the reject-invite path,
 challenging through a clan rather than a friend, the bot fallback with a
 single client waiting alone, and confirming two different tiers are

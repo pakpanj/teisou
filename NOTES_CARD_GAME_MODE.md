@@ -585,6 +585,44 @@ skin, apa pun yang lupa dikembalikan. Tambah satu pemeriksaan di
 `test/release_readiness_test.dart`, tempat yang memang sudah dipakai
 untuk hal-hal yang tidak kelihatan sampai terlambat.
 
+### Aset yang belum ada — 18 gambar
+
+Dicatat di sini supaya terlihat dari dalam repo: folder asetnya ada di
+luar git, jadi kalau cuma ditulis di sana, sesi berikutnya tidak akan
+pernah tahu ada yang menunggu digambar.
+
+| Jenis | Jumlah | Ukuran | Taruh di |
+|---|---|---|---|
+| Skin kartu (3 pencapaian + 3 berbayar) | 6 | 660 x 900 | `assets/card_skins/` |
+| Lencana tingkat (bronze..emerald) | 5 | 384 x 384 | `assets/ranks/` |
+| Ikon bottom nav | 5 | 256 x 256 | `assets/icons/` |
+| Maskot pose baru (battle_ready, searching) | 2 | 512 x 512 | `assets/mascot/` |
+
+**Rincian lengkap + prompt siap pakai ada di
+`C:\Teisou asset\Re desain card game\DAFTAR ASET.md`**, bersama enam
+tangkapan layar keadaan sekarang dan `BACA DULU.txt` yang menjelaskan
+aturan main ke siapa pun yang menggambar.
+
+Tiga hal yang paling gampang salah kalau daftar itu tidak dibaca dulu:
+
+1. **Skin kartu harus punya tengah yang lapang.** Hurufnya digambar
+   aplikasi (104 kana x 6 skin = 624 gambar kalau tidak), jadi asetnya
+   bingkai berpola, bukan gambar penuh.
+2. **Lencana dan maskot wajib latar magenta rata `#FF00DC`, bukan
+   transparan.** Generator gambar menggambar kotak-kotak transparansi
+   sebagai piksel biasa, dan itu pernah benar-benar ikut masuk ke
+   aplikasi waktu menggambar maskot.
+3. **Menambah pose maskot bukan cuma menaruh berkas** — ada daftar mood
+   di kode dan tes yang gagal kalau ada mood yang tidak dipakai di mana
+   pun.
+
+**Tidak ada satu pun aset di daftar ini yang memblokir pekerjaan kode.**
+Skin gratis digambar kode, latar digambar kode, dan lencana/ikon bisa
+sementara memakai ikon Material. Jadi seluruh sistem (tiga keluarga
+skin, ambang 35/60/90, bottom nav, tab Deck, etalase Toko, tampilan
+peringkat baru) bisa dikerjakan lebih dulu, dan asetnya tinggal
+ditempel begitu jadi.
+
 ### Yang sengaja diabaikan dari mockup v2
 
 - **Keyboard kana di layar menjawab kartu kana.** Aturan kita: kartu
