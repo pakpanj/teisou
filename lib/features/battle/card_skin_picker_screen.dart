@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/card_skins.dart';
+import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
-import '../paywall/paywall_screen.dart';
+import '../leaderboard/leaderboard_providers.dart';
 
-/// Choose the card back you play with.
+/// Choose the skin you play with.
 ///
-/// **The one cosmetic your opponent sees**, which is why it lives here
-/// rather than with avatars and covers on the profile: those are for
-/// looking at yourself, this one is for being looked at.
+/// **The one cosmetic your opponent sees**, which is why it lives with
+/// the battle screens rather than with avatars and covers on the
+/// profile: those are for looking at yourself, this one is for being
+/// looked at.
 ///
-/// Locked skins follow the same gate premium avatars already use — an
-/// active subscription, or a rewarded ad — because that is the only
-/// purchase machinery this app has. Selling a skin for money needs
-/// `in_app_purchase`, which has never been wired up here (see CLAUDE.md's
-/// release readiness). When it is, this screen changes in one place: the
-/// lock branches on "owned" rather than on [CardSkinPreset.premium].
+/// Three families, and they never substitute for each other — free,
+/// earned with stars, bought with money. See `CardSkinSource` for why
+/// crossing them would ruin both halves.
 class CardSkinPickerScreen extends ConsumerStatefulWidget {
   const CardSkinPickerScreen({super.key});
 
@@ -28,54 +27,28 @@ class CardSkinPickerScreen extends ConsumerStatefulWidget {
 
 class _CardSkinPickerScreenState extends ConsumerState<CardSkinPickerScreen> {
   bool _saving = false;
-  bool _adRewardActive = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _refreshAdReward();
-  }
-
-  /// The ad-reward unlock is read back, not assumed — the same gap that
-  /// once made `AvatarPickerSheet`'s gallery stay locked after watching
-  /// an ad was exactly a reward written and never read.
-  Future<void> _refreshAdReward() async {
-    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    if (uid == null) return;
-    try {
-      final rewards =
-          await ref.read(progressRepositoryProvider).getAdRewards(uid);
-      final reward = rewards['premium_preview'];
-      if (!mounted) return;
-      setState(() => _adRewardActive = reward?.isActive ?? false);
-    } catch (_) {
-      // A failed read just leaves the locks on, which is the safe way
-      // round: it never grants something that was not earned.
-    }
-  }
 
   Future<void> _select(CardSkinPreset skin, {required bool unlocked}) async {
+    final s = ref.read(appStringsProvider);
     if (!unlocked) {
-      await Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (_) => const PaywallScreen(
-            moduleId: 'card_skin',
-            moduleTitle: 'Skin Kartu',
-          ),
-        ),
+      // No paywall push: the shop cannot sell anything yet, and an
+      // achievement skin is not for sale at any price. Saying what it
+      // takes is the only honest response.
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(_requirementOf(skin, s))),
       );
-      await _refreshAdReward();
       return;
     }
 
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (uid == null) return;
-    final s = ref.read(appStringsProvider);
     setState(() => _saving = true);
     try {
       await ref.read(progressRepositoryProvider).updateCardSkin(uid, skin.id);
       // Best-effort mirror onto the public row: without it the change is
-      // invisible to the only people it is meant for.
+      // invisible to the only people it is meant for. A miss here is
+      // repaired on the way into the next match — see
+      // `battleOpponentsProvider`.
       try {
         await ref
             .read(leaderboardRepositoryProvider)
@@ -94,14 +67,33 @@ class _CardSkinPickerScreenState extends ConsumerState<CardSkinPickerScreen> {
     }
   }
 
+  /// What a locked skin needs, said plainly. A bare padlock is the one
+  /// thing this screen must not do: for an achievement skin the number
+  /// *is* the whole message.
+  String _requirementOf(CardSkinPreset skin, AppStrings s) {
+    return switch (skin.source) {
+      CardSkinSource.achievement =>
+        s.cardSkinNeedsStars(skin.starsRequired, _starTotal),
+      CardSkinSource.paid => s.cardSkinShopSoon,
+      CardSkinSource.free => '',
+    };
+  }
+
+  /// The server-written star total. Read from the public row rather than
+  /// summed locally, because the ladder's arithmetic lives in
+  /// `functions/battle_stars.js` and is deliberately not duplicated in
+  /// Dart.
+  int get _starTotal =>
+      ref.watch(selfLeaderboardEntryProvider).valueOrNull?.cardGameStarTotal ??
+      0;
+
   @override
   Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
     final palette = context.palette;
     final profile = ref.watch(userProfileProvider).valueOrNull;
-    final isPremium =
-        ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
     final selectedId = profile?.cardSkinId ?? CardSkinPresets.classic.id;
+    final starTotal = _starTotal;
 
     return Scaffold(
       backgroundColor: palette.background,
@@ -117,33 +109,98 @@ class _CardSkinPickerScreenState extends ConsumerState<CardSkinPickerScreen> {
                 color: palette.textNavy.withValues(alpha: 0.7),
               ),
             ),
-            const SizedBox(height: 16),
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: CardSkinPresets.all.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                childAspectRatio: 0.62,
+            if (kCardSkinsAllUnlocked) ...[
+              const SizedBox(height: 10),
+              // Said out loud on purpose: someone looking at nine
+              // unlocked skins should never have to wonder whether the
+              // gate is broken or simply switched off for testing.
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: palette.tertiaryAmberCardBg,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  s.cardSkinDebugAllUnlocked,
+                  style: TextStyle(fontSize: 12, color: palette.textNavy),
+                ),
               ),
-              itemBuilder: (context, i) {
-                final skin = CardSkinPresets.all[i];
-                final unlocked =
-                    !skin.premium || isPremium || _adRewardActive;
-                return _SkinTile(
-                  skin: skin,
-                  selected: skin.id == selectedId,
-                  locked: !unlocked,
-                  label: skin.labelFor(s.language),
-                  onTap: () => _select(skin, unlocked: unlocked),
-                );
-              },
-            ),
+            ],
+            for (final source in CardSkinSource.values) ...[
+              const SizedBox(height: 22),
+              _SectionHeader(
+                title: s.cardSkinSectionTitle(source),
+                subtitle: s.cardSkinSectionSubtitle(source),
+              ),
+              const SizedBox(height: 10),
+              GridView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate:
+                    const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 0.58,
+                ),
+                children: [
+                  for (final skin in CardSkinPresets.ofSource(source))
+                    Builder(
+                      builder: (context) {
+                        final unlocked = isCardSkinUnlocked(
+                          skin,
+                          starTotal: starTotal,
+                          allUnlocked: kCardSkinsAllUnlocked,
+                        );
+                        return _SkinTile(
+                          skin: skin,
+                          selected: skin.id == selectedId,
+                          locked: !unlocked,
+                          label: skin.labelFor(s.language),
+                          requirement:
+                              unlocked ? null : _requirementOf(skin, s),
+                          onTap: () => _select(skin, unlocked: unlocked),
+                        );
+                      },
+                    ),
+                ],
+              ),
+            ],
+            const SizedBox(height: 24),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _SectionHeader extends StatelessWidget {
+  const _SectionHeader({required this.title, required this.subtitle});
+
+  final String title;
+  final String subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: palette.textNavy,
+          ),
+        ),
+        Text(
+          subtitle,
+          style: TextStyle(
+            fontSize: 12,
+            color: palette.textNavy.withValues(alpha: 0.6),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -154,6 +211,7 @@ class _SkinTile extends StatelessWidget {
     required this.selected,
     required this.locked,
     required this.label,
+    required this.requirement,
     required this.onTap,
   });
 
@@ -161,6 +219,10 @@ class _SkinTile extends StatelessWidget {
   final bool selected;
   final bool locked;
   final String label;
+
+  /// What it takes, for a locked skin — shown under the tile so the
+  /// padlock explains itself instead of just refusing.
+  final String? requirement;
   final VoidCallback onTap;
 
   @override
@@ -179,9 +241,8 @@ class _SkinTile extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14),
                     border: Border.all(
-                      color: selected
-                          ? palette.primaryCoral
-                          : palette.divider,
+                      color:
+                          selected ? palette.primaryCoral : palette.divider,
                       width: selected ? 3 : 1,
                     ),
                   ),
@@ -232,6 +293,17 @@ class _SkinTile extends StatelessWidget {
               color: palette.textNavy,
             ),
           ),
+          if (requirement != null && requirement!.isNotEmpty)
+            Text(
+              requirement!,
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 9,
+                color: palette.textNavy.withValues(alpha: 0.55),
+              ),
+            ),
         ],
       ),
     );

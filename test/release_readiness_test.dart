@@ -29,6 +29,29 @@ void main() {
       );
     });
 
+    test('the card-skin unlock override is tied to the build mode, not '
+        'a hand-set flag', () {
+      // Every skin being selectable is a testing convenience, and the
+      // kind that ships by accident -- it would silently delete the
+      // whole three-family design: nothing to earn, nothing to sell.
+      // Reading kDebugMode is what makes a release build structurally
+      // unable to do it, the same trick AdService uses for ad units.
+      // This test guards the wiring, since the constant itself always
+      // reads true under `flutter test`.
+      final source =
+          File('lib/core/constants/card_skins.dart').readAsStringSync();
+      expect(
+        source.contains('bool get kCardSkinsAllUnlocked => kDebugMode;'),
+        isTrue,
+        reason: 'kCardSkinsAllUnlocked must be derived from kDebugMode',
+      );
+      expect(
+        RegExp(r'kCardSkinsAllUnlocked\s*=\s*true').hasMatch(source),
+        isFalse,
+        reason: 'never hardcode the override on',
+      );
+    });
+
     test('the app is not named after its Dart package', () {
       // "kana_master", underscore and all, was what a learner saw under
       // the icon on their home screen.

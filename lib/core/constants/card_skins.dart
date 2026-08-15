@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/models/app_language.dart';
@@ -10,12 +11,30 @@ import '../../data/models/app_language.dart';
 /// than illustrated.
 enum CardSkinPattern { seigaiha, asanoha, sakura, stripes, stars, plain }
 
-/// A card back a player can wear.
+/// Where a skin comes from. The three never substitute for each other —
+/// see `NOTES_CARD_GAME_MODE.md`, "tiga keluarga yang tidak boleh saling
+/// menggantikan".
+enum CardSkinSource {
+  /// Everyone has these from the first launch.
+  free,
+
+  /// Unlocked by the star total alone, and **re-locked if it falls
+  /// back** — a season's 70% carry can take one away. Money must never
+  /// buy one: the moment it can, the skin stops proving anything, which
+  /// is the only thing it is for.
+  achievement,
+
+  /// Bought with real money. Stars must never open one either, or the
+  /// paid family becomes the poor relation of the earned one.
+  paid,
+}
+
+/// A skin a player wears on the cards they play.
 ///
-/// **This is deliberately the one cosmetic your opponent sees.** Avatars
-/// and covers are shown on your own profile, where nobody is looking; a
-/// card back is on every card you play, in front of the person you are
-/// playing. That is what makes it worth wanting, and worth selling.
+/// **The one cosmetic an opponent actually sees.** Avatars and covers
+/// sit on your own profile, where nobody is looking; this is on every
+/// card you play, in front of the person you are playing, for as long as
+/// they are answering it.
 class CardSkinPreset {
   const CardSkinPreset({
     required this.id,
@@ -24,7 +43,9 @@ class CardSkinPreset {
     required this.pattern,
     required this.start,
     required this.end,
-    this.premium = false,
+    this.source = CardSkinSource.free,
+    this.starsRequired = 0,
+    this.darkFace = false,
   });
 
   final String id;
@@ -40,12 +61,17 @@ class CardSkinPreset {
   final Color start;
   final Color end;
 
-  /// Locked skins. Unlocking follows exactly the path premium avatars
-  /// already use — an active subscription, or a rewarded ad — because
-  /// that is the only purchase machinery this app actually has today.
-  /// Real money needs the billing work that is still an open release
-  /// blocker; see `CardSkinPresets` for the note.
-  final bool premium;
+  final CardSkinSource source;
+
+  /// Star **total** (0-90+) needed, for [CardSkinSource.achievement].
+  /// Deliberately the tier boundaries themselves, so the sentence a
+  /// child hears is "a gold card means you reached Gold".
+  final int starsRequired;
+
+  /// Whether the middle of the card is dark, so the character drawn on
+  /// top of it has to be light. Half the painted art on the way is dark;
+  /// without this the glyph would be black on black on those.
+  final bool darkFace;
 
   String labelFor(AppLanguage language) =>
       language == AppLanguage.english ? labelEn : label;
@@ -69,8 +95,12 @@ class CardSkinPresets {
     end: Color(0xFFF56B7B),
   );
 
-  /// Everyone starts here, and it stays free forever: a player whose
-  /// cards look broken until they pay is not a player for long.
+  /// Star totals for the three achievement skins — the tier boundaries
+  /// themselves, so each one reads as "you reached that tier".
+  static const goldThreshold = 35;
+  static const diamondThreshold = 60;
+  static const emeraldThreshold = 90;
+
   static const all = <CardSkinPreset>[
     classic,
     CardSkinPreset(
@@ -89,43 +119,73 @@ class CardSkinPresets {
       start: Color(0xFF2E3A87),
       end: Color(0xFF6C4BB6),
     ),
+    // --- Pencapaian: dibuka bintang, tidak dijual ---
     CardSkinPreset(
-      id: 'matcha',
-      label: 'Matcha',
-      labelEn: 'Matcha',
-      pattern: CardSkinPattern.stripes,
-      start: Color(0xFF8BC178),
-      end: Color(0xFF3E7A4E),
-      premium: true,
-    ),
-    CardSkinPreset(
-      id: 'kinzan',
-      label: 'Emas Kinzan',
-      labelEn: 'Kinzan Gold',
+      id: 'emas_kencana',
+      label: 'Emas Kencana',
+      labelEn: 'Kencana Gold',
       pattern: CardSkinPattern.asanoha,
       start: Color(0xFFF5C451),
       end: Color(0xFFC1761B),
-      premium: true,
+      source: CardSkinSource.achievement,
+      starsRequired: goldThreshold,
     ),
     CardSkinPreset(
-      id: 'yozora',
-      label: 'Langit Malam',
-      labelEn: 'Night Sky',
+      id: 'night_purple',
+      label: 'Ungu Malam',
+      labelEn: 'Night Purple',
       pattern: CardSkinPattern.stars,
-      start: Color(0xFF16204A),
-      end: Color(0xFF3B2E6E),
-      premium: true,
+      start: Color(0xFF3B2E6E),
+      end: Color(0xFF16204A),
+      source: CardSkinSource.achievement,
+      starsRequired: diamondThreshold,
+      darkFace: true,
     ),
     CardSkinPreset(
-      id: 'sumi',
-      label: 'Tinta Sumi',
-      labelEn: 'Sumi Ink',
+      id: 'dragon_black',
+      label: 'Naga Hitam',
+      labelEn: 'Black Dragon',
       pattern: CardSkinPattern.plain,
       start: Color(0xFF3A3A3A),
       end: Color(0xFF101010),
-      premium: true,
+      source: CardSkinSource.achievement,
+      starsRequired: emeraldThreshold,
+      darkFace: true,
+    ),
+
+    // --- Berbayar: dijual di Toko, tidak bisa didapat dengan bintang ---
+    CardSkinPreset(
+      id: 'cloud_white',
+      label: 'Awan Putih',
+      labelEn: 'Cloud White',
+      pattern: CardSkinPattern.seigaiha,
+      start: Color(0xFFF2F4F8),
+      end: Color(0xFFCFD6E4),
+      source: CardSkinSource.paid,
+    ),
+    CardSkinPreset(
+      id: 'neon_city',
+      label: 'Kota Neon',
+      labelEn: 'Neon City',
+      pattern: CardSkinPattern.stripes,
+      start: Color(0xFF12103A),
+      end: Color(0xFF2B1B5A),
+      source: CardSkinSource.paid,
+      darkFace: true,
+    ),
+    CardSkinPreset(
+      id: 'sakura_gold',
+      label: 'Sakura Emas',
+      labelEn: 'Sakura Gold',
+      pattern: CardSkinPattern.sakura,
+      start: Color(0xFFFFD9E2),
+      end: Color(0xFFE8B04B),
+      source: CardSkinSource.paid,
     ),
   ];
+
+  static Iterable<CardSkinPreset> ofSource(CardSkinSource source) =>
+      all.where((s) => s.source == source);
 
   /// Falls back to [classic] for an unknown or absent id, so a skin
   /// removed in a later version never leaves a player with no card back.
@@ -137,8 +197,80 @@ class CardSkinPresets {
   }
 }
 
-/// Paints a skin's back. Sized by its parent — used both on the real
-/// card in a match and on the small tiles in the picker.
+/// Whether every skin is selectable regardless of how it is normally
+/// earned.
+///
+/// **Deliberately `kDebugMode`, not a hand-set bool.** While the art is
+/// being judged, every skin has to be pickable so each one can be seen
+/// on a real card in a real match. That is exactly the kind of temporary
+/// state that ships by accident — and if it shipped, the whole
+/// three-family design would vanish silently: every skin free, the
+/// achievement ones proving nothing, the paid ones unsellable. This
+/// project has already had one gate constant sit switched off through an
+/// entire content rollout (`kBabGateQuizRequired`), so the lesson is
+/// paid for. Hanging it off the build mode, the way `AdService` picks
+/// its ad units, makes a release build structurally incapable of it.
+bool get kCardSkinsAllUnlocked => kDebugMode;
+
+/// Whether [skin] can be worn right now.
+///
+/// - Free: always.
+/// - Achievement: the star **total** must *currently* reach its
+///   threshold. Note "currently" — a season's 70% carry can drop a
+///   player below it again, and the skin is meant to lock back. That is
+///   the point: it says where you are, not where you once were.
+/// - Paid: only if owned. Nothing can be owned yet, because
+///   `in_app_purchase` has never been wired up here; the shop is a
+///   window until it is.
+///
+/// [starTotal] comes from the server-written `leaderboard/{uid}` row,
+/// never from a local sum — the ladder's arithmetic lives in
+/// `functions/battle_stars.js` and is deliberately not duplicated in
+/// Dart. That also means an opponent's device can check the same thing
+/// about them, which is what makes a re-locked skin actually disappear
+/// from other people's screens rather than only from its owner's.
+bool isCardSkinUnlocked(
+  CardSkinPreset skin, {
+  required int starTotal,
+  bool owned = false,
+  bool allUnlocked = false,
+}) {
+  if (allUnlocked) return true;
+  return switch (skin.source) {
+    CardSkinSource.free => true,
+    CardSkinSource.achievement => starTotal >= skin.starsRequired,
+    CardSkinSource.paid => owned,
+  };
+}
+
+/// The skin to actually draw for a player, given what they picked and
+/// where they stand.
+///
+/// Falls back to [CardSkinPresets.classic] when the chosen skin is no
+/// longer unlocked — which happens for real every season. The choice
+/// itself is left stored untouched, so the moment the stars come back so
+/// does the skin, with nothing to re-pick. Silently swapping to some
+/// other skin, or leaving a locked one on display, would both be worse:
+/// one is confusing, the other makes the lock meaningless.
+CardSkinPreset effectiveCardSkin(
+  String? chosenId, {
+  required int starTotal,
+  bool owned = false,
+  bool allUnlocked = false,
+}) {
+  final skin = CardSkinPresets.byId(chosenId);
+  return isCardSkinUnlocked(
+    skin,
+    starTotal: starTotal,
+    owned: owned,
+    allUnlocked: allUnlocked,
+  )
+      ? skin
+      : CardSkinPresets.classic;
+}
+
+/// Paints a skin. Sized by its parent — used both on the real card in a
+/// match and on the small tiles in the picker.
 class CardSkinBack extends StatelessWidget {
   const CardSkinBack({
     super.key,

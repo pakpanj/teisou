@@ -1,4 +1,5 @@
 import '../../data/models/app_language.dart';
+import '../constants/card_skins.dart';
 
 /// Hand-written UI-chrome string bundle — one getter per string, an id/en
 /// pair each, picked by [language]. This app has no codegen anywhere else
@@ -1483,6 +1484,39 @@ class AppStrings {
             'atau menonton satu iklan.',
         'This card back is what your opponent sees every time you play a '
             'card. Locked ones open with premium, or by watching one ad.',
+      );
+  String cardSkinSectionTitle(CardSkinSource source) => switch (source) {
+        CardSkinSource.free => _t('Gratis', 'Free'),
+        CardSkinSource.achievement => _t('Pencapaian', 'Achievement'),
+        CardSkinSource.paid => _t('Toko', 'Shop'),
+      };
+  String cardSkinSectionSubtitle(CardSkinSource source) => switch (source) {
+        CardSkinSource.free =>
+          _t('Punyamu sejak awal.', 'Yours from the start.'),
+        CardSkinSource.achievement => _t(
+            'Terbuka sendiri kalau bintangmu cukup — dan terkunci lagi '
+                'kalau turun. Tidak bisa dibeli.',
+            'Opens on its own once you have the stars, and locks again if '
+                'you drop below. Not for sale.',
+          ),
+        CardSkinSource.paid => _t(
+            'Dibeli di toko. Tidak bisa didapat dengan bintang.',
+            'Bought in the shop. Stars will not open these.',
+          ),
+      };
+  String cardSkinNeedsStars(int required, int owned) => _t(
+        'Butuh $required bintang — kamu punya $owned',
+        'Needs $required stars — you have $owned',
+      );
+  String get cardSkinShopSoon => _t(
+        'Toko belum buka — pembelian menyusul.',
+        'The shop is not open yet — buying comes later.',
+      );
+  String get cardSkinDebugAllUnlocked => _t(
+        'Mode uji: semua skin bisa dipilih supaya tampilannya bisa '
+            'diperiksa. Di aplikasi rilis, penguncian tetap berlaku.',
+        'Test build: every skin is selectable so the art can be checked. '
+            'In a release build the locks still apply.',
       );
   String get cardSkinSaved => _t('Skin kartu dipakai.', 'Card skin applied.');
   String get cardSkinSaveFailed => _t(

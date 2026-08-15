@@ -358,8 +358,17 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
                       // The skin belongs to whoever owns this card, so
                       // what you see while waiting is your opponent's,
                       // and what they see while you choose is yours.
-                      skin: CardSkinPresets.byId(
+                      // Resolved through the unlock rule, not read raw:
+                      // an achievement skin whose owner has dropped below
+                      // its threshold has to stop showing on *their*
+                      // opponent's screen too, or the lock means nothing
+                      // to anyone but themselves.
+                      skin: effectiveCardSkin(
                         identities?[entry.deckOwnerUid]?.cardSkinId,
+                        starTotal: identities?[entry.deckOwnerUid]
+                                ?.cardGameStarTotal ??
+                            0,
+                        allUnlocked: kCardSkinsAllUnlocked,
                       ),
                       caption: iChoose
                           ? s.battleChooseYourCard
