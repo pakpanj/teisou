@@ -62,10 +62,121 @@ void main() {
     await tester.pump();
     await tester.pump();
 
-    await tester.tap(find.text('あ'));
+    // あ appears twice — once as its group's key, once as the character
+    // itself in the row below, since あ is the group open by default.
+    // `.last` is the character key.
+    await tester.tap(find.text('あ').last);
     await tester.pump();
 
     expect(result, 'あ');
+  });
+
+  /// The regression this keyboard was rebuilt for: it used to lay all
+  /// eleven gojūon rows out at once, so a caller with a phone-sized slot
+  /// got twelve stacked rows about twelve pixels tall and every character
+  /// spilled out of its key. A height check would not catch a return to
+  /// that — the widget fills whatever it is given either way. What
+  /// distinguishes the two layouts is *how many characters are on screen
+  /// at once*, so that is what is asserted.
+  testWidgets('only the selected group is laid out, not all 46 kana', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: overridesFor(hiragana),
+        child: MaterialApp(
+          home: Scaffold(
+            body: SizedBox(
+              height: 500,
+              child: KanaKeyboard(value: '', onChanged: (_) {}),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+    await tester.pump();
+
+    // あ's group is open, so its five are all reachable.
+    for (final k in ['い', 'う', 'え', 'お']) {
+      expect(find.text(k), findsOneWidget, reason: '$k should be on screen');
+    }
+    // き is inside か's group, which is not open — it has no key at all.
+    // か itself is present, but only as the group key.
+    expect(find.text('き'), findsNothing);
+    expect(find.text('か'), findsOneWidget);
+  });
+
+  /// The other half of the same regression, and the half a behavioural
+  /// test cannot see: whether a key is big enough to hit. The old layout
+  /// was not *wrong*, it was unusable — 12 rows inside the battle screen's
+  /// 220dp slot left each key about 12dp tall with an 18pt character in
+  /// it. Pinned at the real height the battle screen passes, so a future
+  /// caller shrinking the slot fails here rather than on a phone.
+  testWidgets('keys stay finger-sized at the height the battle screen gives', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: overridesFor(hiragana),
+        child: MaterialApp(
+          home: Scaffold(
+            body: SizedBox(
+              height: 160,
+              child: KanaKeyboard(value: '', onChanged: (_) {}),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+    await tester.pump();
+
+    final key = tester.getSize(
+      find.ancestor(of: find.text('い'), matching: find.byType(InkWell)).first,
+    );
+    expect(
+      key.height,
+      greaterThanOrEqualTo(36),
+      reason: 'a key shorter than this cannot hold its own character',
+    );
+    // Guards the guard: if the finder ever resolved to the keyboard
+    // itself rather than one key, the assertion above would pass no
+    // matter how the rows were laid out.
+    expect(key.height, lessThan(160 / 3));
+  });
+
+  testWidgets('a character outside the open group takes its group key first', (
+    tester,
+  ) async {
+    String? result;
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: overridesFor(hiragana),
+        child: MaterialApp(
+          home: Scaffold(
+            body: SizedBox(
+              height: 500,
+              child: KanaKeyboard(value: '', onChanged: (v) => result = v),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+    await tester.pump();
+
+    await tester.tap(find.text('か'));
+    await tester.pump();
+
+    // Selecting a group must never type anything by itself — otherwise
+    // every character would come out as two.
+    expect(result, isNull);
+
+    await tester.tap(find.text('き'));
+    await tester.pump();
+
+    expect(result, 'き');
   });
 
   testWidgets('tenten key is disabled when the buffer has no tenten form', (
