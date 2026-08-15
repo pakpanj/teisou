@@ -8,7 +8,7 @@ import '../../core/theme/app_palette.dart';
 import '../../data/models/battle_invite.dart';
 import '../../data/models/card_game_rank.dart';
 import '../../data/models/user_profile.dart' show AvatarType;
-import 'battle_screen.dart';
+import 'battle_invite_waiting_screen.dart';
 
 /// Human-readable label for a [CardTierContent] — the same 5 values
 /// `CardGameTierX.cardContent` maps a rank tier to, but shown here as a
@@ -76,6 +76,7 @@ Future<void> sendBattleChallenge({
   );
 
   String? matchId;
+  DateTime? expiresAt;
   try {
     final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
     final myUser = ref.read(appStartupProvider).valueOrNull;
@@ -107,9 +108,14 @@ Future<void> sendBattleChallenge({
           secondCandidateDeck: targetDeck,
           cardTierContent: content,
           rankedMatch: false,
+          // Nobody plays until the other side says yes, and the round
+          // clock stays parked until they do — see
+          // `BattleInviteWaitingScreen` for what this used to look like.
+          awaitingAccept: true,
         );
 
     final now = DateTime.now();
+    expiresAt = now.add(const Duration(minutes: 2));
     await ref.read(battleInviteRepositoryProvider).sendInvite(
           targetUid: targetUid,
           invite: BattleInvite(
@@ -123,7 +129,7 @@ Future<void> sendBattleChallenge({
             cardTierContent: content,
             matchId: matchId,
             createdAt: now,
-            expiresAt: now.add(const Duration(minutes: 2)),
+            expiresAt: expiresAt,
           ),
         );
 
@@ -146,8 +152,17 @@ Future<void> sendBattleChallenge({
 
   if (!context.mounted) return;
   Navigator.of(context).pop(); // close sending dialog
+  // Wait, rather than walking into the arena alone — the whole point of
+  // this screen. See its doc comment for what the old straight-to-match
+  // push actually did.
   Navigator.of(context).push(
-    MaterialPageRoute(builder: (_) => BattleScreen(matchId: matchId!)),
+    MaterialPageRoute(
+      builder: (_) => BattleInviteWaitingScreen(
+        matchId: matchId!,
+        targetName: targetName,
+        expiresAt: expiresAt!,
+      ),
+    ),
   );
 }
 

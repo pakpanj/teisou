@@ -173,6 +173,61 @@ void main() {
       expect(match.toCreateMap()['cardTierContent'], 'kanjiN2N1');
     });
 
+    /// The compatibility that makes this field safe to add to a
+    /// collection that already holds matches. Every document written
+    /// before it existed — and every public/bot match written after,
+    /// which never sets it — has to read back as "already started". Get
+    /// this default the wrong way round and every match in the database
+    /// becomes one that nobody is allowed to play.
+    test('a match with no inviteState is already under way', () {
+      final legacy = BattleMatch.fromMap('m', {});
+      expect(legacy.inviteState, BattleInviteState.none);
+      expect(legacy.isAwaitingAccept, isFalse);
+    });
+
+    test('fromMap parses each inviteState, and only pending is waiting', () {
+      const expected = <String, BattleInviteState>{
+        'pending': BattleInviteState.pending,
+        'accepted': BattleInviteState.accepted,
+        'declined': BattleInviteState.declined,
+        // Anything unrecognised falls back to "started" for the same
+        // reason as the legacy case above: refusing to run a real match
+        // is worse than running one whose label we did not recognise.
+        'something-else': BattleInviteState.none,
+      };
+      expected.forEach((key, state) {
+        final match = BattleMatch.fromMap('m', {'inviteState': key});
+        expect(match.inviteState, state, reason: key);
+        expect(
+          match.isAwaitingAccept,
+          state == BattleInviteState.pending,
+          reason: key,
+        );
+      });
+    });
+
+    test('toCreateMap carries inviteState as its string key', () {
+      BattleMatch withState(BattleInviteState state) => BattleMatch(
+            id: '',
+            players: ['uid-a', 'uid-b'],
+            status: BattleMatchStatus.active,
+            currentRound: 0,
+            turnOrder: [
+              TurnOrderEntry(round: 0, deckOwnerUid: 'uid-a', cardId: 'k1'),
+            ],
+            officialScore: {'uid-a': 0, 'uid-b': 0},
+            inviteState: state,
+          );
+      expect(
+        withState(BattleInviteState.pending).toCreateMap()['inviteState'],
+        'pending',
+      );
+      expect(
+        withState(BattleInviteState.none).toCreateMap()['inviteState'],
+        'none',
+      );
+    });
+
     test('currentAnswererUid is null once currentRound runs past the end '
         'of turnOrder', () {
       final match = BattleMatch(

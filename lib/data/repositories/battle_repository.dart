@@ -60,6 +60,12 @@ class BattleRepository {
   /// `false` for a friend/clan challenge started via `BattleInvite`,
   /// per `NOTES_CARD_GAME_MODE.md`'s "Kecuali lawan teman dan clan" —
   /// see `BattleMatch.rankedMatch`'s own doc comment for why.
+  ///
+  /// [awaitingAccept] marks the match as still waiting on an invited
+  /// player — pass `true` for a friend/clan challenge, so neither side
+  /// plays and the round clock stays parked until
+  /// [respondToMatchInvite] starts it. Public and bot matches leave it
+  /// `false`: there is nobody left to ask by the time they exist.
   Future<String> createMatch({
     required String firstCandidateUid,
     required List<String> firstCandidateDeck,
@@ -67,6 +73,7 @@ class BattleRepository {
     required List<String> secondCandidateDeck,
     required CardTierContent cardTierContent,
     bool rankedMatch = true,
+    bool awaitingAccept = false,
   }) async {
     final firstGoesFirst = _random.nextBool();
     final firstUid = firstGoesFirst ? firstCandidateUid : secondCandidateUid;
@@ -101,10 +108,54 @@ class BattleRepository {
         firstCandidateUid: firstCandidateDeck,
         secondCandidateUid: secondCandidateDeck,
       },
+      inviteState: awaitingAccept
+          ? BattleInviteState.pending
+          : BattleInviteState.none,
     );
 
     final docRef = await _matches.add(match.toCreateMap());
     return docRef.id;
+  }
+
+  /// Answers a friend/clan challenge on the match itself, and — on an
+  /// accept — starts the round clock.
+  ///
+  /// Returns `false` when the match was no longer waiting on an answer,
+  /// which is the whole reason this is a transaction rather than a plain
+  /// `update`. Two people can act on the same challenge at the same
+  /// moment: the invited player taps Terima while the challenger, tired
+  /// of waiting, taps Batal. Whoever's write lands second would
+  /// otherwise overwrite the first, and the two devices would disagree
+  /// about whether a match is happening — one sitting in an arena, the
+  /// other back on the friend list. First write wins; the loser is told
+  /// so and can say something useful instead of opening a match nobody
+  /// else is in.
+  ///
+  /// The clock is (re)started here rather than at creation because a
+  /// challenge can sit unanswered for up to two minutes. Left running
+  /// from creation, a slow "yes" would drop both players straight into a
+  /// round that had already timed out — which is exactly what the old
+  /// straight-into-the-match flow did.
+  Future<bool> respondToMatchInvite({
+    required String matchId,
+    required bool accept,
+  }) {
+    return _firestore.runTransaction((transaction) async {
+      final snapshot = await transaction.get(_matchDoc(matchId));
+      final data = snapshot.data();
+      if (data == null) return false;
+      final state = BattleInviteStateX.fromKey(data['inviteState'] as String?);
+      if (state != BattleInviteState.pending) return false;
+
+      transaction.update(_matchDoc(matchId), {
+        'inviteState': (accept
+                ? BattleInviteState.accepted
+                : BattleInviteState.declined)
+            .key,
+        if (accept) 'turnStartedAt': FieldValue.serverTimestamp(),
+      });
+      return true;
+    });
   }
 
   Stream<BattleMatch> watchMatch(String matchId) {

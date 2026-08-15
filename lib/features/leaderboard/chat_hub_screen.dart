@@ -134,6 +134,15 @@ class _BattleInviteRowState extends ConsumerState<_BattleInviteRow> {
     if (uid == null) return;
     setState(() => _responding = true);
     try {
+      // The match first, so the challenger stops waiting now rather than
+      // sitting out the invite's full two minutes for an answer that has
+      // already been given. Best-effort — a failure here only costs them
+      // that wait, and must not stop the row from being dismissed.
+      try {
+        await ref
+            .read(battleRepositoryProvider)
+            .respondToMatchInvite(matchId: widget.invite.matchId, accept: false);
+      } catch (_) {}
       await ref.read(battleInviteRepositoryProvider).respondToInvite(
             uid: uid,
             invite: widget.invite,
@@ -151,12 +160,34 @@ class _BattleInviteRowState extends ConsumerState<_BattleInviteRow> {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (uid == null) return;
     setState(() => _responding = true);
+
+    // Claiming the match is **not** fire-and-forget, unlike the invite
+    // row's own status below. It is what releases the waiting challenger
+    // into the arena, and it is what starts the round clock — joining
+    // without it means playing alone against a clock that never began.
+    // It can also legitimately fail: the challenger may have cancelled a
+    // moment earlier, and then there is no match left to join.
+    bool claimed;
     try {
-      // Fire-and-forget on purpose: the match already exists (see
-      // BattleInvite.matchId's own doc comment) and is what the learner
-      // actually needs to reach — a failed status write here would only
-      // mean this row lingers in the pending list a little longer, not
-      // that joining the match itself failed.
+      claimed = await ref
+          .read(battleRepositoryProvider)
+          .respondToMatchInvite(matchId: widget.invite.matchId, accept: true);
+    } catch (_) {
+      claimed = false;
+    }
+    if (!mounted) return;
+    if (!claimed) {
+      setState(() => _responding = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(widget.strings.battleInviteGoneAway)),
+      );
+      return;
+    }
+
+    try {
+      // This one stays fire-and-forget: the invite row's status only
+      // decides how long it lingers in the pending list, and the match
+      // has already been joined by the time that matters.
       unawaited(
         ref.read(battleInviteRepositoryProvider).respondToInvite(
               uid: uid,

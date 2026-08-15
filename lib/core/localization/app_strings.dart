@@ -1412,6 +1412,34 @@ class AppStrings {
         'Sedang tidak online',
         'Currently offline',
       );
+  String get battleInviteWaitingTitle =>
+      _t('Menunggu Lawan', 'Waiting for Opponent');
+  String battleInviteWaitingFor(String targetName) => _t(
+        'Menunggu $targetName menerima tantanganmu...',
+        'Waiting for $targetName to accept your challenge...',
+      );
+  String battleInviteWaitingCountdown(int seconds) => _t(
+        'Tantangan hangus dalam ${seconds}s',
+        'Challenge expires in ${seconds}s',
+      );
+  String battleInviteDeclined(String targetName) => _t(
+        '$targetName menolak tantanganmu.',
+        '$targetName declined your challenge.',
+      );
+  String battleInviteNoAnswer(String targetName) => _t(
+        '$targetName tidak menjawab tepat waktu.',
+        '$targetName did not answer in time.',
+      );
+  String get battleInviteTryAgainHint => _t(
+        'Kamu bisa menantang lagi kapan saja.',
+        'You can challenge again any time.',
+      );
+  String get battleInviteCancel =>
+      _t('Batalkan Tantangan', 'Cancel Challenge');
+  String get battleInviteGoneAway => _t(
+        'Tantangan ini sudah tidak berlaku.',
+        'This challenge is no longer available.',
+      );
   String battleChallengeNotificationTitle(String fromName) =>
       _t('$fromName menantangmu!', '$fromName challenged you!');
   String battleChallengeNotificationBody(String tierLabel) => _t(

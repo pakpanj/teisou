@@ -12,6 +12,29 @@ extension BattleMatchStatusX on BattleMatchStatus {
       key == 'finished' ? BattleMatchStatus.finished : BattleMatchStatus.active;
 }
 
+/// Whether a match is still waiting on an invited player to say yes.
+///
+/// **Only friend/clan challenges ever leave [none].** A public match is
+/// made by `functions/battle_matchmaking.js` once both sides are already
+/// queued, and a bot match has nobody to ask — both are live the moment
+/// they exist, and read back as [none] because the field is simply
+/// absent from their documents. That absence is also what makes this
+/// safe to add to a schema that already holds matches: every existing
+/// document parses as [none], meaning "already started", which is
+/// exactly what those matches are.
+enum BattleInviteState { none, pending, accepted, declined }
+
+extension BattleInviteStateX on BattleInviteState {
+  String get key => name;
+
+  static BattleInviteState fromKey(String? key) => switch (key) {
+    'pending' => BattleInviteState.pending,
+    'accepted' => BattleInviteState.accepted,
+    'declined' => BattleInviteState.declined,
+    _ => BattleInviteState.none,
+  };
+}
+
 /// A live (or just-finished) Card Game Mode match — `battleMatches/{id}`.
 /// See `NOTES_CARD_GAME_MODE.md`'s "Bentuk data" for the full schema
 /// this mirrors.
@@ -119,6 +142,18 @@ class BattleMatch {
   /// edit the turn order could rewrite a round it had already lost.
   final Map<int, String> playedCards;
 
+  /// Whether an invited opponent has answered yet — see
+  /// [BattleInviteState].
+  ///
+  /// **This lives on the match rather than on the invite**, even though
+  /// the invite already has a status of its own, because the invite
+  /// document sits at `users/{targetUid}/battleInvites/{id}` and that
+  /// subtree is readable by its owner alone. The person who most needs
+  /// to know whether the challenge was accepted is the one who sent it,
+  /// and they cannot read it there. The match document is the one thing
+  /// both players can already see.
+  final BattleInviteState inviteState;
+
   BattleMatch({
     required this.id,
     required this.players,
@@ -135,7 +170,14 @@ class BattleMatch {
     this.starResult = const {},
     this.decks = const {},
     this.playedCards = const {},
+    this.inviteState = BattleInviteState.none,
   });
+
+  /// Nobody should be playing this match yet — the invited player has
+  /// not answered. The round clock is not running either; it is started
+  /// by the accept (see `BattleRepository.respondToMatchInvite`), so a
+  /// challenge left sitting for a minute does not eat the first round.
+  bool get isAwaitingAccept => inviteState == BattleInviteState.pending;
 
   /// The card actually in play for [round]: the owner's choice if they
   /// made one, otherwise the card dealt to that round at creation.
@@ -213,6 +255,7 @@ class BattleMatch {
             ),
           ) ??
           const {},
+      inviteState: BattleInviteStateX.fromKey(map['inviteState'] as String?),
     );
   }
 
@@ -226,7 +269,11 @@ class BattleMatch {
     'status': status.key,
     'currentRound': currentRound,
     'turnOrder': turnOrder.map((e) => e.toMap()).toList(),
+    // Set here even for a match that is still waiting on an accept, so
+    // the field always exists — the accept overwrites it, which is what
+    // actually starts the clock.
     'turnStartedAt': FieldValue.serverTimestamp(),
+    'inviteState': inviteState.key,
     'clientResult': null,
     'officialScore': {for (final uid in players) uid: 0},
     'result': null,
