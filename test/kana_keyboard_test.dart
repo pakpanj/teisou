@@ -9,10 +9,11 @@ import 'package:kana_master/data/models/kana_character.dart';
 import 'package:kana_master/data/models/kana_type.dart';
 import 'package:kana_master/data/repositories/kana_repository.dart';
 
-/// Widget-level smoke test — [KanaKeyboardInput]'s own logic already has
-/// full coverage in kana_keyboard_input_test.dart against the real dataset;
-/// this only needs to confirm the widget wires taps to `onChanged`
-/// correctly and disables/enables modifier keys as expected.
+/// Widget-level tests for the flick keyboard. [KanaKeyboardInput]'s own
+/// logic already has full coverage in kana_keyboard_input_test.dart
+/// against the real dataset; what needs covering here is the part that
+/// only exists in the widget — **which direction produces which
+/// character**, since that mapping is the entire keyboard.
 ///
 /// The hiragana list is fetched **once**, outside any `pumpWidget` cycle,
 /// then handed to every test via provider overrides instead of letting
@@ -44,16 +45,22 @@ void main() {
     ),
   ];
 
-  testWidgets('tapping a base key appends its character', (tester) async {
-    String? result;
+  /// Pumps the keyboard at the height the battle screen actually gives
+  /// it, and returns a setter for the last value it reported.
+  Future<void> pumpKeyboard(
+    WidgetTester tester, {
+    String value = '',
+    required ValueChanged<String> onChanged,
+    double height = 200,
+  }) async {
     await tester.pumpWidget(
       ProviderScope(
         overrides: overridesFor(hiragana),
         child: MaterialApp(
           home: Scaffold(
             body: SizedBox(
-              height: 500,
-              child: KanaKeyboard(value: '', onChanged: (v) => result = v),
+              height: height,
+              child: KanaKeyboard(value: value, onChanged: onChanged),
             ),
           ),
         ),
@@ -61,143 +68,109 @@ void main() {
     );
     await tester.pump();
     await tester.pump();
+  }
 
-    // あ appears twice — once as its group's key, once as the character
-    // itself in the row below, since あ is the group open by default.
-    // `.last` is the character key.
-    await tester.tap(find.text('あ').last);
+  /// Presses [key], drags [by], and lets go — the gesture this keyboard
+  /// is built around. A zero offset is a plain tap.
+  Future<void> flick(
+    WidgetTester tester,
+    String key,
+    Offset by,
+  ) async {
+    final gesture = await tester.startGesture(tester.getCenter(find.text(key)));
+    if (by != Offset.zero) {
+      await gesture.moveBy(by);
+      await tester.pump();
+    }
+    await gesture.up();
     await tester.pump();
+  }
+
+  testWidgets('tapping a key gives its group first character', (tester) async {
+    String? result;
+    await pumpKeyboard(tester, onChanged: (v) => result = v);
+
+    await flick(tester, 'あ', Offset.zero);
 
     expect(result, 'あ');
   });
 
-  /// The regression this keyboard was rebuilt for: it used to lay all
-  /// eleven gojūon rows out at once, so a caller with a phone-sized slot
-  /// got twelve stacked rows about twelve pixels tall and every character
-  /// spilled out of its key. A height check would not catch a return to
-  /// that — the widget fills whatever it is given either way. What
-  /// distinguishes the two layouts is *how many characters are on screen
-  /// at once*, so that is what is asserted.
-  testWidgets('only the selected group is laid out, not all 46 kana', (
-    tester,
-  ) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: overridesFor(hiragana),
-        child: MaterialApp(
-          home: Scaffold(
-            body: SizedBox(
-              height: 500,
-              child: KanaKeyboard(value: '', onChanged: (_) {}),
-            ),
-          ),
-        ),
-      ),
-    );
-    await tester.pump();
-    await tester.pump();
+  /// The mapping is the keyboard. Getting a direction wrong here would
+  /// not crash, would not fail analysis, and would not look wrong in a
+  /// screenshot — it would just quietly type the wrong vowel, which on a
+  /// timed answer reads to a learner as their own mistake.
+  testWidgets('each direction gives that group its own vowel', (tester) async {
+    // Deliberately spelled out per direction rather than looped over the
+    // dataset: a loop that derived the expectation the same way the
+    // widget does would agree with it even when both are wrong.
+    const expected = <(Offset, String)>[
+      (Offset(-40, 0), 'き'),
+      (Offset(0, -40), 'く'),
+      (Offset(40, 0), 'け'),
+      (Offset(0, 40), 'こ'),
+    ];
 
-    // あ's group is open, so its five are all reachable.
-    for (final k in ['い', 'う', 'え', 'お']) {
-      expect(find.text(k), findsOneWidget, reason: '$k should be on screen');
+    for (final (direction, character) in expected) {
+      String? result;
+      await pumpKeyboard(tester, onChanged: (v) => result = v);
+      await flick(tester, 'か', direction);
+      expect(result, character, reason: 'flick $direction');
     }
-    // き is inside か's group, which is not open — it has no key at all.
-    // か itself is present, but only as the group key.
-    expect(find.text('き'), findsNothing);
-    expect(find.text('か'), findsOneWidget);
   });
 
-  /// The other half of the same regression, and the half a behavioural
-  /// test cannot see: whether a key is big enough to hit. The old layout
-  /// was not *wrong*, it was unusable — 12 rows inside the battle screen's
-  /// 220dp slot left each key about 12dp tall with an 18pt character in
-  /// it. Pinned at the real height the battle screen passes, so a future
-  /// caller shrinking the slot fails here rather than on a phone.
-  testWidgets('keys stay finger-sized at the height the battle screen gives', (
-    tester,
-  ) async {
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: overridesFor(hiragana),
-        child: MaterialApp(
-          home: Scaffold(
-            body: SizedBox(
-              height: 160,
-              child: KanaKeyboard(value: '', onChanged: (_) {}),
-            ),
-          ),
-        ),
-      ),
-    );
-    await tester.pump();
-    await tester.pump();
-
-    final key = tester.getSize(
-      find.ancestor(of: find.text('い'), matching: find.byType(InkWell)).first,
-    );
-    expect(
-      key.height,
-      greaterThanOrEqualTo(36),
-      reason: 'a key shorter than this cannot hold its own character',
-    );
-    // Guards the guard: if the finder ever resolved to the keyboard
-    // itself rather than one key, the assertion above would pass no
-    // matter how the rows were laid out.
-    expect(key.height, lessThan(160 / 3));
-  });
-
-  testWidgets('a character outside the open group takes its group key first', (
-    tester,
-  ) async {
+  /// ん is the one character placed by hand rather than read out of the
+  /// dataset's own row/column scheme — it has its own row there, but
+  /// every real flick keyboard puts it on わ. If that override is ever
+  /// dropped, ん becomes untypeable and nothing else notices.
+  testWidgets('ん is reachable on わ, and を below it', (tester) async {
     String? result;
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: overridesFor(hiragana),
-        child: MaterialApp(
-          home: Scaffold(
-            body: SizedBox(
-              height: 500,
-              child: KanaKeyboard(value: '', onChanged: (v) => result = v),
-            ),
-          ),
-        ),
-      ),
+    await pumpKeyboard(tester, onChanged: (v) => result = v);
+    await flick(tester, 'わ', const Offset(0, -40));
+    expect(result, 'ん');
+
+    await pumpKeyboard(tester, onChanged: (v) => result = v);
+    await flick(tester, 'わ', const Offset(-40, 0));
+    expect(result, 'を');
+  });
+
+  testWidgets('a flick into an empty direction types nothing', (tester) async {
+    var calls = 0;
+    await pumpKeyboard(tester, onChanged: (_) => calls++);
+
+    // や has no い or え column. Falling back to the centre character
+    // would be worse than doing nothing: nothing is obviously a miss,
+    // a silent や is mistaken for a correct keypress.
+    await flick(tester, 'や', const Offset(-40, 0));
+
+    expect(calls, 0);
+  });
+
+  testWidgets('pressing a key previews the whole group', (tester) async {
+    await pumpKeyboard(tester, onChanged: (_) {});
+
+    // Nothing on screen but the group's first character until pressed —
+    // this is what keeps the board to sixteen big keys.
+    expect(find.text('き'), findsNothing);
+
+    final gesture = await tester.startGesture(
+      tester.getCenter(find.text('か')),
     );
     await tester.pump();
+
+    for (final k in ['き', 'く', 'け', 'こ']) {
+      expect(find.text(k), findsOneWidget, reason: '$k should be previewed');
+    }
+
+    await gesture.up();
     await tester.pump();
-
-    await tester.tap(find.text('か'));
-    await tester.pump();
-
-    // Selecting a group must never type anything by itself — otherwise
-    // every character would come out as two.
-    expect(result, isNull);
-
-    await tester.tap(find.text('き'));
-    await tester.pump();
-
-    expect(result, 'き');
+    expect(find.text('き'), findsNothing);
   });
 
   testWidgets('tenten key is disabled when the buffer has no tenten form', (
     tester,
   ) async {
     String? result;
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: overridesFor(hiragana),
-        child: MaterialApp(
-          home: Scaffold(
-            body: SizedBox(
-              height: 500,
-              child: KanaKeyboard(value: 'あ', onChanged: (v) => result = v),
-            ),
-          ),
-        ),
-      ),
-    );
-    await tester.pump();
-    await tester.pump();
+    await pumpKeyboard(tester, value: 'あ', onChanged: (v) => result = v);
 
     await tester.tap(find.text('゛'));
     await tester.pump();
@@ -209,21 +182,7 @@ void main() {
     tester,
   ) async {
     String? result;
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: overridesFor(hiragana),
-        child: MaterialApp(
-          home: Scaffold(
-            body: SizedBox(
-              height: 500,
-              child: KanaKeyboard(value: 'か', onChanged: (v) => result = v),
-            ),
-          ),
-        ),
-      ),
-    );
-    await tester.pump();
-    await tester.pump();
+    await pumpKeyboard(tester, value: 'か', onChanged: (v) => result = v);
 
     await tester.tap(find.text('゛'));
     await tester.pump();
@@ -231,23 +190,22 @@ void main() {
     expect(result, 'が');
   });
 
+  testWidgets('the small-kana key stays dead until youon is possible', (
+    tester,
+  ) async {
+    var calls = 0;
+    await pumpKeyboard(tester, value: 'あ', onChanged: (_) => calls++);
+    await flick(tester, '小', Offset.zero);
+    expect(calls, 0, reason: 'あゃ is not a thing');
+
+    await pumpKeyboard(tester, value: 'き', onChanged: (_) => calls++);
+    await flick(tester, '小', Offset.zero);
+    expect(calls, 1, reason: 'きゃ is');
+  });
+
   testWidgets('backspace is disabled on an empty buffer', (tester) async {
     var callCount = 0;
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: overridesFor(hiragana),
-        child: MaterialApp(
-          home: Scaffold(
-            body: SizedBox(
-              height: 500,
-              child: KanaKeyboard(value: '', onChanged: (_) => callCount++),
-            ),
-          ),
-        ),
-      ),
-    );
-    await tester.pump();
-    await tester.pump();
+    await pumpKeyboard(tester, onChanged: (_) => callCount++);
 
     await tester.tap(find.byIcon(Icons.backspace_outlined));
     await tester.pump();
@@ -258,28 +216,37 @@ void main() {
   testWidgets('backspace drops the last character when the buffer is not '
       'empty', (tester) async {
     String? result;
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: overridesFor(hiragana),
-        child: MaterialApp(
-          home: Scaffold(
-            body: SizedBox(
-              height: 500,
-              child: KanaKeyboard(
-                value: 'がくせい',
-                onChanged: (v) => result = v,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-    await tester.pump();
-    await tester.pump();
+    await pumpKeyboard(tester, value: 'がくせい', onChanged: (v) => result = v);
 
     await tester.tap(find.byIcon(Icons.backspace_outlined));
     await tester.pump();
 
     expect(result, 'がくせ');
+  });
+
+  /// The other half of the regression this keyboard was rebuilt for, and
+  /// the half no behavioural test can see: whether a key is big enough to
+  /// hit. The old layout was not *wrong*, it was unusable — twelve rows
+  /// inside the battle screen's slot left each key about twelve pixels
+  /// tall with a full-size character in it. Pinned at the real height the
+  /// battle screen passes, so a caller shrinking the slot fails here
+  /// rather than on a phone.
+  testWidgets('keys stay finger-sized at the height the battle screen gives', (
+    tester,
+  ) async {
+    await pumpKeyboard(tester, onChanged: (_) {});
+
+    final key = tester.getSize(
+      find.ancestor(of: find.text('あ'), matching: find.byType(Material)).first,
+    );
+    expect(
+      key.height,
+      greaterThanOrEqualTo(36),
+      reason: 'a key shorter than this cannot hold its own character',
+    );
+    // Guards the guard: if the finder ever resolved to the keyboard
+    // itself rather than one key, the assertion above would pass no
+    // matter how the rows were laid out.
+    expect(key.height, lessThan(200 / 4));
   });
 }

@@ -540,9 +540,9 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           ),
           const SizedBox(height: 8),
           SizedBox(
-            // Three rows at a fingertip's height each. The old 220 was
+            // Four rows at a fingertip's height each. The old 220 was
             // holding twelve rows and crushing every one of them.
-            height: 160,
+            height: 200,
             child: KanaKeyboard(
               value: _hiraganaBuffer,
               onChanged: (v) => setState(() => _hiraganaBuffer = v),
