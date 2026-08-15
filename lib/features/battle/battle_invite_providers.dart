@@ -34,6 +34,52 @@ final battleOpponentsProvider =
 ) async {
   final real = players.where((uid) => uid != battleBotUid).toList();
   if (real.isEmpty) return const {};
-  final entries = await ref.read(leaderboardRepositoryProvider).getMany(real);
-  return {for (final e in entries) e.uid: e};
+  final repository = ref.read(leaderboardRepositoryProvider);
+  final entries = await repository.getMany(real);
+  final byUid = {for (final e in entries) e.uid: e};
+
+  await _republishMyCardSkin(ref, byUid);
+  return byUid;
 });
+
+/// Re-publishes this player's own card skin onto their public row if the
+/// two disagree.
+///
+/// **Because the write at selection time can fail silently, and does.**
+/// Choosing a skin saves it to the private profile and then mirrors it to
+/// `leaderboard/{uid}` best-effort, in a `try/catch` with nothing to show
+/// for a failure — this project's standing convention for mirrors. That
+/// convention is fine when the mirror only feeds a leaderboard row, and
+/// wrong here: the mirror *is* the feature. Caught on two devices, where
+/// a phone that had picked a skin kept showing the default to its
+/// opponent until the skin was picked a second time, with nothing on the
+/// owner's own screen suggesting anything was missing. For a cosmetic
+/// meant to be sold, that is the worst shape of failure — you pay, you
+/// see it, and nobody else does.
+///
+/// So it is repaired where it matters: on the way into a match, which is
+/// the only place the value is ever read. Same shape as
+/// `backfillGlobalScore` and the Bab progress backfill — a write from a
+/// read-shaped provider, a no-op once in sync, and best-effort, since a
+/// failed repair must never stop a match from rendering.
+///
+/// A player whose public row does not exist yet is still written to:
+/// `set(merge: true)` creates it holding just this one field, which no
+/// ranking can surface, because every board orders by a sort key that
+/// document would not have.
+Future<void> _republishMyCardSkin(
+  Ref ref,
+  Map<String, LeaderboardEntry> byUid,
+) async {
+  try {
+    final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (myUid == null) return;
+    final profile = await ref.read(userProfileProvider.future);
+    if (profile.cardSkinId == byUid[myUid]?.cardSkinId) return;
+    await ref
+        .read(leaderboardRepositoryProvider)
+        .updateCardSkinId(myUid, profile.cardSkinId);
+  } catch (_) {
+    // The next match tries again.
+  }
+}

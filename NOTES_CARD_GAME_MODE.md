@@ -432,8 +432,23 @@ tidak ada yang menyadari).
   itu memang dibungkus `try/catch` tanpa log, sesuai pola "mirror
   best-effort" di aplikasi ini). **Artinya ada kemungkinan nyata skin
   tersimpan di profil tapi tidak pernah terlihat lawan, tanpa gejala
-  apa pun di layar pemiliknya** — layak diberi percobaan-ulang atau
-  penulisan ulang saat masuk pertandingan, bukan sekali saat memilih.
+  apa pun di layar pemiliknya**. ✅ **Sudah diperbaiki (2026-08-14)**:
+  `battleOpponentsProvider` sekarang membandingkan skin di profil
+  sendiri dengan yang ada di barisnya sendiri di `leaderboard/{uid}`
+  setiap kali masuk pertandingan, dan menulis ulang kalau berbeda —
+  bentuknya sama persis dengan `backfillGlobalScore` dan backfill
+  progres Bab: penulisan dari provider yang sebenarnya membaca,
+  tidak melakukan apa-apa kalau sudah sinkron, dan best-effort supaya
+  perbaikan yang gagal tidak pernah menghalangi pertandingan tampil.
+  Diperbaiki tepat di tempat nilainya dibaca, karena cuma di situ ia
+  dipakai.
+
+  **Dibuktikan dengan sengaja mematikan mirror saat memilih**: build
+  sementara dibuat tanpa penulisan mirror di layar pemilih sama sekali,
+  emulator ganti skin ke "Ombak Klasik", lalu bertanding — dan HP tetap
+  menampilkan Ombak Klasik. Satu-satunya jalan baris publiknya bisa
+  berubah di build itu adalah lewat perbaikan ini. Kode sementaranya
+  dikembalikan sebelum commit.
 - **Pemisahan tingkat di matchmaking akhirnya terbukti sungguhan**
   (butir yang sebelumnya cuma bisa dijamin secara struktur): HP sudah
   naik ke **Silver V** sementara emulator masih **Bronze V**, keduanya
