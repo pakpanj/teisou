@@ -66,6 +66,15 @@ enum MascotMood {
 
   /// Brush in paw. Stroke-order and kanji writing screens.
   writing,
+
+  // --- Card Game Mode
+  /// Headband on, fan of cards in paw. The mode's lobby, where the only
+  /// thing on offer is to start a match.
+  battleReady,
+
+  /// Magnifying glass, peering about. Waiting for an opponent — the
+  /// public queue, or an invited friend who has not answered yet.
+  searching,
 }
 
 /// The mascot, with weight.
@@ -219,10 +228,13 @@ class _MascotWidgetState extends State<MascotWidget>
       case MascotMood.explaining:
       case MascotMood.bowing:
         return const Duration(milliseconds: 1100);
+      case MascotMood.battleReady:
+        return const Duration(milliseconds: 700);
       case MascotMood.thinking:
       case MascotMood.worried:
       case MascotMood.reading:
       case MascotMood.writing:
+      case MascotMood.searching:
         return const Duration(milliseconds: 1600);
       case MascotMood.relaxed:
         return const Duration(milliseconds: 2000);
@@ -248,6 +260,8 @@ class _MascotWidgetState extends State<MascotWidget>
     MascotMood.worried: '😟',
     MascotMood.reading: '📖',
     MascotMood.writing: '🖌',
+    MascotMood.battleReady: '⚔',
+    MascotMood.searching: '🔍',
   };
 
   static const _background = {
@@ -271,6 +285,8 @@ class _MascotWidgetState extends State<MascotWidget>
     MascotMood.worried: Color(0xFFE6E8EC),
     MascotMood.reading: Color(0xFFE8F0E4),
     MascotMood.writing: Color(0xFFF3EAE0),
+    MascotMood.battleReady: Color(0xFFFFDCE4),
+    MascotMood.searching: Color(0xFFE7EEF8),
   };
 
   @override
@@ -322,6 +338,12 @@ class _MascotWidgetState extends State<MascotWidget>
       case MascotMood.reading:
       case MascotMood.writing:
         return Offset.zero;
+      case MascotMood.battleReady:
+        // On its toes, the way a fighter waits.
+        return Offset(0, -widget.size * 0.05 * t);
+      case MascotMood.searching:
+        // Looking left and right rather than bobbing.
+        return Offset((t - 0.5) * widget.size * 0.06, 0);
     }
   }
 
@@ -351,7 +373,10 @@ class _MascotWidgetState extends State<MascotWidget>
       case MascotMood.relaxed:
       case MascotMood.reading:
       case MascotMood.writing:
+      case MascotMood.battleReady:
         return 0;
+      case MascotMood.searching:
+        return (t - 0.5) * 0.1;
     }
   }
 
@@ -384,7 +409,10 @@ class _MascotWidgetState extends State<MascotWidget>
       case MascotMood.bowing:
       case MascotMood.worried:
       case MascotMood.writing:
+      case MascotMood.searching:
         return 1;
+      case MascotMood.battleReady:
+        return 1 + 0.04 * t;
     }
   }
 

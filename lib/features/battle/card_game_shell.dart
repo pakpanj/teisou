@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../../core/widgets/mascot_widget.dart';
 import '../leaderboard/leaderboard_providers.dart';
 import 'battle_matchmaking_screen.dart';
 import 'card_skin_picker_screen.dart';
@@ -28,6 +29,32 @@ class CardGameShell extends ConsumerStatefulWidget {
 
   @override
   ConsumerState<CardGameShell> createState() => _CardGameShellState();
+}
+
+/// One bottom-nav destination drawn from `assets/icons/`, in the same
+/// illustrated style as the module icons on Home rather than in Material's.
+///
+/// [fallback] is a real Material icon, not decoration: an icon that fails
+/// to decode would otherwise leave a nameless gap in the navigation bar,
+/// and a bar you cannot read is a mode you cannot leave.
+NavigationDestination _navIcon(String asset, String label, IconData fallback) {
+  Widget art(double opacity) => Opacity(
+        opacity: opacity,
+        child: Image.asset(
+          'assets/icons/$asset.png',
+          width: 30,
+          height: 30,
+          errorBuilder: (context, _, _) => Icon(fallback),
+        ),
+      );
+  return NavigationDestination(
+    // Unselected tabs are dimmed rather than swapped for a different
+    // drawing: with illustrated icons there is only one drawing, and
+    // fading it is what a filled/outlined pair does for Material's.
+    icon: art(0.55),
+    selectedIcon: art(1),
+    label: label,
+  );
 }
 
 class _CardGameShellState extends ConsumerState<CardGameShell> {
@@ -67,31 +94,12 @@ class _CardGameShellState extends ConsumerState<CardGameShell> {
         selectedIndex: _tab,
         onDestinationSelected: (i) => setState(() => _tab = i),
         destinations: [
-          NavigationDestination(
-            icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home),
-            label: s.cardGameTabHome,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.style_outlined),
-            selectedIcon: const Icon(Icons.style),
-            label: s.cardGameTabDeck,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.sports_kabaddi_outlined),
-            selectedIcon: const Icon(Icons.sports_kabaddi),
-            label: s.cardGameTabBattle,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.palette_outlined),
-            selectedIcon: const Icon(Icons.palette),
-            label: s.cardGameTabSkin,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.storefront_outlined),
-            selectedIcon: const Icon(Icons.storefront),
-            label: s.cardGameTabShop,
-          ),
+          _navIcon('nav_beranda', s.cardGameTabHome, Icons.home_outlined),
+          _navIcon('nav_deck', s.cardGameTabDeck, Icons.style_outlined),
+          _navIcon('nav_battle', s.cardGameTabBattle,
+              Icons.sports_kabaddi_outlined),
+          _navIcon('nav_skin', s.cardGameTabSkin, Icons.palette_outlined),
+          _navIcon('nav_toko', s.cardGameTabShop, Icons.storefront_outlined),
         ],
       ),
     );
@@ -123,9 +131,21 @@ class _LobbyTab extends ConsumerWidget {
       padding: const EdgeInsets.all(16),
       children: [
         RankCard(rank: rank, starTotal: starTotal, strings: s),
-        const SizedBox(height: 20),
-        const Center(child: FannedDeck()),
-        const SizedBox(height: 20),
+        const SizedBox(height: 12),
+        // The mascot rather than the fanned deck: the deck has its own
+        // tab next door now, and a lobby whose only job is "start a
+        // match" reads better with somebody waiting to play than with a
+        // picture of the cards. Standing on its own shadow, no disc —
+        // this is a scene, not an icon in a card.
+        const Center(
+          child: MascotWidget(
+            mood: MascotMood.battleReady,
+            size: 160,
+            showBackdrop: false,
+            groundShadow: true,
+          ),
+        ),
+        const SizedBox(height: 16),
         Center(
           child: SizedBox(
             width: 240,

@@ -384,63 +384,107 @@ class BattleCardFace extends StatelessWidget {
           child: faceDown
               ? CardSkinBack(skin: skin ?? CardSkinPresets.classic)
               : Stack(
-                  // Must fill the card: a Stack sized to its children
-                  // shrinks to the glyph, and then the "inset" rule and
-                  // the corner marks land around the character instead
-                  // of around the card. That is exactly how it first
-                  // rendered on the device.
                   fit: StackFit.expand,
-                  alignment: Alignment.center,
                   children: [
-                    // An inner rule and two corner marks: the cheapest
-                    // way to make a rectangle read as a playing card
-                    // rather than a box with a letter in it.
-                    Positioned.fill(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(13),
-                            border: Border.all(
-                              color: palette.primaryCoral.withValues(
-                                alpha: 0.25,
-                              ),
-                            ),
-                          ),
+                    // The owner's art behind the character, which is what
+                    // the illustrated skins were drawn for — every one of
+                    // them keeps its middle clear precisely so a glyph can
+                    // sit here. A painted skin stays behind the card back
+                    // only: stretched across the face its pattern would
+                    // compete with the character it exists to frame.
+                    if (skinArt != null)
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(17),
+                        child: Image.asset(
+                          skinArt!.assetPath,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, _, _) =>
+                              const SizedBox.shrink(),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      top: cardHeight * 0.06,
-                      left: cardWidth * 0.09,
-                      child: _CornerMark(prompt: prompt, palette: palette),
-                    ),
-                    Positioned(
-                      bottom: cardHeight * 0.06,
-                      right: cardWidth * 0.09,
-                      child: RotatedBox(
-                        quarterTurns: 2,
-                        child: _CornerMark(prompt: prompt, palette: palette),
-                      ),
-                    ),
-                    // Centred explicitly: `StackFit.expand` stretches a
-                    // non-positioned child to the whole card, which left
-                    // the character sitting against the top edge.
-                    Center(
-                      child: Text(
-                        prompt,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          // Scaled with the card: a full-size glyph on a
-                          // shrunken card fills it edge to edge.
-                          fontSize: fontSize * (cardHeight / 292),
-                          fontWeight: FontWeight.bold,
-                          color: palette.textNavy,
-                        ),
-                      ),
-                    ),
+                    _faceContent(context, palette, fontSize, cardHeight,
+                        cardWidth),
                   ],
                 ),
+        ),
+      ],
+    );
+  }
+
+  /// The skin whose art backs the face — only ever an illustrated one,
+  /// since the painted patterns are card *backs* and would fight the
+  /// character for attention if stretched across a face.
+  CardSkinPreset? get skinArt =>
+      (skin?.illustrated ?? false) ? skin : null;
+
+  /// Ink that reads against whatever is behind it. On a dark skin the
+  /// navy glyph would be black on black — which is what
+  /// [CardSkinPreset.darkFace] exists to prevent.
+  Color _ink(AppPalette palette) =>
+      (skinArt?.darkFace ?? false) ? Colors.white : palette.textNavy;
+
+  Widget _faceContent(
+    BuildContext context,
+    AppPalette palette,
+    double fontSize,
+    double cardHeight,
+    double cardWidth,
+  ) {
+    final ink = _ink(palette);
+    return Stack(
+      // Must fill the card: a Stack sized to its children shrinks to the
+      // glyph, and then the "inset" rule and the corner marks land
+      // around the character instead of around the card. That is exactly
+      // how it first rendered on the device.
+      fit: StackFit.expand,
+      alignment: Alignment.center,
+      children: [
+        // An inner rule and two corner marks: the cheapest way to make a
+        // rectangle read as a playing card rather than a box with a
+        // letter in it. Dropped on an illustrated skin, which draws its
+        // own border — two frames inside each other reads as a mistake.
+        if (skinArt == null)
+          Positioned.fill(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(13),
+                  border: Border.all(
+                    color: palette.primaryCoral.withValues(alpha: 0.25),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        Positioned(
+          top: cardHeight * 0.06,
+          left: cardWidth * 0.09,
+          child: _CornerMark(prompt: prompt, palette: palette, ink: ink),
+        ),
+        Positioned(
+          bottom: cardHeight * 0.06,
+          right: cardWidth * 0.09,
+          child: RotatedBox(
+            quarterTurns: 2,
+            child: _CornerMark(prompt: prompt, palette: palette, ink: ink),
+          ),
+        ),
+        // Centred explicitly: `StackFit.expand` stretches a
+        // non-positioned child to the whole card, which left the
+        // character sitting against the top edge.
+        Center(
+          child: Text(
+            prompt,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              // Scaled with the card: a full-size glyph on a shrunken
+              // card fills it edge to edge.
+              fontSize: fontSize * (cardHeight / 292),
+              fontWeight: FontWeight.bold,
+              color: ink,
+            ),
+          ),
         ),
       ],
     );
@@ -831,10 +875,18 @@ class _HandCard extends StatelessWidget {
 
 /// The small repeat of the card's character in its corners.
 class _CornerMark extends StatelessWidget {
-  const _CornerMark({required this.prompt, required this.palette});
+  const _CornerMark({
+    required this.prompt,
+    required this.palette,
+    this.ink,
+  });
 
   final String prompt;
   final AppPalette palette;
+
+  /// Overrides the coral when the card is backed by dark skin art —
+  /// coral at 55% disappears against black.
+  final Color? ink;
 
   @override
   Widget build(BuildContext context) {
@@ -843,7 +895,7 @@ class _CornerMark extends StatelessWidget {
       style: TextStyle(
         fontSize: 15,
         fontWeight: FontWeight.bold,
-        color: palette.primaryCoral.withValues(alpha: 0.55),
+        color: (ink ?? palette.primaryCoral).withValues(alpha: 0.55),
       ),
     );
   }

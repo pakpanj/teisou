@@ -180,7 +180,38 @@ lagi". Sama dengan tag `semangat` di Kaiwa.*
 > plum tip. Eyes focused downward on the paper, tongue tip just poking out
 > of the corner of the mouth in concentration.
 
+### 13. `battleReady`
+*Lobi Mode Kartu.*
+
+> Pose: standing, wearing a red hachimaki headband tied around its head,
+> holding a fan of playing cards in one raised front paw. Chest out, eyes
+> bright and confident, mouth open in a determined grin — about to play.
+
+### 14. `searching`
+*Layar menunggu lawan.*
+
+> Pose: leaning slightly forward, holding a round magnifying glass up to
+> one eye with a front paw, looking off to the side as if searching for
+> someone. Curious expression, ears perked, the other paw shading its
+> brow.
+>
+> **Tanpa teks sama sekali, termasuk kata di dalam balon ucapan.**
+> Aplikasi ini dwibahasa; satu kata Inggris yang ikut terpanggang di
+> gambar akan salah untuk separuh penggunanya, dan tidak bisa diganti
+> tanpa menggambar ulang.
+
 ---
+
+## Nama berkas
+
+Namanya **persis nama mood di enum**, huruf besarnya sekalian:
+`battleReady.png`, bukan `battle_ready.png`. Kode, skrip, dan tesnya
+sama-sama menurunkan nama berkas dari nama enum — satu aturan, tanpa
+tabel terjemahan kedua yang bisa melenceng. `battleReady` adalah mood
+dua-kata pertama, jadi aturan ini baru benar-benar teruji sekarang.
+Berkas yang namanya meleset tidak menimbulkan error apa pun; mood-nya
+cuma diam-diam kembali ke emoji — itulah yang dijaga
+`test/mascot_art_test.dart`.
 
 ## Setelah gambarnya jadi
 

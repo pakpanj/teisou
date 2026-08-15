@@ -131,7 +131,7 @@ class _BattleInviteWaitingScreenState
             mainAxisSize: MainAxisSize.min,
             children: [
               MascotWidget(
-                mood: done ? MascotMood.worried : MascotMood.thinking,
+                mood: done ? MascotMood.worried : MascotMood.searching,
                 size: 150,
               ),
               const SizedBox(height: 24),

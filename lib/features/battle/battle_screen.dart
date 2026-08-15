@@ -380,6 +380,20 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
                       caption: isAnswerer
                           ? s.battleCardFromOpponent
                           : s.battleCardFromYou,
+                      // Face up, the card still belongs to whoever dealt
+                      // it, so it keeps wearing their skin — the whole
+                      // point of a cosmetic your opponent sees is that
+                      // they see it while they are looking at the card,
+                      // not only for the second it stays face down.
+                      // Resolved through the unlock rule for the same
+                      // reason the face-down branch above does.
+                      skin: effectiveCardSkin(
+                        identities?[entry.deckOwnerUid]?.cardSkinId,
+                        starTotal: identities?[entry.deckOwnerUid]
+                                ?.cardGameStarTotal ??
+                            0,
+                        allUnlocked: kCardSkinsAllUnlocked,
+                      ),
                       flashColor: _flashColor(context),
                     ),
             ),

@@ -46,6 +46,7 @@ class CardSkinPreset {
     this.source = CardSkinSource.free,
     this.starsRequired = 0,
     this.darkFace = false,
+    this.illustrated = false,
   });
 
   final String id;
@@ -69,9 +70,24 @@ class CardSkinPreset {
   final int starsRequired;
 
   /// Whether the middle of the card is dark, so the character drawn on
-  /// top of it has to be light. Half the painted art on the way is dark;
-  /// without this the glyph would be black on black on those.
+  /// top of it has to be light. Three of the six illustrated skins are
+  /// dark; without this the glyph would be black on black on those.
   final bool darkFace;
+
+  /// Whether this skin has real illustrated art in `assets/card_skins/`.
+  ///
+  /// **The three free skins deliberately do not.** They are painted from
+  /// [pattern] instead, and that is the difference a player is meant to
+  /// see: what you start with the app draws, what you earn or buy an
+  /// illustrator drew. Keeping both paths also means a new skin can be
+  /// prototyped from a pattern before any art exists — which is how all
+  /// six of the illustrated ones started.
+  final bool illustrated;
+
+  /// Where that art lives, derived from [id] so there is no second
+  /// filename table to fall out of step — the same call
+  /// `AvatarPreset.assetPath` already makes.
+  String get assetPath => 'assets/card_skins/$id.png';
 
   String labelFor(AppLanguage language) =>
       language == AppLanguage.english ? labelEn : label;
@@ -129,6 +145,7 @@ class CardSkinPresets {
       end: Color(0xFFC1761B),
       source: CardSkinSource.achievement,
       starsRequired: goldThreshold,
+      illustrated: true,
     ),
     CardSkinPreset(
       id: 'night_purple',
@@ -140,6 +157,7 @@ class CardSkinPresets {
       source: CardSkinSource.achievement,
       starsRequired: diamondThreshold,
       darkFace: true,
+      illustrated: true,
     ),
     CardSkinPreset(
       id: 'dragon_black',
@@ -151,6 +169,7 @@ class CardSkinPresets {
       source: CardSkinSource.achievement,
       starsRequired: emeraldThreshold,
       darkFace: true,
+      illustrated: true,
     ),
 
     // --- Berbayar: dijual di Toko, tidak bisa didapat dengan bintang ---
@@ -162,6 +181,7 @@ class CardSkinPresets {
       start: Color(0xFFF2F4F8),
       end: Color(0xFFCFD6E4),
       source: CardSkinSource.paid,
+      illustrated: true,
     ),
     CardSkinPreset(
       id: 'neon_city',
@@ -172,6 +192,7 @@ class CardSkinPresets {
       end: Color(0xFF2B1B5A),
       source: CardSkinSource.paid,
       darkFace: true,
+      illustrated: true,
     ),
     CardSkinPreset(
       id: 'sakura_gold',
@@ -181,6 +202,7 @@ class CardSkinPresets {
       start: Color(0xFFFFD9E2),
       end: Color(0xFFE8B04B),
       source: CardSkinSource.paid,
+      illustrated: true,
     ),
   ];
 
@@ -299,10 +321,23 @@ class CardSkinBack extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius),
-        child: CustomPaint(
-          painter: _SkinPainter(skin: skin, showCrest: showCrest),
-          child: const SizedBox.expand(),
-        ),
+        child: skin.illustrated
+            ? Image.asset(
+                skin.assetPath,
+                fit: BoxFit.cover,
+                // The gradient underneath is the fallback, so a missing
+                // or broken file leaves a plausible card back rather
+                // than Flutter's broken-image glyph — the same contract
+                // `KotobaImage` and `AvatarPresetArt` already keep.
+                errorBuilder: (context, _, _) => CustomPaint(
+                  painter: _SkinPainter(skin: skin, showCrest: showCrest),
+                  child: const SizedBox.expand(),
+                ),
+              )
+            : CustomPaint(
+                painter: _SkinPainter(skin: skin, showCrest: showCrest),
+                child: const SizedBox.expand(),
+              ),
       ),
     );
   }

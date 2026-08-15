@@ -4,17 +4,19 @@ import '../../data/models/card_game_rank.dart';
 
 /// The colours each tier wears, and the crest that carries them.
 ///
-/// **Drawn, with a painted badge to come.** Five shield PNGs are on the
-/// asset list (`C:/Teisou asset/Re desain card game/`); until they land
-/// this draws the same shape from a path, so every screen that shows a
-/// standing can be built and judged now rather than waiting on art. When
-/// the files arrive, only [RankCrest] changes.
+/// The illustrated badges now live in `assets/ranks/`; the painted
+/// shield below stays on as the fallback, and is what these colours
+/// still draw. They are also used on their own — behind the division
+/// pips, in the progress bar, in the rank card's tint — so they follow
+/// the art rather than the tier's name: **Diamond's badge is amethyst
+/// purple, not the blue the word suggests**, and a token disagreeing
+/// with the picture next to it would read as a bug.
 extension CardGameTierArt on CardGameTier {
   Color get crestStart => switch (this) {
     CardGameTier.bronze => const Color(0xFFC98B5E),
     CardGameTier.silver => const Color(0xFFD3DAE3),
     CardGameTier.gold => const Color(0xFFF7CE63),
-    CardGameTier.diamond => const Color(0xFF8FD3F4),
+    CardGameTier.diamond => const Color(0xFFC79BF0),
     CardGameTier.emerald => const Color(0xFF6FD79B),
   };
 
@@ -22,9 +24,13 @@ extension CardGameTierArt on CardGameTier {
     CardGameTier.bronze => const Color(0xFF8A5433),
     CardGameTier.silver => const Color(0xFF8E99AC),
     CardGameTier.gold => const Color(0xFFC98A15),
-    CardGameTier.diamond => const Color(0xFF2E7FC2),
+    CardGameTier.diamond => const Color(0xFF6A34A8),
     CardGameTier.emerald => const Color(0xFF1F8B57),
   };
+
+  /// Derived from the enum's own name, so there is no second filename
+  /// table to fall out of step — the same call `CardSkinPreset` makes.
+  String get crestAsset => 'assets/ranks/rank_$name.png';
 }
 
 /// A tier's shield.
@@ -39,7 +45,15 @@ class RankCrest extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
-      child: CustomPaint(painter: _CrestPainter(tier)),
+      child: Image.asset(
+        tier.crestAsset,
+        fit: BoxFit.contain,
+        // The painted shield is kept rather than deleted, as the
+        // fallback: a standing is the thing this whole mode is about,
+        // and a missing file must never leave that space empty.
+        errorBuilder: (context, _, _) =>
+            CustomPaint(painter: _CrestPainter(tier)),
+      ),
     );
   }
 }
