@@ -480,6 +480,125 @@ kartu yang mengecil tidak jadi huruf raksasa dalam bingkai kecil.
 Diverifikasi di emulator yang tadi bermasalah: pita peringatannya hilang
 dan kartunya utuh; di G52J tampilannya tidak berubah.
 
+## Rumusan re-desain v2 + sistem skin (2026-08-15) — belum dikerjakan
+
+Desain kedua dari ChatGPT (6 layar, bottom nav 5 tab, skin di wajah
+kartu). Ini rumusannya, bukan catatan pekerjaan yang sudah selesai —
+**belum ada satu baris kode pun untuk bagian ini.** Gambar mockup dan
+daftar asetnya ada di `C:\Teisou asset\Re desain card game\`
+(`BACA DULU.txt` + `DAFTAR ASET.md`).
+
+### Skin: tiga keluarga yang tidak boleh saling menggantikan
+
+| Keluarga | Jumlah | Cara dapat |
+|---|---|---|
+| Gratis | 3 | Ada sejak awal, digambar kode (bukan aset) |
+| **Pencapaian** | 3 | Total bintang >= 35 / 60 / 90 |
+| Berbayar | 3+ | Toko (uang sungguhan, nanti) |
+
+**Bintang adalah pencapaian, bukan mata uang.** Skin terbuka sendiri
+begitu total bintang mencapai ambangnya, dan **terkunci lagi kalau
+bintangnya turun di bawah itu** — bintangnya tidak pernah berkurang
+karena dibelanjakan. Ambangnya sengaja persis ambang tingkat (Gold 35,
+Diamond 60, Emerald 90), jadi kalimatnya sederhana untuk anak: *punya
+kartu emas = pernah sampai Gold*.
+
+Efek terbaik aturan ini datang dari reset musim: bawaan 70% membuat
+pemain di 90 bintang turun ke 63, jadi **skin Emerald terkunci lagi tiap
+musim sementara skin Diamond bertahan**. Skin puncak harus direbut ulang
+— kalau kamu melihat lawan memakainya, dia di puncak *sekarang*, bukan
+pernah di puncak dua tahun lalu.
+
+**Aturan keras: uang tidak boleh membeli skin pencapaian, dan bintang
+tidak membuka skin berbayar.** Begitu keduanya bisa saling
+menggantikan, skin pencapaian berhenti jadi bukti apa pun dan skin
+berbayar terasa murahan. Dipisah tegas, keduanya saling menguatkan.
+
+**Kalau skin yang sedang dipakai terkunci** (setelah reset musim):
+tampilannya kembali ke skin bawaan — di layar sendiri maupun di mata
+lawan — tapi **pilihannya diingat**, jadi begitu bintangnya naik lagi
+skin itu kembali sendiri tanpa dipilih ulang. Yang harus dihindari:
+diam-diam berganti ke skin lain, atau pemain merasa skinnya dihapus.
+
+Gemboknya harus menjelaskan diri, bukan gembok polos: "Butuh 35 bintang
+— kamu 22", dan setelah reset "Bintangmu 63 dari 90 musim ini".
+
+Karena baris publik `leaderboard/{uid}` sudah menyimpan **total bintang
+dan skin yang dipakai**, perangkat lawan bisa memeriksa sendiri apakah
+orang itu masih memenuhi syarat — jadi skin yang terkunci lagi
+benar-benar hilang di mata orang lain, bukan cuma di layar pemiliknya.
+
+### Skin pindah ke wajah kartu
+
+Di desain pertama skin ada di punggung kartu; di v2 pindah ke wajahnya.
+Lebih baik untuk tujuannya: kartu yang kamu keluarkan **dipandangi lawan
+selama dia menjawab**, jauh lebih lama daripada punggung kartu yang cuma
+muncul sekejap saat memilih.
+
+Konsekuensi ke aset: hurufnya tetap digambar aplikasi (104 kana x 6 skin
+= 624 gambar kalau tidak), jadi tiap skin adalah **bingkai berpola
+dengan tengah lapang**, bukan gambar penuh.
+
+### Angka bintang tetap kecil
+
+Mockup memakai ribuan ("1.250", "+25 BINTANG"). **Ditolak** — tetap
+menang +1, beruntun +2, total 90. Tata letaknya dipakai, angkanya
+diganti: total sungguhan di samping nama, bar kemajuan = bintang di
+divisi sekarang (mis. 2/4), titik bintang mengikuti tingkat (Bronze 3,
+Silver 4, Gold 5, Diamond 6), Emerald tanpa divisi.
+
+Alasannya bukan sekadar konsistensi: "2 dari 4 bintang lagi naik divisi"
+adalah jarak yang bisa dibayangkan anak, sedangkan "1.250 dari 1.600"
+cuma angka yang bergerak.
+
+### Bottom nav 5 tab — dan isi jujur tiap tab baru
+
+Beranda / Deck / Battle / Skin / Toko.
+
+- **Deck**: dek 20 kartu dibagikan otomatis sesuai tingkat dan pemain
+  tidak bisa mengatur apa pun, jadi tidak ada yang bisa "dikelola".
+  Isinya jadi **pratinjau isi dek tingkatmu** — kartu apa saja yang
+  mungkin keluar, plus intip tingkat berikutnya. Itu punya nilai belajar
+  nyata, bukan layar hiasan. Pemilihan kartu sungguhan = perubahan
+  aturan main, dirumuskan terpisah kalau memang mau.
+- **Toko**: **etalase saja, belum berfungsi** (keputusan user).
+  Pembayaran dikerjakan di akhir bersama `in_app_purchase`, yang memang
+  masih tercatat sebagai penghalang rilis.
+
+### Semua skin bisa dipilih dulu — dan kenapa harus terikat ke debug
+
+Untuk sekarang **semua skin boleh dipilih siapa saja**, supaya detail
+tiap skin bisa diperiksa langsung di pertandingan sungguhan.
+
+Ini keadaan sementara yang **paling gampang ikut terbawa sampai rilis** —
+dan kalau itu terjadi, seluruh sistem tiga keluarga di atas lenyap
+diam-diam: semua skin gratis, pencapaian tidak membuktikan apa pun, dan
+tidak ada yang bisa dijual. Persis pola `kBabGateQuizRequired`, yang
+sempat `false` selama pengisian konten dan harus dinyalakan lagi
+menjelang rilis.
+
+Karena itu jangan dibuat sebagai bool yang disetel tangan. **Ikat ke
+`kDebugMode`**, mengikuti `AdService._live` yang memilih unit iklan lewat
+`kReleaseMode` — di sana alasannya ditulis "structural", dan alasan yang
+sama berlaku di sini: build rilis tidak akan pernah bisa membuka semua
+skin, apa pun yang lupa dikembalikan. Tambah satu pemeriksaan di
+`test/release_readiness_test.dart`, tempat yang memang sudah dipakai
+untuk hal-hal yang tidak kelihatan sampai terlambat.
+
+### Yang sengaja diabaikan dari mockup v2
+
+- **Keyboard kana di layar menjawab kartu kana.** Aturan kita: kartu
+  kana dijawab romaji (keyboard HP), kartu kanji dijawab hiragana
+  (keyboard kana aplikasi). Mockup menggambar kolom romaji dan papan
+  kana sekaligus — dua cara mengetik yang tidak mungkin dipakai bersama.
+- **"+25 BINTANG"** dan angka ribuan (lihat di atas).
+- **"5 / 20" sebagai tangan kartu.** Tangan tetap seluruh sisa dek.
+- **Tombol suara di kartu yang sedang dijawab.** Kartunya katakana dan
+  jawabannya bacaan kartu itu — tombol itu memberikan jawabannya. Suara
+  aman di layar hasil untuk belajar, tidak saat menjawab.
+- **Latar arena bergambar** — v2 memakai latar polos lembut, yang sudah
+  bisa digambar kode. Ini menghapus aset paling mahal di daftar lama.
+
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
 ### memikirkan rilis)
