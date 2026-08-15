@@ -17,15 +17,17 @@ import '../leaderboard/leaderboard_providers.dart';
 /// Three families, and they never substitute for each other — free,
 /// earned with stars, bought with money. See `CardSkinSource` for why
 /// crossing them would ruin both halves.
-class CardSkinPickerScreen extends ConsumerStatefulWidget {
-  const CardSkinPickerScreen({super.key});
+/// Just the body — [CardGameShell] hosts this as its Skin tab and owns
+/// the app bar around it.
+class CardSkinPickerBody extends ConsumerStatefulWidget {
+  const CardSkinPickerBody({super.key});
 
   @override
-  ConsumerState<CardSkinPickerScreen> createState() =>
-      _CardSkinPickerScreenState();
+  ConsumerState<CardSkinPickerBody> createState() =>
+      _CardSkinPickerBodyState();
 }
 
-class _CardSkinPickerScreenState extends ConsumerState<CardSkinPickerScreen> {
+class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
   bool _saving = false;
 
   Future<void> _select(CardSkinPreset skin, {required bool unlocked}) async {
@@ -95,10 +97,7 @@ class _CardSkinPickerScreenState extends ConsumerState<CardSkinPickerScreen> {
     final selectedId = profile?.cardSkinId ?? CardSkinPresets.classic.id;
     final starTotal = _starTotal;
 
-    return Scaffold(
-      backgroundColor: palette.background,
-      appBar: AppBar(title: Text(s.cardSkinTitle)),
-      body: AbsorbPointer(
+    return AbsorbPointer(
         absorbing: _saving,
         child: ListView(
           padding: const EdgeInsets.all(16),
@@ -169,7 +168,6 @@ class _CardSkinPickerScreenState extends ConsumerState<CardSkinPickerScreen> {
             const SizedBox(height: 24),
           ],
         ),
-      ),
     );
   }
 }

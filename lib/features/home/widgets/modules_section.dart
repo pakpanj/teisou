@@ -13,7 +13,7 @@ import '../../../data/models/card_game_rank.dart';
 import '../../bab/bab_home_screen.dart';
 import '../../bab/bab_providers.dart';
 import '../../bab/widgets/bab_ring_badge.dart';
-import '../../battle/battle_matchmaking_screen.dart';
+import '../../battle/card_game_shell.dart';
 import '../../bunpou/bunpou_home_screen.dart';
 import '../../choukai/choukai_home_screen.dart';
 import '../../dokkai/dokkai_home_screen.dart';
@@ -342,7 +342,7 @@ class _CardGameCard extends ConsumerWidget {
       subtitle: subtitle,
       onTap: () => AppNavigator.slideFromRight(
         context,
-        const BattleMatchmakingScreen(),
+        const CardGameShell(),
       ),
     );
   }

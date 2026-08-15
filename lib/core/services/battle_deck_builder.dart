@@ -70,6 +70,18 @@ List<String> buildDeckIds({
   return shuffled.take(20).toList();
 }
 
+/// Every card a tier can deal, in id form — the deck is 20 drawn from
+/// this. Exposed so the Deck tab can show a learner what they are about
+/// to be tested on, which is the only honest thing that screen can do:
+/// nothing about a deck is player-editable, so there is nothing to
+/// manage, but there is plenty to study.
+List<String> cardPoolFor(
+  CardTierContent content,
+  List<KanaCharacter> allKana,
+  List<KanjiEntry> allKanji,
+) =>
+    _poolFor(content, allKana, allKanji);
+
 List<String> _poolFor(
   CardTierContent content,
   List<KanaCharacter> allKana,

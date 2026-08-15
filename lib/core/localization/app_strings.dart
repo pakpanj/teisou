@@ -1477,6 +1477,51 @@ class AppStrings {
   String get battleOpponentChoosing =>
       _t('Lawan sedang memilih kartu...', 'Opponent is picking a card...');
   // Skin kartu — satu-satunya kosmetik yang dilihat lawan.
+  // Mode Kartu — bottom nav dan dua tab barunya.
+  String get cardGameTabHome => _t('Beranda', 'Home');
+  String get cardGameTabDeck => _t('Deck', 'Deck');
+  String get cardGameTabBattle => _t('Battle', 'Battle');
+  String get cardGameTabSkin => _t('Skin', 'Skins');
+  String get cardGameTabShop => _t('Toko', 'Shop');
+  String get cardGameLobbyHint => _t(
+        'Bintang hanya bergerak di pertandingan publik dan lawan bot. '
+            'Lawan teman lewat Chat di Profil — santai, tanpa risiko.',
+        'Stars only move in public and bot matches. Challenge a friend '
+            'from Chat in your profile — casual, nothing at stake.',
+      );
+  String deckTabHeading(String tierContent) =>
+      _t('Dekmu: $tierContent', 'Your deck: $tierContent');
+  String deckTabExplanation(int poolSize) => _t(
+        'Tiap pertandingan kamu dibagikan 20 kartu acak dari $poolSize '
+            'kartu di bawah ini. Dek tidak bisa diatur — yang menentukan '
+            'isinya adalah tingkatmu.',
+        'Every match deals you 20 random cards from the $poolSize below. '
+            'A deck cannot be arranged — your tier decides what is in it.',
+      );
+  String deckTabNextTier(String tier, String content) =>
+      _t('Berikutnya di $tier: $content', 'Next at $tier: $content');
+  String get deckTabNextTierHint => _t(
+        'Naik tingkat berarti naik tahap belajar — ini sebagian yang '
+            'menunggu di sana.',
+        'Climbing a tier means climbing a stage of study — here is some '
+            'of what waits there.',
+      );
+  String get shopNotOpenYet => _t(
+        'Toko belum buka. Pembelian sungguhan menyusul; sekarang '
+            'skin-nya bisa dilihat dulu.',
+        'The shop is not open yet. Real purchases come later; for now the '
+            'skins can be looked at.',
+      );
+  String get shopSkinsHeading => _t('Skin Berbayar', 'Paid Skins');
+  String get shopSkinsSubtitle => _t(
+        'Hanya bisa dibeli. Skin pencapaian tidak dijual di sini, dan '
+            'skin di sini tidak bisa didapat dengan bintang.',
+        'Bought only. Achievement skins are not sold here, and these are '
+            'never opened by stars.',
+      );
+  String get shopSkinRowNote =>
+      _t('Belum bisa dibeli', 'Not buyable yet');
+  String get shopBuySoon => _t('Segera', 'Soon');
   String get cardSkinTitle => _t('Skin Kartu', 'Card Skins');
   String get cardSkinExplanation => _t(
         'Punggung kartu ini yang dilihat lawanmu setiap kali kamu '

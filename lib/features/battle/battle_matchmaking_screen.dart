@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
-import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/services/battle_deck_builder.dart';
 import '../../core/theme/app_palette.dart';
@@ -13,7 +12,6 @@ import '../../data/models/card_game_rank.dart';
 import '../../data/repositories/battle_repository.dart' show battleBotUid;
 import 'battle_challenge.dart' show cardTierContentLabel;
 import 'battle_screen.dart';
-import 'card_skin_picker_screen.dart';
 import 'widgets/rank_standing.dart';
 
 /// Card Game Mode's public-opponent matchmaking — Tahap 3 butir 10 in
@@ -29,18 +27,20 @@ import 'widgets/rank_standing.dart';
 /// `CardGameRank` tier — unlike a friend/clan challenge
 /// (`battle_challenge.dart`), a public match never lets either side pick
 /// freely (see "Isi kartu dikunci rank hanya untuk lawan publik").
-class BattleMatchmakingScreen extends ConsumerStatefulWidget {
-  const BattleMatchmakingScreen({super.key});
+/// Just the body — the shell around it (app bar, bottom nav) belongs to
+/// [CardGameShell], which hosts this as its Battle tab.
+class BattleMatchmakingBody extends ConsumerStatefulWidget {
+  const BattleMatchmakingBody({super.key});
 
   @override
-  ConsumerState<BattleMatchmakingScreen> createState() =>
-      _BattleMatchmakingScreenState();
+  ConsumerState<BattleMatchmakingBody> createState() =>
+      _BattleMatchmakingBodyState();
 }
 
 enum _MatchmakingState { idle, searching, fallingBackToBot }
 
-class _BattleMatchmakingScreenState
-    extends ConsumerState<BattleMatchmakingScreen> {
+class _BattleMatchmakingBodyState
+    extends ConsumerState<BattleMatchmakingBody> {
   /// How long to wait for a human before falling back to a bot. Named
   /// because the progress bar divides by it — an inline 20 in two places
   /// is how a bar ends up out of step with the countdown it draws.
@@ -228,31 +228,14 @@ class _BattleMatchmakingScreenState
     final s = ref.watch(appStringsProvider);
     final rankAsync = ref.watch(cardGameRankProvider);
 
-    return Scaffold(
-      appBar: AppBar(title: Text(s.battleMatchmakingTitle)),
-      body: rankAsync.when(
+    return rankAsync.when(
         data: (rank) => Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RankStanding(rank: rank, strings: s),
-              const SizedBox(height: 10),
-              // Reachable from the screen you sit on before every match,
-              // which is where wanting a nicer card back actually
-              // happens — not buried in the profile with the avatars.
-              Align(
-                alignment: Alignment.centerLeft,
-                child: TextButton.icon(
-                  onPressed: () => AppNavigator.slideFromRight(
-                    context,
-                    const CardSkinPickerScreen(),
-                  ),
-                  icon: const Icon(Icons.style, size: 18),
-                  label: Text(s.cardSkinTitle),
-                ),
-              ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 12),
               Text(
                 s.battleMatchmakingDescription(
                   cardTierContentLabel(rank.tier.cardContent, s),
@@ -274,7 +257,6 @@ class _BattleMatchmakingScreenState
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('$e')),
-      ),
     );
   }
 
