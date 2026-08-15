@@ -458,6 +458,28 @@ tidak ada yang menyadari).
 
 
 
+### Kartu meluber di layar yang lebih pendek (2026-08-14)
+
+Dilaporkan dari emulator: pita kuning-hitam Flutter **"BOTTOM OVERFLOWED
+BY 16 PIXELS"** melintang di bawah kartu, sementara di Moto G52J
+tampilannya sempurna.
+
+Sebabnya kartunya dipatok mati 214x292. Pixel 8 emulator 60px lebih
+pendek daripada G52J, dan kalau jendelanya diperkecil lebih pendek lagi
+— begitu sisa ruangnya kurang dari tinggi kartu plus keterangannya,
+Flutter menggambar pita itu. **Ini persis jenis kegagalan yang
+disembunyikan ukuran tetap sampai suatu hari tidak**: satu perangkat
+terlihat benar, perangkat lain penuh peringatan, dan tidak ada satu pun
+test atau `flutter analyze` yang bisa melihatnya.
+
+Sekarang kartunya diukur dari ruang yang benar-benar tersedia
+(`LayoutBuilder`), menjaga rasio 214:292, dengan batas atas ukuran lama
+dan batas bawah 150px. Tanda sudut dan glifnya ikut menskala, supaya
+kartu yang mengecil tidak jadi huruf raksasa dalam bingkai kecil.
+
+Diverifikasi di emulator yang tadi bermasalah: pita peringatannya hilang
+dan kartunya utuh; di G52J tampilannya tidak berubah.
+
 ### Di luar Mode Kartu — yang menghalangi rilis sungguhan (bukan
 ### bagian dari fitur ini, tapi relevan kalau sesi berikutnya
 ### memikirkan rilis)

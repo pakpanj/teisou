@@ -309,6 +309,33 @@ class BattleCardFace extends StatelessWidget {
       _ => 40.0,
     };
 
+    // Sized from what is actually available rather than fixed at 214x292.
+    // A shorter screen (the Pixel 8 emulator is 60px shorter than the
+    // Moto G52J, and a windowed emulator shorter still) overflowed the
+    // card by 16px and drew Flutter's striped banner across the bottom of
+    // it — reported from the emulator while the phone looked perfect,
+    // which is exactly the failure a fixed height hides until it doesn't.
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        const captionSpace = 30.0;
+        const maxCardHeight = 292.0;
+        final available = constraints.maxHeight.isFinite
+            ? constraints.maxHeight - captionSpace
+            : maxCardHeight;
+        final cardHeight = available.clamp(150.0, maxCardHeight);
+        final cardWidth = cardHeight * 214 / 292;
+        return _buildCard(context, palette, fontSize, cardHeight, cardWidth);
+      },
+    );
+  }
+
+  Widget _buildCard(
+    BuildContext context,
+    AppPalette palette,
+    double fontSize,
+    double cardHeight,
+    double cardWidth,
+  ) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -323,8 +350,8 @@ class BattleCardFace extends StatelessWidget {
         const SizedBox(height: 8),
         AnimatedContainer(
           duration: const Duration(milliseconds: 160),
-          width: 214,
-          height: 292,
+          width: cardWidth,
+          height: cardHeight,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -384,13 +411,13 @@ class BattleCardFace extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top: 18,
-                      left: 20,
+                      top: cardHeight * 0.06,
+                      left: cardWidth * 0.09,
                       child: _CornerMark(prompt: prompt, palette: palette),
                     ),
                     Positioned(
-                      bottom: 18,
-                      right: 20,
+                      bottom: cardHeight * 0.06,
+                      right: cardWidth * 0.09,
                       child: RotatedBox(
                         quarterTurns: 2,
                         child: _CornerMark(prompt: prompt, palette: palette),
@@ -404,7 +431,9 @@ class BattleCardFace extends StatelessWidget {
                         prompt,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: fontSize,
+                          // Scaled with the card: a full-size glyph on a
+                          // shrunken card fills it edge to edge.
+                          fontSize: fontSize * (cardHeight / 292),
                           fontWeight: FontWeight.bold,
                           color: palette.textNavy,
                         ),
