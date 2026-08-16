@@ -127,4 +127,75 @@ void main() {
       );
     });
   });
+
+  /// The match screen's own call, which used to count the answers this
+  /// device had received rather than ask the match how far it had got.
+  /// One missed answer left that count permanently short — and a draw,
+  /// callable only on the very last round, then never became callable at
+  /// all: the screen sat spinning on a finished match.
+  group('conclusionAt', () {
+    final fullOrder = [
+      for (var round = 0; round < kBattleTotalRounds; round++)
+        TurnOrderEntry(
+          round: round,
+          deckOwnerUid: round.isEven ? players[0] : players[1],
+          cardId: 'c$round',
+        ),
+    ];
+
+    BattleScoreTally tallyOf(Map<int, bool> correct) => tallyScores(
+          players: players,
+          turnOrder: fullOrder,
+          correctByRound: correct,
+        );
+
+    test('a tie at the end of the main phase plays on', () {
+      expect(
+        conclusionAt(
+          players: players,
+          tally: tallyOf(const {}),
+          currentRound: kBattleMainPhaseRounds,
+        ),
+        isNull,
+      );
+    });
+
+    test('a tie with every card spent is a draw', () {
+      expect(
+        conclusionAt(
+          players: players,
+          tally: tallyOf(const {}),
+          currentRound: kBattleTotalRounds,
+        ),
+        'draw',
+      );
+    });
+
+    /// The exact shape of the hang: the match is over and this device is
+    /// missing one round's answer.
+    test('a draw is still called when an answer never arrived', () {
+      final missingOne = <int, bool>{
+        for (var round = 0; round < kBattleTotalRounds; round++)
+          if (round != 7) round: false,
+      };
+      final tally = tallyOf(missingOne);
+      expect(
+        conclusionAt(
+          players: players,
+          tally: tally,
+          currentRound: kBattleTotalRounds,
+        ),
+        'draw',
+      );
+      // And what shipped, for contrast — counting the answers instead.
+      expect(
+        clientConclusion(
+          players: players,
+          tally: tally,
+          highestResolvedRound: missingOne.length - 1,
+        ),
+        isNull,
+      );
+    });
+  });
 }

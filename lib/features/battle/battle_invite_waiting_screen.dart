@@ -72,6 +72,26 @@ class _BattleInviteWaitingScreenState
   @override
   void dispose() {
     _ticker?.cancel();
+    // **Leaving this screen retracts the challenge**, however it is
+    // left — the Batal button, the back arrow, or the system gesture.
+    //
+    // Only Batal used to do it, and the gap was reported from real play:
+    // a challenge went unanswered, the challenger backed out and
+    // challenged somebody else, and that second match started. The first
+    // invitation was still live, so when the original target finally
+    // tapped Terima they were dropped into a match whose opponent was
+    // already playing elsewhere — a match nobody would ever take a turn
+    // in, which is what the "no cards to choose from" report was.
+    //
+    // Fire-and-forget by necessity: `dispose` cannot await, and there is
+    // nothing useful to do with a failure at this point anyway. The
+    // invite's own two-minute expiry is the backstop.
+    if (!_opened && !_cancelling) {
+      ref
+          .read(battleRepositoryProvider)
+          .respondToMatchInvite(matchId: widget.matchId, accept: false)
+          .catchError((Object _) => false);
+    }
     super.dispose();
   }
 

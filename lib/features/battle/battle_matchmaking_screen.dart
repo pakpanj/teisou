@@ -82,20 +82,30 @@ class _BattleMatchmakingBodyState
       _queuedTier = tier;
     });
 
-    try {
-      await ref
+    // **Deliberately not awaited.** A Realtime Database write does not
+    // complete until it reaches the server, so on a device where
+    // Firebase cannot connect at all this sat here forever — and the
+    // state had already flipped to "searching", so the screen showed
+    // "Menunggu lawan... 20s" above a countdown that never started and a
+    // listener never attached: no search, no bot fallback, no way on but
+    // Batal. Reported from an iPhone, where the cause is that
+    // `firebase_options.dart` still has no iOS entry at all.
+    //
+    // Starting the clock first means the twenty seconds run whatever the
+    // network is doing, and the bot fallback still fires. Same rule this
+    // codebase already learned on `appStartupProvider`: never await a
+    // write on a path that has to render something.
+    unawaited(
+      ref
           .read(matchmakingRepositoryProvider)
-          .joinQueue(tier: tier, uid: myUid);
-    } catch (e) {
-      if (!mounted) return;
-      setState(() {
-        _state = _MatchmakingState.idle;
-        _error = '$e';
-        _queuedTier = null;
-      });
-      return;
-    }
-    if (!mounted) return;
+          .joinQueue(tier: tier, uid: myUid)
+          .catchError((Object e) {
+        // Surfaced only when the write genuinely fails. A write that
+        // merely never lands is left to the countdown, which ends in a
+        // bot match — a better answer than an error message.
+        if (mounted) setState(() => _error = '$e');
+      }),
+    );
 
     _resultSubscription = ref
         .read(matchmakingRepositoryProvider)

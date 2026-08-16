@@ -129,20 +129,35 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
 
   void _maybeConclude(BattleMatch match) {
     if (_localClientResult != null) return;
-    // Rounds always resolve in strict order (submitAnswer's transaction
-    // only succeeds when currentRound == round), so the resolved keys
-    // are always a contiguous 0..N-1 prefix — length-1 is exactly the
-    // highest fully-resolved round.
-    final highestResolved = _correctByRound.length - 1;
+    // **How far the match has got comes from the match, not from the
+    // answers this device happens to have seen.**
+    //
+    // It used to be `_correctByRound.length - 1`, on the reasoning that
+    // rounds resolve in strict order so the keys form a contiguous
+    // prefix. True of the writes; not true of what arrives here. A round
+    // whose card fails to resolve is skipped by `_onAnswersUpdate`
+    // without recording anything, and any answer document that never
+    // shows up leaves the same hole — after which this count is
+    // permanently one or more short of the real progress.
+    //
+    // For a match decided on points that only delays the result. For a
+    // **draw** it never resolves at all: the tie can only be called at
+    // the very last round, the count never reaches it, and the screen
+    // sits on a bare spinner with the match already over. Reported after
+    // a real drawn match.
+    //
+    // `currentRound` advances only when a round resolves, so minus one
+    // is exactly the highest resolved round, whatever this device
+    // received.
     final tally = tallyScores(
       players: match.players,
       turnOrder: match.turnOrder,
       correctByRound: _correctByRound,
     );
-    final conclusion = clientConclusion(
+    final conclusion = conclusionAt(
       players: match.players,
       tally: tally,
-      highestResolvedRound: highestResolved,
+      currentRound: match.currentRound,
     );
     if (conclusion == null) return;
     _localClientResult = conclusion;
@@ -274,6 +289,16 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       return _buildResult(context, s, match, myUid);
     }
     if (match.currentRound >= match.turnOrder.length) {
+      // Every round is played and the result has not been worked out
+      // yet. Concluding was previously driven only by the answers
+      // stream, so if its last event had already been and gone this
+      // screen waited on something that was never coming again — the
+      // spinner a drawn match got stuck on. The match document
+      // updating is the other thing that can mean "it is over", so it
+      // gets to conclude too.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _maybeConclude(match);
+      });
       return const Center(child: CircularProgressIndicator());
     }
 

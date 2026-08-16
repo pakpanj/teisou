@@ -46,6 +46,27 @@ BattleScoreTally tallyScores({
 /// 0-9) has fully resolved; returns `null` (not concluded) before that.
 /// Returns the winner's uid, `'draw'`, or `null` if the match should
 /// continue into (or further through) the extension.
+/// [clientConclusion] keyed off the match's own progress instead of a
+/// count of the answers a device has seen.
+///
+/// **The distinction is what made a drawn match hang.** `currentRound`
+/// advances only when a round resolves, so `currentRound - 1` is the
+/// highest resolved round no matter which answer documents reached this
+/// device; counting the answers themselves goes short the moment one is
+/// missed, and a draw — which can only be called on the very last round
+/// — then never gets called at all.
+String? conclusionAt({
+  required List<String> players,
+  required BattleScoreTally tally,
+  required int currentRound,
+}) {
+  return clientConclusion(
+    players: players,
+    tally: tally,
+    highestResolvedRound: currentRound - 1,
+  );
+}
+
 String? clientConclusion({
   required List<String> players,
   required BattleScoreTally tally,
