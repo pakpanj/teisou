@@ -9833,3 +9833,252 @@ on a device" note that had gone stale. Checked first, and worth checking
 again before any rewrite: that the commit is the tip of both `master` and
 `origin/master`, that no other branch or worktree contains it, and that
 the working tree is clean — then `--force-with-lease`, never `--force`.
+
+## Update (2026-08-18): Card Game Mode finished off — keyboard, redesign,
+## art, premium gating, IAP
+
+One long session, all on Mode Kartu. Commits `967f9cd` → `cebd5cf` on
+`master`, build bumped to `1.0.0+9`. Everything below was verified on
+the physical Moto G52J unless it says otherwise.
+
+### The kana keyboard was unusable, and the fix took three goes
+
+`KanaKeyboard` laid all 46 characters out at once — eleven gojūon rows
+plus a modifier row. Twelve stacked rows need ~500dp to stay legible;
+the battle screen gives 200. Every key came out about **twelve pixels
+tall with an eighteen-point character spilling out of it**. Rows of a
+phone keyboard cannot be shorter than a fingertip, so the number of
+rows had to come down.
+
+1. First attempt: three rows (group keys → that group's five
+   characters → modifiers). Fixed the crushing, cost a tap per
+   character.
+2. The user asked for the **flick layout every Japanese phone uses**, so
+   it became 4×4: tap for the a-column, flick left/up/right/down for
+   i/u/e/o. Not a mapping invented here — the one iOS and Gboard ship,
+   so a learner gets used to the real keyboard rather than to ours.
+3. **Reported from a device**: on the left column (あ, た, ま) the flick
+   preview had nowhere to open and was clamped back on top of the key
+   being pressed — い/ち/み sat under the user's own thumb. Fixed the way
+   the reference keyboard does it: kana in the middle three columns,
+   modifiers down the outer two, so every direction has a key's width to
+   open into.
+
+Things worth keeping in mind here:
+
+- **Pressing a key previews the whole group** in its four directions.
+  Without it this is a keyboard nobody has been taught, which is a
+  keyboard that only ever produces あかさたな.
+- **Raw pointer events, not a tap/pan recogniser.** A flick is exactly
+  the short drag the gesture arena hands to an ancestor scrollable — a
+  recogniser would work here and silently stop working the first time a
+  caller wrapped the keyboard in a scroll view.
+- **ん is placed by hand**, the only character not read from the
+  dataset's row/column scheme. It has its own row there, correctly, but
+  every real flick keyboard puts it on わ's up-flick. There is a test,
+  because dropping that override makes ん untypeable and nothing else
+  notices.
+- **A flick into an empty direction types nothing** (や has no い/え)
+  rather than falling back to the centre: nothing reads as a miss, a
+  silent や reads as a correct keypress.
+- The guards: one asserts only the open group is laid out (what actually
+  separates this layout from the old one — the widget fills whatever
+  height it is given either way), one pins key height at the exact slot
+  the battle screen passes. Both confirmed to bite.
+
+### Four bugs from real multi-device play
+
+Reported by the user with screenshots, from two phones and an iPhone.
+
+1. **Matchmaking froze at 20s and never searched.** The countdown and
+   result listener were started only *after* an awaited Realtime
+   Database write, which does not complete until it reaches the server —
+   so where Firebase cannot connect at all it sat there for ever with
+   the screen already saying "Menunggu lawan... 20s". Reported from an
+   iPhone, where the cause is that `firebase_options.dart` still has no
+   iOS entry. **The first fix was only half of it**: with the write no
+   longer awaited the countdown ran, then stopped dead on "1s" — the bot
+   fallback's first line was an awaited RTDB *read*, placed before the
+   state flip, with two more awaited writes behind it, and Batal had the
+   same problem. Every network call on that screen is now either
+   fire-and-forget or on an eight-second deadline. **Reproduced and
+   fixed with the phone's radios off**, which is the same condition an
+   unconfigured iOS build is permanently in.
+2. **A drawn match spun for ever.** Concluding counted the answer
+   documents this device had received and called that the round reached.
+   One missed answer leaves that count permanently short; a win still
+   lands late, but a draw can only be called on the very last round, so
+   it was never called at all. It now asks the match how far it has got
+   (`currentRound` advances only when a round resolves). Logic moved out
+   of the widget into `conclusionAt` to be testable. **Verified with a
+   real 40-round drawn match** driven from a script on two devices —
+   both showed "Seri!".
+3. **Backing out of a challenge left it live.** Only the Batal button
+   retracted it, so a challenger who used the back arrow and then
+   challenged someone else left the first invitation standing; accepting
+   it dropped that player into a match whose opponent was elsewhere.
+   That is also where the "no cards to choose from" report came from.
+   **The first fix did nothing**, and this is worth remembering: the
+   repository was held as a `late final` initialised from `ref`, which
+   reads as if captured early and is not — `late` runs its initialiser
+   on first *access*, and the only access was inside `dispose`. So the
+   provider read still happened at exactly the moment it was meant to
+   avoid, threw against a defunct element, and the challenge stayed
+   live. Assigned in `initState` instead.
+4. **"No card choice"** turned out to be a symptom of (3), not its own
+   bug, and stopped happening once (3) was fixed.
+
+`BattleMatch.inviteState` is how the challenger learns the answer: the
+invite document lives at `users/{targetUid}/battleInvites/{id}`, which
+is readable by its owner alone, so the one person who most needs to know
+whether their challenge was accepted cannot read it there. The match
+document is the only thing both players can see. Claiming is a
+transaction returning whether it won — Terima and Batal really do race —
+and a match with no `inviteState` reads as **already under way**, which
+is what makes the field safe to add to a collection that already holds
+matches.
+
+### The art landed — 18 files, then 7 more
+
+Card skins (6), rank badges (5), bottom-nav icons (5), mascot poses (2),
+all checked before going in: size and ratio, real alpha rather than a
+generator's painted checkerboard, no leftover magenta, no halo on a dark
+ground, and — for the skins — a genuinely clear middle.
+
+- **The skin now backs the card face, not just the back.** The art was
+  drawn with a clear centre precisely so a glyph could sit on it. Three
+  of the six are dark, so the glyph and corner marks take their colour
+  from `darkFace`; the inner rule is dropped on an illustrated card
+  since the art draws its own border.
+- **The three free skins stay painted, deliberately.** What you start
+  with the app draws; what you earn or buy an illustrator drew, and the
+  difference should be visible at a glance in the picker.
+- **Diamond's colour tokens moved from blue to amethyst** to match its
+  badge. They sit beside the art (behind pips, in the progress bar), and
+  a token disagreeing with the picture next to it reads as a bug.
+- Seven more skins found unused in the asset folder became a fourth
+  family, **Event** — opened by neither money nor stars, which is the
+  point of it. Nothing grants them yet and the picker says so.
+- **`battleReady` is this project's first two-word mood**, and the art
+  arrived as `battle_ready.png` while the convention derives the
+  filename from the enum name. Renamed to `battleReady.png`; nothing
+  would have failed, the mood would just have gone on quietly showing an
+  emoji. The rule is now written down in `scripts/mascot_prompts.md`.
+- New `test/card_game_art_test.dart` checks each file is **on disk and
+  declared in pubspec, separately** — those two failures look identical
+  at runtime and have nothing to do with each other. Confirmed to bite
+  by undeclaring `assets/ranks/`.
+
+### The redesign, panel by panel
+
+The user's mockup is `C:/Teisou asset/model card game 5.png` — six
+panels. Note the six PNGs in `C:/Teisou asset/Re desain card game/` are
+the *before* screenshots taken for them to redesign from, **not** the
+mockup; that confusion cost a round trip.
+
+Built: the lobby masthead (avatar, name, standing, TEISOU BATTLE
+wordmark, mascot, deck strip), the searching radar with a clock instead
+of a sentence, the choosing turn (face-down card + dashed arrow +
+instruction panel, hand heading and `left / total` counter, tinted hand
+cards), and the result screen's stats row (Benar/Salah/Kartu/Durasi).
+Duration needed a match start time, so `createdAt` is written at
+creation and **frozen in `firestore.rules`** — a client that could
+rewrite it could invent how long a match took.
+
+**Two things in the mockup were deliberately not followed**, and both
+would have undone a decision the user made themselves:
+
+- Its panel 4 shows a full gojūon grid keyboard. Superseded by the flick
+  keyboard the user chose later.
+- Its panel 6 labels the achievement skins "Premium" and the paid ones
+  "Event", which inverts the rule that **stars are an achievement, never
+  a currency**.
+
+Three icons in its lobby corner (mail, gift, settings) are absent
+because nothing sits behind them in this app.
+
+### Premium gating restored — and finished
+
+The Partikel gate was removed for dev testing in July 2026 and the
+"restore before release" note outlived a year. Kanji and Bunpou never
+had one at all; Kaiwa and Choukai shipped open. So **every module the
+roadmap calls paid was free**, on a build being prepared for a store.
+
+The line now: Kanji free through N4, Bunpou free through N5, Partikel /
+Kaiwa / Choukai paid outright. Kana, Kotoba, Bab, the dictionary and the
+exams are untouched.
+
+`moduleAccessProvider` (`lib/features/paywall/module_access.dart`) is
+the single answer to "may this open", because six screens ask it.
+It answers **false while loading** — the alternative is a card that is
+briefly open on every cold start, which is the one moment a gate must
+not be. Rewarded ads still work per module, keyed on the same module id
+the paywall was opened with.
+
+`test/premium_gating_test.dart` exists because **this failure is
+invisible**: a gate that fails open looks exactly like the app working,
+nobody reports getting something free, and no screenshot looks wrong. It
+also pins that `JlptLevel` still runs easiest-first — reordering that
+enum alone would invert every gate.
+
+### IAP — and taking the client out of the trust path
+
+`in_app_purchase` + `cloud_functions` are wired; the paywall and shop
+now reach Google Play for real (confirmed on device: the store answered,
+and logcat reported the four product ids as not yet existing).
+
+**The security half matters more than the buttons.** `users/{uid}` is
+owner-writable, so anyone running a modified client could write
+`subscription.tier = premium` themselves — harmless while nothing was
+for sale, and the whole product the moment something is.
+`firestore.rules` now refuses every client write to `subscription` and
+`entitlements`; `functions/iap.js`'s `verifyPurchase`, running with
+Admin privileges, is the only thing that can set either. **It fails
+closed**: with Play verification unconfigured it refuses rather than
+granting on the client's word.
+
+Other decisions worth not re-deriving:
+
+- Purchases are handled on the store's **stream**, not as the result of
+  the buy call — a purchase can be approved by a parent hours later or
+  restored on a new phone.
+- Delivery is idempotent (merge for the subscription, `arrayUnion` for a
+  skin), so restore verifying the same token repeatedly grants once.
+- **Every purchase is completed even when verification fails**, or the
+  store redelivers it every launch for ever and iOS blocks all later
+  purchases. Nothing is lost: restore asks again.
+- Prices come from `ProductDetails.price`, never from the app.
+
+`test/iap_test.dart` had a test written wrong and caught by injecting
+the defect: it checked the rules function *existed* rather than that
+anything *called* it, and stayed green with the call site deleted.
+
+### What is still open
+
+**Needs the user, not this repo:**
+
+- **Create four products in Play Console**: `teisou_premium_monthly`
+  (subscription), `skin_cloud_white`, `skin_neon_city`,
+  `skin_sakura_gold`. Store ids can never be renamed or reused.
+- **A service account** with Android Publisher access, then
+  `PLAY_VERIFICATION_ENABLED=true` and the googleapis call filled into
+  `verifyWithPlay` — its shape is documented where it goes.
+- **Deploy `firestore.rules`.** The new purchase rule is only correct in
+  git; until it is deployed the client can still write `subscription`.
+- **iOS Firebase registration.** Without it iOS has no auth, no
+  Firestore, no matchmaking — the countdown fix only makes the screen
+  honest about that.
+- IAP **cannot be tested on a debug build**; Play only serves an app
+  uploaded to a testing track and signed with the upload key.
+
+**Still code work:**
+
+- **The lobby has no background art.** `BattleBackdrop` paints falling
+  petals from a `CustomPainter`; the mockup shows a full sakura
+  landscape. No background was on the 18-item asset list, so none was
+  ever generated — if one is wanted, it is a new asset request, not a
+  missing wiring.
+- Match history (RIWAYAT), rematch against the same opponent, and
+  resuming an in-progress match are all still absent.
+- The Kotoba (1,682) and Kaiwa (~7,468) illustration backlogs are
+  untouched.
