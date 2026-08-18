@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../paywall/paywall_screen.dart';
+import '../paywall/module_access.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
@@ -90,10 +92,29 @@ class _LevelCard extends ConsumerWidget {
 
   const _LevelCard({required this.level});
 
-  void _open(BuildContext context, AppStrings s, bool gateReached) {
+  void _open(
+    BuildContext context,
+    AppStrings s,
+    bool gateReached,
+    bool premiumOk,
+  ) {
     if (!level.available) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(s.kanjiLevelComingSoon(level.name))),
+      );
+      return;
+    }
+    // The paywall is checked before the progress gate, so a learner who
+    // has not bought this half is told the price rather than told to
+    // finish a level that would not open anyway.
+    if (!premiumOk) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => PaywallScreen(
+            moduleId: PremiumModules.kanji,
+            moduleTitle: s.kanjiLevelCardTitle(level.name),
+          ),
+        ),
       );
       return;
     }
@@ -127,7 +148,13 @@ class _LevelCard extends ConsumerWidget {
             ?.firstWhere((g) => g.level == thisLevel)
             .reachedByProgress ??
         (thisLevel == JlptLevel.n5);
-    final available = level.available && gateReached;
+    // N5 and N4 are free; the rest is what is sold. `false` while the
+    // answer loads, for the same reason the progress gate defaults shut.
+    final free = isFreeLevel(thisLevel, freeThrough: kKanjiFreeThrough);
+    final premiumOk = free ||
+        (ref.watch(moduleAccessProvider(PremiumModules.kanji)).valueOrNull ??
+            false);
+    final available = level.available && gateReached && premiumOk;
     final progress = available
         ? ref.watch(kanjiLevelProgressProvider(thisLevel)).valueOrNull
         : null;
@@ -142,9 +169,16 @@ class _LevelCard extends ConsumerWidget {
       subtitle: s.kanjiCount(level.kanjiCount ?? 0),
       percent: available ? percent : null,
       available: available,
-      soonLabel: level.available ? s.babLevelLockedBadge : s.soonBadge,
+      // A premium level says so on its badge rather than borrowing the
+      // "finish the previous level" wording — those are different
+      // problems with different answers.
+      soonLabel: !premiumOk
+          ? s.premiumBadge
+          : level.available
+              ? s.babLevelLockedBadge
+              : s.soonBadge,
       accent: context.palette.primaryCoral,
-      onTap: () => _open(context, s, gateReached),
+      onTap: () => _open(context, s, gateReached, premiumOk),
     );
   }
 }

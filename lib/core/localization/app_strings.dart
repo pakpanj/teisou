@@ -1468,6 +1468,11 @@ class AppStrings {
             'play a bot instead.',
       );
   // --- Card Game Mode: lobby, result, skin picker (redesign) ---
+  String get premiumBadge => _t('PREMIUM', 'PREMIUM');
+  String premiumLevelLocked(String level) => _t(
+        '$level terkunci — buka dengan Premium',
+        '$level is locked — unlock with Premium',
+      );
   String get battleHandTitle => _t('Kartu di tanganmu', 'Cards in hand');
   String battleHandRemaining(int left, int total) => _t(
         '$left / $total',

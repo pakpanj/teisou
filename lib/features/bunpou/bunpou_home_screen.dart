@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
+import '../paywall/paywall_screen.dart';
+import '../paywall/module_access.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
@@ -77,7 +79,18 @@ class _LevelCard extends ConsumerWidget {
 
   const _LevelCard({required this.level});
 
-  void _open(BuildContext context, AppStrings s) {
+  void _open(BuildContext context, AppStrings s, bool premiumOk) {
+    if (!premiumOk) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => PaywallScreen(
+            moduleId: PremiumModules.bunpou,
+            moduleTitle: s.bunpouLevelTitle(level.name),
+          ),
+        ),
+      );
+      return;
+    }
     if (!level.available) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(s.bunpouLevelComingSoon(level.name))),
@@ -95,7 +108,18 @@ class _LevelCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final available = level.available;
+    // N5 alone is free — 89 patterns, a substantial module on its own —
+    // and N4 upward is what is sold. `false` while the answer loads: a
+    // card that is briefly open and then locks under a finger is worse
+    // than one that resolves the other way.
+    final free = isFreeLevel(
+      JlptLevelX.fromKey(level.id),
+      freeThrough: kBunpouFreeThrough,
+    );
+    final premiumOk = free ||
+        (ref.watch(moduleAccessProvider(PremiumModules.bunpou)).valueOrNull ??
+            false);
+    final available = level.available && premiumOk;
     final progress = available
         ? ref
               .watch(bunpouLevelProgressProvider(JlptLevelX.fromKey(level.id)))
@@ -112,9 +136,9 @@ class _LevelCard extends ConsumerWidget {
       subtitle: s.bunpouPatternCount(level.bunpouCount ?? 0),
       percent: available ? percent : null,
       available: available,
-      soonLabel: s.soonBadge,
+      soonLabel: premiumOk ? s.soonBadge : s.premiumBadge,
       accent: context.palette.primaryCoral,
-      onTap: () => _open(context, s),
+      onTap: () => _open(context, s, premiumOk),
     );
   }
 }

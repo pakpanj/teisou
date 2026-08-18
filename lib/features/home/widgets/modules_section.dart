@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/localization/app_strings.dart';
 import '../../../core/navigation/app_navigator.dart';
+import '../../paywall/paywall_screen.dart';
+import '../../paywall/module_access.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../core/widgets/mascot_guide_bubble.dart';
@@ -175,7 +177,8 @@ class ModulesSection extends ConsumerWidget {
                     iconAsset: 'icon_kaiwa_latihan',
                   ),
                   const SizedBox(height: 12),
-                  _AvailableModuleCard(
+                  _PremiumModuleCard(
+                    moduleId: PremiumModules.kaiwa,
                     dense: true,
                     emoji: '💬',
                     iconAsset: 'icon_kaiwa_latihan',
@@ -183,7 +186,7 @@ class ModulesSection extends ConsumerWidget {
                     iconColor: palette.primaryCoral,
                     title: s.kaiwaTitle,
                     subtitle: s.kaiwaSubtitle,
-                    onTap: () => AppNavigator.slideFromRight(
+                    onOpen: () => AppNavigator.slideFromRight(
                       context,
                       const KaiwaHomeScreen(),
                     ),
@@ -212,14 +215,15 @@ class ModulesSection extends ConsumerWidget {
                   // list, so the module was orphaned. Listening is roughly
                   // a quarter of every JLPT paper, so it belongs next to
                   // Dokkai as practice material rather than hidden.
-                  _AvailableModuleCard(
+                  _PremiumModuleCard(
+                    moduleId: PremiumModules.choukai,
                     dense: true,
                     emoji: '聴',
                     backgroundColor: palette.hiraganaCardBg,
                     iconColor: palette.primaryCoral,
                     title: 'Choukai',
                     subtitle: s.choukaiCategorySubtitle,
-                    onTap: () => AppNavigator.slideFromRight(
+                    onOpen: () => AppNavigator.slideFromRight(
                       context,
                       const ChoukaiHomeScreen(),
                     ),
@@ -244,16 +248,14 @@ class ModulesSection extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 12),
-        // Premium gate temporarily removed for dev testing (2026-07-17) —
-        // see memory/project_monetization_roadmap.md. Restore
-        // _PremiumModuleCard + PaywallScreen branch before release.
-        _AvailableModuleCard(
+        _PremiumModuleCard(
+          moduleId: PremiumModules.particle,
           emoji: 'を',
           backgroundColor: palette.tertiaryAmberCardBg,
           iconColor: palette.tertiaryAmber,
           title: s.particleTitle,
           subtitle: s.particleSubtitle,
-          onTap: () =>
+          onOpen: () =>
               AppNavigator.slideFromRight(context, const ParticleHomeScreen()),
         ),
         const SizedBox(height: 28),
@@ -982,6 +984,117 @@ class _ComingSoonCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+
+/// A module that costs money, on the list beside the ones that do not.
+///
+/// **Shown rather than hidden, and tappable rather than inert.** A
+/// learner who cannot see what they are missing has no reason to buy it,
+/// and a card that refuses to respond reads as broken. Tapping opens the
+/// paywall, which is also where a rewarded ad can open the module for a
+/// day — so this is a door, not a wall.
+///
+/// It becomes an ordinary [_AvailableModuleCard] the moment access is
+/// granted, rather than staying a premium-styled card with the lock
+/// taken off: once you own it, it is simply one of your modules.
+class _PremiumModuleCard extends ConsumerWidget {
+  const _PremiumModuleCard({
+    required this.moduleId,
+    required this.emoji,
+    required this.backgroundColor,
+    required this.iconColor,
+    required this.title,
+    required this.subtitle,
+    required this.onOpen,
+    this.dense = false,
+    this.iconAsset,
+  });
+
+  final String moduleId;
+  final String emoji;
+  final Color backgroundColor;
+  final Color iconColor;
+  final String title;
+  final String subtitle;
+  final VoidCallback onOpen;
+  final bool dense;
+  final String? iconAsset;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
+    final palette = context.palette;
+    // `false` while the answer is still loading. The alternative is a
+    // card that is briefly open on every cold start, which is the one
+    // moment a gate must not be.
+    final unlocked =
+        ref.watch(moduleAccessProvider(moduleId)).valueOrNull ?? false;
+
+    if (unlocked) {
+      return _AvailableModuleCard(
+        dense: dense,
+        emoji: emoji,
+        iconAsset: iconAsset,
+        backgroundColor: backgroundColor,
+        iconColor: iconColor,
+        title: title,
+        subtitle: subtitle,
+        onTap: onOpen,
+      );
+    }
+
+    return Stack(
+      children: [
+        _AvailableModuleCard(
+          dense: dense,
+          emoji: emoji,
+          iconAsset: iconAsset,
+          backgroundColor: palette.mutedSurface,
+          iconColor: palette.freeBadgeGrey,
+          title: title,
+          subtitle: subtitle,
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => PaywallScreen(
+                moduleId: moduleId,
+                moduleTitle: title,
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          top: 10,
+          right: 12,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [palette.premiumGoldStart, palette.premiumGoldEnd],
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.lock, size: 10, color: Colors.white),
+                const SizedBox(width: 3),
+                Text(
+                  s.premiumBadge,
+                  style: const TextStyle(
+                    fontSize: 9,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 0.6,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
