@@ -1,5 +1,8 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/services/iap_service.dart';
+import '../../core/constants/iap_products.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 import '../../core/localization/app_strings.dart';
@@ -29,9 +32,9 @@ class PaywallScreen extends ConsumerStatefulWidget {
 }
 
 class _PaywallScreenState extends ConsumerState<PaywallScreen> {
-  static const _premiumSku = 'premium_monthly';
 
   bool _watchingAd = false;
+  StreamSubscription<IapOutcome>? _outcomeSub;
 
   Future<void> _upgradePremium() async {
     final available = await InAppPurchase.instance.isAvailable();
@@ -45,12 +48,54 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       return;
     }
 
-    // SKU "premium_monthly" is a placeholder — it isn't registered in Play
-    // Console yet, so we can't actually query/purchase it. Wire this up for
-    // real once the product exists there.
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(s.purchaseComingSoon(_premiumSku))),
-    );
+    _listenForOutcome();
+    final iap = ref.read(iapServiceProvider);
+    await iap.load(IapProducts.all(const []));
+    if (!mounted) return;
+
+    // A product the store has never heard of is not an error to show as
+    // a failure — it means nobody has created it in Play Console yet,
+    // which is a different sentence and a different person's job.
+    if (iap.productFor(IapProducts.premiumMonthly) == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(s.purchaseNotSetUp)),
+      );
+      return;
+    }
+    await iap.buy(IapProducts.premiumMonthly);
+  }
+
+  /// The store's own result, which arrives on a stream rather than from
+  /// the buy call — a purchase can be approved by a parent hours later,
+  /// or restored on a different phone entirely.
+  void _listenForOutcome() {
+    _outcomeSub ??= ref.read(iapServiceProvider).outcomes.listen((outcome) {
+      if (!mounted) return;
+      final s = ref.read(appStringsProvider);
+      final message = switch (outcome) {
+        IapOutcome.delivered => s.purchaseDelivered,
+        IapOutcome.cancelled => s.purchaseCancelled,
+        IapOutcome.unavailable => s.storeUnavailable,
+        IapOutcome.failed => s.purchaseFailed,
+      };
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
+      // Only a delivered purchase closes the paywall. A cancelled one
+      // leaves the learner where they were, which is where they chose to
+      // be.
+      if (outcome == IapOutcome.delivered) Navigator.of(context).maybePop();
+    });
+  }
+
+  Future<void> _restore() async {
+    _listenForOutcome();
+    await ref.read(iapServiceProvider).restore();
+  }
+
+  @override
+  void dispose() {
+    _outcomeSub?.cancel();
+    super.dispose();
   }
 
   Future<void> _watchAdForPreview() async {
@@ -140,7 +185,16 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                   child: Text(s.upgradePremiumButton),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
+              // Every store requires this, and a learner who paid and
+              // then changed phone has no other way back to what they
+              // own — the purchase is on their store account, not on
+              // this device.
+              TextButton(
+                onPressed: _restore,
+                child: Text(s.purchaseRestore),
+              ),
+              const SizedBox(height: 8),
               Row(
                 children: [
                   Expanded(

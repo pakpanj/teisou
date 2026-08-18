@@ -284,3 +284,8 @@ exports.onMatchmakingQueueJoined =
 // it, so the ladder cannot be climbed by editing the document).
 exports.onBattleMatchConcluded =
   require("./battle_stars").onBattleMatchConcluded;
+
+// Turning a store purchase into an entitlement — the only writer of
+// `subscription` and `entitlements`, since firestore.rules refuses every
+// client write to both. See functions/iap.js.
+exports.verifyPurchase = require("./iap").verifyPurchase;

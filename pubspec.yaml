@@ -64,6 +64,7 @@ dependencies:
   # already a transitive dep via flutter_svg's vector_graphics pipeline,
   # promoted to direct since we call its API ourselves now.
   xml: ^7.0.1
+  cloud_functions: ^5.6.2
 
 dev_dependencies:
   flutter_test:

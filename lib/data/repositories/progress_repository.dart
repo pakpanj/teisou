@@ -251,10 +251,19 @@ class ProgressRepository {
     );
   }
 
-  Future<void> setSubscription(String uid, Subscription subscription) {
-    return _userDoc(
-      uid,
-    ).set({'subscription': subscription.toMap()}, SetOptions(merge: true));
+  /// Card skins this learner has bought.
+  ///
+  /// **Read-only from here on purpose.** `entitlements` is written by
+  /// the `verifyPurchase` Cloud Function alone, and `firestore.rules`
+  /// refuses every client write to it — so there is no setter to pair
+  /// with this, and adding one would only produce writes the server
+  /// rejects.
+  Stream<Set<String>> watchOwnedSkins(String uid) {
+    return _userDoc(uid).snapshots().map((snapshot) {
+      final raw = snapshot.data()?['entitlements'] as Map<String, dynamic>?;
+      final skins = raw?['skins'] as List?;
+      return {for (final id in skins ?? const []) id as String};
+    });
   }
 
   /// Card Game Mode standing (tier/division/stars/season) — defaults to

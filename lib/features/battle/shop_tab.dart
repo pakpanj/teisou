@@ -1,55 +1,109 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/card_skins.dart';
+import '../../core/constants/iap_products.dart';
 import '../../core/providers.dart';
+import '../../core/services/iap_service.dart';
 import '../../core/theme/app_palette.dart';
 
-/// The shop — a window, not a till.
+/// The shop — now a till, not just a window.
 ///
-/// **Nothing here can be bought yet, and the screen says so.** This app
-/// has never had `in_app_purchase` wired up; it is still on the release
-/// blocker list. Building the shelf now is worth it anyway — it is how
-/// the paid skins get seen, and seeing them is most of what makes anyone
-/// want one — but a button that takes a tap and does nothing would be
-/// worse than no button. So each card is marked plainly as not yet for
-/// sale.
+/// **What is sold here can never be earned, and what is earned can never
+/// be sold.** That line is the reason the families exist at all (see
+/// [CardSkinSource]), and it is why this screen says so out loud rather
+/// than leaving a buyer to wonder whether they paid for something a
+/// patient player gets free.
 ///
-/// When billing lands, the change is small and local: a price on the
-/// preset, a real purchase call here, and `isCardSkinUnlocked`'s `owned`
-/// argument fed from what the player has bought.
-class ShopTab extends ConsumerWidget {
+/// **Prices come from the store, never from the app.** A hardcoded
+/// "Rp 15.000" is wrong in every other country, wrong after any price
+/// change, and wrong the moment a sale runs; `ProductDetails.price`
+/// arrives already localised and already current. A skin whose product
+/// has not been created in the console yet has no price to show, so its
+/// button is disabled rather than showing a number nobody can pay.
+class ShopTab extends ConsumerStatefulWidget {
   const ShopTab({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ShopTab> createState() => _ShopTabState();
+}
+
+class _ShopTabState extends ConsumerState<ShopTab> {
+  StreamSubscription<IapOutcome>? _outcomeSub;
+  bool _loading = true;
+  String? _buying;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    final iap = ref.read(iapServiceProvider);
+    _outcomeSub ??= iap.outcomes.listen(_onOutcome);
+    await iap.load(
+      IapProducts.all(
+        CardSkinPresets.ofSource(CardSkinSource.paid).map((skin) => skin.id),
+      ),
+    );
+    if (mounted) setState(() => _loading = false);
+  }
+
+  void _onOutcome(IapOutcome outcome) {
+    if (!mounted) return;
+    final s = ref.read(appStringsProvider);
+    setState(() => _buying = null);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(switch (outcome) {
+          IapOutcome.delivered => s.purchaseDelivered,
+          IapOutcome.cancelled => s.purchaseCancelled,
+          IapOutcome.unavailable => s.storeUnavailable,
+          IapOutcome.failed => s.purchaseFailed,
+        }),
+      ),
+    );
+  }
+
+  Future<void> _buy(CardSkinPreset skin) async {
+    setState(() => _buying = skin.id);
+    final opened = await ref
+        .read(iapServiceProvider)
+        .buy(IapProducts.productIdForSkin(skin.id));
+    // `false` means the sheet never opened, so no outcome will arrive —
+    // without this the button would spin for ever.
+    if (!opened && mounted) setState(() => _buying = null);
+  }
+
+  @override
+  void dispose() {
+    _outcomeSub?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
     final palette = context.palette;
+    final iap = ref.read(iapServiceProvider);
+    final owned = ref.watch(ownedSkinsProvider).valueOrNull ?? const <String>{};
     final paid = CardSkinPresets.ofSource(CardSkinSource.paid).toList();
+    final storeSilent =
+        !_loading && (!iap.isAvailable || iap.missingProducts.isNotEmpty);
 
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: palette.tertiaryAmberCardBg,
-            borderRadius: BorderRadius.circular(12),
+        if (storeSilent) ...[
+          _Notice(
+            text: iap.isAvailable ? s.shopNotOpenYet : s.storeUnavailable,
+            palette: palette,
           ),
-          child: Row(
-            children: [
-              Icon(Icons.info_outline, size: 18, color: palette.textNavy),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  s.shopNotOpenYet,
-                  style: TextStyle(fontSize: 12, color: palette.textNavy),
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 18),
+          const SizedBox(height: 18),
+        ],
         Text(
           s.shopSkinsHeading,
           style: TextStyle(
@@ -59,9 +113,6 @@ class ShopTab extends ConsumerWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          // The line that keeps the two families apart in the player's
-          // head: what is on sale here can never be earned, and what is
-          // earned can never be sold.
           s.shopSkinsSubtitle,
           style: TextStyle(
             fontSize: 12,
@@ -70,20 +121,81 @@ class ShopTab extends ConsumerWidget {
         ),
         const SizedBox(height: 14),
         for (final skin in paid) ...[
-          _ShopRow(skin: skin, label: skin.labelFor(s.language)),
+          _ShopRow(
+            skin: skin,
+            label: skin.labelFor(s.language),
+            price: iap.productFor(IapProducts.productIdForSkin(skin.id))?.price,
+            owned: owned.contains(skin.id),
+            busy: _buying == skin.id,
+            onBuy: () => _buy(skin),
+          ),
           const SizedBox(height: 12),
         ],
+        const SizedBox(height: 8),
+        Center(
+          child: TextButton(
+            // Required by both stores, and the only way back for someone
+            // who paid and then changed phone: the purchase lives on
+            // their store account, not on this device.
+            onPressed: () => ref.read(iapServiceProvider).restore(),
+            child: Text(s.purchaseRestore),
+          ),
+        ),
         const SizedBox(height: 24),
       ],
     );
   }
 }
 
+class _Notice extends StatelessWidget {
+  const _Notice({required this.text, required this.palette});
+
+  final String text;
+  final AppPalette palette;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: palette.tertiaryAmberCardBg,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.info_outline, size: 18, color: palette.textNavy),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 12, color: palette.textNavy),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _ShopRow extends ConsumerWidget {
-  const _ShopRow({required this.skin, required this.label});
+  const _ShopRow({
+    required this.skin,
+    required this.label,
+    required this.price,
+    required this.owned,
+    required this.busy,
+    required this.onBuy,
+  });
 
   final CardSkinPreset skin;
   final String label;
+
+  /// The store's own localised price, or null when the store has never
+  /// heard of this product.
+  final String? price;
+  final bool owned;
+  final bool busy;
+  final VoidCallback onBuy;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -131,13 +243,24 @@ class _ShopRow extends ConsumerWidget {
               ],
             ),
           ),
-          // Disabled on purpose rather than hidden: the shelf should look
-          // like a shelf, and a greyed price reads as "not yet" where an
-          // absent button reads as "never".
-          FilledButton(
-            onPressed: null,
-            child: Text(s.shopBuySoon),
-          ),
+          if (owned)
+            // Nothing to sell twice. Everything here is non-consumable,
+            // so a button on an owned skin would take money for
+            // something already owned.
+            Icon(Icons.check_circle, color: palette.secondaryBlue)
+          else if (busy)
+            const SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(strokeWidth: 2),
+            )
+          else
+            FilledButton(
+              // Disabled rather than hidden when there is no price yet:
+              // the shelf should still look like a shelf.
+              onPressed: price == null ? null : onBuy,
+              child: Text(price ?? s.shopBuySoon),
+            ),
         ],
       ),
     );

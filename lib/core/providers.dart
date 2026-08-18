@@ -64,6 +64,7 @@ import '../data/repositories/saved_words_repository.dart';
 import 'firebase/firestore_paths.dart';
 import 'localization/app_strings.dart';
 import 'services/ad_service.dart';
+import 'services/iap_service.dart';
 import 'services/auth_service.dart';
 import 'services/fcm_service.dart';
 import 'services/furigana_dictionary.dart';
@@ -431,6 +432,23 @@ final userProfileProvider = StreamProvider<UserProfile>((ref) async* {
       .watch(progressRepositoryProvider)
       .watchProfile(user.uid)
       .map(UserProfile.fromMap);
+});
+
+/// Buying things. One instance for the app's life, because the store's
+/// purchase stream has to be listened to continuously — a purchase can
+/// land while the app is closed and arrive on the next launch.
+final iapServiceProvider = Provider<IapService>((ref) {
+  final service = IapService();
+  ref.onDispose(service.dispose);
+  return service;
+});
+
+/// Card skins this learner has bought. Empty — not "everything" — while
+/// it loads or when signed out: a wardrobe that briefly shows every paid
+/// skin as owned is worse than one that fills in a moment later.
+final ownedSkinsProvider = StreamProvider<Set<String>>((ref) async* {
+  final user = await ref.watch(appStartupProvider.future);
+  yield* ref.watch(progressRepositoryProvider).watchOwnedSkins(user.uid);
 });
 
 final subscriptionProvider = StreamProvider<Subscription>((ref) async* {

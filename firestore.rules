@@ -29,9 +29,15 @@ service cloud.firestore {
       allow read: if request.auth != null && request.auth.uid == uid;
       allow create: if request.auth != null && request.auth.uid == uid
           && isAllowedAvatarWrite()
-          && !('cardGameRank' in request.resource.data);
+          && !('cardGameRank' in request.resource.data)
+          // Dokumen baru boleh membawa langganan 'free' bawaan
+          // ProgressRepository.ensureUserProfile, tidak boleh lebih.
+          && request.resource.data.get('subscription', {})
+              .get('tier', 'free') == 'free'
+          && !('entitlements' in request.resource.data);
       allow update: if request.auth != null && request.auth.uid == uid
           && isAllowedAvatarWrite()
+          && isAllowedPurchaseWrite()
           && request.resource.data.get('cardGameRank', null)
               == resource.data.get('cardGameRank', null);
       // Sengaja tidak ada `allow delete` — tidak ada fitur aplikasi yang
@@ -511,6 +517,23 @@ service cloud.firestore {
         allow create: if request.auth != null
             && request.auth.uid in get(/databases/$(database)/documents/battleMatches/$(matchId)).data.players;
       }
+    }
+
+    // Uang. `subscription` dan `entitlements` HANYA boleh ditulis Cloud
+    // Function verifyPurchase (Admin SDK, melewati rules ini). Sebelum ada
+    // yang dijual, `subscription` bisa ditulis pemiliknya sendiri dan itu
+    // tidak berbahaya; begitu ada yang dijual, client yang bisa menulis
+    // `tier: premium` sendiri membuat seluruh verifikasi pembelian jadi
+    // sandiwara.
+    function isAllowedPurchaseWrite() {
+      let oldSub = resource == null
+          ? {}
+          : resource.data.get('subscription', {});
+      let oldEnt = resource == null
+          ? {}
+          : resource.data.get('entitlements', {});
+      return request.resource.data.get('subscription', {}) == oldSub
+          && request.resource.data.get('entitlements', {}) == oldEnt;
     }
 
     function isAllowedAvatarWrite() {

@@ -1468,6 +1468,19 @@ class AppStrings {
             'play a bot instead.',
       );
   // --- Card Game Mode: lobby, result, skin picker (redesign) ---
+  String get purchaseRestore => _t('Pulihkan Pembelian', 'Restore Purchases');
+  String get purchaseDelivered =>
+      _t('Terima kasih! Pembelian aktif.', 'Thank you! Purchase active.');
+  String get purchaseCancelled =>
+      _t('Pembelian dibatalkan.', 'Purchase cancelled.');
+  String get purchaseFailed => _t(
+        'Pembelian gagal. Kamu tidak ditagih.',
+        'Purchase failed. You have not been charged.',
+      );
+  String get purchaseNotSetUp => _t(
+        'Pembelian belum aktif di toko. Coba lagi nanti.',
+        'Purchases are not live in the store yet. Try again later.',
+      );
   String get premiumBadge => _t('PREMIUM', 'PREMIUM');
   String premiumLevelLocked(String level) => _t(
         '$level terkunci — buka dengan Premium',

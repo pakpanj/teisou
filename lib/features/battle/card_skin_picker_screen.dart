@@ -103,6 +103,10 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final selectedId = profile?.cardSkinId ?? CardSkinPresets.classic.id;
     final starTotal = _starTotal;
+    // Bought skins, from the server-written entitlement — this is the
+    // `owned` argument `isCardSkinUnlocked` has always taken and never
+    // had a source for.
+    final owned = ref.watch(ownedSkinsProvider).valueOrNull ?? const <String>{};
 
     return AbsorbPointer(
         absorbing: _saving,
@@ -199,6 +203,7 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
                         isCardSkinUnlocked(
                           skin,
                           starTotal: starTotal,
+                          owned: owned.contains(skin.id),
                           allUnlocked: kCardSkinsAllUnlocked,
                         ))
                     Builder(
@@ -206,6 +211,7 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
                         final unlocked = isCardSkinUnlocked(
                           skin,
                           starTotal: starTotal,
+                          owned: owned.contains(skin.id),
                           allUnlocked: kCardSkinsAllUnlocked,
                         );
                         return _SkinTile(
