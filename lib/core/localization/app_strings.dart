@@ -1468,6 +1468,16 @@ class AppStrings {
             'play a bot instead.',
       );
   // --- Card Game Mode: lobby, result, skin picker (redesign) ---
+  String get battleHandTitle => _t('Kartu di tanganmu', 'Cards in hand');
+  String battleHandRemaining(int left, int total) => _t(
+        '$left / $total',
+        '$left / $total',
+      );
+  String get battleChooseInstruction => _t(
+        'Pilih 1 kartu dari tanganmu untuk dikirim ke lawan!',
+        'Pick one card from your hand to send to your opponent!',
+      );
+  String get battleCardToSend => _t('Kartu untuk lawan', 'Card to send');
   String get cardGameWordmark => _t('TEISOU BATTLE', 'TEISOU BATTLE');
   String get cardGameWordmarkSub =>
       _t('Card Battle Kana', 'Card Battle Kana');

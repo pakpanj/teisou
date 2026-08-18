@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/constants/battle_rules.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/services/battle_deck_builder.dart';
@@ -12,8 +13,10 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/kana_keyboard.dart';
 import '../../data/models/battle_answer.dart';
 import '../../data/models/battle_match.dart';
+import '../../data/models/turn_order_entry.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kanji_entry.dart';
+import '../../data/models/leaderboard_entry.dart';
 import '../../data/repositories/battle_repository.dart' show battleBotUid;
 import '../../core/constants/card_skins.dart';
 import '../../core/widgets/mascot_widget.dart';
@@ -373,33 +376,38 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
             // background between the scores and the card.
             child: Align(
               alignment: const Alignment(0, -0.55),
-              child: choosing
-                  ? BattleCardFace(
-                      // Face down while its owner decides: revealing the
-                      // dealt card here would show the answerer a card
-                      // that may never be played.
-                      prompt: '',
-                      faceDown: true,
-                      // The skin belongs to whoever owns this card, so
-                      // what you see while waiting is your opponent's,
-                      // and what they see while you choose is yours.
-                      // Resolved through the unlock rule, not read raw:
-                      // an achievement skin whose owner has dropped below
-                      // its threshold has to stop showing on *their*
-                      // opponent's screen too, or the lock means nothing
-                      // to anyone but themselves.
-                      skin: effectiveCardSkin(
-                        identities?[entry.deckOwnerUid]?.cardSkinId,
-                        starTotal: identities?[entry.deckOwnerUid]
-                                ?.cardGameStarTotal ??
-                            0,
-                        allUnlocked: kCardSkinsAllUnlocked,
-                      ),
-                      caption: iChoose
-                          ? s.battleChooseYourCard
-                          : s.battleOpponentChoosing,
-                      flashColor: null,
+              child: choosing && iChoose
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Held down to roughly the height of the panel
+                        // beside it. At full size the card dwarfed the
+                        // sentence it is paired with, and the two read
+                        // as unrelated things that happened to share a
+                        // row rather than as one instruction.
+                        Flexible(
+                          child: SizedBox(
+                            height: 230,
+                            child: _faceDownCard(
+                              s,
+                              entry,
+                              identities,
+                              s.battleCardToSend,
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: BattleChoosePrompt(
+                              text: s.battleChooseInstruction,
+                            ),
+                          ),
+                        ),
+                      ],
                     )
+                  : choosing
+                  ? _faceDownCard(s, entry, identities, s.battleOpponentChoosing)
                   : BattleCardFace(
                       prompt: card.prompt,
                       caption: isAnswerer
@@ -430,7 +438,10 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           const SizedBox(height: 12),
           if (choosing && iChoose)
             BattleHand(
-              title: s.battleChooseYourCard,
+              title: s.battleHandTitle,
+              // The hand shrinks as it is played, so the denominator is
+              // the deck each player was dealt, not what is left of it.
+              totalCards: kBattleTotalRounds ~/ 2,
               secondsLeft: _choiceSecondsLeft(match, ownerIsBot: ownerIsBot),
               cards: _handCards(match, myUid, cardData),
               onPlay: (cardId) => ref.read(battleRepositoryProvider).playCard(
@@ -551,6 +562,36 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     return _flashWasCorrect
         ? context.palette.secondaryBlue
         : context.palette.errorRed;
+  }
+
+
+  /// The face-down card, shared by both choosing states.
+  ///
+  /// The skin belongs to whoever owns this card, so what you see while
+  /// waiting is your opponent's, and what they see while you choose is
+  /// yours. Resolved through the unlock rule rather than read raw: an
+  /// achievement skin whose owner has dropped below its threshold has to
+  /// stop showing on *their* opponent's screen too, or the lock means
+  /// nothing to anyone but themselves.
+  Widget _faceDownCard(
+    AppStrings s,
+    TurnOrderEntry entry,
+    Map<String, LeaderboardEntry>? identities,
+    String caption,
+  ) {
+    return BattleCardFace(
+      // Face down while its owner decides: revealing the dealt card here
+      // would show the answerer a card that may never be played.
+      prompt: '',
+      faceDown: true,
+      skin: effectiveCardSkin(
+        identities?[entry.deckOwnerUid]?.cardSkinId,
+        starTotal: identities?[entry.deckOwnerUid]?.cardGameStarTotal ?? 0,
+        allUnlocked: kCardSkinsAllUnlocked,
+      ),
+      caption: caption,
+      flashColor: null,
+    );
   }
 
   Widget _buildAnswerInput(

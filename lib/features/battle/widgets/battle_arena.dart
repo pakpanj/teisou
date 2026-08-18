@@ -750,6 +750,7 @@ class BattleHand extends StatelessWidget {
     required this.onPlay,
     required this.secondsLeft,
     required this.title,
+    required this.totalCards,
   });
 
   /// Prompt text per card, in hand order, paired with its card id.
@@ -760,6 +761,12 @@ class BattleHand extends StatelessWidget {
   /// this round goes out on its own, so this is a nudge, not a wall.
   final int secondsLeft;
   final String title;
+
+  /// How many cards the hand started with, for the `left / total`
+  /// counter. A hand that only ever shrinks needs its denominator said
+  /// out loud, or "3 cards" reads as a small hand rather than a nearly
+  /// spent one.
+  final int totalCards;
 
   @override
   Widget build(BuildContext context) {
@@ -781,15 +788,38 @@ class BattleHand extends StatelessWidget {
                   color: palette.textNavy,
                 ),
               ),
-              Text(
-                '${secondsLeft}s',
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.bold,
-                  color: secondsLeft <= 3
-                      ? palette.errorRed
-                      : palette.textNavy.withValues(alpha: 0.6),
-                ),
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 9,
+                      vertical: 2,
+                    ),
+                    decoration: BoxDecoration(
+                      color: palette.hiraganaCardBg,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      '${cards.length} / $totalCards',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                        color: palette.textNavy,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    '${secondsLeft}s',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: secondsLeft <= 3
+                          ? palette.errorRed
+                          : palette.textNavy.withValues(alpha: 0.6),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -804,6 +834,11 @@ class BattleHand extends StatelessWidget {
             separatorBuilder: (_, _) => const SizedBox(width: 8),
             itemBuilder: (context, i) => _HandCard(
               prompt: cards[i].prompt,
+              // Cycled by position rather than by content, so the hand
+              // looks like a hand of cards instead of a row of identical
+              // buttons — and so a card keeps its colour as the ones
+              // beside it are played.
+              tint: _handTints(palette)[i % _handTints(palette).length],
               onTap: () => onPlay(cards[i].cardId),
             ),
           ),
@@ -813,17 +848,29 @@ class BattleHand extends StatelessWidget {
   }
 }
 
+List<Color> _handTints(AppPalette palette) => [
+      palette.hiraganaCardBg,
+      palette.katakanaCardBg,
+      palette.tertiaryAmberCardBg,
+      palette.mutedSurface,
+    ];
+
 class _HandCard extends StatelessWidget {
-  const _HandCard({required this.prompt, required this.onTap});
+  const _HandCard({
+    required this.prompt,
+    required this.tint,
+    required this.onTap,
+  });
 
   final String prompt;
+  final Color tint;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
     return Material(
-      color: palette.cardWhite,
+      color: tint,
       borderRadius: BorderRadius.circular(12),
       elevation: 2,
       child: InkWell(
@@ -845,7 +892,7 @@ class _HandCard extends StatelessWidget {
               Container(
                 height: 8,
                 decoration: BoxDecoration(
-                  color: palette.secondaryBlue.withValues(alpha: 0.55),
+                  color: Colors.white.withValues(alpha: 0.7),
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(10),
                   ),
@@ -1040,4 +1087,81 @@ class _Stat extends StatelessWidget {
       ),
     );
   }
+}
+
+
+/// What to do, said beside the card it is about — the redesign's
+/// choosing panel.
+///
+/// The face-down card and this sit side by side with an arrow between
+/// them, because the sentence is about *that* card: the one going to the
+/// opponent as soon as a choice is made. A caption under the card said
+/// the same words with none of that connection.
+class BattleChoosePrompt extends StatelessWidget {
+  const BattleChoosePrompt({super.key, required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // A dashed arrow, drawn rather than typed: an em-dash chain in a
+        // Text would not line up with anything and cannot bend.
+        SizedBox(
+          width: 44,
+          height: 14,
+          child: CustomPaint(painter: _DashedArrow(palette.primaryCoral)),
+        ),
+        const SizedBox(width: 6),
+        Flexible(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            decoration: BoxDecoration(
+              color: palette.cardWhite,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(
+                color: palette.primaryCoral.withValues(alpha: 0.35),
+              ),
+            ),
+            child: Text(
+              text,
+              style: TextStyle(
+                fontSize: 12.5,
+                height: 1.35,
+                fontWeight: FontWeight.w600,
+                color: palette.textNavy,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _DashedArrow extends CustomPainter {
+  _DashedArrow(this.color);
+
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = 2
+      ..strokeCap = StrokeCap.round;
+    final y = size.height / 2;
+    for (var x = 0.0; x < size.width - 10; x += 9) {
+      canvas.drawLine(Offset(x, y), Offset(x + 4, y), paint);
+    }
+    final tip = size.width;
+    canvas.drawLine(Offset(tip - 7, y - 4), Offset(tip, y), paint);
+    canvas.drawLine(Offset(tip - 7, y + 4), Offset(tip, y), paint);
+  }
+
+  @override
+  bool shouldRepaint(_DashedArrow old) => old.color != color;
 }

@@ -18,6 +18,7 @@ void main() {
         body: BattleHand(
           title: 'Pilih kartu',
           secondsLeft: 7,
+          totalCards: 20,
           cards: const [
             (cardId: 'kana_a', prompt: 'あ'),
             (cardId: 'kana_ki', prompt: 'き'),
@@ -52,5 +53,32 @@ void main() {
       (tester) async {
     await tester.pumpWidget(host(onPlay: (_) {}));
     expect(find.text('7s'), findsOneWidget);
+
+  });
+
+  testWidgets('says how much of the hand is left, not just what is in it',
+      (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: BattleHand(
+            title: 'Kartu di tanganmu',
+            secondsLeft: 7,
+            totalCards: 20,
+            cards: const [
+              (cardId: 'kana_a', prompt: 'あ'),
+              (cardId: 'kana_ki', prompt: 'き'),
+              (cardId: 'kana_zu', prompt: 'ず'),
+            ],
+            onPlay: (_) {},
+          ),
+        ),
+      ),
+    );
+
+    // Three cards left of twenty. Without the denominator this reads
+    // as a small hand rather than a nearly spent one, which is the
+    // opposite of what it means.
+    expect(find.text('3 / 20'), findsOneWidget);
   });
 }
