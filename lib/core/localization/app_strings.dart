@@ -1467,6 +1467,10 @@ class AppStrings {
             'If nobody\'s found within 20 seconds, you\'ll automatically '
             'play a bot instead.',
       );
+  String get battleMatchmakingOffline => _t(
+        'Tidak bisa terhubung. Cek koneksimu, lalu coba lagi.',
+        'Cannot connect. Check your connection and try again.',
+      );
   String get battleMatchmakingSearchButton =>
       _t('Cari Lawan', 'Find Opponent');
   String battleMatchmakingWaiting(int secondsLeft) => _t(

@@ -8,6 +8,7 @@ import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/mascot_widget.dart';
 import '../../data/models/battle_match.dart';
+import '../../data/repositories/battle_repository.dart';
 import 'battle_screen.dart';
 
 /// Where the challenger waits after sending a "Tantang".
@@ -57,9 +58,22 @@ class _BattleInviteWaitingScreenState
 
   bool _cancelling = false;
 
+  /// Captured in [initState] so [dispose] can retract the challenge
+  /// without touching `ref`.
+  ///
+  /// **Assigned there rather than as a `late final` initialiser**, which
+  /// was the first attempt and did nothing: `late` runs its initialiser
+  /// on first *access*, and the only access is in `dispose` — so the
+  /// provider read still happened at exactly the moment it was supposed
+  /// to be avoided, threw against a defunct element, and the challenge
+  /// stayed live. Caught by testing the retraction on two devices and
+  /// watching the invited player walk into the match anyway.
+  late final BattleRepository _battles;
+
   @override
   void initState() {
     super.initState();
+    _battles = ref.read(battleRepositoryProvider);
     // Only to redraw the countdown; expiry itself is decided by
     // comparing against `expiresAt`, never by counting ticks — a screen
     // that slept through a lock/unlock would otherwise think it still
@@ -87,8 +101,7 @@ class _BattleInviteWaitingScreenState
     // nothing useful to do with a failure at this point anyway. The
     // invite's own two-minute expiry is the backstop.
     if (!_opened && !_cancelling) {
-      ref
-          .read(battleRepositoryProvider)
+      _battles
           .respondToMatchInvite(matchId: widget.matchId, accept: false)
           .catchError((Object _) => false);
     }
@@ -107,9 +120,10 @@ class _BattleInviteWaitingScreenState
     // two minutes anyway, so a failed write here must not trap the
     // challenger on this screen.
     try {
-      await ref
-          .read(battleRepositoryProvider)
-          .respondToMatchInvite(matchId: widget.matchId, accept: false);
+      await _battles.respondToMatchInvite(
+        matchId: widget.matchId,
+        accept: false,
+      );
     } catch (_) {}
     if (mounted) Navigator.of(context).pop();
   }

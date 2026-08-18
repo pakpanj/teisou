@@ -46,6 +46,12 @@ class _BattleMatchmakingBodyState
   /// is how a bar ends up out of step with the countdown it draws.
   static const _searchSeconds = 20;
 
+  /// How long any single network call here is allowed to take before it
+  /// is treated as unreachable. Every call on this screen is either
+  /// optional or has something better to do than wait: a request that
+  /// cannot be answered is not worth a spinner with no end.
+  static const _networkDeadline = Duration(seconds: 8);
+
   _MatchmakingState _state = _MatchmakingState.idle;
   int _secondsLeft = _searchSeconds;
   String? _error;
@@ -175,21 +181,39 @@ class _BattleMatchmakingBodyState
   /// `BattleTestStartScreen`'s "Lawan Bot" button already uses.
   Future<void> _giveUpAndFallBackToBot(CardGameTier tier, String myUid) async {
     _resultSubscription?.cancel();
+    if (!mounted) return;
+    // Flipped **before** any network call, not after. The late-match
+    // check below used to come first, and offline it never answered — so
+    // the screen sat on "Menunggu lawan... 1s" with the countdown
+    // finished and nothing left running. Seen on a device with its radios
+    // off, which is the same condition an iPhone with no Firebase
+    // configuration is permanently in.
+    setState(() => _state = _MatchmakingState.fallingBackToBot);
 
-    final lateMatchId =
-        await ref.read(matchmakingRepositoryProvider).getMatchResult(myUid);
+    // A pairing that landed in the last moment before the clock ran out.
+    // Worth checking, not worth waiting on: if the answer cannot arrive,
+    // going on to the bot is the better outcome.
+    final lateMatchId = await ref
+        .read(matchmakingRepositoryProvider)
+        .getMatchResult(myUid)
+        .timeout(_networkDeadline, onTimeout: () => null)
+        .catchError((Object _) => null);
+    if (!mounted) return;
     if (lateMatchId != null) {
       _joinMatch(lateMatchId, tier, myUid);
       return;
     }
 
-    if (!mounted) return;
-    setState(() => _state = _MatchmakingState.fallingBackToBot);
-
     try {
-      await ref
-          .read(matchmakingRepositoryProvider)
-          .leaveQueue(tier: tier, uid: myUid);
+      // Not awaited: leaving the queue is cleanup, and a leftover node is
+      // a harmless no-op for the next attempt (see
+      // `MatchmakingRepository`). Waiting on it only ever delays a match.
+      unawaited(
+        ref
+            .read(matchmakingRepositoryProvider)
+            .leaveQueue(tier: tier, uid: myUid)
+            .catchError((Object _) {}),
+      );
       _queuedTier = null;
 
       final cardData = await ref.read(battleCardDataProvider.future);
@@ -198,14 +222,28 @@ class _BattleMatchmakingBodyState
         allKana: cardData.$1,
         allKanji: cardData.$2,
       );
-      final matchId = await ref.read(battleRepositoryProvider).createMatch(
+      // The one call here that genuinely has to reach the server —
+      // there is no match to open without it. Given a deadline rather
+      // than left to hang, because a Firestore write offline simply
+      // never completes, and a spinner that waits forever tells the
+      // learner nothing about why.
+      final matchId = await ref
+          .read(battleRepositoryProvider)
+          .createMatch(
             firstCandidateUid: myUid,
             firstCandidateDeck: deck,
             secondCandidateUid: battleBotUid,
             secondCandidateDeck: deck,
             cardTierContent: tier.cardContent,
-          );
+          )
+          .timeout(_networkDeadline);
       await _openMatch(matchId);
+    } on TimeoutException {
+      if (!mounted) return;
+      setState(() {
+        _state = _MatchmakingState.idle;
+        _error = ref.read(appStringsProvider).battleMatchmakingOffline;
+      });
     } catch (e) {
       if (!mounted) return;
       setState(() {
@@ -221,10 +259,16 @@ class _BattleMatchmakingBodyState
     _resultSubscription?.cancel();
     _countdownTimer?.cancel();
     if (myUid != null && tier != null) {
-      await ref
-          .read(matchmakingRepositoryProvider)
-          .leaveQueue(tier: tier, uid: myUid);
-      await ref.read(matchmakingRepositoryProvider).clearMatchResult(myUid);
+      // Cancelling must never depend on the network. These were awaited,
+      // so with no connection the button did nothing at all — and it is
+      // the only control on the screen in that state.
+      final matchmaking = ref.read(matchmakingRepositoryProvider);
+      unawaited(
+        matchmaking.leaveQueue(tier: tier, uid: myUid).catchError((Object _) {}),
+      );
+      unawaited(
+        matchmaking.clearMatchResult(myUid).catchError((Object _) {}),
+      );
     }
     if (!mounted) return;
     setState(() {
