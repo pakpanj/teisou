@@ -552,12 +552,40 @@ class BattleBackdrop extends StatelessWidget {
 
   final Widget child;
 
+  /// Painted art if it exists, falling petals drawn in code if it does
+  /// not.
+  ///
+  /// **Two files, because this app has a dark mode.** One bright sakura
+  /// scene is wrong at night and one night scene is wrong by day, so the
+  /// pair is picked by theme brightness — the same `_light`/`_dark`
+  /// convention `clan_banner_light.png` already uses, rather than a
+  /// second naming scheme for the same idea.
+  ///
+  /// The painted petals stay as the fallback rather than being deleted.
+  /// They are what every one of these screens has looked like until now,
+  /// so a missing or broken file leaves the mode looking exactly as it
+  /// did rather than leaving a blank rectangle — the same contract
+  /// `RankCrest` and `CardSkinBack` keep.
+  ///
+  /// The art is not overlaid *on* the petals: the scene carries its own,
+  /// and drawing both would double them.
+  static String assetFor(Brightness brightness) =>
+      brightness == Brightness.dark
+          ? 'assets/backgrounds/battle_bg_dark.png'
+          : 'assets/backgrounds/battle_bg_light.png';
+
   @override
   Widget build(BuildContext context) {
+    final palette = context.palette;
     return Stack(
       children: [
         Positioned.fill(
-          child: CustomPaint(painter: _PetalPainter(context.palette)),
+          child: Image.asset(
+            assetFor(Theme.of(context).brightness),
+            fit: BoxFit.cover,
+            errorBuilder: (context, _, _) =>
+                CustomPaint(painter: _PetalPainter(palette)),
+          ),
         ),
         child,
       ],
