@@ -30,6 +30,12 @@ class CardSkinPickerBody extends ConsumerStatefulWidget {
 class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
   bool _saving = false;
 
+  /// Which family is on show. `null` is "Semua"; [_owned] is the one
+  /// filter that cuts across families rather than picking one, which is
+  /// why it is a separate flag instead of a fifth source.
+  CardSkinSource? _filter;
+  bool _owned = false;
+
   Future<void> _select(CardSkinPreset skin, {required bool unlocked}) async {
     final s = ref.read(appStringsProvider);
     if (!unlocked) {
@@ -77,6 +83,7 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
       CardSkinSource.achievement =>
         s.cardSkinNeedsStars(skin.starsRequired, _starTotal),
       CardSkinSource.paid => s.cardSkinShopSoon,
+      CardSkinSource.event => s.cardSkinEventLocked,
       CardSkinSource.free => '',
     };
   }
@@ -108,6 +115,49 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
                 color: palette.textNavy.withValues(alpha: 0.7),
               ),
             ),
+            const SizedBox(height: 12),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  _FilterChip(
+                    label: s.cardSkinFilterAll,
+                    selected: _filter == null && !_owned,
+                    onTap: () => setState(() {
+                      _filter = null;
+                      _owned = false;
+                    }),
+                  ),
+                  _FilterChip(
+                    label: s.cardSkinFilterOwned,
+                    selected: _owned,
+                    onTap: () => setState(() {
+                      _owned = true;
+                      _filter = null;
+                    }),
+                  ),
+                  for (final source in CardSkinSource.values)
+                    _FilterChip(
+                      label: s.cardSkinSectionTitle(source),
+                      selected: _filter == source && !_owned,
+                      onTap: () => setState(() {
+                        _filter = source;
+                        _owned = false;
+                      }),
+                    ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              // The one thing a player buying a cosmetic actually needs
+              // promised: it changes nothing about how a match goes.
+              s.cardSkinCosmeticOnly,
+              style: TextStyle(
+                fontSize: 11,
+                color: palette.textNavy.withValues(alpha: 0.55),
+              ),
+            ),
             if (kCardSkinsAllUnlocked) ...[
               const SizedBox(height: 10),
               // Said out loud on purpose: someone looking at nine
@@ -125,7 +175,8 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
                 ),
               ),
             ],
-            for (final source in CardSkinSource.values) ...[
+            for (final source in CardSkinSource.values)
+              if (_filter == null || _filter == source) ...[
               const SizedBox(height: 22),
               _SectionHeader(
                 title: s.cardSkinSectionTitle(source),
@@ -144,6 +195,12 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
                 ),
                 children: [
                   for (final skin in CardSkinPresets.ofSource(source))
+                    if (!_owned ||
+                        isCardSkinUnlocked(
+                          skin,
+                          starTotal: starTotal,
+                          allUnlocked: kCardSkinsAllUnlocked,
+                        ))
                     Builder(
                       builder: (context) {
                         final unlocked = isCardSkinUnlocked(
@@ -303,6 +360,49 @@ class _SkinTile extends StatelessWidget {
               ),
             ),
         ],
+      ),
+    );
+  }
+}
+
+
+/// One family filter, in the redesign's pill style.
+class _FilterChip extends StatelessWidget {
+  const _FilterChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+          decoration: BoxDecoration(
+            color: selected ? palette.primaryCoral : palette.cardWhite,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: selected ? palette.primaryCoral : palette.divider,
+            ),
+          ),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: selected ? FontWeight.bold : FontWeight.normal,
+              color: selected ? Colors.white : palette.textNavy,
+            ),
+          ),
+        ),
       ),
     );
   }

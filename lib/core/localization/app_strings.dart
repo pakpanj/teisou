@@ -1467,6 +1467,40 @@ class AppStrings {
             'If nobody\'s found within 20 seconds, you\'ll automatically '
             'play a bot instead.',
       );
+  // --- Card Game Mode: lobby, result, skin picker (redesign) ---
+  String get cardGameWordmark => _t('TEISOU BATTLE', 'TEISOU BATTLE');
+  String get cardGameWordmarkSub =>
+      _t('Card Battle Kana', 'Card Battle Kana');
+  String get cardGameLobbyDeckTitle => _t('Dekmu', 'Your deck');
+  String cardGameLobbyDeckCount(int count) =>
+      _t('$count kartu', '$count cards');
+  String get cardGameSearchSubtitle =>
+      _t('Mulai pertandingan', 'Start a match');
+  String get battleSearchingTitle =>
+      _t('Mencari lawan...', 'Finding an opponent...');
+  String get battleSearchingSubtitle => _t(
+        'Mencocokkan kamu dengan pemain lain',
+        'Matching you with another player',
+      );
+  String get battleStatCorrect => _t('Benar', 'Correct');
+  String get battleStatWrong => _t('Salah', 'Wrong');
+  String get battleStatCards => _t('Kartu', 'Cards');
+  String get battleStatDuration => _t('Durasi', 'Duration');
+  String get cardSkinFilterAll => _t('Semua', 'All');
+  String get cardSkinFilterOwned => _t('Dimiliki', 'Unlocked');
+  String get cardSkinCosmeticOnly => _t(
+        'Skin hanya mengubah tampilan kartu — tidak mempengaruhi kekuatan.',
+        'Skins only change how a card looks — they change nothing else.',
+      );
+  String get cardSkinSectionEvent => _t('Event', 'Event');
+  String get cardSkinSectionEventSubtitle => _t(
+        'Dibagikan saat acara tertentu. Tidak dijual, tidak dari bintang.',
+        'Handed out during an event. Not sold, not earned with stars.',
+      );
+  String get cardSkinEventLocked => _t(
+        'Belum dibagikan — tunggu acaranya.',
+        'Not handed out yet — wait for the event.',
+      );
   String get battleMatchmakingOffline => _t(
         'Tidak bisa terhubung. Cek koneksimu, lalu coba lagi.',
         'Cannot connect. Check your connection and try again.',
@@ -1566,6 +1600,7 @@ class AppStrings {
         CardSkinSource.free => _t('Gratis', 'Free'),
         CardSkinSource.achievement => _t('Pencapaian', 'Achievement'),
         CardSkinSource.paid => _t('Toko', 'Shop'),
+        CardSkinSource.event => _t('Event', 'Event'),
       };
   String cardSkinSectionSubtitle(CardSkinSource source) => switch (source) {
         CardSkinSource.free =>
@@ -1579,6 +1614,11 @@ class AppStrings {
         CardSkinSource.paid => _t(
             'Dibeli di toko. Tidak bisa didapat dengan bintang.',
             'Bought in the shop. Stars will not open these.',
+          ),
+        CardSkinSource.event => _t(
+            'Dibagikan saat acara tertentu. Tidak dijual, bukan dari '
+                'bintang.',
+            'Handed out during an event. Not sold, not earned with stars.',
           ),
       };
   String cardSkinNeedsStars(int required, int owned) => _t(

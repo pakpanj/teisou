@@ -142,6 +142,11 @@ class BattleMatch {
   /// edit the turn order could rewrite a round it had already lost.
   final Map<int, String> playedCards;
 
+  /// When the match document was written. Absent on every match made
+  /// before this field existed, which is why the result screen shows a
+  /// dash rather than a wrong duration for those.
+  final DateTime? createdAt;
+
   /// Whether an invited opponent has answered yet — see
   /// [BattleInviteState].
   ///
@@ -171,6 +176,7 @@ class BattleMatch {
     this.decks = const {},
     this.playedCards = const {},
     this.inviteState = BattleInviteState.none,
+    this.createdAt,
   });
 
   /// Nobody should be playing this match yet — the invited player has
@@ -256,6 +262,7 @@ class BattleMatch {
           ) ??
           const {},
       inviteState: BattleInviteStateX.fromKey(map['inviteState'] as String?),
+      createdAt: _toDateTime(map['createdAt']),
     );
   }
 
@@ -274,6 +281,7 @@ class BattleMatch {
     // actually starts the clock.
     'turnStartedAt': FieldValue.serverTimestamp(),
     'inviteState': inviteState.key,
+    'createdAt': FieldValue.serverTimestamp(),
     'clientResult': null,
     'officialScore': {for (final uid in players) uid: 0},
     'result': null,

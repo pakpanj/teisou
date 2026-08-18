@@ -27,6 +27,16 @@ enum CardSkinSource {
   /// Bought with real money. Stars must never open one either, or the
   /// paid family becomes the poor relation of the earned one.
   paid,
+
+  /// Handed out during an event, and only then. Neither money nor stars
+  /// opens one — which is the whole point: it dates you. Someone playing
+  /// with a Tanabata skin was here that July, and no amount of either
+  /// currency can buy that later.
+  ///
+  /// **Nothing grants these yet.** There is no event system, so every
+  /// one shows as locked, and the picker says why rather than dangling a
+  /// price that does not exist.
+  event,
 }
 
 /// A skin a player wears on the cards they play.
@@ -194,6 +204,77 @@ class CardSkinPresets {
       darkFace: true,
       illustrated: true,
     ),
+    // --- Event: dibagikan saat acara, tidak dijual, bukan dari bintang ---
+    CardSkinPreset(
+      id: 'moonlit_sakura',
+      label: 'Sakura Rembulan',
+      labelEn: 'Moonlit Sakura',
+      pattern: CardSkinPattern.sakura,
+      start: Color(0xFFFDE6EF),
+      end: Color(0xFFE7A9C6),
+      source: CardSkinSource.event,
+      illustrated: true,
+    ),
+    CardSkinPreset(
+      id: 'great_wave',
+      label: 'Ombak Besar',
+      labelEn: 'Great Wave',
+      pattern: CardSkinPattern.seigaiha,
+      start: Color(0xFFE8F1F8),
+      end: Color(0xFF9BBBD4),
+      source: CardSkinSource.event,
+      illustrated: true,
+    ),
+    CardSkinPreset(
+      id: 'kitsune',
+      label: 'Kitsune',
+      labelEn: 'Kitsune',
+      pattern: CardSkinPattern.asanoha,
+      start: Color(0xFFFFF0E2),
+      end: Color(0xFFE8A66A),
+      source: CardSkinSource.event,
+      illustrated: true,
+    ),
+    CardSkinPreset(
+      id: 'butterfly_dream',
+      label: 'Mimpi Kupu-kupu',
+      labelEn: 'Butterfly Dream',
+      pattern: CardSkinPattern.stars,
+      start: Color(0xFFF3ECFB),
+      end: Color(0xFFBFA3E0),
+      source: CardSkinSource.event,
+      illustrated: true,
+    ),
+    CardSkinPreset(
+      id: 'tanabata',
+      label: 'Tanabata',
+      labelEn: 'Tanabata',
+      pattern: CardSkinPattern.stars,
+      start: Color(0xFFEAF2FB),
+      end: Color(0xFF9CB6DC),
+      source: CardSkinSource.event,
+      illustrated: true,
+    ),
+    CardSkinPreset(
+      id: 'hina_matsuri',
+      label: 'Hina Matsuri',
+      labelEn: 'Hina Matsuri',
+      pattern: CardSkinPattern.sakura,
+      start: Color(0xFFFFF0F4),
+      end: Color(0xFFE9A7BC),
+      source: CardSkinSource.event,
+      illustrated: true,
+    ),
+    CardSkinPreset(
+      id: 'crimson_oni',
+      label: 'Oni Merah',
+      labelEn: 'Crimson Oni',
+      pattern: CardSkinPattern.plain,
+      start: Color(0xFFF6DCD8),
+      end: Color(0xFFB4553F),
+      source: CardSkinSource.event,
+      illustrated: true,
+    ),
     CardSkinPreset(
       id: 'sakura_gold',
       label: 'Sakura Emas',
@@ -262,6 +343,10 @@ bool isCardSkinUnlocked(
     CardSkinSource.free => true,
     CardSkinSource.achievement => starTotal >= skin.starsRequired,
     CardSkinSource.paid => owned,
+    // Same test as a bought skin, for now with nothing that can set it:
+    // no event has ever been run, so this is always false and the picker
+    // explains rather than dangles.
+    CardSkinSource.event => owned,
   };
 }
 

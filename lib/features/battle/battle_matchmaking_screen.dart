@@ -13,6 +13,7 @@ import '../../data/repositories/battle_repository.dart' show battleBotUid;
 import 'battle_challenge.dart' show cardTierContentLabel;
 import 'battle_screen.dart';
 import 'widgets/rank_standing.dart';
+import 'widgets/search_radar.dart';
 
 /// Card Game Mode's public-opponent matchmaking — Tahap 3 butir 10 in
 /// `NOTES_CARD_GAME_MODE.md`, "Pemasangan lawan publik". A manual test
@@ -75,6 +76,14 @@ class _BattleMatchmakingBodyState
       ref.read(matchmakingRepositoryProvider).clearMatchResult(myUid);
     }
     super.dispose();
+  }
+
+  /// `mm:ss`, so twenty seconds reads as a clock rather than a bare
+  /// number that could be anything.
+  static String _clock(int seconds) {
+    final m = (seconds ~/ 60).toString().padLeft(2, '0');
+    final sec = (seconds % 60).toString().padLeft(2, '0');
+    return '$m:$sec';
   }
 
   Future<void> _startSearching(CardGameTier tier) async {
@@ -342,35 +351,45 @@ class _BattleMatchmakingBodyState
           ],
         );
       case _MatchmakingState.searching:
+        final palette = context.palette;
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // The mascot waits with you. A bare spinner for twenty
-            // seconds is the longest this mode ever asks a child to sit
-            // still doing nothing.
-            const MascotWidget(mood: MascotMood.curious, size: 120),
-            const SizedBox(height: 12),
             Text(
-              s.battleMatchmakingWaiting(_secondsLeft),
+              s.battleSearchingTitle,
               style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: context.palette.textNavy,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: palette.primaryCoral,
               ),
             ),
-            const SizedBox(height: 10),
-            SizedBox(
-              width: 200,
-              child: LinearProgressIndicator(
-                // Counts down against the same 20 seconds the fallback
-                // uses, so the wait has a visible end rather than an
-                // indefinite spinner.
-                value: (_secondsLeft / _searchSeconds).clamp(0.0, 1.0),
-                minHeight: 6,
-                backgroundColor: context.palette.progressTrack,
+            const SizedBox(height: 2),
+            Text(
+              s.battleSearchingSubtitle,
+              style: TextStyle(
+                fontSize: 12,
+                color: palette.textNavy.withValues(alpha: 0.6),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
+            // The mascot waits with you, inside a dial that keeps
+            // moving. Twenty seconds is the longest this mode ever asks
+            // a child to sit still doing nothing.
+            const SearchRadar(),
+            const SizedBox(height: 14),
+            Text(
+              // The countdown as a clock rather than a sentence: it is
+              // the only number on this screen, so it should be the
+              // thing the eye lands on.
+              _clock(_secondsLeft),
+              style: TextStyle(
+                fontSize: 34,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1.5,
+                color: palette.textNavy,
+              ),
+            ),
+            const SizedBox(height: 16),
             OutlinedButton(
               onPressed: _cancel,
               child: Text(s.battleMatchmakingCancelButton),

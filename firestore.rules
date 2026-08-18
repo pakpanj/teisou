@@ -469,6 +469,10 @@ service cloud.firestore {
           && request.resource.data.get('scoredRounds', {}) == resource.data.get('scoredRounds', {})
           && request.resource.data.get('cardTierContent', '') == resource.data.get('cardTierContent', '')
           && request.resource.data.get('rankedMatch', true) == resource.data.get('rankedMatch', true)
+          // Stempel waktu pembuatan: dipakai layar hasil untuk menghitung
+          // durasi. Ditulis sekali saat create; kalau client boleh
+          // mengubahnya, durasi pertandingan bisa dikarang.
+          && request.resource.data.get('createdAt', null) == resource.data.get('createdAt', null)
           // Ditulis hanya oleh Cloud Function battle_stars.js (pergerakan
           // bintang hasil pertandingan ini). Kalau client boleh
           // menulisnya, layar hasil bisa dibuat mengaku naik bintang

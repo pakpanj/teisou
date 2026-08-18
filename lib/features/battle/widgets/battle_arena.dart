@@ -903,3 +903,141 @@ class _CornerMark extends StatelessWidget {
 
 /// A card back: seigaiha-style arcs, the wave pattern that is already
 /// this app's visual shorthand for "Japanese" on the home screen.
+
+
+/// The four numbers a player wants after a match, from the redesign's
+/// result panel.
+///
+/// **Right/wrong are this player's own answers, not the match's.** The
+/// score above already says who won; what this adds is how *you* did,
+/// which on a loss is the only encouraging thing on the screen.
+///
+/// A duration of `null` shows a dash rather than a guess: matches
+/// created before the start time was recorded genuinely cannot say how
+/// long they took, and inventing "00:00" would be worse than admitting
+/// it.
+class BattleResultStats extends StatelessWidget {
+  const BattleResultStats({
+    super.key,
+    required this.strings,
+    required this.correct,
+    required this.wrong,
+    required this.cards,
+    required this.duration,
+  });
+
+  final AppStrings strings;
+  final int correct;
+  final int wrong;
+  final int cards;
+  final Duration? duration;
+
+  static String _clock(Duration d) {
+    final m = d.inMinutes.remainder(60).toString().padLeft(2, '0');
+    final sec = d.inSeconds.remainder(60).toString().padLeft(2, '0');
+    return '$m:$sec';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        decoration: BoxDecoration(
+          color: palette.cardWhite,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: palette.divider),
+        ),
+        child: Row(
+          children: [
+            _Stat(
+              icon: Icons.check_circle,
+              tint: palette.secondaryBlue,
+              value: '$correct',
+              label: strings.battleStatCorrect,
+            ),
+            _Divider(palette: palette),
+            _Stat(
+              icon: Icons.cancel,
+              tint: palette.errorRed,
+              value: '$wrong',
+              label: strings.battleStatWrong,
+            ),
+            _Divider(palette: palette),
+            _Stat(
+              icon: Icons.style,
+              tint: palette.primaryCoral,
+              value: '$cards',
+              label: strings.battleStatCards,
+            ),
+            _Divider(palette: palette),
+            _Stat(
+              icon: Icons.timer_outlined,
+              tint: palette.textNavy,
+              value: duration == null ? '—' : _clock(duration!),
+              label: strings.battleStatDuration,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Divider extends StatelessWidget {
+  const _Divider({required this.palette});
+
+  final AppPalette palette;
+
+  @override
+  Widget build(BuildContext context) =>
+      Container(width: 1, height: 34, color: palette.divider);
+}
+
+class _Stat extends StatelessWidget {
+  const _Stat({
+    required this.icon,
+    required this.tint,
+    required this.value,
+    required this.label,
+  });
+
+  final IconData icon;
+  final Color tint;
+  final String value;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    return Expanded(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 18, color: tint),
+          const SizedBox(height: 4),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              value,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: palette.textNavy,
+              ),
+            ),
+          ),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 10,
+              color: palette.textNavy.withValues(alpha: 0.6),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

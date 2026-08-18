@@ -60,6 +60,8 @@ void main() {
     /// white or navy. Get it wrong and the glyph is black on black —
     /// invisible, on the one thing the player has to read.
     test('every illustrated skin says whether its middle is dark', () {
+      // Measured from the art itself, not guessed: every event skin came
+      // back light-centred, so only these three carry a light glyph.
       const dark = {'night_purple', 'dragon_black', 'neon_city'};
       for (final skin in CardSkinPresets.all.where((s) => s.illustrated)) {
         expect(

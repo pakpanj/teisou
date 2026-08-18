@@ -648,6 +648,22 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
         ref.watch(battleOpponentsProvider(match.players)).valueOrNull;
     final palette = context.palette;
 
+    // Counted over the rounds *I* answered. A deck owner never answers
+    // their own card, so counting every round would credit me with the
+    // opponent's mistakes alongside my own.
+    var correct = 0;
+    var wrong = 0;
+    for (var round = 0; round < match.turnOrder.length; round++) {
+      if (match.turnOrder[round].deckOwnerUid == myUid) continue;
+      final answered = _correctByRound[round];
+      if (answered == null) continue;
+      answered ? correct++ : wrong++;
+    }
+    final played = match.currentRound.clamp(0, match.turnOrder.length);
+    final started = match.createdAt;
+    final duration =
+        started == null ? null : DateTime.now().difference(started);
+
     return BattleBackdrop(
       child: ListView(
         padding: const EdgeInsets.symmetric(vertical: 20),
@@ -710,7 +726,15 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 18),
+          BattleResultStats(
+            strings: s,
+            correct: correct,
+            wrong: wrong,
+            cards: played,
+            duration: duration,
+          ),
+          const SizedBox(height: 18),
           StarResultCard(match: match, myUid: myUid, strings: s),
           const SizedBox(height: 22),
           BattleResultReview(
