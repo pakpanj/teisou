@@ -11,6 +11,7 @@ import '../../core/services/battle_score_tally.dart';
 import '../../core/services/battle_timer.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/kana_keyboard.dart';
+import 'recent_matches_providers.dart';
 import '../../data/models/battle_answer.dart';
 import '../../data/models/battle_match.dart';
 import '../../data/models/turn_order_entry.dart';
@@ -177,6 +178,10 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     _localClientResult = conclusion;
     _finishedAt = DateTime.now();
     ref.read(battleRepositoryProvider).setClientResult(widget.matchId, conclusion);
+    // The lobby's recent-matches list is read from a tab the card game
+    // shell keeps alive in an `IndexedStack`, so it is never disposed and
+    // would otherwise still be showing the list from before this match.
+    ref.invalidate(recentMatchesProvider);
     if (mounted) setState(() {});
   }
 

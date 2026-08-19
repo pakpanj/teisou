@@ -1571,6 +1571,14 @@ class AppStrings {
   // Arena pertandingan (tampilan kartu).
   String get battleYouLabel => _t('Kamu', 'You');
   String get battleOpponentLabel => _t('Lawan', 'Opponent');
+  String get recentMatchesTitle =>
+      _t('Pertandingan terakhir', 'Recent matches');
+  String get matchOutcomeWin => _t('Menang', 'Win');
+  String get matchOutcomeLoss => _t('Kalah', 'Loss');
+  String get matchOutcomeDraw => _t('Seri', 'Draw');
+  String matchAgainst(String opponent) =>
+      _t('lawan $opponent', 'vs $opponent');
+  String get battleOpponentUnknown => _t('Pemain', 'Player');
   String get battleBotName => _t('Bot', 'Bot');
   String get battleCardFromOpponent =>
       _t('Kartu dari lawan — jawab!', 'Their card — answer it!');

@@ -13,6 +13,7 @@ import '../../core/widgets/user_avatar.dart';
 import 'battle_matchmaking_screen.dart';
 import 'card_skin_picker_screen.dart';
 import 'deck_tab.dart';
+import 'widgets/recent_matches_section.dart';
 import 'shop_tab.dart';
 import 'widgets/battle_arena.dart';
 import 'widgets/rank_card.dart';
@@ -148,6 +149,9 @@ class _LobbyTab extends ConsumerWidget {
           const SizedBox(height: 14),
           _DeckStrip(rank: rank, strings: s),
           const SizedBox(height: 18),
+          // Renders nothing until there is history, so a new player sees
+          // the button move up rather than an empty heading.
+          const RecentMatchesSection(),
           Center(
             child: SizedBox(
               width: 280,

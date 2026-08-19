@@ -1,0 +1,33 @@
+{
+  "_comment": [
+    "Composite indexes Firestore cannot infer on its own.",
+    "",
+    "Kept here rather than only clicking the link in the error, for the same",
+    "reason firestore.rules lives in this repo: a console-only change exists",
+    "in exactly one project and is invisible to anyone reading the code. A",
+    "query that needs an index fails with FAILED_PRECONDITION until it is",
+    "deployed — `firebase deploy --only firestore:indexes`.",
+    "",
+    "Note that being correct in git is not the same as being deployed. The",
+    "clan feature already shipped once with rules that were right here and",
+    "absent from the live project, and every write silently permission-denied."
+  ],
+  "indexes": [
+    {
+      "_comment": [
+        "The card game lobby's recent-matches list:",
+        "  where('players', arrayContains: uid).orderBy('createdAt', desc)",
+        "`players` is a plain list, so array-contains finds a player's own",
+        "matches without any extra field, and the read rule on this",
+        "collection already restricts results to matches they were in."
+      ],
+      "collectionGroup": "battleMatches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "players", "arrayConfig": "CONTAINS" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

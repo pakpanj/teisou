@@ -164,6 +164,34 @@ class BattleRepository {
     ).snapshots().map((snapshot) => BattleMatch.fromMap(matchId, snapshot.data()!));
   }
 
+  /// The most recent matches [uid] played, newest first.
+  ///
+  /// `players` is a list, so `array-contains` finds them without any extra
+  /// field — and `firestore.rules` already restricts reads on this
+  /// collection to `request.auth.uid in resource.data.players`, so the
+  /// query can only ever return this player's own matches. Nothing deletes
+  /// finished matches, so this reaches all the way back.
+  ///
+  /// **Needs a composite index** (`players` array-contains + `createdAt`
+  /// descending). Firestore refuses the query until it exists and puts a
+  /// link to create it in the error, so a missing index shows up as an
+  /// empty list here rather than a broken screen.
+  ///
+  /// One-shot rather than a live listener: a finished match never changes
+  /// again, so there is nothing to listen for — the same reasoning the
+  /// clan ranking already uses.
+  Future<List<BattleMatch>> recentMatches(String uid, {int limit = 5}) async {
+    final snapshot = await _firestore
+        .collection(FirestorePaths.battleMatches)
+        .where('players', arrayContains: uid)
+        .orderBy('createdAt', descending: true)
+        .limit(limit)
+        .get();
+    return [
+      for (final doc in snapshot.docs) BattleMatch.fromMap(doc.id, doc.data()),
+    ];
+  }
+
   Future<BattleMatch?> getMatch(String matchId) async {
     final snapshot = await _matchDoc(matchId).get();
     final data = snapshot.data();
