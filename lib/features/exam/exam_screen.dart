@@ -27,6 +27,11 @@ class ExamScreen extends ConsumerStatefulWidget {
 class _ExamScreenState extends ConsumerState<ExamScreen> {
   int _currentIndex = 0;
   String? _selectedAnswer;
+
+  /// Whether [_selectedAnswer] has been confirmed and graded. Until it is,
+  /// the learner can change their pick — tapping used to be the commit,
+  /// which made a mis-tap unrecoverable.
+  bool _committed = false;
   final List<AnsweredQuestion> _answers = [];
   bool _submitting = false;
 
@@ -47,9 +52,16 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
   }
 
   void _selectAnswer(String answer, ExamQuestion question) {
-    if (_selectedAnswer != null) return;
+    if (_committed) return;
+    setState(() => _selectedAnswer = answer);
+  }
+
+  /// Grades the chosen answer and reveals which option was right.
+  void _confirm(ExamQuestion question) {
+    final answer = _selectedAnswer;
+    if (answer == null || _committed) return;
     setState(() {
-      _selectedAnswer = answer;
+      _committed = true;
       // The screen already reveals which option was right the moment one
       // is tapped, so the mascot adds encouragement here, not information
       // the exam was withholding.
@@ -76,6 +88,7 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
       setState(() {
         _currentIndex++;
         _selectedAnswer = null;
+        _committed = false;
         // Cleared with the question, or it would be praising the previous
         // answer over the next one.
         _reaction = null;
@@ -219,6 +232,7 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                           child: _OptionTile(
                             label: option,
                             selectedAnswer: _selectedAnswer,
+                            committed: _committed,
                             correctAnswer: question.correctAnswer,
                             onTap: () => _selectAnswer(option, question),
                           ),
@@ -240,7 +254,9 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                   child: ElevatedButton(
                     onPressed: _selectedAnswer == null || _submitting
                         ? null
-                        : () => _handleNext(questions),
+                        : (_committed
+                            ? () => _handleNext(questions)
+                            : () => _confirm(question)),
                     child: _submitting
                         ? const SizedBox(
                             width: 20,
@@ -250,7 +266,9 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                               color: Colors.white,
                             ),
                           )
-                        : Text(s.nextQuestionButton),
+                        : Text(_committed
+                            ? s.nextQuestionButton
+                            : s.checkAnswerButton),
                   ),
                 ),
               ),
@@ -264,22 +282,31 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
   }
 }
 
-enum _OptionState { neutral, correct, wrong }
+enum _OptionState { neutral, chosen, correct, wrong }
 
 class _OptionTile extends StatelessWidget {
   final String label;
   final String? selectedAnswer;
+
+  /// False while the learner is still choosing.
+  final bool committed;
   final String correctAnswer;
   final VoidCallback onTap;
 
   const _OptionTile({
     required this.label,
     required this.selectedAnswer,
+    required this.committed,
     required this.correctAnswer,
     required this.onTap,
   });
 
   _OptionState get _state {
+    if (!committed) {
+      return label == selectedAnswer
+          ? _OptionState.chosen
+          : _OptionState.neutral;
+    }
     if (selectedAnswer == null) return _OptionState.neutral;
     if (label == correctAnswer) return _OptionState.correct;
     if (label == selectedAnswer) return _OptionState.wrong;
@@ -289,7 +316,7 @@ class _OptionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = _state;
-    final answered = selectedAnswer != null;
+    final answered = committed;
 
     Color background;
     Color foreground;
@@ -321,6 +348,15 @@ class _OptionTile extends StatelessWidget {
         trailing =
             Icon(Icons.cancel, color: context.palette.errorRed, size: 20);
         break;
+      case _OptionState.chosen:
+        // "You picked this", not "this is right" — the answer colours must
+        // not appear before the learner has committed.
+        background = context.palette.primaryCoral.withValues(alpha: 0.12);
+        borderColor = context.palette.primaryCoral;
+        foreground = context.palette.textNavy;
+        trailing = Icon(Icons.radio_button_checked,
+            color: context.palette.primaryCoral, size: 20);
+        break;
       case _OptionState.neutral:
         background = context.palette.cardWhite;
         borderColor = context.palette.progressTrack;
@@ -338,7 +374,8 @@ class _OptionTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
-        onTap: answered ? null : onTap,
+        // Still tappable while uncommitted, so the pick can be changed.
+        onTap: committed ? null : onTap,
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),

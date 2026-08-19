@@ -43,6 +43,12 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
   int _index = 0;
   int _score = 0;
   int? _selected;
+
+  /// Whether [_selected] has been confirmed and graded. Until it is, the
+  /// learner can change their pick — tapping used to be the commit, so a
+  /// mis-tap could not be taken back even though a button sat right there
+  /// looking like the confirm step.
+  bool _committed = false;
   final List<QuizReviewEntry> _wrongAnswers = [];
 
   /// Held here rather than built in `build`: it remembers the run of
@@ -74,7 +80,14 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
   }
 
   void _select(int optionIndex) {
-    if (_selected != null) return;
+    if (_committed) return;
+    setState(() => _selected = optionIndex);
+  }
+
+  /// Grades the chosen option and reveals the answer.
+  void _confirm() {
+    final optionIndex = _selected;
+    if (optionIndex == null || _committed) return;
     final question = _questions[_index];
     final correct = optionIndex == question.correctIndex;
     // Guarded rather than indexed straight, so a question whose
@@ -85,7 +98,7 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
         ? question.options[question.correctIndex]
         : '';
     setState(() {
-      _selected = optionIndex;
+      _committed = true;
       if (correct) {
         _score++;
       } else {
@@ -111,6 +124,7 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
     setState(() {
       _index++;
       _selected = null;
+      _committed = false;
       // Cleared with the question: a reaction left standing would be
       // praising the previous answer over the next one.
       _reaction = null;
@@ -125,6 +139,7 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
       _index = 0;
       _score = 0;
       _selected = null;
+      _committed = false;
       _reaction = null;
       _wrongAnswers.clear();
       _coach.reset();
@@ -158,7 +173,6 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
 
   Widget _buildQuestion(AppStrings s) {
     final question = _questions[_index];
-    final answered = _selected != null;
 
     return Padding(
       padding: const EdgeInsets.all(24),
@@ -222,8 +236,10 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
               separatorBuilder: (_, _) => const SizedBox(height: 10),
               itemBuilder: (context, i) => _OptionTile(
                 text: question.options[i],
-                state: !answered
-                    ? _OptionState.neutral
+                state: !_committed
+                    ? (i == _selected
+                        ? _OptionState.chosen
+                        : _OptionState.neutral)
                     : i == question.correctIndex
                         ? _OptionState.correct
                         : i == _selected
@@ -240,13 +256,18 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: answered ? _next : null,
+              onPressed:
+                  _selected == null ? null : (_committed ? _next : _confirm),
               style: ElevatedButton.styleFrom(
                 backgroundColor: context.palette.primaryCoral,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
-              child: Text(_index >= _questions.length - 1 ? s.seeScore : s.continueLabel),
+              child: Text(!_committed
+                  ? s.checkAnswerButton
+                  : (_index >= _questions.length - 1
+                      ? s.seeScore
+                      : s.continueLabel)),
             ),
           ),
         ],
@@ -255,7 +276,7 @@ class _KotobaQuizScreenState extends ConsumerState<KotobaQuizScreen> {
   }
 }
 
-enum _OptionState { neutral, correct, wrong, disabled }
+enum _OptionState { neutral, chosen, correct, wrong, disabled }
 
 class _OptionTile extends StatelessWidget {
   final String text;
@@ -275,6 +296,12 @@ class _OptionTile extends StatelessWidget {
       case _OptionState.neutral:
         background = context.palette.cardWhite;
         break;
+      case _OptionState.chosen:
+        // "You picked this", not "this is right" — using the answer
+        // colours here would give the answer away before committing.
+        background = context.palette.primaryCoral.withValues(alpha: 0.12);
+        borderColor = context.palette.primaryCoral;
+        icon = Icons.radio_button_checked;
       case _OptionState.correct:
         background = context.palette.secondaryBlue.withValues(alpha: 0.15);
         borderColor = context.palette.secondaryBlue;
@@ -296,7 +323,11 @@ class _OptionTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(14),
       child: InkWell(
         borderRadius: BorderRadius.circular(14),
-        onTap: state == _OptionState.neutral ? onTap : null,
+        // Chosen stays tappable too, so the pick can be moved around
+        // freely until it is confirmed.
+        onTap: state == _OptionState.neutral || state == _OptionState.chosen
+            ? onTap
+            : null,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           decoration: BoxDecoration(

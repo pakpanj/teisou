@@ -843,6 +843,7 @@ class AppStrings {
   String get noQuestionsAvailable => _t('Soal tidak tersedia', 'No questions available');
   String get whatIsThisCharacterReading =>
       _t('Apa bacaan dari huruf ini?', "What's the reading of this character?");
+  String get checkAnswerButton => _t('Periksa Jawaban', 'Check Answer');
   String get nextQuestionButton => _t('Soal Berikutnya', 'Next Question');
 
   // What the loading screen names while each dataset is read. Short —

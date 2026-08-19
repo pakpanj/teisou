@@ -50,6 +50,11 @@ void main() {
 
     await tester.tap(find.text('benar 0'));
     await tester.pump(const Duration(milliseconds: 300));
+    // Tapping only picks now; the coach reacts once the answer is
+    // confirmed, which is the step this flow gained so a mis-tap
+    // can be taken back.
+    await tester.tap(find.text('Periksa Jawaban'));
+    await tester.pump(const Duration(milliseconds: 300));
 
     expect(find.byType(MascotWidget), findsOneWidget);
   });
@@ -61,6 +66,11 @@ void main() {
     await tester.pump();
 
     await tester.tap(find.text('salah 0'));
+    await tester.pump(const Duration(milliseconds: 300));
+    // Tapping only picks now; the coach reacts once the answer is
+    // confirmed, which is the step this flow gained so a mis-tap
+    // can be taken back.
+    await tester.tap(find.text('Periksa Jawaban'));
     await tester.pump(const Duration(milliseconds: 300));
 
     final bubble = tester.widgetList<Text>(
@@ -80,6 +90,11 @@ void main() {
 
     await tester.tap(find.text('benar 0'));
     await tester.pump(const Duration(milliseconds: 300));
+    // Tapping only picks now; the coach reacts once the answer is
+    // confirmed, which is the step this flow gained so a mis-tap
+    // can be taken back.
+    await tester.tap(find.text('Periksa Jawaban'));
+    await tester.pump(const Duration(milliseconds: 300));
     expect(find.byType(MascotWidget), findsOneWidget);
 
     await tester.tap(find.text('Soal Berikutnya'));
@@ -97,6 +112,11 @@ void main() {
     await tester.pump();
 
     await tester.tap(find.text('benar 0'));
+    await tester.pump(const Duration(milliseconds: 300));
+    // Tapping only picks now; the coach reacts once the answer is
+    // confirmed, which is the step this flow gained so a mis-tap
+    // can be taken back.
+    await tester.tap(find.text('Periksa Jawaban'));
     await tester.pump(const Duration(milliseconds: 300));
 
     final button = find.text('Soal Berikutnya');
@@ -120,6 +140,11 @@ void main() {
 
     for (var i = 0; i < 3; i++) {
       await tester.tap(find.text(i == 1 ? 'salah $i' : 'benar $i'));
+      await tester.pump(const Duration(milliseconds: 300));
+      // Tapping only picks now; the coach reacts once the answer is
+      // confirmed, which is the step this flow gained so a mis-tap
+      // can be taken back.
+      await tester.tap(find.text('Periksa Jawaban'));
       await tester.pump(const Duration(milliseconds: 300));
       await tester.tap(find.text(i == 2 ? 'Selesai' : 'Soal Berikutnya'));
       await tester.pump(const Duration(milliseconds: 300));

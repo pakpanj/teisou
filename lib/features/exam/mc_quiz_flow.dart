@@ -64,6 +64,9 @@ class McQuizFlow extends ConsumerStatefulWidget {
 class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   int _index = 0;
   int? _selected;
+  /// Whether [_selected] has been confirmed and graded. Until it is, the
+  /// learner can change their mind as often as they like.
+  bool _committed = false;
   int _score = 0;
 
   /// Every question answered wrong this session, in order — handed to
@@ -101,8 +104,20 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
     );
   }
 
+  /// Picks an option **without** grading it. Tapping used to be the
+  /// commit, which made a mis-tap unrecoverable — and the Next button
+  /// sitting right there implied the opposite, so the screen looked like
+  /// it had a confirm step it did not have. It has one now: this only
+  /// moves the highlight, and [_confirm] is what scores.
   void _select(int optionIndex) {
-    if (_selected != null) return;
+    if (_committed) return;
+    setState(() => _selected = optionIndex);
+  }
+
+  /// Grades the chosen option and reveals the answer.
+  void _confirm() {
+    final optionIndex = _selected;
+    if (optionIndex == null || _committed) return;
     final correctIndex = widget.correctIndexOf(_index);
     final correct = optionIndex == correctIndex;
     if (correct) _score++;
@@ -127,7 +142,7 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
       );
     }
     setState(() {
-      _selected = optionIndex;
+      _committed = true;
       _reaction = _coach.onAnswer(
         ref.read(appStringsProvider),
         correct: correct,
@@ -145,6 +160,7 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
     setState(() {
       _index++;
       _selected = null;
+      _committed = false;
       // Cleared with the question: a reaction left standing would be
       // praising the previous answer over the next question.
       _reaction = null;
@@ -197,6 +213,7 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
                       label: options[i],
                       index: i,
                       selectedIndex: _selected,
+                      committed: _committed,
                       correctIndex: correctIndex,
                       onTap: () => _select(i),
                       furiganaDictionary: furiganaDictionary,
@@ -218,11 +235,14 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
           child: SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: _selected == null ? null : _next,
+              onPressed:
+                  _selected == null ? null : (_committed ? _next : _confirm),
               child: Text(
-                _index >= widget.totalQuestions - 1
-                    ? s.done
-                    : s.nextQuestionButton,
+                !_committed
+                    ? s.checkAnswerButton
+                    : (_index >= widget.totalQuestions - 1
+                        ? s.done
+                        : s.nextQuestionButton),
               ),
             ),
           ),
@@ -232,12 +252,16 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   }
 }
 
-enum _OptionState { neutral, correct, wrong }
+enum _OptionState { neutral, chosen, correct, wrong }
 
 class _OptionTile extends StatelessWidget {
   final String label;
   final int index;
   final int? selectedIndex;
+
+  /// False while the learner is still choosing: the pick is shown but not
+  /// judged, and tapping another option simply moves it.
+  final bool committed;
   final int correctIndex;
   final VoidCallback onTap;
   final FuriganaDictionary? furiganaDictionary;
@@ -246,12 +270,16 @@ class _OptionTile extends StatelessWidget {
     required this.label,
     required this.index,
     required this.selectedIndex,
+    required this.committed,
     required this.correctIndex,
     required this.onTap,
     this.furiganaDictionary,
   });
 
   _OptionState get _state {
+    if (!committed) {
+      return index == selectedIndex ? _OptionState.chosen : _OptionState.neutral;
+    }
     if (selectedIndex == null) return _OptionState.neutral;
     if (index == correctIndex) return _OptionState.correct;
     if (index == selectedIndex) return _OptionState.wrong;
@@ -261,7 +289,7 @@ class _OptionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = _state;
-    final answered = selectedIndex != null;
+    final answered = committed;
 
     Color background;
     Color foreground;
@@ -293,6 +321,16 @@ class _OptionTile extends StatelessWidget {
         trailing =
             Icon(Icons.cancel, color: context.palette.errorRed, size: 20);
         break;
+      case _OptionState.chosen:
+        // Deliberately not blue or red: this is "you have picked this",
+        // not "this is right" — using the answer colours here would give
+        // the answer away before the learner has committed to it.
+        background = context.palette.primaryCoral.withValues(alpha: 0.12);
+        borderColor = context.palette.primaryCoral;
+        foreground = context.palette.textNavy;
+        trailing = Icon(Icons.radio_button_checked,
+            color: context.palette.primaryCoral, size: 20);
+        break;
       case _OptionState.neutral:
         background = context.palette.cardWhite;
         borderColor = context.palette.progressTrack;
@@ -310,7 +348,8 @@ class _OptionTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
-        onTap: answered ? null : onTap,
+        // Still tappable while uncommitted, so the pick can be changed.
+        onTap: committed ? null : onTap,
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
