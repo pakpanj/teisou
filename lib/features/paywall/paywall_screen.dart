@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/services/iap_service.dart';
 import '../../core/constants/iap_products.dart';
+import 'module_access.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 import '../../core/localization/app_strings.dart';
@@ -116,6 +117,15 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
             await ref
                 .read(progressRepositoryProvider)
                 .unlockAdReward(uid, widget.moduleId);
+            // **Without this the ad buys nothing.** `moduleAccessProvider`
+            // is a `FutureProvider.family` that reads the reward once and
+            // caches it, and its consumer sits in a Home tab held alive by
+            // `AutomaticKeepAliveClientMixin` — so it is never disposed and
+            // never refetches. The reward lands in Firestore, the card stays
+            // locked, and tapping it reopens this same paywall: a learner
+            // can watch the ad every time and never get in. Twice before in
+            // this app a write had no matching read; this is the same shape.
+            ref.invalidate(moduleAccessProvider);
           }
         } catch (_) {
           if (!mounted) return;

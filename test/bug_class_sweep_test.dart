@@ -136,4 +136,33 @@ void main() {
           'and leave the rest stale:\n${offenders.join('\n')}',
     );
   });
+
+  /// A cached read that a write never invalidates. The write lands, the
+  /// screen keeps showing the old answer, and the learner concludes the
+  /// feature is broken — which, from where they are standing, it is.
+  ///
+  /// This has now happened three times here: exam history (fixed with an
+  /// invalidate after each submit), the avatar gallery (a reward written and
+  /// never read back), and the module gate — where `moduleAccessProvider` is
+  /// a `FutureProvider.family` with no autoDispose, read from a Home tab
+  /// held alive by `AutomaticKeepAliveClientMixin`. Note that autoDispose
+  /// alone would not have saved it: a kept-alive consumer never lets the
+  /// provider dispose, which is exactly how the exam-history bug survived
+  /// its first fix.
+  test('granting an ad reward invalidates the gate that reads it', () {
+    final offenders = <String>[];
+    for (final file in dartFiles('lib')) {
+      final source = file.readAsStringSync();
+      if (!source.contains('.unlockAdReward(')) continue;
+      if (!source.contains('invalidate(moduleAccessProvider')) {
+        offenders.add(file.path);
+      }
+    }
+    expect(
+      offenders,
+      isEmpty,
+      reason: 'the reward is written but the gate keeps its cached "locked" '
+          'answer, so the ad buys nothing: ${offenders.join(", ")}',
+    );
+  });
 }
