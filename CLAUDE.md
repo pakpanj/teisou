@@ -10099,6 +10099,37 @@ passes a uid, confirmed to bite by removing one. That failure mode is
 worth a guard because the symptom is the worst kind: the money is taken
 and *then* the purchase reports failure.
 
+### Purchases are switched off (2026-08-19)
+
+`IapProducts.purchasesEnabled` is **`false`**. Everything above is
+compiled, tested and ready; it simply never reaches a store. Off because
+the four product ids do not exist in Play Console yet, so every buy
+could only end in "product not found" — a dead button reads as a broken
+app rather than as a shop that has not opened.
+
+**Enforced inside `IapService`, not by hiding buttons.** With it off,
+`load` contacts nothing (not even to ask whether a store exists), `buy`
+opens no sheet, `restore` asks for nothing. Hiding buttons alone leaves
+every other path to the store open, and the forgotten one is the one
+that takes money for a product that does not exist.
+
+Two consequences that are decisions, not side effects:
+
+- **Premium gating stays on**, so the rewarded-ad preview is now the
+  *only* way through a gated module and is deliberately kept. The buy
+  and restore buttons are replaced by one line saying purchases are not
+  live. Without that the paywall would be a dead end.
+- **The shop says "belum buka", not "toko tidak tersedia".** With
+  purchases off `isAvailable` is false, and the old wording blames the
+  phone for a decision made here. Skins stay browsable.
+
+Turning it back on is this one line **plus** the console work listed
+below — flipping it alone puts buttons in front of learners that still
+cannot complete. `test/iap_test.dart` pins that all three service entry
+points consult the switch and that nothing is offered while it is off;
+`paywall_screen_test.dart` follows the switch but requires the ad path
+either way.
+
 ### What is still open
 
 **Needs the user, not this repo:**
