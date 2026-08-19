@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/avatars.dart';
 import '../../../core/constants/frames.dart';
 import '../../../core/providers.dart';
+import '../identity_sync.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/user_profile.dart';
 import '../../paywall/paywall_screen.dart';
@@ -107,14 +108,12 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     bool consumeReward = false,
   }) async {
     try {
+      // The source of truth, and the only write whose failure means the
+      // avatar did not change. The mirrors below used to sit inside this
+      // try, so a leaderboard hiccup reported "avatar save failed" for an
+      // avatar that had in fact saved — and returned early, skipping the
+      // clan sync too.
       await ref.read(progressRepositoryProvider).updateAvatar(uid, type, value);
-      await ref.read(leaderboardRepositoryProvider).syncProfileInfo(
-            uid: uid,
-            displayName: displayName,
-            photoUrl: photoUrl,
-            avatarType: type,
-            avatarValue: value,
-          );
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -122,18 +121,16 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
       );
       return;
     }
-    // Best-effort — the leaderboard sync above already succeeded. See
-    // ClanRepository.syncMemberInfo's doc comment for why an avatar change
-    // needs its own clan-roster sync, not just the leaderboard one.
-    try {
-      await ref.read(clanRepositoryProvider).syncMemberInfo(
-            uid: uid,
-            displayName: displayName,
-            photoUrl: photoUrl,
-            avatarType: type,
-            avatarValue: value,
-          );
-    } catch (_) {}
+    // Every denormalized copy — leaderboard, clan rosters, friends — each
+    // best-effort and independent of the others.
+    await syncIdentityEverywhere(
+      ref,
+      uid: uid,
+      displayName: displayName,
+      photoUrl: photoUrl,
+      avatarType: type,
+      avatarValue: value,
+    );
     if (consumeReward) {
       // Best-effort only — the avatar itself already saved successfully
       // above, so a hiccup here must not surface as a failure.

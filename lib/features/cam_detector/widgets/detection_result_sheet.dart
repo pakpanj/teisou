@@ -141,7 +141,20 @@ class _DetectionResultSheetState extends ConsumerState<DetectionResultSheet> {
     );
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (uid != null) {
-      await ref.read(savedWordsRepositoryProvider).add(uid, word);
+      try {
+        await ref.read(savedWordsRepositoryProvider).add(uid, word);
+      } catch (_) {
+        // The local list is the source of truth and the repository now
+        // mirrors to Firestore in the background, so there is little left
+        // to fail here — but the spinner must clear either way rather than
+        // leaving the sheet stuck open with no message.
+        if (!mounted) return;
+        setState(() => _saving = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(ref.read(appStringsProvider).saveToLearningListFailed)),
+        );
+        return;
+      }
     }
     if (!mounted) return;
     setState(() => _saving = false);

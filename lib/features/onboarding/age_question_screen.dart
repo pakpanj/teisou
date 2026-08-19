@@ -31,7 +31,21 @@ class _AgeQuestionScreenState extends ConsumerState<AgeQuestionScreen> {
     final year = _year;
     if (year == null || _saving) return;
     setState(() => _saving = true);
-    await ref.read(adAudienceRepositoryProvider).setBirthYear(year);
+    try {
+      await ref.read(adAudienceRepositoryProvider).setBirthYear(year);
+    } catch (_) {
+      // **This screen is the app's front door**, and the button is disabled
+      // while saving — so an unguarded failure here left the spinner
+      // spinning for ever with no way past it, and no message. Not
+      // hypothetical either: the gate shows this screen when the *read*
+      // failed, which is exactly when the write is most likely to fail too.
+      if (!mounted) return;
+      setState(() => _saving = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(ref.read(appStringsProvider).ageQuestionSaveFailed)),
+      );
+      return;
+    }
     // The root listens to this, so re-reading it both dismisses this screen
     // and pushes the new configuration to AdMob.
     ref.invalidate(adAudienceProvider);

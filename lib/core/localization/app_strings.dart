@@ -405,6 +405,10 @@ class AppStrings {
       _t('Pilih jawaban yang tepat:', 'Pick the correct answer:');
 
   // --- Shared: dictionary/detail screens (Search, Cam Detector) ---
+  String get saveToLearningListFailed => _t(
+        'Gagal menyimpan ke daftar belajar. Coba lagi.',
+        'Could not save to your learning list. Please try again.',
+      );
   String get savedToLearningList =>
       _t('Tersimpan ke Daftar Belajar!', 'Saved to Learning List!');
   String get saveToLearningList =>
@@ -1233,6 +1237,10 @@ class AppStrings {
         'We ask this once, so the app can be suitable for your age.',
       );
   String get ageQuestionChooseYear => _t('Pilih tahun', 'Choose a year');
+  String get ageQuestionSaveFailed => _t(
+        'Gagal menyimpan jawaban. Coba lagi.',
+        'Could not save your answer. Please try again.',
+      );
   String get ageQuestionContinue => _t('Lanjut', 'Continue');
 
   String get babGateQuizTitle => _t('Kuis Pembuka Bab', 'Chapter Unlock Quiz');

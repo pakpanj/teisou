@@ -1,4 +1,7 @@
+import 'dart:async';
 import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -59,10 +62,21 @@ class SavedWordsRepository {
     current.insert(0, word);
     await _saveLocalList(uid, current);
 
-    await _firestore
-        .collection(FirestorePaths.savedWordsCollection(uid))
-        .doc(word.id)
-        .set(word.toFirestoreMap());
+    // Best-effort mirror, guarded like every progress repository's — those
+    // five were written *from this class* and then fixed while this one was
+    // missed. Two failure modes, both real: offline, a Firestore write's
+    // Future never completes at all (the write queues and syncs later), so
+    // awaiting it unguarded hung the caller's spinner for ever rather than
+    // throwing; and a rejected write threw past the caller's
+    // `setState(_saving = false)`. The local list above is the source of
+    // truth and has already succeeded either way.
+    unawaited(
+      _firestore
+          .collection(FirestorePaths.savedWordsCollection(uid))
+          .doc(word.id)
+          .set(word.toFirestoreMap())
+          .catchError((Object e) => debugPrint('savedWords add mirror: $e')),
+    );
   }
 
   Future<void> remove(String uid, String id) async {
@@ -70,9 +84,13 @@ class SavedWordsRepository {
     current.removeWhere((w) => w.id == id);
     await _saveLocalList(uid, current);
 
-    await _firestore
-        .collection(FirestorePaths.savedWordsCollection(uid))
-        .doc(id)
-        .delete();
+    // Same reasoning as add() above.
+    unawaited(
+      _firestore
+          .collection(FirestorePaths.savedWordsCollection(uid))
+          .doc(id)
+          .delete()
+          .catchError((Object e) => debugPrint('savedWords remove mirror: $e')),
+    );
   }
 }

@@ -34,6 +34,7 @@ import 'notification_screen.dart';
 import 'profile_providers.dart';
 import 'widgets/avatar_picker_sheet.dart';
 import 'widgets/cover_picker_sheet.dart';
+import 'identity_sync.dart';
 import 'widgets/edit_name_dialog.dart';
 import 'widgets/exam_history_empty_illustration.dart';
 import 'widgets/exam_history_tile.dart';
@@ -166,20 +167,21 @@ class _HeaderCard extends ConsumerWidget {
       // AvatarPicker already do, rather than leaving the leaderboard row
       // stuck on the anonymous fallback forever. Best-effort: a hiccup
       // here must not undo the sign-in that already succeeded.
-      try {
-        final profile = ref.read(userProfileProvider).valueOrNull;
-        await ref.read(leaderboardRepositoryProvider).syncProfileInfo(
-              uid: result.uid,
-              displayName: profile?.resolveDisplayName(result) ??
-                  (result.displayName ?? 'Pelajar Kana'),
-              photoUrl: result.photoURL,
-              avatarType: profile?.avatarType ?? AvatarType.google,
-              avatarValue: profile?.avatarValue,
-            );
-      } catch (_) {
-        // Leaderboard sync is a mirror, not the source of truth — the sign-in
-        // itself already succeeded above.
-      }
+      // This is the one moment a real name and photo first exist, replacing
+      // the anonymous "Pelajar Kana" every mirror was created with — so all
+      // three copies need it, not just the leaderboard. Syncing only the
+      // leaderboard here left clan rosters and friends' chat lists calling
+      // this learner "Pelajar Kana" for ever.
+      final profile = ref.read(userProfileProvider).valueOrNull;
+      await syncIdentityEverywhere(
+        ref,
+        uid: result.uid,
+        displayName: profile?.resolveDisplayName(result) ??
+            (result.displayName ?? 'Pelajar Kana'),
+        photoUrl: result.photoURL,
+        avatarType: profile?.avatarType ?? AvatarType.google,
+        avatarValue: profile?.avatarValue,
+      );
       ref.invalidate(appStartupProvider);
     } catch (e) {
       if (!context.mounted) return;

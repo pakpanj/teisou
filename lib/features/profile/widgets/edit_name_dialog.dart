@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/providers.dart';
+import '../identity_sync.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/user_profile.dart';
 
@@ -37,39 +38,26 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
     return trimmed;
   }
 
-  Future<void> _syncLeaderboard(String uid, String name) async {
+  /// Pushes the new name to every denormalized copy of it — leaderboard,
+  /// clan rosters and friends. Previously synced only the first two, so a
+  /// rename left every friend's chat list showing the old name for ever.
+  Future<void> _syncIdentity(String uid, String name) async {
     final profile = ref.read(userProfileProvider).valueOrNull;
     final user = ref.read(appStartupProvider).valueOrNull;
-    final avatarType = profile?.avatarType ?? AvatarType.google;
-    final avatarValue = profile?.avatarValue;
-    await ref.read(leaderboardRepositoryProvider).syncProfileInfo(
-          uid: uid,
-          displayName: name,
-          photoUrl: user?.photoURL,
-          avatarType: avatarType,
-          avatarValue: avatarValue,
-        );
-    // Best-effort — the leaderboard sync above already succeeded, so a
-    // hiccup here (a clan doc write failing) must not surface as a save
-    // failure. See ClanRepository.syncMemberInfo's doc comment for why
-    // this needs its own call: a clan's ranking can fall back to a stale
-    // ClanMember snapshot for a member with no leaderboard doc yet, and
-    // that snapshot is never touched by the write above.
-    try {
-      await ref.read(clanRepositoryProvider).syncMemberInfo(
-            uid: uid,
-            displayName: name,
-            photoUrl: user?.photoURL,
-            avatarType: avatarType,
-            avatarValue: avatarValue,
-          );
-    } catch (_) {}
+    await syncIdentityEverywhere(
+      ref,
+      uid: uid,
+      displayName: name,
+      photoUrl: user?.photoURL,
+      avatarType: profile?.avatarType ?? AvatarType.google,
+      avatarValue: profile?.avatarValue,
+    );
   }
 
   Future<void> _saveDirectly(String uid, String name) async {
     try {
       await ref.read(progressRepositoryProvider).updateCustomDisplayName(uid, name);
-      await _syncLeaderboard(uid, name);
+      await _syncIdentity(uid, name);
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -88,7 +76,7 @@ class _EditNameDialogState extends ConsumerState<EditNameDialog> {
       onRewardEarned: () async {
         try {
           await ref.read(progressRepositoryProvider).updateCustomDisplayName(uid, name);
-          await _syncLeaderboard(uid, name);
+          await _syncIdentity(uid, name);
         } catch (_) {
           if (!mounted) return;
           setState(() => _watchingAd = false);
