@@ -136,20 +136,28 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (uid == null) return;
     setState(() => _togglingLearned = true);
-    final repo = ref.read(kaiwaProgressRepositoryProvider);
-    final learnedIds =
-        ref.read(kaiwaLearnedIdsProvider).valueOrNull ?? const <String>{};
-    if (learnedIds.contains(_entry.id)) {
-      await repo.unmarkLearned(uid, _entry.id);
-    } else {
-      await repo.markLearned(uid, _entry.id, _entry.category);
-      // Only on the way to learned, never on unmark — toggling back and
-      // forth must not farm XP.
-      await ref.read(progressRepositoryProvider).addXp(uid, 2);
-      ref.invalidate(xpProgressProvider);
+    try {
+      final repo = ref.read(kaiwaProgressRepositoryProvider);
+      final learnedIds =
+          ref.read(kaiwaLearnedIdsProvider).valueOrNull ?? const <String>{};
+      if (learnedIds.contains(_entry.id)) {
+        await repo.unmarkLearned(uid, _entry.id);
+      } else {
+        await repo.markLearned(uid, _entry.id, _entry.category);
+        // Only on the way to learned, never on unmark — toggling back and
+        // forth must not farm XP.
+        await ref.read(progressRepositoryProvider).addXp(uid, 2);
+        ref.invalidate(xpProgressProvider);
+      }
+      ref.invalidate(kaiwaLearnedIdsProvider);
+    } finally {
+      // The screen owns this spinner, so it clears it whatever
+      // happens. The repositories below do swallow their own
+      // mirror-write failures today, but that is their promise to
+      // keep and not this screen's to lean on — an await added here
+      // later must not be able to strand the button.
+      if (mounted) setState(() => _togglingLearned = false);
     }
-    ref.invalidate(kaiwaLearnedIdsProvider);
-    if (mounted) setState(() => _togglingLearned = false);
   }
 
   void _goNext() {

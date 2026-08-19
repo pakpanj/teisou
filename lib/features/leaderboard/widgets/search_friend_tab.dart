@@ -48,9 +48,21 @@ class _SearchFriendTabState extends ConsumerState<SearchFriendTab> {
     }
     setState(() => _searching = true);
     final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
-    final results = await ref
-        .read(leaderboardRepositoryProvider)
-        .searchPublicUsers(trimmed);
+    final List<LeaderboardEntry> results;
+    try {
+      results = await ref
+          .read(leaderboardRepositoryProvider)
+          .searchPublicUsers(trimmed);
+    } catch (_) {
+      // A failed search left the spinner running for ever with no way to
+      // try again — offline, that is every search.
+      if (!mounted) return;
+      setState(() => _searching = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(ref.read(appStringsProvider).searchFailed)),
+      );
+      return;
+    }
     if (!mounted) return;
     setState(() {
       // Can't friend yourself.

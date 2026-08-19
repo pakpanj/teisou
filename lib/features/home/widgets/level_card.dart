@@ -117,8 +117,21 @@ class _GiftButtonState extends ConsumerState<_GiftButton> {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     XpReward? reward;
     if (uid != null) {
-      reward = await ref.read(progressRepositoryProvider).claimLevelReward(uid);
-      ref.invalidate(xpProgressProvider);
+      try {
+        reward =
+            await ref.read(progressRepositoryProvider).claimLevelReward(uid);
+        ref.invalidate(xpProgressProvider);
+      } catch (_) {
+        // `_claiming` gates this button, so leaving it set made the gift
+        // permanently unpressable — with the reward still showing as
+        // pending, which is the most annoying possible way to fail.
+        if (!mounted) return;
+        setState(() => _claiming = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(s.xpRewardClaimFailed)),
+        );
+        return;
+      }
     }
     if (!mounted) return;
     setState(() => _claiming = false);

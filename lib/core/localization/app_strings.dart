@@ -843,6 +843,12 @@ class AppStrings {
   String get noQuestionsAvailable => _t('Soal tidak tersedia', 'No questions available');
   String get whatIsThisCharacterReading =>
       _t('Apa bacaan dari huruf ini?', "What's the reading of this character?");
+  String get xpRewardClaimFailed => _t(
+        'Gagal mengambil hadiah. Coba lagi.',
+        'Could not claim the reward. Please try again.',
+      );
+  String get searchFailed =>
+      _t('Pencarian gagal. Coba lagi.', 'Search failed. Please try again.');
   String get checkAnswerButton => _t('Periksa Jawaban', 'Check Answer');
   String get nextQuestionButton => _t('Soal Berikutnya', 'Next Question');
 

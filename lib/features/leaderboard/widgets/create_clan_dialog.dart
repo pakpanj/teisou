@@ -62,8 +62,22 @@ class _CreateClanDialogState extends ConsumerState<CreateClanDialog> {
       return;
     }
 
-    final freeSlotUsed =
-        await ref.read(clanRepositoryProvider).hasUsedFreeClanSlot(uid);
+    final bool freeSlotUsed;
+    try {
+      freeSlotUsed =
+          await ref.read(clanRepositoryProvider).hasUsedFreeClanSlot(uid);
+    } catch (_) {
+      // Fail closed, not open: an unreadable answer must not hand out an
+      // unlimited free slot. But it must also not leave the dialog on a
+      // spinner it can never come back from.
+      if (!mounted) return;
+      setState(() {
+        _checkingEligibility = false;
+        _eligible = false;
+        _viaAdReward = false;
+      });
+      return;
+    }
     if (!freeSlotUsed) {
       if (!mounted) return;
       setState(() {

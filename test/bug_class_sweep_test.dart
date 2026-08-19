@@ -19,35 +19,50 @@ void main() {
   /// gates a disabled button, so the failure is a spinner that never stops
   /// and a control that never comes back — no error, no retry.
   ///
-  /// This shipped three times: five progress repositories at once, the kana
-  /// exam's submit, and — worst — the age question, which is the app's front
-  /// door, so a failure there left the app with no way in at all.
+  /// Shipped repeatedly: five progress repositories at once, the kana exam's
+  /// submit, the age question (the app's front door, so there was no way in
+  /// at all), the Home level-up gift, the clan dialog and both people-search
+  /// boxes.
   test('a busy flag is never left set by an unguarded await', () {
     final offenders = <String>[];
-    final flag = RegExp(
-      r'setState\(\(\) =>\s*_(\w*(?:busy|loading|saving|submitting|toggling'
-      r'|marking|sending|joining|creating|buying|watching)\w*)\s*=\s*true\)',
-      caseSensitive: false,
-    );
+
+    // Deliberately keyword-free. The first version of this matched a list of
+    // likely flag names (busy/loading/saving/...) and walked straight past
+    // `_claiming`, `_checkingEligibility` and `_searching` — four real dead
+    // ends, missed by the very sweep meant to find them. A guard that only
+    // looks where you already thought to look is worth very little.
+    //
+    // What identifies a busy flag is its shape, not its name: set true,
+    // awaited across, set false again on the way out.
+    final setTrue = RegExp(r'setState\(\(\)\s*(?:=>|\{)\s*(_\w+)\s*=\s*true');
+    // A real `try {`, not the letters t-r-y. Searching for the bare
+    // substring matched the word "trying" in a comment and blessed the
+    // unguarded Home gift button — the second time a substring check has
+    // hidden a defect from this file, after `await` inside `unawaited`.
+    final guarded = RegExp(r'(?<!\w)try\s*\{');
+    final newline = String.fromCharCode(10);
 
     for (final file in dartFiles('lib')) {
       final source = file.readAsStringSync();
-      for (final match in flag.allMatches(source)) {
+      for (final match in setTrue.allMatches(source)) {
+        final flag = match.group(1)!;
         final after = source.substring(match.end);
-        final end = after.indexOf('\n  }');
+        final end = after.indexOf('$newline  }');
         final body = end == -1 ? after : after.substring(0, end);
-        if (body.contains('await') && !body.contains('try')) {
-          final line = '\n'.allMatches(source.substring(0, match.start)).length + 1;
-          offenders.add('${file.path}:$line sets _${match.group(1)}');
-        }
+        if (!body.contains('await')) continue;
+        if (!body.contains('$flag = false')) continue;
+        if (guarded.hasMatch(body)) continue;
+        final line =
+            newline.allMatches(source.substring(0, match.start)).length + 1;
+        offenders.add('${file.path}:$line sets $flag');
       }
     }
 
     expect(
       offenders,
       isEmpty,
-      reason: 'a failed await leaves these spinning for ever:\n'
-          '${offenders.join('\n')}',
+      reason: 'a failed await leaves these spinning for ever: '
+          '${offenders.join(" | ")}',
     );
   });
 
@@ -74,9 +89,8 @@ void main() {
         // `(?<!\w)` matters: without it `await` matches inside the word
         // `unawaited`, so the correct fix reads as the defect and this
         // test failed on the very code it exists to bless.
-        final mirrors =
-            RegExp(r'(?<!\w)await\s[^;]*\.(set|delete|update)\(');
-        if (mirrors.hasMatch(body) && !body.contains('try')) {
+        final mirrors = RegExp(r'(?<!\w)await\s[^;]*\.(set|delete|update)\(');
+        if (mirrors.hasMatch(body) && !RegExp(r'(?<!\w)try\s*\{').hasMatch(body)) {
           offenders.add('${file.path} ${match.group(1)}');
         }
       }
@@ -84,8 +98,8 @@ void main() {
     expect(
       offenders,
       isEmpty,
-      reason: 'these await a mirror write the local copy does not need:\n'
-          '${offenders.join('\n')}',
+      reason: 'these await a mirror write the local copy does not need: '
+          '${offenders.join(" | ")}',
     );
   });
 
@@ -105,10 +119,10 @@ void main() {
       'syncMemberInfo',
       'syncFriendInfo',
     ]) {
-      // `.$sync(` — an actual call, not a mention. Checking the file for
-      // the bare name passed happily with the call deleted, because the
-      // doc comment above names all three; the test blessed a helper that
-      // synced two copies out of three.
+      // An actual call, not a mention. Checking the file for the bare name
+      // passed happily with the call deleted, because the doc comment above
+      // names all three; the test blessed a helper that synced two copies
+      // out of three.
       expect(
         body.contains('.$sync('),
         isTrue,
@@ -126,14 +140,14 @@ void main() {
         'syncMemberInfo',
         'syncFriendInfo',
       ]) {
-        if (source.contains('.$sync(')) offenders.add('${file.path} → $sync');
+        if (source.contains('.$sync(')) offenders.add('${file.path} -> $sync');
       }
     }
     expect(
       offenders,
       isEmpty,
       reason: 'call syncIdentityEverywhere instead — these sync one copy '
-          'and leave the rest stale:\n${offenders.join('\n')}',
+          'and leave the rest stale: ${offenders.join(" | ")}',
     );
   });
 
@@ -141,14 +155,10 @@ void main() {
   /// screen keeps showing the old answer, and the learner concludes the
   /// feature is broken — which, from where they are standing, it is.
   ///
-  /// This has now happened three times here: exam history (fixed with an
-  /// invalidate after each submit), the avatar gallery (a reward written and
-  /// never read back), and the module gate — where `moduleAccessProvider` is
-  /// a `FutureProvider.family` with no autoDispose, read from a Home tab
-  /// held alive by `AutomaticKeepAliveClientMixin`. Note that autoDispose
-  /// alone would not have saved it: a kept-alive consumer never lets the
-  /// provider dispose, which is exactly how the exam-history bug survived
-  /// its first fix.
+  /// Three times here: exam history, the avatar gallery, and the module
+  /// gate. Note autoDispose alone would not have saved the last one: a
+  /// kept-alive consumer never lets the provider dispose, which is exactly
+  /// how the exam-history bug survived its first fix.
   test('granting an ad reward invalidates the gate that reads it', () {
     final offenders = <String>[];
     for (final file in dartFiles('lib')) {
