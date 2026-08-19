@@ -72,6 +72,17 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   StreamSubscription<Map<int, BattleAnswer>>? _answersSub;
   String? _localClientResult;
 
+  /// When the match actually ended, stamped once.
+  ///
+  /// The result screen used to work out its duration with
+  /// `DateTime.now().difference(started)` — evaluated on every build. This
+  /// screen is built from the match stream, and writes keep landing after
+  /// the final round (the star result, the other player's own result), so
+  /// the "Durasi" figure crept upward while the learner sat looking at it.
+  /// Reported from a real match: 01:15 climbing to 01:35 after the game
+  /// was already won.
+  DateTime? _finishedAt;
+
   @override
   void initState() {
     super.initState();
@@ -164,6 +175,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     );
     if (conclusion == null) return;
     _localClientResult = conclusion;
+    _finishedAt = DateTime.now();
     ref.read(battleRepositoryProvider).setClientResult(widget.matchId, conclusion);
     if (mounted) setState(() {});
   }
@@ -715,8 +727,10 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     }
     final played = match.currentRound.clamp(0, match.turnOrder.length);
     final started = match.createdAt;
+    final ended = _finishedAt;
+    // Measured to when the match ended, not to now — see [_finishedAt].
     final duration =
-        started == null ? null : DateTime.now().difference(started);
+        started == null || ended == null ? null : ended.difference(started);
 
     return BattleBackdrop(
       child: ListView(
