@@ -97,13 +97,22 @@ class IapService {
 
   /// Opens the store's own purchase sheet. The result arrives on
   /// [outcomes], not from this call — see the class comment.
-  Future<bool> buy(String productId) async {
+  ///
+  /// [uid] is attached to the purchase as the store's obfuscated account
+  /// id, and **the server refuses any token that does not carry it**.
+  /// Without it one real purchase token replays for every account that
+  /// sends it: one payment, unlimited premium, and nothing that looks
+  /// wrong from either side. See `functions/iap_states.js`.
+  Future<bool> buy(String productId, {required String uid}) async {
     final product = _products[productId];
     if (product == null) {
       _outcomes.add(_available ? IapOutcome.failed : IapOutcome.unavailable);
       return false;
     }
-    final param = PurchaseParam(productDetails: product);
+    final param = PurchaseParam(
+      productDetails: product,
+      applicationUserName: uid,
+    );
     // A subscription is non-consumable; so is a skin, which is bought
     // once and owned forever. Nothing here is consumable, so nothing is
     // ever bought twice.

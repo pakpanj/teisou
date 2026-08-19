@@ -1,5 +1,8 @@
 const {onCall, HttpsError} = require("firebase-functions/v2/https");
 const {getFirestore, FieldValue} = require("firebase-admin/firestore");
+const {google} = require("googleapis");
+
+const {subscriptionGrants, productGrants} = require("./iap_states");
 
 /**
  * Turning a store purchase into an entitlement.
@@ -37,24 +40,66 @@ function playConfigured() {
 }
 
 /**
- * Asks Google whether this purchase token is real and still valid.
+ * The Android Publisher client, built once and reused.
  *
- * Split out so the shape of the answer is one thing to change when the
- * googleapis client is wired in, and so the caller below reads as the
- * policy it is rather than as HTTP plumbing.
+ * Authenticates with the function's own service account, so there is no
+ * key file anywhere in this repo — the account is granted access in Play
+ * Console instead. Built lazily so that merely *loading* this module in
+ * a test or a project without the API enabled does not reach out to
+ * anything.
  */
-async function verifyWithPlay({productId, purchaseToken}) {
-  // Deliberately not implemented against a half-configured project.
-  // When the service account exists, this becomes a
-  // `androidpublisher.purchases.subscriptionsv2.get` (or
-  // `.products.get` for a skin) and returns whether the purchase is in
-  // a granting state. Until then nothing is granted at all.
-  void productId;
-  void purchaseToken;
-  throw new HttpsError(
-      "failed-precondition",
-      "Play verification is not configured on this project yet.",
-  );
+let androidPublisher = null;
+function publisher() {
+  if (!androidPublisher) {
+    const auth = new google.auth.GoogleAuth({
+      scopes: ["https://www.googleapis.com/auth/androidpublisher"],
+    });
+    androidPublisher = google.androidpublisher({version: "v3", auth});
+  }
+  return androidPublisher;
+}
+
+/**
+ * Asks Google whether this purchase token is real, still valid, and
+ * bought by this account.
+ *
+ * Throws rather than returning false, so the caller cannot accidentally
+ * treat a lookup failure as a refusal and a refusal as a grant — the two
+ * need different answers to the app, and the difference is money.
+ *
+ * The decision itself lives in `iap_states.js`, away from the HTTP
+ * plumbing, because it is the part worth testing.
+ */
+async function verifyWithPlay({productId, purchaseToken, packageName, uid}) {
+  const api = publisher();
+  let response;
+  try {
+    response = productId === PREMIUM_PRODUCT
+      ? await api.purchases.subscriptionsv2.get({packageName, token: purchaseToken})
+      : await api.purchases.products.get({
+        packageName,
+        productId,
+        token: purchaseToken,
+      });
+  } catch (error) {
+    // A 404 from Play means the token is not a real purchase — that is
+    // an answer, and the answer is no. Anything else (a quota, an
+    // outage, a misconfigured service account) is *not* an answer, and
+    // must not be reported to the client as a refusal: the purchase is
+    // real and will be granted when restore asks again.
+    const status = error && error.code;
+    if (status === 404 || status === 400) {
+      throw new HttpsError("permission-denied", "Purchase not recognised.");
+    }
+    throw new HttpsError("unavailable", "Could not reach the store.");
+  }
+
+  const grants = productId === PREMIUM_PRODUCT
+    ? subscriptionGrants(response.data, uid)
+    : productGrants(response.data, uid);
+  if (!grants) {
+    throw new HttpsError("permission-denied", "Purchase is not active.");
+  }
 }
 
 /**
@@ -121,6 +166,7 @@ exports.verifyPurchase = onCall(async (request) => {
     productId,
     purchaseToken,
     packageName: ANDROID_PACKAGE,
+    uid,
   });
 
   // Idempotent by construction: the subscription patch is a set-merge of

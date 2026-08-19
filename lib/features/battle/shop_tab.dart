@@ -69,10 +69,17 @@ class _ShopTabState extends ConsumerState<ShopTab> {
   }
 
   Future<void> _buy(CardSkinPreset skin) async {
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    // Nothing is sold to nobody: the purchase is bound to the buyer's
+    // account, and the server refuses a token without one.
+    if (uid == null) {
+      _onOutcome(IapOutcome.failed);
+      return;
+    }
     setState(() => _buying = skin.id);
     final opened = await ref
         .read(iapServiceProvider)
-        .buy(IapProducts.productIdForSkin(skin.id));
+        .buy(IapProducts.productIdForSkin(skin.id), uid: uid);
     // `false` means the sheet never opened, so no outcome will arrive —
     // without this the button would spin for ever.
     if (!opened && mounted) setState(() => _buying = null);

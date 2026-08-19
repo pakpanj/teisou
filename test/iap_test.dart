@@ -126,4 +126,27 @@ void main() {
       expect(iap.contains('Unknown product'), isTrue);
     });
   });
+
+  /// The client half of the account binding. The server refuses a token
+  /// that does not carry the buyer's uid, so a call site that forgets to
+  /// send one sells nothing — and the symptom is a purchase that takes
+  /// the money and then reports failure, which is the worst possible
+  /// way to find out.
+  group('purchases are bound to an account', () {
+    test('every buy call site passes a uid', () {
+      for (final path in [
+        'lib/features/paywall/paywall_screen.dart',
+        'lib/features/battle/shop_tab.dart',
+      ]) {
+        final source = File(path).readAsStringSync();
+        final calls = RegExp(r'\.buy\(').allMatches(source).length;
+        expect(calls, greaterThan(0), reason: '$path buys nothing');
+        expect(
+          RegExp(r'uid: uid').allMatches(source).length,
+          greaterThanOrEqualTo(calls),
+          reason: '$path buys without binding the purchase to an account',
+        );
+      }
+    });
+  });
 }

@@ -62,7 +62,14 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       );
       return;
     }
-    await iap.buy(IapProducts.premiumMonthly);
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(s.purchaseFailed)),
+      );
+      return;
+    }
+    await iap.buy(IapProducts.premiumMonthly, uid: uid);
   }
 
   /// The store's own result, which arrives on a stream rather than from
