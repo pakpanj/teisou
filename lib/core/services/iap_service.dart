@@ -4,6 +4,8 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
+import '../constants/iap_products.dart';
+
 
 /// What happened to a purchase attempt, in terms the UI can act on.
 enum IapOutcome {
@@ -73,6 +75,12 @@ class IapService {
   ///
   /// Safe to call more than once; the listener is only attached once.
   Future<void> load(Set<String> ids) async {
+    // The master switch, enforced here rather than at the call sites, so
+    // that no screen can reach a store by forgetting to check it. With
+    // purchases off nothing is asked of the store at all — not even
+    // whether it exists — so `isAvailable` stays false and every shop
+    // surface reads as "not open yet" on its own.
+    if (!IapProducts.purchasesEnabled) return;
     _available = await _store.isAvailable();
     if (!_available) return;
 
@@ -104,6 +112,10 @@ class IapService {
   /// sends it: one payment, unlimited premium, and nothing that looks
   /// wrong from either side. See `functions/iap_states.js`.
   Future<bool> buy(String productId, {required String uid}) async {
+    if (!IapProducts.purchasesEnabled) {
+      _outcomes.add(IapOutcome.unavailable);
+      return false;
+    }
     final product = _products[productId];
     if (product == null) {
       _outcomes.add(_available ? IapOutcome.failed : IapOutcome.unavailable);
@@ -123,7 +135,7 @@ class IapService {
   /// wipe. Stores require this to exist, and a learner who paid and lost
   /// it has no other way back.
   Future<void> restore() async {
-    if (!_available) {
+    if (!IapProducts.purchasesEnabled || !_available) {
       _outcomes.add(IapOutcome.unavailable);
       return;
     }

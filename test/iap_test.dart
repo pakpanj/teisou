@@ -149,4 +149,48 @@ void main() {
       }
     });
   });
+
+  /// The kill switch. The whole purchase flow stays compiled and tested
+  /// while nothing is on sale, which is only safe if "off" really means
+  /// off — a switch that merely hides buttons leaves every other path to
+  /// the store open, and the one that gets forgotten is the one that
+  /// takes somebody's money for a product that does not exist.
+  group('purchases can be switched off without deleting the code', () {
+    test('the switch is enforced inside the service, not at call sites', () {
+      final source =
+          File('lib/core/services/iap_service.dart').readAsStringSync();
+      for (final entry in ['load', 'buy', 'restore']) {
+        // Each entry point must consult the switch itself. Sliced to the
+        // real method body — a fixed character window read past the end
+        // of one method into the next, which would let an unguarded
+        // method pass on its neighbour's check.
+        final start = source.indexOf('> $entry(');
+        expect(start, greaterThan(-1), reason: '$entry is gone');
+        final rest = source.substring(start);
+        final end = rest.indexOf('  /// ', 1);
+        final body = end == -1 ? rest : rest.substring(0, end);
+        expect(
+          body.contains('IapProducts.purchasesEnabled'),
+          isTrue,
+          reason: '$entry can reach the store with purchases switched off',
+        );
+      }
+    });
+
+    test('nothing is offered for sale while the switch is off', () {
+      // Guards the pairing rather than the value: if selling is ever
+      // turned on, this test does nothing and the buttons come back.
+      if (IapProducts.purchasesEnabled) return;
+      final paywall =
+          File('lib/features/paywall/paywall_screen.dart').readAsStringSync();
+      expect(
+        paywall.contains('if (IapProducts.purchasesEnabled)'),
+        isTrue,
+        reason: 'the paywall offers a purchase that cannot complete',
+      );
+      // ...and the way through must survive, or a gated module becomes a
+      // dead end for everyone.
+      expect(paywall.contains('_watchAdForPreview'), isTrue);
+    });
+  });
 }

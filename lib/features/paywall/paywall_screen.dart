@@ -185,42 +185,57 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               const SizedBox(height: 24),
               _BenefitList(strings: s),
               const SizedBox(height: 28),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: _upgradePremium,
-                  child: Text(s.upgradePremiumButton),
-                ),
-              ),
-              const SizedBox(height: 8),
-              // Every store requires this, and a learner who paid and
-              // then changed phone has no other way back to what they
-              // own — the purchase is on their store account, not on
-              // this device.
-              TextButton(
-                onPressed: _restore,
-                child: Text(s.purchaseRestore),
-              ),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  Expanded(
-                    child: Divider(color: context.palette.textNavy.withValues(alpha: 0.2)),
+              // While purchases are switched off this screen must not
+              // become a dead end: the gate is still on, so the rewarded
+              // ad below is the only way through, and offering a buy
+              // button that cannot complete would read as a broken app
+              // rather than a shop that has not opened.
+              if (IapProducts.purchasesEnabled) ...[
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _upgradePremium,
+                    child: Text(s.upgradePremiumButton),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Text(
-                      s.orLabel,
-                      style: TextStyle(
-                        color: context.palette.textNavy.withValues(alpha: 0.5),
+                ),
+                const SizedBox(height: 8),
+                // Every store requires this, and a learner who paid and
+                // then changed phone has no other way back to what they
+                // own — the purchase is on their store account, not on
+                // this device.
+                TextButton(
+                  onPressed: _restore,
+                  child: Text(s.purchaseRestore),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(color: context.palette.textNavy.withValues(alpha: 0.2)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Text(
+                        s.orLabel,
+                        style: TextStyle(
+                          color: context.palette.textNavy.withValues(alpha: 0.5),
+                        ),
                       ),
                     ),
+                    Expanded(
+                      child: Divider(color: context.palette.textNavy.withValues(alpha: 0.2)),
+                    ),
+                  ],
+                ),
+              ] else
+                Text(
+                  s.purchaseNotSetUp,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: context.palette.textNavy.withValues(alpha: 0.65),
                   ),
-                  Expanded(
-                    child: Divider(color: context.palette.textNavy.withValues(alpha: 0.2)),
-                  ),
-                ],
-              ),
+                ),
               const SizedBox(height: 16),
               SizedBox(
                 width: double.infinity,

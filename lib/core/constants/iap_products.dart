@@ -13,6 +13,26 @@
 /// `skin_cloud_white` must still own it in five years, so they read as
 /// what they are rather than carrying a version or a price in the name.
 class IapProducts {
+  /// **The master switch for everything that takes money.**
+  ///
+  /// `false` keeps every line of the purchase flow compiled, tested and
+  /// ready — it simply never reaches a store. Enforced inside
+  /// [IapService] rather than by hiding buttons, so no call site can
+  /// bypass it by accident: with this off, `load` contacts nothing,
+  /// `buy` opens no sheet, and `restore` asks for nothing.
+  ///
+  /// Off because nothing is on sale yet: the four product ids below do
+  /// not exist in Play Console, so every buy could only ever end in
+  /// "product not found" — a dead button that looks like a broken app
+  /// rather than a shop that has not opened.
+  ///
+  /// **Turning it back on is this one line**, plus the console work:
+  /// create the products, grant the service account Android Publisher
+  /// access, set `PLAY_VERIFICATION_ENABLED=true`, and deploy
+  /// `firestore.rules`. Flipping this alone would put buttons in front
+  /// of learners that still cannot complete.
+  static const bool purchasesEnabled = false;
+
   /// The one subscription: opens every premium module at once. Sold as a
   /// subscription rather than a one-off because the content keeps
   /// growing — N3-N1 kanji, Bunpou's upper levels, Kaiwa, Choukai — and

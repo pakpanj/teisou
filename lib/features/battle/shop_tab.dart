@@ -98,15 +98,22 @@ class _ShopTabState extends ConsumerState<ShopTab> {
     final iap = ref.read(iapServiceProvider);
     final owned = ref.watch(ownedSkinsProvider).valueOrNull ?? const <String>{};
     final paid = CardSkinPresets.ofSource(CardSkinSource.paid).toList();
+    // With purchases switched off the store is never asked anything, so
+    // `isAvailable` is false — but saying "the store is not available on
+    // this device" would blame the phone for a decision made here. The
+    // shop stays browsable either way; only the buying is off.
+    const selling = IapProducts.purchasesEnabled;
     final storeSilent =
-        !_loading && (!iap.isAvailable || iap.missingProducts.isNotEmpty);
+        !selling || (!_loading && (!iap.isAvailable || iap.missingProducts.isNotEmpty));
 
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
         if (storeSilent) ...[
           _Notice(
-            text: iap.isAvailable ? s.shopNotOpenYet : s.storeUnavailable,
+            text: (!selling || iap.isAvailable)
+                ? s.shopNotOpenYet
+                : s.storeUnavailable,
             palette: palette,
           ),
           const SizedBox(height: 18),
@@ -139,15 +146,18 @@ class _ShopTabState extends ConsumerState<ShopTab> {
           const SizedBox(height: 12),
         ],
         const SizedBox(height: 8),
-        Center(
-          child: TextButton(
-            // Required by both stores, and the only way back for someone
-            // who paid and then changed phone: the purchase lives on
-            // their store account, not on this device.
-            onPressed: () => ref.read(iapServiceProvider).restore(),
-            child: Text(s.purchaseRestore),
+        // Required by both stores, and the only way back for someone who
+        // paid and then changed phone: the purchase lives on their store
+        // account, not on this device. Hidden while nothing is on sale,
+        // because there is nothing to restore and a button that silently
+        // does nothing is worse than no button.
+        if (selling)
+          Center(
+            child: TextButton(
+              onPressed: () => ref.read(iapServiceProvider).restore(),
+              child: Text(s.purchaseRestore),
+            ),
           ),
-        ),
         const SizedBox(height: 24),
       ],
     );
