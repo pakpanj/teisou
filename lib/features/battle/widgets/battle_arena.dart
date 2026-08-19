@@ -587,6 +587,32 @@ class BattleBackdrop extends StatelessWidget {
                 CustomPaint(painter: _PetalPainter(palette)),
           ),
         ),
+        // A scrim across the top third, because that is where the art is
+        // busiest and where every one of these screens puts its
+        // smallest text — the lobby's name and standing, the arena's
+        // player chips. Checked on a device rather than assumed: in dark
+        // the moon sits directly behind the wordmark and washed it out.
+        //
+        // It fades to nothing well before the middle, so the scene is
+        // still a scene; this lifts the text off it rather than hiding
+        // what it was drawn for.
+        Positioned.fill(
+          child: IgnorePointer(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    palette.background.withValues(alpha: 0.82),
+                    palette.background.withValues(alpha: 0.0),
+                  ],
+                  stops: const [0.0, 0.3],
+                ),
+              ),
+            ),
+          ),
+        ),
         child,
       ],
     );
