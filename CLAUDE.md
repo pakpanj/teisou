@@ -10053,6 +10053,52 @@ Other decisions worth not re-deriving:
 the defect: it checked the rules function *existed* rather than that
 anything *called* it, and stayed green with the call site deleted.
 
+### Verification against Play, and why a purchase carries a uid
+(2026-08-19)
+
+`verifyWithPlay` was a stub that always threw, so the fail-closed rule
+above meant **nothing could ever be granted**. It now calls Android
+Publisher v3 — `purchases.subscriptionsv2.get` for premium,
+`purchases.products.get` for a skin — authenticating through the
+function's own service account, so no key file lives in this repo. The
+client is built lazily, so merely requiring the module in a test or on a
+project with the API disabled reaches out to nothing.
+
+**The decision lives in `functions/iap_states.js`, deliberately apart
+from the HTTP plumbing**, because it is the part worth testing: a
+handful of string comparisons where *both* possible mistakes are
+invisible from the outside. Too permissive gives the thing away for
+free; too strict tells a paying customer their purchase failed. Ten
+`node --test` cases cover it (`iap_states.test.js`), and one of them
+caught `subscriptionGrants` returning `undefined` rather than `false`
+from a bare `&&` chain — falsy enough for an `if`, wrong to any caller
+that compares.
+
+- `IN_GRACE_PERIOD` **grants**. Google is retrying a card that will
+  probably go through, and locking someone out mid-renewal is the worse
+  of the two errors. A subscription the user has cancelled but not yet
+  run out of is reported ACTIVE, so cancelling never cuts anyone off
+  early.
+- **A purchase is bound to its buyer.** The client sends its uid as
+  `applicationUserName`, and the server refuses any token whose
+  obfuscated account id is not that uid. Without it one real token works
+  for every account that replays it — one payment, unlimited premium,
+  and nothing looks wrong from either side. A token carrying **no**
+  account id (anything bought before the app started sending one) is
+  refused rather than trusted: "unknown buyer" must never read as "this
+  buyer".
+- **A lookup failure and a refusal are different answers.** 404/400
+  means Play has answered and the answer is no (`permission-denied`);
+  anything else — quota, outage, a service account nobody granted access
+  to — is not an answer at all and returns `unavailable`, so a genuine
+  purchase is still granted when restore asks again. Collapsing the two
+  would silently refuse real customers during an outage.
+
+A source check in `test/iap_test.dart` pins that every `buy` call site
+passes a uid, confirmed to bite by removing one. That failure mode is
+worth a guard because the symptom is the worst kind: the money is taken
+and *then* the purchase reports failure.
+
 ### What is still open
 
 **Needs the user, not this repo:**
@@ -10060,9 +10106,9 @@ anything *called* it, and stayed green with the call site deleted.
 - **Create four products in Play Console**: `teisou_premium_monthly`
   (subscription), `skin_cloud_white`, `skin_neon_city`,
   `skin_sakura_gold`. Store ids can never be renamed or reused.
-- **A service account** with Android Publisher access, then
-  `PLAY_VERIFICATION_ENABLED=true` and the googleapis call filled into
-  `verifyWithPlay` — its shape is documented where it goes.
+- **A service account** with Android Publisher access, granted in Play
+  Console, then `PLAY_VERIFICATION_ENABLED=true`. The code that uses it
+  is written and tested; this is the last thing between it and working.
 - **Deploy `firestore.rules`.** The new purchase rule is only correct in
   git; until it is deployed the client can still write `subscription`.
 - **iOS Firebase registration.** Without it iOS has no auth, no
@@ -10073,11 +10119,20 @@ anything *called* it, and stayed green with the call site deleted.
 
 **Still code work:**
 
-- **The lobby has no background art.** `BattleBackdrop` paints falling
-  petals from a `CustomPainter`; the mockup shows a full sakura
-  landscape. No background was on the 18-item asset list, so none was
-  ever generated — if one is wanted, it is a new asset request, not a
-  missing wiring.
+- ~~The lobby has no background art.~~ **Done** — the user drew a day
+  and a night sakura landscape (`assets/backgrounds/battle_bg_light.png`
+  / `_dark.png`); `BattleBackdrop` picks by `Brightness` and still falls
+  back to the petal `CustomPainter` if an asset is missing. Two things
+  found only by looking at it on the phone: the header text sat on the
+  moon and needed a top scrim, and the card **blended into the night
+  ground** — on a dark background a card is separated by a *light edge*,
+  not a shadow, so in dark mode the surface is lifted with a white
+  overlay and the shadow becomes an outward glow.
+  **The assets did not bundle at first**: the folder was declared in
+  `pubspec.yaml` while empty, which bakes an empty asset manifest that
+  `flutter pub get` does not invalidate. Delete
+  `build/app/intermediates/flutter/debug/flutter_assets` and rebuild —
+  and verify by listing the APK, not by trusting the build log.
 - Match history (RIWAYAT), rematch against the same opponent, and
   resuming an in-progress match are all still absent.
 - The Kotoba (1,682) and Kaiwa (~7,468) illustration backlogs are
