@@ -343,7 +343,19 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
         ref.watch(battleOpponentsProvider(match.players)).valueOrNull;
 
     return BattleBackdrop(
-      child: Column(
+      // **Bottom inset only, and only here.** Without it the column runs
+      // straight under the system navigation bar: the hand of cards
+      // ended 21 pixels below the app area, so the bottom of every card
+      // a player is meant to tap was drawn beneath the nav bar. It never
+      // logged an overflow — nothing overflowed, the screen is simply
+      // taller than the part of it you can see — and it took measuring
+      // the hand's bounds against the inset to catch.
+      //
+      // The top is left alone: the app bar already handles that edge,
+      // and adding it there would push the score panel down for nothing.
+      child: SafeArea(
+        top: false,
+        child: Column(
         children: [
           BattleScorePanel(
             strings: s,
@@ -473,6 +485,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
               ),
             ),
         ],
+        ),
       ),
     );
   }
