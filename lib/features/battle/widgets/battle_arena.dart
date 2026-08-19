@@ -336,6 +336,7 @@ class BattleCardFace extends StatelessWidget {
     double cardHeight,
     double cardWidth,
   ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -359,7 +360,18 @@ class BattleCardFace extends StatelessWidget {
               colors: faceDown
                   ? [Colors.transparent, Colors.transparent]
                   : [
-                      palette.cardWhite,
+                      // Lifted a little in dark mode. A skinless card is
+                      // dark grey and the backdrop is a night sky, so
+                      // the two sat at almost the same value and the
+                      // card stopped reading as an object — it looked
+                      // like a rectangle cut out of the sky. Reported
+                      // after playing a real match on the new backdrop.
+                      isDark
+                          ? Color.alphaBlend(
+                              Colors.white.withValues(alpha: 0.09),
+                              palette.cardWhite,
+                            )
+                          : palette.cardWhite,
                       flashColor?.withValues(alpha: 0.28) ??
                           palette.hiraganaCardBg.withValues(alpha: 0.6),
                     ],
@@ -373,10 +385,18 @@ class BattleCardFace extends StatelessWidget {
               width: 3,
             ),
             boxShadow: [
+              // **On a dark ground a card is separated by a light edge,
+              // not by a shadow.** A darker shadow under a dark card on
+              // a dark sky changes nothing you can see, so in dark mode
+              // this is a soft outward glow instead — the same trick the
+              // hand cards get from their pale top edge.
               BoxShadow(
-                color: palette.textNavy.withValues(alpha: 0.18),
-                blurRadius: 18,
-                offset: const Offset(0, 8),
+                color: isDark
+                    ? palette.textNavy.withValues(alpha: 0.22)
+                    : palette.textNavy.withValues(alpha: 0.18),
+                blurRadius: isDark ? 26 : 18,
+                spreadRadius: isDark ? 1 : 0,
+                offset: isDark ? Offset.zero : const Offset(0, 8),
               ),
             ],
           ),
