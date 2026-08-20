@@ -21,6 +21,7 @@ import '../../data/models/leaderboard_entry.dart';
 import '../../data/repositories/battle_repository.dart' show battleBotUid;
 import '../../core/constants/card_skins.dart';
 import '../../core/widgets/mascot_widget.dart';
+import 'battle_card_picker_screen.dart';
 import 'battle_invite_providers.dart';
 import 'widgets/star_result_card.dart';
 import 'widgets/battle_arena.dart';
@@ -66,6 +67,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   int? _timerRoundGuard;
   int? _timeoutHandledForRound;
   int? _choiceTimeoutHandledForRound;
+  int? _pickerOpenedForRound;
 
   final Map<int, bool> _correctByRound = {};
   DateTime? _flashUntil;
@@ -344,6 +346,13 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       if (mounted) _ensureTimerFor(match);
     });
     if (choosing) _scheduleChoiceDeadline(match, ownerIsBot: ownerIsBot);
+    // Opened for the player rather than waiting to be asked for. The
+    // window is ten seconds long; spending any of it on a tap that only
+    // reveals the hand is spending it on nothing. The button left behind
+    // is the way back in after a deliberate close.
+    if (choosing && iChoose) {
+      _maybeOpenCardPicker(match, myUid, cardData, ownerIsBot: ownerIsBot);
+    }
 
     final isAnswerer = match.currentAnswererUid == myUid;
     final palette = context.palette;
@@ -466,18 +475,10 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           ),
           const SizedBox(height: 12),
           if (choosing && iChoose)
-            BattleHand(
-              title: s.battleHandTitle,
-              // The hand shrinks as it is played, so the denominator is
-              // the deck each player was dealt, not what is left of it.
-              totalCards: kBattleTotalRounds ~/ 2,
+            _OpenPickerButton(
+              label: s.battleCardPickerTitle,
               secondsLeft: _choiceSecondsLeft(match, ownerIsBot: ownerIsBot),
-              cards: _handCards(match, myUid, cardData),
-              onPlay: (cardId) => ref.read(battleRepositoryProvider).playCard(
-                matchId: widget.matchId,
-                round: match.currentRound,
-                cardId: cardId,
-              ),
+              onTap: () => _openCardPicker(match, myUid, cardData, ownerIsBot),
             )
           else if (choosing)
             Padding(
@@ -537,6 +538,67 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
         cardId: current.turnOrder[round].cardId,
       );
     });
+  }
+
+  /// Opens the picker once per round, and never while one is already up.
+  ///
+  /// Guarded by round rather than by a bool: `build` runs many times
+  /// inside a single choosing window — every timer tick, every match
+  /// snapshot — and an unguarded push would stack a screen per frame.
+  void _maybeOpenCardPicker(
+    BattleMatch match,
+    String myUid,
+    (List<KanaCharacter>, List<KanjiEntry>) cardData, {
+    required bool ownerIsBot,
+  }) {
+    final round = match.currentRound;
+    if (_pickerOpenedForRound == round) return;
+    _pickerOpenedForRound = round;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _openCardPicker(match, myUid, cardData, ownerIsBot);
+    });
+  }
+
+  /// Shows the hand, and plays whatever comes back.
+  ///
+  /// The picker returns a card id and nothing else — closing it, or
+  /// letting the clock run out, both come back null and leave the round
+  /// to `_scheduleChoiceDeadline`, which is what sends the dealt card.
+  Future<void> _openCardPicker(
+    BattleMatch match,
+    String myUid,
+    (List<KanaCharacter>, List<KanjiEntry>) cardData,
+    bool ownerIsBot,
+  ) async {
+    final round = match.currentRound;
+    final chosen = await Navigator.of(context).push<String>(
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (_) => BattleCardPickerScreen(
+          cards: _handCards(match, myUid, cardData),
+          // The hand shrinks as it is played, so the denominator is the
+          // deck each player was dealt, not what is left of it.
+          totalCards: kBattleTotalRounds ~/ 2,
+          deadline: (match.turnStartedAt ?? DateTime.now())
+              .add(cardChoiceWindow(ownerIsBot: ownerIsBot)),
+        ),
+      ),
+    );
+    if (!mounted || chosen == null) return;
+    // The round can have moved on while the picker was open — the clock
+    // ran out, or the opponent's device wrote the dealt card first.
+    // `playCard` ignores a second write for a round that already has a
+    // card, but asking for one at all would be asking about a round that
+    // is no longer being played.
+    final current = ref.read(battleMatchProvider(widget.matchId)).valueOrNull;
+    if (current == null || current.currentRound != round) return;
+    if (current.playedCards.containsKey(round)) return;
+    await ref.read(battleRepositoryProvider).playCard(
+          matchId: widget.matchId,
+          round: round,
+          cardId: chosen,
+        );
   }
 
   /// How long this round has been running, from the server anchor.
@@ -873,5 +935,53 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       );
     }
     return cards;
+  }
+}
+
+/// The way back into the picker after closing it, and the only thing the
+/// arena shows of the hand now.
+///
+/// The hand itself moved to its own screen, so what is left here is a
+/// door rather than a drawer — and it carries the countdown, because the
+/// player who closed the picker still has a window running.
+class _OpenPickerButton extends StatelessWidget {
+  const _OpenPickerButton({
+    required this.label,
+    required this.secondsLeft,
+    required this.onTap,
+  });
+
+  final String label;
+  final int secondsLeft;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 4, 24, 20),
+      child: SizedBox(
+        width: double.infinity,
+        height: 54,
+        child: FilledButton.icon(
+          style: FilledButton.styleFrom(
+            backgroundColor: palette.primaryCoral,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(28),
+            ),
+          ),
+          onPressed: onTap,
+          icon: Icon(Icons.style, color: palette.cardWhite),
+          label: Text(
+            '$label  ·  ${secondsLeft}s',
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+              color: palette.cardWhite,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

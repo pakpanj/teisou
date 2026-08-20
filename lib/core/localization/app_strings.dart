@@ -1511,6 +1511,16 @@ class AppStrings {
         'Pick one card from your hand to send to your opponent!',
       );
   String get battleCardToSend => _t('Kartu untuk lawan', 'Card to send');
+  // The picker is its own screen rather than a strip along the bottom
+  // of the arena: a hand of twenty cards cannot be read six at a time
+  // through a horizontal scroll while a ten-second clock runs.
+  String get battleCardPickerTitle => _t('Pilih Kartu', 'Pick a Card');
+  String get battleCardPickerHint => _t(
+        'Ketuk salah satu kartu untuk memilihnya',
+        'Tap a card to choose it',
+      );
+  String get battleCardPickerSend =>
+      _t('Kirim ke Lawan', 'Send to Opponent');
   String get cardGameWordmark => _t('TEISOU BATTLE', 'TEISOU BATTLE');
   String get cardGameWordmarkSub =>
       _t('Card Battle Kana', 'Card Battle Kana');
