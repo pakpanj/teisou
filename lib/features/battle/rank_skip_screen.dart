@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -63,10 +64,10 @@ class _RankSkipScreenState extends ConsumerState<RankSkipScreen> {
         _cooldownUntil = e.lockedUntil;
         _phase = _Phase.choosing;
       });
-    } on RankSkipUnavailable {
+    } on RankSkipUnavailable catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = ref.read(appStringsProvider).rankSkipUnavailable;
+        _error = _explain(e);
         _phase = _Phase.choosing;
       });
     }
@@ -90,13 +91,25 @@ class _RankSkipScreenState extends ConsumerState<RankSkipScreen> {
         _result = result;
         _phase = _Phase.done;
       });
-    } on RankSkipUnavailable {
+    } on RankSkipUnavailable catch (e) {
       if (!mounted) return;
       setState(() {
-        _error = ref.read(appStringsProvider).rankSkipUnavailable;
+        _error = _explain(e);
         _phase = _Phase.answering;
       });
     }
+  }
+
+  /// The line a learner reads, with the cause appended in debug builds.
+  ///
+  /// Not in release: a child does not need `not-found`, and it would be
+  /// the only untranslated text in the app. In debug it is the
+  /// difference between diagnosing this in a minute and rebuilding twice
+  /// to find out.
+  String _explain(RankSkipUnavailable e) {
+    final friendly = ref.read(appStringsProvider).rankSkipUnavailable;
+    if (!kDebugMode) return friendly;
+    return '$friendly\n\n[${e.code}] ${e.message ?? ""}';
   }
 
   @override

@@ -42,7 +42,7 @@ class RankSkipService {
       if (e.code == 'resource-exhausted') {
         throw RankSkipCooldown(_lockedUntil(e.details));
       }
-      throw RankSkipUnavailable(e.message);
+      throw RankSkipUnavailable(e.code, e.message);
     }
   }
 
@@ -71,7 +71,7 @@ class RankSkipService {
         lockedUntil: _parse(data['lockedUntil']),
       );
     } on FirebaseFunctionsException catch (e) {
-      throw RankSkipUnavailable(e.message);
+      throw RankSkipUnavailable(e.code, e.message);
     }
   }
 
@@ -143,8 +143,25 @@ class RankSkipCooldown implements Exception {
 
 /// The exam could not be drawn or graded — offline, signed out, or a
 /// tier that is not above the player's own.
+///
+/// Carries [code] as well as [message] because the first version
+/// carried neither to the screen, and the first real failure on a device
+/// showed "check your connection" for something that had nothing to do
+/// with the connection. That is the same red herring
+/// `_friendlyGoogleSignInError` served for a year — one catch-all string
+/// standing in for every cause, with the real one thrown away. The
+/// friendly line is still what a learner reads; the code is shown
+/// underneath it in debug builds only.
 class RankSkipUnavailable implements Exception {
-  const RankSkipUnavailable(this.message);
+  const RankSkipUnavailable(this.code, this.message);
+
+  /// The `FirebaseFunctionsException` code — `not-found` when the
+  /// callable was never deployed, `unauthenticated` when signed out,
+  /// `internal` when the function itself threw.
+  final String code;
 
   final String? message;
+
+  @override
+  String toString() => 'RankSkipUnavailable($code): $message';
 }
