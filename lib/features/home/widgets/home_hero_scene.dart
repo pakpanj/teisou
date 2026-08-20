@@ -35,14 +35,18 @@ class HomeHeroScene extends StatelessWidget {
             : 'assets/banners/home_hero.png',
         fit: BoxFit.cover,
         alignment: Alignment.topCenter,
-        errorBuilder: (context, error, stackTrace) => const _CodeDrawnHero(),
+        errorBuilder: (context, error, stackTrace) => const HomeHeroFallback(),
       ),
     );
   }
 }
 
-class _CodeDrawnHero extends StatelessWidget {
-  const _CodeDrawnHero();
+/// The scene drawn in code, used whenever an illustration cannot be
+/// loaded. Public so a test can pump it directly: once a real asset
+/// exists, the fallback is unreachable through [HomeHeroScene] itself,
+/// and an unreachable fallback is exactly the kind that rots.
+class HomeHeroFallback extends StatelessWidget {
+  const HomeHeroFallback({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -59,10 +59,12 @@ same flat cel-shaded style as the rest of the scene.
 TECHNICAL
 ---------
 Request 1600x560 (roughly 2.87:1, the daytime banner's exact ratio).
-If the generator will not do that shape, take 16:9 and crop - but keep
-the important content in the upper two-thirds: Flutter draws this with
-BoxFit.cover aligned to the top, so the bottom edge is what gets cut
-on tall screens.
+
+Cropping: the banner box is a little less wide than this image, so
+BoxFit.cover trims the SIDES - roughly the outer 12% at each edge is
+never seen. Keep the cat and the mountain well inside that, and treat
+the far left and far right as margin. The height fits, so nothing is
+lost from the top or bottom.
 
 Do NOT ask for a transparent background. Generators draw the
 transparency checkerboard as actual pixels, which then ships into the

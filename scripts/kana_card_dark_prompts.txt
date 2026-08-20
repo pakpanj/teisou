@@ -56,10 +56,23 @@ TECHNICAL
 ---------
 Request 1200x645 (about 1.86:1, the daytime cards' exact ratio).
 
-Flutter draws these with BoxFit.cover into a slightly wider box, so the
-top and bottom get trimmed - keep the horizon and the landmark
-silhouettes within the middle band, nothing critical in the top or
-bottom 15%.
+CROPPING - this was got wrong once, read it carefully.
+
+The card is TALLER than it is wide (about 183x210 dp), while this image
+is wide (1.86:1). BoxFit.cover therefore crops the SIDES, not the top
+and bottom: **only the middle 47% of the image width is ever seen.**
+
+So the landmark - the torii, the pagoda - has to sit near the
+horizontal centre, not out at an edge. The first night pair put the
+pagoda at the right edge, exactly where the light version has it, and
+it vanished entirely: both dark cards ended up showing nothing but Mt.
+Fuji and were indistinguishable from each other. That file had to be
+re-cropped by hand onto its pagoda afterwards.
+
+Put the landmark in the middle. Mt. Fuji and the landmark cannot both
+survive - in the light pair they do not either (the hiragana card shows
+Fuji, the katakana card shows the pagoda), so pick one per card and
+centre it.
 
 Do NOT ask for a transparent background. Generators draw the
 transparency checkerboard as real pixels and it ships into the app;
