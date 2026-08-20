@@ -44,9 +44,9 @@ class ModuleLevelCard extends StatelessWidget {
     final palette = context.palette;
     // An available card sits on the pale sakura frame; a locked one sits on
     // the theme's own muted surface. Those are two different grounds, so
-    // they take two different sets of colours — see [onFramePalette].
-    final surface = available ? onFramePalette : palette;
-    final color = available ? onFramePalette.primaryCoral : palette.freeBadgeGrey;
+    // they take two different sets of colours — see [framePaletteOf(context)].
+    final surface = available ? framePaletteOf(context) : palette;
+    final color = available ? framePaletteOf(context).primaryCoral : palette.freeBadgeGrey;
 
     final card = Material(
       // An available card gets the sakura nine-patch frame's own flat pink

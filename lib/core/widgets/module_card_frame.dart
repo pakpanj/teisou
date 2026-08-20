@@ -16,18 +16,38 @@ import '../theme/app_palette.dart';
 /// middle stretches to fit whatever content is inside — the standard
 /// nine-patch contract, and why the source art was specced with a
 /// completely flat, textureless interior.
-/// The palette to colour anything drawn *on* one of these frames.
+/// Whether the dark-theme frame art exists yet.
 ///
-/// The frame art is a pale sakura pink in both themes — it is a picture,
-/// not a surface the theme repaints. So content on it has to come from the
-/// light palette whatever the app's theme is. Using `context.palette` there
-/// put near-white text and pink accents on pale pink in dark mode: the
-/// Kanji level list rendered its open level as an almost blank card, title
-/// and all, and every module home does the same thing.
+/// **One switch for two things that must move together.** The frame art is
+/// a picture, not a surface the theme repaints, so whatever is drawn on it
+/// takes its colour from the art — not from the app. Flip only this, and
+/// only once `*_dark.png` exists for every frame: turning the palette
+/// theme-aware while the art stays pale would put dark ink on pale pink,
+/// and swapping the art without the palette would put near-white on it.
+/// Either half alone reproduces the bug this pairing exists to prevent
+/// (reported as a Kanji level list whose open card was almost blank).
+const bool kDarkFrameArt = false;
+
+/// The frame asset [name], in the theme's own version when one exists.
 ///
-/// This is the general rule stated once: **take your colour from the
-/// surface behind you, not from the app.**
-const onFramePalette = AppPalette.light;
+/// [name] is the file's stem, e.g. `frame_card_frame`.
+String frameAsset(BuildContext context, String name) {
+  final dark = kDarkFrameArt &&
+      Theme.of(context).brightness == Brightness.dark;
+  return 'assets/module_frames/$name${dark ? '_dark' : ''}.png';
+}
+
+/// The palette to colour anything drawn *on* a frame.
+///
+/// Light while the art is light, whatever the app's theme — see
+/// [kDarkFrameArt]. The general rule it encodes outlives the flag: **take
+/// your colour from the surface behind you, not from the app.**
+AppPalette framePaletteOf(BuildContext context) {
+  if (!kDarkFrameArt) return AppPalette.light;
+  return Theme.of(context).brightness == Brightness.dark
+      ? AppPalette.dark
+      : AppPalette.light;
+}
 
 class ModuleCardFrame extends StatelessWidget {
   final Widget child;
@@ -66,7 +86,7 @@ class ModuleCardFrame extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/module_frames/frame_card_frame.png',
+              frameAsset(context, 'frame_card_frame'),
               centerSlice: const Rect.fromLTRB(
                 _inset,
                 _inset,

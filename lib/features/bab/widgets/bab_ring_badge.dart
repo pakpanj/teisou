@@ -2,6 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../../../core/widgets/module_card_frame.dart';
+
 /// A circular badge (level key, chapter number, a checkmark, a lock) with
 /// a sakura wreath ring around its rim — the "wreath" motif the reference
 /// design uses for both the level cards and the chapter cards. Purely
@@ -39,7 +41,7 @@ class BabRingBadge extends StatelessWidget {
         children: [
           if (showPetals)
             Image.asset(
-              'assets/module_frames/frame_level_badge.png',
+              frameAsset(context, 'frame_level_badge'),
               width: size,
               height: size,
               errorBuilder: (context, error, stackTrace) => CustomPaint(

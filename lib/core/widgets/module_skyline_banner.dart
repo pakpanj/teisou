@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'module_card_frame.dart';
+
 import '../theme/app_palette.dart';
 
 /// The Fuji/torii/pagoda skyline strip sitting behind a module's header —
@@ -46,7 +48,7 @@ class ModuleSkylineBanner extends StatelessWidget {
           ).createShader(rect),
           blendMode: BlendMode.dstIn,
           child: Image.asset(
-            'assets/module_frames/bg_module_header.png',
+            frameAsset(context, 'bg_module_header'),
             fit: BoxFit.cover,
             alignment: Alignment.topCenter,
             // Bundled at build time, not user-generated — a missing file is

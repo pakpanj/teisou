@@ -34,11 +34,11 @@ class ModuleTitlePlaque extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            'assets/module_frames/frame_title_plaque.png',
+            frameAsset(context, 'frame_title_plaque'),
             fit: BoxFit.fill,
             errorBuilder: (context, error, stackTrace) => DecoratedBox(
               decoration: BoxDecoration(
-                color: onFramePalette.cardWhite,
+                color: framePaletteOf(context).cardWhite,
                 borderRadius: BorderRadius.circular(14),
               ),
             ),
@@ -57,7 +57,7 @@ class ModuleTitlePlaque extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 17,
-                  color: onFramePalette.textNavy,
+                  color: framePaletteOf(context).textNavy,
                 ),
               ),
             ),

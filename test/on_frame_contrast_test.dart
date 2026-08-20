@@ -2,7 +2,10 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:flutter/material.dart';
+
 import 'package:kana_master/core/theme/app_palette.dart';
+import 'package:kana_master/core/theme/app_theme.dart';
 import 'package:kana_master/core/widgets/module_card_frame.dart';
 
 /// Colour taken from the app's theme, painted onto a surface the theme does
@@ -22,11 +25,40 @@ void main() {
       .whereType<File>()
       .where((f) => f.path.endsWith('.dart'));
 
-  test('the frame palette really is the light one', () {
-    // If dark mode ever became the source here, the fix would invert into
-    // the very bug it was made for.
-    expect(onFramePalette.textNavy, AppPalette.light.textNavy);
-    expect(onFramePalette.primaryCoral, AppPalette.light.primaryCoral);
+  testWidgets('the frame palette follows the art, not the app', (tester) async {
+    // The pairing that matters: while the art is pale in both themes, both
+    // themes must colour their content from the light palette. Turning one
+    // half theme-aware without the other reproduces the bug either way
+    // round — near-white on pale pink, or dark ink on dark art.
+    for (final theme in [AppTheme.light, AppTheme.dark]) {
+      late AppPalette seen;
+      await tester.pumpWidget(MaterialApp(
+        theme: theme,
+        home: Builder(builder: (context) {
+          seen = framePaletteOf(context);
+          return const SizedBox.shrink();
+        }),
+      ));
+      expect(
+        seen.textNavy,
+        kDarkFrameArt ? isNotNull : AppPalette.light.textNavy,
+        reason: 'content on a pale frame stopped using the light palette',
+      );
+    }
+  });
+
+  test('the asset and the palette are switched by the same flag', () {
+    // Two files, one decision. If these ever read different constants,
+    // dropping in dark art would move one and not the other.
+    final frame =
+        File('lib/core/widgets/module_card_frame.dart').readAsStringSync();
+    expect(frame.contains('kDarkFrameArt'), isTrue);
+    // Both the asset chooser and the palette live behind it.
+    expect(
+      'kDarkFrameArt'.allMatches(frame).length,
+      greaterThanOrEqualTo(3),
+      reason: 'the flag no longer gates both the art and its palette',
+    );
   });
 
   test('content drawn on a frame is coloured from the frame', () {
@@ -54,7 +86,7 @@ void main() {
           .split(newline)
           .where((line) => !line.trimLeft().startsWith('//'))
           .join(newline);
-      if (!code.contains('onFramePalette')) {
+      if (!code.contains('framePaletteOf')) {
         offenders.add(file.path);
       }
     }

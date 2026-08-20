@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../../core/widgets/module_card_frame.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/app_strings.dart';
@@ -121,7 +123,7 @@ class _KosakataHeaderBanner extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/module_frames/bg_kosakata_header.png',
+              frameAsset(context, 'bg_kosakata_header'),
               fit: BoxFit.cover,
               alignment: Alignment.topCenter,
               // Bundled at build time — a missing file is a packaging

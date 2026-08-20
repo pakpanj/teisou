@@ -114,9 +114,9 @@ class _LevelCard extends ConsumerWidget {
     final available = authored && !locked;
     // The framed card is a pale sakura picture, not a surface the theme
     // repaints, so everything drawn on it takes the light palette however
-    // the app is themed — see [onFramePalette]. Without this the open
+    // the app is themed — see [framePaletteOf(context)]. Without this the open
     // level rendered its own title and progress in near-white on pink.
-    final surface = available ? onFramePalette : palette;
+    final surface = available ? framePaletteOf(context) : palette;
 
     final previousLevel = level == JlptLevel.n5
         ? null
