@@ -180,6 +180,13 @@ async function createRankedMatch(firstUid, secondUid, cardTierContent) {
     currentRound: 0,
     turnOrder,
     turnStartedAt: FieldValue.serverTimestamp(),
+    // Written here as well as on the client path, because Firestore's
+    // orderBy silently drops documents missing the field it sorts on:
+    // without this, every publicly matched game is invisible to the
+    // lobby's recent-matches list, and its result screen can compute no
+    // duration either. Only bot and challenge matches, which the client
+    // creates, had it.
+    createdAt: FieldValue.serverTimestamp(),
     clientResult: null,
     officialScore: {[firstUid]: 0, [secondUid]: 0},
     result: null,

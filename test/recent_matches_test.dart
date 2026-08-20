@@ -38,11 +38,28 @@ void main() {
     expect(outcomeFor(drawn, them), MatchOutcome.draw);
   });
 
-  test('a match with no recorded result is not silently a loss', () {
-    // Reaching the history with no result at all should read as
-    // inconclusive rather than picking a side — claiming a loss the
-    // player never had is the worse of the two wrong answers.
-    expect(outcomeFor(match(), me), MatchOutcome.draw);
+  test('a match that never finished is not reported as a draw', () {
+    // Seen on the device the first time this list rendered: a 5-3 walkout
+    // displayed as "Seri". Nothing deletes abandoned matches, so they
+    // accumulate — and a draw is a specific claim about a game the player
+    // remembers not finishing.
+    expect(outcomeFor(match(), me), MatchOutcome.unfinished);
+    expect(outcomeFor(match(result: 'draw'), me), MatchOutcome.draw);
+  });
+
+  test('the server result outranks this device own conclusion', () {
+    // `result` is written by the Cloud Function; `clientResult` is one
+    // device's read of the same match. When they disagree the server wins.
+    final m = BattleMatch.fromMap('m3', {
+      'players': [me, them],
+      'status': 'finished',
+      'currentRound': 40,
+      'turnOrder': const [],
+      'officialScore': {me: 10, them: 6},
+      'result': them,
+      'clientResult': me,
+    });
+    expect(outcomeFor(m, me), MatchOutcome.loss);
   });
 
   test('the opponent is whoever is not you', () {

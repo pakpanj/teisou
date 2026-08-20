@@ -67,6 +67,8 @@ class _MatchRow extends StatelessWidget {
       MatchOutcome.win => (palette.secondaryBlue, strings.matchOutcomeWin),
       MatchOutcome.loss => (palette.errorRed, strings.matchOutcomeLoss),
       MatchOutcome.draw => (palette.freeBadgeGrey, strings.matchOutcomeDraw),
+      MatchOutcome.unfinished =>
+        (palette.freeBadgeGrey, strings.matchOutcomeUnfinished),
     };
 
     final opponent = row.againstBot
@@ -119,7 +121,9 @@ class _MatchRow extends StatelessWidget {
             ),
           ),
           Text(
-            '${row.myScore}–${row.theirScore}',
+            row.outcome == MatchOutcome.unfinished
+                ? '—'
+                : '${row.myScore}–${row.theirScore}',
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,

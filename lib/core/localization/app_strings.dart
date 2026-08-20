@@ -1575,6 +1575,8 @@ class AppStrings {
       _t('Pertandingan terakhir', 'Recent matches');
   String get matchOutcomeWin => _t('Menang', 'Win');
   String get matchOutcomeLoss => _t('Kalah', 'Loss');
+  String get matchOutcomeUnfinished =>
+      _t('Belum selesai', 'Unfinished');
   String get matchOutcomeDraw => _t('Seri', 'Draw');
   String matchAgainst(String opponent) =>
       _t('lawan $opponent', 'vs $opponent');

@@ -115,8 +115,20 @@ class RecentMatchRow {
   bool get againstBot => opponentUid == battleBotUid;
 }
 
-/// How one finished match turned out for the player looking at it.
-enum MatchOutcome { win, loss, draw }
+/// How one match turned out for the player looking at it.
+enum MatchOutcome {
+  win,
+  loss,
+  draw,
+
+  /// Never reached a result — quit part-way, or the app closed mid-match.
+  ///
+  /// Its own state rather than folded into [draw]. Nothing deletes
+  /// abandoned matches, so they accumulate, and a 5-3 walkout displayed as
+  /// "Seri" is a confident lie about a game the player remembers not
+  /// finishing. Seen on the device the first time this list rendered.
+  unfinished,
+}
 
 /// Reads [match] from [uid]'s side.
 ///
@@ -125,7 +137,8 @@ enum MatchOutcome { win, loss, draw }
 /// so "who won" is not a property of the match on its own.
 MatchOutcome outcomeFor(BattleMatch match, String uid) {
   final result = match.result ?? match.clientResult;
-  if (result == null || result == 'draw') return MatchOutcome.draw;
+  if (result == null) return MatchOutcome.unfinished;
+  if (result == 'draw') return MatchOutcome.draw;
   return result == uid ? MatchOutcome.win : MatchOutcome.loss;
 }
 
