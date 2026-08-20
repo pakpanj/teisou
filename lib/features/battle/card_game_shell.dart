@@ -13,6 +13,7 @@ import '../../core/widgets/user_avatar.dart';
 import 'battle_matchmaking_screen.dart';
 import 'card_skin_picker_screen.dart';
 import 'deck_tab.dart';
+import 'rank_skip_screen.dart';
 import 'widgets/recent_matches_section.dart';
 import 'shop_tab.dart';
 import 'widgets/battle_arena.dart';
@@ -187,7 +188,41 @@ class _LobbyTab extends ConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 12),
+          // The way past the tiers a player has already outgrown. Put
+          // under the search button rather than beside it: climbing is
+          // still the normal route, and this is the exception for
+          // someone who arrived already knowing kanji.
+          Center(
+            child: TextButton.icon(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const RankSkipScreen(),
+                ),
+              ),
+              icon: Icon(Icons.trending_up, color: palette.primaryCoral),
+              label: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    s.rankSkipEntry,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: palette.primaryCoral,
+                    ),
+                  ),
+                  Text(
+                    s.rankSkipEntrySubtitle,
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: palette.textNavy.withValues(alpha: 0.6),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
           Text(
             s.cardGameLobbyHint,
             textAlign: TextAlign.center,

@@ -289,3 +289,8 @@ exports.onBattleMatchConcluded =
 // `subscription` and `entitlements`, since firestore.rules refuses every
 // client write to both. See functions/iap.js.
 exports.verifyPurchase = require("./iap").verifyPurchase;
+
+// The rank-skip exam: two callables, one to draw the cards and one to
+// grade them. Grading is server-side by necessity — see rank_skip.js.
+exports.startRankSkipExam = require("./rank_skip").startRankSkipExam;
+exports.submitRankSkipExam = require("./rank_skip").submitRankSkipExam;

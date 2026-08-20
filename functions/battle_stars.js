@@ -296,6 +296,46 @@ async function mirrorToLeaderboard(uid, rank) {
 }
 
 /**
+ * Lifts a player to the very bottom of `tier`, for the rank-skip exam
+ * (`rank_skip.js`). Never lowers anyone: a player already at or above
+ * that tier keeps what they climbed.
+ *
+ * It lives here, beside the ladder it moves, for the reason stated at
+ * the top of this file — the client cannot write `cardGameRank` at all,
+ * and a second place that knows how tiers map onto stars is a second
+ * place for the mapping to drift. The exam decides *whether* to
+ * promote; this decides what promoting means.
+ *
+ * The season is rolled over first, so a skip taken on the first day of a
+ * new season lands on that season's ladder rather than resurrecting the
+ * old one. The win streak resets: a streak is a run of matches, and no
+ * match was played here.
+ */
+async function promoteToTierFloor(uid, tier) {
+  if (!TIERS.includes(tier)) throw new Error(`unknown tier ${tier}`);
+  const userRef = db().collection("users").doc(uid);
+  const season = seasonForDate(new Date());
+
+  const result = await db().runTransaction(async (transaction) => {
+    const snap = await transaction.get(userRef);
+    const current = rollOverIfNewSeason(readRank(snap.data()), season);
+    const floor = tierBase(tier);
+    if (totalStars(current) >= floor) {
+      return {changed: false, rank: current};
+    }
+    const rank = Object.assign(rankFromTotal(floor), {
+      season,
+      winStreak: 0,
+    });
+    transaction.set(userRef, {cardGameRank: rank}, {merge: true});
+    return {changed: true, rank, before: current};
+  });
+
+  if (result.changed) await mirrorToLeaderboard(uid, result.rank);
+  return result;
+}
+
+/**
  * Fires on every write to a match and does nothing unless that write is
  * the one that concluded it. Deliberately watches `result` appearing
  * rather than hooking into `battle_scoring.js` where it is written:
@@ -394,8 +434,12 @@ exports.onBattleMatchConcluded = onDocumentWritten(
 );
 
 // Exported for tests only.
+exports.promoteToTierFloor = promoteToTierFloor;
+
 exports._internal = {
   TIERS,
+  promoteToTierFloor,
+  mirrorToLeaderboard,
   STARS_PER_DIVISION,
   DIVISIONS_PER_TIER,
   tierBase,

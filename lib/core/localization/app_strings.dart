@@ -1515,6 +1515,59 @@ class AppStrings {
   // of the arena: a hand of twenty cards cannot be read six at a time
   // through a horizontal scroll while a ten-second clock runs.
   String get battleCardPickerTitle => _t('Pilih Kartu', 'Pick a Card');
+
+  // Ujian lompat rank — jalan masuk bagi yang sudah bisa kanji supaya
+  // tidak terjebak lama di hiragana/katakana.
+  String get rankSkipEntry => _t('Lompat Rank', 'Skip a Rank');
+  String get rankSkipEntrySubtitle => _t(
+        'Sudah bisa? Buktikan lewat ujian',
+        'Already know this? Prove it in an exam',
+      );
+  String get rankSkipPickTier => _t('Mau lompat ke mana?', 'Skip to which rank?');
+  String rankSkipRules(String tier, int questions, int passMark) => _t(
+        '$questions kartu $tier. Benar $passMark atau lebih untuk langsung '
+            'masuk $tier. Kalau gagal, bisa dicoba lagi besok.',
+        '$questions $tier cards. Get $passMark or more right to start at '
+            '$tier. If you fall short, you can try again tomorrow.',
+      );
+  String get rankSkipStart => _t('Mulai Ujian', 'Start Exam');
+  String get rankSkipSubmit => _t('Kirim Jawaban', 'Send Answers');
+  String get rankSkipNext => _t('Berikutnya', 'Next');
+  String rankSkipProgress(int at, int total) => _t(
+        'Kartu $at / $total',
+        'Card $at / $total',
+      );
+  String get rankSkipAtTop => _t(
+        'Kamu sudah di rank tertinggi.',
+        'You are already at the top rank.',
+      );
+  String get rankSkipPassed => _t('Lulus!', 'Passed!');
+  String get rankSkipFailed => _t('Belum lulus', 'Not this time');
+  String rankSkipScore(int correct, int total) => _t(
+        'Benar $correct dari $total',
+        '$correct of $total correct',
+      );
+  String rankSkipPromoted(String tier) => _t(
+        'Rank kamu sekarang $tier.',
+        'Your rank is now $tier.',
+      );
+  String get rankSkipAlreadyThere => _t(
+        'Rank kamu sudah di atas itu, jadi tidak ada yang berubah.',
+        'Your rank was already above that, so nothing changed.',
+      );
+  String rankSkipRetryAfter(String when) => _t(
+        'Bisa dicoba lagi $when.',
+        'You can try again $when.',
+      );
+  String get rankSkipRetryTomorrow => _t(
+        'Bisa dicoba lagi besok.',
+        'You can try again tomorrow.',
+      );
+  String get rankSkipUnavailable => _t(
+        'Ujian tidak bisa dibuka sekarang. Cek koneksimu lalu coba lagi.',
+        'The exam could not be opened. Check your connection and try again.',
+      );
+  String get rankSkipTypeAnswer => _t('Ketik jawabanmu...', 'Type your answer...');
   String get battleCardPickerHint => _t(
         'Ketuk salah satu kartu untuk memilihnya',
         'Tap a card to choose it',

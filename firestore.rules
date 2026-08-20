@@ -54,6 +54,21 @@ service cloud.firestore {
       }
     }
 
+    // Kunci jawaban ujian lompat rank. TIDAK BOLEH dibaca maupun
+    // ditulis client sama sekali — hanya Cloud Function
+    // startRankSkipExam/submitRankSkipExam (rank_skip.js) yang
+    // menyentuhnya, lewat Admin SDK yang tidak tunduk pada aturan ini.
+    //
+    // Kalau dokumen ini bisa dibaca, ujiannya jadi lelucon: kunci
+    // jawabannya ada di dalam. Kalau bisa ditulis, `lockedUntil`
+    // (jeda 24 jam setelah gagal) bisa dihapus sendiri oleh pemainnya.
+    // Sengaja tidak ada allow apa pun di sini; diam berarti tolak.
+    match /rankSkipExams/{uid} {
+      match /{document=**} {
+        allow read, write: if false;
+      }
+    }
+
     // Leaderboard — semua bisa baca, hanya bisa tulis data sendiri.
     //
     // Lima field `cardGame*` (tingkat/divisi/bintang/musim/total bintang

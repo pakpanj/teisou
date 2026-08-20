@@ -71,6 +71,7 @@ import 'services/furigana_dictionary.dart';
 import 'services/kana_keyboard_input.dart';
 import 'services/presence_service.dart';
 import 'services/romaji_converter.dart';
+import 'services/rank_skip_service.dart';
 import 'services/tts_service.dart';
 import '../data/repositories/onboarding_repository.dart';
 
@@ -439,6 +440,12 @@ final kanaKeyboardInputProvider = FutureProvider<KanaKeyboardInput>((
 /// `battle_deck_builder.dart`'s `buildDeckIds`/`resolveCard` need. Kept
 /// as one provider (a record) rather than two separate ones so a
 /// consumer that needs both never has to juggle two AsyncValues.
+/// The rank-skip exam, which is entirely server-side — see
+/// `RankSkipService`.
+final rankSkipServiceProvider = Provider<RankSkipService>(
+  (ref) => RankSkipService(),
+);
+
 final battleCardDataProvider =
     FutureProvider<(List<KanaCharacter>, List<KanjiEntry>)>((ref) async {
       final kana = await ref.watch(kanaRepositoryProvider).getAll();
