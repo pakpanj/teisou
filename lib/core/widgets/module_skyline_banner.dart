@@ -63,8 +63,23 @@ class ModuleSkylineBanner extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       height: height,
-      child: CustomPaint(
-        painter: _SkylinePainter(color: palette.textNavy.withValues(alpha: 0.08)),
+      // The same bottom fade the light path above already had. Without it
+      // the drawn skyline simply stopped at the banner's edge, cutting the
+      // mountain mid-slope and leaving a visible seam against the page —
+      // the very thing the ShaderMask above was added to fix, applied to
+      // one of the two paths and not the other.
+      child: ShaderMask(
+        shaderCallback: (rect) => const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Colors.white, Colors.white, Colors.transparent],
+          stops: [0.0, 0.7, 1.0],
+        ).createShader(rect),
+        blendMode: BlendMode.dstIn,
+        child: CustomPaint(
+          painter:
+              _SkylinePainter(color: palette.textNavy.withValues(alpha: 0.08)),
+        ),
       ),
     );
   }
