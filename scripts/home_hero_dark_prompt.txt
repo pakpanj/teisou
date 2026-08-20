@@ -1,0 +1,98 @@
+TEISOU HOME HERO BANNER - NIGHT / DARK THEME
+================================================================
+One prompt. Copy the whole block below into Gemini.
+
+Where it goes: assets/banners/home_hero_dark.png
+
+The code is already wired for it. `HomeHeroScene` picks
+home_hero_dark.png in dark mode and home_hero.png in light, and falls
+through to a code-drawn scene if the file is missing - so nothing
+breaks while it does not exist, and nothing needs changing in code
+once it does. Drop the file in, rebuild, done.
+
+
+WHAT THIS IS REPLACING
+----------------------
+Right now dark mode draws the scene in code: Mt. Fuji as a flat
+silhouette, two sakura canopies, falling petals, and the mascot PNG
+placed on top. It reads fine, but it is geometry, not illustration.
+This asset replaces it with the night twin of the real daytime banner.
+
+
+MATCH THE DAYTIME ART - LOOK AT IT FIRST
+----------------------------------------
+Open assets/banners/home_hero.png before generating. The night version
+must read as the same place at a different hour, same characters, same
+composition - not a different scene that happens to be dark.
+
+The existing daytime banner has, left to right:
+  - Mt. Fuji, pale blue with a white snow cap, centre-left, small and
+    hazy in the distance
+  - soft sakura canopies bleeding in from both edges, palest pink
+  - the mascot cat, right of centre, roughly half the banner height
+  - a fuller sakura tree at the right edge with a brown trunk and
+    visible branches
+  - a few petals drifting in the air
+  - a very soft pale ledge/ground line along the bottom
+  - a white-to-pink gradient sky, extremely light
+
+
+THE MASCOT MUST BE IN THE IMAGE
+-------------------------------
+Important, and easy to get wrong: the cat is part of this PNG, not
+laid on top by the app. The app only places a mascot separately in the
+fallback path, which this file switches off. If the cat is missing
+here, dark mode has no cat at all - which is the exact bug this asset
+is being made to fix.
+
+The cat, described from the actual art rather than from memory:
+white body with a thin dark-plum outline, pink inner ears, one large
+round dark-brown eye with a white highlight, the other eye winking
+(a simple downward curve), small pink nose, open smiling mouth with a
+small pink tongue, round pink blush on both cheeks, a red neckerchief
+with a pale sakura flower on it, and one front paw raised in a wave
+showing a pink paw pad. Only the upper body is visible - the bottom of
+the banner cuts it off around the chest. Cute, rounded, kawaii, in the
+same flat cel-shaded style as the rest of the scene.
+
+
+TECHNICAL
+---------
+Request 1600x560 (roughly 2.87:1, the daytime banner's exact ratio).
+If the generator will not do that shape, take 16:9 and crop - but keep
+the important content in the upper two-thirds: Flutter draws this with
+BoxFit.cover aligned to the top, so the bottom edge is what gets cut
+on tall screens.
+
+Do NOT ask for a transparent background. Generators draw the
+transparency checkerboard as actual pixels, which then ships into the
+app - that has happened on this project before. This is a full
+rectangular banner, so a solid painted night sky is what is wanted
+anyway.
+
+No text, no UI chrome, no logo, no watermark, no frame or border, no
+status bar. The app draws its own title above this.
+
+Hand the PNG back afterwards and the very top and bottom rows of
+pixels get nudged to exactly #121620, the app's dark background, so
+the banner's edge does not show as a seam against the screen.
+
+
+==============================================
+home_hero_dark.png (night / dark theme)
+==============================================
+A wide, gentle illustrated banner scene for a children's Japanese-learning app, in a soft kawaii pastel style - flat cel-shaded illustration with simple soft shading, no photorealism, no busy fine detail. This sits behind and beneath app text, so it must stay calm and uncluttered rather than compete with it.
+
+Scene: a peaceful night-time sakura landscape, seen as a wide horizontal strip - the same view as a quiet spring evening in Japan. In the middle distance, slightly left of centre, Mount Fuji rises small and hazy, a soft deep blue-grey silhouette with a pale snow cap catching the moonlight. Sakura trees frame both edges of the image: soft blossom canopies bleeding in from the left and right, with a fuller cherry tree at the right edge showing a dark trunk and a few visible branches. A handful of pale petals drift slowly through the air. Along the very bottom, a soft faint ground line suggests a low stone ledge.
+
+Sitting right of centre, in front of the mountain and clearly the focus of the scene, is a cute white cat mascot - a maneki-neko - shown from the chest up, waving one raised front paw at the viewer. The cat is white with a thin dark-plum outline, pink inner ears, one large round dark-brown eye with a bright white highlight, the other eye closed in a friendly wink, a small pink nose, an open smiling mouth with a small pink tongue, round pink blush on both cheeks, and a red neckerchief with a small pale sakura flower on it. Its raised paw shows a soft pink pad. The cat is rounded, soft and friendly, drawn in the same flat cel-shaded style as the landscape.
+
+Sky: a deep, calm night blue - dark navy at the top easing into a slightly warmer plum-blue near the horizon. A small soft moon sits high in the sky, well away from the centre so it does not sit behind the cat, casting a gentle glow. A scattering of small faint stars, sparse and soft, never bright or sparkly.
+
+Lighting and mood: moonlit, quiet, warm rather than cold or eerie. The cat is the brightest thing in the picture - its white fur gently lit so it stands out clearly against the dark background - while the landscape stays soft, muted and low-contrast behind it. The blossoms read as a dusty muted pink under moonlight, not the bright pink of daytime.
+
+Colour guidance: background night blues around #121620 to #1C2130; blossoms a muted moonlit pink around #FF8296 at low saturation; mountain and distant elements a soft blue around #6BA9F7 heavily muted; highlights and snow a soft off-white around #E8EAF0. Keep the whole image gentle and slightly desaturated - a soft night, not a harsh one.
+
+Composition: wide horizontal banner, roughly 2.87:1. Keep the mountain, moon and the cat's head and raised paw within the upper two-thirds of the frame; the bottom strip may be cropped away. Leave the upper-left area relatively open and uncluttered.
+
+No text, no letters, no numbers, no logo, no watermark, no signature, no UI elements, no border or frame, no transparent background - paint the sky solid.
