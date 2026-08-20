@@ -1,6 +1,5 @@
 const {onCall, HttpsError} = require("firebase-functions/v2/https");
 const {getFirestore, FieldValue} = require("firebase-admin/firestore");
-const {google} = require("googleapis");
 
 const {subscriptionGrants, productGrants} = require("./iap_states");
 
@@ -51,6 +50,12 @@ function playConfigured() {
 let androidPublisher = null;
 function publisher() {
   if (!androidPublisher) {
+    // Required here, not at the top of the file. `googleapis` takes well
+    // over a second to load, and the deploy step gives the whole module
+    // ten seconds to reveal its exports before giving up — which it did:
+    // "Cannot determine backend specification". Nothing outside this
+    // function needs the library, so nothing else should wait for it.
+    const {google} = require("googleapis");
     const auth = new google.auth.GoogleAuth({
       scopes: ["https://www.googleapis.com/auth/androidpublisher"],
     });
