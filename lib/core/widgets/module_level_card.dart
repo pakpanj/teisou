@@ -42,7 +42,11 @@ class ModuleLevelCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    final color = available ? accent : palette.freeBadgeGrey;
+    // An available card sits on the pale sakura frame; a locked one sits on
+    // the theme's own muted surface. Those are two different grounds, so
+    // they take two different sets of colours — see [onFramePalette].
+    final surface = available ? onFramePalette : palette;
+    final color = available ? onFramePalette.primaryCoral : palette.freeBadgeGrey;
 
     final card = Material(
       // An available card gets the sakura nine-patch frame's own flat pink
@@ -81,7 +85,7 @@ class ModuleLevelCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: available ? palette.textNavy : palette.freeBadgeGrey,
+                        color: available ? surface.textNavy : palette.freeBadgeGrey,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -90,7 +94,7 @@ class ModuleLevelCard extends StatelessWidget {
                         subtitle,
                         style: TextStyle(
                           fontSize: 12,
-                          color: palette.textNavy.withValues(alpha: 0.6),
+                          color: surface.textNavy.withValues(alpha: 0.6),
                         ),
                       ),
                       if (percent != null) ...[

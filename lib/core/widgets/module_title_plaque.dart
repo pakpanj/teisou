@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_palette.dart';
+import 'module_card_frame.dart';
+
 
 /// A small ornamental plaque behind a module screen's AppBar title (e.g.
 /// "Bunpou", "Kaiwa") — `assets/module_frames/frame_title_plaque.png`, see
@@ -37,7 +38,7 @@ class ModuleTitlePlaque extends StatelessWidget {
             fit: BoxFit.fill,
             errorBuilder: (context, error, stackTrace) => DecoratedBox(
               decoration: BoxDecoration(
-                color: context.palette.cardWhite,
+                color: onFramePalette.cardWhite,
                 borderRadius: BorderRadius.circular(14),
               ),
             ),
@@ -56,7 +57,7 @@ class ModuleTitlePlaque extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 17,
-                  color: context.palette.textNavy,
+                  color: onFramePalette.textNavy,
                 ),
               ),
             ),

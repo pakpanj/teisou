@@ -112,6 +112,11 @@ class _LevelCard extends ConsumerWidget {
     final reached = standing?.reachedByProgress ?? (level == JlptLevel.n5);
     final locked = kBabGateQuizRequired && !reached;
     final available = authored && !locked;
+    // The framed card is a pale sakura picture, not a surface the theme
+    // repaints, so everything drawn on it takes the light palette however
+    // the app is themed — see [onFramePalette]. Without this the open
+    // level rendered its own title and progress in near-white on pink.
+    final surface = available ? onFramePalette : palette;
 
     final previousLevel = level == JlptLevel.n5
         ? null
@@ -133,7 +138,7 @@ class _LevelCard extends ConsumerWidget {
       AppNavigator.slideFromRight(context, BabLevelScreen(level: level));
     }
 
-    final accent = available ? palette.primaryCoral : palette.freeBadgeGrey;
+    final accent = available ? surface.primaryCoral : palette.freeBadgeGrey;
     final percent = (standing != null && standing.total > 0)
         ? ((standing.completed / standing.total) * 100).round()
         : 0;
@@ -182,7 +187,7 @@ class _LevelCard extends ConsumerWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: available
-                                  ? palette.textNavy
+                                  ? surface.textNavy
                                   : palette.freeBadgeGrey,
                             ),
                           ),
@@ -207,7 +212,7 @@ class _LevelCard extends ConsumerWidget {
                                     ),
                               style: TextStyle(
                                 fontSize: 12,
-                                color: palette.textNavy.withValues(alpha: 0.6),
+                                color: surface.textNavy.withValues(alpha: 0.6),
                               ),
                             ),
                             if (standing != null) ...[
@@ -224,15 +229,15 @@ class _LevelCard extends ConsumerWidget {
                                             : 0,
                                         minHeight: 6,
                                         backgroundColor:
-                                            palette.progressTrack,
-                                        color: palette.primaryCoral,
+                                            surface.progressTrack,
+                                        color: surface.primaryCoral,
                                       ),
                                     ),
                                   ),
                                   const SizedBox(width: 8),
                                   BabPercentPill(
                                     percent: percent,
-                                    color: palette.primaryCoral,
+                                    color: surface.primaryCoral,
                                   ),
                                 ],
                               ),
@@ -243,7 +248,7 @@ class _LevelCard extends ConsumerWidget {
                     ),
                     const SizedBox(width: 8),
                     available
-                        ? BabChevronButton(color: palette.primaryCoral)
+                        ? BabChevronButton(color: surface.primaryCoral)
                         : Icon(Icons.chevron_right, color: accent),
                   ],
                 ),

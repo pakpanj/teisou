@@ -143,12 +143,17 @@ class _ChapterCard extends ConsumerWidget {
     final palette = context.palette;
     final greyed = palette.freeBadgeGrey;
     final active = !locked;
+    // The framed card is a pale sakura picture, not a surface the theme
+    // repaints, so everything drawn on it takes the light palette however
+    // the app is themed — see [onFramePalette]. Without this the open
+    // level rendered its own title and progress in near-white on pink.
+    final surface = active ? onFramePalette : palette;
 
     final accent = done
         ? palette.successGreen
         : locked
         ? greyed
-        : palette.primaryCoral;
+        : surface.primaryCoral;
 
     final card = Material(
       // Active cards get the sakura nine-patch frame's own flat pink fill
@@ -200,7 +205,7 @@ class _ChapterCard extends ConsumerWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: locked ? greyed : palette.textNavy,
+                          color: locked ? greyed : surface.textNavy,
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -212,7 +217,7 @@ class _ChapterCard extends ConsumerWidget {
                           fontSize: 12,
                           color: locked
                               ? greyed
-                              : palette.textNavy.withValues(alpha: 0.6),
+                              : surface.textNavy.withValues(alpha: 0.6),
                         ),
                       ),
                     ],
@@ -221,7 +226,7 @@ class _ChapterCard extends ConsumerWidget {
                 const SizedBox(width: 8),
                 locked
                     ? Icon(Icons.lock, color: greyed, size: 20)
-                    : BabChevronButton(color: palette.primaryCoral),
+                    : BabChevronButton(color: surface.primaryCoral),
               ],
             ),
           ),

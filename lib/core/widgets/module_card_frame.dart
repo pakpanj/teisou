@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_palette.dart';
+
 /// A nine-patch sakura-corner card border —
 /// `assets/module_frames/frame_card_frame.png` (see
 /// `scripts/module_frame_asset_prompts.md` prompt #2/#3: this file's actual
@@ -14,6 +16,19 @@ import 'package:flutter/material.dart';
 /// middle stretches to fit whatever content is inside — the standard
 /// nine-patch contract, and why the source art was specced with a
 /// completely flat, textureless interior.
+/// The palette to colour anything drawn *on* one of these frames.
+///
+/// The frame art is a pale sakura pink in both themes — it is a picture,
+/// not a surface the theme repaints. So content on it has to come from the
+/// light palette whatever the app's theme is. Using `context.palette` there
+/// put near-white text and pink accents on pale pink in dark mode: the
+/// Kanji level list rendered its open level as an almost blank card, title
+/// and all, and every module home does the same thing.
+///
+/// This is the general rule stated once: **take your colour from the
+/// surface behind you, not from the app.**
+const onFramePalette = AppPalette.light;
+
 class ModuleCardFrame extends StatelessWidget {
   final Widget child;
   final BorderRadius borderRadius;
