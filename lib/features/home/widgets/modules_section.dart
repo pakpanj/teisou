@@ -477,23 +477,21 @@ class _KanaHeroCard extends StatelessWidget {
             height: 210,
             child: Stack(
               children: [
-                if (isDark)
-                  Positioned.fill(
-                    child: IgnorePointer(
-                      child: CustomPaint(
-                        painter: _KanaSceneryPainter(
-                          color: accent.withValues(alpha: 0.22),
-                          torii: torii,
-                        ),
-                      ),
-                    ),
-                  )
-                else
-                  Positioned.fill(
+                // One path for both themes, with the painter kept only as
+                // the safety net it was always meant to be. Dark used to
+                // skip the asset entirely; now it asks for the night
+                // twin and falls through to the painter while that file
+                // does not exist, so this costs nothing until the art
+                // lands and needs no code change when it does.
+                Positioned.fill(
+                  child: IgnorePointer(
                     child: Image.asset(
-                      torii
-                          ? 'assets/banners/hiragana_card.png'
-                          : 'assets/banners/katakana_card.png',
+                      switch ((torii, isDark)) {
+                        (true, false) => 'assets/banners/hiragana_card.png',
+                        (true, true) => 'assets/banners/hiragana_card_dark.png',
+                        (false, false) => 'assets/banners/katakana_card.png',
+                        (false, true) => 'assets/banners/katakana_card_dark.png',
+                      },
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) => CustomPaint(
                         painter: _KanaSceneryPainter(
@@ -503,6 +501,7 @@ class _KanaHeroCard extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(

@@ -1,0 +1,107 @@
+TEISOU KANA CARD BACKGROUNDS - NIGHT / DARK THEME
+================================================================
+2 prompts, one per card. Each block is complete and self-contained -
+copy one whole block into Gemini.
+
+Where they go:
+  assets/banners/hiragana_card_dark.png
+  assets/banners/katakana_card_dark.png
+
+The code is already wired. `_KanaHeroCard` now picks the dark file in
+dark mode and the existing light file otherwise, falling through to the
+code-drawn `_KanaSceneryPainter` while a file is missing - so nothing
+breaks before these exist, and nothing needs changing once they do.
+Drop both in and rebuild.
+
+
+MATCH THE DAYTIME CARDS - LOOK AT THEM FIRST
+--------------------------------------------
+Open assets/banners/hiragana_card.png and katakana_card.png before
+generating. These are night twins of those two, not new scenes.
+
+  hiragana_card.png - a very pale coral-pink wash. Mount Fuji in the
+  middle, a cherry blossom branch reaching in from the left edge, and a
+  red torii gate standing on the right. Everything extremely faint,
+  fading to near-white at the top.
+
+  katakana_card.png - the same idea in pale blue. A small Mount Fuji
+  left of centre, a five-storey pagoda on the right, a pale sun disc
+  high on the left, and soft mist. Again very faint, fading to
+  near-white at the top.
+
+The two must stay visibly a pair: same style, same framing, same
+weight - only the palette and the landmark change.
+
+
+THESE ARE BACKGROUNDS, NOT PICTURES
+-----------------------------------
+This is the thing to get right. Each one sits *behind* the card's own
+text, so it must stay quiet:
+
+  - top-left holds a coloured circle icon (あ / ア) with a title and a
+    subtitle beneath it
+  - bottom-right holds a round arrow button
+
+So keep both of those corners nearly empty - no landmark, no branch, no
+detail there. Put the interest in the middle and along the lower edge,
+exactly as the daytime versions do.
+
+Low contrast throughout. If the art competes with the text, it is
+wrong, however pretty it is. The daytime cards are so faint they are
+almost a tint, and the night versions should be equally restrained
+against their darker ground.
+
+
+TECHNICAL
+---------
+Request 1200x645 (about 1.86:1, the daytime cards' exact ratio).
+
+Flutter draws these with BoxFit.cover into a slightly wider box, so the
+top and bottom get trimmed - keep the horizon and the landmark
+silhouettes within the middle band, nothing critical in the top or
+bottom 15%.
+
+Do NOT ask for a transparent background. Generators draw the
+transparency checkerboard as real pixels and it ships into the app;
+that has happened on this project before. Paint the night sky solid.
+
+Each card sits on a solid colour that the art must blend into at the
+edges rather than cut against:
+  hiragana card ground  #34232B  (deep plum)
+  katakana card ground  #1F2838  (deep navy blue)
+
+No text, no letters, no kana, no numbers, no logo, no watermark, no
+frame or border, no UI elements. The app draws its own icon and title
+on top.
+
+
+==============================================
+1. hiragana_card_dark.png  (plum / coral night)
+==============================================
+A soft, extremely subtle illustrated background for a card in a children's Japanese-learning app, in a gentle kawaii pastel style - flat, simple, softly shaded, no photorealism and no fine busy detail. This image sits behind text, so it must read as a quiet tint rather than as a picture competing for attention.
+
+Scene: a calm night landscape in Japan, seen as a wide horizontal strip. Mount Fuji sits in the middle distance, centred, a soft rounded silhouette with a faint pale snow cap. A cherry blossom branch reaches in from the left edge with a few soft blossoms. On the right, a simple traditional torii gate stands in silhouette, its familiar shape clear but its detail minimal. A handful of blossom petals drift softly through the air.
+
+Palette and mood: a deep plum night. The background is a dark warm purple-brown around #34232B, deepening slightly toward the upper edge. Everything in the scene is rendered only a little lighter than that ground - dusty muted rose and soft mauve, around #FF8296 heavily desaturated and dimmed - so the whole image stays within a narrow, low-contrast range. Moonlit and calm, warm rather than cold. The torii is the deepest accent, a slightly richer muted red, but still soft and never bright.
+
+Composition: keep the upper-left corner and the lower-right corner almost empty and free of detail - the app places an icon and a title in one and a button in the other. Mount Fuji and the torii belong in the middle and lower-middle of the frame. The very top of the image should fade toward the flat background colour so the card's edge is invisible.
+
+Very low contrast overall. No harsh highlights, no glow, no strong light source, no stars bright enough to draw the eye.
+
+No text, no letters, no kana characters, no numbers, no logo, no watermark, no signature, no UI elements, no frame or border, no transparent background.
+
+
+==============================================
+2. katakana_card_dark.png  (navy / blue night)
+==============================================
+A soft, extremely subtle illustrated background for a card in a children's Japanese-learning app, in a gentle kawaii pastel style - flat, simple, softly shaded, no photorealism and no fine busy detail. This image sits behind text, so it must read as a quiet tint rather than as a picture competing for attention.
+
+Scene: a calm night landscape in Japan, seen as a wide horizontal strip, and clearly the companion piece to a matching plum-coloured card. A small Mount Fuji sits left of centre in the distance, a soft rounded silhouette with a faint pale snow cap. On the right stands a five-storey pagoda in simple silhouette - the tiered roof shape readable, the architectural detail left out. Soft low mist drifts between them. High on the left hangs a small, dim moon.
+
+Palette and mood: a deep navy night. The background is a dark blue around #1F2838, deepening slightly toward the upper edge. Everything in the scene is rendered only a little lighter than that ground - muted slate blues and soft steel, around #6BA9F7 heavily desaturated and dimmed - so the whole image stays within a narrow, low-contrast range. Quiet, still and cool, but never harsh or eerie.
+
+Composition: keep the upper-left corner and the lower-right corner almost empty and free of detail - the app places an icon and a title in one and a button in the other. Mount Fuji and the pagoda belong in the middle and lower-middle of the frame. The very top of the image should fade toward the flat background colour so the card's edge is invisible.
+
+Very low contrast overall. No harsh highlights, no glow, no strong light source, no stars bright enough to draw the eye. The moon should be barely brighter than the sky around it.
+
+No text, no letters, no kana characters, no numbers, no logo, no watermark, no signature, no UI elements, no frame or border, no transparent background.
