@@ -360,6 +360,19 @@ final appStartupProvider = FutureProvider<User>((ref) async {
         )
         .catchError((Object e) => debugPrint('ensurePublished failed: $e')),
   );
+  // Drops clan memberships whose roster row is gone — being kicked, or
+  // having a clan disbanded under you, leaves one behind that nobody but
+  // this account has the rights to remove, and a stale one makes that
+  // clan's chat answer every read with permission-denied for ever.
+  // Best-effort and unawaited like everything else here.
+  unawaited(
+    ref
+        .read(clanRepositoryProvider)
+        .reconcileMemberships(user.uid)
+        .catchError(
+          (Object e) => debugPrint('reconcileMemberships failed: $e'),
+        ),
+  );
   // Requests notification permission and saves this device's FCM token —
   // best-effort like everything else here, and deliberately not blocking
   // startup on a permission prompt: a learner who denies it (or a device

@@ -251,7 +251,10 @@ class ClanRepository {
       final batch = _firestore.batch();
       for (final member in others.skip(i).take(perBatch)) {
         batch.delete(_membersOf(normalizedCode).doc(member.uid));
-        batch.delete(_membershipsOf(member.uid).doc(normalizedCode));
+        // Not the other members' own membership rows — same rule, same
+        // all-or-nothing batch, so including them meant disbanding a clan
+        // with anyone else in it silently did nothing. They clean up
+        // themselves via [reconcileMemberships].
       }
       await batch.commit();
     }
@@ -274,6 +277,36 @@ class ClanRepository {
               .map((doc) => ClanMembership.fromMap(doc.id, doc.data()))
               .toList(),
         );
+  }
+
+  /// Drops this user's memberships whose clan or roster row is gone.
+  ///
+  /// The reverse index (`users/{uid}/clanMemberships`) and the roster
+  /// (`clans/{code}/members/{uid}`) are two records of the same fact, and
+  /// only their owner may write the first while a leader may delete the
+  /// second — so being kicked, or having a clan disbanded under you,
+  /// necessarily leaves the index behind. Nothing else can clean it.
+  ///
+  /// The cost of leaving it is not cosmetic: the chat screen subscribes
+  /// from the index, while reads are authorised against the roster, so a
+  /// stale entry means a clan that sits in the list and answers every
+  /// read with permission-denied for ever. Observed on a real device as
+  /// a steady stream of PERMISSION_DENIED for two clans.
+  ///
+  /// Best-effort and safe to call on every open: it only ever deletes
+  /// rows whose roster row is confirmed absent.
+  Future<void> reconcileMemberships(String uid) async {
+    final memberships = await _membershipsOf(uid).get();
+    for (final doc in memberships.docs) {
+      final roster = await _membersOf(doc.id).doc(uid).get();
+      if (roster.exists) continue;
+      try {
+        await _membershipsOf(uid).doc(doc.id).delete();
+      } catch (_) {
+        // Its owner is the only one who can, and this is that owner —
+        // but a failure here must not stop the rest being checked.
+      }
+    }
   }
 
   /// One-shot fetch, not a live stream — a clan's roster can run into the
@@ -377,9 +410,17 @@ class ClanRepository {
     required String targetUid,
   }) async {
     final normalizedCode = code.trim().toUpperCase();
+    // Only the roster row — **not** the target's own
+    // `users/{targetUid}/clanMemberships` entry, which `firestore.rules`
+    // lets nobody but its owner touch. Deleting it here did not merely
+    // fail on its own: a Firestore batch is all-or-nothing, so the denied
+    // write took the roster deletion and the memberCount down with it and
+    // **kicking never worked at all**. The kicked member's stale
+    // membership is cleaned up by [reconcileMemberships] the next time
+    // their own app looks, which is the only place with the rights to do
+    // it.
     final batch = _firestore.batch();
     batch.delete(_membersOf(normalizedCode).doc(targetUid));
-    batch.delete(_membershipsOf(targetUid).doc(normalizedCode));
     batch.update(_clans.doc(normalizedCode), {
       'memberCount': FieldValue.increment(-1),
     });
