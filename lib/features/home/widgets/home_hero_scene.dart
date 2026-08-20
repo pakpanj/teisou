@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_palette.dart';
+import '../../../core/widgets/mascot_widget.dart';
 import '../../../core/widgets/sakura_fall_widget.dart';
 
 /// The banner at the top of Home: Mt. Fuji, sakura trees and the waving
@@ -19,19 +20,24 @@ class HomeHeroScene extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    if (!isDark) {
-      return SizedBox(
-        height: 190,
-        width: double.infinity,
-        child: Image.asset(
-          'assets/banners/home_hero.png',
-          fit: BoxFit.cover,
-          alignment: Alignment.topCenter,
-          errorBuilder: (context, error, stackTrace) => const _CodeDrawnHero(),
-        ),
-      );
-    }
-    return const _CodeDrawnHero();
+    // A night version of the same scene, exactly as
+    // `ClanLeaderboardBanner` and the Card Game backdrop already do it —
+    // rather than dark mode dropping to the code-drawn scene, which loses
+    // the mascot entirely and reads as a bug (reported from a screenshot).
+    // Until `home_hero_dark.png` exists the errorBuilder still catches it,
+    // so this costs nothing today and needs no code change when it lands.
+    return SizedBox(
+      height: 190,
+      width: double.infinity,
+      child: Image.asset(
+        isDark
+            ? 'assets/banners/home_hero_dark.png'
+            : 'assets/banners/home_hero.png',
+        fit: BoxFit.cover,
+        alignment: Alignment.topCenter,
+        errorBuilder: (context, error, stackTrace) => const _CodeDrawnHero(),
+      ),
+    );
   }
 }
 
@@ -63,15 +69,35 @@ class _CodeDrawnHero extends StatelessWidget {
             child: IgnorePointer(
               child: CustomPaint(
                 painter: _FujiSakuraPainter(
-                  fujiColor: palette.secondaryBlue.withValues(alpha: 0.5),
-                  snowColor: Colors.white.withValues(alpha: 0.9),
-                  canopyColor: palette.primaryCoral.withValues(alpha: 0.55),
-                  trunkColor: palette.textNavy.withValues(alpha: 0.3),
+                  // Softer than they were. At alpha 0.5/0.55 these shapes
+                  // read as the subject rather than the backdrop they are
+                  // — a flat triangle and two circles carrying a screen on
+                  // their own, which is what made this look broken next to
+                  // the real illustration.
+                  fujiColor: palette.secondaryBlue.withValues(alpha: 0.28),
+                  snowColor: Colors.white.withValues(alpha: 0.55),
+                  canopyColor: palette.primaryCoral.withValues(alpha: 0.3),
+                  trunkColor: palette.textNavy.withValues(alpha: 0.18),
                 ),
               ),
             ),
           ),
           const Positioned.fill(child: SakuraFallWidget(particleCount: 5)),
+          // **The scene was drawn to sit behind a mascot that was never
+          // placed here** — see [_FujiSakuraPainter]'s own doc comment,
+          // which says "centered behind the mascot". So dark mode showed
+          // the backdrop alone, subject missing, and the app's own
+          // character absent from its home screen. The art is a
+          // transparent PNG, so it needs no light/dark variant of its own.
+          Positioned(
+            right: 24,
+            bottom: 0,
+            child: MascotWidget(
+              mood: MascotMood.waving,
+              size: 132,
+              showBackdrop: false,
+            ),
+          ),
         ],
       ),
     );
