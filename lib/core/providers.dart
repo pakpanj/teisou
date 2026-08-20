@@ -373,6 +373,23 @@ final appStartupProvider = FutureProvider<User>((ref) async {
           (Object e) => debugPrint('reconcileMemberships failed: $e'),
         ),
   );
+  // Gives friendships made before conversations were created up front the
+  // document `firestore.rules` needs before their messages can be read.
+  // Home subscribes to a friend's messages for its unread badge, so a
+  // missing one denies from launch, not just inside chat. Once per
+  // install, remembered locally — see backfillConversations.
+  unawaited(() async {
+    try {
+      final friends =
+          await ref.read(friendRepositoryProvider).getFriendsOnce(user.uid);
+      await ref.read(directMessageRepositoryProvider).backfillConversations(
+            user.uid,
+            [for (final friend in friends) friend.uid],
+          );
+    } catch (e) {
+      debugPrint('backfillConversations failed: $e');
+    }
+  }());
   // Requests notification permission and saves this device's FCM token —
   // best-effort like everything else here, and deliberately not blocking
   // startup on a permission prompt: a learner who denies it (or a device

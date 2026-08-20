@@ -149,6 +149,23 @@ class _IncomingRequestRowState extends ConsumerState<_IncomingRequestRow> {
             myAvatarType: profile?.avatarType ?? AvatarType.google,
             myAvatarValue: profile?.avatarValue,
           );
+      if (accept) {
+        // The conversation document has to exist before either side can
+        // read the messages under it — `firestore.rules` gates that
+        // subcollection on the parent's `participants`, and a rule cannot
+        // decode uids out of the id string. Created here, at the one
+        // moment a friendship begins, rather than left to whoever opens
+        // the chat screen first: the chat hub subscribes to every
+        // friend's messages to show a preview line, so a friendship
+        // without this document means a listener that is refused for
+        // ever. Best-effort — the friendship itself already succeeded.
+        try {
+          await ref.read(directMessageRepositoryProvider).ensureConversation(
+                uidA: uid,
+                uidB: widget.request.fromUid,
+              );
+        } catch (_) {}
+      }
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(

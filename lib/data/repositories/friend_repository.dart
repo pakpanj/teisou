@@ -164,6 +164,16 @@ class FriendRepository {
         );
   }
 
+  /// One-shot — used by the startup repair that gives every existing
+  /// friendship its conversation document. A stream would keep a listener
+  /// open for a job that runs once.
+  Future<List<Friend>> getFriendsOnce(String uid) async {
+    final snapshot = await _friendsOf(uid).get();
+    return snapshot.docs
+        .map((doc) => Friend.fromMap(doc.id, doc.data()))
+        .toList();
+  }
+
   /// Removes the friendship on both sides at once. `DirectMessageRepository`
   /// gates its chat on live friendship (re-checked on every read/write, not
   /// just at conversation-creation time), so this is also the real "block"

@@ -40,6 +40,7 @@ class _ChatHubScreenState extends ConsumerState<ChatHubScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     final s = ref.watch(appStringsProvider);
 
     return Scaffold(
@@ -422,6 +423,7 @@ class _PersonalChatRow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     final myUid = ref.watch(appStartupProvider).valueOrNull?.uid;
     if (myUid == null) return const SizedBox.shrink();
     final conversationId =

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/firebase/firestore_paths.dart';
 import '../models/direct_message.dart';
@@ -70,6 +71,41 @@ class DirectMessageRepository {
       'participants': sorted,
       'updatedAt': FieldValue.serverTimestamp(),
     }, SetOptions(merge: true));
+  }
+
+  /// Gives every existing friendship the conversation document that
+  /// `firestore.rules` needs before the messages under it can be read.
+  ///
+  /// Friendships made from now on create theirs the moment they are
+  /// accepted; this is for the ones made before that. Without it those
+  /// chats answer every read with permission-denied for ever — and it is
+  /// not confined to the chat screen, because Home subscribes to a
+  /// friend's messages for its unread badge, so the denial starts at
+  /// launch.
+  ///
+  /// **Runs once per install, remembered locally.** The write itself is an
+  /// idempotent merge, so repeating it is harmless — but there is no way
+  /// to ask Firestore whether a conversation exists (reading a document
+  /// that does not is refused, not empty), so an unguarded repair would
+  /// write once per friend on every single launch, for ever.
+  static const _backfilledKey = 'dm_conversations_backfilled_v1';
+
+  Future<void> backfillConversations(
+    String uid,
+    List<String> friendUids,
+  ) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool(_backfilledKey) ?? false) return;
+    for (final friendUid in friendUids) {
+      try {
+        await ensureConversation(uidA: uid, uidB: friendUid);
+      } catch (_) {
+        // One friend failing must not stop the rest, nor mark the job
+        // done — the flag is only set once every one of them is through.
+        return;
+      }
+    }
+    await prefs.setBool(_backfilledKey, true);
   }
 
   /// Most recent [limit] messages, oldest first — same
