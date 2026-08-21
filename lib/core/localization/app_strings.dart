@@ -1518,6 +1518,10 @@ class AppStrings {
 
   // Ujian lompat rank — jalan masuk bagi yang sudah bisa kanji supaya
   // tidak terjebak lama di hiragana/katakana.
+  // Kartu bicara Kaiwa — potret bundar + tombol dengar.
+  String get kaiwaSpeakingNow => _t('sedang berbicara...', 'is speaking...');
+  String get kaiwaListen => _t('Dengarkan', 'Listen');
+
   String get rankSkipEntry => _t('Lompat Rank', 'Skip a Rank');
   String get rankSkipEntrySubtitle => _t(
         'Sudah bisa? Buktikan lewat ujian',

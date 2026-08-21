@@ -303,54 +303,85 @@ class _LineBubble extends StatelessWidget {
     return _promptBubble(context);
   }
 
+  /// The speaking card: a round portrait beside the speaker's name.
+  ///
+  /// Round rather than square, and wide rather than tall, for one
+  /// reason that is not taste: **the frame is drawn here, not in the
+  /// picture.** The ring, the background and the name plate are Flutter
+  /// widgets, so the only thing an artist has to supply is the cat on a
+  /// transparent background — and one such portrait serves every line
+  /// where that character wears that expression. A full-bleed
+  /// illustration would look richer and would need a unique drawing for
+  /// each of the module's 7,468 npc lines instead of a few hundred.
+  ///
+  /// There is deliberately no waveform, no elapsed time and no scrub
+  /// bar. The voice is TTS ([_SpeakButton]) — there is no audio file to
+  /// scrub, no duration known before it speaks, and a progress bar that
+  /// cannot be dragged is a control that lies.
   Widget _npcBubble(BuildContext context) {
     final npc = line.npcLine;
+    final palette = context.palette;
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                line.speaker,
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
-                  color: context.palette.textNavy.withValues(alpha: 0.5),
-                ),
-              ),
-              const SizedBox(height: 4),
-              Stack(
-                alignment: Alignment.bottomRight,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: palette.katakanaCardBg,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(
+            color: palette.primaryCoral.withValues(alpha: 0.35),
+          ),
+        ),
+        child: Row(
+          children: [
+            _PortraitRing(imagePath: line.imagePath, palette: palette),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  KaiwaImage(imagePath: line.imagePath),
-                  if (npc != null)
-                    Padding(
-                      padding: const EdgeInsets.all(6),
-                      child: _SpeakButton(
-                        text: npc.japanese,
-                        // Never null: most speakers here are roles the
-                        // content deliberately leaves genderless, and
-                        // passing that through meant every one of them
-                        // came out of the same default female voice.
-                        gender: voiceForSpeaker(
-                          dialogueId: dialogueId,
-                          speaker: line.speaker,
-                          authored: line.gender,
-                        ),
-                        // A teacher and a classmate are not the same
-                        // person and should not share a voice.
-                        register: registerForSpeaker(line.speaker),
-                      ),
+                  Text(
+                    line.speaker,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: palette.primaryCoral,
                     ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    strings.kaiwaSpeakingNow,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: palette.textNavy.withValues(alpha: 0.55),
+                    ),
+                  ),
+                  if (npc != null) ...[
+                    const SizedBox(height: 10),
+                    _SpeakButton(
+                      text: npc.japanese,
+                      label: strings.kaiwaListen,
+                      // Never null: most speakers here are roles the
+                      // content deliberately leaves genderless, and
+                      // passing that through meant every one of them
+                      // came out of the same default female voice.
+                      gender: voiceForSpeaker(
+                        dialogueId: dialogueId,
+                        speaker: line.speaker,
+                        authored: line.gender,
+                      ),
+                      // A teacher and a classmate are not the same
+                      // person and should not share a voice.
+                      register: registerForSpeaker(line.speaker),
+                    ),
+                  ],
                 ],
               ),
-            ],
-          ),
-          const SizedBox(width: 48),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -471,34 +502,78 @@ class _LineBubble extends StatelessWidget {
   }
 }
 
+/// The round portrait, and the ring the artist does not have to draw.
+class _PortraitRing extends StatelessWidget {
+  const _PortraitRing({required this.imagePath, required this.palette});
+
+  final String? imagePath;
+  final AppPalette palette;
+
+  static const _size = 96.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(3),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: palette.cardWhite,
+        border: Border.all(color: palette.primaryCoral, width: 2),
+      ),
+      child: KaiwaImage(
+        imagePath: imagePath,
+        size: _size,
+        borderRadius: const BorderRadius.all(Radius.circular(_size)),
+      ),
+    );
+  }
+}
+
+/// Says the line aloud.
+///
+/// Labelled rather than a bare icon: this is the only way to hear the
+/// sentence, on a screen aimed at children, and a lone speaker glyph
+/// asks them to guess.
 class _SpeakButton extends ConsumerWidget {
   final String text;
+  final String label;
   final KaiwaGender? gender;
   final VoiceRegister register;
 
   const _SpeakButton({
     required this.text,
+    required this.label,
     this.gender,
     this.register = VoiceRegister.peer,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final palette = context.palette;
     return Material(
-      color: context.palette.cardWhite,
-      shape: const CircleBorder(),
-      elevation: 2,
+      color: palette.secondaryBlue,
+      borderRadius: BorderRadius.circular(22),
       child: InkWell(
-        customBorder: const CircleBorder(),
+        borderRadius: BorderRadius.circular(22),
         onTap: () => ref
             .read(ttsServiceProvider)
             .speak(text, gender: gender, register: register),
         child: Padding(
-          padding: EdgeInsets.all(8),
-          child: Icon(
-            Icons.volume_up,
-            size: 20,
-            color: context.palette.secondaryBlue,
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.volume_up, size: 18, color: Colors.white),
+              const SizedBox(width: 6),
+              Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
         ),
       ),
