@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/constants/battle_rules.dart';
+import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/services/battle_deck_builder.dart';
 import '../../core/services/rank_skip_service.dart';
@@ -43,6 +47,61 @@ class _RankSkipScreenState extends ConsumerState<RankSkipScreen> {
   late List<String> _answers;
   int _at = 0;
 
+  /// The same thirty seconds a card gets in a real match
+  /// (`kBattleMainPhaseSeconds`). An untimed exam is an easier test than
+  /// the tier it admits you to: with no clock there is nothing stopping
+  /// a player looking every reading up, and the rank it grants is worth
+  /// roughly thirty won matches.
+  ///
+  /// Client-side, and honestly so — a modified app can ignore it, the
+  /// same way it can already read its own bundled answers. The server's
+  /// own limit is the whole exam's, in `rank_skip.js`, which is the part
+  /// that cannot be edited away.
+  Timer? _tick;
+  DateTime? _cardDeadline;
+
+  int get _secondsLeft {
+    final deadline = _cardDeadline;
+    if (deadline == null) return kBattleMainPhaseSeconds;
+    final left = deadline.difference(DateTime.now());
+    return left.isNegative ? 0 : (left.inMilliseconds / 1000).ceil();
+  }
+
+  void _startCardClock() {
+    _cardDeadline =
+        DateTime.now().add(const Duration(seconds: kBattleMainPhaseSeconds));
+    _tick?.cancel();
+    _tick = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (!mounted || _phase != _Phase.answering) return;
+      if (_secondsLeft > 0) {
+        setState(() {});
+        return;
+      }
+      // Out of time on this card. Whatever was typed stands and the exam
+      // moves on, rather than stopping — a card nobody could read is a
+      // card to lose, not a wall.
+      _advance();
+    });
+  }
+
+  void _advance() {
+    final exam = _exam;
+    if (exam == null) return;
+    if (_at >= exam.questions - 1) {
+      _tick?.cancel();
+      _submit();
+      return;
+    }
+    setState(() => _at++);
+    _startCardClock();
+  }
+
+  @override
+  void dispose() {
+    _tick?.cancel();
+    super.dispose();
+  }
+
   Future<void> _start(CardGameTier tier) async {
     setState(() {
       _phase = _Phase.working;
@@ -58,6 +117,7 @@ class _RankSkipScreenState extends ConsumerState<RankSkipScreen> {
         _at = 0;
         _phase = _Phase.answering;
       });
+      _startCardClock();
     } on RankSkipCooldown catch (e) {
       if (!mounted) return;
       setState(() {
@@ -76,6 +136,7 @@ class _RankSkipScreenState extends ConsumerState<RankSkipScreen> {
   Future<void> _submit() async {
     final exam = _exam;
     if (exam == null) return;
+    _tick?.cancel();
     setState(() => _phase = _Phase.working);
     try {
       final result = await ref.read(rankSkipServiceProvider).submit(
@@ -131,9 +192,10 @@ class _RankSkipScreenState extends ConsumerState<RankSkipScreen> {
                 exam: _exam!,
                 at: _at,
                 answer: _answers[_at],
+                secondsLeft: _secondsLeft,
                 error: _error,
                 onChanged: (v) => setState(() => _answers[_at] = v),
-                onNext: () => setState(() => _at++),
+                onNext: _advance,
                 onSubmit: _submit,
               ),
             _Phase.done => _Done(result: _result!),
@@ -197,7 +259,7 @@ class _TierChoice extends ConsumerWidget {
             text: error ??
                 (cooldownUntil == null
                     ? s.rankSkipRetryTomorrow
-                    : s.rankSkipRetryAfter(_when(cooldownUntil!))),
+                    : s.rankSkipRetryAfter(_when(s, cooldownUntil!))),
           ),
         const SizedBox(height: 10),
         for (final tier in above)
@@ -221,11 +283,19 @@ class _TierChoice extends ConsumerWidget {
     return all.sublist(all.indexOf(current) + 1);
   }
 
-  static String _when(DateTime at) {
+  /// The wait is a whole day, so the day has to be said.
+  ///
+  /// This showed a bare "01:48" first, and on a device that reads as a
+  /// few minutes away rather than as tomorrow — the one number a player
+  /// needs from this screen, saying the opposite of what it means.
+  static String _when(AppStrings s, DateTime at) {
     final t = at.toLocal();
     final hh = t.hour.toString().padLeft(2, '0');
     final mm = t.minute.toString().padLeft(2, '0');
-    return '$hh:$mm';
+    final now = DateTime.now();
+    final sameDay =
+        t.year == now.year && t.month == now.month && t.day == now.day;
+    return sameDay ? s.rankSkipTodayAt('$hh.$mm') : s.rankSkipTomorrowAt('$hh.$mm');
   }
 }
 
@@ -288,6 +358,7 @@ class _Answering extends ConsumerWidget {
     required this.exam,
     required this.at,
     required this.answer,
+    required this.secondsLeft,
     required this.error,
     required this.onChanged,
     required this.onNext,
@@ -297,6 +368,7 @@ class _Answering extends ConsumerWidget {
   final RankSkipExam exam;
   final int at;
   final String answer;
+  final int secondsLeft;
   final String? error;
   final ValueChanged<String> onChanged;
   final VoidCallback onNext;
@@ -328,6 +400,7 @@ class _Answering extends ConsumerWidget {
                   color: palette.textNavy,
                 ),
               ),
+              _ExamClock(secondsLeft: secondsLeft, palette: palette),
               Text(
                 exam.targetTier.displayName,
                 style: TextStyle(
@@ -358,15 +431,29 @@ class _Answering extends ConsumerWidget {
                   ),
           ),
         ),
-        if (card != null && card.answerInHiragana)
+        if (card != null && card.answerInHiragana) ...[
+          // What has been typed, which the kana keyboard alone does not
+          // show anywhere. Without it a learner is typing blind: no way
+          // to see a wrong character, and no way to know a tap
+          // registered at all.
+          _TypedAnswer(
+            palette: palette,
+            label: s.rankSkipYourAnswer,
+            text: answer,
+            empty: s.rankSkipAnswerEmpty,
+          ),
           SizedBox(
             height: 240,
             child: KanaKeyboard(value: answer, onChanged: onChanged),
-          )
-        else
+          ),
+        ] else
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: TextField(
+              // Keyed on the card, so moving on clears the field. Without
+              // it the widget is reused and the previous card's answer is
+              // still sitting there, ready to be sent as this one's.
+              key: ValueKey(at),
               autofocus: true,
               onChanged: onChanged,
               decoration: InputDecoration(
@@ -403,6 +490,104 @@ class _Answering extends ConsumerWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+/// The seconds left on this card.
+class _ExamClock extends StatelessWidget {
+  const _ExamClock({required this.secondsLeft, required this.palette});
+
+  final int secondsLeft;
+  final AppPalette palette;
+
+  @override
+  Widget build(BuildContext context) {
+    final urgent = secondsLeft <= 5;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      decoration: BoxDecoration(
+        color:
+            urgent ? palette.errorRed : Colors.black.withValues(alpha: 0.45),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: urgent
+              ? Colors.white.withValues(alpha: 0.8)
+              : palette.primaryCoral.withValues(alpha: 0.7),
+          width: 2,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.timer_outlined, size: 18, color: Colors.white),
+          const SizedBox(width: 5),
+          Text(
+            '${secondsLeft}s',
+            style: const TextStyle(
+              fontSize: 19,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// What the kana keyboard has produced so far.
+class _TypedAnswer extends StatelessWidget {
+  const _TypedAnswer({
+    required this.palette,
+    required this.label,
+    required this.text,
+    required this.empty,
+  });
+
+  final AppPalette palette;
+  final String label;
+  final String text;
+  final String empty;
+
+  @override
+  Widget build(BuildContext context) {
+    final blank = text.isEmpty;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          color: Colors.black.withValues(alpha: 0.4),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: palette.primaryCoral.withValues(alpha: blank ? 0.3 : 0.8),
+            width: 2,
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 11,
+                color: Colors.white.withValues(alpha: 0.55),
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              blank ? empty : text,
+              style: TextStyle(
+                fontSize: blank ? 16 : 26,
+                fontWeight: blank ? FontWeight.normal : FontWeight.bold,
+                color: Colors.white.withValues(alpha: blank ? 0.45 : 1),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -91,4 +91,59 @@ void main() {
       );
     }
   });
+
+  test('the exam clock is the match clock, not a looser one', () {
+    // A rank is worth roughly thirty won matches. An exam that gave more
+    // time per card than the tier's own battles would be an easier test
+    // than the thing it admits you to — and the number would drift the
+    // moment it was written out as a literal.
+    // Checked as a *use*, not a mention. The first version asked
+    // whether the file contained the name at all, which the doc comment
+    // above the clock satisfies on its own — swapping the real value
+    // for 60 left the test perfectly happy. Confirmed by doing exactly
+    // that and watching it pass.
+    final screen = read('lib/features/battle/rank_skip_screen.dart');
+    expect(
+      screen.contains('seconds: kBattleMainPhaseSeconds'),
+      isTrue,
+      reason: 'the exam clock does not come from the match clock',
+    );
+    // Anything longer than a few seconds written as a literal is a
+    // per-card limit in disguise. One-second durations are left alone:
+    // that is the clock's own tick, not a rule.
+    final literals = RegExp(r'Duration\(seconds: (\d+)\)')
+        .allMatches(screen)
+        .map((m) => int.parse(m.group(1)!))
+        .where((seconds) => seconds > 5);
+    expect(
+      literals,
+      isEmpty,
+      reason: 'a hard-coded time limit crept into the exam',
+    );
+  });
+
+  test('the server allows enough time for the cards it deals', () {
+    // Two numbers in two languages that have to agree. The per-card
+    // clock lives in Dart, the whole-exam ceiling in JavaScript, and
+    // nothing connects them: raise the per-card time and the server
+    // starts cutting exams off partway through, which the player sees as
+    // "that exam expired" with no idea why.
+    final rules = read('lib/core/constants/battle_rules.dart');
+    final server = read('functions/rank_skip.js');
+
+    int number(String source, RegExp pattern) =>
+        int.parse(pattern.firstMatch(source)!.group(1)!);
+
+    final perCard =
+        number(rules, RegExp(r'kBattleMainPhaseSeconds = (\d+)'));
+    final questions = number(server, RegExp(r'QUESTIONS = (\d+)'));
+    final sessionMinutes =
+        number(server, RegExp(r'SESSION_MINUTES = (\d+)'));
+
+    expect(
+      questions * perCard,
+      lessThanOrEqualTo(sessionMinutes * 60),
+      reason: 'the exam cannot be finished inside the session it is given',
+    );
+  });
 }

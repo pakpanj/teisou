@@ -1559,6 +1559,16 @@ class AppStrings {
         'Bisa dicoba lagi $when.',
         'You can try again $when.',
       );
+  /// "besok 01.48" — the day matters, because the wait is a whole one.
+  /// Shown as a bare time it read as a few minutes away.
+  String rankSkipTomorrowAt(String time) => _t(
+        'besok pukul $time',
+        'tomorrow at $time',
+      );
+  String rankSkipTodayAt(String time) => _t(
+        'pukul $time',
+        'at $time',
+      );
   String get rankSkipRetryTomorrow => _t(
         'Bisa dicoba lagi besok.',
         'You can try again tomorrow.',
@@ -1568,6 +1578,9 @@ class AppStrings {
         'The exam could not be opened. Check your connection and try again.',
       );
   String get rankSkipTypeAnswer => _t('Ketik jawabanmu...', 'Type your answer...');
+  String get rankSkipAnswerEmpty =>
+      _t('(belum diisi)', '(nothing typed yet)');
+  String get rankSkipYourAnswer => _t('Jawabanmu', 'Your answer');
   String get battleCardPickerHint => _t(
         'Ketuk salah satu kartu untuk memilihnya',
         'Tap a card to choose it',

@@ -54,10 +54,19 @@ const PASS_MARK = 18;
  * who was simply not ready today is not shut out of the mode. */
 const COOLDOWN_HOURS = 24;
 
-/** A started exam expires unfinished after this, so an abandoned
- * session does not sit around as a free retry with the answers already
- * chosen. */
-const SESSION_MINUTES = 30;
+/** How long a drawn exam stays valid.
+ *
+ * Twenty cards at thirty seconds each is ten minutes of answering; the
+ * rest is slack for loading, reading, and a phone that rings. Tightened
+ * from thirty minutes once the app grew a per-card clock: that clock is
+ * the pressure a player feels, but it runs on their device and can be
+ * edited away, while this cannot. Without a ceiling here, an exam left
+ * open is an exam taken with a dictionary.
+ *
+ * Expiring is not failing — see the handler. Running out of time with
+ * the app closed is not the same as answering wrongly, and does not
+ * cost the day's wait. */
+const SESSION_MINUTES = 15;
 
 /** Bronze is where everyone starts, so there is nothing to skip to. */
 const SKIPPABLE = ["silver", "gold", "diamond", "emerald"];
