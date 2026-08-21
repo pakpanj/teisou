@@ -915,6 +915,56 @@ class AppStrings {
   String get tutorialStart => _t('Mulai Belajar', 'Start Learning');
   String get tutorialReplay => _t('Lihat Tutorial Lagi', 'Watch Tutorial Again');
 
+  // --- Tutorial Mode Kartu ---------------------------------------------
+  //
+  // Modul ini punya aturan yang tidak ada di layar mana pun: tangga
+  // bintang, isi kartu yang mengikuti rank, dan jendela 10 detik untuk
+  // memilih kartu. Tanpa penjelasan, pemain baru menemukan ketiganya
+  // dengan cara kalah.
+  String get cardTutorialWelcome => _t(
+        'Ini Mode Kartu! Kita bertanding membaca kana dan kanji '
+        'melawan pemain lain.',
+        "This is Card Mode! We race to read kana and kanji against "
+        'another player.',
+      );
+  String get cardTutorialCards => _t(
+        'Tiap ronde ada satu kartu. Ketik cara bacanya sebelum '
+        'waktunya habis.',
+        'Each round shows one card. Type how it is read before the '
+        'time runs out.',
+      );
+  String get cardTutorialChoose => _t(
+        'Kadang kamu yang memilih kartu untuk lawan. Kamu punya '
+        '10 detik, jadi jangan lama-lama!',
+        "Sometimes you pick the card your opponent gets. You have ten "
+        'seconds, so do not dawdle!',
+      );
+  String get cardTutorialStars => _t(
+        'Menang dapat bintang, kalah kehilangan bintang. Kumpulkan '
+        'bintang untuk naik rank.',
+        'A win earns a star, a loss costs one. Collect stars to climb '
+        'the ranks.',
+      );
+  String get cardTutorialTiers => _t(
+        'Makin tinggi rank, makin sulit kartunya — dari hiragana '
+        'sampai kanji N1.',
+        'The higher the rank, the harder the cards — from hiragana all '
+        'the way to N1 kanji.',
+      );
+  String get cardTutorialSkip => _t(
+        'Sudah bisa kanji? Lewat "Lompat Rank" kamu bisa langsung '
+        'ujian dan naik tanpa bertanding.',
+        'Already read kanji? "Skip a Rank" lets you sit an exam and '
+        'jump straight up.',
+      );
+  String get cardTutorialReady => _t(
+        'Ayo cari lawan pertamamu!',
+        "Let's find your first opponent!",
+      );
+  String get cardTutorialStart => _t('Mulai Bertanding', 'Start Battling');
+  String get cardTutorialReplay =>
+      _t('Cara Bermain', 'How to Play');
+
   // --- Mascot coach -------------------------------------------------------
   // What the mascot says while a learner works through a lesson. Written
   // for children: short, warm, and — for the wrong-answer lines — never

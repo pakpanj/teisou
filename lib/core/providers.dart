@@ -138,8 +138,13 @@ final onboardingRepositoryProvider = Provider<OnboardingRepository>(
   (ref) => OnboardingRepository(),
 );
 
-final hasSeenTutorialProvider = FutureProvider<bool>(
-  (ref) => ref.watch(onboardingRepositoryProvider).hasSeenTutorial(),
+/// Whether one particular walkthrough has been seen on this device.
+///
+/// A family rather than a single provider: the home tour and the card
+/// mode's are tracked apart, so opening the card mode for the first
+/// time after a month of use still explains itself.
+final hasSeenTutorialProvider = FutureProvider.family<bool, TutorialId>(
+  (ref, id) => ref.watch(onboardingRepositoryProvider).hasSeen(id),
 );
 
 final adAudienceRepositoryProvider =

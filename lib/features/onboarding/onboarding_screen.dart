@@ -28,6 +28,25 @@ List<OnboardingStep> onboardingSteps(AppStrings s) => [
       OnboardingStep(mood: MascotMood.cheering, message: s.tutorialReady),
     ];
 
+/// What the mascot says the first time Card Game Mode is opened.
+///
+/// Separate from [onboardingSteps] because the mode has rules the home
+/// screen never mentions — a star ladder, cards that get harder with
+/// your rank, and ten seconds to choose one for your opponent. A player
+/// who is not told finds all three out by losing.
+List<OnboardingStep> cardGameTutorialSteps(AppStrings s) => [
+      OnboardingStep(
+        mood: MascotMood.battleReady,
+        message: s.cardTutorialWelcome,
+      ),
+      OnboardingStep(mood: MascotMood.explaining, message: s.cardTutorialCards),
+      OnboardingStep(mood: MascotMood.thinking, message: s.cardTutorialChoose),
+      OnboardingStep(mood: MascotMood.proud, message: s.cardTutorialStars),
+      OnboardingStep(mood: MascotMood.determined, message: s.cardTutorialTiers),
+      OnboardingStep(mood: MascotMood.curious, message: s.cardTutorialSkip),
+      OnboardingStep(mood: MascotMood.cheering, message: s.cardTutorialReady),
+    ];
+
 /// The mascot walking a first-time learner through the app.
 ///
 /// **Deliberately its own screen rather than a spotlight over the real
@@ -42,7 +61,20 @@ List<OnboardingStep> onboardingSteps(AppStrings s) => [
 /// large character, one bubble, a new expression each step. The learner
 /// taps through at their own pace and can leave at any point.
 class OnboardingScreen extends ConsumerStatefulWidget {
-  const OnboardingScreen({super.key, required this.onFinished});
+  const OnboardingScreen({
+    super.key,
+    required this.onFinished,
+    this.steps,
+    this.finishLabel,
+  });
+
+  /// Which walkthrough to play. Null means the home tour, which is what
+  /// this screen was built for and still its most common use.
+  final List<OnboardingStep> Function(AppStrings)? steps;
+
+  /// The last step's button. Null keeps "Mulai Belajar" — right for the
+  /// home tour, wrong for a mode where the next thing is a match.
+  final String? finishLabel;
 
   /// Called once, when the learner reaches the end or skips. The caller
   /// decides what "done" means — first run marks it seen and goes Home;
@@ -78,7 +110,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   Widget build(BuildContext context) {
     final s = ref.watch(appStringsProvider);
     final palette = context.palette;
-    final steps = onboardingSteps(s);
+    final steps = (widget.steps ?? onboardingSteps)(s);
     final step = steps[_index];
     final isLast = _index == steps.length - 1;
 
@@ -157,7 +189,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                  child: Text(isLast ? s.tutorialStart : s.tutorialNext),
+                  child: Text(isLast
+                      ? (widget.finishLabel ?? s.tutorialStart)
+                      : s.tutorialNext),
                 ),
               ),
             ),

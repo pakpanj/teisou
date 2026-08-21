@@ -21,7 +21,8 @@ import 'firebase_options.dart';
 import 'core/services/fcm_service.dart';
 import 'core/services/startup_preloader.dart';
 import 'core/widgets/mascot_loading_screen.dart';
-import 'features/onboarding/onboarding_screen.dart';
+import 'features/onboarding/first_visit_tutorial.dart';
+import 'data/repositories/onboarding_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -177,31 +178,19 @@ class _AudienceGate extends ConsumerWidget {
 /// configures ads and has to be settled before anything renders, and a
 /// tutorial in front of it would delay that for no reason.
 ///
-/// A failed read of the flag shows the home screen, not the tutorial. If
-/// SharedPreferences is unreadable the flag can never be written either,
-/// so erring the other way would trap the learner in a tutorial that
-/// replays on every launch.
-class _TutorialGate extends ConsumerWidget {
-  const _TutorialGate();
+/// The home screen, with the first-run walkthrough playing over it.
+///
+/// The tutorial used to stand in front of this, chosen instead of the
+/// home screen rather than on top of it — see [FirstVisitTutorial] for
+/// why that was the wrong way round.
+class _Home extends StatelessWidget {
+  const _Home();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final seen = ref.watch(hasSeenTutorialProvider);
-
-    return seen.when(
-      data: (value) {
-        if (value) return const HomeScreen();
-        return OnboardingScreen(
-          onFinished: () async {
-            await ref.read(onboardingRepositoryProvider).markTutorialSeen();
-            ref.invalidate(hasSeenTutorialProvider);
-          },
-        );
-      },
-      loading: () => const _StartupLoading(),
-      error: (_, _) => const HomeScreen(),
-    );
-  }
+  Widget build(BuildContext context) => const FirstVisitTutorial(
+        id: TutorialId.home,
+        child: HomeScreen(),
+      );
 }
 
 /// Reads the app's datasets before the home screen appears.
@@ -223,9 +212,9 @@ class _PreloadGate extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final preload = ref.watch(appPreloadProvider);
     return preload.when(
-      data: (_) => const _TutorialGate(),
+      data: (_) => const _Home(),
       loading: () => const _StartupLoading(),
-      error: (_, _) => const _TutorialGate(),
+      error: (_, _) => const _Home(),
     );
   }
 }

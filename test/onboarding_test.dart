@@ -126,25 +126,80 @@ void main() {
     setUp(() => SharedPreferences.setMockInitialValues({}));
 
     test('a fresh install has not seen it', () async {
-      expect(await OnboardingRepository().hasSeenTutorial(), isFalse);
+      expect(await OnboardingRepository().hasSeen(TutorialId.home), isFalse);
     });
 
     test('once marked, it stays marked', () async {
       // The actual bug this guards: a tutorial that reappears on every
       // launch because the flag never stuck.
       final repository = OnboardingRepository();
-      await repository.markTutorialSeen();
-      expect(await repository.hasSeenTutorial(), isTrue);
+      await repository.markSeen(TutorialId.home);
+      expect(await repository.hasSeen(TutorialId.home), isTrue);
 
       // A second repository instance, standing in for the next launch.
-      expect(await OnboardingRepository().hasSeenTutorial(), isTrue);
+      expect(await OnboardingRepository().hasSeen(TutorialId.home), isTrue);
     });
 
     test('can be reset so it can be watched again', () async {
       final repository = OnboardingRepository();
-      await repository.markTutorialSeen();
-      await repository.resetTutorial();
-      expect(await repository.hasSeenTutorial(), isFalse);
+      await repository.markSeen(TutorialId.home);
+      await repository.reset(TutorialId.home);
+      expect(await repository.hasSeen(TutorialId.home), isFalse);
+    });
+
+    test('the two walkthroughs are remembered apart', () async {
+      // Card Game Mode explains a star ladder, tier-locked cards and a
+      // ten-second choosing window — none of which the home tour
+      // mentions. Sharing one flag would mean anyone who had used the
+      // app before the mode existed never got told any of it.
+      final repository = OnboardingRepository();
+      await repository.markSeen(TutorialId.home);
+
+      expect(await repository.hasSeen(TutorialId.cardGame), isFalse);
+
+      await repository.markSeen(TutorialId.cardGame);
+      await repository.reset(TutorialId.home);
+
+      expect(await repository.hasSeen(TutorialId.cardGame), isTrue,
+          reason: 'resetting one walkthrough cleared the other');
+    });
+
+    test('the home tour keeps the key it always had', () async {
+      // Renaming this to something tidier would read as "never seen" for
+      // every learner already using the app, and replay the whole tour
+      // in front of all of them on the next update. The value is checked
+      // literally, because that is the only thing protecting them.
+      expect(TutorialId.home.prefsKey, 'onboarding_seen_v1');
+
+      SharedPreferences.setMockInitialValues({'onboarding_seen_v1': true});
+      expect(await OnboardingRepository().hasSeen(TutorialId.home), isTrue);
+    });
+  });
+
+  group('the card mode walkthrough', () {
+    final id = AppStrings(AppLanguage.indonesian);
+
+    test('covers the rules a player would otherwise lose to', () {
+      final messages =
+          cardGameTutorialSteps(id).map((step) => step.message).join(' ');
+      // Not a wording check — a coverage one. Each of these is a rule
+      // with a cost attached, and a player who was never told finds it
+      // out the hard way.
+      expect(messages, contains('bintang'));
+      expect(messages, contains('10 detik'));
+      expect(messages, contains('rank'));
+    });
+
+    test('every step has something to say', () {
+      for (final step in cardGameTutorialSteps(id)) {
+        expect(step.message.trim(), isNotEmpty);
+      }
+    });
+
+    test('it opens and closes on the mascot, like the home tour', () {
+      final steps = cardGameTutorialSteps(id);
+      expect(steps.first.mood, MascotMood.battleReady);
+      expect(steps.last.mood, MascotMood.cheering);
     });
   });
 }

@@ -7,11 +7,14 @@ import '../../core/services/battle_deck_builder.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/widgets/mascot_widget.dart';
+import '../../data/repositories/onboarding_repository.dart';
 import '../../data/models/card_game_rank.dart';
 import '../leaderboard/leaderboard_providers.dart';
 import '../../core/widgets/user_avatar.dart';
 import 'battle_matchmaking_screen.dart';
 import 'card_skin_picker_screen.dart';
+import '../onboarding/first_visit_tutorial.dart';
+import '../onboarding/onboarding_screen.dart';
 import 'deck_tab.dart';
 import 'rank_skip_screen.dart';
 import 'widgets/recent_matches_section.dart';
@@ -81,7 +84,11 @@ class _CardGameShellState extends ConsumerState<CardGameShell> {
       s.cardGameTabShop,
     ];
 
-    return Scaffold(
+    return FirstVisitTutorial(
+      id: TutorialId.cardGame,
+      steps: cardGameTutorialSteps,
+      finishLabel: s.cardTutorialStart,
+      child: Scaffold(
       backgroundColor: palette.background,
       appBar: AppBar(title: Text(titles[_tab])),
       // IndexedStack, not a swapped child: the Battle tab holds a live
@@ -109,6 +116,7 @@ class _CardGameShellState extends ConsumerState<CardGameShell> {
           _navIcon('nav_skin', s.cardGameTabSkin, Icons.palette_outlined),
           _navIcon('nav_toko', s.cardGameTabShop, Icons.storefront_outlined),
         ],
+      ),
       ),
     );
   }
@@ -222,7 +230,37 @@ class _LobbyTab extends ConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 6),
+          // Reachable again after the first visit. The walkthrough shows
+          // itself once, and a mode with a star ladder, tier-locked
+          // cards and a ten-second choosing window is not one to leave
+          // unexplained to anyone who skipped it — or to a tester, who
+          // would otherwise have to clear the app's data to see it.
+          Center(
+            child: TextButton.icon(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => OnboardingScreen(
+                    steps: cardGameTutorialSteps,
+                    finishLabel: s.cardTutorialStart,
+                    // A replay only closes itself; the seen flag stays
+                    // set, since this is not the first visit.
+                    onFinished: () => Navigator.of(context).pop(),
+                  ),
+                ),
+              ),
+              icon: Icon(Icons.help_outline,
+                  size: 18, color: palette.textNavy.withValues(alpha: 0.6)),
+              label: Text(
+                s.cardTutorialReplay,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: palette.textNavy.withValues(alpha: 0.6),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 4),
           Text(
             s.cardGameLobbyHint,
             textAlign: TextAlign.center,
