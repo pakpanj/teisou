@@ -160,6 +160,20 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
     }
   }
 
+  /// The line the big card shows: the most recent npc turn revealed.
+  ///
+  /// Not simply "the last revealed line". While the learner is choosing
+  /// a reply, the last revealed line is their own unanswered turn — and
+  /// what they need in front of them is the thing being replied to.
+  /// Returns -1 for a dialogue that opens with the learner speaking,
+  /// where nothing has been said yet.
+  int _speakingIndex(List<KaiwaLine> lines) {
+    for (var i = _revealedCount - 1; i >= 0; i--) {
+      if (!lines[i].isUserTurn) return i;
+    }
+    return -1;
+  }
+
   void _goNext() {
     if (_index >= widget.entries.length - 1) return;
     setState(() {
@@ -211,11 +225,22 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
                   ? _goNext
                   : null,
               onSwipeRight: dialogueComplete && _index > 0 ? _goPrev : null,
-              child: SingleChildScrollView(
+              // Centred in whatever room is left, and scrollable when
+              // there is not enough. One card on a tall phone used to
+              // sit against the top with two thirds of the screen blank
+              // under it; the card is the only thing being read, so it
+              // belongs where the eye already is.
+              child: LayoutBuilder(
+                builder: (context, constraints) => SingleChildScrollView(
                 key: ValueKey(_entry.id),
                 controller: _scrollController,
                 padding: const EdgeInsets.all(16),
-                child: Column(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight - 32,
+                  ),
+                  child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -226,17 +251,35 @@ class _KaiwaDialogueScreenState extends ConsumerState<KaiwaDialogueScreen> {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    for (var i = 0; i < _revealedCount; i++)
-                      _LineBubble(
-                        dialogueId: _entry.id,
-                        key: ValueKey(lines[i].id),
+                    // Everything before the turn being played, kept as a
+                    // slim trail rather than dropped. The learner needs
+                    // to see how the conversation got here — especially
+                    // their own answers, which are the only text in the
+                    // whole exchange.
+                    for (var i = 0; i < _speakingIndex(lines); i++)
+                      _TrailRow(
+                        key: ValueKey('trail-${lines[i].id}'),
                         line: lines[i],
                         answer: _answered[i],
+                      ),
+                    // The turn itself, full width. One card at a time:
+                    // this is the only thing the learner is being asked
+                    // to understand, and a stack of past bubbles pushed
+                    // it into a corner.
+                    if (_speakingIndex(lines) >= 0)
+                      _LineBubble(
+                        dialogueId: _entry.id,
+                        category: _entry.category,
+                        key: ValueKey(lines[_speakingIndex(lines)].id),
+                        line: lines[_speakingIndex(lines)],
+                        answer: _answered[_speakingIndex(lines)],
                         strings: s,
                         furiganaDictionary: furiganaDictionary,
                       ),
                   ],
                 ),
+                ),
+              ),
               ),
             ),
           ),
@@ -287,12 +330,16 @@ class _LineBubble extends StatelessWidget {
   /// [voiceForSpeaker].
   final String dialogueId;
 
+  /// Chooses the card's painted backdrop — see [_SpeakingCard].
+  final String category;
+
   const _LineBubble({
     super.key,
     required this.line,
     this.answer,
     required this.strings,
     required this.dialogueId,
+    required this.category,
     this.furiganaDictionary,
   });
 
@@ -323,16 +370,8 @@ class _LineBubble extends StatelessWidget {
     final palette = context.palette;
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: palette.katakanaCardBg,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-            color: palette.primaryCoral.withValues(alpha: 0.35),
-          ),
-        ),
+      child: _SpeakingCard(
+        category: category,
         child: Row(
           children: [
             _PortraitRing(imagePath: line.imagePath, palette: palette),
@@ -342,13 +381,25 @@ class _LineBubble extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    line.speaker,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: palette.primaryCoral,
-                    ),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          line.speaker,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: palette.primaryCoral,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      Icon(Icons.local_florist,
+                          size: 14,
+                          color: palette.primaryCoral.withValues(alpha: 0.8)),
+                    ],
                   ),
                   const SizedBox(height: 2),
                   Text(
@@ -502,6 +553,180 @@ class _LineBubble extends StatelessWidget {
   }
 }
 
+/// One turn that has already happened, in a single slim row.
+///
+/// Deliberately small and quiet. It exists so the conversation still
+/// reads as a conversation, not so anyone studies it again — the turn
+/// being played is the one with the big card.
+class _TrailRow extends StatelessWidget {
+  const _TrailRow({super.key, required this.line, this.answer});
+
+  final KaiwaLine line;
+  final KaiwaAnswerOption? answer;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    final chosen = answer;
+
+    if (!line.isUserTurn) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Row(
+          children: [
+            KaiwaImage(
+              imagePath: line.imagePath,
+              size: 26,
+              borderRadius: const BorderRadius.all(Radius.circular(26)),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              line.speaker,
+              style: TextStyle(
+                fontSize: 12,
+                color: palette.textNavy.withValues(alpha: 0.45),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    // An unanswered user turn never reaches the trail — only the turn
+    // being played can be unanswered, and that one is not in it.
+    if (chosen == null) return const SizedBox.shrink();
+    final emoji = kaiwaExpressionEmoji[chosen.expressionTag];
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Flexible(
+            child: Text(
+              chosen.japanese,
+              textAlign: TextAlign.end,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 12,
+                color: palette.primaryCoral.withValues(alpha: 0.75),
+              ),
+            ),
+          ),
+          if (emoji != null) ...[
+            const SizedBox(width: 4),
+            Text(emoji, style: const TextStyle(fontSize: 12)),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// The decorated plate the speaking turn sits on.
+///
+/// Night sky, drifting petals and a gold hairline — the ornament the
+/// design called for, drawn here rather than baked into a picture. That
+/// is the whole reason it is code: one painted card would have to be
+/// redrawn for every character and every mood, while this one is the
+/// same behind all of them and costs nothing per line.
+///
+/// The palette flips with the theme rather than staying dark in both.
+/// A night card on a bright screen reads as a hole, which is the
+/// mistake the module-frame art was written to avoid.
+class _SpeakingCard extends StatelessWidget {
+  const _SpeakingCard({required this.category, required this.child});
+
+  /// The dialogue's theme id, which chooses the painted backdrop.
+  final String category;
+
+  final Widget child;
+
+  /// Themes repeat at every JLPT level under suffixed ids, and a
+  /// restaurant is the same restaurant at N5 and at N1 — so the suffix
+  /// is dropped and seventeen files cover all eighty-five.
+  static String assetFor(String category) {
+    final base = category.replaceFirst(RegExp(r'_n[1-5]$'), '');
+    return 'assets/kaiwa_bg/kaiwa_bg_$base.png';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    final palette = context.palette;
+    final top = dark ? const Color(0xFF241B3A) : const Color(0xFFFDE8EF);
+    final bottom = dark ? const Color(0xFF3B2140) : const Color(0xFFF7D9E6);
+    final gold = dark ? const Color(0xFFD8B15A) : const Color(0xFFC79A3F);
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.fromLTRB(14, 16, 14, 16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [top, bottom],
+        ),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: gold.withValues(alpha: 0.55), width: 1.5),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(19),
+        child: Stack(
+          children: [
+            // Painted art when the theme has any, and the drawn petals
+            // when it does not. The fallback is not a placeholder to
+            // replace later — it is what this card looked like before
+            // the art existed, so the seventeen files can arrive one at
+            // a time and a theme still waiting for its own looks
+            // finished rather than broken.
+            Positioned.fill(
+              child: IgnorePointer(
+                child: Image.asset(
+                  assetFor(category),
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, _, _) => CustomPaint(
+                    painter: _PetalPainter(palette.primaryCoral),
+                  ),
+                ),
+              ),
+            ),
+            child,
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// A handful of petals drifting behind the card's contents.
+///
+/// Placed from a fixed list rather than at random: a repaint that moves
+/// them would make the card twitch every time the countdown or the
+/// speaker name changed.
+class _PetalPainter extends CustomPainter {
+  const _PetalPainter(this.color);
+
+  final Color color;
+
+  static const _spots = <(double, double, double)>[
+    (0.08, 0.18, 4), (0.22, 0.72, 3), (0.46, 0.12, 3.5),
+    (0.63, 0.82, 4.5), (0.78, 0.28, 3), (0.90, 0.62, 4),
+    (0.34, 0.44, 2.5), (0.70, 0.52, 2.5),
+  ];
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()..color = color.withValues(alpha: 0.22);
+    for (final (fx, fy, r) in _spots) {
+      canvas.drawCircle(Offset(size.width * fx, size.height * fy), r, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_PetalPainter old) => old.color != color;
+}
+
 /// The round portrait, and the ring the artist does not have to draw.
 class _PortraitRing extends StatelessWidget {
   const _PortraitRing({required this.imagePath, required this.palette});
@@ -509,7 +734,7 @@ class _PortraitRing extends StatelessWidget {
   final String? imagePath;
   final AppPalette palette;
 
-  static const _size = 96.0;
+  static const _size = 132.0;
 
   @override
   Widget build(BuildContext context) {
@@ -518,7 +743,16 @@ class _PortraitRing extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: palette.cardWhite,
-        border: Border.all(color: palette.primaryCoral, width: 2),
+        // Gold, not coral: the ring is the ornament the mockup framed
+        // the character with, and coral on a coral-tinted card
+        // disappeared into it.
+        border: Border.all(color: const Color(0xFFD8B15A), width: 3),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFFD8B15A).withValues(alpha: 0.35),
+            blurRadius: 12,
+          ),
+        ],
       ),
       child: KaiwaImage(
         imagePath: imagePath,
