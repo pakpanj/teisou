@@ -22,6 +22,7 @@ import 'core/services/fcm_service.dart';
 import 'core/services/startup_preloader.dart';
 import 'core/widgets/mascot_loading_screen.dart';
 import 'features/onboarding/first_visit_tutorial.dart';
+import 'features/onboarding/home_tour.dart';
 import 'data/repositories/onboarding_repository.dart';
 
 Future<void> main() async {
@@ -187,9 +188,12 @@ class _Home extends StatelessWidget {
   const _Home();
 
   @override
-  Widget build(BuildContext context) => const FirstVisitTutorial(
+  Widget build(BuildContext context) => FirstVisitTutorial(
         id: TutorialId.home,
-        child: HomeScreen(),
+        // Coach marks, not a slideshow: the mascot points at the real
+        // cards on the real screen.
+        tour: homeTourSteps,
+        child: const HomeScreen(),
       );
 }
 

@@ -38,7 +38,6 @@ import 'identity_sync.dart';
 import 'widgets/edit_name_dialog.dart';
 import 'widgets/exam_history_empty_illustration.dart';
 import 'widgets/exam_history_tile.dart';
-import '../onboarding/onboarding_screen.dart';
 import '../../core/widgets/app_loading.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -942,17 +941,16 @@ class _SettingsMenu extends ConsumerWidget {
             // would be unreachable after the first launch — including for
             // anyone testing it, who would otherwise have to reinstall.
             title: s.tutorialReplay,
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => OnboardingScreen(
-                  // A replay only closes itself. It deliberately does not
-                  // touch the seen flag: this is not the first run, and
-                  // clearing it would put the tutorial back in front of
-                  // the next launch.
-                  onFinished: () => Navigator.of(context).pop(),
-                ),
-              ),
-            ),
+            // Asks the home screen to replay, rather than pushing the
+            // tour from here. The tour highlights cards on the home tab,
+            // and started from this one it would dim the profile screen
+            // and point at where those cards are not.
+            //
+            // The seen flag is deliberately left alone: this is not the
+            // first run, and clearing it would put the tour back in
+            // front of the next launch too.
+            onTap: () =>
+                ref.read(replayHomeTourProvider.notifier).state++,
           ),
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(

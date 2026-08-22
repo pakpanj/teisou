@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../data/repositories/onboarding_repository.dart';
+import 'coach_mark_tour.dart';
 import 'onboarding_screen.dart';
 
 /// Plays a walkthrough the first time a screen is opened, over the top of
@@ -26,6 +27,7 @@ class FirstVisitTutorial extends ConsumerStatefulWidget {
     required this.child,
     this.steps,
     this.finishLabel,
+    this.tour,
   });
 
   /// Which walkthrough, and therefore which "seen" flag.
@@ -37,6 +39,13 @@ class FirstVisitTutorial extends ConsumerStatefulWidget {
   final List<OnboardingStep> Function(AppStrings)? steps;
 
   final String? finishLabel;
+
+  /// A coach-mark tour instead of the slideshow.
+  ///
+  /// When set, the walkthrough points at the real screen underneath
+  /// rather than replacing it — see [CoachMarkTour]. [steps] and
+  /// [finishLabel] are ignored.
+  final List<CoachStep> Function(AppStrings)? tour;
 
   @override
   ConsumerState<FirstVisitTutorial> createState() =>
@@ -78,14 +87,29 @@ class _FirstVisitTutorialState extends ConsumerState<FirstVisitTutorial> {
     }
     if (seen || !mounted) return;
 
+    final tour = widget.tour;
     await Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (_) => OnboardingScreen(
-          steps: widget.steps,
-          finishLabel: widget.finishLabel,
-          onFinished: () => Navigator.of(context).pop(),
-        ),
-      ),
+      // Transparent for a coach-mark tour: the screen being explained
+      // has to stay visible underneath, since the highlight is a hole
+      // cut in the dimming layer over the real thing.
+      tour != null
+          ? PageRouteBuilder<void>(
+              opaque: false,
+              barrierColor: Colors.transparent,
+              pageBuilder: (_, _, _) => CoachMarkTour(
+                steps: tour(ref.read(appStringsProvider)),
+                nextLabel: ref.read(appStringsProvider).tourNext,
+                finishLabel: ref.read(appStringsProvider).tourFinish,
+                skipLabel: ref.read(appStringsProvider).tutorialSkip,
+              ),
+            )
+          : MaterialPageRoute<void>(
+              builder: (_) => OnboardingScreen(
+                steps: widget.steps,
+                finishLabel: widget.finishLabel,
+                onFinished: () => Navigator.of(context).pop(),
+              ),
+            ),
     );
 
     // Marked after it closes, not before it opens. Closed early still

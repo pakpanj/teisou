@@ -5,6 +5,8 @@ import '../../core/localization/app_strings.dart';
 import '../../core/navigation/app_navigator.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
+import '../onboarding/coach_mark_tour.dart';
+import '../onboarding/home_tour.dart';
 import '../../core/widgets/app_refresh_indicator.dart';
 import '../../core/widgets/banner_ad_widget.dart';
 import '../../core/widgets/count_badge.dart';
@@ -57,9 +59,32 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.dispose();
   }
 
+  Future<void> _replayTour() async {
+    // Back to the home tab first: the tour's anchors are the cards on
+    // that page, and running it from another tab would dim the wrong
+    // screen and point at nothing.
+    _onNavTap(0);
+    await Future<void>.delayed(const Duration(milliseconds: 300));
+    if (!mounted) return;
+    final s = ref.read(appStringsProvider);
+    await Navigator.of(context).push(
+      PageRouteBuilder<void>(
+        opaque: false,
+        barrierColor: Colors.transparent,
+        pageBuilder: (_, _, _) => CoachMarkTour(
+          steps: homeTourSteps(s),
+          nextLabel: s.tourNext,
+          finishLabel: s.tourFinish,
+          skipLabel: s.tutorialSkip,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final strings = ref.watch(appStringsProvider);
+    ref.listen(replayHomeTourProvider, (_, _) => _replayTour());
     return Scaffold(
       body: PageView(
         controller: _pageController,
@@ -274,7 +299,14 @@ class _BottomNavBar extends ConsumerWidget {
             final color = active
                 ? context.palette.primaryCoral
                 : context.palette.freeBadgeGrey;
-            return InkWell(
+            // The tour points at two of these. Wrapped by index rather
+            // than by label so a translated label cannot break it.
+            final anchorId = switch (index) {
+              1 => kTutorialExamTab,
+              2 => kTutorialProfileTab,
+              _ => null,
+            };
+            final item0 = InkWell(
               onTap: () => onTap(index),
               borderRadius: BorderRadius.circular(20),
               child: Padding(
@@ -309,6 +341,9 @@ class _BottomNavBar extends ConsumerWidget {
                 ),
               ),
             );
+            return anchorId == null
+                ? item0
+                : TutorialTarget(id: anchorId, child: item0);
           }),
         ),
       ),

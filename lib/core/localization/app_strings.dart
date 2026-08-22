@@ -915,6 +915,34 @@ class AppStrings {
   String get tutorialStart => _t('Mulai Belajar', 'Start Learning');
   String get tutorialReplay => _t('Lihat Tutorial Lagi', 'Watch Tutorial Again');
 
+  // --- Tur beranda (coach mark) -----------------------------------------
+  //
+  // Ditulis pendek dengan sengaja: tiap kalimat muncul di gelembung kecil
+  // di samping maskot, di atas layar yang sedang disorot. Kalimat panjang
+  // mendorong gelembungnya menutupi hal yang sedang ditunjuk.
+  String get tourHiragana => _t(
+        'Langkah pertama, pilih materi Hiragana di sini!',
+        'First step — start with Hiragana here!',
+      );
+  String get tourCurriculum => _t(
+        'Kalau bingung mau mulai dari mana, ikuti saja Bab satu per satu.',
+        'Not sure where to begin? Follow the chapters one by one.',
+      );
+  String get tourCardGame => _t(
+        'Kalau sudah hafal, uji kecepatanmu melawan pemain lain di sini.',
+        'Once you know them, race another player here.',
+      );
+  String get tourExam => _t(
+        'Ujian ada di sini — coba kalau mau tahu sudah sampai mana.',
+        'Exams live here — take one to see how far you have come.',
+      );
+  String get tourProfile => _t(
+        'Semua progresmu tersimpan di sini. Selamat belajar!',
+        'All your progress is kept here. Enjoy!',
+      );
+  String get tourNext => _t('Lanjut', 'Next');
+  String get tourFinish => _t('Siap!', 'Got it!');
+
   // --- Tutorial Mode Kartu ---------------------------------------------
   //
   // Modul ini punya aturan yang tidak ada di layar mana pun: tangga

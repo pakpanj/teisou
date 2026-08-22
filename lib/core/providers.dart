@@ -143,6 +143,19 @@ final onboardingRepositoryProvider = Provider<OnboardingRepository>(
 /// A family rather than a single provider: the home tour and the card
 /// mode's are tracked apart, so opening the card mode for the first
 /// time after a month of use still explains itself.
+/// Bumped to ask the home screen to replay its tour.
+///
+/// A counter rather than a bool: the tour has to be replayable more than
+/// once, and a flag would need clearing again afterwards — which is one
+/// more thing to forget. The home screen watches this and starts the
+/// tour when the number changes.
+///
+/// It exists because the tour points at cards on the home tab, and the
+/// button that replays it lives on the profile tab. Pushing the tour
+/// from there would dim the profile screen and highlight where those
+/// cards would have been.
+final replayHomeTourProvider = StateProvider<int>((ref) => 0);
+
 final hasSeenTutorialProvider = FutureProvider.family<bool, TutorialId>(
   (ref, id) => ref.watch(onboardingRepositoryProvider).hasSeen(id),
 );

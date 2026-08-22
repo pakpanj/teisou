@@ -7,6 +7,8 @@ import '../../paywall/paywall_screen.dart';
 import '../../paywall/module_access.dart';
 import '../../../core/providers.dart';
 import '../../../core/theme/app_palette.dart';
+import '../../onboarding/coach_mark_tour.dart';
+import '../../onboarding/home_tour.dart';
 import '../../../core/widgets/mascot_guide_bubble.dart';
 import '../../../core/widgets/mascot_widget.dart';
 import '../../../data/models/module_info.dart';
@@ -61,7 +63,9 @@ class ModulesSection extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: _KanaHeroCard(
+              child: TutorialTarget(
+                id: kTutorialHiragana,
+                child: _KanaHeroCard(
                 emoji: 'あ',
                 backgroundColor: palette.hiraganaCardBg,
                 accent: palette.primaryCoral,
@@ -72,6 +76,7 @@ class ModulesSection extends ConsumerWidget {
                   context,
                   const KanaTableScreen(type: KanaType.hiragana),
                 ),
+              ),
               ),
             ),
             const SizedBox(width: 12),
@@ -99,7 +104,10 @@ class ModulesSection extends ConsumerWidget {
           iconAsset: 'icon_dasar_kurikulum',
         ),
         const SizedBox(height: 12),
-        const _BabCurriculumCard(),
+        const TutorialTarget(
+          id: kTutorialCurriculum,
+          child: _BabCurriculumCard(),
+        ),
         const SizedBox(height: 28),
         _SectionHeader(
           s.sectionBattle,
@@ -107,7 +115,10 @@ class ModulesSection extends ConsumerWidget {
           color: palette.secondaryBlue,
         ),
         const SizedBox(height: 12),
-        const _CardGameCard(),
+        const TutorialTarget(
+          id: kTutorialCardGame,
+          child: _CardGameCard(),
+        ),
         const SizedBox(height: 28),
         // Vocabulary/kanji and practice modules side by side, matching how
         // often a learner reaches for one right after the other — not just
