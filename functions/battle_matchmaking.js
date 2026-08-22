@@ -114,12 +114,31 @@ function buildDeckIds(cardTierContent, random = Math.random) {
 
 // --- Turn order — mirrors battle_turn_order_builder.dart's buildTurnOrder ---
 
-function buildTurnOrder(firstUid, firstDeck, secondUid, secondDeck, random = Math.random) {
-  const firstPool = shuffle(firstDeck, random).slice(0, 10);
-  const secondPool = shuffle(secondDeck, random).slice(0, 10);
+/**
+ * Rounds each player's deck supplies, and therefore half the length of a
+ * match.
+ *
+ * **This must equal `kBattleTotalRounds ~/ 2` in
+ * `lib/core/constants/battle_rules.dart`.** It said 10 while the app said
+ * 20, so a publicly matched game was half the length the app's own rules
+ * describe: the app decides a match is over once round
+ * `kBattleMainPhaseRounds` has resolved, and a drawn one is only settled
+ * at `kBattleTotalRounds` — a number a twenty-round match can never
+ * reach, so a draw waited on a round that did not exist. Bot and friend
+ * matches, which the app builds itself, were the right length all along,
+ * which is why this only ever showed up against a real opponent.
+ *
+ * `test/battle_rules_parity_test.dart` on the Flutter side reads this
+ * number back out of this file and fails if the two drift again.
+ */
+const ROUNDS_PER_PLAYER = 20;
 
-  const entries = new Array(20);
-  for (let i = 0; i < 10; i++) {
+function buildTurnOrder(firstUid, firstDeck, secondUid, secondDeck, random = Math.random) {
+  const firstPool = shuffle(firstDeck, random).slice(0, ROUNDS_PER_PLAYER);
+  const secondPool = shuffle(secondDeck, random).slice(0, ROUNDS_PER_PLAYER);
+
+  const entries = new Array(ROUNDS_PER_PLAYER * 2);
+  for (let i = 0; i < ROUNDS_PER_PLAYER; i++) {
     entries[i * 2] = {round: i * 2, deckOwnerUid: firstUid, cardId: firstPool[i]};
     entries[i * 2 + 1] =
       {round: i * 2 + 1, deckOwnerUid: secondUid, cardId: secondPool[i]};
@@ -179,6 +198,13 @@ async function createRankedMatch(firstUid, secondUid, cardTierContent) {
     status: "active",
     currentRound: 0,
     turnOrder,
+    // **Both full hands, same as the client's own createMatch.** Without
+    // this the card picker opened on an empty grid reading "0 / 20":
+    // `BattleMatch.remainingHand` has nothing to subtract from, so a
+    // player against a real opponent could never choose a card and every
+    // round went out as the one dealt by default. Bot and friend matches
+    // were unaffected, because the app writes their decks itself.
+    decks: {[firstUid]: firstDeck, [secondUid]: secondDeck},
     turnStartedAt: FieldValue.serverTimestamp(),
     // Written here as well as on the client path, because Firestore's
     // orderBy silently drops documents missing the field it sorts on:
@@ -231,6 +257,7 @@ exports.onMatchmakingQueueJoined = onValueCreated(
 );
 
 exports._internal = {
+  ROUNDS_PER_PLAYER,
   poolFor,
   shuffle,
   buildDeckIds,

@@ -17,6 +17,7 @@ const {
   shuffle,
   buildDeckIds,
   buildTurnOrder,
+  ROUNDS_PER_PLAYER,
   TIER_CONTENT,
 } = require("./battle_matchmaking")._internal;
 
@@ -100,14 +101,21 @@ test("buildDeckIds's two independent calls for the same tier usually "+
   assert.notDeepStrictEqual(a, b);
 });
 
-test("buildTurnOrder interleaves 20 rounds, alternating deck ownership "+
+test("buildTurnOrder interleaves a full match, alternating deck ownership "+
   "starting with the given firstUid", () => {
-  const firstDeck = Array.from({length: 20}, (_, i) => `first_${i}`);
-  const secondDeck = Array.from({length: 20}, (_, i) => `second_${i}`);
+  // Locked to ROUNDS_PER_PLAYER rather than to a number written out
+  // again here. This test used to assert 20 rounds while the app played
+  // 40 — so the assertion agreed with the bug, and a publicly matched
+  // game stayed half length. The Flutter side's
+  // battle_rules_parity_test.dart is what ties that constant to
+  // kBattleTotalRounds.
+  const rounds = ROUNDS_PER_PLAYER * 2;
+  const firstDeck = Array.from({length: ROUNDS_PER_PLAYER}, (_, i) => `first_${i}`);
+  const secondDeck = Array.from({length: ROUNDS_PER_PLAYER}, (_, i) => `second_${i}`);
   const turnOrder = buildTurnOrder("uid-a", firstDeck, "uid-b", secondDeck, () => 0);
 
-  assert.strictEqual(turnOrder.length, 20);
-  for (let i = 0; i < 20; i++) {
+  assert.strictEqual(turnOrder.length, rounds);
+  for (let i = 0; i < rounds; i++) {
     assert.strictEqual(turnOrder[i].round, i);
     assert.strictEqual(
         turnOrder[i].deckOwnerUid,
@@ -116,20 +124,26 @@ test("buildTurnOrder interleaves 20 rounds, alternating deck ownership "+
   }
 });
 
-test("buildTurnOrder only uses each player's first 10 shuffled cards, "+
-  "never touching the rest of a 20-card deck", () => {
-  const firstDeck = Array.from({length: 20}, (_, i) => `first_${i}`);
-  const secondDeck = Array.from({length: 20}, (_, i) => `second_${i}`);
-  const turnOrder = buildTurnOrder("uid-a", firstDeck, "uid-b", secondDeck);
+test("buildTurnOrder plays each player's whole deck, with no card twice",
+    () => {
+      const firstDeck =
+        Array.from({length: ROUNDS_PER_PLAYER}, (_, i) => `first_${i}`);
+      const secondDeck =
+        Array.from({length: ROUNDS_PER_PLAYER}, (_, i) => `second_${i}`);
+      const turnOrder = buildTurnOrder("uid-a", firstDeck, "uid-b", secondDeck);
 
-  const firstUsed = turnOrder
-      .filter((e) => e.deckOwnerUid === "uid-a")
-      .map((e) => e.cardId);
-  const secondUsed = turnOrder
-      .filter((e) => e.deckOwnerUid === "uid-b")
-      .map((e) => e.cardId);
-  assert.strictEqual(firstUsed.length, 10);
-  assert.strictEqual(secondUsed.length, 10);
-  assert.strictEqual(new Set(firstUsed).size, 10);
-  assert.strictEqual(new Set(secondUsed).size, 10);
-});
+      const firstUsed = turnOrder
+          .filter((e) => e.deckOwnerUid === "uid-a")
+          .map((e) => e.cardId);
+      const secondUsed = turnOrder
+          .filter((e) => e.deckOwnerUid === "uid-b")
+          .map((e) => e.cardId);
+      assert.strictEqual(firstUsed.length, ROUNDS_PER_PLAYER);
+      assert.strictEqual(secondUsed.length, ROUNDS_PER_PLAYER);
+      assert.strictEqual(new Set(firstUsed).size, ROUNDS_PER_PLAYER);
+      assert.strictEqual(new Set(secondUsed).size, ROUNDS_PER_PLAYER);
+      // A hand the player can actually spend: everything dealt is
+      // playable, which is what `remainingHand` counts down.
+      assert.deepStrictEqual(new Set(firstUsed), new Set(firstDeck));
+      assert.deepStrictEqual(new Set(secondUsed), new Set(secondDeck));
+    });
