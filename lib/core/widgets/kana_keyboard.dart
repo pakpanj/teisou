@@ -17,6 +17,23 @@ import '../theme/app_palette.dart';
 /// ship, so a learner who gets used to this keyboard is getting used to
 /// the real one rather than to ours.
 ///
+/// ## Tapping again instead of flicking
+///
+/// Every vowel is also reachable by tapping the same key repeatedly —
+/// あ, ああ→い, again→う — which is Japanese phones' other input mode
+/// (ケータイ入力, the one inherited from numeric keypads). Both are
+/// offered because they suit different hands: a flick is faster once
+/// learned, but it is a gesture a child has to be taught, and a keyboard
+/// that only answers to gestures is unusable for anyone who has not
+/// discovered them yet. The two do not conflict — a flick is a drag, a
+/// repeat is a tap.
+///
+/// A repeat *replaces* the character it typed rather than adding one, so
+/// the buffer never briefly shows あい on the way to い. It only counts
+/// as a repeat while [_multiTapWindow] has not run out and the character
+/// last typed is still the one at the end of the buffer; after that the
+/// same key starts a new character, which is how ああ is typed.
+///
 /// Deliberately a plain controlled component (`value` + `onChanged`, no
 /// submit button of its own — see `NOTES_CARD_GAME_MODE.md`'s "mandiri,
 /// tidak terikat konteks pertandingan" decision) so it can be dropped into
@@ -59,10 +76,17 @@ class KanaKeyboard extends ConsumerStatefulWidget {
   final String value;
   final ValueChanged<String> onChanged;
 
+  /// Test seam. Multi-tap is defined by how quickly two taps follow each
+  /// other, and a widget test's taps all land at the same instant on the
+  /// fake clock, so the window can only be exercised by handing the
+  /// keyboard a clock the test controls.
+  final DateTime Function() clock;
+
   const KanaKeyboard({
     super.key,
     required this.value,
     required this.onChanged,
+    this.clock = DateTime.now,
   });
 
   @override
@@ -85,11 +109,81 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
   int? _pressedRow;
   Offset _dragged = Offset.zero;
 
+  /// How long a key stays "the key you are still tapping".
+  ///
+  /// 900ms is the same order as a phone keypad's own, and the trade is
+  /// visible from both ends: too short and a child typing あ, い, う by
+  /// repeat has to hurry; too long and typing ああ means waiting around.
+  static const _multiTapWindow = Duration(milliseconds: 900);
+
+  /// The key being tapped repeatedly, how far through its characters the
+  /// taps have got, and when the last one landed. All three are cleared
+  /// together — a half-remembered cycle is what would type い when the
+  /// learner meant あ.
+  int? _cycleId;
+  int _cycleIndex = 0;
+  DateTime? _cycleAt;
+
   _Flick get _direction {
     if (_dragged.distance < _flickThreshold) return _Flick.centre;
     return _dragged.dx.abs() > _dragged.dy.abs()
         ? (_dragged.dx < 0 ? _Flick.left : _Flick.right)
         : (_dragged.dy < 0 ? _Flick.up : _Flick.down);
+  }
+
+  void _resetCycle() {
+    _cycleId = null;
+    _cycleIndex = 0;
+    _cycleAt = null;
+  }
+
+  /// Whether a tap on [id] right now continues the run of taps already
+  /// under way, rather than starting a new character.
+  ///
+  /// The buffer is checked, not just the clock: anything else typed in
+  /// between — a ゛, a backspace, text set by the caller — means the
+  /// character this cycle was walking through is no longer the one at the
+  /// end, and replacing whatever *is* there would eat it.
+  bool _continuesCycle(int id, List<String> options) {
+    final at = _cycleAt;
+    return _cycleId == id &&
+        at != null &&
+        widget.clock().difference(at) < _multiTapWindow &&
+        _cycleIndex < options.length &&
+        widget.value.endsWith(options[_cycleIndex]);
+  }
+
+  /// A tap — as opposed to a flick — on a group key.
+  ///
+  /// [canStart] is false for a key that cannot legally type its first
+  /// character right now (小 with nothing to attach to). Such a key can
+  /// still be tapped *again* mid-cycle, because that swaps the small kana
+  /// it just added rather than adding another.
+  void _typeByTap(int id, List<String?> chars, {required bool canStart}) {
+    final options = chars.whereType<String>().toList();
+    if (options.isEmpty) return;
+
+    if (_continuesCycle(id, options)) {
+      final previous = options[_cycleIndex];
+      final next = (_cycleIndex + 1) % options.length;
+      setState(() {
+        _cycleIndex = next;
+        _cycleAt = widget.clock();
+      });
+      widget.onChanged(
+        widget.value.substring(0, widget.value.length - previous.length) +
+            options[next],
+      );
+      return;
+    }
+
+    if (!canStart) return;
+    setState(() {
+      _cycleId = id;
+      _cycleIndex = 0;
+      _cycleAt = widget.clock();
+    });
+    widget.onChanged(widget.value + options.first);
   }
 
   @override
@@ -119,17 +213,34 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
     // a column of modifiers either side, every direction has a key's
     // width of room to open into.
     final layout = <List<_Key>>[
-      [_KeyModifier('゛', input.applyTenten(widget.value)),
-        _group(0, baseGrid), _group(1, baseGrid), _group(2, baseGrid),
-        _KeyBackspace()],
-      [_KeyModifier('゜', input.applyMaru(widget.value)),
-        _group(3, baseGrid), _group(4, baseGrid), _group(5, baseGrid),
-        _KeyBlank()],
-      [_smallYKey(input),
-        _group(6, baseGrid), _group(7, baseGrid), _group(8, baseGrid),
-        _KeyBlank()],
-      [_KeyModifier('っ', input.applySokuon(widget.value)),
-        _KeyBlank(), _group(9, baseGrid), _KeyBlank(), _KeyBlank()],
+      [
+        _KeyModifier('゛', input.applyTenten(widget.value)),
+        _group(0, baseGrid),
+        _group(1, baseGrid),
+        _group(2, baseGrid),
+        _KeyBackspace(),
+      ],
+      [
+        _KeyModifier('゜', input.applyMaru(widget.value)),
+        _group(3, baseGrid),
+        _group(4, baseGrid),
+        _group(5, baseGrid),
+        _KeyBlank(),
+      ],
+      [
+        _smallYKey(input),
+        _group(6, baseGrid),
+        _group(7, baseGrid),
+        _group(8, baseGrid),
+        _KeyBlank(),
+      ],
+      [
+        _KeyModifier('っ', input.applySokuon(widget.value)),
+        _KeyBlank(),
+        _group(9, baseGrid),
+        _KeyBlank(),
+        _KeyBlank(),
+      ],
     ];
 
     return LayoutBuilder(
@@ -190,14 +301,19 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
   /// of the keyboard, where it can only land back on the key under the
   /// thumb.
   _Key _smallYKey(KanaKeyboardInput input) {
-    final enabled = input.applySmallY(widget.value, 'ゃ') != null;
+    const chars = ['ゃ', null, 'ゅ', 'ょ', null];
+    final canStart = input.applySmallY(widget.value, 'ゃ') != null;
+    // Still live while it is being tapped through, even though the ゃ it
+    // just typed is not itself something a small kana can follow —
+    // otherwise the key greys out under the finger after the first tap
+    // and ゅ/ょ are unreachable by repeat.
+    final live = canStart || _continuesCycle(-1, ['ゃ', 'ゅ', 'ょ']);
     return _KeyFlick(
       id: -1,
-      chars: enabled
-          ? ['ゃ', null, 'ゅ', 'ょ', null]
-          : [null, null, null, null, null],
+      chars: live ? chars : [null, null, null, null, null],
       label: '小',
       muted: true,
+      canStart: canStart,
     );
   }
 
@@ -207,21 +323,39 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
     return switch (key) {
       _KeyBlank() => const SizedBox.shrink(),
       _KeyBackspace() => _KeyButton(
-          icon: Icons.backspace_outlined,
-          muted: true,
-          onTap: widget.value.isEmpty
-              ? null
-              : () => widget.onChanged(
-                    ref.read(kanaKeyboardInputProvider).requireValue
-                        .backspace(widget.value),
-                  ),
-        ),
+        icon: Icons.backspace_outlined,
+        muted: true,
+        onTap: widget.value.isEmpty
+            ? null
+            : () {
+                _resetCycle();
+                widget.onChanged(
+                  ref
+                      .read(kanaKeyboardInputProvider)
+                      .requireValue
+                      .backspace(widget.value),
+                );
+              },
+      ),
       _KeyModifier(:final label, :final result) => _KeyButton(
-          label: label,
-          muted: true,
-          onTap: result == null ? null : () => widget.onChanged(result),
-        ),
-      _KeyFlick(:final id, :final chars, :final label, :final muted) =>
+        label: label,
+        muted: true,
+        onTap: result == null
+            ? null
+            : () {
+                // ゛ rewrites the character a run of taps was walking
+                // through (か becomes が), so the run is over.
+                _resetCycle();
+                widget.onChanged(result);
+              },
+      ),
+      _KeyFlick(
+        :final id,
+        :final chars,
+        :final label,
+        :final muted,
+        :final canStart,
+      ) =>
         _FlickKeyButton(
           label: label ?? chars.first ?? '',
           muted: muted,
@@ -233,11 +367,19 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
           }),
           onMove: (delta) => setState(() => _dragged += delta),
           onUp: () {
-            final picked = chars[_direction.index];
+            final direction = _direction;
+            final picked = chars[direction.index];
             setState(() {
               _pressedRow = null;
               _dragged = Offset.zero;
             });
+            if (direction == _Flick.centre) {
+              _typeByTap(id, chars, canStart: canStart);
+              return;
+            }
+            // A flick says exactly which character is wanted, so it ends
+            // any run of taps rather than being counted as one of them.
+            _resetCycle();
             // A flick into an empty direction types nothing rather than
             // falling back to the centre character: silently giving や
             // when the finger clearly went left would be worse than
@@ -294,8 +436,10 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
         Positioned(
           // Clamped to the keyboard's own width so a flick preview on the
           // left-hand column does not hang off the edge of the screen.
-          left: (centreX + offset.dx - keyWidth / 2)
-              .clamp(0.0, constraints.maxWidth - keyWidth),
+          left: (centreX + offset.dx - keyWidth / 2).clamp(
+            0.0,
+            constraints.maxWidth - keyWidth,
+          ),
           top: centreY + offset.dy - keyHeight / 2,
           width: keyWidth,
           height: keyHeight,
@@ -336,11 +480,17 @@ class _KeyFlick extends _Key {
   final String? label;
   final bool muted;
 
+  /// Whether this key may type its first character right now. False only
+  /// for 小 with nothing to attach a small kana to — a gojūon key can
+  /// always start a character.
+  final bool canStart;
+
   _KeyFlick({
     required this.id,
     required this.chars,
     this.label,
     this.muted = false,
+    this.canStart = true,
   });
 }
 
@@ -458,8 +608,8 @@ class _KeyButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(3),
       child: Material(
-        color: colorOverride ??
-            (muted ? palette.mutedSurface : palette.cardWhite),
+        color:
+            colorOverride ?? (muted ? palette.mutedSurface : palette.cardWhite),
         borderRadius: BorderRadius.circular(10),
         elevation: enabled ? 1 : 0,
         child: InkWell(
@@ -484,8 +634,8 @@ class _KeyButton extends StatelessWidget {
                         color: highlighted
                             ? Colors.white
                             : enabled
-                                ? palette.textNavy
-                                : palette.textNavy.withValues(alpha: 0.3),
+                            ? palette.textNavy
+                            : palette.textNavy.withValues(alpha: 0.3),
                       ),
                     ),
                   ),

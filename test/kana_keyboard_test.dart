@@ -72,11 +72,7 @@ void main() {
 
   /// Presses [key], drags [by], and lets go — the gesture this keyboard
   /// is built around. A zero offset is a plain tap.
-  Future<void> flick(
-    WidgetTester tester,
-    String key,
-    Offset by,
-  ) async {
+  Future<void> flick(WidgetTester tester, String key, Offset by) async {
     final gesture = await tester.startGesture(tester.getCenter(find.text(key)));
     if (by != Offset.zero) {
       await gesture.moveBy(by);
@@ -85,6 +81,193 @@ void main() {
     await gesture.up();
     await tester.pump();
   }
+
+  /// A keyboard whose buffer actually changes as it is typed into, plus
+  /// a clock the test moves by hand.
+  ///
+  /// The tests above can get away with a fixed `value` because one
+  /// gesture types one character. Repeat-tapping cannot: the second tap
+  /// has to see what the first one typed, and how long ago.
+  Future<({List<String> typed, void Function(Duration) advance})> pumpLive(
+    WidgetTester tester, {
+    String value = '',
+  }) async {
+    final typed = <String>[];
+    var now = DateTime(2026, 1, 1, 12);
+    var current = value;
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: overridesFor(hiragana),
+        child: MaterialApp(
+          home: Scaffold(
+            body: StatefulBuilder(
+              builder: (context, setState) => SizedBox(
+                height: 200,
+                child: KanaKeyboard(
+                  value: current,
+                  clock: () => now,
+                  onChanged: (v) {
+                    typed.add(v);
+                    setState(() => current = v);
+                  },
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+    await tester.pump();
+    await tester.pump();
+    return (typed: typed, advance: (Duration d) => now = now.add(d));
+  }
+
+  /// The whole point of the feature: reaching い without knowing that a
+  /// flick exists. A child who has only ever used a phone keypad, or who
+  /// simply has not been taught the gesture, can still type every vowel.
+  testWidgets('tapping the same key again walks through its vowels', (
+    tester,
+  ) async {
+    final board = await pumpLive(tester);
+
+    await flick(tester, 'あ', Offset.zero);
+    expect(board.typed.last, 'あ');
+
+    await flick(tester, 'あ', Offset.zero);
+    expect(board.typed.last, 'い', reason: 'second tap');
+
+    await flick(tester, 'あ', Offset.zero);
+    expect(board.typed.last, 'う', reason: 'third tap');
+
+    await flick(tester, 'あ', Offset.zero);
+    await flick(tester, 'あ', Offset.zero);
+    expect(board.typed.last, 'お', reason: 'fifth tap');
+  });
+
+  testWidgets('a repeat replaces the character rather than adding one', (
+    tester,
+  ) async {
+    // Not あい on the way to い: the buffer must never briefly hold a
+    // character the learner did not ask for, because on a timed answer
+    // that is what they would see and try to delete.
+    final board = await pumpLive(tester);
+
+    await flick(tester, 'か', Offset.zero);
+    await flick(tester, 'か', Offset.zero);
+
+    expect(board.typed, ['か', 'き']);
+  });
+
+  testWidgets('the run wraps back to the first character', (tester) async {
+    final board = await pumpLive(tester);
+
+    for (var i = 0; i < 6; i++) {
+      await flick(tester, 'あ', Offset.zero);
+    }
+
+    expect(board.typed.last, 'あ', reason: 'six taps through five vowels');
+  });
+
+  testWidgets('taps skip directions the group does not have', (tester) async {
+    // や holds only や, ゆ, よ. A run that counted the empty slots would
+    // type nothing on the second tap and look broken.
+    final board = await pumpLive(tester);
+
+    await flick(tester, 'や', Offset.zero);
+    await flick(tester, 'や', Offset.zero);
+    expect(board.typed.last, 'ゆ');
+
+    await flick(tester, 'や', Offset.zero);
+    expect(board.typed.last, 'よ');
+  });
+
+  testWidgets('waiting types the same character twice instead', (tester) async {
+    // How ああ is typed. Without this the second あ is unreachable by
+    // tapping at all.
+    final board = await pumpLive(tester);
+
+    await flick(tester, 'あ', Offset.zero);
+    board.advance(const Duration(seconds: 2));
+    await flick(tester, 'あ', Offset.zero);
+
+    expect(board.typed.last, 'ああ');
+  });
+
+  testWidgets('a different key starts its own character', (tester) async {
+    final board = await pumpLive(tester);
+
+    await flick(tester, 'あ', Offset.zero);
+    await flick(tester, 'か', Offset.zero);
+
+    expect(board.typed.last, 'あか');
+  });
+
+  testWidgets('a flick ends the run rather than counting as a tap', (
+    tester,
+  ) async {
+    // The case that actually distinguishes the two: tap to い, then flick
+    // to another い. The buffer now ends in the very character the run
+    // was sitting on, so a run left running would treat the next tap as
+    // its third — replacing the flicked い with う, eating a character
+    // the learner deliberately typed.
+    final board = await pumpLive(tester);
+
+    await flick(tester, 'あ', Offset.zero);
+    await flick(tester, 'あ', Offset.zero);
+    expect(board.typed.last, 'い');
+
+    await flick(tester, 'あ', const Offset(-40, 0));
+    expect(board.typed.last, 'いい', reason: 'the flick adds, never replaces');
+
+    await flick(tester, 'あ', Offset.zero);
+    expect(board.typed.last, 'いいあ', reason: 'the next tap starts over');
+  });
+
+  testWidgets('a modifier ends the run', (tester) async {
+    // か tapped, voiced to が, then か tapped again. Treating that second
+    // tap as a repeat would replace the が the learner just made.
+    final board = await pumpLive(tester);
+
+    await flick(tester, 'か', Offset.zero);
+    await tester.tap(find.text('゛'));
+    await tester.pump();
+    expect(board.typed.last, 'が');
+
+    await flick(tester, 'か', Offset.zero);
+    expect(board.typed.last, 'がか');
+  });
+
+  testWidgets('backspace ends the run', (tester) async {
+    final board = await pumpLive(tester);
+
+    await flick(tester, 'あ', Offset.zero);
+    await flick(tester, 'あ', Offset.zero);
+    expect(board.typed.last, 'い');
+
+    await tester.tap(find.byIcon(Icons.backspace_outlined));
+    await tester.pump();
+    expect(board.typed.last, '');
+
+    await flick(tester, 'あ', Offset.zero);
+    expect(board.typed.last, 'あ', reason: 'not う — the run is over');
+  });
+
+  testWidgets('the small-kana key can be tapped through too', (tester) async {
+    // 小 goes dead as soon as it has typed a ゃ, because a small kana
+    // cannot follow a small kana — so unless it stays live for its own
+    // run, ゅ and ょ are flick-only.
+    final board = await pumpLive(tester, value: 'き');
+
+    await flick(tester, '小', Offset.zero);
+    expect(board.typed.last, 'きゃ');
+
+    await flick(tester, '小', Offset.zero);
+    expect(board.typed.last, 'きゅ');
+
+    await flick(tester, '小', Offset.zero);
+    expect(board.typed.last, 'きょ');
+  });
 
   testWidgets('tapping a key gives its group first character', (tester) async {
     String? result;
@@ -152,9 +335,7 @@ void main() {
     // this is what keeps the board to sixteen big keys.
     expect(find.text('き'), findsNothing);
 
-    final gesture = await tester.startGesture(
-      tester.getCenter(find.text('か')),
-    );
+    final gesture = await tester.startGesture(tester.getCenter(find.text('か')));
     await tester.pump();
 
     for (final k in ['き', 'く', 'け', 'こ']) {
