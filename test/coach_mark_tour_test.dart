@@ -261,6 +261,51 @@ void main() {
     );
   });
 
+  testWidgets('skip stays put for a target that is merely near the top', (
+    tester,
+  ) async {
+    // A full-width card just under the app bar: it reaches as far right
+    // as skip does and sits close to it, but below it. Moving skip out of
+    // its way lands it on the back button instead.
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light,
+        home: Builder(
+          builder: (context) => Scaffold(
+            appBar: AppBar(title: const Text('Bab')),
+            body: Column(
+              children: [
+                const SizedBox(height: 24),
+                const TutorialTarget(
+                  id: 'card',
+                  child: SizedBox(height: 90, width: double.infinity),
+                ),
+                ElevatedButton(
+                  onPressed: () => Navigator.of(context).push(
+                    PageRouteBuilder<void>(
+                      opaque: false,
+                      pageBuilder: (_, _, _) => CoachMarkTour(
+                        steps: [step('card', 'just below')],
+                        nextLabel: 'Lanjut',
+                        finishLabel: 'Siap!',
+                        skipLabel: 'Lewati',
+                      ),
+                    ),
+                  ),
+                  child: const Text('start'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    await start(tester);
+
+    final width = tester.view.physicalSize.width / tester.view.devicePixelRatio;
+    expect(tester.getCenter(find.text('Lewati')).dx, greaterThan(width / 2));
+  });
+
   testWidgets('an anchor leaving the tree does not take its id with it', (
     tester,
   ) async {

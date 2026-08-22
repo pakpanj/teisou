@@ -218,9 +218,15 @@ class _CoachMarkTourState extends State<CoachMarkTour> {
     // the top, above one near the bottom.
     final roomBelow = media.size.height - spot.bottom;
     final below = roomBelow > 360;
-    final skipClashes =
-        spot.top < media.padding.top + 140 &&
-        spot.right > media.size.width - 170;
+    // Whether skip and the highlight would actually overlap, rather than
+    // merely both being near the top: a card just below the app bar was
+    // close enough to trip a looser check, and moving skip left there put
+    // it on the back button instead.
+    final skipClashes = spot
+        .inflate(8)
+        .overlaps(
+          Rect.fromLTWH(media.size.width - 130, media.padding.top, 130, 56),
+        );
 
     return Material(
       type: MaterialType.transparency,
