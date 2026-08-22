@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kana_master/core/providers.dart';
 import 'package:kana_master/core/services/kana_keyboard_input.dart';
 import 'package:kana_master/core/widgets/kana_keyboard.dart';
+import 'package:kana_master/core/widgets/keyboard_look.dart';
 import 'package:kana_master/data/models/kana_character.dart';
 import 'package:kana_master/data/models/kana_type.dart';
 import 'package:kana_master/data/repositories/kana_repository.dart';
@@ -267,6 +268,45 @@ void main() {
 
     await flick(tester, '小', Offset.zero);
     expect(board.typed.last, 'きょ');
+  });
+
+  testWidgets('the keys sit on a tray, and a skin can repaint it', (
+    tester,
+  ) async {
+    // Both keyboards share the tray and the skin object, so a skin
+    // dresses whichever one the current card calls for rather than
+    // whichever one it was written against.
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: overridesFor(hiragana),
+        child: MaterialApp(
+          home: Scaffold(
+            body: SizedBox(
+              height: 200,
+              child: KanaKeyboard(
+                value: '',
+                onChanged: (_) {},
+                look: const KeyboardLook(panel: Color(0xFF203040)),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+    await tester.pump();
+    await tester.pump();
+
+    expect(find.byType(KeyboardPanel), findsOneWidget);
+    final box = tester.widget<DecoratedBox>(
+      find
+          .descendant(
+            of: find.byType(KeyboardPanel),
+            matching: find.byType(DecoratedBox),
+          )
+          .first,
+    );
+    expect((box.decoration as BoxDecoration).color, const Color(0xFF203040));
   });
 
   testWidgets('tapping a key gives its group first character', (tester) async {

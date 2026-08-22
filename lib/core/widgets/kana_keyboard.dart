@@ -6,6 +6,7 @@ import '../../data/models/kana_type.dart';
 import '../providers.dart';
 import '../services/kana_keyboard_input.dart';
 import '../theme/app_palette.dart';
+import 'keyboard_look.dart';
 
 /// A self-contained hiragana input keyboard in the **flick layout every
 /// Japanese phone uses**: a 4x4 block where each key owns a whole gojūon
@@ -82,11 +83,17 @@ class KanaKeyboard extends ConsumerStatefulWidget {
   /// keyboard a clock the test controls.
   final DateTime Function() clock;
 
+  /// How the keys are painted. See [KeyboardLook] — shared with
+  /// [RomajiKeyboard] so a skin dresses both halves of the game, not
+  /// whichever one the current card happens to use.
+  final KeyboardLook look;
+
   const KanaKeyboard({
     super.key,
     required this.value,
     required this.onChanged,
     this.clock = DateTime.now,
+    this.look = const KeyboardLook(),
   });
 
   @override
@@ -243,30 +250,33 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
       ],
     ];
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final keyWidth = constraints.maxWidth / layout.first.length;
-        final keyHeight = constraints.maxHeight / layout.length;
-        return Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Column(
-              children: [
-                for (final row in layout)
-                  Expanded(
-                    child: Row(
-                      children: [
-                        for (final key in row) Expanded(child: _build(key)),
-                      ],
+    return KeyboardPanel(
+      look: widget.look,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final keyWidth = constraints.maxWidth / layout.first.length;
+          final keyHeight = constraints.maxHeight / layout.length;
+          return Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Column(
+                children: [
+                  for (final row in layout)
+                    Expanded(
+                      child: Row(
+                        children: [
+                          for (final key in row) Expanded(child: _build(key)),
+                        ],
+                      ),
                     ),
-                  ),
-              ],
-            ),
-            if (_pressedRow != null)
-              ..._previewFor(layout, keyWidth, keyHeight, constraints),
-          ],
-        );
-      },
+                ],
+              ),
+              if (_pressedRow != null)
+                ..._previewFor(layout, keyWidth, keyHeight, constraints),
+            ],
+          );
+        },
+      ),
     );
   }
 
@@ -359,6 +369,7 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
         _FlickKeyButton(
           label: label ?? chars.first ?? '',
           muted: muted,
+          look: widget.look,
           enabled: chars.first != null,
           pressed: _pressedRow == id,
           onDown: () => setState(() {
@@ -504,6 +515,7 @@ class _KeyFlick extends _Key {
 /// a scroll view.
 class _FlickKeyButton extends StatelessWidget {
   final String label;
+  final KeyboardLook look;
   final bool muted;
   final bool enabled;
   final bool pressed;
@@ -514,6 +526,7 @@ class _FlickKeyButton extends StatelessWidget {
 
   const _FlickKeyButton({
     required this.label,
+    required this.look,
     required this.muted,
     required this.enabled,
     required this.pressed,
@@ -527,7 +540,7 @@ class _FlickKeyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final palette = context.palette;
     if (!enabled) {
-      return _KeyButton(label: label, muted: muted, onTap: null);
+      return _KeyButton(label: label, muted: muted, onTap: null, look: look);
     }
     return Listener(
       onPointerDown: (_) => onDown(),
@@ -537,6 +550,7 @@ class _FlickKeyButton extends StatelessWidget {
       child: _KeyButton(
         label: label,
         muted: muted,
+        look: look,
         // Pressed keys darken rather than lift: the preview is already
         // doing the work of showing where the finger is.
         highlighted: pressed,
@@ -591,6 +605,7 @@ class _KeyButton extends StatelessWidget {
   final bool muted;
   final bool highlighted;
   final Color? colorOverride;
+  final KeyboardLook look;
 
   const _KeyButton({
     this.label,
@@ -599,17 +614,22 @@ class _KeyButton extends StatelessWidget {
     this.muted = false,
     this.highlighted = false,
     this.colorOverride,
+    this.look = const KeyboardLook(),
   });
 
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
     final enabled = onTap != null;
+    final text = look.text ?? palette.textNavy;
     return Padding(
       padding: const EdgeInsets.all(3),
       child: Material(
         color:
-            colorOverride ?? (muted ? palette.mutedSurface : palette.cardWhite),
+            colorOverride ??
+            (muted
+                ? (look.mutedFace ?? palette.mutedSurface)
+                : (look.face ?? palette.cardWhite)),
         borderRadius: BorderRadius.circular(10),
         elevation: enabled ? 1 : 0,
         child: InkWell(
@@ -620,9 +640,7 @@ class _KeyButton extends StatelessWidget {
                 ? Icon(
                     icon,
                     size: 20,
-                    color: enabled
-                        ? palette.textNavy
-                        : palette.textNavy.withValues(alpha: 0.3),
+                    color: enabled ? text : text.withValues(alpha: 0.3),
                   )
                 : FittedBox(
                     fit: BoxFit.scaleDown,
@@ -634,8 +652,8 @@ class _KeyButton extends StatelessWidget {
                         color: highlighted
                             ? Colors.white
                             : enabled
-                            ? palette.textNavy
-                            : palette.textNavy.withValues(alpha: 0.3),
+                            ? text
+                            : text.withValues(alpha: 0.3),
                       ),
                     ),
                   ),

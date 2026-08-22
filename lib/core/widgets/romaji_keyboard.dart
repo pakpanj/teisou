@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_palette.dart';
+import 'keyboard_look.dart';
 
 /// The app's own romaji keyboard, for the cards that ask for a reading in
 /// latin letters.
@@ -62,66 +63,54 @@ class RomajiKeyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.palette;
-    return Column(
-      children: [
-        for (var i = 0; i < rows.length; i++)
-          Expanded(
-            child: Row(
-              children: [
-                // The short rows are centred by half-width gaps rather
-                // than by stretching their keys, so every letter on the
-                // keyboard is the same size and lands where the eye
-                // expects from any other keyboard.
-                if (i == 1) const Spacer(flex: 1),
-                for (final letter in rows[i].split(''))
-                  Expanded(
-                    flex: 2,
-                    child: _Key(
-                      label: letter,
-                      look: look,
-                      palette: palette,
-                      onTap: () => onChanged(value + letter),
+    return KeyboardPanel(
+      look: look,
+      child: Column(
+        children: [
+          for (var i = 0; i < rows.length; i++)
+            Expanded(
+              child: Row(
+                children: [
+                  // The short rows are centred by half-width gaps rather
+                  // than by stretching their keys, so every letter on the
+                  // keyboard is the same size and lands where the eye
+                  // expects from any other keyboard.
+                  if (i == 1) const Spacer(flex: 1),
+                  for (final letter in rows[i].split(''))
+                    Expanded(
+                      flex: 2,
+                      child: _Key(
+                        label: letter,
+                        look: look,
+                        palette: palette,
+                        onTap: () => onChanged(value + letter),
+                      ),
                     ),
-                  ),
-                if (i == 1) const Spacer(flex: 1),
-                if (i == 2) ...[
-                  const Spacer(flex: 1),
-                  Expanded(
-                    flex: 4,
-                    child: _Key(
-                      icon: Icons.backspace_outlined,
-                      look: look,
-                      palette: palette,
-                      muted: true,
-                      onTap: value.isEmpty
-                          ? null
-                          : () =>
-                                onChanged(value.substring(0, value.length - 1)),
+                  if (i == 1) const Spacer(flex: 1),
+                  if (i == 2) ...[
+                    const Spacer(flex: 1),
+                    Expanded(
+                      flex: 4,
+                      child: _Key(
+                        icon: Icons.backspace_outlined,
+                        look: look,
+                        palette: palette,
+                        muted: true,
+                        onTap: value.isEmpty
+                            ? null
+                            : () => onChanged(
+                                value.substring(0, value.length - 1),
+                              ),
+                      ),
                     ),
-                  ),
+                  ],
                 ],
-              ],
+              ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
-}
-
-/// The colours a keyboard is drawn in.
-///
-/// Its own object rather than four loose parameters because the point of
-/// it is to be swapped whole: a skin is a set of colours that agree with
-/// each other, and passing them separately invites half a skin.
-class KeyboardLook {
-  const KeyboardLook({this.face, this.mutedFace, this.text});
-
-  /// Null means "use the theme", which is what every caller does today
-  /// and what any skinned keyboard should still fall back to for
-  /// anything its own palette does not name.
-  final Color? face;
-  final Color? mutedFace;
-  final Color? text;
 }
 
 class _Key extends StatelessWidget {

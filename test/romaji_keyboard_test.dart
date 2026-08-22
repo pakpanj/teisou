@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:kana_master/core/theme/app_theme.dart';
+import 'package:kana_master/core/widgets/keyboard_look.dart';
 import 'package:kana_master/core/widgets/romaji_keyboard.dart';
 
 /// The app's own romaji keyboard.
@@ -110,6 +111,53 @@ void main() {
     );
     expect(key.height, greaterThan(40), reason: 'key height');
     expect(key.width, greaterThan(24), reason: 'key width');
+  });
+
+  testWidgets('the keys sit on a tray rather than on the screen behind', (
+    tester,
+  ) async {
+    // Without one the keys float directly on whatever is behind the
+    // keyboard — in Card Game Mode, a photograph of Fuji with sakura
+    // drifting between the letters — and read as scattered buttons
+    // rather than as one keyboard.
+    await pump(tester);
+
+    expect(find.byType(KeyboardPanel), findsOneWidget);
+  });
+
+  testWidgets('a skin can repaint the tray as well as the keys', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light,
+        home: Scaffold(
+          body: SizedBox(
+            height: 190,
+            child: RomajiKeyboard(
+              value: '',
+              onChanged: (_) {},
+              look: const KeyboardLook(panel: Color(0xFF203040)),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+
+    final box = tester.widget<DecoratedBox>(
+      find
+          .descendant(
+            of: find.byType(KeyboardPanel),
+            matching: find.byType(DecoratedBox),
+          )
+          .first,
+    );
+    expect(
+      (box.decoration as BoxDecoration).color,
+      const Color(0xFF203040),
+      reason: 'a keyboard skin that cannot repaint the tray is half a skin',
+    );
   });
 
   testWidgets('a skin can repaint the keys without touching the layout', (
