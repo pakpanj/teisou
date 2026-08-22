@@ -27,6 +27,17 @@ class KeyboardLook {
   final Color? text;
 }
 
+/// Clear space kept under the last row of keys, on top of whatever the
+/// system's own navigation inset is.
+///
+/// The tray runs to the bottom of the glass, but the keys must not: on a
+/// phone whose back and home buttons are drawn on the screen rather than
+/// built into the frame, a key flush with the bottom is a key sitting on
+/// the navigation bar. The inset alone is not enough of a margin either —
+/// gesture navigation reports only a couple of dozen pixels, which still
+/// leaves the bottom row uncomfortably close to the edge.
+const kKeyboardBottomGap = 20.0;
+
 /// The tray a keyboard's keys sit on.
 ///
 /// **Both keyboards used to have none**, so the keys floated directly on

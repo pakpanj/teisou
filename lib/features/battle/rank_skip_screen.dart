@@ -14,6 +14,7 @@ import '../../core/widgets/kana_keyboard.dart';
 import '../../data/models/card_game_rank.dart';
 import 'widgets/battle_arena.dart';
 import '../../core/widgets/romaji_keyboard.dart';
+import '../../core/widgets/keyboard_look.dart';
 
 /// Skipping straight to a rank by proving you can already play it.
 ///
@@ -180,7 +181,13 @@ class _RankSkipScreenState extends ConsumerState<RankSkipScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(s.rankSkipEntry)),
       body: BattleBackdrop(
+        // **The answering phase keeps its own bottom inset.** Its
+        // keyboard tray runs to the very bottom of the glass, and a
+        // SafeArea around it stops the tray short and leaves a strip of
+        // the backdrop showing underneath. Every other phase is ordinary
+        // content that must clear the navigation bar.
         child: SafeArea(
+          bottom: _phase != _Phase.answering,
           child: switch (_phase) {
             _Phase.working => const Center(child: CircularProgressIndicator()),
             _Phase.choosing => _TierChoice(
@@ -388,6 +395,10 @@ class _Answering extends ConsumerWidget {
 
     final card = resolveCard(exam.cardIds[at], data.$1, data.$2);
     final last = at == exam.questions - 1;
+    // The SafeArea above stops at this phase, so the keyboard's tray
+    // takes the navigation bar's height itself — plus room so the bottom
+    // row of keys is not sitting on the bar.
+    final trayInset = MediaQuery.paddingOf(context).bottom + kKeyboardBottomGap;
 
     return Column(
       children: [
@@ -422,7 +433,18 @@ class _Answering extends ConsumerWidget {
         Expanded(
           child: Center(
             child: card == null
-                ? const SizedBox.shrink()
+                // A card id the local dataset cannot resolve. Rare, but
+                // an empty screen with a running clock tells the learner
+                // nothing at all — least of all that they should press
+                // next.
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
+                    child: Text(
+                      s.rankSkipCardMissing,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: palette.textNavy),
+                    ),
+                  )
                 : SizedBox(
                     width: 200,
                     height: 260,
@@ -434,54 +456,77 @@ class _Answering extends ConsumerWidget {
                   ),
           ),
         ),
-        if (card != null) ...[
-          // What has been typed, which neither keyboard shows anywhere
-          // itself. Without it a learner is typing blind: no way to see a
-          // wrong character, and no way to know a tap registered at all.
-          _TypedAnswer(
-            palette: palette,
-            label: s.rankSkipYourAnswer,
-            text: answer,
-            empty: s.rankSkipAnswerEmpty,
+        // Next sits beside what was typed rather than under the
+        // keyboard, matching the battle screen: down there it was the
+        // furthest thing on screen from both the answer and the eyes
+        // reading it, which on a card with a clock is a long way to
+        // travel to finish.
+        Padding(
+          padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+          // Centred, not stretched: a stretched row inside a column has
+          // no height of its own to stretch to, so the whole row
+          // collapsed and took the answer box and the button with it.
+          // The button matches the box's height through its own minimum
+          // size instead.
+          child: Row(
+            children: [
+              // What has been typed, which neither keyboard shows
+              // anywhere itself. Without it a learner is typing blind:
+              // no way to see a wrong character, and no way to know a
+              // tap registered at all.
+              Expanded(
+                child: _TypedAnswer(
+                  palette: palette,
+                  label: s.rankSkipYourAnswer,
+                  text: answer,
+                  empty: s.rankSkipAnswerEmpty,
+                ),
+              ),
+              const SizedBox(width: 10),
+              FilledButton(
+                style: FilledButton.styleFrom(
+                  backgroundColor: palette.primaryCoral,
+                  padding: const EdgeInsets.symmetric(horizontal: 18),
+                  minimumSize: const Size(0, 62),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(28),
+                  ),
+                ),
+                // Never disabled on an empty answer. A card nobody can
+                // read is a card to move past, and a button that refuses
+                // to advance would strand the exam on it.
+                onPressed: last ? onSubmit : onNext,
+                child: Text(
+                  last ? s.rankSkipSubmit : s.rankSkipNext,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
           ),
+        ),
+        if (card != null)
           // Both answer types are typed on a keyboard this app draws.
           // The romaji half used to open the phone's own, which brought
           // a prediction bar onto a timed question and covered a
           // different amount of the card on every phone.
           SizedBox(
-            height: card.answerInHiragana ? 240 : 190,
+            height: (card.answerInHiragana ? 240 : 190) + trayInset,
             child: card.answerInHiragana
-                ? KanaKeyboard(value: answer, onChanged: onChanged)
-                : RomajiKeyboard(value: answer, onChanged: onChanged),
+                ? KanaKeyboard(
+                    value: answer,
+                    bottomInset: trayInset,
+                    onChanged: onChanged,
+                  )
+                : RomajiKeyboard(
+                    value: answer,
+                    bottomInset: trayInset,
+                    onChanged: onChanged,
+                  ),
           ),
-        ],
-        Padding(
-          padding: const EdgeInsets.fromLTRB(24, 12, 24, 18),
-          child: SizedBox(
-            width: double.infinity,
-            height: 54,
-            child: FilledButton(
-              style: FilledButton.styleFrom(
-                backgroundColor: palette.primaryCoral,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(28),
-                ),
-              ),
-              // Never disabled on an empty answer. A card nobody can read
-              // is a card to move past, and a button that refuses to
-              // advance would strand the exam on it.
-              onPressed: last ? onSubmit : onNext,
-              child: Text(
-                last ? s.rankSkipSubmit : s.rankSkipNext,
-                style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-        ),
       ],
     );
   }
@@ -545,40 +590,42 @@ class _TypedAnswer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final blank = text.isEmpty;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        decoration: BoxDecoration(
-          color: Colors.black.withValues(alpha: 0.4),
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: palette.primaryCoral.withValues(alpha: blank ? 0.3 : 0.8),
-            width: 2,
+    // No margin of its own: it sits in a row beside the next button, and
+    // its own padding on top of the row's would push the two apart.
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: BoxDecoration(
+        color: Colors.black.withValues(alpha: 0.4),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: palette.primaryCoral.withValues(alpha: blank ? 0.3 : 0.8),
+          width: 2,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 11,
+              color: Colors.white.withValues(alpha: 0.55),
+            ),
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 11,
-                color: Colors.white.withValues(alpha: 0.55),
-              ),
+          const SizedBox(height: 2),
+          Text(
+            blank ? empty : text,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: blank ? 16 : 26,
+              fontWeight: blank ? FontWeight.normal : FontWeight.bold,
+              color: Colors.white.withValues(alpha: blank ? 0.45 : 1),
             ),
-            const SizedBox(height: 2),
-            Text(
-              blank ? empty : text,
-              style: TextStyle(
-                fontSize: blank ? 16 : 26,
-                fontWeight: blank ? FontWeight.normal : FontWeight.bold,
-                color: Colors.white.withValues(alpha: blank ? 0.45 : 1),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -185,6 +185,56 @@ void main() {
     );
   });
 
+  testWidgets('the bottom row keeps clear of the navigation bar', (
+    tester,
+  ) async {
+    // On a phone whose back and home buttons are drawn on the screen,
+    // a key flush with the bottom is a key sitting on the navigation
+    // bar. The tray reaches the glass; the keys stop short of it.
+    //
+    // Measured against a fixed distance rather than against
+    // [kKeyboardBottomGap] itself: an expectation derived from the same
+    // constant the widget uses agrees with it even when it is zero,
+    // which is exactly the regression worth catching.
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light,
+        home: Scaffold(
+          body: Align(
+            alignment: Alignment.bottomCenter,
+            child: SizedBox(
+              // A device reporting no inset of its own — gesture
+              // navigation on a tall screen. The gap is all there is.
+              height: 190 + kKeyboardBottomGap,
+              child: const RomajiKeyboard(
+                value: '',
+                onChanged: _ignore,
+                bottomInset: kKeyboardBottomGap,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+
+    // The key itself, not its letter: a letter is centred inside a key
+    // that is much taller than it, so measuring the text leaves enough
+    // slack to hide a missing gap entirely.
+    final lastRow = tester.getRect(
+      find.ancestor(of: find.text('z'), matching: find.byType(Material)).first,
+    );
+    final tray = tester.getRect(find.byType(KeyboardPanel));
+
+    expect(
+      tray.bottom - lastRow.bottom,
+      greaterThanOrEqualTo(16.0),
+      reason:
+          'the bottom row is close enough to the edge to be tapped '
+          'by a thumb aiming at the home button',
+    );
+  });
+
   testWidgets('a skin can repaint the tray as well as the keys', (
     tester,
   ) async {
@@ -254,3 +304,5 @@ void main() {
     expect(text.style?.color, const Color(0xFFFFEEDD));
   });
 }
+
+void _ignore(String _) {}

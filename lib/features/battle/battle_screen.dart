@@ -26,6 +26,7 @@ import 'battle_invite_providers.dart';
 import 'widgets/star_result_card.dart';
 import 'widgets/battle_arena.dart';
 import '../../core/widgets/romaji_keyboard.dart';
+import '../../core/widgets/keyboard_look.dart';
 
 /// Card Game Mode's live match screen — Tahap 2 butir 5 in
 /// `NOTES_CARD_GAME_MODE.md`. Renders one `battleMatches/{matchId}` doc
@@ -726,6 +727,9 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   ) {
     final hiragana = card.answerInHiragana;
     final typed = hiragana ? _hiraganaBuffer : _romajiBuffer;
+    // What the tray takes: the navigation bar, plus room so the bottom
+    // row of keys is not sitting on it.
+    final trayInset = bottomInset + kKeyboardBottomGap;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -757,11 +761,11 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           // Four rows at a fingertip's height each for kana, three for
           // romaji. The old 220 was holding twelve rows and crushing
           // every one of them.
-          height: (hiragana ? 200 : 190) + bottomInset,
+          height: (hiragana ? 200 : 190) + trayInset,
           child: hiragana
               ? KanaKeyboard(
                   value: _hiraganaBuffer,
-                  bottomInset: bottomInset,
+                  bottomInset: trayInset,
                   onChanged: (v) => setState(() => _hiraganaBuffer = v),
                 )
               // The romaji half used to open the phone's own keyboard.
@@ -770,7 +774,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
               // every phone.
               : RomajiKeyboard(
                   value: _romajiBuffer,
-                  bottomInset: bottomInset,
+                  bottomInset: trayInset,
                   onChanged: (v) => setState(() => _romajiBuffer = v),
                 ),
         ),
