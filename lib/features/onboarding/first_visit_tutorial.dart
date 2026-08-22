@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -48,8 +50,7 @@ class FirstVisitTutorial extends ConsumerStatefulWidget {
   final List<CoachStep> Function(AppStrings)? tour;
 
   @override
-  ConsumerState<FirstVisitTutorial> createState() =>
-      _FirstVisitTutorialState();
+  ConsumerState<FirstVisitTutorial> createState() => _FirstVisitTutorialState();
 }
 
 class _FirstVisitTutorialState extends ConsumerState<FirstVisitTutorial> {
@@ -87,6 +88,17 @@ class _FirstVisitTutorialState extends ConsumerState<FirstVisitTutorial> {
     }
     if (seen || !mounted) return;
 
+    // Wait out the screen's own entrance first.
+    //
+    // A coach mark measures where its target is on screen, and a screen
+    // that slides in from the right is genuinely somewhere else while it
+    // does so — measured mid-slide, the very first highlight landed a
+    // few hundred pixels off the edge, over nothing. The home tour never
+    // showed this because the home screen does not slide in; every
+    // module tour did.
+    await _entranceFinished();
+    if (!mounted) return;
+
     final tour = widget.tour;
     await Navigator.of(context).push(
       // Transparent for a coach-mark tour: the screen being explained
@@ -117,6 +129,25 @@ class _FirstVisitTutorialState extends ConsumerState<FirstVisitTutorial> {
     // next launch would override that choice.
     await repo.markSeen(widget.id);
     ref.invalidate(hasSeenTutorialProvider(widget.id));
+  }
+
+  /// Completes once this screen has finished animating into place.
+  Future<void> _entranceFinished() {
+    final animation = ModalRoute.of(context)?.animation;
+    if (animation == null || animation.status == AnimationStatus.completed) {
+      return Future.value();
+    }
+    final done = Completer<void>();
+    void listener(AnimationStatus status) {
+      if (status == AnimationStatus.completed ||
+          status == AnimationStatus.dismissed) {
+        animation.removeStatusListener(listener);
+        if (!done.isCompleted) done.complete();
+      }
+    }
+
+    animation.addStatusListener(listener);
+    return done.future;
   }
 
   @override

@@ -31,17 +31,19 @@ void main() {
                   child: SizedBox(height: 80, width: 200, child: Text(id)),
                 ),
               ElevatedButton(
-                onPressed: () => Navigator.of(context).push(
-                  PageRouteBuilder<void>(
-                    opaque: false,
-                    pageBuilder: (_, _, _) => CoachMarkTour(
-                      steps: steps,
-                      nextLabel: 'Lanjut',
-                      finishLabel: 'Siap!',
-                      skipLabel: 'Lewati',
-                    ),
-                  ),
-                ).then((_) => onDone?.call()),
+                onPressed: () => Navigator.of(context)
+                    .push(
+                      PageRouteBuilder<void>(
+                        opaque: false,
+                        pageBuilder: (_, _, _) => CoachMarkTour(
+                          steps: steps,
+                          nextLabel: 'Lanjut',
+                          finishLabel: 'Siap!',
+                          skipLabel: 'Lewati',
+                        ),
+                      ),
+                    )
+                    .then((_) => onDone?.call()),
                 child: const Text('start'),
               ),
             ],
@@ -51,11 +53,8 @@ void main() {
     );
   }
 
-  CoachStep step(String id, String message) => CoachStep(
-        anchorId: id,
-        message: message,
-        mood: MascotMood.explaining,
-      );
+  CoachStep step(String id, String message) =>
+      CoachStep(anchorId: id, message: message, mood: MascotMood.explaining);
 
   /// The mascot breathes on a loop, so `pumpAndSettle` never returns
   /// here — it waits for an animation that is designed never to stop.
@@ -73,10 +72,12 @@ void main() {
   setUp(TutorialAnchors.clear);
 
   testWidgets('points at the first thing before anything else', (tester) async {
-    await tester.pumpWidget(host(
-      anchors: ['a', 'b'],
-      steps: [step('a', 'first'), step('b', 'second')],
-    ));
+    await tester.pumpWidget(
+      host(
+        anchors: ['a', 'b'],
+        steps: [step('a', 'first'), step('b', 'second')],
+      ),
+    );
     await start(tester);
 
     expect(find.text('first'), findsOneWidget);
@@ -85,10 +86,12 @@ void main() {
   });
 
   testWidgets('advances from the button', (tester) async {
-    await tester.pumpWidget(host(
-      anchors: ['a', 'b'],
-      steps: [step('a', 'first'), step('b', 'second')],
-    ));
+    await tester.pumpWidget(
+      host(
+        anchors: ['a', 'b'],
+        steps: [step('a', 'first'), step('b', 'second')],
+      ),
+    );
     await start(tester);
 
     await tester.tap(find.text('Lanjut'));
@@ -98,16 +101,19 @@ void main() {
     expect(find.text('2'), findsOneWidget);
   });
 
-  testWidgets('advances from a tap on the speech bubble itself',
-      (tester) async {
+  testWidgets('advances from a tap on the speech bubble itself', (
+    tester,
+  ) async {
     // The bubble is not a button, so a plain Container there swallows the
     // tap and leaves the tour frozen with no sign anything is wrong. A
     // child aiming at the mascot's words rather than the small button is
     // the likeliest tap of all.
-    await tester.pumpWidget(host(
-      anchors: ['a', 'b'],
-      steps: [step('a', 'first'), step('b', 'second')],
-    ));
+    await tester.pumpWidget(
+      host(
+        anchors: ['a', 'b'],
+        steps: [step('a', 'first'), step('b', 'second')],
+      ),
+    );
     await start(tester);
 
     await tester.tap(find.text('first'));
@@ -117,10 +123,12 @@ void main() {
   });
 
   testWidgets('advances from a tap on the dimmed area', (tester) async {
-    await tester.pumpWidget(host(
-      anchors: ['a', 'b'],
-      steps: [step('a', 'first'), step('b', 'second')],
-    ));
+    await tester.pumpWidget(
+      host(
+        anchors: ['a', 'b'],
+        steps: [step('a', 'first'), step('b', 'second')],
+      ),
+    );
     await start(tester);
 
     // The far corner: dimming, no bubble, no badge, no button.
@@ -132,11 +140,13 @@ void main() {
 
   testWidgets('closes at the last step instead of running on', (tester) async {
     var closed = false;
-    await tester.pumpWidget(host(
-      anchors: ['a'],
-      steps: [step('a', 'only')],
-      onDone: () => closed = true,
-    ));
+    await tester.pumpWidget(
+      host(
+        anchors: ['a'],
+        steps: [step('a', 'only')],
+        onDone: () => closed = true,
+      ),
+    );
     await start(tester);
 
     expect(find.text('Siap!'), findsOneWidget, reason: 'last step');
@@ -149,11 +159,13 @@ void main() {
 
   testWidgets('can be left at any point', (tester) async {
     var closed = false;
-    await tester.pumpWidget(host(
-      anchors: ['a', 'b'],
-      steps: [step('a', 'first'), step('b', 'second')],
-      onDone: () => closed = true,
-    ));
+    await tester.pumpWidget(
+      host(
+        anchors: ['a', 'b'],
+        steps: [step('a', 'first'), step('b', 'second')],
+        onDone: () => closed = true,
+      ),
+    );
     await start(tester);
 
     await tester.tap(find.text('Lewati'));
@@ -162,15 +174,16 @@ void main() {
     expect(closed, isTrue);
   });
 
-  testWidgets('skips a step whose target is not on the screen',
-      (tester) async {
+  testWidgets('skips a step whose target is not on the screen', (tester) async {
     // A card removed from the home screen must not dim everything and
     // point at nothing. This is the whole reason steps name an id
     // instead of holding coordinates.
-    await tester.pumpWidget(host(
-      anchors: ['a', 'c'],
-      steps: [step('a', 'first'), step('b', 'gone'), step('c', 'third')],
-    ));
+    await tester.pumpWidget(
+      host(
+        anchors: ['a', 'c'],
+        steps: [step('a', 'first'), step('b', 'gone'), step('c', 'third')],
+      ),
+    );
     await start(tester);
 
     await tester.tap(find.text('Lanjut'));
@@ -180,21 +193,77 @@ void main() {
     expect(find.text('third'), findsOneWidget);
   });
 
-  testWidgets('closes rather than hanging when nothing can be found',
-      (tester) async {
+  testWidgets('closes rather than hanging when nothing can be found', (
+    tester,
+  ) async {
     var closed = false;
-    await tester.pumpWidget(host(
-      anchors: [],
-      steps: [step('a', 'first')],
-      onDone: () => closed = true,
-    ));
+    await tester.pumpWidget(
+      host(
+        anchors: [],
+        steps: [step('a', 'first')],
+        onDone: () => closed = true,
+      ),
+    );
     await start(tester);
 
     expect(closed, isTrue);
   });
 
-  testWidgets('an anchor leaving the tree does not take its id with it',
-      (tester) async {
+  testWidgets('skip moves aside when it would sit on the highlight', (
+    tester,
+  ) async {
+    // Every module tour ends on the quiz icon in the top-right of the app
+    // bar, which is exactly where skip is drawn.
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: AppTheme.light,
+        home: Builder(
+          builder: (context) => Scaffold(
+            body: Stack(
+              children: [
+                Positioned(
+                  top: 4,
+                  right: 4,
+                  child: TutorialTarget(
+                    id: 'corner',
+                    child: const SizedBox(height: 48, width: 48),
+                  ),
+                ),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.of(context).push(
+                      PageRouteBuilder<void>(
+                        opaque: false,
+                        pageBuilder: (_, _, _) => CoachMarkTour(
+                          steps: [step('corner', 'up here')],
+                          nextLabel: 'Lanjut',
+                          finishLabel: 'Siap!',
+                          skipLabel: 'Lewati',
+                        ),
+                      ),
+                    ),
+                    child: const Text('start'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    await start(tester);
+
+    final width = tester.view.physicalSize.width / tester.view.devicePixelRatio;
+    expect(
+      tester.getCenter(find.text('Lewati')).dx,
+      lessThan(width / 2),
+      reason: 'skip is still drawn over the highlight it should avoid',
+    );
+  });
+
+  testWidgets('an anchor leaving the tree does not take its id with it', (
+    tester,
+  ) async {
     // Two screens can hold the same id during a transition. The one
     // going away must not unregister the one arriving.
     final key = GlobalKey();

@@ -8,11 +8,7 @@ import '../../core/widgets/mascot_widget.dart';
 /// Wrap anything worth explaining and give it an id; a step naming that
 /// id will find it wherever it has ended up on screen.
 class TutorialTarget extends StatefulWidget {
-  const TutorialTarget({
-    super.key,
-    required this.id,
-    required this.child,
-  });
+  const TutorialTarget({super.key, required this.id, required this.child});
 
   final String id;
   final Widget child;
@@ -222,6 +218,9 @@ class _CoachMarkTourState extends State<CoachMarkTour> {
     // the top, above one near the bottom.
     final roomBelow = media.size.height - spot.bottom;
     final below = roomBelow > 360;
+    final skipClashes =
+        spot.top < media.padding.top + 140 &&
+        spot.right > media.size.width - 170;
 
     return Material(
       type: MaterialType.transparency,
@@ -240,11 +239,7 @@ class _CoachMarkTourState extends State<CoachMarkTour> {
               ),
             ),
           ),
-          _StepBadge(
-            number: _index + 1,
-            spot: spot,
-            palette: palette,
-          ),
+          _StepBadge(number: _index + 1, spot: spot, palette: palette),
           Positioned(
             left: 12,
             right: 12,
@@ -269,7 +264,12 @@ class _CoachMarkTourState extends State<CoachMarkTour> {
           ),
           Positioned(
             top: media.padding.top + 8,
-            right: 16,
+            // Out of the way when the thing being pointed at is in the
+            // same corner. The quiz icon every module tour ends on sits
+            // exactly here, and skip drawn over its highlight hides the
+            // one control the step is about.
+            left: skipClashes ? 16 : null,
+            right: skipClashes ? null : 16,
             child: TextButton(
               onPressed: () => Navigator.of(context).pop(),
               child: Text(
@@ -307,10 +307,14 @@ class _SpotlightPainter extends CustomPainter {
       Paint()..color = Colors.black.withValues(alpha: 0.72),
     );
 
-    _dashedRRect(canvas, hole, Paint()
-      ..color = highlight
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 3);
+    _dashedRRect(
+      canvas,
+      hole,
+      Paint()
+        ..color = highlight
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 3,
+    );
   }
 
   /// A dashed outline, walked along the rounded rect's own path so the
