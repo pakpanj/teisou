@@ -88,12 +88,16 @@ class KanaKeyboard extends ConsumerStatefulWidget {
   /// whichever one the current card happens to use.
   final KeyboardLook look;
 
+  /// Passed straight to [KeyboardPanel.bottomInset].
+  final double bottomInset;
+
   const KanaKeyboard({
     super.key,
     required this.value,
     required this.onChanged,
     this.clock = DateTime.now,
     this.look = const KeyboardLook(),
+    this.bottomInset = 0,
   });
 
   @override
@@ -252,6 +256,7 @@ class _KanaKeyboardState extends ConsumerState<KanaKeyboard> {
 
     return KeyboardPanel(
       look: widget.look,
+      bottomInset: widget.bottomInset,
       child: LayoutBuilder(
         builder: (context, constraints) {
           final keyWidth = constraints.maxWidth / layout.first.length;

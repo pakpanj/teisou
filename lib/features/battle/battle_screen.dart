@@ -363,6 +363,9 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
 
     final isAnswerer = match.currentAnswererUid == myUid;
     final palette = context.palette;
+    // Read once, here: the SafeArea below no longer takes it, so every
+    // branch of the column has to account for the navigation bar itself.
+    final bottomInset = MediaQuery.paddingOf(context).bottom;
     final tally = tallyScores(
       players: match.players,
       turnOrder: match.turnOrder,
@@ -377,18 +380,25 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
         .valueOrNull;
 
     return BattleBackdrop(
-      // **Bottom inset only, and only here.** Without it the column runs
-      // straight under the system navigation bar: the hand of cards
-      // ended 21 pixels below the app area, so the bottom of every card
-      // a player is meant to tap was drawn beneath the nav bar. It never
-      // logged an overflow — nothing overflowed, the screen is simply
-      // taller than the part of it you can see — and it took measuring
-      // the hand's bounds against the inset to catch.
+      // **The bottom inset is handled per branch, not by a SafeArea
+      // around the lot.** It has to be honoured — without it the column
+      // runs under the system navigation bar, and the hand of cards once
+      // ended 21 pixels below the visible area with the bottom of every
+      // tappable card drawn beneath it. Nothing overflows and nothing is
+      // logged; the screen is simply taller than the part you can see.
       //
-      // The top is left alone: the app bar already handles that edge,
-      // and adding it there would push the score panel down for nothing.
+      // But the keyboard wants the opposite: its tray should reach the
+      // very bottom of the glass, with the keys staying where they are.
+      // A SafeArea here would stop the tray short and leave a strip of
+      // the battle background showing under it. So the inset is passed
+      // to whichever branch is on screen — as padding for the ones that
+      // must clear the bar, as tray height for the keyboard.
+      //
+      // The top is left alone either way: the app bar already handles
+      // that edge.
       child: SafeArea(
         top: false,
+        bottom: false,
         child: Column(
           children: [
             BattleScorePanel(
@@ -489,15 +499,21 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
             ),
             const SizedBox(height: 12),
             if (choosing && iChoose)
-              _OpenPickerButton(
-                label: s.battleCardPickerTitle,
-                secondsLeft: _choiceSecondsLeft(match, ownerIsBot: ownerIsBot),
-                onTap: () =>
-                    _openCardPicker(match, myUid, cardData, ownerIsBot),
+              Padding(
+                padding: EdgeInsets.only(bottom: bottomInset),
+                child: _OpenPickerButton(
+                  label: s.battleCardPickerTitle,
+                  secondsLeft: _choiceSecondsLeft(
+                    match,
+                    ownerIsBot: ownerIsBot,
+                  ),
+                  onTap: () =>
+                      _openCardPicker(match, myUid, cardData, ownerIsBot),
+                ),
               )
             else if (choosing)
               Padding(
-                padding: const EdgeInsets.all(24),
+                padding: EdgeInsets.fromLTRB(24, 24, 24, 24 + bottomInset),
                 child: Text(
                   s.battleOpponentChoosing,
                   style: TextStyle(
@@ -506,10 +522,10 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
                 ),
               )
             else if (isAnswerer)
-              _buildAnswerInput(context, s, match, card)
+              _buildAnswerInput(context, s, match, card, bottomInset)
             else
               Padding(
-                padding: const EdgeInsets.all(24),
+                padding: EdgeInsets.fromLTRB(24, 24, 24, 24 + bottomInset),
                 child: Text(
                   s.battleWaitingForOpponent,
                   style: TextStyle(
@@ -706,93 +722,57 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     AppStrings s,
     BattleMatch match,
     BattleCard card,
+    double bottomInset,
   ) {
-    final palette = context.palette;
-    if (card.answerInHiragana) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16),
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              border: Border.all(color: palette.divider),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            width: double.infinity,
-            child: Text(
-              _hiraganaBuffer.isEmpty ? ' ' : _hiraganaBuffer,
-              style: const TextStyle(fontSize: 22),
-            ),
-          ),
-          const SizedBox(height: 8),
-          SizedBox(
-            // Four rows at a fingertip's height each. The old 220 was
-            // holding twelve rows and crushing every one of them.
-            height: 200,
-            child: KanaKeyboard(
-              value: _hiraganaBuffer,
-              onChanged: (v) => setState(() => _hiraganaBuffer = v),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: SizedBox(
-              width: double.infinity,
-              child: FilledButton(
-                onPressed: () => _submit(match, card),
-                child: Text(s.battleSendAnswer),
-              ),
-            ),
-          ),
-        ],
-      );
-    }
+    final hiragana = card.answerInHiragana;
+    final typed = hiragana ? _hiraganaBuffer : _romajiBuffer;
 
-    // The romaji half of the game used to open the phone's own keyboard.
-    // On a timed card that meant a prediction bar offering the answer,
-    // and a different amount of the card covered on every phone — plus
-    // the mode switched between two keyboards depending on which card
-    // came up. Same layout as the kana half now: what you typed, the
-    // keyboard, the send button.
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            border: Border.all(color: palette.divider),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          width: double.infinity,
-          child: Text(
-            _romajiBuffer.isEmpty ? s.battleRomajiHint : _romajiBuffer,
-            style: TextStyle(
-              fontSize: 22,
-              color: _romajiBuffer.isEmpty
-                  ? palette.textNavy.withValues(alpha: 0.4)
-                  : palette.textNavy,
-            ),
-          ),
-        ),
-        const SizedBox(height: 8),
-        SizedBox(
-          height: 190,
-          child: RomajiKeyboard(
-            value: _romajiBuffer,
-            onChanged: (v) => setState(() => _romajiBuffer = v),
-          ),
-        ),
+        // Send sits beside what was typed rather than under the
+        // keyboard. Down there it was the furthest thing on screen from
+        // both the answer and the eyes reading it, and on a timed card
+        // that is a long way to travel to finish. Beside the buffer it
+        // is where the answer already is.
         Padding(
-          padding: const EdgeInsets.all(12),
-          child: SizedBox(
-            width: double.infinity,
-            child: FilledButton(
-              onPressed: () => _submit(match, card),
-              child: Text(s.battleSendAnswer),
-            ),
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+          child: Row(
+            children: [
+              Expanded(
+                child: _AnswerField(
+                  text: typed,
+                  hint: hiragana ? '' : s.battleRomajiHint,
+                ),
+              ),
+              const SizedBox(width: 8),
+              FilledButton(
+                onPressed: () => _submit(match, card),
+                child: Text(s.battleSendAnswer),
+              ),
+            ],
           ),
+        ),
+        SizedBox(
+          // Four rows at a fingertip's height each for kana, three for
+          // romaji. The old 220 was holding twelve rows and crushing
+          // every one of them.
+          height: (hiragana ? 200 : 190) + bottomInset,
+          child: hiragana
+              ? KanaKeyboard(
+                  value: _hiraganaBuffer,
+                  bottomInset: bottomInset,
+                  onChanged: (v) => setState(() => _hiraganaBuffer = v),
+                )
+              // The romaji half used to open the phone's own keyboard.
+              // On a timed card that meant a prediction bar offering the
+              // answer, and a different amount of the card covered on
+              // every phone.
+              : RomajiKeyboard(
+                  value: _romajiBuffer,
+                  bottomInset: bottomInset,
+                  onChanged: (v) => setState(() => _romajiBuffer = v),
+                ),
         ),
       ],
     );
@@ -1021,6 +1001,42 @@ class _OpenPickerButton extends StatelessWidget {
               color: palette.cardWhite,
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// What has been typed so far, which neither keyboard shows itself.
+///
+/// Without it a player is typing blind: no way to see a wrong character,
+/// and no way to know a key registered at all.
+class _AnswerField extends StatelessWidget {
+  const _AnswerField({required this.text, required this.hint});
+
+  final String text;
+  final String hint;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.palette;
+    final empty = text.isEmpty;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      decoration: BoxDecoration(
+        color: palette.cardWhite,
+        border: Border.all(color: palette.divider),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Text(
+        empty ? (hint.isEmpty ? ' ' : hint) : text,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(
+          fontSize: 22,
+          color: empty
+              ? palette.textNavy.withValues(alpha: 0.4)
+              : palette.textNavy,
         ),
       ),
     );

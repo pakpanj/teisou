@@ -38,6 +38,7 @@ class RomajiKeyboard extends StatelessWidget {
     required this.value,
     required this.onChanged,
     this.look = const KeyboardLook(),
+    this.bottomInset = 0,
   });
 
   final String value;
@@ -52,6 +53,9 @@ class RomajiKeyboard extends StatelessWidget {
   /// a preset list and a picker, not a change here.
   final KeyboardLook look;
 
+  /// Passed straight to [KeyboardPanel.bottomInset].
+  final double bottomInset;
+
   /// QWERTY, not alphabetical.
   ///
   /// A learner typing `shi` here is learning where those letters live on
@@ -65,6 +69,7 @@ class RomajiKeyboard extends StatelessWidget {
     final palette = context.palette;
     return KeyboardPanel(
       look: look,
+      bottomInset: bottomInset,
       child: Column(
         children: [
           for (var i = 0; i < rows.length; i++)

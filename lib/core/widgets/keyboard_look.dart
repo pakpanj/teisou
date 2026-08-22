@@ -41,10 +41,26 @@ class KeyboardLook {
 /// outside the row it belongs to, and a Material here would also be
 /// picked up by every `find.byType(Material)` that means "a key".
 class KeyboardPanel extends StatelessWidget {
-  const KeyboardPanel({super.key, required this.look, required this.child});
+  const KeyboardPanel({
+    super.key,
+    required this.look,
+    required this.child,
+    this.bottomInset = 0,
+  });
 
   final KeyboardLook look;
   final Widget child;
+
+  /// Extra height below the keys, so the tray can run to the very bottom
+  /// of the screen while the keys stay exactly where they are.
+  ///
+  /// A caller whose keyboard sits at the bottom of the screen passes the
+  /// navigation bar's inset here **and stops letting a SafeArea eat it**;
+  /// anything else leaves it at zero. Deliberately not read from
+  /// `MediaQuery` in here: a keyboard with something underneath it — the
+  /// rank-skip exam has a button there — would grow a strip of dead tray
+  /// in the middle of the screen.
+  final double bottomInset;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +76,7 @@ class KeyboardPanel extends StatelessWidget {
       child: Padding(
         // Room for the keys' own 3px margins to sit inside the tray
         // rather than flush against its edge.
-        padding: const EdgeInsets.fromLTRB(5, 7, 5, 5),
+        padding: EdgeInsets.fromLTRB(5, 7, 5, 5 + bottomInset),
         child: child,
       ),
     );

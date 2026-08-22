@@ -125,6 +125,66 @@ void main() {
     expect(find.byType(KeyboardPanel), findsOneWidget);
   });
 
+  testWidgets('the tray can run to the bottom without moving the keys', (
+    tester,
+  ) async {
+    // The battle screen used to hand the whole column to a SafeArea, so
+    // the keyboard stopped short of the navigation bar and a strip of
+    // the battle background showed underneath it. Now the tray takes
+    // that inset as extra height instead — and the keys have to end up
+    // in exactly the same place either way, because that is where a
+    // thumb has learned they are.
+    const inset = 48.0;
+
+    Future<Rect> keysWith({
+      required double padding,
+      required double extra,
+    }) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AppTheme.light,
+          home: Scaffold(
+            body: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: padding),
+                child: SizedBox(
+                  height: 190 + extra,
+                  child: RomajiKeyboard(
+                    value: '',
+                    onChanged: (_) {},
+                    bottomInset: extra,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pump();
+      return tester.getRect(find.text('q'));
+    }
+
+    // Old shape: a SafeArea holds the keyboard clear of the bar.
+    final safeArea = await keysWith(padding: inset, extra: 0);
+    final safeAreaTray = tester.getRect(find.byType(KeyboardPanel));
+
+    // New shape: the keyboard runs to the bottom, tray padded instead.
+    final extended = await keysWith(padding: 0, extra: inset);
+    final extendedTray = tester.getRect(find.byType(KeyboardPanel));
+
+    expect(
+      extended.top,
+      closeTo(safeArea.top, 0.5),
+      reason: 'the keys moved when only the tray was supposed to',
+    );
+    expect(
+      extendedTray.bottom - safeAreaTray.bottom,
+      closeTo(inset, 0.5),
+      reason: 'the tray did not reach any further down than before',
+    );
+  });
+
   testWidgets('a skin can repaint the tray as well as the keys', (
     tester,
   ) async {
