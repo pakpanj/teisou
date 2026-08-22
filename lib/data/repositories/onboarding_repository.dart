@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// Which walkthrough — there is more than one now.
+/// Which walkthrough — there is one per module now.
 ///
 /// The home tour explains the app; Card Game Mode has rules of its own
 /// (a star ladder, cards locked to your tier, a ten-second window to
@@ -8,7 +8,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// it gets its own. Each is remembered separately: a learner who has
 /// used the app for a month and opens the card mode for the first time
 /// should still be shown how it works.
-enum TutorialId { home, cardGame }
+///
+/// The same holds for every module: what a learner needs told about
+/// Choukai (there is audio, and it plays on tap) has nothing to do with
+/// what they need told about Kanji (the character animates, and the quiz
+/// hides behind an icon), so each is remembered on its own.
+enum TutorialId {
+  home,
+  cardGame,
+  kana,
+  bab,
+  kotoba,
+  kanji,
+  kaiwa,
+  dokkai,
+  choukai,
+  bunpou,
+  particle,
+}
 
 extension TutorialIdX on TutorialId {
   /// The stored key.
@@ -25,6 +42,15 @@ extension TutorialIdX on TutorialId {
   String get prefsKey => switch (this) {
         TutorialId.home => 'onboarding_seen_v1',
         TutorialId.cardGame => 'tutorial_card_game_v1',
+        TutorialId.kana => 'tutorial_kana_v1',
+        TutorialId.bab => 'tutorial_bab_v1',
+        TutorialId.kotoba => 'tutorial_kotoba_v1',
+        TutorialId.kanji => 'tutorial_kanji_v1',
+        TutorialId.kaiwa => 'tutorial_kaiwa_v1',
+        TutorialId.dokkai => 'tutorial_dokkai_v1',
+        TutorialId.choukai => 'tutorial_choukai_v1',
+        TutorialId.bunpou => 'tutorial_bunpou_v1',
+        TutorialId.particle => 'tutorial_particle_v1',
       };
 }
 

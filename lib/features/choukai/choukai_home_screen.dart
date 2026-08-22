@@ -15,6 +15,10 @@ import '../../data/models/jlpt_level.dart';
 import 'choukai_level_screen.dart';
 import 'choukai_providers.dart';
 import '../../core/widgets/app_loading.dart';
+import '../../data/repositories/onboarding_repository.dart';
+import '../../features/onboarding/coach_mark_tour.dart';
+import '../../features/onboarding/first_visit_tutorial.dart';
+import '../../features/onboarding/module_tours.dart';
 
 /// Entry point for Choukai (listening comprehension) within Ujian: JLPT
 /// level picker, mirrors `DokkaiHomeScreen`. Every level currently shows
@@ -28,47 +32,55 @@ class ChoukaiHomeScreen extends ConsumerWidget {
     final levelsAsync = ref.watch(choukaiLevelsProvider);
     final s = ref.watch(appStringsProvider);
 
-    return Scaffold(
-      backgroundColor: context.palette.background,
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: context.palette.textNavy,
-        title: const ModuleTitlePlaque(title: 'Choukai'),
-      ),
-      body: levelsAsync.when(
-        data: (levels) => MascotAdvisor(
-          // Explaining, not reacting — this message tells the learner how
-          // the screen (and the score-based level lock) works, same
-          // MascotMood.explaining convention BabLevelScreen already uses.
-          mood: MascotMood.explaining,
-          message: s.choukaiGuideMessage,
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              const ModuleSkylineBanner(),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  20,
-                  20,
-                  20,
-                  MascotAdvisor.reservedBottomSpace,
-                ),
-                child: Column(
-                  children: [
-                    for (final level in levels) ...[
-                      _LevelCard(level: level),
-                      const SizedBox(height: 12),
-                    ],
-                  ],
-                ),
-              ),
-            ],
-          ),
+    return FirstVisitTutorial(
+      id: TutorialId.choukai,
+      tour: choukaiTourSteps,
+      child: Scaffold(
+        backgroundColor: context.palette.background,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          foregroundColor: context.palette.textNavy,
+          title: const ModuleTitlePlaque(title: 'Choukai'),
         ),
-        loading: () => const AppLoading(),
-        error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
+        body: levelsAsync.when(
+          data: (levels) => MascotAdvisor(
+            // Explaining, not reacting — this message tells the learner how
+            // the screen (and the score-based level lock) works, same
+            // MascotMood.explaining convention BabLevelScreen already uses.
+            mood: MascotMood.explaining,
+            message: s.choukaiGuideMessage,
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const ModuleSkylineBanner(),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    20,
+                    20,
+                    20,
+                    MascotAdvisor.reservedBottomSpace,
+                  ),
+                  child: Column(
+                    children: [
+                      for (var i = 0; i < levels.length; i++) ...[
+                        anchorFirst(
+                          i,
+                          kTutorialFirstItem,
+                          _LevelCard(level: levels[i]),
+                        ),
+                        const SizedBox(height: 12),
+                      ],
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          loading: () => const AppLoading(),
+          error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
+        ),
       ),
     );
   }
@@ -91,9 +103,7 @@ class _LevelCard extends ConsumerWidget {
       final previousLevel =
           JlptLevel.values[JlptLevel.values.indexOf(thisLevel) - 1];
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(s.choukaiLevelLockedReason(previousLevel.key)),
-        ),
+        SnackBar(content: Text(s.choukaiLevelLockedReason(previousLevel.key))),
       );
       return;
     }
@@ -114,9 +124,8 @@ class _LevelCard extends ConsumerWidget {
     // While the gate is still loading, treat every level but N5 as locked
     // rather than briefly open, same reasoning Bab's own level gate
     // documents.
-    final gateReached = gates
-            ?.firstWhere((g) => g.level == thisLevel)
-            .reachedByProgress ??
+    final gateReached =
+        gates?.firstWhere((g) => g.level == thisLevel).reachedByProgress ??
         (thisLevel == JlptLevel.n5);
     final available = level.available && gateReached;
 

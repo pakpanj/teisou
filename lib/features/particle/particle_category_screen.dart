@@ -12,6 +12,10 @@ import 'particle_detail_screen.dart';
 import 'particle_providers.dart';
 import 'particle_quiz_screen.dart';
 import '../../core/widgets/app_loading.dart';
+import '../../data/repositories/onboarding_repository.dart';
+import '../../features/onboarding/coach_mark_tour.dart';
+import '../../features/onboarding/first_visit_tutorial.dart';
+import '../../features/onboarding/module_tours.dart';
 
 enum _LearnFilter { semua, belum, sudah }
 
@@ -73,106 +77,122 @@ class _ParticleCategoryScreenState
         ref.watch(particleLearnedIdsProvider).valueOrNull ?? const <String>{};
     final s = ref.watch(appStringsProvider);
 
-    return Scaffold(
-      backgroundColor: context.palette.background,
-      appBar: AppBar(
-        title: Text(widget.categoryName),
-        actions: [
-          particleAsync.maybeWhen(
-            data: (all) {
-              final real = all.where((p) => !p.placeholder).toList();
-              if (real.length < 4) return const SizedBox.shrink();
-              return IconButton(
-                tooltip: s.startQuizTooltip,
-                icon: const Icon(Icons.quiz_outlined),
-                onPressed: () => _openQuiz(real),
-              );
-            },
-            orElse: () => const SizedBox.shrink(),
-          ),
-        ],
-      ),
-      body: particleAsync.when(
-        data: (all) {
-          final realTotal = all.where((p) => !p.placeholder).length;
-          if (realTotal == 0) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Text(
-                  s.noParticlesForCategory,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: context.palette.textNavy),
+    return FirstVisitTutorial(
+      id: TutorialId.particle,
+      tour: particleTourSteps,
+      child: Scaffold(
+        backgroundColor: context.palette.background,
+        appBar: AppBar(
+          title: Text(widget.categoryName),
+          actions: [
+            particleAsync.maybeWhen(
+              data: (all) {
+                final real = all.where((p) => !p.placeholder).toList();
+                if (real.length < 4) return const SizedBox.shrink();
+                return TutorialTarget(
+                  id: kTutorialQuizIcon,
+                  child: IconButton(
+                    tooltip: s.startQuizTooltip,
+                    icon: const Icon(Icons.quiz_outlined),
+                    onPressed: () => _openQuiz(real),
+                  ),
+                );
+              },
+              orElse: () => const SizedBox.shrink(),
+            ),
+          ],
+        ),
+        body: particleAsync.when(
+          data: (all) {
+            final realTotal = all.where((p) => !p.placeholder).length;
+            if (realTotal == 0) {
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Text(
+                    s.noParticlesForCategory,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: context.palette.textNavy),
+                  ),
                 ),
-              ),
-            );
-          }
-          final filtered = _applyFilters(all, learnedIds);
-          final learnedCount = all
-              .where((p) => !p.placeholder && learnedIds.contains(p.id))
-              .length;
-          return Column(
-            children: [
-              _ProgressBar(learned: learnedCount, total: realTotal, strings: s),
-              _FilterRow(
-                filter: _filter,
-                strings: s,
-                onFilterChanged: (v) => setState(() => _filter = v),
-              ),
-              Expanded(
-                child: AppRefreshIndicator(
-                  onRefresh: () {
-                    ref.invalidate(particleLearnedIdsProvider);
-                    return ref.refresh(
-                      particleByCategoryProvider(widget.category).future,
-                    );
-                  },
-                  child: filtered.isEmpty
-                      ? ListView(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 120),
-                              child: Center(
-                                child: Text(
-                                  s.noParticlesMatchFilter,
-                                  style: TextStyle(
-                                    color: context.palette.textNavy.withValues(
-                                      alpha: 0.6,
+              );
+            }
+            final filtered = _applyFilters(all, learnedIds);
+            final learnedCount = all
+                .where((p) => !p.placeholder && learnedIds.contains(p.id))
+                .length;
+            return Column(
+              children: [
+                _ProgressBar(
+                  learned: learnedCount,
+                  total: realTotal,
+                  strings: s,
+                ),
+                _FilterRow(
+                  filter: _filter,
+                  strings: s,
+                  onFilterChanged: (v) => setState(() => _filter = v),
+                ),
+                Expanded(
+                  child: AppRefreshIndicator(
+                    onRefresh: () {
+                      ref.invalidate(particleLearnedIdsProvider);
+                      return ref.refresh(
+                        particleByCategoryProvider(widget.category).future,
+                      );
+                    },
+                    child: filtered.isEmpty
+                        ? ListView(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 120),
+                                child: Center(
+                                  child: Text(
+                                    s.noParticlesMatchFilter,
+                                    style: TextStyle(
+                                      color: context.palette.textNavy
+                                          .withValues(alpha: 0.6),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )
-                      : ListView.separated(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          padding: const EdgeInsets.all(16),
-                          itemCount: filtered.length,
-                          separatorBuilder: (_, _) =>
-                              const SizedBox(height: 10),
-                          itemBuilder: (context, index) => _ParticleTile(
-                            entry: filtered[index],
-                            learned: learnedIds.contains(filtered[index].id),
-                            onTap: () => AppNavigator.slideFromRight(
-                              context,
-                              ParticleDetailScreen(
-                                entries: filtered,
-                                initialIndex: index,
-                                categoryName: widget.categoryName,
+                            ],
+                          )
+                        : ListView.separated(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            padding: const EdgeInsets.all(16),
+                            itemCount: filtered.length,
+                            separatorBuilder: (_, _) =>
+                                const SizedBox(height: 10),
+                            itemBuilder: (context, index) => anchorFirst(
+                              index,
+                              kTutorialFirstItem,
+                              _ParticleTile(
+                                entry: filtered[index],
+                                learned: learnedIds.contains(
+                                  filtered[index].id,
+                                ),
+                                onTap: () => AppNavigator.slideFromRight(
+                                  context,
+                                  ParticleDetailScreen(
+                                    entries: filtered,
+                                    initialIndex: index,
+                                    categoryName: widget.categoryName,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                  ),
                 ),
-              ),
-              const FreeTierBannerAd(),
-            ],
-          );
-        },
-        loading: () => const AppLoading(),
-        error: (e, _) => Center(child: Text(s.failedToLoadParticles(e))),
+                const FreeTierBannerAd(),
+              ],
+            );
+          },
+          loading: () => const AppLoading(),
+          error: (e, _) => Center(child: Text(s.failedToLoadParticles(e))),
+        ),
       ),
     );
   }
@@ -251,7 +271,9 @@ class _FilterRow extends StatelessWidget {
               child: ChoiceChip(
                 label: Text(labels[f]!),
                 selected: isSelected,
-                selectedColor: context.palette.primaryCoral.withValues(alpha: 0.2),
+                selectedColor: context.palette.primaryCoral.withValues(
+                  alpha: 0.2,
+                ),
                 labelStyle: TextStyle(
                   fontSize: 12,
                   color: isSelected

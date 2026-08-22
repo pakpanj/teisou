@@ -13,6 +13,10 @@ import 'kanji_providers.dart';
 import 'kanji_quiz_screen.dart';
 import 'kanji_word_detail_screen.dart';
 import '../../core/widgets/app_loading.dart';
+import '../../data/repositories/onboarding_repository.dart';
+import '../../features/onboarding/coach_mark_tour.dart';
+import '../../features/onboarding/first_visit_tutorial.dart';
+import '../../features/onboarding/module_tours.dart';
 
 enum _SortMode { urutan, goresan }
 
@@ -73,114 +77,130 @@ class _KanjiLevelScreenState extends ConsumerState<KanjiLevelScreen> {
         ref.watch(kanjiLearnedIdsProvider).valueOrNull ?? const <String>{};
     final s = ref.watch(appStringsProvider);
 
-    return Scaffold(
-      backgroundColor: context.palette.background,
-      appBar: AppBar(
-        title: Text(s.kanjiLevelAppBarTitle(widget.levelName)),
-        actions: [
-          kanjiAsync.maybeWhen(
-            data: (all) {
-              final real = all.where((k) => !k.placeholder).toList();
-              if (real.length < 4) return const SizedBox.shrink();
-              return IconButton(
-                tooltip: s.startQuizTooltip,
-                icon: const Icon(Icons.quiz_outlined),
-                onPressed: () => _openQuizPicker(real),
-              );
-            },
-            orElse: () => const SizedBox.shrink(),
-          ),
-        ],
-      ),
-      body: kanjiAsync.when(
-        data: (all) {
-          final realTotal = all.where((k) => !k.placeholder).length;
-          if (realTotal == 0) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Text(
-                  s.noKanjiForLevel,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: context.palette.textNavy),
+    return FirstVisitTutorial(
+      id: TutorialId.kanji,
+      tour: kanjiTourSteps,
+      child: Scaffold(
+        backgroundColor: context.palette.background,
+        appBar: AppBar(
+          title: Text(s.kanjiLevelAppBarTitle(widget.levelName)),
+          actions: [
+            kanjiAsync.maybeWhen(
+              data: (all) {
+                final real = all.where((k) => !k.placeholder).toList();
+                if (real.length < 4) return const SizedBox.shrink();
+                return TutorialTarget(
+                  id: kTutorialQuizIcon,
+                  child: IconButton(
+                    tooltip: s.startQuizTooltip,
+                    icon: const Icon(Icons.quiz_outlined),
+                    onPressed: () => _openQuizPicker(real),
+                  ),
+                );
+              },
+              orElse: () => const SizedBox.shrink(),
+            ),
+          ],
+        ),
+        body: kanjiAsync.when(
+          data: (all) {
+            final realTotal = all.where((k) => !k.placeholder).length;
+            if (realTotal == 0) {
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Text(
+                    s.noKanjiForLevel,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: context.palette.textNavy),
+                  ),
                 ),
-              ),
-            );
-          }
-          final filtered = _applyFilters(all, learnedIds);
-          final learnedCount = all
-              .where((k) => !k.placeholder && learnedIds.contains(k.id))
-              .length;
-          return Column(
-            children: [
-              _ProgressBar(learned: learnedCount, total: realTotal, strings: s),
-              _ControlsRow(
-                sort: _sort,
-                filter: _filter,
-                strings: s,
-                onSortChanged: (v) => setState(() => _sort = v),
-                onFilterChanged: (v) => setState(() => _filter = v),
-              ),
-              Expanded(
-                child: AppRefreshIndicator(
-                  onRefresh: () {
-                    ref.invalidate(kanjiLearnedIdsProvider);
-                    return ref.refresh(
-                      kanjiByLevelProvider(widget.jlptLevel).future,
-                    );
-                  },
-                  child: filtered.isEmpty
-                      ? ListView(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 120),
-                              child: Center(
-                                child: Text(
-                                  s.noKanjiMatchesFilter,
-                                  style: TextStyle(
-                                    color: context.palette.textNavy.withValues(
-                                      alpha: 0.6,
+              );
+            }
+            final filtered = _applyFilters(all, learnedIds);
+            final learnedCount = all
+                .where((k) => !k.placeholder && learnedIds.contains(k.id))
+                .length;
+            return Column(
+              children: [
+                _ProgressBar(
+                  learned: learnedCount,
+                  total: realTotal,
+                  strings: s,
+                ),
+                _ControlsRow(
+                  sort: _sort,
+                  filter: _filter,
+                  strings: s,
+                  onSortChanged: (v) => setState(() => _sort = v),
+                  onFilterChanged: (v) => setState(() => _filter = v),
+                ),
+                Expanded(
+                  child: AppRefreshIndicator(
+                    onRefresh: () {
+                      ref.invalidate(kanjiLearnedIdsProvider);
+                      return ref.refresh(
+                        kanjiByLevelProvider(widget.jlptLevel).future,
+                      );
+                    },
+                    child: filtered.isEmpty
+                        ? ListView(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 120),
+                                child: Center(
+                                  child: Text(
+                                    s.noKanjiMatchesFilter,
+                                    style: TextStyle(
+                                      color: context.palette.textNavy
+                                          .withValues(alpha: 0.6),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )
-                      : GridView.builder(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          padding: const EdgeInsets.all(16),
-                          itemCount: filtered.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 4,
-                                crossAxisSpacing: 12,
-                                mainAxisSpacing: 12,
-                                childAspectRatio: 0.85,
-                              ),
-                          itemBuilder: (context, index) => _KanjiTile(
-                            entry: filtered[index],
-                            learned: learnedIds.contains(filtered[index].id),
-                            onTap: () => AppNavigator.slideFromRight(
-                              context,
-                              KanjiWordDetailScreen(
-                                entries: filtered,
-                                initialIndex: index,
-                                levelName: widget.levelName,
+                            ],
+                          )
+                        : GridView.builder(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            padding: const EdgeInsets.all(16),
+                            itemCount: filtered.length,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 4,
+                                  crossAxisSpacing: 12,
+                                  mainAxisSpacing: 12,
+                                  childAspectRatio: 0.85,
+                                ),
+                            itemBuilder: (context, index) => anchorFirst(
+                              index,
+                              kTutorialFirstItem,
+                              _KanjiTile(
+                                entry: filtered[index],
+                                learned: learnedIds.contains(
+                                  filtered[index].id,
+                                ),
+                                onTap: () => AppNavigator.slideFromRight(
+                                  context,
+                                  KanjiWordDetailScreen(
+                                    entries: filtered,
+                                    initialIndex: index,
+                                    levelName: widget.levelName,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                  ),
                 ),
-              ),
-              const FreeTierBannerAd(),
-            ],
-          );
-        },
-        loading: () => const AppLoading(),
-        error: (e, _) => Center(
-          child: Text(ref.read(appStringsProvider).failedToLoadKanji(e)),
+                const FreeTierBannerAd(),
+              ],
+            );
+          },
+          loading: () => const AppLoading(),
+          error: (e, _) => Center(
+            child: Text(ref.read(appStringsProvider).failedToLoadKanji(e)),
+          ),
         ),
       ),
     );

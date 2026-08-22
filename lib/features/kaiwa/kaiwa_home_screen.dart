@@ -17,6 +17,10 @@ import '../../data/models/kaiwa_jlpt_level_info.dart';
 import 'kaiwa_level_screen.dart';
 import 'kaiwa_providers.dart';
 import '../../core/widgets/app_loading.dart';
+import '../../data/repositories/onboarding_repository.dart';
+import '../../features/onboarding/coach_mark_tour.dart';
+import '../../features/onboarding/first_visit_tutorial.dart';
+import '../../features/onboarding/module_tours.dart';
 
 /// Entry point for the Kaiwa module: JLPT level picker (N5-N1), mirroring
 /// `BunpouHomeScreen`. Only levels with a real dataset are tappable; the
@@ -31,59 +35,67 @@ class KaiwaHomeScreen extends ConsumerWidget {
     final levelsAsync = ref.watch(kaiwaLevelsProvider);
     final s = ref.watch(appStringsProvider);
 
-    return Scaffold(
-      backgroundColor: context.palette.background,
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: context.palette.textNavy,
-        title: const ModuleTitlePlaque(title: 'Kaiwa'),
-      ),
-      body: levelsAsync.when(
-        data: (levels) => Column(
-          children: [
-            Expanded(
-              // Explaining, not reacting — this message tells the learner
-              // how the screen (and the new level lock) works, same
-              // MascotMood.explaining convention BabLevelScreen already
-              // uses for the same kind of message.
-              child: MascotAdvisor(
-                mood: MascotMood.explaining,
-                message: s.kaiwaGuideMessage,
-                child: AppRefreshIndicator(
-                  onRefresh: () => ref.refresh(kaiwaLevelsProvider.future),
-                  child: ListView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    padding: EdgeInsets.zero,
-                    children: [
-                      const ModuleSkylineBanner(),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(
-                          20,
-                          20,
-                          20,
-                          MascotAdvisor.reservedBottomSpace,
-                        ),
-                        child: Column(
-                          children: [
-                            for (final level in levels) ...[
-                              _LevelCard(level: level),
-                              const SizedBox(height: 12),
+    return FirstVisitTutorial(
+      id: TutorialId.kaiwa,
+      tour: kaiwaTourSteps,
+      child: Scaffold(
+        backgroundColor: context.palette.background,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          foregroundColor: context.palette.textNavy,
+          title: const ModuleTitlePlaque(title: 'Kaiwa'),
+        ),
+        body: levelsAsync.when(
+          data: (levels) => Column(
+            children: [
+              Expanded(
+                // Explaining, not reacting — this message tells the learner
+                // how the screen (and the new level lock) works, same
+                // MascotMood.explaining convention BabLevelScreen already
+                // uses for the same kind of message.
+                child: MascotAdvisor(
+                  mood: MascotMood.explaining,
+                  message: s.kaiwaGuideMessage,
+                  child: AppRefreshIndicator(
+                    onRefresh: () => ref.refresh(kaiwaLevelsProvider.future),
+                    child: ListView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      padding: EdgeInsets.zero,
+                      children: [
+                        const ModuleSkylineBanner(),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(
+                            20,
+                            20,
+                            20,
+                            MascotAdvisor.reservedBottomSpace,
+                          ),
+                          child: Column(
+                            children: [
+                              for (var i = 0; i < levels.length; i++) ...[
+                                anchorFirst(
+                                  i,
+                                  kTutorialFirstItem,
+                                  _LevelCard(level: levels[i]),
+                                ),
+                                const SizedBox(height: 12),
+                              ],
                             ],
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            const FreeTierBannerAd(),
-          ],
+              const FreeTierBannerAd(),
+            ],
+          ),
+          loading: () => const AppLoading(),
+          error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
         ),
-        loading: () => const AppLoading(),
-        error: (e, _) => Center(child: Text(s.failedToLoadLevels(e))),
       ),
     );
   }
@@ -126,9 +138,8 @@ class _LevelCard extends ConsumerWidget {
     // While the gate is still loading, treat every level but N5 as locked
     // rather than briefly open, same reasoning Bab's own level gate
     // documents.
-    final gateReached = gates
-            ?.firstWhere((g) => g.level == thisLevel)
-            .reachedByProgress ??
+    final gateReached =
+        gates?.firstWhere((g) => g.level == thisLevel).reachedByProgress ??
         (thisLevel == JlptLevel.n5);
     final available = level.available && gateReached;
     final progress = available

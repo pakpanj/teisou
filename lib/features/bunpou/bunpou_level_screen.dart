@@ -13,6 +13,10 @@ import 'bunpou_detail_screen.dart';
 import 'bunpou_providers.dart';
 import 'bunpou_quiz_screen.dart';
 import '../../core/widgets/app_loading.dart';
+import '../../data/repositories/onboarding_repository.dart';
+import '../../features/onboarding/coach_mark_tour.dart';
+import '../../features/onboarding/first_visit_tutorial.dart';
+import '../../features/onboarding/module_tours.dart';
 
 enum _LearnFilter { semua, belum, sudah }
 
@@ -71,106 +75,122 @@ class _BunpouLevelScreenState extends ConsumerState<BunpouLevelScreen> {
         ref.watch(bunpouLearnedIdsProvider).valueOrNull ?? const <String>{};
     final s = ref.watch(appStringsProvider);
 
-    return Scaffold(
-      backgroundColor: context.palette.background,
-      appBar: AppBar(
-        title: Text(s.bunpouLevelTitle(widget.levelName)),
-        actions: [
-          bunpouAsync.maybeWhen(
-            data: (all) {
-              final real = all.where((b) => !b.placeholder).toList();
-              if (real.length < 4) return const SizedBox.shrink();
-              return IconButton(
-                tooltip: s.startQuizTooltip,
-                icon: const Icon(Icons.quiz_outlined),
-                onPressed: () => _openQuizPicker(real),
-              );
-            },
-            orElse: () => const SizedBox.shrink(),
-          ),
-        ],
-      ),
-      body: bunpouAsync.when(
-        data: (all) {
-          final realTotal = all.where((b) => !b.placeholder).length;
-          if (realTotal == 0) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Text(
-                  s.noBunpouForLevel,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: context.palette.textNavy),
+    return FirstVisitTutorial(
+      id: TutorialId.bunpou,
+      tour: bunpouTourSteps,
+      child: Scaffold(
+        backgroundColor: context.palette.background,
+        appBar: AppBar(
+          title: Text(s.bunpouLevelTitle(widget.levelName)),
+          actions: [
+            bunpouAsync.maybeWhen(
+              data: (all) {
+                final real = all.where((b) => !b.placeholder).toList();
+                if (real.length < 4) return const SizedBox.shrink();
+                return TutorialTarget(
+                  id: kTutorialQuizIcon,
+                  child: IconButton(
+                    tooltip: s.startQuizTooltip,
+                    icon: const Icon(Icons.quiz_outlined),
+                    onPressed: () => _openQuizPicker(real),
+                  ),
+                );
+              },
+              orElse: () => const SizedBox.shrink(),
+            ),
+          ],
+        ),
+        body: bunpouAsync.when(
+          data: (all) {
+            final realTotal = all.where((b) => !b.placeholder).length;
+            if (realTotal == 0) {
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Text(
+                    s.noBunpouForLevel,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: context.palette.textNavy),
+                  ),
                 ),
-              ),
-            );
-          }
-          final filtered = _applyFilters(all, learnedIds);
-          final learnedCount = all
-              .where((b) => !b.placeholder && learnedIds.contains(b.id))
-              .length;
-          return Column(
-            children: [
-              _ProgressBar(learned: learnedCount, total: realTotal, strings: s),
-              _FilterRow(
-                filter: _filter,
-                strings: s,
-                onFilterChanged: (v) => setState(() => _filter = v),
-              ),
-              Expanded(
-                child: AppRefreshIndicator(
-                  onRefresh: () {
-                    ref.invalidate(bunpouLearnedIdsProvider);
-                    return ref.refresh(
-                      bunpouByLevelProvider(widget.jlptLevel).future,
-                    );
-                  },
-                  child: filtered.isEmpty
-                      ? ListView(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 120),
-                              child: Center(
-                                child: Text(
-                                  s.noBunpouMatchesFilter,
-                                  style: TextStyle(
-                                    color: context.palette.textNavy.withValues(
-                                      alpha: 0.6,
+              );
+            }
+            final filtered = _applyFilters(all, learnedIds);
+            final learnedCount = all
+                .where((b) => !b.placeholder && learnedIds.contains(b.id))
+                .length;
+            return Column(
+              children: [
+                _ProgressBar(
+                  learned: learnedCount,
+                  total: realTotal,
+                  strings: s,
+                ),
+                _FilterRow(
+                  filter: _filter,
+                  strings: s,
+                  onFilterChanged: (v) => setState(() => _filter = v),
+                ),
+                Expanded(
+                  child: AppRefreshIndicator(
+                    onRefresh: () {
+                      ref.invalidate(bunpouLearnedIdsProvider);
+                      return ref.refresh(
+                        bunpouByLevelProvider(widget.jlptLevel).future,
+                      );
+                    },
+                    child: filtered.isEmpty
+                        ? ListView(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 120),
+                                child: Center(
+                                  child: Text(
+                                    s.noBunpouMatchesFilter,
+                                    style: TextStyle(
+                                      color: context.palette.textNavy
+                                          .withValues(alpha: 0.6),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )
-                      : ListView.separated(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          padding: const EdgeInsets.all(16),
-                          itemCount: filtered.length,
-                          separatorBuilder: (_, _) =>
-                              const SizedBox(height: 10),
-                          itemBuilder: (context, index) => _BunpouTile(
-                            entry: filtered[index],
-                            learned: learnedIds.contains(filtered[index].id),
-                            onTap: () => AppNavigator.slideFromRight(
-                              context,
-                              BunpouDetailScreen(
-                                entries: filtered,
-                                initialIndex: index,
-                                levelName: widget.levelName,
+                            ],
+                          )
+                        : ListView.separated(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            padding: const EdgeInsets.all(16),
+                            itemCount: filtered.length,
+                            separatorBuilder: (_, _) =>
+                                const SizedBox(height: 10),
+                            itemBuilder: (context, index) => anchorFirst(
+                              index,
+                              kTutorialFirstItem,
+                              _BunpouTile(
+                                entry: filtered[index],
+                                learned: learnedIds.contains(
+                                  filtered[index].id,
+                                ),
+                                onTap: () => AppNavigator.slideFromRight(
+                                  context,
+                                  BunpouDetailScreen(
+                                    entries: filtered,
+                                    initialIndex: index,
+                                    levelName: widget.levelName,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                  ),
                 ),
-              ),
-              const FreeTierBannerAd(),
-            ],
-          );
-        },
-        loading: () => const AppLoading(),
-        error: (e, _) => Center(child: Text(s.failedToLoadBunpou(e))),
+                const FreeTierBannerAd(),
+              ],
+            );
+          },
+          loading: () => const AppLoading(),
+          error: (e, _) => Center(child: Text(s.failedToLoadBunpou(e))),
+        ),
       ),
     );
   }
@@ -249,7 +269,9 @@ class _FilterRow extends StatelessWidget {
               child: ChoiceChip(
                 label: Text(labels[f]!),
                 selected: isSelected,
-                selectedColor: context.palette.primaryCoral.withValues(alpha: 0.2),
+                selectedColor: context.palette.primaryCoral.withValues(
+                  alpha: 0.2,
+                ),
                 labelStyle: TextStyle(
                   fontSize: 12,
                   color: isSelected
@@ -304,7 +326,9 @@ class _BunpouTile extends ConsumerWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      entry.localizedMeaning(ref.watch(appStringsProvider).language),
+                      entry.localizedMeaning(
+                        ref.watch(appStringsProvider).language,
+                      ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

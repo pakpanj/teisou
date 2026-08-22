@@ -11,6 +11,10 @@ import '../../core/widgets/banner_ad_widget.dart';
 import '../../data/models/kana_character.dart';
 import '../../data/models/kana_type.dart';
 import 'flashcard_screen.dart';
+import '../../data/repositories/onboarding_repository.dart';
+import '../../features/onboarding/coach_mark_tour.dart';
+import '../../features/onboarding/first_visit_tutorial.dart';
+import '../../features/onboarding/module_tours.dart';
 
 /// The gojuon chart, and the way into the flashcards.
 ///
@@ -39,47 +43,51 @@ class KanaTableScreen extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
     final kanaAsync = ref.watch(kanaListProvider(type));
 
-    return Scaffold(
-      backgroundColor: context.palette.background,
-      appBar: AppBar(
-        title: Text(_isHiragana ? 'Hiragana' : 'Katakana'),
-      ),
-      body: kanaAsync.when(
-        data: (all) => Column(
-          children: [
-            Expanded(
-              child: AppRefreshIndicator(
-                onRefresh: () => ref.refresh(kanaListProvider(type).future),
-                child: ListView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
-                  children: [
-                    Text(
-                      s.kanaTableHint,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: context.palette.textNavy
-                            .withValues(alpha: 0.7),
+    return FirstVisitTutorial(
+      id: TutorialId.kana,
+      tour: kanaTourSteps,
+      child: Scaffold(
+        backgroundColor: context.palette.background,
+        appBar: AppBar(title: Text(_isHiragana ? 'Hiragana' : 'Katakana')),
+        body: kanaAsync.when(
+          data: (all) => Column(
+            children: [
+              Expanded(
+                child: AppRefreshIndicator(
+                  onRefresh: () => ref.refresh(kanaListProvider(type).future),
+                  child: ListView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+                    children: [
+                      Text(
+                        s.kanaTableHint,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: context.palette.textNavy.withValues(
+                            alpha: 0.7,
+                          ),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    for (final section in _sectionsOf(all, s))
-                      _Section(
-                        section: section,
-                        type: type,
-                        all: all,
-                        strings: s,
-                        columnCount: _columnCountOf(all),
-                      ),
-                  ],
+                      const SizedBox(height: 16),
+                      for (final (i, section) in _sectionsOf(all, s).indexed)
+                        _Section(
+                          first: i == 0,
+                          section: section,
+                          type: type,
+                          all: all,
+                          strings: s,
+                          columnCount: _columnCountOf(all),
+                        ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const FreeTierBannerAd(),
-          ],
+              const FreeTierBannerAd(),
+            ],
+          ),
+          loading: () => const AppLoading(),
+          error: (_, _) => const SizedBox.shrink(),
         ),
-        loading: () => const AppLoading(),
-        error: (_, _) => const SizedBox.shrink(),
       ),
     );
   }
@@ -101,10 +109,7 @@ class KanaTableScreen extends ConsumerWidget {
   /// characters, 11-15 the 25 that add a tenten or a maru, and 16 upwards the
   /// 33 two-character combinations. Anything past the last named block still
   /// lands in it, so a future row cannot silently vanish from the chart.
-  static List<_KanaSection> _sectionsOf(
-    List<KanaCharacter> all,
-    AppStrings s,
-  ) {
+  static List<_KanaSection> _sectionsOf(List<KanaCharacter> all, AppStrings s) {
     List<KanaCharacter> between(int from, int to) =>
         all.where((k) => k.row >= from && k.row <= to).toList();
 
@@ -124,6 +129,12 @@ class _KanaSection {
 }
 
 class _Section extends StatelessWidget {
+  /// Whether this is the gojūon block at the top. Only that one carries
+  /// the tour's anchor — the tour points at a row of characters, and
+  /// every section having the same id would leave it pointing at
+  /// whichever section built last, usually one off the bottom.
+  final bool first;
+
   final _KanaSection section;
   final KanaType type;
   final List<KanaCharacter> all;
@@ -131,6 +142,7 @@ class _Section extends StatelessWidget {
   final int columnCount;
 
   const _Section({
+    required this.first,
     required this.section,
     required this.type,
     required this.all,
@@ -168,18 +180,20 @@ class _Section extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          for (final row in rows)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Row(
-                children: [
-                  for (var column = 0; column < columnCount; column++) ...[
-                    if (column > 0) const SizedBox(width: 8),
-                    Expanded(
-                      child: _cellAt(row, column, type, all),
-                    ),
+          for (final (i, row) in rows.indexed)
+            anchorWhen(
+              first && i == 0,
+              kTutorialFirstItem,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Row(
+                  children: [
+                    for (var column = 0; column < columnCount; column++) ...[
+                      if (column > 0) const SizedBox(width: 8),
+                      Expanded(child: _cellAt(row, column, type, all)),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
         ],
@@ -187,12 +201,7 @@ class _Section extends StatelessWidget {
     );
   }
 
-  Widget _cellAt(
-    int row,
-    int column,
-    KanaType type,
-    List<KanaCharacter> all,
-  ) {
+  Widget _cellAt(int row, int column, KanaType type, List<KanaCharacter> all) {
     for (final kana in section.characters) {
       if (kana.row == row && kana.column == column) {
         return _KanaCell(kana: kana, type: type, all: all);
@@ -209,11 +218,7 @@ class _KanaCell extends StatelessWidget {
   final KanaType type;
   final List<KanaCharacter> all;
 
-  const _KanaCell({
-    required this.kana,
-    required this.type,
-    required this.all,
-  });
+  const _KanaCell({required this.kana, required this.type, required this.all});
 
   @override
   Widget build(BuildContext context) {
@@ -233,10 +238,7 @@ class _KanaCell extends StatelessWidget {
           // from, so its index is simply this character's place in it.
           onTap: () => AppNavigator.slideFromRight(
             context,
-            FlashcardScreen(
-              type: type,
-              initialIndex: all.indexOf(kana),
-            ),
+            FlashcardScreen(type: type, initialIndex: all.indexOf(kana)),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

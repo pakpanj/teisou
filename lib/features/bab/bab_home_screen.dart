@@ -15,6 +15,10 @@ import 'bab_level_screen.dart';
 import 'bab_providers.dart';
 import 'widgets/bab_decorative_background.dart';
 import 'widgets/bab_ring_badge.dart';
+import '../../data/repositories/onboarding_repository.dart';
+import '../../features/onboarding/coach_mark_tour.dart';
+import '../../features/onboarding/first_visit_tutorial.dart';
+import '../../features/onboarding/module_tours.dart';
 
 /// Entry point for the Bab curriculum: a JLPT level picker, mirroring
 /// [KanjiHomeScreen]'s shape. Unlike Kanji/Kotoba/Bunpou/Kaiwa, Bab has no
@@ -29,53 +33,65 @@ class BabHomeScreen extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
     final nextUp = ref.watch(babNextUpProvider).valueOrNull;
 
-    return Scaffold(
-      backgroundColor: context.palette.background,
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: context.palette.textNavy,
-        title: ModuleTitlePlaque(title: s.babTitle),
-      ),
-      body: BabDecorativeBackground(
-        child: MascotAdvisor(
-          // Waving when there is nothing in progress — it is a greeting,
-          // not a reaction. Excited once there is somewhere to carry on to.
-          mood: nextUp != null ? MascotMood.excited : MascotMood.waving,
-          message: nextUp != null
-              ? s.babGuideContinue(nextUp.localizedTitle(s.language))
-              : s.babGuideIntro,
-          child: AppRefreshIndicator(
-            onRefresh: () async {
-              ref.invalidate(babAllProvider);
-              ref.invalidate(babNextUpProvider);
-            },
-            child: ListView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.zero,
-              children: [
-                const ModuleSkylineBanner(),
-                Padding(
-                  // Bottom padding clears the advisor standing over this
-                  // list, so the last level card can always be scrolled
-                  // out from under it.
-                  padding: const EdgeInsets.fromLTRB(
-                    20,
-                    20,
-                    20,
-                    MascotAdvisor.reservedBottomSpace,
-                  ),
-                  child: Column(
-                    children: [
-                      for (final level in JlptLevel.values) ...[
-                        _LevelCard(level: level),
-                        const SizedBox(height: 12),
+    return FirstVisitTutorial(
+      id: TutorialId.bab,
+      tour: babTourSteps,
+      child: Scaffold(
+        backgroundColor: context.palette.background,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          foregroundColor: context.palette.textNavy,
+          title: ModuleTitlePlaque(title: s.babTitle),
+        ),
+        body: BabDecorativeBackground(
+          child: MascotAdvisor(
+            // Waving when there is nothing in progress — it is a greeting,
+            // not a reaction. Excited once there is somewhere to carry on to.
+            mood: nextUp != null ? MascotMood.excited : MascotMood.waving,
+            message: nextUp != null
+                ? s.babGuideContinue(nextUp.localizedTitle(s.language))
+                : s.babGuideIntro,
+            child: AppRefreshIndicator(
+              onRefresh: () async {
+                ref.invalidate(babAllProvider);
+                ref.invalidate(babNextUpProvider);
+              },
+              child: ListView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
+                children: [
+                  const ModuleSkylineBanner(),
+                  Padding(
+                    // Bottom padding clears the advisor standing over this
+                    // list, so the last level card can always be scrolled
+                    // out from under it.
+                    padding: const EdgeInsets.fromLTRB(
+                      20,
+                      20,
+                      20,
+                      MascotAdvisor.reservedBottomSpace,
+                    ),
+                    child: Column(
+                      children: [
+                        for (var i = 0; i < JlptLevel.values.length; i++) ...[
+                          // The first two chapters carry the tour: N5 is
+                          // the one to start, N4 is the first locked one —
+                          // and a locked card with no explanation reads as
+                          // a broken card.
+                          anchorWhen(
+                            i < 2,
+                            i == 0 ? kTutorialFirstItem : kTutorialSecondItem,
+                            _LevelCard(level: JlptLevel.values[i]),
+                          ),
+                          const SizedBox(height: 12),
+                        ],
                       ],
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -225,11 +241,10 @@ class _LevelCard extends ConsumerWidget {
                                       child: LinearProgressIndicator(
                                         value: standing.total > 0
                                             ? standing.completed /
-                                                standing.total
+                                                  standing.total
                                             : 0,
                                         minHeight: 6,
-                                        backgroundColor:
-                                            surface.progressTrack,
+                                        backgroundColor: surface.progressTrack,
                                         color: surface.primaryCoral,
                                       ),
                                     ),

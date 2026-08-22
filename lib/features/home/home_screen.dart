@@ -224,7 +224,10 @@ class _HomeTabBody extends ConsumerWidget {
                             child: const HomeHeroScene(),
                           ),
                           const SizedBox(height: 16),
-                          const HomeLevelCard(),
+                          const TutorialTarget(
+                            id: kTutorialLevel,
+                            child: HomeLevelCard(),
+                          ),
                           const SizedBox(height: 24),
                           const ModulesSection(),
                           const SizedBox(height: 24),
@@ -310,7 +313,10 @@ class _BottomNavBar extends ConsumerWidget {
               onTap: () => onTap(index),
               borderRadius: BorderRadius.circular(20),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 4,
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -324,7 +330,9 @@ class _BottomNavBar extends ConsumerWidget {
                       style: TextStyle(
                         color: color,
                         fontSize: 12,
-                        fontWeight: active ? FontWeight.bold : FontWeight.normal,
+                        fontWeight: active
+                            ? FontWeight.bold
+                            : FontWeight.normal,
                       ),
                     ),
                     const SizedBox(height: 3),

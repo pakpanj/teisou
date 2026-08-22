@@ -74,6 +74,21 @@ class TutorialAnchors {
   static void clear() => _keys.clear();
 }
 
+/// Marks only the first item of a list.
+///
+/// A tour that wants to say "tap one of these" needs somewhere to point,
+/// and every tile registering the same id would leave the anchor pointing
+/// at whichever one happened to build last — in a lazy list, usually one
+/// off the bottom of the screen.
+Widget anchorFirst(int index, String id, Widget child) =>
+    anchorWhen(index == 0, id, child);
+
+/// [anchorFirst] for lists whose "first" is not simply index zero — the
+/// first row of the first section of a table, say, or the first card that
+/// is still locked.
+Widget anchorWhen(bool here, String id, Widget child) =>
+    here ? TutorialTarget(id: id, child: child) : child;
+
 /// One thing the mascot points at.
 class CoachStep {
   const CoachStep({

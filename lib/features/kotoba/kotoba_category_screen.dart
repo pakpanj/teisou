@@ -16,6 +16,10 @@ import 'kotoba_quiz_screen.dart';
 import 'kotoba_word_detail_screen.dart';
 import 'widgets/kotoba_image.dart';
 import '../../core/widgets/app_loading.dart';
+import '../../data/repositories/onboarding_repository.dart';
+import '../../features/onboarding/coach_mark_tour.dart';
+import '../../features/onboarding/first_visit_tutorial.dart';
+import '../../features/onboarding/module_tours.dart';
 
 /// Word list for one Kotoba category. Tapping a word opens
 /// [KotobaWordDetailScreen] with the whole list + tapped index, so
@@ -32,89 +36,104 @@ class KotobaCategoryScreen extends ConsumerWidget {
         ref.watch(kotobaLearnedIdsProvider).valueOrNull ?? const <String>{};
     final s = ref.watch(appStringsProvider);
 
-    return Scaffold(
-      backgroundColor: context.palette.background,
-      appBar: AppBar(
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(category.icon, style: const TextStyle(fontSize: 18)),
-            const SizedBox(width: 8),
-            Text(KotobaCategoryI18n.name(category.name, s.language)),
+    return FirstVisitTutorial(
+      id: TutorialId.kotoba,
+      tour: kotobaTourSteps,
+      child: Scaffold(
+        backgroundColor: context.palette.background,
+        appBar: AppBar(
+          title: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(category.icon, style: const TextStyle(fontSize: 18)),
+              const SizedBox(width: 8),
+              Text(KotobaCategoryI18n.name(category.name, s.language)),
+            ],
+          ),
+          actions: [
+            wordsAsync.maybeWhen(
+              data: (words) => words.length < 4
+                  ? const SizedBox.shrink()
+                  : TutorialTarget(
+                      id: kTutorialQuizIcon,
+                      child: IconButton(
+                        tooltip: s.startQuizTooltip,
+                        icon: const Icon(Icons.quiz_outlined),
+                        onPressed: () => AppNavigator.slideFromRight(
+                          context,
+                          KotobaQuizScreen(category: category, words: words),
+                        ),
+                      ),
+                    ),
+              orElse: () => const SizedBox.shrink(),
+            ),
           ],
         ),
-        actions: [
-          wordsAsync.maybeWhen(
-            data: (words) => words.length < 4
-                ? const SizedBox.shrink()
-                : IconButton(
-                    tooltip: s.startQuizTooltip,
-                    icon: const Icon(Icons.quiz_outlined),
-                    onPressed: () => AppNavigator.slideFromRight(
-                      context,
-                      KotobaQuizScreen(category: category, words: words),
-                    ),
+        body: wordsAsync.when(
+          data: (words) {
+            if (words.isEmpty) {
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Text(
+                    s.noWordsForCategory,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: context.palette.textNavy),
                   ),
-            orElse: () => const SizedBox.shrink(),
-          ),
-        ],
-      ),
-      body: wordsAsync.when(
-        data: (words) {
-          if (words.isEmpty) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Text(
-                  s.noWordsForCategory,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: context.palette.textNavy),
                 ),
-              ),
-            );
-          }
-          final learnedCount = words
-              .where((w) => learnedIds.contains(w.id))
-              .length;
-          return Column(
-            children: [
-              _ProgressBar(learned: learnedCount, total: words.length, strings: s),
-              Expanded(
-                child: AppRefreshIndicator(
-                  onRefresh: () {
-                    ref.invalidate(kotobaLearnedIdsProvider);
-                    return ref.refresh(
-                      kotobaVocabCategoryProvider(category.id).future,
-                    );
-                  },
-                  child: ListView.separated(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    padding: const EdgeInsets.all(16),
-                    itemCount: words.length,
-                    separatorBuilder: (_, _) => const SizedBox(height: 8),
-                    itemBuilder: (context, index) => _WordTile(
-                      entry: words[index],
-                      categoryIcon: category.icon,
-                      language: s.language,
-                      learned: learnedIds.contains(words[index].id),
-                      onTap: () => AppNavigator.slideFromRight(
-                        context,
-                        KotobaWordDetailScreen(
-                          entries: words,
-                          initialIndex: index,
+              );
+            }
+            final learnedCount = words
+                .where((w) => learnedIds.contains(w.id))
+                .length;
+            return Column(
+              children: [
+                _ProgressBar(
+                  learned: learnedCount,
+                  total: words.length,
+                  strings: s,
+                ),
+                Expanded(
+                  child: AppRefreshIndicator(
+                    onRefresh: () {
+                      ref.invalidate(kotobaLearnedIdsProvider);
+                      return ref.refresh(
+                        kotobaVocabCategoryProvider(category.id).future,
+                      );
+                    },
+                    child: ListView.separated(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      padding: const EdgeInsets.all(16),
+                      itemCount: words.length,
+                      separatorBuilder: (_, _) => const SizedBox(height: 8),
+                      itemBuilder: (context, index) => anchorFirst(
+                        index,
+                        kTutorialFirstItem,
+                        _WordTile(
+                          entry: words[index],
                           categoryIcon: category.icon,
+                          language: s.language,
+                          learned: learnedIds.contains(words[index].id),
+                          onTap: () => AppNavigator.slideFromRight(
+                            context,
+                            KotobaWordDetailScreen(
+                              entries: words,
+                              initialIndex: index,
+                              categoryIcon: category.icon,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const FreeTierBannerAd(),
-            ],
-          );
-        },
-        loading: () => const AppLoading(),
-        error: (e, _) => Center(child: Text(s.failedToLoadWords(e))),
+                const FreeTierBannerAd(),
+              ],
+            );
+          },
+          loading: () => const AppLoading(),
+          error: (e, _) => Center(child: Text(s.failedToLoadWords(e))),
+        ),
       ),
     );
   }

@@ -937,9 +937,97 @@ class AppStrings {
         'Exams live here — take one to see how far you have come.',
       );
   String get tourProfile => _t(
-        'Semua progresmu tersimpan di sini. Selamat belajar!',
-        'All your progress is kept here. Enjoy!',
+        'Fotomu, peringkat, dan lencana ada di sini. Selamat belajar!',
+        'Your picture, rank and badges live here. Enjoy!',
       );
+  String get tourLevel => _t(
+        'Ini levelmu. Tiap kali belajar, poinmu bertambah di sini.',
+        'This is your level. Every lesson adds points here.',
+      );
+  String get tourKatakana => _t(
+        'Katakana dipakai untuk kata serapan — pelajari setelah Hiragana.',
+        'Katakana is for borrowed words — learn it after Hiragana.',
+      );
+  String get tourKotoba => _t(
+        'Kosakata dikelompokkan per tema, lengkap dengan gambarnya.',
+        'Vocabulary grouped by theme, pictures included.',
+      );
+  String get tourKanji => _t(
+        'Kanji per level JLPT, ada animasi urutan menulisnya.',
+        'Kanji by JLPT level, with stroke-order animation.',
+      );
+  String get tourKaiwa => _t(
+        'Latihan percakapan: dengarkan, lalu pilih jawabannya.',
+        'Conversation practice: listen, then pick your reply.',
+      );
+  String get tourDokkai => _t(
+        'Latihan membaca. Bacaannya pendek-pendek, jangan takut!',
+        'Reading practice. The passages are short — do not worry!',
+      );
+  String get tourChoukai => _t(
+        'Latihan mendengar. Pasang headset biar lebih jelas.',
+        'Listening practice. Headphones help.',
+      );
+  String get tourBunpou => _t(
+        'Pola tata bahasa, dari N5 sampai N1.',
+        'Grammar patterns, from N5 all the way to N1.',
+      );
+  String get tourPartikel => _t(
+        'Partikel seperti は dan を dijelaskan di sini, ada mini-gamenya.',
+        'Particles like は and を are explained here, with a mini-game.',
+      );
+  // --- Tur di dalam tiap modul -----------------------------------------
+  //
+  // Satu tur pendek per modul, ditampilkan saat modul itu pertama kali
+  // dibuka. Isinya sengaja hanya hal yang tidak bisa ditebak dari
+  // layarnya sendiri — ikon kuis yang bersembunyi di pojok, kartu yang
+  // terkunci sampai kartu sebelumnya selesai, tombol suara yang tidak
+  // terlihat seperti tombol.
+  String get tourQuizIcon => _t(
+        'Kalau sudah hafal, uji dirimu lewat ikon ini.',
+        'Once you know them, test yourself with this icon.',
+      );
+  String get tourKanjiTile => _t(
+        'Ketuk satu kanji untuk melihat animasi urutan menulisnya.',
+        'Tap a kanji to watch its stroke order drawn out.',
+      );
+  String get tourKotobaTile => _t(
+        'Tiap kata ada gambar, contoh kalimat, dan cara bacanya.',
+        'Every word has a picture, an example sentence and its reading.',
+      );
+  String get tourBunpouTile => _t(
+        'Tiap pola dijelaskan lengkap dengan contoh kalimatnya.',
+        'Every pattern comes with an explanation and example sentences.',
+      );
+  String get tourPartikelTile => _t(
+        'Satu partikel bisa punya banyak fungsi — ketuk untuk membukanya.',
+        'One particle can have several jobs — tap to open them up.',
+      );
+  String get tourKanaTile => _t(
+        'Ketuk satu huruf untuk mendengar bunyinya dan melihat cara tulisnya.',
+        'Tap a character to hear it and see how it is written.',
+      );
+  String get tourBabActive => _t(
+        'Mulai dari Bab N5. Selesaikan dulu, bab berikutnya akan terbuka.',
+        'Start at chapter N5. Finish it and the next one unlocks.',
+      );
+  String get tourBabLocked => _t(
+        'Yang bergembok belum terbuka — bukan rusak, tinggal dikerjakan.',
+        'The locked ones are not broken — they are simply still ahead.',
+      );
+  String get tourKaiwaLevel => _t(
+        'Pilih level dulu, lalu tema percakapannya.',
+        'Pick a level first, then a conversation theme.',
+      );
+  String get tourDokkaiLevel => _t(
+        'Baca teksnya, lalu jawab pertanyaannya. Boleh dibaca ulang.',
+        'Read the passage, then answer. You can always read it again.',
+      );
+  String get tourChoukaiLevel => _t(
+        'Dengarkan rekamannya, lalu pilih jawabannya. Bisa diulang.',
+        'Listen to the audio, then pick your answer. You can replay it.',
+      );
+
   String get tourNext => _t('Lanjut', 'Next');
   String get tourFinish => _t('Siap!', 'Got it!');
 

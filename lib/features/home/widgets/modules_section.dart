@@ -66,31 +66,34 @@ class ModulesSection extends ConsumerWidget {
               child: TutorialTarget(
                 id: kTutorialHiragana,
                 child: _KanaHeroCard(
-                emoji: 'あ',
-                backgroundColor: palette.hiraganaCardBg,
-                accent: palette.primaryCoral,
-                title: s.learnHiragana,
-                subtitle: s.basicChars46,
-                torii: true,
-                onTap: () => AppNavigator.slideFromRight(
-                  context,
-                  const KanaTableScreen(type: KanaType.hiragana),
+                  emoji: 'あ',
+                  backgroundColor: palette.hiraganaCardBg,
+                  accent: palette.primaryCoral,
+                  title: s.learnHiragana,
+                  subtitle: s.basicChars46,
+                  torii: true,
+                  onTap: () => AppNavigator.slideFromRight(
+                    context,
+                    const KanaTableScreen(type: KanaType.hiragana),
+                  ),
                 ),
-              ),
               ),
             ),
             const SizedBox(width: 12),
             Expanded(
-              child: _KanaHeroCard(
-                emoji: 'ア',
-                backgroundColor: palette.katakanaCardBg,
-                accent: palette.secondaryBlue,
-                title: s.learnKatakana,
-                subtitle: s.basicChars46,
-                torii: false,
-                onTap: () => AppNavigator.slideFromRight(
-                  context,
-                  const KanaTableScreen(type: KanaType.katakana),
+              child: TutorialTarget(
+                id: kTutorialKatakana,
+                child: _KanaHeroCard(
+                  emoji: 'ア',
+                  backgroundColor: palette.katakanaCardBg,
+                  accent: palette.secondaryBlue,
+                  title: s.learnKatakana,
+                  subtitle: s.basicChars46,
+                  torii: false,
+                  onTap: () => AppNavigator.slideFromRight(
+                    context,
+                    const KanaTableScreen(type: KanaType.katakana),
+                  ),
                 ),
               ),
             ),
@@ -115,10 +118,7 @@ class ModulesSection extends ConsumerWidget {
           color: palette.secondaryBlue,
         ),
         const SizedBox(height: 12),
-        const TutorialTarget(
-          id: kTutorialCardGame,
-          child: _CardGameCard(),
-        ),
+        const TutorialTarget(id: kTutorialCardGame, child: _CardGameCard()),
         const SizedBox(height: 28),
         // Vocabulary/kanji and practice modules side by side, matching how
         // often a learner reaches for one right after the other — not just
@@ -138,30 +138,36 @@ class ModulesSection extends ConsumerWidget {
                     iconAsset: 'icon_kosakata_kanji_header',
                   ),
                   const SizedBox(height: 12),
-                  _AvailableModuleCard(
-                    dense: true,
-                    emoji: '📚',
-                    iconAsset: 'icon_kosakata',
-                    backgroundColor: palette.katakanaCardBg,
-                    iconColor: palette.secondaryBlue,
-                    title: s.kotobaTitle,
-                    subtitle: s.kotobaSubtitle,
-                    onTap: () => AppNavigator.slideFromRight(
-                      context,
-                      const KotobaHomeScreen(),
+                  TutorialTarget(
+                    id: kTutorialKotoba,
+                    child: _AvailableModuleCard(
+                      dense: true,
+                      emoji: '📚',
+                      iconAsset: 'icon_kosakata',
+                      backgroundColor: palette.katakanaCardBg,
+                      iconColor: palette.secondaryBlue,
+                      title: s.kotobaTitle,
+                      subtitle: s.kotobaSubtitle,
+                      onTap: () => AppNavigator.slideFromRight(
+                        context,
+                        const KotobaHomeScreen(),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10),
-                  _AvailableModuleCard(
-                    dense: true,
-                    emoji: '字',
-                    backgroundColor: palette.tertiaryAmberCardBg,
-                    iconColor: palette.tertiaryAmber,
-                    title: s.kanjiTitle,
-                    subtitle: s.kanjiSubtitle,
-                    onTap: () => AppNavigator.slideFromRight(
-                      context,
-                      const KanjiHomeScreen(),
+                  TutorialTarget(
+                    id: kTutorialKanji,
+                    child: _AvailableModuleCard(
+                      dense: true,
+                      emoji: '字',
+                      backgroundColor: palette.tertiaryAmberCardBg,
+                      iconColor: palette.tertiaryAmber,
+                      title: s.kanjiTitle,
+                      subtitle: s.kanjiSubtitle,
+                      onTap: () => AppNavigator.slideFromRight(
+                        context,
+                        const KanjiHomeScreen(),
+                      ),
                     ),
                   ),
                 ],
@@ -188,18 +194,21 @@ class ModulesSection extends ConsumerWidget {
                     iconAsset: 'icon_kaiwa_latihan',
                   ),
                   const SizedBox(height: 12),
-                  _PremiumModuleCard(
-                    moduleId: PremiumModules.kaiwa,
-                    dense: true,
-                    emoji: '💬',
-                    iconAsset: 'icon_kaiwa_latihan',
-                    backgroundColor: palette.hiraganaCardBg,
-                    iconColor: palette.primaryCoral,
-                    title: s.kaiwaTitle,
-                    subtitle: s.kaiwaSubtitle,
-                    onOpen: () => AppNavigator.slideFromRight(
-                      context,
-                      const KaiwaHomeScreen(),
+                  TutorialTarget(
+                    id: kTutorialKaiwa,
+                    child: _PremiumModuleCard(
+                      moduleId: PremiumModules.kaiwa,
+                      dense: true,
+                      emoji: '💬',
+                      iconAsset: 'icon_kaiwa_latihan',
+                      backgroundColor: palette.hiraganaCardBg,
+                      iconColor: palette.primaryCoral,
+                      title: s.kaiwaTitle,
+                      subtitle: s.kaiwaSubtitle,
+                      onOpen: () => AppNavigator.slideFromRight(
+                        context,
+                        const KaiwaHomeScreen(),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -207,16 +216,19 @@ class ModulesSection extends ConsumerWidget {
                   // is reading-practice material (500 real passages), not
                   // an exam; it sat oddly next to Kana/Kanji-Kombinasi
                   // before.
-                  _AvailableModuleCard(
-                    dense: true,
-                    emoji: '読',
-                    backgroundColor: palette.katakanaCardBg,
-                    iconColor: palette.secondaryBlue,
-                    title: 'Dokkai',
-                    subtitle: s.dokkaiCategorySubtitle,
-                    onTap: () => AppNavigator.slideFromRight(
-                      context,
-                      const DokkaiHomeScreen(),
+                  TutorialTarget(
+                    id: kTutorialDokkai,
+                    child: _AvailableModuleCard(
+                      dense: true,
+                      emoji: '読',
+                      backgroundColor: palette.katakanaCardBg,
+                      iconColor: palette.secondaryBlue,
+                      title: 'Dokkai',
+                      subtitle: s.dokkaiCategorySubtitle,
+                      onTap: () => AppNavigator.slideFromRight(
+                        context,
+                        const DokkaiHomeScreen(),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -226,17 +238,20 @@ class ModulesSection extends ConsumerWidget {
                   // list, so the module was orphaned. Listening is roughly
                   // a quarter of every JLPT paper, so it belongs next to
                   // Dokkai as practice material rather than hidden.
-                  _PremiumModuleCard(
-                    moduleId: PremiumModules.choukai,
-                    dense: true,
-                    emoji: '聴',
-                    backgroundColor: palette.hiraganaCardBg,
-                    iconColor: palette.primaryCoral,
-                    title: 'Choukai',
-                    subtitle: s.choukaiCategorySubtitle,
-                    onOpen: () => AppNavigator.slideFromRight(
-                      context,
-                      const ChoukaiHomeScreen(),
+                  TutorialTarget(
+                    id: kTutorialChoukai,
+                    child: _PremiumModuleCard(
+                      moduleId: PremiumModules.choukai,
+                      dense: true,
+                      emoji: '聴',
+                      backgroundColor: palette.hiraganaCardBg,
+                      iconColor: palette.primaryCoral,
+                      title: 'Choukai',
+                      subtitle: s.choukaiCategorySubtitle,
+                      onOpen: () => AppNavigator.slideFromRight(
+                        context,
+                        const ChoukaiHomeScreen(),
+                      ),
                     ),
                   ),
                 ],
@@ -245,29 +260,39 @@ class ModulesSection extends ConsumerWidget {
           ],
         ),
         const SizedBox(height: 28),
-        _SectionHeader(s.sectionGrammar, emoji: '文', color: palette.primaryCoral),
-        const SizedBox(height: 12),
-        _AvailableModuleCard(
+        _SectionHeader(
+          s.sectionGrammar,
           emoji: '文',
-          backgroundColor: palette.hiraganaCardBg,
-          iconColor: palette.primaryCoral,
-          title: s.bunpouTitle,
-          subtitle: s.bunpouSubtitle,
-          onTap: () => AppNavigator.slideFromRight(
-            context,
-            const BunpouHomeScreen(),
+          color: palette.primaryCoral,
+        ),
+        const SizedBox(height: 12),
+        TutorialTarget(
+          id: kTutorialBunpou,
+          child: _AvailableModuleCard(
+            emoji: '文',
+            backgroundColor: palette.hiraganaCardBg,
+            iconColor: palette.primaryCoral,
+            title: s.bunpouTitle,
+            subtitle: s.bunpouSubtitle,
+            onTap: () =>
+                AppNavigator.slideFromRight(context, const BunpouHomeScreen()),
           ),
         ),
         const SizedBox(height: 12),
-        _PremiumModuleCard(
-          moduleId: PremiumModules.particle,
-          emoji: 'を',
-          backgroundColor: palette.tertiaryAmberCardBg,
-          iconColor: palette.tertiaryAmber,
-          title: s.particleTitle,
-          subtitle: s.particleSubtitle,
-          onOpen: () =>
-              AppNavigator.slideFromRight(context, const ParticleHomeScreen()),
+        TutorialTarget(
+          id: kTutorialPartikel,
+          child: _PremiumModuleCard(
+            moduleId: PremiumModules.particle,
+            emoji: 'を',
+            backgroundColor: palette.tertiaryAmberCardBg,
+            iconColor: palette.tertiaryAmber,
+            title: s.particleTitle,
+            subtitle: s.particleSubtitle,
+            onOpen: () => AppNavigator.slideFromRight(
+              context,
+              const ParticleHomeScreen(),
+            ),
+          ),
         ),
         const SizedBox(height: 28),
         _SectionHeader(
@@ -353,10 +378,7 @@ class _CardGameCard extends ConsumerWidget {
       iconColor: palette.secondaryBlue,
       title: s.cardGameTitle,
       subtitle: subtitle,
-      onTap: () => AppNavigator.slideFromRight(
-        context,
-        const CardGameShell(),
-      ),
+      onTap: () => AppNavigator.slideFromRight(context, const CardGameShell()),
     );
   }
 }
@@ -378,7 +400,8 @@ class _BabCurriculumCard extends ConsumerWidget {
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () => AppNavigator.slideFromRight(context, const BabHomeScreen()),
+        onTap: () =>
+            AppNavigator.slideFromRight(context, const BabHomeScreen()),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: MascotGuideBubble(
@@ -501,7 +524,8 @@ class _KanaHeroCard extends StatelessWidget {
                         (true, false) => 'assets/banners/hiragana_card.png',
                         (true, true) => 'assets/banners/hiragana_card_dark.png',
                         (false, false) => 'assets/banners/katakana_card.png',
-                        (false, true) => 'assets/banners/katakana_card_dark.png',
+                        (false, true) =>
+                          'assets/banners/katakana_card_dark.png',
                       },
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) => CustomPaint(
@@ -521,8 +545,10 @@ class _KanaHeroCard extends StatelessWidget {
                       Container(
                         width: 44,
                         height: 44,
-                        decoration:
-                            BoxDecoration(color: accent, shape: BoxShape.circle),
+                        decoration: BoxDecoration(
+                          color: accent,
+                          shape: BoxShape.circle,
+                        ),
                         alignment: Alignment.center,
                         child: Text(
                           emoji,
@@ -546,7 +572,9 @@ class _KanaHeroCard extends StatelessWidget {
                         subtitle,
                         style: TextStyle(
                           fontSize: 12,
-                          color: context.palette.textNavy.withValues(alpha: 0.6),
+                          color: context.palette.textNavy.withValues(
+                            alpha: 0.6,
+                          ),
                         ),
                       ),
                     ],
@@ -614,7 +642,11 @@ class _KanaSceneryPainter extends CustomPainter {
         final tierWidth = 26.0 - tier * 6;
         final tierY = baseY - tier * 15;
         canvas.drawRect(
-          Rect.fromCenter(center: Offset(x, tierY), width: tierWidth, height: 4),
+          Rect.fromCenter(
+            center: Offset(x, tierY),
+            width: tierWidth,
+            height: 4,
+          ),
           fill,
         );
         canvas.drawRect(
@@ -681,7 +713,10 @@ class _AvailableModuleCard extends StatelessWidget {
               Container(
                 width: iconSize,
                 height: iconSize,
-                decoration: BoxDecoration(color: iconColor, shape: BoxShape.circle),
+                decoration: BoxDecoration(
+                  color: iconColor,
+                  shape: BoxShape.circle,
+                ),
                 alignment: Alignment.center,
                 child: iconAsset != null
                     ? Padding(
@@ -735,7 +770,11 @@ class _AvailableModuleCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right, color: iconColor, size: dense ? 18 : 24),
+              Icon(
+                Icons.chevron_right,
+                color: iconColor,
+                size: dense ? 18 : 24,
+              ),
             ],
           ),
         ),
@@ -772,9 +811,9 @@ class _LockedModuleCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(reason)),
-        ),
+        onTap: () => ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(reason))),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
@@ -814,7 +853,9 @@ class _LockedModuleCard extends StatelessWidget {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: context.palette.freeBadgeGrey.withValues(alpha: 0.2),
+                            color: context.palette.freeBadgeGrey.withValues(
+                              alpha: 0.2,
+                            ),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
@@ -859,10 +900,7 @@ class _ComingSoonCard extends StatelessWidget {
     this.dense = false,
   });
 
-  static const _icons = {
-    'picture_learning': '🖼️',
-    'video_learning': '🎬',
-  };
+  static const _icons = {'picture_learning': '🖼️', 'video_learning': '🎬'};
 
   static const _iconAssets = {
     'picture_learning': 'icon_belajar_gambar',
@@ -998,7 +1036,6 @@ class _ComingSoonCard extends StatelessWidget {
   }
 }
 
-
 /// A module that costs money, on the list beside the ones that do not.
 ///
 /// **Shown rather than hidden, and tappable rather than inert.** A
@@ -1068,10 +1105,8 @@ class _PremiumModuleCard extends ConsumerWidget {
           subtitle: subtitle,
           onTap: () => Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => PaywallScreen(
-                moduleId: moduleId,
-                moduleTitle: title,
-              ),
+              builder: (_) =>
+                  PaywallScreen(moduleId: moduleId, moduleTitle: title),
             ),
           ),
         ),
