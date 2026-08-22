@@ -19,9 +19,9 @@ class KotobaDetailScreen extends ConsumerWidget {
         .read(progressRepositoryProvider)
         .saveDictionaryItem(uid, itemId: entry.id, type: 'kotoba');
     if (!context.mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(s.savedToLearningList)),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(s.savedToLearningList)));
   }
 
   @override
@@ -63,7 +63,9 @@ class KotobaDetailScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              '${entry.reading} (${entry.romaji})',
+              entry.readingIfDifferent == null
+                  ? entry.romaji
+                  : '${entry.reading} (${entry.romaji})',
               style: TextStyle(
                 fontSize: 15,
                 color: context.palette.textNavy.withValues(alpha: 0.7),
@@ -91,10 +93,12 @@ class KotobaDetailScreen extends ConsumerWidget {
               const SizedBox(height: 8),
               _SentenceCard(
                 japanese: entry.sentenceExample!.japanese,
-                translation:
-                    entry.sentenceExample!.localizedTranslation(s.language),
-                onSpeak: () =>
-                    ref.read(ttsServiceProvider).speak(entry.sentenceExample!.japanese),
+                translation: entry.sentenceExample!.localizedTranslation(
+                  s.language,
+                ),
+                onSpeak: () => ref
+                    .read(ttsServiceProvider)
+                    .speak(entry.sentenceExample!.japanese),
               ),
             ],
           ],
@@ -173,7 +177,13 @@ class _SentenceCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(japanese, style: TextStyle(color: context.palette.textNavy, fontSize: 15)),
+                Text(
+                  japanese,
+                  style: TextStyle(
+                    color: context.palette.textNavy,
+                    fontSize: 15,
+                  ),
+                ),
                 const SizedBox(height: 4),
                 Text(
                   translation,

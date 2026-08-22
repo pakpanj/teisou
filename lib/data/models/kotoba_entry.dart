@@ -62,6 +62,18 @@ class KotobaEntry {
     this.placeholder = false,
   });
 
+  /// What a list row or a heading shows as the word itself: the kanji
+  /// when there is one, otherwise the kana it is written in.
+  String get displayWord => kanji ?? word;
+
+  /// The reading, or null when it would only repeat [displayWord].
+  ///
+  /// A kana-only word — けしゴム, ノート, ワイファイ — *is* its own reading,
+  /// so printing both under each other showed the same characters twice
+  /// on 150 of the 1682 entries and made the row look like it had a bug
+  /// in it. The romaji still earns its place there; the kana does not.
+  String? get readingIfDifferent => reading == displayWord ? null : reading;
+
   /// Convenience accessor for callers that only ever want one example.
   SentenceExample? get sentenceExample =>
       sentenceExamples.isEmpty ? null : sentenceExamples.first;
@@ -69,9 +81,11 @@ class KotobaEntry {
   /// [meaningEn] when [language] is English and a translation exists yet,
   /// else the original Indonesian [meaning].
   String localizedMeaning(AppLanguage language) =>
-      language == AppLanguage.english && meaningEn != null && meaningEn!.isNotEmpty
-          ? meaningEn!
-          : meaning;
+      language == AppLanguage.english &&
+          meaningEn != null &&
+          meaningEn!.isNotEmpty
+      ? meaningEn!
+      : meaning;
 
   /// [registers] with each value swapped for its [registersEn] counterpart
   /// when [language] is English and a translation exists for that key,
@@ -88,16 +102,15 @@ class KotobaEntry {
 
   static Map<SpeechRegister, String> _parseRegisters(
     Map<String, dynamic> raw,
-  ) =>
-      {
-        for (final entry in raw.entries)
-          if (entry.key == 'casual')
-            SpeechRegister.casual: entry.value as String
-          else if (entry.key == 'formal')
-            SpeechRegister.formal: entry.value as String
-          else if (entry.key == 'keigo')
-            SpeechRegister.keigo: entry.value as String,
-      };
+  ) => {
+    for (final entry in raw.entries)
+      if (entry.key == 'casual')
+        SpeechRegister.casual: entry.value as String
+      else if (entry.key == 'formal')
+        SpeechRegister.formal: entry.value as String
+      else if (entry.key == 'keigo')
+        SpeechRegister.keigo: entry.value as String,
+  };
 
   factory KotobaEntry.fromJson(Map<String, dynamic> json) {
     final rawRegisters = json['registers'] as Map<String, dynamic>? ?? {};
@@ -131,7 +144,9 @@ class KotobaEntry {
       category: json['category'] as String? ?? '',
       wordType: json['wordType'] as String? ?? '',
       registers: _parseRegisters(rawRegisters),
-      registersEn: rawRegistersEn != null ? _parseRegisters(rawRegistersEn) : null,
+      registersEn: rawRegistersEn != null
+          ? _parseRegisters(rawRegistersEn)
+          : null,
       sentenceExamples: examples,
       imageAsset: json['imageAsset'] as String?,
       imagePath: json['imagePath'] as String?,

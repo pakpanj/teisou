@@ -34,19 +34,19 @@ class _SearchResult {
   final DictionaryWord? dictionary;
 
   const _SearchResult.kanji(KanjiEntry entry)
-      : kanji = entry,
-        kotoba = null,
-        dictionary = null;
+    : kanji = entry,
+      kotoba = null,
+      dictionary = null;
 
   const _SearchResult.kotoba(KotobaEntry entry)
-      : kanji = null,
-        kotoba = entry,
-        dictionary = null;
+    : kanji = null,
+      kotoba = entry,
+      dictionary = null;
 
   const _SearchResult.dictionary(DictionaryWord entry)
-      : kanji = null,
-        kotoba = null,
-        dictionary = entry;
+    : kanji = null,
+      kotoba = null,
+      dictionary = entry;
 }
 
 class SearchScreen extends ConsumerStatefulWidget {
@@ -83,7 +83,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   void _refresh() {
     final shouldSearch =
-        _query.isNotEmpty || _typeFilter != _TypeFilter.all || _levelFilter != null;
+        _query.isNotEmpty ||
+        _typeFilter != _TypeFilter.all ||
+        _levelFilter != null;
     _resultsFuture = shouldSearch ? _runSearch() : null;
   }
 
@@ -97,7 +99,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           : await kanjiRepo.search(_query);
       results.addAll(
         kanjiResults
-            .where((k) => !k.placeholder && (_levelFilter == null || k.jlptLevel == _levelFilter))
+            .where(
+              (k) =>
+                  !k.placeholder &&
+                  (_levelFilter == null || k.jlptLevel == _levelFilter),
+            )
             .map(_SearchResult.kanji),
       );
     }
@@ -129,9 +135,15 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   void _openResult(_SearchResult result) {
     if (result.kanji != null) {
-      AppNavigator.slideFromRight(context, KanjiDetailScreen(entry: result.kanji!));
+      AppNavigator.slideFromRight(
+        context,
+        KanjiDetailScreen(entry: result.kanji!),
+      );
     } else if (result.kotoba != null) {
-      AppNavigator.slideFromRight(context, KotobaDetailScreen(entry: result.kotoba!));
+      AppNavigator.slideFromRight(
+        context,
+        KotobaDetailScreen(entry: result.kotoba!),
+      );
     } else {
       AppNavigator.slideFromRight(
         context,
@@ -264,9 +276,13 @@ class _FilterChipsRow<T> extends StatelessWidget {
             child: ChoiceChip(
               label: Text(labelOf(v)),
               selected: isSelected,
-              selectedColor: context.palette.primaryCoral.withValues(alpha: 0.2),
+              selectedColor: context.palette.primaryCoral.withValues(
+                alpha: 0.2,
+              ),
               labelStyle: TextStyle(
-                color: isSelected ? context.palette.primaryCoral : context.palette.textNavy,
+                color: isSelected
+                    ? context.palette.primaryCoral
+                    : context.palette.textNavy,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),
               onSelected: (_) => onSelected(v),
@@ -352,7 +368,10 @@ class _KanjiResultTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(reading, style: TextStyle(color: context.palette.textNavy)),
+                    Text(
+                      reading,
+                      style: TextStyle(color: context.palette.textNavy),
+                    ),
                     Text(
                       entry.localizedMeanings(language).join(', '),
                       overflow: TextOverflow.ellipsis,
@@ -409,7 +428,10 @@ class _KotobaResultTile extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${entry.reading} · ${entry.localizedMeaning(language)}',
+                      entry.readingIfDifferent == null
+                          ? entry.localizedMeaning(language)
+                          : '${entry.reading} · '
+                                '${entry.localizedMeaning(language)}',
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
@@ -464,7 +486,9 @@ class _DictionaryResultTile extends ConsumerWidget {
                       ),
                     ),
                     Text(
-                      '${entry.reading} · ${entry.meaning}',
+                      entry.readingIfDifferent == null
+                          ? entry.meaning
+                          : '${entry.reading} · ${entry.meaning}',
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
@@ -475,10 +499,7 @@ class _DictionaryResultTile extends ConsumerWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 4,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
                   color: context.palette.freeBadgeGrey.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10),

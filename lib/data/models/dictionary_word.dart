@@ -21,10 +21,10 @@ class DictionaryExample {
 
   String localizedTranslation(AppLanguage language) =>
       language == AppLanguage.english &&
-              translationEn != null &&
-              translationEn!.isNotEmpty
-          ? translationEn!
-          : translation;
+          translationEn != null &&
+          translationEn!.isNotEmpty
+      ? translationEn!
+      : translation;
 
   factory DictionaryExample.fromJson(Map<String, dynamic> json) {
     return DictionaryExample(
@@ -64,13 +64,19 @@ class DictionaryWord {
   /// the original Indonesian [meaning].
   String localizedMeaning(AppLanguage language) =>
       language == AppLanguage.english &&
-              meaningEn != null &&
-              meaningEn!.isNotEmpty
-          ? meaningEn!
-          : meaning;
+          meaningEn != null &&
+          meaningEn!.isNotEmpty
+      ? meaningEn!
+      : meaning;
 
   /// The word as displayed — kanji form when available, else the reading.
   String get display => kanji ?? reading;
+
+  /// The reading, or null when it would only repeat [display].
+  ///
+  /// A kana-only entry is its own reading, so a row printing both showed
+  /// the same characters twice. Same rule as `KotobaEntry`'s.
+  String? get readingIfDifferent => reading == display ? null : reading;
 
   /// Individual characters of [kanji], for best-effort tap-through to
   /// `KanjiDetailScreen` where a character happens to be in the curated

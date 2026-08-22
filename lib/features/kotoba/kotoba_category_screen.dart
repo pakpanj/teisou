@@ -199,7 +199,8 @@ class _WordTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final displayWord = entry.kanji ?? entry.word;
+    final displayWord = entry.displayWord;
+    final reading = entry.readingIfDifferent;
 
     return Material(
       color: context.palette.cardWhite,
@@ -231,7 +232,9 @@ class _WordTile extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${entry.reading} · ${entry.romaji}',
+                      reading == null
+                          ? entry.romaji
+                          : '$reading · ${entry.romaji}',
                       style: TextStyle(
                         fontSize: 12,
                         color: context.palette.textNavy.withValues(alpha: 0.6),
