@@ -269,13 +269,19 @@ class _CoachMarkTourState extends State<CoachMarkTour> {
             ),
           ),
           Positioned(
-            top: media.padding.top + 8,
             // Out of the way when the thing being pointed at is in the
             // same corner. The quiz icon every module tour ends on sits
-            // exactly here, and skip drawn over its highlight hides the
+            // exactly there, and skip drawn over its highlight hides the
             // one control the step is about.
-            left: skipClashes ? 16 : null,
-            right: skipClashes ? null : 16,
+            //
+            // Down, not across: moving it to the other end of the app bar
+            // put it on the back button instead, which is no better. The
+            // bottom of the screen is empty whenever this happens — the
+            // bubble follows a top-of-screen highlight downward only as
+            // far as just under it.
+            top: skipClashes ? null : media.padding.top + 8,
+            bottom: skipClashes ? media.padding.bottom + 16 : null,
+            right: 16,
             child: TextButton(
               onPressed: () => Navigator.of(context).pop(),
               child: Text(

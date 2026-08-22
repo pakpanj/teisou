@@ -253,11 +253,19 @@ void main() {
     );
     await start(tester);
 
-    final width = tester.view.physicalSize.width / tester.view.devicePixelRatio;
+    final view = tester.view;
+    final height = view.physicalSize.height / view.devicePixelRatio;
+    final width = view.physicalSize.width / view.devicePixelRatio;
+    final skip = tester.getCenter(find.text('Lewati'));
     expect(
-      tester.getCenter(find.text('Lewati')).dx,
-      lessThan(width / 2),
+      skip.dy,
+      greaterThan(height / 2),
       reason: 'skip is still drawn over the highlight it should avoid',
+    );
+    expect(
+      skip.dx,
+      greaterThan(width / 2),
+      reason: 'moved across rather than down, onto the back button',
     );
   });
 
