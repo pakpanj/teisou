@@ -4406,6 +4406,37 @@ what the on-device pass actually verified), `flutter build apk
     installed on the test device as its fixture. Confirmed to bite by
     restoring the old substring heuristic (4 failures), by preferring
     `-network` (1), and by making the speaker hash unstable (1).
+- **Tutorials are coach marks over the real screen**, not a slideshow.
+  `CoachMarkTour` (`lib/features/onboarding/coach_mark_tour.dart`) dims
+  the screen, cuts a hole around one widget, and stands the mascot next
+  to it; `FirstVisitTutorial` wraps a screen and plays its tour the first
+  time it is opened, remembering that per-screen in SharedPreferences
+  (`TutorialId`, one key each — never share a key, seeing one would hide
+  the other). Steps name a `TutorialTarget` id and ask the live widget
+  where it is at the moment they are shown, so nothing holds
+  coordinates; an anchor that is not mounted is **skipped silently**,
+  which is the whole reason `test/home_tour_test.dart` and
+  `test/module_tours_test.dart` exist — a card added without an anchor is
+  never mentioned and the tour still looks complete.
+  - Coverage: the home tour stops at all 14 openable cards in **screen
+    order** (`home_tour.dart`), and every module has its own short tour
+    (`module_tours.dart`) on the screen where its rule applies — the quiz
+    icon lives on the level/category screen, so that is where that tour
+    runs, not on the module's front page. Cam Detector and the two Segera
+    Hadir tiles are deliberately excluded; none of them opens anything.
+  - **Gotcha, cost a real bug**: a screen that slides in is genuinely
+    somewhere else while it slides, so measuring an anchor mid-transition
+    put the first module highlight off the right edge over nothing —
+    while the identical code looked perfect on home, which does not
+    animate in. `FirstVisitTutorial` now waits for `ModalRoute.animation`
+    to complete before showing anything. If you add a tour to a screen
+    that appears some other way (a sheet, a tab switch), check the
+    highlight actually lands on the target on a device — the widget test
+    that covers this (`test/first_visit_tutorial_test.dart`) compares the
+    badge position against the anchor's real rect, because a test that
+    only asserts "the tour appeared" passes just as happily while the
+    highlight is 162px off.
+
 - **AppNavigator** (`lib/core/navigation/app_navigator.dart`) holds the
   custom transitions (slide-from-right for drilling into content,
   slide-from-bottom for modal-ish flows, fade-scale for exam results).
