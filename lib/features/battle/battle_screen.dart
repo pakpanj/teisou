@@ -25,6 +25,7 @@ import 'battle_card_picker_screen.dart';
 import 'battle_invite_providers.dart';
 import 'widgets/star_result_card.dart';
 import 'widgets/battle_arena.dart';
+import '../../core/widgets/romaji_keyboard.dart';
 
 /// Card Game Mode's live match screen — Tahap 2 butir 5 in
 /// `NOTES_CARD_GAME_MODE.md`. Renders one `battleMatches/{matchId}` doc
@@ -59,7 +60,10 @@ class BattleScreen extends ConsumerStatefulWidget {
 }
 
 class _BattleScreenState extends ConsumerState<BattleScreen> {
-  final _romajiController = TextEditingController();
+  /// What has been typed for the current card. One buffer, not one per
+  /// answer type — both keyboards are this app's own now, so there is no
+  /// `TextEditingController` left to keep in step with it.
+  String _romajiBuffer = '';
   String _hiraganaBuffer = '';
 
   Timer? _timer;
@@ -99,7 +103,6 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   void dispose() {
     _timer?.cancel();
     _answersSub?.cancel();
-    _romajiController.dispose();
     super.dispose();
   }
 
@@ -179,7 +182,9 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     if (conclusion == null) return;
     _localClientResult = conclusion;
     _finishedAt = DateTime.now();
-    ref.read(battleRepositoryProvider).setClientResult(widget.matchId, conclusion);
+    ref
+        .read(battleRepositoryProvider)
+        .setClientResult(widget.matchId, conclusion);
     // The lobby's recent-matches list is read from a tab the card game
     // shell keeps alive in an `IndexedStack`, so it is never disposed and
     // would otherwise still be showing the list from before this match.
@@ -195,8 +200,8 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
 
     final limit = roundBudget(
       match.currentRound,
-      ownerIsBot: match.turnOrder[match.currentRound].deckOwnerUid ==
-          battleBotUid,
+      ownerIsBot:
+          match.turnOrder[match.currentRound].deckOwnerUid == battleBotUid,
     );
     final anchor = match.turnStartedAt ?? DateTime.now();
 
@@ -259,9 +264,7 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   Future<void> _submit(BattleMatch match, BattleCard card) async {
     final myUid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (myUid == null) return;
-    final text = card.answerInHiragana
-        ? _hiraganaBuffer
-        : _romajiController.text;
+    final text = card.answerInHiragana ? _hiraganaBuffer : _romajiBuffer;
     if (text.trim().isEmpty) return;
 
     await ref
@@ -272,8 +275,10 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           byUid: myUid,
           text: text.trim(),
         );
-    _romajiController.clear();
-    setState(() => _hiraganaBuffer = '');
+    setState(() {
+      _hiraganaBuffer = '';
+      _romajiBuffer = '';
+    });
   }
 
   @override
@@ -330,8 +335,10 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     // The choosing window is over the moment its owner picks, and
     // otherwise when the clock runs out — after which the card dealt to
     // this round is what goes out.
-    final choosing = chosen == null && !ownerIsBot && _sinceTurnStart(match) <
-        cardChoiceWindow(ownerIsBot: ownerIsBot);
+    final choosing =
+        chosen == null &&
+        !ownerIsBot &&
+        _sinceTurnStart(match) < cardChoiceWindow(ownerIsBot: ownerIsBot);
     final card = resolveCard(
       match.effectiveCardId(match.currentRound) ?? entry.cardId,
       cardData.$1,
@@ -365,8 +372,9 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       (p) => p != myUid,
       orElse: () => myUid,
     );
-    final identities =
-        ref.watch(battleOpponentsProvider(match.players)).valueOrNull;
+    final identities = ref
+        .watch(battleOpponentsProvider(match.players))
+        .valueOrNull;
 
     return BattleBackdrop(
       // **Bottom inset only, and only here.** Without it the column runs
@@ -382,127 +390,134 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       child: SafeArea(
         top: false,
         child: Column(
-        children: [
-          BattleScorePanel(
-            strings: s,
-            round: match.currentRound + 1,
-            totalRounds: match.turnOrder.length,
-            remaining: _remaining,
-            limit: roundBudget(match.currentRound, ownerIsBot: ownerIsBot),
-            me: BattlePlayerChip(
-              entry: identities?[myUid],
-              fallbackName: s.battleYouLabel,
-              score: tally.scoreOf(myUid),
-              isMe: true,
-              isTheirTurn: isAnswerer,
+          children: [
+            BattleScorePanel(
+              strings: s,
+              round: match.currentRound + 1,
+              totalRounds: match.turnOrder.length,
+              remaining: _remaining,
+              limit: roundBudget(match.currentRound, ownerIsBot: ownerIsBot),
+              me: BattlePlayerChip(
+                entry: identities?[myUid],
+                fallbackName: s.battleYouLabel,
+                score: tally.scoreOf(myUid),
+                isMe: true,
+                isTheirTurn: isAnswerer,
+              ),
+              opponent: BattlePlayerChip(
+                entry: identities?[opponentUid],
+                fallbackName: opponentUid == battleBotUid
+                    ? s.battleBotName
+                    : s.battleOpponentLabel,
+                score: tally.scoreOf(opponentUid),
+                isMe: false,
+                isTheirTurn: !isAnswerer,
+                isBot: opponentUid == battleBotUid,
+              ),
             ),
-            opponent: BattlePlayerChip(
-              entry: identities?[opponentUid],
-              fallbackName: opponentUid == battleBotUid
-                  ? s.battleBotName
-                  : s.battleOpponentLabel,
-              score: tally.scoreOf(opponentUid),
-              isMe: false,
-              isTheirTurn: !isAnswerer,
-              isBot: opponentUid == battleBotUid,
-            ),
-          ),
-          Expanded(
-            // Pinned near the top of the space rather than floating in
-            // the middle of it: with the hand or the keyboard taking the
-            // bottom third, centring left a screen's worth of empty
-            // background between the scores and the card.
-            child: Align(
-              alignment: const Alignment(0, -0.55),
-              child: choosing && iChoose
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // Held down to roughly the height of the panel
-                        // beside it. At full size the card dwarfed the
-                        // sentence it is paired with, and the two read
-                        // as unrelated things that happened to share a
-                        // row rather than as one instruction.
-                        Flexible(
-                          child: SizedBox(
-                            height: 230,
-                            child: _faceDownCard(
-                              s,
-                              entry,
-                              identities,
-                              s.battleCardToSend,
+            Expanded(
+              // Pinned near the top of the space rather than floating in
+              // the middle of it: with the hand or the keyboard taking the
+              // bottom third, centring left a screen's worth of empty
+              // background between the scores and the card.
+              child: Align(
+                alignment: const Alignment(0, -0.55),
+                child: choosing && iChoose
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // Held down to roughly the height of the panel
+                          // beside it. At full size the card dwarfed the
+                          // sentence it is paired with, and the two read
+                          // as unrelated things that happened to share a
+                          // row rather than as one instruction.
+                          Flexible(
+                            child: SizedBox(
+                              height: 230,
+                              child: _faceDownCard(
+                                s,
+                                entry,
+                                identities,
+                                s.battleCardToSend,
+                              ),
                             ),
                           ),
-                        ),
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 12),
-                            child: BattleChoosePrompt(
-                              text: s.battleChooseInstruction,
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 12),
+                              child: BattleChoosePrompt(
+                                text: s.battleChooseInstruction,
+                              ),
                             ),
                           ),
+                        ],
+                      )
+                    : choosing
+                    ? _faceDownCard(
+                        s,
+                        entry,
+                        identities,
+                        s.battleOpponentChoosing,
+                      )
+                    : BattleCardFace(
+                        prompt: card.prompt,
+                        caption: isAnswerer
+                            ? s.battleCardFromOpponent
+                            : s.battleCardFromYou,
+                        // Face up, the card still belongs to whoever dealt
+                        // it, so it keeps wearing their skin — the whole
+                        // point of a cosmetic your opponent sees is that
+                        // they see it while they are looking at the card,
+                        // not only for the second it stays face down.
+                        // Resolved through the unlock rule for the same
+                        // reason the face-down branch above does.
+                        skin: effectiveCardSkin(
+                          identities?[entry.deckOwnerUid]?.cardSkinId,
+                          starTotal:
+                              identities?[entry.deckOwnerUid]
+                                  ?.cardGameStarTotal ??
+                              0,
+                          allUnlocked: kCardSkinsAllUnlocked,
                         ),
-                      ],
-                    )
-                  : choosing
-                  ? _faceDownCard(s, entry, identities, s.battleOpponentChoosing)
-                  : BattleCardFace(
-                      prompt: card.prompt,
-                      caption: isAnswerer
-                          ? s.battleCardFromOpponent
-                          : s.battleCardFromYou,
-                      // Face up, the card still belongs to whoever dealt
-                      // it, so it keeps wearing their skin — the whole
-                      // point of a cosmetic your opponent sees is that
-                      // they see it while they are looking at the card,
-                      // not only for the second it stays face down.
-                      // Resolved through the unlock rule for the same
-                      // reason the face-down branch above does.
-                      skin: effectiveCardSkin(
-                        identities?[entry.deckOwnerUid]?.cardSkinId,
-                        starTotal: identities?[entry.deckOwnerUid]
-                                ?.cardGameStarTotal ??
-                            0,
-                        allUnlocked: kCardSkinsAllUnlocked,
+                        flashColor: _flashColor(context),
                       ),
-                      flashColor: _flashColor(context),
-                    ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: BattleDeckStrip(slots: _deckSlots(match)),
-          ),
-          const SizedBox(height: 12),
-          if (choosing && iChoose)
-            _OpenPickerButton(
-              label: s.battleCardPickerTitle,
-              secondsLeft: _choiceSecondsLeft(match, ownerIsBot: ownerIsBot),
-              onTap: () => _openCardPicker(match, myUid, cardData, ownerIsBot),
-            )
-          else if (choosing)
-            Padding(
-              padding: const EdgeInsets.all(24),
-              child: Text(
-                s.battleOpponentChoosing,
-                style: TextStyle(
-                  color: palette.textNavy.withValues(alpha: 0.6),
-                ),
-              ),
-            )
-          else if (isAnswerer)
-            _buildAnswerInput(context, s, match, card)
-          else
-            Padding(
-              padding: const EdgeInsets.all(24),
-              child: Text(
-                s.battleWaitingForOpponent,
-                style: TextStyle(
-                  color: palette.textNavy.withValues(alpha: 0.6),
-                ),
               ),
             ),
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: BattleDeckStrip(slots: _deckSlots(match)),
+            ),
+            const SizedBox(height: 12),
+            if (choosing && iChoose)
+              _OpenPickerButton(
+                label: s.battleCardPickerTitle,
+                secondsLeft: _choiceSecondsLeft(match, ownerIsBot: ownerIsBot),
+                onTap: () =>
+                    _openCardPicker(match, myUid, cardData, ownerIsBot),
+              )
+            else if (choosing)
+              Padding(
+                padding: const EdgeInsets.all(24),
+                child: Text(
+                  s.battleOpponentChoosing,
+                  style: TextStyle(
+                    color: palette.textNavy.withValues(alpha: 0.6),
+                  ),
+                ),
+              )
+            else if (isAnswerer)
+              _buildAnswerInput(context, s, match, card)
+            else
+              Padding(
+                padding: const EdgeInsets.all(24),
+                child: Text(
+                  s.battleWaitingForOpponent,
+                  style: TextStyle(
+                    color: palette.textNavy.withValues(alpha: 0.6),
+                  ),
+                ),
+              ),
+          ],
         ),
       ),
     );
@@ -524,19 +539,21 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     final round = match.currentRound;
     if (_choiceTimeoutHandledForRound == round) return;
     _choiceTimeoutHandledForRound = round;
-    final left = cardChoiceWindow(ownerIsBot: ownerIsBot) -
-        _sinceTurnStart(match);
+    final left =
+        cardChoiceWindow(ownerIsBot: ownerIsBot) - _sinceTurnStart(match);
     Timer(left.isNegative ? Duration.zero : left, () {
       if (!mounted) return;
       final current = ref.read(battleMatchProvider(widget.matchId)).valueOrNull;
       if (current == null) return;
       if (current.currentRound != round) return;
       if (current.playedCards.containsKey(round)) return;
-      ref.read(battleRepositoryProvider).playCard(
-        matchId: widget.matchId,
-        round: round,
-        cardId: current.turnOrder[round].cardId,
-      );
+      ref
+          .read(battleRepositoryProvider)
+          .playCard(
+            matchId: widget.matchId,
+            round: round,
+            cardId: current.turnOrder[round].cardId,
+          );
     });
   }
 
@@ -580,8 +597,9 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
           // The hand shrinks as it is played, so the denominator is the
           // deck each player was dealt, not what is left of it.
           totalCards: kBattleTotalRounds ~/ 2,
-          deadline: (match.turnStartedAt ?? DateTime.now())
-              .add(cardChoiceWindow(ownerIsBot: ownerIsBot)),
+          deadline: (match.turnStartedAt ?? DateTime.now()).add(
+            cardChoiceWindow(ownerIsBot: ownerIsBot),
+          ),
         ),
       ),
     );
@@ -594,11 +612,9 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     final current = ref.read(battleMatchProvider(widget.matchId)).valueOrNull;
     if (current == null || current.currentRound != round) return;
     if (current.playedCards.containsKey(round)) return;
-    await ref.read(battleRepositoryProvider).playCard(
-          matchId: widget.matchId,
-          round: round,
-          cardId: chosen,
-        );
+    await ref
+        .read(battleRepositoryProvider)
+        .playCard(matchId: widget.matchId, round: round, cardId: chosen);
   }
 
   /// How long this round has been running, from the server anchor.
@@ -609,8 +625,8 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
   }
 
   int _choiceSecondsLeft(BattleMatch match, {required bool ownerIsBot}) {
-    final left = cardChoiceWindow(ownerIsBot: ownerIsBot) -
-        _sinceTurnStart(match);
+    final left =
+        cardChoiceWindow(ownerIsBot: ownerIsBot) - _sinceTurnStart(match);
     return left.isNegative ? 0 : left.inSeconds + 1;
   }
 
@@ -655,7 +671,6 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
         ? context.palette.secondaryBlue
         : context.palette.errorRed;
   }
-
 
   /// The face-down card, shared by both choosing states.
   ///
@@ -734,28 +749,52 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       );
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              controller: _romajiController,
-              autofocus: true,
-              decoration: InputDecoration(
-                hintText: s.battleRomajiHint,
-                border: const OutlineInputBorder(),
-              ),
-              onSubmitted: (_) => _submit(match, card),
+    // The romaji half of the game used to open the phone's own keyboard.
+    // On a timed card that meant a prediction bar offering the answer,
+    // and a different amount of the card covered on every phone — plus
+    // the mode switched between two keyboards depending on which card
+    // came up. Same layout as the kana half now: what you typed, the
+    // keyboard, the send button.
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            border: Border.all(color: palette.divider),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          width: double.infinity,
+          child: Text(
+            _romajiBuffer.isEmpty ? s.battleRomajiHint : _romajiBuffer,
+            style: TextStyle(
+              fontSize: 22,
+              color: _romajiBuffer.isEmpty
+                  ? palette.textNavy.withValues(alpha: 0.4)
+                  : palette.textNavy,
             ),
           ),
-          const SizedBox(width: 8),
-          FilledButton(
-            onPressed: () => _submit(match, card),
-            child: Text(s.battleSendAnswer),
+        ),
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 190,
+          child: RomajiKeyboard(
+            value: _romajiBuffer,
+            onChanged: (v) => setState(() => _romajiBuffer = v),
           ),
-        ],
-      ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(12),
+          child: SizedBox(
+            width: double.infinity,
+            child: FilledButton(
+              onPressed: () => _submit(match, card),
+              child: Text(s.battleSendAnswer),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -777,8 +816,9 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
       orElse: () => myUid,
     );
 
-    final identities =
-        ref.watch(battleOpponentsProvider(match.players)).valueOrNull;
+    final identities = ref
+        .watch(battleOpponentsProvider(match.players))
+        .valueOrNull;
     final palette = context.palette;
 
     // Counted over the rounds *I* answered. A deck owner never answers
@@ -796,8 +836,9 @@ class _BattleScreenState extends ConsumerState<BattleScreen> {
     final started = match.createdAt;
     final ended = _finishedAt;
     // Measured to when the match ended, not to now — see [_finishedAt].
-    final duration =
-        started == null || ended == null ? null : ended.difference(started);
+    final duration = started == null || ended == null
+        ? null
+        : ended.difference(started);
 
     return BattleBackdrop(
       child: ListView(

@@ -1747,7 +1747,6 @@ class AppStrings {
         'Ujian tidak bisa dibuka sekarang. Cek koneksimu lalu coba lagi.',
         'The exam could not be opened. Check your connection and try again.',
       );
-  String get rankSkipTypeAnswer => _t('Ketik jawabanmu...', 'Type your answer...');
   String get rankSkipAnswerEmpty =>
       _t('(belum diisi)', '(nothing typed yet)');
   String get rankSkipYourAnswer => _t('Jawabanmu', 'Your answer');

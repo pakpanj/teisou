@@ -13,6 +13,7 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/kana_keyboard.dart';
 import '../../data/models/card_game_rank.dart';
 import 'widgets/battle_arena.dart';
+import '../../core/widgets/romaji_keyboard.dart';
 
 /// Skipping straight to a rank by proving you can already play it.
 ///
@@ -68,8 +69,9 @@ class _RankSkipScreenState extends ConsumerState<RankSkipScreen> {
   }
 
   void _startCardClock() {
-    _cardDeadline =
-        DateTime.now().add(const Duration(seconds: kBattleMainPhaseSeconds));
+    _cardDeadline = DateTime.now().add(
+      const Duration(seconds: kBattleMainPhaseSeconds),
+    );
     _tick?.cancel();
     _tick = Timer.periodic(const Duration(seconds: 1), (_) {
       if (!mounted || _phase != _Phase.answering) return;
@@ -139,10 +141,9 @@ class _RankSkipScreenState extends ConsumerState<RankSkipScreen> {
     _tick?.cancel();
     setState(() => _phase = _Phase.working);
     try {
-      final result = await ref.read(rankSkipServiceProvider).submit(
-            sessionId: exam.sessionId,
-            answers: _answers,
-          );
+      final result = await ref
+          .read(rankSkipServiceProvider)
+          .submit(sessionId: exam.sessionId, answers: _answers);
       if (!mounted) return;
       // The rank the rest of the app shows comes from Firestore, and the
       // server has just written it. Nothing here writes a rank, so the
@@ -181,23 +182,22 @@ class _RankSkipScreenState extends ConsumerState<RankSkipScreen> {
       body: BattleBackdrop(
         child: SafeArea(
           child: switch (_phase) {
-            _Phase.working =>
-              const Center(child: CircularProgressIndicator()),
+            _Phase.working => const Center(child: CircularProgressIndicator()),
             _Phase.choosing => _TierChoice(
-                error: _error,
-                cooldownUntil: _cooldownUntil,
-                onPick: _start,
-              ),
+              error: _error,
+              cooldownUntil: _cooldownUntil,
+              onPick: _start,
+            ),
             _Phase.answering => _Answering(
-                exam: _exam!,
-                at: _at,
-                answer: _answers[_at],
-                secondsLeft: _secondsLeft,
-                error: _error,
-                onChanged: (v) => setState(() => _answers[_at] = v),
-                onNext: _advance,
-                onSubmit: _submit,
-              ),
+              exam: _exam!,
+              at: _at,
+              answer: _answers[_at],
+              secondsLeft: _secondsLeft,
+              error: _error,
+              onChanged: (v) => setState(() => _answers[_at] = v),
+              onNext: _advance,
+              onSubmit: _submit,
+            ),
             _Phase.done => _Done(result: _result!),
           },
         ),
@@ -256,7 +256,8 @@ class _TierChoice extends ConsumerWidget {
         if (cooldownUntil != null || error != null)
           _Notice(
             palette: palette,
-            text: error ??
+            text:
+                error ??
                 (cooldownUntil == null
                     ? s.rankSkipRetryTomorrow
                     : s.rankSkipRetryAfter(_when(s, cooldownUntil!))),
@@ -295,7 +296,9 @@ class _TierChoice extends ConsumerWidget {
     final now = DateTime.now();
     final sameDay =
         t.year == now.year && t.month == now.month && t.day == now.day;
-    return sameDay ? s.rankSkipTodayAt('$hh.$mm') : s.rankSkipTomorrowAt('$hh.$mm');
+    return sameDay
+        ? s.rankSkipTodayAt('$hh.$mm')
+        : s.rankSkipTomorrowAt('$hh.$mm');
   }
 }
 
@@ -431,37 +434,27 @@ class _Answering extends ConsumerWidget {
                   ),
           ),
         ),
-        if (card != null && card.answerInHiragana) ...[
-          // What has been typed, which the kana keyboard alone does not
-          // show anywhere. Without it a learner is typing blind: no way
-          // to see a wrong character, and no way to know a tap
-          // registered at all.
+        if (card != null) ...[
+          // What has been typed, which neither keyboard shows anywhere
+          // itself. Without it a learner is typing blind: no way to see a
+          // wrong character, and no way to know a tap registered at all.
           _TypedAnswer(
             palette: palette,
             label: s.rankSkipYourAnswer,
             text: answer,
             empty: s.rankSkipAnswerEmpty,
           ),
+          // Both answer types are typed on a keyboard this app draws.
+          // The romaji half used to open the phone's own, which brought
+          // a prediction bar onto a timed question and covered a
+          // different amount of the card on every phone.
           SizedBox(
-            height: 240,
-            child: KanaKeyboard(value: answer, onChanged: onChanged),
+            height: card.answerInHiragana ? 240 : 190,
+            child: card.answerInHiragana
+                ? KanaKeyboard(value: answer, onChanged: onChanged)
+                : RomajiKeyboard(value: answer, onChanged: onChanged),
           ),
-        ] else
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: TextField(
-              // Keyed on the card, so moving on clears the field. Without
-              // it the widget is reused and the previous card's answer is
-              // still sitting there, ready to be sent as this one's.
-              key: ValueKey(at),
-              autofocus: true,
-              onChanged: onChanged,
-              decoration: InputDecoration(
-                hintText: s.rankSkipTypeAnswer,
-                border: const OutlineInputBorder(),
-              ),
-            ),
-          ),
+        ],
         Padding(
           padding: const EdgeInsets.fromLTRB(24, 12, 24, 18),
           child: SizedBox(
@@ -507,8 +500,7 @@ class _ExamClock extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
-        color:
-            urgent ? palette.errorRed : Colors.black.withValues(alpha: 0.45),
+        color: urgent ? palette.errorRed : Colors.black.withValues(alpha: 0.45),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: urgent
