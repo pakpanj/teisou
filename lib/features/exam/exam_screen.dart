@@ -19,9 +19,9 @@ import 'exam_countdown.dart';
 class ExamScreen extends ConsumerStatefulWidget {
   final ExamMode mode;
 
-  /// How long the whole paper gets, or null for an untimed run — see
-  /// [examTimeLimit]. When it runs out the exam is submitted as it
-  /// stands, with everything unanswered counting as wrong.
+  /// How long each question gets, or null for an untimed run. When a
+  /// question's time runs out it is marked wrong and the exam moves on,
+  /// so running out costs that question rather than the whole paper.
   final Duration? timeLimit;
 
   const ExamScreen({super.key, required this.mode, this.timeLimit});
@@ -110,20 +110,32 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
     await _submit(questions);
   }
 
-  /// Hands the paper in early because the clock ran out.
+  /// This question's time ran out.
   ///
-  /// Every question not yet answered is recorded with an empty answer,
-  /// which grades as wrong — including the one on screen. Scoring only
-  /// what was reached would mean running out of time *improves* the
-  /// percentage, which would make the timed mode the easy one.
-  Future<void> _timeUp(List<ExamQuestion> questions) async {
-    if (_finished || _submitting) return;
-    for (var i = _answers.length; i < questions.length; i++) {
-      _answers.add(
-        AnsweredQuestion(question: questions[i], selectedAnswer: ''),
-      );
+  /// It is recorded with an empty answer — which grades as wrong — and
+  /// the exam moves on. Skipping it instead would mean a learner who let
+  /// the clock run on everything they did not know finished with a
+  /// perfect score out of the few they did.
+  Future<void> _questionTimedOut(List<ExamQuestion> questions) async {
+    // Already graded: the clock is only still running because the pause
+    // and this tick crossed.
+    if (_committed || _finished || _submitting) return;
+
+    _answers.add(
+      AnsweredQuestion(question: questions[_currentIndex], selectedAnswer: ''),
+    );
+
+    final isLast = _currentIndex >= questions.length - 1;
+    if (isLast) {
+      await _submit(questions);
+      return;
     }
-    await _submit(questions);
+    setState(() {
+      _currentIndex++;
+      _selectedAnswer = null;
+      _committed = false;
+      _reaction = null;
+    });
   }
 
   Future<void> _submit(List<ExamQuestion> questions) async {
@@ -223,8 +235,13 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
               ),
               if (widget.timeLimit != null)
                 ExamCountdown(
+                  // Keyed on the question, so each one starts its own
+                  // clock — see ExamCountdown's note on why the reset
+                  // lives at the call site.
+                  key: ValueKey(_currentIndex),
                   limit: widget.timeLimit!,
-                  onExpired: () => _timeUp(questions),
+                  paused: _committed,
+                  onExpired: () => _questionTimedOut(questions),
                 ),
               const SizedBox(height: 12),
               Text(

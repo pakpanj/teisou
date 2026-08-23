@@ -86,7 +86,6 @@ class ChoukaiExamScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(clip.localizedTitle(s.language))),
       body: ExamTimingGate(
         kind: ExamKind.choukai,
-        questionCount: clip.questions.length,
         builder: (context, limit) => McQuizFlow(
           timeLimit: limit,
           totalQuestions: clip.questions.length,

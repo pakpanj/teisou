@@ -242,22 +242,23 @@ class AppStrings {
   // --- Mode waktu ujian --------------------------------------------
   String get examTimingTitle => _t('Pilih mode ujian', 'Choose exam mode');
   String get examTimedTitle => _t('Pakai Timer', 'Timed');
-  String examTimedSubtitle(int minutes) => _t(
-    'Waktunya $minutes menit untuk semua soal — seperti ujian sungguhan.',
-    'You get $minutes minutes for the whole paper — like the real thing.',
+  String get examTimedSubtitle => _t(
+    'Tiap soal dikejar waktu. Pilih sendiri berapa lama per soalnya.',
+    'Every question is against the clock. You pick how long each one gets.',
+  );
+  String get examPerQuestionLabel =>
+      _t('Waktu per soal', 'Time per question');
+  String examSecondsShort(int seconds) => _t('$seconds dtk', '$seconds s');
+  String examStartTimed(int seconds) => _t(
+    'Mulai — $seconds detik per soal',
+    'Start — $seconds seconds per question',
   );
   String get examUntimedTitle => _t('Tanpa Timer', 'No timer');
   String get examUntimedSubtitle => _t(
     'Santai saja, kerjakan sampai selesai tanpa dikejar waktu.',
     'Take your time — work through it with no clock running.',
   );
-  String get examTimeLeft => _t('Sisa waktu', 'Time left');
-  String get examTimeUp => _t('Waktu habis!', 'Time is up!');
-  String get examTimeUpBody => _t(
-    'Ujian selesai karena waktunya habis. Soal yang belum dijawab dihitung salah.',
-    'The exam ended because time ran out. Unanswered questions count as wrong.',
-  );
-  String get examSeeResult => _t('Lihat Hasil', 'See result');
+  String get examTimeLeft => _t('Sisa waktu soal ini', 'Time left');
 
   String questionOf(int index, int total) =>
       _t('Soal $index / $total', 'Question $index / $total');

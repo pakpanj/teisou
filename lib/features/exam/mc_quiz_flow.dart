@@ -44,12 +44,15 @@ class McQuizFlow extends ConsumerStatefulWidget {
   /// recognizes, so a run with none just renders as plain text either way.
   final bool showFurigana;
 
-  /// How long the whole paper gets, or null for an untimed run.
+  /// How long each question gets, or null for an untimed run.
   ///
-  /// The budget covers the exam, not the question: see [examTimeLimit].
-  /// When it runs out the quiz ends where it stands and whatever is
-  /// unanswered counts as wrong — the same thing that happens to a real
-  /// paper when the invigilator calls time.
+  /// Per question rather than per paper, and chosen by the learner —
+  /// see [kExamPerQuestionChoices]. When a question's time runs out it is
+  /// marked wrong and the quiz moves on, so running out costs exactly
+  /// that question rather than ending the paper.
+  ///
+  /// The clock pauses once an answer is graded, so reading the
+  /// explanation is never rushed.
   final Duration? timeLimit;
 
   const McQuizFlow({
@@ -164,33 +167,40 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
     });
   }
 
-  /// Ends the paper early because the clock ran out.
+  /// This question's time ran out.
   ///
-  /// Everything still unanswered is recorded as wrong, including the
-  /// question on screen — otherwise a learner who ran out of time on
-  /// question three would be scored out of three, and running out of time
-  /// would *raise* their percentage.
-  void _timeUp() {
-    if (_finished) return;
-    _finished = true;
-    for (
-      var i = _committed ? _index + 1 : _index;
-      i < widget.totalQuestions;
-      i++
-    ) {
-      final options = widget.optionsOf(i);
-      final correctIndex = widget.correctIndexOf(i);
-      _wrongAnswers.add(
-        QuizReviewEntry(
-          question: widget.questionLabelOf(i),
-          userAnswer: '',
-          correctAnswer: correctIndex >= 0 && correctIndex < options.length
-              ? options[correctIndex]
-              : '',
-        ),
-      );
+  /// It is recorded as wrong and the quiz moves on. Skipping it instead
+  /// would mean a learner who let the clock run on every question they
+  /// did not know finished with a perfect score out of the few they did.
+  void _questionTimedOut() {
+    // Already graded: the clock is only still running because the pause
+    // and this tick crossed. Nothing to mark.
+    if (_committed || _finished) return;
+
+    final options = widget.optionsOf(_index);
+    final correctIndex = widget.correctIndexOf(_index);
+    _wrongAnswers.add(
+      QuizReviewEntry(
+        question: widget.questionLabelOf(_index),
+        userAnswer: '',
+        correctAnswer: correctIndex >= 0 && correctIndex < options.length
+            ? options[correctIndex]
+            : '',
+      ),
+    );
+
+    final isLast = _index >= widget.totalQuestions - 1;
+    if (isLast) {
+      _finished = true;
+      widget.onComplete(_score, widget.totalQuestions, _wrongAnswers);
+      return;
     }
-    widget.onComplete(_score, widget.totalQuestions, _wrongAnswers);
+    setState(() {
+      _index++;
+      _selected = null;
+      _committed = false;
+      _reaction = null;
+    });
   }
 
   void _next() {
@@ -231,7 +241,15 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
           color: context.palette.primaryCoral,
           minHeight: 6,
         ),
-        if (limit != null) ExamCountdown(limit: limit, onExpired: _timeUp),
+        if (limit != null)
+          ExamCountdown(
+            // Keyed on the question, so each one starts its own clock —
+            // see ExamCountdown's own note on why the reset lives here.
+            key: ValueKey(_index),
+            limit: limit,
+            paused: _committed,
+            onExpired: _questionTimedOut,
+          ),
         const SizedBox(height: 12),
         Text(
           s.questionOf(_index + 1, widget.totalQuestions),

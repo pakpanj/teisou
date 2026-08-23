@@ -109,7 +109,6 @@ class DokkaiExamScreen extends ConsumerWidget {
       appBar: AppBar(title: Text(s.dokkaiSessionTitle(items.length))),
       body: ExamTimingGate(
         kind: ExamKind.dokkai,
-        questionCount: items.length,
         builder: (context, limit) => McQuizFlow(
           timeLimit: limit,
           totalQuestions: items.length,

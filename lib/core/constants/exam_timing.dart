@@ -8,36 +8,51 @@
 /// prepares anyone for the real thing.
 enum ExamTiming { timed, untimed }
 
-/// What kind of exam is being timed — each has its own idea of how long a
-/// question reasonably takes.
+/// What kind of exam is being timed — each starts from its own suggested
+/// pace.
 enum ExamKind { kana, kanji, dokkai, choukai }
 
-/// Seconds allowed per question, by exam kind.
+/// **The clock runs per question, not per paper.**
 ///
-/// Deliberately different per kind rather than one number for all four:
-/// recognising a kana is a glance, while a Dokkai question means reading
-/// a passage first. One shared figure would be either brutal for Dokkai
-/// or meaningless for Kana.
+/// A single budget for the whole paper lets a learner spend it wherever
+/// they like, which is how a real exam works — but it also means the
+/// clock can quietly run out during question three and end a paper the
+/// learner thought they were doing well at. Per question, the pressure is
+/// the same on every question, running out costs exactly one question,
+/// and the number on screen means something a child can act on: *this*
+/// question has this long left.
 ///
-/// These are generous on purpose. The clock is meant to add a little
-/// pressure to a learner who already knows the material, not to be the
-/// thing that decides the score — a child who knows the answer should
-/// never lose it to the timer.
-int examSecondsPerQuestion(ExamKind kind) => switch (kind) {
+/// The choices a learner can pick from, in seconds. Wide enough to cover
+/// both a drill (5 seconds, recall or nothing) and a careful reading pace
+/// (2 minutes), because the same exam is used for both.
+const kExamPerQuestionChoices = <int>[5, 10, 15, 20, 30, 45, 60, 90, 120];
+
+/// Where the picker starts before the learner changes it.
+///
+/// Different per kind rather than one number for all four: recognising a
+/// kana is a glance, while a Dokkai question means reading a passage
+/// first. Generous on purpose — the clock is meant to add a little
+/// pressure to someone who already knows the material, not to be the
+/// thing that decides the score.
+int examDefaultSecondsPerQuestion(ExamKind kind) => switch (kind) {
   ExamKind.kana => 15,
   ExamKind.kanji => 20,
   // Listening: the clip has to play before the question can even be
   // considered, and a learner may replay it once.
-  ExamKind.choukai => 40,
+  ExamKind.choukai => 45,
   // Reading: a passage plus its question.
   ExamKind.dokkai => 60,
 };
 
-/// The whole exam's budget — one clock for the paper, not one per
-/// question.
+/// The suggested pace, snapped to whichever offered choice it matches.
 ///
-/// A per-question timer would force the pace of every single question and
-/// punish a learner for thinking hard about one of them. A single budget
-/// lets them spend it where they need it, which is how a real exam works.
-Duration examTimeLimit(ExamKind kind, int questionCount) =>
-    Duration(seconds: examSecondsPerQuestion(kind) * questionCount);
+/// Asserted rather than left to chance: a default that is not in
+/// [kExamPerQuestionChoices] would open the picker with nothing selected.
+Duration examDefaultLimit(ExamKind kind) {
+  final seconds = examDefaultSecondsPerQuestion(kind);
+  assert(
+    kExamPerQuestionChoices.contains(seconds),
+    'default pace for $kind ($seconds s) is not one of the offered choices',
+  );
+  return Duration(seconds: seconds);
+}

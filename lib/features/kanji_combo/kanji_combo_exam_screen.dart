@@ -101,7 +101,6 @@ class KanjiComboExamScreen extends ConsumerWidget {
           }
           return ExamTimingGate(
             kind: ExamKind.kanji,
-            questionCount: questions.length,
             builder: (context, limit) => McQuizFlow(
               timeLimit: limit,
               totalQuestions: questions.length,

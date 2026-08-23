@@ -7,7 +7,6 @@ import '../../core/theme/app_palette.dart';
 import '../../data/models/exam_mode.dart';
 import 'exam_screen.dart';
 import '../../core/constants/exam_timing.dart';
-import '../../data/repositories/exam_repository.dart';
 import 'exam_timing_picker.dart';
 
 /// Lets the user choose which kana pool ("Hiragana", "Katakana", or
@@ -55,28 +54,14 @@ class KanaExamModePickerScreen extends ConsumerWidget {
     );
   }
 
-  /// Asks for the timing mode, then starts the paper.
-  ///
-  /// Asked here rather than inside [ExamScreen] — unlike the other three
-  /// exams, a kana paper is always the same length
-  /// ([ExamRepository.questionsPerExam]), so the budget can be quoted
-  /// before any question is generated. Backing out of the sheet starts
-  /// nothing.
+  /// Asks for the timing mode, then starts the paper. Backing out of the
+  /// sheet starts nothing.
   Future<void> _startExam(BuildContext context, ExamMode mode) async {
-    final timing = await showExamTimingPicker(
-      context,
-      kind: ExamKind.kana,
-      questionCount: ExamRepository.questionsPerExam,
-    );
-    if (timing == null || !context.mounted) return;
+    final choice = await showExamTimingPicker(context, kind: ExamKind.kana);
+    if (choice == null || !context.mounted) return;
     AppNavigator.slideFromBottom(
       context,
-      ExamScreen(
-        mode: mode,
-        timeLimit: timing == ExamTiming.timed
-            ? examTimeLimit(ExamKind.kana, ExamRepository.questionsPerExam)
-            : null,
-      ),
+      ExamScreen(mode: mode, timeLimit: choice.perQuestion),
     );
   }
 }
