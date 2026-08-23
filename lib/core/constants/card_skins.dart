@@ -105,12 +105,13 @@ class CardSkinPreset {
 
 /// Every skin in the game.
 ///
-/// **Sellable, not yet sold.** The gate here is premium-or-rewarded-ad,
-/// which is what exists; charging for an individual skin needs
-/// `in_app_purchase` wired up, which this project has never had (see
-/// CLAUDE.md's release-readiness section). When that lands, a price
-/// belongs on [CardSkinPreset] and the lock branches on ownership
-/// instead of on [CardSkinPreset.premium] — nothing else has to move.
+/// Every skin `CardSkinSource.paid` here (`shop_tab.dart`'s Toko tab) is
+/// individually purchasable via `in_app_purchase` — id
+/// `skin_<CardSkinPreset.id>` — once its own product exists in Play
+/// Console; see `IapProducts.productIdForSkin`. The same three paid
+/// skins are also bundled free into the Premium subscription (see
+/// [isCardSkinUnlocked]'s `premium` parameter), so a subscriber never
+/// has to buy them separately on top of the monthly fee.
 class CardSkinPresets {
   static const classic = CardSkinPreset(
     id: 'classic',
@@ -322,9 +323,19 @@ bool get kCardSkinsAllUnlocked => kDebugMode;
 ///   threshold. Note "currently" — a season's 70% carry can drop a
 ///   player below it again, and the skin is meant to lock back. That is
 ///   the point: it says where you are, not where you once were.
-/// - Paid: only if owned. Nothing can be owned yet, because
-///   `in_app_purchase` has never been wired up here; the shop is a
-///   window until it is.
+/// - Paid: owned outright (bought individually via `skin_<id>`), **or**
+///   [premium] — the Premium subscription's "Skin Battle Card
+///   eksklusif" benefit bundles the entire paid family (Awan Putih,
+///   Kota Neon, Sakura Emas) in for free, per an explicit product
+///   decision rather than making a subscriber buy them separately too.
+///   [premium] is meant to be passed live from `subscriptionProvider`,
+///   never stored — same as [moduleAccessProvider] gating a whole
+///   module, letting Premium in re-locks the skins the moment a
+///   subscription lapses rather than leaving them owned forever, which
+///   [owned] alone (a real purchase) correctly does not.
+/// - Event: same test as a bought skin, for now with nothing that can
+///   set it — no event has ever been run, so this is always false and
+///   the picker explains rather than dangles.
 ///
 /// [starTotal] comes from the server-written `leaderboard/{uid}` row,
 /// never from a local sum — the ladder's arithmetic lives in
@@ -336,16 +347,14 @@ bool isCardSkinUnlocked(
   CardSkinPreset skin, {
   required int starTotal,
   bool owned = false,
+  bool premium = false,
   bool allUnlocked = false,
 }) {
   if (allUnlocked) return true;
   return switch (skin.source) {
     CardSkinSource.free => true,
     CardSkinSource.achievement => starTotal >= skin.starsRequired,
-    CardSkinSource.paid => owned,
-    // Same test as a bought skin, for now with nothing that can set it:
-    // no event has ever been run, so this is always false and the picker
-    // explains rather than dangles.
+    CardSkinSource.paid => owned || premium,
     CardSkinSource.event => owned,
   };
 }
@@ -363,6 +372,7 @@ CardSkinPreset effectiveCardSkin(
   String? chosenId, {
   required int starTotal,
   bool owned = false,
+  bool premium = false,
   bool allUnlocked = false,
 }) {
   final skin = CardSkinPresets.byId(chosenId);
@@ -370,6 +380,7 @@ CardSkinPreset effectiveCardSkin(
     skin,
     starTotal: starTotal,
     owned: owned,
+    premium: premium,
     allUnlocked: allUnlocked,
   )
       ? skin

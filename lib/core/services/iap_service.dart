@@ -44,12 +44,25 @@ enum IapOutcome {
 class IapService {
   IapService({
     InAppPurchase? store,
-    FirebaseFunctions? functions,
-  })  : _store = store ?? InAppPurchase.instance,
-        _functions = functions ?? FirebaseFunctions.instance;
+    this.functionsOverride,
+  }) : _store = store ?? InAppPurchase.instance;
 
   final InAppPurchase _store;
-  final FirebaseFunctions _functions;
+
+  // Deliberately not resolved in the constructor: `FirebaseFunctions
+  // .instance` needs `Firebase.initializeApp()` to have already run,
+  // and this class is now built eagerly — `PaywallScreen`/`ShopTab`
+  // both load prices in `initState`, which happens the moment either
+  // screen mounts. Resolving it lazily, only when a purchase is
+  // actually verified, means constructing an `IapService` (or loading
+  // prices, buying, or restoring) never requires Firebase to exist —
+  // only completing a real purchase does. A widget test that mounts
+  // either screen without a live Firebase app depends on this staying
+  // lazy.
+  final FirebaseFunctions? functionsOverride;
+  FirebaseFunctions? _functions;
+  FirebaseFunctions get _fx =>
+      _functions ??= functionsOverride ?? FirebaseFunctions.instance;
 
   StreamSubscription<List<PurchaseDetails>>? _sub;
   final _outcomes = StreamController<IapOutcome>.broadcast();
@@ -175,7 +188,7 @@ class IapService {
   /// Hands the token to the server and lets it decide.
   Future<bool> _verify(PurchaseDetails purchase) async {
     try {
-      final result = await _functions.httpsCallable('verifyPurchase').call({
+      final result = await _fx.httpsCallable('verifyPurchase').call({
         'productId': purchase.productID,
         'purchaseToken':
             purchase.verificationData.serverVerificationData,

@@ -130,8 +130,10 @@ void main() {
       await tester.pump();
 
       expect(find.text('Unlock All Modules!'), findsOneWidget);
-      expect(find.text('Access to all learning modules'), findsOneWidget);
-      expect(find.text('No ads'), findsOneWidget);
+      expect(find.text('⭐ Exclusive Battle Card skins'), findsOneWidget);
+      expect(find.text('📚 Complete learning materials'), findsOneWidget);
+      expect(find.text('📝 Premium practice questions'), findsOneWidget);
+      expect(find.text('🚫 Ad-free'), findsOneWidget);
       expect(find.text('Watch Ad for 24-Hour Preview'), findsOneWidget);
       expect(find.text('Buka Semua Modul!'), findsNothing);
     },

@@ -48,6 +48,29 @@ void main() {
       }
     });
 
+    test('paid skins are also unlocked by a Premium subscription, without '
+        'needing to be owned too', () {
+      // The subscription's "Skin Battle Card eksklusif" benefit bundles
+      // the whole paid family in for free — a subscriber should never
+      // have to buy cloud_white/neon_city/sakura_gold on top of the
+      // monthly fee.
+      for (final skin in CardSkinPresets.ofSource(CardSkinSource.paid)) {
+        expect(
+          isCardSkinUnlocked(skin, starTotal: 0, premium: true),
+          isTrue,
+          reason: skin.id,
+        );
+      }
+    });
+
+    test('premium does not unlock achievement or event skins — only the '
+        'paid family', () {
+      final gold = skinOf('emas_kencana');
+      expect(isCardSkinUnlocked(gold, starTotal: 0, premium: true), isFalse);
+      final event = CardSkinPresets.ofSource(CardSkinSource.event).first;
+      expect(isCardSkinUnlocked(event, starTotal: 0, premium: true), isFalse);
+    });
+
     test('achievement skins are not reachable by owning them', () {
       // Guards the other direction of the same rule: if a future shop
       // ever marked one as owned, stars must still be what decides.
@@ -92,6 +115,18 @@ void main() {
       // re-picked — the skin simply reappears.
       expect(effectiveCardSkin('dragon_black', starTotal: 90).id,
           'dragon_black');
+    });
+
+    test('a paid skin re-locks the moment premium is no longer true, same '
+        'as a lapsed achievement', () {
+      expect(
+        effectiveCardSkin('cloud_white', starTotal: 0, premium: true).id,
+        'cloud_white',
+      );
+      expect(
+        effectiveCardSkin('cloud_white', starTotal: 0, premium: false).id,
+        CardSkinPresets.classic.id,
+      );
     });
 
     test('an unknown or missing id resolves to the default', () {

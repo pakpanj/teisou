@@ -19,10 +19,10 @@ void main() {
     await tester.pump();
 
     expect(find.text('Buka Semua Modul!'), findsOneWidget);
-    expect(find.text('Akses semua modul belajar'), findsOneWidget);
-    expect(find.text('Tanpa iklan'), findsOneWidget);
-    expect(find.text('Progress tersimpan cloud'), findsOneWidget);
-    expect(find.text('Leaderboard eksklusif'), findsOneWidget);
+    expect(find.text('⭐ Skin Battle Card eksklusif'), findsOneWidget);
+    expect(find.text('📚 Materi pembelajaran lengkap'), findsOneWidget);
+    expect(find.text('📝 Latihan soal premium'), findsOneWidget);
+    expect(find.text('🚫 Bebas iklan'), findsOneWidget);
     // The buy button follows the master switch: offering a purchase that
     // cannot complete reads as a broken app, not as a shop that has not
     // opened yet.

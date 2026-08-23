@@ -15,23 +15,29 @@
 class IapProducts {
   /// **The master switch for everything that takes money.**
   ///
-  /// `false` keeps every line of the purchase flow compiled, tested and
-  /// ready — it simply never reaches a store. Enforced inside
-  /// [IapService] rather than by hiding buttons, so no call site can
-  /// bypass it by accident: with this off, `load` contacts nothing,
-  /// `buy` opens no sheet, and `restore` asks for nothing.
+  /// `false` kept every line of the purchase flow compiled, tested and
+  /// ready without ever reaching a store — enforced inside [IapService]
+  /// rather than by hiding buttons, so no call site could bypass it by
+  /// accident: with this off, `load` contacted nothing, `buy` opened no
+  /// sheet, and `restore` asked for nothing.
   ///
-  /// Off because nothing is on sale yet: the four product ids below do
-  /// not exist in Play Console, so every buy could only ever end in
-  /// "product not found" — a dead button that looks like a broken app
-  /// rather than a shop that has not opened.
+  /// **On as of 2026-08-23** — `teisou_premium_monthly` (Rp 19.000/bulan)
+  /// exists in Play Console with an active base plan, the Firebase
+  /// Functions service account has Android Publisher access, and
+  /// `PLAY_VERIFICATION_ENABLED=true` is deployed (see
+  /// `functions/iap.js`). `firestore.rules` already refused client
+  /// writes to `subscription`/`entitlements` before this flipped, so no
+  /// rules change was needed to turn this on specifically.
   ///
-  /// **Turning it back on is this one line**, plus the console work:
-  /// create the products, grant the service account Android Publisher
-  /// access, set `PLAY_VERIFICATION_ENABLED=true`, and deploy
-  /// `firestore.rules`. Flipping this alone would put buttons in front
-  /// of learners that still cannot complete.
-  static const bool purchasesEnabled = false;
+  /// **Still only real on a Play-installed build.** A debug APK
+  /// installed over USB reports every product as not found even with
+  /// this `true` — Play only serves purchases to a build installed
+  /// *from* Play, signed with the same key. Verifying the buy button
+  /// needs a release build through Internal Testing, not a local
+  /// install. iOS stays unverifiable regardless of this flag —
+  /// `functions/iap.js` refuses every non-Android platform on purpose
+  /// until Apple's App Store Server API is wired in.
+  static const bool purchasesEnabled = true;
 
   /// The one subscription: opens every premium module at once. Sold as a
   /// subscription rather than a one-off because the content keeps

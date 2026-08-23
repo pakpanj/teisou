@@ -37,6 +37,24 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   bool _watchingAd = false;
   StreamSubscription<IapOutcome>? _outcomeSub;
 
+  @override
+  void initState() {
+    super.initState();
+    // Loaded eagerly, not on button tap, so the real store price is
+    // already on screen the moment this paywall opens — the same
+    // pattern `ShopTab` uses for skin prices. `IapService.load` is a
+    // no-op with nothing to await while `IapProducts.purchasesEnabled`
+    // is off, so this is safe to call unconditionally.
+    _listenForOutcome();
+    ref.read(iapServiceProvider).load(IapProducts.all(const [])).then((_) {
+      // `IapService` mutates its own product map in place rather than
+      // notifying Riverpod, so nothing rebuilds this screen on its own
+      // once the store answers — this setState is what actually puts
+      // the fetched price on screen.
+      if (mounted) setState(() {});
+    });
+  }
+
   Future<void> _upgradePremium() async {
     final available = await InAppPurchase.instance.isAvailable();
     if (!mounted) return;
@@ -49,8 +67,9 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       return;
     }
 
-    _listenForOutcome();
     final iap = ref.read(iapServiceProvider);
+    // Already loaded once in initState — reloading here just covers a
+    // learner who opened this screen before the first load answered.
     await iap.load(IapProducts.all(const []));
     if (!mounted) return;
 
@@ -205,7 +224,14 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: _upgradePremium,
-                    child: Text(s.upgradePremiumButton),
+                    child: Text(
+                      s.upgradePremiumButton(
+                        ref
+                            .read(iapServiceProvider)
+                            .productFor(IapProducts.premiumMonthly)
+                            ?.price,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -278,10 +304,10 @@ class _BenefitList extends StatelessWidget {
   const _BenefitList({required this.strings});
 
   List<String> get _benefits => [
-        strings.benefitAllModules,
+        strings.benefitExclusiveCardSkins,
+        strings.benefitFullMaterials,
+        strings.benefitPremiumPractice,
         strings.benefitNoAds,
-        strings.benefitCloudProgress,
-        strings.benefitExclusiveLeaderboard,
       ];
 
   @override

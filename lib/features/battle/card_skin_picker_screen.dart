@@ -82,7 +82,7 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
     return switch (skin.source) {
       CardSkinSource.achievement =>
         s.cardSkinNeedsStars(skin.starsRequired, _starTotal),
-      CardSkinSource.paid => s.cardSkinShopSoon,
+      CardSkinSource.paid => s.cardSkinBuyInShop,
       CardSkinSource.event => s.cardSkinEventLocked,
       CardSkinSource.free => '',
     };
@@ -107,6 +107,11 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
     // `owned` argument `isCardSkinUnlocked` has always taken and never
     // had a source for.
     final owned = ref.watch(ownedSkinsProvider).valueOrNull ?? const <String>{};
+    // Premium's "Skin Battle Card eksklusif" benefit — live from
+    // `subscriptionProvider`, never stored, so the paid family re-locks
+    // the moment a subscription lapses, same as `moduleAccessProvider`.
+    final premium =
+        ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
 
     return AbsorbPointer(
         absorbing: _saving,
@@ -204,6 +209,7 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
                           skin,
                           starTotal: starTotal,
                           owned: owned.contains(skin.id),
+                          premium: premium,
                           allUnlocked: kCardSkinsAllUnlocked,
                         ))
                     Builder(
@@ -212,6 +218,7 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
                           skin,
                           starTotal: starTotal,
                           owned: owned.contains(skin.id),
+                          premium: premium,
                           allUnlocked: kCardSkinsAllUnlocked,
                         );
                         return _SkinTile(

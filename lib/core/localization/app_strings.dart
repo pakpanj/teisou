@@ -1277,9 +1277,14 @@ class AppStrings {
     'Akses penuh Kanji, Partikel, Bunpou, dan lebih banyak lagi',
     'Full access to Kanji, Partikel, Bunpou, and more',
   );
-  String get upgradePremiumButton => _t(
-    'Upgrade Premium — Rp 29.000/bulan',
-    'Upgrade to Premium — Rp 29,000/month',
+  // The price is never hardcoded here on purpose — it comes from the
+  // store's own `ProductDetails.price` (already localised, already
+  // current), the same rule `shop_tab.dart` follows for skin prices.
+  // [price] is null while the store hasn't answered yet, or when
+  // purchases are off; the button still reads sensibly either way.
+  String upgradePremiumButton(String? price) => _t(
+    price != null ? 'Upgrade Premium — $price' : 'Upgrade Premium',
+    price != null ? 'Upgrade to Premium — $price' : 'Upgrade to Premium',
   );
   String get orLabel => _t('atau', 'or');
   String get watchAdForPreviewButton =>
@@ -1290,13 +1295,19 @@ class AppStrings {
     '$moduleTitle terbuka — berlaku untuk 1x ganti foto.',
     '$moduleTitle unlocked — good for one photo change.',
   );
-  String get benefitAllModules =>
-      _t('Akses semua modul belajar', 'Access to all learning modules');
-  String get benefitNoAds => _t('Tanpa iklan', 'No ads');
-  String get benefitCloudProgress =>
-      _t('Progress tersimpan cloud', 'Cloud-saved progress');
-  String get benefitExclusiveLeaderboard =>
-      _t('Leaderboard eksklusif', 'Exclusive leaderboard');
+  String get benefitExclusiveCardSkins => _t(
+    '⭐ Skin Battle Card eksklusif',
+    '⭐ Exclusive Battle Card skins',
+  );
+  String get benefitFullMaterials => _t(
+    '📚 Materi pembelajaran lengkap',
+    '📚 Complete learning materials',
+  );
+  String get benefitPremiumPractice => _t(
+    '📝 Latihan soal premium',
+    '📝 Premium practice questions',
+  );
+  String get benefitNoAds => _t('🚫 Bebas iklan', '🚫 Ad-free');
 
   // --- Cam Detector ---
   String get preparingCamera =>
@@ -1987,9 +1998,9 @@ class AppStrings {
     'Butuh $required bintang — kamu punya $owned',
     'Needs $required stars — you have $owned',
   );
-  String get cardSkinShopSoon => _t(
-    'Toko belum buka — pembelian menyusul.',
-    'The shop is not open yet — buying comes later.',
+  String get cardSkinBuyInShop => _t(
+    'Beli di tab Toko, atau gratis kalau kamu Premium.',
+    'Buy it in the Shop tab, or free if you\'re Premium.',
   );
   String get cardSkinDebugAllUnlocked => _t(
     'Mode uji: semua skin bisa dipilih supaya tampilannya bisa '
