@@ -14,11 +14,17 @@ import '../exam_result/exam_result_screen.dart';
 import '../profile/exam_history_providers.dart';
 import 'exam_providers.dart';
 import '../../core/widgets/app_loading.dart';
+import 'exam_countdown.dart';
 
 class ExamScreen extends ConsumerStatefulWidget {
   final ExamMode mode;
 
-  const ExamScreen({super.key, required this.mode});
+  /// How long the whole paper gets, or null for an untimed run — see
+  /// [examTimeLimit]. When it runs out the exam is submitted as it
+  /// stands, with everything unanswered counting as wrong.
+  final Duration? timeLimit;
+
+  const ExamScreen({super.key, required this.mode, this.timeLimit});
 
   @override
   ConsumerState<ExamScreen> createState() => _ExamScreenState();
@@ -34,6 +40,11 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
   bool _committed = false;
   final List<AnsweredQuestion> _answers = [];
   bool _submitting = false;
+
+  /// Set once the paper has been handed in, by either route. Without it
+  /// the clock expiring just as the last Next is pressed would submit
+  /// twice.
+  bool _finished = false;
 
   /// Held here, not built in `build`, so the run of correct answers
   /// survives rebuilds.
@@ -96,14 +107,37 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
       return;
     }
 
+    await _submit(questions);
+  }
+
+  /// Hands the paper in early because the clock ran out.
+  ///
+  /// Every question not yet answered is recorded with an empty answer,
+  /// which grades as wrong — including the one on screen. Scoring only
+  /// what was reached would mean running out of time *improves* the
+  /// percentage, which would make the timed mode the easy one.
+  Future<void> _timeUp(List<ExamQuestion> questions) async {
+    if (_finished || _submitting) return;
+    for (var i = _answers.length; i < questions.length; i++) {
+      _answers.add(
+        AnsweredQuestion(question: questions[i], selectedAnswer: ''),
+      );
+    }
+    await _submit(questions);
+  }
+
+  Future<void> _submit(List<ExamQuestion> questions) async {
+    if (_finished) return;
+    _finished = true;
     setState(() => _submitting = true);
     final s = ref.read(appStringsProvider);
     final user = ref.read(appStartupProvider).valueOrNull;
     if (user == null) {
+      _finished = false;
       setState(() => _submitting = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(s.failedToSaveExamResult)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.failedToSaveExamResult)));
       return;
     }
 
@@ -115,7 +149,9 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
             uid: user.uid,
             mode: widget.mode,
             answers: _answers,
-            displayName: profile?.resolveDisplayName(user) ?? (user.displayName ?? s.defaultLearnerName),
+            displayName:
+                profile?.resolveDisplayName(user) ??
+                (user.displayName ?? s.defaultLearnerName),
             photoUrl: user.photoURL,
             avatarType: profile?.avatarType ?? AvatarType.google,
             avatarValue: profile?.avatarValue,
@@ -136,11 +172,13 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
       if (!mounted) return;
       final wrongAnswers = _answers
           .where((a) => !a.isCorrect)
-          .map((a) => QuizReviewEntry(
-                question: a.question.kana.character,
-                userAnswer: a.selectedAnswer,
-                correctAnswer: a.question.correctAnswer,
-              ))
+          .map(
+            (a) => QuizReviewEntry(
+              question: a.question.kana.character,
+              userAnswer: a.selectedAnswer,
+              correctAnswer: a.question.correctAnswer,
+            ),
+          )
           .toList();
       AppNavigator.replaceFadeScale(
         context,
@@ -148,10 +186,13 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
       );
     } catch (_) {
       if (!mounted) return;
+      // Let them try again: the paper is not lost just because the write
+      // failed.
+      _finished = false;
       setState(() => _submitting = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(s.failedToSaveExamResult)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.failedToSaveExamResult)));
     }
   }
 
@@ -174,10 +215,17 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
             children: [
               LinearProgressIndicator(
                 value: (_currentIndex + 1) / total,
-                backgroundColor: context.palette.primaryCoral.withValues(alpha: 0.15),
+                backgroundColor: context.palette.primaryCoral.withValues(
+                  alpha: 0.15,
+                ),
                 color: context.palette.primaryCoral,
                 minHeight: 6,
               ),
+              if (widget.timeLimit != null)
+                ExamCountdown(
+                  limit: widget.timeLimit!,
+                  onExpired: () => _timeUp(questions),
+                ),
               const SizedBox(height: 12),
               Text(
                 s.questionOf(_currentIndex + 1, total),
@@ -255,8 +303,8 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                     onPressed: _selectedAnswer == null || _submitting
                         ? null
                         : (_committed
-                            ? () => _handleNext(questions)
-                            : () => _confirm(question)),
+                              ? () => _handleNext(questions)
+                              : () => _confirm(question)),
                     child: _submitting
                         ? const SizedBox(
                             width: 20,
@@ -266,9 +314,11 @@ class _ExamScreenState extends ConsumerState<ExamScreen> {
                               color: Colors.white,
                             ),
                           )
-                        : Text(_committed
-                            ? s.nextQuestionButton
-                            : s.checkAnswerButton),
+                        : Text(
+                            _committed
+                                ? s.nextQuestionButton
+                                : s.checkAnswerButton,
+                          ),
                   ),
                 ),
               ),
@@ -338,15 +388,21 @@ class _OptionTile extends StatelessWidget {
         background = context.palette.secondaryBlue.withValues(alpha: 0.15);
         borderColor = context.palette.secondaryBlue;
         foreground = context.palette.textNavy;
-        trailing = Icon(Icons.check_circle,
-            color: context.palette.secondaryBlue, size: 20);
+        trailing = Icon(
+          Icons.check_circle,
+          color: context.palette.secondaryBlue,
+          size: 20,
+        );
         break;
       case _OptionState.wrong:
         background = context.palette.errorRed.withValues(alpha: 0.12);
         borderColor = context.palette.errorRed;
         foreground = context.palette.textNavy;
-        trailing =
-            Icon(Icons.cancel, color: context.palette.errorRed, size: 20);
+        trailing = Icon(
+          Icons.cancel,
+          color: context.palette.errorRed,
+          size: 20,
+        );
         break;
       case _OptionState.chosen:
         // "You picked this", not "this is right" — the answer colours must
@@ -354,8 +410,11 @@ class _OptionTile extends StatelessWidget {
         background = context.palette.primaryCoral.withValues(alpha: 0.12);
         borderColor = context.palette.primaryCoral;
         foreground = context.palette.textNavy;
-        trailing = Icon(Icons.radio_button_checked,
-            color: context.palette.primaryCoral, size: 20);
+        trailing = Icon(
+          Icons.radio_button_checked,
+          color: context.palette.primaryCoral,
+          size: 20,
+        );
         break;
       case _OptionState.neutral:
         background = context.palette.cardWhite;

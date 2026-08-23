@@ -14,6 +14,8 @@ import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 import '../profile/exam_history_providers.dart';
+import '../../core/constants/exam_timing.dart';
+import '../exam/exam_timing_gate.dart';
 
 /// Runs one Choukai clip: [clip.audioText] is only ever spoken via
 /// [ttsServiceProvider], never shown on screen — that's the whole point of
@@ -43,10 +45,13 @@ class ChoukaiExamScreen extends ConsumerWidget {
     if (user != null) {
       try {
         final profile = ref.read(userProfileProvider).valueOrNull;
-        await ref.read(choukaiExamHistoryRepositoryProvider).submit(
+        await ref
+            .read(choukaiExamHistoryRepositoryProvider)
+            .submit(
               uid: user.uid,
               result: result,
-              displayName: profile?.resolveDisplayName(user) ??
+              displayName:
+                  profile?.resolveDisplayName(user) ??
                   (user.displayName ?? 'Pelajar Kana'),
               photoUrl: user.photoURL,
               avatarType: profile?.avatarType ?? AvatarType.google,
@@ -79,18 +84,21 @@ class ChoukaiExamScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(clip.localizedTitle(s.language))),
-      body: McQuizFlow(
-        totalQuestions: clip.questions.length,
-        showFurigana: showFuriganaFor(clip.jlptLevel),
-        headerBuilder: (context, index) => _AudioHeader(
-          clip: clip,
-          prompt: clip.questions[index].prompt,
+      body: ExamTimingGate(
+        kind: ExamKind.choukai,
+        questionCount: clip.questions.length,
+        builder: (context, limit) => McQuizFlow(
+          timeLimit: limit,
+          totalQuestions: clip.questions.length,
+          showFurigana: showFuriganaFor(clip.jlptLevel),
+          headerBuilder: (context, index) =>
+              _AudioHeader(clip: clip, prompt: clip.questions[index].prompt),
+          optionsOf: (index) => clip.questions[index].options,
+          correctIndexOf: (index) => clip.questions[index].correctIndex,
+          questionLabelOf: (index) => clip.questions[index].prompt,
+          onComplete: (score, total, wrongAnswers) =>
+              _onComplete(context, ref, score, total, wrongAnswers),
         ),
-        optionsOf: (index) => clip.questions[index].options,
-        correctIndexOf: (index) => clip.questions[index].correctIndex,
-        questionLabelOf: (index) => clip.questions[index].prompt,
-        onComplete: (score, total, wrongAnswers) =>
-            _onComplete(context, ref, score, total, wrongAnswers),
       ),
     );
   }
@@ -179,7 +187,10 @@ class _ScriptReview extends ConsumerWidget {
         children: [
           Text(
             strings.audioScriptTitle,
-            style: TextStyle(fontWeight: FontWeight.bold, color: context.palette.textNavy),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: context.palette.textNavy,
+            ),
           ),
           const SizedBox(height: 8),
           dictionary != null
@@ -192,7 +203,9 @@ class _ScriptReview extends ConsumerWidget {
           const SizedBox(height: 8),
           Text(
             clip.localizedAudioTranslation(strings.language),
-            style: TextStyle(color: context.palette.textNavy.withValues(alpha: 0.6)),
+            style: TextStyle(
+              color: context.palette.textNavy.withValues(alpha: 0.6),
+            ),
           ),
         ],
       ),

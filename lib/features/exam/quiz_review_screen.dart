@@ -55,8 +55,7 @@ class _QuizReviewScreenState extends ConsumerState<QuizReviewScreen> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content:
-              Text(ref.read(appStringsProvider).screenshotDetectedNotice),
+          content: Text(ref.read(appStringsProvider).screenshotDetectedNotice),
         ),
       );
     };

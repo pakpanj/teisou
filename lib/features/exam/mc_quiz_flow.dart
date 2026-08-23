@@ -10,6 +10,7 @@ import '../../core/theme/app_palette.dart';
 import '../../core/widgets/furigana_text.dart';
 import '../../core/widgets/mascot_companion.dart';
 import '../../data/models/quiz_review_entry.dart';
+import 'exam_countdown.dart';
 
 /// Shared "N multiple-choice questions, one at a time, tap to reveal
 /// correct/wrong, Next button, tally a score" flow for Dokkai/Choukai/
@@ -23,11 +24,8 @@ class McQuizFlow extends ConsumerStatefulWidget {
   final Widget Function(BuildContext context, int index) headerBuilder;
   final List<String> Function(int index) optionsOf;
   final int Function(int index) correctIndexOf;
-  final void Function(
-    int score,
-    int total,
-    List<QuizReviewEntry> wrongAnswers,
-  ) onComplete;
+  final void Function(int score, int total, List<QuizReviewEntry> wrongAnswers)
+  onComplete;
 
   /// A plain-text version of whatever [headerBuilder] renders for one
   /// question, used only to build the "what was asked" line in the
@@ -46,6 +44,14 @@ class McQuizFlow extends ConsumerStatefulWidget {
   /// recognizes, so a run with none just renders as plain text either way.
   final bool showFurigana;
 
+  /// How long the whole paper gets, or null for an untimed run.
+  ///
+  /// The budget covers the exam, not the question: see [examTimeLimit].
+  /// When it runs out the quiz ends where it stands and whatever is
+  /// unanswered counts as wrong — the same thing that happens to a real
+  /// paper when the invigilator calls time.
+  final Duration? timeLimit;
+
   const McQuizFlow({
     super.key,
     required this.totalQuestions,
@@ -55,6 +61,7 @@ class McQuizFlow extends ConsumerStatefulWidget {
     required this.onComplete,
     required this.questionLabelOf,
     this.showFurigana = false,
+    this.timeLimit,
   });
 
   @override
@@ -64,6 +71,7 @@ class McQuizFlow extends ConsumerStatefulWidget {
 class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   int _index = 0;
   int? _selected;
+
   /// Whether [_selected] has been confirmed and graded. Until it is, the
   /// learner can change their mind as often as they like.
   bool _committed = false;
@@ -84,6 +92,11 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
   CoachLine? _reaction;
 
   final Random _random = Random();
+
+  /// Set once the paper is over, by either route. Without it the clock
+  /// expiring on the last question could complete the quiz a second time
+  /// after [_next] already had.
+  bool _finished = false;
 
   /// Per-question display order for [optionsOf]'s options — a permutation
   /// of their original indices, computed once the first time that question
@@ -151,9 +164,40 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
     });
   }
 
+  /// Ends the paper early because the clock ran out.
+  ///
+  /// Everything still unanswered is recorded as wrong, including the
+  /// question on screen — otherwise a learner who ran out of time on
+  /// question three would be scored out of three, and running out of time
+  /// would *raise* their percentage.
+  void _timeUp() {
+    if (_finished) return;
+    _finished = true;
+    for (
+      var i = _committed ? _index + 1 : _index;
+      i < widget.totalQuestions;
+      i++
+    ) {
+      final options = widget.optionsOf(i);
+      final correctIndex = widget.correctIndexOf(i);
+      _wrongAnswers.add(
+        QuizReviewEntry(
+          question: widget.questionLabelOf(i),
+          userAnswer: '',
+          correctAnswer: correctIndex >= 0 && correctIndex < options.length
+              ? options[correctIndex]
+              : '',
+        ),
+      );
+    }
+    widget.onComplete(_score, widget.totalQuestions, _wrongAnswers);
+  }
+
   void _next() {
     final isLast = _index >= widget.totalQuestions - 1;
     if (isLast) {
+      if (_finished) return;
+      _finished = true;
       widget.onComplete(_score, widget.totalQuestions, _wrongAnswers);
       return;
     }
@@ -177,6 +221,8 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
         ? ref.watch(furiganaDictionaryProvider).valueOrNull
         : null;
 
+    final limit = widget.timeLimit;
+
     return Column(
       children: [
         LinearProgressIndicator(
@@ -185,6 +231,7 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
           color: context.palette.primaryCoral,
           minHeight: 6,
         ),
+        if (limit != null) ExamCountdown(limit: limit, onExpired: _timeUp),
         const SizedBox(height: 12),
         Text(
           s.questionOf(_index + 1, widget.totalQuestions),
@@ -235,14 +282,15 @@ class _McQuizFlowState extends ConsumerState<McQuizFlow> {
           child: SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed:
-                  _selected == null ? null : (_committed ? _next : _confirm),
+              onPressed: _selected == null
+                  ? null
+                  : (_committed ? _next : _confirm),
               child: Text(
                 !_committed
                     ? s.checkAnswerButton
                     : (_index >= widget.totalQuestions - 1
-                        ? s.done
-                        : s.nextQuestionButton),
+                          ? s.done
+                          : s.nextQuestionButton),
               ),
             ),
           ),
@@ -278,7 +326,9 @@ class _OptionTile extends StatelessWidget {
 
   _OptionState get _state {
     if (!committed) {
-      return index == selectedIndex ? _OptionState.chosen : _OptionState.neutral;
+      return index == selectedIndex
+          ? _OptionState.chosen
+          : _OptionState.neutral;
     }
     if (selectedIndex == null) return _OptionState.neutral;
     if (index == correctIndex) return _OptionState.correct;
@@ -311,15 +361,21 @@ class _OptionTile extends StatelessWidget {
         background = context.palette.secondaryBlue.withValues(alpha: 0.15);
         borderColor = context.palette.secondaryBlue;
         foreground = context.palette.textNavy;
-        trailing = Icon(Icons.check_circle,
-            color: context.palette.secondaryBlue, size: 20);
+        trailing = Icon(
+          Icons.check_circle,
+          color: context.palette.secondaryBlue,
+          size: 20,
+        );
         break;
       case _OptionState.wrong:
         background = context.palette.errorRed.withValues(alpha: 0.12);
         borderColor = context.palette.errorRed;
         foreground = context.palette.textNavy;
-        trailing =
-            Icon(Icons.cancel, color: context.palette.errorRed, size: 20);
+        trailing = Icon(
+          Icons.cancel,
+          color: context.palette.errorRed,
+          size: 20,
+        );
         break;
       case _OptionState.chosen:
         // Deliberately not blue or red: this is "you have picked this",
@@ -328,8 +384,11 @@ class _OptionTile extends StatelessWidget {
         background = context.palette.primaryCoral.withValues(alpha: 0.12);
         borderColor = context.palette.primaryCoral;
         foreground = context.palette.textNavy;
-        trailing = Icon(Icons.radio_button_checked,
-            color: context.palette.primaryCoral, size: 20);
+        trailing = Icon(
+          Icons.radio_button_checked,
+          color: context.palette.primaryCoral,
+          size: 20,
+        );
         break;
       case _OptionState.neutral:
         background = context.palette.cardWhite;

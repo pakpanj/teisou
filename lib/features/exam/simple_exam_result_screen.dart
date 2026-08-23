@@ -70,13 +70,15 @@ class _SimpleExamResultScreenState
     final label = percentage >= 80
         ? s.simpleExamResultGreat
         : percentage >= 60
-            ? s.simpleExamResultGood
-            : s.simpleExamResultTryAgain;
+        ? s.simpleExamResultGood
+        : s.simpleExamResultTryAgain;
 
     return Scaffold(
       backgroundColor: context.palette.background,
-      appBar:
-          AppBar(title: Text(widget.title), automaticallyImplyLeading: false),
+      appBar: AppBar(
+        title: Text(widget.title),
+        automaticallyImplyLeading: false,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
@@ -133,11 +135,10 @@ class _SimpleExamResultScreenState
                   child: OutlinedButton(
                     onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) =>
-                            QuizReviewScreen(
-                              entries: widget.wrongAnswers!,
-                              secure: widget.reviewSecure,
-                            ),
+                        builder: (_) => QuizReviewScreen(
+                          entries: widget.wrongAnswers!,
+                          secure: widget.reviewSecure,
+                        ),
                       ),
                     ),
                     child: Text(s.reviewMistakesButton),

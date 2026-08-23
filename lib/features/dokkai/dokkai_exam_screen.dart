@@ -13,6 +13,8 @@ import '../../data/models/user_profile.dart' show AvatarType;
 import '../exam/mc_quiz_flow.dart';
 import '../exam/simple_exam_result_screen.dart';
 import '../profile/exam_history_providers.dart';
+import '../../core/constants/exam_timing.dart';
+import '../exam/exam_timing_gate.dart';
 
 /// One (passage, question) pair — the flattened unit [McQuizFlow] steps
 /// through. Kept as a small typedef record rather than a new model class
@@ -63,10 +65,13 @@ class DokkaiExamScreen extends ConsumerWidget {
     if (user != null) {
       try {
         final profile = ref.read(userProfileProvider).valueOrNull;
-        await ref.read(dokkaiExamHistoryRepositoryProvider).submit(
+        await ref
+            .read(dokkaiExamHistoryRepositoryProvider)
+            .submit(
               uid: user.uid,
               result: result,
-              displayName: profile?.resolveDisplayName(user) ??
+              displayName:
+                  profile?.resolveDisplayName(user) ??
                   (user.displayName ?? 'Pelajar Kana'),
               photoUrl: user.photoURL,
               avatarType: profile?.avatarType ?? AvatarType.google,
@@ -102,18 +107,23 @@ class DokkaiExamScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: context.palette.background,
       appBar: AppBar(title: Text(s.dokkaiSessionTitle(items.length))),
-      body: McQuizFlow(
-        totalQuestions: items.length,
-        showFurigana: showFuriganaFor(passages.first.jlptLevel),
-        headerBuilder: (context, index) => _PassageHeader(
-          passage: items[index].passage,
-          prompt: items[index].question.prompt,
+      body: ExamTimingGate(
+        kind: ExamKind.dokkai,
+        questionCount: items.length,
+        builder: (context, limit) => McQuizFlow(
+          timeLimit: limit,
+          totalQuestions: items.length,
+          showFurigana: showFuriganaFor(passages.first.jlptLevel),
+          headerBuilder: (context, index) => _PassageHeader(
+            passage: items[index].passage,
+            prompt: items[index].question.prompt,
+          ),
+          optionsOf: (index) => items[index].question.options,
+          correctIndexOf: (index) => items[index].question.correctIndex,
+          questionLabelOf: (index) => items[index].question.prompt,
+          onComplete: (score, total, wrongAnswers) =>
+              _onComplete(context, ref, score, total, wrongAnswers),
         ),
-        optionsOf: (index) => items[index].question.options,
-        correctIndexOf: (index) => items[index].question.correctIndex,
-        questionLabelOf: (index) => items[index].question.prompt,
-        onComplete: (score, total, wrongAnswers) =>
-            _onComplete(context, ref, score, total, wrongAnswers),
       ),
     );
   }

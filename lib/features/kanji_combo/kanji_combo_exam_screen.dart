@@ -13,6 +13,8 @@ import '../exam/simple_exam_result_screen.dart';
 import '../profile/exam_history_providers.dart';
 import 'kanji_combo_providers.dart';
 import '../../core/widgets/app_loading.dart';
+import '../../core/constants/exam_timing.dart';
+import '../exam/exam_timing_gate.dart';
 
 class KanjiComboExamScreen extends ConsumerWidget {
   final JlptLevel level;
@@ -42,10 +44,13 @@ class KanjiComboExamScreen extends ConsumerWidget {
     if (user != null) {
       try {
         final profile = ref.read(userProfileProvider).valueOrNull;
-        await ref.read(kanjiComboExamHistoryRepositoryProvider).submit(
+        await ref
+            .read(kanjiComboExamHistoryRepositoryProvider)
+            .submit(
               uid: user.uid,
               result: result,
-              displayName: profile?.resolveDisplayName(user) ??
+              displayName:
+                  profile?.resolveDisplayName(user) ??
                   (user.displayName ?? 'Pelajar Kana'),
               photoUrl: user.photoURL,
               avatarType: profile?.avatarType ?? AvatarType.google,
@@ -77,8 +82,9 @@ class KanjiComboExamScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final questionsAsync =
-        ref.watch(kanjiComboQuestionsProvider((level, combination)));
+    final questionsAsync = ref.watch(
+      kanjiComboQuestionsProvider((level, combination)),
+    );
     final s = ref.watch(appStringsProvider);
 
     return Scaffold(
@@ -93,22 +99,27 @@ class KanjiComboExamScreen extends ConsumerWidget {
           if (questions.isEmpty) {
             return Center(child: Text(s.noQuestionsAvailable));
           }
-          return McQuizFlow(
-            totalQuestions: questions.length,
-            // No furigana anywhere in this screen, on either question
-            // type — a reading question's prompt would leak the answer,
-            // and a meaning question's prompt would let a learner skip
-            // recognizing the kanji itself, which is exactly the skill
-            // this exam is meant to test.
-            headerBuilder: (context, index) => _KanjiPrompt(
-              text: questions[index].prompt,
-              promptLabel: questions[index].promptLabel,
+          return ExamTimingGate(
+            kind: ExamKind.kanji,
+            questionCount: questions.length,
+            builder: (context, limit) => McQuizFlow(
+              timeLimit: limit,
+              totalQuestions: questions.length,
+              // No furigana anywhere in this screen, on either question
+              // type — a reading question's prompt would leak the answer,
+              // and a meaning question's prompt would let a learner skip
+              // recognizing the kanji itself, which is exactly the skill
+              // this exam is meant to test.
+              headerBuilder: (context, index) => _KanjiPrompt(
+                text: questions[index].prompt,
+                promptLabel: questions[index].promptLabel,
+              ),
+              optionsOf: (index) => questions[index].options,
+              correctIndexOf: (index) => questions[index].correctIndex,
+              questionLabelOf: (index) => questions[index].prompt,
+              onComplete: (score, total, wrongAnswers) =>
+                  _onComplete(context, ref, score, total, wrongAnswers),
             ),
-            optionsOf: (index) => questions[index].options,
-            correctIndexOf: (index) => questions[index].correctIndex,
-            questionLabelOf: (index) => questions[index].prompt,
-            onComplete: (score, total, wrongAnswers) =>
-                _onComplete(context, ref, score, total, wrongAnswers),
           );
         },
         loading: () => const AppLoading(),
@@ -122,10 +133,7 @@ class _KanjiPrompt extends StatelessWidget {
   final String text;
   final String promptLabel;
 
-  const _KanjiPrompt({
-    required this.text,
-    required this.promptLabel,
-  });
+  const _KanjiPrompt({required this.text, required this.promptLabel});
 
   @override
   Widget build(BuildContext context) {
@@ -155,9 +163,7 @@ class _KanjiPrompt extends StatelessWidget {
               ),
             ],
           ),
-          child: Center(
-            child: Text(text, style: promptStyle),
-          ),
+          child: Center(child: Text(text, style: promptStyle)),
         ),
       ],
     );
