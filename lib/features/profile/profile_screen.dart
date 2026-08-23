@@ -34,6 +34,7 @@ import 'notification_screen.dart';
 import 'profile_providers.dart';
 import 'widgets/avatar_picker_sheet.dart';
 import 'widgets/cover_picker_sheet.dart';
+import 'widgets/premium_card.dart';
 import 'identity_sync.dart';
 import 'widgets/edit_name_dialog.dart';
 import 'widgets/exam_history_empty_illustration.dart';
@@ -108,6 +109,8 @@ class _ProfileBody extends ConsumerWidget {
         padding: const EdgeInsets.all(20),
         children: [
           _HeaderCard(user: user),
+          const SizedBox(height: 16),
+          const PremiumCard(),
           const SizedBox(height: 16),
           Row(
             children: [

@@ -4,10 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/services/iap_service.dart';
 import '../../core/constants/iap_products.dart';
 import 'module_access.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
 
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
+import '../../core/services/premium_purchase_flow.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/mascot_widget.dart';
 
@@ -36,17 +36,19 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
   bool _watchingAd = false;
   StreamSubscription<IapOutcome>? _outcomeSub;
+  late final PremiumPurchaseFlow _purchase;
 
   @override
   void initState() {
     super.initState();
+    _purchase = PremiumPurchaseFlow(ref);
     // Loaded eagerly, not on button tap, so the real store price is
     // already on screen the moment this paywall opens — the same
-    // pattern `ShopTab` uses for skin prices. `IapService.load` is a
-    // no-op with nothing to await while `IapProducts.purchasesEnabled`
-    // is off, so this is safe to call unconditionally.
+    // pattern `ShopTab` uses for skin prices. `loadPrice` is a no-op
+    // with nothing to await while `IapProducts.purchasesEnabled` is
+    // off, so this is safe to call unconditionally.
     _listenForOutcome();
-    ref.read(iapServiceProvider).load(IapProducts.all(const [])).then((_) {
+    _purchase.loadPrice().then((_) {
       // `IapService` mutates its own product map in place rather than
       // notifying Riverpod, so nothing rebuilds this screen on its own
       // once the store answers — this setState is what actually puts
@@ -55,48 +57,11 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     });
   }
 
-  Future<void> _upgradePremium() async {
-    final available = await InAppPurchase.instance.isAvailable();
-    if (!mounted) return;
-    final s = ref.read(appStringsProvider);
-
-    if (!available) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(s.storeUnavailable)),
-      );
-      return;
-    }
-
-    final iap = ref.read(iapServiceProvider);
-    // Already loaded once in initState — reloading here just covers a
-    // learner who opened this screen before the first load answered.
-    await iap.load(IapProducts.all(const []));
-    if (!mounted) return;
-
-    // A product the store has never heard of is not an error to show as
-    // a failure — it means nobody has created it in Play Console yet,
-    // which is a different sentence and a different person's job.
-    if (iap.productFor(IapProducts.premiumMonthly) == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(s.purchaseNotSetUp)),
-      );
-      return;
-    }
-    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
-    if (uid == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(s.purchaseFailed)),
-      );
-      return;
-    }
-    await iap.buy(IapProducts.premiumMonthly, uid: uid);
-  }
-
   /// The store's own result, which arrives on a stream rather than from
   /// the buy call — a purchase can be approved by a parent hours later,
   /// or restored on a different phone entirely.
   void _listenForOutcome() {
-    _outcomeSub ??= ref.read(iapServiceProvider).outcomes.listen((outcome) {
+    _outcomeSub ??= _purchase.outcomes.listen((outcome) {
       if (!mounted) return;
       final s = ref.read(appStringsProvider);
       final message = switch (outcome) {
@@ -116,7 +81,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
 
   Future<void> _restore() async {
     _listenForOutcome();
-    await ref.read(iapServiceProvider).restore();
+    await _purchase.restore();
   }
 
   @override
@@ -223,15 +188,8 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: _upgradePremium,
-                    child: Text(
-                      s.upgradePremiumButton(
-                        ref
-                            .read(iapServiceProvider)
-                            .productFor(IapProducts.premiumMonthly)
-                            ?.price,
-                      ),
-                    ),
+                    onPressed: () => _purchase.buy(context, s),
+                    child: Text(s.upgradePremiumButton(_purchase.price)),
                   ),
                 ),
                 const SizedBox(height: 8),

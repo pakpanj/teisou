@@ -132,19 +132,64 @@ void main() {
   /// send one sells nothing — and the symptom is a purchase that takes
   /// the money and then reports failure, which is the worst possible
   /// way to find out.
+  ///
+  /// **Two shapes now, not one.** `shop_tab.dart` still calls
+  /// `IapService.buy` directly for skin purchases. Every "buy Premium"
+  /// site (`paywall_screen.dart`, the profile premium card, the
+  /// plan-intro screen) instead goes through `PremiumPurchaseFlow.buy`
+  /// — written once specifically so the uid-binding rule only has to be
+  /// correct in one place (`premium_purchase_flow.dart`) rather than
+  /// re-verified in every screen that offers Premium. Checking each
+  /// call site directly for `uid: uid` again would just re-introduce
+  /// the duplication the refactor removed; checking the shared helper
+  /// once, and that every Premium call site actually routes through it,
+  /// is the real invariant here.
   group('purchases are bound to an account', () {
-    test('every buy call site passes a uid', () {
+    test('the shop still binds its direct skin purchases to a uid', () {
+      final source = File('lib/features/battle/shop_tab.dart').readAsStringSync();
+      final calls = RegExp(r'\.buy\(').allMatches(source).length;
+      expect(calls, greaterThan(0), reason: 'shop_tab.dart buys nothing');
+      expect(
+        RegExp(r'uid: uid').allMatches(source).length,
+        greaterThanOrEqualTo(calls),
+        reason: 'shop_tab.dart buys without binding the purchase to an account',
+      );
+    });
+
+    test('PremiumPurchaseFlow — the one place Premium is actually '
+        'bought — binds the purchase to a uid', () {
+      final source =
+          File('lib/core/services/premium_purchase_flow.dart').readAsStringSync();
+      expect(
+        RegExp(r'\.buy\([^)]*uid: uid', dotAll: true).hasMatch(source),
+        isTrue,
+        reason: 'PremiumPurchaseFlow.buy no longer binds a uid — every '
+            'Premium call site trusts this one place to do it',
+      );
+    });
+
+    test('every Premium call site routes through PremiumPurchaseFlow '
+        'rather than calling IapService directly', () {
       for (final path in [
         'lib/features/paywall/paywall_screen.dart',
-        'lib/features/battle/shop_tab.dart',
+        'lib/features/profile/widgets/premium_card.dart',
+        'lib/features/onboarding/plan_intro_screen.dart',
       ]) {
         final source = File(path).readAsStringSync();
-        final calls = RegExp(r'\.buy\(').allMatches(source).length;
-        expect(calls, greaterThan(0), reason: '$path buys nothing');
         expect(
-          RegExp(r'uid: uid').allMatches(source).length,
-          greaterThanOrEqualTo(calls),
-          reason: '$path buys without binding the purchase to an account',
+          source.contains('PremiumPurchaseFlow'),
+          isTrue,
+          reason: '$path offers Premium without going through '
+              'PremiumPurchaseFlow — the uid-binding guarantee only '
+              'holds if every call site actually uses it',
+        );
+        // Never IapService.buy called directly here — that would bypass
+        // the shared wrapper this whole group exists to trust.
+        expect(
+          RegExp(r'\biap\.buy\(|iapServiceProvider\)\.buy\(').hasMatch(source),
+          isFalse,
+          reason: '$path calls IapService.buy directly, bypassing '
+              'PremiumPurchaseFlow',
         );
       }
     });

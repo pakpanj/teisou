@@ -74,6 +74,7 @@ import 'services/romaji_converter.dart';
 import 'services/rank_skip_service.dart';
 import 'services/tts_service.dart';
 import '../data/repositories/onboarding_repository.dart';
+import '../data/repositories/plan_intro_repository.dart';
 
 final languageRepositoryProvider = Provider<LanguageRepository>(
   (ref) => LanguageRepository(),
@@ -158,6 +159,17 @@ final replayHomeTourProvider = StateProvider<int>((ref) => 0);
 
 final hasSeenTutorialProvider = FutureProvider.family<bool, TutorialId>(
   (ref, id) => ref.watch(onboardingRepositoryProvider).hasSeen(id),
+);
+
+final planIntroRepositoryProvider = Provider<PlanIntroRepository>(
+  (ref) => PlanIntroRepository(),
+);
+
+/// Whether this device has already seen the Free-vs-Premium plan intro
+/// shown right after the age question — see [PlanIntroRepository]'s own
+/// doc comment for why it's tracked separately from [hasSeenTutorialProvider].
+final hasSeenPlanIntroProvider = FutureProvider<bool>(
+  (ref) => ref.watch(planIntroRepositoryProvider).hasSeen(),
 );
 
 final adAudienceRepositoryProvider =

@@ -23,6 +23,7 @@ import 'core/services/startup_preloader.dart';
 import 'core/widgets/mascot_loading_screen.dart';
 import 'features/onboarding/first_visit_tutorial.dart';
 import 'features/onboarding/home_tour.dart';
+import 'features/onboarding/plan_intro_screen.dart';
 import 'data/repositories/onboarding_repository.dart';
 
 Future<void> main() async {
@@ -163,12 +164,44 @@ class _AudienceGate extends ConsumerWidget {
         // Fire-and-forget: the configuration applies to requests made after
         // it lands, and every ad site is behind at least one more tap.
         unawaited(ref.read(adServiceProvider).applyAudience(value));
-        return const _PreloadGate();
+        return const _PlanIntroGate();
       },
       loading: () => const _StartupLoading(),
       // A failed read leaves the audience unknown, which AdAudience already
       // treats as a child — so ask rather than assume an adult.
       error: (_, _) => const AgeQuestionScreen(),
+    );
+  }
+}
+
+/// Shows the Free-vs-Premium plan intro once per device, right after the
+/// age question and before the dataset preload / home tutorial.
+///
+/// **Here specifically, not merged into the home tutorial and not
+/// before the age question** — an explicit product decision, not a
+/// default: the age answer configures ads and has to be settled first
+/// (same reasoning [_AudienceGate] already gives for sitting where it
+/// does), and this is a one-time monetisation choice rather than a
+/// coach-mark walkthrough of the home screen's own cards, so it does
+/// not belong inside [FirstVisitTutorial]'s tour either — see
+/// `PlanIntroRepository`'s doc comment for why it tracks "seen" on its
+/// own key instead of reusing `TutorialId`.
+class _PlanIntroGate extends ConsumerWidget {
+  const _PlanIntroGate();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final seen = ref.watch(hasSeenPlanIntroProvider);
+    return seen.when(
+      data: (value) => value ? const _PreloadGate() : const PlanIntroFlow(),
+      loading: () => const _StartupLoading(),
+      // A failed read must not trap every launch behind a screen that
+      // can never resolve "seen" — same asymmetry `_AudienceGate`
+      // accepts for its own failed read, just the other way round: an
+      // unknown age is treated as a child (the safer wrong answer),
+      // while an unknown "seen" state is treated as already seen (the
+      // one that never blocks the app from opening).
+      error: (_, _) => const _PreloadGate(),
     );
   }
 }

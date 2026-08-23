@@ -1309,6 +1309,98 @@ class AppStrings {
   );
   String get benefitNoAds => _t('🚫 Bebas iklan', '🚫 Ad-free');
 
+  // --- Plan intro (Free vs Premium, shown once after the age question) ---
+  String get planIntroWelcomeTitle =>
+      _t('Selamat datang di Teisou!', 'Welcome to Teisou!');
+  String get planIntroWelcomeSubtitle => _t(
+    'Kuasai hiragana, katakana, kanji, dan tata bahasa Jepang — semua '
+        'dalam satu aplikasi.',
+    'Master hiragana, katakana, kanji, and Japanese grammar — all in '
+        'one app.',
+  );
+  String get planIntroChooseTitle =>
+      _t('Pilih paket yang sesuai untukmu', 'Choose the plan that fits you');
+  String get planIntroFreeTitle => _t('FREE PLAN', 'FREE PLAN');
+  String get planIntroFreeSubtitle =>
+      _t('Untuk memulai dengan fitur dasar', 'To get started with the basics');
+  String get planIntroFreeBulletKana =>
+      _t('Hiragana & Katakana lengkap', 'Full Hiragana & Katakana');
+  String get planIntroFreeBulletKanjiBunpou =>
+      _t('Kanji N5-N4, Bunpou N5', 'Kanji N5-N4, Bunpou N5');
+  String get planIntroFreeBulletBab =>
+      _t('Kurikulum Bab lengkap', 'Full Bab curriculum');
+  String get planIntroFreeBulletCardGame =>
+      _t('Mode Kartu (bertanding)', 'Card Mode (battles)');
+  String get planIntroPremiumTitle => _t('PREMIUM PLAN', 'PREMIUM PLAN');
+  String get planIntroPremiumSubtitle => _t(
+    'Semua fitur untuk pengalaman maksimal',
+    'Every feature, for the fullest experience',
+  );
+  String get planIntroPremiumBulletAllModules => _t(
+    'Semua modul lengkap (Kanji, Bunpou, Partikel, Kaiwa, Choukai)',
+    'Every module unlocked (Kanji, Bunpou, Partikel, Kaiwa, Choukai)',
+  );
+  String get planIntroSecureTitle => _t('Aman dan nyaman', 'Safe and simple');
+  String get planIntroSecureSubtitle => _t(
+    'Pembayaran aman melalui Google Play. Batalkan kapan saja.',
+    'Secure payment through Google Play. Cancel anytime.',
+  );
+  String get planIntroContinueButton => _t('Lanjutkan', 'Continue');
+  String get planIntroSkip => _t('Lewati', 'Skip');
+  String get planIntroCompareTitle => _t(
+    'Pilih paket terbaik untuk kebutuhanmu',
+    'Choose the best plan for your needs',
+  );
+  String get planIntroRowKanji => _t('Modul Kanji', 'Kanji module');
+  String get planIntroValueKanjiFree => _t('N5-N4', 'N5-N4');
+  String get planIntroValueKanjiPremium => _t('N5-N1', 'N5-N1');
+  String get planIntroRowBunpou => _t('Modul Bunpou', 'Bunpou module');
+  String get planIntroValueBunpouFree => _t('N5', 'N5');
+  String get planIntroValueBunpouPremium => _t('N5-N1', 'N5-N1');
+  String get planIntroRowPartikelKaiwaChoukai =>
+      _t('Partikel, Kaiwa, Choukai', 'Partikel, Kaiwa, Choukai');
+  String get planIntroValueLocked => _t('🔒 Terkunci', '🔒 Locked');
+  String get planIntroValueUnlocked => _t('✓ Terbuka', '✓ Unlocked');
+  String get planIntroRowCardSkins =>
+      _t('Skin Battle Card', 'Battle Card skins');
+  String get planIntroValueBasic => _t('Dasar', 'Basic');
+  String get planIntroValueExclusive => _t('Eksklusif', 'Exclusive');
+  String get planIntroRowPractice => _t('Latihan Soal', 'Practice questions');
+  String get planIntroValuePremium => _t('Premium', 'Premium');
+  String get planIntroRowAds => _t('Iklan', 'Ads');
+  String get planIntroValueAdsShown => _t('Ada', 'Shown');
+  String get planIntroValueAdsFree => _t('Bebas Iklan', 'Ad-free');
+  String get planIntroStartPremiumButton =>
+      _t('Mulai Premium', 'Start Premium');
+  String get planIntroUseFreeButton =>
+      _t('Gunakan Free Plan', 'Use Free Plan');
+  // Never a hardcoded number — see upgradePremiumButton's own doc
+  // comment for why the price always comes from the store.
+  String planIntroPriceLabel(String? price) => _t(
+    price ?? 'Memuat harga...',
+    price ?? 'Loading price...',
+  );
+  String get planIntroCancelAnytime =>
+      _t('Batalkan kapan saja', 'Cancel anytime');
+  String get planIntroAllFeatures =>
+      _t('Akses semua fitur premium', 'Access all premium features');
+  String get planIntroSecurePayment =>
+      _t('Pembayaran aman via Google Play', 'Secure payment via Google Play');
+
+  // --- Profile's Premium card ---
+  String get profilePremiumUpgradeTitle =>
+      _t('Upgrade ke Premium', 'Upgrade to Premium');
+  String get profilePremiumUpgradeSubtitle => _t(
+    'Buka semua modul, skin eksklusif, dan bebas iklan.',
+    'Unlock every module, exclusive skins, and no ads.',
+  );
+  String get profilePremiumActiveTitle =>
+      _t('Kamu Premium! 🎉', "You're Premium! 🎉");
+  String get profilePremiumActiveSubtitle => _t(
+    'Terima kasih sudah mendukung Teisou.',
+    'Thanks for supporting Teisou.',
+  );
+
   // --- Cam Detector ---
   String get preparingCamera =>
       _t('Menyiapkan kamera...', 'Preparing camera...');
