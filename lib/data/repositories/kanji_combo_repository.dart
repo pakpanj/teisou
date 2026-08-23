@@ -412,10 +412,49 @@ class KanjiComboRepository {
   /// [_buildSingleKanjiQuestions] drawing distractors from *both* pooled
   /// together. Keeping distractors confined to the same kind as the
   /// correct answer fixes it at the source, not by filtering afterward.
+  ///
+  /// **Also fixes a second, separately-reported bug**: 340 of the 2425
+  /// kanji in this dataset (14%) carry more than one kunyomi — e.g. 終's
+  /// kunyomi is `["お-わる", "お-える"]`, おわる (intransitive "to end") and
+  /// おえる (transitive "to finish") being genuinely different words that
+  /// happen to share a kanji. The question used to show only the bare
+  /// character with no okurigana, so a session that happened to land on
+  /// おえる looked wrong to a learner who only knew おわる — both were
+  /// really being tested, just never distinguishable from the prompt
+  /// alone. [_buildSingleKanjiQuestions] now rebuilds the prompt with the
+  /// picked reading's own okurigana attached (終える vs 終わる) whenever one
+  /// exists, which is the normal way a dictionary or textbook disambiguates
+  /// this too. Onyomi carries no okurigana at all (0 of the dataset's
+  /// onyomi entries contain "-"), so that half of the ambiguity can't be
+  /// fixed the same way — for a kind with more than one reading and no
+  /// okurigana to attach (167 kanji with 2+ onyomi, plus 37 more kanji
+  /// whose 2+ kunyomi are *all* okurigana-less), this always resolves to
+  /// that kind's first-listed reading instead of a random one, since the
+  /// dataset's own generator authors the primary reading first — the same
+  /// "test the one thing every source agrees on" fallback, just without a
+  /// visual prompt change to go with it.
   ({String reading, bool isOnyomi}) _randomReadingWithKind(KanjiEntry entry) {
     final combined = [...entry.onyomi, ...entry.kunyomi];
     final index = _random.nextInt(combined.length);
-    return (reading: combined[index], isOnyomi: index < entry.onyomi.length);
+    final isOnyomi = index < entry.onyomi.length;
+    var reading = combined[index];
+    if (!reading.contains('-')) {
+      final sameKind = isOnyomi ? entry.onyomi : entry.kunyomi;
+      if (sameKind.length > 1) reading = sameKind.first;
+    }
+    return (reading: reading, isOnyomi: isOnyomi);
+  }
+
+  /// What to actually show for a reading question — the bare character
+  /// for onyomi (never carries okurigana), or the character with its
+  /// picked kunyomi's okurigana attached (終 + わる = 終わる) so a kanji with
+  /// more than one kunyomi shows which one is being asked, rather than
+  /// leaving the learner to guess between e.g. 終わる and 終える. See
+  /// [_randomReadingWithKind]'s doc comment for the bug this closes.
+  String _readingPrompt(KanjiEntry entry, String reading) {
+    final dash = reading.indexOf('-');
+    if (dash == -1) return entry.character;
+    return entry.character + reading.substring(dash + 1);
   }
 
   List<KanjiComboQuestion> _buildSingleKanjiQuestions(
@@ -438,9 +477,11 @@ class KanjiComboRepository {
 
       final String correctAnswer;
       Set<String> distractors;
+      var prompt = item.character;
       if (askReading) {
         final picked = _randomReadingWithKind(item);
         correctAnswer = picked.reading;
+        prompt = _readingPrompt(item, picked.reading);
         // Same kind only (onyomi vs kunyomi) — see _randomReadingWithKind's
         // doc comment for why mixing them produced wrong-script options.
         distractors = _pickReadingDistractors(
@@ -459,7 +500,7 @@ class KanjiComboRepository {
       final options = [correctAnswer, ...distractors]..shuffle(_random);
       return KanjiComboQuestion(
         id: 'kombo_$i',
-        prompt: item.character,
+        prompt: prompt,
         options: options,
         correctIndex: options.indexOf(correctAnswer),
         promptLabel: askReading ? labels.reading : labels.meaning,

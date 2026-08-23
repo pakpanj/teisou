@@ -71,6 +71,88 @@ void main() {
       // path at all, not just meaning questions every time.
       expect(readingQuestionsChecked, greaterThan(50));
     });
+
+    test('a kunyomi reading question shows the okurigana in the prompt, '
+        'never the bare character alone', () async {
+      // The reported bug: 終's kunyomi is ["お-わる", "お-える"] — two
+      // genuinely different words (owaru "to end" vs oeru "to finish")
+      // sharing one kanji. The prompt used to always be the bare
+      // character with no okurigana, so a session that happened to test
+      // おえる looked wrong to a learner who only knew おわる — nothing in
+      // the question distinguished which of the two was actually being
+      // asked. The prompt must now carry whichever okurigana matches the
+      // reading actually marked correct.
+      final repo = KanjiComboRepository(
+        kanjiRepository: KanjiRepository(),
+        kotobaRepository: KotobaRepository(),
+        kotobaCategoryRepository: KotobaCategoryRepository(),
+        random: Random(7),
+      );
+      const labels = KanjiComboLabels();
+
+      var kunyomiReadingQuestionsChecked = 0;
+      for (final level in [JlptLevel.n5, JlptLevel.n4, JlptLevel.n3, JlptLevel.n2, JlptLevel.n1]) {
+        for (var run = 0; run < 8; run++) {
+          final questions = await repo.generateQuestions(
+            level,
+            combination: false,
+            labels: labels,
+            count: 50,
+          );
+          for (final q in questions) {
+            if (q.promptLabel != labels.reading) continue;
+            final correctAnswer = q.options[q.correctIndex];
+            final dash = correctAnswer.indexOf('-');
+            if (dash == -1) continue; // onyomi — no okurigana to show
+            kunyomiReadingQuestionsChecked++;
+            final okurigana = correctAnswer.substring(dash + 1);
+            expect(
+              q.prompt.endsWith(okurigana),
+              isTrue,
+              reason: 'prompt "${q.prompt}" does not carry the okurigana '
+                  'from its own correct answer "$correctAnswer"',
+            );
+            expect(
+              q.prompt.length,
+              greaterThan(1),
+              reason: 'prompt "${q.prompt}" is just the bare character, '
+                  'giving no way to tell which kunyomi is being asked',
+            );
+          }
+        }
+      }
+      expect(kunyomiReadingQuestionsChecked, greaterThan(20));
+    });
+
+    test('an onyomi reading question still shows only the bare character '
+        '— onyomi never carries okurigana to disambiguate with', () async {
+      final repo = KanjiComboRepository(
+        kanjiRepository: KanjiRepository(),
+        kotobaRepository: KotobaRepository(),
+        kotobaCategoryRepository: KotobaCategoryRepository(),
+        random: Random(9),
+      );
+      const labels = KanjiComboLabels();
+
+      var onyomiReadingQuestionsChecked = 0;
+      for (var run = 0; run < 8; run++) {
+        final questions = await repo.generateQuestions(
+          JlptLevel.n1,
+          combination: false,
+          labels: labels,
+          count: 50,
+        );
+        for (final q in questions) {
+          if (q.promptLabel != labels.reading) continue;
+          final correctAnswer = q.options[q.correctIndex];
+          if (correctAnswer.contains('-')) continue; // kunyomi, covered above
+          onyomiReadingQuestionsChecked++;
+          expect(q.prompt.length, 1, reason: 'onyomi prompt "${q.prompt}" '
+              'should be exactly the bare character');
+        }
+      }
+      expect(onyomiReadingQuestionsChecked, greaterThan(20));
+    });
   });
 
   group('generateMutationDistractors', () {
