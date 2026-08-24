@@ -34,7 +34,8 @@ service cloud.firestore {
           // ProgressRepository.ensureUserProfile, tidak boleh lebih.
           && request.resource.data.get('subscription', {})
               .get('tier', 'free') == 'free'
-          && !('entitlements' in request.resource.data);
+          && !('entitlements' in request.resource.data)
+          && request.resource.data.get('coins', 0) == 0;
       allow update: if request.auth != null && request.auth.uid == uid
           && isAllowedAvatarWrite()
           && isAllowedPurchaseWrite()
@@ -534,12 +535,15 @@ service cloud.firestore {
       }
     }
 
-    // Uang. `subscription` dan `entitlements` HANYA boleh ditulis Cloud
-    // Function verifyPurchase (Admin SDK, melewati rules ini). Sebelum ada
-    // yang dijual, `subscription` bisa ditulis pemiliknya sendiri dan itu
-    // tidak berbahaya; begitu ada yang dijual, client yang bisa menulis
-    // `tier: premium` sendiri membuat seluruh verifikasi pembelian jadi
-    // sandiwara.
+    // Uang. `subscription`, `entitlements` dan `coins` HANYA boleh ditulis
+    // Cloud Function (Admin SDK, melewati rules ini): `verifyPurchase` untuk
+    // dua yang pertama, `verifyPurchase` (paket top-up koin) dan
+    // `awardTopGlobalCoins` (hadiah mingguan top 1-3 Skor Global) untuk
+    // `coins`. Sebelum ada yang dijual, field-field ini bisa ditulis
+    // pemiliknya sendiri dan itu tidak berbahaya; begitu ada yang dijual
+    // atau bisa didapat gratis, client yang bisa menulis nilainya sendiri
+    // membuat seluruh verifikasi jadi sandiwara — sama seperti alasan
+    // `cardGameRank` di atas tidak boleh ditulis client.
     function isAllowedPurchaseWrite() {
       let oldSub = resource == null
           ? {}
@@ -547,8 +551,12 @@ service cloud.firestore {
       let oldEnt = resource == null
           ? {}
           : resource.data.get('entitlements', {});
+      let oldCoins = resource == null
+          ? 0
+          : resource.data.get('coins', 0);
       return request.resource.data.get('subscription', {}) == oldSub
-          && request.resource.data.get('entitlements', {}) == oldEnt;
+          && request.resource.data.get('entitlements', {}) == oldEnt
+          && request.resource.data.get('coins', 0) == oldCoins;
     }
 
     function isAllowedAvatarWrite() {

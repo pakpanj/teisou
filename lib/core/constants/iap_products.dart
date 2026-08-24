@@ -60,6 +60,48 @@ class IapProducts {
           ? productId.substring(skinPrefix.length)
           : null;
 
+  /// Coin top-up packs — **consumable**, unlike everything else this
+  /// class sells: a subscription renews itself and a skin is owned once
+  /// forever, but a coin pack has to be buyable again the moment it's
+  /// spent. See [IapService.buyConsumable] and `functions/iap.js`'s
+  /// server-side `consume` call after granting — the two exist together
+  /// specifically because a consumable product left un-consumed on
+  /// Play's side can never be bought a second time.
+  ///
+  /// Real money amounts are deliberately not stored here — that's a
+  /// Play Console pricing decision, not a client constant, and this file
+  /// already carries the same discipline for [premiumMonthly]. The
+  /// intended price, for whoever sets these up in Play Console, is a flat
+  /// **Rp 3.000 per 100 coins** across every pack (so 100 -> Rp 3.000,
+  /// 1000 -> Rp 30.000) — no bulk discount, per explicit product
+  /// decision. [IapProducts.purchasesEnabled]'s own doc comment is the
+  /// example this repeats the pattern from.
+  static const coinPack100 = 'teisou_coins_100';
+  static const coinPack200 = 'teisou_coins_200';
+  static const coinPack350 = 'teisou_coins_350';
+  static const coinPack500 = 'teisou_coins_500';
+  static const coinPack700 = 'teisou_coins_700';
+  static const coinPack1000 = 'teisou_coins_1000';
+
+  /// How many coins each pack grants — the only place this mapping lives,
+  /// read by both the shop's own button labels and (mirrored, since Node
+  /// can't import Dart) `functions/iap.js`'s `COIN_PACKS`. Keep the two in
+  /// sync by hand if a pack is ever added or resized; there is no build
+  /// step that could enforce it across the language boundary. Ordered
+  /// smallest-first — the shop renders packs in this map's own order,
+  /// not sorted separately.
+  static const Map<String, int> coinPackAmounts = {
+    coinPack100: 100,
+    coinPack200: 200,
+    coinPack350: 350,
+    coinPack500: 500,
+    coinPack700: 700,
+    coinPack1000: 1000,
+  };
+
+  static bool isCoinPack(String productId) =>
+      coinPackAmounts.containsKey(productId);
+
   /// Every id to ask the store about on startup. Built from the skin
   /// list rather than typed twice, so a skin added to the shop is asked
   /// for automatically — and shows up in `notFoundIDs` until somebody
@@ -67,5 +109,6 @@ class IapProducts {
   static Set<String> all(Iterable<String> paidSkinIds) => {
         premiumMonthly,
         for (final id in paidSkinIds) productIdForSkin(id),
+        ...coinPackAmounts.keys,
       };
 }

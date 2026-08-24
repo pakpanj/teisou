@@ -286,9 +286,16 @@ exports.onBattleMatchConcluded =
   require("./battle_stars").onBattleMatchConcluded;
 
 // Turning a store purchase into an entitlement — the only writer of
-// `subscription` and `entitlements`, since firestore.rules refuses every
-// client write to both. See functions/iap.js.
+// `subscription`, `entitlements` and (for a coin-pack purchase) `coins`,
+// since firestore.rules refuses every client write to all three. See
+// functions/iap.js.
 exports.verifyPurchase = require("./iap").verifyPurchase;
+
+// The other way to earn coins besides buying them: 1st-3rd on Skor
+// Global, recalculated and paid out every Monday. See
+// functions/award_top_coins.js.
+exports.awardTopGlobalCoins =
+  require("./award_top_coins").awardTopGlobalCoins;
 
 // The rank-skip exam: two callables, one to draw the cards and one to
 // grade them. Grading is server-side by necessity — see rank_skip.js.

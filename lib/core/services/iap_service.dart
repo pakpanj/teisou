@@ -139,9 +139,39 @@ class IapService {
       applicationUserName: uid,
     );
     // A subscription is non-consumable; so is a skin, which is bought
-    // once and owned forever. Nothing here is consumable, so nothing is
-    // ever bought twice.
+    // once and owned forever.
     return _store.buyNonConsumable(purchaseParam: param);
+  }
+
+  /// Same shape as [buy], for a coin pack — the one thing this app sells
+  /// that's meant to be bought again. **`autoConsume: false`
+  /// deliberately** — the plugin's own auto-consume calls
+  /// `BillingClient.consumeAsync` on the device right after purchase,
+  /// which marks the purchase consumed on Play's servers almost
+  /// immediately. If that happened before `_verify` below ran,
+  /// `functions/iap.js`'s `purchases.products.get` would see
+  /// `consumptionState: 1` and refuse to grant coins for a purchase that
+  /// was completely real — the exact failure `productGrants` (in
+  /// `functions/iap_states.js`) exists to catch for a *replay*, now
+  /// firing on the first legitimate attempt instead. So the app leaves
+  /// the purchase unconsumed locally; the server consumes it (via the
+  /// Play Developer API, after granting) once verification actually
+  /// succeeds, and only then can the pack be bought again.
+  Future<bool> buyCoinPack(String productId, {required String uid}) async {
+    if (!IapProducts.purchasesEnabled) {
+      _outcomes.add(IapOutcome.unavailable);
+      return false;
+    }
+    final product = _products[productId];
+    if (product == null) {
+      _outcomes.add(_available ? IapOutcome.failed : IapOutcome.unavailable);
+      return false;
+    }
+    final param = PurchaseParam(
+      productDetails: product,
+      applicationUserName: uid,
+    );
+    return _store.buyConsumable(purchaseParam: param, autoConsume: false);
   }
 
   /// Re-delivers anything already bought — a new phone, a reinstall, a

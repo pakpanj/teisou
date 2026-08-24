@@ -287,6 +287,24 @@ class ProgressRepository {
     );
   }
 
+  /// Coin balance — read-only from the client, same reasoning as
+  /// [watchCardGameRank]: `coins` is frozen against client writes in
+  /// `firestore.rules` (`isAllowedPurchaseWrite`), so the only writers
+  /// are `verifyPurchase` (a top-up pack, granted after Play confirms
+  /// the token) and the weekly `awardTopGlobalCoins` Cloud Function (top
+  /// 1-3 on Skor Global). Defaults to 0 for a learner who has never had
+  /// the field written, same fallback shape as [watchSubscription].
+  Stream<int> watchCoinBalance(String uid) {
+    return _userDoc(uid)
+        .snapshots()
+        .map((snapshot) => (snapshot.data()?['coins'] as num?)?.toInt() ?? 0);
+  }
+
+  Future<int> getCoinBalance(String uid) async {
+    final snapshot = await _userDoc(uid).get();
+    return (snapshot.data()?['coins'] as num?)?.toInt() ?? 0;
+  }
+
   // There is deliberately no setCardGameRank. Stars are moved only by
   // `functions/battle_stars.js` when a ranked match concludes, and
   // `firestore.rules` now rejects any client write that changes

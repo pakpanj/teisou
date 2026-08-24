@@ -41,7 +41,14 @@ void main() {
       for (final id in paid) {
         expect(asked, contains(IapProducts.productIdForSkin(id)));
       }
-      expect(asked.length, paid.length + 1);
+      for (final id in IapProducts.coinPackAmounts.keys) {
+        expect(asked, contains(id));
+      }
+      // Premium + every paid skin + every coin pack, nothing extra.
+      expect(
+        asked.length,
+        paid.length + 1 + IapProducts.coinPackAmounts.length,
+      );
     });
 
     /// Event skins are handed out, never sold. One appearing in the
@@ -89,6 +96,12 @@ void main() {
         isTrue,
         reason: 'entitlements is not actually frozen',
       );
+      expect(
+        rules.contains("request.resource.data.get('coins', 0) == oldCoins"),
+        isTrue,
+        reason: 'coins is not actually frozen — a client could top itself '
+            'up for free',
+      );
     });
 
     /// A new user document is written by the client, so it has to be
@@ -101,6 +114,13 @@ void main() {
         isTrue,
       );
       expect(rules.contains("!('entitlements' in request.resource.data)"), isTrue);
+    });
+
+    test('a fresh document cannot be created already holding coins', () {
+      expect(
+        rules.contains("request.resource.data.get('coins', 0) == 0"),
+        isTrue,
+      );
     });
   });
 
@@ -115,10 +135,41 @@ void main() {
     test('an unverifiable purchase is refused, not granted', () {
       expect(iap.contains('failed-precondition'), isTrue);
       // The refusal has to come before the write, or it refuses nothing.
+      // `.set(patch` itself no longer appears literally — the entitlement
+      // write moved inside the processed-token transaction added for
+      // coin packs — so this checks for the transaction's own patch
+      // write instead, still positioned after the config check.
       expect(
-        iap.indexOf('playConfigured()') < iap.indexOf('.set(patch'),
+        iap.indexOf('playConfigured()') <
+            iap.indexOf('tx.set(userRef, patch'),
         isTrue,
         reason: 'the entitlement is written before the check',
+      );
+    });
+
+    test('a coin pack increments rather than replaces the balance', () {
+      expect(iap.contains('FieldValue.increment(COIN_PACKS[productId])'),
+          isTrue);
+    });
+
+    test('a purchase token can only ever grant once, even on replay', () {
+      // The safeguard `increment` specifically needs, unlike the
+      // set-merge/arrayUnion patches subscriptions and skins already used
+      // — see this file's own comment for why a coin pack can't rely on
+      // that same idempotency.
+      expect(iap.contains('processedPurchaseTokens'), isTrue);
+      expect(iap.contains('if (tokenSnap.exists) return;'), isTrue);
+    });
+
+    test('a coin pack is consumed after granting, not before or never', () {
+      final consumeIndex = iap.indexOf('purchases.products.consume');
+      final transactionIndex = iap.indexOf('db.runTransaction');
+      expect(consumeIndex, greaterThan(-1));
+      expect(
+        transactionIndex < consumeIndex,
+        isTrue,
+        reason: 'consuming before the grant lands would let a crash '
+            'between the two burn the purchase for nothing',
       );
     });
 
@@ -204,7 +255,7 @@ void main() {
     test('the switch is enforced inside the service, not at call sites', () {
       final source =
           File('lib/core/services/iap_service.dart').readAsStringSync();
-      for (final entry in ['load', 'buy', 'restore']) {
+      for (final entry in ['load', 'buy', 'buyCoinPack', 'restore']) {
         // Each entry point must consult the switch itself. Sliced to the
         // real method body — a fixed character window read past the end
         // of one method into the next, which would let an unguarded

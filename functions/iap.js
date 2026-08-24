@@ -24,6 +24,22 @@ const {subscriptionGrants, productGrants} = require("./iap_states");
 const PREMIUM_PRODUCT = "teisou_premium_monthly";
 const SKIN_PREFIX = "skin_";
 
+/**
+ * Coin top-up packs — **mirrors** `IapProducts.coinPackAmounts` in
+ * `lib/core/constants/iap_products.dart`. Node can't import Dart, so
+ * this map has to be kept in sync by hand; the Dart side's own doc
+ * comment says the same thing pointing back here. If a pack is ever
+ * added or resized, both sides need the edit.
+ */
+const COIN_PACKS = {
+  "teisou_coins_100": 100,
+  "teisou_coins_200": 200,
+  "teisou_coins_350": 350,
+  "teisou_coins_500": 500,
+  "teisou_coins_700": 700,
+  "teisou_coins_1000": 1000,
+};
+
 /** Android package name — must match `applicationId` in build.gradle.kts. */
 const ANDROID_PACKAGE = "com.teisou.kanamaster";
 
@@ -131,6 +147,14 @@ function entitlementFor(productId) {
       },
     };
   }
+  if (Object.prototype.hasOwnProperty.call(COIN_PACKS, productId)) {
+    // Unlike a subscription patch (set-merge of the same values) or a
+    // skin (arrayUnion), `increment` is **not** idempotent — verifying
+    // the same token twice would grant coins twice. The processed-token
+    // ledger in `verifyPurchase` below is what actually makes this safe
+    // to call more than once, not anything about this patch itself.
+    return {coins: FieldValue.increment(COIN_PACKS[productId])};
+  }
   return null;
 }
 
@@ -174,12 +198,53 @@ exports.verifyPurchase = onCall(async (request) => {
     uid,
   });
 
-  // Idempotent by construction: the subscription patch is a set-merge of
-  // the same values, and a skin is an arrayUnion. Verifying one token
-  // twice — which restore does routinely — grants the same thing once.
-  await getFirestore().collection("users").doc(uid).set(patch, {merge: true});
+  const db = getFirestore();
+  const userRef = db.collection("users").doc(uid);
 
-  return {granted: true};
+  // Subscription/skin patches are idempotent by construction (set-merge
+  // of the same values / arrayUnion), so verifying one token twice —
+  // which `restore()` does routinely — has always safely granted the
+  // same thing once. A coin pack's `increment` patch is **not**
+  // idempotent that way, so every purchase now goes through this
+  // processed-token ledger regardless of product: the transaction reads
+  // `processedPurchaseTokens/{token}` and only applies the patch if this
+  // exact token has never been recorded before, so a retried or replayed
+  // verification of the same token can never double-grant.
+  const tokenRef = db.collection("processedPurchaseTokens").doc(purchaseToken);
+  let firstGrant = false;
+  await db.runTransaction(async (tx) => {
+    const tokenSnap = await tx.get(tokenRef);
+    if (tokenSnap.exists) return;
+    firstGrant = true;
+    tx.set(tokenRef, {
+      uid,
+      productId,
+      grantedAt: FieldValue.serverTimestamp(),
+    });
+    tx.set(userRef, patch, {merge: true});
+  });
+
+  // A coin pack is consumable: Play refuses to sell the same product id
+  // again while a purchase of it sits unconsumed. This is called after
+  // the grant (not before) — see `IapService.buyCoinPack`'s doc comment
+  // for why the client deliberately leaves this to the server instead of
+  // auto-consuming locally. Best-effort: a failure here does not undo the
+  // coins already granted above, and the purchase can still be consumed
+  // by a later restore/retry against the same token.
+  if (Object.prototype.hasOwnProperty.call(COIN_PACKS, productId)) {
+    try {
+      await publisher().purchases.products.consume({
+        packageName: ANDROID_PACKAGE,
+        productId,
+        token: purchaseToken,
+      });
+    } catch (_) {
+      // Already consumed, or a transient API error — either way the
+      // coins are already on the ledger above.
+    }
+  }
+
+  return {granted: true, firstGrant};
 });
 
 module.exports.entitlementFor = entitlementFor;

@@ -523,6 +523,16 @@ final subscriptionProvider = StreamProvider<Subscription>((ref) async* {
   yield* ref.watch(progressRepositoryProvider).watchSubscription(user.uid);
 });
 
+/// Coin balance — live, the same way [subscriptionProvider] is, so
+/// topping up or winning a weekly Skor Global reward updates the number
+/// on screen without a manual refresh. See `ProgressRepository
+/// .watchCoinBalance` for why the client can watch this but never write
+/// it.
+final coinBalanceProvider = StreamProvider<int>((ref) async* {
+  final user = await ref.watch(appStartupProvider.future);
+  yield* ref.watch(progressRepositoryProvider).watchCoinBalance(user.uid);
+});
+
 /// Card Game Mode standing — see `NOTES_CARD_GAME_MODE.md`'s "Tahap 1
 /// butir 2". Not read from anywhere yet (no match screen exists to read
 /// "which tier, so which card content" from it), but live-watched the
