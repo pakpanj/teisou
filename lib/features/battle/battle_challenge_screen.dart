@@ -398,27 +398,25 @@ class _OpponentRow extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         child: Row(
           children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                LeaderboardAvatar(entry: throwawayEntry, size: 36),
-                Positioned(
-                  right: -1,
-                  bottom: -1,
-                  child: PresenceDot(uid: uid),
-                ),
-              ],
-            ),
+            LeaderboardAvatar(entry: throwawayEntry, size: 36),
             const SizedBox(width: 12),
             Expanded(
-              child: Text(
-                displayName,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: context.palette.textNavy,
-                ),
+              child: Row(
+                children: [
+                  PresenceDot(uid: uid),
+                  const SizedBox(width: 7),
+                  Flexible(
+                    child: Text(
+                      displayName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: context.palette.textNavy,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             ChallengeButton(

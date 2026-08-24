@@ -7,6 +7,7 @@ import '../../../core/services/fcm_service.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/direct_message.dart';
 import '../../../data/repositories/direct_message_repository.dart';
+import '../../battle/battle_challenge.dart' show PresenceDot;
 import '../friend_providers.dart';
 import 'chat_composer.dart';
 
@@ -280,6 +281,11 @@ class _DirectMessageScreenState extends ConsumerState<DirectMessageScreen> {
               ),
             ),
             const SizedBox(width: 10),
+            PresenceDot(
+              uid: widget.friendUid,
+              borderColor: context.palette.background,
+            ),
+            const SizedBox(width: 7),
             Expanded(
               child: Text(
                 widget.friendName,

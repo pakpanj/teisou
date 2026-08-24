@@ -222,16 +222,31 @@ class ChallengeButton extends ConsumerWidget {
   }
 }
 
-/// A small dot on the corner of an opponent's avatar — green while [uid]
-/// is online, grey otherwise. Split out from [ChallengeButton] once that
-/// button stopped being gated on presence (see its own doc comment): the
-/// status is still worth showing, it just no longer decides whether the
-/// button can be tapped.
+/// A small dot next to a person's name — green while [uid] is online, grey
+/// otherwise. Split out from [ChallengeButton] once that button stopped
+/// being gated on presence (see its own doc comment): the status is still
+/// worth showing, it just no longer decides whether the button can be
+/// tapped. Reused by [BattleChallengeScreen]'s opponent rows, and by
+/// `ChatHubScreen`'s personal-chat list and `DirectMessageScreen`'s app
+/// bar, rather than three separate copies of the same widget.
+///
+/// [borderColor] should match whatever surface the dot sits directly on —
+/// it's there to keep the ring legible against an avatar's edge, and reads
+/// as a plain circle with no visible ring once it matches the background,
+/// which is the point on plain card/app-bar surfaces. Defaults to
+/// [AppPalette.cardWhite], the shade every existing call site but the app
+/// bar happens to sit on.
 class PresenceDot extends ConsumerWidget {
   final String uid;
   final double size;
+  final Color? borderColor;
 
-  const PresenceDot({super.key, required this.uid, this.size = 13});
+  const PresenceDot({
+    super.key,
+    required this.uid,
+    this.size = 13,
+    this.borderColor,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -245,7 +260,10 @@ class PresenceDot extends ConsumerWidget {
         color: online
             ? context.palette.successGreen
             : context.palette.progressTrack,
-        border: Border.all(color: context.palette.cardWhite, width: 2),
+        border: Border.all(
+          color: borderColor ?? context.palette.cardWhite,
+          width: 2,
+        ),
       ),
     );
   }

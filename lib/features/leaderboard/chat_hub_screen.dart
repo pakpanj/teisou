@@ -7,6 +7,7 @@ import '../../core/widgets/app_loading.dart';
 import '../../data/models/clan_membership.dart';
 import '../../data/models/friend.dart';
 import '../../data/repositories/direct_message_repository.dart';
+import '../battle/battle_challenge.dart' show PresenceDot;
 import 'clan_providers.dart';
 import 'friend_providers.dart';
 import 'widgets/clan_chat_screen.dart';
@@ -253,6 +254,7 @@ class _PersonalChatRow extends ConsumerWidget {
     return _ChatRow(
       title: friend.displayName,
       avatarLabel: friend.displayName,
+      presenceUid: friend.uid,
       previewSenderName: null,
       previewText: lastMessage?.text,
       time: lastMessage?.createdAt,
@@ -274,9 +276,16 @@ class _PersonalChatRow extends ConsumerWidget {
 /// yet" placeholder), a relative timestamp, and an unread dot. Clan rows
 /// additionally prefix the preview with the sender's name (a group chat
 /// has more than one voice); personal rows don't need that.
+///
+/// [presenceUid] is only ever set by the personal-chat row — a clan has
+/// several members, so "online" has no single answer for it the way it
+/// does for one friend. Reuses [PresenceDot] from Card Battle's own
+/// opponent list rather than a second copy, same green-online/grey-
+/// offline dot next to the name.
 class _ChatRow extends ConsumerWidget {
   final String title;
   final String avatarLabel;
+  final String? presenceUid;
   final String? previewSenderName;
   final String? previewText;
   final DateTime? time;
@@ -286,6 +295,7 @@ class _ChatRow extends ConsumerWidget {
   const _ChatRow({
     required this.title,
     required this.avatarLabel,
+    this.presenceUid,
     required this.previewSenderName,
     required this.previewText,
     required this.time,
@@ -327,14 +337,24 @@ class _ChatRow extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: context.palette.textNavy,
-                    ),
+                  Row(
+                    children: [
+                      if (presenceUid != null) ...[
+                        PresenceDot(uid: presenceUid!),
+                        const SizedBox(width: 7),
+                      ],
+                      Flexible(
+                        child: Text(
+                          title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: context.palette.textNavy,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 2),
                   Text(
