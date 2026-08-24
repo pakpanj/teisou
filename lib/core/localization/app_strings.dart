@@ -126,7 +126,7 @@ class AppStrings {
   );
   String get coinBuyTopUp => _t('Top Up', 'Top Up');
 
-  // --- Buying a cosmetic with coins (avatar/frame/cover) ---------------
+  // --- Buying a cosmetic with coins (avatar/frame/cover/card skin) -----
   String coinPriceTag(int price) => _t('$price koin', '$price coins');
   String get coinBuyConfirmTitle => _t('Beli dengan koin?', 'Buy with coins?');
   String coinBuyConfirmBody(int price) => _t(
@@ -2098,10 +2098,10 @@ class AppStrings {
         'of what waits there.',
   );
   String get shopNotOpenYet => _t(
-    'Toko belum buka. Pembelian sungguhan menyusul; sekarang '
-        'skin-nya bisa dilihat dulu.',
-    'The shop is not open yet. Real purchases come later; for now the '
-        'skins can be looked at.',
+    'Pembelian dengan uang belum bisa dilakukan di sini — coba beli '
+        'dengan koin, atau tunggu tokonya buka.',
+    'Buying with real money isn\'t available here yet — try buying '
+        'with coins instead, or wait for the shop to open.',
   );
   String get shopSkinsHeading => _t('Skin Berbayar', 'Paid Skins');
   String get shopSkinsSubtitle => _t(
@@ -2173,8 +2173,8 @@ class AppStrings {
     );
   }
   String get cardSkinBuyInShop => _t(
-    'Beli di tab Toko, atau gratis kalau kamu Premium.',
-    'Buy it in the Shop tab, or free if you\'re Premium.',
+    'Beli di tab Toko dengan uang atau koin, atau gratis kalau kamu Premium.',
+    'Buy it in the Shop tab with money or coins, or free if you\'re Premium.',
   );
   String get cardSkinDebugAllUnlocked => _t(
     'Mode uji: semua skin bisa dipilih supaya tampilannya bisa '

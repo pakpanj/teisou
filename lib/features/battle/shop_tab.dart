@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/card_skins.dart';
 import '../../core/constants/iap_products.dart';
 import '../../core/providers.dart';
+import '../../core/services/coin_spend_service.dart';
 import '../../core/services/iap_service.dart';
 import '../../core/theme/app_palette.dart';
 
@@ -17,12 +18,21 @@ import '../../core/theme/app_palette.dart';
 /// than leaving a buyer to wonder whether they paid for something a
 /// patient player gets free.
 ///
-/// **Prices come from the store, never from the app.** A hardcoded
-/// "Rp 15.000" is wrong in every other country, wrong after any price
-/// change, and wrong the moment a sale runs; `ProductDetails.price`
-/// arrives already localised and already current. A skin whose product
-/// has not been created in the console yet has no price to show, so its
-/// button is disabled rather than showing a number nobody can pay.
+/// **Real-money prices come from the store, never from the app.** A
+/// hardcoded "Rp 15.000" is wrong in every other country, wrong after
+/// any price change, and wrong the moment a sale runs;
+/// `ProductDetails.price` arrives already localised and already
+/// current. A skin whose product has not been created in the console
+/// yet has no price to show, so its money button is disabled rather
+/// than showing a number nobody can pay.
+///
+/// **The coin price is the one exception, added 2026-08-24, and it's
+/// deliberate.** [CardSkinPresets.coinPrice] is a flat in-app constant,
+/// same as the avatar/frame/cover pickers already show — coins are this
+/// app's own currency, not the store's, so there is no
+/// `ProductDetails` to defer to. Coins buy alongside real money, not
+/// instead of it: a skin whose Play Console product doesn't exist yet
+/// still has a working buy button here.
 class ShopTab extends ConsumerStatefulWidget {
   const ShopTab({super.key});
 
@@ -34,6 +44,7 @@ class _ShopTabState extends ConsumerState<ShopTab> {
   StreamSubscription<IapOutcome>? _outcomeSub;
   bool _loading = true;
   String? _buying;
+  String? _buyingWithCoins;
 
   @override
   void initState() {
@@ -83,6 +94,51 @@ class _ShopTabState extends ConsumerState<ShopTab> {
     // `false` means the sheet never opened, so no outcome will arrive —
     // without this the button would spin for ever.
     if (!opened && mounted) setState(() => _buying = null);
+  }
+
+  /// The coin-tier path — see `AvatarPickerBody._buyWithCoins`, which
+  /// this mirrors, except the grant lands in `entitlements.skins`
+  /// instead of `xp.unlocked{Kind}Ids` (see `CoinSpendKind.skin`'s own
+  /// doc comment) — so once the write succeeds, `ownedSkinsProvider`
+  /// (a live Firestore stream) picks it up on its own; there is no local
+  /// "owned" set to update by hand the way the avatar/frame/cover
+  /// pickers have to.
+  Future<void> _buyWithCoins(CardSkinPreset skin) async {
+    final s = ref.read(appStringsProvider);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(s.coinBuyConfirmTitle),
+        content: Text(s.coinBuyConfirmBody(CardSkinPresets.coinPrice)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(s.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(s.coinBuyConfirmButton),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    setState(() => _buyingWithCoins = skin.id);
+    try {
+      await ref.read(coinSpendServiceProvider).buy(CoinSpendKind.skin, skin.id);
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+    } on CoinSpendException catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed),
+        ),
+      );
+    } finally {
+      if (mounted) setState(() => _buyingWithCoins = null);
+    }
   }
 
   @override
@@ -166,6 +222,8 @@ class _ShopTabState extends ConsumerState<ShopTab> {
               owned: false,
               busy: _buying == skin.id,
               onBuy: () => _buy(skin),
+              coinBusy: _buyingWithCoins == skin.id,
+              onBuyWithCoins: () => _buyWithCoins(skin),
             ),
             const SizedBox(height: 12),
           ],
@@ -247,6 +305,8 @@ class _ShopRow extends ConsumerWidget {
     required this.owned,
     required this.busy,
     required this.onBuy,
+    this.coinBusy = false,
+    this.onBuyWithCoins,
   });
 
   final CardSkinPreset skin;
@@ -258,6 +318,12 @@ class _ShopRow extends ConsumerWidget {
   final bool owned;
   final bool busy;
   final VoidCallback onBuy;
+
+  /// The coin-buy path, alongside — not instead of — real money. Null
+  /// for the owned section, where there's nothing left to buy either
+  /// way.
+  final bool coinBusy;
+  final VoidCallback? onBuyWithCoins;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -272,6 +338,7 @@ class _ShopRow extends ConsumerWidget {
         border: Border.all(color: palette.divider),
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
             width: 58,
@@ -310,18 +377,47 @@ class _ShopRow extends ConsumerWidget {
             // so a button on an owned skin would take money for
             // something already owned.
             Icon(Icons.check_circle, color: palette.secondaryBlue)
-          else if (busy)
-            const SizedBox(
-              width: 20,
-              height: 20,
-              child: CircularProgressIndicator(strokeWidth: 2),
-            )
           else
-            FilledButton(
-              // Disabled rather than hidden when there is no price yet:
-              // the shelf should still look like a shelf.
-              onPressed: price == null ? null : onBuy,
-              child: Text(price ?? s.shopBuySoon),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                if (busy)
+                  const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                else
+                  FilledButton(
+                    // Disabled rather than hidden when there is no price
+                    // yet: the shelf should still look like a shelf.
+                    onPressed: price == null ? null : onBuy,
+                    child: Text(price ?? s.shopBuySoon),
+                  ),
+                const SizedBox(height: 6),
+                if (coinBusy)
+                  const SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                else
+                  OutlinedButton.icon(
+                    onPressed: onBuyWithCoins,
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 4),
+                      minimumSize: const Size(0, 0),
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    icon: const Icon(Icons.monetization_on, size: 14),
+                    label: Text(
+                      s.coinPriceTag(CardSkinPresets.coinPrice),
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                  ),
+              ],
             ),
         ],
       ),

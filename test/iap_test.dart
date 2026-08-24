@@ -198,7 +198,18 @@ void main() {
   group('purchases are bound to an account', () {
     test('the shop still binds its direct skin purchases to a uid', () {
       final source = File('lib/features/battle/shop_tab.dart').readAsStringSync();
-      final calls = RegExp(r'\.buy\(').allMatches(source).length;
+      // Scoped to `IapService.buy` specifically, not every `.buy(` in the
+      // file — `shop_tab.dart` also calls `CoinSpendService.buy` (added
+      // 2026-08-24, the skins' coin-purchase path), which has no uid
+      // parameter to bind at all: the Cloud Function it calls already
+      // scopes the spend to whoever is signed in server-side, the same
+      // way every other `CoinSpendService.buy` call site in this app
+      // (avatar/frame/cover pickers) works. A blanket `.buy(` count would
+      // wrongly demand a `uid:` argument that call was never meant to
+      // have.
+      final calls = RegExp(r'iapServiceProvider\)\s*\.buy\(')
+          .allMatches(source)
+          .length;
       expect(calls, greaterThan(0), reason: 'shop_tab.dart buys nothing');
       expect(
         RegExp(r'uid: uid').allMatches(source).length,

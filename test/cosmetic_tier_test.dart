@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:kana_master/core/constants/avatars.dart';
+import 'package:kana_master/core/constants/card_skins.dart';
 import 'package:kana_master/core/constants/covers.dart';
 import 'package:kana_master/core/constants/frames.dart';
 
@@ -116,6 +117,7 @@ void main() {
         ...AvatarPresets.coinIds,
         ...FramePresets.coinIds,
         ...CoverPresets.coinIds,
+        ...CardSkinPresets.ofSource(CardSkinSource.paid).map((s) => s.id),
       ]) {
         expect(
           spendCoins.contains('"$id"'),
@@ -131,6 +133,18 @@ void main() {
       expect(FramePresets.coinPrice, CoverPresets.coinPrice);
       expect(
         spendCoins.contains('const COIN_PRICE = ${AvatarPresets.coinPrice};'),
+        isTrue,
+      );
+    });
+
+    // Card skins deliberately carry their own, higher price than the
+    // avatar/frame/cover trio — see `CardSkinPresets.coinPrice`'s own
+    // doc comment for why — so this is a separate check, not folded
+    // into the one above.
+    test('the card-skin coin price agrees between Dart and the server', () {
+      expect(
+        spendCoins
+            .contains('const SKIN_COIN_PRICE = ${CardSkinPresets.coinPrice};'),
         isTrue,
       );
     });

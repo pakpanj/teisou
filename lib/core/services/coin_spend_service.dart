@@ -1,9 +1,12 @@
 import 'package:cloud_functions/cloud_functions.dart';
 
 /// One kind of cosmetic a coin purchase can target — mirrors the
-/// `kind` string `functions/spend_coins.js` expects, and the
-/// `xp.unlocked{Kind}Ids` field it writes to.
-enum CoinSpendKind { avatar, frame, cover }
+/// `kind` string `functions/spend_coins.js` expects. Avatar/frame/cover
+/// write to `xp.unlocked{Kind}Ids`; [skin] is the odd one out and writes
+/// to `entitlements.skins` instead — the same array a real-money card
+/// skin purchase already lands in, so `ownedSkinsProvider` can't tell
+/// the two apart. See `spend_coins.js`'s own doc comment for why.
+enum CoinSpendKind { avatar, frame, cover, skin }
 
 /// Buying an avatar/frame/cover permanently with coins.
 ///

@@ -235,6 +235,23 @@ class CardSkinPresets {
   static Iterable<CardSkinPreset> ofSource(CardSkinSource source) =>
       all.where((s) => s.source == source);
 
+  /// Flat price for every [CardSkinSource.paid] skin, added 2026-08-24 —
+  /// each one of the three (not a bundle) costs this many coins. Mirrored
+  /// in `functions/spend_coins.js`'s `SKIN_COIN_PRICE`, same discipline
+  /// as `AvatarPresets.coinPrice`/`FramePresets.coinPrice`/
+  /// `CoverPresets.coinPrice` already keep with their own JS mirror.
+  /// Deliberately its own constant, not reusing those three's 150 — a
+  /// skin an opponent actually sees (see [CardSkinPreset]'s own doc
+  /// comment) is priced higher on purpose.
+  static const coinPrice = 300;
+
+  /// Whether [id] can be bought with coins right now — true for exactly
+  /// the [CardSkinSource.paid] family. Real money still works too once
+  /// its own Play Console product exists (see `IapProducts`); coins are
+  /// an additional path, not a replacement.
+  static bool isCoinUnlockable(String id) =>
+      ofSource(CardSkinSource.paid).any((s) => s.id == id);
+
   /// Falls back to [classic] for an unknown or absent id, so a skin
   /// removed in a later version never leaves a player with no card back.
   static CardSkinPreset byId(String? id) {
