@@ -37,40 +37,113 @@ const _framePremiumModuleId = 'frame_premium';
 
 enum _PickerMode { avatar, frame }
 
+/// The sheet itself is now just chrome (drag handle + the Avatar/Bingkai
+/// tab switch) around [AvatarPickerBody]/[FramePickerBody] — both are also
+/// used standalone, without this wrapper, inside the Toko tab's own
+/// "Avatar"/"Bingkai" sub-tabs. Splitting it this way means the picking
+/// logic (ad-reward unlocks, the actual save) lives in exactly one place
+/// either way, instead of the sheet and the shop screen slowly drifting
+/// into two slightly different copies of the same grid.
 class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
   _PickerMode _mode = _PickerMode.avatar;
 
-  /// Whether an unspent ad-reward unlock for [_avatarPremiumModuleId]
-  /// exists. `ProgressRepository.unlockAdReward`/`getAdRewards` already
-  /// existed but were a write with no matching read anywhere in the app —
-  /// this sheet used to gate its premium entries on [isPremium] alone, so
-  /// watching the rewarded ad on [PaywallScreen] recorded the unlock but
-  /// nothing ever consulted it: the tile just reopened the paywall again,
-  /// which read as "watched the ad but it still won't open" (the exact bug
-  /// report this fixed). Refreshed in [initState] (in case
-  /// an earlier session's still-unspent unlock exists) and again after
-  /// [_openPaywall] returns, since this sheet is only ever pushed over by
-  /// `PaywallScreen`, never replaced — its own state must be refreshed
-  /// explicitly on return rather than assumed to recompute automatically.
-  /// One ad grants exactly one avatar change: picking a premium preset
-  /// calls `ProgressRepository.consumeAdReward` right after succeeding,
-  /// rather than leaving it active for its full 24h backstop window — see
-  /// [_select]'s `consumeReward` param.
+  @override
+  Widget build(BuildContext context) {
+    final s = ref.watch(appStringsProvider);
+    return DraggableScrollableSheet(
+      expand: false,
+      initialChildSize: 0.75,
+      minChildSize: 0.4,
+      maxChildSize: 0.95,
+      builder: (context, scrollController) {
+        return Container(
+          decoration: BoxDecoration(
+            color: context.palette.background,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+          ),
+          child: ListView(
+            controller: scrollController,
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
+            children: [
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: context.palette.textNavy.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  _PickerModeTab(
+                    label: s.pickAvatarTitle,
+                    active: _mode == _PickerMode.avatar,
+                    onTap: () => setState(() => _mode = _PickerMode.avatar),
+                  ),
+                  const SizedBox(width: 20),
+                  _PickerModeTab(
+                    label: s.pickFrameTitle,
+                    active: _mode == _PickerMode.frame,
+                    onTap: () => setState(() => _mode = _PickerMode.frame),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              if (_mode == _PickerMode.avatar)
+                const AvatarPickerBody()
+              else
+                const FramePickerBody(),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// Whether an unspent ad-reward unlock for [_avatarPremiumModuleId]
+/// exists. `ProgressRepository.unlockAdReward`/`getAdRewards` already
+/// existed but were a write with no matching read anywhere in the app —
+/// this used to gate its premium entries on [isPremium] alone, so
+/// watching the rewarded ad on [PaywallScreen] recorded the unlock but
+/// nothing ever consulted it: the tile just reopened the paywall again,
+/// which read as "watched the ad but it still won't open" (the exact bug
+/// report this fixed). Refreshed in [initState] (in case an earlier
+/// session's still-unspent unlock exists) and again after the paywall
+/// returns, since a push-based paywall never rebuilds this widget on its
+/// own — its own state must be refreshed explicitly on return rather than
+/// assumed to recompute automatically. One ad grants exactly one avatar
+/// change: picking a premium preset calls `ProgressRepository
+/// .consumeAdReward` right after succeeding, rather than leaving it active
+/// for its full 24h backstop window.
+///
+/// The grid of Google photo / free presets / premium presets, shared by
+/// [AvatarPickerSheet] (as its "Avatar" tab) and the Toko screen's own
+/// "Avatar" tab. [popOnSelect] is true inside the sheet (picking closes
+/// it, the sheet's whole reason to exist) and false inside Toko (picking
+/// there should just update the selection in place, the same way tapping
+/// a different card skin in the shop doesn't close the shop).
+class AvatarPickerBody extends ConsumerStatefulWidget {
+  final bool popOnSelect;
+
+  const AvatarPickerBody({super.key, this.popOnSelect = true});
+
+  @override
+  ConsumerState<AvatarPickerBody> createState() => _AvatarPickerBodyState();
+}
+
+class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
   bool _adRewardActive = false;
 
-  /// Same mechanism as [_adRewardActive], scoped to [_framePremiumModuleId]
-  /// — kept as its own flag rather than folded together, since watching an
-  /// ad for a premium avatar must not also unlock a locked frame and vice
-  /// versa.
-  bool _frameAdRewardActive = false;
-
   /// Specific presets earned permanently via `ProgressRepository
-  /// .claimLevelReward` — unlike [_adRewardActive]/[_frameAdRewardActive]
-  /// (which unlock the *whole* premium grid for one pick, then re-lock),
-  /// each id here stays unlocked forever, so this is a per-preset test
-  /// rather than a blanket flag.
+  /// .claimLevelReward` — unlike [_adRewardActive] (which unlocks the
+  /// *whole* premium grid for one pick, then re-locks), each id here stays
+  /// unlocked forever, so this is a per-preset test rather than a blanket
+  /// flag.
   Set<String> _unlockedAvatarIds = {};
-  Set<String> _unlockedFrameIds = {};
 
   @override
   void initState() {
@@ -81,20 +154,14 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
   Future<void> _refreshAdRewardStatus() async {
     final uid = ref.read(appStartupProvider).valueOrNull?.uid;
     if (uid == null) return;
-    // One fetch covers both flags — getAdRewards already returns every
-    // module's reward state in one map.
-    final rewards = await ref.read(progressRepositoryProvider).getAdRewards(uid);
-    final avatarActive = rewards[_avatarPremiumModuleId]?.isActive ?? false;
-    final frameActive = rewards[_framePremiumModuleId]?.isActive ?? false;
     final repo = ref.read(progressRepositoryProvider);
-    final unlockedAvatars = await repo.getUnlockedAvatarIds(uid);
-    final unlockedFrames = await repo.getUnlockedFrameIds(uid);
+    final rewards = await repo.getAdRewards(uid);
+    final active = rewards[_avatarPremiumModuleId]?.isActive ?? false;
+    final unlocked = await repo.getUnlockedAvatarIds(uid);
     if (mounted) {
       setState(() {
-        _adRewardActive = avatarActive;
-        _frameAdRewardActive = frameActive;
-        _unlockedAvatarIds = unlockedAvatars;
-        _unlockedFrameIds = unlockedFrames;
+        _adRewardActive = active;
+        _unlockedAvatarIds = unlocked;
       });
     }
   }
@@ -141,7 +208,148 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
       } catch (_) {}
     }
     if (!mounted) return;
-    Navigator.of(context).pop();
+    if (widget.popOnSelect) Navigator.of(context).pop();
+  }
+
+  Future<void> _openPaywall(BuildContext context) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => const PaywallScreen(
+          moduleId: _avatarPremiumModuleId,
+          moduleTitle: 'Avatar Premium',
+          singleUse: true,
+        ),
+      ),
+    );
+    // PaywallScreen pops itself the moment the reward is earned, so by the
+    // time this await resolves the write (if any) has already landed —
+    // safe to read it back immediately, no extra delay needed.
+    if (!mounted) return;
+    await _refreshAdRewardStatus();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final user = ref.watch(appStartupProvider).valueOrNull;
+    final profile = ref.watch(userProfileProvider).valueOrNull;
+    final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    // A real subscription OR an unspent ad-reward unlock both count — see
+    // _adRewardActive's doc comment for why the latter needs its own
+    // explicit tracking instead of folding into isPremium at the source.
+    final unlocked = isPremium || _adRewardActive;
+    // Whether the action about to happen would be spending the ad-reward
+    // (not a real subscription) — if so, the caller must consume it right
+    // after succeeding so one ad only ever buys one change.
+    final viaAdReward = !isPremium && _adRewardActive;
+    bool avatarIdUnlocked(String id) => unlocked || _unlockedAvatarIds.contains(id);
+    final uid = user?.uid;
+    final s = ref.watch(appStringsProvider);
+    final displayName = profile?.resolveDisplayName(user) ?? (user?.displayName ?? s.defaultLearnerName);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (user != null && !user.isAnonymous && user.photoURL != null) ...[
+          _SectionTitle(s.accountPhotoSection),
+          _GoogleAvatarTile(
+            photoUrl: user.photoURL!,
+            label: s.googleAccountPhotoLabel,
+            selected: profile != null && profile.avatarType == AvatarType.google,
+            onTap: uid == null
+                ? null
+                : () => _select(
+                      uid,
+                      AvatarType.google,
+                      null,
+                      displayName: displayName,
+                      photoUrl: user.photoURL,
+                    ),
+          ),
+        ],
+        _SectionTitle(s.freePresetsSection),
+        _PresetGrid(
+          presets: AvatarPresets.free,
+          isSelected: (preset) =>
+              profile?.avatarType == AvatarType.presetFree &&
+              profile?.avatarValue == preset.id,
+          locked: (_) => false,
+          onTap: (preset) {
+            if (uid == null) return;
+            _select(
+              uid,
+              AvatarType.presetFree,
+              preset.id,
+              displayName: displayName,
+              photoUrl: user?.photoURL,
+            );
+          },
+        ),
+        _SectionTitle(s.premiumPresetsSection),
+        _PresetGrid(
+          presets: AvatarPresets.premium,
+          isSelected: (preset) =>
+              profile?.avatarType == AvatarType.presetPremium &&
+              profile?.avatarValue == preset.id,
+          locked: (preset) => !avatarIdUnlocked(preset.id),
+          onTap: (preset) {
+            if (!avatarIdUnlocked(preset.id)) {
+              _openPaywall(context);
+              return;
+            }
+            if (uid == null) return;
+            _select(
+              uid,
+              AvatarType.presetPremium,
+              preset.id,
+              displayName: displayName,
+              photoUrl: user?.photoURL,
+              consumeReward: viaAdReward,
+            );
+          },
+        ),
+      ],
+    );
+  }
+}
+
+/// The frame grid, shared the same way [AvatarPickerBody] is — see its doc
+/// comment for the split's reasoning and [popOnSelect].
+class FramePickerBody extends ConsumerStatefulWidget {
+  final bool popOnSelect;
+
+  const FramePickerBody({super.key, this.popOnSelect = true});
+
+  @override
+  ConsumerState<FramePickerBody> createState() => _FramePickerBodyState();
+}
+
+class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
+  /// Same mechanism as [_AvatarPickerBodyState._adRewardActive], scoped to
+  /// [_framePremiumModuleId] — kept as its own flag rather than shared,
+  /// since watching an ad for a premium avatar must not also unlock a
+  /// locked frame and vice versa.
+  bool _frameAdRewardActive = false;
+  Set<String> _unlockedFrameIds = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _refreshAdRewardStatus();
+  }
+
+  Future<void> _refreshAdRewardStatus() async {
+    final uid = ref.read(appStartupProvider).valueOrNull?.uid;
+    if (uid == null) return;
+    final repo = ref.read(progressRepositoryProvider);
+    final rewards = await repo.getAdRewards(uid);
+    final active = rewards[_framePremiumModuleId]?.isActive ?? false;
+    final unlocked = await repo.getUnlockedFrameIds(uid);
+    if (mounted) {
+      setState(() {
+        _frameAdRewardActive = active;
+        _unlockedFrameIds = unlocked;
+      });
+    }
   }
 
   Future<void> _selectFrame(
@@ -176,24 +384,7 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
       } catch (_) {}
     }
     if (!mounted) return;
-    Navigator.of(context).pop();
-  }
-
-  Future<void> _openPaywall(BuildContext context) async {
-    await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => const PaywallScreen(
-          moduleId: _avatarPremiumModuleId,
-          moduleTitle: 'Avatar Premium',
-          singleUse: true,
-        ),
-      ),
-    );
-    // PaywallScreen pops itself the moment the reward is earned, so by the
-    // time this await resolves the write (if any) has already landed —
-    // safe to read it back immediately, no extra delay needed.
-    if (!mounted) return;
-    await _refreshAdRewardStatus();
+    if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
   Future<void> _openFramePaywall(BuildContext context) async {
@@ -216,149 +407,31 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
     final user = ref.watch(appStartupProvider).valueOrNull;
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
-    // A real subscription OR an unspent ad-reward unlock both count — see
-    // _adRewardActive's doc comment for why the latter needs its own
-    // explicit tracking instead of folding into isPremium at the source.
-    final unlocked = isPremium || _adRewardActive;
-    // Whether the action about to happen would be spending the ad-reward
-    // (not a real subscription) — if so, the caller must consume it right
-    // after succeeding so one ad only ever buys one change.
-    final viaAdReward = !isPremium && _adRewardActive;
-    bool avatarIdUnlocked(String id) => unlocked || _unlockedAvatarIds.contains(id);
     final uid = user?.uid;
     final s = ref.watch(appStringsProvider);
-    final displayName = profile?.resolveDisplayName(user) ?? (user?.displayName ?? s.defaultLearnerName);
 
-    return DraggableScrollableSheet(
-      expand: false,
-      initialChildSize: 0.75,
-      minChildSize: 0.4,
-      maxChildSize: 0.95,
-      builder: (context, scrollController) {
-        return Container(
-          decoration: BoxDecoration(
-            color: context.palette.background,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-          ),
-          child: ListView(
-            controller: scrollController,
-            padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
-            children: [
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: context.palette.textNavy.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  _PickerModeTab(
-                    label: s.pickAvatarTitle,
-                    active: _mode == _PickerMode.avatar,
-                    onTap: () => setState(() => _mode = _PickerMode.avatar),
-                  ),
-                  const SizedBox(width: 20),
-                  _PickerModeTab(
-                    label: s.pickFrameTitle,
-                    active: _mode == _PickerMode.frame,
-                    onTap: () => setState(() => _mode = _PickerMode.frame),
-                  ),
-                ],
-              ),
-              if (_mode == _PickerMode.avatar) ...[
-                if (user != null && !user.isAnonymous && user.photoURL != null) ...[
-                  _SectionTitle(s.accountPhotoSection),
-                  _GoogleAvatarTile(
-                    photoUrl: user.photoURL!,
-                    label: s.googleAccountPhotoLabel,
-                    selected: profile != null && profile.avatarType == AvatarType.google,
-                    onTap: uid == null
-                        ? null
-                        : () => _select(
-                              uid,
-                              AvatarType.google,
-                              null,
-                              displayName: displayName,
-                              photoUrl: user.photoURL,
-                            ),
-                  ),
-                ],
-                _SectionTitle(s.freePresetsSection),
-                _PresetGrid(
-                  presets: AvatarPresets.free,
-                  isSelected: (preset) =>
-                      profile?.avatarType == AvatarType.presetFree &&
-                      profile?.avatarValue == preset.id,
-                  locked: (_) => false,
-                  onTap: (preset) {
-                    if (uid == null) return;
-                    _select(
-                      uid,
-                      AvatarType.presetFree,
-                      preset.id,
-                      displayName: displayName,
-                      photoUrl: user?.photoURL,
-                    );
-                  },
-                ),
-                _SectionTitle(s.premiumPresetsSection),
-                _PresetGrid(
-                  presets: AvatarPresets.premium,
-                  isSelected: (preset) =>
-                      profile?.avatarType == AvatarType.presetPremium &&
-                      profile?.avatarValue == preset.id,
-                  locked: (preset) => !avatarIdUnlocked(preset.id),
-                  onTap: (preset) {
-                    if (!avatarIdUnlocked(preset.id)) {
-                      _openPaywall(context);
-                      return;
-                    }
-                    if (uid == null) return;
-                    _select(
-                      uid,
-                      AvatarType.presetPremium,
-                      preset.id,
-                      displayName: displayName,
-                      photoUrl: user?.photoURL,
-                      consumeReward: viaAdReward,
-                    );
-                  },
-                ),
-              ] else ...[
-                const SizedBox(height: 16),
-                _FrameGrid(
-                  selectedId: profile?.frameId,
-                  noFrameLabel: s.noFrameLabel,
-                  frameUnlocked: isPremium || _frameAdRewardActive,
-                  extraUnlockedIds: _unlockedFrameIds,
-                  onTap: (frameId) {
-                    if (uid == null) return;
-                    final locked = frameId != null &&
-                        FramePresets.isLocked(frameId) &&
-                        !(isPremium || _frameAdRewardActive) &&
-                        !_unlockedFrameIds.contains(frameId);
-                    if (locked) {
-                      _openFramePaywall(context);
-                      return;
-                    }
-                    final viaFrameAdReward = !isPremium && _frameAdRewardActive;
-                    _selectFrame(
-                      uid,
-                      frameId,
-                      consumeReward: viaFrameAdReward &&
-                          frameId != null &&
-                          FramePresets.isLocked(frameId),
-                    );
-                  },
-                ),
-              ],
-            ],
-          ),
+    return _FrameGrid(
+      selectedId: profile?.frameId,
+      noFrameLabel: s.noFrameLabel,
+      frameUnlocked: isPremium || _frameAdRewardActive,
+      extraUnlockedIds: _unlockedFrameIds,
+      onTap: (frameId) {
+        if (uid == null) return;
+        final locked = frameId != null &&
+            FramePresets.isLocked(frameId) &&
+            !(isPremium || _frameAdRewardActive) &&
+            !_unlockedFrameIds.contains(frameId);
+        if (locked) {
+          _openFramePaywall(context);
+          return;
+        }
+        final viaFrameAdReward = !isPremium && _frameAdRewardActive;
+        _selectFrame(
+          uid,
+          frameId,
+          consumeReward: viaFrameAdReward &&
+              frameId != null &&
+              FramePresets.isLocked(frameId),
         );
       },
     );

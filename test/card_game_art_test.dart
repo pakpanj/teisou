@@ -83,17 +83,19 @@ void main() {
 
   group('bottom nav icons', () {
     test('every tab has an icon', () {
+      // 'nav_toko' is deliberately not here any more — the shop moved out
+      // to the app's main bottom nav (see ShopScreen), and Card Battle's
+      // own shell is back down to four tabs.
       const icons = [
         'nav_beranda',
         'nav_deck',
         'nav_battle',
         'nav_skin',
-        'nav_toko',
       ];
       for (final icon in icons) {
         expectBundled('assets/icons/$icon.png', what: 'nav icon');
       }
-      // The shell has five tabs; an icon list that fell out of step with
+      // The shell has four tabs; an icon list that fell out of step with
       // it would leave one tab on its Material fallback, looking like a
       // rendering bug rather than a missing file.
       final shell =
@@ -101,6 +103,8 @@ void main() {
       for (final icon in icons) {
         expect(shell.contains("'$icon'"), isTrue, reason: icon);
       }
+      expect(shell.contains("'nav_toko'"), isFalse,
+          reason: "the shop tab should be gone from Card Battle's own nav");
     });
   });
 }

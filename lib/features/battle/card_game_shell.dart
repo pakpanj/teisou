@@ -18,21 +18,27 @@ import '../onboarding/onboarding_screen.dart';
 import 'deck_tab.dart';
 import 'rank_skip_screen.dart';
 import 'widgets/recent_matches_section.dart';
-import 'shop_tab.dart';
 import 'widgets/battle_arena.dart';
 import 'widgets/rank_card.dart';
 
 /// Card Game Mode's own home, with its own bottom navigation.
 ///
-/// Five tabs, following the redesign: Beranda, Deck, Battle, Skin, Toko.
-/// A mode with this much in it — a ladder, a wardrobe, a card pool, a
-/// shop — stops fitting behind a single screen, and burying each part
-/// one push deeper is how they end up never being found.
+/// Four tabs: Beranda, Deck, Battle, Skin. A mode with this much in it —
+/// a ladder, a wardrobe, a card pool — stops fitting behind a single
+/// screen, and burying each part one push deeper is how they end up
+/// never being found.
 ///
-/// **Two of the five are honest about being thin.** Deck shows the pool
-/// you are dealt from rather than pretending a deck can be edited, and
-/// Toko is a window with nothing to buy until `in_app_purchase` is
-/// wired. Both say so on the screen instead of looking broken.
+/// **The shop (Toko) used to be a fifth tab here — it no longer is.**
+/// Card skins, avatar, frame and cover are all cosmetics, and three of
+/// those four have nothing to do with battling, so burying the only shop
+/// in the app inside Card Battle's own nav meant a learner who never
+/// opened Card Battle never found a shop at all. It now lives at the top
+/// level, next to Home/Ujian/Profil — see `ShopScreen`. This shell keeps
+/// nothing shop-related, not even a shortcut into it: Toko is one tap
+/// away on the main bottom nav regardless of which screen you're on.
+///
+/// **Deck is still honest about being thin**: it shows the pool you are
+/// dealt from rather than pretending a deck can be edited.
 class CardGameShell extends ConsumerStatefulWidget {
   const CardGameShell({super.key, this.initialTab = 0});
 
@@ -81,7 +87,6 @@ class _CardGameShellState extends ConsumerState<CardGameShell> {
       s.cardGameTabDeck,
       s.cardGameTabBattle,
       s.cardGameTabSkin,
-      s.cardGameTabShop,
     ];
 
     return FirstVisitTutorial(
@@ -102,7 +107,6 @@ class _CardGameShellState extends ConsumerState<CardGameShell> {
           const DeckTab(),
           const BattleMatchmakingBody(),
           const CardSkinPickerBody(),
-          const ShopTab(),
         ],
       ),
       bottomNavigationBar: NavigationBar(
@@ -114,7 +118,6 @@ class _CardGameShellState extends ConsumerState<CardGameShell> {
           _navIcon('nav_battle', s.cardGameTabBattle,
               Icons.sports_kabaddi_outlined),
           _navIcon('nav_skin', s.cardGameTabSkin, Icons.palette_outlined),
-          _navIcon('nav_toko', s.cardGameTabShop, Icons.storefront_outlined),
         ],
       ),
       ),

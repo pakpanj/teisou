@@ -18,11 +18,12 @@ import '../leaderboard/friend_providers.dart';
 import '../leaderboard/leaderboard_screen.dart';
 import '../profile/profile_screen.dart';
 import '../search/search_screen.dart';
+import '../shop/shop_screen.dart';
 import 'widgets/home_hero_scene.dart';
 import 'widgets/level_card.dart';
 import 'widgets/modules_section.dart';
 
-/// Root tab shell: Home / Ujian / Profil share one bottom nav bar. A
+/// Root tab shell: Home / Ujian / Toko / Profil share one bottom nav bar. A
 /// [PageView] backs the tabs (not just the bottom nav) so swiping
 /// left/right also switches tabs — each page is wrapped in [_KeepAlivePage]
 /// so scroll/state survives switching, matching the old [IndexedStack]'s
@@ -41,6 +42,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   static const _tabs = [
     _KeepAlivePage(child: _HomeTabBody()),
     _KeepAlivePage(child: ExamModePickerScreen()),
+    _KeepAlivePage(child: ShopScreen()),
     _KeepAlivePage(child: ProfileScreen()),
   ];
 
@@ -269,6 +271,7 @@ class _BottomNavBar extends ConsumerWidget {
     final items = [
       (icon: Icons.home_rounded, label: strings.navHome, badge: 0),
       (icon: Icons.assignment_rounded, label: strings.navExam, badge: 0),
+      (icon: Icons.storefront_rounded, label: strings.navShop, badge: 0),
       (
         icon: Icons.person_rounded,
         label: strings.navProfile,
@@ -306,7 +309,7 @@ class _BottomNavBar extends ConsumerWidget {
             // than by label so a translated label cannot break it.
             final anchorId = switch (index) {
               1 => kTutorialExamTab,
-              2 => kTutorialProfileTab,
+              3 => kTutorialProfileTab,
               _ => null,
             };
             final item0 = InkWell(

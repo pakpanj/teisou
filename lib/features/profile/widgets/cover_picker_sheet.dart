@@ -18,18 +18,73 @@ const _coverPremiumModuleId = 'cover_premium';
 /// one reuses (one ad grants exactly one locked-cover change, consumed via
 /// `ProgressRepository.consumeAdReward` right after it's spent, not left
 /// active for its full 24h backstop).
-class CoverPickerSheet extends ConsumerStatefulWidget {
+class CoverPickerSheet extends ConsumerWidget {
   const CoverPickerSheet({super.key});
 
   @override
-  ConsumerState<CoverPickerSheet> createState() => _CoverPickerSheetState();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final s = ref.watch(appStringsProvider);
+    return DraggableScrollableSheet(
+      expand: false,
+      initialChildSize: 0.65,
+      minChildSize: 0.4,
+      maxChildSize: 0.9,
+      builder: (context, scrollController) {
+        return Container(
+          decoration: BoxDecoration(
+            color: context.palette.background,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+          ),
+          child: ListView(
+            controller: scrollController,
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
+            children: [
+              Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: context.palette.textNavy.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                s.pickCoverTitle,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: context.palette.textNavy,
+                ),
+              ),
+              const SizedBox(height: 16),
+              const CoverPickerBody(),
+            ],
+          ),
+        );
+      },
+    );
+  }
 }
 
-class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
+/// The cover grid, shared by [CoverPickerSheet] and the Toko screen's own
+/// "Sampul" tab — see `AvatarPickerBody`'s doc comment for the split's
+/// reasoning and [popOnSelect].
+class CoverPickerBody extends ConsumerStatefulWidget {
+  final bool popOnSelect;
+
+  const CoverPickerBody({super.key, this.popOnSelect = true});
+
+  @override
+  ConsumerState<CoverPickerBody> createState() => _CoverPickerBodyState();
+}
+
+class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
   bool _adRewardActive = false;
 
   /// Cover ids earned permanently via a level-up reward — see
-  /// `AvatarPickerSheet`'s `_unlockedAvatarIds` doc comment for why this
+  /// `AvatarPickerBody`'s `_unlockedAvatarIds` doc comment for why this
   /// is a per-id set rather than folded into the blanket [_adRewardActive]
   /// flag.
   Set<String> _unlockedCoverIds = {};
@@ -82,7 +137,7 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
       } catch (_) {}
     }
     if (!mounted) return;
-    Navigator.of(context).pop();
+    if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
   Future<void> _openPaywall(BuildContext context) async {
@@ -115,83 +170,42 @@ class _CoverPickerSheetState extends ConsumerState<CoverPickerSheet> {
     final selectedId = profile?.coverId;
     final s = ref.watch(appStringsProvider);
 
-    return DraggableScrollableSheet(
-      expand: false,
-      initialChildSize: 0.65,
-      minChildSize: 0.4,
-      maxChildSize: 0.9,
-      builder: (context, scrollController) {
-        return Container(
-          decoration: BoxDecoration(
-            color: context.palette.background,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-          ),
-          child: ListView(
-            controller: scrollController,
-            padding: const EdgeInsets.fromLTRB(20, 12, 20, 32),
-            children: [
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: context.palette.textNavy.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                s.pickCoverTitle,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: context.palette.textNavy,
-                ),
-              ),
-              const SizedBox(height: 16),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: CoverPresets.all.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 12,
-                  mainAxisSpacing: 12,
-                  childAspectRatio: 1.3,
-                ),
-                itemBuilder: (context, index) {
-                  final preset = CoverPresets.all[index];
-                  final isLocked =
-                      CoverPresets.isLocked(preset.id) && !coverIdUnlocked(preset.id);
-                  return _CoverTile(
-                    preset: preset,
-                    language: s.language,
-                    // A user who has never picked a cover has no stored
-                    // coverId, and now sees the fallback preset highlighted
-                    // instead of a separate "Default" tile — see
-                    // CoverPresets.fallback.
-                    selected: (selectedId ?? CoverPresets.fallback.id) == preset.id,
-                    locked: isLocked,
-                    onTap: uid == null
-                        ? null
-                        : () {
-                            if (isLocked) {
-                              _openPaywall(context);
-                              return;
-                            }
-                            _select(
-                              uid,
-                              preset.id,
-                              consumeReward:
-                                  viaAdReward && CoverPresets.isLocked(preset.id),
-                            );
-                          },
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: CoverPresets.all.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 12,
+        mainAxisSpacing: 12,
+        childAspectRatio: 1.3,
+      ),
+      itemBuilder: (context, index) {
+        final preset = CoverPresets.all[index];
+        final isLocked =
+            CoverPresets.isLocked(preset.id) && !coverIdUnlocked(preset.id);
+        return _CoverTile(
+          preset: preset,
+          language: s.language,
+          // A user who has never picked a cover has no stored coverId, and
+          // now sees the fallback preset highlighted instead of a separate
+          // "Default" tile — see CoverPresets.fallback.
+          selected: (selectedId ?? CoverPresets.fallback.id) == preset.id,
+          locked: isLocked,
+          onTap: uid == null
+              ? null
+              : () {
+                  if (isLocked) {
+                    _openPaywall(context);
+                    return;
+                  }
+                  _select(
+                    uid,
+                    preset.id,
+                    consumeReward:
+                        viaAdReward && CoverPresets.isLocked(preset.id),
                   );
                 },
-              ),
-            ],
-          ),
         );
       },
     );
