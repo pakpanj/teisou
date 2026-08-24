@@ -171,6 +171,7 @@ Future<void> sendBattleChallenge({
     MaterialPageRoute(
       builder: (_) => BattleInviteWaitingScreen(
         matchId: matchId!,
+        targetUid: targetUid,
         targetName: targetName,
         expiresAt: expiresAt!,
       ),

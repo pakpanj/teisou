@@ -15,13 +15,12 @@ class BattleInviteRepository {
   final FirebaseFirestore _firestore;
 
   BattleInviteRepository({FirebaseFirestore? firestore})
-      : _firestore = firestore ?? FirebaseFirestore.instance;
+    : _firestore = firestore ?? FirebaseFirestore.instance;
 
-  CollectionReference<Map<String, dynamic>> _invitesOf(String uid) =>
-      _firestore
-          .collection(FirestorePaths.users)
-          .doc(uid)
-          .collection(FirestorePaths.battleInvites);
+  CollectionReference<Map<String, dynamic>> _invitesOf(String uid) => _firestore
+      .collection(FirestorePaths.users)
+      .doc(uid)
+      .collection(FirestorePaths.battleInvites);
 
   /// Writes the invite under [targetUid]'s own subcollection. The match
   /// [invite.matchId] points at must already exist with both
@@ -72,5 +71,40 @@ class BattleInviteRepository {
           (accept ? BattleInviteStatus.accepted : BattleInviteStatus.declined)
               .key,
     }, SetOptions(merge: true));
+  }
+
+  /// The other direction from [respondToInvite]: the **sender** retracting
+  /// their own still-pending invite(s) for [matchId] under [targetUid] —
+  /// called when the challenger cancels, backs out, or the countdown in
+  /// `BattleInviteWaitingScreen` runs out. `respondToMatchInvite` alone
+  /// (see `BattleRepository`) only ever updates the `battleMatches` doc,
+  /// never this one, so without this the target's own pending-invite row
+  /// stayed stuck showing "menantangmu" long after the challenger had
+  /// already left — nobody ever wrote `status: declined` here.
+  ///
+  /// Queried by [matchId] rather than by the invite's own id: [sendInvite]
+  /// never hands that id back to the caller, and a match-scoped query
+  /// self-heals the same "find whatever's actually pending" way this
+  /// app's other invite lists already do, rather than threading one more
+  /// id through `sendBattleChallenge` -> `BattleInviteWaitingScreen`.
+  /// Filters `status == pending` client-side, not in the query, to avoid
+  /// a composite index the same way `watchMyInvites` already does.
+  Future<void> declineInvitesForMatch({
+    required String targetUid,
+    required String matchId,
+  }) async {
+    final snapshot = await _invitesOf(
+      targetUid,
+    ).where('matchId', isEqualTo: matchId).get();
+    final pending = snapshot.docs.where(
+      (doc) =>
+          (doc.data()['status'] as String?) == BattleInviteStatus.pending.key,
+    );
+    if (pending.isEmpty) return;
+    final batch = _firestore.batch();
+    for (final doc in pending) {
+      batch.update(doc.reference, {'status': BattleInviteStatus.declined.key});
+    }
+    await batch.commit();
   }
 }

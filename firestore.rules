@@ -269,17 +269,29 @@ service cloud.firestore {
 
     // Card Game Mode "Tantang" challenge (see NOTES_CARD_GAME_MODE.md's
     // "Cara mengundang teman/clan bertanding"). Same shape as
-    // `friendRequests` above — only the target can read/answer it, via
-    // the `users/{uid}/{document=**}` wildcard, so this block only adds
-    // the one permission that wildcard doesn't cover: creating a
-    // document under someone else's subcollection. Unlike
-    // `clanInvites`/`friendRequests`, this also checks that `matchId`
-    // really does point at a `battleMatches` doc that already has both
-    // the sender and the target in its `players` — the invite is a
-    // pointer to an already-created match (see `BattleInvite.matchId`'s
-    // own doc comment for why), so this is what stops a signed-in user
-    // from writing an invite that dangles or points at somebody else's
-    // unrelated match.
+    // `friendRequests` above — the target can read/answer it via the
+    // `users/{uid}/{document=**}` wildcard, so this block only adds the
+    // two permissions that wildcard doesn't cover: creating a document
+    // under someone else's subcollection, and the *sender* later
+    // retracting it. Unlike `clanInvites`/`friendRequests`, `create`
+    // also checks that `matchId` really does point at a `battleMatches`
+    // doc that already has both the sender and the target in its
+    // `players` — the invite is a pointer to an already-created match
+    // (see `BattleInvite.matchId`'s own doc comment for why), so this is
+    // what stops a signed-in user from writing an invite that dangles or
+    // points at somebody else's unrelated match.
+    //
+    // `update` is the sender cancelling their own sent challenge
+    // (`BattleInviteWaitingScreen`'s Batal button, and its own
+    // `dispose()` — leaving that screen any other way also retracts it).
+    // Without this, `respondToMatchInvite` alone only updates the
+    // `battleMatches` doc, never this one — the target reads *this*
+    // document, not that one, so a cancelled challenge's row stayed
+    // stuck showing "menantangmu" forever on the target's side, with no
+    // permission to fix it since the sender isn't `targetUid` and so
+    // isn't covered by the wildcard above. Scoped to `status ==
+    // 'declined'` only — a sender can retract, never fabricate an
+    // acceptance on the target's behalf.
     match /users/{targetUid}/battleInvites/{inviteId} {
       allow create: if request.auth != null
           && request.auth.uid != targetUid
@@ -287,6 +299,11 @@ service cloud.firestore {
           && request.resource.data.matchId is string
           && matchHasBothPlayers(
               request.resource.data.matchId, request.auth.uid, targetUid);
+      allow update: if request.auth != null
+          && request.auth.uid == resource.data.fromUid
+          && request.resource.data.status == 'declined'
+          && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['status']);
     }
 
     function matchHasBothPlayers(matchId, a, b) {

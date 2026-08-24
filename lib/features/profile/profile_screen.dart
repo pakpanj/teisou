@@ -70,9 +70,9 @@ class ProfileScreen extends ConsumerWidget {
               child: const Icon(Icons.chat_bubble_outline),
             ),
             tooltip: s.chatMenuTitle,
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => const ChatHubScreen()),
-            ),
+            onPressed: () => Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (_) => const ChatHubScreen())),
           ),
           IconButton(
             icon: CountBadge(
@@ -80,9 +80,9 @@ class ProfileScreen extends ConsumerWidget {
               child: const Icon(Icons.person_add_alt_1),
             ),
             tooltip: s.addFriendMenuTitle,
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => const AddFriendScreen()),
-            ),
+            onPressed: () => Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (_) => const AddFriendScreen())),
           ),
         ],
       ),
@@ -178,7 +178,8 @@ class _HeaderCard extends ConsumerWidget {
       await syncIdentityEverywhere(
         ref,
         uid: result.uid,
-        displayName: profile?.resolveDisplayName(result) ??
+        displayName:
+            profile?.resolveDisplayName(result) ??
             (result.displayName ?? 'Pelajar Kana'),
         photoUrl: result.photoURL,
         avatarType: profile?.avatarType ?? AvatarType.google,
@@ -247,9 +248,7 @@ class _HeaderCard extends ConsumerWidget {
         children: [
           // Full-bleed cover background — the selected preset's art, or
           // CoverPresets.fallback when the user has never picked one.
-          Positioned.fill(
-            child: _HeaderBackground(coverId: profile?.coverId),
-          ),
+          Positioned.fill(child: _HeaderBackground(coverId: profile?.coverId)),
           // Scrim so avatar/name/text stay legible over any cover photo,
           // busy or plain. Comes from the palette because it has to invert:
           // a white wash under dark mode's pale text would leave the two
@@ -324,7 +323,10 @@ class _HeaderCard extends ConsumerWidget {
                 Text(
                   s.profileMotivation,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 12.5, color: context.palette.textNavy),
+                  style: TextStyle(
+                    fontSize: 12.5,
+                    color: context.palette.textNavy,
+                  ),
                 ),
                 if (isAnonymous) ...[
                   const SizedBox(height: 16),
@@ -446,7 +448,10 @@ class _TierBadge extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [context.palette.premiumGoldStart, context.palette.premiumGoldEnd],
+            colors: [
+              context.palette.premiumGoldStart,
+              context.palette.premiumGoldEnd,
+            ],
           ),
           borderRadius: BorderRadius.circular(20),
         ),
@@ -686,8 +691,8 @@ class _MyScoreAndCurriculumCard extends ConsumerWidget {
               furthestTitle: highestOrder == 0
                   ? null
                   : allBab
-                      .firstWhere((b) => b.order == highestOrder)
-                      .localizedTitle(s.language),
+                        .firstWhere((b) => b.order == highestOrder)
+                        .localizedTitle(s.language),
               levels: levels,
             ),
         ],
@@ -952,8 +957,7 @@ class _SettingsMenu extends ConsumerWidget {
             // The seen flag is deliberately left alone: this is not the
             // first run, and clearing it would put the tour back in
             // front of the next launch too.
-            onTap: () =>
-                ref.read(replayHomeTourProvider.notifier).state++,
+            onTap: () => ref.read(replayHomeTourProvider.notifier).state++,
           ),
           const Divider(height: 1, indent: 16, endIndent: 16),
           _MenuTile(
@@ -1001,4 +1005,3 @@ class _MenuTile extends StatelessWidget {
     );
   }
 }
-

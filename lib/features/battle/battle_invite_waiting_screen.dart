@@ -8,6 +8,7 @@ import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/mascot_widget.dart';
 import '../../data/models/battle_match.dart';
+import '../../data/repositories/battle_invite_repository.dart';
 import '../../data/repositories/battle_repository.dart';
 import 'battle_screen.dart';
 
@@ -30,11 +31,17 @@ class BattleInviteWaitingScreen extends ConsumerStatefulWidget {
   const BattleInviteWaitingScreen({
     super.key,
     required this.matchId,
+    required this.targetUid,
     required this.targetName,
     required this.expiresAt,
   });
 
   final String matchId;
+
+  /// Who the invite (retracted, if this screen closes any way other than
+  /// the target accepting) is under — see the `dispose`/`_cancel` doc
+  /// comments for why this needs to be known here now.
+  final String targetUid;
   final String targetName;
 
   /// The invite's own 2-minute deadline, passed in rather than
@@ -70,10 +77,16 @@ class _BattleInviteWaitingScreenState
   /// watching the invited player walk into the match anyway.
   late final BattleRepository _battles;
 
+  /// Captured alongside [_battles], same reasoning — [dispose] needs a
+  /// way to retract this invite's own document (see that method's doc
+  /// comment), not just the match `respondToMatchInvite` touches.
+  late final BattleInviteRepository _invites;
+
   @override
   void initState() {
     super.initState();
     _battles = ref.read(battleRepositoryProvider);
+    _invites = ref.read(battleInviteRepositoryProvider);
     // Only to redraw the countdown; expiry itself is decided by
     // comparing against `expiresAt`, never by counting ticks — a screen
     // that slept through a lock/unlock would otherwise think it still
@@ -97,13 +110,27 @@ class _BattleInviteWaitingScreenState
     // already playing elsewhere — a match nobody would ever take a turn
     // in, which is what the "no cards to choose from" report was.
     //
+    // **Two documents need retracting, not one** — found from a second
+    // real report: cancelling here left the target's own pending-invite
+    // row stuck showing "menantangmu" forever. `respondToMatchInvite`
+    // only ever updates `battleMatches`; the target's list reads from
+    // `users/{targetUid}/battleInvites` instead, which nothing here used
+    // to touch at all. See `BattleInviteRepository.declineInvitesForMatch`
+    // for the write this was missing.
+    //
     // Fire-and-forget by necessity: `dispose` cannot await, and there is
     // nothing useful to do with a failure at this point anyway. The
-    // invite's own two-minute expiry is the backstop.
+    // invite's own two-minute expiry is the backstop for both.
     if (!_opened && !_cancelling) {
       _battles
           .respondToMatchInvite(matchId: widget.matchId, accept: false)
           .catchError((Object _) => false);
+      _invites
+          .declineInvitesForMatch(
+            targetUid: widget.targetUid,
+            matchId: widget.matchId,
+          )
+          .catchError((Object _) {});
     }
     super.dispose();
   }
@@ -118,11 +145,18 @@ class _BattleInviteWaitingScreenState
     setState(() => _cancelling = true);
     // Best-effort: a challenge nobody can answer expires on its own in
     // two minutes anyway, so a failed write here must not trap the
-    // challenger on this screen.
+    // challenger on this screen. Both documents — see `dispose`'s own
+    // doc comment for why there are two.
     try {
       await _battles.respondToMatchInvite(
         matchId: widget.matchId,
         accept: false,
+      );
+    } catch (_) {}
+    try {
+      await _invites.declineInvitesForMatch(
+        targetUid: widget.targetUid,
+        matchId: widget.matchId,
       );
     } catch (_) {}
     if (mounted) Navigator.of(context).pop();
@@ -171,10 +205,10 @@ class _BattleInviteWaitingScreenState
               const SizedBox(height: 24),
               Text(
                 switch (state) {
-                  BattleInviteState.declined =>
-                    s.battleInviteDeclined(widget.targetName),
-                  _ when expired =>
-                    s.battleInviteNoAnswer(widget.targetName),
+                  BattleInviteState.declined => s.battleInviteDeclined(
+                    widget.targetName,
+                  ),
+                  _ when expired => s.battleInviteNoAnswer(widget.targetName),
                   _ => s.battleInviteWaitingFor(widget.targetName),
                 },
                 textAlign: TextAlign.center,
