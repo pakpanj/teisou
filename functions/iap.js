@@ -249,3 +249,8 @@ exports.verifyPurchase = onCall(async (request) => {
 
 module.exports.entitlementFor = entitlementFor;
 module.exports.playConfigured = playConfigured;
+// Reused by subscription_notifications.js so the RTDN handler talks to
+// the same lazily-built Android Publisher client and the same package
+// name constant, instead of a second copy that could drift.
+module.exports.publisher = publisher;
+module.exports.ANDROID_PACKAGE = ANDROID_PACKAGE;

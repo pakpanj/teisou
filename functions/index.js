@@ -291,6 +291,14 @@ exports.onBattleMatchConcluded =
 // functions/iap.js.
 exports.verifyPurchase = require("./iap").verifyPurchase;
 
+// Keeps `subscription.tier` honest after the sale — a cancellation or a
+// failed renewal that `verifyPurchase` (checked once, at purchase time)
+// would never otherwise see. Needs Play Console's Real-time Developer
+// Notifications pointed at this function's Pub/Sub topic before it
+// receives anything real. See functions/subscription_notifications.js.
+exports.onPlayRtdn =
+  require("./subscription_notifications").onPlayRtdn;
+
 // The other way to earn coins besides buying them: 1st-3rd on Skor
 // Global, recalculated and paid out every Monday. See
 // functions/award_top_coins.js.
