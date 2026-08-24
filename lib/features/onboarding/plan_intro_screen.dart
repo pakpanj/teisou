@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -182,15 +183,51 @@ class _IconBadge extends StatelessWidget {
   }
 }
 
-class _WelcomePage extends StatelessWidget {
+class _WelcomePage extends StatefulWidget {
   final AppStrings strings;
   final VoidCallback onContinue;
 
   const _WelcomePage({required this.strings, required this.onContinue});
 
   @override
+  State<_WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<_WelcomePage>
+    with SingleTickerProviderStateMixin {
+  // Same 850ms as MascotWidget's own waving-mood idle duration, so the
+  // four badges bob in the same rhythm as the mascot instead of drifting
+  // out of step with it — they read as orbiting the character, not as
+  // four unrelated icons that happen to sit near it.
+  late final AnimationController _bob = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 850),
+  )..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _bob.dispose();
+    super.dispose();
+  }
+
+  /// Wraps one badge with a gentle vertical float. [phase] offsets where
+  /// in the cycle each badge starts, so all four don't bob in lockstep —
+  /// a little stagger reads as alive, perfect unison reads as mechanical.
+  Widget _floating(Widget child, {double phase = 0}) {
+    return AnimatedBuilder(
+      animation: _bob,
+      builder: (context, _) {
+        final t = (_bob.value + phase) % 1.0;
+        final lift = math.sin(t * 2 * math.pi) * 5;
+        return Transform.translate(offset: Offset(0, lift), child: child);
+      },
+      child: child,
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final s = strings;
+    final s = widget.strings;
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(24, 24, 24, 40),
       child: Column(
@@ -215,30 +252,48 @@ class _WelcomePage extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           SizedBox(
-            height: 180,
+            height: 190,
+            width: double.infinity,
             child: Stack(
               alignment: Alignment.center,
               children: [
-                const MascotWidget(mood: MascotMood.waving, size: 150),
-                const Positioned(
-                  left: 0,
-                  top: 10,
-                  child: _IconBadge(PremiumIcons.skin),
+                const MascotWidget(
+                  mood: MascotMood.waving,
+                  size: 140,
+                  showBackdrop: false,
+                  groundShadow: true,
                 ),
-                const Positioned(
-                  right: 0,
-                  top: 10,
-                  child: _IconBadge(PremiumIcons.kanji),
+                Positioned(
+                  left: 24,
+                  top: 4,
+                  child: _floating(
+                    const _IconBadge(PremiumIcons.skin),
+                    phase: 0,
+                  ),
                 ),
-                const Positioned(
-                  left: 4,
-                  bottom: 10,
-                  child: _IconBadge(PremiumIcons.kaiwa),
+                Positioned(
+                  right: 24,
+                  top: 4,
+                  child: _floating(
+                    const _IconBadge(PremiumIcons.kanji),
+                    phase: 0.25,
+                  ),
                 ),
-                const Positioned(
-                  right: 4,
-                  bottom: 10,
-                  child: _IconBadge(PremiumIcons.noAds),
+                Positioned(
+                  left: 30,
+                  bottom: 4,
+                  child: _floating(
+                    const _IconBadge(PremiumIcons.kaiwa),
+                    phase: 0.5,
+                  ),
+                ),
+                Positioned(
+                  right: 30,
+                  bottom: 4,
+                  child: _floating(
+                    const _IconBadge(PremiumIcons.noAds),
+                    phase: 0.75,
+                  ),
                 ),
               ],
             ),
@@ -334,7 +389,7 @@ class _WelcomePage extends StatelessWidget {
                 backgroundColor: context.palette.primaryCoral,
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
-              onPressed: onContinue,
+              onPressed: widget.onContinue,
               child: Text(s.planIntroContinueButton),
             ),
           ),
@@ -486,7 +541,12 @@ class _ComparePageState extends ConsumerState<_ComparePage> {
             ),
           ),
           const SizedBox(height: 12),
-          const MascotWidget(mood: MascotMood.excited, size: 110),
+          const MascotWidget(
+            mood: MascotMood.excited,
+            size: 110,
+            showBackdrop: false,
+            groundShadow: true,
+          ),
           const SizedBox(height: 20),
           _PlanPickerToggle(
             selected: _selected,
