@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/constants/premium_icons.dart';
 import '../../core/localization/app_strings.dart';
 import '../../core/providers.dart';
 import '../../core/services/iap_service.dart';
@@ -143,11 +144,16 @@ class _PlanIntroFlowState extends ConsumerState<PlanIntroFlow> {
   }
 }
 
+/// One floating feature badge around the mascot — same illustrated art
+/// as `PaywallScreen`'s own `_FeatureBadge` (see `PremiumIcons`'s doc
+/// comment for where it came from). Kept as its own small copy rather
+/// than importing that screen's private widget: two near-identical
+/// four-line widgets in different features is cheaper than a shared
+/// public export just to save one class.
 class _IconBadge extends StatelessWidget {
-  final IconData icon;
-  final Color color;
+  final String asset;
 
-  const _IconBadge({required this.icon, required this.color});
+  const _IconBadge(this.asset);
 
   @override
   Widget build(BuildContext context) {
@@ -155,16 +161,16 @@ class _IconBadge extends StatelessWidget {
       width: 44,
       height: 44,
       decoration: BoxDecoration(
-        color: context.palette.cardWhite,
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.08),
-            blurRadius: 8,
+            color: Colors.black.withValues(alpha: 0.18),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      child: Icon(icon, color: color, size: 22),
+      child: Image.asset(asset, fit: BoxFit.contain),
     );
   }
 }
@@ -207,37 +213,25 @@ class _WelcomePage extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 const MascotWidget(mood: MascotMood.waving, size: 150),
-                Positioned(
+                const Positioned(
                   left: 0,
                   top: 10,
-                  child: _IconBadge(
-                    icon: Icons.style,
-                    color: context.palette.secondaryBlue,
-                  ),
+                  child: _IconBadge(PremiumIcons.skin),
                 ),
-                Positioned(
+                const Positioned(
                   right: 0,
                   top: 10,
-                  child: _IconBadge(
-                    icon: Icons.groups,
-                    color: context.palette.tertiaryAmber,
-                  ),
+                  child: _IconBadge(PremiumIcons.kanji),
                 ),
-                Positioned(
+                const Positioned(
                   left: 4,
                   bottom: 10,
-                  child: _IconBadge(
-                    icon: Icons.sports_esports,
-                    color: context.palette.primaryCoral,
-                  ),
+                  child: _IconBadge(PremiumIcons.kaiwa),
                 ),
-                Positioned(
+                const Positioned(
                   right: 4,
                   bottom: 10,
-                  child: _IconBadge(
-                    icon: Icons.auto_stories,
-                    color: context.palette.successGreen,
-                  ),
+                  child: _IconBadge(PremiumIcons.noAds),
                 ),
               ],
             ),
@@ -260,8 +254,7 @@ class _WelcomePage extends StatelessWidget {
                   child: _PlanSummaryCard(
                     title: s.planIntroFreeTitle,
                     subtitle: s.planIntroFreeSubtitle,
-                    icon: Icons.card_giftcard,
-                    iconColor: context.palette.secondaryBlue,
+                    imageAsset: PremiumIcons.chestFree,
                     bullets: [
                       s.planIntroFreeBulletKana,
                       s.planIntroFreeBulletKanjiBunpou,
@@ -275,8 +268,7 @@ class _WelcomePage extends StatelessWidget {
                   child: _PlanSummaryCard(
                     title: s.planIntroPremiumTitle,
                     subtitle: s.planIntroPremiumSubtitle,
-                    icon: Icons.workspace_premium,
-                    iconColor: context.palette.premiumGoldStart,
+                    imageAsset: PremiumIcons.chestPremium,
                     highlighted: true,
                     bullets: [
                       s.planIntroPremiumBulletAllModules,
@@ -346,16 +338,19 @@ class _WelcomePage extends StatelessWidget {
 class _PlanSummaryCard extends StatelessWidget {
   final String title;
   final String subtitle;
-  final IconData icon;
-  final Color iconColor;
+
+  /// The plan's chest illustration — `PremiumIcons.chestFree` or
+  /// `.chestPremium` (see that class's doc comment). Replaced the
+  /// generic gift-box / crown Material icons this card used before the
+  /// chest art existed.
+  final String imageAsset;
   final List<String> bullets;
   final bool highlighted;
 
   const _PlanSummaryCard({
     required this.title,
     required this.subtitle,
-    required this.icon,
-    required this.iconColor,
+    required this.imageAsset,
     required this.bullets,
     this.highlighted = false,
   });
@@ -387,15 +382,7 @@ class _PlanSummaryCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: iconColor.withValues(alpha: 0.12),
-              shape: BoxShape.circle,
-            ),
-            child: Icon(icon, color: iconColor, size: 22),
-          ),
+          Image.asset(imageAsset, width: 48, height: 48),
           const SizedBox(height: 14),
           Text(
             title,
@@ -420,7 +407,13 @@ class _PlanSummaryCard extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.check_circle, size: 16, color: iconColor),
+                  Icon(
+                    Icons.check_circle,
+                    size: 16,
+                    color: highlighted
+                        ? context.palette.premiumGoldStart
+                        : context.palette.secondaryBlue,
+                  ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
