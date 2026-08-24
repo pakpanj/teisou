@@ -2111,7 +2111,6 @@ class AppStrings {
         'never opened by stars.',
   );
   String get shopSkinRowNote => _t('Belum bisa dibeli', 'Not buyable yet');
-  String get shopBuySoon => _t('Segera', 'Soon');
   String get cardSkinTitle => _t('Skin Kartu', 'Card Skins');
   String get cardSkinExplanation => _t(
     'Punggung kartu ini yang dilihat lawanmu setiap kali kamu '

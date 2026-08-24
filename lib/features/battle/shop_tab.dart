@@ -382,20 +382,24 @@ class _ShopRow extends ConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                // A disabled "Segera" button used to always sit here,
+                // real price or not — meant to keep the shelf looking
+                // like a shelf even before the product existed in Play
+                // Console. Once the coin button became a genuinely
+                // working alternative (2026-08-24), a permanently-dead
+                // button next to a live one just reads as broken rather
+                // than "coming soon" — so the money button is hidden
+                // outright until the store actually has a real price to
+                // show, and comes back on its own the moment it does.
                 if (busy)
                   const SizedBox(
                     width: 20,
                     height: 20,
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
-                else
-                  FilledButton(
-                    // Disabled rather than hidden when there is no price
-                    // yet: the shelf should still look like a shelf.
-                    onPressed: price == null ? null : onBuy,
-                    child: Text(price ?? s.shopBuySoon),
-                  ),
-                const SizedBox(height: 6),
+                else if (price != null)
+                  FilledButton(onPressed: onBuy, child: Text(price!)),
+                if (price != null || busy) const SizedBox(height: 6),
                 if (coinBusy)
                   const SizedBox(
                     width: 16,
