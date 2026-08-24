@@ -10,6 +10,7 @@ import '../../core/services/iap_service.dart';
 import '../../core/services/premium_purchase_flow.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/mascot_widget.dart';
+import '../battle/widgets/battle_arena.dart' show BattleBackdrop;
 
 /// Free-vs-Premium, shown once per device, right after the age question
 /// and before the home-screen tutorial — see `main.dart`'s `_PlanIntroGate`
@@ -52,8 +53,9 @@ class _PlanIntroFlowState extends ConsumerState<PlanIntroFlow> {
         IapOutcome.unavailable => s.storeUnavailable,
         IapOutcome.failed => s.purchaseFailed,
       };
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(message)));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
       if (outcome == IapOutcome.delivered) _finish();
     });
   }
@@ -86,58 +88,63 @@ class _PlanIntroFlowState extends ConsumerState<PlanIntroFlow> {
     final s = ref.watch(appStringsProvider);
     return Scaffold(
       backgroundColor: context.palette.background,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            PageView(
-              controller: _controller,
-              physics: const NeverScrollableScrollPhysics(),
-              onPageChanged: (i) => setState(() => _page = i),
-              children: [
-                _WelcomePage(strings: s, onContinue: _next),
-                _ComparePage(
-                  strings: s,
-                  purchase: _purchase,
-                  onSkip: _finish,
-                ),
-              ],
-            ),
-            if (_page == 1)
-              Positioned(
-                top: 4,
-                left: 4,
-                child: IconButton(
-                  icon: Icon(Icons.arrow_back, color: context.palette.textNavy),
-                  onPressed: () => _controller.previousPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeOut,
+      body: BattleBackdrop(
+        child: SafeArea(
+          child: Stack(
+            children: [
+              PageView(
+                controller: _controller,
+                physics: const NeverScrollableScrollPhysics(),
+                onPageChanged: (i) => setState(() => _page = i),
+                children: [
+                  _WelcomePage(strings: s, onContinue: _next),
+                  _ComparePage(
+                    strings: s,
+                    purchase: _purchase,
+                    onSkip: _finish,
+                  ),
+                ],
+              ),
+              if (_page == 1)
+                Positioned(
+                  top: 4,
+                  left: 4,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: context.palette.textNavy,
+                    ),
+                    onPressed: () => _controller.previousPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeOut,
+                    ),
                   ),
                 ),
+              Positioned(
+                bottom: 10,
+                left: 0,
+                right: 0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(2, (i) {
+                    final active = i == _page;
+                    return AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      width: active ? 20 : 6,
+                      height: 6,
+                      decoration: BoxDecoration(
+                        color: active
+                            ? context.palette.primaryCoral
+                            : context.palette.mutedSurface,
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                    );
+                  }),
+                ),
               ),
-            Positioned(
-              bottom: 10,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(2, (i) {
-                  final active = i == _page;
-                  return AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    margin: const EdgeInsets.symmetric(horizontal: 4),
-                    width: active ? 20 : 6,
-                    height: 6,
-                    decoration: BoxDecoration(
-                      color: active
-                          ? context.palette.primaryCoral
-                          : context.palette.mutedSurface,
-                      borderRadius: BorderRadius.circular(3),
-                    ),
-                  );
-                }),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -308,7 +315,9 @@ class _WelcomePage extends StatelessWidget {
                         s.planIntroSecureSubtitle,
                         style: TextStyle(
                           fontSize: 12,
-                          color: context.palette.textNavy.withValues(alpha: 0.7),
+                          color: context.palette.textNavy.withValues(
+                            alpha: 0.7,
+                          ),
                         ),
                       ),
                     ],
@@ -371,8 +380,9 @@ class _PlanSummaryCard extends StatelessWidget {
         boxShadow: highlighted
             ? [
                 BoxShadow(
-                  color: context.palette.premiumGoldStart
-                      .withValues(alpha: 0.18),
+                  color: context.palette.premiumGoldStart.withValues(
+                    alpha: 0.18,
+                  ),
                   blurRadius: 14,
                   offset: const Offset(0, 6),
                 ),
@@ -520,7 +530,9 @@ class _ComparePageState extends ConsumerState<_ComparePage> {
                 : OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       side: BorderSide(
-                          color: context.palette.primaryCoral, width: 1.5),
+                        color: context.palette.primaryCoral,
+                        width: 1.5,
+                      ),
                       foregroundColor: context.palette.primaryCoral,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
@@ -704,8 +716,9 @@ class _PlanDetailBox extends StatelessWidget {
         premium ? s.planIntroValueAdsFree : s.planIntroValueAdsShown,
       ),
     ];
-    final accent =
-        premium ? context.palette.premiumGoldEnd : context.palette.secondaryBlue;
+    final accent = premium
+        ? context.palette.premiumGoldEnd
+        : context.palette.secondaryBlue;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 220),
       width: double.infinity,
@@ -803,9 +816,15 @@ class _PremiumPriceCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _PriceFeature(icon: Icons.event_busy, label: s.planIntroCancelAnytime),
+              _PriceFeature(
+                icon: Icons.event_busy,
+                label: s.planIntroCancelAnytime,
+              ),
               _PriceFeature(icon: Icons.star, label: s.planIntroAllFeatures),
-              _PriceFeature(icon: Icons.security, label: s.planIntroSecurePayment),
+              _PriceFeature(
+                icon: Icons.security,
+                label: s.planIntroSecurePayment,
+              ),
             ],
           ),
         ],
