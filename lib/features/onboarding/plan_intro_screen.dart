@@ -253,7 +253,7 @@ class _WelcomePageState extends State<_WelcomePage>
           const SizedBox(height: 24),
           SizedBox(
             height: 190,
-            width: double.infinity,
+            width: 260,
             child: Stack(
               alignment: Alignment.center,
               children: [
@@ -264,32 +264,32 @@ class _WelcomePageState extends State<_WelcomePage>
                   groundShadow: true,
                 ),
                 Positioned(
-                  left: 24,
-                  top: 4,
+                  left: 0,
+                  top: 14,
                   child: _floating(
                     const _IconBadge(PremiumIcons.skin),
                     phase: 0,
                   ),
                 ),
                 Positioned(
-                  right: 24,
-                  top: 4,
+                  right: 0,
+                  top: 14,
                   child: _floating(
                     const _IconBadge(PremiumIcons.kanji),
                     phase: 0.25,
                   ),
                 ),
                 Positioned(
-                  left: 30,
-                  bottom: 4,
+                  left: 4,
+                  bottom: 14,
                   child: _floating(
                     const _IconBadge(PremiumIcons.kaiwa),
                     phase: 0.5,
                   ),
                 ),
                 Positioned(
-                  right: 30,
-                  bottom: 4,
+                  right: 4,
+                  bottom: 14,
                   child: _floating(
                     const _IconBadge(PremiumIcons.noAds),
                     phase: 0.75,
