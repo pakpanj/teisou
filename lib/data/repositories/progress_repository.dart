@@ -12,6 +12,7 @@ import '../models/kana_progress.dart';
 import '../models/kana_status.dart';
 import '../models/kana_type.dart';
 import '../models/kana_type_progress.dart';
+import '../models/plan_intro_state.dart';
 import '../models/saved_item_pointer.dart';
 import '../models/subscription.dart';
 import '../models/user_profile.dart';
@@ -24,8 +25,8 @@ class ProgressRepository {
   final Random _random;
 
   ProgressRepository({FirebaseFirestore? firestore, Random? random})
-      : _firestore = firestore ?? FirebaseFirestore.instance,
-        _random = random ?? Random();
+    : _firestore = firestore ?? FirebaseFirestore.instance,
+      _random = random ?? Random();
 
   DocumentReference<Map<String, dynamic>> _userDoc(String uid) =>
       _firestore.collection(FirestorePaths.users).doc(uid);
@@ -36,9 +37,9 @@ class ProgressRepository {
   static const _maxUserIdAttempts = 5;
 
   String _generateUserIdCandidate() => List.generate(
-        _userIdLength,
-        (_) => _userIdAlphabet[_random.nextInt(_userIdAlphabet.length)],
-      ).join();
+    _userIdLength,
+    (_) => _userIdAlphabet[_random.nextInt(_userIdAlphabet.length)],
+  ).join();
 
   /// A short, unique, human-shareable id for [uid] — separate from the
   /// Firebase Auth uid itself (long, opaque, never meant to be typed by a
@@ -164,10 +165,7 @@ class ProgressRepository {
     final newStreak = lastActiveDate == yesterdayKey ? currentStreak + 1 : 1;
 
     await doc.set({
-      'profile': {
-        'lastActiveDate': todayKey,
-        'currentStreak': newStreak,
-      },
+      'profile': {'lastActiveDate': todayKey, 'currentStreak': newStreak},
     }, SetOptions(merge: true));
 
     // Once per calendar day the user is actually active — not gated on
@@ -196,10 +194,7 @@ class ProgressRepository {
   /// is the preset id or Storage download URL, as applicable.
   Future<void> updateAvatar(String uid, AvatarType type, String? value) {
     return _userDoc(uid).set({
-      'profile': {
-        'avatarType': type.key,
-        'avatarValue': value,
-      },
+      'profile': {'avatarType': type.key, 'avatarValue': value},
     }, SetOptions(merge: true));
   }
 
@@ -231,17 +226,16 @@ class ProgressRepository {
   /// Raw `profile` map — displayName/isAnonymous/currentStreak/etc.
   Stream<Map<String, dynamic>> watchProfile(String uid) {
     return _userDoc(uid).snapshots().map(
-          (snapshot) =>
-              snapshot.data()?['profile'] as Map<String, dynamic>? ?? {},
-        );
+      (snapshot) => snapshot.data()?['profile'] as Map<String, dynamic>? ?? {},
+    );
   }
 
   Stream<Subscription> watchSubscription(String uid) {
     return _userDoc(uid).snapshots().map(
-          (snapshot) => Subscription.fromMap(
-            snapshot.data()?['subscription'] as Map<String, dynamic>?,
-          ),
-        );
+      (snapshot) => Subscription.fromMap(
+        snapshot.data()?['subscription'] as Map<String, dynamic>?,
+      ),
+    );
   }
 
   Future<Subscription> getSubscription(String uid) async {
@@ -249,6 +243,44 @@ class ProgressRepository {
     return Subscription.fromMap(
       snapshot.data()?['subscription'] as Map<String, dynamic>?,
     );
+  }
+
+  /// Reads the account's [PlanIntroState] — see that class's own doc
+  /// comment for what the two fields mean and why this lives on the
+  /// account rather than the device.
+  Future<PlanIntroState> getPlanIntroState(String uid) async {
+    final snapshot = await _userDoc(uid).get();
+    return PlanIntroState.fromMap(
+      snapshot.data()?['planIntro'] as Map<String, dynamic>?,
+    );
+  }
+
+  /// Called when `PlanIntroFlow` is actually dismissed (either plan
+  /// picked) — records that this account has now seen it, and stamps
+  /// whether it was premium at that exact moment so a later lapse can be
+  /// detected against it.
+  Future<void> markPlanIntroSeen(String uid, {required bool premiumNow}) {
+    return _userDoc(uid).set({
+      'planIntro': PlanIntroState(
+        seen: true,
+        lastKnownPremium: premiumNow,
+      ).toMap(),
+    }, SetOptions(merge: true));
+  }
+
+  /// Refreshes `lastKnownPremium` on a launch where the intro was **not**
+  /// shown, so a premium status the account reached some other way (e.g.
+  /// buying Premium from `PaywallScreen` without ever revisiting this
+  /// screen) is still on record — without this, a lapse reached that way
+  /// could never be detected, since [markPlanIntroSeen] only ever runs
+  /// when the intro itself is dismissed.
+  Future<void> recordPlanIntroSubscriptionCheck(
+    String uid, {
+    required bool isPremium,
+  }) {
+    return _userDoc(uid).set({
+      'planIntro': {'seen': true, 'lastKnownPremium': isPremium},
+    }, SetOptions(merge: true));
   }
 
   /// Card skins this learner has bought.
@@ -295,9 +327,9 @@ class ProgressRepository {
   /// 1-3 on Skor Global). Defaults to 0 for a learner who has never had
   /// the field written, same fallback shape as [watchSubscription].
   Stream<int> watchCoinBalance(String uid) {
-    return _userDoc(uid)
-        .snapshots()
-        .map((snapshot) => (snapshot.data()?['coins'] as num?)?.toInt() ?? 0);
+    return _userDoc(uid).snapshots().map(
+      (snapshot) => (snapshot.data()?['coins'] as num?)?.toInt() ?? 0,
+    );
   }
 
   Future<int> getCoinBalance(String uid) async {
@@ -355,10 +387,7 @@ class ProgressRepository {
     required String itemId,
     required String type,
   }) {
-    return _userDoc(uid)
-        .collection(FirestorePaths.savedItems)
-        .doc(itemId)
-        .set({
+    return _userDoc(uid).collection(FirestorePaths.savedItems).doc(itemId).set({
       'type': type,
       'itemId': itemId,
       'savedAt': FieldValue.serverTimestamp(),
@@ -369,8 +398,9 @@ class ProgressRepository {
   /// ({itemId, type}), not the resolved kanji/kotoba content; callers
   /// resolve those via `KanjiRepository`/`KotobaRepository`.
   Future<List<SavedItemPointer>> getSavedItems(String uid) async {
-    final snapshot =
-        await _userDoc(uid).collection(FirestorePaths.savedItems).get();
+    final snapshot = await _userDoc(
+      uid,
+    ).collection(FirestorePaths.savedItems).get();
     return snapshot.docs
         .map((doc) => SavedItemPointer.fromFirestore(doc.id, doc.data()))
         .toList();
@@ -378,10 +408,9 @@ class ProgressRepository {
 
   /// Removes one dictionary bookmark.
   Future<void> removeSavedItem(String uid, String itemId) {
-    return _userDoc(uid)
-        .collection(FirestorePaths.savedItems)
-        .doc(itemId)
-        .delete();
+    return _userDoc(
+      uid,
+    ).collection(FirestorePaths.savedItems).doc(itemId).delete();
   }
 
   Future<KanaTypeProgress> getTypeProgress(String uid, KanaType type) async {
@@ -441,9 +470,9 @@ class ProgressRepository {
 
   Stream<XpProgress> watchXpProgress(String uid) {
     return _userDoc(uid).snapshots().map(
-          (snapshot) =>
-              XpProgress.fromMap(snapshot.data()?['xp'] as Map<String, dynamic>?),
-        );
+      (snapshot) =>
+          XpProgress.fromMap(snapshot.data()?['xp'] as Map<String, dynamic>?),
+    );
   }
 
   /// Adds [amount] XP for one completed learning action. Best-effort and
@@ -513,9 +542,12 @@ class ProgressRepository {
     return reward;
   }
 
-  Future<Set<String>> getUnlockedAvatarIds(String uid) => _getXpIdSet(uid, 'unlockedAvatarIds');
-  Future<Set<String>> getUnlockedFrameIds(String uid) => _getXpIdSet(uid, 'unlockedFrameIds');
-  Future<Set<String>> getUnlockedCoverIds(String uid) => _getXpIdSet(uid, 'unlockedCoverIds');
+  Future<Set<String>> getUnlockedAvatarIds(String uid) =>
+      _getXpIdSet(uid, 'unlockedAvatarIds');
+  Future<Set<String>> getUnlockedFrameIds(String uid) =>
+      _getXpIdSet(uid, 'unlockedFrameIds');
+  Future<Set<String>> getUnlockedCoverIds(String uid) =>
+      _getXpIdSet(uid, 'unlockedCoverIds');
 
   Future<Set<String>> _getXpIdSet(String uid, String field) async {
     final snapshot = await _userDoc(uid).get();

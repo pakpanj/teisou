@@ -174,33 +174,41 @@ class _AudienceGate extends ConsumerWidget {
   }
 }
 
-/// Shows the Free-vs-Premium plan intro once per device, right after the
-/// age question and before the dataset preload / home tutorial.
+/// Shows the Free-vs-Premium plan intro right after the age question and
+/// before the dataset preload / home tutorial — for every **account**
+/// that hasn't seen it yet, and again for one whose premium subscription
+/// has since lapsed. See [planIntroShouldShowProvider] for the actual
+/// account/subscription logic.
 ///
 /// **Here specifically, not merged into the home tutorial and not
 /// before the age question** — an explicit product decision, not a
 /// default: the age answer configures ads and has to be settled first
 /// (same reasoning [_AudienceGate] already gives for sitting where it
-/// does), and this is a one-time monetisation choice rather than a
-/// coach-mark walkthrough of the home screen's own cards, so it does
-/// not belong inside [FirstVisitTutorial]'s tour either — see
-/// `PlanIntroRepository`'s doc comment for why it tracks "seen" on its
-/// own key instead of reusing `TutorialId`.
+/// does), and this is a one-time-per-account monetisation choice rather
+/// than a coach-mark walkthrough of the home screen's own cards, so it
+/// does not belong inside [FirstVisitTutorial]'s tour either.
+///
+/// **Sitting this early means [appStartupProvider] (sign-in) now
+/// resolves before the home screen's own first frame, not lazily on it**
+/// — [planIntroShouldShowProvider] depends on knowing which account this
+/// is. Anonymous sign-in and the one Firestore read it needs are both
+/// fast, and every screen past this gate already depended on sign-in
+/// having happened anyway.
 class _PlanIntroGate extends ConsumerWidget {
   const _PlanIntroGate();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final seen = ref.watch(hasSeenPlanIntroProvider);
-    return seen.when(
-      data: (value) => value ? const _PreloadGate() : const PlanIntroFlow(),
+    final shouldShow = ref.watch(planIntroShouldShowProvider);
+    return shouldShow.when(
+      data: (value) => value ? const PlanIntroFlow() : const _PreloadGate(),
       loading: () => const _StartupLoading(),
       // A failed read must not trap every launch behind a screen that
-      // can never resolve "seen" — same asymmetry `_AudienceGate`
-      // accepts for its own failed read, just the other way round: an
-      // unknown age is treated as a child (the safer wrong answer),
-      // while an unknown "seen" state is treated as already seen (the
-      // one that never blocks the app from opening).
+      // can never resolve — same asymmetry `_AudienceGate` accepts for
+      // its own failed read, just the other way round: an unknown age is
+      // treated as a child (the safer wrong answer), while a failure
+      // here is treated as "don't show" (the one that never blocks the
+      // app from opening).
       error: (_, _) => const _PreloadGate(),
     );
   }
@@ -222,12 +230,12 @@ class _Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FirstVisitTutorial(
-        id: TutorialId.home,
-        // Coach marks, not a slideshow: the mascot points at the real
-        // cards on the real screen.
-        tour: homeTourSteps,
-        child: const HomeScreen(),
-      );
+    id: TutorialId.home,
+    // Coach marks, not a slideshow: the mascot points at the real
+    // cards on the real screen.
+    tour: homeTourSteps,
+    child: const HomeScreen(),
+  );
 }
 
 /// Reads the app's datasets before the home screen appears.

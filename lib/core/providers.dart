@@ -75,7 +75,6 @@ import 'services/romaji_converter.dart';
 import 'services/rank_skip_service.dart';
 import 'services/tts_service.dart';
 import '../data/repositories/onboarding_repository.dart';
-import '../data/repositories/plan_intro_repository.dart';
 
 final languageRepositoryProvider = Provider<LanguageRepository>(
   (ref) => LanguageRepository(),
@@ -162,19 +161,48 @@ final hasSeenTutorialProvider = FutureProvider.family<bool, TutorialId>(
   (ref, id) => ref.watch(onboardingRepositoryProvider).hasSeen(id),
 );
 
-final planIntroRepositoryProvider = Provider<PlanIntroRepository>(
-  (ref) => PlanIntroRepository(),
-);
+/// Whether `PlanIntroFlow` (the Free-vs-Premium screen shown right after
+/// the age question) should be shown on this launch — see
+/// [PlanIntroState]'s own doc comment for the two-field logic this reads.
+///
+/// **Account-based, not device-based** — deliberately different from
+/// [hasSeenTutorialProvider], which really is "has this device seen the
+/// coach marks". A learner signing into the same account on a second
+/// phone should find this already dismissed there too, and a different
+/// account signing into the same phone should see it fresh — so this
+/// depends on [appStartupProvider] (sign-in) resolving first, same as
+/// every other per-account provider in this file, rather than reading a
+/// SharedPreferences flag with no notion of "which account".
+///
+/// **Also re-shows once a premium subscription lapses** — awaits
+/// [subscriptionProvider]'s first value to compare against what was
+/// recorded the last time this was checked. When the intro is *not*
+/// shown, [ProgressRepository.recordPlanIntroSubscriptionCheck] keeps
+/// that record fresh (fire-and-forget) so a premium status reached some
+/// other way (e.g. buying Premium from `PaywallScreen` without ever
+/// revisiting this screen) is still on file for a later lapse to be
+/// detected against.
+final planIntroShouldShowProvider = FutureProvider<bool>((ref) async {
+  final user = await ref.watch(appStartupProvider.future);
+  final progressRepository = ref.watch(progressRepositoryProvider);
+  final state = await progressRepository.getPlanIntroState(user.uid);
+  final subscription = await ref.watch(subscriptionProvider.future);
+  final isPremiumNow = subscription.isPremium;
+  final shouldShow = state.shouldShow(isPremiumNow: isPremiumNow);
+  if (!shouldShow && state.lastKnownPremium != isPremiumNow) {
+    unawaited(
+      progressRepository.recordPlanIntroSubscriptionCheck(
+        user.uid,
+        isPremium: isPremiumNow,
+      ),
+    );
+  }
+  return shouldShow;
+});
 
-/// Whether this device has already seen the Free-vs-Premium plan intro
-/// shown right after the age question — see [PlanIntroRepository]'s own
-/// doc comment for why it's tracked separately from [hasSeenTutorialProvider].
-final hasSeenPlanIntroProvider = FutureProvider<bool>(
-  (ref) => ref.watch(planIntroRepositoryProvider).hasSeen(),
+final adAudienceRepositoryProvider = Provider<AdAudienceRepository>(
+  (ref) => AdAudienceRepository(),
 );
-
-final adAudienceRepositoryProvider =
-    Provider<AdAudienceRepository>((ref) => AdAudienceRepository());
 
 /// The learner's stored age answer, or the unknown — and therefore
 /// restricted — state. Watched at the app root, which both shows the age
@@ -183,9 +211,7 @@ final adAudienceRepositoryProvider =
 final adAudienceProvider = FutureProvider<AdAudience>((ref) {
   return ref.watch(adAudienceRepositoryProvider).getAudience();
 });
-final babRepositoryProvider = Provider<BabRepository>(
-  (ref) => BabRepository(),
-);
+final babRepositoryProvider = Provider<BabRepository>((ref) => BabRepository());
 final babProgressRepositoryProvider = Provider<BabProgressRepository>(
   (ref) => BabProgressRepository(),
 );
@@ -276,8 +302,7 @@ final battleInviteRepositoryProvider = Provider<BattleInviteRepository>(
 final clanMessageRepositoryProvider = Provider<ClanMessageRepository>(
   (ref) => ClanMessageRepository(),
 );
-final clanAnnouncementRepositoryProvider =
-    Provider<ClanAnnouncementRepository>(
+final clanAnnouncementRepositoryProvider = Provider<ClanAnnouncementRepository>(
   (ref) => ClanAnnouncementRepository(),
 );
 final friendRepositoryProvider = Provider<FriendRepository>(
@@ -336,6 +361,7 @@ final kanjiComboExamHistoryRepositoryProvider = Provider<ExamHistoryRepository>(
     leaderboardRepository: ref.watch(leaderboardRepositoryProvider),
   ),
 );
+
 /// Ensures anonymous sign-in, then starts the user's profile bookkeeping
 /// without waiting for it. Screens should gate progress reads/writes on this
 /// resolving.
@@ -412,12 +438,13 @@ final appStartupProvider = FutureProvider<User>((ref) async {
   // install, remembered locally — see backfillConversations.
   unawaited(() async {
     try {
-      final friends =
-          await ref.read(friendRepositoryProvider).getFriendsOnce(user.uid);
+      final friends = await ref
+          .read(friendRepositoryProvider)
+          .getFriendsOnce(user.uid);
       await ref.read(directMessageRepositoryProvider).backfillConversations(
-            user.uid,
-            [for (final friend in friends) friend.uid],
-          );
+        user.uid,
+        [for (final friend in friends) friend.uid],
+      );
     } catch (e) {
       debugPrint('backfillConversations failed: $e');
     }
@@ -442,7 +469,9 @@ final appStartupProvider = FutureProvider<User>((ref) async {
     ref
         .read(presenceServiceProvider)
         .goOnline(user.uid)
-        .catchError((Object e) => debugPrint('PresenceService.goOnline failed: $e')),
+        .catchError(
+          (Object e) => debugPrint('PresenceService.goOnline failed: $e'),
+        ),
   );
 
   return user;
@@ -461,9 +490,7 @@ final kanaListProvider = FutureProvider.family<List<KanaCharacter>, KanaType>((
 final kanaKeyboardInputProvider = FutureProvider<KanaKeyboardInput>((
   ref,
 ) async {
-  final hiragana = await ref.watch(
-    kanaListProvider(KanaType.hiragana).future,
-  );
+  final hiragana = await ref.watch(kanaListProvider(KanaType.hiragana).future);
   return KanaKeyboardInput.fromAll(hiragana);
 });
 
@@ -486,13 +513,15 @@ final battleCardDataProvider =
 
 /// Live progress (status per kana + resume index) for one kana type, kept
 /// in sync via a Firestore snapshot stream once the user is signed in.
-final typeProgressProvider =
-    StreamProvider.family<KanaTypeProgress, KanaType>((ref, type) async* {
-      final user = await ref.watch(appStartupProvider.future);
-      yield* ref
-          .watch(progressRepositoryProvider)
-          .watchTypeProgress(user.uid, type);
-    });
+final typeProgressProvider = StreamProvider.family<KanaTypeProgress, KanaType>((
+  ref,
+  type,
+) async* {
+  final user = await ref.watch(appStartupProvider.future);
+  yield* ref
+      .watch(progressRepositoryProvider)
+      .watchTypeProgress(user.uid, type);
+});
 
 final userProfileProvider = StreamProvider<UserProfile>((ref) async* {
   final user = await ref.watch(appStartupProvider.future);
@@ -516,8 +545,9 @@ final iapServiceProvider = Provider<IapService>((ref) {
 /// write. Stateless, unlike [iapServiceProvider]: there's no purchase
 /// stream to keep listening to, so a plain provider (no dispose needed)
 /// is enough.
-final coinSpendServiceProvider =
-    Provider<CoinSpendService>((ref) => CoinSpendService());
+final coinSpendServiceProvider = Provider<CoinSpendService>(
+  (ref) => CoinSpendService(),
+);
 
 /// Card skins this learner has bought. Empty — not "everything" — while
 /// it loads or when signed out: a wardrobe that briefly shows every paid

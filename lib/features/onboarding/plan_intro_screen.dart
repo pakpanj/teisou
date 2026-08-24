@@ -57,7 +57,7 @@ class _PlanIntroFlowState extends ConsumerState<PlanIntroFlow> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(message)));
-      if (outcome == IapOutcome.delivered) _finish();
+      if (outcome == IapOutcome.delivered) _finish(premiumOverride: true);
     });
   }
 
@@ -68,13 +68,31 @@ class _PlanIntroFlowState extends ConsumerState<PlanIntroFlow> {
     super.dispose();
   }
 
-  /// Marks this device as having seen the intro and lets the startup
-  /// gate move on to the tutorial/home screen — see `_PlanIntroGate` in
-  /// `main.dart`, which rebuilds off the same [hasSeenPlanIntroProvider]
-  /// this invalidates.
-  Future<void> _finish() async {
-    await ref.read(planIntroRepositoryProvider).markSeen();
-    ref.invalidate(hasSeenPlanIntroProvider);
+  /// Marks this **account** as having seen the intro and lets the
+  /// startup gate move on to the tutorial/home screen — see
+  /// `_PlanIntroGate` in `main.dart`, which rebuilds off the same
+  /// [planIntroShouldShowProvider] this invalidates.
+  ///
+  /// [premiumOverride] is passed `true` from the purchase-delivered
+  /// path: `subscriptionProvider`'s Firestore snapshot can lag a moment
+  /// behind `verifyPurchase` actually landing, so the outcome that just
+  /// fired is a more reliable "premium now" than re-reading it. Every
+  /// other dismissal (the Free Plan button) reads whatever
+  /// `subscriptionProvider` currently holds — by this point
+  /// `planIntroShouldShowProvider` has already awaited its first value,
+  /// so it's available synchronously.
+  Future<void> _finish({bool? premiumOverride}) async {
+    final user = ref.read(appStartupProvider).valueOrNull;
+    if (user != null) {
+      final isPremiumNow =
+          premiumOverride ??
+          ref.read(subscriptionProvider).valueOrNull?.isPremium ??
+          false;
+      await ref
+          .read(progressRepositoryProvider)
+          .markPlanIntroSeen(user.uid, premiumNow: isPremiumNow);
+    }
+    ref.invalidate(planIntroShouldShowProvider);
   }
 
   void _next() {

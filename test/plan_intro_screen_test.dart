@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:kana_master/core/providers.dart';
 import 'package:kana_master/features/onboarding/plan_intro_screen.dart';
 
 /// The Free-vs-Premium screen shown once per device, right after the
@@ -25,9 +24,7 @@ void main() {
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
     await tester.pumpWidget(
-      const ProviderScope(
-        child: MaterialApp(home: PlanIntroFlow()),
-      ),
+      const ProviderScope(child: MaterialApp(home: PlanIntroFlow())),
     );
     await tester.pump();
   }
@@ -67,10 +64,7 @@ void main() {
     await tester.tap(find.text('Lanjutkan'));
     await settlePageChange(tester);
 
-    expect(
-      find.text('Pilih paket terbaik untuk kebutuhanmu'),
-      findsOneWidget,
-    );
+    expect(find.text('Pilih paket terbaik untuk kebutuhanmu'), findsOneWidget);
     // The picker opens on Premium, so the single dynamic CTA button reads
     // "Mulai Premium" — "Gunakan Free Plan" only appears once the picker
     // is switched to Free.
@@ -94,23 +88,18 @@ void main() {
     expect(find.text('Mulai Premium'), findsNothing);
   });
 
-  testWidgets('"Gunakan Free Plan" marks the intro seen so the gate '
-      'moves on', (tester) async {
-    tester.view.physicalSize = const Size(1080, 2340);
-    tester.view.devicePixelRatio = 1.0;
-    addTearDown(tester.view.resetPhysicalSize);
-    addTearDown(tester.view.resetDevicePixelRatio);
-    final container = ProviderContainer();
-    addTearDown(container.dispose);
-    expect(await container.read(hasSeenPlanIntroProvider.future), isFalse);
+  // Marking the intro seen now writes to the signed-in account's Firestore
+  // doc (see `PlanIntroState`/`ProgressRepository.markPlanIntroSeen`) —
+  // this project has no Firestore/Auth test double, so that write can't
+  // be exercised here the way the old SharedPreferences-backed flag was.
+  // What *can* be verified without one: `_finish()` guards on
+  // `appStartupProvider` actually having a signed-in user first, so
+  // tapping through with none (this bare `ProviderScope`, same as every
+  // other test in this file) is a graceful no-op rather than a crash.
+  testWidgets('"Gunakan Free Plan" completes without throwing when no '
+      'account is signed in', (tester) async {
+    await pump(tester);
 
-    await tester.pumpWidget(
-      UncontrolledProviderScope(
-        container: container,
-        child: const MaterialApp(home: PlanIntroFlow()),
-      ),
-    );
-    await tester.pump();
     await tester.tap(find.text('Lanjutkan'));
     await settlePageChange(tester);
     await tester.tap(find.text('FREE PLAN'));
@@ -118,10 +107,7 @@ void main() {
     await tester.tap(find.text('Gunakan Free Plan'));
     await tester.pump();
 
-    expect(
-      await container.read(planIntroRepositoryProvider).hasSeen(),
-      isTrue,
-    );
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('the comparison table uses Teisou\'s real features, not a '
