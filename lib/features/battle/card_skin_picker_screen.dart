@@ -36,14 +36,18 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
   CardSkinSource? _filter;
   bool _owned = false;
 
-  Future<void> _select(CardSkinPreset skin, {required bool unlocked}) async {
+  Future<void> _select(
+    CardSkinPreset skin, {
+    required bool unlocked,
+    required bool hasPremium,
+  }) async {
     final s = ref.read(appStringsProvider);
     if (!unlocked) {
       // No paywall push: the shop cannot sell anything yet, and an
       // achievement skin is not for sale at any price. Saying what it
       // takes is the only honest response.
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(_requirementOf(skin, s))),
+        SnackBar(content: Text(_requirementOf(skin, s, hasPremium: hasPremium))),
       );
       return;
     }
@@ -76,12 +80,16 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
   }
 
   /// What a locked skin needs, said plainly. A bare padlock is the one
-  /// thing this screen must not do: for an achievement skin the number
-  /// *is* the whole message.
-  String _requirementOf(CardSkinPreset skin, AppStrings s) {
+  /// thing this screen must not do: for an achievement skin, which now
+  /// needs both stars and Premium (see `CardSkinSource.achievement`'s own
+  /// doc comment), the message names whichever half is still missing.
+  String _requirementOf(CardSkinPreset skin, AppStrings s, {required bool hasPremium}) {
     return switch (skin.source) {
-      CardSkinSource.achievement =>
-        s.cardSkinNeedsStars(skin.starsRequired, _starTotal),
+      CardSkinSource.achievement => s.cardSkinAchievementRequirement(
+        skin.starsRequired,
+        _starTotal,
+        hasPremium: hasPremium,
+      ),
       CardSkinSource.paid => s.cardSkinBuyInShop,
       CardSkinSource.event => s.cardSkinEventLocked,
       CardSkinSource.free => '',
@@ -226,9 +234,14 @@ class _CardSkinPickerBodyState extends ConsumerState<CardSkinPickerBody> {
                           selected: skin.id == selectedId,
                           locked: !unlocked,
                           label: skin.labelFor(s.language),
-                          requirement:
-                              unlocked ? null : _requirementOf(skin, s),
-                          onTap: () => _select(skin, unlocked: unlocked),
+                          requirement: unlocked
+                              ? null
+                              : _requirementOf(skin, s, hasPremium: premium),
+                          onTap: () => _select(
+                            skin,
+                            unlocked: unlocked,
+                            hasPremium: premium,
+                          ),
                         );
                       },
                     ),

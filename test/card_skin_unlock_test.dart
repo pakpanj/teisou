@@ -22,18 +22,38 @@ void main() {
       }
     });
 
-    test('achievement skins open exactly at their tier boundary', () {
+    test('achievement skins open exactly at their tier boundary, with '
+        'Premium also active', () {
+      // Since 2026-08-24 an achievement skin needs both halves — see
+      // `CardSkinSource.achievement`'s own doc comment — so `premium: true`
+      // is held constant here to isolate the star-boundary behaviour.
       final gold = skinOf('emas_kencana');
-      expect(isCardSkinUnlocked(gold, starTotal: 34), isFalse);
-      expect(isCardSkinUnlocked(gold, starTotal: 35), isTrue);
+      expect(isCardSkinUnlocked(gold, starTotal: 34, premium: true), isFalse);
+      expect(isCardSkinUnlocked(gold, starTotal: 35, premium: true), isTrue);
 
       final diamond = skinOf('night_purple');
-      expect(isCardSkinUnlocked(diamond, starTotal: 59), isFalse);
-      expect(isCardSkinUnlocked(diamond, starTotal: 60), isTrue);
+      expect(
+          isCardSkinUnlocked(diamond, starTotal: 59, premium: true), isFalse);
+      expect(
+          isCardSkinUnlocked(diamond, starTotal: 60, premium: true), isTrue);
 
       final emerald = skinOf('dragon_black');
-      expect(isCardSkinUnlocked(emerald, starTotal: 89), isFalse);
-      expect(isCardSkinUnlocked(emerald, starTotal: 90), isTrue);
+      expect(
+          isCardSkinUnlocked(emerald, starTotal: 89, premium: true), isFalse);
+      expect(
+          isCardSkinUnlocked(emerald, starTotal: 90, premium: true), isTrue);
+    });
+
+    test('achievement skins stay locked without Premium, however many '
+        'stars', () {
+      // The other half of the same rule: stars alone are no longer
+      // enough, however far past the threshold.
+      final gold = skinOf('emas_kencana');
+      expect(isCardSkinUnlocked(gold, starTotal: 9999), isFalse);
+      expect(
+        isCardSkinUnlocked(gold, starTotal: 9999, premium: false),
+        isFalse,
+      );
     });
 
     test('paid skins are not reachable by stars, however many', () {
@@ -64,8 +84,8 @@ void main() {
       }
     });
 
-    test('premium does not unlock achievement or event skins — only the '
-        'paid family', () {
+    test('premium alone (with no stars) does not unlock an achievement '
+        'skin, and never unlocks an event skin', () {
       final gold = skinOf('emas_kencana');
       expect(isCardSkinUnlocked(gold, starTotal: 0, premium: true), isFalse);
       // No event skin exists in the real list right now (the 7 illustrated
@@ -106,13 +126,15 @@ void main() {
   group('a skin that locks again mid-season', () {
     test('falls back to the default rather than staying on display', () {
       // 90 stars carried at 70% is 63 — the real number a player lands
-      // on the season after reaching Emerald.
+      // on the season after reaching Emerald. `premium: true` throughout
+      // this group, since an achievement skin needs both halves now —
+      // the star-boundary behaviour is what's under test here.
       expect(
-        effectiveCardSkin('dragon_black', starTotal: 90).id,
+        effectiveCardSkin('dragon_black', starTotal: 90, premium: true).id,
         'dragon_black',
       );
       expect(
-        effectiveCardSkin('dragon_black', starTotal: 63).id,
+        effectiveCardSkin('dragon_black', starTotal: 63, premium: true).id,
         CardSkinPresets.classic.id,
       );
     });
@@ -120,15 +142,27 @@ void main() {
     test('the tier below survives the same reset', () {
       // Which is what makes the top skin worth chasing again: at 63 the
       // Diamond one still holds and only the Emerald one is gone.
-      expect(effectiveCardSkin('night_purple', starTotal: 63).id,
-          'night_purple');
+      expect(
+        effectiveCardSkin('night_purple', starTotal: 63, premium: true).id,
+        'night_purple',
+      );
     });
 
     test('comes back on its own once the stars return', () {
       // The stored choice is never cleared, so nothing has to be
       // re-picked — the skin simply reappears.
-      expect(effectiveCardSkin('dragon_black', starTotal: 90).id,
-          'dragon_black');
+      expect(
+        effectiveCardSkin('dragon_black', starTotal: 90, premium: true).id,
+        'dragon_black',
+      );
+    });
+
+    test('an achievement skin re-locks the moment Premium lapses, even at '
+        'full stars', () {
+      expect(
+        effectiveCardSkin('dragon_black', starTotal: 90, premium: false).id,
+        CardSkinPresets.classic.id,
+      );
     });
 
     test('a paid skin re-locks the moment premium is no longer true, same '

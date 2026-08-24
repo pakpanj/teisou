@@ -2129,10 +2129,10 @@ class AppStrings {
   String cardSkinSectionSubtitle(CardSkinSource source) => switch (source) {
     CardSkinSource.free => _t('Punyamu sejak awal.', 'Yours from the start.'),
     CardSkinSource.achievement => _t(
-      'Terbuka sendiri kalau bintangmu cukup — dan terkunci lagi '
-          'kalau turun. Tidak bisa dibeli.',
-      'Opens on its own once you have the stars, and locks again if '
-          'you drop below. Not for sale.',
+      'Butuh bintang cukup DAN akun Premium — kalau salah satunya '
+          'hilang, skin ini terkunci lagi.',
+      'Needs enough stars AND a Premium account — losing either one '
+          'locks it again.',
     ),
     CardSkinSource.paid => _t(
       'Dibeli di toko. Tidak bisa didapat dengan bintang.',
@@ -2144,10 +2144,34 @@ class AppStrings {
       'Handed out during an event. Not sold, not earned with stars.',
     ),
   };
-  String cardSkinNeedsStars(int required, int owned) => _t(
-    'Butuh $required bintang — kamu punya $owned',
-    'Needs $required stars — you have $owned',
-  );
+  /// What's still missing for an achievement skin — both the star gap
+  /// and the Premium requirement, added 2026-08-24 when the tier changed
+  /// from stars-alone to stars-and-Premium. Composes the right sentence
+  /// for whichever half (or both) is unmet, rather than always naming
+  /// stars even when Premium is the only thing standing in the way.
+  String cardSkinAchievementRequirement(
+    int required,
+    int owned, {
+    required bool hasPremium,
+  }) {
+    final starsMet = owned >= required;
+    if (starsMet && !hasPremium) {
+      return _t(
+        'Bintangmu sudah cukup — tinggal langganan Premium',
+        'You have enough stars — just need Premium',
+      );
+    }
+    if (!starsMet && hasPremium) {
+      return _t(
+        'Butuh $required bintang — kamu punya $owned',
+        'Needs $required stars — you have $owned',
+      );
+    }
+    return _t(
+      'Butuh $required bintang (kamu punya $owned) dan langganan Premium',
+      'Needs $required stars (you have $owned) and a Premium subscription',
+    );
+  }
   String get cardSkinBuyInShop => _t(
     'Beli di tab Toko, atau gratis kalau kamu Premium.',
     'Buy it in the Shop tab, or free if you\'re Premium.',

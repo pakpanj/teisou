@@ -18,10 +18,14 @@ enum CardSkinSource {
   /// Everyone has these from the first launch.
   free,
 
-  /// Unlocked by the star total alone, and **re-locked if it falls
-  /// back** — a season's 70% carry can take one away. Money must never
-  /// buy one: the moment it can, the skin stops proving anything, which
-  /// is the only thing it is for.
+  /// Unlocked only when **both** conditions hold: the star total *and* a
+  /// live Premium subscription — added 2026-08-24, replacing the earlier
+  /// stars-alone rule. Either one dropping re-locks the skin: the stars
+  /// falling below the threshold (a season's 70% carry can do that), or
+  /// the subscription lapsing. No amount of stars buys it without
+  /// Premium, and no amount of Premium buys it without the stars — see
+  /// [isCardSkinUnlocked]'s own doc comment for exactly how the two
+  /// combine.
   achievement,
 
   /// Bought with real money. Stars must never open one either, or the
@@ -146,7 +150,7 @@ class CardSkinPresets {
       start: Color(0xFF2E3A87),
       end: Color(0xFF6C4BB6),
     ),
-    // --- Pencapaian: dibuka bintang, tidak dijual ---
+    // --- Pencapaian: butuh bintang DAN akun Premium, tidak dijual langsung ---
     CardSkinPreset(
       id: 'emas_kencana',
       label: 'Emas Kencana',
@@ -259,10 +263,14 @@ bool get kCardSkinsAllUnlocked => kDebugMode;
 /// Whether [skin] can be worn right now.
 ///
 /// - Free: always.
-/// - Achievement: the star **total** must *currently* reach its
-///   threshold. Note "currently" — a season's 70% carry can drop a
-///   player below it again, and the skin is meant to lock back. That is
-///   the point: it says where you are, not where you once were.
+/// - Achievement: **both** the star **total** must *currently* reach its
+///   threshold **and** [premium] must be true — added 2026-08-24, per
+///   explicit product decision, replacing the earlier stars-only rule.
+///   Note "currently" for the stars half — a season's 70% carry can drop
+///   a player below it again, and the skin is meant to lock back, same
+///   as before. The [premium] half re-locks the moment a subscription
+///   lapses too, for the same reason it already does for [paid] below —
+///   this is a live check, never a stored one.
 /// - Paid: owned outright (bought individually via `skin_<id>`), **or**
 ///   [premium] — the Premium subscription's "Skin Battle Card
 ///   eksklusif" benefit bundles the entire paid family (Awan Putih,
@@ -293,7 +301,8 @@ bool isCardSkinUnlocked(
   if (allUnlocked) return true;
   return switch (skin.source) {
     CardSkinSource.free => true,
-    CardSkinSource.achievement => starTotal >= skin.starsRequired,
+    CardSkinSource.achievement =>
+      starTotal >= skin.starsRequired && premium,
     CardSkinSource.paid => owned || premium,
     CardSkinSource.event => owned,
   };
