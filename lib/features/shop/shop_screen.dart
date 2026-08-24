@@ -20,8 +20,8 @@ import 'widgets/coin_balance_bar.dart';
 /// actually puts it where every learner can find it; Card Battle's own
 /// nav is back down to Beranda/Deck/Battle/Skin (see `CardGameShell`).
 ///
-/// **No content is duplicated, only re-displayed.** Every tab here embeds
-/// the exact same widget the app already used elsewhere: [ShopTab]
+/// **No picking logic is duplicated, only re-displayed.** Every tab here
+/// embeds the exact same widget the app already used elsewhere: [ShopTab]
 /// (unchanged, still Card Battle's own skin-buying logic), and
 /// [AvatarPickerBody]/[FramePickerBody]/[CoverPickerBody] — the bodies
 /// `AvatarPickerSheet`/`CoverPickerSheet` were split into so the picking
@@ -29,6 +29,15 @@ import 'widgets/coin_balance_bar.dart';
 /// one place regardless of whether it's reached from Profile's bottom
 /// sheet or from here. `popOnSelect: false` on all three: there is no
 /// sheet to close, just a tab to keep browsing.
+///
+/// **What's *shown* here is a filtered subset, though.** `shopMode: true`
+/// on all three bodies hides any preset that's locked behind an ad watch
+/// or a Premium subscription and not yet owned — Toko is a storefront, so
+/// it only lists what can actually be bought here (coin-priced presets)
+/// or what's already owned (any tier). The full catalog, including
+/// ad-/Premium-only presets, still shows in Profile's own avatar/frame/
+/// cover picker sheets (`shopMode` defaults to false there) — nothing was
+/// removed from the app, it's just not duplicated into the shop.
 ///
 /// [CoinBalanceBar] sits above the tabs, not inside one of them — the
 /// balance belongs to the account, not to whichever tab happens to be
@@ -68,9 +77,15 @@ class ShopScreen extends ConsumerWidget {
               child: TabBarView(
                 children: [
                   ShopTab(),
-                  _ShopSubPage(child: AvatarPickerBody(popOnSelect: false)),
-                  _ShopSubPage(child: FramePickerBody(popOnSelect: false)),
-                  _ShopSubPage(child: CoverPickerBody(popOnSelect: false)),
+                  _ShopSubPage(
+                    child: AvatarPickerBody(popOnSelect: false, shopMode: true),
+                  ),
+                  _ShopSubPage(
+                    child: FramePickerBody(popOnSelect: false, shopMode: true),
+                  ),
+                  _ShopSubPage(
+                    child: CoverPickerBody(popOnSelect: false, shopMode: true),
+                  ),
                 ],
               ),
             ),

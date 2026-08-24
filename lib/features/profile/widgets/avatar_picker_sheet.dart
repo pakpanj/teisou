@@ -130,7 +130,16 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
 class AvatarPickerBody extends ConsumerStatefulWidget {
   final bool popOnSelect;
 
-  const AvatarPickerBody({super.key, this.popOnSelect = true});
+  /// True only inside the Toko tab. The profile sheet always shows every
+  /// premium preset — locked or not — so a learner can see what exists and
+  /// how to unlock it (ad, coin, or Premium). Toko is a storefront, not a
+  /// catalog: with this on, a preset only appears if it's already owned
+  /// (any tier) or can be bought with coins right now — an ad-only or
+  /// Premium-only preset the learner can't yet afford simply isn't listed,
+  /// rather than showing as a locked tile with nothing to do about it here.
+  final bool shopMode;
+
+  const AvatarPickerBody({super.key, this.popOnSelect = true, this.shopMode = false});
 
   @override
   ConsumerState<AvatarPickerBody> createState() => _AvatarPickerBodyState();
@@ -338,7 +347,12 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
         ),
         _SectionTitle(s.premiumPresetsSection),
         _PresetGrid(
-          presets: AvatarPresets.premium,
+          presets: widget.shopMode
+              ? AvatarPresets.premium
+                  .where((p) =>
+                      avatarIdUnlocked(p.id) || AvatarPresets.isCoinUnlockable(p.id))
+                  .toList()
+              : AvatarPresets.premium,
           isSelected: (preset) =>
               profile?.avatarType == AvatarType.presetPremium &&
               profile?.avatarValue == preset.id,
@@ -386,7 +400,11 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
 class FramePickerBody extends ConsumerStatefulWidget {
   final bool popOnSelect;
 
-  const FramePickerBody({super.key, this.popOnSelect = true});
+  /// See [AvatarPickerBody.shopMode] — same "storefront, not a catalog"
+  /// filtering, applied to [FramePresets.all] instead.
+  final bool shopMode;
+
+  const FramePickerBody({super.key, this.popOnSelect = true, this.shopMode = false});
 
   @override
   ConsumerState<FramePickerBody> createState() => _FramePickerBodyState();
@@ -527,7 +545,17 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
       return FramePresets.isAdUnlockable(id) && _frameAdRewardActive;
     }
 
+    final frames = widget.shopMode
+        ? FramePresets.all
+            .where((f) =>
+                !FramePresets.isLocked(f.id) ||
+                frameIdUnlocked(f.id) ||
+                FramePresets.isCoinUnlockable(f.id))
+            .toList()
+        : FramePresets.all;
+
     return _FrameGrid(
+      frames: frames,
       selectedId: profile?.frameId,
       noFrameLabel: s.noFrameLabel,
       isUnlocked: frameIdUnlocked,
@@ -827,6 +855,7 @@ class _CoinPriceBadge extends StatelessWidget {
 /// "no frame" tile is never locked, same reasoning as
 /// [CoverPresets.fallback] staying unlocked.
 class _FrameGrid extends StatelessWidget {
+  final List<FramePreset> frames;
   final String? selectedId;
   final String noFrameLabel;
 
@@ -842,6 +871,7 @@ class _FrameGrid extends StatelessWidget {
   final void Function(String? frameId) onTap;
 
   const _FrameGrid({
+    required this.frames,
     required this.selectedId,
     required this.noFrameLabel,
     required this.isUnlocked,
@@ -851,7 +881,6 @@ class _FrameGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final frames = FramePresets.all;
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),

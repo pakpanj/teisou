@@ -75,7 +75,11 @@ class CoverPickerSheet extends ConsumerWidget {
 class CoverPickerBody extends ConsumerStatefulWidget {
   final bool popOnSelect;
 
-  const CoverPickerBody({super.key, this.popOnSelect = true});
+  /// See `AvatarPickerBody.shopMode` — same "storefront, not a catalog"
+  /// filtering, applied to [CoverPresets.all] instead.
+  final bool shopMode;
+
+  const CoverPickerBody({super.key, this.popOnSelect = true, this.shopMode = false});
 
   @override
   ConsumerState<CoverPickerBody> createState() => _CoverPickerBodyState();
@@ -216,10 +220,19 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
     final selectedId = profile?.coverId;
     final s = ref.watch(appStringsProvider);
 
+    final covers = widget.shopMode
+        ? CoverPresets.all
+            .where((c) =>
+                !CoverPresets.isLocked(c.id) ||
+                coverIdUnlocked(c.id) ||
+                CoverPresets.isCoinUnlockable(c.id))
+            .toList()
+        : CoverPresets.all;
+
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: CoverPresets.all.length,
+      itemCount: covers.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 12,
@@ -227,7 +240,7 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
         childAspectRatio: 1.3,
       ),
       itemBuilder: (context, index) {
-        final preset = CoverPresets.all[index];
+        final preset = covers[index];
         final isLocked =
             CoverPresets.isLocked(preset.id) && !coverIdUnlocked(preset.id);
         return _CoverTile(
