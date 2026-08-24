@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers.dart';
 import '../../core/theme/app_palette.dart';
 import '../../core/widgets/app_loading.dart';
+import '../../core/widgets/app_refresh_indicator.dart';
 import '../../data/models/battle_invite.dart';
 import '../../data/models/clan_member.dart';
 import '../../data/models/clan_membership.dart';
@@ -157,24 +158,45 @@ class _FriendChallengeList extends ConsumerWidget {
     final s = ref.watch(appStringsProvider);
     final friendsAsync = ref.watch(myFriendsProvider);
 
-    return friendsAsync.when(
-      data: (friends) {
-        if (friends.isEmpty) {
-          return _EmptyState(
-            emoji: '🤝',
-            title: s.battleChallengeNoFriendsTitle,
-            body: s.battleChallengeNoFriendsBody,
+    return AppRefreshIndicator(
+      onRefresh: () => ref.refresh(myFriendsProvider.future),
+      child: friendsAsync.when(
+        data: (friends) {
+          if (friends.isEmpty) {
+            return ListView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: _EmptyState(
+                    emoji: '🤝',
+                    title: s.battleChallengeNoFriendsTitle,
+                    body: s.battleChallengeNoFriendsBody,
+                  ),
+                ),
+              ],
+            );
+          }
+          return ListView.separated(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(16),
+            itemCount: friends.length,
+            separatorBuilder: (_, _) => const SizedBox(height: 8),
+            itemBuilder: (context, index) =>
+                _OpponentRow.friend(friends[index]),
           );
-        }
-        return ListView.separated(
-          padding: const EdgeInsets.all(16),
-          itemCount: friends.length,
-          separatorBuilder: (_, _) => const SizedBox(height: 8),
-          itemBuilder: (context, index) => _OpponentRow.friend(friends[index]),
-        );
-      },
-      loading: () => const AppLoading(),
-      error: (e, _) => Center(child: Text(s.failedToLoadFriends(e))),
+        },
+        loading: () => const AppLoading(),
+        error: (e, _) => ListView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 40),
+              child: Center(child: Text(s.failedToLoadFriends(e))),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -198,10 +220,21 @@ class _ClanChallengeSectionState extends ConsumerState<_ClanChallengeSection> {
     return clansAsync.when(
       data: (clans) {
         if (clans.isEmpty) {
-          return _EmptyState(
-            emoji: '👥',
-            title: s.battleChallengeNoClansTitle,
-            body: s.battleChallengeNoClansBody,
+          return AppRefreshIndicator(
+            onRefresh: () => ref.refresh(myClansProvider.future),
+            child: ListView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: _EmptyState(
+                    emoji: '👥',
+                    title: s.battleChallengeNoClansTitle,
+                    body: s.battleChallengeNoClansBody,
+                  ),
+                ),
+              ],
+            ),
           );
         }
         // Defaults to the first clan (and re-picks if the previously
@@ -259,31 +292,46 @@ class _ClanMemberChallengeList extends ConsumerWidget {
     final myUid = ref.watch(appStartupProvider).valueOrNull?.uid;
     final membersAsync = ref.watch(clanMembersProvider(clan.code));
 
-    return membersAsync.when(
-      data: (members) {
-        final others = members.where((m) => m.uid != myUid).toList();
-        if (others.isEmpty) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Text(
-                s.battleChallengeNoOtherMembers,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: context.palette.textNavy),
-              ),
-            ),
+    return AppRefreshIndicator(
+      onRefresh: () => ref.refresh(clanMembersProvider(clan.code).future),
+      child: membersAsync.when(
+        data: (members) {
+          final others = members.where((m) => m.uid != myUid).toList();
+          if (others.isEmpty) {
+            return ListView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
+                  child: Text(
+                    s.battleChallengeNoOtherMembers,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: context.palette.textNavy),
+                  ),
+                ),
+              ],
+            );
+          }
+          return ListView.separated(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(16),
+            itemCount: others.length,
+            separatorBuilder: (_, _) => const SizedBox(height: 8),
+            itemBuilder: (context, index) =>
+                _OpponentRow.clanMember(others[index]),
           );
-        }
-        return ListView.separated(
-          padding: const EdgeInsets.all(16),
-          itemCount: others.length,
-          separatorBuilder: (_, _) => const SizedBox(height: 8),
-          itemBuilder: (context, index) =>
-              _OpponentRow.clanMember(others[index]),
-        );
-      },
-      loading: () => const AppLoading(),
-      error: (e, _) => Center(child: Text(s.failedToLoadMembers(e))),
+        },
+        loading: () => const AppLoading(),
+        error: (e, _) => ListView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 40),
+              child: Center(child: Text(s.failedToLoadMembers(e))),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -350,7 +398,17 @@ class _OpponentRow extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         child: Row(
           children: [
-            LeaderboardAvatar(entry: throwawayEntry, size: 36),
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                LeaderboardAvatar(entry: throwawayEntry, size: 36),
+                Positioned(
+                  right: -1,
+                  bottom: -1,
+                  child: PresenceDot(uid: uid),
+                ),
+              ],
+            ),
             const SizedBox(width: 12),
             Expanded(
               child: Text(

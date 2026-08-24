@@ -179,12 +179,19 @@ Future<void> sendBattleChallenge({
   );
 }
 
-/// A small "⚔️ Tantang" icon button, reused by the friend list
-/// (`chat_hub_screen.dart`) and the clan member list
-/// (`clan_members_screen.dart`) — calls [sendBattleChallenge] on tap.
-/// Gated on live presence (`NOTES_CARD_GAME_MODE.md`'s "Tombol 'Tantang'
-/// hanya aktif kalau target online"): greyed out and untappable, with a
-/// tooltip explaining why, whenever the target isn't currently online.
+/// A small "⚔️ Tantang" icon button, reused by [BattleChallengeScreen]'s
+/// friend and clan-member lists — calls [sendBattleChallenge] on tap.
+///
+/// **No longer gated on presence.** It used to grey itself out and refuse
+/// taps whenever the target wasn't currently online — which meant a
+/// challenge could only ever be *sent* while both people happened to be in
+/// the app at the same moment, and left nothing to do but stare at a
+/// disabled button. A challenge already carries its own two-minute expiry
+/// (see `BattleInviteWaitingScreen`), so sending one to someone who opens
+/// the app moments later is exactly what that expiry is for — the button
+/// staying tappable regardless of presence is what makes that possible.
+/// Whether the target is online now is still worth showing, just not as a
+/// gate: see [PresenceDot], drawn separately on the opponent's avatar.
 class ChallengeButton extends ConsumerWidget {
   final String targetUid;
   final String targetName;
@@ -200,28 +207,46 @@ class ChallengeButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(appStringsProvider);
-    final online =
-        ref.watch(presenceProvider(targetUid)).valueOrNull?.isOnline ?? false;
 
     return IconButton(
-      tooltip: online
-          ? s.battleChallengeTitle(targetName)
-          : s.battleChallengeOfflineTooltip,
-      icon: Icon(
-        Icons.sports_esports,
-        color: online
-            ? context.palette.primaryCoral
-            : context.palette.textNavy.withValues(alpha: 0.25),
+      tooltip: s.battleChallengeTitle(targetName),
+      icon: Icon(Icons.sports_esports, color: context.palette.primaryCoral),
+      onPressed: () => sendBattleChallenge(
+        context: context,
+        ref: ref,
+        targetUid: targetUid,
+        targetName: targetName,
+        source: source,
       ),
-      onPressed: online
-          ? () => sendBattleChallenge(
-              context: context,
-              ref: ref,
-              targetUid: targetUid,
-              targetName: targetName,
-              source: source,
-            )
-          : null,
+    );
+  }
+}
+
+/// A small dot on the corner of an opponent's avatar — green while [uid]
+/// is online, grey otherwise. Split out from [ChallengeButton] once that
+/// button stopped being gated on presence (see its own doc comment): the
+/// status is still worth showing, it just no longer decides whether the
+/// button can be tapped.
+class PresenceDot extends ConsumerWidget {
+  final String uid;
+  final double size;
+
+  const PresenceDot({super.key, required this.uid, this.size = 13});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final online =
+        ref.watch(presenceProvider(uid)).valueOrNull?.isOnline ?? false;
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: online
+            ? context.palette.successGreen
+            : context.palette.progressTrack,
+        border: Border.all(color: context.palette.cardWhite, width: 2),
+      ),
     );
   }
 }

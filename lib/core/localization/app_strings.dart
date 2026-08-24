@@ -1843,8 +1843,6 @@ class AppStrings {
     'Gagal mengirim tantangan, coba lagi.',
     'Failed to send challenge, try again.',
   );
-  String get battleChallengeOfflineTooltip =>
-      _t('Sedang tidak online', 'Currently offline');
   String get battleInviteWaitingTitle =>
       _t('Menunggu Lawan', 'Waiting for Opponent');
   String battleInviteWaitingFor(String targetName) => _t(
