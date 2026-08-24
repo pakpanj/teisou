@@ -76,11 +76,15 @@ class CoverPickerSheet extends ConsumerWidget {
 class CoverPickerBody extends ConsumerStatefulWidget {
   final bool popOnSelect;
 
-  /// See `AvatarPickerBody.shopMode` — same "storefront, not a catalog"
-  /// filtering, applied to [CoverPresets.all] instead.
+  /// See `AvatarPickerBody.shopMode` — same "buying happens in Toko"
+  /// split, applied to [CoverPresets.all] instead.
   final bool shopMode;
 
-  const CoverPickerBody({super.key, this.popOnSelect = true, this.shopMode = false});
+  const CoverPickerBody({
+    super.key,
+    this.popOnSelect = true,
+    this.shopMode = false,
+  });
 
   @override
   ConsumerState<CoverPickerBody> createState() => _CoverPickerBodyState();
@@ -116,7 +120,11 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
     }
   }
 
-  Future<void> _select(String uid, String? coverId, {bool consumeReward = false}) async {
+  Future<void> _select(
+    String uid,
+    String? coverId, {
+    bool consumeReward = false,
+  }) async {
     try {
       await ref.read(progressRepositoryProvider).updateCover(uid, coverId);
     } catch (_) {
@@ -146,7 +154,10 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
     if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
-  Future<void> _openPaywall(BuildContext context, {required bool showAdOption}) async {
+  Future<void> _openPaywall(
+    BuildContext context, {
+    required bool showAdOption,
+  }) async {
     final s = ref.read(appStringsProvider);
     await Navigator.of(context).push(
       MaterialPageRoute(
@@ -188,17 +199,22 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
     );
     if (confirmed != true || !context.mounted) return;
     try {
-      await ref.read(coinSpendServiceProvider).buy(CoinSpendKind.cover, coverId);
+      await ref
+          .read(coinSpendServiceProvider)
+          .buy(CoinSpendKind.cover, coverId);
       if (!mounted) return;
       setState(() => _unlockedCoverIds = {..._unlockedCoverIds, coverId});
       if (!context.mounted) return;
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
     } on CoinSpendException catch (e) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed),
+          content: Text(
+            e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed,
+          ),
         ),
       );
     }
@@ -208,7 +224,8 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
   Widget build(BuildContext context) {
     final user = ref.watch(appStartupProvider).valueOrNull;
     final profile = ref.watch(userProfileProvider).valueOrNull;
-    final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    final isPremium =
+        ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
     // Same three-tier reasoning as `_AvatarPickerBodyState
     // .avatarIdUnlocked` — see its doc comment.
     bool coverIdUnlocked(String id) {
@@ -221,26 +238,18 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
     final selectedId = profile?.coverId;
     final s = ref.watch(appStringsProvider);
 
-    final baseCovers = widget.shopMode
-        ? CoverPresets.all
-            .where((c) =>
-                !CoverPresets.isLocked(c.id) ||
-                coverIdUnlocked(c.id) ||
-                CoverPresets.isCoinUnlockable(c.id))
-            .toList()
-        : CoverPresets.all;
-
     // Same owned-vs-not split as `AvatarPickerBody`/`FramePickerBody` —
     // see the former's doc comment above its own `isLocked`.
     bool isLocked(CoverPreset c) =>
         CoverPresets.isLocked(c.id) && !coverIdUnlocked(c.id);
-    final owned = baseCovers.where((c) => !isLocked(c)).toList();
-    final notOwned = baseCovers.where(isLocked).toList();
+    final owned = CoverPresets.all.where((c) => !isLocked(c)).toList();
+    final notOwned = CoverPresets.all.where(isLocked).toList();
 
     void handleTap(CoverPreset preset) {
       if (uid == null) return;
       if (!isLocked(preset)) {
-        final consumeReward = !isPremium &&
+        final consumeReward =
+            !isPremium &&
             CoverPresets.isAdUnlockable(preset.id) &&
             _adRewardActive &&
             !_unlockedCoverIds.contains(preset.id);
@@ -251,7 +260,10 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
         _buyWithCoins(context, preset.id);
         return;
       }
-      _openPaywall(context, showAdOption: CoverPresets.isAdUnlockable(preset.id));
+      _openPaywall(
+        context,
+        showAdOption: CoverPresets.isAdUnlockable(preset.id),
+      );
     }
 
     return Column(
@@ -268,7 +280,9 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
           locked: false,
           onTap: uid == null ? null : handleTap,
         ),
-        if (notOwned.isNotEmpty) ...[
+        // Locked covers only ever show up in Toko — see [shopMode]'s own
+        // doc comment.
+        if (widget.shopMode && notOwned.isNotEmpty) ...[
           PickerSectionTitle(s.notOwnedSectionTitle),
           _CoverGrid(
             covers: notOwned,
@@ -391,14 +405,21 @@ class _CoverTile extends StatelessWidget {
               Positioned(
                 right: 6,
                 top: 6,
-                child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 20),
+                child: Icon(
+                  Icons.check_circle,
+                  color: context.palette.primaryCoral,
+                  size: 20,
+                ),
               ),
             if (locked && coinPrice != null)
               Positioned(
                 right: 6,
                 top: 6,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 3,
+                  ),
                   decoration: BoxDecoration(
                     color: context.palette.tertiaryAmber,
                     borderRadius: BorderRadius.circular(20),
@@ -406,7 +427,11 @@ class _CoverTile extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.monetization_on, color: Colors.white, size: 12),
+                      const Icon(
+                        Icons.monetization_on,
+                        color: Colors.white,
+                        size: 12,
+                      ),
                       const SizedBox(width: 3),
                       Text(
                         '$coinPrice',
@@ -453,7 +478,9 @@ class _CoverTile extends StatelessWidget {
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w600,
-              color: context.palette.textNavy.withValues(alpha: locked ? 0.55 : 1),
+              color: context.palette.textNavy.withValues(
+                alpha: locked ? 0.55 : 1,
+              ),
             ),
           ),
         ],

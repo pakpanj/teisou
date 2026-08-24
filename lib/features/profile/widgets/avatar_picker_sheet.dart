@@ -131,16 +131,20 @@ class _AvatarPickerSheetState extends ConsumerState<AvatarPickerSheet> {
 class AvatarPickerBody extends ConsumerStatefulWidget {
   final bool popOnSelect;
 
-  /// True only inside the Toko tab. The profile sheet always shows every
-  /// premium preset — locked or not — so a learner can see what exists and
-  /// how to unlock it (ad, coin, or Premium). Toko is a storefront, not a
-  /// catalog: with this on, a preset only appears if it's already owned
-  /// (any tier) or can be bought with coins right now — an ad-only or
-  /// Premium-only preset the learner can't yet afford simply isn't listed,
-  /// rather than showing as a locked tile with nothing to do about it here.
+  /// True only inside the Toko tab. **Buying happens in Toko, not in
+  /// Profile** — the profile sheet only ever shows what's already owned
+  /// (no locked/"Belum Dimiliki" section at all, per explicit product
+  /// decision), so every preset still to unlock — ad, coin, or Premium —
+  /// lives here instead, where a learner can actually do something about
+  /// it. A preset appears in Profile the moment it's been unlocked here,
+  /// never before.
   final bool shopMode;
 
-  const AvatarPickerBody({super.key, this.popOnSelect = true, this.shopMode = false});
+  const AvatarPickerBody({
+    super.key,
+    this.popOnSelect = true,
+    this.shopMode = false,
+  });
 
   @override
   ConsumerState<AvatarPickerBody> createState() => _AvatarPickerBodyState();
@@ -222,7 +226,10 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
     if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
-  Future<void> _openPaywall(BuildContext context, {required bool showAdOption}) async {
+  Future<void> _openPaywall(
+    BuildContext context, {
+    required bool showAdOption,
+  }) async {
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) => PaywallScreen(
@@ -274,13 +281,16 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
       // tile shouldn't stay locked-looking until that round trip lands.
       setState(() => _unlockedAvatarIds = {..._unlockedAvatarIds, preset.id});
       if (!context.mounted) return;
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
     } on CoinSpendException catch (e) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed),
+          content: Text(
+            e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed,
+          ),
         ),
       );
     }
@@ -290,7 +300,8 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
   Widget build(BuildContext context) {
     final user = ref.watch(appStartupProvider).valueOrNull;
     final profile = ref.watch(userProfileProvider).valueOrNull;
-    final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    final isPremium =
+        ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
     // Three tiers, three different answers to "is this unlocked":
     // subscribing unlocks everything regardless of tier; a permanent
     // unlock (level-reward or coin-bought — both land in the same
@@ -306,29 +317,31 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
 
     final uid = user?.uid;
     final s = ref.watch(appStringsProvider);
-    final displayName = profile?.resolveDisplayName(user) ?? (user?.displayName ?? s.defaultLearnerName);
+    final displayName =
+        profile?.resolveDisplayName(user) ??
+        (user?.displayName ?? s.defaultLearnerName);
 
     // Free presets are always unlocked; a premium one is locked unless it's
     // been earned/bought or the account is Premium — see
     // `avatarIdUnlocked`'s own doc comment above for the three-tier logic.
-    bool isLocked(AvatarPreset preset) => preset.premium && !avatarIdUnlocked(preset.id);
+    bool isLocked(AvatarPreset preset) =>
+        preset.premium && !avatarIdUnlocked(preset.id);
 
-    final visiblePremium = widget.shopMode
-        ? AvatarPresets.premium
-            .where((p) => avatarIdUnlocked(p.id) || AvatarPresets.isCoinUnlockable(p.id))
-            .toList()
-        : AvatarPresets.premium;
     // One combined list, split by ownership rather than by free/premium —
     // per explicit request, so a learner sees what they already have
     // separately from what's still to unlock, instead of a "Preset
     // Gratis"/"Preset Premium" split that mixed owned and locked tiles
-    // together inside "Premium".
-    final allPresets = [...AvatarPresets.free, ...visiblePremium];
+    // together inside "Premium". The full catalog either way — which of
+    // owned/notOwned actually gets *rendered* is what differs between
+    // Profile and Toko, see the `notOwned` section below.
+    final allPresets = [...AvatarPresets.free, ...AvatarPresets.premium];
     final owned = allPresets.where((p) => !isLocked(p)).toList();
     final notOwned = allPresets.where(isLocked).toList();
 
     bool isSelected(AvatarPreset preset) {
-      final type = preset.premium ? AvatarType.presetPremium : AvatarType.presetFree;
+      final type = preset.premium
+          ? AvatarType.presetPremium
+          : AvatarType.presetFree;
       return profile?.avatarType == type && profile?.avatarValue == preset.id;
     }
 
@@ -340,7 +353,8 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
         // should ever consume it — a coin-bought or premium-unlocked id
         // must not accidentally burn an unrelated ad reward sitting
         // active for a different tile.
-        final consumeReward = preset.premium &&
+        final consumeReward =
+            preset.premium &&
             !isPremium &&
             AvatarPresets.isAdUnlockable(id) &&
             _adRewardActive &&
@@ -370,16 +384,17 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
           _GoogleAvatarTile(
             photoUrl: user.photoURL!,
             label: s.googleAccountPhotoLabel,
-            selected: profile != null && profile.avatarType == AvatarType.google,
+            selected:
+                profile != null && profile.avatarType == AvatarType.google,
             onTap: uid == null
                 ? null
                 : () => _select(
-                      uid,
-                      AvatarType.google,
-                      null,
-                      displayName: displayName,
-                      photoUrl: user.photoURL,
-                    ),
+                    uid,
+                    AvatarType.google,
+                    null,
+                    displayName: displayName,
+                    photoUrl: user.photoURL,
+                  ),
           ),
         ],
         PickerSectionTitle(s.ownedSectionTitle),
@@ -390,17 +405,18 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
           locked: (_) => false,
           onTap: handleTap,
         ),
-        if (notOwned.isNotEmpty) ...[
+        // Locked presets only ever show up in Toko — see [shopMode]'s own
+        // doc comment. The Profile sheet stops here, at the owned grid.
+        if (widget.shopMode && notOwned.isNotEmpty) ...[
           PickerSectionTitle(s.notOwnedSectionTitle),
           _PresetGrid(
             presets: notOwned,
             language: s.language,
             isSelected: isSelected,
             locked: (_) => true,
-            coinPriceFor: (preset) =>
-                AvatarPresets.isCoinUnlockable(preset.id)
-                    ? AvatarPresets.coinPrice
-                    : null,
+            coinPriceFor: (preset) => AvatarPresets.isCoinUnlockable(preset.id)
+                ? AvatarPresets.coinPrice
+                : null,
             onTap: handleTap,
           ),
         ],
@@ -414,11 +430,15 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
 class FramePickerBody extends ConsumerStatefulWidget {
   final bool popOnSelect;
 
-  /// See [AvatarPickerBody.shopMode] — same "storefront, not a catalog"
-  /// filtering, applied to [FramePresets.all] instead.
+  /// See [AvatarPickerBody.shopMode] — same "buying happens in Toko"
+  /// split, applied to [FramePresets.all] instead.
   final bool shopMode;
 
-  const FramePickerBody({super.key, this.popOnSelect = true, this.shopMode = false});
+  const FramePickerBody({
+    super.key,
+    this.popOnSelect = true,
+    this.shopMode = false,
+  });
 
   @override
   ConsumerState<FramePickerBody> createState() => _FramePickerBodyState();
@@ -488,7 +508,10 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
     if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
-  Future<void> _openFramePaywall(BuildContext context, {required bool showAdOption}) async {
+  Future<void> _openFramePaywall(
+    BuildContext context, {
+    required bool showAdOption,
+  }) async {
     final s = ref.read(appStringsProvider);
     await Navigator.of(context).push(
       MaterialPageRoute(
@@ -527,17 +550,22 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
     );
     if (confirmed != true || !context.mounted) return;
     try {
-      await ref.read(coinSpendServiceProvider).buy(CoinSpendKind.frame, frameId);
+      await ref
+          .read(coinSpendServiceProvider)
+          .buy(CoinSpendKind.frame, frameId);
       if (!mounted) return;
       setState(() => _unlockedFrameIds = {..._unlockedFrameIds, frameId});
       if (!context.mounted) return;
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
     } on CoinSpendException catch (e) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed),
+          content: Text(
+            e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed,
+          ),
         ),
       );
     }
@@ -547,7 +575,8 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
   Widget build(BuildContext context) {
     final user = ref.watch(appStartupProvider).valueOrNull;
     final profile = ref.watch(userProfileProvider).valueOrNull;
-    final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
+    final isPremium =
+        ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
     final uid = user?.uid;
     final s = ref.watch(appStringsProvider);
 
@@ -559,25 +588,18 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
       return FramePresets.isAdUnlockable(id) && _frameAdRewardActive;
     }
 
-    final baseFrames = widget.shopMode
-        ? FramePresets.all
-            .where((f) =>
-                !FramePresets.isLocked(f.id) ||
-                frameIdUnlocked(f.id) ||
-                FramePresets.isCoinUnlockable(f.id))
-            .toList()
-        : FramePresets.all;
-
     // Same owned-vs-not split as `AvatarPickerBody`'s — see its doc
     // comment above `isLocked`.
-    bool isLocked(FramePreset f) => FramePresets.isLocked(f.id) && !frameIdUnlocked(f.id);
-    final owned = baseFrames.where((f) => !isLocked(f)).toList();
-    final notOwned = baseFrames.where(isLocked).toList();
+    bool isLocked(FramePreset f) =>
+        FramePresets.isLocked(f.id) && !frameIdUnlocked(f.id);
+    final owned = FramePresets.all.where((f) => !isLocked(f)).toList();
+    final notOwned = FramePresets.all.where(isLocked).toList();
 
     void handleTap(String frameId) {
       if (uid == null) return;
       if (frameIdUnlocked(frameId)) {
-        final consumeReward = !isPremium &&
+        final consumeReward =
+            !isPremium &&
             FramePresets.isAdUnlockable(frameId) &&
             _frameAdRewardActive &&
             !_unlockedFrameIds.contains(frameId);
@@ -605,15 +627,18 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
           coinPriceFor: (_) => null,
           onTap: handleTap,
         ),
-        if (notOwned.isNotEmpty) ...[
+        // Locked frames only ever show up in Toko — see [shopMode]'s own
+        // doc comment.
+        if (widget.shopMode && notOwned.isNotEmpty) ...[
           PickerSectionTitle(s.notOwnedSectionTitle),
           _FrameGrid(
             frames: notOwned,
             language: s.language,
             selectedId: profile?.frameId,
             locked: true,
-            coinPriceFor: (id) =>
-                FramePresets.isCoinUnlockable(id) ? FramePresets.coinPrice : null,
+            coinPriceFor: (id) => FramePresets.isCoinUnlockable(id)
+                ? FramePresets.coinPrice
+                : null,
             onTap: handleTap,
           ),
         ],
@@ -723,9 +748,13 @@ class _GoogleAvatarTile extends StatelessWidget {
             CircleAvatar(radius: 24, backgroundImage: NetworkImage(photoUrl)),
             const SizedBox(width: 12),
             Expanded(
-              child: Text(label, style: TextStyle(color: context.palette.textNavy)),
+              child: Text(
+                label,
+                style: TextStyle(color: context.palette.textNavy),
+              ),
             ),
-            if (selected) Icon(Icons.check_circle, color: context.palette.primaryCoral),
+            if (selected)
+              Icon(Icons.check_circle, color: context.palette.primaryCoral),
           ],
         ),
       ),
@@ -834,7 +863,10 @@ class _PresetTile extends StatelessWidget {
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: context.palette.primaryCoral, width: 2),
+                      border: Border.all(
+                        color: context.palette.primaryCoral,
+                        width: 2,
+                      ),
                     ),
                   ),
                 ),
@@ -842,7 +874,11 @@ class _PresetTile extends StatelessWidget {
                 Positioned(
                   right: 4,
                   top: 4,
-                  child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
+                  child: Icon(
+                    Icons.check_circle,
+                    color: context.palette.primaryCoral,
+                    size: 18,
+                  ),
                 ),
               if (locked && coinPrice != null)
                 Positioned(
@@ -860,7 +896,11 @@ class _PresetTile extends StatelessWidget {
                       color: context.palette.textNavy,
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.lock, color: Colors.white, size: 12),
+                    child: const Icon(
+                      Icons.lock,
+                      color: Colors.white,
+                      size: 12,
+                    ),
                   ),
                 ),
             ],
@@ -874,7 +914,9 @@ class _PresetTile extends StatelessWidget {
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w600,
-              color: context.palette.textNavy.withValues(alpha: locked ? 0.55 : 1),
+              color: context.palette.textNavy.withValues(
+                alpha: locked ? 0.55 : 1,
+              ),
             ),
           ),
         ],
@@ -1030,7 +1072,11 @@ class _FrameTile extends StatelessWidget {
           Positioned(
             right: 4,
             top: 4,
-            child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
+            child: Icon(
+              Icons.check_circle,
+              color: context.palette.primaryCoral,
+              size: 18,
+            ),
           ),
         if (locked && coinPrice != null)
           Positioned(
@@ -1069,7 +1115,9 @@ class _FrameTile extends StatelessWidget {
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w600,
-              color: context.palette.textNavy.withValues(alpha: locked ? 0.55 : 1),
+              color: context.palette.textNavy.withValues(
+                alpha: locked ? 0.55 : 1,
+              ),
             ),
           ),
         ],
