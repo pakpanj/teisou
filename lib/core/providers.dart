@@ -64,6 +64,7 @@ import '../data/repositories/saved_words_repository.dart';
 import 'firebase/firestore_paths.dart';
 import 'localization/app_strings.dart';
 import 'services/ad_service.dart';
+import 'services/coin_spend_service.dart';
 import 'services/iap_service.dart';
 import 'services/auth_service.dart';
 import 'services/fcm_service.dart';
@@ -509,6 +510,14 @@ final iapServiceProvider = Provider<IapService>((ref) {
   ref.onDispose(service.dispose);
   return service;
 });
+
+/// Buying an avatar/frame/cover with coins — see [CoinSpendService]'s
+/// own doc comment for why this is a callable rather than a Firestore
+/// write. Stateless, unlike [iapServiceProvider]: there's no purchase
+/// stream to keep listening to, so a plain provider (no dispose needed)
+/// is enough.
+final coinSpendServiceProvider =
+    Provider<CoinSpendService>((ref) => CoinSpendService());
 
 /// Card skins this learner has bought. Empty — not "everything" — while
 /// it loads or when signed out: a wardrobe that briefly shows every paid

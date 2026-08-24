@@ -125,11 +125,22 @@ class AppStrings {
         'every week.',
   );
   String get coinBuyTopUp => _t('Top Up', 'Top Up');
-  // Items priced in coins, still "Segera" until a real coin-spend flow
-  // exists (see the Toko "Koin" tier plan) — the top-up half above is
-  // real and live; spending is not built yet.
-  String get coinTierComingSoon =>
-      _t('Segera bisa dibeli pakai koin', 'Coin purchase coming soon');
+
+  // --- Buying a cosmetic with coins (avatar/frame/cover) ---------------
+  String coinPriceTag(int price) => _t('$price koin', '$price coins');
+  String get coinBuyConfirmTitle => _t('Beli dengan koin?', 'Buy with coins?');
+  String coinBuyConfirmBody(int price) => _t(
+    'Item ini akan dibuka permanen seharga $price koin.',
+    'This will permanently unlock the item for $price coins.',
+  );
+  String get coinBuyConfirmButton => _t('Beli', 'Buy');
+  String get coinBuySuccess => _t('Berhasil dibuka!', 'Unlocked!');
+  String get coinBuyNotEnough => _t(
+    'Koin kamu tidak cukup. Top up dulu, yuk!',
+    'Not enough coins. Top up first!',
+  );
+  String get coinBuyFailed =>
+      _t('Gagal membeli, coba lagi.', 'Purchase failed, try again.');
 
   // --- Modules section ---
   // Section headers, ordered the way someone actually learns Japanese:

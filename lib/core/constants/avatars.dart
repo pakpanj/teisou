@@ -97,4 +97,43 @@ class AvatarPresets {
     }
     return null;
   }
+
+  /// Of the 12 locked presets, the 3 reachable with a single-use
+  /// rewarded ad — a taster tier, per the 2026-08-24 split between
+  /// "watch an ad", "spend coins", and "subscribe". Everything in
+  /// [premium] that is in neither this set nor [coinIds] is
+  /// subscription-only — see [isPremiumOnly].
+  static const adIds = {
+    'neko_chef',
+    'neko_sleepy',
+    'neko_traveler',
+  };
+
+  /// The 6 permanently buyable with coins (see `CoinSpendService`), at a
+  /// flat [coinPrice] each — deliberately not priced per-item; that
+  /// would be a second economy-balancing decision layered on top of the
+  /// tier split itself.
+  static const coinIds = {
+    'neko_matcha',
+    'neko_sailor',
+    'neko_detective',
+    'neko_musician',
+    'neko_winter',
+    'neko_forest',
+  };
+
+  static const coinPrice = 150;
+
+  static bool isAdUnlockable(String id) => adIds.contains(id);
+  static bool isCoinUnlockable(String id) => coinIds.contains(id);
+
+  /// The remaining 3 (`neko_astronaut`, `neko_gamer`, `neko_lion`) —
+  /// reachable only by subscribing, never by an ad watch or a coin
+  /// spend. Computed from [premium] rather than listed a third time, so
+  /// a preset can never silently fall through every tier's set and end
+  /// up neither ad- nor coin- nor explicitly premium-locked.
+  static bool isPremiumOnly(String id) =>
+      premium.any((p) => p.id == id) &&
+      !adIds.contains(id) &&
+      !coinIds.contains(id);
 }

@@ -305,6 +305,16 @@ exports.onPlayRtdn =
 exports.awardTopGlobalCoins =
   require("./award_top_coins").awardTopGlobalCoins;
 
+// Spending coins on an avatar/frame/cover — the only writer of `coins`
+// besides verifyPurchase and awardTopGlobalCoins, and the only writer of
+// xp.unlockedAvatarIds/unlockedFrameIds/unlockedCoverIds that actually
+// charges for it (a level-up reward writes the same fields straight from
+// the client, since that path was never worth protecting — see
+// functions/spend_coins.js's own doc comment for why a coin purchase is
+// different). No firestore.rules change was needed for this: it runs
+// with Admin SDK privileges, same as every other function here.
+exports.spendCoins = require("./spend_coins").spendCoins;
+
 // The rank-skip exam: two callables, one to draw the cards and one to
 // grade them. Grading is server-side by necessity — see rank_skip.js.
 exports.startRankSkipExam = require("./rank_skip").startRankSkipExam;

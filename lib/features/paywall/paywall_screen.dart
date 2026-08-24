@@ -21,11 +21,21 @@ class PaywallScreen extends ConsumerStatefulWidget {
   final String moduleTitle;
   final bool singleUse;
 
+  /// False for a subscription-only cosmetic (an avatar/frame/cover tier
+  /// added 2026-08-24 that a rewarded ad deliberately can never unlock —
+  /// see `AvatarPresets.isPremiumOnly`'s own doc comment for why that
+  /// tier exists). Offering the ad button anyway would be the exact bug
+  /// this app already shipped and fixed once: a reward gets recorded,
+  /// the item stays locked, and it reads as "I watched the ad and it
+  /// still won't open."
+  final bool showAdOption;
+
   const PaywallScreen({
     super.key,
     required this.moduleId,
     required this.moduleTitle,
     this.singleUse = false,
+    this.showAdOption = true,
   });
 
   @override
@@ -243,26 +253,28 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                   onPressed: _restore,
                   child: Text(s.purchaseRestore),
                 ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Divider(color: context.palette.textNavy.withValues(alpha: 0.2)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Text(
-                        s.orLabel,
-                        style: TextStyle(
-                          color: context.palette.textNavy.withValues(alpha: 0.5),
+                if (widget.showAdOption) ...[
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Divider(color: context.palette.textNavy.withValues(alpha: 0.2)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                          s.orLabel,
+                          style: TextStyle(
+                            color: context.palette.textNavy.withValues(alpha: 0.5),
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Divider(color: context.palette.textNavy.withValues(alpha: 0.2)),
-                    ),
-                  ],
-                ),
+                      Expanded(
+                        child: Divider(color: context.palette.textNavy.withValues(alpha: 0.2)),
+                      ),
+                    ],
+                  ),
+                ],
               ] else
                 Text(
                   s.purchaseNotSetUp,
@@ -272,24 +284,26 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                     color: context.palette.textNavy.withValues(alpha: 0.65),
                   ),
                 ),
-              const SizedBox(height: 16),
-              SizedBox(
-                width: double.infinity,
-                child: OutlinedButton(
-                  onPressed: _watchingAd ? null : _watchAdForPreview,
-                  child: _watchingAd
-                      ? const SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(strokeWidth: 2),
-                        )
-                      : Text(
-                          widget.singleUse
-                              ? s.watchAdForSingleChangeButton
-                              : s.watchAdForPreviewButton,
-                        ),
+              if (widget.showAdOption) ...[
+                const SizedBox(height: 16),
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton(
+                    onPressed: _watchingAd ? null : _watchAdForPreview,
+                    child: _watchingAd
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        : Text(
+                            widget.singleUse
+                                ? s.watchAdForSingleChangeButton
+                                : s.watchAdForPreviewButton,
+                          ),
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
         ),

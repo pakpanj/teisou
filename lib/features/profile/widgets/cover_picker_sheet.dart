@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/covers.dart';
 import '../../../data/models/app_language.dart';
 import '../../../core/providers.dart';
+import '../../../core/services/coin_spend_service.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../paywall/paywall_screen.dart';
 
@@ -140,7 +141,7 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
     if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
-  Future<void> _openPaywall(BuildContext context) async {
+  Future<void> _openPaywall(BuildContext context, {required bool showAdOption}) async {
     final s = ref.read(appStringsProvider);
     await Navigator.of(context).push(
       MaterialPageRoute(
@@ -148,6 +149,7 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
           moduleId: _coverPremiumModuleId,
           moduleTitle: s.coverPremiumTitle,
           singleUse: true,
+          showAdOption: showAdOption,
         ),
       ),
     );
@@ -158,14 +160,58 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
     await _refreshAdRewardStatus();
   }
 
+  /// The coin-tier path — see `AvatarPickerBody._buyWithCoins`, which
+  /// this mirrors exactly for covers.
+  Future<void> _buyWithCoins(BuildContext context, String coverId) async {
+    final s = ref.read(appStringsProvider);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(s.coinBuyConfirmTitle),
+        content: Text(s.coinBuyConfirmBody(CoverPresets.coinPrice)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(s.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(s.coinBuyConfirmButton),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !context.mounted) return;
+    try {
+      await ref.read(coinSpendServiceProvider).buy(CoinSpendKind.cover, coverId);
+      if (!mounted) return;
+      setState(() => _unlockedCoverIds = {..._unlockedCoverIds, coverId});
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+    } on CoinSpendException catch (e) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(appStartupProvider).valueOrNull;
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
-    final unlocked = isPremium || _adRewardActive;
-    final viaAdReward = !isPremium && _adRewardActive;
-    bool coverIdUnlocked(String id) => unlocked || _unlockedCoverIds.contains(id);
+    // Same three-tier reasoning as `_AvatarPickerBodyState
+    // .avatarIdUnlocked` — see its doc comment.
+    bool coverIdUnlocked(String id) {
+      if (isPremium) return true;
+      if (_unlockedCoverIds.contains(id)) return true;
+      return CoverPresets.isAdUnlockable(id) && _adRewardActive;
+    }
+
     final uid = user?.uid;
     final selectedId = profile?.coverId;
     final s = ref.watch(appStringsProvider);
@@ -192,18 +238,27 @@ class _CoverPickerBodyState extends ConsumerState<CoverPickerBody> {
           // "Default" tile — see CoverPresets.fallback.
           selected: (selectedId ?? CoverPresets.fallback.id) == preset.id,
           locked: isLocked,
+          coinPrice: isLocked && CoverPresets.isCoinUnlockable(preset.id)
+              ? CoverPresets.coinPrice
+              : null,
           onTap: uid == null
               ? null
               : () {
-                  if (isLocked) {
-                    _openPaywall(context);
+                  if (!isLocked) {
+                    final consumeReward = !isPremium &&
+                        CoverPresets.isAdUnlockable(preset.id) &&
+                        _adRewardActive &&
+                        !_unlockedCoverIds.contains(preset.id);
+                    _select(uid, preset.id, consumeReward: consumeReward);
                     return;
                   }
-                  _select(
-                    uid,
-                    preset.id,
-                    consumeReward:
-                        viaAdReward && CoverPresets.isLocked(preset.id),
+                  if (CoverPresets.isCoinUnlockable(preset.id)) {
+                    _buyWithCoins(context, preset.id);
+                    return;
+                  }
+                  _openPaywall(
+                    context,
+                    showAdOption: CoverPresets.isAdUnlockable(preset.id),
                   );
                 },
         );
@@ -217,6 +272,7 @@ class _CoverTile extends StatelessWidget {
   final CoverPreset preset;
   final bool selected;
   final bool locked;
+  final int? coinPrice;
   final VoidCallback? onTap;
 
   const _CoverTile({
@@ -225,6 +281,7 @@ class _CoverTile extends StatelessWidget {
     required this.selected,
     required this.locked,
     required this.onTap,
+    this.coinPrice,
   });
 
   @override
@@ -266,7 +323,34 @@ class _CoverTile extends StatelessWidget {
                   top: 6,
                   child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 20),
                 ),
-              if (locked)
+              if (locked && coinPrice != null)
+                Positioned(
+                  right: 6,
+                  top: 6,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                    decoration: BoxDecoration(
+                      color: context.palette.tertiaryAmber,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(Icons.monetization_on, color: Colors.white, size: 12),
+                        const SizedBox(width: 3),
+                        Text(
+                          '$coinPrice',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              else if (locked)
                 Positioned(
                   right: 6,
                   top: 6,

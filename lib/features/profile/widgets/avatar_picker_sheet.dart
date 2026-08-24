@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/avatars.dart';
 import '../../../core/constants/frames.dart';
 import '../../../core/providers.dart';
+import '../../../core/services/coin_spend_service.dart';
 import '../identity_sync.dart';
 import '../../../core/theme/app_palette.dart';
 import '../../../data/models/user_profile.dart';
@@ -211,13 +212,14 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
     if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
-  Future<void> _openPaywall(BuildContext context) async {
+  Future<void> _openPaywall(BuildContext context, {required bool showAdOption}) async {
     await Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => const PaywallScreen(
+        builder: (_) => PaywallScreen(
           moduleId: _avatarPremiumModuleId,
           moduleTitle: 'Avatar Premium',
           singleUse: true,
+          showAdOption: showAdOption,
         ),
       ),
     );
@@ -228,20 +230,70 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
     await _refreshAdRewardStatus();
   }
 
+  /// The coin-tier path — see `AvatarPresets.coinIds`'s own doc comment
+  /// for the three-way split this is one third of. A confirmation first,
+  /// since spending real money's worth of coins on the wrong tile by a
+  /// stray tap is a worse failure than one extra dialog.
+  Future<void> _buyWithCoins(BuildContext context, AvatarPreset preset) async {
+    final s = ref.read(appStringsProvider);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(s.coinBuyConfirmTitle),
+        content: Text(s.coinBuyConfirmBody(AvatarPresets.coinPrice)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(s.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(s.coinBuyConfirmButton),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !context.mounted) return;
+    try {
+      await ref
+          .read(coinSpendServiceProvider)
+          .buy(CoinSpendKind.avatar, preset.id);
+      if (!mounted) return;
+      // Locally, immediately — the same id also arrives from Firestore a
+      // moment later via `_refreshAdRewardStatus`'s sibling read, but the
+      // tile shouldn't stay locked-looking until that round trip lands.
+      setState(() => _unlockedAvatarIds = {..._unlockedAvatarIds, preset.id});
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+    } on CoinSpendException catch (e) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(appStartupProvider).valueOrNull;
     final profile = ref.watch(userProfileProvider).valueOrNull;
     final isPremium = ref.watch(subscriptionProvider).valueOrNull?.isPremium ?? false;
-    // A real subscription OR an unspent ad-reward unlock both count — see
-    // _adRewardActive's doc comment for why the latter needs its own
-    // explicit tracking instead of folding into isPremium at the source.
-    final unlocked = isPremium || _adRewardActive;
-    // Whether the action about to happen would be spending the ad-reward
-    // (not a real subscription) — if so, the caller must consume it right
-    // after succeeding so one ad only ever buys one change.
-    final viaAdReward = !isPremium && _adRewardActive;
-    bool avatarIdUnlocked(String id) => unlocked || _unlockedAvatarIds.contains(id);
+    // Three tiers, three different answers to "is this unlocked":
+    // subscribing unlocks everything regardless of tier; a permanent
+    // unlock (level-reward or coin-bought — both land in the same
+    // `_unlockedAvatarIds` set) unlocks that one id forever; the ad
+    // reward only ever counts for an ad-tier id, never a coin- or
+    // premium-only one — see `AvatarPresets.isAdUnlockable`'s doc
+    // comment for why an ad must not silently unlock either of those.
+    bool avatarIdUnlocked(String id) {
+      if (isPremium) return true;
+      if (_unlockedAvatarIds.contains(id)) return true;
+      return AvatarPresets.isAdUnlockable(id) && _adRewardActive;
+    }
+
     final uid = user?.uid;
     final s = ref.watch(appStringsProvider);
     final displayName = profile?.resolveDisplayName(user) ?? (user?.displayName ?? s.defaultLearnerName);
@@ -291,20 +343,37 @@ class _AvatarPickerBodyState extends ConsumerState<AvatarPickerBody> {
               profile?.avatarType == AvatarType.presetPremium &&
               profile?.avatarValue == preset.id,
           locked: (preset) => !avatarIdUnlocked(preset.id),
+          coinPriceFor: (preset) =>
+              AvatarPresets.isCoinUnlockable(preset.id)
+                  ? AvatarPresets.coinPrice
+                  : null,
           onTap: (preset) {
-            if (!avatarIdUnlocked(preset.id)) {
-              _openPaywall(context);
+            final id = preset.id;
+            if (avatarIdUnlocked(id)) {
+              if (uid == null) return;
+              // Only an ad-tier id newly unlocked by the still-active
+              // reward should ever consume it — a coin-bought or
+              // premium-unlocked id must not accidentally burn an
+              // unrelated ad reward sitting active for a different tile.
+              final consumeReward = !isPremium &&
+                  AvatarPresets.isAdUnlockable(id) &&
+                  _adRewardActive &&
+                  !_unlockedAvatarIds.contains(id);
+              _select(
+                uid,
+                AvatarType.presetPremium,
+                id,
+                displayName: displayName,
+                photoUrl: user?.photoURL,
+                consumeReward: consumeReward,
+              );
               return;
             }
-            if (uid == null) return;
-            _select(
-              uid,
-              AvatarType.presetPremium,
-              preset.id,
-              displayName: displayName,
-              photoUrl: user?.photoURL,
-              consumeReward: viaAdReward,
-            );
+            if (AvatarPresets.isCoinUnlockable(id)) {
+              _buyWithCoins(context, preset);
+              return;
+            }
+            _openPaywall(context, showAdOption: AvatarPresets.isAdUnlockable(id));
           },
         ),
       ],
@@ -387,7 +456,7 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
     if (widget.popOnSelect) Navigator.of(context).pop();
   }
 
-  Future<void> _openFramePaywall(BuildContext context) async {
+  Future<void> _openFramePaywall(BuildContext context, {required bool showAdOption}) async {
     final s = ref.read(appStringsProvider);
     await Navigator.of(context).push(
       MaterialPageRoute(
@@ -395,11 +464,51 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
           moduleId: _framePremiumModuleId,
           moduleTitle: s.framePremiumTitle,
           singleUse: true,
+          showAdOption: showAdOption,
         ),
       ),
     );
     if (!mounted) return;
     await _refreshAdRewardStatus();
+  }
+
+  /// The coin-tier path — see `AvatarPickerBody._buyWithCoins`, which
+  /// this mirrors exactly for frames.
+  Future<void> _buyWithCoins(BuildContext context, String frameId) async {
+    final s = ref.read(appStringsProvider);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(s.coinBuyConfirmTitle),
+        content: Text(s.coinBuyConfirmBody(FramePresets.coinPrice)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(s.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(s.coinBuyConfirmButton),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !context.mounted) return;
+    try {
+      await ref.read(coinSpendServiceProvider).buy(CoinSpendKind.frame, frameId);
+      if (!mounted) return;
+      setState(() => _unlockedFrameIds = {..._unlockedFrameIds, frameId});
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(s.coinBuySuccess)));
+    } on CoinSpendException catch (e) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.notEnoughCoins ? s.coinBuyNotEnough : s.coinBuyFailed),
+        ),
+      );
+    }
   }
 
   @override
@@ -410,28 +519,38 @@ class _FramePickerBodyState extends ConsumerState<FramePickerBody> {
     final uid = user?.uid;
     final s = ref.watch(appStringsProvider);
 
+    // Same three-tier reasoning as `_AvatarPickerBodyState
+    // .avatarIdUnlocked` — see its doc comment.
+    bool frameIdUnlocked(String id) {
+      if (isPremium) return true;
+      if (_unlockedFrameIds.contains(id)) return true;
+      return FramePresets.isAdUnlockable(id) && _frameAdRewardActive;
+    }
+
     return _FrameGrid(
       selectedId: profile?.frameId,
       noFrameLabel: s.noFrameLabel,
-      frameUnlocked: isPremium || _frameAdRewardActive,
-      extraUnlockedIds: _unlockedFrameIds,
+      isUnlocked: frameIdUnlocked,
+      coinPriceFor: (id) =>
+          FramePresets.isCoinUnlockable(id) ? FramePresets.coinPrice : null,
       onTap: (frameId) {
         if (uid == null) return;
-        final locked = frameId != null &&
-            FramePresets.isLocked(frameId) &&
-            !(isPremium || _frameAdRewardActive) &&
-            !_unlockedFrameIds.contains(frameId);
-        if (locked) {
-          _openFramePaywall(context);
+        if (frameId == null || frameIdUnlocked(frameId)) {
+          final consumeReward = frameId != null &&
+              !isPremium &&
+              FramePresets.isAdUnlockable(frameId) &&
+              _frameAdRewardActive &&
+              !_unlockedFrameIds.contains(frameId);
+          _selectFrame(uid, frameId, consumeReward: consumeReward);
           return;
         }
-        final viaFrameAdReward = !isPremium && _frameAdRewardActive;
-        _selectFrame(
-          uid,
-          frameId,
-          consumeReward: viaFrameAdReward &&
-              frameId != null &&
-              FramePresets.isLocked(frameId),
+        if (FramePresets.isCoinUnlockable(frameId)) {
+          _buyWithCoins(context, frameId);
+          return;
+        }
+        _openFramePaywall(
+          context,
+          showAdOption: FramePresets.isAdUnlockable(frameId),
         );
       },
     );
@@ -551,11 +670,19 @@ class _PresetGrid extends StatelessWidget {
   final bool Function(AvatarPreset) locked;
   final void Function(AvatarPreset) onTap;
 
+  /// Non-null while a locked, unowned tile should show its coin price
+  /// instead of a plain padlock — the visual cue for "buy this with
+  /// coins" versus "watch an ad / subscribe for this", so a learner
+  /// doesn't have to tap a tile just to find out which kind of lock it
+  /// is.
+  final int? Function(AvatarPreset)? coinPriceFor;
+
   const _PresetGrid({
     required this.presets,
     required this.isSelected,
     required this.locked,
     required this.onTap,
+    this.coinPriceFor,
   });
 
   @override
@@ -571,10 +698,12 @@ class _PresetGrid extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         final preset = presets[index];
+        final isLocked = locked(preset);
         return _PresetTile(
           preset: preset,
           selected: isSelected(preset),
-          locked: locked(preset),
+          locked: isLocked,
+          coinPrice: isLocked ? coinPriceFor?.call(preset) : null,
           onTap: () => onTap(preset),
         );
       },
@@ -586,6 +715,7 @@ class _PresetTile extends StatelessWidget {
   final AvatarPreset preset;
   final bool selected;
   final bool locked;
+  final int? coinPrice;
   final VoidCallback onTap;
 
   const _PresetTile({
@@ -593,6 +723,7 @@ class _PresetTile extends StatelessWidget {
     required this.selected,
     required this.locked,
     required this.onTap,
+    this.coinPrice,
   });
 
   @override
@@ -629,7 +760,13 @@ class _PresetTile extends StatelessWidget {
               top: 4,
               child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
             ),
-          if (locked)
+          if (locked && coinPrice != null)
+            Positioned(
+              right: 4,
+              top: 4,
+              child: _CoinPriceBadge(price: coinPrice!),
+            )
+          else if (locked)
             Positioned(
               right: 4,
               top: 4,
@@ -648,6 +785,41 @@ class _PresetTile extends StatelessWidget {
   }
 }
 
+/// The coin-price pill shown in place of a plain padlock on a coin-tier
+/// locked tile — shared by avatar, frame and cover grids so the visual
+/// language for "buy this with coins" stays identical across all three.
+class _CoinPriceBadge extends StatelessWidget {
+  final int price;
+
+  const _CoinPriceBadge({required this.price});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+      decoration: BoxDecoration(
+        color: context.palette.tertiaryAmber,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.monetization_on, color: Colors.white, size: 10),
+          const SizedBox(width: 2),
+          Text(
+            '$price',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 9,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 /// Grid of selectable avatar frames/borders: a "no frame" tile (index 0,
 /// always available) followed by [FramePresets.all]. Mirrors
 /// [CoverPickerSheet]'s default-plus-presets grid shape, including its
@@ -657,20 +829,23 @@ class _PresetTile extends StatelessWidget {
 class _FrameGrid extends StatelessWidget {
   final String? selectedId;
   final String noFrameLabel;
-  final bool frameUnlocked;
 
-  /// Frame ids unlocked individually via a level-up reward — unlike
-  /// [frameUnlocked], which unlocks every locked frame at once for one
-  /// pick (ad reward), these stay unlocked forever, one id at a time.
-  final Set<String> extraUnlockedIds;
+  /// Per-id, tier-aware — replaces a blanket `frameUnlocked: bool` that
+  /// used to apply the ad reward to every locked frame uniformly. See
+  /// `_FramePickerBodyState.frameIdUnlocked`'s doc comment.
+  final bool Function(String id) isUnlocked;
+
+  /// Non-null for a locked, unowned frame that should show its coin
+  /// price instead of a plain padlock.
+  final int? Function(String id) coinPriceFor;
 
   final void Function(String? frameId) onTap;
 
   const _FrameGrid({
     required this.selectedId,
     required this.noFrameLabel,
-    required this.frameUnlocked,
-    required this.extraUnlockedIds,
+    required this.isUnlocked,
+    required this.coinPriceFor,
     required this.onTap,
   });
 
@@ -696,12 +871,11 @@ class _FrameGrid extends StatelessWidget {
           );
         }
         final preset = frames[index - 1];
-        final locked = FramePresets.isLocked(preset.id) &&
-            !frameUnlocked &&
-            !extraUnlockedIds.contains(preset.id);
+        final locked = FramePresets.isLocked(preset.id) && !isUnlocked(preset.id);
         return _FrameTile(
           selected: selectedId == preset.id,
           locked: locked,
+          coinPrice: locked ? coinPriceFor(preset.id) : null,
           // Sized off the tile rather than a fixed 40 — these are detailed
           // wreath illustrations, and at 40 inside a ~92 tile they rendered
           // too small to tell apart. Invisible while FramePresets.all was
@@ -723,6 +897,7 @@ class _FrameGrid extends StatelessWidget {
 class _FrameTile extends StatelessWidget {
   final bool selected;
   final bool locked;
+  final int? coinPrice;
   final Widget child;
   final VoidCallback onTap;
 
@@ -731,6 +906,7 @@ class _FrameTile extends StatelessWidget {
     required this.locked,
     required this.child,
     required this.onTap,
+    this.coinPrice,
   });
 
   @override
@@ -757,7 +933,13 @@ class _FrameTile extends StatelessWidget {
               top: 4,
               child: Icon(Icons.check_circle, color: context.palette.primaryCoral, size: 18),
             ),
-          if (locked)
+          if (locked && coinPrice != null)
+            Positioned(
+              right: 4,
+              top: 4,
+              child: _CoinPriceBadge(price: coinPrice!),
+            )
+          else if (locked)
             Positioned(
               right: 4,
               top: 4,

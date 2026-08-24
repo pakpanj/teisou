@@ -246,6 +246,42 @@ class CoverPresets {
 
   static bool isLocked(String id) => !freeIds.contains(id);
 
+  /// Of the 15 locked covers, the 4 reachable with a single-use rewarded
+  /// ad — mirrors [FramePresets.adIds]'s three-tier split (ad / coin /
+  /// premium-only), added 2026-08-24.
+  static const adIds = {
+    'coral_reef',
+    'sunflower_field',
+    'library_books',
+    'cat_lover',
+  };
+
+  /// The 8 permanently buyable with coins (see `CoinSpendService`), flat
+  /// [coinPrice] each — same "not priced per-item" reasoning as
+  /// [FramePresets.coinPrice].
+  static const coinIds = {
+    'jungle_canopy',
+    'enchanted_forest',
+    'art_studio',
+    'sumi_ink',
+    'pixel_game',
+    'steampunk_brass',
+    'zodiac_night',
+    'magic_castle',
+  };
+
+  static const coinPrice = 150;
+
+  static bool isAdUnlockable(String id) => adIds.contains(id);
+  static bool isCoinUnlockable(String id) => coinIds.contains(id);
+
+  /// The remaining 3 (`sacred_geometry`, `cyber_neon`, `outer_space`) —
+  /// subscription-only, computed from [isLocked] rather than listed a
+  /// third time so a cover can never silently fall through every tier's
+  /// set.
+  static bool isPremiumOnly(String id) =>
+      isLocked(id) && !adIds.contains(id) && !coinIds.contains(id);
+
   /// What the Profile header shows for a user who has never picked a cover.
   ///
   /// There used to be a separate "Default" tile in the picker that rendered

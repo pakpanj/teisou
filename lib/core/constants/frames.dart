@@ -121,4 +121,40 @@ class FramePresets {
   };
 
   static bool isLocked(String id) => !freeIds.contains(id);
+
+  /// Of the 16 locked frames, the 4 reachable with a single-use rewarded
+  /// ad — mirrors [AvatarPresets.adIds]'s three-tier split (ad / coin /
+  /// premium-only), added 2026-08-24.
+  static const adIds = {
+    'frame_spring_garden',
+    'frame_ocean',
+    'frame_jungle',
+    'frame_cat',
+  };
+
+  /// The 8 permanently buyable with coins (see `CoinSpendService`), flat
+  /// [coinPrice] each — same "not priced per-item" reasoning as
+  /// [AvatarPresets.coinPrice].
+  static const coinIds = {
+    'frame_halloween',
+    'frame_night_sky',
+    'frame_mushroom_fairy',
+    'frame_fairytale',
+    'frame_witch',
+    'frame_music',
+    'frame_retro_pc',
+    'frame_calligraphy',
+  };
+
+  static const coinPrice = 150;
+
+  static bool isAdUnlockable(String id) => adIds.contains(id);
+  static bool isCoinUnlockable(String id) => coinIds.contains(id);
+
+  /// The remaining 4 (`frame_steampunk`, `frame_space`, `frame_gaming`,
+  /// `frame_moon_crystal`) — subscription-only, computed from [isLocked]
+  /// rather than listed a third time so a frame can never silently fall
+  /// through every tier's set.
+  static bool isPremiumOnly(String id) =>
+      isLocked(id) && !adIds.contains(id) && !coinIds.contains(id);
 }
