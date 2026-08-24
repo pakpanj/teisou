@@ -195,13 +195,12 @@ class _WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<_WelcomePage>
     with SingleTickerProviderStateMixin {
-  // Same 850ms as MascotWidget's own waving-mood idle duration, so the
-  // four badges bob in the same rhythm as the mascot instead of drifting
-  // out of step with it — they read as orbiting the character, not as
-  // four unrelated icons that happen to sit near it.
+  // Slower than MascotWidget's own 850ms waving idle on purpose — matching
+  // it one-to-one made the badges flicker up and down distractingly fast.
+  // This still reads as "orbiting the character" without being frantic.
   late final AnimationController _bob = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 850),
+    duration: const Duration(milliseconds: 2200),
   )..repeat(reverse: true);
 
   @override
@@ -542,7 +541,7 @@ class _ComparePageState extends ConsumerState<_ComparePage> {
           ),
           const SizedBox(height: 12),
           const MascotWidget(
-            mood: MascotMood.excited,
+            mood: MascotMood.cheering,
             size: 110,
             showBackdrop: false,
             groundShadow: true,
